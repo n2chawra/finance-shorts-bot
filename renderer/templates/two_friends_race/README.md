@@ -8,8 +8,8 @@ Ported from `reference/rahul_vs_amit_v2.py`. Example script: `examples/two_frien
 
 ## Inputs
 
-`monthly`, `annual_return_pct`, `end_age`, two `people` (`name`, `color`, `start_age`, `stop_age`),
-`seed`, and `text`. See `schema.json`.
+`monthly`, `annual_return_pct`, `end_age`, two `people` (`name`, `start_age`, `stop_age`), `seed`,
+optional `style`, and `text`. See `schema.json`. Character colours come from the palette.
 
 The template refuses a script where the first person does not both invest less and end with more,
 because the scenes are built around that outcome.
@@ -38,8 +38,3 @@ Lines that are too wide are shrunk to fit; keep them short (max 40 characters) s
 
 One contribution at the start of each month from `start_age` up to `stop_age`, compounded monthly
 at `annual_return_pct / 12`, left invested until `end_age`.
-
-## Not varied yet
-
-Palette (always `NIGHT`), music (always the 96 BPM lo-fi bed) and scene timings are fixed. `seed`
-changes star and confetti layout and the noise in the sound effects.

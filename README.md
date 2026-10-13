@@ -18,11 +18,20 @@ Run Python through `C:\venvs\finance-shorts-bot\Scripts\python.exe`, or activate
 
 ## Render a video
 
+Four templates, each with an example script in `examples/`: `two_friends_race`, `myth_vs_fact`,
+`money_leak_meter`, `quiz_countdown`. Each template folder has a README listing its inputs and
+text placeholders.
+
 ```powershell
 $py = 'C:\venvs\finance-shorts-bot\Scripts\python.exe'
-& $py renderer\cli.py examples\two_friends_race.json            # out\video.mp4, thumbnail.png, preview.png
-& $py renderer\cli.py examples\two_friends_race.json --preview  # thumbnail and contact sheet only (seconds)
+& $py renderer\cli.py examples\quiz_countdown.json             # video.mp4, thumbnail.png, preview.png, render.json
+& $py renderer\cli.py examples\quiz_countdown.json --preview   # no video: contact sheet in a few seconds
+& $py renderer\cli.py examples\quiz_countdown.json --seed 7    # same script, different palette, music and layout seed
 & $py -m pytest renderer -q
 ```
 
-Output goes to `out/` (gitignored) unless `--out` is given.
+Output goes to `out/` (gitignored) unless `--out` is given. `render.json` records the resolved
+style (palette, genre, key, BPM), any layout-rule problems at the key frames, and audio levels.
+
+A script may pin `style.palette`, `style.genre`, `style.key` and `style.bpm`; whatever it leaves
+out is picked from the seed.

@@ -76,6 +76,12 @@ def test_frames_are_deterministic_and_seeded(script: dict) -> None:
     assert build(script).frame(47.5).tobytes() != a.tobytes()
 
 
+def test_colours_come_from_the_palette(script: dict) -> None:
+    script["style"] = {"palette": "forest"}
+    v = build(script)
+    assert (v.a.color, v.b.color) == v.pal.cast[:2]
+
+
 def test_fit_shrinks_wide_text() -> None:
     s = "A very long line that cannot possibly fit on screen at this size"
     size = fit(s, 110, "Bold", SAFE_W)

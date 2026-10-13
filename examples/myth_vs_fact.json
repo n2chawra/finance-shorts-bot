@@ -1,0 +1,32 @@
+{
+  "template": "myth_vs_fact",
+  "seed": 11,
+  "amount": 100000,
+  "years": 15,
+  "tracks": [
+    {
+      "label": "Savings account",
+      "rate_pct": 3
+    },
+    {
+      "label": "Rising prices",
+      "rate_pct": 6
+    }
+  ],
+  "text": {
+    "myth_line1": "My money is safe",
+    "myth_line2": "in a savings account",
+    "setup_title": "You park {amount_long}",
+    "setup_note": "It grows. Feels safe.",
+    "bust_line": "Safe? Really?",
+    "bust_sub": "Prices grow faster",
+    "race_title": "{years} years later",
+    "result_line1": "You fall behind by",
+    "result_line2": "{lost_pct} of your buying power, gone",
+    "end_line1": "Safe is not the same",
+    "end_line2": "as growing",
+    "end_punch": "Beat inflation.",
+    "end_cta": "Comment \"GROW\" if this hit you",
+    "end_follow": "Follow for more money myths"
+  }
+}

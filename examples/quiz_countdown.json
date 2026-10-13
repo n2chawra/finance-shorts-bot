@@ -1,0 +1,31 @@
+{
+  "template": "quiz_countdown",
+  "seed": 31,
+  "kind": "sip",
+  "amount": 10000,
+  "years": 20,
+  "annual_return_pct": 12,
+  "distractors": [
+    0.45,
+    0.7
+  ],
+  "text": {
+    "hook_line": "Most people get this wrong",
+    "q_title": "Quick money maths",
+    "q_line1": "{amount} every month",
+    "q_line2": "for {years} years",
+    "q_line3": "at {rate} a year",
+    "question": "How much do you end up with?",
+    "q_cta": "Lock in your guess",
+    "opt_cta": "Pick one. Fast.",
+    "reveal_line": "It's {letter}!",
+    "reveal_note": "{answer_long} from {amount} a month",
+    "why_title": "Where does it come from?",
+    "why_line": "You end with {ratio} what you put in",
+    "end_line1": "Small amounts",
+    "end_line2": "plus a lot of time",
+    "end_punch": "That's the trick.",
+    "end_cta": "Comment if you got it right",
+    "end_follow": "Follow for the next quiz"
+  }
+}

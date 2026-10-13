@@ -3,6 +3,10 @@
     python renderer/cli.py examples/two_friends_race.json              → out/video.mp4, thumbnail.png, preview.png
     python renderer/cli.py examples/two_friends_race.json --preview    → thumbnail.png and preview.png only
     python renderer/cli.py script.json --frames 3 12.8                 → frame_<t>.png at those seconds
+    python renderer/cli.py script.json --seed 7                        → same script, different seed
+
+Every run also writes render.json: template, duration, resolved style, layout problems at the key
+frames and (for a full render) audio levels.
 """
 import argparse
 import importlib
@@ -22,9 +26,11 @@ from renderer.engine.preview import contact_sheet  # noqa: E402
 TEMPLATES = ROOT / "renderer" / "templates"
 
 
-def load(script_path: Path):
+def load(script_path: Path, seed: int | None = None):
     """Validate the script against its template's schema and build the template."""
     script = json.loads(script_path.read_text(encoding="utf-8"))
+    if seed is not None and isinstance(script, dict):
+        script["seed"] = seed
     name = script.get("template") if isinstance(script, dict) else None
     if not isinstance(name, str) or not (TEMPLATES / name / "schema.json").is_file():
         known = sorted(p.name for p in TEMPLATES.iterdir() if (p / "schema.json").is_file())
@@ -43,10 +49,11 @@ def main() -> int:
     ap.add_argument("--out", type=Path, default=Path("out"), help="output directory (default: out/)")
     ap.add_argument("--preview", action="store_true", help="thumbnail and contact sheet only, no video")
     ap.add_argument("--frames", type=float, nargs="+", metavar="SEC", help="write single frames at these times and exit")
+    ap.add_argument("--seed", type=int, help="override the script's seed")
     args = ap.parse_args()
 
     try:
-        video = load(args.script)
+        video = load(args.script, args.seed)
     except (ValueError, OSError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
@@ -59,11 +66,24 @@ def main() -> int:
 
     video.frame(video.thumbnail_time).save(args.out / "thumbnail.png")
     contact_sheet([(t, video.frame(t)) for t in video.key_times]).save(args.out / "preview.png")
+    st = video.style
+    report = {"template": type(video).__module__.split(".")[-2], "seed": video.seed, "duration_sec": video.duration,
+              "style": {"palette": st.palette.name, "genre": st.genre, "key": st.key, "bpm": st.bpm},
+              "layout_problems": [p for t in video.key_times for p in video.layout_problems(t)]}
+
+    def write_report() -> None:
+        (args.out / "render.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
     if args.preview:
+        write_report()
         return 0
 
     wav = args.out / "audio.wav"
-    video.audio().write_wav(wav)
+    mixer = video.audio()
+    mixer.write_wav(wav)
+    peak, mean = mixer.levels()
+    report["audio"] = {"peak_db": round(peak, 1), "mean_db": round(mean, 1)}
+    write_report()
     try:
         mux.encode((video.frame(f/FPS) for f in range(int(video.duration*FPS))), wav, args.out / "video.mp4")
     except RuntimeError as e:

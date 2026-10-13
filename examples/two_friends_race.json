@@ -5,8 +5,16 @@
   "annual_return_pct": 12,
   "end_age": 60,
   "people": [
-    { "name": "Rahul", "color": "#3DDC97", "start_age": 25, "stop_age": 35 },
-    { "name": "Amit", "color": "#FF9F43", "start_age": 35, "stop_age": 60 }
+    {
+      "name": "Rahul",
+      "start_age": 25,
+      "stop_age": 35
+    },
+    {
+      "name": "Amit",
+      "start_age": 35,
+      "stop_age": 60
+    }
   ],
   "text": {
     "hook_title": "{a_invested_long} vs {b_invested_long}",
