@@ -144,3 +144,11 @@ Done when: everything above works on a phone.
   run: whether `gh release create` can upload the mp4 through the GitHub proxy
   (`uploads.github.com` is not on the default network allowlist), and how long a render takes on
   the 4-vCPU cloud VM.
+- 2026-10-13: First cloud routine run (after a setup-script fix) planned, wrote, fact-reviewed (one
+  rewrite), rendered and QA-passed `v-20261013-02` in the cloud, then could not ship: cloud sessions
+  get `403 Creating, editing, or deleting releases is not permitted for this session type`, and the
+  push failed because the Claude GitHub App has no write access to the repo. That video was lost.
+  Fix for releases: `ship --media-branch` pushes `media/<id>` (HEAD plus `video.mp4`) and
+  `.github/workflows/release-video.yml` creates the release and deletes the branch. Verified with a
+  `media/selftest` branch pushed from this machine: release `video-selftest` was created with the
+  6.2 MB asset and the branch was removed. Still needed: install the Claude GitHub App on the repo.
