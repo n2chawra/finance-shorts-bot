@@ -39,7 +39,7 @@ export function Card({ title, action, children, className = "", icon: Icon }: {
   title?: string; action?: React.ReactNode; children: React.ReactNode; className?: string; icon?: LucideIcon;
 }) {
   return (
-    <motion.section variants={rise} className={`rounded-2xl border border-ring bg-surface p-4 shadow-card md:p-5 ${className}`}>
+    <motion.section variants={rise} className={`min-w-0 rounded-2xl border border-ring bg-surface p-4 shadow-card md:p-5 ${className}`}>
       {(title || action) && (
         <div className="mb-3 flex items-center justify-between gap-2">
           {title && (
