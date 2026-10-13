@@ -64,6 +64,11 @@ class Mixer:
             w.setframerate(SR)
             w.writeframes((st*32767).astype(np.int16).tobytes())
 
+    def levels(self) -> tuple[float, float]:
+        """(peak dB, mean dB) of the mastered mix; targets are about -1 and -18."""
+        st = self.master()
+        return float(20*np.log10(np.max(np.abs(st)))), float(20*np.log10(np.sqrt(np.mean(st**2))))
+
 
 # ---------------- sound effects ----------------
 

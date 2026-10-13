@@ -1,4 +1,5 @@
 """Indian number formatting for on-screen figures."""
+import math
 
 
 def group_indian(n: int) -> str:
@@ -55,3 +56,13 @@ def axis_label(v: float) -> str:
 def times(ratio: float) -> str:
     """Multiplier: 2.4166 → '2.4×'."""
     return f"{ratio:.1f}×"
+
+
+def nice_axis(vmax: float, max_ticks: int = 5) -> list[float]:
+    """Round chart tick values from 0 to just above vmax."""
+    mag = 10**math.floor(math.log10(vmax))
+    for m in (0.1, 0.2, 0.25, 0.5, 1, 2, 2.5, 5, 10):
+        step = m*mag
+        if vmax/step <= max_ticks:
+            return [i*step for i in range(math.ceil(vmax/step) + 1)]
+    raise AssertionError("unreachable")

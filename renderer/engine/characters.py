@@ -1,13 +1,21 @@
 """Character drawing."""
 import math
+from dataclasses import dataclass
 
 from .canvas import RGB, Canvas
 
-SKIN: RGB = (255, 214, 186)
+SKINS: tuple[RGB, ...] = ((255, 214, 186), (241, 194, 155), (224, 172, 125), (198, 140, 98))
+HAIRS: tuple[str, ...] = ("cap", "flat", "bun")
+
+
+@dataclass(frozen=True)
+class Look:
+    skin: RGB = SKINS[0]
+    hair: str = "cap"
 
 
 def person(c: Canvas, cx: float, cy: float, s: float, color: RGB, a: float = 1.0, t: float = 0.0,
-           mood: str = "happy", tag: str | None = None, jump: float = 0.0) -> None:
+           mood: str = "happy", tag: str | None = None, jump: float = 0.0, look: Look = Look()) -> None:
     """Capsule person standing with feet at (cx, cy). mood: happy | sad | wow | neutral."""
     if a <= 0.01:
         return
@@ -18,8 +26,13 @@ def person(c: Canvas, cx: float, cy: float, s: float, color: RGB, a: float = 1.0
     dark = c.mix(tuple(int(v*0.55) for v in color), a)
     d.rounded_rectangle([cx - body_w/2, top, cx + body_w/2, cy + bob], radius=60*s, fill=c.mix(color, a))
     hy = top - head_r*0.85
-    d.ellipse([cx - head_r, hy - head_r, cx + head_r, hy + head_r], fill=c.mix(SKIN, a))
-    d.chord([cx - head_r, hy - head_r, cx + head_r, hy + head_r*0.6], 180, 360, fill=dark)
+    if look.hair == "bun":
+        d.ellipse([cx - 30*s, hy - head_r - 36*s, cx + 30*s, hy - head_r + 16*s], fill=dark)
+    d.ellipse([cx - head_r, hy - head_r, cx + head_r, hy + head_r], fill=c.mix(look.skin, a))
+    if look.hair == "flat":
+        d.rounded_rectangle([cx - head_r, hy - head_r*1.08, cx + head_r, hy - head_r*0.3], radius=22*s, fill=dark)
+    else:
+        d.chord([cx - head_r, hy - head_r, cx + head_r, hy + head_r*0.6], 180, 360, fill=dark)
     blink = (t*1.3) % 3 < 0.12
     ink = c.mix((30, 30, 40), a)
     for ex in (-26*s, 26*s):
