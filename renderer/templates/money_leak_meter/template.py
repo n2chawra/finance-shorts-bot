@@ -165,7 +165,7 @@ class MoneyLeakMeter(Video):
         cnt = ease(ramp(t, 0.5, 1.4))
         base, full = 1500, 760
         for i, (label, v, col, x) in enumerate((("Spent", self.spent, P.danger, W/2 - 230),
-                                                ("Invested", self.fv, P.cast[0], W/2 + 230))):
+                                                ("If invested", self.fv, P.cast[0], W/2 + 230))):
             h = full*(v/self.fv)*cnt
             vbar(c, x, base, 240, h, col, a)
             c.text(inr(v*cnt), x, base - h - 54, 68, col, a)

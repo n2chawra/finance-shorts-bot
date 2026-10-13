@@ -10,13 +10,20 @@ run the test suite, do not explore the codebase, and do not improve things you w
 
 ```
 git checkout main && git pull --ff-only
-python -c "import PIL, numpy, scipy, jsonschema" || pip install -q -r renderer/requirements.txt || pip install -q --break-system-packages -r renderer/requirements.txt
+for p in python python3 /usr/bin/python3; do $p -c "import PIL, numpy, scipy, jsonschema" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
 ffmpeg -version | head -1
 ```
 
-If `ffmpeg` is missing, try once: `apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ffmpeg`.
-If it is still missing, stop and report "ffmpeg could not be installed" with the error text.
+`PY` is the Python that has the packages. **Wherever this page or the other prompt files say
+`python`, run that interpreter instead**, and tell your subagents which one it is. The machine
+can have several Pythons and only one has the packages.
 
+- If no interpreter has the packages (`PY` is empty), run
+  `python3 -m pip install -q pillow numpy scipy jsonschema` (add `--break-system-packages` if pip
+  refuses), then use `python3`.
+- If `ffmpeg` is missing, try once:
+  `apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ffmpeg`.
+  If it is still missing, stop and report "ffmpeg could not be installed" with the error text.
 ## 1. Decide what this run does
 
 Run `python -m generator.run state` and read `mode`:

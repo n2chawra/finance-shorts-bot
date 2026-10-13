@@ -152,3 +152,10 @@ Done when: everything above works on a phone.
   `.github/workflows/release-video.yml` creates the release and deletes the branch. Verified with a
   `media/selftest` branch pushed from this machine: release `video-selftest` was created with the
   6.2 MB asset and the branch was removed. Still needed: install the Claude GitHub App on the repo.
+- 2026-10-13: Second cloud run succeeded unattended: `v-20261013-02` (money_leak_meter, cab rides)
+  passed all three checks first time, pushed to `main`, and the workflow created Release
+  `video-v-20261013-02` (7.2 MB) and deleted `media/v-20261013-02`. That is 1 of the 3 consecutive
+  runs M3 needs. Follow-ups applied: the routine now picks whichever Python has the packages (the
+  VM had 3.11 and 3.13), and the money_leak_meter compare bar is labelled "If invested" instead of
+  "Invested". The manifest's `release.uploaded` stays false on this path; the release itself is the
+  record, and ingest (M4) should check for it.
