@@ -34,7 +34,7 @@ Done when: 3 consecutive unattended runs each produce a valid, distinct video.
 
 ## M4 — Database + ingest
 - [x] Supabase or Neon Postgres with pgvector; Prisma schema from CLAUDE.md; migrations
-- [ ] `workers/ingest.ts` + `.github/workflows/ingest.yml` (hourly)
+- [x] `workers/ingest.ts` + `.github/workflows/ingest.yml` (after each video release, plus every 6 hours)
 
 Done when: new manifests appear in Postgres as `queued` within an hour of a routine run.
 
@@ -175,3 +175,8 @@ Done when: everything above works on a phone.
   Notes: API calls take 1.5–3 s locally (remote pooler, several queries each); cloud-made videos do
   not play in the local dashboard because their mp4s exist only in Releases; a wrong database
   password shows up as "can't reach database server" because the pooler answers slowly.
+- 2026-10-13: M4 done. With the secrets set from the env file, `ingest.yml` succeeds on GitHub
+  (migrations current, nothing new, settings unchanged). Pushing a `media/selftest` branch ran
+  Release video and then Ingest automatically 18 seconds later, so a routine's video will be
+  ingested within about a minute of its release. Not yet seen with a real new video, because the
+  next routine run is template work.
