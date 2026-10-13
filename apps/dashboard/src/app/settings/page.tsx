@@ -1,0 +1,81 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+import { Button, Card, ErrorNote, Loading, PageHeader, Toggle } from "@/components/ui";
+import { usePatchSettings, useSettings } from "@/lib/queries";
+import type { Settings } from "@/lib/schemas";
+
+const field = "min-h-10 w-full rounded-lg border border-ring bg-surface px-3 text-sm";
+
+function Row({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
+  return (
+    <label className="flex flex-col gap-1.5 border-b border-line py-3 last:border-0 md:flex-row md:items-center md:justify-between md:gap-6">
+      <span className="text-sm"><span className="font-medium">{label}</span>{hint && <span className="block text-xs text-muted">{hint}</span>}</span>
+      <span className="md:w-64 md:shrink-0">{children}</span>
+    </label>
+  );
+}
+
+export default function SettingsPage() {
+  const { data, error, isLoading } = useSettings();
+  const patch = usePatchSettings();
+  const [form, setForm] = useState<Settings | null>(null);
+  const [saved, setSaved] = useState(false);
+  useEffect(() => { if (data) setForm((f) => f ?? data); }, [data]);
+
+  if (isLoading || (data && !form)) return <Loading />;
+  if (error || !data || !form) return <ErrorNote error={error} />;
+  const set = (p: Partial<Settings>) => { setSaved(false); setForm({ ...form, ...p }); };
+  const setAlert = (p: Partial<Settings["alerts"]>) => set({ alerts: { ...form.alerts, ...p } });
+  const dirty = JSON.stringify(form) !== JSON.stringify(data);
+  const int = (v: string) => (Number.isFinite(parseInt(v, 10)) ? parseInt(v, 10) : 0);
+
+  return (
+    <form onSubmit={(e) => { e.preventDefault(); patch.mutate(form, { onSuccess: () => setSaved(true) }); }}>
+      <PageHeader title="Settings" sub="Workers read these on every run">
+        <div className="flex items-center gap-3">
+          {saved && !dirty && <span role="status" className="text-sm text-ink2"><span aria-hidden className="font-bold text-good">✓ </span>Saved</span>}
+          <Button type="submit" tone="primary" disabled={!dirty || patch.isPending}>{patch.isPending ? "Saving…" : "Save changes"}</Button>
+        </div>
+      </PageHeader>
+      {patch.error && <div className="mb-4"><ErrorNote error={patch.error} /></div>}
+
+      <Card title="Uploads">
+        <Row label="Pause all uploads" hint="Nothing is published while this is on.">
+          <Toggle label="Pause all uploads" checked={form.uploadsPaused} onChange={(uploadsPaused) => set({ uploadsPaused })} />
+        </Row>
+        <Row label="Upload time" hint="IST, once a day.">
+          <input type="time" required className={field} value={form.uploadTime} onChange={(e) => set({ uploadTime: e.target.value })} />
+        </Row>
+        <Row label="Backlog cap" hint="Generation stops making videos at this many ready.">
+          <input type="number" min={1} max={100} required className={field} value={form.backlogCap} onChange={(e) => set({ backlogCap: int(e.target.value) })} />
+        </Row>
+      </Card>
+
+      <Card title="Videos" className="mt-4">
+        <Row label="Length range" hint="Seconds. QA rejects videos outside it.">
+          <span className="flex items-center gap-2">
+            <input type="number" min={15} max={180} required aria-label="Minimum length in seconds" className={field} value={form.lengthMinSec} onChange={(e) => set({ lengthMinSec: int(e.target.value) })} />
+            <span className="text-sm text-muted">to</span>
+            <input type="number" min={15} max={180} required aria-label="Maximum length in seconds" className={field} value={form.lengthMaxSec} onChange={(e) => set({ lengthMaxSec: int(e.target.value) })} />
+          </span>
+        </Row>
+        <Row label="Disclaimer" hint="Shown at the end of every video.">
+          <input type="text" minLength={5} maxLength={120} required className={field} value={form.disclaimer} onChange={(e) => set({ disclaimer: e.target.value })} />
+        </Row>
+      </Card>
+
+      <Card title="Telegram alerts" className="mt-4">
+        <Row label="Failed run"><Toggle label="Alert on failed run" checked={form.alerts.failedRun} onChange={(failedRun) => setAlert({ failedRun })} /></Row>
+        <Row label="Failed upload"><Toggle label="Alert on failed upload" checked={form.alerts.failedUpload} onChange={(failedUpload) => setAlert({ failedUpload })} /></Row>
+        <Row label="Token errors" hint="YouTube refresh token rejected."><Toggle label="Alert on token errors" checked={form.alerts.tokenErrors} onChange={(tokenErrors) => setAlert({ tokenErrors })} /></Row>
+        <Row label="Low backlog"><Toggle label="Alert on low backlog" checked={form.alerts.lowBacklog} onChange={(lowBacklog) => setAlert({ lowBacklog })} /></Row>
+        <Row label="Low backlog threshold" hint="Alert when fewer than this many videos are ready.">
+          <input type="number" min={0} max={30} required disabled={!form.alerts.lowBacklog} className={`${field} disabled:opacity-40`} value={form.alerts.lowBacklogThreshold} onChange={(e) => setAlert({ lowBacklogThreshold: int(e.target.value) })} />
+        </Row>
+      </Card>
+      <p className="mt-3 text-xs text-muted">Sample data: saved values reset when the dev server restarts. Sign-in is not set up yet.</p>
+    </form>
+  );
+}

@@ -62,17 +62,17 @@ Backend (Next.js route handlers + Prisma, Zod-validated):
       alert preferences, global pause. Workers read settings from the DB, not hard-coded values
 - [ ] Publisher retries a failed upload max 3 times (`Upload.attempts`), then `failed` + alert
 
-Frontend (mobile-first):
-- [ ] Overview page: status counts, backlog, next scheduled upload, failure list
-- [ ] Calendar of scheduled/published uploads (past + upcoming)
-- [ ] Video list with search + filters
-- [ ] Video detail: player, thumbnail, key-frame contact sheet, scene-by-scene script, the three
+Frontend (mobile-first). Ticked pages run on in-memory sample data until M4 lands:
+- [x] Overview page: status counts, backlog, next scheduled upload, failure list
+- [x] Calendar of scheduled/published uploads (past + upcoming)
+- [x] Video list with search + filters
+- [x] Video detail: player, thumbnail, key-frame contact sheet, scene-by-scene script, the three
       check results, agent run timeline, YouTube link, stats chart
-- [ ] Queue controls: skip, delete, drag to reorder, upload now, pause all uploads
-- [ ] Templates page: avg views per template, enable/disable, weight, sample preview video
-- [ ] Analytics page: views + subscribers over time, best/worst videos, best upload days
-- [ ] Runs page: every routine run, result, duration, errors, link to the Claude session
-- [ ] Settings page (fields above)
+- [x] Queue controls: skip, delete, drag to reorder, upload now, pause all uploads
+- [x] Templates page: avg views per template, enable/disable, weight, sample preview video
+- [x] Analytics page: views + subscribers over time, best/worst videos, best upload days
+- [x] Runs page: every routine run, result, duration, errors, link to the Claude session
+- [x] Settings page (fields above)
 - [ ] Deploy to Vercel
 
 Done when: everything above works on a phone.
@@ -110,3 +110,10 @@ Done when: everything above works on a phone.
   ear or eye: nobody has listened to the four new genres or watched the new templates in motion.
   Not varied yet: SFX set, scene timings.
 - 2026-10-13: M2–M5 skipped for now at Naishadh's request; starting M6 on in-memory sample data.
+- 2026-10-13: M6 started on sample data. `apps/dashboard` has all nine pages, Zod schemas for every
+  payload, and the route handlers from the backend list (overview, videos, video actions, queue
+  order, templates, runs, analytics, settings) backed by an in-memory store in `src/lib/store.ts`.
+  Backend boxes stay unticked: no Prisma, no auth, no real publisher. Checked in the browser at
+  desktop and 375 px: every page loads, queue reorder and pause work. `next build` not run yet.
+  Found while building: the variety rule "same template not used in the last 5 videos" cannot be
+  met with four templates; it needs at least six, or the rule needs relaxing.
