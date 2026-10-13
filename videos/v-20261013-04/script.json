@@ -1,0 +1,29 @@
+{
+  "template": "quiz_countdown",
+  "seed": 3317,
+  "style": { "palette": "plum", "genre": "pop", "key": "C", "bpm": 108 },
+  "kind": "lumpsum",
+  "amount": 300000,
+  "years": 12,
+  "annual_return_pct": 7,
+  "distractors": [0.6, 1.4],
+  "text": {
+    "hook_line": "Think you can beat the timer?",
+    "q_title": "One FD. One guess.",
+    "q_line1": "{amount} in a fixed deposit",
+    "q_line2": "left alone for {years} years",
+    "q_line3": "at {rate} a year",
+    "question": "What is it worth then?",
+    "q_cta": "Guess before the timer",
+    "opt_cta": "Pick one. Fast.",
+    "reveal_line": "It's {letter}!",
+    "reveal_note": "{answer_long} from one FD",
+    "why_title": "Where does it come from?",
+    "why_line": "Interest earns interest too",
+    "end_line1": "No top-ups needed",
+    "end_line2": "just patience",
+    "end_punch": "Time does the work.",
+    "end_cta": "Drop your guess below",
+    "end_follow": "Follow for the next quiz"
+  }
+}

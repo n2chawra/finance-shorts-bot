@@ -1,0 +1,122 @@
+{
+  "id": "v-20261013-04",
+  "createdAt": "2026-10-13T14:34:57.557278+00:00",
+  "status": "qa_passed",
+  "template": "quiz_countdown",
+  "topic": {
+    "title": "What a ₹3 lakh fixed deposit grows to in 12 years at 7%",
+    "category": "fd"
+  },
+  "title": "Can you guess what this FD becomes in 12 years?",
+  "description": "Put ₹3 lakh in a fixed deposit at 7% a year for 12 years. Can you pick the right amount before the timer ends? Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#FixedDeposit",
+    "#PersonalFinance",
+    "#MoneyQuiz"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Drop your guess before the reveal",
+  "seed": 3317,
+  "style": {
+    "palette": "plum",
+    "genre": "pop",
+    "key": "C",
+    "bpm": 108
+  },
+  "durationSec": 48,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -19.0
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "9 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Checked lumpsum FD at 7% for 12 yrs (rate under 8% cap, shown as assumption: compounded yearly), no product/bank named, no guarantee wording, tone neutral, description ends with disclaimer. Note: figure is pre-tax (FD interest is taxable at slab rate), not mentioned; acceptable for an illustrative quiz."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "8 frames and thumbnail clean: QUIZ hook at 0.6s, readable quiz/answer/bar scenes, math 3L at 7% x12y = 6.8L consistent, disclaimer on last frame, 48s, audio -1/-19 dB, no layout problems. Minor: 26.0s caption sits close to character head but legible."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-13T14:32:30.388504+00:00",
+      "finishedAt": "2026-10-13T14:32:30.388504+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-13T14:32:38.103770+00:00",
+      "finishedAt": "2026-10-13T14:32:38.103770+00:00",
+      "notes": [
+        "9 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-13T14:33:04.822337+00:00",
+      "finishedAt": "2026-10-13T14:33:04.822337+00:00",
+      "notes": [
+        "Checked lumpsum FD at 7% for 12 yrs (rate under 8% cap, shown as assumption: compounded yearly), no product/bank named, no guarantee wording, tone neutral, description ends with disclaimer. Note: figure is pre-tax (FD interest is taxable at slab rate), not mentioned; acceptable for an illustrative quiz."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-13T14:33:14.229942+00:00",
+      "finishedAt": "2026-10-13T14:34:26.377172+00:00",
+      "notes": [
+        "48 s, plum/pop, peak -1.0 dB, mean -19.0 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-13T14:34:43.365714+00:00",
+      "finishedAt": "2026-10-13T14:34:43.365714+00:00",
+      "notes": [
+        "8 frames and thumbnail clean: QUIZ hook at 0.6s, readable quiz/answer/bar scenes, math 3L at 7% x12y = 6.8L consistent, disclaimer on last frame, 48s, audio -1/-19 dB, no layout problems. Minor: 26.0s caption sits close to character head but legible."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-13T14:34:57.557348+00:00",
+      "finishedAt": "2026-10-13T14:34:57.557348+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261013-04",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261013-04"
+  }
+}
