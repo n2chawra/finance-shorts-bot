@@ -159,3 +159,10 @@ Done when: everything above works on a phone.
   VM had 3.11 and 3.13), and the money_leak_meter compare bar is labelled "If invested" instead of
   "Invested". The manifest's `release.uploaded` stays false on this path; the release itself is the
   record, and ingest (M4) should check for it.
+- 2026-10-13: Three consecutive unattended cloud runs each shipped a distinct video, which meets the
+  M3 done-criterion: `-02` money_leak_meter/spending/ember/synthwave, `-03` two_friends_race/sip/
+  forest/lo-fi, `-04` quiz_countdown/fd/plum/pop. With `-01` that is all four templates, four
+  categories, four palettes, four genres and four hook styles in four videos. Each has a Release
+  with its mp4 and no media branch left behind. Still open in M3: the routine is on a daily
+  schedule, not every 6 hours, and Pro usage per run has not been measured. The next run (the 5th)
+  will be template work.
