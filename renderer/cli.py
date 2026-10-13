@@ -26,21 +26,53 @@ from renderer.engine.preview import contact_sheet  # noqa: E402
 TEMPLATES = ROOT / "renderer" / "templates"
 
 
-def load(script_path: Path, seed: int | None = None):
-    """Validate the script against its template's schema and build the template."""
-    script = json.loads(script_path.read_text(encoding="utf-8"))
-    if seed is not None and isinstance(script, dict):
-        script["seed"] = seed
+def template_names() -> list[str]:
+    return sorted(p.name for p in TEMPLATES.iterdir() if (p / "schema.json").is_file())
+
+
+def build(script: object):
+    """Validate a script dict against its template's schema and build the template."""
     name = script.get("template") if isinstance(script, dict) else None
-    if not isinstance(name, str) or not (TEMPLATES / name / "schema.json").is_file():
-        known = sorted(p.name for p in TEMPLATES.iterdir() if (p / "schema.json").is_file())
-        raise ValueError(f"unknown template {name!r}; available: {', '.join(known)}")
+    if not isinstance(name, str) or name not in template_names():
+        raise ValueError(f"unknown template {name!r}; available: {', '.join(template_names())}")
     schema = json.loads((TEMPLATES / name / "schema.json").read_text(encoding="utf-8"))
     errors = sorted(Draft202012Validator(schema).iter_errors(script), key=lambda e: list(e.path))
     if errors:
         raise ValueError("script does not match schema:\n" + "\n".join(
             f"  {'/'.join(map(str, e.path)) or '(root)'}: {e.message}" for e in errors))
     return importlib.import_module(f"renderer.templates.{name}.template").build(script)
+
+
+def load(script_path: Path, seed: int | None = None):
+    """Read a script file (optionally overriding its seed), validate it and build the template."""
+    script = json.loads(script_path.read_text(encoding="utf-8"))
+    if seed is not None and isinstance(script, dict):
+        script["seed"] = seed
+    return build(script)
+
+
+def render(video, out: Path, preview: bool = False) -> dict:
+    """Write thumbnail.png, preview.png and render.json into `out`, plus video.mp4 unless `preview`.
+    Returns the report that went into render.json. Raises RuntimeError if encoding fails."""
+    out.mkdir(parents=True, exist_ok=True)
+    video.frame(video.thumbnail_time).save(out / "thumbnail.png")
+    contact_sheet([(t, video.frame(t)) for t in video.key_times]).save(out / "preview.png")
+    st = video.style
+    report = {"template": type(video).__module__.split(".")[-2], "seed": video.seed, "duration_sec": video.duration,
+              "style": {"palette": st.palette.name, "genre": st.genre, "key": st.key, "bpm": st.bpm},
+              "layout_problems": [p for i in range(int(video.duration)) for p in video.layout_problems(i + 0.5)]}
+    if not preview:
+        wav = out / "audio.wav"
+        mixer = video.audio()
+        mixer.write_wav(wav)
+        peak, mean = mixer.levels()
+        report["audio"] = {"peak_db": round(peak, 1), "mean_db": round(mean, 1)}
+        try:
+            mux.encode((video.frame(f/FPS) for f in range(int(video.duration*FPS))), wav, out / "video.mp4")
+        finally:
+            wav.unlink(missing_ok=True)
+    (out / "render.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return report
 
 
 def main() -> int:
@@ -57,41 +89,19 @@ def main() -> int:
     except (ValueError, OSError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
-    args.out.mkdir(parents=True, exist_ok=True)
 
     if args.frames:
+        args.out.mkdir(parents=True, exist_ok=True)
         for t in args.frames:
             video.frame(t).save(args.out / f"frame_{t:05.2f}.png")
         return 0
-
-    video.frame(video.thumbnail_time).save(args.out / "thumbnail.png")
-    contact_sheet([(t, video.frame(t)) for t in video.key_times]).save(args.out / "preview.png")
-    st = video.style
-    report = {"template": type(video).__module__.split(".")[-2], "seed": video.seed, "duration_sec": video.duration,
-              "style": {"palette": st.palette.name, "genre": st.genre, "key": st.key, "bpm": st.bpm},
-              "layout_problems": [p for t in video.key_times for p in video.layout_problems(t)]}
-
-    def write_report() -> None:
-        (args.out / "render.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-
-    if args.preview:
-        write_report()
-        return 0
-
-    wav = args.out / "audio.wav"
-    mixer = video.audio()
-    mixer.write_wav(wav)
-    peak, mean = mixer.levels()
-    report["audio"] = {"peak_db": round(peak, 1), "mean_db": round(mean, 1)}
-    write_report()
     try:
-        mux.encode((video.frame(f/FPS) for f in range(int(video.duration*FPS))), wav, args.out / "video.mp4")
+        render(video, args.out, args.preview)
     except RuntimeError as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
-    finally:
-        wav.unlink(missing_ok=True)
-    print(args.out / "video.mp4")
+    if not args.preview:
+        print(args.out / "video.mp4")
     return 0
 
 

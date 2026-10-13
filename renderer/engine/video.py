@@ -38,12 +38,14 @@ class Video:
         self.punches: list[float] = []    # small zoom punch
         self.flashes: list[float] = []    # white flash
         self.txt: dict[str, str] = {}
+        self.figures: dict[str, str] = {}   # every computed value a script may show, as displayed
 
     # ---------------- text ----------------
 
     def fill(self, texts: Mapping[str, str], placeholders: Mapping[str, object]) -> dict[str, str]:
         """Substitute {placeholders} into script text. Typed digits or ₹ are rejected, so every
-        number on screen comes from code."""
+        number on screen comes from code. The placeholders are kept as `self.figures`."""
+        self.figures = {k: str(v) for k, v in placeholders.items()}
         out = {}
         for key, raw in texts.items():
             if re.search(r"[0-9₹]", raw):
