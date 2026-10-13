@@ -1,0 +1,145 @@
+// Shared by the dashboard and the workers (workers generate their client from this file).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // pooled connection (Supabase port 6543, ?pgbouncer=true)
+  directUrl = env("DIRECT_URL") // session connection (port 5432), used by migrations
+}
+
+enum VideoStatus {
+  planned
+  scripted
+  verified
+  rendered
+  qa_passed
+  queued
+  scheduled
+  published
+  failed
+}
+
+enum Checker {
+  number_check
+  fact_review
+  qa_review
+}
+
+enum UploadState {
+  pending
+  uploaded
+  scheduled
+  published
+  failed
+}
+
+model Template {
+  id          String    @id // folder name under renderer/templates
+  name        String
+  description String    @default("")
+  version     Int       @default(1)
+  weight      Float     @default(1)
+  enabled     Boolean   @default(true)
+  lastUsedAt  DateTime?
+  createdAt   DateTime  @default(now())
+  videos      Video[]
+}
+
+model Topic {
+  id        String                 @id @default(cuid())
+  category  String
+  title     String
+  embedding Unsupported("vector")? // filled once an embedding model is available
+  createdAt DateTime               @default(now())
+  videos    Video[]
+
+  @@index([category])
+}
+
+model Video {
+  id            String      @id // v-YYYYMMDD-NN, same as the folder under videos/
+  templateId    String
+  template      Template    @relation(fields: [templateId], references: [id])
+  topicId       String
+  topic         Topic       @relation(fields: [topicId], references: [id])
+  status        VideoStatus
+  failReason    String?
+  script        Json
+  style         Json
+  fileUrl       String? // GitHub Release asset
+  thumbnailUrl  String? // repo path
+  durationSec   Float
+  title         String
+  description   String
+  tags          String[]
+  hookStyle     String?
+  cta           String?
+  queuePosition Int? // publisher takes the lowest
+  createdAt     DateTime // when the routine shipped it
+  ingestedAt    DateTime    @default(now())
+  deletedAt     DateTime? // removed from the dashboard; kept so ingest does not re-add it
+  qaChecks      QaCheck[]
+  upload        Upload?
+  agentRuns     AgentRun[]
+
+  @@index([status, queuePosition])
+}
+
+model QaCheck {
+  id      String  @id @default(cuid())
+  videoId String
+  video   Video   @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  checker Checker
+  passed  Boolean
+  notes   Json
+
+  @@unique([videoId, checker])
+}
+
+model Upload {
+  id        String      @id @default(cuid())
+  videoId   String      @unique
+  video     Video       @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  youtubeId String?
+  publishAt DateTime
+  state     UploadState @default(pending)
+  error     String?
+  attempts  Int         @default(0)
+  stats     VideoStat[]
+}
+
+model VideoStat {
+  id         String   @id @default(cuid())
+  uploadId   String
+  upload     Upload   @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+  day        DateTime @db.Date
+  views      Int      @default(0)
+  likes      Int      @default(0)
+  comments   Int      @default(0)
+  subsGained Int      @default(0)
+  avgViewPct Float    @default(0)
+
+  @@unique([uploadId, day])
+}
+
+model AgentRun {
+  id                String    @id @default(cuid())
+  videoId           String?
+  video             Video?    @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  agent             String
+  status            String // ok | failed | skipped
+  log               Json
+  startedAt         DateTime
+  finishedAt        DateTime?
+  routineSessionUrl String?
+
+  @@index([startedAt])
+}
+
+model Setting {
+  key   String @id
+  value Json
+}

@@ -8,6 +8,8 @@ import { useTheme } from "next-themes";
 import { ToggleGroup } from "radix-ui";
 import { useEffect, useState } from "react";
 
+import { useOverview } from "@/lib/queries";
+
 const ITEMS: { href: string; label: string; icon: LucideIcon }[] = [
   { href: "/", label: "Overview", icon: LayoutDashboard },
   { href: "/queue", label: "Queue", icon: ListOrdered },
@@ -20,12 +22,13 @@ const ITEMS: { href: string; label: string; icon: LucideIcon }[] = [
 ];
 
 function Brand() {
+  const source = useOverview().data?.source;
   return (
     <div className="flex items-center gap-2.5">
       <span className="brand-gradient grid size-9 shrink-0 place-items-center rounded-xl text-brand-ink shadow-card"><Clapperboard aria-hidden className="size-5" /></span>
       <span className="leading-tight">
         <span className="block whitespace-nowrap text-[15px] font-semibold tracking-tight">Finance Shorts</span>
-        <span className="block text-[11px] font-medium text-muted">Sample data</span>
+        <span className="block text-[11px] font-medium text-muted">{source === "database" ? "Live data" : source === "sample" ? "Sample data" : " "}</span>
       </span>
     </div>
   );

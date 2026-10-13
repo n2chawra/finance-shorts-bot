@@ -1,0 +1,22 @@
+{
+  "name": "workers",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/copy-schema.mjs && prisma generate --schema prisma/schema.prisma",
+    "migrate": "prisma migrate deploy --schema ../apps/dashboard/prisma/schema.prisma",
+    "ingest": "tsx ingest.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.3",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "prisma": "6.19.3",
+    "tsx": "^4",
+    "typescript": "^5"
+  }
+}

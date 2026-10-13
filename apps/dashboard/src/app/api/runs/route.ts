@@ -4,6 +4,6 @@ import { listRuns } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 
-export function GET() {
-  return NextResponse.json(listRuns());
+export async function GET() {
+  return NextResponse.json(await listRuns());
 }

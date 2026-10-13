@@ -4,6 +4,6 @@ import { getAnalytics } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 
-export function GET() {
-  return NextResponse.json(getAnalytics());
+export async function GET() {
+  return NextResponse.json(await getAnalytics());
 }

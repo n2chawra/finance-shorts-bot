@@ -7,6 +7,6 @@ export async function POST(_req: Request, ctx: { params: Promise<{ id: string; a
   const { id, action } = await ctx.params;
   const parsed = VideoActionSchema.safeParse(action);
   if (!parsed.success) return NextResponse.json({ error: "Unknown action" }, { status: 404 });
-  const result = videoAction(id, parsed.data);
+  const result = await videoAction(id, parsed.data);
   return result.ok ? NextResponse.json(result) : NextResponse.json({ error: result.error }, { status: 409 });
 }

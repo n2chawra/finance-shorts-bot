@@ -140,6 +140,7 @@ export type Settings = z.infer<typeof SettingsSchema>;
 export const SettingsPatchSchema = SettingsSchema.partial();
 
 export const OverviewSchema = z.object({
+  source: z.enum(["sample", "database"]),
   counts: z.record(z.string(), z.number()),
   backlog: z.number(),
   backlogCap: z.number(),

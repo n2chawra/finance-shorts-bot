@@ -1,0 +1,277 @@
+/**
+ * Data access backed by Postgres (Prisma). Same functions and return shapes as store.sample.ts.
+ * Videos get here through workers/ingest.ts; the dashboard only reads them and changes queue
+ * order, template switches and settings.
+ */
+import type { Prisma } from "@prisma/client";
+
+import { prisma } from "./prisma";
+import { SettingsSchema } from "./schemas";
+import type { Analytics, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
+
+const DAY_MS = 86_400_000;
+const IST_OFFSET = "+05:30";
+
+export const DEFAULT_SETTINGS: Settings = {
+  uploadTime: "19:07", backlogCap: 30, lengthMinSec: 45, lengthMaxSec: 60,
+  disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
+  generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
+  alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },
+};
+
+const istDay = (d: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(d);
+const addDays = (day: string, n: number) => new Date(Date.parse(`${day}T00:00:00Z`) + n * DAY_MS).toISOString().slice(0, 10);
+const dayKey = (d: Date) => d.toISOString().slice(0, 10); // VideoStat.day is a DATE (UTC midnight)
+
+const withRelations = { topic: true, upload: { include: { stats: true } } } satisfies Prisma.VideoInclude;
+type VideoRow = Prisma.VideoGetPayload<{ include: typeof withRelations }>;
+
+function totals(stats: { views: number; likes: number; comments: number; subsGained: number; avgViewPct: number }[]): Video["totals"] {
+  if (!stats.length) return null;
+  const sum = (k: "views" | "likes" | "comments" | "subsGained") => stats.reduce((a, s) => a + s[k], 0);
+  return { views: sum("views"), likes: sum("likes"), comments: sum("comments"), subsGained: sum("subsGained"), avgViewPct: Math.round(stats.reduce((a, s) => a + s.avgViewPct, 0) / stats.length * 10) / 10 };
+}
+
+function toVideo(v: VideoRow): Video {
+  const style = (v.style ?? {}) as Partial<Video["style"]>;
+  return {
+    id: v.id, templateId: v.templateId, topic: { title: v.topic.title, category: v.topic.category }, status: v.status,
+    failReason: v.failReason, title: v.title, description: v.description, tags: v.tags, durationSec: v.durationSec,
+    style: { palette: style.palette ?? "—", genre: style.genre ?? "—", key: style.key ?? "—", bpm: style.bpm ?? 0 },
+    thumbnailUrl: `/api/media/${v.id}/thumbnail`, previewUrl: `/api/media/${v.id}/preview`, fileUrl: `/api/media/${v.id}/video`,
+    createdAt: v.createdAt.toISOString(), queuePosition: v.queuePosition,
+    upload: v.upload && { youtubeId: v.upload.youtubeId, publishAt: v.upload.publishAt.toISOString(), state: v.upload.state, error: v.upload.error, attempts: v.upload.attempts },
+    totals: totals(v.upload?.stats ?? []),
+  };
+}
+
+const live = { deletedAt: null } satisfies Prisma.VideoWhereInput;
+
+// ---------------- settings ----------------
+
+export async function getSettings(): Promise<Settings> {
+  const merged: Record<string, unknown> = { ...DEFAULT_SETTINGS };
+  for (const row of await prisma.setting.findMany()) {
+    if (row.key in DEFAULT_SETTINGS) merged[row.key] = row.value;
+  }
+  const parsed = SettingsSchema.safeParse(merged);
+  return parsed.success ? parsed.data : DEFAULT_SETTINGS;
+}
+
+export async function patchSettings(patch: Partial<Settings>): Promise<Settings> {
+  const current = await getSettings();
+  const next: Settings = { ...current, ...patch, alerts: { ...current.alerts, ...patch.alerts }, templateWork: { ...current.templateWork, ...patch.templateWork } };
+  const changed = (Object.keys(next) as (keyof Settings)[]).filter((k) => JSON.stringify(next[k]) !== JSON.stringify(current[k]));
+  await prisma.$transaction(changed.map((key) => prisma.setting.upsert({ where: { key }, update: { value: next[key] }, create: { key, value: next[key] } })));
+  return next;
+}
+
+// ---------------- videos ----------------
+
+export async function listVideos(f: { status?: string; template?: string; category?: string; q?: string }): Promise<Video[]> {
+  const q = f.q?.trim();
+  const rows = await prisma.video.findMany({
+    where: {
+      ...live,
+      ...(f.status ? { status: f.status as Video["status"] } : {}),
+      ...(f.template ? { templateId: f.template } : {}),
+      ...(f.category ? { topic: { category: f.category } } : {}),
+      ...(q ? { OR: [{ title: { contains: q, mode: "insensitive" } }, { id: { contains: q, mode: "insensitive" } }, { topic: { title: { contains: q, mode: "insensitive" } } }] } : {}),
+    },
+    include: withRelations, take: 300,
+  });
+  const when = (v: VideoRow) => (v.upload?.publishAt ?? v.createdAt).getTime();
+  return rows.sort((a, b) => when(b) - when(a)).map(toVideo);
+}
+
+export async function getVideo(id: string): Promise<VideoDetail | null> {
+  const v = await prisma.video.findFirst({
+    where: { id, ...live },
+    include: { ...withRelations, qaChecks: true, agentRuns: { orderBy: [{ startedAt: "asc" }, { id: "asc" }] } },
+  });
+  if (!v) return null;
+  const order = ["number_check", "fact_review", "qa_review"];
+  return {
+    ...toVideo(v), script: v.script,
+    qaChecks: v.qaChecks.sort((a, b) => order.indexOf(a.checker) - order.indexOf(b.checker)).map((c) => ({ checker: c.checker, passed: c.passed, notes: asNotes(c.notes) })),
+    steps: v.agentRuns.map(toStep),
+    stats: (v.upload?.stats ?? []).sort((a, b) => a.day.getTime() - b.day.getTime()).map((s) => ({ day: dayKey(s.day), views: s.views, likes: s.likes, comments: s.comments, subsGained: s.subsGained, avgViewPct: s.avgViewPct })),
+  };
+}
+
+const asNotes = (log: unknown): string[] => (Array.isArray(log) ? log.map(String) : []);
+
+function toStep(r: { agent: string; status: string; log: unknown; startedAt: Date; finishedAt: Date | null }): Run["steps"][number] {
+  const status = r.status === "ok" || r.status === "failed" || r.status === "skipped" ? r.status : "ok";
+  return {
+    agent: r.agent, status, durationSec: r.finishedAt ? Math.max(0, Math.round((r.finishedAt.getTime() - r.startedAt.getTime()) / 1000)) : 0,
+    note: status === "failed" ? asNotes(r.log).join(" ") || null : null,
+  };
+}
+
+const queued = () => prisma.video.findMany({ where: { ...live, status: "queued" }, include: withRelations, orderBy: [{ queuePosition: "asc" }, { createdAt: "asc" }] });
+
+export async function listQueue(): Promise<Video[]> {
+  return (await queued()).map(toVideo);
+}
+
+export async function reorderQueue(ids: string[]): Promise<Video[] | null> {
+  const current = (await queued()).map((v) => v.id);
+  if (ids.length !== current.length || !current.every((id) => ids.includes(id))) return null;
+  await prisma.$transaction(ids.map((id, i) => prisma.video.update({ where: { id }, data: { queuePosition: i + 1 } })));
+  return listQueue();
+}
+
+export async function videoAction(id: string, action: VideoAction): Promise<{ ok: true } | { ok: false; error: string }> {
+  const v = await prisma.video.findFirst({ where: { id, ...live } });
+  if (!v) return { ok: false, error: "Video not found" };
+  if (action === "delete") {
+    if (v.status !== "queued" && v.status !== "failed") return { ok: false, error: "Only queued or failed videos can be deleted" };
+    // keep the row so ingest does not add the video again from its manifest
+    await prisma.video.update({ where: { id }, data: { deletedAt: new Date(), queuePosition: null } });
+    await renumber();
+    return { ok: true };
+  }
+  if (v.status !== "queued") return { ok: false, error: "Only queued videos can be skipped or uploaded" };
+  if (action === "skip") {
+    const last = await prisma.video.aggregate({ where: { ...live, status: "queued" }, _max: { queuePosition: true } });
+    await prisma.video.update({ where: { id }, data: { queuePosition: (last._max.queuePosition ?? 0) + 1 } });
+    await renumber();
+    return { ok: true };
+  }
+  if ((await getSettings()).uploadsPaused) return { ok: false, error: "Uploads are paused" };
+  // the publisher (M5) picks up pending uploads on its next run
+  await prisma.$transaction([
+    prisma.video.update({ where: { id }, data: { status: "scheduled", queuePosition: null } }),
+    prisma.upload.upsert({ where: { videoId: id }, update: { publishAt: new Date(), state: "pending" }, create: { videoId: id, publishAt: new Date(), state: "pending" } }),
+  ]);
+  await renumber();
+  return { ok: true };
+}
+
+async function renumber(): Promise<void> {
+  const ids = (await queued()).map((v) => v.id);
+  await prisma.$transaction(ids.map((id, i) => prisma.video.update({ where: { id }, data: { queuePosition: i + 1 } })));
+}
+
+// ---------------- overview ----------------
+
+export async function getOverview(): Promise<Overview> {
+  const settings = await getSettings();
+  const today = istDay(new Date());
+  const since = new Date(`${addDays(today, -7)}T00:00:00Z`);
+  const [groups, next, failures, recent, stats, uploads7, templates, templateRunsToday, lastRun] = await Promise.all([
+    prisma.video.groupBy({ by: ["status"], where: live, _count: true }),
+    prisma.video.findFirst({ where: { ...live, status: "scheduled", upload: { isNot: null } }, include: withRelations, orderBy: { upload: { publishAt: "asc" } } }),
+    prisma.video.findMany({ where: { ...live, status: "failed" }, orderBy: { createdAt: "desc" }, take: 5 }),
+    prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations, orderBy: { upload: { publishAt: "desc" } }, take: 4 }),
+    prisma.videoStat.aggregate({ where: { day: { gte: since } }, _sum: { views: true, subsGained: true } }),
+    prisma.upload.count({ where: { state: "published", publishAt: { gte: new Date(Date.now() - 7 * DAY_MS) } } }),
+    prisma.template.count(),
+    prisma.agentRun.count({ where: { agent: "template_builder", startedAt: { gte: new Date(`${today}T00:00:00${IST_OFFSET}`) } } }),
+    prisma.agentRun.findFirst({ orderBy: { startedAt: "desc" }, select: { startedAt: true } }),
+  ]);
+  const counts = Object.fromEntries(groups.map((g) => [g.status, g._count]));
+  const backlog = counts.queued ?? 0;
+  const tw = settings.templateWork;
+  const full = backlog >= settings.backlogCap;
+  const mayBuild = templateRunsToday < tw.maxPerDay;
+  const [mode, reason]: [Overview["generation"]["mode"], string] = settings.generationPaused
+    ? ["paused", "Generation is paused. Routines do nothing until you resume."]
+    : full && mayBuild ? ["template_work", `Backlog has reached the cap of ${settings.backlogCap}, so the next run builds or improves a template.`]
+    : full ? ["idle", `Backlog is full and today's template-work limit (${tw.maxPerDay}) is used. The next run does nothing.`]
+    : ["video", `Backlog ${backlog} is below the cap of ${settings.backlogCap}, so the next run makes a video.`];
+  return {
+    source: "database", counts, backlog, backlogCap: settings.backlogCap, uploadsPaused: settings.uploadsPaused,
+    generation: { mode, reason, templateRunsToday, maxTemplateRunsPerDay: tw.maxPerDay, templates, maxTemplates: tw.maxTemplates, lastRunAt: lastRun?.startedAt.toISOString() ?? null },
+    nextUpload: next?.upload ? { videoId: next.id, title: next.title, publishAt: next.upload.publishAt.toISOString(), thumbnailUrl: `/api/media/${next.id}/thumbnail` } : null,
+    recentFailures: failures.map((v) => ({ videoId: v.id, title: v.title, reason: v.failReason ?? "Unknown", at: v.createdAt.toISOString() })),
+    last7: { views: stats._sum.views ?? 0, subsGained: stats._sum.subsGained ?? 0, uploads: uploads7 },
+    recent: recent.map(toVideo),
+  };
+}
+
+// ---------------- templates ----------------
+
+export async function listTemplates(): Promise<Template[]> {
+  const [templates, videos] = await Promise.all([
+    prisma.template.findMany({ orderBy: { id: "asc" } }),
+    prisma.video.findMany({ where: live, select: { id: true, templateId: true, createdAt: true, status: true, upload: { select: { stats: { select: { views: true } } } } } }),
+  ]);
+  return templates.map((t) => {
+    const mine = videos.filter((v) => v.templateId === t.id);
+    const withViews = mine.filter((v) => v.upload?.stats.length).map((v) => v.upload!.stats.reduce((a, s) => a + s.views, 0));
+    const sample = mine.filter((v) => v.status !== "failed").sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())[0];
+    return {
+      id: t.id, name: t.name, description: t.description, version: t.version, weight: t.weight, enabled: t.enabled,
+      lastUsedAt: t.lastUsedAt?.toISOString() ?? null, videoCount: mine.length, publishedCount: mine.filter((v) => v.status === "published").length,
+      avgViews: withViews.length ? Math.round(withViews.reduce((a, b) => a + b, 0) / withViews.length) : null,
+      sampleThumbnailUrl: sample ? `/api/media/${sample.id}/thumbnail` : "", sampleVideoUrl: sample ? `/api/media/${sample.id}/video` : "",
+    };
+  });
+}
+
+export async function patchTemplate(id: string, patch: { enabled?: boolean; weight?: number }): Promise<Template | null> {
+  if (!(await prisma.template.findUnique({ where: { id } }))) return null;
+  await prisma.template.update({ where: { id }, data: { ...(patch.enabled !== undefined ? { enabled: patch.enabled } : {}), ...(patch.weight !== undefined ? { weight: Math.round(patch.weight * 10) / 10 } : {}) } });
+  return (await listTemplates()).find((t) => t.id === id) ?? null;
+}
+
+// ---------------- runs ----------------
+
+export async function listRuns(): Promise<Run[]> {
+  const rows = await prisma.agentRun.findMany({ orderBy: [{ startedAt: "desc" }, { id: "desc" }], take: 600, include: { video: { select: { title: true, status: true, failReason: true } } } });
+  const groups = new Map<string, typeof rows>();
+  for (const r of rows) {
+    const key = r.videoId ?? r.id; // template-work rows have no video and stand alone
+    groups.set(key, [...(groups.get(key) ?? []), r]);
+  }
+  return [...groups.entries()].map(([key, steps]): Run => {
+    const ordered = [...steps].sort((a, b) => a.startedAt.getTime() - b.startedAt.getTime() || a.id.localeCompare(b.id));
+    const first = ordered[0];
+    const end = Math.max(...ordered.map((s) => (s.finishedAt ?? s.startedAt).getTime()));
+    const isVideo = first.videoId !== null;
+    const failed = isVideo ? first.video?.status === "failed" : first.status === "failed";
+    return {
+      id: key, kind: isVideo ? "video" : "template_work", videoId: first.videoId, title: isVideo ? first.video?.title ?? key : asNotes(first.log)[0] ?? "Template work",
+      status: failed ? "failed" : "ok", startedAt: first.startedAt.toISOString(), durationSec: Math.round((end - first.startedAt.getTime()) / 1000),
+      error: isVideo ? first.video?.failReason ?? null : null, sessionUrl: ordered.find((s) => s.routineSessionUrl)?.routineSessionUrl ?? null,
+      steps: ordered.map(toStep),
+    };
+  }).sort((a, b) => b.startedAt.localeCompare(a.startedAt)).slice(0, 60);
+}
+
+// ---------------- analytics ----------------
+
+export async function getAnalytics(): Promise<Analytics> {
+  const today = istDay(new Date());
+  const from = addDays(today, -28);
+  const [stats, published] = await Promise.all([
+    prisma.videoStat.findMany({ where: { day: { gte: new Date(`${from}T00:00:00Z`) } } }),
+    prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations }),
+  ]);
+  const byDay = new Map<string, { views: number; subsGained: number }>();
+  for (let k = 28; k >= 1; k--) byDay.set(addDays(today, -k), { views: 0, subsGained: 0 });
+  for (const s of stats) {
+    const d = byDay.get(dayKey(s.day));
+    if (d) { d.views += s.views; d.subsGained += s.subsGained; }
+  }
+  const names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const wd = names.map(() => ({ views: 0, n: 0 }));
+  const ranked = published.map((v) => ({ v, t: totals(v.upload?.stats ?? []) })).filter((x) => x.t !== null);
+  for (const { v, t } of ranked) {
+    const i = (new Date(`${istDay(v.upload!.publishAt)}T00:00:00Z`).getUTCDay() + 6) % 7;
+    wd[i].views += t!.views;
+    wd[i].n += 1;
+  }
+  const rows = ranked.map(({ v, t }) => ({ videoId: v.id, title: v.title, templateId: v.templateId, views: t!.views, thumbnailUrl: `/api/media/${v.id}/thumbnail` })).sort((a, b) => b.views - a.views);
+  return {
+    daily: [...byDay].map(([day, d]) => ({ day, ...d })),
+    weekday: names.map((weekday, i) => ({ weekday, avgViews: wd[i].n ? Math.round(wd[i].views / wd[i].n) : 0, uploads: wd[i].n })),
+    top: rows.slice(0, 5), bottom: rows.length > 5 ? rows.slice(-5).reverse() : [],
+    totals: {
+      views: rows.reduce((a, r) => a + r.views, 0), subsGained: ranked.reduce((a, x) => a + x.t!.subsGained, 0), videos: published.length,
+      avgViewPct: ranked.length ? Math.round(ranked.reduce((a, x) => a + x.t!.avgViewPct, 0) / ranked.length * 10) / 10 : 0,
+    },
+  };
+}

@@ -4,6 +4,6 @@ import { listQueue } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 
-export function GET() {
-  return NextResponse.json(listQueue());
+export async function GET() {
+  return NextResponse.json(await listQueue());
 }
