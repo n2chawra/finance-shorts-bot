@@ -1,0 +1,38 @@
+{
+  "template": "myth_vs_fact",
+  "seed": 7319,
+  "style": {
+    "palette": "ocean",
+    "genre": "acoustic",
+    "key": "G",
+    "bpm": 98
+  },
+  "amount": 500000,
+  "years": 10,
+  "tracks": [
+    {
+      "label": "Fixed deposit",
+      "rate_pct": 7
+    },
+    {
+      "label": "Index fund",
+      "rate_pct": 10
+    }
+  ],
+  "text": {
+    "myth_line1": "FD is the best",
+    "myth_line2": "place for my savings",
+    "setup_title": "You lock in {amount_long}",
+    "setup_note": "Safe. Steady. Boring.",
+    "bust_line": "Best? Not so fast.",
+    "bust_sub": "Index returns can also fall",
+    "race_title": "{years} years later",
+    "result_line1": "The FD falls behind by",
+    "result_line2": "Pre-tax, not assured. Risk differs",
+    "end_line1": "Safe and growth",
+    "end_line2": "both have a price",
+    "end_punch": "Know your trade-off.",
+    "end_cta": "Comment where your savings sit",
+    "end_follow": "Follow for more money myths"
+  }
+}

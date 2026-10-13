@@ -1,0 +1,85 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-13T22:38:51.094359+00:00",
+    "finishedAt": "2026-10-13T22:38:51.094359+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-13T22:38:52.087578+00:00",
+    "finishedAt": "2026-10-13T22:38:52.087578+00:00",
+    "notes": [
+      "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-13T22:39:18.591172+00:00",
+    "finishedAt": "2026-10-13T22:39:18.591172+00:00",
+    "notes": [
+      "Race/result scenes (result_line1 'The FD falls behind by' + gap 5.7 L): index fund shown compounding a smooth 12% every year with no mention of risk or volatility. 12% is the top of the plausible range and is presented as the result of the race; equity can lose money or return far less over 10 years. The assumption is only a small end-card line, after the conclusion has been drawn.",
+      "bust_sub 'Same money, two paths' and result_line2 'Safe is not always smart': implies the two are like-for-like and concludes FD is the worse choice. Hides decisive factors: market risk (index fund) versus capital safety (FD), and tax (FD interest taxed at slab rate; equity gains taxed differently). Conclusion not supported by the numbers shown. Fix: lower the equity assumption (about 10%), and add a line or note in the race or result scene that the index fund return is not assured and can fall, and that returns are pre-tax.",
+      "Description/title: description says 'both as assumptions' which is fine and the disclaimer is present, but the title 'really the best home for your savings?' promises a verdict the video frames one-sidedly. Reword once risk is shown."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-13T22:39:31.734754+00:00",
+    "finishedAt": "2026-10-13T22:39:31.734754+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-13T22:39:32.841368+00:00",
+    "finishedAt": "2026-10-13T22:39:32.841368+00:00",
+    "notes": [
+      "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-13T22:39:47.372391+00:00",
+    "finishedAt": "2026-10-13T22:39:47.372391+00:00",
+    "notes": [
+      "Revised: index fund at 10% as an assumption, risk and pre-tax caveats on the result screen, FACT sub-line says index returns can fall, balanced end lines, title neutral, description carries caveats and disclaimer. No product names or guarantees."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-13T22:39:57.717047+00:00",
+    "finishedAt": "2026-10-13T22:40:51.134569+00:00",
+    "notes": [
+      "50 s, ocean/acoustic, peak -1.0 dB, mean -17.7 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-13T22:41:11.473718+00:00",
+    "finishedAt": "2026-10-13T22:41:11.473718+00:00",
+    "notes": [
+      "All 8 frames clean: big MYTH/FACT stamps, bubble and bars readable, no overlap or cut-off, bar figures match 5L at 7%/10% (9.8L vs 13.0L, gap 3.1L), disclaimer on final frame, thumbnail is clear; render.json has no layout problems, 50s, peak -1.0 dB, mean -17.7 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-13T22:41:23.363400+00:00",
+    "finishedAt": "2026-10-13T22:41:23.363400+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
