@@ -166,3 +166,31 @@ def test_fail_writes_manifest_but_not_history(root: Path) -> None:
     m = run.fail(VID, "Fact review rejected it twice.", root)
     assert m["status"] == "failed" and m["failReason"].startswith("Fact review")
     assert history.load(root) == []
+
+def test_release_uploads_and_marks_manifest(root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    plan = make_plan()
+    put(root, "plan.json", plan)
+    put(root, "script.json", script_for(plan))
+    run.run_number_check(VID, root)
+    run.record(VID, "fact_review", True, ["OK."], root)
+    run.render(VID, preview=True, root=root)
+    run.record(VID, "qa_review", True, ["OK."], root)
+    (root / "videos" / VID / "video.mp4").write_bytes(b"x")
+    run.ship(VID, root=root)
+
+    calls: list[list[str]] = []
+    monkeypatch.setattr(run, "gh_exe", lambda: "gh")
+    monkeypatch.setattr(run.subprocess, "run", lambda cmd, **kw: calls.append(cmd))
+    m = run.upload_release(VID, root)
+    assert calls[0][:4] == ["gh", "release", "create", f"video-{VID}"] and calls[0][4].endswith("video.mp4")
+    assert m["release"]["uploaded"] is True and "uploadedAt" in m["release"]
+    assert json.loads((root / "videos" / VID / "manifest.json").read_text(encoding="utf-8"))["release"]["uploaded"] is True
+    with pytest.raises(ValueError, match="already uploaded"):
+        run.upload_release(VID, root)
+
+
+def test_failed_video_is_never_released(root: Path) -> None:
+    put(root, "plan.json", make_plan())
+    run.fail(VID, "QA rejected it.", root)
+    with pytest.raises(ValueError, match="only qa_passed videos are released"):
+        run.upload_release(VID, root)

@@ -8,7 +8,8 @@ records every step in videos/<id>/run.json.
     python -m generator.run figures <id>                  every computed figure and on-screen line (for reviewers)
     python -m generator.run record <id> <agent> --passed|--failed --note "..."
     python -m generator.run render <id> [--preview]       video.mp4, thumbnail.png, preview.png, render.json
-    python -m generator.run ship <id> [--commit] [--release]
+    python -m generator.run ship <id> [--release] [--commit] [--push]
+    python -m generator.run release <id> [--commit] [--push]   upload a video shipped without --release
     python -m generator.run fail <id> --reason "..."
     python -m generator.run template-work <template> <action> [--enabled]
 
@@ -169,9 +170,10 @@ def _latest_checks(steps: list[dict]) -> dict[str, dict]:
     return {s["agent"]: s for s in steps if s["agent"] in CHECKERS}
 
 
-def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROOT) -> dict:
+def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROOT, push: bool = False) -> dict:
     """Write manifest.json and append to history. Refuses unless all three checks passed and the
-    video is rendered. `commit` makes a local git commit; `release` uploads the mp4 with gh."""
+    video is rendered. `release` uploads the mp4 with gh, then `commit` makes a git commit (so the
+    commit records the upload) and `push` pushes it."""
     d = _dir(vid, root)
     plan, script, report = _read(d / "plan.json"), _read(d / "script.json"), _read(d / "render.json")
     steps = json.loads((d / "run.json").read_text(encoding="utf-8"))
@@ -203,18 +205,44 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": report["style"],
     }, root)
 
-    if commit:
-        subprocess.run(["git", "add", f"videos/{vid}", "history/history.json"], cwd=root, check=True)
-        subprocess.run(["git", "commit", "-q", "-m", f"Add video {vid}: {plan['title']}"], cwd=root, check=True)
-    gh = ["gh", "release", "create", tag, str(d / "video.mp4"), "--title", plan["title"], "--notes", f"Video {vid}"]
     if release:
-        if not shutil.which("gh"):
-            raise ValueError("gh CLI is not installed; the manifest and history were written but nothing was uploaded")
-        subprocess.run(gh, cwd=root, check=True)
-        manifest["release"]["uploaded"] = True
-        _write(d / "manifest.json", manifest)
+        manifest = upload_release(vid, root)
+    if commit:
+        commit_video(vid, f"Add video {vid}: {plan['title']}", push, root)
     return manifest
 
+
+def gh_exe() -> str:
+    """Path to the GitHub CLI (PATH first, then the default Windows install location)."""
+    found = shutil.which("gh") or next((str(p) for p in (Path(r"C:\Program Files\GitHub CLI\gh.exe"),) if p.is_file()), None)
+    if not found:
+        raise ValueError("gh CLI is not installed")
+    return found
+
+
+def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) -> None:
+    subprocess.run(["git", "add", f"videos/{vid}", "history/history.json"], cwd=root, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", message], cwd=root, check=True)
+    if push:
+        subprocess.run(["git", "push", "-q"], cwd=root, check=True)
+
+
+def upload_release(vid: str, root: Path = ROOT) -> dict:
+    """Upload videos/<id>/video.mp4 as the asset of GitHub Release video-<id> and record it in the
+    manifest. Works on a video shipped earlier without --release."""
+    d = _dir(vid, root)
+    manifest = _read(d / "manifest.json")
+    if manifest.get("status") != "qa_passed":
+        raise ValueError(f"{vid} has status {manifest.get('status')!r}; only qa_passed videos are released")
+    if manifest["release"]["uploaded"]:
+        raise ValueError(f"{vid} is already uploaded as {manifest['release']['tag']}")
+    if not (d / "video.mp4").is_file():
+        raise ValueError("video.mp4 is missing")
+    subprocess.run([gh_exe(), "release", "create", manifest["release"]["tag"], str(d / "video.mp4"),
+                    "--title", manifest["title"], "--notes", f"Video {vid}"], cwd=root, check=True)
+    manifest["release"].update(uploaded=True, uploadedAt=history.now().isoformat())
+    _write(d / "manifest.json", manifest)
+    return manifest
 
 def fail(vid: str, reason: str, root: Path = ROOT) -> dict:
     """Mark a video failed. It is not added to history, so its topic can be tried again."""
@@ -248,6 +276,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("id")
     p.add_argument("--commit", action="store_true")
     p.add_argument("--release", action="store_true")
+    p.add_argument("--push", action="store_true")
+    p = sub.add_parser("release")
+    p.add_argument("id")
+    p.add_argument("--commit", action="store_true")
+    p.add_argument("--push", action="store_true")
     p = sub.add_parser("fail")
     p.add_argument("id")
     p.add_argument("--reason", required=True)
@@ -269,8 +302,14 @@ def main(argv: list[str] | None = None) -> int:
             print(f"recorded {a.agent}: {'passed' if a.passed else 'failed'}")
             return 0
         if a.cmd == "ship":
-            m = ship(a.id, a.commit, a.release)
+            m = ship(a.id, a.commit, a.release, push=a.push)
             print(f"shipped {m['id']}: {m['title']} (release uploaded: {m['release']['uploaded']})")
+            return 0
+        if a.cmd == "release":
+            m = upload_release(a.id)
+            if a.commit:
+                commit_video(a.id, f"Release video {a.id}", a.push)
+            print(f"uploaded {m['release']['tag']}")
             return 0
         if a.cmd == "fail":
             fail(a.id, a.reason)
