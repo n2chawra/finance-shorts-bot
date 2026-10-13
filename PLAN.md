@@ -8,8 +8,8 @@ note under "Log". Don't start the next milestone until the current one is done.
 - [x] Split `reference/rahul_vs_amit_v2.py` into `renderer/engine/` (drawing, easing, characters,
       camera punch/shake, confetti, audio synth, ffmpeg mux) + `templates/two_friends_race/`
 - [x] Each template has `schema.json`; `cli.py` validates script JSON against it
-- [ ] Music generator with variety: key, tempo, genre presets, seeded
-- [ ] Build 3 more templates: `myth_vs_fact`, `money_leak_meter`, `quiz_countdown`
+- [x] Music generator with variety: key, tempo, genre presets, seeded
+- [x] Build 3 more templates: `myth_vs_fact`, `money_leak_meter`, `quiz_countdown`
 - [x] Preview mode: contact sheet of key frames
 
 Done when: `python renderer/cli.py examples/<template>.json` renders a valid 45–60 s mp4 for all
@@ -101,3 +101,12 @@ Done when: everything above works on a phone.
   120 px clear of the bottom, minimum 44 px text, exact disclaimer wording, over-wide lines shrink to
   fit. Script text may not contain typed digits or ₹; numbers come from placeholders. Full render
   takes ~150 s locally. Still fixed in this template: palette, music, scene timings.
+- 2026-10-13: M1 done. Four templates (`two_friends_race` 60 s, `myth_vs_fact` 50 s,
+  `money_leak_meter` 54 s, `quiz_countdown` 48 s) render to valid 1080×1920 H.264 + AAC mp4s at
+  −1 dB peak and −17.6 to −19 dB mean. Style (six palettes, character looks, five music genres, key,
+  80–120 BPM) is resolved from the seed unless the script pins it; seeds 3 and 4 of the same script
+  give ocean/cinematic vs plum/lo-fi. 107 tests, including a layout-rule check (44 px minimum,
+  bottom 120 px clear, nothing off-screen) run through every second of every example. Not done by
+  ear or eye: nobody has listened to the four new genres or watched the new templates in motion.
+  Not varied yet: SFX set, scene timings.
+- 2026-10-13: M2–M5 skipped for now at Naishadh's request; starting M6 on in-memory sample data.
