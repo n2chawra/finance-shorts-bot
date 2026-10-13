@@ -31,9 +31,16 @@ At [claude.ai/code/routines](https://claude.ai/code/routines), **New routine**:
 - **Environment:** create one named `finance-shorts` with:
   - **Setup script:**
     ```
-    apt update && apt install -y ffmpeg
-    pip install -r renderer/requirements.txt
+    #!/bin/bash
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update
+    apt-get install -y --no-install-recommends ffmpeg || echo "ffmpeg install failed"
+    pip install pillow numpy scipy jsonschema || pip install --break-system-packages pillow numpy scipy jsonschema || echo "pip install failed"
+    exit 0
     ```
+    The script must exit zero or the session never starts, so it reports failures instead of
+    stopping; the routine prompt re-checks ffmpeg and the Python packages itself. It does not
+    read files from the repository, because the script's working directory is not guaranteed.
   - **Network access:** Custom, with "Also include default list of common package managers"
     ticked, and `uploads.github.com` added to Allowed domains (release assets upload there).
   - No environment variables. Do not set `GH_TOKEN`: the GitHub proxy signs requests itself.
