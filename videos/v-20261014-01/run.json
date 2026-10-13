@@ -1,0 +1,102 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-13T19:38:01.452308+00:00",
+    "finishedAt": "2026-10-13T19:38:01.452308+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-13T19:38:02.789569+00:00",
+    "finishedAt": "2026-10-13T19:38:02.789569+00:00",
+    "notes": [
+      "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-13T19:38:26.069058+00:00",
+    "finishedAt": "2026-10-13T19:38:26.069058+00:00",
+    "notes": [
+      "end_punch 'Cancel one. Start a SIP.' is a direct instruction on what to do with money (rule 4); rephrase as an illustration, e.g. 'Small leaks, big gap.'",
+      "cmp_line '2.8x more from the same money' and cmp bars 'If invested' state the SIP result as fact; 12% a year (top of the acceptable range) is shown only as 'Assumes 12% a year' with no hint that market returns vary or are not guaranteed, so the comparison hides risk (rule 2/3). Reword to 'could grow to' / 'at an assumed 12%' and say returns are not assured."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-13T19:38:36.214850+00:00",
+    "finishedAt": "2026-10-13T19:38:36.214850+00:00",
+    "notes": [
+      "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-13T19:38:46.440297+00:00",
+    "finishedAt": "2026-10-13T19:38:46.440297+00:00",
+    "notes": [
+      "Re-review: instruction removed, 12% framed as hypothetical ('If it earned', 'Could be 2.8x more, not assured'), end line states assumption, description ends with disclaimer; claims accurate for India."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-13T19:38:51.809197+00:00",
+    "finishedAt": "2026-10-13T19:40:10.251926+00:00",
+    "notes": [
+      "54 s, plum/synthwave, peak -1.0 dB, mean -18.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-13T19:40:25.304212+00:00",
+    "finishedAt": "2026-10-13T19:40:25.304212+00:00",
+    "notes": [
+      "43.5s: the red 'Spent' bar's value label (₹1.4 L) overlaps the top of the pink bar and is crossed by confetti. Pink text on a pink bar is barely readable, and the label is partly hidden."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-13T19:40:44.128786+00:00",
+    "finishedAt": "2026-10-13T19:40:44.128786+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-13T19:40:45.277479+00:00",
+    "finishedAt": "2026-10-13T19:40:45.277479+00:00",
+    "notes": [
+      "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-13T19:40:46.359038+00:00",
+    "finishedAt": "2026-10-13T19:42:05.193898+00:00",
+    "notes": [
+      "54 s, plum/synthwave, peak -1.0 dB, mean -18.4 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-13T19:42:15.105532+00:00",
+    "finishedAt": "2026-10-13T19:42:15.105532+00:00",
+    "notes": [
+      "43.5s: the 'Spent' bar's value label (₹1.4 L) still sits on the top edge of the pink bar, so pink text overlaps a pink bar and is hard to read. The seed change moved the confetti but not the overlap, which comes from the label position, not the confetti."
+    ]
+  }
+]

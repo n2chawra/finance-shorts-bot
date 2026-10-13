@@ -1,0 +1,29 @@
+{
+  "template": "money_leak_meter",
+  "seed": 5264,
+  "style": { "palette": "plum", "genre": "synthwave", "key": "A", "bpm": 104 },
+  "item": "subscriptions",
+  "cost": 199,
+  "times_per_month": 4,
+  "years": 15,
+  "annual_return_pct": 12,
+  "text": {
+    "hook_title": "How many {item} do you pay for?",
+    "hook_sub": "{cost} each, no big deal.",
+    "hook_tease": "Watch the real total",
+    "leak_title": "{times} apps, every month",
+    "leak_note": "Auto-renew never sleeps",
+    "meter_title": "Keep them {years} years",
+    "meter_label": "gone on {item}",
+    "flip_line1": "Now imagine you",
+    "flip_line2": "INVESTED it instead",
+    "grow_title": "If it earned {rate} a year",
+    "cmp_title": "Scroll it or grow it?",
+    "cmp_line": "Could be {ratio} more, not assured",
+    "end_line1": "Audit your apps",
+    "end_line2": "before they audit you",
+    "end_punch": "Small leaks, big gap.",
+    "end_cta": "Comment the app you'd cancel",
+    "end_follow": "Follow for more money maths"
+  }
+}
