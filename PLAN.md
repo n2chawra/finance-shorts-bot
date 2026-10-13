@@ -4,7 +4,7 @@ Work one milestone at a time. Each milestone ends with its done-criteria checked
 note under "Log". Don't start the next milestone until the current one is done.
 
 ## M1 — Render engine + first templates
-- [ ] Scaffold repo layout from CLAUDE.md; download Poppins (OFL) into `assets/fonts/`
+- [x] Scaffold repo layout from CLAUDE.md; download Poppins (OFL) into `assets/fonts/`
 - [ ] Split `reference/rahul_vs_amit_v2.py` into `renderer/engine/` (drawing, easing, characters,
       camera punch/shake, confetti, audio synth, ffmpeg mux) + `templates/two_friends_race/`
 - [ ] Each template has `schema.json`; `cli.py` validates script JSON against it
@@ -90,3 +90,8 @@ Done when: everything above works on a phone.
 ## Log
 - 2026-10-13: Prototype renderer (`reference/rahul_vs_amit_v2.py`) produced a 60 s Short with
   synthesized music + SFX. Starting M1.
+- 2026-10-13: Repo scaffolded, Poppins added, local toolchain set up (Python 3.14 venv at
+  `C:\venvs\finance-shorts-bot`, ffmpeg 9.0.2). Prototype renders on Windows unchanged apart from
+  the font path: 1080×1920, 30 fps, H.264 + AAC, 60.0 s, peak −1.0 dB, mean −18.7 dB, 142 s to
+  render. To fix during the engine split: the "...then STOPS at 35" pill sits ~70 px from the
+  bottom edge (rule is 120 px).

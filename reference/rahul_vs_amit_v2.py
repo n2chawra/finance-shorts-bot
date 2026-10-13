@@ -1,5 +1,6 @@
 import math, subprocess, sys, random, wave
 from functools import lru_cache
+from pathlib import Path
 import numpy as np
 from scipy.signal import lfilter, butter
 from PIL import Image, ImageDraw, ImageFont
@@ -10,7 +11,7 @@ PREVIEW = [float(x) for x in sys.argv[2:]]
 
 BG = (14, 17, 34); WHITE = (245, 246, 250); MUTED = (150, 156, 180)
 RAHUL = (61, 220, 151); AMIT = (255, 159, 67); GOLD = (255, 209, 102); RED = (255, 90, 95)
-GF = "/usr/share/fonts/truetype/google-fonts/"
+GF = str(Path(__file__).resolve().parent.parent / "assets" / "fonts") + "/"
 
 @lru_cache(maxsize=None)
 def font(size, w="Bold"):
