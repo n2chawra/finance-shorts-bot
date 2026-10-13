@@ -10,7 +10,8 @@ comfortable seeing this on a finance channel under your own name.
 - `videos/<id>/plan.json`: title, description, hashtags.
 - Run `python -m generator.run figures <id>`: every computed figure and every on-screen line
   exactly as the viewer sees it.
-- `renderer/templates/<template>/README.md`: how the figures are computed.
+- `renderer/templates/<template>/README.md`: how the figures are computed, and which numbers the
+  template shows next to each line. Read each scene as the viewer sees it, lines and numbers together.
 
 The arithmetic is already verified by code. Do not re-derive it. Judge what the video claims.
 

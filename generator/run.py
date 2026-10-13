@@ -266,6 +266,7 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if a.cmd == "record":
             record(a.id, a.agent, a.passed, a.note)
+            print(f"recorded {a.agent}: {'passed' if a.passed else 'failed'}")
             return 0
         if a.cmd == "ship":
             m = ship(a.id, a.commit, a.release)

@@ -34,3 +34,17 @@ Text lines must not contain digits or `₹`.
 
 `sip`: one contribution at the start of every month, compounded monthly at `annual_return_pct / 12`.
 `lumpsum`: `amount × (1 + rate)^years`, compounded yearly.
+
+## Where each line appears
+
+| Scene | Your lines | Shown with them by the template |
+|---|---|---|
+| Hook | `hook_line` | "QUIZ" stamp, a character and question marks |
+| Question | `q_title`, then `q_line1`, `q_line2`, `q_line3` on one card, then `question`, `q_cta` | nothing else |
+| Options | `question` again (smaller), `opt_cta` until the countdown starts | three cards A, B, C with the option values; a 5-to-1 countdown; "Time's up!" |
+| Reveal | `reveal_line`, `reveal_note` | the same three cards with the correct one lit |
+| Why | `why_title`, `why_line` | two bars labelled "You put in" (`{invested}`) and "Growth" (`{gains}`); "Total `{answer}`" |
+| End | `end_line1`, `end_line2`, `end_punch`, `end_cta`, `end_follow` | the assumption line and the disclaimer |
+
+`q_line1` to `q_line3` must state every input the viewer needs to answer. Do not reveal the
+answer or its letter before `reveal_line`.

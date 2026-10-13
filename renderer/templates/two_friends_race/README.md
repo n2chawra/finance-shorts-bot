@@ -38,3 +38,15 @@ Lines that are too wide are shrunk to fit; keep them short (max 40 characters) s
 
 One contribution at the start of each month from `start_age` up to `stop_age`, compounded monthly
 at `annual_return_pct / 12`, left invested until `end_age`.
+
+## Where each line appears
+
+| Scene | Your lines | Shown with them by the template |
+|---|---|---|
+| Hook | `hook_title`, `hook_sub`, `hook_tease` | both characters with name tags and "VS" |
+| Person A | `a_intro`, `a_amount`, then `a_note` (pill at the bottom) | "Invested:" counting up; a filling jar; "Age N" |
+| Person B | `b_intro`, `b_amount`, then `b_note` | the same for the second person |
+| Question | `question_setup`, `question`, `question_cta` | a card per person: years invested and total put in; a 3-2-1 countdown |
+| Chart | `chart_title`, `chart_stop_label` (on the chart), `chart_note` | both growth lines, "Age N" and each person's running value |
+| Result | `result_title`, `result_line1`, `result_line2` | both final values with bars; confetti |
+| End | `end_line1`, `end_line2`, `end_punch`, `end_pill`, `end_cta`, `end_follow` | a clock, the assumption line and the disclaimer |

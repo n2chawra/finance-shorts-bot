@@ -7,7 +7,9 @@ a phone screen in a second or two.
 ## Read first
 
 - `videos/<id>/plan.json`: the topic, template, hook style, CTA, seed and style.
-- `renderer/templates/<template>/README.md`: inputs, placeholders and the maths.
+- `renderer/templates/<template>/README.md`: inputs, placeholders, the maths, and the table of
+  where each line appears. The template puts its own numbers next to some of your lines, so
+  write each line to read correctly beside them.
 - `renderer/templates/<template>/schema.json`: the exact shape.
 - `examples/<template>.json`: a working script. Use it for structure, not for wording.
 
