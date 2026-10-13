@@ -73,7 +73,7 @@ python -m generator.run ship <id> --commit --push --media-branch
 ```
 
 This writes the manifest, appends to history, commits to `main` and pushes, then pushes the mp4
-as the only file of a new branch `media/<id>`. A GitHub Actions workflow turns that branch into
+on a new branch `media/<id>` (the current commit plus `video.mp4`). A GitHub Actions workflow turns that branch into
 Release `video-<id>` and deletes the branch. Cloud sessions are not allowed to create releases
 themselves, so do not try `gh release` or the `--release` flag.
 

@@ -195,25 +195,33 @@ def test_failed_video_is_never_released(root: Path) -> None:
     with pytest.raises(ValueError, match="only qa_passed videos are released"):
         run.upload_release(VID, root)
 
-def test_media_branch_holds_only_the_video(root: Path, tmp_path_factory: pytest.TempPathFactory, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_media_branch_is_head_plus_the_video(root: Path, tmp_path_factory: pytest.TempPathFactory, monkeypatch: pytest.MonkeyPatch) -> None:
     import subprocess
     for k, v in {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@example.com", "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@example.com"}.items():
         monkeypatch.setenv(k, v)
+
+    def git(*args: str, cwd: Path = root) -> str:
+        return subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True).stdout.decode().strip()
+
     remote = tmp_path_factory.mktemp("remote")
-    subprocess.run(["git", "init", "-q", "--bare", str(remote)], check=True)
-    subprocess.run(["git", "init", "-q"], cwd=root, check=True)
-    subprocess.run(["git", "remote", "add", "origin", str(remote)], cwd=root, check=True)
+    git("init", "-q", "--bare", str(remote))
+    git("init", "-q", "-b", "main")
+    git("remote", "add", "origin", str(remote))
+    (root / ".gitignore").write_text("*.mp4\n", encoding="utf-8")
+    (root / "workflow.yml").write_text("on: push\n", encoding="utf-8")
+    git("add", ".gitignore", "workflow.yml")
+    git("commit", "-q", "-m", "base")
+    git("push", "-q", "origin", "main")
     d = root / "videos" / VID
     d.mkdir(parents=True)
     (d / "video.mp4").write_bytes(b"fake video bytes")
 
     assert run.push_media_branch(VID, root) == f"media/{VID}"
-    files = subprocess.run(["git", "ls-tree", "--name-only", f"media/{VID}"], cwd=remote, check=True, capture_output=True, text=True).stdout.split()
-    assert files == ["video.mp4"]
-    blob = subprocess.run(["git", "show", f"media/{VID}:video.mp4"], cwd=remote, check=True, capture_output=True).stdout
-    assert blob == b"fake video bytes"
-    assert subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=root, capture_output=True, text=True).stdout == ""
-
+    assert sorted(git("ls-tree", "--name-only", f"media/{VID}", cwd=remote).split()) == [".gitignore", "video.mp4", "workflow.yml"]
+    assert subprocess.run(["git", "show", f"media/{VID}:video.mp4"], cwd=remote, check=True, capture_output=True).stdout == b"fake video bytes"
+    assert git("rev-parse", f"media/{VID}^", cwd=remote) == git("rev-parse", "HEAD")      # built on HEAD
+    assert git("status", "--porcelain", "--untracked-files=no") == ""                     # index and tree untouched
+    assert git("rev-parse", "--abbrev-ref", "HEAD") == "main"
 
 def test_media_branch_needs_the_video(root: Path) -> None:
     with pytest.raises(ValueError, match="video.mp4 is missing"):

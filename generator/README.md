@@ -56,7 +56,7 @@ means the session ended, not that a video was made.
 ## How the mp4 reaches GitHub Releases
 
 Cloud sessions can push branches but cannot create releases (the GitHub proxy answers 403). So
-`ship --media-branch` pushes the mp4 as the only file of an orphan branch `media/<id>`, and
+`ship --media-branch` pushes the mp4 on a branch `media/<id>` (the pushed commit plus `video.mp4` at the root), and
 `.github/workflows/release-video.yml` creates Release `video-<id>` from it and deletes the
 branch. `ship --release` still uploads directly with `gh` and is for local use.
 

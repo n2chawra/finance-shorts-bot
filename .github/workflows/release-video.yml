@@ -1,5 +1,5 @@
 # Routines run in cloud sessions that may push branches but may not create GitHub Releases.
-# A routine pushes the finished mp4 as the only file of a branch media/<id>; this workflow turns
+# A routine pushes a branch media/<id> (main plus video.mp4 at the root); this workflow turns
 # that into Release video-<id> and deletes the branch, so the repo does not keep video files.
 name: Release video
 

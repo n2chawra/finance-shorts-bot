@@ -18,9 +18,11 @@ Exit code 0 means the step passed; 1 means it failed and the reasons are printed
 """
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 from renderer import cli as renderer
@@ -236,27 +238,29 @@ def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) 
 
 
 def push_media_branch(vid: str, root: Path = ROOT) -> str:
-    """Push videos/<id>/video.mp4 as the only file of a new branch media/<id>.
+    """Push a branch media/<id> that is the current commit plus video.mp4 at the repo root.
 
     Cloud sessions are not allowed to create GitHub Releases, but they can push branches. The
     release-video workflow turns this branch into Release video-<id> and deletes the branch.
-    The commit has no parent and is never checked out here, so the working tree is untouched."""
+    The branch is built on HEAD (not as an orphan) because GitHub only runs a workflow if its
+    file is in the pushed commit. A throwaway index is used, so the working tree and the real
+    index are untouched. HEAD should already be pushed, so the push carries only the mp4."""
     mp4 = _dir(vid, root) / "video.mp4"
     if not mp4.is_file():
         raise ValueError("video.mp4 is missing")
+    with tempfile.TemporaryDirectory() as tmp:
+        env = {**os.environ, "GIT_INDEX_FILE": str(Path(tmp) / "index")}
 
-    def git(*args: str, stdin: str | None = None) -> str:
-        # bytes, not text: on Windows text mode would turn the tree entry's newline into CRLF
-        done = subprocess.run(["git", *args], cwd=root, check=True, capture_output=True, input=None if stdin is None else stdin.encode())
-        return done.stdout.decode().strip()
+        def git(*args: str) -> str:
+            return subprocess.run(["git", *args], cwd=root, check=True, capture_output=True, env=env).stdout.decode().strip()
 
-    blob = git("hash-object", "-w", str(mp4))
-    tree = git("mktree", stdin=f"100644 blob {blob}\tvideo.mp4\n")
-    commit = git("commit-tree", tree, "-m", f"Video {vid}")
-    branch = f"media/{vid}"
-    git("push", "-q", "origin", f"{commit}:refs/heads/{branch}")
+        blob = git("hash-object", "-w", str(mp4))
+        git("read-tree", "HEAD")
+        git("update-index", "--add", "--cacheinfo", f"100644,{blob},video.mp4")
+        commit = git("commit-tree", git("write-tree"), "-p", "HEAD", "-m", f"Video {vid}")
+        branch = f"media/{vid}"
+        git("push", "-q", "origin", f"{commit}:refs/heads/{branch}")
     return branch
-
 
 def upload_release(vid: str, root: Path = ROOT) -> dict:
     """Upload videos/<id>/video.mp4 as the asset of GitHub Release video-<id> and record it in the
