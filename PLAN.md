@@ -26,7 +26,7 @@ Done when: running the generation flow manually in a Claude Code session produce
 video folder + release asset, with all three checks recorded in the manifest.
 
 ## M3 — Routine
-- [ ] Write the routine prompt (`generator/prompts/routine.md`), self-contained
+- [x] Write the routine prompt (`generator/prompts/routine.md`), self-contained
 - [ ] Create the routine at claude.ai/code/routines, every 6 h at :07, attached to this repo
 - [ ] Run it 3 times; measure Pro usage per run; tune (fewer retries, smaller previews) if heavy
 
@@ -138,3 +138,9 @@ Done when: everything above works on a phone.
   is uploaded as Release `video-v-20261013-01` (`video.mp4`, 6.2 MB) and its manifest records
   `uploaded: true`. That completes M2. Local `git push` from a non-interactive shell needs
   `gh auth setup-git` (git here uses Git Credential Manager, which wants a prompt).
+- 2026-10-13: M3 started. `generator/prompts/routine.md` written; setup steps for the routine and its
+  cloud environment are in `generator/README.md`. In a run the main session plans and writes, and
+  only the two reviewers are subagents, to keep Pro usage down. Unverified until the first cloud
+  run: whether `gh release create` can upload the mp4 through the GitHub proxy
+  (`uploads.github.com` is not on the default network allowlist), and how long a render takes on
+  the 4-vCPU cloud VM.

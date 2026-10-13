@@ -224,7 +224,7 @@ def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) 
     subprocess.run(["git", "add", f"videos/{vid}", "history/history.json"], cwd=root, check=True)
     subprocess.run(["git", "commit", "-q", "-m", message], cwd=root, check=True)
     if push:
-        subprocess.run(["git", "push", "-q"], cwd=root, check=True)
+        subprocess.run(["git", "push", "-q", "origin", "HEAD:main"], cwd=root, check=True)
 
 
 def upload_release(vid: str, root: Path = ROOT) -> dict:
