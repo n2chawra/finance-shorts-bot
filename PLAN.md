@@ -134,3 +134,7 @@ Done when: everything above works on a phone.
   switch. `next build` passes. Open notes from reviewers: the title of v-20261013-01 says "stays
   safe", which could be read as bank safety rather than buying power; myth_vs_fact shows the gap
   from unrounded values, so it can differ by 0.1 L from subtracting the two rounded finals.
+- 2026-10-13: Code is on GitHub as the private repo `n2chawra/finance-shorts-bot`. The first video
+  is uploaded as Release `video-v-20261013-01` (`video.mp4`, 6.2 MB) and its manifest records
+  `uploaded: true`. That completes M2. Local `git push` from a non-interactive shell needs
+  `gh auth setup-git` (git here uses Git Credential Manager, which wants a prompt).
