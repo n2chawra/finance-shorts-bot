@@ -27,9 +27,9 @@ _STOP = frozenset("a an and are as at be by do does for from how in is it its of
 
 
 def template_window(n_enabled: int) -> int:
-    """How many recent videos a template must sit out. 5 needs seven templates; with fewer it
+    """How many recent videos a template must sit out. 6 needs eight templates; with fewer it
     scales down (four templates → 2) so the rule can be met."""
-    return max(1, min(5, n_enabled - 2))
+    return max(1, min(6, n_enabled - 2))
 
 
 def share_limit(n_enabled: int) -> float:

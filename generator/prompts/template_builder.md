@@ -7,7 +7,8 @@ from looking mass-produced.
 ## Check that you may
 
 Run `python -m generator.run state`. Continue only if `mode` is `template_work`.
-If `template_work.may_add_template` is false, improve an existing template instead of adding one.
+While `template_work.may_add_template` is true, **add a new template**: the channel needs more of
+them so that no template repeats within six videos. Only when it is false, improve an existing one.
 
 ## Decide what to do
 

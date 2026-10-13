@@ -119,7 +119,7 @@ the agent steps follow `generator/prompts/*.md`.
 ## Variety rules (enforced in `generator/variety.py`, not just prompted)
 
 - Same template not used in the last N videos, where N scales with enabled templates
-  (`min(5, templates - 2)`: 2 with four templates, 5 from seven up); no template above 30% of the
+  (`min(6, templates - 2)`: 2 with four templates, 6 from eight up); no template above 30% of the
   last 20 (looser below five templates).
 - Same topic category not in the last 3 videos; near-duplicate topics not within 60 days
   (embedding cosine > 0.85 once topics live in pgvector; until M4 a word-overlap cosine > 0.6).

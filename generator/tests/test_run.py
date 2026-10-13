@@ -1,4 +1,5 @@
 import json
+from datetime import timedelta
 from pathlib import Path
 
 import pytest
@@ -76,11 +77,32 @@ def test_template_cap_stops_new_templates(root: Path) -> None:
 
 
 def test_every_nth_run_is_template_work(root: Path) -> None:
-    for i in range(4):
+    for i in range(3):
         history.append(entry(i), root)
-    assert run.state(root)["mode"] == "template_work"        # the 5th run
+    assert run.state(root)["mode"] == "video"                # 3 videos since the last template run: not yet
+    history.append(entry(3), root)
+    assert run.state(root)["mode"] == "template_work"        # 4 videos shipped, so the 5th run builds
     history.append_template_work("quiz_countdown", "improve", True, root)
-    assert run.state(root)["mode"] == "video"                # today's template slot is used
+    assert run.state(root)["mode"] == "video"                # counted from that template run again
+
+
+def test_nth_run_rule_counts_videos_since_the_last_template_run(root: Path) -> None:
+    settings(root, templateWork={"everyNthRun": 3, "maxPerDay": 5})
+    old = history.append_template_work("a", "build", True, root, at=NOW - timedelta(days=5))
+    assert old["template"] == "a"
+    history.append(entry(1, days_ago=6), root)               # before that template run: does not count
+    history.append(entry(2, days_ago=2), root)
+    assert run.state(root)["mode"] == "video"
+    history.append(entry(3, days_ago=1), root)               # two videos since: the next run builds
+    s = run.state(root)
+    assert s["mode"] == "template_work" and "2 videos since" in s["reason"]
+
+
+def test_no_nth_template_runs_once_templates_are_at_the_limit(root: Path) -> None:
+    settings(root, templateWork={"everyNthRun": 3, "maxTemplates": 4})
+    for i in range(6):
+        history.append(entry(i), root)
+    assert run.state(root)["mode"] == "video"
 
 
 def test_disabled_template_is_not_offered(root: Path) -> None:

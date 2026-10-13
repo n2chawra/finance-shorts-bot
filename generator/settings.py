@@ -20,7 +20,7 @@ DEFAULTS: dict = {
     "templateWork": {
         "maxPerDay": 1,           # template-building runs allowed per IST day
         "maxTemplates": 10,       # stop building new templates at this many
-        "everyNthRun": 5,         # do template work on every Nth run even when the backlog has room
+        "everyNthRun": 5,         # while there is room for templates, every Nth run builds one (0 = never)
     },
     "templates": {},              # per-template overrides: {"quiz_countdown": {"enabled": false, "weight": 0.8}}
 }

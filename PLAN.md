@@ -185,3 +185,8 @@ Done when: everything above works on a phone.
   database's generated rows. Routine schedule changed to three runs a day (06:07, 14:07, 22:07 IST;
   cron `37 0,8,16 * * *` UTC). `templateWork.everyNthRun` set to 0 so every run makes a video until
   the backlog reaches the cap; template work then happens only when the backlog is full.
+- 2026-10-13: Schedule is now 01:07 and 04:07 IST (overnight) and 14:07 IST (cron `37 8,19,22 * * *`
+  UTC). Template building turned up: while there are fewer than 8 templates, a run builds a new one
+  after every 2 videos (`everyNthRun` 3, at most one a day), counted from the last template run
+  rather than from history length. The template window now reaches 6 videos at 8 templates. The
+  unattended template-builder path has never run; its first run is the test.

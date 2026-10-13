@@ -77,7 +77,13 @@ def state(root: Path = ROOT) -> dict:
     work_today = sum(1 for w in history.load_template_work(root) if history.ist_day(w["at"]) == today)
     may_build = work_today < tw["maxPerDay"]
     full = backlog >= settings["backlogCap"]
-    nth = tw["everyNthRun"] > 0 and (len(entries) + 1) % tw["everyNthRun"] == 0
+    # every Nth run builds a template: due once N-1 videos have shipped since the last template
+    # run, and only while there is room for new templates
+    work = history.load_template_work(root)
+    since_work = sum(1 for e in entries if e["created_at"] > max((w["at"] for w in work), default=""))
+    n_templates = len(renderer.template_names())
+    room = n_templates < tw["maxTemplates"]
+    due = tw["everyNthRun"] > 0 and room and since_work >= tw["everyNthRun"] - 1
 
     if settings["generationPaused"]:
         mode, why = "paused", "generation is paused in settings"
@@ -85,8 +91,9 @@ def state(root: Path = ROOT) -> dict:
         mode, why = "template_work", f"backlog {backlog} has reached the cap of {settings['backlogCap']}"
     elif full:
         mode, why = "idle", f"backlog is full and today's template-work limit ({tw['maxPerDay']}) is used"
-    elif nth and may_build and entries:
-        mode, why = "template_work", f"every {tw['everyNthRun']}th run improves or adds a template"
+    elif due and may_build and entries:
+        mode, why = "template_work", (f"{since_work} videos since the last template run, and there are "
+                                      f"{n_templates} of {tw['maxTemplates']} templates")
     else:
         mode, why = "video", f"backlog {backlog} is below the cap of {settings['backlogCap']}"
 
@@ -95,8 +102,7 @@ def state(root: Path = ROOT) -> dict:
         "mode": mode, "reason": why, "backlog": backlog, "backlog_cap": settings["backlogCap"],
         "next_id": history.next_id(entries, root=root),
         "template_work": {"runs_today": work_today, "max_per_day": tw["maxPerDay"],
-                          "may_add_template": len(renderer.template_names()) < tw["maxTemplates"],
-                          "templates": len(renderer.template_names()), "max_templates": tw["maxTemplates"]},
+                          "may_add_template": room, "templates": n_templates, "max_templates": tw["maxTemplates"]},
         "templates": {t: {"weight": settings["templates"].get(t, {}).get("weight", 1.0)} for t in enabled},
         "allowed_templates": variety.allowed_templates(entries, enabled),
         "template_window": variety.template_window(len(enabled)),
