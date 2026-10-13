@@ -1,6 +1,6 @@
 {
-  "backlog": 0,
-  "ingestedAt": null,
+  "backlog": 4,
+  "ingestedAt": "2026-10-13T14:34:57.557278+00:00",
   "backlogCap": 30,
   "generationPaused": false,
   "uploadsPaused": false,
@@ -12,5 +12,22 @@
     "maxTemplates": 10,
     "everyNthRun": 5
   },
-  "templates": {}
+  "templates": {
+    "money_leak_meter": {
+      "enabled": true,
+      "weight": 1
+    },
+    "myth_vs_fact": {
+      "enabled": true,
+      "weight": 1
+    },
+    "quiz_countdown": {
+      "enabled": true,
+      "weight": 1
+    },
+    "two_friends_race": {
+      "enabled": true,
+      "weight": 1
+    }
+  }
 }
