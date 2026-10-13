@@ -33,7 +33,7 @@ video folder + release asset, with all three checks recorded in the manifest.
 Done when: 3 consecutive unattended runs each produce a valid, distinct video.
 
 ## M4 — Database + ingest
-- [ ] Supabase or Neon Postgres with pgvector; Prisma schema from CLAUDE.md; migrations
+- [x] Supabase or Neon Postgres with pgvector; Prisma schema from CLAUDE.md; migrations
 - [ ] `workers/ingest.ts` + `.github/workflows/ingest.yml` (hourly)
 
 Done when: new manifests appear in Postgres as `queued` within an hour of a routine run.
@@ -166,3 +166,12 @@ Done when: everything above works on a phone.
   with its mp4 and no media branch left behind. Still open in M3: the routine is on a daily
   schedule, not every 6 hours, and Pro usage per run has not been measured. The next run (the 5th)
   will be template work.
+- 2026-10-13: M4 mostly done. Supabase (Singapore) has the schema; `workers/ingest.ts` run locally put
+  the four videos in as `queued` with checks and run steps, is a no-op on a second run, and wrote
+  backlog 4 to `config/settings.json`. The dashboard reads Postgres when `DATABASE_URL` is set
+  (label "Live data") and sample data otherwise; all API routes return real rows. Not done: the
+  `ingest.yml` run on GitHub failed because the `DATABASE_URL` and `DIRECT_URL` secrets are saved
+  empty, so the done-criterion (a routine's video appearing as queued on its own) is unverified.
+  Notes: API calls take 1.5–3 s locally (remote pooler, several queries each); cloud-made videos do
+  not play in the local dashboard because their mp4s exist only in Releases; a wrong database
+  password shows up as "can't reach database server" because the pooler answers slowly.
