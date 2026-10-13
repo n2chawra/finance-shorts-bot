@@ -1,0 +1,42 @@
+# Routines run in cloud sessions that may push branches but may not create GitHub Releases.
+# A routine pushes the finished mp4 as the only file of a branch media/<id>; this workflow turns
+# that into Release video-<id> and deletes the branch, so the repo does not keep video files.
+name: Release video
+
+on:
+  push:
+    branches: ["media/**"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref_name }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create the release and remove the media branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          id="${BRANCH#media/}"
+          tag="video-$id"
+          test -s video.mp4 || { echo "::error::video.mp4 is missing or empty on $BRANCH"; exit 1; }
+
+          # title from the manifest on main; fall back to the id if it is not there yet
+          title="$(gh api "repos/$GITHUB_REPOSITORY/contents/videos/$id/manifest.json?ref=main" --jq .content 2>/dev/null | base64 -d 2>/dev/null | jq -r '.title // empty' 2>/dev/null || true)"
+          [ -n "$title" ] || title="Video $id"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" video.mp4 --clobber
+          else
+            gh release create "$tag" video.mp4 --target main --title "$title" --notes "Video $id"
+          fi
+          git push origin --delete "$BRANCH"
+          echo "Released $tag: $title" >> "$GITHUB_STEP_SUMMARY"

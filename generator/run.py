@@ -8,7 +8,8 @@ records every step in videos/<id>/run.json.
     python -m generator.run figures <id>                  every computed figure and on-screen line (for reviewers)
     python -m generator.run record <id> <agent> --passed|--failed --note "..."
     python -m generator.run render <id> [--preview]       video.mp4, thumbnail.png, preview.png, render.json
-    python -m generator.run ship <id> [--release] [--commit] [--push]
+    python -m generator.run ship <id> [--commit] [--push] [--media-branch | --release]
+    python -m generator.run media <id>                    push the mp4 as branch media/<id> (retry)
     python -m generator.run release <id> [--commit] [--push]   upload a video shipped without --release
     python -m generator.run fail <id> --reason "..."
     python -m generator.run template-work <template> <action> [--enabled]
@@ -170,7 +171,7 @@ def _latest_checks(steps: list[dict]) -> dict[str, dict]:
     return {s["agent"]: s for s in steps if s["agent"] in CHECKERS}
 
 
-def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROOT, push: bool = False) -> dict:
+def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROOT, push: bool = False, media_branch: bool = False) -> dict:
     """Write manifest.json and append to history. Refuses unless all three checks passed and the
     video is rendered. `release` uploads the mp4 with gh, then `commit` makes a git commit (so the
     commit records the upload) and `push` pushes it."""
@@ -199,6 +200,8 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         "files": {"thumbnail": "thumbnail.png", "preview": "preview.png", "script": "script.json"},
         "release": {"tag": tag, "asset": "video.mp4", "uploaded": False},
     }
+    if media_branch:
+        manifest["release"]["mediaBranch"] = f"media/{vid}"
     _write(d / "manifest.json", manifest)
     history.append({
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],
@@ -209,6 +212,11 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         manifest = upload_release(vid, root)
     if commit:
         commit_video(vid, f"Add video {vid}: {plan['title']}", push, root)
+    if media_branch:   # after the push to main, so the workflow can read the manifest
+        try:
+            push_media_branch(vid, root)
+        except subprocess.CalledProcessError as e:
+            raise ValueError(f"manifest and history are saved, but pushing media/{vid} failed: {(e.stderr or b'').decode(errors='replace').strip() or e}") from e
     return manifest
 
 
@@ -225,6 +233,29 @@ def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) 
     subprocess.run(["git", "commit", "-q", "-m", message], cwd=root, check=True)
     if push:
         subprocess.run(["git", "push", "-q", "origin", "HEAD:main"], cwd=root, check=True)
+
+
+def push_media_branch(vid: str, root: Path = ROOT) -> str:
+    """Push videos/<id>/video.mp4 as the only file of a new branch media/<id>.
+
+    Cloud sessions are not allowed to create GitHub Releases, but they can push branches. The
+    release-video workflow turns this branch into Release video-<id> and deletes the branch.
+    The commit has no parent and is never checked out here, so the working tree is untouched."""
+    mp4 = _dir(vid, root) / "video.mp4"
+    if not mp4.is_file():
+        raise ValueError("video.mp4 is missing")
+
+    def git(*args: str, stdin: str | None = None) -> str:
+        # bytes, not text: on Windows text mode would turn the tree entry's newline into CRLF
+        done = subprocess.run(["git", *args], cwd=root, check=True, capture_output=True, input=None if stdin is None else stdin.encode())
+        return done.stdout.decode().strip()
+
+    blob = git("hash-object", "-w", str(mp4))
+    tree = git("mktree", stdin=f"100644 blob {blob}\tvideo.mp4\n")
+    commit = git("commit-tree", tree, "-m", f"Video {vid}")
+    branch = f"media/{vid}"
+    git("push", "-q", "origin", f"{commit}:refs/heads/{branch}")
+    return branch
 
 
 def upload_release(vid: str, root: Path = ROOT) -> dict:
@@ -277,6 +308,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--commit", action="store_true")
     p.add_argument("--release", action="store_true")
     p.add_argument("--push", action="store_true")
+    p.add_argument("--media-branch", action="store_true")
+    sub.add_parser("media").add_argument("id")
     p = sub.add_parser("release")
     p.add_argument("id")
     p.add_argument("--commit", action="store_true")
@@ -302,8 +335,11 @@ def main(argv: list[str] | None = None) -> int:
             print(f"recorded {a.agent}: {'passed' if a.passed else 'failed'}")
             return 0
         if a.cmd == "ship":
-            m = ship(a.id, a.commit, a.release, push=a.push)
-            print(f"shipped {m['id']}: {m['title']} (release uploaded: {m['release']['uploaded']})")
+            m = ship(a.id, a.commit, a.release, push=a.push, media_branch=a.media_branch)
+            print(f"shipped {m['id']}: {m['title']} (release uploaded: {m['release']['uploaded']}, media branch: {m['release'].get('mediaBranch', 'none')})")
+            return 0
+        if a.cmd == "media":
+            print(f"pushed {push_media_branch(a.id)}")
             return 0
         if a.cmd == "release":
             m = upload_release(a.id)

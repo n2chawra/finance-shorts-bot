@@ -69,20 +69,19 @@ review again. Two re-renders at most.
 When number check, fact review and QA review have all passed:
 
 ```
-python -m generator.run ship <id> --release --commit --push
+python -m generator.run ship <id> --commit --push --media-branch
 ```
 
-This uploads `video.mp4` as GitHub Release `video-<id>`, writes the manifest, appends to
-history, commits to `main` and pushes.
+This writes the manifest, appends to history, commits to `main` and pushes, then pushes the mp4
+as the only file of a new branch `media/<id>`. A GitHub Actions workflow turns that branch into
+Release `video-<id>` and deletes the branch. Cloud sessions are not allowed to create releases
+themselves, so do not try `gh release` or the `--release` flag.
 
-- If the **release upload** fails, do not retry more than once. Run
-  `python -m generator.run ship <id> --commit --push` instead so the manifest and history are
-  saved with `uploaded: false`, and say clearly in your report that the mp4 was not uploaded and
-  why (include the error text). The mp4 is lost when this session ends; a later run cannot
-  recover it.
-- If the **push** fails, run `git pull --rebase origin main` and `git push origin HEAD:main`
-  once. If it still fails, report it.
-
+- If the **push to main** fails, run `git pull --rebase origin main` and `git push origin HEAD:main`
+  once, then `python -m generator.run media <id>` to push the video branch.
+- If the **media branch push** fails, retry `python -m generator.run media <id>` once.
+- If either still fails, report the exact error text. The mp4 is lost when this session ends;
+  a later run cannot recover it.
 ### If the video cannot be made to pass
 
 After the limits above are used up (three plan attempts, two rewrites, two re-renders):
@@ -110,7 +109,7 @@ Only push a template whose two test videos passed. Never push a template that fa
 - Never edit `config/settings.json`, `CLAUDE.md`, `PLAN.md`, anything under `apps/`, `workers/`
   or `.github/`, or these prompt files.
 - Never force-push, delete a branch, or rewrite history.
-- Never commit an mp4 or wav file.
+- Never commit an mp4 or wav file to `main`. The only place an mp4 goes is the `media/<id>` branch that `ship` creates.
 - Do not use any connector or reach any website. Everything you need is in the repository.
 - If something outside these instructions blocks you, stop and report it. Do not improvise a
   way around it.
@@ -122,5 +121,5 @@ End with a short report, because the run's status light does not show whether th
 - mode, and the video id or template name
 - for a video: template, topic, title, and the result of each step (plan, number check, fact
   review, render, QA review, ship), with how many rewrites or re-renders were needed
-- whether the release asset was uploaded
+- whether the push to `main` and the push of `media/<id>` succeeded
 - anything that failed, with the exact error text

@@ -10,7 +10,7 @@ What a routine run does, split between code and Claude:
 | Fact review | a fresh subagent | `prompts/fact_reviewer.md`, then `record <id> fact_review …` |
 | Render | code | `render <id>` |
 | QA review | a fresh subagent | `prompts/qa_reviewer.md`, then `record <id> qa_review …` |
-| Ship | code | `ship <id> --release --commit --push` |
+| Ship | code | `ship <id> --commit --push --media-branch` |
 | Template work | Claude | `prompts/template_builder.md`, then `template-work …` |
 
 `prompts/routine.md` ties these together. `python -m generator.run --help` lists every command.
@@ -41,8 +41,7 @@ At [claude.ai/code/routines](https://claude.ai/code/routines), **New routine**:
     The script must exit zero or the session never starts, so it reports failures instead of
     stopping; the routine prompt re-checks ffmpeg and the Python packages itself. It does not
     read files from the repository, because the script's working directory is not guaranteed.
-  - **Network access:** Custom, with "Also include default list of common package managers"
-    ticked, and `uploads.github.com` added to Allowed domains (release assets upload there).
+  - **Network access:** Trusted (the default) is enough.
   - No environment variables. Do not set `GH_TOKEN`: the GitHub proxy signs requests itself.
 - **Trigger:** Schedule. The form only offers presets, so pick Daily, save, then in a local
   Claude Code terminal run `/schedule update` and set the cron expression to `7 */6 * * *`
@@ -53,3 +52,14 @@ would push to a `claude/` branch.
 
 Use **Run now** for the first runs and read each session's final report: a green status only
 means the session ended, not that a video was made.
+
+## How the mp4 reaches GitHub Releases
+
+Cloud sessions can push branches but cannot create releases (the GitHub proxy answers 403). So
+`ship --media-branch` pushes the mp4 as the only file of an orphan branch `media/<id>`, and
+`.github/workflows/release-video.yml` creates Release `video-<id>` from it and deletes the
+branch. `ship --release` still uploads directly with `gh` and is for local use.
+
+The routine also needs write access to the repo: the Claude GitHub App must be installed on
+`n2chawra/finance-shorts-bot` (github.com/apps/claude), or pushes fail with
+"Claude doesn't have GitHub access".

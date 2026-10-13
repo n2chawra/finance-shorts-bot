@@ -194,3 +194,27 @@ def test_failed_video_is_never_released(root: Path) -> None:
     run.fail(VID, "QA rejected it.", root)
     with pytest.raises(ValueError, match="only qa_passed videos are released"):
         run.upload_release(VID, root)
+
+def test_media_branch_holds_only_the_video(root: Path, tmp_path_factory: pytest.TempPathFactory, monkeypatch: pytest.MonkeyPatch) -> None:
+    import subprocess
+    for k, v in {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@example.com", "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@example.com"}.items():
+        monkeypatch.setenv(k, v)
+    remote = tmp_path_factory.mktemp("remote")
+    subprocess.run(["git", "init", "-q", "--bare", str(remote)], check=True)
+    subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+    subprocess.run(["git", "remote", "add", "origin", str(remote)], cwd=root, check=True)
+    d = root / "videos" / VID
+    d.mkdir(parents=True)
+    (d / "video.mp4").write_bytes(b"fake video bytes")
+
+    assert run.push_media_branch(VID, root) == f"media/{VID}"
+    files = subprocess.run(["git", "ls-tree", "--name-only", f"media/{VID}"], cwd=remote, check=True, capture_output=True, text=True).stdout.split()
+    assert files == ["video.mp4"]
+    blob = subprocess.run(["git", "show", f"media/{VID}:video.mp4"], cwd=remote, check=True, capture_output=True).stdout
+    assert blob == b"fake video bytes"
+    assert subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=root, capture_output=True, text=True).stdout == ""
+
+
+def test_media_branch_needs_the_video(root: Path) -> None:
+    with pytest.raises(ValueError, match="video.mp4 is missing"):
+        run.push_media_branch(VID, root)
