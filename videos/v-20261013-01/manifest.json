@@ -1,0 +1,158 @@
+{
+  "id": "v-20261013-01",
+  "createdAt": "2026-10-13T11:38:30.177599+00:00",
+  "status": "qa_passed",
+  "template": "myth_vs_fact",
+  "topic": {
+    "title": "Why ₹5 lakh left idle in a savings account quietly shrinks over 10 years",
+    "category": "inflation"
+  },
+  "title": "Myth: ₹5 lakh in a savings account stays safe for 10 years",
+  "description": "₹5 lakh parked in a savings account at 3% a year, against prices rising 6% a year, for 10 years. See what the balance can really buy. Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#PersonalFinance",
+    "#Inflation",
+    "#SavingsAccount",
+    "#MoneyMyths"
+  ],
+  "hookStyle": "myth",
+  "cta": "Tell us where your idle cash sits",
+  "seed": 73154,
+  "style": {
+    "palette": "ocean",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92
+  },
+  "durationSec": 50,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.8
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite, scene by scene with template numbers: myth claim correct (idle savings loses purchasing power when inflation exceeds interest); setup shows amount with 3% pill, realistic; 6% inflation now framed as an assumption ('Say costs rise'); result scene reads correctly (balance falls short of cost of living by the gap, buying power down 25% matches lost_pct); no product, advice or guarantee words; tone fine; description ends with disclaimer. Note: title word 'safe' could be read as bank safety rather than purchasing power."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite: all 8 frames clean, no overlap, cut-off, empty scene or placeholder. 36.0s now reads 'Your balance falls short by Rs 2.2 L / Buying power down 25%', label matches value. Hook stamp at 0.6s, disclaimer at 48.0s, thumbnail is the full myth bubble frame, layout_problems empty, 50 s, peak -1.0 dB, mean -17.8 dB. Minor, not blocking: 36.0s shows gap 2.2 L beside rounded 9.0 L and 6.7 L, which subtract to 2.3 L."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-13T11:28:22.365860+00:00",
+      "finishedAt": "2026-10-13T11:28:22.365860+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-13T11:28:58.661803+00:00",
+      "finishedAt": "2026-10-13T11:28:58.661803+00:00",
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-13T11:29:59.411371+00:00",
+      "finishedAt": "2026-10-13T11:29:59.411371+00:00",
+      "notes": [
+        "Checked myth/fact claim (idle savings loses purchasing power when inflation exceeds interest), 3% savings rate and 6% inflation assumptions, real-value wording, no product/advice/guarantee words, tone, description ends with disclaimer. Notes: 6% inflation is the top of RBI's 2-6% band and is shown flatly as 'Costs climb 6% a year' - prefer an 'if/say' framing or 5%; title word 'safe' could be read as bank safety rather than purchasing power."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-13T11:30:23.025816+00:00",
+      "finishedAt": "2026-10-13T11:32:15.124517+00:00",
+      "notes": [
+        "50 s, ocean/cinematic, peak -1.0 dB, mean -17.8 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-13T11:32:52.004079+00:00",
+      "finishedAt": "2026-10-13T11:32:52.004079+00:00",
+      "notes": [
+        "36.0s wrong content: the big red figure Rs 2.2 L is the gap between cost of living and bank balance (9.0 L - 6.7 L), but it sits unlabelled between 'It now buys only what' and 'Rs 3.8 L buys today', so the frame reads 'It now buys only what Rs 2.2 L / Rs 3.8 L buys today' - two conflicting amounts, and the headline number does not match its label. The template's result scene always draws the gap as the big number, so result_line1 must label the gap (e.g. 'Costs outran the balance by') and the real-value sentence must be complete in result_line2 on its own."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-13T11:33:59.859966+00:00",
+      "finishedAt": "2026-10-13T11:33:59.859966+00:00",
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-13T11:34:40.119357+00:00",
+      "finishedAt": "2026-10-13T11:34:40.119357+00:00",
+      "notes": [
+        "Re-review after rewrite, scene by scene with template numbers: myth claim correct (idle savings loses purchasing power when inflation exceeds interest); setup shows amount with 3% pill, realistic; 6% inflation now framed as an assumption ('Say costs rise'); result scene reads correctly (balance falls short of cost of living by the gap, buying power down 25% matches lost_pct); no product, advice or guarantee words; tone fine; description ends with disclaimer. Note: title word 'safe' could be read as bank safety rather than purchasing power."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-13T11:35:23.783414+00:00",
+      "finishedAt": "2026-10-13T11:37:20.387709+00:00",
+      "notes": [
+        "50 s, ocean/cinematic, peak -1.0 dB, mean -17.8 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-13T11:37:55.968478+00:00",
+      "finishedAt": "2026-10-13T11:37:55.968478+00:00",
+      "notes": [
+        "Re-review after rewrite: all 8 frames clean, no overlap, cut-off, empty scene or placeholder. 36.0s now reads 'Your balance falls short by Rs 2.2 L / Buying power down 25%', label matches value. Hook stamp at 0.6s, disclaimer at 48.0s, thumbnail is the full myth bubble frame, layout_problems empty, 50 s, peak -1.0 dB, mean -17.8 dB. Minor, not blocking: 36.0s shows gap 2.2 L beside rounded 9.0 L and 6.7 L, which subtract to 2.3 L."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-13T11:38:30.177901+00:00",
+      "finishedAt": "2026-10-13T11:38:30.177901+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261013-01",
+    "asset": "video.mp4",
+    "uploaded": false
+  }
+}
