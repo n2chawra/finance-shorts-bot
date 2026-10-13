@@ -123,6 +123,11 @@ export const SettingsSchema = z.object({
   lengthMaxSec: z.number().int().min(15).max(180),
   disclaimer: z.string().min(5).max(120),
   uploadsPaused: z.boolean(),
+  generationPaused: z.boolean(),
+  templateWork: z.object({
+    maxPerDay: z.number().int().min(0).max(4),
+    maxTemplates: z.number().int().min(1).max(50),
+  }),
   alerts: z.object({
     failedRun: z.boolean(),
     failedUpload: z.boolean(),
@@ -139,6 +144,15 @@ export const OverviewSchema = z.object({
   backlog: z.number(),
   backlogCap: z.number(),
   uploadsPaused: z.boolean(),
+  generation: z.object({
+    mode: z.enum(["video", "template_work", "idle", "paused"]),
+    reason: z.string(),
+    templateRunsToday: z.number(),
+    maxTemplateRunsPerDay: z.number(),
+    templates: z.number(),
+    maxTemplates: z.number(),
+    lastRunAt: z.string().nullable(),
+  }),
   nextUpload: z.object({ videoId: z.string(), title: z.string(), publishAt: z.string(), thumbnailUrl: z.string() }).nullable(),
   recentFailures: z.array(z.object({ videoId: z.string(), title: z.string(), reason: z.string(), at: z.string() })),
   last7: z.object({ views: z.number(), subsGained: z.number(), uploads: z.number() }),

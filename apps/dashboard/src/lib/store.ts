@@ -8,7 +8,7 @@ import path from "node:path";
 
 import type { Analytics, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
 
-const VERSION = 6; // bump to regenerate the sample data without restarting the server
+const VERSION = 7; // bump to regenerate the sample data without restarting the server
 const IST_OFFSET = "+05:30";
 const DAY_MS = 86_400_000;
 
@@ -116,6 +116,7 @@ function build(): Store {
   const settings: Settings = {
     uploadTime: "19:07", backlogCap: 30, lengthMinSec: 45, lengthMaxSec: 60,
     disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
+    generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
     alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },
   };
   const scripts = Object.fromEntries(TEMPLATES.map((t) => [t.id, readScript(t.id)]));
@@ -236,7 +237,7 @@ export function getSettings(): Settings {
 
 export function patchSettings(patch: Partial<Settings>): Settings {
   const s = db();
-  s.settings = { ...s.settings, ...patch, alerts: { ...s.settings.alerts, ...patch.alerts } };
+  s.settings = { ...s.settings, ...patch, alerts: { ...s.settings.alerts, ...patch.alerts }, templateWork: { ...s.settings.templateWork, ...patch.templateWork } };
   return s.settings;
 }
 
@@ -257,6 +258,24 @@ export function listQueue(): Video[] {
   return queue(db()).map(summary);
 }
 
+/** What the next routine run will do. Mirrors `state()` in generator/run.py. */
+function generationState(s: Store, backlog: number): Overview["generation"] {
+  const { backlogCap, generationPaused, templateWork: tw } = s.settings;
+  const today = istDay(new Date());
+  const templateRunsToday = s.runs.filter((r) => r.kind === "template_work" && istDay(new Date(r.startedAt)) === today).length;
+  const mayBuild = templateRunsToday < tw.maxPerDay;
+  const full = backlog >= backlogCap;
+  const [mode, reason]: [Overview["generation"]["mode"], string] = generationPaused
+    ? ["paused", "Generation is paused. Routines do nothing until you resume."]
+    : full && mayBuild ? ["template_work", `Backlog has reached the cap of ${backlogCap}, so the next run builds or improves a template.`]
+    : full ? ["idle", `Backlog is full and today's template-work limit (${tw.maxPerDay}) is used. The next run does nothing.`]
+    : ["video", `Backlog ${backlog} is below the cap of ${backlogCap}, so the next run makes a video.`];
+  return {
+    mode, reason, templateRunsToday, maxTemplateRunsPerDay: tw.maxPerDay, templates: s.templates.length, maxTemplates: tw.maxTemplates,
+    lastRunAt: s.runs[0]?.startedAt ?? null,
+  };
+}
+
 export function getOverview(): Overview {
   const s = db();
   const counts: Record<string, number> = {};
@@ -266,6 +285,7 @@ export function getOverview(): Overview {
   const recentStats = s.videos.flatMap((v) => v.stats).filter((x) => x.day >= since);
   return {
     counts, backlog: (counts.queued ?? 0), backlogCap: s.settings.backlogCap, uploadsPaused: s.settings.uploadsPaused,
+    generation: generationState(s, counts.queued ?? 0),
     nextUpload: next ? { videoId: next.id, title: next.title, publishAt: next.upload!.publishAt, thumbnailUrl: next.thumbnailUrl } : null,
     recentFailures: s.videos.filter((v) => v.status === "failed").sort((a, b) => b.createdAt.localeCompare(a.createdAt))
       .map((v) => ({ videoId: v.id, title: v.title, reason: v.failReason ?? "Unknown", at: v.createdAt })),

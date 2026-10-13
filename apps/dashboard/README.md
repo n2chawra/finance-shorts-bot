@@ -1,6 +1,11 @@
 # Dashboard
 
-Next.js 15 (App Router), TypeScript strict, TanStack Query, Zod, Tailwind 4.
+Next.js 15 (App Router), TypeScript strict, TanStack Query, Zod, Tailwind 4, Radix UI primitives
+(`radix-ui`), Motion for animation, lucide icons, next-themes for the light/dark/system switch.
+
+Shared components are in `src/components/ui.tsx` (cards, tiles, badges, buttons, switch, select,
+slider, confirm dialog), `toast.tsx` and `charts.tsx`. Colours are CSS variables in
+`src/app/globals.css`, defined once for light and once for dark.
 
 ```powershell
 npm --prefix apps/dashboard install

@@ -1,7 +1,8 @@
 "use client";
 
+import { motion } from "motion/react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 export type Point = { label: string; value: number };
 
@@ -65,6 +66,8 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt }: { data: Po
   const x = (i: number) => PAD.left + (data.length > 1 ? (innerW * i) / (data.length - 1) : innerW / 2);
   const y = (v: number) => PAD.top + (height - PAD.top - PAD.bottom) * (1 - v / top);
   const every = Math.max(1, Math.ceil(data.length / Math.max(2, Math.floor(innerW / 70))));
+  const gradId = `area${useId().replace(/:/g, "")}`;
+  const line = data.map((d, i) => `${i ? "L" : "M"}${x(i)},${y(d.value)}`).join(" ");
   const onMove = (e: React.PointerEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const i = Math.round(((e.clientX - rect.left - PAD.left) / innerW) * (data.length - 1));
@@ -78,7 +81,16 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt }: { data: Po
           {data.map((d, i) => (i % every === 0 || i === data.length - 1) && (i === data.length - 1 || data.length - 1 - i >= every * 0.6) && (
             <text key={d.label} x={x(i)} y={height - 8} textAnchor={i === data.length - 1 ? "end" : i === 0 ? "start" : "middle"} fontSize={11} fill="var(--muted)">{d.label}</text>
           ))}
-          <polyline points={data.map((d, i) => `${x(i)},${y(d.value)}`).join(" ")} fill="none" stroke="var(--series)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+          <defs>
+            <linearGradient id={gradId} x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="var(--series)" stopOpacity={0.22} />
+              <stop offset="100%" stopColor="var(--series)" stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          <motion.path d={`${line} L${x(data.length - 1)},${height - PAD.bottom} L${x(0)},${height - PAD.bottom} Z`} fill={`url(#${gradId})`}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.5 }} />
+          <motion.path d={line} fill="none" stroke="var(--series)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round"
+            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} />
           {hover !== null && (
             <>
               <line x1={x(hover)} x2={x(hover)} y1={PAD.top} y2={height - PAD.bottom} stroke="var(--axis)" strokeWidth={1} />
@@ -118,7 +130,9 @@ export function BarChart({ data, height = 220, fmt, fmtFull = fmt }: { data: Poi
             return (
               <g key={d.label} onPointerEnter={() => setHover(i)} onPointerDown={() => setHover(i)}>
                 <rect x={PAD.left + band * i} y={PAD.top} width={band} height={base - PAD.top} fill="transparent" />
-                <path d={path} fill="var(--series)" opacity={hover === null || hover === i ? 1 : 0.55} />
+                <motion.path d={path} fill="var(--series)" style={{ transformOrigin: `${cx}px ${base}px` }}
+                  initial={{ scaleY: 0 }} animate={{ scaleY: 1, opacity: hover === null || hover === i ? 1 : 0.55 }}
+                  transition={{ scaleY: { duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }, opacity: { duration: 0.15 } }} />
                 {i === best && hover === null && d.value > 0 && (
                   <text x={cx} y={base - h - 6} textAnchor="middle" fontSize={11} fontWeight={600} fill="var(--ink)" style={{ fontVariantNumeric: "tabular-nums" }}>{fmt(d.value)}</text>
                 )}
@@ -145,7 +159,8 @@ export function BarList({ rows, fmt, scaleMax }: { rows: { key: string; label: s
             <span className="shrink-0 font-semibold tabular-nums">{fmt(r.value)}</span>
           </div>
           <div className="mt-1 h-2 rounded-r-[4px] bg-wash">
-            <div className="h-2 rounded-r-[4px] bg-series" style={{ width: `${Math.max((r.value / max) * 100, 1)}%` }} />
+            <motion.div className="h-2 rounded-r-[4px] bg-series" initial={{ width: 0 }} animate={{ width: `${Math.max((r.value / max) * 100, 1)}%` }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }} />
           </div>
           {r.sub && <div className="mt-1 text-xs text-muted">{r.sub}</div>}
         </li>

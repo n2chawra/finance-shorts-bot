@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import { ArrowLeft, ChevronsDown, CircleCheck, CircleX, Eye, FileText, Hash, Heart, Images, ListChecks, Minus, Palette, Percent, Send, Trash2, TrendingUp, Upload, UserPlus, Workflow } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 
 import { DataTable, LineChart } from "@/components/charts";
-import { Button, Card, Empty, ErrorNote, Loading, ResultBadge, StatusBadge, Tile } from "@/components/ui";
+import { Button, Card, ConfirmButton, Empty, ErrorNote, Loading, Num, ResultBadge, StatusBadge, Tile } from "@/components/ui";
+import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, titleCase } from "@/lib/format";
 import { useVideo, useVideoAction } from "@/lib/queries";
 import type { VideoAction } from "@/lib/schemas";
@@ -29,19 +31,22 @@ export default function VideoPage() {
   const router = useRouter();
   const { data: v, error, isLoading } = useVideo(id);
   const act = useVideoAction();
+  const toast = useToast();
   if (isLoading) return <Loading />;
   if (error || !v) return <ErrorNote error={error} />;
 
   const run = (action: VideoAction) => {
-    if (action === "delete" && !window.confirm(`Delete "${v.title}"? This cannot be undone.`)) return;
-    act.mutate({ id: v.id, action }, { onSuccess: () => { if (action === "delete") router.push("/videos"); } });
+    act.mutate({ id: v.id, action }, {
+      onSuccess: () => { toast(action === "delete" ? "Video deleted" : action === "skip" ? "Moved to the end of the queue" : "Marked for upload"); if (action === "delete") router.push("/videos"); },
+      onError: (e) => toast(e.message, "error"),
+    });
   };
   const { inputs, lines } = scriptParts(v.script);
   const total = v.steps.reduce((a, s) => a + s.durationSec, 0);
 
   return (
     <>
-      <Link href="/videos" className="text-sm text-ink2 hover:underline">← Videos</Link>
+      <Link href="/videos" className="inline-flex items-center gap-1 text-sm text-ink2 transition-colors hover:text-brand-text"><ArrowLeft aria-hidden className="size-4" />Videos</Link>
       <div className="mb-5 mt-2 flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <h1 className="text-2xl font-semibold tracking-tight">{v.title}</h1>
@@ -52,19 +57,18 @@ export default function VideoPage() {
         </div>
         {(v.status === "queued" || v.status === "failed") && (
           <div className="flex flex-wrap gap-2">
-            {v.status === "queued" && <Button tone="primary" disabled={act.isPending} onClick={() => run("upload-now")}>Upload now</Button>}
-            {v.status === "queued" && <Button disabled={act.isPending} onClick={() => run("skip")}>Move to end</Button>}
-            <Button tone="danger" disabled={act.isPending} onClick={() => run("delete")}>Delete</Button>
+            {v.status === "queued" && <Button tone="primary" icon={Upload} disabled={act.isPending} onClick={() => run("upload-now")}>Upload now</Button>}
+            {v.status === "queued" && <Button icon={ChevronsDown} disabled={act.isPending} onClick={() => run("skip")}>Skip to end</Button>}
+            <ConfirmButton label="Delete" icon={Trash2} disabled={act.isPending} title="Delete this video?" confirmLabel="Delete video" description={`"${v.title}" will be removed. This cannot be undone.`} onConfirm={() => run("delete")} />
           </div>
         )}
       </div>
-      {act.error && <div className="mb-4"><ErrorNote error={act.error} /></div>}
-      {v.failReason && <p role="alert" className="mb-4 rounded-2xl border border-ring bg-surface p-4 text-sm"><span aria-hidden className="font-bold text-critical">✕ </span><strong>Failed.</strong> {v.failReason}</p>}
+           {v.failReason && <p role="alert" className="mb-4 flex items-start gap-2 rounded-2xl border border-ring bg-critical-soft p-4 text-sm"><CircleX aria-hidden className="mt-0.5 size-4 shrink-0 text-critical" /><span><strong>Failed.</strong> {v.failReason}</span></p>}
 
       <div className="grid gap-4 md:grid-cols-[260px_1fr]">
         <div className="flex flex-col gap-4">
-          <video controls preload="none" poster={v.thumbnailUrl} src={v.fileUrl} className="aspect-[9/16] w-full max-w-[260px] rounded-2xl border border-ring bg-black" />
-          <Card title="Publishing">
+          <video controls preload="none" poster={v.thumbnailUrl} src={v.fileUrl} className="aspect-[9/16] w-full max-w-[260px] rounded-2xl border border-ring bg-black shadow-lift" />
+          <Card title="Publishing" icon={Send}>
             <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-sm">
               <dt className="text-ink2">Created</dt><dd>{fmtDateTime(v.createdAt)}</dd>
               <dt className="text-ink2">{v.status === "published" ? "Published" : "Publish at"}</dt><dd>{v.upload ? fmtDateTime(v.upload.publishAt) : v.queuePosition ? `Queue position ${v.queuePosition}` : "—"}</dd>
@@ -72,7 +76,7 @@ export default function VideoPage() {
               <dt className="text-ink2">YouTube</dt><dd>{v.upload?.youtubeId ? <a className="underline" href={`https://youtube.com/shorts/${v.upload.youtubeId}`} target="_blank" rel="noreferrer">Open</a> : <span className="text-muted">No link (sample data)</span>}</dd>
             </dl>
           </Card>
-          <Card title="Style">
+          <Card title="Style" icon={Palette}>
             <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-sm">
               <dt className="text-ink2">Palette</dt><dd>{titleCase(v.style.palette)}</dd>
               <dt className="text-ink2">Music</dt><dd>{titleCase(v.style.genre)}, {v.style.key}, {v.style.bpm} BPM</dd>
@@ -84,19 +88,19 @@ export default function VideoPage() {
           {v.totals && (
             <>
               <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-                <Tile label="Views" value={fmtCompact(v.totals.views)} sub={fmtNum(v.totals.views)} />
-                <Tile label="Likes" value={fmtCompact(v.totals.likes)} />
-                <Tile label="Subscribers" value={`+${fmtNum(v.totals.subsGained)}`} />
-                <Tile label="Avg viewed" value={`${v.totals.avgViewPct}%`} />
+                <Tile label="Views" icon={Eye} tone="info" value={<Num value={v.totals.views} fmt={fmtCompact} />} sub={fmtNum(v.totals.views)} />
+                <Tile label="Likes" icon={Heart} tone="critical" value={<Num value={v.totals.likes} fmt={fmtCompact} />} />
+                <Tile label="Subscribers" icon={UserPlus} tone="good" value={<Num value={v.totals.subsGained} fmt={(n) => `+${fmtNum(n)}`} />} />
+                <Tile label="Avg viewed" icon={Percent} tone="warning" value={`${v.totals.avgViewPct}%`} />
               </div>
-              <Card title="Views per day">
+              <Card title="Views per day" icon={TrendingUp}>
                 <LineChart data={v.stats.map((s) => ({ label: fmtDayKey(s.day), value: s.views }))} fmt={fmtCompact} fmtFull={(n) => `${fmtNum(n)} views`} height={200} />
                 <DataTable head={["Day", "Views"]} rows={v.stats.map((s) => [fmtDayKey(s.day), fmtNum(s.views)])} />
               </Card>
             </>
           )}
 
-          <Card title="Checks">
+          <Card title="Checks" icon={ListChecks}>
             <ul className="flex flex-col gap-3">
               {v.qaChecks.map((c) => (
                 <li key={c.checker} className="text-sm">
@@ -107,11 +111,11 @@ export default function VideoPage() {
             </ul>
           </Card>
 
-          <Card title="Run timeline" action={<span className="text-xs text-muted">{fmtDuration(total)} total</span>}>
+          <Card title="Run timeline" icon={Workflow} action={<span className="text-xs text-muted">{fmtDuration(total)} total</span>}>
             <ol className="flex flex-col">
               {v.steps.map((s) => (
                 <li key={s.agent} className="flex items-center gap-3 border-b border-line py-2 text-sm last:border-0">
-                  <span aria-hidden className={`w-4 text-center font-bold ${s.status === "ok" ? "text-good" : s.status === "failed" ? "text-critical" : "text-muted"}`}>{s.status === "ok" ? "✓" : s.status === "failed" ? "✕" : "–"}</span>
+                  {s.status === "ok" ? <CircleCheck aria-label="OK" className="size-4 text-good" /> : s.status === "failed" ? <CircleX aria-label="Failed" className="size-4 text-critical" /> : <Minus aria-label="Skipped" className="size-4 text-muted" />}
                   <span className="flex-1">{titleCase(s.agent)}{s.note && <span className="text-ink2"> · {s.note}</span>}</span>
                   <span className="text-xs tabular-nums text-muted">{s.status === "skipped" ? "skipped" : fmtDuration(s.durationSec)}</span>
                 </li>
@@ -119,11 +123,11 @@ export default function VideoPage() {
             </ol>
           </Card>
 
-          <Card title="Key frames">
+          <Card title="Key frames" icon={Images}>
             <img src={v.previewUrl} alt="Contact sheet of key frames" loading="lazy" className="w-full rounded-lg border border-ring" />
           </Card>
 
-          <Card title="Script">
+          <Card title="Script" icon={FileText}>
             {inputs.length === 0 && lines.length === 0 ? <Empty>No script stored.</Empty> : (
               <>
                 <h3 className="text-xs font-medium text-ink2">Inputs</h3>
@@ -142,7 +146,7 @@ export default function VideoPage() {
             )}
           </Card>
 
-          <Card title="Title, description, tags">
+          <Card title="Title, description, tags" icon={Hash}>
             <p className="text-sm">{v.description}</p>
             <div className="mt-2 flex flex-wrap gap-1.5">{v.tags.map((t) => <span key={t} className="rounded-full bg-wash px-2 py-0.5 text-xs text-ink2">#{t}</span>)}</div>
           </Card>

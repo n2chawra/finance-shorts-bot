@@ -16,10 +16,10 @@ Done when: `python renderer/cli.py examples/<template>.json` renders a valid 45â
 4 templates, and two scripts with different seeds produce visibly different style and music.
 
 ## M2 â€” Generator + checks
-- [ ] `generator/history.py` (history.json read/write), `variety.py` with unit tests
-- [ ] `numbers.py`: SIP, lumpsum, inflation, EMI, CAGR, FD; Indian formatting; tests
-- [ ] Prompts for planner, writer, fact reviewer, QA reviewer, template builder
-- [ ] `generator/run.py`: one full generation run end to end, writing `videos/<id>/` and
+- [x] `generator/history.py` (history.json read/write), `variety.py` with unit tests
+- [x] `numbers.py`: SIP, lumpsum, inflation, EMI, CAGR, FD; Indian formatting; tests
+- [x] Prompts for planner, writer, fact reviewer, QA reviewer, template builder
+- [x] `generator/run.py`: one full generation run end to end, writing `videos/<id>/` and
       a Release asset via `gh`
 
 Done when: running the generation flow manually in a Claude Code session produces one complete
@@ -117,3 +117,20 @@ Done when: everything above works on a phone.
   desktop and 375 px: every page loads, queue reorder and pause work. `next build` not run yet.
   Found while building: the variety rule "same template not used in the last 5 videos" cannot be
   met with four templates; it needs at least six, or the rule needs relaxing.
+- 2026-10-13: M2 done except the real GitHub upload. `generator/` has history, variety rules
+  (template window scales with template count), the number check (closed-form formulas cross-check
+  each template; unsupported numbers in titles and descriptions are rejected), five prompts and
+  `python -m generator.run` for the code steps. 148 Python tests. One real end-to-end run with four
+  subagents produced `videos/v-20261013-01/` (myth_vs_fact): QA review rejected the first render
+  because a number the template draws sat in the middle of a sentence, the writer rewrote it, and
+  number check, fact review and QA review then passed. Fix from that run: every template README
+  now lists which numbers appear beside each script line. The release upload ran as a dry run:
+  `ship --release` needs the `gh` CLI, a GitHub repo and a sign-in.
+- 2026-10-13: Two gaps closed. `generationPaused` stops routines entirely; `templateWork.maxPerDay`
+  (1) and `templateWork.maxTemplates` (10) cap template work. Both are in `config/settings.json`,
+  `generator.run state`, and the dashboard Settings and Overview pages.
+- 2026-10-13: Dashboard restyled with Radix UI (dialog, select, switch, slider, accordion, tooltip,
+  toast, progress, toggle group), Motion animations, lucide icons and a light/dark/system theme
+  switch. `next build` passes. Open notes from reviewers: the title of v-20261013-01 says "stays
+  safe", which could be read as bank safety rather than buying power; myth_vs_fact shows the gap
+  from unrounded values, so it can differ by 0.1 L from subtracting the two rounded finals.

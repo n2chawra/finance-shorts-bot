@@ -50,7 +50,7 @@ if free tiers get in the way. Keep the worker code portable so it runs in both p
 ## Repo layout
 
 ```
-apps/dashboard/          Next.js 15, App Router, TypeScript strict, Prisma, TanStack Query
+apps/dashboard/          Next.js 15, App Router, TypeScript strict, Prisma, TanStack Query, Radix UI, Motion
 workers/                 Node/TS scripts run by GitHub Actions: ingest, publish, stats, watchdog
 renderer/                Python 3.12 render engine
   engine/                shared: canvas helpers, easing, characters, camera, audio synth, mux
@@ -78,7 +78,8 @@ reference/               original prototype renderer (rahul_vs_amit_v2.py)
 - `VideoStat`: id, uploadId, day, views, likes, comments, subsGained, avgViewPct
 - `AgentRun`: id, videoId?, agent, status, log (jsonb), startedAt, finishedAt, routineSessionUrl
 - `Setting`: key, value (jsonb). Upload time, backlog cap, length range, disclaimer, alert prefs,
-  `uploadsPaused`. Workers read these from the DB. Routines have no DB access, so the hourly
+  `uploadsPaused`, `generationPaused`, `templateWork` (`maxPerDay`, `maxTemplates`,
+  `everyNthRun`). Workers read these from the DB. Routines have no DB access, so the hourly
   ingest job also writes them (plus the current backlog count) to `config/settings.json` in the
   repo, and routines read that file.
 - `Video.queuePosition` (int) for manual reordering; publisher takes the lowest position.
@@ -108,13 +109,20 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
    inside the manifest.
 
 **T. Template work** (when backlog is full, or every ~5th run): build or improve a template,
-render 2 test videos with it, QA them, and only then set it `enabled`.
+render 2 test videos with it, QA them, and only then set it `enabled`. Limited by settings:
+at most `templateWork.maxPerDay` runs a day (default 1) and no new templates past
+`templateWork.maxTemplates` (default 10). With `generationPaused` a run does nothing at all.
+
+The code steps are `python -m generator.run <state|check-plan|number-check|figures|record|render|ship|fail>`;
+the agent steps follow `generator/prompts/*.md`.
 
 ## Variety rules (enforced in `generator/variety.py`, not just prompted)
 
-- Same template not used in the last 5 videos; no template above 30% of the last 20.
-- Same topic category not in the last 3 videos; near-duplicate topics (embedding cosine > 0.85)
-  not within 60 days.
+- Same template not used in the last N videos, where N scales with enabled templates
+  (`min(5, templates - 2)`: 2 with four templates, 5 from seven up); no template above 30% of the
+  last 20 (looser below five templates).
+- Same topic category not in the last 3 videos; near-duplicate topics not within 60 days
+  (embedding cosine > 0.85 once topics live in pgvector; until M4 a word-overlap cosine > 0.6).
 - Rotate per video: color palette, character designs, hook style (question / shock number /
   myth / challenge), music (key, tempo 80–120 BPM, genre: lo-fi / upbeat pop / cinematic /
   synthwave / acoustic-ish), SFX set, end CTA.
