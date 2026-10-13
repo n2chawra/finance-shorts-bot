@@ -28,3 +28,30 @@ def inr(x: float) -> str:
     if x >= 1e5 or round(x) >= 100000:
         return f"₹{x/1e5:.1f} L"
     return "₹" + group_indian(int(round(x)))
+
+
+def inr_long(x: float) -> str:
+    """Spelled-out units without trailing zeros: '₹6 Lakh', '₹2.3 Crore', '₹5,000'."""
+    if x >= 1e7 or round(x/1e5, 1) >= 100:
+        return f"₹{round(x/1e7, 2):g} Crore"
+    if x >= 1e5 or round(x) >= 100000:
+        return f"₹{round(x/1e5, 1):g} Lakh"
+    return "₹" + group_indian(int(round(x)))
+
+
+def axis_label(v: float) -> str:
+    """Chart tick label: '0', '50 L', '1.5 Cr'."""
+    if v == 0:
+        return "0"
+    if v >= 1e7:
+        return f"{v/1e7:g} Cr"
+    if v >= 1e5:
+        return f"{v/1e5:g} L"
+    if v >= 1e3:
+        return f"{v/1e3:g}K"
+    return f"{v:g}"
+
+
+def times(ratio: float) -> str:
+    """Multiplier: 2.4166 → '2.4×'."""
+    return f"{ratio:.1f}×"

@@ -26,12 +26,12 @@ def make_stars(rng: random.Random, n: int = 60) -> list[Star]:
     return [(rng.randint(0, W), rng.randint(0, H), rng.random()) for _ in range(n)]
 
 
-def draw_stars(c: Canvas, stars: Sequence[Star], t: float, base: RGB) -> None:
-    """Twinkling dots. `base` is the colour they fade towards (roughly the mid-background)."""
+def draw_stars(c: Canvas, stars: Sequence[Star], t: float) -> None:
+    """Twinkling dots."""
     for x, y, b in stars:
         tw = 0.35 + 0.35*math.sin(t*2 + b*10)
         r = 2 + b*2
-        c.d.ellipse([x - r, y - r, x + r, y + r], fill=mix(c.pal.text, tw*0.5, base))
+        c.d.ellipse([x - r, y - r, x + r, y + r], fill=mix(c.pal.text, tw*0.5, c.pal.haze))
 
 
 def make_confetti(rng: random.Random, colors: Sequence[RGB], n: int = 140) -> list[Confetto]:

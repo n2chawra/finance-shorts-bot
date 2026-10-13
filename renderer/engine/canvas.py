@@ -26,10 +26,14 @@ class Palette:
     danger: RGB
     panel: RGB       # card fill
     grid: RGB        # chart grid lines
+    haze: RGB        # colour that background stars fade towards
 
 
 NIGHT = Palette(bg=(14, 17, 34), bg_bottom=(24, 23, 56), text=(245, 246, 250), muted=(150, 156, 180),
-                accent=(255, 209, 102), danger=(255, 90, 95), panel=(32, 37, 68), grid=(50, 56, 92))
+                accent=(255, 209, 102), danger=(255, 90, 95), panel=(32, 37, 68), grid=(50, 56, 92),
+                haze=(20, 22, 45))
+
+DISCLAIMER = "Illustrative only. Not financial advice."
 
 
 @lru_cache(maxsize=None)
@@ -41,6 +45,15 @@ def mix(c: RGB, a: float, base: RGB) -> RGB:
     """Colour `c` at opacity `a` over `base`."""
     a = clamp(a)
     return tuple(int(base[i] + (c[i] - base[i])*a) for i in range(3))
+
+
+SAFE_W = W - 100   # widest a centred line may be
+
+
+def fit(s: str, size: float, weight: str, max_w: float) -> float:
+    """Font size no larger than `size` at which `s` is at most `max_w` wide."""
+    tw = font(size, weight).getlength(s)
+    return size if tw <= max_w else size*max_w/tw
 
 
 class Canvas:
@@ -55,24 +68,26 @@ class Canvas:
         return mix(c, a, self.pal.bg if base is None else base)
 
     def text(self, s: str, cx: float, cy: float, size: float, color: RGB, a: float = 1.0,
-             w: str = "Bold", anchor: str = "mm", stroke: int = 0) -> None:
+             w: str = "Bold", anchor: str = "mm", stroke: int = 0, max_w: float | None = None) -> None:
         if a <= 0.01:
             return
+        if max_w is not None:
+            size = fit(s, size, w, max_w)
         self.d.text((cx, cy), s, font=font(size, w), fill=self.mix(color, a), anchor=anchor,
                     stroke_width=stroke, stroke_fill=self.mix((0, 0, 0), a) if stroke else None)
 
     def pill(self, cx: float, cy: float, s: str, size: float, fg: RGB, bg: RGB, a: float = 1.0,
-             pad: float = 28) -> None:
+             pad: float = 28, max_w: float = SAFE_W) -> None:
         if a <= 0.01:
             return
-        f = font(size)
+        f = font(fit(s, size, "Bold", max_w - pad*2))
         l, t, r, b = self.d.textbbox((0, 0), s, font=f)
         w, h = r - l + pad*2, b - t + pad
         self.d.rounded_rectangle([cx - w/2, cy - h/2, cx + w/2, cy + h/2], radius=h/2, fill=self.mix(bg, a))
         self.d.text((cx, cy), s, font=f, fill=self.mix(fg, a), anchor="mm")
 
     def caption(self, s: str, t0: float, t: float, y: float, size: float, color: RGB, A: float) -> None:
-        """Centred line that pops in at t0."""
+        """Centred line that pops in at t0, shrunk if needed to stay inside the safe width."""
         a = ramp(t, t0, 0.2)*A
         k = back(ramp(t, t0, 0.35))
-        self.text(s, W/2, y, size*(0.6 + 0.4*k), color, a)
+        self.text(s, W/2, y, size*(0.6 + 0.4*k), color, a, max_w=SAFE_W)

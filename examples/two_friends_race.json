@@ -1,0 +1,37 @@
+{
+  "template": "two_friends_race",
+  "seed": 3,
+  "monthly": 5000,
+  "annual_return_pct": 12,
+  "end_age": 60,
+  "people": [
+    { "name": "Rahul", "color": "#3DDC97", "start_age": 25, "stop_age": 35 },
+    { "name": "Amit", "color": "#FF9F43", "start_age": 35, "stop_age": 60 }
+  ],
+  "text": {
+    "hook_title": "{a_invested_long} vs {b_invested_long}",
+    "hook_sub": "LESS money wins?!",
+    "hook_tease": "The answer will shock you",
+    "a_intro": "{a} starts at {a_start}",
+    "a_amount": "{monthly} / month",
+    "a_note": "…then STOPS at {a_stop}",
+    "b_intro": "{b} starts late, at {b_start}",
+    "b_amount": "{monthly} / month",
+    "b_note": "…and never stops till {b_stop}",
+    "question_setup": "Both earn {rate} a year.",
+    "question": "Who has MORE at {end_age}?",
+    "question_cta": "Pause & comment your guess",
+    "chart_title": "Watch the money grow",
+    "chart_stop_label": "{a} stops",
+    "chart_note": "…but his money keeps growing!",
+    "result_title": "At {end_age}…",
+    "result_line1": "{a} put in {invested_ratio} LESS",
+    "result_line2": "but has {final_ratio} MORE",
+    "end_line1": "The secret isn't",
+    "end_line2": "how much you invest",
+    "end_punch": "It's WHEN.",
+    "end_pill": "Start today. Even small.",
+    "end_cta": "Comment \"START\" if you're in",
+    "end_follow": "Follow for more money stories"
+  }
+}

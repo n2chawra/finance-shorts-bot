@@ -5,12 +5,12 @@ note under "Log". Don't start the next milestone until the current one is done.
 
 ## M1 — Render engine + first templates
 - [x] Scaffold repo layout from CLAUDE.md; download Poppins (OFL) into `assets/fonts/`
-- [ ] Split `reference/rahul_vs_amit_v2.py` into `renderer/engine/` (drawing, easing, characters,
+- [x] Split `reference/rahul_vs_amit_v2.py` into `renderer/engine/` (drawing, easing, characters,
       camera punch/shake, confetti, audio synth, ffmpeg mux) + `templates/two_friends_race/`
-- [ ] Each template has `schema.json`; `cli.py` validates script JSON against it
+- [x] Each template has `schema.json`; `cli.py` validates script JSON against it
 - [ ] Music generator with variety: key, tempo, genre presets, seeded
 - [ ] Build 3 more templates: `myth_vs_fact`, `money_leak_meter`, `quiz_countdown`
-- [ ] Preview mode: contact sheet of key frames
+- [x] Preview mode: contact sheet of key frames
 
 Done when: `python renderer/cli.py examples/<template>.json` renders a valid 45–60 s mp4 for all
 4 templates, and two scripts with different seeds produce visibly different style and music.
@@ -95,3 +95,9 @@ Done when: everything above works on a phone.
   the font path: 1080×1920, 30 fps, H.264 + AAC, 60.0 s, peak −1.0 dB, mean −18.7 dB, 142 s to
   render. To fix during the engine split: the "...then STOPS at 35" pill sits ~70 px from the
   bottom edge (rule is 120 px).
+- 2026-10-13: Engine split out (`renderer/engine/`), `two_friends_race` template, `cli.py` with schema
+  validation, `--preview` and `--frames`. Engine output checked against the prototype: soundtrack
+  sample-identical, result frame (confetti + flash) pixel-identical. Deliberate changes: text kept
+  120 px clear of the bottom, minimum 44 px text, exact disclaimer wording, over-wide lines shrink to
+  fit. Script text may not contain typed digits or ₹; numbers come from placeholders. Full render
+  takes ~150 s locally. Still fixed in this template: palette, music, scene timings.
