@@ -10,12 +10,12 @@ run the test suite, do not explore the codebase, and do not improve things you w
 
 ```
 git checkout main && git pull --ff-only
-python -c "import PIL, numpy, scipy, jsonschema" || pip install -q -r renderer/requirements.txt
+python -c "import PIL, numpy, scipy, jsonschema" || pip install -q -r renderer/requirements.txt || pip install -q --break-system-packages -r renderer/requirements.txt
 ffmpeg -version | head -1
 ```
 
-If `ffmpeg` is missing, stop and report "ffmpeg is not installed in the cloud environment"
-(the environment's setup script should install it). Do not try to work around it.
+If `ffmpeg` is missing, try once: `apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ffmpeg`.
+If it is still missing, stop and report "ffmpeg could not be installed" with the error text.
 
 ## 1. Decide what this run does
 
