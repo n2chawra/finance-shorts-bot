@@ -6,6 +6,7 @@
     "generate": "node scripts/copy-schema.mjs && prisma generate --schema prisma/schema.prisma",
     "migrate": "prisma migrate deploy --schema ../apps/dashboard/prisma/schema.prisma",
     "ingest": "tsx ingest.ts",
+    "reset-data": "tsx --env-file=../apps/dashboard/.env reset-data.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts"
   },

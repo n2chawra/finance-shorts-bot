@@ -180,3 +180,8 @@ Done when: everything above works on a phone.
   Release video and then Ingest automatically 18 seconds later, so a routine's video will be
   ingested within about a minute of its release. Not yet seen with a real new video, because the
   next routine run is template work.
+- 2026-10-13: Reset at Naishadh's request: the four test videos' folders and `history/history.json`
+  were cleared from the repo (still in git history), and `workers/reset-data.ts` added to empty the
+  database's generated rows. Routine schedule changed to three runs a day (06:07, 14:07, 22:07 IST;
+  cron `37 0,8,16 * * *` UTC). `templateWork.everyNthRun` set to 0 so every run makes a video until
+  the backlog reaches the cap; template work then happens only when the backlog is full.
