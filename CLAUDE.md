@@ -140,7 +140,9 @@ the agent steps follow `generator/prompts/*.md`.
 ## Secrets (GitHub Actions secrets, never committed, never given to routines)
 
 `DATABASE_URL`, `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`, `TELEGRAM_BOT_TOKEN`,
-`TELEGRAM_CHAT_ID`. The Google OAuth consent screen must be in **Production** status, otherwise
+`TELEGRAM_CHAT_ID`. The dashboard's own env vars live in Netlify: `DATABASE_URL`, `DIRECT_URL`,
+`DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_TOKEN` (read-only, this repo), `GITHUB_REPOSITORY`,
+`YT_API_KEY` (Data API key for live public counters). The Google OAuth consent screen must be in **Production** status, otherwise
 refresh tokens expire after 7 days.
 
 ## YouTube API facts

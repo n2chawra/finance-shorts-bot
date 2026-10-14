@@ -1,8 +1,17 @@
 # New manifests → Postgres, and database settings → config/settings.json (which routines read).
-# Runs right after a video's release is created, and four times a day to sync settings.
+# Runs on every push that adds a video, a failed video or a template run (so the dashboard shows it
+# within a minute), right after a video's release is created, and four times a day to sync settings.
+# Its own settings commit does not re-trigger it: pushes made with the workflow token never do.
 name: Ingest
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "videos/**"
+      - "history/**"
+      - "renderer/templates/**"
+      - "apps/dashboard/prisma/**"
   workflow_run:
     workflows: ["Release video"]
     types: [completed]

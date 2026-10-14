@@ -8,7 +8,7 @@ import { useParams, useRouter } from "next/navigation";
 import { DataTable, LineChart } from "@/components/charts";
 import { Button, Card, ConfirmButton, buttonClass, Empty, ErrorNote, Loading, Num, ResultBadge, StatusBadge, Tile } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, titleCase } from "@/lib/format";
+import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, fmtRelative, titleCase } from "@/lib/format";
 import { useVideo, useVideoAction } from "@/lib/queries";
 import type { VideoAction } from "@/lib/schemas";
 
@@ -95,10 +95,10 @@ export default function VideoPage() {
           {v.totals && (
             <>
               <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-                <Tile label="Views" icon={Eye} tone="info" value={<Num value={v.totals.views} fmt={fmtCompact} />} sub={fmtNum(v.totals.views)} />
-                <Tile label="Likes" icon={Heart} tone="critical" value={<Num value={v.totals.likes} fmt={fmtCompact} />} />
-                <Tile label="Subscribers" icon={UserPlus} tone="good" value={<Num value={v.totals.subsGained} fmt={(n) => `+${fmtNum(n)}`} />} />
-                <Tile label="Avg viewed" icon={Percent} tone="warning" value={`${v.totals.avgViewPct}%`} />
+                <Tile label="Views" icon={Eye} tone="info" value={<Num value={v.totals.views} fmt={fmtCompact} />} sub={`${fmtNum(v.totals.views)}${v.totals.liveAt ? ` · live, ${fmtRelative(v.totals.liveAt)}` : ""}`} />
+                <Tile label="Likes" icon={Heart} tone="critical" value={<Num value={v.totals.likes} fmt={fmtCompact} />} sub={v.totals.liveAt ? `${fmtNum(v.totals.comments)} comments · live` : undefined} />
+                <Tile label="Subscribers" icon={UserPlus} tone="good" value={<Num value={v.totals.subsGained} fmt={(n) => `+${fmtNum(n)}`} />} sub="YouTube Analytics, 1–2 days behind" />
+                <Tile label="Avg viewed" icon={Percent} tone="warning" value={`${v.totals.avgViewPct}%`} sub="YouTube Analytics, 1–2 days behind" />
               </div>
               <Card title="Views per day" icon={TrendingUp}>
                 <LineChart data={v.stats.map((s) => ({ label: fmtDayKey(s.day), value: s.views }))} fmt={fmtCompact} fmtFull={(n) => `${fmtNum(n)} views`} height={200} />

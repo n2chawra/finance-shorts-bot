@@ -42,6 +42,7 @@ export const TotalsSchema = z.object({
   comments: z.number(),
   subsGained: z.number(),
   avgViewPct: z.number(),
+  liveAt: z.string().nullable().default(null), // when YouTube's live counters were last read; null = Analytics only
 });
 
 export const AgentStepSchema = z.object({

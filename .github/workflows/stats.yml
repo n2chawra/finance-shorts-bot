@@ -3,7 +3,7 @@ name: Stats
 
 on:
   schedule:
-    - cron: "17 3 * * *" # 08:47 IST
+    - cron: "17 */3 * * *" # every 3 h (08:47 IST, …): Analytics publishes each day's numbers at an unpredictable hour
   workflow_dispatch:
 
 permissions:

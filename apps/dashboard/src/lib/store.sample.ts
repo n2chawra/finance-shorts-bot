@@ -182,7 +182,7 @@ function build(): Store {
       thumbnailUrl: `/sample/${tpl.id}/thumbnail.png`, previewUrl: `/sample/${tpl.id}/preview.png`, fileUrl: `/sample/${tpl.id}/video.mp4`,
       createdAt: createdAt.toISOString(), queuePosition, upload,
       totals: stats.length
-        ? { views, likes: stats.reduce((s, x) => s + x.likes, 0), comments: stats.reduce((s, x) => s + x.comments, 0), subsGained: stats.reduce((s, x) => s + x.subsGained, 0), avgViewPct: stats[0].avgViewPct }
+        ? { views, likes: stats.reduce((s, x) => s + x.likes, 0), comments: stats.reduce((s, x) => s + x.comments, 0), subsGained: stats.reduce((s, x) => s + x.subsGained, 0), avgViewPct: stats[0].avgViewPct, liveAt: null }
         : null,
       script: scripts[tpl.id],
       qaChecks: [

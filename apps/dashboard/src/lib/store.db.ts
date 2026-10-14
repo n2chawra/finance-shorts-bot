@@ -5,6 +5,7 @@
  */
 import type { Prisma } from "@prisma/client";
 
+import { refreshLiveStats } from "./live-stats";
 import { prisma } from "./prisma";
 import { SettingsSchema } from "./schemas";
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
@@ -26,10 +27,24 @@ const dayKey = (d: Date) => d.toISOString().slice(0, 10); // VideoStat.day is a 
 const withRelations = { topic: true, upload: { include: { stats: true } } } satisfies Prisma.VideoInclude;
 type VideoRow = Prisma.VideoGetPayload<{ include: typeof withRelations }>;
 
-function totals(stats: { views: number; likes: number; comments: number; subsGained: number; avgViewPct: number }[]): Video["totals"] {
-  if (!stats.length) return null;
+type StatRow = { views: number; likes: number; comments: number; subsGained: number; avgViewPct: number };
+type LiveRow = { liveViews: number | null; liveLikes: number | null; liveComments: number | null; liveAt: Date | null };
+
+/**
+ * Lifetime totals. Views, likes and comments take YouTube's live counters when they are ahead of
+ * the daily Analytics rows (which run a day or two behind); subscribers and watch % only exist in
+ * Analytics.
+ */
+function totals(stats: StatRow[], live?: LiveRow | null): Video["totals"] {
+  const hasLive = live?.liveAt != null && live.liveViews != null;
+  if (!stats.length && !hasLive) return null;
   const sum = (k: "views" | "likes" | "comments" | "subsGained") => stats.reduce((a, s) => a + s[k], 0);
-  return { views: sum("views"), likes: sum("likes"), comments: sum("comments"), subsGained: sum("subsGained"), avgViewPct: Math.round(stats.reduce((a, s) => a + s.avgViewPct, 0) / stats.length * 10) / 10 };
+  const best = (k: "views" | "likes" | "comments", l: number | null | undefined) => Math.max(sum(k), hasLive ? l ?? 0 : 0);
+  return {
+    views: best("views", live?.liveViews), likes: best("likes", live?.liveLikes), comments: best("comments", live?.liveComments),
+    subsGained: sum("subsGained"), avgViewPct: stats.length ? Math.round(stats.reduce((a, s) => a + s.avgViewPct, 0) / stats.length * 10) / 10 : 0,
+    liveAt: hasLive ? live!.liveAt!.toISOString() : null,
+  };
 }
 
 function toVideo(v: VideoRow): Video {
@@ -41,7 +56,7 @@ function toVideo(v: VideoRow): Video {
     thumbnailUrl: `/api/media/${v.id}/thumbnail`, previewUrl: `/api/media/${v.id}/preview`, fileUrl: `/api/media/${v.id}/video`,
     createdAt: v.createdAt.toISOString(), queuePosition: v.queuePosition,
     upload: v.upload && { youtubeId: v.upload.youtubeId, publishAt: v.upload.publishAt.toISOString(), state: v.upload.state, error: v.upload.error, attempts: v.upload.attempts },
-    totals: totals(v.upload?.stats ?? []),
+    totals: totals(v.upload?.stats ?? [], v.upload),
   };
 }
 
@@ -69,6 +84,7 @@ export async function patchSettings(patch: Partial<Settings>): Promise<Settings>
 // ---------------- videos ----------------
 
 export async function listVideos(f: { status?: string; template?: string; category?: string; q?: string }): Promise<Video[]> {
+  await refreshLiveStats();
   const q = f.q?.trim();
   const rows = await prisma.video.findMany({
     where: {
@@ -85,6 +101,7 @@ export async function listVideos(f: { status?: string; template?: string; catego
 }
 
 export async function getVideo(id: string): Promise<VideoDetail | null> {
+  await refreshLiveStats();
   const v = await prisma.video.findFirst({
     where: { id, ...live },
     include: { ...withRelations, qaChecks: true, agentRuns: { orderBy: [{ startedAt: "asc" }, { id: "asc" }] } },
@@ -187,6 +204,7 @@ async function renumber(): Promise<void> {
 // ---------------- overview ----------------
 
 export async function getOverview(): Promise<Overview> {
+  await refreshLiveStats();
   const settings = await getSettings();
   const today = istDay(new Date());
   const since = new Date(`${addDays(today, -7)}T00:00:00Z`);
@@ -224,13 +242,15 @@ export async function getOverview(): Promise<Overview> {
 // ---------------- templates ----------------
 
 export async function listTemplates(): Promise<Template[]> {
+  await refreshLiveStats();
   const [templates, videos] = await Promise.all([
     prisma.template.findMany({ orderBy: { id: "asc" } }),
-    prisma.video.findMany({ where: live, select: { id: true, templateId: true, createdAt: true, status: true, upload: { select: { stats: { select: { views: true } } } } } }),
+    prisma.video.findMany({ where: live, select: { id: true, templateId: true, createdAt: true, status: true, upload: { select: { liveViews: true, liveAt: true, stats: { select: { views: true } } } } } }),
   ]);
   return templates.map((t) => {
     const mine = videos.filter((v) => v.templateId === t.id);
-    const withViews = mine.filter((v) => v.upload?.stats.length).map((v) => v.upload!.stats.reduce((a, s) => a + s.views, 0));
+    const withViews = mine.filter((v) => v.upload?.stats.length || v.upload?.liveAt)
+      .map((v) => Math.max(v.upload!.stats.reduce((a, s) => a + s.views, 0), v.upload!.liveViews ?? 0));
     const sample = mine.filter((v) => v.status !== "failed").sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())[0];
     return {
       id: t.id, name: t.name, description: t.description, version: t.version, weight: t.weight, enabled: t.enabled,
@@ -274,6 +294,7 @@ export async function listRuns(): Promise<Run[]> {
 // ---------------- analytics ----------------
 
 export async function getAnalytics(): Promise<Analytics> {
+  await refreshLiveStats();
   const today = istDay(new Date());
   const from = addDays(today, -28);
   const [stats, published] = await Promise.all([
@@ -288,7 +309,7 @@ export async function getAnalytics(): Promise<Analytics> {
   }
   const names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const wd = names.map(() => ({ views: 0, n: 0 }));
-  const ranked = published.map((v) => ({ v, t: totals(v.upload?.stats ?? []) })).filter((x) => x.t !== null);
+  const ranked = published.map((v) => ({ v, t: totals(v.upload?.stats ?? [], v.upload) })).filter((x) => x.t !== null);
   for (const { v, t } of ranked) {
     const i = (new Date(`${istDay(v.upload!.publishAt)}T00:00:00Z`).getUTCDay() + 6) % 7;
     wd[i].views += t!.views;

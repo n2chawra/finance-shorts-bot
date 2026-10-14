@@ -111,6 +111,11 @@ model Upload {
   error     String?
   attempts  Int         @default(0)
   stats     VideoStat[]
+  // current public counters from the YouTube Data API, refreshed by the dashboard at most once a minute
+  liveViews    Int?
+  liveLikes    Int?
+  liveComments Int?
+  liveAt       DateTime?
 }
 
 model VideoStat {
