@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { getJson, send } from "./api";
 import { AnalyticsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
-import type { Settings, VideoAction } from "./schemas";
+import type { ManualUpload, Settings, VideoAction } from "./schemas";
 
 export const useOverview = () => useQuery({ queryKey: ["overview"], queryFn: () => getJson("/api/overview", OverviewSchema) });
 export const useQueue = () => useQuery({ queryKey: ["queue"], queryFn: () => getJson("/api/queue", z.array(VideoSchema)) });
@@ -27,6 +27,7 @@ function useWrite<T>(fn: (arg: T) => Promise<void>) {
 }
 
 export const useVideoAction = () => useWrite(({ id, action }: { id: string; action: VideoAction }) => send("POST", `/api/videos/${id}/${action}`));
+export const useManualUpload = () => useWrite(({ id, ...body }: ManualUpload & { id: string }) => send("POST", `/api/videos/${id}/manual-upload`, body));
 export const useReorder = () => useWrite((ids: string[]) => send("PATCH", "/api/queue/order", { ids }));
 export const usePatchTemplate = () => useWrite((patch: { id: string; enabled?: boolean; weight?: number }) => send("PATCH", "/api/templates", patch));
 export const usePatchSettings = () => useWrite((patch: Partial<Settings>) => send("PATCH", "/api/settings", patch));

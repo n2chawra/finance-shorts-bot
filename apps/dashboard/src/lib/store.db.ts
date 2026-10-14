@@ -7,7 +7,7 @@ import type { Prisma } from "@prisma/client";
 
 import { prisma } from "./prisma";
 import { SettingsSchema } from "./schemas";
-import type { Analytics, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
+import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
 
 const DAY_MS = 86_400_000;
 const IST_OFFSET = "+05:30";
@@ -144,6 +144,36 @@ export async function videoAction(id: string, action: VideoAction): Promise<{ ok
   await prisma.$transaction([
     prisma.video.update({ where: { id }, data: { status: "scheduled", queuePosition: null } }),
     prisma.upload.upsert({ where: { videoId: id }, update: { publishAt: new Date(), state: "pending" }, create: { videoId: id, publishAt: new Date(), state: "pending" } }),
+  ]);
+  await renumber();
+  return { ok: true };
+}
+
+/**
+ * Mark a video as uploaded by hand, whatever state the pipeline had it in. It leaves the queue,
+ * the publisher never uploads it, and the stats job tracks the given YouTube video. Can be
+ * repeated to add or correct the link.
+ */
+export async function markUploaded(id: string, m: ManualUpload): Promise<{ ok: true } | { ok: false; error: string }> {
+  const v = await prisma.video.findFirst({ where: { id, ...live }, include: { upload: true } });
+  if (!v) return { ok: false, error: "Video not found" };
+  if (m.youtubeId) {
+    const taken = await prisma.upload.findFirst({ where: { youtubeId: m.youtubeId, videoId: { not: id } }, select: { videoId: true } });
+    if (taken) return { ok: false, error: `That YouTube video is already linked to ${taken.videoId}` };
+  }
+  const at = new Date(m.publishedAt);
+  const youtubeId = m.youtubeId ?? v.upload?.youtubeId ?? null;
+  await prisma.$transaction([
+    prisma.video.update({ where: { id }, data: { status: "published", queuePosition: null, failReason: null } }),
+    prisma.upload.upsert({
+      where: { videoId: id },
+      update: { youtubeId, publishAt: at, state: "published", error: null },
+      create: { videoId: id, youtubeId, publishAt: at, state: "published" },
+    }),
+    prisma.agentRun.create({
+      data: { videoId: id, agent: "manual_upload", status: "ok", startedAt: new Date(), finishedAt: new Date(),
+        log: [youtubeId ? `Uploaded by hand as YouTube video ${youtubeId}` : "Uploaded by hand (no YouTube link yet)", `Was ${v.status}`] },
+    }),
   ]);
   await renumber();
   return { ok: true };

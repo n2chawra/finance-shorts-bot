@@ -1,16 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ArrowLeft, ChevronsDown, CircleCheck, CircleX, Eye, FileText, Hash, Heart, Images, ListChecks, Minus, Palette, Percent, Send, Trash2, TrendingUp, Upload, UserPlus, Workflow } from "lucide-react";
+import { ArrowLeft, ChevronsDown, CircleCheck, CircleX, Download, Eye, FileText, Heart, Images, ListChecks, Minus, Palette, Percent, Send, Trash2, TrendingUp, Upload, UserPlus, Workflow } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 
 import { DataTable, LineChart } from "@/components/charts";
-import { Button, Card, ConfirmButton, Empty, ErrorNote, Loading, Num, ResultBadge, StatusBadge, Tile } from "@/components/ui";
+import { Button, Card, ConfirmButton, buttonClass, Empty, ErrorNote, Loading, Num, ResultBadge, StatusBadge, Tile } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, titleCase } from "@/lib/format";
 import { useVideo, useVideoAction } from "@/lib/queries";
 import type { VideoAction } from "@/lib/schemas";
+
+import { MarkUploaded, YouTubeDetails } from "./publish-tools";
 
 const CHECK_NAMES: Record<string, string> = { number_check: "Number check", fact_review: "Fact review", qa_review: "QA review" };
 
@@ -55,13 +57,17 @@ export default function VideoPage() {
             <span>{v.id}</span><span>· {titleCase(v.templateId)}</span><span>· {titleCase(v.topic.category)}</span><span>· {v.durationSec}s</span>
           </div>
         </div>
-        {(v.status === "queued" || v.status === "failed") && (
-          <div className="flex flex-wrap gap-2">
-            {v.status === "queued" && <Button tone="primary" icon={Upload} disabled={act.isPending} onClick={() => run("upload-now")}>Upload now</Button>}
-            {v.status === "queued" && <Button icon={ChevronsDown} disabled={act.isPending} onClick={() => run("skip")}>Skip to end</Button>}
+        <div className="flex flex-wrap gap-2">
+          {v.status !== "failed" && v.fileUrl && (
+            <a href={v.fileUrl} download={`${v.id}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download</a>
+          )}
+          {(v.status !== "published" || !v.upload?.youtubeId) && <MarkUploaded v={v} />}
+          {v.status === "queued" && <Button icon={Upload} disabled={act.isPending} onClick={() => run("upload-now")}>Upload now</Button>}
+          {v.status === "queued" && <Button icon={ChevronsDown} disabled={act.isPending} onClick={() => run("skip")}>Skip to end</Button>}
+          {(v.status === "queued" || v.status === "failed") && (
             <ConfirmButton label="Delete" icon={Trash2} disabled={act.isPending} title="Delete this video?" confirmLabel="Delete video" description={`"${v.title}" will be removed. This cannot be undone.`} onConfirm={() => run("delete")} />
-          </div>
-        )}
+          )}
+        </div>
       </div>
            {v.failReason && <p role="alert" className="mb-4 flex items-start gap-2 rounded-2xl border border-ring bg-critical-soft p-4 text-sm"><CircleX aria-hidden className="mt-0.5 size-4 shrink-0 text-critical" /><span><strong>Failed.</strong> {v.failReason}</span></p>}
 
@@ -73,7 +79,7 @@ export default function VideoPage() {
               <dt className="text-ink2">Created</dt><dd>{fmtDateTime(v.createdAt)}</dd>
               <dt className="text-ink2">{v.status === "published" ? "Published" : "Publish at"}</dt><dd>{v.upload ? fmtDateTime(v.upload.publishAt) : v.queuePosition ? `Queue position ${v.queuePosition}` : "—"}</dd>
               <dt className="text-ink2">Upload</dt><dd>{v.upload ? `${titleCase(v.upload.state)}, ${v.upload.attempts} attempt${v.upload.attempts === 1 ? "" : "s"}` : "—"}</dd>
-              <dt className="text-ink2">YouTube</dt><dd>{v.upload?.youtubeId ? <a className="underline" href={`https://youtube.com/shorts/${v.upload.youtubeId}`} target="_blank" rel="noreferrer">Open</a> : <span className="text-muted">No link (sample data)</span>}</dd>
+              <dt className="text-ink2">YouTube</dt><dd>{v.upload?.youtubeId ? <a className="underline" href={`https://youtube.com/shorts/${v.upload.youtubeId}`} target="_blank" rel="noreferrer">Open</a> : <span className="text-muted">No link yet</span>}</dd>
             </dl>
           </Card>
           <Card title="Style" icon={Palette}>
@@ -85,6 +91,7 @@ export default function VideoPage() {
         </div>
 
         <div className="flex min-w-0 flex-col gap-4">
+          {v.status !== "failed" && <YouTubeDetails v={v} />}
           {v.totals && (
             <>
               <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -146,10 +153,6 @@ export default function VideoPage() {
             )}
           </Card>
 
-          <Card title="Title, description, tags" icon={Hash}>
-            <p className="text-sm">{v.description}</p>
-            <div className="mt-2 flex flex-wrap gap-1.5">{v.tags.map((t) => <span key={t} className="rounded-full bg-wash px-2 py-0.5 text-xs text-ink2">#{t}</span>)}</div>
-          </Card>
         </div>
       </div>
     </>

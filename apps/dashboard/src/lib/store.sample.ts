@@ -5,7 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { Analytics, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
+import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
 
 const VERSION = 7; // bump to regenerate the sample data without restarting the server
 const IST_OFFSET = "+05:30";
@@ -367,6 +367,18 @@ export function reorderQueue(ids: string[]): Video[] | null {
   if (ids.length !== q.length || !q.every((v) => ids.includes(v.id))) return null;
   renumber(s, ids.map((id) => q.find((v) => v.id === id)!));
   return listQueue();
+}
+
+export function markUploaded(id: string, m: ManualUpload): { ok: true } | { ok: false; error: string } {
+  const s = db();
+  const v = s.videos.find((x) => x.id === id);
+  if (!v) return { ok: false, error: "Video not found" };
+  v.status = "published";
+  v.queuePosition = null;
+  v.failReason = null;
+  v.upload = { youtubeId: m.youtubeId ?? v.upload?.youtubeId ?? null, publishAt: m.publishedAt, state: "published", error: null, attempts: v.upload?.attempts ?? 0 };
+  renumber(s, queue(s));
+  return { ok: true };
 }
 
 export function videoAction(id: string, action: VideoAction): { ok: true } | { ok: false; error: string } {

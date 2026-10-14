@@ -173,4 +173,11 @@ export type Analytics = z.infer<typeof AnalyticsSchema>;
 
 export const QueueOrderSchema = z.object({ ids: z.array(z.string()).min(1) });
 export const VideoActionSchema = z.enum(["skip", "delete", "upload-now"]);
+
+/** "I uploaded this one myself": the YouTube video id (from the pasted link) and when it went live. */
+export const ManualUploadSchema = z.object({
+  youtubeId: z.string().regex(/^[\w-]{11}$/).nullable(),
+  publishedAt: z.string().datetime({ offset: true }),
+});
+export type ManualUpload = z.infer<typeof ManualUploadSchema>;
 export type VideoAction = z.infer<typeof VideoActionSchema>;

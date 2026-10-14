@@ -3,7 +3,7 @@
  * (store.db.ts); without it, generated sample data held in memory (store.sample.ts), so the
  * dashboard can be run and reviewed with no database at all.
  */
-import type { Analytics, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
+import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
 import * as db from "./store.db";
 import * as sample from "./store.sample";
 
@@ -20,4 +20,5 @@ export const patchTemplate = async (id: string, patch: { enabled?: boolean; weig
 export const listRuns = async (): Promise<Run[]> => (useDb ? db.listRuns() : sample.listRuns());
 export const getAnalytics = async (): Promise<Analytics> => (useDb ? db.getAnalytics() : sample.getAnalytics());
 export const reorderQueue = async (ids: string[]): Promise<Video[] | null> => (useDb ? db.reorderQueue(ids) : sample.reorderQueue(ids));
+export const markUploaded = async (id: string, m: ManualUpload): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.markUploaded(id, m) : sample.markUploaded(id, m));
 export const videoAction = async (id: string, action: VideoAction): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.videoAction(id, action) : sample.videoAction(id, action));
