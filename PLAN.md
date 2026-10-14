@@ -39,7 +39,7 @@ Done when: 3 consecutive unattended runs each produce a valid, distinct video.
 Done when: new manifests appear in Postgres as `queued` within an hour of a routine run.
 
 ## M5 — YouTube publishing
-- [ ] Google Cloud project, YouTube Data API v3, OAuth consent screen set to Production,
+- [x] Google Cloud project, YouTube Data API v3, OAuth consent screen set to Production,
       refresh token script (`workers/auth.ts`, run once locally)
 - [ ] Apply for the API audit (so uploads aren't stuck private)
 - [x] `workers/publish.ts` + `publish.yml` (daily): oldest queued → upload private with
@@ -198,3 +198,8 @@ Done when: everything above works on a phone.
   3 attempts then failed), `stats.ts` (08:47 IST, Analytics per day up to yesterday), and marking
   videos published once YouTube shows them public. Plain fetch + Zod, no new packages. Both
   workflows do nothing until the YouTube secrets exist. Not yet run against YouTube.
+- 2026-10-14: YouTube connected to the channel DevDomain (consent screen in Production; homepage and
+  privacy policy published from the public repo `n2chawra/finance-shorts-site`). The publish
+  workflow uploaded `v-20261014-02` as YouTube video FJQ_HqX5ly0: processed, 51 s, Education, not for
+  kids, private with publishAt 19:07 IST today. It stays private until the API audit is approved.
+  Windows note: PowerShell here blocks npm.ps1, so local commands use `npm.cmd`.
