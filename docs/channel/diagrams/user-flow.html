@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Finance Shorts Uploader – user flow</title>
+<style>
+  :root { --ink:#16161d; --muted:#5d5d6b; --line:#c9c9d6; --panel:#f5f5fa; --brand:#5b5bd6; --yt:#ff0000; }
+  * { box-sizing: border-box; }
+  body { margin:0; width:1600px; height:700px; background:#fff; color:var(--ink); font:16px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  h1 { font-size:28px; margin:36px 48px 2px; }
+  .sub { margin:0 48px 28px; color:var(--muted); }
+  h2 { font-size:18px; margin:0 48px 12px; color:var(--brand); }
+  .row { display:flex; align-items:stretch; gap:0; margin:0 48px 34px; }
+  .step { flex:1; border:2px solid var(--line); border-radius:14px; background:var(--panel); padding:14px 16px; position:relative; }
+  .step b { display:block; margin-bottom:4px; }
+  .step p { margin:0; color:var(--muted); font-size:14px; }
+  .step.yt { border-color:var(--yt); background:#fff5f5; }
+  .arrow { width:44px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:26px; }
+  .n { position:absolute; top:-12px; left:12px; background:var(--brand); color:#fff; font-size:12px; font-weight:700; border-radius:999px; padding:1px 8px; }
+  .note { margin:0 48px; color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+<h1>Finance Shorts Uploader: user flow</h1>
+<p class="sub">There is one user: the channel owner. Flow A happens once; flows B and C run automatically every day.</p>
+
+<h2>A · One-time authorisation (owner)</h2>
+<div class="row">
+  <div class="step"><span class="n">A1</span><b>Owner runs the sign-in command</b><p>On their own computer.</p></div>
+  <div class="arrow">→</div>
+  <div class="step yt"><span class="n">A2</span><b>Google consent screen</b><p>Owner chooses their channel and grants upload, read and analytics access.</p></div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="n">A3</span><b>Refresh token stored</b><p>Saved as an encrypted secret in the owner's private repository. Never shown.</p></div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="n">A4</span><b>Revoke any time</b><p>myaccount.google.com/permissions removes access immediately.</p></div>
+</div>
+
+<h2>B · Daily upload (automatic)</h2>
+<div class="row">
+  <div class="step"><span class="n">B1</span><b>Video ready in the queue</b><p>Original animated Short, checked for numbers, facts and visuals.</p></div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="n">B2</span><b>Publish job, 10:07 IST</b><p>Skips if uploads are paused or today's slot is used. One per day.</p></div>
+  <div class="arrow">→</div>
+  <div class="step yt"><span class="n">B3</span><b>videos.insert</b><p>Private, publishAt 7:07 PM IST, category Education, not made for kids.</p></div>
+  <div class="arrow">→</div>
+  <div class="step yt"><span class="n">B4</span><b>YouTube publishes at 7:07 PM</b><p>videos.list later confirms it is public.</p></div>
+</div>
+
+<h2>C · Daily analytics and owner review (automatic + owner)</h2>
+<div class="row">
+  <div class="step yt"><span class="n">C1</span><b>reports.query, 08:47 IST</b><p>Own channel only: views, likes, comments, subscribers, average view %.</p></div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="n">C2</span><b>Stored privately</b><p>All stored days refreshed daily; unrefreshable data deleted after 30 days.</p></div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="n">C3</span><b>Private dashboard</b><p>Owner sees the queue, upload status and performance. Can pause uploads.</p></div>
+</div>
+
+<p class="note">No other users, no public sign-up, no YouTube data shown to anyone else. Policies: n2chawra.github.io/finance-shorts-site</p>
+</body>
+</html>
