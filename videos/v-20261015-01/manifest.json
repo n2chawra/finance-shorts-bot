@@ -1,0 +1,131 @@
+{
+  "id": "v-20261015-01",
+  "createdAt": "2026-10-14T19:40:38.327128+00:00",
+  "status": "qa_passed",
+  "template": "quiz_countdown",
+  "topic": {
+    "title": "What a ₹5,000 monthly SIP becomes in 25 years",
+    "category": "sip"
+  },
+  "title": "Can you guess what a ₹5,000 SIP grows to in 25 years?",
+  "description": "Take the quiz: a ₹5,000 monthly SIP for 25 years at an assumed 12% a year. Returns are assumptions, not assured. Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#SIP",
+    "#PersonalFinance",
+    "#MutualFunds"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Drop your guess in the comments",
+  "seed": 7316,
+  "style": {
+    "palette": "forest",
+    "genre": "lofi",
+    "key": "D",
+    "bpm": 88
+  },
+  "durationSec": 48,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.9
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "9 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Checked: 12% is at the upper edge of the assumption range and is labelled assumed in the description and the end assumption line; no product, fund or guarantee claims; quiz framing is not an instruction; description ends with the disclaimer."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Quiz template, 48s, 8 frames clean: QUIZ hook at 0.6s, options A/B/C readable, answer A (₹94.9 L) matches bar chart total (₹15.0 L + ₹79.9 L, 6.3x), disclaimer on last frame, thumbnail (2.5s) complete, no overlaps or cut-off text, layout_problems empty, audio peak -1.0 / mean -18.9 dB"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-14T19:38:09.583814+00:00",
+      "finishedAt": "2026-10-14T19:38:09.583814+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-14T19:38:10.880940+00:00",
+      "finishedAt": "2026-10-14T19:38:10.880940+00:00",
+      "notes": [
+        "9 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-14T19:38:18.075097+00:00",
+      "finishedAt": "2026-10-14T19:38:18.075097+00:00",
+      "notes": [
+        "9 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-14T19:38:40.869232+00:00",
+      "finishedAt": "2026-10-14T19:38:40.869232+00:00",
+      "notes": [
+        "Checked: 12% is at the upper edge of the assumption range and is labelled assumed in the description and the end assumption line; no product, fund or guarantee claims; quiz framing is not an instruction; description ends with the disclaimer."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-14T19:38:51.350562+00:00",
+      "finishedAt": "2026-10-14T19:40:08.286426+00:00",
+      "notes": [
+        "48 s, forest/lofi, peak -1.0 dB, mean -18.9 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-14T19:40:27.630629+00:00",
+      "finishedAt": "2026-10-14T19:40:27.630629+00:00",
+      "notes": [
+        "Quiz template, 48s, 8 frames clean: QUIZ hook at 0.6s, options A/B/C readable, answer A (₹94.9 L) matches bar chart total (₹15.0 L + ₹79.9 L, 6.3x), disclaimer on last frame, thumbnail (2.5s) complete, no overlaps or cut-off text, layout_problems empty, audio peak -1.0 / mean -18.9 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-14T19:40:38.327197+00:00",
+      "finishedAt": "2026-10-14T19:40:38.327197+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261015-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261015-01"
+  }
+}

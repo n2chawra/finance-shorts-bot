@@ -1,0 +1,29 @@
+{
+  "template": "quiz_countdown",
+  "seed": 7316,
+  "style": { "palette": "forest", "genre": "lofi", "key": "D", "bpm": 88 },
+  "kind": "sip",
+  "amount": 5000,
+  "years": 25,
+  "annual_return_pct": 12,
+  "distractors": [0.4, 1.6],
+  "text": {
+    "hook_line": "Think you can guess this?",
+    "q_title": "Pop quiz time",
+    "q_line1": "{amount} every month",
+    "q_line2": "for {years} years",
+    "q_line3": "at {rate} a year",
+    "question": "What is it worth then?",
+    "q_cta": "Make your pick",
+    "opt_cta": "Choose before time runs out",
+    "reveal_line": "The answer is {letter}!",
+    "reveal_note": "{answer_long} from {amount} a month",
+    "why_title": "Where does it come from?",
+    "why_line": "You end with {ratio} what you put in",
+    "end_line1": "Time does the",
+    "end_line2": "heavy lifting here",
+    "end_punch": "Start early.",
+    "end_cta": "Drop your guess in the comments",
+    "end_follow": "Follow for the next quiz"
+  }
+}
