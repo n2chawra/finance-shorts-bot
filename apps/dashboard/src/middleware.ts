@@ -6,7 +6,7 @@ import { COOKIE, authConfigured, authDisabled, verifySession } from "@/lib/auth"
 export async function middleware(req: NextRequest) {
   if (authDisabled()) return NextResponse.next();
   const { pathname } = req.nextUrl;
-  if (pathname === "/login" || pathname === "/api/login") return NextResponse.next();
+  if (pathname === "/login" || pathname === "/api/login" || pathname === "/api/health") return NextResponse.next();
 
   if (await verifySession(req.cookies.get(COOKIE)?.value)) return NextResponse.next();
 
