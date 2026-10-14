@@ -7,7 +7,8 @@ import { PrismaClient } from "@prisma/client";
  * the pooler, the pg driver one. TLS as before (the pooler's certificate is Supabase-signed).
  */
 const create = () => new PrismaClient({
-  adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL, max: 10, ssl: { rejectUnauthorized: false } }),
+  // keep connections between the dashboard's 30 s polls: a new one costs ~4 round trips (TCP, TLS, auth)
+  adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL, max: 12, idleTimeoutMillis: 300_000, ssl: { rejectUnauthorized: false } }),
 });
 
 // one client per server process; Next's dev reloads would otherwise open a new pool each time
