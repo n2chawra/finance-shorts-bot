@@ -168,7 +168,7 @@ class MoneyLeakMeter(Video):
                                                 ("If invested", self.fv, P.cast[0], W/2 + 230))):
             h = full*(v/self.fv)*cnt
             vbar(c, x, base, 240, h, col, a)
-            c.text(inr(v*cnt), x, base - h - 54, 68, col, a)
+            c.text(inr(v*cnt), x, base - h - 60, 68, P.text, a)   # value in text colour: readable on any bar or confetti
             c.text(label, x, base + 60, 52, P.text, a)
         c.caption(self.txt["cmp_line"], CMP_REVEAL + 0.3, t, 440, 76, P.accent, A)
 

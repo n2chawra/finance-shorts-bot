@@ -154,7 +154,7 @@ class QuizCountdown(Video):
             ba = a*ramp(t, 0.5 + i*1.4, 0.2)
             h = full*(v/top)*cnt
             vbar(c, x, base, 240, h, col, ba)
-            c.text(inr(v*cnt), x, base - h - 54, 68, col, ba)
+            c.text(inr(v*cnt), x, base - h - 60, 68, P.text, ba)   # value in text colour, not the bar colour
             c.text(label, x, base + 60, 52, P.text, ba)
         c.caption(self.txt["why_line"], 3.6, t, 440, 76, P.accent, A)
         c.text(f"Total {inr(self.answer)}", W/2, 1600, 72, P.text, ramp(t, 4.4)*A)
