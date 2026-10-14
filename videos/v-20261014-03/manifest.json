@@ -1,0 +1,59 @@
+{
+  "id": "v-20261014-03",
+  "createdAt": "2026-10-14T08:41:25.956506+00:00",
+  "status": "failed",
+  "failReason": "QA review failed: money_leak_meter growth scene shows 'Year 19' beside Put in ₹8.6 L / Worth ₹35.6 L near the end of the animation (template year counter uses n//12, off by one vs displayed totals); not fixable from the script.",
+  "template": "money_leak_meter",
+  "topic": {
+    "title": "What a ₹120 daily chai-and-snack stop costs over 20 years",
+    "category": "spending"
+  },
+  "title": "Your ₹120 chai break adds up to a lot more than tea",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-14T08:38:42.951102+00:00",
+      "finishedAt": "2026-10-14T08:38:42.951102+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-14T08:38:49.730915+00:00",
+      "finishedAt": "2026-10-14T08:38:49.730915+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-14T08:39:09.930048+00:00",
+      "finishedAt": "2026-10-14T08:39:09.930048+00:00",
+      "notes": [
+        "Checked plan.json and figures: 12% SIP is stated as an assumption (description, 'if returns hold', end assumption line), no product named, no guarantee wording, tone is light, description ends with the disclaimer. Notes: 12% is at the upper limit of realistic; tax and inflation are not shown; 'Trim the extras' is mild advice but reads as illustration."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-14T08:39:18.704059+00:00",
+      "finishedAt": "2026-10-14T08:40:44.593157+00:00",
+      "notes": [
+        "54 s, ember/lofi, peak -1.0 dB, mean -18.1 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-14T08:41:03.900372+00:00",
+      "finishedAt": "2026-10-14T08:41:03.900372+00:00",
+      "notes": [
+        "36.0s: label 'Year 19' does not match its values; 'Put in ₹8.6 L' is the 20-year total (₹43,200 x 20 = ₹8.64 L), year 19 would be about ₹8.2 L. Worth ₹35.6 L also differs from the ₹36.0 L shown at 43.5s. Likely an off-by-one in the year counter."
+      ]
+    }
+  ]
+}
