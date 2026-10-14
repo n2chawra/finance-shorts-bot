@@ -1,23 +1,29 @@
 "use client";
 
-import { Bell, Bot, Film, Save, Upload } from "lucide-react";
+import { Bell, Bot, Film, Upload } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
-import { Button, Card, ErrorNote, Loading, PageHeader, Toggle } from "@/components/ui";
+import { Button, Card, ErrorNote, Loading, PageHeader, Toggle, fieldClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { usePatchSettings, useSettings } from "@/lib/queries";
 import type { Settings } from "@/lib/schemas";
 
-const field = "min-h-10 w-full rounded-lg border border-ring bg-surface px-3 text-sm shadow-card disabled:opacity-40";
-
 function Row({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (
-    <label className="flex flex-col gap-1.5 border-b border-line py-3 last:border-0 md:flex-row md:items-center md:justify-between md:gap-6">
-      <span className="text-sm"><span className="font-medium">{label}</span>{hint && <span className="block text-xs text-muted">{hint}</span>}</span>
-      <span className="md:flex md:w-64 md:shrink-0 md:justify-end">{children}</span>
+    <label className="flex flex-col gap-2 border-b border-line py-3.5 first:pt-0 last:border-0 last:pb-0 md:flex-row md:items-center md:justify-between md:gap-8">
+      <span className="text-[13px]"><span className="font-medium">{label}</span>{hint && <span className="mt-0.5 block text-xs leading-relaxed text-muted">{hint}</span>}</span>
+      <span className="md:flex md:w-60 md:shrink-0 md:justify-end">{children}</span>
     </label>
   );
 }
+
+const SECTIONS = [
+  { id: "generation", label: "Generation", icon: Bot },
+  { id: "uploads", label: "Uploads", icon: Upload },
+  { id: "videos", label: "Videos", icon: Film },
+  { id: "alerts", label: "Alerts", icon: Bell },
+];
 
 export default function SettingsPage() {
   const { data, error, isLoading } = useSettings();
@@ -42,59 +48,89 @@ export default function SettingsPage() {
   const save = () => patch.mutate(form, { onSuccess: () => toast("Settings saved"), onError: (e) => toast(e.message, "error") });
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); save(); }} className="mx-auto max-w-3xl">
-      <PageHeader title="Settings" sub="Workers and routines read these on every run">
-        <Button type="submit" tone="primary" icon={Save} disabled={!dirty || patch.isPending}>{patch.isPending ? "Saving…" : dirty ? "Save changes" : "Saved"}</Button>
-      </PageHeader>
+    <form onSubmit={(e) => { e.preventDefault(); save(); }}>
+      <PageHeader title="Settings" sub="Workers read these on every run; routines get them within a minute of the next commit (or within 6 hours)" />
       {patch.error && <div className="mb-4"><ErrorNote error={patch.error} /></div>}
 
-      <Card title="Generation" icon={Bot}>
-        <Row label="Pause generation" hint="Routines still start on schedule but do nothing: no videos, no template work.">
-          <Toggle label="Pause generation" checked={form.generationPaused} onChange={(generationPaused) => set({ generationPaused })} />
-        </Row>
-        <Row label="Backlog cap" hint="Runs stop making videos at this many ready, and switch to template work.">
-          <input type="number" min={1} max={100} required className={field} value={form.backlogCap} onChange={(e) => set({ backlogCap: int(e.target.value) })} />
-        </Row>
-        <Row label="Template runs per day" hint="How many runs a day may build or improve a template. Set to zero to stop template work.">
-          <input type="number" min={0} max={4} required className={field} value={form.templateWork.maxPerDay} onChange={(e) => setWork({ maxPerDay: int(e.target.value) })} />
-        </Row>
-        <Row label="Maximum templates" hint="No new templates are built past this number; existing ones are improved instead.">
-          <input type="number" min={1} max={50} required className={field} value={form.templateWork.maxTemplates} onChange={(e) => setWork({ maxTemplates: int(e.target.value) })} />
-        </Row>
-      </Card>
+      <div className="grid gap-6 lg:grid-cols-[180px_minmax(0,720px)]">
+        <nav aria-label="Settings sections" className="hidden lg:block">
+          <ul className="sticky top-20 flex flex-col gap-0.5">
+            {SECTIONS.map((s) => (
+              <li key={s.id}><a href={`#${s.id}`} className="flex h-8 items-center gap-2 rounded-lg px-2 text-[13px] text-ink2 hover:bg-wash-2 hover:text-ink"><s.icon aria-hidden className="size-4 text-muted" />{s.label}</a></li>
+            ))}
+          </ul>
+        </nav>
 
-      <Card title="Uploads" icon={Upload} className="mt-4">
-        <Row label="Pause all uploads" hint="Nothing is published while this is on. Generation carries on.">
-          <Toggle label="Pause all uploads" checked={form.uploadsPaused} onChange={(uploadsPaused) => set({ uploadsPaused })} />
-        </Row>
-        <Row label="Upload time" hint="IST, once a day.">
-          <input type="time" required className={field} value={form.uploadTime} onChange={(e) => set({ uploadTime: e.target.value })} />
-        </Row>
-      </Card>
+        <div className="flex min-w-0 flex-col gap-3">
+          <section id="generation" className="scroll-mt-20">
+            <Card title="Generation" description="What the scheduled routines do">
+              <Row label="Pause generation" hint="Routines still start on schedule but do nothing: no videos, no template work.">
+                <Toggle label="Pause generation" checked={form.generationPaused} onChange={(generationPaused) => set({ generationPaused })} />
+              </Row>
+              <Row label="Backlog cap" hint="Runs stop making videos at this many ready, and switch to template work.">
+                <input type="number" min={1} max={100} required className={fieldClass} value={form.backlogCap} onChange={(e) => set({ backlogCap: int(e.target.value) })} />
+              </Row>
+              <Row label="Template runs per day" hint="How many runs a day may build or improve a template. Zero stops template work.">
+                <input type="number" min={0} max={4} required className={fieldClass} value={form.templateWork.maxPerDay} onChange={(e) => setWork({ maxPerDay: int(e.target.value) })} />
+              </Row>
+              <Row label="Maximum templates" hint="No new templates past this number; existing ones get improved instead.">
+                <input type="number" min={1} max={50} required className={fieldClass} value={form.templateWork.maxTemplates} onChange={(e) => setWork({ maxTemplates: int(e.target.value) })} />
+              </Row>
+            </Card>
+          </section>
 
-      <Card title="Videos" icon={Film} className="mt-4">
-        <Row label="Length range" hint="Seconds. QA rejects videos outside it.">
-          <span className="flex w-full items-center gap-2">
-            <input type="number" min={15} max={180} required aria-label="Minimum length in seconds" className={field} value={form.lengthMinSec} onChange={(e) => set({ lengthMinSec: int(e.target.value) })} />
-            <span className="text-sm text-muted">to</span>
-            <input type="number" min={15} max={180} required aria-label="Maximum length in seconds" className={field} value={form.lengthMaxSec} onChange={(e) => set({ lengthMaxSec: int(e.target.value) })} />
-          </span>
-        </Row>
-        <Row label="Disclaimer" hint="Shown at the end of every video.">
-          <input type="text" minLength={5} maxLength={120} required className={field} value={form.disclaimer} onChange={(e) => set({ disclaimer: e.target.value })} />
-        </Row>
-      </Card>
+          <section id="uploads" className="scroll-mt-20">
+            <Card title="Uploads" description="The daily publish job">
+              <Row label="Pause all uploads" hint="Nothing is published while this is on. Generation carries on. Use it while you upload by hand.">
+                <Toggle label="Pause all uploads" checked={form.uploadsPaused} onChange={(uploadsPaused) => set({ uploadsPaused })} />
+              </Row>
+              <Row label="Upload time" hint="IST, once a day. The video goes public at this time.">
+                <input type="time" required className={fieldClass} value={form.uploadTime} onChange={(e) => set({ uploadTime: e.target.value })} />
+              </Row>
+            </Card>
+          </section>
 
-      <Card title="Telegram alerts" icon={Bell} className="mt-4">
-        <Row label="Failed run"><Toggle label="Alert on failed run" checked={form.alerts.failedRun} onChange={(failedRun) => setAlert({ failedRun })} /></Row>
-        <Row label="Failed upload"><Toggle label="Alert on failed upload" checked={form.alerts.failedUpload} onChange={(failedUpload) => setAlert({ failedUpload })} /></Row>
-        <Row label="Token errors" hint="YouTube refresh token rejected."><Toggle label="Alert on token errors" checked={form.alerts.tokenErrors} onChange={(tokenErrors) => setAlert({ tokenErrors })} /></Row>
-        <Row label="Low backlog"><Toggle label="Alert on low backlog" checked={form.alerts.lowBacklog} onChange={(lowBacklog) => setAlert({ lowBacklog })} /></Row>
-        <Row label="Low backlog threshold" hint="Alert when fewer than this many videos are ready.">
-          <input type="number" min={0} max={30} required disabled={!form.alerts.lowBacklog} className={field} value={form.alerts.lowBacklogThreshold} onChange={(e) => setAlert({ lowBacklogThreshold: int(e.target.value) })} />
-        </Row>
-      </Card>
-      <p className="mt-3 text-xs text-muted">Sample data: saved values reset when the dev server restarts. Sign-in is not set up yet.</p>
+          <section id="videos" className="scroll-mt-20">
+            <Card title="Videos" description="Rules every render must meet">
+              <Row label="Length range" hint="Seconds. QA rejects videos outside it.">
+                <span className="flex w-full items-center gap-2">
+                  <input type="number" min={15} max={180} required aria-label="Minimum length in seconds" className={fieldClass} value={form.lengthMinSec} onChange={(e) => set({ lengthMinSec: int(e.target.value) })} />
+                  <span className="text-xs text-muted">to</span>
+                  <input type="number" min={15} max={180} required aria-label="Maximum length in seconds" className={fieldClass} value={form.lengthMaxSec} onChange={(e) => set({ lengthMaxSec: int(e.target.value) })} />
+                </span>
+              </Row>
+              <Row label="Disclaimer" hint="Shown at the end of every video.">
+                <input type="text" minLength={5} maxLength={120} required className={fieldClass} value={form.disclaimer} onChange={(e) => set({ disclaimer: e.target.value })} />
+              </Row>
+            </Card>
+          </section>
+
+          <section id="alerts" className="scroll-mt-20">
+            <Card title="Telegram alerts" description="Stored now; sent once the watchdog is set up">
+              <Row label="Failed run"><Toggle label="Alert on failed run" checked={form.alerts.failedRun} onChange={(failedRun) => setAlert({ failedRun })} /></Row>
+              <Row label="Failed upload"><Toggle label="Alert on failed upload" checked={form.alerts.failedUpload} onChange={(failedUpload) => setAlert({ failedUpload })} /></Row>
+              <Row label="Token errors" hint="YouTube refresh token rejected."><Toggle label="Alert on token errors" checked={form.alerts.tokenErrors} onChange={(tokenErrors) => setAlert({ tokenErrors })} /></Row>
+              <Row label="Low backlog"><Toggle label="Alert on low backlog" checked={form.alerts.lowBacklog} onChange={(lowBacklog) => setAlert({ lowBacklog })} /></Row>
+              <Row label="Low backlog threshold" hint="Alert when fewer than this many videos are ready.">
+                <input type="number" min={0} max={30} required disabled={!form.alerts.lowBacklog} className={fieldClass} value={form.alerts.lowBacklogThreshold} onChange={(e) => setAlert({ lowBacklogThreshold: int(e.target.value) })} />
+              </Row>
+            </Card>
+          </section>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {dirty && (
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 16 }} transition={{ type: "spring", stiffness: 420, damping: 34 }}
+            className="fixed inset-x-4 bottom-4 z-40 mx-auto flex max-w-xl items-center justify-between gap-3 rounded-xl border border-ring bg-surface px-4 py-2.5 shadow-lift md:left-[calc(15rem+2rem)]">
+            <span className="text-[13px]"><span className="font-medium">Unsaved changes</span><span className="hidden text-muted sm:inline"> · take effect once saved</span></span>
+            <span className="flex gap-2">
+              <Button tone="ghost" onClick={() => setForm(data)}>Discard</Button>
+              <Button type="submit" tone="primary" disabled={patch.isPending}>{patch.isPending ? "Saving…" : "Save changes"}</Button>
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </form>
   );
 }

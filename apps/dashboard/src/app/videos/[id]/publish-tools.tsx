@@ -63,7 +63,7 @@ export function YouTubeDetails({ v }: { v: VideoDetail }) {
   const missing = v.tags.filter((t) => !v.description.toLowerCase().includes(`#${t.toLowerCase()}`)).map((t) => `#${t}`).join(" ");
   const description = missing ? `${v.description}\n\n${missing}` : v.description;
   return (
-    <Card title="YouTube details" icon={MonitorPlay}>
+    <Card title="Copy into YouTube Studio" icon={MonitorPlay} description="Title, description and tags, ready to paste when you upload by hand">
       <div className="flex flex-col gap-3">
         <Field icon={Type} label="Title" count={v.title.length} max={100} actions={<CopyButton text={v.title} />}>
           <p className="text-base font-semibold leading-snug">{v.title}</p>

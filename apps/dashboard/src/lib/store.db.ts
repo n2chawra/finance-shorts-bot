@@ -292,7 +292,7 @@ export async function listRuns(): Promise<Run[]> {
       error: isVideo ? first.video?.failReason ?? null : null, sessionUrl: ordered.find((s) => s.routineSessionUrl)?.routineSessionUrl ?? null,
       steps: ordered.map(toStep),
     };
-  }).sort((a, b) => b.startedAt.localeCompare(a.startedAt)).slice(0, 60);
+  }).sort((a, b) => b.startedAt.localeCompare(a.startedAt)).slice(0, 150);
 }
 
 // ---------------- analytics ----------------

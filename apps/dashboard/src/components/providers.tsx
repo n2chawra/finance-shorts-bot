@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { Tooltip } from "radix-ui";
 import { useState } from "react";
 
+import { CommandMenu } from "./command";
 import { ToastProvider } from "./toast";
 
 /** Live dashboard: every query on screen re-fetches this often while the tab is visible. */
@@ -20,7 +21,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <QueryClientProvider client={client}>
         <MotionConfig reducedMotion="user" transition={{ type: "spring", stiffness: 380, damping: 32 }}>
           <Tooltip.Provider delayDuration={250}>
-            <ToastProvider>{children}</ToastProvider>
+            <ToastProvider><CommandMenu>{children}</CommandMenu></ToastProvider>
           </Tooltip.Provider>
         </MotionConfig>
       </QueryClientProvider>

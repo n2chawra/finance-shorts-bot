@@ -3,78 +3,94 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* Colour roles. UI and charts are written against these, never raw hex.
-   next-themes sets data-theme on <html> (it resolves "system" to light or dark). */
+   next-themes sets data-theme on <html> (it resolves "system" to light or dark).
+   Direction: neutral zinc base, one indigo accent, solid ink primary buttons, hairline borders. */
 :root {
   color-scheme: light;
-  --plane: #f6f6f9;
-  --surface: #ffffff;
-  --surface-2: #f3f3f7;
-  --ink: #101014;
-  --ink2: #4d4d5a;
-  --muted: #82828f;
-  --line: #e6e6ee;
-  --axis: #c9c9d6;
-  --ring: rgba(16, 16, 40, 0.09);
-  --wash: rgba(16, 16, 40, 0.045);
-  --shadow: 0 1px 2px rgba(16, 16, 40, 0.05), 0 8px 24px -12px rgba(16, 16, 40, 0.12);
-  --shadow-lift: 0 2px 4px rgba(16, 16, 40, 0.06), 0 18px 40px -16px rgba(16, 16, 40, 0.22);
+  --plane: #fafafa;          /* app background */
+  --surface: #ffffff;        /* cards, popovers */
+  --surface-2: #f4f4f5;      /* inset wells, table heads */
+  --ink: #09090b;
+  --ink2: #52525b;
+  --muted: #8b8b94;
+  --line: #f0f0f2;           /* dividers inside cards */
+  --ring: #e4e4e7;           /* borders */
+  --ring-strong: #d4d4d8;
+  --axis: #d4d4d8;
+  --wash: rgba(9, 9, 11, 0.04);
+  --wash-2: rgba(9, 9, 11, 0.07);
+  --shadow: 0 1px 2px rgba(9, 9, 11, 0.04);
+  --shadow-lift: 0 1px 2px rgba(9, 9, 11, 0.05), 0 12px 32px -12px rgba(9, 9, 11, 0.18);
 
-  /* brand: used for navigation, primary actions and highlights (not for chart series) */
-  --brand: #5b5bd6;
-  --brand-2: #0d9b8a;
+  /* accent: active navigation, links, focus, highlights */
+  --brand: #5e5ce6;
+  --brand-2: #8b5cf6;
   --brand-ink: #ffffff;
-  --brand-soft: rgba(91, 91, 214, 0.1);
-  --brand-text: #4a4ac4;
+  --brand-soft: rgba(94, 92, 230, 0.09);
+  --brand-text: #4f4dd6;
 
-  /* chart series and status (see the dataviz palette) */
+  /* primary buttons are solid ink, Vercel-style */
+  --primary: #09090b;
+  --primary-ink: #fafafa;
+
+  /* chart series and status (dataviz palette) */
   --series: #2a78d6;
+  --series-2: #9b8af4;
   --series-soft: rgba(42, 120, 214, 0.14);
-  --good: #0ca30c;
-  --good-text: #006300;
-  --good-soft: rgba(12, 163, 12, 0.11);
-  --warning: #fab219;
-  --warning-text: #8a5a00;
-  --warning-soft: rgba(250, 178, 25, 0.16);
+  --good: #16a34a;
+  --good-text: #15803d;
+  --good-soft: rgba(22, 163, 74, 0.1);
+  --warning: #f5a524;
+  --warning-text: #a16207;
+  --warning-soft: rgba(245, 165, 36, 0.14);
   --serious: #ec835a;
-  --critical: #d03b3b;
-  --critical-text: #b42a2a;
-  --critical-soft: rgba(208, 59, 59, 0.1);
-  --info-soft: rgba(42, 120, 214, 0.11);
-  --info-text: #1c5cab;
+  --critical: #dc2626;
+  --critical-text: #b91c1c;
+  --critical-soft: rgba(220, 38, 38, 0.08);
+  --info-soft: rgba(42, 120, 214, 0.1);
+  --info-text: #1d5fb0;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --plane: #0b0b0f;
-  --surface: #15151b;
-  --surface-2: #1c1c24;
-  --ink: #f4f4f8;
-  --ink2: #b9b9c6;
-  --muted: #84848f;
-  --line: #26262f;
-  --axis: #363642;
-  --ring: rgba(255, 255, 255, 0.09);
-  --wash: rgba(255, 255, 255, 0.055);
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
-  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 18px 40px -16px rgba(0, 0, 0, 0.8);
+  --plane: #09090b;
+  --surface: #111113;
+  --surface-2: #18181b;
+  --ink: #fafafa;
+  --ink2: #a1a1aa;
+  --muted: #71717a;
+  --line: #1c1c20;
+  --ring: #27272a;
+  --ring-strong: #3f3f46;
+  --axis: #3f3f46;
+  --wash: rgba(255, 255, 255, 0.04);
+  --wash-2: rgba(255, 255, 255, 0.08);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-lift: 0 1px 2px rgba(0, 0, 0, 0.5), 0 16px 40px -12px rgba(0, 0, 0, 0.7);
 
-  --brand: #7c7cf0;
-  --brand-2: #2cc4b0;
-  --brand-ink: #0b0b0f;
-  --brand-soft: rgba(124, 124, 240, 0.16);
-  --brand-text: #a9a9ff;
+  --brand: #8381ff;
+  --brand-2: #a78bfa;
+  --brand-ink: #09090b;
+  --brand-soft: rgba(131, 129, 255, 0.13);
+  --brand-text: #a5a4ff;
+
+  --primary: #fafafa;
+  --primary-ink: #09090b;
 
   --series: #3987e5;
+  --series-2: #a89af6;
   --series-soft: rgba(57, 135, 229, 0.2);
-  --good-text: #4cc94c;
-  --good-soft: rgba(12, 163, 12, 0.18);
-  --warning-text: #fbc24a;
-  --warning-soft: rgba(250, 178, 25, 0.16);
-  --critical: #e66767;
-  --critical-text: #f08a8a;
-  --critical-soft: rgba(230, 103, 103, 0.16);
-  --info-soft: rgba(57, 135, 229, 0.18);
-  --info-text: #86b6ef;
+  --good: #22c55e;
+  --good-text: #4ade80;
+  --good-soft: rgba(34, 197, 94, 0.12);
+  --warning: #f5a524;
+  --warning-text: #fbbf24;
+  --warning-soft: rgba(245, 165, 36, 0.13);
+  --critical: #ef4444;
+  --critical-text: #f87171;
+  --critical-soft: rgba(239, 68, 68, 0.12);
+  --info-soft: rgba(57, 135, 229, 0.15);
+  --info-text: #7cb3f2;
 }
 
 @theme inline {
@@ -85,15 +101,20 @@
   --color-ink2: var(--ink2);
   --color-muted: var(--muted);
   --color-line: var(--line);
-  --color-axis: var(--axis);
   --color-ring: var(--ring);
+  --color-ring-strong: var(--ring-strong);
+  --color-axis: var(--axis);
   --color-wash: var(--wash);
+  --color-wash-2: var(--wash-2);
   --color-brand: var(--brand);
   --color-brand-2: var(--brand-2);
   --color-brand-ink: var(--brand-ink);
   --color-brand-soft: var(--brand-soft);
   --color-brand-text: var(--brand-text);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
   --color-series: var(--series);
+  --color-series-2: var(--series-2);
   --color-good: var(--good);
   --color-good-text: var(--good-text);
   --color-good-soft: var(--good-soft);
@@ -106,14 +127,16 @@
   --color-critical-soft: var(--critical-soft);
   --color-info-soft: var(--info-soft);
   --color-info-text: var(--info-text);
-  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
   --shadow-card: var(--shadow);
   --shadow-lift: var(--shadow-lift);
 
-  --animate-shimmer: shimmer 1.4s linear infinite;
-  --animate-pop: pop 0.18s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-pop: pop 0.16s cubic-bezier(0.2, 0.9, 0.3, 1.1);
   --animate-fade: fade 0.15s ease-out;
   --animate-slide-up: slide-up 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --animate-slide-in: slide-in 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
   --animate-pulse-dot: pulse-dot 1.8s ease-in-out infinite;
 
   @keyframes shimmer {
@@ -121,7 +144,7 @@
     to { background-position: -200% 0; }
   }
   @keyframes pop {
-    from { opacity: 0; transform: scale(0.96) translateY(4px); }
+    from { opacity: 0; transform: scale(0.97) translateY(2px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
   }
   @keyframes fade {
@@ -129,8 +152,12 @@
     to { opacity: 1; }
   }
   @keyframes slide-up {
-    from { opacity: 0; transform: translateY(12px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slide-in {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
   }
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -138,15 +165,17 @@
   }
 }
 
+html {
+  font-size: 15px;
+}
+
 body {
-  background:
-    radial-gradient(1200px 500px at 85% -10%, var(--brand-soft), transparent 60%),
-    radial-gradient(900px 420px at -10% 0%, var(--info-soft), transparent 55%),
-    var(--plane);
-  background-attachment: fixed;
+  background: var(--plane);
   color: var(--ink);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
@@ -167,7 +196,7 @@ body {
 }
 
 .skeleton {
-  background: linear-gradient(90deg, var(--wash) 25%, var(--ring) 37%, var(--wash) 63%);
+  background: linear-gradient(90deg, var(--wash) 25%, var(--wash-2) 37%, var(--wash) 63%);
   background-size: 400% 100%;
   animation: var(--animate-shimmer);
 }
@@ -181,6 +210,41 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* faint dotted grid used behind the sign-in card and empty states */
+.dot-grid {
+  background-image: radial-gradient(var(--ring) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* cmdk palette */
+[cmdk-group-heading] {
+  padding: 8px 10px 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+}
+[cmdk-item] {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--ink2);
+  cursor: pointer;
+  user-select: none;
+}
+[cmdk-item][data-selected="true"] {
+  background: var(--wash-2);
+  color: var(--ink);
+}
+[cmdk-empty] {
+  padding: 28px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
 }
 
 @media (prefers-reduced-motion: reduce) {
