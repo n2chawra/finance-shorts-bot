@@ -1,0 +1,150 @@
+{
+  "id": "v-20261014-04",
+  "createdAt": "2026-10-14T15:43:49.328065+00:00",
+  "status": "qa_passed",
+  "template": "money_leak_meter",
+  "topic": {
+    "title": "What forgotten OTT and app subscriptions cost over 15 years",
+    "category": "subscriptions"
+  },
+  "title": "Unused subscriptions quietly drain your savings every year",
+  "description": "A few forgotten monthly app and OTT plans add up over 15 years, against the same money in a SIP at an assumed 12% a year. Returns are not assured. Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#PersonalFinance",
+    "#Subscriptions",
+    "#SIP"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Tell us which subscription you forgot",
+  "seed": 6173,
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "F",
+    "bpm": 108
+  },
+  "durationSec": 54,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.3
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Checked: 12% SIP shown as assumption (end line + description says returns not assured), no product names, no guarantee wording, description ends with disclaimer, subscription framing is fair. Notes: 2.8x line and 'Cancel it or keep it?' read slightly certain; 'Check your bank statement' is generic housekeeping, not investment advice."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-render: 36.0s counters (Year 15, 2.1 L put in, 6.0 L worth) now match the chart dots; 43.5s bar labels sit clear above bars; hook, disclaimer, thumbnail, length 54s and audio all OK."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-14T15:38:41.132161+00:00",
+      "finishedAt": "2026-10-14T15:38:41.132161+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-14T15:38:42.248597+00:00",
+      "finishedAt": "2026-10-14T15:38:42.248597+00:00",
+      "notes": [
+        "script does not match schema:\n  item: 'unused subscriptions' is too long"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-14T15:38:48.234889+00:00",
+      "finishedAt": "2026-10-14T15:38:48.234889+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-14T15:39:15.116032+00:00",
+      "finishedAt": "2026-10-14T15:39:15.116032+00:00",
+      "notes": [
+        "Checked: 12% SIP shown as assumption (end line + description says returns not assured), no product names, no guarantee wording, description ends with disclaimer, subscription framing is fair. Notes: 2.8x line and 'Cancel it or keep it?' read slightly certain; 'Check your bank statement' is generic housekeeping, not investment advice."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-14T15:39:27.560149+00:00",
+      "finishedAt": "2026-10-14T15:40:32.834175+00:00",
+      "notes": [
+        "54 s, ember/synthwave, peak -1.0 dB, mean -18.3 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-14T15:40:55.221678+00:00",
+      "finishedAt": "2026-10-14T15:40:55.221678+00:00",
+      "notes": [
+        "[template] 36.0s: line chart end dots sit at about 6 L (green) and 2.2 L (blue), the full 15-year values, but the counters say 'Year 14', 'Put in 2.0 L' and 'Worth 5.2 L'. The dots and counters disagree, so the template is drawing the curve and dots at a different progress than the counter.",
+        "[template] 43.5s: the 'Spent' bar's value label '2.2 L' sits directly on the top edge of the red bar and touches it, so the bottom of the text overlaps the bar. The label should sit clear above the bar, as the 6.1 L label does."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-14T15:41:18.515794+00:00",
+      "finishedAt": "2026-10-14T15:42:26.546385+00:00",
+      "notes": [
+        "54 s, ember/synthwave, peak -1.0 dB, mean -18.3 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-14T15:43:36.357979+00:00",
+      "finishedAt": "2026-10-14T15:43:36.357979+00:00",
+      "notes": [
+        "Re-render: 36.0s counters (Year 15, 2.1 L put in, 6.0 L worth) now match the chart dots; 43.5s bar labels sit clear above bars; hook, disclaimer, thumbnail, length 54s and audio all OK."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-14T15:43:49.328126+00:00",
+      "finishedAt": "2026-10-14T15:43:49.328126+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261014-04",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261014-04"
+  }
+}
