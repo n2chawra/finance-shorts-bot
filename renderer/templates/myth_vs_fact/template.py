@@ -93,17 +93,18 @@ class MythVsFact(Video):
         a = ramp(t, 0.3)*A
         p = ease(ramp(t, RACE_T0, RACE_DUR))
         yr = self.years*p
+        whole = int(yr + 1e-9)
         base, full = 1380, 760
         c.d.line([120, base + 4, W - 120, base + 4], fill=c.mix(P.grid, a), width=4)
         for i, x in enumerate((W/2 - 230, W/2 + 230)):
             col = P.cast[i]
-            v = lumpsum_at(self.amount, self.rates[i], yr)
-            h = full*v/self.final[1]
+            h = full*lumpsum_at(self.amount, self.rates[i], yr)/self.final[1]   # bars grow smoothly
             vbar(c, x, base, 240, h, col, a)
-            c.text(inr(v), x, base - h - 52, 64, col, a)
+            # the amount is for the whole year on the "Year N" pill, so the two always agree
+            c.text(inr(lumpsum_at(self.amount, self.rates[i], whole)), x, base - h - 52, 64, col, a)
             c.text(self.labels[i], x, base + 56, 48, P.text, a, max_w=420)
             c.text(f"{self.rates[i]:g}% a year", x, base + 118, MIN_TEXT, P.muted, a, "Medium")
-        c.pill(W/2, 1650, f"Year {int(yr)}", 60, P.bg, P.text, a)
+        c.pill(W/2, 1650, f"Year {whole}", 60, P.bg, P.text, a)
 
     def _result(self, c: Canvas, t: float, A: float) -> None:
         P = self.pal

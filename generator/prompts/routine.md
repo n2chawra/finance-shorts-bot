@@ -32,7 +32,7 @@ Run `python -m generator.run state` and read `mode`:
 |---|---|
 | `paused` | Nothing. Report "generation is paused" and stop. |
 | `idle` | Nothing. Report the `reason` and stop. |
-| `video` | Make one video: sections 2 to 7. |
+| `video` | Make one video: sections 2 to 7. `videos_today` of `daily_target` are already made. |
 | `template_work` | Follow `generator/prompts/template_builder.md`, then section 8. |
 
 ## 2. Plan (you)
@@ -67,9 +67,20 @@ It must print `ok`. If it prints `FAIL:` lines, fix the script and go back to se
 Spawn one subagent. Give it only the video id and the instruction to read
 `generator/prompts/qa_reviewer.md` and follow it exactly, opening the PNG files so it sees them.
 
-If it fails the video: fix the script lines it named, re-run the number check, ask the fact
-reviewer to re-review the changed lines, render again, and ask the **same** QA subagent to
-review again. Two re-renders at most.
+If it fails the video, fix each problem according to its tag. Re-render and ask the **same**
+QA subagent to review again. Three re-renders at most per video.
+
+- **`[script]`:** fix the script lines it named, re-run the number check, ask the fact reviewer
+  to re-review the changed lines, then render again.
+- **`[template]`:** repair the template yourself; it would fail every future video too.
+  1. Edit only `renderer/templates/<template>/template.py`. Make the smallest change that fixes
+     the named problem. Do not restyle anything else. Every number on screen must still come
+     from code, and the same script and seed must still give the same video.
+  2. Run `python -m pytest renderer -q`. It must pass. If you cannot make it pass, undo your
+     change with `git checkout -- renderer` and go to "If the video cannot be made to pass".
+  3. Render again (section 5) and get the QA review again.
+  4. Once the video passes, commit the repair before shipping, so it goes out with the video:
+     `git add renderer/templates/<template> && git commit -q -m "Fix <template>: <what was wrong>"`
 
 ## 7. Ship
 
@@ -91,14 +102,19 @@ themselves, so do not try `gh release` or the `--release` flag.
   a later run cannot recover it.
 ### If the video cannot be made to pass
 
-After the limits above are used up (three plan attempts, two rewrites, two re-renders):
+After the limits above are used up (three plan attempts, two rewrites, three re-renders), first
+undo any template repair that did not lead to a pass (`git checkout -- renderer`), then:
 
 ```
 python -m generator.run fail <id> --reason "<which check failed and why, one sentence>"
 git add videos/<id> && git commit -q -m "Mark video <id> failed" && git push origin HEAD:main
 ```
 
-A failed video is never released. Do not start a second video in the same run.
+A failed video is never released. **Then start again once**, so the run still delivers a video:
+run `python -m generator.run state` again (it gives a new `next_id`) and, if its mode is still
+`video`, make a new video from section 2, with a **different template** from the one that
+failed. If that second video also cannot pass, mark it failed the same way and stop. Never
+attempt more than two videos in one run.
 
 ## 8. After template work
 
@@ -114,7 +130,8 @@ Only push a template whose two test videos passed. Never push a template that fa
 ## Rules for every run
 
 - Never edit `config/settings.json`, `CLAUDE.md`, `PLAN.md`, anything under `apps/`, `workers/`
-  or `.github/`, or these prompt files.
+  or `.github/`, or these prompt files. Under `renderer/`, a video run may only make the
+  template repair described in section 6.
 - Never force-push, delete a branch, or rewrite history.
 - Never commit an mp4 or wav file to `main`. The only place an mp4 goes is the `media/<id>` branch that `ship` creates.
 - Do not use any connector or reach any website. Everything you need is in the repository.
@@ -128,5 +145,6 @@ End with a short report, because the run's status light does not show whether th
 - mode, and the video id or template name
 - for a video: template, topic, title, and the result of each step (plan, number check, fact
   review, render, QA review, ship), with how many rewrites or re-renders were needed
+- any template repair (what was wrong, what you changed), and whether a second video was started
 - whether the push to `main` and the push of `media/<id>` succeeded
 - anything that failed, with the exact error text

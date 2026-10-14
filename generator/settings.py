@@ -17,10 +17,12 @@ DEFAULTS: dict = {
     "lengthMinSec": 45,
     "lengthMaxSec": 60,
     "disclaimer": "Illustrative only. Not financial advice.",
+    "dailyVideoTarget": 3,        # videos to ship per IST day before any template work; then runs idle
     "templateWork": {
         "maxPerDay": 1,           # template-building runs allowed per IST day
         "maxTemplates": 10,       # stop building new templates at this many
-        "everyNthRun": 5,         # while there is room for templates, every Nth run builds one (0 = never)
+        "everyNthRun": 5,         # 0 = build templates only when the backlog is full; otherwise once the
+                                  # day's videos are made, one run that day builds or improves a template
     },
     "templates": {},              # per-template overrides: {"quiz_countdown": {"enabled": false, "weight": 0.8}}
 }

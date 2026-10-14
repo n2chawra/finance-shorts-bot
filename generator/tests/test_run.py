@@ -76,33 +76,42 @@ def test_template_cap_stops_new_templates(root: Path) -> None:
     assert s["may_add_template"] is False and s["templates"] == 4
 
 
-def test_every_nth_run_is_template_work(root: Path) -> None:
-    for i in range(3):
-        history.append(entry(i), root)
-    assert run.state(root)["mode"] == "video"                # 3 videos since the last template run: not yet
-    history.append(entry(3), root)
-    assert run.state(root)["mode"] == "template_work"        # 4 videos shipped, so the 5th run builds
-    history.append_template_work("quiz_countdown", "improve", True, root)
-    assert run.state(root)["mode"] == "video"                # counted from that template run again
+@pytest.fixture
+def today(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Freeze the clock at NOW, so entries made with small days_ago count as today (IST)."""
+    monkeypatch.setattr(history, "now", lambda: NOW)
 
 
-def test_nth_run_rule_counts_videos_since_the_last_template_run(root: Path) -> None:
-    settings(root, templateWork={"everyNthRun": 3, "maxPerDay": 5})
-    old = history.append_template_work("a", "build", True, root, at=NOW - timedelta(days=5))
-    assert old["template"] == "a"
-    history.append(entry(1, days_ago=6), root)               # before that template run: does not count
-    history.append(entry(2, days_ago=2), root)
-    assert run.state(root)["mode"] == "video"
-    history.append(entry(3, days_ago=1), root)               # two videos since: the next run builds
+def test_daily_target_comes_before_template_work(root: Path, today: None) -> None:
+    settings(root, templateWork={"everyNthRun": 3, "maxPerDay": 1, "maxTemplates": 10})
+    for i in range(2):
+        history.append(entry(i, days_ago=0.1), root)
     s = run.state(root)
-    assert s["mode"] == "template_work" and "2 videos since" in s["reason"]
+    assert s["mode"] == "video" and s["videos_today"] == 2 and s["daily_target"] == 3
+    history.append(entry(2, days_ago=0.05), root)
+    assert run.state(root)["mode"] == "template_work"        # 3 made today: now a template run
+    history.append_template_work("quiz_countdown", "improve", True, root, at=NOW)
+    s = run.state(root)
+    assert s["mode"] == "idle" and "3 videos are made" in s["reason"]
 
 
-def test_no_nth_template_runs_once_templates_are_at_the_limit(root: Path) -> None:
+def test_videos_from_yesterday_do_not_count_toward_today(root: Path, today: None) -> None:
+    for i in range(5):
+        history.append(entry(i, days_ago=1), root)
+    assert run.state(root)["videos_today"] == 0 and run.state(root)["mode"] == "video"
+
+
+def test_daily_target_is_a_setting(root: Path, today: None) -> None:
+    settings(root, dailyVideoTarget=1, templateWork={"everyNthRun": 0})
+    history.append(entry(1, days_ago=0.1), root)
+    assert run.state(root)["mode"] == "idle"                 # no template work outside a full backlog
+
+
+def test_no_template_runs_once_templates_are_at_the_limit(root: Path, today: None) -> None:
     settings(root, templateWork={"everyNthRun": 3, "maxTemplates": 4})
-    for i in range(6):
-        history.append(entry(i), root)
-    assert run.state(root)["mode"] == "video"
+    for i in range(3):
+        history.append(entry(i, days_ago=0.1), root)
+    assert run.state(root)["mode"] == "idle"
 
 
 def test_disabled_template_is_not_offered(root: Path) -> None:

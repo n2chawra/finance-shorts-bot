@@ -119,9 +119,10 @@ class MoneyLeakMeter(Video):
         d.ellipse([cx - 34, cy - 34, cx + 34, cy + 34], fill=c.mix(P.text, a))
         done = t > METER_T0 + METER_DUR
         sz = 130*(1 + 0.2*math.exp(-(t - METER_T0 - METER_DUR)*4)) if done else 130
-        c.text(inr(self.spent*p), W/2, 1220, sz, P.danger, a, max_w=SAFE_W)
+        yr = int(self.years*p + 1e-9)   # whole years, so the amount always matches its "Year N" label
+        c.text(inr(self.yearly*yr), W/2, 1220, sz, P.danger, a, max_w=SAFE_W)
         c.text(self.txt["meter_label"], W/2, 1350, 54, P.text, a, "Medium", max_w=SAFE_W)
-        c.pill(W/2, 1540, f"Year {int(self.years*p)}", 60, P.bg, P.text, a)
+        c.pill(W/2, 1540, f"Year {yr}", 60, P.bg, P.text, a)
 
     def _flip(self, c: Canvas, t: float, A: float) -> None:
         P = self.pal
@@ -151,11 +152,13 @@ class MoneyLeakMeter(Video):
         for (x, y), col in ((put[-1], P.cast[1]), (val[-1], P.cast[0])):
             r = 16 + 4*math.sin(t*10)
             d.ellipse([x - r, y - r, x + r, y + r], fill=c.mix(col, A))
-        c.pill(W/2, 1480, f"Year {n//12}", 56, P.bg, P.text, a)
+        # the curve moves monthly; the labels show the last completed year so they always agree
+        done = (n//12)*12
+        c.pill(W/2, 1480, f"Year {done//12}", 56, P.bg, P.text, a)
         c.text("Put in", W/2 - 250, 1590, MIN_TEXT, P.muted, a, "Medium")
-        c.text(inr(self.monthly*n), W/2 - 250, 1670, 68, P.cast[1], a)
+        c.text(inr(self.monthly*done), W/2 - 250, 1670, 68, P.cast[1], a)
         c.text("Worth", W/2 + 250, 1590, MIN_TEXT, P.muted, a, "Medium")
-        c.text(inr(self.series[n]), W/2 + 250, 1670, 68, P.cast[0], a)
+        c.text(inr(self.series[done]), W/2 + 250, 1670, 68, P.cast[0], a)
 
     def _compare(self, c: Canvas, t: float, A: float) -> None:
         P = self.pal

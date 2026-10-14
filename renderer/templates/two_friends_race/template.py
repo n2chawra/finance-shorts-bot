@@ -146,8 +146,9 @@ class TwoFriendsRace(Video):
                 y = 700 + (ph**1.6)*700
                 if y < jb - 40:
                     coin(c, jx + (n - 1)*55, y, 36, A)
-        c.pill(W/2, 1630, f"Age {int(age)}", 64, P.bg, P.text, A)
-        c.text("Invested: " + inr(self.invested[i]*prog), W/2, 560, 66, P.text, A*ramp(t, COIN_T0))
+        done = int(age - p.start + 1e-9)   # whole years saved, so "Invested" matches the "Age N" pill
+        c.pill(W/2, 1630, f"Age {p.start + done}", 64, P.bg, P.text, A)
+        c.text("Invested: " + inr(self.monthly*12*done), W/2, 560, 66, P.text, A*ramp(t, COIN_T0))
         na = ramp(t, NOTE_AT, 0.2)*A
         if na > 0:
             k = back(ramp(t, NOTE_AT, 0.35))
@@ -222,9 +223,10 @@ class TwoFriendsRace(Video):
             d.line([x, T, x, B], fill=c.mix(P.muted, sa*0.6), width=3)
             c.text(self.txt["chart_stop_label"], x + 14, T + 34, MIN_TEXT, P.danger, sa, "Medium", "lm")
             c.caption(self.txt["chart_note"], self.chart_stop + 0.8, t, 400, 54, self.a.color, A*(1 - ramp(t, 7.5)))
-        c.pill(W/2, 1630, f"Age {int(age)}", 56, P.bg, P.text, a)
-        c.text(f"{self.a.name} {inr(self.series[0][n])}", W/2 - 250, 1735, 50, self.a.color, a)
-        c.text(f"{self.b.name} {inr(self.series[1][n])}", W/2 + 250, 1735, 50, self.b.color, a)
+        done = (n//12)*12   # the lines move monthly; the pill and amounts show the last whole year
+        c.pill(W/2, 1630, f"Age {self.origin + done//12}", 56, P.bg, P.text, a)
+        c.text(f"{self.a.name} {inr(self.series[0][done])}", W/2 - 250, 1735, 50, self.a.color, a)
+        c.text(f"{self.b.name} {inr(self.series[1][done])}", W/2 + 250, 1735, 50, self.b.color, a)
 
     def _result(self, c: Canvas, t: float, A: float) -> None:
         P = self.pal

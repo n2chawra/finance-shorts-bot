@@ -40,10 +40,17 @@ Pass:
 python -m generator.run record <id> qa_review --passed --note "<one line on what you saw>"
 ```
 
-Reject (one `--note` per problem, each naming the frame time and what is wrong):
+Reject (one `--note` per problem, each naming the frame time and what is wrong). Start each
+note with who has to fix it:
+
+- `[script]` when changing the script's text or inputs fixes it (a line too long, a wrong word,
+  a number that needs different inputs).
+- `[template]` when the template draws it wrong whatever the script says (shapes or labels in a
+  fixed place overlapping, colours clashing, a label that disagrees with its value, an animation
+  bug). Say what the template does wrong, as precisely as you can.
 
 ```
-python -m generator.run record <id> qa_review --failed --note "<problem 1>" --note "<problem 2>"
+python -m generator.run record <id> qa_review --failed --note "[script] <problem 1>" --note "[template] <problem 2>"
 ```
 
 Reply with PASS or FAIL and your notes.
