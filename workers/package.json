@@ -7,6 +7,9 @@
     "migrate": "prisma migrate deploy --schema ../apps/dashboard/prisma/schema.prisma",
     "ingest": "tsx ingest.ts",
     "reset-data": "tsx --env-file=../apps/dashboard/.env reset-data.ts",
+    "auth": "tsx --env-file=../apps/dashboard/.env auth.ts",
+    "publish": "tsx publish.ts",
+    "stats": "tsx stats.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts"
   },

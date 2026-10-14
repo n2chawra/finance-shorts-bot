@@ -1,0 +1,40 @@
+# Uploads one video a day to YouTube for the 19:07 IST slot (private + publishAt).
+# Runs three times so a failure gets two retries; once today's slot is taken the runs do nothing.
+name: Publish
+
+on:
+  schedule:
+    - cron: "37 4,7,10 * * *" # 10:07, 13:07, 16:07 IST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: workers
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/package-lock.json
+      - run: npm ci
+      - run: npm run generate
+      - name: Publish
+        run: npm run publish | tee -a "$GITHUB_STEP_SUMMARY"

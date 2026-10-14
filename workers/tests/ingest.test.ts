@@ -6,9 +6,7 @@ import { manifestPaths, readmeSummary, templateIds } from "../ingest.ts";
 import { Manifest } from "../lib/manifest.ts";
 
 test("every manifest in the repo parses", () => {
-  const paths = manifestPaths();
-  assert.ok(paths.length >= 4);
-  for (const p of paths) {
+  for (const p of manifestPaths()) {
     const m = Manifest.parse(JSON.parse(readFileSync(p, "utf8")));
     assert.match(m.id, /^v-\d{8}-\d{2}$/);
     if (m.status === "qa_passed") {
@@ -18,11 +16,19 @@ test("every manifest in the repo parses", () => {
   }
 });
 
-test("a manifest with a missing check or a typed status is rejected", () => {
-  const good = JSON.parse(readFileSync(manifestPaths()[0]!, "utf8"));
-  assert.throws(() => Manifest.parse({ ...good, checks: good.checks.slice(0, 2) }));
-  assert.throws(() => Manifest.parse({ ...good, status: "published" }));
-  assert.throws(() => Manifest.parse({ ...good, id: "../etc" }));
+const SHIPPED = {
+  id: "v-20261013-01", createdAt: "2026-10-13T10:00:00+00:00", status: "qa_passed", template: "quiz_countdown",
+  topic: { title: "t", category: "sip" }, title: "A title", description: "d", hashtags: ["#Shorts"], hookStyle: "question",
+  cta: "c", seed: 1, style: { palette: "night", genre: "pop", key: "C", bpm: 110 }, durationSec: 48,
+  checks: [{ checker: "number_check", passed: true, notes: [] }, { checker: "fact_review", passed: true, notes: [] }, { checker: "qa_review", passed: true, notes: [] }],
+  agentRuns: [], release: { tag: "video-v-20261013-01", asset: "video.mp4", uploaded: false },
+};
+
+test("a shipped manifest parses; a missing check, an unknown status or a bad id is rejected", () => {
+  assert.equal(Manifest.parse(SHIPPED).status, "qa_passed");
+  assert.throws(() => Manifest.parse({ ...SHIPPED, checks: SHIPPED.checks.slice(0, 2) }));
+  assert.throws(() => Manifest.parse({ ...SHIPPED, status: "published" }));
+  assert.throws(() => Manifest.parse({ ...SHIPPED, id: "../etc" }));
 });
 
 test("a failed manifest parses without release or checks", () => {

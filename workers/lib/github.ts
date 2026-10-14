@@ -1,5 +1,8 @@
 import { execFileSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { createWriteStream, existsSync, renameSync } from "node:fs";
+import path from "node:path";
+import { Readable } from "node:stream";
+import { pipeline } from "node:stream/promises";
 
 import { z } from "zod";
 
@@ -48,4 +51,29 @@ export async function releaseAssetUrl(repo: string, tag: string, asset: string):
   if (data === null) return null;
   const found = Release.parse(data).assets.find((a) => a.name === asset && a.state === "uploaded" && a.size > 0);
   return found?.url ?? null;
+}
+
+/** Download the asset `asset` of Release `tag` to `dest`. Same auth rules as `api`. */
+export async function downloadReleaseAsset(repo: string, tag: string, asset: string, dest: string): Promise<void> {
+  const token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
+  if (!token) {
+    const dir = path.dirname(dest);
+    for (const exe of ["gh", "C:\\Program Files\\GitHub CLI\\gh.exe"]) {
+      if (exe !== "gh" && !existsSync(exe)) continue;
+      try {
+        execFileSync(exe, ["release", "download", tag, "--pattern", asset, "--dir", dir, "--clobber", "-R", repo], { stdio: ["ignore", "pipe", "pipe"] });
+        if (path.join(dir, asset) !== dest) renameSync(path.join(dir, asset), dest);
+        return;
+      } catch (e) {
+        if (!String((e as { stderr?: unknown }).stderr ?? e).includes("ENOENT")) throw new Error(`gh release download ${tag} failed: ${String((e as { stderr?: unknown }).stderr ?? e).trim()}`);
+      }
+    }
+    throw new Error("no GITHUB_TOKEN and the gh CLI was not found");
+  }
+  const url = await releaseAssetUrl(repo, tag, asset);
+  if (!url) throw new Error(`release ${tag} has no ${asset}`);
+  // GitHub redirects to signed storage; fetch drops the Authorization header on that cross-origin hop
+  const res = await fetch(url, { headers: { authorization: `Bearer ${token}`, accept: "application/octet-stream" } });
+  if (!res.ok || !res.body) throw new Error(`downloading ${tag}/${asset} failed: ${res.status}`);
+  await pipeline(Readable.fromWeb(res.body as import("node:stream/web").ReadableStream), createWriteStream(dest));
 }

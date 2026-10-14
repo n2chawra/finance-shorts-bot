@@ -42,9 +42,9 @@ Done when: new manifests appear in Postgres as `queued` within an hour of a rout
 - [ ] Google Cloud project, YouTube Data API v3, OAuth consent screen set to Production,
       refresh token script (`workers/auth.ts`, run once locally)
 - [ ] Apply for the API audit (so uploads aren't stuck private)
-- [ ] `workers/publish.ts` + `publish.yml` (daily): oldest queued → upload private with
+- [x] `workers/publish.ts` + `publish.yml` (daily): oldest queued → upload private with
       publishAt 19:07 IST, thumbnail, title, description, tags; retries; status updates
-- [ ] `workers/stats.ts` + `stats.yml` (daily)
+- [x] `workers/stats.ts` + `stats.yml` (daily)
 - [ ] `workers/watchdog.ts`: Telegram alerts
 
 Done when: one video goes out on schedule unattended and its stats show up the next day.
@@ -190,3 +190,11 @@ Done when: everything above works on a phone.
   after every 2 videos (`everyNthRun` 3, at most one a day), counted from the last template run
   rather than from history length. The template window now reaches 6 videos at 8 templates. The
   unattended template-builder path has never run; its first run is the test.
+- 2026-10-14: First unattended night: the 01:07 run's video failed QA twice (pink amount on a pink
+  bar in the plum palette; bar value labels now use the text colour), the 04:07 run's video went
+  through release and ingest with nobody involved. M5 code written: `workers/auth.ts` (one-time
+  sign-in; stores the refresh token in `.env` and the GitHub secret without printing it),
+  `publish.ts` (10:07/13:07/16:07 IST; one video for today's 19:07 slot, upload-now first,
+  3 attempts then failed), `stats.ts` (08:47 IST, Analytics per day up to yesterday), and marking
+  videos published once YouTube shows them public. Plain fetch + Zod, no new packages. Both
+  workflows do nothing until the YouTube secrets exist. Not yet run against YouTube.
