@@ -1,0 +1,27 @@
+{
+  "template": "myth_vs_fact",
+  "seed": 31407,
+  "style": { "palette": "plum", "genre": "pop", "key": "A", "bpm": 110 },
+  "amount": 150000,
+  "years": 20,
+  "tracks": [
+    { "label": "PPF", "rate_pct": 7.1 },
+    { "label": "Index fund", "rate_pct": 11 }
+  ],
+  "text": {
+    "myth_line1": "PPF alone will make",
+    "myth_line2": "my retirement easy",
+    "setup_title": "You lock in {amount_long}",
+    "setup_note": "Safe and steady. Or is it?",
+    "bust_line": "Safe, yes. Enough?",
+    "bust_sub": "Growth rate matters too",
+    "race_title": "{years} years later",
+    "result_line1": "The growth gap is",
+    "result_line2": "Safety has a price too",
+    "end_line1": "Safe is one goal.",
+    "end_line2": "Growth is another.",
+    "end_punch": "Mix both wisely.",
+    "end_cta": "Tell us your retirement plan",
+    "end_follow": "Follow for more money myths"
+  }
+}

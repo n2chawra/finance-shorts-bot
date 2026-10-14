@@ -1,0 +1,56 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-14T22:38:30.582211+00:00",
+    "finishedAt": "2026-10-14T22:38:30.582211+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-14T22:38:36.140531+00:00",
+    "finishedAt": "2026-10-14T22:38:36.140531+00:00",
+    "notes": [
+      "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-14T22:38:58.363129+00:00",
+    "finishedAt": "2026-10-14T22:38:58.363129+00:00",
+    "notes": [
+      "Checked PPF 7.1% and index 11% shown as assumptions (template assumption line plus description), no named products or guarantees, generic 'Mix both wisely' is illustrative, disclaimer ends description. Notes: pre-tax equity (LTCG) and market risk not shown, but gap stays material after tax; PPF 20 years needs extension after 15-year lock-in and is normally yearly contributions, description says one-time."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-14T22:39:05.454268+00:00",
+    "finishedAt": "2026-10-14T22:40:05.161492+00:00",
+    "notes": [
+      "50 s, plum/pop, peak -1.0 dB, mean -18.1 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-14T22:40:20.410367+00:00",
+    "finishedAt": "2026-10-14T22:40:20.410367+00:00",
+    "notes": [
+      "8 frames clean: MYTH hook with speech bubble, jar, FACT, bars growing (Year 10 to 20; 5.9L/12.1L/gap 6.2L match 7.1%/11% on 1.5L), disclaimer on last frame, thumbnail clear, 50s, audio -1.0/-18.1 dB; only tight side margin on 'Mix both wisely.' at 48s (not cut off)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-14T22:40:28.471034+00:00",
+    "finishedAt": "2026-10-14T22:40:28.471034+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
