@@ -25,6 +25,27 @@ The source of truth for rules and constraints is [`CLAUDE.md`](../../CLAUDE.md);
 build log live in [`PLAN.md`](../../PLAN.md). Older diagrams made for the YouTube audit are in
 [`docs/channel/diagrams`](../channel/diagrams).
 
+## How to view the diagrams
+
+The diagrams (architecture, sequence, state and the database `erDiagram`) are written in
+[Mermaid](https://mermaid.js.org): text inside ```` ```mermaid ```` blocks that a viewer draws as a
+picture. Pick whichever is handiest:
+
+1. **On GitHub (easiest).** Open the page in the repo, for example
+   [`docs/guide/08-data-model.md`](https://github.com/n2chawra/finance-shorts-bot/blob/main/docs/guide/08-data-model.md).
+   GitHub draws Mermaid automatically, private repos included. Hover over a diagram for
+   zoom and full-screen buttons.
+2. **In VS Code.** Install the extension **Markdown Preview Mermaid Support**
+   (`bierner.markdown-mermaid`), open the `.md` file and press `Ctrl+Shift+V` (or `Ctrl+K V` for a
+   side-by-side preview). VS Code's built-in preview shows the raw text without that extension.
+3. **In the Mermaid Live Editor.** Copy everything between ```` ```mermaid ```` and ```` ``` ````,
+   paste it into https://mermaid.live, and export it as PNG or SVG for slides. It draws in your
+   browser, but the diagram text ends up in the page URL, so use it for diagrams you don't mind
+   sharing.
+
+The older audit diagrams in [`docs/channel/diagrams`](../channel/diagrams) are already PNGs, ready
+for slides.
+
 ## The 60-second pitch
 
 > I built a system that makes and publishes a short personal-finance video for Indian viewers
