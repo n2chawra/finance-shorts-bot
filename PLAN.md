@@ -73,7 +73,7 @@ Frontend (mobile-first). Ticked pages run on in-memory sample data until M4 land
 - [x] Analytics page: views + subscribers over time, best/worst videos, best upload days
 - [x] Runs page: every routine run, result, duration, errors, link to the Claude session
 - [x] Settings page (fields above)
-- [ ] Deploy to Netlify (`netlify.toml`; builds skipped when `apps/dashboard` is unchanged)
+- [x] Deploy to Netlify (`netlify.toml`; builds skipped when `apps/dashboard` is unchanged)
 
 Done when: everything above works on a phone.
 
