@@ -152,13 +152,13 @@ class MoneyLeakMeter(Video):
         for (x, y), col in ((put[-1], P.cast[1]), (val[-1], P.cast[0])):
             r = 16 + 4*math.sin(t*10)
             d.ellipse([x - r, y - r, x + r, y + r], fill=c.mix(col, A))
-        # the curve moves monthly; the labels show the last completed year so they always agree
-        done = (n//12)*12
-        c.pill(W/2, 1480, f"Year {done//12}", 56, P.bg, P.text, a)
+        # counters follow the curve's current month, so the dots and the figures always agree
+        yr = -(-n//12)   # the year the curve is currently in
+        c.pill(W/2, 1480, f"Year {yr}", 56, P.bg, P.text, a)
         c.text("Put in", W/2 - 250, 1590, MIN_TEXT, P.muted, a, "Medium")
-        c.text(inr(self.monthly*done), W/2 - 250, 1670, 68, P.cast[1], a)
+        c.text(inr(self.monthly*n), W/2 - 250, 1670, 68, P.cast[1], a)
         c.text("Worth", W/2 + 250, 1590, MIN_TEXT, P.muted, a, "Medium")
-        c.text(inr(self.series[done]), W/2 + 250, 1670, 68, P.cast[0], a)
+        c.text(inr(self.series[n]), W/2 + 250, 1670, 68, P.cast[0], a)
 
     def _compare(self, c: Canvas, t: float, A: float) -> None:
         P = self.pal
@@ -171,7 +171,7 @@ class MoneyLeakMeter(Video):
                                                 ("If invested", self.fv, P.cast[0], W/2 + 230))):
             h = full*(v/self.fv)*cnt
             vbar(c, x, base, 240, h, col, a)
-            c.text(inr(v*cnt), x, base - h - 60, 68, P.text, a)   # value in text colour: readable on any bar or confetti
+            c.text(inr(v*cnt), x, base - h - 84, 68, P.text, a)   # value in text colour: readable on any bar or confetti
             c.text(label, x, base + 60, 52, P.text, a)
         c.caption(self.txt["cmp_line"], CMP_REVEAL + 0.3, t, 440, 76, P.accent, A)
 
