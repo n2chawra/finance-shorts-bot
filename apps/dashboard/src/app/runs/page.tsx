@@ -43,8 +43,8 @@ export default function RunsPage() {
               <Accordion.Content className="overflow-hidden data-[state=open]:animate-slide-up">
                 <div className="px-3 pb-3 md:px-4">
                   <ol className="rounded-xl bg-wash px-3">
-                    {r.steps.map((s) => (
-                      <li key={s.agent} className="flex items-center gap-3 border-b border-line py-1.5 text-sm last:border-0">
+                    {r.steps.map((s, i) => (
+                      <li key={i} className="flex items-center gap-3 border-b border-line py-1.5 text-sm last:border-0">
                         {s.status === "ok" ? <CircleCheck aria-label="OK" className="size-4 text-good" /> : s.status === "failed" ? <CircleX aria-label="Failed" className="size-4 text-critical" /> : <Minus aria-label="Skipped" className="size-4 text-muted" />}
                         <span className="flex-1">{titleCase(s.agent)}{s.note && <span className="text-ink2"> · {s.note}</span>}</span>
                         <span className="text-xs tabular-nums text-muted">{s.status === "skipped" ? "skipped" : fmtDuration(s.durationSec)}</span>

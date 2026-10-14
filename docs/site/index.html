@@ -9,18 +9,24 @@
   h1 { font-size: 28px; margin-bottom: 4px; }
   .muted { color: #5c5c66; }
   a { color: #4a4ac4; }
+  .yt { display: inline-flex; align-items: center; gap: 10px; border: 1px solid #d9d9e3; border-radius: 12px; padding: 10px 14px; margin: 8px 0 4px; }
+  .yt svg { flex: none; }
+  nav a { margin-right: 16px; }
+  @media (prefers-color-scheme: dark) { .yt { border-color: #33333d; } }
   @media (prefers-color-scheme: dark) { body { color: #ececf2; background: #121216; } .muted { color: #a3a3ad; } a { color: #a9a9ff; } }
 </style>
 </head>
 <body>
 <h1>Finance Shorts Uploader</h1>
-<p class="muted">A personal tool, not a public service.</p>
+<p class="muted">A personal tool for the YouTube channel <strong>Money in 60</strong>. Not a public service.</p>
+<div class="yt"><svg width="28" height="20" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg><span>This tool uses <strong>YouTube API Services</strong> to upload videos to its owner's YouTube channel and to read that channel's analytics.</span></div>
 <p>Finance Shorts Uploader is a private automation used by one person to publish short, animated
 personal-finance explainer videos to their own YouTube channel. It creates the videos, uploads at most
 one video a day to that channel using the YouTube Data API, and reads that channel's own YouTube
 Analytics numbers to see how the videos perform.</p>
 <p>There are no other users and no sign-ups. It does not access anyone else's YouTube account or data.</p>
 <p>The videos are illustrative only and are not financial advice.</p>
-<p><a href="privacy.html">Privacy policy</a></p>
+<p>By using this tool you agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>. Google's handling of data is covered by the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+<nav><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></nav>
 </body>
 </html>

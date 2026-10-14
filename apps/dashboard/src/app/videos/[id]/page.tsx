@@ -113,8 +113,8 @@ export default function VideoPage() {
 
           <Card title="Run timeline" icon={Workflow} action={<span className="text-xs text-muted">{fmtDuration(total)} total</span>}>
             <ol className="flex flex-col">
-              {v.steps.map((s) => (
-                <li key={s.agent} className="flex items-center gap-3 border-b border-line py-2 text-sm last:border-0">
+              {v.steps.map((s, i) => (
+                <li key={i} className="flex items-center gap-3 border-b border-line py-2 text-sm last:border-0">
                   {s.status === "ok" ? <CircleCheck aria-label="OK" className="size-4 text-good" /> : s.status === "failed" ? <CircleX aria-label="Failed" className="size-4 text-critical" /> : <Minus aria-label="Skipped" className="size-4 text-muted" />}
                   <span className="flex-1">{titleCase(s.agent)}{s.note && <span className="text-ink2"> · {s.note}</span>}</span>
                   <span className="text-xs tabular-nums text-muted">{s.status === "skipped" ? "skipped" : fmtDuration(s.durationSec)}</span>

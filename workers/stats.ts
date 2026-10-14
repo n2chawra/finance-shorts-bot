@@ -1,25 +1,46 @@
 /**
- * Stats: daily YouTube Analytics numbers for every uploaded video, up to yesterday (Analytics
- * lags by about a day), stored in VideoStat. Re-running overwrites the same days, so late
- * corrections from YouTube are picked up. Also marks videos published once they are public.
+ * Stats: daily YouTube Analytics numbers for every uploaded video, from its publish day up to
+ * yesterday (Analytics lags by about a day), stored in VideoStat. Also marks videos published.
+ *
+ * YouTube's developer policies allow stored analytics only if they are refreshed at least every
+ * 30 days. So every run replaces each video's full history (up to a year) with fresh numbers, and
+ * if YouTube access is lost (token revoked or expired) and nothing has been refreshed for 30 days,
+ * the stored stats are deleted.
  */
 import { PrismaClient } from "@prisma/client";
 
 import { istDay } from "./lib/publishing.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
-import { accessToken, dailyStats } from "./lib/youtube.ts";
+import { TokenError, accessToken, dailyStats } from "./lib/youtube.ts";
 
 const DAY_MS = 86_400_000;
-const WINDOW_DAYS = 28;
+const KEEP_DAYS = 365;       // history fetched and kept per video
+const STALE_DAYS = 30;       // policy limit for unrefreshed API data
+const REFRESHED_KEY = "statsRefreshedAt";
+
+async function deleteIfStale(prisma: PrismaClient): Promise<boolean> {
+  const row = await prisma.setting.findUnique({ where: { key: REFRESHED_KEY } });
+  const last = typeof row?.value === "string" ? Date.parse(row.value) : 0;
+  if (Date.now() - last < STALE_DAYS * DAY_MS) return false;
+  const { count } = await prisma.videoStat.deleteMany();
+  console.log(`::warning::YouTube stats could not be refreshed for ${STALE_DAYS} days, so ${count} stored rows were deleted.`);
+  return true;
+}
 
 async function main(): Promise<void> {
   if (!youtubeConfigured()) return;
   const prisma = new PrismaClient();
   try {
-    const token = await accessToken();
+    let token: string;
+    try {
+      token = await accessToken();
+    } catch (e) {
+      if (e instanceof TokenError) await deleteIfStale(prisma);
+      throw e;
+    }
     const refreshed = await refreshPublished(prisma, token);
     const yesterday = istDay(new Date(Date.now() - DAY_MS));
-    const earliest = istDay(new Date(Date.now() - WINDOW_DAYS * DAY_MS));
+    const earliest = istDay(new Date(Date.now() - KEEP_DAYS * DAY_MS));
     const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] } } });
     let rows = 0;
     const errors: string[] = [];
@@ -27,15 +48,23 @@ async function main(): Promise<void> {
       const start = [istDay(u.publishAt), earliest].sort().at(-1)!;
       if (start > yesterday) continue;
       try {
-        for (const s of await dailyStats(token, u.youtubeId!, start, yesterday)) {
-          const day = new Date(`${s.day}T00:00:00Z`);
-          const data = { views: s.views, likes: s.likes, comments: s.comments, subsGained: s.subsGained, avgViewPct: s.avgViewPct };
-          await prisma.videoStat.upsert({ where: { uploadId_day: { uploadId: u.id, day } }, update: data, create: { uploadId: u.id, day, ...data } });
-          rows++;
-        }
+        const days = await dailyStats(token, u.youtubeId!, start, yesterday);
+        // replace this video's history in one go: every stored row is fresh after the run
+        await prisma.$transaction([
+          prisma.videoStat.deleteMany({ where: { uploadId: u.id } }),
+          prisma.videoStat.createMany({
+            data: days.map((s) => ({ uploadId: u.id, day: new Date(`${s.day}T00:00:00Z`), views: s.views, likes: s.likes, comments: s.comments, subsGained: s.subsGained, avgViewPct: s.avgViewPct })),
+          }),
+        ]);
+        rows += days.length;
       } catch (e) {
         errors.push(`${u.videoId}: ${e instanceof Error ? e.message : e}`);
       }
+    }
+    await prisma.videoStat.deleteMany({ where: { day: { lt: new Date(`${earliest}T00:00:00Z`) } } });
+    if (!errors.length) {
+      const now = new Date().toISOString();
+      await prisma.setting.upsert({ where: { key: REFRESHED_KEY }, update: { value: now }, create: { key: REFRESHED_KEY, value: now } });
     }
     console.log(JSON.stringify({ uploads: uploads.length, statRows: rows, through: yesterday, ...refreshed, errors }, null, 2));
     if (errors.length) process.exitCode = 1;
