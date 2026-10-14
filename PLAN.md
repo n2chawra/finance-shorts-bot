@@ -52,7 +52,7 @@ Done when: one video goes out on schedule unattended and its stats show up the n
 ## M6 — Dashboard
 
 Backend (Next.js route handlers + Prisma, Zod-validated):
-- [ ] Auth: single-owner login (password or Google), every route protected
+- [x] Auth: single-owner login (password or Google), every route protected
 - [ ] `GET /api/overview`: counts by status, backlog size, next upload, recent failures
 - [ ] `GET /api/videos` (filter: status, template, topic, date; search), `GET /api/videos/:id`
 - [ ] `POST /api/videos/:id/skip | delete | upload-now`, `PATCH /api/queue/order`
@@ -73,7 +73,7 @@ Frontend (mobile-first). Ticked pages run on in-memory sample data until M4 land
 - [x] Analytics page: views + subscribers over time, best/worst videos, best upload days
 - [x] Runs page: every routine run, result, duration, errors, link to the Claude session
 - [x] Settings page (fields above)
-- [ ] Deploy to Vercel
+- [ ] Deploy to Netlify (`netlify.toml`; builds skipped when `apps/dashboard` is unchanged)
 
 Done when: everything above works on a phone.
 

@@ -1,9 +1,9 @@
 "use client";
 
-import { BarChart3, CalendarDays, Clapperboard, Film, LayoutDashboard, LayoutTemplate, ListOrdered, type LucideIcon, Monitor, Moon, Settings, Sun, Workflow } from "lucide-react";
+import { BarChart3, CalendarDays, Clapperboard, Film, LayoutDashboard, LayoutTemplate, ListOrdered, LogOut, type LucideIcon, Monitor, Moon, Settings, Sun, Workflow } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { ToggleGroup } from "radix-ui";
 import { useEffect, useState } from "react";
@@ -52,8 +52,24 @@ function ThemeSwitch() {
   );
 }
 
+function SignOut() {
+  const router = useRouter();
+  const signOut = async () => {
+    await fetch("/api/login", { method: "DELETE" });
+    router.replace("/login");
+    router.refresh();
+  };
+  return (
+    <button type="button" onClick={signOut} aria-label="Sign out" title="Sign out"
+      className="grid size-8 place-items-center rounded-lg text-muted transition-colors hover:bg-wash hover:text-ink">
+      <LogOut aria-hidden className="size-4" />
+    </button>
+  );
+}
+
 export function Nav() {
   const path = usePathname();
+  if (path === "/login") return null;
   const active = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
   return (
     <>
@@ -61,7 +77,7 @@ export function Nav() {
       <header className="sticky top-0 z-30 border-b border-line bg-surface/85 backdrop-blur-md md:hidden">
         <div className="flex items-center justify-between px-4 pt-3">
           <Brand />
-          <ThemeSwitch />
+          <div className="flex items-center gap-1"><ThemeSwitch /><SignOut /></div>
         </div>
         <nav className="no-scrollbar flex gap-1 overflow-x-auto px-3 py-2.5">
           {ITEMS.map(({ href, label, icon: Icon }) => (
@@ -91,8 +107,8 @@ export function Nav() {
           ))}
         </nav>
         <div className="flex items-center justify-between">
-          <span className="text-xs text-muted">Theme</span>
           <ThemeSwitch />
+          <SignOut />
         </div>
       </aside>
     </>
