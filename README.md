@@ -2,6 +2,9 @@
 
 See `CLAUDE.md` for the design and `PLAN.md` for milestones and status.
 
+**New here? Read the [project guide](docs/guide/README.md)**: what it does, every flow, each component,
+operations and an FAQ, written to explain and present the project.
+
 ## Local setup (Windows)
 
 Requirements: Python 3.12+, ffmpeg on PATH (`winget install --id Gyan.FFmpeg -e`).

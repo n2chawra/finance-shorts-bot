@@ -26,7 +26,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 ## Architecture
 
 ```
-Claude Code routine (every ~6h, cloud)
+Claude Code routine (5× a day, cloud; target 3 videos per IST day)
   └─ planner → writer → number check → fact review → render → QA review
   └─ commits videos/<id>/manifest.json + thumbnail.png
   └─ uploads videos/<id>/video.mp4 as a GitHub Release asset (tag: video-<id>)
@@ -36,15 +36,15 @@ GitHub repo (handoff point; sessions never hold DB or YouTube credentials)
         │
         ▼
 GitHub Actions (cron)
-  ├─ ingest.yml   hourly   new manifests → Postgres (status: queued)
+  ├─ ingest.yml   on push/release + every 6h   new manifests → Postgres (status: queued)
   ├─ publish.yml  daily    oldest queued video → YouTube (private + publishAt) → status: scheduled
   └─ stats.yml    daily    YouTube Analytics → video_stats
         │
         ▼
-Postgres (Supabase/Neon free tier) ◄── Next.js dashboard (Vercel)
+Postgres (Supabase free tier) ◄── Next.js dashboard (Netlify)
 ```
 
-Start zero-server (GitHub Actions + Vercel + free Postgres). Move to a VPS with BullMQ/Redis only
+Start zero-server (GitHub Actions + Netlify + free Postgres). Move to a VPS with BullMQ/Redis only
 if free tiers get in the way. Keep the worker code portable so it runs in both places.
 
 ## Repo layout
@@ -79,7 +79,7 @@ reference/               original prototype renderer (rahul_vs_amit_v2.py)
 - `AgentRun`: id, videoId?, agent, status, log (jsonb), startedAt, finishedAt, routineSessionUrl
 - `Setting`: key, value (jsonb). Upload time, backlog cap, length range, disclaimer, alert prefs,
   `uploadsPaused`, `generationPaused`, `templateWork` (`maxPerDay`, `maxTemplates`,
-  `everyNthRun`). Workers read these from the DB. Routines have no DB access, so the hourly
+  `everyNthRun`). Workers read these from the DB. Routines have no DB access, so the
   ingest job also writes them (plus the current backlog count) to `config/settings.json` in the
   repo, and routines read that file.
 - `Video.queuePosition` (int) for manual reordering; publisher takes the lowest position.

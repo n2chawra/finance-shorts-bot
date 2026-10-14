@@ -210,3 +210,10 @@ Done when: everything above works on a phone.
   with another template if the first still fails. Routine now fires 5 times a day
   (`37 1,8,15,19,22 * * *` UTC = 07:07, 14:07, 21:07, 01:07, 04:07 IST); runs after the target is
   met do one template-work run, then idle in a minute.
+- 2026-10-14: Dashboard redesign after a review of shadcn/ui, Tremor, Linear and Vercel dashboards:
+  collapsible grouped sidebar, Ctrl/Cmd+K command palette with G-then-letter navigation, Geist
+  type, neutral theme with one accent, KPI cards with period change and sparklines, a 14-day
+  output tracker against the 3-a-day target, status tabs and a real table for videos, tabbed
+  video page, analytics range switch, settings with an unsaved-changes bar. Wrote the project
+  guide in `docs/guide/` (overview, architecture, daily timeline, generation run, renderer,
+  publishing, dashboard, data model, operations, FAQ).
