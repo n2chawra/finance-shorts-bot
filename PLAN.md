@@ -203,3 +203,10 @@ Done when: everything above works on a phone.
   workflow uploaded `v-20261014-02` as YouTube video FJQ_HqX5ly0: processed, 51 s, Education, not for
   kids, private with publishAt 19:07 IST today. It stays private until the API audit is approved.
   Windows note: PowerShell here blocks npm.ps1, so local commands use `npm.cmd`.
+- 2026-10-14: Dashboard live on Netlify behind an owner password. Two of three runs had failed QA on
+  template bugs (pink label on pink bar; "Year N" pills beside month-by-month amounts, also in
+  myth_vs_fact and two_friends_race). Fixed. Runs now make `dailyVideoTarget` (3) videos per IST
+  day before any template work, repair `[template]` QA failures in place, and start a second video
+  with another template if the first still fails. Routine now fires 5 times a day
+  (`37 1,8,15,19,22 * * *` UTC = 07:07, 14:07, 21:07, 01:07, 04:07 IST); runs after the target is
+  met do one template-work run, then idle in a minute.
