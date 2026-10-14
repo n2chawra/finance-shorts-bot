@@ -1,6 +1,7 @@
 "use client";
 
 import { BarChart3, CalendarDays, Clapperboard, Film, LayoutDashboard, LayoutTemplate, ListOrdered, LogOut, type LucideIcon, Monitor, Moon, Settings, Sun, Workflow } from "lucide-react";
+import { useIsFetching } from "@tanstack/react-query";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -21,14 +22,34 @@ const ITEMS: { href: string; label: string; icon: LucideIcon }[] = [
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
+/** "Live · 12s ago" with a pulsing dot; spins while a refresh is in flight. */
+function LiveStatus() {
+  const { data, dataUpdatedAt, isError } = useOverview();
+  const fetching = useIsFetching() > 0;
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => { const t = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(t); }, []);
+  if (!data) return <span className="block text-[11px] font-medium text-muted">&nbsp;</span>;
+  const ago = Math.max(0, Math.round((now - dataUpdatedAt) / 1000));
+  const label = data.source === "sample" ? "Sample data" : isError ? "Offline, retrying" : "Live";
+  return (
+    <span className="flex items-center gap-1.5 text-[11px] font-medium text-muted" aria-live="off">
+      <span className="relative flex size-2">
+        {!isError && data.source !== "sample" && <span className="absolute inline-flex size-full animate-ping rounded-full bg-good opacity-60" />}
+        <span className={`relative inline-flex size-2 rounded-full ${isError ? "bg-critical" : data.source === "sample" ? "bg-muted" : "bg-good"}`} />
+      </span>
+      {label}
+      <span className="tabular-nums">· {fetching ? "updating…" : ago < 5 ? "just now" : ago < 60 ? `${ago}s ago` : `${Math.floor(ago / 60)}m ago`}</span>
+    </span>
+  );
+}
+
 function Brand() {
-  const source = useOverview().data?.source;
   return (
     <div className="flex items-center gap-2.5">
       <span className="brand-gradient grid size-9 shrink-0 place-items-center rounded-xl text-brand-ink shadow-card"><Clapperboard aria-hidden className="size-5" /></span>
       <span className="leading-tight">
         <span className="block whitespace-nowrap text-[15px] font-semibold tracking-tight">Finance Shorts</span>
-        <span className="block text-[11px] font-medium text-muted">{source === "database" ? "Live data" : source === "sample" ? "Sample data" : " "}</span>
+        <LiveStatus />
       </span>
     </div>
   );
