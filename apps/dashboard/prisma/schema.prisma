@@ -4,6 +4,8 @@ generator client {
   provider      = "prisma-client-js"
   // native for local dev and GitHub Actions; rhel-openssl-3.0.x for Netlify's serverless functions
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  // load relations with one JOIN query instead of one query per relation (each costs a round trip)
+  previewFeatures = ["relationJoins"]
 }
 
 datasource db {

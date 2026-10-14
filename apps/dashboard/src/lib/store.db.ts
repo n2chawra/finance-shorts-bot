@@ -84,7 +84,7 @@ export async function patchSettings(patch: Partial<Settings>): Promise<Settings>
 // ---------------- videos ----------------
 
 export async function listVideos(f: { status?: string; template?: string; category?: string; q?: string }): Promise<Video[]> {
-  await refreshLiveStats();
+  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
   const q = f.q?.trim();
   const rows = await prisma.video.findMany({
     where: {
@@ -96,16 +96,18 @@ export async function listVideos(f: { status?: string; template?: string; catego
     },
     include: withRelations, take: 300,
   });
+  await fresh;
   const when = (v: VideoRow) => (v.upload?.publishAt ?? v.createdAt).getTime();
   return rows.sort((a, b) => when(b) - when(a)).map(toVideo);
 }
 
 export async function getVideo(id: string): Promise<VideoDetail | null> {
-  await refreshLiveStats();
+  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
   const v = await prisma.video.findFirst({
     where: { id, ...live },
     include: { ...withRelations, qaChecks: true, agentRuns: { orderBy: [{ startedAt: "asc" }, { id: "asc" }] } },
   });
+  await fresh;
   if (!v) return null;
   const order = ["number_check", "fact_review", "qa_review"];
   return {
@@ -204,8 +206,8 @@ async function renumber(): Promise<void> {
 // ---------------- overview ----------------
 
 export async function getOverview(): Promise<Overview> {
-  await refreshLiveStats();
-  const settings = await getSettings();
+  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
+  const settingsP = getSettings(); // in parallel with the queries below, not before them
   const today = istDay(new Date());
   const since = new Date(`${addDays(today, -7)}T00:00:00Z`);
   const [groups, next, failures, recent, stats, uploads7, templates, templateRunsToday, lastRun] = await Promise.all([
@@ -219,6 +221,7 @@ export async function getOverview(): Promise<Overview> {
     prisma.agentRun.count({ where: { agent: "template_builder", startedAt: { gte: new Date(`${today}T00:00:00${IST_OFFSET}`) } } }),
     prisma.agentRun.findFirst({ orderBy: { startedAt: "desc" }, select: { startedAt: true } }),
   ]);
+  const [settings] = await Promise.all([settingsP, fresh]);
   const counts = Object.fromEntries(groups.map((g) => [g.status, g._count]));
   const backlog = counts.queued ?? 0;
   const tw = settings.templateWork;
@@ -242,11 +245,12 @@ export async function getOverview(): Promise<Overview> {
 // ---------------- templates ----------------
 
 export async function listTemplates(): Promise<Template[]> {
-  await refreshLiveStats();
+  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
   const [templates, videos] = await Promise.all([
     prisma.template.findMany({ orderBy: { id: "asc" } }),
     prisma.video.findMany({ where: live, select: { id: true, templateId: true, createdAt: true, status: true, upload: { select: { liveViews: true, liveAt: true, stats: { select: { views: true } } } } } }),
   ]);
+  await fresh;
   return templates.map((t) => {
     const mine = videos.filter((v) => v.templateId === t.id);
     const withViews = mine.filter((v) => v.upload?.stats.length || v.upload?.liveAt)
@@ -294,13 +298,14 @@ export async function listRuns(): Promise<Run[]> {
 // ---------------- analytics ----------------
 
 export async function getAnalytics(): Promise<Analytics> {
-  await refreshLiveStats();
+  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
   const today = istDay(new Date());
   const from = addDays(today, -28);
   const [stats, published] = await Promise.all([
     prisma.videoStat.findMany({ where: { day: { gte: new Date(`${from}T00:00:00Z`) } } }),
     prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations }),
   ]);
+  await fresh;
   const byDay = new Map<string, { views: number; subsGained: number }>();
   for (let k = 28; k >= 1; k--) byDay.set(addDays(today, -k), { views: 0, subsGained: 0 });
   for (const s of stats) {
