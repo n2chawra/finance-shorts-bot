@@ -103,8 +103,8 @@ export default function OverviewPage() {
       )}
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Stat label="Views · 7 days" icon={Eye} href="/analytics" value={<Num value={data.last7.views} fmt={fmtCompact} />}
-          delta={<Delta value={views.delta} />} sub={`${fmtNum(data.last7.views)} views`} chart={<Sparkline values={views.spark} />} />
+        <Stat label="Views" icon={Eye} href="/analytics" value={<Num value={data.allTime.views} fmt={fmtCompact} />}
+          delta={<Delta value={views.delta} />} sub={`+${fmtNum(data.last7.views)} in 7 days${data.allTime.liveAt ? ` · live, ${fmtRelative(data.allTime.liveAt)}` : ""}`} chart={<Sparkline values={views.spark} />} />
         <Stat label="Subscribers · 7 days" icon={UserPlus} href="/analytics" value={<Num value={data.last7.subsGained} fmt={(n) => `+${fmtNum(n)}`} />}
           delta={<Delta value={subs.delta} />} sub="from YouTube Analytics" chart={<Sparkline values={subs.spark} color="var(--good)" />} />
         <Stat label="Backlog" icon={Layers} href="/queue" value={<><Num value={data.backlog} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-base font-normal text-muted">/ {data.backlogCap}</span></>}

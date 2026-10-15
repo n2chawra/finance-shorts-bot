@@ -294,6 +294,7 @@ export function getOverview(): Overview {
       views: recentStats.reduce((a, x) => a + x.views, 0), subsGained: recentStats.reduce((a, x) => a + x.subsGained, 0),
       uploads: s.videos.filter((v) => v.status === "published" && istDay(new Date(v.upload!.publishAt)) >= since).length,
     },
+    allTime: { views: s.videos.flatMap((v) => v.stats).reduce((a, x) => a + x.views, 0), liveAt: null },
     recent: s.videos.filter((v) => v.status === "published").sort((a, b) => b.upload!.publishAt.localeCompare(a.upload!.publishAt)).slice(0, 4).map(summary),
   };
 }

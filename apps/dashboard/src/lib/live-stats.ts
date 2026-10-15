@@ -1,21 +1,26 @@
 /**
  * Live YouTube counters. YouTube Analytics (the daily stats job) runs a day or two behind, but the
  * public view, like and comment counters on a video update within minutes. Pages that show views
- * call refreshLiveStats() first; it asks YouTube at most once a minute and stores the counters on
+ * await liveCounters() before reading; it asks YouTube at most every 30 s and stores the counters on
  * the Upload row, so every dashboard request reads current numbers from the database.
+ *
+ * Counters only ever go up here: YouTube's public counter can briefly return a lower, cached value,
+ * and two dashboard requests can finish out of order, so each write keeps the larger number (SQL
+ * GREATEST, safe across concurrent serverless instances).
  *
  *   YT_API_KEY  a Google Cloud API key restricted to the YouTube Data API v3 (set in Netlify).
  *               Read-only, public data only: private videos have no public counters.
  *
- * Cost: 1 quota unit per 50 videos per refresh, so at most ~1,500 units a day with the dashboard
- * open all day, well inside the 10,000 daily quota next to one 1,600-unit upload.
+ * Cost: 1 quota unit per 50 videos per refresh, so at most ~2,900 units a day with the dashboard
+ * open all day, inside the 10,000 daily quota next to two 1,600-unit uploads.
  */
 import { z } from "zod";
 
 import { notifyOwner } from "./autopilot.db";
 import { prisma } from "./prisma";
 
-const FRESH_MS = 60_000;
+const FRESH_MS = 30_000;   // matches the dashboard's 30 s polling
+const WAIT_MS = 2_500;     // longest a page waits for YouTube before showing the stored numbers
 
 const VideosResponse = z.object({
   items: z.array(z.object({
@@ -25,6 +30,13 @@ const VideosResponse = z.object({
 });
 
 let inFlight: Promise<void> | null = null;
+
+/** Refresh, waiting at most WAIT_MS, so the numbers a page reads next are current. */
+export async function liveCounters(): Promise<void> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  await Promise.race([refreshLiveStats(), new Promise<void>((ok) => { timer = setTimeout(ok, WAIT_MS); })]);
+  clearTimeout(timer);
+}
 
 /** Refresh stale counters. Never throws: a YouTube hiccup must not break the page. */
 export function refreshLiveStats(): Promise<void> {
@@ -59,10 +71,13 @@ async function run(): Promise<void> {
     await prisma.$transaction(batch.map((u) => {
       const s = found.get(u.youtubeId!);
       // private or deleted videos come back empty: keep the last counters, just mark them checked
-      return prisma.upload.update({
-        where: { id: u.id },
-        data: s ? { liveViews: s.viewCount ?? 0, liveLikes: s.likeCount ?? 0, liveComments: s.commentCount ?? 0, liveAt: now } : { liveAt: now },
-      });
+      if (!s) return prisma.upload.update({ where: { id: u.id }, data: { liveAt: now } });
+      return prisma.$executeRaw`UPDATE "Upload" SET
+        "liveViews" = GREATEST(COALESCE("liveViews", 0), ${s.viewCount ?? 0}),
+        "liveLikes" = GREATEST(COALESCE("liveLikes", 0), ${s.likeCount ?? 0}),
+        "liveComments" = GREATEST(COALESCE("liveComments", 0), ${s.commentCount ?? 0}),
+        "liveAt" = ${now}
+        WHERE "id" = ${u.id}`;
     }));
   }
 }

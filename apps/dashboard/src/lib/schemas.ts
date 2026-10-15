@@ -165,6 +165,7 @@ export const OverviewSchema = z.object({
   nextUpload: z.object({ videoId: z.string(), title: z.string(), publishAt: z.string(), thumbnailUrl: z.string() }).nullable(),
   recentFailures: z.array(z.object({ videoId: z.string(), title: z.string(), reason: z.string(), at: z.string() })),
   last7: z.object({ views: z.number(), subsGained: z.number(), uploads: z.number() }),
+  allTime: z.object({ views: z.number(), liveAt: z.string().nullable() }),
   recent: z.array(VideoSchema),
 });
 export type Overview = z.infer<typeof OverviewSchema>;

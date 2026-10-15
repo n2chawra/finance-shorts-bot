@@ -5,7 +5,7 @@
  */
 import type { Prisma } from "@prisma/client";
 
-import { refreshLiveStats } from "./live-stats";
+import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
 import { SettingsSchema } from "./schemas";
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
@@ -85,7 +85,7 @@ export async function patchSettings(patch: Partial<Settings>): Promise<Settings>
 // ---------------- videos ----------------
 
 export async function listVideos(f: { status?: string; template?: string; category?: string; q?: string }): Promise<Video[]> {
-  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
+  await liveCounters(); // fresh YouTube counters first, so this response is current
   const q = f.q?.trim();
   const rows = await prisma.video.findMany({
     where: {
@@ -97,18 +97,16 @@ export async function listVideos(f: { status?: string; template?: string; catego
     },
     include: withRelations, take: 300,
   });
-  await fresh;
   const when = (v: VideoRow) => (v.upload?.publishAt ?? v.createdAt).getTime();
   return rows.sort((a, b) => when(b) - when(a)).map(toVideo);
 }
 
 export async function getVideo(id: string): Promise<VideoDetail | null> {
-  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
+  await liveCounters(); // fresh YouTube counters first, so this response is current
   const v = await prisma.video.findFirst({
     where: { id, ...live },
     include: { ...withRelations, qaChecks: true, agentRuns: { orderBy: [{ startedAt: "asc" }, { id: "asc" }] } },
   });
-  await fresh;
   if (!v) return null;
   const order = ["number_check", "fact_review", "qa_review"];
   return {
@@ -207,7 +205,7 @@ async function renumber(): Promise<void> {
 // ---------------- overview ----------------
 
 export async function getOverview(): Promise<Overview> {
-  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
+  await liveCounters(); // fresh YouTube counters first, so this response is current
   const settingsP = getSettings(); // in parallel with the queries below, not before them
   const today = istDay(new Date());
   const since = new Date(`${addDays(today, -7)}T00:00:00Z`);
@@ -215,15 +213,21 @@ export async function getOverview(): Promise<Overview> {
     prisma.video.groupBy({ by: ["status"], where: live, _count: true }),
     prisma.video.findFirst({ where: { ...live, status: "scheduled", upload: { isNot: null } }, include: withRelations, orderBy: { upload: { publishAt: "asc" } } }),
     prisma.video.findMany({ where: { ...live, status: "failed" }, orderBy: { createdAt: "desc" }, take: 5 }),
-    prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations, orderBy: { upload: { publishAt: "desc" } }, take: 4 }),
+    prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations, orderBy: { upload: { publishAt: "desc" } } }),
     prisma.videoStat.aggregate({ where: { day: { gte: since } }, _sum: { views: true, subsGained: true } }),
     prisma.upload.count({ where: { state: "published", publishAt: { gte: new Date(Date.now() - 7 * DAY_MS) } } }),
     prisma.template.count(),
     prisma.agentRun.count({ where: { agent: "template_builder", startedAt: { gte: new Date(`${today}T00:00:00${IST_OFFSET}`) } } }),
     prisma.agentRun.findFirst({ orderBy: { startedAt: "desc" }, select: { startedAt: true } }),
   ]);
-  const [settings] = await Promise.all([settingsP, fresh]);
+  const settings = await settingsP;
   const counts = Object.fromEntries(groups.map((g) => [g.status, g._count]));
+  // all-time views: live counters where they are ahead of Analytics, so this only ever goes up
+  const lifetime = recent.map((v) => ({ v, t: totals(v.upload?.stats ?? [], v.upload) }));
+  const allViews = lifetime.reduce((a, x) => a + (x.t?.views ?? 0), 0);
+  // views Analytics hasn't counted yet (its last day or two) are all recent: add them to the 7 days
+  const notYetInAnalytics = lifetime.reduce((a, x) => a + Math.max(0, (x.t?.views ?? 0) - (x.v.upload?.stats ?? []).reduce((b, s) => b + s.views, 0)), 0);
+  const liveAts = lifetime.map((x) => x.t?.liveAt).filter((d): d is string => !!d).sort();
   const backlog = counts.queued ?? 0;
   const tw = settings.templateWork;
   const full = backlog >= settings.backlogCap;
@@ -238,20 +242,20 @@ export async function getOverview(): Promise<Overview> {
     generation: { mode, reason, templateRunsToday, maxTemplateRunsPerDay: tw.maxPerDay, templates, maxTemplates: tw.maxTemplates, lastRunAt: lastRun?.startedAt.toISOString() ?? null },
     nextUpload: next?.upload ? { videoId: next.id, title: next.title, publishAt: next.upload.publishAt.toISOString(), thumbnailUrl: `/api/media/${next.id}/thumbnail` } : null,
     recentFailures: failures.map((v) => ({ videoId: v.id, title: v.title, reason: v.failReason ?? "Unknown", at: v.createdAt.toISOString() })),
-    last7: { views: stats._sum.views ?? 0, subsGained: stats._sum.subsGained ?? 0, uploads: uploads7 },
-    recent: recent.map(toVideo),
+    last7: { views: (stats._sum.views ?? 0) + notYetInAnalytics, subsGained: stats._sum.subsGained ?? 0, uploads: uploads7 },
+    allTime: { views: allViews, liveAt: liveAts.at(-1) ?? null },
+    recent: recent.slice(0, 4).map(toVideo),
   };
 }
 
 // ---------------- templates ----------------
 
 export async function listTemplates(): Promise<Template[]> {
-  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
+  await liveCounters(); // fresh YouTube counters first, so this response is current
   const [templates, videos] = await Promise.all([
     prisma.template.findMany({ orderBy: { id: "asc" } }),
     prisma.video.findMany({ where: live, select: { id: true, templateId: true, createdAt: true, status: true, upload: { select: { liveViews: true, liveAt: true, stats: { select: { views: true } } } } } }),
   ]);
-  await fresh;
   return templates.map((t) => {
     const mine = videos.filter((v) => v.templateId === t.id);
     const withViews = mine.filter((v) => v.upload?.stats.length || v.upload?.liveAt)
@@ -299,14 +303,13 @@ export async function listRuns(): Promise<Run[]> {
 // ---------------- analytics ----------------
 
 export async function getAnalytics(): Promise<Analytics> {
-  const fresh = refreshLiveStats(); // runs alongside the reads; new counters show on the next refresh
+  await liveCounters(); // fresh YouTube counters first, so this response is current
   const today = istDay(new Date());
   const from = addDays(today, -28);
   const [stats, published] = await Promise.all([
     prisma.videoStat.findMany({ where: { day: { gte: new Date(`${from}T00:00:00Z`) } } }),
     prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations }),
   ]);
-  await fresh;
   const byDay = new Map<string, { views: number; subsGained: number }>();
   for (let k = 28; k >= 1; k--) byDay.set(addDays(today, -k), { views: 0, subsGained: 0 });
   for (const s of stats) {
