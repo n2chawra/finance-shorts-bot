@@ -1,3 +1,36 @@
 {
-  "proposals": []
+  "proposals": [
+    {
+      "id": "sip-tranche-tax-explainer",
+      "date": "2026-10-16",
+      "area": "script",
+      "title": "Topic: SIP units are taxed per instalment",
+      "change": "Add topic 'Selling your SIP? Each instalment has its own holding period'. Inputs: monthly amount, months, assumed return, redemption month. Code computes how many instalments are over 12 months (long-term) and the split of gain; use current LTCG/STCG rates verified by the fact reviewer. Use quiz_countdown or myth_vs_fact.",
+      "evidence": [
+        "https://www.oquilia.com/news/sip-post-tax-return-math-equity-ltcg"
+      ],
+      "expectedEffect": "Timely, specific topic; extra category variety (tax)",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Tax rates change; single secondary source, fact review must verify",
+      "metric": "views48h",
+      "status": "new"
+    },
+    {
+      "id": "sip-record-inflows-hook",
+      "date": "2026-10-16",
+      "area": "hook",
+      "title": "Shock-number hook from record SIP inflows",
+      "change": "Use a hook like 'Indians put Rs X cr into SIPs in one month' with X a dated constant in the script input, shown with its month and source; follow with a per-person SIP growth calculation computed by code.",
+      "evidence": [
+        "https://www.oquilia.com/news/amfi-june-2026-sip-record-31781-crore"
+      ],
+      "expectedEffect": "Stronger first-second hook via a social-proof number",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Figure is gross and from a secondary source; becomes stale",
+      "metric": "views48h",
+      "status": "new"
+    }
+  ]
 }
