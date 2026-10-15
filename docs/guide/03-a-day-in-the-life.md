@@ -6,6 +6,8 @@
 
 | Time (IST) | What | Source |
 |---|---|---|
+| 22:30 | Data audit: dashboard numbers vs YouTube vs database | `data-audit.yml`, cron `0 17 * * *` UTC |
+| 23:00 | **Auditor agent**: data bugs, code bugs, one refactor | Claude routine, cron `30 17 * * *` UTC |
 | 00:07 | **Research agent**: top Shorts, trends, Claude updates → proposals | Claude routine, cron `37 18 * * *` UTC |
 | **01:07** | Main routine run: makes all 3 of the day's videos in one session | Claude routine, cron `37 19 * * *` UTC |
 | 05:17 | **Improver agent**: judge experiments, start one or wait, manage templates | Claude routine, cron `47 23 * * *` UTC |

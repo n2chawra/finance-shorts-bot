@@ -9,7 +9,7 @@ import { Badge, Button, Card, Delta, Empty, ErrorNote, Loading, Meter, Num, Page
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
 import { useAgents, useAnalytics, useNotifications, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
-import type { Analytics, Run } from "@/lib/schemas";
+import { AGENTS, type Analytics, type Run } from "@/lib/schemas";
 
 /** Videos the routines aim to ship per IST day (generator setting `dailyVideoTarget`). */
 const DAILY_TARGET = 3;
@@ -183,8 +183,8 @@ export default function OverviewPage() {
           <Card title="Agents last night" icon={Sparkles} className="mt-3" description={last ? undefined : "The self-improving agents report here after their first night."}
             action={<Link href="/agents" className="flex items-center gap-1 text-xs font-medium text-ink2 hover:text-ink">Details <ArrowRight aria-hidden className="size-3.5" /></Link>}>
             {rows.length > 0 && (
-              <ul className="grid gap-3 md:grid-cols-3">
-                {(["research", "improver", "dashboard"] as const).map((k) => {
+              <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                {AGENTS.map((k) => {
                   const a = rows.find((r) => r.agent === k);
                   return (
                     <li key={k} className="rounded-lg bg-surface-2 p-3 text-[13px]">

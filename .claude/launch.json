@@ -4,8 +4,30 @@
     {
       "name": "dashboard",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "apps/dashboard", "run", "dev"],
+      "runtimeArgs": [
+        "--prefix",
+        "apps/dashboard",
+        "run",
+        "dev"
+      ],
       "port": 3000
+    },
+    {
+      "name": "dashboard-sample",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "apps/dashboard",
+        "run",
+        "dev",
+        "--",
+        "-p",
+        "3123"
+      ],
+      "port": 3123,
+      "env": {
+        "DATABASE_URL": ""
+      }
     }
   ]
 }

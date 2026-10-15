@@ -18,7 +18,7 @@ import { notify, resolveOthers } from "./notify.ts";
 import { istDay } from "./publishing.ts";
 
 const DAY_MS = 86_400_000;
-const AGENTS = ["research", "improver", "dashboard"] as const;
+const AGENTS = ["research", "improver", "dashboard", "auditor"] as const;
 
 const readJson = (file: string): unknown => JSON.parse(readFileSync(file, "utf8"));
 
@@ -93,6 +93,8 @@ const DOCS: Record<string, string> = {
   mergeLog: "improvement/merge-log.json",
   dashboardBacklog: "improvement/dashboard/backlog.json",
   templateDecisions: "improvement/template-decisions.json",
+  auditorBacklog: "improvement/auditor/backlog.json",
+  dataAudit: "metrics/data-audit.json",
 };
 
 export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<void> {

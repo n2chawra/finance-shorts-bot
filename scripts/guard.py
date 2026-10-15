@@ -27,6 +27,12 @@ ALLOW: dict[str, list[str]] = {
     "dashboard": ["apps/dashboard/src/*", "apps/dashboard/e2e/*", "apps/dashboard/package.json", "apps/dashboard/package-lock.json",
                   "apps/dashboard/playwright.config.ts", "improvement/dashboard/*", "improvement/activity/*-dashboard.json",
                   "improvement/notifications/dashboard.json"],
+    "auditor": ["generator/*", "renderer/*", "examples/*", "apps/dashboard/src/*", "apps/dashboard/e2e/*", "workers/*",
+                "improvement/auditor/*", "improvement/activity/*-auditor.json", "improvement/notifications/auditor.json"],
+}
+# protected files an agent may still change (its fixes for data bugs live there)
+UNLOCK: dict[str, list[str]] = {
+    "auditor": ["workers/*", "apps/dashboard/src/lib/live-stats.ts"],
 }
 # never, for any agent (checked before the allow-lists)
 FORBID = [
@@ -37,8 +43,19 @@ FORBID = [
     "apps/dashboard/src/app/api/login/*", "apps/dashboard/src/lib/prisma.ts", "apps/dashboard/src/lib/live-stats.ts",
     "assets/*", "reference/*",
 ]
+# owner-only even where UNLOCK opens a folder: uploads, YouTube sign-in, settings defaults, and the
+# data audit with its tests (the measuring stick never changes with the code it measures)
+LOCKED = [
+    "workers/publish.ts", "workers/auth.ts", "workers/reset-data.ts", "workers/data-audit.ts", "workers/lib/data-audit.ts",
+    "workers/tests/data-audit.test.ts", "workers/lib/uploads.ts", "workers/lib/publishing.ts", "workers/lib/youtube.ts",
+    "workers/lib/settings.ts", "workers/prisma/*", "workers/scripts/*", "workers/package.json", "workers/package-lock.json",
+]
+FORBID += LOCKED
+TEST_FILE = re.compile(r"(^|/)(tests?|e2e)/|(^|/)test_[^/]*\.py$|\.(test|spec)\.ts$")
+# the upload schedule is the owner's: no agent diff may add or remove a line that sets it
+UPLOAD_SETTING = re.compile(r"\b(uploadTimes|uploadsPaused|backlogCap)\b")
 MEDIA_EXT = (".mp3", ".wav", ".ogg", ".m4a", ".flac", ".aac", ".mp4", ".mov", ".webm")
-MAX_LINES = {"research": 4000, "improver": 900, "dashboard": 700}   # code lines changed (reports excluded)
+MAX_LINES = {"research": 4000, "improver": 900, "dashboard": 700, "auditor": 600}   # code lines changed (reports excluded)
 MAX_MERGES_PER_DAY = 2
 SECRET = re.compile(r"(ghp_[A-Za-z0-9]{20,}|github_pat_|sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|postgres(ql)?://\S+:\S+@|BEGIN (RSA|OPENSSH) PRIVATE KEY)")
 NETWORK = re.compile(r"^\+\s*(import|from)\s+(requests|urllib|http\.client|socket|aiohttp|httpx)\b")
@@ -105,10 +122,13 @@ def check(agent: str, base: str, head: str, now: datetime | None = None) -> dict
     if not files:
         return {"ok": False, "reasons": ["the branch changes nothing"], "files": [], "needsTests": False}
     for status, path in files:
-        if match(path, FORBID):
+        unlocked = match(path, UNLOCK.get(agent, [])) and not match(path, LOCKED)
+        if match(path, FORBID) and not unlocked:
             reasons.append(f"{path}: protected file; no agent may change it")
         elif not match(path, ALLOW[agent]):
             reasons.append(f"{path}: outside what the {agent} agent may change")
+        if status == "D" and TEST_FILE.search(path):
+            reasons.append(f"{path}: deleting a test file is not allowed (rewrite or move tests instead)")
         if path.lower().endswith(MEDIA_EXT) and status != "D":
             reasons.append(f"{path}: audio/video files are not allowed (all audio is synthesized in code)")
     code_lines = 0
@@ -123,7 +143,9 @@ def check(agent: str, base: str, head: str, now: datetime | None = None) -> dict
     for line in diff.splitlines():
         if line.startswith("+++ b/"):
             current = line[6:]
-        elif line.startswith("+") and not line.startswith("+++"):
+        elif line[:1] in "+-" and not line.startswith(("+++", "---")) and UPLOAD_SETTING.search(line):
+            reasons.append(f"{current}: changes the upload schedule settings (owner only)")
+        if line.startswith("+") and not line.startswith("+++"):
             if SECRET.search(line):
                 reasons.append(f"{current}: looks like a secret or credential")
             if current.startswith("renderer/") and (NETWORK.search(line) or DOWNLOAD.search(line)):
@@ -132,7 +154,21 @@ def check(agent: str, base: str, head: str, now: datetime | None = None) -> dict
     if merges_today(agent, now) >= MAX_MERGES_PER_DAY:
         reasons.append(f"the {agent} agent already merged {MAX_MERGES_PER_DAY} changes today")
     needs_tests = any(not p.startswith("improvement/") for _, p in files)
-    return {"ok": not reasons, "reasons": sorted(set(reasons)), "files": [p for _, p in files], "codeLines": code_lines, "needsTests": needs_tests}
+    return {"ok": not reasons, "reasons": sorted(set(reasons)), "files": [p for _, p in files], "codeLines": code_lines,
+            "needsTests": needs_tests, "areas": areas([p for _, p in files])}
+
+
+def areas(paths: list[str]) -> list[str]:
+    """Which test suites a change needs: python (generator, renderer, evaluator), workers, dashboard."""
+    out = set()
+    for p in paths:
+        if p.startswith("workers/"):
+            out.add("workers")
+        elif p.startswith("apps/dashboard/"):
+            out.add("dashboard")
+        elif p.startswith(("generator/", "renderer/", "examples/", "scripts/")) or (p.startswith("improvement/") and p.endswith(".py")):
+            out.add("python")
+    return sorted(out)
 
 
 def main() -> int:

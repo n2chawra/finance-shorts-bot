@@ -35,7 +35,7 @@ const listOf = (v: unknown, key: string): unknown[] => (v && typeof v === "objec
 export async function getAgents(): Promise<Agents> {
   const [rows, docs] = await Promise.all([
     prisma.agentActivity.findMany({ orderBy: [{ day: "desc" }, { agent: "asc" }], take: 120 }),
-    prisma.repoDoc.findMany({ where: { key: { in: ["experimentLedger", "experiments", "proposals", "mergeLog", "dashboardBacklog"] } } }),
+    prisma.repoDoc.findMany({ where: { key: { in: ["experimentLedger", "experiments", "proposals", "mergeLog", "dashboardBacklog", "auditorBacklog", "dataAudit"] } } }),
   ]);
   const doc = Object.fromEntries(docs.map((d) => [d.key, d.value]));
   // the ledger has the detail; the live config has the status the renderer actually uses
@@ -48,9 +48,13 @@ export async function getAgents(): Promise<Agents> {
     experiments,
     proposals: listOf(doc.proposals, "proposals"),
     merges: listOf(doc.mergeLog, "merges").slice(-60).reverse(),
-    backlog: listOf(doc.dashboardBacklog, "items"),
+    backlog: [
+      ...listOf(doc.auditorBacklog, "items").map((i) => ({ ...(i as object), agent: "auditor" })),
+      ...listOf(doc.dashboardBacklog, "items").map((i) => ({ ...(i as object), agent: "dashboard" })),
+    ],
+    dataAudit: doc.dataAudit ?? null,
   });
-  return parsed.success ? parsed.data : { activity, experiments: [], proposals: [], merges: [], backlog: [] };
+  return parsed.success ? parsed.data : { activity, experiments: [], proposals: [], merges: [], backlog: [], dataAudit: null };
 }
 
 /** Raise or update an owner notification from the dashboard server (e.g. a key it relies on failed). */

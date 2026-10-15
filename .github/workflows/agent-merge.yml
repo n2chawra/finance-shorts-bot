@@ -41,11 +41,14 @@ jobs:
           git fetch -q origin main
           python scripts/guard.py --agent "${{ steps.who.outputs.agent }}" --base origin/main --head HEAD --json > "$RUNNER_TEMP/guard.json" || true
           cat "$RUNNER_TEMP/guard.json"
-          echo "ok=$(python -c "import json;print(str(json.load(open('$RUNNER_TEMP/guard.json'))['ok']).lower())")" >> "$GITHUB_OUTPUT"
-          echo "tests=$(python -c "import json;print(str(json.load(open('$RUNNER_TEMP/guard.json'))['needsTests']).lower())")" >> "$GITHUB_OUTPUT"
+          field() { python -c "import json,sys;v=json.load(open('$RUNNER_TEMP/guard.json')).get(sys.argv[1]);print(' '.join(v) if isinstance(v,list) else str(v).lower())" "$1"; }
+          echo "ok=$(field ok)" >> "$GITHUB_OUTPUT"
+          echo "tests=$(field needsTests)" >> "$GITHUB_OUTPUT"
+          echo "areas=$(field areas)" >> "$GITHUB_OUTPUT"
 
+      # each suite runs when the branch touches its area (the auditor may touch all three)
       - name: Python tests and preview renders
-        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && steps.who.outputs.agent != 'dashboard'
+        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && contains(steps.guard.outputs.areas, 'python')
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
           pip install -q -r renderer/requirements.txt pytest
@@ -53,14 +56,25 @@ jobs:
           for f in examples/*.json; do python renderer/cli.py "$f" --preview --out "$RUNNER_TEMP/preview/$(basename "$f" .json)"; done
 
       - uses: actions/setup-node@v4
-        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && steps.who.outputs.agent == 'dashboard'
+        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && (contains(steps.guard.outputs.areas, 'workers') || contains(steps.guard.outputs.areas, 'dashboard'))
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: apps/dashboard/package-lock.json
+          cache-dependency-path: |
+            workers/package-lock.json
+            apps/dashboard/package-lock.json
+
+      - name: Worker typecheck and tests
+        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && contains(steps.guard.outputs.areas, 'workers')
+        working-directory: workers
+        run: |
+          npm ci
+          npm run generate
+          npm run typecheck
+          npm test
 
       - name: Dashboard typecheck, lint, build and smoke tests
-        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && steps.who.outputs.agent == 'dashboard'
+        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && contains(steps.guard.outputs.areas, 'dashboard')
         working-directory: apps/dashboard
         env:
           DATABASE_URL: ""          # sample data

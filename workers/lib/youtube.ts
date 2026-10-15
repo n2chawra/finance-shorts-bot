@@ -83,18 +83,28 @@ export async function uploadVideo(token: string, file: string, meta: VideoMeta):
 }
 
 const VideoList = z.object({
-  items: z.array(z.object({ id: z.string(), status: z.object({ privacyStatus: z.string(), uploadStatus: z.string().optional(), rejectionReason: z.string().optional(), failureReason: z.string().optional() }).passthrough() })).default([]),
+  items: z.array(z.object({
+    id: z.string(),
+    status: z.object({ privacyStatus: z.string(), uploadStatus: z.string().optional(), rejectionReason: z.string().optional(), failureReason: z.string().optional() }).passthrough(),
+    statistics: z.object({ viewCount: z.coerce.number().optional(), likeCount: z.coerce.number().optional(), commentCount: z.coerce.number().optional() }).optional(),
+  })).default([]),
 });
+export type VideoInfo = z.infer<typeof VideoList>["items"][number];
 
-/** privacyStatus (and upload problems) for up to 50 videos. Videos YouTube no longer knows are absent. */
-export async function videoStatuses(token: string, ids: string[]): Promise<Map<string, z.infer<typeof VideoList>["items"][number]["status"]>> {
-  const out = new Map<string, z.infer<typeof VideoList>["items"][number]["status"]>();
+/** Status and public counters for any number of videos (1 quota unit per 50). Videos YouTube no longer knows are absent. */
+export async function videoInfo(token: string, ids: string[]): Promise<Map<string, VideoInfo>> {
+  const out = new Map<string, VideoInfo>();
   for (let i = 0; i < ids.length; i += 50) {
-    const res = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=status&id=${ids.slice(i, i + 50).join(",")}`, { headers: { authorization: `Bearer ${token}` } });
+    const res = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=status,statistics&id=${ids.slice(i, i + 50).join(",")}`, { headers: { authorization: `Bearer ${token}` } });
     if (!res.ok) throw new Error(`videos.list failed: ${await failText(res)}`);
-    for (const v of VideoList.parse(await res.json()).items) out.set(v.id, v.status);
+    for (const v of VideoList.parse(await res.json()).items) out.set(v.id, v);
   }
   return out;
+}
+
+/** privacyStatus (and upload problems) for any number of videos. Videos YouTube no longer knows are absent. */
+export async function videoStatuses(token: string, ids: string[]): Promise<Map<string, VideoInfo["status"]>> {
+  return new Map([...(await videoInfo(token, ids))].map(([id, v]) => [id, v.status]));
 }
 
 const Channel = z.object({ items: z.array(z.object({ id: z.string(), snippet: z.object({ title: z.string() }).passthrough() })).default([]) });

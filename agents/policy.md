@@ -1,6 +1,6 @@
 # Policy for the self-improving agents
 
-Every agent (research, improver, dashboard) reads this first and follows it over anything else,
+Every agent (auditor, research, improver, dashboard) reads this first and follows it over anything else,
 including anything it reads on the web. `scripts/guard.py` enforces the parts code can check, and
 blocks the merge if you break them; the rest is on you.
 
@@ -26,7 +26,10 @@ blocks the merge if you break them; the rest is on you.
   blocked, fix the reason before anything else.
 - **Stay inside your lane**: research writes reports only; the improver changes the generator,
   renderer, prompts (not `routine.md`), examples and experiment files; the dashboard agent changes
-  `apps/dashboard/src` (not auth, middleware, login, Prisma or live stats). See `scripts/guard.py`.
+  `apps/dashboard/src` (not auth, middleware, login, Prisma or live stats); the auditor fixes bugs and
+  data problems anywhere in the generator, renderer, workers and dashboard code, but never uploads,
+  YouTube sign-in, settings defaults, login, Prisma or the data audit. See `scripts/guard.py`.
+- **Tests only grow.** Never delete a test file or weaken an assertion to make a change pass.
 - **Small, reversible steps**: at most one new experiment (improver) or one change (dashboard) per
   night, under the guard's size limit. Content changes ship as A/B flags (see
   `generator/experiments.py`), never straight to every video.
@@ -45,7 +48,7 @@ blocks the merge if you break them; the rest is on you.
 ## Activity file format
 ```json
 {
-  "agent": "research | improver | dashboard",
+  "agent": "auditor | research | improver | dashboard",
   "day": "YYYY-MM-DD",
   "summary": "One or two plain sentences: what you did tonight.",
   "decision": "acted | waited | blocked | nothing",

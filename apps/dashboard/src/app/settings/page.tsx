@@ -120,9 +120,12 @@ export default function SettingsPage() {
           </section>
 
           <section id="agents" className="scroll-mt-20">
-            <Card title="Self-improving agents" description="Nightly, 00:00–09:00 IST. Every change they make passes a guard and the tests before it goes live.">
+            <Card title="Self-improving agents" description="Nightly, 23:00–09:00 IST. Every change they make passes a guard and the tests before it goes live.">
               <Row label="Pause all agents" hint="They still start on schedule but do nothing. The video pipeline is not affected.">
                 <Toggle label="Pause all agents" checked={form.agents.paused} onChange={(paused) => setAgents({ paused })} />
+              </Row>
+              <Row label="Auditor (23:00)" hint="Checks the dashboard's numbers against YouTube, fixes bugs anywhere, one careful refactor a night.">
+                <Toggle label="Auditor agent on" checked={form.agents.auditor} disabled={form.agents.paused} onChange={(auditor) => setAgents({ auditor })} />
               </Row>
               <Row label="Research (00:07)" hint="Studies top Shorts and Claude updates, writes proposals. Never changes code.">
                 <Toggle label="Research agent on" checked={form.agents.research} disabled={form.agents.paused} onChange={(research) => setAgents({ research })} />

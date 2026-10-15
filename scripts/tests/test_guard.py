@@ -101,3 +101,41 @@ def test_daily_merge_limit(repo: Path) -> None:
 def test_reports_only_branches_skip_the_test_suite(repo: Path) -> None:
     change(repo, "improvement/research/2026-10-16.md", "# report\n")
     assert guard.check("research", "main", "HEAD")["needsTests"] is False
+
+
+def test_auditor_may_fix_workers_and_live_counts(repo: Path) -> None:
+    change(repo, "workers/stats.ts", "x\n")
+    change(repo, "apps/dashboard/src/lib/live-stats.ts", "x\n")
+    change(repo, "workers/tests/stats.test.ts", "x\n")
+    r = guard.check("auditor", "main", "HEAD")
+    assert r["ok"], r["reasons"]
+    assert r["areas"] == ["dashboard", "workers"]
+
+
+def test_auditor_never_touches_uploads_sign_in_or_the_audit(repo: Path) -> None:
+    locked = ["workers/publish.ts", "workers/lib/youtube.ts", "workers/data-audit.ts", "workers/lib/data-audit.ts", "apps/dashboard/src/lib/auth.ts", ".github/workflows/x.yml", "scripts/guard.py"]
+    for f in locked:
+        change(repo, f, "x\n")
+    reasons = guard.check("auditor", "main", "HEAD")["reasons"]
+    for f in locked:
+        assert any(x.startswith(f"{f}: protected") for x in reasons), f
+
+
+def test_workers_stay_protected_for_other_agents(repo: Path) -> None:
+    change(repo, "workers/stats.ts", "x\n")
+    assert any("protected" in x for x in guard.check("dashboard", "main", "HEAD")["reasons"])
+
+
+def test_blocks_deleting_tests(repo: Path) -> None:
+    change(repo, "generator/tests/test_x.py", "def test_x():\n    pass\n")
+    sh(repo, "branch", "-f", "base2")
+    sh(repo, "rm", "-q", "generator/tests/test_x.py")
+    sh(repo, "commit", "-q", "-m", "rm")
+    assert any("deleting a test file" in x for x in guard.check("auditor", "base2", "HEAD")["reasons"])
+
+
+def test_blocks_changing_the_upload_schedule(repo: Path) -> None:
+    change(repo, "apps/dashboard/src/lib/store.db.ts", 'const D = { uploadTimes: ["12:37", "19:07"] };\n')
+    sh(repo, "branch", "-f", "base2")
+    change(repo, "apps/dashboard/src/lib/store.db.ts", 'const D = { uploadTimes: ["09:00", "12:37", "19:07"] };\n')
+    assert any("upload schedule" in x for x in guard.check("auditor", "base2", "HEAD")["reasons"])

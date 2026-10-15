@@ -117,7 +117,7 @@ function build(): Store {
     disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
     generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
     alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },
-    agents: { paused: false, research: true, improver: true, dashboard: true, maxActiveExperiments: 3 },
+    agents: { paused: false, research: true, improver: true, dashboard: true, auditor: true, maxActiveExperiments: 3 },
   };
   const scripts = Object.fromEntries(TEMPLATES.map((t) => [t.id, readScript(t.id)]));
   const evening = settings.uploadTimes[settings.uploadTimes.length - 1];   // sample history: one a day at the last slot

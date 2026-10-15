@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, CalendarClock, ExternalLink, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Search, ShieldAlert, Wrench } from "lucide-react";
+import { Bot, CalendarClock, ExternalLink, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Scale, Search, ShieldAlert, ShieldCheck, Wrench } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Tabs } from "radix-ui";
@@ -12,6 +12,7 @@ import { useAgents, useSettings } from "@/lib/queries";
 import type { Activity, Agents } from "@/lib/schemas";
 
 const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeof Bot; time: string }> = {
+  auditor: { name: "Auditor", role: "Checks the numbers against YouTube, fixes bugs, keeps the code clean", icon: ShieldCheck, time: "23:00" },
   research: { name: "Research", role: "Finds what makes Shorts better and what's new in Claude", icon: Search, time: "00:07" },
   improver: { name: "Improver", role: "Tests changes on half the videos, keeps what works", icon: Wrench, time: "05:17" },
   dashboard: { name: "Dashboard", role: "Hunts bugs and polishes this dashboard", icon: LayoutDashboard, time: "06:47" },
@@ -82,16 +83,42 @@ function ActivityCard({ a }: { a: Activity }) {
   );
 }
 
+const SEVERITY: Record<NonNullable<Agents["dataAudit"]>["issues"][number]["severity"], Tone> = { error: "critical", warning: "warning", owner: "brand", info: "neutral" };
+
+/** Tonight's data audit: the dashboard's numbers checked against YouTube and the database. */
+function DataAuditCard({ audit }: { audit: Agents["dataAudit"] }) {
+  if (!audit) return null;
+  const s = audit.summary;
+  const shown = audit.issues.filter((i) => i.severity !== "info");
+  const clean = s.error + s.warning + s.owner === 0;
+  return (
+    <Card title="Data audit" icon={Scale} description={`${fmtRelative(audit.generatedAt)} · ${s.checked} videos checked ${audit.youtubeChecked ? "against YouTube" : "(YouTube not connected)"}`}
+      action={<Badge tone={s.error ? "critical" : s.warning || s.owner ? "warning" : "good"} dot>{clean ? "Numbers match" : `${s.error} errors · ${s.warning + s.owner} warnings`}</Badge>}>
+      {shown.length > 0 ? (
+        <ul className="flex flex-col gap-1.5">
+          {shown.slice(0, 6).map((i, n) => (
+            <li key={n} className="flex flex-wrap items-baseline gap-2 text-[13px]">
+              <Badge tone={SEVERITY[i.severity]}>{i.kind.replaceAll("_", " ")}</Badge>
+              <span className="text-ink2">{i.videoId && <span className="font-mono text-xs">{i.videoId} · </span>}{i.detail}</span>
+            </li>
+          ))}
+        </ul>
+      ) : <p className="text-[13px] text-ink2">What the dashboard shows matches YouTube and the database. The auditor checks this every night before its run.</p>}
+    </Card>
+  );
+}
+
 function ActivityTab({ data }: { data: Agents }) {
   const days = [...new Set(data.activity.map((a) => a.day))].sort().reverse();
-  if (!days.length) return <Card><Empty icon={Bot} title="No agent activity yet">Each agent writes a summary here after its nightly run (00:07, 05:17 and 06:47 IST).</Empty></Card>;
+  if (!days.length) return <Card><Empty icon={Bot} title="No agent activity yet">Each agent writes a summary here after its nightly run (23:00, 00:07, 05:17 and 06:47 IST).</Empty></Card>;
   return (
     <div className="flex flex-col gap-8">
+      <DataAuditCard audit={data.dataAudit} />
       {days.slice(0, 14).map((day) => (
         <section key={day}>
           <h2 className="mb-3 text-sm font-medium text-ink2">{new Intl.DateTimeFormat("en-IN", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${day}T00:00:00Z`))}</h2>
-          <div className="grid gap-3 xl:grid-cols-3">
-            {(["research", "improver", "dashboard"] as const).map((agent) => {
+          <div className="grid gap-3 lg:grid-cols-2">
+            {(Object.keys(AGENT) as Activity["agent"][]).map((agent) => {
               const a = data.activity.find((x) => x.day === day && x.agent === agent);
               return a ? <ActivityCard key={agent} a={a} /> : (
                 <Card key={agent}><p className="text-[13px] text-muted">{AGENT[agent].name}: no report for this night.</p></Card>
@@ -214,7 +241,7 @@ export default function AgentsPage() {
 
   return (
     <Stagger>
-      <PageHeader title="Agents" sub="Three agents improve the automation every night while you sleep. Here's what they did, what they found, and why they changed something or waited.">
+      <PageHeader title="Agents" sub="Four agents check and improve the automation every night while you sleep. Here's what they did, what they found, and why they changed something or waited.">
         {paused ? <Badge tone="warning" dot>Paused in settings</Badge> : <Badge tone="good" dot>Running nightly</Badge>}
         <Link href="/settings#agents" className="text-xs text-ink2 hover:text-ink">Settings</Link>
       </PageHeader>
@@ -223,10 +250,10 @@ export default function AgentsPage() {
         <Stat label="Experiments running" icon={FlaskConical} value={String(running)} sub={`max ${settings?.agents.maxActiveExperiments ?? 3} at once`} />
         <Stat label="Kept" icon={GitMerge} value={String(kept)} sub="proved better, now default" />
         <Stat label="Reverted" icon={ShieldAlert} value={String(reverted)} sub="didn't help, removed" />
-        <Stat label="Last report" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="00:07 · 05:17 · 06:47 IST" />
+        <Stat label="Last report" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="23:00 · 00:07 · 05:17 · 06:47 IST" />
       </div>
 
-      <div className="mt-3 grid gap-3 md:grid-cols-3">
+      <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
         {(Object.keys(AGENT) as Activity["agent"][]).map((k) => {
           const a = AGENT[k];
           const latest = data.activity.find((x) => x.agent === k);

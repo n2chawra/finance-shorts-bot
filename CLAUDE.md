@@ -50,7 +50,10 @@ if free tiers get in the way. Keep the worker code portable so it runs in both p
 
 ## Self-improving agents (`agents/`, `improvement/`)
 
-Three nightly Claude Code routines improve the automation itself, 00:00–09:00 IST:
+Four nightly Claude Code routines check and improve the automation itself, 23:00–09:00 IST:
+**auditor** (23:00, after the 22:30 `data-audit.yml` compares the dashboard's numbers with YouTube and
+the database into `metrics/data-audit.json`: fixes data bugs and code bugs anywhere, one refactor a
+night; may change `workers/` and `lib/live-stats.ts` but never uploads, sign-in or the audit itself),
 **research** (00:07, reports + proposals, never code), **improver** (05:17, A/B experiments on ~50% of
 videos via `config/experiments.json`, keep/revert by `python -m improvement.evaluate`, template
 weights/retire/new, fixes recurring failures) and **dashboard** (06:47, bug hunt + smoke tests, UI

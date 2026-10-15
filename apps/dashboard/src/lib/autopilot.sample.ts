@@ -77,6 +77,13 @@ export function getAgents(): Agents {
         why: d === 2 ? "Phone-width screenshot showed titles running past the side panel." : "Nothing broken, nothing in the backlog worth a change tonight.",
         findings: [], changes: d === 2 ? [{ title: "Calendar: wrap long titles on phones", branch: `agent/dashboard/${day}` }] : [], nextCheck: null, links: [],
       },
+      {
+        id: `${day}-auditor`, agent: "auditor", day, decision: d === 0 ? "acted" : "nothing",
+        summary: d === 0 ? "Data audit found one video showing fewer views than YouTube right after a refresh; fixed the cause and added a test." : "Data audit clean (5 videos match YouTube); reviewed the renderer, no bugs; logged one duplicated helper for a later refactor.",
+        why: d === 0 ? "The audit flagged behind_youtube on a fresh refresh: a real bug, not YouTube noise." : "Nothing wrong tonight; the refactor waits until tests cover that code.",
+        findings: d === 0 ? [{ title: "Live counts read before the refresh finished", detail: "store.db.ts: one page skipped the wait for fresh counters." }] : [{ title: "Duplicated IST date helpers", detail: "Three copies of istDay(); one shared module would do." }],
+        changes: d === 0 ? [{ title: "Wait for fresh counters on every page", branch: `agent/auditor/${day}` }] : [], nextCheck: null, links: [{ label: "Report", url: `improvement/auditor/${day}.md` }],
+      },
     );
   }
   return {
@@ -96,5 +103,10 @@ export function getAgents(): Agents {
       { at: new Date(now - 3 * DAY_MS).toISOString(), agent: "improver", branch: `agent/improver/${istDay(now - 3 * DAY_MS)}`, result: "blocked", reasons: ["generator/variety.py: protected file; no agent may change it"] },
     ],
     backlog: [{ id: "b1", kind: "idea", title: "Keyboard shortcut to mark the open video as uploaded", status: "open", page: "video" }],
+    dataAudit: {
+      generatedAt: new Date(now - 30 * 60_000).toISOString(), youtubeChecked: true,
+      summary: { videos: 12, checked: 10, error: 0, warning: 1, info: 2, owner: 0 },
+      issues: [{ kind: "ahead_of_youtube", severity: "warning", videoId: "v-sample-03", detail: "Dashboard shows 412 views, YouTube 398. Either YouTube removed invalid views or the dashboard over-counts." }],
+    },
   };
 }

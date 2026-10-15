@@ -1,6 +1,6 @@
 # 11. Self-improving agents
 
-*The automation improves itself. Three agents run every night while the owner sleeps, change the
+*The automation improves itself. Four agents run every night while the owner sleeps, change the
 pipeline only when evidence supports it, and report everything on the dashboard. Instructions:
 [`agents/`](../../agents); judging code: [`improvement/evaluate.py`](../../improvement/evaluate.py);
 guardrails: [`scripts/guard.py`](../../scripts/guard.py).*
@@ -9,6 +9,8 @@ guardrails: [`scripts/guard.py`](../../scripts/guard.py).*
 
 | Time | Who | What |
 |---|---|---|
+| 22:30 | Data audit (GitHub Action) | Compares every published video's numbers on the dashboard with YouTube and the database; writes `metrics/data-audit.json`; notifies the owner about unlinked videos and errors that last two nights |
+| 23:00 | **Auditor** | Fixes what the data audit found, runs every check, reviews one area for bugs, and makes one careful refactor (DRY, single responsibility, dead code) when tests cover it |
 | 00:07 | **Research** | Studies 3–5 top Shorts (hooks, motion, text, colour, sound, endings), the day's topic, and Claude/Claude Code updates. Writes a report and ranked proposals. Never changes code. |
 | 01:07 | Video run | Makes the day's 3 videos (unchanged) |
 | 05:17 | **Improver** | Runs the evaluator, closes matured experiments (keep or revert), fixes recurring failures, manages templates, and starts at most one new experiment, or decides to wait |
@@ -41,6 +43,24 @@ flowchart LR
 5. **Numbers decide.** `improvement.evaluate` compares the groups: **keep** at +10% views with 80%
    confidence and no rise in QA failures; **revert** at −10%, or if QA failures go up; otherwise
    extend once, then abandon. The improver applies the verdict exactly.
+
+## The auditor and the data audit
+
+- **Data audit** (`workers/data-audit.ts`, rules in `workers/lib/data-audit.ts` with tests): runs the
+  dashboard's own data code against the real database and compares it with YouTube's public counts and
+  the stored Analytics. It flags counts that went down, counts behind YouTube right after a live
+  refresh, counts ahead of YouTube, Analytics above the public count, duplicate or missing Analytics
+  days, publish states out of step with YouTube, published videos without a link, stale Analytics and
+  page totals that don't add up. Owner-only; agents can't change it.
+- **Auditor** (`agents/auditor.md`): fixes the cause of every real mismatch with a test that fails
+  without the fix, then hunts bugs in one area a night (generator, renderer, workers, dashboard data,
+  dashboard UI) and ranks code-quality work in `improvement/auditor/backlog.json`. Refactors only code
+  that tests cover, behaviour unchanged, under ~300 lines. Up to two branches a night (fixes, refactor).
+- **Its access**: everything the improver and dashboard agents may change, plus `workers/` and
+  `apps/dashboard/src/lib/live-stats.ts`. Never uploads, upload times, YouTube sign-in, settings
+  defaults, login, Prisma, workflows, the guard, the policy or the data audit; never deletes tests.
+- The merge workflow runs the test suites by area (Python, workers, dashboard), so a branch that
+  touches all three runs all three.
 
 ## Templates follow the numbers
 
@@ -81,3 +101,5 @@ flowchart LR
 | `improvement/notifications/<agent>.json` | each agent | owner-only problems |
 | `improvement/merge-log.json` | Agent merge workflow | merged / blocked with reasons |
 | `metrics/videos.json`, `metrics/runs.json` | ingest | what the evaluator judges by |
+| `metrics/data-audit.json` | data-audit workflow | dashboard vs YouTube vs database, read by the auditor |
+| `improvement/auditor/` | auditor | nightly reports, ranked backlog, which areas it reviewed when |

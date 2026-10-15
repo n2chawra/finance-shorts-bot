@@ -141,6 +141,7 @@ export const SettingsSchema = z.object({
     research: z.boolean(),
     improver: z.boolean(),
     dashboard: z.boolean(),
+    auditor: z.boolean().default(true),
     maxActiveExperiments: z.number().int().min(0).max(6),
   }),
 });
@@ -211,7 +212,7 @@ export const NotificationsSchema = z.object({ open: z.array(NotificationSchema),
 export type Notifications = z.infer<typeof NotificationsSchema>;
 export const NotificationActionSchema = z.object({ ids: z.array(z.string()).min(1).max(200), action: z.enum(["seen", "resolve", "reopen"]) });
 
-export const AGENTS = ["research", "improver", "dashboard"] as const;
+export const AGENTS = ["auditor", "research", "improver", "dashboard"] as const;
 export const ActivitySchema = z.object({
   id: z.string(),
   agent: z.enum(AGENTS),
@@ -238,12 +239,20 @@ const ProposalRowSchema = z.looseObject({
 const MergeRowSchema = z.looseObject({
   at: z.string(), agent: z.string(), branch: z.string(), result: z.enum(["merged", "blocked"]), reasons: z.array(z.string()), runUrl: z.string().optional(),
 });
-const BacklogRowSchema = z.looseObject({ id: z.string(), kind: z.string().optional(), title: z.string(), status: z.string().optional(), page: z.string().optional(), found: z.string().optional() });
+const BacklogRowSchema = z.looseObject({ id: z.string(), kind: z.string().optional(), title: z.string(), status: z.string().optional(), page: z.string().optional(), found: z.string().optional(), agent: z.string().optional() });
+/** metrics/data-audit.json: what the dashboard shows vs YouTube vs the database, every night at 22:30 IST */
+const DataAuditSchema = z.looseObject({
+  generatedAt: z.string(),
+  youtubeChecked: z.boolean(),
+  summary: z.object({ videos: z.number(), checked: z.number(), error: z.number(), warning: z.number(), info: z.number(), owner: z.number() }),
+  issues: z.array(z.object({ kind: z.string(), severity: z.enum(["error", "warning", "info", "owner"]), videoId: z.string().optional(), detail: z.string() })),
+});
 export const AgentsSchema = z.object({
   activity: z.array(ActivitySchema),
   experiments: z.array(ExperimentRowSchema),
   proposals: z.array(ProposalRowSchema),
   merges: z.array(MergeRowSchema),
   backlog: z.array(BacklogRowSchema),
+  dataAudit: DataAuditSchema.nullable(),
 });
 export type Agents = z.infer<typeof AgentsSchema>;

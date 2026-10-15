@@ -225,3 +225,10 @@ Done when: everything above works on a phone.
   tests, Playwright smoke), metrics export in ingest, `Notification` / `AgentActivity` / `RepoDoc`
   tables, hourly `watchdog.yml`, dashboard Agents and Notifications pages with a bell, settings
   switches. Template work moved out of the video routine into the improver.
+- 2026-10-15: Auditor agent (23:00 IST) and nightly data audit (22:30 IST, `data-audit.yml`):
+  dashboard numbers vs YouTube vs database into `metrics/data-audit.json` (rules in
+  `workers/lib/data-audit.ts`, tested); the auditor fixes data and code bugs anywhere (now including
+  `workers/` and `live-stats.ts`) and makes one covered refactor a night. Guard: per-agent unlocks,
+  owner-only list (uploads, sign-in, settings, the audit), no deleting tests, no upload-schedule
+  edits; merge workflow tests by area. Dashboard: Data audit card, auditor on Agents/Overview/Settings.
+  Live view counts fixed the same day (wait for refresh, never go down, all-time views on Overview).
