@@ -51,6 +51,9 @@ export async function importActivity(prisma: PrismaClient, root: string): Promis
   const dir = path.join(root, "improvement", "activity");
   if (!existsSync(dir)) return 0;
   let n = 0;
+  // the folder is the source of truth: drop rows whose file was removed
+  const ids = new Set(readdirSync(dir).filter((x) => x.endsWith(".json")).map((x) => x.replace(/\.json$/, "")));
+  await prisma.agentActivity.deleteMany({ where: { id: { notIn: [...ids] } } });
   for (const f of readdirSync(dir).filter((x) => x.endsWith(".json")).sort().slice(-120)) {
     const parsed = Activity.safeParse(readJson(path.join(dir, f)));
     if (!parsed.success) { console.error(`::warning::${f}: ${parsed.error.issues[0]?.message}`); continue; }
