@@ -1,0 +1,131 @@
+{
+  "id": "v-20261015-03",
+  "createdAt": "2026-10-15T01:41:05.167009+00:00",
+  "status": "qa_passed",
+  "template": "money_leak_meter",
+  "topic": {
+    "title": "What a daily chai and snack stop costs over 20 years",
+    "category": "spending"
+  },
+  "title": "That ₹180 chai-and-snack stop adds up fast",
+  "description": "A ₹180 chai-and-snack stop, 26 times a month, for 20 years, against the same money in a monthly SIP at an assumed 12% a year. Returns are assumptions, not assured. Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#PersonalFinance",
+    "#Saving",
+    "#SIP"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Share this with your chai buddy",
+  "seed": 52613,
+  "style": {
+    "palette": "paper",
+    "genre": "cinematic",
+    "key": "C",
+    "bpm": 90
+  },
+  "durationSec": 54,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.1
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Checked 12% assumption (at ceiling, labelled assumed in description and end card), no named products, no guarantee wording, tone light, description ends with disclaimer. Notes: figures are nominal, ignore LTCG tax and rising chai prices; 4.2x line is illustrative."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-reviewed: held growth frame at 37.5s reads Worth ₹46.8 L, matching the 43.5s bar (36.0s was mid-animation). Hook, readable text, no overlaps, disclaimer on last frame, thumbnail clean, 54s, audio -1.0/-18.1 dB, no layout problems."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-15T01:38:13.474579+00:00",
+      "finishedAt": "2026-10-15T01:38:13.474579+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-15T01:38:14.671456+00:00",
+      "finishedAt": "2026-10-15T01:38:14.671456+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-15T01:38:34.666890+00:00",
+      "finishedAt": "2026-10-15T01:38:34.666890+00:00",
+      "notes": [
+        "Checked 12% assumption (at ceiling, labelled assumed in description and end card), no named products, no guarantee wording, tone light, description ends with disclaimer. Notes: figures are nominal, ignore LTCG tax and rising chai prices; 4.2x line is illustrative."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-15T01:38:44.174649+00:00",
+      "finishedAt": "2026-10-15T01:39:58.167459+00:00",
+      "notes": [
+        "54 s, paper/cinematic, peak -1.0 dB, mean -18.1 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-15T01:40:18.900042+00:00",
+      "finishedAt": "2026-10-15T01:40:18.900042+00:00",
+      "notes": [
+        "[template] 36.0s (grow chart, Year 20) shows Worth ₹46.3 L but 43.5s comparison bar shows If invested ₹46.8 L for the same money; the two scenes disagree (4.2x ratio matches 46.8 L). Template seems to compute the grow value differently in the two scenes (ordinary annuity vs annuity-due or similar); use one figure for both."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-15T01:40:56.059043+00:00",
+      "finishedAt": "2026-10-15T01:40:56.059043+00:00",
+      "notes": [
+        "Re-reviewed: held growth frame at 37.5s reads Worth ₹46.8 L, matching the 43.5s bar (36.0s was mid-animation). Hook, readable text, no overlaps, disclaimer on last frame, thumbnail clean, 54s, audio -1.0/-18.1 dB, no layout problems."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-15T01:41:05.167077+00:00",
+      "finishedAt": "2026-10-15T01:41:05.167077+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261015-03",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261015-03"
+  }
+}
