@@ -3,7 +3,7 @@
  * Notifications page, with what broke, the impact and the exact fix. Every check resolves its own
  * notification once the condition clears, so the page only ever shows what is wrong right now.
  */
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 
 import { PrismaClient } from "@prisma/client";
@@ -102,8 +102,11 @@ function agentChecks(now: Date, enabled: Record<string, boolean>, paused: boolea
     const blocked = !!prev && !!last && prev.result === "blocked" && last.result === "blocked" && prev.dayIst !== last.dayIst;
     out.push({ key: `agent-blocked:${agent}`, raise: blocked && last ? notice(`agent-blocked:${agent}`, "warning", `The ${agent} agent's changes were blocked twice`,
       `Last reasons: ${last.reasons.join("; ")}`, `Usually the agent fixes this itself next night. If it keeps happening, look at ${last.runUrl} and tell a Claude Code session what you see.`) : null });
-    const reported = existsSync(path.join(ROOT, "improvement", "activity", `${today}-${agent}.json`));
-    const silent = !paused && enabled[agent] && istHour >= 10 && !reported;
+    const dir = path.join(ROOT, "improvement", "activity");
+    const everReported = existsSync(dir) && readdirSync(dir).some((f) => f.endsWith(`-${agent}.json`));
+    const reported = existsSync(path.join(dir, `${today}-${agent}.json`));
+    // only once the agent has reported at least once: before its first night there's nothing to miss
+    const silent = !paused && enabled[agent] && everReported && istHour >= 10 && !reported;
     out.push({ key: `agent-silent:${agent}`, raise: silent ? notice(`agent-silent:${agent}`, "warning", `The ${agent} agent didn't report last night`,
       "Its routine didn't run, ran out of usage, or failed before writing its activity log.", `Open ${ROUTINES} → the ${agent} agent and read the last run.`) : null });
   }
