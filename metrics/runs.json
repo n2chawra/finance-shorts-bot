@@ -1,0 +1,66 @@
+{
+  "note": "Every video attempted in the last 60 days. Written by the ingest workflow.",
+  "days": [
+    {
+      "day": "2026-10-14",
+      "shipped": 2,
+      "failed": 2
+    },
+    {
+      "day": "2026-10-15",
+      "shipped": 3,
+      "failed": 0
+    }
+  ],
+  "videos": [
+    {
+      "id": "v-20261014-01",
+      "day": "2026-10-14",
+      "template": "money_leak_meter",
+      "status": "failed",
+      "reason": "QA review failed twice: money_leak_meter compare scene places the 'Spent' value label on the pink bar top (pink on pink, confetti over it); needs a template fix, not a script change."
+    },
+    {
+      "id": "v-20261014-02",
+      "day": "2026-10-14",
+      "template": "myth_vs_fact",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261014-03",
+      "day": "2026-10-14",
+      "template": "money_leak_meter",
+      "status": "failed",
+      "reason": "QA review failed: money_leak_meter growth scene shows 'Year 19' beside Put in ₹8.6 L / Worth ₹35.6 L near the end of the animation (template year counter uses n//12, off by one vs displayed totals); not fixable from the script."
+    },
+    {
+      "id": "v-20261014-04",
+      "day": "2026-10-14",
+      "template": "money_leak_meter",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261015-01",
+      "day": "2026-10-15",
+      "template": "quiz_countdown",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261015-02",
+      "day": "2026-10-15",
+      "template": "myth_vs_fact",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261015-03",
+      "day": "2026-10-15",
+      "template": "money_leak_meter",
+      "status": "shipped",
+      "reason": null
+    }
+  ]
+}
