@@ -1,3 +1,55 @@
 {
-  "proposals": []
+  "proposals": [
+    {
+      "id": "require-description-hashtags",
+      "date": "2026-10-15",
+      "area": "title",
+      "title": "Never ship a video without description and hashtags",
+      "change": "Make the ship step reject manifests with an empty description or fewer than 3 or more than 5 hashtags. Two of the last seven manifests had neither.",
+      "evidence": [
+        "https://metadatareactor.com/blog/youtube-shorts-seo-guide/",
+        "https://joinbrands.com/blog/youtube-shorts-best-practices/"
+      ],
+      "expectedEffect": "More discovery signals on every video",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "Slightly more writer rework",
+      "metric": "qa_failures",
+      "status": "new"
+    },
+    {
+      "id": "title-keyword-first",
+      "date": "2026-10-15",
+      "area": "title",
+      "title": "Put the product or scheme name first in the title",
+      "change": "Titles start with the product (PPF, SIP, FD, ELSS...) or a code-computed headline number within the first 40 characters; keep 40-70 characters. A/B via an experiment flag.",
+      "evidence": [
+        "https://metadatareactor.com/blog/youtube-shorts-seo-guide/",
+        "https://joinbrands.com/blog/youtube-shorts-best-practices/",
+        "https://outlierkit.com/channel/bankingwithaditya2003"
+      ],
+      "expectedEffect": "Better search match and click-through",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Less variety in openings; keep the opening-phrase rule",
+      "metric": "views48h",
+      "status": "new"
+    },
+    {
+      "id": "thumbnail-check",
+      "date": "2026-10-15",
+      "area": "pipeline",
+      "title": "Check custom thumbnail is applied and bottom-fifth is clear",
+      "change": "Owner-side: confirm the publisher sets thumbnail.png via thumbnails.set. Agent-side: renderer thumbnail keeps text to 4 words or fewer, none in the bottom 20%.",
+      "evidence": [
+        "https://joinbrands.com/blog/youtube-shorts-best-practices/"
+      ],
+      "expectedEffect": "Higher click-through in feed/search",
+      "confidence": "medium",
+      "effort": "M",
+      "risk": "Publisher code is owner-only",
+      "metric": "views48h",
+      "status": "new"
+    }
+  ]
 }
