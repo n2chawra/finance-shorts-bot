@@ -3,7 +3,7 @@ import { z } from "zod";
 
 /** Every setting, one row per key in the Setting table. Missing rows fall back to these defaults. */
 export const SettingsSchema = z.object({
-  uploadTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
+  uploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/)).min(1).max(4),
   backlogCap: z.number().int().min(1).max(100),
   lengthMinSec: z.number().int(),
   lengthMaxSec: z.number().int(),
@@ -19,7 +19,7 @@ export const SettingsSchema = z.object({
 export type Settings = z.infer<typeof SettingsSchema>;
 
 export const DEFAULT_SETTINGS: Settings = {
-  uploadTime: "19:07",
+  uploadTimes: ["12:37", "19:07"],
   backlogCap: 30,
   lengthMinSec: 45,
   lengthMaxSec: 60,

@@ -32,8 +32,28 @@ Run `python -m generator.run state` and read `mode`:
 |---|---|
 | `paused` | Nothing. Report "generation is paused" and stop. |
 | `idle` | Nothing. Report the `reason` and stop. |
-| `video` | Make one video: sections 2 to 7. `videos_today` of `daily_target` are already made. |
+| `video` | Make videos in a loop (section 1a). `videos_today` of `daily_target` are already made. |
 | `template_work` | Follow `generator/prompts/template_builder.md`, then section 8. |
+
+## 1a. The video loop
+
+One run makes all of the day's missing videos, so the setup above happens once a day instead of
+once per video. For each video, do sections 2 to 7 (or the failure path), then run
+`python -m generator.run state` again:
+
+- If `mode` is still `video`, start the next video with the new `next_id`.
+- Otherwise the day's target is met: stop the loop.
+
+Limits per run: at most **3 shipped videos** and at most **5 attempts** (shipped + failed). Stop
+when either is reached, even if the target isn't met; a later run makes up the rest.
+
+Keep each video lean: a brand-new fact-review subagent and a brand-new QA subagent per video
+(never reuse the previous video's), and don't re-read files you already read this run unless
+they changed (a template README you haven't read yet is fine). Pick a different template for
+each video; `state` already excludes recently used ones.
+
+**If this run made or attempted any video, do not do template work afterwards**, even if
+`state` now says `template_work`. Stop and report; the day's second run does template work.
 
 ## 2. Plan (you)
 
@@ -110,11 +130,10 @@ python -m generator.run fail <id> --reason "<which check failed and why, one sen
 git add videos/<id> && git commit -q -m "Mark video <id> failed" && git push origin HEAD:main
 ```
 
-A failed video is never released. **Then start again once**, so the run still delivers a video:
-run `python -m generator.run state` again (it gives a new `next_id`) and, if its mode is still
-`video`, make a new video from section 2, with a **different template** from the one that
-failed. If that second video also cannot pass, mark it failed the same way and stop. Never
-attempt more than two videos in one run.
+A failed video is never released. **Then go back to the loop** (section 1a): run
+`python -m generator.run state` again (it gives a new `next_id`) and, if its mode is still
+`video` and the run's limits allow, make the next video with a **different template** from the
+one that failed.
 
 ## 8. After template work
 
@@ -145,6 +164,7 @@ End with a short report, because the run's status light does not show whether th
 - mode, and the video id or template name
 - for a video: template, topic, title, and the result of each step (plan, number check, fact
   review, render, QA review, ship), with how many rewrites or re-renders were needed
-- any template repair (what was wrong, what you changed), and whether a second video was started
+- one block per video attempted in this run (shipped or failed), and how many of the daily target are now made
+- any template repair (what was wrong, what you changed)
 - whether the push to `main` and the push of `media/<id>` succeeded
 - anything that failed, with the exact error text

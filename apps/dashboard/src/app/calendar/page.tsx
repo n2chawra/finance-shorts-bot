@@ -6,13 +6,13 @@ import { useMemo, useState } from "react";
 
 import { Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, StatusBadge, Thumb, VideoLink } from "@/components/ui";
 import { fmtCompact, fmtDateTime, istDay } from "@/lib/format";
-import { useOverview, useQueue, useVideos } from "@/lib/queries";
+import { useOverview, useQueue, useSettings, useVideos } from "@/lib/queries";
+import { describeTimes, upcomingSlots } from "@/lib/slots";
 import type { Video } from "@/lib/schemas";
 
-const DAY_MS = 86_400_000;
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 type Kind = "published" | "scheduled" | "planned";
-type Entry = { video: Video; kind: Kind };
+type Entry = { video: Video; kind: Kind; at: number };
 
 const key = (y: number, m: number, d: number) => `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 const KIND: Record<Kind, { dot: string; label: string }> = {
@@ -25,21 +25,29 @@ export default function CalendarPage() {
   const videos = useVideos({});
   const queue = useQueue();
   const overview = useOverview();
+  const settings = useSettings();
   const today = istDay(new Date());
   const [ym, setYm] = useState(() => ({ y: Number(today.slice(0, 4)), m: Number(today.slice(5, 7)) - 1 }));
   const [selected, setSelected] = useState(today);
 
+  const times = useMemo(() => settings.data?.uploadTimes ?? ["19:07"], [settings.data]);
   const byDay = useMemo(() => {
-    const map = new Map<string, Entry>();
+    const map = new Map<string, Entry[]>();
+    const add = (e: Entry) => { const k = istDay(new Date(e.at)); map.set(k, [...(map.get(k) ?? []), e].sort((a, b) => a.at - b.at)); };
+    let last = Date.now() + 30 * 60_000;
     for (const v of videos.data ?? []) {
-      if (v.upload && (v.status === "published" || v.status === "scheduled")) map.set(istDay(v.upload.publishAt), { video: v, kind: v.status });
+      if (v.upload && (v.status === "published" || v.status === "scheduled")) {
+        add({ video: v, kind: v.status, at: Date.parse(v.upload.publishAt) });
+        if (v.status === "scheduled") last = Math.max(last, Date.parse(v.upload.publishAt));
+      }
     }
-    const next = overview.data?.nextUpload;
-    if (next && !overview.data?.uploadsPaused) {
-      (queue.data ?? []).forEach((v, i) => map.set(istDay(new Date(Date.parse(next.publishAt) + (i + 1) * DAY_MS)), { video: v, kind: "planned" }));
+    if (!overview.data?.uploadsPaused) {
+      const q = queue.data ?? [];
+      const slots = upcomingSlots(last, times, q.length);
+      q.forEach((v, i) => add({ video: v, kind: "planned", at: slots[i] }));
     }
     return map;
-  }, [videos.data, queue.data, overview.data]);
+  }, [videos.data, queue.data, overview.data, times]);
 
   if (videos.isLoading || queue.isLoading || overview.isLoading) return <Loading />;
   if (videos.error || queue.error || overview.error) return <ErrorNote error={videos.error ?? queue.error ?? overview.error} />;
@@ -50,13 +58,13 @@ export default function CalendarPage() {
   const cells: (number | null)[] = [...Array(lead).fill(null), ...Array.from({ length: days }, (_, i) => i + 1)];
   while (cells.length % 7) cells.push(null);
   const shift = (n: number) => setYm(({ y, m }) => { const d = new Date(Date.UTC(y, m + n, 1)); return { y: d.getUTCFullYear(), m: d.getUTCMonth() }; });
-  const picked = byDay.get(selected);
+  const picked = byDay.get(selected) ?? [];
   const monthName = new Intl.DateTimeFormat("en-IN", { month: "long", year: "numeric", timeZone: "UTC" }).format(first);
   const monthCount = [...byDay.keys()].filter((k) => k.startsWith(key(ym.y, ym.m, 1).slice(0, 7))).length;
 
   return (
     <Stagger>
-      <PageHeader title="Calendar" sub="One upload a day at the set time, IST">
+      <PageHeader title="Calendar" sub={`${times.length} upload${times.length === 1 ? "" : "s"} a day at ${describeTimes(times)}`}>
         <div className="flex items-center gap-1">
           <Button iconOnly icon={ChevronLeft} title="Previous month" onClick={() => shift(-1)}>Previous month</Button>
           <span className="w-36 text-center text-[13px] font-medium">{monthName}</span>
@@ -75,23 +83,22 @@ export default function CalendarPage() {
               const edge = `${i % 7 !== 6 ? "border-r" : ""} ${i < cells.length - 7 ? "border-b" : ""} border-line`;
               if (d === null) return <div key={`b${i}`} className={`bg-surface-2/50 ${edge}`} />;
               const k = key(ym.y, ym.m, d);
-              const e = byDay.get(k);
+              const list = byDay.get(k) ?? [];
               const on = selected === k;
               return (
                 <button key={k} type="button" onClick={() => setSelected(k)} aria-pressed={on}
-                  aria-label={`${d} ${monthName}${e ? `, ${KIND[e.kind].label}: ${e.video.title}` : ", no upload"}`}
+                  aria-label={`${d} ${monthName}${list.length ? `, ${list.map((e) => `${KIND[e.kind].label}: ${e.video.title}`).join("; ")}` : ", no upload"}`}
                   className={`relative flex min-h-16 flex-col gap-1 p-1.5 text-left text-xs transition-colors md:min-h-[92px] md:p-2 ${edge} ${on ? "bg-brand-soft" : "hover:bg-wash"}`}>
                   <span className={`grid size-6 place-items-center rounded-full tabular-nums ${k === today ? "bg-primary font-semibold text-primary-ink" : on ? "font-medium text-ink" : "text-ink2"}`}>{d}</span>
-                  {e && (
-                    <span className="flex min-w-0 items-center gap-1.5">
-                      <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden aspect-[9/16] w-5 shrink-0 rounded-[3px] border border-ring object-cover md:block ${e.kind === "planned" ? "opacity-60" : ""}`} />
-                      <span className="min-w-0">
-                        <span className="flex items-center gap-1"><span aria-hidden className={`size-1.5 shrink-0 rounded-full ${KIND[e.kind].dot}`} />
-                          <span className="hidden truncate text-[11px] text-ink2 md:inline">{e.kind === "published" ? `${fmtCompact(e.video.totals?.views ?? 0)} views` : e.kind === "scheduled" ? "Scheduled" : "Planned"}</span>
-                        </span>
+                  <span className="flex flex-col gap-1">
+                    {list.map((e) => (
+                      <span key={e.video.id} className="flex min-w-0 items-center gap-1.5">
+                        <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden aspect-[9/16] w-4 shrink-0 rounded-[3px] border border-ring object-cover md:block ${e.kind === "planned" ? "opacity-60" : ""}`} />
+                        <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${KIND[e.kind].dot}`} />
+                        <span className="hidden truncate text-[11px] text-ink2 md:inline">{e.kind === "published" ? `${fmtCompact(e.video.totals?.views ?? 0)} views` : new Date(e.at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false })}</span>
                       </span>
-                    </span>
-                  )}
+                    ))}
+                  </span>
                 </button>
               );
             })}
@@ -100,20 +107,22 @@ export default function CalendarPage() {
 
         <div className="flex flex-col gap-3">
           <Card title={new Intl.DateTimeFormat("en-IN", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${selected}T00:00:00Z`))}>
-            {picked ? (
-              <div>
-                <div className="flex gap-3">
-                  <Thumb src={picked.video.thumbnailUrl} alt="" className="w-16" />
-                  <div className="min-w-0 text-[13px]">
-                    <VideoLink id={picked.video.id} className="line-clamp-3 font-medium">{picked.video.title}</VideoLink>
-                    <div className="mt-2"><StatusBadge status={picked.video.status} /></div>
-                  </div>
-                </div>
-                <p className="mt-3 border-t border-line pt-3 text-xs text-muted">
-                  {picked.kind === "planned" ? "Goes out on this day if the queue order holds." : `${fmtDateTime(picked.video.upload!.publishAt)} IST`}
-                </p>
-                {picked.video.totals && <p className="mt-1 text-[13px] text-ink2">{fmtCompact(picked.video.totals.views)} views · +{picked.video.totals.subsGained} subscribers</p>}
-              </div>
+            {picked.length ? (
+              <ul className="flex flex-col divide-y divide-line">
+                {picked.map((e) => (
+                  <li key={e.video.id} className="flex gap-3 py-3 first:pt-0 last:pb-0">
+                    <Thumb src={e.video.thumbnailUrl} alt="" className="w-12" />
+                    <div className="min-w-0 text-[13px]">
+                      <VideoLink id={e.video.id} className="line-clamp-2 font-medium">{e.video.title}</VideoLink>
+                      <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-muted">
+                        <StatusBadge status={e.video.status} />
+                        <span>{fmtDateTime(new Date(e.at).toISOString())} IST{e.kind === "planned" ? " · if the queue order holds" : ""}</span>
+                      </div>
+                      {e.video.totals && <p className="mt-1 text-xs text-ink2">{fmtCompact(e.video.totals.views)} views · +{e.video.totals.subsGained} subscribers</p>}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             ) : <Empty icon={CalendarDays}>No upload on this day.</Empty>}
           </Card>
           <Card title="Legend" description={`${monthCount} day${monthCount === 1 ? "" : "s"} with an upload this month`}>

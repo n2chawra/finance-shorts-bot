@@ -24,19 +24,20 @@ sequenceDiagram
     Note over P: 10:07 IST (retries 13:07, 16:07)
     P->>DB: pick: an "Upload now" video first, else the lowest queue position
     P->>G: download the mp4 from the Release
-    P->>Y: resumable upload, private, publishAt = today 19:07 IST
+    P->>Y: resumable uploads, private, publishAt = today 12:37 and 19:07 IST
     P->>DB: Upload state=scheduled, youtubeId
-    Note over Y: 19:07 IST: YouTube makes it public
+    Note over Y: 12:37 and 19:07 IST: YouTube makes each public
     P->>DB: next run sees it public → status=published
 ```
 
 ## The publish job ([`workers/publish.ts`](../../workers/publish.ts))
 
 - Runs at 10:07, 13:07 and 16:07 IST. Only the first successful run uploads; the others see
-  today's slot is taken and stop. So there's **never more than one upload a day**.
+  today's slots are taken and stop. One video per slot, so **never more than two uploads a day**
+  (one per entry in the `uploadTimes` setting).
 - Order: a video you clicked **Upload now** on goes first; otherwise the top of the queue.
 - Uploads **private with `publishAt`** set to the next free slot at the upload time (default
-  19:07 IST). YouTube flips it to public at that moment, which is the documented way to schedule.
+  12:37 and 19:07 IST). YouTube flips it to public at that moment, which is the documented way to schedule.
 - Metadata: title, description (ending with the disclaimer), tags; category **Education**;
   *not made for kids*; *no altered or synthetic content* (it's motion graphics, not realistic
   synthetic people).
@@ -50,7 +51,7 @@ sequenceDiagram
 
 | Fact | Consequence |
 |---|---|
-| 10,000 quota units a day; an upload costs 1,600 | One upload a day uses 16%; live view counts use ≤ ~1,500 |
+| 10,000 quota units a day; an upload costs 1,600 | Two uploads a day use 32%; live view counts use ≤ ~1,500 |
 | Unverified API projects can only upload **private** videos | The audit is pending; until approved, uploads are by hand (below) |
 | OAuth consent screen must be in **Production** | Otherwise refresh tokens expire after 7 days |
 | Stored analytics must be refreshed at least every 30 days | The stats job rewrites each video's full history daily; if access is lost for 30 days, stored stats are deleted |

@@ -7,16 +7,18 @@ import { useState } from "react";
 
 import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, Loading, PageHeader, Stagger, Thumb, Toggle, VideoLink } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { fmtDate, fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
-import { useOverview, usePatchSettings, useQueue, useReorder, useVideoAction } from "@/lib/queries";
+import { fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
+import { useOverview, usePatchSettings, useQueue, useReorder, useSettings, useVideoAction, useVideos } from "@/lib/queries";
+import { describeTimes, upcomingSlots } from "@/lib/slots";
 import type { VideoAction } from "@/lib/schemas";
 
-const DAY_MS = 86_400_000;
 const DONE: Record<VideoAction, string> = { skip: "Moved to the end of the queue", delete: "Video deleted", "upload-now": "Marked for upload on the next publish run" };
 
 export default function QueuePage() {
   const queue = useQueue();
   const overview = useOverview();
+  const settings = useSettings();
+  const scheduled = useVideos({ status: "scheduled" });
   const reorder = useReorder();
   const act = useVideoAction();
   const patch = usePatchSettings();
@@ -31,8 +33,11 @@ export default function QueuePage() {
   const items = queue.data;
   const paused = overview.data.uploadsPaused;
   const busy = reorder.isPending || act.isPending;
-  // the scheduled video takes the next slot; queued videos follow one per day
-  const firstSlot = overview.data.nextUpload ? Date.parse(overview.data.nextUpload.publishAt) + DAY_MS : null;
+  // queued videos take the upload slots after the last video already scheduled, one per slot
+  const times = settings.data?.uploadTimes ?? ["19:07"];
+  const lastScheduled = Math.max(Date.now() + 30 * 60_000, ...(scheduled.data ?? []).map((v) => (v.upload ? Date.parse(v.upload.publishAt) : 0)));
+  const slots = upcomingSlots(lastScheduled, times, items.length);
+  const goesOut = (i: number) => fmtDateTime(new Date(slots[i]).toISOString());
   const fail = (e: Error) => toast(e.message, "error");
 
   const move = (id: string, to: number) => {
@@ -44,7 +49,7 @@ export default function QueuePage() {
 
   return (
     <Stagger>
-      <PageHeader title="Queue" sub={`${items.length} ready to publish · one upload a day, top first`}>
+      <PageHeader title="Queue" sub={`${items.length} ready to publish · ${times.length} upload${times.length === 1 ? "" : "s"} a day at ${describeTimes(times)}, top first`}>
         <label className="flex h-8 items-center gap-2.5 rounded-lg border border-ring bg-surface px-3 text-[13px] shadow-card">
           <span className="font-medium">{paused ? "Uploads paused" : "Uploads on"}</span>
           <Toggle label="Uploads on" checked={!paused} disabled={patch.isPending}
@@ -92,11 +97,11 @@ export default function QueuePage() {
                       <VideoLink id={v.id} className="block truncate text-[13px] font-medium">{v.title}</VideoLink>
                       <div className="mt-0.5 flex items-center gap-1.5 truncate text-xs text-muted">
                         <span>{titleCase(v.templateId)}</span><span aria-hidden>·</span><span>{titleCase(v.topic.category)}</span>
-                        <span className="md:hidden">· {paused || !firstSlot ? "not scheduled" : fmtDate(new Date(firstSlot + i * DAY_MS).toISOString())}</span>
+                        <span className="md:hidden">· {paused ? "not scheduled" : goesOut(i)}</span>
                       </div>
                     </div>
                     <div className="hidden text-[13px] md:block">
-                      {paused || !firstSlot ? <Badge>Not scheduled</Badge> : <span className="tabular-nums text-ink2">{fmtDate(new Date(firstSlot + i * DAY_MS).toISOString())}</span>}
+                      {paused ? <Badge>Not scheduled</Badge> : <span className="tabular-nums text-ink2">{goesOut(i)}</span>}
                     </div>
                     <div className="col-start-4 row-start-1 flex justify-end gap-0.5 md:col-start-auto md:row-start-auto">
                       <Button size="sm" tone="ghost" iconOnly icon={ArrowUp} disabled={busy || i === 0} title="Move up" onClick={() => move(v.id, i - 1)}>Move up</Button>

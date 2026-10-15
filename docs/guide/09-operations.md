@@ -16,7 +16,7 @@ After the YouTube audit is approved: turn **Pause uploads** off in Settings. Ste
 | Symptom | Likely cause | Where to look | Fix |
 |---|---|---|---|
 | A run shows **Failed** | QA or fact review rejected it after all retries | Runs → expand the run; video page → *Checks & run* | Usually nothing: the run already retried with another template, and the make-up runs cover the day. If the same template keeps failing, disable it on **Templates** and say so in a Claude session |
-| *Made today* stays at 0 | Routine didn't run, or hit the Pro usage limit | claude.ai → Routines → *Finance Shorts generation* → recent runs | Later runs (14:07, 21:07) make up; check the run report text |
+| *Made today* stays at 0 | Routine didn't run, or hit the Pro usage limit | claude.ai → Routines → *Finance Shorts generation* → recent runs | The 14:07 spare run makes up the shortfall; check the run report text |
 | New video not on the dashboard | Release or ingest workflow failed | GitHub → Actions → *Release video* / *Ingest* | Re-run the failed workflow |
 | Upload failed | YouTube error or token problem | Actions → *Publish*; video page shows the upload error | It retries at 13:07 / 16:07; after 3 failures the video is marked failed |
 | "Token" errors in Actions | Refresh token revoked/expired | Actions → *Publish* or *Stats* log | Run `npm run auth` in `workers/` again and update `YT_REFRESH_TOKEN` (`gh secret set`) |
@@ -49,7 +49,7 @@ Routines get **none** of these.
 
 | Service | Plan | Usage | Headroom |
 |---|---|---|---|
-| Claude (routines) | Pro subscription | 5 runs/day; a video run takes about 4–8 minutes of session time | Runs are spread across separate 5-hour usage windows; paid usage credits are never enabled |
+| Claude (routines) | Pro subscription | 2 runs/day: one long run makes 3 videos (setup paid once), a spare run makes up or does template work | The two runs sit in separate 5-hour usage windows; paid usage credits are never enabled |
 | GitHub Actions | Free (private repo: 2,000 min/month) | release + ingest per video, publish ×3, stats ×8, ingest ×4 a day: roughly 25–35 min/day | comfortable |
 | Netlify | Free | builds only when `apps/dashboard` changes; serverless functions for the API | comfortable |
 | Supabase | Free (500 MB) | a few thousand rows | years of headroom |

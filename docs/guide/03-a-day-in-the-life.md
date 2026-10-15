@@ -6,19 +6,17 @@
 
 | Time (IST) | What | Source |
 |---|---|---|
-| **01:07** | Routine run 1: makes video 1 of 3 | Claude routine, cron `37 1,8,15,19,22 * * *` UTC |
-| **04:07** | Routine run 2: makes video 2 of 3 | same |
+| **01:07** | Main routine run: makes all 3 of the day's videos in one session | Claude routine, cron `37 8,19 * * *` UTC |
 | 05:53 | Ingest (safety net) | `ingest.yml`, cron `23 */6 * * *` UTC |
-| **07:07** | Routine run 3: makes video 3 of 3 | same |
 | 08:47, then every 3 h | Stats: YouTube Analytics daily numbers → database | `stats.yml`, cron `17 */3 * * *` UTC |
-| **10:07** | Publish: uploads the next video, private with `publishAt` = today 19:07 | `publish.yml`, cron `37 4,7,10 * * *` UTC |
+| **10:07** | Publish: uploads two videos, private, with `publishAt` 12:37 and 19:07 today | `publish.yml`, cron `37 4,7,10 * * *` UTC |
 | 11:53 | Ingest (safety net) | `ingest.yml` |
-| 13:07 | Publish retry (only if 10:07 failed) | `publish.yml` |
-| **14:07** | Routine run 4: make-up run if fewer than 3 were made, otherwise one template-work run | Claude routine |
+| **12:37** | YouTube makes the first video public | YouTube |
+| 13:07 | Publish retry (only if a slot is still empty) | `publish.yml` |
+| **14:07** | Spare routine run: makes up any missing videos, otherwise one template-work run, otherwise stops in a minute | Claude routine |
 | 16:07 | Publish retry | `publish.yml` |
 | 17:53 | Ingest (safety net) | `ingest.yml` |
-| **19:07** | YouTube makes the day's video public (set by `publishAt`) | YouTube |
-| **21:07** | Routine run 5: make-up or idle | Claude routine |
+| **19:07** | YouTube makes the second video public | YouTube |
 | 23:53 | Ingest (safety net) | `ingest.yml` |
 
 Event-driven jobs also run whenever something happens:
@@ -30,13 +28,16 @@ Event-driven jobs also run whenever something happens:
 | Any push to `main` touching `videos/`, `history/`, `renderer/templates/` or the Prisma schema | `ingest.yml` (shows failed videos and template runs, applies migrations) | ~1 min |
 | Dashboard page open | refreshes every 30 s; reads live view counts from YouTube at most once a minute | live |
 
-## Why five runs for three videos
+## Why one run makes all three videos
 
-Each run checks how many videos were made today. While that's under the **daily target of 3**,
-the run makes a video. Once 3 are made, the next run does one template-work run, and any run
-after that ends within a minute. So the 14:07 and 21:07 runs are **spares**: on a normal day
-they don't make videos, but if an earlier run failed or hit the Pro plan's usage limit, they make
-the missing ones.
+Every routine session spends part of its effort on setup: cloning, installing, reading the
+instructions. Making the day's three videos in **one** session pays that cost once instead of
+three times. Inside the run, each video still gets its own fresh fact-review and QA agents.
+
+The run loops: after each video it asks `state` again and keeps going while fewer than 3 were
+made today (at most 3 shipped and 5 attempts per run). The **14:07 spare run** covers a main run
+that failed or hit the Pro plan's usage limit; on a normal day it does the daily template work
+instead, or ends within a minute.
 
 ```mermaid
 flowchart TD
@@ -47,18 +48,19 @@ flowchart TD
     T1 -- no --> TW[Build or improve a template]
     T1 -- yes --> Z
     C -- no --> D{Videos made today < 3?}
-    D -- yes --> V[Make a video]
-    D -- no --> T2{Room for templates and none built today?}
+    D -- yes --> V[Make a video] --> D2{Under 3 shipped / 5 attempts this run?}
+    D2 -- yes --> D
+    D2 -- no --> Z
+    D -- no --> M{Made any video this run?}
+    M -- yes --> Z
+    M -- no --> T2{Room for templates and none built today?}
     T2 -- yes --> TW
     T2 -- no --> Z
 ```
 
-The night slots (01:07, 04:07, 07:07) were chosen so generation happens while you're not using
-Claude yourself; runs are spaced so no single 5-hour usage window carries all three.
-
 ## A normal day in numbers
 
 - 3 videos made → backlog +3
-- 1 video uploaded → backlog −1
-- Net backlog growth ≈ +2 a day until it reaches 30 (about two weeks), then generation switches to
-  template work only, until uploads bring the backlog back below 30.
+- 2 videos uploaded → backlog −2
+- Net backlog growth ≈ +1 a day until it reaches 30, then generation switches to template work
+  only, until uploads bring the backlog back below 30.

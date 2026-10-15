@@ -24,7 +24,7 @@ The daily health check.
 - **Status badges**: uploads on/paused, what the next routine run will do.
 - **KPIs**: views and subscribers for the last 7 days with change vs the 7 before and a 14-day
   sparkline; backlog against the cap of 30; **made today** against the target of 3.
-- **Next upload**: the scheduled video with a live countdown to 19:07.
+- **Next upload**: the next scheduled video with a live countdown to its slot.
 - **Generation**: the next run's mode and why, template work today, templates built, last run;
   pause/resume.
 - **Daily output**: 14 day-blocks, coloured by whether the 3-a-day target was met (hover for

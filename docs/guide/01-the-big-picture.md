@@ -25,7 +25,7 @@ flowchart LR
     F --> H["📊 Dashboard<br/>shows everything live"]
 ```
 
-1. **An AI plans and writes the video.** Five times a day, a Claude session wakes up in the cloud,
+1. **An AI plans and writes the video.** Every night, a Claude session wakes up in the cloud,
    looks at what has been made recently, picks a fresh topic and a matching animation template,
    and writes a script.
 2. **Code checks the maths.** The AI only provides the *inputs* (for example ₹10,000 a month for
@@ -38,8 +38,8 @@ flowchart LR
    characters and charts, composes original music and sound effects in code, and encodes an MP4.
 5. **It ships to a queue.** The finished video is stored on GitHub, then added to a database queue
    within about a minute.
-6. **One upload a day.** A scheduled job uploads the next video in line to YouTube, set to go public
-   at 19:07 IST.
+6. **Two uploads a day.** A scheduled job uploads the next videos in line to YouTube, set to go
+   public at 12:37 and 19:07 IST.
 7. **The dashboard shows it all.** A password-protected website shows the queue, a calendar, every
    run, every video and live view counts.
 
@@ -51,7 +51,7 @@ flowchart LR
 | Every video is different | YouTube demonetises "repetitive, mass-produced" content. Templates, topics, colours, music, opening hooks and title wording all rotate by rule. |
 | No voiceover, no downloaded music | All audio is synthesized in code, so there are no copyright claims. |
 | Every video ends with "Illustrative only. Not financial advice." | It's education, not advice. |
-| One upload a day | A steady cadence; also well inside YouTube's API limits. |
+| Two uploads a day | A steady cadence at the two daily peaks; well inside YouTube's API limits. |
 | At most 30 ready videos | When the backlog is full, the AI builds or improves templates instead of making videos. |
 
 ## Key numbers
@@ -60,7 +60,7 @@ flowchart LR
 |---|---|
 | Video length | 45–60 seconds, 1080×1920, 30 fps |
 | Videos made per day | target **3** (five scheduled runs, so a failed run gets made up) |
-| Videos published per day | **1**, at 19:07 IST |
+| Videos published per day | **2**, at 12:37 and 19:07 IST |
 | Backlog cap | 30 ready videos (about a month of uploads) |
 | Animation templates | 4 today (quiz countdown, myth vs fact, two friends race, money leak meter), more built automatically up to a limit |
 | Running cost | a Claude Pro subscription; GitHub, Netlify, Supabase and the YouTube API are on free tiers |

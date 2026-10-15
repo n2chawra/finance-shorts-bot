@@ -13,15 +13,24 @@ export function istSlot(day: string, time: string): Date {
   return new Date(`${day}T${time}:00+05:30`);
 }
 
+/** Minute-precision key for an upload instant, so a slot and its upload compare equal. */
+export const slotKey = (d: Date) => d.toISOString().slice(0, 16);
+
 /**
- * The next daily upload slot: `time` IST on the first day from today whose slot is at least
- * `leadMinutes` away and that has no upload yet. One upload a day, never more.
+ * The next free upload slot: one of `times` (IST, any order) on the first day from today that is at
+ * least `leadMinutes` away, not already used (`taken` holds slot keys of existing uploads), and on
+ * a day that has fewer uploads (`perDay`) than there are slots. So never more than `times.length`
+ * uploads a day.
  */
-export function nextSlot(now: Date, time: string, takenDays: Set<string>, leadMinutes = 30): Date {
+export function nextSlot(now: Date, times: string[], taken: Set<string>, perDay: Map<string, number>, leadMinutes = 30): Date {
+  const sorted = [...new Set(times)].sort();
   for (let i = 0; i < 400; i++) {
     const day = istDay(new Date(now.getTime() + i * DAY_MS));
-    const slot = istSlot(day, time);
-    if (slot.getTime() - now.getTime() >= leadMinutes * 60_000 && !takenDays.has(day)) return slot;
+    if ((perDay.get(day) ?? 0) >= sorted.length) continue;
+    for (const time of sorted) {
+      const slot = istSlot(day, time);
+      if (slot.getTime() - now.getTime() >= leadMinutes * 60_000 && !taken.has(slotKey(slot))) return slot;
+    }
   }
   throw new Error("no free upload slot in the next 400 days");
 }

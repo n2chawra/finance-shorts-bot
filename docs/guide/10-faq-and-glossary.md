@@ -40,8 +40,8 @@ are on free tiers.
 
 **What if a run fails?**
 The run first repairs itself (rewrites the script, or fixes a template bug if the tests pass),
-then retries once with a different template. Five runs a day target three videos, so two spare
-runs make up for failures or usage limits. Failed videos are saved with the reason and are never
+then retries with a different template. One night run makes all three videos, and an afternoon spare
+run makes up for failures or usage limits. Failed videos are saved with the reason and are never
 uploaded.
 
 **Could the AI do something harmful, like delete videos or spam uploads?**
@@ -90,7 +90,7 @@ upload step is deterministic code with tests.
 | **Stats** | The GitHub Action that pulls YouTube Analytics into the database |
 | **Release** | A GitHub Release `video-<id>` holding the MP4 |
 | **Media branch** | Temporary `media/<id>` branch a routine pushes so a workflow can create the Release |
-| **publishAt** | YouTube's scheduled-publish time: uploaded private, goes public at 19:07 IST |
+| **publishAt** | YouTube's scheduled-publish time: uploaded private, goes public at 12:37 or 19:07 IST |
 | **Audit** | Google's review of the API project; until approved, API uploads stay private |
 | **Live counts** | Public view/like/comment counters read from YouTube within about a minute |
 | **IST** | India Standard Time, UTC+5:30; every schedule in this project is in IST |

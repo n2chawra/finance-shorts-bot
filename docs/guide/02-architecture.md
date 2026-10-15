@@ -6,7 +6,7 @@
 
 ```mermaid
 flowchart TB
-    subgraph CLOUD["Claude Code routine · cloud session, 5× a day"]
+    subgraph CLOUD["Claude Code routine · cloud session, 2× a day"]
         direction TB
         S[state] --> P[Planner agent] --> W[Writer agent] --> N[Number check · code]
         N --> F[Fact reviewer · separate agent] --> R[Render · Python engine]

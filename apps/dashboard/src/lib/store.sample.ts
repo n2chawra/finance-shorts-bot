@@ -113,13 +113,14 @@ function build(): Store {
   const now = new Date();
   const today = istDay(now);
   const settings: Settings = {
-    uploadTime: "19:07", backlogCap: 30, lengthMinSec: 45, lengthMaxSec: 60,
+    uploadTimes: ["12:37", "19:07"], backlogCap: 30, lengthMinSec: 45, lengthMaxSec: 60,
     disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
     generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
     alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },
   };
   const scripts = Object.fromEntries(TEMPLATES.map((t) => [t.id, readScript(t.id)]));
-  const todaysSlotPassed = now.getTime() >= Date.parse(publishAt(today, settings.uploadTime));
+  const evening = settings.uploadTimes[settings.uploadTimes.length - 1];   // sample history: one a day at the last slot
+  const todaysSlotPassed = now.getTime() >= Date.parse(publishAt(today, evening));
   const nextDay = todaysSlotPassed ? addDays(today, 1) : today;
 
   const PUBLISHED = 28, QUEUED = 12;
@@ -136,7 +137,7 @@ function build(): Store {
     if (i < PUBLISHED) {
       status = "published";
       const day = addDays(nextDay, -(PUBLISHED - i));
-      const at = publishAt(day, settings.uploadTime);
+      const at = publishAt(day, evening);
       createdAt = new Date(Date.parse(at) - (3 + r() * 4) * DAY_MS);
       upload = { youtubeId: null, publishAt: at, state: "published", error: null, attempts: i === 9 ? 2 : 1 };
       const reach = (500 + r() * r() * 9000) * tpl.weight * (i === 17 ? 3.2 : 1);
@@ -152,7 +153,7 @@ function build(): Store {
       }
     } else if (i === PUBLISHED) {
       status = "scheduled";
-      const at = publishAt(nextDay, settings.uploadTime);
+      const at = publishAt(nextDay, evening);
       createdAt = new Date(Date.parse(at) - 4.4 * DAY_MS);
       upload = { youtubeId: null, publishAt: at, state: "scheduled", error: null, attempts: 1 };
     } else if (i <= PUBLISHED + QUEUED) {

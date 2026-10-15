@@ -77,7 +77,7 @@ prompts. A plan that breaks one is rejected by `check-plan`.
 
 ## Template work
 
-When the backlog is full, or once a day after the three videos are made (while there are fewer
+When the backlog is full, or in the day's spare run once the three videos are made (while there are fewer
 than the maximum number of templates), a run builds a new template or improves one instead
 ([`template_builder.md`](../../generator/prompts/template_builder.md)):
 

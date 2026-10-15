@@ -14,7 +14,7 @@ const DAY_MS = 86_400_000;
 const IST_OFFSET = "+05:30";
 
 export const DEFAULT_SETTINGS: Settings = {
-  uploadTime: "19:07", backlogCap: 30, lengthMinSec: 45, lengthMaxSec: 60,
+  uploadTimes: ["12:37", "19:07"], backlogCap: 30, lengthMinSec: 45, lengthMaxSec: 60,
   disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
   generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
   alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },

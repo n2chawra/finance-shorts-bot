@@ -118,7 +118,7 @@ export const RunSchema = z.object({
 export type Run = z.infer<typeof RunSchema>;
 
 export const SettingsSchema = z.object({
-  uploadTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)"),
+  uploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).min(1).max(4),
   backlogCap: z.number().int().min(1).max(100),
   lengthMinSec: z.number().int().min(15).max(180),
   lengthMaxSec: z.number().int().min(15).max(180),

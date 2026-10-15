@@ -12,7 +12,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 ## Hard constraints
 
 - **No voiceover.** On-screen text, motion, music and sound effects carry the whole explanation.
-- **One upload per day** at 19:07 IST (configurable). Never more.
+- **Two uploads per day**, at 12:37 and 19:07 IST (setting `uploadTimes`). Never more than one video per slot.
 - **Generation keeps going** on a schedule to build a backlog, capped at **30 ready videos**.
   When the backlog is full, generation runs improve or add templates instead of making videos.
 - **Every video must be unique.** YouTube demonetizes repetitive, mass-produced content
@@ -26,7 +26,8 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 ## Architecture
 
 ```
-Claude Code routine (5× a day, cloud; target 3 videos per IST day)
+Claude Code routine (2× a day, cloud: 01:07 IST makes all 3 of the day's videos in one session;
+                     14:07 IST makes up any shortfall, else does template work, else idles)
   └─ planner → writer → number check → fact review → render → QA review
   └─ commits videos/<id>/manifest.json + thumbnail.png
   └─ uploads videos/<id>/video.mp4 as a GitHub Release asset (tag: video-<id>)
@@ -37,7 +38,7 @@ GitHub repo (handoff point; sessions never hold DB or YouTube credentials)
         ▼
 GitHub Actions (cron)
   ├─ ingest.yml   on push/release + every 6h   new manifests → Postgres (status: queued)
-  ├─ publish.yml  daily    oldest queued video → YouTube (private + publishAt) → status: scheduled
+  ├─ publish.yml  daily    fills today's slots from the queue → YouTube (private + publishAt) → scheduled
   └─ stats.yml    daily    YouTube Analytics → video_stats
         │
         ▼
@@ -147,7 +148,7 @@ refresh tokens expire after 7 days.
 
 ## YouTube API facts
 
-- Default quota 10,000 units/day; `videos.insert` costs 1,600. One upload/day is safe.
+- Default quota 10,000 units/day; `videos.insert` costs 1,600. Two uploads/day (3,200) is safe.
 - Unverified API projects upload as private only. Apply for the audit early.
 - Schedule by uploading with `privacyStatus: private` + `publishAt` (ISO 8601).
 - Shorts: vertical/square, up to 3 min. Keep ours ≤ 60 s.

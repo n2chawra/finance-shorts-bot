@@ -8,7 +8,7 @@ import { CategoryBar, Sparkline, Tracker, type TrackerTone } from "@/components/
 import { Badge, Button, Card, Delta, Empty, ErrorNote, Loading, Meter, Num, PageHeader, Stagger, Stat, Thumb, type Tone, VideoLink } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
-import { useAnalytics, useOverview, usePatchSettings, useRuns } from "@/lib/queries";
+import { useAnalytics, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
 import type { Analytics, Run } from "@/lib/schemas";
 
 /** Videos the routines aim to ship per IST day (generator setting `dailyVideoTarget`). */
@@ -58,6 +58,7 @@ export default function OverviewPage() {
   const { data, error, isLoading } = useOverview();
   const analytics = useAnalytics();
   const runs = useRuns();
+  const settings = useSettings();
   const patch = usePatchSettings();
   const toast = useToast();
   if (isLoading) return <Loading />;
@@ -94,7 +95,7 @@ export default function OverviewPage() {
         <Stat label="Subscribers · 7 days" icon={UserPlus} href="/analytics" value={<Num value={data.last7.subsGained} fmt={(n) => `+${fmtNum(n)}`} />}
           delta={<Delta value={subs.delta} />} sub="from YouTube Analytics" chart={<Sparkline values={subs.spark} color="var(--good)" />} />
         <Stat label="Backlog" icon={Layers} href="/queue" value={<><Num value={data.backlog} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-base font-normal text-muted">/ {data.backlogCap}</span></>}
-          sub={`≈ ${data.backlog} days of uploads`} chart={<div className="pt-3"><Meter value={data.backlog} max={data.backlogCap} label="Backlog" /></div>} />
+          sub={`≈ ${Math.floor(data.backlog / (settings.data?.uploadTimes.length ?? 1))} days of uploads`} chart={<div className="pt-3"><Meter value={data.backlog} max={data.backlogCap} label="Backlog" /></div>} />
         <Stat label="Made today" icon={Clapperboard} href="/runs" value={<><Num value={today.shipped} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-base font-normal text-muted">/ {DAILY_TARGET}</span></>}
           sub={today.failed ? `${today.failed} failed attempt${today.failed === 1 ? "" : "s"}` : "daily target"}
           chart={<div className="pt-3"><Meter value={today.shipped} max={DAILY_TARGET} label="Videos made today" tone={today.shipped >= DAILY_TARGET ? "good" : "brand"} /></div>} />

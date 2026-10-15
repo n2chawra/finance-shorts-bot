@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, Bot, Film, Upload } from "lucide-react";
+import { Bell, Bot, Film, Plus, Upload, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
@@ -84,8 +84,20 @@ export default function SettingsPage() {
               <Row label="Pause all uploads" hint="Nothing is published while this is on. Generation carries on. Use it while you upload by hand.">
                 <Toggle label="Pause all uploads" checked={form.uploadsPaused} onChange={(uploadsPaused) => set({ uploadsPaused })} />
               </Row>
-              <Row label="Upload time" hint="IST, once a day. The video goes public at this time.">
-                <input type="time" required className={fieldClass} value={form.uploadTime} onChange={(e) => set({ uploadTime: e.target.value })} />
+              <Row label="Upload times" hint="IST. One video goes public at each time, so this is also the number of uploads a day.">
+                <span className="flex w-full flex-col gap-2">
+                  {form.uploadTimes.map((t, i) => (
+                    <span key={i} className="flex items-center gap-2">
+                      <input type="time" required aria-label={`Upload time ${i + 1}`} className={fieldClass} value={t}
+                        onChange={(e) => set({ uploadTimes: form.uploadTimes.map((x, j) => (j === i ? e.target.value : x)) })} />
+                      <Button size="sm" tone="ghost" iconOnly icon={X} title="Remove this time" disabled={form.uploadTimes.length === 1}
+                        onClick={() => set({ uploadTimes: form.uploadTimes.filter((_, j) => j !== i) })}>Remove</Button>
+                    </span>
+                  ))}
+                  {form.uploadTimes.length < 4 && (
+                    <Button size="sm" tone="ghost" icon={Plus} onClick={() => set({ uploadTimes: [...form.uploadTimes, "21:07"] })}>Add a time</Button>
+                  )}
+                </span>
               </Row>
             </Card>
           </section>

@@ -54,7 +54,7 @@ for slides.
 > video with its own synthesized music: no voiceover, no stock footage, no copyrighted audio.
 > Every number on screen is computed by code, never typed by the AI, and separate AI reviewers
 > check the facts and the finished frames before anything ships. GitHub Actions moves finished
-> videos into a database and uploads one a day to YouTube. A live dashboard shows the queue,
+> videos into a database and uploads two a day to YouTube. A live dashboard shows the queue,
 > the schedule, every run and every view. It runs entirely on free tiers plus a Claude Pro
 > subscription.
 
@@ -70,6 +70,6 @@ for slides.
    music, hook and wording rotate on every video ([details](04-making-a-video.md#variety-rules)).
 5. **Architecture** (60 s): the diagram in [Architecture](02-architecture.md): cloud AI sessions
    never hold secrets, GitHub is the hand-off point, Actions do the privileged work.
-6. **Reliability** (30 s): five runs a day for a three-video target, self-repair of template
+6. **Reliability** (30 s): one night run makes three videos, a spare run covers failures, self-repair of template
    bugs, retries, and a live dashboard ([Operations](09-operations.md)).
 7. **Close** (20 s): cost is a Claude Pro subscription; everything else is free tier.
