@@ -1,4 +1,4 @@
-# Agent 3 · Dashboard (nightly, 06:47 IST)
+# Agent 3 · Dashboard (nightly, 07:37 IST)
 
 You are an unattended scheduled run. Nobody is watching. Read `agents/policy.md` first and follow
 it. Your job: keep the dashboard (`apps/dashboard`, Next.js 15 + React 19 + Tailwind 4 + Radix +

@@ -13,9 +13,9 @@ import type { Activity, Agents } from "@/lib/schemas";
 
 const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeof Bot; time: string }> = {
   auditor: { name: "Auditor", role: "Checks the numbers against YouTube, fixes bugs, keeps the code clean", icon: ShieldCheck, time: "23:00" },
-  research: { name: "Research", role: "Finds what makes Shorts better and what's new in Claude", icon: Search, time: "00:07" },
-  improver: { name: "Improver", role: "Tests changes on half the videos, keeps what works", icon: Wrench, time: "05:17" },
-  dashboard: { name: "Dashboard", role: "Hunts bugs and polishes this dashboard", icon: LayoutDashboard, time: "06:47" },
+  research: { name: "Research", role: "Finds what makes Shorts better and what's new in Claude", icon: Search, time: "23:47" },
+  improver: { name: "Improver", role: "Tests changes on half the videos, keeps what works", icon: Wrench, time: "06:17" },
+  dashboard: { name: "Dashboard", role: "Hunts bugs and polishes this dashboard", icon: LayoutDashboard, time: "07:37" },
 };
 const DECISION: Record<Activity["decision"], { label: string; tone: Tone }> = {
   acted: { label: "Made a change", tone: "good" },
@@ -110,7 +110,7 @@ function DataAuditCard({ audit }: { audit: Agents["dataAudit"] }) {
 
 function ActivityTab({ data }: { data: Agents }) {
   const days = [...new Set(data.activity.map((a) => a.day))].sort().reverse();
-  if (!days.length) return <Card><Empty icon={Bot} title="No agent activity yet">Each agent writes a summary here after its nightly run (23:00, 00:07, 05:17 and 06:47 IST).</Empty></Card>;
+  if (!days.length) return <Card><Empty icon={Bot} title="No agent activity yet">Each agent writes a summary here after its nightly run (23:00, 23:47, 06:17 and 07:37 IST).</Empty></Card>;
   return (
     <div className="flex flex-col gap-8">
       <DataAuditCard audit={data.dataAudit} />
@@ -250,7 +250,7 @@ export default function AgentsPage() {
         <Stat label="Experiments running" icon={FlaskConical} value={String(running)} sub={`max ${settings?.agents.maxActiveExperiments ?? 3} at once`} />
         <Stat label="Kept" icon={GitMerge} value={String(kept)} sub="proved better, now default" />
         <Stat label="Reverted" icon={ShieldAlert} value={String(reverted)} sub="didn't help, removed" />
-        <Stat label="Last report" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="23:00 · 00:07 · 05:17 · 06:47 IST" />
+        <Stat label="Last report" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="23:00 · 23:47 · 06:17 · 07:37 IST" />
       </div>
 
       <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-4">

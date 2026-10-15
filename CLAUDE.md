@@ -26,8 +26,8 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 ## Architecture
 
 ```
-Claude Code routine (cloud: 01:07 IST makes all 3 of the day's videos in one session;
-                     08:37 IST spare run makes up any shortfall, else idles)
+Claude Code routine (cloud: 04:07 IST makes all 3 of the day's videos in one session;
+                     09:07 IST spare run makes up any shortfall, else idles)
   └─ planner → writer → number check → fact review → render → QA review
   └─ commits videos/<id>/manifest.json + thumbnail.png
   └─ uploads videos/<id>/video.mp4 as a GitHub Release asset (tag: video-<id>)
@@ -54,15 +54,20 @@ Four nightly Claude Code routines check and improve the automation itself, 23:00
 **auditor** (23:00, after the 22:30 `data-audit.yml` compares the dashboard's numbers with YouTube and
 the database into `metrics/data-audit.json`: fixes data bugs and code bugs anywhere, one refactor a
 night; may change `workers/` and `lib/live-stats.ts` but never uploads, sign-in or the audit itself),
-**research** (00:07, reports + proposals, never code), **improver** (05:17, A/B experiments on ~50% of
+**research** (23:47, reports + proposals, never code), **improver** (06:17, A/B experiments on ~50% of
 videos via `config/experiments.json`, keep/revert by `python -m improvement.evaluate`, template
-weights/retire/new, fixes recurring failures) and **dashboard** (06:47, bug hunt + smoke tests, UI
+weights/retire/new, fixes recurring failures) and **dashboard** (07:37, bug hunt + smoke tests, UI
 trends Mon/Wed/Fri). Agents only push `agent/<name>/<date>` branches; `.github/workflows/agent-merge.yml`
 merges them only if `scripts/guard.py` (path allow-lists, hard-rule invariants, size/daily limits)
 and the tests pass. They report to `improvement/activity/` (dashboard Agents page) and raise
 owner-only problems in `improvement/notifications/` (dashboard Notifications page, with the hourly
 `watchdog.yml`). Rules: `agents/policy.md`. Never weaken the guard, the policy or the evaluator's
 rules to let an agent change through.
+
+Schedule by Pro-plan 5-hour usage windows (IST): window A 23:00–04:00 holds only non-critical work
+(auditor 23:00, research 23:47); the video run at 04:07 always starts a fresh window B, followed
+by improver 06:17 and dashboard 07:37 one after another; the spare video run at 09:07 starts a fresh
+window C so it can still rescue a main run that hit the limit. Keep new routines inside this plan.
 
 ## Repo layout
 

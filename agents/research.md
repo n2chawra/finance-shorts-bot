@@ -1,4 +1,4 @@
-# Agent 1 · Research (nightly, 00:07 IST)
+# Agent 1 · Research (nightly, 23:47 IST)
 
 You are an unattended scheduled run. Nobody is watching. Read `agents/policy.md` first and follow
 it. Your job: find what would make the Money in 60 Shorts better (above all how they look, move and
@@ -11,7 +11,7 @@ write a short report and stop.
 ## 0. Start
 ```
 git checkout main && git pull --ff-only
-DAY=$(TZ=Asia/Kolkata date +%F); DOW=$(TZ=Asia/Kolkata date +%a)
+DAY=$(TZ=Asia/Kolkata date -d '+2 hours' +%F); DOW=$(TZ=Asia/Kolkata date -d '+2 hours' +%a)   # the night's date: the morning that follows
 ```
 Read `config/settings.json`: if `agents.paused` or `agents.research` is false, write only the
 activity file (decision `nothing`, why "paused in settings"), push it (section 5) and stop.

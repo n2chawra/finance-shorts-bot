@@ -8,11 +8,11 @@
 |---|---|---|
 | 22:30 | Data audit: dashboard numbers vs YouTube vs database | `data-audit.yml`, cron `0 17 * * *` UTC |
 | 23:00 | **Auditor agent**: data bugs, code bugs, one refactor | Claude routine, cron `30 17 * * *` UTC |
-| 00:07 | **Research agent**: top Shorts, trends, Claude updates → proposals | Claude routine, cron `37 18 * * *` UTC |
-| **01:07** | Main routine run: makes all 3 of the day's videos in one session | Claude routine, cron `37 19 * * *` UTC |
-| 05:17 | **Improver agent**: judge experiments, start one or wait, manage templates | Claude routine, cron `47 23 * * *` UTC |
-| 06:47 | **Dashboard agent**: bug hunt, one fix or improvement | Claude routine, cron `17 1 * * *` UTC |
-| 08:37 | Spare video run: makes up any missing videos | Claude routine, cron `7 3 * * *` UTC |
+| 23:47 | **Research agent**: top Shorts, trends, Claude updates → proposals | Claude routine, cron `17 18 * * *` UTC |
+| **04:07** | Main routine run: makes all 3 of the day's videos in one session (fresh usage window) | Claude routine, cron `37 22 * * *` UTC |
+| 06:17 | **Improver agent**: judge experiments, start one or wait, manage templates | Claude routine, cron `47 0 * * *` UTC |
+| 07:37 | **Dashboard agent**: bug hunt, one fix or improvement | Claude routine, cron `7 2 * * *` UTC |
+| 09:07 | Spare video run: makes up any missing videos (fresh usage window) | Claude routine, cron `37 3 * * *` UTC |
 | every hour (:13) | Watchdog: raises owner notifications, resolves fixed ones | `watchdog.yml` |
 | 05:53 | Ingest (safety net) | `ingest.yml`, cron `23 */6 * * *` UTC |
 | 08:47, then every 3 h | Stats: YouTube Analytics daily numbers → database | `stats.yml`, cron `17 */3 * * *` UTC |
@@ -41,7 +41,7 @@ instructions. Making the day's three videos in **one** session pays that cost on
 three times. Inside the run, each video still gets its own fresh fact-review and QA agents.
 
 The run loops: after each video it asks `state` again and keeps going while fewer than 3 were
-made today (at most 3 shipped and 5 attempts per run). The **08:37 spare run** covers a main run
+made today (at most 3 shipped and 5 attempts per run). The **09:07 spare run** covers a main run
 that failed or hit the Pro plan's usage limit; on a normal day it ends within a minute. Template
 work is now the improver agent's job ([page 11](11-self-improving-agents.md)).
 

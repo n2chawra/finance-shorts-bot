@@ -11,11 +11,16 @@ guardrails: [`scripts/guard.py`](../../scripts/guard.py).*
 |---|---|---|
 | 22:30 | Data audit (GitHub Action) | Compares every published video's numbers on the dashboard with YouTube and the database; writes `metrics/data-audit.json`; notifies the owner about unlinked videos and errors that last two nights |
 | 23:00 | **Auditor** | Fixes what the data audit found, runs every check, reviews one area for bugs, and makes one careful refactor (DRY, single responsibility, dead code) when tests cover it |
-| 00:07 | **Research** | Studies 3–5 top Shorts (hooks, motion, text, colour, sound, endings), the day's topic, and Claude/Claude Code updates. Writes a report and ranked proposals. Never changes code. |
-| 01:07 | Video run | Makes the day's 3 videos (unchanged) |
-| 05:17 | **Improver** | Runs the evaluator, closes matured experiments (keep or revert), fixes recurring failures, manages templates, and starts at most one new experiment, or decides to wait |
-| 06:47 | **Dashboard** | Bug hunt every night (build, lint, smoke tests, screenshots); UI/UX trend research Mon/Wed/Fri; at most one fix or improvement |
-| 08:37 | Spare video run | Makes up any missing videos |
+| 23:47 | **Research** | Studies 3–5 top Shorts (hooks, motion, text, colour, sound, endings), the day's topic, and Claude/Claude Code updates. Writes a report and ranked proposals. Never changes code. |
+| 04:07 | Video run | Makes the day's 3 videos, first in a fresh usage window |
+| 06:17 | **Improver** | Runs the evaluator, closes matured experiments (keep or revert), fixes recurring failures, manages templates, and starts at most one new experiment, or decides to wait |
+| 07:37 | **Dashboard** | Bug hunt every night (build, lint, smoke tests, screenshots); UI/UX trend research Mon/Wed/Fri; at most one fix or improvement |
+| 09:07 | Spare video run | Makes up any missing videos, in a fresh usage window |
+
+Why these times: the Pro plan meters usage in 5-hour windows. The auditor and research (23:00–04:00)
+can't eat into the video run's budget, because the 04:07 video run always opens a new window; the
+improver and dashboard agents run after it, one at a time; the 09:07 spare run opens another window,
+so it can still make the day's videos if the main run hit the limit.
 
 ## How a change happens
 

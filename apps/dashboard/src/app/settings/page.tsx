@@ -127,13 +127,13 @@ export default function SettingsPage() {
               <Row label="Auditor (23:00)" hint="Checks the dashboard's numbers against YouTube, fixes bugs anywhere, one careful refactor a night.">
                 <Toggle label="Auditor agent on" checked={form.agents.auditor} disabled={form.agents.paused} onChange={(auditor) => setAgents({ auditor })} />
               </Row>
-              <Row label="Research (00:07)" hint="Studies top Shorts and Claude updates, writes proposals. Never changes code.">
+              <Row label="Research (23:47)" hint="Studies top Shorts and Claude updates, writes proposals. Never changes code.">
                 <Toggle label="Research agent on" checked={form.agents.research} disabled={form.agents.paused} onChange={(research) => setAgents({ research })} />
               </Row>
-              <Row label="Improver (05:17)" hint="Tests changes on half the new videos, keeps or reverts them by the numbers, manages templates.">
+              <Row label="Improver (06:17)" hint="Tests changes on half the new videos, keeps or reverts them by the numbers, manages templates.">
                 <Toggle label="Improver agent on" checked={form.agents.improver} disabled={form.agents.paused} onChange={(improver) => setAgents({ improver })} />
               </Row>
-              <Row label="Dashboard (06:47)" hint="Hunts bugs and makes one small improvement a night.">
+              <Row label="Dashboard (07:37)" hint="Hunts bugs and makes one small improvement a night.">
                 <Toggle label="Dashboard agent on" checked={form.agents.dashboard} disabled={form.agents.paused} onChange={(dashboard) => setAgents({ dashboard })} />
               </Row>
               <Row label="Experiments at once" hint="How many A/B tests may run at the same time. Fewer means clearer results; more means faster learning.">

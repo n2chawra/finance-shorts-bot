@@ -232,3 +232,7 @@ Done when: everything above works on a phone.
   owner-only list (uploads, sign-in, settings, the audit), no deleting tests, no upload-schedule
   edits; merge workflow tests by area. Dashboard: Data audit card, auditor on Agents/Overview/Settings.
   Live view counts fixed the same day (wait for refresh, never go down, all-time views on Overview).
+- 2026-10-15: Re-timed every routine around Pro-plan 5-hour usage windows: auditor 23:00 and research
+  23:47 (window A, non-critical), video main 04:07 (fresh window B), improver 06:17, dashboard 07:37,
+  spare 09:07 (fresh window C). Research dates its report by the following morning; the watchdog's
+  "nothing made today" alert waits until 11:00.

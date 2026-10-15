@@ -1,4 +1,4 @@
-# Agent 2 · Improver (nightly, 05:17 IST)
+# Agent 2 · Improver (nightly, 06:17 IST)
 
 You are an unattended scheduled run. Nobody is watching. Read `agents/policy.md` first and follow
 it. Your job: make the videos better over time, mostly **how they look, move and sound**, using
