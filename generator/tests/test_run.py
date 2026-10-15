@@ -48,6 +48,13 @@ def test_ready_count_adds_videos_shipped_since_last_ingest() -> None:
     assert history.ready_count(entries, {"backlog": 10, "ingestedAt": entry(9, days_ago=2)["created_at"]}) == 11
 
 
+def test_ready_count_compares_timestamps_across_utc_offsets() -> None:
+    # 20:00 IST is 14:30 UTC: later than an ingest at 14:00 UTC, though the string sorts earlier
+    shipped = {"created_at": "2026-10-14T20:00:00+05:30"}
+    assert history.ready_count([shipped], {"backlog": 0, "ingestedAt": "2026-10-14T14:00:00+00:00"}) == 1
+    assert history.ready_count([shipped], {"backlog": 0, "ingestedAt": "2026-10-14T15:00:00+00:00"}) == 0
+
+
 # ---------------- state: what a run does ----------------
 
 def test_state_makes_a_video_when_backlog_has_room(root: Path) -> None:

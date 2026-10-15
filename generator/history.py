@@ -61,7 +61,8 @@ def next_id(entries: list[dict], at: datetime | None = None, root: Path = ROOT) 
 def ready_count(entries: list[dict], settings: dict) -> int:
     """Backlog: videos queued in the database plus those shipped since the last ingest."""
     since = settings.get("ingestedAt")
-    return int(settings.get("backlog", 0)) + sum(1 for e in entries if since is None or e["created_at"] > since)
+    cutoff = datetime.fromisoformat(since) if since else None
+    return int(settings.get("backlog", 0)) + sum(1 for e in entries if cutoff is None or datetime.fromisoformat(e["created_at"]) > cutoff)
 
 
 def load_template_work(root: Path = ROOT) -> list[dict]:
