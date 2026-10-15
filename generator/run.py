@@ -27,7 +27,7 @@ from pathlib import Path
 
 from renderer import cli as renderer
 
-from . import history, variety
+from . import experiments, history, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -77,32 +77,28 @@ def state(root: Path = ROOT) -> dict:
     work_today = sum(1 for w in history.load_template_work(root) if history.ist_day(w["at"]) == today)
     may_build = work_today < tw["maxPerDay"]
     full = backlog >= settings["backlogCap"]
-    # the day's videos come first; template work only once they are made (or the backlog is full)
+    # video runs only make videos; building and improving templates is the improver agent's job
+    # (agents/improver.md), which reads the template_work block below
     target = settings["dailyVideoTarget"]
     made_today = sum(1 for e in entries if history.ist_day(e["created_at"]) == today)
     n_templates = len(renderer.template_names())
     room = n_templates < tw["maxTemplates"]
-    due = tw["everyNthRun"] > 0 and room
 
     if settings["generationPaused"]:
         mode, why = "paused", "generation is paused in settings"
-    elif full and may_build:
-        mode, why = "template_work", f"backlog {backlog} has reached the cap of {settings['backlogCap']}"
     elif full:
-        mode, why = "idle", f"backlog is full and today's template-work limit ({tw['maxPerDay']}) is used"
+        mode, why = "idle", f"backlog {backlog} has reached the cap of {settings['backlogCap']}"
     elif made_today < target:
         mode, why = "video", f"{made_today} of {target} videos made today; backlog {backlog} of {settings['backlogCap']}"
-    elif due and may_build:
-        mode, why = "template_work", (f"today's {target} videos are made, and there are "
-                                      f"{n_templates} of {tw['maxTemplates']} templates")
     else:
-        mode, why = "idle", f"today's {target} videos are made" + ("" if not due else " and today's template work is done")
+        mode, why = "idle", f"today's {target} videos are made"
 
     last = entries[-1] if entries else None
     return {
         "mode": mode, "reason": why, "backlog": backlog, "backlog_cap": settings["backlogCap"],
         "videos_today": made_today, "daily_target": target,
-        "next_id": history.next_id(entries, root=root),
+        "next_id": (next_id := history.next_id(entries, root=root)),
+        "experiments": experiments.prompt_notes(next_id, root),
         "template_work": {"runs_today": work_today, "max_per_day": tw["maxPerDay"],
                           "may_add_template": room, "templates": n_templates, "max_templates": tw["maxTemplates"]},
         "templates": {t: {"weight": settings["templates"].get(t, {}).get("weight", 1.0)} for t in enabled},
@@ -162,7 +158,9 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     settings = load_settings(root)
     started = history.now().isoformat()
     try:
-        report = renderer.render(renderer.build(_read(d / "script.json")), d, preview)
+        script = _read(d / "script.json")
+        flags = experiments.for_video(vid, script.get("template"), root)
+        report = renderer.render(renderer.build(script, flags), d, preview)
     except (ValueError, RuntimeError) as e:
         log_step(vid, "render", False, [str(e)], root, started)
         return [str(e)]
@@ -205,6 +203,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         "template": plan["template"], "topic": plan["topic"], "title": plan["title"], "description": plan["description"],
         "hashtags": plan["hashtags"], "hookStyle": plan["hook_style"], "cta": plan["cta"],
         "seed": script["seed"], "style": report["style"], "durationSec": report["duration_sec"], "audio": report.get("audio"),
+        "experiments": report.get("experiments", {}),
         "checks": [{"checker": c, "passed": True, "notes": checks[c]["notes"]} for c in CHECKERS],
         "agentRuns": json.loads((d / "run.json").read_text(encoding="utf-8")),
         "files": {"thumbnail": "thumbnail.png", "preview": "preview.png", "script": "script.json"},

@@ -17,6 +17,7 @@ import { downloadReleaseAsset, repoSlug } from "./lib/github.ts";
 import { istDay, nextSlot, slotKey, youtubeMeta } from "./lib/publishing.ts";
 import { loadSettings } from "./lib/settings.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
+import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { TokenError, accessToken, uploadVideo } from "./lib/youtube.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -26,7 +27,17 @@ async function main(): Promise<void> {
   if (!youtubeConfigured()) return;
   const prisma = new PrismaClient();
   try {
-    const token = await accessToken();
+    let token: string;
+    try {
+      token = await accessToken();
+      await resolve(prisma, "youtube-token");
+    } catch (e) {
+      if (e instanceof TokenError) {
+        await notify(prisma, { key: "youtube-token", source: "publish", severity: "critical", title: "YouTube sign-in stopped working",
+          detail: `The publish job could not sign in to YouTube: ${e.message}. Nothing can be uploaded and stats stop updating until this is fixed.`, fix: TOKEN_FIX });
+      }
+      throw e;
+    }
     const refreshed = await refreshPublished(prisma, token);
     if (refreshed.published.length || refreshed.stillPrivate.length || refreshed.missing.length) console.log("status check:", refreshed);
 
@@ -92,6 +103,9 @@ async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string
     if (gaveUp) {
       await prisma.video.update({ where: { id: video.id }, data: { status: "failed", failReason: `Upload failed ${attempts} times: ${error}`, queuePosition: null } });
       await renumberQueue(prisma);
+      await notify(prisma, { key: `upload-failed:${video.id}`, source: "publish", severity: "warning", title: `Upload of ${video.id} failed 3 times`,
+        detail: `"${video.title}" could not be uploaded to YouTube and was marked failed. Last error: ${error}`,
+        fix: "1. Open the video in the dashboard and check the error.\n2. If it's a quota or YouTube outage, nothing to do: the next video takes the slot.\n3. If it keeps happening, open Actions → Publish in GitHub and read the log." });
     }
     throw new Error(`${video.id}: attempt ${attempts} of ${MAX_ATTEMPTS} failed${gaveUp ? ", giving up" : ""}: ${error}`);
   } finally {

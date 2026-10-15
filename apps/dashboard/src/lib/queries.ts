@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
 import { getJson, send } from "./api";
-import { AnalyticsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
+import { AgentsSchema, AnalyticsSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
 import type { ManualUpload, Settings, VideoAction } from "./schemas";
 
 export const useOverview = () => useQuery({ queryKey: ["overview"], queryFn: () => getJson("/api/overview", OverviewSchema) });
@@ -31,3 +31,7 @@ export const useManualUpload = () => useWrite(({ id, ...body }: ManualUpload & {
 export const useReorder = () => useWrite((ids: string[]) => send("PATCH", "/api/queue/order", { ids }));
 export const usePatchTemplate = () => useWrite((patch: { id: string; enabled?: boolean; weight?: number }) => send("PATCH", "/api/templates", patch));
 export const usePatchSettings = () => useWrite((patch: Partial<Settings>) => send("PATCH", "/api/settings", patch));
+
+export const useNotifications = () => useQuery({ queryKey: ["notifications"], queryFn: () => getJson("/api/notifications", NotificationsSchema) });
+export const useAgents = () => useQuery({ queryKey: ["agents"], queryFn: () => getJson("/api/agents", AgentsSchema) });
+export const useNotificationAction = () => useWrite((body: { ids: string[]; action: "seen" | "resolve" | "reopen" }) => send("PATCH", "/api/notifications", body));

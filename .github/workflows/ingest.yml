@@ -12,8 +12,9 @@ on:
       - "history/**"
       - "renderer/templates/**"
       - "apps/dashboard/prisma/**"
+      - "improvement/**"
   workflow_run:
-    workflows: ["Release video"]
+    workflows: ["Release video", "Stats"]
     types: [completed]
   schedule:
     - cron: "23 */6 * * *"
@@ -55,13 +56,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: npm run ingest | tee "$GITHUB_STEP_SUMMARY"
-      - name: Commit settings for routines
+      - name: Commit settings and metrics for routines and agents
         working-directory: .
         run: |
-          git add config/settings.json
+          git add config/settings.json metrics
           if git diff --cached --quiet; then echo "settings unchanged"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -q -m "Sync settings and backlog from the database"
+          git commit -q -m "Sync settings, backlog and metrics from the database"
           git pull -q --rebase origin main
           git push -q origin HEAD:main

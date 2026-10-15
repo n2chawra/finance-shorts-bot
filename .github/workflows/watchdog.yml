@@ -1,0 +1,42 @@
+# Hourly health check: raises anything that needs the owner on the dashboard's Notifications page
+# (and resolves it again once fixed). See workers/watchdog.ts for the checks.
+name: Watchdog
+
+on:
+  schedule:
+    - cron: "13 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: watchdog
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: workers
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      GITHUB_TOKEN: ${{ github.token }}
+      DASHBOARD_URL: https://courageous-granita-bb8b51.netlify.app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/package-lock.json
+      - run: npm ci
+      - run: npm run generate
+      - name: Watchdog
+        run: npm run watchdog | tee -a "$GITHUB_STEP_SUMMARY"

@@ -17,6 +17,7 @@ import { Prisma, PrismaClient } from "@prisma/client";
 
 import { releaseAssetUrl, repoSlug } from "./lib/github.ts";
 import { Manifest, type ShippedManifest } from "./lib/manifest.ts";
+import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotifications, snapshotDocs } from "./lib/agents-sync.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -88,7 +89,7 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
     const topic = await tx.topic.create({ data: m.topic });
     await tx.video.create({
       data: {
-        id: m.id, templateId: m.template, topicId: topic.id, status: "queued", script, style: m.style, fileUrl,
+        id: m.id, templateId: m.template, topicId: topic.id, status: "queued", script, style: { ...m.style, experiments: m.experiments ?? {} }, fileUrl,
         thumbnailUrl: `videos/${m.id}/thumbnail.png`, durationSec: m.durationSec, title: m.title, description: m.description,
         tags: m.hashtags.map((h) => h.replace(/^#/, "")), hookStyle: m.hookStyle, cta: m.cta,
         queuePosition: (last._max.queuePosition ?? 0) + 1, createdAt,
@@ -135,6 +136,7 @@ export async function buildRoutineSettings(prisma: PrismaClient, root = ROOT): P
     disclaimer: s.disclaimer,
     templateWork: { maxPerDay: s.templateWork.maxPerDay, maxTemplates: s.templateWork.maxTemplates, everyNthRun: current.templateWork?.everyNthRun ?? 5 },
     templates: Object.fromEntries(templates.map((t) => [t.id, { enabled: t.enabled, weight: t.weight }])),
+    agents: s.agents,
   };
 }
 
@@ -162,12 +164,19 @@ async function main(): Promise<void> {
     await syncTemplateWork(prisma);
     await seedSettings(prisma);
 
+    // self-improving agents: their reports and decisions in, the metrics they judge by out
+    const templateDecisions = await applyTemplateDecisions(prisma, ROOT);
+    const activity = await importActivity(prisma, ROOT);
+    await importAgentNotifications(prisma, ROOT);
+    await snapshotDocs(prisma, ROOT);
+    const metricsChanged = await exportMetrics(prisma, ROOT);
+
     const file = path.join(ROOT, "config", "settings.json");
     const next = JSON.stringify(await buildRoutineSettings(prisma), null, 2) + "\n";
     const settingsChanged = !existsSync(file) || readFileSync(file, "utf8").replace(/\r\n/g, "\n") !== next;
     if (settingsChanged) writeFileSync(file, next);
 
-    console.log(JSON.stringify({ ...result, settingsChanged, videosInDatabase: await prisma.video.count() }, null, 2));
+    console.log(JSON.stringify({ ...result, settingsChanged, metricsChanged, activity, templateDecisions, videosInDatabase: await prisma.video.count() }, null, 2));
     if (result.invalid.length) process.exitCode = 1;
   } finally {
     await prisma.$disconnect();

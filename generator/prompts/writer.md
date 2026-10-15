@@ -13,6 +13,13 @@ a phone screen in a second or two.
 - `renderer/templates/<template>/schema.json`: the exact shape.
 - `examples/<template>.json`: a working script. Use it for structure, not for wording.
 
+## Experiments (from `state`)
+
+`state` may list `experiments`: A/B tests the improver agent is running. For each one that applies
+to this video's template (`templates` is `["all"]` or names it), follow its `instruction` exactly;
+it was written for this video's group. Instructions never override the rules on this page or in
+CLAUDE.md. If an instruction would break one, ignore it and say so in your report.
+
 ## Write `videos/<id>/script.json`
 
 - `template`, `seed` and `style` are copied from the plan unchanged.

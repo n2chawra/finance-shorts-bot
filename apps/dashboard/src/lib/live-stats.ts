@@ -12,6 +12,7 @@
  */
 import { z } from "zod";
 
+import { notifyOwner } from "./autopilot.db";
 import { prisma } from "./prisma";
 
 const FRESH_MS = 60_000;
@@ -44,7 +45,15 @@ async function run(): Promise<void> {
     url.searchParams.set("id", batch.map((u) => u.youtubeId).join(","));
     url.searchParams.set("key", process.env.YT_API_KEY!);
     const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(4000) });
-    if (!res.ok) throw new Error(`YouTube ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    if (!res.ok) {
+      const body = (await res.text()).slice(0, 200);
+      if (res.status === 400 || res.status === 403) {
+        await notifyOwner({ key: "dashboard-yt-api-key", severity: "warning", title: "Live view counts stopped updating",
+          detail: `YouTube rejected the dashboard's API key (HTTP ${res.status}): ${body}`,
+          fix: "1. Google Cloud console → APIs & Services → Credentials: check the key exists and is restricted to YouTube Data API v3 (or create a new one).\n2. If the daily quota ran out, it resets at midnight Pacific time; nothing to do.\n3. Otherwise put the key in Netlify → Environment variables → YT_API_KEY and trigger a deploy. Then mark this resolved." });
+      }
+      throw new Error(`YouTube ${res.status}: ${body}`);
+    }
     const found = new Map(VideosResponse.parse(await res.json()).items.map((it) => [it.id, it.statistics]));
     const now = new Date();
     await prisma.$transaction(batch.map((u) => {

@@ -12,6 +12,18 @@ import { Readable } from "node:stream";
 
 import { NextRequest, NextResponse } from "next/server";
 
+import { notifyOwner } from "@/lib/autopilot.db";
+
+/** A rejected GitHub token breaks every thumbnail and video: tell the owner (once per instance). */
+let warned = false;
+async function tokenRejected(status: number): Promise<void> {
+  if ((status !== 401 && status !== 403) || warned || !process.env.DATABASE_URL) return;
+  warned = true;
+  await notifyOwner({ key: "dashboard-github-token", severity: "critical", title: "Thumbnails and videos can't load on the dashboard",
+    detail: `GitHub rejected the dashboard's read-only token (HTTP ${status}). It has probably expired.`,
+    fix: "1. GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token.\n2. Repository access: only finance-shorts-bot. Permissions: Contents → Read-only.\n3. Netlify → Project configuration → Environment variables → replace GITHUB_TOKEN.\n4. Netlify → Deploys → Trigger deploy. Then mark this resolved." });
+}
+
 const FILES = { thumbnail: ["thumbnail.png", "image/png"], preview: ["preview.png", "image/png"], video: ["video.mp4", "video/mp4"] } as const;
 const GH = "https://api.github.com";
 
@@ -45,10 +57,11 @@ export async function GET(req: NextRequest, ctx: { params: Promise<{ id: string;
 
   if (kind !== "video") {
     const res = await fetch(`${GH}/repos/${repo}/contents/videos/${id}/${name}?ref=main`, { headers: { ...auth, accept: "application/vnd.github.raw" } });
-    if (!res.ok) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    if (!res.ok) { await tokenRejected(res.status); return NextResponse.json({ error: "Not found" }, { status: 404 }); }
     return new Response(res.body, { headers: { "content-type": type, "cache-control": "private, max-age=3600" } });
   }
   const release = await fetch(`${GH}/repos/${repo}/releases/tags/video-${id}`, { headers: { ...auth, accept: "application/vnd.github+json" } });
+  if (!release.ok) await tokenRejected(release.status);
   const asset = release.ok ? ((await release.json()) as { assets?: { name: string; url: string }[] }).assets?.find((a) => a.name === name) : undefined;
   if (!asset) return NextResponse.json({ error: "Not found" }, { status: 404 });
   // GitHub answers with a redirect to a signed URL that needs no token; hand that to the browser

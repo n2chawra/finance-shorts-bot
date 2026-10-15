@@ -30,8 +30,9 @@ def template_names() -> list[str]:
     return sorted(p.name for p in TEMPLATES.iterdir() if (p / "schema.json").is_file())
 
 
-def build(script: object):
-    """Validate a script dict against its template's schema and build the template."""
+def build(script: object, flags: dict[str, str] | None = None):
+    """Validate a script dict against its template's schema and build the template. `flags` are
+    the video's A/B experiment variants ({id: "on"|"off"}); templates read them with `self.flag(id)`."""
     name = script.get("template") if isinstance(script, dict) else None
     if not isinstance(name, str) or name not in template_names():
         raise ValueError(f"unknown template {name!r}; available: {', '.join(template_names())}")
@@ -40,15 +41,16 @@ def build(script: object):
     if errors:
         raise ValueError("script does not match schema:\n" + "\n".join(
             f"  {'/'.join(map(str, e.path)) or '(root)'}: {e.message}" for e in errors))
+    script = {**script, "_flags": dict(flags or {})}   # added after validation: schemas stay strict
     return importlib.import_module(f"renderer.templates.{name}.template").build(script)
 
 
-def load(script_path: Path, seed: int | None = None):
+def load(script_path: Path, seed: int | None = None, flags: dict[str, str] | None = None):
     """Read a script file (optionally overriding its seed), validate it and build the template."""
     script = json.loads(script_path.read_text(encoding="utf-8"))
     if seed is not None and isinstance(script, dict):
         script["seed"] = seed
-    return build(script)
+    return build(script, flags)
 
 
 def render(video, out: Path, preview: bool = False) -> dict:
@@ -60,6 +62,7 @@ def render(video, out: Path, preview: bool = False) -> dict:
     st = video.style
     report = {"template": type(video).__module__.split(".")[-2], "seed": video.seed, "duration_sec": video.duration,
               "style": {"palette": st.palette.name, "genre": st.genre, "key": st.key, "bpm": st.bpm},
+              "experiments": dict(video.flags),
               "layout_problems": [p for i in range(int(video.duration)) for p in video.layout_problems(i + 0.5)]}
     if not preview:
         wav = out / "audio.wav"
@@ -82,10 +85,11 @@ def main() -> int:
     ap.add_argument("--preview", action="store_true", help="thumbnail and contact sheet only, no video")
     ap.add_argument("--frames", type=float, nargs="+", metavar="SEC", help="write single frames at these times and exit")
     ap.add_argument("--seed", type=int, help="override the script's seed")
+    ap.add_argument("--flag", action="append", default=[], metavar="ID=on|off", help="set an A/B experiment variant (repeatable)")
     args = ap.parse_args()
 
     try:
-        video = load(args.script, args.seed)
+        video = load(args.script, args.seed, dict(f.split("=", 1) for f in args.flag))
     except (ValueError, OSError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1

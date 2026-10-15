@@ -152,3 +152,53 @@ model Setting {
   key   String @id
   value Json
 }
+
+// ---------------- self-improving agents and owner notifications ----------------
+
+enum Severity {
+  info
+  warning
+  critical
+}
+
+/// Something only the owner can fix. Written by workers, the watchdog, the dashboard and the agents;
+/// auto-resolved when the condition clears (same dedupeKey).
+model Notification {
+  id         String    @id @default(cuid())
+  dedupeKey  String    @unique
+  source     String // watchdog | publish | stats | ingest | dashboard | research | improver | dashboard-agent
+  severity   Severity
+  title      String
+  detail     String
+  fix        String // what the owner should do, step by step
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  seenAt     DateTime?
+  resolvedAt DateTime?
+
+  @@index([resolvedAt])
+}
+
+/// One agent's night: what it did, found and decided (from improvement/activity/<day>-<agent>.json).
+model AgentActivity {
+  id        String   @id // <day>-<agent>
+  agent     String // research | improver | dashboard
+  day       String // YYYY-MM-DD, IST
+  summary   String
+  decision  String // acted | waited | blocked | nothing
+  why       String
+  findings  Json // [{title, detail, link?}]
+  changes   Json // [{title, detail, branch?, experiment?}]
+  nextCheck String?
+  links     Json // [{label, url}]
+  createdAt DateTime @default(now())
+
+  @@index([day])
+}
+
+/// Snapshots of the agents' JSON files in the repo (experiments, proposals, merge log, ...).
+model RepoDoc {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}

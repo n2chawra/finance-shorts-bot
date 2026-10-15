@@ -15,6 +15,11 @@ export const SettingsSchema = z.object({
     failedRun: z.boolean(), failedUpload: z.boolean(), tokenErrors: z.boolean(), lowBacklog: z.boolean(),
     lowBacklogThreshold: z.number().int(),
   }),
+  /** Self-improving agents: master switch, one switch each, and how many A/B tests may run at once. */
+  agents: z.object({
+    paused: z.boolean(), research: z.boolean(), improver: z.boolean(), dashboard: z.boolean(),
+    maxActiveExperiments: z.number().int().min(0).max(6),
+  }),
 });
 export type Settings = z.infer<typeof SettingsSchema>;
 
@@ -28,6 +33,7 @@ export const DEFAULT_SETTINGS: Settings = {
   generationPaused: false,
   templateWork: { maxPerDay: 1, maxTemplates: 10 },
   alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },
+  agents: { paused: false, research: true, improver: true, dashboard: true, maxActiveExperiments: 3 },
 };
 
 /** Settings from the database over the defaults. Rows that fail validation are ignored. */

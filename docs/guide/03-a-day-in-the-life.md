@@ -6,14 +6,18 @@
 
 | Time (IST) | What | Source |
 |---|---|---|
-| **01:07** | Main routine run: makes all 3 of the day's videos in one session | Claude routine, cron `37 8,19 * * *` UTC |
+| 00:07 | **Research agent**: top Shorts, trends, Claude updates → proposals | Claude routine, cron `37 18 * * *` UTC |
+| **01:07** | Main routine run: makes all 3 of the day's videos in one session | Claude routine, cron `37 19 * * *` UTC |
+| 05:17 | **Improver agent**: judge experiments, start one or wait, manage templates | Claude routine, cron `47 23 * * *` UTC |
+| 06:47 | **Dashboard agent**: bug hunt, one fix or improvement | Claude routine, cron `17 1 * * *` UTC |
+| 08:37 | Spare video run: makes up any missing videos | Claude routine, cron `7 3 * * *` UTC |
+| every hour (:13) | Watchdog: raises owner notifications, resolves fixed ones | `watchdog.yml` |
 | 05:53 | Ingest (safety net) | `ingest.yml`, cron `23 */6 * * *` UTC |
 | 08:47, then every 3 h | Stats: YouTube Analytics daily numbers → database | `stats.yml`, cron `17 */3 * * *` UTC |
 | **10:07** | Publish: uploads two videos, private, with `publishAt` 12:37 and 19:07 today | `publish.yml`, cron `37 4,7,10 * * *` UTC |
 | 11:53 | Ingest (safety net) | `ingest.yml` |
 | **12:37** | YouTube makes the first video public | YouTube |
 | 13:07 | Publish retry (only if a slot is still empty) | `publish.yml` |
-| **14:07** | Spare routine run: makes up any missing videos, otherwise one template-work run, otherwise stops in a minute | Claude routine |
 | 16:07 | Publish retry | `publish.yml` |
 | 17:53 | Ingest (safety net) | `ingest.yml` |
 | **19:07** | YouTube makes the second video public | YouTube |
@@ -35,9 +39,9 @@ instructions. Making the day's three videos in **one** session pays that cost on
 three times. Inside the run, each video still gets its own fresh fact-review and QA agents.
 
 The run loops: after each video it asks `state` again and keeps going while fewer than 3 were
-made today (at most 3 shipped and 5 attempts per run). The **14:07 spare run** covers a main run
-that failed or hit the Pro plan's usage limit; on a normal day it does the daily template work
-instead, or ends within a minute.
+made today (at most 3 shipped and 5 attempts per run). The **08:37 spare run** covers a main run
+that failed or hit the Pro plan's usage limit; on a normal day it ends within a minute. Template
+work is now the improver agent's job ([page 11](11-self-improving-agents.md)).
 
 ```mermaid
 flowchart TD

@@ -11,6 +11,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { istDay } from "./lib/publishing.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
+import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { TokenError, accessToken, dailyStats } from "./lib/youtube.ts";
 
 const DAY_MS = 86_400_000;
@@ -35,7 +36,11 @@ async function main(): Promise<void> {
     try {
       token = await accessToken();
     } catch (e) {
-      if (e instanceof TokenError) await deleteIfStale(prisma);
+      if (e instanceof TokenError) {
+        await deleteIfStale(prisma);
+        await notify(prisma, { key: "youtube-token", source: "stats", severity: "critical", title: "YouTube sign-in stopped working",
+          detail: `The stats job could not sign in to YouTube: ${e.message}. Views and analytics stop updating, and uploads fail, until this is fixed.`, fix: TOKEN_FIX });
+      }
       throw e;
     }
     const refreshed = await refreshPublished(prisma, token);
@@ -67,7 +72,14 @@ async function main(): Promise<void> {
       await prisma.setting.upsert({ where: { key: REFRESHED_KEY }, update: { value: now }, create: { key: REFRESHED_KEY, value: now } });
     }
     console.log(JSON.stringify({ uploads: uploads.length, statRows: rows, through: yesterday, ...refreshed, errors }, null, 2));
-    if (errors.length) process.exitCode = 1;
+    if (errors.length) {
+      await notify(prisma, { key: "stats-errors", source: "stats", severity: "warning", title: "Some YouTube stats could not be read",
+        detail: errors.slice(0, 5).join("\n"), fix: "Usually temporary. If it lasts more than a day, open Actions → Stats in GitHub and read the log." });
+      process.exitCode = 1;
+    } else {
+      await resolve(prisma, "stats-errors");
+      await resolve(prisma, "youtube-token");
+    }
   } finally {
     await prisma.$disconnect();
   }

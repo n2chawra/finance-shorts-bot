@@ -1,4 +1,4 @@
-import { BarChart3, CalendarDays, Film, LayoutDashboard, LayoutTemplate, ListOrdered, type LucideIcon, Settings, Workflow } from "lucide-react";
+import { BarChart3, Bell, Bot, CalendarDays, Film, LayoutDashboard, LayoutTemplate, ListOrdered, type LucideIcon, Settings, Workflow } from "lucide-react";
 
 export type NavItem = { href: string; label: string; icon: LucideIcon; key: string };
 
@@ -18,6 +18,13 @@ export const NAV: { group: string; items: NavItem[] }[] = [
     items: [
       { href: "/analytics", label: "Analytics", icon: BarChart3, key: "a" },
       { href: "/runs", label: "Runs", icon: Workflow, key: "r" },
+    ],
+  },
+  {
+    group: "Autopilot",
+    items: [
+      { href: "/agents", label: "Agents", icon: Bot, key: "i" },
+      { href: "/notifications", label: "Notifications", icon: Bell, key: "n" },
     ],
   },
   {

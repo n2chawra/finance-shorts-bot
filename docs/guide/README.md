@@ -20,6 +20,7 @@ it top to bottom once, then use it as a reference when someone asks you a questi
 | 8 | [Data model](08-data-model.md) | explain the database tables and the video status flow | Technical |
 | 9 | [Operations](09-operations.md) | run it day to day, fix problems, know the costs and limits | Both |
 | 10 | [FAQ and glossary](10-faq-and-glossary.md) | answer the questions people usually ask | Both |
+| 11 | [Self-improving agents](11-self-improving-agents.md) | explain how the system improves itself every night | Both |
 
 The source of truth for rules and constraints is [`CLAUDE.md`](../../CLAUDE.md); milestones and the
 build log live in [`PLAN.md`](../../PLAN.md). Older diagrams made for the YouTube audit are in

@@ -136,6 +136,13 @@ export const SettingsSchema = z.object({
     lowBacklog: z.boolean(),
     lowBacklogThreshold: z.number().int().min(0).max(30),
   }),
+  agents: z.object({
+    paused: z.boolean(),
+    research: z.boolean(),
+    improver: z.boolean(),
+    dashboard: z.boolean(),
+    maxActiveExperiments: z.number().int().min(0).max(6),
+  }),
 });
 export type Settings = z.infer<typeof SettingsSchema>;
 export const SettingsPatchSchema = SettingsSchema.partial();
@@ -182,3 +189,60 @@ export const ManualUploadSchema = z.object({
 });
 export type ManualUpload = z.infer<typeof ManualUploadSchema>;
 export type VideoAction = z.infer<typeof VideoActionSchema>;
+
+// ---------------- autopilot: notifications and self-improving agents ----------------
+
+export const SEVERITIES = ["critical", "warning", "info"] as const;
+export const NotificationSchema = z.object({
+  id: z.string(),
+  source: z.string(),
+  severity: z.enum(SEVERITIES),
+  title: z.string(),
+  detail: z.string(),
+  fix: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  seenAt: z.string().nullable(),
+  resolvedAt: z.string().nullable(),
+});
+export type Notification = z.infer<typeof NotificationSchema>;
+export const NotificationsSchema = z.object({ open: z.array(NotificationSchema), resolved: z.array(NotificationSchema), unread: z.number() });
+export type Notifications = z.infer<typeof NotificationsSchema>;
+export const NotificationActionSchema = z.object({ ids: z.array(z.string()).min(1).max(200), action: z.enum(["seen", "resolve", "reopen"]) });
+
+export const AGENTS = ["research", "improver", "dashboard"] as const;
+export const ActivitySchema = z.object({
+  id: z.string(),
+  agent: z.enum(AGENTS),
+  day: z.string(),
+  summary: z.string(),
+  decision: z.enum(["acted", "waited", "blocked", "nothing"]),
+  why: z.string(),
+  findings: z.array(z.object({ title: z.string(), detail: z.string().optional(), link: z.string().optional() })),
+  changes: z.array(z.object({ title: z.string(), detail: z.string().optional(), branch: z.string().optional(), experiment: z.string().optional() })),
+  nextCheck: z.string().nullable(),
+  links: z.array(z.object({ label: z.string(), url: z.string() })),
+});
+export type Activity = z.infer<typeof ActivitySchema>;
+
+/** Agent-written JSON files: validated loosely so a new field never breaks the page. */
+const ExperimentRowSchema = z.looseObject({
+  id: z.string(), area: z.string().optional(), status: z.string().optional(), startedAt: z.string().optional(),
+  description: z.string().optional(), hypothesis: z.string().optional(), templates: z.array(z.string()).optional(), result: z.unknown().optional(),
+});
+const ProposalRowSchema = z.looseObject({
+  id: z.string(), date: z.string().optional(), area: z.string().optional(), title: z.string(), change: z.string().optional(),
+  evidence: z.array(z.string()).optional(), confidence: z.string().optional(), effort: z.string().optional(), status: z.string().optional(),
+});
+const MergeRowSchema = z.looseObject({
+  at: z.string(), agent: z.string(), branch: z.string(), result: z.enum(["merged", "blocked"]), reasons: z.array(z.string()), runUrl: z.string().optional(),
+});
+const BacklogRowSchema = z.looseObject({ id: z.string(), kind: z.string().optional(), title: z.string(), status: z.string().optional(), page: z.string().optional(), found: z.string().optional() });
+export const AgentsSchema = z.object({
+  activity: z.array(ActivitySchema),
+  experiments: z.array(ExperimentRowSchema),
+  proposals: z.array(ProposalRowSchema),
+  merges: z.array(MergeRowSchema),
+  backlog: z.array(BacklogRowSchema),
+});
+export type Agents = z.infer<typeof AgentsSchema>;

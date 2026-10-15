@@ -62,12 +62,10 @@ def test_generation_pause_stops_everything(root: Path) -> None:
     assert run.state(root)["mode"] == "paused"
 
 
-def test_full_backlog_switches_to_template_work_once_a_day(root: Path) -> None:
+def test_full_backlog_idles_video_runs(root: Path) -> None:
     settings(root, backlog=30)
-    assert run.state(root)["mode"] == "template_work"
-    history.append_template_work("emi_breakdown", "build", False, root)
     s = run.state(root)
-    assert s["mode"] == "idle" and "limit" in s["reason"]
+    assert s["mode"] == "idle" and "cap" in s["reason"]
 
 
 def test_template_cap_stops_new_templates(root: Path) -> None:
@@ -82,17 +80,22 @@ def today(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(history, "now", lambda: NOW)
 
 
-def test_daily_target_comes_before_template_work(root: Path, today: None) -> None:
-    settings(root, templateWork={"everyNthRun": 3, "maxPerDay": 1, "maxTemplates": 10})
+def test_video_runs_stop_at_the_daily_target(root: Path, today: None) -> None:
     for i in range(2):
         history.append(entry(i, days_ago=0.1), root)
     s = run.state(root)
     assert s["mode"] == "video" and s["videos_today"] == 2 and s["daily_target"] == 3
     history.append(entry(2, days_ago=0.05), root)
-    assert run.state(root)["mode"] == "template_work"        # 3 made today: now a template run
-    history.append_template_work("quiz_countdown", "improve", True, root, at=NOW)
     s = run.state(root)
-    assert s["mode"] == "idle" and "3 videos are made" in s["reason"]
+    assert s["mode"] == "idle" and "3 videos are made" in s["reason"]   # template work is the improver's
+
+
+def test_state_lists_experiment_instructions_for_the_next_video(root: Path) -> None:
+    (root / "config" / "experiments.json").write_text(json.dumps({"experiments": [
+        {"id": "x", "area": "hook", "status": "running", "share": 1.0, "prompt": {"on": "Open with the number."}},
+        {"id": "done", "status": "kept", "prompt": {"on": "ignored"}}]}), encoding="utf-8")
+    notes = run.state(root)["experiments"]
+    assert [n["id"] for n in notes] == ["x"] and notes[0]["variant"] == "on" and notes[0]["instruction"] == "Open with the number."
 
 
 def test_videos_from_yesterday_do_not_count_toward_today(root: Path, today: None) -> None:

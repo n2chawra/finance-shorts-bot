@@ -1,7 +1,7 @@
 "use client";
 
 import { useIsFetching } from "@tanstack/react-query";
-import { Clapperboard, LogOut, Menu, Monitor, Moon, PanelLeft, Search, Sun, X } from "lucide-react";
+import { Bell, Clapperboard, LogOut, Menu, Monitor, Moon, PanelLeft, Search, Sun, X } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -9,7 +9,7 @@ import { useTheme } from "next-themes";
 import { Dialog, ToggleGroup } from "radix-ui";
 import { useEffect, useState } from "react";
 
-import { useOverview } from "@/lib/queries";
+import { useNotifications, useOverview } from "@/lib/queries";
 
 import { useCommandMenu } from "./command";
 import { NAV, isActive, pageTitle } from "./nav-items";
@@ -69,8 +69,15 @@ function Brand({ collapsed }: { collapsed?: boolean }) {
   );
 }
 
+/** Unread count with a red dot when something critical is open. */
+function useAlerts() {
+  const { data } = useNotifications();
+  return { unread: data?.unread ?? 0, critical: (data?.open ?? []).some((n) => n.severity === "critical") };
+}
+
 function NavList({ collapsed, onNavigate }: { collapsed?: boolean; onNavigate?: () => void }) {
   const path = usePathname();
+  const alerts = useAlerts();
   return (
     <nav aria-label="Main" className="flex flex-col gap-5">
       {NAV.map((g) => (
@@ -85,6 +92,9 @@ function NavList({ collapsed, onNavigate }: { collapsed?: boolean; onNavigate?: 
                   {on && <motion.span layoutId={collapsed ? "nav-on-c" : onNavigate ? "nav-on-m" : "nav-on"} className="absolute inset-0 rounded-lg border border-ring bg-surface shadow-card" transition={{ type: "spring", stiffness: 500, damping: 40 }} />}
                   <Icon aria-hidden className={`relative size-4 shrink-0 ${on ? "text-brand-text" : ""}`} />
                   {!collapsed && <span className="relative flex-1">{label}</span>}
+                  {href === "/notifications" && alerts.unread > 0 && (
+                    <span className={`relative grid h-4 min-w-4 place-items-center rounded-full px-1 text-[10px] font-semibold tabular-nums text-white ${alerts.critical ? "bg-critical" : "bg-brand"} ${collapsed ? "absolute -right-0.5 -top-0.5" : ""}`}>{alerts.unread}</span>
+                  )}
                   {!collapsed && !onNavigate && <span className="relative hidden text-[10px] tracking-wide text-muted opacity-0 transition-opacity group-hover:opacity-100 lg:inline">G {key.toUpperCase()}</span>}
                 </Link>
               );
@@ -106,6 +116,20 @@ function SearchButton({ wide }: { wide?: boolean }) {
       <span className={wide ? "flex-1 text-left" : "sr-only"}>Search…</span>
       {wide && <span className="flex items-center gap-0.5"><Kbd>Ctrl</Kbd><Kbd>K</Kbd></span>}
     </button>
+  );
+}
+
+function BellLink() {
+  const { unread, critical } = useAlerts();
+  return (
+    <Tip label={unread ? `${unread} unread notification${unread === 1 ? "" : "s"}` : "Notifications"}>
+      <Link href="/notifications" aria-label={`Notifications${unread ? `, ${unread} unread` : ""}`} className="relative grid size-8 place-items-center rounded-lg text-ink2 transition-colors hover:bg-wash-2 hover:text-ink">
+        <Bell aria-hidden className="size-4" />
+        {unread > 0 && (
+          <span className={`absolute right-1 top-1 grid h-3.5 min-w-3.5 place-items-center rounded-full px-0.5 text-[9px] font-bold text-white ${critical ? "bg-critical" : "bg-brand"}`}>{unread}</span>
+        )}
+      </Link>
+    </Tip>
   );
 }
 
@@ -178,6 +202,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </nav>
           <div className="ml-auto flex items-center gap-2.5">
             <LiveStatus />
+            <BellLink />
             <div className="md:hidden"><SearchButton /></div>
           </div>
         </header>

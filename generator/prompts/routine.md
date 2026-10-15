@@ -33,7 +33,6 @@ Run `python -m generator.run state` and read `mode`:
 | `paused` | Nothing. Report "generation is paused" and stop. |
 | `idle` | Nothing. Report the `reason` and stop. |
 | `video` | Make videos in a loop (section 1a). `videos_today` of `daily_target` are already made. |
-| `template_work` | Follow `generator/prompts/template_builder.md`, then section 8. |
 
 ## 1a. The video loop
 
@@ -52,8 +51,7 @@ Keep each video lean: a brand-new fact-review subagent and a brand-new QA subage
 they changed (a template README you haven't read yet is fine). Pick a different template for
 each video; `state` already excludes recently used ones.
 
-**If this run made or attempted any video, do not do template work afterwards**, even if
-`state` now says `template_work`. Stop and report; the day's second run does template work.
+Video runs never build or change templates: that is the improver agent's job (`agents/improver.md`).
 
 ## 2. Plan (you)
 
@@ -134,17 +132,6 @@ A failed video is never released. **Then go back to the loop** (section 1a): run
 `python -m generator.run state` again (it gives a new `next_id`) and, if its mode is still
 `video` and the run's limits allow, make the next video with a **different template** from the
 one that failed.
-
-## 8. After template work
-
-Commit the template (or the improvement) and `history/template_work.json` to `main` and push:
-
-```
-git add renderer generator examples history && git commit -q -m "<what you built or changed>" && git push origin HEAD:main
-```
-
-Only push a template whose two test videos passed. Never push a template that fails
-`python -m pytest renderer generator -q` (this is the one case where you run the tests).
 
 ## Rules for every run
 

@@ -11,7 +11,8 @@
     "publish": "tsx publish.ts",
     "stats": "tsx stats.ts",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/*.test.ts"
+    "test": "tsx --test tests/*.test.ts",
+    "watchdog": "tsx watchdog.ts"
   },
   "dependencies": {
     "@prisma/client": "6.19.3",

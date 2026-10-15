@@ -26,6 +26,7 @@ class Video:
 
     def __init__(self, script: dict) -> None:
         self.seed: int = script["seed"]
+        self.flags: dict[str, str] = dict(script.get("_flags", {}))   # A/B experiment variants
         self.style = resolve_style(script.get("style", {}), self.seed)
         self.pal = self.style.palette
         rng = random.Random(self.seed)
@@ -39,6 +40,10 @@ class Video:
         self.flashes: list[float] = []    # white flash
         self.txt: dict[str, str] = {}
         self.figures: dict[str, str] = {}   # every computed value a script may show, as displayed
+
+    def flag(self, exp_id: str) -> bool:
+        """True when this video is in the "on" group of experiment `exp_id`."""
+        return self.flags.get(exp_id) == "on"
 
     # ---------------- text ----------------
 

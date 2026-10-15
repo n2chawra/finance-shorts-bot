@@ -217,3 +217,11 @@ Done when: everything above works on a phone.
   video page, analytics range switch, settings with an unsaved-changes bar. Wrote the project
   guide in `docs/guide/` (overview, architecture, daily timeline, generation run, renderer,
   publishing, dashboard, data model, operations, FAQ).
+- 2026-10-15: Self-improving agents. Research (00:07), improver (05:17) and dashboard (06:47) routines,
+  all in the owner's night window; spare video run moved to 08:37. A/B flags
+  (`generator/experiments.py`, `config/experiments.json`, `Video.flag()`), deterministic verdicts
+  (`improvement/evaluate.py`: keep +10% @80%, revert −10% or QA regression, 8 per arm / 14 days),
+  template portfolio rules, guard + `agent-merge.yml` (allow-lists, hard-rule invariants, limits,
+  tests, Playwright smoke), metrics export in ingest, `Notification` / `AgentActivity` / `RepoDoc`
+  tables, hourly `watchdog.yml`, dashboard Agents and Notifications pages with a bell, settings
+  switches. Template work moved out of the video routine into the improver.

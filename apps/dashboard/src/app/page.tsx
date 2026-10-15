@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Bot, CircleX, Clapperboard, Eye, Layers, Pause, Play, Rocket, Upload, UserPlus } from "lucide-react";
+import { AlertOctagon, ArrowRight, Bot, CircleX, Clapperboard, Eye, Layers, Pause, Play, Rocket, Sparkles, Upload, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ import { CategoryBar, Sparkline, Tracker, type TrackerTone } from "@/components/
 import { Badge, Button, Card, Delta, Empty, ErrorNote, Loading, Meter, Num, PageHeader, Stagger, Stat, Thumb, type Tone, VideoLink } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
-import { useAnalytics, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
+import { useAgents, useAnalytics, useNotifications, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
 import type { Analytics, Run } from "@/lib/schemas";
 
 /** Videos the routines aim to ship per IST day (generator setting `dailyVideoTarget`). */
@@ -59,6 +59,8 @@ export default function OverviewPage() {
   const analytics = useAnalytics();
   const runs = useRuns();
   const settings = useSettings();
+  const notifications = useNotifications();
+  const agents = useAgents();
   const patch = usePatchSettings();
   const toast = useToast();
   if (isLoading) return <Loading />;
@@ -81,6 +83,17 @@ export default function OverviewPage() {
         <Badge tone={data.uploadsPaused ? "warning" : "good"} dot>{data.uploadsPaused ? "Uploads paused" : "Uploads on"}</Badge>
         <Badge tone={MODES[g.mode].tone} dot>{MODES[g.mode].label}</Badge>
       </PageHeader>
+
+      {(() => {
+        const critical = notifications.data?.open.filter((n) => n.severity === "critical") ?? [];
+        return critical.length > 0 && (
+          <Link href="/notifications" className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-critical/30 bg-critical-soft px-4 py-3 transition-colors hover:border-critical/50">
+            <span className="flex items-center gap-2 text-sm"><AlertOctagon aria-hidden className="size-4 text-critical" />
+              <span><strong className="font-medium">{critical.length === 1 ? critical[0].title : `${critical.length} problems need you`}</strong> <span className="text-ink2">· the automation can&apos;t fix this by itself</span></span></span>
+            <span className="flex shrink-0 items-center gap-1 text-xs font-medium">How to fix <ArrowRight aria-hidden className="size-3.5" /></span>
+          </Link>
+        );
+      })()}
 
       {data.uploadsPaused && (
         <div role="status" className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-warning/30 bg-warning-soft px-4 py-3">
@@ -160,6 +173,32 @@ export default function OverviewPage() {
           ]} />
         </Card>
       </div>
+
+      {(() => {
+        const days = [...new Set((agents.data?.activity ?? []).map((a) => a.day))].sort();
+        const last = days.at(-1);
+        const rows = (agents.data?.activity ?? []).filter((a) => a.day === last);
+        const label = { acted: "made a change", waited: "waited", blocked: "was blocked", nothing: "nothing to do" } as const;
+        return (
+          <Card title="Agents last night" icon={Sparkles} className="mt-3" description={last ? undefined : "The self-improving agents report here after their first night."}
+            action={<Link href="/agents" className="flex items-center gap-1 text-xs font-medium text-ink2 hover:text-ink">Details <ArrowRight aria-hidden className="size-3.5" /></Link>}>
+            {rows.length > 0 && (
+              <ul className="grid gap-3 md:grid-cols-3">
+                {(["research", "improver", "dashboard"] as const).map((k) => {
+                  const a = rows.find((r) => r.agent === k);
+                  return (
+                    <li key={k} className="rounded-lg bg-surface-2 p-3 text-[13px]">
+                      <div className="flex items-center justify-between gap-2"><span className="font-medium">{k[0].toUpperCase() + k.slice(1)}</span>
+                        <span className="text-xs text-muted">{a ? label[a.decision] : "no report"}</span></div>
+                      {a && <p className="mt-1 line-clamp-3 text-ink2">{a.summary}</p>}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </Card>
+        );
+      })()}
 
       <div className="mt-3 grid gap-3 lg:grid-cols-2">
         <Card title="Latest published" icon={Upload} flush

@@ -1,0 +1,109 @@
+# Self-improving agents push their work to agent/<name>/<date> branches (they never push to main).
+# This workflow is the only way in: the guard (scripts/guard.py) checks what changed against fixed
+# rules, the tests run, and only then is the branch merged into main. Every result, merged or
+# blocked, is appended to improvement/merge-log.json so the agents learn from it.
+name: Agent merge
+
+on:
+  push:
+    branches: ["agent/**"]
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: agent-merge
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      BRANCH: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Which agent
+        id: who
+        run: echo "agent=$(echo "$BRANCH" | cut -d/ -f2)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Guard
+        id: guard
+        run: |
+          git fetch -q origin main
+          python scripts/guard.py --agent "${{ steps.who.outputs.agent }}" --base origin/main --head HEAD --json > "$RUNNER_TEMP/guard.json" || true
+          cat "$RUNNER_TEMP/guard.json"
+          echo "ok=$(python -c "import json;print(str(json.load(open('$RUNNER_TEMP/guard.json'))['ok']).lower())")" >> "$GITHUB_OUTPUT"
+          echo "tests=$(python -c "import json;print(str(json.load(open('$RUNNER_TEMP/guard.json'))['needsTests']).lower())")" >> "$GITHUB_OUTPUT"
+
+      - name: Python tests and preview renders
+        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && steps.who.outputs.agent != 'dashboard'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+          pip install -q -r renderer/requirements.txt pytest
+          python -m pytest renderer generator improvement scripts -q
+          for f in examples/*.json; do python renderer/cli.py "$f" --preview --out "$RUNNER_TEMP/preview/$(basename "$f" .json)"; done
+
+      - uses: actions/setup-node@v4
+        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && steps.who.outputs.agent == 'dashboard'
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/dashboard/package-lock.json
+
+      - name: Dashboard typecheck, lint, build and smoke tests
+        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && steps.who.outputs.agent == 'dashboard'
+        working-directory: apps/dashboard
+        env:
+          DATABASE_URL: ""          # sample data
+          NEXT_TELEMETRY_DISABLED: "1"
+        run: |
+          npm ci
+          npx tsc --noEmit -p .
+          npx next lint
+          npx next build
+          npx playwright install --with-deps chromium > /dev/null
+          npx playwright test
+
+      - name: Merge into main
+        id: merge
+        if: success() && steps.guard.outputs.ok == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q main
+          git pull -q origin main
+          git merge --no-ff -q "origin/$BRANCH" -m "Merge $BRANCH (self-improving agent)"
+          git push -q origin main
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Log the result
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q -f main
+          git pull -q origin main
+          result=blocked; [ "${{ steps.merge.outcome }}" = "success" ] && result=merged
+          python scripts/merge_log.py --agent "${{ steps.who.outputs.agent }}" --branch "$BRANCH" --result "$result" \
+            --guard "$RUNNER_TEMP/guard.json" --commit "${{ steps.merge.outputs.commit }}" \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --note "tests or build failed"
+          git add improvement/merge-log.json
+          git commit -q -m "Log agent merge: $BRANCH ($result)"
+          git push -q origin main
+          git push -q origin --delete "$BRANCH" || true
+
+      - name: Refresh the dashboard's copy
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ingest.yml --ref main

@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, Bot, Film, Plus, Upload, X } from "lucide-react";
+import { Bell, Bot, Film, Plus, Sparkles, Upload, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
@@ -22,6 +22,7 @@ const SECTIONS = [
   { id: "generation", label: "Generation", icon: Bot },
   { id: "uploads", label: "Uploads", icon: Upload },
   { id: "videos", label: "Videos", icon: Film },
+  { id: "agents", label: "Agents", icon: Sparkles },
   { id: "alerts", label: "Alerts", icon: Bell },
 ];
 
@@ -43,6 +44,7 @@ export default function SettingsPage() {
   const set = (p: Partial<Settings>) => setForm({ ...form, ...p });
   const setAlert = (p: Partial<Settings["alerts"]>) => set({ alerts: { ...form.alerts, ...p } });
   const setWork = (p: Partial<Settings["templateWork"]>) => set({ templateWork: { ...form.templateWork, ...p } });
+  const setAgents = (p: Partial<Settings["agents"]>) => set({ agents: { ...form.agents, ...p } });
   const dirty = JSON.stringify(form) !== JSON.stringify(data);
   const int = (v: string) => (Number.isFinite(parseInt(v, 10)) ? parseInt(v, 10) : 0);
   const save = () => patch.mutate(form, { onSuccess: () => toast("Settings saved"), onError: (e) => toast(e.message, "error") });
@@ -117,8 +119,28 @@ export default function SettingsPage() {
             </Card>
           </section>
 
+          <section id="agents" className="scroll-mt-20">
+            <Card title="Self-improving agents" description="Nightly, 00:00–09:00 IST. Every change they make passes a guard and the tests before it goes live.">
+              <Row label="Pause all agents" hint="They still start on schedule but do nothing. The video pipeline is not affected.">
+                <Toggle label="Pause all agents" checked={form.agents.paused} onChange={(paused) => setAgents({ paused })} />
+              </Row>
+              <Row label="Research (00:07)" hint="Studies top Shorts and Claude updates, writes proposals. Never changes code.">
+                <Toggle label="Research agent on" checked={form.agents.research} disabled={form.agents.paused} onChange={(research) => setAgents({ research })} />
+              </Row>
+              <Row label="Improver (05:17)" hint="Tests changes on half the new videos, keeps or reverts them by the numbers, manages templates.">
+                <Toggle label="Improver agent on" checked={form.agents.improver} disabled={form.agents.paused} onChange={(improver) => setAgents({ improver })} />
+              </Row>
+              <Row label="Dashboard (06:47)" hint="Hunts bugs and makes one small improvement a night.">
+                <Toggle label="Dashboard agent on" checked={form.agents.dashboard} disabled={form.agents.paused} onChange={(dashboard) => setAgents({ dashboard })} />
+              </Row>
+              <Row label="Experiments at once" hint="How many A/B tests may run at the same time. Fewer means clearer results; more means faster learning.">
+                <input type="number" min={0} max={6} required className={fieldClass} value={form.agents.maxActiveExperiments} onChange={(e) => setAgents({ maxActiveExperiments: int(e.target.value) })} />
+              </Row>
+            </Card>
+          </section>
+
           <section id="alerts" className="scroll-mt-20">
-            <Card title="Telegram alerts" description="Stored now; sent once the watchdog is set up">
+            <Card title="Alerts" description="The hourly watchdog shows problems on the Notifications page. Telegram delivery comes later.">
               <Row label="Failed run"><Toggle label="Alert on failed run" checked={form.alerts.failedRun} onChange={(failedRun) => setAlert({ failedRun })} /></Row>
               <Row label="Failed upload"><Toggle label="Alert on failed upload" checked={form.alerts.failedUpload} onChange={(failedUpload) => setAlert({ failedUpload })} /></Row>
               <Row label="Token errors" hint="YouTube refresh token rejected."><Toggle label="Alert on token errors" checked={form.alerts.tokenErrors} onChange={(tokenErrors) => setAlert({ tokenErrors })} /></Row>

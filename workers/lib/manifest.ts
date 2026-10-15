@@ -24,6 +24,8 @@ export const ShippedManifest = z.object({
   cta: z.string(),
   seed: z.number().int(),
   style: z.object({ palette: z.string(), genre: z.string(), key: z.string(), bpm: z.number() }),
+  /** A/B experiment variants this video was rendered with ({id: "on"|"off"}); see generator/experiments.py. */
+  experiments: z.record(z.string(), z.enum(["on", "off"])).optional(),
   durationSec: z.number().positive(),
   checks: z.array(z.object({ checker: z.enum(["number_check", "fact_review", "qa_review"]), passed: z.boolean(), notes: z.array(z.string()) })).length(3),
   agentRuns: z.array(Step),
