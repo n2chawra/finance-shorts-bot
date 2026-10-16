@@ -11,14 +11,44 @@ from PIL import Image, ImageDraw, ImageFont
 
 from .easing import back, clamp, ramp
 
-W, H, FPS = 1080, 1920, 30
+FPS = 30
 RGB = tuple[int, int, int]
 FONT_DIR = Path(__file__).resolve().parents[2] / "assets" / "fonts"
-
-MIN_TEXT = 44          # smallest readable text, px
-BOTTOM_SAFE = 120      # Shorts UI covers this much of the bottom edge
-SAFE_W = W - 100       # widest a centred line may be
 DISCLAIMER = "Illustrative only. Not financial advice."
+
+
+@dataclass(frozen=True)
+class Frame:
+    """A video format: frame size and the layout rules that go with it."""
+    name: str
+    w: int
+    h: int
+    min_text: int      # smallest readable text, px
+    bottom_safe: int   # platform UI covers this much of the bottom edge
+    side_margin: int
+    max_voice_line: int   # longest narration line for one scene, characters
+    voice_speed: tuple[float, float]   # per-video narration speed range
+
+    @property
+    def size(self) -> tuple[int, int]:
+        return (self.w, self.h)
+
+    @property
+    def safe_w(self) -> float:
+        """Widest a centred line may be."""
+        return self.w - self.side_margin*2
+
+
+# Shorts: phone-held vertical, with YouTube's UI over the bottom edge and buttons on the right.
+SHORT = Frame("short", w=1080, h=1920, min_text=44, bottom_safe=120, side_margin=50, max_voice_line=220, voice_speed=(1.12, 1.22))
+# Long-form: landscape, watched on a bigger screen, no platform chrome over the picture.
+LONG = Frame("long", w=1920, h=1080, min_text=30, bottom_safe=36, side_margin=80, max_voice_line=1300, voice_speed=(0.98, 1.06))
+FRAMES = {f.name: f for f in (SHORT, LONG)}
+
+# Defaults for the Shorts templates, which were written before long-form existed.
+W, H = SHORT.w, SHORT.h
+MIN_TEXT, BOTTOM_SAFE = SHORT.min_text, SHORT.bottom_safe
+SAFE_W = SHORT.safe_w
 
 
 @dataclass(frozen=True)
@@ -70,11 +100,15 @@ class Canvas:
     """One frame being drawn. `d` is the raw ImageDraw for shapes the helpers don't cover.
     If `log` is given, every fully opaque piece of text is recorded in it."""
 
-    def __init__(self, im: Image.Image, palette: Palette, log: list[Drawn] | None = None) -> None:
+    def __init__(self, im: Image.Image, palette: Palette, log: list[Drawn] | None = None,
+                 frame: Frame = SHORT) -> None:
         self.im = im
         self.d = ImageDraw.Draw(im)
         self.pal = palette
         self.log = log
+        self.frame = frame
+        self.w, self.h = im.size
+        self.safe_w = self.w - frame.side_margin*2
 
     def mix(self, c: RGB, a: float, base: RGB | None = None) -> RGB:
         return mix(c, a, self.pal.bg if base is None else base)
@@ -94,9 +128,10 @@ class Canvas:
             self.log.append(Drawn(s, size, self.d.textbbox((cx, cy), s, font=f, anchor=anchor)))
 
     def pill(self, cx: float, cy: float, s: str, size: float, fg: RGB, bg: RGB, a: float = 1.0,
-             pad: float = 28, max_w: float = SAFE_W) -> None:
+             pad: float = 28, max_w: float | None = None) -> None:
         if a <= 0.01:
             return
+        max_w = self.safe_w if max_w is None else max_w
         size = fit(s, size, "Bold", max_w - pad*2)
         f = font(size)
         l, t, r, b = self.d.textbbox((0, 0), s, font=f)
@@ -111,4 +146,4 @@ class Canvas:
         """Centred line that pops in at t0, shrunk if needed to stay inside the safe width."""
         a = ramp(t, t0, 0.2)*A
         k = back(ramp(t, t0, 0.35))
-        self.text(s, W/2, y, size*(0.6 + 0.4*k), color, a, max_w=SAFE_W)
+        self.text(s, self.w/2, y, size*(0.6 + 0.4*k), color, a, max_w=self.safe_w)

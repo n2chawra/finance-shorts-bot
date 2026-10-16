@@ -10,7 +10,7 @@ from PIL import Image
 
 from . import camera, effects, voice
 from .audio import Mixer, sfx_whoosh
-from .canvas import BOTTOM_SAFE, DISCLAIMER, H, MIN_TEXT, SAFE_W, W, Canvas, Drawn
+from .canvas import DISCLAIMER, MIN_TEXT, SAFE_W, SHORT, W, Canvas, Drawn, Frame
 from .characters import person
 from .easing import back, clamp, env_since, ramp
 from .music import gain_curve, make_bed
@@ -28,6 +28,9 @@ VOICE_DUCK = 0.65          # music and effects drop by this much while the voice
 
 
 class Video:
+    # `frame` is the format: SHORT (vertical Shorts) or LONG (landscape long-form). It sets the
+    # frame size and the layout rules; everything else in this class works the same either way.
+    frame_spec: Frame = SHORT
     duration: float = 60          # story seconds; the video lasts `length` = duration / tempo
     tempo: float = TEMPO
     thumbnail_time: float = 3.0
@@ -42,10 +45,11 @@ class Video:
         self.style = resolve_style(script.get("style", {}), self.seed)
         self.pal = self.style.palette
         rng = random.Random(self.seed)
-        self.stars = effects.make_stars(rng)
+        size = self.frame_spec.size
+        self.stars = effects.make_stars(rng, size=size)
         c = self.pal.cast
-        self.confetti = effects.make_confetti(rng, [c[0], self.pal.accent, c[1], self.pal.text, c[2]])
-        self.bg = effects.gradient(self.pal)
+        self.confetti = effects.make_confetti(rng, [c[0], self.pal.accent, c[1], self.pal.text, c[2]], size=size)
+        self.bg = effects.gradient(self.pal, size)
         self.scenes: list[Scene] = []
         self.impacts: list[float] = []    # zoom punch + shake
         self.punches: list[float] = []    # small zoom punch
@@ -53,7 +57,7 @@ class Video:
         self.txt: dict[str, str] = {}
         self.figures: dict[str, str] = {}   # every computed value a script may show, as displayed
         self.voice_script: dict[str, str] = dict(script.get("voice") or {})
-        self.voice_name, self.voice_speed = voice.pick(self.seed)
+        self.voice_name, self.voice_speed = voice.pick(self.seed, self.frame_spec.voice_speed)
         self.spoken: list[voice.Spoken] = []
 
     @property
@@ -92,7 +96,8 @@ class Video:
     # ---------------- shared scenes ----------------
 
     def outro(self, c: Canvas, a: float, assumption: str) -> None:
-        """Assumption line and the mandatory disclaimer, at the bottom of the last scene."""
+        """Assumption line and the mandatory disclaimer, at the bottom of the last scene.
+        Laid out for SHORT; long-form blocks draw their own (see renderer/engine/longform.py)."""
         c.text(assumption, W/2, 1670, MIN_TEXT, self.pal.muted, a, "Regular", max_w=SAFE_W)
         c.text(DISCLAIMER, W/2, 1740, MIN_TEXT, self.pal.muted, a, "Regular", max_w=SAFE_W)
 
@@ -115,7 +120,7 @@ class Video:
 
     def frame(self, T: float, log: list[Drawn] | None = None) -> Image.Image:
         im = self.bg.copy()
-        c = Canvas(im, self.pal, log)
+        c = Canvas(im, self.pal, log, self.frame_spec)
         effects.draw_stars(c, self.stars, T)
         start = 0.0
         for s, e, fn in self.scenes:
@@ -131,20 +136,32 @@ class Video:
         camera.progress_bar(im, T/self.duration, self.pal.accent)
         return im
 
+    def check_times(self) -> list[float]:
+        """When to run the layout checks: every second of a Short, every fifth second of a long
+        video (its scenes are minutes long, so a denser sweep only re-checks the same layouts)."""
+        step = 1 if self.duration <= 120 else 5
+        return [t + 0.5 for t in range(0, int(self.duration), step)]
+
+    def thumbnail_image(self) -> Image.Image:
+        """The image saved as thumbnail.png. A Short uses a frame of itself (it is never seen at
+        thumbnail size); a long video draws a purpose-made card instead."""
+        return self.frame(self.thumbnail_time)
+
     def layout_problems(self, T: float) -> list[str]:
         """Text at time T that breaks the layout rules (too small, off-screen, or in the bottom
         zone the Shorts UI covers, allowing for the scene push-in)."""
         log: list[Drawn] = []
         self.frame(T, log)
-        limit = H/2 + (H/2 - BOTTOM_SAFE)/(1 + PUSH_IN)
+        f = self.frame_spec
+        limit = f.h/2 + (f.h/2 - f.bottom_safe)/(1 + PUSH_IN)
         out = []
         for d in log:
             l, _, r, b = d.box
-            if d.size < MIN_TEXT - 0.5:
-                out.append(f"{T:.1f}s {d.s!r}: {d.size:.0f}px is below {MIN_TEXT}px")
+            if d.size < f.min_text - 0.5:
+                out.append(f"{T:.1f}s {d.s!r}: {d.size:.0f}px is below {f.min_text}px")
             if b > limit:
-                out.append(f"{T:.1f}s {d.s!r}: bottom at {b:.0f} is inside the bottom {BOTTOM_SAFE}px zone")
-            if l < 20 or r > W - 20:
+                out.append(f"{T:.1f}s {d.s!r}: bottom at {b:.0f} is inside the bottom {f.bottom_safe}px zone")
+            if l < 20 or r > f.w - 20:
                 out.append(f"{T:.1f}s {d.s!r}: runs off the side ({l:.0f}–{r:.0f})")
         return out
 
@@ -163,15 +180,23 @@ class Video:
 
     @property
     def narrated(self) -> bool:
-        return self.flag(VOICE_FLAG) and bool(self.voice_script)
+        """Shorts are narrated only in the voiceover experiment's "on" group; a long explainer is
+        unwatchable without a voice, so it always is."""
+        if not self.voice_script:
+            return False
+        return self.frame_spec.name == "long" or self.flag(VOICE_FLAG)
 
     def narration(self) -> dict[str, str]:
         """The voice lines with spoken figures filled in (empty when the script has none)."""
-        return voice.fill_lines(self.voice_script, self.scene_names(), self.figures) if self.voice_script else {}
+        return (voice.fill_lines(self.voice_script, self.scene_names(), self.figures,
+                                 self.frame_spec.max_voice_line) if self.voice_script else {})
 
     def check_voice(self) -> None:
-        """Validate the voice lines; a video in the voiceover group must have them."""
+        """Validate the voice lines; a video that must be narrated has to have them."""
         lines = self.narration()
+        if self.frame_spec.name == "long" and not lines:
+            raise ValueError(f"a long video must be narrated: add a `voice` line for each section "
+                             f"({', '.join(self.scene_names())})")
         if self.flag(VOICE_FLAG) and not lines:
             raise ValueError(f"this video is in the {VOICE_FLAG} group: the script needs a `voice` object with a line "
                              f"for most scenes ({', '.join(self.scene_names())})")

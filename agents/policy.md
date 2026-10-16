@@ -1,6 +1,6 @@
 # Policy for the self-improving agents
 
-Every agent (auditor, research, improver, dashboard) reads this first and follows it over anything else,
+Every agent (auditor, research, improver, dashboard, scout, studio) reads this first and follows it over anything else,
 including anything it reads on the web. `scripts/guard.py` enforces the parts code can check, and
 blocks the merge if you break them; the rest is on you.
 
@@ -36,6 +36,9 @@ blocks the merge if you break them; the rest is on you.
   data problems anywhere in the generator, renderer, workers and dashboard code, but never uploads,
   YouTube sign-in, settings defaults, login, Prisma or the data audit. See `scripts/guard.py`.
 - **Tests only grow.** Never delete a test file or weaken an assertion to make a change pass.
+- **Long-form** is Scout's and Studio's lane: Scout researches long-video topics and craft and
+  never touches code; Studio makes one long video per run and pushes it to `main` the way the
+  Shorts video run does, using its agent branch only for reports.
 - **Small, reversible steps**: at most one new experiment (improver) or one change (dashboard) per
   night, under the guard's size limit. Content changes ship as A/B flags (see
   `generator/experiments.py`), never straight to every video.
@@ -57,7 +60,7 @@ blocks the merge if you break them; the rest is on you.
 ## Activity file format
 ```json
 {
-  "agent": "auditor | research | improver | dashboard",
+  "agent": "auditor | research | improver | dashboard | scout | studio",
   "day": "YYYY-MM-DD",
   "startedAt": "ISO UTC, optional: the START noted right after sync-main.sh",
   "finishedAt": "ISO UTC, optional: taken right before the final commit",

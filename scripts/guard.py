@@ -29,6 +29,10 @@ ALLOW: dict[str, list[str]] = {
                   "improvement/notifications/dashboard.json"],
     "auditor": ["generator/*", "renderer/*", "examples/*", "apps/dashboard/src/*", "apps/dashboard/e2e/*", "workers/*",
                 "improvement/auditor/*", "improvement/activity/*-auditor.json", "improvement/notifications/auditor.json"],
+    # long-form: scout researches and never touches code; studio pushes its videos straight to main
+    # (like the Shorts video run) and uses its branch only for reports.
+    "scout": ["improvement/longform/*", "improvement/activity/*-scout.json", "improvement/notifications/scout.json"],
+    "studio": ["improvement/longform/*", "improvement/activity/*-studio.json", "improvement/notifications/studio.json"],
 }
 # protected files an agent may still change (its fixes for data bugs live there)
 UNLOCK: dict[str, list[str]] = {
@@ -56,7 +60,7 @@ TEST_FILE = re.compile(r"(^|/)(tests?|e2e)/|(^|/)test_[^/]*\.py$|\.(test|spec)\.
 UPLOAD_SETTING = re.compile(r"\b(uploadTimes|uploadsPaused|backlogCap)\b")
 MEDIA_EXT = (".mp3", ".wav", ".ogg", ".m4a", ".flac", ".aac", ".mp4", ".mov", ".webm")
 MODEL_EXT = (".onnx", ".bin", ".pt", ".pth", ".safetensors", ".ckpt", ".gguf")   # voice/AI model weights
-MAX_LINES = {"research": 4000, "improver": 900, "dashboard": 700, "auditor": 600}   # code lines changed (reports excluded)
+MAX_LINES = {"research": 4000, "improver": 900, "dashboard": 700, "auditor": 600, "scout": 4000, "studio": 4000}   # code lines changed (reports excluded)
 MAX_MERGES_PER_DAY = 2
 SECRET = re.compile(r"(ghp_[A-Za-z0-9]{20,}|github_pat_|sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|postgres(ql)?://\S+:\S+@|BEGIN (RSA|OPENSSH) PRIVATE KEY)")
 NETWORK = re.compile(r"^\+\s*(import|from)\s+(requests|urllib|http\.client|socket|aiohttp|httpx)\b")
@@ -84,12 +88,11 @@ def invariants(head: str) -> list[str]:
     canvas = show(head, "renderer/engine/canvas.py") or ""
     if 'DISCLAIMER = "Illustrative only. Not financial advice."' not in canvas:
         out.append("renderer/engine/canvas.py must keep DISCLAIMER = \"Illustrative only. Not financial advice.\"")
-    m = re.search(r"^MIN_TEXT\s*=\s*(\d+)", canvas, re.M)
-    if not m or int(m.group(1)) < 44:
-        out.append("MIN_TEXT must stay at least 44 px")
-    m = re.search(r"^BOTTOM_SAFE\s*=\s*(\d+)", canvas, re.M)
-    if not m or int(m.group(1)) < 120:
-        out.append("BOTTOM_SAFE must stay at least 120 px")
+    short = re.search(r"^SHORT = Frame\(.*?min_text=(\d+).*?bottom_safe=(\d+)", canvas, re.M)
+    if not short or int(short.group(1)) < 44:
+        out.append("the Shorts frame's min_text must stay at least 44 px")
+    if not short or int(short.group(2)) < 120:
+        out.append("the Shorts frame's bottom_safe must stay at least 120 px")
     video = show(head, "renderer/engine/video.py") or ""
     if "DISCLAIMER" not in video:
         out.append("renderer/engine/video.py must still draw the disclaimer in the end scene")

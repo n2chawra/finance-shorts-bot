@@ -2,7 +2,7 @@
 done by the Claude session following generator/prompts/*.md; this tool does everything else and
 records every step in videos/<id>/run.json.
 
-    python -m generator.run state                         what to do this run, and what the planner may pick
+    python -m generator.run state [--format long]         what to do this run, and what the planner may pick
     python -m generator.run check-plan <id>               variety rules on videos/<id>/plan.json
     python -m generator.run number-check <id>             number check on videos/<id>/script.json
     python -m generator.run figures <id>                  every computed figure and on-screen line (for reviewers)
@@ -32,6 +32,7 @@ from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
+MIN_VOICE_FILL = 0.55   # a long section left more than ~half silent is a thin script
 AGENTS = ("planner", "writer", *CHECKERS, "render", "ship")
 PLAN_KEYS = ("template", "topic", "hook_style", "cta", "title", "description", "hashtags", "seed", "style")
 
@@ -60,18 +61,34 @@ def log_step(vid: str, agent: str, passed: bool, notes: list[str], root: Path = 
     _write(path, steps)
 
 
-def enabled_templates(settings: dict) -> list[str]:
-    return [t for t in renderer.template_names() if settings["templates"].get(t, {}).get("enabled", True)]
+def enabled_templates(settings: dict, fmt: str | None = None) -> list[str]:
+    return [t for t in renderer.template_names(fmt) if settings["templates"].get(t, {}).get("enabled", True)]
+
+
+def plan_format(plan_or_script: dict) -> str:
+    """'short' or 'long', from the template the plan or script names."""
+    name = plan_or_script.get("template")
+    return renderer.template_format(name) if name in renderer.template_names() else "short"
+
+
+def length_range(settings: dict, fmt: str) -> tuple[int, int]:
+    if fmt == "long":
+        return settings["longLengthMinSec"], settings["longLengthMaxSec"]
+    return settings["lengthMinSec"], settings["lengthMaxSec"]
 
 
 # ---------------- state ----------------
 
-def state(root: Path = ROOT) -> dict:
-    """What this run should do, plus everything the planner needs to pick a passing plan."""
+def state(root: Path = ROOT, fmt: str = "short") -> dict:
+    """What this run should do, plus everything the planner needs to pick a passing plan.
+
+    `fmt` picks the pipeline: "short" is the nightly Shorts run, "long" is the Studio agent's
+    weekly long-form run. Each format has its own history, templates, backlog and target."""
     settings = load_settings(root)
-    entries = history.load(root)
-    enabled = enabled_templates(settings)
-    backlog = history.ready_count(entries, settings)
+    everything = history.load(root)
+    entries = history.of_format(everything, fmt)
+    enabled = enabled_templates(settings, fmt)
+    backlog = history.ready_count(everything, settings, fmt)
     tw = settings["templateWork"]
     today = history.ist_day(history.now().isoformat())
     work_today = sum(1 for w in history.load_template_work(root) if history.ist_day(w["at"]) == today)
@@ -84,8 +101,20 @@ def state(root: Path = ROOT) -> dict:
     n_templates = len(renderer.template_names())
     room = n_templates < tw["maxTemplates"]
 
+    week = history.ist_week(history.now().isoformat())
+    made_week = sum(1 for e in entries if history.ist_week(e["created_at"]) == week)
+    per_week, long_cap = settings["longPerWeek"], settings["longBacklogCap"]
     if settings["generationPaused"]:
         mode, why = "paused", "generation is paused in settings"
+    elif fmt == "long":
+        if per_week <= 0:
+            mode, why = "paused", "longPerWeek is 0: long-form is switched off in settings"
+        elif backlog >= long_cap:
+            mode, why = "idle", f"{backlog} long videos are already waiting (cap {long_cap})"
+        elif made_week < per_week:
+            mode, why = "video", f"{made_week} of {per_week} long videos made this week ({week}); backlog {backlog}"
+        else:
+            mode, why = "idle", f"this week's {per_week} long videos are made"
     elif full:
         mode, why = "idle", f"backlog {backlog} has reached the cap of {settings['backlogCap']}"
     elif made_today < target:
@@ -97,9 +126,12 @@ def state(root: Path = ROOT) -> dict:
     allowed = variety.allowed_templates(entries, enabled)
     blocked = variety.blocked_categories(entries)
     return {
-        "mode": mode, "reason": why, "backlog": backlog, "backlog_cap": settings["backlogCap"],
+        "format": fmt,
+        "mode": mode, "reason": why, "backlog": backlog,
+        "backlog_cap": long_cap if fmt == "long" else settings["backlogCap"],
         "videos_today": made_today, "daily_target": target,
-        "next_id": (next_id := history.next_id(entries, root=root)),
+        "videos_this_week": made_week, "weekly_target": per_week,
+        "next_id": (next_id := history.next_id(everything, root=root, fmt=fmt)),
         "experiments": experiments.prompt_notes(next_id, root),
         "template_work": {"runs_today": work_today, "max_per_day": tw["maxPerDay"],
                           "may_add_template": room, "templates": n_templates, "max_templates": tw["maxTemplates"]},
@@ -107,13 +139,13 @@ def state(root: Path = ROOT) -> dict:
         "allowed_templates": allowed,
         "template_window": variety.template_window(variety.rotation_size(enabled)),
         "blocked_categories": blocked,
-        "topic_feed": topics.for_state(entries, today, blocked, allowed, root),
+        "topic_feed": topics.for_state(entries, today, blocked, allowed, root, fmt),
         "previous": last and {"palette": last["style"]["palette"], "genre": last["style"]["genre"], "key": last["style"]["key"],
                               "bpm": last["style"]["bpm"], "hook_style": last["hook_style"], "cta": last["cta"]},
         "hook_styles": list(variety.HOOK_STYLES),
         "recent_topics": [e["topic"]["title"] for e in entries[-40:]],
         "recent_openings": sorted({variety.opening(e[f]) for e in entries[-variety.OPENING_WINDOW:] for f in ("title", "description")}),
-        "length_range_sec": [settings["lengthMinSec"], settings["lengthMaxSec"]],
+        "length_range_sec": list(length_range(settings, fmt)),
         "disclaimer": settings["disclaimer"],
     }
 
@@ -126,11 +158,12 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
     if missing:
         problems = [f"plan.json is missing {', '.join(missing)}"]
     else:
-        entries = history.load(root)
-        enabled = enabled_templates(load_settings(root))
+        fmt = plan_format(plan)
+        entries = history.of_format(history.load(root), fmt)
+        enabled = enabled_templates(load_settings(root), fmt)
         problems = variety.check_plan(plan, entries, enabled)
         problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
-                                      variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root)
+                                      variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
         if not 20 <= len(plan["title"]) <= 90:
             problems.append("title must be 20–90 characters")
         if "#shorts" not in [h.lower() for h in plan["hashtags"]]:
@@ -175,8 +208,15 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         log_step(vid, "render", False, [str(e)], root, started)
         return [str(e)]
     problems = list(report["layout_problems"])
-    if not settings["lengthMinSec"] <= report["duration_sec"] <= settings["lengthMaxSec"]:
-        problems.append(f"length {report['duration_sec']} s is outside {settings['lengthMinSec']}–{settings['lengthMaxSec']} s")
+    lo, hi = length_range(settings, plan_format(script))
+    if not lo <= report["duration_sec"] <= hi:
+        problems.append(f"length {report['duration_sec']} s is outside {lo}–{hi} s")
+    voice = report.get("voice")
+    if voice and plan_format(script) == "long":
+        thin = [l for l in voice.get("lines", []) if l["fill"] < MIN_VOICE_FILL]
+        for l in thin:
+            problems.append(f"section {l['scene']}: the narration fills only {l['fill']*100:.0f}% of its "
+                            f"{l['window']:.0f} s ({l['seconds']:.0f} s spoken). Write more, or shorten the section.")
     audio = report.get("audio")
     if audio and not (-1.6 <= audio["peak_db"] <= -0.4 and -21 <= audio["mean_db"] <= -15):
         problems.append(f"audio levels off target: peak {audio['peak_db']} dB, mean {audio['mean_db']} dB")
@@ -206,12 +246,13 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         raise ValueError("cannot ship: " + "; ".join(blockers))
 
     created = history.now().isoformat()
+    fmt = plan_format(plan)
     tag = f"video-{vid}"
     voice = report.get("voice")
     style = {**report["style"], "voice": voice["name"] if voice else None}
     log_step(vid, "ship", True, [f"Manifest written; release asset {'uploaded' if release else 'not uploaded (dry run)'}."], root)
     manifest = {
-        "id": vid, "createdAt": created, "status": "qa_passed",
+        "id": vid, "createdAt": created, "status": "qa_passed", "format": fmt,
         "template": plan["template"], "topic": plan["topic"], "title": plan["title"], "description": plan["description"],
         "hashtags": plan["hashtags"], "hookStyle": plan["hook_style"], "cta": plan["cta"],
         "seed": script["seed"], "style": style, "voice": voice, "durationSec": report["duration_sec"], "audio": report.get("audio"),
@@ -226,7 +267,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     _write(d / "manifest.json", manifest)
     history.append({
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],
-        "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": style,
+        "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": style, "format": fmt,
     }, root)
 
     if release:
@@ -313,7 +354,7 @@ def fail(vid: str, reason: str, root: Path = ROOT) -> dict:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="generator.run", description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("state")
+    sub.add_parser("state").add_argument("--format", choices=("short", "long"), default="short")
     for name in ("check-plan", "number-check", "figures"):
         sub.add_parser(name).add_argument("id")
     p = sub.add_parser("record")
@@ -348,7 +389,7 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         if a.cmd == "state":
-            print(json.dumps(state(), indent=2, ensure_ascii=False))
+            print(json.dumps(state(fmt=a.format), indent=2, ensure_ascii=False))
             return 0
         if a.cmd == "figures":
             print(json.dumps(figures(a.id), indent=2, ensure_ascii=False))

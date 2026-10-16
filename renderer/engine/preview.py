@@ -3,12 +3,15 @@ from collections.abc import Sequence
 
 from PIL import Image, ImageDraw
 
-from .canvas import H, W, font
+from .canvas import font
 
 
 def contact_sheet(frames: Sequence[tuple[float, Image.Image]], cols: int = 4, tile_w: int = 360) -> Image.Image:
     """Grid of (time, frame) tiles, each labelled with its timestamp."""
-    tile_h = tile_w*H//W
+    if not frames:
+        raise ValueError("no frames to lay out")
+    fw, fh = frames[0][1].size
+    tile_h = tile_w*fh//fw
     gap, label_h = 12, 44
     rows = -(-len(frames)//cols)
     sheet = Image.new("RGB", (cols*(tile_w + gap) + gap, rows*(tile_h + label_h + gap) + gap), (30, 30, 30))

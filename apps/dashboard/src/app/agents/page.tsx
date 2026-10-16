@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, CalendarClock, Clock, ExternalLink, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Newspaper, Scale, Search, ShieldAlert, ShieldCheck, Wrench } from "lucide-react";
+import { Bot, CalendarClock, Clapperboard, Clock, ExternalLink, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Newspaper, Scale, Search, ShieldAlert, ShieldCheck, Telescope, Wrench } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Tabs } from "radix-ui";
@@ -14,6 +14,8 @@ import type { Activity, Agents } from "@/lib/schemas";
 
 const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeof Bot; time: string }> = {
   auditor: { name: "Auditor", role: "Checks the numbers against YouTube, fixes bugs, keeps the code clean", icon: ShieldCheck, time: "23:00" },
+  scout: { name: "Scout", role: "Finds long-video topics and studies how long-form is made", icon: Telescope, time: "09:37" },
+  studio: { name: "Studio", role: "Makes one long video end to end, with its thumbnail", icon: Clapperboard, time: "14:37 Mon/Wed/Fri" },
   research: { name: "Research", role: "Finds what makes Shorts better and what's new in Claude", icon: Search, time: "23:47" },
   improver: { name: "Improver", role: "Tests changes on half the videos, keeps what works", icon: Wrench, time: "06:17" },
   dashboard: { name: "Dashboard", role: "Hunts bugs and polishes this dashboard", icon: LayoutDashboard, time: "07:37" },
@@ -112,7 +114,8 @@ function DataAuditCard({ audit }: { audit: Agents["dataAudit"] }) {
 
 /** How long each routine ran last night, and the 7-night average and max. Needs startedAt/finishedAt from the agents. */
 function RunTimesCard({ data }: { data: Agents }) {
-  const rows = summarizeRunTimes(data.activity, data.videoRuns, { auditor: "Auditor", research: "Research", improver: "Improver", dashboard: "Dashboard" });
+  const names = Object.fromEntries((Object.keys(AGENT) as Activity["agent"][]).map((k) => [k, AGENT[k].name]));
+  const rows = summarizeRunTimes(data.activity, data.videoRuns, names as Record<Activity["agent"], string>);
   if (!rows.some((r) => r.last)) return null;
   return (
     <Card title="Run times" icon={Clock} description="Last night, and the average and longest of the last 7 nights. Each run should end before the next one starts.">
@@ -309,7 +312,7 @@ export default function AgentsPage() {
 
   return (
     <Stagger>
-      <PageHeader title="Agents" sub="Four agents check and improve the automation every night while you sleep. Here's what they did, what they found, and why they changed something or waited.">
+      <PageHeader title="Agents" sub="Six agents run the channel: four improve the automation overnight, two make the long videos by day. Here's what they did, what they found, and why they changed something or waited.">
         {paused ? <Badge tone="warning" dot>Paused in settings</Badge> : <Badge tone="good" dot>Running nightly</Badge>}
         <Link href="/settings#agents" className="text-xs text-ink2 hover:text-ink">Settings</Link>
       </PageHeader>
@@ -318,7 +321,7 @@ export default function AgentsPage() {
         <Stat label="Experiments running" icon={FlaskConical} value={String(running)} sub={`max ${settings?.agents.maxActiveExperiments ?? 3} at once`} />
         <Stat label="Kept" icon={GitMerge} value={String(kept)} sub="proved better, now default" />
         <Stat label="Reverted" icon={ShieldAlert} value={String(reverted)} sub="didn't help, removed" />
-        <Stat label="Last report" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="23:00 · 23:47 · 06:17 · 07:37 IST" />
+        <Stat label="Last report" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="23:00 · 23:47 · 06:17 · 07:37 · 09:37 · 14:37 IST" />
       </div>
 
       <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-4">

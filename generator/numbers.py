@@ -104,9 +104,36 @@ def _money_news(s: dict) -> dict[str, str]:
     return out
 
 
+def _long_explainer(s: dict) -> dict[str, str]:
+    """Every figure the long-form template shows, recomputed from the script's `maths` inputs."""
+    out: dict[str, str] = {}
+    for m in s["maths"]:
+        n, kind, rate, years = m["name"], m["kind"], m["rate_pct"], m["years"]
+        if kind == "sip":
+            invested, final = m["monthly"]*12*years, sip_fv(m["monthly"], rate, years*12)
+        elif kind == "lumpsum":
+            invested, final = m["amount"], lumpsum_fv(m["amount"], rate, years)
+        elif kind == "fd":
+            invested, final = m["amount"], fd_maturity(m["amount"], rate, years)
+        elif kind == "inflation":
+            invested, final = m["amount"], real_value(m["amount"], rate, years)
+        else:   # emi: "final" is everything the loan costs over its life
+            invested = m["amount"]
+            pay = emi(m["amount"], rate, years)
+            final = pay*round(years*12)
+            out[f"{n}_emi"], out[f"{n}_total_paid"] = inr(pay), inr(final)
+        gains = invested - final if kind == "inflation" else final - invested
+        out |= {f"{n}_final": inr(final), f"{n}_final_long": inr_long(final), f"{n}_invested": inr(invested),
+                f"{n}_gains": inr(gains), f"{n}_ratio": times(final/invested)}
+        if kind == "inflation":
+            out[f"{n}_lost_pct"] = f"{(1 - final/invested)*100:.0f}%"
+    return out
+
+
 EXPECTED: dict[str, Callable[[dict], dict[str, str]]] = {
     "two_friends_race": _two_friends_race, "myth_vs_fact": _myth_vs_fact,
     "money_leak_meter": _money_leak_meter, "quiz_countdown": _quiz_countdown, "money_news": _money_news,
+    "long_explainer": _long_explainer,
 }
 
 # ---------------- claims in free text ----------------
@@ -125,7 +152,7 @@ def _numbers_in(value: object) -> list[float]:
     if isinstance(value, (int, float)):
         return [value]
     if isinstance(value, Mapping):
-        return [n for k, v in value.items() if k not in ("seed", "style", "text", "distractors") for n in _numbers_in(v)]
+        return [n for k, v in value.items() if k not in ("seed", "style", "text", "distractors", "seconds") for n in _numbers_in(v)]
     if isinstance(value, list):
         return [n for v in value for n in _numbers_in(v)]
     return []

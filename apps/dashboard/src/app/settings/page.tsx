@@ -120,12 +120,18 @@ export default function SettingsPage() {
           </section>
 
           <section id="agents" className="scroll-mt-20">
-            <Card title="Self-improving agents" description="Nightly, 23:00–09:00 IST. Every change they make passes a guard and the tests before it goes live.">
+            <Card title="Self-improving agents" description="Four agents improve the automation overnight (23:00–09:00 IST); Scout and Studio make the long videos by day. Every change passes a guard and the tests before it goes live.">
               <Row label="Pause all agents" hint="They still start on schedule but do nothing. The video pipeline is not affected.">
                 <Toggle label="Pause all agents" checked={form.agents.paused} onChange={(paused) => setAgents({ paused })} />
               </Row>
               <Row label="Auditor (23:00)" hint="Checks the dashboard's numbers against YouTube, fixes bugs anywhere, one careful refactor a night.">
                 <Toggle label="Auditor agent on" checked={form.agents.auditor} disabled={form.agents.paused} onChange={(auditor) => setAgents({ auditor })} />
+              </Row>
+              <Row label="Scout (09:37)" hint="Finds long-video topics and researches how long-form explainers are made. Never changes code.">
+                <Toggle label="Scout agent on" checked={form.agents.scout} disabled={form.agents.paused} onChange={(scout) => setAgents({ scout })} />
+              </Row>
+              <Row label="Studio (14:37, Mon/Wed/Fri)" hint="Makes one long video end to end, with its thumbnail, from Scout's topics.">
+                <Toggle label="Studio agent on" checked={form.agents.studio} disabled={form.agents.paused} onChange={(studio) => setAgents({ studio })} />
               </Row>
               <Row label="Research (23:47)" hint="Studies top Shorts and Claude updates, writes proposals. Never changes code.">
                 <Toggle label="Research agent on" checked={form.agents.research} disabled={form.agents.paused} onChange={(research) => setAgents({ research })} />

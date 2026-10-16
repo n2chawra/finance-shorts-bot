@@ -38,7 +38,7 @@ def rotation_size(enabled: list[str]) -> int:
 def template_window(n_enabled: int) -> int:
     """How many recent videos a template must sit out. 6 needs eight templates; with fewer it
     scales down (four templates → 2) so the rule can be met."""
-    return max(1, min(6, n_enabled - 2))
+    return max(0, min(6, n_enabled - 2))   # 0 with one or two templates: the rule cannot be met otherwise
 
 
 def share_limit(n_enabled: int) -> float:

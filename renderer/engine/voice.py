@@ -50,11 +50,18 @@ class Spoken:
     def seconds(self) -> float:
         return len(self.samples)/SR
 
+    @property
+    def fill(self) -> float:
+        """How much of the scene's speaking window the line uses, 0-1. A long section left mostly
+        silent is a thin script, not a stylistic choice."""
+        return self.seconds/self.window if self.window else 0.0
 
-def pick(seed: int) -> tuple[str, float]:
-    """The voice and base speed for a video, from its seed (independent of the style draw)."""
+
+def pick(seed: int, speed_range: tuple[float, float] = BASE_SPEED) -> tuple[str, float]:
+    """The voice and base speed for a video, from its seed (independent of the style draw).
+    Shorts are read briskly; a long explainer is read at a more measured pace."""
     r = random.Random(f"voice:{seed}")
-    return r.choice(VOICES), round(r.uniform(*BASE_SPEED), 2)
+    return r.choice(VOICES), round(r.uniform(*speed_range), 2)
 
 
 _UNITS = {"L": "lakh", "Lakh": "lakh", "Cr": "crore", "Crore": "crore"}
@@ -125,7 +132,7 @@ def _trim(num: str) -> str:
     return num.rstrip("0").rstrip(".") if "." in num else num
 
 
-def fill_lines(lines: dict[str, str], scenes: list[str], figures: dict[str, str]) -> dict[str, str]:
+def fill_lines(lines: dict[str, str], scenes: list[str], figures: dict[str, str], max_line: int = MAX_LINE) -> dict[str, str]:
     """Validate the script's voice lines and put spoken figures into their placeholders."""
     if not isinstance(lines, dict) or not lines:
         raise ValueError("voice must be an object of {scene: line}")
@@ -137,8 +144,8 @@ def fill_lines(lines: dict[str, str], scenes: list[str], figures: dict[str, str]
     for scene, raw in lines.items():
         if not isinstance(raw, str) or not raw.strip():
             raise ValueError(f"voice.{scene} must be a non-empty line")
-        if len(raw) > MAX_LINE:
-            raise ValueError(f"voice.{scene} is {len(raw)} characters; keep it under {MAX_LINE}")
+        if len(raw) > max_line:
+            raise ValueError(f"voice.{scene} is {len(raw)} characters; keep it under {max_line}")
         if re.search(r"[0-9₹]", raw):
             raise ValueError(f"voice.{scene} contains a typed number; use a placeholder: {raw!r}")
         try:

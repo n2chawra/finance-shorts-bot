@@ -6,24 +6,27 @@ from collections.abc import Sequence
 
 from PIL import Image, ImageDraw
 
-from .canvas import H, RGB, W, Canvas, Palette, mix
+from .canvas import SHORT, RGB, Canvas, Palette, mix
+
+Size = tuple[int, int]
 
 Star = tuple[int, int, float]
 Confetto = tuple[float, float, float, float, RGB, float, float]
 
 
-def gradient(pal: Palette) -> Image.Image:
+def gradient(pal: Palette, size: Size = SHORT.size) -> Image.Image:
     """Vertical gradient from pal.bg to pal.bg_bottom. Build once, copy per frame."""
-    im = Image.new("RGB", (W, H), pal.bg)
+    w, h = size
+    im = Image.new("RGB", size, pal.bg)
     d = ImageDraw.Draw(im)
-    for y in range(H):
-        k = y/H
-        d.line([(0, y), (W, y)], fill=tuple(int(pal.bg[i] + (pal.bg_bottom[i] - pal.bg[i])*k) for i in range(3)))
+    for y in range(h):
+        k = y/h
+        d.line([(0, y), (w, y)], fill=tuple(int(pal.bg[i] + (pal.bg_bottom[i] - pal.bg[i])*k) for i in range(3)))
     return im
 
 
-def make_stars(rng: random.Random, n: int = 60) -> list[Star]:
-    return [(rng.randint(0, W), rng.randint(0, H), rng.random()) for _ in range(n)]
+def make_stars(rng: random.Random, n: int = 60, size: Size = SHORT.size) -> list[Star]:
+    return [(rng.randint(0, size[0]), rng.randint(0, size[1]), rng.random()) for _ in range(n)]
 
 
 def draw_stars(c: Canvas, stars: Sequence[Star], t: float) -> None:
@@ -34,8 +37,8 @@ def draw_stars(c: Canvas, stars: Sequence[Star], t: float) -> None:
         c.d.ellipse([x - r, y - r, x + r, y + r], fill=mix(c.pal.text, tw*0.5, c.pal.haze))
 
 
-def make_confetti(rng: random.Random, colors: Sequence[RGB], n: int = 140) -> list[Confetto]:
-    return [(rng.uniform(0, W), rng.uniform(-300, -20), rng.uniform(-160, 160), rng.uniform(250, 650),
+def make_confetti(rng: random.Random, colors: Sequence[RGB], n: int = 140, size: Size = SHORT.size) -> list[Confetto]:
+    return [(rng.uniform(0, size[0]), rng.uniform(-300, -20), rng.uniform(-160, 160), rng.uniform(250, 650),
              rng.choice(colors), rng.uniform(0, 6), rng.uniform(10, 22)) for _ in range(n)]
 
 
@@ -46,7 +49,7 @@ def draw_confetti(c: Canvas, confetti: Sequence[Confetto], ct: float, a: float =
     for x, y0, vx, vy, col, sp, sz in confetti:
         x2 = x + vx*ct
         y2 = y0 + vy*ct + 220*ct*ct
-        if y2 > H + 40:
+        if y2 > c.h + 40:
             continue
         ang = sp + ct*6
         dx, dy = math.cos(ang)*sz, math.sin(ang)*sz*0.4

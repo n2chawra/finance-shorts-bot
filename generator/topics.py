@@ -2,7 +2,7 @@
 
 `improvement/research/topics.json` (written only by the research agent):
 
-    {"topics": [{"id": "2026-10-16-sip-record-inflows", "title": "...", "category": "sip",
+    {"topics": [{"id": "2026-10-16-sip-record-inflows", "title": "...", "category": "sip", "format": "short",
                  "kind": "news | trend | seasonal | evergreen", "priority": "breaking | high | normal",
                  "templates": ["money_news", "quiz_countdown"] or ["any"], "angle": "...", "why_now": "...",
                  "facts": [{"label", "value", "unit", "as_of", "source", "url"}], "verify": ["claim to check"],
@@ -52,21 +52,29 @@ def fits(topic: dict, templates: list[str]) -> bool:
     return "any" in wanted or any(t in templates for t in wanted)
 
 
-def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT) -> dict:
+def of_format(topics: list[dict], fmt: str) -> list[dict]:
+    """Topics meant for this format. A topic without one is a Shorts topic; "any" fits both."""
+    return [t for t in topics if t.get("format", "short") in (fmt, "any")]
+
+
+def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT,
+              fmt: str = "short") -> dict:
     """What `state` tells the planner: the open topics, best first, and a breaking one it must use."""
-    open_ = [t for t in load(root) if why_unavailable(t, entries, today) is None]
+    open_ = [t for t in of_format(load(root), fmt) if why_unavailable(t, entries, today) is None]
     open_.sort(key=lambda t: t.get("found", ""), reverse=True)   # newest first within a priority (stable sorts)
     open_.sort(key=lambda t: PRIORITIES.index(t["priority"]) if t.get("priority") in PRIORITIES else len(PRIORITIES) - 1)
     usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed)]
     required = next((t["id"] for t in usable if t.get("priority") == "breaking"), None)
-    keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify", "expires")
+    keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
+            "expires", "format", "outline", "sources")
     return {
         "topics": [{**{k: t.get(k) for k in keys}, "usable_now": t in usable} for t in open_[:SHOWN]],
         "required": required,
     }
 
 
-def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT) -> list[str]:
+def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT,
+               fmt: str = "short") -> list[str]:
     """Feed rules for a plan: a feed topic must be open; money_news needs one with facts; a usable
     breaking topic must be taken."""
     out = []
@@ -81,7 +89,7 @@ def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], 
             out.append(f"money_news needs a feed topic with sourced facts; {feed_id!r} has none")
     elif plan.get("template") == "money_news":
         out.append("money_news is only for research feed topics: set topic.feed_id to a topic from state.topic_feed")
-    required = for_state(entries, today, blocked, allowed, root)["required"]
+    required = for_state(entries, today, blocked, allowed, root, fmt)["required"]
     if required and feed_id != required:
         out.append(f"breaking feed topic {required!r} is waiting and fits an allowed template: this video must use it")
     return out

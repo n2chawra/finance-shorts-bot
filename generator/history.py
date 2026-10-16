@@ -48,21 +48,37 @@ def append(entry: dict, root: Path = ROOT) -> None:
     _write(root / "history" / "history.json", [*entries, entry])
 
 
-def next_id(entries: list[dict], at: datetime | None = None, root: Path = ROOT) -> str:
-    """v-YYYYMMDD-NN (IST date), skipping ids already used in history or videos/."""
+def of_format(entries: list[dict], fmt: str = "short") -> list[dict]:
+    """Entries of one format. Videos shipped before long-form existed have no `format`."""
+    return [e for e in entries if e.get("format", "short") == fmt]
+
+
+def next_id(entries: list[dict], at: datetime | None = None, root: Path = ROOT, fmt: str = "short") -> str:
+    """v-YYYYMMDD-NN for a Short, L-YYYYMMDD-NN for a long video (IST date), skipping used ids."""
+    prefix = "v" if fmt == "short" else "L"
     day = (at or now()).astimezone(IST).strftime("%Y%m%d")
-    used = {e["id"] for e in entries} | {p.name for p in (root / "videos").glob("v-*") if p.is_dir()}
+    used = {e["id"] for e in entries} | {p.name for p in (root / "videos").glob(f"{prefix}-*") if p.is_dir()}
     n = 1
-    while f"v-{day}-{n:02d}" in used:
+    while f"{prefix}-{day}-{n:02d}" in used:
         n += 1
-    return f"v-{day}-{n:02d}"
+    return f"{prefix}-{day}-{n:02d}"
 
 
-def ready_count(entries: list[dict], settings: dict) -> int:
-    """Backlog: videos queued in the database plus those shipped since the last ingest."""
+def ready_count(entries: list[dict], settings: dict, fmt: str = "short") -> int:
+    """Backlog of one format: videos queued in the database plus those shipped since the last ingest."""
+    by_format = settings.get("backlogByFormat") or {}
+    queued = int(by_format[fmt]) if fmt in by_format else (int(settings.get("backlog", 0)) if fmt == "short" else 0)
     since = settings.get("ingestedAt")
     cutoff = datetime.fromisoformat(since) if since else None
-    return int(settings.get("backlog", 0)) + sum(1 for e in entries if cutoff is None or datetime.fromisoformat(e["created_at"]) > cutoff)
+    fresh = sum(1 for e in of_format(entries, fmt) if cutoff is None or datetime.fromisoformat(e["created_at"]) > cutoff)
+    return queued + fresh
+
+
+def ist_week(iso: str) -> str:
+    """ISO year-week in IST, e.g. '2026-W42'. Long videos are planned per week, not per day."""
+    d = datetime.fromisoformat(iso).astimezone(IST)
+    y, w, _ = d.isocalendar()
+    return f"{y}-W{w:02d}"
 
 
 def load_template_work(root: Path = ROOT) -> list[dict]:

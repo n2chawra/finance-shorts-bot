@@ -8,7 +8,7 @@ def check(plan: dict, history: list[dict]) -> list[str]:
 
 
 def test_window_and_share_scale_with_template_count() -> None:
-    assert [variety.template_window(n) for n in (2, 4, 6, 7, 8, 12)] == [1, 2, 4, 5, 6, 6]
+    assert [variety.template_window(n) for n in (1, 2, 4, 6, 7, 8, 12)] == [0, 0, 2, 4, 5, 6, 6]
     assert variety.share_limit(4) == 0.375
     assert variety.share_limit(8) == 0.30
 

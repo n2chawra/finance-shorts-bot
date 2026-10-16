@@ -97,7 +97,7 @@ function agentChecks(now: Date, enabled: Record<string, boolean>, paused: boolea
   const istHour = (now.getUTCHours() + 5 + Math.floor((now.getUTCMinutes() + 30) / 60)) % 24;
   const logFile = path.join(ROOT, "improvement", "merge-log.json");
   const log = existsSync(logFile) ? (JSON.parse(readFileSync(logFile, "utf8")) as { merges: { agent: string; result: string; dayIst: string; reasons: string[]; runUrl: string }[] }).merges : [];
-  for (const agent of ["research", "improver", "dashboard", "auditor"]) {
+  for (const agent of ["research", "improver", "dashboard", "auditor", "scout", "studio"]) {
     const mine = log.filter((m) => m.agent === agent);
     const [prev, last] = mine.slice(-2);
     const blocked = !!prev && !!last && prev.result === "blocked" && last.result === "blocked" && prev.dayIst !== last.dayIst;
@@ -135,7 +135,8 @@ async function main(): Promise<void> {
     const s = await loadSettings(prisma);
     const token = await tokenCheck();
     const checks: Check[] = [...(await pipelineChecks(prisma, now)), await siteCheck(), ...(token ? [token] : []),
-      ...agentChecks(now, { research: s.agents.research, improver: s.agents.improver, dashboard: s.agents.dashboard, auditor: s.agents.auditor }, s.agents.paused)];
+      ...agentChecks(now, { research: s.agents.research, improver: s.agents.improver, dashboard: s.agents.dashboard,
+                            auditor: s.agents.auditor, scout: s.agents.scout, studio: s.agents.studio }, s.agents.paused)];
     const sched = await scheduleCheck(prisma, now);
     if (sched) checks.push(sched);
     const wf = await workflowChecks();

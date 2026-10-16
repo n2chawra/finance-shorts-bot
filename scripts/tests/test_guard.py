@@ -69,10 +69,15 @@ def test_blocks_removing_the_disclaimer(repo: Path) -> None:
     assert not r["ok"] and any("DISCLAIMER" in x for x in r["reasons"])
 
 
-def test_blocks_shrinking_text_below_44px(repo: Path) -> None:
-    canvas = (repo / "renderer/engine/canvas.py").read_text(encoding="utf-8").replace("MIN_TEXT = 44", "MIN_TEXT = 30")
-    change(repo, "renderer/engine/canvas.py", canvas)
-    assert any("MIN_TEXT" in x for x in guard.check("improver", "main", "HEAD")["reasons"])
+@pytest.mark.parametrize("field, was, now, error", [
+    ("min_text", 44, 30, "min_text"),
+    ("bottom_safe", 120, 60, "bottom_safe"),
+])
+def test_blocks_weakening_the_shorts_layout_rules(repo: Path, field: str, was: int, now: int, error: str) -> None:
+    canvas = (repo / "renderer/engine/canvas.py").read_text(encoding="utf-8")
+    assert f"{field}={was}" in canvas
+    change(repo, "renderer/engine/canvas.py", canvas.replace(f"{field}={was}", f"{field}={now}", 1))
+    assert any(error in x for x in guard.check("improver", "main", "HEAD")["reasons"])
 
 
 def test_blocks_audio_files_network_and_secrets(repo: Path) -> None:

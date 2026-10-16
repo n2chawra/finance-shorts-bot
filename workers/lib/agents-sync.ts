@@ -18,7 +18,7 @@ import { notify, resolveOthers } from "./notify.ts";
 import { istDay } from "./publishing.ts";
 
 const DAY_MS = 86_400_000;
-const AGENTS = ["research", "improver", "dashboard", "auditor"] as const;
+const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio"] as const;
 
 const readJson = (file: string): unknown => JSON.parse(readFileSync(file, "utf8"));
 
@@ -99,6 +99,8 @@ const DOCS: Record<string, string> = {
   auditorBacklog: "improvement/auditor/backlog.json",
   dataAudit: "metrics/data-audit.json",
   topicFeed: "improvement/research/topics.json",
+  longTopicFeed: "improvement/longform/topics.json",
+  longBacklog: "improvement/longform/backlog.json",
 };
 
 /** The topic feed with each topic's video (from history.json: the video run records topic.feed_id there). */
