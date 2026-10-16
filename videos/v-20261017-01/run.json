@@ -1,0 +1,57 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-16T22:38:05.564579+00:00",
+    "finishedAt": "2026-10-16T22:38:05.564579+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-16T22:38:13.261953+00:00",
+    "finishedAt": "2026-10-16T22:38:13.261953+00:00",
+    "notes": [
+      "description mentions '2026', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-16T22:38:18.024832+00:00",
+    "finishedAt": "2026-10-16T22:38:18.024832+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-16T22:38:19.068237+00:00",
+    "finishedAt": "2026-10-16T22:38:19.068237+00:00",
+    "notes": [
+      "11 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-16T22:38:29.831368+00:00",
+    "finishedAt": "2026-10-16T22:38:29.831368+00:00",
+    "notes": [
+      "11 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-16T22:39:24.741095+00:00",
+    "finishedAt": "2026-10-16T22:39:24.741095+00:00",
+    "notes": [
+      "Sourced fact 'RBI repo rate now' 5.5% (as_of 2026-10-07): could not open the cited RBI URL (prid=63742; rbi.org.in did not resolve from this environment), and no official RBI/PIB page was reachable, so the figure is unconfirmed against its source as the rules require. Secondary outlets (scconline, caclubindia, kalkine and others) agree repo went 5.25% to 5.50% on 7 Oct 2026; re-run the review where rbi.org.in is reachable.",
+      "Rest of the video checked and fine: wording is hedged ('may'), 7% FD on 5 lakh for 5 years is a stated assumption, no product naming or advice, and the description ends with the disclaimer."
+    ]
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "template": "money_news",
+  "seed": 5127,
+  "style": { "palette": "ocean", "genre": "synthwave", "key": "F", "bpm": 104 },
+  "feed_id": "2026-10-17-rbi-repo-hike",
+  "facts": [
+    {
+      "label": "RBI repo rate now",
+      "value": 5.5,
+      "unit": "percent",
+      "as_of": "2026-10-07",
+      "source": "RBI",
+      "url": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63742"
+    }
+  ],
+  "example": { "kind": "lumpsum", "amount": 500000, "years": 5, "rate_pct": 7 },
+  "text": {
+    "headline1": "RBI just raised the repo rate",
+    "headline2": "Loans and FDs both feel it",
+    "what_title": "What happened",
+    "why_title": "Why it matters",
+    "why_line1": "Floating loans may cost more",
+    "why_line2": "Banks may lift FD rates too",
+    "why_line3": "Your lender sets the timing",
+    "you_title": "If you hold an FD",
+    "you_line": "At {rate}, {amount_long} grows {ratio}",
+    "end_line1": "Check your loan's reset date.",
+    "end_line2": "Then check your FD rate.",
+    "end_punch": "Know your rate.",
+    "end_cta": "Comment RATE if you owe a loan",
+    "end_follow": "Follow for money news that matters"
+  }
+}
