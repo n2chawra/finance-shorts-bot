@@ -10,6 +10,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { TOKEN_FIX, type Notice, notify, resolve, resolveOthers } from "./lib/notify.ts";
 import { istDay } from "./lib/publishing.ts";
+import { type ObservedRun, type RunId, clusterRuns, scheduleOverlap, videoRunId } from "./lib/schedule.ts";
 import { loadSettings } from "./lib/settings.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
 import { TokenError, accessToken } from "./lib/youtube.ts";
@@ -113,6 +114,20 @@ function agentChecks(now: Date, enabled: Record<string, boolean>, paused: boolea
   return out;
 }
 
+/** Start/finish of each routine over the last 30 h: agents from their activity stamps, video runs from step times. */
+async function scheduleCheck(prisma: PrismaClient, now: Date): Promise<Check | null> {
+  const since = new Date(now.getTime() - 30 * HOUR);
+  const agents = await prisma.agentActivity.findMany({ where: { startedAt: { gte: since }, finishedAt: { not: null } }, select: { agent: true, startedAt: true, finishedAt: true } });
+  const steps = await prisma.agentRun.findMany({ where: { videoId: { not: null }, startedAt: { gte: since } }, select: { videoId: true, startedAt: true, finishedAt: true } });
+  const observed: ObservedRun[] = agents.map((a) => ({ id: a.agent as RunId, start: a.startedAt!, finish: a.finishedAt! }));
+  for (const r of clusterRuns(steps.map((x) => ({ videoId: x.videoId!, start: x.startedAt, end: x.finishedAt ?? x.startedAt })))) {
+    observed.push({ id: videoRunId(r.start), start: r.start, finish: r.finish });
+  }
+  if (!observed.length) return null;   // nothing recorded: leave any earlier verdict as it is
+  const f = scheduleOverlap(observed);
+  return { key: "schedule-overlap", raise: f ? notice("schedule-overlap", "warning", f.title, f.detail, f.fix) : null };
+}
+
 async function main(): Promise<void> {
   const prisma = new PrismaClient();
   const now = new Date();
@@ -121,6 +136,8 @@ async function main(): Promise<void> {
     const token = await tokenCheck();
     const checks: Check[] = [...(await pipelineChecks(prisma, now)), await siteCheck(), ...(token ? [token] : []),
       ...agentChecks(now, { research: s.agents.research, improver: s.agents.improver, dashboard: s.agents.dashboard, auditor: s.agents.auditor }, s.agents.paused)];
+    const sched = await scheduleCheck(prisma, now);
+    if (sched) checks.push(sched);
     const wf = await workflowChecks();
     if (wf) {
       checks.push(...wf);
