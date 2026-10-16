@@ -13,6 +13,10 @@
     "everyNthRun": 3
   },
   "templates": {
+    "long_explainer": {
+      "enabled": true,
+      "weight": 1
+    },
     "money_leak_meter": {
       "enabled": true,
       "weight": 1
@@ -40,6 +44,8 @@
     "improver": true,
     "dashboard": true,
     "auditor": true,
+    "scout": true,
+    "studio": true,
     "maxActiveExperiments": 3
   }
 }
