@@ -2,7 +2,7 @@
 
 Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for an
 Indian audience and uploads them to YouTube: **Shorts** (vertical, 30–45 s, two a day) and
-**long-form explainers** (landscape, 8–11 min, two a week). A dashboard shows everything.
+**long-form explainers** (landscape, 4–6 min, character-led animation). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
 Read `PLAN.md` for milestones and current status. Update its checkboxes as work lands.
@@ -97,15 +97,22 @@ voice, layout checks, number checks, variety rules — is shared.
 |---|---|---|
 | Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Mon/Wed/Fri 14:37 IST, 1 a run) |
 | Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, daily 09:37 IST) |
-| Templates | `quiz_countdown`, `myth_vs_fact`, `money_leak_meter`, `two_friends_race`, `money_news` | `long_explainer` (sections built from blocks in `renderer/engine/longform.py`) |
-| Length | 30–45 s (a 48–60 s story at `TEMPO` 1.35) | 300–900 s, `tempo` 1.0, aiming for 8–11 min |
+| Templates | `quiz_countdown`, `myth_vs_fact`, `money_leak_meter`, `two_friends_race`, `money_news` | `long_explainer` (scenes from `renderer/engine/longform.py`, acted by `renderer/engine/actor.py`) |
+| Length | 30–45 s (a 48–60 s story at `TEMPO` 1.35) | 180–900 s, `tempo` 1.0, aiming for 4–6 min |
 | Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
 
-A long video is a list of `sections`, each drawn by a block (hook, points, number, compare, bars,
-chart, steps, recap, end). Its `maths` block names the calculations and every figure on screen comes
-from them, recomputed independently by the number check. A section whose narration fills under 55% of
-its window fails the render: silence over music is what makes a video feel padded.
+A long video is a list of `sections`, and **a section is a verb, not a slide**: `hook`, `beat`,
+`drain`, `pile`, `grow`, `compare`, `chart`, `steps`, `end`. Each one is an action that runs for its
+whole length — coins leaving a wallet, a stack growing past the hero's head, a tree growing, a chart
+drawing itself — acted by the same character throughout (`renderer/engine/actor.py`: a jointed rig
+with arms, legs, a distance-driven walk cycle and two-bone IK). Its `maths` block names the
+calculations and every figure on screen comes from them, recomputed independently by the number
+check. Two gates fail the render: a section whose narration fills under 55% of its window (silence
+over music is what makes a video feel padded) and a **liveliness** score under the Shorts'
+(`Video.liveliness`: median frame change ≥ 1.2, under 15% still samples, no 4-second stretch with
+nothing moving). The first long video scored 0.02 and was frozen for 82% of its runtime, which is
+what "a PPT with a voiceover" means as a number.
 
 ## Repo layout
 

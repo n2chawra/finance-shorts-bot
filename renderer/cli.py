@@ -97,6 +97,9 @@ def render(video, out: Path, preview: bool = False) -> dict:
               "voice": {"name": video.voice_name, "base_speed": video.voice_speed} if video.narrated else None,
               "layout_problems": [p for t in _progress(video.check_times(), len(video.check_times()), "checking layout")
                                   for p in video.layout_problems(t)]}
+    note("measuring motion")
+    report["liveliness"] = video.liveliness()
+    report["liveliness_problems"] = video.liveliness_problems(report["liveliness"])
     if not preview:
         wav = out / "audio.wav"
         note("building the soundtrack" + (" and voiceover" if video.narrated else ""))

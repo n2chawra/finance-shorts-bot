@@ -118,7 +118,7 @@
     },
     "sections": {
       "type": "array",
-      "minItems": 6,
+      "minItems": 5,
       "maxItems": 18,
       "items": {
         "type": "object",
@@ -132,35 +132,29 @@
           "kind": {
             "enum": [
               "hook",
-              "points",
-              "number",
+              "beat",
+              "drain",
+              "pile",
+              "grow",
               "compare",
-              "bars",
               "chart",
               "steps",
-              "recap",
               "end"
             ]
           },
           "seconds": {
             "type": "number",
-            "minimum": 12,
-            "maximum": 90
-          },
-          "chapter": {
-            "type": "string",
-            "minLength": 2,
-            "maxLength": 28,
-            "pattern": "^[^0-9₹]*$"
+            "minimum": 10,
+            "maximum": 75
           },
           "series": {
             "type": "array",
-            "minItems": 1,
+            "minItems": 2,
             "maxItems": 3,
             "items": {
               "type": "string"
             },
-            "description": "maths names, for 'bars' and 'chart'"
+            "description": "two or three maths names, for 'compare' and 'chart'"
           },
           "field": {
             "enum": [
@@ -170,7 +164,7 @@
               "emi",
               "total_paid"
             ],
-            "description": "'bars': which computed value to plot"
+            "description": "which computed value the counter or tower shows (default 'final')"
           },
           "text": {
             "type": "object",
@@ -179,12 +173,12 @@
               "heading": {
                 "type": "string",
                 "minLength": 1,
-                "maxLength": 90
+                "maxLength": 64
               },
               "sub": {
                 "type": "string",
                 "minLength": 1,
-                "maxLength": 110
+                "maxLength": 80
               },
               "big": {
                 "type": "string",
@@ -194,21 +188,21 @@
               "label": {
                 "type": "string",
                 "minLength": 1,
-                "maxLength": 90
+                "maxLength": 40
               },
               "note": {
                 "type": "string",
                 "minLength": 1,
-                "maxLength": 120
+                "maxLength": 90
               },
               "items": {
                 "type": "array",
                 "minItems": 1,
-                "maxItems": 5,
+                "maxItems": 4,
                 "items": {
                   "type": "string",
                   "minLength": 1,
-                  "maxLength": 120
+                  "maxLength": 60
                 }
               },
               "labels": {
@@ -221,55 +215,15 @@
                   "maxLength": 120
                 }
               },
-              "x_label": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 90
-              },
-              "verdict": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 90
-              },
               "left_title": {
                 "type": "string",
                 "minLength": 1,
-                "maxLength": 90
-              },
-              "left_value": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 90
-              },
-              "left_lines": {
-                "type": "array",
-                "minItems": 1,
-                "maxItems": 5,
-                "items": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 120
-                }
+                "maxLength": 40
               },
               "right_title": {
                 "type": "string",
                 "minLength": 1,
-                "maxLength": 90
-              },
-              "right_value": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 90
-              },
-              "right_lines": {
-                "type": "array",
-                "minItems": 1,
-                "maxItems": 5,
-                "items": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 120
-                }
+                "maxLength": 40
               },
               "cta": {
                 "type": "string",
@@ -285,8 +239,44 @@
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 160
+              },
+              "foot": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
               }
             }
+          },
+          "maths": {
+            "type": "string",
+            "description": "one maths name; required for 'drain', 'pile' and 'grow'"
+          },
+          "coins": {
+            "type": "integer",
+            "minimum": 8,
+            "maximum": 60,
+            "description": "'pile': how many coins the stack grows to"
+          },
+          "pose": {
+            "enum": [
+              "stand",
+              "walk",
+              "point",
+              "carry",
+              "cheer",
+              "slump",
+              "think"
+            ]
+          },
+          "mood": {
+            "enum": [
+              "happy",
+              "sad",
+              "wow",
+              "neutral",
+              "worried",
+              "proud"
+            ]
           }
         }
       }

@@ -16,7 +16,7 @@ NAMES = sorted(p.name for p in TEMPLATES.iterdir() if (p / "schema.json").is_fil
 # so the checks that assume a Short's shape or walk every second are kept to the Shorts.
 LONG_NAMES = ["long_explainer"]
 SHORT_NAMES = [n for n in NAMES if n not in LONG_NAMES]
-LENGTH_RANGE = {"short": (30, 45), "long": (300, 900)}
+LENGTH_RANGE = {"short": (30, 45), "long": (150, 900)}
 
 
 def sampled_times(v) -> list[float]:
@@ -154,9 +154,9 @@ def test_long_scripts_fail_with_a_message_the_writer_can_act_on(bad: dict, error
     if how == "drop_end":
         s["sections"] = s["sections"][:-1]
     elif how == "missing_text":
-        s["sections"][1]["text"].pop("items")
+        next(x for x in s["sections"] if x["kind"] == "drain")["text"].pop("label")
     elif how == "unknown_series":
-        next(x for x in s["sections"] if x["kind"] == "chart")["series"] = ["nope"]
+        next(x for x in s["sections"] if x["kind"] == "compare")["series"] = ["nope", "habit"]
     elif how == "wrong_amount_field":
         m = next(x for x in s["maths"] if x["kind"] == "sip")
         m["amount"] = m.pop("monthly")

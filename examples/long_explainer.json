@@ -1,209 +1,128 @@
 {
   "template": "long_explainer",
-  "seed": 77,
+  "seed": 20261016,
   "style": {
     "palette": "ocean",
-    "genre": "cinematic",
-    "key": "D",
-    "bpm": 92
+    "genre": "lofi",
+    "bpm": 88
   },
   "maths": [
     {
-      "name": "sip_plan",
+      "name": "habit",
       "kind": "sip",
-      "monthly": 10000,
+      "monthly": 9000,
       "rate_pct": 12,
       "years": 20
     },
     {
-      "name": "lump_plan",
-      "kind": "lumpsum",
-      "amount": 2400000,
+      "name": "year_one",
+      "kind": "sip",
+      "monthly": 9000,
       "rate_pct": 12,
-      "years": 20
-    },
-    {
-      "name": "price_rise",
-      "kind": "inflation",
-      "amount": 100000,
-      "rate_pct": 6,
-      "years": 20
+      "years": 1
     }
   ],
   "sections": [
     {
       "kind": "hook",
-      "seconds": 27,
-      "chapter": "The question",
+      "seconds": 18,
+      "mood": "happy",
       "text": {
-        "heading": "SIP or lump sum: which builds more?",
-        "sub": "Same money, same return, same years. Only the timing changes.",
-        "big": "{lump_plan_final}",
-        "label": "what the lump sum route ends with",
-        "note": "The SIP ends far lower. Here is why that still isn't the whole story."
+        "heading": "Three hundred rupees a day",
+        "sub": "A coffee. A cab. A delivery order."
       }
     },
     {
-      "kind": "points",
-      "seconds": 38,
-      "chapter": "The setup",
-      "text": {
-        "heading": "What we are comparing",
-        "items": [
-          "The same total money: {sip_plan_invested}",
-          "The same assumed return: {sip_plan_rate} a year",
-          "The same stretch of time: {sip_plan_years} years",
-          "Only one thing differs: when the money goes in"
-        ]
-      }
-    },
-    {
-      "kind": "number",
-      "seconds": 35,
-      "chapter": "Route one",
-      "text": {
-        "heading": "Route one: a monthly SIP",
-        "big": "{sip_plan_final}",
-        "label": "{sip_plan_amount} a month, every month",
-        "note": "You put in {sip_plan_invested}. Growth added {sip_plan_gains}."
-      }
-    },
-    {
-      "kind": "number",
+      "kind": "drain",
       "seconds": 26,
-      "chapter": "Route two",
+      "maths": "year_one",
+      "field": "invested",
+      "mood": "neutral",
       "text": {
-        "heading": "Route two: all of it on day one",
-        "big": "{lump_plan_final}",
-        "label": "{lump_plan_amount} invested once",
-        "note": "The same {lump_plan_invested} of your money, grown {lump_plan_ratio}."
+        "heading": "Nobody notices it leaving",
+        "label": "one year of the habit",
+        "foot": "and that is just year one"
+      }
+    },
+    {
+      "kind": "pile",
+      "seconds": 28,
+      "maths": "habit",
+      "field": "invested",
+      "coins": 30,
+      "text": {
+        "heading": "Now stack up twenty years",
+        "label": "spent, in total"
+      }
+    },
+    {
+      "kind": "beat",
+      "seconds": 16,
+      "pose": "think",
+      "mood": "worried",
+      "text": {
+        "heading": "That money was never resting",
+        "note": "It was waiting to be put to work."
+      }
+    },
+    {
+      "kind": "grow",
+      "seconds": 34,
+      "maths": "habit",
+      "field": "final",
+      "text": {
+        "heading": "The same money, invested",
+        "label": "after twenty years"
       }
     },
     {
       "kind": "compare",
-      "seconds": 34,
-      "chapter": "Side by side",
-      "text": {
-        "heading": "The two routes, side by side",
-        "left_title": "Monthly SIP",
-        "left_value": "{sip_plan_final}",
-        "left_lines": [
-          "Money in: {sip_plan_invested}",
-          "Growth: {sip_plan_gains}",
-          "Grew {sip_plan_ratio}"
-        ],
-        "right_title": "Lump sum",
-        "right_value": "{lump_plan_final}",
-        "right_lines": [
-          "Money in: {lump_plan_invested}",
-          "Growth: {lump_plan_gains}",
-          "Grew {lump_plan_ratio}"
-        ],
-        "verdict": "On paper the lump sum wins, and it is not close"
-      }
-    },
-    {
-      "kind": "chart",
-      "seconds": 38,
-      "chapter": "The gap",
+      "seconds": 26,
       "series": [
-        "sip_plan",
-        "lump_plan"
+        "habit.invested",
+        "habit.final"
       ],
       "text": {
-        "heading": "Watch the gap open up",
-        "labels": [
-          "Monthly SIP",
-          "Lump sum"
-        ],
-        "x_label": "Years invested",
-        "sub": "Both lines assume the same yearly return"
-      }
-    },
-    {
-      "kind": "points",
-      "seconds": 34,
-      "chapter": "Why",
-      "text": {
-        "heading": "Why the lump sum wins on paper",
-        "items": [
-          "Every rupee compounds for the full {lump_plan_years} years",
-          "SIP money arrives slowly, so most of it compounds for less",
-          "The final instalment grows for a single month",
-          "It is time in the market that does the work"
-        ]
-      }
-    },
-    {
-      "kind": "points",
-      "seconds": 37,
-      "chapter": "The catch",
-      "text": {
-        "heading": "So why does almost everyone use a SIP?",
-        "items": [
-          "Very few people have {lump_plan_amount} sitting idle",
-          "A SIP invests money you have not earned yet",
-          "It takes the urge to time the market away",
-          "When prices fall, the same amount buys more units"
-        ]
+        "heading": "Same person. Same salary.",
+        "left_title": "Spent it",
+        "right_title": "Invested it"
       }
     },
     {
       "kind": "steps",
-      "seconds": 30,
-      "chapter": "What to do",
+      "seconds": 20,
       "text": {
-        "heading": "What to actually do with this",
+        "heading": "Three steps, starting today",
         "items": [
-          "Invest a windfall sooner, not in slices",
-          "Keep the monthly SIP running regardless",
-          "Raise it every time your salary rises"
-        ]
-      }
-    },
-    {
-      "kind": "recap",
-      "seconds": 35,
-      "chapter": "Recap",
-      "text": {
-        "heading": "Three things worth remembering",
-        "items": [
-          "With the same money in hand, investing it at once wins",
-          "In real life the money arrives monthly, so the SIP wins",
-          "Waiting loses either way: {price_rise_amount} today buys {price_rise_final} worth in {price_rise_years} years"
+          "Name the habit",
+          "Halve it",
+          "Auto-invest the rest"
         ]
       }
     },
     {
       "kind": "end",
-      "seconds": 18,
+      "seconds": 14,
       "text": {
-        "items": [
-          "The best route is not the cleverest one.",
-          "It is the one you can actually keep up."
-        ],
-        "cta": "Subscribe for honest money maths",
-        "channel": "Money in Sixty",
-        "assumption": "Assumes {sip_plan_rate} a year throughout, and {price_rise_rate} inflation. Returns are never guaranteed."
+        "cta": "Pick one habit this week",
+        "channel": "Subscribe for one money idea a day",
+        "assumption": "Assumes {habit_rate} a year over {habit_years} years. Returns are not guaranteed."
       }
     }
   ],
   "voice": {
-    "s1": "Suppose you have a fixed amount of money, and {sip_plan_years} years ahead of you. Do you feed it into the market slowly, month after month, or put all of it in on day one and then leave it completely alone? Most people assume the difference between those two is small. It is not. The gap is far bigger than almost anyone guesses, and by the end of this you will know exactly why, and which one actually applies to your situation.",
-    "s2": "Before we go anywhere near the answer, let us make this a genuinely fair fight. The same total amount of money goes in, either way. Not a rupee more on one side than the other. The same assumed rate of return, year after year, applied to both. The same stretch of time, {sip_plan_years} years, from the first day to the last. Everything that could quietly tilt the result is held still. The only thing we change is the timing. One route drips the money in month by month. The other hands all of it over at the very start and never touches it again. That single difference is the whole experiment.",
-    "s3": "Route one is the one you almost certainly already know, because it is how a salary works. A fixed amount, {sip_plan_amount}, leaves your account every month, for {sip_plan_years} years, without fail. You never try to guess the right moment. You never skip a month because the news looks frightening. At the end of it, your own contributions come to {sip_plan_invested}, and growth has quietly added {sip_plan_gains} on top. That is the number most people have in their heads when they think about long term investing.",
-    "s4": "Route two uses exactly the same money, {lump_plan_amount}, but all of it goes in on the very first day. After that you do nothing at all for {lump_plan_years} years. No monthly transfer, no decisions, no checking. The same amount leaves your pocket as in route one. What comes back is a very different number, and this is the part that surprises people the first time they run it properly.",
-    "s5": "Here they are side by side, and the difference is hard to argue with. Identical money going in. Identical returns along the way. Identical number of years. The monthly route grows your money {sip_plan_ratio}. The lump sum route grows it {lump_plan_ratio}. Same effort, same risk, same market, and yet one of them ends up far ahead of the other. If you have ever been told that a monthly plan beats a lump sum on pure returns, this is the comparison that was never actually run.",
-    "s6": "Now watch the same story as a picture, because the shape of it explains everything. In the first few years the two lines sit close together and it all looks fairly boring. Then the lump sum line starts to pull away. And the further right you go, the faster that gap widens, until by the end the two are nowhere near each other. That is not because one investment is cleverer than the other. It is because one of them has been compounding on the full amount since day one, while the other is still being fed in slowly, a little at a time, with each new instalment arriving too late to catch up.",
-    "s7": "The reason is simple once you see it, and it has nothing to do with picking better funds. In the lump sum route, every single rupee gets the complete {lump_plan_years} years to compound. Nothing is sitting in your bank account waiting its turn. In a monthly plan, the money arrives in pieces. Your very first instalment does get the full run. Your second gets a month less. And your final instalment, paid in the last month, grows for about thirty days before you stop. Average all of that out and half your money has had only half the time.",
-    "s8": "So if the maths is this clear, why does almost everybody use a monthly plan anyway? Because the comparison quietly assumes something most of us simply do not have: a large pile of money sitting idle today, doing nothing. A monthly plan lets you invest money you have not even earned yet. It also removes the single hardest decision in investing, which is choosing the moment to begin. And when prices fall, which they will, the same fixed amount quietly buys you more units than it did last month. None of that shows up in the final number, but all of it matters.",
-    "s9": "So here is the practical version, the part you can actually act on this week. If a bonus, a maturity, or any windfall lands in your hands, put it to work sooner rather than carefully slicing it into small monthly pieces, because slicing it is just recreating the slower route on purpose. Keep the monthly plan running underneath all of it, through good months and bad. And every single time your salary goes up, raise that monthly amount before you get used to the extra money.",
-    "s10": "Three things worth carrying away from all of this. First, if the money is already in your hands today, investing it at once beats trickling it in, and the gap is large. Second, in real life the money arrives monthly, which is exactly why the monthly plan is the honest answer for most people. And third, waiting is the one choice that loses either way, because prices keep climbing while you make up your mind. {price_rise_amount} left alone today is worth about {price_rise_final} in {price_rise_years} years.",
-    "s11": "The best route is not the cleverest one on a spreadsheet. It is the one you can actually keep up for {sip_plan_years} years without talking yourself out of it halfway through. If this was useful, subscribe, and tell me in the comments which route you are on right now."
+    "s1": "Three hundred rupees a day. One coffee on the way to work, one cab you could have skipped, one dinner you did not feel like cooking. Nobody budgets for it, because nobody thinks it is worth budgeting for.",
+    "s2": "Watch what it actually looks like. Three hundred rupees, every single day, quietly leaving your wallet. By the end of one year that is {year_one_invested}, and you will struggle to name a single thing you bought with it.",
+    "s3": "Now keep that habit for twenty years, the way most of us do without ever deciding to. Stack every one of those notes on top of each other and the pile comes to {habit_invested}. That is not a typo. That is a small apartment, paid for in coffee.",
+    "s4": "Here is the part that stings. That money was never resting. It was waiting. Every rupee you spend today is a rupee that could have been earning for the next twenty years.",
+    "s5": "So let us run it the other way. Same three hundred rupees a day, same twenty years, but this time it goes into an index fund instead of a cup. At {habit_rate} a year, that habit turns into {habit_final_long}. You did not earn more. You did not work harder. You just stopped letting it leak.",
+    "s6": "Put the two side by side, because this is the whole video in one picture. Same person, same salary, same twenty years. One of them spent {habit_invested}. The other one is holding {habit_final}.",
+    "s7": "You do not have to give anything up to start. Name the habit, so you can actually see it. Halve it, not quit it, because the ones you quit come back. Then automate the rest on the same day your salary lands.",
+    "s8": "Pick one habit this week and point it somewhere better. That is the whole job. I am Money in Sixty, and I will see you in the next one."
   },
   "thumbnail": {
-    "line1": "SIP or",
-    "line2": "LUMP SUM?",
-    "big": "{lump_plan_final}"
+    "line1": "This habit costs you",
+    "line2": "{habit_amount} a month",
+    "big": "{habit_final}"
   }
 }

@@ -1,7 +1,7 @@
 # Agent 5 · Scout (daily, 09:37 IST)
 
 You are an unattended scheduled run. Nobody is watching. Read `agents/policy.md` first and follow
-it. Your job is the **long-form** side of the channel: find the topics worth 8–11 minutes of
+it. Your job is the **long-form** side of the channel: find the topics worth 4–6 minutes of
 someone's attention, and keep improving how those videos are made. You never make a video
 yourself — the Studio agent (`agents/studio.md`) does that on Mon, Wed and Fri from your feed.
 
@@ -55,7 +55,7 @@ delete; set `"status": "rejected"` with a `reason` when you change your mind):
  "priority": "high|normal", "templates": ["long_explainer"],
  "angle": "the one question the video answers",
  "why_now": "why this is worth nine minutes, and to whom",
- "outline": ["hook: ...", "the setup", "the numbers", "the chart", "why", "the catch", "what to do", "recap"],
+ "outline": ["hook: ...", "the leak", "a year of it", "the turn", "invested instead", "side by side", "what to do"],
  "maths": "which calculations tell it: e.g. two sip plans at different rates, plus an inflation one",
  "verify": ["claims the fact reviewer must confirm"],
  "sources": ["https://…"], "found": "<DAY>", "expires": "YYYY-MM-DD", "status": "new"}

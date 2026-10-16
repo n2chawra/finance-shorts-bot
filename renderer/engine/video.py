@@ -27,6 +27,13 @@ VOICE_FLAG = "voiceover"   # A/B experiment: videos in its "on" group are narrat
 VOICE_DUCK = 0.65          # music and effects drop by this much while the voice speaks
 
 
+# Liveliness thresholds, calibrated against the Shorts (see Video.liveliness).
+STILL = 0.5                 # mean pixel change below this is, to the eye, a frozen frame
+LIVELY_MEDIAN = 1.2         # the Shorts sit at 1.5-2.3; the first long video scored 0.02
+LIVELY_STILL_SHARE = 0.15
+LIVELY_STILL_SEC = 4.0
+
+
 class Video:
     # `frame` is the format: SHORT (vertical Shorts) or LONG (landscape long-form). It sets the
     # frame size and the layout rules; everything else in this class works the same either way.
@@ -34,6 +41,13 @@ class Video:
     duration: float = 60          # story seconds; the video lasts `length` = duration / tempo
     tempo: float = TEMPO
     thumbnail_time: float = 3.0
+    # Camera. The defaults are the Shorts': push in over 9 s, then hold, and never pan. A long
+    # scene runs for half a minute, so holding still for twenty of those seconds is most of what
+    # made the first long video feel like a slideshow — long-form pushes for the whole scene and
+    # drifts continuously instead. See Video.liveliness.
+    push_seconds: float | None = 9.0      # None = take the whole scene
+    push_amount: float = PUSH_IN
+    drift_px: float = 0.0                 # slow pan; clamped to whatever the zoom has cropped
     key_times: Sequence[float] = ()
     # per scene: (seconds into the scene the voice may start, seconds into the scene it must end by,
     # or None for the scene's end minus voice.TAIL); scenes not listed use the defaults
@@ -122,16 +136,20 @@ class Video:
         im = self.bg.copy()
         c = Canvas(im, self.pal, log, self.frame_spec)
         effects.draw_stars(c, self.stars, T)
-        start = 0.0
+        start, end = 0.0, self.duration
         for s, e, fn in self.scenes:
             if s <= T < e:
-                start = s
+                start, end = s, e
                 lt = T - s
                 fn(c, lt, min(1.0 if s == 0 else ramp(lt, 0, 0.25), clamp((e - T)/0.25)))
-        # camera: slow push-in per scene + impact punch + shake
-        zoom = (1 + PUSH_IN*clamp((T - start)/9) + 0.07*env_since(T, self.impacts, 9)
-                + 0.035*env_since(T, self.punches, 12))
-        im = camera.apply(im, T, zoom, 22*env_since(T, self.impacts, 10))
+        # camera: push-in per scene + drift + impact punch + shake
+        span = (end - start) if self.push_seconds is None else self.push_seconds
+        zoom = (1 + self.push_amount*clamp((T - start)/max(span, 0.1))
+                + 0.07*env_since(T, self.impacts, 9) + 0.035*env_since(T, self.punches, 12))
+        # the pan can only use what the zoom has already cropped, so it fades in with the push-in
+        room = min(self.drift_px, (1 - 1/zoom)*self.frame_spec.w/2)
+        pan = (math.sin(T*0.11)*room, math.cos(T*0.083)*room*0.4)
+        im = camera.apply(im, T, zoom, 22*env_since(T, self.impacts, 10), pan)
         im = camera.flash(im, min(0.9, 0.7*env_since(T, self.flashes, 6)))
         camera.progress_bar(im, T/self.duration, self.pal.accent)
         return im
@@ -141,6 +159,48 @@ class Video:
         video (its scenes are minutes long, so a denser sweep only re-checks the same layouts)."""
         step = 1 if self.duration <= 120 else 5
         return [t + 0.5 for t in range(0, int(self.duration), step)]
+
+    def liveliness(self, gap: float = 0.3, every: float = 2.0) -> dict[str, float]:
+        """How much the picture actually changes, sampled across the whole video.
+
+        Each sample is the mean absolute pixel difference between two frames `gap` apart. The
+        Shorts are the calibration: two_friends_race scores a median of 2.25 and money_leak_meter
+        1.56, while the first long_explainer scored 0.02 and was frozen for 82% of its runtime —
+        which is exactly what "a PPT with a voiceover" means, as a number.
+
+        Returns the median, the share of samples that are effectively still, and the longest
+        stretch in seconds with no visible movement.
+        """
+        scores = []
+        t = 0.0
+        while t + gap < self.duration:
+            a = np.asarray(self.frame(t), dtype=np.int16)
+            b = np.asarray(self.frame(t + gap), dtype=np.int16)
+            scores.append(float(np.abs(a - b).mean()))
+            t += every
+        if not scores:
+            return {"median": 0.0, "still_share": 1.0, "longest_still_sec": self.duration}
+        run = best = 0
+        for s in scores:
+            run = run + 1 if s < STILL else 0
+            best = max(best, run)
+        return {"median": round(float(np.median(scores)), 3),
+                "still_share": round(sum(s < STILL for s in scores)/len(scores), 3),
+                "longest_still_sec": round(best*every, 1)}
+
+    def liveliness_problems(self, score: dict[str, float]) -> list[str]:
+        """Why this video reads as a slideshow, in words a template author can act on."""
+        out = []
+        if score["median"] < LIVELY_MEDIAN:
+            out.append(f"median frame change {score['median']:.2f} is below {LIVELY_MEDIAN} — "
+                       f"scenes finish animating and then hold a still picture")
+        if score["still_share"] > LIVELY_STILL_SHARE:
+            out.append(f"{score['still_share']*100:.0f}% of samples have no visible movement "
+                       f"(limit {LIVELY_STILL_SHARE*100:.0f}%)")
+        if score["longest_still_sec"] > LIVELY_STILL_SEC:
+            out.append(f"{score['longest_still_sec']:g} s with nothing moving "
+                       f"(limit {LIVELY_STILL_SEC:g} s)")
+        return out
 
     def thumbnail_image(self) -> Image.Image:
         """The image saved as thumbnail.png. A Short uses a frame of itself (it is never seen at

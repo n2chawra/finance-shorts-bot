@@ -58,7 +58,7 @@ flowchart LR
 
 | | |
 |---|---|
-| Video length | Shorts 30–45 s (a 48–60 s story at 1.35×), 1080×1920; long-form 8–11 min, 1920×1080 |
+| Video length | Shorts 30–45 s (a 48–60 s story at 1.35×), 1080×1920; long-form 4–6 min, 1920×1080 |
 | Videos made per day | target **3** (five scheduled runs, so a failed run gets made up) |
 | Videos published per day | **2**, at 12:37 and 19:07 IST |
 | Backlog cap | 30 ready videos (about a month of uploads) |

@@ -16,9 +16,9 @@ DEFAULTS: dict = {
     "uploadsPaused": False,
     "lengthMinSec": 30,
     "lengthMaxSec": 45,
-    "longLengthMinSec": 300,      # long-form: 5-15 minutes, aiming for 8-11
-    "longLengthMaxSec": 900,
-    "longPerWeek": 2,             # long videos to make per IST week (0 pauses long-form)
+    "longLengthMinSec": 180,      # long-form: 3-15 minutes, aiming for 4-6. Length is not the
+    "longLengthMaxSec": 900,      # goal; a tight 4-minute video beats a padded 9-minute one
+    "longPerWeek": 0,             # long videos to make per IST week (0 pauses long-form)
     "longBacklogCap": 4,
     "disclaimer": "Illustrative only. Not financial advice.",
     "dailyVideoTarget": 3,        # videos to ship per IST day before any template work; then runs idle

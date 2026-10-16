@@ -6,7 +6,7 @@ export const SettingsSchema = z.object({
   uploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/)).min(1).max(4),
   longUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/)).max(2).default(["20:07"]),
   longUploadDays: z.array(z.number().int().min(0).max(6)).max(7).default([2, 4, 6]),   // 0 = Sunday
-  longLengthMinSec: z.number().int().default(300),
+  longLengthMinSec: z.number().int().default(180),
   longLengthMaxSec: z.number().int().default(900),
   longPerWeek: z.number().int().min(0).max(7).default(2),
   longBacklogCap: z.number().int().min(1).max(20).default(4),
@@ -34,7 +34,7 @@ export const DEFAULT_SETTINGS: Settings = {
   uploadTimes: ["12:37", "19:07"],
   longUploadTimes: ["20:07"],
   longUploadDays: [2, 4, 6],
-  longLengthMinSec: 300,
+  longLengthMinSec: 180,
   longLengthMaxSec: 900,
   longPerWeek: 2,
   longBacklogCap: 4,

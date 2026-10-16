@@ -1,31 +1,43 @@
-"""Landscape building blocks for long-form explainers (1920×1080).
+"""Landscape scenes for long-form explainers (1920×1080).
 
-A long video is a list of sections; each section names a block, and the block draws it. Blocks are
-pure drawing functions of `(canvas, local time, scene alpha, content)` so a template stays a pure
-function of (script, style, t) → frame, exactly like the Shorts templates.
+These are **actions**, not layouts. Each scene puts the actor on a stage and something happens over
+its whole length: coins fall out of a pocket, a stack grows past the actor's head, a plant sprouts,
+a chart is built in front of the viewer. That last one matters — the edX study of 6.9 M viewing
+sessions found hand-constructed visuals beat finished slides, and that is the whole difference
+between this and the block library it replaced.
 
-Layout grid: heading at the top, content between y=250 and y=880, a chapter strip along the
-bottom. Nothing is drawn below `LONG.h - LONG.bottom_safe`.
+Four rules the scenes follow:
+
+1. **Nothing is ever frozen.** Every scene has continuous motion — idle breathing, drifting clouds,
+   a counter ticking, a coin falling. A still frame reads as the video having ended.
+2. **Text arrives, then holds perfectly still.** Text cannot be read while it moves, so headlines
+   settle within ~0.35 s and then never move again. Motion belongs to the objects.
+3. **The actor is big.** Roughly half the frame height. A character small enough to be a diagram
+   label is not a character.
+4. **Something survives each cut.** The stage persists across scenes, so the video reads as one
+   continuous world rather than a deck of cards.
 """
+import math
+import random
 from collections.abc import Sequence
 
-from .canvas import LONG, RGB, Canvas, font
-from .characters import person
-from .easing import back, clamp, ease, ramp
-from .formatting import axis_label, nice_axis
-from .props import coin, vbar
+from .canvas import RGB, Canvas, font
+from .easing import clamp, ease, ramp
+from .motion import EMPHASIZED, ENTER, arc, bezier, breathe, loop, pulse, spring, stagger, sway
+from .props import coin
 
-HEAD_Y = 140          # heading baseline
-SUB_Y = 212           # sub-heading under it
-TOP = 290             # top of the content area
-BOTTOM = 880          # bottom of the content area
-FOOT_Y = 980          # chapter strip
-BODY = 46             # body text size
-CONTENT_W = 1500      # widest a centred block of text should be
+GROUND = 930.0          # the line the actor stands on
+HEAD_Y = 150.0          # headline baseline
+SUB_Y = 232.0
+FLOOR_TEXT = 1000.0     # labels on the floor strip, clear of the bottom safe margin
+CONTENT_W = 1560.0
+ACTOR_S = 1.35          # ≈ 515 px tall: about half the frame
+SKY = (300.0, 560.0)    # band the clouds drift through, clear of the headline
 
+
+# ---------------- text that behaves ----------------
 
 def wrap(s: str, size: float, weight: str, max_w: float) -> list[str]:
-    """Greedy word wrap at `size`."""
     f = font(size, weight)
     out: list[str] = []
     line = ""
@@ -43,7 +55,6 @@ def wrap(s: str, size: float, weight: str, max_w: float) -> list[str]:
 
 def fit_lines(s: str, size: float, weight: str, max_w: float, max_lines: int,
               min_size: float) -> tuple[float, list[str]]:
-    """The largest size up to `size` at which `s` wraps into at most `max_lines` lines."""
     while size > min_size:
         lines = wrap(s, size, weight, max_w)
         if len(lines) <= max_lines:
@@ -52,248 +63,298 @@ def fit_lines(s: str, size: float, weight: str, max_w: float, max_lines: int,
     return size, wrap(s, size, weight, max_w)
 
 
-def paragraph(c: Canvas, s: str, cx: float, cy: float, size: float, color: RGB, a: float,
-              max_w: float, weight: str = "Medium", max_lines: int = 2, anchor: str = "mm",
-              leading: float = 1.22) -> float:
-    """Text wrapped over up to `max_lines` lines, centred on `cy`. Returns the height used."""
-    size, lines = fit_lines(s, size, weight, max_w, max_lines, c.frame.min_text)
-    step = size*leading
+def still_text(c: Canvas, s: str, cx: float, cy: float, size: float, color: RGB, t: float,
+               t0: float = 0.0, weight: str = "Bold", max_w: float | None = None,
+               max_lines: int = 2, anchor: str = "mm", A: float = 1.0) -> None:
+    """Text that eases in over ~0.35 s and is then perfectly still — it never drifts, because
+    moving text cannot be read. Motion is the objects' job, not the type's."""
+    p = bezier(ramp(t, t0, 0.35), ENTER)
+    if p <= 0.01:
+        return
+    size, lines = fit_lines(s, size, weight, max_w or CONTENT_W, max_lines, c.frame.min_text)
+    step = size*1.2
     y = cy - step*(len(lines) - 1)/2
     for i, line in enumerate(lines):
-        c.text(line, cx, y + i*step, size, color, a, weight, anchor=anchor)
-    return step*len(lines)
+        c.text(line, cx, y + i*step, size, color, p*A, weight, anchor=anchor)
 
 
-def heading(c: Canvas, s: str, t: float, A: float, sub: str | None = None, color: RGB | None = None) -> None:
-    """Section heading, with an optional line under it. Always the first thing a block draws.
-    `rule()` is only for headings without a sub-heading: the two share the same strip."""
-    a = ramp(t, 0.05, 0.25)*A
-    k = back(ramp(t, 0.05, 0.4))
-    c.text(s, c.w/2, HEAD_Y, 72*(0.75 + 0.25*k), color or c.pal.text, a, max_w=CONTENT_W + 200)
+def headline(c: Canvas, s: str, t: float, A: float = 1.0, sub: str | None = None,
+             t0: float = 0.0, color: RGB | None = None) -> None:
+    """The scene's one line, at the top, still from 0.35 s onward."""
+    still_text(c, s, c.w/2, HEAD_Y, 70, color or c.pal.text, t, t0, "Bold", CONTENT_W + 140, 1, A=A)
     if sub:
-        c.text(sub, c.w/2, SUB_Y, BODY, c.pal.muted, ramp(t, 0.35, 0.25)*A, "Regular", max_w=CONTENT_W)
+        still_text(c, sub, c.w/2, SUB_Y, 42, c.pal.muted, t, t0 + 0.25, "Regular", CONTENT_W, 1, A=A)
 
 
-def rule(c: Canvas, y: float, t: float, A: float, t0: float = 0.3, w: float = 420) -> None:
-    """Short accent underline that draws itself in."""
-    k = ease(ramp(t, t0, 0.5))*A
-    if k > 0.01:
-        c.d.rounded_rectangle([c.w/2 - w*k/2, y - 4, c.w/2 + w*k/2, y + 4], radius=4, fill=c.mix(c.pal.accent, A))
+def label_under(c: Canvas, s: str, x: float, t: float, t0: float = 0.2, A: float = 1.0,
+                size: float = 44) -> None:
+    """A caption on the floor strip, under whatever it names — a label belongs beside its object."""
+    still_text(c, s, x, FLOOR_TEXT, size, c.pal.text, t, t0, "Medium", 620, 1, A=A)
 
 
-def bullets(c: Canvas, items: Sequence[str], t: float, A: float, t0: float = 0.6, gap: float = 0.9,
-            y0: float | None = None, size: float = 54, max_lines: int = 2) -> None:
-    """Points revealed one at a time, each with a coloured dot. Items that wrap are given the room
-    they need and the whole block is centred, so a long point can never crowd the next one."""
-    if not items:
+def counter(c: Canvas, value: str, x: float, y: float, A: float = 1.0, size: float = 104,
+            color: RGB | None = None, label: str | None = None, t: float = 0.0,
+            burst: bool = False) -> None:
+    """A figure that is already counting when it appears. The label sits *above* it so the number
+    stays clear of whatever it is sitting on, and the burst goes behind, never over the digits."""
+    if A <= 0.01:
         return
-    width = CONTENT_W - 90
-    blocks = [fit_lines(s, size, "SemiBold", width, max_lines, c.frame.min_text) for s in items]
-    heights = [sz*1.22*len(ls) + 56 for sz, ls in blocks]
-    y = (TOP + BOTTOM)/2 - sum(heights)/2 if y0 is None else y0
-    x = c.w/2 - CONTENT_W/2
-    for i, ((sz, lines), h) in enumerate(zip(blocks, heights)):
-        a = ramp(t, t0 + i*gap, 0.3)*A
-        cy = y + h/2
-        y += h
-        if a <= 0.01:
-            continue
-        slide = (1 - back(ramp(t, t0 + i*gap, 0.45)))*40
-        c.d.ellipse([x - slide, cy - 14, x + 28 - slide, cy + 14], fill=c.mix(c.pal.cast[i % 3], a))
-        top = cy - sz*1.22*(len(lines) - 1)/2
-        for j, line in enumerate(lines):
-            c.text(line, x + 56 - slide, top + j*sz*1.22, sz, c.pal.text, a, "SemiBold", anchor="lm")
+    if burst:
+        shine(c, x, y, size*1.25, t, A*0.8)
+    if label:
+        c.text(label, x, y - size*0.72, 40, c.pal.muted, A, "Medium", max_w=620)
+    c.text(value, x, y, size, color or c.pal.accent, A, "Bold", max_w=700)
 
 
-def big_number(c: Canvas, value: str, label: str, t: float, A: float, t0: float = 0.3,
-               color: RGB | None = None, note: str | None = None) -> None:
-    """One computed figure, as large as it will go, with its label under it."""
-    k = back(ramp(t, t0, 0.45))
-    a = ramp(t, t0, 0.15)*A
-    c.text(value, c.w/2, 520, 200*(0.55 + 0.45*k), color or c.pal.accent, a, max_w=CONTENT_W)
-    paragraph(c, label, c.w/2, 682, 56, c.pal.text, ramp(t, t0 + 0.3, 0.3)*A, CONTENT_W, "Medium", max_lines=1)
-    if note:
-        paragraph(c, note, c.w/2, 772, BODY, c.pal.muted, ramp(t, t0 + 0.7, 0.3)*A, CONTENT_W, "Regular", max_lines=2)
+# ---------------- the stage ----------------
 
-
-def columns(c: Canvas, left: dict, right: dict, t: float, A: float, t0: float = 0.5) -> None:
-    """Two labelled cards side by side: {'title', 'value', 'lines': [...]}"""
-    for i, (d, sign) in enumerate(((left, -1), (right, 1))):
-        a = ramp(t, t0 + i*0.4, 0.3)*A
-        if a <= 0.01:
-            continue
-        cx = c.w/2 + sign*400
-        k = back(ramp(t, t0 + i*0.4, 0.45))
-        w, h = 680*(0.9 + 0.1*k), 520
-        col = c.pal.cast[i]
-        c.d.rounded_rectangle([cx - w/2, TOP + 30, cx + w/2, TOP + 30 + h], radius=36, fill=c.mix(c.pal.panel, a))
-        c.text(d["title"], cx, TOP + 110, 52, col, a, max_w=w - 80)
-        c.text(d["value"], cx, TOP + 230, 104, c.pal.text, ramp(t, t0 + i*0.4 + 0.3, 0.3)*A, max_w=w - 80)
-        for j, line in enumerate(d.get("lines", [])[:3]):
-            paragraph(c, line, cx, TOP + 345 + j*68, BODY, c.pal.muted,
-                      ramp(t, t0 + i*0.4 + 0.6 + j*0.25, 0.3)*A, w - 80, "Regular", max_lines=1)
-
-
-def bars(c: Canvas, items: Sequence[tuple[str, float, str]], t: float, A: float, t0: float = 0.6,
-         grow: float = 1.1) -> None:
-    """Bar chart from (label, value, displayed value). Bars grow left to right."""
-    if not items:
-        return
-    top = max(v for _, v, _ in items) or 1.0
-    span = min(1400, 300*len(items))
-    x0 = c.w/2 - span/2 + span/len(items)/2
-    for i, (label, value, shown) in enumerate(items):
-        cnt = ease(ramp(t, t0 + i*0.45, grow))
-        a = ramp(t, t0 + i*0.45 - 0.1, 0.25)*A
-        if a <= 0.01:
-            continue
-        x = x0 + i*span/len(items)
-        h = (BOTTOM - TOP - 120)*(value/top)*cnt
-        vbar(c, x, BOTTOM - 60, min(230, span/len(items) - 60), h, c.pal.cast[i % 3], a)
-        c.text(shown, x, BOTTOM - 70 - h - 44, 56, c.pal.text, a, max_w=span/len(items) - 20)
-        c.text(label, x, BOTTOM - 10, 44, c.pal.text, a, "Medium", max_w=span/len(items) - 20)
-
-
-def line_chart(c: Canvas, series: Sequence[tuple[str, Sequence[float], RGB]], t: float, A: float,
-               x_label: str = "", t0: float = 0.5, draw: float = 4.0) -> None:
-    """One or more growing lines over a shared x axis, with a value axis and a moving end dot.
-    Each series is (name, values, colour); values start at x=0."""
-    if not series or not series[0][1]:
-        return
-    a = ramp(t, t0 - 0.2, 0.3)*A
-    if a <= 0.01:
-        return
-    x0, x1 = c.w/2 - 660, c.w/2 + 540
-    y0, y1 = TOP + 40, BOTTOM - 40
-    ticks = nice_axis(max(max(v) for _, v, _ in series) or 1.0)
-    top = ticks[-1]
-    n = max(len(v) for _, v, _ in series) - 1
-    px = ease(ramp(t, t0, draw))            # how much of the line is drawn
-    c.d.line([x0, y1, x1, y1], fill=c.mix(c.pal.grid, a), width=3)
-    for v in ticks[1:]:
-        y = y1 - (y1 - y0)*v/top
-        c.d.line([x0, y, x1, y], fill=c.mix(c.pal.grid, a*0.45), width=2)
-        c.text(axis_label(v), x0 - 26, y, 34, c.pal.muted, a*0.9, "Regular", anchor="rm")
-    for name, values, col in series:
-        shown = 1 + (len(values) - 1)*px
-        pts = []
-        for i, v in enumerate(values):
-            if i > shown:
-                break
-            pts.append((x0 + (x1 - x0)*i/n, y1 - (y1 - y0)*v/top))
-        if len(pts) > 1:
-            c.d.line(pts, fill=c.mix(col, a), width=7, joint="curve")
-            ex, ey = pts[-1]
-            c.d.ellipse([ex - 12, ey - 12, ex + 12, ey + 12], fill=c.mix(col, a))
-            c.text(name, ex + 26, ey, 42, col, a, "SemiBold", anchor="lm", max_w=300)
-    if x_label:
-        c.text(x_label, (x0 + x1)/2, y1 + 52, 40, c.pal.muted, a, "Regular", max_w=600)
-
-
-def steps(c: Canvas, items: Sequence[str], t: float, A: float, t0: float = 0.6, gap: float = 1.0) -> None:
-    """Numbered steps in a row, each in a circle, joined by a line."""
-    if not items:
-        return
-    span = min(c.w - 200, 560*len(items))
-    cell = span/len(items)
-    x0 = c.w/2 - span/2 + cell/2
-    for i, s in enumerate(items):
-        a = ramp(t, t0 + i*gap, 0.3)*A
-        if a <= 0.01:
-            continue
-        x = x0 + i*cell
-        k = back(ramp(t, t0 + i*gap, 0.45))
-        r = 66*(0.6 + 0.4*k)
-        col = c.pal.cast[i % 3]
-        if i:
-            c.d.line([x - cell + 90, 440, x - 90, 440], fill=c.mix(c.pal.grid, a), width=4)
-        c.d.ellipse([x - r, 440 - r, x + r, 440 + r], fill=c.mix(col, a))
-        c.text(str(i + 1), x, 440, 68*(0.6 + 0.4*k), c.pal.bg, a)
-        paragraph(c, s, x, 620, 48, c.pal.text, a, cell - 70, "Medium", max_lines=3)
-
-
-def takeaways(c: Canvas, items: Sequence[str], t: float, A: float, t0: float = 0.5) -> None:
-    """Recap cards stacked down the middle, each as tall as its text needs."""
-    items = list(items)[:4]
-    if not items:
-        return
-    size = 48
-    blocks = [fit_lines(s, size, "Medium", CONTENT_W - 160, 2, c.frame.min_text) for s in items]
-    heights = [max(108.0, sz*1.25*len(ls) + 52) for sz, ls in blocks]
-    gaps = 26
-    y = (TOP + BOTTOM)/2 - (sum(heights) + gaps*(len(items) - 1))/2
-    for i, ((sz, lines), h) in enumerate(zip(blocks, heights)):
-        a = ramp(t, t0 + i*0.7, 0.3)*A
-        cy = y + h/2
-        y += h + gaps
-        if a <= 0.01:
-            continue
-        k = back(ramp(t, t0 + i*0.7, 0.4))
-        w = CONTENT_W*(0.92 + 0.08*k)
-        left = c.w/2 - w/2
-        c.d.rounded_rectangle([left, cy - h/2, c.w/2 + w/2, cy + h/2], radius=28, fill=c.mix(c.pal.panel, a))
-        c.d.ellipse([left + 38, cy - 16, left + 70, cy + 16], fill=c.mix(c.pal.cast[i % 3], a))
-        top = cy - sz*1.25*(len(lines) - 1)/2
-        for j, line in enumerate(lines):
-            c.text(line, left + 104, top + j*sz*1.25, sz, c.pal.text, a, "Medium", anchor="lm")
-
-
-def end_card(c: Canvas, t: float, A: float, lines: Sequence[str], cta: str, channel: str,
-             assumption: str, disclaimer: str, look=None) -> None:
-    """Closing: the takeaway, the call to action, a character off to one side, then the small print."""
+def backdrop(c: Canvas, t: float, A: float = 1.0, seed: int = 0, hills: bool = True) -> None:
+    """Ground, a far skyline and slow clouds. The clouds are what stop a quiet scene going dead;
+    they drift at different rates by depth, so the stage has parallax."""
     P = c.pal
-    for i, s in enumerate(list(lines)[:2]):
-        paragraph(c, s, c.w/2, 250 + i*98, 76, P.text, ramp(t, 0.2 + i*0.4, 0.3)*A, CONTENT_W, "Bold", max_lines=1)
-    k = back(ramp(t, 1.2, 0.45))
-    if k > 0.01:
-        c.text(cta, c.w/2, 500, 88*(0.6 + 0.4*k), P.accent, ramp(t, 1.2, 0.2)*A, max_w=1200)
-    if look is not None:   # off to the right, clear of the centred text column
-        person(c, c.w/2 + 680, 880, 0.8, P.cast[0], ramp(t, 1.8, 0.4)*A, t, "happy", look=look)
-    c.text(channel, c.w/2, 700, 48, P.text, ramp(t, 2.4, 0.4)*A, "Medium", max_w=1200)
-    small = ramp(t, 0.6, 0.4)*A
-    paragraph(c, assumption, c.w/2, 948, LONG.min_text, P.muted, small, CONTENT_W + 200, "Regular", max_lines=1)
-    c.text(disclaimer, c.w/2, 1000, LONG.min_text, P.muted, small, "Regular", max_w=CONTENT_W)
+    r = random.Random(f"stage:{seed}")
+    if hills:
+        for d, (hh, shade) in enumerate(((365.0, 0.5), (215.0, 0.8))):
+            off = sway(t, 0.045 + d*0.02, 26 - d*10, d*1.7)
+            col = c.mix(tuple(int(P.bg[i] + (P.panel[i] - P.bg[i])*shade) for i in range(3)), A)
+            pts = [(-120 + off, GROUND)]
+            for k in range(7):
+                x = -120 + off + k*(c.w + 240)/6
+                pts.append((x, GROUND - hh*(0.45 + 0.55*abs(math.sin(k*1.7 + d)))))
+            pts += [(c.w + 120 + off, GROUND), (c.w + 120, c.h), (-120, c.h)]
+            c.d.polygon(pts, fill=col)
+    for i in range(5):
+        w = 150 + r.random()*150
+        x = (r.random()*c.w + t*(16 + i*6)) % (c.w + 420) - 210
+        y = SKY[0] + r.random()*(SKY[1] - SKY[0]) + sway(t, 0.3 + i*0.11, 9, i)
+        col = c.mix(P.panel, A*0.55)
+        for dx, dy, rr in ((0, 0, w*0.30), (w*0.26, -w*0.08, w*0.23), (-w*0.26, -w*0.04, w*0.20)):
+            c.d.ellipse([x + dx - rr, y + dy - rr, x + dx + rr, y + dy + rr], fill=col)
+    c.d.rectangle([0, GROUND, c.w, c.h], fill=c.mix(P.panel, A*0.9))
+    c.d.line([0, GROUND, c.w, GROUND], fill=c.mix(P.grid, A), width=4)
+    grass(c, t, A, seed)
 
 
-def coins_row(c: Canvas, n: int, t: float, A: float, y: float = 760, t0: float = 0.4) -> None:
-    """A row of coins dropping in, for 'money adds up' moments."""
-    span = min(1200, 120*n)
-    x0 = c.w/2 - span/2 + span/max(n, 1)/2
+def grass(c: Canvas, t: float, A: float = 1.0, seed: int = 0) -> None:
+    """Tufts along the ground line, each swaying on its own phase.
+
+    This is the floor of the liveliness check: wherever the actor pauses and a counter has landed,
+    the grass is still moving, so no frame is ever a copy of the one before it.
+    """
+    r = random.Random(f"grass:{seed}")
+    col = c.mix(tuple(int(c.pal.panel[i]*1.5 + c.pal.grid[i]*0.4) for i in range(3)), A*0.9)
+    for i in range(20):
+        bx = (i + r.random()*0.85)*c.w/20
+        ph = r.random()*6.3
+        for b in range(4):
+            h = 26 + r.random()*44
+            lean = sway(t, 0.7 + b*0.17, 17, ph + b*1.3)
+            x0 = bx + (b - 1.5)*11
+            c.d.line([x0, GROUND + 4, x0 + lean*0.3, GROUND - h*0.6, x0 + lean, GROUND - h],
+                     fill=col, width=3, joint="curve")
+
+
+def sun_arc(c: Canvas, p: float, A: float = 1.0, x: float | None = None) -> None:
+    """The sun crossing the sky — time passing as one continuous move, not a date card."""
+    ang = math.pi*(1 - clamp(p))
+    cx = (c.w/2 if x is None else x) + math.cos(ang)*c.w*0.40
+    cy = SKY[0] - 60 - math.sin(ang)*180
+    for rr, al in ((70, 0.20), (44, 1.0)):
+        c.d.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=c.mix(c.pal.accent, A*al))
+
+
+# ---------------- money as objects ----------------
+
+def falling_coins(c: Canvas, x: float, y0: float, t: float, A: float = 1.0, n: int = 5,
+                  period: float = 1.5, spread: float = 70.0, fall: float = 460.0,
+                  seed: int = 0, r: float = 30.0) -> None:
+    """Coins dropping away and fading — money leaving. A continuous loop, so it is never still.
+    Falling out of frame reads as loss far better than a red number does."""
+    rng = random.Random(f"fall:{seed}")
     for i in range(n):
-        p = ramp(t, t0 + i*0.12, 0.35)
-        if p <= 0.01:
+        dx = (rng.random() - 0.5)*spread
+        p = loop(t, period, i/n)
+        coin(c, x + dx + math.sin(p*4 + i)*16, y0 + (p**1.7)*fall, r*(1 - p*0.25), A*(1 - p**2.2))
+
+
+def wallet(c: Canvas, x: float, y: float, s: float, a: float = 1.0, open_: float = 0.0) -> None:
+    """A wallet to leak from, drawn in the actor's hand. `open_` lifts the flap."""
+    w, h = 110*s, 76*s
+    c.d.rounded_rectangle([x - w/2, y - h/2, x + w/2, y + h/2], radius=14*s,
+                          fill=c.mix(c.pal.danger, a))
+    flap = h*0.42*(1 - clamp(open_)*1.6)
+    c.d.rounded_rectangle([x - w/2, y - h/2, x + w/2, y - h/2 + max(flap, 6*s)], radius=10*s,
+                          fill=c.mix(tuple(int(v*0.7) for v in c.pal.danger), a))
+
+
+def coin_stack(c: Canvas, x: float, base: float, count: float, A: float = 1.0, t: float = 0.0,
+               per_col: int = 10, r: float = 34.0) -> float:
+    """A stack `count` coins high (fractional — the top one is still falling). Returns its top y.
+
+    Countable objects read as money; a solid bar reads as a chart and needs a label to mean
+    anything. The newest coin flashes as it lands, so the eye is drawn to the growth, not the pile.
+    """
+    whole = int(count)
+    top = base
+    for i in range(whole + 1):
+        col_i, row = divmod(i, per_col)
+        cx = x + col_i*(r*2.4)
+        cy = base - row*(r*0.74)
+        if i == whole:
+            frac = count - whole
+            if frac <= 0.02:
+                break
+            cy -= (1 - spring(frac, 0.5))*170
+            coin(c, cx, cy + breathe(t*2, 1, 2), r, A)
+            c.d.ellipse([cx - r*0.5, cy - r*0.5, cx + r*0.5, cy + r*0.5],
+                        fill=c.mix(c.pal.accent, A*(1 - frac)*0.8))
+        else:
+            coin(c, cx, cy, r, A)
+        top = min(top, cy - r)
+    return top
+
+
+def foliage(c: Canvas) -> RGB:
+    """The greenest colour this palette has. A tree in salmon reads as a cloud, not a tree."""
+    return max(c.pal.cast, key=lambda col: col[1] - (col[0] + col[2])/2)
+
+
+def plant(c: Canvas, x: float, base: float, grow: float, color: RGB, A: float = 1.0,
+          t: float = 0.0) -> float:
+    """A sprout growing into a small tree, `grow` 0 → 1. Returns the canopy top.
+
+    Money growing as a living thing reads instantly; a rising bar has to be explained. The trunk
+    tapers and leaves open along its whole length, so it never looks like a lollipop on a stick.
+    """
+    g = ease(clamp(grow))
+    if g <= 0.01:
+        return base
+    h = 430*g
+    lean = sway(t, 0.8, 0.05)
+    trunk = c.mix(tuple(int(v*0.5) for v in color), A)
+    leaf = c.mix(color, A)
+
+    def spine(u: float) -> tuple[float, float]:
+        return x + math.sin(lean + u*1.3)*38*u, base - h*u
+
+    prev = (x, base)
+    for k in range(1, 13):
+        p = spine(k/12*0.72)
+        c.d.line([prev, p], fill=trunk, width=max(3, int(30*g*(1 - k/12*0.6))), joint="curve")
+        prev = p
+    for side, u in ((-1, 0.40), (1, 0.52)):               # two branches out of the trunk
+        bx, by = spine(u)
+        tipx = bx + side*150*g
+        tipy = by - 90*g
+        c.d.line([(bx, by), ((bx + tipx)/2, by - 60*g), (tipx, tipy)],
+                 fill=trunk, width=max(2, int(13*g)), joint="curve")
+        lp = clamp((g - 0.35)/0.4)
+        if lp > 0:
+            rr = 60*spring(lp, 0.6)
+            c.d.ellipse([tipx - rr, tipy - rr*0.72, tipx + rr, tipy + rr*0.72], fill=leaf)
+
+    cx, cy = spine(0.78)                                  # the crown: overlapping blobs, not rungs
+    top = cy
+    for i, (ox, oy, rr) in enumerate(((0, -42, 118), (-96, 6, 90), (96, 2, 94),
+                                      (-44, -74, 80), (52, -78, 84), (0, 44, 86))):
+        lp = clamp((g - 0.22 - i*0.055)/0.40)
+        if lp <= 0:
             continue
-        coin(c, x0 + i*span/max(n, 1), y - (1 - ease(p))*180, 44, clamp(p)*A)
+        k = spring(lp, 0.55)
+        bx = cx + ox*k + sway(t, 0.9 + i*0.13, 5, i)
+        by = cy + oy*k + breathe(t, 0.7 + i*0.09, 4)
+        r = rr*k
+        c.d.ellipse([bx - r, by - r*0.82, bx + r, by + r*0.82], fill=leaf)
+        top = min(top, by - r*0.82)
+    return top
 
 
-def chapter_strip(c: Canvas, title: str, index: int, total: int, a: float = 1.0) -> None:
-    """Bottom strip: which chapter this is, for a long video the viewer is scrubbing."""
-    if a <= 0.01 or not title:
-        return
-    f = font(34, "Medium")
-    label = f"{index}/{total}  ·  {title}"
-    w = f.getlength(label) + 56
-    c.d.rounded_rectangle([c.w/2 - w/2, FOOT_Y - 28, c.w/2 + w/2, FOOT_Y + 28], radius=28,
-                          fill=c.mix(c.pal.panel, a*0.9))
-    c.text(label, c.w/2, FOOT_Y, 34, c.mix(c.pal.text, 0.85), a, "Medium")
+def shine(c: Canvas, x: float, y: float, r: float, t: float, A: float = 1.0, n: int = 10) -> None:
+    """A burst of rays. Draw it *before* whatever it celebrates, never over the top of it."""
+    for i in range(n):
+        ang = i*math.tau/n + t*0.5
+        p = 0.88 + 0.12*math.sin(t*4 + i)
+        c.d.line([x + math.cos(ang)*r*0.78, y + math.sin(ang)*r*0.78,
+                  x + math.cos(ang)*r*p*1.22, y + math.sin(ang)*r*p*1.22],
+                 fill=c.mix(c.pal.accent, A*0.7), width=6)
 
 
-def thumbnail(c: Canvas, line1: str, line2: str, big: str, look=None) -> None:
-    """A designed thumbnail, not a frame of the video: a few huge words and one number, readable
-    when YouTube shrinks it to the width of a thumb."""
-    P = c.pal
-    c.d.rounded_rectangle([-40, -40, c.w*0.62, c.h + 40], radius=60, fill=c.mix(P.panel, 0.55))
-    y = 250
-    for line, size, col in ((line1, 118, P.text), (line2, 118, P.text)):
-        if not line:
+def arrow(c: Canvas, x0: float, y0: float, x1: float, y1: float, p: float, color: RGB,
+          A: float = 1.0, lift: float = 90.0) -> tuple[float, float]:
+    """An arrow drawing itself along an arc — real motion curves, it does not travel in a line."""
+    p = clamp(p)
+    if p <= 0.01:
+        return x0, y0
+    pts = [arc(u/18*p, x0, y0, x1, y1, lift) for u in range(19)]
+    c.d.line(pts, fill=c.mix(color, A), width=9, joint="curve")
+    hx, hy = pts[-1]
+    px, py = pts[-2]
+    ang = math.atan2(hy - py, hx - px)
+    c.d.polygon([(hx, hy),
+                 (hx - math.cos(ang - 0.45)*34, hy - math.sin(ang - 0.45)*34),
+                 (hx - math.cos(ang + 0.45)*34, hy - math.sin(ang + 0.45)*34)], fill=c.mix(color, A))
+    return hx, hy
+
+
+# ---------------- data, built in front of the viewer ----------------
+
+def built_chart(c: Canvas, series: Sequence[tuple[str, Sequence[float], RGB]], p: float,
+                A: float = 1.0, t: float = 0.0, x0: float = 560, x1: float = 1540,
+                y0: float = 320, y1: float = 850, ticks: Sequence[float] = ()) -> None:
+    """A chart drawn in front of the viewer: the axes sweep out, then each line draws with a
+    glowing, pulsing head that carries its own label. Built, never faded in."""
+    axis = bezier(clamp(p/0.18), ENTER)
+    c.d.line([x0, y1, x0 + (x1 - x0)*axis, y1], fill=c.mix(c.pal.grid, A), width=4)
+    c.d.line([x0, y1, x0, y1 - (y1 - y0)*axis], fill=c.mix(c.pal.grid, A), width=4)
+    top = max((max(v) for _, v, _ in series if len(v)), default=1.0) or 1.0
+    for v in ticks:
+        if 0 < v <= top:
+            gy = y1 - (y1 - y0)*v/top
+            c.d.line([x0, gy, x0 + (x1 - x0)*axis, gy], fill=c.mix(c.pal.grid, A*0.4), width=2)
+    draw = clamp((p - 0.18)/0.82)
+    for name, vals, col in series:
+        n = max(1, len(vals) - 1)
+        shown = 1 + n*bezier(draw, EMPHASIZED)
+        pts = [(x0 + (x1 - x0)*i/n, y1 - (y1 - y0)*v/top) for i, v in enumerate(vals) if i <= shown]
+        if len(pts) < 2:
             continue
-        sz, lines = fit_lines(line, size, "Bold", c.w*0.56, 2, 60)
-        for part in lines:
-            c.text(part, 80, y, sz, col, 1.0, "Bold", anchor="lm")
-            y += sz*1.1
-        y += 14
-    if big:
-        sz = fit_lines(big, 190, "Bold", c.w*0.56, 1, 90)[0]
-        c.text(big, 80, min(y + sz*0.6, c.h - 180), sz, P.accent, 1.0, "Bold", anchor="lm")
-    if look is not None:
-        person(c, c.w*0.80, c.h - 60, 1.9, P.cast[0], 1.0, 0.0, "wow", look=look)
+        c.d.line(pts, fill=c.mix(col, A*0.25), width=26, joint="curve")
+        c.d.line(pts, fill=c.mix(col, A), width=10, joint="curve")
+        hx, hy = pts[-1]
+        rr = 15*pulse(t, 1.6, 0.18)
+        c.d.ellipse([hx - rr, hy - rr, hx + rr, hy + rr], fill=c.mix(col, A))
+        c.text(name, hx + 30, hy - 4, 42, col, A*clamp(draw*3), "SemiBold", anchor="lm",
+               max_w=max(80.0, c.w - c.frame.side_margin - (hx + 30)))
+
+
+def tower_x(c: Canvas, i: int, n: int) -> float:
+    span = min(1400.0, 620.0*n)
+    return c.w/2 - span/2 + span/n/2 + i*span/n
+
+
+def towers(c: Canvas, items: Sequence[tuple[str, float, str, RGB]], p: float, A: float = 1.0,
+           t: float = 0.0, top_y: float = 330.0, fmt=None) -> list[float]:
+    """Towers rising from the ground on a shared baseline, each labelled under it and topped with
+    its figure. A comparison only works in one frame — across a cut the viewer cannot hold the
+    first one in mind.
+
+    `fmt(value, progress)` lets the caller count the figure up as the bar rises, so the number is
+    being earned rather than announced. Returns each tower's top y, for anything drawn above it.
+    """
+    if not items:
+        return []
+    top = max(v for _, v, _, _ in items) or 1.0
+    tops = []
+    for i, (name, v, shown, col) in enumerate(items):
+        g = bezier(stagger(i, p, 0.0, 0.22, 0.78), EMPHASIZED)
+        x = tower_x(c, i, len(items))
+        h = (GROUND - top_y)*(v/top)*g
+        tops.append(GROUND - h)
+        if g <= 0.01:
+            continue
+        c.d.rounded_rectangle([x - 115, GROUND - max(h, 8), x + 115, GROUND - 4], radius=18,
+                              fill=c.mix(col, A))
+        c.text(shown if g >= 1 or fmt is None else fmt(v, g), x, GROUND - h - 58, 64, c.pal.text,
+               A*clamp(g*2.5), max_w=460)
+        label_under(c, name, x, t, 0.15 + i*0.2, A)
+    return tops

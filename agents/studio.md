@@ -8,6 +8,12 @@ thumbnail.
 
 You have a few hours. Use them on the script and the review, not on exploring the codebase.
 
+> **On hold since 2026-10-16.** The long-form renderer was rebuilt around character animation
+> after the owner rejected the first long video ("a PPT with a voiceover"), and the replacement
+> sample is waiting for approval. **Do not make a long video.** Write an activity entry of
+> `nothing` saying you are on hold, push it, and stop. This hold is lifted by deleting this block;
+> `longPerWeek` in the dashboard settings is the other half of it, and either one holds you.
+
 ## 0. Prepare
 ```
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
@@ -55,13 +61,24 @@ Read `renderer/templates/long_explainer/README.md` and `examples/long_explainer.
 README is the contract and the example shows the shape.
 
 Build the video from the topic's `outline`: one section per beat. Then:
-- **Length**: aim for **8–11 minutes**. That means **12–16 sections** and **1,500–2,000 words** of
-  narration. Make it longer by adding sections, never by stretching them.
+- **Length**: aim for **4–6 minutes** — about **7–10 sections** and **700–1,100 words** of
+  narration. Length is not the goal. A tight four minutes beats a padded nine, and the owner
+  rejected the first long video for exactly that. Make it longer by adding a scene that *does*
+  something, never by stretching one.
+- **A section is a verb, not a slide.** The kinds are `hook`, `beat`, `drain`, `pile`, `grow`,
+  `compare`, `chart`, `steps`, `end`, and each one is an action that runs for its whole length:
+  coins leaving a wallet, a stack growing past the hero's head, a tree growing, a chart drawing
+  itself. There are no bulleted lists, because a list is a slide.
+- **Text only where it is needed.** One `heading` per section and a label on the figure. Never
+  write the narration on screen: the viewer cannot read and listen at once, and a video that does
+  both is the slideshow again.
 - **Narration is the video.** Write about **3 words per second** of each section. The render fails
   any section whose narration fills less than 55% of its window — silence over music is what makes
   a video feel padded.
-- **Vary the sections.** Three `points` sections in a row is the single most common way an
-  explainer becomes boring. Put a `number`, a `chart` or a `compare` between them.
+- **Vary the sections.** Two `beat` sections in a row is the most common way an explainer goes
+  flat; put a `pile`, a `grow` or a `compare` between them. The render also fails if the picture
+  stops moving (median frame change under 1.2, or four seconds with nothing happening) — check
+  `liveliness` in `render.json`.
 - **Numbers**: every figure comes from `maths`. Pick realistic rates (equity about 10–12%, FDs
   6–7.5%, inflation 5–6%). Never type a digit into any text or narration line.
 - **Thumbnail**: fill the `thumbnail` block — 3–5 huge words and one figure. It has to read at the
