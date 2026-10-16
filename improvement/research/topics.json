@@ -31,8 +31,101 @@
       ],
       "found": "2026-10-16",
       "expires": "2026-10-30",
-      "status": "new",
-      "from": "sip-record-inflows-hook"
+      "status": "expired",
+      "from": "sip-record-inflows-hook",
+      "reason": "Superseded: AMFI published September 2026 data (record Rs 32,490 cr) on 2026-10-12; June figure is stale."
+    },
+    {
+      "id": "2026-10-17-rbi-repo-hike",
+      "title": "RBI raises the repo rate for the first time since 2023",
+      "category": "loans",
+      "kind": "news",
+      "priority": "breaking",
+      "templates": [
+        "money_news"
+      ],
+      "angle": "My home or car loan EMI: will it go up, and what happens to my FD rate?",
+      "why_now": "MPC raised repo by 25 bps on 7 Oct 2026 and moved to 'calibrated tightening'; everyone with a floating-rate loan is asking.",
+      "facts": [
+        {
+          "label": "RBI repo rate after the October policy",
+          "value": 5.5,
+          "unit": "percent",
+          "as_of": "2026-10-07",
+          "source": "RBI",
+          "url": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63742"
+        }
+      ],
+      "verify": [
+        "RBI press release prid=63742 shows repo rate 5.50% after a 25 bps hike on 7 Oct 2026 (previously 5.25%)",
+        "Stance changed to 'calibrated tightening'; say 'first hike since Feb 2023' only if the RBI release or minutes confirm it",
+        "Do not claim the exact EMI change for any lender; floating loans reset per lender policy"
+      ],
+      "sources": [
+        "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63742",
+        "https://www.scconline.com/blog/post/2026/10/09/rbi-hikes-repo-rate-to-5-50-percent-october-2026/"
+      ],
+      "found": "2026-10-17",
+      "expires": "2026-10-30",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-17-amfi-sept-sip-record",
+      "title": "SIP money hit a new record in September, even as the market fell",
+      "category": "sip",
+      "kind": "news",
+      "priority": "high",
+      "templates": [
+        "money_news"
+      ],
+      "angle": "Indians kept investing through a market dip; what does staying invested do for one SIP of yours?",
+      "why_now": "AMFI's September data (released 12 Oct) shows record SIP contributions while the Nifty fell nearly 6% in the month.",
+      "facts": [
+        {
+          "label": "SIP money in September",
+          "value": 32490,
+          "unit": "rupees_crore",
+          "as_of": "2026-09-30",
+          "source": "AMFI",
+          "url": "https://www.kotakneo.com/news/mutual-funds/sip-inflows-hit-record-32490-crore-september/"
+        }
+      ],
+      "verify": [
+        "AMFI monthly note (amfiindia.com) shows SIP contributions of Rs 32,490 crore for September 2026",
+        "It is described as a record; confirm no higher month",
+        "Skip the Nifty fall figure unless confirmed"
+      ],
+      "sources": [
+        "https://www.kotakneo.com/news/mutual-funds/sip-inflows-hit-record-32490-crore-september/",
+        "https://www.angelone.in/news/mutual-funds/sip-investments-set-new-record-at-32-490-crore-in-september-2026"
+      ],
+      "found": "2026-10-17",
+      "expires": "2026-10-31",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-17-emi-after-hike",
+      "title": "What a 0.25% rate rise does to a home-loan EMI over the years",
+      "category": "loans",
+      "kind": "trend",
+      "priority": "high",
+      "templates": [
+        "quiz_countdown",
+        "money_leak_meter",
+        "myth_vs_fact"
+      ],
+      "angle": "A small-looking 0.25% costs how much over the loan? Computed from loan amount, rate and tenure.",
+      "why_now": "Follows the repo hike; searched alongside it.",
+      "facts": [],
+      "verify": [
+        "EMI maths is code-computed; fact reviewer checks that floating loans reset on lender-specific dates"
+      ],
+      "sources": [
+        "https://www.scconline.com/blog/post/2026/10/09/rbi-hikes-repo-rate-to-5-50-percent-october-2026/"
+      ],
+      "found": "2026-10-17",
+      "expires": "2026-11-14",
+      "status": "new"
     }
   ]
 }
