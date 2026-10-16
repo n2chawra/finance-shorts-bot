@@ -1,4 +1,29 @@
 {
   "note": "The auditor agent's ranked list of bugs, data problems and code-quality work (agents/auditor.md).",
-  "items": []
+  "items": [
+    {
+      "id": "gen-001",
+      "kind": "bug",
+      "title": "ready_count compared timestamps as strings",
+      "detail": "history.ready_count compared ISO strings, wrong if offsets differ (+05:30 vs +00:00). Now parses datetimes.",
+      "files": [
+        "generator/history.py"
+      ],
+      "severity": "low",
+      "found": "2026-10-16",
+      "status": "fixed"
+    },
+    {
+      "id": "gen-002",
+      "kind": "bug",
+      "title": "variety.py duplicate-topic cutoff compares ISO strings",
+      "detail": "Same string comparison at generator/variety.py:94. Guard blocks the auditor from variety.py; owner to change.",
+      "files": [
+        "generator/variety.py"
+      ],
+      "severity": "low",
+      "found": "2026-10-16",
+      "status": "open"
+    }
+  ]
 }
