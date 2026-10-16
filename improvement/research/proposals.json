@@ -37,6 +37,25 @@
       "route": "video",
       "priority": "high",
       "reason": "Moved to topics.json as 2026-10-16-sip-record-inflows (money_news template)."
+    },
+    {
+      "id": "audit-policy-original-voice-framing",
+      "date": "2026-10-17",
+      "area": "pipeline",
+      "title": "Keep every video clearly original; watch the 'templated + synthetic voice' risk",
+      "change": "No code yet. When 48h data exists, compare avgViewPct and impressions between voiceover on/off arms; if the narrated arm is limited or demonetised, the improver should reduce narration share. Until then keep template, palette and script variety as is.",
+      "evidence": [
+        "https://www.netinfluencer.com/youtube-clarifies-july-15-policy-update-repetitious-content-rebranded-as-inauthentic-content/",
+        "https://www.androidheadlines.com/2026/07/youtube-monetization-rules-ai-slop-inauthentic-content.html"
+      ],
+      "expectedEffect": "Early warning on inauthentic-content demonetisation",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Secondary sources disagree on 2026 details (templated content, AI personas advising on sensitive topics)",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }
