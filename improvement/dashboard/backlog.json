@@ -1,3 +1,5 @@
 {
-  "items": []
+  "items": [
+    {"id": "notif-phone-layout", "kind": "bug", "title": "Notifications: ambiguous 'Resolved' button squeezed the fix steps on phones", "detail": "Open items showed a button labelled 'Resolved' in a right-hand column, leaving the How-to-fix box narrow at phone width. Button renamed 'Mark resolved' and moved below the card on phones.", "page": "notifications", "found": "2026-10-16", "status": "done", "done": "2026-10-16", "lastTouched": {"apps/dashboard/src/app/notifications/page.tsx": "2026-10-16"}}
+  ]
 }

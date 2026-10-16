@@ -1,0 +1,11 @@
+{
+  "agent": "dashboard",
+  "day": "2026-10-16",
+  "summary": "All checks passed. Fixed the confusing 'Resolved' button and cramped fix steps on the Notifications page at phone width.",
+  "decision": "acted",
+  "why": "Build, lint, types and 31 smoke tests passed; the screenshot review found a phone layout bug the owner would hit when resolving notifications.",
+  "findings": [{"title": "Live site check blocked", "detail": "The routine sandbox cannot reach the netlify.app host, so /api/health was not verified.", "link": ""}],
+  "changes": [{"title": "Notifications phone layout", "detail": "Button renamed 'Mark resolved' and placed under the card on phones.", "branch": "claude/agent-dashboard-pjrci2", "experiment": ""}],
+  "nextCheck": "2026-10-17",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-10-16.md"}]
+}
