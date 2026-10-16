@@ -245,3 +245,8 @@ Done when: everything above works on a phone.
   AgentActivity gets both columns; Agents page shows run times; watchdog raises `schedule-overlap`
   (workers/lib/schedule.ts). First measurement (docs/guide/12-run-times.md): no overlaps, schedule
   unchanged; the night was disrupted, so recheck after a week of real data.
+- 2026-10-16: Voiceover allowed (owner's decision) and started as the `voiceover` A/B experiment on
+  half of new videos: offline Kokoro voices (Indian-English alpha + 5 American, picked by ear),
+  one line per scene with code-filled numbers spoken as words, per-scene windows that keep
+  countdowns and reveals silent, ducked mix, fact/QA review of narration, voice recorded in the
+  manifest, metrics and dashboard. Research studies voice type and pace nightly.

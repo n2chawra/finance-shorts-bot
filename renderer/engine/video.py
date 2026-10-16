@@ -1,13 +1,14 @@
-"""Base class for templates: style, backdrop, scene dispatch, camera, music bed and the shared
-text rules. A template subclass sets `duration`, fills `self.scenes` and implements `audio()`."""
+"""Base class for templates: style, backdrop, scene dispatch, camera, music bed, voiceover and the
+shared text rules. A template subclass sets `duration`, fills `self.scenes` and implements `audio()`."""
 import math
 import random
 import re
 from collections.abc import Callable, Mapping, Sequence
 
+import numpy as np
 from PIL import Image
 
-from . import camera, effects
+from . import camera, effects, voice
 from .audio import Mixer, sfx_whoosh
 from .canvas import BOTTOM_SAFE, DISCLAIMER, H, MIN_TEXT, SAFE_W, W, Canvas, Drawn
 from .characters import person
@@ -17,12 +18,17 @@ from .style import resolve_style
 
 Scene = tuple[float, float, Callable[[Canvas, float, float], None]]
 PUSH_IN = 0.025   # slow zoom over each scene
+VOICE_FLAG = "voiceover"   # A/B experiment: videos in its "on" group are narrated
+VOICE_DUCK = 0.65          # music and effects drop by this much while the voice speaks
 
 
 class Video:
     duration: float = 60
     thumbnail_time: float = 3.0
     key_times: Sequence[float] = ()
+    # per scene: (seconds into the scene the voice may start, seconds into the scene it must end by,
+    # or None for the scene's end minus voice.TAIL); scenes not listed use the defaults
+    voice_offsets: Mapping[str, tuple[float, float | None]] = {}
 
     def __init__(self, script: dict) -> None:
         self.seed: int = script["seed"]
@@ -40,6 +46,9 @@ class Video:
         self.flashes: list[float] = []    # white flash
         self.txt: dict[str, str] = {}
         self.figures: dict[str, str] = {}   # every computed value a script may show, as displayed
+        self.voice_script: dict[str, str] = dict(script.get("voice") or {})
+        self.voice_name, self.voice_speed = voice.pick(self.seed)
+        self.spoken: list[voice.Spoken] = []
 
     def flag(self, exp_id: str) -> bool:
         """True when this video is in the "on" group of experiment `exp_id`."""
@@ -119,6 +128,47 @@ class Video:
             if l < 20 or r > W - 20:
                 out.append(f"{T:.1f}s {d.s!r}: runs off the side ({l:.0f}–{r:.0f})")
         return out
+
+    # ---------------- voiceover ----------------
+
+    def scene_names(self) -> list[str]:
+        return [fn.__name__.lstrip("_") for _, _, fn in self.scenes]
+
+    def voice_windows(self) -> dict[str, tuple[float, float]]:
+        out = {}
+        for (s, e, _), name in zip(self.scenes, self.scene_names()):
+            lead, until = self.voice_offsets.get(name, (voice.LEAD, None))
+            out[name] = (s + lead, e - voice.TAIL if until is None else s + until)
+        return out
+
+    @property
+    def narrated(self) -> bool:
+        return self.flag(VOICE_FLAG) and bool(self.voice_script)
+
+    def narration(self) -> dict[str, str]:
+        """The voice lines with spoken figures filled in (empty when the script has none)."""
+        return voice.fill_lines(self.voice_script, self.scene_names(), self.figures) if self.voice_script else {}
+
+    def check_voice(self) -> None:
+        """Validate the voice lines; a video in the voiceover group must have them."""
+        lines = self.narration()
+        if self.flag(VOICE_FLAG) and not lines:
+            raise ValueError(f"this video is in the {VOICE_FLAG} group: the script needs a `voice` object with a line "
+                             f"for most scenes ({', '.join(self.scene_names())})")
+
+    def soundtrack(self) -> Mixer:
+        """The template's music and effects, plus the voiceover (with everything else ducked under it)."""
+        mx = self.audio()
+        if not self.narrated:
+            return mx
+        self.spoken = voice.speak(self.narration(), self.voice_windows(), self.voice_name, self.voice_speed)
+        duck = 1 - VOICE_DUCK*voice.activity(mx.n, self.spoken)
+        mx.left *= duck
+        mx.right *= duck
+        for p in self.spoken:
+            peak = float(np.max(np.abs(p.samples))) or 1.0
+            mx.place(p.samples/peak*0.9, p.start, 1.0)
+        return mx
 
     # ---------------- audio ----------------
 

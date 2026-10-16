@@ -66,7 +66,9 @@ From the evaluator's **Templates** section:
 Only if: fewer running experiments than `agents.maxActiveExperiments`, nothing from steps 1–3
 changed code tonight, and no running experiment shares the proposal's area. Pick the proposal with
 the best effect × confidence ÷ effort, preferring the craft areas (motion, pacing, text, colour,
-sound, music, hook, ending), then script and title.
+sound, music, voice, hook, ending), then script and title. While the owner's `voiceover` experiment runs
+(area `voice`), voice proposals (voice type, speed, script style) wait for its verdict; don't stop or
+change it early.
 
 1. Implement it **behind a flag**:
    - Renderer change: in the template(s) or `renderer/engine/`, branch on `self.flag("<id>")`. The

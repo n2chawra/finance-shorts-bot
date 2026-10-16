@@ -151,7 +151,7 @@ def test_full_run_ships_manifest_and_history(root: Path) -> None:
     assert all(c["passed"] for c in manifest["checks"])
     assert [s["agent"] for s in manifest["agentRuns"]] == ["planner", "number_check", "fact_review", "render", "qa_review", "ship"]
     assert manifest["release"] == {"tag": f"video-{VID}", "asset": "video.mp4", "uploaded": False}
-    assert manifest["style"] == plan["style"] and manifest["durationSec"] == 48
+    assert manifest["style"] == {**plan["style"], "voice": None} and manifest["durationSec"] == 48
     assert json.loads((root / "videos" / VID / "manifest.json").read_text(encoding="utf-8"))["id"] == VID
     assert [e["id"] for e in history.load(root)] == [VID]
     with pytest.raises(ValueError, match="already shipped"):

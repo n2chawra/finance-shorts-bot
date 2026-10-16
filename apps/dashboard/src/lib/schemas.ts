@@ -11,6 +11,7 @@ export const StyleSchema = z.object({
   genre: z.string(),
   key: z.string(),
   bpm: z.number(),
+  voice: z.string().nullish(),   // Kokoro voice name for a narrated video
 });
 
 export const QaCheckSchema = z.object({

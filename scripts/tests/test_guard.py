@@ -139,3 +139,8 @@ def test_blocks_changing_the_upload_schedule(repo: Path) -> None:
     sh(repo, "branch", "-f", "base2")
     change(repo, "apps/dashboard/src/lib/store.db.ts", 'const D = { uploadTimes: ["09:00", "12:37", "19:07"] };\n')
     assert any("upload schedule" in x for x in guard.check("auditor", "base2", "HEAD")["reasons"])
+
+
+def test_blocks_committing_model_weights(repo: Path) -> None:
+    change(repo, "renderer/engine/kokoro-v1.0.onnx", "fake")
+    assert any("model weights" in x for x in guard.check("improver", "main", "HEAD")["reasons"])

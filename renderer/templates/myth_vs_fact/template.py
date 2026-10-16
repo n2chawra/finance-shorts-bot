@@ -25,6 +25,8 @@ class MythVsFact(Video):
     duration = DUR
     thumbnail_time = 3.0
     key_times = [0.6, 3.0, 10.5, 14.5, 22.0, 28.5, 36.0, 48.0]
+    # voiceover: silent before FACT slams in, and while the result counts up
+    voice_offsets = {"bust": (BUST_AT + 0.4, None), "result": (COUNT_T0 + COUNT_DUR + 0.2, None)}
 
     def __init__(self, script: dict) -> None:
         super().__init__(script)

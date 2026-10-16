@@ -191,7 +191,7 @@ def report(root: Path = ROOT, now: datetime | None = None) -> dict:
         "experiments": [judge(e, videos, attempts, now) for e in exps.load(root)],
         "templates": template_advice(videos, enabled),
         "attributes": [*rank(videos, lambda v: v.get("hookStyle"), "hook style"), *rank(videos, lambda v: v.get("palette"), "palette"),
-                       *rank(videos, lambda v: v.get("genre"), "music genre"), *rank(videos, lambda v: band(v.get("bpm")), "tempo"),
+                       *rank(videos, lambda v: v.get("genre"), "music genre"), *rank(videos, lambda v: v.get("voice") or "none", "voice"), *rank(videos, lambda v: band(v.get("bpm")), "tempo"),
                        *rank(videos, lambda v: length(v.get("durationSec")), "length"), *rank(videos, lambda v: v.get("category"), "topic")],
         "recurringFailures": recurring_failures(attempts, now),
     }

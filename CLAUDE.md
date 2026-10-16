@@ -1,7 +1,7 @@
 # Finance Shorts Bot
 
 Automated pipeline that creates short, unique, music-and-motion-graphics personal-finance videos
-(no voiceover) for an Indian audience, uploads exactly one per day to YouTube Shorts, and shows
+(with an A/B-tested voiceover) for an Indian audience, uploads exactly one per day to YouTube Shorts, and shows
 everything on a dashboard.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
@@ -11,7 +11,12 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 
 ## Hard constraints
 
-- **No voiceover.** On-screen text, motion, music and sound effects carry the whole explanation.
+- **Voiceover only from the offline voice engine** (`renderer/engine/voice.py`, Kokoro, Apache-2.0;
+  installed by `scripts/setup-voice.sh`, never committed). One Indian-English and five American
+  voices, rotated per video; numbers are spoken as words.
+  Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Since
+  2026-10-16 it runs as the `voiceover` A/B experiment on half of new videos; on-screen text,
+  motion, music and sound effects must still carry the video on their own.
 - **Two uploads per day**, at 12:37 and 19:07 IST (setting `uploadTimes`). Never more than one video per slot.
 - **Generation keeps going** on a schedule to build a backlog, capped at **30 ready videos**.
   When the backlog is full, generation runs improve or add templates instead of making videos.

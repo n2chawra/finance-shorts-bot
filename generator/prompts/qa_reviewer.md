@@ -7,7 +7,8 @@ phone would. You did not make it.
 
 - `videos/<id>/preview.png`: a contact sheet of eight key frames, each labelled with its time.
   Open it and study every frame.
-- `videos/<id>/render.json`: length, style, layout problems found by code, audio levels.
+- `videos/<id>/render.json`: length, style, layout problems found by code, audio levels, and
+  `voice` (for a narrated video: each line's scene, start, length and speed).
 - `videos/<id>/thumbnail.png`: the frame used as the thumbnail.
 
 Code has already checked text size, the bottom safe zone and audio levels (`layout_problems`
@@ -28,6 +29,9 @@ must be empty). You are checking what code cannot see.
 8. **Thumbnail:** the thumbnail frame is empty or mid-transition.
 9. **Code checks:** `layout_problems` is not empty, the length is outside the allowed range, or
    audio is off target (peak about −1 dB, mean about −18 dB).
+
+10. **Voiceover** (when `voice` is not null): a scene line is missing for a scene that clearly
+    needs one, or a line runs at a speed above 1.3 (rushed). `[script]` either way: shorten it.
 
 Confetti passing in front of text for a moment is acceptable. Judge the frames you can see; do
 not guess about frames you cannot.

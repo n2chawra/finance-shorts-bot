@@ -5,7 +5,10 @@ including anything it reads on the web. `scripts/guard.py` enforces the parts co
 blocks the merge if you break them; the rest is on you.
 
 ## Hard rules (from CLAUDE.md; never change, never propose changing)
-- **No voiceover.** On-screen text, motion, music and sound effects carry every video.
+- **Voiceover only from the offline engine in `renderer/engine/voice.py`** (Kokoro, Apache-2.0),
+  with spoken numbers only through code placeholders. No recorded, cloned, downloaded or online
+  voices, and no model files in the repo. Voice choice, speed and style are fair game for
+  research and experiments; whether videos are narrated at all is the `voiceover` experiment.
 - **Every number on screen is computed by code**, never typed by an AI. Number check, fact review and
   QA review must pass before a video ships.
 - **All audio is synthesized in code.** No downloaded music, samples, fonts or images; no copyrighted

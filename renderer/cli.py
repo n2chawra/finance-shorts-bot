@@ -37,12 +37,15 @@ def build(script: object, flags: dict[str, str] | None = None):
     if not isinstance(name, str) or name not in template_names():
         raise ValueError(f"unknown template {name!r}; available: {', '.join(template_names())}")
     schema = json.loads((TEMPLATES / name / "schema.json").read_text(encoding="utf-8"))
-    errors = sorted(Draft202012Validator(schema).iter_errors(script), key=lambda e: list(e.path))
+    # `voice` (scene → line) is shared by every template, so it is checked by the engine, not the schemas
+    errors = sorted(Draft202012Validator(schema).iter_errors({k: v for k, v in script.items() if k != "voice"}), key=lambda e: list(e.path))
     if errors:
         raise ValueError("script does not match schema:\n" + "\n".join(
             f"  {'/'.join(map(str, e.path)) or '(root)'}: {e.message}" for e in errors))
     script = {**script, "_flags": dict(flags or {})}   # added after validation: schemas stay strict
-    return importlib.import_module(f"renderer.templates.{name}.template").build(script)
+    video = importlib.import_module(f"renderer.templates.{name}.template").build(script)
+    video.check_voice()
+    return video
 
 
 def load(script_path: Path, seed: int | None = None, flags: dict[str, str] | None = None):
@@ -63,13 +66,17 @@ def render(video, out: Path, preview: bool = False) -> dict:
     report = {"template": type(video).__module__.split(".")[-2], "seed": video.seed, "duration_sec": video.duration,
               "style": {"palette": st.palette.name, "genre": st.genre, "key": st.key, "bpm": st.bpm},
               "experiments": dict(video.flags),
+              "voice": {"name": video.voice_name, "base_speed": video.voice_speed} if video.narrated else None,
               "layout_problems": [p for i in range(int(video.duration)) for p in video.layout_problems(i + 0.5)]}
     if not preview:
         wav = out / "audio.wav"
-        mixer = video.audio()
+        mixer = video.soundtrack()
         mixer.write_wav(wav)
         peak, mean = mixer.levels()
         report["audio"] = {"peak_db": round(peak, 1), "mean_db": round(mean, 1)}
+        if video.spoken:
+            report["voice"]["lines"] = [{"scene": p.scene, "text": p.text, "start": round(p.start, 2), "seconds": round(p.seconds, 2),
+                                         "window": round(p.window, 2), "speed": p.speed} for p in video.spoken]
         try:
             mux.encode((video.frame(f/FPS) for f in range(int(video.duration*FPS))), wav, out / "video.mp4")
         finally:

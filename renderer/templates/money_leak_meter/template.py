@@ -49,6 +49,7 @@ class MoneyLeakMeter(Video):
     duration = DUR
     thumbnail_time = 3.0
     key_times = [1.2, 3.5, 12.5, 21.5, 25.5, 36.0, 43.5, 52.0]
+    voice_offsets = {"compare": (CMP_REVEAL + 0.6, None)}   # voiceover: keep the pause before the reveal
 
     def __init__(self, script: dict) -> None:
         super().__init__(script)

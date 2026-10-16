@@ -138,7 +138,7 @@ export async function applyTemplateDecisions(prisma: PrismaClient, root: string)
   return done;
 }
 
-type Style = { palette?: string; genre?: string; bpm?: number; experiments?: Record<string, string> };
+type Style = { palette?: string; genre?: string; bpm?: number; voice?: string | null; experiments?: Record<string, string> };
 
 /** metrics/videos.json + metrics/runs.json. Returns true when either file changed. */
 export async function exportMetrics(prisma: PrismaClient, root: string, now = new Date()): Promise<boolean> {
@@ -159,7 +159,7 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
     const avgViewPct = totalViews > 0 ? Math.round(u.stats.reduce((a, s) => a + s.avgViewPct * s.views, 0) / totalViews * 10) / 10 : null;
     return {
       id: v.id, template: v.templateId, category: v.topic.category, hookStyle: v.hookStyle, title: v.title,
-      palette: style.palette ?? null, genre: style.genre ?? null, bpm: style.bpm ?? null, durationSec: v.durationSec,
+      palette: style.palette ?? null, genre: style.genre ?? null, bpm: style.bpm ?? null, voice: style.voice ?? null, durationSec: v.durationSec,
       experiments: style.experiments ?? {}, publishAt: u.publishAt.toISOString(), manual: !u.attempts,
       views48h, avgViewPct, views: Math.max(totalViews, u.liveViews ?? 0), likes: Math.max(u.stats.reduce((a, s) => a + s.likes, 0), u.liveLikes ?? 0),
       subsGained: u.stats.reduce((a, s) => a + s.subsGained, 0),

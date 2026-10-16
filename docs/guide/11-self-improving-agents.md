@@ -49,6 +49,25 @@ flowchart LR
    confidence and no rise in QA failures; **revert** at −10%, or if QA failures go up; otherwise
    extend once, then abandon. The improver applies the verdict exactly.
 
+## The voiceover experiment
+
+Since 2026-10-16 half of new videos are narrated (`voiceover` in `config/experiments.json`), the
+owner's own experiment, judged by the same rules as any other.
+
+- **Voice**: Kokoro (open source, Apache-2.0), running offline inside the renderer
+  (`renderer/engine/voice.py`); `scripts/setup-voice.sh` installs the model (~340 MB, checksummed,
+  never committed). Six voices rotate by seed: Indian-English *alpha* and American *heart, bella,
+  michael, fenrir, puck* (picked by ear), each at a base speed of 1.05–1.18.
+- **Script**: the writer adds `voice` (one line per scene) with the same `{placeholders}` as the
+  screen; code fills them in as words ("ten thousand rupees", "ninety nine point nine lakh rupees"),
+  so the voice can't say a number the code didn't compute. Fact review checks the narration too.
+- **Timing**: each line must fit its scene's window (countdowns and dramatic pauses are kept
+  silent); code speeds a line up to 1.35× if needed, else the render fails and the writer shortens it.
+- **Mix**: music and effects duck by 65% under the voice. `render.json` → `voice` lists every line
+  with its start, length and speed; the manifest and dashboard record which voice was used.
+- **Research** studies voice type, pace and script style in top Shorts every night (and on
+  Tuesdays in depth); voice proposals wait until this experiment has a verdict.
+
 ## The auditor and the data audit
 
 - **Data audit** (`workers/data-audit.ts`, rules in `workers/lib/data-audit.ts` with tests): runs the

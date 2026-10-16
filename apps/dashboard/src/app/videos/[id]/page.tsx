@@ -107,6 +107,7 @@ export default function VideoPage() {
               <Row k="Upload">{v.upload ? `${titleCase(v.upload.state)} · ${v.upload.attempts} attempt${v.upload.attempts === 1 ? "" : "s"}` : "—"}</Row>
               <Row k="YouTube">{v.upload?.youtubeId ? <a className="font-medium text-brand-text hover:underline" href={`https://youtube.com/shorts/${v.upload.youtubeId}`} target="_blank" rel="noreferrer">Open ↗</a> : <span className="text-muted">No link yet</span>}</Row>
               <Row k="Style">{titleCase(v.style.palette)} · {titleCase(v.style.genre)}, {v.style.key}, {v.style.bpm} BPM</Row>
+              <Row k="Voiceover">{v.style.voice ? `On · ${titleCase(v.style.voice.split("_")[1] ?? v.style.voice)} (${v.style.voice.startsWith("hf") ? "female" : v.style.voice.startsWith("hm") ? "male" : "voice"})` : "None"}</Row>
             </dl>
           </Card>
         </div>

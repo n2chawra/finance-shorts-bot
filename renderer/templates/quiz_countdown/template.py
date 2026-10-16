@@ -30,6 +30,8 @@ class QuizCountdown(Video):
     duration = DUR
     thumbnail_time = 2.5
     key_times = [0.6, 2.5, 10.0, 15.0, 18.5, 26.0, 36.0, 46.0]
+    # voiceover: stop before the countdown, stay quiet until the answer lands
+    voice_offsets = {"options": (0.25, COUNT_T0 - 0.2), "reveal": (REVEAL_AT + 0.5, None)}
 
     def __init__(self, script: dict) -> None:
         super().__init__(script)

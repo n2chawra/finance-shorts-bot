@@ -33,11 +33,24 @@ motion, sound design (whooshes, hits, risers), music energy, the ending (loop, C
 length. Compare with our videos (look at a few `videos/*/preview.png` contact sheets and the
 template READMEs in `renderer/templates/*/README.md`). Turn the differences into proposals.
 
+**Voiceover, every night (part of the craft pass).** For the same videos, note: is there a voice at
+all; male or female; accent (Indian English, Hinglish, Hindi, neutral); energy (calm explainer,
+excited, conversational); speed (estimate words per minute from the transcript and length);
+pauses before reveals; how loud the voice sits against the music; whether captions follow the
+voice word by word; how the script is written for the ear (sentence length, questions, "you").
+Compare with our narrated videos (`render.json` → `voice`: voice name, speed, each line) and, once
+there is data, the `voiceover` experiment in `python -m improvement.evaluate`. Proposals must fit
+what we can build: the offline Kokoro voices in `renderer/engine/voice.py` (in use: hf_alpha,
+af_heart, af_bella, am_michael, am_fenrir, am_puck; the owner rejected the other Indian voices by
+ear; British alternatives exist), speed 1.0–1.35, the writer's narration
+rules, the mix (ducking) and captions. Area `voice`. A different language (Hinglish, Hindi) is a
+fair proposal; say what evidence supports it.
+
 ## 2. Topic of the day (rotate by `DOW`)
 | Day | Topic |
 |---|---|
 | Mon | Hooks and retention: first-second patterns, pattern interrupts, re-hooks |
-| Tue | Music and sound design for Shorts |
+| Tue | Music, sound design and voiceover (voice type, pace, script style) |
 | Wed | Pacing, motion and animation style |
 | Thu | Titles, descriptions, hashtags, thumbnails/first frame |
 | Fri | Indian personal-finance trends: what people search and ask about this week |

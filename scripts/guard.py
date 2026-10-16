@@ -55,6 +55,7 @@ TEST_FILE = re.compile(r"(^|/)(tests?|e2e)/|(^|/)test_[^/]*\.py$|\.(test|spec)\.
 # the upload schedule is the owner's: no agent diff may add or remove a line that sets it
 UPLOAD_SETTING = re.compile(r"\b(uploadTimes|uploadsPaused|backlogCap)\b")
 MEDIA_EXT = (".mp3", ".wav", ".ogg", ".m4a", ".flac", ".aac", ".mp4", ".mov", ".webm")
+MODEL_EXT = (".onnx", ".bin", ".pt", ".pth", ".safetensors", ".ckpt", ".gguf")   # voice/AI model weights
 MAX_LINES = {"research": 4000, "improver": 900, "dashboard": 700, "auditor": 600}   # code lines changed (reports excluded)
 MAX_MERGES_PER_DAY = 2
 SECRET = re.compile(r"(ghp_[A-Za-z0-9]{20,}|github_pat_|sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|postgres(ql)?://\S+:\S+@|BEGIN (RSA|OPENSSH) PRIVATE KEY)")
@@ -131,6 +132,8 @@ def check(agent: str, base: str, head: str, now: datetime | None = None) -> dict
             reasons.append(f"{path}: deleting a test file is not allowed (rewrite or move tests instead)")
         if path.lower().endswith(MEDIA_EXT) and status != "D":
             reasons.append(f"{path}: audio/video files are not allowed (all audio is synthesized in code)")
+        if path.lower().endswith(MODEL_EXT) and status != "D":
+            reasons.append(f"{path}: model weights are never committed (scripts/setup-voice.sh installs them)")
     code_lines = 0
     for line in git("diff", "--numstat", "--no-renames", f"{base}...{head}").splitlines():
         added, removed, path = line.split("\t", 2)

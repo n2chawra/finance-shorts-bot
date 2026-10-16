@@ -21,6 +21,9 @@ can have several Pythons and only one has the packages.
 - If no interpreter has the packages (`PY` is empty), run
   `python3 -m pip install -q pillow numpy scipy jsonschema` (add `--break-system-packages` if pip
   refuses), then use `python3`.
+- Voiceover: if `state` lists the `voiceover` experiment, run `bash scripts/setup-voice.sh $PY`
+  once now (installs the offline voice, ~340 MB, skipped when already there). If it fails, carry
+  on: videos in the voiceover group will fail to render, so report the setup error.
 - If `ffmpeg` is missing, try once:
   `apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ffmpeg`.
   If it is still missing, stop and report "ffmpeg could not be installed" with the error text.

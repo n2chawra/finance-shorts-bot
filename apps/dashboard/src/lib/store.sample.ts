@@ -180,7 +180,7 @@ function build(): Store {
       description: `${title}. ${settings.disclaimer} #shorts #personalfinance #${category.replace("_", "")}`,
       tags: ["shorts", "personalfinance", category.replace("_", ""), "india"],
       durationSec: tpl.durationSec,
-      style: { palette: PALETTES[Math.floor(r() * PALETTES.length)], genre: GENRES[Math.floor(r() * GENRES.length)], key: KEYS[Math.floor(r() * KEYS.length)], bpm: 80 + Math.floor(r() * 41) },
+      style: { palette: PALETTES[Math.floor(r() * PALETTES.length)], genre: GENRES[Math.floor(r() * GENRES.length)], key: KEYS[Math.floor(r() * KEYS.length)], bpm: 80 + Math.floor(r() * 41), voice: id.endsWith("1") || id.endsWith("3") ? "hf_alpha" : null },
       thumbnailUrl: `/sample/${tpl.id}/thumbnail.png`, previewUrl: `/sample/${tpl.id}/preview.png`, fileUrl: `/sample/${tpl.id}/video.mp4`,
       createdAt: createdAt.toISOString(), queuePosition, upload,
       totals: stats.length

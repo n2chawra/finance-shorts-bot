@@ -142,7 +142,8 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
 def figures(vid: str, root: Path = ROOT) -> dict:
     """Computed figures and the final on-screen lines, as a reviewer needs to see them."""
     video = renderer.build(_read(_dir(vid, root) / "script.json"))
-    return {"duration_sec": video.duration, "figures": video.figures, "on_screen_text": video.txt}
+    return {"duration_sec": video.duration, "figures": video.figures, "on_screen_text": video.txt,
+            "voiceover": video.narration(), "scenes": {k: [round(a, 1), round(b, 1)] for k, (a, b) in video.voice_windows().items()}}
 
 
 def record(vid: str, agent: str, passed: bool, notes: list[str], root: Path = ROOT) -> None:
@@ -197,12 +198,14 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
 
     created = history.now().isoformat()
     tag = f"video-{vid}"
+    voice = report.get("voice")
+    style = {**report["style"], "voice": voice["name"] if voice else None}
     log_step(vid, "ship", True, [f"Manifest written; release asset {'uploaded' if release else 'not uploaded (dry run)'}."], root)
     manifest = {
         "id": vid, "createdAt": created, "status": "qa_passed",
         "template": plan["template"], "topic": plan["topic"], "title": plan["title"], "description": plan["description"],
         "hashtags": plan["hashtags"], "hookStyle": plan["hook_style"], "cta": plan["cta"],
-        "seed": script["seed"], "style": report["style"], "durationSec": report["duration_sec"], "audio": report.get("audio"),
+        "seed": script["seed"], "style": style, "voice": voice, "durationSec": report["duration_sec"], "audio": report.get("audio"),
         "experiments": report.get("experiments", {}),
         "checks": [{"checker": c, "passed": True, "notes": checks[c]["notes"]} for c in CHECKERS],
         "agentRuns": json.loads((d / "run.json").read_text(encoding="utf-8")),
@@ -214,7 +217,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     _write(d / "manifest.json", manifest)
     history.append({
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],
-        "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": report["style"],
+        "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": style,
     }, root)
 
     if release:
