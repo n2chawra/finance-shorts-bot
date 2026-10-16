@@ -11,12 +11,19 @@ def write(root: Path, exps: list[dict]) -> None:
 
 
 def test_variant_is_deterministic_and_about_half() -> None:
-    ids = [f"v-20261015-{i:02d}" for i in range(400)]
+    ids = [f"v-202610{d:02d}-{i:02d}" for d in range(1, 31) for i in range(1, 4)] + [f"v-x-{i}" for i in range(200)]
     first = [experiments.variant("e1", v) for v in ids]
     assert first == [experiments.variant("e1", v) for v in ids]
     assert 0.4 < first.count("on")/len(first) < 0.6
     # a different experiment splits the same videos differently
     assert first != [experiments.variant("e2", v) for v in ids]
+
+
+def test_every_day_has_both_groups() -> None:
+    for e in ("voiceover", "e1", "e2"):
+        for d in range(1, 31):
+            day = [experiments.variant(e, f"v-202610{d:02d}-{i:02d}") for i in range(1, 4)]
+            assert set(day) == {"on", "off"}, (e, d, day)
 
 
 def test_share_controls_the_on_fraction() -> None:

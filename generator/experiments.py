@@ -12,6 +12,7 @@ the variants so `improvement.evaluate` can compare the two groups.
 """
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,10 +27,21 @@ def load(root: Path = ROOT) -> list[dict]:
     return [e for e in data.get("experiments", []) if e.get("status", "running") == "running"]
 
 
+def _unit(key: str) -> float:
+    return int(hashlib.sha256(key.encode()).hexdigest()[:8], 16)/0xFFFFFFFF
+
+
 def variant(exp_id: str, video_id: str, share: float = 0.5) -> str:
-    """'on' for about `share` of video ids, 'off' for the rest; deterministic."""
-    h = int(hashlib.sha256(f"{exp_id}:{video_id}".encode()).hexdigest()[:8], 16)
-    return "on" if h/0xFFFFFFFF < share else "off"
+    """'on' for about `share` of video ids, 'off' for the rest; deterministic.
+
+    For a 50/50 split of the usual ids (v-YYYYMMDD-NN) the groups alternate within each day, starting
+    with a group picked per experiment and day, so every day's videos land in both groups (a pure
+    hash put all of a day's three videos in one group about a quarter of the time)."""
+    m = re.fullmatch(r"v-(\d{8})-(\d+)", video_id)
+    if share == 0.5 and m:
+        first_on = _unit(f"{exp_id}:{m.group(1)}") < 0.5
+        return "on" if (int(m.group(2)) % 2 == 1) == first_on else "off"
+    return "on" if _unit(f"{exp_id}:{video_id}") < share else "off"
 
 
 def applies(exp: dict, template: str | None) -> bool:
