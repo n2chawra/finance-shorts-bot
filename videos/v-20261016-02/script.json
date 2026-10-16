@@ -1,0 +1,38 @@
+{
+  "template": "two_friends_race",
+  "seed": 5206,
+  "style": { "palette": "ember", "genre": "synthwave", "key": "D", "bpm": 104 },
+  "monthly": 3000,
+  "annual_return_pct": 12,
+  "end_age": 55,
+  "people": [
+    { "name": "Neha", "start_age": 22, "stop_age": 32 },
+    { "name": "Karan", "start_age": 32, "stop_age": 55 }
+  ],
+  "text": {
+    "hook_title": "{a_final} vs {b_final}",
+    "hook_sub": "Who put in LESS?",
+    "hook_tease": "Same {monthly}, very different end",
+    "a_intro": "{a} starts at {a_start}",
+    "a_amount": "{monthly} / month",
+    "a_note": "…then stops at {a_stop}",
+    "b_intro": "{b} starts at {b_start}",
+    "b_amount": "{monthly} / month",
+    "b_note": "…and keeps going till {b_stop}",
+    "question_setup": "Both earn {rate} a year.",
+    "question": "Who has MORE at {end_age}?",
+    "question_cta": "Pause & comment your guess",
+    "chart_title": "Watch the money grow",
+    "chart_stop_label": "{a} stops",
+    "chart_note": "…but her money keeps growing!",
+    "result_title": "At {end_age}…",
+    "result_line1": "{a} put in {invested_ratio} LESS",
+    "result_line2": "but has {final_ratio} MORE",
+    "end_line1": "The secret isn't",
+    "end_line2": "how long you invest",
+    "end_punch": "It's how EARLY.",
+    "end_pill": "Start small, start now",
+    "end_cta": "Tell us the age you will start",
+    "end_follow": "Follow for more money stories"
+  }
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:41:37.833865+00:00",
+    "finishedAt": "2026-10-16T03:41:37.833865+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:41:39.151215+00:00",
+    "finishedAt": "2026-10-16T03:41:39.151215+00:00",
+    "notes": [
+      "19 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:41:59.406558+00:00",
+    "finishedAt": "2026-10-16T03:41:59.406558+00:00",
+    "notes": [
+      "Checked: 12% is shown as an assumption (end scene 'Assumes 12% a year, compounded monthly' plus description); no product, fund or guarantee claims; title matches the numbers; description ends with the disclaimer. Notes: 12% is at the upper bound and 'Both earn 12% a year' reads flat before the end card; 'Start small, start now' is mild encouragement, not an instruction."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:42:09.055855+00:00",
+    "finishedAt": "2026-10-16T03:43:57.579548+00:00",
+    "notes": [
+      "60 s, ember/synthwave, peak -1.0 dB, mean -18.6 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:44:14.131192+00:00",
+    "finishedAt": "2026-10-16T03:44:14.131192+00:00",
+    "notes": [
+      "8 frames clean: hook number+question at 1s, no overlaps/cut-off, figures consistent (3.6L/8.3L invested, 1.09Cr vs 44.2L, 2.3x/2.5x), disclaimer on last frame, thumbnail shows hook; layout_problems empty, 60s, peak -1.0 dB, mean -18.6 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:44:25.055390+00:00",
+    "finishedAt": "2026-10-16T03:44:25.055390+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
