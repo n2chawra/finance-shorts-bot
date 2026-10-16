@@ -25,6 +25,8 @@ const readJson = (file: string): unknown => JSON.parse(readFileSync(file, "utf8"
 const Activity = z.object({
   agent: z.enum(AGENTS),
   day: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  startedAt: z.iso.datetime().optional(),
+  finishedAt: z.iso.datetime().optional(),
   summary: z.string().min(1),
   decision: z.enum(["acted", "waited", "blocked", "nothing"]),
   why: z.string(),
@@ -58,7 +60,8 @@ export async function importActivity(prisma: PrismaClient, root: string): Promis
     const parsed = Activity.safeParse(readJson(path.join(dir, f)));
     if (!parsed.success) { console.error(`::warning::${f}: ${parsed.error.issues[0]?.message}`); continue; }
     const a = parsed.data;
-    const data = { agent: a.agent, day: a.day, summary: a.summary, decision: a.decision, why: a.why, findings: a.findings, changes: a.changes, nextCheck: a.nextCheck ?? null, links: a.links };
+    const data = { agent: a.agent, day: a.day, summary: a.summary, decision: a.decision, why: a.why, findings: a.findings, changes: a.changes, nextCheck: a.nextCheck ?? null, links: a.links,
+      startedAt: a.startedAt ? new Date(a.startedAt) : null, finishedAt: a.finishedAt ? new Date(a.finishedAt) : null };
     await prisma.agentActivity.upsert({ where: { id: `${a.day}-${a.agent}` }, update: data, create: { id: `${a.day}-${a.agent}`, ...data } });
     n++;
   }

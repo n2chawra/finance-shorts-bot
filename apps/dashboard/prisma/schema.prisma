@@ -191,6 +191,8 @@ model AgentActivity {
   changes   Json // [{title, detail, branch?, experiment?}]
   nextCheck String?
   links     Json // [{label, url}]
+  startedAt  DateTime? // run times from the agent's own clock (optional)
+  finishedAt DateTime?
   createdAt DateTime @default(now())
 
   @@index([day])
