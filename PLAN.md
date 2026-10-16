@@ -241,3 +241,7 @@ Done when: everything above works on a phone.
   scripts/sync-main.sh first in every routine, agents push HEAD:refs/heads/agent/<name>/<date>,
   agent-merge also takes claude/agent-* branches, scripts/tests/test_routine_prompts.py keeps it so.
   Stranded auditor and dashboard work re-pushed and merged.
+- 2026-10-16: Run-time tracking. Agents write startedAt/finishedAt into their activity files;
+  AgentActivity gets both columns; Agents page shows run times; watchdog raises `schedule-overlap`
+  (workers/lib/schedule.ts). First measurement (docs/guide/12-run-times.md): no overlaps, schedule
+  unchanged; the night was disrupted, so recheck after a week of real data.

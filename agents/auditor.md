@@ -41,7 +41,7 @@ three sources side by side. For every `error` and `warning`:
 3. If it is not a code bug (YouTube removed spam views, a video was made private by hand, the stats
    job simply hasn't run yet), write that in your report with the evidence and do nothing.
 4. If only the owner can fix it (a missing link, an expired token), it belongs in
-   `improvement/notifications/auditor.json` with exact steps (the audit already raises `unlinked`).
+   `improvement/notifications/auditor.json` (shape `{"notifications": [{key, severity, title, detail, fix}]}`) with exact steps (the audit already raises `unlinked`).
 `info` issues are expected (live counts refresh only while the dashboard is open); ignore them unless
 the same video is `info` for 3 audits in a row.
 You can't change `workers/data-audit.ts`, `workers/lib/data-audit.ts` or its tests: if a rule there is

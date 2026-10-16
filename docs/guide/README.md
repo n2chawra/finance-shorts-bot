@@ -21,6 +21,7 @@ it top to bottom once, then use it as a reference when someone asks you a questi
 | 9 | [Operations](09-operations.md) | run it day to day, fix problems, know the costs and limits | Both |
 | 10 | [FAQ and glossary](10-faq-and-glossary.md) | answer the questions people usually ask | Both |
 | 11 | [Self-improving agents](11-self-improving-agents.md) | explain how the system improves itself every night | Both |
+| 12 | [Run times](12-run-times.md) | see how long each routine takes and whether the schedule fits the usage windows | Both |
 
 The source of truth for rules and constraints is [`CLAUDE.md`](../../CLAUDE.md); milestones and the
 build log live in [`PLAN.md`](../../PLAN.md). Older diagrams made for the YouTube audit are in

@@ -1,4 +1,11 @@
 {
-  "agent": "auditor",
-  "items": []
+  "notifications": [
+    {
+      "key": "schedule-review-2026-10-16",
+      "severity": "info",
+      "title": "Run-time review: no overlaps seen; longest run 10 min; keep the schedule",
+      "detail": "15->16 Oct (not representative: stale-clone failure all night)\nAuditor 23:06-23:10 IST ~5 min (est.)\nResearch 23:47-23:49 <=2.5 min\nVideo main 04:07 failed after 31 s, 0 videos\nImprover 06:17-06:18 <=1.5 min (waited)\nDashboard 07:38-07:42 ~4.5 min (est.)\nVideo spare 09:08-09:17 ~9 min, made 3 videos (exact)\nTightest gap: Auditor->Research 47 min. Tracking now records real durations.",
+      "fix": "Nothing to change. If the dashboard later raises 'schedule-overlap' for the auditor, move Research to 00:00 IST (cron 30 18 * * * UTC); never later than 00:20. Details: docs/guide/12-run-times.md."
+    }
+  ]
 }
