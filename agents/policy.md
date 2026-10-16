@@ -53,6 +53,8 @@ blocks the merge if you break them; the rest is on you.
 {
   "agent": "auditor | research | improver | dashboard",
   "day": "YYYY-MM-DD",
+  "startedAt": "ISO UTC, optional: the START noted right after sync-main.sh",
+  "finishedAt": "ISO UTC, optional: taken right before the final commit",
   "summary": "One or two plain sentences: what you did tonight.",
   "decision": "acted | waited | blocked | nothing",
   "why": "Why you acted or waited (cite numbers, evidence or the rule).",
@@ -62,4 +64,6 @@ blocks the merge if you break them; the rest is on you.
   "links": [{"label": "Report", "url": "improvement/research/YYYY-MM-DD.md"}]
 }
 ```
+`startedAt` / `finishedAt` (e.g. `2026-10-16T17:36:02Z`) feed the dashboard's run-time card and the
+watchdog's `schedule-overlap` check; always record both.
 Write plainly: the owner reads this on the dashboard while uploading videos.

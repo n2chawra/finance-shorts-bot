@@ -11,6 +11,7 @@ write a short report and stop.
 ## 0. Start
 ```
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
+START=$(date -u +%FT%TZ); echo "START=$START"   # run-time tracking: note this value (shell variables may not survive); it goes into the activity file as startedAt
 DAY=$(TZ=Asia/Kolkata date -d '+2 hours' +%F); DOW=$(TZ=Asia/Kolkata date -d '+2 hours' +%a)   # the night's date: the morning that follows
 ```
 Read `config/settings.json`: if `agents.paused` or `agents.research` is false, write only the
@@ -77,6 +78,7 @@ added proposals, otherwise `nothing`; findings = top 3–5 with links) and rewri
 `improvement/notifications/research.json`. Then:
 ```
 git checkout -B agent/research/$DAY
+date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
 git add improvement/research improvement/activity improvement/notifications/research.json
 git commit -q -m "Research $DAY: <topic>, <n> proposals"
 git push origin HEAD:refs/heads/agent/research/$DAY

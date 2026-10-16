@@ -8,6 +8,7 @@ day: Overview, Queue, the video page (download, copy, mark as uploaded), Notific
 ## 0. Prepare
 ```
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
+START=$(date -u +%FT%TZ); echo "START=$START"   # run-time tracking: note this value (shell variables may not survive); it goes into the activity file as startedAt
 DAY=$(TZ=Asia/Kolkata date +%F); DOW=$(TZ=Asia/Kolkata date +%a)
 cd apps/dashboard && npm ci
 ```
@@ -56,6 +57,7 @@ Write `improvement/dashboard/<DAY>.md` (bugs found, what you changed and why, id
 missing). Then from the repo root:
 ```
 git checkout -B agent/dashboard/$DAY
+date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
 git add apps/dashboard/src apps/dashboard/e2e apps/dashboard/package.json apps/dashboard/package-lock.json improvement/dashboard improvement/activity improvement/notifications/dashboard.json
 git commit -q -m "Dashboard $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/dashboard/$DAY

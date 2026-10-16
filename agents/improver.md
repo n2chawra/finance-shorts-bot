@@ -9,6 +9,7 @@ the data isn't in yet; say so and stop early.
 ## 0. Prepare
 ```
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
+START=$(date -u +%FT%TZ); echo "START=$START"   # run-time tracking: note this value (shell variables may not survive); it goes into the activity file as startedAt
 DAY=$(TZ=Asia/Kolkata date +%F); DOW=$(TZ=Asia/Kolkata date +%a)
 for p in python python3 /usr/bin/python3; do $p -c "import PIL, numpy, scipy, jsonschema" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
 ```
@@ -107,6 +108,7 @@ numbers; changes = what you changed with the experiment id) and rewrite
 `improvement/notifications/improver.json`. Then:
 ```
 git checkout -B agent/improver/$DAY
+date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
 git add -A generator renderer examples config/experiments.json improvement
 git commit -q -m "Improver $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/improver/$DAY

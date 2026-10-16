@@ -11,6 +11,7 @@ content and A/B experiments are its job). Fix what is wrong; don't redesign.
 ## 0. Prepare
 ```
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
+START=$(date -u +%FT%TZ); echo "START=$START"   # run-time tracking: note this value (shell variables may not survive); it goes into the activity file as startedAt
 DAY=$(TZ=Asia/Kolkata date -d '+2 hours' +%F)   # the night's date: the morning that follows
 for p in python python3 /usr/bin/python3; do $p -c "import PIL, numpy, scipy, jsonschema, pytest" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
 (cd workers && npm ci && npm run generate) && (cd apps/dashboard && npm ci)
@@ -97,6 +98,7 @@ if you shipped a fix, `nothing` if everything was clean) and rewrite
 `improvement/notifications/auditor.json`. Commit them on branch 1 (or on a reports-only branch
 `agent/auditor/$DAY` if you changed no code):
 ```
+date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
 git add -A improvement/auditor improvement/activity/$DAY-auditor.json improvement/notifications/auditor.json <your code files>
 git commit -q -m "Auditor $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/auditor/$DAY
