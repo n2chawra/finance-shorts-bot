@@ -1,0 +1,27 @@
+{
+  "template": "myth_vs_fact",
+  "seed": 7342,
+  "style": { "palette": "forest", "genre": "acoustic", "key": "G", "bpm": 96 },
+  "amount": 300000,
+  "years": 10,
+  "tracks": [
+    { "label": "Savings account", "rate_pct": 3 },
+    { "label": "Rising prices", "rate_pct": 6 }
+  ],
+  "text": {
+    "myth_line1": "My emergency fund is fine",
+    "myth_line2": "sitting in savings",
+    "setup_title": "Your fund is {amount_long}",
+    "setup_note": "Untouched. Feels safe.",
+    "bust_line": "Fine? Look closer.",
+    "bust_sub": "Prices grow faster than interest",
+    "race_title": "{years} years later",
+    "result_line1": "Prices pull ahead by",
+    "result_line2": "so buying power drops {lost_pct}",
+    "end_line1": "Safety comes first,",
+    "end_line2": "but watch inflation",
+    "end_punch": "Know the trade-off.",
+    "end_cta": "Comment \"GROW\" if yours sits idle",
+    "end_follow": "Follow for more money myths"
+  }
+}

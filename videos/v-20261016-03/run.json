@@ -1,0 +1,75 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:44:57.548616+00:00",
+    "finishedAt": "2026-10-16T03:44:57.548616+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:44:58.895840+00:00",
+    "finishedAt": "2026-10-16T03:44:58.895840+00:00",
+    "notes": [
+      "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-16T03:45:20.270547+00:00",
+    "finishedAt": "2026-10-16T03:45:20.270547+00:00",
+    "notes": [
+      "result_line1 'Your buying power slips by' sits directly above the template's large gap figure ₹1.3 L (b_final minus a_final, i.e. 5.4 L vs 4.0 L). Buying power actually falls from ₹3.0 L to ₹2.3 L, a loss of about ₹0.7 L, so the headline figure overstates the loss and contradicts result_line2 '25% of its value is gone' (₹1.3 L is about 43% of ₹3 L). Reword result_line1 to introduce the gap correctly, e.g. 'Prices pull ahead of savings by'.",
+      "Myth framing hides the emergency fund's purpose (liquidity and safety, not returns). Add a line such as 'Safety comes first' so the video does not imply the fund should chase returns; 'keep it working' risks reading as advice to invest an emergency fund. Reword end_line2 to stay illustrative."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:45:28.545352+00:00",
+    "finishedAt": "2026-10-16T03:45:28.545352+00:00",
+    "notes": [
+      "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:45:41.606612+00:00",
+    "finishedAt": "2026-10-16T03:45:41.606612+00:00",
+    "notes": [
+      "Re-review: revised result and end lines fixed the gap/buying-power mismatch (25% loss matches real value 2.3 L), safety-first framing added, rates labelled as assumptions, disclaimer in description. Note: 'Prices pull ahead by ₹1.3 L' is loose wording (gap between the two final values) but acceptable."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:45:48.753945+00:00",
+    "finishedAt": "2026-10-16T03:47:16.598551+00:00",
+    "notes": [
+      "50 s, forest/acoustic, peak -1.0 dB, mean -18.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:47:32.865583+00:00",
+    "finishedAt": "2026-10-16T03:47:32.865583+00:00",
+    "notes": [
+      "8 frames clean: MYTH hook at 0.6s, no overlaps or cut-off, bars/jar/labels readable, disclaimer visible at 48s, thumbnail is a clear MYTH+speech bubble frame, layout_problems empty, 50s, peak -1.0 dB / mean -18.2 dB. Minor: 36s gap shows 1.3 L while rounded labels differ by 1.4 (rounding of exact values)."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-16T03:47:41.884329+00:00",
+    "finishedAt": "2026-10-16T03:47:41.884329+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
