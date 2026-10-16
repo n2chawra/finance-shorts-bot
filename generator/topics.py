@@ -17,20 +17,28 @@ from pathlib import Path
 
 from .settings import ROOT
 
-FILE = Path("improvement") / "research" / "topics.json"
+# one feed per format: research writes the Shorts one, scout the long one
+FILES = {"short": Path("improvement") / "research" / "topics.json",
+         "long": Path("improvement") / "longform" / "topics.json"}
+FILE = FILES["short"]   # the Shorts feed, for messages that name it
 PRIORITIES = ("breaking", "high", "normal")
 SHOWN = 8   # topics listed to the planner
 
 
-def load(root: Path = ROOT) -> list[dict]:
-    path = root / FILE
+def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+    path = root / FILES[fmt]
     if not path.is_file():
         return []
     return [t for t in json.loads(path.read_text(encoding="utf-8")).get("topics", []) if isinstance(t, dict) and t.get("id")]
 
 
-def get(feed_id: str, root: Path = ROOT) -> dict | None:
-    return next((t for t in load(root) if t["id"] == feed_id), None)
+def get(feed_id: str, root: Path = ROOT, fmt: str | None = None) -> dict | None:
+    """A topic by id. Without a format, both feeds are searched (ids are unique across them)."""
+    for f in ([fmt] if fmt else list(FILES)):
+        found = next((t for t in load(root, f) if t["id"] == feed_id), None)
+        if found:
+            return found
+    return None
 
 
 def used_ids(entries: list[dict]) -> set[str]:
@@ -60,7 +68,7 @@ def of_format(topics: list[dict], fmt: str) -> list[dict]:
 def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT,
               fmt: str = "short") -> dict:
     """What `state` tells the planner: the open topics, best first, and a breaking one it must use."""
-    open_ = [t for t in of_format(load(root), fmt) if why_unavailable(t, entries, today) is None]
+    open_ = [t for t in of_format(load(root, fmt), fmt) if why_unavailable(t, entries, today) is None]
     open_.sort(key=lambda t: t.get("found", ""), reverse=True)   # newest first within a priority (stable sorts)
     open_.sort(key=lambda t: PRIORITIES.index(t["priority"]) if t.get("priority") in PRIORITIES else len(PRIORITIES) - 1)
     usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed)]
@@ -80,9 +88,9 @@ def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], 
     out = []
     feed_id = (plan.get("topic") or {}).get("feed_id")
     if feed_id:
-        topic = get(feed_id, root)
+        topic = get(feed_id, root, fmt)
         if topic is None:
-            out.append(f"topic.feed_id {feed_id!r} is not in {FILE.as_posix()}")
+            out.append(f"topic.feed_id {feed_id!r} is not in {FILES[fmt].as_posix()}")
         elif (why := why_unavailable(topic, entries, today)) is not None:
             out.append(f"feed topic {feed_id!r} can't be used: {why}")
         elif plan.get("template") == "money_news" and not topic.get("facts"):

@@ -1,6 +1,9 @@
 /**
- * Publisher: fills today's upload slots (settings.uploadTimes IST, 12:37 and 19:07 by default), one
- * video per slot, each uploaded private with publishAt so YouTube makes it public at that time.
+ * Publisher: fills today's upload slots, one video per slot, each uploaded private with publishAt so
+ * YouTube makes it public at that time. Shorts use settings.uploadTimes (12:37 and 19:07 by
+ * default), every day; long videos use settings.longUploadTimes on settings.longUploadDays
+ * (20:07 IST on Tue, Thu and Sat by default). Each format is filled from its own queue, so a
+ * missing long video never costs a Short its slot.
  *
  * Runs a few times a day; the first run uploads for every free slot still ahead today, later runs
  * find the slots taken and stop. Never more uploads in a day than there are slots. A video clicked
@@ -22,6 +25,7 @@ import { TokenError, accessToken, uploadVideo } from "./lib/youtube.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const MAX_ATTEMPTS = 3;
+type Format = "short" | "long";
 
 async function main(): Promise<void> {
   if (!youtubeConfigured()) return;
@@ -45,41 +49,55 @@ async function main(): Promise<void> {
     if (settings.uploadsPaused) return void console.log("Uploads are paused in settings. Nothing uploaded.");
 
     const now = new Date();
-    const existing = await prisma.upload.findMany({ where: { state: { in: ["scheduled", "uploaded", "published"] } }, select: { publishAt: true } });
+    const existing = await prisma.upload.findMany({
+      where: { state: { in: ["scheduled", "uploaded", "published"] } },
+      select: { publishAt: true, video: { select: { format: true } } },
+    });
     const taken = new Set(existing.map((u) => slotKey(u.publishAt)));
-    const perDay = new Map<string, number>();
-    for (const u of existing) perDay.set(istDay(u.publishAt), (perDay.get(istDay(u.publishAt)) ?? 0) + 1);
+    // one slot count per format: a long video on Tuesday must not use up a Short's slot that day
+    const perDay: Record<Format, Map<string, number>> = { short: new Map(), long: new Map() };
+    for (const u of existing) {
+      const f: Format = u.video.format === "long" ? "long" : "short";
+      const day = istDay(u.publishAt);
+      perDay[f].set(day, (perDay[f].get(day) ?? 0) + 1);
+    }
 
-    let uploaded = 0;
-    for (let n = 0; n < settings.uploadTimes.length; n++) {
-      const slot = nextSlot(now, settings.uploadTimes, taken, perDay);
-      if (istDay(slot) !== istDay(now)) {
-        console.log(uploaded ? `Today's slots are filled. Next free slot is ${slot.toISOString()}.` : `No free slot left today; next is ${slot.toISOString()}. Nothing uploaded.`);
-        break;
+    for (const format of ["short", "long"] as const) {
+      const times = format === "long" ? settings.longUploadTimes : settings.uploadTimes;
+      const days = format === "long" ? settings.longUploadDays : undefined;
+      if (!times.length || (format === "long" && !days?.length)) continue;
+      let uploaded = 0;
+      for (let n = 0; n < times.length; n++) {
+        const slot = nextSlot(now, times, taken, perDay[format], 30, days);
+        if (istDay(slot) !== istDay(now)) {
+          console.log(uploaded ? `${format}: today's slots are filled. Next is ${slot.toISOString()}.`
+            : `${format}: no free slot left today; next is ${slot.toISOString()}.`);
+          break;
+        }
+        if (!(await uploadOne(prisma, token, settings.disclaimer, slot, format))) break;
+        taken.add(slotKey(slot));
+        perDay[format].set(istDay(slot), (perDay[format].get(istDay(slot)) ?? 0) + 1);
+        uploaded++;
       }
-      if (!(await uploadOne(prisma, token, settings.disclaimer, slot))) break;
-      taken.add(slotKey(slot));
-      perDay.set(istDay(slot), (perDay.get(istDay(slot)) ?? 0) + 1);
-      uploaded++;
     }
   } finally {
     await prisma.$disconnect();
   }
 }
 
-/** Upload the next video for `slot`. False when there is nothing to upload; throws on failure. */
-async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string, slot: Date): Promise<boolean> {
+/** Upload the next `format` video for `slot`. False when there is nothing to upload; throws on failure. */
+async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string, slot: Date, format: Format): Promise<boolean> {
   // a video sent with "Upload now", or a retry of a failed attempt, goes first; then the queue
-  const pending = await prisma.upload.findFirst({ where: { state: "pending", video: { deletedAt: null, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
-  const video = pending?.video ?? await prisma.video.findFirst({ where: { status: "queued", deletedAt: null }, orderBy: [{ queuePosition: "asc" }, { createdAt: "asc" }] });
-  if (!video) { console.log("::warning::The queue is empty. Nothing to upload."); return false; }
+  const pending = await prisma.upload.findFirst({ where: { state: "pending", video: { deletedAt: null, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
+  const video = pending?.video ?? await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, format }, orderBy: [{ queuePosition: "asc" }, { createdAt: "asc" }] });
+  if (!video) { console.log(`::warning::No ${format} video is queued. Nothing to upload for ${slot.toISOString()}.`); return false; }
 
   const attempts = (pending?.attempts ?? 0) + 1;
   const dir = mkdtempSync(path.join(tmpdir(), "publish-"));
   try {
     const file = path.join(dir, "video.mp4");
     await downloadReleaseAsset(repoSlug(ROOT), `video-${video.id}`, "video.mp4", file);
-    const meta = youtubeMeta(video, disclaimer);
+    const meta = youtubeMeta(video, disclaimer, format);
     const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot });
     await prisma.$transaction([
       prisma.upload.upsert({

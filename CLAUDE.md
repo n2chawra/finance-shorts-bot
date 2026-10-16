@@ -1,8 +1,8 @@
 # Finance Shorts Bot
 
-Automated pipeline that creates short, unique, music-and-motion-graphics personal-finance videos
-(with an A/B-tested voiceover) for an Indian audience, uploads exactly one per day to YouTube Shorts, and shows
-everything on a dashboard.
+Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for an
+Indian audience and uploads them to YouTube: **Shorts** (vertical, 30–45 s, two a day) and
+**long-form explainers** (landscape, 8–11 min, two a week). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
 Read `PLAN.md` for milestones and current status. Update its checkboxes as work lands.
@@ -17,7 +17,9 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Since
   2026-10-16 it runs as the `voiceover` A/B experiment on half of new videos; on-screen text,
   motion, music and sound effects must still carry the video on their own.
-- **Two uploads per day**, at 12:37 and 19:07 IST (setting `uploadTimes`). Never more than one video per slot.
+- **Two Shorts per day**, at 12:37 and 19:07 IST (setting `uploadTimes`), and **two long videos per
+  week**, 20:07 IST on Tue/Thu/Sat (`longUploadTimes`, `longUploadDays`, `longPerWeek`). One video per
+  slot; each format is filled from its own queue, so a missing long video never costs a Short its slot.
 - **Generation keeps going** on a schedule to build a backlog, capped at **30 ready videos**.
   When the backlog is full, generation runs improve or add templates instead of making videos.
 - **Every video must be unique.** YouTube demonetizes repetitive, mass-produced content
@@ -83,6 +85,27 @@ Schedule by Pro-plan 5-hour usage windows (IST): window A 23:00–04:00 holds on
 (auditor 23:00, research 23:47); the video run at 04:07 always starts a fresh window B, followed
 by improver 06:17 and dashboard 07:37 one after another; the spare video run at 09:07 starts a fresh
 window C so it can still rescue a main run that hit the limit. Keep new routines inside this plan.
+
+## Two formats
+
+Every video has a `format`. The renderer's frame and its layout rules come from a `Frame`
+(`renderer/engine/canvas.py`): `SHORT` is 1080×1920 with the Shorts safe zone; `LONG` is 1920×1080,
+smaller minimum text, always narrated, at a slower voice speed. Everything else — camera, music,
+voice, layout checks, number checks, variety rules — is shared.
+
+| | Shorts | Long-form |
+|---|---|---|
+| Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Mon/Wed/Fri 14:37 IST, 1 a run) |
+| Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, daily 09:37 IST) |
+| Templates | `quiz_countdown`, `myth_vs_fact`, `money_leak_meter`, `two_friends_race`, `money_news` | `long_explainer` (sections built from blocks in `renderer/engine/longform.py`) |
+| Length | 30–45 s (a 48–60 s story at `TEMPO` 1.35) | 300–900 s, `tempo` 1.0, aiming for 8–11 min |
+| Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |
+| State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
+
+A long video is a list of `sections`, each drawn by a block (hook, points, number, compare, bars,
+chart, steps, recap, end). Its `maths` block names the calculations and every figure on screen comes
+from them, recomputed independently by the number check. A section whose narration fills under 55% of
+its window fails the render: silence over music is what makes a video feel padded.
 
 ## Repo layout
 

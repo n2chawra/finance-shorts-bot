@@ -262,3 +262,14 @@ Done when: everything above works on a phone.
   their 48–60 s story timeline, the video plays it 1.35× faster (frames, cuts, SFX, ducks, voice
   windows), so Shorts are now 35–45 s. Voice base speed 1.12–1.22 (max 1.38); length range 30–45 s
   in code defaults and the live settings; example narration rewritten for the shorter windows.
+- 2026-10-16: Long-form videos. The renderer is no longer vertical-only: frame size and layout rules
+  are a per-video `Frame` (SHORT/LONG), so camera, effects, preview, mux and the layout checks follow
+  the format and the Shorts templates are untouched. New `renderer/engine/longform.py` blocks and the
+  `long_explainer` template (sections + a `maths` block; every figure computed and independently
+  rechecked; always narrated, slower voice; a section under 55% narration fill fails the render; a
+  designed thumbnail). The pipeline is format-aware end to end: `state --format long` (weekly target,
+  own backlog, own history and topic feed), `L-` ids, `format` on manifests, history and `Video`
+  (migration `20261016180000_video_format`), long upload slots (20:07 IST Tue/Thu/Sat, own queue, no
+  #Shorts tag), dashboard badges and settings. Two agents: **Scout** (daily 09:37, long topics and
+  long-form craft) and **Studio** (Mon/Wed/Fri 14:37, one video end to end). The renderer prints
+  percent complete; a long render is about 20 minutes.

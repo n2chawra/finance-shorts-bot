@@ -13,6 +13,9 @@
 | 06:17 | **Improver agent**: judge experiments, start one or wait, manage templates | Claude routine, cron `47 0 * * *` UTC |
 | 07:37 | **Dashboard agent**: bug hunt, one fix or improvement | Claude routine, cron `7 2 * * *` UTC |
 | 09:07 | Spare video run: makes up any missing videos (fresh usage window) | Claude routine, cron `37 3 * * *` UTC |
+| 09:37 | **Scout agent**: finds long-video topics, studies long-form craft | Claude routine, cron `7 4 * * *` UTC |
+| 14:37 (Mon/Wed/Fri) | **Studio agent**: makes one long video end to end, with its thumbnail | Claude routine, cron `7 9 * * 1,3,5` UTC |
+| 20:07 (Tue/Thu/Sat) | A long video goes public | `publish.yml` |
 | every hour (:13) | Watchdog: raises owner notifications, resolves fixed ones | `watchdog.yml` |
 | 05:53 | Ingest (safety net) | `ingest.yml`, cron `23 */6 * * *` UTC |
 | 08:47, then every 3 h | Stats: YouTube Analytics daily numbers → database | `stats.yml`, cron `17 */3 * * *` UTC |

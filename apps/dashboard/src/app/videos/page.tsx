@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 
-import { Card, Empty, ErrorNote, Loading, PageHeader, SelectField, StatusBadge, Thumb, fieldClass } from "@/components/ui";
+import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, SelectField, StatusBadge, Thumb, fieldClass } from "@/components/ui";
 import { fmtCompact, fmtDateTime, titleCase } from "@/lib/format";
 import { useOverview, useTemplates, useVideos } from "@/lib/queries";
 
@@ -86,7 +86,10 @@ function Videos() {
                     <Thumb src={v.thumbnailUrl} alt="" className="w-8" />
                     <div className="min-w-0">
                       <Link href={`/videos/${v.id}`} onClick={(e) => e.stopPropagation()} className="block max-w-[46ch] truncate font-medium group-hover:text-brand-text">{v.title}</Link>
-                      <span className="font-mono text-[11px] text-muted">{v.id}</span>
+                      <span className="flex items-center gap-1.5">
+                        <span className="font-mono text-[11px] text-muted">{v.id}</span>
+                        {v.format === "long" && <Badge tone="brand">Long</Badge>}
+                      </span>
                     </div>
                   </td>
                   <td className="md:px-3 md:py-2.5"><StatusBadge status={v.status} /></td>

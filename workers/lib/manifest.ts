@@ -23,6 +23,7 @@ export const ShippedManifest = z.object({
   hookStyle: z.string(),
   cta: z.string(),
   seed: z.number().int(),
+  format: z.enum(["short", "long"]).default("short"),
   style: z.object({ palette: z.string(), genre: z.string(), key: z.string(), bpm: z.number(), voice: z.string().nullish() }),
   /** A/B experiment variants this video was rendered with ({id: "on"|"off"}); see generator/experiments.py. */
   experiments: z.record(z.string(), z.enum(["on", "off"])).optional(),

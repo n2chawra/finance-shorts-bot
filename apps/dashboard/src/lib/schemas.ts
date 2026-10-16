@@ -58,6 +58,7 @@ export const VideoSchema = z.object({
   templateId: z.string(),
   topic: z.object({ title: z.string(), category: z.string() }),
   status: VideoStatusSchema,
+  format: z.enum(["short", "long"]).default("short"),
   failReason: z.string().nullable(),
   title: z.string(),
   description: z.string(),
@@ -120,6 +121,12 @@ export type Run = z.infer<typeof RunSchema>;
 
 export const SettingsSchema = z.object({
   uploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).min(1).max(4),
+  longUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).max(2).default(["20:07"]),
+  longUploadDays: z.array(z.number().int().min(0).max(6)).max(7).default([2, 4, 6]),   // 0 = Sunday
+  longLengthMinSec: z.number().int().min(60).max(3600).default(300),
+  longLengthMaxSec: z.number().int().min(60).max(3600).default(900),
+  longPerWeek: z.number().int().min(0).max(7).default(2),
+  longBacklogCap: z.number().int().min(1).max(20).default(4),
   backlogCap: z.number().int().min(1).max(100),
   lengthMinSec: z.number().int().min(15).max(180),
   lengthMaxSec: z.number().int().min(15).max(180),

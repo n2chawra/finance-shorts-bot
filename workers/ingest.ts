@@ -89,7 +89,7 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
     const topic = await tx.topic.create({ data: m.topic });
     await tx.video.create({
       data: {
-        id: m.id, templateId: m.template, topicId: topic.id, status: "queued", script, style: { ...m.style, experiments: m.experiments ?? {} }, fileUrl,
+        id: m.id, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {} }, fileUrl,
         thumbnailUrl: `videos/${m.id}/thumbnail.png`, durationSec: m.durationSec, title: m.title, description: m.description,
         tags: m.hashtags.map((h) => h.replace(/^#/, "")), hookStyle: m.hookStyle, cta: m.cta,
         queuePosition: (last._max.queuePosition ?? 0) + 1, createdAt,
@@ -127,6 +127,8 @@ export async function buildRoutineSettings(prisma: PrismaClient, root = ROOT): P
   const templates = await prisma.template.findMany({ orderBy: { id: "asc" } });
   return {
     backlog: await prisma.video.count({ where: { status: "queued", deletedAt: null } }),
+    backlogByFormat: Object.fromEntries(await Promise.all((["short", "long"] as const).map(async (f) =>
+      [f, await prisma.video.count({ where: { status: "queued", deletedAt: null, format: f } })] as const))),
     ingestedAt: stamps.sort().at(-1) ?? null,
     backlogCap: s.backlogCap,
     generationPaused: s.generationPaused,

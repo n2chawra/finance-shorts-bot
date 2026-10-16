@@ -1,4 +1,141 @@
 {
-  "note": "Long-video topics, written by the Scout agent (agents/scout.md) and used by Studio (agents/studio.md).",
-  "topics": []
+  "note": "Long-video topics, written by the Scout agent (agents/scout.md) and used by Studio (agents/studio.md). These first four were seeded by the owner's session to give Studio something to start on; Scout adds to them daily.",
+  "topics": [
+    {
+      "id": "2026-10-16-rent-vs-buy",
+      "format": "long",
+      "title": "Rent or buy a home in India: the honest maths",
+      "category": "home_loan",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_explainer"
+      ],
+      "angle": "Whether buying beats renting once you count the interest, not just the EMI",
+      "why_now": "The question every salaried Indian in their thirties argues about, and almost nobody runs the numbers on properly.",
+      "outline": [
+        "hook: the total interest on a typical home loan, as one number",
+        "the setup: the same person, same city, two choices",
+        "the EMI, and what it really adds up to over the full term",
+        "what the renter does with the difference, invested",
+        "chart: loan outstanding against the renter's invested pot",
+        "the costs nobody puts in the spreadsheet: registration, maintenance, stamp duty",
+        "the catch: a house is forced saving, and rent rises",
+        "when buying clearly wins, and when it clearly doesn't",
+        "what to actually do",
+        "recap",
+        "end"
+      ],
+      "maths": "one emi for the loan, one sip for the renter's invested difference, one inflation for rising rent",
+      "verify": [
+        "Typical home loan rates in India at the time of writing",
+        "Stamp duty and registration ranges, which vary by state"
+      ],
+      "sources": [],
+      "found": "2026-10-16",
+      "expires": "2027-10-16",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-16-nps-vs-mutual-fund",
+      "format": "long",
+      "title": "NPS or a plain mutual fund for retirement?",
+      "category": "nps",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_explainer"
+      ],
+      "angle": "Whether the NPS tax break is worth the lock-in and the annuity rule",
+      "why_now": "NPS is pushed hard every March for the tax deduction, and the trade-offs are rarely explained.",
+      "outline": [
+        "hook: the tax saved in one year, and what it costs in flexibility",
+        "the setup: the same monthly amount into each",
+        "how NPS actually works: tiers, allocation, the lock-in",
+        "the tax break, computed properly",
+        "chart: both pots growing to retirement",
+        "the annuity rule and what it does to the end result",
+        "the catch: you cannot get it all as cash",
+        "who NPS genuinely suits",
+        "what to do",
+        "recap",
+        "end"
+      ],
+      "maths": "two sips at the same rate (one standing for NPS, one for the fund), plus an inflation one for the retirement number",
+      "verify": [
+        "Current NPS tax deduction limits and sections",
+        "The share of the NPS corpus that must buy an annuity, and the tax treatment of the rest"
+      ],
+      "sources": [],
+      "found": "2026-10-16",
+      "expires": "2027-10-16",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-16-emergency-fund-size",
+      "format": "long",
+      "title": "How big should your emergency fund actually be?",
+      "category": "emergency_fund",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_explainer"
+      ],
+      "angle": "How many months of expenses, where to keep it, and what it costs you to hold it",
+      "why_now": "Everyone repeats 'six months' without checking what it costs to hold that much in cash.",
+      "outline": [
+        "hook: what a year of expenses held in a savings account loses to inflation",
+        "what an emergency fund is actually for",
+        "the three-month, six-month and twelve-month versions",
+        "chart: the real value of each, eroding over time",
+        "where to keep it: savings, sweep-in, liquid funds",
+        "the catch: too big a fund is its own cost",
+        "how to size yours in one minute",
+        "recap",
+        "end"
+      ],
+      "maths": "one inflation on a year of expenses, one fd for the sweep-in option, one sip for the money not held back",
+      "verify": [
+        "Typical savings account and liquid fund returns in India",
+        "Any tax treatment mentioned for liquid funds"
+      ],
+      "sources": [],
+      "found": "2026-10-16",
+      "expires": "2027-10-16",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-16-sip-stepup",
+      "format": "long",
+      "title": "Raising your SIP every year: what it's really worth",
+      "category": "sip",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_explainer"
+      ],
+      "angle": "What a yearly increase does to the final number, compared with starting bigger",
+      "why_now": "A step-up is the easiest change a salaried investor can make, and the effect is dramatic and easy to compute.",
+      "outline": [
+        "hook: the gap between a flat SIP and one raised every year",
+        "the setup: same start, one raises with salary",
+        "the flat SIP result",
+        "the stepped-up result",
+        "chart: the two side by side over twenty years",
+        "why a small yearly rise compounds so hard",
+        "the catch: it only works if you automate it",
+        "how to set it up",
+        "recap",
+        "end"
+      ],
+      "maths": "two sips at the same rate, the second standing for the stepped-up contributions, plus one inflation for context",
+      "verify": [
+        "That the step-up percentage used is realistic against typical salary growth"
+      ],
+      "sources": [],
+      "found": "2026-10-16",
+      "expires": "2027-10-16",
+      "status": "new"
+    }
+  ]
 }

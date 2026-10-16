@@ -20,12 +20,15 @@ export const slotKey = (d: Date) => d.toISOString().slice(0, 16);
  * The next free upload slot: one of `times` (IST, any order) on the first day from today that is at
  * least `leadMinutes` away, not already used (`taken` holds slot keys of existing uploads), and on
  * a day that has fewer uploads (`perDay`) than there are slots. So never more than `times.length`
- * uploads a day.
+ * uploads a day. `days`, when given, limits it to those IST weekdays (0 = Sunday), which is how
+ * long videos go out on set days.
  */
-export function nextSlot(now: Date, times: string[], taken: Set<string>, perDay: Map<string, number>, leadMinutes = 30): Date {
+export function nextSlot(now: Date, times: string[], taken: Set<string>, perDay: Map<string, number>,
+                         leadMinutes = 30, days?: number[]): Date {
   const sorted = [...new Set(times)].sort();
   for (let i = 0; i < 400; i++) {
     const day = istDay(new Date(now.getTime() + i * DAY_MS));
+    if (days?.length && !days.includes(new Date(`${day}T00:00:00Z`).getUTCDay())) continue;
     if ((perDay.get(day) ?? 0) >= sorted.length) continue;
     for (const time of sorted) {
       const slot = istSlot(day, time);
@@ -37,13 +40,17 @@ export function nextSlot(now: Date, times: string[], taken: Set<string>, perDay:
 
 const DISCLAIMER = "Illustrative only. Not financial advice.";
 
-/** YouTube limits: title ≤100 characters, description ≤5000 bytes, tags ≤500 characters in total. */
-export function youtubeMeta(v: { title: string; description: string; tags: string[] }, disclaimer = DISCLAIMER): { title: string; description: string; tags: string[] } {
+/**
+ * YouTube limits: title ≤100 characters, description ≤5000 bytes, tags ≤500 characters in total.
+ * Only a Short gets the #Shorts tag; putting it on a landscape video would mislabel it.
+ */
+export function youtubeMeta(v: { title: string; description: string; tags: string[] }, disclaimer = DISCLAIMER,
+                            format: "short" | "long" = "short"): { title: string; description: string; tags: string[] } {
   const clean = (s: string) => s.replace(/[<>]/g, "").trim();
   let title = clean(v.title);
   if (title.length > 100) title = `${title.slice(0, 99).trimEnd()}…`;
 
-  const hashtags = [...new Set(["Shorts", ...v.tags].map((t) => t.replace(/^#/, "").replace(/\s+/g, "")).filter(Boolean))];
+  const hashtags = [...new Set([...(format === "short" ? ["Shorts"] : []), ...v.tags].map((t) => t.replace(/^#/, "").replace(/\s+/g, "")).filter(Boolean))];
   let description = clean(v.description);
   if (!description.includes(disclaimer)) description = `${description}\n\n${disclaimer}`.trim();
   description = `${description}\n\n${hashtags.map((t) => `#${t}`).join(" ")}`;

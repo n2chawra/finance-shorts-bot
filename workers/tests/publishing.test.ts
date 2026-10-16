@@ -59,3 +59,32 @@ test("many long tags are cut to 500 characters", () => {
   const m = youtubeMeta({ title: "t", description: "d", tags: Array.from({ length: 60 }, (_, i) => `longtagnumber${i}`) });
   assert.ok(m.tags.reduce((a, t) => a + t.length + 1, 0) <= 501);
 });
+
+// ---------------- long-form slots ----------------
+
+test("long videos only go out on their own days", () => {
+  const days = [2, 4, 6];   // Tue, Thu, Sat
+  // Wednesday 2026-10-14 09:00 IST: the next long slot is Thursday 20:07
+  const slot = nextSlot(at("2026-10-14T03:30:00Z"), ["20:07"], ...none(), 30, days);
+  assert.equal(slot.toISOString(), "2026-10-15T14:37:00.000Z");   // 20:07 IST Thu
+  assert.equal(istDay(slot), "2026-10-15");
+  // on a Thursday before the slot, it is today
+  assert.equal(istDay(nextSlot(at("2026-10-15T04:00:00Z"), ["20:07"], ...none(), 30, days)), "2026-10-15");
+  // once Thursday's slot is taken, the next is Saturday
+  const taken = new Set([slotKey(at("2026-10-15T14:37:00Z"))]);
+  const used = new Map([["2026-10-15", 1]]);
+  assert.equal(istDay(nextSlot(at("2026-10-15T04:00:00Z"), ["20:07"], taken, used, 30, days)), "2026-10-17");
+});
+
+test("without a day filter every day is a candidate, as before", () => {
+  assert.equal(istDay(nextSlot(at("2026-10-14T03:30:00Z"), ["20:07"], ...none())), "2026-10-14");
+});
+
+test("only Shorts are tagged #Shorts", () => {
+  const v = { title: "What a SIP really returns", description: "A look at the numbers.", tags: ["SIP"] };
+  assert.ok(youtubeMeta(v, undefined, "short").tags.includes("Shorts"));
+  assert.ok(youtubeMeta(v).tags.includes("Shorts"));                        // defaults to short
+  assert.ok(!youtubeMeta(v, undefined, "long").tags.includes("Shorts"));
+  assert.ok(!youtubeMeta(v, undefined, "long").description.includes("#Shorts"));
+  assert.ok(youtubeMeta(v, undefined, "long").description.includes("Illustrative only"));
+});

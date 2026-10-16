@@ -70,6 +70,7 @@ model Video {
   topicId       String
   topic         Topic       @relation(fields: [topicId], references: [id])
   status        VideoStatus
+  format        String      @default("short") // "short" (Shorts) or "long" (landscape explainer)
   failReason    String?
   script        Json
   style         Json
@@ -89,7 +90,7 @@ model Video {
   upload        Upload?
   agentRuns     AgentRun[]
 
-  @@index([status, queuePosition])
+  @@index([status, format, queuePosition])
 }
 
 model QaCheck {

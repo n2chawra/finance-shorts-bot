@@ -15,6 +15,8 @@ const IST_OFFSET = "+05:30";
 
 export const DEFAULT_SETTINGS: Settings = {
   uploadTimes: ["12:37", "19:07"], backlogCap: 30, lengthMinSec: 30, lengthMaxSec: 45,
+  longUploadTimes: ["20:07"], longUploadDays: [2, 4, 6], longLengthMinSec: 300, longLengthMaxSec: 900,
+  longPerWeek: 2, longBacklogCap: 4,
   disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
   generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
   alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },
@@ -52,6 +54,7 @@ function toVideo(v: VideoRow): Video {
   const style = (v.style ?? {}) as Partial<Video["style"]>;
   return {
     id: v.id, templateId: v.templateId, topic: { title: v.topic.title, category: v.topic.category }, status: v.status,
+    format: v.format === "long" ? "long" : "short",
     failReason: v.failReason, title: v.title, description: v.description, tags: v.tags, durationSec: v.durationSec,
     style: { palette: style.palette ?? "—", genre: style.genre ?? "—", key: style.key ?? "—", bpm: style.bpm ?? 0, voice: style.voice ?? null },
     thumbnailUrl: `/api/media/${v.id}/thumbnail`, previewUrl: `/api/media/${v.id}/preview`, fileUrl: `/api/media/${v.id}/video`,

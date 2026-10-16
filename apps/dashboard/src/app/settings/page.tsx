@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, Bot, Film, Plus, Sparkles, Upload, X } from "lucide-react";
+import { Bell, Bot, Clapperboard, Film, Plus, Sparkles, Upload, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
@@ -21,10 +21,13 @@ function Row({ label, hint, children }: { label: string; hint?: string; children
 const SECTIONS = [
   { id: "generation", label: "Generation", icon: Bot },
   { id: "uploads", label: "Uploads", icon: Upload },
+  { id: "longform", label: "Long videos", icon: Clapperboard },
   { id: "videos", label: "Videos", icon: Film },
   { id: "agents", label: "Agents", icon: Sparkles },
   { id: "alerts", label: "Alerts", icon: Bell },
 ];
+
+const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function SettingsPage() {
   const { data, error, isLoading } = useSettings();
@@ -100,6 +103,45 @@ export default function SettingsPage() {
                     <Button size="sm" tone="ghost" icon={Plus} onClick={() => set({ uploadTimes: [...form.uploadTimes, "21:07"] })}>Add a time</Button>
                   )}
                 </span>
+              </Row>
+            </Card>
+          </section>
+
+          <section id="longform" className="scroll-mt-20">
+            <Card title="Long videos" description="The 8-11 minute explainers the Studio agent makes">
+              <Row label="Long videos a week" hint="How many Studio makes per IST week. 0 switches long-form off entirely.">
+                <input type="number" min={0} max={7} required aria-label="Long videos a week" className={fieldClass}
+                  value={form.longPerWeek} onChange={(e) => set({ longPerWeek: int(e.target.value) })} />
+              </Row>
+              <Row label="Upload days" hint="Which days a finished long video goes out.">
+                <span className="flex flex-wrap gap-1.5">
+                  {DAY_NAMES.map((name, day) => {
+                    const on = form.longUploadDays.includes(day);
+                    return (
+                      <Button key={day} size="sm" tone={on ? "primary" : "ghost"}
+                        onClick={() => set({ longUploadDays: on ? form.longUploadDays.filter((d) => d !== day) : [...form.longUploadDays, day].sort() })}>
+                        {name}
+                      </Button>
+                    );
+                  })}
+                </span>
+              </Row>
+              <Row label="Upload time" hint="IST, on each of those days. Separate from the Shorts slots.">
+                <input type="time" required aria-label="Long upload time" className={fieldClass}
+                  value={form.longUploadTimes[0] ?? "20:07"} onChange={(e) => set({ longUploadTimes: [e.target.value] })} />
+              </Row>
+              <Row label="Length range" hint="Seconds. A long video outside this range fails QA.">
+                <span className="flex w-full items-center gap-2">
+                  <input type="number" min={60} max={3600} required aria-label="Minimum long length in seconds" className={fieldClass}
+                    value={form.longLengthMinSec} onChange={(e) => set({ longLengthMinSec: int(e.target.value) })} />
+                  <span className="text-muted">to</span>
+                  <input type="number" min={60} max={3600} required aria-label="Maximum long length in seconds" className={fieldClass}
+                    value={form.longLengthMaxSec} onChange={(e) => set({ longLengthMaxSec: int(e.target.value) })} />
+                </span>
+              </Row>
+              <Row label="Backlog cap" hint="Studio stops making more once this many long videos are waiting.">
+                <input type="number" min={1} max={20} required aria-label="Long backlog cap" className={fieldClass}
+                  value={form.longBacklogCap} onChange={(e) => set({ longBacklogCap: int(e.target.value) })} />
               </Row>
             </Card>
           </section>

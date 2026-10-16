@@ -114,6 +114,8 @@ function build(): Store {
   const today = istDay(now);
   const settings: Settings = {
     uploadTimes: ["12:37", "19:07"], backlogCap: 30, lengthMinSec: 30, lengthMaxSec: 45,
+    longUploadTimes: ["20:07"], longUploadDays: [2, 4, 6], longLengthMinSec: 300, longLengthMaxSec: 900,
+    longPerWeek: 2, longBacklogCap: 4,
     disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
     generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
     alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },
@@ -176,7 +178,7 @@ function build(): Store {
     const views = stats.reduce((s, x) => s + x.views, 0);
     const failedAtQa = failAt === "qa_review", failedAtFact = failAt === "fact_review";
     videos.push({
-      id, templateId: tpl.id, topic: { title, category }, status, failReason, title,
+      id, templateId: tpl.id, topic: { title, category }, status, format: "short", failReason, title,
       description: `${title}. ${settings.disclaimer} #shorts #personalfinance #${category.replace("_", "")}`,
       tags: ["shorts", "personalfinance", category.replace("_", ""), "india"],
       durationSec: tpl.durationSec,
