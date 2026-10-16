@@ -77,4 +77,5 @@ test("notifications explain how to fix each problem", async ({ page }) => {
   await signIn(page);
   await page.goto("/notifications");
   await expect(page.getByText("How to fix").first()).toBeVisible();
+  await expect(page.getByRole("button", { name: "Mark resolved" }).first()).toBeVisible();
 });

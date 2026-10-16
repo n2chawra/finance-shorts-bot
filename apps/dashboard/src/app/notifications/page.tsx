@@ -32,11 +32,11 @@ function Item({ n, onResolve, onReopen, busy }: { n: Notification; onResolve?: (
   return (
     <motion.li layout initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, height: 0, marginBottom: 0 }}
       className={`overflow-hidden rounded-xl border bg-surface shadow-card ${s.ring} ${n.resolvedAt ? "opacity-70" : ""}`}>
-      <div className="flex items-start gap-3 p-4">
+      <div className="flex flex-wrap items-start gap-x-3 gap-y-2 p-4 sm:flex-nowrap">
         <span className={`grid size-8 shrink-0 place-items-center rounded-lg ${n.severity === "critical" ? "bg-critical-soft text-critical" : n.severity === "warning" ? "bg-warning-soft text-warning-text" : "bg-info-soft text-info-text"}`}>
           <s.icon aria-hidden className="size-4" />
         </span>
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 basis-[calc(100%-2.75rem)] sm:basis-0">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-[15px] font-medium">{n.title}</h3>
             {!n.seenAt && !n.resolvedAt && <span className="size-1.5 rounded-full bg-brand" aria-label="Unread" />}
@@ -54,8 +54,8 @@ function Item({ n, onResolve, onReopen, busy }: { n: Notification; onResolve?: (
             </div>
           )}
         </div>
-        <div className="shrink-0">
-          {onResolve && <Button size="sm" icon={CircleCheck} disabled={busy} onClick={onResolve} title="Mark this as fixed. It comes back if the problem is still there on the next check.">Resolved</Button>}
+        <div className="w-full shrink-0 pl-11 sm:w-auto sm:pl-0">
+          {onResolve && <Button size="sm" icon={CircleCheck} disabled={busy} onClick={onResolve} title="Mark this as fixed. It comes back if the problem is still there on the next check.">Mark resolved</Button>}
           {onReopen && <Button size="sm" tone="ghost" icon={RotateCcw} disabled={busy} onClick={onReopen}>Reopen</Button>}
         </div>
       </div>
