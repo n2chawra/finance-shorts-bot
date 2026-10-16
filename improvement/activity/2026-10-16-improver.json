@@ -1,0 +1,14 @@
+{
+  "agent": "improver",
+  "day": "2026-10-16",
+  "summary": "Waited. There is no performance data yet, so no experiment can be judged or sensibly started.",
+  "decision": "waited",
+  "why": "0 videos have 48h data and uploads are paused in settings. The money_leak_meter failures on 10-14 were already fixed by commit 7856d13; the 10-15 money_leak_meter video passed QA. Both open proposals are low-confidence topic/hook ideas that would not give a clean A/B signal yet.",
+  "findings": [
+    {"title": "No data", "detail": "Videos with 48h data: 0. All four templates have fewer than 6 videos with data."},
+    {"title": "Recurring failure already fixed", "detail": "Label-on-bar and year-counter off-by-one in money_leak_meter were fixed on 10-14 (7856d13); no repeat since."}
+  ],
+  "changes": [],
+  "nextCheck": "2026-10-23",
+  "links": []
+}
