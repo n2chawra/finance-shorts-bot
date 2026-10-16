@@ -10,7 +10,7 @@ content and A/B experiments are its job). Fix what is wrong; don't redesign.
 
 ## 0. Prepare
 ```
-git checkout main && git pull --ff-only
+bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
 DAY=$(TZ=Asia/Kolkata date -d '+2 hours' +%F)   # the night's date: the morning that follows
 for p in python python3 /usr/bin/python3; do $p -c "import PIL, numpy, scipy, jsonschema, pytest" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
 (cd workers && npm ci && npm run generate) && (cd apps/dashboard && npm ci)
@@ -83,7 +83,7 @@ Never refactor for taste alone, never reformat whole files, never change public 
 ## 4. Ship (at most two branches)
 - Branch 1 `agent/auditor/$DAY`: data and bug fixes, with their tests.
 - Branch 2 `agent/auditor/$DAY-2` (optional): the refactor, branched from `origin/main`, touching no
-  file branch 1 touches.
+  file branch 1 touches; push it with `git push origin HEAD:refs/heads/agent/auditor/$DAY-2`.
 Both must pass the quick checks above. The guard allows you `generator/`, `renderer/`, `examples/`,
 `apps/dashboard/src` (including `lib/live-stats.ts`), `apps/dashboard/e2e`, `workers/` and your own
 `improvement/auditor/` files, at most 600 changed lines per branch and 2 merges a night. It blocks:
@@ -99,6 +99,6 @@ if you shipped a fix, `nothing` if everything was clean) and rewrite
 ```
 git add -A improvement/auditor improvement/activity/$DAY-auditor.json improvement/notifications/auditor.json <your code files>
 git commit -q -m "Auditor $DAY: <one-line summary>"
-git push origin HEAD
+git push origin HEAD:refs/heads/agent/auditor/$DAY
 ```
 Keep the run lean (Pro plan): read only the files you need, no web searches. End with a 5-line report.

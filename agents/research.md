@@ -10,7 +10,7 @@ write a short report and stop.
 
 ## 0. Start
 ```
-git checkout main && git pull --ff-only
+bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
 DAY=$(TZ=Asia/Kolkata date -d '+2 hours' +%F); DOW=$(TZ=Asia/Kolkata date -d '+2 hours' +%a)   # the night's date: the morning that follows
 ```
 Read `config/settings.json`: if `agents.paused` or `agents.research` is false, write only the
@@ -76,9 +76,9 @@ Write `improvement/activity/<DAY>-research.json` (format in policy.md: decision 
 added proposals, otherwise `nothing`; findings = top 3–5 with links) and rewrite
 `improvement/notifications/research.json`. Then:
 ```
-git checkout -b agent/research/$DAY
+git checkout -B agent/research/$DAY
 git add improvement/research improvement/activity improvement/notifications/research.json
 git commit -q -m "Research $DAY: <topic>, <n> proposals"
-git push origin HEAD
+git push origin HEAD:refs/heads/agent/research/$DAY
 ```
 End with a 5-line report: topic, proposals added, Claude updates, anything for the owner.

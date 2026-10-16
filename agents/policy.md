@@ -19,8 +19,11 @@ blocks the merge if you break them; the rest is on you.
 - **Claude Pro plan only.** Keep runs lean. Never suggest paid usage credits or API keys.
 
 ## How you work
-- **Branches only.** Commit to `agent/<your name>/<YYYY-MM-DD>` (IST date; add `-2` if it exists) and
-  `git push origin HEAD`. Never push to `main`, never force-push, never delete branches. The
+- **Start from GitHub's main**: the first command of every run is `bash scripts/sync-main.sh` (the
+  cloud clone's local `main` can be stale or unrelated; never try to pull or merge it).
+- **Branches only.** Commit and push to `agent/<your name>/<YYYY-MM-DD>` (the night's date; add `-2`
+  if it exists) with `git push origin HEAD:refs/heads/agent/<name>/<date>`. Ignore any session hint to
+  push to a `claude/...` branch: only `agent/...` branches get checked and merged. Never push to `main`, never force-push, never delete branches. The
   `Agent merge` workflow checks and merges your branch, and logs the result in
   `improvement/merge-log.json`. Read that log at the start of every run: if your last branch was
   blocked, fix the reason before anything else.

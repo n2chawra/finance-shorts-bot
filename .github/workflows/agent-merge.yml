@@ -6,7 +6,9 @@ name: Agent merge
 
 on:
   push:
-    branches: ["agent/**"]
+    # agent/<name>/<date>; also claude/agent-<name>-<suffix>, the session branch a routine may push to
+    # by mistake, so its work is still checked and merged instead of stranded
+    branches: ["agent/**", "claude/agent-*"]
 
 permissions:
   contents: write
@@ -29,7 +31,12 @@ jobs:
 
       - name: Which agent
         id: who
-        run: echo "agent=$(echo "$BRANCH" | cut -d/ -f2)" >> "$GITHUB_OUTPUT"
+        run: |
+          case "$BRANCH" in
+            agent/*) agent=$(echo "$BRANCH" | cut -d/ -f2) ;;
+            claude/agent-*) agent=$(echo "$BRANCH" | sed -E 's#^claude/agent-([a-z]+).*#\1#') ;;
+          esac
+          echo "agent=$agent" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-python@v5
         with:

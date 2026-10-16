@@ -7,7 +7,7 @@ day: Overview, Queue, the video page (download, copy, mark as uploaded), Notific
 
 ## 0. Prepare
 ```
-git checkout main && git pull --ff-only
+bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
 DAY=$(TZ=Asia/Kolkata date +%F); DOW=$(TZ=Asia/Kolkata date +%a)
 cd apps/dashboard && npm ci
 ```
@@ -55,10 +55,10 @@ Write `improvement/dashboard/<DAY>.md` (bugs found, what you changed and why, id
 `improvement/notifications/dashboard.json` (e.g. the live site is down, a key the dashboard needs is
 missing). Then from the repo root:
 ```
-git checkout -b agent/dashboard/$DAY
+git checkout -B agent/dashboard/$DAY
 git add apps/dashboard/src apps/dashboard/e2e apps/dashboard/package.json apps/dashboard/package-lock.json improvement/dashboard improvement/activity improvement/notifications/dashboard.json
 git commit -q -m "Dashboard $DAY: <one-line summary>"
-git push origin HEAD
+git push origin HEAD:refs/heads/agent/dashboard/$DAY
 ```
 The `Agent merge` workflow re-runs the build and smoke tests before merging; Netlify deploys from
 main. End with a 5-line report.

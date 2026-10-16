@@ -9,7 +9,7 @@ run the test suite, do not explore the codebase, and do not improve things you w
 ## 0. Prepare
 
 ```
-git checkout main && git pull --ff-only
+bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
 for p in python python3 /usr/bin/python3; do $p -c "import PIL, numpy, scipy, jsonschema" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
 ffmpeg -version | head -1
 ```

@@ -8,7 +8,7 @@ the data isn't in yet; say so and stop early.
 
 ## 0. Prepare
 ```
-git checkout main && git pull --ff-only
+bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
 DAY=$(TZ=Asia/Kolkata date +%F); DOW=$(TZ=Asia/Kolkata date +%a)
 for p in python python3 /usr/bin/python3; do $p -c "import PIL, numpy, scipy, jsonschema" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
 ```
@@ -106,10 +106,10 @@ Write `improvement/activity/<DAY>-improver.json` (policy.md format: findings = t
 numbers; changes = what you changed with the experiment id) and rewrite
 `improvement/notifications/improver.json`. Then:
 ```
-git checkout -b agent/improver/$DAY
+git checkout -B agent/improver/$DAY
 git add -A generator renderer examples config/experiments.json improvement
 git commit -q -m "Improver $DAY: <one-line summary>"
-git push origin HEAD
+git push origin HEAD:refs/heads/agent/improver/$DAY
 ```
 Never `git add` anything outside your lane (the guard will block the whole branch). End with a
 5-line report: verdicts applied, change made (or why you waited), next check date, owner items.
