@@ -10,6 +10,11 @@
       "day": "2026-10-15",
       "shipped": 3,
       "failed": 0
+    },
+    {
+      "day": "2026-10-16",
+      "shipped": 1,
+      "failed": 0
     }
   ],
   "videos": [
@@ -59,6 +64,13 @@
       "id": "v-20261015-03",
       "day": "2026-10-15",
       "template": "money_leak_meter",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261016-01",
+      "day": "2026-10-16",
+      "template": "quiz_countdown",
       "status": "shipped",
       "reason": null
     }
