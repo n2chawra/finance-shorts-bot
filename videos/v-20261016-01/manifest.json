@@ -1,0 +1,141 @@
+{
+  "id": "v-20261016-01",
+  "createdAt": "2026-10-16T03:41:08.590175+00:00",
+  "status": "qa_passed",
+  "template": "quiz_countdown",
+  "topic": {
+    "title": "What a one-time ₹2 lakh index fund investment becomes in 15 years",
+    "category": "index_funds"
+  },
+  "title": "What does one ₹2 lakh lump sum turn into in 15 years?",
+  "description": "A one-time ₹2 lakh in an index fund for 15 years, at an assumed 12% a year. Returns are assumptions, not assured. Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#PersonalFinance",
+    "#IndexFund",
+    "#MoneyQuiz"
+  ],
+  "hookStyle": "question",
+  "cta": "Comment your guess before the reveal",
+  "seed": 3917,
+  "style": {
+    "palette": "ocean",
+    "genre": "lofi",
+    "key": "F",
+    "bpm": 88
+  },
+  "durationSec": 48,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.8
+  },
+  "experiments": {},
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "9 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Lump-sum 12% assumption stated on screen and in description as assumed, within 12% cap; no product/fund named, no guarantee language, neutral tone, description ends with disclaimer. Note: figures are pre-tax and ignore expense ratio/LTCG, acceptable as labelled illustration."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "8 frames clean: QUIZ hook at 0.6s, question thumbnail, option cards, countdown, answer reveal A=10.9L, bar chart 2.0L+8.9L=10.9L (5.5x) consistent, disclaimer on last frame; 48s, peak -1.0 dB, mean -18.8 dB, no layout problems. Minor: 26s caption sits close above character head, 10s/46s headline lines near side margins but not cut off."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-10-16T03:38:22.709191+00:00",
+      "finishedAt": "2026-10-16T03:38:22.709191+00:00",
+      "notes": [
+        "title opens with 'can you guess', already used by v-20261015-01"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-16T03:38:27.723516+00:00",
+      "finishedAt": "2026-10-16T03:38:27.723516+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-16T03:38:34.901902+00:00",
+      "finishedAt": "2026-10-16T03:38:34.901902+00:00",
+      "notes": [
+        "9 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-16T03:38:42.871131+00:00",
+      "finishedAt": "2026-10-16T03:38:42.871131+00:00",
+      "notes": [
+        "9 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-16T03:39:02.189197+00:00",
+      "finishedAt": "2026-10-16T03:39:02.189197+00:00",
+      "notes": [
+        "Lump-sum 12% assumption stated on screen and in description as assumed, within 12% cap; no product/fund named, no guarantee language, neutral tone, description ends with disclaimer. Note: figures are pre-tax and ignore expense ratio/LTCG, acceptable as labelled illustration."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-16T03:39:14.265274+00:00",
+      "finishedAt": "2026-10-16T03:40:40.373216+00:00",
+      "notes": [
+        "48 s, ocean/lofi, peak -1.0 dB, mean -18.8 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-16T03:40:58.550983+00:00",
+      "finishedAt": "2026-10-16T03:40:58.550983+00:00",
+      "notes": [
+        "8 frames clean: QUIZ hook at 0.6s, question thumbnail, option cards, countdown, answer reveal A=10.9L, bar chart 2.0L+8.9L=10.9L (5.5x) consistent, disclaimer on last frame; 48s, peak -1.0 dB, mean -18.8 dB, no layout problems. Minor: 26s caption sits close above character head, 10s/46s headline lines near side margins but not cut off."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-16T03:41:08.590254+00:00",
+      "finishedAt": "2026-10-16T03:41:08.590254+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261016-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261016-01"
+  }
+}

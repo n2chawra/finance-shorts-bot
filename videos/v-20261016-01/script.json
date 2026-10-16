@@ -1,0 +1,29 @@
+{
+  "template": "quiz_countdown",
+  "seed": 3917,
+  "style": { "palette": "ocean", "genre": "lofi", "key": "F", "bpm": 88 },
+  "kind": "lumpsum",
+  "amount": 200000,
+  "years": 15,
+  "annual_return_pct": 12,
+  "distractors": [0.5, 1.6],
+  "text": {
+    "hook_line": "Can you guess this one?",
+    "q_title": "One-time investment quiz",
+    "q_line1": "{amount} invested once",
+    "q_line2": "left alone for {years} years",
+    "q_line3": "at an assumed {rate} a year",
+    "question": "What is it worth then?",
+    "q_cta": "Make your guess",
+    "opt_cta": "Pick one before time runs out",
+    "reveal_line": "The answer is {letter}!",
+    "reveal_note": "{answer_long} from {amount} once",
+    "why_title": "Where does the money come from?",
+    "why_line": "It grows to {ratio} what you put in",
+    "end_line1": "You add money once",
+    "end_line2": "time does the rest",
+    "end_punch": "Patience is the trick.",
+    "end_cta": "Comment your guess before the reveal",
+    "end_follow": "Follow for the next quiz"
+  }
+}
