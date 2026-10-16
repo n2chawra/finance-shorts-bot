@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, CalendarClock, ExternalLink, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Scale, Search, ShieldAlert, ShieldCheck, Wrench } from "lucide-react";
+import { Bot, CalendarClock, Clock, ExternalLink, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Scale, Search, ShieldAlert, ShieldCheck, Wrench } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Tabs } from "radix-ui";
@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, Stat, type Tone } from "@/components/ui";
 import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
 import { useAgents, useSettings } from "@/lib/queries";
+import { fmtMinutes, fmtRunWindow, summarizeRunTimes } from "@/lib/run-times";
 import type { Activity, Agents } from "@/lib/schemas";
 
 const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeof Bot; time: string }> = {
@@ -38,6 +39,7 @@ function ActivityCard({ a }: { a: Activity }) {
             <h3 className="text-sm font-medium">{meta.name}</h3>
             <Badge tone={DECISION[a.decision].tone} dot>{DECISION[a.decision].label}</Badge>
           </div>
+          {a.startedAt && a.finishedAt && <p className="mt-0.5 inline-flex items-center gap-1 text-xs text-muted"><Clock aria-hidden className="size-3" />{fmtRunWindow(a.startedAt, a.finishedAt)}</p>}
           <p className="mt-1.5 text-[13px] leading-relaxed">{a.summary}</p>
           <p className="mt-1.5 text-[13px] leading-relaxed text-ink2"><span className="font-medium text-ink">Why: </span>{a.why}</p>
 
@@ -108,12 +110,34 @@ function DataAuditCard({ audit }: { audit: Agents["dataAudit"] }) {
   );
 }
 
+/** How long each routine ran last night, and the 7-night average and max. Needs startedAt/finishedAt from the agents. */
+function RunTimesCard({ data }: { data: Agents }) {
+  const rows = summarizeRunTimes(data.activity, data.videoRuns, { auditor: "Auditor", research: "Research", improver: "Improver", dashboard: "Dashboard" });
+  if (!rows.some((r) => r.last)) return null;
+  return (
+    <Card title="Run times" icon={Clock} description="Last night, and the average and longest of the last 7 nights. Each run should end before the next one starts.">
+      <ul className="divide-y divide-line text-[13px]">
+        {rows.map((r) => (
+          <li key={r.key} className="grid grid-cols-[1fr_auto] gap-x-3 gap-y-0.5 py-2 first:pt-0 last:pb-0 sm:grid-cols-[8rem_1fr_auto]">
+            <span className="font-medium">{r.name}</span>
+            <span className="col-span-2 order-last text-ink2 sm:order-none sm:col-span-1">
+              {r.last ? <>{fmtRunWindow(r.last.start, r.last.end)}{r.last.note ? ` · ${r.last.note}` : ""}</> : "no times recorded yet"}
+            </span>
+            <span className="text-right text-xs text-muted">{r.avg !== null ? `avg ${fmtMinutes(r.avg)} · max ${fmtMinutes(r.max!)} (${r.nights})` : ""}</span>
+          </li>
+        ))}
+      </ul>
+    </Card>
+  );
+}
+
 function ActivityTab({ data }: { data: Agents }) {
   const days = [...new Set(data.activity.map((a) => a.day))].sort().reverse();
   if (!days.length) return <Card><Empty icon={Bot} title="No agent activity yet">Each agent writes a summary here after its nightly run (23:00, 23:47, 06:17 and 07:37 IST).</Empty></Card>;
   return (
     <div className="flex flex-col gap-8">
       <DataAuditCard audit={data.dataAudit} />
+      <RunTimesCard data={data} />
       {days.slice(0, 14).map((day) => (
         <section key={day}>
           <h2 className="mb-3 text-sm font-medium text-ink2">{new Intl.DateTimeFormat("en-IN", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${day}T00:00:00Z`))}</h2>

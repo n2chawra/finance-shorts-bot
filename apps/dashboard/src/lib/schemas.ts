@@ -217,6 +217,8 @@ export const ActivitySchema = z.object({
   id: z.string(),
   agent: z.enum(AGENTS),
   day: z.string(),
+  startedAt: z.string().nullish(),
+  finishedAt: z.string().nullish(),
   summary: z.string(),
   decision: z.enum(["acted", "waited", "blocked", "nothing"]),
   why: z.string(),
@@ -247,8 +249,12 @@ const DataAuditSchema = z.looseObject({
   summary: z.object({ videos: z.number(), checked: z.number(), error: z.number(), warning: z.number(), info: z.number(), owner: z.number() }),
   issues: z.array(z.object({ kind: z.string(), severity: z.enum(["error", "warning", "info", "owner"]), videoId: z.string().optional(), detail: z.string() })),
 });
+/** One video run (the 04:07 main run or the 09:07 spare): first step start to last step end, from AgentRun rows */
+export const VideoRunSchema = z.object({ day: z.string(), start: z.string(), end: z.string(), videos: z.number() });
+export type VideoRun = z.infer<typeof VideoRunSchema>;
 export const AgentsSchema = z.object({
   activity: z.array(ActivitySchema),
+  videoRuns: z.array(VideoRunSchema).default([]),
   experiments: z.array(ExperimentRowSchema),
   proposals: z.array(ProposalRowSchema),
   merges: z.array(MergeRowSchema),

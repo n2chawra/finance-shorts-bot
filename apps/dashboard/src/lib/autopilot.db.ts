@@ -2,6 +2,7 @@
 import type { Notification as Row } from "@prisma/client";
 
 import { prisma } from "./prisma";
+import { clusterVideoRuns } from "./run-times";
 import { AgentsSchema, ActivitySchema } from "./schemas";
 import type { Agents, Notification, Notifications } from "./schemas";
 
@@ -33,18 +34,20 @@ export async function notificationAction(ids: string[], action: "seen" | "resolv
 const listOf = (v: unknown, key: string): unknown[] => (v && typeof v === "object" && Array.isArray((v as Record<string, unknown>)[key]) ? (v as Record<string, unknown[]>)[key] : []);
 
 export async function getAgents(): Promise<Agents> {
-  const [rows, docs] = await Promise.all([
+  const [rows, docs, steps] = await Promise.all([
     prisma.agentActivity.findMany({ orderBy: [{ day: "desc" }, { agent: "asc" }], take: 120 }),
     prisma.repoDoc.findMany({ where: { key: { in: ["experimentLedger", "experiments", "proposals", "mergeLog", "dashboardBacklog", "auditorBacklog", "dataAudit"] } } }),
+    prisma.agentRun.findMany({ where: { videoId: { not: null }, startedAt: { gte: new Date(Date.now() - 16 * 86_400_000) } }, select: { videoId: true, startedAt: true, finishedAt: true } }),
   ]);
   const doc = Object.fromEntries(docs.map((d) => [d.key, d.value]));
   // the ledger has the detail; the live config has the status the renderer actually uses
   const live = new Map(listOf(doc.experiments, "experiments").map((e) => [(e as { id: string }).id, e as Record<string, unknown>]));
   const experiments = listOf(doc.experimentLedger, "experiments").map((e) => ({ ...(e as object), ...(live.get((e as { id: string }).id) ?? {}) }));
   for (const [id, e] of live) if (!experiments.some((x) => (x as { id: string }).id === id)) experiments.push(e);
-  const activity = rows.map((r) => ActivitySchema.safeParse({ ...r, nextCheck: r.nextCheck ?? null })).filter((p) => p.success).map((p) => p.data!);
+  const activity = rows.map((r) => ActivitySchema.safeParse({ ...r, nextCheck: r.nextCheck ?? null, startedAt: r.startedAt?.toISOString() ?? null, finishedAt: r.finishedAt?.toISOString() ?? null })).filter((p) => p.success).map((p) => p.data!);
   const parsed = AgentsSchema.safeParse({
     activity,
+    videoRuns: clusterVideoRuns(steps.map((x) => ({ videoId: x.videoId!, start: x.startedAt, end: x.finishedAt ?? x.startedAt }))),
     experiments,
     proposals: listOf(doc.proposals, "proposals"),
     merges: listOf(doc.mergeLog, "merges").slice(-60).reverse(),
@@ -54,7 +57,7 @@ export async function getAgents(): Promise<Agents> {
     ],
     dataAudit: doc.dataAudit ?? null,
   });
-  return parsed.success ? parsed.data : { activity, experiments: [], proposals: [], merges: [], backlog: [], dataAudit: null };
+  return parsed.success ? parsed.data : { activity, videoRuns: [], experiments: [], proposals: [], merges: [], backlog: [], dataAudit: null };
 }
 
 /** Raise or update an owner notification from the dashboard server (e.g. a key it relies on failed). */
