@@ -54,12 +54,13 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 
 Add `"voice": {"<scene>": "<line>", ...}` to script.json. Scene names come from
 `python -m generator.run figures <id>` (`scenes`: each scene's speaking window in seconds). The
-voice is a neural voice (Indian-English or American, rotated per video), at about 160 words a minute.
+voice is a neural voice (Indian-English or American, rotated per video), at about 180 words a minute (brisk: the videos are fast-paced).
 
 - **Same number rules as the screen**: no digits and no ₹ sign; numbers only through the
   README's `{placeholders}`, which code reads aloud ("₹12.4 L" → "12.4 lakh rupees"). Never say a
   number another way.
-- **Fit the window**: about 2.6 words per second of window, so a 7 s window holds about 18 words.
+- **Fit the window**: about 2.8 words per second of window, so a 5 s window holds about 14 words.
+  Windows are short (the video plays at 1.35×): one or two short sentences per scene, no filler.
   Code speeds a line up a little if needed and fails it if it still doesn't fit.
 - **Talk like a person, not a caption**: the voice carries the story (the setup, the stakes, the
   "why"), the screen shows the numbers. Don't read the on-screen lines word for word. Short

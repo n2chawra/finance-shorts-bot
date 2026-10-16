@@ -24,7 +24,7 @@ Read `renderer/templates/*/README.md` and `history/template_work.json`.
 
 Follow `renderer/templates/quiz_countdown/` as the model.
 
-- `template.py`: a subclass of `renderer.engine.video.Video`. Set `duration` (45–60 s),
+- `template.py`: a subclass of `renderer.engine.video.Video`. Set `duration` (a 48–60 s story timeline; the engine plays it at `TEMPO` 1.35×, so 35–45 s on screen),
   `thumbnail_time` and eight `key_times`. Fill `self.scenes`, `self.impacts`, `self.punches` and
   `self.flashes`. Implement `audio()` with `self.mixer(...)` and `self.scene_whooshes(...)`.
 - Compute every displayed figure in `__init__` from the script inputs, and pass them all to

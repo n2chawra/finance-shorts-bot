@@ -26,8 +26,8 @@ export type Settings = z.infer<typeof SettingsSchema>;
 export const DEFAULT_SETTINGS: Settings = {
   uploadTimes: ["12:37", "19:07"],
   backlogCap: 30,
-  lengthMinSec: 45,
-  lengthMaxSec: 60,
+  lengthMinSec: 30,
+  lengthMaxSec: 45,
   disclaimer: "Illustrative only. Not financial advice.",
   uploadsPaused: false,
   generationPaused: false,

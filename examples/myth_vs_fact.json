@@ -30,11 +30,11 @@
     "end_follow": "Follow for more money myths"
   },
   "voice": {
-    "hook": "Your money is safe in a savings account. Or is it?",
-    "setup": "Say you park {amount_long} there. It earns {a_rate} a year. Feels safe.",
-    "bust": "But prices rise faster.",
-    "race": "Prices go up about {b_rate} a year. Your money grows at {a_rate}. Watch the gap open, year after year.",
-    "result": "After {years} years, {lost_pct} of your buying power is simply gone.",
+    "hook": "Savings accounts are safe. Right?",
+    "setup": "Park {amount_long} there at {a_rate}.",
+    "bust": "Prices rise faster.",
+    "race": "Prices grow about {b_rate} a year. Your money, {a_rate}. Watch the gap open.",
+    "result": "After {years} years, {lost_pct} of its value is gone.",
     "end": "Safe is not the same as growing. Comment grow if this hit you."
   }
 }

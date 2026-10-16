@@ -73,7 +73,7 @@ when YouTube makes it public or when you mark it as uploaded by hand.
 |---|---|---|
 | `uploadTimes` | `12:37`, `19:07` (IST): one upload per time | publish, dashboard |
 | `backlogCap` | 30 | routines (via the settings file) |
-| `lengthMinSec` / `lengthMaxSec` | 45 / 60 | render check, QA |
+| `lengthMinSec` / `lengthMaxSec` | 30 / 45 | render check, QA |
 | `disclaimer` | Illustrative only. Not financial advice. | templates, YouTube description |
 | `uploadsPaused` | false (on while uploading by hand) | publish |
 | `generationPaused` | false | routines |

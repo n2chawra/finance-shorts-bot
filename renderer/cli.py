@@ -61,9 +61,9 @@ def render(video, out: Path, preview: bool = False) -> dict:
     Returns the report that went into render.json. Raises RuntimeError if encoding fails."""
     out.mkdir(parents=True, exist_ok=True)
     video.frame(video.thumbnail_time).save(out / "thumbnail.png")
-    contact_sheet([(t, video.frame(t)) for t in video.key_times]).save(out / "preview.png")
+    contact_sheet([(t/video.tempo, video.frame(t)) for t in video.key_times]).save(out / "preview.png")   # labels in output seconds
     st = video.style
-    report = {"template": type(video).__module__.split(".")[-2], "seed": video.seed, "duration_sec": video.duration,
+    report = {"template": type(video).__module__.split(".")[-2], "seed": video.seed, "duration_sec": round(video.length), "tempo": video.tempo,
               "style": {"palette": st.palette.name, "genre": st.genre, "key": st.key, "bpm": st.bpm},
               "experiments": dict(video.flags),
               "voice": {"name": video.voice_name, "base_speed": video.voice_speed} if video.narrated else None,
@@ -78,7 +78,7 @@ def render(video, out: Path, preview: bool = False) -> dict:
             report["voice"]["lines"] = [{"scene": p.scene, "text": p.text, "start": round(p.start, 2), "seconds": round(p.seconds, 2),
                                          "window": round(p.window, 2), "speed": p.speed} for p in video.spoken]
         try:
-            mux.encode((video.frame(f/FPS) for f in range(int(video.duration*FPS))), wav, out / "video.mp4")
+            mux.encode((video.frame_at(f/FPS) for f in range(round(video.length*FPS))), wav, out / "video.mp4")
         finally:
             wav.unlink(missing_ok=True)
     (out / "render.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

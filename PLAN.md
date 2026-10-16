@@ -258,3 +258,7 @@ Done when: everything above works on a phone.
   fact reviewer confirms each against its URL), plus a computed "what it means for you" example.
   Feed-only templates don't widen the variety window. Improver applies `adopt` directly and treats
   high-priority `template` proposals as template work. Agents page shows the feed.
+- 2026-10-16: Faster videos (owner: "very slow paced"). Engine-wide `TEMPO` 1.35: templates keep
+  their 48–60 s story timeline, the video plays it 1.35× faster (frames, cuts, SFX, ducks, voice
+  windows), so Shorts are now 35–45 s. Voice base speed 1.12–1.22 (max 1.38); length range 30–45 s
+  in code defaults and the live settings; example narration rewritten for the shorter windows.

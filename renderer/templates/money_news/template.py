@@ -152,7 +152,7 @@ class MoneyNews(Video):
     def audio(self) -> Mixer:
         mx = self.mixer([(0.0, HIT, 0.15), (HIT, HIT + 0.8, 0.8)])
         r, place = mx.rng, mx.place
-        place(sfx_riser(r, HIT), 0.0, 0.5)
+        place(sfx_riser(r, self.secs(HIT)), 0.0, 0.5)
         place(sfx_boom(r), HIT, 1.0)
         place(sfx_kaching(), HIT + 0.05, 0.7)
         place(sfx_pop(1.1), 1.3, 0.6)

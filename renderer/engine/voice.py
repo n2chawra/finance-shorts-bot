@@ -30,8 +30,8 @@ from .audio import SR
 # rotated per video. Owner-picked by ear on 2026-10-16: the Indian female voice (the other Indian
 # ones sounded bad) and five American ones.
 VOICES = ("hf_alpha", "af_heart", "af_bella", "am_michael", "am_fenrir", "am_puck")
-BASE_SPEED = (1.05, 1.18)    # per-video base speed range (Kokoro speed, 1.0 ≈ 150 words a minute)
-MAX_SPEED = 1.35
+BASE_SPEED = (1.12, 1.22)    # per-video base speed range (Kokoro speed, 1.0 ≈ 150 words a minute); brisk, to match TEMPO
+MAX_SPEED = 1.38
 MODEL, VOICE_PACK = "kokoro-v1.0.onnx", "voices-v1.0.bin"
 MAX_LINE = 220               # characters per scene line
 LEAD, TAIL = 0.25, 0.35      # default window: from 0.25 s into a scene to 0.35 s before its end

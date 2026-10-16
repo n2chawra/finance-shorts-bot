@@ -9,6 +9,7 @@ import pytest
 from renderer import cli
 from renderer.engine import voice
 from renderer.engine.audio import SR
+from renderer.engine.video import TEMPO
 
 EXAMPLES = Path(__file__).resolve().parents[2] / "examples"
 
@@ -73,9 +74,9 @@ def test_the_voiceover_group_needs_lines() -> None:
 
 
 def test_windows_skip_the_countdown_and_the_pause_before_the_answer() -> None:
-    w = quiz({"hook": "Guess fast."}).voice_windows()
-    assert w["options"] == (12.25, 15.8)     # countdown starts at 16
-    assert w["reveal"][0] == 23.1            # answer lands at 22.6
+    w = quiz({"hook": "Guess fast."}).voice_windows()   # output seconds: story seconds / TEMPO
+    assert w["options"] == pytest.approx((12.25/TEMPO, 15.8/TEMPO))   # countdown starts at story 16
+    assert w["reveal"][0] == pytest.approx(23.1/TEMPO)                # answer lands at story 22.6
 
 
 def test_narrated_mix_places_lines_and_ducks_music() -> None:
@@ -83,15 +84,15 @@ def test_narrated_mix_places_lines_and_ducks_music() -> None:
     v = quiz({"hook": "Most people get this one wrong."})
     mixed = v.soundtrack()
     [p] = v.spoken
-    assert p.scene == "hook" and p.start == 0.25 and p.speed == v.voice_speed
+    assert p.scene == "hook" and p.start == pytest.approx(0.25/TEMPO) and p.speed == v.voice_speed
     i = int(1.0*SR)
     assert not np.allclose(mixed.left[i:i + 100], plain.left[i:i + 100])   # voice added, rest ducked
-    tail = int(45*SR)
+    tail = int(30*SR)
     assert np.allclose(mixed.left[tail:tail + 100], plain.left[tail:tail + 100])   # untouched where silent
 
 
 def test_long_lines_speed_up_then_fail() -> None:
-    v = quiz({"options": " ".join(["word"]*11)})   # 3.55 s window: 11 words need about 4.4 s at 1.0
+    v = quiz({"options": " ".join(["word"]*8)})   # 2.6 s window: 8 words need 3.2 s at 1.0, about 2.7 s at base speed
     v.soundtrack()
     assert 1.1 < v.spoken[0].speed <= voice.MAX_SPEED
     with pytest.raises(ValueError, match="shorten it"):

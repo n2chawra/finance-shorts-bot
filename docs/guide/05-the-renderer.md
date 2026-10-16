@@ -45,7 +45,7 @@ flowchart LR
 
 Each folder in `renderer/templates/<name>/` has:
 
-- **`template.py`**: a subclass of `Video`. It sets `duration` (45–60 s), `thumbnail_time` and
+- **`template.py`**: a subclass of `Video`. It sets `duration` (a 48–60 s story timeline; the engine plays it at `TEMPO` 1.35×, so the video lasts 35–45 s), `thumbnail_time` and
   eight `key_times` (the frames QA sees), lists its scenes as `(start, end, draw_fn)`, and marks
   `impacts`, `punches` and `flashes` (the camera reacts to these, giving a pattern interrupt
   every 3–5 s). It implements `audio()`.

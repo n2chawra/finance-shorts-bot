@@ -200,7 +200,7 @@ class MoneyLeakMeter(Video):
                 place(sfx_tick(r), S_LEAK + t0 + k*0.1, 0.45)
         place(sfx_fail(), S_LEAK + 6.4, 0.8)
         place(sfx_pop(1.0), S_METER + 0.15, 0.6)
-        place(sfx_riser(r, METER_DUR), S_METER + METER_T0, 0.55)
+        place(sfx_riser(r, self.secs(METER_DUR)), S_METER + METER_T0, 0.55)
         for k in range(int(METER_DUR*5)):
             place(sfx_tick(r), S_METER + METER_T0 + k*0.2, 0.35)
         place(sfx_boom(r), peak, 1.0)
@@ -208,7 +208,7 @@ class MoneyLeakMeter(Video):
         place(sfx_pop(1.0), S_FLIP + 0.1, 0.6)
         place(sfx_ding(1568), S_FLIP + 0.9, 0.8)
         place(sfx_pop(1.0), S_GROW + 0.15, 0.6)
-        place(sfx_riser(r, GROW_DUR), S_GROW + GROW_T0, 0.5)
+        place(sfx_riser(r, self.secs(GROW_DUR)), S_GROW + GROW_T0, 0.5)
         for k in range(int(GROW_DUR*4)):
             place(sfx_tick(r), S_GROW + GROW_T0 + k*0.25, 0.35)
         place(sfx_ding(), S_GROW + GROW_T0 + GROW_DUR, 0.7)

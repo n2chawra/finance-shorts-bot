@@ -27,14 +27,22 @@ def hp(x: np.ndarray, fc: float, order: int = 2) -> np.ndarray:
 
 
 class Mixer:
-    def __init__(self, dur: float, seed: int) -> None:
+    """`dur` is the output length in seconds. Templates place sounds in story time (their own
+    timeline); `tscale` (the video's tempo) turns story seconds into output seconds."""
+
+    def __init__(self, dur: float, seed: int, tscale: float = 1.0) -> None:
         self.n = int(SR*dur)
         self.left = np.zeros(self.n)
         self.right = np.zeros(self.n)
         self.rng = np.random.default_rng(seed)
+        self.tscale = tscale
 
     def place(self, sig: np.ndarray, at: float, gain: float = 1.0, pan: float = 0.0) -> None:
-        """Add a mono signal at `at` seconds. pan: −1 left … +1 right."""
+        """Add a mono signal at story time `at`. pan: −1 left … +1 right."""
+        self.place_out(sig, at/self.tscale, gain, pan)
+
+    def place_out(self, sig: np.ndarray, at: float, gain: float = 1.0, pan: float = 0.0) -> None:
+        """Add a mono signal at output time `at` (seconds into the finished video)."""
         i = int(at*SR)
         j = min(self.n, i + len(sig))
         if i >= self.n or j <= i:

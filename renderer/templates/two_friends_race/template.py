@@ -297,7 +297,7 @@ class TwoFriendsRace(Video):
         place(sfx_beep(880), S_Q + 6, 0.8)
         place(sfx_beep(1320), S_Q + 7, 0.9)
         place(sfx_pop(1.0), S_CHART + 0.15, 0.6)
-        place(sfx_riser(r, CHART_DUR), S_CHART + CHART_T0, 0.55)
+        place(sfx_riser(r, self.secs(CHART_DUR)), S_CHART + CHART_T0, 0.55)
         for k in range(40):
             place(sfx_tick(r), S_CHART + CHART_T0 + k*0.25, 0.35)
         if self.chart_stop is not None:

@@ -144,7 +144,7 @@ class MythVsFact(Video):
         place(sfx_fail(), S_BUST + BUST_AT + 0.1, 0.7)
         place(sfx_pop(1.1), S_BUST + BUST_AT + 0.7, 0.7)
         place(sfx_pop(1.0), S_RACE + 0.15, 0.6)
-        place(sfx_riser(r, RACE_DUR), S_RACE + RACE_T0, 0.5)
+        place(sfx_riser(r, self.secs(RACE_DUR)), S_RACE + RACE_T0, 0.5)
         for k in range(self.years + 1):   # one tick per year on screen
             place(sfx_tick(r), S_RACE + RACE_T0 + self._year_time(k), 0.45)
         place(sfx_ding(1568), S_RACE + RACE_T0 + RACE_DUR, 0.7)

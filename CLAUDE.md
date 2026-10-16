@@ -140,7 +140,7 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
    SEBI/RBI rules, product names), tone, disclaimer. It did not see steps 2–3 reasoning.
 6. **Render (code)**: `renderer/cli.py script.json` → mp4 + thumbnail + preview contact sheet.
 7. **QA review (separate agent)**: looks at the contact sheet + audio levels. Rejects overlaps,
-   cut-off or tiny text, empty scenes, unreadable contrast, length outside 45–60s.
+   cut-off or tiny text, empty scenes, unreadable contrast, length outside 30–45 s.
 8. **Ship**: write manifest (title, description, hashtags, style, template, topic), append to
    history, commit to `main`, upload mp4 as a Release asset. Log every step as an AgentRun entry
    inside the manifest.
@@ -168,7 +168,9 @@ the agent steps follow `generator/prompts/*.md`.
 
 ## Render engine conventions
 
-- 1080×1920, 30 fps, H.264 + AAC, 45–60 s, peak audio around −1 dB, mean around −18 dB.
+- 1080×1920, 30 fps, H.264 + AAC, 30–45 s, peak audio around −1 dB, mean around −18 dB. Templates write a
+  48–60 s story timeline; the engine plays it at `TEMPO` (1.35×, `renderer/engine/video.py`), so
+  animations, cuts, sound effects and the voice all run faster together.
 - First 1 s must hook (big number or question). A pattern interrupt every 3–5 s.
 - Text: min 44 px, never within 120 px of the bottom edge (Shorts UI), keep away from the right
   edge buttons. Indian number formatting (₹, L, Cr).

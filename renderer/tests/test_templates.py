@@ -33,7 +33,7 @@ def test_schema_style_block_matches_engine(name: str) -> None:
 @pytest.mark.parametrize("name", NAMES)
 def test_example_builds_with_valid_length(name: str) -> None:
     v = load(example(name))
-    assert 45 <= v.duration <= 60
+    assert 30 <= v.length <= 45   # story timeline played at the engine's tempo
     assert v.scenes[0][0] == 0 and v.scenes[-1][1] == v.duration
     assert all(a[1] == b[0] for a, b in zip(v.scenes, v.scenes[1:]))     # no gaps between scenes
 

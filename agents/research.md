@@ -32,6 +32,8 @@ something changes on screen, text size/weight/animation, colour contrast, charac
 motion, sound design (whooshes, hits, risers), music energy, the ending (loop, CTA, punchline), and
 length. Compare with our videos (look at a few `videos/*/preview.png` contact sheets and the
 template READMEs in `renderer/templates/*/README.md`). Turn the differences into proposals.
+Overall pace is one number, `TEMPO` in `renderer/engine/video.py` (1.35× since 2026-10-16, videos
+35–45 s): a faster or slower pace is an `experiment` on it, not a template rewrite.
 
 **Voiceover, every night (part of the craft pass).** For the same videos, note: is there a voice at
 all; male or female; accent (Indian English, Hinglish, Hindi, neutral); energy (calm explainer,

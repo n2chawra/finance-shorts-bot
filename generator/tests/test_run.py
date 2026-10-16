@@ -151,7 +151,7 @@ def test_full_run_ships_manifest_and_history(root: Path) -> None:
     assert all(c["passed"] for c in manifest["checks"])
     assert [s["agent"] for s in manifest["agentRuns"]] == ["planner", "number_check", "fact_review", "render", "qa_review", "ship"]
     assert manifest["release"] == {"tag": f"video-{VID}", "asset": "video.mp4", "uploaded": False}
-    assert manifest["style"] == {**plan["style"], "voice": None} and manifest["durationSec"] == 48
+    assert manifest["style"] == {**plan["style"], "voice": None} and manifest["durationSec"] == 36
     assert json.loads((root / "videos" / VID / "manifest.json").read_text(encoding="utf-8"))["id"] == VID
     assert [e["id"] for e in history.load(root)] == [VID]
     with pytest.raises(ValueError, match="already shipped"):
@@ -199,7 +199,7 @@ def test_render_rejects_length_outside_settings(root: Path) -> None:
     plan = make_plan()
     put(root, "plan.json", plan)
     put(root, "script.json", script_for(plan))
-    assert any("length 48 s is outside 50–60 s" in p for p in run.render(VID, preview=True, root=root))
+    assert any("length 36 s is outside 50–60 s" in p for p in run.render(VID, preview=True, root=root))
 
 
 def test_fail_writes_manifest_but_not_history(root: Path) -> None:

@@ -29,11 +29,11 @@
     "end_follow": "Follow for the next quiz"
   },
   "voice": {
-    "hook": "Most people get this one wrong. Let's see if you do.",
-    "question": "You invest {amount} every month, for {years} years, at {rate} a year. How much do you end up with?",
-    "options": "Three options. Pick one, fast.",
-    "reveal": "It's {letter}! {answer_long}, from just {amount} a month.",
-    "why": "You only put in {invested}. The other {gains} is growth. That's {ratio} your money.",
-    "end": "Small amounts, plus a lot of time. That's the trick. Comment if you got it right."
+    "hook": "Most people get this wrong.",
+    "question": "{amount} a month for {years} years at {rate}. Your guess?",
+    "options": "Pick one. Fast.",
+    "reveal": "It's {letter}! {answer_long}.",
+    "why": "You put in only {invested}. The rest, {gains}, is growth.",
+    "end": "Small amounts plus time. That's the trick. Did you get it right?"
   }
 }

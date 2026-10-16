@@ -18,12 +18,18 @@ from .style import resolve_style
 
 Scene = tuple[float, float, Callable[[Canvas, float, float], None]]
 PUSH_IN = 0.025   # slow zoom over each scene
+# Playback speed: templates write their timeline in story seconds; the video plays it this much
+# faster (animations, cuts, sound effects and countdowns together). 1.35 turns a 48-60 s story
+# into a 35-44 s Short (owner, 2026-10-16: "very slow paced"). Change it here for every template,
+# per template with a class attribute, or per video in an experiment (self.tempo in __init__).
+TEMPO = 1.35
 VOICE_FLAG = "voiceover"   # A/B experiment: videos in its "on" group are narrated
 VOICE_DUCK = 0.65          # music and effects drop by this much while the voice speaks
 
 
 class Video:
-    duration: float = 60
+    duration: float = 60          # story seconds; the video lasts `length` = duration / tempo
+    tempo: float = TEMPO
     thumbnail_time: float = 3.0
     key_times: Sequence[float] = ()
     # per scene: (seconds into the scene the voice may start, seconds into the scene it must end by,
@@ -49,6 +55,19 @@ class Video:
         self.voice_script: dict[str, str] = dict(script.get("voice") or {})
         self.voice_name, self.voice_speed = voice.pick(self.seed)
         self.spoken: list[voice.Spoken] = []
+
+    @property
+    def length(self) -> float:
+        """Output length in seconds."""
+        return self.duration/self.tempo
+
+    def secs(self, story: float) -> float:
+        """Story seconds as output seconds (for sound lengths such as a riser over an animation)."""
+        return story/self.tempo
+
+    def frame_at(self, t: float) -> Image.Image:
+        """The frame `t` output seconds into the finished video."""
+        return self.frame(t*self.tempo)
 
     def flag(self, exp_id: str) -> bool:
         """True when this video is in the "on" group of experiment `exp_id`."""
@@ -135,10 +154,11 @@ class Video:
         return [fn.__name__.lstrip("_") for _, _, fn in self.scenes]
 
     def voice_windows(self) -> dict[str, tuple[float, float]]:
+        """Each scene's speaking window, in output seconds."""
         out = {}
         for (s, e, _), name in zip(self.scenes, self.scene_names()):
             lead, until = self.voice_offsets.get(name, (voice.LEAD, None))
-            out[name] = (s + lead, e - voice.TAIL if until is None else s + until)
+            out[name] = ((s + lead)/self.tempo, (e - voice.TAIL if until is None else s + until)/self.tempo)
         return out
 
     @property
@@ -167,7 +187,7 @@ class Video:
         mx.right *= duck
         for p in self.spoken:
             peak = float(np.max(np.abs(p.samples))) or 1.0
-            mx.place(p.samples/peak*0.9, p.start, 1.0)
+            mx.place_out(p.samples/peak*0.9, p.start, 1.0)
         return mx
 
     # ---------------- audio ----------------
@@ -175,9 +195,9 @@ class Video:
     def mixer(self, ducks: Sequence[tuple[float, float, float]] = ()) -> Mixer:
         """Mixer with the music bed already laid down. `ducks` are (start, end, gain) segments.
         Add SFX afterwards, always in the same order (they share the mixer's RNG)."""
-        mx = Mixer(self.duration, seed=self.seed + 4)
-        bed = make_bed(mx.rng, self.duration, self.style.genre, self.style.key, self.style.bpm)
-        mx.add_bed(bed, gain_curve(self.duration, 0.55, ducks))
+        mx = Mixer(self.length, seed=self.seed + 4, tscale=self.tempo)
+        bed = make_bed(mx.rng, self.length, self.style.genre, self.style.key, self.style.bpm)
+        mx.add_bed(bed, gain_curve(self.length, 0.55, [(a/self.tempo, b/self.tempo, g) for a, b, g in ducks]))
         return mx
 
     def scene_whooshes(self, mx: Mixer) -> None:

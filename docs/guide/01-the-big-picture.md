@@ -4,7 +4,7 @@
 
 ## What it is
 
-**Finance Shorts Bot** is a robot video studio. Every day it makes short (45–60 second) vertical
+**Finance Shorts Bot** is a robot video studio. Every day it makes short (30–45 second) vertical
 videos that explain one personal-finance idea for an Indian audience, things like *"What does a
 ₹120 daily chai habit cost over 20 years?"* or *"Is an FD really the safest place for ₹5 lakh?"*.
 It publishes one of them a day to the YouTube channel **Money in 60**.
@@ -58,7 +58,7 @@ flowchart LR
 
 | | |
 |---|---|
-| Video length | 45–60 seconds, 1080×1920, 30 fps |
+| Video length | 30–45 seconds (a 48–60 s story played at 1.35×), 1080×1920, 30 fps |
 | Videos made per day | target **3** (five scheduled runs, so a failed run gets made up) |
 | Videos published per day | **2**, at 12:37 and 19:07 IST |
 | Backlog cap | 30 ready videos (about a month of uploads) |

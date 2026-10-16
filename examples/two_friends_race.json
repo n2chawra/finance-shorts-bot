@@ -43,12 +43,12 @@
     "end_follow": "Follow for more money stories"
   },
   "voice": {
-    "hook": "{a_invested_long} against {b_invested_long}. Can less money win?",
-    "coins_a": "{a} starts at {a_start} with {monthly} a month, and stops at {a_stop}.",
-    "coins_b": "{b} starts late, at {b_start}, with the same {monthly}, and never stops.",
-    "question": "Both earn {rate} a year. Who has more at {end_age}? Take a guess.",
-    "chart": "{a} stopped years ago, but his money keeps growing. Watch the lines.",
-    "result": "{a} put in {invested_ratio} less, and still ends with {final_ratio} more.",
-    "end": "It's not how much you invest. It's when. Start today."
+    "hook": "Can less money really win?",
+    "coins_a": "{a} starts at {a_start}, invests {monthly} a month, stops at {a_stop}.",
+    "coins_b": "{b} starts at {b_start} and never stops.",
+    "question": "Both earn {rate}. Who has more at {end_age}?",
+    "chart": "{a} stopped years ago, but his money keeps growing.",
+    "result": "{a} put in {invested_ratio} less, and ends with {final_ratio} more.",
+    "end": "It's not how much. It's when. Start today."
   }
 }

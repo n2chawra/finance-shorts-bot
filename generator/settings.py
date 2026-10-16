@@ -14,8 +14,8 @@ DEFAULTS: dict = {
     "backlogCap": 30,
     "generationPaused": False,    # routines do nothing at all while this is on
     "uploadsPaused": False,
-    "lengthMinSec": 45,
-    "lengthMaxSec": 60,
+    "lengthMinSec": 30,
+    "lengthMaxSec": 45,
     "disclaimer": "Illustrative only. Not financial advice.",
     "dailyVideoTarget": 3,        # videos to ship per IST day before any template work; then runs idle
     "templateWork": {
