@@ -1,0 +1,105 @@
+"""The research topic feed: video ideas the research agent found, ready for the planner.
+
+`improvement/research/topics.json` (written only by the research agent):
+
+    {"topics": [{"id": "2026-10-16-sip-record-inflows", "title": "...", "category": "sip",
+                 "kind": "news | trend | seasonal | evergreen", "priority": "breaking | high | normal",
+                 "templates": ["money_news", "quiz_countdown"] or ["any"], "angle": "...", "why_now": "...",
+                 "facts": [{"label", "value", "unit", "as_of", "source", "url"}], "verify": ["claim to check"],
+                 "sources": ["https://..."], "found": "YYYY-MM-DD", "expires": "YYYY-MM-DD", "status": "new"}]}
+
+A topic is used once: a video records it as `plan.topic.feed_id`, and history makes it unavailable
+(the video run never edits the feed, so it can't conflict with the research agent's branch).
+A `breaking` topic must be taken by the next video that can use it.
+"""
+import json
+from pathlib import Path
+
+from .settings import ROOT
+
+FILE = Path("improvement") / "research" / "topics.json"
+PRIORITIES = ("breaking", "high", "normal")
+SHOWN = 8   # topics listed to the planner
+
+
+def load(root: Path = ROOT) -> list[dict]:
+    path = root / FILE
+    if not path.is_file():
+        return []
+    return [t for t in json.loads(path.read_text(encoding="utf-8")).get("topics", []) if isinstance(t, dict) and t.get("id")]
+
+
+def get(feed_id: str, root: Path = ROOT) -> dict | None:
+    return next((t for t in load(root) if t["id"] == feed_id), None)
+
+
+def used_ids(entries: list[dict]) -> set[str]:
+    return {e["topic"]["feed_id"] for e in entries if isinstance(e.get("topic"), dict) and e["topic"].get("feed_id")}
+
+
+def why_unavailable(topic: dict, entries: list[dict], today: str) -> str | None:
+    if topic.get("status", "new") != "new":
+        return f"its status is {topic.get('status')!r}"
+    if topic.get("expires", "9999-12-31") < today:
+        return f"it expired on {topic['expires']}"
+    if topic["id"] in used_ids(entries):
+        return "an earlier video already used it"
+    return None
+
+
+def fits(topic: dict, templates: list[str]) -> bool:
+    wanted = topic.get("templates") or ["any"]
+    return "any" in wanted or any(t in templates for t in wanted)
+
+
+def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT) -> dict:
+    """What `state` tells the planner: the open topics, best first, and a breaking one it must use."""
+    open_ = [t for t in load(root) if why_unavailable(t, entries, today) is None]
+    open_.sort(key=lambda t: t.get("found", ""), reverse=True)   # newest first within a priority (stable sorts)
+    open_.sort(key=lambda t: PRIORITIES.index(t["priority"]) if t.get("priority") in PRIORITIES else len(PRIORITIES) - 1)
+    usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed)]
+    required = next((t["id"] for t in usable if t.get("priority") == "breaking"), None)
+    keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify", "expires")
+    return {
+        "topics": [{**{k: t.get(k) for k in keys}, "usable_now": t in usable} for t in open_[:SHOWN]],
+        "required": required,
+    }
+
+
+def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT) -> list[str]:
+    """Feed rules for a plan: a feed topic must be open; money_news needs one with facts; a usable
+    breaking topic must be taken."""
+    out = []
+    feed_id = (plan.get("topic") or {}).get("feed_id")
+    if feed_id:
+        topic = get(feed_id, root)
+        if topic is None:
+            out.append(f"topic.feed_id {feed_id!r} is not in {FILE.as_posix()}")
+        elif (why := why_unavailable(topic, entries, today)) is not None:
+            out.append(f"feed topic {feed_id!r} can't be used: {why}")
+        elif plan.get("template") == "money_news" and not topic.get("facts"):
+            out.append(f"money_news needs a feed topic with sourced facts; {feed_id!r} has none")
+    elif plan.get("template") == "money_news":
+        out.append("money_news is only for research feed topics: set topic.feed_id to a topic from state.topic_feed")
+    required = for_state(entries, today, blocked, allowed, root)["required"]
+    if required and feed_id != required:
+        out.append(f"breaking feed topic {required!r} is waiting and fits an allowed template: this video must use it")
+    return out
+
+
+def check_facts(script: dict, topic: dict | None) -> list[str]:
+    """A news script's facts must be the feed topic's facts, unchanged (labels may be shortened)."""
+    facts = script.get("facts")
+    if facts is None:
+        return []
+    if topic is None:
+        return [f"feed topic {script.get('feed_id')!r} not found, so the facts can't be traced to a source"]
+    feed = topic.get("facts") or []
+    out = []
+    for i, f in enumerate(facts):
+        match = next((g for g in feed if all(g.get(k) == f.get(k) for k in ("value", "unit", "as_of", "url"))), None)
+        if match is None:
+            out.append(f"facts[{i}] ({f.get('value')} {f.get('unit')}, {f.get('as_of')}) is not one of the feed topic's facts; copy them exactly")
+        elif match.get("source") != f.get("source"):
+            out.append(f"facts[{i}].source must be {match.get('source')!r} as in the feed")
+    return out

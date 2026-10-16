@@ -27,7 +27,7 @@ from pathlib import Path
 
 from renderer import cli as renderer
 
-from . import experiments, history, variety
+from . import experiments, history, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -94,6 +94,8 @@ def state(root: Path = ROOT) -> dict:
         mode, why = "idle", f"today's {target} videos are made"
 
     last = entries[-1] if entries else None
+    allowed = variety.allowed_templates(entries, enabled)
+    blocked = variety.blocked_categories(entries)
     return {
         "mode": mode, "reason": why, "backlog": backlog, "backlog_cap": settings["backlogCap"],
         "videos_today": made_today, "daily_target": target,
@@ -102,9 +104,10 @@ def state(root: Path = ROOT) -> dict:
         "template_work": {"runs_today": work_today, "max_per_day": tw["maxPerDay"],
                           "may_add_template": room, "templates": n_templates, "max_templates": tw["maxTemplates"]},
         "templates": {t: {"weight": settings["templates"].get(t, {}).get("weight", 1.0)} for t in enabled},
-        "allowed_templates": variety.allowed_templates(entries, enabled),
-        "template_window": variety.template_window(len(enabled)),
-        "blocked_categories": variety.blocked_categories(entries),
+        "allowed_templates": allowed,
+        "template_window": variety.template_window(variety.rotation_size(enabled)),
+        "blocked_categories": blocked,
+        "topic_feed": topics.for_state(entries, today, blocked, allowed, root),
         "previous": last and {"palette": last["style"]["palette"], "genre": last["style"]["genre"], "key": last["style"]["key"],
                               "bpm": last["style"]["bpm"], "hook_style": last["hook_style"], "cta": last["cta"]},
         "hook_styles": list(variety.HOOK_STYLES),
@@ -123,7 +126,11 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
     if missing:
         problems = [f"plan.json is missing {', '.join(missing)}"]
     else:
-        problems = variety.check_plan(plan, history.load(root), enabled_templates(load_settings(root)))
+        entries = history.load(root)
+        enabled = enabled_templates(load_settings(root))
+        problems = variety.check_plan(plan, entries, enabled)
+        problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
+                                      variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root)
         if not 20 <= len(plan["title"]) <= 90:
             problems.append("title must be 20–90 characters")
         if "#shorts" not in [h.lower() for h in plan["hashtags"]]:
@@ -134,7 +141,9 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
 
 def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
     d = _dir(vid, root)
-    passed, notes = number_check(_read(d / "script.json"), _read(d / "plan.json"))
+    script, plan = _read(d / "script.json"), _read(d / "plan.json")
+    feed_id = (plan.get("topic") or {}).get("feed_id")
+    passed, notes = number_check(script, plan, topics.get(feed_id, root) if feed_id else None)
     log_step(vid, "number_check", passed, notes, root)
     return [] if passed else notes
 

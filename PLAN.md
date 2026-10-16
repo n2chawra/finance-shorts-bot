@@ -250,3 +250,11 @@ Done when: everything above works on a phone.
   one line per scene with code-filled numbers spoken as words, per-scene windows that keep
   countdowns and reveals silent, ducked mix, fact/QA review of narration, voice recorded in the
   manifest, metrics and dashboard. Research studies voice type and pace nightly.
+- 2026-10-16: Research routing and the topic feed. Research routes every finding (video / adopt /
+  experiment / template / owner, with priority breaking / high / normal) and scans money news
+  nightly; video ideas go to `improvement/research/topics.json`, which `state.topic_feed` gives the
+  planner (breaking topics are enforced by check-plan; each topic used once via history). New
+  `money_news` template for news: sourced facts copied from the feed (number check compares them,
+  fact reviewer confirms each against its URL), plus a computed "what it means for you" example.
+  Feed-only templates don't widen the variety window. Improver applies `adopt` directly and treats
+  high-priority `template` proposals as template work. Agents page shows the feed.

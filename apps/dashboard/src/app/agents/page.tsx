@@ -1,12 +1,12 @@
 "use client";
 
-import { Bot, CalendarClock, Clock, ExternalLink, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Scale, Search, ShieldAlert, ShieldCheck, Wrench } from "lucide-react";
+import { Bot, CalendarClock, Clock, ExternalLink, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Newspaper, Scale, Search, ShieldAlert, ShieldCheck, Wrench } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Tabs } from "radix-ui";
 import { useState } from "react";
 
-import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, Stat, type Tone } from "@/components/ui";
+import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, Stat, type Tone, VideoLink } from "@/components/ui";
 import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
 import { useAgents, useSettings } from "@/lib/queries";
 import { fmtMinutes, fmtRunWindow, summarizeRunTimes } from "@/lib/run-times";
@@ -201,6 +201,8 @@ function ProposalsTab({ data }: { data: Agents }) {
               <span className="text-[13px] font-medium">{p.title}</span>
               {p.status && <Badge tone={STATUS[p.status] ?? "neutral"} dot>{titleCase(p.status)}</Badge>}
               {p.area && <Badge>{p.area}</Badge>}
+              {typeof p.route === "string" && <Badge tone={ROUTE[p.route] ?? "neutral"}>{p.route}</Badge>}
+              {p.priority === "breaking" && <Badge tone="critical" dot>breaking</Badge>}
             </div>
             {p.change && <p className="mt-1 text-[13px] text-ink2">{p.change}</p>}
             <div className="mt-1 flex flex-wrap gap-x-3 text-xs text-muted">
@@ -243,6 +245,46 @@ function MergesTab({ data }: { data: Agents }) {
   );
 }
 
+const ROUTE: Record<string, Tone> = { video: "brand", adopt: "good", experiment: "info", template: "warning", owner: "neutral" };
+const PRIORITY: Record<string, Tone> = { breaking: "critical", high: "warning", normal: "neutral" };
+
+/** Video ideas research found (news, trends, evergreen), and which video used each. */
+function TopicsTab({ data }: { data: Agents }) {
+  if (!data.topics.length) return <Card><Empty icon={Newspaper} title="No topics yet">Research reads the money news every night and lists ready video ideas here. Breaking stories go into the next morning&apos;s videos.</Empty></Card>;
+  return (
+    <Card flush>
+      <ul>
+        {data.topics.slice(0, 60).map((t) => {
+          const state = t.usedBy ? "used" : t.status ?? "new";
+          return (
+            <li key={t.id} className="flex flex-wrap items-start gap-3 border-b border-line px-4 py-3 last:border-0 md:px-5">
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-[13px] font-medium">{t.title}</span>
+                  {t.priority && <Badge tone={PRIORITY[t.priority] ?? "neutral"} dot>{t.priority}</Badge>}
+                  {t.kind && <Badge>{t.kind}</Badge>}
+                </div>
+                {t.angle && <p className="mt-1 text-[13px] text-ink2">{t.angle}</p>}
+                <div className="mt-1 flex flex-wrap gap-x-3 text-xs text-muted">
+                  {t.found && <span>found {fmtDayKey(t.found)}</span>}
+                  {t.expires && state === "new" && <span>until {fmtDayKey(t.expires)}</span>}
+                  {(t.facts ?? []).length > 0 && <span>{t.facts!.length} sourced fact{t.facts!.length === 1 ? "" : "s"} ({[...new Set(t.facts!.map((f) => f.source).filter(Boolean))].join(", ")})</span>}
+                  {(t.templates ?? []).length > 0 && <span>{t.templates!.join(", ")}</span>}
+                  {(t.sources ?? []).slice(0, 2).map((u, i) => <a key={i} href={u} target="_blank" rel="noreferrer" className="hover:text-ink hover:underline">source {i + 1}</a>)}
+                </div>
+              </div>
+              <div className="shrink-0 text-right text-xs">
+                {t.usedBy ? <VideoLink id={t.usedBy} className="font-medium text-brand-text hover:underline">Video {t.usedBy}</VideoLink>
+                  : <Badge tone={state === "new" ? "brand" : "neutral"}>{state === "new" ? "Waiting for a video" : titleCase(state)}</Badge>}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </Card>
+  );
+}
+
 const TAB = "relative h-9 px-2.5 text-[13px] text-ink2 transition-colors hover:text-ink data-[state=active]:font-medium data-[state=active]:text-ink";
 
 export default function AgentsPage() {
@@ -256,9 +298,11 @@ export default function AgentsPage() {
   const reverted = data.experiments.filter((e) => e.status === "reverted" || e.status === "abandoned").length;
   const lastNight = [...new Set(data.activity.map((a) => a.day))].sort().at(-1);
   const paused = settings?.agents.paused;
+  const waiting = data.topics.filter((t) => !t.usedBy && (t.status ?? "new") === "new").length;
   const tabs = [
     { value: "activity", label: "Activity" },
     { value: "experiments", label: `Experiments${running ? ` (${running})` : ""}` },
+    { value: "topics", label: `Topic feed${waiting ? ` (${waiting})` : ""}` },
     { value: "proposals", label: "Proposals" },
     { value: "merges", label: "Merge log" },
   ];
@@ -304,6 +348,7 @@ export default function AgentsPage() {
         </Tabs.List>
         <Tabs.Content value="activity" className="outline-none"><ActivityTab data={data} /></Tabs.Content>
         <Tabs.Content value="experiments" className="outline-none"><ExperimentsTab data={data} /></Tabs.Content>
+        <Tabs.Content value="topics" className="outline-none"><TopicsTab data={data} /></Tabs.Content>
         <Tabs.Content value="proposals" className="outline-none"><ProposalsTab data={data} /></Tabs.Content>
         <Tabs.Content value="merges" className="outline-none"><MergesTab data={data} /></Tabs.Content>
       </Tabs.Root>

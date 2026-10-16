@@ -8,7 +8,9 @@ import re
 from collections.abc import Callable, Mapping
 
 from renderer.cli import build
-from renderer.engine.formatting import group_indian, inr, inr_long, rupees, times
+from renderer.engine.formatting import fact_value, group_indian, inr, inr_long, rupees, times
+
+from . import topics
 
 # ---------------- formulas ----------------
 
@@ -86,9 +88,25 @@ def _quiz_countdown(s: dict) -> dict[str, str]:
     return {"answer": inr(answer), "invested": inr(invested), "gains": inr(answer - invested), "ratio": times(answer/invested)}
 
 
+def _money_news(s: dict) -> dict[str, str]:
+    ex = s["example"]
+    if ex["kind"] == "sip":
+        base, result = ex["amount"]*12*ex["years"], sip_fv(ex["amount"], ex["rate_pct"], ex["years"]*12)
+    elif ex["kind"] == "lumpsum":
+        base, result = ex["amount"], lumpsum_fv(ex["amount"], ex["rate_pct"], ex["years"])
+    else:
+        base, result = ex["amount"], real_value(ex["amount"], ex["rate_pct"], ex["years"])
+    out = {"result": inr(result), **{f"fact_{k}": fact_value(f["value"], f["unit"]) for k, f in zip("abc", s["facts"])}}
+    if ex["kind"] != "inflation":
+        out |= {"invested": inr(base), "gains": inr(result - base), "ratio": times(result/base)}
+    else:
+        out["lost_pct"] = f"{(1 - result/base)*100:.0f}%"
+    return out
+
+
 EXPECTED: dict[str, Callable[[dict], dict[str, str]]] = {
     "two_friends_race": _two_friends_race, "myth_vs_fact": _myth_vs_fact,
-    "money_leak_meter": _money_leak_meter, "quiz_countdown": _quiz_countdown,
+    "money_leak_meter": _money_leak_meter, "quiz_countdown": _quiz_countdown, "money_news": _money_news,
 }
 
 # ---------------- claims in free text ----------------
@@ -134,9 +152,10 @@ def check_claims(texts: Mapping[str, str], script: dict, figures: Mapping[str, s
     return out
 
 
-def number_check(script: dict, plan: dict | None = None) -> tuple[bool, list[str]]:
+def number_check(script: dict, plan: dict | None = None, feed_topic: dict | None = None) -> tuple[bool, list[str]]:
     """(passed, notes). Fails if the script is invalid, hard-codes a number, disagrees with the
-    independent formulas, drifts from the plan, or the plan's text claims an unsupported number."""
+    independent formulas, drifts from the plan, the plan's text claims an unsupported number, or a
+    news script's sourced facts differ from its research feed topic."""
     try:
         video = build(script)
     except ValueError as e:
@@ -152,6 +171,11 @@ def number_check(script: dict, plan: dict | None = None) -> tuple[bool, list[str
                 notes.append(f"script.{field} does not match the plan")
         texts = {"title": plan["title"], "description": plan["description"], "hashtags": " ".join(plan.get("hashtags", []))}
         notes += check_claims(texts, script, video.figures)
+        feed_id = (plan.get("topic") or {}).get("feed_id")
+        if "feed_id" in script and script["feed_id"] != feed_id:
+            notes.append(f"script.feed_id {script['feed_id']!r} does not match the plan's topic.feed_id {feed_id!r}")
+    if "facts" in script:
+        notes += topics.check_facts(script, feed_topic)
     if notes:
         return False, notes
     return True, [f"{len(video.figures)} figures computed from inputs; {len(EXPECTED[script['template']](script))} cross-checked against closed-form formulas."]

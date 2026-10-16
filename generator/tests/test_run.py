@@ -78,7 +78,7 @@ def test_full_backlog_idles_video_runs(root: Path) -> None:
 def test_template_cap_stops_new_templates(root: Path) -> None:
     settings(root, backlog=30, templateWork={"maxTemplates": 4})
     s = run.state(root)["template_work"]
-    assert s["may_add_template"] is False and s["templates"] == 4
+    assert s["may_add_template"] is False and s["templates"] == 5
 
 
 @pytest.fixture

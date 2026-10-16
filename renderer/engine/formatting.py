@@ -66,3 +66,39 @@ def nice_axis(vmax: float, max_ticks: int = 5) -> list[float]:
         if vmax/step <= max_ticks:
             return [i*step for i in range(math.ceil(vmax/step) + 1)]
     raise AssertionError("unreachable")
+
+
+FACT_UNITS = ("rupees", "rupees_lakh", "rupees_crore", "percent", "count", "count_lakh", "count_crore")
+
+
+def fact_value(value: float, unit: str) -> str:
+    """A sourced figure (from the research feed) as displayed: (31781, 'rupees_crore') → '₹31,781 Cr',
+    (6.5, 'percent') → '6.5%', (9.87, 'count_crore') → '9.87 Cr', (4500000, 'count') → '45,00,000'."""
+    if value == int(value):
+        shown = group_indian(int(value))
+    else:
+        shown = group_indian(int(value)) + "." + f"{value:.2f}".split(".")[1].rstrip("0")
+    if unit == "rupees":
+        return "₹" + shown
+    if unit == "rupees_lakh":
+        return f"₹{shown} L"
+    if unit == "rupees_crore":
+        return f"₹{shown} Cr"
+    if unit == "percent":
+        return f"{value:g}%"
+    if unit == "count":
+        return shown
+    if unit == "count_lakh":
+        return f"{shown} L"
+    if unit == "count_crore":
+        return f"{shown} Cr"
+    raise ValueError(f"unknown fact unit {unit!r}; use one of {', '.join(FACT_UNITS)}")
+
+
+MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+
+
+def month_year(iso_day: str) -> str:
+    """'2026-06-30' → 'Jun 2026'."""
+    y, m = iso_day[:4], int(iso_day[5:7])
+    return f"{MONTHS[m - 1]} {y}"

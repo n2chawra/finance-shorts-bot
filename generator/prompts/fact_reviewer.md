@@ -16,6 +16,14 @@ comfortable seeing this on a finance channel under your own name.
 
 The arithmetic is already verified by code. Do not re-derive it. Judge what the video claims.
 
+**Sourced facts** (a `money_news` script, or any script with `facts`): these figures come from
+outside, so you are the check. For each fact, open its `url` (WebFetch) and confirm the exact
+value, unit and period. If the page doesn't show that figure, look for the official source (RBI,
+SEBI, AMFI, the Income Tax department, PIB, MoSPI) and confirm it there. Also check every item in
+the topic's `verify` list (in `improvement/research/topics.json`, by the plan's `topic.feed_id`)
+and that the story is still current (not superseded by newer data). Fail the video if any fact
+can't be confirmed or is out of date, naming the fact and what you found.
+
 ## Reject if any of these is true
 
 1. **A factual claim is wrong** for India today: tax treatment, how a product works (SIP, FD,

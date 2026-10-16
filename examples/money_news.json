@@ -1,0 +1,44 @@
+{
+  "template": "money_news",
+  "seed": 31,
+  "feed_id": "2026-10-16-sip-record-inflows",
+  "facts": [
+    {
+      "label": "SIP money in one month",
+      "value": 31781,
+      "unit": "rupees_crore",
+      "as_of": "2026-06-30",
+      "source": "AMFI",
+      "url": "https://www.oquilia.com/news/amfi-june-2026-sip-record-31781-crore"
+    }
+  ],
+  "example": {
+    "kind": "sip",
+    "amount": 5000,
+    "years": 15,
+    "rate_pct": 12
+  },
+  "text": {
+    "headline1": "Indians just set an SIP record",
+    "headline2": "More people invest every month",
+    "what_title": "What happened",
+    "why_title": "Why it matters",
+    "why_line1": "Small monthly amounts add up",
+    "why_line2": "Rupee cost averaging",
+    "why_line3": "Time does the heavy lifting",
+    "you_title": "What it means for you",
+    "you_line": "That's {ratio} what you put in",
+    "end_line1": "The record isn't the story.",
+    "end_line2": "Your SIP is.",
+    "end_punch": "Start small.",
+    "end_cta": "Comment SIP if you invest monthly",
+    "end_follow": "Follow for money news that matters"
+  },
+  "voice": {
+    "hook": "Indians just put a record amount into SIPs in a single month.",
+    "what": "According to AMFI, monthly SIP money hit {fact_a}. More people are investing every single month.",
+    "why": "Why does it matter? Small amounts, invested every month, quietly add up. Time does the heavy lifting.",
+    "you": "Say you invest {amount} a month for {years} years at {rate} a year. You put in {invested}. It could grow to {result}.",
+    "end": "The record isn't the story. Your SIP is. Comment SIP if you invest monthly."
+  }
+}

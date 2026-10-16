@@ -57,6 +57,15 @@ fair proposal; say what evidence supports it.
 | Sat | YouTube Shorts policy and algorithm changes (monetisation, "inauthentic content", AI labels) |
 | Sun | Competitor teardown: 2 channels in the same niche, what they do that we don't |
 
+## 2b. Every night: money news scan (feeds the next morning's videos)
+Check what happened in Indian personal finance in the last 2 days: RBI (repo rate, rules), SEBI
+(mutual fund, F&O, finfluencer rules), AMFI monthly data (SIP inflows, folios), Income Tax and the
+Budget, EPFO/PPF/small-savings rates, NSO inflation (CPI), big bank or product changes. Prefer the
+official source (rbi.org.in, sebi.gov.in, amfiindia.com, incometax.gov.in, pib.gov.in, mospi.gov.in);
+a news article is fine to find a story, but each fact needs a URL where the exact figure appears.
+Every story worth a video goes into the topic feed (section 4) the same night: the 04:07 video run
+reads it. Skip rumours, market predictions and single stocks.
+
 ## 3. Every night: Claude updates
 Check the Claude Code changelog (github.com/anthropics/claude-code, CHANGELOG.md), Anthropic's
 release notes and news for new models, routine/subagent/skill features, limits or pricing changes.
@@ -65,14 +74,53 @@ pipeline (cheaper or better runs, better reviews, better video generation) and w
 Changes only the owner can make (routine model, schedule, plan) go into your notifications file as
 `info` items with exact steps.
 
-## 4. Write the report and proposals
+## 4. Route every finding, then write the report
+Decide for each finding what it needs. That decision is the most useful thing you do:
+
+| Route | When | Where it goes |
+|---|---|---|
+| `video` | A topic viewers want now (news, a trend, a seasonal moment) or a strong evergreen idea that an existing template can tell | `improvement/research/topics.json` (below) |
+| `adopt` | Already proven or required: a platform/legal requirement (YouTube policy, SEBI rule), a clear bug or broken behaviour, or a practice with strong, consistent evidence from 3+ independent sources that is low-risk and easy to undo | `proposals.json`, the improver applies it directly |
+| `experiment` | Plausible but uncertain: it could help or hurt views | `proposals.json`, the improver A/B tests it |
+| `template` | A story or format that keeps coming up and no template can tell (it needs a new calculation or layout), e.g. a tax split, an EMI comparison | `proposals.json`, the improver builds it as template work |
+| `owner` | Only the owner can do it (model, schedule, money, accounts) | your notifications file, with exact steps |
+
+Priority, for every route: `breaking` (big news everyone in the niche will talk about this week:
+an RBI rate change, a Budget or tax change, a new SEBI rule for retail investors, a record figure
+from AMFI/RBI; at most one or two a week), `high` (clearly timely or clearly valuable), `normal`.
+Don't inflate: a `breaking` topic jumps ahead of everything else in the next run.
+
+**Topic feed** `improvement/research/topics.json` (`{"topics": [...]}`; add to it, never delete
+entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is no longer right):
+```json
+{"id": "<DAY>-short-kebab", "title": "what the video is about, one line", "category": "sip|tax|...",
+ "kind": "news|trend|seasonal|evergreen", "priority": "breaking|high|normal",
+ "templates": ["money_news"] or ["quiz_countdown", "myth_vs_fact"] or ["any"],
+ "angle": "the viewer's question it answers", "why_now": "why this week",
+ "facts": [{"label": "what the figure is, no digits", "value": 31781, "unit": "rupees|rupees_lakh|rupees_crore|percent|count|count_lakh|count_crore",
+            "as_of": "YYYY-MM-DD", "source": "AMFI", "url": "https://page-where-the-exact-figure-appears"}],
+ "verify": ["claims the fact reviewer must confirm"], "sources": ["https://…"],
+ "found": "<DAY>", "expires": "YYYY-MM-DD", "status": "new"}
+```
+- `facts` are figures reported by the source, copied exactly (value and unit as published). Only
+  news topics need them, and only `money_news` shows them; 1–3 per topic, the headline one first.
+  A fact you can't tie to a URL showing that exact figure stays out.
+- `expires`: news about 10–14 days after `found`; trends 3–4 weeks; evergreen 90 days.
+- `templates`: `money_news` for news with facts; otherwise the existing templates that can compute
+  the story (read their READMEs). If none can, it is a `template` proposal instead.
+- The video run marks nothing: it records the topic id in the video's history. Read
+  `history/history.json` (`topic.feed_id`) to see which topics were used, and note in your report
+  how those videos did once `metrics/videos.json` has their numbers.
+
+## 4b. Write the report and proposals
 `improvement/research/<DAY>.md`:
 ```
 # Research <DAY> (<topic>)
 ## What I looked at        (sources with links)
 ## What top Shorts do that we don't
 ## Claude updates
-## Doable changes, ranked  (effect × confidence ÷ effort; area; how to measure)
+## Topic feed               (topics added, with route, priority and why)
+## Doable changes, ranked  (effect × confidence ÷ effort; area; route; how to measure)
 ## Not doable              (ideas that break agents/policy.md, and why)
 ```
 Upsert `improvement/research/proposals.json` entries:
@@ -80,20 +128,21 @@ Upsert `improvement/research/proposals.json` entries:
 {"id": "short-kebab-id", "date": "<DAY>", "area": "motion|pacing|text|colour|sound|music|hook|ending|script|title|template|pipeline|claude",
  "title": "…", "change": "what exactly to change, specific enough to implement",
  "evidence": ["https://…"], "expectedEffect": "…", "confidence": "low|medium|high", "effort": "S|M|L",
- "risk": "…", "metric": "views48h | avgViewPct | qa_failures", "status": "new"}
+ "risk": "…", "metric": "views48h | avgViewPct | qa_failures", "status": "new",
+ "route": "adopt|experiment|template", "priority": "breaking|high|normal"}
 ```
 Don't re-propose something whose status is testing, kept, reverted or rejected unless you have new
 evidence (then add it to `evidence` and explain in the report). Update `seen.json`.
 
 ## 5. Finish (always)
 Write `improvement/activity/<DAY>-research.json` (format in policy.md: decision `acted` if you
-added proposals, otherwise `nothing`; findings = top 3–5 with links) and rewrite
+added topics or proposals, otherwise `nothing`; findings = top 3–5 with links) and rewrite
 `improvement/notifications/research.json`. Then:
 ```
 git checkout -B agent/research/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
 git add improvement/research improvement/activity improvement/notifications/research.json
-git commit -q -m "Research $DAY: <topic>, <n> proposals"
+git commit -q -m "Research $DAY: <topic>, <n> topics, <n> proposals"
 git push origin HEAD:refs/heads/agent/research/$DAY
 ```
 End with a 5-line report: topic, proposals added, Claude updates, anything for the owner.

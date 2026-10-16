@@ -83,6 +83,9 @@ def _units(s: str) -> str:
         if value >= 100_000 and value % 1_000 == 0:
             return f"{_trim(f'{value/1e5:.2f}')} lakh rupees"
         return f"{value:,} rupees"
+    m = re.fullmatch(r"([\d.,]+)\s*(L|Cr)", s)   # a count such as '9.87 Cr' (crore SIP accounts)
+    if m:
+        return f"{_trim(m.group(1))} {_UNITS[m.group(2)]}"
     s = re.sub(r"(\d)\s*%", r"\1 percent", s)
     s = re.sub(r"(\d)\s*×", r"\1 times", s)
     return s.replace("₹", "rupees ")

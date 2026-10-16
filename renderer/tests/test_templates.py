@@ -18,8 +18,8 @@ def example(name: str) -> Path:
     return ROOT / "examples" / f"{name}.json"
 
 
-def test_all_four_templates_exist() -> None:
-    assert NAMES == ["money_leak_meter", "myth_vs_fact", "quiz_countdown", "two_friends_race"]
+def test_all_templates_exist() -> None:
+    assert NAMES == ["money_leak_meter", "money_news", "myth_vs_fact", "quiz_countdown", "two_friends_race"]
 
 
 @pytest.mark.parametrize("name", NAMES)

@@ -36,7 +36,7 @@ const listOf = (v: unknown, key: string): unknown[] => (v && typeof v === "objec
 export async function getAgents(): Promise<Agents> {
   const [rows, docs, steps] = await Promise.all([
     prisma.agentActivity.findMany({ orderBy: [{ day: "desc" }, { agent: "asc" }], take: 120 }),
-    prisma.repoDoc.findMany({ where: { key: { in: ["experimentLedger", "experiments", "proposals", "mergeLog", "dashboardBacklog", "auditorBacklog", "dataAudit"] } } }),
+    prisma.repoDoc.findMany({ where: { key: { in: ["experimentLedger", "experiments", "proposals", "mergeLog", "dashboardBacklog", "auditorBacklog", "dataAudit", "topicFeed"] } } }),
     prisma.agentRun.findMany({ where: { videoId: { not: null }, startedAt: { gte: new Date(Date.now() - 16 * 86_400_000) } }, select: { videoId: true, startedAt: true, finishedAt: true } }),
   ]);
   const doc = Object.fromEntries(docs.map((d) => [d.key, d.value]));
@@ -56,8 +56,9 @@ export async function getAgents(): Promise<Agents> {
       ...listOf(doc.dashboardBacklog, "items").map((i) => ({ ...(i as object), agent: "dashboard" })),
     ],
     dataAudit: doc.dataAudit ?? null,
+    topics: listOf(doc.topicFeed, "topics").reverse(),   // newest first
   });
-  return parsed.success ? parsed.data : { activity, videoRuns: [], experiments: [], proposals: [], merges: [], backlog: [], dataAudit: null };
+  return parsed.success ? parsed.data : { activity, videoRuns: [], experiments: [], proposals: [], merges: [], backlog: [], dataAudit: null, topics: [] };
 }
 
 /** Raise or update an owner notification from the dashboard server (e.g. a key it relies on failed). */

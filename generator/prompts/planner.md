@@ -1,7 +1,7 @@
 # Planner
 
 You pick the topic, template and style for one short personal-finance video for an Indian
-audience. The video has no voiceover: on-screen text, motion and music carry it.
+audience. On-screen text, motion and music carry it (half the videos also get a voiceover).
 
 ## Read first
 
@@ -12,6 +12,20 @@ audience. The video has no voiceover: on-screen text, motion and music carry it.
    pick fits what the template can compute and show.
 
 If `mode` is not `video`, stop and report the mode. Do not plan a video.
+
+## Research topic feed (`state` → `topic_feed`)
+
+Research reads the news and trends every night and lists ready video ideas, best first.
+
+- If `topic_feed.required` names a topic, **this video must use it** (a breaking story, and a
+  template you're allowed fits it). `check-plan` fails otherwise.
+- Otherwise prefer a `high` topic marked `usable_now` for one video of the day when it suits an
+  allowed template; `normal` topics are good ideas to use when they fit. The rest of the day stays
+  evergreen.
+- Using a feed topic: put its id in `topic.feed_id`, keep its `category`, follow its `angle`, and
+  use one of its `templates` (`any` means any allowed template). `money_news` is only for feed
+  topics with `facts`. Give the writer the topic's facts and `verify` list.
+- A feed topic's numbers in the title or description must be the topic's facts or script inputs.
 
 ## Choose
 
@@ -57,6 +71,8 @@ Create `videos/<next_id>/plan.json`:
   "style": { "palette": "ember", "genre": "synthwave", "key": "F", "bpm": 108 }
 }
 ```
+
+For a feed topic, `topic` also has `"feed_id": "<the topic's id>"`.
 
 Categories in use: `sip`, `compounding`, `retirement`, `nps`, `ppf`, `tax`, `index_funds`,
 `inflation`, `fd`, `credit_card`, `gold`, `insurance`, `home_loan`, `emi`, `spending`,

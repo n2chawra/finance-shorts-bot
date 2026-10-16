@@ -1,0 +1,38 @@
+{
+  "note": "Video ideas for the planner, written by the research agent (agents/research.md). A video uses a topic once (plan.topic.feed_id); breaking topics go first.",
+  "topics": [
+    {
+      "id": "2026-10-16-sip-record-inflows",
+      "title": "Indians put a record amount into SIPs in one month",
+      "category": "sip",
+      "kind": "news",
+      "priority": "high",
+      "templates": [
+        "money_news"
+      ],
+      "angle": "The record is a crowd signal; what a single SIP of your own becomes is the story.",
+      "why_now": "AMFI's monthly data showed record gross SIP inflows; SIP numbers are widely shared and searched.",
+      "facts": [
+        {
+          "label": "SIP money in one month",
+          "value": 31781,
+          "unit": "rupees_crore",
+          "as_of": "2026-06-30",
+          "source": "AMFI",
+          "url": "https://www.oquilia.com/news/amfi-june-2026-sip-record-31781-crore"
+        }
+      ],
+      "verify": [
+        "AMFI's own monthly data (amfiindia.com) shows gross SIP inflows of ₹31,781 crore for June 2026",
+        "It was a record high when reported; if a later month is higher, say 'a record' only if still true, or update the fact"
+      ],
+      "sources": [
+        "https://www.oquilia.com/news/amfi-june-2026-sip-record-31781-crore"
+      ],
+      "found": "2026-10-16",
+      "expires": "2026-10-30",
+      "status": "new",
+      "from": "sip-record-inflows-hook"
+    }
+  ]
+}

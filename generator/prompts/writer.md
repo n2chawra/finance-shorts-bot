@@ -41,6 +41,15 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   the topic needs otherwise.
 - Never promise returns, name a specific fund or company, or tell the viewer to buy something.
 
+## News scripts (`money_news`, feed topics)
+
+- Set `feed_id` to the plan's `topic.feed_id` and copy the topic's `facts` **exactly** (`value`,
+  `unit`, `as_of`, `source`, `url`); you may only shorten a `label`. The number check compares them
+  with the feed and fails on any difference. Never add a figure the feed doesn't have.
+- Report the news plainly ("what happened", "why it matters"), then make it personal with the
+  `example` (an SIP, a lump sum or inflation that connects to the story). No predictions about
+  markets, no "buy now", no named funds or stocks.
+
 ## Voiceover (only when the `voiceover` experiment says "on" for this video)
 
 Add `"voice": {"<scene>": "<line>", ...}` to script.json. Scene names come from

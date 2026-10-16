@@ -62,6 +62,20 @@ From the evaluator's **Templates** section:
   "weight": 0.5}` so it starts small. Record it as an experiment in `improvement/experiments.json`
   with area `template`. At most one new template a week.
 
+## Research routes (read `route` and `priority` on every new proposal)
+Research sorts its findings. Act on them in this order, highest priority first:
+- `adopt` (proven, required or a plain fix): implement it directly tonight, no A/B flag, if the
+  guard allows the files and the tests pass. Record it in `improvement/experiments.json` with
+  `"status": "adopted"` and the evidence, so the evaluator's attribute ranking can still show its
+  effect later. If you doubt the evidence is that strong, treat it as `experiment` and say why.
+- `template` with priority `breaking` or `high`: this is tonight's template work (build it as in the
+  template section: two test renders, QA, then enabled at weight 0.5). A new format that a whole
+  class of stories needs beats a small craft experiment.
+- `experiment`: the A/B process below.
+- `video` proposals are not yours: research puts those in `improvement/research/topics.json`, and the
+  video run uses them. If you find one in `proposals.json`, move it there.
+Set each proposal's `status` (`adopted`, `testing`, `building`, `done`, `rejected` with a `reason`).
+
 ## 4. Start at most one new experiment
 Only if: fewer running experiments than `agents.maxActiveExperiments`, nothing from steps 1–3
 changed code tonight, and no running experiment shares the proposal's area. Pick the proposal with

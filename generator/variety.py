@@ -26,6 +26,15 @@ _STOP = frozenset("a an and are as at be by do does for from how in is it its of
                   "when which who why will with you your really much many".split())
 
 
+# templates that only serve research-feed topics (they need sourced facts). They don't count toward the
+# rotation size, so adding one doesn't tighten the evergreen templates' rules; they still sit out the window.
+FEED_ONLY = ("money_news",)
+
+
+def rotation_size(enabled: list[str]) -> int:
+    return len([t for t in enabled if t not in FEED_ONLY])
+
+
 def template_window(n_enabled: int) -> int:
     """How many recent videos a template must sit out. 6 needs eight templates; with fewer it
     scales down (four templates → 2) so the rule can be met."""
@@ -59,9 +68,10 @@ def opening(text: str) -> str:
 
 def allowed_templates(history: list[dict], enabled: list[str]) -> list[str]:
     """Enabled templates that pass both template rules right now."""
-    recent = [e["template"] for e in history[-template_window(len(enabled)):]]
+    n = rotation_size(enabled)
+    recent = [e["template"] for e in history[-template_window(n):]]
     others = [e["template"] for e in history[-(SHARE_WINDOW - 1):]]      # the new video makes it 20
-    most = math.floor(share_limit(len(enabled))*SHARE_WINDOW)
+    most = math.floor(share_limit(n)*SHARE_WINDOW)
     return [t for t in enabled if t not in recent and others.count(t) + 1 <= most]
 
 
@@ -79,11 +89,11 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
     if template not in enabled:
         out.append(f"template {template!r} is not an enabled template")
     elif template not in allowed_templates(history, enabled):
-        window = template_window(len(enabled))
+        window = template_window(rotation_size(enabled))
         if template in [e["template"] for e in history[-window:]]:
             out.append(f"template {template!r} was used in the last {window} videos")
         else:
-            out.append(f"template {template!r} would exceed {share_limit(len(enabled)):.0%} of the last {SHARE_WINDOW} videos")
+            out.append(f"template {template!r} would exceed {share_limit(rotation_size(enabled)):.0%} of the last {SHARE_WINDOW} videos")
 
     category = plan["topic"]["category"]
     if category in blocked_categories(history):

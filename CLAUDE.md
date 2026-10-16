@@ -22,7 +22,11 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   When the backlog is full, generation runs improve or add templates instead of making videos.
 - **Every video must be unique.** YouTube demonetizes repetitive, mass-produced content
   ("inauthentic content"). The variety rules below are mandatory, not nice-to-have.
-- **Every number on screen is computed by code**, never typed by an LLM.
+- **Every number on screen is computed by code**, never typed by an LLM. The one exception is a
+  **sourced fact** in a news video (`money_news`): a figure published by an official source, put in
+  the topic feed by research with its URL, copied unchanged into the script (the number check
+  compares them), shown with "Data: <source> · <month>", and confirmed against the source by the
+  fact reviewer, or the video fails.
 - **All audio is synthesized in code** (music + SFX). No downloaded music, no copyrighted assets.
 - Every video ends with the disclaimer: "Illustrative only. Not financial advice."
 - Generation runs as **Claude Code routines on a Claude Pro plan** (subscription usage, no API key).
@@ -68,6 +72,12 @@ and the tests pass. They report to `improvement/activity/` (dashboard Agents pag
 owner-only problems in `improvement/notifications/` (dashboard Notifications page, with the hourly
 `watchdog.yml`). Rules: `agents/policy.md`. Never weaken the guard, the policy or the evaluator's
 rules to let an agent change through.
+
+**Research routes every finding** (`improvement/research/README.md`): `video` → the topic feed
+`improvement/research/topics.json`, which the next video run's planner reads (`state.topic_feed`;
+a usable `breaking` topic must be taken first, `money_news` tells news stories); `adopt` (proven,
+required or a fix) → the improver applies it directly; `experiment` → A/B; `template` → a new
+format the improver builds; `owner` → notifications.
 
 Schedule by Pro-plan 5-hour usage windows (IST): window A 23:00–04:00 holds only non-critical work
 (auditor 23:00, research 23:47); the video run at 04:07 always starts a fresh window B, followed
@@ -146,7 +156,8 @@ the agent steps follow `generator/prompts/*.md`.
 ## Variety rules (enforced in `generator/variety.py`, not just prompted)
 
 - Same template not used in the last N videos, where N scales with enabled templates
-  (`min(6, templates - 2)`: 2 with four templates, 6 from eight up); no template above 30% of the
+  (`min(6, templates - 2)`: 2 with four templates, 6 from eight up; feed-only templates such as
+  `money_news` don't count toward N); no template above 30% of the
   last 20 (looser below five templates).
 - Same topic category not in the last 3 videos; near-duplicate topics not within 60 days
   (embedding cosine > 0.85 once topics live in pgvector; until M4 a word-overlap cosine > 0.6).

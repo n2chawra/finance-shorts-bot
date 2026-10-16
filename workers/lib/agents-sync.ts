@@ -98,14 +98,26 @@ const DOCS: Record<string, string> = {
   templateDecisions: "improvement/template-decisions.json",
   auditorBacklog: "improvement/auditor/backlog.json",
   dataAudit: "metrics/data-audit.json",
+  topicFeed: "improvement/research/topics.json",
 };
+
+/** The topic feed with each topic's video (from history.json: the video run records topic.feed_id there). */
+function withUsage(value: unknown, root: string): unknown {
+  const file = path.join(root, "history", "history.json");
+  if (!existsSync(file) || !value || typeof value !== "object" || !Array.isArray((value as { topics?: unknown }).topics)) return value;
+  const entries = readJson(file) as { id: string; topic?: { feed_id?: string } }[];
+  const usedBy = new Map(entries.filter((e) => e.topic?.feed_id).map((e) => [e.topic!.feed_id!, e.id]));
+  const topics = (value as { topics: Record<string, unknown>[] }).topics.map((t) => ({ ...t, usedBy: usedBy.get(String(t.id)) ?? null }));
+  return { ...(value as object), topics };
+}
 
 export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<void> {
   for (const [key, rel] of Object.entries(DOCS)) {
     const file = path.join(root, rel);
     if (!existsSync(file)) continue;
     try {
-      const value = readJson(file) as Prisma.InputJsonValue;
+      const raw = readJson(file);
+      const value = (key === "topicFeed" ? withUsage(raw, root) : raw) as Prisma.InputJsonValue;
       await prisma.repoDoc.upsert({ where: { key }, update: { value }, create: { key, value } });
     } catch (e) {
       console.error(`::warning::${rel}: ${e instanceof Error ? e.message : e}`);

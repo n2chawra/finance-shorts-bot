@@ -238,6 +238,7 @@ const ExperimentRowSchema = z.looseObject({
 const ProposalRowSchema = z.looseObject({
   id: z.string(), date: z.string().optional(), area: z.string().optional(), title: z.string(), change: z.string().optional(),
   evidence: z.array(z.string()).optional(), confidence: z.string().optional(), effort: z.string().optional(), status: z.string().optional(),
+  route: z.string().optional(), priority: z.string().optional(),
 });
 const MergeRowSchema = z.looseObject({
   at: z.string(), agent: z.string(), branch: z.string(), result: z.enum(["merged", "blocked"]), reasons: z.array(z.string()), runUrl: z.string().optional(),
@@ -253,6 +254,12 @@ const DataAuditSchema = z.looseObject({
 /** One video run (the 04:07 main run or the 09:07 spare): first step start to last step end, from AgentRun rows */
 export const VideoRunSchema = z.object({ day: z.string(), start: z.string(), end: z.string(), videos: z.number() });
 export type VideoRun = z.infer<typeof VideoRunSchema>;
+const TopicRowSchema = z.looseObject({
+  id: z.string(), title: z.string(), category: z.string().optional(), kind: z.string().optional(), priority: z.string().optional(),
+  status: z.string().optional(), found: z.string().optional(), expires: z.string().optional(), angle: z.string().optional(),
+  templates: z.array(z.string()).optional(), sources: z.array(z.string()).optional(), usedBy: z.string().nullish(),
+  facts: z.array(z.looseObject({ label: z.string(), source: z.string().optional() })).optional(),
+});
 export const AgentsSchema = z.object({
   activity: z.array(ActivitySchema),
   videoRuns: z.array(VideoRunSchema).default([]),
@@ -261,5 +268,6 @@ export const AgentsSchema = z.object({
   merges: z.array(MergeRowSchema),
   backlog: z.array(BacklogRowSchema),
   dataAudit: DataAuditSchema.nullable(),
+  topics: z.array(TopicRowSchema).default([]),
 });
 export type Agents = z.infer<typeof AgentsSchema>;

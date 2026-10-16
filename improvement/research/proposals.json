@@ -14,7 +14,10 @@
       "effort": "S",
       "risk": "Tax rates change; single secondary source, fact review must verify",
       "metric": "views48h",
-      "status": "new"
+      "status": "new",
+      "route": "template",
+      "priority": "normal",
+      "reason": "No template computes a per-instalment tax split, so this needs a new template before it can become a video."
     },
     {
       "id": "sip-record-inflows-hook",
@@ -30,7 +33,10 @@
       "effort": "S",
       "risk": "Figure is gross and from a secondary source; becomes stale",
       "metric": "views48h",
-      "status": "new"
+      "status": "routed",
+      "route": "video",
+      "priority": "high",
+      "reason": "Moved to topics.json as 2026-10-16-sip-record-inflows (money_news template)."
     }
   ]
 }

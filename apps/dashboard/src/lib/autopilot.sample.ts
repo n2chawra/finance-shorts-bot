@@ -116,6 +116,16 @@ export function getAgents(): Agents {
       { at: new Date(now - 3 * DAY_MS).toISOString(), agent: "improver", branch: `agent/improver/${istDay(now - 3 * DAY_MS)}`, result: "blocked", reasons: ["generator/variety.py: protected file; no agent may change it"] },
     ],
     backlog: [{ id: "b1", kind: "idea", title: "Keyboard shortcut to mark the open video as uploaded", status: "open", page: "video" }],
+    topics: [
+      { id: `${istDay(now)}-rbi-repo-cut`, title: "RBI cuts the repo rate: what it does to your home-loan EMI", category: "home_loan", kind: "news", priority: "breaking",
+        status: "new", found: istDay(now), expires: istDay(now + 12 * DAY_MS), templates: ["money_news"], angle: "Your EMI, not the economy", usedBy: null,
+        facts: [{ label: "Repo rate", source: "RBI" }], sources: ["https://www.rbi.org.in/"] },
+      { id: `${istDay(now - DAY_MS)}-sip-record-inflows`, title: "Indians put a record amount into SIPs in one month", category: "sip", kind: "news", priority: "high",
+        status: "new", found: istDay(now - DAY_MS), expires: istDay(now + 10 * DAY_MS), templates: ["money_news"], usedBy: "v-sample-02",
+        facts: [{ label: "SIP money in one month", source: "AMFI" }], sources: ["https://www.amfiindia.com/"] },
+      { id: `${istDay(now - 3 * DAY_MS)}-itr-deadline`, title: "Missed the ITR deadline? What the late fee really costs", category: "tax", kind: "seasonal", priority: "normal",
+        status: "expired", found: istDay(now - 3 * DAY_MS), expires: istDay(now - DAY_MS), templates: ["any"], usedBy: null },
+    ],
     dataAudit: {
       generatedAt: new Date(now - 30 * 60_000).toISOString(), youtubeChecked: true,
       summary: { videos: 12, checked: 10, error: 0, warning: 1, info: 2, owner: 0 },
