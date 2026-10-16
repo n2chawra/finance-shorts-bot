@@ -236,3 +236,8 @@ Done when: everything above works on a phone.
   23:47 (window A, non-critical), video main 04:07 (fresh window B), improver 06:17, dashboard 07:37,
   spare 09:07 (fresh window C). Research dates its report by the following morning; the watchdog's
   "nothing made today" alert waits until 11:00.
+- 2026-10-16: Night of 15->16 Oct broke on the cloud environment's cached clone (local main unrelated
+  to GitHub's): no videos from the 04:07 run, auditor and dashboard pushed to claude/ branches. Fix:
+  scripts/sync-main.sh first in every routine, agents push HEAD:refs/heads/agent/<name>/<date>,
+  agent-merge also takes claude/agent-* branches, scripts/tests/test_routine_prompts.py keeps it so.
+  Stranded auditor and dashboard work re-pushed and merged.
