@@ -36,7 +36,8 @@ const Lines: React.FC<{ p: SceneProps; lines: Line[]; x: number; width: number; 
       {lines.map((l, i) => {
         const st = lineStyle(p, l.style);
         const start = at(p, l.at, 0.2 + i * 0.5);
-        const k = pop(p, start, 10, 160);
+        // the video's first frame is its thumbnail in the feed: lines due at the start are already there
+        const k = p.beat.from === 0 && start < 0.05 ? 1 : pop(p, start, 10, 160);
         const text = l.value !== undefined ? counted(p, l.value, l.text, start, start + 0.9) : l.text;
         const el = (
           <div key={i} style={{
@@ -91,7 +92,7 @@ export const RevealScene: React.FC<SceneProps> = (p) => {
         })}
       </svg>
       <Lines p={p} lines={lines} x={x} width={width} top={v ? h * 0.3 - total / 2 : (h - total) / 2 - 40} align="center" />
-      {actor && <svg width={w} height={h} style={{ position: "absolute" }}><Actor p={p} spec={actor} ground={h * 1.18} index={0} /></svg>}
+      {actor && <svg width={w} height={h} style={{ position: "absolute" }}><Actor p={p} spec={actor} ground={h * (h > w ? 1.0 : 1.18)} index={0} /></svg>}
     </AbsoluteFill>
   );
 };
@@ -239,6 +240,7 @@ export const CalendarScene: React.FC<SceneProps> = (p) => {
   const page = pages[idx % pages.length]!;
   const next = pages[(idx + 1) % pages.length]!;
   const done = t > flipEnd;
+  const fast = total / flipEnd > 6;           // more than six pages a second blurs into two names: cut instead
   const vertical = h > w;
   const cw = 520, ch = 560, cx = vertical ? w / 2 - cw / 2 : w * 0.3 - cw / 2, cy = vertical ? 170 : h / 2 - ch / 2 + 20;
   const tx = vertical ? 60 : w * 0.5, ty = vertical ? cy + ch + 50 : h * 0.36, tw = vertical ? w - 120 : w * 0.45;
@@ -248,8 +250,8 @@ export const CalendarScene: React.FC<SceneProps> = (p) => {
       <div style={{ position: "absolute", left: cx, top: cy, width: cw, height: ch, perspective: 1200 }}>
         <div style={{ position: "absolute", inset: 0, borderRadius: 30, background: "#ffffff", boxShadow: "0 30px 60px rgba(0,0,0,0.4)" }} />
         <div style={{ position: "absolute", left: 0, top: 0, width: cw, height: 120, borderRadius: "30px 30px 0 0", background: pal.danger }} />
-        <div style={{ position: "absolute", top: 180, width: cw, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 150, color: "#0f172a" }}>{done ? page : next}</div>
-        {!done && (
+        <div style={{ position: "absolute", top: 180, width: cw, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 150, color: "#0f172a" }}>{done || fast ? page : next}</div>
+        {!done && !fast && (
           <div style={{ position: "absolute", left: 0, top: 120, width: cw, height: ch - 120, background: "#ffffff", borderRadius: "0 0 30px 30px",
             transformOrigin: "top center", transform: `rotateX(${-frac * 100}deg)`, backfaceVisibility: "hidden", opacity: 1 - frac * 0.5, boxShadow: "0 10px 30px rgba(0,0,0,0.2)" }}>
             <div style={{ position: "absolute", top: 60, width: cw, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 150, color: "#0f172a", opacity: clamp(1 - frac * 1.8) }}>{page}</div>

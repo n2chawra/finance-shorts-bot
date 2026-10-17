@@ -301,3 +301,13 @@ def test_a_trending_topic_earns_one_extra_video(root: Path, today: None) -> None
     assert s["topic_feed"]["required"] == "hot"
     history.append(entry(3, days_ago=0.05), root)
     assert run.state(root)["mode"] == "idle"                     # only one extra a day
+
+
+def test_the_renderer_switch_picks_the_shorts_templates(root: Path) -> None:
+    pillow = run.enabled_templates(run.load_settings(root), "short", root)
+    assert "short_story" not in pillow and "quiz_countdown" in pillow           # no switch file: Pillow
+    (root / "config" / "renderer.json").write_text(json.dumps({"short": "remotion"}), encoding="utf-8")
+    remotion = run.enabled_templates(run.load_settings(root), "short", root)
+    assert "short_story" in remotion and "quiz_countdown" not in remotion
+    assert "money_news" in remotion                                              # news stays on Pillow
+    assert "long_story" not in remotion and run.plan_format({"template": "short_story"}) == "short"

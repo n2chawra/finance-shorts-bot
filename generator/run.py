@@ -65,8 +65,20 @@ def log_step(vid: str, agent: str, passed: bool, notes: list[str], root: Path = 
     _write(path, steps)
 
 
-def enabled_templates(settings: dict, fmt: str | None = None) -> list[str]:
-    return [t for t in renderer.template_names(fmt) if settings["templates"].get(t, {}).get("enabled", True)]
+def renderers(root: Path = ROOT) -> dict[str, str]:
+    """Which engine draws each format: config/renderer.json, {"short"|"long": "remotion"|"pillow"}.
+    Owner-only: flipping a format back to "pillow" is the rollback while the Pillow code is kept."""
+    f = root / "config" / "renderer.json"
+    return {"short": "pillow", "long": "pillow", **(json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {})}
+
+
+def enabled_templates(settings: dict, fmt: str | None = None, root: Path = ROOT) -> list[str]:
+    """Templates a plan may use: the engine chosen for each format, plus the feed-only news
+    template, which stays on Pillow until a Remotion news scene exists."""
+    engine = renderers(root)
+    names = renderer.template_names(fmt) + sorted(t for t, f in REMOTION_TEMPLATES.items() if fmt in (None, f))
+    on_engine = [t for t in names if t in variety.FEED_ONLY or (t in REMOTION_TEMPLATES) == (engine[plan_format({"template": t})] == "remotion")]
+    return [t for t in on_engine if settings["templates"].get(t, {}).get("enabled", True)]
 
 
 def plan_format(plan_or_script: dict) -> str:
@@ -93,7 +105,7 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     settings = load_settings(root)
     everything = history.load(root)
     entries = history.of_format(everything, fmt)
-    enabled = enabled_templates(settings, fmt)
+    enabled = enabled_templates(settings, fmt, root)
     backlog = history.ready_count(everything, settings, fmt)
     tw = settings["templateWork"]
     today = history.ist_day(history.now().isoformat())
@@ -172,7 +184,7 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
     else:
         fmt = plan_format(plan)
         entries = history.of_format(history.load(root), fmt)
-        enabled = enabled_templates(load_settings(root), fmt)
+        enabled = enabled_templates(load_settings(root), fmt, root)
         problems = variety.check_plan(plan, entries, enabled)
         problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
                                       variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)

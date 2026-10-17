@@ -13,6 +13,11 @@ or two. Half of the videos also get a voiceover (see Voiceover below).
 - `renderer/templates/<template>/schema.json`: the exact shape.
 - `examples/<template>.json`: a working script. Use it for structure, not for wording.
 
+For `short_story` (and `long_story`) the README is the whole contract and there is no
+`schema.json`: you write the storyboard, beat by beat (scene, line, events, acting), and
+`python -m generator.run number-check <id>` checks every part of it. Pick the README's story
+recipe that fits the plan's `story`.
+
 ## Experiments (from `state`)
 
 `state` may list `experiments`: A/B tests the improver agent is running. For each one that applies

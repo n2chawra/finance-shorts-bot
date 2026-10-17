@@ -13,7 +13,8 @@ export const BeatVoice = z.object({
   speaker: z.string(),
   words: z.array(Word),
   phonemes: z.array(Phoneme),
-  // caption tokens as written ("₹60,000"), timed by the words that speak them (Shorts show these)
+  // caption tokens as written ("₹60,000"), timed by the words that speak them; not drawn (the owner
+  // prefers voice only, 2026-10-17), kept for uploading as YouTube subtitles
   captions: z.array(z.object({ t: z.string(), s: z.number(), e: z.number() })).optional(),
 });
 

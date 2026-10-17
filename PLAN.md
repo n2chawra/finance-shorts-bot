@@ -320,3 +320,10 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   the height. Vertical layouts for statement, split, calendar and the end card (Shorts sizes, 44 px+).
   `examples/short_story.json` (39 s) checked as stills only; registered for render and number check,
   not offered to the planner until the owner approves Shorts samples.
+- 2026-10-17: Owner liked the first Remotion Short and dropped per-format approval; asked for no
+  on-screen captions (voice is enough; caption data kept for YouTube subtitles). `short_story` is
+  wired into the Shorts routine behind `config/renderer.json` (`{"short": "remotion"}` switches Shorts;
+  Pillow Shorts drop out except `money_news`; deleting the file rolls back). Writer contract with five
+  story recipes; routine prompt runs `setup-cloud.sh` and renders in the background. Fixed: first
+  frame shows the hook, Rohan's height in vertical reveals, the calendar smear. The switch file is
+  not created yet (owner's call).

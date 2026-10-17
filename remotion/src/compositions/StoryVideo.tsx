@@ -10,7 +10,6 @@
 import React from "react";
 import { AbsoluteFill, type CalculateMetadataFunction, useCurrentFrame, useVideoConfig } from "remotion";
 import { isScene, SCENE_NAMES, type SceneName } from "../contract/scenes";
-import { Captions } from "../captions/Captions";
 import { onStoryClock } from "../contract/clock";
 import { Timeline, type Beat } from "../contract/timeline";
 import { cameraTransform, TRANSITION_FRAMES, transitionStyle, Vignette } from "../fx/camera";
@@ -65,7 +64,6 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline }) => {
         <BeatView beat={cur} tl={timeline} frame={frame} fps={fps} />
       </AbsoluteFill>
       <Vignette />
-      {timeline.format === "short" && <Captions tl={timeline} frame={frame} fps={fps} />}
     </AbsoluteFill>
   );
 };
