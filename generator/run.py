@@ -33,8 +33,9 @@ from .settings import ROOT, load as load_settings
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
 MIN_VOICE_FILL = 0.55   # a long section left more than ~half silent is a thin script
+TREND_EXTRA_PER_DAY = 1  # extra Shorts a day for a breaking or trending topic, past the daily target
 AGENTS = ("planner", "writer", *CHECKERS, "render", "ship")
-PLAN_KEYS = ("template", "topic", "hook_style", "cta", "title", "description", "hashtags", "seed", "style")
+PLAN_KEYS = ("template", "topic", "story", "hook_style", "cta", "title", "description", "hashtags", "seed", "style")
 
 
 def _dir(vid: str, root: Path) -> Path:
@@ -125,6 +126,10 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     last = entries[-1] if entries else None
     allowed = variety.allowed_templates(entries, enabled)
     blocked = variety.blocked_categories(entries)
+    feed = topics.for_state(entries, today, blocked, allowed, root, fmt)
+    if fmt == "short" and mode == "idle" and feed["required"] and made_today < target + TREND_EXTRA_PER_DAY:
+        level = (topics.get(feed["required"], root, fmt) or {}).get("priority", "breaking")
+        mode, why = "video", f"{why}, but a {level} topic is waiting: one extra video for it"
     return {
         "format": fmt,
         "mode": mode, "reason": why, "backlog": backlog,
@@ -138,8 +143,10 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "templates": {t: {"weight": settings["templates"].get(t, {}).get("weight", 1.0)} for t in enabled},
         "allowed_templates": allowed,
         "template_window": variety.template_window(variety.rotation_size(enabled)),
+        "allowed_stories": variety.allowed_stories(entries, allowed),
+        "recent_stories": [variety.story_of(e) for e in entries[-variety.STORY_WINDOW:]],
         "blocked_categories": blocked,
-        "topic_feed": topics.for_state(entries, today, blocked, allowed, root, fmt),
+        "topic_feed": feed,
         "previous": last and {"palette": last["style"]["palette"], "genre": last["style"]["genre"], "key": last["style"]["key"],
                               "bpm": last["style"]["bpm"], "hook_style": last["hook_style"], "cta": last["cta"]},
         "hook_styles": list(variety.HOOK_STYLES),
@@ -175,8 +182,7 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
 def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
     d = _dir(vid, root)
     script, plan = _read(d / "script.json"), _read(d / "plan.json")
-    feed_id = (plan.get("topic") or {}).get("feed_id")
-    passed, notes = number_check(script, plan, topics.get(feed_id, root) if feed_id else None)
+    passed, notes = number_check(script, plan, topics.source_topic(plan, root))
     log_step(vid, "number_check", passed, notes, root)
     return [] if passed else notes
 
@@ -264,10 +270,13 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     }
     if media_branch:
         manifest["release"]["mediaBranch"] = f"media/{vid}"
+    if (urgent := topics.urgency(plan, root)) is not None:
+        manifest["priority"] = urgent   # ingest puts it at the front of the upload queue
     _write(d / "manifest.json", manifest)
     history.append({
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],
         "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": style, "format": fmt,
+        "story": plan.get("story"),
     }, root)
 
     if release:

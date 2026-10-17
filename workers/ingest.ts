@@ -17,6 +17,7 @@ import { Prisma, PrismaClient } from "@prisma/client";
 
 import { releaseAssetUrl, repoSlug } from "./lib/github.ts";
 import { Manifest, type ShippedManifest } from "./lib/manifest.ts";
+import { istDay } from "./lib/publishing.ts";
 import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotifications, snapshotDocs } from "./lib/agents-sync.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 
@@ -85,20 +86,31 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
   if (repo && !fileUrl) return "waiting";
 
   await prisma.$transaction(async (tx) => {
-    const last = await tx.video.aggregate({ _max: { queuePosition: true } });
+    const queuePosition = await queueSlot(tx, m);
     const topic = await tx.topic.create({ data: m.topic });
     await tx.video.create({
       data: {
         id: m.id, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {} }, fileUrl,
         thumbnailUrl: `videos/${m.id}/thumbnail.png`, durationSec: m.durationSec, title: m.title, description: m.description,
         tags: m.hashtags.map((h) => h.replace(/^#/, "")), hookStyle: m.hookStyle, cta: m.cta,
-        queuePosition: (last._max.queuePosition ?? 0) + 1, createdAt,
+        queuePosition, createdAt,
       },
     });
     await tx.qaCheck.createMany({ data: m.checks.map((c) => ({ videoId: m.id, checker: c.checker, passed: c.passed, notes: c.notes })) });
     await tx.agentRun.createMany({ data: runRows(m.id, m.agentRuns) });
   });
   return "queued";
+}
+
+/** Where a new video joins the upload queue: at the back, or at the front of its format's queue if
+ * it is breaking news or a trend that has not expired (news loses half its first-day views in ~7 h). */
+export async function queueSlot(tx: Prisma.TransactionClient, m: ShippedManifest, now = new Date()): Promise<number> {
+  if (m.priority && m.priority.until >= istDay(now)) {
+    const first = await tx.video.aggregate({ where: { status: "queued", deletedAt: null, format: m.format }, _min: { queuePosition: true } });
+    return (first._min.queuePosition ?? 1) - 1;
+  }
+  const last = await tx.video.aggregate({ _max: { queuePosition: true } });
+  return (last._max.queuePosition ?? 0) + 1;
 }
 
 async function syncTemplateWork(prisma: PrismaClient): Promise<void> {

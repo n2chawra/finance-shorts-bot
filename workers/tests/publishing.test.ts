@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { istDay, istSlot, nextSlot, slotKey, youtubeMeta } from "../lib/publishing.ts";
+import { dueSoon, istDay, istSlot, nextSlot, slotKey, youtubeMeta } from "../lib/publishing.ts";
 
 const at = (iso: string) => new Date(iso);
 
@@ -87,4 +87,13 @@ test("only Shorts are tagged #Shorts", () => {
   assert.ok(!youtubeMeta(v, undefined, "long").tags.includes("Shorts"));
   assert.ok(!youtubeMeta(v, undefined, "long").description.includes("#Shorts"));
   assert.ok(youtubeMeta(v, undefined, "long").description.includes("Illustrative only"));
+});
+
+test("a slot is filled only within the lookahead, so a midday trend can still take the evening slot", () => {
+  const evening = new Date("2026-10-17T13:37:00Z");                     // 19:07 IST
+  assert.equal(dueSoon(new Date("2026-10-17T04:37:00Z"), evening), false); // 10:07 IST run: 9 h ahead
+  assert.equal(dueSoon(new Date("2026-10-17T07:37:00Z"), evening), false); // 13:07 IST run: 6 h ahead
+  assert.equal(dueSoon(new Date("2026-10-17T10:37:00Z"), evening), true);  // 16:07 IST run: 3 h ahead
+  assert.equal(dueSoon(new Date("2026-10-17T04:37:00Z"), new Date("2026-10-17T07:07:00Z")), true); // 12:37 at 10:07
+  assert.equal(dueSoon(new Date("2026-10-17T10:37:00Z"), new Date("2026-10-17T14:37:00Z")), true); // long 20:07 at 16:07
 });

@@ -38,6 +38,18 @@ export function nextSlot(now: Date, times: string[], taken: Set<string>, perDay:
   throw new Error("no free upload slot in the next 400 days");
 }
 
+/**
+ * How far ahead a slot is filled. The publish job runs at 10:07, 13:07, 16:07 and 17:37 IST: 12:37
+ * is filled at 10:07 and 19:07 at 16:07 (17:37 retries), so a trending video made at midday still
+ * gets the evening slot instead of both slots being taken at 10:07.
+ */
+export const UPLOAD_LOOKAHEAD_HOURS = 4.5;
+
+/** Whether a slot is close enough to fill now (see UPLOAD_LOOKAHEAD_HOURS). */
+export function dueSoon(now: Date, slot: Date, hours = UPLOAD_LOOKAHEAD_HOURS): boolean {
+  return slot.getTime() - now.getTime() <= hours * 3_600_000;
+}
+
 const DISCLAIMER = "Illustrative only. Not financial advice.";
 
 /**

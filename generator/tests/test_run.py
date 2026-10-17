@@ -267,3 +267,18 @@ def test_media_branch_is_head_plus_the_video(root: Path, tmp_path_factory: pytes
 def test_media_branch_needs_the_video(root: Path) -> None:
     with pytest.raises(ValueError, match="video.mp4 is missing"):
         run.push_media_branch(VID, root)
+
+
+def test_a_trending_topic_earns_one_extra_video(root: Path, today: None) -> None:
+    for i in range(3):
+        history.append(entry(i, days_ago=0.1), root)
+    assert run.state(root)["mode"] == "idle"
+    (root / "improvement" / "research").mkdir(parents=True)
+    (root / "improvement" / "research" / "topics.json").write_text(json.dumps({"topics": [
+        {"id": "hot", "title": "Gold at a record", "category": "gold", "kind": "trend", "priority": "trending",
+         "templates": ["any"], "found": "2026-10-13", "expires": "2026-10-15", "status": "new"}]}), encoding="utf-8")
+    s = run.state(root)
+    assert s["mode"] == "video" and "trending topic is waiting" in s["reason"]
+    assert s["topic_feed"]["required"] == "hot"
+    history.append(entry(3, days_ago=0.05), root)
+    assert run.state(root)["mode"] == "idle"                     # only one extra a day

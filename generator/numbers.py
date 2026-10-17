@@ -198,9 +198,10 @@ def number_check(script: dict, plan: dict | None = None, feed_topic: dict | None
                 notes.append(f"script.{field} does not match the plan")
         texts = {"title": plan["title"], "description": plan["description"], "hashtags": " ".join(plan.get("hashtags", []))}
         notes += check_claims(texts, script, video.figures)
-        feed_id = (plan.get("topic") or {}).get("feed_id")
+        topic = plan.get("topic") or {}
+        feed_id = topic.get("feed_id") or (topic.get("trend") or {}).get("id")
         if "feed_id" in script and script["feed_id"] != feed_id:
-            notes.append(f"script.feed_id {script['feed_id']!r} does not match the plan's topic.feed_id {feed_id!r}")
+            notes.append(f"script.feed_id {script['feed_id']!r} does not match the plan's topic.feed_id (or topic.trend.id) {feed_id!r}")
     if "facts" in script:
         notes += topics.check_facts(script, feed_topic)
     if notes:

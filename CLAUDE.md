@@ -197,6 +197,17 @@ the agent steps follow `generator/prompts/*.md`.
   myth / challenge), music (key, tempo 80–120 BPM, genre: lo-fi / upbeat pop / cinematic /
   synthwave / acoustic-ish), SFX set, end CTA.
 - Titles and descriptions must not reuse an opening phrase from the last 20 videos.
+- **Story, not just category** (`STORIES` in `variety.py`): every plan names the story it tells
+  (future value, early vs late, cost of habit, decision duel, myth bust, how it works, trap alert,
+  rule change, case study…). The same story not in the last 3 videos; the "₹X becomes ₹Y in N
+  years" family at most half of the last 20 (to drop to a quarter once the Remotion formats land).
+  Neither the title nor the topic title may repeat a **shape** from the last 10 (numbers and
+  subject removed). Up to 2026-10-17, 8 of 11 Shorts told one story in different categories.
+- **Trends go first**: a `breaking` or `trending` feed topic must be taken by the next video that
+  can use it, earns one extra video past the daily target, and jumps the upload queue (manifest
+  `priority`). The midday trend run (`generator/prompts/trend_run.md`) can carry a trend it found
+  in `plan.topic.trend`. Publish fills each slot only ~4.5 h ahead, so a midday trend can still
+  take the 19:07 slot.
 
 ## Render engine conventions
 

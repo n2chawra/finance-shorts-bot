@@ -45,7 +45,7 @@ function local(file: string, type: string, range: string | null): Response {
 
 export async function GET(req: NextRequest, ctx: { params: Promise<{ id: string; kind: string }> }) {
   const { id, kind } = await ctx.params;
-  if (!/^v-\d{8}-\d{2,}$/.test(id) || !(kind in FILES)) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (!/^(v|L)-\d{8}-\d{2,}$/.test(id) || !(kind in FILES)) return NextResponse.json({ error: "Not found" }, { status: 404 });
   const [name, type] = FILES[kind as keyof typeof FILES];
 
   const file = path.join(process.cwd(), "..", "..", "videos", id, name);

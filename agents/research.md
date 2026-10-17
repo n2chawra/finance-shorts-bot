@@ -68,6 +68,21 @@ a news article is fine to find a story, but each fact needs a URL where the exac
 Every story worth a video goes into the topic feed (section 4) the same night: the 04:07 video run
 reads it. Skip rumours, market predictions and single stocks.
 
+**Trends** (every night, a few searches): what Indians are searching and talking about with money
+right now — Google Trends India (finance), what's trending in finance Shorts, viral money
+conversations, festive and sale-season spending, IPO buzz, a new app or scheme everyone is asking
+about. A money trend that people are talking about *this week* goes into the feed as
+`"kind": "trend", "priority": "trending"` with a short `expires` (2–4 days): the next video run
+must take it, and it jumps the upload queue. Use `trending` only for real, current attention you
+can show with a source; an evergreen idea is `high` or `normal`.
+
+**Money calendar** (`improvement/research/calendar.json`, keep it rolling 60 days ahead): dated
+moments viewers care about — festive sales and Diwali spending, Dhanteras gold, ITR and advance-tax
+deadlines, 80C season (Jan–Mar), the Budget, new financial-year rule changes (1 April),
+salary/appraisal season, RBI MPC dates (rbi.org.in publishes them). Each entry:
+`{"date", "event", "ideas": ["…"], "prepare_by"}`. When a moment is 3–10 days away, put its best
+idea in the feed as `seasonal` (`high`), so the video is ready before the day, not after.
+
 ## 3. Every night: Claude updates
 Check the Claude Code changelog (github.com/anthropics/claude-code, CHANGELOG.md), Anthropic's
 release notes and news for new models, routine/subagent/skill features, limits or pricing changes.
@@ -89,14 +104,17 @@ Decide for each finding what it needs. That decision is the most useful thing yo
 
 Priority, for every route: `breaking` (big news everyone in the niche will talk about this week:
 an RBI rate change, a Budget or tax change, a new SEBI rule for retail investors, a record figure
-from AMFI/RBI; at most one or two a week), `high` (clearly timely or clearly valuable), `normal`.
-Don't inflate: a `breaking` topic jumps ahead of everything else in the next run.
+from AMFI/RBI; at most one or two a week), `trending` (a money topic people are searching and
+talking about right now, with a source that shows it; expires in 2–4 days), `high` (clearly timely
+or clearly valuable), `normal`. Don't inflate: `breaking` and `trending` topics jump ahead of
+everything else in the next run and to the front of the upload queue.
 
 **Topic feed** `improvement/research/topics.json` (`{"topics": [...]}`; add to it, never delete
 entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is no longer right):
 ```json
 {"id": "<DAY>-short-kebab", "title": "what the video is about, one line", "category": "sip|tax|...",
- "kind": "news|trend|seasonal|evergreen", "priority": "breaking|high|normal",
+ "kind": "news|trend|seasonal|evergreen", "priority": "breaking|trending|high|normal",
+ "stories": ["decision_duel", "how_it_works"],
  "templates": ["money_news"] or ["quiz_countdown", "myth_vs_fact"] or ["any"],
  "angle": "the viewer's question it answers", "why_now": "why this week",
  "facts": [{"label": "what the figure is, no digits", "value": 31781, "unit": "rupees|rupees_lakh|rupees_crore|percent|count|count_lakh|count_crore",
@@ -107,7 +125,13 @@ entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is n
 - `facts` are figures reported by the source, copied exactly (value and unit as published). Only
   news topics need them, and only `money_news` shows them; 1–3 per topic, the headline one first.
   A fact you can't tie to a URL showing that exact figure stays out.
-- `expires`: news about 10–14 days after `found`; trends 3–4 weeks; evergreen 90 days.
+- `expires`: news about 10–14 days after `found`; `trending` topics 2–4 days; other trends 3–4
+  weeks; evergreen 90 days.
+- `stories`: what kind of story the topic tells (`generator/variety.py` `STORIES`). The planner may
+  not tell the same story twice in 3 videos, and "what ₹X becomes in N years" stories
+  (`future_value`, `early_vs_late`, `cost_of_habit`) are capped at half the day — 8 of 11 Shorts up
+  to 2026-10-17 told that one story. So **most of your ideas should be other stories**: a decision
+  duel, a myth, a trap, how something works, a rule change, a case study.
 - `templates`: `money_news` for news with facts; otherwise the existing templates that can compute
   the story (read their READMEs). If none can, it is a `template` proposal instead.
 - The video run marks nothing: it records the topic id in the video's history. Read

@@ -3,15 +3,22 @@
 `improvement/research/topics.json` (written only by the research agent):
 
     {"topics": [{"id": "2026-10-16-sip-record-inflows", "title": "...", "category": "sip", "format": "short",
-                 "kind": "news | trend | seasonal | evergreen", "priority": "breaking | high | normal",
+                 "kind": "news | trend | seasonal | evergreen", "priority": "breaking | trending | high | normal",
                  "templates": ["money_news", "quiz_countdown"] or ["any"], "angle": "...", "why_now": "...",
                  "facts": [{"label", "value", "unit", "as_of", "source", "url"}], "verify": ["claim to check"],
                  "sources": ["https://..."], "found": "YYYY-MM-DD", "expires": "YYYY-MM-DD", "status": "new"}]}
 
 A topic is used once: a video records it as `plan.topic.feed_id`, and history makes it unavailable
 (the video run never edits the feed, so it can't conflict with the research agent's branch).
-A `breaking` topic must be taken by the next video that can use it.
+A `breaking` topic, then a `trending` one, must be taken by the next video that can use it: news
+and trends lose half their first-day views in about seven hours.
+
+A video run that finds a trend itself (the midday trend run) can't add it to the feed, so it carries
+it in the plan instead: `plan.topic.trend = {"id": "trend-<today>-<slug>", "why_now", "sources": [urls], "found",
+"expires", "facts"?}`; a news script's `feed_id` is then the trend's id. Both kinds of urgent video ship with a manifest `priority`, which puts them at the front
+of the upload queue.
 """
+from datetime import date, timedelta
 import json
 from pathlib import Path
 
@@ -21,7 +28,9 @@ from .settings import ROOT
 FILES = {"short": Path("improvement") / "research" / "topics.json",
          "long": Path("improvement") / "longform" / "topics.json"}
 FILE = FILES["short"]   # the Shorts feed, for messages that name it
-PRIORITIES = ("breaking", "high", "normal")
+PRIORITIES = ("breaking", "trending", "high", "normal")
+URGENT = ("breaking", "trending")   # must be taken next, and jump the upload queue
+TREND_DAYS = 3                       # a trend found by a video run stays urgent this long
 SHOWN = 8   # topics listed to the planner
 
 
@@ -72,7 +81,7 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     open_.sort(key=lambda t: t.get("found", ""), reverse=True)   # newest first within a priority (stable sorts)
     open_.sort(key=lambda t: PRIORITIES.index(t["priority"]) if t.get("priority") in PRIORITIES else len(PRIORITIES) - 1)
     usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed)]
-    required = next((t["id"] for t in usable if t.get("priority") == "breaking"), None)
+    required = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p), None)
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
             "expires", "format", "outline", "sources")
     return {
@@ -95,12 +104,53 @@ def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], 
             out.append(f"feed topic {feed_id!r} can't be used: {why}")
         elif plan.get("template") == "money_news" and not topic.get("facts"):
             out.append(f"money_news needs a feed topic with sourced facts; {feed_id!r} has none")
+    elif (trend := (plan.get("topic") or {}).get("trend")) is not None:
+        out += check_trend(trend, today)
+        if plan.get("template") == "money_news" and not trend.get("facts"):
+            out.append("money_news needs sourced facts: add them to topic.trend.facts")
     elif plan.get("template") == "money_news":
         out.append("money_news is only for research feed topics: set topic.feed_id to a topic from state.topic_feed")
     required = for_state(entries, today, blocked, allowed, root, fmt)["required"]
     if required and feed_id != required:
-        out.append(f"breaking feed topic {required!r} is waiting and fits an allowed template: this video must use it")
+        level = (get(required, root, fmt) or {}).get("priority", "breaking")
+        out.append(f"{level} feed topic {required!r} is waiting and fits an allowed template: this video must use it")
     return out
+
+
+def check_trend(trend: dict, today: str) -> list[str]:
+    """A trend a video run found itself must show where it came from and stay short-lived."""
+    out = []
+    if not str(trend.get("id", "")).startswith(f"trend-{today}-"):
+        out.append(f"topic.trend.id must be 'trend-{today}-<short-slug>'")
+    if not trend.get("why_now"):
+        out.append("topic.trend.why_now must say what is happening now")
+    sources = trend.get("sources") or []
+    if not sources or not all(isinstance(u, str) and u.startswith("http") for u in sources):
+        out.append("topic.trend.sources must list the URLs that show the trend")
+    latest = (date.fromisoformat(today) + timedelta(days=TREND_DAYS)).isoformat()
+    if not trend.get("expires") or not today <= trend["expires"] <= latest:
+        out.append(f"topic.trend.expires must be between {today} and {latest}")
+    return out
+
+
+def urgency(plan: dict, root: Path = ROOT) -> dict | None:
+    """The manifest `priority` for an urgent video ({level, until}), or None for an ordinary one."""
+    topic = plan.get("topic") or {}
+    if topic.get("feed_id"):
+        t = get(topic["feed_id"], root)
+        if t and t.get("priority") in URGENT:
+            return {"level": t["priority"], "until": t.get("expires") or ""}
+    elif topic.get("trend"):
+        return {"level": "trending", "until": topic["trend"].get("expires", "")}
+    return None
+
+
+def source_topic(plan: dict, root: Path = ROOT) -> dict | None:
+    """Where a plan's sourced facts come from: its feed topic, or the trend it carries."""
+    topic = plan.get("topic") or {}
+    if topic.get("feed_id"):
+        return get(topic["feed_id"], root)
+    return topic.get("trend")
 
 
 def check_facts(script: dict, topic: dict | None) -> list[str]:

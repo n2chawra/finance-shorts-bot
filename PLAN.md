@@ -81,6 +81,19 @@ Done when: everything above works on a phone.
 - [ ] Weekly analyst routine: adjusts template weights from stats, suggests new template ideas
 - [ ] Template builder runs when backlog is full
 
+## M8 — Remotion rebuild (approved 2026-10-17)
+Full plan: `~/.claude/plans/i-want-to-create-frolicking-music.md`. All video drawing moves to Remotion
+(Shorts + long-form, all voiced); Python keeps numbers, timing, voice and music. Rollout per format
+after the owner approves samples; Shorts keep shipping on Pillow until then.
+- [x] Topic variety by story + title shape; trending topics first, one extra video, queue jump,
+      ~4.5 h publish lookahead; midday trend run prompt; `L-` id fix in ingest and the dashboard
+- [ ] Phase 0: feasibility spike (Kokoro word timings; Remotion render time locally and in a cloud routine)
+- [ ] Phase 1: foundations (`remotion/`, timeline contract, render switch, liveliness gate, guard + CI)
+- [ ] Phase 2: cast and character rig (owner approves character sheet + acting test)
+- [ ] Phase 3: long-form on Remotion (owner approves a 4–6 min sample; Studio hold lifted)
+- [ ] Phase 4: Shorts formats on Remotion, per format after approval; retire Pillow drawing
+- [ ] Phase 5: news event days, library growth, Hinglish A/B
+
 ## Later (not scheduled)
 - Edit title/description of a queued video before upload
 - Thumbnail A/B testing
@@ -273,3 +286,11 @@ Done when: everything above works on a phone.
   #Shorts tag), dashboard badges and settings. Two agents: **Scout** (daily 09:37, long topics and
   long-form craft) and **Studio** (Mon/Wed/Fri 14:37, one video end to end). The renderer prints
   percent complete; a long render is about 20 minutes.
+- 2026-10-17: Owner approved the Remotion rebuild (M8) after a side-by-side test. First chunk: 8 of
+  the last 11 Shorts told one story ("what ₹X becomes in N years") in different categories, so plans
+  now name a `story`; the same story can't repeat within 3 videos, projection stories are capped at
+  half of the last 20, and titles can't repeat a shape within 10. Research adds `trending` topics
+  (must be taken next, one extra video a day, front of the upload queue) and a 60-day money
+  calendar; publish fills a slot only ~4.5 h ahead (new 17:37 IST retry run) so a midday trend gets
+  the evening slot; a midday trend run prompt (`generator/prompts/trend_run.md`) is ready. Fixed
+  `L-` ids being rejected by ingest's manifest schema and the dashboard media route.

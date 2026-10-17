@@ -79,3 +79,39 @@ def test_number_check_traces_news_facts_to_the_feed() -> None:
     assert not ok and any("not one of the feed topic's facts" in n for n in notes)
     ok, notes = number_check(script, plan, None)
     assert not ok and any("can't be traced to a source" in n for n in notes)
+
+
+# ---------------- trending topics ----------------
+
+def test_trending_topic_is_required_after_breaking(root: Path) -> None:
+    feed(root, topic("calm", "high"), topic("hot", "trending"))
+    assert topics.for_state([], TODAY, [], TEMPLATES, root)["required"] == "hot"
+    feed(root, topic("hot", "trending"), topic("big", "breaking"))
+    assert topics.for_state([], TODAY, [], TEMPLATES, root)["required"] == "big"
+    feed(root, topic("hot", "trending"))
+    problems = topics.check_plan(make_plan(), [], TODAY, [], TEMPLATES, root)
+    assert any("trending feed topic 'hot'" in p for p in problems)
+
+
+def trend(**over) -> dict:
+    return {"id": f"trend-{TODAY}-gold-rush", "why_now": "Gold at a record before Dhanteras",
+            "sources": ["https://example.com/gold"], "found": TODAY, "expires": "2026-10-18", **over}
+
+
+def test_a_trend_found_by_a_video_run_must_show_its_sources(root: Path) -> None:
+    ok = make_plan(topic={"title": "x", "category": "gold", "trend": trend()})
+    assert topics.check_plan(ok, [], TODAY, [], TEMPLATES, root) == []
+    for bad, why in ((trend(sources=[]), "sources"), (trend(why_now=""), "why_now"),
+                     (trend(expires="2026-10-25"), "expires"), (trend(id="gold"), "id")):
+        plan = make_plan(topic={"title": "x", "category": "gold", "trend": bad})
+        assert any(why in p for p in topics.check_plan(plan, [], TODAY, [], TEMPLATES, root)), why
+
+
+def test_urgent_videos_carry_a_queue_priority(root: Path) -> None:
+    feed(root, topic("hot", "trending", expires="2026-10-19"), topic("calm", "high"))
+    assert topics.urgency(make_plan(topic={"title": "x", "category": "sip", "feed_id": "hot"}), root) == \
+        {"level": "trending", "until": "2026-10-19"}
+    assert topics.urgency(make_plan(topic={"title": "x", "category": "sip", "feed_id": "calm"}), root) is None
+    assert topics.urgency(make_plan(topic={"title": "x", "category": "gold", "trend": trend()}), root) == \
+        {"level": "trending", "until": "2026-10-18"}
+    assert topics.urgency(make_plan(), root) is None

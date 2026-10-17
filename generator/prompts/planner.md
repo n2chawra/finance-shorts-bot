@@ -17,8 +17,10 @@ If `mode` is not `video`, stop and report the mode. Do not plan a video.
 
 Research reads the news and trends every night and lists ready video ideas, best first.
 
-- If `topic_feed.required` names a topic, **this video must use it** (a breaking story, and a
-  template you're allowed fits it). `check-plan` fails otherwise.
+- If `topic_feed.required` names a topic, **this video must use it** (a `breaking` story or a
+  `trending` one, and a template you're allowed fits it). `check-plan` fails otherwise. News and
+  trends lose half their first-day views in about seven hours, so they always go first; the video
+  also jumps to the front of the upload queue.
 - Otherwise prefer a `high` topic marked `usable_now` for one video of the day when it suits an
   allowed template; `normal` topics are good ideas to use when they fit. The rest of the day stays
   evergreen.
@@ -29,7 +31,19 @@ Research reads the news and trends every night and lists ready video ideas, best
 
 ## Choose
 
-- **Template:** one from `allowed_templates`. Prefer higher `weight`; do not always take the top one.
+- **Story** (`story`): what happens to the money, which is not the same as its category. A SIP, a
+  retirement fund and an index fund are three categories but one story if each is "what ₹X
+  becomes in N years". Pick from `allowed_stories`, which lists for each allowed template the
+  stories it may tell next (the same story is not allowed within 3 videos, and the projection
+  stories `future_value`, `early_vs_late` and `cost_of_habit` together are capped at half of the
+  last 20). **Prefer a story that is not a projection** whenever a template can tell one:
+  - `future_value`: what an amount becomes · `early_vs_late`: starting early vs late ·
+    `cost_of_habit`: what a habit costs · `decision_duel`: two choices head to head (FD vs debt
+    fund, PPF vs ELSS) · `myth_bust`: a common belief tested · `rule_change`: news or a new rule ·
+    `how_it_works`, `trap_alert`, `case_study`, `checklist`, `psychology`, `history`: for formats
+    that can tell them (long-form can tell any).
+- **Template:** one from `allowed_templates` whose `allowed_stories` include your story. Prefer
+  higher `weight`; do not always take the top one.
 - **Topic:** a specific, concrete idea, not a theme. "What a ₹350 food-delivery habit costs over
   20 years" is a topic; "saving money" is not. Its `category` must not be in `blocked_categories`,
   and the topic must not resemble anything in `recent_topics`.
@@ -38,7 +52,9 @@ Research reads the news and trends every night and lists ready video ideas, best
   Tempo ranges: lofi 80–96, pop 104–120, cinematic 80–100, synthwave 96–116, acoustic 88–110.
 - **Seed:** any integer from 1 to 99999 not obviously reused.
 - **Title** (20–90 characters) and **description:** must not open with any phrase in
-  `recent_openings`. No promise of returns, no "guaranteed", no "get rich". The description ends
+  `recent_openings`. Neither the title nor the topic title may share a **shape** with a video in
+  the last 10: numbers and subject are ignored, so "What a ₹5,000 SIP becomes in 25 years" and
+  "What ₹8,000 a month becomes in 30 years" are the same title. Frame each one fresh. No promise of returns, no "guaranteed", no "get rich". The description ends
   with the `disclaimer` from the state output.
 - **CTA:** the closing call to action. It must open differently from `previous.cta`.
 - **Hashtags:** 3 to 6, including `#Shorts`.
@@ -61,7 +77,8 @@ Create `videos/<next_id>/plan.json`:
 ```json
 {
   "template": "money_leak_meter",
-  "topic": { "title": "What a daily cafe coffee costs over 15 years", "category": "spending" },
+  "topic": { "title": "The cafe coffee habit that quietly eats a holiday a year", "category": "spending" },
+  "story": "cost_of_habit",
   "hook_style": "question",
   "cta": "Comment your biggest money leak",
   "title": "Your ₹250 coffee habit is costing you more than you think",
@@ -72,7 +89,8 @@ Create `videos/<next_id>/plan.json`:
 }
 ```
 
-For a feed topic, `topic` also has `"feed_id": "<the topic's id>"`.
+For a feed topic, `topic` also has `"feed_id": "<the topic's id>"`. A trend you found yourself
+(the midday trend run only) goes in `topic.trend` instead — see `generator/prompts/trend_run.md`.
 
 Categories in use: `sip`, `compounding`, `retirement`, `nps`, `ppf`, `tax`, `index_funds`,
 `inflation`, `fd`, `credit_card`, `gold`, `insurance`, `home_loan`, `emi`, `spending`,

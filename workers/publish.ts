@@ -17,7 +17,7 @@ import path from "node:path";
 import { PrismaClient } from "@prisma/client";
 
 import { downloadReleaseAsset, repoSlug } from "./lib/github.ts";
-import { istDay, nextSlot, slotKey, youtubeMeta } from "./lib/publishing.ts";
+import { UPLOAD_LOOKAHEAD_HOURS, dueSoon, istDay, nextSlot, slotKey, youtubeMeta } from "./lib/publishing.ts";
 import { loadSettings } from "./lib/settings.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
@@ -72,6 +72,10 @@ async function main(): Promise<void> {
         if (istDay(slot) !== istDay(now)) {
           console.log(uploaded ? `${format}: today's slots are filled. Next is ${slot.toISOString()}.`
             : `${format}: no free slot left today; next is ${slot.toISOString()}.`);
+          break;
+        }
+        if (!dueSoon(now, slot)) {
+          console.log(`${format}: the next slot, ${slot.toISOString()}, is more than ${UPLOAD_LOOKAHEAD_HOURS} h away; a later run fills it.`);
           break;
         }
         if (!(await uploadOne(prisma, token, settings.disclaimer, slot, format))) break;

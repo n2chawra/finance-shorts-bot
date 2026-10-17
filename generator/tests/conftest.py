@@ -23,7 +23,7 @@ def entry(i: int, template: str = "quiz_countdown", category: str = "sip", title
 def make_plan(**over) -> dict:
     plan = {
         "template": "quiz_countdown", "topic": {"title": "How big a monthly SIP grows over two decades", "category": "sip"},
-        "hook_style": "question", "cta": "Comment if you got it right",
+        "story": "future_value", "hook_style": "question", "cta": "Comment if you got it right",
         "title": "Quiz: what does a ₹10,000 SIP become in 20 years?",
         "description": "A quick SIP quiz with a surprising answer. Illustrative only. Not financial advice.",
         "hashtags": ["#Shorts", "#SIP", "#PersonalFinance"], "seed": 20,

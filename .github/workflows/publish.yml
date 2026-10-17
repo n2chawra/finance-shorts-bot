@@ -1,10 +1,13 @@
-# Uploads one video a day to YouTube for the 19:07 IST slot (private + publishAt).
-# Runs three times so a failure gets two retries; once today's slot is taken the runs do nothing.
+# Uploads today's videos to YouTube (private + publishAt), each slot only when it is within
+# UPLOAD_LOOKAHEAD_HOURS (workers/lib/publishing.ts): 12:37 at the 10:07 run, 19:07 at 16:07, and
+# long videos' 20:07 at 16:07. Filling late lets a trending video made at midday take the evening
+# slot. Each slot gets a retry run (13:07 for 12:37, 17:37 for the evening ones).
 name: Publish
 
 on:
   schedule:
     - cron: "37 4,7,10 * * *" # 10:07, 13:07, 16:07 IST
+    - cron: "7 12 * * *"      # 17:37 IST: retry for the evening slots
   workflow_dispatch:
 
 permissions:

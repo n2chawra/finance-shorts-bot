@@ -94,3 +94,71 @@ def test_suggested_style_passes_the_rotation_rules() -> None:
     for seed in range(25):
         plan = make_plan(style=variety.suggest_style(history, seed), hook_style="question")
         assert not [p for p in check(plan, history) if "palette" in p or "genre" in p or "tempo" in p or "style." in p]
+
+
+# ---------------- stories and title shapes ----------------
+
+def test_story_is_required_and_must_suit_the_template() -> None:
+    plan = make_plan()
+    del plan["story"]
+    assert any("plan needs a story" in p for p in check(plan, []))
+    assert any("can't tell a 'myth_bust' story" in p for p in check(make_plan(story="myth_bust"), []))
+    assert any("story must be one of" in p for p in check(make_plan(story="vibes"), []))
+
+
+def test_same_story_not_in_last_three() -> None:
+    history = [entry(1, "myth_vs_fact", "gold"), entry(2, "quiz_countdown", "emi"), entry(3, "two_friends_race", "tax")]
+    history[1]["template"] = "money_leak_meter"           # template window passes; the story is what repeats
+    history[1]["story"] = "future_value"
+    assert any("story 'future_value' was told in the last 3" in p for p in check(make_plan(), history))
+    history.append(entry(4, "myth_vs_fact", "fd"))
+    history.append(entry(5, "money_leak_meter", "gold"))
+    assert not any("story" in p for p in check(make_plan(), history))
+
+
+def test_older_entries_get_the_story_their_template_tells() -> None:
+    assert variety.story_of(entry(1, "money_leak_meter")) == "cost_of_habit"
+    assert variety.story_of(entry(1, "myth_vs_fact")) is None           # could have been either of two
+    assert variety.story_of({**entry(1, "myth_vs_fact"), "story": "decision_duel"}) == "decision_duel"
+
+
+def test_projection_stories_are_capped_at_half_of_the_last_twenty() -> None:
+    # 19 earlier videos: `n` projection stories (none of them the plan's), the rest myth busts
+    def last19(n: int) -> list[dict]:
+        rows = [entry(i, "money_leak_meter" if i % 2 else "two_friends_race", f"c{i}") for i in range(n)]
+        rows += [{**entry(i, "myth_vs_fact", f"c{i}"), "story": "myth_bust"} for i in range(n, 19)]
+        return rows[::-1]                                    # projection ones oldest, out of the story window
+    assert not any("projection" in p for p in check(make_plan(), last19(9)))
+    assert any("projection stories" in p for p in check(make_plan(), last19(10)))
+
+
+def test_the_october_history_would_have_been_stopped() -> None:
+    """The 11 Shorts up to 2026-10-17: 8 of them 'what ₹X becomes/costs in N years'."""
+    titles = [("myth_vs_fact", "Is an FD really the safest place for ₹5 lakh over 10 years"),
+              ("money_leak_meter", "What forgotten OTT and app subscriptions cost over 15 years"),
+              ("quiz_countdown", "What a ₹5,000 monthly SIP becomes in 25 years"),
+              ("myth_vs_fact", "Is PPF alone enough to build a big retirement fund over 20 years"),
+              ("money_leak_meter", "What a daily chai and snack stop costs over 20 years"),
+              ("quiz_countdown", "What a one-time ₹2 lakh index fund investment becomes in 15 years"),
+              ("two_friends_race", "Neha starts a ₹3,000 SIP at 22 and stops at 32"),
+              ("myth_vs_fact", "Does a ₹3 lakh emergency fund in a savings account fall behind"),
+              ("money_news", "RBI raises the repo rate: what it means for a fixed deposit saver"),
+              ("quiz_countdown", "What ₹8,000 a month put away for retirement becomes in 30 years"),
+              ("money_leak_meter", "What three impulse online orders a month cost over 15 years")]
+    history = [entry(i, t, f"c{i}", title=title, days_ago=11 - i) for i, (t, title) in enumerate(titles)]
+    # another quiz on the same shape: blocked by story (told 2 videos ago) and by shape
+    plan = make_plan(topic={"title": "What a ₹12,000 SIP becomes in 18 years", "category": "new_cat"})
+    problems = check(plan, history)
+    assert any("story 'future_value'" in p for p in problems)
+    assert any("topic title has the same shape" in p for p in problems)
+    assert variety.allowed_stories(history, TEMPLATES)["money_leak_meter"] == []
+
+
+def test_title_shape_ignores_numbers_and_subject() -> None:
+    a = variety.title_shape("What a ₹5,000 monthly SIP becomes in 25 years")
+    b = variety.title_shape("What a one-time ₹2 lakh index fund investment becomes in 15 years")
+    assert a == b == "what become in year"
+    assert variety.title_shape("What three impulse orders a month cost over 15 years") == "what cost over year"
+    # two-word shapes are too generic to judge
+    history = [{**entry(1), "title": "Why your SIP feels slow"}]
+    assert not any("shape" in p for p in check(make_plan(title="Why your EMI feels heavy right now"), history))

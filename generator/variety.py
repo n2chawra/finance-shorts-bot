@@ -25,6 +25,30 @@ OPENING_WORDS = 3
 _STOP = frozenset("a an and are as at be by do does for from how in is it its of on or that the this to vs what "
                   "when which who why will with you your really much many".split())
 
+# What story a video tells. The category (sip, retirement, spending…) says which money it is about;
+# the story says what happens to that money. Up to 2026-10-17, 8 of 11 Shorts told one story —
+# "what ₹X becomes in N years" — in different categories, which the category rule could not see.
+STORIES = ("future_value", "early_vs_late", "cost_of_habit", "decision_duel", "myth_bust", "how_it_works",
+           "trap_alert", "rule_change", "case_study", "checklist", "psychology", "history")
+PROJECTION = ("future_value", "early_vs_late", "cost_of_habit")   # the "₹X becomes ₹Y in N years" family
+STORY_WINDOW = 3          # the same story not in the last 3 videos
+# Projection stories may be at most this share of the last 20. 0.5 while three of the four evergreen
+# Shorts templates can only tell a projection story; lower it to 0.25 once the Remotion formats
+# (how it works, trap alert, decision duel, case study…) can carry the rest of the day.
+PROJECTION_SHARE = 0.5
+SHAPE_WINDOW = 10         # a title's shape may not repeat within the last 10 videos
+# which stories each template can tell; a template not listed (long_explainer, future formats) can tell any
+TEMPLATE_STORIES = {
+    "quiz_countdown": ("future_value",), "two_friends_race": ("early_vs_late",),
+    "money_leak_meter": ("cost_of_habit",), "myth_vs_fact": ("myth_bust", "decision_duel"),
+    "money_news": ("rule_change",),
+}
+# words that make a title's shape: the question and the frame around the numbers, not its subject
+_FRAME = frozenset("what how why when is are does do can should will become cost worth turn into grow over in year "
+                   "vs versus if really much more less than".split())
+_NUMBER = re.compile(r"₹?\s?\d[\d,.]*\s*(?:%|lakh|lakhs|crore|crores|cr|l|k)?\b|\b(?:one|two|three|four|five|six|seven|"
+                     r"eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|hundred|thousand)\b", re.I)
+
 
 # templates that only serve research-feed topics (they need sourced facts). They don't count toward the
 # rotation size, so adding one doesn't tighten the evergreen templates' rules; they still sit out the window.
@@ -79,6 +103,64 @@ def blocked_categories(history: list[dict]) -> list[str]:
     return sorted({e["topic"]["category"] for e in history[-CATEGORY_WINDOW:]})
 
 
+def story_of(e: dict) -> str | None:
+    """The story a history entry told. Entries from before stories were recorded get the only story
+    their template could tell; ones whose template could tell several are unknown."""
+    if e.get("story"):
+        return e["story"]
+    told = TEMPLATE_STORIES.get(e.get("template", ""), ())
+    return told[0] if len(told) == 1 else None
+
+
+def stories_for(template: str) -> tuple[str, ...]:
+    return TEMPLATE_STORIES.get(template, STORIES)
+
+
+def story_problems(story: str, history: list[dict]) -> list[str]:
+    """Why this story can't be told next (empty when it can)."""
+    if story not in STORIES:
+        return [f"story must be one of {', '.join(STORIES)}"]
+    out = []
+    if story in [story_of(e) for e in history[-STORY_WINDOW:]]:
+        out.append(f"story {story!r} was told in the last {STORY_WINDOW} videos")
+    if story in PROJECTION:
+        others = [story_of(e) for e in history[-(SHARE_WINDOW - 1):]]
+        most = math.floor(PROJECTION_SHARE*SHARE_WINDOW)
+        if sum(s in PROJECTION for s in others) + 1 > most:
+            out.append(f"projection stories ({', '.join(PROJECTION)}) would be more than {PROJECTION_SHARE:.0%} of the "
+                       f"last {SHARE_WINDOW} videos; tell a different kind of story")
+    return out
+
+
+def allowed_stories(history: list[dict], templates: list[str]) -> dict[str, list[str]]:
+    """For each template, the stories it could tell next without breaking a story rule."""
+    return {t: [s for s in stories_for(t) if not story_problems(s, history)] for t in templates}
+
+
+def title_shape(text: str) -> str:
+    """A title with its subject and numbers removed, leaving the frame around them: "What a ₹5,000
+    SIP becomes in 25 years" and "What ₹8,000 a month for retirement becomes in 30 years" are both
+    "what become in year"."""
+    words = re.findall(r"[a-z]+", _NUMBER.sub(" ", text.lower()))
+    words = [w[:-1] if w in ("becomes", "costs", "turns", "grows", "years") else w for w in words]
+    return " ".join(w for w in words if w in _FRAME)
+
+
+def shape_problems(plan: dict, history: list[dict]) -> list[str]:
+    """A title (YouTube or topic) whose shape a recent video already used. Shapes of fewer than three
+    frame words ("why", "how much") are too generic to judge."""
+    out = []
+    for field, get in (("title", lambda e: e["title"]), ("topic title", lambda e: e["topic"]["title"])):
+        mine = title_shape(get(plan))
+        if len(mine.split()) < 3:
+            continue
+        for e in reversed(history[-SHAPE_WINDOW:]):
+            if title_shape(get(e)) == mine:
+                out.append(f"{field} has the same shape as {e['id']} ({get(e)!r} → {mine!r}); frame it differently")
+                break
+    return out
+
+
 def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime | None = None) -> list[str]:
     """Every variety rule the plan breaks."""
     at = at or utc_now()
@@ -98,6 +180,15 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
     category = plan["topic"]["category"]
     if category in blocked_categories(history):
         out.append(f"topic category {category!r} was used in the last {CATEGORY_WINDOW} videos")
+
+    story = plan.get("story")
+    if not story:
+        out.append(f"plan needs a story: one of {', '.join(stories_for(template))}")
+    else:
+        out += story_problems(story, history)
+        if story in STORIES and story not in stories_for(template):
+            out.append(f"template {template!r} can't tell a {story!r} story; it tells {', '.join(stories_for(template))}")
+    out += shape_problems(plan, history)
 
     cutoff = (at - timedelta(days=DUPLICATE_DAYS)).isoformat()
     for e in history:
