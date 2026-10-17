@@ -18,12 +18,14 @@ export const POSES = {
   pointUp: { ...withArms(STAND, [120, -560]), handL: "point" },
   // hand under the chin from below, forearm up the chest, so the arm never crosses the face
   think: { ...withArms({ ...STAND, headTilt: -0.08 }, [headChin[0] + 14, headChin[1] + 26], [40, -262]), handL: "fist", handR: "open" },
-  shrug: { ...STAND, headTilt: 0.1, armL: [-0.35, -1.1], armR: [Math.PI + 0.35, Math.PI + 1.1], handL: "open", handR: "open" },
+  // elbows by the sides, forearms out, palms up at chest height: "what can you do?"
+  shrug: { ...STAND, headTilt: 0.12, bob: -3, armL: [DOWN - 0.5, -0.32], armR: [DOWN + 0.5, Math.PI + 0.32], handL: "open", handR: "open" },
   celebrate: { ...STAND, bob: -6, armL: [-1.1, -1.35], armR: [Math.PI + 1.1, Math.PI + 1.35], handL: "fist", handR: "fist" },
   facepalm: { ...withArms({ ...STAND, headTilt: 0.18, lean: 0.03 }, [10, BODY.headY + 10]), handL: "open" },
   hips: { ...STAND, armL: [DOWN - 1.1, DOWN + 1.0], armR: [DOWN + 1.1, DOWN - 1.0], handL: "fist", handR: "fist" },
   phone: { ...withArms({ ...STAND, headTilt: 0.12 }, [40, -300], [-10, -290]), handL: "hold", handR: "hold" },
-  present: { ...withArms(STAND, [200, -300], [-200, -300]), handL: "open", handR: "open" },
+  // one open hand out towards what is being shown (scenes put the content to the actor's left)
+  present: { ...withArms({ ...STAND, headTilt: -0.05 }, undefined, [-270, -350]), handR: "open" },
   thumbsUp: { ...withArms(STAND, [120, -330]), handL: "thumb" },
   worried: { ...withArms({ ...STAND, headTilt: 0.06 }, [30, -260], [-30, -262]), handL: "fist", handR: "fist" },
 } satisfies Record<string, Pose>;

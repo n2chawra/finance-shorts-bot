@@ -34,6 +34,22 @@ LIVELY_STILL_SHARE = 0.15
 LIVELY_STILL_SEC = 4.0
 
 
+def liveliness_problems(score: dict[str, float]) -> list[str]:
+    """Why a video reads as a slideshow, in words a template author can act on. Shared by both
+    renderers (renderer/gates.py scores a Remotion mp4 the same way)."""
+    out = []
+    if score["median"] < LIVELY_MEDIAN:
+        out.append(f"median frame change {score['median']:.2f} is below {LIVELY_MEDIAN} — "
+                   f"scenes finish animating and then hold a still picture")
+    if score["still_share"] > LIVELY_STILL_SHARE:
+        out.append(f"{score['still_share']*100:.0f}% of samples have no visible movement "
+                   f"(limit {LIVELY_STILL_SHARE*100:.0f}%)")
+    if score["longest_still_sec"] > LIVELY_STILL_SEC:
+        out.append(f"{score['longest_still_sec']:g} s with nothing moving "
+                   f"(limit {LIVELY_STILL_SEC:g} s)")
+    return out
+
+
 class Video:
     # `frame` is the format: SHORT (vertical Shorts) or LONG (landscape long-form). It sets the
     # frame size and the layout rules; everything else in this class works the same either way.
@@ -189,18 +205,7 @@ class Video:
                 "longest_still_sec": round(best*every, 1)}
 
     def liveliness_problems(self, score: dict[str, float]) -> list[str]:
-        """Why this video reads as a slideshow, in words a template author can act on."""
-        out = []
-        if score["median"] < LIVELY_MEDIAN:
-            out.append(f"median frame change {score['median']:.2f} is below {LIVELY_MEDIAN} — "
-                       f"scenes finish animating and then hold a still picture")
-        if score["still_share"] > LIVELY_STILL_SHARE:
-            out.append(f"{score['still_share']*100:.0f}% of samples have no visible movement "
-                       f"(limit {LIVELY_STILL_SHARE*100:.0f}%)")
-        if score["longest_still_sec"] > LIVELY_STILL_SEC:
-            out.append(f"{score['longest_still_sec']:g} s with nothing moving "
-                       f"(limit {LIVELY_STILL_SEC:g} s)")
-        return out
+        return liveliness_problems(score)
 
     def thumbnail_image(self) -> Image.Image:
         """The image saved as thumbnail.png. A Short uses a frame of itself (it is never seen at

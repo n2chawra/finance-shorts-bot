@@ -133,6 +133,11 @@ export const Character: React.FC<CharacterProps> = ({
   const longTop = look.top === "kurti" || look.top === "kurta-vest";
   const far: "L" | "R" | null = t > 0.15 ? "L" : t < -0.15 ? "R" : null;
   const sh = t * r * 0.28;   // face feature shift for the turn
+  // a hand up at the face (facepalm, chin) is drawn over the head, not hidden behind it
+  const atFace = (side: "L" | "R") => {
+    const hand = (side === "L" ? armL : armR)[2];
+    return side !== far && hand[1] < BODY.neckY && Math.abs(hand[0] - headX) < r * 1.25;
+  };
 
   const arm = (side: "L" | "R") => {
     const p: Chain = side === "L" ? armL : armR;
@@ -235,8 +240,8 @@ export const Character: React.FC<CharacterProps> = ({
           <path d={`M${w * 0.6 + L},${hipY + 30} L${w * 0.88 + L},${hipY + 40}`} stroke="#e8c06a" strokeWidth={5} />
         </g>
       )}
-      {far !== "L" && arm("L")}
-      {far !== "R" && arm("R")}
+      {far !== "L" && !atFace("L") && arm("L")}
+      {far !== "R" && !atFace("R") && arm("R")}
       <path d={`M${headX - 21},${BODY.neckY - 30 + pose.bob} L${headX + 21},${BODY.neckY - 30 + pose.bob} L${headX + 19},${top + 6} Q${headX},${top + 18} ${headX - 19},${top + 6}Z`} fill={look.skinShade} />
       <g transform={`translate(${headX},${headY}) rotate(${(pose.headTilt * 180) / Math.PI})`}>
         {hair(look.hairStyle, r, sh, look.hair)[0]}
@@ -275,6 +280,8 @@ export const Character: React.FC<CharacterProps> = ({
           <circle cx={r * 0.9} cy={r * 2.85} r={r * 0.08} fill="#c2432f" />
         </g>
       )}
+      {atFace("L") && arm("L")}
+      {atFace("R") && arm("R")}
     </g>
   );
 };
