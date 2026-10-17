@@ -1,0 +1,362 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261018-01",
+ "feed_id": "2026-10-18-upi-mdr-above-2000",
+ "seed": 61873,
+ "story": "myth_bust",
+ "style": {
+  "palette": "night",
+  "genre": "synthwave",
+  "key": "E",
+  "bpm": 102
+ },
+ "maths": [
+  {
+   "name": "fee",
+   "kind": "lumpsum",
+   "amount": 2000,
+   "rate_pct": 0.4,
+   "years": 1
+  },
+  {
+   "name": "bill",
+   "kind": "lumpsum",
+   "amount": 5000,
+   "rate_pct": 0.4,
+   "years": 1
+  }
+ ],
+ "beats": [
+  {
+   "id": "myth",
+   "scene": "bignumber",
+   "speaker": "rohan",
+   "camera": "drift",
+   "say": "The shopkeeper says paying by UPI above {fee_amount} now costs me extra!",
+   "events": {
+    "extra": {
+     "word": "extra"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "extra",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "UPI above {fee_amount}",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "Costs you extra?",
+      "style": "hero",
+      "at": "start"
+     }
+    ],
+    "actor": {
+     "who": "rohan",
+     "x": 0.75,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "prop": "phone",
+       "expression": "confused"
+      },
+      {
+       "at": "extra",
+       "pose": "shrug",
+       "expression": "angry"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "actually",
+   "scene": "reveal",
+   "transition": "zoom",
+   "camera": "punch:not",
+   "say": "Actually, that fee is called MDR. It is charged to the shop, not to you.",
+   "events": {
+    "mdr": {
+     "word": "MDR"
+    },
+    "not": {
+     "word": "not"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "mdr"
+    },
+    {
+     "kind": "ding",
+     "at": "not"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Myth",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "MDR is the shop's fee",
+      "style": "hero",
+      "at": "mdr"
+     },
+     {
+      "text": "Not yours",
+      "style": "good",
+      "at": "not"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.5,
+     "scale": 1.2,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "think",
+       "expression": "smirk"
+      },
+      {
+       "at": "not",
+       "pose": "point",
+       "expression": "happy"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "plan",
+   "scene": "bignumber",
+   "transition": "slide-up",
+   "say": "The plan is a fee of {fee_rate} on shop payments above {fee_amount}.",
+   "events": {
+    "rate": {
+     "word": "fee"
+    },
+    "above": {
+     "word": "above"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "rate"
+    },
+    {
+     "kind": "pop-high",
+     "at": "above"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Proposed fee",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "{fee_rate}",
+      "style": "hero",
+      "at": "rate"
+     },
+     {
+      "text": "Shop payments above {fee_amount}",
+      "style": "sub",
+      "at": "above"
+     }
+    ]
+   }
+  },
+  {
+   "id": "bill",
+   "scene": "split",
+   "transition": "zoom",
+   "say": "So on a bill of {bill_amount}, the shop's bank keeps {bill_gains}. Your bill stays {bill_amount}.",
+   "events": {
+    "fee": {
+     "word": "keeps"
+    },
+    "you": {
+     "word": "stays"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fee"
+    },
+    {
+     "kind": "kaching",
+     "at": "you"
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "Shop pays",
+     "text": "{bill_gains}",
+     "value": "@bill.gains",
+     "at": "fee"
+    },
+    "right": {
+     "label": "You pay",
+     "text": "{bill_amount}",
+     "value": "@bill.invested",
+     "at": "you"
+    }
+   }
+  },
+  {
+   "id": "free",
+   "scene": "checklist",
+   "transition": "slide",
+   "say": "Sending money to a friend stays free. And the shop fee is a cost for the shop, not a charge on you.",
+   "events": {
+    "a": {
+     "word": "friend"
+    },
+    "b": {
+     "word": "cost"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "a"
+    },
+    {
+     "kind": "ding",
+     "at": "b"
+    }
+   ],
+   "params": {
+    "title": "What it means for you",
+    "items": [
+     {
+      "text": "Friend to friend: free",
+      "icon": "check"
+     },
+     {
+      "text": "Shop fee: paid by the shop",
+      "icon": "check"
+     }
+    ],
+    "active": 1
+   }
+  },
+  {
+   "id": "status",
+   "scene": "bignumber",
+   "transition": "wipe",
+   "camera": "punch:diwali",
+   "say": "And right now, it isn't even live. It has been put off until after Diwali.",
+   "events": {
+    "live": {
+     "word": "live"
+    },
+    "diwali": {
+     "word": "Diwali"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "live",
+     "gain": 0.6
+    },
+    {
+     "kind": "pop",
+     "at": "diwali"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Not live yet",
+      "style": "danger",
+      "at": "live"
+     },
+     {
+      "text": "Put off until after Diwali",
+      "style": "sub",
+      "at": "diwali"
+     }
+    ],
+    "actor": {
+     "who": "sharma",
+     "x": 0.75,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "hips",
+       "expression": "smirk"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "rohan",
+   "scene": "stage",
+   "speaker": "rohan",
+   "transition": "slide-up",
+   "say": "So the extra charge was never mine to pay.",
+   "params": {
+    "set": "store",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.42,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "thumbsUp",
+        "expression": "proud"
+       }
+      ]
+     }
+    ],
+    "sikka": {
+     "x": 0.75,
+     "drop": true,
+     "cheer": true,
+     "expression": "laugh"
+    }
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "Next time the shopkeeper says that, you'll know who pays.",
+   "params": {
+    "cta": "Has a shop refused your UPI?",
+    "follow": "Follow for one money idea a day",
+    "assumption": "Proposed {fee_rate} MDR on shop UPI payments above {fee_amount}; not yet in force."
+   }
+  }
+ ],
+ "thumbnail": {
+  "who": "rohan",
+  "pose": "shrug",
+  "expression": "confused",
+  "prop": "phone",
+  "figure": "{fee_amount}",
+  "words": "UPI extra fee?",
+  "sub": "Who really pays"
+ }
+}

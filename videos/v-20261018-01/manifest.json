@@ -1,0 +1,274 @@
+{
+  "id": "v-20261018-01",
+  "createdAt": "2026-10-17T23:05:44.552985+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Does a UPI payment above ₹2,000 at a shop now cost the customer extra",
+    "category": "payments",
+    "feed_id": "2026-10-18-upi-mdr-above-2000"
+  },
+  "title": "Shopkeeper says UPI above ₹2,000 costs extra? Here is who really pays",
+  "description": "The talk at the counter: pay by UPI above ₹2,000 and you pay a fee. The proposed 0.4% merchant fee is charged to the shop, not you, and it has been put off until after Diwali. Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#UPI",
+    "#PersonalFinance",
+    "#MoneyMyths"
+  ],
+  "hookStyle": "myth",
+  "cta": "Has a shop refused your UPI?",
+  "seed": 61873,
+  "style": {
+    "palette": "night",
+    "genre": "synthwave",
+    "key": "E",
+    "bpm": 102,
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.3,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "myth",
+        "text": "The shopkeeper says paying by UPI above ₹2,000 now costs me extra!",
+        "start": 0.27,
+        "seconds": 4.51,
+        "window": 4.83,
+        "fill": 0.934
+      },
+      {
+        "scene": "actually",
+        "text": "Actually, that fee is called MDR. It is charged to the shop, not to you.",
+        "start": 5.1,
+        "seconds": 4.42,
+        "window": 4.8,
+        "fill": 0.921
+      },
+      {
+        "scene": "plan",
+        "text": "The plan is a fee of 0.4% on shop payments above ₹2,000.",
+        "start": 9.9,
+        "seconds": 5.01,
+        "window": 5.47,
+        "fill": 0.916
+      },
+      {
+        "scene": "bill",
+        "text": "So on a bill of ₹5,000, the shop's bank keeps ₹20. Your bill stays ₹5,000.",
+        "start": 15.37,
+        "seconds": 6.08,
+        "window": 6.67,
+        "fill": 0.912
+      },
+      {
+        "scene": "free",
+        "text": "Sending money to a friend stays free. And the shop fee is a cost for the shop, not a charge on you.",
+        "start": 22.03,
+        "seconds": 5.5,
+        "window": 5.9,
+        "fill": 0.932
+      },
+      {
+        "scene": "status",
+        "text": "And right now, it isn't even live. It has been put off until after Diwali.",
+        "start": 27.93,
+        "seconds": 4.17,
+        "window": 4.53,
+        "fill": 0.921
+      },
+      {
+        "scene": "rohan",
+        "text": "So the extra charge was never mine to pay.",
+        "start": 32.47,
+        "seconds": 2.11,
+        "window": 2.57,
+        "fill": 0.821
+      },
+      {
+        "scene": "outro",
+        "text": "Next time the shopkeeper says that, you'll know who pays.",
+        "start": 35.03,
+        "seconds": 2.76,
+        "window": 3.23,
+        "fill": 0.854
+      }
+    ]
+  },
+  "durationSec": 39,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.9
+  },
+  "experiments": {},
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "No sourced facts; topic verify list confirmed on official NPCI pages: FAQ (15 Sep 2026) gives 0.4% MDR on P2M UPI above Rs 2,000, cap Rs 300 from Rs 75,000, borne by merchants, consumers and P2P free, apps barred from fees (Q3, Q15-Q19); NPCI press release 13 Oct 2026 defers it to 'immediately post Diwali at a date to be notified separately', no new date found (ThePrint, Business Standard, The Federal agree). Story current. Disclaimer ends description. Minor: 'the shop's bank keeps Rs 20' simplifies MDR shared among banks/PSPs/apps; small-merchant and Rs 5 essential-sector exemptions not mentioned."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-render clean: 0s hook 'Costs you extra?' with Rohan, zoom into reveal, CTA no longer collides with follow line, disclaimer on last frame, thumbnail is a settled card (₹2,000, Rohan); audio -1.0/-15.9 dB within the -21..-15 band; 20s 'You pay ₹352' is the count-up starting at the 'stays' event"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-17T22:38:56.923949+00:00",
+      "finishedAt": "2026-10-17T22:38:56.923949+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-17T22:39:30.617280+00:00",
+      "finishedAt": "2026-10-17T22:39:30.617280+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-17T22:39:38.399442+00:00",
+      "finishedAt": "2026-10-17T22:39:38.399442+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-17T22:40:55.646815+00:00",
+      "finishedAt": "2026-10-17T22:40:55.646815+00:00",
+      "notes": [
+        "No sourced facts; topic verify list confirmed on official NPCI pages: FAQ (15 Sep 2026) gives 0.4% MDR on P2M UPI above Rs 2,000, cap Rs 300 from Rs 75,000, borne by merchants, consumers and P2P free, apps barred from fees (Q3, Q15-Q19); NPCI press release 13 Oct 2026 defers it to 'immediately post Diwali at a date to be notified separately', no new date found (ThePrint, Business Standard, The Federal agree). Story current. Disclaimer ends description. Minor: 'the shop's bank keeps Rs 20' simplifies MDR shared among banks/PSPs/apps; small-merchant and Rs 5 essential-sector exemptions not mentioned."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-17T22:41:10.825126+00:00",
+      "finishedAt": "2026-10-17T22:43:26.308536+00:00",
+      "notes": [
+        "text 'PHONE WORLD' at 3.4 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-17T22:51:48.110094+00:00",
+      "finishedAt": "2026-10-17T22:51:48.110094+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-17T22:51:49.725846+00:00",
+      "finishedAt": "2026-10-17T22:53:30.448227+00:00",
+      "notes": [
+        "39 s, night/synthwave, peak -1.0 dB, mean -15.9 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-17T23:02:47.474127+00:00",
+      "finishedAt": "2026-10-17T23:02:47.474127+00:00",
+      "notes": [
+        "[scene] 38.6s outro (end scene): CTA 'Tell us if a shop ever refused your UPI' wraps to 3 lines and its last line 'UPI' is drawn under 'Follow for one money idea a day' - the end scene stacks CTA and follow line at fixed offsets instead of flowing them, so a 3-line CTA collides",
+        "[scene] 0.0s myth beat (stage scene): first frame shows only the store set and Rohan - the chip 'UPI above ₹2,000 = extra?' set at 'start' is not visible, so there is no hook (no large number, question or statement) on frame one; stage chip must be on screen at frame 0",
+        "[scene] thumbnail: picked mid-transition at ~5s (whip from myth to actually) - the store set is still visible as a strip on the right edge, Rohan is a faded ghost behind Priya and the 'Myth' kicker is half-faded; thumbnail must be taken from a settled frame",
+        "[scene] 5.0s actually beat (reveal scene, whip transition): Rohan from the previous beat overlaps Priya and the old store set shows as a strip down the right edge - two characters overlapping during the whip",
+        "[script] audio mean is -15.9 dB against the -18 dB target (2.1 dB hot); peak -1.0 dB is fine"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-17T23:03:15.062602+00:00",
+      "finishedAt": "2026-10-17T23:03:15.062602+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-17T23:03:16.563806+00:00",
+      "finishedAt": "2026-10-17T23:03:16.563806+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-17T23:03:17.934742+00:00",
+      "finishedAt": "2026-10-17T23:04:59.900792+00:00",
+      "notes": [
+        "39 s, night/synthwave, peak -1.0 dB, mean -15.9 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-17T23:05:30.713868+00:00",
+      "finishedAt": "2026-10-17T23:05:30.713868+00:00",
+      "notes": [
+        "Re-render clean: 0s hook 'Costs you extra?' with Rohan, zoom into reveal, CTA no longer collides with follow line, disclaimer on last frame, thumbnail is a settled card (₹2,000, Rohan); audio -1.0/-15.9 dB within the -21..-15 band; 20s 'You pay ₹352' is the count-up starting at the 'stays' event"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-17T23:05:44.553079+00:00",
+      "finishedAt": "2026-10-17T23:05:44.553079+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261018-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261018-01"
+  },
+  "priority": {
+    "level": "trending",
+    "until": "2026-10-21"
+  }
+}

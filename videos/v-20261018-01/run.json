@@ -1,0 +1,123 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-17T22:38:56.923949+00:00",
+    "finishedAt": "2026-10-17T22:38:56.923949+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-17T22:39:30.617280+00:00",
+    "finishedAt": "2026-10-17T22:39:30.617280+00:00",
+    "notes": [
+      "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-17T22:39:38.399442+00:00",
+    "finishedAt": "2026-10-17T22:39:38.399442+00:00",
+    "notes": [
+      "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-17T22:40:55.646815+00:00",
+    "finishedAt": "2026-10-17T22:40:55.646815+00:00",
+    "notes": [
+      "No sourced facts; topic verify list confirmed on official NPCI pages: FAQ (15 Sep 2026) gives 0.4% MDR on P2M UPI above Rs 2,000, cap Rs 300 from Rs 75,000, borne by merchants, consumers and P2P free, apps barred from fees (Q3, Q15-Q19); NPCI press release 13 Oct 2026 defers it to 'immediately post Diwali at a date to be notified separately', no new date found (ThePrint, Business Standard, The Federal agree). Story current. Disclaimer ends description. Minor: 'the shop's bank keeps Rs 20' simplifies MDR shared among banks/PSPs/apps; small-merchant and Rs 5 essential-sector exemptions not mentioned."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-17T22:41:10.825126+00:00",
+    "finishedAt": "2026-10-17T22:43:26.308536+00:00",
+    "notes": [
+      "text 'PHONE WORLD' at 3.4 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-17T22:51:48.110094+00:00",
+    "finishedAt": "2026-10-17T22:51:48.110094+00:00",
+    "notes": [
+      "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-17T22:51:49.725846+00:00",
+    "finishedAt": "2026-10-17T22:53:30.448227+00:00",
+    "notes": [
+      "39 s, night/synthwave, peak -1.0 dB, mean -15.9 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-17T23:02:47.474127+00:00",
+    "finishedAt": "2026-10-17T23:02:47.474127+00:00",
+    "notes": [
+      "[scene] 38.6s outro (end scene): CTA 'Tell us if a shop ever refused your UPI' wraps to 3 lines and its last line 'UPI' is drawn under 'Follow for one money idea a day' - the end scene stacks CTA and follow line at fixed offsets instead of flowing them, so a 3-line CTA collides",
+      "[scene] 0.0s myth beat (stage scene): first frame shows only the store set and Rohan - the chip 'UPI above ₹2,000 = extra?' set at 'start' is not visible, so there is no hook (no large number, question or statement) on frame one; stage chip must be on screen at frame 0",
+      "[scene] thumbnail: picked mid-transition at ~5s (whip from myth to actually) - the store set is still visible as a strip on the right edge, Rohan is a faded ghost behind Priya and the 'Myth' kicker is half-faded; thumbnail must be taken from a settled frame",
+      "[scene] 5.0s actually beat (reveal scene, whip transition): Rohan from the previous beat overlaps Priya and the old store set shows as a strip down the right edge - two characters overlapping during the whip",
+      "[script] audio mean is -15.9 dB against the -18 dB target (2.1 dB hot); peak -1.0 dB is fine"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-17T23:03:15.062602+00:00",
+    "finishedAt": "2026-10-17T23:03:15.062602+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-17T23:03:16.563806+00:00",
+    "finishedAt": "2026-10-17T23:03:16.563806+00:00",
+    "notes": [
+      "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-17T23:03:17.934742+00:00",
+    "finishedAt": "2026-10-17T23:04:59.900792+00:00",
+    "notes": [
+      "39 s, night/synthwave, peak -1.0 dB, mean -15.9 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-17T23:05:30.713868+00:00",
+    "finishedAt": "2026-10-17T23:05:30.713868+00:00",
+    "notes": [
+      "Re-render clean: 0s hook 'Costs you extra?' with Rohan, zoom into reveal, CTA no longer collides with follow line, disclaimer on last frame, thumbnail is a settled card (₹2,000, Rohan); audio -1.0/-15.9 dB within the -21..-15 band; 20s 'You pay ₹352' is the count-up starting at the 'stays' event"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-17T23:05:44.553079+00:00",
+    "finishedAt": "2026-10-17T23:05:44.553079+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
