@@ -12,6 +12,7 @@ import { AbsoluteFill, type CalculateMetadataFunction, useCurrentFrame, useVideo
 import { isScene, SCENE_NAMES, type SceneName } from "../contract/scenes";
 import { onStoryClock } from "../contract/clock";
 import { Timeline, type Beat } from "../contract/timeline";
+import { LayoutProbe } from "../fx/probe";
 import { cameraTransform, TRANSITION_FRAMES, transitionStyle, Vignette } from "../fx/camera";
 import type { SceneProps } from "../scenes/kit";
 import { ChapterScene, ChecklistScene, EndScene, StageScene } from "../scenes/stage";
@@ -23,12 +24,12 @@ export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   snowball: SnowballScene, calendar: CalendarScene, split: SplitScene, chart: ChartScene, towers: TowersScene,
 };
 
-export type StoryProps = { timeline: Timeline };
+export type StoryProps = { timeline: Timeline; probe?: boolean };   // probe: log text boxes (fx/probe.tsx)
 
 export const calculateStoryMetadata: CalculateMetadataFunction<StoryProps> = ({ props }) => {
   const tl = Timeline.parse(props.timeline);
   for (const b of tl.beats) if (!isScene(b.scene)) throw new Error(`beat ${b.id}: no scene called ${b.scene}; scenes are ${SCENE_NAMES.join(", ")}`);
-  return { durationInFrames: tl.durationInFrames, width: tl.width, height: tl.height, fps: tl.fps, props: { timeline: tl } };
+  return { durationInFrames: tl.durationInFrames, width: tl.width, height: tl.height, fps: tl.fps, props: { timeline: tl, probe: props.probe } };
 };
 
 const BeatView: React.FC<{ beat: Beat; tl: Timeline; frame: number; fps: number }> = ({ beat, tl, frame, fps }) => {
@@ -48,7 +49,7 @@ const BeatView: React.FC<{ beat: Beat; tl: Timeline; frame: number; fps: number 
   );
 };
 
-export const StoryVideo: React.FC<StoryProps> = ({ timeline }) => {
+export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const beats = timeline.beats;
@@ -64,6 +65,7 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline }) => {
         <BeatView beat={cur} tl={timeline} frame={frame} fps={fps} />
       </AbsoluteFill>
       <Vignette />
+      {probe && <LayoutProbe frame={frame} />}
     </AbsoluteFill>
   );
 };

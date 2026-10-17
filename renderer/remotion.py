@@ -20,7 +20,7 @@ from PIL import Image
 
 from renderer.engine.mux import find_ffmpeg
 from renderer.engine.preview import contact_sheet
-from renderer.gates import check_liveliness
+from renderer.gates import check_liveliness, layout_problems
 
 REMOTION = Path(__file__).resolve().parent.parent/"remotion"
 
@@ -49,12 +49,21 @@ def bundle(out: Path) -> Path:
 
 
 def stills(timeline: Path, out: Path, *, frames: list[int] | None = None, every: float = 5.0,
-           bundle_dir: Path | None = None) -> list[Path]:
+           bundle_dir: Path | None = None, probe: list[dict] | None = None) -> list[Path]:
+    """Stills as f<frame>.jpg. Pass a list as `probe` to also collect the layout probe's text boxes."""
     args = ["stills", "--timeline", str(timeline), "--out", str(out)]
     args += ["--frames", ",".join(map(str, frames))] if frames else ["--every", str(every)]
     if bundle_dir:
         args += ["--bundle", str(bundle_dir)]
-    _node(args, lambda line: None if line.startswith("progress") else print(line))
+    if probe is not None:
+        args += ["--probe", "1"]
+
+    def line(text: str) -> None:
+        if text.startswith("probe ") and probe is not None:
+            probe.append(json.loads(text[6:]))
+        elif not text.startswith("progress"):
+            print(text)
+    _node(args, line)
     return sorted(out.glob("f*.jpg"))
 
 
@@ -114,6 +123,10 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
     tl = json.loads(timeline.read_text(encoding="utf-8"))
     b = bundle(work/"bundle")
     shots = stills(timeline, work/"stills", every=every, bundle_dir=b)
+    # layout gate: each beat once its entrances have settled (70% through), measured by the probe
+    probes: list[dict] = []
+    settled = [bt["from"] + round(bt["frames"]*0.7) for bt in tl["beats"]]
+    stills(timeline, work/"probe", frames=settled, bundle_dir=b, probe=probes)
     sheet(shots, tl["fps"], out/"preview.png")
     if tl.get("thumbnail"):
         _node(["thumbnail", "--timeline", str(timeline), "--out", str(out/"thumbnail.png"), "--bundle", str(b)])
@@ -129,7 +142,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         "template": tl.get("template"), "renderer": "remotion", "seed": tl["seed"], "duration_sec": round(seconds),
         "tempo": 1.0, "style": tl.get("style") or {"palette": None, **tl["music"]},
         "voice": {"name": tl["voices"]["narrator"], "base_speed": tl["speed"], "cast": tl["voices"], "lines": lines},
-        "layout_problems": [],
+        "layout_problems": layout_problems(probes, tl["format"], tl["width"], tl["height"], tl["fps"]),
         # YouTube chapters: the first must be 0:00
         "chapters": ([] if any(bt["from"] == 0 for bt in tl["beats"] if bt["scene"] == "chapter") else [{"title": "Intro", "start": 0.0}])
         + [{"title": bt["params"].get("title", ""), "start": round(bt["from"]/tl["fps"], 1)} for bt in tl["beats"] if bt["scene"] == "chapter"],

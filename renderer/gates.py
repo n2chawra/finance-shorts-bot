@@ -1,5 +1,10 @@
 """Checks on a finished video.
 
+Layout: stills rendered with the layout probe (remotion/src/fx/probe.tsx) list every visible text
+box as the viewer sees it. Text must be at least the format's minimum size, stay clear of the
+bottom zone (the Shorts UI covers it) and inside the frame. The numbers mirror
+remotion/src/design/frame.ts.
+
 Liveliness: the picture must keep moving. Measured on the encoded mp4: ffmpeg streams the video
 at 10 fps and 640×360, and each sample is the mean pixel change between two frames 0.3 s apart,
 every 2 s. Calibrated on the first engine's Shorts (medians 1.5–2.3) against its first long video,
@@ -76,3 +81,29 @@ def liveliness_problems(score: dict[str, float]) -> list[str]:
 def check_liveliness(mp4: Path) -> tuple[dict[str, float], list[str]]:
     score = liveliness(mp4)
     return score, liveliness_problems(score)
+
+
+# minimum text size and bottom zone per format (remotion/src/design/frame.ts)
+LAYOUT = {"short": {"min_text": 44, "bottom_safe": 120}, "long": {"min_text": 30, "bottom_safe": 36}}
+
+
+def layout_problems(probes: list[dict], fmt: str, width: int, height: int, fps: int = 30) -> list[str]:
+    """Problems from probe logs [{frame, items: [{t, x, y, w, h, fs}]}], one line per text and rule."""
+    rules, seen, out = LAYOUT[fmt], set(), []
+    for p in probes:
+        at = f"{p['frame']/fps:.1f} s"
+        for it in p["items"]:
+            problems = []
+            if it["fs"] + 0.5 < rules["min_text"]:
+                problems.append(f"is {it['fs']:g} px, below the {rules['min_text']} px minimum")
+            if it["y"] + it["h"] > height - rules["bottom_safe"] + 2:
+                problems.append(f"reaches {it['y'] + it['h']} px, inside the bottom {rules['bottom_safe']} px")
+            if it["x"] < -2 or it["x"] + it["w"] > width + 2 or it["y"] < -2:
+                problems.append("runs outside the frame")
+            for why in problems:
+                key = (it["t"], why.split(",")[0].split(" ")[0])
+                if key not in seen:
+                    seen.add(key)
+                    out.append(f"text {it['t']!r} at {at} {why}")
+    return out
+

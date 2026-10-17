@@ -114,8 +114,10 @@ is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
 | State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
 
 Every figure on screen comes from the script's `maths`, recomputed independently in closed form by
-the number check. Two gates fail the render: a long beat whose narration fills under 55% of its
-length, and a **liveliness** score below the bar (`renderer/gates.py`: median frame change ≥ 1.2,
+the number check. Three gates fail the render: **layout** (every visible text box, measured in
+the rendered stills by `remotion/src/fx/probe.tsx`: at least the format's minimum size, clear of
+the bottom zone, inside the frame), a long beat whose narration fills under 55% of its length,
+and a **liveliness** score below the bar (`renderer/gates.py`: median frame change ≥ 1.2,
 under 15% still samples, no 4-second stretch with nothing moving). The first engine's first long
 video scored 0.02 and was frozen for 82% of its runtime, which is what "a PPT with a voiceover"
 means as a number; the first Remotion long video scored 1.36 and its first Short 2.81.

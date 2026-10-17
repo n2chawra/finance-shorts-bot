@@ -83,6 +83,14 @@ salary/appraisal season, RBI MPC dates (rbi.org.in publishes them). Each entry:
 `{"date", "event", "ideas": ["…"], "prepare_by"}`. When a moment is 3–10 days away, put its best
 idea in the feed as `seasonal` (`high`), so the video is ready before the day, not after.
 
+**Announcement days** (an official number comes out on a known date: RBI policy, the Budget, a GST
+council meeting): the night before, write `improvement/events/<date>-<slug>.json` for the event-day
+run (`generator/prompts/event_day.md` has the format): where and when the source publishes, the
+current figure as a sourced fact (`before`), storyboard notes for each outcome (`cut`, `hold`,
+`hike` or the Budget's likely changes), and the `maths` that turns the outcome into the viewer's
+rupees. In your report, remind the owner that the event-day run needs a one-off routine at about
+10:45 IST on that date (raise an `owner` notification a week ahead).
+
 ## 3. Every night: Claude updates
 Check the Claude Code changelog (github.com/anthropics/claude-code, CHANGELOG.md), Anthropic's
 release notes and news for new models, routine/subagent/skill features, limits or pricing changes.

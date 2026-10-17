@@ -2,13 +2,14 @@
  * Render a timeline.json (renderer/timeline/build.py) with the Story composition.
  *
  *   tsx scripts/render.ts video  --timeline t.json --out silent.mp4 [--from F --to T] [--bundle dir]
- *   tsx scripts/render.ts stills --timeline t.json --out dir/ (--frames 0,90,300 | --every 5) [--bundle dir]
+ *   tsx scripts/render.ts stills --timeline t.json --out dir/ (--frames 0,90,300 | --every 5) [--bundle dir] [--probe 1]
  *   tsx scripts/render.ts thumbnail --timeline t.json --out thumbnail.png [--bundle dir]
  *   tsx scripts/render.ts bundle --out dir/
  *
  * Video is silent: Python mixed the audio and muxes it on afterwards (renderer/remotion.py).
  * --from/--to render one chunk so a long video can be rendered in pieces under a command time cap.
- * Prints "progress <0..1>" lines for a monitor, and "done <path>" at the end.
+ * Prints "progress <0..1>" lines for a monitor, and "done <path>" at the end. With --probe, stills
+ * also print "probe {frame, items}" lines: every visible text box (src/fx/probe.tsx).
  */
 import { bundle } from "@remotion/bundler";
 import { openBrowser, renderMedia, renderStill, selectComposition } from "@remotion/renderer";
@@ -51,7 +52,7 @@ async function main(): Promise<void> {
   if (!opts.timeline || !opts.out) throw new Error(`${mode} needs --timeline and --out`);
 
   const timeline: unknown = JSON.parse(readFileSync(opts.timeline, "utf8"));
-  const inputProps = { timeline };
+  const inputProps = { timeline, probe: mode === "stills" && opts.probe === "1" };
   const url = await serveUrl(opts.bundle);
   if (mode === "thumbnail") {
     const thumb = await selectComposition({ serveUrl: url, id: "Thumbnail", inputProps, browserExecutable });
@@ -94,7 +95,10 @@ async function main(): Promise<void> {
   try {
     for (const [i, frame] of frames.entries()) {
       const file = path.join(out, `f${String(frame).padStart(5, "0")}.jpg`);
-      await renderStill({ composition, serveUrl: url, inputProps, frame, output: file, imageFormat: "jpeg", jpegQuality: 85, puppeteerInstance: browser });
+      await renderStill({
+        composition, serveUrl: url, inputProps, frame, output: file, imageFormat: "jpeg", jpegQuality: 85, puppeteerInstance: browser,
+        onBrowserLog: (log) => { if (log.text.startsWith("PROBE ")) console.log("probe " + log.text.slice(6)); },
+      });
       console.log(`progress ${((i + 1) / frames.length).toFixed(2)}`);
     }
   } finally {

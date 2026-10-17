@@ -33,7 +33,7 @@ export const Sikka: React.FC<{
             <Face expression={expression} viseme={viseme} turn={0} look={gaze} blink={blink} skin={SIKKA.gold} ink={SIKKA.ink} lip={SIKKA.ink} r={70} />
           </g>
         ) : (
-          <text y={r * 0.32} textAnchor="middle" fontFamily="Poppins" fontWeight={800} fontSize={r} fill={SIKKA.goldShade}>₹</text>
+          <text data-probe="skip" y={r * 0.32} textAnchor="middle" fontFamily="Poppins" fontWeight={800} fontSize={r} fill={SIKKA.goldShade}>₹</text>
         )}
       </g>
     </g>

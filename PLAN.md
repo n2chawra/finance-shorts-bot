@@ -87,12 +87,12 @@ Full plan: `~/.claude/plans/i-want-to-create-frolicking-music.md`. All video dra
 after the owner approves samples; Shorts keep shipping on Pillow until then.
 - [x] Topic variety by story + title shape; trending topics first, one extra video, queue jump,
       ~4.5 h publish lookahead; midday trend run prompt; `L-` id fix in ingest and the dashboard
-- [ ] Phase 0: feasibility spike (Kokoro word timings; Remotion render time locally and in a cloud routine)
-- [ ] Phase 1: foundations (`remotion/`, timeline contract, render switch, liveliness gate, guard + CI)
+- [x] Phase 0: feasibility spike (Kokoro word timings; Remotion render time locally and in a cloud routine)
+- [x] Phase 1: foundations (`remotion/`, timeline contract, layout + liveliness gates, guard + CI)
 - [x] Phase 2: cast and character rig (owner approves character sheet + acting test)
-- [ ] Phase 3: long-form on Remotion (owner approves a 4–6 min sample; Studio hold lifted)
-- [ ] Phase 4: Shorts formats on Remotion, per format after approval; retire Pillow drawing
-- [ ] Phase 5: news event days, library growth, Hinglish A/B
+- [x] Phase 3: long-form on Remotion (sample approved; Studio hold lifts when the branch is live)
+- [x] Phase 4: Shorts on Remotion (approved without per-format samples); Pillow engine removed
+- [ ] Phase 5: news event days and recipe growth done; Hinglish A/B waits for a voice that speaks it well
 
 ## Later (not scheduled)
 - Edit title/description of a queued video before upload
@@ -334,3 +334,10 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   check `remotion/` design rules, the end card and the liveliness gate. Prompts (writer, planner,
   fact reviewer, routine, recipe builder, improver, research, scout, policy), CLAUDE.md, README and
   the renderer guide rewritten for the single engine. Projection stories capped at a quarter.
+- 2026-10-17: Layout gate: stills rendered with a probe log every visible text box (glyph box after
+  camera and animation, effective font size); `renderer/gates.py` fails text under the format's minimum,
+  in the bottom zone or off the frame. First run found the chart legend cropped by the camera push and
+  the long chart's axis title in the bottom margin (fixed); all three examples now pass. Event-day flow:
+  research writes `improvement/events/<date>-<slug>.json` the night before, `generator/prompts/event_day.md`
+  ships the announced figure into the 12:37 slot (needs a one-off routine per event). QA reviewer
+  prompt updated for storyboards (`[scene]` problems go to the owner).

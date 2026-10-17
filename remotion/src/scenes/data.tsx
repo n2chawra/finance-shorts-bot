@@ -211,7 +211,7 @@ export const SnowballScene: React.FC<SceneProps> = (p) => {
         <g transform={`translate(${x},${y}) rotate(${t * 180})`}>
           <circle r={r} fill="#ffffff" stroke="#cbd5e1" strokeWidth={4} />
           {[0, 1, 2, 3, 4].map((i) => <circle key={i} cx={Math.cos(i * 1.3) * r * 0.55} cy={Math.sin(i * 1.3) * r * 0.55} r={r * 0.13} fill="#e2e8f0" />)}
-          <text textAnchor="middle" y={r * 0.25} fontFamily={FONT} fontWeight={800} fontSize={r * 0.7} fill="#94a3b8">₹</text>
+          <text data-probe="skip" textAnchor="middle" y={r * 0.25} fontFamily={FONT} fontWeight={800} fontSize={r * 0.7} fill="#94a3b8">₹</text>
         </g>
         {Array.from({ length: bumps }, (_, i) => {
           const bt = t - i / 1.6;
@@ -300,7 +300,7 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
   };
   const t = sec(p);
   const v = h > w, small = v ? 44 : 34;    // a Short: text at 44 px and up, plot above the captions
-  const L = v ? 170 : 220, R = w - (v ? 90 : 260), T = v ? 300 : 170, B = v ? h * 0.5 : h - 170;
+  const L = v ? 170 : 220, R = w - (v ? 90 : 260), T = v ? 300 : 170, B = v ? h * 0.5 : h - 230;
   const xmax = P.series.x[P.series.x.length - 1] ?? 1;
   const ymax = P.ticks.y[P.ticks.y.length - 1] ?? 1;
   const X = (x: number) => L + (R - L) * (x / xmax), Y = (y: number) => B - (B - T) * (y / ymax);
@@ -345,7 +345,7 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
           <Chip text={m.text} k={k} bg={pal.text} fg={pal.bg} size={v ? 44 : 36} />
         </div>;
       })}
-      <div style={{ position: "absolute", right: 60, top: 60, display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-end", opacity: grid }}>
+      <div style={{ position: "absolute", right: v ? 90 : 190, top: v ? 120 : 90, display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-end", opacity: grid }}>
         <Chip text={P.label1} k={1} bg={pal.danger} fg="#ffffff" size={v ? 44 : 32} />
         {P.label2 && <Chip text={P.label2} k={1} bg={pal.accent} fg="#1b1b1b" size={v ? 44 : 32} />}
       </div>
