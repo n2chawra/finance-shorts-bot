@@ -384,3 +384,35 @@ export const TowersScene: React.FC<SceneProps> = (p) => {
     </AbsoluteFill>
   );
 };
+
+/**
+ * News: a headline, the published figure (a sourced fact, copied unchanged from the research feed)
+ * and, always, where it comes from. The source line is drawn from the timeline, never from params,
+ * so a news video cannot show a fact without it.
+ */
+export const HeadlineScene: React.FC<SceneProps> = (p) => {
+  const { width: w, height: h, palette: pal } = p.tl;
+  const v = h > w;
+  const t = sec(p);
+  const P = p.beat.params as { kicker?: string; title?: string; figure?: string; figureAt?: string; label?: string };
+  const fig = pop(p, at(p, P.figureAt, 0.9), 10, 150);
+  const x = v ? 70 : 140, width = v ? w - 140 : w * 0.62;
+  return (
+    <AbsoluteFill>
+      <DataSet pal={pal} w={w} h={h} t={t} seed={p.beat.id} />
+      <div style={{ position: "absolute", left: x, top: v ? 160 : 110 }}>
+        <Chip text={str(P.kicker, "NEWS")} k={pop(p, 0.05)} bg={pal.danger} fg="#ffffff" size={v ? 48 : 40} />
+      </div>
+      <Kinetic text={str(P.title)} p={p} start={0.25} size={v ? 82 : 76} color={pal.text} x={x} y={v ? 290 : 220} width={width} align="left" />
+      <div style={{ position: "absolute", left: x, top: v ? h * 0.36 : h * 0.5, width, fontFamily: FONT, fontWeight: 800,
+        fontSize: v ? 170 : 160, color: pal.accent, letterSpacing: -4, opacity: clamp(fig * 2),
+        transform: `scale(${0.7 + 0.3 * fig})`, transformOrigin: "left center", textShadow: `0 0 60px ${pal.accent}55` }}>{str(P.figure)}</div>
+      <div style={{ position: "absolute", left: x, top: v ? h * 0.36 + 200 : h * 0.5 + 190, width, fontFamily: FONT, fontWeight: 700,
+        fontSize: v ? 56 : 48, color: pal.text, opacity: clamp((t - 1.2) / 0.4) }}>{str(P.label)}</div>
+      {p.tl.sources && (
+        <div style={{ position: "absolute", left: x, top: v ? h * 0.62 : h - 120, fontFamily: FONT, fontWeight: 600,
+          fontSize: v ? 44 : 34, color: pal.muted, opacity: clamp((t - 0.6) / 0.4) }}>{p.tl.sources}</div>
+      )}
+    </AbsoluteFill>
+  );
+};

@@ -85,17 +85,30 @@ def show(head: str, path: str) -> str | None:
 def invariants(head: str) -> list[str]:
     """The hard rules from CLAUDE.md that code can check, on the proposed tree."""
     out = []
-    canvas = show(head, "renderer/engine/canvas.py") or ""
-    if 'DISCLAIMER = "Illustrative only. Not financial advice."' not in canvas:
-        out.append("renderer/engine/canvas.py must keep DISCLAIMER = \"Illustrative only. Not financial advice.\"")
-    short = re.search(r"^SHORT = Frame\(.*?min_text=(\d+).*?bottom_safe=(\d+)", canvas, re.M)
+    rules = show(head, "remotion/src/design/rules.ts") or ""
+    if 'DISCLAIMER = "Illustrative only. Not financial advice."' not in rules:
+        out.append("remotion/src/design/rules.ts must keep DISCLAIMER = \"Illustrative only. Not financial advice.\"")
+    frame = show(head, "remotion/src/design/frame.ts") or ""
+    short = re.search(r"SHORT: Frame = \{.*?minText: (\d+).*?bottomSafe: (\d+)", frame)
     if not short or int(short.group(1)) < 44:
-        out.append("the Shorts frame's min_text must stay at least 44 px")
+        out.append("the Shorts frame's minText must stay at least 44 px")
     if not short or int(short.group(2)) < 120:
-        out.append("the Shorts frame's bottom_safe must stay at least 120 px")
-    video = show(head, "renderer/engine/video.py") or ""
-    if "DISCLAIMER" not in video:
-        out.append("renderer/engine/video.py must still draw the disclaimer in the end scene")
+        out.append("the Shorts frame's bottomSafe must stay at least 120 px")
+    timeline = show(head, "renderer/timeline/build.py") or ""
+    if 'DISCLAIMER = "Illustrative only. Not financial advice."' not in timeline or "must be the end card" not in timeline:
+        out.append("renderer/timeline/build.py must keep the disclaimer and require every video to end on the end card")
+    stage = show(head, "remotion/src/scenes/stage.tsx") or ""
+    if "tl.disclaimer" not in stage:
+        out.append("remotion/src/scenes/stage.tsx: the end card must still draw the disclaimer")
+    gates = show(head, "renderer/gates.py") or ""
+    for name, floor in (("LIVELY_MEDIAN", 1.2), ("STILL", 0.5)):
+        m = re.search(rf"^{name} = ([\d.]+)", gates, re.M)
+        if not m or float(m.group(1)) < floor:
+            out.append(f"renderer/gates.py: {name} must stay at least {floor}")
+    for name, ceiling in (("LIVELY_STILL_SHARE", 0.15), ("LIVELY_STILL_SEC", 4.0)):
+        m = re.search(rf"^{name} = ([\d.]+)", gates, re.M)
+        if not m or float(m.group(1)) > ceiling:
+            out.append(f"renderer/gates.py: {name} must stay at most {ceiling}")
     run = show(head, "generator/run.py") or ""
     if 'CHECKERS = ("number_check", "fact_review", "qa_review")' not in run or "has not passed" not in run:
         out.append("generator/run.py must keep shipping blocked until number check, fact review and QA review pass")

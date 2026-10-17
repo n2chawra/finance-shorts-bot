@@ -14,9 +14,8 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 - **Voiceover only from the offline voice engine** (`renderer/engine/voice.py`, Kokoro, Apache-2.0;
   installed by `scripts/setup-voice.sh`, never committed). One Indian-English and five American
   voices, rotated per video; numbers are spoken as words.
-  Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Since
-  2026-10-16 it runs as the `voiceover` A/B experiment on half of new videos; on-screen text,
-  motion, music and sound effects must still carry the video on their own.
+  Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Every
+  video is voiced; no on-screen captions (owner, 2026-10-17).
 - **Two Shorts per day**, at 12:37 and 19:07 IST (setting `uploadTimes`), and **two long videos per
   week**, 20:07 IST on Tue/Thu/Sat (`longUploadTimes`, `longUploadDays`, `longPerWeek`). One video per
   slot; each format is filled from its own queue, so a missing long video never costs a Short its slot.
@@ -25,7 +24,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 - **Every video must be unique.** YouTube demonetizes repetitive, mass-produced content
   ("inauthentic content"). The variety rules below are mandatory, not nice-to-have.
 - **Every number on screen is computed by code**, never typed by an LLM. The one exception is a
-  **sourced fact** in a news video (`money_news`): a figure published by an official source, put in
+  **sourced fact** in a news video (a script's `facts`): a figure published by an official source, put in
   the topic feed by research with its URL, copied unchanged into the script (the number check
   compares them), shown with "Data: <source> · <month>", and confirmed by the fact reviewer — on
   the source page, or, when that page can't be reached, by web search (the official source's own
@@ -80,7 +79,7 @@ rules to let an agent change through.
 
 **Research routes every finding** (`improvement/research/README.md`): `video` → the topic feed
 `improvement/research/topics.json`, which the next video run's planner reads (`state.topic_feed`;
-a usable `breaking` topic must be taken first, `money_news` tells news stories); `adopt` (proven,
+a usable `breaking` topic must be taken first, a topic with `facts` is told as news); `adopt` (proven,
 required or a fix) → the improver applies it directly; `experiment` → A/B; `template` → a new
 format the improver builds; `owner` → notifications.
 
@@ -97,38 +96,44 @@ Every video has a `format`. The renderer's frame and its layout rules come from 
 smaller minimum text, always narrated, at a slower voice speed. Everything else — camera, music,
 voice, layout checks, number checks, variety rules — is shared.
 
+**One engine: Remotion** (the Pillow engine was removed on 2026-10-17). Python owns every number,
+the timing and the sound; Remotion only draws. A script is a **storyboard**: beats, each with a
+scene, a spoken line, named events the picture reacts to, the cast's acting and the camera.
+`renderer/timeline/build.py` computes the `maths`, speaks each beat with Kokoro (word and phoneme
+timings), mixes music + SFX + voice and writes `timeline.json`; `remotion/` draws it
+(`renderer/remotion.py` renders, muxes and gates). The approved cast (Rohan, Priya, Sharma, Sikka)
+is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
+
 | | Shorts | Long-form |
 |---|---|---|
 | Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Mon/Wed/Fri 14:37 IST, 1 a run) |
 | Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, daily 09:37 IST) |
-| Templates | `quiz_countdown`, `myth_vs_fact`, `money_leak_meter`, `two_friends_race`, `money_news` | `long_explainer` (scenes from `renderer/engine/longform.py`, acted by `renderer/engine/actor.py`) |
-| Length | 30–45 s (a 48–60 s story at `TEMPO` 1.35) | 180–900 s, aiming for 4–6 min; Remotion `long_story` plays at `tempo` 1.5 (~215 spoken words a minute) |
+| Template | `short_story` (1080×1920, story recipes in its README; news via `facts` + a `headline` beat) | `long_story` (1920×1080, chapters, the scene catalog in its README) |
+| Length / pace | 30–45 s, tempo 1.3 (~185 spoken words a minute) | 180–900 s, aiming for 4–6 min, tempo 1.5 (~215 words a minute) |
 | Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
 
-A long video is a list of `sections`, and **a section is a verb, not a slide**: `hook`, `beat`,
-`drain`, `pile`, `grow`, `compare`, `chart`, `steps`, `end`. Each one is an action that runs for its
-whole length — coins leaving a wallet, a stack growing past the hero's head, a tree growing, a chart
-drawing itself — acted by the same character throughout (`renderer/engine/actor.py`: a jointed rig
-with arms, legs, a distance-driven walk cycle and two-bone IK). Its `maths` block names the
-calculations and every figure on screen comes from them, recomputed independently by the number
-check. Two gates fail the render: a section whose narration fills under 55% of its window (silence
-over music is what makes a video feel padded) and a **liveliness** score under the Shorts'
-(`Video.liveliness`: median frame change ≥ 1.2, under 15% still samples, no 4-second stretch with
-nothing moving). The first long video scored 0.02 and was frozen for 82% of its runtime, which is
-what "a PPT with a voiceover" means as a number.
+Every figure on screen comes from the script's `maths`, recomputed independently in closed form by
+the number check. Two gates fail the render: a long beat whose narration fills under 55% of its
+length, and a **liveliness** score below the bar (`renderer/gates.py`: median frame change ≥ 1.2,
+under 15% still samples, no 4-second stretch with nothing moving). The first engine's first long
+video scored 0.02 and was frozen for 82% of its runtime, which is what "a PPT with a voiceover"
+means as a number; the first Remotion long video scored 1.36 and its first Short 2.81.
 
 ## Repo layout
 
 ```
 apps/dashboard/          Next.js 15, App Router, TypeScript strict, Prisma, TanStack Query, Radix UI, Motion
 workers/                 Node/TS scripts run by GitHub Actions: ingest, publish, stats, watchdog
-renderer/                Python 3.12 render engine
-  engine/                shared: canvas helpers, easing, characters, camera, audio synth, mux
-  templates/<name>/      one folder per template: template.py + schema.json + README.md
-  cli.py                 render a script JSON → mp4 (+ thumbnail, + preview contact sheet)
+renderer/                Python 3.12: numbers, timing and sound for the videos
+  engine/                audio + music synth, Kokoro voice, Indian formatting, finance maths, style
+  models/maths.py        named calculations (sip, lumpsum, emi, card_min_due)
+  timeline/build.py      storyboard script → timeline.json + audio.wav; check_script validates
+  templates/<name>/      README.md: the writer's contract (short_story, long_story)
+  remotion.py, gates.py  render with Remotion in chunks, mux, contact sheet, liveliness gate
+remotion/                Remotion 4 + React: design rules, cast, scenes, camera, compositions
 generator/               routine-side logic: history, variety rules, validation, number checks
-  prompts/               prompts for planner, writer, fact reviewer, QA reviewer, template builder
+  prompts/               prompts for planner, writer, fact reviewer, QA reviewer, recipe builder
 videos/<id>/             manifest.json, script.json, thumbnail.png, preview.png (mp4 in Releases)
 history/                 history.json: every generated video's topic, template, style (source of
                          truth for variety rules inside routines, mirrored into Postgres)
@@ -166,21 +171,23 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
 1. **Read state**: `history/history.json`, count ready videos (`queued` + not yet ingested).
    If backlog ≥ 30 → do template work instead (step T) and stop.
 2. **Planner (agent)**: pick a topic + template that pass the variety rules. Write `plan.json`.
-3. **Writer (agent)**: produce `script.json` matching the template's `schema.json`.
-   Numbers are inputs (principal, rate, years), not results.
+3. **Writer (agent)**: write the storyboard `script.json` from the template's README and a story
+   recipe. Numbers are inputs (principal, rate, years), not results.
 4. **Number check (code)**: compute every displayed figure from inputs; reject if the script
    hard-codes a result or any claim contradicts the math. Max 2 rewrites, then mark failed.
 5. **Fact review (separate agent, fresh context)**: checks claims, Indian context (tax slabs,
    SEBI/RBI rules, product names), tone, disclaimer. It did not see steps 2–3 reasoning.
-6. **Render (code)**: `renderer/cli.py script.json` → mp4 + thumbnail + preview contact sheet.
+6. **Render (code)**: `python -m generator.run render <id>` → voice + timeline, Remotion render,
+   mp4 + thumbnail + preview contact sheet, liveliness gate.
 7. **QA review (separate agent)**: looks at the contact sheet + audio levels. Rejects overlaps,
    cut-off or tiny text, empty scenes, unreadable contrast, length outside 30–45 s.
 8. **Ship**: write manifest (title, description, hashtags, style, template, topic), append to
    history, commit to `main`, upload mp4 as a Release asset. Log every step as an AgentRun entry
    inside the manifest.
 
-**T. Template work** (when backlog is full, or every ~5th run): build or improve a template,
-render 2 test videos with it, QA them, and only then set it `enabled`. Limited by settings:
+**T. Recipe work** (when backlog is full, or every ~5th run): add or improve a story recipe in a
+template's README with a checked example script (`generator/prompts/template_builder.md`); scene
+code in `remotion/` is the owner's. Limited by settings:
 at most `templateWork.maxPerDay` runs a day (default 1) and no new templates past
 `templateWork.maxTemplates` (default 10). With `generationPaused` a run does nothing at all.
 
@@ -189,20 +196,18 @@ the agent steps follow `generator/prompts/*.md`.
 
 ## Variety rules (enforced in `generator/variety.py`, not just prompted)
 
-- Same template not used in the last N videos, where N scales with enabled templates
-  (`min(6, templates - 2)`: 2 with four templates, 6 from eight up; feed-only templates such as
-  `money_news` don't count toward N); no template above 30% of the
-  last 20 (looser below five templates).
+- Each format has one template, so variety comes from the story, the recipe and the beats (the
+  template rotation rules in `variety.py` only bind if templates are added).
 - Same topic category not in the last 3 videos; near-duplicate topics not within 60 days
   (embedding cosine > 0.85 once topics live in pgvector; until M4 a word-overlap cosine > 0.6).
-- Rotate per video: color palette, character designs, hook style (question / shock number /
+- Rotate per video: color palette, hook style (question / shock number /
   myth / challenge), music (key, tempo 80–120 BPM, genre: lo-fi / upbeat pop / cinematic /
   synthwave / acoustic-ish), SFX set, end CTA.
 - Titles and descriptions must not reuse an opening phrase from the last 20 videos.
 - **Story, not just category** (`STORIES` in `variety.py`): every plan names the story it tells
   (future value, early vs late, cost of habit, decision duel, myth bust, how it works, trap alert,
   rule change, case study…). The same story not in the last 3 videos; the "₹X becomes ₹Y in N
-  years" family at most half of the last 20 (to drop to a quarter once the Remotion formats land).
+  years" family at most a quarter of the last 20.
   Neither the title nor the topic title may repeat a **shape** from the last 10 (numbers and
   subject removed). Up to 2026-10-17, 8 of 11 Shorts told one story in different categories.
 - **Trends go first**: a `breaking` or `trending` feed topic must be taken by the next video that
@@ -213,14 +218,15 @@ the agent steps follow `generator/prompts/*.md`.
 
 ## Render engine conventions
 
-- 1080×1920, 30 fps, H.264 + AAC, 30–45 s, peak audio around −1 dB, mean around −18 dB. Templates write a
-  48–60 s story timeline; the engine plays it at `TEMPO` (1.35×, `renderer/engine/video.py`), so
-  animations, cuts, sound effects and the voice all run faster together.
-- First 1 s must hook (big number or question). A pattern interrupt every 3–5 s.
-- Text: min 44 px, never within 120 px of the bottom edge (Shorts UI), keep away from the right
-  edge buttons. Indian number formatting (₹, L, Cr).
-- Deterministic: same script + seed → same video.
-- Preview mode renders a contact sheet of key frames for QA without encoding the full video.
+- Shorts 1080×1920, long 1920×1080, 30 fps, H.264 + AAC, peak audio around −1 dB, mean around
+  −18 dB. A beat lasts as long as its spoken line; the whole video plays at its format's tempo
+  (`TEMPOS` in `renderer/timeline/build.py`), voice and animation together.
+- First frame hooks (big number or question). A new picture every 3–5 s (Shorts), 3–6 s (long).
+- Text: Shorts min 44 px, never within 120 px of the bottom edge (Shorts UI), keep away from the
+  right edge buttons (`remotion/src/design/frame.ts`). Indian number formatting (₹, L, Cr).
+- Deterministic: same script + seed → same video (seeded randomness only).
+- `python -m renderer.remotion <timeline.json> --out <dir> --stills-only` renders a contact sheet
+  of stills for QA without encoding the video.
 
 ## Secrets (GitHub Actions secrets, never committed, never given to routines)
 

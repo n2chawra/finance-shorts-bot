@@ -33,11 +33,11 @@ STORIES = ("future_value", "early_vs_late", "cost_of_habit", "decision_duel", "m
 PROJECTION = ("future_value", "early_vs_late", "cost_of_habit")   # the "₹X becomes ₹Y in N years" family
 STORY_WINDOW = 3          # the same story not in the last 3 videos
 # Projection stories may be at most this share of the last 20. 0.5 while three of the four evergreen
-# Shorts templates can only tell a projection story; lower it to 0.25 once the Remotion formats
-# (how it works, trap alert, decision duel, case study…) can carry the rest of the day.
-PROJECTION_SHARE = 0.5
+# Lowered from 0.5 when Shorts moved to Remotion story recipes, which can tell any story.
+PROJECTION_SHARE = 0.25
 SHAPE_WINDOW = 10         # a title's shape may not repeat within the last 10 videos
-# which stories each template can tell; a template not listed (long_explainer, future formats) can tell any
+# The stories the first engine's templates could tell. Only for reading old history entries that
+# have no `story`; the story templates (short_story, long_story) can tell any story.
 TEMPLATE_STORIES = {
     "quiz_countdown": ("future_value",), "two_friends_race": ("early_vs_late",),
     "money_leak_meter": ("cost_of_habit",), "myth_vs_fact": ("myth_bust", "decision_duel"),
@@ -50,13 +50,8 @@ _NUMBER = re.compile(r"₹?\s?\d[\d,.]*\s*(?:%|lakh|lakhs|crore|crores|cr|l|k)?\
                      r"eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|hundred|thousand)\b", re.I)
 
 
-# templates that only serve research-feed topics (they need sourced facts). They don't count toward the
-# rotation size, so adding one doesn't tighten the evergreen templates' rules; they still sit out the window.
-FEED_ONLY = ("money_news",)
-
-
 def rotation_size(enabled: list[str]) -> int:
-    return len([t for t in enabled if t not in FEED_ONLY])
+    return len(enabled)
 
 
 def template_window(n_enabled: int) -> int:

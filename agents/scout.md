@@ -52,16 +52,18 @@ delete; set `"status": "rejected"` with a `reason` when you change your mind):
 {"id": "<DAY>-short-kebab", "format": "long",
  "title": "the video's promise, as a viewer would search for it",
  "category": "sip|tax|home_loan|...", "kind": "evergreen|trend|seasonal",
- "priority": "high|normal", "templates": ["long_explainer"],
+ "priority": "high|normal", "templates": ["long_story"],
  "angle": "the one question the video answers",
- "why_now": "why this is worth nine minutes, and to whom",
+ "why_now": "why this is worth five minutes, and to whom",
  "outline": ["hook: ...", "the leak", "a year of it", "the turn", "invested instead", "side by side", "what to do"],
  "maths": "which calculations tell it: e.g. two sip plans at different rates, plus an inflation one",
  "verify": ["claims the fact reviewer must confirm"],
  "sources": ["https://…"], "found": "<DAY>", "expires": "YYYY-MM-DD", "status": "new"}
 ```
-- `outline` is the part Studio leans on hardest: 8–14 beats, in order, each one a section. Think
-  about where the viewer would get bored and put a number or a chart there.
+- `outline` is the part Studio leans on hardest: 8–14 story steps, in order, with the people in
+  them (Rohan makes the mistake, Priya explains, Sharma has seen it before) and the one picture
+  the whole video hangs on (a leaking bucket, a snowball, a treadmill). Think about where the
+  viewer would get bored and put a reveal, a chart or a character moment there.
 - `expires`: a year out for evergreen, a month for seasonal, two weeks for a trend.
 - Keep **at least four** usable topics in the feed at all times — Studio runs three times a week and
   must never be left without one. If the feed is thin, that is the most useful thing you can do today.
@@ -93,7 +95,7 @@ You may not change code. The Studio agent picks up `adopt` and `template` items 
 ```
 # Long-form scout <DAY> (<focus>)
 ## What I looked at        (sources with links)
-## Topics added            (id, why it deserves nine minutes, who it is for)
+## Topics added            (id, why it deserves five minutes, who it is for)
 ## Craft findings          (what the best long videos do that we don't)
 ## Routed                  (adopt / experiment / template / owner, with priority)
 ## Feed health             (usable topics left, and whether Studio is covered this week)

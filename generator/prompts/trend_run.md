@@ -52,9 +52,9 @@ Follow `routine.md` sections 2–7 for **one** video, with these changes to the 
   "topic": {"title": "...", "category": "gold",
             "trend": {"id": "trend-<YYYY-MM-DD>-short-slug", "why_now": "what is happening now",
                       "sources": ["https://..."], "found": "<YYYY-MM-DD>", "expires": "<today + 1 to 3 days>",
-                      "facts": [ ... only for money_news, each with the exact figure at its url ... ]}}
+                      "facts": [ ... only for a news story, each with the exact figure at its url ... ]}}
   ```
-- For `money_news`, the script's `feed_id` is the trend's `id`, and every fact must appear exactly
+- For a news story, the script's `feed_id` is the trend's `id`, and every fact must appear exactly
   at its `url` (the fact reviewer checks this, by the page or by web search).
 - `check-plan` checks the trend's sources and expiry; `ship` marks the video `trending` so it goes
   to the front of the upload queue.

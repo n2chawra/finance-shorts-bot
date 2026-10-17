@@ -21,20 +21,19 @@ Run Python through `C:\venvs\finance-shorts-bot\Scripts\python.exe`, or activate
 
 ## Render a video
 
-Four templates, each with an example script in `examples/`: `two_friends_race`, `myth_vs_fact`,
-`money_leak_meter`, `quiz_countdown`. Each template folder has a README listing its inputs and
-text placeholders.
+Videos are drawn by Remotion (`remotion/`) from a storyboard script; Python computes the numbers,
+speaks the lines (Kokoro, `scripts/setup-voice.sh`) and mixes the sound. Examples in `examples/`:
+`short_story` (a Short), `news_story` (a news Short), `long_story` (a long video). The writer's
+contract is `renderer/templates/<template>/README.md`.
 
 ```powershell
-$py = 'C:\venvs\finance-shorts-bot\Scripts\python.exe'
-& $py renderer\cli.py examples\quiz_countdown.json             # video.mp4, thumbnail.png, preview.png, render.json
-& $py renderer\cli.py examples\quiz_countdown.json --preview   # no video: contact sheet in a few seconds
-& $py renderer\cli.py examples\quiz_countdown.json --seed 7    # same script, different palette, music and layout seed
-& $py -m pytest renderer -q
+$py = 'C:\venvs\fsb-py312\Scripts\python.exe'          # Python 3.12 with kokoro-onnx 0.6.1
+cd remotion; npm ci; cd ..
+& $py -m renderer.timeline.build examples\short_story.json --out out\short    # timeline.json + audio.wav
+& $py -m renderer.remotion out\short\timeline.json --out out\short --stills-only   # stills + preview.png
+& $py -m renderer.remotion out\short\timeline.json --out out\short                 # video.mp4, render.json
+& $py -m pytest renderer generator -q
 ```
 
-Output goes to `out/` (gitignored) unless `--out` is given. `render.json` records the resolved
-style (palette, genre, key, BPM), any layout-rule problems at the key frames, and audio levels.
-
-A script may pin `style.palette`, `style.genre`, `style.key` and `style.bpm`; whatever it leaves
-out is picked from the seed.
+`--voice estimate` on the build skips Kokoro (timing from word counts, no voice) for quick checks.
+`render.json` records the length, style, voice, audio levels and the liveliness score.

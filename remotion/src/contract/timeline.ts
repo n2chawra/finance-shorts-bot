@@ -70,6 +70,8 @@ export const Timeline = z.object({
   audio: z.object({ file: z.string(), peak_db: z.number(), mean_db: z.number() }),
   disclaimer: z.literal("Illustrative only. Not financial advice."),
   voiceMode: z.enum(["kokoro", "estimate"]),
+  // news: "Data: AMFI · Jun 2026", shown by every headline scene (sourced facts, hard rule)
+  sources: z.string().nullable().optional(),
   thumbnail: Thumbnail.nullable().optional(),
 });
 

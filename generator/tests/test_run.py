@@ -18,7 +18,24 @@ def put(root: Path, name: str, data: object) -> None:
 
 
 def script_for(plan: dict) -> dict:
-    return {**example("quiz_countdown"), "seed": plan["seed"], "style": plan["style"]}
+    """A small Short: ₹10,000 a month for 20 years at 12%, matching make_plan's title."""
+    return {"template": "short_story", "format": "short", "seed": plan["seed"], "style": plan["style"],
+            "maths": [{"name": "sip", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 20}],
+            "beats": [{"id": "hook", "scene": "bignumber", "say": "What does {sip_amount} a month become in {sip_years} years?",
+                       "params": {"lines": [{"text": "{sip_final}", "style": "hero", "at": "start"}]}},
+                      {"id": "outro", "scene": "end", "say": "Follow for one money idea a day.", "params": {"cta": "Start early."}}]}
+
+
+@pytest.fixture(autouse=True)
+def fake_render(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Remotion stands in: tests don't launch Chrome. A 36 s video in the script's style."""
+    def story(script: dict, out: Path, preview: bool = False) -> dict:
+        report = {"renderer": "remotion", "template": script["template"], "seed": script["seed"], "duration_sec": 36,
+                  "style": dict(script["style"]), "voice": None, "layout_problems": [], "liveliness_problems": []}
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "render.json").write_text(json.dumps(report), encoding="utf-8")
+        return report
+    monkeypatch.setattr(run.remotion, "render_story", story)
 
 
 def settings(root: Path, **values) -> None:
@@ -61,7 +78,7 @@ def test_state_makes_a_video_when_backlog_has_room(root: Path) -> None:
     s = run.state(root)
     assert s["mode"] == "video" and s["backlog"] == 0
     assert set(s["allowed_templates"]) == set(s["templates"])
-    assert s["template_window"] == 2
+    assert s["template_window"] == 0 and s["allowed_templates"] == ["short_story"]
 
 
 def test_generation_pause_stops_everything(root: Path) -> None:
@@ -76,9 +93,9 @@ def test_full_backlog_idles_video_runs(root: Path) -> None:
 
 
 def test_template_cap_stops_new_templates(root: Path) -> None:
-    settings(root, backlog=30, templateWork={"maxTemplates": 4})
+    settings(root, backlog=30, templateWork={"maxTemplates": 2})
     s = run.state(root)["template_work"]
-    assert s["may_add_template"] is False and s["templates"] == 6
+    assert s["may_add_template"] is False and s["templates"] == 2
 
 
 @pytest.fixture
@@ -179,7 +196,6 @@ def test_check_plan_reports_variety_problems(root: Path) -> None:
     history.append(entry(1, "quiz_countdown", "sip"), root)
     put(root, "plan.json", make_plan(hashtags=["#SIP"]))
     problems = run.check_plan(VID, root)
-    assert any("used in the last 2 videos" in p for p in problems)
     assert any("category 'sip'" in p for p in problems)
     assert any("#Shorts" in p for p in problems)
 
@@ -303,11 +319,8 @@ def test_a_trending_topic_earns_one_extra_video(root: Path, today: None) -> None
     assert run.state(root)["mode"] == "idle"                     # only one extra a day
 
 
-def test_the_renderer_switch_picks_the_shorts_templates(root: Path) -> None:
-    pillow = run.enabled_templates(run.load_settings(root), "short", root)
-    assert "short_story" not in pillow and "quiz_countdown" in pillow           # no switch file: Pillow
-    (root / "config" / "renderer.json").write_text(json.dumps({"short": "remotion"}), encoding="utf-8")
-    remotion = run.enabled_templates(run.load_settings(root), "short", root)
-    assert "short_story" in remotion and "quiz_countdown" not in remotion
-    assert "money_news" in remotion                                              # news stays on Pillow
-    assert "long_story" not in remotion and run.plan_format({"template": "short_story"}) == "short"
+def test_each_format_has_its_story_template(root: Path) -> None:
+    settings_ = run.load_settings(root)
+    assert run.enabled_templates(settings_, "short", root) == ["short_story"]
+    assert run.enabled_templates(settings_, "long", root) == ["long_story"]
+    assert run.plan_format({"template": "short_story"}) == "short" and run.plan_format({"template": "long_story"}) == "long"

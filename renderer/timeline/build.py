@@ -29,6 +29,7 @@ from renderer.engine import voice as tts
 from renderer.engine.audio import (SR, Mixer, sfx_beep, sfx_boom, sfx_clink, sfx_ding, sfx_fail, sfx_kaching,
                                    sfx_pop, sfx_riser, sfx_tick, sfx_whoosh)
 from renderer.engine.music import gain_curve, make_bed
+from renderer.engine.formatting import fact_value, month_year
 from renderer.engine.style import resolve_style
 from renderer.models import maths
 
@@ -151,6 +152,28 @@ def _captions(say: str, figures: dict[str, str], words: list[tuple[str, float, f
     return [{"t": t, "s": round(words[a][1], 3), "e": round(words[b][2], 3)} for t, a, b in tokens]
 
 
+FACT_KEYS = ("label", "value", "unit", "as_of", "source", "url")
+
+
+def _facts(script: dict) -> tuple[dict[str, str], str | None]:
+    """A news video's sourced facts (copied from the research feed, checked against it by the
+    number check): {fact1: "₹31,781 Cr", ...} placeholders and the "Data: AMFI · Jun 2026" line
+    every headline scene shows. The one place a published figure reaches the screen."""
+    facts = script.get("facts") or []
+    figures, sources = {}, []
+    for i, f in enumerate(facts, 1):
+        missing = [k for k in FACT_KEYS if k not in f]
+        if missing:
+            raise ValueError(f"facts[{i - 1}] needs {', '.join(missing)}")
+        if not str(f["url"]).startswith("http"):
+            raise ValueError(f"facts[{i - 1}].url must be the source's address")
+        figures[f"fact{i}"] = fact_value(f["value"], f["unit"])
+        if f["source"] not in sources:
+            sources.append(f["source"])
+    line = f"Data: {' · '.join(sources)} · {month_year(max(f['as_of'] for f in facts))}" if facts else None
+    return figures, line
+
+
 def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict) -> dict | None:
     if not spec:
         return None
@@ -202,10 +225,13 @@ def check_script(script: dict) -> dict:
     if script.get("format", "long") not in SIZES:
         raise ValueError("format must be long or short")
     results = maths.compute(script.get("maths", []))
-    figures = maths.placeholders(results)
+    fact_figures, sources = _facts(script)
+    figures = {**maths.placeholders(results), **fact_figures}
     beats = [Beat(**b) for b in script.get("beats", [])]
     if not beats:
         raise ValueError("a story needs beats")
+    if sources and not any(b.scene == "headline" for b in beats):
+        raise ValueError("a script with sourced facts needs a headline beat, which shows where they come from")
     if len({b.id for b in beats}) != len(beats):
         raise ValueError("beat ids must be unique")
     scenes, out = scene_names(), []
@@ -238,7 +264,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     seed = int(script["seed"])
     style = resolve_style(script.get("style", {}), seed)
     results = maths.compute(script.get("maths", []))
-    figures = maths.placeholders(results)
+    fact_figures, sources = _facts(script)
+    figures = {**maths.placeholders(results), **fact_figures}
     narrator = script.get("narrator") or random.Random(f"narrator:{seed}").choice(NARRATOR_VOICES)
     tempo = float(script.get("tempo", TEMPOS[fmt]))
     speed = float(script.get("speed", SPEEDS[fmt]))*tempo        # the voice, at the video's pace
@@ -320,7 +347,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm},
         "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1)},
-        "disclaimer": DISCLAIMER, "voiceMode": voice,
+        "disclaimer": DISCLAIMER, "voiceMode": voice, "sources": sources,
         # the thumbnail card: a cast member reacting, one computed figure, at most four words
         "thumbnail": _thumbnail(script.get("thumbnail"), figures, results),
     }

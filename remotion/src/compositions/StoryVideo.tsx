@@ -15,10 +15,10 @@ import { Timeline, type Beat } from "../contract/timeline";
 import { cameraTransform, TRANSITION_FRAMES, transitionStyle, Vignette } from "../fx/camera";
 import type { SceneProps } from "../scenes/kit";
 import { ChapterScene, ChecklistScene, EndScene, StageScene } from "../scenes/stage";
-import { BigNumberScene, CalendarScene, ChartScene, MonsterScene, RevealScene, SnowballScene, SplitScene, StatementScene, TowersScene } from "../scenes/data";
+import { BigNumberScene, CalendarScene, ChartScene, HeadlineScene, MonsterScene, RevealScene, SnowballScene, SplitScene, StatementScene, TowersScene } from "../scenes/data";
 
 export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
-  stage: StageScene, chapter: ChapterScene, checklist: ChecklistScene, end: EndScene,
+  stage: StageScene, chapter: ChapterScene, checklist: ChecklistScene, end: EndScene, headline: HeadlineScene,
   bignumber: BigNumberScene, reveal: RevealScene, statement: StatementScene, monster: MonsterScene,
   snowball: SnowballScene, calendar: CalendarScene, split: SplitScene, chart: ChartScene, towers: TowersScene,
 };

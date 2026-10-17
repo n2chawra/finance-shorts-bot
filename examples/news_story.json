@@ -1,0 +1,155 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-sample-02",
+ "seed": 5213,
+ "story": "rule_change",
+ "narrator": "am_michael",
+ "style": {
+  "palette": "ocean",
+  "genre": "cinematic",
+  "key": "E",
+  "bpm": 96
+ },
+ "feed_id": "2026-10-16-sip-record-inflows",
+ "facts": [
+  {
+   "label": "SIP money in one month",
+   "value": 31781,
+   "unit": "rupees_crore",
+   "as_of": "2026-06-30",
+   "source": "AMFI",
+   "url": "https://www.oquilia.com/news/amfi-june-2026-sip-record-31781-crore"
+  }
+ ],
+ "maths": [
+  {
+   "name": "sip",
+   "kind": "sip",
+   "monthly": 5000,
+   "rate_pct": 12,
+   "years": 15
+  }
+ ],
+ "beats": [
+  {
+   "id": "headline",
+   "scene": "headline",
+   "camera": "push",
+   "say": "Indians just put {fact1} into SIPs in a single month. That is a new record.",
+   "events": {
+    "fig": {
+     "word": "into"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "fig",
+     "gain": 0.7
+    }
+   ],
+   "params": {
+    "kicker": "NEWS",
+    "title": "SIPs just hit a record",
+    "figure": "{fact1}",
+    "figureAt": "fig",
+    "label": "into SIPs in one month"
+   }
+  },
+  {
+   "id": "you",
+   "scene": "stage",
+   "speaker": "priya",
+   "transition": "whip",
+   "say": "So what does a record month mean for you?",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "priya",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "maths",
+   "scene": "bignumber",
+   "transition": "zoom",
+   "say": "Even {sip_amount} a month, for {sip_years} years at {sip_rate}, can grow to {sip_final}.",
+   "events": {
+    "final": {
+     "word": "grow"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "final"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "{sip_amount} a month",
+      "style": "sub",
+      "at": "start"
+     },
+     {
+      "text": "{sip_final}",
+      "style": "hero",
+      "value": "@sip.final",
+      "at": "final"
+     }
+    ]
+   }
+  },
+  {
+   "id": "split",
+   "scene": "split",
+   "transition": "slide-up",
+   "say": "You put in {sip_invested}. Compounding adds the rest.",
+   "events": {
+    "in": {
+     "word": "put"
+    },
+    "gain": {
+     "word": "Compounding"
+    }
+   },
+   "params": {
+    "left": {
+     "label": "You put in",
+     "text": "{sip_invested}",
+     "value": "@sip.invested",
+     "at": "in"
+    },
+    "right": {
+     "label": "Growth",
+     "text": "{sip_gains}",
+     "value": "@sip.gains",
+     "at": "gain"
+    }
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "Follow for one money idea a day.",
+   "params": {
+    "cta": "Start small. Start early.",
+    "follow": "Follow for one money idea a day",
+    "assumption": "Assumes {sip_rate} a year, which markets do not promise."
+   }
+  }
+ ]
+}

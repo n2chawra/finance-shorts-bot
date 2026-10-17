@@ -327,3 +327,10 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   story recipes; routine prompt runs `setup-cloud.sh` and renders in the background. Fixed: first
   frame shows the hook, Rohan's height in vertical reveals, the calendar smear. The switch file is
   not created yet (owner's call).
+- 2026-10-17: Owner: no engine switch, no old engine. Removed the Pillow engine (`renderer/cli.py`,
+  drawing modules, the six Pillow templates and their examples and tests) and the voiceover A/B test;
+  every video is a voiced Remotion storyboard: `short_story` and `long_story`. News moved to sourced
+  `facts` (`{fact1}`) shown by a new `headline` scene with its source line. Guard invariants now
+  check `remotion/` design rules, the end card and the liveliness gate. Prompts (writer, planner,
+  fact reviewer, routine, recipe builder, improver, research, scout, policy), CLAUDE.md, README and
+  the renderer guide rewritten for the single engine. Projection stories capped at a quarter.

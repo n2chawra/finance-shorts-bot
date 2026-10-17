@@ -8,7 +8,6 @@ import math
 import re
 from collections.abc import Callable, Mapping
 
-from renderer.cli import build
 from renderer.timeline.build import check_script
 from renderer.engine.formatting import fact_value, group_indian, inr, inr_long, rupees, times
 
@@ -53,83 +52,7 @@ def fd_maturity(principal: float, annual_pct: float, years: float) -> float:
     return lumpsum_fv(principal, annual_pct, years, 4)
 
 
-# ---------------- expected figures per template ----------------
-
-def _two_friends_race(s: dict) -> dict[str, str]:
-    m, rate, end = s["monthly"], s["annual_return_pct"], s["end_age"]
-    invested, final = [], []
-    for p in s["people"]:
-        paid = (p["stop_age"] - p["start_age"])*12
-        invested.append(m*paid)
-        final.append(sip_fv(m, rate, paid)*(1 + rate/100/12)**((end - p["stop_age"])*12))
-    return {"a_invested": inr(invested[0]), "b_invested": inr(invested[1]), "a_final": inr(final[0]), "b_final": inr(final[1]),
-            "invested_ratio": times(invested[1]/invested[0]), "final_ratio": times(final[0]/final[1]), "monthly": rupees(m)}
-
-
-def _myth_vs_fact(s: dict) -> dict[str, str]:
-    amount, years = s["amount"], s["years"]
-    a, b = (lumpsum_fv(amount, t["rate_pct"], years) for t in s["tracks"])
-    real = real_value(amount*(1 + s["tracks"][0]["rate_pct"]/100)**years, s["tracks"][1]["rate_pct"], years)
-    return {"a_final": inr(a), "b_final": inr(b), "gap": inr(b - a), "real_value": inr(real),
-            "lost_pct": f"{(1 - real/amount)*100:.0f}%", "amount": inr(amount)}
-
-
-def _money_leak_meter(s: dict) -> dict[str, str]:
-    monthly = s["cost"]*s["times_per_month"]
-    spent = monthly*12*s["years"]
-    fv = sip_fv(monthly, s["annual_return_pct"], s["years"]*12)
-    return {"monthly": inr(monthly), "yearly": inr(monthly*12), "spent": inr(spent), "fv": inr(fv),
-            "gains": inr(fv - spent), "ratio": times(fv/spent), "cost": rupees(s["cost"])}
-
-
-def _quiz_countdown(s: dict) -> dict[str, str]:
-    if s["kind"] == "sip":
-        answer, invested = sip_fv(s["amount"], s["annual_return_pct"], s["years"]*12), s["amount"]*12*s["years"]
-    else:
-        answer, invested = lumpsum_fv(s["amount"], s["annual_return_pct"], s["years"]), s["amount"]
-    return {"answer": inr(answer), "invested": inr(invested), "gains": inr(answer - invested), "ratio": times(answer/invested)}
-
-
-def _money_news(s: dict) -> dict[str, str]:
-    ex = s["example"]
-    if ex["kind"] == "sip":
-        base, result = ex["amount"]*12*ex["years"], sip_fv(ex["amount"], ex["rate_pct"], ex["years"]*12)
-    elif ex["kind"] == "lumpsum":
-        base, result = ex["amount"], lumpsum_fv(ex["amount"], ex["rate_pct"], ex["years"])
-    else:
-        base, result = ex["amount"], real_value(ex["amount"], ex["rate_pct"], ex["years"])
-    out = {"result": inr(result), **{f"fact_{k}": fact_value(f["value"], f["unit"]) for k, f in zip("abc", s["facts"])}}
-    if ex["kind"] != "inflation":
-        out |= {"invested": inr(base), "gains": inr(result - base), "ratio": times(result/base)}
-    else:
-        out["lost_pct"] = f"{(1 - result/base)*100:.0f}%"
-    return out
-
-
-def _long_explainer(s: dict) -> dict[str, str]:
-    """Every figure the long-form template shows, recomputed from the script's `maths` inputs."""
-    out: dict[str, str] = {}
-    for m in s["maths"]:
-        n, kind, rate, years = m["name"], m["kind"], m["rate_pct"], m["years"]
-        if kind == "sip":
-            invested, final = m["monthly"]*12*years, sip_fv(m["monthly"], rate, years*12)
-        elif kind == "lumpsum":
-            invested, final = m["amount"], lumpsum_fv(m["amount"], rate, years)
-        elif kind == "fd":
-            invested, final = m["amount"], fd_maturity(m["amount"], rate, years)
-        elif kind == "inflation":
-            invested, final = m["amount"], real_value(m["amount"], rate, years)
-        else:   # emi: "final" is everything the loan costs over its life
-            invested = m["amount"]
-            pay = emi(m["amount"], rate, years)
-            final = pay*round(years*12)
-            out[f"{n}_emi"], out[f"{n}_total_paid"] = inr(pay), inr(final)
-        gains = invested - final if kind == "inflation" else final - invested
-        out |= {f"{n}_final": inr(final), f"{n}_final_long": inr_long(final), f"{n}_invested": inr(invested),
-                f"{n}_gains": inr(gains), f"{n}_ratio": times(final/invested)}
-        if kind == "inflation":
-            out[f"{n}_lost_pct"] = f"{(1 - final/invested)*100:.0f}%"
-    return out
+# ---------------- expected figures ----------------
 
 
 def card_min_due(amount: float, rate_pct_month: float, min_due_pct: float, floor: float) -> dict[str, float]:
@@ -169,8 +92,9 @@ def card_min_due(amount: float, rate_pct_month: float, min_due_pct: float, floor
 
 
 def _long_story(s: dict) -> dict[str, str]:
-    """The computed figures of a long_story script's `maths`, from the closed forms above."""
-    out: dict[str, str] = {}
+    """The figures of a story script (long or short): its `maths` from the closed forms above, and
+    its sourced facts exactly as the feed published them."""
+    out: dict[str, str] = {f"fact{i}": fact_value(f["value"], f["unit"]) for i, f in enumerate(s.get("facts") or [], 1)}
     for m in s.get("maths", []):
         n, kind = m["name"], m["kind"]
         if kind == "card_min_due":
@@ -195,11 +119,7 @@ def _long_story(s: dict) -> dict[str, str]:
     return out
 
 
-EXPECTED: dict[str, Callable[[dict], dict[str, str]]] = {
-    "two_friends_race": _two_friends_race, "myth_vs_fact": _myth_vs_fact,
-    "money_leak_meter": _money_leak_meter, "quiz_countdown": _quiz_countdown, "money_news": _money_news,
-    "long_explainer": _long_explainer, "long_story": _long_story, "short_story": _long_story,
-}
+EXPECTED: dict[str, Callable[[dict], dict[str, str]]] = {"long_story": _long_story, "short_story": _long_story}
 
 # ---------------- claims in free text ----------------
 
@@ -249,10 +169,9 @@ def number_check(script: dict, plan: dict | None = None, feed_topic: dict | None
     independent formulas, drifts from the plan, the plan's text claims an unsupported number, or a
     news script's sourced facts differ from its research feed topic."""
     try:
-        if script.get("template") in ("long_story", "short_story"):   # Remotion story scripts
-            shown = check_script(script)["figures"]
-        else:
-            shown = build(script).figures
+        if script.get("template") not in EXPECTED:
+            return False, [f"template must be one of {', '.join(EXPECTED)}"]
+        shown = check_script(script)["figures"]
     except ValueError as e:
         return False, [str(e)]
     notes = []

@@ -1,9 +1,16 @@
 """Contact sheet of key frames, for QA without encoding a video."""
 from collections.abc import Sequence
+from functools import lru_cache
+from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
-from .canvas import font
+FONTS = Path(__file__).resolve().parents[2]/"assets"/"fonts"
+
+
+@lru_cache(maxsize=None)
+def font(size: int, weight: str = "Medium") -> ImageFont.FreeTypeFont:
+    return ImageFont.truetype(str(FONTS/f"Poppins-{weight}.ttf"), size)
 
 
 def contact_sheet(frames: Sequence[tuple[float, Image.Image]], cols: int = 4, tile_w: int = 360) -> Image.Image:

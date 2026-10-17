@@ -43,24 +43,22 @@ Closing counts as tonight's change if it touches code.
 
 ## 2. Fix recurring failures
 If the evaluator lists recurring failures (the same QA/fact reason twice in 3 days), fix the cause
-(usually a template layout bug or a prompt that keeps producing rejected scripts) before starting
-anything new. Reproduce with `python renderer/cli.py examples/<template>.json --frames <t>` or
-`--preview`, fix, check the frames again. These are fixes, not experiments.
+(usually a prompt or recipe that keeps producing rejected scripts, or a check in `generator/` or
+`renderer/timeline/`) before starting anything new. Reproduce with
+`python -m generator.run number-check <id>` on the failed video, or check an example with
+`python -c "import json; from renderer.timeline.build import check_script; check_script(json.load(open('examples/<name>.json')))"`.
+These are fixes, not experiments. Scene drawing (`remotion/`) is the owner's: if a failure is in a
+scene, raise an owner notification with the video id and the still that shows it.
 
-## 3. Template portfolio (rules, not taste)
-From the evaluator's **Templates** section:
-- `reweight` / `retire` advice: apply by appending to `improvement/template-decisions.json`
-  `{"id": "<DAY>-<template>-<action>", "template": "…", "action": "reweight|retire|enable",
-  "weight": 1.3, "why": "<the evaluator's reason>", "at": "<DAY>"}`. Ingest applies each id once.
-  Change a template's weight at most once a week.
-- **Add a template** when fewer than 6 are enabled, or research's best idea is a new format: follow
-  `generator/prompts/template_builder.md` (it must look and move differently from the others),
-  render **two test videos** (`python renderer/cli.py <script> --out /tmp/t1` full render, check
-  layout and audio levels in render.json) and get a fresh QA subagent to review both contact sheets
-  (`generator/prompts/qa_reviewer.md`). Only if both pass: add `examples/<template>.json`, a
-  number-check function in `generator/numbers.py`, tests, and a decision `{"action": "reweight",
-  "weight": 0.5}` so it starts small. Record it as an experiment in `improvement/experiments.json`
-  with area `template`. At most one new template a week.
+## 3. Story recipes (rules, not taste)
+Every video is a storyboard written from a template's **recipes**: `short_story` for Shorts,
+`long_story` for long videos (`renderer/templates/<template>/README.md`). There is nothing to
+reweight or retire; variety comes from the story, the recipe and the beats.
+- **Add or improve a recipe** when research's best idea is a new format, or the evaluator shows a
+  recipe underperforming: follow `generator/prompts/template_builder.md`. Write the recipe into
+  the README, add `examples/<recipe>.json` that passes the script check and the number check, and
+  record it as an experiment in `improvement/experiments.json` with area `template`. At most one
+  new recipe a week.
 
 ## Research routes (read `route` and `priority` on every new proposal)
 Research sorts its findings. Act on them in this order, highest priority first:
@@ -68,9 +66,8 @@ Research sorts its findings. Act on them in this order, highest priority first:
   guard allows the files and the tests pass. Record it in `improvement/experiments.json` with
   `"status": "adopted"` and the evidence, so the evaluator's attribute ranking can still show its
   effect later. If you doubt the evidence is that strong, treat it as `experiment` and say why.
-- `template` with priority `breaking` or `high`: this is tonight's template work (build it as in the
-  template section: two test renders, QA, then enabled at weight 0.5). A new format that a whole
-  class of stories needs beats a small craft experiment.
+- `template` with priority `breaking` or `high`: this is tonight's recipe work (section 3). A new
+  format that a whole class of stories needs beats a small craft experiment.
 - `experiment`: the A/B process below.
 - `video` proposals are not yours: research puts those in `improvement/research/topics.json`, and the
   video run uses them. If you find one in `proposals.json`, move it there.
@@ -80,26 +77,19 @@ Set each proposal's `status` (`adopted`, `testing`, `building`, `done`, `rejecte
 Only if: fewer running experiments than `agents.maxActiveExperiments`, nothing from steps 1–3
 changed code tonight, and no running experiment shares the proposal's area. Pick the proposal with
 the best effect × confidence ÷ effort, preferring the craft areas (motion, pacing, text, colour,
-sound, music, voice, hook, ending), then script and title. While the owner's `voiceover` experiment runs
-(area `voice`), voice proposals (voice type, speed, script style) wait for its verdict; don't stop or
-change it early.
+sound, music, voice, hook, ending), then script and title. Every video is voiced; the voice itself
+(engine, pace) is the owner's.
 
 1. Implement it **behind a flag**:
-   - Renderer change: in the template(s) or `renderer/engine/`, branch on `self.flag("<id>")`. The
-     off-path must stay exactly as today.
-   - Script/title change: no code; add a `prompt` block `{"on": "<instruction>", "off": null}` to the
+   - Script, recipe or title change: no code; add a `prompt` block `{"on": "<instruction>", "off": null}` to the
      experiment. `generator.run state` hands it to the planner/writer for videos in the on-group.
 2. Register it in `config/experiments.json`:
    `{"id": "<kebab>", "area": "…", "status": "running", "startedAt": "<DAY>", "templates": ["all" or names],
    "share": 0.5, "prompt": {…} (optional), "proposal": "<proposal id>", "description": "…"}`
    and in `improvement/experiments.json` with the same id plus `"metric": "views48h"`,
    `"guard": "qa_failures"`, `"minPerArm": 8`, `"maxDays": 14`, `"hypothesis": "…"`.
-3. Check both variants for every affected template:
-   `python renderer/cli.py examples/<t>.json --preview --flag <id>=on --out /tmp/<t>-on` and
-   `--flag <id>=off`. Get a fresh QA subagent to review the "on" contact sheets
-   (`generator/prompts/qa_reviewer.md`, it compares with the "off" sheets). Fix or drop it if QA fails.
-4. `python -m pytest renderer generator improvement -q` must pass.
-5. Proposal status → `testing`.
+3. `python -m pytest renderer generator improvement -q` must pass.
+4. Proposal status → `testing`.
 
 ## 5. Claude updates
 If research found a Claude capability that improves the pipeline within your lane (prompt

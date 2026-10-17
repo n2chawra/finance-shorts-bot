@@ -40,8 +40,8 @@ all; male or female; accent (Indian English, Hinglish, Hindi, neutral); energy (
 excited, conversational); speed (estimate words per minute from the transcript and length);
 pauses before reveals; how loud the voice sits against the music; whether captions follow the
 voice word by word; how the script is written for the ear (sentence length, questions, "you").
-Compare with our narrated videos (`render.json` → `voice`: voice name, speed, each line) and, once
-there is data, the `voiceover` experiment in `python -m improvement.evaluate`. Proposals must fit
+Compare with our videos (`render.json` → `voice`: voice name, speed, each line; every video is
+voiced, with no on-screen captions by the owner's choice). Proposals must fit
 what we can build: the offline Kokoro voices in `renderer/engine/voice.py` (in use: hf_alpha,
 af_heart, af_bella, am_michael, am_fenrir, am_puck; the owner rejected the other Indian voices by
 ear; British alternatives exist), speed 1.0–1.35, the writer's narration
@@ -115,7 +115,7 @@ entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is n
 {"id": "<DAY>-short-kebab", "title": "what the video is about, one line", "category": "sip|tax|...",
  "kind": "news|trend|seasonal|evergreen", "priority": "breaking|trending|high|normal",
  "stories": ["decision_duel", "how_it_works"],
- "templates": ["money_news"] or ["quiz_countdown", "myth_vs_fact"] or ["any"],
+ "templates": ["any"],
  "angle": "the viewer's question it answers", "why_now": "why this week",
  "facts": [{"label": "what the figure is, no digits", "value": 31781, "unit": "rupees|rupees_lakh|rupees_crore|percent|count|count_lakh|count_crore",
             "as_of": "YYYY-MM-DD", "source": "AMFI", "url": "https://page-where-the-exact-figure-appears"}],
@@ -123,17 +123,18 @@ entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is n
  "found": "<DAY>", "expires": "YYYY-MM-DD", "status": "new"}
 ```
 - `facts` are figures reported by the source, copied exactly (value and unit as published). Only
-  news topics need them, and only `money_news` shows them; 1–3 per topic, the headline one first.
+  news topics need them, and a `headline` beat shows them with their source; 1–3 per topic, the headline one first.
   A fact you can't tie to a URL showing that exact figure stays out.
 - `expires`: news about 10–14 days after `found`; `trending` topics 2–4 days; other trends 3–4
   weeks; evergreen 90 days.
 - `stories`: what kind of story the topic tells (`generator/variety.py` `STORIES`). The planner may
   not tell the same story twice in 3 videos, and "what ₹X becomes in N years" stories
-  (`future_value`, `early_vs_late`, `cost_of_habit`) are capped at half the day — 8 of 11 Shorts up
+  (`future_value`, `early_vs_late`, `cost_of_habit`) are capped at a quarter of the last 20 — 8 of 11 Shorts up
   to 2026-10-17 told that one story. So **most of your ideas should be other stories**: a decision
   duel, a myth, a trap, how something works, a rule change, a case study.
-- `templates`: `money_news` for news with facts; otherwise the existing templates that can compute
-  the story (read their READMEs). If none can, it is a `template` proposal instead.
+- `templates`: always `["any"]`: every video is a storyboard from the story templates. If a story
+  needs a recipe or a calculation the templates don't have (`renderer/templates/short_story/README.md`),
+  add a `template` proposal for it as well.
 - The video run marks nothing: it records the topic id in the video's history. Read
   `history/history.json` (`topic.feed_id`) to see which topics were used, and note in your report
   how those videos did once `metrics/videos.json` has their numbers.

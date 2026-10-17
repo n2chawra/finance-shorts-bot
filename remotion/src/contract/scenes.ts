@@ -1,7 +1,7 @@
 /** Every scene a timeline beat may name. StoryVideo's registry is typed against this list, so the
  * two cannot drift apart; Python and the tests read it without loading any React. */
 export const SCENE_NAMES = [
-  "stage", "chapter", "checklist", "end",
+  "stage", "chapter", "checklist", "end", "headline",
   "bignumber", "reveal", "statement", "monster", "snowball", "calendar", "split", "chart", "towers",
 ] as const;
 

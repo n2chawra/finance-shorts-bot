@@ -1,18 +1,3 @@
 {
-  "experiments": [
-    {
-      "id": "voiceover",
-      "area": "voice",
-      "status": "running",
-      "templates": [
-        "all"
-      ],
-      "share": 0.5,
-      "startedAt": "2026-10-16",
-      "prompt": {
-        "on": "This video has a voiceover. Write a `voice` object in script.json: one spoken line per scene, following writer.md -> Voiceover.",
-        "off": "No voiceover for this video: do not write a `voice` object."
-      }
-    }
-  ]
+  "experiments": []
 }

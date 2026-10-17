@@ -8,15 +8,16 @@ comfortable seeing this on a finance channel under your own name.
 ## Read
 
 - `videos/<id>/plan.json`: title, description, hashtags.
-- Run `python -m generator.run figures <id>`: every computed figure, every on-screen line
-  exactly as the viewer sees it, and the `voiceover` lines exactly as they will be spoken (if any).
-  The voiceover is held to every rule below, the same as the screen.
-- `renderer/templates/<template>/README.md`: how the figures are computed, and which numbers the
-  template shows next to each line. Read each scene as the viewer sees it, lines and numbers together.
+- Run `python -m generator.run figures <id>`: every computed figure, and every beat's line exactly
+  as written (`say`) and as it will be spoken (`spoken`). The voice is held to every rule below,
+  the same as the screen.
+- `videos/<id>/script.json`: what each beat shows (its scene and `params`), and
+  `renderer/templates/<template>/README.md` for how the figures are computed. Read each beat as
+  the viewer meets it, picture and voice together.
 
 The arithmetic is already verified by code. Do not re-derive it. Judge what the video claims.
 
-**Sourced facts** (a `money_news` script, or any script with `facts`): these figures come from
+**Sourced facts** (a news script, any script with `facts`): these figures come from
 outside, so you are the check. For each fact, confirm the exact value, unit and period:
 
 1. Open its `url` (WebFetch). If the page shows the figure, it is confirmed.

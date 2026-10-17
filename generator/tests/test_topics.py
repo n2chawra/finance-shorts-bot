@@ -39,10 +39,9 @@ def test_open_topics_best_first(root: Path) -> None:
 def test_breaking_topic_is_required_when_usable(root: Path) -> None:
     feed(root, topic("calm", "high"), topic("big", "breaking"))
     assert topics.for_state([], TODAY, [], TEMPLATES, root)["required"] == "big"
-    # not usable: category blocked, or no allowed template fits
+    # not usable: category blocked, or no template enabled for the format
     assert topics.for_state([], TODAY, ["sip"], TEMPLATES, root)["required"] is None
-    feed(root, topic("big", "breaking", templates=["money_news"]))
-    assert topics.for_state([], TODAY, [], ["quiz_countdown"], root)["required"] is None
+    assert topics.for_state([], TODAY, [], [], root)["required"] is None
 
 
 def test_plan_must_take_the_breaking_topic(root: Path) -> None:
@@ -60,16 +59,9 @@ def test_feed_topic_must_be_open(root: Path) -> None:
         assert any(why in p for p in topics.check_plan(plan, [used("taken")], TODAY, [], TEMPLATES, root)), fid
 
 
-def test_money_news_needs_a_feed_topic_with_facts(root: Path) -> None:
-    feed(root, topic("plain", facts=[]))
-    assert any("only for research feed topics" in p for p in topics.check_plan(make_plan(template="money_news"), [], TODAY, [], TEMPLATES, root))
-    plan = make_plan(template="money_news", topic={"title": "x", "category": "sip", "feed_id": "plain"})
-    assert any("needs a feed topic with sourced facts" in p for p in topics.check_plan(plan, [], TODAY, [], TEMPLATES, root))
-
-
 def test_number_check_traces_news_facts_to_the_feed() -> None:
-    script = example("money_news")
-    plan = make_plan(template="money_news", seed=script["seed"], style=script.get("style"),
+    script = example("news_story")
+    plan = make_plan(template="short_story", seed=script["seed"], style=script.get("style"),
                      topic={"title": "x", "category": "sip", "feed_id": script["feed_id"]},
                      title="Indians just set a monthly SIP record", description="What it means for you. Illustrative only. Not financial advice.")
     ok, notes = number_check(script, plan, topic(script["feed_id"]))

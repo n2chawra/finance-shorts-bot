@@ -25,7 +25,6 @@ import sys
 import tempfile
 from pathlib import Path
 
-from renderer import cli as renderer
 from renderer import remotion
 from renderer.timeline.build import check_script
 
@@ -35,7 +34,7 @@ from .settings import ROOT, load as load_settings
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
 MIN_VOICE_FILL = 0.55   # a long section left more than ~half silent is a thin script
-REMOTION_TEMPLATES = {"long_story": "long", "short_story": "short"}   # drawn by Remotion (renderer/remotion.py), with their format
+TEMPLATES = {"long_story": "long", "short_story": "short"}   # every template, with its format; drawn by Remotion
 TREND_EXTRA_PER_DAY = 1  # extra Shorts a day for a breaking or trending topic, past the daily target
 AGENTS = ("planner", "writer", *CHECKERS, "render", "ship")
 PLAN_KEYS = ("template", "topic", "story", "hook_style", "cta", "title", "description", "hashtags", "seed", "style")
@@ -65,28 +64,15 @@ def log_step(vid: str, agent: str, passed: bool, notes: list[str], root: Path = 
     _write(path, steps)
 
 
-def renderers(root: Path = ROOT) -> dict[str, str]:
-    """Which engine draws each format: config/renderer.json, {"short"|"long": "remotion"|"pillow"}.
-    Owner-only: flipping a format back to "pillow" is the rollback while the Pillow code is kept."""
-    f = root / "config" / "renderer.json"
-    return {"short": "pillow", "long": "pillow", **(json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {})}
-
-
 def enabled_templates(settings: dict, fmt: str | None = None, root: Path = ROOT) -> list[str]:
-    """Templates a plan may use: the engine chosen for each format, plus the feed-only news
-    template, which stays on Pillow until a Remotion news scene exists."""
-    engine = renderers(root)
-    names = renderer.template_names(fmt) + sorted(t for t, f in REMOTION_TEMPLATES.items() if fmt in (None, f))
-    on_engine = [t for t in names if t in variety.FEED_ONLY or (t in REMOTION_TEMPLATES) == (engine[plan_format({"template": t})] == "remotion")]
-    return [t for t in on_engine if settings["templates"].get(t, {}).get("enabled", True)]
+    """Templates a plan may use: those of the format that the dashboard hasn't disabled."""
+    return [t for t, f in TEMPLATES.items() if fmt in (None, f) and settings["templates"].get(t, {}).get("enabled", True)]
 
 
 def plan_format(plan_or_script: dict) -> str:
     """'short' or 'long', from the template the plan or script names."""
     name = plan_or_script.get("template")
-    if name in REMOTION_TEMPLATES:
-        return REMOTION_TEMPLATES[name]
-    return renderer.template_format(name) if name in renderer.template_names() else "short"
+    return TEMPLATES.get(name, "short")
 
 
 def length_range(settings: dict, fmt: str) -> tuple[int, int]:
@@ -116,7 +102,7 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     # (agents/improver.md), which reads the template_work block below
     target = settings["dailyVideoTarget"]
     made_today = sum(1 for e in entries if history.ist_day(e["created_at"]) == today)
-    n_templates = len(renderer.template_names())
+    n_templates = len(TEMPLATES)
     room = n_templates < tw["maxTemplates"]
 
     week = history.ist_week(history.now().isoformat())
@@ -206,12 +192,7 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
 
 def figures(vid: str, root: Path = ROOT) -> dict:
     """Computed figures and the final on-screen lines, as a reviewer needs to see them."""
-    script = _read(_dir(vid, root) / "script.json")
-    if script.get("template") in REMOTION_TEMPLATES:
-        return check_script(script)
-    video = renderer.build(script)
-    return {"duration_sec": round(video.length), "figures": video.figures, "on_screen_text": video.txt,
-            "voiceover": video.narration(), "scenes": {k: [round(a, 1), round(b, 1)] for k, (a, b) in video.voice_windows().items()}}
+    return check_script(_read(_dir(vid, root) / "script.json"))
 
 
 def record(vid: str, agent: str, passed: bool, notes: list[str], root: Path = ROOT) -> None:
@@ -228,17 +209,13 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     started = history.now().isoformat()
     try:
         script = _read(d / "script.json")
-        if script.get("template") in REMOTION_TEMPLATES:
-            report = remotion.render_story(script, d, preview=preview)
-        else:
-            flags = experiments.for_video(vid, script.get("template"), root)
-            report = renderer.render(renderer.build(script, flags), d, preview)
+        if script.get("template") not in TEMPLATES:
+            raise ValueError(f"template must be one of {', '.join(TEMPLATES)}")
+        report = remotion.render_story(script, d, preview=preview)
     except (ValueError, RuntimeError) as e:
         log_step(vid, "render", False, [str(e)], root, started)
         return [str(e)]
-    problems = list(report["layout_problems"])
-    if report.get("renderer") == "remotion":          # a gate here; Pillow videos only report it
-        problems += report.get("liveliness_problems", [])
+    problems = list(report["layout_problems"]) + list(report.get("liveliness_problems", []))
     lo, hi = length_range(settings, plan_format(script))
     if not lo <= report["duration_sec"] <= hi:
         problems.append(f"length {report['duration_sec']} s is outside {lo}–{hi} s")

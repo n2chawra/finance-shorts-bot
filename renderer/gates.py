@@ -1,8 +1,10 @@
-"""Checks on a finished Remotion video, the same bars the Pillow renderer's videos must clear.
+"""Checks on a finished video.
 
-Liveliness: the picture must keep moving (renderer/engine/video.py has the thresholds and why).
-Here it is measured on the encoded mp4: ffmpeg streams the video at 10 fps and 640×360, and each
-sample compares two frames 0.3 s apart, every 2 s, as Video.liveliness does on rendered frames.
+Liveliness: the picture must keep moving. Measured on the encoded mp4: ffmpeg streams the video
+at 10 fps and 640×360, and each sample is the mean pixel change between two frames 0.3 s apart,
+every 2 s. Calibrated on the first engine's Shorts (medians 1.5–2.3) against its first long video,
+which scored 0.02 and was frozen for 82% of its runtime: that is what "a PPT with a voiceover"
+means as a number. The first Remotion long video scored 1.36, its first Short 2.81.
 """
 from __future__ import annotations
 
@@ -12,13 +14,17 @@ from pathlib import Path
 import numpy as np
 
 from renderer.engine.mux import find_ffmpeg
-from renderer.engine.video import STILL, liveliness_problems
+
+STILL = 0.5                 # mean pixel change below this is, to the eye, a frozen frame
+LIVELY_MEDIAN = 1.2
+LIVELY_STILL_SHARE = 0.15
+LIVELY_STILL_SEC = 4.0
 
 SAMPLE_FPS, W, H = 10, 640, 360
 
 
 def liveliness(mp4: Path, gap: float = 0.3, every: float = 2.0) -> dict[str, float]:
-    """{median, still_share, longest_still_sec} for an mp4, scored like Video.liveliness."""
+    """{median, still_share, longest_still_sec} for an mp4."""
     step, lag = round(every*SAMPLE_FPS), round(gap*SAMPLE_FPS)
     cmd = [find_ffmpeg(), "-loglevel", "error", "-i", str(mp4), "-an",
            "-vf", f"fps={SAMPLE_FPS},scale={W}:{H}:flags=area", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
@@ -50,6 +56,21 @@ def liveliness(mp4: Path, gap: float = 0.3, every: float = 2.0) -> dict[str, flo
     return {"median": round(float(np.median(scores)), 3),
             "still_share": round(sum(s < STILL for s in scores)/len(scores), 3),
             "longest_still_sec": round(best*every, 1)}
+
+
+def liveliness_problems(score: dict[str, float]) -> list[str]:
+    """Why a video reads as a slideshow, in words a script writer can act on."""
+    out = []
+    if score["median"] < LIVELY_MEDIAN:
+        out.append(f"median frame change {score['median']:.2f} is below {LIVELY_MEDIAN} — "
+                   f"scenes finish animating and then hold a still picture")
+    if score["still_share"] > LIVELY_STILL_SHARE:
+        out.append(f"{score['still_share']*100:.0f}% of samples have no visible movement "
+                   f"(limit {LIVELY_STILL_SHARE*100:.0f}%)")
+    if score["longest_still_sec"] > LIVELY_STILL_SEC:
+        out.append(f"{score['longest_still_sec']:g} s with nothing moving "
+                   f"(limit {LIVELY_STILL_SEC:g} s)")
+    return out
 
 
 def check_liveliness(mp4: Path) -> tuple[dict[str, float], list[str]]:

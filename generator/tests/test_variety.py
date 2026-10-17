@@ -20,7 +20,7 @@ def test_clean_plan_passes_on_empty_and_unrelated_history() -> None:
 
 
 def test_template_used_too_recently() -> None:
-    history = [entry(1, "quiz_countdown", "emi"), entry(2, "myth_vs_fact", "gold")]
+    history = [entry(1, "short_story", "emi"), entry(2, "myth_vs_fact", "gold")]
     assert any("used in the last 2 videos" in p for p in check(make_plan(), history))
     history.append(entry(3, "two_friends_race", "tax"))          # now 3 back, outside the window of 2
     assert not any("template" in p for p in check(make_plan(), history))
@@ -30,12 +30,12 @@ def test_template_share_of_last_twenty() -> None:
     others = ["myth_vs_fact", "two_friends_race", "money_leak_meter"]
 
     def last19(quiz: int) -> list[dict]:
-        """19 videos, `quiz` of them quiz_countdown, none in the two most recent."""
-        return [entry(i, "quiz_countdown" if i < quiz else others[i % 3], f"cat{i}") for i in range(19)]
+        """19 videos, `quiz` of them short_story, none in the two most recent."""
+        return [entry(i, "short_story" if i < quiz else others[i % 3], f"cat{i}") for i in range(19)]
 
     # with four templates the limit is 37.5% of 20, i.e. 7 videos including the new one
-    assert "quiz_countdown" in variety.allowed_templates(last19(6), TEMPLATES)
-    assert "quiz_countdown" not in variety.allowed_templates(last19(7), TEMPLATES)
+    assert "short_story" in variety.allowed_templates(last19(6), TEMPLATES)
+    assert "short_story" not in variety.allowed_templates(last19(7), TEMPLATES)
     assert any("would exceed 38% of the last 20" in p for p in check(make_plan(), last19(7)))
 
 
@@ -102,7 +102,8 @@ def test_story_is_required_and_must_suit_the_template() -> None:
     plan = make_plan()
     del plan["story"]
     assert any("plan needs a story" in p for p in check(plan, []))
-    assert any("can't tell a 'myth_bust' story" in p for p in check(make_plan(story="myth_bust"), []))
+    assert any("can't tell a 'myth_bust' story" in p for p in check(make_plan(template="money_leak_meter", story="myth_bust"), []))
+    assert not any("story" in p for p in check(make_plan(story="myth_bust"), []))      # short_story tells any story
     assert any("story must be one of" in p for p in check(make_plan(story="vibes"), []))
 
 
@@ -122,14 +123,14 @@ def test_older_entries_get_the_story_their_template_tells() -> None:
     assert variety.story_of({**entry(1, "myth_vs_fact"), "story": "decision_duel"}) == "decision_duel"
 
 
-def test_projection_stories_are_capped_at_half_of_the_last_twenty() -> None:
+def test_projection_stories_are_capped_at_a_quarter_of_the_last_twenty() -> None:
     # 19 earlier videos: `n` projection stories (none of them the plan's), the rest myth busts
     def last19(n: int) -> list[dict]:
         rows = [entry(i, "money_leak_meter" if i % 2 else "two_friends_race", f"c{i}") for i in range(n)]
         rows += [{**entry(i, "myth_vs_fact", f"c{i}"), "story": "myth_bust"} for i in range(n, 19)]
         return rows[::-1]                                    # projection ones oldest, out of the story window
-    assert not any("projection" in p for p in check(make_plan(), last19(9)))
-    assert any("projection stories" in p for p in check(make_plan(), last19(10)))
+    assert not any("projection" in p for p in check(make_plan(), last19(4)))
+    assert any("projection stories" in p for p in check(make_plan(), last19(5)))
 
 
 def test_the_october_history_would_have_been_stopped() -> None:
