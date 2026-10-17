@@ -14,6 +14,7 @@
 | 07:37 | **Dashboard agent**: bug hunt, one fix or improvement | Claude routine, cron `7 2 * * *` UTC |
 | 09:07 | Spare video run: makes up any missing videos (fresh usage window) | Claude routine, cron `37 3 * * *` UTC |
 | 09:37 | **Scout agent**: finds long-video topics, studies long-form craft | Claude routine, cron `7 4 * * *` UTC |
+| 11:30 | **Midday trend run**: a few searches for a money trend people are talking about today; at most one extra Short, which jumps the queue for 19:07 (`generator/prompts/trend_run.md`) | Claude routine, cron `0 6 * * *` UTC |
 | 14:37 (Mon/Wed/Fri) | **Studio agent**: makes one long video end to end, with its thumbnail | Claude routine, cron `7 9 * * 1,3,5` UTC |
 | 20:07 (Tue/Thu/Sat) | A long video goes public | `publish.yml` |
 | every hour (:13) | Watchdog: raises owner notifications, resolves fixed ones | `watchdog.yml` |

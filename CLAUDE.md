@@ -40,7 +40,8 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 
 ```
 Claude Code routine (cloud: 04:07 IST makes all 3 of the day's videos in one session;
-                     09:07 IST spare run makes up any shortfall, else idles)
+                     09:07 IST spare run makes up any shortfall, else idles;
+                     11:30 IST trend run: one extra Short only for a strong trend)
   └─ planner → writer → number check → fact review → render → QA review
   └─ commits videos/<id>/manifest.json + thumbnail.png
   └─ uploads videos/<id>/video.mp4 as a GitHub Release asset (tag: video-<id>)
@@ -86,7 +87,8 @@ format the improver builds; `owner` → notifications.
 Schedule by Pro-plan 5-hour usage windows (IST): window A 23:00–04:00 holds only non-critical work
 (auditor 23:00, research 23:47); the video run at 04:07 always starts a fresh window B, followed
 by improver 06:17 and dashboard 07:37 one after another; the spare video run at 09:07 starts a fresh
-window C so it can still rescue a main run that hit the limit. Keep new routines inside this plan.
+window C so it can still rescue a main run that hit the limit; the lean 11:30 trend run shares window C.
+Keep new routines inside this plan.
 
 ## Two formats
 
