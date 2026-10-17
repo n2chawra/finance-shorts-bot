@@ -18,7 +18,7 @@
     },
     {
       "day": "2026-10-17",
-      "shipped": 0,
+      "shipped": 1,
       "failed": 1
     }
   ],
@@ -99,6 +99,13 @@
       "template": "money_news",
       "status": "failed",
       "reason": "Fact review could not confirm the sourced RBI repo rate 5.5% because www.rbi.org.in was unreachable from the sandbox."
+    },
+    {
+      "id": "v-20261017-02",
+      "day": "2026-10-17",
+      "template": "money_news",
+      "status": "shipped",
+      "reason": null
     }
   ]
 }
