@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertOctagon, ArrowRight, Bot, CircleX, Clapperboard, Eye, Layers, Pause, Play, Rocket, Sparkles, Upload, UserPlus } from "lucide-react";
+import { AlertOctagon, ArrowRight, Bot, CircleX, Clapperboard, Eye, Heart, Layers, Pause, Play, Rocket, Sparkles, Upload, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ import { Badge, Button, Card, Delta, Empty, ErrorNote, Loading, Meter, Num, Page
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
 import { useAgents, useAnalytics, useNotifications, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
-import { AGENTS, type Analytics, type Run } from "@/lib/schemas";
+import { AGENTS, type Analytics, perThousand, type Run } from "@/lib/schemas";
 
 /** Videos the routines aim to ship per IST day (generator setting `dailyVideoTarget`). */
 const DAILY_TARGET = 3;
@@ -32,8 +32,11 @@ function Countdown({ iso }: { iso: string }) {
   return <span className="tabular-nums">{s >= 86400 ? `${Math.floor(s / 86400)}d ` : ""}{pad(Math.floor((s % 86400) / 3600))}:{pad(Math.floor((s % 3600) / 60))}:{pad(s % 60)}</span>;
 }
 
+/** Likes + comments per 1,000 views, as a short label. */
+const fmtLoved = (t: { views: number; likes: number; comments: number }) => `${perThousand(t).toFixed(1)} per 1K views`;
+
 /** Last 7 days against the 7 before, from the daily Analytics rows. */
-function weekOverWeek(a: Analytics | undefined, key: "views" | "subsGained") {
+function weekOverWeek(a: Analytics | undefined, key: "views" | "subsGained" | "likes") {
   if (!a) return { spark: [] as number[], delta: null as number | null };
   const days = a.daily.map((d) => d[key]);
   const last = days.slice(-7).reduce((x, y) => x + y, 0);
@@ -69,6 +72,7 @@ export default function OverviewPage() {
   const set = (p: { uploadsPaused?: boolean; generationPaused?: boolean }, done: string) =>
     patch.mutate(p, { onSuccess: () => toast(done), onError: (e) => toast(e.message, "error") });
   const views = weekOverWeek(analytics.data, "views");
+  const likes = weekOverWeek(analytics.data, "likes");
   const subs = weekOverWeek(analytics.data, "subsGained");
   const days = dailyOutput(runs.data, 14);
   const today = days[days.length - 1];
@@ -102,11 +106,15 @@ export default function OverviewPage() {
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
         <Stat label="Views" icon={Eye} href="/analytics" value={<Num value={data.allTime.views} fmt={fmtCompact} />}
           delta={<Delta value={views.delta} />} sub={`+${fmtNum(data.last7.views)} in 7 days${data.allTime.liveAt ? ` · live, ${fmtRelative(data.allTime.liveAt)}` : ""}`} chart={<Sparkline values={views.spark} />} />
         <Stat label="Subscribers · 7 days" icon={UserPlus} href="/analytics" value={<Num value={data.last7.subsGained} fmt={(n) => `+${fmtNum(n)}`} />}
           delta={<Delta value={subs.delta} />} sub="from YouTube Analytics" chart={<Sparkline values={subs.spark} color="var(--good)" />} />
+        <Stat label="Likes" icon={Heart} href="/analytics" value={<Num value={data.allTime.likes} fmt={fmtCompact} />}
+          delta={<Delta value={likes.delta} />}
+          sub={`${fmtNum(data.allTime.comments)} comments · ${fmtLoved(data.allTime)} · +${fmtNum(data.last7.likes)} likes in 7 days`}
+          chart={<Sparkline values={likes.spark} color="var(--danger)" />} />
         <Stat label="Backlog" icon={Layers} href="/queue" value={<><Num value={data.backlog} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-base font-normal text-muted">/ {data.backlogCap}</span></>}
           sub={`≈ ${Math.floor(data.backlog / (settings.data?.uploadTimes.length ?? 1))} days of uploads`} chart={<div className="pt-3"><Meter value={data.backlog} max={data.backlogCap} label="Backlog" /></div>} />
         <Stat label="Made today" icon={Clapperboard} href="/runs" value={<><Num value={today.shipped} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-base font-normal text-muted">/ {DAILY_TARGET}</span></>}

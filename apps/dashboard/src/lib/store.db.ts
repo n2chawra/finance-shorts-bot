@@ -7,7 +7,7 @@ import type { Prisma } from "@prisma/client";
 
 import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
-import { SettingsSchema } from "./schemas";
+import { SettingsSchema, mostLoved } from "./schemas";
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
 
 const DAY_MS = 86_400_000;
@@ -217,7 +217,7 @@ export async function getOverview(): Promise<Overview> {
     prisma.video.findFirst({ where: { ...live, status: "scheduled", upload: { isNot: null } }, include: withRelations, orderBy: { upload: { publishAt: "asc" } } }),
     prisma.video.findMany({ where: { ...live, status: "failed" }, orderBy: { createdAt: "desc" }, take: 5 }),
     prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations, orderBy: { upload: { publishAt: "desc" } } }),
-    prisma.videoStat.aggregate({ where: { day: { gte: since } }, _sum: { views: true, subsGained: true } }),
+    prisma.videoStat.aggregate({ where: { day: { gte: since } }, _sum: { views: true, subsGained: true, likes: true, comments: true } }),
     prisma.upload.count({ where: { state: "published", publishAt: { gte: new Date(Date.now() - 7 * DAY_MS) } } }),
     prisma.template.count(),
     prisma.agentRun.count({ where: { agent: "template_builder", startedAt: { gte: new Date(`${today}T00:00:00${IST_OFFSET}`) } } }),
@@ -229,7 +229,9 @@ export async function getOverview(): Promise<Overview> {
   const lifetime = recent.map((v) => ({ v, t: totals(v.upload?.stats ?? [], v.upload) }));
   const allViews = lifetime.reduce((a, x) => a + (x.t?.views ?? 0), 0);
   // views Analytics hasn't counted yet (its last day or two) are all recent: add them to the 7 days
-  const notYetInAnalytics = lifetime.reduce((a, x) => a + Math.max(0, (x.t?.views ?? 0) - (x.v.upload?.stats ?? []).reduce((b, s) => b + s.views, 0)), 0);
+  const notYet = (k: "views" | "likes" | "comments") =>
+    lifetime.reduce((a, x) => a + Math.max(0, (x.t?.[k] ?? 0) - (x.v.upload?.stats ?? []).reduce((b, s) => b + s[k], 0)), 0);
+  const notYetInAnalytics = notYet("views");
   const liveAts = lifetime.map((x) => x.t?.liveAt).filter((d): d is string => !!d).sort();
   const backlog = counts.queued ?? 0;
   const tw = settings.templateWork;
@@ -245,8 +247,14 @@ export async function getOverview(): Promise<Overview> {
     generation: { mode, reason, templateRunsToday, maxTemplateRunsPerDay: tw.maxPerDay, templates, maxTemplates: tw.maxTemplates, lastRunAt: lastRun?.startedAt.toISOString() ?? null },
     nextUpload: next?.upload ? { videoId: next.id, title: next.title, publishAt: next.upload.publishAt.toISOString(), thumbnailUrl: `/api/media/${next.id}/thumbnail` } : null,
     recentFailures: failures.map((v) => ({ videoId: v.id, title: v.title, reason: v.failReason ?? "Unknown", at: v.createdAt.toISOString() })),
-    last7: { views: (stats._sum.views ?? 0) + notYetInAnalytics, subsGained: stats._sum.subsGained ?? 0, uploads: uploads7 },
-    allTime: { views: allViews, liveAt: liveAts.at(-1) ?? null },
+    last7: {
+      views: (stats._sum.views ?? 0) + notYetInAnalytics, subsGained: stats._sum.subsGained ?? 0, uploads: uploads7,
+      likes: (stats._sum.likes ?? 0) + notYet("likes"), comments: (stats._sum.comments ?? 0) + notYet("comments"),
+    },
+    allTime: {
+      views: allViews, likes: lifetime.reduce((a, x) => a + (x.t?.likes ?? 0), 0), comments: lifetime.reduce((a, x) => a + (x.t?.comments ?? 0), 0),
+      liveAt: liveAts.at(-1) ?? null,
+    },
     recent: recent.slice(0, 4).map(toVideo),
   };
 }
@@ -313,11 +321,11 @@ export async function getAnalytics(): Promise<Analytics> {
     prisma.videoStat.findMany({ where: { day: { gte: new Date(`${from}T00:00:00Z`) } } }),
     prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations }),
   ]);
-  const byDay = new Map<string, { views: number; subsGained: number }>();
-  for (let k = 28; k >= 1; k--) byDay.set(addDays(today, -k), { views: 0, subsGained: 0 });
+  const byDay = new Map<string, { views: number; subsGained: number; likes: number; comments: number }>();
+  for (let k = 28; k >= 1; k--) byDay.set(addDays(today, -k), { views: 0, subsGained: 0, likes: 0, comments: 0 });
   for (const s of stats) {
     const d = byDay.get(dayKey(s.day));
-    if (d) { d.views += s.views; d.subsGained += s.subsGained; }
+    if (d) { d.views += s.views; d.subsGained += s.subsGained; d.likes += s.likes; d.comments += s.comments; }
   }
   const names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const wd = names.map(() => ({ views: 0, n: 0 }));
@@ -327,13 +335,14 @@ export async function getAnalytics(): Promise<Analytics> {
     wd[i].views += t!.views;
     wd[i].n += 1;
   }
-  const rows = ranked.map(({ v, t }) => ({ videoId: v.id, title: v.title, templateId: v.templateId, views: t!.views, thumbnailUrl: `/api/media/${v.id}/thumbnail` })).sort((a, b) => b.views - a.views);
+  const rows = ranked.map(({ v, t }) => ({ videoId: v.id, title: v.title, templateId: v.templateId, views: t!.views, likes: t!.likes, comments: t!.comments, thumbnailUrl: `/api/media/${v.id}/thumbnail` })).sort((a, b) => b.views - a.views);
   return {
     daily: [...byDay].map(([day, d]) => ({ day, ...d })),
     weekday: names.map((weekday, i) => ({ weekday, avgViews: wd[i].n ? Math.round(wd[i].views / wd[i].n) : 0, uploads: wd[i].n })),
-    top: rows.slice(0, 5), bottom: rows.length > 5 ? rows.slice(-5).reverse() : [],
+    top: rows.slice(0, 5), bottom: rows.length > 5 ? rows.slice(-5).reverse() : [], loved: mostLoved(rows),
     totals: {
       views: rows.reduce((a, r) => a + r.views, 0), subsGained: ranked.reduce((a, x) => a + x.t!.subsGained, 0), videos: published.length,
+      likes: rows.reduce((a, r) => a + r.likes, 0), comments: rows.reduce((a, r) => a + r.comments, 0),
       avgViewPct: ranked.length ? Math.round(ranked.reduce((a, x) => a + x.t!.avgViewPct, 0) / ranked.length * 10) / 10 : 0,
     },
   };

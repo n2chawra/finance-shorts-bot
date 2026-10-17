@@ -6,6 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
+import { mostLoved } from "./schemas";
 
 const VERSION = 7; // bump to regenerate the sample data without restarting the server
 const IST_OFFSET = "+05:30";
@@ -304,8 +305,12 @@ export function getOverview(): Overview {
     last7: {
       views: recentStats.reduce((a, x) => a + x.views, 0), subsGained: recentStats.reduce((a, x) => a + x.subsGained, 0),
       uploads: s.videos.filter((v) => v.status === "published" && istDay(new Date(v.upload!.publishAt)) >= since).length,
+      likes: recentStats.reduce((a, x) => a + x.likes, 0), comments: recentStats.reduce((a, x) => a + x.comments, 0),
     },
-    allTime: { views: s.videos.flatMap((v) => v.stats).reduce((a, x) => a + x.views, 0), liveAt: null },
+    allTime: {
+      views: s.videos.flatMap((v) => v.stats).reduce((a, x) => a + x.views, 0), likes: s.videos.flatMap((v) => v.stats).reduce((a, x) => a + x.likes, 0),
+      comments: s.videos.flatMap((v) => v.stats).reduce((a, x) => a + x.comments, 0), liveAt: null,
+    },
     recent: s.videos.filter((v) => v.status === "published").sort((a, b) => b.upload!.publishAt.localeCompare(a.upload!.publishAt)).slice(0, 4).map(summary),
   };
 }
@@ -341,11 +346,11 @@ export function getAnalytics(): Analytics {
   const s = db();
   const published = s.videos.filter((v) => v.totals);
   const today = istDay(new Date());
-  const byDay = new Map<string, { views: number; subsGained: number }>();
-  for (let k = 28; k >= 1; k--) byDay.set(addDays(today, -k), { views: 0, subsGained: 0 });   // 28 full days ending yesterday
+  const byDay = new Map<string, { views: number; subsGained: number; likes: number; comments: number }>();
+  for (let k = 28; k >= 1; k--) byDay.set(addDays(today, -k), { views: 0, subsGained: 0, likes: 0, comments: 0 });   // 28 full days ending yesterday
   for (const x of published.flatMap((v) => v.stats)) {
     const d = byDay.get(x.day);
-    if (d) { d.views += x.views; d.subsGained += x.subsGained; }
+    if (d) { d.views += x.views; d.subsGained += x.subsGained; d.likes += x.likes; d.comments += x.comments; }
   }
   const names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const wd = names.map(() => ({ views: 0, n: 0 }));
@@ -354,15 +359,16 @@ export function getAnalytics(): Analytics {
     wd[i].views += v.totals!.views;
     wd[i].n += 1;
   }
-  const ranked = published.map((v) => ({ videoId: v.id, title: v.title, templateId: v.templateId, views: v.totals!.views, thumbnailUrl: v.thumbnailUrl }))
+  const ranked = published.map((v) => ({ videoId: v.id, title: v.title, templateId: v.templateId, views: v.totals!.views, likes: v.totals!.likes, comments: v.totals!.comments, thumbnailUrl: v.thumbnailUrl }))
     .sort((a, b) => b.views - a.views);
   const views = published.reduce((a, v) => a + v.totals!.views, 0);
   return {
     daily: [...byDay].map(([day, d]) => ({ day, ...d })),
     weekday: names.map((weekday, i) => ({ weekday, avgViews: wd[i].n ? Math.round(wd[i].views / wd[i].n) : 0, uploads: wd[i].n })),
-    top: ranked.slice(0, 5), bottom: ranked.slice(-5).reverse(),
+    top: ranked.slice(0, 5), bottom: ranked.slice(-5).reverse(), loved: mostLoved(ranked),
     totals: {
       views, subsGained: published.reduce((a, v) => a + v.totals!.subsGained, 0), videos: published.length,
+      likes: ranked.reduce((a, r) => a + r.likes, 0), comments: ranked.reduce((a, r) => a + r.comments, 0),
       avgViewPct: published.length ? Math.round(published.reduce((a, v) => a + v.totals!.avgViewPct, 0) / published.length * 10) / 10 : 0,
     },
   };

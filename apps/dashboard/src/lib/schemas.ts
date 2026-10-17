@@ -175,21 +175,32 @@ export const OverviewSchema = z.object({
   }),
   nextUpload: z.object({ videoId: z.string(), title: z.string(), publishAt: z.string(), thumbnailUrl: z.string() }).nullable(),
   recentFailures: z.array(z.object({ videoId: z.string(), title: z.string(), reason: z.string(), at: z.string() })),
-  last7: z.object({ views: z.number(), subsGained: z.number(), uploads: z.number() }),
-  allTime: z.object({ views: z.number(), liveAt: z.string().nullable() }),
+  last7: z.object({ views: z.number(), subsGained: z.number(), uploads: z.number(), likes: z.number(), comments: z.number() }),
+  allTime: z.object({ views: z.number(), likes: z.number(), comments: z.number(), liveAt: z.string().nullable() }),
   recent: z.array(VideoSchema),
 });
 export type Overview = z.infer<typeof OverviewSchema>;
 
-const RankedSchema = z.object({ videoId: z.string(), title: z.string(), templateId: z.string(), views: z.number(), thumbnailUrl: z.string() });
+const RankedSchema = z.object({ videoId: z.string(), title: z.string(), templateId: z.string(), views: z.number(), likes: z.number(), comments: z.number(), thumbnailUrl: z.string() });
 export const AnalyticsSchema = z.object({
-  daily: z.array(z.object({ day: z.string(), views: z.number(), subsGained: z.number() })),
+  daily: z.array(z.object({ day: z.string(), views: z.number(), subsGained: z.number(), likes: z.number(), comments: z.number() })),
   weekday: z.array(z.object({ weekday: z.string(), avgViews: z.number(), uploads: z.number() })),
   top: z.array(RankedSchema),
   bottom: z.array(RankedSchema),
-  totals: z.object({ views: z.number(), subsGained: z.number(), videos: z.number(), avgViewPct: z.number() }),
+  loved: z.array(RankedSchema),   // most likes + comments per 1,000 views (videos with at least LOVED_MIN_VIEWS)
+  totals: z.object({ views: z.number(), subsGained: z.number(), videos: z.number(), avgViewPct: z.number(), likes: z.number(), comments: z.number() }),
 });
 export type Analytics = z.infer<typeof AnalyticsSchema>;
+
+/** A video needs this many views before its likes-per-view rate means anything. */
+export const LOVED_MIN_VIEWS = 100;
+
+/** Likes and comments per 1,000 views: how much the people who watched cared. */
+export const perThousand = (r: { views: number; likes: number; comments: number }) => (r.views > 0 ? ((r.likes + r.comments) / r.views) * 1000 : 0);
+
+export function mostLoved<T extends { views: number; likes: number; comments: number }>(rows: T[], n = 5): T[] {
+  return rows.filter((r) => r.views >= LOVED_MIN_VIEWS).sort((a, b) => perThousand(b) - perThousand(a)).slice(0, n);
+}
 
 export const QueueOrderSchema = z.object({ ids: z.array(z.string()).min(1) });
 export const VideoActionSchema = z.enum(["skip", "delete", "upload-now"]);
