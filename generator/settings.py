@@ -28,7 +28,7 @@ DEFAULTS: dict = {
         "everyNthRun": 5,         # 0 = build templates only when the backlog is full; otherwise once the
                                   # day's videos are made, one run that day builds or improves a template
     },
-    "templates": {},              # per-template overrides: {"quiz_countdown": {"enabled": false, "weight": 0.8}}
+    "templates": {},              # per-template overrides: {"short_story": {"enabled": false, "weight": 0.8}}
 }
 
 

@@ -18,7 +18,24 @@ def put(root: Path, name: str, data: object) -> None:
 
 
 def script_for(plan: dict) -> dict:
-    return {**example("quiz_countdown"), "seed": plan["seed"], "style": plan["style"]}
+    """A small Short: ₹10,000 a month for 20 years at 12%, matching make_plan's title."""
+    return {"template": "short_story", "format": "short", "seed": plan["seed"], "style": plan["style"],
+            "maths": [{"name": "sip", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 20}],
+            "beats": [{"id": "hook", "scene": "bignumber", "say": "What does {sip_amount} a month become in {sip_years} years?",
+                       "params": {"lines": [{"text": "{sip_final}", "style": "hero", "at": "start"}]}},
+                      {"id": "outro", "scene": "end", "say": "Follow for one money idea a day.", "params": {"cta": "Start early."}}]}
+
+
+@pytest.fixture(autouse=True)
+def fake_render(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Remotion stands in: tests don't launch Chrome. A 36 s video in the script's style."""
+    def story(script: dict, out: Path, preview: bool = False) -> dict:
+        report = {"renderer": "remotion", "template": script["template"], "seed": script["seed"], "duration_sec": 36,
+                  "style": dict(script["style"]), "voice": None, "layout_problems": [], "liveliness_problems": []}
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "render.json").write_text(json.dumps(report), encoding="utf-8")
+        return report
+    monkeypatch.setattr(run.remotion, "render_story", story)
 
 
 def settings(root: Path, **values) -> None:
@@ -61,7 +78,7 @@ def test_state_makes_a_video_when_backlog_has_room(root: Path) -> None:
     s = run.state(root)
     assert s["mode"] == "video" and s["backlog"] == 0
     assert set(s["allowed_templates"]) == set(s["templates"])
-    assert s["template_window"] == 2
+    assert s["template_window"] == 0 and s["allowed_templates"] == ["short_story"]
 
 
 def test_generation_pause_stops_everything(root: Path) -> None:
@@ -76,9 +93,9 @@ def test_full_backlog_idles_video_runs(root: Path) -> None:
 
 
 def test_template_cap_stops_new_templates(root: Path) -> None:
-    settings(root, backlog=30, templateWork={"maxTemplates": 4})
+    settings(root, backlog=30, templateWork={"maxTemplates": 2})
     s = run.state(root)["template_work"]
-    assert s["may_add_template"] is False and s["templates"] == 6
+    assert s["may_add_template"] is False and s["templates"] == 2
 
 
 @pytest.fixture
@@ -179,7 +196,6 @@ def test_check_plan_reports_variety_problems(root: Path) -> None:
     history.append(entry(1, "quiz_countdown", "sip"), root)
     put(root, "plan.json", make_plan(hashtags=["#SIP"]))
     problems = run.check_plan(VID, root)
-    assert any("used in the last 2 videos" in p for p in problems)
     assert any("category 'sip'" in p for p in problems)
     assert any("#Shorts" in p for p in problems)
 
@@ -200,6 +216,25 @@ def test_render_rejects_length_outside_settings(root: Path) -> None:
     put(root, "plan.json", plan)
     put(root, "script.json", script_for(plan))
     assert any("length 36 s is outside 50–60 s" in p for p in run.render(VID, preview=True, root=root))
+
+
+def test_long_story_renders_with_remotion_and_fails_a_frozen_picture(root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    seen = {}
+
+    def fake_story(script: dict, out: Path, preview: bool = False) -> dict:
+        seen["template"] = script["template"]
+        return {"renderer": "remotion", "duration_sec": 240, "layout_problems": [], "style": {"palette": "night", "genre": "lofi"},
+                "voice": {"name": "am_michael", "lines": [{"scene": "a", "fill": 0.8, "window": 5, "seconds": 4}]},
+                "audio": {"peak_db": -1.0, "mean_db": -17.0},
+                "liveliness_problems": ["12 s with nothing moving (limit 4 s)"]}
+
+    monkeypatch.setattr(run.remotion, "render_story", fake_story)
+    plan = make_plan(template="long_story")
+    put(root, "plan.json", plan)
+    put(root, "script.json", {"template": "long_story", "format": "long", "seed": 1, "beats": []})
+    problems = run.render(VID, root=root)
+    assert seen["template"] == "long_story"
+    assert problems == ["12 s with nothing moving (limit 4 s)"]
 
 
 def test_fail_writes_manifest_but_not_history(root: Path) -> None:
@@ -282,3 +317,10 @@ def test_a_trending_topic_earns_one_extra_video(root: Path, today: None) -> None
     assert s["topic_feed"]["required"] == "hot"
     history.append(entry(3, days_ago=0.05), root)
     assert run.state(root)["mode"] == "idle"                     # only one extra a day
+
+
+def test_each_format_has_its_story_template(root: Path) -> None:
+    settings_ = run.load_settings(root)
+    assert run.enabled_templates(settings_, "short", root) == ["short_story"]
+    assert run.enabled_templates(settings_, "long", root) == ["long_story"]
+    assert run.plan_format({"template": "short_story"}) == "short" and run.plan_format({"template": "long_story"}) == "long"

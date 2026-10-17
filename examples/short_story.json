@@ -1,0 +1,68 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "id": "v-sample-01",
+  "seed": 4417,
+  "story": "trap_alert",
+  "narrator": "af_heart",
+  "style": { "palette": "night", "genre": "synthwave", "key": "A", "bpm": 104 },
+  "maths": [
+    { "name": "card", "kind": "card_min_due", "amount": 60000, "rate_pct_month": 3.5, "min_due_pct": 5, "min_due_floor": 200 }
+  ],
+  "beats": [
+    { "id": "hook", "scene": "reveal", "camera": "punch:cost",
+      "say": "This phone costs {card_amount}. Pay only the minimum due, and it costs {card_total_paid}.",
+      "events": { "cost": { "word": "minimum" } },
+      "sfx": [ { "kind": "boom", "at": "cost", "gain": 0.8 } ],
+      "params": { "lines": [
+        { "text": "{card_amount}", "style": "sub", "at": "start" },
+        { "text": "{card_total_paid}", "style": "danger", "value": "@card.total_paid", "at": "cost" } ],
+        "actor": { "who": "rohan", "x": 0.5, "scale": 1.3, "acting": [
+          { "sec": 0, "pose": "phone", "prop": "phone", "expression": "happy" },
+          { "at": "cost", "pose": "shrug", "expression": "shock" } ] } } },
+
+    { "id": "statement", "scene": "statement", "transition": "whip",
+      "say": "Your bill shows two numbers. Total due, {card_amount}. Minimum due, just {card_min_due}.",
+      "events": { "total": { "word": "Total" }, "min": { "word": "Minimum" } },
+      "sfx": [ { "kind": "pop", "at": "total" }, { "kind": "pop-high", "at": "min" } ],
+      "params": { "total": "{card_amount}", "min": "{card_min_due}", "totalAt": "total", "minAt": "min", "pick": "min", "pickAt": "end" } },
+
+    { "id": "monster", "scene": "monster", "transition": "zoom",
+      "say": "Pay the minimum, and interest of {card_rate_month} a month eats the rest.",
+      "events": { "rate": { "word": "interest" } },
+      "sfx": [ { "kind": "pop", "at": "rate" } ],
+      "params": { "label": "{card_rate_month} a month", "labelAt": "rate", "name": "INTEREST" } },
+
+    { "id": "year", "scene": "split", "transition": "slide-up",
+      "say": "After a year, you have paid {card_paid_year1}. And you still owe {card_owed_year1}.",
+      "events": { "paid": { "word": "paid" }, "owed": { "word": "owe" } },
+      "sfx": [ { "kind": "pop", "at": "paid" }, { "kind": "boom", "at": "owed", "gain": 0.7 } ],
+      "params": {
+        "left": { "label": "Paid", "text": "{card_paid_year1}", "value": "@card.paid_year1", "at": "paid" },
+        "right": { "label": "Still owed", "text": "{card_owed_year1}", "value": "@card.owed_year1", "at": "owed" } } },
+
+    { "id": "years", "scene": "calendar", "transition": "whip",
+      "say": "At this pace, it takes {card_years} years to clear one phone.",
+      "events": { "label": { "word": "takes" } },
+      "sfx": [ { "kind": "riser", "at": "start", "gain": 0.4 }, { "kind": "boom", "at": "label", "gain": 0.6 } ],
+      "params": { "label": "{card_years} years", "labelAt": "label", "loops": "@card.years" } },
+
+    { "id": "compare", "scene": "towers", "transition": "zoom",
+      "say": "Minimum due, {card_interest} in interest. Pay the total due, and it costs nothing extra.",
+      "events": { "a": { "word": "Minimum" }, "c": { "word": "nothing" } },
+      "sfx": [ { "kind": "pop", "at": "a" }, { "kind": "ding", "at": "c" } ],
+      "params": { "title": "Interest on one phone", "items": [
+        { "label": "Minimum due", "text": "{card_interest}", "value": "@card.interest", "at": "a", "color": "danger" },
+        { "label": "Total due", "text": "Nothing", "value": 0, "at": "c", "color": "good" } ] } },
+
+    { "id": "rohan", "scene": "stage", "speaker": "rohan", "transition": "slide-up",
+      "say": "Total due. Every month.",
+      "params": { "set": "home", "actors": [ { "who": "rohan", "x": 0.42, "acting": [ { "sec": 0, "pose": "thumbsUp", "expression": "proud" } ] } ],
+        "sikka": { "x": 0.75, "drop": true, "cheer": true, "expression": "laugh" } } },
+
+    { "id": "outro", "scene": "end", "transition": "fade",
+      "say": "Follow for one money idea a day.",
+      "params": { "cta": "Pay the total due.", "follow": "Follow for one money idea a day",
+        "assumption": "Assumes {card_rate_month} a month interest and a {card_min_due_pct} minimum due." } }
+  ]
+}

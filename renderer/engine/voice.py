@@ -1,22 +1,18 @@
-"""Voiceover: an offline neural voice (Kokoro, Apache-2.0) speaking one line per scene.
+"""Voiceover: an offline neural voice (Kokoro, Apache-2.0) speaking each beat's line.
 
-A script may carry `voice`: {scene name: line}. Scene names are a template's scene functions
-without the underscore ("hook", "question", "reveal", ...). Lines follow the on-screen text rules:
-no typed digits or ₹, numbers only through the template's {placeholders}, which are turned into
-spoken Indian English here ("₹12.4 L" → "12.4 lakh rupees"). So the voice can never say a number
-the code didn't compute.
-
-Each line must fit its scene's window (`Video.voice_windows`). It is spoken at the video's base
-speed and sped up as far as MAX_SPEED to fit; a line that still overruns is an error, and the
-writer shortens it.
+Lines follow the on-screen text rules: no typed digits or ₹, numbers only through {placeholders},
+which are turned into spoken Indian English here ("₹12.4 L" → "12.4 lakh rupees"). So the voice
+can never say a number the code didn't compute. A beat lasts as long as its line
+(renderer/timeline/build.py), so lines never have to be squeezed into a window.
 
 The model files are installed by scripts/setup-voice.sh (never committed, never downloaded from
 the renderer). KOKORO_DIR points at them; the default is ~/.cache/kokoro.
 """
 from __future__ import annotations
 
+import hashlib
+import json
 import os
-import random
 import re
 from dataclasses import dataclass
 from functools import lru_cache
@@ -27,42 +23,11 @@ from scipy.signal import resample_poly
 
 from .audio import SR
 
-# rotated per video. Owner-picked by ear on 2026-10-16: the Indian female voice (the other Indian
+# Owner-picked by ear on 2026-10-16: the Indian female voice (the other Indian
 # ones sounded bad) and five American ones.
 VOICES = ("hf_alpha", "af_heart", "af_bella", "am_michael", "am_fenrir", "am_puck")
-BASE_SPEED = (1.12, 1.22)    # per-video base speed range (Kokoro speed, 1.0 ≈ 150 words a minute); brisk, to match TEMPO
-MAX_SPEED = 1.38
 MODEL, VOICE_PACK = "kokoro-v1.0.onnx", "voices-v1.0.bin"
-MAX_LINE = 220               # characters per scene line
-LEAD, TAIL = 0.25, 0.35      # default window: from 0.25 s into a scene to 0.35 s before its end
-
-
-@dataclass(frozen=True)
-class Spoken:
-    scene: str
-    text: str
-    start: float
-    window: float
-    speed: float
-    samples: np.ndarray       # mono, at audio.SR
-
-    @property
-    def seconds(self) -> float:
-        return len(self.samples)/SR
-
-    @property
-    def fill(self) -> float:
-        """How much of the scene's speaking window the line uses, 0-1. A long section left mostly
-        silent is a thin script, not a stylistic choice."""
-        return self.seconds/self.window if self.window else 0.0
-
-
-def pick(seed: int, speed_range: tuple[float, float] = BASE_SPEED) -> tuple[str, float]:
-    """The voice and base speed for a video, from its seed (independent of the style draw).
-    Shorts are read briskly; a long explainer is read at a more measured pace."""
-    r = random.Random(f"voice:{seed}")
-    return r.choice(VOICES), round(r.uniform(*speed_range), 2)
-
+MAX_LINE = 220               # characters per line
 
 _UNITS = {"L": "lakh", "Lakh": "lakh", "Cr": "crore", "Crore": "crore"}
 
@@ -146,7 +111,7 @@ def fill_lines(lines: dict[str, str], scenes: list[str], figures: dict[str, str]
             raise ValueError(f"voice.{scene} must be a non-empty line")
         if len(raw) > max_line:
             raise ValueError(f"voice.{scene} is {len(raw)} characters; keep it under {max_line}")
-        if re.search(r"[0-9₹]", raw):
+        if re.search(r"[0-9₹]", re.sub(r"\{[a-z][a-z0-9_]*\}", "", raw)):   # names may hold digits
             raise ValueError(f"voice.{scene} contains a typed number; use a placeholder: {raw!r}")
         try:
             out[scene] = raw.format_map(words)
@@ -171,44 +136,85 @@ def _engine():
     return Kokoro(str(d/MODEL), str(d/VOICE_PACK))
 
 
-def _synth(text: str, voice: str, speed: float) -> np.ndarray:
-    samples, sr = _engine().create(text, voice=voice, speed=speed, lang="en-us")
+@dataclass(frozen=True)
+class Timed:
+    """One synthesized line with its timing, for the Remotion renderer: every phoneme and every
+    word has a start and end in seconds from the start of `samples`. Phonemes drive lip-sync,
+    words drive captions and the moments a scene reacts to ("the number lands on this word")."""
+    text: str
+    voice: str
+    speed: float
+    samples: np.ndarray                          # mono, at audio.SR, leading/trailing silence trimmed
+    phonemes: list[tuple[str, float, float]]
+    words: list[tuple[str, float, float]]
+
+    @property
+    def seconds(self) -> float:
+        return len(self.samples)/SR
+
+
+_PUNCT = set(",.!?;:—–-…\"'()")
+
+
+def words_from_phonemes(text: str, phonemes: list[tuple[str, float, float]]) -> list[tuple[str, float, float]]:
+    """Group a phoneme stream into the text's words. Kokoro separates words with " " phonemes, so
+    the groups line up with `text.split()`; if a word was phonemized as two (or two as one), the
+    words are spread over the groups proportionally instead, which is close enough for captions."""
+    groups: list[tuple[float, float]] = []
+    start = end = None
+    for p, a, b in phonemes:
+        if p == " ":
+            if start is not None:
+                groups.append((start, end))
+            start = end = None
+        elif p in _PUNCT or p in "ˈˌː":
+            if start is not None:
+                end = b if p in "ˈˌː" else end
+        else:
+            start = a if start is None else start
+            end = b
+    if start is not None:
+        groups.append((start, end))
+    words = text.split()
+    if not words or not groups:
+        return []
+    if len(groups) == len(words):
+        return [(w, s, e) for w, (s, e) in zip(words, groups)]
+    span0, span1 = groups[0][0], groups[-1][1]
+    n = len(words)
+    return [(w, span0 + (span1 - span0)*i/n, span0 + (span1 - span0)*(i + 1)/n) for i, w in enumerate(words)]
+
+
+def speak_timed(text: str, voice: str, speed: float) -> Timed:
+    """Synthesize one line with phoneme and word timings (kokoro-onnx >= 0.6 with a model that
+    exposes durations; scripts/setup-voice.sh installs it). The model is deterministic, so each
+    line is cached by (model, voice, speed, text): rebuilding a timeline after a picture-only
+    change re-speaks nothing."""
+    key = hashlib.sha256(f"{MODEL}|{voice}|{speed:.4f}|{text}".encode()).hexdigest()[:24]
+    cached = model_dir()/"lines"/f"{key}.npz"
+    if cached.is_file():
+        z = np.load(cached)
+        phon = [(p, float(a), float(e)) for p, a, e in json.loads(str(z["phonemes"]))]
+        return Timed(text, voice, speed, z["samples"].astype(np.float64), phon, words_from_phonemes(text, phon))
+    t = _speak_timed(text, voice, speed)
+    cached.parent.mkdir(parents=True, exist_ok=True)
+    tmp = cached.with_suffix(".tmp.npz")
+    np.savez(tmp, samples=t.samples.astype(np.float32), phonemes=json.dumps(t.phonemes))
+    tmp.replace(cached)
+    return t
+
+
+def _speak_timed(text: str, voice: str, speed: float) -> Timed:
+    engine = _engine()
+    if not getattr(engine, "has_timings", False):
+        raise RuntimeError("this voice model has no timing output; run: bash scripts/setup-voice.sh")
+    samples, sr, timings = engine.create_timed(text, voice=voice, speed=speed, lang="en-us")
     x = np.asarray(samples, dtype=np.float64)
-    # trim leading/trailing silence so windows measure speech, not padding
     loud = np.flatnonzero(np.abs(x) > 0.01)
-    if loud.size:
-        x = x[max(0, loud[0] - int(0.02*sr)):loud[-1] + int(0.05*sr)]
-    return resample_poly(x, SR, sr) if sr != SR else x
-
-
-def speak(lines: dict[str, str], windows: dict[str, tuple[float, float]], voice: str, base_speed: float) -> list[Spoken]:
-    """Synthesize every line inside its window, speeding up to MAX_SPEED if needed."""
-    out = []
-    for scene, text in lines.items():
-        start, end = windows[scene]
-        room = end - start
-        if room < 1.0:
-            raise ValueError(f"voice.{scene}: the scene leaves only {room:.1f} s to speak; drop this line")
-        speed = base_speed
-        x = _synth(text, voice, speed)
-        if len(x)/SR > room:
-            speed = min(MAX_SPEED, base_speed*(len(x)/SR)/room*1.03)
-            x = _synth(text, voice, speed)
-        if len(x)/SR > room:
-            raise ValueError(f"voice.{scene} takes {len(x)/SR:.1f} s even at {speed:.2f}× speed but the scene allows "
-                             f"{room:.1f} s; shorten it to about {int(len(text)*room/(len(x)/SR))} characters")
-        out.append(Spoken(scene, text, start, room, round(speed, 2), x))
-    return out
-
-
-def activity(n: int, parts: list[Spoken]) -> np.ndarray:
-    """0..1 envelope of where the voice is speaking, smoothed, for ducking music and effects."""
-    on = np.zeros(n)
-    for p in parts:
-        i = int(p.start*SR)
-        on[i:i + len(p.samples)] = 1.0
-    k = int(0.15*SR)
-    c = np.concatenate([[0.0], np.cumsum(on)])
-    idx = np.arange(n)
-    lo, hi = np.clip(idx - k, 0, n), np.clip(idx + k + 1, 0, n)
-    return (c[hi] - c[lo])/(hi - lo)
+    lead = max(0, loud[0] - int(0.02*sr)) if loud.size else 0
+    tail = loud[-1] + int(0.05*sr) if loud.size else len(x)
+    x = x[lead:tail]
+    shift = lead/sr
+    phon = [(t.phoneme, max(0.0, t.start - shift), max(0.0, t.end - shift)) for t in timings]
+    y = resample_poly(x, SR, sr) if sr != SR else x
+    return Timed(text, voice, speed, y, phon, words_from_phonemes(text, phon))

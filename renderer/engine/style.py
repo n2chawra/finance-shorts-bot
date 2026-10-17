@@ -1,4 +1,4 @@
-"""Per-video style: palette, character looks and music settings.
+"""Per-video style: palette and music settings (the cast is drawn by Remotion, remotion/src/cast).
 
 A script may pin any of these in its `style` block. Whatever it leaves out is picked from the
 seed, so two seeds give two different-looking and different-sounding videos.
@@ -6,9 +6,29 @@ seed, so two seeds give two different-looking and different-sounding videos.
 import random
 from dataclasses import dataclass
 
-from .canvas import NIGHT, Palette
-from .characters import HAIRS, SKINS, Look
 from .music import BPM_RANGE, GENRES, KEYS
+
+RGB = tuple[int, int, int]
+
+
+@dataclass(frozen=True)
+class Palette:
+    name: str
+    bg: RGB          # top of the background gradient
+    bg_bottom: RGB   # bottom of the background gradient
+    text: RGB
+    muted: RGB
+    accent: RGB
+    danger: RGB
+    panel: RGB       # card fill
+    grid: RGB        # chart grid lines
+    haze: RGB
+    cast: tuple[RGB, RGB, RGB]   # series colours
+
+
+NIGHT = Palette("night", bg=(14, 17, 34), bg_bottom=(24, 23, 56), text=(245, 246, 250), muted=(150, 156, 180),
+                accent=(255, 209, 102), danger=(255, 90, 95), panel=(32, 37, 68), grid=(50, 56, 92),
+                haze=(20, 22, 45), cast=((61, 220, 151), (255, 159, 67), (120, 160, 255)))
 
 PALETTES: dict[str, Palette] = {p.name: p for p in (
     NIGHT,
@@ -36,7 +56,6 @@ class Style:
     genre: str
     key: str
     bpm: int
-    looks: tuple[Look, Look]
 
 
 def resolve_style(spec: dict, seed: int) -> Style:
@@ -47,7 +66,6 @@ def resolve_style(spec: dict, seed: int) -> Style:
     genre = r.choice(GENRES)
     key = r.choice(KEYS)
     bpm_roll = r.random()
-    looks = tuple(Look(r.choice(SKINS), h) for h in r.sample(HAIRS, 2))
 
     palette = spec.get("palette", palette)
     genre = spec.get("genre", genre)
@@ -62,4 +80,4 @@ def resolve_style(spec: dict, seed: int) -> Style:
     bpm = spec.get("bpm", round(lo + (hi - lo)*bpm_roll))
     if not 80 <= bpm <= 120:
         raise ValueError("style.bpm must be between 80 and 120")
-    return Style(PALETTES[palette], genre, key, bpm, looks)
+    return Style(PALETTES[palette], genre, key, bpm)

@@ -1,11 +1,9 @@
-import copy
-
 import pytest
 
 from generator import numbers
 from generator.numbers import check_claims, number_check
 
-from .conftest import TEMPLATES, example, make_plan
+from .conftest import example, make_plan
 
 
 def test_formulas_against_hand_worked_values() -> None:
@@ -21,65 +19,68 @@ def test_formulas_against_hand_worked_values() -> None:
     assert numbers.emi_total_interest(1000000, 12, 1) == pytest.approx(88848.79*12 - 1000000, abs=0.2)
 
 
-@pytest.mark.parametrize("name", TEMPLATES)
+def sip_story(**over) -> dict:
+    """A small Short: ₹10,000 a month for 20 years at 12%."""
+    script = {
+        "template": "short_story", "format": "short", "seed": 20,
+        "style": {"palette": "forest", "genre": "acoustic", "key": "C", "bpm": 100},
+        "maths": [{"name": "sip", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 20}],
+        "beats": [
+            {"id": "hook", "scene": "bignumber", "say": "What does {sip_amount} a month become?",
+             "params": {"lines": [{"text": "{sip_final}", "style": "hero", "at": "start"}]}},
+            {"id": "outro", "scene": "end", "say": "Follow for one money idea a day.", "params": {"cta": "Start early."}},
+        ],
+    }
+    return {**script, **over}
+
+
+@pytest.mark.parametrize("name", ["long_story", "short_story", "news_story"])
 def test_every_example_passes_the_number_check(name: str) -> None:
-    passed, notes = number_check(example(name))
+    script = example(name)
+    feed_topic = {"facts": script["facts"]} if "facts" in script else None      # news: as research published it
+    passed, notes = number_check(script, None, feed_topic)
     assert passed, notes
 
 
-@pytest.mark.parametrize("name", TEMPLATES)
-def test_closed_form_matches_template_for_other_inputs(name: str) -> None:
-    script = example(name)
-    for key, scale in (("monthly", 3), ("amount", 7), ("cost", 2)):
-        if key in script:
-            script[key] *= scale
-    for key in ("annual_return_pct",):
-        if key in script:
-            script[key] = 9.5
+@pytest.mark.parametrize("monthly, rate, years", [(500, 8, 5), (25000, 14, 30), (10000, 12, 20)])
+def test_closed_form_matches_the_story_maths(monthly: int, rate: float, years: int) -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "sip", "monthly": monthly, "rate_pct": rate, "years": years}])
     passed, notes = number_check(script)
     assert passed, notes
 
 
 def test_typed_number_in_script_fails() -> None:
-    script = example("quiz_countdown")
-    script["text"]["reveal_note"] = "You get 1 crore"
+    script = sip_story()
+    script["beats"][0]["say"] = "You get 1 crore"
     passed, notes = number_check(script)
     assert not passed and "typed number" in notes[0]
 
 
-def test_hard_coded_result_field_fails() -> None:
-    script = example("quiz_countdown")
-    script["answer"] = 9990000
-    passed, notes = number_check(script)
-    assert not passed and "does not match schema" in notes[0]
+def test_unknown_template_fails() -> None:
+    passed, notes = number_check(sip_story(template="quiz_countdown"))
+    assert not passed and "template must be one of" in notes[0]
 
 
 def test_disagreement_with_formula_is_reported(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setitem(numbers.EXPECTED, "quiz_countdown", lambda s: {"answer": "₹1.00 Cr"})
-    passed, notes = number_check(example("quiz_countdown"))
+    monkeypatch.setitem(numbers.EXPECTED, "short_story", lambda s: {"sip_final": "₹1.00 Cr"})
+    passed, notes = number_check(sip_story())
     assert not passed and "independent formula gives '₹1.00 Cr'" in notes[0]
 
 
 def test_plan_must_match_script_and_claims_must_be_backed() -> None:
-    script = example("quiz_countdown")
-    plan = make_plan(seed=script["seed"], style=script.get("style"))
-    script_with_style = copy.deepcopy(script)
-    script_with_style["style"] = {"palette": "forest", "genre": "acoustic", "key": "C", "bpm": 100}
-    good = make_plan(seed=script["seed"])
-    assert number_check(script_with_style, good) == (True, number_check(script_with_style, good)[1])
+    script = sip_story()
+    good = make_plan(seed=20)
+    assert number_check(script, good)[0]
 
-    drift = make_plan(seed=999)
-    passed, notes = number_check(script_with_style, drift)
+    passed, notes = number_check(script, make_plan(seed=999))
     assert not passed and any("script.seed does not match the plan" in n for n in notes)
 
-    lying = make_plan(seed=script["seed"], title="Quiz: turn ₹10,000 a month into ₹5 Cr?")
-    passed, notes = number_check(script_with_style, lying)
+    passed, notes = number_check(script, make_plan(seed=20, title="Quiz: turn ₹10,000 a month into ₹5 Cr?"))
     assert not passed and any("'₹5 Cr'" in n for n in notes)
-    assert plan is not None
 
 
 def test_claims_accept_inputs_and_figures_in_any_usual_spelling() -> None:
-    script = example("quiz_countdown")
+    script = sip_story()
     figures = {"answer": "₹99.9 L", "answer_long": "₹99.9 Lakh", "ratio": "4.2×", "years": "20", "rate": "12%"}
     ok = {"title": "₹10,000 a month for 20 years at 12% becomes ₹99.9 Lakh, 4.2x your money", "hashtags": "#Shorts #SIP"}
     assert check_claims(ok, script, figures) == []

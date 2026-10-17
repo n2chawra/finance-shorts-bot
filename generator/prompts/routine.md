@@ -21,9 +21,9 @@ can have several Pythons and only one has the packages.
 - If no interpreter has the packages (`PY` is empty), run
   `python3 -m pip install -q pillow numpy scipy jsonschema` (add `--break-system-packages` if pip
   refuses), then use `python3`.
-- Voiceover: if `state` lists the `voiceover` experiment, run `bash scripts/setup-voice.sh $PY`
-  once now (installs the offline voice, ~340 MB, skipped when already there). If it fails, carry
-  on: videos in the voiceover group will fail to render, so report the setup error.
+- Run `bash scripts/setup-cloud.sh $PY` once now: the offline voice, the Remotion packages and a
+  headless Chrome (quick when cached). If it fails, stop and report its last line: videos cannot
+  be voiced or drawn without it.
 - If `ffmpeg` is missing, try once:
   `apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ffmpeg`.
   If it is still missing, stop and report "ffmpeg could not be installed" with the error text.
@@ -86,7 +86,9 @@ python -m generator.run render <id>
 ```
 
 This takes several minutes: run it with a long timeout or in the background and wait for it.
-It must print `ok`. If it prints `FAIL:` lines, fix the script and go back to section 3.
+A Short takes 4–8 minutes; start it in the background
+(`nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &`) and check
+`tail -3 /tmp/render-<id>.log` every minute or two. It must print `ok`. If it prints `FAIL:` lines, fix the script and go back to section 3.
 
 ## 6. QA review (a subagent with fresh context)
 
@@ -98,15 +100,11 @@ QA subagent to review again. Three re-renders at most per video.
 
 - **`[script]`:** fix the script lines it named, re-run the number check, ask the fact reviewer
   to re-review the changed lines, then render again.
-- **`[template]`:** repair the template yourself; it would fail every future video too.
-  1. Edit only `renderer/templates/<template>/template.py`. Make the smallest change that fixes
-     the named problem. Do not restyle anything else. Every number on screen must still come
-     from code, and the same script and seed must still give the same video.
-  2. Run `python -m pytest renderer -q`. It must pass. If you cannot make it pass, undo your
-     change with `git checkout -- renderer` and go to "If the video cannot be made to pass".
-  3. Render again (section 5) and get the QA review again.
-  4. Once the video passes, commit the repair before shipping, so it goes out with the video:
-     `git add renderer/templates/<template> && git commit -q -m "Fix <template>: <what was wrong>"`
+- **`[template]`** or **`[scene]`:** a problem in how a scene draws (overlap, cut-off text, a frozen
+  picture) is in Remotion code, which the routine does not change. First try a script fix that
+  avoids it (another scene, fewer words on screen, an actor moved). If no script change can, go
+  to "If the video cannot be made to pass" and name the scene and beat in the reason, so the
+  owner can fix the scene.
 
 ## 7. Ship
 

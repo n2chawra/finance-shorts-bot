@@ -4,7 +4,7 @@
 
     {"topics": [{"id": "2026-10-16-sip-record-inflows", "title": "...", "category": "sip", "format": "short",
                  "kind": "news | trend | seasonal | evergreen", "priority": "breaking | trending | high | normal",
-                 "templates": ["money_news", "quiz_countdown"] or ["any"], "angle": "...", "why_now": "...",
+                 "templates": ["any"], "angle": "...", "why_now": "...",
                  "facts": [{"label", "value", "unit", "as_of", "source", "url"}], "verify": ["claim to check"],
                  "sources": ["https://..."], "found": "YYYY-MM-DD", "expires": "YYYY-MM-DD", "status": "new"}]}
 
@@ -65,8 +65,9 @@ def why_unavailable(topic: dict, entries: list[dict], today: str) -> str | None:
 
 
 def fits(topic: dict, templates: list[str]) -> bool:
-    wanted = topic.get("templates") or ["any"]
-    return "any" in wanted or any(t in templates for t in wanted)
+    """A story template tells any topic of its format, so a topic fits whenever its format has one
+    enabled. (Topics written before the Remotion rebuild still name old templates; ignored.)"""
+    return bool(templates)
 
 
 def of_format(topics: list[dict], fmt: str) -> list[dict]:
@@ -92,8 +93,8 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
 
 def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT,
                fmt: str = "short") -> list[str]:
-    """Feed rules for a plan: a feed topic must be open; money_news needs one with facts; a usable
-    breaking topic must be taken."""
+    """Feed rules for a plan: a feed topic must be open, and a usable breaking topic must be taken.
+    (A news script's sourced facts are traced to the feed by the number check.)"""
     out = []
     feed_id = (plan.get("topic") or {}).get("feed_id")
     if feed_id:
@@ -102,14 +103,8 @@ def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], 
             out.append(f"topic.feed_id {feed_id!r} is not in {FILES[fmt].as_posix()}")
         elif (why := why_unavailable(topic, entries, today)) is not None:
             out.append(f"feed topic {feed_id!r} can't be used: {why}")
-        elif plan.get("template") == "money_news" and not topic.get("facts"):
-            out.append(f"money_news needs a feed topic with sourced facts; {feed_id!r} has none")
     elif (trend := (plan.get("topic") or {}).get("trend")) is not None:
         out += check_trend(trend, today)
-        if plan.get("template") == "money_news" and not trend.get("facts"):
-            out.append("money_news needs sourced facts: add them to topic.trend.facts")
-    elif plan.get("template") == "money_news":
-        out.append("money_news is only for research feed topics: set topic.feed_id to a topic from state.topic_feed")
     required = for_state(entries, today, blocked, allowed, root, fmt)["required"]
     if required and feed_id != required:
         level = (get(required, root, fmt) or {}).get("priority", "breaking")

@@ -25,7 +25,8 @@ import sys
 import tempfile
 from pathlib import Path
 
-from renderer import cli as renderer
+from renderer import remotion
+from renderer.timeline.build import check_script
 
 from . import experiments, history, topics, variety
 from .numbers import number_check
@@ -33,6 +34,7 @@ from .settings import ROOT, load as load_settings
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
 MIN_VOICE_FILL = 0.55   # a long section left more than ~half silent is a thin script
+TEMPLATES = {"long_story": "long", "short_story": "short"}   # every template, with its format; drawn by Remotion
 TREND_EXTRA_PER_DAY = 1  # extra Shorts a day for a breaking or trending topic, past the daily target
 AGENTS = ("planner", "writer", *CHECKERS, "render", "ship")
 PLAN_KEYS = ("template", "topic", "story", "hook_style", "cta", "title", "description", "hashtags", "seed", "style")
@@ -62,14 +64,15 @@ def log_step(vid: str, agent: str, passed: bool, notes: list[str], root: Path = 
     _write(path, steps)
 
 
-def enabled_templates(settings: dict, fmt: str | None = None) -> list[str]:
-    return [t for t in renderer.template_names(fmt) if settings["templates"].get(t, {}).get("enabled", True)]
+def enabled_templates(settings: dict, fmt: str | None = None, root: Path = ROOT) -> list[str]:
+    """Templates a plan may use: those of the format that the dashboard hasn't disabled."""
+    return [t for t, f in TEMPLATES.items() if fmt in (None, f) and settings["templates"].get(t, {}).get("enabled", True)]
 
 
 def plan_format(plan_or_script: dict) -> str:
     """'short' or 'long', from the template the plan or script names."""
     name = plan_or_script.get("template")
-    return renderer.template_format(name) if name in renderer.template_names() else "short"
+    return TEMPLATES.get(name, "short")
 
 
 def length_range(settings: dict, fmt: str) -> tuple[int, int]:
@@ -88,7 +91,7 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     settings = load_settings(root)
     everything = history.load(root)
     entries = history.of_format(everything, fmt)
-    enabled = enabled_templates(settings, fmt)
+    enabled = enabled_templates(settings, fmt, root)
     backlog = history.ready_count(everything, settings, fmt)
     tw = settings["templateWork"]
     today = history.ist_day(history.now().isoformat())
@@ -99,7 +102,7 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     # (agents/improver.md), which reads the template_work block below
     target = settings["dailyVideoTarget"]
     made_today = sum(1 for e in entries if history.ist_day(e["created_at"]) == today)
-    n_templates = len(renderer.template_names())
+    n_templates = len(TEMPLATES)
     room = n_templates < tw["maxTemplates"]
 
     week = history.ist_week(history.now().isoformat())
@@ -167,7 +170,7 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
     else:
         fmt = plan_format(plan)
         entries = history.of_format(history.load(root), fmt)
-        enabled = enabled_templates(load_settings(root), fmt)
+        enabled = enabled_templates(load_settings(root), fmt, root)
         problems = variety.check_plan(plan, entries, enabled)
         problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
                                       variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
@@ -189,9 +192,7 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
 
 def figures(vid: str, root: Path = ROOT) -> dict:
     """Computed figures and the final on-screen lines, as a reviewer needs to see them."""
-    video = renderer.build(_read(_dir(vid, root) / "script.json"))
-    return {"duration_sec": round(video.length), "figures": video.figures, "on_screen_text": video.txt,
-            "voiceover": video.narration(), "scenes": {k: [round(a, 1), round(b, 1)] for k, (a, b) in video.voice_windows().items()}}
+    return check_script(_read(_dir(vid, root) / "script.json"))
 
 
 def record(vid: str, agent: str, passed: bool, notes: list[str], root: Path = ROOT) -> None:
@@ -208,12 +209,13 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     started = history.now().isoformat()
     try:
         script = _read(d / "script.json")
-        flags = experiments.for_video(vid, script.get("template"), root)
-        report = renderer.render(renderer.build(script, flags), d, preview)
+        if script.get("template") not in TEMPLATES:
+            raise ValueError(f"template must be one of {', '.join(TEMPLATES)}")
+        report = remotion.render_story(script, d, preview=preview)
     except (ValueError, RuntimeError) as e:
         log_step(vid, "render", False, [str(e)], root, started)
         return [str(e)]
-    problems = list(report["layout_problems"])
+    problems = list(report["layout_problems"]) + list(report.get("liveliness_problems", []))
     lo, hi = length_range(settings, plan_format(script))
     if not lo <= report["duration_sec"] <= hi:
         problems.append(f"length {report['duration_sec']} s is outside {lo}–{hi} s")

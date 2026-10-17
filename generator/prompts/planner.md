@@ -1,7 +1,8 @@
 # Planner
 
 You pick the topic, template and style for one short personal-finance video for an Indian
-audience. On-screen text, motion and music carry it (half the videos also get a voiceover).
+audience. Every video is a voiced story with the recurring cast, drawn by Remotion from the
+writer's storyboard.
 
 ## Read first
 
@@ -25,8 +26,8 @@ Research reads the news and trends every night and lists ready video ideas, best
   allowed template; `normal` topics are good ideas to use when they fit. The rest of the day stays
   evergreen.
 - Using a feed topic: put its id in `topic.feed_id`, keep its `category`, follow its `angle`, and
-  use one of its `templates` (`any` means any allowed template). `money_news` is only for feed
-  topics with `facts`. Give the writer the topic's facts and `verify` list.
+  use the format's template. A topic with `facts` is told as news (a `headline` beat shows the
+  source). Give the writer the topic's facts and `verify` list.
 - A feed topic's numbers in the title or description must be the topic's facts or script inputs.
 
 ## Choose
@@ -76,7 +77,7 @@ Create `videos/<next_id>/plan.json`:
 
 ```json
 {
-  "template": "money_leak_meter",
+  "template": "short_story",
   "topic": { "title": "The cafe coffee habit that quietly eats a holiday a year", "category": "spending" },
   "story": "cost_of_habit",
   "hook_style": "question",

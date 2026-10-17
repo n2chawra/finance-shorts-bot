@@ -3,7 +3,6 @@ from pathlib import Path
 
 from generator import experiments
 
-from .conftest import example
 
 
 def write(root: Path, exps: list[dict]) -> None:
@@ -41,11 +40,3 @@ def test_only_running_experiments_for_matching_templates(root: Path) -> None:
 
 def test_no_file_means_no_experiments(root: Path) -> None:
     assert experiments.for_video("v-1", "quiz_countdown", root) == {}
-
-
-def test_flags_reach_the_template_and_the_render_report() -> None:
-    from renderer import cli
-    video = cli.build(example("quiz_countdown"), {"fast-hook": "on"})
-    assert video.flag("fast-hook") and not video.flag("other")
-    plain = cli.build(example("quiz_countdown"))
-    assert plain.flags == {}

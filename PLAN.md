@@ -87,12 +87,12 @@ Full plan: `~/.claude/plans/i-want-to-create-frolicking-music.md`. All video dra
 after the owner approves samples; Shorts keep shipping on Pillow until then.
 - [x] Topic variety by story + title shape; trending topics first, one extra video, queue jump,
       ~4.5 h publish lookahead; midday trend run prompt; `L-` id fix in ingest and the dashboard
-- [ ] Phase 0: feasibility spike (Kokoro word timings; Remotion render time locally and in a cloud routine)
-- [ ] Phase 1: foundations (`remotion/`, timeline contract, render switch, liveliness gate, guard + CI)
-- [ ] Phase 2: cast and character rig (owner approves character sheet + acting test)
-- [ ] Phase 3: long-form on Remotion (owner approves a 4–6 min sample; Studio hold lifted)
-- [ ] Phase 4: Shorts formats on Remotion, per format after approval; retire Pillow drawing
-- [ ] Phase 5: news event days, library growth, Hinglish A/B
+- [x] Phase 0: feasibility spike (Kokoro word timings; Remotion render time locally and in a cloud routine)
+- [x] Phase 1: foundations (`remotion/`, timeline contract, layout + liveliness gates, guard + CI)
+- [x] Phase 2: cast and character rig (owner approves character sheet + acting test)
+- [x] Phase 3: long-form on Remotion (sample approved; Studio hold lifts when the branch is live)
+- [x] Phase 4: Shorts on Remotion (approved without per-format samples); Pillow engine removed
+- [ ] Phase 5: news event days and recipe growth done; Hinglish A/B waits for a voice that speaks it well
 
 ## Later (not scheduled)
 - Edit title/description of a queued video before upload
@@ -294,3 +294,50 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   calendar; publish fills a slot only ~4.5 h ahead (new 17:37 IST retry run) so a midday trend gets
   the evening slot; a midday trend run prompt (`generator/prompts/trend_run.md`) is ready. Fixed
   `L-` ids being rejected by ingest's manifest schema and the dashboard media route.
+- 2026-10-17 (branch `rebuild/remotion`): cast approved (Rohan, Priya, Sharma, Sikka; IK rig,
+  11 expressions, visemes). Long-form pipeline built: `renderer/models/maths.py` computes,
+  `renderer/timeline/build.py` fills placeholders, speaks each beat with Kokoro word and phoneme
+  timings (lines cached by text) and mixes the audio; Remotion draws `timeline.json` (13 scenes,
+  camera, transitions, thumbnail); `renderer/remotion.py` renders in 60 s chunks, muxes, and gates
+  liveliness. First sample, `examples/long_story.json` (credit card minimum due, 34 beats, five
+  chapters): 4:00, peak −1.0 dB, mean −17.0 dB, liveliness median 1.36, 6.6% still, longest still
+  4.0 s (at the limit); 19 min to render locally at concurrency 3. Waiting on owner approval.
+- 2026-10-17: Owner liked the sample but found it slow ("flawless at 1.5x"). Long videos now play at
+  tempo 1.5: Kokoro speaks at 1.5x and every pause, animation, transition and camera move runs 1.5x
+  faster with it (scenes run on a story clock in Remotion). Same length target, so a 4–6 min video
+  needs ~850–1,300 words. The sample was not re-rendered.
+- 2026-10-17: Owner approved the long-form sample (pace fixed to 1.5x). Long-form automation on the
+  branch: `long_story` number check recomputes every figure in closed form (the card's minimum-due
+  payoff as a geometric phase plus an annuity phase, matching the month-by-month simulation to 1e-9);
+  `check_script` validates a script without speaking it (`generator.run figures` for reviewers);
+  Studio writes `long_story` scripts and renders in the background, resuming from finished chunks;
+  `render.json` carries YouTube chapters; `scripts/setup-cloud.sh` prepares a routine session
+  (voice, npm packages, headless Chrome, ffmpeg); `remotion.yml` CI. Studio stays on hold until the
+  branch is merged and the routine environment runs the setup script.
+- 2026-10-17: Phase 4 started (branch). `short_story`: the same story pipeline in 1080×1920 at tempo 1.3
+  (Pillow Shorts run 1.35). Word-by-word captions built in Python from the written line, so figures
+  show as on screen (₹60,000) timed by the words that speak them; drawn outside the camera at 0.6 of
+  the height. Vertical layouts for statement, split, calendar and the end card (Shorts sizes, 44 px+).
+  `examples/short_story.json` (39 s) checked as stills only; registered for render and number check,
+  not offered to the planner until the owner approves Shorts samples.
+- 2026-10-17: Owner liked the first Remotion Short and dropped per-format approval; asked for no
+  on-screen captions (voice is enough; caption data kept for YouTube subtitles). `short_story` is
+  wired into the Shorts routine behind `config/renderer.json` (`{"short": "remotion"}` switches Shorts;
+  Pillow Shorts drop out except `money_news`; deleting the file rolls back). Writer contract with five
+  story recipes; routine prompt runs `setup-cloud.sh` and renders in the background. Fixed: first
+  frame shows the hook, Rohan's height in vertical reveals, the calendar smear. The switch file is
+  not created yet (owner's call).
+- 2026-10-17: Owner: no engine switch, no old engine. Removed the Pillow engine (`renderer/cli.py`,
+  drawing modules, the six Pillow templates and their examples and tests) and the voiceover A/B test;
+  every video is a voiced Remotion storyboard: `short_story` and `long_story`. News moved to sourced
+  `facts` (`{fact1}`) shown by a new `headline` scene with its source line. Guard invariants now
+  check `remotion/` design rules, the end card and the liveliness gate. Prompts (writer, planner,
+  fact reviewer, routine, recipe builder, improver, research, scout, policy), CLAUDE.md, README and
+  the renderer guide rewritten for the single engine. Projection stories capped at a quarter.
+- 2026-10-17: Layout gate: stills rendered with a probe log every visible text box (glyph box after
+  camera and animation, effective font size); `renderer/gates.py` fails text under the format's minimum,
+  in the bottom zone or off the frame. First run found the chart legend cropped by the camera push and
+  the long chart's axis title in the bottom margin (fixed); all three examples now pass. Event-day flow:
+  research writes `improvement/events/<date>-<slug>.json` the night before, `generator/prompts/event_day.md`
+  ships the announced figure into the 12:37 slot (needs a one-off routine per event). QA reviewer
+  prompt updated for storyboards (`[scene]` problems go to the owner).

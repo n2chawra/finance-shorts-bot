@@ -8,11 +8,12 @@ thumbnail.
 
 You have a few hours. Use them on the script and the review, not on exploring the codebase.
 
-> **On hold since 2026-10-16.** The long-form renderer was rebuilt around character animation
-> after the owner rejected the first long video ("a PPT with a voiceover"), and the replacement
-> sample is waiting for approval. **Do not make a long video.** Write an activity entry of
-> `nothing` saying you are on hold, push it, and stop. This hold is lifted by deleting this block;
-> `longPerWeek` in the dashboard settings is the other half of it, and either one holds you.
+> **On hold until the Remotion renderer is live.** The owner approved the Remotion long-form sample
+> on 2026-10-17; the pipeline goes live when the `rebuild/remotion` branch is merged and the routine
+> environment runs `scripts/setup-cloud.sh`. Until then **do not make a long video**: write an
+> activity entry of `nothing` saying you are on hold, push it, and stop. This hold is lifted by
+> deleting this block; `longPerWeek` in the dashboard settings is the other half of it, and either
+> one holds you.
 
 ## 0. Prepare
 ```
@@ -21,13 +22,14 @@ START=$(date -u +%FT%TZ); echo "START=$START"   # note this: it goes into the ac
 DAY=$(TZ=Asia/Kolkata date +%F)
 for p in python python3 /usr/bin/python3; do $p -c "import PIL, numpy, scipy, jsonschema" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
 ffmpeg -version | head -1
-bash scripts/setup-voice.sh $PY     # the offline voice; long videos are always narrated
+bash scripts/setup-cloud.sh $PY     # voice, Remotion packages, headless Chrome, ffmpeg
 ```
 Use `$PY` wherever this page says `python`. If packages are missing:
 `python3 -m pip install -q pillow numpy scipy jsonschema` (add `--break-system-packages` if pip
 refuses). If `ffmpeg` is missing, try once:
 `apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ffmpeg`;
-if it still is not there, stop and report it.
+if it still is not there, stop and report it. If `setup-cloud.sh` fails, stop and report its last
+line: a long video cannot be drawn without it.
 
 Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused` or `agents.studio`
 false. Read `improvement/merge-log.json` (your last 3 entries) and `improvement/longform/backlog.json`.
@@ -45,7 +47,7 @@ notification for the owner — do not invent a topic, Scout's research is what m
 
 ## 2. Plan
 Write `videos/<id>/plan.json`, following `generator/prompts/planner.md` for the fields, with:
-- `template`: `long_explainer`
+- `template`: `long_story`
 - `topic`: `{"title", "category", "feed_id": "<the topic's id>"}` from the feed topic
 - `title`: what someone would click — a clear promise, not a riddle. 40–70 characters.
 - `description`: 3–5 lines on what the video covers, then the chapter list (you fill in the real
@@ -57,37 +59,38 @@ python -m generator.run check-plan <id>
 ```
 
 ## 3. Write the script
-Read `renderer/templates/long_explainer/README.md` and `examples/long_explainer.json` first — the
-README is the contract and the example shows the shape.
+Read `renderer/templates/long_story/README.md` and `examples/long_story.json` first: the README is
+the contract (beats, scenes, cast, acting, events, numbers) and the example is a video the owner
+approved. Write `videos/<id>/script.json` with `"template": "long_story"`, `"format": "long"`,
+and the plan's `seed` and `style`.
 
-Build the video from the topic's `outline`: one section per beat. Then:
-- **Length**: aim for **4–6 minutes** — about **7–10 sections** and **700–1,100 words** of
-  narration. Length is not the goal. A tight four minutes beats a padded nine, and the owner
-  rejected the first long video for exactly that. Make it longer by adding a scene that *does*
-  something, never by stretching one.
-- **A section is a verb, not a slide.** The kinds are `hook`, `beat`, `drain`, `pile`, `grow`,
-  `compare`, `chart`, `steps`, `end`, and each one is an action that runs for its whole length:
-  coins leaving a wallet, a stack growing past the hero's head, a tree growing, a chart drawing
-  itself. There are no bulleted lists, because a list is a slide.
-- **Text only where it is needed.** One `heading` per section and a label on the figure. Never
-  write the narration on screen: the viewer cannot read and listen at once, and a video that does
-  both is the slideshow again.
-- **Narration is the video.** Write about **3 words per second** of each section. The render fails
-  any section whose narration fills less than 55% of its window — silence over music is what makes
-  a video feel padded.
-- **Vary the sections.** Two `beat` sections in a row is the most common way an explainer goes
-  flat; put a `pile`, a `grow` or a `compare` between them. The render also fails if the picture
-  stops moving (median frame change under 1.2, or four seconds with nothing happening) — check
-  `liveliness` in `render.json`.
-- **Numbers**: every figure comes from `maths`. Pick realistic rates (equity about 10–12%, FDs
-  6–7.5%, inflation 5–6%). Never type a digit into any text or narration line.
-- **Thumbnail**: fill the `thumbnail` block — 3–5 huge words and one figure. It has to read at the
-  width of a thumb.
-- Say the honest thing. If the tidy answer has a catch, the catch is the most valuable section.
+A long video is a **story with the recurring cast**, told in beats. Start from the topic's
+`outline` and its central picture (the leaking bucket, the snowball, the treadmill): what does
+the viewer *see* happen?
+- **Length and pace.** Long videos play at tempo 1.5, about **215 spoken words a minute**. Aim for
+  **4–6 minutes: 850–1,300 words across 50–75 beats** (a beat is one line and one picture, 3–8 s).
+  Length is not the goal; a tight four minutes beats a padded six. Add a beat that *does*
+  something, never stretch one.
+- **Shape.** Hook with rupee stakes in the first 20 seconds (a person, a choice, the cost). Then
+  chapters (`chapter` beats, 4–6 of them) from the start. An escalation around 1:30 and again
+  around 3:00. End on what to do, then the `end` beat.
+- **People, not slides.** Put a cast moment (`stage`, someone reacting, a line of dialogue)
+  between data scenes. Rohan makes the mistake, Priya explains, Sharma has seen it all, Sikka
+  cheers. They are characters in a story, never advisors: nobody tells the viewer what to buy.
+- **A new picture every 3–6 seconds**, and the picture reacts on the word: name an event
+  (`{"word": "owes"}`) and land the figure, the sound and the camera punch on it.
+- **On screen: keywords and figures only.** Never the narration word for word.
+- **Numbers** come only from `maths` (`card_min_due`, `emi`, `sip`, `lumpsum`) through
+  placeholders like `{card_total_paid}` and `"@card.balance"`. Realistic inputs (cards 3–3.75% a
+  month, loans 9–16%, equity 10–12%, FDs 6–7.5%). Never type a digit or ₹ into any text.
+  State the simplification on the end card (`assumption`).
+- **Thumbnail**: fill the `thumbnail` block: one cast member reacting, one figure, at most four
+  words.
+- Say the honest thing. If the tidy answer has a catch, the catch is the most valuable beat.
 
 ```
 python -m generator.run number-check <id>     # must print ok
-python -m generator.run figures <id>          # read every line and every voice line as a viewer and listener
+python -m generator.run figures <id>          # every figure, and every beat's line as written and as spoken
 ```
 Two rewrites at most; then stop and mark the video failed.
 
@@ -99,23 +102,26 @@ ask the **same** subagent again. Two rewrites at most.
 
 ## 5. Render
 ```
-python -m generator.run render <id>
+nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
 ```
-**This takes 15–30 minutes** for a long video. Run it in the background or with a long timeout and
-wait for it; it prints its progress as a percentage. It must print `ok`. If it prints `FAIL:` lines,
-fix them (they name the section) and go back to section 3.
+**This takes 20–40 minutes** and a command may only run 10, so start it in the background like
+this and check `tail -3 /tmp/render-<id>.log` every few minutes. If it is cut off, run the same
+command again: finished 60-second chunks are kept and it carries on. It must end with `ok`. If it
+prints `FAIL:` lines (a beat with no visible movement, a length outside 180–900 s), fix the
+script and go back to section 3.
 
 ## 6. QA review (a subagent with fresh context)
 Spawn a second subagent: the video id, and the instruction to read `generator/prompts/qa_reviewer.md`
 and follow it exactly. For a long video it must also look at `videos/<id>/thumbnail.png` on its own
-(is it readable small? does it promise what the video delivers?) and at the `voice` block in
-`render.json` (any section under 60% fill reads as padded even when it passes).
+(is it readable small? does it promise what the video delivers?), at `videos/<id>/preview.png`
+(a still every 5 seconds: cut-off or tiny text, overlaps, an empty frame, the same picture too
+long) and at `liveliness` in `render.json`.
 
-Fix what it names and re-render. **Two re-renders at most** — each one costs half an hour.
+Fix what it names and re-render. **Two re-renders at most**; each one costs half an hour.
 
 ## 7. Ship
-Put the real chapter timestamps into the description (the section boundaries are in
-`videos/<id>/render.json`; YouTube needs the first one to be `0:00`). Then:
+Put the chapter timestamps into the description (`chapters` in `videos/<id>/render.json`, in
+seconds; YouTube needs the first one to be `0:00`). Then:
 ```
 python -m generator.run ship <id> --commit --release --push
 ```

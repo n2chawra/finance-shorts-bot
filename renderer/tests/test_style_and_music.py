@@ -20,7 +20,7 @@ def test_pinned_fields_win_and_do_not_shift_the_rest() -> None:
     free = resolve_style({}, 9)
     pinned = resolve_style({"palette": "paper", "bpm": 100}, 9)
     assert pinned.palette.name == "paper" and pinned.bpm == 100
-    assert (pinned.genre, pinned.key, pinned.looks) == (free.genre, free.key, free.looks)
+    assert (pinned.genre, pinned.key) == (free.genre, free.key)
 
 
 @pytest.mark.parametrize("bad", [{"palette": "neon"}, {"genre": "jazz"}, {"key": "H"}, {"bpm": 140}])

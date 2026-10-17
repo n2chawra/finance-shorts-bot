@@ -6,7 +6,8 @@ import pytest
 
 REPO = Path(__file__).resolve().parents[2]
 NOW = datetime(2026, 10, 13, 12, 0, tzinfo=timezone.utc)
-TEMPLATES = ["money_leak_meter", "myth_vs_fact", "quiz_countdown", "two_friends_race"]
+# a rotation of four: the story template plus three of the first engine's, which old history still names
+TEMPLATES = ["money_leak_meter", "myth_vs_fact", "short_story", "two_friends_race"]
 
 
 def entry(i: int, template: str = "quiz_countdown", category: str = "sip", title: str | None = None, days_ago: float = 1, **style) -> dict:
@@ -22,7 +23,7 @@ def entry(i: int, template: str = "quiz_countdown", category: str = "sip", title
 
 def make_plan(**over) -> dict:
     plan = {
-        "template": "quiz_countdown", "topic": {"title": "How big a monthly SIP grows over two decades", "category": "sip"},
+        "template": "short_story", "topic": {"title": "How big a monthly SIP grows over two decades", "category": "sip"},
         "story": "future_value", "hook_style": "question", "cta": "Comment if you got it right",
         "title": "Quiz: what does a ₹10,000 SIP become in 20 years?",
         "description": "A quick SIP quiz with a surprising answer. Illustrative only. Not financial advice.",
