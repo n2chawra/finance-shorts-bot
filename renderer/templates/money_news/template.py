@@ -9,6 +9,8 @@ Two kinds of numbers appear, and both reach the screen only through code:
 - **Computed figures**: the "what it means for you" example (an SIP, a lump sum or inflation),
   calculated from the script's inputs like every other template.
 """
+import math
+
 from renderer.engine.audio import Mixer, sfx_boom, sfx_ding, sfx_kaching, sfx_pop, sfx_riser, sfx_tick, sfx_whoosh
 from renderer.engine.canvas import MIN_TEXT, SAFE_W, W, Canvas
 from renderer.engine.characters import person
@@ -105,7 +107,7 @@ class MoneyNews(Video):
             t0 = 0.5 + i*1.3
             a = ramp(t, t0, 0.2)*A
             x = W/2 + (1 - back(ramp(t, t0, 0.4)))*260
-            y = CARD_Y[i]
+            y = CARD_Y[i] + 16*math.sin(t*3.2 + i*1.7)*ramp(t, t0 + 0.4)   # cards keep floating after they land
             c.d.rounded_rectangle([x - 450, y - 115, x + 450, y + 115], radius=44, fill=c.mix(P.panel, a))
             c.text(shown, x, y - 30, 96, P.cast[i], a, max_w=820)
             c.text(f["label"], x, y + 62, 48, P.text, a, "Medium", max_w=820)
@@ -122,6 +124,7 @@ class MoneyNews(Video):
             t0 = 0.8 + i*1.8
             a = ramp(t, t0, 0.2)*A
             y = 520 + i*170
+            y += 10*math.sin(t*3 + i*1.3)*ramp(t, t0 + 0.3)
             c.d.ellipse([110, y - 22, 154, y + 22], fill=c.mix(P.cast[i], a))
             c.text(self.txt[key], 190, y, 60, P.text, a, "SemiBold", anchor="lm", max_w=W - 270)
         person(c, W/2, 1560, 1.15, P.cast[1], ramp(t, 0.4)*A, t, "happy" if t > 4.4 else "neutral", look=self.style.looks[1])
@@ -129,7 +132,7 @@ class MoneyNews(Video):
     def _you(self, c: Canvas, t: float, A: float) -> None:
         P = self.pal
         c.caption(self.txt["you_title"], 0.1, t, 290, 80, P.accent, A)
-        c.pill(W/2, 420, self.example_pill, 48, P.bg, P.text, ramp(t, 0.7)*A)
+        c.pill(W/2, 420 + 8*math.sin(t*3.5), self.example_pill, 48, P.bg, P.text, ramp(t, 0.7)*A)
         a = ramp(t, BAR_T0 - 0.4)*A
         base, full = 1300, 640
         top = max(self.base, self.result)
@@ -137,7 +140,7 @@ class MoneyNews(Video):
                                                 (self.bar_labels[1], self.result, P.cast[0], W/2 + 220))):
             cnt = ease(ramp(t, BAR_T0 + i*1.2, 1.2))
             ba = a*ramp(t, BAR_T0 - 0.2 + i*1.2, 0.2)
-            h = full*(v/top)*cnt
+            h = full*(v/top)*cnt*(1 + 0.03*math.sin(t*4 + i*2)*(cnt >= 1))   # settled bars keep breathing
             vbar(c, x, base, 230, h, col, ba)
             c.text(inr(v*cnt), x, base - h - 56, 66, P.text, ba)
             c.text(label, x, base + 56, 50, P.text, ba, max_w=400)
