@@ -198,7 +198,7 @@ def _long_story(s: dict) -> dict[str, str]:
 EXPECTED: dict[str, Callable[[dict], dict[str, str]]] = {
     "two_friends_race": _two_friends_race, "myth_vs_fact": _myth_vs_fact,
     "money_leak_meter": _money_leak_meter, "quiz_countdown": _quiz_countdown, "money_news": _money_news,
-    "long_explainer": _long_explainer, "long_story": _long_story,
+    "long_explainer": _long_explainer, "long_story": _long_story, "short_story": _long_story,
 }
 
 # ---------------- claims in free text ----------------
@@ -249,7 +249,7 @@ def number_check(script: dict, plan: dict | None = None, feed_topic: dict | None
     independent formulas, drifts from the plan, the plan's text claims an unsupported number, or a
     news script's sourced facts differ from its research feed topic."""
     try:
-        if script.get("template") == "long_story":
+        if script.get("template") in ("long_story", "short_story"):   # Remotion story scripts
             shown = check_script(script)["figures"]
         else:
             shown = build(script).figures

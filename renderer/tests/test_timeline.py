@@ -116,3 +116,20 @@ def test_long_story_example_builds(tmp_path: Path) -> None:
     assert 150 <= t["durationInFrames"]/tb.FPS <= 900
     assert {b["scene"] for b in t["beats"]} >= {"stage", "chapter", "chart", "end"}
     assert t["beats"][-1]["scene"] == "end"
+
+
+def test_captions_show_figures_as_written(tmp_path: Path) -> None:
+    beat = {"id": "a", "scene": "bignumber", "say": "Total due, {card_amount}. Minimum due, just {card_min_due}."}
+    t = tb.build(script([beat], format="short"), tmp_path, voice="estimate")
+    caps = t["beats"][0]["voice"]["captions"]
+    assert [c["t"] for c in caps] == ["Total", "due,", "₹60,000.", "Minimum", "due,", "just", "₹3,000."]
+    words = t["beats"][0]["voice"]["words"]
+    assert caps[2]["s"] == words[2]["s"] and caps[2]["e"] == words[4]["e"]      # "sixty thousand rupees"
+    assert t["width"] == 1080 and t["tempo"] == tb.TEMPOS["short"]
+
+
+def test_short_story_example_passes_the_checks() -> None:
+    from generator import numbers
+    s = json.loads((EXAMPLES / "short_story.json").read_text(encoding="utf-8"))
+    passed, notes = numbers.number_check(s)
+    assert passed, notes

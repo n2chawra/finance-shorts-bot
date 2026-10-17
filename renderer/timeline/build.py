@@ -43,13 +43,13 @@ PLACEHOLDER = re.compile(r"\{[a-z][a-z0-9_]*\}")   # names may hold digits ({car
 NARRATOR_VOICES = ("am_michael", "af_heart", "af_bella", "am_fenrir")
 # each recurring character always speaks with the same voice, so viewers know them by ear
 CAST_VOICES = {"rohan": "am_puck", "priya": "hf_alpha", "sharma": "am_fenrir", "sikka": "af_bella"}
-SPEEDS = {"long": 1.0, "short": 1.15}
+SPEEDS = {"long": 1.0, "short": 1.0}
 # Pace: the whole video plays this much faster than its story clock, voice, pauses, animations and
 # transitions together, like watching at that playback speed. The owner watched the first long
 # sample at 1.5x and called it right (2026-10-17). Scripts are written on the story clock: LEAD,
 # TAIL, GAP_NO_VOICE, min_sec and {"sec"/"end"} events are story seconds, divided by the tempo here;
 # the voice is spoken at speed x tempo; Remotion runs each scene's animations on the story clock.
-TEMPOS = {"long": 1.5, "short": 1.0}
+TEMPOS = {"long": 1.5, "short": 1.3}   # Shorts near the Pillow engine's 1.35
 
 
 @dataclass
@@ -121,6 +121,34 @@ def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float
     if spec.get("end"):
         return max(0.0, duration - float(spec["end"])/tempo)
     raise ValueError(f"{where}: an event is {{'word': n}}, {{'word': 'text'}}, {{'sec': x}} or {{'end': x}}")
+
+
+_PUNCT_ONLY = re.compile(r"^[^\w₹]+$")
+
+
+def _captions(say: str, figures: dict[str, str], words: list[tuple[str, float, float]]) -> list[dict]:
+    """Caption tokens as written, timed by the spoken words: a figure shows as on screen
+    ("₹60,000") across the words that speak it ("sixty thousand rupees"). Falls back to the spoken
+    words if the two ever disagree on length."""
+    tokens: list[list] = []                       # [text, first word index, last word index]
+    i = 0
+    for part in re.split(r"(\{[a-z][a-z0-9_]*\})", say):
+        if not part:
+            continue
+        if PLACEHOLDER.fullmatch(part):
+            n = len(tts.spoken(figures[part[1:-1]]).split())
+            tokens.append([figures[part[1:-1]], i, i + n - 1])
+            i += n
+            continue
+        for tok in part.split():
+            if _PUNCT_ONLY.match(tok) and tokens:
+                tokens[-1][0] += tok              # "." after a figure joins it
+            else:
+                tokens.append([tok, i, i])
+                i += 1
+    if i != len(words):
+        return [{"t": w, "s": round(a, 3), "e": round(e, 3)} for w, a, e in words]
+    return [{"t": t, "s": round(words[a][1], 3), "e": round(words[b][2], 3)} for t, a, b in tokens]
 
 
 def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict) -> dict | None:
@@ -248,6 +276,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
             "voice": None if line is None else {
                 "start": round(lead*FPS), "speaker": b.speaker,
                 "words": [{"w": w, "s": round(a, 3), "e": round(e, 3)} for w, a, e in words],
+                "captions": _captions(b.say, figures, words),
                 "phonemes": [{"p": p, "s": round(a, 3), "e": round(e, 3)} for p, a, e in line.phonemes],
             },
         })

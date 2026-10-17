@@ -125,27 +125,32 @@ export const ChecklistScene: React.FC<SceneProps> = (p) => {
 export const EndScene: React.FC<SceneProps> = (p) => {
   const { width: w, height: h, palette: pal } = p.tl;
   const t = sec(p);
-  const ground = h * 0.93;
+  const v = h > w;                  // a Short: text stacked on top, at Shorts sizes (44 px and up)
+  const ground = h * (v ? 0.9 : 0.93);
+  const xs = v ? [0.24, 0.5, 0.76] : [0.58, 0.74, 0.9];
   const cast: ActorSpec[] = [
-    { who: "rohan", x: 0.58, scale: 1.0, acting: [{ sec: 0, pose: "celebrate", expression: "laugh" }] },
-    { who: "priya", x: 0.74, scale: 1.0, acting: [{ sec: 0, pose: "thumbsUp", expression: "happy", turn: -0.2 }] },
-    { who: "sharma", x: 0.9, scale: 1.0, acting: [{ sec: 0, pose: "stand", expression: "proud", turn: -0.35 }] },
+    { who: "rohan", x: xs[0]!, scale: 1.0, acting: [{ sec: 0, pose: "celebrate", expression: "laugh" }] },
+    { who: "priya", x: xs[1]!, scale: 1.0, acting: [{ sec: 0, pose: "thumbsUp", expression: "happy", turn: -0.2 }] },
+    { who: "sharma", x: xs[2]!, scale: 1.0, acting: [{ sec: 0, pose: "stand", expression: "proud", turn: -0.35 }] },
   ];
+  const left = v ? 80 : 110, width = v ? w - 160 : w * 0.5;
+  const y = v ? { cta: 150, follow: 420, note: 560, disc: 740 } : { cta: 180, follow: 470, note: 620, disc: 760 };
   return (
     <AbsoluteFill>
       <DataSet pal={pal} w={w} h={h} t={t} seed={p.beat.id} />
-      <Kinetic text={str(p.beat.params.cta)} p={p} start={0.2} size={78} color={pal.text} x={110} y={180} width={w * 0.5} align="left" />
-      <Kinetic text={str(p.beat.params.follow)} p={p} start={0.9} size={46} color={pal.accent} weight={700} x={110} y={470} width={w * 0.48} align="left" />
-      <div style={{ position: "absolute", left: 110, top: 620, width: w * 0.46, fontFamily: FONT, fontWeight: 500, fontSize: 32, color: pal.muted, opacity: clamp((t - 1.4) / 0.4), lineHeight: 1.3 }}>
+      <Kinetic text={str(p.beat.params.cta)} p={p} start={0.2} size={v ? 96 : 78} color={pal.text} x={left} y={y.cta} width={width} align="left" />
+      <Kinetic text={str(p.beat.params.follow)} p={p} start={0.9} size={v ? 56 : 46} color={pal.accent} weight={700} x={left} y={y.follow} width={width} align="left" />
+      <div style={{ position: "absolute", left, top: y.note, width: v ? width : w * 0.46, fontFamily: FONT, fontWeight: 500, fontSize: v ? 44 : 32, color: pal.muted, opacity: clamp((t - 1.4) / 0.4), lineHeight: 1.3 }}>
         {str(p.beat.params.assumption)}
       </div>
-      <div style={{ position: "absolute", left: 110, top: 760, fontFamily: FONT, fontWeight: 600, fontSize: 34, color: pal.text, opacity: clamp((t - 1.6) / 0.4) }}>
+      <div style={{ position: "absolute", left, top: y.disc, width, fontFamily: FONT, fontWeight: 600, fontSize: v ? 46 : 34, color: pal.text, opacity: clamp((t - 1.6) / 0.4) }}>
         {p.tl.disclaimer}
       </div>
       <svg width={w} height={h} style={{ position: "absolute" }}>
         {cast.map((a, i) => <Actor key={a.who} p={p} spec={a} ground={ground - 40} index={i} />)}
-        <Sikka x={w * 0.66} y={ground - 360 - Math.abs(Math.sin(t * 5)) * 40} size={110} expression="laugh" armsUp blink={blinkAt(t, 7)} spin={Math.sin(t * 2) * 0.5} />
+        <Sikka x={w * (v ? 0.37 : 0.66)} y={ground - 360 - Math.abs(Math.sin(t * 5)) * 40} size={110} expression="laugh" armsUp blink={blinkAt(t, 7)} spin={Math.sin(t * 2) * 0.5} />
       </svg>
     </AbsoluteFill>
   );
 };
+

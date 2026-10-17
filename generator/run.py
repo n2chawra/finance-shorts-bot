@@ -35,7 +35,7 @@ from .settings import ROOT, load as load_settings
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
 MIN_VOICE_FILL = 0.55   # a long section left more than ~half silent is a thin script
-REMOTION_TEMPLATES = {"long_story": "long"}   # drawn by Remotion (renderer/remotion.py), with their format
+REMOTION_TEMPLATES = {"long_story": "long", "short_story": "short"}   # drawn by Remotion (renderer/remotion.py), with their format
 TREND_EXTRA_PER_DAY = 1  # extra Shorts a day for a breaking or trending topic, past the daily target
 AGENTS = ("planner", "writer", *CHECKERS, "render", "ship")
 PLAN_KEYS = ("template", "topic", "story", "hook_style", "cta", "title", "description", "hashtags", "seed", "style")

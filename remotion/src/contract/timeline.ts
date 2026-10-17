@@ -13,6 +13,8 @@ export const BeatVoice = z.object({
   speaker: z.string(),
   words: z.array(Word),
   phonemes: z.array(Phoneme),
+  // caption tokens as written ("₹60,000"), timed by the words that speak them (Shorts show these)
+  captions: z.array(z.object({ t: z.string(), s: z.number(), e: z.number() })).optional(),
 });
 
 export const Beat = z.object({

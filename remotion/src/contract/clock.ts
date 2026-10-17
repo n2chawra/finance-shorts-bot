@@ -17,6 +17,7 @@ export function onStoryClock(beat: Beat, tempo: number): Beat {
       ...v, start: v.start * tempo,
       words: v.words.map((w) => ({ ...w, s: w.s * tempo, e: w.e * tempo })),
       phonemes: v.phonemes.map((ph) => ({ ...ph, s: ph.s * tempo, e: ph.e * tempo })),
+      captions: v.captions?.map((c) => ({ ...c, s: c.s * tempo, e: c.e * tempo })),
     },
   };
 }

@@ -110,6 +110,7 @@ export const StatementScene: React.FC<SceneProps> = (p) => {
   return (
     <AbsoluteFill>
       <DataSet pal={pal} w={w} h={h} t={t} seed={p.beat.id} />
+      <AbsoluteFill style={{ transform: h > w ? "translateY(-330px) scale(1.3)" : undefined }}>
       <div style={{ position: "absolute", left: cx, top: cy, width: cw, height: ch, borderRadius: 40, background: "#ffffff",
         boxShadow: "0 40px 80px rgba(0,0,0,0.4)", opacity: clamp(inK * 2), transform: `rotate(${(1 - inK) * -4}deg)` }}>
         <div style={{ height: 120, borderRadius: "40px 40px 0 0", background: "#3b5bdb", display: "flex", alignItems: "center", padding: "0 40px" }}>
@@ -137,6 +138,7 @@ export const StatementScene: React.FC<SceneProps> = (p) => {
           </g>
         </svg>
       )}
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
@@ -230,7 +232,9 @@ export const CalendarScene: React.FC<SceneProps> = (p) => {
   const page = pages[idx % pages.length]!;
   const next = pages[(idx + 1) % pages.length]!;
   const done = t > flipEnd;
-  const cw = 520, ch = 560, cx = w * 0.3 - cw / 2, cy = h / 2 - ch / 2 + 20;
+  const vertical = h > w;
+  const cw = 520, ch = 560, cx = vertical ? w / 2 - cw / 2 : w * 0.3 - cw / 2, cy = vertical ? 170 : h / 2 - ch / 2 + 20;
+  const tx = vertical ? 60 : w * 0.5, ty = vertical ? cy + ch + 50 : h * 0.36, tw = vertical ? w - 120 : w * 0.45;
   return (
     <AbsoluteFill>
       <DataSet pal={pal} w={w} h={h} t={t} seed={p.beat.id} />
@@ -246,8 +250,8 @@ export const CalendarScene: React.FC<SceneProps> = (p) => {
         )}
         {[0.25, 0.5, 0.75].map((f, i) => <div key={i} style={{ position: "absolute", left: cw * f - 12, top: -26, width: 24, height: 60, borderRadius: 12, background: "#334155" }} />)}
       </div>
-      <Kinetic text={str(p.beat.params.label)} p={p} start={at(p, str(p.beat.params.labelAt) || undefined, flipEnd)} size={96} color={pal.accent} x={w * 0.5} y={h * 0.36} width={w * 0.45} align="left" />
-      <Kinetic text={str(p.beat.params.sub)} p={p} start={at(p, str(p.beat.params.subAt) || undefined, flipEnd + 0.4)} size={48} color={pal.text} weight={600} x={w * 0.5} y={h * 0.36 + 130} width={w * 0.45} align="left" />
+      <Kinetic text={str(p.beat.params.label)} p={p} start={at(p, str(p.beat.params.labelAt) || undefined, flipEnd)} size={96} color={pal.accent} x={tx} y={ty} width={tw} align={vertical ? "center" : "left"} />
+      <Kinetic text={str(p.beat.params.sub)} p={p} start={at(p, str(p.beat.params.subAt) || undefined, flipEnd + 0.4)} size={48} color={pal.text} weight={600} x={tx} y={ty + 130} width={tw} align={vertical ? "center" : "left"} />
     </AbsoluteFill>
   );
 };
@@ -261,7 +265,8 @@ export const SplitScene: React.FC<SceneProps> = (p) => {
     const k = pop(p, start, 12, 130);
     const color = i === 0 ? pal.cast[0]! : pal.danger;
     return (
-      <div key={i} style={{ position: "absolute", left: i === 0 ? 80 : w / 2 + 20, top: 160, width: w / 2 - 100, height: h - 320, borderRadius: 40,
+      <div key={i} style={{ position: "absolute", borderRadius: 40,
+        ...(h > w ? { left: 80, top: 150 + i * 470, width: w - 160, height: 420 } : { left: i === 0 ? 80 : w / 2 + 20, top: 160, width: w / 2 - 100, height: h - 320 }),
         background: `${color}22`, border: `5px solid ${color}`, opacity: clamp(k * 2), transform: `translateY(${(1 - k) * 120}px)`,
         display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 30 }}>
         <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 56, color: pal.text }}>{s.label}</div>

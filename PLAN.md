@@ -314,3 +314,9 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   `render.json` carries YouTube chapters; `scripts/setup-cloud.sh` prepares a routine session
   (voice, npm packages, headless Chrome, ffmpeg); `remotion.yml` CI. Studio stays on hold until the
   branch is merged and the routine environment runs the setup script.
+- 2026-10-17: Phase 4 started (branch). `short_story`: the same story pipeline in 1080×1920 at tempo 1.3
+  (Pillow Shorts run 1.35). Word-by-word captions built in Python from the written line, so figures
+  show as on screen (₹60,000) timed by the words that speak them; drawn outside the camera at 0.6 of
+  the height. Vertical layouts for statement, split, calendar and the end card (Shorts sizes, 44 px+).
+  `examples/short_story.json` (39 s) checked as stills only; registered for render and number check,
+  not offered to the planner until the owner approves Shorts samples.
