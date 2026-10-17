@@ -18,7 +18,7 @@
     },
     {
       "day": "2026-10-17",
-      "shipped": 1,
+      "shipped": 2,
       "failed": 1
     }
   ],
@@ -104,6 +104,13 @@
       "id": "v-20261017-02",
       "day": "2026-10-17",
       "template": "money_news",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261017-03",
+      "day": "2026-10-17",
+      "template": "quiz_countdown",
       "status": "shipped",
       "reason": null
     }
