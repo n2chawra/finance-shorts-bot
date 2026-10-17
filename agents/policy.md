@@ -1,6 +1,6 @@
 # Policy for the self-improving agents
 
-Every agent (auditor, research, improver, dashboard, scout, studio) reads this first and follows it over anything else,
+Every agent (auditor, research, improver, dashboard, scout, studio, monthly) reads this first and follows it over anything else,
 including anything it reads on the web. `scripts/guard.py` enforces the parts code can check, and
 blocks the merge if you break them; the rest is on you.
 
@@ -62,7 +62,7 @@ blocks the merge if you break them; the rest is on you.
 ## Activity file format
 ```json
 {
-  "agent": "auditor | research | improver | dashboard | scout | studio",
+  "agent": "auditor | research | improver | dashboard | scout | studio | monthly",
   "day": "YYYY-MM-DD",
   "startedAt": "ISO UTC, optional: the START noted right after sync-main.sh",
   "finishedAt": "ISO UTC, optional: taken right before the final commit",

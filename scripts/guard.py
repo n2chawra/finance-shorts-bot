@@ -37,6 +37,8 @@ ALLOW: dict[str, list[str]] = {
     # (like the Shorts video run) and uses its branch only for reports.
     "scout": ["improvement/longform/*", "improvement/activity/*-scout.json", "improvement/notifications/scout.json"],
     "studio": ["improvement/longform/*", "improvement/activity/*-studio.json", "improvement/notifications/studio.json"],
+    # the monthly review writes its review, next month's focus and setting proposals; it never changes code or settings
+    "monthly": ["improvement/monthly/*", "improvement/activity/*-monthly.json", "improvement/notifications/monthly.json"],
 }
 # protected files an agent may still change (its fixes for data bugs live there)
 UNLOCK: dict[str, list[str]] = {
@@ -66,7 +68,7 @@ TEST_FILE = re.compile(r"(^|/)(tests?|e2e)/|(^|/)test_[^/]*\.py$|\.(test|spec)\.
 UPLOAD_SETTING = re.compile(r"\b(uploadTimes|uploadsPaused|backlogCap)\b")
 MEDIA_EXT = (".mp3", ".wav", ".ogg", ".m4a", ".flac", ".aac", ".mp4", ".mov", ".webm")
 MODEL_EXT = (".onnx", ".bin", ".pt", ".pth", ".safetensors", ".ckpt", ".gguf")   # voice/AI model weights
-MAX_LINES = {"research": 4000, "improver": 900, "dashboard": 700, "auditor": 600, "scout": 4000, "studio": 4000}   # code lines changed (reports excluded)
+MAX_LINES = {"research": 4000, "improver": 900, "dashboard": 700, "auditor": 600, "scout": 4000, "studio": 4000, "monthly": 4000}   # code lines changed (reports excluded)
 MAX_MERGES_PER_DAY = 2
 SECRET = re.compile(r"(ghp_[A-Za-z0-9]{20,}|github_pat_|sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|postgres(ql)?://\S+:\S+@|BEGIN (RSA|OPENSSH) PRIVATE KEY)")
 NETWORK = re.compile(r"^\+\s*(import|from)\s+(requests|urllib|http\.client|socket|aiohttp|httpx)\b")

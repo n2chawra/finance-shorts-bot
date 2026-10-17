@@ -175,6 +175,9 @@ export default function SettingsPage() {
               <Row label="Studio (14:37, Mon/Wed/Fri)" hint="Makes one long video end to end, with its thumbnail, from Scout's topics.">
                 <Toggle label="Studio agent on" checked={form.agents.studio} disabled={form.agents.paused} onChange={(studio) => setAgents({ studio })} />
               </Row>
+              <Row label="Monthly review (12:07, 1st)" hint="Reviews the month and proposes setting changes on the Notifications page. Never changes settings itself.">
+                <Toggle label="Monthly review agent on" checked={form.agents.monthly} disabled={form.agents.paused} onChange={(monthly) => setAgents({ monthly })} />
+              </Row>
               <Row label="Research (23:47)" hint="Studies top Shorts and Claude updates, writes proposals. Never changes code.">
                 <Toggle label="Research agent on" checked={form.agents.research} disabled={form.agents.paused} onChange={(research) => setAgents({ research })} />
               </Row>

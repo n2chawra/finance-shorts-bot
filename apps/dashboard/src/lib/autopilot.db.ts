@@ -13,7 +13,19 @@ function toNotification(r: Row): Notification {
     id: r.id, source: r.source, severity: r.severity, title: r.title, detail: r.detail, fix: r.fix,
     createdAt: r.createdAt.toISOString(), updatedAt: r.updatedAt.toISOString(),
     seenAt: r.seenAt?.toISOString() ?? null, resolvedAt: r.resolvedAt?.toISOString() ?? null,
+    proposal: (r.proposal as Notification["proposal"]) ?? null, decision: r.decision === "approved" || r.decision === "declined" ? r.decision : null,
   };
+}
+
+export async function getNotification(id: string): Promise<Notification | null> {
+  const r = await prisma.notification.findUnique({ where: { id } });
+  return r ? toNotification(r) : null;
+}
+
+/** The owner's answer to a proposal: closed for good (ingest never reopens a decided notification). */
+export async function decideNotification(id: string, decision: "approved" | "declined"): Promise<void> {
+  const now = new Date();
+  await prisma.notification.update({ where: { id }, data: { decision, decidedAt: now, resolvedAt: now, seenAt: now } });
 }
 
 export async function listNotifications(): Promise<Notifications> {

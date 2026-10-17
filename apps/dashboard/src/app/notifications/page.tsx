@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertOctagon, AlertTriangle, BellOff, CheckCheck, CircleCheck, Info, RotateCcw, Wrench } from "lucide-react";
+import { AlertOctagon, AlertTriangle, BellOff, Check, CheckCheck, CircleCheck, Info, RotateCcw, SlidersHorizontal, Wrench, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef } from "react";
 
@@ -27,7 +27,26 @@ function Steps({ text }: { text: string }) {
   return <p className="whitespace-pre-wrap">{text}</p>;
 }
 
-function Item({ n, onResolve, onReopen, busy }: { n: Notification; onResolve?: () => void; onReopen?: () => void; busy: boolean }) {
+const show = (v: unknown): string => (Array.isArray(v) ? v.join(", ") : v === undefined ? "—" : String(v));
+
+/** An agent's proposed setting change: the owner approves (the setting is written) or declines it. */
+function Proposal({ p, fix, decision, onDecide, busy }: { p: NonNullable<Notification["proposal"]>; fix: string; decision: Notification["decision"]; onDecide?: (a: "approve" | "decline") => void; busy: boolean }) {
+  return (
+    <div className="mt-3 rounded-lg border border-brand/25 bg-brand-soft/40 p-3 text-[13px]">
+      <div className="mb-1 flex items-center gap-1.5 text-xs font-medium text-ink"><SlidersHorizontal aria-hidden className="size-3.5" />Proposed setting change</div>
+      <p className="tabular-nums"><span className="font-medium">{p.setting}</span>: <span className="text-muted line-through">{show(p.current)}</span> → <span className="font-medium">{show(p.value)}</span></p>
+      {fix && <p className="mt-1 whitespace-pre-wrap text-ink2">{fix}</p>}
+      {decision ? <p className="mt-1 text-xs text-muted">{decision === "approved" ? "Approved: the setting was changed." : "Declined: nothing changed."}</p> : onDecide && (
+        <div className="mt-2.5 flex flex-wrap gap-2">
+          <Button size="sm" tone="primary" icon={Check} disabled={busy} onClick={() => onDecide("approve")}>Approve</Button>
+          <Button size="sm" tone="ghost" icon={X} disabled={busy} onClick={() => onDecide("decline")}>Decline</Button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Item({ n, onResolve, onReopen, onDecide, busy }: { n: Notification; onResolve?: () => void; onReopen?: () => void; onDecide?: (a: "approve" | "decline") => void; busy: boolean }) {
   const s = SEVERITY[n.severity];
   return (
     <motion.li layout initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, height: 0, marginBottom: 0 }}
@@ -47,7 +66,8 @@ function Item({ n, onResolve, onReopen, busy }: { n: Notification; onResolve?: (
             <span title={fmtDateTime(n.updatedAt)}>{n.resolvedAt ? `resolved ${fmtRelative(n.resolvedAt)}` : `updated ${fmtRelative(n.updatedAt)}`}</span>
           </div>
           <p className="mt-2 whitespace-pre-wrap text-[13px] leading-relaxed text-ink2">{n.detail}</p>
-          {!n.resolvedAt && (
+          {n.proposal && <Proposal p={n.proposal} fix={n.fix} decision={n.decision} onDecide={n.resolvedAt ? undefined : onDecide} busy={busy} />}
+          {!n.resolvedAt && !n.proposal && (
             <div className="mt-3 rounded-lg bg-surface-2 p-3 text-[13px] leading-relaxed">
               <div className="mb-2 flex items-center gap-1.5 text-xs font-medium text-ink"><Wrench aria-hidden className="size-3.5" />How to fix</div>
               <Steps text={n.fix} />
@@ -55,7 +75,7 @@ function Item({ n, onResolve, onReopen, busy }: { n: Notification; onResolve?: (
           )}
         </div>
         <div className="w-full shrink-0 pl-11 sm:w-auto sm:pl-0">
-          {onResolve && <Button size="sm" icon={CircleCheck} disabled={busy} onClick={onResolve} title="Mark this as fixed. It comes back if the problem is still there on the next check.">Mark resolved</Button>}
+          {onResolve && !n.proposal && <Button size="sm" icon={CircleCheck} disabled={busy} onClick={onResolve} title="Mark this as fixed. It comes back if the problem is still there on the next check.">Mark resolved</Button>}
           {onReopen && <Button size="sm" tone="ghost" icon={RotateCcw} disabled={busy} onClick={onReopen}>Reopen</Button>}
         </div>
       </div>
@@ -79,7 +99,7 @@ export default function NotificationsPage() {
 
   if (isLoading) return <Loading />;
   if (error || !data) return <ErrorNote error={error} />;
-  const run = (ids: string[], action: "resolve" | "reopen", done: string) => act.mutate({ ids, action }, { onSuccess: () => toast(done), onError: (e) => toast(e.message, "error") });
+  const run = (ids: string[], action: "resolve" | "reopen" | "approve" | "decline", done: string) => act.mutate({ ids, action }, { onSuccess: () => toast(done), onError: (e) => toast(e.message, "error") });
   const critical = data.open.filter((n) => n.severity === "critical").length;
 
   return (
@@ -97,7 +117,8 @@ export default function NotificationsPage() {
           </p>
           <ul className="flex flex-col gap-3">
             <AnimatePresence initial={false}>
-              {data.open.map((n) => <Item key={n.id} n={n} busy={act.isPending} onResolve={() => run([n.id], "resolve", "Marked resolved")} />)}
+              {data.open.map((n) => <Item key={n.id} n={n} busy={act.isPending} onResolve={() => run([n.id], "resolve", "Marked resolved")}
+                onDecide={(a) => run([n.id], a, a === "approve" ? "Approved: setting changed" : "Declined")} />)}
             </AnimatePresence>
           </ul>
         </>

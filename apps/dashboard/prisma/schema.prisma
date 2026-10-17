@@ -176,6 +176,10 @@ model Notification {
   updatedAt  DateTime  @updatedAt
   seenAt     DateTime?
   resolvedAt DateTime?
+  /// an agent's proposed setting change, { setting, value, current? }: the owner approves or declines it
+  proposal   Json?
+  decision   String? // approved | declined
+  decidedAt  DateTime?
 
   @@index([resolvedAt])
 }

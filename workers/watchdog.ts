@@ -106,8 +106,11 @@ function agentChecks(now: Date, enabled: Record<string, boolean>, paused: boolea
     const dir = path.join(ROOT, "improvement", "activity");
     const everReported = existsSync(dir) && readdirSync(dir).some((f) => f.endsWith(`-${agent}.json`));
     const reported = existsSync(path.join(dir, `${today}-${agent}.json`));
+    // Studio runs only Mon/Wed/Fri at 14:37; the others every night, done by 10:00 IST
+    const when = agent === "studio" ? { days: [1, 3, 5], afterHour: 19 } : { days: [0, 1, 2, 3, 4, 5, 6], afterHour: 10 };
+    const dueToday = when.days.includes(new Date(now.getTime() + 330 * 60_000).getUTCDay());
     // only once the agent has reported at least once: before its first night there's nothing to miss
-    const silent = !paused && enabled[agent] && everReported && istHour >= 10 && !reported;
+    const silent = !paused && enabled[agent] && everReported && dueToday && istHour >= when.afterHour && !reported;
     out.push({ key: `agent-silent:${agent}`, raise: silent ? notice(`agent-silent:${agent}`, "warning", `The ${agent} agent didn't report last night`,
       "Its routine didn't run, ran out of usage, or failed before writing its activity log.", `Open ${ROUTINES} → the ${agent} agent and read the last run.`) : null });
   }

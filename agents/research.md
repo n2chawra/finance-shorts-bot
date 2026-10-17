@@ -18,7 +18,8 @@ DAY=$(TZ=Asia/Kolkata date -d '+2 hours' +%F); DOW=$(TZ=Asia/Kolkata date -d '+2
 Read `config/settings.json`: if `agents.paused` or `agents.research` is false, write only the
 activity file (decision `nothing`, why "paused in settings"), push it (section 5) and stop.
 
-Read: `improvement/merge-log.json` (last 5 entries for research), your last 7 reports in
+Read `improvement/monthly/focus.json` if it exists: the monthly review's items `"for": "research"`
+come first tonight. Then read: `improvement/merge-log.json` (last 5 entries for research), your last 7 reports in
 `improvement/research/`, `improvement/research/proposals.json`, `improvement/research/seen.json`,
 and a summary of `metrics/videos.json` (count, best and worst 5 by `views48h` and by `avgViewPct`,
 Shorts and long videos apart, and what they have in common). Run `python -m improvement.evaluate`

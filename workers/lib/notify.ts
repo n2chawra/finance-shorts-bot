@@ -1,4 +1,4 @@
-import type { PrismaClient } from "@prisma/client";
+import type { Prisma, PrismaClient } from "@prisma/client";
 
 /**
  * Owner notifications: things that need a human (a key, a token, a setting, a broken job). Shown on
@@ -13,11 +13,15 @@ export type Notice = {
   detail: string;
   /** What the owner should do, step by step. */
   fix: string;
+  /** A setting change the owner can approve with one click (the monthly review's proposals). */
+  proposal?: { setting: string; value?: unknown; current?: unknown };
 };
 
 export async function notify(prisma: PrismaClient, n: Notice): Promise<void> {
-  const data = { source: n.source, severity: n.severity, title: n.title, detail: n.detail, fix: n.fix };
+  const data = { source: n.source, severity: n.severity, title: n.title, detail: n.detail, fix: n.fix,
+    ...(n.proposal ? { proposal: n.proposal as Prisma.InputJsonValue } : {}) };
   const existing = await prisma.notification.findUnique({ where: { dedupeKey: n.key } });
+  if (existing?.decidedAt) return;   // the owner approved or declined it: never raised again
   if (!existing) {
     await prisma.notification.create({ data: { dedupeKey: n.key, ...data } });
   } else if (existing.resolvedAt) {

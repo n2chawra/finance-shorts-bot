@@ -19,6 +19,7 @@ const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeo
   research: { name: "Research", role: "Finds what makes Shorts better and what's new in Claude", icon: Search, time: "23:47" },
   improver: { name: "Improver", role: "Tests changes on half the videos, keeps what works", icon: Wrench, time: "06:17" },
   dashboard: { name: "Dashboard", role: "Hunts bugs and polishes this dashboard", icon: LayoutDashboard, time: "07:37" },
+  monthly: { name: "Monthly review", role: "Reviews the month and proposes setting changes for you to approve", icon: CalendarClock, time: "12:07 on the 1st" },
 };
 const DECISION: Record<Activity["decision"], { label: string; tone: Tone }> = {
   acted: { label: "Made a change", tone: "good" },

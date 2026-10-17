@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { SettingsPatchSchema } from "@/lib/schemas";
+import { SettingsPatchSchema, settingsProblem } from "@/lib/schemas";
 import { getSettings, patchSettings } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
@@ -15,7 +15,7 @@ export async function PATCH(req: Request) {
     const issue = parsed.error.issues[0];
     return NextResponse.json({ error: `${issue.path.join(".")}: ${issue.message}` }, { status: 400 });
   }
-  const next = { ...(await getSettings()), ...parsed.data };
-  if (next.lengthMinSec > next.lengthMaxSec) return NextResponse.json({ error: "Minimum length must not exceed maximum" }, { status: 400 });
+  const problem = settingsProblem({ ...(await getSettings()), ...parsed.data });
+  if (problem) return NextResponse.json({ error: problem }, { status: 400 });
   return NextResponse.json(await patchSettings(parsed.data));
 }

@@ -19,10 +19,13 @@ function state(): State {
   const now = Date.now();
   const n = (id: string, severity: Notification["severity"], source: string, title: string, detail: string, fix: string, hoursAgo: number, extra: Partial<Notification> = {}): Notification => ({
     id, severity, source, title, detail, fix, createdAt: new Date(now - hoursAgo * 3_600_000).toISOString(), updatedAt: new Date(now - hoursAgo * 3_600_000).toISOString(),
-    seenAt: null, resolvedAt: null, ...extra,
+    seenAt: null, resolvedAt: null, proposal: null, decision: null, ...extra,
   });
   g.__fsbAutopilot = {
     notifications: [
+      n("n0", "info", "monthly", "Make long videos 8 minutes or more", "Long videos held 46% of viewers at 5 min and 44% at 8 min in the test month, and only videos of 8 minutes or more carry mid-roll ads.",
+        "Approve to raise the minimum long-video length to 480 s. Studio aims for the new range from its next run.", 6,
+        { proposal: { setting: "longLengthMinSec", value: 480, current: 180 } }),
       n("n1", "critical", "watchdog", "YouTube sign-in stopped working", "Google rejected the stored token: invalid_grant. Uploads and stats are stopped.",
         "1. On your PC, in the project folder: cd workers, then run: npm run auth\n2. Sign in with the Money in 60 Google account and allow access.\n3. Save the new token: gh secret set YT_REFRESH_TOKEN (paste the value it printed).", 2),
       n("n2", "warning", "improver", "A new Claude model could make reviews sharper", "Research found a newer model for routines. Switching it is a routine setting only you can change.",
@@ -41,6 +44,17 @@ export function listNotifications(): Notifications {
   const order = { critical: 0, warning: 1, info: 2 };
   const open = all.filter((n) => !n.resolvedAt).sort((a, b) => order[a.severity] - order[b.severity]);
   return { open, resolved: all.filter((n) => n.resolvedAt), unread: open.filter((n) => !n.seenAt).length };
+}
+
+export function getNotification(id: string): Notification | null {
+  return state().notifications.find((n) => n.id === id) ?? null;
+}
+
+export function decideNotification(id: string, decision: "approved" | "declined"): void {
+  const n = getNotification(id);
+  if (!n) return;
+  const now = new Date().toISOString();
+  Object.assign(n, { decision, resolvedAt: now, seenAt: n.seenAt ?? now });
 }
 
 export function notificationAction(ids: string[], action: "seen" | "resolve" | "reopen"): void {

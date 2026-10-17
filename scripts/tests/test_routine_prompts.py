@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-AGENTS = ["auditor", "research", "improver", "dashboard"]
+AGENTS = ["auditor", "research", "improver", "dashboard", "scout", "studio", "monthly"]
 PROMPTS = [REPO / "generator" / "prompts" / "routine.md", REPO / "generator" / "prompts" / "trend_run.md",
            *(REPO / "agents" / f"{a}.md" for a in AGENTS)]
 

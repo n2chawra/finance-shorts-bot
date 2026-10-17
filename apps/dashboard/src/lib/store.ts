@@ -6,7 +6,7 @@
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
 import * as autoDb from "./autopilot.db";
 import * as autoSample from "./autopilot.sample";
-import type { Agents, Notifications } from "./schemas";
+import type { Agents, Notification, Notifications } from "./schemas";
 import * as db from "./store.db";
 import * as sample from "./store.sample";
 
@@ -30,4 +30,6 @@ export const videoAction = async (id: string, action: VideoAction): Promise<{ ok
 
 export const listNotifications = async (): Promise<Notifications> => (useDb ? autoDb.listNotifications() : autoSample.listNotifications());
 export const notificationAction = async (ids: string[], action: "seen" | "resolve" | "reopen"): Promise<void> => (useDb ? autoDb.notificationAction(ids, action) : autoSample.notificationAction(ids, action));
+export const getNotification = async (id: string): Promise<Notification | null> => (useDb ? autoDb.getNotification(id) : autoSample.getNotification(id));
+export const decideNotification = async (id: string, decision: "approved" | "declined"): Promise<void> => (useDb ? autoDb.decideNotification(id, decision) : autoSample.decideNotification(id, decision));
 export const getAgents = async (): Promise<Agents> => (useDb ? autoDb.getAgents() : autoSample.getAgents());

@@ -152,11 +152,24 @@ export const SettingsSchema = z.object({
     auditor: z.boolean().default(true),
     scout: z.boolean().default(true),
     studio: z.boolean().default(true),
+    monthly: z.boolean().default(true),
     maxActiveExperiments: z.number().int().min(0).max(6),
   }),
 });
 export type Settings = z.infer<typeof SettingsSchema>;
 export const SettingsPatchSchema = SettingsSchema.partial();
+
+/** What a whole set of settings may not be, whoever changes it (Settings page or an approved proposal). */
+export function settingsProblem(s: Settings): string | null {
+  if (s.lengthMinSec > s.lengthMaxSec) return "Minimum length must not exceed maximum";
+  if (s.longLengthMinSec > s.longLengthMaxSec) return "Minimum long-video length must not exceed maximum";
+  return null;
+}
+
+/** The strategy settings an agent may propose and the owner approve with one click. Pauses, the
+ * disclaimer, alerts and the agents' own switches are never proposed. */
+export const PROPOSABLE_SETTINGS = ["uploadTimes", "longUploadTimes", "longUploadDays", "longPerWeek", "longBacklogCap",
+  "longLengthMinSec", "longLengthMaxSec", "lengthMinSec", "lengthMaxSec", "backlogCap"] as const satisfies readonly (keyof Settings)[];
 
 export const OverviewSchema = z.object({
   source: z.enum(["sample", "database"]),
@@ -227,13 +240,20 @@ export const NotificationSchema = z.object({
   updatedAt: z.string(),
   seenAt: z.string().nullable(),
   resolvedAt: z.string().nullable(),
+  /** a setting change an agent proposes (monthly review); approving it writes the setting */
+  proposal: z.object({ setting: z.string(), value: z.unknown(), current: z.unknown().optional() }).nullable().default(null),
+  decision: z.enum(["approved", "declined"]).nullable().default(null),
 });
 export type Notification = z.infer<typeof NotificationSchema>;
 export const NotificationsSchema = z.object({ open: z.array(NotificationSchema), resolved: z.array(NotificationSchema), unread: z.number() });
 export type Notifications = z.infer<typeof NotificationsSchema>;
-export const NotificationActionSchema = z.object({ ids: z.array(z.string()).min(1).max(200), action: z.enum(["seen", "resolve", "reopen"]) });
+export const NotificationActionSchema = z.union([
+  z.object({ ids: z.array(z.string()).min(1).max(200), action: z.enum(["seen", "resolve", "reopen"]) }),
+  z.object({ ids: z.array(z.string()).length(1), action: z.enum(["approve", "decline"]) }),
+]);
+export type NotificationAction = z.infer<typeof NotificationActionSchema>["action"];
 
-export const AGENTS = ["auditor", "research", "improver", "dashboard", "scout", "studio"] as const;
+export const AGENTS = ["auditor", "research", "improver", "dashboard", "scout", "studio", "monthly"] as const;
 export const ActivitySchema = z.object({
   id: z.string(),
   agent: z.enum(AGENTS),

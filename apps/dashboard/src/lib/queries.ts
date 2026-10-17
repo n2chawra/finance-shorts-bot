@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { getJson, send } from "./api";
 import { AgentsSchema, AnalyticsSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
-import type { ManualUpload, Settings, VideoAction } from "./schemas";
+import type { ManualUpload, NotificationAction, Settings, VideoAction } from "./schemas";
 
 export const useOverview = () => useQuery({ queryKey: ["overview"], queryFn: () => getJson("/api/overview", OverviewSchema) });
 export const useQueue = () => useQuery({ queryKey: ["queue"], queryFn: () => getJson("/api/queue", z.array(VideoSchema)) });
@@ -34,4 +34,4 @@ export const usePatchSettings = () => useWrite((patch: Partial<Settings>) => sen
 
 export const useNotifications = () => useQuery({ queryKey: ["notifications"], queryFn: () => getJson("/api/notifications", NotificationsSchema) });
 export const useAgents = () => useQuery({ queryKey: ["agents"], queryFn: () => getJson("/api/agents", AgentsSchema) });
-export const useNotificationAction = () => useWrite((body: { ids: string[]; action: "seen" | "resolve" | "reopen" }) => send("PATCH", "/api/notifications", body));
+export const useNotificationAction = () => useWrite((body: { ids: string[]; action: NotificationAction }) => send("PATCH", "/api/notifications", body));

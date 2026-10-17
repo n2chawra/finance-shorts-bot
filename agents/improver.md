@@ -23,7 +23,8 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 `agents.improver` false.
 
 Read: `improvement/merge-log.json` (your last 5 entries; if the last was blocked, fixing that reason
-is tonight's first job), `improvement/journal.md` (last 20 lines), `improvement/experiments.json`,
+is tonight's first job), `improvement/monthly/focus.json` if it exists (the monthly review's items
+`"for": "improver"` rank above other proposals of the same priority), `improvement/journal.md` (last 20 lines), `improvement/experiments.json`,
 `config/experiments.json`, new proposals in `improvement/research/proposals.json`, open items in
 `improvement/longform/backlog.json`, the latest research and Scout reports, `metrics/runs.json`
 (last 7 days). Then run:

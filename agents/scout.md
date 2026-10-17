@@ -18,7 +18,7 @@ Read `config/settings.json`: if `agents.paused` or `agents.scout` is false, writ
 file (decision `nothing`, why "paused in settings") and push it (section 5).
 
 Then read: `improvement/merge-log.json` (your last 5 entries; a blocked branch is tonight's first
-job), `improvement/longform/topics.json` (your feed), `improvement/longform/<last 3 dates>.md`,
+job), `improvement/monthly/focus.json` if it exists (items `"for": "scout"` come first), `improvement/longform/topics.json` (your feed), `improvement/longform/<last 3 dates>.md`,
 `improvement/longform/backlog.json`, and `python -m generator.run state --format long` (what Studio
 will face next: its backlog, how many long videos this week, which topics it can use).
 

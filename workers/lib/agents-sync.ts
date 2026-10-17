@@ -18,7 +18,7 @@ import { notify, resolveOthers } from "./notify.ts";
 import { istDay } from "./publishing.ts";
 
 const DAY_MS = 86_400_000;
-const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio"] as const;
+const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio", "monthly"] as const;
 
 const readJson = (file: string): unknown => JSON.parse(readFileSync(file, "utf8"));
 
@@ -39,6 +39,7 @@ const Activity = z.object({
 const AgentNotices = z.object({
   notifications: z.array(z.object({
     key: z.string().min(1), severity: z.enum(["info", "warning", "critical"]), title: z.string().min(1), detail: z.string(), fix: z.string(),
+    proposal: z.object({ setting: z.string().min(1), value: z.unknown(), current: z.unknown().optional() }).optional(),
   })),
 });
 
@@ -78,7 +79,8 @@ export async function importAgentNotifications(prisma: PrismaClient, root: strin
         for (const n of parsed.data.notifications) {
           const key = `agent:${agent}:${n.key}`;
           keep.add(key);
-          await notify(prisma, { key, source: agent, severity: n.severity, title: n.title, detail: n.detail, fix: n.fix });
+          await notify(prisma, { key, source: agent, severity: n.severity, title: n.title, detail: n.detail, fix: n.fix,
+            ...(n.proposal ? { proposal: n.proposal } : {}) });
         }
       } else {
         console.error(`::warning::notifications/${agent}.json is invalid: ${parsed.error.issues[0]?.message}`);
@@ -200,5 +202,10 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
   };
   write("videos.json", { note: "Published videos with YouTube numbers. Written by the ingest workflow; read by improvement.evaluate.", videos });
   write("runs.json", { note: "Every video attempted in the last 60 days. Written by the ingest workflow.", days, videos: runs });
+  // the owner's answers to agents' proposed setting changes, so the monthly review learns from them
+  const decided = await prisma.notification.findMany({ where: { decidedAt: { not: null } }, orderBy: { decidedAt: "asc" },
+    select: { dedupeKey: true, source: true, title: true, proposal: true, decision: true, decidedAt: true } });
+  write("decisions.json", { note: "Agent proposals the owner approved or declined on the dashboard. Written by the ingest workflow.",
+    decisions: decided.map((d) => ({ key: d.dedupeKey, source: d.source, title: d.title, proposal: d.proposal, decision: d.decision, decidedAt: d.decidedAt!.toISOString() })) });
   return changed;
 }
