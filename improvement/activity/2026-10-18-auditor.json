@@ -1,0 +1,20 @@
+{
+  "agent": "auditor",
+  "day": "2026-10-18",
+  "startedAt": "2026-10-17T17:35:37Z",
+  "finishedAt": "2026-10-17T17:39:30Z",
+  "summary": "Reviewed the renderer and fixed two number bugs: sourced facts that round up showed as \"9. Cr\", and a 0% (no-cost) EMI crashed. The data audit was stale, so the data check was skipped.",
+  "decision": "acted",
+  "why": "Both bugs reproduced (fact_value(9.996) gave '9. Cr'; emi at rate 0 raised ZeroDivisionError) and now have tests. The data audit file is 22 h old because GitHub runs its 22:30 IST cron about 3 h late.",
+  "findings": [
+    {"title": "Data audit runs after the auditor", "detail": "Scheduled 17:00Z, started 19:45Z and 20:07Z on the last two nights. Owner notification with a cron fix."},
+    {"title": "Open low bugs", "detail": "ren-003 zero amounts give unhelpful errors; ren-004 {'end': 0} and {'word': -1} event specs."},
+    {"title": "Refactor deferred", "detail": "ren-q01: check_script and build duplicate beat preparation; owner changed build.py on 2026-10-17."}
+  ],
+  "changes": [
+    {"title": "fact_value rounds before splitting decimals", "detail": "9.996 → '10', sign kept for -0.5.", "branch": "agent/auditor/2026-10-18"},
+    {"title": "EMI at 0% interest", "detail": "principal / months in renderer/models/maths.py and generator/numbers.py.", "branch": "agent/auditor/2026-10-18"}
+  ],
+  "nextCheck": "2026-10-19",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-10-18.md"}]
+}
