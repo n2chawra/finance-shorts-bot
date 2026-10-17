@@ -11,6 +11,7 @@ on:
       - "videos/**"
       - "history/**"
       - "renderer/templates/**"
+      - "workers/ingest.ts"
       - "apps/dashboard/prisma/**"
       - "improvement/**"
   workflow_run:
