@@ -1,3 +1,18 @@
 {
-  "notifications": []
+  "notifications": [
+    {
+      "key": "published-short-inconsistent-figures",
+      "severity": "warning",
+      "title": "A published Short shows the same amount two different ways",
+      "detail": "v-20261017-04 ('How much do impulse orders really cost you in 15 years?') shows '₹6.5 L gone' at 15.9 s but 'Put in ₹6.4 L' at 26.7 s, and 'Worth ₹16.3 L' at 26.7 s but '₹16.5 L' on the bar at 32.2 s. It was made by the old money_leak_meter template, which no longer exists, so new videos aren't affected; the improver has an adopt proposal (same-figure-same-text) for a check that stops this happening again.",
+      "fix": "Only the owner handles uploads: in YouTube Studio, open that Short and either set it to Private/Unlisted or leave it up (the gap is a rounding and convention difference, not a wrong claim). Nothing to change in the repo."
+    },
+    {
+      "key": "claude-code-2-1-302-routine-banner",
+      "severity": "info",
+      "title": "Claude Code 2.1.302: a routine's page now says why its last run didn't start",
+      "detail": "If a video or agent run is ever missing, the routine's page on claude.ai/code shows a banner with the reason (for example the concurrent cloud session limit). With 04:07, 06:17 and 07:37 runs close together, check this first.",
+      "fix": "Nothing to do now. When a run is missing, open claude.ai/code → Routines → the routine and read the banner."
+    }
+  ]
 }

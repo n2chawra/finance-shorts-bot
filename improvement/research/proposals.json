@@ -56,6 +56,60 @@
       "status": "new",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "same-figure-same-text",
+      "date": "2026-10-18",
+      "area": "text",
+      "title": "One quantity, one on-screen string across all beats",
+      "change": "Add a check (number check or render gate) that every figure shown more than once in a video renders the identical string: chart end labels, counters and comparison bars must read the canonical maths value (e.g. maths.fv) rather than the last sampled chart point, and must use the same rounding and the same annuity convention. Fail the render with the beat names when two labels for the same key differ.",
+      "evidence": [
+        "videos/v-20261017-04/preview.png: 15.9 s '₹6.5 L gone' vs 26.7 s 'Put in ₹6.4 L'; 26.7 s 'Worth ₹16.3 L' vs 32.2 s bar '₹16.5 L' (16.37 L is the end-of-month SIP value, 16.52 L the start-of-month one)"
+      ],
+      "expectedEffect": "No contradictory figures in one video: protects trust and the YMYL accuracy bar; a viewer pausing on two frames sees the same numbers.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "Low; may fail some renders until chart labels read the maths values.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "evaluate-stdlib-only",
+      "date": "2026-10-18",
+      "area": "pipeline",
+      "title": "improvement.evaluate imports numpy, despite 'standard library only'",
+      "change": "generator/variety.py imports BPM_RANGE, GENRES, KEYS from renderer/engine/music.py, which imports numpy at top level, so `python -m improvement.evaluate` fails on a plain Python 3.11 (ModuleNotFoundError: numpy). Move those three constants to a numpy-free module (e.g. renderer/engine/music_constants.py) re-exported by music.py, or import numpy lazily inside music.py's functions. Add a test that imports improvement.evaluate with numpy blocked.",
+      "evidence": [
+        "Research run 2026-10-18: /usr/local/bin/python3 (3.11) → ModuleNotFoundError: No module named 'numpy' from renderer/engine/music.py line 9; worked only with a Python that had numpy"
+      ],
+      "expectedEffect": "Agents get the evaluator ranking on any Python, as agents/research.md promises.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "None",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
+    },
+    {
+      "id": "cast-series-title-suffix",
+      "date": "2026-10-18",
+      "area": "title",
+      "title": "A recurring series tag for decision-duel Shorts (Rohan vs Priya)",
+      "change": "For decision_duel Shorts only, on half the videos (flag), append a fixed series tag to the title, e.g. '… | Rohan vs Priya', and open the video with both characters on screen facing off over one concrete purchase in rupees (a ₹X car, a ₹Y home loan). The rest of the title must still pass the opening-phrase and shape rules on its own.",
+      "evidence": [
+        "market.json 17 Oct: Mayank Gupta's '50 Lakh Home Loan | Rich Vs Middle Class Mindset' (147.7k views, 163 comments, 1.1 comments per 1,000 views) and '20 Lakh Toyota Innova Car | Rich Vs Middle Class Mindset' (49.8k, 1.8 per 1,000) — a recurring two-person duel on one concrete purchase, series tag as suffix; comment rates 5–20× Finance With Sharan's"
+      ],
+      "expectedEffect": "A recognisable series lifts returning viewers and comments; our cast already gives us the two people.",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "A fixed suffix may read as templated (inauthentic-content risk) and could trip the title-shape rule; one channel is weak evidence.",
+      "metric": "views48h",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }
