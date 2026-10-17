@@ -18,7 +18,7 @@
     },
     {
       "day": "2026-10-17",
-      "shipped": 2,
+      "shipped": 3,
       "failed": 1
     }
   ],
@@ -111,6 +111,13 @@
       "id": "v-20261017-03",
       "day": "2026-10-17",
       "template": "quiz_countdown",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261017-04",
+      "day": "2026-10-17",
+      "template": "money_leak_meter",
       "status": "shipped",
       "reason": null
     }
