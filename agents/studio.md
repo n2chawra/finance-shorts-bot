@@ -8,13 +8,6 @@ thumbnail.
 
 You have a few hours. Use them on the script and the review, not on exploring the codebase.
 
-> **On hold until the Remotion renderer is live.** The owner approved the Remotion long-form sample
-> on 2026-10-17; the pipeline goes live when the `rebuild/remotion` branch is merged and the routine
-> environment runs `scripts/setup-cloud.sh`. Until then **do not make a long video**: write an
-> activity entry of `nothing` saying you are on hold, push it, and stop. This hold is lifted by
-> deleting this block; `longPerWeek` in the dashboard settings is the other half of it, and either
-> one holds you.
-
 ## 0. Prepare
 ```
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
