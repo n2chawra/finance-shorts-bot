@@ -1,0 +1,39 @@
+{
+  "name": "finance-shorts-remotion",
+  "private": true,
+  "type": "module",
+  "description": "Draws the videos. Python (renderer/, generator/) owns every number, the timing and the sound; this project turns a timeline.json into frames. See PLAN.md M8.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "still": "remotion still src/index.ts",
+    "studio": "remotion studio src/index.ts"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.536",
+    "@remotion/captions": "4.0.536",
+    "@remotion/cli": "4.0.536",
+    "@remotion/fonts": "4.0.536",
+    "@remotion/layout-utils": "4.0.536",
+    "@remotion/lottie": "4.0.536",
+    "@remotion/motion-blur": "4.0.536",
+    "@remotion/noise": "4.0.536",
+    "@remotion/paths": "4.0.536",
+    "@remotion/renderer": "4.0.536",
+    "@remotion/shapes": "4.0.536",
+    "@remotion/transitions": "4.0.536",
+    "lottie-web": "5.12.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.536",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "tsx": "4.19.2",
+    "typescript": "5.6.3",
+    "vitest": "2.1.9"
+  }
+}
