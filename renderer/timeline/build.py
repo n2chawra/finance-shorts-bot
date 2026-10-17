@@ -348,6 +348,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1)},
         "disclaimer": DISCLAIMER, "voiceMode": voice, "sources": sources,
+        # A/B variants for this video ({id: "on" | "off"}, generator/experiments.py): scenes read them
+        # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest
+        "experiments": dict(script.get("experiments") or {}),
         # the thumbnail card: a cast member reacting, one computed figure, at most four words
         "thumbnail": _thumbnail(script.get("thumbnail"), figures, results),
     }

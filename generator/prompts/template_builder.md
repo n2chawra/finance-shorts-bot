@@ -19,16 +19,20 @@ Read `renderer/templates/short_story/README.md` (Shorts recipes), `renderer/temp
 - **Improve** a recipe when the evaluator or QA shows a weakness: a beat order that keeps
   producing a still stretch, a hook that lands late, a recipe the planner never picks.
 
-You may not change scene code (`remotion/`): if a recipe needs a scene that does not exist, write
-the recipe with existing scenes and raise an owner notification describing the missing scene.
+If a recipe needs a scene that does not exist, the improver agent may build it in
+`remotion/src/scenes/` (register it in `remotion/src/contract/scenes.ts`, add it to the template
+README's scene table, check it with `--stills-only`). A video routine never changes scene code:
+there, write the recipe with existing scenes and note the missing one in your reply.
 
 ## Build it
 
 - Add the recipe to the README's **Story recipes** table: its name and its beats, scene by scene.
 - Write `examples/<recipe>.json`: a complete script in that recipe (real Indian inputs, every
   number through `maths` placeholders, the `end` beat last).
-- If it needs a new calculation, that is the owner's: say so in a notification and use the
-  existing `maths` kinds (`card_min_due`, `emi`, `sip`, `lumpsum`).
+- If it needs a new calculation, the improver agent may add a `maths` kind in
+  `renderer/models/maths.py` together with its own closed-form recomputation in the number check
+  (`generator/numbers.py`) and tests for both; the two must be written independently. A video
+  routine uses the existing kinds (`card_min_due`, `emi`, `sip`, `lumpsum`).
 
 ## Prove it
 

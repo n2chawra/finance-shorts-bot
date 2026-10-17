@@ -14,7 +14,8 @@ DAY=$(TZ=Asia/Kolkata date +%F); DOW=$(TZ=Asia/Kolkata date +%a)
 for p in python python3 /usr/bin/python3; do $p -c "import PIL, numpy, scipy, jsonschema" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
 ```
 If no interpreter has the packages: `python3 -m pip install -q pillow numpy scipy jsonschema`
-(add `--break-system-packages` if pip refuses). If `ffmpeg` is missing, try once:
+(add `--break-system-packages` if pip refuses). Only when tonight's change touches Remotion, run
+`bash scripts/setup-cloud.sh $PY` (Remotion packages and headless Chrome for stills). If `ffmpeg` is missing, try once:
 `apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ffmpeg`.
 Use `$PY` wherever this page says `python`.
 
@@ -47,8 +48,10 @@ If the evaluator lists recurring failures (the same QA/fact reason twice in 3 da
 `renderer/timeline/`) before starting anything new. Reproduce with
 `python -m generator.run number-check <id>` on the failed video, or check an example with
 `python -c "import json; from renderer.timeline.build import check_script; check_script(json.load(open('examples/<name>.json')))"`.
-These are fixes, not experiments. Scene drawing (`remotion/`) is the owner's: if a failure is in a
-scene, raise an owner notification with the video id and the still that shows it.
+These are fixes, not experiments. A failure in a scene (`remotion/src/scenes/`, the cast, the
+camera) is yours to fix too: reproduce it on the video's `timeline.json` with
+`python -m renderer.remotion videos/<id>/timeline.json --out /tmp/<id> --stills-only` and check the
+stills before and after.
 
 ## 3. Story recipes (rules, not taste)
 Every video is a storyboard written from a template's **recipes**: `short_story` for Shorts,
@@ -77,12 +80,23 @@ Set each proposal's `status` (`adopted`, `testing`, `building`, `done`, `rejecte
 Only if: fewer running experiments than `agents.maxActiveExperiments`, nothing from steps 1–3
 changed code tonight, and no running experiment shares the proposal's area. Pick the proposal with
 the best effect × confidence ÷ effort, preferring the craft areas (motion, pacing, text, colour,
-sound, music, voice, hook, ending), then script and title. Every video is voiced; the voice itself
-(engine, pace) is the owner's.
+sound, music, voice, hook, ending), then script and title. Every video is voiced by the offline
+Kokoro engine (a hard rule); which voices, the pace and the mix are yours to test.
+
+You own how the videos look and move: scenes (`remotion/src/scenes/`), the cast and their acting
+(`remotion/src/cast/`), camera and transitions (`remotion/src/fx/`), design and palettes
+(`remotion/src/design/`, `renderer/engine/`), music and SFX (`renderer/engine/`). The guard keeps the
+hard rules (disclaimer, minimum text size, bottom safe zone, liveliness bars) and the layout probe
+(`remotion/src/fx/probe.tsx`) out of reach; everything else may change.
 
 1. Implement it **behind a flag**:
    - Script, recipe or title change: no code; add a `prompt` block `{"on": "<instruction>", "off": null}` to the
      experiment. `generator.run state` hands it to the planner/writer for videos in the on-group.
+   - Look, motion or sound change in Remotion: keep the old path and branch on
+     `flag(tl, "<id>")` (`remotion/src/contract/flags.ts`); the timeline carries each video's variant.
+     In Python (music, SFX, mix): branch on `script["experiments"].get("<id>") == "on"`.
+     Check it on a sample with `--stills-only` (see section 2), never a full render, and run
+     `(cd remotion && npm run typecheck && npm test)`.
 2. Register it in `config/experiments.json`:
    `{"id": "<kebab>", "area": "…", "status": "running", "startedAt": "<DAY>", "templates": ["all" or names],
    "share": 0.5, "prompt": {…} (optional), "proposal": "<proposal id>", "description": "…"}`
@@ -115,7 +129,7 @@ numbers; changes = what you changed with the experiment id) and rewrite
 ```
 git checkout -B agent/improver/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add -A generator renderer examples config/experiments.json improvement
+git add -A generator renderer examples remotion/src remotion/test config/experiments.json improvement
 git commit -q -m "Improver $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/improver/$DAY
 ```

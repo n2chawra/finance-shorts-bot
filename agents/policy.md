@@ -31,7 +31,8 @@ blocks the merge if you break them; the rest is on you.
   `improvement/merge-log.json`. Read that log at the start of every run: if your last branch was
   blocked, fix the reason before anything else.
 - **Stay inside your lane**: research writes reports only; the improver changes the generator,
-  renderer, prompts (not `routine.md`), examples and experiment files; the dashboard agent changes
+  renderer, how the videos look and move (`remotion/src`: scenes, cast, camera, design; not the
+  layout probe), prompts (not `routine.md`), examples and experiment files; the dashboard agent changes
   `apps/dashboard/src` (not auth, middleware, login, Prisma or live stats); the auditor fixes bugs and
   data problems anywhere in the generator, renderer, workers and dashboard code, but never uploads,
   YouTube sign-in, settings defaults, login, Prisma or the data audit. See `scripts/guard.py`.
@@ -40,8 +41,9 @@ blocks the merge if you break them; the rest is on you.
   never touches code; Studio makes one long video per run and pushes it to `main` the way the
   Shorts video run does, using its agent branch only for reports.
 - **Small, reversible steps**: at most one new experiment (improver) or one change (dashboard) per
-  night, under the guard's size limit. Content changes ship as A/B flags (see
-  `generator/experiments.py`), never straight to every video.
+  night, under the guard's size limit. Content and look changes ship as A/B flags (see
+  `generator/experiments.py`; in Remotion `flag(tl, id)` from `remotion/src/contract/flags.ts`),
+  never straight to every video. Never render a full video to test a change: stills only.
 - **Route, don't hoard.** Research routes every finding: `video` (topic feed, used by the next
   video run; `breaking` topics first), `adopt` (proven/required/fix, applied directly), `experiment`
   (A/B), `template` (a new format), `owner` (notifications). See `improvement/research/README.md`.

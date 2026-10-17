@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { onStoryClock } from "../src/contract/clock";
+import { flag } from "../src/contract/flags";
 import { isScene } from "../src/contract/scenes";
 import { Timeline } from "../src/contract/timeline";
 import sample from "../src/fixtures/sample-timeline.json";
@@ -10,6 +11,13 @@ describe("timeline contract", () => {
   it("parses the sample Python wrote", () => {
     expect(tl.beats.length).toBeGreaterThan(10);
     expect(tl.disclaimer).toBe("Illustrative only. Not financial advice.");
+  });
+
+  it("reads A/B flags, off when the timeline has none", () => {
+    expect(tl.experiments).toEqual({});
+    expect(flag(tl, "bold-hook")).toBe(false);
+    const on = Timeline.parse({ ...sample, experiments: { "bold-hook": "on", other: "off" } });
+    expect([flag(on, "bold-hook"), flag(on, "other")]).toEqual([true, false]);
   });
 
   it("names only scenes the renderer has", () => {

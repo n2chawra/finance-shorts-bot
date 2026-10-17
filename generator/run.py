@@ -211,6 +211,8 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         script = _read(d / "script.json")
         if script.get("template") not in TEMPLATES:
             raise ValueError(f"template must be one of {', '.join(TEMPLATES)}")
+        # the video's A/B variants travel in the timeline, so scenes can read them and ship records them
+        script["experiments"] = experiments.for_video(vid, script.get("template"), root)
         report = remotion.render_story(script, d, preview=preview)
     except (ValueError, RuntimeError) as e:
         log_step(vid, "render", False, [str(e)], root, started)

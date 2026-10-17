@@ -51,6 +51,12 @@ def test_placeholder_names_may_hold_digits_but_text_may_not(tmp_path: Path) -> N
     assert voice.fill_lines({"x": "{card_paid_year1}"}, ["x"], {"card_paid_year1": "₹32,862"})["x"] == "thirty two thousand eight hundred sixty two rupees"
 
 
+def test_experiment_variants_travel_in_the_timeline(tmp_path: Path) -> None:
+    beat = {"id": "a", "scene": "bignumber", "say": "It costs {card_amount}."}
+    assert tb.build(script([beat], experiments={"bold-hook": "on"}), tmp_path, voice="estimate")["experiments"] == {"bold-hook": "on"}
+    assert tb.build(script([beat]), tmp_path, voice="estimate")["experiments"] == {}
+
+
 def test_beats_follow_their_words(tmp_path: Path) -> None:
     beats = [
         {"id": "a", "scene": "bignumber", "say": "It costs {card_amount} today.", "events": {"cost": {"word": "costs"}},

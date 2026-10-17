@@ -143,6 +143,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         "tempo": 1.0, "style": tl.get("style") or {"palette": None, **tl["music"]},
         "voice": {"name": tl["voices"]["narrator"], "base_speed": tl["speed"], "cast": tl["voices"], "lines": lines},
         "layout_problems": layout_problems(probes, tl["format"], tl["width"], tl["height"], tl["fps"]),
+        "experiments": tl.get("experiments") or {},
         # YouTube chapters: the first must be 0:00
         "chapters": ([] if any(bt["from"] == 0 for bt in tl["beats"] if bt["scene"] == "chapter") else [{"title": "Intro", "start": 0.0}])
         + [{"title": bt["params"].get("title", ""), "start": round(bt["from"]/tl["fps"], 1)} for bt in tl["beats"] if bt["scene"] == "chapter"],

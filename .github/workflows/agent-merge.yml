@@ -63,13 +63,24 @@ jobs:
           for f in examples/*.json; do python -c "import json,sys; from renderer.timeline.build import check_script; check_script(json.load(open(sys.argv[1], encoding='utf-8')))" "$f"; done
 
       - uses: actions/setup-node@v4
-        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && (contains(steps.guard.outputs.areas, 'workers') || contains(steps.guard.outputs.areas, 'dashboard'))
+        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && (contains(steps.guard.outputs.areas, 'workers') || contains(steps.guard.outputs.areas, 'dashboard') || contains(steps.guard.outputs.areas, 'remotion'))
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: |
             workers/package-lock.json
             apps/dashboard/package-lock.json
+            remotion/package-lock.json
+
+      # scenes, cast and design: the contract tests and the types (a bad picture is caught by the
+      # next render's layout, liveliness and QA gates, and only half the videos carry a flagged change)
+      - name: Remotion typecheck and tests
+        if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && contains(steps.guard.outputs.areas, 'remotion')
+        working-directory: remotion
+        run: |
+          npm ci
+          npm run typecheck
+          npm test
 
       - name: Worker typecheck and tests
         if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && contains(steps.guard.outputs.areas, 'workers')

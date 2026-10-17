@@ -21,13 +21,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 ALLOW: dict[str, list[str]] = {
     "research": ["improvement/research/*", "improvement/activity/*-research.json", "improvement/notifications/research.json"],
-    "improver": ["generator/*", "renderer/*", "examples/*", "config/experiments.json", "improvement/experiments.json",
+    # the improver owns how the videos look and move too (owner, 2026-10-17): scenes, cast, camera, design
+    "improver": ["generator/*", "renderer/*", "examples/*", "remotion/src/*", "remotion/test/*",
+                 "config/experiments.json", "improvement/experiments.json",
                  "improvement/journal.md", "improvement/weekly/*", "improvement/template-decisions.json",
                  "improvement/research/proposals.json", "improvement/activity/*-improver.json", "improvement/notifications/improver.json"],
     "dashboard": ["apps/dashboard/src/*", "apps/dashboard/e2e/*", "apps/dashboard/package.json", "apps/dashboard/package-lock.json",
                   "apps/dashboard/playwright.config.ts", "improvement/dashboard/*", "improvement/activity/*-dashboard.json",
                   "improvement/notifications/dashboard.json"],
-    "auditor": ["generator/*", "renderer/*", "examples/*", "apps/dashboard/src/*", "apps/dashboard/e2e/*", "workers/*",
+    "auditor": ["generator/*", "renderer/*", "examples/*", "remotion/src/*", "remotion/test/*",
+                "apps/dashboard/src/*", "apps/dashboard/e2e/*", "workers/*",
                 "improvement/auditor/*", "improvement/activity/*-auditor.json", "improvement/notifications/auditor.json"],
     # long-form: scout researches and never touches code; studio pushes its videos straight to main
     # (like the Shorts video run) and uses its branch only for reports.
@@ -53,6 +56,8 @@ LOCKED = [
     "workers/publish.ts", "workers/auth.ts", "workers/reset-data.ts", "workers/data-audit.ts", "workers/lib/data-audit.ts",
     "workers/tests/data-audit.test.ts", "workers/lib/uploads.ts", "workers/lib/publishing.ts", "workers/lib/youtube.ts",
     "workers/lib/settings.ts", "workers/prisma/*", "workers/scripts/*", "workers/package.json", "workers/package-lock.json",
+    # the layout gate measures the rendered text with this probe: it never changes with the scenes it measures
+    "remotion/src/fx/probe.tsx",
 ]
 FORBID += LOCKED
 TEST_FILE = re.compile(r"(^|/)(tests?|e2e)/|(^|/)test_[^/]*\.py$|\.(test|spec)\.ts$")
@@ -178,11 +183,13 @@ def check(agent: str, base: str, head: str, now: datetime | None = None) -> dict
 
 
 def areas(paths: list[str]) -> list[str]:
-    """Which test suites a change needs: python (generator, renderer, evaluator), workers, dashboard."""
+    """Which test suites a change needs: python (generator, renderer, evaluator), workers, dashboard, remotion."""
     out = set()
     for p in paths:
         if p.startswith("workers/"):
             out.add("workers")
+        elif p.startswith("remotion/"):
+            out.add("remotion")
         elif p.startswith("apps/dashboard/"):
             out.add("dashboard")
         elif p.startswith(("generator/", "renderer/", "examples/", "scripts/")) or (p.startswith("improvement/") and p.endswith(".py")):

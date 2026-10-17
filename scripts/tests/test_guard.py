@@ -47,6 +47,16 @@ def test_allows_a_renderer_change_for_the_improver(repo: Path) -> None:
     assert r["needsTests"]
 
 
+def test_the_improver_may_change_how_videos_look_but_not_the_layout_probe(repo: Path) -> None:
+    change(repo, "remotion/src/scenes/kit.tsx", "export const x = 1;\n")
+    r = guard.check("improver", "main", "HEAD")
+    assert r["ok"], r["reasons"]
+    assert r["areas"] == ["remotion"]
+    change(repo, "remotion/src/fx/probe.tsx", "export {};\n")
+    r = guard.check("improver", "main", "HEAD")
+    assert not r["ok"] and any("probe.tsx: protected" in x for x in r["reasons"])
+
+
 def test_blocks_workflows_and_files_outside_the_allow_list(repo: Path) -> None:
     change(repo, ".github/workflows/x.yml", "on: push\n")
     change(repo, "apps/dashboard/src/app/page.tsx", "x\n")

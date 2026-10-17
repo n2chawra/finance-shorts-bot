@@ -68,8 +68,8 @@ Four nightly Claude Code routines check and improve the automation itself, 23:00
 the database into `metrics/data-audit.json`: fixes data bugs and code bugs anywhere, one refactor a
 night; may change `workers/` and `lib/live-stats.ts` but never uploads, sign-in or the audit itself),
 **research** (23:47, reports + proposals, never code), **improver** (06:17, A/B experiments on ~50% of
-videos via `config/experiments.json`, keep/revert by `python -m improvement.evaluate`, template
-weights/retire/new, fixes recurring failures) and **dashboard** (07:37, bug hunt + smoke tests, UI
+videos via `config/experiments.json`, keep/revert by `python -m improvement.evaluate`, recipes,
+scenes, cast, camera and design in `remotion/src` behind flags, fixes recurring failures) and **dashboard** (07:37, bug hunt + smoke tests, UI
 trends Mon/Wed/Fri). Agents only push `agent/<name>/<date>` branches; `.github/workflows/agent-merge.yml`
 merges them only if `scripts/guard.py` (path allow-lists, hard-rule invariants, size/daily limits)
 and the tests pass. They report to `improvement/activity/` (dashboard Agents page) and raise
@@ -188,8 +188,9 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
    inside the manifest.
 
 **T. Recipe work** (when backlog is full, or every ~5th run): add or improve a story recipe in a
-template's README with a checked example script (`generator/prompts/template_builder.md`); scene
-code in `remotion/` is the owner's. Limited by settings:
+template's README with a checked example script (`generator/prompts/template_builder.md`). Video
+runs never change scene code; the improver agent may (scenes, cast, camera, design, new `maths`
+kinds), behind A/B flags (owner, 2026-10-17). Limited by settings:
 at most `templateWork.maxPerDay` runs a day (default 1) and no new templates past
 `templateWork.maxTemplates` (default 10). With `generationPaused` a run does nothing at all.
 
