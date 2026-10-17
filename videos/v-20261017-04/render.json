@@ -1,0 +1,95 @@
+{
+  "template": "money_leak_meter",
+  "seed": 6208,
+  "duration_sec": 40,
+  "tempo": 1.35,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "C",
+    "bpm": 110
+  },
+  "experiments": {
+    "voiceover": "on"
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.13,
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Just one thousand two hundred rupees for one more order?",
+        "start": 0.19,
+        "seconds": 2.92,
+        "window": 3.26,
+        "speed": 1.13,
+        "fill": 0.9
+      },
+      {
+        "scene": "leak",
+        "text": "three of them a month adds up to three thousand six hundred rupees.",
+        "start": 3.89,
+        "seconds": 3.5,
+        "window": 6.22,
+        "speed": 1.13,
+        "fill": 0.56
+      },
+      {
+        "scene": "meter",
+        "text": "Over fifteen years, that's six point five lakh rupees gone on impulse orders.",
+        "start": 10.56,
+        "seconds": 4.39,
+        "window": 6.22,
+        "speed": 1.13,
+        "fill": 0.71
+      },
+      {
+        "scene": "flip",
+        "text": "Now flip it.",
+        "start": 17.22,
+        "seconds": 0.7,
+        "window": 2.52,
+        "speed": 1.13,
+        "fill": 0.28
+      },
+      {
+        "scene": "grow",
+        "text": "Put that three thousand six hundred rupees into a monthly SIP at eleven percent a year, and watch it grow.",
+        "start": 20.19,
+        "seconds": 6.07,
+        "window": 9.19,
+        "speed": 1.13,
+        "fill": 0.66
+      },
+      {
+        "scene": "compare",
+        "text": "It could become sixteen point five lakh rupees.",
+        "start": 31.48,
+        "seconds": 2.25,
+        "window": 2.33,
+        "speed": 1.21,
+        "fill": 0.96
+      },
+      {
+        "scene": "end",
+        "text": "Wait a day before you press buy. Comment your last impulse buy.",
+        "start": 34.26,
+        "seconds": 3.36,
+        "window": 5.48,
+        "speed": 1.13,
+        "fill": 0.61
+      }
+    ]
+  },
+  "layout_problems": [],
+  "liveliness": {
+    "median": 1.439,
+    "still_share": 0.148,
+    "longest_still_sec": 4.0
+  },
+  "liveliness_problems": [],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.1
+  }
+}

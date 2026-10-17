@@ -1,0 +1,205 @@
+{
+  "id": "v-20261017-04",
+  "createdAt": "2026-10-17T02:46:50.730307+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "money_leak_meter",
+  "topic": {
+    "title": "What three impulse online orders a month cost over 15 years",
+    "category": "spending"
+  },
+  "title": "How much do impulse orders really cost you in 15 years?",
+  "description": "Three impulse online orders of ₹1,200 each, every month for 15 years, against the same money in a monthly SIP at an assumed 11% a year. Returns are assumptions, not assured. Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#PersonalFinance",
+    "#Spending",
+    "#SIP"
+  ],
+  "hookStyle": "question",
+  "cta": "Comment your last impulse buy",
+  "seed": 6208,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "C",
+    "bpm": 110,
+    "voice": "af_bella"
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.13,
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Just one thousand two hundred rupees for one more order?",
+        "start": 0.19,
+        "seconds": 2.92,
+        "window": 3.26,
+        "speed": 1.13,
+        "fill": 0.9
+      },
+      {
+        "scene": "leak",
+        "text": "three of them a month adds up to three thousand six hundred rupees.",
+        "start": 3.89,
+        "seconds": 3.5,
+        "window": 6.22,
+        "speed": 1.13,
+        "fill": 0.56
+      },
+      {
+        "scene": "meter",
+        "text": "Over fifteen years, that's six point five lakh rupees gone on impulse orders.",
+        "start": 10.56,
+        "seconds": 4.39,
+        "window": 6.22,
+        "speed": 1.13,
+        "fill": 0.71
+      },
+      {
+        "scene": "flip",
+        "text": "Now flip it.",
+        "start": 17.22,
+        "seconds": 0.7,
+        "window": 2.52,
+        "speed": 1.13,
+        "fill": 0.28
+      },
+      {
+        "scene": "grow",
+        "text": "Put that three thousand six hundred rupees into a monthly SIP at eleven percent a year, and watch it grow.",
+        "start": 20.19,
+        "seconds": 6.07,
+        "window": 9.19,
+        "speed": 1.13,
+        "fill": 0.66
+      },
+      {
+        "scene": "compare",
+        "text": "It could become sixteen point five lakh rupees.",
+        "start": 31.48,
+        "seconds": 2.25,
+        "window": 2.33,
+        "speed": 1.21,
+        "fill": 0.96
+      },
+      {
+        "scene": "end",
+        "text": "Wait a day before you press buy. Comment your last impulse buy.",
+        "start": 34.26,
+        "seconds": 3.36,
+        "window": 5.48,
+        "speed": 1.13,
+        "fill": 0.61
+      }
+    ]
+  },
+  "durationSec": 40,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.1
+  },
+  "experiments": {
+    "voiceover": "on"
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Checked: 11% is an assumption (under 12%), description hedges returns and ends with the disclaimer; no product named; voiceover and screen text consistent with figures; framing hedged ('could become'). Note: '2.5x more' should read '2.5x as much'; pre-tax SIP returns not mentioned."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "8 frames clean: hook text at 0.9s, no overlaps or cut-off, readable contrast, disclaimer on last frame, thumbnail shows wallet and coins; 40s, audio -1.0/-17.1 dB, voice speeds 1.13-1.21, no layout problems"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-17T02:44:51.984744+00:00",
+      "finishedAt": "2026-10-17T02:44:51.984744+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-17T02:44:52.951284+00:00",
+      "finishedAt": "2026-10-17T02:44:52.951284+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-17T02:45:12.734943+00:00",
+      "finishedAt": "2026-10-17T02:45:12.734943+00:00",
+      "notes": [
+        "Checked: 11% is an assumption (under 12%), description hedges returns and ends with the disclaimer; no product named; voiceover and screen text consistent with figures; framing hedged ('could become'). Note: '2.5x more' should read '2.5x as much'; pre-tax SIP returns not mentioned."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-17T02:45:22.753097+00:00",
+      "finishedAt": "2026-10-17T02:45:22.753097+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-17T02:45:23.674774+00:00",
+      "finishedAt": "2026-10-17T02:46:24.067709+00:00",
+      "notes": [
+        "40 s, ember/pop, peak -1.0 dB, mean -17.1 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-17T02:46:41.245246+00:00",
+      "finishedAt": "2026-10-17T02:46:41.245246+00:00",
+      "notes": [
+        "8 frames clean: hook text at 0.9s, no overlaps or cut-off, readable contrast, disclaimer on last frame, thumbnail shows wallet and coins; 40s, audio -1.0/-17.1 dB, voice speeds 1.13-1.21, no layout problems"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-17T02:46:50.732900+00:00",
+      "finishedAt": "2026-10-17T02:46:50.732900+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261017-04",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261017-04"
+  }
+}

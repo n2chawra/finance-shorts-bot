@@ -1,0 +1,38 @@
+{
+  "template": "money_leak_meter",
+  "seed": 6208,
+  "style": { "palette": "ember", "genre": "pop", "key": "C", "bpm": 110 },
+  "item": "impulse orders",
+  "cost": 1200,
+  "times_per_month": 3,
+  "years": 15,
+  "annual_return_pct": 11,
+  "text": {
+    "hook_title": "{cost} per click?",
+    "hook_sub": "Just one more order.",
+    "hook_tease": "See what it really costs",
+    "leak_title": "{times} orders a month",
+    "leak_note": "…and the cart never empties",
+    "meter_title": "Over {years} years",
+    "meter_label": "gone on {item}",
+    "flip_line1": "Now imagine you",
+    "flip_line2": "INVESTED it instead",
+    "grow_title": "Same money at {rate} a year",
+    "cmp_title": "Cart or corpus?",
+    "cmp_line": "{ratio} as much from the same money",
+    "end_line1": "Pause before",
+    "end_line2": "you press buy",
+    "end_punch": "Wait a day.",
+    "end_cta": "Comment your last impulse buy",
+    "end_follow": "Follow for more money maths"
+  },
+  "voice": {
+    "hook": "Just {cost} for one more order?",
+    "leak": "{times} of them a month adds up to {monthly}.",
+    "meter": "Over {years} years, that's {spent_long} gone on {item}.",
+    "flip": "Now flip it.",
+    "grow": "Put that {monthly} into a monthly SIP at {rate} a year, and watch it grow.",
+    "compare": "It could become {fv_long}.",
+    "end": "Wait a day before you press buy. Comment your last impulse buy."
+  }
+}

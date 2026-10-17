@@ -1,0 +1,65 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:44:51.984744+00:00",
+    "finishedAt": "2026-10-17T02:44:51.984744+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:44:52.951284+00:00",
+    "finishedAt": "2026-10-17T02:44:52.951284+00:00",
+    "notes": [
+      "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:45:12.734943+00:00",
+    "finishedAt": "2026-10-17T02:45:12.734943+00:00",
+    "notes": [
+      "Checked: 11% is an assumption (under 12%), description hedges returns and ends with the disclaimer; no product named; voiceover and screen text consistent with figures; framing hedged ('could become'). Note: '2.5x more' should read '2.5x as much'; pre-tax SIP returns not mentioned."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:45:22.753097+00:00",
+    "finishedAt": "2026-10-17T02:45:22.753097+00:00",
+    "notes": [
+      "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:45:23.674774+00:00",
+    "finishedAt": "2026-10-17T02:46:24.067709+00:00",
+    "notes": [
+      "40 s, ember/pop, peak -1.0 dB, mean -17.1 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:46:41.245246+00:00",
+    "finishedAt": "2026-10-17T02:46:41.245246+00:00",
+    "notes": [
+      "8 frames clean: hook text at 0.9s, no overlaps or cut-off, readable contrast, disclaimer on last frame, thumbnail shows wallet and coins; 40s, audio -1.0/-17.1 dB, voice speeds 1.13-1.21, no layout problems"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:46:50.732900+00:00",
+    "finishedAt": "2026-10-17T02:46:50.732900+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
