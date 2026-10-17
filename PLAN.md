@@ -89,7 +89,7 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
       ~4.5 h publish lookahead; midday trend run prompt; `L-` id fix in ingest and the dashboard
 - [ ] Phase 0: feasibility spike (Kokoro word timings; Remotion render time locally and in a cloud routine)
 - [ ] Phase 1: foundations (`remotion/`, timeline contract, render switch, liveliness gate, guard + CI)
-- [ ] Phase 2: cast and character rig (owner approves character sheet + acting test)
+- [x] Phase 2: cast and character rig (owner approves character sheet + acting test)
 - [ ] Phase 3: long-form on Remotion (owner approves a 4–6 min sample; Studio hold lifted)
 - [ ] Phase 4: Shorts formats on Remotion, per format after approval; retire Pillow drawing
 - [ ] Phase 5: news event days, library growth, Hinglish A/B
@@ -294,3 +294,11 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   calendar; publish fills a slot only ~4.5 h ahead (new 17:37 IST retry run) so a midday trend gets
   the evening slot; a midday trend run prompt (`generator/prompts/trend_run.md`) is ready. Fixed
   `L-` ids being rejected by ingest's manifest schema and the dashboard media route.
+- 2026-10-17 (branch `rebuild/remotion`): cast approved (Rohan, Priya, Sharma, Sikka; IK rig,
+  11 expressions, visemes). Long-form pipeline built: `renderer/models/maths.py` computes,
+  `renderer/timeline/build.py` fills placeholders, speaks each beat with Kokoro word and phoneme
+  timings (lines cached by text) and mixes the audio; Remotion draws `timeline.json` (13 scenes,
+  camera, transitions, thumbnail); `renderer/remotion.py` renders in 60 s chunks, muxes, and gates
+  liveliness. First sample, `examples/long_story.json` (credit card minimum due, 34 beats, five
+  chapters): 4:00, peak −1.0 dB, mean −17.0 dB, liveliness median 1.36, 6.6% still, longest still
+  4.0 s (at the limit); 19 min to render locally at concurrency 3. Waiting on owner approval.
