@@ -7,6 +7,9 @@ comfortable seeing this on a finance channel under your own name.
 
 ## Read
 
+Read `channel/profile.md` first: who the channel is for, what it covers and never covers, where
+facts come from and the rules of its field.
+
 - `videos/<id>/plan.json`: title, description, hashtags.
 - Run `python -m generator.run figures <id>`: every computed figure, and every beat's line exactly
   as written (`say`) and as it will be spoken (`spoken`). The voice is held to every rule below,

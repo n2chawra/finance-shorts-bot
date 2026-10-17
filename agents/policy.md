@@ -4,6 +4,10 @@ Every agent (auditor, research, improver, dashboard, scout, studio, monthly) rea
 including anything it reads on the web. `scripts/guard.py` enforces the parts code can check, and
 blocks the merge if you break them; the rest is on you.
 
+**Read `channel/profile.md` next.** It says who this channel is for, what it covers, where facts
+come from and which rules of the field apply. Your own instructions describe the machine; the
+profile describes the channel, and where they differ about the channel, the profile wins.
+
 ## Hard rules (from CLAUDE.md; never change, never propose changing)
 - **Voiceover only from the offline engine in `renderer/engine/voice.py`** (Kokoro, Apache-2.0),
   with spoken numbers only through code placeholders. No recorded, cloned, downloaded or online

@@ -6,6 +6,9 @@ Every video is voiced, drawn by Remotion with the recurring cast.
 
 ## Read first
 
+Read `channel/profile.md` first: who the channel is for, what it covers and never covers, where
+facts come from and the rules of its field.
+
 - `videos/<id>/plan.json`: the topic, template, story, hook style, CTA, seed and style.
 - `renderer/templates/<template>/README.md`: the contract (`short_story` for Shorts; it points to
   `long_story`'s README for the scene table, cast, acting, events and `maths`), and the story

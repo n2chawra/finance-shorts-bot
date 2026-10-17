@@ -9,7 +9,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 PROMPTS = sorted([*REPO.glob("agents/*.md"), *REPO.glob("generator/prompts/*.md")])
-TOP = ("agents/", "generator/", "renderer/", "remotion/", "config/", "metrics/", "scripts/", "workers/", "apps/",
+TOP = ("agents/", "channel/", "generator/", "renderer/", "remotion/", "config/", "metrics/", "scripts/", "workers/", "apps/",
        "examples/", "history/", "assets/", "docs/", ".github/")
 # written by the runs themselves, so they may not exist yet in a fresh checkout
 CREATED_BY_RUNS = {"history/template_work.json"}

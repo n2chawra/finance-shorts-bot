@@ -77,6 +77,17 @@ owner-only problems in `improvement/notifications/` (dashboard Notifications pag
 `watchdog.yml`). Rules: `agents/policy.md`. Never weaken the guard, the policy or the evaluator's
 rules to let an agent change through.
 
+**The growth loop** (owner, 2026-10-17: the owner uploads and reviews monthly; the agents grow the
+channel in between). The channel itself is described in `channel/profile.md`, which every agent
+reads first. The daily `market.yml` (22:17 IST) puts this week's fastest-growing niche videos and
+our comments on the `market-data` branch (one commit, replaced daily: YouTube API data is never
+kept past its refresh). Research and Scout start from it; the improver applies, A/B-tests and keeps
+or reverts by `improvement/evaluate.py` (per format; look and sound changes on % viewed). The
+**monthly review** (`agents/monthly.md`, 12:07 IST on the 1st) writes `improvement/monthly/<YYYY-MM>.md`,
+next month's `focus.json` for the agents, and up to three setting proposals the owner approves or
+declines on the Notifications page (strategy settings only; decisions in `metrics/decisions.json`).
+A second channel: `docs/guide/13-new-channel.md`.
+
 **Research routes every finding** (`improvement/research/README.md`): `video` → the topic feed
 `improvement/research/topics.json`, which the next video run's planner reads (`state.topic_feed`;
 a usable `breaking` topic must be taken first, a topic with `facts` is told as news); `adopt` (proven,

@@ -78,8 +78,14 @@ Frontend (mobile-first). Ticked pages run on in-memory sample data until M4 land
 Done when: everything above works on a phone.
 
 ## M7 — Feedback loop
-- [ ] Weekly analyst routine: adjusts template weights from stats, suggests new template ideas
+- [x] Weekly analyst routine: superseded by the improver's Sunday summary and the monthly review
 - [ ] Template builder runs when backlog is full
+- [x] Growth loop (2026-10-17): A/B variants recorded again (lost in the Remotion switch), improver
+      owns the video's look behind flags, Scout's findings reach the improver, evaluator per format
+      with retention for look changes, monthly review with one-click setting proposals, daily market
+      data and comments, channel profile
+- [ ] Owner: cloud environment network access for research page reads (claude.ai → Environments)
+- [ ] First monthly review (1 Nov 2026) read and its proposals decided
 
 ## M8 — Remotion rebuild (approved 2026-10-17)
 Full plan: `~/.claude/plans/i-want-to-create-frolicking-music.md`. All video drawing moves to Remotion
@@ -341,3 +347,11 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   research writes `improvement/events/<date>-<slug>.json` the night before, `generator/prompts/event_day.md`
   ships the announced figure into the 12:37 slot (needs a one-off routine per event). QA reviewer
   prompt updated for storyboards (`[scene]` problems go to the owner).
+- 2026-10-17: Growth-loop review (design ~60%, working ~25%) and fixes: the dead voiceover A/B closed;
+  stale agent instructions fixed, with a test that every path they name exists; A/B variants travel
+  script → timeline → render.json → manifest again (empty since Remotion); the improver may change
+  `remotion/src` behind `flag(tl, id)` (layout probe locked); Scout's long-video items routed to the
+  improver; evaluator judges per format, look/sound changes on % viewed, ranks story, title shape and
+  upload hour; monthly review agent + Approve/Decline proposals on Notifications; `market.yml` and the
+  `market-data` branch; `channel/profile.md` and the new-channel guide. Found: research page fetches
+  fail (cloud network), the 16 Oct auditor run was refused for usage.

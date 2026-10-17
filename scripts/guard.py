@@ -47,7 +47,8 @@ UNLOCK: dict[str, list[str]] = {
 # never, for any agent (checked before the allow-lists)
 FORBID = [
     ".github/*", "workers/*", "scripts/*", "agents/*", "CLAUDE.md", "PLAN.md", "netlify.toml", "config/settings.json",
-    "history/*", "videos/*", "metrics/*", "improvement/evaluate.py", "improvement/tests/*", "improvement/merge-log.json",
+    "history/*", "videos/*", "metrics/*", "improvement/evaluate.py",
+    "channel/*", "config/market.json",   # who the channel is for and what it watches: the owner's "improvement/tests/*", "improvement/merge-log.json",
     "generator/settings.py", "generator/variety.py", "generator/prompts/routine.md", "generator/tests/test_variety.py",
     "apps/dashboard/prisma/*", "apps/dashboard/src/lib/auth.ts", "apps/dashboard/src/middleware.ts",
     "apps/dashboard/src/app/api/login/*", "apps/dashboard/src/lib/prisma.ts", "apps/dashboard/src/lib/live-stats.ts",

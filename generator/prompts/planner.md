@@ -6,6 +6,9 @@ writer's storyboard.
 
 ## Read first
 
+Read `channel/profile.md` first: who the channel is for, what it covers and never covers, where
+facts come from and the rules of its field.
+
 1. Run `python -m generator.run state`. It tells you the video id to use (`next_id`), which
    templates are allowed, which topic categories are blocked, the previous video's style, recent
    topics and recent title/description openings.
