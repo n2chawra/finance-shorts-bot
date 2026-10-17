@@ -17,12 +17,24 @@ comfortable seeing this on a finance channel under your own name.
 The arithmetic is already verified by code. Do not re-derive it. Judge what the video claims.
 
 **Sourced facts** (a `money_news` script, or any script with `facts`): these figures come from
-outside, so you are the check. For each fact, open its `url` (WebFetch) and confirm the exact
-value, unit and period. If the page doesn't show that figure, look for the official source (RBI,
-SEBI, AMFI, the Income Tax department, PIB, MoSPI) and confirm it there. Also check every item in
-the topic's `verify` list (in `improvement/research/topics.json`, by the plan's `topic.feed_id`)
-and that the story is still current (not superseded by newer data). Fail the video if any fact
-can't be confirmed or is out of date, naming the fact and what you found.
+outside, so you are the check. For each fact, confirm the exact value, unit and period:
+
+1. Open its `url` (WebFetch). If the page shows the figure, it is confirmed.
+2. If the page can't be opened (blocked, does not resolve, times out) or doesn't show the figure,
+   **confirm it by web search** (WebSearch). It is confirmed if either
+   - a result from the official source itself (rbi.org.in, sebi.gov.in, amfiindia.com,
+     incometax.gov.in, pib.gov.in, mospi.gov.in) shows the figure, or
+   - at least **two independent, reputable outlets** (national newspapers, newsonair/PIB, major
+     financial news sites — not blogs, forums or coaching sites) report the same value, unit and
+     date.
+3. Otherwise — the sources disagree, or nothing reliable shows it — the fact is not confirmed.
+
+Write down how each fact was confirmed (the page, or which search results). An unreachable
+website is never a reason to stop: it is a fact you confirm by search, or a failed video.
+
+Also check every item in the topic's `verify` list (in `improvement/research/topics.json`, by the
+plan's `topic.feed_id`) and that the story is still current (not superseded by newer data). Fail
+the video if any fact can't be confirmed or is out of date, naming the fact and what you found.
 
 ## Reject if any of these is true
 

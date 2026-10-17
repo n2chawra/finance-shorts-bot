@@ -27,8 +27,10 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 - **Every number on screen is computed by code**, never typed by an LLM. The one exception is a
   **sourced fact** in a news video (`money_news`): a figure published by an official source, put in
   the topic feed by research with its URL, copied unchanged into the script (the number check
-  compares them), shown with "Data: <source> · <month>", and confirmed against the source by the
-  fact reviewer, or the video fails.
+  compares them), shown with "Data: <source> · <month>", and confirmed by the fact reviewer — on
+  the source page, or, when that page can't be reached, by web search (the official source's own
+  result, or two independent reputable outlets agreeing on value, unit and date) — or the video fails.
+  A video that fails never ends a generation run; the run moves on to the next video.
 - **All audio is synthesized in code** (music + SFX). No downloaded music, no copyrighted assets.
 - Every video ends with the disclaimer: "Illustrative only. Not financial advice."
 - Generation runs as **Claude Code routines on a Claude Pro plan** (subscription usage, no API key).

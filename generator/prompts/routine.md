@@ -49,6 +49,11 @@ once per video. For each video, do sections 2 to 7 (or the failure path), then r
 Limits per run: at most **3 shipped videos** and at most **5 attempts** (shipped + failed). Stop
 when either is reached, even if the target isn't met; a later run makes up the rest.
 
+**One video failing never ends the run.** Whatever stops a video — a check that won't pass, a
+website the fact reviewer can't reach, a render error — mark that video failed (the failure path
+below) and go on to the next one with a different template. Only the run-level blockers listed
+under "Rules for every run" end the run early.
+
 Keep each video lean: a brand-new fact-review subagent and a brand-new QA subagent per video
 (never reuse the previous video's), and don't re-read files you already read this run unless
 they changed (a template README you haven't read yet is fine). Pick a different template for
@@ -143,9 +148,14 @@ one that failed.
   template repair described in section 6.
 - Never force-push, delete a branch, or rewrite history.
 - Never commit an mp4 or wav file to `main`. The only place an mp4 goes is the `media/<id>` branch that `ship` creates.
-- Do not use any connector or reach any website. Everything you need is in the repository.
-- If something outside these instructions blocks you, stop and report it. Do not improvise a
-  way around it.
+- Do not use any connector. The only web access in a video run is the fact reviewer confirming
+  sourced facts (`fact_reviewer.md`: the fact's page, or web search when that page can't be
+  reached). Everything else you need is in the repository.
+- **Stop the whole run only for a run-level blocker**: no working Python or ffmpeg after the
+  install attempts in section 0, `state` failing, or pushing to `main` failing after the retry in
+  section 7. Report it with the exact error text. Anything that blocks a single video is not a
+  run-level blocker: fail that video and continue the loop (section 1a). Never improvise a way
+  around a rule.
 
 ## Report
 
