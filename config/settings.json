@@ -18,27 +18,35 @@
   },
   "templates": {
     "long_explainer": {
+      "enabled": false,
+      "weight": 1
+    },
+    "long_story": {
       "enabled": true,
       "weight": 1
     },
     "money_leak_meter": {
-      "enabled": true,
+      "enabled": false,
       "weight": 1
     },
     "money_news": {
-      "enabled": true,
+      "enabled": false,
       "weight": 1
     },
     "myth_vs_fact": {
-      "enabled": true,
+      "enabled": false,
       "weight": 1
     },
     "quiz_countdown": {
+      "enabled": false,
+      "weight": 1
+    },
+    "short_story": {
       "enabled": true,
       "weight": 1
     },
     "two_friends_race": {
-      "enabled": true,
+      "enabled": false,
       "weight": 1
     }
   },
