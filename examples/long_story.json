@@ -19,7 +19,7 @@
       "events": { "phone": { "word": "phone" } },
       "sfx": [ { "kind": "pop", "at": "phone" } ],
       "params": { "set": "store", "actors": [
-        { "who": "rohan", "x": 0.36, "enter": "left", "acting": [
+        { "who": "rohan", "x": 0.36, "acting": [
           { "sec": 0, "pose": "stand", "expression": "happy" },
           { "at": "phone", "pose": "phone", "expression": "laugh", "prop": "phone", "turn": 0.15 } ] } ] } },
 
@@ -40,6 +40,7 @@
       "sfx": [ { "kind": "boom", "at": "years", "gain": 0.8 }, { "kind": "ding", "at": "cost" } ],
       "params": {
         "lines": [
+          { "text": "One easy choice", "style": "kicker", "at": "start" },
           { "text": "{card_years} years", "style": "danger", "at": "years" },
           { "text": "of payments for one phone", "style": "sub", "at": "years" },
           { "text": "{card_total_paid}", "style": "hero", "value": "@card.total_paid", "at": "cost" } ],
@@ -169,6 +170,7 @@
       "events": { "total": { "word": "pays" }, "ratio": { "word": "price" } },
       "sfx": [ { "kind": "boom", "at": "total", "gain": 0.8 }, { "kind": "ding", "at": "ratio" } ],
       "params": { "lines": [
+        { "text": "In total, he pays", "style": "kicker", "at": "start" },
         { "text": "{card_total_paid}", "style": "danger", "value": "@card.total_paid", "at": "total" },
         { "text": "for a {card_amount} phone", "style": "sub", "at": "total" },
         { "text": "{card_ratio} the price", "style": "hero", "at": "ratio" } ] } },

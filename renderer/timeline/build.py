@@ -233,6 +233,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         "figures": figures, "beats": timeline_beats,
         "voices": {"narrator": narrator, **CAST_VOICES}, "speed": speed,
         "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm},
+        "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1)},
         "disclaimer": DISCLAIMER, "voiceMode": voice,
         # the thumbnail card: a cast member reacting, one computed figure, at most four words

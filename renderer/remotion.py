@@ -12,6 +12,7 @@ import json
 import shutil
 import subprocess
 import sys
+import tempfile
 from collections.abc import Callable
 from pathlib import Path
 
@@ -104,6 +105,50 @@ def sheet(paths: list[Path], fps: int, out: Path, cols: int = 6) -> Path:
     return out
 
 
+def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = False, every: float = 5.0,
+                    chunk: int = 1800, concurrency: int = 4) -> dict:
+    """timeline.json (+ its audio.wav) -> out/{video.mp4, thumbnail.png, preview.png, render.json}.
+    `work` holds the bundle, stills and chunks. `preview` stops after the stills. Returns the
+    report, in the keys the Pillow renderer's render.json has, so ship and the workers read either."""
+    out.mkdir(parents=True, exist_ok=True)
+    tl = json.loads(timeline.read_text(encoding="utf-8"))
+    b = bundle(work/"bundle")
+    shots = stills(timeline, work/"stills", every=every, bundle_dir=b)
+    sheet(shots, tl["fps"], out/"preview.png")
+    if tl.get("thumbnail"):
+        _node(["thumbnail", "--timeline", str(timeline), "--out", str(out/"thumbnail.png"), "--bundle", str(b)])
+    else:
+        shutil.copyfile(shots[min(1, len(shots) - 1)], out/"thumbnail.png")
+    seconds = tl["durationInFrames"]/tl["fps"]
+    lines = [{"scene": bt["id"], "text": bt["say"], "start": round(bt["from"]/tl["fps"] + bt["voice"]["start"]/tl["fps"], 2),
+              "seconds": round(bt["voice"]["words"][-1]["e"], 2) if bt["voice"]["words"] else 0.0,
+              "window": round(bt["frames"]/tl["fps"], 2)} for bt in tl["beats"] if bt.get("voice")]
+    for line in lines:
+        line["fill"] = round(line["seconds"]/line["window"], 3) if line["window"] else 0.0
+    report = {
+        "template": tl.get("template"), "renderer": "remotion", "seed": tl["seed"], "duration_sec": round(seconds),
+        "tempo": 1.0, "style": tl.get("style") or {"palette": None, **tl["music"]},
+        "voice": {"name": tl["voices"]["narrator"], "base_speed": tl["speed"], "cast": tl["voices"], "lines": lines},
+        "layout_problems": [],
+    }
+    if not preview:
+        silent = video(timeline, work/"silent.mp4", chunk=chunk, bundle_dir=b, concurrency=concurrency)
+        final = mux(silent, timeline.parent/tl["audio"]["file"], out/"video.mp4")
+        report["audio"] = {"peak_db": tl["audio"]["peak_db"], "mean_db": tl["audio"]["mean_db"]}
+        report["liveliness"], report["liveliness_problems"] = check_liveliness(final)
+    (out/"render.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return report
+
+
+def render_story(script: dict, out: Path, *, preview: bool = False, voice: str = "kokoro") -> dict:
+    """A long_story script -> videos/<id>/ files: the timeline and audio are built into `out`,
+    everything bulky (bundle, stills, chunks) goes to a temporary folder that is removed after."""
+    from renderer.timeline.build import build
+    build(script, out, voice=voice)
+    with tempfile.TemporaryDirectory(prefix="remotion-") as tmp:
+        return render_timeline(out/"timeline.json", out, Path(tmp), preview=preview)
+
+
 def main() -> int:
     import argparse
     ap = argparse.ArgumentParser(description="timeline.json + audio.wav -> video.mp4, stills and preview.png")
@@ -114,28 +159,15 @@ def main() -> int:
     ap.add_argument("--concurrency", type=int, default=4)
     ap.add_argument("--stills-only", action="store_true")
     a = ap.parse_args()
-    out: Path = a.out
-    out.mkdir(parents=True, exist_ok=True)
-    tl = json.loads(a.timeline.read_text(encoding="utf-8"))
-    b = bundle(out/"bundle")
-    shots = stills(a.timeline, out/"stills", every=a.every, bundle_dir=b)
-    sheet(shots, tl["fps"], out/"preview.png")
-    if tl.get("thumbnail"):
-        _node(["thumbnail", "--timeline", str(a.timeline), "--out", str(out/"thumbnail.png"), "--bundle", str(b)])
-    print(f"preview: {out/'preview.png'} ({len(shots)} stills)")
+    report = render_timeline(a.timeline, a.out, a.out, preview=a.stills_only, every=a.every, chunk=a.chunk,
+                             concurrency=a.concurrency)
+    print(f"preview: {a.out/'preview.png'}")
     if a.stills_only:
         return 0
-    silent = video(a.timeline, out/"silent.mp4", chunk=a.chunk, bundle_dir=b, concurrency=a.concurrency)
-    wav = a.timeline.parent/tl["audio"]["file"]
-    final = mux(silent, wav, out/"video.mp4")
-    score, problems = check_liveliness(final)
-    report = {"renderer": "remotion", "durationSec": round(tl["durationInFrames"]/tl["fps"], 2),
-              "audio": tl["audio"], "liveliness": score, "problems": problems}
-    (out/"render.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"video: {final}  liveliness {score}")
-    for problem in problems:
+    print(f"video: {a.out/'video.mp4'}  liveliness {report['liveliness']}")
+    for problem in report["liveliness_problems"]:
         print(f"FAIL: {problem}")
-    return 1 if problems else 0
+    return 1 if report["liveliness_problems"] else 0
 
 
 if __name__ == "__main__":

@@ -26,6 +26,7 @@ import tempfile
 from pathlib import Path
 
 from renderer import cli as renderer
+from renderer import remotion
 
 from . import experiments, history, topics, variety
 from .numbers import number_check
@@ -33,6 +34,7 @@ from .settings import ROOT, load as load_settings
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
 MIN_VOICE_FILL = 0.55   # a long section left more than ~half silent is a thin script
+REMOTION_TEMPLATES = {"long_story": "long"}   # drawn by Remotion (renderer/remotion.py), with their format
 TREND_EXTRA_PER_DAY = 1  # extra Shorts a day for a breaking or trending topic, past the daily target
 AGENTS = ("planner", "writer", *CHECKERS, "render", "ship")
 PLAN_KEYS = ("template", "topic", "story", "hook_style", "cta", "title", "description", "hashtags", "seed", "style")
@@ -69,6 +71,8 @@ def enabled_templates(settings: dict, fmt: str | None = None) -> list[str]:
 def plan_format(plan_or_script: dict) -> str:
     """'short' or 'long', from the template the plan or script names."""
     name = plan_or_script.get("template")
+    if name in REMOTION_TEMPLATES:
+        return REMOTION_TEMPLATES[name]
     return renderer.template_format(name) if name in renderer.template_names() else "short"
 
 
@@ -208,12 +212,17 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     started = history.now().isoformat()
     try:
         script = _read(d / "script.json")
-        flags = experiments.for_video(vid, script.get("template"), root)
-        report = renderer.render(renderer.build(script, flags), d, preview)
+        if script.get("template") in REMOTION_TEMPLATES:
+            report = remotion.render_story(script, d, preview=preview)
+        else:
+            flags = experiments.for_video(vid, script.get("template"), root)
+            report = renderer.render(renderer.build(script, flags), d, preview)
     except (ValueError, RuntimeError) as e:
         log_step(vid, "render", False, [str(e)], root, started)
         return [str(e)]
     problems = list(report["layout_problems"])
+    if report.get("renderer") == "remotion":          # a gate here; Pillow videos only report it
+        problems += report.get("liveliness_problems", [])
     lo, hi = length_range(settings, plan_format(script))
     if not lo <= report["duration_sec"] <= hi:
         problems.append(f"length {report['duration_sec']} s is outside {lo}–{hi} s")

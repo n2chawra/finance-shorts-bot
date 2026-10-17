@@ -202,6 +202,25 @@ def test_render_rejects_length_outside_settings(root: Path) -> None:
     assert any("length 36 s is outside 50–60 s" in p for p in run.render(VID, preview=True, root=root))
 
 
+def test_long_story_renders_with_remotion_and_fails_a_frozen_picture(root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    seen = {}
+
+    def fake_story(script: dict, out: Path, preview: bool = False) -> dict:
+        seen["template"] = script["template"]
+        return {"renderer": "remotion", "duration_sec": 240, "layout_problems": [], "style": {"palette": "night", "genre": "lofi"},
+                "voice": {"name": "am_michael", "lines": [{"scene": "a", "fill": 0.8, "window": 5, "seconds": 4}]},
+                "audio": {"peak_db": -1.0, "mean_db": -17.0},
+                "liveliness_problems": ["12 s with nothing moving (limit 4 s)"]}
+
+    monkeypatch.setattr(run.remotion, "render_story", fake_story)
+    plan = make_plan(template="long_story")
+    put(root, "plan.json", plan)
+    put(root, "script.json", {"template": "long_story", "format": "long", "seed": 1, "beats": []})
+    problems = run.render(VID, root=root)
+    assert seen["template"] == "long_story"
+    assert problems == ["12 s with nothing moving (limit 4 s)"]
+
+
 def test_fail_writes_manifest_but_not_history(root: Path) -> None:
     put(root, "plan.json", make_plan())
     m = run.fail(VID, "Fact review rejected it twice.", root)
