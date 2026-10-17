@@ -42,7 +42,7 @@
       "kind": "news",
       "priority": "breaking",
       "templates": [
-        "money_news"
+        "any"
       ],
       "angle": "My home or car loan EMI: will it go up, and what happens to my FD rate?",
       "why_now": "MPC raised repo by 25 bps on 7 Oct 2026 and moved to 'calibrated tightening'; everyone with a floating-rate loan is asking.",
@@ -67,7 +67,11 @@
       ],
       "found": "2026-10-17",
       "expires": "2026-10-30",
-      "status": "new"
+      "status": "new",
+      "stories": [
+        "rule_change",
+        "how_it_works"
+      ]
     },
     {
       "id": "2026-10-17-amfi-sept-sip-record",
@@ -76,7 +80,7 @@
       "kind": "news",
       "priority": "high",
       "templates": [
-        "money_news"
+        "any"
       ],
       "angle": "Indians kept investing through a market dip; what does staying invested do for one SIP of yours?",
       "why_now": "AMFI's September data (released 12 Oct) shows record SIP contributions while the Nifty fell nearly 6% in the month.",
@@ -101,7 +105,11 @@
       ],
       "found": "2026-10-17",
       "expires": "2026-10-31",
-      "status": "new"
+      "status": "new",
+      "stories": [
+        "psychology",
+        "case_study"
+      ]
     },
     {
       "id": "2026-10-17-emi-after-hike",
@@ -110,9 +118,7 @@
       "kind": "trend",
       "priority": "high",
       "templates": [
-        "quiz_countdown",
-        "money_leak_meter",
-        "myth_vs_fact"
+        "any"
       ],
       "angle": "A small-looking 0.25% costs how much over the loan? Computed from loan amount, rate and tenure.",
       "why_now": "Follows the repo hike; searched alongside it.",
@@ -125,6 +131,88 @@
       ],
       "found": "2026-10-17",
       "expires": "2026-11-14",
+      "status": "new",
+      "stories": [
+        "how_it_works",
+        "decision_duel"
+      ]
+    },
+    {
+      "id": "2026-10-18-cpi-sept-real-return",
+      "title": "Prices rose 5.54% in a year: is your savings account keeping up?",
+      "category": "inflation",
+      "kind": "news",
+      "priority": "high",
+      "stories": [
+        "how_it_works",
+        "decision_duel"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "My money sits in a savings account or FD: after September's inflation figure, am I actually earning anything in real terms?",
+      "why_now": "MoSPI's September CPI (released 12 Oct 2026) jumped to 5.54% from 4.83%, food 7.74%; it also explains why RBI hiked on 7 Oct.",
+      "facts": [
+        {
+          "label": "All-India retail inflation (CPI, year on year), September",
+          "value": 5.54,
+          "unit": "percent",
+          "as_of": "2026-09-30",
+          "source": "MoSPI",
+          "url": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf"
+        },
+        {
+          "label": "Food inflation (CFPI, year on year), September",
+          "value": 7.74,
+          "unit": "percent",
+          "as_of": "2026-09-30",
+          "source": "MoSPI",
+          "url": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf"
+        }
+      ],
+      "verify": [
+        "MoSPI press release of 12 Oct 2026 (base 2024=100) shows CPI 5.54% (provisional) and CFPI 7.74% for September 2026; August final 4.83%",
+        "Savings-account and FD rates are illustrative inputs stated as assumptions, never a named bank's rate",
+        "Real return = (1+nominal)/(1+inflation)-1, computed by code; do not call any product a loss-maker outright",
+        "Category differs from v-20261016-03 (emergency_fund, 'losing buying power'): tell a duel (savings account vs FD vs inflation), not the same erosion story"
+      ],
+      "sources": [
+        "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf",
+        "https://www.businesstoday.in/latest/economy/story/indias-retail-inflation-rises-to-5-54-in-september-food-inflation-hits-7-74-561057-2026-10-12"
+      ],
+      "found": "2026-10-18",
+      "expires": "2026-10-30",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-18-upi-mdr-above-2000",
+      "title": "Will paying by UPI above ₹2,000 cost you extra? What the new merchant fee really is",
+      "category": "payments",
+      "kind": "trend",
+      "priority": "trending",
+      "stories": [
+        "myth_bust",
+        "rule_change"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "A shopkeeper refused my UPI payment over ₹2,000 / asked me to pay extra: is there a UPI charge now, and who pays it?",
+      "why_now": "NPCI's 0.4% merchant fee (MDR) on P2M UPI payments above ₹2,000 was due on 15 Oct and has been deferred until after Diwali; a niche Short on shopkeepers refusing UPI above ₹2,000 got ~40k views in its first 8 hours (market.json, 17 Oct).",
+      "verify": [
+        "NPCI/Finance Ministry: MDR is charged to merchants, not customers; P2P transfers stay free",
+        "Proposed scope: 0.4% on P2M payments above ₹2,000, capped at ₹300 from ₹75,000; small merchants receiving up to ₹1 lakh a month via QR exempt",
+        "Status on the day of the video: confirm whether the rollout is still deferred ('after Diwali', no notified date). If the reviewer can't confirm current status, fail the video",
+        "No on-screen figure as a sourced fact unless an official NPCI/PIB page with it is found; rate and threshold may appear only as spoken/explained inputs the reviewer confirms"
+      ],
+      "sources": [
+        "https://www.deccanherald.com/india/mdr-on-upi-deferred-until-after-diwali-npci-4181482",
+        "https://inc42.com/buzz/npci-notifies-0-4-mdr-on-p2m-upi-transactions-over-%e2%82%b92000/",
+        "https://www.outlookbusiness.com/news/no-mdr-will-be-charged-on-upi-transactions-finmin",
+        "https://youtube.com/shorts/efc3WSCOKns"
+      ],
+      "found": "2026-10-18",
+      "expires": "2026-10-21",
       "status": "new"
     }
   ]

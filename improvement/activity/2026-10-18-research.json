@@ -1,0 +1,44 @@
+{
+  "agent": "research",
+  "day": "2026-10-18",
+  "startedAt": "2026-10-17T18:20:45Z",
+  "finishedAt": "2026-10-17T18:25:46Z",
+  "summary": "Sunday competitor teardown plus news scan: added 2 topics (September inflation, UPI fee myth bust) and 3 proposals, and started the money calendar. Also found a published Short that shows one amount two different ways.",
+  "decision": "acted",
+  "why": "MoSPI's September CPI of 5.54% (checked on the official PDF) and a UPI-fee Short trending in the niche (~40k views in 8 h) are topics viewers want now; the contact sheet of v-20261017-04 shows ₹6.4 L vs ₹6.5 L and ₹16.3 L vs ₹16.5 L for the same quantities.",
+  "findings": [
+    {
+      "title": "Retail inflation 5.54% in September (food 7.74%)",
+      "detail": "Up from 4.83% in August; added to the feed as news, high.",
+      "link": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf"
+    },
+    {
+      "title": "UPI merchant fee above ₹2,000 deferred until after Diwali",
+      "detail": "Merchants pay it, not customers; trending topic, expires 21 Oct.",
+      "link": "https://inc42.com/buzz/npci-notifies-0-4-mdr-on-p2m-upi-transactions-over-%e2%82%b92000/"
+    },
+    {
+      "title": "Inconsistent figures in a published Short",
+      "detail": "v-20261017-04 shows the same totals with different rounding; adopt proposal same-figure-same-text plus an owner notification.",
+      "link": "videos/v-20261017-04/preview.png"
+    },
+    {
+      "title": "Competitor: Mayank Gupta's 'Rich Vs Middle Class Mindset' series",
+      "detail": "Recurring two-person purchase duel with a series tag; highest comment rate in the top 30. Experiment proposed with our cast.",
+      "link": "https://youtube.com/shorts/s7MYpt1KXf4"
+    },
+    {
+      "title": "Claude Code 2.1.302",
+      "detail": "A routine's page now explains why a run didn't start; no pipeline change.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [],
+  "nextCheck": "2026-10-19",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-18.md"
+    }
+  ]
+}
