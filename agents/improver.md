@@ -107,10 +107,13 @@ hard rules (disclaimer, minimum text size, bottom safe zone, liveliness bars) an
      Check it on a sample with `--stills-only` (see section 2), never a full render, and run
      `(cd remotion && npm run typecheck && npm test)`.
 2. Register it in `config/experiments.json`:
-   `{"id": "<kebab>", "area": "…", "status": "running", "startedAt": "<DAY>", "templates": ["all" or names],
-   "share": 0.5, "prompt": {…} (optional), "proposal": "<proposal id>", "description": "…"}`
-   and in `improvement/experiments.json` with the same id plus `"metric": "views48h"`,
-   `"guard": "qa_failures"`, `"minPerArm": 8`, `"maxDays": 14`, `"hypothesis": "…"`.
+   `{"id": "<kebab>", "area": "…", "format": "short" | "long", "status": "running", "startedAt": "<DAY>",
+   "templates": ["short_story"] or ["long_story"], "share": 0.5, "prompt": {…} (optional),
+   "proposal": "<proposal id>", "description": "…"}`. The evaluator judges look, motion and sound
+   changes and every long-video change on average % viewed, and hooks, titles and topics on 48 h
+   views; add `"metric"` only to override that. Long videos are few (2 a week): give a long
+   experiment `"minPerArm": 4` and `"maxDays": 42`. Record it in `improvement/experiments.json`
+   with the same id plus `"guard": "qa_failures"`, `"minPerArm"`, `"maxDays"`, `"hypothesis": "…"`.
 3. `python -m pytest renderer generator improvement -q` must pass.
 4. Proposal status → `testing`.
 

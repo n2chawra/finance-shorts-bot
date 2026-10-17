@@ -20,10 +20,11 @@ activity file (decision `nothing`, why "paused in settings"), push it (section 5
 
 Read: `improvement/merge-log.json` (last 5 entries for research), your last 7 reports in
 `improvement/research/`, `improvement/research/proposals.json`, `improvement/research/seen.json`,
-and a summary of `metrics/videos.json` (count, best and worst 5 by `views48h`, and what they have
-in common: template, hook style, palette, music, length). If `python -m improvement.evaluate` runs
-(any Python 3.11+ works; it needs no packages beyond the standard library), read its attribute
-ranking too: that's what actually performs on this channel.
+and a summary of `metrics/videos.json` (count, best and worst 5 by `views48h` and by `avgViewPct`,
+Shorts and long videos apart, and what they have in common). Run `python -m improvement.evaluate`
+(any Python 3.11+ works; it needs no packages beyond the standard library) and read its ranking by
+story, hook, title shape, topic, upload hour, palette, music, voice and length: that's what actually
+performs on this channel, and your proposals should start from it.
 
 ## 1. Every night: the craft pass (half your effort)
 Channel growth depends on how the videos are made. Study **3–5 high-performing Shorts** in personal
@@ -167,7 +168,7 @@ Upsert `improvement/research/proposals.json` entries:
 {"id": "short-kebab-id", "date": "<DAY>", "area": "motion|pacing|text|colour|sound|music|hook|ending|script|title|template|pipeline|claude",
  "title": "…", "change": "what exactly to change, specific enough to implement",
  "evidence": ["https://…"], "expectedEffect": "…", "confidence": "low|medium|high", "effort": "S|M|L",
- "risk": "…", "metric": "views48h | avgViewPct | qa_failures", "status": "new",
+ "risk": "…", "metric": "views48h | views7d | avgViewPct | qa_failures", "status": "new",
  "route": "adopt|experiment|template", "priority": "breaking|high|normal"}
 ```
 Don't re-propose something whose status is testing, kept, reverted or rejected unless you have new

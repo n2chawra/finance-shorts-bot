@@ -5,13 +5,20 @@ it does not make them up.
     python -m improvement.evaluate --json     # the same as JSON
 
 Inputs (written by the ingest workflow, agents have no database access):
-  metrics/videos.json  published videos: id, template, hookStyle, palette, genre, bpm, durationSec,
-                       category, publishAt, experiments {id: on|off}, views48h, avgViewPct, views
+  metrics/videos.json  published videos: id, format, template, hookStyle, title, palette, genre, bpm,
+                       durationSec, category, publishAt, experiments {id: on|off}, views48h, views7d,
+                       avgViewPct, views
+  history/history.json each video's story
   metrics/runs.json    every attempted video: id, day, template, status shipped|failed, reason
   config/experiments.json  running experiments (see generator/experiments.py)
 
-Primary metric: views in the first two days (comparable across ages). Secondary: average % viewed.
-Guard: share of attempts that failed QA/fact review.
+Each experiment is judged within one format (`format`: short, the default, or long) on one metric:
+  views48h     views in the first two days (comparable across ages): hooks, titles, topics, scripts
+  avgViewPct   average % viewed: how a video looks, moves and sounds, and every long-video change.
+               It depends far less on the algorithm's luck than views do while the channel is small.
+  views7d      views in the first seven days, for long videos whose views come slowly
+An experiment may name its `metric`; otherwise its area and format decide. A video counts once
+Analytics has its second day. Guard: share of attempts that failed QA/fact review.
 """
 from __future__ import annotations
 
@@ -20,17 +27,24 @@ import json
 import random
 import statistics
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from generator import experiments as exps  # noqa: E402
+from generator import variety  # noqa: E402
+
+IST = timezone(timedelta(hours=5, minutes=30))
 
 MIN_PER_ARM = 8          # videos per arm with 48 h data before judging
 MAX_DAYS = 14            # judge anyway after this long
-KEEP_LIFT = 1.10         # on-arm median ≥ 110% of off-arm
-REVERT_DROP = 0.90       # on-arm median ≤ 90% of off-arm
+KEEP_LIFT = 1.10         # on-arm median ≥ 110% of off-arm (views)
+REVERT_DROP = 0.90       # on-arm median ≤ 90% of off-arm (views)
+# % viewed moves less than views do: five points on fifty is a real change
+LIFTS = {"views48h": (KEEP_LIFT, REVERT_DROP), "views7d": (KEEP_LIFT, REVERT_DROP), "avgViewPct": (1.05, 0.95)}
+METRICS = tuple(LIFTS)
+RETENTION_AREAS = frozenset({"motion", "pacing", "text", "colour", "sound", "music", "voice", "ending", "scene", "template"})
 CONFIDENCE = 0.80        # bootstrap probability required
 GUARD_PP = 0.15          # extra failure share in the on-arm that forces a revert
 MIN_TEMPLATE_N = 6       # videos before a template's weight follows performance
@@ -59,20 +73,31 @@ def prob_greater(a: list[float], b: list[float], n: int = 2000, seed: int = 7) -
     return wins/n
 
 
+def metric_of(exp: dict) -> str:
+    """What an experiment is judged on: its own `metric`, else retention for look, sound and every
+    long-video change, else 48 h views."""
+    if exp.get("metric") in METRICS:
+        return exp["metric"]
+    return "avgViewPct" if exp.get("format") == "long" or exp.get("area") in RETENTION_AREAS else "views48h"
+
+
 def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) -> dict:
     """Verdict for one experiment: wait | keep | revert | extend | abandon."""
     eid = exp["id"]
     started = exp.get("startedAt", "1970-01-01")
     share = float(exp.get("share", 0.5))
+    fmt, metric = exp.get("format", "short"), metric_of(exp)
+    keep_lift, revert_drop = LIFTS[metric]
     arms: dict[str, list[dict]] = {"on": [], "off": []}
     for v in videos:
-        if v.get("publishAt", "") < started or v.get("views48h") is None:
+        if v.get("publishAt", "") < started or v.get("format", "short") != fmt or v.get("views48h") is None or v.get(metric) is None:
             continue
         variant = (v.get("experiments") or {}).get(eid)
         if variant in arms:
             arms[variant].append(v)
-    on = [v["views48h"] + 1 for v in arms["on"]]     # +1 so zero-view arms still compare
-    off = [v["views48h"] + 1 for v in arms["off"]]
+    smooth = 0 if metric == "avgViewPct" else 1     # +1 so zero-view arms still compare
+    on = [v[metric] + smooth for v in arms["on"]]
+    off = [v[metric] + smooth for v in arms["off"]]
     pct_on = [v["avgViewPct"] for v in arms["on"] if v.get("avgViewPct") is not None]
     pct_off = [v["avgViewPct"] for v in arms["off"] if v.get("avgViewPct") is not None]
 
@@ -96,8 +121,8 @@ def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) ->
     ratio = _median(on)/_median(off) if off else None
     p_up = prob_greater(on, off)
     out = {
-        "id": eid, "area": exp.get("area"), "days": days, "n_on": len(on), "n_off": len(off),
-        "median48h_on": _median(on) - 1 if on else None, "median48h_off": _median(off) - 1 if off else None,
+        "id": eid, "area": exp.get("area"), "format": fmt, "metric": metric, "days": days, "n_on": len(on), "n_off": len(off),
+        "median_on": _median(on) - smooth if on else None, "median_off": _median(off) - smooth if off else None,
         "ratio": round(ratio, 3) if ratio else None, "p_on_better": round(p_up, 3),
         "avgPct_on": round(statistics.mean(pct_on), 1) if pct_on else None,
         "avgPct_off": round(statistics.mean(pct_off), 1) if pct_off else None,
@@ -105,13 +130,15 @@ def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) ->
     }
     if guard_bad:
         return {**out, "verdict": "revert", "why": f"QA/fact failures {fail_on:.0%} with the change vs {fail_off:.0%} without"}
+    label = {"views48h": "views in 48 h", "views7d": "views in 7 days", "avgViewPct": "average % viewed"}[metric]
     if n < min_per_arm and days < max_days:
         need = min_per_arm - n
-        return {**out, "verdict": "wait", "why": f"{n} of {min_per_arm} videos per arm have 48 h data; about {need} more days at 2 uploads a day"}
-    if ratio is not None and ratio >= KEEP_LIFT and p_up >= CONFIDENCE:
-        return {**out, "verdict": "keep", "why": f"{(ratio - 1):+.0%} views in 48 h, {p_up:.0%} confidence"}
-    if ratio is not None and ratio <= REVERT_DROP and 1 - p_up >= CONFIDENCE:
-        return {**out, "verdict": "revert", "why": f"{(ratio - 1):+.0%} views in 48 h, {1 - p_up:.0%} confidence it is worse"}
+        pace = "about one more long video per arm a week" if fmt == "long" else f"about {need} more days at 2 uploads a day"
+        return {**out, "verdict": "wait", "why": f"{n} of {min_per_arm} {fmt} videos per arm have data; {pace}"}
+    if ratio is not None and ratio >= keep_lift and p_up >= CONFIDENCE:
+        return {**out, "verdict": "keep", "why": f"{(ratio - 1):+.0%} {label}, {p_up:.0%} confidence"}
+    if ratio is not None and ratio <= revert_drop and 1 - p_up >= CONFIDENCE:
+        return {**out, "verdict": "revert", "why": f"{(ratio - 1):+.0%} {label}, {1 - p_up:.0%} confidence it is worse"}
     if exp.get("extended"):
         return {**out, "verdict": "abandon", "why": "no clear effect after the extension; remove the flag"}
     return {**out, "verdict": "extend", "why": "no clear effect yet; extend once (set extended: true, add maxDays 14)"}
@@ -178,21 +205,37 @@ def recurring_failures(attempts: list[dict], now: datetime, days: int = 3) -> li
     return [{"pattern": k, "videos": v} for k, v in seen.items() if len(v) >= 2]
 
 
+def ist_hour(at: str | None) -> str | None:
+    """'12:00-12:59 IST' for a publish time, so upload slots can be compared."""
+    if not at:
+        return None
+    t = datetime.fromisoformat(at.replace("Z", "+00:00")).astimezone(IST)
+    return f"{t.hour:02d}:00-{t.hour:02d}:59 IST"
+
+
+def attributes(videos: list[dict], stories: dict[str, str | None]) -> list[dict]:
+    """What performs, by every choice a video run makes, ranked within one format."""
+    band = lambda b: None if b is None else f"{int(b)//10*10}-{int(b)//10*10 + 9} BPM"  # noqa: E731
+    length = lambda d: None if d is None else f"{int(d)//5*5}-{int(d)//5*5 + 4} s"  # noqa: E731
+    keys = [(lambda v: stories.get(v["id"]), "story"), (lambda v: v.get("hookStyle"), "hook style"),
+            (lambda v: variety.title_shape(v["title"]) if v.get("title") else None, "title shape"),
+            (lambda v: v.get("category"), "topic"), (lambda v: ist_hour(v.get("publishAt")), "upload hour"),
+            (lambda v: v.get("palette"), "palette"), (lambda v: v.get("genre"), "music genre"),
+            (lambda v: band(v.get("bpm")), "tempo"), (lambda v: v.get("voice") or "none", "voice"),
+            (lambda v: length(v.get("durationSec")), "length")]
+    return [row for key, label in keys for row in rank(videos, key, label)]
+
+
 def report(root: Path = ROOT, now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
     videos = _read(root / "metrics" / "videos.json", {"videos": []})["videos"]
     attempts = _read(root / "metrics" / "runs.json", {"videos": []})["videos"]
-    settings = _read(root / "config" / "settings.json", {})
-    enabled = {t: c for t, c in settings.get("templates", {}).items() if c.get("enabled", True)}
-    band = lambda b: None if b is None else f"{int(b)//10*10}-{int(b)//10*10 + 9} BPM"  # noqa: E731
-    length = lambda d: None if d is None else f"{int(d)//5*5}-{int(d)//5*5 + 4} s"  # noqa: E731
+    stories = {e["id"]: variety.story_of(e) for e in _read(root / "history" / "history.json", [])}
+    by_format = {f: [v for v in videos if v.get("format", "short") == f] for f in ("short", "long")}
     return {
         "generatedAt": now.isoformat(), "videosWithData": sum(v.get("views48h") is not None for v in videos),
         "experiments": [judge(e, videos, attempts, now) for e in exps.load(root)],
-        "templates": template_advice(videos, enabled),
-        "attributes": [*rank(videos, lambda v: v.get("hookStyle"), "hook style"), *rank(videos, lambda v: v.get("palette"), "palette"),
-                       *rank(videos, lambda v: v.get("genre"), "music genre"), *rank(videos, lambda v: v.get("voice") or "none", "voice"), *rank(videos, lambda v: band(v.get("bpm")), "tempo"),
-                       *rank(videos, lambda v: length(v.get("durationSec")), "length"), *rank(videos, lambda v: v.get("category"), "topic")],
+        "attributes": {f: attributes(vs, stories) for f, vs in by_format.items()},
         "recurringFailures": recurring_failures(attempts, now),
     }
 
@@ -207,14 +250,12 @@ def main() -> int:
     print(f"Videos with 48 h data: {r['videosWithData']}")
     print("\nExperiments:" if r["experiments"] else "\nExperiments: none running")
     for e in r["experiments"]:
-        print(f"  {e['id']} [{e['area']}] {e['verdict'].upper()}: {e['why']} (on {e['n_on']}, off {e['n_off']})")
-    print("\nTemplates:")
-    for t in r["templates"]:
-        print(f"  {t['template']}: {t['action']} → weight {t['weight']} ({t['why']})")
-    print("\nWhat performs (relative to the median, n ≥ 3):")
-    for a in r["attributes"]:
-        if a["n"] >= 3:
-            print(f"  {a['by']:>11} {a['value']:<22} {a['relative']:.2f}×  n={a['n']}  avg viewed {a['avgPct']}%")
+        print(f"  {e['id']} [{e['area']}, {e['format']}, {e['metric']}] {e['verdict'].upper()}: {e['why']} (on {e['n_on']}, off {e['n_off']})")
+    for fmt, rows in r["attributes"].items():
+        print(f"\nWhat performs in {fmt} videos (48 h views relative to the median, n ≥ 3):")
+        for a in rows:
+            if a["n"] >= 3:
+                print(f"  {a['by']:>11} {a['value']:<26} {a['relative']:.2f}×  n={a['n']}  avg viewed {a['avgPct']}%")
     if r["recurringFailures"]:
         print("\nRecurring failures (fix these):")
         for f in r["recurringFailures"]:

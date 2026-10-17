@@ -52,6 +52,29 @@ def test_guard_reverts_when_the_change_makes_videos_fail() -> None:
     assert r["verdict"] == "revert" and "failures" in r["why"]
 
 
+def test_the_metric_follows_the_area_and_the_format() -> None:
+    assert ev.metric_of(EXP) == "views48h"
+    assert ev.metric_of({**EXP, "area": "motion"}) == "avgViewPct"
+    assert ev.metric_of({**EXP, "format": "long"}) == "avgViewPct"
+    assert ev.metric_of({**EXP, "area": "motion", "metric": "views48h"}) == "views48h"
+
+
+def test_a_look_change_is_judged_on_retention_within_its_format() -> None:
+    look = {**EXP, "area": "motion"}
+    vs = videos([100] * 9, [100] * 9)
+    for v in vs:
+        v["avgViewPct"] = 66.0 if v["experiments"]["fast-hook"] == "on" else 55.0
+    longs = [{**v, "format": "long", "avgViewPct": 10.0} for v in vs]     # other format: ignored
+    r = ev.judge(look, vs + longs, [], NOW)
+    assert r["metric"] == "avgViewPct" and r["n_on"] == 9 and r["verdict"] == "keep"
+    assert ev.judge({**look, "format": "long"}, vs, [], NOW)["n_on"] == 0
+
+
+def test_upload_hours_are_in_ist() -> None:
+    assert ev.ist_hour("2026-10-17T07:07:00.000Z") == "12:00-12:59 IST"
+    assert ev.ist_hour(None) is None
+
+
 def test_template_weights_follow_performance_and_retire_the_worst() -> None:
     vs = []
     for i in range(12):

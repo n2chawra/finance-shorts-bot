@@ -169,13 +169,16 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
     const byDay = new Map(u.stats.map((s) => [s.day.toISOString().slice(0, 10), s]));
     // views in the publish day and the next: only once Analytics has the second day
     const views48h = byDay.has(day1) ? (byDay.get(day0)?.views ?? 0) + byDay.get(day1)!.views : null;
+    // the first week, for long videos whose views come slowly: only once Analytics has day seven
+    const week = Array.from({ length: 7 }, (_, i) => istDay(new Date(u.publishAt.getTime() + i * DAY_MS)));
+    const views7d = byDay.has(week[6]!) ? week.reduce((a, d) => a + (byDay.get(d)?.views ?? 0), 0) : null;
     const totalViews = u.stats.reduce((a, s) => a + s.views, 0);
     const avgViewPct = totalViews > 0 ? Math.round(u.stats.reduce((a, s) => a + s.avgViewPct * s.views, 0) / totalViews * 10) / 10 : null;
     return {
-      id: v.id, template: v.templateId, category: v.topic.category, hookStyle: v.hookStyle, title: v.title,
+      id: v.id, format: v.format, template: v.templateId, category: v.topic.category, hookStyle: v.hookStyle, title: v.title,
       palette: style.palette ?? null, genre: style.genre ?? null, bpm: style.bpm ?? null, voice: style.voice ?? null, durationSec: v.durationSec,
       experiments: style.experiments ?? {}, publishAt: u.publishAt.toISOString(), manual: !u.attempts,
-      views48h, avgViewPct, views: Math.max(totalViews, u.liveViews ?? 0), likes: Math.max(u.stats.reduce((a, s) => a + s.likes, 0), u.liveLikes ?? 0),
+      views48h, views7d, avgViewPct, views: Math.max(totalViews, u.liveViews ?? 0), likes: Math.max(u.stats.reduce((a, s) => a + s.likes, 0), u.liveLikes ?? 0),
       subsGained: u.stats.reduce((a, s) => a + s.subsGained, 0),
     };
   });
