@@ -25,7 +25,9 @@ if it still is not there, stop and report it. If `setup-cloud.sh` fails, stop an
 line: a long video cannot be drawn without it.
 
 Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused` or `agents.studio`
-false. Read `improvement/merge-log.json` (your last 3 entries) and `improvement/longform/backlog.json`.
+false. Read `improvement/merge-log.json` (your last 3 entries) and `improvement/longform/backlog.json`:
+every open item with `route: adopt` and `where: script` is a rule for tonight's script, on top of the
+README. You never change code; scene, design and recipe items are the improver's.
 
 ## 1. Decide whether to make one
 ```

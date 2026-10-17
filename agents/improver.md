@@ -24,8 +24,9 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 
 Read: `improvement/merge-log.json` (your last 5 entries; if the last was blocked, fixing that reason
 is tonight's first job), `improvement/journal.md` (last 20 lines), `improvement/experiments.json`,
-`config/experiments.json`, new proposals in `improvement/research/proposals.json`, the latest
-research report, `metrics/runs.json` (last 7 days). Then run:
+`config/experiments.json`, new proposals in `improvement/research/proposals.json`, open items in
+`improvement/longform/backlog.json`, the latest research and Scout reports, `metrics/runs.json`
+(last 7 days). Then run:
 ```
 python -m improvement.evaluate
 ```
@@ -75,6 +76,14 @@ Research sorts its findings. Act on them in this order, highest priority first:
 - `video` proposals are not yours: research puts those in `improvement/research/topics.json`, and the
   video run uses them. If you find one in `proposals.json`, move it there.
 Set each proposal's `status` (`adopted`, `testing`, `building`, `done`, `rejected` with a `reason`).
+
+**Long videos too.** Scout routes long-video findings the same way in
+`improvement/longform/backlog.json` (`route`, `priority`, `where`). They are yours on the same terms:
+recipes in `renderer/templates/long_story/README.md`, scenes and design in `remotion/src` (long
+videos use the `LONG` frame), experiments with `"templates": ["long_story"]`. Leave items with
+`where: script` and route `adopt` to Studio, which follows them when it writes. Weigh a long-video
+item against a Shorts proposal by priority; long videos earn most of the channel's money, so at
+equal priority take the long one. Set the item's `status` as you would a proposal's.
 
 ## 4. Start at most one new experiment
 Only if: fewer running experiments than `agents.maxActiveExperiments`, nothing from steps 1–3

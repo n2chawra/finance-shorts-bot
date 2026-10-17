@@ -83,12 +83,16 @@ them:
 | Sun | **Competitors**: two Indian finance channels doing long-form, what they do that we cannot |
 
 Turn what you find into entries in `improvement/longform/backlog.json`
-(`{"items": [{"id", "kind": "craft|bug|idea", "title", "detail", "where": "template|script|thumbnail",
-"priority", "found", "status": "open"}]}`), and route them the same way the research agent does:
+(`{"items": [{"id", "kind": "craft|bug|idea", "title", "detail", "where": "template|script|thumbnail|scene",
+"route", "priority", "found", "status": "open"}]}`), and route them the same way the research agent does:
 `adopt` for things that are plainly right, `experiment` for things that might not be, `template` for
 a new block or layout the renderer does not have, `owner` for anything only Naishadh can do.
 
-You may not change code. The Studio agent picks up `adopt` and `template` items on its runs.
+Give every item a `route` (`adopt`, `experiment`, `template` or `owner`). You may not change code.
+The improver agent applies `adopt`, `experiment` and `template` items (recipes in
+`renderer/templates/long_story/README.md`, scenes and design in `remotion/src`), and Studio follows
+open `adopt` items with `where: script` when it writes. Write each item so it can be built without
+asking you: what to change, where, and how we will know it worked.
 
 ## 4. Write the report
 `improvement/longform/<DAY>.md`:
