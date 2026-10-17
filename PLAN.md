@@ -302,3 +302,7 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   liveliness. First sample, `examples/long_story.json` (credit card minimum due, 34 beats, five
   chapters): 4:00, peak −1.0 dB, mean −17.0 dB, liveliness median 1.36, 6.6% still, longest still
   4.0 s (at the limit); 19 min to render locally at concurrency 3. Waiting on owner approval.
+- 2026-10-17: Owner liked the sample but found it slow ("flawless at 1.5x"). Long videos now play at
+  tempo 1.5: Kokoro speaks at 1.5x and every pause, animation, transition and camera move runs 1.5x
+  faster with it (scenes run on a story clock in Remotion). Same length target, so a 4–6 min video
+  needs ~850–1,300 words. The sample was not re-rendered.

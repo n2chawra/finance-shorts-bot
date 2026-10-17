@@ -57,7 +57,7 @@ def test_beats_follow_their_words(tmp_path: Path) -> None:
          "sfx": [{"kind": "pop", "at": "cost"}], "params": {"series": "@card.balance", "v": "@card.total_paid"}},
         {"id": "b", "scene": "chapter", "params": {"title": "Part one"}},
     ]
-    t = tb.build(script(beats), tmp_path, voice="estimate")
+    t = tb.build(script(beats, tempo=1), tmp_path, voice="estimate")
     a, b = t["beats"]
     assert a["from"] == 0 and b["from"] == a["frames"]
     assert a["events"]["speech"] == round(tb.LEAD * tb.FPS) < a["events"]["cost"] < a["frames"]
@@ -96,9 +96,23 @@ def test_smooth_is_a_centred_moving_average() -> None:
     assert np.allclose(tb._smooth(x, k), expected)
 
 
+def test_long_videos_play_at_their_tempo(tmp_path: Path) -> None:
+    beats = [{"id": "a", "scene": "bignumber", "say": "It costs {card_amount} today, every single month.",
+              "events": {"later": {"sec": 3}}, "min_sec": 0},
+             {"id": "b", "scene": "chapter"}]
+    slow = tb.build(script(beats, tempo=1), tmp_path / "slow", voice="estimate")
+    fast = tb.build(script(beats), tmp_path / "fast", voice="estimate")
+    assert fast["tempo"] == tb.TEMPOS["long"] == 1.5 and fast["speed"] == 1.5 and slow["speed"] == 1.0
+    for s, f in zip(slow["beats"], fast["beats"]):
+        assert f["frames"] == pytest.approx(s["frames"] / 1.5, abs=1)       # voice, pauses, chapter cards
+    assert fast["beats"][0]["events"]["later"] == round(3 / 1.5 * tb.FPS)   # story seconds -> real
+    assert fast["beats"][0]["voice"]["words"][-1]["e"] == pytest.approx(slow["beats"][0]["voice"]["words"][-1]["e"] / 1.5, rel=0.02)
+
+
 def test_long_story_example_builds(tmp_path: Path) -> None:
     s = json.loads((EXAMPLES / "long_story.json").read_text(encoding="utf-8"))
     t = tb.build(s, tmp_path, voice="estimate")
-    assert 180 <= t["durationInFrames"]/tb.FPS <= 900
+    # the first sample was written for the old pace: 4 min at tempo 1, about 2:45 at 1.5
+    assert 150 <= t["durationInFrames"]/tb.FPS <= 900
     assert {b["scene"] for b in t["beats"]} >= {"stage", "chapter", "chart", "end"}
     assert t["beats"][-1]["scene"] == "end"

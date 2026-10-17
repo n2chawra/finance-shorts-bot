@@ -102,7 +102,7 @@ voice, layout checks, number checks, variety rules — is shared.
 | Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Mon/Wed/Fri 14:37 IST, 1 a run) |
 | Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, daily 09:37 IST) |
 | Templates | `quiz_countdown`, `myth_vs_fact`, `money_leak_meter`, `two_friends_race`, `money_news` | `long_explainer` (scenes from `renderer/engine/longform.py`, acted by `renderer/engine/actor.py`) |
-| Length | 30–45 s (a 48–60 s story at `TEMPO` 1.35) | 180–900 s, `tempo` 1.0, aiming for 4–6 min |
+| Length | 30–45 s (a 48–60 s story at `TEMPO` 1.35) | 180–900 s, aiming for 4–6 min; Remotion `long_story` plays at `tempo` 1.5 (~215 spoken words a minute) |
 | Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
 

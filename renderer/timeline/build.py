@@ -44,6 +44,12 @@ NARRATOR_VOICES = ("am_michael", "af_heart", "af_bella", "am_fenrir")
 # each recurring character always speaks with the same voice, so viewers know them by ear
 CAST_VOICES = {"rohan": "am_puck", "priya": "hf_alpha", "sharma": "am_fenrir", "sikka": "af_bella"}
 SPEEDS = {"long": 1.0, "short": 1.15}
+# Pace: the whole video plays this much faster than its story clock, voice, pauses, animations and
+# transitions together, like watching at that playback speed. The owner watched the first long
+# sample at 1.5x and called it right (2026-10-17). Scripts are written on the story clock: LEAD,
+# TAIL, GAP_NO_VOICE, min_sec and {"sec"/"end"} events are story seconds, divided by the tempo here;
+# the voice is spoken at speed x tempo; Remotion runs each scene's animations on the story clock.
+TEMPOS = {"long": 1.5, "short": 1.0}
 
 
 @dataclass
@@ -92,12 +98,14 @@ def _resolve(value, figures: dict[str, str], results: dict, where: str):
     return value
 
 
-def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float, duration: float, where: str) -> float:
-    """Seconds into the beat for an event: a word (by index or by the word itself) or a time."""
+def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float, duration: float, where: str,
+                tempo: float = 1.0) -> float:
+    """Seconds into the beat for an event: a word (by index or by the word itself) or a time
+    (story seconds, so divided by the tempo)."""
     if isinstance(spec, (int, float)):
-        return float(spec)
+        return float(spec)/tempo
     if "sec" in spec:
-        return float(spec["sec"])
+        return float(spec["sec"])/tempo
     w = spec.get("word")
     if isinstance(w, int):
         if not words:
@@ -111,7 +119,7 @@ def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float
                 return speech_start + a
         raise ValueError(f"{where}: no word {w!r} in this beat's line")
     if spec.get("end"):
-        return max(0.0, duration - float(spec["end"]))
+        return max(0.0, duration - float(spec["end"])/tempo)
     raise ValueError(f"{where}: an event is {{'word': n}}, {{'word': 'text'}}, {{'sec': x}} or {{'end': x}}")
 
 
@@ -158,7 +166,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     results = maths.compute(script.get("maths", []))
     figures = maths.placeholders(results)
     narrator = script.get("narrator") or random.Random(f"narrator:{seed}").choice(NARRATOR_VOICES)
-    speed = float(script.get("speed", SPEEDS[fmt]))
+    tempo = float(script.get("tempo", TEMPOS[fmt]))
+    speed = float(script.get("speed", SPEEDS[fmt]))*tempo        # the voice, at the video's pace
+    lead, tail, gap = LEAD/tempo, TAIL/tempo, GAP_NO_VOICE/tempo
 
     beats = [Beat(**b) for b in script["beats"]]
     if len({b.id for b in beats}) != len(beats):
@@ -173,24 +183,24 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         if spoken:
             who = CAST_VOICES.get(b.speaker, narrator) if b.speaker != "narrator" else narrator
             line = _estimate(spoken, speed) if voice == "estimate" else tts.speak_timed(spoken, who, speed)
-            dur = max(b.min_sec, LEAD + line.seconds + TAIL)
+            dur = max(b.min_sec/tempo, lead + line.seconds + tail)
         else:
-            line, dur = None, max(b.min_sec, GAP_NO_VOICE)
+            line, dur = None, max(b.min_sec/tempo, gap)
         frames = max(1, round(dur*FPS))
         dur = frames/FPS
         # captions show figures as they appear on screen ("₹1.7 L"), not as they are spoken
         words = [(w, a, e) for w, a, e in (line.words if line else [])]
-        events = {"start": 0, "speech": round(LEAD*FPS) if line else 0, "end": frames}
+        events = {"start": 0, "speech": round(lead*FPS) if line else 0, "end": frames}
         for name, spec in b.events.items():
-            events[name] = round(_event_time(spec, words, LEAD, dur, f"{where}.events.{name}")*FPS)
+            events[name] = round(_event_time(spec, words, lead, dur, f"{where}.events.{name}", tempo)*FPS)
         if line is not None:
-            lines.append((cursor + LEAD, line, b.speaker))
+            lines.append((cursor + lead, line, b.speaker))
         timeline_beats.append({
             "id": b.id, "scene": b.scene, "from": round(cursor*FPS), "frames": frames, "params": params,
             "events": events, "camera": b.camera, "transition": b.transition, "speaker": b.speaker,
             "chapter": b.chapter, "say": text,
             "voice": None if line is None else {
-                "start": round(LEAD*FPS), "speaker": b.speaker,
+                "start": round(lead*FPS), "speaker": b.speaker,
                 "words": [{"w": w, "s": round(a, 3), "e": round(e, 3)} for w, a, e in words],
                 "phonemes": [{"p": p, "s": round(a, 3), "e": round(e, 3)} for p, a, e in line.phonemes],
             },
@@ -231,7 +241,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                     "accent": hexc(p.accent), "danger": hexc(p.danger), "panel": hexc(p.panel), "grid": hexc(p.grid),
                     "cast": [hexc(c) for c in p.cast]},
         "figures": figures, "beats": timeline_beats,
-        "voices": {"narrator": narrator, **CAST_VOICES}, "speed": speed,
+        "voices": {"narrator": narrator, **CAST_VOICES}, "speed": speed, "tempo": tempo,
         "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm},
         "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1)},

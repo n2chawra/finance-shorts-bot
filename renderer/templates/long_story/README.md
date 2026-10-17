@@ -90,6 +90,17 @@ Each acting key `{sec | at: event, pose?, expression?, turn?, prop?}` blends in 
 A figure with `value` counts up and lands exactly on Python's string. Every video ends with an
 `end` beat, which always shows "Illustrative only. Not financial advice."
 
+## Pace and length
+
+Long videos play at **tempo 1.5** (`TEMPOS` in `renderer/timeline/build.py`; the owner watched
+the first sample at 1.5× and called it right). The voice speaks at 1.5× and every pause,
+animation, transition and camera move runs 1.5× faster with it, like watching at that playback
+speed. Write on the story clock: `min_sec` and `{"sec": …}` events are story seconds.
+
+At this pace narration runs about **215 words a minute**. A 4–6 min video needs roughly
+**850–1,300 words** across 50–75 beats (the first sample: 574 words in 34 beats, which comes out
+at about 2:45 at this pace, too short to ship).
+
 ## Craft rules
 
 - Hook in the first 30 s with rupee stakes; chapters from the start; an escalation around 1:30

@@ -60,6 +60,9 @@ export const Timeline = z.object({
   beats: z.array(Beat).min(1),
   voices: z.record(z.string(), z.string()),
   speed: z.number(),
+  // the video plays this much faster than its story clock (renderer/timeline/build.py TEMPOS):
+  // frames here are real frames; scenes animate on the story clock (StoryVideo converts)
+  tempo: z.number().positive().default(1),
   music: z.object({ genre: z.string(), key: z.string(), bpm: z.number() }),
   audio: z.object({ file: z.string(), peak_db: z.number(), mean_db: z.number() }),
   disclaimer: z.literal("Illustrative only. Not financial advice."),

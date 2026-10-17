@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { onStoryClock } from "../src/contract/clock";
 import { isScene } from "../src/contract/scenes";
 import { Timeline } from "../src/contract/timeline";
 import sample from "../src/fixtures/sample-timeline.json";
@@ -41,5 +42,19 @@ describe("timeline contract", () => {
 
   it("rejects a timeline without the disclaimer", () => {
     expect(() => Timeline.parse({ ...sample, disclaimer: "" })).toThrow();
+  });
+
+  it("reads a timeline without a tempo as tempo 1 (the first sample)", () => {
+    expect(tl.tempo).toBe(1);
+  });
+
+  it("puts a beat on the story clock: length, events and voice scale together", () => {
+    const beat = tl.beats.find((b) => b.voice && Object.keys(b.events).length > 3)!;
+    const story = onStoryClock(beat, 1.5);
+    expect(story.frames).toBeCloseTo(beat.frames * 1.5);
+    for (const [k, f] of Object.entries(beat.events)) expect(story.events[k]).toBeCloseTo(f * 1.5);
+    expect(story.voice!.start).toBeCloseTo(beat.voice!.start * 1.5);
+    expect(story.voice!.phonemes[0]!.s).toBeCloseTo(beat.voice!.phonemes[0]!.s * 1.5);
+    expect(onStoryClock(beat, 1)).toBe(beat);
   });
 });
