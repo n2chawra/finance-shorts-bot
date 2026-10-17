@@ -1,0 +1,15 @@
+Downloading Chrome Headless Shell https://www.remotion.dev/chrome-headless-shell
+Downloading from: https://remotion.media/chromium-headless-shell-linux-x64-157.0.8080.0.zip?clear
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+Error: getaddrinfo ENOTFOUND remotion.media
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'remotion.media'
+}
+
+Node.js v22.22.0
