@@ -79,3 +79,12 @@ test("notifications explain how to fix each problem", async ({ page }) => {
   await expect(page.getByText("How to fix").first()).toBeVisible();
   await expect(page.getByRole("button", { name: "Mark resolved" }).first()).toBeVisible();
 });
+
+test("queue rows never clip their text sideways", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/queue");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Queue/, { timeout: 30_000 });
+  const clipped = await page.locator("ol li").evaluateAll((rows) =>
+    rows.filter((r) => [...r.querySelectorAll("div")].some((d) => d.scrollWidth > d.clientWidth + 1 && getComputedStyle(d).overflow !== "visible" && d.clientWidth > 0 && d.children.length > 1)).length);
+  expect(clipped).toBe(0);
+});

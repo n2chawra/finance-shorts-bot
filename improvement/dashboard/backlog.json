@@ -1,5 +1,30 @@
 {
-  "items": [
-    {"id": "notif-phone-layout", "kind": "bug", "title": "Notifications: ambiguous 'Resolved' button squeezed the fix steps on phones", "detail": "Open items showed a button labelled 'Resolved' in a right-hand column, leaving the How-to-fix box narrow at phone width. Button renamed 'Mark resolved' and moved below the card on phones.", "page": "notifications", "found": "2026-10-16", "status": "done", "done": "2026-10-16", "lastTouched": {"apps/dashboard/src/app/notifications/page.tsx": "2026-10-16"}}
-  ]
+ "items": [
+  {
+   "id": "notif-phone-layout",
+   "kind": "bug",
+   "title": "Notifications: ambiguous 'Resolved' button squeezed the fix steps on phones",
+   "detail": "Open items showed a button labelled 'Resolved' in a right-hand column, leaving the How-to-fix box narrow at phone width. Button renamed 'Mark resolved' and moved below the card on phones.",
+   "page": "notifications",
+   "found": "2026-10-16",
+   "status": "done",
+   "done": "2026-10-16",
+   "lastTouched": {
+    "apps/dashboard/src/app/notifications/page.tsx": "2026-10-16"
+   }
+  },
+  {
+   "id": "queue-phone-clip",
+   "kind": "bug",
+   "title": "Queue: publish time cut off on phones",
+   "detail": "The meta line (template \u00b7 category \u00b7 publish time) was truncated at phone width, hiding the time. It now wraps and the time stays whole.",
+   "page": "queue",
+   "found": "2026-10-17",
+   "status": "done",
+   "done": "2026-10-17",
+   "lastTouched": {
+    "apps/dashboard/src/app/queue/page.tsx": "2026-10-17"
+   }
+  }
+ ]
 }
