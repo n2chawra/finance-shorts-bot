@@ -85,6 +85,7 @@ const ICONS: Record<string, (c: string) => React.ReactNode> = {
 
 export const ChecklistScene: React.FC<SceneProps> = (p) => {
   const { width: w, height: h, palette: pal } = p.tl;
+  const v = h > w;                  // a Short: full-width rows, text at 44 px and up
   const items = (p.beat.params.items as { text: string; icon?: string }[]) ?? [];
   const active = Number(p.beat.params.active ?? 0);
   const actor = p.beat.params.actor as ActorSpec | undefined;
@@ -93,23 +94,23 @@ export const ChecklistScene: React.FC<SceneProps> = (p) => {
   return (
     <AbsoluteFill>
       <DataSet pal={pal} w={w} h={h} t={t} seed={p.beat.id} />
-      <Kinetic text={str(p.beat.params.title, "What to do")} p={p} start={0.1} size={64} color={pal.text} x={120} y={90} width={w * 0.6} align="left" />
+      <Kinetic text={str(p.beat.params.title, "What to do")} p={p} start={0.1} size={v ? 72 : 64} color={pal.text} x={v ? 70 : 120} y={90} width={v ? w - 140 : w * 0.6} align="left" />
       {items.map((it, i) => {
         const done = i < active, now = i === active, later = i > active;
         const k = now ? pop(p, 0.15) : 1;
-        const y = 230 + i * 210;
+        const y = (v ? 300 : 230) + i * (v ? 250 : 210);
         const bg = now ? pal.accent : done ? pal.panel : pal.panel;
         const fg = now ? "#1b1b1b" : pal.text;
         return (
           <div key={i} style={{
-            position: "absolute", left: 120, top: y, width: w * 0.55, height: 170, borderRadius: 28, background: bg,
+            position: "absolute", left: v ? 70 : 120, top: y, width: v ? w - 140 : w * 0.55, height: v ? 210 : 170, borderRadius: 28, background: bg,
             opacity: later ? 0.35 : 1, transform: `translateX(${(1 - k) * -80}px) scale(${now ? 1 + 0.03 * Math.sin(t * 3) : 0.97})`,
             boxShadow: now ? `0 20px 50px rgba(0,0,0,0.35)` : "none", display: "flex", alignItems: "center",
           }}>
             <svg width={150} height={170} style={{ flexShrink: 0 }}>
               <g transform={`translate(75,85) scale(${now ? 1 + 0.08 * Math.sin(t * 5) : 1})`}>{(done ? ICONS.check! : ICONS[it.icon ?? "check"] ?? ICONS.check!)(done ? pal.cast[0]! : fg)}</g>
             </svg>
-            <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 40, color: fg, lineHeight: 1.2, paddingRight: 30, textDecoration: done ? "none" : "none" }}>{it.text}</div>
+            <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: v ? 48 : 40, color: fg, lineHeight: 1.2, paddingRight: 30, textDecoration: done ? "none" : "none" }}>{it.text}</div>
           </div>
         );
       })}

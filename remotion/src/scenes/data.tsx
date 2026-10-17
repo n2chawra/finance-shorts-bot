@@ -15,14 +15,18 @@ interface Line { text: string; at?: string; style?: "hero" | "sub" | "danger" | 
 
 function lineStyle(p: SceneProps, style: Line["style"]): { size: number; color: string; weight: number } {
   const pal = p.tl.palette;
+  const v = p.tl.height > p.tl.width;           // a Short: read on a phone, small text at 44 px and up
   switch (style) {
     case "hero": return { size: 150, color: pal.accent, weight: 800 };
     case "danger": return { size: 150, color: pal.danger, weight: 800 };
     case "good": return { size: 150, color: pal.cast[0]!, weight: 800 };
-    case "kicker": return { size: 44, color: pal.muted, weight: 600 };
-    default: return { size: 58, color: pal.text, weight: 700 };
+    case "kicker": return { size: v ? 52 : 44, color: pal.muted, weight: 600 };
+    default: return { size: v ? 66 : 58, color: pal.text, weight: 700 };
   }
 }
+
+/** Rows a line wraps to at this width (Poppins is about 0.6 em a character at these weights). */
+const rows = (text: string, size: number, width: number) => Math.max(1, Math.ceil((text.length * size * 0.6) / width));
 
 /** Stacked lines that arrive on their events; big ones count up to their figure. */
 const Lines: React.FC<{ p: SceneProps; lines: Line[]; x: number; width: number; top: number; align: "left" | "center" }> = ({ p, lines, x, width, top, align }) => {
@@ -42,7 +46,7 @@ const Lines: React.FC<{ p: SceneProps; lines: Line[]; x: number; width: number; 
             textShadow: st.size > 100 ? `0 0 60px ${st.color}55` : "0 6px 20px rgba(0,0,0,0.3)",
           }}>{text}</div>
         );
-        y += st.size * 1.2 + 14;
+        y += st.size * 1.05 * rows(l.text, st.size, width) + 0.15 * st.size + 14;
         return el;
       })}
     </>
@@ -53,11 +57,13 @@ export const BigNumberScene: React.FC<SceneProps> = (p) => {
   const { width: w, height: h, palette: pal } = p.tl;
   const lines = (p.beat.params.lines as Line[]) ?? [];
   const actor = p.beat.params.actor as ActorSpec | undefined;
-  const total = lines.reduce((s, l) => s + lineStyle(p, l.style).size * 1.2 + 14, 0);
+  const v = h > w;                                // a Short: text centred above the captions, actor below
+  const x = v ? 70 : actor ? 120 : 0, width = v ? w - 140 : actor ? w * 0.62 : w;
+  const total = lines.reduce((s, l) => { const st = lineStyle(p, l.style); return s + st.size * 1.05 * rows(l.text, st.size, width) + 0.15 * st.size + 14; }, 0);
   return (
     <AbsoluteFill>
       <DataSet pal={pal} w={w} h={h} t={sec(p)} seed={p.beat.id} />
-      <Lines p={p} lines={lines} x={actor ? 120 : 0} width={actor ? w * 0.62 : w} top={(h - total) / 2} align={actor ? "left" : "center"} />
+      <Lines p={p} lines={lines} x={x} width={width} top={v ? h * 0.3 - total / 2 : (h - total) / 2} align={v || !actor ? "center" : "left"} />
       {actor && <svg width={w} height={h} style={{ position: "absolute" }}><Actor p={p} spec={actor} ground={h * 0.98} index={0} /></svg>}
     </AbsoluteFill>
   );
@@ -72,7 +78,8 @@ export const RevealScene: React.FC<SceneProps> = (p) => {
   const k = t - hit;
   const shake = k > 0 ? Math.exp(-k * 6) * 18 : 0;
   const burst = clamp(k / 0.8);
-  const total = lines.reduce((s, l) => s + lineStyle(p, l.style).size * 1.2 + 14, 0);
+  const v = h > w, x = v ? 70 : 0, width = v ? w - 140 : w;
+  const total = lines.reduce((s, l) => { const st = lineStyle(p, l.style); return s + st.size * 1.05 * rows(l.text, st.size, width) + 0.15 * st.size + 14; }, 0);
   return (
     <AbsoluteFill style={{ transform: `translate(${Math.sin(t * 70) * shake}px, ${Math.cos(t * 60) * shake}px)` }}>
       <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 45%, ${pal.danger}55, ${pal.bg} 60%)` }} />
@@ -83,7 +90,7 @@ export const RevealScene: React.FC<SceneProps> = (p) => {
           return <circle key={i} cx={w / 2 + Math.cos(a) * r} cy={h * 0.42 + Math.sin(a) * r * 0.6} r={6 + (i % 4) * 3} fill={i % 3 ? pal.accent : pal.danger} opacity={1 - burst} />;
         })}
       </svg>
-      <Lines p={p} lines={lines} x={0} width={w} top={(h - total) / 2 - 40} align="center" />
+      <Lines p={p} lines={lines} x={x} width={width} top={v ? h * 0.3 - total / 2 : (h - total) / 2 - 40} align="center" />
       {actor && <svg width={w} height={h} style={{ position: "absolute" }}><Actor p={p} spec={actor} ground={h * 1.18} index={0} /></svg>}
     </AbsoluteFill>
   );
@@ -290,7 +297,8 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
     marks?: { x: number; text: string; at?: string }[]; drawFrom?: string; drawTo?: string;
   };
   const t = sec(p);
-  const L = 220, R = w - 260, T = 170, B = h - 170;
+  const v = h > w, small = v ? 44 : 34;    // a Short: text at 44 px and up, plot above the captions
+  const L = v ? 170 : 220, R = w - (v ? 90 : 260), T = v ? 300 : 170, B = v ? h * 0.5 : h - 170;
   const xmax = P.series.x[P.series.x.length - 1] ?? 1;
   const ymax = P.ticks.y[P.ticks.y.length - 1] ?? 1;
   const X = (x: number) => L + (R - L) * (x / xmax), Y = (y: number) => B - (B - T) * (y / ymax);
@@ -308,11 +316,11 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
         {P.ticks.y.map((v, i) => (
           <g key={i} opacity={grid}>
             <line x1={L} x2={L + (R - L) * grid} y1={Y(v)} y2={Y(v)} stroke={pal.grid} strokeWidth={2} />
-            <text x={L - 18} y={Y(v) + 12} textAnchor="end" fontFamily={FONT} fontWeight={500} fontSize={34} fill={pal.muted}>{P.ticks.labels[i]}</text>
+            <text x={L - 18} y={Y(v) + 12} textAnchor="end" fontFamily={FONT} fontWeight={500} fontSize={small} fill={pal.muted}>{P.ticks.labels[i]}</text>
           </g>
         ))}
-        {P.xticks.x.map((x, i) => <text key={i} x={X(x)} y={B + 52} textAnchor="middle" fontFamily={FONT} fontWeight={500} fontSize={34} fill={pal.muted} opacity={grid}>{P.xticks.labels[i]}</text>)}
-        <text x={(L + R) / 2} y={B + 110} textAnchor="middle" fontFamily={FONT} fontWeight={600} fontSize={34} fill={pal.muted} opacity={grid}>{P.xLabel}</text>
+        {P.xticks.x.map((x, i) => <text key={i} x={X(x)} y={B + 52} textAnchor="middle" fontFamily={FONT} fontWeight={500} fontSize={small} fill={pal.muted} opacity={grid}>{P.xticks.labels[i]}</text>)}
+        <text x={(L + R) / 2} y={B + 110} textAnchor="middle" fontFamily={FONT} fontWeight={600} fontSize={small} fill={pal.muted} opacity={grid}>{P.xLabel}</text>
         {d2 && ev2 && <path d={d2} fill="none" stroke={pal.accent} strokeWidth={10} strokeLinecap="round" strokeDasharray={ev2.strokeDasharray} strokeDashoffset={ev2.strokeDashoffset} style={{ filter: `drop-shadow(0 0 12px ${pal.accent})` }} />}
         <path d={d1} fill="none" stroke={pal.danger} strokeWidth={12} strokeLinecap="round" strokeDasharray={ev1.strokeDasharray} strokeDashoffset={ev1.strokeDashoffset} style={{ filter: `drop-shadow(0 0 14px ${pal.danger})` }} />
         {prog > 0 && <circle cx={X(P.series.x[headI]!)} cy={Y(P.series.y[headI]!)} r={18 + 4 * Math.sin(t * 8)} fill={pal.danger} />}
@@ -332,12 +340,12 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
       {(P.marks ?? []).map((m, i) => {
         const k = pop(p, at(p, m.at, a + 1 + i));
         return <div key={i} style={{ position: "absolute", left: X(m.x) + 24, top: T + 10 + i * 90, opacity: clamp(k * 2), transform: `scale(${0.7 + 0.3 * k})`, transformOrigin: "left" }}>
-          <Chip text={m.text} k={k} bg={pal.text} fg={pal.bg} size={36} />
+          <Chip text={m.text} k={k} bg={pal.text} fg={pal.bg} size={v ? 44 : 36} />
         </div>;
       })}
       <div style={{ position: "absolute", right: 60, top: 60, display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-end", opacity: grid }}>
-        <Chip text={P.label1} k={1} bg={pal.danger} fg="#ffffff" size={32} />
-        {P.label2 && <Chip text={P.label2} k={1} bg={pal.accent} fg="#1b1b1b" size={32} />}
+        <Chip text={P.label1} k={1} bg={pal.danger} fg="#ffffff" size={v ? 44 : 32} />
+        {P.label2 && <Chip text={P.label2} k={1} bg={pal.accent} fg="#1b1b1b" size={v ? 44 : 32} />}
       </div>
     </AbsoluteFill>
   );
@@ -348,7 +356,7 @@ export const TowersScene: React.FC<SceneProps> = (p) => {
   const items = (p.beat.params.items as { label: string; text: string; value: number; at?: string; color?: string }[]) ?? [];
   const t = sec(p);
   const max = Math.max(1, ...items.map((i) => i.value));
-  const base = h - 200, top = 230;
+  const base = h > w ? h - 420 : h - 200, top = 230;   // a Short keeps labels clear of the bottom UI
   const span = w - 300, bw = Math.min(300, span / items.length - 80);
   return (
     <AbsoluteFill>
@@ -367,7 +375,7 @@ export const TowersScene: React.FC<SceneProps> = (p) => {
             <div style={{ position: "absolute", left: x - 60, top: base - hh - 100, width: bw + 120, textAlign: "center", fontFamily: FONT, fontWeight: 800,
               fontSize: 64, color, opacity: clamp((t - start) / 0.3) }}>{it.value > 0 ? counted(p, it.value, it.text, start, start + 0.9) : it.text}</div>
             <div style={{ position: "absolute", left: x - 60, top: base + 20, width: bw + 120, textAlign: "center", fontFamily: FONT, fontWeight: 700,
-              fontSize: 40, color: pal.text, opacity: clamp((t - start) / 0.3) }}>{it.label}</div>
+              fontSize: h > w ? 46 : 40, color: pal.text, opacity: clamp((t - start) / 0.3) }}>{it.label}</div>
           </React.Fragment>
         );
       })}
