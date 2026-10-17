@@ -56,6 +56,7 @@ export default function VideoPage() {
   };
   const { inputs, lines } = scriptParts(v.script);
   const total = v.steps.reduce((a, s) => a + s.durationSec, 0);
+  const long = v.format === "long";
   const menu: MenuItem[] = [
     ...(v.status === "queued" ? [
       { label: "Upload now", icon: Upload, disabled: act.isPending, onSelect: () => run("upload-now") },
@@ -97,15 +98,15 @@ export default function VideoPage() {
         </p>
       )}
 
-      <div className="grid gap-4 lg:grid-cols-[280px_1fr]">
+      <div className={`grid gap-4 ${long ? "lg:grid-cols-[480px_1fr]" : "lg:grid-cols-[280px_1fr]"}`}>
         <div className="flex flex-col gap-3 lg:sticky lg:top-16 lg:self-start">
-          <video controls preload="none" poster={v.thumbnailUrl} src={v.fileUrl} className="mx-auto aspect-[9/16] w-full max-w-[280px] rounded-xl border border-ring bg-black shadow-lift" />
+          <video controls preload="none" poster={v.thumbnailUrl} src={v.fileUrl} className={`mx-auto w-full rounded-xl border border-ring bg-black shadow-lift ${long ? "aspect-video max-w-[480px]" : "aspect-[9/16] max-w-[280px]"}`} />
           <Card title="Publishing">
             <dl>
               <Row k="Created">{fmtDateTime(v.createdAt)}</Row>
               <Row k={v.status === "published" ? "Published" : "Publish at"}>{v.upload ? fmtDateTime(v.upload.publishAt) : v.queuePosition ? `Queue #${v.queuePosition}` : "—"}</Row>
               <Row k="Upload">{v.upload ? `${titleCase(v.upload.state)} · ${v.upload.attempts} attempt${v.upload.attempts === 1 ? "" : "s"}` : "—"}</Row>
-              <Row k="YouTube">{v.upload?.youtubeId ? <a className="font-medium text-brand-text hover:underline" href={`https://youtube.com/shorts/${v.upload.youtubeId}`} target="_blank" rel="noreferrer">Open ↗</a> : <span className="text-muted">No link yet</span>}</Row>
+              <Row k="YouTube">{v.upload?.youtubeId ? <a className="font-medium text-brand-text hover:underline" href={long ? `https://youtube.com/watch?v=${v.upload.youtubeId}` : `https://youtube.com/shorts/${v.upload.youtubeId}`} target="_blank" rel="noreferrer">Open ↗</a> : <span className="text-muted">No link yet</span>}</Row>
               <Row k="Style">{titleCase(v.style.palette)} · {titleCase(v.style.genre)}, {v.style.key}, {v.style.bpm} BPM</Row>
               <Row k="Format">{v.format === "long" ? `Long video · ${Math.round(v.durationSec / 60)} min, landscape` : "Short · vertical"}</Row>
               <Row k="Voiceover">{v.style.voice ? `On · ${titleCase(v.style.voice.split("_")[1] ?? v.style.voice)} (${v.style.voice.startsWith("hf") ? "female" : v.style.voice.startsWith("hm") ? "male" : "voice"})` : "None"}</Row>
