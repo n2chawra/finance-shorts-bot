@@ -130,6 +130,9 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         "tempo": 1.0, "style": tl.get("style") or {"palette": None, **tl["music"]},
         "voice": {"name": tl["voices"]["narrator"], "base_speed": tl["speed"], "cast": tl["voices"], "lines": lines},
         "layout_problems": [],
+        # YouTube chapters: the first must be 0:00
+        "chapters": ([] if any(bt["from"] == 0 for bt in tl["beats"] if bt["scene"] == "chapter") else [{"title": "Intro", "start": 0.0}])
+        + [{"title": bt["params"].get("title", ""), "start": round(bt["from"]/tl["fps"], 1)} for bt in tl["beats"] if bt["scene"] == "chapter"],
     }
     if not preview:
         silent = video(timeline, work/"silent.mp4", chunk=chunk, bundle_dir=b, concurrency=concurrency)
@@ -142,11 +145,15 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
 
 def render_story(script: dict, out: Path, *, preview: bool = False, voice: str = "kokoro") -> dict:
     """A long_story script -> videos/<id>/ files: the timeline and audio are built into `out`,
-    everything bulky (bundle, stills, chunks) goes to a temporary folder that is removed after."""
+    everything bulky (bundle, stills, chunks) goes to a work folder removed after a full render."""
     from renderer.timeline.build import build
     build(script, out, voice=voice)
-    with tempfile.TemporaryDirectory(prefix="remotion-") as tmp:
-        return render_timeline(out/"timeline.json", out, Path(tmp), preview=preview)
+    # a fixed work folder, so a render cut off part way resumes from its finished chunks
+    work = Path(tempfile.gettempdir())/f"remotion-{out.name}"
+    report = render_timeline(out/"timeline.json", out, work, preview=preview)
+    if not preview:
+        shutil.rmtree(work, ignore_errors=True)
+    return report
 
 
 def main() -> int:

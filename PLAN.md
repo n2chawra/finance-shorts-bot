@@ -306,3 +306,11 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   tempo 1.5: Kokoro speaks at 1.5x and every pause, animation, transition and camera move runs 1.5x
   faster with it (scenes run on a story clock in Remotion). Same length target, so a 4–6 min video
   needs ~850–1,300 words. The sample was not re-rendered.
+- 2026-10-17: Owner approved the long-form sample (pace fixed to 1.5x). Long-form automation on the
+  branch: `long_story` number check recomputes every figure in closed form (the card's minimum-due
+  payoff as a geometric phase plus an annuity phase, matching the month-by-month simulation to 1e-9);
+  `check_script` validates a script without speaking it (`generator.run figures` for reviewers);
+  Studio writes `long_story` scripts and renders in the background, resuming from finished chunks;
+  `render.json` carries YouTube chapters; `scripts/setup-cloud.sh` prepares a routine session
+  (voice, npm packages, headless Chrome, ffmpeg); `remotion.yml` CI. Studio stays on hold until the
+  branch is merged and the routine environment runs the setup script.

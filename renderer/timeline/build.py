@@ -157,6 +157,52 @@ SFX = {
 }
 
 
+SCENES_TS = Path(__file__).resolve().parents[2]/"remotion"/"src"/"contract"/"scenes.ts"
+
+
+def scene_names() -> set[str]:
+    """The scenes Remotion has (remotion/src/contract/scenes.ts is the one list)."""
+    src = SCENES_TS.read_text(encoding="utf-8")
+    return set(re.findall(r'"([a-z][a-z-]*)"', src[src.index("SCENE_NAMES"):src.index("] as const")]))
+
+
+def check_script(script: dict) -> dict:
+    """Everything a build would reject, without speaking or mixing anything: maths inputs, typed
+    numbers, placeholders, @references, scene names, sound kinds, ids and event words. Returns
+    {"figures": {placeholder: shown}, "beats": [{"id", "scene", "speaker", "say", "spoken"}]}
+    for the number check and the reviewers."""
+    if script.get("format", "long") not in SIZES:
+        raise ValueError("format must be long or short")
+    results = maths.compute(script.get("maths", []))
+    figures = maths.placeholders(results)
+    beats = [Beat(**b) for b in script.get("beats", [])]
+    if not beats:
+        raise ValueError("a story needs beats")
+    if len({b.id for b in beats}) != len(beats):
+        raise ValueError("beat ids must be unique")
+    scenes, out = scene_names(), []
+    for b in beats:
+        where = f"beat {b.id!r}"
+        if b.scene not in scenes:
+            raise ValueError(f"{where}: no scene called {b.scene!r}; scenes are {', '.join(sorted(scenes))}")
+        _resolve(b.params, figures, results, f"{where}.params")
+        text = _fill(b.say, figures, f"{where}.say") if b.say else ""
+        spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000)["x"] if b.say else ""
+        words = {w.lower().strip(".,!?;:\"'") for w in spoken.split()}
+        for name, spec in b.events.items():
+            w = spec.get("word") if isinstance(spec, dict) else None
+            if isinstance(w, str) and w.lower().strip(".,!?") not in words:
+                raise ValueError(f"{where}.events.{name}: no word {w!r} in this beat's spoken line")
+        for sfx in b.sfx:
+            if sfx.get("kind") not in SFX:
+                raise ValueError(f"{where}: sfx kind must be one of {', '.join(SFX)}")
+        out.append({"id": b.id, "scene": b.scene, "speaker": b.speaker, "say": text, "spoken": spoken})
+    if beats[-1].scene != "end":
+        raise ValueError("the last beat must be the end card (scene \"end\"), which carries the disclaimer")
+    _thumbnail(script.get("thumbnail"), figures, results)
+    return {"figures": figures, "beats": out}
+
+
 def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     """Write out/timeline.json and out/audio.wav; return the timeline."""
     fmt = script.get("format", "long")

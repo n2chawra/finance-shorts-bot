@@ -27,6 +27,7 @@ from pathlib import Path
 
 from renderer import cli as renderer
 from renderer import remotion
+from renderer.timeline.build import check_script
 
 from . import experiments, history, topics, variety
 from .numbers import number_check
@@ -193,7 +194,10 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
 
 def figures(vid: str, root: Path = ROOT) -> dict:
     """Computed figures and the final on-screen lines, as a reviewer needs to see them."""
-    video = renderer.build(_read(_dir(vid, root) / "script.json"))
+    script = _read(_dir(vid, root) / "script.json")
+    if script.get("template") in REMOTION_TEMPLATES:
+        return check_script(script)
+    video = renderer.build(script)
     return {"duration_sec": round(video.length), "figures": video.figures, "on_screen_text": video.txt,
             "voiceover": video.narration(), "scenes": {k: [round(a, 1), round(b, 1)] for k, (a, b) in video.voice_windows().items()}}
 
