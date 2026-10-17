@@ -35,10 +35,14 @@ export function readmeSummary(readme: string): string {
   return (para ?? "").replace(/\s+/g, " ").slice(0, 300);
 }
 
+/** The live templates: one folder per template with its README (the writer's contract). */
 export function templateIds(root = ROOT): string[] {
   const dir = path.join(root, "renderer", "templates");
-  return readdirSync(dir).filter((name) => existsSync(path.join(dir, name, "schema.json"))).sort();
+  return readdirSync(dir).filter((name) => existsSync(path.join(dir, name, "README.md"))).sort();
 }
+
+/** Marks a template the repo no longer has. Old videos still point at it, so it stays, disabled. */
+export const RETIRED = "Retired: the first engine's template, replaced by the Remotion story templates on 2026-10-17.";
 
 export function manifestPaths(root = ROOT): string[] {
   const dir = path.join(root, "videos");
@@ -51,6 +55,7 @@ async function syncTemplates(prisma: PrismaClient): Promise<void> {
     const description = existsSync(readme) ? readmeSummary(readFileSync(readme, "utf8")) : "";
     await prisma.template.upsert({ where: { id }, update: { description }, create: { id, name: titleCase(id), description } });
   }
+  await prisma.template.updateMany({ where: { id: { notIn: templateIds() } }, data: { enabled: false, description: RETIRED } });
 }
 
 function runRows(videoId: string, steps: ShippedManifest["agentRuns"]): Prisma.AgentRunCreateManyInput[] {

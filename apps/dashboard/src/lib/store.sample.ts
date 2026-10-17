@@ -14,12 +14,19 @@ const DAY_MS = 86_400_000;
 type TemplateRow = Pick<Template, "id" | "name" | "description" | "version" | "weight" | "enabled"> & { durationSec: number };
 type Store = { version: number; videos: VideoDetail[]; templates: TemplateRow[]; runs: Run[]; settings: Settings };
 
-const TEMPLATES: TemplateRow[] = [
-  { id: "two_friends_race", name: "Two friends race", description: "Two people invest the same amount; the early starter wins.", version: 2, weight: 1, enabled: true, durationSec: 60 },
-  { id: "myth_vs_fact", name: "Myth vs fact", description: "A money belief is stamped MYTH, then tested with two growth rates.", version: 1, weight: 1, enabled: true, durationSec: 50 },
-  { id: "money_leak_meter", name: "Money leak meter", description: "A small regular expense added up, then compared with investing it.", version: 1, weight: 1.2, enabled: true, durationSec: 54 },
-  { id: "quiz_countdown", name: "Quiz countdown", description: "Three options, a five-second countdown, then the computed answer.", version: 1, weight: 0.8, enabled: true, durationSec: 48 },
+const RETIRED = "Retired: the first engine's template, replaced by the Remotion story templates on 2026-10-17.";
+// the first engine's templates: the sample's published history was made with them
+const OLD: TemplateRow[] = [
+  { id: "two_friends_race", name: "Two friends race", description: RETIRED, version: 2, weight: 1, enabled: false, durationSec: 60 },
+  { id: "myth_vs_fact", name: "Myth vs fact", description: RETIRED, version: 1, weight: 1, enabled: false, durationSec: 50 },
+  { id: "money_leak_meter", name: "Money leak meter", description: RETIRED, version: 1, weight: 1.2, enabled: false, durationSec: 54 },
+  { id: "quiz_countdown", name: "Quiz countdown", description: RETIRED, version: 1, weight: 0.8, enabled: false, durationSec: 48 },
 ];
+const LIVE: TemplateRow[] = [
+  { id: "short_story", name: "Short story", description: "A vertical Short (1080×1920, 30–45 s) told in beats by the recurring cast, drawn by Remotion.", version: 1, weight: 1, enabled: true, durationSec: 40 },
+  { id: "long_story", name: "Long story", description: "A long video (4–6 min, 1920×1080) told as a story by the recurring cast, drawn by Remotion.", version: 1, weight: 1, enabled: true, durationSec: 300 },
+];
+const TEMPLATES: TemplateRow[] = [...LIVE, ...OLD];
 
 // [title, category] per template, used round-robin so templates rotate
 const TOPICS: Record<string, [string, string][]> = {
@@ -130,8 +137,10 @@ function build(): Store {
   const total = PUBLISHED + 1 + QUEUED + 2;
   const videos: VideoDetail[] = [];
   for (let i = 0; i < total; i++) {
-    const tpl = TEMPLATES[i % TEMPLATES.length];
-    const [title, category] = TOPICS[tpl.id][Math.floor(i / TEMPLATES.length) % TOPICS[tpl.id].length];
+    // published history from the first engine; everything still to come from the story template
+    const tpl = i < PUBLISHED ? OLD[i % OLD.length]! : LIVE[0]!;
+    const pool = i < PUBLISHED ? TOPICS[tpl.id]! : Object.values(TOPICS).flat();
+    const [title, category] = pool[Math.floor(i / OLD.length) % pool.length]!;
     const id = `v${String(i + 1).padStart(3, "0")}`;
     let status: Video["status"], failReason: string | null = null, failAt: string | null = null;
     let upload: Video["upload"] = null, queuePosition: number | null = null, createdAt: Date;

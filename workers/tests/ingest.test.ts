@@ -40,7 +40,7 @@ test("a failed manifest parses without release or checks", () => {
 });
 
 test("templates are found and summarised from their READMEs", () => {
-  assert.deepEqual(templateIds(), ["long_explainer", "money_leak_meter", "money_news", "myth_vs_fact", "quiz_countdown", "two_friends_race"]);
+  assert.deepEqual(templateIds(), ["long_story", "short_story"]);
   assert.equal(readmeSummary("# Title\n\nFirst para\nwraps here.\n\nSecond."), "First para wraps here.");
   assert.equal(readmeSummary("# Only a heading"), "");
 });
