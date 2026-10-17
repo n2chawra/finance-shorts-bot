@@ -1,0 +1,65 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-10-17T02:42:19.037886+00:00",
+    "finishedAt": "2026-10-17T02:42:19.037886+00:00",
+    "notes": [
+      "title opens with 'can you guess', already used by v-20261015-01"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:42:23.515281+00:00",
+    "finishedAt": "2026-10-17T02:42:23.515281+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:42:24.557390+00:00",
+    "finishedAt": "2026-10-17T02:42:24.557390+00:00",
+    "notes": [
+      "9 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:42:51.906308+00:00",
+    "finishedAt": "2026-10-17T02:42:51.906308+00:00",
+    "notes": [
+      "Checked SIP quiz (Rs 8,000/month, 30y, assumed 10%): rate within limit, framed as assumption in description and end-scene assumption line; no product named, no guarantee wording, tone neutral; description ends with disclaimer. Notes: 'Time pays you' and 'Growth beats your deposits' slightly absolute but fine for an illustration."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:43:01.846296+00:00",
+    "finishedAt": "2026-10-17T02:43:45.774704+00:00",
+    "notes": [
+      "36 s, ocean/lofi, peak -1.0 dB, mean -18.0 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:44:07.853190+00:00",
+    "finishedAt": "2026-10-17T02:44:07.853190+00:00",
+    "notes": [
+      "8 frames clean: hook QUIZ + question, no overlap or cut-off, options/answer/chart figures consistent (28.8L + 1.54Cr = 1.82Cr), disclaimer on last frame, 36s, audio -1/-18 dB, layout_problems empty. Note: liveliness_problems reports 17% still samples (limit 15%), not a listed rejection rule."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-17T02:44:23.004693+00:00",
+    "finishedAt": "2026-10-17T02:44:23.004693+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "template": "quiz_countdown",
+  "seed": 3916,
+  "style": { "palette": "ocean", "genre": "lofi", "key": "A", "bpm": 88 },
+  "kind": "sip",
+  "amount": 8000,
+  "years": 30,
+  "annual_return_pct": 10,
+  "distractors": [0.5, 0.75],
+  "text": {
+    "hook_line": "Bet you can't guess this",
+    "q_title": "Retirement maths",
+    "q_line1": "{amount} every month",
+    "q_line2": "for {years} years",
+    "q_line3": "at {rate} a year",
+    "question": "What is your pot worth?",
+    "q_cta": "Make your call",
+    "opt_cta": "Choose before time runs out",
+    "reveal_line": "The answer is {letter}!",
+    "reveal_note": "{answer_long} from {amount} a month",
+    "why_title": "Where did it come from?",
+    "why_line": "Growth beats your deposits",
+    "end_line1": "Start early.",
+    "end_line2": "Stay steady.",
+    "end_punch": "Time pays you.",
+    "end_cta": "Drop your retirement guess below",
+    "end_follow": "Follow for the next quiz"
+  },
+  "voice": {
+    "hook": "I bet you can't guess this one.",
+    "question": "{amount} a month, for {years} years, at {rate}. What is the pot worth?",
+    "options": "Choose before time runs out.",
+    "reveal": "The answer is {letter}! {answer_long}.",
+    "why": "You put in only {invested}. The other {gains} is growth.",
+    "end": "Start early and stay steady. Drop your retirement guess below."
+  }
+}
