@@ -95,9 +95,9 @@ export default function QueuePage() {
                     <Thumb src={v.thumbnailUrl} alt="" className="w-9" />
                     <div className="min-w-0">
                       <VideoLink id={v.id} className="block truncate text-[13px] font-medium">{v.title}</VideoLink>
-                      <div className="mt-0.5 flex items-center gap-1.5 truncate text-xs text-muted">
+                      <div className="mt-0.5 flex flex-wrap items-center gap-x-1.5 text-xs text-muted">
                         <span>{titleCase(v.templateId)}</span><span aria-hidden>·</span><span>{titleCase(v.topic.category)}</span>
-                        <span className="md:hidden">· {paused ? "not scheduled" : goesOut(i)}</span>
+                        <span className="whitespace-nowrap md:hidden">· {paused ? "not scheduled" : goesOut(i)}</span>
                       </div>
                     </div>
                     <div className="hidden text-[13px] md:block">
