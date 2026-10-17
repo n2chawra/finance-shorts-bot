@@ -10,6 +10,7 @@
     "auth": "tsx --env-file=../apps/dashboard/.env auth.ts",
     "publish": "tsx publish.ts",
     "stats": "tsx stats.ts",
+    "market": "tsx market.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "watchdog": "tsx watchdog.ts",
