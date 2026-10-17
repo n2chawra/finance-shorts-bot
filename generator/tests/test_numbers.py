@@ -86,3 +86,12 @@ def test_claims_accept_inputs_and_figures_in_any_usual_spelling() -> None:
     assert check_claims(ok, script, figures) == []
     bad = {"title": "Become a crorepati: ₹1 Cr in 10 years, 15% returns"}
     assert len(check_claims(bad, script, figures)) == 3
+
+
+def test_emi_at_zero_interest_is_principal_over_months() -> None:
+    # "no-cost EMI": 0% is a real offer, not a division by zero
+    from renderer.models import maths
+    assert numbers.emi(60000, 0, 1) == pytest.approx(5000)
+    assert numbers.emi_total_interest(60000, 0, 1) == pytest.approx(0)
+    r = maths.emi({"amount": 60000, "rate_pct": 0, "years": 1})
+    assert r["figures"]["emi"] == "₹5,000" and r["values"]["interest"] == pytest.approx(0)

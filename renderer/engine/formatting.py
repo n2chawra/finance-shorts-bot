@@ -74,10 +74,9 @@ FACT_UNITS = ("rupees", "rupees_lakh", "rupees_crore", "percent", "count", "coun
 def fact_value(value: float, unit: str) -> str:
     """A sourced figure (from the research feed) as displayed: (31781, 'rupees_crore') → '₹31,781 Cr',
     (6.5, 'percent') → '6.5%', (9.87, 'count_crore') → '9.87 Cr', (4500000, 'count') → '45,00,000'."""
-    if value == int(value):
-        shown = group_indian(int(value))
-    else:
-        shown = group_indian(int(value)) + "." + f"{value:.2f}".split(".")[1].rstrip("0")
+    whole, frac = f"{abs(value):.2f}".split(".")         # round first: 9.996 is "10", not "9."
+    sign = "-" if value < 0 and f"{abs(value):.2f}" != "0.00" else ""
+    shown = sign + group_indian(int(whole)) + ("." + frac.rstrip("0") if frac.rstrip("0") else "")
     if unit == "rupees":
         return "₹" + shown
     if unit == "rupees_lakh":

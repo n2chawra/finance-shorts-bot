@@ -47,7 +47,7 @@ def lumpsum(m: dict) -> Result:
 
 def emi(m: dict) -> Result:
     r, n = m["rate_pct"]/100/12, round(m["years"]*12)
-    pay = m["amount"]*r*(1 + r)**n/((1 + r)**n - 1)
+    pay = m["amount"]*r*(1 + r)**n/((1 + r)**n - 1) if r else m["amount"]/n   # 0%: a "no-cost EMI"
     total = pay*n
     return {
         "values": {"emi": pay, "total_paid": total, "interest": total - m["amount"], "months": n},

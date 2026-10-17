@@ -24,6 +24,68 @@
       "severity": "low",
       "found": "2026-10-16",
       "status": "open"
+    },
+    {
+      "id": "ren-001",
+      "kind": "bug",
+      "title": "fact_value showed 9.996 as '9.' and -0.5 as '0.5'",
+      "detail": "Split decimals before rounding, so a value that rounds up lost its digits and kept a trailing dot; int() dropped the sign of values between -1 and 0. Now rounds to 2 places first.",
+      "files": [
+        "renderer/engine/formatting.py"
+      ],
+      "severity": "low",
+      "found": "2026-10-18",
+      "status": "fixed"
+    },
+    {
+      "id": "ren-002",
+      "kind": "bug",
+      "title": "emi crashed at 0% interest (no-cost EMI)",
+      "detail": "Both the maths kind and the number check's independent formula divided by zero when rate_pct is 0, a real Indian offer and a likely trap-alert story. Now principal / months.",
+      "files": [
+        "renderer/models/maths.py",
+        "generator/numbers.py"
+      ],
+      "severity": "medium",
+      "found": "2026-10-18",
+      "status": "fixed"
+    },
+    {
+      "id": "ren-003",
+      "kind": "bug",
+      "title": "Zero amounts give bare ZeroDivisionError / math domain error",
+      "detail": "lumpsum/sip/card_min_due with amount 0 (ratio = final/0, nice_axis(0)) fail with an unhelpful message instead of a writer-facing one. Writer error only; validate inputs > 0 in maths.compute.",
+      "files": [
+        "renderer/models/maths.py",
+        "renderer/engine/formatting.py"
+      ],
+      "severity": "low",
+      "found": "2026-10-18",
+      "status": "open"
+    },
+    {
+      "id": "ren-004",
+      "kind": "bug",
+      "title": "Event specs {'end': 0} rejected and {'word': -1} means first word",
+      "detail": "_event_time tests spec.get('end') for truthiness, so end 0 raises; negative word indices clamp to 0 rather than counting from the end as a writer would expect.",
+      "files": [
+        "renderer/timeline/build.py"
+      ],
+      "severity": "low",
+      "found": "2026-10-18",
+      "status": "open"
+    },
+    {
+      "id": "ren-q01",
+      "kind": "quality",
+      "title": "check_script and build repeat the per-beat resolve/fill/spoken steps",
+      "detail": "Both compute maths, facts, figures, check beat ids and fill each beat. Extract one _prepare(script) returning results, figures, sources, beats. Deferred: the owner rewrote build.py on 2026-10-17 (3-day rule).",
+      "files": [
+        "renderer/timeline/build.py"
+      ],
+      "severity": "low",
+      "found": "2026-10-18",
+      "status": "open"
     }
   ]
 }

@@ -57,3 +57,13 @@ def test_axis_label_and_times() -> None:
 def test_inr_unit_boundaries_roll_over() -> None:
     assert inr(99999.7) == "₹1.0 L"       # not ₹1,00,000
     assert inr(9999000) == "₹1.00 Cr"     # not ₹100.0 L
+
+
+def test_fact_value_rounds_before_splitting_decimals() -> None:
+    from renderer.engine.formatting import fact_value
+    assert fact_value(9.996, "count_crore") == "10 Cr"           # not "9. Cr"
+    assert fact_value(12.999, "rupees_lakh") == "₹13 L"
+    assert fact_value(1.005, "count") in ("1", "1.01")
+    assert fact_value(-0.5, "count") == "-0.5"                   # the sign survives
+    assert fact_value(31781, "rupees_crore") == "₹31,781 Cr"
+    assert fact_value(123456.75, "rupees") == "₹1,23,456.75"

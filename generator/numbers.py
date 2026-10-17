@@ -35,6 +35,8 @@ def real_value(amount: float, inflation_pct: float, years: float) -> float:
 def emi(principal: float, annual_pct: float, years: float) -> float:
     """Equated monthly instalment on a reducing-balance loan."""
     r, n = annual_pct/100/12, round(years*12)
+    if r == 0:                                          # a "no-cost EMI"
+        return principal/n
     return principal*r*(1 + r)**n/((1 + r)**n - 1)
 
 
