@@ -1,0 +1,40 @@
+{
+  "template": "money_news",
+  "seed": 7342,
+  "style": { "palette": "plum", "genre": "cinematic", "key": "D", "bpm": 92 },
+  "feed_id": "2026-10-17-rbi-repo-hike",
+  "facts": [
+    {
+      "label": "RBI repo rate now",
+      "value": 5.5,
+      "unit": "percent",
+      "as_of": "2026-10-07",
+      "source": "RBI",
+      "url": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63742"
+    }
+  ],
+  "example": { "kind": "lumpsum", "amount": 500000, "years": 5, "rate_pct": 7 },
+  "text": {
+    "headline1": "RBI just raised the repo rate",
+    "headline2": "Loans and deposits both watch it",
+    "what_title": "What happened",
+    "why_title": "Why it matters",
+    "why_line1": "Floating loan rates can follow",
+    "why_line2": "Banks may revisit deposit rates",
+    "why_line3": "Each lender decides on its own",
+    "you_title": "What it means for you",
+    "you_line": "An assumed {rate} grows it {ratio}",
+    "end_line1": "The rate is news.",
+    "end_line2": "Your plan is the story.",
+    "end_punch": "Know your rate.",
+    "end_cta": "Tell us your loan type below",
+    "end_follow": "Follow for money news that matters"
+  },
+  "voice": {
+    "hook": "The RBI just raised the repo rate.",
+    "what": "That is the rate banks borrow at from the RBI.",
+    "why": "Floating loans may reset. Deposit rates could change too, lender by lender.",
+    "you": "Say {amount} locked for {years} years at {rate}: it could become {result}.",
+    "end": "The rate is news. Your plan is the story. Tell us your loan type below."
+  }
+}

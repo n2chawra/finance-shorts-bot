@@ -1,0 +1,77 @@
+{
+  "template": "money_news",
+  "seed": 7342,
+  "duration_sec": 39,
+  "tempo": 1.35,
+  "style": {
+    "palette": "plum",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92
+  },
+  "experiments": {
+    "voiceover": "on"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.16,
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The RBI just raised the repo rate.",
+        "start": 0.56,
+        "seconds": 2.06,
+        "window": 2.89,
+        "speed": 1.16,
+        "fill": 0.71
+      },
+      {
+        "scene": "what",
+        "text": "That is the rate banks borrow at from the RBI.",
+        "start": 3.89,
+        "seconds": 2.57,
+        "window": 7.7,
+        "speed": 1.16,
+        "fill": 0.33
+      },
+      {
+        "scene": "why",
+        "text": "Floating loans may reset. Deposit rates could change too, lender by lender.",
+        "start": 12.04,
+        "seconds": 4.72,
+        "window": 6.96,
+        "speed": 1.16,
+        "fill": 0.68
+      },
+      {
+        "scene": "you",
+        "text": "Say five lakh rupees locked for five years at seven percent: it could become seven lakh rupees.",
+        "start": 19.44,
+        "seconds": 6.06,
+        "window": 9.93,
+        "speed": 1.16,
+        "fill": 0.61
+      },
+      {
+        "scene": "end",
+        "text": "The rate is news. Your plan is the story. Tell us your loan type below.",
+        "start": 29.81,
+        "seconds": 4.28,
+        "window": 8.44,
+        "speed": 1.16,
+        "fill": 0.51
+      }
+    ]
+  },
+  "layout_problems": [],
+  "liveliness": {
+    "median": 1.854,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": [],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -19.7
+  }
+}
