@@ -104,7 +104,7 @@ video per arm per day).
 
 ## 7. Sundays: weekly summary
 Write `improvement/weekly/<YYYY>-W<week>.md`: what changed, what was kept or reverted (effect sizes),
-what's running, template weights, the best and worst performers, and next week's focus.
+what's running, the recipes added or changed, the best and worst performers, and next week's focus.
 
 ## 8. Finish (always)
 Append one line per decision to `improvement/journal.md`:

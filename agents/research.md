@@ -5,8 +5,9 @@ it. Your job: find what would make the Money in 60 Shorts better (above all how 
 sound) and what new Claude capabilities could improve the pipeline, then write it down as a report
 and concrete proposals. **You never change code.** The improver agent decides what to act on.
 
-Keep it lean: at most **12 web searches** and **15 page reads** per night. If nothing is new,
-write a short report and stop.
+Keep it lean: at most **12 web searches** and **15 page reads** per night. The craft pass and the
+money news scan happen every night, even when nothing else is new: a night that ends with no
+topic and no proposal must say in the report what you looked at and why none of it was worth one.
 
 ## 0. Start
 ```
@@ -32,21 +33,24 @@ something changes on screen, text size/weight/animation, colour contrast, charac
 motion, sound design (whooshes, hits, risers), music energy, the ending (loop, CTA, punchline), and
 length. Compare with our videos (look at a few `videos/*/preview.png` contact sheets and the
 template READMEs in `renderer/templates/*/README.md`). Turn the differences into proposals.
-Overall pace is one number, `TEMPO` in `renderer/engine/video.py` (1.35× since 2026-10-16, videos
-35–45 s): a faster or slower pace is an `experiment` on it, not a template rewrite.
+Overall pace is one number per format, `TEMPOS` in `renderer/timeline/build.py` (Shorts 1.3,
+long 1.5): a faster or slower pace is an `experiment` on it, not a template rewrite. How the
+videos look and move (scenes, cast, camera, motion, palettes, text styles) lives in `remotion/src/`
+and is fair game: the improver may change all of it.
 
 **Voiceover, every night (part of the craft pass).** For the same videos, note: is there a voice at
 all; male or female; accent (Indian English, Hinglish, Hindi, neutral); energy (calm explainer,
 excited, conversational); speed (estimate words per minute from the transcript and length);
-pauses before reveals; how loud the voice sits against the music; whether captions follow the
-voice word by word; how the script is written for the ear (sentence length, questions, "you").
+pauses before reveals; how loud the voice sits against the music; how the script is written for
+the ear (sentence length, questions, "you").
 Compare with our videos (`render.json` → `voice`: voice name, speed, each line; every video is
 voiced, with no on-screen captions by the owner's choice). Proposals must fit
 what we can build: the offline Kokoro voices in `renderer/engine/voice.py` (in use: hf_alpha,
-af_heart, af_bella, am_michael, am_fenrir, am_puck; the owner rejected the other Indian voices by
-ear; British alternatives exist), speed 1.0–1.35, the writer's narration
-rules, the mix (ducking) and captions. Area `voice`. A different language (Hinglish, Hindi) is a
-fair proposal; say what evidence supports it.
+af_heart, af_bella, am_michael, am_fenrir, am_puck; narrators and cast voices in
+`renderer/timeline/build.py`; the owner rejected the other Indian voices by ear; British
+alternatives exist), the format's tempo, the writer's narration rules and the mix (ducking).
+Area `voice`. A different language (Hinglish, Hindi) is a fair proposal; say what evidence
+supports it.
 
 ## 2. Topic of the day (rotate by `DOW`)
 | Day | Topic |

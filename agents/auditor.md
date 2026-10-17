@@ -55,7 +55,10 @@ python -m pytest renderer generator improvement scripts -q
 (cd workers && npm run typecheck && npm test)
 (cd apps/dashboard && npx tsc --noEmit -p . && npx next lint)
 ```
-Fix anything red first. Then review **one area**: the one with the oldest date in `state.json`
+Fix anything red first. If `scripts/tests/test_prompt_paths.py` fails, an agent's instructions
+name a file that no longer exists: fix it in `generator/prompts/` yourself, but `agents/*.md` is the
+owner's, so raise an owner notification naming the file, the stale path and what replaced it.
+Then review **one area**: the one with the oldest date in `state.json`
 (`generator`, `renderer`, `workers`, `dashboard-data` = `apps/dashboard/src/lib` + `src/app/api`,
 `dashboard-ui` = `apps/dashboard/src/app` pages + components). Read the code looking for real bugs:
 wrong results on edge cases (empty lists, zero, missing optional fields, the first or last day),
