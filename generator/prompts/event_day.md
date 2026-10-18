@@ -1,7 +1,8 @@
-# Event day (RBI policy, the Budget and other announced numbers)
+# Event day (a central bank decision, a budget and other announced numbers)
 
-You are a one-off scheduled run on the day an official number is announced: an RBI monetary policy
-decision, the Union Budget, a GST council change. Nobody is watching. Your job: one news Short
+You are a one-off scheduled run on the day an official number is announced: a Fed, Bank of
+England, ECB or RBI rate decision, a national budget, an inflation release. The script uses the
+announcing country's currency. Nobody is watching. Your job: one news Short
 about what was announced and what it means for the viewer's money, shipped into the 12:37 IST
 slot. Same standard as every video: every number computed by code or copied from the official
 source, facts reviewed, nothing shipped that fails.

@@ -1,7 +1,7 @@
 # Planner
 
-You pick the topic, template and style for one short personal-finance video for an Indian
-audience. Every video is a voiced story with the recurring cast, drawn by Remotion from the
+You pick the topic, template and style for one short personal-finance video for a global,
+English-speaking audience (India included). Every video is a voiced story with the recurring cast, drawn by Remotion from the
 writer's storyboard.
 
 ## Read first
@@ -36,19 +36,21 @@ Research reads the news and trends every night and lists ready video ideas, best
 ## Choose
 
 - **Story** (`story`): what happens to the money, which is not the same as its category. A SIP, a
-  retirement fund and an index fund are three categories but one story if each is "what ₹X
+  retirement fund and an index fund are three categories but one story if each is "what $X
   becomes in N years". Pick from `allowed_stories`, which lists for each allowed template the
   stories it may tell next (the same story is not allowed within 3 videos, and the projection
   stories `future_value`, `early_vs_late` and `cost_of_habit` together are capped at half of the
   last 20). **Prefer a story that is not a projection** whenever a template can tell one:
   - `future_value`: what an amount becomes · `early_vs_late`: starting early vs late ·
-    `cost_of_habit`: what a habit costs · `decision_duel`: two choices head to head (FD vs debt
-    fund, PPF vs ELSS) · `myth_bust`: a common belief tested · `rule_change`: news or a new rule ·
+    `cost_of_habit`: what a habit costs · `decision_duel`: two choices head to head (paying off debt
+    vs investing, renting vs buying) · `myth_bust`: a common belief tested · `rule_change`: news or a new rule ·
     `how_it_works`, `trap_alert`, `case_study`, `checklist`, `psychology`, `history`: for formats
     that can tell them (long-form can tell any).
 - **Template:** one from `allowed_templates` whose `allowed_stories` include your story. Prefer
   higher `weight`; do not always take the top one.
-- **Topic:** a specific, concrete idea, not a theme. "What a ₹350 food-delivery habit costs over
+- **Currency** (`currency`): `USD` unless the story is about one country, which then uses its own
+  (`GBP`, `EUR`, `INR`); see `channel/profile.md`. About one video in five may be an India story.
+- **Topic:** a specific, concrete idea, not a theme. "What a $12 lunch-delivery habit costs over
   20 years" is a topic; "saving money" is not. Its `category` must not be in `blocked_categories`,
   and the topic must not resemble anything in `recent_topics`.
 - **Hook style:** one of `hook_styles`, different from `previous.hook_style`.
@@ -57,8 +59,8 @@ Research reads the news and trends every night and lists ready video ideas, best
 - **Seed:** any integer from 1 to 99999 not obviously reused.
 - **Title** (20–90 characters) and **description:** must not open with any phrase in
   `recent_openings`. Neither the title nor the topic title may share a **shape** with a video in
-  the last 10: numbers and subject are ignored, so "What a ₹5,000 SIP becomes in 25 years" and
-  "What ₹8,000 a month becomes in 30 years" are the same title. Frame each one fresh. No promise of returns, no "guaranteed", no "get rich". The description ends
+  the last 10: numbers and subject are ignored, so "What $500 a month becomes in 25 years" and
+  "What a $300 monthly habit becomes in 30 years" are the same title. Frame each one fresh. No promise of returns, no "guaranteed", no "get rich". The description ends
   with the `disclaimer` from the state output.
 - **CTA:** the closing call to action. It must open differently from `previous.cta`.
 - **Hashtags:** 3 to 6, including `#Shorts`.
@@ -85,8 +87,9 @@ Create `videos/<next_id>/plan.json`:
   "story": "cost_of_habit",
   "hook_style": "question",
   "cta": "Comment your biggest money leak",
-  "title": "Your ₹250 coffee habit is costing you more than you think",
-  "description": "A ₹250 coffee, 20 times a month, for 15 years. Illustrative only. Not financial advice.",
+  "currency": "USD",
+  "title": "Your $6 coffee habit is costing you more than you think",
+  "description": "A $6 coffee, 20 times a month, for 15 years. Illustrative only. Not financial advice.",
   "hashtags": ["#Shorts", "#PersonalFinance", "#Saving"],
   "seed": 4821,
   "style": { "palette": "ember", "genre": "synthwave", "key": "F", "bpm": 108 }
@@ -96,9 +99,10 @@ Create `videos/<next_id>/plan.json`:
 For a feed topic, `topic` also has `"feed_id": "<the topic's id>"`. A trend you found yourself
 (the midday trend run only) goes in `topic.trend` instead — see `generator/prompts/trend_run.md`.
 
-Categories in use: `sip`, `compounding`, `retirement`, `nps`, `ppf`, `tax`, `index_funds`,
-`inflation`, `fd`, `credit_card`, `gold`, `insurance`, `home_loan`, `emi`, `spending`,
-`subscriptions`, `emergency_fund`. Add a new one only if none fits.
+Categories in use: `compounding`, `investing`, `index_funds`, `retirement`, `credit_card`, `debt`,
+`mortgage`, `loans`, `inflation`, `interest_rates`, `savings`, `emergency_fund`, `budgeting`,
+`spending`, `subscriptions`, `tax`, `insurance`, `housing`, `gold`; India stories also `sip`, `fd`,
+`ppf`, `nps`, `emi`, `home_loan`. Add a new one only if none fits.
 
 ## Check
 

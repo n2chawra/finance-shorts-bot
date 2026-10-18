@@ -26,6 +26,7 @@ import tempfile
 from pathlib import Path
 
 from renderer import remotion
+from renderer.engine.formatting import CURRENCIES
 from renderer.timeline.build import check_script
 
 from . import experiments, history, topics, variety
@@ -178,6 +179,9 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
             problems.append("title must be 20–90 characters")
         if "#shorts" not in [h.lower() for h in plan["hashtags"]]:
             problems.append("hashtags must include #Shorts")
+        # global since 2026-10-18: every plan names its money (channel/profile.md)
+        if plan.get("currency") not in CURRENCIES:
+            problems.append(f"currency must be one of {', '.join(CURRENCIES)}: USD unless the story is about one country")
     log_step(vid, "planner", not problems, problems or ["Plan passes the variety rules."], root)
     return problems
 

@@ -18,12 +18,14 @@ Python owns every number, every moment and every sound. Remotion only draws.
 | `seed` | integer; picks narrator and music when not pinned |
 | `narrator` | optional Kokoro voice for the narrator |
 | `style` | optional `{palette, genre, key, bpm}` (resolved from the seed otherwise) |
+| `currency` | `USD`, `GBP`, `EUR` or `INR`, from the plan: how every figure is shown and spoken (rupees use lakh and crore, the others K/M/B) |
 | `maths` | named calculations, `[{name, kind, ...inputs}]`; see below |
 | `thumbnail` | `{who, pose, expression, prop?, figure: "{placeholder}", words: ≤4 words, sub?}` |
 | `beats` | the video, in order |
 
-**Numbers.** Text never contains a digit or `₹`. Every figure comes from a placeholder
-`{<maths name>_<key>}` (shown as `₹1.7 L`, spoken as words), and a param may pull a raw value or a
+**Numbers.** Text never contains a digit or a currency sign (`$`, `£`, `€`, `₹`). Every figure comes
+from a placeholder `{<maths name>_<key>}` (shown as `$1.2M` or `₹1.7 L` in the script's currency,
+spoken as words), and a param may pull a raw value or a
 chart series with `"@<maths name>.<key>"`. The builder rejects anything else.
 
 | kind | inputs | figures (placeholder keys) | series |
@@ -104,7 +106,7 @@ at about 2:45 at this pace, too short to ship).
 
 ## Craft rules
 
-- Hook in the first 30 s with rupee stakes; chapters from the start; an escalation around 1:30
+- Hook in the first 30 s with money stakes; chapters from the start; an escalation around 1:30
   and 3:00; a new visual idea every 3–6 s.
 - On screen: keywords and figures only, never the narration word for word.
 - Mix scenes: cast moments between data scenes, so the story stays about people.

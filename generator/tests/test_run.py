@@ -19,7 +19,7 @@ def put(root: Path, name: str, data: object) -> None:
 
 def script_for(plan: dict) -> dict:
     """A small Short: ₹10,000 a month for 20 years at 12%, matching make_plan's title."""
-    return {"template": "short_story", "format": "short", "seed": plan["seed"], "style": plan["style"],
+    return {"template": "short_story", "format": "short", "seed": plan["seed"], "style": plan["style"], "currency": plan.get("currency", "INR"),
             "maths": [{"name": "sip", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 20}],
             "beats": [{"id": "hook", "scene": "bignumber", "say": "What does {sip_amount} a month become in {sip_years} years?",
                        "params": {"lines": [{"text": "{sip_final}", "style": "hero", "at": "start"}]}},

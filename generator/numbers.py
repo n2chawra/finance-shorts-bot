@@ -188,6 +188,8 @@ def number_check(script: dict, plan: dict | None = None, feed_topic: dict | None
         if got != want:
             notes.append(f"{key}: template shows {got!r} but the independent formula gives {want!r}")
     if plan:
+        if plan.get("currency") and money_for(script).currency != plan["currency"]:
+            notes.append(f"script.currency {money_for(script).currency!r} does not match the plan's {plan['currency']!r}")
         for field in ("template", "seed", "style"):
             if script.get(field) != plan.get(field):
                 notes.append(f"script.{field} does not match the plan")

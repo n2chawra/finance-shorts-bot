@@ -58,8 +58,8 @@ what we can build: the offline Kokoro voices in `renderer/engine/voice.py` (in u
 af_heart, af_bella, am_michael, am_fenrir, am_puck; narrators and cast voices in
 `renderer/timeline/build.py`; the owner rejected the other Indian voices by ear; British
 alternatives exist), the format's tempo, the writer's narration rules and the mix (ducking).
-Area `voice`. A different language (Hinglish, Hindi) is a fair proposal; say what evidence
-supports it.
+Area `voice`. The channel speaks plain international English (`channel/profile.md`); a different
+accent mix is a fair proposal; say what evidence supports it.
 
 ## 2. Topic of the day (rotate by `DOW`)
 | Day | Topic |
@@ -68,40 +68,43 @@ supports it.
 | Tue | Music, sound design and voiceover (voice type, pace, script style) |
 | Wed | Pacing, motion and animation style |
 | Thu | Titles, descriptions, hashtags, thumbnails/first frame |
-| Fri | Indian personal-finance trends: what people search and ask about this week |
+| Fri | Personal-finance trends: what people search and ask about this week (worldwide, US, UK, India) |
 | Sat | YouTube Shorts policy and algorithm changes (monetisation, "inauthentic content", AI labels) |
 | Sun | Competitor teardown: 2 channels in the same niche, what they do that we don't |
 
 ## 2b. Every night: money news scan (feeds the next morning's videos)
-Check what happened in Indian personal finance in the last 2 days: RBI (repo rate, rules), SEBI
-(mutual fund, F&O, finfluencer rules), AMFI monthly data (SIP inflows, folios), Income Tax and the
-Budget, EPFO/PPF/small-savings rates, NSO inflation (CPI), big bank or product changes. Prefer the
-official source (rbi.org.in, sebi.gov.in, amfiindia.com, incometax.gov.in, pib.gov.in, mospi.gov.in);
-a news article is fine to find a story, but each fact needs a URL where the exact figure appears.
+Check what happened in personal finance in the last 2 days, worldwide first: central bank
+decisions (Fed, Bank of England, ECB, RBI), inflation releases (US CPI, UK CPI, euro area HICP,
+India CPI), household debt and credit card data, big rule changes for savers and borrowers (SEC,
+CFPB, FCA, SEBI), budgets and tax changes, big bank or app changes. India stays in the mix (AMFI
+monthly data, RBI, SEBI, the Budget) for about one video in five. Prefer the official source (the
+list in `channel/profile.md`); a news article is fine to find a story, but each fact needs a URL
+where the exact figure appears, and its `currency` is the currency it was published in.
 Every story worth a video goes into the topic feed (section 4) the same night: the 04:07 video run
 reads it. Skip rumours, market predictions and single stocks.
 
-**Trends** (every night, a few searches): what Indians are searching and talking about with money
-right now — Google Trends India (finance), what's trending in finance Shorts, viral money
-conversations, festive and sale-season spending, IPO buzz, a new app or scheme everyone is asking
-about. A money trend that people are talking about *this week* goes into the feed as
+**Trends** (every night, a few searches): what English-speaking viewers are searching and talking
+about with money right now — Google Trends (worldwide and US, finance), what's trending in finance
+Shorts (`market.json`), viral money conversations, sale-season spending, a new app, rule or scheme
+everyone is asking about. A money trend that people are talking about *this week* goes into the feed as
 `"kind": "trend", "priority": "trending"` with a short `expires` (2–4 days): the next video run
 must take it, and it jumps the upload queue. Use `trending` only for real, current attention you
 can show with a source; an evergreen idea is `high` or `normal`.
 
 **Money calendar** (`improvement/research/calendar.json`, keep it rolling 60 days ahead): dated
-moments viewers care about — festive sales and Diwali spending, Dhanteras gold, ITR and advance-tax
-deadlines, 80C season (Jan–Mar), the Budget, new financial-year rule changes (1 April),
-salary/appraisal season, RBI MPC dates (rbi.org.in publishes them). Each entry:
+moments viewers care about — the calendar in `channel/profile.md`: Fed, Bank of England, ECB and RBI
+meeting dates (each publishes them), US CPI release days, US tax day and the UK tax year, Black
+Friday and holiday spending, New Year resolutions, back-to-school costs, and for India stories the
+Budget, ITR deadline and Diwali spending. Each entry:
 `{"date", "event", "ideas": ["…"], "prepare_by"}`. When a moment is 3–10 days away, put its best
 idea in the feed as `seasonal` (`high`), so the video is ready before the day, not after.
 
-**Announcement days** (an official number comes out on a known date: RBI policy, the Budget, a GST
-council meeting): the night before, write `improvement/events/<date>-<slug>.json` for the event-day
+**Announcement days** (an official number comes out on a known date: a Fed, Bank of England, ECB
+or RBI decision, a budget, an inflation release): the night before, write `improvement/events/<date>-<slug>.json` for the event-day
 run (`generator/prompts/event_day.md` has the format): where and when the source publishes, the
 current figure as a sourced fact (`before`), storyboard notes for each outcome (`cut`, `hold`,
 `hike` or the Budget's likely changes), and the `maths` that turns the outcome into the viewer's
-rupees. In your report, remind the owner that the event-day run needs a one-off routine at about
+money, in that country's currency. In your report, remind the owner that the event-day run needs a one-off routine at about
 10:45 IST on that date (raise an `owner` notification a week ahead).
 
 ## 3. Every night: Claude updates
@@ -138,8 +141,9 @@ entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is n
  "stories": ["decision_duel", "how_it_works"],
  "templates": ["any"],
  "angle": "the viewer's question it answers", "why_now": "why this week",
- "facts": [{"label": "what the figure is, no digits", "value": 31781, "unit": "rupees|rupees_lakh|rupees_crore|percent|count|count_lakh|count_crore",
-            "as_of": "YYYY-MM-DD", "source": "AMFI", "url": "https://page-where-the-exact-figure-appears"}],
+ "facts": [{"label": "what the figure is, no digits", "value": 4.25, "unit": "money|money_thousand|money_million|money_billion|money_trillion|percent|count|count_thousand|count_million|count_billion|rupees|rupees_lakh|rupees_crore|count_lakh|count_crore",
+            "currency": "USD|GBP|EUR|INR (the currency it was published in; money_* units use it)",
+            "as_of": "YYYY-MM-DD", "source": "Federal Reserve", "url": "https://page-where-the-exact-figure-appears"}],
  "verify": ["claims the fact reviewer must confirm"], "sources": ["https://…"],
  "found": "<DAY>", "expires": "YYYY-MM-DD", "status": "new"}
 ```
@@ -149,7 +153,7 @@ entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is n
 - `expires`: news about 10–14 days after `found`; `trending` topics 2–4 days; other trends 3–4
   weeks; evergreen 90 days.
 - `stories`: what kind of story the topic tells (`generator/variety.py` `STORIES`). The planner may
-  not tell the same story twice in 3 videos, and "what ₹X becomes in N years" stories
+  not tell the same story twice in 3 videos, and "what $X becomes in N years" stories
   (`future_value`, `early_vs_late`, `cost_of_habit`) are capped at a quarter of the last 20 — 8 of 11 Shorts up
   to 2026-10-17 told that one story. So **most of your ideas should be other stories**: a decision
   duel, a myth, a trap, how something works, a rule change, a case study.

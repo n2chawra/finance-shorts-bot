@@ -27,18 +27,19 @@ Run `python -m generator.run state`.
 
 ## 2. The sweep (at most 4 web searches, 4 page reads)
 
-Look for one Indian personal-finance topic that lots of people are searching or talking about
-**today or since yesterday**:
-- Google Trends India for money terms (gold price, IPO, tax, EMI, UPI, SIP, credit card, PF…).
-- News from the last 24 hours: RBI, SEBI, Income Tax, EPFO, a bank or app change that affects
-  ordinary savers.
+Look for one personal-finance topic that lots of English-speaking people are searching or
+talking about **today or since yesterday** (anywhere: the US, UK, Europe, India…):
+- Google Trends (worldwide and US) for money terms (interest rates, inflation, mortgage rates,
+  student loans, credit cards, tax, gold, a new app or rule).
+- News from the last 24 hours: central banks (Fed, Bank of England, ECB, RBI), inflation releases,
+  regulators (SEC, FCA, SEBI), a bank or app change that affects ordinary savers.
 - What finance Shorts are being made about right now.
 
 It is worth a video only if **all** of these hold:
 1. It is current: you can show a source dated today or yesterday that shows the attention.
 2. It is about the viewer's money, and you can explain what it means for them without predicting
-   prices or giving buy/sell advice (SEBI: no recent market prices used to suggest future prices,
-   no return claims, no single stocks).
+   prices or giving buy/sell advice (no recent market prices used to suggest future prices, no
+   return claims, no single stocks).
 3. A template allowed in `state` can tell it (read its README), with a story in `allowed_stories`.
 4. It isn't already in `recent_topics` or the feed.
 

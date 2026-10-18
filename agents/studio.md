@@ -66,7 +66,7 @@ the viewer *see* happen?
   **4–6 minutes: 850–1,300 words across 50–75 beats** (a beat is one line and one picture, 3–8 s).
   Length is not the goal; a tight four minutes beats a padded six. Add a beat that *does*
   something, never stretch one.
-- **Shape.** Hook with rupee stakes in the first 20 seconds (a person, a choice, the cost). Then
+- **Shape.** Hook with money stakes in the first 20 seconds (a person, a choice, the cost). Then
   chapters (`chapter` beats, 4–6 of them) from the start. An escalation around 1:30 and again
   around 3:00. End on what to do, then the `end` beat.
 - **People, not slides.** Put a cast moment (`stage`, someone reacting, a line of dialogue)
@@ -76,8 +76,9 @@ the viewer *see* happen?
   (`{"word": "owes"}`) and land the figure, the sound and the camera punch on it.
 - **On screen: keywords and figures only.** Never the narration word for word.
 - **Numbers** come only from `maths` (`card_min_due`, `emi`, `sip`, `lumpsum`) through
-  placeholders like `{card_total_paid}` and `"@card.balance"`. Realistic inputs (cards 3–3.75% a
-  month, loans 9–16%, equity 10–12%, FDs 6–7.5%). Never type a digit or ₹ into any text.
+  placeholders like `{card_total_paid}` and `"@card.balance"`, in the plan's `currency` (USD unless
+  the story is about one country; see `channel/profile.md` for realistic inputs per currency). Never
+  type a digit or a currency sign into any text.
   State the simplification on the end card (`assumption`).
 - **Thumbnail**: fill the `thumbnail` block: one cast member reacting, one figure, at most four
   words.

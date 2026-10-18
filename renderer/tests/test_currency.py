@@ -53,3 +53,13 @@ def test_maths_and_the_number_check_agree_in_dollars() -> None:
     assert numbers.number_check({**script, "style": None}, plan)[0]
     bad = {**plan, "title": "$500 a month becomes $9 million"}
     assert any("$9 million" in n for n in numbers.number_check({**script, "style": None}, bad)[1])
+
+
+def test_the_script_keeps_the_plans_currency() -> None:
+    sip = {"name": "plan", "kind": "sip", "monthly": 500, "rate_pct": 10, "years": 30}
+    script = {"template": "short_story", "format": "short", "seed": 1, "style": None, "maths": [sip],
+              "beats": [{"id": "a", "scene": "bignumber", "say": "Look.", "params": {"t": "{plan_final}"}}, {"id": "z", "scene": "end", "params": {}}]}
+    plan = {"template": "short_story", "seed": 1, "style": None, "currency": "USD", "title": "Thirty years of saving",
+            "description": "A plan.", "hashtags": [], "topic": {}}
+    notes = numbers.number_check(script, plan)[1]              # no currency: a rupee script
+    assert any("does not match the plan's 'USD'" in n for n in notes)

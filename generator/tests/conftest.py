@@ -27,7 +27,7 @@ def make_plan(**over) -> dict:
         "story": "future_value", "hook_style": "question", "cta": "Comment if you got it right",
         "title": "Quiz: what does a ₹10,000 SIP become in 20 years?",
         "description": "A quick SIP quiz with a surprising answer. Illustrative only. Not financial advice.",
-        "hashtags": ["#Shorts", "#SIP", "#PersonalFinance"], "seed": 20,
+        "hashtags": ["#Shorts", "#SIP", "#PersonalFinance"], "seed": 20, "currency": "INR",
         "style": {"palette": "forest", "genre": "acoustic", "key": "C", "bpm": 100},
     }
     return {**plan, **over}
