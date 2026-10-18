@@ -33,3 +33,15 @@ def test_liveliness_thresholds() -> None:
     assert liveliness_problems({"median": 1.36, "still_share": 0.066, "longest_still_sec": 4.0}) == []
     problems = liveliness_problems({"median": 0.02, "still_share": 0.82, "longest_still_sec": 40})
     assert len(problems) == 3
+
+
+def test_a_thumbnail_must_match_its_format(tmp_path) -> None:
+    import pytest
+    from PIL import Image
+    from renderer.remotion import check_thumbnail
+    Image.new("RGB", (1080, 1920)).save(tmp_path/"short.png")
+    Image.new("RGB", (1280, 720)).save(tmp_path/"long.png")
+    check_thumbnail(tmp_path/"short.png", "short")
+    check_thumbnail(tmp_path/"long.png", "long")
+    with pytest.raises(RuntimeError, match="must be 1080x1920"):
+        check_thumbnail(tmp_path/"long.png", "short")   # 2026-10-18: Shorts got landscape thumbnails

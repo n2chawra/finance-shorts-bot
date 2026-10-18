@@ -114,11 +114,22 @@ def sheet(paths: list[Path], fps: int, out: Path, cols: int = 6) -> Path:
     return out
 
 
+THUMB_SIZES = {"long": (1280, 720), "short": (1080, 1920)}   # YouTube's 16:9 thumbnail; a Short's 9:16 cover
+
+
+def check_thumbnail(path: Path, fmt: str) -> None:
+    """A thumbnail the wrong shape is cropped or letterboxed on YouTube: fail the render instead."""
+    size = Image.open(path).size
+    if size != THUMB_SIZES[fmt]:
+        raise RuntimeError(f"thumbnail is {size[0]}x{size[1]}; a {fmt} video's must be {THUMB_SIZES[fmt][0]}x{THUMB_SIZES[fmt][1]}")
+
+
 def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = False, every: float = 5.0,
                     chunk: int = 1800, concurrency: int = 4) -> dict:
     """timeline.json (+ its audio.wav) -> out/{video.mp4, thumbnail.png, preview.png, render.json}.
     `work` holds the bundle, stills and chunks. `preview` stops after the stills. Returns the
     report, in the keys the Pillow renderer's render.json has, so ship and the workers read either."""
+    timeline, out, work = timeline.resolve(), out.resolve(), work.resolve()   # render.ts runs in remotion/
     out.mkdir(parents=True, exist_ok=True)
     tl = json.loads(timeline.read_text(encoding="utf-8"))
     b = bundle(work/"bundle")
@@ -132,6 +143,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         _node(["thumbnail", "--timeline", str(timeline), "--out", str(out/"thumbnail.png"), "--bundle", str(b)])
     else:
         shutil.copyfile(shots[min(1, len(shots) - 1)], out/"thumbnail.png")
+    check_thumbnail(out/"thumbnail.png", tl["format"])
     seconds = tl["durationInFrames"]/tl["fps"]
     lines = [{"scene": bt["id"], "text": bt["say"], "start": round(bt["from"]/tl["fps"] + bt["voice"]["start"]/tl["fps"], 2),
               "seconds": round(bt["voice"]["words"][-1]["e"], 2) if bt["voice"]["words"] else 0.0,
