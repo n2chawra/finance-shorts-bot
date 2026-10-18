@@ -6,6 +6,7 @@ import { calculateThumbnailMetadata, THUMB, Thumbnail } from "./compositions/Thu
 import type { Timeline } from "./contract/timeline";
 import sample from "./fixtures/sample-timeline.json";
 import { ActingTest } from "./sheets/ActingTest";
+import { AVATAR, BANNER, ChannelAvatar, ChannelBanner } from "./sheets/ChannelArt";
 import { CharacterSheet } from "./sheets/CharacterSheet";
 
 export const Root: React.FC = () => (
@@ -19,5 +20,8 @@ export const Root: React.FC = () => (
     {/* approval sheets */}
     <Still id="CharacterSheet" component={CharacterSheet} width={1920} height={1080} />
     <Composition id="ActingTest" component={ActingTest} durationInFrames={300} fps={30} width={1920} height={1080} />
+    {/* channel art (assets/channel/): `npx remotion still src/index.ts ChannelAvatar|ChannelBanner <out.png>` */}
+    <Still id="ChannelAvatar" component={ChannelAvatar} width={AVATAR.width} height={AVATAR.height} />
+    <Still id="ChannelBanner" component={ChannelBanner} width={BANNER.width} height={BANNER.height} />
   </>
 );

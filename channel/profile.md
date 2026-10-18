@@ -1,9 +1,13 @@
-# Channel profile: Money in 60
+# Channel profile: Paisa Panchayat
 
 Every agent reads this before its own instructions. It holds everything that is about **this
 channel** rather than about the machine: who it's for, what it covers, where facts come from and
 which rules of its field apply. A second channel is a copy of the repository with this file,
 `config/market.json` and the cast changed (see `docs/guide/13-new-channel.md`).
+
+**Name:** Paisa Panchayat (renamed from "Money in 60" on 2026-10-18, a widely reused name). The idea:
+the cast sits like a village council and settles one money question per video, with real maths and
+a clear verdict. Channel art: `assets/channel/` (drawn by `remotion/src/sheets/ChannelArt.tsx`).
 
 ## Who it's for
 - **Audience:** salaried Indians, roughly 22–40, earning and starting to save; urban, English-first,
