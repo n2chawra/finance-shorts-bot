@@ -139,3 +139,25 @@ def test_short_story_example_passes_the_checks() -> None:
     s = json.loads((EXAMPLES / "short_story.json").read_text(encoding="utf-8"))
     passed, notes = numbers.number_check(s)
     assert passed, notes
+
+
+@pytest.mark.parametrize("side, error", [
+    ({"label": "Paid", "text": "{card_amount}", "value": "@card.total_paid"}, "counts to .* but lands on '₹60,000'"),
+    ({"label": "Paid", "text": "A lot", "value": "@card.total_paid"}, "lands on 'A lot'"),
+    ({"label": "Paid", "text": "{card_total_paid}", "value": 163700}, "typed number"),
+])
+def test_a_counter_lands_on_its_own_figure(side: dict, error: str) -> None:
+    """One quantity, one string: a count-up that counts to one number and lands on another shows
+    two figures for one amount (research proposal same-figure-same-text, 2026-10-18)."""
+    ok = {"label": "Owed", "text": "{card_owed_year1}", "value": "@card.owed_year1"}
+    beats = [{"id": "a", "scene": "split", "params": {"left": side, "right": ok}}, {"id": "z", "scene": "end"}]
+    with pytest.raises(ValueError, match=error):
+        tb.check_script(script(beats))
+
+
+def test_counters_on_their_own_figure_pass() -> None:
+    items = [{"label": "Minimum due", "text": "{card_interest}", "value": "@card.interest"},
+             {"label": "Pay in full", "text": "Nothing", "value": 0},
+             {"label": "Months", "text": "{card_months} months", "value": "@card.months"},
+             {"label": "First due", "text": "just {card_min_due}", "value": "@card.first_min_due"}]
+    tb.check_script(script([{"id": "a", "scene": "towers", "params": {"items": items}}, {"id": "z", "scene": "end"}]))

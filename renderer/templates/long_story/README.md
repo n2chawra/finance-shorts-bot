@@ -87,7 +87,8 @@ Each acting key `{sec | at: event, pose?, expression?, turn?, prop?}` blends in 
 | `checklist` | steps ticking off, active one highlighted | `title`, `items` [{text, icon: autopay/emi/debit/check}], `active`, `actor` |
 | `end` | the CTA, the cast, the assumption and the disclaimer | `cta`, `follow`, `assumption` |
 
-A figure with `value` counts up and lands exactly on Python's string. Every video ends with an
+A figure with `value` counts up and lands exactly on Python's string; its `text` must show that same
+number (or `value` is 0), or the build fails. Every video ends with an
 `end` beat, which always shows "Illustrative only. Not financial advice."
 
 ## Pace and length

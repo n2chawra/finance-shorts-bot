@@ -29,7 +29,7 @@ from renderer.engine import voice as tts
 from renderer.engine.audio import (SR, Mixer, sfx_beep, sfx_boom, sfx_clink, sfx_ding, sfx_fail, sfx_kaching,
                                    sfx_pop, sfx_riser, sfx_tick, sfx_whoosh)
 from renderer.engine.music import gain_curve, make_bed
-from renderer.engine.formatting import fact_value, month_year
+from renderer.engine.formatting import fact_value, group_indian, inr, inr_long, month_year, rupees
 from renderer.engine.style import resolve_style
 from renderer.models import maths
 
@@ -97,6 +97,31 @@ def _resolve(value, figures: dict[str, str], results: dict, where: str):
     if isinstance(value, dict):
         return {k: _resolve(v, figures, results, f"{where}.{k}") for k, v in value.items()}
     return value
+
+
+def _one_string(raw, resolved, where: str) -> None:
+    """One quantity, one string: a count-up or bar (`value` beside `text`) must land on the string
+    Python makes from that same number, so a viewer pausing on two frames never sees two figures for
+    one amount. Its value is an "@maths.key" or 0, never a typed number."""
+    if isinstance(raw, list):
+        for i, (r, v) in enumerate(zip(raw, resolved)):
+            _one_string(r, v, f"{where}[{i}]")
+        return
+    if not isinstance(raw, dict):
+        return
+    if "value" in raw and "text" in raw:
+        ref, v, text = raw["value"], resolved["value"], resolved["text"]
+        if isinstance(ref, (int, float)) and not isinstance(ref, bool):
+            if ref != 0:
+                raise ValueError(f"{where}.value is a typed number ({ref}); use \"@maths.key\" or 0")
+        elif isinstance(v, (int, float)) and v != 0:
+            shown = {rupees(v), inr(v), inr_long(v), group_indian(round(v)), f"{v:g}"}
+            if not any(s in str(text) for s in shown):
+                raise ValueError(f"{where}: counts to {inr(v)} ({ref}) but lands on {text!r}; one quantity, "
+                                 f"one string: use the placeholder that shows the same number")
+    for k, r in raw.items():
+        if k in resolved:
+            _one_string(r, resolved[k], f"{where}.{k}")
 
 
 def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float, duration: float, where: str,
@@ -239,7 +264,7 @@ def check_script(script: dict) -> dict:
         where = f"beat {b.id!r}"
         if b.scene not in scenes:
             raise ValueError(f"{where}: no scene called {b.scene!r}; scenes are {', '.join(sorted(scenes))}")
-        _resolve(b.params, figures, results, f"{where}.params")
+        _one_string(b.params, _resolve(b.params, figures, results, f"{where}.params"), f"{where}.params")
         text = _fill(b.say, figures, f"{where}.say") if b.say else ""
         spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000)["x"] if b.say else ""
         words = {w.lower().strip(".,!?;:\"'") for w in spoken.split()}
@@ -279,6 +304,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     for b in beats:
         where = f"beat {b.id!r}"
         params = _resolve(b.params, figures, results, f"{where}.params")
+        _one_string(b.params, params, f"{where}.params")
         text = _fill(b.say, figures, f"{where}.say") if b.say else ""
         spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000)["x"] if b.say else ""
         if spoken:

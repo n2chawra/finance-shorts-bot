@@ -1,0 +1,20 @@
+{
+  "agent": "improver",
+  "day": "2026-10-18",
+  "startedAt": "2026-10-18T00:47:38Z",
+  "finishedAt": "2026-10-18T00:51:32Z",
+  "summary": "Adopted research's high-priority fix: a count-up or bar can no longer count to one figure and land on another, and its value can't be typed. Wrote the week's summary.",
+  "decision": "acted",
+  "why": "Research routed same-figure-same-text as adopt/high with evidence (v-20261017-04 showed ₹6.5 L vs ₹6.4 L and ₹16.3 L vs ₹16.5 L for one amount). No experiments to close: none running, 1 video with 48 h data.",
+  "findings": [
+    {"title": "Evaluator", "detail": "1 video with 48 h data; no experiments running; no attribute rankings yet (n < 3)."},
+    {"title": "Existing scripts pass", "detail": "examples/short_story, long_story, news_story and v-20261018-01 all pass the new check; 181 tests pass."},
+    {"title": "evaluate-stdlib-only", "detail": "Needs generator/variety.py (owner-only); raised as a notification with exact steps."}
+  ],
+  "changes": [
+    {"title": "One quantity, one string", "detail": "renderer/timeline/build.py: _one_string() runs in check_script and build; tests in renderer/tests/test_timeline.py; rule added to generator/prompts/writer.md and the long_story README.", "branch": "agent/improver/2026-10-18", "experiment": "same-figure-same-text"},
+    {"title": "Weekly summary", "detail": "improvement/weekly/2026-W42.md", "branch": "agent/improver/2026-10-18"}
+  ],
+  "nextCheck": "2026-10-19",
+  "links": [{"label": "Weekly summary", "url": "improvement/weekly/2026-W42.md"}, {"label": "Research", "url": "improvement/research/2026-10-18.md"}]
+}
