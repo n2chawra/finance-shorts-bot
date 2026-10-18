@@ -355,3 +355,9 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   upload hour; monthly review agent + Approve/Decline proposals on Notifications; `market.yml` and the
   `market-data` branch; `channel/profile.md` and the new-channel guide. Found: research page fetches
   fail (cloud network), the 16 Oct auditor run was refused for usage.
+- 2026-10-18: Channel goes global (owner): English-speaking viewers anywhere, India about one video in
+  five; name "Paisa Panchayat" and the cast stay. Scripts carry a `currency` (USD default; GBP, EUR,
+  INR for a country's story): Money formatting in Python and Remotion (parity tested), the voice reads
+  dollars/pounds/euros and millions, maths, facts and the number check follow it; plans must name
+  one. Profile, prompts, research, Scout, Studio and the market searches rewritten for a global
+  audience; `examples/short_story_usd.json`. Old rupee scripts unchanged.

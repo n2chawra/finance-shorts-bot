@@ -1,7 +1,8 @@
 # Finance Shorts Bot
 
-Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for an
-Indian audience and uploads them to YouTube: **Shorts** (vertical, 30–45 s, two a day) and
+Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for a
+global English-speaking audience (India included; the channel is "Paisa Panchayat", see
+`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 30–45 s, two a day) and
 **long-form explainers** (landscape, 4–6 min, character-led animation). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
@@ -139,7 +140,7 @@ means as a number; the first Remotion long video scored 1.36 and its first Short
 apps/dashboard/          Next.js 15, App Router, TypeScript strict, Prisma, TanStack Query, Radix UI, Motion
 workers/                 Node/TS scripts run by GitHub Actions: ingest, publish, stats, watchdog
 renderer/                Python 3.12: numbers, timing and sound for the videos
-  engine/                audio + music synth, Kokoro voice, Indian formatting, finance maths, style
+  engine/                audio + music synth, Kokoro voice, money formatting, finance maths, style
   models/maths.py        named calculations (sip, lumpsum, emi, card_min_due)
   timeline/build.py      storyboard script → timeline.json + audio.wav; check_script validates
   templates/<name>/      README.md: the writer's contract (short_story, long_story)
@@ -188,8 +189,8 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
    recipe. Numbers are inputs (principal, rate, years), not results.
 4. **Number check (code)**: compute every displayed figure from inputs; reject if the script
    hard-codes a result or any claim contradicts the math. Max 2 rewrites, then mark failed.
-5. **Fact review (separate agent, fresh context)**: checks claims, Indian context (tax slabs,
-   SEBI/RBI rules, product names), tone, disclaimer. It did not see steps 2–3 reasoning.
+5. **Fact review (separate agent, fresh context)**: checks claims against the rules of the country
+   the story is about (tax, regulators, central banks, product names), tone, disclaimer. It did not see steps 2–3 reasoning.
 6. **Render (code)**: `python -m generator.run render <id>` → voice + timeline, Remotion render,
    mp4 + thumbnail + preview contact sheet, liveliness gate.
 7. **QA review (separate agent)**: looks at the contact sheet + audio levels. Rejects overlaps,
@@ -220,7 +221,7 @@ the agent steps follow `generator/prompts/*.md`.
 - Titles and descriptions must not reuse an opening phrase from the last 20 videos.
 - **Story, not just category** (`STORIES` in `variety.py`): every plan names the story it tells
   (future value, early vs late, cost of habit, decision duel, myth bust, how it works, trap alert,
-  rule change, case study…). The same story not in the last 3 videos; the "₹X becomes ₹Y in N
+  rule change, case study…). The same story not in the last 3 videos; the "$X becomes $Y in N
   years" family at most a quarter of the last 20.
   Neither the title nor the topic title may repeat a **shape** from the last 10 (numbers and
   subject removed). Up to 2026-10-17, 8 of 11 Shorts told one story in different categories.
@@ -237,7 +238,9 @@ the agent steps follow `generator/prompts/*.md`.
   (`TEMPOS` in `renderer/timeline/build.py`), voice and animation together.
 - First frame hooks (big number or question). A new picture every 3–5 s (Shorts), 3–6 s (long).
 - Text: Shorts min 44 px, never within 120 px of the bottom edge (Shorts UI), keep away from the
-  right edge buttons (`remotion/src/design/frame.ts`). Indian number formatting (₹, L, Cr).
+  right edge buttons (`remotion/src/design/frame.ts`). Money in the script's `currency` (USD by
+  default; GBP, EUR, INR for a story about that country): international grouping and K/M/B, rupees
+  with lakh and crore (`renderer/engine/formatting.py` `Money`, mirrored in `remotion/src/fmt/inr.ts`).
 - Deterministic: same script + seed → same video (seeded randomness only).
 - `python -m renderer.remotion <timeline.json> --out <dir> --stills-only` renders a contact sheet
   of stills for QA without encoding the video.
@@ -262,5 +265,5 @@ refresh tokens expire after 7 days.
 - TypeScript strict, Zod for every external payload (manifests, YouTube responses).
 - Python: type hints, no global state in templates, each template a pure function of
   (script, style, t) → frame.
-- Small commits with clear messages. Tests for variety rules, number checks and Indian formatting.
+- Small commits with clear messages. Tests for variety rules, number checks and money formatting.
 - Watchdog alerts on Telegram: failed run, failed upload, backlog < 5, token errors.
