@@ -1,0 +1,342 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261018-02",
+ "seed": 38417,
+ "story": "decision_duel",
+ "style": {
+  "palette": "forest",
+  "genre": "acoustic",
+  "key": "G",
+  "bpm": 98
+ },
+ "feed_id": "2026-10-18-cpi-sept-real-return",
+ "facts": [
+  {
+   "label": "Retail inflation (CPI), September",
+   "value": 5.54,
+   "unit": "percent",
+   "as_of": "2026-09-30",
+   "source": "MoSPI",
+   "url": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf"
+  }
+ ],
+ "maths": [
+  {
+   "name": "prices",
+   "kind": "lumpsum",
+   "amount": 100000,
+   "rate_pct": 5.54,
+   "years": 5
+  },
+  {
+   "name": "savings",
+   "kind": "lumpsum",
+   "amount": 100000,
+   "rate_pct": 3,
+   "years": 5
+  },
+  {
+   "name": "fd",
+   "kind": "lumpsum",
+   "amount": 100000,
+   "rate_pct": 7,
+   "years": 5
+  }
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "bignumber",
+   "camera": "punch:q",
+   "say": "Quick question about your savings.",
+   "events": {
+    "q": {
+     "word": "savings"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "q"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Is your savings account",
+      "style": "sub",
+      "at": "start"
+     },
+     {
+      "text": "keeping up?",
+      "style": "hero",
+      "at": "start"
+     }
+    ]
+   }
+  },
+  {
+   "id": "headline",
+   "scene": "headline",
+   "camera": "punch:fig",
+   "say": "Prices in India rose {fact1} in a year. Is your money keeping up?",
+   "events": {
+    "fig": {
+     "word": "rose"
+    },
+    "q": {
+     "word": "money"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "fig",
+     "gain": 0.7
+    }
+   ],
+   "params": {
+    "kicker": "NEWS",
+    "title": "Is your savings keeping up?",
+    "figure": "{fact1}",
+    "figureAt": "fig",
+    "label": "retail inflation in a year"
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "rohan",
+   "scene": "stage",
+   "speaker": "rohan",
+   "transition": "whip",
+   "say": "My money sits in a savings account. That's safe, right?",
+   "events": {
+    "money": {
+     "word": "savings"
+    },
+    "safe": {
+     "word": "safe"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.5,
+      "enter": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "expression": "happy",
+        "prop": "phone"
+       },
+       {
+        "at": "money",
+        "pose": "wave",
+        "expression": "happy"
+       },
+       {
+        "at": "safe",
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ]
+   },
+   "camera": "punch:safe",
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "safe"
+    }
+   ]
+  },
+  {
+   "id": "prices",
+   "scene": "calendar",
+   "transition": "zoom",
+   "camera": "push",
+   "say": "At that pace, shopping that costs {prices_amount} today will cost {prices_final} in {prices_years} years.",
+   "events": {
+    "final": {
+     "word": "cost"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "start"
+    },
+    {
+     "kind": "boom",
+     "at": "final",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "loops": 5,
+    "label": "{prices_amount} now",
+    "labelAt": "start",
+    "sub": "{prices_final} later",
+    "subAt": "final"
+   }
+  },
+  {
+   "id": "duel",
+   "scene": "split",
+   "transition": "slide-up",
+   "say": "Park {fd_amount} in an FD at {fd_rate}: you get {fd_final}. A savings account at {savings_rate} gives just {savings_final}.",
+   "events": {
+    "fd": {
+     "word": "FD"
+    },
+    "sa": {
+     "word": "savings"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "sa"
+    },
+    {
+     "kind": "ding",
+     "at": "fd"
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "FD",
+     "text": "{fd_final}",
+     "value": "@fd.final",
+     "at": "fd"
+    },
+    "right": {
+     "label": "Savings account",
+     "text": "{savings_final}",
+     "value": "@savings.final",
+     "at": "sa"
+    }
+   },
+   "camera": "punch:sa"
+  },
+  {
+   "id": "towers",
+   "scene": "towers",
+   "transition": "zoom",
+   "say": "Line them up. The savings account falls behind prices. The FD stays ahead, before tax.",
+   "events": {
+    "a": {
+     "word": "savings"
+    },
+    "b": {
+     "word": "prices"
+    },
+    "c": {
+     "word": "FD"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "a"
+    },
+    {
+     "kind": "pop",
+     "at": "b"
+    },
+    {
+     "kind": "kaching",
+     "at": "c"
+    }
+   ],
+   "params": {
+    "items": [
+     {
+      "label": "Savings",
+      "text": "{savings_final}",
+      "value": "@savings.final",
+      "at": "a",
+      "color": "danger"
+     },
+     {
+      "label": "Prices",
+      "text": "{prices_final}",
+      "value": "@prices.final",
+      "at": "b"
+     },
+     {
+      "label": "FD",
+      "text": "{fd_final}",
+      "value": "@fd.final",
+      "at": "c",
+      "color": "good"
+     }
+    ]
+   },
+   "camera": "punch:c"
+  },
+  {
+   "id": "priya",
+   "scene": "stage",
+   "speaker": "priya",
+   "transition": "fade",
+   "say": "Safe is not enough. Does it grow faster than prices?",
+   "events": {
+    "real": {
+     "word": "grow"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "priya",
+      "x": 0.5,
+      "enter": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       },
+       {
+        "at": "real",
+        "pose": "pointUp",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ],
+    "sikka": {
+     "x": 0.78,
+     "at": "real",
+     "expression": "happy",
+     "cheer": true
+    }
+   },
+   "camera": "punch:real",
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "real"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "Is yours keeping up? Follow for one money idea a day.",
+   "params": {
+    "cta": "Savings account or FD?",
+    "follow": "Follow for one money idea a day",
+    "assumption": "Assumes {savings_rate} savings and {fd_rate} FD a year before tax, and prices rising {prices_rate} a year."
+   }
+  }
+ ]
+}
