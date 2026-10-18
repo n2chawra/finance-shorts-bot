@@ -19,6 +19,16 @@ def test_clean_plan_passes_on_empty_and_unrelated_history() -> None:
     assert check(make_plan(), history) == []
 
 
+def test_a_single_template_is_always_allowed() -> None:
+    """One template per format (short_story, long_story) means a window of 0. On 2026-10-18 the
+    slice history[-0:] read as the whole history, and every plan after the first short_story was
+    rejected: one Short made instead of three."""
+    history = [entry(i, "short_story", f"cat{i}") for i in range(5)]
+    assert variety.allowed_templates(history, ["short_story"]) == ["short_story"]
+    assert not any("template" in p for p in variety.check_plan(make_plan(), history, ["short_story"], NOW))
+    assert variety.latest(history, 0) == [] and variety.latest(history, 2) == history[-2:]
+
+
 def test_template_used_too_recently() -> None:
     history = [entry(1, "short_story", "emi"), entry(2, "myth_vs_fact", "gold")]
     assert any("used in the last 2 videos" in p for p in check(make_plan(), history))

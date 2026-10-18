@@ -85,10 +85,15 @@ def opening(text: str) -> str:
     return " ".join(re.findall(r"[a-z0-9₹%]+", text.lower())[:OPENING_WORDS])
 
 
+def latest(history: list[dict], n: int) -> list[dict]:
+    """The last `n` entries; none when n is 0 (`history[-0:]` would be the whole history)."""
+    return history[-n:] if n > 0 else []
+
+
 def allowed_templates(history: list[dict], enabled: list[str]) -> list[str]:
     """Enabled templates that pass both template rules right now."""
     n = rotation_size(enabled)
-    recent = [e["template"] for e in history[-template_window(n):]]
+    recent = [e["template"] for e in latest(history, template_window(n))]
     others = [e["template"] for e in history[-(SHARE_WINDOW - 1):]]      # the new video makes it 20
     most = math.floor(share_limit(n)*SHARE_WINDOW)
     return [t for t in enabled if t not in recent and others.count(t) + 1 <= most]
@@ -167,7 +172,7 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
         out.append(f"template {template!r} is not an enabled template")
     elif template not in allowed_templates(history, enabled):
         window = template_window(rotation_size(enabled))
-        if template in [e["template"] for e in history[-window:]]:
+        if template in [e["template"] for e in latest(history, window)]:
             out.append(f"template {template!r} was used in the last {window} videos")
         else:
             out.append(f"template {template!r} would exceed {share_limit(rotation_size(enabled)):.0%} of the last {SHARE_WINDOW} videos")
