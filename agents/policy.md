@@ -61,7 +61,10 @@ profile describes the channel, and where they differ about the channel, the prof
     right now (rewrite the file each run; an item you drop is marked resolved). Owner problems are
     things like a missing key, an expired token, a setting only the owner may change, a Claude
     feature that needs a routine/model change, or something you were blocked from doing. Write each
-    with exact fix steps. Don't use it for things you can fix yourself.
+    with exact fix steps. Don't use it for things you can fix yourself. The shape, exactly:
+    `{"notifications": [{"key": "short-stable-id", "severity": "info | warning | critical",
+    "title": "…", "detail": "…", "fix": "1. … 2. …"}]}` (an empty list when there's nothing).
+  - In both files, leave an optional field out rather than writing `null`.
 
 ## Activity file format
 ```json

@@ -263,8 +263,8 @@ export const ActivitySchema = z.object({
   summary: z.string(),
   decision: z.enum(["acted", "waited", "blocked", "nothing"]),
   why: z.string(),
-  findings: z.array(z.object({ title: z.string(), detail: z.string().optional(), link: z.string().optional() })),
-  changes: z.array(z.object({ title: z.string(), detail: z.string().optional(), branch: z.string().optional(), experiment: z.string().optional() })),
+  findings: z.array(z.object({ title: z.string(), detail: z.string().nullish(), link: z.string().nullish() })),
+  changes: z.array(z.object({ title: z.string(), detail: z.string().nullish(), branch: z.string().nullish(), experiment: z.string().nullish() })),
   nextCheck: z.string().nullable(),
   links: z.array(z.object({ label: z.string(), url: z.string() })),
 });

@@ -22,26 +22,32 @@ const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio
 
 const readJson = (file: string): unknown => JSON.parse(readFileSync(file, "utf8"));
 
-const Activity = z.object({
+// Agents write these files by hand, so small slips are accepted rather than losing the whole night's
+// report: an optional field written as null, `id` for `key`, low/medium/high for the severities.
+const optional = z.string().nullish().transform((v) => v ?? undefined);
+
+export const Activity = z.object({
   agent: z.enum(AGENTS),
   day: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-  startedAt: z.iso.datetime().optional(),
-  finishedAt: z.iso.datetime().optional(),
+  startedAt: z.iso.datetime().nullish().transform((v) => v ?? undefined),
+  finishedAt: z.iso.datetime().nullish().transform((v) => v ?? undefined),
   summary: z.string().min(1),
   decision: z.enum(["acted", "waited", "blocked", "nothing"]),
   why: z.string(),
-  findings: z.array(z.object({ title: z.string(), detail: z.string().optional(), link: z.string().optional() })).default([]),
-  changes: z.array(z.object({ title: z.string(), detail: z.string().optional(), branch: z.string().optional(), experiment: z.string().optional() })).default([]),
+  findings: z.array(z.object({ title: z.string(), detail: optional, link: optional })).default([]),
+  changes: z.array(z.object({ title: z.string(), detail: optional, branch: optional, experiment: optional })).default([]),
   nextCheck: z.string().nullish(),
   links: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
 });
 
-const AgentNotices = z.object({
-  notifications: z.array(z.object({
-    key: z.string().min(1), severity: z.enum(["info", "warning", "critical"]), title: z.string().min(1), detail: z.string(), fix: z.string(),
-    proposal: z.object({ setting: z.string().min(1), value: z.unknown(), current: z.unknown().optional() }).optional(),
-  })),
-});
+const SEVERITY_ALIASES = { low: "info", medium: "warning", high: "critical" } as const;
+export const AgentNotice = z.object({
+  key: z.string().min(1).optional(), id: z.string().min(1).optional(),
+  severity: z.union([z.enum(["info", "warning", "critical"]), z.enum(["low", "medium", "high"]).transform((s) => SEVERITY_ALIASES[s])]),
+  title: z.string().min(1), detail: z.string().default(""), fix: z.string().default(""),
+  proposal: z.object({ setting: z.string().min(1), value: z.unknown(), current: z.unknown().optional() }).optional(),
+}).refine((n) => n.key ?? n.id, "needs a key").transform(({ id, ...n }) => ({ ...n, key: (n.key ?? id)! }));
+const AgentNotices = z.object({ notifications: z.array(z.unknown()) });
 
 const TemplateDecisions = z.object({
   decisions: z.array(z.object({
@@ -75,17 +81,25 @@ export async function importAgentNotifications(prisma: PrismaClient, root: strin
     const keep = new Set<string>();
     if (existsSync(file)) {
       const parsed = AgentNotices.safeParse(readJson(file));
-      if (parsed.success) {
-        for (const n of parsed.data.notifications) {
-          const key = `agent:${agent}:${n.key}`;
-          keep.add(key);
-          await notify(prisma, { key, source: agent, severity: n.severity, title: n.title, detail: n.detail, fix: n.fix,
-            ...(n.proposal ? { proposal: n.proposal } : {}) });
-        }
-      } else {
+      if (!parsed.success) {
         console.error(`::warning::notifications/${agent}.json is invalid: ${parsed.error.issues[0]?.message}`);
         continue;   // don't resolve anything on a bad file
       }
+      let skipped = false;
+      for (const [i, raw] of parsed.data.notifications.entries()) {
+        const item = AgentNotice.safeParse(raw);
+        if (!item.success) {   // one bad item: raise the others, but resolve nothing (its key is unknown)
+          console.error(`::warning::notifications/${agent}.json item ${i} is invalid: ${item.error.issues[0]?.message}`);
+          skipped = true;
+          continue;
+        }
+        const n = item.data;
+        const key = `agent:${agent}:${n.key}`;
+        keep.add(key);
+        await notify(prisma, { key, source: agent, severity: n.severity, title: n.title, detail: n.detail, fix: n.fix,
+          ...(n.proposal ? { proposal: n.proposal } : {}) });
+      }
+      if (skipped) continue;
     }
     await resolveOthers(prisma, `agent:${agent}:`, keep);   // the agent dropped it: fixed
   }
