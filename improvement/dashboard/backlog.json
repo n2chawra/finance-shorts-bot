@@ -1,30 +1,52 @@
 {
- "items": [
-  {
-   "id": "notif-phone-layout",
-   "kind": "bug",
-   "title": "Notifications: ambiguous 'Resolved' button squeezed the fix steps on phones",
-   "detail": "Open items showed a button labelled 'Resolved' in a right-hand column, leaving the How-to-fix box narrow at phone width. Button renamed 'Mark resolved' and moved below the card on phones.",
-   "page": "notifications",
-   "found": "2026-10-16",
-   "status": "done",
-   "done": "2026-10-16",
-   "lastTouched": {
-    "apps/dashboard/src/app/notifications/page.tsx": "2026-10-16"
-   }
-  },
-  {
-   "id": "queue-phone-clip",
-   "kind": "bug",
-   "title": "Queue: publish time cut off on phones",
-   "detail": "The meta line (template \u00b7 category \u00b7 publish time) was truncated at phone width, hiding the time. It now wraps and the time stays whole.",
-   "page": "queue",
-   "found": "2026-10-17",
-   "status": "done",
-   "done": "2026-10-17",
-   "lastTouched": {
-    "apps/dashboard/src/app/queue/page.tsx": "2026-10-17"
-   }
-  }
- ]
+  "items": [
+    {
+      "id": "notif-phone-layout",
+      "kind": "bug",
+      "title": "Notifications: ambiguous 'Resolved' button squeezed the fix steps on phones",
+      "detail": "Open items showed a button labelled 'Resolved' in a right-hand column, leaving the How-to-fix box narrow at phone width. Button renamed 'Mark resolved' and moved below the card on phones.",
+      "page": "notifications",
+      "found": "2026-10-16",
+      "status": "done",
+      "done": "2026-10-16",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-10-16"
+      }
+    },
+    {
+      "id": "queue-phone-clip",
+      "kind": "bug",
+      "title": "Queue: publish time cut off on phones",
+      "detail": "The meta line (template · category · publish time) was truncated at phone width, hiding the time. It now wraps and the time stays whole.",
+      "page": "queue",
+      "found": "2026-10-17",
+      "status": "done",
+      "done": "2026-10-17",
+      "lastTouched": {
+        "apps/dashboard/src/app/queue/page.tsx": "2026-10-17"
+      }
+    },
+    {
+      "id": "sample-thumbs-404",
+      "kind": "bug",
+      "title": "Sample data: thumbnails for the new story templates 404, 12 smoke tests red",
+      "detail": "cf14172 switched the sample templates to short_story/long_story but public/sample/ only holds the retired templates' art, so every page with a thumbnail logged a 404 console error. The sample store now borrows a retired template's art for short_story and gives long_story no sample art (as the DB store does). New smoke test: no broken images on Overview, Queue, Videos, Templates.",
+      "page": "overview, queue, videos, templates",
+      "found": "2026-10-18",
+      "status": "done",
+      "done": "2026-10-18",
+      "lastTouched": {
+        "apps/dashboard/src/lib/store.sample.ts": "2026-10-18"
+      }
+    },
+    {
+      "id": "templates-long-card-phone",
+      "kind": "bug",
+      "title": "Templates: on phones the Long story card's 16:9 player squeezes the text column",
+      "detail": "At 390 px the landscape poster takes about half the card width, so the id line wraps ('long videos') and the description is cut off. Stack the player above the text on phones for landscape templates.",
+      "page": "templates",
+      "found": "2026-10-18",
+      "status": "open"
+    }
+  ]
 }
