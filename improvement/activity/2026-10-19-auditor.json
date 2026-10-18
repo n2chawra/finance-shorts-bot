@@ -1,0 +1,20 @@
+{
+  "agent": "auditor",
+  "day": "2026-10-19",
+  "startedAt": "2026-10-18T17:37:42Z",
+  "finishedAt": "2026-10-18T17:42:36Z",
+  "summary": "Fixed the hourly watchdog, which had crashed every run since Scout and Studio started reporting run times, and an ingest timestamp-order bug. Found that six workflows hide failures behind '| tee'.",
+  "decision": "acted",
+  "why": "scheduleOverlap threw a TypeError for the unscheduled 'scout'/'studio' runs, so the watchdog raised and resolved nothing; reproduced in a test, fixed, 54/54 worker tests pass. The data audit was 23 h old (GitHub started it late again), so duty 1 was skipped.",
+  "findings": [
+    {"title": "Watchdog silent since 18 Oct", "detail": "Crashed in scheduleCheck on Scout/Studio activity; runs still showed green."},
+    {"title": "Failing jobs show green", "detail": "data-audit, ingest, market, publish, stats and watchdog pipe into tee without pipefail. Owner fix in Notifications."},
+    {"title": "Data audit late again", "detail": "Last file 2026-10-17T18:57Z; tonight's had not started at 17:40Z."}
+  ],
+  "changes": [
+    {"title": "Watchdog skips runs outside the nightly schedule", "detail": "workers/lib/schedule.ts isScheduled, used by scheduleOverlap and watchdog.ts; test in schedule.test.ts.", "branch": "agent/auditor/2026-10-19"},
+    {"title": "ingestedAt compares timestamps as instants", "detail": "workers/ingest.ts newestStamp; test in ingest.test.ts.", "branch": "agent/auditor/2026-10-19"}
+  ],
+  "nextCheck": "2026-10-20",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-10-19.md"}]
+}

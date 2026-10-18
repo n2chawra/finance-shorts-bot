@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { SCHEDULE, clusterRuns, scheduleOverlap, videoRunId, type ObservedRun } from "../lib/schedule.ts";
+import { SCHEDULE, clusterRuns, isScheduled, scheduleOverlap, videoRunId, type ObservedRun } from "../lib/schedule.ts";
 
 const z = (s: string) => new Date(s);
 // IST = UTC + 5:30. 23:00 IST on 15 Oct = 17:30Z; 04:07 IST on 16 Oct = 22:37Z (15 Oct).
@@ -69,4 +69,17 @@ test("videos made back to back are one run, a gap over an hour starts another", 
   assert.equal(runs.length, 2);
   assert.equal(runs[0]!.videos, 2);
   assert.equal(runs[0]!.finish.toISOString(), "2026-10-15T23:20:00.000Z");
+});
+
+test("runs outside the nightly schedule (scout, studio, monthly) are ignored, not a crash", () => {
+  // Scout 09:37 IST and Studio 14:37 IST report startedAt/finishedAt too; the watchdog passes them in
+  const extra = [
+    { id: "scout", start: z("2026-10-18T04:07:00Z"), finish: z("2026-10-18T04:30:00Z") },
+    { id: "studio", start: z("2026-10-18T09:07:00Z"), finish: z("2026-10-18T10:00:00Z") },
+  ] as unknown as ObservedRun[];
+  assert.equal(scheduleOverlap(extra), null);
+  const f = scheduleOverlap([...extra, run("auditor", "2026-10-15T17:35:00Z", "2026-10-15T18:33:00Z")]);
+  assert.match(f?.detail ?? "", /Auditor ran 23:05–00:03 IST/);
+  assert.ok(isScheduled("auditor"));
+  assert.ok(!isScheduled("scout"));
 });

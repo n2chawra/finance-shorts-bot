@@ -86,6 +86,55 @@
       "severity": "low",
       "found": "2026-10-18",
       "status": "open"
+    },
+    {
+      "id": "wrk-001",
+      "kind": "bug",
+      "title": "Watchdog crashed every hour once Scout/Studio reported run times",
+      "detail": "scheduleCheck passed every AgentActivity with start/finish to scheduleOverlap, which looks each id up in SCHEDULE. 'scout' and 'studio' are not there, so entry(id).ist threw a TypeError before any notification was raised or resolved. Since the first timestamped Scout report (2026-10-18) the watchdog did nothing. Now unscheduled runs are skipped (isScheduled).",
+      "files": [
+        "workers/lib/schedule.ts",
+        "workers/watchdog.ts"
+      ],
+      "severity": "high",
+      "found": "2026-10-19",
+      "status": "fixed"
+    },
+    {
+      "id": "wrk-002",
+      "kind": "bug",
+      "title": "Workflow failures are hidden by '| tee' without pipefail",
+      "detail": "data-audit, ingest, market, publish, stats and watchdog run 'npm run x | tee ...' under the default 'bash -e' shell, which has no pipefail, so a crashed job shows green and the watchdog's workflow-failure check never fires. Workflows are owner-only: raised as a notification.",
+      "files": [
+        ".github/workflows/*.yml"
+      ],
+      "severity": "high",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "wrk-003",
+      "kind": "bug",
+      "title": "ingestedAt picked the newest manifest by string order",
+      "detail": "buildRoutineSettings sorted createdAt strings; with mixed UTC offsets the text order isn't time order (same class as gen-001). Now compared as instants (newestStamp). All manifests use +00:00 today, so no wrong value has shipped.",
+      "files": [
+        "workers/ingest.ts"
+      ],
+      "severity": "low",
+      "found": "2026-10-19",
+      "status": "fixed"
+    },
+    {
+      "id": "wrk-q01",
+      "kind": "quality",
+      "title": "watchdog.ts computes the IST hour and weekday by hand in two places",
+      "detail": "pipelineChecks and agentChecks repeat the istHour formula, and agentChecks repeats the 330-minute offset for the weekday. One istClock(now) helper next to istDay in lib would remove three copies. Small; for a later night (needs a test first).",
+      "files": [
+        "workers/watchdog.ts"
+      ],
+      "severity": "low",
+      "found": "2026-10-19",
+      "status": "open"
     }
   ]
 }

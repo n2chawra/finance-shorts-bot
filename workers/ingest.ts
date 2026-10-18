@@ -147,6 +147,10 @@ async function syncTemplateWork(prisma: PrismaClient): Promise<void> {
   }
 }
 
+/** The latest of some ISO timestamps, compared as instants (manifests may differ in UTC offset). */
+export const newestStamp = (stamps: string[]): string | null =>
+  stamps.reduce<string | null>((a, b) => (a === null || Date.parse(b) > Date.parse(a) ? b : a), null);
+
 /** The file routines read. `ingestedAt` is the newest ingested manifest's own timestamp string,
  * so the generator can compare it with history entries exactly. */
 export async function buildRoutineSettings(prisma: PrismaClient, root = ROOT): Promise<Record<string, unknown>> {
@@ -160,7 +164,7 @@ export async function buildRoutineSettings(prisma: PrismaClient, root = ROOT): P
     backlog: await prisma.video.count({ where: { status: "queued", deletedAt: null } }),
     backlogByFormat: Object.fromEntries(await Promise.all((["short", "long"] as const).map(async (f) =>
       [f, await prisma.video.count({ where: { status: "queued", deletedAt: null, format: f } })] as const))),
-    ingestedAt: stamps.sort().at(-1) ?? null,
+    ingestedAt: newestStamp(stamps),
     backlogCap: s.backlogCap,
     generationPaused: s.generationPaused,
     uploadsPaused: s.uploadsPaused,
