@@ -67,11 +67,12 @@
       ],
       "found": "2026-10-17",
       "expires": "2026-10-30",
-      "status": "new",
+      "status": "expired",
       "stories": [
         "rule_change",
         "how_it_works"
-      ]
+      ],
+      "reason": "Told by v-20261017-02 (Short) and L-20261018-01 (long); the channel is global since 18 Oct, so India news is about one video in five. (research 2026-10-19)"
     },
     {
       "id": "2026-10-17-amfi-sept-sip-record",
@@ -131,11 +132,12 @@
       ],
       "found": "2026-10-17",
       "expires": "2026-11-14",
-      "status": "new",
+      "status": "expired",
       "stories": [
         "how_it_works",
         "decision_duel"
-      ]
+      ],
+      "reason": "Told by v-20261018-03 (8.5% to 8.75% home loan). (research 2026-10-19)"
     },
     {
       "id": "2026-10-18-cpi-sept-real-return",
@@ -182,7 +184,8 @@
       ],
       "found": "2026-10-18",
       "expires": "2026-10-30",
-      "status": "new"
+      "status": "expired",
+      "reason": "Told by v-20261018-02. (research 2026-10-19)"
     },
     {
       "id": "2026-10-18-upi-mdr-above-2000",
@@ -213,6 +216,161 @@
       ],
       "found": "2026-10-18",
       "expires": "2026-10-21",
+      "status": "expired",
+      "reason": "Told by v-20261018-01; India-only trend. (research 2026-10-19)"
+    },
+    {
+      "id": "2026-10-19-us-cpi-energy-sept",
+      "title": "US prices up 3.7% in a year, energy up 20.4%: why your own inflation isn't the headline number",
+      "category": "inflation",
+      "kind": "news",
+      "priority": "high",
+      "stories": [
+        "how_it_works",
+        "case_study"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "The news says 3.7%, but my gas and power bills feel much worse: what is my own inflation rate?",
+      "why_now": "BLS released September CPI on 14 Oct 2026: all items 3.7% over 12 months, energy 20.4%, core 2.6%. The Fed decides on 28 Oct, so inflation is the money story of the next two weeks in the US.",
+      "facts": [
+        {
+          "label": "US consumer prices, all items, change over 12 months to September",
+          "value": 3.7,
+          "unit": "percent",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "BLS",
+          "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+        },
+        {
+          "label": "US energy prices, change over 12 months to September",
+          "value": 20.4,
+          "unit": "percent",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "BLS",
+          "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+        },
+        {
+          "label": "US prices excluding food and energy, change over 12 months to September",
+          "value": 2.6,
+          "unit": "percent",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "BLS",
+          "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+        }
+      ],
+      "verify": [
+        "BLS CPI news release of 14 Oct 2026 (September 2026): all items +3.7% (12 months, not seasonally adjusted), energy +20.4%, all items less food and energy +2.6%, +0.6% for the month seasonally adjusted",
+        "A household's bills are illustrative inputs stated as assumptions (e.g. $250 a month on gas and power), never presented as an average",
+        "The extra yearly cost is computed by code (e.g. a lumpsum kind at 20.4% for 1 year on the yearly bill, or a price-rise kind if the improver adds one); do not say what prices will do next"
+      ],
+      "sources": [
+        "https://www.bls.gov/news.release/cpi.nr0.htm"
+      ],
+      "found": "2026-10-19",
+      "expires": "2026-11-01",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-19-fed-oct28-card-apr",
+      "title": "The Fed decides on 28 October: how a quarter point reaches your credit card bill",
+      "category": "credit_card",
+      "kind": "seasonal",
+      "priority": "high",
+      "stories": [
+        "how_it_works",
+        "trap_alert"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "If the Fed moves rates, what changes on my credit card balance, and how fast?",
+      "why_now": "FOMC meets 27–28 Oct (decision 14:00 ET on 28 Oct); it raised the target range a quarter point to 3.75–4% on 16 Sep. Card APRs follow the prime rate, so a move shows up within a billing cycle or two. 9 days away: make it before the day.",
+      "facts": [
+        {
+          "label": "Upper end of the Fed's federal funds target range, set on 16 September",
+          "value": 4,
+          "unit": "percent",
+          "currency": "USD",
+          "as_of": "2026-09-16",
+          "source": "Federal Reserve",
+          "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+        }
+      ],
+      "verify": [
+        "Fed statement of 16 Sep 2026: target range raised by 1/4 point to 3-3/4 to 4 percent",
+        "Variable card APRs are typically the prime rate plus a margin, and prime usually moves with the Fed's range: explain in general terms, no named issuer",
+        "Card balance and APR (around 20–25%, channel profile) are illustrative inputs; the extra interest from +0.25 point is computed by code (card_min_due at two rates)",
+        "Say nothing about what the Fed will decide on 28 Oct"
+      ],
+      "sources": [
+        "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+        "https://www.federalreserve.gov/newsevents/pressreleases/2026-press-fomc.htm"
+      ],
+      "found": "2026-10-19",
+      "expires": "2026-10-28",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-19-uk-price-cap-myth",
+      "title": "The UK energy price cap is £1,723 a year, but it doesn't cap your bill",
+      "category": "bills",
+      "kind": "news",
+      "priority": "high",
+      "stories": [
+        "myth_bust",
+        "how_it_works"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "Ofgem says the cap is £1,723: does that mean I can't pay more than that this winter?",
+      "why_now": "Ofgem's cap rose 4% to £1,723 for a typical dual-fuel Direct Debit household from 1 Oct to 31 Dec 2026 (up £60 a year from £1,663), the highest in three years; UK outlets expect a further rise in January. Winter bills start now.",
+      "facts": [
+        {
+          "label": "Ofgem price cap, typical dual-fuel household paying by Direct Debit, a year, 1 October to 31 December",
+          "value": 1723,
+          "unit": "money",
+          "currency": "GBP",
+          "as_of": "2026-08-26",
+          "source": "Ofgem",
+          "url": "https://ofgem.gov.uk/press-release/energy-price-cap-will-rise-4-october-2026"
+        },
+        {
+          "label": "Rise in the cap for that household, a year",
+          "value": 60,
+          "unit": "money",
+          "currency": "GBP",
+          "as_of": "2026-08-26",
+          "source": "Ofgem",
+          "url": "https://ofgem.gov.uk/press-release/energy-price-cap-will-rise-4-october-2026"
+        },
+        {
+          "label": "Previous cap for that household, a year",
+          "value": 1663,
+          "unit": "money",
+          "currency": "GBP",
+          "as_of": "2026-08-26",
+          "source": "Ofgem",
+          "url": "https://ofgem.gov.uk/press-release/energy-price-cap-will-rise-4-october-2026"
+        }
+      ],
+      "verify": [
+        "Ofgem press release of 26 Aug 2026: cap rises £60 a year (£5 a month) to £1,723 for 1 Oct–31 Dec 2026; current cap £1,663",
+        "The cap limits unit rates and standing charges, not the total bill: a household using more than typical pays more than £1,723",
+        "Usage figures are illustrative assumptions; the cost of using more is computed by code. No supplier or tariff named or recommended",
+        "Do not state the January cap: it is only a forecast until Ofgem announces it"
+      ],
+      "sources": [
+        "https://ofgem.gov.uk/press-release/energy-price-cap-will-rise-4-october-2026",
+        "https://www.ofgem.gov.uk/energy-price-cap"
+      ],
+      "found": "2026-10-19",
+      "expires": "2026-11-01",
       "status": "new"
     }
   ]
