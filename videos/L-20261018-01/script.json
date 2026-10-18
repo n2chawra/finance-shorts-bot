@@ -1,0 +1,2344 @@
+{
+ "template": "long_story",
+ "format": "long",
+ "id": "L-20261018-01",
+ "seed": 61847,
+ "title": "Repo rate hiked: the quiet way your home loan gets longer",
+ "story": "rule_change",
+ "feed_id": "2026-10-18-repo-hike-your-emi",
+ "style": {
+  "palette": "ocean",
+  "genre": "synthwave",
+  "key": "E",
+  "bpm": 104
+ },
+ "thumbnail": {
+  "who": "rohan",
+  "pose": "worried",
+  "expression": "shock",
+  "prop": "phone",
+  "figure": "{long_interest}",
+  "words": "Same EMI. Longer loan.",
+  "sub": "The repo hike trap"
+ },
+ "maths": [
+  {
+   "name": "old",
+   "kind": "emi",
+   "amount": 6000000,
+   "rate_pct": 8.4,
+   "years": 25
+  },
+  {
+   "name": "new",
+   "kind": "emi",
+   "amount": 6000000,
+   "rate_pct": 8.65,
+   "years": 25
+  },
+  {
+   "name": "long",
+   "kind": "emi",
+   "amount": 6000000,
+   "rate_pct": 8.65,
+   "years": 27
+  },
+  {
+   "name": "fast",
+   "kind": "emi",
+   "amount": 6000000,
+   "rate_pct": 8.65,
+   "years": 22
+  }
+ ],
+ "beats": [
+  {
+   "id": "sms",
+   "scene": "stage",
+   "say": "Rohan's phone buzzes. A message from his bank. Your home loan rate has been revised.",
+   "events": {
+    "buzz": {
+     "word": "buzzes"
+    },
+    "rev": {
+     "word": "revised"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "beep",
+     "at": "buzz"
+    },
+    {
+     "kind": "pop",
+     "at": "rev"
+    }
+   ],
+   "chapter": "The message",
+   "camera": "push",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.4,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "happy"
+       },
+       {
+        "at": "buzz",
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "neutral",
+        "turn": 0.15
+       },
+       {
+        "at": "rev",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "chip": {
+     "text": "Interest: {old_interest} → {long_interest}",
+     "at": "start"
+    }
+   }
+  },
+  {
+   "id": "stake",
+   "scene": "reveal",
+   "say": "Handled the easy way, the interest on his loan goes from {old_interest} to {long_interest}.",
+   "events": {
+    "from": {
+     "word": "from"
+    },
+    "jump": {
+     "word": "to"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "from"
+    },
+    {
+     "kind": "boom",
+     "at": "jump",
+     "gain": 0.8
+    }
+   ],
+   "transition": "zoom",
+   "camera": "punch:jump",
+   "params": {
+    "lines": [
+     {
+      "text": "Interest on Rohan's loan",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "{old_interest} before",
+      "style": "sub",
+      "at": "from"
+     },
+     {
+      "text": "{long_interest}",
+      "style": "danger",
+      "at": "jump",
+      "value": "@long.interest"
+     }
+    ],
+    "actor": {
+     "who": "rohan",
+     "x": 0.86,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "prop": "phone",
+       "expression": "neutral"
+      },
+      {
+       "at": "jump",
+       "pose": "worried",
+       "expression": "shock"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "nobody",
+   "scene": "stage",
+   "speaker": "rohan",
+   "say": "Revised? Revised how? Nobody even asked me!",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.45,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "angry"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "priya-in",
+   "scene": "stage",
+   "speaker": "priya",
+   "say": "They don't need your permission to change the rate. But how you pay for it is meant to be your choice, and the easy way is usually picked for you by default. Let's find out why.",
+   "events": {
+    "easy": {
+     "word": "easy"
+    }
+   },
+   "transition": "slide",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.32,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused",
+        "turn": 0.4
+       }
+      ],
+      "turn": 0.4
+     },
+     {
+      "who": "priya",
+      "x": 0.68,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "smirk",
+        "turn": -0.4
+       },
+       {
+        "at": "easy",
+        "pose": "hips",
+        "expression": "smirk",
+        "turn": -0.3
+       }
+      ],
+      "enter": "right"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch1",
+   "scene": "chapter",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ],
+   "transition": "wipe",
+   "params": {
+    "kicker": "Part one",
+    "title": "What just happened"
+   }
+  },
+  {
+   "id": "repo",
+   "scene": "bignumber",
+   "say": "In October, the Reserve Bank of India raised the repo rate. That is the rate at which banks borrow from the RBI.",
+   "events": {
+    "up": {
+     "word": "raised"
+    },
+    "borrow": {
+     "word": "borrow"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "up"
+    },
+    {
+     "kind": "pop-high",
+     "at": "borrow"
+    }
+   ],
+   "transition": "fade",
+   "params": {
+    "lines": [
+     {
+      "text": "RBI policy, October",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "Repo rate",
+      "style": "hero",
+      "at": "up"
+     },
+     {
+      "text": "raised",
+      "style": "danger",
+      "at": "up"
+     },
+     {
+      "text": "What banks pay to borrow",
+      "style": "sub",
+      "at": "borrow"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.82,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "thinking",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "tap",
+   "scene": "stage",
+   "speaker": "sharma",
+   "say": "Think of the repo rate as a tap upstream. When the RBI turns it, every bank downstream feels the flow change.",
+   "events": {
+    "turn": {
+     "word": "turns"
+    }
+   },
+   "transition": "slide",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "sharma",
+      "x": 0.55,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "neutral"
+       },
+       {
+        "at": "turn",
+        "pose": "pointUp",
+        "expression": "proud"
+       }
+      ],
+      "enter": "right"
+     }
+    ],
+    "chip": {
+     "text": "Repo rate: the tap upstream",
+     "at": "turn"
+    }
+   }
+  },
+  {
+   "id": "dearer",
+   "scene": "split",
+   "say": "Money costs banks more, so loans cost you more. Savers may earn a little more. Borrowers pay more.",
+   "events": {
+    "save": {
+     "word": "Savers"
+    },
+    "borrow": {
+     "word": "Borrowers"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "save"
+    },
+    {
+     "kind": "fail",
+     "at": "borrow",
+     "gain": 0.5
+    }
+   ],
+   "transition": "zoom",
+   "params": {
+    "left": {
+     "label": "Savers",
+     "text": "May earn more",
+     "value": 0,
+     "at": "save"
+    },
+    "right": {
+     "label": "Borrowers",
+     "text": "Pay more",
+     "value": 0,
+     "at": "borrow"
+    }
+   }
+  },
+  {
+   "id": "old-loan",
+   "scene": "stage",
+   "speaker": "rohan",
+   "say": "But I signed my loan months ago. Why does a new decision touch my old loan?",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.33,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "confused",
+        "turn": 0.4
+       }
+      ],
+      "turn": 0.4
+     },
+     {
+      "who": "sharma",
+      "x": 0.68,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk",
+        "turn": -0.4
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "floats",
+   "scene": "stage",
+   "speaker": "sharma",
+   "say": "Because your rate floats, beta. It was never fixed.",
+   "events": {
+    "float": {
+     "word": "floats"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.33,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "confused",
+        "turn": 0.4
+       },
+       {
+        "at": "float",
+        "pose": "facepalm",
+        "expression": "sad"
+       }
+      ],
+      "turn": 0.4
+     },
+     {
+      "who": "sharma",
+      "x": 0.68,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "proud",
+        "turn": -0.4
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2",
+   "scene": "chapter",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ],
+   "transition": "wipe",
+   "params": {
+    "kicker": "Part two",
+    "title": "How it reaches your loan"
+   }
+  },
+  {
+   "id": "benchmark",
+   "scene": "bignumber",
+   "say": "Most floating rate home loans from banks today are linked to an outside benchmark, very often the repo rate itself.",
+   "events": {
+    "link": {
+     "word": "linked"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "link"
+    }
+   ],
+   "transition": "fade",
+   "params": {
+    "lines": [
+     {
+      "text": "Your loan rate",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "Benchmark",
+      "style": "hero",
+      "at": "link"
+     },
+     {
+      "text": "often the repo rate",
+      "style": "sub",
+      "at": "link"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.82,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "happy",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "spread",
+   "scene": "bignumber",
+   "say": "On top of that, the bank adds its own margin, called the spread. The spread stays put. The benchmark moves.",
+   "events": {
+    "spread": {
+     "word": "spread"
+    },
+    "stays": {
+     "word": "stays"
+    },
+    "moves": {
+     "word": "moves"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "spread"
+    },
+    {
+     "kind": "ding",
+     "at": "stays"
+    },
+    {
+     "kind": "boom",
+     "at": "moves",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Benchmark + spread",
+      "style": "hero",
+      "at": "spread"
+     },
+     {
+      "text": "Spread: stays",
+      "style": "good",
+      "at": "stays"
+     },
+     {
+      "text": "Benchmark: moves",
+      "style": "danger",
+      "at": "moves"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.82,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "thinking",
+       "turn": -0.3
+      },
+      {
+       "at": "moves",
+       "pose": "pointUp",
+       "expression": "smirk"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "reset",
+   "scene": "calendar",
+   "say": "And the change does not land the same day. It lands on your reset date, which, for these loans, comes around at least once a quarter.",
+   "events": {
+    "reset": {
+     "word": "reset"
+    },
+    "q": {
+     "word": "quarter"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "reset"
+    },
+    {
+     "kind": "ding",
+     "at": "q"
+    }
+   ],
+   "transition": "slide",
+   "params": {
+    "label": "Your reset date",
+    "labelAt": "reset",
+    "sub": "At least once a quarter",
+    "subAt": "q",
+    "loops": 1
+   }
+  },
+  {
+   "id": "bank-decides",
+   "scene": "stage",
+   "speaker": "priya",
+   "say": "So the hike reaches Rohan at his next reset. And then the question is, how does he pay for it?",
+   "events": {
+    "how": {
+     "word": "how"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "priya",
+      "x": 0.4,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "neutral"
+       },
+       {
+        "at": "how",
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     },
+     {
+      "who": "rohan",
+      "x": 0.7,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "worried",
+        "expression": "worried",
+        "turn": -0.4
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3",
+   "scene": "chapter",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ],
+   "transition": "wipe",
+   "params": {
+    "kicker": "Part three",
+    "title": "Two ways to pay"
+   }
+  },
+  {
+   "id": "loan",
+   "scene": "bignumber",
+   "say": "Rohan's loan is {old_amount}, over {old_months} months, at {old_rate}. His EMI was {old_emi}.",
+   "events": {
+    "emi": {
+     "word": "EMI"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "start"
+    },
+    {
+     "kind": "pop",
+     "at": "emi"
+    }
+   ],
+   "transition": "zoom",
+   "params": {
+    "lines": [
+     {
+      "text": "Rohan's home loan",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "{old_amount}",
+      "style": "sub",
+      "at": "start"
+     },
+     {
+      "text": "{old_months} months at {old_rate}",
+      "style": "sub",
+      "at": "start"
+     },
+     {
+      "text": "EMI {old_emi}",
+      "style": "hero",
+      "at": "emi"
+     }
+    ],
+    "actor": {
+     "who": "rohan",
+     "x": 0.84,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "thumbsUp",
+       "expression": "happy",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "way1",
+   "scene": "split",
+   "say": "Way one. Keep the same end date, and raise the EMI. At {new_rate}, it becomes {new_emi}.",
+   "events": {
+    "old": {
+     "word": "same"
+    },
+    "new": {
+     "word": "becomes"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "old"
+    },
+    {
+     "kind": "pop-high",
+     "at": "new"
+    }
+   ],
+   "transition": "slide",
+   "params": {
+    "left": {
+     "label": "EMI before",
+     "text": "{old_emi}",
+     "value": "@old.emi",
+     "at": "old"
+    },
+    "right": {
+     "label": "EMI after",
+     "text": "{new_emi}",
+     "value": "@new.emi",
+     "at": "new"
+    }
+   }
+  },
+  {
+   "id": "barely",
+   "scene": "stage",
+   "speaker": "rohan",
+   "say": "That's it? I'll hardly notice that.",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.45,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "way1-total",
+   "scene": "towers",
+   "say": "Over the whole loan, though, his interest goes from {old_interest} to {new_interest}. Small each month, real money in total.",
+   "events": {
+    "a": {
+     "word": "from"
+    },
+    "b": {
+     "word": "to"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "a"
+    },
+    {
+     "kind": "pop",
+     "at": "b"
+    }
+   ],
+   "transition": "zoom",
+   "params": {
+    "title": "Total interest",
+    "items": [
+     {
+      "label": "Before the hike",
+      "text": "{old_interest}",
+      "value": "@old.interest",
+      "at": "a",
+      "color": "good"
+     },
+     {
+      "label": "EMI raised",
+      "text": "{new_interest}",
+      "value": "@new.interest",
+      "at": "b"
+     }
+    ]
+   }
+  },
+  {
+   "id": "way2",
+   "scene": "bignumber",
+   "say": "Way two. Leave the EMI almost exactly where it was, and add months at the end instead.",
+   "events": {
+    "same": {
+     "word": "Leave"
+    },
+    "more": {
+     "word": "add"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "same"
+    },
+    {
+     "kind": "boom",
+     "at": "more",
+     "gain": 0.6
+    }
+   ],
+   "transition": "slide",
+   "params": {
+    "lines": [
+     {
+      "text": "Way two",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "Same EMI",
+      "style": "good",
+      "at": "same"
+     },
+     {
+      "text": "More months",
+      "style": "danger",
+      "at": "more"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.82,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "neutral",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "way2-months",
+   "scene": "split",
+   "say": "At the new rate, the loan stretches from {old_months} months to {long_months}. And the EMI? {long_emi}. It barely moves.",
+   "events": {
+    "a": {
+     "word": "from"
+    },
+    "b": {
+     "word": "to"
+    },
+    "emi": {
+     "word": "barely"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "a"
+    },
+    {
+     "kind": "boom",
+     "at": "b",
+     "gain": 0.7
+    }
+   ],
+   "camera": "punch:b",
+   "params": {
+    "left": {
+     "label": "Months before",
+     "text": "{old_months}",
+     "value": "@old.months",
+     "at": "a"
+    },
+    "right": {
+     "label": "Months after",
+     "text": "{long_months}",
+     "value": "@long.months",
+     "at": "b"
+    }
+   }
+  },
+  {
+   "id": "way2-cal",
+   "scene": "calendar",
+   "say": "Extra months of EMIs, quietly added at the far end, years from now, right when Rohan expected to be free.",
+   "events": {
+    "far": {
+     "word": "far"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "start",
+     "gain": 0.4
+    },
+    {
+     "kind": "tick",
+     "at": "far"
+    }
+   ],
+   "transition": "fade",
+   "params": {
+    "label": "{long_months} months",
+    "labelAt": "far",
+    "sub": "It was {old_months}",
+    "subAt": "far",
+    "loops": 2
+   }
+  },
+  {
+   "id": "perfect",
+   "scene": "stage",
+   "speaker": "rohan",
+   "say": "Same EMI? Perfect. And the bank already picked it for me!",
+   "events": {
+    "perfect": {
+     "word": "Perfect"
+    }
+   },
+   "transition": "slide",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.4,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "happy"
+       },
+       {
+        "at": "perfect",
+        "pose": "celebrate",
+        "expression": "laugh"
+       }
+      ]
+     }
+    ],
+    "sikka": {
+     "x": 0.66,
+     "drop": true,
+     "cheer": true,
+     "expression": "happy",
+     "at": "perfect"
+    }
+   }
+  },
+  {
+   "id": "expensive",
+   "scene": "stage",
+   "speaker": "priya",
+   "say": "Rohan. The option that looks free is the expensive one.",
+   "events": {
+    "exp": {
+     "word": "expensive"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.32,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "laugh",
+        "turn": 0.4
+       },
+       {
+        "at": "exp",
+        "pose": "stand",
+        "expression": "shock"
+       }
+      ],
+      "turn": 0.4
+     },
+     {
+      "who": "priya",
+      "x": 0.68,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk",
+        "turn": -0.4
+       },
+       {
+        "at": "exp",
+        "pose": "facepalm",
+        "expression": "sad"
+       }
+      ],
+      "enter": "right"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4",
+   "scene": "chapter",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ],
+   "transition": "wipe",
+   "params": {
+    "kicker": "Part four",
+    "title": "The quiet trap"
+   }
+  },
+  {
+   "id": "monster",
+   "scene": "monster",
+   "say": "Here is why. Every extra month is another month of interest on what he still owes. And in a loan's early years, most of each EMI is interest anyway.",
+   "events": {
+    "label": {
+     "word": "extra"
+    },
+    "early": {
+     "word": "early"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "start",
+     "gain": 0.4
+    },
+    {
+     "kind": "pop",
+     "at": "label"
+    },
+    {
+     "kind": "fail",
+     "at": "early",
+     "gain": 0.4
+    }
+   ],
+   "transition": "zoom",
+   "params": {
+    "label": "Interest, every extra month",
+    "labelAt": "label",
+    "name": "INTEREST"
+   }
+  },
+  {
+   "id": "compare2",
+   "scene": "towers",
+   "say": "Raise the EMI, and the total interest is {new_interest}. Stretch the loan, and it is {long_interest}.",
+   "events": {
+    "a": {
+     "word": "Raise"
+    },
+    "b": {
+     "word": "Stretch"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "a"
+    },
+    {
+     "kind": "boom",
+     "at": "b",
+     "gain": 0.7
+    }
+   ],
+   "transition": "slide",
+   "params": {
+    "title": "Total interest after the hike",
+    "items": [
+     {
+      "label": "EMI raised",
+      "text": "{new_interest}",
+      "value": "@new.interest",
+      "at": "a"
+     },
+     {
+      "label": "Loan stretched",
+      "text": "{long_interest}",
+      "value": "@long.interest",
+      "at": "b",
+      "color": "danger"
+     }
+    ]
+   }
+  },
+  {
+   "id": "future-self",
+   "scene": "reveal",
+   "say": "The choice that changed nothing on his monthly statement costs the most of all. It simply sends the bill to his future self.",
+   "events": {
+    "most": {
+     "word": "most"
+    },
+    "future": {
+     "word": "future"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "most",
+     "gain": 0.8
+    },
+    {
+     "kind": "ding",
+     "at": "future"
+    }
+   ],
+   "transition": "zoom",
+   "camera": "punch:most",
+   "params": {
+    "lines": [
+     {
+      "text": "Same EMI",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "{long_interest}",
+      "style": "danger",
+      "at": "start",
+      "value": "@long.interest"
+     },
+     {
+      "text": "the biggest interest bill",
+      "style": "sub",
+      "at": "most"
+     },
+     {
+      "text": "Future Rohan pays",
+      "style": "hero",
+      "at": "future"
+     }
+    ]
+   }
+  },
+  {
+   "id": "sharma-yes",
+   "scene": "stage",
+   "speaker": "sharma",
+   "say": "In my bank days, a longer tenure was the easiest yes. Customers never complained. Most of them never even noticed.",
+   "events": {
+    "never": {
+     "word": "noticed"
+    }
+   },
+   "transition": "slide",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.3,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "confused",
+        "turn": 0.4
+       },
+       {
+        "at": "never",
+        "pose": "facepalm",
+        "expression": "sad"
+       }
+      ],
+      "turn": 0.4
+     },
+     {
+      "who": "sharma",
+      "x": 0.65,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "smirk",
+        "turn": -0.4
+       },
+       {
+        "at": "never",
+        "pose": "think",
+        "expression": "proud",
+        "turn": -0.3
+       }
+      ],
+      "enter": "right"
+     }
+    ]
+   }
+  },
+  {
+   "id": "again",
+   "scene": "bignumber",
+   "say": "And it repeats. If rates rise again, the next hike can add more months on top of these.",
+   "events": {
+    "again": {
+     "word": "again"
+    },
+    "more": {
+     "word": "more"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "again"
+    },
+    {
+     "kind": "boom",
+     "at": "more",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Another hike?",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "More months again",
+      "style": "danger",
+      "at": "start"
+     }
+    ],
+    "actor": {
+     "who": "sharma",
+     "x": 0.82,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "hips",
+       "expression": "neutral",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "ceiling",
+   "scene": "bignumber",
+   "say": "Banks cannot stretch a loan forever. There is usually an age limit or a longest allowed term, and once that is reached, the EMI has to rise anyway.",
+   "events": {
+    "limit": {
+     "word": "limit"
+    },
+    "rise": {
+     "word": "rise"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "limit"
+    },
+    {
+     "kind": "pop-high",
+     "at": "rise"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "A stretch has a ceiling",
+      "style": "hero",
+      "at": "start"
+     },
+     {
+      "text": "Age limit or longest term",
+      "style": "sub",
+      "at": "limit"
+     },
+     {
+      "text": "Then the EMI rises anyway",
+      "style": "danger",
+      "at": "rise"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.82,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "thinking",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "did-they-ask",
+   "scene": "stage",
+   "speaker": "rohan",
+   "say": "Hold on. Was my bank supposed to ask me?",
+   "transition": "fade",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.4,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "thinking"
+       }
+      ]
+     },
+     {
+      "who": "priya",
+      "x": 0.72,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "neutral",
+        "turn": -0.4
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "rule1",
+   "scene": "checklist",
+   "say": "Under RBI rules on interest rate resets, the bank has to tell you clearly, and let you choose. A higher EMI.",
+   "events": {
+    "choose": {
+     "word": "choose"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "choose"
+    }
+   ],
+   "transition": "slide",
+   "params": {
+    "title": "At a reset, you choose",
+    "active": 0,
+    "items": [
+     {
+      "text": "Higher EMI",
+      "icon": "emi"
+     },
+     {
+      "text": "Longer tenure",
+      "icon": "check"
+     },
+     {
+      "text": "A mix of both",
+      "icon": "check"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.84,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "happy",
+       "turn": -0.3
+      }
+     ],
+     "scale": 1.15
+    }
+   }
+  },
+  {
+   "id": "rule2",
+   "scene": "checklist",
+   "say": "A longer tenure. Or a mix of the two.",
+   "params": {
+    "title": "At a reset, you choose",
+    "active": 2,
+    "items": [
+     {
+      "text": "Higher EMI",
+      "icon": "emi"
+     },
+     {
+      "text": "Longer tenure",
+      "icon": "check"
+     },
+     {
+      "text": "A mix of both",
+      "icon": "check"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.84,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "pointUp",
+       "expression": "smirk",
+       "turn": -0.3
+      }
+     ],
+     "scale": 1.15
+    }
+   }
+  },
+  {
+   "id": "rule3",
+   "scene": "bignumber",
+   "say": "The same rules let you ask to switch to a fixed rate, if your bank offers one, and to prepay part of the loan at any time.",
+   "events": {
+    "fixed": {
+     "word": "fixed"
+    },
+    "prepay": {
+     "word": "prepay"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fixed"
+    },
+    {
+     "kind": "pop",
+     "at": "prepay"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Also your right",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "Switch to fixed, if offered",
+      "style": "sub",
+      "at": "start"
+     },
+     {
+      "text": "Prepay any time",
+      "style": "good",
+      "at": "prepay"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.82,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "thumbsUp",
+       "expression": "happy",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "can-ask",
+   "scene": "stage",
+   "speaker": "priya",
+   "say": "So the stretch is never your only option. You can just ask.",
+   "events": {
+    "ask": {
+     "word": "ask"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.32,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking",
+        "turn": 0.4
+       },
+       {
+        "at": "ask",
+        "pose": "stand",
+        "expression": "happy"
+       }
+      ],
+      "turn": 0.4
+     },
+     {
+      "who": "priya",
+      "x": 0.68,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "happy",
+        "turn": -0.4
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5",
+   "scene": "chapter",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ],
+   "transition": "wipe",
+   "params": {
+    "kicker": "Part five",
+    "title": "Fight back"
+   }
+  },
+  {
+   "id": "twist",
+   "scene": "bignumber",
+   "say": "Now the twist. What if Rohan raises his EMI a little more than the bank asks for?",
+   "events": {
+    "more": {
+     "word": "more"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "start",
+     "gain": 0.4
+    },
+    {
+     "kind": "pop",
+     "at": "more"
+    }
+   ],
+   "transition": "zoom",
+   "params": {
+    "lines": [
+     {
+      "text": "The third option",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "Pay a little more",
+      "style": "hero",
+      "at": "start"
+     }
+    ],
+    "actor": {
+     "who": "rohan",
+     "x": 0.84,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "think",
+       "expression": "thinking",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "fast-emi",
+   "scene": "split",
+   "say": "Say he pays {fast_emi} a month, instead of {old_emi}. Same new rate, {new_rate}.",
+   "events": {
+    "new": {
+     "word": "pays"
+    },
+    "old": {
+     "word": "instead"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop-high",
+     "at": "new"
+    },
+    {
+     "kind": "pop",
+     "at": "old"
+    }
+   ],
+   "transition": "slide",
+   "params": {
+    "left": {
+     "label": "Old EMI",
+     "text": "{old_emi}",
+     "value": "@old.emi",
+     "at": "old"
+    },
+    "right": {
+     "label": "New EMI, his choice",
+     "text": "{fast_emi}",
+     "value": "@fast.emi",
+     "at": "new"
+    }
+   }
+  },
+  {
+   "id": "fast-cal",
+   "scene": "calendar",
+   "say": "Now his loan ends after {fast_months} months. Years earlier than his original plan.",
+   "events": {
+    "ends": {
+     "word": "ends"
+    },
+    "early": {
+     "word": "earlier"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "ends"
+    },
+    {
+     "kind": "ding",
+     "at": "early"
+    }
+   ],
+   "params": {
+    "label": "{fast_months} months",
+    "labelAt": "ends",
+    "sub": "The plan was {old_months}",
+    "subAt": "early",
+    "loops": 1
+   }
+  },
+  {
+   "id": "fast-reveal",
+   "scene": "reveal",
+   "say": "And his total interest falls to {fast_interest}. That is less than the {old_interest} he was set to pay before the hike.",
+   "events": {
+    "falls": {
+     "word": "falls"
+    },
+    "less": {
+     "word": "less"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "falls"
+    },
+    {
+     "kind": "ding",
+     "at": "less"
+    }
+   ],
+   "transition": "zoom",
+   "camera": "punch:falls",
+   "params": {
+    "lines": [
+     {
+      "text": "Total interest",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "{fast_interest}",
+      "style": "hero",
+      "at": "falls",
+      "value": "@fast.interest"
+     },
+     {
+      "text": "less than {old_interest} before the hike",
+      "style": "good",
+      "at": "less"
+     }
+    ],
+    "actor": {
+     "who": "rohan",
+     "x": 0.86,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "stand",
+       "expression": "neutral"
+      },
+      {
+       "at": "falls",
+       "pose": "celebrate",
+       "expression": "shock"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "cheaper",
+   "scene": "stage",
+   "speaker": "rohan",
+   "say": "Wait. The hike made my loan cheaper?",
+   "transition": "slide",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.4,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "sikka": {
+     "x": 0.66,
+     "drop": true,
+     "expression": "confused"
+    }
+   }
+  },
+  {
+   "id": "faster",
+   "scene": "stage",
+   "speaker": "priya",
+   "say": "No. Paying faster made it cheaper. The hike just gave you a reason to start.",
+   "events": {
+    "faster": {
+     "word": "faster"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.32,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused",
+        "turn": 0.4
+       },
+       {
+        "at": "faster",
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ],
+      "turn": 0.4
+     },
+     {
+      "who": "priya",
+      "x": 0.68,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "smirk",
+        "turn": -0.4
+       },
+       {
+        "at": "faster",
+        "pose": "pointUp",
+        "expression": "proud",
+        "turn": -0.3
+       }
+      ],
+      "enter": "right"
+     }
+    ]
+   }
+  },
+  {
+   "id": "four",
+   "scene": "towers",
+   "say": "One hike, three ways to handle it. Stretch the loan, {long_interest}. Raise the EMI to match, {new_interest}. Pay a little extra, {fast_interest}.",
+   "events": {
+    "a": {
+     "word": "Stretch"
+    },
+    "b": {
+     "word": "match"
+    },
+    "c": {
+     "word": "extra"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "a",
+     "gain": 0.6
+    },
+    {
+     "kind": "pop",
+     "at": "b"
+    },
+    {
+     "kind": "ding",
+     "at": "c"
+    }
+   ],
+   "transition": "zoom",
+   "camera": "pull",
+   "params": {
+    "title": "Total interest, same hike",
+    "items": [
+     {
+      "label": "Stretched",
+      "text": "{long_interest}",
+      "value": "@long.interest",
+      "at": "a",
+      "color": "danger"
+     },
+     {
+      "label": "EMI raised",
+      "text": "{new_interest}",
+      "value": "@new.interest",
+      "at": "b"
+     },
+     {
+      "label": "Paid extra",
+      "text": "{fast_interest}",
+      "value": "@fast.interest",
+      "at": "c",
+      "color": "good"
+     }
+    ]
+   }
+  },
+  {
+   "id": "catch",
+   "scene": "stage",
+   "speaker": "sharma",
+   "say": "But only if the budget truly allows it. An EMI you cannot keep up with is worse than any stretch.",
+   "events": {
+    "worse": {
+     "word": "worse"
+    }
+   },
+   "transition": "slide",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "sharma",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand",
+        "expression": "neutral"
+       },
+       {
+        "at": "worse",
+        "pose": "pointUp",
+        "expression": "thinking"
+       }
+      ],
+      "enter": "right"
+     }
+    ]
+   }
+  },
+  {
+   "id": "buffer",
+   "scene": "bignumber",
+   "say": "That is why an emergency fund comes first. Missing an EMI in a bad month costs far more than a little extra interest.",
+   "events": {
+    "first": {
+     "word": "first"
+    },
+    "miss": {
+     "word": "Missing"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "first"
+    },
+    {
+     "kind": "fail",
+     "at": "miss",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Before you pay extra",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "Emergency fund first",
+      "style": "good",
+      "at": "first"
+     },
+     {
+      "text": "A missed EMI costs more",
+      "style": "danger",
+      "at": "miss"
+     }
+    ],
+    "actor": {
+     "who": "sharma",
+     "x": 0.82,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "hips",
+       "expression": "neutral",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "do-intro",
+   "scene": "stage",
+   "speaker": "priya",
+   "say": "So here is what Rohan does this week. Three steps.",
+   "transition": "fade",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.27,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "thinking",
+        "turn": 0.4
+       }
+      ],
+      "turn": 0.4
+     },
+     {
+      "who": "priya",
+      "x": 0.6,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "happy"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "step1",
+   "scene": "checklist",
+   "speaker": "priya",
+   "say": "First. Find the reset date and the spread. They are in the loan letter, or in the bank's app.",
+   "transition": "slide",
+   "params": {
+    "title": "Rohan's week",
+    "active": 0,
+    "items": [
+     {
+      "text": "Find your reset date and spread",
+      "icon": "check"
+     },
+     {
+      "text": "Check what the bank changed",
+      "icon": "emi"
+     },
+     {
+      "text": "Ask: EMI up, not months",
+      "icon": "autopay"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.84,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "happy",
+       "turn": -0.3
+      }
+     ],
+     "scale": 1.15
+    }
+   }
+  },
+  {
+   "id": "step2",
+   "scene": "checklist",
+   "speaker": "priya",
+   "say": "Second. After the reset, check what actually changed. The EMI, or the number of months left.",
+   "params": {
+    "title": "Rohan's week",
+    "active": 1,
+    "items": [
+     {
+      "text": "Find your reset date and spread",
+      "icon": "check"
+     },
+     {
+      "text": "Check what the bank changed",
+      "icon": "emi"
+     },
+     {
+      "text": "Ask: EMI up, not months",
+      "icon": "autopay"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.84,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "think",
+       "expression": "thinking",
+       "turn": -0.3
+      }
+     ],
+     "scale": 1.15
+    }
+   }
+  },
+  {
+   "id": "step3",
+   "scene": "checklist",
+   "speaker": "priya",
+   "say": "Third. If the budget allows, he asks for a higher EMI instead of a longer loan.",
+   "params": {
+    "title": "Rohan's week",
+    "active": 2,
+    "items": [
+     {
+      "text": "Find your reset date and spread",
+      "icon": "check"
+     },
+     {
+      "text": "Check what the bank changed",
+      "icon": "emi"
+     },
+     {
+      "text": "Ask: EMI up, not months",
+      "icon": "autopay"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.84,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "thumbsUp",
+       "expression": "proud",
+       "turn": -0.3
+      }
+     ],
+     "scale": 1.15
+    }
+   }
+  },
+  {
+   "id": "bonus",
+   "scene": "bignumber",
+   "say": "And if a bonus ever lands, prepaying part of a floating rate home loan generally carries no penalty for individual borrowers.",
+   "events": {
+    "bonus": {
+     "word": "bonus"
+    },
+    "no": {
+     "word": "penalty"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "bonus"
+    },
+    {
+     "kind": "ding",
+     "at": "no"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Got a bonus?",
+      "style": "kicker",
+      "at": "bonus"
+     },
+     {
+      "text": "Part prepayment",
+      "style": "hero",
+      "at": "bonus"
+     },
+     {
+      "text": "No penalty for individual borrowers",
+      "style": "good",
+      "at": "no"
+     }
+    ],
+    "actor": {
+     "who": "rohan",
+     "x": 0.84,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "thumbsUp",
+       "expression": "happy",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "calling",
+   "scene": "stage",
+   "speaker": "rohan",
+   "say": "Calling the bank right now. EMI up. Not the months.",
+   "events": {
+    "up": {
+     "word": "up"
+    }
+   },
+   "transition": "slide",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.42,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "neutral"
+       },
+       {
+        "at": "up",
+        "pose": "thumbsUp",
+        "expression": "proud"
+       }
+      ]
+     },
+     {
+      "who": "priya",
+      "x": 0.74,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "happy",
+        "turn": -0.3
+       }
+      ]
+     }
+    ],
+    "sikka": {
+     "x": 0.58,
+     "drop": true,
+     "cheer": true,
+     "expression": "laugh",
+     "at": "up"
+    }
+   }
+  },
+  {
+   "id": "recap",
+   "scene": "bignumber",
+   "say": "So. The repo rate went up, and your loan's cost went up with it. The only question is where you see it. Now, in your EMI. Or later, in years of extra payments.",
+   "events": {
+    "now": {
+     "word": "Now"
+    },
+    "later": {
+     "word": "later"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "now"
+    },
+    {
+     "kind": "boom",
+     "at": "later",
+     "gain": 0.6
+    }
+   ],
+   "transition": "fade",
+   "params": {
+    "lines": [
+     {
+      "text": "The hike is paid either way",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "Now: in your EMI",
+      "style": "good",
+      "at": "start"
+     },
+     {
+      "text": "Later: in extra months",
+      "style": "danger",
+      "at": "later"
+     }
+    ],
+    "actor": {
+     "who": "sharma",
+     "x": 0.82,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "think",
+       "expression": "proud",
+       "turn": -0.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "say": "These figures assume the full hike passes to the loan from its first month. Your bank's numbers will differ a little. Follow the panchayat for one money question, settled with real maths.",
+   "transition": "fade",
+   "params": {
+    "cta": "Check your loan's reset date this week",
+    "follow": "Follow Paisa Panchayat",
+    "assumption": "A {old_amount} loan at {old_rate}, rising to {new_rate} from month one. Tenure rounded to whole months."
+   }
+  }
+ ]
+}

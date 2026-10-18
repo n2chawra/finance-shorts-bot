@@ -1,0 +1,111 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-10-18T08:35:41.896570+00:00",
+    "finishedAt": "2026-10-18T08:35:41.896570+00:00",
+    "notes": [
+      "hashtags must include #Shorts"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T08:38:07.853461+00:00",
+    "finishedAt": "2026-10-18T08:38:07.853461+00:00",
+    "notes": [
+      "24 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T08:38:28.481316+00:00",
+    "finishedAt": "2026-10-18T08:38:28.481316+00:00",
+    "notes": [
+      "24 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-18T08:40:18.515258+00:00",
+    "finishedAt": "2026-10-18T08:40:18.515258+00:00",
+    "notes": [
+      "priya-in: 'They did not need to ask.' is wrong and contradicts rule1-rule3: RBI's 18 Aug 2023 reset circular (RBI/2023-24/55) requires lenders to give borrowers the choice of higher EMI, longer tenor, a mix, or prepayment at a reset. The bank needs no consent to change the rate, but it must offer the choice. Fix the line to: 'They don't need your permission to change the rate. But how you pay for it is meant to be your choice, and the easy way is usually picked for you by default. Let's find out why.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T08:40:51.673368+00:00",
+    "finishedAt": "2026-10-18T08:40:51.673368+00:00",
+    "notes": [
+      "24 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-18T08:41:10.108043+00:00",
+    "finishedAt": "2026-10-18T08:41:10.108043+00:00",
+    "notes": [
+      "Re-review after revision: priya-in now matches RBI 2023 EMI-reset rules (choice of EMI/tenor/mix, prepay, fixed switch if offered); repo 5.25%->5.50% on 7 Oct 2026 confirmed on rbi.org.in prid=63742; 'In October' replaces 'this month'; steps framed as Rohan's; bonus screen says individual borrowers; quarterly EBLR reset and no floating prepay penalty correct; assumptions disclosed; disclaimer present."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-18T08:41:27.694715+00:00",
+    "finishedAt": "2026-10-18T08:51:48.247129+00:00",
+    "notes": [
+      "249 s, ocean/synthwave, peak -1.0 dB, mean -17.7 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-18T09:04:31.056402+00:00",
+    "finishedAt": "2026-10-18T09:04:31.056402+00:00",
+    "notes": [
+      "[script] 0.0s, beat sms: no hook. The first frame is Rohan standing in an empty home set with no text; the first words (chip 'Rate revised: 8.65%') appear only at ~3.5s and the shock number only at ~9s (beat stake). Fix: make the chip appear at 'start' with the shock figure, e.g. chip {text: 'Interest: {old_interest} -> {long_interest}', at: 'start'}, or open with the stake beat and move sms after it.",
+      "[scene] ~127-131s, beat future-self (scene reveal, actor rohan x 0.86): the hero line 'paid by future Rohan' is centred and runs under the Rohan actor, so 'Rohan' is hidden behind him. reveal should wrap/limit text width to the area clear of the actor. Script workaround until fixed: shorten the hero line (e.g. 'Future Rohan pays') or drop/move the actor in this beat."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T09:05:00.807080+00:00",
+    "finishedAt": "2026-10-18T09:05:00.807080+00:00",
+    "notes": [
+      "24 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-18T09:05:08.141569+00:00",
+    "finishedAt": "2026-10-18T09:14:28.824191+00:00",
+    "notes": [
+      "249 s, ocean/synthwave, peak -1.0 dB, mean -17.7 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-18T09:15:33.500508+00:00",
+    "finishedAt": "2026-10-18T09:15:33.500508+00:00",
+    "notes": [
+      "Re-render: hook chip 'Interest: ₹83.7 L → ₹95.3 L' fully visible from 0.07s (only frame 0 is its entrance); future-self no longer has Rohan, 'Future Rohan pays' clear; no overlaps, cut-offs or empty scenes; numbers match labels; disclaimer on last frame; thumbnail readable and on-promise; liveliness 1.872, layout clean, audio -1.0/-17.7 dB, 249 s."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-18T09:15:50.594721+00:00",
+    "finishedAt": "2026-10-18T09:15:50.594721+00:00",
+    "notes": [
+      "Manifest written; release asset uploaded."
+    ]
+  }
+]

@@ -1,0 +1,464 @@
+{
+  "template": "long_story",
+  "renderer": "remotion",
+  "seed": 61847,
+  "duration_sec": 249,
+  "tempo": 1.0,
+  "style": {
+    "palette": "ocean",
+    "genre": "synthwave",
+    "key": "E",
+    "bpm": 104
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "sms",
+        "text": "Rohan's phone buzzes. A message from his bank. Your home loan rate has been revised.",
+        "start": 0.23,
+        "seconds": 3.64,
+        "window": 4.17,
+        "fill": 0.873
+      },
+      {
+        "scene": "stake",
+        "text": "Handled the easy way, the interest on his loan goes from ₹83.7 L to ₹95.3 L.",
+        "start": 4.4,
+        "seconds": 5.17,
+        "window": 5.7,
+        "fill": 0.907
+      },
+      {
+        "scene": "nobody",
+        "text": "Revised? Revised how? Nobody even asked me!",
+        "start": 10.1,
+        "seconds": 1.73,
+        "window": 2.13,
+        "fill": 0.812
+      },
+      {
+        "scene": "priya-in",
+        "text": "They don't need your permission to change the rate. But how you pay for it is meant to be your choice, and the easy way is usually picked for you by default. Let's find out why.",
+        "start": 12.23,
+        "seconds": 6.27,
+        "window": 6.77,
+        "fill": 0.926
+      },
+      {
+        "scene": "repo",
+        "text": "In October, the Reserve Bank of India raised the repo rate. That is the rate at which banks borrow from the RBI.",
+        "start": 20.6,
+        "seconds": 4.46,
+        "window": 4.97,
+        "fill": 0.897
+      },
+      {
+        "scene": "tap",
+        "text": "Think of the repo rate as a tap upstream. When the RBI turns it, every bank downstream feels the flow change.",
+        "start": 25.57,
+        "seconds": 4.63,
+        "window": 5.17,
+        "fill": 0.896
+      },
+      {
+        "scene": "dearer",
+        "text": "Money costs banks more, so loans cost you more. Savers may earn a little more. Borrowers pay more.",
+        "start": 30.73,
+        "seconds": 4.32,
+        "window": 4.83,
+        "fill": 0.894
+      },
+      {
+        "scene": "old-loan",
+        "text": "But I signed my loan months ago. Why does a new decision touch my old loan?",
+        "start": 35.57,
+        "seconds": 2.96,
+        "window": 3.23,
+        "fill": 0.916
+      },
+      {
+        "scene": "floats",
+        "text": "Because your rate floats, beta. It was never fixed.",
+        "start": 38.8,
+        "seconds": 1.7,
+        "window": 2.23,
+        "fill": 0.762
+      },
+      {
+        "scene": "benchmark",
+        "text": "Most floating rate home loans from banks today are linked to an outside benchmark, very often the repo rate itself.",
+        "start": 42.63,
+        "seconds": 4.64,
+        "window": 5.13,
+        "fill": 0.904
+      },
+      {
+        "scene": "spread",
+        "text": "On top of that, the bank adds its own margin, called the spread. The spread stays put. The benchmark moves.",
+        "start": 47.77,
+        "seconds": 4.42,
+        "window": 4.97,
+        "fill": 0.889
+      },
+      {
+        "scene": "reset",
+        "text": "And the change does not land the same day. It lands on your reset date, which, for these loans, comes around at least once a quarter.",
+        "start": 52.73,
+        "seconds": 5.31,
+        "window": 5.83,
+        "fill": 0.911
+      },
+      {
+        "scene": "bank-decides",
+        "text": "So the hike reaches Rohan at his next reset. And then the question is, how does he pay for it?",
+        "start": 58.57,
+        "seconds": 3.79,
+        "window": 4.3,
+        "fill": 0.881
+      },
+      {
+        "scene": "loan",
+        "text": "Rohan's loan is ₹60,00,000, over 300 months, at 8.4%. His EMI was ₹47,910.",
+        "start": 64.47,
+        "seconds": 6.26,
+        "window": 6.8,
+        "fill": 0.921
+      },
+      {
+        "scene": "way1",
+        "text": "Way one. Keep the same end date, and raise the EMI. At 8.65%, it becomes ₹48,922.",
+        "start": 71.27,
+        "seconds": 6.28,
+        "window": 6.8,
+        "fill": 0.924
+      },
+      {
+        "scene": "barely",
+        "text": "That's it? I'll hardly notice that.",
+        "start": 78.07,
+        "seconds": 1.14,
+        "window": 1.57,
+        "fill": 0.726
+      },
+      {
+        "scene": "way1-total",
+        "text": "Over the whole loan, though, his interest goes from ₹83.7 L to ₹86.8 L. Small each month, real money in total.",
+        "start": 79.63,
+        "seconds": 6.54,
+        "window": 7.07,
+        "fill": 0.925
+      },
+      {
+        "scene": "way2",
+        "text": "Way two. Leave the EMI almost exactly where it was, and add months at the end instead.",
+        "start": 86.7,
+        "seconds": 3.51,
+        "window": 4.03,
+        "fill": 0.871
+      },
+      {
+        "scene": "way2-months",
+        "text": "At the new rate, the loan stretches from 300 months to 324. And the EMI? ₹47,926. It barely moves.",
+        "start": 90.73,
+        "seconds": 7.18,
+        "window": 7.7,
+        "fill": 0.932
+      },
+      {
+        "scene": "way2-cal",
+        "text": "Extra months of EMIs, quietly added at the far end, years from now, right when Rohan expected to be free.",
+        "start": 98.43,
+        "seconds": 4.44,
+        "window": 4.93,
+        "fill": 0.901
+      },
+      {
+        "scene": "perfect",
+        "text": "Same EMI? Perfect. And the bank already picked it for me!",
+        "start": 103.37,
+        "seconds": 2.26,
+        "window": 2.67,
+        "fill": 0.846
+      },
+      {
+        "scene": "expensive",
+        "text": "Rohan. The option that looks free is the expensive one.",
+        "start": 106.03,
+        "seconds": 2.25,
+        "window": 2.77,
+        "fill": 0.812
+      },
+      {
+        "scene": "monster",
+        "text": "Here is why. Every extra month is another month of interest on what he still owes. And in a loan's early years, most of each EMI is interest anyway.",
+        "start": 110.4,
+        "seconds": 6.43,
+        "window": 6.93,
+        "fill": 0.928
+      },
+      {
+        "scene": "compare2",
+        "text": "Raise the EMI, and the total interest is ₹86.8 L. Stretch the loan, and it is ₹95.3 L.",
+        "start": 117.33,
+        "seconds": 5.92,
+        "window": 6.43,
+        "fill": 0.921
+      },
+      {
+        "scene": "future-self",
+        "text": "The choice that changed nothing on his monthly statement costs the most of all. It simply sends the bill to his future self.",
+        "start": 123.77,
+        "seconds": 4.79,
+        "window": 5.3,
+        "fill": 0.904
+      },
+      {
+        "scene": "sharma-yes",
+        "text": "In my bank days, a longer tenure was the easiest yes. Customers never complained. Most of them never even noticed.",
+        "start": 129.07,
+        "seconds": 4.85,
+        "window": 5.37,
+        "fill": 0.903
+      },
+      {
+        "scene": "again",
+        "text": "And it repeats. If rates rise again, the next hike can add more months on top of these.",
+        "start": 134.43,
+        "seconds": 3.49,
+        "window": 4.03,
+        "fill": 0.866
+      },
+      {
+        "scene": "ceiling",
+        "text": "Banks cannot stretch a loan forever. There is usually an age limit or a longest allowed term, and once that is reached, the EMI has to rise anyway.",
+        "start": 138.47,
+        "seconds": 5.97,
+        "window": 6.47,
+        "fill": 0.923
+      },
+      {
+        "scene": "did-they-ask",
+        "text": "Hold on. Was my bank supposed to ask me?",
+        "start": 144.93,
+        "seconds": 1.46,
+        "window": 1.9,
+        "fill": 0.768
+      },
+      {
+        "scene": "rule1",
+        "text": "Under RBI rules on interest rate resets, the bank has to tell you clearly, and let you choose. A higher EMI.",
+        "start": 146.83,
+        "seconds": 4.95,
+        "window": 5.43,
+        "fill": 0.912
+      },
+      {
+        "scene": "rule2",
+        "text": "A longer tenure. Or a mix of the two.",
+        "start": 152.27,
+        "seconds": 1.27,
+        "window": 1.8,
+        "fill": 0.706
+      },
+      {
+        "scene": "rule3",
+        "text": "The same rules let you ask to switch to a fixed rate, if your bank offers one, and to prepay part of the loan at any time.",
+        "start": 154.07,
+        "seconds": 4.56,
+        "window": 5.07,
+        "fill": 0.899
+      },
+      {
+        "scene": "can-ask",
+        "text": "So the stretch is never your only option. You can just ask.",
+        "start": 159.13,
+        "seconds": 2.6,
+        "window": 3.07,
+        "fill": 0.847
+      },
+      {
+        "scene": "twist",
+        "text": "Now the twist. What if Rohan raises his EMI a little more than the bank asks for?",
+        "start": 163.8,
+        "seconds": 3.43,
+        "window": 3.93,
+        "fill": 0.873
+      },
+      {
+        "scene": "fast-emi",
+        "text": "Say he pays ₹50,891 a month, instead of ₹47,910. Same new rate, 8.65%.",
+        "start": 167.73,
+        "seconds": 6.83,
+        "window": 7.33,
+        "fill": 0.932
+      },
+      {
+        "scene": "fast-cal",
+        "text": "Now his loan ends after 264 months. Years earlier than his original plan.",
+        "start": 175.07,
+        "seconds": 3.79,
+        "window": 4.3,
+        "fill": 0.881
+      },
+      {
+        "scene": "fast-reveal",
+        "text": "And his total interest falls to ₹74.4 L. That is less than the ₹83.7 L he was set to pay before the hike.",
+        "start": 179.37,
+        "seconds": 6.32,
+        "window": 6.83,
+        "fill": 0.925
+      },
+      {
+        "scene": "cheaper",
+        "text": "Wait. The hike made my loan cheaper?",
+        "start": 186.2,
+        "seconds": 1.52,
+        "window": 2.03,
+        "fill": 0.749
+      },
+      {
+        "scene": "faster",
+        "text": "No. Paying faster made it cheaper. The hike just gave you a reason to start.",
+        "start": 188.23,
+        "seconds": 3.01,
+        "window": 3.5,
+        "fill": 0.86
+      },
+      {
+        "scene": "four",
+        "text": "One hike, three ways to handle it. Stretch the loan, ₹95.3 L. Raise the EMI to match, ₹86.8 L. Pay a little extra, ₹74.4 L.",
+        "start": 191.73,
+        "seconds": 8.79,
+        "window": 9.33,
+        "fill": 0.942
+      },
+      {
+        "scene": "catch",
+        "text": "But only if the budget truly allows it. An EMI you cannot keep up with is worse than any stretch.",
+        "start": 201.07,
+        "seconds": 3.99,
+        "window": 4.53,
+        "fill": 0.881
+      },
+      {
+        "scene": "buffer",
+        "text": "That is why an emergency fund comes first. Missing an EMI in a bad month costs far more than a little extra interest.",
+        "start": 205.6,
+        "seconds": 5.12,
+        "window": 5.67,
+        "fill": 0.903
+      },
+      {
+        "scene": "do-intro",
+        "text": "So here is what Rohan does this week. Three steps.",
+        "start": 211.27,
+        "seconds": 2.14,
+        "window": 2.67,
+        "fill": 0.801
+      },
+      {
+        "scene": "step1",
+        "text": "First. Find the reset date and the spread. They are in the loan letter, or in the bank's app.",
+        "start": 213.93,
+        "seconds": 3.68,
+        "window": 4.17,
+        "fill": 0.882
+      },
+      {
+        "scene": "step2",
+        "text": "Second. After the reset, check what actually changed. The EMI, or the number of months left.",
+        "start": 218.1,
+        "seconds": 3.88,
+        "window": 4.37,
+        "fill": 0.888
+      },
+      {
+        "scene": "step3",
+        "text": "Third. If the budget allows, he asks for a higher EMI instead of a longer loan.",
+        "start": 222.47,
+        "seconds": 3.58,
+        "window": 4.1,
+        "fill": 0.873
+      },
+      {
+        "scene": "bonus",
+        "text": "And if a bonus ever lands, prepaying part of a floating rate home loan generally carries no penalty for individual borrowers.",
+        "start": 226.57,
+        "seconds": 4.77,
+        "window": 5.3,
+        "fill": 0.9
+      },
+      {
+        "scene": "calling",
+        "text": "Calling the bank right now. EMI up. Not the months.",
+        "start": 231.87,
+        "seconds": 1.8,
+        "window": 2.27,
+        "fill": 0.793
+      },
+      {
+        "scene": "recap",
+        "text": "So. The repo rate went up, and your loan's cost went up with it. The only question is where you see it. Now, in your EMI. Or later, in years of extra payments.",
+        "start": 234.13,
+        "seconds": 6.44,
+        "window": 6.97,
+        "fill": 0.924
+      },
+      {
+        "scene": "outro",
+        "text": "These figures assume the full hike passes to the loan from its first month. Your bank's numbers will differ a little. Follow the panchayat for one money question, settled with real maths.",
+        "start": 241.1,
+        "seconds": 7.2,
+        "window": 7.7,
+        "fill": 0.935
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    },
+    {
+      "title": "What just happened",
+      "start": 18.8
+    },
+    {
+      "title": "How it reaches your loan",
+      "start": 40.8
+    },
+    {
+      "title": "Two ways to pay",
+      "start": 62.6
+    },
+    {
+      "title": "The quiet trap",
+      "start": 108.6
+    },
+    {
+      "title": "Fight back",
+      "start": 162.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.7
+  },
+  "liveliness": {
+    "median": 1.872,
+    "still_share": 0.032,
+    "longest_still_sec": 2.0
+  },
+  "liveliness_problems": []
+}
