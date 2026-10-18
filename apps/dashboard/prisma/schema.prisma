@@ -180,6 +180,8 @@ model Notification {
   proposal   Json?
   decision   String? // approved | declined
   decidedAt  DateTime?
+  /// the owner marked it resolved: it stays closed for a week even if its check still fails
+  dismissedAt DateTime?
 
   @@index([resolvedAt])
 }

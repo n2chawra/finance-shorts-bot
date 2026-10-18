@@ -3,16 +3,16 @@ import { test } from "node:test";
 
 import type { PrismaClient } from "@prisma/client";
 
-import { notify } from "../lib/notify.ts";
+import { DISMISS_MS, notify } from "../lib/notify.ts";
 
-type Row = { dedupeKey: string; resolvedAt: Date | null; decidedAt: Date | null; [k: string]: unknown };
+type Row = { dedupeKey: string; resolvedAt: Date | null; decidedAt: Date | null; dismissedAt?: Date | null; [k: string]: unknown };
 
 /** Just enough of prisma.notification for notify(). */
 function fake(rows: Row[]) {
   const writes: string[] = [];
   const notification = {
     findUnique: async ({ where }: { where: { dedupeKey: string } }) => rows.find((r) => r.dedupeKey === where.dedupeKey) ?? null,
-    create: async ({ data }: { data: { dedupeKey: string } & Record<string, unknown> }) => { writes.push(`create ${data.dedupeKey}`); rows.push({ ...data, resolvedAt: null, decidedAt: null }); },
+    create: async ({ data }: { data: { dedupeKey: string } & Record<string, unknown> }) => { writes.push(`create ${data.dedupeKey}`); rows.push({ ...data, resolvedAt: null, decidedAt: null, dismissedAt: null }); },
     update: async ({ where, data }: { where: { dedupeKey: string }; data: Partial<Row> }) => {
       writes.push(`update ${where.dedupeKey}`);
       Object.assign(rows.find((r) => r.dedupeKey === where.dedupeKey)!, data);
@@ -37,4 +37,15 @@ test("a decided proposal is never raised again, a merely resolved one is", async
   const resolved = fake([{ dedupeKey: notice.key, resolvedAt: new Date(), decidedAt: null }]);
   await notify(resolved.prisma, notice);
   assert.equal(resolved.rows[0]!.resolvedAt, null);
+});
+
+test("a notification the owner resolved stays closed for a week while its check still fails", async () => {
+  const resolvedAt = new Date();
+  const recent = fake([{ dedupeKey: notice.key, resolvedAt, decidedAt: null, dismissedAt: new Date(Date.now() - 86_400_000) }]);
+  await notify(recent.prisma, notice);
+  assert.equal(recent.rows[0]!.resolvedAt, resolvedAt);          // still closed, content refreshed
+  assert.equal(recent.rows[0]!.title, notice.title);
+  const old = fake([{ dedupeKey: notice.key, resolvedAt, decidedAt: null, dismissedAt: new Date(Date.now() - DISMISS_MS - 1) }]);
+  await notify(old.prisma, notice);
+  assert.equal(old.rows[0]!.resolvedAt, null);                   // a week on and still failing: back
 });

@@ -41,6 +41,7 @@ function ActivityCard({ a }: { a: Activity }) {
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-sm font-medium">{meta.name}</h3>
             <Badge tone={DECISION[a.decision].tone} dot>{DECISION[a.decision].label}</Badge>
+            <span className="text-xs text-muted">{fmtDayKey(a.day)}</span>
           </div>
           {a.startedAt && a.finishedAt && <p className="mt-0.5 inline-flex items-center gap-1 text-xs text-muted"><Clock aria-hidden className="size-3" />{fmtRunWindow(a.startedAt, a.finishedAt)}</p>}
           <p className="mt-1.5 text-[13px] leading-relaxed">{a.summary}</p>
@@ -138,23 +139,40 @@ function RunTimesCard({ data }: { data: Agents }) {
 function ActivityTab({ data }: { data: Agents }) {
   const days = [...new Set(data.activity.map((a) => a.day))].sort().reverse();
   if (!days.length) return <Card><Empty icon={Bot} title="No agent activity yet">Each agent writes a summary here after its nightly run (23:00, 23:47, 06:17 and 07:37 IST).</Empty></Card>;
+  // each agent's newest report up front; everything older folded away, newest first
+  const agents = Object.keys(AGENT) as Activity["agent"][];
+  const latest = agents.map((agent) => data.activity.filter((x) => x.agent === agent).sort((a, b) => b.day.localeCompare(a.day))[0]).filter((a): a is Activity => !!a);
+  const older = data.activity.filter((a) => !latest.includes(a)).sort((a, b) => b.day.localeCompare(a.day) || a.agent.localeCompare(b.agent));
   return (
     <div className="flex flex-col gap-8">
       <DataAuditCard audit={data.dataAudit} />
       <RunTimesCard data={data} />
-      {days.slice(0, 14).map((day) => (
-        <section key={day}>
-          <h2 className="mb-3 text-sm font-medium text-ink2">{new Intl.DateTimeFormat("en-IN", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${day}T00:00:00Z`))}</h2>
-          <div className="grid gap-3 lg:grid-cols-2">
-            {(Object.keys(AGENT) as Activity["agent"][]).map((agent) => {
-              const a = data.activity.find((x) => x.day === day && x.agent === agent);
-              return a ? <ActivityCard key={agent} a={a} /> : (
-                <Card key={agent}><p className="text-[13px] text-muted">{AGENT[agent].name}: no report for this night.</p></Card>
-              );
-            })}
-          </div>
-        </section>
-      ))}
+      <section>
+        <h2 className="mb-3 text-sm font-medium text-ink2">Latest from each agent</h2>
+        <div className="grid gap-3 lg:grid-cols-2">{latest.map((a) => <ActivityCard key={a.agent} a={a} />)}</div>
+      </section>
+      {older.length > 0 && (
+        <details className="group">
+          <summary className="cursor-pointer list-none text-sm font-medium text-ink2 hover:text-ink">
+            <span className="group-open:hidden">Show</span><span className="hidden group-open:inline">Hide</span> earlier reports ({older.length})
+          </summary>
+          <ul className="mt-3 flex flex-col divide-y divide-line rounded-xl border border-line bg-surface">
+            {older.slice(0, 60).map((a) => (
+              <li key={`${a.day}-${a.agent}`}>
+                <details className="group/r px-4 py-2.5">
+                  <summary className="flex cursor-pointer list-none flex-wrap items-center gap-x-2 gap-y-1 text-[13px]">
+                    <span className="w-16 shrink-0 tabular-nums text-muted">{fmtDayKey(a.day)}</span>
+                    <span className="font-medium">{AGENT[a.agent].name}</span>
+                    <Badge tone={DECISION[a.decision].tone} dot>{DECISION[a.decision].label}</Badge>
+                    <span className="min-w-0 flex-1 basis-full truncate text-ink2 sm:basis-0">{a.summary}</span>
+                  </summary>
+                  <div className="mt-2"><ActivityCard a={a} /></div>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
     </div>
   );
 }

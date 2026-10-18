@@ -75,7 +75,7 @@ function Item({ n, onResolve, onReopen, onDecide, busy }: { n: Notification; onR
           )}
         </div>
         <div className="w-full shrink-0 pl-11 sm:w-auto sm:pl-0">
-          {onResolve && !n.proposal && <Button size="sm" icon={CircleCheck} disabled={busy} onClick={onResolve} title="Mark this as fixed. It comes back if the problem is still there on the next check.">Mark resolved</Button>}
+          {onResolve && !n.proposal && <Button size="sm" icon={CircleCheck} disabled={busy} onClick={onResolve} title="Close it. It stays closed for a week; if the problem clears and happens again later, it shows right away.">Mark resolved</Button>}
           {onReopen && <Button size="sm" tone="ghost" icon={RotateCcw} disabled={busy} onClick={onReopen}>Reopen</Button>}
         </div>
       </div>

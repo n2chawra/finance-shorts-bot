@@ -7,6 +7,8 @@ import { AgentsSchema, ActivitySchema } from "./schemas";
 import type { Agents, Notification, Notifications } from "./schemas";
 
 const SEVERITY_ORDER = { critical: 0, warning: 1, info: 2 } as const;
+/** A notification the owner resolved stays closed this long while its check still fails (as in workers/lib/notify.ts). */
+const DISMISS_MS = 7 * 86_400_000;
 
 function toNotification(r: Row): Notification {
   return {
@@ -39,7 +41,8 @@ export async function listNotifications(): Promise<Notifications> {
 
 export async function notificationAction(ids: string[], action: "seen" | "resolve" | "reopen"): Promise<void> {
   const now = new Date();
-  const data = action === "seen" ? { seenAt: now } : action === "resolve" ? { resolvedAt: now, seenAt: now } : { resolvedAt: null };
+  // resolved by the owner: stays closed for a week even if its check still fails (workers/lib/notify.ts)
+  const data = action === "seen" ? { seenAt: now } : action === "resolve" ? { resolvedAt: now, seenAt: now, dismissedAt: now } : { resolvedAt: null, dismissedAt: null };
   await prisma.notification.updateMany({ where: { id: { in: ids } }, data });
 }
 
@@ -76,9 +79,11 @@ export async function getAgents(): Promise<Agents> {
 /** Raise or update an owner notification from the dashboard server (e.g. a key it relies on failed). */
 export async function notifyOwner(n: { key: string; severity: "info" | "warning" | "critical"; title: string; detail: string; fix: string }): Promise<void> {
   try {
+    const existing = await prisma.notification.findUnique({ where: { dedupeKey: n.key }, select: { resolvedAt: true, dismissedAt: true } });
+    const dismissed = Boolean(existing?.resolvedAt && existing.dismissedAt && Date.now() - existing.dismissedAt.getTime() < DISMISS_MS);
     await prisma.notification.upsert({
       where: { dedupeKey: n.key },
-      update: { severity: n.severity, title: n.title, detail: n.detail, fix: n.fix, resolvedAt: null },
+      update: { severity: n.severity, title: n.title, detail: n.detail, fix: n.fix, ...(dismissed ? {} : { resolvedAt: null }) },
       create: { dedupeKey: n.key, source: "dashboard", severity: n.severity, title: n.title, detail: n.detail, fix: n.fix },
     });
   } catch (e) {
@@ -89,5 +94,6 @@ export async function notifyOwner(n: { key: string; severity: "info" | "warning"
 export async function resolveOwner(key: string): Promise<void> {
   try {
     await prisma.notification.updateMany({ where: { dedupeKey: key, resolvedAt: null }, data: { resolvedAt: new Date() } });
+    await prisma.notification.updateMany({ where: { dedupeKey: key, dismissedAt: { not: null } }, data: { dismissedAt: null } });
   } catch { /* best effort */ }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle, ArrowDown, ArrowUp, CalendarClock, ChevronsDown, ChevronsUp, Clock, Download, ExternalLink, Film, Flame, GripVertical, ListOrdered, Smartphone, Trash2, Upload } from "lucide-react";
+import { AlertTriangle, ArrowDown, ArrowUp, CalendarClock, ChevronsDown, ChevronsUp, Clock, Download, ExternalLink, Film, Flame, GripVertical, ImageDown, ListOrdered, Smartphone, Trash2, Upload } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -17,6 +17,12 @@ import type { Settings, Video, VideoAction } from "@/lib/schemas";
 const DONE: Record<VideoAction, string> = { skip: "Moved to the end of the queue", delete: "Video deleted", "upload-now": "Marked for upload on the next publish run" };
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const iso = (ms: number) => new Date(ms).toISOString();
+/** Save a file the dashboard serves (a menu item can't be a link). */
+const download = (href: string, name: string) => {
+  const a = document.createElement("a");
+  a.href = href; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+};
 
 /** Where a video came from: the run that made it, and the feed topic behind it. */
 function Origin({ v }: { v: Video }) {
@@ -57,7 +63,8 @@ function PostNext({ slot }: { slot: PlanSlot & { video: Video } }) {
           <div className="mt-1.5"><Origin v={v} /></div>
           {slot.stale && <p className="mt-2 flex items-center gap-1.5 text-xs text-critical-text"><AlertTriangle aria-hidden className="size-3.5" />Its news is stale by this slot. Post it as soon as you can.</p>}
           <div className="mt-3 flex flex-wrap gap-1.5">
-            <a href={v.fileUrl} download={`${v.id}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download</a>
+            <a href={v.fileUrl} download={`${v.id}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>
+            <a href={v.thumbnailUrl} download={`${v.id}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>
             <CopyButton text={v.title} label="Copy title" />
             <CopyButton text={description} label="Copy description" />
             <CopyButton text={v.tags.join(", ")} label="Copy tags" />
@@ -137,6 +144,8 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
                         <Button size="sm" tone="ghost" iconOnly icon={ArrowDown} disabled={busy || i === items.length - 1} title="Move down" onClick={() => onMove(v.id, i + 1)}>Move down</Button>
                         <ActionMenu items={[
                           { label: "Open video", icon: ExternalLink, onSelect: () => router.push(`/videos/${v.id}`) },
+                          { label: "Download video", icon: Download, onSelect: () => download(v.fileUrl, `${v.id}.mp4`) },
+                          { label: "Download thumbnail", icon: ImageDown, onSelect: () => download(v.thumbnailUrl, `${v.id}-thumbnail.png`) },
                           { label: "Upload now", icon: Upload, disabled: busy || paused, onSelect: () => onAction(v, "upload-now") },
                           { label: "Skip to end", icon: ChevronsDown, disabled: busy || i === items.length - 1, onSelect: () => onAction(v, "skip") },
                           "separator",

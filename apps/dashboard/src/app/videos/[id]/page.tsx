@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ArrowLeft, ChevronsDown, CircleCheck, CircleX, Download, Eye, Heart, MessageSquare, Minus, Percent, Trash2, TrendingUp, Upload } from "lucide-react";
+import { ArrowLeft, ChevronsDown, CircleCheck, CircleX, Download, Eye, Heart, ImageDown, MessageSquare, Minus, Percent, Trash2, TrendingUp, Upload } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -86,7 +86,8 @@ export default function VideoPage() {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          {v.status !== "failed" && v.fileUrl && <a href={v.fileUrl} download={`${v.id}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download</a>}
+          {v.status !== "failed" && v.fileUrl && <a href={v.fileUrl} download={`${v.id}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>}
+          {v.status !== "failed" && <a href={v.thumbnailUrl} download={`${v.id}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>}
           {(v.status !== "published" || !v.upload?.youtubeId) && <MarkUploaded v={v} />}
           {menu.length > 0 && <ActionMenu items={menu} />}
         </div>

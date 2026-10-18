@@ -17,6 +17,13 @@ export type Notice = {
   proposal?: { setting: string; value?: unknown; current?: unknown };
 };
 
+/** How long a notification the owner marked resolved stays closed while its check still fails. */
+export const DISMISS_MS = 7 * 86_400_000;
+
+/** Whether a resolved notification is still inside the owner's dismissal (see DISMISS_MS). */
+export const stillDismissed = (n: { resolvedAt: Date | null; dismissedAt: Date | null }, now = new Date()) =>
+  Boolean(n.resolvedAt && n.dismissedAt && now.getTime() - n.dismissedAt.getTime() < DISMISS_MS);
+
 export async function notify(prisma: PrismaClient, n: Notice): Promise<void> {
   const data = { source: n.source, severity: n.severity, title: n.title, detail: n.detail, fix: n.fix,
     ...(n.proposal ? { proposal: n.proposal as Prisma.InputJsonValue } : {}) };
@@ -24,6 +31,8 @@ export async function notify(prisma: PrismaClient, n: Notice): Promise<void> {
   if (existing?.decidedAt) return;   // the owner approved or declined it: never raised again
   if (!existing) {
     await prisma.notification.create({ data: { dedupeKey: n.key, ...data } });
+  } else if (existing.resolvedAt && stillDismissed(existing)) {
+    await prisma.notification.update({ where: { dedupeKey: n.key }, data });   // keep it current, but closed
   } else if (existing.resolvedAt) {
     await prisma.notification.update({ where: { dedupeKey: n.key }, data: { ...data, resolvedAt: null, seenAt: null } });
   } else {
@@ -31,14 +40,17 @@ export async function notify(prisma: PrismaClient, n: Notice): Promise<void> {
   }
 }
 
+/** The condition cleared: close it, and forget an owner dismissal so a later recurrence shows at once. */
 export async function resolve(prisma: PrismaClient, key: string): Promise<void> {
   await prisma.notification.updateMany({ where: { dedupeKey: key, resolvedAt: null }, data: { resolvedAt: new Date() } });
+  await prisma.notification.updateMany({ where: { dedupeKey: key, dismissedAt: { not: null } }, data: { dismissedAt: null } });
 }
 
 /** Resolve every open notification whose key starts with `prefix` and isn't in `keep`. */
 export async function resolveOthers(prisma: PrismaClient, prefix: string, keep: Set<string>): Promise<void> {
-  const open = await prisma.notification.findMany({ where: { dedupeKey: { startsWith: prefix }, resolvedAt: null }, select: { dedupeKey: true } });
-  for (const o of open) if (!keep.has(o.dedupeKey)) await resolve(prisma, o.dedupeKey);
+  const live = await prisma.notification.findMany({
+    where: { dedupeKey: { startsWith: prefix }, OR: [{ resolvedAt: null }, { dismissedAt: { not: null } }] }, select: { dedupeKey: true } });
+  for (const o of live) if (!keep.has(o.dedupeKey)) await resolve(prisma, o.dedupeKey);
 }
 
 export const TOKEN_FIX = [
