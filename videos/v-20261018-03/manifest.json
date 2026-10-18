@@ -1,0 +1,328 @@
+{
+  "id": "v-20261018-03",
+  "createdAt": "2026-10-18T05:17:39.614705+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "A home loan at 8.5% moves to 8.75%: what the small rise adds over the loan",
+    "category": "loans",
+    "feed_id": "2026-10-17-emi-after-hike"
+  },
+  "title": "Home loan rate up from 8.5% to 8.75%: the cost hiding in a small rise",
+  "description": "A ₹50 lakh, 20-year home loan whose rate moves from 8.5% to 8.75%. We compute the new EMI and the extra interest over the full loan. Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#HomeLoan",
+    "#EMI",
+    "#PersonalFinance"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Did your EMI change?",
+  "seed": 52219,
+  "style": {
+    "palette": "plum",
+    "genre": "cinematic",
+    "key": "A",
+    "bpm": 90,
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.3,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "₹56.0 L in interest. On just one home loan.",
+        "start": 0.27,
+        "seconds": 3.63,
+        "window": 4.03,
+        "fill": 0.901
+      },
+      {
+        "scene": "emi",
+        "text": "The EMI goes from ₹43,391 to ₹44,186. Looks small.",
+        "start": 4.3,
+        "seconds": 7.93,
+        "window": 8.3,
+        "fill": 0.955
+      },
+      {
+        "scene": "monster",
+        "text": "But interest eats a little more, every month, for 240 months.",
+        "start": 12.6,
+        "seconds": 3.7,
+        "window": 4.17,
+        "fill": 0.887
+      },
+      {
+        "scene": "towers",
+        "text": "Total interest goes from ₹54.1 L to ₹56.0 L.",
+        "start": 16.77,
+        "seconds": 5.06,
+        "window": 5.57,
+        "fill": 0.908
+      },
+      {
+        "scene": "stretch",
+        "text": "Some banks keep the EMI and stretch the loan instead. Either way, you pay more interest.",
+        "start": 22.33,
+        "seconds": 4.94,
+        "window": 5.37,
+        "fill": 0.92
+      },
+      {
+        "scene": "outro",
+        "text": "Check your loan statement. Follow for one money idea a day.",
+        "start": 27.7,
+        "seconds": 3.38,
+        "window": 3.83,
+        "fill": 0.883
+      }
+    ]
+  },
+  "durationSec": 32,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.0
+  },
+  "experiments": {},
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Fifth review (snowball beat replaced by the 'stretch' calendar beat; left EMI card shown from the start of its beat). Still no sourced facts; the verify item about lender-specific reset dates is not contradicted. 'Some banks keep the EMI and stretch the loan instead. Either way, you pay more interest.' is correct, and its labels 'A longer loan' / 'More interest' match the line. The other beats are unchanged and were checked before. No bank or product named; tone measured; outro assumption kept; description ends with the disclaimer. Notes: the voice never says the rate rose (the card and tower labels and the title do), and Rs50L / 20 years appear only in the outro assumption and the description. Both are style points."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-render 32 s: hook ₹56.0 L at 0s; EMI split shows the 8.5% card from the beat start (5s and thumbnail no longer empty), both cards at 10s; monster, towers and the new calendar beat ('Feb' / 'A longer loan') match their lines, no overlap; end card has the CTA, assumptions and disclaimer; no layout or liveliness problems; peak -1.0 dB, mean -16.0 dB (inside the -21 to -15 band)."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:07:04.581899+00:00",
+      "finishedAt": "2026-10-18T05:07:04.581899+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:07:22.936248+00:00",
+      "finishedAt": "2026-10-18T05:07:22.936248+00:00",
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:07:32.794247+00:00",
+      "finishedAt": "2026-10-18T05:07:32.794247+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:07:33.678132+00:00",
+      "finishedAt": "2026-10-18T05:07:33.678132+00:00",
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:08:04.155200+00:00",
+      "finishedAt": "2026-10-18T05:08:04.155200+00:00",
+      "notes": [
+        "No sourced facts (facts empty). Checked every beat, picture and voice: 8.5%->8.75% on Rs50L/20y home loan is a realistic illustrative rate pair, shown as an assumption in the outro; EMI and interest code-computed; Sharma's line (some lenders extend tenure instead of raising EMI, more interest either way) is correct; nothing contradicts the feed verify item that floating loans reset on lender-specific dates (video makes no reset-timing claim). No product/bank named, no advice beyond 'check your loan statement', tone measured, description ends with the disclaimer. Note: comparison treats 8.75% as applying for the full 240 months; a mid-loan reset would add less - the assumption line covers it."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-18T05:07:39.391006+00:00",
+      "finishedAt": "2026-10-18T05:09:13.041633+00:00",
+      "notes": [
+        "median frame change 0.86 is below 1.2 — scenes finish animating and then hold a still picture",
+        "29% of samples have no visible movement (limit 15%)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:09:39.860965+00:00",
+      "finishedAt": "2026-10-18T05:09:39.860965+00:00",
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:09:59.940200+00:00",
+      "finishedAt": "2026-10-18T05:09:59.940200+00:00",
+      "notes": [
+        "Re-review after the liveliness rewrite. Still no sourced facts; the verify item (floating loans reset on lender-specific dates) is not contradicted, since the video makes no claim about when a rate resets. New lines checked: the hook gives total interest at 8.75% (Rs56.0L) and does not claim the rise caused it; rates stay in the EMI card labels and the outro assumption line; Rohan's acting is fine; Sharma's line (some lenders extend tenure instead, you pay more either way) is correct. Description ends with the disclaimer. Notes: the hook no longer gives the loan size or rate until later beats, and the extra cost of the rise (about Rs1.9L) is never stated outright. Both are style points, not grounds to fail."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-18T05:09:40.740563+00:00",
+      "finishedAt": "2026-10-18T05:10:55.739347+00:00",
+      "notes": [
+        "24% of samples have no visible movement (limit 15%)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:11:24.046003+00:00",
+      "finishedAt": "2026-10-18T05:11:24.046003+00:00",
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:11:41.582563+00:00",
+      "finishedAt": "2026-10-18T05:11:41.582563+00:00",
+      "notes": [
+        "Third review (Rohan's stage beat removed, EMI split into emi-old and emi-new). Still no sourced facts; the verify item about lender-specific reset dates is not contradicted. The new beats show the code-computed EMI at 8.5% (Rs43,391) and at 8.75% (Rs44,186), with the rate on screen in each. Sharma's line is correct; no bank or product named; tone measured; description ends with the disclaimer. Notes: Rs50L and 20 years now appear only in the outro assumption line and the description, so a viewer hears the EMI figures without the loan size; the extra cost of the rise (about Rs1.9L) is never stated outright. Both are style points, not grounds to fail."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-18T05:11:24.900588+00:00",
+      "finishedAt": "2026-10-18T05:12:41.685993+00:00",
+      "notes": [
+        "median frame change 0.75 is below 1.2 — scenes finish animating and then hold a still picture",
+        "39% of samples have no visible movement (limit 15%)",
+        "6 s with nothing moving (limit 4 s)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:13:29.652819+00:00",
+      "finishedAt": "2026-10-18T05:13:29.652819+00:00",
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:13:46.668894+00:00",
+      "finishedAt": "2026-10-18T05:13:46.668894+00:00",
+      "notes": [
+        "Fourth review (split / monster / towers / snowball). Still no sourced facts; the verify item about lender-specific reset dates is not contradicted. Checked: the split cards show the EMI at 8.5% and at 8.75% (both code-computed); 'interest eats a little more every month for 240 months' is correct, since at the higher rate each month's interest is larger over the whole term; the snowball line and its 'A longer loan / + interest' labels correctly describe the option of extending the tenure instead. No bank or product named; tone measured; outro assumption kept; description ends with the disclaimer. Notes: the voice now never says the rate rose (that comes from the title and the card and tower labels), and Rs50L / 20 years appear only in the outro assumption and the description. Both are style points."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:13:30.484705+00:00",
+      "finishedAt": "2026-10-18T05:14:39.139328+00:00",
+      "notes": [
+        "30 s, plum/cinematic, peak -1.0 dB, mean -16.1 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-18T05:15:27.399129+00:00",
+      "finishedAt": "2026-10-18T05:15:27.399129+00:00",
+      "notes": [
+        "[script] 5.0s (beat emi, scene split): empty frame, only background. Both cards wait for events 'from' (~5.4s) and 'to', so ~1.4s after the 4.0s cut shows nothing; show the left card at 'start' (or key it to an earlier word).",
+        "[script] thumbnail.png: empty background with no text or shapes. It is the 5.0s still (shots[1]), which is the empty emi frame above; fixing that beat's timing fixes the thumbnail too.",
+        "[scene] 25.0s (beat snowball, scene snowball): two '+ interest' tick labels are stacked on top of each other at the top right, the older one faded pink on light-blue sky, so both are hard to read; the ticks should not spawn on top of one another and need more contrast on the light background.",
+        "[script] audio mean is -16.1 dB vs the ~-18 dB target (peak -1.0 dB ok); length 30.0 s is right at the 30 s minimum, with render tempo 1.0."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:15:47.501229+00:00",
+      "finishedAt": "2026-10-18T05:15:47.501229+00:00",
+      "notes": [
+        "12 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:16:03.802805+00:00",
+      "finishedAt": "2026-10-18T05:16:03.802805+00:00",
+      "notes": [
+        "Fifth review (snowball beat replaced by the 'stretch' calendar beat; left EMI card shown from the start of its beat). Still no sourced facts; the verify item about lender-specific reset dates is not contradicted. 'Some banks keep the EMI and stretch the loan instead. Either way, you pay more interest.' is correct, and its labels 'A longer loan' / 'More interest' match the line. The other beats are unchanged and were checked before. No bank or product named; tone measured; outro assumption kept; description ends with the disclaimer. Notes: the voice never says the rate rose (the card and tower labels and the title do), and Rs50L / 20 years appear only in the outro assumption and the description. Both are style points."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:15:48.395926+00:00",
+      "finishedAt": "2026-10-18T05:16:57.970484+00:00",
+      "notes": [
+        "32 s, plum/cinematic, peak -1.0 dB, mean -16.0 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:17:25.299800+00:00",
+      "finishedAt": "2026-10-18T05:17:25.299800+00:00",
+      "notes": [
+        "Re-render 32 s: hook ₹56.0 L at 0s; EMI split shows the 8.5% card from the beat start (5s and thumbnail no longer empty), both cards at 10s; monster, towers and the new calendar beat ('Feb' / 'A longer loan') match their lines, no overlap; end card has the CTA, assumptions and disclaimer; no layout or liveliness problems; peak -1.0 dB, mean -16.0 dB (inside the -21 to -15 band)."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-18T05:17:39.614807+00:00",
+      "finishedAt": "2026-10-18T05:17:39.614807+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261018-03",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261018-03"
+  }
+}

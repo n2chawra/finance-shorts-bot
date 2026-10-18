@@ -1,0 +1,245 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261018-03",
+ "seed": 52219,
+ "story": "trap_alert",
+ "style": {
+  "palette": "plum",
+  "genre": "cinematic",
+  "key": "A",
+  "bpm": 90
+ },
+ "feed_id": "2026-10-17-emi-after-hike",
+ "maths": [
+  {
+   "name": "before",
+   "kind": "emi",
+   "amount": 5000000,
+   "rate_pct": 8.5,
+   "years": 20
+  },
+  {
+   "name": "after",
+   "kind": "emi",
+   "amount": 5000000,
+   "rate_pct": 8.75,
+   "years": 20
+  }
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "reveal",
+   "camera": "punch:one",
+   "say": "{after_interest} in interest. On just one home loan.",
+   "events": {
+    "one": {
+     "word": "one"
+    },
+    "loan": {
+     "word": "loan"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "one",
+     "gain": 0.7
+    },
+    {
+     "kind": "whoosh",
+     "at": "loan"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "{after_interest}",
+      "style": "danger",
+      "at": "start"
+     },
+     {
+      "text": "in interest",
+      "style": "sub",
+      "at": "start"
+     },
+     {
+      "text": "on one home loan",
+      "style": "kicker",
+      "at": "one"
+     }
+    ],
+    "actor": {
+     "who": "rohan",
+     "x": 0.5,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "stand",
+       "expression": "shock"
+      },
+      {
+       "at": "one",
+       "pose": "facepalm",
+       "expression": "sad"
+      },
+      {
+       "at": "loan",
+       "pose": "worried",
+       "expression": "worried"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "emi",
+   "scene": "split",
+   "transition": "whip",
+   "camera": "punch:new",
+   "say": "The EMI goes from {before_emi} to {after_emi}. Looks small.",
+   "events": {
+    "old": {
+     "word": "from"
+    },
+    "new": {
+     "word": "to"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "old"
+    },
+    {
+     "kind": "pop-high",
+     "at": "new"
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "EMI at {before_rate}",
+     "text": "{before_emi}",
+     "value": "@before.emi",
+     "at": "start"
+    },
+    "right": {
+     "label": "EMI at {after_rate}",
+     "text": "{after_emi}",
+     "value": "@after.emi",
+     "at": "new"
+    }
+   }
+  },
+  {
+   "id": "monster",
+   "scene": "monster",
+   "transition": "zoom",
+   "say": "But interest eats a little more, every month, for {after_months} months.",
+   "events": {
+    "every": {
+     "word": "every"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "clink",
+     "at": "every"
+    }
+   ],
+   "params": {
+    "label": "{after_months} EMIs",
+    "labelAt": "every",
+    "name": "INTEREST"
+   }
+  },
+  {
+   "id": "towers",
+   "scene": "towers",
+   "transition": "zoom",
+   "camera": "punch:b",
+   "say": "Total interest goes from {before_interest} to {after_interest}.",
+   "events": {
+    "a": {
+     "word": "from"
+    },
+    "b": {
+     "word": "to"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "a"
+    },
+    {
+     "kind": "boom",
+     "at": "b",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "items": [
+     {
+      "label": "At {before_rate}",
+      "text": "{before_interest}",
+      "value": "@before.interest",
+      "at": "a",
+      "color": "good"
+     },
+     {
+      "label": "At {after_rate}",
+      "text": "{after_interest}",
+      "value": "@after.interest",
+      "at": "b",
+      "color": "danger"
+     }
+    ]
+   }
+  },
+  {
+   "id": "stretch",
+   "scene": "calendar",
+   "transition": "slide",
+   "camera": "punch:either",
+   "say": "Some banks keep the EMI and stretch the loan instead. Either way, you pay more interest.",
+   "events": {
+    "stretch": {
+     "word": "stretch"
+    },
+    "either": {
+     "word": "Either"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "stretch"
+    },
+    {
+     "kind": "ding",
+     "at": "either"
+    }
+   ],
+   "params": {
+    "loops": 3,
+    "label": "A longer loan",
+    "labelAt": "stretch",
+    "sub": "More interest",
+    "subAt": "either"
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "Check your loan statement. Follow for one money idea a day.",
+   "params": {
+    "cta": "Did your EMI change?",
+    "follow": "Follow for one money idea a day",
+    "assumption": "Assumes {before_amount} over {before_months} months, rate rising from {before_rate} to {after_rate}."
+   }
+  }
+ ]
+}
