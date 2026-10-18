@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 
-import { manifestPaths, queueSlot, readmeSummary, templateIds } from "../ingest.ts";
+import { manifestPaths, newestStamp, queueSlot, readmeSummary, templateIds } from "../ingest.ts";
 import { Manifest, VIDEO_ID, type ShippedManifest } from "../lib/manifest.ts";
 
 test("every manifest in the repo parses", () => {
@@ -67,4 +67,10 @@ test("a trending video jumps to the front of the queue until its trend expires",
   assert.equal(await queueSlot(fakeTx(null, null), hot, now), 0);       // empty queue
   const stale = { ...hot, priority: { level: "trending" as const, until: "2026-10-16" } };
   assert.equal(await queueSlot(fakeTx(3, 9), stale, now), 10);          // expired: back of the queue
+});
+
+test("the newest stamp is picked by time, not by string order across UTC offsets", () => {
+  // 01:00+05:30 on the 14th is 19:30Z on the 13th: older than 19:42Z, though it sorts later as text
+  assert.equal(newestStamp(["2026-10-13T19:42:29.386511+00:00", "2026-10-14T01:00:00+05:30"]), "2026-10-13T19:42:29.386511+00:00");
+  assert.equal(newestStamp([]), null);
 });

@@ -23,6 +23,9 @@ export type ObservedRun = { id: RunId; start: Date; finish: Date };
 export type ScheduleFinding = { title: string; detail: string; fix: string };
 
 const entry = (id: RunId) => SCHEDULE.find((s) => s.id === id)!;
+
+/** Whether `id` is one of the nightly runs above (Scout, Studio and the monthly review are not). */
+export const isScheduled = (id: string): id is RunId => SCHEDULE.some((s) => s.id === id);
 const clockMin = (ist: string): number => Number(ist.slice(0, 2)) * 60 + Number(ist.slice(3));
 
 /** The instant (ms) of `ist` clock time on the IST calendar day `dayOffset` days from `ref`'s IST day. */
@@ -62,6 +65,7 @@ export function scheduleOverlap(runs: ObservedRun[]): ScheduleFinding | null {
   const lines: string[] = [];
   const fixes: string[] = [];
   for (const r of runs) {
+    if (!isScheduled(r.id)) continue;   // a daytime routine has no slot here to overrun
     const startMs = scheduledNear(r.id, r.start);
     const idx = SCHEDULE.findIndex((s) => s.id === r.id);
     const next = SCHEDULE[(idx + 1) % SCHEDULE.length]!;
