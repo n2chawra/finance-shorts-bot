@@ -1,0 +1,331 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261019-02",
+ "seed": 30419,
+ "story": "how_it_works",
+ "currency": "USD",
+ "style": {
+  "palette": "mint",
+  "genre": "synthwave",
+  "key": "A",
+  "bpm": 108
+ },
+ "feed_id": "2026-10-19-fed-oct28-card-apr",
+ "facts": [
+  {
+   "label": "Upper end of the Fed's federal funds target range, set on 16 September",
+   "value": 4,
+   "unit": "percent",
+   "currency": "USD",
+   "as_of": "2026-09-16",
+   "source": "Federal Reserve",
+   "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+  }
+ ],
+ "maths": [
+  {
+   "name": "before",
+   "kind": "card_min_due",
+   "amount": 6000,
+   "rate_pct_month": 1.8333,
+   "min_due_pct": 3,
+   "min_due_floor": 25
+  },
+  {
+   "name": "after",
+   "kind": "card_min_due",
+   "amount": 6000,
+   "rate_pct_month": 1.8542,
+   "min_due_pct": 3,
+   "min_due_floor": 25
+  }
+ ],
+ "thumbnail": {
+  "who": "rohan",
+  "pose": "worried",
+  "expression": "worried",
+  "prop": "card",
+  "figure": "{after_rate_year}",
+  "words": "Fed moves, card follows",
+  "sub": "How fast?"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "kinetic",
+   "camera": "push",
+   "say": "When the Fed moves interest rates, how fast does your credit card follow?",
+   "events": {
+    "card": {
+     "word": "credit"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "card"
+    }
+   ],
+   "params": {
+    "mode": "box",
+    "world": "city",
+    "city": "newyork",
+    "lines": [
+     {
+      "text": "The Fed moves",
+      "at": "start"
+     },
+     {
+      "text": "Your card follows?",
+      "at": "start"
+     }
+    ],
+    "presenter": {
+     "who": "rohan",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "prop": "phone",
+       "expression": "confused"
+      },
+      {
+       "at": "card",
+       "pose": "worried",
+       "expression": "worried",
+       "bubble": {
+        "icon": "?"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "headline",
+   "scene": "headline",
+   "transition": "whip",
+   "say": "In September, the Fed raised its target range by a quarter point, to {fact1} at the top.",
+   "events": {
+    "fig": {
+     "word": "to"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "fig",
+     "gain": 0.7
+    }
+   ],
+   "params": {
+    "kicker": "NEWS",
+    "title": "The Fed raised rates",
+    "figure": "{fact1}",
+    "figureAt": "fig",
+    "label": "top of the Fed's target range"
+   }
+  },
+  {
+   "id": "chain",
+   "scene": "equation",
+   "transition": "zoom",
+   "say": "Banks move their prime rate with it. And most card rates are prime plus a margin.",
+   "events": {
+    "fed": {
+     "word": "Banks"
+    },
+    "card": {
+     "word": "card"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fed"
+    },
+    {
+     "kind": "pop-high",
+     "at": "card"
+    }
+   ],
+   "params": {
+    "title": "Fed → prime → your card",
+    "ops": [
+     "→"
+    ],
+    "items": [
+     {
+      "icon": "chartup",
+      "label": "Fed",
+      "at": "fed"
+     },
+     {
+      "icon": "card",
+      "label": "APR",
+      "at": "card"
+     }
+    ],
+    "presenter": {
+     "who": "priya",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "smirk"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "fast",
+   "scene": "kinetic",
+   "transition": "slide-up",
+   "say": "So within a billing cycle or two, your rate moves too.",
+   "events": {
+    "moves": {
+     "word": "moves"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "start"
+    },
+    {
+     "kind": "ding",
+     "at": "moves"
+    }
+   ],
+   "params": {
+    "mode": "type",
+    "lines": [
+     {
+      "text": "One or two bills later"
+     },
+     {
+      "text": "your rate moves"
+     }
+    ]
+   }
+  },
+  {
+   "id": "rates",
+   "scene": "split",
+   "transition": "slide",
+   "say": "Say you carry {before_amount} at {before_rate_year}. A quarter point more makes it {after_rate_year}.",
+   "events": {
+    "more": {
+     "word": "more"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "start"
+    },
+    {
+     "kind": "pop-high",
+     "at": "more"
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "Before",
+     "text": "{before_rate_year}",
+     "value": 0,
+     "at": "start"
+    },
+    "right": {
+     "label": "After",
+     "text": "{after_rate_year}",
+     "value": 0,
+     "at": "more"
+    }
+   }
+  },
+  {
+   "id": "interest",
+   "scene": "towers",
+   "transition": "zoom",
+   "say": "Paying only the minimum, the total interest goes from {before_interest} to {after_interest}.",
+   "events": {
+    "a": {
+     "word": "from"
+    },
+    "b": {
+     "word": "to"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "a"
+    },
+    {
+     "kind": "boom",
+     "at": "b",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "title": "Total interest",
+    "items": [
+     {
+      "label": "Before",
+      "text": "{before_interest}",
+      "value": "@before.interest",
+      "at": "a",
+      "color": "good"
+     },
+     {
+      "label": "After",
+      "text": "{after_interest}",
+      "value": "@after.interest",
+      "at": "b",
+      "color": "danger"
+     }
+    ]
+   }
+  },
+  {
+   "id": "stack",
+   "scene": "stage",
+   "speaker": "sharma",
+   "transition": "slide-up",
+   "say": "Small on its own. But every move stacks on the last one.",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "sharma",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "smirk",
+        "bubble": {
+         "icon": "!"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "So, do you know your card's rate?",
+   "params": {
+    "cta": "Know your card's APR",
+    "follow": "Follow for one money question, settled",
+    "assumption": "Assumes a {before_amount} balance at {before_rate_year}, a {before_min_due_pct} minimum payment and a quarter point rise."
+   }
+  }
+ ]
+}

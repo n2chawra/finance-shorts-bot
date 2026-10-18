@@ -1,0 +1,108 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 30419,
+  "duration_sec": 36,
+  "tempo": 1.0,
+  "style": {
+    "palette": "mint",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 108
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.3,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "When the Fed moves interest rates, how fast does your credit card follow?",
+        "start": 0.27,
+        "seconds": 3.28,
+        "window": 3.87,
+        "fill": 0.848
+      },
+      {
+        "scene": "headline",
+        "text": "In September, the Fed raised its target range by a quarter point, to 4% at the top.",
+        "start": 4.13,
+        "seconds": 4.59,
+        "window": 5.2,
+        "fill": 0.883
+      },
+      {
+        "scene": "chain",
+        "text": "Banks move their prime rate with it. And most card rates are prime plus a margin.",
+        "start": 9.33,
+        "seconds": 3.78,
+        "window": 4.37,
+        "fill": 0.865
+      },
+      {
+        "scene": "fast",
+        "text": "So within a billing cycle or two, your rate moves too.",
+        "start": 13.7,
+        "seconds": 2.53,
+        "window": 3.13,
+        "fill": 0.808
+      },
+      {
+        "scene": "rates",
+        "text": "Say you carry $6,000 at 22%. A quarter point more makes it 22.25%.",
+        "start": 16.83,
+        "seconds": 5.72,
+        "window": 6.3,
+        "fill": 0.908
+      },
+      {
+        "scene": "interest",
+        "text": "Paying only the minimum, the total interest goes from $7,948 to $8,172.",
+        "start": 23.13,
+        "seconds": 6.95,
+        "window": 7.57,
+        "fill": 0.918
+      },
+      {
+        "scene": "stack",
+        "text": "Small on its own. But every move stacks on the last one.",
+        "start": 30.7,
+        "seconds": 2.74,
+        "window": 3.37,
+        "fill": 0.813
+      },
+      {
+        "scene": "outro",
+        "text": "So, do you know your card's rate?",
+        "start": 34.07,
+        "seconds": 1.5,
+        "window": 2.03,
+        "fill": 0.739
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2
+  },
+  "liveliness": {
+    "median": 1.789,
+    "still_share": 0.053,
+    "longest_still_sec": 2.0
+  },
+  "liveliness_problems": []
+}

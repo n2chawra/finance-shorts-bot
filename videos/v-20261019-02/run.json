@@ -1,0 +1,122 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:13:33.771457+00:00",
+    "finishedAt": "2026-10-18T23:13:33.771457+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-18T23:14:02.230818+00:00",
+    "finishedAt": "2026-10-18T23:14:02.230818+00:00",
+    "notes": [
+      "description mentions '16', which is neither a script input nor a computed figure",
+      "description mentions '28', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:14:08.265809+00:00",
+    "finishedAt": "2026-10-18T23:14:08.265809+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:14:09.290922+00:00",
+    "finishedAt": "2026-10-18T23:14:09.290922+00:00",
+    "notes": [
+      "29 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:14:17.403691+00:00",
+    "finishedAt": "2026-10-18T23:14:17.403691+00:00",
+    "notes": [
+      "29 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:14:26.121955+00:00",
+    "finishedAt": "2026-10-18T23:14:26.121955+00:00",
+    "notes": [
+      "29 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:15:05.809055+00:00",
+    "finishedAt": "2026-10-18T23:15:05.809055+00:00",
+    "notes": [
+      "Fact fact1 (4%, upper Fed funds target, 16 Sep 2026) confirmed on federalreserve.gov monetary20260916a ('raise ... by 1/4 percentage point to 3-3/4 to 4 percent'); 2026 FOMC press page shows no later decision, so current (next meeting 27-28 Oct, no prediction made). Prime-plus-margin and 1-2 billing cycle lag are correct general US claims, no issuer named; 22%/22.25% APR and 3% minimum are stated assumptions in range; description ends with disclaimer. Note: Sharma's 'every move stacks on the last one' holds both ways, not a forecast."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-18T23:15:18.793781+00:00",
+    "finishedAt": "2026-10-18T23:17:24.954856+00:00",
+    "notes": [
+      "text '?' at 2.7 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-18T23:18:19.432250+00:00",
+    "finishedAt": "2026-10-18T23:18:19.432250+00:00",
+    "notes": [
+      "[scene] bignumber + actor (beat hook, camera push): Rohan is never on screen in 0.0-4.1 s; his '?' bubble shows as a half-circle cut off at the left edge at 2.7 s (code layout_problems: \"text '?' at 2.7 s runs outside the frame\"), and the lower two-thirds of the hook frame is empty",
+      "[scene] towers (beat interest, 27.5 s and 30.0 s): the wrapped title's second line 'payments' overlaps the bar value labels $7,948 and $8,172; the bars grow up into the title area. A one-line title (script) would avoid it here, but the scene should reserve room for the title",
+      "[scene] equation (beat chain, 10-12.5 s): the '→' operators sit at the left margin between rows instead of between items, so they point at nothing (minor)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:18:40.511263+00:00",
+    "finishedAt": "2026-10-18T23:18:40.511263+00:00",
+    "notes": [
+      "29 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:18:41.353221+00:00",
+    "finishedAt": "2026-10-18T23:20:53.769867+00:00",
+    "notes": [
+      "36 s, mint/synthwave, peak -1.0 dB, mean -16.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:21:27.722220+00:00",
+    "finishedAt": "2026-10-18T23:21:27.722220+00:00",
+    "notes": [
+      "Re-render clean: city hook with Rohan and box text, no overlaps or cut-offs, 4% sourced headline, 22%->22.25% split, one-line towers title clear of $7,948/$8,172, disclaimer on last frame, layout_problems empty, 36 s; minor: equation arrow sits at left margin between Fed and APR rows"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:21:43.353020+00:00",
+    "finishedAt": "2026-10-18T23:21:43.353020+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
