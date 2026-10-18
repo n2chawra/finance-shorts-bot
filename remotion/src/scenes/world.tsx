@@ -78,8 +78,10 @@ export const PropScene: React.FC<SceneProps> = (p) => {
   const { width: w, height: h, palette: pal } = p.tl;
   const P = p.beat.params as unknown as PropParams;
   const v = h > w, A = area(p, !!P.presenter);
+  // the prop arrives with the beat; its action (a coin dropping, an anvil landing, pages flipping,
+  // the figure counting up) lands on `at`
   const start = at(p, P.at, 0.35);
-  const k = p.beat.from === 0 && start < 0.05 ? 1 : pop(p, start, 11, 120);
+  const k = p.beat.from === 0 ? 1 : pop(p, 0.1, 11, 120);
   const Prop = MONEY_PROPS[P.prop] ?? MONEY_PROPS.cheque;
   const text = P.text !== undefined && P.value !== undefined ? counted(p, P.value, P.text, start, start + 0.9) : P.text;
   const s = v ? (P.presenter ? 700 : 820) : 520, fs = v ? 112 : 84;
@@ -90,7 +92,7 @@ export const PropScene: React.FC<SceneProps> = (p) => {
       <World p={p} name={P.world} city={P.city} night={P.night} pattern={P.pattern} />
       {P.kicker && <Caption text={P.kicker} p={p} start={0} x={A.x + 60} y={A.y + (v ? 10 : 60)} width={A.w - 120} size={kick} color={pal.text} bg={pal.panel} weight={800} />}
       <svg width={w} height={h} style={{ position: "absolute" }}>
-        <g transform={`translate(${cx},${cy})`}>
+        <g transform={`translate(${cx},${cy})`} opacity={Math.min(1, k * 3)}>
           <ellipse cx={0} cy={s * 0.48} rx={s * 0.42} ry={s * 0.06} fill="rgba(0,0,0,0.18)" opacity={k} />
           <Prop s={s} k={k} t={sec(p) - start + 0.6} pal={pal} text={text} label={P.label} fs={fs} hit={0.6} fill={P.fill} level={P.level} />
         </g>
@@ -198,9 +200,12 @@ export const EquationScene: React.FC<SceneProps> = (p) => {
   const { width: w, height: h, palette: pal } = p.tl;
   const P = p.beat.params as unknown as EquationParams;
   const v = h > w, A = area(p, !!P.presenter), t = sec(p);
-  const n = P.items.length, size = v ? (n > 2 ? 260 : 320) : 280;
+  const n = P.items.length, grid = v && n >= 4, size = grid ? 230 : v ? (n > 2 ? 260 : 320) : 280;
   const gap = v ? (A.h - 120) / Math.max(1, n) : A.w / (n + 0.4);
-  const pos = (i: number) => v ? { x: A.x + A.w / 2, y: A.y + 120 + gap * (i + 0.45) } : { x: A.x + gap * (i + 0.7), y: A.y + A.h * 0.48 };
+  // a Short with four or more items: a 2-column grid, labels under the icons, no operators
+  const pos = (i: number) => grid ? { x: A.x + A.w * (0.28 + 0.44 * (i % 2)), y: A.y + 300 + Math.floor(i / 2) * 430 }
+    : v ? { x: A.x + A.w / 2, y: A.y + 120 + gap * (i + 0.45) } : { x: A.x + gap * (i + 0.7), y: A.y + A.h * 0.48 };
+  const below = !v || grid;
   return (
     <AbsoluteFill>
       <World p={p} name={P.world} pattern={P.pattern ?? "rays"} />
@@ -213,11 +218,11 @@ export const EquationScene: React.FC<SceneProps> = (p) => {
           const icon = ICONS[it.icon] ?? ICONS.cash!;
           return <g key={i} transform={`translate(${c.x},${c.y + bob})`} opacity={clamp(k * 2)}>
             <g transform={`scale(${0.4 + 0.6 * k})`}>{icon(size, pal.cast[i % 3]!)}</g>
-            {text && <text x={v ? size * 0.75 : 0} y={v ? -size * 0.06 : size * 0.62} textAnchor={v ? "start" : "middle"} fontFamily={FONT} fontWeight={800} fontSize={v ? 76 : 64} fill={pal.text}>{text}</text>}
-            {it.label && <text x={v ? size * 0.75 : 0} y={v ? size * 0.2 : size * 0.62 + (text ? 70 : 0)} textAnchor={v ? "start" : "middle"} fontFamily={FONT} fontWeight={600} fontSize={v ? 48 : 38} fill={pal.muted}>{it.label}</text>}
+            {text && <text x={below ? 0 : size * 0.75} y={below ? size * 0.62 : -size * 0.06} textAnchor={below ? "middle" : "start"} fontFamily={FONT} fontWeight={800} fontSize={v ? 76 : 64} fill={pal.text}>{text}</text>}
+            {it.label && <text x={below ? 0 : size * 0.75} y={below ? size * 0.62 + (text ? 80 : 0) : size * 0.2} textAnchor={below ? "middle" : "start"} fontFamily={FONT} fontWeight={700} fontSize={v ? 56 : 38} fill={pal.text}>{it.label}</text>}
           </g>;
         })}
-        {(P.ops ?? []).slice(0, n - 1).map((op, i) => {
+        {(grid ? [] : P.ops ?? []).slice(0, n - 1).map((op, i) => {
           const a = pos(i), b = pos(i + 1), start = at(p, P.items[i + 1]?.at, 0.3 + (i + 1) * 0.6) - 0.25, k = pop(p, start, 9, 180);
           const x = v ? a.x - size * 0.6 : (a.x + b.x) / 2, y = v ? (a.y + b.y) / 2 : a.y;
           return <text key={i} x={x} y={y} textAnchor="middle" dominantBaseline="middle" fontFamily={FONT} fontWeight={900} fontSize={(v ? 110 : 130) * (0.5 + 0.5 * k)}
@@ -266,14 +271,16 @@ export const KineticScene: React.FC<SceneProps> = (p) => {
       </AbsoluteFill>
     );
   }
-  const k = pop(p, at(p, P.lines[0]?.at, 0.25), 12, 150);
+  // the video's first frame is its thumbnail in the feed: a box due at the start is already there
+  const first = (s: number) => p.beat.from === 0 && s < 0.05;
+  const k0 = at(p, P.lines[0]?.at, 0.25), k = first(k0) ? 1 : pop(p, k0, 12, 150);
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{ filter: "blur(5px)", transform: "scale(1.04)" }}><World p={p} name={P.world ?? "city"} city={P.city} night={P.night} /></AbsoluteFill>
       <div style={{ position: "absolute", left: A.x + (v ? 60 : A.w * 0.12), top: top - size * 0.6, width: A.w - (v ? 120 : A.w * 0.24), padding: `${size * 0.55}px ${size * 0.6}px`,
         background: "#ffffff", borderRadius: size * 0.5, boxShadow: "0 30px 80px rgba(0,0,0,0.3)", opacity: clamp(k * 2), transform: `scale(${0.8 + 0.2 * k}) rotate(${(1 - k) * -2}deg)` }}>
         {P.lines.map((l, i) => {
-          const kl = pop(p, at(p, l.at, 0.3 + i * 0.35), 12, 160);
+          const ls = at(p, l.at, 0.3 + i * 0.35), kl = first(ls) ? 1 : pop(p, ls, 12, 160);
           return <div key={i} style={{ fontFamily: FONT, fontWeight: 900, fontSize: size, lineHeight: 1.12, color: i === P.lines.length - 1 ? pal.danger : "#121826",
             textAlign: "center", textTransform: "uppercase", opacity: clamp(kl * 2), transform: `translateY(${(1 - kl) * 24}px)` }}>{l.text}</div>;
         })}
