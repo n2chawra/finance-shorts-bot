@@ -29,7 +29,9 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 - `template`, `seed` and `style` are copied from the plan unchanged; `"format": "short"`.
 - **Numbers are inputs, never results.** In `maths` you choose amounts, rates and years; code
   computes everything else and you use the results through `{placeholders}` (and `"@name.key"`
-  for a count-up or a chart).
+  for a count-up or a chart). A count-up's `text` shows the same number as its `value`
+  (`"value": "@card.interest"` with `"text": "{card_interest}"`), or `"value": 0`; the build rejects
+  a counter that counts to one figure and lands on another.
 - **No digits and no ₹ sign in any text or spoken line.** Placeholders only; code reads them aloud
   ("₹12.4 L" → "12.4 lakh rupees"). The build rejects a typed number.
 - **The voice tells the story, the screen shows the figures.** Talk like a person: short sentences,

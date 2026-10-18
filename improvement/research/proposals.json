@@ -71,9 +71,10 @@
       "effort": "S",
       "risk": "Low; may fail some renders until chart labels read the maths values.",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "note": "2026-10-18 improver: renderer/timeline/build.py _one_string() fails the script check and the build when a count-up/bar `value` lands on a `text` that does not show that same number, or when `value` is a typed number. On Remotion every other on-screen string already comes from one formatter per maths key, so the old-engine mismatch in v-20261017-04 cannot recur that way."
     },
     {
       "id": "evaluate-stdlib-only",
@@ -89,9 +90,10 @@
       "effort": "S",
       "risk": "None",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "rejected",
       "route": "adopt",
-      "priority": "normal"
+      "priority": "normal",
+      "reason": "Needs generator/variety.py (owner-only in scripts/guard.py) to stop importing renderer.engine.music; raised to the owner in improvement/notifications/improver.json. The improver runs the evaluator with a Python that has numpy meanwhile."
     },
     {
       "id": "cast-series-title-suffix",
