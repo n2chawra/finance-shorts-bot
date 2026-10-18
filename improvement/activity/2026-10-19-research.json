@@ -1,0 +1,48 @@
+{
+  "agent": "research",
+  "day": "2026-10-19",
+  "startedAt": "2026-10-18T18:20:57Z",
+  "finishedAt": "2026-10-18T18:29:21Z",
+  "summary": "Monday hooks pass plus news scan: added 3 global topics (US inflation and energy, the Fed's 28 Oct decision and credit cards, the UK price cap myth) and 3 proposals, wrote a UK CPI event-day file and extended the calendar with Fed, ECB, BoE and CPI dates.",
+  "decision": "acted",
+  "why": "The feed was all India while the channel went global on 18 Oct. BLS shows US energy prices up 20.4% (CPI 3.7%), the Fed decides in 9 days, and Ofgem's cap is £1,723, all checked on official pages. Our narrator was am_michael on 3 Shorts in a row (random, not rotated), and v-20261018-02 opened with a warm-up line instead of its stakes.",
+  "findings": [
+    {
+      "title": "US CPI 3.7% in September, energy 20.4%",
+      "detail": "Added as news (high), in USD: your own inflation vs the headline number.",
+      "link": "https://www.bls.gov/news.release/cpi.nr0.htm"
+    },
+    {
+      "title": "Fed decision on 28 Oct, range now 3.75–4%",
+      "detail": "Seasonal topic (high): how a quarter point reaches a card balance. The 23:47 research run starts 17 minutes after the decision, so no one-off routine is needed.",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+    },
+    {
+      "title": "UK price cap £1,723 doesn't cap your bill",
+      "detail": "Myth-bust topic (high) in GBP.",
+      "link": "https://ofgem.gov.uk/press-release/energy-price-cap-will-rise-4-october-2026"
+    },
+    {
+      "title": "Narrator isn't rotated",
+      "detail": "build.py picks the narrator at random from the seed: am_michael on 4 of the last 6 Shorts, af_heart never. Adopt proposal narrator-rotation.",
+      "link": "videos/v-20261018-02/render.json"
+    },
+    {
+      "title": "A wasted first second",
+      "detail": "v-20261018-02 says 'Quick question about your savings.' over a frame asking 'Is your savings account keeping up?'. Experiment proposal hook-voice-matches-frame.",
+      "link": "https://shortsfast.com/blog/faceless-shorts-hooks-retention-2026/"
+    }
+  ],
+  "changes": [],
+  "nextCheck": "2026-10-20",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-19.md"
+    },
+    {
+      "label": "UK CPI event file",
+      "url": "improvement/research/events/2026-10-21-uk-cpi.json"
+    }
+  ]
+}

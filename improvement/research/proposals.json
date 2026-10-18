@@ -112,6 +112,65 @@
       "status": "new",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "narrator-rotation",
+      "date": "2026-10-19",
+      "area": "sound",
+      "title": "Rotate the narrator voice per video instead of drawing it at random",
+      "change": "renderer/timeline/build.py picks the narrator with random.Random(f'narrator:{seed}').choice(NARRATOR_VOICES), so voices repeat: am_michael narrated v-20261017-02, v-20261018-01, -02 and -03 (3 in a row on one day) and af_heart has never narrated a Remotion Short. Have the planner/writer step set the script's `narrator` to the least recently used voice in NARRATOR_VOICES (read from the last videos' render.json `voice.name` or a `narrator` field recorded in history), never the same as the previous video; build.py's seeded choice stays as the fallback. Add a test: four consecutive plans get four different narrators.",
+      "evidence": [
+        "videos/v-20261017-02, v-20261018-01, v-20261018-02, v-20261018-03 render.json: voice.name = am_michael; v-20261017-04 af_bella; v-20261018-04 and L-20261018-01 am_fenrir; af_heart never used",
+        "CLAUDE.md hard constraints: voices 'rotated per video'; variety rules: rotate per video"
+      ],
+      "expectedEffect": "Each upload in a row sounds different, as CLAUDE.md requires; lowers the 'mass-produced' signal for viewers who see several Shorts back to back.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "None; only which of the already approved voices narrates.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "hook-voice-matches-frame",
+      "date": "2026-10-19",
+      "area": "hook",
+      "title": "The first spoken line says what frame 0 shows: no warm-up opener",
+      "change": "On half the Shorts (flag), the writer's rule and check_script: the first beat's `say` must voice the stakes shown on screen at frame 0 (the hook question in the same words, or the hook figure's placeholder) within its first 8 words, and may not open with a warm-up phrase ('quick question', 'let's talk about', 'did you know', 'today', 'so'). Measure the first second on viewed-vs-swiped-away when available, else avgViewPct.",
+      "evidence": [
+        "videos/v-20261018-02/script.json: frame 0 shows 'Is your savings account keeping up?' while the voice says 'Quick question about your savings.' (1.8 s, no figure, no stakes); the stakes arrive only in beat 2",
+        "https://shortsfast.com/blog/faceless-shorts-hooks-retention-2026/ (lead with the viewer's question and a specific answer; cut greetings; first frame matches the promise)",
+        "https://ads.tiktok.com/business/en-US/creative-codes (hook–body–close; the hook carries the promise)",
+        "https://support.google.com/youtube/answer/12942217 (viewed vs swiped away measures the first choice)"
+      ],
+      "expectedEffect": "Fewer swipes in the first second, where Shorts lose most viewers; our best openers (v-20261018-03 '₹56.0 L in interest. On just one home loan.') already do this.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Low; a stricter opener could read formulaic if every video opens with a number, so questions count too.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
+    },
+    {
+      "id": "maths-real-return-price-rise",
+      "date": "2026-10-19",
+      "area": "template",
+      "title": "New maths kinds for inflation stories: real return and price rise",
+      "change": "Add two kinds to renderer/models/maths.py (and the number check's closed forms): `real_return` {amount, rate_pct, inflation_pct, years} → nominal final, real final in today's money ((1+r)/(1+i))^n, buying power lost, real rate; and `price_rise` {monthly, inflation_pct, years} → new monthly cost, extra per year, extra over N years. Document both in the long_story README's maths table with one example each.",
+      "evidence": [
+        "Tonight's feed has three inflation/bills topics (US CPI energy 20.4%, UK price cap, UK CPI event day); v-20261018-02 and v-20261016-03 told inflation without a kind for it",
+        "improvement/events/2026-10-21-uk-cpi.json has to fake a price rise with `lumpsum`"
+      ],
+      "expectedEffect": "Inflation, bills and savings-vs-inflation stories (a recurring global news theme: CPI releases monthly in four countries) get honest labels and charts instead of investment-growth wording.",
+      "confidence": "high",
+      "effort": "M",
+      "risk": "Low; new kinds only, existing ones unchanged.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "template",
+      "priority": "high"
     }
   ]
 }

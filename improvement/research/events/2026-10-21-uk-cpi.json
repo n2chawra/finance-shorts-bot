@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-21",
+  "event": "UK consumer price inflation, September 2026",
+  "announces": "CPI 12-month rate",
+  "source": "ONS",
+  "currency": "GBP",
+  "time": "07:00 London (11:30 IST)",
+  "where": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/september2026 (release listing: https://www.ons.gov.uk/releases/consumerpriceinflationukseptember2026timeseries)",
+  "before": {
+    "label": "UK consumer prices (CPI), change over 12 months to August",
+    "value": 3.1,
+    "unit": "percent",
+    "currency": "GBP",
+    "as_of": "2026-08-31",
+    "source": "ONS",
+    "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2026"
+  },
+  "scenarios": {
+    "rise": "headline beat: CPI up from 3.1%. Then: £100 of everyday shopping a year ago now costs £100 × (1 + CPI) (lumpsum, 1 year). A cast line: Rohan's pay rise of an assumed 3% is now behind prices. Context only, no forecast; the Bank of England decides on 5 Nov.",
+    "same": "headline beat: CPI unchanged at 3.1%. Myth bust: 'inflation stopped' is wrong; prices are still rising 3.1% a year, they just aren't speeding up. £100 basket computed as above.",
+    "fall": "headline beat: CPI down from 3.1%. Myth bust: falling inflation doesn't mean falling prices; the basket still costs more than a year ago, by less. £100 basket computed as above."
+  },
+  "maths": [
+    {
+      "name": "basket",
+      "kind": "lumpsum",
+      "amount": 100,
+      "rate_pct": 3.1,
+      "years": 1,
+      "note": "replace rate_pct with the announced CPI figure"
+    }
+  ],
+  "notes": "Copy the announced figure exactly from the ONS bulletin's main points. Use GBP. No supplier, bank or product named. If the bulletin isn't out by 12:30 IST, stop."
+}

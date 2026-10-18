@@ -1,10 +1,24 @@
 {
   "notifications": [
     {
+      "key": "research-event-files-blocked",
+      "severity": "warning",
+      "title": "Research can't write event-day files where the event-day run reads them",
+      "detail": "agents/research.md and generator/prompts/event_day.md use improvement/events/<date>-<slug>.json, but scripts/guard.py only lets research write improvement/research/*, so that branch would be blocked. Tonight's UK CPI file (21 Oct) is at improvement/research/events/2026-10-21-uk-cpi.json instead.",
+      "fix": "1. In scripts/guard.py, add \"improvement/events/*\" to the research allow-list (line 23), or change agents/research.md and generator/prompts/event_day.md to use improvement/research/events/. 2. If you schedule a UK CPI event-day run (below), copy the file to improvement/events/2026-10-21-uk-cpi.json on main first."
+    },
+    {
+      "key": "uk-cpi-event-day-2026-10-21",
+      "severity": "info",
+      "title": "Optional: a one-off event-day run for UK inflation on Wed 21 Oct",
+      "detail": "ONS publishes September CPI at 07:00 London = 11:30 IST. Without a one-off run, the research run that night puts it in the feed and the 22 Oct 04:07 video run makes the video, one day later.",
+      "fix": "1. Copy improvement/research/events/2026-10-21-uk-cpi.json to improvement/events/ on main. 2. claude.ai/code → Routines → New → one-off on 21 Oct at 11:45 IST, this repo, prompt: 'Read generator/prompts/event_day.md and follow it exactly.' 3. Nothing is needed for the Fed on 28 Oct: the decision lands at 23:30 IST, just before the 23:47 research run, which feeds it to the 04:07 video run."
+    },
+    {
       "key": "published-short-inconsistent-figures",
       "severity": "warning",
       "title": "A published Short shows the same amount two different ways",
-      "detail": "v-20261017-04 ('How much do impulse orders really cost you in 15 years?') shows '₹6.5 L gone' at 15.9 s but 'Put in ₹6.4 L' at 26.7 s, and 'Worth ₹16.3 L' at 26.7 s but '₹16.5 L' on the bar at 32.2 s. It was made by the old money_leak_meter template, which no longer exists, so new videos aren't affected; the improver has an adopt proposal (same-figure-same-text) for a check that stops this happening again.",
+      "detail": "v-20261017-04 ('How much do impulse orders really cost you in 15 years?') shows '₹6.5 L gone' at 15.9 s but 'Put in ₹6.4 L' at 26.7 s, and 'Worth ₹16.3 L' at 26.7 s but '₹16.5 L' on the bar at 32.2 s. It was made by the old money_leak_meter template, which no longer exists; the improver adopted a check (same-figure-same-text) so new videos can't do this.",
       "fix": "Only the owner handles uploads: in YouTube Studio, open that Short and either set it to Private/Unlisted or leave it up (the gap is a rounding and convention difference, not a wrong claim). Nothing to change in the repo."
     },
     {
