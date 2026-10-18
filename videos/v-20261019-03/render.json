@@ -1,0 +1,116 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 77142,
+  "duration_sec": 40,
+  "tempo": 1.0,
+  "style": {
+    "palette": "plum",
+    "genre": "cinematic",
+    "key": "C",
+    "bpm": 90
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.3,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "20.4%. That is how much US energy prices rose in one year.",
+        "start": 0.27,
+        "seconds": 4.25,
+        "window": 4.87,
+        "fill": 0.873
+      },
+      {
+        "scene": "headline",
+        "text": "But the official rate for all prices, in the same report, was just 3.7%.",
+        "start": 5.13,
+        "seconds": 4.63,
+        "window": 5.27,
+        "fill": 0.879
+      },
+      {
+        "scene": "rohan",
+        "text": "Then why does filling up my car feel so much worse?",
+        "start": 10.4,
+        "seconds": 2.37,
+        "window": 2.87,
+        "fill": 0.826
+      },
+      {
+        "scene": "basket",
+        "text": "Because the headline is an average basket. Your own rate depends on what you buy.",
+        "start": 13.27,
+        "seconds": 4.1,
+        "window": 4.7,
+        "fill": 0.872
+      },
+      {
+        "scene": "spend",
+        "text": "Say your energy, from fuel to heating and power, costs $3,000 a year.",
+        "start": 17.97,
+        "seconds": 4.08,
+        "window": 4.7,
+        "fill": 0.868
+      },
+      {
+        "scene": "case",
+        "text": "The headline rate adds $111. The energy average adds $612.",
+        "start": 22.67,
+        "seconds": 5.21,
+        "window": 5.83,
+        "fill": 0.894
+      },
+      {
+        "scene": "bill",
+        "text": "Fuel drove most of that jump. Your energy bill would become $3,612 a year.",
+        "start": 28.5,
+        "seconds": 4.87,
+        "window": 5.47,
+        "fill": 0.89
+      },
+      {
+        "scene": "lesson",
+        "text": "If you drive a lot, or heat with oil, your inflation is higher than the news says.",
+        "start": 33.97,
+        "seconds": 3.79,
+        "window": 4.43,
+        "fill": 0.856
+      },
+      {
+        "scene": "outro",
+        "text": "So what is in your basket?",
+        "start": 38.4,
+        "seconds": 1.08,
+        "window": 1.7,
+        "fill": 0.635
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3
+  },
+  "liveliness": {
+    "median": 1.355,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

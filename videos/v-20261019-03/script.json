@@ -1,0 +1,330 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261019-03",
+ "seed": 77142,
+ "story": "case_study",
+ "currency": "USD",
+ "style": {
+  "palette": "plum",
+  "genre": "cinematic",
+  "key": "C",
+  "bpm": 90
+ },
+ "feed_id": "2026-10-19-us-cpi-energy-sept",
+ "facts": [
+  {
+   "label": "US consumer prices, all items, change over 12 months to September",
+   "value": 3.7,
+   "unit": "percent",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "BLS",
+   "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+  },
+  {
+   "label": "US energy prices, change over 12 months to September",
+   "value": 20.4,
+   "unit": "percent",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "BLS",
+   "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+  }
+ ],
+ "maths": [
+  {
+   "name": "avg",
+   "kind": "lumpsum",
+   "amount": 3000,
+   "rate_pct": 3.7,
+   "years": 1
+  },
+  {
+   "name": "bill",
+   "kind": "lumpsum",
+   "amount": 3000,
+   "rate_pct": 20.4,
+   "years": 1
+  }
+ ],
+ "thumbnail": {
+  "who": "rohan",
+  "pose": "worried",
+  "expression": "shock",
+  "figure": "{fact2}",
+  "words": "Energy, one year",
+  "sub": "Headline says less"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "reveal",
+   "camera": "punch:fig",
+   "say": "{fact2}. That is how much US energy prices rose in one year.",
+   "events": {
+    "fig": {
+     "word": "rose"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "start",
+     "gain": 0.8
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "{fact2}",
+      "style": "hero",
+      "at": "start"
+     },
+     {
+      "text": "US energy prices, one year",
+      "style": "sub",
+      "at": "start"
+     }
+    ]
+   }
+  },
+  {
+   "id": "headline",
+   "scene": "headline",
+   "transition": "whip",
+   "say": "But the official rate for all prices, in the same report, was just {fact1}.",
+   "events": {
+    "fig": {
+     "word": "just"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fig"
+    }
+   ],
+   "params": {
+    "kicker": "NEWS",
+    "title": "All US prices",
+    "figure": "{fact1}",
+    "figureAt": "fig",
+    "label": "over the past year"
+   },
+   "camera": "push"
+  },
+  {
+   "id": "rohan",
+   "scene": "stage",
+   "speaker": "rohan",
+   "transition": "slide-up",
+   "say": "Then why does filling up my car feel so much worse?",
+   "events": {
+    "worse": {
+     "word": "worse"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "worried"
+       },
+       {
+        "at": "worse",
+        "pose": "shrug",
+        "expression": "confused",
+        "bubble": {
+         "icon": "?"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "basket",
+   "scene": "kinetic",
+   "speaker": "priya",
+   "transition": "zoom",
+   "say": "Because the headline is an average basket. Your own rate depends on what you buy.",
+   "events": {
+    "own": {
+     "word": "own"
+    }
+   },
+   "params": {
+    "mode": "box",
+    "world": "shop",
+    "lines": [
+     {
+      "text": "Headline: an average",
+      "at": "start"
+     },
+     {
+      "text": "Your basket is yours",
+      "at": "own"
+     }
+    ],
+    "presenter": {
+     "who": "priya",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "smirk"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "spend",
+   "scene": "bignumber",
+   "transition": "slide",
+   "camera": "push",
+   "say": "Say your energy, from fuel to heating and power, costs {bill_amount} a year.",
+   "events": {
+    "fig": {
+     "word": "costs"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fig"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Fuel, heating, power",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "{bill_amount}",
+      "style": "hero",
+      "at": "fig"
+     },
+     {
+      "text": "a year on energy",
+      "style": "sub",
+      "at": "fig"
+     }
+    ]
+   }
+  },
+  {
+   "id": "case",
+   "scene": "split",
+   "transition": "zoom",
+   "say": "The headline rate adds {avg_gains}. The energy average adds {bill_gains}.",
+   "events": {
+    "a": {
+     "word": "headline"
+    },
+    "b": {
+     "word": "average"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "a"
+    },
+    {
+     "kind": "boom",
+     "at": "b",
+     "gain": 0.7
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "At the headline rate",
+     "text": "{avg_gains}",
+     "value": "@avg.gains",
+     "at": "a"
+    },
+    "right": {
+     "label": "At the energy rate",
+     "text": "{bill_gains}",
+     "value": "@bill.gains",
+     "at": "b"
+    }
+   },
+   "camera": "punch:b"
+  },
+  {
+   "id": "bill",
+   "scene": "prop",
+   "transition": "zoom",
+   "say": "Fuel drove most of that jump. Your energy bill would become {bill_final} a year.",
+   "events": {
+    "fig": {
+     "word": "become"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "fig"
+    }
+   ],
+   "params": {
+    "world": "kitchen",
+    "prop": "receipt",
+    "text": "{bill_final}",
+    "at": "fig",
+    "kicker": "Energy, a year",
+    "presenter": {
+     "who": "sharma",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "think",
+       "expression": "thinking"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "lesson",
+   "scene": "kinetic",
+   "transition": "slide-up",
+   "say": "If you drive a lot, or heat with oil, your inflation is higher than the news says.",
+   "params": {
+    "mode": "type",
+    "lines": [
+     {
+      "text": "Drive a lot?"
+     },
+     {
+      "text": "Your inflation is higher"
+     }
+    ]
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "So what is in your basket?",
+   "params": {
+    "cta": "Work out your own inflation",
+    "follow": "Follow for one money question, settled",
+    "assumption": "Assumes {bill_amount} a year on energy (fuel, heating and power), rising at the September energy average."
+   }
+  }
+ ]
+}

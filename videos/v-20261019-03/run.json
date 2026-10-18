@@ -1,0 +1,176 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:22:35.363888+00:00",
+    "finishedAt": "2026-10-18T23:22:35.363888+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:22:36.259954+00:00",
+    "finishedAt": "2026-10-18T23:22:36.259954+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:22:43.428884+00:00",
+    "finishedAt": "2026-10-18T23:22:43.428884+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-18T23:23:26.495357+00:00",
+    "finishedAt": "2026-10-18T23:23:26.495357+00:00",
+    "notes": [
+      "Facts confirmed on the BLS page (https://www.bls.gov/news.release/cpi.nr0.htm, Sept 2026 CPI, released 14 Oct 2026): all items +3.7% (12 mo, NSA), energy +20.4%, core +2.6%, +0.6% m/m SA; all verify items match and the story is current.",
+      "Beats 'case' and 'bill', the outro assumption, plan description and title framing apply the 20.4% energy rate to a home's 'gas and power' bills. That is wrong: BLS Table A shows the 20.4% is driven by gasoline (+34.2%) and fuel oil (+74.2%); household energy services rose only 4.6% (electricity +4.4%, utility piped gas +5.0%). A home spending $3,000 a year on gas and power faces about $135-150 more, not $612, and would not pay $3,612. Fix: either make the bill gasoline/fuel (e.g. 'spend $3,000 a year on fuel for your car' at 34.2% or the energy rate clearly labelled as driven by fuel), or use the energy services rate for home bills (would need it added as a sourced fact).",
+      "Beat 'rohan' ('why do my bills feel so much worse?', set home, letter prop) and the description ('a home spending $3,000 a year on gas and power') frame utility bills as the item that rose 20.4%; reframe around fuel/gasoline or utilities' actual rate so the conclusion matches the data."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:23:48.005648+00:00",
+    "finishedAt": "2026-10-18T23:23:48.005648+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:23:48.866879+00:00",
+    "finishedAt": "2026-10-18T23:23:48.866879+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:24:12.413473+00:00",
+    "finishedAt": "2026-10-18T23:24:12.413473+00:00",
+    "notes": [
+      "Re-review after rewrite: facts re-confirmed on BLS Sept 2026 CPI release (bls.gov/news.release/cpi.nr0.htm, 14 Oct 2026): all items +3.7%, energy +20.4% (gasoline +34.2%, fuel oil +74.2%, energy services +4.6%), core +2.6%; verify list met, story current. The case now applies the energy average to a whole energy mix (fuel, heating, power), labelled as an assumption on the end card; 'fuel drove most of that jump' and the lesson (drive a lot / heat with oil) match the data; disclaimer present, no advice. Style note: 'bill' beat 'Your energy bill becomes $3,612' could read 'would become' to sound less like a forecast."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:24:25.201546+00:00",
+    "finishedAt": "2026-10-18T23:24:25.201546+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-18T23:24:26.362712+00:00",
+    "finishedAt": "2026-10-18T23:26:28.072010+00:00",
+    "notes": [
+      "median frame change 1.03 is below 1.2 — scenes finish animating and then hold a still picture",
+      "6 s with nothing moving (limit 4 s)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:26:49.237085+00:00",
+    "finishedAt": "2026-10-18T23:26:49.237085+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:26:50.095919+00:00",
+    "finishedAt": "2026-10-18T23:28:53.159612+00:00",
+    "notes": [
+      "40 s, plum/cinematic, peak -1.0 dB, mean -16.3 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-18T23:29:29.486994+00:00",
+    "finishedAt": "2026-10-18T23:29:29.486994+00:00",
+    "notes": [
+      "[scene] prop scene, beat 'spend' (prop: stack, fill 0.6), 18.0-22.6s (frames 19.5s, 20.0s, 21.5s): the figure $3,000 is drawn on top of the kicker pill 'Energy spending, a year', so both read as 'Energg$3,000a year' and neither is legible. The stack's figure label sits at the top of the stack, which at this fill reaches the kicker's fixed position; the scene should keep the figure clear of the kicker (a lower fill in the script may work around it)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:29:47.930871+00:00",
+    "finishedAt": "2026-10-18T23:29:47.930871+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:29:48.857293+00:00",
+    "finishedAt": "2026-10-18T23:31:43.627146+00:00",
+    "notes": [
+      "40 s, plum/cinematic, peak -1.0 dB, mean -16.3 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-18T23:32:33.786361+00:00",
+    "finishedAt": "2026-10-18T23:32:33.786361+00:00",
+    "notes": [
+      "[script] beat 'spend' (bignumber), about 21.0s, frame pulled from the mp4: the hero shows '$0' for about 0.9s before snapping to '$3,000'. The hero line has \"value\": 0, so counted() counts up to 0 and then jumps to the final text. Use \"value\": \"@bill.amount\" so it counts up to $3,000, or drop the value key for a static figure. (Also [scene]: BigNumberScene could treat value 0 as no count-up.)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:32:50.646979+00:00",
+    "finishedAt": "2026-10-18T23:32:50.646979+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:32:51.515716+00:00",
+    "finishedAt": "2026-10-18T23:34:44.266779+00:00",
+    "notes": [
+      "40 s, plum/cinematic, peak -1.0 dB, mean -16.3 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:35:07.218686+00:00",
+    "finishedAt": "2026-10-18T23:35:07.218686+00:00",
+    "notes": [
+      "Clean 40s Short: 20.4% hook, BLS 3.7% news card, static $3,000 bignumber (19-22.4s from mp4, no overlap, no $0), $111/$612 split, $3,612 receipt, disclaimer on end card; no overlaps or cut-offs, code checks empty, audio -1/-16.3 dB."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-18T23:35:19.740859+00:00",
+    "finishedAt": "2026-10-18T23:35:19.740859+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
