@@ -8,12 +8,12 @@ import { useState } from "react";
 import { Button, Card, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { useManualUpload } from "@/lib/queries";
-import type { VideoDetail } from "@/lib/schemas";
+import type { Video } from "@/lib/schemas";
 import { youtubeIdFrom } from "@/lib/youtube-link";
 
 // ---------------- copy helpers ----------------
 
-function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) {
+export function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) {
   const [done, setDone] = useState(false);
   const toast = useToast();
   const copy = async () => {
@@ -56,12 +56,16 @@ function Field({ icon: Icon, label, count, max, actions, children }: {
   );
 }
 
-/** Title, description and tags laid out the way YouTube Studio asks for them, each one click to copy. */
-export function YouTubeDetails({ v }: { v: VideoDetail }) {
+/** What to paste into YouTube Studio: the description plus only the hashtags it doesn't already contain. */
+export function uploadText(v: Pick<Video, "description" | "tags">) {
   const hashtags = v.tags.map((t) => `#${t}`).join(" ");
-  // add only the hashtags the description does not already contain
   const missing = v.tags.filter((t) => !v.description.toLowerCase().includes(`#${t.toLowerCase()}`)).map((t) => `#${t}`).join(" ");
-  const description = missing ? `${v.description}\n\n${missing}` : v.description;
+  return { hashtags, missing, description: missing ? `${v.description}\n\n${missing}` : v.description };
+}
+
+/** Title, description and tags laid out the way YouTube Studio asks for them, each one click to copy. */
+export function YouTubeDetails({ v }: { v: Video }) {
+  const { hashtags, missing, description } = uploadText(v);
   return (
     <Card title="Copy into YouTube Studio" icon={MonitorPlay} description="Title, description and tags, ready to paste when you upload by hand">
       <div className="flex flex-col gap-3">
@@ -101,7 +105,7 @@ const localNow = () => {
 };
 
 /** "I uploaded this myself": takes the YouTube link so views and likes are tracked like any other upload. */
-export function MarkUploaded({ v }: { v: VideoDetail }) {
+export function MarkUploaded({ v }: { v: Pick<Video, "id" | "status"> }) {
   const [open, setOpen] = useState(false);
   const [link, setLink] = useState("");
   const [when, setWhen] = useState(localNow);

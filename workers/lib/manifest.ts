@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-const Topic = z.object({ title: z.string().min(1), category: z.string().min(1) });
+/** `feed_id`: the research or Scout feed topic the video was made from, if any. */
+const Topic = z.object({ title: z.string().min(1), category: z.string().min(1), feed_id: z.string().optional() });
 
 /** Shorts are v-YYYYMMDD-NN, long-form videos L-YYYYMMDD-NN. */
 export const VIDEO_ID = /^(v|L)-\d{8}-\d{2,}$/;

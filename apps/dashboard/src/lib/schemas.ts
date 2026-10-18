@@ -12,6 +12,11 @@ export const StyleSchema = z.object({
   key: z.string(),
   bpm: z.number(),
   voice: z.string().nullish(),   // Kokoro voice name for a narrated video
+  /** where the video came from (workers/lib/origin.ts): its feed topic and urgency */
+  source: z.object({
+    feedId: z.string().nullable(), kind: z.string().nullable(), feedPriority: z.string().nullable(),
+    urgent: z.object({ level: z.enum(["breaking", "trending"]), until: z.string() }).nullable(),
+  }).nullish(),
 });
 
 export const QaCheckSchema = z.object({

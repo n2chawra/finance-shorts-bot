@@ -19,6 +19,7 @@ import { releaseAssetUrl, repoSlug } from "./lib/github.ts";
 import { Manifest, type ShippedManifest } from "./lib/manifest.ts";
 import { istDay } from "./lib/publishing.ts";
 import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotifications, snapshotDocs } from "./lib/agents-sync.ts";
+import { type FeedTopic, loadFeeds, sourceOf } from "./lib/origin.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -66,7 +67,7 @@ function runRows(videoId: string, steps: ShippedManifest["agentRuns"]): Prisma.A
 }
 
 /** Insert one manifest. Returns what happened. */
-async function ingestOne(prisma: PrismaClient, file: string, repo: string | null): Promise<"queued" | "failed" | "waiting"> {
+async function ingestOne(prisma: PrismaClient, file: string, repo: string | null, feeds: Map<string, FeedTopic>): Promise<"queued" | "failed" | "waiting"> {
   const m = Manifest.parse(readJson(file));
   const dir = path.dirname(file);
   const scriptFile = path.join(dir, "script.json");
@@ -75,7 +76,7 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
 
   if (m.status === "failed") {
     await prisma.$transaction(async (tx) => {
-      const topic = await tx.topic.create({ data: m.topic });
+      const topic = await tx.topic.create({ data: { title: m.topic.title, category: m.topic.category } });
       await tx.video.create({
         data: {
           id: m.id, templateId: m.template, topicId: topic.id, status: "failed", failReason: m.failReason, script, style: {},
@@ -92,10 +93,10 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
 
   await prisma.$transaction(async (tx) => {
     const queuePosition = await queueSlot(tx, m);
-    const topic = await tx.topic.create({ data: m.topic });
+    const topic = await tx.topic.create({ data: { title: m.topic.title, category: m.topic.category } });
     await tx.video.create({
       data: {
-        id: m.id, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {} }, fileUrl,
+        id: m.id, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {}, source: sourceOf(m, feeds) }, fileUrl,
         thumbnailUrl: `videos/${m.id}/thumbnail.png`, durationSec: m.durationSec, title: m.title, description: m.description,
         tags: m.hashtags.map((h) => h.replace(/^#/, "")), hookStyle: m.hookStyle, cta: m.cta,
         queuePosition, createdAt,
@@ -116,6 +117,19 @@ export async function queueSlot(tx: Prisma.TransactionClient, m: ShippedManifest
   }
   const last = await tx.video.aggregate({ _max: { queuePosition: true } });
   return (last._max.queuePosition ?? 0) + 1;
+}
+
+/** Videos waiting to be posted that were ingested before their source was recorded get it from
+ * their manifest, so the posting plan can say where every one came from. */
+async function backfillSources(prisma: PrismaClient, feeds: Map<string, FeedTopic>): Promise<void> {
+  for (const v of await prisma.video.findMany({ where: { status: { in: ["queued", "scheduled"] }, deletedAt: null }, select: { id: true, style: true } })) {
+    const style = (v.style ?? {}) as Record<string, unknown>;
+    const file = path.join(ROOT, "videos", v.id, "manifest.json");
+    if (style.source || !existsSync(file)) continue;
+    const m = Manifest.safeParse(readJson(file));
+    if (!m.success || m.data.status !== "qa_passed") continue;
+    await prisma.video.update({ where: { id: v.id }, data: { style: { ...style, source: sourceOf(m.data, feeds) } as Prisma.InputJsonValue } });
+  }
 }
 
 async function syncTemplateWork(prisma: PrismaClient): Promise<void> {
@@ -169,13 +183,14 @@ async function main(): Promise<void> {
   const prisma = new PrismaClient();
   try {
     await syncTemplates(prisma);
+    const feeds = loadFeeds(ROOT);
     const have = new Set((await prisma.video.findMany({ select: { id: true } })).map((v) => v.id));
     const result = { queued: [] as string[], failed: [] as string[], waiting: [] as string[], invalid: [] as string[] };
     for (const file of manifestPaths()) {
       const id = path.basename(path.dirname(file));
       if (have.has(id)) continue;
       try {
-        result[await ingestOne(prisma, file, repo)].push(id);
+        result[await ingestOne(prisma, file, repo, feeds)].push(id);
       } catch (e) {
         result.invalid.push(id);
         console.error(`::error::${id}: ${e instanceof Error ? e.message.split("\n")[0] : e}`);
@@ -184,6 +199,7 @@ async function main(): Promise<void> {
     for (const t of await prisma.video.groupBy({ by: ["templateId"], _max: { createdAt: true } })) {
       await prisma.template.update({ where: { id: t.templateId }, data: { lastUsedAt: t._max.createdAt } });
     }
+    await backfillSources(prisma, feeds);
     await syncTemplateWork(prisma);
     await seedSettings(prisma);
 

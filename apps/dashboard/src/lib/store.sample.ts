@@ -195,11 +195,14 @@ function build(): Store {
     const art = sampleArt(tpl.id) ?? `/sample/${OLD[0]!.id}`;
     const failedAtQa = failAt === "qa_review", failedAtFact = failAt === "fact_review";
     videos.push({
-      id, templateId: tpl.id, topic: { title, category }, status, format: "short", failReason, title,
+      id, templateId: tpl.id, topic: { title, category }, status, format: queuePosition === 5 || queuePosition === 9 ? "long" : "short", failReason, title,
       description: `${title}. ${settings.disclaimer} #shorts #personalfinance #${category.replace("_", "")}`,
       tags: ["shorts", "personalfinance", category.replace("_", ""), "india"],
       durationSec: tpl.durationSec,
-      style: { palette: PALETTES[Math.floor(r() * PALETTES.length)], genre: GENRES[Math.floor(r() * GENRES.length)], key: KEYS[Math.floor(r() * KEYS.length)], bpm: 80 + Math.floor(r() * 41), voice: id.endsWith("1") || id.endsWith("3") ? "hf_alpha" : null },
+      style: { palette: PALETTES[Math.floor(r() * PALETTES.length)], genre: GENRES[Math.floor(r() * GENRES.length)], key: KEYS[Math.floor(r() * KEYS.length)], bpm: 80 + Math.floor(r() * 41), voice: id.endsWith("1") || id.endsWith("3") ? "hf_alpha" : null,
+        // the first in the queue came from a trending feed topic, the third from a news one
+        source: queuePosition === 1 ? { feedId: "sample-upi-fee", kind: "trend", feedPriority: "trending", urgent: { level: "trending", until: new Date(now.getTime() + DAY_MS).toISOString().slice(0, 10) } }
+          : queuePosition === 3 ? { feedId: "sample-cpi-sept", kind: "news", feedPriority: "high", urgent: null } : null },
       thumbnailUrl: `${art}/thumbnail.png`, previewUrl: `${art}/preview.png`, fileUrl: `${art}/video.mp4`,
       createdAt: createdAt.toISOString(), queuePosition, upload,
       totals: stats.length
