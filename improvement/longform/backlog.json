@@ -1,4 +1,71 @@
 {
   "note": "Long-form craft findings and bugs, ranked. Written by Scout; the improver applies recipe, scene and design items, Studio follows script items.",
-  "items": []
+  "items": [
+    {
+      "id": "2026-10-18-maths-loan-tenure",
+      "kind": "craft",
+      "title": "Add a loan_prepay maths kind (reduce EMI vs reduce tenure, and tenure after a rate rise)",
+      "detail": "renderer/models/maths.py has emi with a fixed months count, so no long video can show 'the loan ends N months earlier' or 'the tenure stretched by N months'. Add kind loan_prepay: inputs amount, rate_pct, months, prepay, prepay_month (and optional new_rate_pct). Values/figures: emi, interest_base, interest_reduce_emi, emi_reduced, months_reduce_tenure (closed form n = -ln(1 - rB/P)/ln(1+r) on the balance B at prepay_month), interest_reduce_tenure, saved_* for both, plus a balance series for the chart. Recompute independently in the number check. Unblocks topics 2026-10-18-prepay-emi-or-tenure and the tenure half of 2026-10-18-repo-hike-your-emi. Done when a checked example script uses it and number-check passes.",
+      "where": "template",
+      "route": "template",
+      "priority": "high",
+      "found": "2026-10-18",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-18-maths-sip-stepup",
+      "kind": "craft",
+      "title": "Add a sip_stepup maths kind (SIP raised by X% every year)",
+      "detail": "Feed topic 2026-10-16-sip-stepup (priority high) and 2026-10-18-lifestyle-inflation both need a yearly step-up, which the sip kind cannot express. Add kind sip_stepup: monthly, step_pct, rate_pct, years; values final, invested, gains, final_flat (same start, no step-up) and a yearly series for both, for the chart scene's series/series2. Closed form per year (sum of yearly annuity blocks), recomputed independently in the number check. Done when a checked example script renders the two-line chart in stills.",
+      "where": "template",
+      "route": "template",
+      "priority": "high",
+      "found": "2026-10-18",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-18-chapter-recap-card",
+      "kind": "craft",
+      "title": "End each chapter with a one-line recap card holding its key figure",
+      "detail": "Teacher-style channels (CA Rachana Ranade's long videos) keep viewers through long explanations by closing each section with the one thing to remember. In long_story scripts, make the last beat of each chapter a bignumber with a kicker line 'So far' and the chapter's one computed figure, 3-4 s, before the next chapter card. A/B via a script flag so improvement.evaluate can compare average % viewed at chapter boundaries. Works if retention dips at chapter cards shrink in the experiment arm.",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-10-18",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-18-real-moment-hook",
+      "kind": "craft",
+      "title": "Open long videos on a concrete moment the viewer has lived (an SMS, a payslip, an app button)",
+      "detail": "The channels that win long-form here (Labour Law Advisor's mis-selling and EPF videos, this week's repo/EMI videos) open on the viewer's own situation, not on a concept. In the first beat of every long_story script, put a cast member in one recognisable moment (bank SMS 'rate revised', appraisal letter, the prepay button in the app) with the rupee stake as a computed figure on screen within 5 s; the concept explanation comes after the first chapter card. Studio applies it when writing; check it in the Saturday review of the first 30 s.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-18",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-18-inputs-form-scene",
+      "kind": "idea",
+      "title": "New scene: an 'inputs' form that fills itself in before a calculation",
+      "detail": "Calculator-led channels (Asset Yogi's spreadsheet walk-throughs) earn trust by showing the inputs before the answer. We have no scene for that: add an inputs scene to remotion/src/scenes showing 3-4 labelled fields (amount, rate, years, step-up) typing in one by one from the beat's maths figures, with an 'assumption' tag on the rate, then handing off to split/chart. All values come from the timeline figures, never typed. Behind a flag; look at it in stills first. Works if it passes the layout probe and liveliness, and % viewed holds through the setup beats in the experiment arm.",
+      "where": "scene",
+      "route": "template",
+      "priority": "normal",
+      "found": "2026-10-18",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-18-feed-template-name",
+      "kind": "bug",
+      "title": "Feed topics named a removed template (long_explainer)",
+      "detail": "The four 2026-10-16 topics listed templates ['long_explainer'], which was removed with the Pillow engine; the only long template is long_story. Fixed today in improvement/longform/topics.json (Scout's file). If generator.run state matches topics by template, check it ignores unknown names rather than silently dropping topics. No action needed unless that check fails.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-18",
+      "status": "open"
+    }
+  ]
 }

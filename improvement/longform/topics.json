@@ -9,7 +9,7 @@
       "kind": "evergreen",
       "priority": "high",
       "templates": [
-        "long_explainer"
+        "long_story"
       ],
       "angle": "Whether buying beats renting once you count the interest, not just the EMI",
       "why_now": "The question every salaried Indian in their thirties argues about, and almost nobody runs the numbers on properly.",
@@ -44,7 +44,7 @@
       "kind": "evergreen",
       "priority": "high",
       "templates": [
-        "long_explainer"
+        "long_story"
       ],
       "angle": "Whether the NPS tax break is worth the lock-in and the annuity rule",
       "why_now": "NPS is pushed hard every March for the tax deduction, and the trade-offs are rarely explained.",
@@ -79,7 +79,7 @@
       "kind": "evergreen",
       "priority": "high",
       "templates": [
-        "long_explainer"
+        "long_story"
       ],
       "angle": "How many months of expenses, where to keep it, and what it costs you to hold it",
       "why_now": "Everyone repeats 'six months' without checking what it costs to hold that much in cash.",
@@ -112,7 +112,7 @@
       "kind": "evergreen",
       "priority": "high",
       "templates": [
-        "long_explainer"
+        "long_story"
       ],
       "angle": "What a yearly increase does to the final number, compared with starting bigger",
       "why_now": "A step-up is the easiest change a salaried investor can make, and the effect is dramatic and easy to compute.",
@@ -135,6 +135,161 @@
       "sources": [],
       "found": "2026-10-16",
       "expires": "2027-10-16",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-18-repo-hike-your-emi",
+      "format": "long",
+      "title": "RBI raised the repo rate: what it really does to your home loan EMI",
+      "category": "home_loan",
+      "kind": "trend",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "When the hike reaches your loan, how much it costs over the full term, and the two ways to absorb it (bigger EMI or longer tenure)",
+      "why_now": "MPC raised repo 25 bps to 5.50% on 7 Oct 2026, the first hike since Feb 2023, and moved to 'calibrated tightening'. Floating-rate borrowers will see it at their next reset; repo/EMI videos are among this week's fastest-growing long videos in the niche (Sagar Sinha, Mumbai Tak). For 25-40 salaried borrowers.",
+      "outline": [
+        "hook: Rohan's bank SMS: 'your loan rate is revised'. The extra interest over the remaining term, as one number",
+        "chapter 1, what happened: repo up a quarter point; what the repo rate is, in one picture (a tap upstream of every bank)",
+        "how it reaches a floating loan: the external benchmark, the bank's spread, the reset date (Sharma has lived through 2022-23)",
+        "the setup: a ₹50 lakh, 20-year loan at 8.50% vs 8.75%",
+        "split: old EMI vs new EMI, the monthly difference looks small",
+        "reveal: the same difference over 240 months, total interest side by side",
+        "chapter 2, the trap: banks often stretch the tenure instead of raising the EMI; calendar flipping the extra months",
+        "towers: total interest if the EMI rises vs if the tenure stretches",
+        "Priya: why the 'free' option is the expensive one",
+        "chapter 3, the other side: savers; an FD at a higher rate, lumpsum over five years",
+        "what to do: check your reset date, ask the bank which option they applied, choose EMI over tenure if the budget allows",
+        "checklist recap, three steps",
+        "end"
+      ],
+      "maths": "two emi (same amount and months, 8.50% vs 8.75%) for the EMI rise and total interest; a third emi with the higher rate at a longer months count is NOT computable yet (tenure needs solving) - either show only the EMI-rise path, or wait for the loan_prepay/tenure kind (backlog 2026-10-18-maths-loan-tenure); two lumpsum for the FD side",
+      "facts_hint": "repo 5.25% -> 5.50% on 7 Oct 2026; confirm on the RBI monetary policy statement at rbi.org.in before using as a sourced fact",
+      "verify": [
+        "Repo rate 5.50% from 5.25% on 7 Oct 2026, on rbi.org.in",
+        "That repo-linked (EBLR) home loans reset at least every three months per RBI rules",
+        "Typical home loan rates near 8.5% at the time of writing",
+        "That banks may extend tenure rather than raise EMI on a rate rise, and RBI's 2023 rule letting borrowers choose"
+      ],
+      "sources": [
+        "https://www.scconline.com/blog/post/2026/10/09/rbi-hikes-repo-rate-to-5-50-percent-october-2026/",
+        "https://www.brickworkratings.com/Research/Brickwork_Ratings_RBI_MPC_Meet_Outcome_October_2026.pdf"
+      ],
+      "found": "2026-10-18",
+      "expires": "2026-11-01",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-18-prepay-emi-or-tenure",
+      "format": "long",
+      "title": "Prepaying your home loan: cut the EMI or cut the years?",
+      "category": "home_loan",
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "With a bonus in hand, which prepayment choice saves more, by how much, and when the 'worse' one is still right",
+      "why_now": "A decision every home-loan holder faces at bonus time, searched all year ('reduce EMI or tenure'); more pressing now that rates are rising. Fintech and lender blogs answer it with tables; nobody shows it as a story.",
+      "outline": [
+        "hook: Rohan gets a ₹3 lakh bonus. Two buttons on the bank's app; one saves lakhs more",
+        "chapter 1, the loan: ₹40 lakh, 20 years; why the first years are mostly interest (the interest monster eating the early EMIs)",
+        "choice A, cut the EMI: same years, smaller EMI, interest saved",
+        "choice B, cut the years: same EMI, the calendar stops early; interest saved",
+        "towers: A vs B interest saved, the reveal",
+        "Sharma: 'I prepaid in year fifteen once. It barely mattered' - timing chart, the same prepayment in year 2 vs year 12",
+        "chapter 2, when A is right: a tight budget, or investing the freed EMI (a sip at 12% vs the loan rate)",
+        "split: B's interest saved vs A plus the freed EMI invested",
+        "the catch: fixed-rate loans can charge prepayment fees; floating ones for individuals generally cannot",
+        "checklist: what to ask the bank before you prepay",
+        "recap",
+        "end"
+      ],
+      "maths": "emi for the base loan and for the reduced-EMI case (smaller amount, same months); the reduced-tenure months and interest need a new loan_prepay kind (backlog 2026-10-18-maths-loan-tenure); one sip for the invested freed EMI. Not usable until that kind exists unless Studio tells only choice A plus the sip.",
+      "verify": [
+        "RBI rule that individual floating-rate home loans carry no prepayment charges",
+        "Typical fixed-rate prepayment charges"
+      ],
+      "sources": [
+        "https://www.finnovate.in/learn/blog/reduce-emi-vs-reduce-tenure-for-loan-prepayment",
+        "https://homefirstindia.com/blog/article/reduce-emi-or-reduce-tenure-for-home-loan-prepayment/"
+      ],
+      "found": "2026-10-18",
+      "expires": "2027-10-18",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-18-lifestyle-inflation",
+      "format": "long",
+      "title": "Your salary went up. Why do you still feel broke?",
+      "category": "inflation",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "How spending that rises with every raise (plus inflation) eats the raise, and what saving half of each hike is worth over 15 years",
+      "why_now": "'Why a normal life now feels like a luxury' was the fastest-growing long video in our niche this week (~13.6k views/hour); the feeling is universal for 25-35 salaried viewers and fully computable.",
+      "outline": [
+        "hook: Rohan's salary doubled in eight years. His savings didn't move. The one number that explains it",
+        "chapter 1, the treadmill (the one picture): every raise speeds up the treadmill, he stays in place",
+        "what ₹40,000 of monthly expenses costs in 10 and 15 years at 6% inflation (bignumber)",
+        "Rohan upgrades: the flat, the car EMI, the deliveries; each raise spent the month it lands",
+        "Priya's rule: half of every raise goes to a SIP before it hits the account",
+        "chapter 2, a year of it: the first hike invested, small",
+        "chart: Priya's SIP pot over 15 years vs Rohan's zero",
+        "reveal: the gap at year 15",
+        "Sharma: 'the raise is real, the extra lifestyle is a loan from your future self'",
+        "chapter 3, what to do: automate the split on appraisal day; checklist",
+        "recap",
+        "end"
+      ],
+      "maths": "a lumpsum at the inflation rate for future expenses (₹40,000 at 6% over 10 and 15 years); a sip for the invested half-raise (e.g. ₹5,000 at 11% for 15 years; a true yearly step-up needs the sip_stepup kind, backlog 2026-10-18-maths-sip-stepup, so tell it as one invested hike until then)",
+      "verify": [
+        "CPI inflation range in recent years from MoSPI, to justify 6% as an assumption",
+        "That 11% equity return is stated as an assumption"
+      ],
+      "sources": [
+        "https://resources.instahyre.com/news/is-a-six-figure-salary-no-longer-enough-for-indias-middle-class/"
+      ],
+      "found": "2026-10-18",
+      "expires": "2027-10-18",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-18-30k-salary-plan",
+      "format": "long",
+      "title": "Earning ₹30,000 a month: a money plan that actually adds up",
+      "category": "budgeting",
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Advice built for ₹1 lakh salaries breaks at ₹30,000; what a realistic split, a small SIP and a starter emergency fund are worth",
+      "why_now": "A warikoo video on exactly this pain is growing fast this week (~3.9k views/hour). Most of our audience starts here; we take the subject, not the treatment: our version is the numbers.",
+      "outline": [
+        "hook: '50-30-20' on ₹30,000 leaves ₹6,000. What ₹2,000 a month really becomes",
+        "chapter 1, the honest budget: rent and home first (Rohan's actual month, towers of where it goes)",
+        "the first ₹1,000: an emergency buffer before investing (calendar flipping the months to three months of expenses)",
+        "chapter 2, the small SIP: ₹2,000 a month at 11% for 20 years (snowball)",
+        "reveal: final vs invested, the ratio",
+        "Sharma: 'I started with ₹500. Starting mattered more than the amount'",
+        "split: start now with ₹2,000 vs wait five years and start with ₹4,000",
+        "the traps at this salary: buy-now-pay-later, card minimum due (quick card_min_due beat)",
+        "chapter 3, when the salary grows: raise the SIP with it",
+        "checklist: three things for this month",
+        "recap",
+        "end"
+      ],
+      "maths": "sip ₹2,000 at 11% for 20 years; two sip for start-now vs start-later; card_min_due for the trap beat; plain arithmetic of the budget split as code figures",
+      "verify": [
+        "That the 50-30-20 rule is described as a common rule of thumb, not an official guideline"
+      ],
+      "sources": [],
+      "found": "2026-10-18",
+      "expires": "2027-10-18",
       "status": "new"
     }
   ]

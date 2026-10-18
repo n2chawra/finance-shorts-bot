@@ -1,0 +1,20 @@
+{
+  "agent": "scout",
+  "day": "2026-10-18",
+  "startedAt": "2026-10-18T04:08:27Z",
+  "finishedAt": "2026-10-18T04:12:25Z",
+  "summary": "Sunday competitor study (Labour Law Advisor, CA Rachana Ranade, Asset Yogi, Zero1) and 4 new long topics, led by the RBI repo hike's effect on home loan EMIs and lifestyle inflation. Routed 6 backlog items, two of them new maths kinds that unblock this week's top niche subjects.",
+  "decision": "acted",
+  "why": "The feed had 4 topics and Studio has made 0 of 2 long videos this week. This week's fastest-growing niche long videos are about lifestyle inflation (~13.6k views/h), the ₹30k salary (~3.9k/h), step-up SIPs and repo/EMI. The repo hike (5.25% to 5.50% on 7 Oct) is fresh and computable.",
+  "findings": [
+    {"title": "Step-up SIP and loan tenure can't be computed yet", "detail": "No sip_stepup or loan_prepay maths kind exists; routed as high-priority template items for the improver.", "link": "improvement/longform/backlog.json"},
+    {"title": "Competitors open on the viewer's own moment", "detail": "Labour Law Advisor-style hooks: open on a bank SMS or app button with the rupee stake, then the concept. Routed adopt for Studio.", "link": "https://www.outlookmoney.com/amp/story/spotlight/how-rishabh-jain-built-indias-biggest-finance-youtube-channel-labour-law-advisor-8817"},
+    {"title": "RBI hiked repo to 5.50%", "detail": "First hike since Feb 2023, stance 'calibrated tightening'; added as a trend long topic expiring 2026-11-01.", "link": "https://www.scconline.com/blog/post/2026/10/09/rbi-hikes-repo-rate-to-5-50-percent-october-2026/"}
+  ],
+  "changes": [
+    {"title": "4 long topics added", "detail": "repo-hike-your-emi, lifestyle-inflation, prepay-emi-or-tenure, 30k-salary-plan; old topics' template name fixed to long_story", "branch": "agent/scout/2026-10-18", "experiment": null},
+    {"title": "6 backlog items", "detail": "2 maths kinds (template), recap card (experiment), lived-moment hook (adopt), inputs scene (template), template-name fix (adopt)", "branch": "agent/scout/2026-10-18", "experiment": null}
+  ],
+  "nextCheck": "2026-10-19",
+  "links": [{"label": "Report", "url": "improvement/longform/2026-10-18.md"}]
+}
