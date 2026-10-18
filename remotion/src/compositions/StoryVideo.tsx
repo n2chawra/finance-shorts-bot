@@ -17,11 +17,26 @@ import { cameraTransform, TRANSITION_FRAMES, transitionStyle, Vignette } from ".
 import type { SceneProps } from "../scenes/kit";
 import { ChapterScene, ChecklistScene, EndScene, StageScene } from "../scenes/stage";
 import { BigNumberScene, CalendarScene, ChartScene, HeadlineScene, MonsterScene, RevealScene, SnowballScene, SplitScene, StatementScene, TowersScene } from "../scenes/data";
+import { EquationScene, KineticScene, PropScene, ScreenScene } from "../scenes/world";
+import { Grain } from "../design/texture";
+import { Sikka } from "../cast/Sikka";
 
 export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   stage: StageScene, chapter: ChapterScene, checklist: ChecklistScene, end: EndScene, headline: HeadlineScene,
   bignumber: BigNumberScene, reveal: RevealScene, statement: StatementScene, monster: MonsterScene,
   snowball: SnowballScene, calendar: CalendarScene, split: SplitScene, chart: ChartScene, towers: TowersScene,
+  prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene,
+};
+
+/** The channel's mark in the top-left corner of every frame: Sikka, small, never text. */
+const LogoBug: React.FC<{ w: number; h: number }> = ({ w, h }) => {
+  const size = h > w ? 74 : 58, m = h > w ? 44 : 36;
+  return (
+    <svg width={size + m * 2} height={size + m * 2} style={{ position: "absolute", left: 0, top: 0, opacity: 0.85 }} data-probe="skip">
+      <circle cx={m + size / 2} cy={m + size / 2} r={size / 2 + 6} fill="rgba(0,0,0,0.25)" />
+      <Sikka x={m + size / 2} y={m + size / 2} size={size} expression="happy" />
+    </svg>
+  );
 };
 
 export type StoryProps = { timeline: Timeline; probe?: boolean };   // probe: log text boxes (fx/probe.tsx)
@@ -65,6 +80,8 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe }) => {
         <BeatView beat={cur} tl={timeline} frame={frame} fps={fps} />
       </AbsoluteFill>
       <Vignette />
+      <Grain />
+      {cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} />}
       {probe && <LayoutProbe frame={frame} />}
     </AbsoluteFill>
   );

@@ -1,0 +1,69 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "id": "v-sample-kit",
+  "seed": 5209,
+  "story": "trap_alert",
+  "currency": "USD",
+  "narrator": "am_michael",
+  "style": { "palette": "sky", "genre": "pop", "key": "D", "bpm": 112 },
+  "maths": [
+    { "name": "card", "kind": "card_min_due", "amount": 1200, "rate_pct_month": 1.9, "min_due_pct": 3, "min_due_floor": 25 }
+  ],
+  "beats": [
+    { "id": "hook", "scene": "prop", "camera": "punch:price",
+      "say": "This phone costs {card_amount}. Pay only the minimum, and it costs {card_total_paid}.",
+      "events": { "price": { "word": "minimum" } },
+      "sfx": [ { "kind": "boom", "at": "price", "gain": 0.8 } ],
+      "params": { "world": "shop", "prop": "tag", "label": "PHONE", "text": "{card_amount}", "at": "start",
+        "kicker": "One phone, two prices", "sub": "{card_total_paid} on minimums",
+        "presenter": { "who": "rohan", "acting": [ { "sec": 0, "pose": "phone", "prop": "phone", "expression": "happy" },
+          { "at": "price", "pose": "shrug", "expression": "shock", "bubble": { "icon": "!" } } ] } } },
+
+    { "id": "trap", "scene": "kinetic", "transition": "whip",
+      "say": "Here is how the trap works.",
+      "params": { "mode": "type", "lines": [ { "text": "The minimum payment" }, { "text": "is a trap" } ] } },
+
+    { "id": "anvil", "scene": "prop", "transition": "zoom", "speaker": "priya",
+      "say": "Every month, {card_rate_month} interest lands on what you still owe.",
+      "events": { "rate": { "word": "interest" } },
+      "sfx": [ { "kind": "boom", "at": "rate", "gain": 0.8 } ],
+      "params": { "world": "kitchen", "prop": "anvil", "text": "{card_rate_month}", "at": "rate",
+        "kicker": "Interest, every month", "sub": "on what you still owe",
+        "presenter": { "who": "priya", "acting": [ { "sec": 0, "pose": "point", "expression": "smirk" } ] } } },
+
+    { "id": "year", "scene": "screen", "transition": "slide-up",
+      "say": "After a year, you have paid {card_paid_year1}. And you still owe {card_owed_year1}.",
+      "events": { "paid": { "word": "paid" }, "owed": { "word": "owe" } },
+      "sfx": [ { "kind": "pop", "at": "paid" }, { "kind": "pop-high", "at": "owed" } ],
+      "params": { "world": "office", "city": "newyork", "title": "The balance barely moves",
+        "series": "@card.balance", "series2": "@card.paid", "label1": "Still owed", "label2": "Paid",
+        "callouts": [ { "at": "owed", "x": 0.15, "text": "{card_owed_year1}" } ],
+        "presenter": { "who": "sharma", "acting": [ { "sec": 0, "pose": "think", "expression": "thinking" } ] } } },
+
+    { "id": "total", "scene": "equation", "transition": "zoom",
+      "say": "So the phone costs {card_amount}, plus {card_interest} in interest.",
+      "events": { "phone": { "word": "phone" }, "interest": { "word": "plus" } },
+      "sfx": [ { "kind": "pop", "at": "phone" }, { "kind": "boom", "at": "interest", "gain": 0.7 } ],
+      "params": { "title": "What it really costs", "ops": [ "+" ],
+        "items": [ { "icon": "card", "text": "{card_amount}", "label": "the phone", "at": "phone" },
+                   { "icon": "cash", "text": "{card_interest}", "value": "@card.interest", "label": "interest", "at": "interest" } ] } },
+
+    { "id": "years", "scene": "prop", "transition": "slide",
+      "say": "And it takes {card_years} years to pay it off.",
+      "events": { "years": { "word": "takes" } },
+      "sfx": [ { "kind": "riser", "at": "start", "gain": 0.4 }, { "kind": "ding", "at": "years" } ],
+      "params": { "world": "street", "prop": "calendar", "text": "{card_years} years", "at": "years", "kicker": "Time to clear one phone" } },
+
+    { "id": "rohan", "scene": "stage", "speaker": "rohan", "transition": "slide-up",
+      "say": "Total due. Every month.",
+      "params": { "set": "home", "actors": [ { "who": "rohan", "x": 0.42, "acting": [
+          { "sec": 0, "pose": "thumbsUp", "expression": "proud", "bubble": { "text": "Total due!", "kind": "speech" } } ] } ],
+        "sikka": { "x": 0.75, "drop": true, "cheer": true, "expression": "laugh" } } },
+
+    { "id": "outro", "scene": "end", "transition": "fade",
+      "say": "Follow for one money idea a day.",
+      "params": { "cta": "Pay the total due.", "follow": "Follow for one money idea a day",
+        "assumption": "Assumes {card_rate_month} a month interest and a {card_min_due_pct} minimum payment." } }
+  ]
+}

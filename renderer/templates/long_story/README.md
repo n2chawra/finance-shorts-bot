@@ -64,7 +64,9 @@ chart series with `"@<maths name>.<key>"`. The builder rejects anything else.
 an advisor: the narrator explains, nobody tells the viewer what to buy.
 
 An actor: `{who, x: 0..1, scale?, enter?: left|right, exit?: left|right, turn?: -1..1, acting: [...]}`.
-Each acting key `{sec | at: event, pose?, expression?, turn?, prop?}` blends in with a springy settle.
+Each acting key `{sec | at: event, pose?, expression?, turn?, prop?, bubble?}` blends in with a springy settle.
+`bubble` puts a speech bubble with a few words (`{text: "Total due!"}`) or a thought bubble with an
+icon (`{icon: "!" | "?" | "$" | "idea"}`) beside the character's head for about 2.6 s (`seconds` to change).
 
 - poses: stand, wave, point, pointUp, think, shrug, celebrate, facepalm, hips, phone, present,
   thumbsUp, worried
@@ -88,6 +90,25 @@ Each acting key `{sec | at: event, pose?, expression?, turn?, prop?}` blends in 
 | `towers` | bars rising to compare | `title`, `items` [{label, text, value, at, color: danger/good}] |
 | `checklist` | steps ticking off, active one highlighted | `title`, `items` [{text, icon: autopay/emi/debit/check}], `active`, `actor` |
 | `end` | the CTA, the cast, the assumption and the disclaimer | `cta`, `follow`, `assumption` |
+| `prop` | **a money prop carrying the figure, in a place** | `world`, `prop`, `text` (the figure), `value`?, `label`?, `kicker`?, `sub`?, `at`, `fill`? (stack 0..1), `level`? (bucket 0..1), `presenter`? |
+| `screen` | **a chart drawing itself on a wall screen**, led by a dot, with callouts | `world` (office), `city`?, `title`, `series` (the bad news, red), `series2`? (the good, green), `label1`, `label2`, `callouts` [{x: 0..1, text, at}], `source`?, `drawFrom`, `drawTo`, `presenter`? |
+| `equation` | **icons with operators between them** (a phone + interest, a house > one person) | `title`, `items` [{icon, text?, value?, label?, at}], `ops` ["+", "<", ">", "=", "vs", "→"], `pattern`?/`world`?, `presenter`? |
+| `kinetic` | **a short phrase typed in letter by letter** (`mode: type`) or **a statement box** over a place (`mode: box`) | `mode`, `lines` [{text, at}], `world`? (box), `presenter`? |
+
+**The visual kit** (2026-10-18, after studying the top animated finance channels): put figures on
+things in places, not on empty backgrounds.
+- `world`: `street` (with a bank), `kitchen`, `office` (window on the city), `shop`, `city`; add
+  `"night": true` for drama. `city` (office or city world): `downtown`, `newyork`, `london`, `mumbai`
+  — the country the story is about. A scene without a world uses `pattern`: `grid`, `dots`, `waves`, `rays`.
+- `prop`: `cheque`, `stack` (cash that grows), `tag` (price tag), `anvil` (a rate crushing a card),
+  `piggy`, `bucket` (money leaking away), `vault`, `receipt`, `calendar` (pages flip to the text).
+- `icon` (equation): house, person, family, car, coffee, cash, card, cart, piggy, clock, chartup,
+  chartdown, gift, plane.
+- `presenter`: an actor (`{who, acting}`) who stays on screen and talks while the graphic plays: in a
+  Short at the bottom, waist up (**use it in most Short beats**: the face keeps viewers), in a long
+  video at the side. They lip-sync when the beat's `speaker` is them.
+- Two bright palettes, `sky` and `mint`, sit beside the dark ones and `paper`.
+- Every frame has a paper grain and the Sikka mark in the top-left corner (no text there).
 
 A figure with `value` counts up and lands exactly on Python's string; its `text` must show that same
 number (or `value` is 0), or the build fails. Every video ends with an

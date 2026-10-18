@@ -20,6 +20,14 @@ Example: [`examples/short_story.json`](../../../examples/short_story.json). Ther
 - **Loop:** let the last line lead back into the first, so a replay feels continuous.
 - End with the `end` beat (it carries the disclaimer).
 
+## The visual kit in a Short
+
+Most beats should be `prop`, `screen`, `equation` or `kinetic` with a `presenter` at the bottom:
+the graphic carries the figure in the top part, a cast member talks below (see the long_story
+README for every option). Use a `kinetic` typed card for the turn of the story, one `stage` beat
+for a character moment with a `bubble`, and keep plain `bignumber` beats rare. Example:
+[`examples/short_story_kit.json`](../../../examples/short_story_kit.json).
+
 ## Story recipes
 
 Pick the recipe that fits the plan's `story`; never reuse the beat order of the last few Shorts.

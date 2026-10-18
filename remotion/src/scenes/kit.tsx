@@ -78,7 +78,9 @@ export function counted(p: SceneProps, value: number, final: string, start: numb
 
 // ---------------- cast on stage ----------------
 
-export interface ActSpec { at?: string; sec?: number; pose?: PoseName; expression?: Expression; turn?: number; x?: number; prop?: string }
+/** `bubble`: a speech bubble with a few words, or a thought bubble with an icon ("!", "?", "$", "idea"). */
+export interface ActSpec { at?: string; sec?: number; pose?: PoseName; expression?: Expression; turn?: number; x?: number; prop?: string;
+  bubble?: { text?: string; icon?: string; kind?: "speech" | "thought"; seconds?: number } }
 export interface ActorSpec { who: string; x: number; scale?: number; enter?: "left" | "right"; exit?: "left" | "right"; acting?: ActSpec[]; turn?: number; gaze?: [number, number] }
 
 const Phone = (x: number, y: number) => (
@@ -150,10 +152,49 @@ export const Actor: React.FC<{ p: SceneProps; spec: ActorSpec; ground: number; i
   const speaking = v && p.beat.speaker === spec.who;
   const viseme = speaking ? visemeAt(v.phonemes, t - v.start / p.fps) : null;
   const gaze = spec.gaze ?? [pose.turn * 0.6, 0];
+  // the latest bubble that is still up
+  let bubble: { spec: NonNullable<ActSpec["bubble"]>; since: number } | null = null;
+  for (const a of spec.acting ?? []) {
+    const start = a.sec ?? at(p, a.at, 0);
+    if (a.bubble && t >= start && t < start + (a.bubble.seconds ?? 2.6)) bubble = { spec: a.bubble, since: t - start };
+  }
   return (
-    <Character id={`${p.beat.id}-${spec.who}`} look={member.look} pose={pose} expression={expression} viseme={viseme}
-      blink={blinkAt(t, index + 1)} gaze={gaze} x={x} y={ground} scale={scale}
-      holdL={prop ? PROPS[prop] : undefined} />
+    <>
+      <Character id={`${p.beat.id}-${spec.who}`} look={member.look} pose={pose} expression={expression} viseme={viseme}
+        blink={blinkAt(t, index + 1)} gaze={gaze} x={x} y={ground} scale={scale}
+        holdL={prop ? PROPS[prop] : undefined} />
+      {bubble && <Bubble x={x} headY={ground - 560 * scale} scale={scale} w={p.tl.width} v={p.tl.height > p.tl.width} b={bubble.spec} k={settle(bubble.since / 0.3)} />}
+    </>
+  );
+};
+
+/** A speech or thought bubble beside a character's head, kept inside the frame. */
+const Bubble: React.FC<{ x: number; headY: number; scale: number; w: number; v: boolean; b: NonNullable<ActSpec["bubble"]>; k: number }> = ({ x, headY, scale, w, v, b, k }) => {
+  const fs = v ? 50 : 38;
+  const text = b.text ?? "";
+  const icon = b.icon;
+  const bw = text ? Math.min(w * 0.7, Math.max(fs * 3, text.length * fs * 0.56 + fs * 1.4)) : fs * 2.6;
+  const bh = text ? fs * 1.9 : fs * 2.4;
+  const right = x + 90 * scale + bw < w - 40;
+  const bx = right ? x + 90 * scale : x - 90 * scale - bw, by = Math.max(40, headY - bh - 30 * scale);
+  const thought = (b.kind ?? (icon ? "thought" : "speech")) === "thought";
+  const tail = right ? bx + bw * 0.18 : bx + bw * 0.82;
+  return (
+    <g opacity={Math.min(1, k * 2)} transform={`translate(${tail},${by + bh}) scale(${0.6 + 0.4 * k}) translate(${-tail},${-(by + bh)})`}>
+      {thought
+        ? [0, 1].map((i) => <circle key={i} cx={tail + (right ? -1 : 1) * (14 + i * 20)} cy={by + bh + 20 + i * 26} r={12 - i * 4} fill="#ffffff" />)
+        : <path d={`M${tail - 18},${by + bh - 4} L${tail + (right ? -30 : 30)},${by + bh + 44} L${tail + 22},${by + bh - 4}Z`} fill="#ffffff" />}
+      <rect x={bx} y={by} width={bw} height={bh} rx={thought ? bh / 2 : 26} fill="#ffffff" stroke="rgba(0,0,0,0.12)" strokeWidth={3} />
+      {text && <text x={bx + bw / 2} y={by + bh / 2} textAnchor="middle" dominantBaseline="middle" fontFamily={FONT} fontWeight={800} fontSize={fs} fill="#1b2130">{text}</text>}
+      {!text && icon === "idea" && (
+        <g transform={`translate(${bx + bw / 2},${by + bh / 2})`}>
+          <circle cy={-fs * 0.2} r={fs * 0.5} fill="#ffd43b" stroke="#e8a900" strokeWidth={4} />
+          <rect x={-fs * 0.22} y={fs * 0.22} width={fs * 0.44} height={fs * 0.32} rx={6} fill="#868e96" />
+        </g>
+      )}
+      {!text && icon && icon !== "idea" && <text x={bx + bw / 2} y={by + bh / 2 + 4} textAnchor="middle" dominantBaseline="middle" fontFamily={FONT} fontWeight={900} fontSize={fs * 1.5}
+        fill={icon === "!" ? "#e03131" : "#1b2130"}>{icon}</text>}
+    </g>
   );
 };
 
