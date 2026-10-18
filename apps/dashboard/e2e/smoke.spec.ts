@@ -88,3 +88,15 @@ test("queue rows never clip their text sideways", async ({ page }) => {
     rows.filter((r) => [...r.querySelectorAll("div")].some((d) => d.scrollWidth > d.clientWidth + 1 && getComputedStyle(d).overflow !== "visible" && d.clientWidth > 0 && d.children.length > 1)).length);
   expect(clipped).toBe(0);
 });
+
+test("thumbnails on the daily pages all load", async ({ page }) => {
+  await signIn(page);
+  for (const path of ["/", "/queue", "/videos", "/templates"]) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { level: 1 }).first()).toBeVisible({ timeout: 30_000 });
+    await page.waitForLoadState("networkidle");
+    const broken = await page.locator("img").evaluateAll((imgs) =>
+      (imgs as HTMLImageElement[]).filter((i) => i.complete && i.naturalWidth === 0).map((i) => i.getAttribute("src")));
+    expect(broken, `broken images on ${path}`).toEqual([]);
+  }
+});

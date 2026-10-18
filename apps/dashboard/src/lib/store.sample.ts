@@ -8,7 +8,7 @@ import path from "node:path";
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
 import { mostLoved } from "./schemas";
 
-const VERSION = 7; // bump to regenerate the sample data without restarting the server
+const VERSION = 8; // bump to regenerate the sample data without restarting the server
 const IST_OFFSET = "+05:30";
 const DAY_MS = 86_400_000;
 
@@ -28,6 +28,12 @@ const LIVE: TemplateRow[] = [
   { id: "long_story", name: "Long story", description: "A long video (4–6 min, 1920×1080) told as a story by the recurring cast, drawn by Remotion.", version: 1, weight: 1, enabled: true, durationSec: 300 },
 ];
 const TEMPLATES: TemplateRow[] = [...LIVE, ...OLD];
+// public/sample/ only holds the retired templates' art; a live template borrows one or has none
+const BORROWED_ART: Record<string, string> = { short_story: "two_friends_race" };
+function sampleArt(templateId: string): string | null {
+  const dir = OLD.some((t) => t.id === templateId) ? templateId : BORROWED_ART[templateId];
+  return dir ? `/sample/${dir}` : null;
+}
 
 // [title, category] per template, used round-robin so templates rotate
 const TOPICS: Record<string, [string, string][]> = {
@@ -186,6 +192,7 @@ function build(): Store {
     }
 
     const views = stats.reduce((s, x) => s + x.views, 0);
+    const art = sampleArt(tpl.id) ?? `/sample/${OLD[0]!.id}`;
     const failedAtQa = failAt === "qa_review", failedAtFact = failAt === "fact_review";
     videos.push({
       id, templateId: tpl.id, topic: { title, category }, status, format: "short", failReason, title,
@@ -193,7 +200,7 @@ function build(): Store {
       tags: ["shorts", "personalfinance", category.replace("_", ""), "india"],
       durationSec: tpl.durationSec,
       style: { palette: PALETTES[Math.floor(r() * PALETTES.length)], genre: GENRES[Math.floor(r() * GENRES.length)], key: KEYS[Math.floor(r() * KEYS.length)], bpm: 80 + Math.floor(r() * 41), voice: id.endsWith("1") || id.endsWith("3") ? "hf_alpha" : null },
-      thumbnailUrl: `/sample/${tpl.id}/thumbnail.png`, previewUrl: `/sample/${tpl.id}/preview.png`, fileUrl: `/sample/${tpl.id}/video.mp4`,
+      thumbnailUrl: `${art}/thumbnail.png`, previewUrl: `${art}/preview.png`, fileUrl: `${art}/video.mp4`,
       createdAt: createdAt.toISOString(), queuePosition, upload,
       totals: stats.length
         ? { views, likes: stats.reduce((s, x) => s + x.likes, 0), comments: stats.reduce((s, x) => s + x.comments, 0), subsGained: stats.reduce((s, x) => s + x.subsGained, 0), avgViewPct: stats[0].avgViewPct, liveAt: null }
@@ -320,12 +327,13 @@ export function listTemplates(): Template[] {
   return s.templates.map((t) => {
     const mine = s.videos.filter((v) => v.templateId === t.id);
     const published = mine.filter((v) => v.totals);
+    const art = sampleArt(t.id);
     return {
       id: t.id, name: t.name, description: t.description, version: t.version, weight: t.weight, enabled: t.enabled,
       lastUsedAt: mine.map((v) => v.createdAt).sort().at(-1) ?? null,
       videoCount: mine.length, publishedCount: published.length,
       avgViews: published.length ? Math.round(published.reduce((a, v) => a + v.totals!.views, 0) / published.length) : null,
-      sampleThumbnailUrl: `/sample/${t.id}/thumbnail.png`, sampleVideoUrl: `/sample/${t.id}/video.mp4`,
+      sampleThumbnailUrl: art ? `${art}/thumbnail.png` : "", sampleVideoUrl: art ? `${art}/video.mp4` : "",
     };
   });
 }
