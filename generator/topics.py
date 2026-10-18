@@ -5,7 +5,7 @@
     {"topics": [{"id": "2026-10-16-sip-record-inflows", "title": "...", "category": "sip", "format": "short",
                  "kind": "news | trend | seasonal | evergreen", "priority": "breaking | trending | high | normal",
                  "templates": ["any"], "angle": "...", "why_now": "...",
-                 "facts": [{"label", "value", "unit", "as_of", "source", "url"}], "verify": ["claim to check"],
+                 "facts": [{"label", "value", "unit", "currency", "as_of", "source", "url"}], "verify": ["claim to check"],
                  "sources": ["https://..."], "found": "YYYY-MM-DD", "expires": "YYYY-MM-DD", "status": "new"}]}
 
 A topic is used once: a video records it as `plan.topic.feed_id`, and history makes it unavailable
@@ -158,7 +158,7 @@ def check_facts(script: dict, topic: dict | None) -> list[str]:
     feed = topic.get("facts") or []
     out = []
     for i, f in enumerate(facts):
-        match = next((g for g in feed if all(g.get(k) == f.get(k) for k in ("value", "unit", "as_of", "url"))), None)
+        match = next((g for g in feed if all(g.get(k) == f.get(k) for k in ("value", "unit", "currency", "as_of", "url"))), None)
         if match is None:
             out.append(f"facts[{i}] ({f.get('value')} {f.get('unit')}, {f.get('as_of')}) is not one of the feed topic's facts; copy them exactly")
         elif match.get("source") != f.get("source"):

@@ -1,7 +1,7 @@
 """Voiceover: an offline neural voice (Kokoro, Apache-2.0) speaking each beat's line.
 
 Lines follow the on-screen text rules: no typed digits or ₹, numbers only through {placeholders},
-which are turned into spoken Indian English here ("₹12.4 L" → "12.4 lakh rupees"). So the voice
+which are turned into spoken English here ("₹12.4 L" → "12.4 lakh rupees", "$1.2M" → "1.2 million dollars"). So the voice
 can never say a number the code didn't compute. A beat lasts as long as its line
 (renderer/timeline/build.py), so lines never have to be squeezed into a window.
 
@@ -30,17 +30,38 @@ MODEL, VOICE_PACK = "kokoro-v1.0.onnx", "voices-v1.0.bin"
 MAX_LINE = 220               # characters per line
 
 _UNITS = {"L": "lakh", "Lakh": "lakh", "Cr": "crore", "Crore": "crore"}
+_MONEY = {"$": "dollars", "£": "pounds", "€": "euros"}
+_SCALES = {"K": "thousand", "M": "million", "B": "billion", "T": "trillion",
+           "thousand": "thousand", "million": "million", "billion": "billion", "trillion": "trillion"}
 
 
-def spoken(display: str) -> str:
-    """An on-screen figure as it should be read aloud.
+def spoken(display: str, currency: str = "INR") -> str:
+    """An on-screen figure as it should be read aloud, in the script's currency.
 
     '₹12.4 L' → 'twelve point four lakh rupees', '₹15,00,000' → 'fifteen lakh rupees',
-    '₹5,000' → 'five thousand rupees', '12%' → 'twelve percent', '2.4×' → 'two point four times'.
-    Numbers are written out in words: the voice model reads digit strings badly ("ten zero zero
-    zero zero" for 10,000).
+    '$1.2M' → 'one point two million dollars', '£12,500' → 'twelve thousand five hundred pounds',
+    '12%' → 'twelve percent', '2.4×' → 'two point four times'. Plain numbers are read the Indian
+    way (lakh, crore) only in a rupee story. Numbers are written out in words: the voice model reads
+    digit strings badly ("ten zero zero zero zero" for 10,000).
     """
-    return say_numbers(_units(display.strip()))
+    s = display.strip()
+    western = _western(s)
+    if western is not None:
+        return say_numbers(western, indian=False)
+    return say_numbers(_units(s), indian=currency == "INR")
+
+
+def _western(s: str) -> str | None:
+    """'$1.2M' → '1.2 million dollars', '€2.35 billion' → '2.35 billion euros', '$12,500' → '12500 dollars',
+    '340M' → '340 million'; None when `s` is not a dollar, pound or euro amount or a K/M/B count."""
+    m = re.fullmatch(r"([$£€])\s*([\d.,]+)\s*(K|M|B|T|thousand|million|billion|trillion)?", s)
+    if m:
+        sym, num, scale = m.groups()
+        return f"{_trim(num.replace(',', ''))} {_SCALES[scale] + ' ' if scale else ''}{_MONEY[sym]}"
+    m = re.fullmatch(r"([\d.,]+)\s*(K|M|B|T)", s)   # a count such as '340M'
+    if m:
+        return f"{_trim(m.group(1).replace(',', ''))} {_SCALES[m.group(2)]}"
+    return None
 
 
 def _units(s: str) -> str:
@@ -68,26 +89,31 @@ _ONES = ("zero one two three four five six seven eight nine ten eleven twelve th
 _TENS = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()
 
 
-def number_words(n: int) -> str:
-    """Indian English: 10000 → 'ten thousand', 2500000 → 'twenty five lakh', 123 → 'one hundred twenty three'."""
+_INDIAN = ((10_000_000, "crore"), (100_000, "lakh"), (1_000, "thousand"), (100, "hundred"))
+_WESTERN = ((1_000_000_000_000, "trillion"), (1_000_000_000, "billion"), (1_000_000, "million"), (1_000, "thousand"), (100, "hundred"))
+
+
+def number_words(n: int, indian: bool = True) -> str:
+    """10000 → 'ten thousand', 123 → 'one hundred twenty three'; 2500000 → 'twenty five lakh' the
+    Indian way, 'two million five hundred thousand' the international way."""
     if n < 0:
-        return "minus " + number_words(-n)
+        return "minus " + number_words(-n, indian)
     if n < 20:
         return _ONES[n]
     if n < 100:
         return _TENS[n//10] + ("" if n % 10 == 0 else " " + _ONES[n % 10])
-    for size, name in ((10_000_000, "crore"), (100_000, "lakh"), (1_000, "thousand"), (100, "hundred")):
+    for size, name in (_INDIAN if indian else _WESTERN):
         if n >= size:
             head, rest = divmod(n, size)
-            return f"{number_words(head)} {name}" + ("" if rest == 0 else " " + number_words(rest))
+            return f"{number_words(head, indian)} {name}" + ("" if rest == 0 else " " + number_words(rest, indian))
     raise AssertionError("unreachable")
 
 
-def say_numbers(text: str) -> str:
+def say_numbers(text: str, indian: bool = True) -> str:
     """Write every number in `text` out in words: '99.9' → 'ninety nine point nine', '10,000' → 'ten thousand'."""
     def word(m: re.Match) -> str:
         whole, _, frac = m.group(0).replace(",", "").partition(".")
-        out = number_words(int(whole))
+        out = number_words(int(whole), indian)
         return out + (" point " + " ".join(_ONES[int(d)] for d in frac) if frac else "")
     return re.sub(r"\d[\d,]*(?:\.\d+)?", word, text)
 
@@ -97,21 +123,22 @@ def _trim(num: str) -> str:
     return num.rstrip("0").rstrip(".") if "." in num else num
 
 
-def fill_lines(lines: dict[str, str], scenes: list[str], figures: dict[str, str], max_line: int = MAX_LINE) -> dict[str, str]:
+def fill_lines(lines: dict[str, str], scenes: list[str], figures: dict[str, str], max_line: int = MAX_LINE,
+               currency: str = "INR") -> dict[str, str]:
     """Validate the script's voice lines and put spoken figures into their placeholders."""
     if not isinstance(lines, dict) or not lines:
         raise ValueError("voice must be an object of {scene: line}")
     unknown = sorted(set(lines) - set(scenes))
     if unknown:
         raise ValueError(f"voice has lines for unknown scenes {unknown}; scenes are: {', '.join(scenes)}")
-    words = {k: spoken(v) for k, v in figures.items()}
+    words = {k: spoken(v, currency) for k, v in figures.items()}
     out = {}
     for scene, raw in lines.items():
         if not isinstance(raw, str) or not raw.strip():
             raise ValueError(f"voice.{scene} must be a non-empty line")
         if len(raw) > max_line:
             raise ValueError(f"voice.{scene} is {len(raw)} characters; keep it under {max_line}")
-        if re.search(r"[0-9₹]", re.sub(r"\{[a-z][a-z0-9_]*\}", "", raw)):   # names may hold digits
+        if re.search(r"[0-9₹$£€]", re.sub(r"\{[a-z][a-z0-9_]*\}", "", raw)):   # names may hold digits
             raise ValueError(f"voice.{scene} contains a typed number; use a placeholder: {raw!r}")
         try:
             out[scene] = raw.format_map(words)

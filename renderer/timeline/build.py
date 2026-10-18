@@ -3,7 +3,7 @@
 Python owns every number, every moment and every sound; Remotion only draws. So this module:
 
 1. computes the maths (renderer/models/maths.py) and fills every `{placeholder}` in the script's
-   text, rejecting any typed digit or ₹ — the only way a number reaches the screen;
+   text, rejecting any typed digit or currency sign — the only way a number reaches the screen;
 2. speaks each beat's line with timings (Kokoro), so a beat lasts as long as its words and the
    picture can react to a word ("the number lands as she says it");
 3. lays the music bed, the sound effects on each beat's events, and the voices, ducking the music
@@ -29,7 +29,7 @@ from renderer.engine import voice as tts
 from renderer.engine.audio import (SR, Mixer, sfx_beep, sfx_boom, sfx_clink, sfx_ding, sfx_fail, sfx_kaching,
                                    sfx_pop, sfx_riser, sfx_tick, sfx_whoosh)
 from renderer.engine.music import gain_curve, make_bed
-from renderer.engine.formatting import fact_value, group_indian, inr, inr_long, month_year, rupees
+from renderer.engine.formatting import LEGACY_CURRENCY, Money, fact_value, money_for, month_year
 from renderer.engine.style import resolve_style
 from renderer.models import maths
 
@@ -39,7 +39,7 @@ LEAD, TAIL = 0.35, 0.5            # silence before and after a beat's line
 GAP_NO_VOICE = 2.4                # a beat with nothing said (a chapter card) lasts this long
 VOICE_DUCK = 0.6                  # music drops this much under speech
 DISCLAIMER = "Illustrative only. Not financial advice."
-TYPED_NUMBER = re.compile(r"[0-9₹]")
+TYPED_NUMBER = re.compile(r"[0-9₹$£€]")   # a digit or any currency sign
 PLACEHOLDER = re.compile(r"\{[a-z][a-z0-9_]*\}")   # names may hold digits ({card_paid_year1}); text may not
 NARRATOR_VOICES = ("am_michael", "af_heart", "af_bella", "am_fenrir")
 # each recurring character always speaks with the same voice, so viewers know them by ear
@@ -99,13 +99,13 @@ def _resolve(value, figures: dict[str, str], results: dict, where: str):
     return value
 
 
-def _one_string(raw, resolved, where: str) -> None:
+def _one_string(raw, resolved, where: str, fm: Money) -> None:
     """One quantity, one string: a count-up or bar (`value` beside `text`) must land on the string
     Python makes from that same number, so a viewer pausing on two frames never sees two figures for
     one amount. Its value is an "@maths.key" or 0, never a typed number."""
     if isinstance(raw, list):
         for i, (r, v) in enumerate(zip(raw, resolved)):
-            _one_string(r, v, f"{where}[{i}]")
+            _one_string(r, v, f"{where}[{i}]", fm)
         return
     if not isinstance(raw, dict):
         return
@@ -115,13 +115,13 @@ def _one_string(raw, resolved, where: str) -> None:
             if ref != 0:
                 raise ValueError(f"{where}.value is a typed number ({ref}); use \"@maths.key\" or 0")
         elif isinstance(v, (int, float)) and v != 0:
-            shown = {rupees(v), inr(v), inr_long(v), group_indian(round(v)), f"{v:g}"}
+            shown = {fm.full(v), fm.short(v), fm.long(v), fm.group(round(v)), f"{v:g}"}
             if not any(s in str(text) for s in shown):
-                raise ValueError(f"{where}: counts to {inr(v)} ({ref}) but lands on {text!r}; one quantity, "
+                raise ValueError(f"{where}: counts to {fm.short(v)} ({ref}) but lands on {text!r}; one quantity, "
                                  f"one string: use the placeholder that shows the same number")
     for k, r in raw.items():
         if k in resolved:
-            _one_string(r, resolved[k], f"{where}.{k}")
+            _one_string(r, resolved[k], f"{where}.{k}", fm)
 
 
 def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float, duration: float, where: str,
@@ -149,10 +149,10 @@ def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float
     raise ValueError(f"{where}: an event is {{'word': n}}, {{'word': 'text'}}, {{'sec': x}} or {{'end': x}}")
 
 
-_PUNCT_ONLY = re.compile(r"^[^\w₹]+$")
+_PUNCT_ONLY = re.compile(r"^[^\w₹$£€]+$")
 
 
-def _captions(say: str, figures: dict[str, str], words: list[tuple[str, float, float]]) -> list[dict]:
+def _captions(say: str, figures: dict[str, str], words: list[tuple[str, float, float]], currency: str = LEGACY_CURRENCY) -> list[dict]:
     """Caption tokens as written, timed by the spoken words: a figure shows as on screen
     ("₹60,000") across the words that speak it ("sixty thousand rupees"). Falls back to the spoken
     words if the two ever disagree on length."""
@@ -162,7 +162,7 @@ def _captions(say: str, figures: dict[str, str], words: list[tuple[str, float, f
         if not part:
             continue
         if PLACEHOLDER.fullmatch(part):
-            n = len(tts.spoken(figures[part[1:-1]]).split())
+            n = len(tts.spoken(figures[part[1:-1]], currency).split())
             tokens.append([figures[part[1:-1]], i, i + n - 1])
             i += n
             continue
@@ -192,7 +192,7 @@ def _facts(script: dict) -> tuple[dict[str, str], str | None]:
             raise ValueError(f"facts[{i - 1}] needs {', '.join(missing)}")
         if not str(f["url"]).startswith("http"):
             raise ValueError(f"facts[{i - 1}].url must be the source's address")
-        figures[f"fact{i}"] = fact_value(f["value"], f["unit"])
+        figures[f"fact{i}"] = fact_value(f["value"], f["unit"], f.get("currency") or money_for(script).currency)
         if f["source"] not in sources:
             sources.append(f["source"])
     line = f"Data: {' · '.join(sources)} · {month_year(max(f['as_of'] for f in facts))}" if facts else None
@@ -249,7 +249,8 @@ def check_script(script: dict) -> dict:
     for the number check and the reviewers."""
     if script.get("format", "long") not in SIZES:
         raise ValueError("format must be long or short")
-    results = maths.compute(script.get("maths", []))
+    fm = money_for(script)   # rejects an unknown currency
+    results = maths.compute(script.get("maths", []), fm)
     fact_figures, sources = _facts(script)
     figures = {**maths.placeholders(results), **fact_figures}
     beats = [Beat(**b) for b in script.get("beats", [])]
@@ -264,9 +265,9 @@ def check_script(script: dict) -> dict:
         where = f"beat {b.id!r}"
         if b.scene not in scenes:
             raise ValueError(f"{where}: no scene called {b.scene!r}; scenes are {', '.join(sorted(scenes))}")
-        _one_string(b.params, _resolve(b.params, figures, results, f"{where}.params"), f"{where}.params")
+        _one_string(b.params, _resolve(b.params, figures, results, f"{where}.params"), f"{where}.params", fm)
         text = _fill(b.say, figures, f"{where}.say") if b.say else ""
-        spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000)["x"] if b.say else ""
+        spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000, fm.currency)["x"] if b.say else ""
         words = {w.lower().strip(".,!?;:\"'") for w in spoken.split()}
         for name, spec in b.events.items():
             w = spec.get("word") if isinstance(spec, dict) else None
@@ -288,7 +289,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     width, height = SIZES[fmt]
     seed = int(script["seed"])
     style = resolve_style(script.get("style", {}), seed)
-    results = maths.compute(script.get("maths", []))
+    fm = money_for(script)
+    results = maths.compute(script.get("maths", []), fm)
     fact_figures, sources = _facts(script)
     figures = {**maths.placeholders(results), **fact_figures}
     narrator = script.get("narrator") or random.Random(f"narrator:{seed}").choice(NARRATOR_VOICES)
@@ -304,9 +306,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     for b in beats:
         where = f"beat {b.id!r}"
         params = _resolve(b.params, figures, results, f"{where}.params")
-        _one_string(b.params, params, f"{where}.params")
+        _one_string(b.params, params, f"{where}.params", fm)
         text = _fill(b.say, figures, f"{where}.say") if b.say else ""
-        spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000)["x"] if b.say else ""
+        spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000, fm.currency)["x"] if b.say else ""
         if spoken:
             who = CAST_VOICES.get(b.speaker, narrator) if b.speaker != "narrator" else narrator
             line = _estimate(spoken, speed) if voice == "estimate" else tts.speak_timed(spoken, who, speed)
@@ -329,7 +331,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
             "voice": None if line is None else {
                 "start": round(lead*FPS), "speaker": b.speaker,
                 "words": [{"w": w, "s": round(a, 3), "e": round(e, 3)} for w, a, e in words],
-                "captions": _captions(b.say, figures, words),
+                "captions": _captions(b.say, figures, words, fm.currency),
                 "phonemes": [{"p": p, "s": round(a, 3), "e": round(e, 3)} for p, a, e in line.phonemes],
             },
         })
@@ -373,7 +375,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm},
         "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1)},
-        "disclaimer": DISCLAIMER, "voiceMode": voice, "sources": sources,
+        "disclaimer": DISCLAIMER, "voiceMode": voice, "sources": sources, "currency": fm.currency,
         # A/B variants for this video ({id: "on" | "off"}, generator/experiments.py): scenes read them
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest
         "experiments": dict(script.get("experiments") or {}),

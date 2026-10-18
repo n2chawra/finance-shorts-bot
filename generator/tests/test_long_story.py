@@ -35,8 +35,8 @@ def test_example_passes_the_number_check() -> None:
 def test_a_wrong_simulation_is_caught(monkeypatch: pytest.MonkeyPatch) -> None:
     real = maths.KINDS["card_min_due"]
 
-    def off_by_one_month(m: dict) -> dict:
-        r = real(m)
+    def off_by_one_month(m: dict, fm=None) -> dict:
+        r = real(m) if fm is None else real(m, fm)
         r["figures"]["months"] = str(int(r["figures"]["months"]) + 1)
         return r
 

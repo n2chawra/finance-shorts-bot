@@ -73,7 +73,7 @@ export const Chip: React.FC<{ text: string; k: number; bg: string; fg: string; s
 export function counted(p: SceneProps, value: number, final: string, start: number, land: number): string {
   const t = sec(p);
   if (t >= land) return final;
-  return countUp(value, ease((t - start) / Math.max(0.1, land - start)), final);
+  return countUp(value, ease((t - start) / Math.max(0.1, land - start)), final, "inr", p.tl.currency);
 }
 
 // ---------------- cast on stage ----------------

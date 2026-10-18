@@ -73,6 +73,8 @@ export const Timeline = z.object({
   // news: "Data: AMFI · Jun 2026", shown by every headline scene (sourced facts, hard rule)
   sources: z.string().nullable().optional(),
   thumbnail: Thumbnail.nullable().optional(),
+  // the script's currency (renderer/engine/formatting.py): count-ups format in it; rupees before 2026-10-18
+  currency: z.enum(["USD", "GBP", "EUR", "INR"]).default("INR"),
   // A/B variants for this video (generator/experiments.py); read them with flag() from ./flags
   experiments: z.record(z.string(), z.enum(["on", "off"])).default({}),
 });

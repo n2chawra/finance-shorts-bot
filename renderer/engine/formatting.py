@@ -1,5 +1,15 @@
-"""Indian number formatting for on-screen figures."""
+"""Number formatting for on-screen figures, in the script's currency.
+
+Rupees keep Indian grouping and lakh/crore (₹15,00,000, ₹94.9 L, ₹2.30 Cr). Dollars, pounds and euros
+use international grouping and K/M/B ($1,500,000 in full, $1.5M short, $1.5 million long). A
+script names its `currency`; scripts from before the channel went global (2026-10-18) have none and
+are rupee scripts.
+"""
 import math
+from dataclasses import dataclass
+
+CURRENCIES = {"USD": "$", "GBP": "£", "EUR": "€", "INR": "₹"}
+LEGACY_CURRENCY = "INR"       # a script without a `currency` field
 
 
 def group_indian(n: int) -> str:
@@ -53,6 +63,77 @@ def axis_label(v: float) -> str:
     return f"{v:g}"
 
 
+def group_western(n: int) -> str:
+    """12345678 → '12,345,678'."""
+    return f"{n:,}"
+
+
+def _short_western(x: float, sym: str) -> str:
+    """'$2.35B', '$1.5M', '$12,500'. Never shows '1000.0M' or '$1,000,000'."""
+    if x >= 1e9 or round(x/1e6, 1) >= 1000:
+        return f"{sym}{x/1e9:.2f}B"
+    if x >= 1e6 or round(x) >= 1_000_000:
+        return f"{sym}{x/1e6:.1f}M"
+    return sym + group_western(int(round(x)))
+
+
+def _long_western(x: float, sym: str) -> str:
+    """'$1.5 million', '$2.35 billion', '$12,500'."""
+    if x >= 1e9 or round(x/1e6, 1) >= 1000:
+        return f"{sym}{round(x/1e9, 2):g} billion"
+    if x >= 1e6 or round(x) >= 1_000_000:
+        return f"{sym}{round(x/1e6, 1):g} million"
+    return sym + group_western(int(round(x)))
+
+
+def axis_label_western(v: float) -> str:
+    """Chart tick label: '0', '500K', '1.5M', '2B'."""
+    if v == 0:
+        return "0"
+    for size, unit in ((1e9, "B"), (1e6, "M"), (1e3, "K")):
+        if v >= size:
+            return f"{v/size:g}{unit}"
+    return f"{v:g}"
+
+
+@dataclass(frozen=True)
+class Money:
+    """The formatters for one currency: full amounts, short ones, spelled-out ones and chart ticks."""
+    currency: str = LEGACY_CURRENCY
+
+    def __post_init__(self) -> None:
+        if self.currency not in CURRENCIES:
+            raise ValueError(f"currency must be one of {', '.join(CURRENCIES)}, not {self.currency!r}")
+
+    @property
+    def symbol(self) -> str:
+        return CURRENCIES[self.currency]
+
+    @property
+    def indian(self) -> bool:
+        return self.currency == "INR"
+
+    def full(self, x: float) -> str:
+        return rupees(x) if self.indian else self.symbol + group_western(int(round(x)))
+
+    def short(self, x: float) -> str:
+        return inr(x) if self.indian else _short_western(x, self.symbol)
+
+    def long(self, x: float) -> str:
+        return inr_long(x) if self.indian else _long_western(x, self.symbol)
+
+    def axis(self, v: float) -> str:
+        return axis_label(v) if self.indian else axis_label_western(v)
+
+    def group(self, n: int) -> str:
+        return group_indian(n) if self.indian else group_western(n)
+
+
+def money_for(script: dict) -> Money:
+    """The formatters for a script's currency (rupees for scripts from before it was recorded)."""
+    return Money(script.get("currency") or LEGACY_CURRENCY)
+
+
 def times(ratio: float) -> str:
     """Multiplier: 2.4166 → '2.4×'."""
     return f"{ratio:.1f}×"
@@ -68,15 +149,28 @@ def nice_axis(vmax: float, max_ticks: int = 5) -> list[float]:
     raise AssertionError("unreachable")
 
 
-FACT_UNITS = ("rupees", "rupees_lakh", "rupees_crore", "percent", "count", "count_lakh", "count_crore")
+FACT_UNITS = ("rupees", "rupees_lakh", "rupees_crore", "percent", "count", "count_lakh", "count_crore",
+              "money", "money_thousand", "money_million", "money_billion", "money_trillion",
+              "count_thousand", "count_million", "count_billion")
+_SCALE = {"thousand": "K", "million": "M", "billion": "B", "trillion": "T"}
 
 
-def fact_value(value: float, unit: str) -> str:
+def fact_value(value: float, unit: str, currency: str = LEGACY_CURRENCY) -> str:
     """A sourced figure (from the research feed) as displayed: (31781, 'rupees_crore') → '₹31,781 Cr',
-    (6.5, 'percent') → '6.5%', (9.87, 'count_crore') → '9.87 Cr', (4500000, 'count') → '45,00,000'."""
+    (6.5, 'percent') → '6.5%', (9.87, 'count_crore') → '9.87 Cr', (4500000, 'count') → '45,00,000',
+    (2.1, 'money_trillion', 'USD') → '$2.1T', (340, 'count_million', 'USD') → '340M'. `money*` units are
+    in the fact's currency; counts group the Indian way only in a rupee story."""
+    m = Money(currency)
     whole, frac = f"{abs(value):.2f}".split(".")         # round first: 9.996 is "10", not "9."
     sign = "-" if value < 0 and f"{abs(value):.2f}" != "0.00" else ""
-    shown = sign + group_indian(int(whole)) + ("." + frac.rstrip("0") if frac.rstrip("0") else "")
+    grouped = group_indian(int(whole)) if unit.startswith("rupees") or m.indian else group_western(int(whole))
+    shown = sign + grouped + ("." + frac.rstrip("0") if frac.rstrip("0") else "")
+    if unit == "money":
+        return m.symbol + shown
+    if unit.startswith("money_") and unit[6:] in _SCALE:
+        return f"{m.symbol}{shown}{_SCALE[unit[6:]]}"
+    if unit.startswith("count_") and unit[6:] in _SCALE:
+        return f"{shown}{_SCALE[unit[6:]]}"
     if unit == "rupees":
         return "₹" + shown
     if unit == "rupees_lakh":

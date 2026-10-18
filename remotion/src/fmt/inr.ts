@@ -97,9 +97,43 @@ export function times(ratio: number): string {
   return `${fixed(ratio, 1)}×`;
 }
 
+// ---------------- dollars, pounds, euros (international grouping, K/M/B) ----------------
+
+export const CURRENCY_SYMBOL = { USD: "$", GBP: "£", EUR: "€", INR: "₹" } as const;
+export type Currency = keyof typeof CURRENCY_SYMBOL;
+
+/** 12345678 → "12,345,678". */
+export function groupWestern(n: number): string {
+  const sign = n < 0 ? "-" : "";
+  return sign + String(Math.abs(Math.trunc(n))).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+/** Full amount: "$1,500,000" (rupees: "₹15,00,000"). */
+export function money(x: number, cur: Currency): string {
+  return cur === "INR" ? rupees(x) : `${CURRENCY_SYMBOL[cur]}${groupWestern(roundEven(x))}`;
+}
+
+/** Short amount: "$2.35B", "$1.5M", "$12,500" (rupees: "₹2.30 Cr", "₹94.9 L"). Never "1000.0M". */
+export function moneyShort(x: number, cur: Currency): string {
+  if (cur === "INR") return inr(x);
+  const s = CURRENCY_SYMBOL[cur];
+  if (x >= 1e9 || roundTo(x / 1e6, 1) >= 1000) return `${s}${fixed(x / 1e9, 2)}B`;
+  if (x >= 1e6 || roundEven(x) >= 1_000_000) return `${s}${fixed(x / 1e6, 1)}M`;
+  return `${s}${groupWestern(roundEven(x))}`;
+}
+
+/** Spelled out: "$1.5 million", "$2.35 billion" (rupees: "₹6 Lakh", "₹2.3 Crore"). */
+export function moneyLong(x: number, cur: Currency): string {
+  if (cur === "INR") return inrLong(x);
+  const s = CURRENCY_SYMBOL[cur];
+  if (x >= 1e9 || roundTo(x / 1e6, 1) >= 1000) return `${s}${g(roundTo(x / 1e9, 2))} billion`;
+  if (x >= 1e6 || roundEven(x) >= 1_000_000) return `${s}${g(roundTo(x / 1e6, 1))} million`;
+  return `${s}${groupWestern(roundEven(x))}`;
+}
+
 /** The text of a count-up at progress p (0..1) towards `value`, landing exactly on `final`. */
-export function countUp(value: number, p: number, final: string, kind: "inr" | "rupees" | "inrLong" = "inr"): string {
+export function countUp(value: number, p: number, final: string, kind: "inr" | "rupees" | "inrLong" = "inr", cur: Currency = "INR"): string {
   if (p >= 1) return final;
-  const f = kind === "rupees" ? rupees : kind === "inrLong" ? inrLong : inr;
-  return f(value * Math.max(0, p));
+  const v = value * Math.max(0, p);
+  return kind === "rupees" ? money(v, cur) : kind === "inrLong" ? moneyLong(v, cur) : moneyShort(v, cur);
 }

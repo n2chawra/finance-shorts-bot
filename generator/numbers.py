@@ -9,7 +9,7 @@ import re
 from collections.abc import Callable, Mapping
 
 from renderer.timeline.build import check_script
-from renderer.engine.formatting import fact_value, group_indian, inr, inr_long, rupees, times
+from renderer.engine.formatting import fact_value, group_indian, group_western, money_for, times
 
 from . import topics
 
@@ -96,27 +96,29 @@ def card_min_due(amount: float, rate_pct_month: float, min_due_pct: float, floor
 def _long_story(s: dict) -> dict[str, str]:
     """The figures of a story script (long or short): its `maths` from the closed forms above, and
     its sourced facts exactly as the feed published them."""
-    out: dict[str, str] = {f"fact{i}": fact_value(f["value"], f["unit"]) for i, f in enumerate(s.get("facts") or [], 1)}
+    fm = money_for(s)
+    out: dict[str, str] = {f"fact{i}": fact_value(f["value"], f["unit"], f.get("currency") or fm.currency)
+                           for i, f in enumerate(s.get("facts") or [], 1)}
     for m in s.get("maths", []):
         n, kind = m["name"], m["kind"]
         if kind == "card_min_due":
             c = card_min_due(m["amount"], m["rate_pct_month"], m["min_due_pct"], m["min_due_floor"])
             out |= {f"{n}_months": str(c["months"]), f"{n}_years": str(round(c["months"]/12)),
-                    f"{n}_total_paid": inr(c["total_paid"]), f"{n}_interest": inr(c["interest"]),
-                    f"{n}_ratio": times(c["total_paid"]/m["amount"]), f"{n}_paid_year1": inr(c["paid_year1"]),
-                    f"{n}_owed_year1": inr(c["owed_year1"]), f"{n}_interest_year1": inr(c["interest_year1"]),
-                    f"{n}_min_due": rupees(m["amount"]*m["min_due_pct"]/100)}
+                    f"{n}_total_paid": fm.short(c["total_paid"]), f"{n}_interest": fm.short(c["interest"]),
+                    f"{n}_ratio": times(c["total_paid"]/m["amount"]), f"{n}_paid_year1": fm.short(c["paid_year1"]),
+                    f"{n}_owed_year1": fm.short(c["owed_year1"]), f"{n}_interest_year1": fm.short(c["interest_year1"]),
+                    f"{n}_min_due": fm.full(m["amount"]*m["min_due_pct"]/100)}
         elif kind == "emi":
             pay = emi(m["amount"], m["rate_pct"], m["years"])
             months = round(m["years"]*12)
-            out |= {f"{n}_emi": rupees(pay), f"{n}_total_paid": inr(pay*months), f"{n}_interest": inr(pay*months - m["amount"])}
+            out |= {f"{n}_emi": fm.full(pay), f"{n}_total_paid": fm.short(pay*months), f"{n}_interest": fm.short(pay*months - m["amount"])}
         elif kind == "sip":
             final, invested = sip_fv(m["monthly"], m["rate_pct"], m["years"]*12), m["monthly"]*m["years"]*12
-            out |= {f"{n}_final": inr(final), f"{n}_final_long": inr_long(final), f"{n}_invested": inr(invested),
-                    f"{n}_gains": inr(final - invested), f"{n}_ratio": times(final/invested)}
+            out |= {f"{n}_final": fm.short(final), f"{n}_final_long": fm.long(final), f"{n}_invested": fm.short(invested),
+                    f"{n}_gains": fm.short(final - invested), f"{n}_ratio": times(final/invested)}
         elif kind == "lumpsum":
             final = lumpsum_fv(m["amount"], m["rate_pct"], m["years"])
-            out |= {f"{n}_final": inr(final), f"{n}_final_long": inr_long(final), f"{n}_gains": inr(final - m["amount"]),
+            out |= {f"{n}_final": fm.short(final), f"{n}_final_long": fm.long(final), f"{n}_gains": fm.short(final - m["amount"]),
                     f"{n}_ratio": times(final/m["amount"])}
     return out
 
@@ -125,11 +127,13 @@ EXPECTED: dict[str, Callable[[dict], dict[str, str]]] = {"long_story": _long_sto
 
 # ---------------- claims in free text ----------------
 
-_NUMBER = re.compile(r"₹?\s?\d[\d,]*(?:\.\d+)?\s?(?:crore|cr|lakh|l|k|%|×|x)?(?![a-z])", re.IGNORECASE)
+_NUMBER = re.compile(r"[₹$£€]?\s?\d[\d,]*(?:\.\d+)?\s?(?:crore|cr|lakh|l|trillion|billion|million|thousand|bn|t|b|m|k|%|×|x)?(?![a-z])", re.IGNORECASE)
 
 
 def _norm(token: str) -> str:
     t = token.lower().replace(" ", "").replace(",", "").replace("crore", "cr").replace("lakh", "l").replace("x", "×")
+    for word, short in (("trillion", "t"), ("billion", "b"), ("bn", "b"), ("million", "m"), ("thousand", "k")):
+        t = t.replace(word, short)
     return t.rstrip(".")
 
 
@@ -147,11 +151,13 @@ def _numbers_in(value: object) -> list[float]:
 
 def allowed_numbers(script: dict, figures: Mapping[str, str]) -> set[str]:
     """Every way a legitimate number may be written: computed figures as displayed, and the
-    script's inputs in plain, grouped, rupee, short and percent forms."""
+    script's inputs in plain, grouped, money, short and percent forms (in the script's currency)."""
+    fm = money_for(script)
     out = {_norm(v) for v in figures.values()}
     for n in _numbers_in(script):
-        out |= {_norm(f"{n:g}"), _norm(f"{n:g}%"), _norm(group_indian(round(n))), _norm(rupees(n)), _norm(inr(n)), _norm(inr_long(n))}
-    return out | {t.lstrip("₹") for t in out}
+        out |= {_norm(f"{n:g}"), _norm(f"{n:g}%"), _norm(group_indian(round(n))), _norm(group_western(round(n))),
+                _norm(fm.full(n)), _norm(fm.short(n)), _norm(fm.long(n))}
+    return out | {t.lstrip("₹$£€") for t in out}
 
 
 def check_claims(texts: Mapping[str, str], script: dict, figures: Mapping[str, str]) -> list[str]:
@@ -161,7 +167,7 @@ def check_claims(texts: Mapping[str, str], script: dict, figures: Mapping[str, s
     for field, text in texts.items():
         for m in _NUMBER.finditer(text):
             token = _norm(m.group())
-            if token not in ok and token.lstrip("₹") not in ok:
+            if token not in ok and token.lstrip("₹$£€") not in ok:
                 out.append(f"{field} mentions {m.group().strip()!r}, which is neither a script input nor a computed figure")
     return out
 

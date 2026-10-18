@@ -1,10 +1,13 @@
 import { describe, expect, test } from "vitest";
 import fixtures from "./fixtures/formatting.json";
-import { axisLabel, countUp, fixed, inr, inrLong, roundEven, rupees, times } from "../src/fmt/inr";
+import { axisLabel, countUp, fixed, inr, inrLong, money, moneyLong, moneyShort, roundEven, rupees, times } from "../src/fmt/inr";
 
 describe("the TypeScript formatters match Python's exactly", () => {
   test.each(fixtures.amounts)("$x", ({ x, inr: a, inrLong: b, rupees: c }) => {
     expect([inr(x), inrLong(x), rupees(x)]).toEqual([a, b, c]);
+  });
+  test.each(fixtures.usd)("$ $x", ({ x, short, long, full }) => {
+    expect([moneyShort(x, "USD"), moneyLong(x, "USD"), money(x, "USD")]).toEqual([short, long, full]);
   });
   test("axis labels and multipliers", () => {
     for (const { v, label } of fixtures.ticks) expect(axisLabel(v)).toBe(label);
