@@ -1,0 +1,120 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:03:38.713919+00:00",
+    "finishedAt": "2026-10-18T06:03:38.713919+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:04:53.506660+00:00",
+    "finishedAt": "2026-10-18T06:04:53.506660+00:00",
+    "notes": [
+      "6 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:05:05.668703+00:00",
+    "finishedAt": "2026-10-18T06:05:05.668703+00:00",
+    "notes": [
+      "6 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:06:53.365501+00:00",
+    "finishedAt": "2026-10-18T06:06:53.365501+00:00",
+    "notes": [
+      "No facts list and no topics.json entry (midday trend). Checked every news claim: Tata Gold ETF FOF addendum (15 Oct 2026, tatamutualfund.com) and ABSL Gold Fund addendum 60/2026 confirm that from 16 Oct new SIPs, lump sums, top-ups and switch-ins are stopped, existing SIP instalments continue, redemptions continue, till further notice; Cafemutual and Business Standard (16 Oct) report SEBI's instructions and that gold ETFs are unaffected; no reopening found as of 18 Oct. Rs 3,000x12 is money invested, not returns. No advice, tone fine, description ends with disclaimer. Note: top-up blocks vary by AMC; the end card's 'Rules vary by fund house' covers it."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-18T06:05:12.436680+00:00",
+    "finishedAt": "2026-10-18T06:08:30.241127+00:00",
+    "notes": [
+      "median frame change 0.76 is below 1.2 — scenes finish animating and then hold a still picture",
+      "24% of samples have no visible movement (limit 15%)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:21:29.254155+00:00",
+    "finishedAt": "2026-10-18T06:21:29.254155+00:00",
+    "notes": [
+      "6 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-18T06:21:38.512471+00:00",
+    "finishedAt": "2026-10-18T06:24:14.070341+00:00",
+    "notes": [
+      "median frame change 1.13 is below 1.2 — scenes finish animating and then hold a still picture"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:24:59.546760+00:00",
+    "finishedAt": "2026-10-18T06:24:59.546760+00:00",
+    "notes": [
+      "6 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-18T06:25:00.892648+00:00",
+    "finishedAt": "2026-10-18T06:27:32.059363+00:00",
+    "notes": [
+      "19% of samples have no visible movement (limit 15%)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:28:11.943306+00:00",
+    "finishedAt": "2026-10-18T06:28:11.943306+00:00",
+    "notes": [
+      "6 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:28:20.206954+00:00",
+    "finishedAt": "2026-10-18T06:30:51.543771+00:00",
+    "notes": [
+      "42 s, ember/lofi, peak -1.0 dB, mean -17.6 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:31:28.359824+00:00",
+    "finishedAt": "2026-10-18T06:31:28.359824+00:00",
+    "notes": [
+      "42 s, peak -1.0/mean -17.6 dB, no layout/liveliness problems; hook 'Turned away?' at 0s, checklist/calendar/end frames readable with no overlaps or cut-offs, disclaimer on last frame, thumbnail clean (Gold SIP paused? / Rs 3,000); only transient flip/word-in animations seen at 30s and 40s"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-18T06:31:45.567224+00:00",
+    "finishedAt": "2026-10-18T06:31:45.567224+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

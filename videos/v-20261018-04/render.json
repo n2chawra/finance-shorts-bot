@@ -1,0 +1,108 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61847,
+  "duration_sec": 42,
+  "tempo": 1.0,
+  "style": {
+    "palette": "ember",
+    "genre": "lofi",
+    "key": "D",
+    "bpm": 88
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.3,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Tried to start a gold fund SIP this week, and got turned away?",
+        "start": 0.27,
+        "seconds": 3.22,
+        "window": 3.83,
+        "fill": 0.841
+      },
+      {
+        "scene": "news",
+        "text": "This week, many fund houses stopped taking new money into their gold funds of funds, on instructions from SEBI.",
+        "start": 4.1,
+        "seconds": 5.5,
+        "window": 6.1,
+        "fill": 0.902
+      },
+      {
+        "scene": "rohan",
+        "text": "Wait. My gold SIP is already running. Does that stop too?",
+        "start": 10.2,
+        "seconds": 3.0,
+        "window": 3.43,
+        "fill": 0.875
+      },
+      {
+        "scene": "hold",
+        "text": "On hold, till further notice: new SIPs, lump sums, top-ups, and switching in from other funds.",
+        "start": 13.63,
+        "seconds": 5.04,
+        "window": 5.67,
+        "fill": 0.889
+      },
+      {
+        "scene": "allowed",
+        "text": "Good news. A SIP registered before the cut-off keeps going. You can still withdraw. And gold ETFs on the exchange are not part of this pause.",
+        "start": 19.3,
+        "seconds": 7.72,
+        "window": 8.3,
+        "fill": 0.93
+      },
+      {
+        "scene": "money",
+        "text": "So Rohan's ₹3,000 a month still goes in. That is ₹36,000 over a year, same as before.",
+        "start": 27.6,
+        "seconds": 6.18,
+        "window": 6.8,
+        "fill": 0.909
+      },
+      {
+        "scene": "sharma",
+        "text": "When does it open again? No date yet. The fund houses only say, till further notice.",
+        "start": 34.4,
+        "seconds": 4.29,
+        "window": 4.93,
+        "fill": 0.87
+      },
+      {
+        "scene": "outro",
+        "text": "Follow for the next money rule that changes.",
+        "start": 39.33,
+        "seconds": 1.94,
+        "window": 2.57,
+        "fill": 0.755
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.6
+  },
+  "liveliness": {
+    "median": 1.765,
+    "still_share": 0.095,
+    "longest_still_sec": 2.0
+  },
+  "liveliness_problems": []
+}

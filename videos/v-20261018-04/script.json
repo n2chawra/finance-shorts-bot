@@ -1,0 +1,534 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261018-04",
+ "seed": 61847,
+ "story": "rule_change",
+ "style": {
+  "palette": "ember",
+  "genre": "lofi",
+  "key": "D",
+  "bpm": 88
+ },
+ "feed_id": "trend-2026-10-18-gold-fof-pause",
+ "maths": [
+  {
+   "name": "sip",
+   "kind": "emi",
+   "amount": 36000,
+   "rate_pct": 0,
+   "years": 1
+  }
+ ],
+ "thumbnail": {
+  "who": "rohan",
+  "pose": "phone",
+  "expression": "shock",
+  "prop": "phone",
+  "figure": "{sip_emi}",
+  "words": "Gold SIP paused?",
+  "sub": "What still runs"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "bignumber",
+   "camera": "punch:away",
+   "say": "Tried to start a gold fund SIP this week, and got turned away?",
+   "events": {
+    "away": {
+     "word": "turned"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "away",
+     "gain": 0.7
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Gold fund SIP",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "Turned away?",
+      "style": "hero",
+      "at": "start"
+     },
+     {
+      "text": "Here is why",
+      "style": "sub",
+      "at": "away"
+     }
+    ],
+    "actor": {
+     "who": "rohan",
+     "x": 0.7,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "expression": "confused",
+       "prop": "phone"
+      },
+      {
+       "at": "away",
+       "pose": "worried",
+       "expression": "shock"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "news",
+   "scene": "reveal",
+   "transition": "whip",
+   "camera": "punch:paused",
+   "say": "This week, many fund houses stopped taking new money into their gold funds of funds, on instructions from SEBI.",
+   "events": {
+    "paused": {
+     "word": "stopped"
+    },
+    "sebi": {
+     "word": "SEBI"
+    },
+    "houses": {
+     "word": "houses"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "paused",
+     "gain": 0.7
+    },
+    {
+     "kind": "pop",
+     "at": "sebi"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Gold funds of funds",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "New money paused",
+      "style": "danger",
+      "at": "paused"
+     },
+     {
+      "text": "On SEBI's instructions",
+      "style": "sub",
+      "at": "sebi"
+     }
+    ],
+    "actor": {
+     "who": "rohan",
+     "x": 0.7,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "expression": "confused",
+       "prop": "phone"
+      },
+      {
+       "at": "houses",
+       "pose": "think",
+       "expression": "worried"
+      },
+      {
+       "at": "paused",
+       "pose": "facepalm",
+       "expression": "shock"
+      },
+      {
+       "at": "sebi",
+       "pose": "worried",
+       "expression": "sad"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "rohan",
+   "scene": "stage",
+   "speaker": "rohan",
+   "transition": "slide-up",
+   "say": "Wait. My gold SIP is already running. Does that stop too?",
+   "events": {
+    "stop": {
+     "word": "stop"
+    },
+    "run": {
+     "word": "running"
+    },
+    "wait": {
+     "word": "Wait"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "expression": "worried",
+        "prop": "phone"
+       },
+       {
+        "at": "wait",
+        "pose": "worried",
+        "expression": "shock"
+       },
+       {
+        "at": "run",
+        "pose": "point",
+        "expression": "thinking",
+        "turn": -0.5
+       },
+       {
+        "at": "stop",
+        "pose": "shrug",
+        "expression": "confused",
+        "turn": 0.5
+       }
+      ],
+      "enter": "left"
+     }
+    ],
+    "chip": {
+     "text": "My gold SIP?",
+     "at": "run"
+    },
+    "sikka": {
+     "x": 0.78,
+     "at": "stop",
+     "expression": "worried",
+     "drop": true
+    }
+   },
+   "camera": "punch:stop"
+  },
+  {
+   "id": "hold",
+   "scene": "bignumber",
+   "transition": "whip",
+   "camera": "punch:d",
+   "say": "On hold, till further notice: new SIPs, lump sums, top-ups, and switching in from other funds.",
+   "events": {
+    "a": {
+     "word": "new"
+    },
+    "b": {
+     "word": "lump"
+    },
+    "c": {
+     "word": "top-ups"
+    },
+    "d": {
+     "word": "switching"
+    },
+    "hold": {
+     "word": "hold"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "a"
+    },
+    {
+     "kind": "tick",
+     "at": "b"
+    },
+    {
+     "kind": "tick",
+     "at": "c"
+    },
+    {
+     "kind": "tick",
+     "at": "d"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "On hold",
+      "style": "kicker",
+      "at": "start"
+     },
+     {
+      "text": "New SIPs",
+      "style": "danger",
+      "at": "a"
+     },
+     {
+      "text": "Lump sums",
+      "style": "danger",
+      "at": "b"
+     },
+     {
+      "text": "Top-ups",
+      "style": "danger",
+      "at": "c"
+     },
+     {
+      "text": "Switch-ins",
+      "style": "danger",
+      "at": "d"
+     }
+    ],
+    "actor": {
+     "who": "priya",
+     "x": 0.72,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "hips",
+       "expression": "neutral"
+      },
+      {
+       "at": "hold",
+       "pose": "worried",
+       "expression": "worried"
+      },
+      {
+       "at": "a",
+       "pose": "point",
+       "expression": "thinking"
+      },
+      {
+       "at": "b",
+       "pose": "pointUp",
+       "expression": "confused",
+       "turn": -0.5
+      },
+      {
+       "at": "c",
+       "pose": "facepalm",
+       "expression": "sad",
+       "turn": 0.5
+      },
+      {
+       "at": "d",
+       "pose": "shrug",
+       "expression": "sad",
+       "turn": 0
+      }
+     ],
+     "enter": "right"
+    }
+   }
+  },
+  {
+   "id": "allowed",
+   "scene": "checklist",
+   "speaker": "priya",
+   "transition": "zoom",
+   "say": "Good news. A SIP registered before the cut-off keeps going. You can still withdraw. And gold ETFs on the exchange are not part of this pause.",
+   "events": {
+    "a": {
+     "word": "keeps"
+    },
+    "b": {
+     "word": "withdraw"
+    },
+    "c": {
+     "word": "ETFs"
+    },
+    "good": {
+     "word": "Good"
+    },
+    "reg": {
+     "word": "registered"
+    },
+    "still": {
+     "word": "still"
+    },
+    "pause": {
+     "word": "pause"
+    },
+    "exch": {
+     "word": "exchange"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "a"
+    },
+    {
+     "kind": "ding",
+     "at": "b"
+    },
+    {
+     "kind": "ding",
+     "at": "c"
+    }
+   ],
+   "params": {
+    "title": "Still allowed",
+    "items": [
+     {
+      "text": "SIPs started earlier",
+      "icon": "autopay"
+     },
+     {
+      "text": "Withdrawals",
+      "icon": "check"
+     },
+     {
+      "text": "Gold ETFs",
+      "icon": "check"
+     }
+    ],
+    "active": 3,
+    "actor": {
+     "who": "priya",
+     "x": 0.75,
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "wave",
+       "expression": "happy"
+      },
+      {
+       "at": "good",
+       "pose": "celebrate",
+       "expression": "laugh"
+      },
+      {
+       "at": "reg",
+       "pose": "present",
+       "expression": "happy"
+      },
+      {
+       "at": "a",
+       "pose": "thumbsUp",
+       "expression": "proud"
+      },
+      {
+       "at": "still",
+       "pose": "point",
+       "expression": "smirk"
+      },
+      {
+       "at": "b",
+       "pose": "present",
+       "expression": "happy",
+       "turn": -0.5
+      },
+      {
+       "at": "c",
+       "pose": "pointUp",
+       "expression": "proud",
+       "turn": 0.5
+      },
+      {
+       "at": "exch",
+       "pose": "celebrate",
+       "expression": "laugh",
+       "turn": -0.3
+      },
+      {
+       "at": "pause",
+       "pose": "hips",
+       "expression": "smirk",
+       "turn": 0
+      }
+     ],
+     "enter": "right"
+    }
+   },
+   "camera": "punch:b"
+  },
+  {
+   "id": "money",
+   "scene": "calendar",
+   "transition": "slide-up",
+   "say": "So Rohan's {sip_emi} a month still goes in. That is {sip_total_paid} over a year, same as before.",
+   "events": {
+    "month": {
+     "word": "month"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "month"
+    },
+    {
+     "kind": "kaching",
+     "at": "year"
+    }
+   ],
+   "params": {
+    "loops": 2,
+    "label": "{sip_emi} a month",
+    "labelAt": "month",
+    "sub": "{sip_total_paid} in a year",
+    "subAt": "year"
+   },
+   "camera": "punch:year"
+  },
+  {
+   "id": "sharma",
+   "scene": "calendar",
+   "speaker": "sharma",
+   "transition": "slide",
+   "say": "When does it open again? No date yet. The fund houses only say, till further notice.",
+   "events": {
+    "nodate": {
+     "word": "No"
+    }
+   },
+   "params": {
+    "loops": 3,
+    "label": "Reopening date?",
+    "labelAt": "start",
+    "sub": "Till further notice",
+    "subAt": "nodate"
+   },
+   "camera": "punch:nodate",
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "start"
+    },
+    {
+     "kind": "fail",
+     "at": "nodate",
+     "gain": 0.6
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "Follow for the next money rule that changes.",
+   "params": {
+    "cta": "Do you hold a gold fund?",
+    "follow": "Follow for one money idea a day",
+    "assumption": "Amounts invested, not returns. Rules vary by fund house."
+   }
+  }
+ ]
+}

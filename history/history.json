@@ -283,5 +283,38 @@
     },
     "format": "short",
     "story": "trap_alert"
+  },
+  {
+    "id": "v-20261018-04",
+    "created_at": "2026-10-18T06:31:45.567119+00:00",
+    "template": "short_story",
+    "topic": {
+      "title": "Gold funds of funds stop taking new money: what stops and what keeps running for a gold SIP",
+      "category": "gold",
+      "trend": {
+        "id": "trend-2026-10-18-gold-fof-pause",
+        "why_now": "Since 15-16 October 2026, fund houses including Tata, UTI, ICICI Prudential, HDFC, Aditya Birla Sun Life, DSP and Invesco have stopped fresh lump sums, new SIPs, top-ups and switch-ins into their gold funds of funds on SEBI's instructions, till further notice; existing SIPs and redemptions continue and gold ETFs are not affected.",
+        "sources": [
+          "https://cafemutual.com/news/passives/39072-as-per-sebi-instructions-fund-houses-halt-fresh-inflows-into-gold-etf-fofs",
+          "https://business-standard.com/amp/markets/commodities/gold-fof-subscriptions-halted-what-the-restrictions-mean-for-investors-126101601207_1.html",
+          "https://www.5paisa.com/blog/17-mutual-fund-houses-restrict-gold-etf-fof-investments"
+        ],
+        "found": "2026-10-18",
+        "expires": "2026-10-20"
+      }
+    },
+    "title": "Gold fund SIP turned away this week? What the pause means for you",
+    "description": "Fund houses have paused new money into their gold funds of funds on SEBI's instructions. What is on hold, what keeps running, and what it means for a ₹3,000 monthly gold SIP. Illustrative only. Not financial advice.",
+    "hook_style": "question",
+    "cta": "Do you hold a gold fund?",
+    "style": {
+      "palette": "ember",
+      "genre": "lofi",
+      "key": "D",
+      "bpm": 88,
+      "voice": "am_fenrir"
+    },
+    "format": "short",
+    "story": "rule_change"
   }
 ]
