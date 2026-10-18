@@ -20,7 +20,11 @@ import { notifyOwner } from "./autopilot.db";
 import { prisma } from "./prisma";
 
 const FRESH_MS = 30_000;   // matches the dashboard's 30 s polling
-const WAIT_MS = 2_500;     // longest a page waits for YouTube before showing the stored numbers
+// Longest a page waits for YouTube before showing the stored numbers. A refresh is one YouTube call
+// and one UPDATE, well under a second; the old 2.5 s cut-off (with one UPDATE per video) often fired
+// first, and on Netlify the unfinished refresh then froze with the function and only landed on the
+// next request, so a page showed old counts until you opened another one.
+const WAIT_MS = 6_000;
 
 const VideosResponse = z.object({
   items: z.array(z.object({
@@ -67,17 +71,20 @@ async function run(): Promise<void> {
       throw new Error(`YouTube ${res.status}: ${body}`);
     }
     const found = new Map(VideosResponse.parse(await res.json()).items.map((it) => [it.id, it.statistics]));
-    const now = new Date();
-    await prisma.$transaction(batch.map((u) => {
+    // private or deleted videos come back empty: null keeps their last counters (GREATEST skips
+    // nulls) and they are just marked checked. One statement for the whole batch.
+    const stat = (u: { youtubeId: string | null }, k: "viewCount" | "likeCount" | "commentCount") => {
       const s = found.get(u.youtubeId!);
-      // private or deleted videos come back empty: keep the last counters, just mark them checked
-      if (!s) return prisma.upload.update({ where: { id: u.id }, data: { liveAt: now } });
-      return prisma.$executeRaw`UPDATE "Upload" SET
-        "liveViews" = GREATEST(COALESCE("liveViews", 0), ${s.viewCount ?? 0}),
-        "liveLikes" = GREATEST(COALESCE("liveLikes", 0), ${s.likeCount ?? 0}),
-        "liveComments" = GREATEST(COALESCE("liveComments", 0), ${s.commentCount ?? 0}),
-        "liveAt" = ${now}
-        WHERE "id" = ${u.id}`;
-    }));
+      return s ? s[k] ?? 0 : null;
+    };
+    await prisma.$executeRaw`UPDATE "Upload" AS u SET
+      "liveViews" = GREATEST(u."liveViews", d.views),
+      "liveLikes" = GREATEST(u."liveLikes", d.likes),
+      "liveComments" = GREATEST(u."liveComments", d.comments),
+      "liveAt" = ${new Date()}
+      FROM unnest(${batch.map((u) => u.id)}::text[], ${batch.map((u) => stat(u, "viewCount"))}::int[],
+                  ${batch.map((u) => stat(u, "likeCount"))}::int[], ${batch.map((u) => stat(u, "commentCount"))}::int[])
+        AS d(id, views, likes, comments)
+      WHERE u."id" = d.id`;
   }
 }
