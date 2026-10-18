@@ -1,0 +1,346 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261019-01",
+ "seed": 61873,
+ "story": "myth_bust",
+ "currency": "GBP",
+ "style": {
+  "palette": "sky",
+  "genre": "acoustic",
+  "key": "G",
+  "bpm": 96
+ },
+ "feed_id": "2026-10-19-uk-price-cap-myth",
+ "facts": [
+  {
+   "label": "Ofgem price cap, typical dual-fuel household paying by Direct Debit, a year, 1 October to 31 December",
+   "value": 1723,
+   "unit": "money",
+   "currency": "GBP",
+   "as_of": "2026-08-26",
+   "source": "Ofgem",
+   "url": "https://ofgem.gov.uk/press-release/energy-price-cap-will-rise-4-october-2026"
+  },
+  {
+   "label": "Rise in the cap for that household, a year",
+   "value": 60,
+   "unit": "money",
+   "currency": "GBP",
+   "as_of": "2026-08-26",
+   "source": "Ofgem",
+   "url": "https://ofgem.gov.uk/press-release/energy-price-cap-will-rise-4-october-2026"
+  }
+ ],
+ "maths": [
+  {
+   "name": "heat",
+   "kind": "lumpsum",
+   "amount": 1723,
+   "rate_pct": 25,
+   "years": 1
+  }
+ ],
+ "thumbnail": {
+  "who": "rohan",
+  "pose": "shrug",
+  "expression": "confused",
+  "figure": "{fact1}",
+  "words": "Not your bill limit",
+  "sub": "UK energy price cap"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "kinetic",
+   "speaker": "rohan",
+   "camera": "push",
+   "say": "The energy price cap means my bill is capped, right?",
+   "events": {
+    "cap": {
+     "word": "capped"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "cap"
+    }
+   ],
+   "params": {
+    "mode": "box",
+    "world": "street",
+    "lines": [
+     {
+      "text": "Is my bill",
+      "at": "start"
+     },
+     {
+      "text": "capped?",
+      "at": "start"
+     }
+    ],
+    "presenter": {
+     "who": "rohan",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "prop": "phone",
+       "expression": "happy"
+      },
+      {
+       "at": "cap",
+       "pose": "shrug",
+       "expression": "confused",
+       "bubble": {
+        "icon": "?"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "headline",
+   "scene": "headline",
+   "say": "Ofgem's cap just went up {fact2}, to {fact1} a year. But that is not a limit on your bill.",
+   "events": {
+    "fig": {
+     "word": "to"
+    },
+    "no": {
+     "word": "not"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "fig",
+     "gain": 0.7
+    },
+    {
+     "kind": "fail",
+     "at": "no",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "kicker": "MYTH",
+    "title": "The cap went up",
+    "figure": "{fact1}",
+    "figureAt": "fig",
+    "label": "UK energy price cap, a year"
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "actually",
+   "scene": "reveal",
+   "transition": "zoom",
+   "camera": "drift",
+   "say": "The cap limits the price of each unit of energy, and the daily standing charge.",
+   "events": {
+    "no": {
+     "word": "cap"
+    },
+    "unit": {
+     "word": "unit"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "no"
+    },
+    {
+     "kind": "pop",
+     "at": "unit"
+    }
+   ],
+   "params": {
+    "lines": [
+     {
+      "text": "Not a cap on your bill",
+      "style": "danger",
+      "at": "no"
+     },
+     {
+      "text": "A cap on the price per unit",
+      "style": "sub",
+      "at": "unit"
+     }
+    ]
+   }
+  },
+  {
+   "id": "typical",
+   "scene": "kinetic",
+   "transition": "slide-up",
+   "say": "That headline figure is just for a typical home, using a typical amount of energy.",
+   "events": {
+    "typ": {
+     "word": "typical"
+    }
+   },
+   "params": {
+    "mode": "box",
+    "world": "street",
+    "lines": [
+     {
+      "text": "Typical home",
+      "at": "start"
+     },
+     {
+      "text": "Typical usage",
+      "at": "typ"
+     }
+    ],
+    "presenter": {
+     "who": "priya",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "smirk"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "more",
+   "scene": "split",
+   "transition": "slide",
+   "say": "Use more, in a cold home or working from home, and your bill could be {heat_rate} higher: {heat_final}.",
+   "events": {
+    "right": {
+     "word": "higher"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "right",
+     "gain": 0.7
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "Typical use",
+     "text": "{heat_amount}",
+     "value": 0,
+     "at": "start"
+    },
+    "right": {
+     "label": "Using more",
+     "text": "{heat_final}",
+     "value": "@heat.final",
+     "at": "right"
+    }
+   }
+  },
+  {
+   "id": "extra",
+   "scene": "equation",
+   "transition": "zoom",
+   "say": "That is {heat_gains} extra a year, at the very same capped prices.",
+   "events": {
+    "house": {
+     "word": "That"
+    },
+    "extra": {
+     "word": "extra"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "house"
+    },
+    {
+     "kind": "kaching",
+     "at": "extra"
+    }
+   ],
+   "params": {
+    "title": "Same cap, bigger bill",
+    "ops": [
+     "+"
+    ],
+    "items": [
+     {
+      "icon": "house",
+      "text": "{heat_amount}",
+      "label": "typical",
+      "at": "house"
+     },
+     {
+      "icon": "cash",
+      "text": "{heat_gains}",
+      "value": "@heat.gains",
+      "label": "extra",
+      "at": "extra"
+     }
+    ],
+    "presenter": {
+     "who": "sharma",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "think",
+       "expression": "thinking"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "rule",
+   "scene": "kinetic",
+   "speaker": "priya",
+   "transition": "slide-up",
+   "say": "The cap fixes the price. Your usage sets the bill.",
+   "params": {
+    "mode": "box",
+    "world": "kitchen",
+    "lines": [
+     {
+      "text": "Cap fixes the price",
+      "at": "start"
+     },
+     {
+      "text": "Usage sets the bill",
+      "at": "use"
+     }
+    ],
+    "presenter": {
+     "who": "priya",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "pointUp",
+       "expression": "proud"
+      }
+     ]
+    }
+   },
+   "events": {
+    "use": {
+     "word": "usage"
+    }
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "Now you know what the cap really caps.",
+   "params": {
+    "cta": "Check your own usage",
+    "follow": "Follow for one money question, settled",
+    "assumption": "Assumes higher usage puts a bill {heat_rate} above the typical cap figure."
+   }
+  }
+ ]
+}
