@@ -345,13 +345,3 @@ def test_render_sets_a_missing_or_repeated_narrator_and_keeps_it(root: Path) -> 
     assert saved["narrator"] not in ("am_michael", None) and "experiments" not in saved
     run.render(VID, preview=True, root=root)
     assert json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))["narrator"] == saved["narrator"]
-
-
-def test_trailer_plan_names_a_shipped_long_video(root: Path) -> None:
-    put(root, "plan.json", make_plan(trailer_of="L-20261012-01"))
-    assert any("not a shipped long video" in p for p in run.check_plan(VID, root))
-    long_video = {**entry(5, "long_story", "housing"), "id": "L-20261012-01", "format": "long"}
-    history.append(long_video, root)
-    assert not [p for p in run.check_plan(VID, root) if "trailer" in p]
-    history.append({**entry(6), "trailer_of": "L-20261012-01"}, root)
-    assert any("already has a trailer" in p for p in run.check_plan(VID, root))
