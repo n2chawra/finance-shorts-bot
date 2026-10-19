@@ -24,7 +24,11 @@ async function tokenRejected(status: number): Promise<void> {
     fix: "1. GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token.\n2. Repository access: only finance-shorts-bot. Permissions: Contents → Read-only.\n3. Netlify → Project configuration → Environment variables → replace GITHUB_TOKEN.\n4. Netlify → Deploys → Trigger deploy. Then mark this resolved." });
 }
 
-const FILES = { thumbnail: ["thumbnail.png", "image/png"], preview: ["preview.png", "image/png"], video: ["video.mp4", "video/mp4"] } as const;
+const FILES = {
+  thumbnail: ["thumbnail.png", "image/png"], preview: ["preview.png", "image/png"], video: ["video.mp4", "video/mp4"],
+  // a long video's extra thumbnails for YouTube's Test & Compare
+  "thumbnail-b": ["thumbnail-b.png", "image/png"], "thumbnail-c": ["thumbnail-c.png", "image/png"],
+} as const;
 const GH = "https://api.github.com";
 
 function local(file: string, type: string, range: string | null): Response {

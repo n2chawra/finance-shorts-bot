@@ -161,3 +161,24 @@ def test_counters_on_their_own_figure_pass() -> None:
              {"label": "Months", "text": "{card_months} months", "value": "@card.months"},
              {"label": "First due", "text": "just {card_min_due}", "value": "@card.first_min_due"}]
     tb.check_script(script([{"id": "a", "scene": "towers", "params": {"items": items}}, {"id": "z", "scene": "end"}]))
+
+
+def test_three_thumbnails_need_different_angles() -> None:
+    import copy
+    import json
+    from pathlib import Path
+
+    from renderer.timeline.build import check_script
+    s = json.loads((Path(__file__).resolve().parents[2] / "examples" / "long_story.json").read_text(encoding="utf-8"))
+    t = s["thumbnail"]
+    s["thumbnail"] = {**t, "angle": "number"}
+    s["thumbnails"] = [{**t, "angle": "question"}, {**t, "angle": "reaction"}]
+    check_script(s)
+    same = copy.deepcopy(s)
+    same["thumbnails"][0]["angle"] = "number"
+    with pytest.raises(ValueError, match="different angle"):
+        check_script(same)
+    too_many = copy.deepcopy(s)
+    too_many["thumbnails"].append({**t, "angle": "warning"})
+    with pytest.raises(ValueError, match="two more at most"):
+        check_script(too_many)

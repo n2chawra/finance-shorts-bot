@@ -135,3 +135,18 @@ export async function dailyStats(token: string, youtubeId: string, startDate: st
     day: String(r[d!]), views: Number(r[v!]), likes: Number(r[l!]), comments: Number(r[c!]), subsGained: Number(r[s!]), avgViewPct: Number(r[a!]),
   }));
 }
+
+/** A video's audience retention curve over its whole life: [elapsed share 0..1, audienceWatchRatio],
+ * up to 100 points. Empty when YouTube has too few views to show one. */
+export async function retentionCurve(token: string, youtubeId: string, startDate: string, endDate: string): Promise<[number, number][]> {
+  const q = new URLSearchParams({
+    ids: "channel==MINE", startDate, endDate, dimensions: "elapsedVideoTimeRatio", filters: `video==${youtubeId}`,
+    metrics: "audienceWatchRatio", sort: "elapsedVideoTimeRatio",
+  });
+  const res = await fetch(`https://youtubeanalytics.googleapis.com/v2/reports?${q}`, { headers: { authorization: `Bearer ${token}` } });
+  if (!res.ok) throw new Error(`retention report failed for ${youtubeId}: ${await failText(res)}`);
+  const report = Report.parse(await res.json());
+  const x = report.columnHeaders.findIndex((h) => h.name === "elapsedVideoTimeRatio");
+  const y = report.columnHeaders.findIndex((h) => h.name === "audienceWatchRatio");
+  return (report.rows ?? []).map((r) => [Number(r[x]), Number(r[y])] as [number, number]).filter(([a, b]) => Number.isFinite(a) && Number.isFinite(b));
+}

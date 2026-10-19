@@ -24,6 +24,7 @@ export const listRuns = async (): Promise<Run[]> => (useDb ? db.listRuns() : sam
 export const getAnalytics = async (): Promise<Analytics> => (useDb ? db.getAnalytics() : sample.getAnalytics());
 export const reorderQueue = async (ids: string[]): Promise<Video[] | null> => (useDb ? db.reorderQueue(ids) : sample.reorderQueue(ids));
 export const markUploaded = async (id: string, m: ManualUpload): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.markUploaded(id, m) : sample.markUploaded(id, m));
+export const setThumbWinner = async (id: string, winner: string | null): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.setThumbWinner(id, winner) : sample.setThumbWinner(id, winner));
 export const videoAction = async (id: string, action: VideoAction): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.videoAction(id, action) : sample.videoAction(id, action));
 
 // ---------------- autopilot ----------------

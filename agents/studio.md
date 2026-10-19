@@ -90,6 +90,13 @@ python -m generator.run figures <id>          # every figure, and every beat's l
 ```
 Two rewrites at most; then stop and mark the video failed.
 
+**Three thumbnails** (owner, 2026-10-19): besides `thumbnail`, write `thumbnails` with two more, each
+with a different `angle` from `number` (the figure leads), `question` (the words ask), `reaction` (a
+cast member's face leads), `versus` (two things compared) and `warning` (a risk named). Give the
+main one an `angle` too. They are tested against each other on YouTube (Test & Compare); read
+`thumbnailAngles` in `python -m improvement.evaluate --json` first and make the angle that wins most
+often the main one, with two others to keep learning.
+
 ## 4. Fact review (a subagent with fresh context)
 Spawn one subagent. Give it only the video id and the instruction to read
 `generator/prompts/fact_reviewer.md` and follow it exactly. Tell it nothing about your reasoning.

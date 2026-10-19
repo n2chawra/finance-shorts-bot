@@ -17,6 +17,9 @@ Each experiment is judged within one format (`format`: short, the default, or lo
   avgViewPct   average % viewed: how a video looks, moves and sounds, and every long-video change.
                It depends far less on the algorithm's luck than views do while the channel is small.
   views7d      views in the first seven days, for long videos whose views come slowly
+  hookHold     viewers still watching at 3 s (Short) or 30 s (long), from YouTube's retention curve
+               (workers/lib/retention.ts): the hook's own score. Hook experiments use it once the
+               format's videos have it (YouTube shows a curve only past a few views), else 48 h views.
 An experiment may name its `metric`; otherwise its area and format decide. A video counts once
 Analytics has its second day. Guard: share of attempts that failed QA/fact review.
 """
@@ -42,7 +45,7 @@ MAX_DAYS = 14            # judge anyway after this long
 KEEP_LIFT = 1.10         # on-arm median ≥ 110% of off-arm (views)
 REVERT_DROP = 0.90       # on-arm median ≤ 90% of off-arm (views)
 # % viewed moves less than views do: five points on fifty is a real change
-LIFTS = {"views48h": (KEEP_LIFT, REVERT_DROP), "views7d": (KEEP_LIFT, REVERT_DROP), "avgViewPct": (1.05, 0.95)}
+LIFTS = {"views48h": (KEEP_LIFT, REVERT_DROP), "views7d": (KEEP_LIFT, REVERT_DROP), "avgViewPct": (1.05, 0.95), "hookHold": (1.05, 0.95)}
 METRICS = tuple(LIFTS)
 RETENTION_AREAS = frozenset({"motion", "pacing", "text", "colour", "sound", "music", "voice", "ending", "scene", "template"})
 CONFIDENCE = 0.80        # bootstrap probability required
@@ -73,12 +76,15 @@ def prob_greater(a: list[float], b: list[float], n: int = 2000, seed: int = 7) -
     return wins/n
 
 
-def metric_of(exp: dict) -> str:
-    """What an experiment is judged on: its own `metric`, else retention for look, sound and every
-    long-video change, else 48 h views."""
+def metric_of(exp: dict, videos: list[dict] | None = None) -> str:
+    """What an experiment is judged on: its own `metric`; a hook change on the hook score once the
+    format's videos have one; retention for look, sound and every long-video change; else 48 h views."""
     if exp.get("metric") in METRICS:
         return exp["metric"]
-    return "avgViewPct" if exp.get("format") == "long" or exp.get("area") in RETENTION_AREAS else "views48h"
+    fmt = exp.get("format", "short")
+    if exp.get("area") == "hook" and any(v.get("hookHold") is not None and v.get("format", "short") == fmt for v in videos or []):
+        return "hookHold"
+    return "avgViewPct" if fmt == "long" or exp.get("area") in RETENTION_AREAS else "views48h"
 
 
 def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) -> dict:
@@ -86,7 +92,7 @@ def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) ->
     eid = exp["id"]
     started = exp.get("startedAt", "1970-01-01")
     share = float(exp.get("share", 0.5))
-    fmt, metric = exp.get("format", "short"), metric_of(exp)
+    fmt, metric = exp.get("format", "short"), metric_of(exp, videos)
     keep_lift, revert_drop = LIFTS[metric]
     arms: dict[str, list[dict]] = {"on": [], "off": []}
     for v in videos:
@@ -95,7 +101,7 @@ def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) ->
         variant = (v.get("experiments") or {}).get(eid)
         if variant in arms:
             arms[variant].append(v)
-    smooth = 0 if metric == "avgViewPct" else 1     # +1 so zero-view arms still compare
+    smooth = 0 if metric in ("avgViewPct", "hookHold") else 1     # +1 so zero-view arms still compare
     on = [v[metric] + smooth for v in arms["on"]]
     off = [v[metric] + smooth for v in arms["off"]]
     pct_on = [v["avgViewPct"] for v in arms["on"] if v.get("avgViewPct") is not None]
@@ -130,7 +136,7 @@ def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) ->
     }
     if guard_bad:
         return {**out, "verdict": "revert", "why": f"QA/fact failures {fail_on:.0%} with the change vs {fail_off:.0%} without"}
-    label = {"views48h": "views in 48 h", "views7d": "views in 7 days", "avgViewPct": "average % viewed"}[metric]
+    label = {"views48h": "views in 48 h", "views7d": "views in 7 days", "avgViewPct": "average % viewed", "hookHold": "viewers kept past the hook"}[metric]
     if n < min_per_arm and days < max_days:
         need = min_per_arm - n
         pace = "about one more long video per arm a week" if fmt == "long" else f"about {need} more days at 2 uploads a day"
@@ -159,11 +165,30 @@ def rank(videos: list[dict], key, label: str) -> list[dict]:
     for k, vs in groups.items():
         views = [v["views48h"] for v in vs]
         pcts = [v["avgViewPct"] for v in vs if v.get("avgViewPct") is not None]
+        holds = [v["hookHold"] for v in vs if v.get("hookHold") is not None]
         rest = [v["views48h"] + 1 for v in scored if str(key(v)) != k]
         rows.append({"by": label, "value": k, "n": len(vs), "median48h": _median(views), "relative": round(_median(views)/overall, 2),
                      "avgPct": round(statistics.mean(pcts), 1) if pcts else None,
+                     "hookHold": round(statistics.mean(holds), 3) if holds else None,
                      "p_better_than_rest": round(prob_greater([x + 1 for x in views], rest), 2) if rest else None})
     return sorted(rows, key=lambda r: -r["relative"])
+
+
+def thumbnail_angles(videos: list[dict]) -> list[dict]:
+    """Which thumbnail angle wins YouTube's Test & Compare: for every angle, how often it was in a test
+    and how often it won (the owner logs the winner on the dashboard). Ranked by win rate."""
+    tested: dict[str, int] = {}
+    won: dict[str, int] = {}
+    for v in videos:
+        angles, winner = [a for a in v.get("thumbAngles") or [] if a], v.get("thumbWinner")
+        if len(angles) < 2 or not winner:
+            continue
+        for a in angles:
+            tested[a] = tested.get(a, 0) + 1
+        won[winner] = won.get(winner, 0) + 1
+    rows = [{"angle": a, "tests": n, "wins": won.get(a, 0), "winRate": round(won.get(a, 0) / n, 2),
+             "expected": round(1 / 3, 2)} for a, n in tested.items()]
+    return sorted(rows, key=lambda r: (-r["winRate"], -r["tests"]))
 
 
 def template_advice(videos: list[dict], enabled: dict[str, dict]) -> list[dict]:
@@ -236,6 +261,7 @@ def report(root: Path = ROOT, now: datetime | None = None) -> dict:
         "generatedAt": now.isoformat(), "videosWithData": sum(v.get("views48h") is not None for v in videos),
         "experiments": [judge(e, videos, attempts, now) for e in exps.load(root)],
         "attributes": {f: attributes(vs, stories) for f, vs in by_format.items()},
+        "thumbnailAngles": thumbnail_angles(videos),
         "recurringFailures": recurring_failures(attempts, now),
     }
 
@@ -255,7 +281,12 @@ def main() -> int:
         print(f"\nWhat performs in {fmt} videos (48 h views relative to the median, n ≥ 3):")
         for a in rows:
             if a["n"] >= 3:
-                print(f"  {a['by']:>11} {a['value']:<26} {a['relative']:.2f}×  n={a['n']}  avg viewed {a['avgPct']}%")
+                hook = f"  kept past the hook {a['hookHold']:.0%}" if a.get("hookHold") is not None else ""
+                print(f"  {a['by']:>11} {a['value']:<26} {a['relative']:.2f}×  n={a['n']}  avg viewed {a['avgPct']}%{hook}")
+    if r["thumbnailAngles"]:
+        print("\nThumbnail angles in Test & Compare (a third is chance with three thumbnails):")
+        for t in r["thumbnailAngles"]:
+            print(f"  {t['angle']:<10} won {t['wins']} of {t['tests']} tests ({t['winRate']:.0%})")
     if r["recurringFailures"]:
         print("\nRecurring failures (fix these):")
         for f in r["recurringFailures"]:

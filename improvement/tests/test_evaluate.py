@@ -93,3 +93,23 @@ def test_recurring_failures_need_two_in_three_days() -> None:
          {"id": "v3", "day": "2026-10-01", "template": "t", "status": "failed", "reason": "QA review failed: caption overlaps chart in scene 3"}]
     out = ev.recurring_failures(a, NOW)
     assert len(out) == 1 and out[0]["videos"] == ["v1", "v2"]
+
+
+def test_hook_experiments_are_judged_on_the_hook_score_once_videos_have_it() -> None:
+    vs = videos([100] * 9, [100] * 9)
+    assert ev.metric_of(EXP, vs) == "views48h"
+    for v in vs:   # same views, but the change keeps far more viewers past the first 3 s
+        v["hookHold"] = 0.8 if v["experiments"]["fast-hook"] == "on" else 0.5
+    r = ev.judge(EXP, vs, [], NOW)
+    assert r["metric"] == "hookHold" and r["verdict"] == "keep"
+
+
+def test_thumbnail_angles_count_wins_per_test() -> None:
+    vs = [{"thumbAngles": ["number", "question", "reaction"], "thumbWinner": "number"},
+          {"thumbAngles": ["number", "versus", "reaction"], "thumbWinner": "number"},
+          {"thumbAngles": ["question", "reaction", "warning"], "thumbWinner": None},     # not decided yet
+          {"thumbAngles": [], "thumbWinner": None}]
+    rows = {r["angle"]: r for r in ev.thumbnail_angles(vs)}
+    assert rows["number"] == {"angle": "number", "tests": 2, "wins": 2, "winRate": 1.0, "expected": 0.33}
+    assert rows["reaction"]["tests"] == 2 and rows["reaction"]["wins"] == 0
+    assert ev.thumbnail_angles(vs)[0]["angle"] == "number"

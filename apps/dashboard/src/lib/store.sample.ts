@@ -412,6 +412,14 @@ export function markUploaded(id: string, m: ManualUpload): { ok: true } | { ok: 
   return { ok: true };
 }
 
+export function setThumbWinner(id: string, winner: string | null): { ok: true } | { ok: false; error: string } {
+  const v = db().videos.find((x) => x.id === id);
+  if (!v) return { ok: false, error: "Video not found" };
+  if (!v.style.thumbs?.length) return { ok: false, error: "This video has no thumbnail test" };
+  v.style = { ...v.style, thumbTest: winner ? { winner, at: new Date().toISOString() } : null };
+  return { ok: true };
+}
+
 export function videoAction(id: string, action: VideoAction): { ok: true } | { ok: false; error: string } {
   const s = db();
   const v = s.videos.find((x) => x.id === id);

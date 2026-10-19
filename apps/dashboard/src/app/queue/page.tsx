@@ -64,12 +64,18 @@ function PostNext({ slot }: { slot: PlanSlot & { video: Video } }) {
           {slot.stale && <p className="mt-2 flex items-center gap-1.5 text-xs text-critical-text"><AlertTriangle aria-hidden className="size-3.5" />Its news is stale by this slot. Post it as soon as you can.</p>}
           <div className="mt-3 flex flex-wrap gap-1.5">
             <a href={v.fileUrl} download={`${v.id}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>
-            <a href={v.thumbnailUrl} download={`${v.id}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>
+            {(v.style.thumbs?.length ?? 0) > 1
+              ? v.style.thumbs!.map((t, i) => {
+                const kind = t.file === "thumbnail-b.png" ? "thumbnail-b" : t.file === "thumbnail-c.png" ? "thumbnail-c" : "thumbnail";
+                return <a key={t.file} href={`/api/media/${v.id}/${kind}`} download={`${v.id}-${kind}.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Thumbnail {"ABC"[i]}</a>;
+              })
+              : <a href={v.thumbnailUrl} download={`${v.id}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>}
             <CopyButton text={v.title} label="Copy title" />
             <CopyButton text={description} label="Copy description" />
             <CopyButton text={v.tags.join(", ")} label="Copy tags" />
             <MarkUploaded v={v} />
           </div>
+          {(v.style.thumbs?.length ?? 0) > 1 && <p className="mt-2 text-xs text-muted">Three thumbnails: upload all three in YouTube Studio → Thumbnail → Test & Compare, then mark the winner on the video&apos;s page when YouTube names it.</p>}
           <p className="mt-2 text-xs text-muted">After posting, press Mark as uploaded and paste the link: the next video moves up here.</p>
         </div>
       </div>

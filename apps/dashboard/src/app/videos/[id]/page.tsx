@@ -13,8 +13,8 @@ import { ActionMenu, Card, ConfirmButton, buttonClass, Empty, ErrorNote, Loading
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, fmtRelative, titleCase } from "@/lib/format";
 import { postingPlan } from "@/lib/posting-plan";
-import { useQueue, useSettings, useVideo, useVideoAction, useVideos } from "@/lib/queries";
-import type { VideoAction } from "@/lib/schemas";
+import { useQueue, useSettings, useThumbWinner, useVideo, useVideoAction, useVideos } from "@/lib/queries";
+import type { VideoAction, VideoDetail } from "@/lib/schemas";
 
 import { MarkUploaded, YouTubeDetails } from "./publish-tools";
 
@@ -41,6 +41,35 @@ function scriptParts(script: unknown): { inputs: [string, string][]; lines: [str
     inputs: Object.entries(rest).map(([k, v]) => [titleCase(k), show(v)]),
     lines: text && typeof text === "object" ? Object.entries(text as Record<string, unknown>).map(([k, v]) => [k, String(v)]) : [],
   };
+}
+
+const THUMB_KIND: Record<string, string> = { "thumbnail.png": "thumbnail", "thumbnail-b.png": "thumbnail-b", "thumbnail-c.png": "thumbnail-c" };
+
+/** A long video's three thumbnails for YouTube's Test & Compare, and which one won. */
+function ThumbTest({ v }: { v: VideoDetail }) {
+  const pick = useThumbWinner();
+  const toast = useToast();
+  const winner = v.style.thumbTest?.winner ?? null;
+  return (
+    <Card title="Thumbnail test" description="Upload all three in YouTube Studio → Thumbnail → Test & Compare. When YouTube names a winner, mark it here: the agents learn which angle works.">
+      <div className="grid grid-cols-3 gap-2">
+        {(v.style.thumbs ?? []).map((t, i) => {
+          const kind = THUMB_KIND[t.file] ?? "thumbnail", won = winner === t.file;
+          return (
+            <div key={t.file} className={`flex flex-col gap-1.5 rounded-lg border p-1.5 ${won ? "border-brand" : "border-ring"}`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/api/media/${v.id}/${kind}`} alt={`Thumbnail ${"ABC"[i]}`} className="aspect-video w-full rounded object-cover" />
+              <span className="text-[11px] text-ink2">{"ABC"[i]} · {titleCase(t.angle ?? "—")}</span>
+              <a href={`/api/media/${v.id}/${kind}`} download={`${v.id}-${kind}.png`} className={buttonClass("ghost")}><ImageDown aria-hidden className="size-4" />Download</a>
+              <button type="button" disabled={pick.isPending} aria-pressed={won}
+                onClick={() => pick.mutate({ id: v.id, winner: won ? null : t.file }, { onSuccess: () => toast(won ? "Winner cleared" : `Thumbnail ${"ABC"[i]} marked as the winner`), onError: (e) => toast(e.message, "error") })}
+                className={buttonClass(won ? "primary" : "default")}>{won ? "Winner" : "Mark winner"}</button>
+            </div>
+          );
+        })}
+      </div>
+    </Card>
+  );
 }
 
 function Row({ k, children }: { k: string; children: React.ReactNode }) {
@@ -141,6 +170,7 @@ export default function VideoPage() {
               <Row k="Voiceover">{v.style.voice ? `On · ${voiceLabel(v.style.voice)}` : "None"}</Row>
             </dl>
           </Card>
+          {(v.style.thumbs?.length ?? 0) > 1 && <ThumbTest v={v} />}
         </div>
 
         <Tabs.Root value={current} onValueChange={setTab} className="min-w-0">

@@ -119,6 +119,11 @@ model Upload {
   liveLikes    Int?
   liveComments Int?
   liveAt       DateTime?
+  // YouTube Analytics' audience retention curve ([[share of the video, audienceWatchRatio], ...], 100
+  // points) and the hook score from it: viewers still watching at 3 s (Short) or 30 s (long), 0..1+
+  retention    Json?
+  hookHold     Float?
+  retentionAt  DateTime?
 }
 
 model VideoStat {

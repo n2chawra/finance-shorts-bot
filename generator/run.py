@@ -310,6 +310,9 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         manifest["priority"] = urgent   # ingest puts it at the front of the upload queue
     if plan.get("trailer_of"):
         manifest["trailerOf"] = plan["trailer_of"]   # a trailer Short for that long video
+    if script.get("thumbnails"):   # three thumbnails for YouTube's Test & Compare, with what each leads with
+        manifest["thumbnails"] = [{"file": f, "angle": t.get("angle")} for f, t in
+                                  zip(("thumbnail.png", "thumbnail-b.png", "thumbnail-c.png"), [script["thumbnail"], *script["thumbnails"]])]
     _write(d / "manifest.json", manifest)
     history.append({
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],

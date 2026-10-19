@@ -1,18 +1,20 @@
 /**
  * Stats: daily YouTube Analytics numbers for every uploaded video, from its publish day up to
- * yesterday (Analytics lags by about a day), stored in VideoStat. Also marks videos published.
+ * yesterday (Analytics lags by about a day), stored in VideoStat, plus each video's audience
+ * retention curve and its hook score (lib/retention.ts) on the Upload. Also marks videos published.
  *
  * YouTube's developer policies allow stored analytics only if they are refreshed at least every
  * 30 days. So every run replaces each video's full history (up to a year) with fresh numbers, and
  * if YouTube access is lost (token revoked or expired) and nothing has been refreshed for 30 days,
  * the stored stats are deleted.
  */
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 
 import { istDay } from "./lib/publishing.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
-import { TokenError, accessToken, dailyStats } from "./lib/youtube.ts";
+import { hookHold } from "./lib/retention.ts";
+import { TokenError, accessToken, dailyStats, retentionCurve } from "./lib/youtube.ts";
 
 const DAY_MS = 86_400_000;
 const KEEP_DAYS = 365;       // history fetched and kept per video
@@ -24,6 +26,7 @@ async function deleteIfStale(prisma: PrismaClient): Promise<boolean> {
   const last = typeof row?.value === "string" ? Date.parse(row.value) : 0;
   if (Date.now() - last < STALE_DAYS * DAY_MS) return false;
   const { count } = await prisma.videoStat.deleteMany();
+  await prisma.upload.updateMany({ data: { retention: Prisma.DbNull, hookHold: null, retentionAt: null } });
   console.log(`::warning::YouTube stats could not be refreshed for ${STALE_DAYS} days, so ${count} stored rows were deleted.`);
   return true;
 }
@@ -46,7 +49,7 @@ async function main(): Promise<void> {
     const refreshed = await refreshPublished(prisma, token);
     const yesterday = istDay(new Date(Date.now() - DAY_MS));
     const earliest = istDay(new Date(Date.now() - KEEP_DAYS * DAY_MS));
-    const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] } } });
+    const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] } }, include: { video: { select: { format: true, durationSec: true } } } });
     let rows = 0;
     const errors: string[] = [];
     for (const u of uploads) {
@@ -62,6 +65,12 @@ async function main(): Promise<void> {
           }),
         ]);
         rows += days.length;
+        // the retention curve and the hook score from it (empty until YouTube has enough views)
+        const curve = await retentionCurve(token, u.youtubeId!, start, yesterday);
+        const format = u.video.format === "long" ? "long" : "short";
+        await prisma.upload.update({ where: { id: u.id }, data: {
+          retention: curve.length ? curve : Prisma.DbNull, hookHold: hookHold(curve, u.video.durationSec, format), retentionAt: new Date(),
+        } });
       } catch (e) {
         errors.push(`${u.videoId}: ${e instanceof Error ? e.message : e}`);
       }

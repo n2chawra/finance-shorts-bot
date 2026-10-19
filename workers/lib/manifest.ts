@@ -39,6 +39,8 @@ export const ShippedManifest = z.object({
    * upload queue while `until` (an IST day) has not passed, because news loses half its first-day
    * views in about seven hours. */
   priority: z.object({ level: z.enum(["breaking", "trending"]), until: z.string() }).optional(),
+  /** Three thumbnails for YouTube's Test & Compare (long videos), each with the angle it leads with. */
+  thumbnails: z.array(z.object({ file: z.string().regex(/^thumbnail(-[bc])?\.png$/), angle: z.string().nullable() })).max(3).optional(),
 });
 
 /** Manifest of a video that was given up on (written by `generator.run fail`). */

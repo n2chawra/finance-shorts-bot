@@ -56,7 +56,7 @@ function toVideo(v: VideoRow): Video {
     id: v.id, templateId: v.templateId, topic: { title: v.topic.title, category: v.topic.category }, status: v.status,
     format: v.format === "long" ? "long" : "short",
     failReason: v.failReason, title: v.title, description: v.description, tags: v.tags, durationSec: v.durationSec,
-    style: { palette: style.palette ?? "—", genre: style.genre ?? "—", key: style.key ?? "—", bpm: style.bpm ?? 0, voice: style.voice ?? null, source: style.source ?? null },
+    style: { palette: style.palette ?? "—", genre: style.genre ?? "—", key: style.key ?? "—", bpm: style.bpm ?? 0, voice: style.voice ?? null, source: style.source ?? null, thumbs: style.thumbs ?? null, thumbTest: style.thumbTest ?? null },
     thumbnailUrl: `/api/media/${v.id}/thumbnail`, previewUrl: `/api/media/${v.id}/preview`, fileUrl: `/api/media/${v.id}/video`,
     createdAt: v.createdAt.toISOString(), queuePosition: v.queuePosition,
     upload: v.upload && { youtubeId: v.upload.youtubeId, publishAt: v.upload.publishAt.toISOString(), state: v.upload.state, error: v.upload.error, attempts: v.upload.attempts },
@@ -197,6 +197,18 @@ export async function markUploaded(id: string, m: ManualUpload): Promise<{ ok: t
     }),
   ]);
   await renumber();
+  return { ok: true };
+}
+
+/** Log which thumbnail won YouTube's Test & Compare (kept in the video's style, read by the agents). */
+export async function setThumbWinner(id: string, winner: string | null): Promise<{ ok: true } | { ok: false; error: string }> {
+  const v = await prisma.video.findFirst({ where: { id, ...live }, select: { style: true } });
+  if (!v) return { ok: false, error: "Video not found" };
+  const style = { ...((v.style ?? {}) as Record<string, unknown>) };
+  if (!Array.isArray(style.thumbs) || !(style.thumbs as { file: string }[]).some((t) => t.file === winner || winner === null))
+    return { ok: false, error: "This video has no thumbnail test" };
+  if (winner) style.thumbTest = { winner, at: new Date().toISOString() }; else delete style.thumbTest;
+  await prisma.video.update({ where: { id }, data: { style: style as Prisma.InputJsonValue } });
   return { ok: true };
 }
 

@@ -28,6 +28,7 @@ function useWrite<T>(fn: (arg: T) => Promise<void>) {
 
 export const useVideoAction = () => useWrite(({ id, action }: { id: string; action: VideoAction }) => send("POST", `/api/videos/${id}/${action}`));
 export const useManualUpload = () => useWrite(({ id, ...body }: ManualUpload & { id: string }) => send("POST", `/api/videos/${id}/manual-upload`, body));
+export const useThumbWinner = () => useWrite(({ id, winner }: { id: string; winner: string | null }) => send("POST", `/api/videos/${id}/thumb-test`, { winner }));
 export const useReorder = () => useWrite((ids: string[]) => send("PATCH", "/api/queue/order", { ids }));
 export const usePatchTemplate = () => useWrite((patch: { id: string; enabled?: boolean; weight?: number }) => send("PATCH", "/api/templates", patch));
 export const usePatchSettings = () => useWrite((patch: Partial<Settings>) => send("PATCH", "/api/settings", patch));

@@ -200,6 +200,29 @@ def _facts(script: dict) -> tuple[dict[str, str], str | None]:
     return figures, line
 
 
+# what a thumbnail leads with: long videos get three, each a different angle, for YouTube's Test &
+# Compare; the winners teach the agents which angle works (improvement/evaluate.py)
+THUMB_ANGLES = ("number", "question", "reaction", "versus", "warning")
+
+
+def _thumbnail_variants(script: dict, figures: dict[str, str], results: dict) -> list[dict]:
+    """The extra thumbnails (`thumbnails`, up to two) beside `thumbnail`, each with its own angle."""
+    extra = script.get("thumbnails") or []
+    if not extra:
+        return []
+    if not script.get("thumbnail"):
+        raise ValueError("thumbnails needs a main thumbnail too")
+    if len(extra) > 2:
+        raise ValueError("thumbnails: two more at most (three in all, the most Test & Compare takes)")
+    variants = [_thumbnail(t, figures, results) for t in extra]
+    angles = [t.get("angle") for t in [script["thumbnail"], *extra]]
+    if any(a not in THUMB_ANGLES for a in angles):
+        raise ValueError(f"every thumbnail needs an angle: one of {', '.join(THUMB_ANGLES)}")
+    if len(set(angles)) != len(angles):
+        raise ValueError("each thumbnail needs a different angle, so the test compares ideas, not small tweaks")
+    return variants
+
+
 def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict) -> dict | None:
     if not spec:
         return None
@@ -257,6 +280,8 @@ def check_script(script: dict) -> dict:
     beats = [Beat(**b) for b in script.get("beats", [])]
     if not beats:
         raise ValueError("a story needs beats")
+    if script.get("thumbnails"):
+        _thumbnail_variants(script, figures, results)
     if sources and not any(b.scene == "headline" for b in beats):
         raise ValueError("a script with sourced facts needs a headline beat, which shows where they come from")
     if len({b.id for b in beats}) != len(beats):
@@ -386,6 +411,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         "experiments": dict(script.get("experiments") or {}),
         # the thumbnail card: a cast member reacting, one computed figure, at most four words
         "thumbnail": _thumbnail(script.get("thumbnail"), figures, results),
+        # extra thumbnails for a Test & Compare on YouTube (long videos): thumbnail-b.png, thumbnail-c.png
+        "thumbnailVariants": _thumbnail_variants(script, figures, results),
     }
     (out/"timeline.json").write_text(json.dumps(timeline, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return timeline

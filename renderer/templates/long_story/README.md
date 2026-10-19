@@ -20,7 +20,8 @@ Python owns every number, every moment and every sound. Remotion only draws.
 | `style` | optional `{palette, genre, key, bpm}` (resolved from the seed otherwise) |
 | `currency` | `USD`, `GBP`, `EUR` or `INR`, from the plan: how every figure is shown and spoken (rupees use lakh and crore, the others K/M/B) |
 | `maths` | named calculations, `[{name, kind, ...inputs}]`; see below |
-| `thumbnail` | `{who, pose, expression, prop?, figure: "{placeholder}", words: ≤4 words, sub?}` |
+| `thumbnail` | `{who, pose, expression, prop?, figure: "{placeholder}", words: ≤4 words, sub?, angle}` |
+| `thumbnails` | two more thumbnails for YouTube's Test & Compare, same fields, each with a different `angle`: `number`, `question`, `reaction`, `versus` or `warning` (rendered as `thumbnail-b.png`, `thumbnail-c.png`) |
 | `beats` | the video, in order |
 
 **Numbers.** Text never contains a digit or a currency sign (`$`, `£`, `€`, `₹`). Every figure comes

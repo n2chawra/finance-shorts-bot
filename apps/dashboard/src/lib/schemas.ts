@@ -17,6 +17,10 @@ export const StyleSchema = z.object({
     feedId: z.string().nullable(), kind: z.string().nullable(), feedPriority: z.string().nullable(),
     urgent: z.object({ level: z.enum(["breaking", "trending"]), until: z.string() }).nullable(),
   }).nullish(),
+  /** three thumbnails for YouTube's Test & Compare (long videos), each with the angle it leads with */
+  thumbs: z.array(z.object({ file: z.string(), angle: z.string().nullable() })).nullish(),
+  /** the thumbnail YouTube's test picked, logged by the owner */
+  thumbTest: z.object({ winner: z.string(), at: z.string() }).nullish(),
 });
 
 export const QaCheckSchema = z.object({
@@ -231,6 +235,10 @@ export const ManualUploadSchema = z.object({
   publishedAt: z.string().datetime({ offset: true }),
 });
 export type ManualUpload = z.infer<typeof ManualUploadSchema>;
+
+export const THUMB_FILES = ["thumbnail.png", "thumbnail-b.png", "thumbnail-c.png"] as const;
+/** The thumbnail that won YouTube's Test & Compare (null clears it). */
+export const ThumbWinnerSchema = z.object({ winner: z.enum(THUMB_FILES).nullable() });
 export type VideoAction = z.infer<typeof VideoActionSchema>;
 
 // ---------------- autopilot: notifications and self-improving agents ----------------

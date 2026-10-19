@@ -168,7 +168,8 @@ export async function applyTemplateDecisions(prisma: PrismaClient, root: string)
   return done;
 }
 
-type Style = { palette?: string; genre?: string; bpm?: number; voice?: string | null; experiments?: Record<string, string> };
+type Style = { palette?: string; genre?: string; bpm?: number; voice?: string | null; experiments?: Record<string, string>;
+  thumbs?: { file: string; angle: string | null }[]; thumbTest?: { winner: string; at: string } };
 
 /** metrics/videos.json + metrics/runs.json. Returns true when either file changed. */
 export async function exportMetrics(prisma: PrismaClient, root: string, now = new Date()): Promise<boolean> {
@@ -196,6 +197,11 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
       experiments: style.experiments ?? {}, publishAt: u.publishAt.toISOString(), manual: !u.attempts,
       views48h, views7d, avgViewPct, views: Math.max(totalViews, u.liveViews ?? 0), likes: Math.max(u.stats.reduce((a, s) => a + s.likes, 0), u.liveLikes ?? 0),
       subsGained: u.stats.reduce((a, s) => a + s.subsGained, 0),
+      // viewers still watching at 3 s (Short) or 30 s (long): the hook's own score (workers/lib/retention.ts)
+      hookHold: u.hookHold ?? null,
+      // a Test & Compare of three thumbnails: the angle of each, and the one YouTube picked (owner logs it)
+      thumbAngles: (style.thumbs ?? []).map((t) => t.angle),
+      thumbWinner: style.thumbTest?.winner ? (style.thumbs ?? []).find((t) => t.file === style.thumbTest!.winner)?.angle ?? null : null,
     };
   });
   const since = new Date(now.getTime() - 60 * DAY_MS);

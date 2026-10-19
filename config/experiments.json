@@ -11,7 +11,9 @@
       ],
       "share": 0.5,
       "proposal": "owner",
-      "description": "Long videos: music bed ~4 dB lower and nearly silent under speech (renderer/timeline/build.py QUIET_*)"
+      "description": "Long videos: music bed ~4 dB lower and nearly silent under speech (renderer/timeline/build.py QUIET_*)",
+      "minPerArm": 4,
+      "maxDays": 42
     }
   ]
 }
