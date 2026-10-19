@@ -8,6 +8,7 @@ import type { Prisma } from "@prisma/client";
 import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
 import { SettingsSchema, mostLoved } from "./schemas";
+import { totals } from "./totals";
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
 
 const DAY_MS = 86_400_000;
@@ -29,26 +30,6 @@ const dayKey = (d: Date) => d.toISOString().slice(0, 10); // VideoStat.day is a 
 
 const withRelations = { topic: true, upload: { include: { stats: true } } } satisfies Prisma.VideoInclude;
 type VideoRow = Prisma.VideoGetPayload<{ include: typeof withRelations }>;
-
-type StatRow = { views: number; likes: number; comments: number; subsGained: number; avgViewPct: number };
-type LiveRow = { liveViews: number | null; liveLikes: number | null; liveComments: number | null; liveAt: Date | null };
-
-/**
- * Lifetime totals. Views, likes and comments take YouTube's live counters when they are ahead of
- * the daily Analytics rows (which run a day or two behind); subscribers and watch % only exist in
- * Analytics.
- */
-function totals(stats: StatRow[], live?: LiveRow | null): Video["totals"] {
-  const hasLive = live?.liveAt != null && live.liveViews != null;
-  if (!stats.length && !hasLive) return null;
-  const sum = (k: "views" | "likes" | "comments" | "subsGained") => stats.reduce((a, s) => a + s[k], 0);
-  const best = (k: "views" | "likes" | "comments", l: number | null | undefined) => Math.max(sum(k), hasLive ? l ?? 0 : 0);
-  return {
-    views: best("views", live?.liveViews), likes: best("likes", live?.liveLikes), comments: best("comments", live?.liveComments),
-    subsGained: sum("subsGained"), avgViewPct: stats.length ? Math.round(stats.reduce((a, s) => a + s.avgViewPct, 0) / stats.length * 10) / 10 : 0,
-    liveAt: hasLive ? live!.liveAt!.toISOString() : null,
-  };
-}
 
 function toVideo(v: VideoRow): Video {
   const style = (v.style ?? {}) as Partial<Video["style"]>;

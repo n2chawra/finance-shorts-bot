@@ -104,13 +104,13 @@
       "id": "wrk-002",
       "kind": "bug",
       "title": "Workflow failures are hidden by '| tee' without pipefail",
-      "detail": "data-audit, ingest, market, publish, stats and watchdog run 'npm run x | tee ...' under the default 'bash -e' shell, which has no pipefail, so a crashed job shows green and the watchdog's workflow-failure check never fires. Workflows are owner-only: raised as a notification.",
+      "detail": "data-audit, ingest, market, publish, stats and watchdog run 'npm run x | tee ...' under the default 'bash -e' shell, which has no pipefail, so a crashed job shows green and the watchdog's workflow-failure check never fires. Workflows are owner-only: raised as a notification. Owner added 'shell: bash' (bash -eo pipefail) to every tee step in 1747612 (2026-10-19).",
       "files": [
         ".github/workflows/*.yml"
       ],
       "severity": "high",
       "found": "2026-10-19",
-      "status": "open"
+      "status": "fixed"
     },
     {
       "id": "wrk-003",
@@ -134,6 +134,32 @@
       ],
       "severity": "low",
       "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "dsh-001",
+      "kind": "data",
+      "title": "Video 'Avg viewed' was an unweighted mean of daily %",
+      "detail": "store.db.ts totals() averaged each day's averageViewPercentage equally, so a 10-view day counted as much as the 1,000-view launch day and zero-view days pulled the figure toward 0. The agents' metrics (agents-sync) weight by views, so the dashboard disagreed with what the evaluator sees. Now view-weighted; totals() moved to lib/totals.ts (pure) with workers/tests/dashboard-totals.test.ts.",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts",
+        "apps/dashboard/src/lib/totals.ts",
+        "workers/tests/dashboard-totals.test.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-10-20",
+      "status": "fixed"
+    },
+    {
+      "id": "dsh-002",
+      "kind": "bug",
+      "title": "listVideos takes 300 rows without an order",
+      "detail": "prisma.video.findMany({take: 300}) has no orderBy, so once there are more than 300 videos Postgres may return any 300 and the newest can vanish from the Videos page. 25 videos today, so not urgent; fix: orderBy createdAt desc before take (needs a DB to test).",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts"
+      ],
+      "severity": "low",
+      "found": "2026-10-20",
       "status": "open"
     }
   ]
