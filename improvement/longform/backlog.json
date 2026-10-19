@@ -177,6 +177,72 @@
       "found": "2026-10-19",
       "status": "closed",
       "resolution": "Owner removed trailer Shorts (2026-10-19)."
+    },
+    {
+      "id": "2026-10-19b-stack-prop-figure-overlap",
+      "kind": "bug",
+      "title": "prop stack: kicker and figure share one spot; without a kicker the figure leaves the frame",
+      "detail": "L-20261019-01 (second try, failed): beat 'total' used prop 'stack' with kicker 'Minimum only, all in' and text '{card_total_paid}' (value counting up). QA saw the kicker and the figure drawn on top of each other for the whole beat. With the kicker removed, the layout gate failed: '$11,638' at 131.7 s outside the frame (camera punch:cost). Improver: lay out stack's kicker above the figure and keep the figure inside the push/punch-safe area. Until then Studio avoids the stack prop for a headline figure (use cheque, receipt, vault or tag, which rendered cleanly).",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19b-road-sign-long-labels",
+      "kind": "bug",
+      "title": "road signs overflow with long labels; a second sign runs off the right edge",
+      "detail": "L-20261019-01 beat 'recap' (road, two signs 'Minimum only' / 'Fixed payment' with figures): QA saw the label spill over the board and the second board cut off ('Fixed payme'). The board is a fixed 340 px scaled up to 2.1x as it approaches. Improver: size the board to its text and clamp it inside the frame. Studio rule meanwhile: road sign labels of at most ~10 characters ('Year one', 'Still paying' rendered fine).",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19b-presenter-x-zero",
+      "kind": "craft",
+      "title": "Script rule: never set presenter.x to 0",
+      "detail": "Thirteen presenters with x: 0 were centred on the left edge, cutting the actor in half (QA, L-20261019-01). Leave x out: the long-video default (0.84) keeps them on the right. Optionally the improver can make the probe or the build reject x < 0.1 for presenters.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19b-receipt-long-text",
+      "kind": "craft",
+      "title": "Script rule: a prop's text is a figure, not a phrase",
+      "detail": "prop 'receipt' with text 'Pay off in three years' ran outside the frame (layout gate, L-20261019-01 render 1). Put a placeholder figure in text and the words in kicker/sub.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19b-numbercheck-chapter-timestamps",
+      "kind": "bug",
+      "title": "number check flags chapter timestamps in a long video's description",
+      "detail": "generator/numbers.py check_claims treats '0:00 Intro', '1:14 ...' as unbacked numbers, so a description with the chapter list (which studio.md requires) fails number-check. Studio works around it by running number-check before adding the timestamps, which leaves the shipped description unchecked. Fix: skip lines matching ^\\d+:\\d\\d\\s in the description (only for format long), with a test.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19b-card-remake-retry",
+      "kind": "craft",
+      "title": "Card minimum-payment remake is written and fact-checked: retry the render",
+      "detail": "videos/L-20261019-01/script.json (58 beats, ~1,025 words, 4:37, new bill/road/fork/source scenes, fact review passed) failed only on layout after two re-renders. A later Studio run can reuse it with the 'total' beat moved off the stack prop (e.g. prop cheque or vault) under a new id; the topic 2026-10-19-card-minimum-trap stays usable.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-19",
+      "status": "open"
     }
   ]
 }

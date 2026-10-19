@@ -1,22 +1,50 @@
 {
   "agent": "studio",
   "day": "2026-10-19",
-  "startedAt": "2026-10-19T09:08:25Z",
-  "finishedAt": "2026-10-19T10:27:10Z",
-  "summary": "Made and shipped long video L-20261019-01, 'Paying only the minimum on a $5,000 card: the real cost' (4:44, 60 beats, 977 words, 5 chapters), from Scout's top feed topic. Its trailer Short was blocked by the Shorts category rule and marked failed.",
-  "decision": "acted",
-  "why": "0 of 3 long videos this week; the first usable high-priority feed topic was the card minimum-payment trap. Number check passed first time, the fact review passed first time (Fed G.19 APR ~22%, Reg Z minimum-payment and 36-month disclosures confirmed), and QA passed on the second re-render (liveliness 1.67, layout clean, audio peak -1.0 dB, mean -17.3 dB).",
+  "startedAt": "2026-10-19T14:55:13Z",
+  "finishedAt": "2026-10-19T16:04:47Z",
+  "summary": "Second Studio run today: remade the credit-card minimum-payment video (L-20261019-01, deleted by the owner this evening for the new look) with the new bill, road, fork and source scenes. Script and fact review passed, but the last allowed re-render failed the layout gate, so the video is marked failed and nothing shipped.",
+  "decision": "blocked",
+  "why": "studio.md allows two re-renders. Render 1 failed the gates (6 s still on a reveal beat, receipt text off-frame). Render 2 passed the gates (277 s, liveliness 1.98, audio -1.0/-17.2 dB) but QA failed it on five layout points. Render 3 fixed those but the stack prop's figure '$11,638' left the frame at 131.7 s. A failed video beats shipping a broken one.",
   "findings": [
-    {"title": "First render failed the layout gate", "detail": "The push camera on the screen beat zoomed its title 'Minimum only' out of the frame at 1:49. Switched to drift; logged as a scene item."},
-    {"title": "QA failed the second render", "detail": "No figure on frame 0 (a stage chip at 'start' still animates in) and the card prop covered Rohan's face on thumbnail C. Opened on a bignumber with the balance and minimum due drawn from frame 0, and gave thumbnail C a worried pose with no prop; QA passed."},
-    {"title": "Long-form script rules applied", "detail": "A concrete moment in the first beat (the card app, minimum due on screen), the promise line at ~20 s (how long, how much, the line that fixes it), and the side-by-side reveal at ~63% of the runtime."},
-    {"title": "Trailer Short blocked", "detail": "v-20261019-04 failed check-plan twice: credit_card was used in the last 3 Shorts (v-20261019-02). Marked failed; owner question raised on Notifications."},
-    {"title": "check-plan still wants #Shorts on long videos", "detail": "Same known bug as 2026-10-18 (already in the long-form backlog); shipped without #Shorts on purpose."}
+    {
+      "title": "Fact review passed on the second try",
+      "detail": "First pass caught a wrong 'late fees on top' line for an on-time payer and a US-only CTA; both fixed. 22.2% APR backed by Fed G.19 (22.36% Aug 2026); Reg Z 1026.7(b)(12) statement lines confirmed; CFPB: ~15% paid only the minimum in 2024."
+    },
+    {
+      "title": "Scene bugs found by the gates and QA",
+      "detail": "Stack prop kicker/figure overlap and off-frame figure; road signs overflow with long labels; presenter x:0 cuts actors in half; prop text must be a figure. Logged in improvement/longform/backlog.json for the improver."
+    },
+    {
+      "title": "Number check flags chapter timestamps",
+      "detail": "Logged as a code bug (2026-10-19b-numbercheck-chapter-timestamps)."
+    },
+    {
+      "title": "Earlier run today",
+      "detail": "This file replaces the earlier 2026-10-19 entry: Made and shipped long video L-20261019-01, 'Paying only the minimum on a $5,000 card: the real cost' (4:44, 60 beats, 977 words, 5 chapters), from Scout's top feed topic. Its trailer Short was blocked by the Shorts category rule and marked failed."
+    }
   ],
   "changes": [
-    {"title": "Video L-20261019-01 committed to main", "detail": "Commit c111fc2; mp4 on branch media/L-20261019-01 for the release workflow. Three thumbnails: number (main), question, warning (no angle data yet in evaluate)."},
-    {"title": "Trailer v-20261019-04 marked failed", "detail": "Commit 3e66ddd on main."},
-    {"title": "Three backlog items", "detail": "stage chip on frame 0, push camera on screen titles, trailer vs category window.", "branch": "agent/studio/2026-10-19"}
+    {
+      "title": "Marked L-20261019-01 failed (commit de49ab6 on main)",
+      "detail": "manifest, plan, run log and script committed; the script is reusable for a retry.",
+      "branch": "main"
+    },
+    {
+      "title": "Six backlog items",
+      "detail": "Two scene bugs, two script rules, one number-check bug, one retry note.",
+      "branch": "agent/studio/2026-10-19"
+    }
   ],
-  "nextCheck": "2026-10-21"
+  "nextCheck": "2026-10-21",
+  "links": [
+    {
+      "label": "Script",
+      "url": "videos/L-20261019-01/script.json"
+    },
+    {
+      "label": "Backlog",
+      "url": "improvement/longform/backlog.json"
+    }
+  ]
 }
