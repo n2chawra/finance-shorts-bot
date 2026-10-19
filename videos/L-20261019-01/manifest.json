@@ -1,0 +1,678 @@
+{
+  "id": "L-20261019-01",
+  "createdAt": "2026-10-19T10:25:34.006196+00:00",
+  "status": "qa_passed",
+  "format": "long",
+  "template": "long_story",
+  "topic": {
+    "title": "Only paying the minimum on your credit card: what it really costs you",
+    "category": "credit_card",
+    "feed_id": "2026-10-19-card-minimum-trap"
+  },
+  "title": "Paying only the minimum on a $5,000 card: the real cost",
+  "description": "Rohan owes $5,000 on his credit card and pays the minimum every month, on time. It feels responsible. We follow that balance month by month at 22.2% a year and compute how long it really takes to clear and what it costs in total.\nThen the same balance with one fixed payment that clears it in three years, side by side.\nAnd the one line on a US card statement that already tells you the answer.\n\nChapters\n0:00 Intro\n0:28 The treadmill\n1:18 One year on\n1:44 The long tail\n2:41 One fixed payment\n3:36 The line that fixes it\n\nSpeak to a licensed financial adviser in your country before making financial decisions.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#CreditCard",
+    "#MinimumPayment",
+    "#Debt",
+    "#PersonalFinance",
+    "#MoneyTips"
+  ],
+  "hookStyle": "question",
+  "cta": "Find the 3-year line on your statement",
+  "seed": 38215,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "A",
+    "bpm": 92,
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "open",
+        "text": "Rohan opens his card app. Balance, $5,000. Minimum due, just $150. He pays it, on time, and feels fine.",
+        "start": 0.23,
+        "seconds": 7.15,
+        "window": 7.43,
+        "fill": 0.962
+      },
+      {
+        "scene": "stake",
+        "text": "Keep doing exactly that, and this balance ends up costing him $11,638. 2.3× what he owes today.",
+        "start": 7.67,
+        "seconds": 6.53,
+        "window": 6.87,
+        "fill": 0.951
+      },
+      {
+        "scene": "never-miss",
+        "text": "Wait, what? But I never miss a payment!",
+        "start": 14.53,
+        "seconds": 1.31,
+        "window": 1.77,
+        "fill": 0.74
+      },
+      {
+        "scene": "millions",
+        "text": "Millions of people do exactly what Rohan does. It feels responsible. The bill is paid, nothing is late, and the card keeps working.",
+        "start": 16.3,
+        "seconds": 5.61,
+        "window": 6.03,
+        "fill": 0.93
+      },
+      {
+        "scene": "promise",
+        "text": "So in the next few minutes: how long the minimum really takes, how much it really costs, and the one line on your statement that fixes it.",
+        "start": 22.33,
+        "seconds": 5.65,
+        "window": 6.0,
+        "fill": 0.942
+      },
+      {
+        "scene": "priya-tread",
+        "text": "Paying the minimum is like running on a treadmill, Rohan. You work hard every month, and the belt keeps pulling you back.",
+        "start": 29.93,
+        "seconds": 4.49,
+        "window": 4.97,
+        "fill": 0.903
+      },
+      {
+        "scene": "steps",
+        "text": "Each payment is a step forward. Each month of interest is the belt, dragging him back almost as fast.",
+        "start": 34.9,
+        "seconds": 4.52,
+        "window": 4.9,
+        "fill": 0.922
+      },
+      {
+        "scene": "anvil",
+        "text": "His card charges 1.85% a month on whatever he still owes.",
+        "start": 39.8,
+        "seconds": 3.36,
+        "window": 3.73,
+        "fill": 0.901
+      },
+      {
+        "scene": "per-year",
+        "text": "That sounds tiny. But over a year it adds up to 22.2%. And because interest is charged on interest, it really works out to about 25%.",
+        "start": 43.53,
+        "seconds": 7.69,
+        "window": 8.03,
+        "fill": 0.958
+      },
+      {
+        "scene": "rohan-adds",
+        "text": "Okay, but I pay $150 every single month. That has to add up.",
+        "start": 51.57,
+        "seconds": 3.41,
+        "window": 3.73,
+        "fill": 0.914
+      },
+      {
+        "scene": "how-min",
+        "text": "Here is how that minimum is worked out. It is a small slice of the balance, 3% on this card. Total owed, $5,000. Minimum, $150.",
+        "start": 55.3,
+        "seconds": 7.56,
+        "window": 8.1,
+        "fill": 0.933
+      },
+      {
+        "scene": "comes-back",
+        "text": "So he pays. Then interest is charged on everything that is left, and a big part of his payment is simply eaten by next month's interest.",
+        "start": 63.4,
+        "seconds": 5.92,
+        "window": 6.3,
+        "fill": 0.94
+      },
+      {
+        "scene": "shrinks",
+        "text": "Now the sneaky part. As the balance shrinks, the minimum shrinks with it. His steps get smaller, right when he should be speeding up.",
+        "start": 69.7,
+        "seconds": 5.14,
+        "window": 5.47,
+        "fill": 0.94
+      },
+      {
+        "scene": "sharma-design",
+        "text": "The minimum is not built to get you out. It is built to keep you in.",
+        "start": 75.17,
+        "seconds": 2.58,
+        "window": 3.1,
+        "fill": 0.832
+      },
+      {
+        "scene": "year",
+        "text": "Twelve months go by. Rohan pays the minimum every single time. Never late, not once.",
+        "start": 79.87,
+        "seconds": 3.9,
+        "window": 4.37,
+        "fill": 0.892
+      },
+      {
+        "scene": "year-split",
+        "text": "By now, he has paid $1,685. And he still owes $4,323.",
+        "start": 84.23,
+        "seconds": 5.14,
+        "window": 5.63,
+        "fill": 0.913
+      },
+      {
+        "scene": "still-owe",
+        "text": "I paid all that, and I still owe that much?",
+        "start": 89.87,
+        "seconds": 1.48,
+        "window": 1.93,
+        "fill": 0.767
+      },
+      {
+        "scene": "to-interest",
+        "text": "Because $1,008 of what he paid went straight to interest. Only the rest touched the actual debt.",
+        "start": 91.8,
+        "seconds": 4.68,
+        "window": 5.0,
+        "fill": 0.936
+      },
+      {
+        "scene": "bucket",
+        "text": "It is like filling a bucket with a hole in the bottom. A big share of what he pours in leaks straight back out.",
+        "start": 96.8,
+        "seconds": 4.53,
+        "window": 4.9,
+        "fill": 0.924
+      },
+      {
+        "scene": "good-year",
+        "text": "And Rohan? That was the good year.",
+        "start": 101.7,
+        "seconds": 1.54,
+        "window": 2.03,
+        "fill": 0.759
+      },
+      {
+        "scene": "screen",
+        "text": "Here is his balance if he keeps paying only the minimum, month after month. Red is what he still owes. Green is everything he has paid.",
+        "start": 105.33,
+        "seconds": 5.92,
+        "window": 6.2,
+        "fill": 0.955
+      },
+      {
+        "scene": "flattens",
+        "text": "Look how the line flattens out. The smaller the balance, the smaller the minimum, so the last stretch drags on for years.",
+        "start": 111.53,
+        "seconds": 5.1,
+        "window": 5.53,
+        "fill": 0.922
+      },
+      {
+        "scene": "months",
+        "text": "In total, it takes 199 monthly payments. That is about 17 years.",
+        "start": 117.07,
+        "seconds": 3.82,
+        "window": 4.23,
+        "fill": 0.903
+      },
+      {
+        "scene": "longer-job",
+        "text": "Years? I'll be paying this off longer than I have been working!",
+        "start": 121.3,
+        "seconds": 1.96,
+        "window": 2.33,
+        "fill": 0.841
+      },
+      {
+        "scene": "future",
+        "text": "By the time this card is cleared, Rohan could change jobs, move cities, maybe start a family. And still be paying for this year's shopping.",
+        "start": 123.63,
+        "seconds": 6.04,
+        "window": 6.4,
+        "fill": 0.944
+      },
+      {
+        "scene": "total",
+        "text": "All in, he pays $11,638 to clear $5,000. And $6,638 of that is pure interest.",
+        "start": 130.03,
+        "seconds": 7.55,
+        "window": 7.9,
+        "fill": 0.956
+      },
+      {
+        "scene": "tag",
+        "text": "Every dinner, every flight, every gadget on that card ends up costing about 2.3× its price tag.",
+        "start": 137.93,
+        "seconds": 4.89,
+        "window": 5.2,
+        "fill": 0.94
+      },
+      {
+        "scene": "sharma-best",
+        "text": "In my bank days, we had a name for people who paid only the minimum. Our best customers. They never complained, and they never left.",
+        "start": 143.13,
+        "seconds": 5.22,
+        "window": 5.73,
+        "fill": 0.911
+      },
+      {
+        "scene": "kind-version",
+        "text": "And our maths is the kind version. Carry a balance, and most cards stop giving you the interest free grace period on new purchases. Late fees come on top.",
+        "start": 148.87,
+        "seconds": 7.08,
+        "window": 7.4,
+        "fill": 0.957
+      },
+      {
+        "scene": "even-worse",
+        "text": "So the real bill is even bigger?",
+        "start": 156.27,
+        "seconds": 1.17,
+        "window": 1.63,
+        "fill": 0.718
+      },
+      {
+        "scene": "change-rules",
+        "text": "Usually, yes. So you stop playing their game. You change one rule.",
+        "start": 157.9,
+        "seconds": 2.63,
+        "window": 3.13,
+        "fill": 0.84
+      },
+      {
+        "scene": "same",
+        "text": "Same card. Same $5,000. Same rate. One change. Instead of the minimum, Rohan picks one fixed payment, and never lets it shrink.",
+        "start": 162.63,
+        "seconds": 6.58,
+        "window": 6.87,
+        "fill": 0.958
+      },
+      {
+        "scene": "fix-emi",
+        "text": "To clear the whole balance in three years, that payment is $191 a month.",
+        "start": 169.5,
+        "seconds": 3.75,
+        "window": 4.07,
+        "fill": 0.921
+      },
+      {
+        "scene": "vs-min",
+        "text": "His very first minimum was $150. The fixed payment is $191. Not a giant leap at the start.",
+        "start": 173.57,
+        "seconds": 5.77,
+        "window": 6.07,
+        "fill": 0.951
+      },
+      {
+        "scene": "can-find",
+        "text": "That's it? I can find that.",
+        "start": 179.63,
+        "seconds": 0.94,
+        "window": 1.37,
+        "fill": 0.686
+      },
+      {
+        "scene": "no-shrink",
+        "text": "The trick is that it never shrinks. Same big step on the treadmill, every month, while the belt keeps slowing down.",
+        "start": 181.0,
+        "seconds": 4.3,
+        "window": 4.83,
+        "fill": 0.89
+      },
+      {
+        "scene": "why-works",
+        "text": "As the balance falls, interest has less to chew on. So more of every payment hits the debt, and the debt falls faster and faster.",
+        "start": 185.83,
+        "seconds": 5.57,
+        "window": 5.93,
+        "fill": 0.939
+      },
+      {
+        "scene": "fix-cal",
+        "text": "36 payments. And then it is gone.",
+        "start": 191.77,
+        "seconds": 1.97,
+        "window": 2.33,
+        "fill": 0.845
+      },
+      {
+        "scene": "towers",
+        "text": "Now side by side. Paying the minimum, the interest is $6,638, over about 17 years. The fixed payment, $1,893, over three.",
+        "start": 194.1,
+        "seconds": 8.85,
+        "window": 9.17,
+        "fill": 0.965
+      },
+      {
+        "scene": "totals",
+        "text": "Same debt, same rate. The minimum route costs $11,638 in total. The fixed route, $6,893.",
+        "start": 203.27,
+        "seconds": 6.88,
+        "window": 7.33,
+        "fill": 0.939
+      },
+      {
+        "scene": "why-nobody",
+        "text": "Years sooner, and thousands less? Why did nobody tell me?",
+        "start": 210.6,
+        "seconds": 2.35,
+        "window": 2.73,
+        "fill": 0.861
+      },
+      {
+        "scene": "someone-did",
+        "text": "Somebody did. It is printed on your statement.",
+        "start": 213.33,
+        "seconds": 2.02,
+        "window": 2.5,
+        "fill": 0.808
+      },
+      {
+        "scene": "warning",
+        "text": "In the US, card statements carry a minimum payment warning. It shows how long you will be paying if you pay only the minimum, and what that will cost in total.",
+        "start": 217.43,
+        "seconds": 7.03,
+        "window": 7.4,
+        "fill": 0.95
+      },
+      {
+        "scene": "receipt",
+        "text": "For a balance like this one, there is a second line. The monthly payment that clears the balance in three years, and what that would cost.",
+        "start": 224.83,
+        "seconds": 5.28,
+        "window": 5.7,
+        "fill": 0.926
+      },
+      {
+        "scene": "did-maths",
+        "text": "That number is the fix. No calculator needed. The card company has already done the maths for you.",
+        "start": 230.53,
+        "seconds": 4.1,
+        "window": 4.63,
+        "fill": 0.886
+      },
+      {
+        "scene": "found-it",
+        "text": "Found it. It has been sitting there every month.",
+        "start": 235.17,
+        "seconds": 1.45,
+        "window": 1.83,
+        "fill": 0.792
+      },
+      {
+        "scene": "do-intro",
+        "text": "So here is what Rohan does this week. Three steps.",
+        "start": 237.0,
+        "seconds": 2.14,
+        "window": 2.67,
+        "fill": 0.801
+      },
+      {
+        "scene": "step1",
+        "text": "One. Find the three year payment on the statement, and set autopay for that amount. Not the minimum.",
+        "start": 239.67,
+        "seconds": 3.85,
+        "window": 4.37,
+        "fill": 0.881
+      },
+      {
+        "scene": "step2",
+        "text": "Two. Stop adding new spending to this card while he clears it. Otherwise the belt speeds up again.",
+        "start": 244.03,
+        "seconds": 3.93,
+        "window": 4.47,
+        "fill": 0.879
+      },
+      {
+        "scene": "step3",
+        "text": "Three. In a good month, pay a little extra. Every extra dollar goes straight at the balance.",
+        "start": 248.5,
+        "seconds": 3.54,
+        "window": 4.07,
+        "fill": 0.87
+      },
+      {
+        "scene": "catch",
+        "text": "One honest catch. If even that payment does not fit the budget, keep paying at least the minimum. A missed payment brings late fees and can push the rate even higher.",
+        "start": 252.57,
+        "seconds": 7.0,
+        "window": 7.37,
+        "fill": 0.95
+      },
+      {
+        "scene": "ask",
+        "text": "And then pick up the phone. Ask the card company for a lower rate or a payment plan. Asking costs nothing.",
+        "start": 259.93,
+        "seconds": 4.49,
+        "window": 5.0,
+        "fill": 0.898
+      },
+      {
+        "scene": "autopay-set",
+        "text": "Autopay set. Fixed payment. Not the minimum.",
+        "start": 264.93,
+        "seconds": 1.62,
+        "window": 2.07,
+        "fill": 0.783
+      },
+      {
+        "scene": "recap",
+        "text": "So. Minimum only: about 17 years and $11,638. One fixed payment: 36 months and $6,893. Same card, same balance.",
+        "start": 267.0,
+        "seconds": 9.14,
+        "window": 9.6,
+        "fill": 0.952
+      },
+      {
+        "scene": "outro",
+        "text": "Our maths is simplified, so real cards usually cost a bit more. Follow the panchayat for one money question, settled with real maths.",
+        "start": 276.6,
+        "seconds": 6.03,
+        "window": 6.53,
+        "fill": 0.923
+      }
+    ]
+  },
+  "durationSec": 284,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.3
+  },
+  "experiments": {
+    "quiet-bed": "on"
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "No sourced facts. 22.2% APR assumption matches Fed G.19 (accounts assessed interest 22.15% Q2 2026, 22.36% Aug 2026); CARD Act statement disclosures (minimum payment warning, payoff time, total cost, 36-month payment) confirmed in Reg Z 1026.7(b)(12); 'millions pay only the minimum' consistent with CFPB 2025 CARD Act report (15% of general-purpose cardholders, 2024); issuer formula variation stated in outro assumption; grace-period, late-fee and penalty-rate claims accurate and hedged; no product advice, tone fine, description ends with disclaimer. Notes: empty 'Chapters' heading in description; profile's licensed-adviser line missing from description; 36-month line has regulatory exceptions (applies to this example)."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fix: frame 0 now shows 'Card balance: $5,000' and a big 'Minimum due: $150' beside Rohan; thumbnail-c face clear (worried, no prop); all 57 stills clean, end card has disclaimer, 284 s, audio -1.0/-17.3 dB, liveliness 1.669."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-10-19T09:10:37.351682+00:00",
+      "finishedAt": "2026-10-19T09:10:37.351682+00:00",
+      "notes": [
+        "hashtags must include #Shorts"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-19T09:13:45.411662+00:00",
+      "finishedAt": "2026-10-19T09:13:45.411662+00:00",
+      "notes": [
+        "thumbnail.figure must be one placeholder, like {card_total_paid}; got '{card_years} years'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-19T09:13:50.859464+00:00",
+      "finishedAt": "2026-10-19T09:13:50.859464+00:00",
+      "notes": [
+        "beat 'future'.params.actors[0].acting[0].bubble.icon contains a typed number; use a placeholder: '$'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-19T09:13:55.594699+00:00",
+      "finishedAt": "2026-10-19T09:13:55.594699+00:00",
+      "notes": [
+        "description mentions '22%', which is neither a script input nor a computed figure"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-19T09:13:59.519127+00:00",
+      "finishedAt": "2026-10-19T09:13:59.519127+00:00",
+      "notes": [
+        "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-19T09:15:32.438234+00:00",
+      "finishedAt": "2026-10-19T09:15:32.438234+00:00",
+      "notes": [
+        "No sourced facts. 22.2% APR assumption matches Fed G.19 (accounts assessed interest 22.15% Q2 2026, 22.36% Aug 2026); CARD Act statement disclosures (minimum payment warning, payoff time, total cost, 36-month payment) confirmed in Reg Z 1026.7(b)(12); 'millions pay only the minimum' consistent with CFPB 2025 CARD Act report (15% of general-purpose cardholders, 2024); issuer formula variation stated in outro assumption; grace-period, late-fee and penalty-rate claims accurate and hedged; no product advice, tone fine, description ends with disclaimer. Notes: empty 'Chapters' heading in description; profile's licensed-adviser line missing from description; 36-month line has regulatory exceptions (applies to this example)."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-19T09:15:50.045914+00:00",
+      "finishedAt": "2026-10-19T09:15:50.045914+00:00",
+      "notes": [
+        "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-19T09:15:54.599207+00:00",
+      "finishedAt": "2026-10-19T09:38:11.417517+00:00",
+      "notes": [
+        "text 'Minimum only' at 109.4 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-19T09:38:50.655860+00:00",
+      "finishedAt": "2026-10-19T09:38:50.655860+00:00",
+      "notes": [
+        "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-19T09:38:51.799941+00:00",
+      "finishedAt": "2026-10-19T09:59:34.088826+00:00",
+      "notes": [
+        "284 s, ember/cinematic, peak -1.0 dB, mean -17.3 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-19T10:01:18.401731+00:00",
+      "finishedAt": "2026-10-19T10:01:18.401731+00:00",
+      "notes": [
+        "[script] thumbnail-c.png (thumbnails[1], pose facepalm + prop card): the blue card sits over Rohan's eyes and face, so the face is unreadable and the card looks pasted on his forehead. Use prop none (or pose worried/head-in-hands without the card) for this variant.",
+        "[scene] stage beat 'open', frame 0.0s: the 'Minimum due: $150' chip pops in after the first frame, so frame 0 is a plain room with no number, question or statement (rule 6). The chip with at:start should already be visible on frame 0, or the open beat should show the balance or the stake as a big figure from frame 0."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-19T10:01:53.586460+00:00",
+      "finishedAt": "2026-10-19T10:01:53.586460+00:00",
+      "notes": [
+        "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-19T10:01:54.767561+00:00",
+      "finishedAt": "2026-10-19T10:24:20.552138+00:00",
+      "notes": [
+        "284 s, ember/cinematic, peak -1.0 dB, mean -17.3 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-19T10:25:00.675684+00:00",
+      "finishedAt": "2026-10-19T10:25:00.675684+00:00",
+      "notes": [
+        "Re-review after fix: frame 0 now shows 'Card balance: $5,000' and a big 'Minimum due: $150' beside Rohan; thumbnail-c face clear (worried, no prop); all 57 stills clean, end card has disclaimer, 284 s, audio -1.0/-17.3 dB, liveliness 1.669."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-19T10:25:34.006279+00:00",
+      "finishedAt": "2026-10-19T10:25:34.006279+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-L-20261019-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/L-20261019-01"
+  },
+  "thumbnails": [
+    {
+      "file": "thumbnail.png",
+      "angle": "number"
+    },
+    {
+      "file": "thumbnail-b.png",
+      "angle": "question"
+    },
+    {
+      "file": "thumbnail-c.png",
+      "angle": "warning"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-10-19T09:10:37.351682+00:00",
+    "finishedAt": "2026-10-19T09:10:37.351682+00:00",
+    "notes": [
+      "hashtags must include #Shorts"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T09:13:45.411662+00:00",
+    "finishedAt": "2026-10-19T09:13:45.411662+00:00",
+    "notes": [
+      "thumbnail.figure must be one placeholder, like {card_total_paid}; got '{card_years} years'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T09:13:50.859464+00:00",
+    "finishedAt": "2026-10-19T09:13:50.859464+00:00",
+    "notes": [
+      "beat 'future'.params.actors[0].acting[0].bubble.icon contains a typed number; use a placeholder: '$'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T09:13:55.594699+00:00",
+    "finishedAt": "2026-10-19T09:13:55.594699+00:00",
+    "notes": [
+      "description mentions '22%', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T09:13:59.519127+00:00",
+    "finishedAt": "2026-10-19T09:13:59.519127+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T09:15:32.438234+00:00",
+    "finishedAt": "2026-10-19T09:15:32.438234+00:00",
+    "notes": [
+      "No sourced facts. 22.2% APR assumption matches Fed G.19 (accounts assessed interest 22.15% Q2 2026, 22.36% Aug 2026); CARD Act statement disclosures (minimum payment warning, payoff time, total cost, 36-month payment) confirmed in Reg Z 1026.7(b)(12); 'millions pay only the minimum' consistent with CFPB 2025 CARD Act report (15% of general-purpose cardholders, 2024); issuer formula variation stated in outro assumption; grace-period, late-fee and penalty-rate claims accurate and hedged; no product advice, tone fine, description ends with disclaimer. Notes: empty 'Chapters' heading in description; profile's licensed-adviser line missing from description; 36-month line has regulatory exceptions (applies to this example)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T09:15:50.045914+00:00",
+    "finishedAt": "2026-10-19T09:15:50.045914+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-19T09:15:54.599207+00:00",
+    "finishedAt": "2026-10-19T09:38:11.417517+00:00",
+    "notes": [
+      "text 'Minimum only' at 109.4 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T09:38:50.655860+00:00",
+    "finishedAt": "2026-10-19T09:38:50.655860+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T09:38:51.799941+00:00",
+    "finishedAt": "2026-10-19T09:59:34.088826+00:00",
+    "notes": [
+      "284 s, ember/cinematic, peak -1.0 dB, mean -17.3 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-19T10:01:18.401731+00:00",
+    "finishedAt": "2026-10-19T10:01:18.401731+00:00",
+    "notes": [
+      "[script] thumbnail-c.png (thumbnails[1], pose facepalm + prop card): the blue card sits over Rohan's eyes and face, so the face is unreadable and the card looks pasted on his forehead. Use prop none (or pose worried/head-in-hands without the card) for this variant.",
+      "[scene] stage beat 'open', frame 0.0s: the 'Minimum due: $150' chip pops in after the first frame, so frame 0 is a plain room with no number, question or statement (rule 6). The chip with at:start should already be visible on frame 0, or the open beat should show the balance or the stake as a big figure from frame 0."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T10:01:53.586460+00:00",
+    "finishedAt": "2026-10-19T10:01:53.586460+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T10:01:54.767561+00:00",
+    "finishedAt": "2026-10-19T10:24:20.552138+00:00",
+    "notes": [
+      "284 s, ember/cinematic, peak -1.0 dB, mean -17.3 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T10:25:00.675684+00:00",
+    "finishedAt": "2026-10-19T10:25:00.675684+00:00",
+    "notes": [
+      "Re-review after fix: frame 0 now shows 'Card balance: $5,000' and a big 'Minimum due: $150' beside Rohan; thumbnail-c face clear (worried, no prop); all 57 stills clean, end card has disclaimer, 284 s, audio -1.0/-17.3 dB, liveliness 1.669."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-19T10:25:34.006279+00:00",
+    "finishedAt": "2026-10-19T10:25:34.006279+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
