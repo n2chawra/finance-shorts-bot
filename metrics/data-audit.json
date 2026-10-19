@@ -1,18 +1,93 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-10-18T19:07:00.500Z",
+  "generatedAt": "2026-10-19T19:16:32.112Z",
   "youtubeChecked": true,
   "summary": {
-    "videos": 12,
-    "checked": 10,
+    "videos": 17,
+    "checked": 13,
     "error": 0,
-    "warning": 0,
+    "warning": 1,
     "info": 0,
     "owner": 0,
     "persistentErrors": 0
   },
-  "issues": [],
+  "issues": [
+    {
+      "kind": "state_wrong",
+      "severity": "warning",
+      "videoId": "v-20261019-02",
+      "youtubeId": "NP4mQKgqEVk",
+      "detail": "Marked published here, but private on YouTube."
+    }
+  ],
   "videos": [
+    {
+      "id": "v-20261019-02",
+      "title": "When the Fed moves rates, how fast does your credit card follow?",
+      "youtubeId": "NP4mQKgqEVk",
+      "state": "published",
+      "publishAt": "2026-10-20T01:37:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "private",
+        "views": 1,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261019-01",
+      "title": "The £1,723 energy price cap is not a limit on your bill",
+      "youtubeId": "EDWfsVkzGdA",
+      "state": "published",
+      "publishAt": "2026-10-19T13:37:00.000Z",
+      "dashboard": {
+        "views": 16,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-10-19T17:25:09.875Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 20,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261018-02",
+      "title": "Prices are up 5.54% in a year. Does your savings account keep pace?",
+      "youtubeId": "V6WiDEOF8TM",
+      "state": "published",
+      "publishAt": "2026-10-19T07:07:00.000Z",
+      "dashboard": {
+        "views": 1,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-10-19T17:25:09.875Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 1,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "L-20261018-01",
       "title": "Repo rate hiked: the quiet way your home loan gets longer",
@@ -23,7 +98,7 @@
         "views": 2,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
@@ -44,14 +119,14 @@
       "state": "published",
       "publishAt": "2026-10-18T13:37:00.000Z",
       "dashboard": {
-        "views": 24,
+        "views": 34,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 27,
+        "views": 34,
         "likes": 0,
         "comments": 0
       },
@@ -68,14 +143,14 @@
       "state": "published",
       "publishAt": "2026-10-18T07:07:00.000Z",
       "dashboard": {
-        "views": 21,
+        "views": 26,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 21,
+        "views": 26,
         "likes": 0,
         "comments": 0
       },
@@ -92,14 +167,14 @@
       "state": "published",
       "publishAt": "2026-10-17T13:37:00.000Z",
       "dashboard": {
-        "views": 240,
+        "views": 282,
         "likes": 3,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 240,
+        "views": 283,
         "likes": 2,
         "comments": 0
       },
@@ -116,14 +191,14 @@
       "state": "published",
       "publishAt": "2026-10-17T07:07:00.000Z",
       "dashboard": {
-        "views": 35,
+        "views": 40,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 35,
+        "views": 40,
         "likes": 1,
         "comments": 0
       },
@@ -143,7 +218,7 @@
         "views": 6,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
@@ -152,9 +227,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 5,
+        "days": 1,
+        "lastDay": "2026-10-16"
       }
     },
     {
@@ -164,21 +239,21 @@
       "state": "published",
       "publishAt": "2026-10-16T07:07:00.000Z",
       "dashboard": {
-        "views": 7,
+        "views": 8,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 7,
+        "views": 8,
         "likes": 0,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 7,
+        "days": 1,
+        "lastDay": "2026-10-16"
       }
     },
     {
@@ -191,7 +266,7 @@
         "views": 40,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
@@ -200,9 +275,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 28,
-        "days": 1,
-        "lastDay": "2026-10-15"
+        "views": 39,
+        "days": 2,
+        "lastDay": "2026-10-16"
       }
     },
     {
@@ -212,10 +287,10 @@
       "state": "published",
       "publishAt": "2026-10-15T07:10:00.000Z",
       "dashboard": {
-        "views": 55,
+        "views": 56,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
@@ -224,9 +299,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 44,
-        "days": 1,
-        "lastDay": "2026-10-15"
+        "views": 56,
+        "days": 2,
+        "lastDay": "2026-10-16"
       }
     },
     {
@@ -239,7 +314,7 @@
         "views": 20,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-18T17:32:12.260Z"
+        "liveAt": "2026-10-19T17:25:09.875Z"
       },
       "youtube": {
         "privacy": "public",
@@ -248,9 +323,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 13,
-        "days": 2,
-        "lastDay": "2026-10-15"
+        "views": 20,
+        "days": 3,
+        "lastDay": "2026-10-16"
       }
     }
   ]
