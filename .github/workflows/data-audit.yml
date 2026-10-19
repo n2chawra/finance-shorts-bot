@@ -1,11 +1,12 @@
-# Nightly data audit, 22:30 IST, half an hour before the auditor agent: compares what the dashboard
+# Nightly data audit, 18:37 IST, well before the 23:00 auditor agent (GitHub starts cron jobs up to
+# ~3 h late, and an off-the-hour minute is delayed less): compares what the dashboard
 # shows with YouTube and the database (workers/data-audit.ts), commits metrics/data-audit.json for
 # the agent, and raises owner notifications for what only the owner can fix.
 name: Data audit
 
 on:
   schedule:
-    - cron: "0 17 * * *" # 22:30 IST
+    - cron: "7 13 * * *" # 18:37 IST
   workflow_dispatch:
 
 permissions:
@@ -42,6 +43,7 @@ jobs:
           (cd apps/dashboard && npm ci)
       - name: Audit
         working-directory: workers
+        shell: bash   # bash -eo pipefail: a failing job turns red instead of hiding behind tee
         run: npm run data-audit | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Commit the report for the auditor agent
         run: |

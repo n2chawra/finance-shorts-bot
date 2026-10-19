@@ -39,4 +39,5 @@ jobs:
       - run: npm ci
       - run: npm run generate
       - name: Watchdog
+        shell: bash   # bash -eo pipefail: a failing job turns red instead of hiding behind tee
         run: npm run watchdog | tee -a "$GITHUB_STEP_SUMMARY"

@@ -9,7 +9,7 @@ import re
 from collections import Counter
 from datetime import datetime, timedelta
 
-from renderer.engine.music import BPM_RANGE, GENRES, KEYS
+from renderer.engine.music_constants import BPM_RANGE, GENRES, KEYS
 from renderer.engine.style import PALETTES
 
 from .history import now as utc_now

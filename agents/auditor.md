@@ -22,7 +22,7 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 `agents.auditor` false. Read:
 - `improvement/merge-log.json`: your last 5 entries. A blocked branch is tonight's first job: fix the
   reason it gives.
-- `metrics/data-audit.json`: written at 22:30 by the data-audit workflow (dashboard vs YouTube vs
+- `metrics/data-audit.json`: written at 18:37 IST by the data-audit workflow (dashboard vs YouTube vs
   database). Check `generatedAt` is from tonight; if it is older than 6 h, say so in your activity
   and an owner notification (the workflow failed), and skip duty 1.
 - `improvement/auditor/backlog.json` (`{"items": [...]}`) and `improvement/auditor/state.json`
@@ -58,7 +58,7 @@ python -m pytest renderer generator improvement scripts -q
 Fix anything red first. If `scripts/tests/test_prompt_paths.py` fails, an agent's instructions
 name a file that no longer exists: fix it in `generator/prompts/` yourself, but `agents/*.md` is the
 owner's, so raise an owner notification naming the file, the stale path and what replaced it.
-Then review **one area**: the one with the oldest date in `state.json`
+Then review **up to two areas**: the ones with the oldest dates in `state.json`
 (`generator`, `renderer`, `workers`, `dashboard-data` = `apps/dashboard/src/lib` + `src/app/api`,
 `dashboard-ui` = `apps/dashboard/src/app` pages + components). Read the code looking for real bugs:
 wrong results on edge cases (empty lists, zero, missing optional fields, the first or last day),
@@ -68,12 +68,12 @@ security issues (secrets in logs, unchecked input in API routes). Record each bu
 (`{"id", "kind": "bug" | "data" | "quality", "title", "detail", "files", "severity": "high" | "medium" | "low",
 "found": "<DAY>", "status": "open"}`) and update `state.json`.
 
-## 3. Code quality (one refactor a night, if nothing more urgent)
+## 3. Code quality (up to two refactors a night, if nothing more urgent)
 Look for, in the area you reviewed: repeated logic that should be one function (DRY), functions
 doing several jobs (single responsibility), modules that know too much about each other, long
 functions with deep nesting, unclear names, dead code, copy-pasted constants, missing types or
-`any`, inconsistent error handling. Rank them in `backlog.json` (`kind: "quality"`), and fix the most
-valuable one only if:
+`any`, inconsistent error handling. Rank them in `backlog.json` (`kind: "quality"`), and fix the two
+most valuable (each on its own, each meeting all of these) only if:
 - the behaviour stays exactly the same, and tests cover the code first (add the tests in the same
   branch, before the refactor, and show they pass on the old code);
 - it follows the repo's conventions (`CLAUDE.md` → Coding conventions: TypeScript strict, Zod for
@@ -86,11 +86,11 @@ Never refactor for taste alone, never reformat whole files, never change public 
 
 ## 4. Ship (at most two branches)
 - Branch 1 `agent/auditor/$DAY`: data and bug fixes, with their tests.
-- Branch 2 `agent/auditor/$DAY-2` (optional): the refactor, branched from `origin/main`, touching no
+- Branch 2 `agent/auditor/$DAY-2` (optional): the refactors, branched from `origin/main`, touching no
   file branch 1 touches; push it with `git push origin HEAD:refs/heads/agent/auditor/$DAY-2`.
 Both must pass the quick checks above. The guard allows you `generator/`, `renderer/`, `examples/`,
 `apps/dashboard/src` (including `lib/live-stats.ts`), `apps/dashboard/e2e`, `workers/` and your own
-`improvement/auditor/` files, at most 600 changed lines per branch and 2 merges a night. It blocks:
+`improvement/auditor/` files, at most 1,200 changed lines per branch and 2 merges a night. It blocks:
 uploads, YouTube sign-in, settings defaults and upload times, login, Prisma, workflows, the guard,
 the policy, the variety rules, the evaluator, the data audit, and deleting tests.
 

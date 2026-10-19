@@ -9,11 +9,8 @@ from functools import lru_cache
 import numpy as np
 
 from .audio import SR, hp, lp, tarr
+from .music_constants import BPM_RANGE, GENRES, KEYS
 
-KEYS: tuple[str, ...] = ("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
-GENRES: tuple[str, ...] = ("lofi", "pop", "cinematic", "synthwave", "acoustic")
-BPM_RANGE: dict[str, tuple[int, int]] = {"lofi": (80, 96), "pop": (104, 120), "cinematic": (80, 100),
-                                         "synthwave": (96, 116), "acoustic": (88, 110)}
 BED_RMS = 0.135   # loudness every bed is normalised to (the lo-fi bed's natural level)
 
 LOFI_CHORDS: list[list[int]] = [[57, 60, 64, 67], [53, 57, 60, 64], [48, 52, 55, 59], [55, 59, 62, 65]]  # Am7 Fmaj7 Cmaj7 G7

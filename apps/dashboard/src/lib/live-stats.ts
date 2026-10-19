@@ -11,15 +11,15 @@
  *   YT_API_KEY  a Google Cloud API key restricted to the YouTube Data API v3 (set in Netlify).
  *               Read-only, public data only: private videos have no public counters.
  *
- * Cost: 1 quota unit per 50 videos per refresh, so at most ~2,900 units a day with the dashboard
- * open all day, inside the 10,000 daily quota next to two 1,600-unit uploads.
+ * Cost: 1 quota unit per 50 videos per refresh, so at most ~1,450 units a day with the dashboard
+ * open all day, inside the 10,000 daily quota next to four Short uploads and a long one (5 × 1,600).
  */
 import { z } from "zod";
 
 import { notifyOwner } from "./autopilot.db";
 import { prisma } from "./prisma";
 
-const FRESH_MS = 30_000;   // matches the dashboard's 30 s polling
+const FRESH_MS = 60_000;   // every other 30 s poll: keeps a dashboard left open all day under ~1,500 units
 // Longest a page waits for YouTube before showing the stored numbers. A refresh is one YouTube call
 // and one UPDATE, well under a second; the old 2.5 s cut-off (with one UPDATE per video) often fired
 // first, and on Netlify the unfinished refresh then froze with the function and only landed on the

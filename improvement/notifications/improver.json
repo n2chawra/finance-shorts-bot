@@ -1,11 +1,3 @@
 {
-  "notifications": [
-    {
-      "key": "evaluate-needs-numpy",
-      "severity": "info",
-      "title": "The evaluator fails on a Python without numpy (generator/variety.py is yours to change)",
-      "detail": "`python -m improvement.evaluate` imports generator/variety.py, which imports KEYS, GENRES and BPM_RANGE from renderer/engine/music.py, which imports numpy. Research hit ModuleNotFoundError on a plain Python 3.11 on 2026-10-18. Agents can't edit variety.py (guard: owner-only). Still open on 2026-10-19.",
-      "fix": "1. Create renderer/engine/music_constants.py holding KEYS, GENRES and BPM_RANGE (cut from music.py). 2. In music.py: `from .music_constants import BPM_RANGE, GENRES, KEYS`. 3. In generator/variety.py line 12: `from renderer.engine.music_constants import BPM_RANGE, GENRES, KEYS`. 4. Check renderer/engine/style.py (variety.py line 13 imports PALETTES from it) is numpy-free too. 5. Run `python -m pytest renderer generator improvement -q`. Or tell the improver it may make step 3."
-    }
-  ]
+  "notifications": []
 }

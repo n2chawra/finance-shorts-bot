@@ -39,8 +39,10 @@ dashboards and design systems, data-viz patterns, motion, accessibility. Write i
 `backlog.json` as `"kind": "idea"`, each tied to a page and a concrete benefit for this owner
 (a one-person operator who checks the dashboard twice a day). Skip fashion that adds noise.
 
-## 3. Ship at most one change
-Pick the most valuable open item: a bug the owner would hit beats an idea; small beats large.
+## 3. Ship up to five changes
+Work down the open items by value: a bug the owner would hit beats an idea; small beats large. Ship
+as many as you can finish properly, **at most five**, each a separate commit on tonight's branch so
+one can be reverted alone; stop early rather than ship a half-done one.
 - Don't touch the same component again within 7 days unless it's a bug (check `lastTouched`).
 - Stay in `apps/dashboard/src` (plus `e2e/` tests). Never touch auth, middleware, the login API,
   `lib/prisma.ts`, `lib/live-stats.ts` or Prisma. New dependencies only if clearly worth it.

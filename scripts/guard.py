@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 ALLOW: dict[str, list[str]] = {
-    "research": ["improvement/research/*", "improvement/activity/*-research.json", "improvement/notifications/research.json"],
+    "research": ["improvement/research/*", "improvement/events/*", "improvement/activity/*-research.json", "improvement/notifications/research.json"],
     # the improver owns how the videos look and move too (owner, 2026-10-17): scenes, cast, camera, design
     "improver": ["generator/*", "renderer/*", "examples/*", "remotion/src/*", "remotion/test/*",
                  "config/experiments.json", "improvement/experiments.json",
@@ -69,7 +69,8 @@ TEST_FILE = re.compile(r"(^|/)(tests?|e2e)/|(^|/)test_[^/]*\.py$|\.(test|spec)\.
 UPLOAD_SETTING = re.compile(r"\b(uploadTimes|uploadsPaused|backlogCap)\b")
 MEDIA_EXT = (".mp3", ".wav", ".ogg", ".m4a", ".flac", ".aac", ".mp4", ".mov", ".webm")
 MODEL_EXT = (".onnx", ".bin", ".pt", ".pth", ".safetensors", ".ckpt", ".gguf")   # voice/AI model weights
-MAX_LINES = {"research": 4000, "improver": 900, "dashboard": 700, "auditor": 600, "scout": 4000, "studio": 4000, "monthly": 4000}   # code lines changed (reports excluded)
+# raised 2026-10-19 (owner): agents ship several small changes a night instead of one
+MAX_LINES = {"research": 4000, "improver": 2000, "dashboard": 1500, "auditor": 1200, "scout": 4000, "studio": 4000, "monthly": 4000}   # code lines changed (reports excluded)
 MAX_MERGES_PER_DAY = 2
 SECRET = re.compile(r"(ghp_[A-Za-z0-9]{20,}|github_pat_|sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|postgres(ql)?://\S+:\S+@|BEGIN (RSA|OPENSSH) PRIVATE KEY)")
 NETWORK = re.compile(r"^\+\s*(import|from)\s+(requests|urllib|http\.client|socket|aiohttp|httpx)\b")

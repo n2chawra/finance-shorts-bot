@@ -107,7 +107,7 @@ def test_blocks_audio_files_network_and_secrets(repo: Path) -> None:
 
 
 def test_blocks_oversized_changes(repo: Path) -> None:
-    change(repo, "renderer/templates/big/template.py", "x = 1\n" * 1000)
+    change(repo, "renderer/templates/big/template.py", "x = 1\n" * (guard.MAX_LINES["improver"] + 100))
     assert any("changed lines" in x for x in guard.check("improver", "main", "HEAD")["reasons"])
 
 

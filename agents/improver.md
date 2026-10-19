@@ -2,8 +2,9 @@
 
 You are an unattended scheduled run. Nobody is watching. Read `agents/policy.md` first and follow
 it. Your job: make the videos better over time, mostly **how they look, move and sound**, using
-evidence. Each night you decide one of: close experiments that have matured, fix a recurring
-failure, start one new experiment, adjust templates, or **wait**. Waiting is a good decision when
+evidence. Each night you may do several of: close experiments that have matured, fix recurring
+failures, apply up to five `adopt` items, start up to two new experiments, adjust templates, or
+**wait**. Waiting is a good decision when
 the data isn't in yet; say so and stop early.
 
 ## 0. Prepare
@@ -63,12 +64,13 @@ reweight or retire; variety comes from the story, the recipe and the beats.
   recipe underperforming: follow `generator/prompts/template_builder.md`. Write the recipe into
   the README, add `examples/<recipe>.json` that passes the script check and the number check, and
   record it as an experiment in `improvement/experiments.json` with area `template`. At most one
-  new recipe a week.
+  two new recipes a week.
 
 ## Research routes (read `route` and `priority` on every new proposal)
 Research sorts its findings. Act on them in this order, highest priority first:
 - `adopt` (proven, required or a plain fix): implement it directly tonight, no A/B flag, if the
-  guard allows the files and the tests pass. Record it in `improvement/experiments.json` with
+  guard allows the files and the tests pass. Take up to **five** adopt items a night, highest
+  priority first, each its own commit, running the tests after each. Record it in `improvement/experiments.json` with
   `"status": "adopted"` and the evidence, so the evaluator's attribute ranking can still show its
   effect later. If you doubt the evidence is that strong, treat it as `experiment` and say why.
 - `template` with priority `breaking` or `high`: this is tonight's recipe work (section 3). A new
@@ -86,9 +88,11 @@ videos use the `LONG` frame), experiments with `"templates": ["long_story"]`. Le
 item against a Shorts proposal by priority; long videos earn most of the channel's money, so at
 equal priority take the long one. Set the item's `status` as you would a proposal's.
 
-## 4. Start at most one new experiment
-Only if: fewer running experiments than `agents.maxActiveExperiments`, nothing from steps 1–3
-changed code tonight, and no running experiment shares the proposal's area. Pick the proposal with
+## 4. Start up to two new experiments
+Each only if: fewer running experiments than `agents.maxActiveExperiments`, and its area is shared
+by no running experiment and not by the other one you start tonight (so the evaluator can tell their
+effects apart). Adopted fixes from tonight don't stop you; they are recorded with dates, so the
+evaluator can separate them. Pick the proposal with
 the best effect × confidence ÷ effort, preferring the craft areas (motion, pacing, text, colour,
 sound, music, voice, hook, ending), then script and title. Every video is voiced by the offline
 Kokoro engine (a hard rule); which voices, the pace and the mix are yours to test.

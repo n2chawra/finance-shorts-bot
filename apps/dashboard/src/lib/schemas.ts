@@ -289,7 +289,7 @@ const MergeRowSchema = z.looseObject({
   at: z.string(), agent: z.string(), branch: z.string(), result: z.enum(["merged", "blocked"]), reasons: z.array(z.string()), runUrl: z.string().optional(),
 });
 const BacklogRowSchema = z.looseObject({ id: z.string(), kind: z.string().optional(), title: z.string(), status: z.string().optional(), page: z.string().optional(), found: z.string().optional(), agent: z.string().optional() });
-/** metrics/data-audit.json: what the dashboard shows vs YouTube vs the database, every night at 22:30 IST */
+/** metrics/data-audit.json: what the dashboard shows vs YouTube vs the database, every night at 18:37 IST */
 const DataAuditSchema = z.looseObject({
   generatedAt: z.string(),
   youtubeChecked: z.boolean(),

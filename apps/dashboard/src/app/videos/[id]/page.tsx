@@ -11,8 +11,9 @@ import { useState } from "react";
 import { DataTable, LineChart } from "@/components/charts";
 import { ActionMenu, Card, ConfirmButton, buttonClass, Empty, ErrorNote, Loading, type MenuItem, Num, ResultBadge, Stagger, Stat, StatusBadge } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, fmtRelative, titleCase } from "@/lib/format";
-import { useVideo, useVideoAction } from "@/lib/queries";
+import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, fmtRelative, fmtWorld, titleCase } from "@/lib/format";
+import { postingPlan } from "@/lib/posting-plan";
+import { useQueue, useSettings, useVideo, useVideoAction, useVideos } from "@/lib/queries";
 import type { VideoAction } from "@/lib/schemas";
 
 import { MarkUploaded, YouTubeDetails } from "./publish-tools";
@@ -56,6 +57,11 @@ export default function VideoPage() {
   const toast = useToast();
   const [tab, setTab] = useState("details");
   const [confirmDelete, setConfirmDelete] = useState(false);
+  // a queued video's slot, by the queue page's own posting plan
+  const queue = useQueue();
+  const settings = useSettings();
+  const published = useVideos({ status: "published" });
+  const scheduled = useVideos({ status: "scheduled" });
   if (isLoading) return <Loading />;
   if (error || !v) return <ErrorNote error={error} />;
 
@@ -68,6 +74,10 @@ export default function VideoPage() {
   const { inputs, lines } = scriptParts(v.script);
   const total = v.steps.reduce((a, s) => a + s.durationSec, 0);
   const long = v.format === "long";
+  const planned = v.status === "queued" && queue.data && settings.data
+    ? postingPlan(v.format, queue.data, [...(published.data ?? []), ...(scheduled.data ?? [])], settings.data).find((s) => s.video?.id === v.id)
+    : undefined;
+  const publishAt = v.upload?.publishAt ?? (planned ? new Date(planned.at).toISOString() : null);
   const menu: MenuItem[] = [
     ...(v.status === "queued" ? [
       { label: "Upload now", icon: Upload, disabled: act.isPending, onSelect: () => run("upload-now") },
@@ -116,7 +126,14 @@ export default function VideoPage() {
           <Card title="Publishing">
             <dl>
               <Row k="Created">{fmtDateTime(v.createdAt)}</Row>
-              <Row k={v.status === "published" ? "Published" : "Publish at"}>{v.upload ? fmtDateTime(v.upload.publishAt) : v.queuePosition ? `Queue #${v.queuePosition}` : "—"}</Row>
+              <Row k={v.status === "published" ? "Published" : "Publish at"}>
+                {publishAt ? (
+                  <span className="block text-right leading-tight">
+                    <span className="block tabular-nums">{fmtDateTime(publishAt)} IST{!v.upload && v.queuePosition ? ` · queue #${v.queuePosition}` : ""}</span>
+                    <span className="block text-[11px] text-muted">{fmtWorld(publishAt)}{!v.upload ? `, ${fmtRelative(publishAt)} if the queue order holds` : ""}</span>
+                  </span>
+                ) : v.queuePosition ? `Queue #${v.queuePosition}` : "—"}
+              </Row>
               <Row k="Upload">{v.upload ? `${titleCase(v.upload.state)} · ${v.upload.attempts} attempt${v.upload.attempts === 1 ? "" : "s"}` : "—"}</Row>
               <Row k="YouTube">{v.upload?.youtubeId ? <a className="font-medium text-brand-text hover:underline" href={long ? `https://youtube.com/watch?v=${v.upload.youtubeId}` : `https://youtube.com/shorts/${v.upload.youtubeId}`} target="_blank" rel="noreferrer">Open ↗</a> : <span className="text-muted">No link yet</span>}</Row>
               <Row k="Style">{titleCase(v.style.palette)} · {titleCase(v.style.genre)}, {v.style.key}, {v.style.bpm} BPM</Row>

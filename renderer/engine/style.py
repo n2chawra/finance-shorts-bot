@@ -6,7 +6,7 @@ seed, so two seeds give two different-looking and different-sounding videos.
 import random
 from dataclasses import dataclass
 
-from .music import BPM_RANGE, GENRES, KEYS
+from .music_constants import BPM_RANGE, GENRES, KEYS
 
 RGB = tuple[int, int, int]
 

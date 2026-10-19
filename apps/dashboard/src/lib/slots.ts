@@ -17,7 +17,7 @@ export function upcomingSlots(after: number, times: string[], n: number): number
   return out;
 }
 
-/** "12:37 and 19:07 IST" */
+/** "05:37, 12:37, 19:07 and 23:37 IST" */
 export const describeTimes = (times: string[]) => {
   const s = [...times].sort();
   return `${s.length > 1 ? `${s.slice(0, -1).join(", ")} and ${s[s.length - 1]}` : s[0]} IST`;

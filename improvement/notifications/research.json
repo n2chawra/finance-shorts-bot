@@ -1,13 +1,6 @@
 {
   "notifications": [
     {
-      "key": "research-event-files-blocked",
-      "severity": "warning",
-      "title": "Research can't write event-day files where the event-day run reads them",
-      "detail": "agents/research.md and generator/prompts/event_day.md use improvement/events/<date>-<slug>.json, but scripts/guard.py only lets research write improvement/research/*, so that branch would be blocked. Tonight's UK CPI file (21 Oct) is at improvement/research/events/2026-10-21-uk-cpi.json instead.",
-      "fix": "1. In scripts/guard.py, add \"improvement/events/*\" to the research allow-list (line 23), or change agents/research.md and generator/prompts/event_day.md to use improvement/research/events/. 2. If you schedule a UK CPI event-day run (below), copy the file to improvement/events/2026-10-21-uk-cpi.json on main first."
-    },
-    {
       "key": "uk-cpi-event-day-2026-10-21",
       "severity": "info",
       "title": "Optional: a one-off event-day run for UK inflation on Wed 21 Oct",

@@ -1,13 +1,18 @@
 # Uploads today's videos to YouTube (private + publishAt), each slot only when it is within
-# UPLOAD_LOOKAHEAD_HOURS (workers/lib/publishing.ts): 12:37 at the 10:07 run, 19:07 at 16:07, and
-# long videos' 20:07 at 16:07. Filling late lets a trending video made at midday take the evening
-# slot. Each slot gets a retry run (13:07 for 12:37, 17:37 for the evening ones).
+# UPLOAD_LOOKAHEAD_HOURS (workers/lib/publishing.ts). Default slots (IST): 05:37 and long 06:07 at the
+# 01:37 run, 12:37 at 10:07, 19:07 at 16:07, 23:37 at 19:37. Filling late lets a trending video made
+# at midday take an evening slot. Each slot gets a retry run (03:07, 13:07, 17:37, 21:07); GitHub
+# can start a cron job up to ~3 h late, so every slot has a run comfortably before it.
 name: Publish
 
 on:
   schedule:
+    - cron: "7 20 * * *"      # 01:37 IST: the US-evening slots (05:37 Short, 06:07 long)
+    - cron: "37 21 * * *"     # 03:07 IST: retry for them
     - cron: "37 4,7,10 * * *" # 10:07, 13:07, 16:07 IST
     - cron: "7 12 * * *"      # 17:37 IST: retry for the evening slots
+    - cron: "7 14 * * *"      # 19:37 IST: the UK/Europe-evening slot (23:37)
+    - cron: "37 15 * * *"     # 21:07 IST: retry for it
   workflow_dispatch:
 
 permissions:
@@ -40,4 +45,5 @@ jobs:
       - run: npm ci
       - run: npm run generate
       - name: Publish
+        shell: bash   # bash -eo pipefail: a failing job turns red instead of hiding behind tee
         run: npm run publish | tee -a "$GITHUB_STEP_SUMMARY"

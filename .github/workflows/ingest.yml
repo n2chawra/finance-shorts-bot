@@ -56,6 +56,7 @@ jobs:
       - name: Ingest
         env:
           GITHUB_TOKEN: ${{ github.token }}
+        shell: bash   # bash -eo pipefail: a failing job turns red instead of hiding behind tee
         run: npm run ingest | tee "$GITHUB_STEP_SUMMARY"
       - name: Commit settings and metrics for routines and agents
         working-directory: .

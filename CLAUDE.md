@@ -17,8 +17,11 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   voices, rotated per video; numbers are spoken as words.
   Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Every
   video is voiced; no on-screen captions (owner, 2026-10-17).
-- **Two Shorts per day**, at 12:37 and 19:07 IST (setting `uploadTimes`), and **two long videos per
-  week**, 20:07 IST on Tue/Thu/Sat (`longUploadTimes`, `longUploadDays`, `longPerWeek`). One video per
+- **Up to four Shorts per day**, one per viewer region's evening (setting `uploadTimes`, default
+  05:37 US, 12:37 Australia, 19:07 India, 23:37 UK/Europe, IST), and **two long videos per week**,
+  06:07 IST (US evening) on Tue/Thu/Sat (`longUploadTimes`, `longUploadDays`, `longPerWeek`).
+  Supply is 3 Shorts a day plus trend videos, so the last slot of a day is the one left empty
+  when the queue runs dry (owner, 2026-10-19). One video per
   slot; each format is filled from its own queue, so a missing long video never costs a Short its slot.
 - **Generation keeps going** on a schedule to build a backlog, capped at **30 ready videos**.
   When the backlog is full, generation runs improve or add templates instead of making videos.
@@ -65,7 +68,7 @@ if free tiers get in the way. Keep the worker code portable so it runs in both p
 ## Self-improving agents (`agents/`, `improvement/`)
 
 Four nightly Claude Code routines check and improve the automation itself, 23:00–09:00 IST:
-**auditor** (23:00, after the 22:30 `data-audit.yml` compares the dashboard's numbers with YouTube and
+**auditor** (23:00, after the 18:37 `data-audit.yml` compares the dashboard's numbers with YouTube and
 the database into `metrics/data-audit.json`: fixes data bugs and code bugs anywhere, one refactor a
 night; may change `workers/` and `lib/live-stats.ts` but never uploads, sign-in or the audit itself),
 **research** (23:47, reports + proposals, never code), **improver** (06:17, A/B experiments on ~50% of
@@ -255,7 +258,8 @@ refresh tokens expire after 7 days.
 
 ## YouTube API facts
 
-- Default quota 10,000 units/day; `videos.insert` costs 1,600. Two uploads/day (3,200) is safe.
+- Default quota 10,000 units/day; `videos.insert` costs 1,600. Four Shorts and a long video (8,000)
+  fit, next to the dashboard's live counters (~1,450 at most).
 - Unverified API projects upload as private only. Apply for the audit early.
 - Schedule by uploading with `privacyStatus: private` + `publishAt` (ISO 8601).
 - Shorts: vertical/square, up to 3 min. Keep ours ≤ 60 s.

@@ -38,6 +38,7 @@ jobs:
         working-directory: workers
       - name: Market and comments
         working-directory: workers
+        shell: bash   # bash -eo pipefail: a failing job turns red instead of hiding behind tee
         run: npm run market -- "$RUNNER_TEMP/market-data" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Replace the market-data branch
         run: |

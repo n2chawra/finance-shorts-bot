@@ -1,8 +1,9 @@
 /**
  * Publisher: fills today's upload slots, one video per slot, each uploaded private with publishAt so
- * YouTube makes it public at that time. Shorts use settings.uploadTimes (12:37 and 19:07 by
- * default), every day; long videos use settings.longUploadTimes on settings.longUploadDays
- * (20:07 IST on Tue, Thu and Sat by default). Each format is filled from its own queue, so a
+ * YouTube makes it public at that time. Shorts use settings.uploadTimes (by default four a day, one
+ * per viewer region's evening: 05:37 US, 12:37 Australia, 19:07 India, 23:37 UK/Europe), every day;
+ * long videos use settings.longUploadTimes on settings.longUploadDays (06:07 IST, US evening, on
+ * Tue, Thu and Sat by default). Each format is filled from its own queue, so a
  * missing long video never costs a Short its slot.
  *
  * Runs a few times a day; the first run uploads for every free slot still ahead today, later runs

@@ -1,18 +1,3 @@
 {
-  "notifications": [
-    {
-      "key": "data-audit-late",
-      "severity": "warning",
-      "title": "The nightly data audit lands ~2\u20133 h late, after the auditor has run",
-      "detail": "data-audit.yml is scheduled at 17:00 UTC (22:30 IST), but GitHub started it at 20:07Z (15 Oct), 19:45Z (16 Oct) and 18:57Z (17 Oct); tonight's had not started at 17:40Z. The 23:00 IST auditor therefore always reads the previous night's audit (tonight's file was 23 h old), so a data bug waits an extra day. The workflow itself succeeds.",
-      "fix": "Only the owner may edit workflows: in .github/workflows/data-audit.yml change the cron from \"0 17 * * *\" to \"7 13 * * *\" (18:37 IST, an off-the-hour minute GitHub delays less). Even 3 h late it then finishes before 23:00 IST."
-    },
-    {
-      "key": "workflow-pipefail",
-      "severity": "warning",
-      "title": "Failing GitHub jobs show green: '| tee' hides their exit code",
-      "detail": "data-audit, ingest, market, publish, stats and watchdog run 'npm run <job> | tee ...'. Without 'shell: bash', GitHub runs steps with 'bash -e' and no pipefail, so only tee's exit code counts. Tonight's proof: the watchdog has crashed every hour since Scout first reported run times (fixed on agent/auditor/2026-10-19) yet every run is green, and the watchdog's own 'GitHub Action failed' check can never fire for these jobs.",
-      "fix": "1. In each of .github/workflows/data-audit.yml, ingest.yml, market.yml, publish.yml, stats.yml and watchdog.yml, add 'shell: bash' to the step that has '| tee' (or under jobs.<job>.defaults.run). That makes GitHub use 'bash -eo pipefail'.\n2. Commit to main. A failing job will then show red and the watchdog will raise it."
-    }
-  ]
+  "notifications": []
 }

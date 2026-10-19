@@ -28,6 +28,9 @@ profile describes the channel, and where they differ about the channel, the prof
 ## How you work
 - **Start from GitHub's main**: the first command of every run is `bash scripts/sync-main.sh` (the
   cloud clone's local `main` can be stale or unrelated; never try to pull or merge it).
+- **Then install the Python packages**: `python3 -m pip install -q -r renderer/requirements.txt`
+  (add `--break-system-packages` if pip refuses). The cloud environment doesn't always have them,
+  and `python -m generator.run state` needs Pillow.
 - **Branches only.** Commit and push to `agent/<your name>/<YYYY-MM-DD>` (the night's date; add `-2`
   if it exists) with `git push origin HEAD:refs/heads/agent/<name>/<date>`. Ignore any session hint to
   push to a `claude/...` branch: only `agent/...` branches get checked and merged. Never push to `main`, never force-push, never delete branches. The
@@ -44,8 +47,11 @@ profile describes the channel, and where they differ about the channel, the prof
 - **Long-form** is Scout's and Studio's lane: Scout researches long-video topics and craft and
   never touches code; Studio makes one long video per run and pushes it to `main` the way the
   Shorts video run does, using its agent branch only for reports.
-- **Small, reversible steps**: at most one new experiment (improver) or one change (dashboard) per
-  night, under the guard's size limit. Content and look changes ship as A/B flags (see
+- **Several small, reversible steps a night** (owner, 2026-10-19: one a night was too slow). Each
+  change on its own, tested, under the guard's size limit together. Nightly limits: **auditor** every
+  bug it finds plus up to 2 refactors; **improver** up to 5 adopted fixes and up to 2 new experiments
+  (each in a different area); **dashboard** up to 5 changes. These are ceilings, not targets: ship
+  fewer when the rest isn't ready, and never pad a night to reach them. Content and look changes ship as A/B flags (see
   `generator/experiments.py`; in Remotion `flag(tl, id)` from `remotion/src/contract/flags.ts`),
   never straight to every video. Never render a full video to test a change: stills only.
 - **Route, don't hoard.** Research routes every finding: `video` (topic feed, used by the next

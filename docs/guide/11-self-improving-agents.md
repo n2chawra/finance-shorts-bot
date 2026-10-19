@@ -9,7 +9,7 @@ guardrails: [`scripts/guard.py`](../../scripts/guard.py).*
 
 | Time | Who | What |
 |---|---|---|
-| 22:30 | Data audit (GitHub Action) | Compares every published video's numbers on the dashboard with YouTube and the database; writes `metrics/data-audit.json`; notifies the owner about unlinked videos and errors that last two nights |
+| 18:37 | Data audit (GitHub Action) | Compares every published video's numbers on the dashboard with YouTube and the database; writes `metrics/data-audit.json`; notifies the owner about unlinked videos and errors that last two nights |
 | 23:00 | **Auditor** | Fixes what the data audit found, runs every check, reviews one area for bugs, and makes one careful refactor (DRY, single responsibility, dead code) when tests cover it |
 | 23:47 | **Research** | Studies 3–5 top Shorts (hooks, motion, text, colour, sound, endings), the day's topic, and Claude/Claude Code updates. Writes a report and ranked proposals. Never changes code. |
 | 04:07 | Video run | Makes the day's 3 videos, first in a fresh usage window |

@@ -38,3 +38,13 @@ export function fmtRelative(iso: string, now = Date.now()): string {
 }
 
 export const titleCase = (s: string) => s.replace(/_/g, " ").replace(/^\w/, (c) => c.toUpperCase());
+
+/** Where the channel's viewers are, for reading an IST upload time in their clocks. */
+export const WORLD = [
+  { city: "New York", tz: "America/New_York" },
+  { city: "London", tz: "Europe/London" },
+  { city: "Sydney", tz: "Australia/Sydney" },
+] as const;
+const worldTime = WORLD.map((w) => ({ city: w.city, f: new Intl.DateTimeFormat("en-US", { timeZone: w.tz, weekday: "short", hour: "numeric", minute: "2-digit" }) }));
+/** One upload instant in each viewer region's local time: "Mon 9:37 AM New York · …". */
+export const fmtWorld = (iso: string) => worldTime.map((w) => `${w.f.format(new Date(iso))} ${w.city}`).join(" · ");

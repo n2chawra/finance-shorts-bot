@@ -12,6 +12,7 @@ Keep it lean: it shares a Pro-plan usage window with other routines.
 
 ```
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
+python3 -m pip install -q -r renderer/requirements.txt   # add --break-system-packages if pip refuses
 ```
 Then the rest of section 0 of `generator/prompts/routine.md` (find the Python, ffmpeg, the voice).
 
