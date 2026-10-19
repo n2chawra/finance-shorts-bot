@@ -1,0 +1,19 @@
+{
+  "agent": "improver",
+  "day": "2026-10-19",
+  "startedAt": "2026-10-19T00:48:05Z",
+  "finishedAt": "2026-10-19T00:50:05Z",
+  "summary": "Adopted research's high-priority narrator fix: each video now gets the narrator voice its format used longest ago, so the same voice can't narrate two videos in a row.",
+  "decision": "acted",
+  "why": "Research routed narrator-rotation as adopt/high: am_michael narrated v-20261017-02, v-20261018-01, -02 and -03 (three in a row on one day) and af_heart had never narrated a Remotion Short, while CLAUDE.md requires voices rotated per video. No experiments to close: none running, 3 videos with 48 h data.",
+  "findings": [
+    {"title": "Evaluator", "detail": "3 Shorts with 48 h data (avg viewed 27.6%); no experiments running; no attribute rankings beyond n = 3 yet."},
+    {"title": "Recent narrators", "detail": "Last 6 Shorts: am_michael, am_michael, am_fenrir, am_michael, af_heart, af_bella. Next Short gets am_fenrir, next long video am_michael."},
+    {"title": "Waiting for tomorrow", "detail": "Template/high items (real_return + price_rise maths kinds; long-form loan_prepay and sip_stepup kinds) and two normal-priority experiments wait because tonight's change touched code. Long-form kinds go first next run."}
+  ],
+  "changes": [
+    {"title": "Narrator rotation", "detail": "generator/run.py: next_narrator() picks the least recently used voice in NARRATOR_VOICES per format; render sets it when the script has none or repeats the previous video's, and saves it in script.json. Tests in generator/tests/test_run.py; long_story README updated. 191 tests pass.", "branch": "agent/improver/2026-10-19", "experiment": "narrator-rotation"}
+  ],
+  "nextCheck": "2026-10-20",
+  "links": [{"label": "Research", "url": "improvement/research/2026-10-19.md"}]
+}

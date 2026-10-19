@@ -39,6 +39,21 @@
       "description": "A count-up or bar must land on the string Python makes from the number it counts to; its value is an @maths reference or 0, never typed.",
       "evidence": "Research 2026-10-18: v-20261017-04 (old engine) showed ₹6.5 L vs ₹6.4 L and ₹16.3 L vs ₹16.5 L for the same quantities. All 3 examples and v-20261018-01 pass the new check.",
       "commits": []
+    },
+    {
+      "id": "narrator-rotation",
+      "proposal": "narrator-rotation",
+      "area": "sound",
+      "status": "adopted",
+      "startedAt": "2026-10-19",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "The render step gives a script with no narrator, or the previous video's narrator, the voice in NARRATOR_VOICES its format used longest ago (never-used first), and saves it in script.json.",
+      "evidence": "Research 2026-10-19: am_michael narrated v-20261017-02, v-20261018-01, -02 and -03 (three in a row on one day); CLAUDE.md requires voices rotated per video. With current history the next Short gets am_fenrir, the next long video am_michael.",
+      "commits": []
     }
   ]
 }

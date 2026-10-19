@@ -27,7 +27,7 @@ from pathlib import Path
 
 from renderer import remotion
 from renderer.engine.formatting import CURRENCIES
-from renderer.timeline.build import check_script
+from renderer.timeline.build import NARRATOR_VOICES, check_script
 
 from . import experiments, history, topics, variety
 from .numbers import number_check
@@ -163,6 +163,16 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
 
 # ---------------- steps ----------------
 
+def next_narrator(entries: list[dict]) -> str:
+    """The narrator voice these videos used longest ago (a never-used one first)."""
+    last = {v: -1 for v in NARRATOR_VOICES}
+    for i, e in enumerate(entries):
+        voice = (e.get("style") or {}).get("voice")
+        if voice in last:
+            last[voice] = i
+    return min(NARRATOR_VOICES, key=lambda v: last[v])
+
+
 def check_plan(vid: str, root: Path = ROOT) -> list[str]:
     plan = _read(_dir(vid, root) / "plan.json")
     missing = [k for k in PLAN_KEYS if k not in plan]
@@ -215,6 +225,13 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         script = _read(d / "script.json")
         if script.get("template") not in TEMPLATES:
             raise ValueError(f"template must be one of {', '.join(TEMPLATES)}")
+        # voices rotate per video (CLAUDE.md): a missing narrator, or the previous video's, gives way to the
+        # one used longest ago; it is saved in the script so a re-render keeps the same voice
+        earlier = [e for e in history.of_format(history.load(root), plan_format(script)) if e["id"] != vid]
+        previous = (earlier[-1].get("style") or {}).get("voice") if earlier else None
+        if not script.get("narrator") or script["narrator"] == previous:
+            script["narrator"] = next_narrator(earlier)
+            _write(d / "script.json", script)
         # the video's A/B variants travel in the timeline, so scenes can read them and ship records them
         script["experiments"] = experiments.for_video(vid, script.get("template"), root)
         report = remotion.render_story(script, d, preview=preview)
