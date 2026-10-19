@@ -1,0 +1,140 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:12:36.118198+00:00",
+    "finishedAt": "2026-10-19T23:12:36.118198+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:13:00.266140+00:00",
+    "finishedAt": "2026-10-19T23:13:00.266140+00:00",
+    "notes": [
+      "28 figures computed from inputs; 16 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:13:09.835028+00:00",
+    "finishedAt": "2026-10-19T23:13:09.835028+00:00",
+    "notes": [
+      "28 figures computed from inputs; 16 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:13:16.938548+00:00",
+    "finishedAt": "2026-10-19T23:13:16.938548+00:00",
+    "notes": [
+      "28 figures computed from inputs; 16 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:14:01.398142+00:00",
+    "finishedAt": "2026-10-19T23:14:01.398142+00:00",
+    "notes": [
+      "Facts confirmed on ecb.europa.eu key rates table (DFR 2.50% from 16 Sep 2026, 2.25% from 17 Jun 2026; two 2026 rises) and ECB calendar (next decision 28-29 Oct 2026); no outcome predicted; EUR mortgage 3.5%/3.75% and savings 2%/2.25% realistic and stated as assumptions; pass-through claims correct; disclaimer in description. Note: savings example assumes full pass-through while beat says 'only partly' - acceptable as labelled illustration."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:14:14.857459+00:00",
+    "finishedAt": "2026-10-19T23:14:14.857459+00:00",
+    "notes": [
+      "28 figures computed from inputs; 16 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-19T23:14:15.804724+00:00",
+    "finishedAt": "2026-10-19T23:17:02.822182+00:00",
+    "notes": [
+      "length 46 s is outside 30–45 s"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:17:08.974523+00:00",
+    "finishedAt": "2026-10-19T23:17:08.974523+00:00",
+    "notes": [
+      "28 figures computed from inputs; 16 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:17:09.893136+00:00",
+    "finishedAt": "2026-10-19T23:19:43.952264+00:00",
+    "notes": [
+      "45 s, ocean/synthwave, peak -1.0 dB, mean -17.4 dB"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:20:10.356822+00:00",
+    "finishedAt": "2026-10-19T23:20:10.356822+00:00",
+    "notes": [
+      "Re-review after trim: source/list/lesson lines still accurate (deposit rate = what banks earn on cash parked at the ECB; savings slow and partial, variable at reset, fixed unchanged; 'Often' hedged); facts unchanged and confirmed on ecb.europa.eu (2.50% from 16 Sep 2026, 2.25% from 17 Jun 2026, next meeting 28-29 Oct); thumbnail 3 now like-for-like (yearly savings interest at 2% vs 2.25%); disclaimer present."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-19T23:20:26.742608+00:00",
+    "finishedAt": "2026-10-19T23:20:26.742608+00:00",
+    "notes": [
+      "[script] 28.0-30.5s, beat 'save' (split): empty scene, nothing but background for ~2.5 s because both panels wait for events on 'pays'/'year'; the spoken €10,000 is never shown. Set left panel 'at' to 'start' (or an earlier word) so the picture is there from the beat's start.",
+      "[scene] 25.0s, beat 'list' (checklist): the title 'When the ECB moves' sits under the top-left channel mascot, which covers its first letter (reads 'hen the ECB moves'). Checklist title needs to clear the logo.",
+      "[scene] thumbnail.png, 'story' layout: the hero tag text 'VARIABLE MORTGAGE' overflows its green tag card on both sides (V and E spill off the card). Tag must fit or shrink inside its card.",
+      "[script] 20.0s, beat 'source': the pen circle at x 0.75, y 0.5 rings blank filler lines, not the 2.5% figure it is meant to mark; move it onto the highlighted line or drop it."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:20:48.365624+00:00",
+    "finishedAt": "2026-10-19T23:20:48.365624+00:00",
+    "notes": [
+      "28 figures computed from inputs; 16 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:20:49.269889+00:00",
+    "finishedAt": "2026-10-19T23:23:42.308313+00:00",
+    "notes": [
+      "45 s, ocean/synthwave, peak -1.0 dB, mean -17.4 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:24:09.768475+00:00",
+    "finishedAt": "2026-10-19T23:24:09.768475+00:00",
+    "notes": [
+      "Re-render: all four earlier problems fixed (split shows €200 from 28 s, list beat is a kinetic box clear of the logo, thumbnail tag 'Mortgage' fits, pen circle gone); hook €1,285, disclaimer at 44.8 s, 45 s, audio -1.0/-17.4 dB, no layout or liveliness problems. Minor, not blocking: the kinetic box items 1 and 2 share style with no gap so they read as one run, and Priya points off-frame left, away from the box."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:24:20.953093+00:00",
+    "finishedAt": "2026-10-19T23:24:20.953093+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

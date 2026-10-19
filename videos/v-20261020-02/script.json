@@ -1,0 +1,399 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261020-02",
+ "seed": 41987,
+ "story": "checklist",
+ "currency": "EUR",
+ "style": {
+  "palette": "ocean",
+  "genre": "synthwave",
+  "key": "A",
+  "bpm": 104
+ },
+ "feed_id": "2026-10-20-ecb-oct29-savings",
+ "facts": [
+  {
+   "label": "ECB deposit facility rate, from 16 September 2026",
+   "value": 2.5,
+   "unit": "percent",
+   "currency": "EUR",
+   "as_of": "2026-09-16",
+   "source": "European Central Bank",
+   "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+  },
+  {
+   "label": "ECB deposit facility rate before the September rise",
+   "value": 2.25,
+   "unit": "percent",
+   "currency": "EUR",
+   "as_of": "2026-06-17",
+   "source": "European Central Bank",
+   "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+  }
+ ],
+ "maths": [
+  {
+   "name": "lo",
+   "kind": "emi",
+   "amount": 250000,
+   "rate_pct": 3.5,
+   "years": 25
+  },
+  {
+   "name": "hi",
+   "kind": "emi",
+   "amount": 250000,
+   "rate_pct": 3.75,
+   "years": 25
+  },
+  {
+   "name": "s1",
+   "kind": "lumpsum",
+   "amount": 10000,
+   "rate_pct": 2,
+   "years": 1
+  },
+  {
+   "name": "s2",
+   "kind": "lumpsum",
+   "amount": 10000,
+   "rate_pct": 2.25,
+   "years": 1
+  }
+ ],
+ "thumbnail": {
+  "layout": "story",
+  "hero": "house",
+  "tag": "Mortgage",
+  "small": "{lo_emi}",
+  "to": "After one rise",
+  "figure": "{hi_emi}",
+  "who": "rohan",
+  "pose": "worried",
+  "expression": "shock",
+  "words": "ECB rate decision",
+  "angle": "number"
+ },
+ "thumbnails": [
+  {
+   "layout": "story",
+   "hero": "house",
+   "tag": "Was",
+   "small": "{lo_emi}",
+   "to": "Now",
+   "figure": "{hi_emi}",
+   "who": "priya",
+   "pose": "think",
+   "expression": "thinking",
+   "words": "Is your mortgage variable?",
+   "angle": "question"
+  },
+  {
+   "layout": "story",
+   "hero": "piggy",
+   "tag": "Savings at {s1_rate}",
+   "small": "{s1_gains}",
+   "to": "At {s2_rate}",
+   "figure": "{s2_gains}",
+   "who": "sharma",
+   "pose": "hips",
+   "expression": "smirk",
+   "words": "What savers get",
+   "angle": "versus"
+  }
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "prop",
+   "camera": "punch:up",
+   "say": "{hi_emi} a month, not {lo_emi}. One small rate rise on a variable mortgage.",
+   "events": {
+    "up": {
+     "word": "not"
+    },
+    "rise": {
+     "word": "rise"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "up",
+     "gain": 0.8
+    },
+    {
+     "kind": "pop",
+     "at": "rise"
+    }
+   ],
+   "params": {
+    "world": "street",
+    "prop": "anvil",
+    "text": "{hi_emi}",
+    "at": "start",
+    "kicker": "Variable mortgage, a month",
+    "sub": "was {lo_emi}",
+    "presenter": {
+     "who": "rohan",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "prop": "phone",
+       "expression": "worried"
+      },
+      {
+       "at": "rise",
+       "pose": "facepalm",
+       "expression": "shock"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "headline",
+   "scene": "headline",
+   "transition": "whip",
+   "camera": "push",
+   "say": "In September, the European Central Bank raised its deposit rate to {fact1}. It decides again this month.",
+   "events": {
+    "fig": {
+     "word": "raised"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fig"
+    }
+   ],
+   "params": {
+    "kicker": "NEWS",
+    "title": "ECB deposit rate",
+    "figure": "{fact1}",
+    "figureAt": "fig",
+    "label": "since mid-September"
+   }
+  },
+  {
+   "id": "source",
+   "scene": "source",
+   "transition": "zoom",
+   "camera": "drift",
+   "say": "Up from {fact2}. It is what banks earn on cash parked at the ECB.",
+   "events": {
+    "was": {
+     "word": "Up"
+    },
+    "park": {
+     "word": "parked"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "was"
+    },
+    {
+     "kind": "ding",
+     "at": "park"
+    }
+   ],
+   "params": {
+    "publisher": "European Central Bank",
+    "title": "Key interest rates",
+    "world": "office",
+    "city": "downtown",
+    "lines": [
+     {
+      "text": "Deposit facility, before: {fact2}",
+      "at": "was"
+     },
+     {
+      "text": "Deposit facility, from September: {fact1}",
+      "highlight": true,
+      "at": "start"
+     },
+     {
+      "text": "What banks earn on cash parked overnight",
+      "underline": true,
+      "at": "park"
+     }
+    ]
+   }
+  },
+  {
+   "id": "list",
+   "scene": "kinetic",
+   "speaker": "priya",
+   "transition": "slide-up",
+   "say": "When it moves, savings follow slowly and partly. Variable loans follow at their next reset. Fixed loans don't move.",
+   "events": {
+    "a": {
+     "word": "Savings"
+    },
+    "b": {
+     "word": "Variable"
+    },
+    "c": {
+     "word": "Fixed"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "a"
+    },
+    {
+     "kind": "tick",
+     "at": "b"
+    },
+    {
+     "kind": "tick",
+     "at": "c"
+    }
+   ],
+   "params": {
+    "mode": "box",
+    "world": "city",
+    "city": "downtown",
+    "lines": [
+     {
+      "text": "Savings: slowly, partly",
+      "at": "a"
+     },
+     {
+      "text": "Variable loans: next reset",
+      "at": "b"
+     },
+     {
+      "text": "Fixed loans: no change",
+      "at": "c"
+     }
+    ],
+    "presenter": {
+     "who": "priya",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "smirk"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "save",
+   "scene": "split",
+   "transition": "zoom",
+   "camera": "drift",
+   "say": "On {s1_amount} saved, {s1_rate} pays {s1_gains} a year. {s2_rate} pays {s2_gains}.",
+   "events": {
+    "l": {
+     "word": "pays"
+    },
+    "r": {
+     "word": "year"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "l"
+    },
+    {
+     "kind": "pop-high",
+     "at": "r"
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "Savings at {s1_rate}",
+     "text": "{s1_gains}",
+     "value": "@s1.gains",
+     "at": "start"
+    },
+    "right": {
+     "label": "Savings at {s2_rate}",
+     "text": "{s2_gains}",
+     "value": "@s2.gains",
+     "at": "l"
+    }
+   }
+  },
+  {
+   "id": "rohan",
+   "scene": "stage",
+   "speaker": "rohan",
+   "transition": "slide-up",
+   "say": "So my loan can move faster than my savings?",
+   "events": {
+    "fast": {
+     "word": "faster"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       },
+       {
+        "at": "fast",
+        "pose": "shrug",
+        "expression": "shock",
+        "bubble": {
+         "icon": "!"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "lesson",
+   "scene": "kinetic",
+   "transition": "zoom",
+   "say": "Often. So know if your loan is variable, and when it resets.",
+   "events": {
+    "var": {
+     "word": "variable"
+    }
+   },
+   "params": {
+    "mode": "type",
+    "lines": [
+     {
+      "text": "Variable or fixed?"
+     },
+     {
+      "text": "When does it reset?"
+     }
+    ]
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "Then the news won't catch you out.",
+   "params": {
+    "cta": "Find your loan's next reset date",
+    "follow": "Follow for one money question, settled",
+    "assumption": "Assumes a {lo_amount} variable mortgage over {lo_months} months at {lo_rate}, then {hi_rate}, and savings at {s1_rate}, then {s2_rate}."
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}
