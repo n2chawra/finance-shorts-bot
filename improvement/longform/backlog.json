@@ -143,6 +143,39 @@
       "priority": "low",
       "found": "2026-10-19",
       "status": "open"
+    },
+    {
+      "id": "2026-10-19-stage-chip-frame-zero",
+      "kind": "scene",
+      "title": "A stage chip set 'at: start' is not visible on frame 0",
+      "detail": "QA failed L-20261019-01's first render: the opening stage beat's chip ('Minimum due: $150', at: start) animates in after frame 0, so the first frame showed only Rohan in a room. bignumber/reveal lines at start are already drawn on frame 0 (data.tsx Lines: p.beat.from === 0 && start < 0.05). Improver: give the stage Chip the same frame-0 rule. Until then Studio opens on a bignumber with plain-text start lines (no value, which counts up from zero) and the actor beside them. This supersedes the 2026-10-18-first-frame-hook workaround.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19-screen-push-title",
+      "kind": "scene",
+      "title": "camera push on a screen beat zooms its title out of the frame",
+      "detail": "L-20261019-01's first render failed the layout gate ('Minimum only' outside the frame at 109 s): the screen scene's title sits at the top of the wall screen and the push camera scales the frame 1.09x. Fixed by using drift. Improver: keep screen content inside the push-safe area, or have the camera clamp scale for scenes with a top caption. Script rule for Studio meanwhile: no push on screen beats with a title.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19-trailer-category-window",
+      "kind": "process",
+      "title": "A trailer Short can be blocked by the Shorts category window",
+      "detail": "The trailer for L-20261019-01 (credit_card) failed check-plan twice: credit_card was used by v-20261019-02 within the last 3 Shorts. A trailer must keep the long video's topic, so it cannot be relabelled; it was marked failed (v-20261019-04). Options: Scout prefers long topics whose category is not in the last 3 Shorts on Studio days, or the owner decides whether trailers are exempt from the category window (variety.py is owner-only). A later Studio run can still make this trailer once credit_card leaves the window, if the one-trailer-per-long-video rule allows it.",
+      "where": "script",
+      "route": "owner",
+      "priority": "normal",
+      "found": "2026-10-19",
+      "status": "open"
     }
   ]
 }
