@@ -7,7 +7,7 @@
       "title": "Rent or buy a home in India: the honest maths",
       "category": "home_loan",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -34,7 +34,8 @@
       "sources": [],
       "found": "2026-10-16",
       "expires": "2027-10-16",
-      "status": "new"
+      "status": "new",
+      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot."
     },
     {
       "id": "2026-10-16-nps-vs-mutual-fund",
@@ -42,7 +43,7 @@
       "title": "NPS or a plain mutual fund for retirement?",
       "category": "nps",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -69,7 +70,8 @@
       "sources": [],
       "found": "2026-10-16",
       "expires": "2027-10-16",
-      "status": "new"
+      "status": "new",
+      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot."
     },
     {
       "id": "2026-10-16-emergency-fund-size",
@@ -77,7 +79,7 @@
       "title": "How big should your emergency fund actually be?",
       "category": "emergency_fund",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -102,7 +104,8 @@
       "sources": [],
       "found": "2026-10-16",
       "expires": "2027-10-16",
-      "status": "new"
+      "status": "new",
+      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot."
     },
     {
       "id": "2026-10-16-sip-stepup",
@@ -110,7 +113,7 @@
       "title": "Raising your SIP every year: what it's really worth",
       "category": "sip",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -135,7 +138,8 @@
       "sources": [],
       "found": "2026-10-16",
       "expires": "2027-10-16",
-      "status": "new"
+      "status": "new",
+      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot."
     },
     {
       "id": "2026-10-18-repo-hike-your-emi",
@@ -178,7 +182,8 @@
       ],
       "found": "2026-10-18",
       "expires": "2026-11-01",
-      "status": "new"
+      "status": "used",
+      "reason": "made as L-20261018-01 on 2026-10-18"
     },
     {
       "id": "2026-10-18-prepay-emi-or-tenure",
@@ -225,7 +230,7 @@
       "title": "Your salary went up. Why do you still feel broke?",
       "category": "inflation",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -255,7 +260,8 @@
       ],
       "found": "2026-10-18",
       "expires": "2027-10-18",
-      "status": "new"
+      "status": "new",
+      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot."
     },
     {
       "id": "2026-10-18-30k-salary-plan",
@@ -291,6 +297,170 @@
       "found": "2026-10-18",
       "expires": "2027-10-18",
       "status": "new"
+    },
+    {
+      "format": "long",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-10-19",
+      "status": "new",
+      "id": "2026-10-19-card-minimum-trap",
+      "title": "Only paying the minimum on your credit card: what it really costs you",
+      "category": "credit_card",
+      "kind": "evergreen",
+      "priority": "high",
+      "angle": "How long a $5,000 card balance takes to clear on minimum payments at about 22% APR, what it costs in total, and what a fixed payment that clears it in three years changes",
+      "why_now": "'Federal Reserve issues warning to every homeowner with a credit card' is the fastest-growing long video in the niche this week (~13.4k views/hour) and 'What happens if you never pay your credit card' is also climbing (~1.5k/h). The CFPB says the share of US cardholders paying only the minimum in 2024 was the highest since at least 2015. Evergreen, global (USD), and fully computable with card_min_due + emi. For 20-35 viewers carrying a balance.",
+      "outline": [
+        "hook: Rohan's card statement, first frame: 'Minimum due $150'. He pays it and feels fine. The stake on screen within 5 s: this $5,000 will cost him about twice that",
+        "the promise (20-30 s): by the end you'll know how long, how much, and the one number on your statement that fixes it",
+        "chapter 1, the treadmill (the one picture): Rohan jogs, the belt is interest; each payment is a step, the belt moves almost as fast",
+        "how the minimum is worked out: a small slice of the balance, so it shrinks as the balance shrinks (Priya draws it)",
+        "a year of it: paid vs still owed after 12 months (card_min_due year-one figures); Rohan: 'I paid that much and still owe THAT?'",
+        "tease: 'and that's the good year'",
+        "chapter 2, the long tail: balance curve over the full payoff, months counted up; reveal the years and total paid",
+        "Sharma has seen it before: interest charged from the day you swipe, fees on top, so the real cost is higher than our clean maths",
+        "chapter 3, the turn (best moment, about two thirds in): same balance, fixed payment that clears it in 3 years (emi); side by side: years and interest saved",
+        "the number on your statement: US statements show how long minimums take and the payment to clear it in 3 years (verify); Priya circles it",
+        "what to do: pay the fixed amount, stop new spending on the card, automate it; checklist",
+        "Sikka cheers the payoff date; recap of the three figures",
+        "disclaimer"
+      ],
+      "maths": "card_min_due (amount 5000, rate_pct_month 1.85, min_due_pct 3, min_due_floor 25: about 199 months, ~$11.6K paid) and emi (5000 at 22.2% over 3 years: about $191 a month, ~$1.9K interest). Currency USD.",
+      "verify": [
+        "Average US credit card APR (Federal Reserve G.19, federalreserve.gov), to justify ~22% as the assumption",
+        "That the CARD Act requires statements to show minimum-payment payoff time and the 36-month payment (consumerfinance.gov)",
+        "CFPB: share of cardholders making only the minimum payment in 2024",
+        "That minimum-payment formulas vary by issuer, stated as an assumption on screen"
+      ],
+      "sources": [
+        "https://www.cardrates.com/studies/credit-card-minimum-payment-statistics/",
+        "https://www.upgrade.com/credit-health/insights/the-true-cost-of-minimum-payments/",
+        "https://www.consumerfinance.gov/data-research/research-reports/"
+      ],
+      "expires": "2027-10-19"
+    },
+    {
+      "format": "long",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-10-19",
+      "status": "new",
+      "id": "2026-10-19-401k-match",
+      "title": "Skipping your 401(k) match: what that free money is worth by 65",
+      "category": "retirement",
+      "kind": "evergreen",
+      "priority": "high",
+      "angle": "What an employer match of $200 a month grows to over a career, what waiting ten years to take it costs, and why vesting decides whether it is really yours",
+      "why_now": "Fidelity reports more than one in five employees leave some of their match on the table; 'how to invest for beginners' (Nischa, ~4.4k views/hour) and 'the 7 levels of investing' (Humphrey Yang, ~2.2k/h) are this week's fastest-growing beginner long videos, and the match is step one in nearly every beginner plan. Evergreen, US (USD), computable with sip. For 22-32 viewers in a first job.",
+      "outline": [
+        "hook: Priya slides an envelope with $200 across the table every month. Rohan pushes it back because he 'can't spare' his own share. Stake on screen in 5 s: what that envelope is worth at 65",
+        "the promise: three numbers, what the match is, what skipping it costs, and the catch nobody reads",
+        "chapter 1, the envelope (the one picture): how a match works, your contribution unlocks theirs (illustrative formula, stated as one example)",
+        "Rohan's salary $60,000; a 4% match is $200 a month (computed)",
+        "chart: the match alone, invested for 40 years at an assumed 7% (sip); reveal the pot",
+        "tease: 'but Rohan has a plan: start at 35'",
+        "chapter 2, early vs late: same $200 from 25 vs from 35 (two sips), side by side; the ten-year gap reveal (best moment, about two thirds in)",
+        "Sharma: 'the envelope doesn't wait for you'",
+        "chapter 3, the catch: vesting, cliff vs graded explained in words; leaving early can mean leaving some behind",
+        "what to do: find your match formula, contribute at least enough to get all of it, check your vesting date; checklist",
+        "Sikka cheers; recap of the figures",
+        "disclaimer"
+      ],
+      "maths": "sip (200 a month, 7%, 40 years: ~$528K from $96K put in) vs sip (200, 7%, 30 years: ~$245K). Optional: salary share as a figure computed from 60000*4%. Currency USD.",
+      "verify": [
+        "IRS: maximum vesting schedules for employer matching contributions (3-year cliff or 6-year graded), irs.gov",
+        "That dollar-for-dollar on the first 3% plus 50% of the next 2% is a common (safe-harbor) formula, irs.gov",
+        "Fidelity: share of workers not contributing enough to get the full match",
+        "7% is stated as an assumed long-run return, not a promise"
+      ],
+      "sources": [
+        "https://www.nasdaq.com/articles/heres-how-much-the-average-401k-match-is-worth",
+        "https://www.empower.com/the-currency/work/how-does-401k-matching-work"
+      ],
+      "expires": "2027-10-19"
+    },
+    {
+      "format": "long",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-10-19",
+      "status": "new",
+      "id": "2026-10-19-savings-vs-inflation",
+      "title": "Is your savings account quietly losing money? The real-return maths",
+      "category": "savings",
+      "kind": "evergreen",
+      "priority": "high",
+      "angle": "What $10,000 does over ten years in a 0.45% account, in a ~4% high-yield account, and against prices rising ~3% a year: which one actually keeps up",
+      "why_now": "The September US CPI release (14 Oct) put headline inflation back in the news; savers keep asking whether their bank pays enough. A universal question (works for US, UK, EU viewers in dollars), evergreen, computable with three lumpsums. For anyone with an emergency fund parked in a big-bank account.",
+      "outline": [
+        "hook: Rohan's banking app shows +$45 interest for the year and a party emoji. Stake on screen in 5 s: his groceries went up more than that",
+        "the promise: one test that tells you if your savings are growing or shrinking",
+        "chapter 1, the melting ice cube (the one picture): money in a warm room; interest is the freezer, inflation the heat",
+        "the big-bank account: $10,000 at 0.45% for 10 years (lumpsum)",
+        "what the same basket costs in 10 years at an assumed 3% a year (lumpsum on prices)",
+        "reveal: the gap between the two, the ice cube shrinking",
+        "tease: 'Priya's account is in the same room'",
+        "chapter 2, the high-yield account: $10,000 at an assumed 4% (lumpsum); side by side with prices (best moment, about two thirds in)",
+        "Sharma: 'the rate on the sign is not the rate you keep', inflation and tax explained in words, no new numbers",
+        "chapter 3, what to do: the break-even test (rate vs inflation), where an emergency fund belongs, rates change so check yearly; checklist",
+        "Sikka cheers; recap",
+        "disclaimer"
+      ],
+      "maths": "lumpsum (10000, 0.45%, 10: ~$10.5K), lumpsum (10000, 4%, 10: ~$14.8K), lumpsum (10000, 3%, 10: prices ~$13.4K). All rates stated as assumptions. Currency USD.",
+      "verify": [
+        "FDIC national average savings rate (fdic.gov national rates and rate caps), to justify 0.45%",
+        "BLS CPI-U 12-month change for September 2026 (bls.gov), if quoted at all; otherwise keep 3% as a plain assumption",
+        "That high-yield account rates of ~4% are available in late 2026, stated as an assumption"
+      ],
+      "sources": [
+        "https://www.raisin.com/en-us/news/breaking-down-cpi-numbers-for-savers/",
+        "https://www.bankrate.com/banking/savings-money-market-account-rate-forecast/"
+      ],
+      "expires": "2027-10-19"
+    },
+    {
+      "format": "long",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-10-19",
+      "status": "new",
+      "id": "2026-10-19-invest-200-a-month",
+      "title": "Investing $200 a month: what it becomes, and the 1% that eats a quarter of it",
+      "category": "investing",
+      "kind": "evergreen",
+      "priority": "high",
+      "angle": "What $200 a month in a broad index fund becomes over 40 years at an assumed 7%, and how a 1% yearly fee cuts the pot by about a quarter",
+      "why_now": "'How to invest for beginners in 2027' (Nischa, ~4.4k views/hour) is the fastest-growing beginner long video in the niche this week; 'how much should I invest a month' is one of the most repeated beginner questions on forums. The fee angle is ours: a number most beginner videos skip, fully computable with two sips. Evergreen, global (USD).",
+      "outline": [
+        "hook: two identical $200 deposits, two identical funds, same market; 40 years later one pot is $128K smaller. Stake on screen in 5 s",
+        "the promise: what $200 becomes, why starting matters more than picking, and the one line in the fund factsheet to check",
+        "chapter 1, the snowball (the one picture): Rohan and Priya each start a snowball down the same hill",
+        "how an index fund works, in plain words (no fund names)",
+        "chart: $200 a month for 40 years at an assumed 7% (sip); invested vs grown",
+        "tease: 'Rohan's snowball has a hole in it'",
+        "chapter 2, the leak: Rohan's fund costs 1% a year, so he keeps about 6% (sip at 6%); side by side; reveal the gap (best moment, about two thirds in)",
+        "Sharma: 'the fee looks tiny because it is charged on everything, every year'",
+        "what can go wrong: markets fall, sometimes for years; the 7% is an assumption, not a promise",
+        "chapter 3, what to do: emergency fund first, then a regular amount, check the expense ratio, don't stop in a crash; checklist",
+        "Sikka cheers; recap of the three figures",
+        "disclaimer"
+      ],
+      "maths": "sip (200, 7%, 40: ~$528K from $96K) vs sip (200, 6%, 40: ~$400K). The gap is computed by code from the two results. Currency USD.",
+      "verify": [
+        "SEC / investor.gov: how ongoing fund fees reduce returns over time",
+        "That 7% is stated as an assumed long-run return of a broad stock index, with the risk of falls",
+        "No fund, provider or product named"
+      ],
+      "sources": [
+        "https://www.investor.gov/introduction-investing/investing-basics/save-and-invest/fees-expenses",
+        "https://www.fool.com/investing/2024/10/10/how-far-100-per-month-go-investing-stock-market"
+      ],
+      "expires": "2027-10-19"
     }
   ]
 }
