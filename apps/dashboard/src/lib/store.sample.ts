@@ -127,8 +127,8 @@ function build(): Store {
   const now = new Date();
   const today = istDay(now);
   const settings: Settings = {
-    uploadTimes: ["05:37", "12:37", "19:07", "23:37"], backlogCap: 30, lengthMinSec: 30, lengthMaxSec: 45,
-    longUploadTimes: ["06:07"], longUploadDays: [2, 4, 6], longLengthMinSec: 300, longLengthMaxSec: 900,
+    uploadTimes: ["07:07", "12:37", "19:07"], trendUploadTimes: ["16:07", "22:07"], backlogCap: 30, lengthMinSec: 30, lengthMaxSec: 45,
+    longUploadTimes: ["20:07"], longUploadDays: [2, 4, 6], longLengthMinSec: 300, longLengthMaxSec: 900,
     longPerWeek: 2, longBacklogCap: 4,
     disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
     generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },

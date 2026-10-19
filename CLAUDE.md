@@ -17,11 +17,12 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   voices, rotated per video; numbers are spoken as words.
   Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Every
   video is voiced; no on-screen captions (owner, 2026-10-17).
-- **Up to four Shorts per day**, one per viewer region's evening (setting `uploadTimes`, default
-  05:37 US, 12:37 Australia, 19:07 India, 23:37 UK/Europe, IST), and **two long videos per week**,
-  06:07 IST (US evening) on Tue/Thu/Sat (`longUploadTimes`, `longUploadDays`, `longPerWeek`).
-  Supply is 3 Shorts a day plus trend videos, so the last slot of a day is the one left empty
-  when the queue runs dry (owner, 2026-10-19). One video per
+- **Three Shorts per day**, at 07:07, 12:37 and 19:07 IST (setting `uploadTimes`), plus **trend
+  slots** at 16:07 and 22:07 (`trendUploadTimes`): each breaking or trending video of the day opens
+  one, so a trend never pushes a normal video back; quiet days leave them empty. Upload time barely
+  changes who sees a Short, so slots suit the owner's manual posting, not time zones (owner,
+  2026-10-19). **Two long videos per week**, 20:07 IST on Tue/Thu/Sat (`longUploadTimes`,
+  `longUploadDays`, `longPerWeek`). One video per
   slot; each format is filled from its own queue, so a missing long video never costs a Short its slot.
 - **Generation keeps going** on a schedule to build a backlog, capped at **30 ready videos**.
   When the backlog is full, generation runs improve or add templates instead of making videos.
@@ -258,8 +259,9 @@ refresh tokens expire after 7 days.
 
 ## YouTube API facts
 
-- Default quota 10,000 units/day; `videos.insert` costs 1,600. Four Shorts and a long video (8,000)
-  fit, next to the dashboard's live counters (~1,450 at most).
+- Default quota 10,000 units/day; `videos.insert` costs 1,600. Three Shorts and a long video (6,400)
+  fit easily next to the dashboard's live counters (~1,450 at most); a long-video day with two trend
+  Shorts (9,600) may need a quota increase once uploads are automatic.
 - Unverified API projects upload as private only. Apply for the audit early.
 - Schedule by uploading with `privacyStatus: private` + `publishAt` (ISO 8601).
 - Shorts: vertical/square, up to 3 min. Keep ours ≤ 60 s.

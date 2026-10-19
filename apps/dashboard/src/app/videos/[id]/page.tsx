@@ -11,7 +11,7 @@ import { useState } from "react";
 import { DataTable, LineChart } from "@/components/charts";
 import { ActionMenu, Card, ConfirmButton, buttonClass, Empty, ErrorNote, Loading, type MenuItem, Num, ResultBadge, Stagger, Stat, StatusBadge } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, fmtRelative, fmtWorld, titleCase } from "@/lib/format";
+import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, fmtRelative, titleCase } from "@/lib/format";
 import { postingPlan } from "@/lib/posting-plan";
 import { useQueue, useSettings, useVideo, useVideoAction, useVideos } from "@/lib/queries";
 import type { VideoAction } from "@/lib/schemas";
@@ -130,7 +130,7 @@ export default function VideoPage() {
                 {publishAt ? (
                   <span className="block text-right leading-tight">
                     <span className="block tabular-nums">{fmtDateTime(publishAt)} IST{!v.upload && v.queuePosition ? ` · queue #${v.queuePosition}` : ""}</span>
-                    <span className="block text-[11px] text-muted">{fmtWorld(publishAt)}{!v.upload ? `, ${fmtRelative(publishAt)} if the queue order holds` : ""}</span>
+                    {!v.upload && <span className="block text-[11px] text-muted">{fmtRelative(publishAt)}, if the queue order holds</span>}
                   </span>
                 ) : v.queuePosition ? `Queue #${v.queuePosition}` : "—"}
               </Row>

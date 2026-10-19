@@ -13,6 +13,18 @@ export function istSlot(day: string, time: string): Date {
   return new Date(`${day}T${time}:00+05:30`);
 }
 
+/** HH:MM in IST. */
+export function istTime(d: Date): string {
+  return new Date(d.getTime() + IST_OFFSET_MIN * 60_000).toISOString().slice(11, 16);
+}
+
+/** A video's style marks it breaking or trending until an IST day (set by ingest from the manifest's
+ * priority); it may take a trend slot on or before that day. */
+export function isUrgent(style: unknown, day: string): boolean {
+  const urgent = (style as { source?: { urgent?: { until?: unknown } | null } } | null)?.source?.urgent;
+  return typeof urgent?.until === "string" && urgent.until >= day;
+}
+
 /** Minute-precision key for an upload instant, so a slot and its upload compare equal. */
 export const slotKey = (d: Date) => d.toISOString().slice(0, 16);
 
@@ -39,9 +51,9 @@ export function nextSlot(now: Date, times: string[], taken: Set<string>, perDay:
 }
 
 /**
- * How far ahead a slot is filled. The publish job runs at 10:07, 13:07, 16:07 and 17:37 IST: 12:37
- * is filled at 10:07 and 19:07 at 16:07 (17:37 retries), so a trending video made at midday still
- * gets the evening slot instead of both slots being taken at 10:07.
+ * How far ahead a slot is filled (the publish job's runs are in publish.yml): 12:37 is filled at
+ * 10:07 and 19:07 at 16:07, so a trending video made at midday still gets an evening slot instead
+ * of every slot being taken in the morning.
  */
 export const UPLOAD_LOOKAHEAD_HOURS = 4.5;
 

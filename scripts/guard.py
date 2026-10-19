@@ -66,7 +66,7 @@ LOCKED = [
 FORBID += LOCKED
 TEST_FILE = re.compile(r"(^|/)(tests?|e2e)/|(^|/)test_[^/]*\.py$|\.(test|spec)\.ts$")
 # the upload schedule is the owner's: no agent diff may add or remove a line that sets it
-UPLOAD_SETTING = re.compile(r"\b(uploadTimes|uploadsPaused|backlogCap)\b")
+UPLOAD_SETTING = re.compile(r"\b(uploadTimes|trendUploadTimes|uploadsPaused|backlogCap)\b")
 MEDIA_EXT = (".mp3", ".wav", ".ogg", ".m4a", ".flac", ".aac", ".mp4", ".mov", ".webm")
 MODEL_EXT = (".onnx", ".bin", ".pt", ".pth", ".safetensors", ".ckpt", ".gguf")   # voice/AI model weights
 # raised 2026-10-19 (owner): agents ship several small changes a night instead of one

@@ -8,10 +8,10 @@ import { useState } from "react";
 import { CopyButton, MarkUploaded, uploadText } from "@/app/videos/[id]/publish-tools";
 import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, Loading, PageHeader, Stagger, Thumb, Toggle, VideoLink, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { fmtDateTime, fmtRelative, fmtWorld, titleCase } from "@/lib/format";
+import { fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
 import { type Format, type PlanSlot, madeBy, postingPlan, runway } from "@/lib/posting-plan";
 import { useOverview, usePatchSettings, useQueue, useReorder, useSettings, useVideoAction, useVideos } from "@/lib/queries";
-import { describeTimes, upcomingSlots } from "@/lib/slots";
+import { describeTimes } from "@/lib/slots";
 import type { Settings, Video, VideoAction } from "@/lib/schemas";
 
 const DONE: Record<VideoAction, string> = { skip: "Moved to the end of the queue", delete: "Video deleted", "upload-now": "Marked for upload on the next publish run" };
@@ -42,9 +42,8 @@ function SlotLabel({ slot, paused }: { slot: PlanSlot | undefined; paused: boole
   if (slot.state === "due") return <Badge tone="warning" icon={Clock}>{paused ? "Post now" : "Uploading now"}</Badge>;
   return (
     <span className="leading-tight">
-      <span className="block tabular-nums text-ink2">{fmtDateTime(iso(slot.at))} IST</span>
+      <span className="block tabular-nums text-ink2">{fmtDateTime(iso(slot.at))} IST{slot.trend ? " · trend slot" : ""}</span>
       <span className="text-xs text-muted">{fmtRelative(iso(slot.at))}</span>
-      <span className="block text-[11px] text-muted">{fmtWorld(iso(slot.at))}</span>
     </span>
   );
 }
@@ -56,7 +55,7 @@ function PostNext({ slot }: { slot: PlanSlot & { video: Video } }) {
   const due = slot.state === "due";
   return (
     <Card className={`mb-4 ${due ? "border-warning/40" : ""}`} title={due ? "Post this now" : "Post next"} icon={Upload}
-      description={`${slot.format === "long" ? "Long video" : "Short"} slot ${fmtDateTime(iso(slot.at))} IST, ${fmtRelative(iso(slot.at))} · ${fmtWorld(iso(slot.at))}`}>
+      description={`${slot.format === "long" ? "Long video" : "Short"} slot ${fmtDateTime(iso(slot.at))} IST, ${fmtRelative(iso(slot.at))}`}>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
         <Thumb src={v.thumbnailUrl} alt="" className={v.format === "long" ? "w-24 aspect-video" : "w-14"} />
         <div className="min-w-0 flex-1">
@@ -88,7 +87,7 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
   const slotOf = new Map(plan.filter((s) => s.video).map((s) => [s.video!.id, s]));
   const missed = plan.filter((s) => s.state === "missed");
   const r = runway(format, items, settings);
-  const when = format === "short" ? `daily at ${describeTimes(settings.uploadTimes)}`
+  const when = format === "short" ? `daily at ${describeTimes(settings.uploadTimes)}${settings.trendUploadTimes.length ? `, plus trend slots at ${describeTimes(settings.trendUploadTimes)}` : ""}`
     : `${settings.longUploadDays.map((d) => WEEKDAYS[d]).join("/")} at ${describeTimes(settings.longUploadTimes)}`;
   const Icon = format === "short" ? Smartphone : Film;
 
@@ -99,12 +98,7 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
           <span className="font-normal text-muted">· {r.n} ready · posts {when}</span></h2>
         {r.days !== null && <span className="text-xs text-muted">{r.n ? `Enough for about ${r.days} day${r.days === 1 ? "" : "s"}` : "Nothing ready"}</span>}
       </div>
-      <ul className="mb-2 flex flex-col gap-0.5 text-[11px] text-muted">
-        {[...new Set(format === "short" ? settings.uploadTimes : settings.longUploadTimes)].sort().map((t) => {
-          const at = upcomingSlots(Date.now(), [t], 1)[0];
-          return at ? <li key={t}><span className="font-medium tabular-nums text-ink2">{t} IST</span> = {fmtWorld(iso(at))}</li> : null;
-        })}
-      </ul>
+
       {missed.map((s) => (
         <p key={s.at} className="mb-2 flex items-center gap-2 rounded-lg border border-critical/25 bg-critical-soft px-3 py-2 text-[13px]">
           <AlertTriangle aria-hidden className="size-4 shrink-0 text-critical" />

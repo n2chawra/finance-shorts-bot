@@ -89,7 +89,7 @@ export default function SettingsPage() {
               <Row label="Pause all uploads" hint="Nothing is published while this is on. Generation carries on. Use it while you upload by hand.">
                 <Toggle label="Pause all uploads" checked={form.uploadsPaused} onChange={(uploadsPaused) => set({ uploadsPaused })} />
               </Row>
-              <Row label="Upload times" hint="IST. One video goes public at each time, so this is also the number of uploads a day.">
+              <Row label="Upload times" hint="IST. One video goes public at each time, so this is the number of regular uploads a day.">
                 <span className="flex w-full flex-col gap-2">
                   {form.uploadTimes.map((t, i) => (
                     <span key={i} className="flex items-center gap-2">
@@ -101,6 +101,21 @@ export default function SettingsPage() {
                   ))}
                   {form.uploadTimes.length < 4 && (
                     <Button size="sm" tone="ghost" icon={Plus} onClick={() => set({ uploadTimes: [...form.uploadTimes, "21:07"] })}>Add a time</Button>
+                  )}
+                </span>
+              </Row>
+              <Row label="Trend slots" hint="IST. Extra Short slots that open only on a day with a breaking or trending video, one per such video. Quiet days leave them empty.">
+                <span className="flex w-full flex-col gap-2">
+                  {form.trendUploadTimes.map((t, i) => (
+                    <span key={i} className="flex items-center gap-2">
+                      <input type="time" required aria-label={`Trend slot ${i + 1}`} className={fieldClass} value={t}
+                        onChange={(e) => set({ trendUploadTimes: form.trendUploadTimes.map((x, j) => (j === i ? e.target.value : x)) })} />
+                      <Button size="sm" tone="ghost" iconOnly icon={X} title="Remove this trend slot"
+                        onClick={() => set({ trendUploadTimes: form.trendUploadTimes.filter((_, j) => j !== i) })}>Remove</Button>
+                    </span>
+                  ))}
+                  {form.trendUploadTimes.length < 3 && (
+                    <Button size="sm" tone="ghost" icon={Plus} onClick={() => set({ trendUploadTimes: [...form.trendUploadTimes, "22:07"] })}>Add a trend slot</Button>
                   )}
                 </span>
               </Row>

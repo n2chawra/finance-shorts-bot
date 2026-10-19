@@ -1,9 +1,10 @@
 /**
  * Publisher: fills today's upload slots, one video per slot, each uploaded private with publishAt so
- * YouTube makes it public at that time. Shorts use settings.uploadTimes (by default four a day, one
- * per viewer region's evening: 05:37 US, 12:37 Australia, 19:07 India, 23:37 UK/Europe), every day;
- * long videos use settings.longUploadTimes on settings.longUploadDays (06:07 IST, US evening, on
- * Tue, Thu and Sat by default). Each format is filled from its own queue, so a
+ * YouTube makes it public at that time. Shorts use settings.uploadTimes (07:07, 12:37 and 19:07 by
+ * default), every day, plus settings.trendUploadTimes (16:07 and 22:07): extra slots, one opening
+ * for each breaking or trending video of the day (it takes that video, or the next one if the trend
+ * already took a regular slot), left empty on quiet days. Long videos use
+ * settings.longUploadTimes on settings.longUploadDays (20:07 IST on Tue, Thu and Sat by default). Each format is filled from its own queue, so a
  * missing long video never costs a Short its slot.
  *
  * Runs a few times a day; the first run uploads for every free slot still ahead today, later runs
@@ -18,7 +19,7 @@ import path from "node:path";
 import { PrismaClient } from "@prisma/client";
 
 import { downloadReleaseAsset, repoSlug } from "./lib/github.ts";
-import { UPLOAD_LOOKAHEAD_HOURS, dueSoon, istDay, nextSlot, slotKey, youtubeMeta } from "./lib/publishing.ts";
+import { UPLOAD_LOOKAHEAD_HOURS, dueSoon, isUrgent, istDay, istSlot, istTime, nextSlot, slotKey, youtubeMeta } from "./lib/publishing.ts";
 import { loadSettings } from "./lib/settings.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
@@ -57,7 +58,9 @@ async function main(): Promise<void> {
     const taken = new Set(existing.map((u) => slotKey(u.publishAt)));
     // one slot count per format: a long video on Tuesday must not use up a Short's slot that day
     const perDay: Record<Format, Map<string, number>> = { short: new Map(), long: new Map() };
+    const trendTimes = new Set(settings.trendUploadTimes);
     for (const u of existing) {
+      if (u.video.format !== "long" && trendTimes.has(istTime(u.publishAt))) continue;   // trend slots are extra
       const f: Format = u.video.format === "long" ? "long" : "short";
       const day = istDay(u.publishAt);
       perDay[f].set(day, (perDay[f].get(day) ?? 0) + 1);
@@ -85,17 +88,43 @@ async function main(): Promise<void> {
         uploaded++;
       }
     }
+
+    // trend slots: one extra Short today per breaking or trending video; quiet days leave them empty
+    const today = istDay(now);
+    for (const time of [...trendTimes].sort()) {
+      const slot = istSlot(today, time);
+      if (slot.getTime() - now.getTime() < 30 * 60_000 || taken.has(slotKey(slot)) || !dueSoon(now, slot)) continue;
+      const shortsToday = await prisma.upload.findMany({
+        where: { state: { in: ["scheduled", "uploaded", "published"] }, video: { format: "short" } },
+        select: { publishAt: true, video: { select: { style: true } } },
+      }).then((us) => us.filter((u) => istDay(u.publishAt) === today));
+      const urgentToday = shortsToday.filter((u) => isUrgent(u.video.style, today)).length;
+      const trendUsed = shortsToday.filter((u) => trendTimes.has(istTime(u.publishAt))).length;
+      // the trend video itself if it is still waiting, else (it took a regular slot) the next video
+      const sent = await uploadOne(prisma, token, settings.disclaimer, slot, "short", true)
+        || (urgentToday > trendUsed && await uploadOne(prisma, token, settings.disclaimer, slot, "short"));
+      if (sent) taken.add(slotKey(slot));
+    }
   } finally {
     await prisma.$disconnect();
   }
 }
 
-/** Upload the next `format` video for `slot`. False when there is nothing to upload; throws on failure. */
-async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string, slot: Date, format: Format): Promise<boolean> {
-  // a video sent with "Upload now", or a retry of a failed attempt, goes first; then the queue
-  const pending = await prisma.upload.findFirst({ where: { state: "pending", video: { deletedAt: null, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
-  const video = pending?.video ?? await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, format }, orderBy: [{ queuePosition: "asc" }, { createdAt: "asc" }] });
-  if (!video) { console.log(`::warning::No ${format} video is queued. Nothing to upload for ${slot.toISOString()}.`); return false; }
+/** Upload the next `format` video for `slot` (only a breaking or trending one when `urgentOnly`).
+ * False when there is nothing to upload; throws on failure. */
+async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string, slot: Date, format: Format, urgentOnly = false): Promise<boolean> {
+  const order = [{ queuePosition: "asc" as const }, { createdAt: "asc" as const }];
+  let pending = null, video = null;
+  if (urgentOnly) {
+    const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null, format }, orderBy: order });
+    video = queued.find((v) => isUrgent(v.style, istDay(slot))) ?? null;
+    if (!video) { console.log(`No breaking or trending ${format} is waiting: the trend slot ${slot.toISOString()} stays empty.`); return false; }
+  } else {
+    // a video sent with "Upload now", or a retry of a failed attempt, goes first; then the queue
+    pending = await prisma.upload.findFirst({ where: { state: "pending", video: { deletedAt: null, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
+    video = pending?.video ?? await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, format }, orderBy: order });
+    if (!video) { console.log(`::warning::No ${format} video is queued. Nothing to upload for ${slot.toISOString()}.`); return false; }
+  }
 
   const attempts = (pending?.attempts ?? 0) + 1;
   const dir = mkdtempSync(path.join(tmpdir(), "publish-"));

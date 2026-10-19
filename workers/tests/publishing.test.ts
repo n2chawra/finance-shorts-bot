@@ -97,3 +97,12 @@ test("a slot is filled only within the lookahead, so a midday trend can still ta
   assert.equal(dueSoon(new Date("2026-10-17T04:37:00Z"), new Date("2026-10-17T07:07:00Z")), true); // 12:37 at 10:07
   assert.equal(dueSoon(new Date("2026-10-17T10:37:00Z"), new Date("2026-10-17T14:37:00Z")), true); // long 20:07 at 16:07
 });
+
+test("trend slots: IST time of day and the urgent marker", async () => {
+  const { istTime, isUrgent } = await import("../lib/publishing.ts");
+  assert.equal(istTime(at("2026-10-19T10:37:00Z")), "16:07");
+  assert.equal(isUrgent({ source: { urgent: { level: "trending", until: "2026-10-19" } } }, "2026-10-19"), true);
+  assert.equal(isUrgent({ source: { urgent: { level: "breaking", until: "2026-10-18" } } }, "2026-10-19"), false);
+  assert.equal(isUrgent({ source: { urgent: null } }, "2026-10-19"), false);
+  assert.equal(isUrgent(null, "2026-10-19"), false);
+});

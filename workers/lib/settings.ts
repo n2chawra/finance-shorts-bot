@@ -4,7 +4,9 @@ import { z } from "zod";
 /** Every setting, one row per key in the Setting table. Missing rows fall back to these defaults. */
 export const SettingsSchema = z.object({
   uploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/)).min(1).max(4),
-  longUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/)).max(2).default(["06:07"]),
+  /** Extra Short slots only a breaking or trending video may take; empty on quiet days. */
+  trendUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/)).max(3).default(["16:07", "22:07"]),
+  longUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/)).max(2).default(["20:07"]),
   longUploadDays: z.array(z.number().int().min(0).max(6)).max(7).default([2, 4, 6]),   // 0 = Sunday
   longLengthMinSec: z.number().int().default(180),
   longLengthMaxSec: z.number().int().default(900),
@@ -31,8 +33,9 @@ export const SettingsSchema = z.object({
 export type Settings = z.infer<typeof SettingsSchema>;
 
 export const DEFAULT_SETTINGS: Settings = {
-  uploadTimes: ["05:37", "12:37", "19:07", "23:37"],
-  longUploadTimes: ["06:07"],
+  uploadTimes: ["07:07", "12:37", "19:07"],
+  trendUploadTimes: ["16:07", "22:07"],
+  longUploadTimes: ["20:07"],
   longUploadDays: [2, 4, 6],
   longLengthMinSec: 180,
   longLengthMaxSec: 900,

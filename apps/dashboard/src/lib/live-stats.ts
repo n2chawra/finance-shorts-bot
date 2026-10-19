@@ -12,7 +12,7 @@
  *               Read-only, public data only: private videos have no public counters.
  *
  * Cost: 1 quota unit per 50 videos per refresh, so at most ~1,450 units a day with the dashboard
- * open all day, inside the 10,000 daily quota next to four Short uploads and a long one (5 × 1,600).
+ * open all day, inside the 10,000 daily quota next to three Short uploads and a long one (4 × 1,600).
  */
 import { z } from "zod";
 

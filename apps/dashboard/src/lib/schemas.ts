@@ -126,6 +126,8 @@ export type Run = z.infer<typeof RunSchema>;
 
 export const SettingsSchema = z.object({
   uploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).min(1).max(4),
+  /** Extra Short slots only a breaking or trending video may take; empty on quiet days. */
+  trendUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).max(3).default(["16:07", "22:07"]),
   longUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).max(2).default(["20:07"]),
   longUploadDays: z.array(z.number().int().min(0).max(6)).max(7).default([2, 4, 6]),   // 0 = Sunday
   longLengthMinSec: z.number().int().min(60).max(3600).default(180),
@@ -173,7 +175,7 @@ export function settingsProblem(s: Settings): string | null {
 
 /** The strategy settings an agent may propose and the owner approve with one click. Pauses, the
  * disclaimer, alerts and the agents' own switches are never proposed. */
-export const PROPOSABLE_SETTINGS = ["uploadTimes", "longUploadTimes", "longUploadDays", "longPerWeek", "longBacklogCap",
+export const PROPOSABLE_SETTINGS = ["uploadTimes", "trendUploadTimes", "longUploadTimes", "longUploadDays", "longPerWeek", "longBacklogCap",
   "longLengthMinSec", "longLengthMaxSec", "lengthMinSec", "lengthMaxSec", "backlogCap"] as const satisfies readonly (keyof Settings)[];
 
 export const OverviewSchema = z.object({

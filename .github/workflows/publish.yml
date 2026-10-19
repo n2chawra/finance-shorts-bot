@@ -1,17 +1,17 @@
 # Uploads today's videos to YouTube (private + publishAt), each slot only when it is within
-# UPLOAD_LOOKAHEAD_HOURS (workers/lib/publishing.ts). Default slots (IST): 05:37 and long 06:07 at the
-# 01:37 run, 12:37 at 10:07, 19:07 at 16:07, 23:37 at 19:37. Filling late lets a trending video made
-# at midday take an evening slot. Each slot gets a retry run (03:07, 13:07, 17:37, 21:07); GitHub
-# can start a cron job up to ~3 h late, so every slot has a run comfortably before it.
+# UPLOAD_LOOKAHEAD_HOURS (workers/lib/publishing.ts). Default Short slots (IST): 07:07 at the 03:07
+# run, 12:37 at 10:07, 19:07 and long 20:07 at 16:07; trend slots 16:07 at 13:07 and 22:07 at 19:37.
+# Filling late lets a trending video made at midday take an evening slot. Each slot gets a retry
+# run; GitHub can start a cron job up to ~3 h late, so every slot has a run comfortably before it.
 name: Publish
 
 on:
   schedule:
-    - cron: "7 20 * * *"      # 01:37 IST: the US-evening slots (05:37 Short, 06:07 long)
-    - cron: "37 21 * * *"     # 03:07 IST: retry for them
+    - cron: "37 21 * * *"     # 03:07 IST: the 07:07 slot
+    - cron: "7 23 * * *"      # 04:37 IST: retry for it
     - cron: "37 4,7,10 * * *" # 10:07, 13:07, 16:07 IST
     - cron: "7 12 * * *"      # 17:37 IST: retry for the evening slots
-    - cron: "7 14 * * *"      # 19:37 IST: the UK/Europe-evening slot (23:37)
+    - cron: "7 14 * * *"      # 19:37 IST: the 22:07 trend slot
     - cron: "37 15 * * *"     # 21:07 IST: retry for it
   workflow_dispatch:
 
