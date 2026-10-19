@@ -1,0 +1,197 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-19T14:58:10.025944+00:00",
+    "finishedAt": "2026-10-19T14:58:10.025944+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T14:59:35.843914+00:00",
+    "finishedAt": "2026-10-19T14:59:35.843914+00:00",
+    "notes": [
+      "beat 'road'.params.signs[0].at contains a typed number; use a placeholder: 'y1'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T14:59:46.391227+00:00",
+    "finishedAt": "2026-10-19T14:59:46.391227+00:00",
+    "notes": [
+      "beat 'vs-min'.params.left.value: maths 'card' has no value or series 'min_due'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T14:59:53.209292+00:00",
+    "finishedAt": "2026-10-19T14:59:53.209292+00:00",
+    "notes": [
+      "description mentions '0', which is neither a script input nor a computed figure",
+      "description mentions '00', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T14:59:59.793304+00:00",
+    "finishedAt": "2026-10-19T14:59:59.793304+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T15:00:12.233738+00:00",
+    "finishedAt": "2026-10-19T15:00:12.233738+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-19T15:02:02.210649+00:00",
+    "finishedAt": "2026-10-19T15:02:02.210649+00:00",
+    "notes": [
+      "kind-version: the reasons given for 'our maths is the kind version' do not apply to Rohan's case, which the outro defines as no new spending and he is never late. Losing the grace period only affects new purchases, and late fees only come with a late payment. So 'Late fees come on top' is wrong for an on-time payer and the framing misleads. Fix: say 'And our maths is the kind version. Real cards work out interest every day, on the balance before your payment lands. And keep using the card, and new purchases start charging interest from day one.' Keep event g on word 'day' (first) or retarget it to 'every', event f on word 'purchases'. Box lines: 'Interest charged daily' (at g) and 'New buys: interest from day one' (at f). Change the f sfx from fail to pop or keep it at low gain.",
+      "outro (minor, fix while rewriting): the end card CTA 'Find the three year line on your statement' is aimed at a global audience, but only US statements carry it (Reg Z 1026.7(b)(12)). Change it to 'On a US card? Find the three year line'. Optional: in the warning beat, quote the Reg Z wording exactly: 'If you make only the minimum payment each period, you will pay more in interest and it will take you longer to pay off your balance.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T15:02:31.743359+00:00",
+    "finishedAt": "2026-10-19T15:02:31.743359+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T15:02:52.582464+00:00",
+    "finishedAt": "2026-10-19T15:02:52.582464+00:00",
+    "notes": [
+      "Re-review after fixes: kind-version now gives the real reasons (daily interest before the payment lands; new purchases charge interest from day one), outro CTA is scoped to US cards, and the warning beat uses the exact Reg Z 1026.7(b)(12) wording. Verify list confirmed: Fed G.19 accounts assessed interest 22.36% (Aug 2026) supports 22.2%; Reg Z requires the payoff-time, total-cost and 36-month lines; CFPB CARD Act report (Dec 2025) shows about 15% of general-purpose cardholders paid only the minimum in 2024, which supports 'millions'; formula variance is stated on the end card. Disclaimer is in the description and on the end scene."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-19T15:02:42.821989+00:00",
+    "finishedAt": "2026-10-19T15:22:57.862260+00:00",
+    "notes": [
+      "text 'Pay off in three years' at 222.3 s runs outside the frame",
+      "6 s with nothing moving (limit 4 s)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T15:23:53.059397+00:00",
+    "finishedAt": "2026-10-19T15:23:53.059397+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T15:23:54.038555+00:00",
+    "finishedAt": "2026-10-19T15:41:56.263802+00:00",
+    "notes": [
+      "277 s, forest/lofi, peak -1.0 dB, mean -17.2 dB"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T15:44:16.200143+00:00",
+    "finishedAt": "2026-10-19T15:44:16.200143+00:00",
+    "notes": [
+      "description mentions '0', which is neither a script input nor a computed figure",
+      "description mentions '00', which is neither a script input nor a computed figure",
+      "description mentions '0', which is neither a script input nor a computed figure",
+      "description mentions '28', which is neither a script input nor a computed figure",
+      "description mentions '1', which is neither a script input nor a computed figure",
+      "description mentions '14', which is neither a script input nor a computed figure",
+      "description mentions '1', which is neither a script input nor a computed figure",
+      "description mentions '35', which is neither a script input nor a computed figure",
+      "description mentions '2', which is neither a script input nor a computed figure",
+      "description mentions '33', which is neither a script input nor a computed figure",
+      "description mentions '3', which is neither a script input nor a computed figure",
+      "description mentions '29', which is neither a script input nor a computed figure",
+      "description mentions '3', which is neither a script input nor a computed figure",
+      "description mentions '50', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T15:44:40.466648+00:00",
+    "finishedAt": "2026-10-19T15:44:40.466648+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-19T15:44:41.505087+00:00",
+    "finishedAt": "2026-10-19T15:44:41.505087+00:00",
+    "notes": [
+      "[scene] prop (stack), beat total, 126.4-134s: the kicker 'Minimum only, all in' and the count-up figure '$11,638' are drawn at the same spot at the top, overlapping for the whole beat (unreadable 'Mini$11,638all in'). Fix the stack prop so the figure sits below the kicker (or on the stack); workaround: drop params.kicker on this beat.",
+      "[scene] road, beat recap, 257.6-266s: sign labels are wider than their boards ('Minimum only' spills over the left board) and the 'Fixed payment' board runs off the right edge ('Fixed payme'). Fit the board to its text and keep the second sign inside the frame.",
+      "[script] presenter x: 0 in beats ratio, millions, promise, anvil, per-year, shrinks, screen, total, kind-version, cheque, why-works, receipt, catch puts the actor's centre on the left frame edge, so half of them is cut off (Sharma's face halved at 40-47s, Priya at 25s and 105s, Rohan at 15s and 130s). Remove x (long-video default 0.84, right side, clear of the graphic area).",
+      "[script] beat per-year, 39.5-~42s: nothing but background (plus half of Sharma) until the first line appears on 'adds'. Add a first line at 'start', e.g. {text: '{card_rate_month} a month', at: 'start'}.",
+      "[script] thumbnail-b.png: Rohan's shrug hand covers '$11,638' (the last digits). Set thumbnails[0].pose to 'worried' (as in the main thumbnail) or another pose that keeps the hands clear of the receipt."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T15:45:24.361074+00:00",
+    "finishedAt": "2026-10-19T15:45:24.361074+00:00",
+    "notes": [
+      "description mentions '0', which is neither a script input nor a computed figure",
+      "description mentions '00', which is neither a script input nor a computed figure",
+      "description mentions '0', which is neither a script input nor a computed figure",
+      "description mentions '28', which is neither a script input nor a computed figure",
+      "description mentions '1', which is neither a script input nor a computed figure",
+      "description mentions '14', which is neither a script input nor a computed figure",
+      "description mentions '1', which is neither a script input nor a computed figure",
+      "description mentions '35', which is neither a script input nor a computed figure",
+      "description mentions '2', which is neither a script input nor a computed figure",
+      "description mentions '33', which is neither a script input nor a computed figure",
+      "description mentions '3', which is neither a script input nor a computed figure",
+      "description mentions '29', which is neither a script input nor a computed figure",
+      "description mentions '3', which is neither a script input nor a computed figure",
+      "description mentions '50', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T15:45:35.379285+00:00",
+    "finishedAt": "2026-10-19T15:45:35.379285+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-19T15:45:36.303372+00:00",
+    "finishedAt": "2026-10-19T16:03:39.061878+00:00",
+    "notes": [
+      "text '$11,638' at 131.7 s runs outside the frame"
+    ]
+  }
+]
