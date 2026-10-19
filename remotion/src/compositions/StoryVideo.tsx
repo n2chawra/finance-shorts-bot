@@ -18,6 +18,7 @@ import type { SceneProps } from "../scenes/kit";
 import { ChapterScene, ChecklistScene, EndScene, StageScene } from "../scenes/stage";
 import { BigNumberScene, CalendarScene, ChartScene, HeadlineScene, MonsterScene, RevealScene, SnowballScene, SplitScene, StatementScene, TowersScene } from "../scenes/data";
 import { EquationScene, KineticScene, PropScene, ScreenScene, SourceScene } from "../scenes/world";
+import { BillScene, ForkScene, RoadScene } from "../scenes/journey";
 import { Grain } from "../design/texture";
 import { Sikka } from "../cast/Sikka";
 
@@ -25,7 +26,7 @@ export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   stage: StageScene, chapter: ChapterScene, checklist: ChecklistScene, end: EndScene, headline: HeadlineScene,
   bignumber: BigNumberScene, reveal: RevealScene, statement: StatementScene, monster: MonsterScene,
   snowball: SnowballScene, calendar: CalendarScene, split: SplitScene, chart: ChartScene, towers: TowersScene,
-  prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene, source: SourceScene,
+  prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene, source: SourceScene, bill: BillScene, road: RoadScene, fork: ForkScene,
 };
 
 /** The channel's mark in the top-left corner of every frame: Sikka, small, never text. */

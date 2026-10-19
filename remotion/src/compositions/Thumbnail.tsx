@@ -27,7 +27,83 @@ export const calculateThumbnailMetadata: CalculateMetadataFunction<StoryProps> =
   return { props: { timeline: tl }, ...thumbSize(tl) };
 };
 
-export const Thumbnail: React.FC<StoryProps> = ({ timeline }) => {
+/** The thing a story is about, drawn big for a thumbnail: a card, a phone, a house, a car, cash, a piggy bank. */
+const Hero: React.FC<{ kind: string; x: number; y: number; cw: number; ch: number; k: number }> = ({ kind, x, y, cw, ch, k }) => {
+  switch (kind) {
+    case "phone": return <g><rect x={x + cw * 0.25} y={y - ch * 0.35} width={cw * 0.5} height={ch * 1.6} rx={36} fill="#1d2433" stroke="#ffffff" strokeWidth={6} />
+      <rect x={x + cw * 0.29} y={y - ch * 0.27} width={cw * 0.42} height={ch * 1.42} rx={22} fill="#3d7bf5" /></g>;
+    case "house": return <g><path d={`M${x},${y + ch * 0.4} L${x + cw / 2},${y - ch * 0.35} L${x + cw},${y + ch * 0.4}Z`} fill="#e8613c" stroke="#ffffff" strokeWidth={6} />
+      <rect x={x + cw * 0.1} y={y + ch * 0.38} width={cw * 0.8} height={ch * 0.62} fill="#f6d7a7" stroke="#ffffff" strokeWidth={6} />
+      <rect x={x + cw * 0.18} y={y + ch * 0.5} width={cw * 0.18} height={ch * 0.5} fill="#8d5524" /></g>;
+    case "car": return <g><rect x={x} y={y + ch * 0.35} width={cw} height={ch * 0.4} rx={30} fill="#e03131" stroke="#ffffff" strokeWidth={6} />
+      <path d={`M${x + cw * 0.2},${y + ch * 0.36} L${x + cw * 0.32},${y} L${x + cw * 0.72},${y} L${x + cw * 0.84},${y + ch * 0.36}Z`} fill="#c92a2a" stroke="#ffffff" strokeWidth={6} />
+      <circle cx={x + cw * 0.24} cy={y + ch * 0.8} r={ch * 0.17} fill="#1d2433" /><circle cx={x + cw * 0.76} cy={y + ch * 0.8} r={ch * 0.17} fill="#1d2433" /></g>;
+    case "cash": return <g>{[0, 1, 2].map((i) => <g key={i} transform={`translate(0,${-i * 26 * k})`}>
+      <rect x={x} y={y + ch * 0.3} width={cw} height={ch * 0.55} rx={14} fill="#3fae6a" stroke="#ffffff" strokeWidth={5} />
+      <circle cx={x + cw / 2} cy={y + ch * 0.575} r={ch * 0.16} fill="#9fe0b4" /></g>)}</g>;
+    case "piggy": return <g><ellipse cx={x + cw / 2} cy={y + ch / 2} rx={cw / 2} ry={ch / 2} fill="#f6a3b5" stroke="#ffffff" strokeWidth={6} />
+      <ellipse cx={x + cw * 0.95} cy={y + ch * 0.5} rx={cw * 0.1} ry={ch * 0.13} fill="#f08ca4" /><rect x={x + cw * 0.42} y={y + 6} width={cw * 0.16} height={10} rx={5} fill="#a04b62" /></g>;
+    default: return <g><rect x={x} y={y} width={cw} height={ch} rx={24} fill="#2f5bd8" stroke="#ffffff" strokeWidth={6} />
+      <rect x={x} y={y + ch * 0.16} width={cw} height={ch * 0.15} fill="#1d3a91" />
+      <rect x={x + 34} y={y + ch * 0.42} width={62 * k} height={46 * k} rx={9} fill="#ffd34d" /></g>;
+  }
+};
+
+/** The "story" layout (2026-10-19, after studying top finance thumbnails): one picture that tells the
+ * story at a glance (a small payment on his phone turning into a giant bill) and two or three huge
+ * words that add what the picture can't say. No sub line, no figure floating on a gradient. */
+const StoryThumb: React.FC<StoryProps> = ({ timeline }) => {
+  const th = timeline.thumbnail!;
+  const member = CAST[th.who];
+  if (!member) throw new Error(`unknown cast member ${th.who}`);
+  const { width: w, height: h } = thumbSize(timeline);
+  const v = h > w;
+  const danger = timeline.palette.danger;
+  // a picture that reads as an equation: the card with its small payment -> the receipt it becomes
+  const k = v ? 1.35 : 1;
+  const card = v ? { x: 70, y: 560, cw: 460, ch: 290 } : { x: 36, y: 300, cw: 380, ch: 240 };
+  const rc = v ? { x: 560, y: 470, rw: 460, rh: 860 } : { x: 520, y: 238, rw: 360, rh: 470 };
+  const arrow = v ? { x: 300, y: 1000 } : { x: 448, y: 470 };
+  const zig = (x: number, y: number, wdt: number) => Array.from({ length: 13 }, (_, i) => `L${x + (wdt / 12) * i},${y + (i % 2 ? 18 : 0)}`).join(" ");
+  return (
+    <AbsoluteFill style={{ background: "radial-gradient(circle at 55% 70%, #5a1f3a, #120f2b 65%)", overflow: "hidden" }}>
+      <svg width={w} height={h} style={{ position: "absolute" }}>
+        {/* the hero object the story is about, tilted, with the small amount stuck on it */}
+        <g transform={`rotate(-10 ${card.x + card.cw / 2} ${card.y + card.ch / 2})`}>
+          <Hero kind={th.hero ?? "card"} x={card.x} y={card.y} cw={card.cw} ch={card.ch} k={k} />
+          {th.small && <g transform={`translate(${card.x + card.cw * 0.6},${card.y + card.ch * 0.62}) rotate(6)`}>
+            <rect x={-120 * k} y={-52 * k} width={240 * k} height={104 * k} rx={14} fill="#7cf0b2" stroke="#0e3b2a" strokeWidth={5} />
+            <text x={0} y={-10 * k} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={24 * k} fill="#0e3b2a">{(th.tag ?? "").toUpperCase()}</text>
+            <text x={0} y={(th.tag ? 38 : 18) * k} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={50 * k} fill="#0e3b2a">{th.small}</text>
+          </g>}
+        </g>
+        {/* the arrow */}
+        <path d={`M${arrow.x - 30 * k},${arrow.y} L${arrow.x + 30 * k},${arrow.y}`} stroke="#ffd34d" strokeWidth={22 * k} strokeLinecap="round" />
+        <path d={`M${arrow.x + 10 * k},${arrow.y - 34 * k} L${arrow.x + 52 * k},${arrow.y} L${arrow.x + 10 * k},${arrow.y + 34 * k}`} fill="none" stroke="#ffd34d" strokeWidth={22 * k} strokeLinecap="round" strokeLinejoin="round" />
+        {/* the receipt it turns into, long, torn at the bottom */}
+        <g transform={`rotate(4 ${rc.x + rc.rw / 2} ${rc.y + rc.rh / 2})`}>
+          <path d={`M${rc.x},${rc.y} L${rc.x + rc.rw},${rc.y} L${rc.x + rc.rw},${rc.y + rc.rh} ${zig(rc.x + rc.rw, rc.y + rc.rh, -rc.rw)} Z`} fill="#fbf7ee" stroke="#d8cfbb" strokeWidth={4} />
+          {Array.from({ length: 5 }, (_, i) => <g key={i}>
+            <rect x={rc.x + 30} y={rc.y + 40 + i * 42 * k} width={rc.rw * (0.35 + (i % 3) * 0.1)} height={12 * k} rx={6} fill="#ddd2bd" />
+            <rect x={rc.x + rc.rw - 30 - rc.rw * 0.18} y={rc.y + 40 + i * 42 * k} width={rc.rw * 0.18} height={12 * k} rx={6} fill="#ddd2bd" />
+          </g>)}
+          <line x1={rc.x + 24} x2={rc.x + rc.rw - 24} y1={rc.y + rc.rh * 0.6} y2={rc.y + rc.rh * 0.6} stroke="#5b5040" strokeWidth={4} strokeDasharray="12 8" />
+          <text x={rc.x + rc.rw / 2} y={rc.y + rc.rh * 0.72} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={40 * k} fill="#5b5040">{(th.to ?? "You pay").toUpperCase()}</text>
+          <text x={rc.x + rc.rw / 2} y={rc.y + rc.rh * 0.9} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={Math.min(108 * k, (rc.rw - 30) / Math.max(4, th.figure.length * 0.56))} fill={danger}>{th.figure}</text>
+        </g>
+        <Character id="thumb" look={member.look} pose={POSES[(th.pose ?? "worried") as PoseName] ?? POSES.worried} expression={(th.expression ?? "shock") as Expression}
+          x={v ? w * 0.86 : w * 0.88} y={v ? h * 1.3 : h * 1.55} scale={v ? 2.4 : 1.75} gaze={[-0.7, 0.2]} shadow={false} />
+      </svg>
+      <div style={{ position: "absolute", left: 36, top: v ? 60 : 18, width: v ? w - 72 : w * 0.82, textAlign: "left", fontFamily: FONT,
+        fontWeight: 900, fontSize: v ? 128 : 100, lineHeight: 0.95, color: "#ffffff", textTransform: "uppercase", letterSpacing: -2,
+        WebkitTextStroke: "6px #000000", paintOrder: "stroke fill", textShadow: "0 10px 0 rgba(0,0,0,0.45)" }}>{th.words}</div>
+    </AbsoluteFill>
+  );
+};
+
+export const Thumbnail: React.FC<StoryProps> = (props) => props.timeline.thumbnail?.layout === "story" ? <StoryThumb {...props} /> : <CardThumb {...props} />;
+
+const CardThumb: React.FC<StoryProps> = ({ timeline }) => {
   const th = timeline.thumbnail;
   const pal = timeline.palette;
   if (!th) return null;

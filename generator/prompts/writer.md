@@ -38,8 +38,10 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   build rejects a typed number.
 - **The voice tells the story, the screen shows the figures.** Talk like a person: short sentences,
   everyday words, one idea each. Don't put the spoken line on screen.
-- **The first beat hooks** in the plan's hook style, and its opening lines are on screen from the
-  first frame:
+- **The first beat shows the topic and the shock together** (owner, 2026-10-19): within five
+  seconds a viewer knows what the video is about and why it matters to them, in a place with
+  something moving (`bill`, `source`, a `prop` in a `world`), never a figure on a plain background.
+  It hooks in the plan's hook style, and its opening lines are on screen from the first frame:
   - `question`: ask something the viewer wants answered.
   - `shock_number`: lead with a computed figure.
   - `myth`: state a common belief the video will test (a character can say it).

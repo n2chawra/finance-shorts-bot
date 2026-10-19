@@ -96,6 +96,12 @@ cast member's face leads), `versus` (two things compared) and `warning` (a risk 
 main one an `angle` too. They are tested against each other on YouTube (Test & Compare); read
 `thumbnailAngles` in `python -m improvement.evaluate --json` first and make the angle that wins most
 often the main one, with two others to keep learning.
+All three use `layout: "story"` (one picture that says the topic: the `hero` object with the small
+amount on it, an arrow to the receipt with the big `figure`, the cast member reacting); the angle
+changes the `words`, and the words always **name the topic** ("Paying the minimum?"), never only a
+figure. Follow the **Look and motion** rules in the long_story README for every beat: the hook shows
+topic and shock in five seconds, no text-only slides, and each scene's place, time, land and weather
+chosen for this story.
 
 ## 4. Fact review (a subagent with fresh context)
 Spawn one subagent. Give it only the video id and the instruction to read

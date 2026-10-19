@@ -20,7 +20,7 @@ Python owns every number, every moment and every sound. Remotion only draws.
 | `style` | optional `{palette, genre, key, bpm}` (resolved from the seed otherwise) |
 | `currency` | `USD`, `GBP`, `EUR` or `INR`, from the plan: how every figure is shown and spoken (rupees use lakh and crore, the others K/M/B) |
 | `maths` | named calculations, `[{name, kind, ...inputs}]`; see below |
-| `thumbnail` | `{who, pose, expression, prop?, figure: "{placeholder}", words: ≤4 words, sub?, angle}` |
+| `thumbnail` | `{who, pose, expression, figure: "{placeholder}", words: ≤4 words, angle, layout: "story", hero, tag?, small?, to?}`. **Use `layout: "story"`** (owner, 2026-10-19): one picture that says the topic, an object (`hero`: card, phone, house, car, cash, piggy) with the small amount stuck on it (`tag` words + `small`, a placeholder), an arrow to a receipt with `to` ("You pay") and the `figure`, the cast member reacting; `words` **name the topic** ("Paying the minimum?", not "17 years?!") |
 | `thumbnails` | two more thumbnails for YouTube's Test & Compare, same fields, each with a different `angle`: `number`, `question`, `reaction`, `versus` or `warning` (rendered as `thumbnail-b.png`, `thumbnail-c.png`) |
 | `beats` | the video, in order |
 
@@ -91,12 +91,12 @@ icon (`{icon: "!" | "?" | "$" | "idea"}`) beside the character's head for about 
 | `bignumber` | kinetic lines of text and figures, optional actor on the right | `lines` [{text, style: hero/sub/danger/good/kicker, at, value?}], `actor` |
 | `reveal` | the big hit: shake, burst, lines, actor peeking from below | as `bignumber` |
 | `statement` | a card statement, total vs minimum due, a finger picks one | `total`, `min`, `totalAt`, `minAt`, `pick` (min/total), `pickAt` |
-| `monster` | the interest monster eating coins | `label`, `labelAt`, `name` |
+| `monster` | **retired** (owner, 2026-10-19: childish): interest eating money is the `bill`, `road` or a `prop` bucket | `label`, `labelAt`, `name` |
 | `snowball` | a snowball rolling and growing downhill | `label`, `tick` |
 | `calendar` | a calendar flipping months | `pages`?, `loops` (number or `@x.years`), `label`, `labelAt`, `sub`, `subAt` |
 | `split` | two figures side by side, counting up | `left`/`right` {label, text, value, at} |
 | `chart` | lines drawing themselves, with marks | `series`, `series2`, `ticks`, `xticks`, `xLabel`, `label1`, `label2`, `marks` [{x, text, at}], `drawFrom`, `drawTo` |
-| `towers` | bars rising to compare | `title`, `items` [{label, text, value, at, color: danger/good}] |
+| `towers` | **avoid** (owner, 2026-10-19: bars are basic): compare with `fork` instead | `title`, `items` [{label, text, value, at, color: danger/good}] |
 | `checklist` | steps ticking off, active one highlighted | `title`, `items` [{text, icon: autopay/emi/debit/check}], `active`, `actor` |
 | `end` | the CTA, the cast, the assumption and the disclaimer | `cta`, `follow`, `assumption` |
 | `prop` | **a money prop carrying the figure, in a place** | `world`, `prop`, `text` (the figure), `value`?, `label`?, `kicker`?, `sub`?, `at`, `fill`? (stack 0..1), `level`? (bucket 0..1), `presenter`? |
@@ -104,6 +104,24 @@ icon (`{icon: "!" | "?" | "$" | "idea"}`) beside the character's head for about 
 | `source` | **the evidence: a drawn document card**, the spoken sentence highlighted yellow as it is read, the "Data: …" line at its foot | `publisher` (words), `title`?, `lines` [{text, highlight?, underline?, at?}] (facts as `{fact1}`; `underline` draws a red marker line under the words), `pen`?, `pattern`?/`world`?, `presenter`? |
 | `equation` | **icons with operators between them** (a phone + interest, a house > one person) | `title`, `items` [{icon, text?, value?, label?, at}], `ops` ["+", "<", ">", "=", "vs", "→"], `pattern`?/`world`?, `presenter`? |
 | `kinetic` | **a short phrase typed in letter by letter** (`mode: type`) or **a statement box** over a place (`mode: box`) | `mode`, `lines` [{text, at}], `world`? (box), `presenter`? |
+| `bill` | **the hook: a small payment on the phone, and a bill unrolling out of it to what it really costs**, in a lit room | `who`, `screen` [{text, at}] (the phone: a label, then the small figure), `lines` [{text}] (2-3 bill lines), `total` {label, text, at}, `place`?, `time`?, `weather`? |
+| `road` | **a journey through time: the camera travels down a road past signposts** | `who`, `signs` [{label, text?, at, good?}] (Year one … Year N), `title`?, `land`?, `time`?, `weather`? |
+| `fork` | **two roads from one spot: a short one to a finish arch, a long one into the haze** | `who`, `short` / `long` {label, time, cost, at}, `pose`?, `land`?, `time`?, `weather`? |
+
+**Look and motion** (owner, 2026-10-19, after "this looks like a slide show"). Every frame is a
+place with something moving; numbers live on things in that place.
+- **The first five seconds show the topic and the shock together**: what the video is about and
+  why it hurts or pays (`bill` for a cost that grows, `source` for news, a `prop` in a place).
+  Never open on a figure on a plain background.
+- **No text-only slides**: `bignumber` and `reveal` at most once a long video, never two in a row,
+  and never as the opening. Prefer `bill`, `road`, `fork`, `prop`, `screen` (with `pen`), `source`.
+- **Something always moves**: the story scenes move on their own (lights, dust, rain, snow, leaves,
+  the road rushing past); keep `camera` moving (`drift`, `punch:<event>`).
+- **Set each scene for this story, not the last one**: `place` (home, kitchen, office, cafe),
+  `time` (dawn, noon, sunset, night), `land` (fields, desert, snow, city, coast) and `weather`
+  (clear, rain, snow, leaves) should fit the script (a late-night bill in a dark room, a long winter
+  of debt on a snowy road, a beach-holiday spend on the coast). Leave one out and it is picked per
+  video, so videos never look the same; don't copy the previous video's choices.
 
 **The visual kit** (2026-10-18, after studying the top animated finance channels): put figures on
 things in places, not on empty backgrounds.

@@ -43,6 +43,15 @@ proof at the moment of the claim, and mark it up while it is spoken.
 - **Pointer**: a presenter can point at the evidence with a stick: pose `aimUp` (Short) or `aim`
   (long) with `prop: "pointer"` / `"pointerUp"`.
 
+## Look and motion (owner, 2026-10-19)
+
+The long_story README's **Look and motion** rules apply to Shorts too: the first frames show the
+topic and the shock together; no text-only slides (at most one `bignumber`/`reveal`); something
+always moves; and each scene's `place`, `time`, `land` and `weather` fit this story. The story
+scenes work vertically: `bill` (a small payment turning into a big bill) is the strongest hook for
+a cost; `road` for anything that takes years; `fork` instead of side-by-side bars. Retired:
+`monster`. Avoid: `towers`.
+
 ## Story recipes
 
 Pick the recipe that fits the plan's `story`; never reuse the beat order of the last few Shorts.

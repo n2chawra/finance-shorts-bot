@@ -48,6 +48,13 @@ export const Thumbnail = z.object({
   sub: z.string().optional(),
   // what it leads with (renderer/timeline/build.py THUMB_ANGLES): number, question, reaction, versus, warning
   angle: z.string().optional(),
+  // "story": one picture that tells the story (a small payment on the phone, a giant bill) and the
+  // words alone, big; the default "card" is the older words + figure + character layout
+  layout: z.enum(["card", "story"]).optional(),
+  small: z.string().optional(),       // story layout: the small amount on the hero (one of `figures`)
+  hero: z.enum(["card", "phone", "house", "car", "cash", "piggy"]).optional(),   // story layout: what the story is about
+  tag: z.string().optional(),         // story layout: the words above `small` on the hero ("MINIMUM DUE")
+  to: z.string().optional(),          // story layout: the words above the figure on the receipt ("YOU PAY")
 });
 
 export const Timeline = z.object({
