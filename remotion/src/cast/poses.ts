@@ -28,6 +28,10 @@ export const POSES = {
   present: { ...withArms({ ...STAND, headTilt: -0.05 }, undefined, [-270, -350]), handR: "open" },
   thumbsUp: { ...withArms(STAND, [120, -330]), handL: "thumb" },
   worried: { ...withArms({ ...STAND, headTilt: 0.06 }, [30, -260], [-30, -262]), handL: "fist", handR: "fist" },
+  // the right hand raised toward what is shown, holding the pointer stick (prop "pointer"): up and to
+  // the side in a long video (content on the actor's left), straight up in a Short (content above)
+  aim: { ...withArms({ ...STAND, turn: -0.2, headTilt: -0.05 }, undefined, [-250, -470]), handR: "hold" },
+  aimUp: { ...withArms({ ...STAND, headTilt: -0.08 }, undefined, [-130, -580]), handR: "hold" },
 } satisfies Record<string, Pose>;
 
 export type PoseName = keyof typeof POSES;

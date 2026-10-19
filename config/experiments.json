@@ -1,3 +1,17 @@
 {
-  "experiments": []
+  "experiments": [
+    {
+      "id": "quiet-bed",
+      "area": "sound",
+      "format": "long",
+      "status": "running",
+      "startedAt": "2026-10-19",
+      "templates": [
+        "long_story"
+      ],
+      "share": 0.5,
+      "proposal": "owner",
+      "description": "Long videos: music bed ~4 dB lower and nearly silent under speech (renderer/timeline/build.py QUIET_*)"
+    }
+  ]
 }

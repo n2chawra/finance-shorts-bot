@@ -9,6 +9,7 @@ import { evolvePath } from "@remotion/paths";
 import { Sikka } from "../cast/Sikka";
 import { blinkAt, settle } from "../cast/acting";
 import { FONT } from "../design/fonts";
+import { Marks, type MarkSpec } from "../fx/marks";
 import { Actor, type ActorSpec, at, Chip, clamp, counted, DataSet, ease, easeOut, Kinetic, num, pop, type SceneProps, sec, str } from "./kit";
 
 interface Line { text: string; at?: string; style?: "hero" | "sub" | "danger" | "good" | "kicker"; value?: number }
@@ -297,6 +298,7 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
     series: { x: number[]; y: number[] }; series2?: { x: number[]; y: number[] }; ticks: { y: number[]; labels: string[] };
     xticks: { x: number[]; labels: string[] }; xLabel: string; label1: string; label2?: string;
     marks?: { x: number; text: string; at?: string }[]; drawFrom?: string; drawTo?: string;
+    pen?: MarkSpec[];   // marker marks over the plot area (fx/marks.tsx), 0..1 of it
   };
   const t = sec(p);
   const v = h > w, small = v ? 44 : 34;    // a Short: text at 44 px and up, plot above the captions
@@ -327,6 +329,7 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
         <path d={d1} fill="none" stroke={pal.danger} strokeWidth={12} strokeLinecap="round" strokeDasharray={ev1.strokeDasharray} strokeDashoffset={ev1.strokeDashoffset} style={{ filter: `drop-shadow(0 0 14px ${pal.danger})` }} />
         {prog > 0 && <circle cx={X(P.series.x[headI]!)} cy={Y(P.series.y[headI]!)} r={18 + 4 * Math.sin(t * 8)} fill={pal.danger} />}
         {prog > 0 && d2 && P.series2 && <circle cx={X(P.series2.x[headI]!)} cy={Y(P.series2.y[headI]!)} r={16 + 4 * Math.sin(t * 8 + 1)} fill={pal.accent} />}
+        <Marks p={p} marks={P.pen} box={{ x: L, y: T, w: R - L, h: B - T }} ink={pal.text} />
         {(P.marks ?? []).map((m, i) => {
           const k = pop(p, at(p, m.at, a + 1 + i));
           const mi = P.series.x.indexOf(m.x);

@@ -7,6 +7,9 @@
  *             callouts and a source credit
  *   equation  icons with operators between them: a house plus cash "<" one person
  *   kinetic   a short phrase typed in letter by letter on a brand card, or a statement box over a place
+ *   source    the evidence: a drawn document card (publisher, title, the sourced sentences), the
+ *             spoken sentence highlighted as it is read, marker marks (`pen`) on top (2026-10-19, after
+ *             studying Casual Finance). Our own drawing of the fact, never a copy of the page.
  *
  * Every scene takes an optional `presenter` (a cast member): in a Short it stands in the bottom
  * part of the frame and talks (lip-sync when the beat's speaker is them) while the graphic plays
@@ -18,6 +21,7 @@ import { AbsoluteFill } from "remotion";
 import { evolvePath } from "@remotion/paths";
 import { FONT } from "../design/fonts";
 import { Pattern, type PatternKind } from "../design/texture";
+import { type Box, Marks, type MarkSpec } from "../fx/marks";
 import { MONEY_PROPS, type MoneyPropName, WallScreen } from "../props/money";
 import { WORLDS, type SkylineName, type WorldName } from "../worlds/worlds";
 import { Actor, type ActorSpec, at, clamp, counted, ease, easeOut, pop, type SceneProps, sec } from "./kit";
@@ -109,6 +113,7 @@ interface Series { x: number[]; y: number[] }
 interface ScreenParams {
   world?: string; city?: string; night?: boolean; series: Series; series2?: Series; label1?: string; label2?: string; title?: string;
   source?: string; callouts?: { at?: string; x: number; text: string; series?: 1 | 2 }[]; drawFrom?: string; drawTo?: string; presenter?: ActorSpec;
+  pen?: MarkSpec[];
 }
 
 export const ScreenScene: React.FC<SceneProps> = (p) => {
@@ -165,6 +170,7 @@ export const ScreenScene: React.FC<SceneProps> = (p) => {
             </g>;
           })}
           {P.source && <text x={0} y={sh + (v ? 150 : 120)} fontFamily={FONT} fontWeight={600} fontSize={fs} fill={pal.muted}>{P.source}</text>}
+          <Marks p={p} marks={P.pen} box={{ x: pad.l, y: pad.t, w: sw - pad.l - pad.r, h: sh - pad.t - pad.b }} ink="#ffffff" />
         </g>
       </svg>
       {P.presenter && <Presenter p={p} spec={P.presenter} />}
@@ -290,3 +296,65 @@ export const KineticScene: React.FC<SceneProps> = (p) => {
   );
 };
 
+
+// ---------------- source ----------------
+
+interface SourceLine { text: string; highlight?: boolean; underline?: boolean; at?: string }
+interface SourceParams {
+  publisher: string; title?: string; lines: SourceLine[]; pen?: MarkSpec[];
+  world?: string; pattern?: string; presenter?: ActorSpec;
+}
+
+/** Initials for the publisher's badge: "Bureau of Labor Statistics" -> "BLS". */
+const initials = (s: string) => s.split(/\s+/).filter((w) => /^[A-Z]/.test(w)).map((w) => w[0]).join("").slice(0, 4) || s.slice(0, 2).toUpperCase();
+
+export const SourceScene: React.FC<SceneProps> = (p) => {
+  const { width: w, height: h, palette: pal } = p.tl;
+  const P = p.beat.params as unknown as SourceParams;
+  const v = h > w, A = area(p, !!P.presenter), t = sec(p), dur = p.beat.frames / p.fps;
+  const k = p.beat.from === 0 ? 1 : pop(p, 0, 13, 120);
+  const cw = v ? A.w - 100 : Math.min(1180, A.w - 160);
+  const cx = A.x + (A.w - cw) / 2, cy = A.y + (v ? 30 : 70);
+  const ch = v ? A.h - 60 : A.h - 140;
+  const fsT = v ? 58 : 50, fsB = v ? 48 : 36, fsP = v ? 44 : 32;
+  // the page drifts up a little while it is read, as if scrolled
+  const drift = -easeOut(t / Math.max(1, dur)) * (v ? 50 : 36);
+  const ink = "#16202e";
+  const markBox: Box = { x: 0, y: 0, w: cw, h: ch };
+  return (
+    <AbsoluteFill>
+      <World p={p} name={P.world} pattern={P.pattern ?? "grid"} />
+      <div style={{ position: "absolute", left: cx, top: cy + (1 - easeOut(k)) * 120, width: cw, height: ch, opacity: clamp(k * 2),
+        transform: `rotate(${v ? -0.6 : -0.8}deg)`, background: "#ffffff", borderRadius: 18, boxShadow: "0 30px 80px rgba(0,0,0,0.32)", overflow: "hidden" }}>
+        <div style={{ position: "absolute", left: 0, top: drift, width: cw, padding: v ? "44px 50px" : "40px 56px", boxSizing: "border-box" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: v ? 26 : 22, paddingBottom: v ? 22 : 18, borderBottom: "3px solid #e3e8ef" }}>
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minWidth: fsP * 1.8, height: fsP * 1.5, padding: "0 10px",
+              borderRadius: 10, background: "#1d3557", color: "#ffffff", fontFamily: FONT, fontWeight: 800, fontSize: fsP }}>{initials(P.publisher)}</span>
+            <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: fsP, color: "#3b4656" }}>{P.publisher}</span>
+          </div>
+          {P.title && <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: fsT, lineHeight: 1.15, color: ink, marginBottom: v ? 26 : 22 }}>{P.title}</div>}
+          {P.lines.map((l, i) => {
+            const start = at(p, l.at, 0.5 + i * 0.9);
+            const sweep = l.highlight ? clamp((t - start) / 0.9) : 0;
+            // a marker underline drawn under the words themselves (every wrapped line), after the highlight
+            const under = l.underline ? clamp((t - start - (l.highlight ? 0.7 : 0)) / 0.6) : 0;
+            return <div key={i} style={{ marginBottom: v ? 22 : 16 }}>
+              <span style={{ fontFamily: FONT, fontWeight: l.highlight ? 600 : 500, fontSize: fsB, lineHeight: 1.42, color: l.highlight ? ink : "#556070",
+                backgroundImage: `linear-gradient(${pal.danger}, ${pal.danger}), linear-gradient(#ffe066, #ffe066)`, backgroundRepeat: "no-repeat",
+                backgroundSize: `${under * 100}% ${v ? 7 : 5}px, ${sweep * 100}% 88%`, backgroundPosition: "0 100%, 0 60%",
+                WebkitBoxDecorationBreak: "clone", boxDecorationBreak: "clone", padding: "0 4px" }}>{l.text}</span>
+            </div>;
+          })}
+          {/* the rest of the page, as grey lines: the document goes on */}
+          {Array.from({ length: 6 }, (_, i) => <div key={i} style={{ height: fsB * 0.42, width: `${[92, 84, 96, 70, 88, 60][i]}%`, background: "#e8ecf2", borderRadius: 6, marginBottom: fsB * 0.55 }} />)}
+        </div>
+        <svg width={cw} height={ch} style={{ position: "absolute", left: 0, top: 0 }}>
+          <Marks p={p} marks={P.pen} box={markBox} ink={ink} />
+        </svg>
+        {p.tl.sources && <div style={{ position: "absolute", left: 0, bottom: 0, width: cw, padding: v ? "16px 50px" : "12px 56px", boxSizing: "border-box",
+          background: "#f1f4f8", fontFamily: FONT, fontWeight: 600, fontSize: fsP, color: "#3b4656" }}>{p.tl.sources}</div>}
+      </div>
+      {P.presenter && <Presenter p={p} spec={P.presenter} />}
+    </AbsoluteFill>
+  );
+};

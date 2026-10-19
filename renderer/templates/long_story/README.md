@@ -57,6 +57,14 @@ chart series with `"@<maths name>.<key>"`. The builder rejects anything else.
   (a jolt on that event). The camera never parks.
 - `transition` into this beat: cut (default), fade, slide, slide-up, zoom, wipe, iris, whip.
 
+## Marks with the pen (`pen` on `source`, `screen`, `chart`)
+
+Hand-drawn marks that draw themselves on at a word (Casual Finance study, 2026-10-19): `circle`
+(`x`, `y`, `r`), `underline` and `arrow` (`x`, `y` → `x2`, `y2`), `gap` (a double arrow from `y` to
+`y2` at `x`), `tick`, `cross`, `note` (`text`: a placeholder or a few words, never a typed number).
+Positions are 0..1 of the card or plot; `color` is `bad` (default), `good`, `accent` or `ink`;
+`at` names the event. One or two marks a beat: they point at what is being said.
+
 ## Cast and acting
 
 `rohan` (first job, eager), `priya` (sharp friend, explains), `sharma` (retired banker, dry), and
@@ -69,9 +77,9 @@ Each acting key `{sec | at: event, pose?, expression?, turn?, prop?, bubble?}` b
 icon (`{icon: "!" | "?" | "$" | "idea"}`) beside the character's head for about 2.6 s (`seconds` to change).
 
 - poses: stand, wave, point, pointUp, think, shrug, celebrate, facepalm, hips, phone, present,
-  thumbsUp, worried
+  thumbsUp, worried, aim, aimUp (the right hand raised at the content, for the pointer)
 - expressions: neutral, happy, laugh, shock, sad, worried, angry, thinking, proud, confused, smirk
-- props (in the left hand): phone, letter, card
+- props: phone, letter, card (left hand); pointer, pointerUp (a pointer stick in the right hand: use with `aim` / `aimUp`)
 
 ## Scenes
 
@@ -91,7 +99,8 @@ icon (`{icon: "!" | "?" | "$" | "idea"}`) beside the character's head for about 
 | `checklist` | steps ticking off, active one highlighted | `title`, `items` [{text, icon: autopay/emi/debit/check}], `active`, `actor` |
 | `end` | the CTA, the cast, the assumption and the disclaimer | `cta`, `follow`, `assumption` |
 | `prop` | **a money prop carrying the figure, in a place** | `world`, `prop`, `text` (the figure), `value`?, `label`?, `kicker`?, `sub`?, `at`, `fill`? (stack 0..1), `level`? (bucket 0..1), `presenter`? |
-| `screen` | **a chart drawing itself on a wall screen**, led by a dot, with callouts | `world` (office), `city`?, `title`, `series` (the bad news, red), `series2`? (the good, green), `label1`, `label2`, `callouts` [{x: 0..1, text, at}], `source`?, `drawFrom`, `drawTo`, `presenter`? |
+| `screen` | **a chart drawing itself on a wall screen**, led by a dot, with callouts | `world` (office), `city`?, `title`, `series` (the bad news, red), `series2`? (the good, green), `label1`, `label2`, `callouts` [{x: 0..1, text, at}], `source`?, `drawFrom`, `drawTo`, `pen`?, `presenter`? |
+| `source` | **the evidence: a drawn document card**, the spoken sentence highlighted yellow as it is read, the "Data: …" line at its foot | `publisher` (words), `title`?, `lines` [{text, highlight?, underline?, at?}] (facts as `{fact1}`; `underline` draws a red marker line under the words), `pen`?, `pattern`?/`world`?, `presenter`? |
 | `equation` | **icons with operators between them** (a phone + interest, a house > one person) | `title`, `items` [{icon, text?, value?, label?, at}], `ops` ["+", "<", ">", "=", "vs", "→"], `pattern`?/`world`?, `presenter`? |
 | `kinetic` | **a short phrase typed in letter by letter** (`mode: type`) or **a statement box** over a place (`mode: box`) | `mode`, `lines` [{text, at}], `world`? (box), `presenter`? |
 

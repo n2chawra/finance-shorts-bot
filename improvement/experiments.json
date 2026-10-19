@@ -54,6 +54,30 @@
       "description": "The render step gives a script with no narrator, or the previous video's narrator, the voice in NARRATOR_VOICES its format used longest ago (never-used first), and saves it in script.json.",
       "evidence": "Research 2026-10-19: am_michael narrated v-20261017-02, v-20261018-01, -02 and -03 (three in a row on one day); CLAUDE.md requires voices rotated per video. With current history the next Short gets am_fenrir, the next long video am_michael.",
       "commits": []
+    },
+    {
+      "id": "quiet-bed",
+      "proposal": "owner",
+      "area": "sound",
+      "format": "long",
+      "flag": "quiet-bed",
+      "arms": [
+        "on",
+        "off"
+      ],
+      "startedAt": "2026-10-19",
+      "minPerArm": 4,
+      "maxDays": 42,
+      "primary": "avgViewPct",
+      "guard": "qa_failures",
+      "status": "running",
+      "templates": [
+        "long_story"
+      ],
+      "description": "Long videos: the music bed about 4 dB lower and nearly silent under speech, so it only fills the pauses",
+      "hypothesis": "Casual Finance's long videos (0.5-2.3M views) have no music bed at all (measured 2026-10-19: true silence between sentences, voice 35 dB over the floor; ours ~13 dB). A quieter bed keeps attention on the narration and lifts average % viewed.",
+      "notes": "Started by the owner after the Casual Finance style study (improvement/style-study/2026-10-19-casual-finance.md). On keep: make QUIET_LEVEL/QUIET_DUCK the long-video default in build.py and remove the flag. On revert: remove the branch.",
+      "commits": []
     }
   ]
 }

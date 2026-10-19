@@ -38,6 +38,7 @@ SIZES = {"long": (1920, 1080), "short": (1080, 1920)}
 LEAD, TAIL = 0.35, 0.5            # silence before and after a beat's line
 GAP_NO_VOICE = 2.4                # a beat with nothing said (a chapter card) lasts this long
 VOICE_DUCK = 0.6                  # music drops this much under speech
+QUIET_BED, QUIET_LEVEL, QUIET_DUCK = "quiet-bed", 0.32, 0.92   # the experiment's bed level and duck
 DISCLAIMER = "Illustrative only. Not financial advice."
 TYPED_NUMBER = re.compile(r"[0-9₹$£€]")   # a digit or any currency sign
 PLACEHOLDER = re.compile(r"\{[a-z][a-z0-9_]*\}")   # names may hold digits ({card_paid_year1}); text may not
@@ -348,7 +349,11 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         i = int(start*SR)
         speech[i:i + len(line.samples)] = 1.0
     duck = _smooth(speech, int(0.2*SR))
-    mixer.add_bed(bed, gain_curve(length, 0.5)*(1 - VOICE_DUCK*duck))
+    # A/B "quiet-bed" (owner, 2026-10-19, after Casual Finance: voice only, 2.3M views): music about
+    # 4 dB lower overall and nearly gone under speech, so it only fills the pauses
+    quiet = (script.get("experiments") or {}).get(QUIET_BED) == "on"
+    level, duck_by = (QUIET_LEVEL, QUIET_DUCK) if quiet else (0.5, VOICE_DUCK)
+    mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck))
     for tb in timeline_beats:
         for at, s in tb.pop("_sfx"):
             if s["kind"] not in SFX:

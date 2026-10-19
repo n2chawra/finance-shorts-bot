@@ -122,6 +122,21 @@ seconds; YouTube needs the first one to be `0:00`). Then:
 python -m generator.run ship <id> --commit --release --push
 ```
 
+## 7b. Its trailer Short (owner, 2026-10-19)
+Right after shipping, make one Short that sends viewers to the long video (Casual Finance's Shorts are
+cut from their long videos; Shorts views are how the long ones get found). Follow the **Trailer**
+recipe in `renderer/templates/short_story/README.md`:
+```
+python -m generator.run state            # the Shorts state: its next_id is the trailer's id
+```
+Plan it like any Short (`generator/prompts/planner.md`) with `"trailer_of": "<the long video's id>"`,
+`template: short_story`, the long video's topic and story, its own title (a promise, not the long
+title again) and a description whose first line is "Full story: <the long video's title>". Then
+`check-plan`, the script (reuse the long video's `maths` and `facts`, never new figures),
+`number-check`, the fact review, `render`, the QA review and `ship ... --commit --release --push`,
+exactly as the video routine does (`generator/prompts/routine.md`). One attempt: if any step fails
+twice, `fail` the trailer and say so in the activity file; the long video is already shipped.
+
 ## 8. If it cannot be made to pass
 After the limits above (two plan attempts, two rewrites, two re-renders):
 ```

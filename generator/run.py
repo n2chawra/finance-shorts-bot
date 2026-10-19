@@ -183,8 +183,19 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         entries = history.of_format(history.load(root), fmt)
         enabled = enabled_templates(load_settings(root), fmt, root)
         problems = variety.check_plan(plan, entries, enabled)
-        problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
-                                      variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
+        if trailer := plan.get("trailer_of"):
+            # a trailer Short for a long video (owner, 2026-10-19): its topic is the long video's, so the
+            # Shorts topic feed doesn't apply; it still passes every variety rule among Shorts
+            longs = {e["id"]: e for e in history.of_format(history.load(root), "long")}
+            if fmt != "short":
+                problems.append("trailer_of: only a Short can be a trailer")
+            elif trailer not in longs:
+                problems.append(f"trailer_of {trailer!r} is not a shipped long video")
+            elif any(e.get("trailer_of") == trailer for e in entries):
+                problems.append(f"{trailer} already has a trailer Short")
+        else:
+            problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
+                                          variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
         if not 20 <= len(plan["title"]) <= 90:
             problems.append("title must be 20–90 characters")
         if "#shorts" not in [h.lower() for h in plan["hashtags"]]:
@@ -297,11 +308,13 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         manifest["release"]["mediaBranch"] = f"media/{vid}"
     if (urgent := topics.urgency(plan, root)) is not None:
         manifest["priority"] = urgent   # ingest puts it at the front of the upload queue
+    if plan.get("trailer_of"):
+        manifest["trailerOf"] = plan["trailer_of"]   # a trailer Short for that long video
     _write(d / "manifest.json", manifest)
     history.append({
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],
         "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": style, "format": fmt,
-        "story": plan.get("story"),
+        "story": plan.get("story"), **({"trailer_of": plan["trailer_of"]} if plan.get("trailer_of") else {}),
     }, root)
 
     if release:

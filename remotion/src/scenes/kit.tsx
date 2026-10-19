@@ -103,7 +103,20 @@ const Card = (x: number, y: number) => (
     <rect x={10} y={36} width={60} height={6} rx={3} fill="#ffffff" opacity={0.7} />
   </g>
 );
-export const PROPS: Record<string, (x: number, y: number) => React.ReactNode> = { phone: Phone, letter: Letter, card: Card };
+/** A teacher's pointer stick from the hand toward the content (style study, 2026-10-19). Held in the
+ * right hand with the `aim` or `aimUp` pose; `angle` is its direction in degrees (-90 = straight up). */
+const Pointer = (angle: number, len: number) => (x: number, y: number) => {
+  const a = (angle * Math.PI) / 180, tx = x + Math.cos(a) * len, ty = y + Math.sin(a) * len;
+  return <g>
+    <line x1={x} y1={y} x2={tx} y2={ty} stroke="#8a5a2b" strokeWidth={12} strokeLinecap="round" />
+    <line x1={x + Math.cos(a) * len * 0.82} y1={y + Math.sin(a) * len * 0.82} x2={tx} y2={ty} stroke="#e03131" strokeWidth={12} strokeLinecap="round" />
+  </g>;
+};
+export const PROPS: Record<string, (x: number, y: number) => React.ReactNode> = {
+  phone: Phone, letter: Letter, card: Card, pointer: Pointer(-145, 230), pointerUp: Pointer(-100, 150),
+};
+/** Props held in the right hand (the pointer goes with `aim`); every other prop is held in the left. */
+const RIGHT_HAND = new Set(["pointer", "pointerUp"]);
 
 /**
  * A cast member acting through a beat: walks in or out, moves through key poses and expressions
@@ -162,7 +175,7 @@ export const Actor: React.FC<{ p: SceneProps; spec: ActorSpec; ground: number; i
     <>
       <Character id={`${p.beat.id}-${spec.who}`} look={member.look} pose={pose} expression={expression} viseme={viseme}
         blink={blinkAt(t, index + 1)} gaze={gaze} x={x} y={ground} scale={scale}
-        holdL={prop ? PROPS[prop] : undefined} />
+        holdL={prop && !RIGHT_HAND.has(prop) ? PROPS[prop] : undefined} holdR={prop && RIGHT_HAND.has(prop) ? PROPS[prop] : undefined} />
       {bubble && <Bubble x={x} headY={ground - 560 * scale} scale={scale} w={p.tl.width} v={p.tl.height > p.tl.width} b={bubble.spec} k={settle(bubble.since / 0.3)} />}
     </>
   );
