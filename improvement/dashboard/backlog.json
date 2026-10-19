@@ -47,6 +47,38 @@
       "page": "templates",
       "found": "2026-10-18",
       "status": "open"
+    },
+    {
+      "id": "voice-label-gender",
+      "kind": "bug",
+      "title": "Video page: 5 of the 6 narrator voices shown as '(voice)'",
+      "detail": "The Voiceover row only recognised Hindi-coded Kokoro ids (hf_/hm_), so every American voice the improver now rotates in (af_heart, af_bella, am_michael, am_fenrir, am_puck) read e.g. 'On · Bella (voice)'. It now reads accent and gender from the id: 'On · Bella (American, female)'. Sample data uses American voices too; new smoke test.",
+      "page": "videos/[id]",
+      "found": "2026-10-19",
+      "status": "done",
+      "done": "2026-10-19",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-10-19",
+        "apps/dashboard/src/lib/store.sample.ts": "2026-10-19"
+      }
+    },
+    {
+      "id": "overview-since-last-visit",
+      "kind": "idea",
+      "title": "Overview: 'Since you last looked' line",
+      "detail": "Remember the last visit per browser and show one line at the top: new videos queued, uploads scheduled, failures and new notifications since then. The owner checks twice a day; this answers 'what changed?' without scanning every card. Glanceable change summaries are the common thread in current ops-dashboard guidance (Cloudscape service dashboards, DesignRush 2026).",
+      "page": "overview",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "overview-phone-orphan-card",
+      "kind": "idea",
+      "title": "Overview on phones: 'Made today' card sits alone in a half-empty row",
+      "detail": "At 390 px the five stat cards wrap 2-2-1, leaving the last card next to empty space. Let the last odd card span the full row (or fold 'Made today' into the Backlog card) so the top of the page is one tidy block.",
+      "page": "overview",
+      "found": "2026-10-19",
+      "status": "open"
     }
   ]
 }

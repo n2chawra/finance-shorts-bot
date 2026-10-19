@@ -100,3 +100,11 @@ test("thumbnails on the daily pages all load", async ({ page }) => {
     expect(broken, `broken images on ${path}`).toEqual([]);
   }
 });
+
+test("video page names the narrator's accent and gender", async ({ page }) => {
+  await signIn(page);
+  for (const [id, label] of [["v031", "On · Bella (American, female)"], ["v033", "On · Alpha (Indian English, female)"]]) {
+    await page.goto(`/videos/${id}`);
+    await expect(page.locator("dt", { hasText: "Voiceover" }).locator("+ dd")).toHaveText(label!, { timeout: 30_000 });
+  }
+});

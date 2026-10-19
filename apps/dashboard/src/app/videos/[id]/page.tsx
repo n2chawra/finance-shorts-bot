@@ -19,6 +19,17 @@ import { MarkUploaded, YouTubeDetails } from "./publish-tools";
 
 const CHECK_NAMES: Record<string, string> = { number_check: "Number check", fact_review: "Fact review", qa_review: "QA review" };
 
+const VOICE_ACCENTS: Record<string, string> = { a: "American", b: "British", h: "Indian English" };
+
+/** Kokoro voice ids are <accent><gender>_<name>, e.g. "af_bella" → "Bella (American, female)". */
+function voiceLabel(voice: string): string {
+  const [code = "", name] = voice.split("_");
+  if (!name || code.length !== 2) return voice;
+  const gender = code[1] === "f" ? "female" : code[1] === "m" ? "male" : null;
+  const parts = [VOICE_ACCENTS[code[0]!], gender].filter(Boolean);
+  return parts.length ? `${titleCase(name)} (${parts.join(", ")})` : titleCase(name);
+}
+
 /** Split a script into its numeric/setup inputs and its on-screen text lines. */
 function scriptParts(script: unknown): { inputs: [string, string][]; lines: [string, string][] } {
   if (!script || typeof script !== "object") return { inputs: [], lines: [] };
@@ -110,7 +121,7 @@ export default function VideoPage() {
               <Row k="YouTube">{v.upload?.youtubeId ? <a className="font-medium text-brand-text hover:underline" href={long ? `https://youtube.com/watch?v=${v.upload.youtubeId}` : `https://youtube.com/shorts/${v.upload.youtubeId}`} target="_blank" rel="noreferrer">Open ↗</a> : <span className="text-muted">No link yet</span>}</Row>
               <Row k="Style">{titleCase(v.style.palette)} · {titleCase(v.style.genre)}, {v.style.key}, {v.style.bpm} BPM</Row>
               <Row k="Format">{v.format === "long" ? `Long video · ${Math.round(v.durationSec / 60)} min, landscape` : "Short · vertical"}</Row>
-              <Row k="Voiceover">{v.style.voice ? `On · ${titleCase(v.style.voice.split("_")[1] ?? v.style.voice)} (${v.style.voice.startsWith("hf") ? "female" : v.style.voice.startsWith("hm") ? "male" : "voice"})` : "None"}</Row>
+              <Row k="Voiceover">{v.style.voice ? `On · ${voiceLabel(v.style.voice)}` : "None"}</Row>
             </dl>
           </Card>
         </div>
