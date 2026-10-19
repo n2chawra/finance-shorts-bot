@@ -16,7 +16,7 @@ Python owns every number, every moment and every sound. Remotion only draws.
 |---|---|
 | `format` | `"long"` |
 | `seed` | integer; picks narrator and music when not pinned |
-| `narrator` | optional Kokoro voice for the narrator |
+| `narrator` | optional Kokoro voice for the narrator; render replaces a missing one, or the previous video's, with the voice used longest ago |
 | `style` | optional `{palette, genre, key, bpm}` (resolved from the seed otherwise) |
 | `currency` | `USD`, `GBP`, `EUR` or `INR`, from the plan: how every figure is shown and spoken (rupees use lakh and crore, the others K/M/B) |
 | `maths` | named calculations, `[{name, kind, ...inputs}]`; see below |

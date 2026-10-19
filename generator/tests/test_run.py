@@ -324,3 +324,24 @@ def test_each_format_has_its_story_template(root: Path) -> None:
     assert run.enabled_templates(settings_, "short", root) == ["short_story"]
     assert run.enabled_templates(settings_, "long", root) == ["long_story"]
     assert run.plan_format({"template": "short_story"}) == "short" and run.plan_format({"template": "long_story"}) == "long"
+
+
+def test_narrators_rotate_per_video(root: Path) -> None:
+    """Four videos in a row get four different narrators, least recently used first."""
+    voices = []
+    for i in range(4):
+        voices.append(run.next_narrator([entry(n, voice=v) for n, v in enumerate(voices)]))
+    assert sorted(voices) == sorted(run.NARRATOR_VOICES)
+    assert run.next_narrator([entry(n, voice=v) for n, v in enumerate(voices)]) == voices[0]
+
+
+def test_render_sets_a_missing_or_repeated_narrator_and_keeps_it(root: Path) -> None:
+    history.append({**entry(1, voice="am_michael"), "format": "short"}, root)
+    plan = make_plan()
+    put(root, "plan.json", plan)
+    put(root, "script.json", {**script_for(plan), "narrator": "am_michael"})
+    run.render(VID, preview=True, root=root)
+    saved = json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))
+    assert saved["narrator"] not in ("am_michael", None) and "experiments" not in saved
+    run.render(VID, preview=True, root=root)
+    assert json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))["narrator"] == saved["narrator"]
