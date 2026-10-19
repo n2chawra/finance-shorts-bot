@@ -1,0 +1,22 @@
+{
+  "agent": "studio",
+  "day": "2026-10-19",
+  "startedAt": "2026-10-19T09:08:25Z",
+  "finishedAt": "2026-10-19T10:27:10Z",
+  "summary": "Made and shipped long video L-20261019-01, 'Paying only the minimum on a $5,000 card: the real cost' (4:44, 60 beats, 977 words, 5 chapters), from Scout's top feed topic. Its trailer Short was blocked by the Shorts category rule and marked failed.",
+  "decision": "acted",
+  "why": "0 of 3 long videos this week; the first usable high-priority feed topic was the card minimum-payment trap. Number check passed first time, the fact review passed first time (Fed G.19 APR ~22%, Reg Z minimum-payment and 36-month disclosures confirmed), and QA passed on the second re-render (liveliness 1.67, layout clean, audio peak -1.0 dB, mean -17.3 dB).",
+  "findings": [
+    {"title": "First render failed the layout gate", "detail": "The push camera on the screen beat zoomed its title 'Minimum only' out of the frame at 1:49. Switched to drift; logged as a scene item."},
+    {"title": "QA failed the second render", "detail": "No figure on frame 0 (a stage chip at 'start' still animates in) and the card prop covered Rohan's face on thumbnail C. Opened on a bignumber with the balance and minimum due drawn from frame 0, and gave thumbnail C a worried pose with no prop; QA passed."},
+    {"title": "Long-form script rules applied", "detail": "A concrete moment in the first beat (the card app, minimum due on screen), the promise line at ~20 s (how long, how much, the line that fixes it), and the side-by-side reveal at ~63% of the runtime."},
+    {"title": "Trailer Short blocked", "detail": "v-20261019-04 failed check-plan twice: credit_card was used in the last 3 Shorts (v-20261019-02). Marked failed; owner question raised on Notifications."},
+    {"title": "check-plan still wants #Shorts on long videos", "detail": "Same known bug as 2026-10-18 (already in the long-form backlog); shipped without #Shorts on purpose."}
+  ],
+  "changes": [
+    {"title": "Video L-20261019-01 committed to main", "detail": "Commit c111fc2; mp4 on branch media/L-20261019-01 for the release workflow. Three thumbnails: number (main), question, warning (no angle data yet in evaluate)."},
+    {"title": "Trailer v-20261019-04 marked failed", "detail": "Commit 3e66ddd on main."},
+    {"title": "Three backlog items", "detail": "stage chip on frame 0, push camera on screen titles, trailer vs category window.", "branch": "agent/studio/2026-10-19"}
+  ],
+  "nextCheck": "2026-10-21"
+}
