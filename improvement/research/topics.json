@@ -372,6 +372,131 @@
       "found": "2026-10-19",
       "expires": "2026-11-01",
       "status": "new"
+    },
+    {
+      "id": "2026-10-20-ssa-cola-2027",
+      "title": "Social Security's 3.6% raise for 2027: how it's worked out and what it means per month",
+      "category": "retirement",
+      "kind": "news",
+      "priority": "high",
+      "stories": [
+        "how_it_works",
+        "rule_change"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "Social Security checks go up 3.6% in January: where does that number come from, and what does it add up to over a year?",
+      "why_now": "SSA announced the 2027 COLA on 14 Oct 2026: 3.6%, the largest in years (2026 was 2.8%), for nearly 72 million beneficiaries from January. It is tied to the CPI-W, a different index from the 3.7% headline CPI the channel already covered.",
+      "facts": [
+        {
+          "label": "Social Security cost-of-living adjustment for 2027",
+          "value": 3.6,
+          "unit": "percent",
+          "currency": "USD",
+          "as_of": "2026-10-14",
+          "source": "Social Security Administration",
+          "url": "https://content.govdelivery.com/accounts/USSSA/bulletins/42f1c1a"
+        },
+        {
+          "label": "Average rise in a Social Security retirement benefit, a month",
+          "value": 75,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-10-14",
+          "source": "Social Security Administration",
+          "url": "https://content.govdelivery.com/accounts/USSSA/bulletins/42f1c1a"
+        }
+      ],
+      "verify": [
+        "SSA release of 14 Oct 2026: 3.6% COLA from January 2027 for nearly 72 million beneficiaries; SSI increases from 31 Dec 2026; average retirement benefit up about $75 a month",
+        "The COLA follows the CPI-W (Consumer Price Index for Urban Wage Earners and Clerical Workers), not the headline CPI-U; don't call one a loss against the other",
+        "No advice on when to claim benefits; the yearly total is computed by code"
+      ],
+      "sources": [
+        "https://content.govdelivery.com/accounts/USSSA/bulletins/42f1c1a",
+        "https://www.ssa.gov/blog/en/posts/2026-10-14.html",
+        "https://www.ssa.gov/news/en/advocates/2026-10-14.html"
+      ],
+      "found": "2026-10-20",
+      "expires": "2026-11-02",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-20-ecb-oct29-savings",
+      "title": "The ECB decides on 29 October: how its deposit rate reaches a euro savings account and a variable mortgage",
+      "category": "interest_rates",
+      "kind": "seasonal",
+      "priority": "high",
+      "stories": [
+        "how_it_works",
+        "decision_duel"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "The ECB has raised its deposit rate twice this year. When it moves, what changes on my savings and my loan, and how fast?",
+      "why_now": "ECB Governing Council decides on 29 Oct (14:15 CET), 9 days away. The deposit facility rate went 2.00% → 2.25% (17 Jun) → 2.50% (16 Sep 2026). Euro stories are rare in our feed (none so far).",
+      "facts": [
+        {
+          "label": "ECB deposit facility rate, in force from 16 September 2026",
+          "value": 2.5,
+          "unit": "percent",
+          "currency": "EUR",
+          "as_of": "2026-09-16",
+          "source": "European Central Bank",
+          "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+        },
+        {
+          "label": "ECB deposit facility rate before the September rise",
+          "value": 2.25,
+          "unit": "percent",
+          "currency": "EUR",
+          "as_of": "2026-06-17",
+          "source": "European Central Bank",
+          "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+        }
+      ],
+      "verify": [
+        "ECB key rates table: deposit facility 2.50% from 16 Sep 2026, 2.25% from 17 Jun 2026",
+        "Next decision 29 Oct 2026 (ECB calendar)",
+        "No prediction of the 29 Oct outcome; savings and mortgage amounts are illustrative, the effect of a quarter point is computed by code (lumpsum / emi in EUR)"
+      ],
+      "sources": [
+        "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
+        "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html"
+      ],
+      "found": "2026-10-20",
+      "expires": "2026-10-29",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-20-uk-persistent-card-debt",
+      "title": "UK card rules: what your card company must do after 18 and 36 months of mostly paying interest",
+      "category": "credit_card",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "trap_alert",
+        "how_it_works"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "I only ever pay the minimum on my card. Is there a point where the bank has to step in?",
+      "why_now": "Credit card debt is the most active search in this week's market data (Martin Lewis's card-debt alert Short, 12.9k views in 2 days; 9 of the top 30 niche Shorts are on card debt), and no UK card story has run yet.",
+      "verify": [
+        "FCA persistent-debt rules (PS18/4): 'persistent debt' means paying more in interest, fees and charges than off the balance over 18 months; firms must contact the customer at 18 months and, at 36 months, offer a way to repay in a reasonable period",
+        "Card balance, APR (~20-25% UK) and payments are illustrative; interest and the 18-month split are computed by code (card_min_due, GBP)",
+        "Don't name a card, lender or balance-transfer deal; free debt help (StepChange, National Debtline, Citizens Advice) may be named"
+      ],
+      "sources": [
+        "https://www.fca.org.uk/publications/policy-statements/ps18-04-credit-card-market-study",
+        "https://www.fca.org.uk/news/press-releases/new-credit-card-rules-introduced-fca"
+      ],
+      "found": "2026-10-20",
+      "expires": "2027-01-18",
+      "status": "new"
     }
   ]
 }

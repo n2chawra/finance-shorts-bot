@@ -1,0 +1,44 @@
+{
+  "agent": "research",
+  "day": "2026-10-20",
+  "startedAt": "2026-10-19T18:21:06Z",
+  "finishedAt": "2026-10-19T18:25:25Z",
+  "summary": "Tuesday sound and voice pass plus news scan: added 3 topics (Social Security's 3.6% COLA, the ECB's 29 Oct decision in euros, UK persistent card debt) and 2 proposals (narrator never sounds like a cast member; a pause before the reveal).",
+  "decision": "acted",
+  "why": "The narrator and Sharma shared am_fenrir on v-20261018-04 and L-20261018-01. Our Shorts are voiced 86-90% of their runtime with no pause before the payoff. The SSA (3.6%, $75 a month) and the ECB (deposit rate 2.50%) published official figures, and the ECB decides in 9 days.",
+  "findings": [
+    {
+      "title": "Narrator and Sharma used the same voice",
+      "detail": "am_fenrir is in both NARRATOR_VOICES and CAST_VOICES (Sharma); af_bella the same for Sikka. Adopt proposal narrator-not-cast-voice.",
+      "link": "videos/v-20261018-04/render.json"
+    },
+    {
+      "title": "Social Security COLA 3.6% for 2027",
+      "detail": "News topic (high, USD): average retirement benefit up about $75 a month from January.",
+      "link": "https://content.govdelivery.com/accounts/USSSA/bulletins/42f1c1a"
+    },
+    {
+      "title": "ECB decides 29 Oct; deposit rate 2.50%",
+      "detail": "Seasonal topic (high, EUR), the feed's first euro story.",
+      "link": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+    },
+    {
+      "title": "Card debt is the busiest theme in niche Shorts",
+      "detail": "9 of this week's top 30; added an evergreen UK persistent-debt topic (FCA 18/36-month rules).",
+      "link": "https://www.fca.org.uk/publications/policy-statements/ps18-04-credit-card-market-study"
+    },
+    {
+      "title": "Our narrators are the lower-rated Kokoro voices",
+      "detail": "am_michael C+ narrated 5 of 9 recent Shorts; af_heart is A, bf_emma B-. Left to the owner's ear (notification).",
+      "link": "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md"
+    }
+  ],
+  "changes": [],
+  "nextCheck": "2026-10-21",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-20.md"
+    }
+  ]
+}
