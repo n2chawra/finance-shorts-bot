@@ -15,11 +15,11 @@
       "fix": "Only the owner handles uploads: in YouTube Studio, open that Short and either set it to Private/Unlisted or leave it up (the gap is a rounding and convention difference, not a wrong claim). Nothing to change in the repo."
     },
     {
-      "key": "claude-code-2-1-302-routine-banner",
+      "key": "narrator-voice-listen-test",
       "severity": "info",
-      "title": "Claude Code 2.1.302: a routine's page now says why its last run didn't start",
-      "detail": "If a video or agent run is ever missing, the routine's page on claude.ai/code shows a banner with the reason (for example the concurrent cloud session limit). With 04:07, 06:17 and 07:37 runs close together, check this first.",
-      "fix": "Nothing to do now. When a run is missing, open claude.ai/code → Routines → the routine and read the banner."
+      "title": "Optional: listen to two better-rated voices for the narrator",
+      "detail": "Kokoro's own grades: af_heart A, af_bella A-, bf_emma (British) B-, but am_michael, am_fenrir and am_puck only C+. am_michael narrated 5 of the last 9 Shorts. British bf_emma could suit the UK stories (pound videos). Voices are picked by your ear, so research hasn't proposed a change.",
+      "fix": "1. On your computer: bash scripts/setup-voice.sh, then make a short sample with bf_emma and am_michael (renderer/engine/voice.py speak_timed). 2. If you like bf_emma, ask the improver (or edit NARRATOR_VOICES in renderer/timeline/build.py) to add it, for example for GBP scripts only. 3. Otherwise ignore this."
     }
   ]
 }

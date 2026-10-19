@@ -171,6 +171,44 @@
       "status": "new",
       "route": "template",
       "priority": "high"
+    },
+    {
+      "id": "narrator-not-cast-voice",
+      "date": "2026-10-20",
+      "area": "sound",
+      "title": "The narrator never shares a voice with a cast member who speaks in the same video",
+      "change": "In generator/run.py where the narrator is set (next_narrator / the rotation at ~line 228), also give way when the narrator equals CAST_VOICES[s] for any beat speaker s in the script (renderer/timeline/build.py: sharma=am_fenrir, sikka=af_bella are also in NARRATOR_VOICES): pick the least recently used narrator that isn't one of those voices. Add a test: a script with a Sharma beat never gets am_fenrir as narrator. Optionally check_script fails a script whose explicit narrator clashes.",
+      "evidence": [
+        "videos/v-20261018-04/render.json and videos/L-20261018-01/render.json: narrator am_fenrir while Sharma (am_fenrir) also speaks, so the narrator and Sharma sound identical",
+        "renderer/timeline/build.py comment: 'each recurring character always speaks with the same voice, so viewers know them by ear'"
+      ],
+      "expectedEffect": "Viewers can tell the narrator from Sharma/Sikka by ear; removes a confusing moment in about 1 video in 4 that uses Sharma or Sikka.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "None; narrator choice only.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "reveal-beat-pause",
+      "date": "2026-10-20",
+      "area": "sound",
+      "title": "A short silence and a hit before the computed reveal (Shorts)",
+      "change": "Behind flag `reveal-pause` (Shorts, 50%): on the beat whose scene shows the story's main computed result (the writer marks it `reveal: true`, else the first beat after the midpoint with a count-up), add 0.35 story-seconds of silence before the line (LEAD + 0.35), duck the music bed to near zero in that gap, and place an sfx 'hit' on the count-up's landing event. No change to words or numbers.",
+      "evidence": [
+        "Our last 7 Shorts are voiced 86-90% of their runtime with 0.27-0.47 s between lines (render.json fills); there is no pause before any reveal",
+        "Explainer voiceover guides recommend pauses before key points and music ducked 6-12 dB under voice: https://voicebros.com/en/blog/explainer-video-voice-over-guide, https://skills.sh/1nfsh/s/explainer-video-guide"
+      ],
+      "expectedEffect": "The payoff number lands harder; might raise % viewed past the midpoint. Costs ~0.3 s of runtime.",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Slightly longer Shorts; a silence could read as a glitch if too long.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }
