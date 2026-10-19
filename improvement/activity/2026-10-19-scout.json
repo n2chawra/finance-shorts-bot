@@ -1,0 +1,45 @@
+{
+  "agent": "scout",
+  "day": "2026-10-19",
+  "startedAt": "2026-10-19T04:08:27Z",
+  "finishedAt": "2026-10-19T04:12:54Z",
+  "summary": "Added four global (USD) long-video topics to the feed, which had only India stories since the channel went global. Studied the first 30 seconds of long videos and routed three hook and retention findings plus one small wording bug.",
+  "decision": "acted",
+  "why": "The long feed had 0 global topics out of 7 usable, while India should be about 1 long video in 5. The week's fastest-growing niche long videos are about US credit cards (~13.4k views/h) and beginner investing (~4.4k/h).",
+  "findings": [
+    {
+      "title": "Promise the payoff by 30 seconds",
+      "detail": "The three-beat opening is example, stakes, roadmap. Our first long video ends its intro on 'Let's find out why' instead of a roadmap line.",
+      "link": "https://outlierkit.com/resources/youtube-hooks-and-retention/"
+    },
+    {
+      "title": "Open loops every 2-3 minutes, best moment at about two thirds",
+      "detail": "Tease the next chapter before it starts, and don't save the biggest reveal for the end.",
+      "link": "https://www.socialync.io/blog/open-loops-in-content-2026"
+    },
+    {
+      "title": "Credit-card minimums are this week's top niche subject",
+      "detail": "$5,000 at ~22% APR on minimums takes ~17 years and ~$11.6K, computed with card_min_due.",
+      "link": "https://www.cardrates.com/studies/credit-card-minimum-payment-statistics/"
+    }
+  ],
+  "changes": [
+    {
+      "title": "4 global long topics added",
+      "detail": "card-minimum-trap, 401k-match, savings-vs-inflation, invest-200-a-month. Repo-hike marked used; five India topics lowered from high to normal.",
+      "branch": "agent/scout/2026-10-19"
+    },
+    {
+      "title": "4 backlog items",
+      "detail": "promise-line-by-30s (adopt, high), chapter-tease (experiment), best-moment-two-thirds (adopt), card-maths-gst-wording (adopt, low).",
+      "branch": "agent/scout/2026-10-19"
+    }
+  ],
+  "nextCheck": "2026-10-20",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/longform/2026-10-19.md"
+    }
+  ]
+}

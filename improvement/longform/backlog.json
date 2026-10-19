@@ -99,6 +99,50 @@
       "priority": "normal",
       "found": "2026-10-18",
       "status": "open"
+    },
+    {
+      "id": "2026-10-19-promise-line-by-30s",
+      "kind": "craft",
+      "title": "Say the video's promise in one line between 20 and 30 seconds",
+      "detail": "Retention guides agree on three beats for the first 30 s: prove the title with one concrete example (0-10 s), say why it matters to the viewer (10-20 s), then a one-line roadmap of what they will know by the end (20-30 s), repeating the title's number if it has one. Our first long video (L-20261018-01) does the first two well (bank SMS, then the interest stake in beat 2) but beat 4 ends on 'Let's find out why', which promises nothing specific. Studio: make the 3rd-4th beat a promise line naming two or three things the viewer will know (e.g. 'how long, how much, and the one number on your statement that fixes it'). No greeting, no channel intro, no full table of contents. How we know: first-30-second retention in YouTube Studio once long videos have views; until then, check every long script has such a line before 30 s.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19-chapter-tease",
+      "kind": "craft",
+      "title": "End each chapter with a one-line tease of the next one (open loop)",
+      "detail": "Explainer retention advice: open a loop every 2-3 minutes by teasing the next part before it starts ('and that was the good year'), and close the main question only in the last fifth. Build it as a flag `long_chapter_tease`: in the variant, Studio writes a tease line as the last beat before each `chapter` beat, and the chapter card shows it as its subtitle for the first second. Control: chapters as now. Pairs with, but is separate from, the 2026-10-18 recap-card experiment (recap looks back, tease looks forward); don't run both in the same video. Decide on % viewed per long video with improvement.evaluate.",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19-best-moment-two-thirds",
+      "kind": "craft",
+      "title": "Put the biggest reveal about two thirds of the way in, not at the end",
+      "detail": "Saving the best figure for the finale loses the viewers who leave before it; guides put the best moment at about two thirds of the runtime and keep the end for the 'what to do' and recap. Studio: when ordering chapters, place the side-by-side or gap reveal (the video's biggest computed number) at 60-70% of the planned length. The four new 2026-10-19 topic outlines already mark where it goes. How we know: the reveal beat's start / duration_sec in render.json lands between 0.6 and 0.7.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-19-card-maths-gst-wording",
+      "kind": "bug",
+      "title": "card_min_due's docstring tells the writer the video mentions GST, wrong for US/UK cards",
+      "detail": "renderer/models/maths.py card_min_due says real cards 'add GST on interest and fees ... The video says so'. GST is Indian; since the channel went global (2026-10-18) a USD card story must not say GST. Improver: change the docstring to 'taxes or fees on interest where they apply (GST in India)' and, if long_story/README.md or short_story/README.md repeat the GST line for card stories, make it country-aware. How we know: no non-INR script mentions GST.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-19",
+      "status": "open"
     }
   ]
 }

@@ -1,12 +1,11 @@
 {
   "notifications": [
     {
-      "id": "2026-10-18-routine-env-pillow",
-      "severity": "low",
+      "key": "routine-env-pillow",
+      "severity": "warning",
       "title": "Agent cloud environment is missing the renderer's Python packages",
-      "detail": "In today's Scout session `python -m generator.run state --format long` crashed with `ModuleNotFoundError: No module named 'PIL'` until I ran `python -m pip install -r renderer/requirements.txt`. Scout works around it, but Studio and the video runs depend on the same command.",
-      "fix": "In claude.ai/code, open this repo's cloud environment settings and add `python -m pip install -q -r renderer/requirements.txt` to its setup script (or make sure the existing setup script runs it), then start a new session and check that `python -m generator.run state` runs.",
-      "found": "2026-10-18"
+      "detail": "Still true on 2026-10-19: in today's Scout session `python -m generator.run state --format long` crashed with `ModuleNotFoundError: No module named 'PIL'` until I ran `python -m pip install -r renderer/requirements.txt`. Scout works around it, but Studio and the video runs depend on the same command.",
+      "fix": "1. In claude.ai/code, open this repo's cloud environment settings. 2. Add `python -m pip install -q -r renderer/requirements.txt` to its setup script, or check that the existing setup script runs it. 3. Start a new session and check that `python -m generator.run state` runs."
     }
   ]
 }
