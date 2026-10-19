@@ -1,0 +1,32 @@
+{
+  "id": "v-20261019-04",
+  "createdAt": "2026-10-19T10:26:18.857623+00:00",
+  "status": "failed",
+  "failReason": "Trailer of L-20261019-01 blocked twice by the Shorts variety rule: category credit_card was used in the last 3 Shorts (v-20261019-02, Fed rate vs card APR). A trailer must keep the long video's topic, so it cannot be relabelled; it can be made once credit_card leaves the 3-Short window.",
+  "template": "short_story",
+  "topic": {
+    "title": "How long the minimum payment really keeps a $5,000 card balance alive",
+    "category": "credit_card"
+  },
+  "title": "Minimum payments on $5,000: count the years",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-10-19T10:26:07.884946+00:00",
+      "finishedAt": "2026-10-19T10:26:07.884946+00:00",
+      "notes": [
+        "topic category 'credit_card' was used in the last 3 videos"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-10-19T10:26:17.687078+00:00",
+      "finishedAt": "2026-10-19T10:26:17.687078+00:00",
+      "notes": [
+        "topic category 'credit_card' was used in the last 3 videos"
+      ]
+    }
+  ]
+}
