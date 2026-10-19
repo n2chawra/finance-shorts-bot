@@ -29,7 +29,7 @@
     {
       "day": "2026-10-19",
       "shipped": 4,
-      "failed": 0
+      "failed": 1
     }
   ],
   "videos": [
@@ -193,6 +193,13 @@
       "template": "long_story",
       "status": "shipped",
       "reason": null
+    },
+    {
+      "id": "v-20261019-04",
+      "day": "2026-10-19",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "Trailer of L-20261019-01 blocked twice by the Shorts variety rule: category credit_card was used in the last 3 Shorts (v-20261019-02, Fed rate vs card APR). A trailer must keep the long video's topic, so it cannot be relabelled; it can be made once credit_card leaves the 3-Short window."
     }
   ]
 }
