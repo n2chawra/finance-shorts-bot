@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "watchdog": "tsx watchdog.ts",
-    "data-audit": "tsx data-audit.ts"
+    "data-audit": "tsx data-audit.ts",
+    "set-settings": "tsx set-settings.ts"
   },
   "dependencies": {
     "@prisma/client": "6.19.3",

@@ -1,0 +1,41 @@
+# Owner-run: change dashboard settings without the Settings page (workers/set-settings.ts).
+#   gh workflow run set-settings.yml -f patch='{"uploadTimes": ["05:37", "12:37", "19:07", "23:37"]}'
+# The ingest run that follows writes the new values to config/settings.json for the routines.
+name: Set settings
+
+on:
+  workflow_dispatch:
+    inputs:
+      patch:
+        description: 'JSON of the settings to change, e.g. {"longUploadTimes": ["06:07"]}'
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: set-settings
+
+jobs:
+  set:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: workers
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      SETTINGS_PATCH: ${{ inputs.patch }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/package-lock.json
+      - run: npm ci
+      - run: npm run generate
+      - name: Set settings
+        shell: bash
+        run: npm run set-settings | tee -a "$GITHUB_STEP_SUMMARY"
