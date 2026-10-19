@@ -1,0 +1,2258 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "id": "L-20261019-02",
+  "seed": 51907,
+  "title": "Only paying the minimum on a $5,000 card? Here is the real cost",
+  "story": "trap_alert",
+  "feed_id": "2026-10-19-card-minimum-trap",
+  "currency": "USD",
+  "style": {
+    "palette": "forest",
+    "genre": "lofi",
+    "key": "F",
+    "bpm": 86
+  },
+  "thumbnail": {
+    "layout": "story",
+    "hero": "card",
+    "tag": "Minimum due",
+    "small": "{card_min_due}",
+    "to": "You pay",
+    "figure": "{card_total_paid}",
+    "who": "rohan",
+    "pose": "worried",
+    "expression": "shock",
+    "words": "Paying the minimum?",
+    "angle": "question"
+  },
+  "thumbnails": [
+    {
+      "layout": "story",
+      "hero": "card",
+      "tag": "Minimum due",
+      "small": "{card_min_due}",
+      "to": "You pay",
+      "figure": "{card_total_paid}",
+      "who": "rohan",
+      "pose": "worried",
+      "expression": "sad",
+      "words": "The minimum payment trap",
+      "angle": "warning"
+    },
+    {
+      "layout": "story",
+      "hero": "card",
+      "tag": "Fixed payment",
+      "small": "{fix_total_paid}",
+      "to": "Minimum only",
+      "figure": "{card_total_paid}",
+      "who": "sharma",
+      "pose": "think",
+      "expression": "smirk",
+      "words": "Minimum vs fixed payment",
+      "angle": "versus"
+    }
+  ],
+  "maths": [
+    {
+      "name": "card",
+      "kind": "card_min_due",
+      "amount": 5000,
+      "rate_pct_month": 1.85,
+      "min_due_pct": 3,
+      "min_due_floor": 25
+    },
+    {
+      "name": "fix",
+      "kind": "emi",
+      "amount": 5000,
+      "rate_pct": 22.2,
+      "years": 3
+    }
+  ],
+  "beats": [
+    {
+      "id": "open",
+      "scene": "bill",
+      "say": "Minimum due, {card_min_due}. Rohan pays it, on time, every month. Keep that up, and his balance of {card_amount} costs him {card_total_paid}.",
+      "chapter": "The minimum",
+      "camera": "drift",
+      "events": {
+        "pays": {
+          "word": "pays"
+        },
+        "cost": {
+          "word": "costs"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "beep",
+          "at": "start"
+        },
+        {
+          "kind": "ding",
+          "at": "pays"
+        },
+        {
+          "kind": "boom",
+          "at": "cost",
+          "gain": 0.8
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "place": "home",
+        "time": "night",
+        "weather": "rain",
+        "screen": [
+          {
+            "text": "Minimum due",
+            "at": "start"
+          },
+          {
+            "text": "{card_min_due}",
+            "at": "start"
+          }
+        ],
+        "lines": [
+          {
+            "text": "Balance {card_amount}"
+          },
+          {
+            "text": "Interest, every month"
+          },
+          {
+            "text": "Years of payments"
+          }
+        ],
+        "total": {
+          "label": "You really pay",
+          "text": "{card_total_paid}",
+          "at": "cost"
+        },
+        "acting": [
+          {
+            "sec": 0,
+            "pose": "phone",
+            "expression": "neutral",
+            "prop": "phone"
+          },
+          {
+            "at": "cost",
+            "pose": "worried",
+            "expression": "shock"
+          }
+        ]
+      }
+    },
+    {
+      "id": "never-miss",
+      "scene": "stage",
+      "say": "Wait. I never miss a payment. How can it cost that much?",
+      "speaker": "rohan",
+      "transition": "fade",
+      "camera": "punch:start",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused",
+                "turn": 0.2,
+                "bubble": {
+                  "icon": "?"
+                }
+              }
+            ],
+            "x": 0.42
+          }
+        ]
+      }
+    },
+    {
+      "id": "ratio",
+      "scene": "prop",
+      "say": "Because at that pace, every dinner and every gadget on this card ends up costing about {card_ratio} its price.",
+      "transition": "zoom",
+      "events": {
+        "r": {
+          "word": "costing"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "r"
+        }
+      ],
+      "params": {
+        "world": "shop",
+        "prop": "tag",
+        "text": "{card_ratio}",
+        "at": "r",
+        "kicker": "The real price tag",
+        "sub": "minimum only",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "worried",
+              "expression": "worried"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "millions",
+      "scene": "kinetic",
+      "say": "And he is far from alone. Millions of people do exactly this. The bill is paid, nothing is late, and it feels responsible.",
+      "transition": "slide",
+      "events": {
+        "resp": {
+          "word": "responsible"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "resp"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "city",
+        "city": "newyork",
+        "night": true,
+        "lines": [
+          {
+            "text": "Paid on time",
+            "at": "start"
+          },
+          {
+            "text": "Feels responsible",
+            "at": "resp"
+          }
+        ],
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "phone",
+              "prop": "phone",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "equation",
+      "say": "So in the next few minutes: how long the minimum really takes, how much it really costs, and the one line on your statement that fixes it.",
+      "transition": "wipe",
+      "events": {
+        "a": {
+          "word": "long"
+        },
+        "b": {
+          "word": "much"
+        },
+        "c": {
+          "word": "line"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "a"
+        },
+        {
+          "kind": "pop",
+          "at": "b"
+        },
+        {
+          "kind": "ding",
+          "at": "c"
+        }
+      ],
+      "params": {
+        "title": "By the end",
+        "ops": [
+          "+",
+          "+"
+        ],
+        "pattern": "dots",
+        "items": [
+          {
+            "icon": "clock",
+            "label": "How long",
+            "at": "a"
+          },
+          {
+            "icon": "cash",
+            "label": "How much",
+            "at": "b"
+          },
+          {
+            "icon": "card",
+            "label": "The fix",
+            "at": "c"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ch1",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Part one",
+        "title": "The treadmill"
+      }
+    },
+    {
+      "id": "treadmill",
+      "scene": "stage",
+      "say": "Paying the minimum is like running on a treadmill, Rohan. You work hard every month, and the belt keeps pulling you back.",
+      "speaker": "priya",
+      "transition": "fade",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "priya",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking",
+                "turn": 0.3
+              }
+            ],
+            "x": 0.3
+          },
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "confused",
+                "turn": -0.3
+              }
+            ],
+            "x": 0.68
+          }
+        ]
+      }
+    },
+    {
+      "id": "anvil",
+      "scene": "prop",
+      "say": "The belt is interest. His card charges {card_rate_month} a month on whatever he still owes.",
+      "transition": "zoom",
+      "camera": "punch:rate",
+      "events": {
+        "rate": {
+          "word": "charges"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "rate",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "world": "office",
+        "city": "newyork",
+        "prop": "anvil",
+        "text": "{card_rate_month}",
+        "at": "rate",
+        "kicker": "Interest, every month",
+        "sub": "on what is still owed",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "per-year",
+      "scene": "kinetic",
+      "say": "That sounds small. But over a year it adds up to {card_rate_year}. And because interest is charged on interest, it really works out to about {card_rate_effective}.",
+      "transition": "slide",
+      "events": {
+        "y": {
+          "word": "adds"
+        },
+        "e": {
+          "word": "works"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "y"
+        },
+        {
+          "kind": "pop-high",
+          "at": "e"
+        }
+      ],
+      "params": {
+        "mode": "type",
+        "lines": [
+          {
+            "text": "{card_rate_month} a month",
+            "at": "start"
+          },
+          {
+            "text": "{card_rate_year} a year",
+            "at": "y"
+          },
+          {
+            "text": "about {card_rate_effective} in practice",
+            "at": "e"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "hips",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "adds-up",
+      "scene": "stage",
+      "say": "Okay, but I pay {card_min_due} every single month. That has to add up to something.",
+      "speaker": "rohan",
+      "transition": "fade",
+      "params": {
+        "set": "home",
+        "chip": {
+          "text": "{card_min_due} a month",
+          "at": "start"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "thinking"
+              }
+            ],
+            "x": 0.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "how-min",
+      "scene": "statement",
+      "say": "Here is how that minimum is worked out. It is a small slice of the balance, {card_min_due_pct} on this card. Owed, {card_amount}. Minimum, {card_min_due}.",
+      "transition": "zoom",
+      "events": {
+        "total": {
+          "word": "Owed"
+        },
+        "min": {
+          "word": "Minimum"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "total"
+        },
+        {
+          "kind": "pop-high",
+          "at": "min"
+        }
+      ],
+      "params": {
+        "total": "{card_amount}",
+        "min": "{card_min_due}",
+        "totalAt": "total",
+        "minAt": "min",
+        "pick": "min",
+        "pickAt": "end"
+      }
+    },
+    {
+      "id": "bucket",
+      "scene": "prop",
+      "say": "So he pays. Then interest lands on everything that is left, and a big part of his payment simply leaks back out as next month's interest.",
+      "transition": "slide",
+      "events": {
+        "int": {
+          "word": "leaks"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.4
+        },
+        {
+          "kind": "fail",
+          "at": "int",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "world": "kitchen",
+        "prop": "bucket",
+        "level": 0.55,
+        "text": "{card_rate_month}",
+        "at": "int",
+        "kicker": "Leaking back out",
+        "sub": "every month"
+      }
+    },
+    {
+      "id": "shrinks",
+      "scene": "kinetic",
+      "say": "Now the sneaky part. As the balance shrinks, the minimum shrinks with it. His steps get smaller, right when he should be speeding up.",
+      "transition": "slide",
+      "events": {
+        "a": {
+          "word": "balance"
+        },
+        "b": {
+          "word": "minimum"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "a"
+        },
+        {
+          "kind": "fail",
+          "at": "b",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "street",
+        "night": true,
+        "lines": [
+          {
+            "text": "Smaller balance",
+            "at": "a"
+          },
+          {
+            "text": "Smaller minimum",
+            "at": "b"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "thinking"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "keep-in",
+      "scene": "stage",
+      "say": "The minimum is not built to get you out. It is built to keep you in.",
+      "speaker": "sharma",
+      "transition": "fade",
+      "camera": "push",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": 0.3
+              }
+            ],
+            "x": 0.34
+          },
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral",
+                "turn": -0.3
+              },
+              {
+                "sec": 1.6,
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ],
+            "x": 0.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch2",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Part two",
+        "title": "One year on"
+      }
+    },
+    {
+      "id": "year",
+      "scene": "calendar",
+      "say": "Twelve months go by. Rohan pays the minimum every single time. Never late, not once.",
+      "transition": "fade",
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "label": "One year",
+        "sub": "Every minimum paid",
+        "loops": 1
+      }
+    },
+    {
+      "id": "year-split",
+      "scene": "split",
+      "say": "By now, he has paid {card_paid_year1}. And he still owes {card_owed_year1}.",
+      "transition": "slide",
+      "camera": "punch:owed",
+      "events": {
+        "paid": {
+          "word": "paid"
+        },
+        "owed": {
+          "word": "owes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "paid"
+        },
+        {
+          "kind": "boom",
+          "at": "owed",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "left": {
+          "label": "Paid so far",
+          "text": "{card_paid_year1}",
+          "value": "@card.paid_year1",
+          "at": "paid"
+        },
+        "right": {
+          "label": "Still owed",
+          "text": "{card_owed_year1}",
+          "value": "@card.owed_year1",
+          "at": "owed"
+        }
+      }
+    },
+    {
+      "id": "still-owe",
+      "scene": "stage",
+      "say": "I paid all that, and I still owe that much?",
+      "speaker": "rohan",
+      "transition": "fade",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "sad",
+                "bubble": {
+                  "icon": "!"
+                }
+              }
+            ],
+            "x": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "vault",
+      "scene": "prop",
+      "say": "Because {card_interest_year1} of what he paid went straight to the bank as interest. Only the rest touched the actual debt.",
+      "transition": "zoom",
+      "events": {
+        "i": {
+          "word": "went"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "clink",
+          "at": "i"
+        }
+      ],
+      "params": {
+        "world": "street",
+        "prop": "vault",
+        "text": "{card_interest_year1}",
+        "value": "@card.interest_year1",
+        "at": "i",
+        "kicker": "Year one",
+        "sub": "went to interest"
+      }
+    },
+    {
+      "id": "good-year",
+      "scene": "stage",
+      "say": "And Rohan? That was the good year.",
+      "speaker": "priya",
+      "transition": "fade",
+      "camera": "push",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "priya",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "smirk",
+                "turn": 0.3
+              }
+            ],
+            "x": 0.36
+          },
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "shock",
+                "turn": -0.3
+              }
+            ],
+            "x": 0.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch3",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Part three",
+        "title": "The long road"
+      }
+    },
+    {
+      "id": "road",
+      "scene": "road",
+      "say": "From here, the road gets long. A new year, a new signpost, and the balance is still walking right beside him.",
+      "transition": "fade",
+      "events": {
+        "first": {
+          "word": "road"
+        },
+        "mid": {
+          "word": "signpost"
+        },
+        "end": {
+          "word": "balance"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "first"
+        },
+        {
+          "kind": "tick",
+          "at": "mid"
+        },
+        {
+          "kind": "tick",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "land": "snow",
+        "time": "dawn",
+        "weather": "snow",
+        "title": "Minimum only",
+        "expression": "worried",
+        "signs": [
+          {
+            "label": "Year one",
+            "text": "{card_owed_year1}",
+            "at": "first"
+          },
+          {
+            "label": "Still paying",
+            "at": "mid"
+          },
+          {
+            "label": "Still paying",
+            "at": "end"
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen",
+      "scene": "screen",
+      "say": "Here is the whole journey if he keeps paying only the minimum. Red is what he still owes. Green is everything he has paid.",
+      "transition": "fade",
+      "camera": "drift",
+      "events": {
+        "red": {
+          "word": "Red"
+        },
+        "green": {
+          "word": "Green"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "world": "office",
+        "city": "newyork",
+        "title": "Minimum only",
+        "series": "@card.balance",
+        "series2": "@card.paid",
+        "label1": "Still owed",
+        "label2": "Total paid",
+        "callouts": [
+          {
+            "x": 0.08,
+            "text": "Year one: {card_owed_year1}",
+            "at": "red"
+          }
+        ],
+        "pen": [
+          {
+            "kind": "underline",
+            "x": 0.55,
+            "y": 0.2,
+            "x2": 0.95,
+            "y2": 0.2,
+            "color": "good",
+            "at": "green"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "aim",
+              "prop": "pointer",
+              "expression": "thinking"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "flattens",
+      "scene": "chart",
+      "say": "Look how the red line flattens out. The smaller the balance, the smaller the minimum, so the last stretch drags on for years.",
+      "transition": "slide",
+      "camera": "drift",
+      "events": {
+        "drags": {
+          "word": "drags"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "drags"
+        }
+      ],
+      "params": {
+        "series": "@card.balance",
+        "ticks": "@card.ticks",
+        "xticks": "@card.years",
+        "xLabel": "Years of paying the minimum",
+        "label1": "Still owed",
+        "marks": [
+          {
+            "x": 120,
+            "text": "Still paying",
+            "at": "drags"
+          }
+        ]
+      }
+    },
+    {
+      "id": "months",
+      "scene": "calendar",
+      "say": "In total, it takes {card_months} monthly payments. That is about {card_years} years.",
+      "transition": "fade",
+      "events": {
+        "m": {
+          "word": "takes"
+        },
+        "y": {
+          "word": "about"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "m"
+        },
+        {
+          "kind": "boom",
+          "at": "y",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "loops": "@card.years",
+        "label": "{card_months} payments",
+        "labelAt": "m",
+        "sub": "about {card_years} years",
+        "subAt": "y"
+      }
+    },
+    {
+      "id": "longer-job",
+      "scene": "stage",
+      "say": "Years? I will be paying this off longer than I have been working!",
+      "speaker": "rohan",
+      "transition": "fade",
+      "camera": "punch:start",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "shock",
+                "bubble": {
+                  "text": "Years?!"
+                }
+              }
+            ],
+            "x": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "future",
+      "scene": "stage",
+      "say": "By the time this card is cleared, Rohan could change jobs, move cities, maybe start a family. And still be paying for this year's shopping.",
+      "transition": "slide",
+      "events": {
+        "jobs": {
+          "word": "jobs"
+        },
+        "cities": {
+          "word": "cities"
+        },
+        "family": {
+          "word": "family"
+        },
+        "still": {
+          "word": "still"
+        }
+      },
+      "params": {
+        "set": "store",
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy"
+              },
+              {
+                "at": "jobs",
+                "pose": "wave",
+                "expression": "happy",
+                "bubble": {
+                  "icon": "idea"
+                }
+              },
+              {
+                "at": "family",
+                "pose": "celebrate",
+                "expression": "laugh"
+              },
+              {
+                "at": "still",
+                "pose": "worried",
+                "expression": "sad",
+                "prop": "card"
+              }
+            ],
+            "x": 0.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "total",
+      "scene": "prop",
+      "say": "All in, he pays {card_total_paid} to clear {card_amount}. And {card_interest} of that is pure interest.",
+      "transition": "zoom",
+      "events": {
+        "cost": {
+          "word": "pays"
+        },
+        "int": {
+          "word": "pure"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "cost",
+          "gain": 0.8
+        },
+        {
+          "kind": "pop",
+          "at": "int"
+        }
+      ],
+      "params": {
+        "world": "street",
+        "night": true,
+        "prop": "receipt",
+        "text": "{card_total_paid}",
+        "value": "@card.total_paid",
+        "at": "cost",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "phone",
+              "prop": "phone",
+              "expression": "neutral"
+            },
+            {
+              "at": "cost",
+              "pose": "shrug",
+              "expression": "shock"
+            },
+            {
+              "at": "int",
+              "pose": "facepalm",
+              "expression": "sad"
+            }
+          ]
+        },
+        "kicker": "All in, with interest"
+      },
+      "camera": "drift"
+    },
+    {
+      "id": "best-customers",
+      "scene": "stage",
+      "say": "In my bank days, we had a name for people who paid only the minimum. Our best customers. They never complained, and they never left.",
+      "speaker": "sharma",
+      "transition": "fade",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "smirk",
+                "turn": 0.2
+              },
+              {
+                "sec": 2.5,
+                "pose": "shrug",
+                "expression": "laugh"
+              }
+            ],
+            "x": 0.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "kind-version",
+      "scene": "kinetic",
+      "say": "And our maths is the kind version. Real cards charge interest daily, on the balance before your payment lands. And keep using the card, and new purchases charge interest from day one.",
+      "transition": "slide",
+      "events": {
+        "g": {
+          "word": "daily"
+        },
+        "f": {
+          "word": "purchases"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "g"
+        },
+        {
+          "kind": "pop",
+          "at": "f"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "street",
+        "lines": [
+          {
+            "text": "Interest charged daily",
+            "at": "g"
+          },
+          {
+            "text": "New buys: interest from day one",
+            "at": "f"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "neutral"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "even-worse",
+      "scene": "stage",
+      "say": "So the real bill is even bigger?",
+      "speaker": "rohan",
+      "transition": "fade",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "neutral",
+                "turn": 0.3
+              }
+            ],
+            "x": 0.32
+          },
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried",
+                "turn": -0.3
+              }
+            ],
+            "x": 0.68
+          }
+        ]
+      }
+    },
+    {
+      "id": "one-rule",
+      "scene": "stage",
+      "say": "Usually, yes. So stop playing their game. Change one rule.",
+      "speaker": "sharma",
+      "transition": "cut",
+      "camera": "push",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "proud",
+                "turn": 0.3
+              }
+            ],
+            "x": 0.32
+          },
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "thinking",
+                "turn": -0.3
+              }
+            ],
+            "x": 0.68
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch4",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Part four",
+        "title": "One fixed payment"
+      }
+    },
+    {
+      "id": "same",
+      "scene": "stage",
+      "say": "Same card. Same {card_amount}. Same rate. One change. Instead of the minimum, Rohan picks one fixed payment, and never lets it shrink.",
+      "transition": "fade",
+      "events": {
+        "fixed": {
+          "word": "fixed"
+        }
+      },
+      "params": {
+        "set": "home",
+        "chip": {
+          "text": "Same {card_amount}",
+          "at": "start"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "fixed",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ],
+            "x": 0.42
+          }
+        ]
+      }
+    },
+    {
+      "id": "cheque",
+      "scene": "prop",
+      "say": "To clear the whole balance in three years, that payment is {fix_emi} a month.",
+      "transition": "zoom",
+      "camera": "punch:emi",
+      "events": {
+        "emi": {
+          "word": "is"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "emi"
+        }
+      ],
+      "params": {
+        "world": "office",
+        "city": "newyork",
+        "prop": "cheque",
+        "text": "{fix_emi}",
+        "value": "@fix.emi",
+        "at": "emi",
+        "kicker": "Fixed, every month",
+        "sub": "clears it in three years",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "vs-min",
+      "scene": "split",
+      "say": "His very first minimum was {card_min_due}. The fixed payment is {fix_emi}. A bigger step, but not a giant leap.",
+      "transition": "slide",
+      "events": {
+        "a": {
+          "word": "minimum"
+        },
+        "b": {
+          "word": "fixed"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "a"
+        },
+        {
+          "kind": "pop-high",
+          "at": "b"
+        }
+      ],
+      "params": {
+        "left": {
+          "label": "Fixed payment",
+          "text": "{fix_emi}",
+          "value": "@fix.emi",
+          "at": "b"
+        },
+        "right": {
+          "label": "First minimum",
+          "text": "{card_min_due}",
+          "value": "@card.first_min_due",
+          "at": "a"
+        }
+      }
+    },
+    {
+      "id": "can-find",
+      "scene": "stage",
+      "say": "That's it? I can find that.",
+      "speaker": "rohan",
+      "transition": "fade",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "happy",
+                "bubble": {
+                  "icon": "idea"
+                }
+              }
+            ],
+            "x": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "never-shrinks",
+      "scene": "stage",
+      "say": "The trick is that it never shrinks. Same big step on the treadmill every month, while the belt keeps slowing down.",
+      "speaker": "priya",
+      "transition": "cut",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "priya",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy",
+                "turn": 0.3
+              }
+            ],
+            "x": 0.32
+          },
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "happy",
+                "turn": -0.3
+              }
+            ],
+            "x": 0.68
+          }
+        ]
+      }
+    },
+    {
+      "id": "why-works",
+      "scene": "equation",
+      "say": "As the balance falls, interest has less to chew on. So more of every payment hits the debt, and the debt falls faster and faster.",
+      "transition": "slide",
+      "events": {
+        "a": {
+          "word": "balance"
+        },
+        "b": {
+          "word": "less"
+        },
+        "c": {
+          "word": "faster"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "a"
+        },
+        {
+          "kind": "pop",
+          "at": "b"
+        },
+        {
+          "kind": "ding",
+          "at": "c"
+        }
+      ],
+      "params": {
+        "title": "Why it speeds up",
+        "ops": [
+          "→",
+          "→"
+        ],
+        "pattern": "waves",
+        "items": [
+          {
+            "icon": "cash",
+            "label": "Same payment",
+            "at": "a"
+          },
+          {
+            "icon": "chartdown",
+            "label": "Less interest",
+            "at": "b"
+          },
+          {
+            "icon": "piggy",
+            "label": "Debt falls faster",
+            "at": "c"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "fix-cal",
+      "scene": "calendar",
+      "say": "{fix_months} payments. And then it is gone.",
+      "transition": "fade",
+      "events": {
+        "gone": {
+          "word": "gone"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "start"
+        },
+        {
+          "kind": "ding",
+          "at": "gone"
+        }
+      ],
+      "params": {
+        "loops": 3,
+        "label": "{fix_months} payments",
+        "sub": "then it is gone",
+        "subAt": "gone"
+      }
+    },
+    {
+      "id": "fork",
+      "scene": "fork",
+      "say": "Now the two roads, side by side. Minimum only: about {card_years} years, and {card_interest} in interest. The fixed payment: three years, and {fix_interest}.",
+      "transition": "zoom",
+      "camera": "drift",
+      "events": {
+        "min": {
+          "word": "Minimum"
+        },
+        "fixed": {
+          "word": "fixed"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "min",
+          "gain": 0.6
+        },
+        {
+          "kind": "ding",
+          "at": "fixed"
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "land": "fields",
+        "time": "dawn",
+        "weather": "leaves",
+        "pose": "think",
+        "expression": "thinking",
+        "short": {
+          "label": "Fixed payment",
+          "time": "{fix_months} months",
+          "cost": "{fix_interest}",
+          "at": "fixed"
+        },
+        "long": {
+          "label": "Minimum only",
+          "time": "{card_years} years",
+          "cost": "{card_interest}",
+          "at": "min"
+        }
+      }
+    },
+    {
+      "id": "totals",
+      "scene": "split",
+      "say": "Same debt, same rate. The minimum road costs {card_total_paid} in total. The fixed road, {fix_total_paid}.",
+      "transition": "slide",
+      "camera": "punch:b",
+      "events": {
+        "a": {
+          "word": "minimum"
+        },
+        "b": {
+          "word": "fixed"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "a",
+          "gain": 0.6
+        },
+        {
+          "kind": "kaching",
+          "at": "b"
+        }
+      ],
+      "params": {
+        "left": {
+          "label": "Fixed road",
+          "text": "{fix_total_paid}",
+          "value": "@fix.total_paid",
+          "at": "b"
+        },
+        "right": {
+          "label": "Minimum road",
+          "text": "{card_total_paid}",
+          "value": "@card.total_paid",
+          "at": "a"
+        }
+      }
+    },
+    {
+      "id": "why-nobody",
+      "scene": "stage",
+      "say": "Years sooner, and thousands less? Why did nobody tell me?",
+      "speaker": "rohan",
+      "transition": "fade",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "angry",
+                "turn": -0.2
+              }
+            ],
+            "x": 0.6
+          },
+          {
+            "who": "priya",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "smirk",
+                "turn": 0.3
+              }
+            ],
+            "x": 0.28
+          }
+        ]
+      }
+    },
+    {
+      "id": "someone-did",
+      "scene": "stage",
+      "say": "Somebody did. It is printed on your statement, every single month.",
+      "speaker": "priya",
+      "transition": "cut",
+      "camera": "push",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "priya",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "happy",
+                "turn": 0.3
+              }
+            ],
+            "x": 0.28
+          },
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "shock",
+                "turn": -0.2
+              }
+            ],
+            "x": 0.6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch5",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Part five",
+        "title": "The line that fixes it"
+      }
+    },
+    {
+      "id": "warning",
+      "scene": "source",
+      "say": "In the US, card statements carry a minimum payment warning. It shows how long you will be paying if you pay only the minimum, and what it will cost in total.",
+      "transition": "zoom",
+      "events": {
+        "long": {
+          "word": "long"
+        },
+        "cost": {
+          "word": "cost"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        },
+        {
+          "kind": "pop",
+          "at": "long"
+        },
+        {
+          "kind": "pop",
+          "at": "cost"
+        }
+      ],
+      "params": {
+        "publisher": "Your card statement",
+        "title": "Minimum Payment Warning",
+        "world": "kitchen",
+        "lines": [
+          {
+            "text": "If you make only the minimum payment each period,",
+            "at": "start"
+          },
+          {
+            "text": "you will pay more in interest",
+            "highlight": true,
+            "at": "cost"
+          },
+          {
+            "text": "and it will take you longer to pay off your balance.",
+            "underline": true,
+            "at": "long"
+          }
+        ],
+        "pen": [
+          {
+            "kind": "circle",
+            "x": 0.5,
+            "y": 0.62,
+            "r": 0.18,
+            "at": "cost"
+          }
+        ]
+      }
+    },
+    {
+      "id": "receipt",
+      "scene": "prop",
+      "say": "For a balance like this one, there is a second line. The monthly payment that clears it in three years, and what that would cost.",
+      "transition": "slide",
+      "events": {
+        "line": {
+          "word": "balance"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "line"
+        }
+      ],
+      "params": {
+        "world": "kitchen",
+        "prop": "receipt",
+        "text": "{fix_emi}",
+        "at": "line",
+        "kicker": "Pay off in three years",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "aim",
+              "prop": "pointer",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "did-maths",
+      "scene": "stage",
+      "say": "That number is the fix. No calculator needed. The card company has already done the maths for you.",
+      "speaker": "priya",
+      "transition": "fade",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "priya",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "proud",
+                "turn": 0.3
+              }
+            ],
+            "x": 0.36
+          },
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "thinking",
+                "turn": -0.3
+              }
+            ],
+            "x": 0.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "found-it",
+      "scene": "stage",
+      "say": "Found it. It has been sitting there every month.",
+      "speaker": "rohan",
+      "transition": "cut",
+      "camera": "push",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "shock"
+              },
+              {
+                "sec": 1.2,
+                "pose": "facepalm",
+                "expression": "laugh"
+              }
+            ],
+            "x": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch6",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Part six",
+        "title": "What Rohan does"
+      }
+    },
+    {
+      "id": "step1",
+      "scene": "checklist",
+      "say": "One. Find the three year payment on the statement, and set autopay for that amount. Not the minimum.",
+      "speaker": "priya",
+      "transition": "slide",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "",
+        "items": [
+          {
+            "text": "Autopay the three year amount",
+            "icon": "autopay"
+          },
+          {
+            "text": "No new spending on this card",
+            "icon": "debit"
+          },
+          {
+            "text": "Extra in a good month",
+            "icon": "check"
+          }
+        ],
+        "active": 0,
+        "actor": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy",
+              "turn": -0.3
+            }
+          ],
+          "x": 0.84,
+          "scale": 1.15
+        }
+      }
+    },
+    {
+      "id": "step2",
+      "scene": "checklist",
+      "say": "Two. Stop adding new spending to this card while he clears it. Otherwise the belt speeds up again.",
+      "speaker": "priya",
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "",
+        "items": [
+          {
+            "text": "Autopay the three year amount",
+            "icon": "autopay"
+          },
+          {
+            "text": "No new spending on this card",
+            "icon": "debit"
+          },
+          {
+            "text": "Extra in a good month",
+            "icon": "check"
+          }
+        ],
+        "active": 1,
+        "actor": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "thinking",
+              "turn": 0.3
+            }
+          ],
+          "x": 0.78,
+          "scale": 1.15
+        }
+      }
+    },
+    {
+      "id": "step3",
+      "scene": "checklist",
+      "say": "Three. In a good month, pay a little extra. Every extra dollar goes straight at the balance.",
+      "speaker": "priya",
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "",
+        "items": [
+          {
+            "text": "Autopay the three year amount",
+            "icon": "autopay"
+          },
+          {
+            "text": "No new spending on this card",
+            "icon": "debit"
+          },
+          {
+            "text": "Extra in a good month",
+            "icon": "check"
+          }
+        ],
+        "active": 2,
+        "actor": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "thumbsUp",
+              "expression": "happy",
+              "turn": -0.3
+            }
+          ],
+          "x": 0.84,
+          "scale": 1.15
+        }
+      }
+    },
+    {
+      "id": "catch",
+      "scene": "kinetic",
+      "say": "One honest catch. If even that payment does not fit the budget, keep paying at least the minimum. A missed payment brings late fees, and can push the rate even higher.",
+      "transition": "slide",
+      "events": {
+        "a": {
+          "word": "least"
+        },
+        "b": {
+          "word": "missed"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "a"
+        },
+        {
+          "kind": "fail",
+          "at": "b",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "office",
+        "city": "newyork",
+        "lines": [
+          {
+            "text": "Never skip the minimum",
+            "at": "a"
+          },
+          {
+            "text": "Missed payment: fees, higher rate",
+            "at": "b"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "pointUp",
+              "expression": "neutral"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ask",
+      "scene": "stage",
+      "say": "And then pick up the phone. Ask the card company for a lower rate or a payment plan. Asking costs nothing.",
+      "speaker": "sharma",
+      "transition": "fade",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "smirk"
+              },
+              {
+                "sec": 3,
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ],
+            "x": 0.42
+          }
+        ]
+      }
+    },
+    {
+      "id": "recap",
+      "scene": "equation",
+      "say": "So, two roads. Minimum only: about {card_years} years and {card_total_paid}. One fixed payment: {fix_months} months and {fix_total_paid}.",
+      "transition": "fade",
+      "camera": "drift",
+      "events": {
+        "a": {
+          "word": "Minimum"
+        },
+        "b": {
+          "word": "fixed"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "a"
+        },
+        {
+          "kind": "ding",
+          "at": "b"
+        }
+      ],
+      "params": {
+        "title": "Same card, two roads",
+        "ops": [
+          "vs"
+        ],
+        "pattern": "rays",
+        "items": [
+          {
+            "icon": "clock",
+            "label": "Minimum only",
+            "text": "{card_total_paid}",
+            "at": "a"
+          },
+          {
+            "icon": "piggy",
+            "label": "Fixed payment",
+            "text": "{fix_total_paid}",
+            "at": "b"
+          }
+        ],
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "think",
+              "expression": "thinking"
+            },
+            {
+              "at": "b",
+              "pose": "thumbsUp",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "autopay",
+      "scene": "stage",
+      "say": "Autopay set. Fixed payment, not the minimum. And for the first time, this card has a finish line.",
+      "speaker": "rohan",
+      "transition": "fade",
+      "events": {
+        "set": {
+          "word": "set"
+        },
+        "finish": {
+          "word": "finish"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "set"
+        },
+        {
+          "kind": "kaching",
+          "at": "finish"
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "happy"
+              },
+              {
+                "at": "finish",
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ],
+            "x": 0.4
+          }
+        ],
+        "sikka": {
+          "x": 0.72,
+          "at": "finish",
+          "expression": "happy",
+          "cheer": true
+        }
+      }
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "say": "Our maths is simplified, so real cards usually cost a bit more. Follow the panchayat for one money question, settled with real maths.",
+      "transition": "fade",
+      "params": {
+        "cta": "On a US card? Find the three year line",
+        "follow": "Follow Paisa Panchayat",
+        "assumption": "Assumes {card_rate_year} a year charged monthly, a minimum of {card_min_due_pct} of the balance and no new spending. Real card formulas and fees differ."
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}

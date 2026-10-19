@@ -1,0 +1,122 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-19T16:08:07.744819+00:00",
+    "finishedAt": "2026-10-19T16:08:07.744819+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T16:08:09.659122+00:00",
+    "finishedAt": "2026-10-19T16:08:09.659122+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T16:09:18.393925+00:00",
+    "finishedAt": "2026-10-19T16:09:18.393925+00:00",
+    "notes": [
+      "No sourced facts; verify list checked: 22.2% APR assumption matches Fed G.19 (Q2 2026 22.15%, Aug 2026 22.36% accounts assessed interest); Reg Z 1026.7(b)(12) confirms the Minimum Payment Warning wording, payoff time/total cost and the 36-month payment line (required here since minimum payoff exceeds 3 years); CFPB 2025 CARD Act report: 15% of cardholders made only minimum payments in 2024, highest since 2015, supports 'millions'; issuer formulas differ is stated on the end card. Daily interest, lost grace period, late fees/penalty APR claims correct for US; framed as Rohan's plan, no products named, description ends with disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T16:08:29.219058+00:00",
+    "finishedAt": "2026-10-19T16:29:02.775000+00:00",
+    "notes": [
+      "277 s, forest/lofi, peak -1.0 dB, mean -17.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-19T16:30:56.389903+00:00",
+    "finishedAt": "2026-10-19T16:30:56.389903+00:00",
+    "notes": [
+      "[scene] PropScene (remotion/src/scenes/world.tsx, prop=receipt): the sub caption is drawn at A.y+A.h-170 right on top of the receipt's big figure. Beat 'total' (126.7-134.2 s): from ~128.5 s to the end of the beat '$6,638 of it interest' covers the $11,638 total, only the top edge of the digits peeks out; the beat's key number is unreadable. Same bug in beat 'receipt' (219.1-224.0 s): from ~222 s 'the second line' hides the $191 payment, so the payment is never readable on that beat.",
+      "[scene] PropScene receipt count-up shows a bare '$0' (beat 'receipt' 219.1-~221.5 s, frames 219.5/220/220.8 s) before the value lands on 'second'; reads as a broken number, and the real value is then covered by the caption, so $0 is the only figure the viewer sees on this beat.",
+      "[scene] ChecklistScene (remotion/src/scenes/stage.tsx), beats step1/step2/step3 (232.5-244.8 s, frames 235/240/245 s): the title 'Off the treadmill' sits at the top-left corner on top of the channel coin badge; the coin overlaps the 'O'. Title needs to clear the badge.",
+      "[scene] SplitScene colours fixed by side, against meaning: beat 'totals' (196.8-203.7 s) shows the bad 'Minimum road $11,638' in green and the good 'Fixed road $6,893' in red; beat 'vs-min' (166.2-172.3 s) shows the fixed payment $191 in red. The screen/chart beats use red = still owed, so the colours contradict the story."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T16:31:36.064503+00:00",
+    "finishedAt": "2026-10-19T16:31:36.064503+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T16:31:52.864750+00:00",
+    "finishedAt": "2026-10-19T16:50:10.800669+00:00",
+    "notes": [
+      "277 s, forest/lofi, peak -1.0 dB, mean -17.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-19T16:51:16.231469+00:00",
+    "finishedAt": "2026-10-19T16:51:16.231469+00:00",
+    "notes": [
+      "[script] Beat step2 (236.8-240.7 s, frames 237.5-240.5 s): Priya (actor x 0.84, scale 1.15, pose 'point', turn -0.3) points to the right, away from the checklist, and her fist is clipped by the right frame edge (her arm reaches pixel column 1919 in every frame of the beat). Move her in (x about 0.78) or use a pose that points left at the list, like step1's 'present'. I missed this in the first review; it was there in the earlier render too."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T16:51:35.396753+00:00",
+    "finishedAt": "2026-10-19T16:51:35.396753+00:00",
+    "notes": [
+      "20 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T16:51:36.341119+00:00",
+    "finishedAt": "2026-10-19T17:09:40.179841+00:00",
+    "notes": [
+      "277 s, forest/lofi, peak -1.0 dB, mean -17.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T17:10:17.456327+00:00",
+    "finishedAt": "2026-10-19T17:10:17.456327+00:00",
+    "notes": [
+      "Re-render 3: step2 (236.8-240.7 s) Priya now points left at the checklist, hand well inside frame; earlier fixes hold (receipt figures readable at total/receipt, split sides green=better, no checklist title over badge); hook, disclaimer, thumbnail, layout/liveliness/audio all fine."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-19T17:10:38.094550+00:00",
+    "finishedAt": "2026-10-19T17:10:38.094550+00:00",
+    "notes": [
+      "Manifest written; release asset uploaded."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-19T17:10:51.372065+00:00",
+    "finishedAt": "2026-10-19T17:10:51.372065+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
