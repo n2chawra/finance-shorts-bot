@@ -1,0 +1,393 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261020-01",
+ "seed": 60731,
+ "story": "rule_change",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "pop",
+  "key": "E",
+  "bpm": 112
+ },
+ "feed_id": "2026-10-20-ssa-cola-2027",
+ "facts": [
+  {
+   "label": "Social Security cost-of-living adjustment for 2027",
+   "value": 3.6,
+   "unit": "percent",
+   "currency": "USD",
+   "as_of": "2026-10-14",
+   "source": "Social Security Administration",
+   "url": "https://content.govdelivery.com/accounts/USSSA/bulletins/42f1c1a"
+  },
+  {
+   "label": "Average rise in a Social Security retirement benefit, a month",
+   "value": 75,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2026-10-14",
+   "source": "Social Security Administration",
+   "url": "https://content.govdelivery.com/accounts/USSSA/bulletins/42f1c1a"
+  }
+ ],
+ "maths": [
+  {
+   "name": "cola",
+   "kind": "lumpsum",
+   "amount": 24000,
+   "rate_pct": 3.6,
+   "years": 1
+  }
+ ],
+ "thumbnail": {
+  "layout": "story",
+  "hero": "cash",
+  "tag": "Each check",
+  "small": "{fact1}",
+  "to": "A year adds",
+  "figure": "{cola_gains}",
+  "who": "sharma",
+  "pose": "think",
+  "expression": "smirk",
+  "words": "Social Security raise",
+  "angle": "number"
+ },
+ "thumbnails": [
+  {
+   "layout": "story",
+   "hero": "cash",
+   "tag": "Raise",
+   "small": "{fact1}",
+   "to": "Per month, average",
+   "figure": "{fact2}",
+   "who": "rohan",
+   "pose": "think",
+   "expression": "confused",
+   "words": "Who sets the raise?",
+   "angle": "question"
+  },
+  {
+   "layout": "story",
+   "hero": "cash",
+   "tag": "A year of checks",
+   "small": "{cola_amount}",
+   "to": "Next year",
+   "figure": "{cola_final}",
+   "who": "priya",
+   "pose": "present",
+   "expression": "happy",
+   "words": "Your bigger check",
+   "angle": "reaction"
+  }
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "prop",
+   "camera": "punch:who",
+   "say": "Social Security checks go up {fact1} in January. So who picks that number?",
+   "events": {
+    "fig": {
+     "word": "up"
+    },
+    "who": {
+     "word": "who"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "fig",
+     "gain": 0.7
+    },
+    {
+     "kind": "pop-high",
+     "at": "who"
+    }
+   ],
+   "params": {
+    "world": "street",
+    "prop": "cheque",
+    "text": "{fact1}",
+    "at": "start",
+    "kicker": "Social Security raise",
+    "sub": "bigger checks from January",
+    "presenter": {
+     "who": "sharma",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "prop": "letter",
+       "expression": "happy"
+      },
+      {
+       "at": "who",
+       "pose": "shrug",
+       "expression": "confused",
+       "bubble": {
+        "icon": "?"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "headline",
+   "scene": "headline",
+   "transition": "whip",
+   "camera": "push",
+   "say": "Nobody does. A formula in the law sets it, and the agency just announced the result.",
+   "events": {
+    "fig": {
+     "word": "formula"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fig"
+    }
+   ],
+   "params": {
+    "kicker": "NEWS",
+    "title": "Set by a formula",
+    "figure": "{fact1}",
+    "figureAt": "fig",
+    "label": "more in each check"
+   }
+  },
+  {
+   "id": "source",
+   "scene": "source",
+   "transition": "zoom",
+   "camera": "drift",
+   "say": "It follows a price index for wage earners, July to September, against the same months a year before.",
+   "events": {
+    "idx": {
+     "word": "index"
+    },
+    "months": {
+     "word": "against"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "idx"
+    },
+    {
+     "kind": "ding",
+     "at": "months"
+    }
+   ],
+   "params": {
+    "publisher": "Social Security Administration",
+    "title": "Cost-of-living adjustment",
+    "world": "office",
+    "lines": [
+     {
+      "text": "Tied to prices for wage earners",
+      "at": "idx",
+      "underline": true
+     },
+     {
+      "text": "July to September, year on year",
+      "at": "months"
+     },
+     {
+      "text": "Next year's adjustment: {fact1}",
+      "highlight": true,
+      "at": "months"
+     }
+    ],
+    "pen": [
+     {
+      "kind": "circle",
+      "x": 0.6,
+      "y": 0.75,
+      "r": 0.16,
+      "at": "months",
+      "color": "accent"
+     }
+    ],
+    "presenter": {
+     "who": "priya",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "aimUp",
+       "prop": "pointerUp",
+       "expression": "smirk"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "rohan",
+   "scene": "stage",
+   "speaker": "rohan",
+   "transition": "slide-up",
+   "say": "Okay. But what does that mean for my grandma's check?",
+   "events": {
+    "gran": {
+     "word": "grandma's"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "thinking"
+       },
+       {
+        "at": "gran",
+        "pose": "shrug",
+        "expression": "confused",
+        "bubble": {
+         "icon": "?"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "year",
+   "scene": "prop",
+   "transition": "zoom",
+   "camera": "punch:all",
+   "say": "Say her checks add up to {cola_amount} a year. The raise adds {cola_gains}, for {cola_final} in all.",
+   "events": {
+    "checks": {
+     "word": "checks"
+    },
+    "raise": {
+     "word": "raise"
+    },
+    "all": {
+     "word": "all"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "checks"
+    },
+    {
+     "kind": "pop-high",
+     "at": "raise"
+    },
+    {
+     "kind": "kaching",
+     "at": "all"
+    }
+   ],
+   "params": {
+    "world": "kitchen",
+    "prop": "receipt",
+    "text": "{cola_final}",
+    "at": "checks",
+    "kicker": "A year of checks, next year",
+    "presenter": {
+     "who": "sharma",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "think",
+       "expression": "thinking"
+      },
+      {
+       "at": "all",
+       "pose": "thumbsUp",
+       "expression": "happy"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "average",
+   "scene": "prop",
+   "transition": "slide",
+   "camera": "drift",
+   "say": "For the average retirement check, the agency puts the raise at about {fact2} a month.",
+   "events": {
+    "avg": {
+     "word": "about"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "clink",
+     "at": "avg"
+    }
+   ],
+   "params": {
+    "world": "office",
+    "prop": "calendar",
+    "text": "{fact2}",
+    "at": "avg",
+    "kicker": "Average retirement check",
+    "sub": "more each month",
+    "presenter": {
+     "who": "priya",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "happy"
+      }
+     ]
+    },
+    "city": "newyork"
+   }
+  },
+  {
+   "id": "lesson",
+   "scene": "kinetic",
+   "transition": "slide-up",
+   "say": "It is not a bonus. It is there so the same check can keep buying the same groceries.",
+   "events": {
+    "same": {
+     "word": "same"
+    }
+   },
+   "params": {
+    "mode": "type",
+    "lines": [
+     {
+      "text": "Not a bonus"
+     },
+     {
+      "text": "Keeping up with prices"
+     }
+    ]
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "So, what will your raise cover?",
+   "params": {
+    "cta": "Tell us what your raise covers",
+    "follow": "Follow for one money question, settled",
+    "assumption": "Assumes {cola_amount} a year in benefits, raised by next year's adjustment of {fact1}."
+   }
+  }
+ ],
+ "narrator": "am_fenrir"
+}

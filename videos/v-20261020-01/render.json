@@ -1,0 +1,108 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 60731,
+  "duration_sec": 41,
+  "tempo": 1.0,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "E",
+    "bpm": 112
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.3,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Social Security checks go up 3.6% in January. So who picks that number?",
+        "start": 0.27,
+        "seconds": 4.82,
+        "window": 5.43,
+        "fill": 0.888
+      },
+      {
+        "scene": "headline",
+        "text": "Nobody does. A formula in the law sets it, and the agency just announced the result.",
+        "start": 5.7,
+        "seconds": 4.35,
+        "window": 4.97,
+        "fill": 0.875
+      },
+      {
+        "scene": "source",
+        "text": "It follows a price index for wage earners, July to September, against the same months a year before.",
+        "start": 10.67,
+        "seconds": 5.23,
+        "window": 5.83,
+        "fill": 0.897
+      },
+      {
+        "scene": "rohan",
+        "text": "Okay. But what does that mean for my grandma's check?",
+        "start": 16.5,
+        "seconds": 2.27,
+        "window": 2.77,
+        "fill": 0.819
+      },
+      {
+        "scene": "year",
+        "text": "Say her checks add up to $24,000 a year. The raise adds $864, for $24,864 in all.",
+        "start": 19.27,
+        "seconds": 8.5,
+        "window": 9.1,
+        "fill": 0.934
+      },
+      {
+        "scene": "average",
+        "text": "For the average retirement check, the agency puts the raise at about $75 a month.",
+        "start": 28.37,
+        "seconds": 4.64,
+        "window": 5.17,
+        "fill": 0.897
+      },
+      {
+        "scene": "lesson",
+        "text": "It is not a bonus. It is there so the same check can keep buying the same groceries.",
+        "start": 33.53,
+        "seconds": 4.37,
+        "window": 5.0,
+        "fill": 0.874
+      },
+      {
+        "scene": "outro",
+        "text": "So, what will your raise cover?",
+        "start": 38.53,
+        "seconds": 1.18,
+        "window": 1.77,
+        "fill": 0.667
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.4
+  },
+  "liveliness": {
+    "median": 2.302,
+    "still_share": 0.048,
+    "longest_still_sec": 2.0
+  },
+  "liveliness_problems": []
+}

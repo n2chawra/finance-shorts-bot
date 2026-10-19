@@ -1,0 +1,150 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-19T22:40:45.572984+00:00",
+    "finishedAt": "2026-10-19T22:40:45.572984+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T22:41:47.598899+00:00",
+    "finishedAt": "2026-10-19T22:41:47.598899+00:00",
+    "notes": [
+      "title mentions '2027,', which is neither a script input nor a computed figure",
+      "description mentions '2027', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-19T22:41:53.988039+00:00",
+    "finishedAt": "2026-10-19T22:41:53.988039+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T22:41:54.883947+00:00",
+    "finishedAt": "2026-10-19T22:41:54.883947+00:00",
+    "notes": [
+      "9 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T22:42:49.892515+00:00",
+    "finishedAt": "2026-10-19T22:42:49.892515+00:00",
+    "notes": [
+      "Both facts confirmed on the SSA bulletin (content.govdelivery.com/accounts/USSSA/bulletins/42f1c1a, 14 Oct 2026): 3.6% COLA for 2027 from January, average retirement benefit +$75/month; CPI-W basis (Q3 vs prior Q3) and formula-in-law claims correct; $24,000/yr example realistic and labelled as an assumption; no advice on claiming; disclaimer present. Note: the yearly figures are gross, before any Medicare Part B premium change."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T22:43:06.150412+00:00",
+    "finishedAt": "2026-10-19T22:45:59.607284+00:00",
+    "notes": [
+      "40 s, ember/pop, peak -1.0 dB, mean -17.0 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-19T23:04:18.147686+00:00",
+    "finishedAt": "2026-10-19T23:04:18.147686+00:00",
+    "notes": [
+      "[scene] equation scene, beat 'year' (camera punch:raise), 20.0s-27s: the '$24,000 this year' value runs off the right edge; at 25.0s the last '0' is clipped at x=1080 and the text sits inside the right-edge Shorts button zone. The items column is placed too far right (worse under the punch zoom); layout probe did not catch it.",
+      "[scene] headline scene, beat 'hook', 0.0s: the very first frame is background only (no NEWS tag, no 3.6%, no title); the figure fades in by ~0.1s despite figureAt 'start', so the first frame has no hook. Start the figure fully visible on frame 0."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:04:53.268875+00:00",
+    "finishedAt": "2026-10-19T23:04:53.268875+00:00",
+    "notes": [
+      "9 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:04:58.417502+00:00",
+    "finishedAt": "2026-10-19T23:04:58.417502+00:00",
+    "notes": [
+      "9 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:05:22.818543+00:00",
+    "finishedAt": "2026-10-19T23:05:22.818543+00:00",
+    "notes": [
+      "Re-review after QA scene changes: hook (prop, 3.6% from January), headline (COLA set by a formula in law), source (CPI-W wage-earner index, Jul-Sep vs same months a year before, 3.6%) and year (prop stack $24,864 = $864 more than $24,000) all accurate; facts unchanged and confirmed on SSA bulletin 42f1c1a (14 Oct 2026: 3.6%, avg +$75/month); disclaimer present. Note: yearly figures are gross of any Medicare Part B premium change."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:05:35.118493+00:00",
+    "finishedAt": "2026-10-19T23:08:05.000828+00:00",
+    "notes": [
+      "41 s, ember/pop, peak -1.0 dB, mean -17.4 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-19T23:08:41.976700+00:00",
+    "finishedAt": "2026-10-19T23:08:41.976700+00:00",
+    "notes": [
+      "[scene] prop scene (prop 'stack'), beat 'year', 19.3s-28.3s: the cash stack is drawn over the kicker, so 'A year of checks, next year' reads only 'A y... ...ar' for the whole beat (overlap).",
+      "[scene] prop scene (prop 'stack' with value '@cola.final'), beat 'year', 19.6s-27s: the counter shows a broken '$0' at the very top edge of the frame, faint and partly behind the stack, while the voice says $24,000 and $864; the 'sub' line ($864 more than $24,000) never appears.",
+      "[script] beat 'year', 27.5s-28.3s: the count-up starts only on the event 'all' (the last word), so it is still mid-count ($3,808 at 27.8s) when the slide transition starts; $24,864 is never shown readable. Trigger the reveal earlier (e.g. on 'checks') or change the scene for this beat."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:08:58.933798+00:00",
+    "finishedAt": "2026-10-19T23:08:58.933798+00:00",
+    "notes": [
+      "9 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:08:59.891447+00:00",
+    "finishedAt": "2026-10-19T23:11:18.866973+00:00",
+    "notes": [
+      "41 s, ember/pop, peak -1.0 dB, mean -17.4 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:11:43.494177+00:00",
+    "finishedAt": "2026-10-19T23:11:43.494177+00:00",
+    "notes": [
+      "41s; hook frame 0 shows 3.6% cheque; year beat receipt shows $24,864 clearly from 'checks' with kicker readable; no overlaps/cut-offs/empty frames; disclaimer on end card; audio -1.0/-17.4 dB; thumbnail clean ($864)."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:11:53.294233+00:00",
+    "finishedAt": "2026-10-19T23:11:53.294233+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
