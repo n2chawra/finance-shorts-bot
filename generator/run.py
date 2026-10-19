@@ -187,7 +187,7 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
                                       variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
         if not 20 <= len(plan["title"]) <= 90:
             problems.append("title must be 20–90 characters")
-        if "#shorts" not in [h.lower() for h in plan["hashtags"]]:
+        if fmt == "short" and "#shorts" not in [h.lower() for h in plan["hashtags"]]:
             problems.append("hashtags must include #Shorts")
         # global since 2026-10-18: every plan names its money (channel/profile.md)
         if plan.get("currency") not in CURRENCIES:
