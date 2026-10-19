@@ -65,8 +65,13 @@ async function main(): Promise<void> {
           }),
         ]);
         rows += days.length;
-        // the retention curve and the hook score from it (empty until YouTube has enough views)
-        const curve = await retentionCurve(token, u.youtubeId!, start, yesterday);
+        // the retention curve and the hook score from it (empty until YouTube has enough views). YouTube
+        // answers some videos' curve with "Internal error" (seen 2026-10-19): that video simply has no
+        // hook score this run; it never fails the daily numbers above
+        const curve = await retentionCurve(token, u.youtubeId!, start, yesterday).catch((e: unknown) => {
+          console.log(`no retention curve for ${u.videoId}: ${e instanceof Error ? e.message : e}`);
+          return [] as [number, number][];
+        });
         const format = u.video.format === "long" ? "long" : "short";
         await prisma.upload.update({ where: { id: u.id }, data: {
           retention: curve.length ? curve : Prisma.DbNull, hookHold: hookHold(curve, u.video.durationSec, format), retentionAt: new Date(),
