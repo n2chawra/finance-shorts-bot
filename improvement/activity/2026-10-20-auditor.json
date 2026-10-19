@@ -1,0 +1,37 @@
+{
+  "agent": "auditor",
+  "day": "2026-10-20",
+  "startedAt": "2026-10-19T17:37:17Z",
+  "finishedAt": "2026-10-19T17:43:13Z",
+  "summary": "Fixed the dashboard's per-video 'Avg viewed', which averaged daily rows without weighting by views and so disagreed with the agents' metrics. The data audit had not run tonight, so the data check was skipped.",
+  "decision": "acted",
+  "why": "A 1,000-view day at 60% and a 10-view day at 20% showed 40% instead of 59.6%; two new tests failed on the old code and pass now (65/65 worker tests). metrics/data-audit.json is 22 h old: no data-audit run since 18 Oct.",
+  "findings": [
+    {
+      "title": "Avg viewed was an unweighted mean",
+      "detail": "Dashboard video totals weighed every day equally; agents-sync weights by views. Fixed."
+    },
+    {
+      "title": "Data audit didn't run tonight",
+      "detail": "Last file 2026-10-18T19:07Z; no run from the new 18:37 IST cron. Owner fix in Notifications."
+    },
+    {
+      "title": "Videos list takes 300 unordered rows",
+      "detail": "Harmless until 300 videos; in the backlog (dsh-002)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "View-weighted average % viewed",
+      "detail": "apps/dashboard/src/lib/totals.ts (pure, used by store.db.ts); test workers/tests/dashboard-totals.test.ts.",
+      "branch": "agent/auditor/2026-10-20"
+    }
+  ],
+  "nextCheck": "2026-10-21",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-10-20.md"
+    }
+  ]
+}

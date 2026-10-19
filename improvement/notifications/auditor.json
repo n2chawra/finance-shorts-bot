@@ -1,3 +1,11 @@
 {
-  "notifications": []
+  "notifications": [
+    {
+      "key": "data-audit-late",
+      "severity": "warning",
+      "title": "Tonight's data audit had not run by 23:07 IST",
+      "detail": "metrics/data-audit.json is from 2026-10-18T19:07Z. The new 13:07 UTC (18:37 IST) cron had produced no run of data-audit.yml by 17:37Z today (last run #5, 2026-10-18 19:06Z). GitHub delays or drops scheduled runs at busy times, so the auditor skipped its data check again.",
+      "fix": "1. GitHub \u2192 Actions \u2192 Data audit: check whether a run started today; if not, click 'Run workflow' once.\n2. If scheduled runs keep missing, move the cron off a busy minute (e.g. '23 12 * * *' for 17:53 IST) or have the watchdog dispatch it when the file is older than 20 h.\n3. Nothing else to do; the auditor re-checks tomorrow night."
+    }
+  ]
 }
