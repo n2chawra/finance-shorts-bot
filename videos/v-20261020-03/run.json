@@ -1,0 +1,101 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:25:07.708407+00:00",
+    "finishedAt": "2026-10-19T23:25:07.708407+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-19T23:25:29.675638+00:00",
+    "finishedAt": "2026-10-19T23:25:29.675638+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:25:33.803413+00:00",
+    "finishedAt": "2026-10-19T23:25:33.803413+00:00",
+    "notes": [
+      "9 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:25:39.935053+00:00",
+    "finishedAt": "2026-10-19T23:25:39.935053+00:00",
+    "notes": [
+      "9 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:26:55.303835+00:00",
+    "finishedAt": "2026-10-19T23:26:55.303835+00:00",
+    "notes": [
+      "fact1 Rs 32,490 Cr (Sep 2026 SIP, AMFI) confirmed on source page kotakneo.com (record, prev Rs 32,297 Cr Aug), plus UNI (uniindia.com, 12 Oct) and AMFI mutual-fund page via search; record status and falling month (Nifty ~-6%, AUM contracted) consistent; still current (Oct data not out). 12% INR equity stated as assumption, rupee-cost-averaging claim correct, no products named, disclaimer ends description. Notes: title 'why investors didn't stop' slightly overstates (stoppage ratio 78.5%); 'just cheaper months' is a bit glib."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:27:15.101802+00:00",
+    "finishedAt": "2026-10-19T23:27:15.101802+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:27:16.014369+00:00",
+    "finishedAt": "2026-10-19T23:27:16.014369+00:00",
+    "notes": [
+      "9 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:27:31.900183+00:00",
+    "finishedAt": "2026-10-19T23:27:31.900183+00:00",
+    "notes": [
+      "Re-review after edits: new title 'Record SIP money in a falling month: why a SIP suits a dip' matches what the video shows (rupee cost averaging), no longer claims why investors didn't stop; lesson line/screen 'also mean(s) cheaper units' is accurate and no longer dismisses falls. Fact1 Rs 32,490 Cr remains confirmed (kotakneo source page, UNI, AMFI page via search); disclaimer intact."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:27:16.909316+00:00",
+    "finishedAt": "2026-10-19T23:29:51.122465+00:00",
+    "notes": [
+      "37 s, forest/lofi, peak -1.0 dB, mean -16.9 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:30:50.888758+00:00",
+    "finishedAt": "2026-10-19T23:30:50.888758+00:00",
+    "notes": [
+      "37 s, audio -1.0/-16.9 dB, no layout/liveliness problems; hook bubble 'Stop my SIP?' from first frame, Rs32,490 Cr headline with AMFI source, SIP chart to Rs25.2 L, Sharma/Sikka, lesson, end card with disclaimer; thumbnail clean. Minor: camera punch at ~1.5 s clips the top of the 'Stop the SIP?' chip for a few frames (transient, still readable)."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-19T23:31:03.639327+00:00",
+    "finishedAt": "2026-10-19T23:31:03.639327+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

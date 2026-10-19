@@ -1,0 +1,354 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "id": "v-20261020-03",
+  "seed": 23518,
+  "story": "psychology",
+  "currency": "INR",
+  "style": {
+    "palette": "forest",
+    "genre": "lofi",
+    "key": "D",
+    "bpm": 88
+  },
+  "feed_id": "2026-10-17-amfi-sept-sip-record",
+  "facts": [
+    {
+      "label": "SIP money in September",
+      "value": 32490,
+      "unit": "rupees_crore",
+      "as_of": "2026-09-30",
+      "source": "AMFI",
+      "url": "https://www.kotakneo.com/news/mutual-funds/sip-inflows-hit-record-32490-crore-september/"
+    }
+  ],
+  "maths": [
+    {
+      "name": "sip",
+      "kind": "sip",
+      "monthly": 5000,
+      "rate_pct": 12,
+      "years": 15
+    }
+  ],
+  "thumbnail": {
+    "layout": "story",
+    "hero": "piggy",
+    "tag": "Every month",
+    "small": "{sip_amount}",
+    "to": "Kept going",
+    "figure": "{sip_final}",
+    "who": "sharma",
+    "pose": "hips",
+    "expression": "smirk",
+    "words": "Stop SIPs in falls?",
+    "angle": "question"
+  },
+  "thumbnails": [
+    {
+      "layout": "story",
+      "hero": "cash",
+      "tag": "September",
+      "small": "{fact1}",
+      "to": "Into SIPs",
+      "figure": "{fact1}",
+      "who": "rohan",
+      "pose": "worried",
+      "expression": "shock",
+      "words": "Record SIP month",
+      "angle": "number"
+    },
+    {
+      "layout": "story",
+      "hero": "piggy",
+      "tag": "You put in",
+      "small": "{sip_invested}",
+      "to": "Could become",
+      "figure": "{sip_final}",
+      "who": "priya",
+      "pose": "present",
+      "expression": "happy",
+      "words": "Why SIPs keep going",
+      "angle": "reaction"
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "stage",
+      "speaker": "rohan",
+      "camera": "punch:stop",
+      "say": "Markets are falling. Time to stop my SIP, right?",
+      "events": {
+        "stop": {
+          "word": "stop"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "stop",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "home",
+        "chip": {
+          "text": "Stop the SIP?",
+          "at": "start"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.5,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "worried",
+                "bubble": {
+                  "text": "Stop my SIP?"
+                }
+              },
+              {
+                "at": "stop",
+                "pose": "shrug",
+                "expression": "worried"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "headline",
+      "scene": "headline",
+      "transition": "whip",
+      "camera": "push",
+      "say": "Look at the data. In September, Indians put a record {fact1} into SIPs.",
+      "events": {
+        "fig": {
+          "word": "record"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "fig",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "kicker": "NEWS",
+        "title": "A record SIP month",
+        "figure": "{fact1}",
+        "figureAt": "fig",
+        "label": "into SIPs in September"
+      }
+    },
+    {
+      "id": "why",
+      "scene": "kinetic",
+      "speaker": "priya",
+      "transition": "zoom",
+      "say": "Because a SIP is built for falls. The same amount buys more units when prices are low.",
+      "events": {
+        "more": {
+          "word": "more"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "more"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "street",
+        "lines": [
+          {
+            "text": "Same amount every month",
+            "at": "start"
+          },
+          {
+            "text": "Prices low: more units",
+            "at": "more"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "plan",
+      "scene": "prop",
+      "transition": "slide",
+      "camera": "drift",
+      "say": "Take {sip_amount} a month for {sip_years} years. You put in {sip_invested}.",
+      "events": {
+        "amt": {
+          "word": "Take"
+        },
+        "in": {
+          "word": "put"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "amt"
+        },
+        {
+          "kind": "clink",
+          "at": "in"
+        }
+      ],
+      "params": {
+        "world": "kitchen",
+        "prop": "piggy",
+        "text": "{sip_invested}",
+        "at": "in",
+        "kicker": "{sip_amount} a month",
+        "sub": "for {sip_years} years",
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "think",
+              "expression": "thinking"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "grow",
+      "scene": "screen",
+      "transition": "zoom",
+      "say": "At an assumed {sip_rate} a year, it could grow to {sip_final}. But only if the payments keep coming.",
+      "events": {
+        "fin": {
+          "word": "grow"
+        },
+        "only": {
+          "word": "only"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.4
+        },
+        {
+          "kind": "kaching",
+          "at": "fin"
+        }
+      ],
+      "params": {
+        "world": "office",
+        "city": "mumbai",
+        "title": "Kept going, month after month",
+        "series": "@sip.value",
+        "label1": "SIP value",
+        "callouts": [
+          {
+            "x": 0.85,
+            "text": "{sip_final}",
+            "at": "fin"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "aimUp",
+              "prop": "pointerUp",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "sharma",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "slide-up",
+      "say": "I have seen many falls. The habit lasts longer than the fear.",
+      "events": {
+        "habit": {
+          "word": "habit"
+        }
+      },
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "x": 0.42,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "habit",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "sikka": {
+          "x": 0.75,
+          "drop": true,
+          "cheer": true,
+          "expression": "laugh"
+        }
+      }
+    },
+    {
+      "id": "lesson",
+      "scene": "kinetic",
+      "transition": "zoom",
+      "say": "Falls feel scary. But for a monthly investor, they also mean cheaper units.",
+      "params": {
+        "mode": "type",
+        "lines": [
+          {
+            "text": "A fall"
+          },
+          {
+            "text": "also means cheaper units"
+          }
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "transition": "fade",
+      "say": "So, did yours keep going?",
+      "params": {
+        "cta": "Comment if your SIP kept going",
+        "follow": "Follow for one money question, settled",
+        "assumption": "Assumes {sip_rate} a year, which markets do not promise; real returns rise and fall."
+      }
+    }
+  ],
+  "narrator": "af_heart"
+}
