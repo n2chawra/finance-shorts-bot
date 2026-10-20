@@ -1,0 +1,110 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61873,
+  "duration_sec": 41,
+  "tempo": 1.0,
+  "style": {
+    "palette": "sky",
+    "genre": "cinematic",
+    "key": "G",
+    "bpm": 92
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.3,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "$10,000 in an average savings account earns just $38 a year.",
+        "start": 0.27,
+        "seconds": 4.47,
+        "window": 5.07,
+        "fill": 0.882
+      },
+      {
+        "scene": "headline",
+        "text": "That's because the national average savings rate this month is only 0.38%.",
+        "start": 5.33,
+        "seconds": 4.65,
+        "window": 5.27,
+        "fill": 0.882
+      },
+      {
+        "scene": "fed",
+        "text": "Yet in September, the Fed raised its target range to 4% at the top. Many banks never passed that on.",
+        "start": 10.6,
+        "seconds": 5.5,
+        "window": 6.1,
+        "fill": 0.902
+      },
+      {
+        "scene": "duel",
+        "text": "Now put the same $10,000 in an account paying an assumed 4%. One year earns $400.",
+        "start": 16.7,
+        "seconds": 6.0,
+        "window": 6.63,
+        "fill": 0.905
+      },
+      {
+        "scene": "five",
+        "text": "Leave it for 5 years and the gap keeps growing. $191 of interest, against $2,167.",
+        "start": 23.33,
+        "seconds": 7.05,
+        "window": 7.7,
+        "fill": 0.916
+      },
+      {
+        "scene": "turn",
+        "text": "Same money, same balance. The only difference is the rate it earns.",
+        "start": 31.03,
+        "seconds": 3.5,
+        "window": 4.13,
+        "fill": 0.847
+      },
+      {
+        "scene": "sharma",
+        "text": "Your bank won't call to tell you. You have to go and look.",
+        "start": 35.17,
+        "seconds": 2.65,
+        "window": 3.23,
+        "fill": 0.82
+      },
+      {
+        "scene": "outro",
+        "text": "So, what does your savings account pay right now?",
+        "start": 38.4,
+        "seconds": 2.28,
+        "window": 2.73,
+        "fill": 0.835
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.4
+  },
+  "liveliness": {
+    "median": 1.982,
+    "still_share": 0.048,
+    "longest_still_sec": 2.0
+  },
+  "liveliness_problems": []
+}

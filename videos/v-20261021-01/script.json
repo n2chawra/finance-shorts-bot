@@ -1,0 +1,405 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261021-01",
+ "seed": 61873,
+ "story": "decision_duel",
+ "currency": "USD",
+ "style": {
+  "palette": "sky",
+  "genre": "cinematic",
+  "key": "G",
+  "bpm": 92
+ },
+ "feed_id": "2026-10-21-us-savings-national-rate",
+ "facts": [
+  {
+   "label": "National average rate on US savings accounts, October",
+   "value": 0.38,
+   "unit": "percent",
+   "currency": "USD",
+   "as_of": "2026-10-19",
+   "source": "FDIC",
+   "url": "https://fred.stlouisfed.org/series/SNDR"
+  },
+  {
+   "label": "Upper end of the Fed's federal funds target range, set on 16 September",
+   "value": 4,
+   "unit": "percent",
+   "currency": "USD",
+   "as_of": "2026-09-16",
+   "source": "Federal Reserve",
+   "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+  }
+ ],
+ "maths": [
+  {
+   "name": "avg1",
+   "kind": "lumpsum",
+   "amount": 10000,
+   "rate_pct": 0.38,
+   "years": 1
+  },
+  {
+   "name": "high1",
+   "kind": "lumpsum",
+   "amount": 10000,
+   "rate_pct": 4,
+   "years": 1
+  },
+  {
+   "name": "avg5",
+   "kind": "lumpsum",
+   "amount": 10000,
+   "rate_pct": 0.38,
+   "years": 5
+  },
+  {
+   "name": "high5",
+   "kind": "lumpsum",
+   "amount": 10000,
+   "rate_pct": 4,
+   "years": 5
+  }
+ ],
+ "thumbnail": {
+  "layout": "story",
+  "hero": "piggy",
+  "tag": "Your savings",
+  "small": "{avg1_amount}",
+  "to": "Earns in a year",
+  "figure": "{avg1_gains}",
+  "who": "rohan",
+  "pose": "worried",
+  "expression": "shock",
+  "words": "Is your bank underpaying?",
+  "angle": "question"
+ },
+ "thumbnails": [
+  {
+   "layout": "story",
+   "hero": "cash",
+   "tag": "Average rate",
+   "small": "{fact1}",
+   "to": "Fed's top rate",
+   "figure": "{fact2}",
+   "who": "sharma",
+   "pose": "hips",
+   "expression": "smirk",
+   "words": "The savings rate gap",
+   "angle": "number"
+  },
+  {
+   "layout": "story",
+   "hero": "piggy",
+   "tag": "Same balance",
+   "small": "{high5_amount}",
+   "to": "Five years later",
+   "figure": "{high5_gains}",
+   "who": "priya",
+   "pose": "present",
+   "expression": "happy",
+   "words": "Same cash, two rates",
+   "angle": "versus"
+  }
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "kinetic",
+   "camera": "push",
+   "say": "{avg1_amount} in an average savings account earns just {avg1_gains} a year.",
+   "events": {
+    "just": {
+     "word": "just"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "just",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "mode": "box",
+    "world": "street",
+    "lines": [
+     {
+      "text": "{avg1_amount} saved",
+      "at": "start"
+     },
+     {
+      "text": "earns {avg1_gains} a year",
+      "at": "start"
+     }
+    ],
+    "presenter": {
+     "who": "rohan",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "prop": "phone",
+       "expression": "confused"
+      },
+      {
+       "at": "just",
+       "pose": "worried",
+       "expression": "shock",
+       "bubble": {
+        "icon": "!"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "headline",
+   "scene": "headline",
+   "transition": "whip",
+   "say": "That's because the national average savings rate this month is only {fact1}.",
+   "events": {
+    "fig": {
+     "word": "only"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fig"
+    }
+   ],
+   "params": {
+    "kicker": "NEWS",
+    "title": "US savings rates, October",
+    "figure": "{fact1}",
+    "figureAt": "fig",
+    "label": "average savings account rate"
+   }
+  },
+  {
+   "id": "fed",
+   "scene": "source",
+   "transition": "slide",
+   "say": "Yet in September, the Fed raised its target range to {fact2} at the top. Many banks never passed that on.",
+   "events": {
+    "top": {
+     "word": "top"
+    },
+    "never": {
+     "word": "never"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "top"
+    }
+   ],
+   "params": {
+    "publisher": "Federal Reserve",
+    "title": "Monetary policy statement",
+    "lines": [
+     {
+      "text": "The Committee decided to raise the target range"
+     },
+     {
+      "text": "Top of the range: {fact2}",
+      "highlight": true,
+      "at": "top"
+     }
+    ],
+    "pen": [
+     {
+      "kind": "circle",
+      "x": 0.7,
+      "y": 0.62,
+      "r": 0.14,
+      "at": "never"
+     }
+    ],
+    "presenter": {
+     "who": "priya",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "aimUp",
+       "prop": "pointerUp",
+       "expression": "thinking"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "duel",
+   "scene": "split",
+   "transition": "zoom",
+   "say": "Now put the same {high1_amount} in an account paying an assumed {high1_rate}. One year earns {high1_gains}.",
+   "events": {
+    "avg": {
+     "word": "same"
+    },
+    "high": {
+     "word": "earns"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "avg"
+    },
+    {
+     "kind": "kaching",
+     "at": "high"
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "Average rate",
+     "text": "{avg1_gains}",
+     "value": "@avg1.gains",
+     "at": "avg"
+    },
+    "right": {
+     "label": "Assumed higher rate",
+     "text": "{high1_gains}",
+     "value": "@high1.gains",
+     "at": "high"
+    }
+   }
+  },
+  {
+   "id": "five",
+   "scene": "equation",
+   "transition": "slide-up",
+   "say": "Leave it for {high5_years} years and the gap keeps growing. {avg5_gains} of interest, against {high5_gains}.",
+   "events": {
+    "a": {
+     "word": "of"
+    },
+    "b": {
+     "word": "against"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "a"
+    },
+    {
+     "kind": "kaching",
+     "at": "b"
+    }
+   ],
+   "params": {
+    "title": "Interest, {high5_years} years",
+    "items": [
+     {
+      "icon": "piggy",
+      "text": "{avg5_gains}",
+      "label": "Average",
+      "at": "a"
+     },
+     {
+      "icon": "chartup",
+      "text": "{high5_gains}",
+      "label": "Higher",
+      "at": "b"
+     }
+    ],
+    "ops": [
+     "vs"
+    ],
+    "presenter": {
+     "who": "sharma",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "present",
+       "expression": "smirk"
+      },
+      {
+       "at": "b",
+       "pose": "point",
+       "expression": "proud"
+      }
+     ]
+    },
+    "pattern": "dots"
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "kinetic",
+   "transition": "wipe",
+   "say": "Same money, same balance. The only difference is the rate it earns.",
+   "events": {
+    "diff": {
+     "word": "difference"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "start"
+    },
+    {
+     "kind": "ding",
+     "at": "diff"
+    }
+   ],
+   "params": {
+    "mode": "type",
+    "lines": [
+     {
+      "text": "Same money"
+     },
+     {
+      "text": "different account"
+     }
+    ]
+   }
+  },
+  {
+   "id": "sharma",
+   "scene": "stage",
+   "speaker": "sharma",
+   "transition": "slide",
+   "say": "Your bank won't call to tell you. You have to go and look.",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "sharma",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk",
+        "bubble": {
+         "text": "Check yours"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "So, what does your savings account pay right now?",
+   "params": {
+    "cta": "Check your savings rate",
+    "follow": "Follow for one money question, settled",
+    "assumption": "Assumes {high1_amount}, interest paid yearly, at the {fact1} average or an assumed {high1_rate}. Rates change."
+   }
+  }
+ ],
+ "narrator": "af_bella"
+}

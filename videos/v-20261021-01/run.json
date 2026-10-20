@@ -1,0 +1,161 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:40:04.842107+00:00",
+    "finishedAt": "2026-10-20T22:40:04.842107+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:40:28.565773+00:00",
+    "finishedAt": "2026-10-20T22:40:28.565773+00:00",
+    "notes": [
+      "30 figures computed from inputs; 18 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:40:42.947317+00:00",
+    "finishedAt": "2026-10-20T22:40:42.947317+00:00",
+    "notes": [
+      "30 figures computed from inputs; 18 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:41:16.033786+00:00",
+    "finishedAt": "2026-10-20T22:41:16.033786+00:00",
+    "notes": [
+      "Facts confirmed on source pages: FRED SNDR (FDIC national savings rate) shows 0.38% for Oct 2026, updated 2026-10-19; Fed release 2026-09-16 raised the range to 3-3/4 to 4 percent, no later FOMC decision (next 28 Oct, not predicted). 4% labelled as an assumption within the 3-5% US savings range, no bank or product named, tone and claims fine, description ends with the disclaimer. Note: interest assumed paid yearly, slightly conservative against accounts that compound daily or monthly."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:40:48.911299+00:00",
+    "finishedAt": "2026-10-20T22:44:51.410566+00:00",
+    "notes": [
+      "41 s, sky/cinematic, peak -1.0 dB, mean -16.8 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-20T22:45:32.338326+00:00",
+    "finishedAt": "2026-10-20T22:45:32.338326+00:00",
+    "notes": [
+      "[script] 40.0s and 41.4s, outro (end scene): the cta 'Check the rate your savings earn' wraps to three lines and its last word 'earn' sits on top of the orange 'Follow for one money question, settled' line; shorten the cta to fit two lines (e.g. 'Check your savings rate')",
+      "[scene] 40.0s and 41.4s, outro (end scene): the follow line is placed at a fixed offset and does not move down when the cta wraps to a third line, so the two overlap",
+      "[scene] 25.0s and 30.0s, five beat (screen scene): the two legend pills overlap: 'Assumed higher rate' covers the end of 'Average rate' (reads 'Average rat'); the legend does not lay out two longer labels side by side or wrap them",
+      "[scene] 30.0s, five beat (screen scene): the $12,167 callout's dashed leader points to the end of the red Average-rate line, not the green Assumed-higher-rate line it belongs to, so the label reads as the wrong series' value",
+      "[script] 30.0s, five beat: narration says '$191 of interest, against $2,167' but the only figure on screen is the $12,167 balance; show the interest (high5_gains) in the callout or say the balance so picture and line match"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:45:54.529923+00:00",
+    "finishedAt": "2026-10-20T22:45:54.529923+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:45:55.551594+00:00",
+    "finishedAt": "2026-10-20T22:45:55.551594+00:00",
+    "notes": [
+      "30 figures computed from inputs; 18 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:46:14.702254+00:00",
+    "finishedAt": "2026-10-20T22:46:14.702254+00:00",
+    "notes": [
+      "Re-review after QA changes: 'five' is now an equation card showing $191 vs $2,167 interest over 5 years (code figures, narration unchanged, labels Average rate / Higher rate); CTA 'Check your savings rate' is a neutral prompt, no product named. Facts unchanged and still confirmed (FRED SNDR 0.38% Oct 2026; Fed 16 Sep 2026 range 3-3/4 to 4 percent). Note: the card's 'Higher rate' label dropped 'Assumed', but the 4% is called an assumption in the duel narration and the end card."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-20T22:45:56.489112+00:00",
+    "finishedAt": "2026-10-20T22:49:25.569835+00:00",
+    "notes": [
+      "text 'Average rate' at 28.5 s runs outside the frame",
+      "text 'Higher rate' at 28.5 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:49:35.475525+00:00",
+    "finishedAt": "2026-10-20T22:49:35.475525+00:00",
+    "notes": [
+      "30 figures computed from inputs; 18 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:49:36.466124+00:00",
+    "finishedAt": "2026-10-20T22:53:04.034539+00:00",
+    "notes": [
+      "41 s, sky/cinematic, peak -1.0 dB, mean -16.4 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-20T22:53:34.887993+00:00",
+    "finishedAt": "2026-10-20T22:53:34.887993+00:00",
+    "notes": [
+      "[script] 30.0s, five beat (equation scene): the dark navy '$2,167 Higher' and '$191 Average' text sits directly on the dark-blue New York skyscrapers seen through the office window, so the figures are hard to read and 'Average' runs across a building edge; drop world 'office'/city 'newyork' from this beat so the equation draws on a plain background",
+      "[scene] 30.0s, five beat (equation scene): with a world set, the equation draws its items and labels straight over the busy backdrop with no backing card, crowds them into the right edge of the window (labels touch the window frame) and the chartup arrow tail runs out of the window box; it needs a panel behind the items or a layout that keeps them clear of the scenery"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:53:51.842280+00:00",
+    "finishedAt": "2026-10-20T22:53:51.842280+00:00",
+    "notes": [
+      "30 figures computed from inputs; 18 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:53:52.853482+00:00",
+    "finishedAt": "2026-10-20T22:57:20.775919+00:00",
+    "notes": [
+      "41 s, sky/cinematic, peak -1.0 dB, mean -16.4 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:57:34.158333+00:00",
+    "finishedAt": "2026-10-20T22:57:34.158333+00:00",
+    "notes": [
+      "Clean 41s Short: hook frame shows $10,000 saved earns $38, five beat equation now on plain dots background with $191 vs $2,167 readable and matching narration, outro CTA fits two lines with no overlap, disclaimer on last frame, thumbnail complete; layout/liveliness clean, peak -1.0 dB, mean -16.4 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:57:39.822017+00:00",
+    "finishedAt": "2026-10-20T22:57:39.822017+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
