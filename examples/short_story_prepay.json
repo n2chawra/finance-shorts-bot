@@ -32,10 +32,8 @@
 
     { "id": "chart", "scene": "chart", "transition": "zoom", "camera": "push",
       "say": "Keep the EMI at {loan_emi}, and the extra money keeps cutting the balance every single month.",
-      "events": { "mark": { "word": "cutting" } },
       "params": { "series": "@loan.balance", "series2": "@loan.balance_prepaid", "ticks": "@loan.ticks", "xticks": "@loan.years",
-        "xLabel": "Years of the loan", "label1": "No prepayment", "label2": "Shorter loan",
-        "marks": [ { "x": 36, "text": "Prepay {loan_prepay}", "at": "mark" } ] } },
+        "xLabel": "Years of the loan", "label1": "No prepayment", "label2": "Shorter loan" } },
 
     { "id": "result", "scene": "split", "transition": "slide-up",
       "say": "Lower EMI saves {loan_saved_reduce_emi} in interest. Shorter loan saves {loan_saved_reduce_tenure}.",
