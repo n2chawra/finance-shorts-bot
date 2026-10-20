@@ -1,0 +1,60 @@
+{
+  "agent": "research",
+  "day": "2026-10-21",
+  "startedAt": "2026-10-20T18:20:56Z",
+  "finishedAt": "2026-10-20T18:25:53Z",
+  "summary": "Pacing night: measured our last 6 Shorts' timelines, added 2 feed topics (US savings rate gap, UK Budget on 28 Oct) and 4 proposals (an income-tax maths kind, an event-gap check, two A/B ideas).",
+  "decision": "acted",
+  "why": "18 of 49 beats in our last 6 Shorts go over 3 s with nothing new on screen, against our own 3–5 s rule; hook beats run up to 8.6 s. The UK Budget (28 Oct) and the FDIC's 0.38% savings rate are timely stories with official figures.",
+  "findings": [
+    {
+      "title": "18 of 49 beats have a 3 s+ stretch with no event",
+      "detail": "11 beats run over 6 s (longest 9.1 s); the liveliness gate passes because idle motion moves pixels. Proposal event-gap-max-3s (adopt).",
+      "link": "improvement/research/2026-10-21.md"
+    },
+    {
+      "title": "Hook beats up to 8.6 s",
+      "detail": "v-20261020-02 shows the same picture at 0 s and 5 s. Proposal hook-beat-under-4s (experiment, after the running hook test).",
+      "link": "https://aibrify.com/en/blog/youtube-shorts-retention-curve-playbook"
+    },
+    {
+      "title": "UK Budget on Wed 28 Oct",
+      "detail": "Confirmed by HM Treasury; same day as the Fed. Feed topic added; we need an income-tax maths kind to compute tax figures (proposal maths-income-tax-bands).",
+      "link": "https://www.gov.uk/government/publications/chancellor-letter-to-the-treasury-select-committee-tsc-budget-2026-date"
+    },
+    {
+      "title": "US savings pay 0.38% on average while the Fed's range tops out at 4%",
+      "detail": "FDIC October national rate. Feed topic added (high).",
+      "link": "https://fred.stlouisfed.org/series/SNDR"
+    },
+    {
+      "title": "Market data is two days old",
+      "detail": "The 19 Oct market.yml run failed on an npm network reset (ECONNRESET); tonight's hadn't run yet.",
+      "link": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/39326106582"
+    }
+  ],
+  "changes": [
+    {
+      "title": "2 topics in the feed",
+      "detail": "2026-10-21-us-savings-national-rate (high, USD), 2026-10-21-uk-budget-oct28-frozen-allowance (high, GBP)",
+      "branch": "agent/research/2026-10-21"
+    },
+    {
+      "title": "4 proposals",
+      "detail": "maths-income-tax-bands (template), event-gap-max-3s (adopt), hook-beat-under-4s and no-empty-lower-half (experiments)",
+      "branch": "agent/research/2026-10-21"
+    },
+    {
+      "title": "Calendar",
+      "detail": "UK Budget 28 Oct, Bank of England 17 Dec",
+      "branch": "agent/research/2026-10-21"
+    }
+  ],
+  "nextCheck": "2026-10-22",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-21.md"
+    }
+  ]
+}

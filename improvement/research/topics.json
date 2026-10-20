@@ -497,6 +497,106 @@
       "found": "2026-10-20",
       "expires": "2027-01-18",
       "status": "new"
+    },
+    {
+      "id": "2026-10-21-us-savings-national-rate",
+      "title": "The Fed pays banks around 4%, the average US savings account pays you 0.38%: what that gap costs a saver",
+      "category": "savings",
+      "kind": "news",
+      "priority": "high",
+      "stories": [
+        "trap_alert",
+        "decision_duel"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "My bank's savings account barely pays anything even though rates went up. How much am I leaving on the table?",
+      "why_now": "The FDIC's October national savings rate is 0.38% (0.37% in September), a month after the Fed raised its range to 3.75–4%. The Fed meets again on 28 Oct, so savers are watching rates this week. Saver side of the Fed story (the card side was v-20261019-02).",
+      "facts": [
+        {
+          "label": "National average rate on US savings accounts, October",
+          "value": 0.38,
+          "unit": "percent",
+          "currency": "USD",
+          "as_of": "2026-10-19",
+          "source": "FDIC",
+          "url": "https://fred.stlouisfed.org/series/SNDR"
+        },
+        {
+          "label": "Upper end of the Fed's federal funds target range, set on 16 September",
+          "value": 4,
+          "unit": "percent",
+          "currency": "USD",
+          "as_of": "2026-09-16",
+          "source": "Federal Reserve",
+          "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+        }
+      ],
+      "verify": [
+        "FDIC National Rates and Rate Caps, October 2026: savings national rate 0.38% (FRED series SNDR mirrors it; fdic.gov/national-rates-and-rate-caps is the primary page)",
+        "Fed statement of 16 Sep 2026: target range 3-3/4 to 4 percent",
+        "The better rate is an illustrative assumption (US savings 3–5%, channel profile), stated on screen; no bank or product named",
+        "Interest on the same balance at both rates computed by code (lumpsum, 1 year and a few years)",
+        "Say nothing about what the Fed will decide on 28 Oct"
+      ],
+      "sources": [
+        "https://fred.stlouisfed.org/series/SNDR",
+        "https://fortune.com/article/best-savings-account-rates-10-20-2026",
+        "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+      ],
+      "found": "2026-10-21",
+      "expires": "2026-11-04",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-21-uk-budget-oct28-frozen-allowance",
+      "title": "UK Budget on 28 October: how a frozen £12,570 tax-free allowance quietly taxes a pay rise",
+      "category": "tax",
+      "kind": "seasonal",
+      "priority": "high",
+      "stories": [
+        "how_it_works",
+        "rule_change"
+      ],
+      "templates": [
+        "any"
+      ],
+      "angle": "Everyone says watch the Budget. What part of it actually reaches my pay packet, and why does a 'frozen' threshold cost me money?",
+      "why_now": "The Chancellor confirmed the Budget for Wed 28 Oct (7 days away); thresholds are the part that reaches every earner. Make it before the day, explain the mechanism, predict nothing.",
+      "facts": [
+        {
+          "label": "UK standard Personal Allowance, 2026 to 2027 tax year",
+          "value": 12570,
+          "unit": "money",
+          "currency": "GBP",
+          "as_of": "2026-04-06",
+          "source": "GOV.UK",
+          "url": "https://www.gov.uk/income-tax-rates"
+        },
+        {
+          "label": "UK basic rate of income tax, 2026 to 2027 tax year",
+          "value": 20,
+          "unit": "percent",
+          "currency": "GBP",
+          "as_of": "2026-04-06",
+          "source": "GOV.UK",
+          "url": "https://www.gov.uk/income-tax-rates"
+        }
+      ],
+      "verify": [
+        "GOV.UK income tax rates page, 2026–27: Personal Allowance £12,570, basic rate 20% on £12,571 to £50,270",
+        "Budget date 28 Oct 2026 per HM Treasury (gov.uk letter to the Treasury Committee)",
+        "Explain 'fiscal drag' in general terms; no claim about what this Budget will change",
+        "There is no income-tax maths kind yet (see proposal maths-income-tax-bands): until it exists, keep to the sourced facts plus a lumpsum/inflation figure computed by code, never a hand-worked tax amount; England, Wales and NI rates (Scotland differs: say so on screen or keep it general)"
+      ],
+      "sources": [
+        "https://www.gov.uk/income-tax-rates",
+        "https://www.gov.uk/government/publications/chancellor-letter-to-the-treasury-select-committee-tsc-budget-2026-date"
+      ],
+      "found": "2026-10-21",
+      "expires": "2026-10-28",
+      "status": "new"
     }
   ]
 }
