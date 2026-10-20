@@ -41,11 +41,13 @@ export const Cheque: React.FC<PropArgs> = ({ s, k, text, label, fs, pal }) => (
 
 /** A stack of notes that grows to `fill` (0..1) of its full height. */
 export const CashStack: React.FC<PropArgs & { fill?: number }> = ({ s, k, fill = 1, text, fs, pal }) => {
-  const n = Math.max(1, Math.round(14 * fill * k));
+  // bills sit close (half a stack's old height) and the figure rides just above the top bill, so it stays
+  // clear of a kicker above the prop and inside the frame under a camera punch (L-20261019-01)
+  const n = Math.max(1, Math.round(14 * fill * k)), step = s * 0.035;
   return (
     <g>
-      {Array.from({ length: n }, (_, i) => <Bill key={i} x={Math.sin(i * 2.3) * s * 0.03} y={-i * s * 0.07} w={s} tilt={Math.sin(i * 1.7) * 2.5} />)}
-      {text && <T x={0} y={-n * s * 0.07 - fs * 0.9} fs={fs} fill={pal.text}>{text}</T>}
+      {Array.from({ length: n }, (_, i) => <Bill key={i} x={Math.sin(i * 2.3) * s * 0.03} y={-i * step} w={s} tilt={Math.sin(i * 1.7) * 2.5} />)}
+      {text && <T x={0} y={-(n - 1) * step - s * 0.12 - fs * 0.7} fs={fs} fill={pal.text}>{text}</T>}
     </g>
   );
 };
