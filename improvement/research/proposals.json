@@ -210,6 +210,86 @@
       "route": "experiment",
       "priority": "normal",
       "reason": "Waits: sound area is taken by the running quiet-bed experiment."
+    },
+    {
+      "id": "event-gap-max-3s",
+      "date": "2026-10-21",
+      "area": "pacing",
+      "title": "Enforce the 'new picture every 3–5 s' rule inside long Shorts beats",
+      "change": "In check_script (renderer/timeline/build.py) for format SHORT: after timing, any beat longer than 5 s must have a named event or camera move at least every 3 s of its length (counting the beat start and end); otherwise warn the writer to split the beat or add an event, and after the improver confirms no false positives on the last 10 scripts, make it a rewrite reason. Add a writer note in renderer/templates/short_story/README.md: 'a beat over 5 s needs an event every ≤3 s'.",
+      "evidence": [
+        "CLAUDE.md render conventions: a new picture every 3–5 s (Shorts)",
+        "Our timelines v-20261019-01…v-20261020-03: 18 of 49 beats have a gap over 3 s with no event; 11 beats run over 6 s (longest 9.1 s, v-20261020-01 'year')",
+        "https://aibrify.com/en/blog/youtube-shorts-retention-curve-playbook",
+        "https://spliceapp.com/blog/mastering-youtube-shorts-editing-guide/"
+      ],
+      "expectedEffect": "Fewer visual pauses mid-Short; the liveliness gate passes already (median 1.25–2.30) but measures pixels, not new information.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Writers split lines into choppy beats; keep the check on events, not beat count.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "hook-beat-under-4s",
+      "date": "2026-10-21",
+      "area": "hook",
+      "title": "First picture change by 2 s: cap the hook beat at 4 s",
+      "change": "Behind a flag (Shorts only): the first beat may last at most 4 s; if the hook line is longer, the writer splits it in two beats, or the first beat gets a camera punch or event at ≤2 s. On, the check rejects a longer first beat; off, today's behaviour. Start only after hook-voice-matches-frame has a verdict (both touch the first seconds).",
+      "evidence": [
+        "Hook beats of the last 6 Shorts: 2.9, 3.9, 4.9, 5.4, 8.6, 3.0 s; v-20261020-02's contact sheet shows the same picture at 0 s and 5 s",
+        "https://aibrify.com/en/blog/youtube-shorts-retention-curve-playbook (30–50% of viewers leave between 1 and 3 s; vendor benchmark)",
+        "https://opus.pro/blog/ideal-youtube-shorts-length-format-retention"
+      ],
+      "expectedEffect": "More viewers past 3 s (hookHold).",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Clashes with the running hook experiment if started together; wait for its verdict.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
+    },
+    {
+      "id": "no-empty-lower-half",
+      "date": "2026-10-21",
+      "area": "motion",
+      "title": "No scene leaves the lower half of the frame empty",
+      "change": "Behind a flag, in remotion/src/scenes: headline shows its figure with the first spoken word (not after the subtitle), and headline, split and kinetic scenes put a cast reaction, Sikka or an icon in the lower half while the upper half holds the text, so no still shows more than half the frame as plain background.",
+      "evidence": [
+        "v-20261020-02 contact sheet: at 10 s (headline) only a title and 'since mid-September' on an empty background; at 30 s (split) and 40 s (kinetic) two thirds of the frame empty",
+        "Top niche Shorts this week are character-led (Futurama, Family Guy, Fintech Neeraj's two-character duel in market.json, 18 Oct)"
+      ],
+      "expectedEffect": "Busier, more character-led frames; higher % viewed.",
+      "confidence": "low",
+      "effort": "M",
+      "risk": "Clutter, or text overlapping the cast; the layout probe catches overlaps.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
+    },
+    {
+      "id": "maths-income-tax-bands",
+      "date": "2026-10-21",
+      "area": "template",
+      "title": "A maths kind for income tax by bands (UK first, any currency)",
+      "change": "Add kind income_tax_bands to renderer/models/maths.py: inputs income, allowance, bands [[upper, rate_pct], …]; outputs tax, take-home, marginal rate, and the same for a second income (e.g. after a pay rise) so a frozen-threshold story is computed. Mirror in the number check's closed form; one checked example script in short_story/README.md (UK 2026–27: £12,570 allowance, 20% to £50,270, 40% to £125,140).",
+      "evidence": [
+        "https://www.gov.uk/income-tax-rates",
+        "Feed topic 2026-10-21-uk-budget-oct28-frozen-allowance (Budget on 28 Oct) cannot compute a tax figure today",
+        "Tax stories also needed for US brackets and Indian regimes (sip-tranche-tax-explainer, 16 Oct)"
+      ],
+      "expectedEffect": "Unlocks tax stories, a whole category we can't tell with computed numbers now.",
+      "confidence": "high",
+      "effort": "M",
+      "risk": "Rules differ by country (Scotland, US filing status, India regimes); the kind stays a generic band table and the script states the assumptions.",
+      "metric": "views48h",
+      "status": "new",
+      "route": "template",
+      "priority": "high"
     }
   ]
 }
