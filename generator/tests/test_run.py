@@ -335,6 +335,26 @@ def test_narrators_rotate_per_video(root: Path) -> None:
     assert run.next_narrator([entry(n, voice=v) for n, v in enumerate(voices)]) == voices[0]
 
 
+def test_narrator_never_shares_a_speaking_cast_members_voice(root: Path) -> None:
+    """A script where Sharma speaks never gets his voice (am_fenrir) as narrator, even when it is due."""
+    others = [v for v in run.NARRATOR_VOICES if v != "am_fenrir"]
+    entries = [entry(n, voice=v) for n, v in enumerate(others)]            # am_fenrir used longest ago
+    assert run.next_narrator(entries) == "am_fenrir"
+    script = {"beats": [{"id": "a", "speaker": "sharma"}, {"id": "b", "speaker": "narrator"}]}
+    assert run.cast_voices(script) == {"am_fenrir"}
+    assert run.next_narrator(entries, run.cast_voices(script)) == others[0]
+    history.append({**entry(1, voice="am_michael"), "format": "short"}, root)
+    plan = make_plan()
+    put(root, "plan.json", plan)
+    put(root, "script.json", {**script_for(plan), "narrator": "am_fenrir"})
+    saved = json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))
+    saved["beats"][0]["speaker"] = "sharma"
+    put(root, "script.json", saved)
+    run.render(VID, preview=True, root=root)
+    narrator = json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))["narrator"]
+    assert narrator not in ("am_fenrir", "am_michael")
+
+
 def test_render_sets_a_missing_or_repeated_narrator_and_keeps_it(root: Path) -> None:
     history.append({**entry(1, voice="am_michael"), "format": "short"}, root)
     plan = make_plan()

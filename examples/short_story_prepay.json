@@ -1,0 +1,56 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "id": "v-sample-04",
+  "seed": 7318,
+  "story": "decision_duel",
+  "narrator": "af_heart",
+  "currency": "INR",
+  "style": { "palette": "forest", "genre": "acoustic", "key": "D", "bpm": 96 },
+  "maths": [
+    { "name": "loan", "kind": "loan_prepay", "amount": 3000000, "rate_pct": 8.5, "months": 240, "prepay": 300000, "prepay_month": 36 }
+  ],
+  "beats": [
+    { "id": "hook", "scene": "reveal", "camera": "punch:save",
+      "say": "You prepay {loan_prepay} on your home loan. The bank asks one question, and your answer is worth {loan_saved_reduce_tenure}.",
+      "events": { "save": { "word": "worth" } },
+      "sfx": [ { "kind": "boom", "at": "save", "gain": 0.8 } ],
+      "params": { "lines": [
+        { "text": "{loan_prepay}", "style": "sub", "at": "start" },
+        { "text": "{loan_saved_reduce_tenure}", "style": "hero", "value": "@loan.saved_reduce_tenure", "at": "save" } ],
+        "actor": { "who": "rohan", "x": 0.5, "scale": 1.3, "acting": [
+          { "sec": 0, "pose": "phone", "prop": "phone", "expression": "happy" },
+          { "at": "save", "pose": "shrug", "expression": "shock" } ] } } },
+
+    { "id": "choice", "scene": "split", "transition": "whip",
+      "say": "Lower EMI, or a shorter loan? Lower EMI drops it to {loan_emi_reduced}. Shorter loan ends it {loan_months_saved} months early.",
+      "events": { "emi": { "word": "drops" }, "tenure": { "word": "ends" } },
+      "sfx": [ { "kind": "pop", "at": "emi" }, { "kind": "pop-high", "at": "tenure" } ],
+      "params": {
+        "left": { "label": "Lower EMI", "text": "{loan_emi_reduced}", "value": "@loan.emi_reduced", "at": "emi" },
+        "right": { "label": "Months saved", "text": "{loan_months_saved}", "value": "@loan.months_saved", "at": "tenure" } } },
+
+    { "id": "chart", "scene": "chart", "transition": "zoom", "camera": "push",
+      "say": "Keep the EMI at {loan_emi}, and the extra money keeps cutting the balance every single month.",
+      "params": { "series": "@loan.balance", "series2": "@loan.balance_prepaid", "ticks": "@loan.ticks", "xticks": "@loan.years",
+        "xLabel": "Years of the loan", "label1": "No prepayment", "label2": "Shorter loan" } },
+
+    { "id": "result", "scene": "split", "transition": "slide-up",
+      "say": "Lower EMI saves {loan_saved_reduce_emi} in interest. Shorter loan saves {loan_saved_reduce_tenure}.",
+      "events": { "a": { "word": "Lower" }, "b": { "word": "Shorter" } },
+      "sfx": [ { "kind": "pop", "at": "a" }, { "kind": "ding", "at": "b" } ],
+      "params": {
+        "left": { "label": "Lower EMI", "text": "{loan_saved_reduce_emi}", "value": "@loan.saved_reduce_emi", "at": "a" },
+        "right": { "label": "Shorter loan", "text": "{loan_saved_reduce_tenure}", "value": "@loan.saved_reduce_tenure", "at": "b" } } },
+
+    { "id": "rohan", "scene": "stage", "speaker": "rohan", "transition": "slide-up",
+      "say": "Same money. Keep the EMI.",
+      "params": { "set": "home", "actors": [ { "who": "rohan", "x": 0.42, "acting": [ { "sec": 0, "pose": "thumbsUp", "expression": "proud" } ] } ],
+        "sikka": { "x": 0.75, "drop": true, "cheer": true, "expression": "laugh" } } },
+
+    { "id": "outro", "scene": "end", "transition": "fade",
+      "say": "Follow for one money idea a day.",
+      "params": { "cta": "Prepay, keep the EMI.", "follow": "Follow for one money idea a day",
+        "assumption": "Assumes {loan_rate} a year over {loan_months} months, one prepayment after EMI {loan_prepay_month}." } }
+  ]
+}

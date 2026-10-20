@@ -2,6 +2,7 @@ import pytest
 
 from generator import numbers
 from generator.numbers import check_claims, number_check
+from renderer.engine.formatting import money_for
 
 from .conftest import example, make_plan
 
@@ -34,7 +35,7 @@ def sip_story(**over) -> dict:
     return {**script, **over}
 
 
-@pytest.mark.parametrize("name", ["long_story", "short_story", "news_story"])
+@pytest.mark.parametrize("name", ["long_story", "short_story", "news_story", "short_story_prepay"])
 def test_every_example_passes_the_number_check(name: str) -> None:
     script = example(name)
     feed_topic = {"facts": script["facts"]} if "facts" in script else None      # news: as research published it
@@ -95,3 +96,35 @@ def test_emi_at_zero_interest_is_principal_over_months() -> None:
     assert numbers.emi_total_interest(60000, 0, 1) == pytest.approx(0)
     r = maths.emi({"amount": 60000, "rate_pct": 0, "years": 1})
     assert r["figures"]["emi"] == "₹5,000" and r["values"]["interest"] == pytest.approx(0)
+
+
+@pytest.mark.parametrize("monthly, step, rate, years", [(5000, 10, 12, 20), (1000, 0, 8, 5), (2500, 7.5, 10, 1), (10000, 15, 6, 30)])
+def test_sip_stepup_closed_form_matches_the_story_maths(monthly: int, step: float, rate: float, years: int) -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "sip_stepup", "monthly": monthly, "step_pct": step,
+                               "rate_pct": rate, "years": years}])
+    passed, notes = number_check(script)
+    assert passed, notes
+
+
+@pytest.mark.parametrize("amount, rate, months, prepay, at", [(3000000, 8.5, 240, 300000, 36), (25000, 14, 24, 5000, 6),
+                                                              (500000, 9.25, 60, 5000, 58), (60000, 18, 36, 1000, 1)])
+def test_loan_prepay_closed_form_matches_the_story_maths(amount: int, rate: float, months: int, prepay: int, at: int) -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "loan_prepay", "amount": amount, "rate_pct": rate, "months": months,
+                               "prepay": prepay, "prepay_month": at}])
+    script["beats"][0]["params"]["lines"][0]["text"] = "{sip_saved_reduce_tenure}"
+    passed, notes = number_check(script)
+    assert passed, notes
+
+
+def test_chapter_timestamps_in_a_long_description_are_not_claims() -> None:
+    script = example("long_story")
+    plan = {**make_plan(template="long_story", seed=script["seed"], style=script["style"], currency=money_for(script).currency),
+            "title": "Why paying the minimum on a card keeps you in debt",
+            "description": "Chapters:\n0:00 The bill\n1:14 The trap\n12:05 The way out\nIllustrative only. Not financial advice."}
+    passed, notes = number_check(script, plan)
+    assert not any("description mentions" in n for n in notes), notes
+    plan["description"] += "\n2:30 Save 45% today"                    # a number after a timestamp is still checked
+    assert any("'45%'" in n for n in number_check(script, plan)[1])
+    short = sip_story()
+    short_plan = make_plan(description="0:00 Intro. Illustrative only. Not financial advice.")
+    assert any("description mentions '0:00'" in n or "description mentions '0'" in n for n in number_check(short, short_plan)[1])

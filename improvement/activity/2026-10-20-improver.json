@@ -1,0 +1,62 @@
+{
+  "agent": "improver",
+  "day": "2026-10-20",
+  "startedAt": "2026-10-20T00:48:44Z",
+  "finishedAt": "2026-10-20T01:01:08Z",
+  "summary": "Applied three fixes (narrator never shares a cast member's voice, the stack prop's figure no longer collides or leaves the frame, chapter timestamps pass the number check), added two maths kinds for long videos (step-up SIP, loan prepayment), and started one hook experiment for Shorts.",
+  "decision": "acted",
+  "why": "The quiet-bed experiment has 0 of 4 long videos per arm, so nothing to close. The highest-priority open items were an adopt/high voice fix from research, two template/high maths kinds and an adopt/high scene bug from Scout (long videos first at equal priority). The hook area had no running experiment.",
+  "findings": [
+    {
+      "title": "Evaluator",
+      "detail": "5 videos with 48 h data. quiet-bed: WAIT, 0 of 4 long videos per arm. No recurring failures listed."
+    },
+    {
+      "title": "Stack prop bug reproduced",
+      "detail": "Stills of L-20261019-01's 'total' beat showed the kicker over the figure; without a kicker the layout probe said '$11,638' ran outside the frame. After the fix both long and Short stills are clean."
+    },
+    {
+      "title": "Maths kinds agree with the closed forms",
+      "detail": "5,382 random input sets: renderer and number check agree except 8 half-unit rounding edges on prepayments in a loan's last months, which the number check rejects."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Narrator never uses a speaking cast member's voice",
+      "detail": "generator/run.py: cast_voices + next_narrator(taken); test added.",
+      "branch": "agent/improver/2026-10-20",
+      "experiment": "narrator-not-cast-voice"
+    },
+    {
+      "title": "New maths kinds sip_stepup and loan_prepay",
+      "detail": "renderer/models/maths.py, closed forms in generator/numbers.py, README table, examples/short_story_prepay.json, tests.",
+      "branch": "agent/improver/2026-10-20",
+      "experiment": "maths-sip-stepup-loan-prepay"
+    },
+    {
+      "title": "Stack prop layout fix",
+      "detail": "remotion/src/props/money.tsx: lower stack, figure just above the top bill.",
+      "branch": "agent/improver/2026-10-20",
+      "experiment": "stack-prop-figure"
+    },
+    {
+      "title": "Chapter timestamps are not number claims",
+      "detail": "generator/numbers.py strips a leading timestamp on long-video description lines; test added.",
+      "branch": "agent/improver/2026-10-20",
+      "experiment": "chapter-timestamps-not-claims"
+    },
+    {
+      "title": "Started hook-voice-matches-frame",
+      "detail": "Shorts, 50%, prompt-only: the first line voices the on-screen hook within 8 words, no warm-up opener. Judged on 48 h views, 8 per arm.",
+      "branch": "agent/improver/2026-10-20",
+      "experiment": "hook-voice-matches-frame"
+    }
+  ],
+  "nextCheck": "2026-10-21",
+  "links": [
+    {
+      "label": "Journal",
+      "url": "improvement/journal.md"
+    }
+  ]
+}
