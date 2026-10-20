@@ -1,10 +1,10 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-10-19T19:16:32.112Z",
+  "generatedAt": "2026-10-20T17:57:22.634Z",
   "youtubeChecked": true,
   "summary": {
-    "videos": 17,
-    "checked": 13,
+    "videos": 19,
+    "checked": 17,
     "error": 0,
     "warning": 1,
     "info": 0,
@@ -15,22 +15,118 @@
     {
       "kind": "state_wrong",
       "severity": "warning",
-      "videoId": "v-20261019-02",
-      "youtubeId": "NP4mQKgqEVk",
+      "videoId": "v-20261020-02",
+      "youtubeId": "5kivl8rutRc",
       "detail": "Marked published here, but private on YouTube."
     }
   ],
   "videos": [
+    {
+      "id": "v-20261020-02",
+      "title": "The ECB decides this month: what moves for savers and borrowers",
+      "youtubeId": "5kivl8rutRc",
+      "state": "published",
+      "publishAt": "2026-10-21T01:37:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "private",
+        "views": 0,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "L-20261019-02",
+      "title": "Only paying the minimum on a $5,000 card? Here is the real cost",
+      "youtubeId": "Y_qa18IDfm0",
+      "state": "published",
+      "publishAt": "2026-10-20T14:37:00.000Z",
+      "dashboard": {
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-10-20T17:34:26.507Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 0,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261020-03",
+      "title": "Record SIP money in a falling month: why a SIP suits a dip",
+      "youtubeId": "YQ8FwNchCL0",
+      "state": "published",
+      "publishAt": "2026-10-20T13:37:00.000Z",
+      "dashboard": {
+        "views": 6,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-10-20T17:34:26.507Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 6,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261020-01",
+      "title": "Social Security's 3.6% raise for next year, worked out",
+      "youtubeId": "wKBNy6y6bP8",
+      "state": "published",
+      "publishAt": "2026-10-20T07:07:00.000Z",
+      "dashboard": {
+        "views": 19,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-10-20T17:34:26.507Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 19,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261019-02",
       "title": "When the Fed moves rates, how fast does your credit card follow?",
       "youtubeId": "NP4mQKgqEVk",
       "state": "published",
       "publishAt": "2026-10-20T01:37:00.000Z",
-      "dashboard": null,
+      "dashboard": {
+        "views": 7,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-10-20T17:34:26.507Z"
+      },
       "youtube": {
-        "privacy": "private",
-        "views": 1,
+        "privacy": "public",
+        "views": 7,
         "likes": 0,
         "comments": 0
       },
@@ -47,10 +143,10 @@
       "state": "published",
       "publishAt": "2026-10-19T13:37:00.000Z",
       "dashboard": {
-        "views": 16,
+        "views": 20,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
@@ -71,14 +167,14 @@
       "state": "published",
       "publishAt": "2026-10-19T07:07:00.000Z",
       "dashboard": {
-        "views": 1,
+        "views": 2,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1,
+        "views": 2,
         "likes": 0,
         "comments": 0
       },
@@ -98,7 +194,7 @@
         "views": 2,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
@@ -119,14 +215,14 @@
       "state": "published",
       "publishAt": "2026-10-18T13:37:00.000Z",
       "dashboard": {
-        "views": 34,
+        "views": 41,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 34,
+        "views": 41,
         "likes": 0,
         "comments": 0
       },
@@ -146,7 +242,7 @@
         "views": 26,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
@@ -167,10 +263,10 @@
       "state": "published",
       "publishAt": "2026-10-17T13:37:00.000Z",
       "dashboard": {
-        "views": 282,
+        "views": 283,
         "likes": 3,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
@@ -179,9 +275,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 1,
+        "days": 1,
+        "lastDay": "2026-10-17"
       }
     },
     {
@@ -194,7 +290,7 @@
         "views": 40,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
@@ -203,9 +299,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 35,
+        "days": 1,
+        "lastDay": "2026-10-17"
       }
     },
     {
@@ -218,7 +314,7 @@
         "views": 6,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
@@ -227,9 +323,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 5,
-        "days": 1,
-        "lastDay": "2026-10-16"
+        "views": 6,
+        "days": 2,
+        "lastDay": "2026-10-17"
       }
     },
     {
@@ -242,18 +338,18 @@
         "views": 8,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 8,
+        "views": 7,
         "likes": 0,
         "comments": 0
       },
       "analytics": {
         "views": 7,
-        "days": 1,
-        "lastDay": "2026-10-16"
+        "days": 2,
+        "lastDay": "2026-10-17"
       }
     },
     {
@@ -266,7 +362,7 @@
         "views": 40,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
@@ -275,9 +371,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 39,
-        "days": 2,
-        "lastDay": "2026-10-16"
+        "views": 40,
+        "days": 3,
+        "lastDay": "2026-10-17"
       }
     },
     {
@@ -290,7 +386,7 @@
         "views": 56,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
@@ -300,8 +396,8 @@
       },
       "analytics": {
         "views": 56,
-        "days": 2,
-        "lastDay": "2026-10-16"
+        "days": 3,
+        "lastDay": "2026-10-17"
       }
     },
     {
@@ -314,7 +410,7 @@
         "views": 20,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-19T17:25:09.875Z"
+        "liveAt": "2026-10-20T17:34:26.507Z"
       },
       "youtube": {
         "privacy": "public",
@@ -324,8 +420,8 @@
       },
       "analytics": {
         "views": 20,
-        "days": 3,
-        "lastDay": "2026-10-16"
+        "days": 4,
+        "lastDay": "2026-10-17"
       }
     }
   ]
