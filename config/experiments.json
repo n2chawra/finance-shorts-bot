@@ -14,6 +14,23 @@
       "description": "Long videos: music bed ~4 dB lower and nearly silent under speech (renderer/timeline/build.py QUIET_*)",
       "minPerArm": 4,
       "maxDays": 42
+    },
+    {
+      "id": "hook-voice-matches-frame",
+      "area": "hook",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-10-20",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "prompt": {
+        "on": "Hook rule for this video: the first beat's `say` voices exactly the stakes frame 0 shows (the hook question in the same words, or the hook figure's placeholder) within its first 8 words. Never open with a warm-up phrase ('Quick question', 'Let's talk about', 'Did you know', 'Today', 'So').",
+        "off": null
+      },
+      "proposal": "hook-voice-matches-frame",
+      "description": "Shorts: the first spoken words say what frame 0 shows; no warm-up opener"
     }
   ]
 }

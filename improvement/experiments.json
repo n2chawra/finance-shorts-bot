@@ -78,6 +78,89 @@
       "hypothesis": "Casual Finance's long videos (0.5-2.3M views) have no music bed at all (measured 2026-10-19: true silence between sentences, voice 35 dB over the floor; ours ~13 dB). A quieter bed keeps attention on the narration and lifts average % viewed.",
       "notes": "Started by the owner after the Casual Finance style study (improvement/style-study/2026-10-19-casual-finance.md). On keep: make QUIET_LEVEL/QUIET_DUCK the long-video default in build.py and remove the flag. On revert: remove the branch.",
       "commits": []
+    },
+    {
+      "id": "hook-voice-matches-frame",
+      "proposal": "hook-voice-matches-frame",
+      "area": "hook",
+      "format": "short",
+      "flag": "hook-voice-matches-frame",
+      "arms": [
+        "on",
+        "off"
+      ],
+      "startedAt": "2026-10-20",
+      "minPerArm": 8,
+      "maxDays": 21,
+      "primary": "views48h",
+      "guard": "qa_failures",
+      "status": "running",
+      "templates": [
+        "short_story"
+      ],
+      "description": "The writer's first line voices the on-screen hook (question or figure) within 8 words, no warm-up opener",
+      "hypothesis": "v-20261018-02 showed 'Is your savings account keeping up?' at frame 0 while the voice said 'Quick question about your savings.' (1.8 s, no stakes). Saying the stakes in the first second keeps more viewers past the swipe and lifts 48 h views.",
+      "notes": "Prompt-only (writer). On keep: fold the rule into generator/prompts/writer.md and add a check_script rule. On revert: drop the prompt.",
+      "commits": []
+    },
+    {
+      "id": "narrator-not-cast-voice",
+      "proposal": "narrator-not-cast-voice",
+      "area": "sound",
+      "status": "adopted",
+      "startedAt": "2026-10-20",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "The render step never gives the narrator the voice of a cast member who speaks in the same script (Sharma am_fenrir, Sikka af_bella); it takes the least recently used other narrator.",
+      "evidence": "Research 2026-10-20: v-20261018-04 and L-20261018-01 had narrator am_fenrir while Sharma (am_fenrir) also spoke.",
+      "commits": []
+    },
+    {
+      "id": "stack-prop-figure",
+      "proposal": "2026-10-19b-stack-prop-figure-overlap",
+      "area": "motion",
+      "status": "adopted",
+      "startedAt": "2026-10-20",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "Prop 'stack': bills sit at half the old spacing and the figure rides just above the top bill, clear of a kicker and inside the frame under a punch.",
+      "evidence": "Scout/Studio 2026-10-19: L-20261019-01 beat 'total' drew kicker and figure on top of each other, and without the kicker '$11,638' left the frame. Reproduced in stills before the fix (long and Short); after it both separate and the layout probe passes.",
+      "commits": []
+    },
+    {
+      "id": "chapter-timestamps-not-claims",
+      "proposal": "2026-10-19b-numbercheck-chapter-timestamps",
+      "area": "pipeline",
+      "status": "adopted",
+      "startedAt": "2026-10-20",
+      "templates": [
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "The number check ignores a leading m:ss / h:mm:ss timestamp on lines of a long video's description; numbers after it are still checked.",
+      "evidence": "Studio 2026-10-19 had to run number-check before adding chapter timestamps, leaving the shipped description unchecked.",
+      "commits": []
+    },
+    {
+      "id": "maths-sip-stepup-loan-prepay",
+      "proposal": "2026-10-18-maths-sip-stepup, 2026-10-18-maths-loan-tenure",
+      "area": "template",
+      "status": "adopted",
+      "startedAt": "2026-10-20",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "New maths kinds sip_stepup (yearly step-up vs flat SIP) and loan_prepay (prepay: lower EMI vs shorter loan), each recomputed in closed form by the number check; example examples/short_story_prepay.json.",
+      "evidence": "Scout backlog (template/high): feed topics on step-up SIPs and EMI-vs-tenure prepayment could not be told with sip/emi. 5,382 random input sets: figures agree except 8 half-unit rounding edges on prepayments in a loan's last months (the number check rejects those; the writer picks other inputs).",
+      "commits": []
     }
   ]
 }

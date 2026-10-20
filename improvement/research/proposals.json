@@ -149,7 +149,7 @@
       "effort": "S",
       "risk": "Low; a stricter opener could read formulaic if every video opens with a number, so questions count too.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
       "priority": "normal"
     },
@@ -187,7 +187,7 @@
       "effort": "S",
       "risk": "None; narrator choice only.",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
       "priority": "high"
     },
@@ -208,7 +208,8 @@
       "metric": "avgViewPct",
       "status": "new",
       "route": "experiment",
-      "priority": "normal"
+      "priority": "normal",
+      "reason": "Waits: sound area is taken by the running quiet-bed experiment."
     }
   ]
 }
