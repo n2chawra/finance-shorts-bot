@@ -1,0 +1,158 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:57:56.943280+00:00",
+    "finishedAt": "2026-10-20T22:57:56.943280+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-20T22:58:20.967041+00:00",
+    "finishedAt": "2026-10-20T22:58:20.967041+00:00",
+    "notes": [
+      "beat 'road'.params.signs[0].at contains a typed number; use a placeholder: 'y1'"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:58:28.457688+00:00",
+    "finishedAt": "2026-10-20T22:58:28.457688+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-20T22:58:29.563177+00:00",
+    "finishedAt": "2026-10-20T22:58:29.563177+00:00",
+    "notes": [
+      "description mentions '2026', which is neither a script input nor a computed figure",
+      "description mentions '2027', which is neither a script input nor a computed figure",
+      "description mentions '28', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:58:35.262661+00:00",
+    "finishedAt": "2026-10-20T22:58:35.262661+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:58:36.288387+00:00",
+    "finishedAt": "2026-10-20T22:58:36.288387+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:58:44.219416+00:00",
+    "finishedAt": "2026-10-20T22:58:44.219416+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-20T22:59:21.024887+00:00",
+    "finishedAt": "2026-10-20T22:59:21.024887+00:00",
+    "notes": [
+      "Facts confirmed on gov.uk/income-tax-rates (2026-27: Personal Allowance £12,570, basic rate 20% on £12,571-£50,270); Budget date 28 Oct 2026 confirmed on the gov.uk Chancellor letter page; freeze to Apr 2031 per ICAEW/LITRG so 'if it stays' framing is current; fiscal drag explained generally with no prediction or hand-worked tax figure; 3% assumption stated; Scotland caveat on screen and in description; disclaimer present. Note: 'due this month' wording goes stale if published after 28 Oct (topic expires 2026-10-28)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-20T22:58:49.948047+00:00",
+    "finishedAt": "2026-10-20T23:02:22.916636+00:00",
+    "notes": [
+      "length 50 s is outside 30–45 s"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:02:32.903637+00:00",
+    "finishedAt": "2026-10-20T23:02:32.903637+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:02:33.905568+00:00",
+    "finishedAt": "2026-10-20T23:05:41.205190+00:00",
+    "notes": [
+      "45 s, plum/acoustic, peak -1.0 dB, mean -17.2 dB"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:05:55.765057+00:00",
+    "finishedAt": "2026-10-20T23:05:55.765057+00:00",
+    "notes": [
+      "Re-review after cut: Sharma beat removed; headline (no longer 'due this month', fixes the staleness note), road and drag rewordings change no claim; facts unchanged and still confirmed on gov.uk/income-tax-rates (2026-27: £12,570 allowance, 20% basic rate); Budget 28 Oct 2026 per gov.uk; freeze to 2031 per ICAEW/LITRG; 3% assumption stated; Scotland caveat kept; description ends with disclaimer."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-20T23:06:25.166229+00:00",
+    "finishedAt": "2026-10-20T23:06:25.166229+00:00",
+    "notes": [
+      "[script] Thumbnail (thumbnail.png, story layout): the 'to' label 'Kept up with prices' is too long for the receipt card - 'PRICES' runs past the receipt's right edge onto the dark background (dark text on dark purple, last letter at the frame edge). Shorten 'to' (e.g. 'With prices') or the scene should wrap/shrink the label; Rohan's head also crowds the bottom of the receipt right under the figure.",
+      "[script] Beat 'rate' (source scene, 15-18 s): the pen circle at x=0.55, y=0.5 lands on 'and Northern' in the 'England, Wales and Northern Ireland' line, crossing that text, instead of circling the highlighted 'Basic rate: 20%' line it is timed to. Move the circle to the basic-rate line (about x 0.3, y 0.4) or drop it."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:06:39.629845+00:00",
+    "finishedAt": "2026-10-20T23:06:39.629845+00:00",
+    "notes": [
+      "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:06:40.645774+00:00",
+    "finishedAt": "2026-10-20T23:09:39.418141+00:00",
+    "notes": [
+      "45 s, plum/acoustic, peak -1.0 dB, mean -17.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:09:58.131954+00:00",
+    "finishedAt": "2026-10-20T23:09:58.131954+00:00",
+    "notes": [
+      "Re-render: thumbnail 'With prices' label now fits inside the receipt; pen circle gone from the GOV.UK card (15 s); hook £12,570 at 0 s, split counts to £14,572 matching narration, disclaimer on end card, 45 s, peak -1.0 / mean -17.2 dB, no overlaps or cut-offs."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:10:11.329686+00:00",
+    "finishedAt": "2026-10-20T23:10:11.329686+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

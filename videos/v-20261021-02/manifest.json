@@ -1,0 +1,313 @@
+{
+  "id": "v-20261021-02",
+  "createdAt": "2026-10-20T23:10:11.329591+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why a tax-free allowance that never moves takes more of a UK pay rise each year",
+    "category": "tax",
+    "feed_id": "2026-10-21-uk-budget-oct28-frozen-allowance"
+  },
+  "title": "UK Budget week: how a frozen £12,570 allowance quietly raises your tax",
+  "description": "The Personal Allowance is £12,570 this tax year and the basic rate is 20%. If pay rises with prices at an assumed 3% a year for 5 years and the allowance stays put, more of the same real pay is taxed. This is fiscal drag, explained in Budget week, with no prediction of what the Budget will change. England, Wales and Northern Ireland rates; Scotland differs. Data: GOV.UK. Speak to a licensed financial adviser in your country before making financial decisions. Illustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#UKBudget",
+    "#Tax",
+    "#PersonalFinance"
+  ],
+  "hookStyle": "question",
+  "cta": "Watch the thresholds",
+  "seed": 27514,
+  "style": {
+    "palette": "plum",
+    "genre": "acoustic",
+    "key": "C",
+    "bpm": 100,
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.3,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Your tax-free £12,570 never moves. So why does your tax go up?",
+        "start": 0.27,
+        "seconds": 5.25,
+        "window": 5.6,
+        "fill": 0.938
+      },
+      {
+        "scene": "headline",
+        "text": "With a UK Budget coming, here's the part that hits every payslip. Up to £12,570, you pay no income tax.",
+        "start": 5.87,
+        "seconds": 7.78,
+        "window": 8.4,
+        "fill": 0.926
+      },
+      {
+        "scene": "rate",
+        "text": "Above it, the basic rate takes 20% of every extra pound.",
+        "start": 14.27,
+        "seconds": 3.39,
+        "window": 3.87,
+        "fill": 0.876
+      },
+      {
+        "scene": "road",
+        "text": "Say your pay of £30,000 rises with prices, an assumed 3% a year. In 5 years, it's £34,778.",
+        "start": 18.13,
+        "seconds": 9.18,
+        "window": 9.73,
+        "fill": 0.943
+      },
+      {
+        "scene": "frozen",
+        "text": "But if the allowance stays at £12,570, it falls behind. Kept up with prices, it would reach £14,572.",
+        "start": 27.87,
+        "seconds": 9.35,
+        "window": 9.93,
+        "fill": 0.942
+      },
+      {
+        "scene": "drag",
+        "text": "So more of the same real pay gets taxed. That's fiscal drag.",
+        "start": 37.8,
+        "seconds": 3.47,
+        "window": 3.8,
+        "fill": 0.913
+      },
+      {
+        "scene": "outro",
+        "text": "On Budget day, watch the thresholds, not just the rates.",
+        "start": 41.6,
+        "seconds": 2.83,
+        "window": 3.4,
+        "fill": 0.832
+      }
+    ]
+  },
+  "durationSec": 45,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.2
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off"
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after cut: Sharma beat removed; headline (no longer 'due this month', fixes the staleness note), road and drag rewordings change no claim; facts unchanged and still confirmed on gov.uk/income-tax-rates (2026-27: £12,570 allowance, 20% basic rate); Budget 28 Oct 2026 per gov.uk; freeze to 2031 per ICAEW/LITRG; 3% assumption stated; Scotland caveat kept; description ends with disclaimer."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-render: thumbnail 'With prices' label now fits inside the receipt; pen circle gone from the GOV.UK card (15 s); hook £12,570 at 0 s, split counts to £14,572 matching narration, disclaimer on end card, 45 s, peak -1.0 / mean -17.2 dB, no overlaps or cut-offs."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-20T22:57:56.943280+00:00",
+      "finishedAt": "2026-10-20T22:57:56.943280+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-20T22:58:20.967041+00:00",
+      "finishedAt": "2026-10-20T22:58:20.967041+00:00",
+      "notes": [
+        "beat 'road'.params.signs[0].at contains a typed number; use a placeholder: 'y1'"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-20T22:58:28.457688+00:00",
+      "finishedAt": "2026-10-20T22:58:28.457688+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-20T22:58:29.563177+00:00",
+      "finishedAt": "2026-10-20T22:58:29.563177+00:00",
+      "notes": [
+        "description mentions '2026', which is neither a script input nor a computed figure",
+        "description mentions '2027', which is neither a script input nor a computed figure",
+        "description mentions '28', which is neither a script input nor a computed figure"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-20T22:58:35.262661+00:00",
+      "finishedAt": "2026-10-20T22:58:35.262661+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-20T22:58:36.288387+00:00",
+      "finishedAt": "2026-10-20T22:58:36.288387+00:00",
+      "notes": [
+        "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-20T22:58:44.219416+00:00",
+      "finishedAt": "2026-10-20T22:58:44.219416+00:00",
+      "notes": [
+        "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-20T22:59:21.024887+00:00",
+      "finishedAt": "2026-10-20T22:59:21.024887+00:00",
+      "notes": [
+        "Facts confirmed on gov.uk/income-tax-rates (2026-27: Personal Allowance £12,570, basic rate 20% on £12,571-£50,270); Budget date 28 Oct 2026 confirmed on the gov.uk Chancellor letter page; freeze to Apr 2031 per ICAEW/LITRG so 'if it stays' framing is current; fiscal drag explained generally with no prediction or hand-worked tax figure; 3% assumption stated; Scotland caveat on screen and in description; disclaimer present. Note: 'due this month' wording goes stale if published after 28 Oct (topic expires 2026-10-28)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-20T22:58:49.948047+00:00",
+      "finishedAt": "2026-10-20T23:02:22.916636+00:00",
+      "notes": [
+        "length 50 s is outside 30–45 s"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-20T23:02:32.903637+00:00",
+      "finishedAt": "2026-10-20T23:02:32.903637+00:00",
+      "notes": [
+        "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-20T23:02:33.905568+00:00",
+      "finishedAt": "2026-10-20T23:05:41.205190+00:00",
+      "notes": [
+        "45 s, plum/acoustic, peak -1.0 dB, mean -17.2 dB"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-20T23:05:55.765057+00:00",
+      "finishedAt": "2026-10-20T23:05:55.765057+00:00",
+      "notes": [
+        "Re-review after cut: Sharma beat removed; headline (no longer 'due this month', fixes the staleness note), road and drag rewordings change no claim; facts unchanged and still confirmed on gov.uk/income-tax-rates (2026-27: £12,570 allowance, 20% basic rate); Budget 28 Oct 2026 per gov.uk; freeze to 2031 per ICAEW/LITRG; 3% assumption stated; Scotland caveat kept; description ends with disclaimer."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-20T23:06:25.166229+00:00",
+      "finishedAt": "2026-10-20T23:06:25.166229+00:00",
+      "notes": [
+        "[script] Thumbnail (thumbnail.png, story layout): the 'to' label 'Kept up with prices' is too long for the receipt card - 'PRICES' runs past the receipt's right edge onto the dark background (dark text on dark purple, last letter at the frame edge). Shorten 'to' (e.g. 'With prices') or the scene should wrap/shrink the label; Rohan's head also crowds the bottom of the receipt right under the figure.",
+        "[script] Beat 'rate' (source scene, 15-18 s): the pen circle at x=0.55, y=0.5 lands on 'and Northern' in the 'England, Wales and Northern Ireland' line, crossing that text, instead of circling the highlighted 'Basic rate: 20%' line it is timed to. Move the circle to the basic-rate line (about x 0.3, y 0.4) or drop it."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-20T23:06:39.629845+00:00",
+      "finishedAt": "2026-10-20T23:06:39.629845+00:00",
+      "notes": [
+        "16 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-20T23:06:40.645774+00:00",
+      "finishedAt": "2026-10-20T23:09:39.418141+00:00",
+      "notes": [
+        "45 s, plum/acoustic, peak -1.0 dB, mean -17.2 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-20T23:09:58.131954+00:00",
+      "finishedAt": "2026-10-20T23:09:58.131954+00:00",
+      "notes": [
+        "Re-render: thumbnail 'With prices' label now fits inside the receipt; pen circle gone from the GOV.UK card (15 s); hook £12,570 at 0 s, split counts to £14,572 matching narration, disclaimer on end card, 45 s, peak -1.0 / mean -17.2 dB, no overlaps or cut-offs."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-20T23:10:11.329686+00:00",
+      "finishedAt": "2026-10-20T23:10:11.329686+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261021-02",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261021-02"
+  },
+  "thumbnails": [
+    {
+      "file": "thumbnail.png",
+      "angle": "question"
+    },
+    {
+      "file": "thumbnail-b.png",
+      "angle": "warning"
+    },
+    {
+      "file": "thumbnail-c.png",
+      "angle": "number"
+    }
+  ]
+}

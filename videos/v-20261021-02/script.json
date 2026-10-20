@@ -1,0 +1,340 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261021-02",
+ "seed": 27514,
+ "story": "how_it_works",
+ "currency": "GBP",
+ "style": {
+  "palette": "plum",
+  "genre": "acoustic",
+  "key": "C",
+  "bpm": 100
+ },
+ "feed_id": "2026-10-21-uk-budget-oct28-frozen-allowance",
+ "facts": [
+  {
+   "label": "UK standard Personal Allowance, 2026 to 2027 tax year",
+   "value": 12570,
+   "unit": "money",
+   "currency": "GBP",
+   "as_of": "2026-04-06",
+   "source": "GOV.UK",
+   "url": "https://www.gov.uk/income-tax-rates"
+  },
+  {
+   "label": "UK basic rate of income tax, 2026 to 2027 tax year",
+   "value": 20,
+   "unit": "percent",
+   "currency": "GBP",
+   "as_of": "2026-04-06",
+   "source": "GOV.UK",
+   "url": "https://www.gov.uk/income-tax-rates"
+  }
+ ],
+ "maths": [
+  {
+   "name": "pay",
+   "kind": "lumpsum",
+   "amount": 30000,
+   "rate_pct": 3,
+   "years": 5
+  },
+  {
+   "name": "kept",
+   "kind": "lumpsum",
+   "amount": 12570,
+   "rate_pct": 3,
+   "years": 5
+  }
+ ],
+ "thumbnail": {
+  "layout": "story",
+  "hero": "cash",
+  "tag": "Tax-free, frozen",
+  "small": "{fact1}",
+  "to": "With prices",
+  "figure": "{kept_final}",
+  "who": "rohan",
+  "pose": "worried",
+  "expression": "confused",
+  "words": "Frozen allowance, higher tax?",
+  "angle": "question"
+ },
+ "thumbnails": [
+  {
+   "layout": "story",
+   "hero": "cash",
+   "tag": "Your pay",
+   "small": "{pay_amount}",
+   "to": "Same real pay",
+   "figure": "{pay_final}",
+   "who": "priya",
+   "pose": "present",
+   "expression": "smirk",
+   "words": "Budget week: fiscal drag",
+   "angle": "warning"
+  },
+  {
+   "layout": "story",
+   "hero": "cash",
+   "tag": "Allowance",
+   "small": "{fact1}",
+   "to": "Basic rate",
+   "figure": "{fact2}",
+   "who": "sharma",
+   "pose": "hips",
+   "expression": "smirk",
+   "words": "The tax nobody announced",
+   "angle": "number"
+  }
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "prop",
+   "camera": "punch:why",
+   "say": "Your tax-free {fact1} never moves. So why does your tax go up?",
+   "events": {
+    "why": {
+     "word": "why"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "why",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "world": "kitchen",
+    "prop": "tag",
+    "text": "{fact1}",
+    "at": "start",
+    "kicker": "Tax-free allowance, frozen",
+    "sub": "so why pay more tax?",
+    "presenter": {
+     "who": "rohan",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "phone",
+       "prop": "letter",
+       "expression": "confused"
+      },
+      {
+       "at": "why",
+       "pose": "shrug",
+       "expression": "worried",
+       "bubble": {
+        "icon": "?"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "headline",
+   "scene": "headline",
+   "transition": "whip",
+   "say": "With a UK Budget coming, here's the part that hits every payslip. Up to {fact1}, you pay no income tax.",
+   "events": {
+    "fig": {
+     "word": "Up"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fig"
+    }
+   ],
+   "params": {
+    "kicker": "UK BUDGET",
+    "title": "The tax-free part of your pay",
+    "figure": "{fact1}",
+    "figureAt": "fig",
+    "label": "Personal Allowance this tax year"
+   }
+  },
+  {
+   "id": "rate",
+   "scene": "source",
+   "transition": "zoom",
+   "say": "Above it, the basic rate takes {fact2} of every extra pound.",
+   "events": {
+    "rate": {
+     "word": "basic"
+    },
+    "pound": {
+     "word": "pound"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "rate"
+    }
+   ],
+   "params": {
+    "publisher": "GOV.UK",
+    "title": "Income Tax rates and Personal Allowances",
+    "world": "office",
+    "lines": [
+     {
+      "text": "Personal Allowance: {fact1}"
+     },
+     {
+      "text": "Basic rate: {fact2}",
+      "highlight": true,
+      "at": "rate"
+     },
+     {
+      "text": "England, Wales and Northern Ireland",
+      "underline": true,
+      "at": "pound"
+     }
+    ],
+    "presenter": {
+     "who": "priya",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "aimUp",
+       "prop": "pointerUp",
+       "expression": "smirk"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "road",
+   "scene": "road",
+   "transition": "slide",
+   "say": "Say your pay of {pay_amount} rises with prices, an assumed {pay_rate} a year. In {pay_years} years, it's {pay_final}.",
+   "events": {
+    "now": {
+     "word": "pay"
+    },
+    "later": {
+     "word": "In"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "now"
+    },
+    {
+     "kind": "kaching",
+     "at": "later"
+    }
+   ],
+   "params": {
+    "who": "rohan",
+    "title": "Pay keeps up with prices",
+    "land": "city",
+    "time": "dawn",
+    "weather": "leaves",
+    "signs": [
+     {
+      "label": "Today",
+      "text": "{pay_amount}",
+      "at": "now"
+     },
+     {
+      "label": "Later",
+      "text": "{pay_final}",
+      "at": "later",
+      "good": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "frozen",
+   "scene": "split",
+   "transition": "zoom",
+   "say": "But if the allowance stays at {fact1}, it falls behind. Kept up with prices, it would reach {kept_final}.",
+   "events": {
+    "stay": {
+     "word": "stays"
+    },
+    "kept": {
+     "word": "reach"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "stay"
+    },
+    {
+     "kind": "pop-high",
+     "at": "kept"
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "Allowance, frozen",
+     "text": "{fact1}",
+     "value": 0,
+     "at": "stay"
+    },
+    "right": {
+     "label": "Kept up with prices",
+     "text": "{kept_final}",
+     "value": "@kept.final",
+     "at": "kept"
+    }
+   }
+  },
+  {
+   "id": "drag",
+   "scene": "kinetic",
+   "transition": "wipe",
+   "say": "So more of the same real pay gets taxed. That's fiscal drag.",
+   "events": {
+    "name": {
+     "word": "fiscal"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "start"
+    },
+    {
+     "kind": "ding",
+     "at": "name"
+    }
+   ],
+   "params": {
+    "mode": "type",
+    "lines": [
+     {
+      "text": "Same real pay"
+     },
+     {
+      "text": "more of it taxed"
+     }
+    ]
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "On Budget day, watch the thresholds, not just the rates.",
+   "params": {
+    "cta": "Watch the thresholds",
+    "follow": "Follow for one money question, settled",
+    "assumption": "Assumes pay and prices rise {pay_rate} a year for {pay_years} years. Scotland's rates differ."
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}
