@@ -434,6 +434,29 @@
       ],
       "commit": "3a4f9bdc96619481e491056b9c2c2ed5a6bafb06",
       "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/39351101693"
+    },
+    {
+      "at": "2026-10-20T02:19:49+00:00",
+      "dayIst": "2026-10-20",
+      "agent": "dashboard",
+      "branch": "agent/dashboard/2026-10-20",
+      "result": "blocked",
+      "reasons": [
+        "apps/dashboard/src/app/calendar/page.tsx: changes the upload schedule settings (owner only)",
+        "improvement/activity/2026-10-20-dashboard.json: changes the upload schedule settings (owner only)",
+        "improvement/dashboard/backlog.json: changes the upload schedule settings (owner only)"
+      ],
+      "files": [
+        "apps/dashboard/e2e/smoke.spec.ts",
+        "apps/dashboard/src/app/calendar/page.tsx",
+        "apps/dashboard/src/app/page.tsx",
+        "apps/dashboard/src/app/templates/page.tsx",
+        "improvement/activity/2026-10-20-dashboard.json",
+        "improvement/dashboard/2026-10-20.md",
+        "improvement/dashboard/backlog.json"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/39358301377"
     }
   ]
 }
