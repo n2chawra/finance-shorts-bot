@@ -34,7 +34,7 @@ def sip_story(**over) -> dict:
     return {**script, **over}
 
 
-@pytest.mark.parametrize("name", ["long_story", "short_story", "news_story"])
+@pytest.mark.parametrize("name", ["long_story", "short_story", "news_story", "short_story_prepay"])
 def test_every_example_passes_the_number_check(name: str) -> None:
     script = example(name)
     feed_topic = {"facts": script["facts"]} if "facts" in script else None      # news: as research published it
@@ -95,3 +95,21 @@ def test_emi_at_zero_interest_is_principal_over_months() -> None:
     assert numbers.emi_total_interest(60000, 0, 1) == pytest.approx(0)
     r = maths.emi({"amount": 60000, "rate_pct": 0, "years": 1})
     assert r["figures"]["emi"] == "₹5,000" and r["values"]["interest"] == pytest.approx(0)
+
+
+@pytest.mark.parametrize("monthly, step, rate, years", [(5000, 10, 12, 20), (1000, 0, 8, 5), (2500, 7.5, 10, 1), (10000, 15, 6, 30)])
+def test_sip_stepup_closed_form_matches_the_story_maths(monthly: int, step: float, rate: float, years: int) -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "sip_stepup", "monthly": monthly, "step_pct": step,
+                               "rate_pct": rate, "years": years}])
+    passed, notes = number_check(script)
+    assert passed, notes
+
+
+@pytest.mark.parametrize("amount, rate, months, prepay, at", [(3000000, 8.5, 240, 300000, 36), (25000, 14, 24, 5000, 6),
+                                                              (500000, 9.25, 60, 5000, 58), (60000, 18, 36, 1000, 1)])
+def test_loan_prepay_closed_form_matches_the_story_maths(amount: int, rate: float, months: int, prepay: int, at: int) -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "loan_prepay", "amount": amount, "rate_pct": rate, "months": months,
+                               "prepay": prepay, "prepay_month": at}])
+    script["beats"][0]["params"]["lines"][0]["text"] = "{sip_saved_reduce_tenure}"
+    passed, notes = number_check(script)
+    assert passed, notes

@@ -35,6 +35,8 @@ chart series with `"@<maths name>.<key>"`. The builder rejects anything else.
 | `emi` | amount, rate_pct, years | amount, rate, months, emi, total_paid, interest | — |
 | `sip` | monthly, rate_pct, years | amount, rate, years, final, final_long, invested, gains, ratio | value |
 | `lumpsum` | amount, rate_pct, years | amount, rate, years, final, final_long, gains, ratio | value |
+| `sip_stepup` | monthly, step_pct, rate_pct, years: a SIP raised by step_pct every year (not rounded), next to the same SIP never raised | amount, step, rate, years, final, final_long, invested, gains, final_flat, invested_flat, extra, last_monthly, ratio (stepped ÷ flat) | value, flat (yearly), ticks, years |
+| `loan_prepay` | amount, rate_pct, months, prepay, prepay_month: one extra payment right after EMI number prepay_month, then either the EMI falls (same end date) or the loan ends sooner (same EMI) | amount, rate, months, prepay, prepay_month, emi, emi_reduced, emi_cut, interest_base, interest_reduce_emi, interest_reduce_tenure, months_reduce_tenure, months_saved, saved_reduce_emi, saved_reduce_tenure | balance, balance_prepaid (monthly), ticks, years |
 
 ## A beat
 

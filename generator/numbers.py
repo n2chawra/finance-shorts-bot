@@ -93,6 +93,39 @@ def card_min_due(amount: float, rate_pct_month: float, min_due_pct: float, floor
             "owed_year1": owed12, "interest_year1": paid12 + owed12 - amount}
 
 
+def sip_stepup_fv(monthly: float, step_pct: float, annual_pct: float, years: int) -> tuple[float, float]:
+    """(final value, total invested) of a SIP raised by step_pct each year: one SIP block per year,
+    each a 12-month SIP compounded on to the end. Closed form per block, summed."""
+    r, s = annual_pct/100/12, step_pct/100
+    block = sip_fv(1, annual_pct, 12)
+    final = sum(monthly*(1 + s)**y*block*(1 + r)**(12*(years - 1 - y)) for y in range(years))
+    invested = monthly*12*(((1 + s)**years - 1)/s if s else years)
+    return final, round(invested, 6)
+
+
+def loan_balance(principal: float, annual_pct: float, pay: float, k: int) -> float:
+    """What is still owed after k payments of `pay`."""
+    r = annual_pct/100/12
+    return principal*(1 + r)**k - pay*((1 + r)**k - 1)/r
+
+
+def loan_prepay(amount: float, annual_pct: float, months: int, prepay: float, prepay_month: int) -> dict[str, float]:
+    """One prepayment after EMI number prepay_month: the lower EMI over the same end date, or the same
+    EMI with the end date brought forward (n = -ln(1 - rB/E)/ln(1 + r) on the balance B left)."""
+    r, n, p = annual_pct/100/12, months, prepay_month
+    pay = emi(amount, annual_pct, n/12)
+    left = loan_balance(amount, annual_pct, pay, p) - prepay
+    reduced = emi(left, annual_pct, (n - p)/12)
+    full = math.floor(-math.log(1 - r*left/pay)/math.log(1 + r) + 1e-9)
+    rest = loan_balance(left, annual_pct, pay, full)
+    tail = rest*(1 + r) if rest > 0.005 else 0.0
+    tenure = p + full + (1 if tail else 0)
+    base = pay*n - amount
+    by_emi, by_tenure = pay*p + prepay + reduced*(n - p) - amount, pay*(p + full) + prepay + tail - amount
+    return {"emi": pay, "emi_reduced": reduced, "interest_base": base, "interest_reduce_emi": by_emi,
+            "interest_reduce_tenure": by_tenure, "months_reduce_tenure": tenure}
+
+
 def _long_story(s: dict) -> dict[str, str]:
     """The figures of a story script (long or short): its `maths` from the closed forms above, and
     its sourced facts exactly as the feed published them."""
@@ -116,6 +149,25 @@ def _long_story(s: dict) -> dict[str, str]:
             final, invested = sip_fv(m["monthly"], m["rate_pct"], m["years"]*12), m["monthly"]*m["years"]*12
             out |= {f"{n}_final": fm.short(final), f"{n}_final_long": fm.long(final), f"{n}_invested": fm.short(invested),
                     f"{n}_gains": fm.short(final - invested), f"{n}_ratio": times(final/invested)}
+        elif kind == "sip_stepup":
+            final, invested = sip_stepup_fv(m["monthly"], m["step_pct"], m["rate_pct"], m["years"])
+            flat = sip_fv(m["monthly"], m["rate_pct"], m["years"]*12)
+            out |= {f"{n}_final": fm.short(final), f"{n}_final_long": fm.long(final), f"{n}_invested": fm.short(invested),
+                    f"{n}_gains": fm.short(final - invested), f"{n}_final_flat": fm.short(flat),
+                    f"{n}_invested_flat": fm.short(m["monthly"]*m["years"]*12), f"{n}_extra": fm.short(final - flat),
+                    f"{n}_last_monthly": fm.full(round(m["monthly"]*(1 + m["step_pct"]/100)**(m["years"] - 1), 6)),
+                    f"{n}_ratio": times(final/flat)}
+        elif kind == "loan_prepay":
+            c = loan_prepay(m["amount"], m["rate_pct"], round(m["months"]), m["prepay"], round(m["prepay_month"]))
+            months = round(m["months"])
+            out |= {f"{n}_emi": fm.full(c["emi"]), f"{n}_emi_reduced": fm.full(c["emi_reduced"]),
+                    f"{n}_emi_cut": fm.full(c["emi"] - c["emi_reduced"]), f"{n}_interest_base": fm.short(c["interest_base"]),
+                    f"{n}_interest_reduce_emi": fm.short(c["interest_reduce_emi"]),
+                    f"{n}_interest_reduce_tenure": fm.short(c["interest_reduce_tenure"]),
+                    f"{n}_months_reduce_tenure": str(c["months_reduce_tenure"]),
+                    f"{n}_months_saved": str(months - c["months_reduce_tenure"]),
+                    f"{n}_saved_reduce_emi": fm.short(c["interest_base"] - c["interest_reduce_emi"]),
+                    f"{n}_saved_reduce_tenure": fm.short(c["interest_base"] - c["interest_reduce_tenure"])}
         elif kind == "lumpsum":
             final = lumpsum_fv(m["amount"], m["rate_pct"], m["years"])
             out |= {f"{n}_final": fm.short(final), f"{n}_final_long": fm.long(final), f"{n}_gains": fm.short(final - m["amount"]),
