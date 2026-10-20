@@ -27,7 +27,7 @@ from pathlib import Path
 
 from renderer import remotion
 from renderer.engine.formatting import CURRENCIES
-from renderer.timeline.build import NARRATOR_VOICES, check_script
+from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script
 
 from . import experiments, history, topics, variety
 from .numbers import number_check
@@ -163,14 +163,19 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
 
 # ---------------- steps ----------------
 
-def next_narrator(entries: list[dict]) -> str:
-    """The narrator voice these videos used longest ago (a never-used one first)."""
-    last = {v: -1 for v in NARRATOR_VOICES}
+def cast_voices(script: dict) -> set[str]:
+    """The voices of the cast members who speak in this script."""
+    return {CAST_VOICES[b["speaker"]] for b in script.get("beats") or [] if b.get("speaker") in CAST_VOICES}
+
+
+def next_narrator(entries: list[dict], taken: set[str] = frozenset()) -> str:
+    """The narrator voice these videos used longest ago (a never-used one first), never one in `taken`."""
+    last = {v: -1 for v in NARRATOR_VOICES if v not in taken} or {v: -1 for v in NARRATOR_VOICES}
     for i, e in enumerate(entries):
         voice = (e.get("style") or {}).get("voice")
         if voice in last:
             last[voice] = i
-    return min(NARRATOR_VOICES, key=lambda v: last[v])
+    return min(last, key=lambda v: last[v])
 
 
 def check_plan(vid: str, root: Path = ROOT) -> list[str]:
@@ -226,11 +231,13 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         if script.get("template") not in TEMPLATES:
             raise ValueError(f"template must be one of {', '.join(TEMPLATES)}")
         # voices rotate per video (CLAUDE.md): a missing narrator, or the previous video's, gives way to the
-        # one used longest ago; it is saved in the script so a re-render keeps the same voice
+        # one used longest ago; it is saved in the script so a re-render keeps the same voice. The narrator
+        # never shares a voice with a cast member who speaks in the same video (Sharma, Sikka)
         earlier = [e for e in history.of_format(history.load(root), plan_format(script)) if e["id"] != vid]
         previous = (earlier[-1].get("style") or {}).get("voice") if earlier else None
-        if not script.get("narrator") or script["narrator"] == previous:
-            script["narrator"] = next_narrator(earlier)
+        taken = cast_voices(script)
+        if not script.get("narrator") or script["narrator"] == previous or script["narrator"] in taken:
+            script["narrator"] = next_narrator(earlier, taken)
             _write(d / "script.json", script)
         # the video's A/B variants travel in the timeline, so scenes can read them and ship records them
         script["experiments"] = experiments.for_video(vid, script.get("template"), root)
