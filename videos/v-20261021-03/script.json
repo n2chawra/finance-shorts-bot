@@ -1,0 +1,313 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "id": "v-20261021-03",
+ "seed": 48203,
+ "story": "trap_alert",
+ "currency": "GBP",
+ "style": {
+  "palette": "ember",
+  "genre": "synthwave",
+  "key": "A",
+  "bpm": 110
+ },
+ "feed_id": "2026-10-20-uk-persistent-card-debt",
+ "maths": [
+  {
+   "name": "card",
+   "kind": "card_min_due",
+   "amount": 3000,
+   "rate_pct_month": 1.8,
+   "min_due_pct": 3,
+   "min_due_floor": 5
+  }
+ ],
+ "thumbnail": {
+  "layout": "story",
+  "hero": "card",
+  "tag": "Minimum at first",
+  "small": "{card_min_due}",
+  "to": "Years to clear",
+  "figure": "{card_years}",
+  "who": "rohan",
+  "pose": "worried",
+  "expression": "shock",
+  "words": "Only paying the minimum?",
+  "angle": "warning"
+ },
+ "thumbnails": [
+  {
+   "layout": "story",
+   "hero": "card",
+   "tag": "Year one paid",
+   "small": "{card_paid_year1}",
+   "to": "Just interest",
+   "figure": "{card_interest_year1}",
+   "who": "priya",
+   "pose": "present",
+   "expression": "smirk",
+   "words": "Where payments go",
+   "angle": "number"
+  },
+  {
+   "layout": "story",
+   "hero": "card",
+   "tag": "Card balance",
+   "small": "{card_amount}",
+   "to": "Total interest",
+   "figure": "{card_interest}",
+   "who": "sharma",
+   "pose": "hips",
+   "expression": "smirk",
+   "words": "When lenders must act",
+   "angle": "question"
+  }
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "bill",
+   "camera": "push",
+   "say": "Pay only the minimum on a {card_amount} card, starting at {card_min_due}? That takes {card_years} years to clear.",
+   "events": {
+    "total": {
+     "word": "takes"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "total",
+     "gain": 0.7
+    }
+   ],
+   "params": {
+    "who": "rohan",
+    "screen": [
+     {
+      "text": "Minimum due, at first",
+      "at": "start"
+     },
+     {
+      "text": "{card_min_due}",
+      "at": "start"
+     }
+    ],
+    "lines": [
+     {
+      "text": "Balance {card_amount}"
+     },
+     {
+      "text": "Rate {card_rate_year} a year"
+     }
+    ],
+    "total": {
+     "label": "Years to clear",
+     "text": "{card_years} years",
+     "at": "total"
+    },
+    "place": "home",
+    "time": "night",
+    "weather": "rain"
+   }
+  },
+  {
+   "id": "year",
+   "scene": "split",
+   "transition": "whip",
+   "say": "In year one you pay {card_paid_year1}. But {card_interest_year1} of that is just interest.",
+   "events": {
+    "paid": {
+     "word": "pay"
+    },
+    "int": {
+     "word": "just"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "paid"
+    },
+    {
+     "kind": "fail",
+     "at": "int",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "left": {
+     "label": "Paid in year one",
+     "text": "{card_paid_year1}",
+     "value": "@card.paid_year1",
+     "at": "paid"
+    },
+    "right": {
+     "label": "Just interest",
+     "text": "{card_interest_year1}",
+     "value": "@card.interest_year1",
+     "at": "int"
+    }
+   }
+  },
+  {
+   "id": "owed",
+   "scene": "prop",
+   "transition": "zoom",
+   "say": "After all that, you still owe {card_owed_year1}.",
+   "events": {
+    "owe": {
+     "word": "owe"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "clink",
+     "at": "owe"
+    }
+   ],
+   "params": {
+    "world": "kitchen",
+    "prop": "bucket",
+    "text": "{card_owed_year1}",
+    "at": "owe",
+    "kicker": "Still owed after a year",
+    "level": 0.9,
+    "presenter": {
+     "who": "rohan",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "facepalm",
+       "expression": "sad"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "name",
+   "scene": "kinetic",
+   "transition": "slide-up",
+   "say": "UK card rules have a name for this: persistent debt.",
+   "events": {
+    "name": {
+     "word": "persistent"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "start"
+    },
+    {
+     "kind": "ding",
+     "at": "name"
+    }
+   ],
+   "params": {
+    "mode": "type",
+    "lines": [
+     {
+      "text": "Persistent debt"
+     },
+     {
+      "text": "more on interest than off the balance"
+     }
+    ]
+   }
+  },
+  {
+   "id": "rules",
+   "scene": "kinetic",
+   "transition": "slide",
+   "say": "Pay more in interest and fees than off the balance for a year and a half, and the card company must contact you. After three years, it must offer a way to clear it.",
+   "events": {
+    "one": {
+     "word": "contact"
+    },
+    "two": {
+     "word": "offer"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "one"
+    },
+    {
+     "kind": "pop-high",
+     "at": "two"
+    }
+   ],
+   "params": {
+    "mode": "box",
+    "world": "office",
+    "city": "london",
+    "lines": [
+     {
+      "text": "Contact you",
+      "at": "one"
+     },
+     {
+      "text": "Offer a way out",
+      "at": "two"
+     }
+    ],
+    "presenter": {
+     "who": "sharma",
+     "acting": [
+      {
+       "sec": 0,
+       "pose": "think",
+       "expression": "thinking"
+      },
+      {
+       "at": "two",
+       "pose": "point",
+       "expression": "proud"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "priya",
+   "scene": "stage",
+   "speaker": "priya",
+   "transition": "slide",
+   "say": "And free debt charities can help you plan it.",
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "priya",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "happy",
+        "bubble": {
+         "icon": "idea"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "say": "So, how much of your card payment is just interest?",
+   "params": {
+    "cta": "Know your card's minimum",
+    "follow": "Follow for one money question, settled",
+    "assumption": "Assumes {card_amount} at {card_rate_month} a month, paying only a {card_min_due_pct} minimum. UK rules; your lender's terms may differ."
+   }
+  }
+ ],
+ "narrator": "am_fenrir"
+}

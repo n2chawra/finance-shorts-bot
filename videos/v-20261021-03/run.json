@@ -1,0 +1,158 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:10:36.225571+00:00",
+    "finishedAt": "2026-10-20T23:10:36.225571+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-20T23:10:56.252504+00:00",
+    "finishedAt": "2026-10-20T23:10:56.252504+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-20T23:11:00.464311+00:00",
+    "finishedAt": "2026-10-20T23:11:00.464311+00:00",
+    "notes": [
+      "description mentions '18', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:11:06.628476+00:00",
+    "finishedAt": "2026-10-20T23:11:06.628476+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:11:07.662833+00:00",
+    "finishedAt": "2026-10-20T23:11:07.662833+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:11:17.135665+00:00",
+    "finishedAt": "2026-10-20T23:11:17.135665+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-20T23:12:35.238165+00:00",
+    "finishedAt": "2026-10-20T23:12:35.238165+00:00",
+    "notes": [
+      "maths card (min_due_pct 2.5 at rate_pct_month 1.8): unrealistic for a UK card. UK minimums must cover at least interest, fees and charges plus 1% of the balance (2011 industry agreement, now FCA rules), i.e. at least 2.8% here; a 2.5% minimum barely exceeds the 1.8% interest, so the 36 years, £6,740 interest and year-one split all rest on a minimum no UK card sets. Use min_due_pct >= 2.8 (e.g. 3%: ~23 years, £1,009 paid in year one, £587 of it interest - still persistent debt) or phrase the minimum as interest + 1%.",
+      "hook beat 'Only ever pay the £75 minimum on a £3,000 card? That takes 36 years to clear.' (and screen 'Minimum due £75'): misleading. The minimum shrinks with the balance; paying a fixed £75 a month would clear it in about 6 years. Say the minimum is £75 at first and falls as the balance falls, or 'pay only the minimum each month'.",
+      "name beat screen line 'more interest than balance': wrong definition. Persistent debt (FCA CONC 6.7.27) is paying more in interest, fees and charges than you repay of the balance over 18 months, not interest exceeding the balance. Use e.g. 'more on interest than off the balance'.",
+      "Confirmed OK: rules beat (18 months -> firm must contact you; 36 months -> must offer a way to repay in a reasonable period) matches FCA press release fca.org.uk/news/press-releases/new-credit-card-rules-introduced-fca and FOS decisions citing CONC 6.7.27; ~21.6% APR realistic for UK; no lender named; charities named per verify list; description ends with disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:11:22.492929+00:00",
+    "finishedAt": "2026-10-20T23:13:53.389588+00:00",
+    "notes": [
+      "35 s, ember/synthwave, peak -1.0 dB, mean -17.3 dB"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:14:02.105681+00:00",
+    "finishedAt": "2026-10-20T23:14:02.105681+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:14:03.048497+00:00",
+    "finishedAt": "2026-10-20T23:14:03.048497+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:14:18.570771+00:00",
+    "finishedAt": "2026-10-20T23:14:18.570771+00:00",
+    "notes": [
+      "Re-review after fixes: 3% minimum meets the UK floor (interest 1.8% + 1% = 2.8%); hook now says the minimum starts at £90 and falls; persistent-debt line now 'more on interest than off the balance' (CONC 6.7.27); 18/36-month steps match the FCA press release; year one still has interest above principal (£587 vs £422), so persistent debt holds; 21.6% APR realistic; no lender named; description ends with disclaimer. Style note: the main thumbnail tag 'Minimum due' could also say 'at first'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:14:09.767660+00:00",
+    "finishedAt": "2026-10-20T23:16:33.552210+00:00",
+    "notes": [
+      "34 s, ember/synthwave, peak -1.0 dB, mean -17.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-20T23:17:02.384016+00:00",
+    "finishedAt": "2026-10-20T23:17:02.384016+00:00",
+    "notes": [
+      "[scene] checklist, beat 'rules' (20.0s and 25.0s): the corner coin mascot sits on top of the first letter of the title, so 'What the card company must do' reads 'hat the card company must do'; the checklist title needs to start clear of the mascot (or the mascot hidden on this scene)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:17:17.595932+00:00",
+    "finishedAt": "2026-10-20T23:17:17.595932+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:17:18.521021+00:00",
+    "finishedAt": "2026-10-20T23:20:33.325127+00:00",
+    "notes": [
+      "34 s, ember/synthwave, peak -1.0 dB, mean -17.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:20:55.147581+00:00",
+    "finishedAt": "2026-10-20T23:20:55.147581+00:00",
+    "notes": [
+      "Re-render: rules beat now a kinetic box over the London office with Sharma; 'CONTACT YOU' clear of the mascot, no overlaps or cut-off text, figures (£90, £3,000, 21.6%, 23 years, £1,009, £2,578) consistent, hook at 0s, disclaimer on last frame, thumbnail 'Minimum at first £90 / 23' clean; 34 s, peak -1.0 dB, mean -17.2 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-20T23:21:03.833815+00:00",
+    "finishedAt": "2026-10-20T23:21:03.833815+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
