@@ -212,6 +212,9 @@ def allowed_numbers(script: dict, figures: Mapping[str, str]) -> set[str]:
     return out | {t.lstrip("₹$£€") for t in out}
 
 
+_CHAPTER = re.compile(r"^\s*(?:\d+:)?\d+:\d\d(?=\s)", re.MULTILINE)
+
+
 def check_claims(texts: Mapping[str, str], script: dict, figures: Mapping[str, str]) -> list[str]:
     """Numbers in free text (title, description, hashtags) that no input or computed figure backs."""
     ok = allowed_numbers(script, figures)
@@ -245,7 +248,10 @@ def number_check(script: dict, plan: dict | None = None, feed_topic: dict | None
         for field in ("template", "seed", "style"):
             if script.get(field) != plan.get(field):
                 notes.append(f"script.{field} does not match the plan")
-        texts = {"title": plan["title"], "description": plan["description"], "hashtags": " ".join(plan.get("hashtags", []))}
+        description = plan["description"]
+        if script.get("template") == "long_story":     # a long video's chapter list: the timestamps are not claims
+            description = _CHAPTER.sub("", description)
+        texts = {"title": plan["title"], "description": description, "hashtags": " ".join(plan.get("hashtags", []))}
         notes += check_claims(texts, script, shown)
         topic = plan.get("topic") or {}
         feed_id = topic.get("feed_id") or (topic.get("trend") or {}).get("id")

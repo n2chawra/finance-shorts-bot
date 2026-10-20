@@ -2,6 +2,7 @@ import pytest
 
 from generator import numbers
 from generator.numbers import check_claims, number_check
+from renderer.engine.formatting import money_for
 
 from .conftest import example, make_plan
 
@@ -113,3 +114,17 @@ def test_loan_prepay_closed_form_matches_the_story_maths(amount: int, rate: floa
     script["beats"][0]["params"]["lines"][0]["text"] = "{sip_saved_reduce_tenure}"
     passed, notes = number_check(script)
     assert passed, notes
+
+
+def test_chapter_timestamps_in_a_long_description_are_not_claims() -> None:
+    script = example("long_story")
+    plan = {**make_plan(template="long_story", seed=script["seed"], style=script["style"], currency=money_for(script).currency),
+            "title": "Why paying the minimum on a card keeps you in debt",
+            "description": "Chapters:\n0:00 The bill\n1:14 The trap\n12:05 The way out\nIllustrative only. Not financial advice."}
+    passed, notes = number_check(script, plan)
+    assert not any("description mentions" in n for n in notes), notes
+    plan["description"] += "\n2:30 Save 45% today"                    # a number after a timestamp is still checked
+    assert any("'45%'" in n for n in number_check(script, plan)[1])
+    short = sip_story()
+    short_plan = make_plan(description="0:00 Intro. Illustrative only. Not financial advice.")
+    assert any("description mentions '0:00'" in n or "description mentions '0'" in n for n in number_check(short, short_plan)[1])
