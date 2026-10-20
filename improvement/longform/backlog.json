@@ -239,11 +239,55 @@
       "id": "2026-10-19b-card-remake-retry",
       "kind": "craft",
       "title": "Card minimum-payment remake is written and fact-checked: retry the render",
-      "detail": "videos/L-20261019-01/script.json (58 beats, ~1,025 words, 4:37, new bill/road/fork/source scenes, fact review passed) failed only on layout after two re-renders. A later Studio run can reuse it with the 'total' beat moved off the stack prop (e.g. prop cheque or vault) under a new id; the topic 2026-10-19-card-minimum-trap stays usable.",
+      "detail": "videos/L-20261019-01/script.json (58 beats, ~1,025 words, 4:37, new bill/road/fork/source scenes, fact review passed) failed only on layout after two re-renders. A later Studio run can reuse it with the 'total' beat moved off the stack prop (e.g. prop cheque or vault) under a new id; the topic 2026-10-19-card-minimum-trap stays usable. Done 2026-10-19: rendered as L-20261019-02 (qa_passed, 277 s, liveliness median 1.95).",
       "where": "script",
       "route": "adopt",
       "priority": "high",
       "found": "2026-10-19",
+      "status": "done"
+    },
+    {
+      "id": "2026-10-20-resolve-late",
+      "kind": "craft",
+      "title": "Answer the title's question no earlier than ~75%, and keep one loop open after it",
+      "detail": "In L-20261019-02 the main question (minimum vs fixed payment, 'two roads') is fully answered at 72-76% (beats 'fork'/'split', ~200-212 s of 277), then 24% of the runtime is a source card, a checklist and a recap. Per YouTube's key-moments help, the audience shrinks as a video goes on; creator guides consistently name 'a pivot that feels like an ending' as the main mid/late dip cause. Rule for long_story scripts: (1) the side-by-side resolution sits at 75-85%; (2) before it, name one thing still to come ('and the fix is already printed on your statement') so the action steps are a payoff, not an epilogue; (3) the recap beat is at most one beat and 10 s. Add to the long_story README recipe checklist. Worked when: the share of runtime after the resolution beat is <= 20% in render.json, and once the curve exists, hold at 90% vs hold at 70%.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-20",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-20-rehook-every-90s",
+      "kind": "craft",
+      "title": "A re-hook line at every chapter start, not just a chapter card",
+      "detail": "Chapter cards in L-20261019-02 sit at 11%, 29%, 39%, 62%, 84%, 93%. A chapter card with no spoken line is a silent pause, the kind of slow stretch creator guides identify as the dip point (one worked example: a 45 s stretch without narration lost 35% of viewers). The first beat after each chapter card should restate the stake in one sentence with a figure (e.g. 'Twelve months in, and he still owes {card_owed_year1}'), and the gap between two such re-hooks should be <= 90 s. This differs from the chapter-tease experiment (a line at the end of the chapter before): this one is the opening line of the next. Add to the long_story README. Worked when: no stretch longer than 90 s between beats that carry a placeholder figure (checkable in timeline.json).",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-20",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-20-chapter-hold-metric",
+      "kind": "idea",
+      "title": "Export hold at each chapter start for long videos",
+      "detail": "workers/stats.ts already stores each upload's retention curve (Upload.retention) and computes hookHold from it. For long videos, also compute the hold at each chapter start (render.json 'chapters' has the times; workers/lib/retention.ts holdAt interpolates) and write it to metrics/videos.json as 'chapterHolds': [{t, hold}]. Then Scout's Saturday review and improvement.evaluate can see which chapter loses viewers instead of guessing. YouTube only shows key moments for videos >= 60 s with >= 100 views, so this stays empty until the long videos get views. Lane: the auditor (workers/) or improver; no new YouTube scope needed, the curve is already fetched. Worked when: metrics/videos.json carries chapterHolds for every long video with a curve.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-20",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-20-spike-not-confusion",
+      "kind": "craft",
+      "title": "Give the rule-of-the-video beat a second picture so a rewatch spike means value, not confusion",
+      "detail": "YouTube notes a spike (rewatch) can mean a segment was valuable or unclear. Our densest explanations (L-20261019-02 'statement'/'minimum is worked out' beats, ~45-60 s) say a percentage and a floor in one breath over one picture. When a beat explains how a figure is computed, split it into two beats: the rule in words, then the rule applied to the story's own number with a placeholder. Script rule for the long_story README. Worked when: no beat in the 'how it works' chapter carries more than one new placeholder.",
+      "where": "script",
+      "route": "experiment",
+      "priority": "low",
+      "found": "2026-10-20",
       "status": "open"
     }
   ]
