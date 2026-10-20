@@ -304,7 +304,7 @@
         "long_story"
       ],
       "found": "2026-10-19",
-      "status": "new",
+      "status": "used",
       "id": "2026-10-19-card-minimum-trap",
       "title": "Only paying the minimum on your credit card: what it really costs you",
       "category": "credit_card",
@@ -339,7 +339,8 @@
         "https://www.upgrade.com/credit-health/insights/the-true-cost-of-minimum-payments/",
         "https://www.consumerfinance.gov/data-research/research-reports/"
       ],
-      "expires": "2027-10-19"
+      "expires": "2027-10-19",
+      "note": "Made as L-20261019-02 (qa_passed, 277 s) on 2026-10-19; the first attempt L-20261019-01 failed on layout."
     },
     {
       "format": "long",
@@ -461,6 +462,89 @@
         "https://www.fool.com/investing/2024/10/10/how-far-100-per-month-go-investing-stock-market"
       ],
       "expires": "2027-10-19"
+    },
+    {
+      "id": "2026-10-20-car-loan-84-months",
+      "format": "long",
+      "title": "A 7-year car loan: what the low monthly payment really costs you",
+      "category": "car_loan",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "The same $40,000 car on a 48-month and an 84-month loan at the same 7% APR: what the lower payment buys, what it costs in interest, and why the long loan usually costs more than that",
+      "why_now": "Edmunds reports a record 25.5% of financed new cars in Q3 2026 were on loans of 84 months or longer, with the average APR around 7% and an average payment of $787. Dealers sell the monthly number; almost nobody shows the total. A decision people are in right now, evergreen, US (USD), computable with two emi plans. For 22-40 viewers buying their first or second car.",
+      "outline": [
+        "hook: Rohan at the dealer, two payment offers on screen: $958 a month or $604 a month for the same car. He picks the smaller one. Frame one shows both numbers",
+        "Priya: 'Same car, same rate. Before you sign, ask one question: how many payments?' (promise line by 25 s: the total cost, the hidden catch, and the one question to ask)",
+        "chapter: the two loans. 48 payments of $958 against 84 payments of $604, as two stacks of payment slips side by side",
+        "the reveal: total paid $45,977 vs $50,711. The long loan costs $10,711 in interest, nearly twice the $5,977 on the short one",
+        "picture the whole video hangs on: a car on a road with a loan balance trailing behind it like a chain. On the long loan the chain is still attached years after the new-car smell is gone",
+        "Sharma has seen it before: 'In my bank days, the 84-month buyer came back in year four wanting a new car, and still owed on the old one'",
+        "the catch in words (no number unless a maths kind computes it): cars lose value fastest in the first years, so on a long loan you can owe more than the car is worth. Trading it in rolls that debt into the next loan",
+        "chapter: the rate is rarely the same. Longer loans usually carry a higher APR: at 8.5% for 84 months the interest becomes $13,211 (emi at 8.5%). Reveal at about two thirds",
+        "Rohan: 'So the cheap payment was never cheap.' Sikka cheers the turn",
+        "chapter: what to do. 1) ask for the total cost, not the payment; 2) compare 48 and 60 months at the same price; 3) if only the 84-month payment fits, the car may be too expensive",
+        "side by side recap: two roads, two totals, one question",
+        "end: disclaimer, CTA 'Ask the dealer: how many payments?'"
+      ],
+      "maths": "three emi plans on $40,000: 7% for 4 years, 7% for 7 years, 8.5% for 7 years (checked with renderer.models.maths.compute: $958/$45,977/$5,977; $604/$50,711/$10,711; $633/$53,211/$13,211)",
+      "verify": [
+        "Edmunds: share of financed new vehicles on 84+ month terms in Q3 2026 (reported 25.5%) and average new-vehicle APR (~7%), edmunds.com",
+        "CFPB: longer auto loans tend to carry higher interest rates and higher default risk (consumerfinance.gov auto-loan research)",
+        "7% and 8.5% are stated on screen as illustrative rates, not quotes",
+        "Negative equity is described in words only, with no invented depreciation figure"
+      ],
+      "sources": [
+        "https://www.cbtnews.com/new-car-loans-reach-record-highs/",
+        "https://fordauthority.com/2026/07/more-new-car-shoppers-took-out-long-loans-in-q2-than-ever-before/"
+      ],
+      "found": "2026-10-20",
+      "expires": "2027-10-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-20-cash-isa-limit-12k",
+      "format": "long",
+      "title": "The cash ISA limit drops to £12,000: what it means for your savings",
+      "category": "isa",
+      "kind": "seasonal",
+      "priority": "normal",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "From 6 April 2027 under-65s can put only £12,000 a year into a cash ISA (the total ISA allowance stays £20,000). What the rule actually changes, who it touches, and what the same money does in cash at 4% vs invested at an assumed 7% over 20 years",
+      "why_now": "The regulations were made on 10 September 2026 and take effect on 6 April 2027, so UK savers will be searching this all winter and again before the tax year ends. It is the channel's first UK story in pounds, which helps country variety. Explain the rule, never recommend a product. For UK savers 25-45 with cash ISAs. Use it between now and April 2027; best made by January.",
+      "outline": [
+        "hook: Priya holds two jars labelled Cash ISA and Stocks & Shares ISA. A lid slams on the cash jar at £12,000. 'From April 2027, this jar gets smaller.'",
+        "promise by 25 s: what changes, who it affects, and what the money left over could do",
+        "chapter: the rule in plain words. Total allowance still £20,000; cash part £12,000 for under-65s; 65 and over unchanged. Source card: gov.uk",
+        "Rohan: 'So the government took £8,000 of my allowance?' Priya: 'No, it moved it'",
+        "chapter: who it actually touches. Only people putting more than £1,000 a month into cash ISAs. Most savers never reach the old limit (said in words unless sourced)",
+        "Sharma: the anti-workaround rules: no transfers from stocks and shares ISAs into cash ISAs, and a 22% charge on interest on cash parked inside a stocks and shares ISA (from the gov.uk factsheet)",
+        "picture the whole video hangs on: two jars filling over 20 years, one rising slowly (4%), one faster but with a wobbling line (7% assumed, can fall)",
+        "chapter: the maths. £1,000 a month for 20 years: £367,997 at 4% vs £523,965 at an assumed 7% (both sip). Reveal at about two thirds",
+        "the honest catch: investments can fall, and money you need within a few years belongs in cash. That is what the emergency fund is for",
+        "chapter: what to check. 1) how much you put into cash ISAs a year; 2) what this money is for and when you need it; 3) the dates: the old limit applies until 5 April 2027",
+        "recap: one allowance, two jars, the rule date",
+        "end: disclaimer, CTA 'Check last year's cash ISA total before April'"
+      ],
+      "maths": "two sip plans of £1,000 a month for 20 years at 4% and 7% (checked: £367,997 vs £523,965, £240,000 paid in)",
+      "verify": [
+        "gov.uk: cash ISA limit of £12,000 for under-65s from 6 April 2027, overall ISA limit stays £20,000, 65+ keep £20,000",
+        "gov.uk ISA reform 2027 factsheet: no transfers from non-cash ISAs into cash ISAs; 22% charge on interest on cash held in non-cash ISAs",
+        "legislation.gov.uk: The Individual Savings Account (Amendment) (No. 2) Regulations 2026, made 10 September 2026",
+        "4% and 7% are stated as assumptions; the video recommends no ISA provider or fund"
+      ],
+      "sources": [
+        "https://www.gov.uk/government/publications/reduction-in-the-cash-individual-savings-account-isa-limit/cash-individual-savings-account-isa-limit-reduction",
+        "https://www.gov.uk/government/publications/fiscal-events-2026-factsheets/isa-reform-2027-anti-circumvention-rules-factsheet",
+        "https://www.legislation.gov.uk/uksi/2026/1018/made"
+      ],
+      "found": "2026-10-20",
+      "expires": "2027-04-05",
+      "status": "new"
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "agent": "scout",
+  "day": "2026-10-20",
+  "startedAt": "2026-10-20T04:08:27Z",
+  "finishedAt": "2026-10-20T04:12:26Z",
+  "summary": "Added two long-video topics (a US 84-month car loan and the UK cash ISA limit cut, the channel's first pounds story) and studied the retention shape of our latest long video. I routed four retention findings: answer the question later, re-hook after each chapter card, measure hold per chapter, and split dense explanation beats.",
+  "decision": "acted",
+  "why": "L-20261019-02 answers its title at 72-76% and spends the last 24% on an epilogue, and its six chapter cards carry no spoken re-hook. The feed had 3 global topics out of 8; now it has 5. Edmunds reports a record 25.5% of new cars on 84+ month loans (Q3 2026), and the £12,000 cash ISA limit starts on 6 April 2027.",
+  "findings": [
+    {"title": "We resolve the question too early", "detail": "The card video settles minimum vs fixed payment at ~74% of 277 s, then runs a source card, a checklist and a recap. Guides name a pivot that feels like an ending as the late-dip cause.", "link": "https://support.google.com/youtube/answer/9314415"},
+    {"title": "Chapter cards are silent pauses", "detail": "Six cards at 11/29/39/62/84/93%. Each needs a spoken stake with a figure right after it, with no more than 90 s between re-hooks.", "link": "https://www.opus.pro/blog/youtube-retention-graphs-explained"},
+    {"title": "Market data is a day old", "detail": "Market run 39326106582 failed on npm install (ECONNRESET), a one-off network error.", "link": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/39326106582"}
+  ],
+  "changes": [
+    {"title": "2 topics added", "detail": "2026-10-20-car-loan-84-months (high, USD), 2026-10-20-cash-isa-limit-12k (normal, GBP). The card-minimum topic is marked used.", "branch": "agent/scout/2026-10-20"},
+    {"title": "4 backlog items routed", "detail": "adopt: resolve-late (high), rehook-every-90s, chapter-hold-metric. experiment: spike-not-confusion. The card-remake-retry item is marked done.", "branch": "agent/scout/2026-10-20"}
+  ],
+  "nextCheck": "2026-10-21",
+  "links": [{"label": "Report", "url": "improvement/longform/2026-10-20.md"}]
+}

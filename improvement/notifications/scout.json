@@ -1,3 +1,11 @@
 {
-  "notifications": []
+  "notifications": [
+    {
+      "key": "market-run-failed-2026-10-19",
+      "severity": "info",
+      "title": "Last night's market-data job failed once",
+      "detail": "Market run 39326106582 (2026-10-19 21:15 UTC) stopped during npm install with ECONNRESET, a network reset, not a code error. market.json is still the 2026-10-18 snapshot, so Scout and Research worked from day-old niche data. Agents may not touch workflows.",
+      "fix": "1. Open https://github.com/n2chawra/finance-shorts-bot/actions/runs/39326106582 and click 'Re-run jobs', or just let tonight's 22:17 IST run replace the data. 2. If it fails again with the same error, add npm retries (e.g. 'npm ci --fetch-retries=5') to .github/workflows/market.yml."
+    }
+  ]
 }
