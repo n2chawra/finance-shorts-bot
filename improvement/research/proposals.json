@@ -168,7 +168,7 @@
       "effort": "M",
       "risk": "Low; new kinds only, existing ones unchanged.",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "done",
       "route": "template",
       "priority": "high"
     },
@@ -228,7 +228,7 @@
       "effort": "S",
       "risk": "Writers split lines into choppy beats; keep the check on events, not beat count.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
       "priority": "high"
     },
@@ -287,7 +287,7 @@
       "effort": "M",
       "risk": "Rules differ by country (Scotland, US filing status, India regimes); the kind stays a generic band table and the script states the assumptions.",
       "metric": "views48h",
-      "status": "new",
+      "status": "done",
       "route": "template",
       "priority": "high"
     }
