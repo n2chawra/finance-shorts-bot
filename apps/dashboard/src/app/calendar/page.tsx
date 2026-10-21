@@ -7,7 +7,8 @@ import { useMemo, useState } from "react";
 import { Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, StatusBadge, Thumb, VideoLink } from "@/components/ui";
 import { fmtCompact, fmtDateTime, istDay } from "@/lib/format";
 import { useOverview, useQueue, useSettings, useVideos } from "@/lib/queries";
-import { describeTimes, upcomingSlots } from "@/lib/slots";
+import { postingPlan } from "@/lib/posting-plan";
+import { describeTimes } from "@/lib/slots";
 import type { Video } from "@/lib/schemas";
 
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -34,20 +35,23 @@ export default function CalendarPage() {
   const byDay = useMemo(() => {
     const map = new Map<string, Entry[]>();
     const add = (e: Entry) => { const k = istDay(new Date(e.at)); map.set(k, [...(map.get(k) ?? []), e].sort((a, b) => a.at - b.at)); };
-    let last = Date.now() + 30 * 60_000;
+    const posted: Video[] = [];
     for (const v of videos.data ?? []) {
       if (v.upload && (v.status === "published" || v.status === "scheduled")) {
         add({ video: v, kind: v.status, at: Date.parse(v.upload.publishAt) });
-        if (v.status === "scheduled") last = Math.max(last, Date.parse(v.upload.publishAt));
+        posted.push(v);
       }
     }
+    // planned: the Queue page's posting plan, so long videos land on their own days and times
+    // and breaking/trending Shorts take their trend slots
+    const s = settings.data;
     if (!overview.data?.uploadsPaused) {
       const q = queue.data ?? [];
-      const slots = upcomingSlots(last, times, q.length);
-      q.forEach((v, i) => add({ video: v, kind: "planned", at: slots[i] }));
+      const plan = s ? [...postingPlan("short", q, posted, s), ...postingPlan("long", q, posted, s)] : [];
+      for (const slot of plan) if (slot.video) add({ video: slot.video, kind: "planned", at: slot.at });
     }
     return map;
-  }, [videos.data, queue.data, overview.data, times]);
+  }, [videos.data, queue.data, overview.data, settings.data]);
 
   if (videos.isLoading || queue.isLoading || overview.isLoading) return <Loading />;
   if (videos.error || queue.error || overview.error) return <ErrorNote error={videos.error ?? queue.error ?? overview.error} />;
