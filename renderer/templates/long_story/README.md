@@ -37,6 +37,15 @@ chart series with `"@<maths name>.<key>"`. The builder rejects anything else.
 | `lumpsum` | amount, rate_pct, years | amount, rate, years, final, final_long, gains, ratio | value |
 | `sip_stepup` | monthly, step_pct, rate_pct, years: a SIP raised by step_pct every year (not rounded), next to the same SIP never raised | amount, step, rate, years, final, final_long, invested, gains, final_flat, invested_flat, extra, last_monthly, ratio (stepped ÷ flat) | value, flat (yearly), ticks, years |
 | `loan_prepay` | amount, rate_pct, months, prepay, prepay_month: one extra payment right after EMI number prepay_month, then either the EMI falls (same end date) or the loan ends sooner (same EMI) | amount, rate, months, prepay, prepay_month, emi, emi_reduced, emi_cut, interest_base, interest_reduce_emi, interest_reduce_tenure, months_reduce_tenure, months_saved, saved_reduce_emi, saved_reduce_tenure | balance, balance_prepaid (monthly), ticks, years |
+| `real_return` | amount, rate_pct, inflation_pct, years: a one-time amount growing at rate_pct while prices rise at inflation_pct | amount, rate, inflation, years, final (future money), real_final (today's money), real_gains, inflation_cost (final − real_final), real_rate, cash_real (the amount left as cash, in today's money), cash_lost | value, real (yearly), ticks, years |
+| `price_rise` | monthly, inflation_pct, years: a monthly cost rising once a year, at the start of the year (year 1 already costs the raised price) | amount, inflation, years, new_monthly, extra_month, extra_year, extra_total (over all the years, against today's price), total_cost, ratio | cost (yearly) |
+| `income_tax_bands` | income, allowance, bands `[[upper, rate_pct], …, [null, rate_pct]]` on gross income, optional income2 (a pay rise under the same bands) | income, allowance, tax, take_home, take_home_month, marginal, effective, rate1…, band1… (each band's upper limit); with income2 also income2, tax2, take_home2, take_home_month2, marginal2, effective2, rise, extra_tax, kept, kept_pct | — |
+
+`income_tax_bands` is a plain band table: it does not shrink an allowance with income (UK above
+£100,000), know filing status, cess, surcharge or rebates. Pick incomes where the bands are the
+whole rule, and say what is left out in the end card's `assumption` ("Income tax only, …").
+The fact reviewer checks the allowance and bands against the country's official page.
+`examples/short_story_tax.json` is a checked Short with it.
 
 ## A beat
 

@@ -1,4 +1,4 @@
-"""The step-up SIP and loan prepayment kinds: what a writer can count on them to show."""
+"""The newer maths kinds (step-up SIP, loan prepayment, inflation, income tax): what a writer can count on them to show."""
 import pytest
 
 from renderer.models import maths
@@ -35,3 +35,49 @@ def test_a_prepayment_that_cannot_happen_is_refused(prepay: int, at: int) -> Non
     with pytest.raises(ValueError, match="loan_prepay"):
         maths.compute([{"name": "l", "kind": "loan_prepay", "amount": 3000000, "rate_pct": 8.5, "months": 240,
                         "prepay": prepay, "prepay_month": at}])
+
+
+def test_real_return_is_the_final_value_in_todays_money() -> None:
+    r = maths.compute([{"name": "r", "kind": "real_return", "amount": 10000, "rate_pct": 4, "inflation_pct": 3.8, "years": 10}])["r"]
+    v = r["values"]
+    assert v["final"] == pytest.approx(10000*1.04**10) and v["real_final"] == pytest.approx(10000*(1.04/1.038)**10)
+    assert v["inflation_cost"] == pytest.approx(v["final"] - v["real_final"]) and v["cash_real"] < 10000
+    assert r["figures"]["real_rate"] == "0.2%"
+    assert len(r["series"]["value"]["y"]) == len(r["series"]["real"]["y"]) == 11
+
+
+def test_a_return_below_inflation_loses_buying_power() -> None:
+    v = maths.compute([{"name": "r", "kind": "real_return", "amount": 1000, "rate_pct": 2, "inflation_pct": 5, "years": 5}])["r"]["values"]
+    assert v["real_final"] < 1000 and v["real_rate"] < 0 and v["real_gains"] < 0
+
+
+def test_price_rise_charges_each_year_the_raised_price() -> None:
+    r = maths.compute([{"name": "p", "kind": "price_rise", "monthly": 100, "inflation_pct": 10, "years": 2}])["p"]
+    v = r["values"]
+    assert v["new_monthly"] == pytest.approx(121)
+    assert v["extra_total"] == pytest.approx(12*10 + 12*21) and v["total_cost"] == pytest.approx(2400 + 372)
+    flat = maths.compute([{"name": "p", "kind": "price_rise", "monthly": 100, "inflation_pct": 0, "years": 3}])["p"]
+    assert flat["values"]["extra_total"] == 0 and flat["values"]["new_monthly"] == 100
+
+
+def test_income_tax_by_bands_matches_the_uk_rates() -> None:
+    bands = [[50270, 20], [125140, 40], [None, 45]]
+    t = maths.compute([{"name": "t", "kind": "income_tax_bands", "income": 50000, "income2": 55000, "allowance": 12570,
+                        "bands": bands}])["t"]
+    v, f = t["values"], t["figures"]
+    assert v["tax"] == pytest.approx((50000 - 12570)*0.2)
+    assert v["tax2"] == pytest.approx(37700*0.2 + (55000 - 50270)*0.4)
+    assert (f["marginal"], f["marginal2"], f["allowance"], f["band1"], f["rate3"]) == ("20%", "40%", "₹12,570", "₹50,270", "45%")
+    assert v["kept"] == pytest.approx(5000 - (v["tax2"] - v["tax"]))
+    assert maths.compute([{"name": "t", "kind": "income_tax_bands", "income": 10000, "allowance": 12570,
+                           "bands": bands}])["t"]["values"]["tax"] == 0
+
+
+@pytest.mark.parametrize("over, match", [({"bands": [[None, 20], [125140, 40]]}, "only the last band"),
+                                         ({"bands": [[10000, 20], [None, 40]]}, "upper limit"),
+                                         ({"income": 200000, "bands": [[50270, 20], [125140, 40]]}, "above the last band"),
+                                         ({"income2": 40000}, "income2 must be above")])
+def test_income_tax_bands_rejects_a_broken_table(over: dict, match: str) -> None:
+    m = {"name": "t", "kind": "income_tax_bands", "income": 50000, "allowance": 12570, "bands": [[50270, 20], [None, 40]], **over}
+    with pytest.raises(ValueError, match=match):
+        maths.compute([m])
