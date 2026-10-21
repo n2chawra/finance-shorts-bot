@@ -11,6 +11,7 @@
  */
 import React from "react";
 import { random } from "remotion";
+import { BankBack, BankFront, MarketBack, MarketFront, OfficeBack, OfficeFront } from "./sets2";
 
 export interface SetArgs { w: number; h: number; t: number; seed: string; mood?: "warm" | "cold" | "gold" }
 export interface Spots { ground: number; left: number; center: number; right: number; table: [number, number] }
@@ -168,7 +169,7 @@ const PentBack: React.FC<SetArgs> = (a) => {
 const PentFront: React.FC<SetArgs> = ({ w, h, t, seed }) => (
   <svg width={w} height={h} style={{ position: "absolute" }}>
     {/* a big plant leaning into the lens */}
-    <g transform={`translate(${-w * 0.08},${h * 1.02})`}>
+    <g transform={`translate(${-w * 0.15},${h * 1.04})`}>
       {Array.from({ length: 6 }, (_, i) => {
         const a = -70 + i * 14 + Math.sin(t * 0.9 + i) * 2.5;
         return <ellipse key={i} cx={0} cy={-h * 0.11} rx={w * 0.035} ry={h * 0.11} fill={i % 2 ? "#2f7d4a" : "#3c9a5c"} transform={`rotate(${a + 90} 0 0)`} />;
@@ -220,5 +221,11 @@ export const SETS: Record<string, SetDef> = {
     spots: (w, h) => ({ ground: h * 0.88, left: w * 0.32, center: w * 0.52, right: w * 0.7, table: [w * 0.18, h * 0.6] }) },
   vault: { back: VaultBack, light: "rgba(255,210,110,0.1)",
     spots: (w, h) => ({ ground: h * 0.86, left: w * 0.3, center: w * 0.5, right: w * 0.7, table: [w * 0.5, h * 0.7] }) },
+  office: { back: OfficeBack, front: OfficeFront, light: "rgba(255,190,150,0.07)",
+    spots: (w, h) => ({ ground: h * 0.9, left: w * 0.3, center: w * 0.5, right: w * 0.7, table: [w * 0.8, h * 0.84] }) },
+  bank: { back: BankBack, front: BankFront, light: "rgba(255,247,220,0.06)",
+    spots: (w, h) => ({ ground: h * 0.9, left: w * 0.28, center: w * 0.5, right: w * 0.72, table: [w * 0.5, h * 0.62] }) },
+  market: { back: MarketBack, front: MarketFront, light: "rgba(255,200,120,0.08)",
+    spots: (w, h) => ({ ground: h * 0.9, left: w * 0.3, center: w * 0.55, right: w * 0.75, table: [w * 0.15, h * 0.86] }) },
 };
 export const SET_NAMES = Object.keys(SETS);

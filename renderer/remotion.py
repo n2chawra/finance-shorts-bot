@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import os
 import shutil
 import subprocess
@@ -30,6 +31,37 @@ REMOTION = Path(__file__).resolve().parent.parent/"remotion"
 CACHE = Path(os.environ.get("REMOTION_CACHE", Path(tempfile.gettempdir())/"remotion-cache"))
 KEEP_SILENT = 12          # silent videos kept in the cache, newest first
 CORES = max(1, os.cpu_count() or 1)   # Remotion renders at most one frame per core at a time
+
+
+HOOK_IMPORTS = ("react", "remotion", "@remotion/paths", "@remotion/shapes", "@remotion/noise",
+                "../../studio/", "../../cast/", "../../scenes/kit", "../../fx/", "../../design/", "../../fmt/", "../../contract/")
+HOOK_BANNED = ("fetch(", "eval(", "Function(", "Math.random", "Date.now", "new Date", "window.", "document.", "localStorage",
+               "require(", "import(", "process.", "setTimeout", "setInterval", "XMLHttpRequest", "useFrame")
+
+
+def hook_problems(video_id: str) -> list[str]:
+    """A video's custom hook (remotion/src/videos/<id>/Hook.tsx) may only build on the studio kit:
+    known imports, nothing random or clock-driven (renders must be deterministic), no network, no
+    globals, and it must type-check. Nothing to check when the video has no custom hook."""
+    hook = REMOTION/"src"/"videos"/video_id/"Hook.tsx"
+    if not hook.is_file():
+        return []
+    code = hook.read_text(encoding="utf-8")
+    out = []
+    for m in re.finditer(r"""^\s*import[^'"]*['"]([^'"]+)['"]""", code, re.M):
+        if not any(m.group(1) == a or m.group(1).startswith(a) for a in HOOK_IMPORTS):
+            out.append(f"import {m.group(1)!r} is not allowed (only the studio kit, cast, fx, design, fmt and remotion)")
+    out += [f"{b!r} is not allowed in a hook" for b in HOOK_BANNED if b in code]
+    if "export default" not in code:
+        out.append("Hook.tsx must default-export the hook component")
+    if not out:
+        node = shutil.which("node")
+        tsc = REMOTION/"node_modules"/"typescript"/"bin"/"tsc"
+        if node and tsc.is_file():
+            r = subprocess.run([node, str(tsc), "--noEmit", "-p", str(REMOTION)], cwd=REMOTION, capture_output=True, text=True)
+            if r.returncode != 0:
+                out.append("it does not type-check: " + " | ".join(l for l in r.stdout.splitlines() if "videos/" in l.replace("\\", "/"))[:900])
+    return out
 
 
 def source_hash() -> str:
@@ -223,7 +255,9 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
     # the report (length, sound levels), skips it
     early = list(report["layout_problems"]) + (stop_if(report) if stop_if else [])
     if early and not preview:
-        print("video skipped: " + "; ".join(early), flush=True)
+        msg = "video skipped: " + "; ".join(early)
+        enc = getattr(sys.stdout, "encoding", None) or "utf-8"
+        print(msg.encode(enc, "replace").decode(enc), flush=True)   # a Windows console can't print ₹
         report["video_skipped"] = early
     if not preview and not early:
         silent = video(timeline, work/"silent.mp4", chunk=chunk, bundle_dir=b, concurrency=concurrency)
@@ -238,6 +272,10 @@ def render_story(script: dict, out: Path, *, preview: bool = False, voice: str =
     """A long_story script -> videos/<id>/ files: the timeline and audio are built into `out`,
     everything bulky (bundle, stills, chunks) goes to a work folder removed after a full render."""
     from renderer.timeline.build import build
+    script = {**script, "id": script.get("id") or out.name}   # the timeline's id finds the video's own hook
+    problems = hook_problems(script["id"])
+    if problems:
+        raise RuntimeError("custom hook: " + "; ".join(problems))
     build(script, out, voice=voice)
     # a fixed work folder, so a render cut off part way resumes from its finished chunks
     work = Path(tempfile.gettempdir())/f"remotion-{out.name}"

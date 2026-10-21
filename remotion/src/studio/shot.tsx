@@ -14,7 +14,7 @@
  *   ],
  *   camera: [{ at?: event | sec?: number, size: wide|medium|close|extreme, on: <who> | <object id> | "all" | "room", move?: true }],
  *   (ids are words: script text may not contain digits)
- *   word?: { text, at, color?: gold|good|bad|white }
+ *   word?: { text, at, color?: gold|good|bad|white, where?: top|left|right (keep it off the money tags) }
  * }
  */
 import React from "react";
@@ -34,7 +34,7 @@ interface PhoneObj { kind: "phone"; id?: string; spot?: Spot; height?: number; t
 type Obj = StackObj | FlowObj | PhoneObj;
 const WORD_COLORS: Record<string, string> = { gold: "#ffd84a", good: "#7cf0b2", bad: "#ff6b6b", white: "#ffffff" };
 interface CamKey { at?: string; sec?: number; size: ShotSize; on?: string; move?: boolean }
-interface ShotParams { set?: string; actors?: ShotActor[]; objects?: Obj[]; camera?: CamKey[]; word?: { text: string; at?: string; color?: string } }
+interface ShotParams { set?: string; actors?: ShotActor[]; objects?: Obj[]; camera?: CamKey[]; word?: { text: string; at?: string; color?: string; where?: "top" | "left" | "right" } }
 
 export const ShotScene: React.FC<SceneProps> = (p) => {
   const P = p.beat.params as ShotParams;
@@ -129,7 +129,7 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
             const k = clamp((t - start) / 0.45);
             return (
               <g key={`p${i}`} transform={`translate(0,${(1 - k) * h * 0.5})`} opacity={k}>
-                <PhoneApp x={x} y={y} pw={v ? 340 : 260} t={t} title={o.title ?? ""} figure={o.figure} figureShown={t >= start + 0.4}
+                <PhoneApp x={x} y={y} pw={v ? 380 : 280} t={t} title={o.title ?? ""} figure={o.figure} figureShown={t >= start + 0.4}
                   lines={(o.lines ?? []).map((l, j) => ({ ...l, at: at(p, l.at, start + 0.6 + j * 0.5) }))}
                   toasts={(o.toasts ?? []).map((n, j) => ({ ...n, at: at(p, n.at, start + 0.3 + j * 0.7) }))} />
               </g>
@@ -147,7 +147,8 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
         </AbsoluteFill>
       )}
       {word && wk > 0 && (
-        <div style={{ position: "absolute", left: 40, right: v ? 150 : 40, top: v ? h * 0.12 : h * 0.1, textAlign: "center" }}>
+        <div style={{ position: "absolute", left: word.where === "right" ? w * 0.42 : 40, right: word.where === "left" ? w * 0.42 : v ? 150 : 40,
+          top: v ? h * 0.15 : h * 0.1, textAlign: word.where === "left" ? "left" : word.where === "right" ? "right" : "center" }}>
           <span style={{ display: "inline-block", fontFamily: FONT, fontWeight: 900, fontSize: v ? 150 : 110, lineHeight: 1, textTransform: "uppercase",
             color: WORD_COLORS[word.color ?? "gold"] ?? WORD_COLORS.gold, WebkitTextStroke: `${v ? 16 : 12}px #000`, paintOrder: "stroke fill",
             transform: `translateY(${(1 - wk) * -260}px) scale(${0.7 + 0.3 * wk}) rotate(${(1 - wk) * -8 - 3}deg)`,

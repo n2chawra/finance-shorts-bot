@@ -270,6 +270,8 @@ SFX = {
 }
 
 
+WHOOSH_TRANSITIONS = ("zoom-through", "whip", "match")
+
 SCENES_TS = Path(__file__).resolve().parents[2]/"remotion"/"src"/"contract"/"scenes.ts"
 
 
@@ -405,6 +407,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
             },
         })
         b_sfx = [(cursor + events.get(s["at"], 0)/FPS, s) for s in b.sfx]
+        # a transition that travels somewhere carries its own sound (motion direction, 2026-10-21)
+        if b.transition in WHOOSH_TRANSITIONS and not any(s.get("at", "start") == "start" and s.get("kind") == "whoosh" for s in b.sfx):
+            b_sfx.append((max(0.0, cursor - 0.05), {"kind": "whoosh", "at": "start", "gain": 0.55}))
         timeline_beats[-1]["_sfx"] = b_sfx
         cursor += dur
 

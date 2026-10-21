@@ -32,10 +32,12 @@ export function cameraTransform(kind: string, p: number, sec: number, seed: stri
 }
 
 export const TRANSITION_FRAMES = 12;
+/** Story frames each transition takes: the ones that travel somewhere need a little longer. */
+export const transitionFrames = (kind: string) => kind === "zoom-through" ? 18 : kind === "match" ? 14 : kind === "whip" ? 10 : TRANSITION_FRAMES;
 
-/** Style for the incoming beat during its first TRANSITION_FRAMES frames. */
+/** Style for the incoming beat during its first transitionFrames(kind) frames. */
 export function transitionStyle(kind: string, local: number): React.CSSProperties {
-  const p = clamp(local / TRANSITION_FRAMES);
+  const p = clamp(local / transitionFrames(kind));
   const e = 1 - Math.pow(1 - p, 3);
   switch (kind) {
     case "fade": return { opacity: e };
@@ -45,7 +47,23 @@ export function transitionStyle(kind: string, local: number): React.CSSPropertie
     case "wipe": return { clipPath: `inset(0 ${(1 - e) * 100}% 0 0)` };
     case "iris": return { clipPath: `circle(${e * 120}% at 50% 50%)` };
     case "whip": return { transform: `translateX(${(1 - e) * -100}%)`, filter: `blur(${(1 - e) * 20}px)` };
+    // dive into something and come out in the next place: the new shot grows out of the centre
+    case "zoom-through": return { opacity: clamp(p * 2.2), transform: `scale(${0.5 + 0.5 * e})`, filter: `blur(${(1 - e) * 12}px)`, transformOrigin: "50% 42%" };
+    // the same thing in the same place, a new world around it
+    case "match": return { opacity: e, transform: `scale(${1.05 - 0.05 * e})` };
     default: return {};
+  }
+}
+
+/** Style for the outgoing beat while the next one comes in (nothing for the simple kinds). */
+export function exitStyle(kind: string, local: number): React.CSSProperties | undefined {
+  const p = clamp(local / transitionFrames(kind));
+  const e = p * p * (3 - 2 * p);
+  switch (kind) {
+    case "zoom-through": return { transform: `scale(${1 + 4 * e * e})`, filter: `blur(${e * 18}px)`, opacity: 1 - clamp((p - 0.45) / 0.55), transformOrigin: "50% 42%" };
+    case "whip": return { transform: `translateX(${e * 100}%)`, filter: `blur(${e * 20}px)` };
+    case "match": return { opacity: 1 - e };
+    default: return undefined;
   }
 }
 

@@ -3,7 +3,7 @@
 export const SCENE_NAMES = [
   "stage", "chapter", "checklist", "end", "headline",
   "bignumber", "reveal", "statement", "monster", "snowball", "calendar", "split", "chart", "towers",
-  "prop", "screen", "equation", "kinetic", "source", "bill", "road", "fork", "shot",
+  "prop", "screen", "equation", "kinetic", "source", "bill", "road", "fork", "shot", "hook",
 ] as const;
 
 export type SceneName = (typeof SCENE_NAMES)[number];

@@ -16,21 +16,28 @@ import { Timeline, type Beat } from "../contract/timeline";
 import { LayoutProbe } from "../fx/probe";
 import { captionGroups, captionTokens, Captions } from "../fx/captions";
 import { FONT } from "../design/fonts";
-import { cameraTransform, TRANSITION_FRAMES, transitionStyle, Vignette } from "../fx/camera";
+import { cameraTransform, exitStyle, transitionFrames, transitionStyle, Vignette } from "../fx/camera";
 import type { SceneProps } from "../scenes/kit";
 import { ChapterScene, ChecklistScene, EndScene, StageScene } from "../scenes/stage";
 import { BigNumberScene, CalendarScene, ChartScene, HeadlineScene, MonsterScene, RevealScene, SnowballScene, SplitScene, StatementScene, TowersScene } from "../scenes/data";
 import { EquationScene, KineticScene, PropScene, ScreenScene, SourceScene } from "../scenes/world";
 import { BillScene, ForkScene, RoadScene } from "../scenes/journey";
 import { ShotScene } from "../studio/shot";
+import { HOOKS } from "../videos/hooks";
 import { Grain } from "../design/texture";
 import { Sikka } from "../cast/Sikka";
+
+/** A video's own hook (videos/<id>/Hook.tsx), or a plain shot with the same params if there is none. */
+const HookScene: React.FC<SceneProps> = (p) => {
+  const Custom = HOOKS[p.tl.id];
+  return Custom ? <Custom {...p} /> : <ShotScene {...p} />;
+};
 
 export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   stage: StageScene, chapter: ChapterScene, checklist: ChecklistScene, end: EndScene, headline: HeadlineScene,
   bignumber: BigNumberScene, reveal: RevealScene, statement: StatementScene, monster: MonsterScene,
   snowball: SnowballScene, calendar: CalendarScene, split: SplitScene, chart: ChartScene, towers: TowersScene,
-  prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene, source: SourceScene, bill: BillScene, road: RoadScene, fork: ForkScene, shot: ShotScene,
+  prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene, source: SourceScene, bill: BillScene, road: RoadScene, fork: ForkScene, shot: ShotScene, hook: HookScene,
 };
 
 /** The channel's mark in the top-left corner of every frame: Sikka, small, never text. */
@@ -48,7 +55,7 @@ const LogoBug: React.FC<{ w: number; h: number }> = ({ w, h }) => {
 const DisclaimerLine: React.FC<{ tl: Timeline }> = ({ tl }) => {
   const v = tl.height > tl.width;
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: v ? tl.height * 0.15 : tl.height * 0.06, display: "flex", justifyContent: "center" }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top: v ? tl.height * 0.09 : tl.height * 0.06, display: "flex", justifyContent: "center" }}>
       <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: v ? 44 : 30, color: "#fff", background: "rgba(0,0,0,0.62)",
         padding: v ? "10px 28px" : "6px 20px", borderRadius: 999 }}>{tl.disclaimer}</div>
     </div>
@@ -88,12 +95,16 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe }) => {
   if (i < 0) i = beats.length - 1;
   const cur = beats[i]!;
   const local = (frame - cur.from) * timeline.tempo;      // transitions run on the story clock too
-  const overlap = i > 0 && cur.transition !== "cut" && local < TRANSITION_FRAMES;
+  const overlap = i > 0 && cur.transition !== "cut" && local < transitionFrames(cur.transition);
   const groups = useMemo(() => captionGroups(captionTokens(timeline)), [timeline]);
   const hasEnd = beats.some((b) => b.scene === "end");
   return (
     <AbsoluteFill style={{ background: timeline.palette.bg }}>
-      {overlap && <BeatView beat={beats[i - 1]!} tl={timeline} frame={frame} fps={fps} />}
+      {overlap && (
+        <AbsoluteFill style={exitStyle(cur.transition, local)}>
+          <BeatView beat={beats[i - 1]!} tl={timeline} frame={frame} fps={fps} />
+        </AbsoluteFill>
+      )}
       <AbsoluteFill style={overlap ? transitionStyle(cur.transition, local) : undefined}>
         <BeatView beat={cur} tl={timeline} frame={frame} fps={fps} />
       </AbsoluteFill>

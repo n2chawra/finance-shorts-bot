@@ -32,8 +32,16 @@ function measure(): ProbeItem[] {
     const g = range.getBoundingClientRect();
     const css = parseFloat(getComputedStyle(el).fontSize) || 0;
     // the size the viewer sees: CSS size times whatever transforms (camera, pops) scale the box by
-    const layoutH = el instanceof HTMLElement ? el.offsetHeight : r.height;
-    const fs = layoutH > 0 ? css * (r.height / layoutH) : css;
+    // SVG text has no layout box to compare with, so its scale comes from its screen matrix (camera
+    // zooms and pops included); HTML text compares its box with its layout height
+    let fs: number;
+    if (el instanceof SVGGraphicsElement) {
+      const m = el.getScreenCTM();
+      fs = m ? css * Math.hypot(m.a, m.b) : css;
+    } else {
+      const layoutH = el instanceof HTMLElement ? el.offsetHeight : r.height;
+      fs = layoutH > 0 ? css * (r.height / layoutH) : css;
+    }
     out.push({ t: t.slice(0, 60), x: Math.round(g.left), y: Math.round(g.top), w: Math.round(g.width), h: Math.round(g.height), fs: Math.round(fs * 10) / 10 });
   });
   return out;

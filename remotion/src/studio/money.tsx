@@ -97,20 +97,20 @@ export const PhoneApp: React.FC<{
   lines?: { label: string; value?: string; at: number; bad?: boolean }[]; toasts?: { text: string; at: number }[]; tilt?: number;
 }> = ({ x, y, pw, t, title, figure, figureShown, figureColor = "#e03131", lines = [], toasts = [], tilt = -4 }) => {
   const ph = pw * 2.05;
-  const fs = pw * 0.075;
+  const fs = pw * 0.125;   // readable at medium framing (Shorts text >= 44 px on screen)
   return (
     <g transform={`translate(${x},${y}) rotate(${tilt + Math.sin(t * 1.1) * 0.8})`}>
       <rect x={-pw / 2 - 16} y={-ph / 2 - 16} width={pw + 32} height={ph + 32} rx={pw * 0.13} fill="#0f1118" />
       <rect x={-pw / 2} y={-ph / 2} width={pw} height={ph} rx={pw * 0.1} fill="#f6f7fb" />
       <rect x={-pw / 2} y={-ph / 2} width={pw} height={ph * 0.16} rx={pw * 0.1} fill="#3156d3" />
       <rect x={-pw / 2} y={-ph / 2 + ph * 0.08} width={pw} height={ph * 0.08} fill="#3156d3" />
-      <text x={0} y={-ph / 2 + ph * 0.1} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={fs * 1.1} fill="#fff">{title}</text>
+      <text x={0} y={-ph / 2 + ph * 0.11} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={fs * 0.95} fill="#fff">{title}</text>
       {figure && figureShown && (
-        <text x={0} y={-ph / 2 + ph * 0.3} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={fs * 2.3} fill={figureColor}>{figure}</text>
+        <text x={0} y={-ph / 2 + ph * 0.31} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={Math.min(fs * 2, (pw * 0.9) / Math.max(3, figure.length * 0.6))} fill={figureColor}>{figure}</text>
       )}
       {/* the rest of the app: earlier transactions, greyed, so the screen is never a blank slab */}
       {Array.from({ length: 6 }, (_, i) => {
-        const ly = -ph / 2 + ph * (0.42 + (lines.length + i) * 0.1);
+        const ly = -ph / 2 + ph * (0.44 + lines.length * 0.15 + i * 0.1);
         if (ly > ph / 2 - ph * 0.08) return null;
         return <g key={`h${i}`} opacity={0.55}>
           <circle cx={-pw * 0.34} cy={ly - fs * 0.25} r={fs * 0.55} fill="#dfe3ee" />
@@ -124,12 +124,12 @@ export const PhoneApp: React.FC<{
       {lines.map((l, i) => {
         const k = easeOut((t - l.at) / 0.35);
         if (k <= 0) return null;
-        const ly = -ph / 2 + ph * (0.42 + i * 0.12);
+        const ly = -ph / 2 + ph * (0.44 + i * 0.15);
         return (
           <g key={i} opacity={k} transform={`translate(${(1 - k) * pw * 0.4},0)`}>
-            <rect x={-pw * 0.42} y={ly - fs * 1.3} width={pw * 0.84} height={fs * 2.2} rx={fs * 0.5} fill="#ffffff" stroke="#e3e6ef" strokeWidth={3} />
-            <text x={-pw * 0.36} y={ly + fs * 0.1} fontFamily={FONT} fontWeight={700} fontSize={fs} fill="#3f4656">{l.label}</text>
-            {l.value && <text x={pw * 0.36} y={ly + fs * 0.1} textAnchor="end" fontFamily={FONT} fontWeight={900} fontSize={fs * 1.05} fill={l.bad ? "#e03131" : "#1f9d61"}>{l.value}</text>}
+            <rect x={-pw * 0.44} y={ly - fs * 0.95} width={pw * 0.88} height={fs * 1.7} rx={fs * 0.4} fill="#ffffff" stroke="#e3e6ef" strokeWidth={3} />
+            <text x={-pw * 0.39} y={ly + fs * 0.15} fontFamily={FONT} fontWeight={700} fontSize={fs * 0.72} fill="#3f4656">{l.label}</text>
+            {l.value && <text x={pw * 0.4} y={ly + fs * 0.15} textAnchor="end" fontFamily={FONT} fontWeight={900} fontSize={Math.min(fs * 0.85, (pw * 0.4) / Math.max(2, l.value.length * 0.58))} fill={l.bad ? "#e03131" : "#1f9d61"}>{l.value}</text>}
           </g>
         );
       })}
