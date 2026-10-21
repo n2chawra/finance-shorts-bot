@@ -46,7 +46,11 @@
       "detail": "At 390 px the landscape poster takes about half the card width, so the id line wraps ('long videos') and the description is cut off. Stack the player above the text on phones for landscape templates.",
       "page": "templates",
       "found": "2026-10-18",
-      "status": "open"
+      "status": "done",
+      "done": "2026-10-21",
+      "lastTouched": {
+        "apps/dashboard/src/app/templates/page.tsx": "2026-10-21"
+      }
     },
     {
       "id": "voice-label-gender",
@@ -78,6 +82,37 @@
       "detail": "At 390 px the five stat cards wrap 2-2-1, leaving the last card next to empty space. Let the last odd card span the full row (or fold 'Made today' into the Backlog card) so the top of the page is one tidy block.",
       "page": "overview",
       "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "calendar-plan-formats",
+      "kind": "bug",
+      "title": "Calendar: queued long videos planned into Short slots",
+      "detail": "Planned entries used only the daily Short times and both formats' queues together, so the sample's two long videos showed at 07:07/12:37/19:07 instead of 20:07 on Tue/Thu/Sat, and trend slots never appeared. Calendar now uses the Queue page's posting plan per format.",
+      "page": "calendar",
+      "found": "2026-10-21",
+      "status": "done",
+      "done": "2026-10-21",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-10-21"
+      }
+    },
+    {
+      "id": "calendar-format-marker",
+      "kind": "idea",
+      "title": "Calendar: tell long videos from Shorts at a glance",
+      "detail": "Content calendars colour or label entries by channel/format. A small 'Long' tag (text, not colour alone) on long entries lets the owner see the week's two long uploads without opening each day.",
+      "page": "calendar",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "calendar-empty-slots",
+      "kind": "idea",
+      "title": "Calendar: show slots nothing is ready for",
+      "detail": "The posting plan already knows the first empty slot. Showing it as a dashed 'Nothing ready' entry makes a running-dry backlog visible on the calendar, not just on the Queue page.",
+      "page": "calendar",
+      "found": "2026-10-21",
       "status": "open"
     }
   ]
