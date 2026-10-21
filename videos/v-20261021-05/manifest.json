@@ -1,0 +1,281 @@
+{
+  "id": "v-20261021-05",
+  "createdAt": "2026-10-21T07:24:48.824693+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why the rich borrow against their shares instead of selling",
+    "category": "wealth",
+    "feed_id": "2026-10-21-borrow-never-sell"
+  },
+  "title": "Why billionaires never sell their stock 🤫",
+  "description": "Selling is how most people get their money out. The very rich borrow instead. Here's why.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Money",
+    "#Billionaire",
+    "#Investing",
+    "#Tax"
+  ],
+  "hookStyle": "secret",
+  "cta": "Did you know this one? Comment",
+  "seed": 71533,
+  "style": {
+    "palette": "night",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92,
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Billionaires almost never sell their stock. They borrow against it.",
+        "start": 0.27,
+        "seconds": 2.52,
+        "window": 3.07,
+        "fill": 0.821
+      },
+      {
+        "scene": "what",
+        "text": "Wait, what? Why borrow if you're rich?",
+        "start": 3.33,
+        "seconds": 1.23,
+        "window": 1.73,
+        "fill": 0.711
+      },
+      {
+        "scene": "sell",
+        "text": "Sell a million dollars of stock he got for almost nothing, and tax can take $200,000.",
+        "start": 5.07,
+        "seconds": 4.04,
+        "window": 4.6,
+        "fill": 0.878
+      },
+      {
+        "scene": "borrow",
+        "text": "Borrow a million against it? A loan isn't income. No tax at all.",
+        "start": 9.67,
+        "seconds": 2.94,
+        "window": 3.5,
+        "fill": 0.84
+      },
+      {
+        "scene": "grows",
+        "text": "And the stock he didn't sell keeps growing. At 8% a year, $2.2M in 10 years.",
+        "start": 13.17,
+        "seconds": 4.98,
+        "window": 5.43,
+        "fill": 0.917
+      },
+      {
+        "scene": "catch",
+        "text": "But the loan has interest!",
+        "start": 18.6,
+        "seconds": 0.98,
+        "window": 1.43,
+        "fill": 0.685
+      },
+      {
+        "scene": "answer",
+        "text": "Sure. As long as the stock grows faster than the interest, the rich get richer. And when it falls, the bank can sell it for you.",
+        "start": 20.03,
+        "seconds": 4.93,
+        "window": 5.5,
+        "fill": 0.896
+      },
+      {
+        "scene": "loop",
+        "text": "So that's why billionaires almost never sell their stock.",
+        "start": 25.53,
+        "seconds": 1.94,
+        "window": 2.33,
+        "fill": 0.833
+      }
+    ]
+  },
+  "durationSec": 28,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.2
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "on"
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "15 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "US Short, no sourced facts. Loans are not taxable income (IRS: borrowed money is not income), so borrowing against shares triggers no tax; selling triggers capital gains tax, federal long-term rate up to 20% plus 3.8% net investment income tax, shown as '20%+'; the script assumes stock bought for almost nothing so the whole sale is gain. Margin risk stated: when the stock falls the lender can sell it. 8% a year growth is an assumption. No advice, no named stock; description carries the disclaimer."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "28 s, 1080x1920. Frames from the mp4: hook caption 'BILLIONAIRES' on screen from frame 0; captions follow the voice and sit clear of faces and scene labels; no overlaps or cut-off text; disclaimer line over the last second; last line loops to the hook. Liveliness median 4.0, no still samples; audio peak -1.0 dB, mean -17.2 dB."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:41:50.261322+00:00",
+      "finishedAt": "2026-10-21T06:41:50.261322+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:41:53.485037+00:00",
+      "finishedAt": "2026-10-21T06:41:53.485037+00:00",
+      "notes": [
+        "15 figures computed from inputs; 9 cross-checked against closed-form formulas.",
+        "warning: beat 'grows' runs 6.2 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:42:04.470358+00:00",
+      "finishedAt": "2026-10-21T06:42:04.470358+00:00",
+      "notes": [
+        "15 figures computed from inputs; 9 cross-checked against closed-form formulas.",
+        "warning: beat 'grows' runs 6.2 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:42:21.976525+00:00",
+      "finishedAt": "2026-10-21T06:42:21.976525+00:00",
+      "notes": [
+        "15 figures computed from inputs; 9 cross-checked against closed-form formulas.",
+        "warning: beat 'sell' runs 5.6 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:42:32.403211+00:00",
+      "finishedAt": "2026-10-21T06:42:32.403211+00:00",
+      "notes": [
+        "15 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-21T06:42:39.841234+00:00",
+      "finishedAt": "2026-10-21T06:43:40.149317+00:00",
+      "notes": [
+        "text 'Works only if it grows' at 23.6 s is 28.8 px, below the 44 px minimum"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-21T06:44:56.014352+00:00",
+      "finishedAt": "2026-10-21T06:45:19.639130+00:00",
+      "notes": [
+        "text 'Works only if it grows' at 23.6 s is 28.8 px, below the 44 px minimum"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:45:35.211082+00:00",
+      "finishedAt": "2026-10-21T06:45:58.726402+00:00",
+      "notes": [
+        "28 s, night/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:47:02.465628+00:00",
+      "finishedAt": "2026-10-21T06:47:26.098318+00:00",
+      "notes": [
+        "28 s, night/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:49:10.797743+00:00",
+      "finishedAt": "2026-10-21T06:49:34.108024+00:00",
+      "notes": [
+        "28 s, night/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-21T07:11:05.796850+00:00",
+      "finishedAt": "2026-10-21T07:11:05.796850+00:00",
+      "notes": [
+        "US Short, no sourced facts. Loans are not taxable income (IRS: borrowed money is not income), so borrowing against shares triggers no tax; selling triggers capital gains tax, federal long-term rate up to 20% plus 3.8% net investment income tax, shown as '20%+'; the script assumes stock bought for almost nothing so the whole sale is gain. Margin risk stated: when the stock falls the lender can sell it. 8% a year growth is an assumption. No advice, no named stock; description carries the disclaimer."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T07:14:00.651398+00:00",
+      "finishedAt": "2026-10-21T07:17:03.852899+00:00",
+      "notes": [
+        "28 s, night/cinematic, peak -1.0 dB, mean -17.2 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-21T07:18:07.414241+00:00",
+      "finishedAt": "2026-10-21T07:18:07.414241+00:00",
+      "notes": [
+        "28 s, 1080x1920. Frames from the mp4: hook caption 'BILLIONAIRES' on screen from frame 0; captions follow the voice and sit clear of faces and scene labels; no overlaps or cut-off text; disclaimer line over the last second; last line loops to the hook. Liveliness median 4.0, no still samples; audio peak -1.0 dB, mean -17.2 dB."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-21T07:24:48.825693+00:00",
+      "finishedAt": "2026-10-21T07:24:48.825693+00:00",
+      "notes": [
+        "Manifest written; release asset uploaded."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261021-05",
+    "asset": "video.mp4",
+    "uploaded": true,
+    "uploadedAt": "2026-10-21T07:24:55.834251+00:00"
+  }
+}

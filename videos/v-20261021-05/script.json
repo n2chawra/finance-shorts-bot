@@ -1,0 +1,410 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 71533,
+  "story": "secret_of_rich",
+  "currency": "USD",
+  "feed_id": "2026-10-21-borrow-never-sell",
+  "narrator": "am_michael",
+  "style": {
+    "palette": "night",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92
+  },
+  "maths": [
+    {
+      "name": "tax",
+      "kind": "income_tax_bands",
+      "income": 1000000,
+      "allowance": 0,
+      "bands": [
+        [
+          null,
+          20
+        ]
+      ]
+    },
+    {
+      "name": "keep",
+      "kind": "lumpsum",
+      "amount": 1000000,
+      "rate_pct": 8,
+      "years": 10
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "stage",
+      "speaker": "sharma",
+      "camera": "punch:borrow",
+      "say": "Billionaires almost never sell their stock. They borrow against it.",
+      "events": {
+        "never": {
+          "word": "never"
+        },
+        "borrow": {
+          "word": "borrow"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "never"
+        },
+        {
+          "kind": "boom",
+          "at": "borrow",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk",
+                "turn": -0.3
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral",
+                "turn": 0.3
+              },
+              {
+                "at": "borrow",
+                "pose": "worried",
+                "expression": "shock",
+                "turn": 0.3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "what",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Wait, what? Why borrow if you're rich?",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.5,
+            "scale": 1.2,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused",
+                "bubble": {
+                  "icon": "?"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "sell",
+      "scene": "bill",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Sell a million dollars of stock he got for almost nothing, and tax can take {tax_tax}.",
+      "events": {
+        "tax": {
+          "word": "tax"
+        },
+        "got": {
+          "word": "nothing"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "tax",
+          "gain": 0.6
+        },
+        {
+          "kind": "pop",
+          "at": "got"
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "place": "office",
+        "time": "night",
+        "screen": [
+          {
+            "text": "Sell stock",
+            "at": "start"
+          },
+          {
+            "text": "{tax_income}",
+            "at": "got"
+          }
+        ],
+        "lines": [
+          {
+            "text": "Capital gains tax {tax_rate1}+"
+          },
+          {
+            "text": "Gone for good"
+          }
+        ],
+        "total": {
+          "label": "Tax bill",
+          "text": "{tax_tax}",
+          "at": "tax"
+        }
+      }
+    },
+    {
+      "id": "borrow",
+      "scene": "kinetic",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "Borrow a million against it? A loan isn't income. No tax at all.",
+      "events": {
+        "loan": {
+          "word": "loan"
+        },
+        "notax": {
+          "word": "No"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "loan"
+        },
+        {
+          "kind": "kaching",
+          "at": "notax"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "city",
+        "city": "newyork",
+        "night": true,
+        "lines": [
+          {
+            "text": "Borrow {keep_amount}",
+            "at": "start"
+          },
+          {
+            "text": "A loan is not income",
+            "at": "loan"
+          },
+          {
+            "text": "No tax",
+            "at": "notax"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "grows",
+      "scene": "road",
+      "camera": "punch:final",
+      "say": "And the stock he didn't sell keeps growing. At {keep_rate} a year, {keep_final} in {keep_years} years.",
+      "events": {
+        "grow": {
+          "word": "growing"
+        },
+        "final": {
+          "word": "years"
+        },
+        "at": {
+          "word": "At"
+        },
+        "mil": {
+          "word": "million"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.4
+        },
+        {
+          "kind": "boom",
+          "at": "final",
+          "gain": 0.7
+        },
+        {
+          "kind": "pop",
+          "at": "at"
+        },
+        {
+          "kind": "pop-high",
+          "at": "mil"
+        }
+      ],
+      "params": {
+        "who": "sharma",
+        "title": "Never sold",
+        "land": "city",
+        "time": "night",
+        "signs": [
+          {
+            "label": "Today",
+            "text": "{keep_amount}",
+            "at": "grow"
+          },
+          {
+            "label": "Year {keep_years}",
+            "text": "{keep_final}",
+            "at": "final",
+            "good": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "catch",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "But the loan has interest!",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.5,
+            "scale": 1.2,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "angry"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "answer",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Sure. As long as the stock grows faster than the interest, the rich get richer. And when it falls, the bank can sell it for you.",
+      "events": {
+        "faster": {
+          "word": "faster"
+        },
+        "falls": {
+          "word": "falls"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "faster"
+        },
+        {
+          "kind": "fail",
+          "at": "falls",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "smirk",
+                "turn": -0.3
+              },
+              {
+                "at": "falls",
+                "pose": "shrug",
+                "expression": "worried",
+                "turn": -0.3
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking",
+                "turn": 0.3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "So that's why billionaires almost never sell their stock.",
+      "params": {
+        "set": "home",
+        "chip": {
+          "text": "Did you know this one?",
+          "at": "start"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.5,
+            "scale": 1.15,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "happy",
+                "bubble": {
+                  "icon": "idea"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
