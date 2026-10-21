@@ -1,0 +1,110 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52017,
+  "duration_sec": 28,
+  "tempo": 1.0,
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "E",
+    "bpm": 112
+  },
+  "voice": {
+    "name": "hf_alpha",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "hf_alpha",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Poor guy gets ₹20,000 more salary. Rich guy gets the same raise.",
+        "start": 0.27,
+        "seconds": 3.5,
+        "window": 4.07,
+        "fill": 0.86
+      },
+      {
+        "scene": "phone",
+        "text": "New phone! Only ₹7,344 a month!",
+        "start": 4.33,
+        "seconds": 2.79,
+        "window": 3.07,
+        "fill": 0.909
+      },
+      {
+        "scene": "rich-move",
+        "text": "Same raise. I invest all of it. Every single month.",
+        "start": 7.4,
+        "seconds": 2.31,
+        "window": 2.8,
+        "fill": 0.825
+      },
+      {
+        "scene": "road",
+        "text": "10 years at 12% a year, and that raise becomes ₹46.5 L.",
+        "start": 10.2,
+        "seconds": 4.03,
+        "window": 4.6,
+        "fill": 0.876
+      },
+      {
+        "scene": "and-me",
+        "text": "And my phone?",
+        "start": 14.8,
+        "seconds": 0.6,
+        "window": 1.13,
+        "fill": 0.531
+      },
+      {
+        "scene": "punch",
+        "text": "Your phone? Old in two years. Worth almost nothing.",
+        "start": 15.93,
+        "seconds": 2.03,
+        "window": 2.6,
+        "fill": 0.781
+      },
+      {
+        "scene": "gap",
+        "text": "Spend it, and the raise is gone. Invest it, and it becomes ₹46.5 L.",
+        "start": 18.53,
+        "seconds": 4.25,
+        "window": 4.83,
+        "fill": 0.88
+      },
+      {
+        "scene": "loop",
+        "text": "Same raise. Two lives. So, next time a poor guy gets a raise...",
+        "start": 23.37,
+        "seconds": 3.24,
+        "window": 3.8,
+        "fill": 0.853
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2
+  },
+  "liveliness": {
+    "median": 7.793,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

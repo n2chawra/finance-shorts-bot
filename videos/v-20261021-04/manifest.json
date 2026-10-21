@@ -1,0 +1,288 @@
+{
+  "id": "v-20261021-04",
+  "createdAt": "2026-10-21T07:24:33.788504+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Rich vs poor: what each does with a ₹20,000 raise",
+    "category": "salary",
+    "feed_id": "2026-10-21-raise-rich-vs-poor"
+  },
+  "title": "Rich vs Poor: your ₹20,000 raise 💸",
+  "description": "Same raise, two very different lives. Which one are you?\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#RichVsPoor",
+    "#Money",
+    "#PersonalFinance",
+    "#Salary"
+  ],
+  "hookStyle": "conflict",
+  "cta": "Rich move or poor move? Tell me below",
+  "seed": 52017,
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "E",
+    "bpm": 112,
+    "voice": "hf_alpha"
+  },
+  "voice": {
+    "name": "hf_alpha",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "hf_alpha",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Poor guy gets ₹20,000 more salary. Rich guy gets the same raise.",
+        "start": 0.27,
+        "seconds": 3.5,
+        "window": 4.07,
+        "fill": 0.86
+      },
+      {
+        "scene": "phone",
+        "text": "New phone! Only ₹7,344 a month!",
+        "start": 4.33,
+        "seconds": 2.79,
+        "window": 3.07,
+        "fill": 0.909
+      },
+      {
+        "scene": "rich-move",
+        "text": "Same raise. I invest all of it. Every single month.",
+        "start": 7.4,
+        "seconds": 2.31,
+        "window": 2.8,
+        "fill": 0.825
+      },
+      {
+        "scene": "road",
+        "text": "10 years at 12% a year, and that raise becomes ₹46.5 L.",
+        "start": 10.2,
+        "seconds": 4.03,
+        "window": 4.6,
+        "fill": 0.876
+      },
+      {
+        "scene": "and-me",
+        "text": "And my phone?",
+        "start": 14.8,
+        "seconds": 0.6,
+        "window": 1.13,
+        "fill": 0.531
+      },
+      {
+        "scene": "punch",
+        "text": "Your phone? Old in two years. Worth almost nothing.",
+        "start": 15.93,
+        "seconds": 2.03,
+        "window": 2.6,
+        "fill": 0.781
+      },
+      {
+        "scene": "gap",
+        "text": "Spend it, and the raise is gone. Invest it, and it becomes ₹46.5 L.",
+        "start": 18.53,
+        "seconds": 4.25,
+        "window": 4.83,
+        "fill": 0.88
+      },
+      {
+        "scene": "loop",
+        "text": "Same raise. Two lives. So, next time a poor guy gets a raise...",
+        "start": 23.37,
+        "seconds": 3.24,
+        "window": 3.8,
+        "fill": 0.853
+      }
+    ]
+  },
+  "durationSec": 28,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off"
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "India Short, no sourced facts. Inputs realistic: a 16% consumer loan for a phone over 2 years (Indian personal and consumer-durable loans run about 12-24%); 12% a year assumed for an equity SIP, stated on screen as an assumption. A phone losing most of its value in two years is a fair, hedged claim ('almost nothing'). No product or fund named, no advice; description carries the disclaimer."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "28 s, 1080x1920. Frames from the mp4: hook caption 'POOR GUY GETS' from frame 0, then the raise; captions clear of faces and scene labels, figures never split across lines; disclaimer line over the last second; last line loops into the hook. Liveliness median 7.8, no still samples; audio peak -1.0 dB, mean -16.2 dB (after the master's loudness back-off)."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-10-21T06:40:49.643740+00:00",
+      "finishedAt": "2026-10-21T06:40:49.643740+00:00",
+      "notes": [
+        "palette 'ember' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:40:52.207151+00:00",
+      "finishedAt": "2026-10-21T06:40:52.207151+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+        "warning: beat 'gap' runs 5.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:41:01.464915+00:00",
+      "finishedAt": "2026-10-21T06:41:01.464915+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:41:04.039594+00:00",
+      "finishedAt": "2026-10-21T06:41:04.039594+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:41:18.336312+00:00",
+      "finishedAt": "2026-10-21T06:41:18.336312+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:41:20.916563+00:00",
+      "finishedAt": "2026-10-21T06:43:40.161318+00:00",
+      "notes": [
+        "28 s, sky/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:44:30.141611+00:00",
+      "finishedAt": "2026-10-21T06:44:53.410482+00:00",
+      "notes": [
+        "28 s, sky/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:46:36.465227+00:00",
+      "finishedAt": "2026-10-21T06:46:59.843892+00:00",
+      "notes": [
+        "28 s, sky/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T06:48:44.814739+00:00",
+      "finishedAt": "2026-10-21T06:49:08.220079+00:00",
+      "notes": [
+        "28 s, sky/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-21T07:11:03.232794+00:00",
+      "finishedAt": "2026-10-21T07:11:03.232794+00:00",
+      "notes": [
+        "India Short, no sourced facts. Inputs realistic: a 16% consumer loan for a phone over 2 years (Indian personal and consumer-durable loans run about 12-24%); 12% a year assumed for an equity SIP, stated on screen as an assumption. A phone losing most of its value in two years is a fair, hedged claim ('almost nothing'). No product or fund named, no advice; description carries the disclaimer."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-21T07:11:12.791557+00:00",
+      "finishedAt": "2026-10-21T07:13:58.048970+00:00",
+      "notes": [
+        "audio levels off target: peak -1.0 dB, mean -14.8 dB"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T07:18:04.131592+00:00",
+      "finishedAt": "2026-10-21T07:20:45.388484+00:00",
+      "notes": [
+        "28 s, sky/pop, peak -1.0 dB, mean -16.2 dB"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T07:21:17.716486+00:00",
+      "finishedAt": "2026-10-21T07:23:58.464062+00:00",
+      "notes": [
+        "28 s, sky/pop, peak -1.0 dB, mean -16.2 dB"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-21T07:24:18.384732+00:00",
+      "finishedAt": "2026-10-21T07:24:18.384732+00:00",
+      "notes": [
+        "28 s, 1080x1920. Frames from the mp4: hook caption 'POOR GUY GETS' from frame 0, then the raise; captions clear of faces and scene labels, figures never split across lines; disclaimer line over the last second; last line loops into the hook. Liveliness median 7.8, no still samples; audio peak -1.0 dB, mean -16.2 dB (after the master's loudness back-off)."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-21T07:24:33.789510+00:00",
+      "finishedAt": "2026-10-21T07:24:33.789510+00:00",
+      "notes": [
+        "Manifest written; release asset uploaded."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261021-04",
+    "asset": "video.mp4",
+    "uploaded": true,
+    "uploadedAt": "2026-10-21T07:24:42.089201+00:00"
+  }
+}

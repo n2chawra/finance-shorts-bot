@@ -1,0 +1,138 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-10-21T06:40:49.643740+00:00",
+    "finishedAt": "2026-10-21T06:40:49.643740+00:00",
+    "notes": [
+      "palette 'ember' was used by the previous video"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T06:40:52.207151+00:00",
+    "finishedAt": "2026-10-21T06:40:52.207151+00:00",
+    "notes": [
+      "14 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+      "warning: beat 'gap' runs 5.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-21T06:41:01.464915+00:00",
+    "finishedAt": "2026-10-21T06:41:01.464915+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T06:41:04.039594+00:00",
+    "finishedAt": "2026-10-21T06:41:04.039594+00:00",
+    "notes": [
+      "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T06:41:18.336312+00:00",
+    "finishedAt": "2026-10-21T06:41:18.336312+00:00",
+    "notes": [
+      "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T06:41:20.916563+00:00",
+    "finishedAt": "2026-10-21T06:43:40.161318+00:00",
+    "notes": [
+      "28 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T06:44:30.141611+00:00",
+    "finishedAt": "2026-10-21T06:44:53.410482+00:00",
+    "notes": [
+      "28 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T06:46:36.465227+00:00",
+    "finishedAt": "2026-10-21T06:46:59.843892+00:00",
+    "notes": [
+      "28 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T06:48:44.814739+00:00",
+    "finishedAt": "2026-10-21T06:49:08.220079+00:00",
+    "notes": [
+      "28 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-21T07:11:03.232794+00:00",
+    "finishedAt": "2026-10-21T07:11:03.232794+00:00",
+    "notes": [
+      "India Short, no sourced facts. Inputs realistic: a 16% consumer loan for a phone over 2 years (Indian personal and consumer-durable loans run about 12-24%); 12% a year assumed for an equity SIP, stated on screen as an assumption. A phone losing most of its value in two years is a fair, hedged claim ('almost nothing'). No product or fund named, no advice; description carries the disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-21T07:11:12.791557+00:00",
+    "finishedAt": "2026-10-21T07:13:58.048970+00:00",
+    "notes": [
+      "audio levels off target: peak -1.0 dB, mean -14.8 dB"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T07:18:04.131592+00:00",
+    "finishedAt": "2026-10-21T07:20:45.388484+00:00",
+    "notes": [
+      "28 s, sky/pop, peak -1.0 dB, mean -16.2 dB"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T07:21:17.716486+00:00",
+    "finishedAt": "2026-10-21T07:23:58.464062+00:00",
+    "notes": [
+      "28 s, sky/pop, peak -1.0 dB, mean -16.2 dB"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-21T07:24:18.384732+00:00",
+    "finishedAt": "2026-10-21T07:24:18.384732+00:00",
+    "notes": [
+      "28 s, 1080x1920. Frames from the mp4: hook caption 'POOR GUY GETS' from frame 0, then the raise; captions clear of faces and scene labels, figures never split across lines; disclaimer line over the last second; last line loops into the hook. Liveliness median 7.8, no still samples; audio peak -1.0 dB, mean -16.2 dB (after the master's loudness back-off)."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-21T07:24:33.789510+00:00",
+    "finishedAt": "2026-10-21T07:24:33.789510+00:00",
+    "notes": [
+      "Manifest written; release asset uploaded."
+    ]
+  }
+]

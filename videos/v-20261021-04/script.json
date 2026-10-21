@@ -1,0 +1,391 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52017,
+  "story": "rich_vs_poor",
+  "currency": "INR",
+  "feed_id": "2026-10-21-raise-rich-vs-poor",
+  "narrator": "hf_alpha",
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "E",
+    "bpm": 112
+  },
+  "maths": [
+    {
+      "name": "rich",
+      "kind": "sip",
+      "monthly": 20000,
+      "rate_pct": 12,
+      "years": 10
+    },
+    {
+      "name": "phone",
+      "kind": "emi",
+      "amount": 150000,
+      "rate_pct": 16,
+      "years": 2
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "stage",
+      "camera": "punch:same",
+      "say": "Poor guy gets {rich_amount} more salary. Rich guy gets the same raise.",
+      "events": {
+        "poor": {
+          "word": "Poor"
+        },
+        "same": {
+          "word": "same"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "poor"
+        },
+        {
+          "kind": "boom",
+          "at": "same",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "home",
+        "chip": {
+          "text": "Raise: {rich_amount} a month",
+          "at": "start"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh",
+                "turn": 0.3
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.7,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "phone",
+      "scene": "bill",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "New phone! Only {phone_emi} a month!",
+      "events": {
+        "emi": {
+          "word": "Only"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "emi"
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "place": "home",
+        "time": "night",
+        "screen": [
+          {
+            "text": "New phone",
+            "at": "start"
+          },
+          {
+            "text": "{phone_emi} a month",
+            "at": "emi"
+          }
+        ],
+        "lines": [
+          {
+            "text": "{phone_months} months"
+          },
+          {
+            "text": "Interest {phone_interest}"
+          }
+        ],
+        "total": {
+          "label": "Phone really costs",
+          "text": "{phone_total_paid}",
+          "at": "end"
+        }
+      }
+    },
+    {
+      "id": "rich-move",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "Same raise. I invest all of it. Every single month.",
+      "events": {
+        "inv": {
+          "word": "invest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "inv"
+        }
+      ],
+      "params": {
+        "set": "home",
+        "chip": {
+          "text": "Invest {rich_amount} a month",
+          "at": "inv"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "x": 0.5,
+            "scale": 1.15,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "inv",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "road",
+      "scene": "road",
+      "camera": "drift",
+      "say": "{rich_years} years at {rich_rate} a year, and that raise becomes {rich_final}.",
+      "events": {
+        "becomes": {
+          "word": "becomes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.4
+        },
+        {
+          "kind": "boom",
+          "at": "becomes",
+          "gain": 0.8
+        }
+      ],
+      "params": {
+        "who": "sharma",
+        "title": "The rich road",
+        "land": "city",
+        "time": "sunset",
+        "signs": [
+          {
+            "label": "Year one",
+            "text": "still investing",
+            "at": "start"
+          },
+          {
+            "label": "Year {rich_years}",
+            "text": "{rich_final}",
+            "at": "becomes",
+            "good": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "and-me",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "And my phone?",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.5,
+            "scale": 1.2,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "worried"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "punch",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Your phone? Old in two years. Worth almost nothing.",
+      "events": {
+        "nothing": {
+          "word": "nothing"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "nothing",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "sad"
+              },
+              {
+                "at": "nothing",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.7,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "laugh",
+                "turn": -0.3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "gap",
+      "scene": "fork",
+      "camera": "punch:bec",
+      "say": "Spend it, and the raise is gone. Invest it, and it becomes {rich_final}.",
+      "events": {
+        "spend": {
+          "word": "Spend"
+        },
+        "inv": {
+          "word": "Invest"
+        },
+        "bec": {
+          "word": "becomes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "spend",
+          "gain": 0.4
+        },
+        {
+          "kind": "kaching",
+          "at": "inv"
+        },
+        {
+          "kind": "boom",
+          "at": "bec",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "land": "city",
+        "time": "dawn",
+        "short": {
+          "label": "Invest the raise",
+          "time": "{rich_years} years",
+          "cost": "{rich_final}",
+          "at": "inv"
+        },
+        "long": {
+          "label": "Spend the raise",
+          "time": "every month",
+          "cost": "gone",
+          "at": "spend"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "stage",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Same raise. Two lives. So, next time a poor guy gets a raise...",
+      "params": {
+        "set": "home",
+        "chip": {
+          "text": "Rich move or poor move?",
+          "at": "start"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused",
+                "turn": 0.3
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.7,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "proud",
+                "turn": -0.3
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
