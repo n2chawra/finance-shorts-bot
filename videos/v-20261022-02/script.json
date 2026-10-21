@@ -1,0 +1,549 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 60923,
+  "story": "guess_the_number",
+  "currency": "USD",
+  "feed_id": "2026-10-22-10-dollars-a-day-guess",
+  "style": {
+    "palette": "mint",
+    "genre": "synthwave",
+    "key": "C",
+    "bpm": 100
+  },
+  "maths": [
+    {
+      "name": "day",
+      "kind": "sip",
+      "monthly": 300,
+      "rate_pct": 8,
+      "years": 30
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "speaker": "narrator",
+      "say": "{day_amount} a month for {day_years} years. Guess what it becomes.",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "guess": {
+          "word": "Guess"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        },
+        {
+          "kind": "pop-high",
+          "at": "years"
+        },
+        {
+          "kind": "riser",
+          "at": "guess",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "amount": "{day_amount}",
+        "per": "a month",
+        "years": "{day_years} years",
+        "ask": "Guess?",
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "guess1",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "Easy. {day_invested}. That's all I put in.",
+      "events": {
+        "easy": {
+          "word": "Easy"
+        },
+        "put": {
+          "word": "put"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "easy"
+        },
+        {
+          "kind": "ding",
+          "at": "put",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "proud",
+                "turn": 0.3
+              },
+              {
+                "at": "put",
+                "pose": "point",
+                "expression": "happy",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "mine",
+            "spot": "right",
+            "amount": "@day.invested",
+            "text": "{day_invested}",
+            "label": "Guess one",
+            "at": "easy",
+            "tone": "plain"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "guess2",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Too low. It grows! Maybe double that?",
+      "events": {
+        "low": {
+          "word": "low"
+        },
+        "double": {
+          "word": "double"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "low",
+          "gain": 0.5
+        },
+        {
+          "kind": "pop",
+          "at": "double"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "smirk"
+              },
+              {
+                "at": "double",
+                "pose": "pointUp",
+                "expression": "thinking",
+                "bubble": {
+                  "icon": "?"
+                }
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "double",
+            "size": "close",
+            "on": "priya"
+          }
+        ],
+        "word": {
+          "text": "Double?",
+          "at": "double",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "guess3",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Still too low. Think much bigger.",
+      "events": {
+        "low": {
+          "word": "low"
+        },
+        "bigger": {
+          "word": "bigger"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "low",
+          "gain": 0.4
+        },
+        {
+          "kind": "boom",
+          "at": "bigger",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "bigger",
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "low",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "bigger",
+            "size": "extreme",
+            "on": "sharma"
+          }
+        ],
+        "word": {
+          "text": "Bigger",
+          "at": "bigger",
+          "color": "good",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "work",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Here's the working. You put in {day_invested}. At an assumed {day_rate} a year, the growth starts earning growth.",
+      "events": {
+        "put": {
+          "word": "put"
+        },
+        "rate": {
+          "word": "assumed"
+        },
+        "growth": {
+          "word": "earning"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "put"
+        },
+        {
+          "kind": "tick",
+          "at": "rate",
+          "gain": 0.5
+        },
+        {
+          "kind": "kaching",
+          "at": "growth",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking",
+                "turn": 0.4
+              },
+              {
+                "at": "growth",
+                "pose": "worried",
+                "expression": "shock",
+                "turn": 0.4
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "in",
+            "spot": "right",
+            "amount": "@day.invested",
+            "text": "{day_invested}",
+            "label": "Put in",
+            "at": "put",
+            "tone": "plain"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ],
+        "word": {
+          "text": "Assumed {day_rate}",
+          "at": "rate",
+          "color": "gold",
+          "where": "left"
+        }
+      }
+    },
+    {
+      "id": "gains",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "The growth alone? {day_gains}.",
+      "events": {
+        "alone": {
+          "word": "alone"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "alone",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "grow",
+            "spot": "right",
+            "amount": "@day.gains",
+            "text": "{day_gains}",
+            "label": "Growth only",
+            "at": "start",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "alone",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking",
+                "turn": 0.4
+              },
+              {
+                "at": "alone",
+                "pose": "worried",
+                "expression": "shock",
+                "turn": 0.4
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "answer",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "So the answer is {day_final}.",
+      "events": {
+        "answer": {
+          "word": "answer"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.35
+        },
+        {
+          "kind": "kaching",
+          "at": "answer"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "total",
+            "spot": "center",
+            "amount": "@day.final",
+            "text": "{day_final}",
+            "label": "Answer",
+            "at": "start",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "answer",
+            "size": "medium",
+            "on": "total",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "Wait. From just...",
+      "events": {
+        "wait": {
+          "word": "Wait"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop-high",
+          "at": "wait"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "wait",
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ]
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "pose": "think",
+    "expression": "thinking",
+    "layout": "story",
+    "angle": "question",
+    "words": "Guess the number",
+    "hero": "piggy",
+    "tag": "Every month",
+    "small": "{day_amount}",
+    "to": "Years later",
+    "figure": "{day_final}"
+  },
+  "narrator": "af_bella"
+}

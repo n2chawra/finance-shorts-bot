@@ -1,0 +1,246 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:52:29.166558+00:00",
+    "finishedAt": "2026-10-21T22:52:29.166558+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:52:56.139791+00:00",
+    "finishedAt": "2026-10-21T22:52:56.139791+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:53:51.767900+00:00",
+    "finishedAt": "2026-10-21T22:53:51.767900+00:00",
+    "notes": [
+      "No sourced facts and no verify list on feed topic 2026-10-22-10-dollars-a-day-guess. USD story, 8% a year stated as an assumption in voice and on screen ('Assumed 8%'), within the profile's 7-10% range. No products, no guarantees, tone light, description ends with the disclaimer. Notes: the video never says what the money is invested in (implied broad stock market, #Investing); figures are nominal, before inflation, fees and taxes."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-21T22:53:33.348297+00:00",
+    "finishedAt": "2026-10-21T22:54:16.018814+00:00",
+    "notes": [
+      "text '$108,000' at 14.2 s runs outside the frame",
+      "text '$450,089' at 21.4 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:54:25.447903+00:00",
+    "finishedAt": "2026-10-21T22:54:25.447903+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-21T22:54:26.729430+00:00",
+    "finishedAt": "2026-10-21T22:54:47.497058+00:00",
+    "notes": [
+      "text '$108,000' at 5.2 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:54:54.041059+00:00",
+    "finishedAt": "2026-10-21T22:54:54.041059+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-21T22:54:55.376892+00:00",
+    "finishedAt": "2026-10-21T22:55:17.436639+00:00",
+    "notes": [
+      "text '$108,000' at 14.2 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:55:23.115532+00:00",
+    "finishedAt": "2026-10-21T22:55:23.115532+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-21T22:55:24.454974+00:00",
+    "finishedAt": "2026-10-21T22:55:46.108720+00:00",
+    "notes": [
+      "text '$108,000' at 14.2 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:55:51.179534+00:00",
+    "finishedAt": "2026-10-21T22:55:51.179534+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-21T22:55:52.601483+00:00",
+    "finishedAt": "2026-10-21T22:56:14.369898+00:00",
+    "notes": [
+      "text '$108,000' at 14.2 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:56:34.407231+00:00",
+    "finishedAt": "2026-10-21T22:56:34.407231+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:56:35.893458+00:00",
+    "finishedAt": "2026-10-21T22:57:06.851187+00:00",
+    "notes": [
+      "24 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:57:19.217401+00:00",
+    "finishedAt": "2026-10-21T22:57:19.217401+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:57:20.566161+00:00",
+    "finishedAt": "2026-10-21T22:57:42.217832+00:00",
+    "notes": [
+      "24 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-21T22:58:34.883819+00:00",
+    "finishedAt": "2026-10-21T22:58:34.883819+00:00",
+    "notes": [
+      "[script] 20.0s, beat 'answer' (penthouse, camera moving to wide on room): the two stacks sit so low and small that the caption 'SO THE ANSWER' lands right on the 'PUT IN' label and covers both value pills, so neither $108,000 nor the $450,089 answer can be read at the payoff moment. End the camera on a medium/close on 'total' (or a tighter shot size) so the stacks and their labels sit above the caption band and fill the frame instead of a mostly-skyline upper half."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:58:49.021287+00:00",
+    "finishedAt": "2026-10-21T22:58:49.021287+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:58:50.347765+00:00",
+    "finishedAt": "2026-10-21T22:59:13.056412+00:00",
+    "notes": [
+      "24 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:59:25.568786+00:00",
+    "finishedAt": "2026-10-21T22:59:25.568786+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T22:59:26.848783+00:00",
+    "finishedAt": "2026-10-21T22:59:48.510658+00:00",
+    "notes": [
+      "24 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-21T23:00:57.165773+00:00",
+    "finishedAt": "2026-10-21T23:00:57.165773+00:00",
+    "notes": [
+      "[script] 17.5s (frame 525), beat 'gains' (vault, camera moving to wide on room): the short 'Put in' stack's value label ($108,000) lands in the caption band, and the caption '$342,089.' sits right on the label's bottom edge. The two figures read as one stacked pair, so it is unclear which number is the growth. Same fix as the answer beat: end the camera on a medium shot of 'grow', or keep the put-in stack out of the frame or above the captions, so neither label reaches the caption band. (The answer beat fix is good: at 20.5-22.2s the 'Answer $450,089' label sits clear above the caption.)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:01:09.480396+00:00",
+    "finishedAt": "2026-10-21T23:01:09.480396+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:01:10.769792+00:00",
+    "finishedAt": "2026-10-21T23:01:32.372145+00:00",
+    "notes": [
+      "24 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:01:59.023730+00:00",
+    "finishedAt": "2026-10-21T23:01:59.023730+00:00",
+    "notes": [
+      "24 s, mint/synthwave, peak -1.0 dB, mean -16.5 dB; hook card at 0s, disclaimer at 24.2s; gains beat (16.3-18.8s incl. frame 525) and answer beat (20.5-22.2s) now show their value labels clear above the captions; no overlaps, cut-offs or empty frames; thumbnail clean."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:02:06.045791+00:00",
+    "finishedAt": "2026-10-21T23:04:11.901180+00:00",
+    "notes": [
+      "24 s, mint/synthwave, peak -1.0 dB, mean -16.5 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:04:13.255639+00:00",
+    "finishedAt": "2026-10-21T23:04:13.255639+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
