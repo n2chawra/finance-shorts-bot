@@ -37,6 +37,9 @@ FPS = 30
 SIZES = {"long": (1920, 1080), "short": (1080, 1920)}
 LEAD, TAIL = 0.35, 0.5            # silence before and after a beat's line
 GAP_NO_VOICE = 2.4                # a beat with nothing said (a chapter card) lasts this long
+# "a new picture every 3-5 s" (Shorts): a beat longer than LONG_BEAT seconds should have a named
+# event at least every MAX_EVENT_GAP seconds. A warning for the writer for now, not a failure
+LONG_BEAT, MAX_EVENT_GAP = 5.0, 3.0
 VOICE_DUCK = 0.6                  # music drops this much under speech
 QUIET_BED, QUIET_LEVEL, QUIET_DUCK = "quiet-bed", 0.32, 0.92   # the experiment's bed level and duck
 DISCLAIMER = "Illustrative only. Not financial advice."
@@ -270,12 +273,31 @@ def scene_names() -> set[str]:
     return set(re.findall(r'"([a-z][a-z-]*)"', src[src.index("SCENE_NAMES"):src.index("] as const")]))
 
 
+def event_gaps(beats: list[dict], fps: int = FPS) -> list[str]:
+    """Warnings for Shorts beats ({"id", "frames", "events"} as in timeline.json) longer than
+    LONG_BEAT seconds with more than MAX_EVENT_GAP seconds between changes: the beat start and end
+    and every named event (not "speech", which only starts the voice)."""
+    out = []
+    for b in beats:
+        frames = b["frames"]
+        if frames/fps <= LONG_BEAT:
+            continue
+        marks = sorted({0, frames, *(min(frames, max(0, v)) for k, v in b["events"].items() if k != "speech")})
+        gap = max(q - p for p, q in zip(marks, marks[1:]))/fps
+        if gap > MAX_EVENT_GAP:
+            out.append(f"beat {b['id']!r} runs {frames/fps:.1f} s with {gap:.1f} s and no event: add an event "
+                       f"(a line, a count-up, a pose, a camera punch) every {MAX_EVENT_GAP:g} s, or split the beat")
+    return out
+
+
 def check_script(script: dict) -> dict:
     """Everything a build would reject, without speaking or mixing anything: maths inputs, typed
     numbers, placeholders, @references, scene names, sound kinds, ids and event words. Returns
-    {"figures": {placeholder: shown}, "beats": [{"id", "scene", "speaker", "say", "spoken"}]}
-    for the number check and the reviewers."""
-    if script.get("format", "long") not in SIZES:
+    {"figures": {placeholder: shown}, "beats": [{"id", "scene", "speaker", "say", "spoken"}],
+    "warnings": [...]} for the number check and the reviewers. Warnings (Shorts pacing, on an
+    estimated voice timing) never fail a script."""
+    fmt = script.get("format", "long")
+    if fmt not in SIZES:
         raise ValueError("format must be long or short")
     fm = money_for(script)   # rejects an unknown currency
     results = maths.compute(script.get("maths", []), fm)
@@ -290,7 +312,9 @@ def check_script(script: dict) -> dict:
         raise ValueError("a script with sourced facts needs a headline beat, which shows where they come from")
     if len({b.id for b in beats}) != len(beats):
         raise ValueError("beat ids must be unique")
-    scenes, out = scene_names(), []
+    scenes, out, timed = scene_names(), [], []
+    tempo = float(script.get("tempo", TEMPOS[fmt]))
+    speed = float(script.get("speed", SPEEDS[fmt]))*tempo
     for b in beats:
         where = f"beat {b.id!r}"
         if b.scene not in scenes:
@@ -307,10 +331,17 @@ def check_script(script: dict) -> dict:
             if sfx.get("kind") not in SFX:
                 raise ValueError(f"{where}: sfx kind must be one of {', '.join(SFX)}")
         out.append({"id": b.id, "scene": b.scene, "speaker": b.speaker, "say": text, "spoken": spoken})
+        if fmt == "short":
+            line = _estimate(spoken, speed) if spoken else None
+            dur = max(b.min_sec/tempo, LEAD/tempo + line.seconds + TAIL/tempo) if line else max(b.min_sec/tempo, GAP_NO_VOICE/tempo)
+            frames = max(1, round(dur*FPS))
+            events = {n: round(_event_time(spec, line.words if line else [], LEAD/tempo, frames/FPS, where, tempo)*FPS)
+                      for n, spec in b.events.items()}
+            timed.append({"id": b.id, "frames": frames, "events": events})
     if beats[-1].scene != "end":
         raise ValueError("the last beat must be the end card (scene \"end\"), which carries the disclaimer")
     _thumbnail(script.get("thumbnail"), figures, results)
-    return {"figures": figures, "beats": out}
+    return {"figures": figures, "beats": out, "warnings": event_gaps(timed)}
 
 
 def build(script: dict, out: Path, voice: str = "kokoro") -> dict:

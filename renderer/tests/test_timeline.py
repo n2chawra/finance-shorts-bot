@@ -182,3 +182,29 @@ def test_three_thumbnails_need_different_angles() -> None:
     too_many["thumbnails"].append({**t, "angle": "warning"})
     with pytest.raises(ValueError, match="two more at most"):
         check_script(too_many)
+
+
+def test_event_gaps_flags_a_long_beat_with_a_still_stretch() -> None:
+    fps = tb.FPS
+    still = {"id": "still", "frames": 7*fps, "events": {"start": 0, "speech": 10, "end": 7*fps}}
+    busy = {"id": "busy", "frames": 7*fps, "events": {"a": 2*fps, "b": int(4.5*fps)}}
+    short = {"id": "short", "frames": 5*fps, "events": {}}             # 5 s or less is one picture
+    warnings = tb.event_gaps([still, busy, short])
+    assert len(warnings) == 1 and "'still'" in warnings[0] and "7.0 s" in warnings[0]
+
+
+def test_check_script_warns_only_for_shorts() -> None:
+    line = ("This balance is paid down slowly, month after month, year after year, while the bank keeps "
+            "adding interest on everything that is still left over at the end of each month.")
+    beats = [{"id": "slow", "scene": "bignumber", "say": line, "params": {"lines": [{"text": "{card_years}", "at": "start"}]}},
+             {"id": "outro", "scene": "end", "say": "Follow.", "params": {"cta": "Pay more than the minimum."}}]
+    assert tb.check_script(script(beats))["warnings"] == []
+    warned = tb.check_script(script(beats, format="short"))["warnings"]
+    assert len(warned) == 1 and "'slow'" in warned[0]
+    beats[0]["events"] = {"a": {"word": "month"}, "b": {"word": "bank"}, "c": {"word": "everything"}, "d": {"word": "end"}}
+    assert tb.check_script(script(beats, format="short"))["warnings"] == []
+
+
+def test_the_shorts_examples_keep_an_event_every_few_seconds() -> None:
+    s = json.loads((EXAMPLES / "short_story_tax.json").read_text(encoding="utf-8"))
+    assert tb.check_script(s)["warnings"] == []

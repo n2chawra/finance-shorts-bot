@@ -12,40 +12,50 @@
       "bands": [ [50270, 20], [125140, 40], [null, 45] ] }
   ],
   "beats": [
-    { "id": "hook", "scene": "reveal", "camera": "punch:keep",
+    { "id": "hook", "scene": "reveal", "camera": "punch:rest",
       "say": "A pay rise of {tax_rise}. You keep {tax_kept} of it. Here is where the rest goes.",
-      "events": { "keep": { "word": "keep" } },
-      "sfx": [ { "kind": "boom", "at": "keep", "gain": 0.8 } ],
+      "events": { "keep": { "word": "keep" }, "here": { "word": "Here" }, "rest": { "word": "rest" } },
+      "sfx": [ { "kind": "boom", "at": "keep", "gain": 0.8 }, { "kind": "pop", "at": "rest" } ],
       "params": { "lines": [
         { "text": "{tax_rise}", "style": "sub", "at": "start" },
         { "text": "{tax_kept}", "style": "hero", "value": "@tax.kept", "at": "keep" } ],
         "actor": { "who": "priya", "x": 0.5, "scale": 1.3, "acting": [
           { "sec": 0, "pose": "phone", "prop": "phone", "expression": "happy" },
-          { "at": "keep", "pose": "shrug", "expression": "shock" } ] } } },
+          { "at": "keep", "pose": "shrug", "expression": "shock" },
+          { "at": "here", "pose": "think", "expression": "thinking" },
+          { "at": "rest", "pose": "facepalm", "expression": "worried" } ] } } },
 
     { "id": "frozen", "scene": "split", "transition": "whip",
       "say": "The tax-free allowance stays at {tax_allowance}. The higher rate still starts at {tax_band1}.",
-      "events": { "a": { "word": "allowance" }, "b": { "word": "higher" } },
-      "sfx": [ { "kind": "pop", "at": "a" }, { "kind": "pop-high", "at": "b" } ],
+      "events": { "a": { "word": "allowance" }, "b": { "word": "higher" }, "c": { "word": "starts" } },
+      "sfx": [ { "kind": "pop", "at": "a" }, { "kind": "pop-high", "at": "c" } ],
       "params": {
         "left": { "label": "Tax-free", "text": "{tax_allowance}", "at": "a" },
-        "right": { "label": "Higher rate from", "text": "{tax_band1}", "at": "b" } } },
+        "right": { "label": "Higher rate from", "text": "{tax_band1}", "at": "c" } } },
 
     { "id": "rate", "scene": "split", "transition": "slide-up",
       "say": "So the raise crosses the line. The top slice is taxed at {tax_marginal2}, not {tax_marginal}.",
-      "events": { "a": { "word": "taxed" }, "b": { "word": "not" } },
+      "events": { "a": { "word": "taxed" }, "b": { "word": "crosses" } },
       "sfx": [ { "kind": "pop", "at": "a" }, { "kind": "ding", "at": "b" } ],
       "params": {
         "left": { "label": "Before", "text": "{tax_marginal}", "at": "b" },
         "right": { "label": "After the raise", "text": "{tax_marginal2}", "at": "a" } } },
 
     { "id": "result", "scene": "split", "transition": "zoom",
-      "say": "Tax goes from {tax_tax} to {tax_tax2}. That is {tax_extra_tax} more, from one raise.",
-      "events": { "a": { "word": "from" }, "b": { "word": "more" } },
-      "sfx": [ { "kind": "pop", "at": "a" }, { "kind": "boom", "at": "b" } ],
+      "say": "Tax goes from {tax_tax} to {tax_tax2}.",
+      "events": { "a": { "word": "goes" }, "b": { "word": "to" } },
+      "sfx": [ { "kind": "pop", "at": "a" }, { "kind": "pop-high", "at": "b" } ],
       "params": {
         "left": { "label": "Tax before", "text": "{tax_tax}", "value": "@tax.tax", "at": "a" },
-        "right": { "label": "Tax after", "text": "{tax_tax2}", "value": "@tax.tax2", "at": "a" } } },
+        "right": { "label": "Tax after", "text": "{tax_tax2}", "value": "@tax.tax2", "at": "b" } } },
+
+    { "id": "extra", "scene": "reveal", "transition": "zoom", "camera": "punch:hit",
+      "say": "That is {tax_extra_tax} more, from one raise.",
+      "events": { "hit": { "word": "more" } },
+      "sfx": [ { "kind": "boom", "at": "hit", "gain": 0.8 } ],
+      "params": { "lines": [
+        { "text": "{tax_extra_tax}", "style": "hero", "value": "@tax.extra_tax", "at": "start" },
+        { "text": "more tax", "style": "sub", "at": "hit" } ] } },
 
     { "id": "priya", "scene": "stage", "speaker": "priya", "transition": "slide-up",
       "say": "Frozen lines are a tax rise nobody announces.",
