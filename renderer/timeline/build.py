@@ -40,7 +40,12 @@ GAP_NO_VOICE = 2.4                # a beat with nothing said (a chapter card) la
 # "a new picture every 3-5 s" (Shorts): a beat longer than LONG_BEAT seconds should have a named
 # event at least every MAX_EVENT_GAP seconds. A warning for the writer for now, not a failure
 LONG_BEAT, MAX_EVENT_GAP = 5.0, 3.0
-VOICE_DUCK = 0.6                  # music drops this much under speech
+VOICE_DUCK = 0.72                 # music drops this much under speech (0.6 until 2026-10-21)
+# the voice leads the mix (owner, 2026-10-21: "the sound of the speaker is less and the effects are
+# more"): sound effects go through a bus at half level, and drop further when they land on speech
+SFX_BUS = 0.5
+SFX_UNDER_VOICE = 0.6
+VOICE_RMS = 0.2                   # every line levelled to the same loudness, peaks kept under 0.95
 QUIET_BED, QUIET_LEVEL, QUIET_DUCK = "quiet-bed", 0.32, 0.92   # the experiment's bed level and duck
 DISCLAIMER = "Illustrative only. Not financial advice."
 TYPED_NUMBER = re.compile(r"[0-9₹$£€]")   # a digit or any currency sign
@@ -255,6 +260,12 @@ def _estimate(text: str, speed: float) -> tts.Timed:
     return tts.Timed(text, "estimate", speed, np.zeros(int(len(words)*each*SR)), [], timed)
 
 
+def _db(x: np.ndarray, where: np.ndarray | None = None) -> float:
+    """RMS level of a stem in dB (where it sounds, or where `where` is true), before mastering."""
+    v = x[where] if where is not None and where.any() else x[np.abs(x) > 1e-4] if (np.abs(x) > 1e-4).any() else x
+    return round(float(20*np.log10(np.sqrt(np.mean(v**2)) + 1e-12)), 1)
+
+
 def _smooth(x: np.ndarray, k: int) -> np.ndarray:
     """Centred moving average over 2k+1 samples (edges padded), by cumulative sum: a long video
     has millions of samples, far too many for np.convolve with a kernel this wide."""
@@ -427,15 +438,25 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     quiet = (script.get("experiments") or {}).get(QUIET_BED) == "on"
     level, duck_by = (QUIET_LEVEL, QUIET_DUCK) if quiet else (0.5, VOICE_DUCK)
     mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck))
+    # three stems, measured apart (timeline audio.stems), then summed into the mix
+    voice_m, sfx_m = Mixer(length, seed + 5), Mixer(length, seed + 6)
     for tb in timeline_beats:
         for at, s in tb.pop("_sfx"):
             if s["kind"] not in SFX:
                 raise ValueError(f"beat {tb['id']!r}: sfx kind must be one of {', '.join(SFX)}")
-            mixer.place_out(SFX[s["kind"]](mixer.rng), at, s.get("gain", 0.6), s.get("pan", 0.0))
+            on_voice = speech[min(len(speech) - 1, max(0, int(at*SR)))] > 0
+            gain = s.get("gain", 0.6)*SFX_BUS*(SFX_UNDER_VOICE if on_voice else 1.0)
+            sfx_m.place_out(SFX[s["kind"]](mixer.rng), at, gain, s.get("pan", 0.0))
     for start, line, _ in lines:
         if line.voice != "estimate":
-            peak = float(np.max(np.abs(line.samples))) or 1.0
-            mixer.place_out(line.samples/peak*0.9, start, 1.0)
+            x = line.samples
+            rms = float(np.sqrt(np.mean(x**2))) or 1.0
+            peak = float(np.max(np.abs(x))) or 1.0
+            voice_m.place_out(x*min(VOICE_RMS/rms, 0.95/peak), start, 1.0)
+    stems = {"music": _db(mixer.left), "sfx": _db(sfx_m.left), "voice": _db(voice_m.left, speech > 0)}
+    for m in (voice_m, sfx_m):
+        mixer.left += m.left
+        mixer.right += m.right
     out.mkdir(parents=True, exist_ok=True)
     mixer.write_wav(out/"audio.wav")
     peak, mean = mixer.levels()
@@ -452,7 +473,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         "voices": {"narrator": narrator, **CAST_VOICES}, "speed": speed, "tempo": tempo,
         "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm},
         "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm},
-        "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1)},
+        "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1), "stems": stems},
         "disclaimer": DISCLAIMER, "captions": True, "voiceMode": voice, "sources": sources, "currency": fm.currency,
         # A/B variants for this video ({id: "on" | "off"}, generator/experiments.py): scenes read them
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest
