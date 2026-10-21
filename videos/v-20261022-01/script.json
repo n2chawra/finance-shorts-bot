@@ -1,0 +1,719 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 38417,
+  "story": "trap_alert",
+  "currency": "INR",
+  "feed_id": "2026-10-21-zero-percent-emi",
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "A",
+    "bpm": 110
+  },
+  "maths": [
+    {
+      "name": "phone",
+      "kind": "emi",
+      "amount": 96000,
+      "rate_pct": 0,
+      "years": 2
+    },
+    {
+      "name": "habit",
+      "kind": "sip",
+      "monthly": 4000,
+      "rate_pct": 12,
+      "years": 10
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "speaker": "narrator",
+      "say": "This {phone_emi} EMI could have been {habit_final}.",
+      "events": {
+        "emi": {
+          "word": "EMI"
+        },
+        "been": {
+          "word": "been"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "emi",
+          "gain": 0.5
+        },
+        {
+          "kind": "boom",
+          "at": "been",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "tag": "No-cost EMI",
+        "small": "{phone_emi}",
+        "per": "a month",
+        "big": "{habit_final}",
+        "stamp": "Could have been",
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "happy"
+              },
+              {
+                "at": "been",
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "deal",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "No-cost EMI! Just {phone_emi} a month. Zero interest!",
+      "events": {
+        "just": {
+          "word": "Just"
+        },
+        "zero": {
+          "word": "Zero"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "just"
+        },
+        {
+          "kind": "ding",
+          "at": "zero"
+        }
+      ],
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "laugh"
+              },
+              {
+                "at": "zero",
+                "pose": "celebrate",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "app",
+            "spot": "right",
+            "height": 0.4,
+            "title": "No-cost EMI",
+            "figure": "{phone_emi}",
+            "at": "just",
+            "lines": [
+              {
+                "label": "Months",
+                "value": "{phone_months}",
+                "at": "just"
+              },
+              {
+                "label": "Interest",
+                "value": "{phone_interest}",
+                "at": "zero"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "just",
+            "size": "medium",
+            "on": "app",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "old",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Zero interest? Plus a processing fee and GST. And in {phone_months} months the phone feels old. The next one? On EMI.",
+      "events": {
+        "fee": {
+          "word": "fee"
+        },
+        "feels": {
+          "word": "feels"
+        },
+        "next": {
+          "word": "next"
+        },
+        "again": {
+          "word": "On"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "fee"
+        },
+        {
+          "kind": "tick",
+          "at": "feels",
+          "gain": 0.5
+        },
+        {
+          "kind": "pop",
+          "at": "next"
+        },
+        {
+          "kind": "fail",
+          "at": "again",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "fee",
+                "pose": "point",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "again",
+                "pose": "point",
+                "expression": "neutral",
+                "turn": 0.3
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "happy",
+                "turn": -0.3
+              },
+              {
+                "at": "next",
+                "pose": "shrug",
+                "expression": "confused",
+                "turn": -0.3
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "fee",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "feels",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "next",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "again",
+            "size": "close",
+            "on": "rohan"
+          }
+        ],
+        "word": {
+          "text": "Again",
+          "at": "again",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "drain",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "So the EMI never ends. {phone_emi} walks out of your account, every month, for years.",
+      "events": {
+        "never": {
+          "word": "never"
+        },
+        "walks": {
+          "word": "walks"
+        },
+        "every": {
+          "word": "every"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "never",
+          "gain": 0.5
+        },
+        {
+          "kind": "whoosh",
+          "at": "walks",
+          "gain": 0.4
+        },
+        {
+          "kind": "tick",
+          "at": "every",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried",
+                "turn": 0.4
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "bank",
+            "spot": "right",
+            "height": 0.4,
+            "title": "Bank",
+            "at": "start",
+            "toasts": [
+              {
+                "text": "EMI debited",
+                "at": "never"
+              },
+              {
+                "text": "EMI debited",
+                "at": "walks"
+              },
+              {
+                "text": "EMI debited",
+                "at": "every"
+              }
+            ],
+            "lines": [
+              {
+                "label": "EMI",
+                "value": "{phone_emi}",
+                "at": "walks"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "walks",
+            "size": "medium",
+            "on": "bank",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "shop",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Who is it built for? The shop. A small monthly number feels cheap, so you pick the bigger phone.",
+      "events": {
+        "shop": {
+          "word": "shop"
+        },
+        "cheap": {
+          "word": "cheap"
+        },
+        "bigger": {
+          "word": "bigger"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "shop"
+        },
+        {
+          "kind": "kaching",
+          "at": "bigger",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "shop",
+                "pose": "point",
+                "expression": "smirk"
+              },
+              {
+                "at": "bigger",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "cheap",
+            "size": "medium",
+            "on": "big",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Bigger",
+          "at": "bigger",
+          "color": "gold",
+          "where": "left"
+        },
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "big",
+            "spot": "right",
+            "height": 0.4,
+            "title": "Bigger phone",
+            "figure": "{phone_emi}",
+            "at": "cheap",
+            "lines": [
+              {
+                "label": "Per month",
+                "at": "bigger"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "move",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Me? I save first and pay cash for a cheaper phone. No EMI chasing me.",
+      "events": {
+        "cash": {
+          "word": "cash"
+        },
+        "cheaper": {
+          "word": "cheaper"
+        },
+        "no": {
+          "word": "No"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "cash"
+        },
+        {
+          "kind": "ding",
+          "at": "no"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "cheaper",
+                "pose": "point",
+                "expression": "happy",
+                "turn": 0.3
+              },
+              {
+                "at": "no",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "objects": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "cash",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "no",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Cash",
+          "at": "cash",
+          "color": "good",
+          "where": "right"
+        }
+      }
+    },
+    {
+      "id": "grow",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That {phone_emi} a month, put to work at an assumed {habit_rate} a year? In {habit_years} years it could have been {habit_final}.",
+      "events": {
+        "work": {
+          "word": "work"
+        },
+        "years": {
+          "word": "years"
+        },
+        "bec": {
+          "word": "been"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.35
+        },
+        {
+          "kind": "pop",
+          "at": "work"
+        },
+        {
+          "kind": "tick",
+          "at": "years",
+          "gain": 0.5
+        },
+        {
+          "kind": "boom",
+          "at": "bec",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "paid",
+            "spot": "left",
+            "amount": "@habit.invested",
+            "text": "{habit_invested}",
+            "label": "Put in",
+            "at": "work",
+            "tone": "plain"
+          },
+          {
+            "kind": "stack",
+            "id": "tower",
+            "spot": "right",
+            "amount": "@habit.final",
+            "text": "{habit_final}",
+            "label": "Assumed {habit_rate} a year",
+            "at": "bec",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "paid"
+          },
+          {
+            "at": "years",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "bec",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "Wait. So my phone EMI...",
+      "events": {
+        "wait": {
+          "word": "Wait"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop-high",
+          "at": "wait"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "shock"
+              },
+              {
+                "at": "wait",
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "wait",
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ]
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "pose": "phone",
+    "prop": "phone",
+    "expression": "worried",
+    "layout": "story",
+    "angle": "warning",
+    "words": "The no-cost EMI trap",
+    "hero": "phone",
+    "tag": "No-cost EMI",
+    "small": "{phone_emi}",
+    "to": "If invested",
+    "figure": "{habit_final}"
+  },
+  "narrator": "af_heart"
+}

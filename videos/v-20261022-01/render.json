@@ -1,0 +1,111 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 38417,
+  "duration_sec": 35,
+  "tempo": 1.0,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "A",
+    "bpm": 110
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "This ₹4,000 EMI could have been ₹9.3 L.",
+        "start": 0.27,
+        "seconds": 3.07,
+        "window": 3.63,
+        "fill": 0.846
+      },
+      {
+        "scene": "deal",
+        "text": "No-cost EMI! Just ₹4,000 a month. Zero interest!",
+        "start": 3.9,
+        "seconds": 3.2,
+        "window": 3.53,
+        "fill": 0.907
+      },
+      {
+        "scene": "old",
+        "text": "Zero interest? Plus a processing fee and GST. And in 24 months the phone feels old. The next one? On EMI.",
+        "start": 7.43,
+        "seconds": 5.64,
+        "window": 6.2,
+        "fill": 0.91
+      },
+      {
+        "scene": "drain",
+        "text": "So the EMI never ends. ₹4,000 walks out of your account, every month, for years.",
+        "start": 13.63,
+        "seconds": 4.08,
+        "window": 4.63,
+        "fill": 0.881
+      },
+      {
+        "scene": "shop",
+        "text": "Who is it built for? The shop. A small monthly number feels cheap, so you pick the bigger phone.",
+        "start": 18.27,
+        "seconds": 3.9,
+        "window": 4.47,
+        "fill": 0.872
+      },
+      {
+        "scene": "move",
+        "text": "Me? I save first and pay cash for a cheaper phone. No EMI chasing me.",
+        "start": 22.73,
+        "seconds": 3.29,
+        "window": 3.87,
+        "fill": 0.85
+      },
+      {
+        "scene": "grow",
+        "text": "That ₹4,000 a month, put to work at an assumed 12% a year? In 10 years it could have been ₹9.3 L.",
+        "start": 26.6,
+        "seconds": 5.61,
+        "window": 6.2,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "Wait. So my phone EMI...",
+        "start": 32.8,
+        "seconds": 1.1,
+        "window": 1.63,
+        "fill": 0.675
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 8.797,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

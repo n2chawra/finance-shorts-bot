@@ -1,0 +1,383 @@
+{
+  "id": "v-20261022-01",
+  "createdAt": "2026-10-21T22:51:52.451901+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "The no-cost EMI phone trap: a phone EMI that never ends, against the same money invested",
+    "category": "emi",
+    "feed_id": "2026-10-21-zero-percent-emi"
+  },
+  "title": "The no-cost EMI trap 📱",
+  "description": "What could a no-cost phone EMI have been instead?\nA ₹4,000 phone EMI that never ends, against the same money put to work for 10 years at an assumed return. Speak to a licensed financial adviser in your country before making financial decisions.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#EMI",
+    "#MoneyTrap",
+    "#PersonalFinance",
+    "#India"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Ever bought a phone on EMI? Comment",
+  "seed": 38417,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "A",
+    "bpm": 110,
+    "voice": "af_heart"
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "This ₹4,000 EMI could have been ₹9.3 L.",
+        "start": 0.27,
+        "seconds": 3.07,
+        "window": 3.63,
+        "fill": 0.846
+      },
+      {
+        "scene": "deal",
+        "text": "No-cost EMI! Just ₹4,000 a month. Zero interest!",
+        "start": 3.9,
+        "seconds": 3.2,
+        "window": 3.53,
+        "fill": 0.907
+      },
+      {
+        "scene": "old",
+        "text": "Zero interest? Plus a processing fee and GST. And in 24 months the phone feels old. The next one? On EMI.",
+        "start": 7.43,
+        "seconds": 5.64,
+        "window": 6.2,
+        "fill": 0.91
+      },
+      {
+        "scene": "drain",
+        "text": "So the EMI never ends. ₹4,000 walks out of your account, every month, for years.",
+        "start": 13.63,
+        "seconds": 4.08,
+        "window": 4.63,
+        "fill": 0.881
+      },
+      {
+        "scene": "shop",
+        "text": "Who is it built for? The shop. A small monthly number feels cheap, so you pick the bigger phone.",
+        "start": 18.27,
+        "seconds": 3.9,
+        "window": 4.47,
+        "fill": 0.872
+      },
+      {
+        "scene": "move",
+        "text": "Me? I save first and pay cash for a cheaper phone. No EMI chasing me.",
+        "start": 22.73,
+        "seconds": 3.29,
+        "window": 3.87,
+        "fill": 0.85
+      },
+      {
+        "scene": "grow",
+        "text": "That ₹4,000 a month, put to work at an assumed 12% a year? In 10 years it could have been ₹9.3 L.",
+        "start": 26.6,
+        "seconds": 5.61,
+        "window": 6.2,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "Wait. So my phone EMI...",
+        "start": 32.8,
+        "seconds": 1.1,
+        "window": 1.63,
+        "fill": 0.675
+      }
+    ]
+  },
+  "durationSec": 35,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "on"
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite: India Short, no sourced facts or verify items. 12% equity SIP now spoken and labelled as an assumption ('an assumed 12% a year', stack 'Assumed 12% a year') and framed as 'could have been' in hook, grow beat, thumbnail and description; Priya now qualifies no-cost EMI with processing fee and GST; Sharma's beat no longer claims the EMI money as his SIP. ₹96,000 phone over 24 months realistic; no product, bank or fund named; tone fine; description ends with the disclaimer. Style note: the app card still reads 'Interest ₹0', acceptable now that the voice qualifies it."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: hook tag fully in frame at 0.0s, no text overlaps (Forever removed at 15s), shop (market close on Sharma) and move (penthouse) now differ, loop Rohan worried with phone low in flat set, disclaimer over last moments, thumbnail words clean with 'If invested' inside the receipt and figures matching maths; layout/craft problems empty, 35 s, peak -1.0 dB, mean -16.3 dB."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:40:08.834170+00:00",
+      "finishedAt": "2026-10-21T22:40:08.834170+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:40:39.464439+00:00",
+      "finishedAt": "2026-10-21T22:40:39.464439+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+        "warning: beat 'old' runs 5.9 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'move' runs 5.4 s with 3.7 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:40:48.107382+00:00",
+      "finishedAt": "2026-10-21T22:40:48.107382+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-10-21T22:42:18.658166+00:00",
+      "finishedAt": "2026-10-21T22:42:18.658166+00:00",
+      "notes": [
+        "Beat 'grow' (and hook, thumbnail): '10 years at 12% a year, and that EMI money becomes ₹9.3 L' states 12% equity SIP growth as a certain outcome; nothing on screen or in the voice calls it an assumption (profile: assumed returns are stated as assumptions on screen). Fix: e.g. 'If it grows 12% a year (assumed)...' / 'could become', and an 'Assumed 12% a year' label on the stack.",
+        "Hook 'This ₹4,000 EMI costs you ₹9.3 L' (also description 'cost you lakhs', thumbnail 'Really costs'): the conclusion overstates what the numbers show. ₹9.3 L is what the whole ₹4,000 a month could grow to, but that money also bought the phones; Sharma also buys phones ('paid cash for a cheaper phone', and over 10 years he needs replacements too), and that spending is hidden. Fix: frame as what the EMI money could have become ('could have been ₹9.3 L'), or compute only the difference the cheaper cash phone frees up.",
+        "Beats 'deal'/'old': the app card shows 'Interest ₹0' and Priya endorses it ('Zero interest, fine'). Indian no-cost EMI usually still carries a bank processing fee plus 18% GST on the interest component (the interest is offset by a discount, and RBI has said zero-percent schemes load the interest elsewhere), so the viewer is told the deal truly costs nothing extra. Fix: have Priya qualify it (e.g. 'Zero interest? Plus fees and GST. But even so...') or drop the endorsement."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-21T22:41:35.287681+00:00",
+      "finishedAt": "2026-10-21T22:42:45.583816+00:00",
+      "notes": [
+        "text '₹' at 2.5 s is 32.4 px, below the 44 px minimum",
+        "text '₹' at 15.5 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:43:17.478419+00:00",
+      "finishedAt": "2026-10-21T22:43:17.478419+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:43:18.830720+00:00",
+      "finishedAt": "2026-10-21T22:43:18.830720+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:43:25.933706+00:00",
+      "finishedAt": "2026-10-21T22:43:25.933706+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:43:43.060431+00:00",
+      "finishedAt": "2026-10-21T22:43:43.060431+00:00",
+      "notes": [
+        "Re-review after rewrite: India Short, no sourced facts or verify items. 12% equity SIP now spoken and labelled as an assumption ('an assumed 12% a year', stack 'Assumed 12% a year') and framed as 'could have been' in hook, grow beat, thumbnail and description; Priya now qualifies no-cost EMI with processing fee and GST; Sharma's beat no longer claims the EMI money as his SIP. ₹96,000 phone over 24 months realistic; no product, bank or fund named; tone fine; description ends with the disclaimer. Style note: the app card still reads 'Interest ₹0', acceptable now that the voice qualifies it."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-21T22:43:32.947166+00:00",
+      "finishedAt": "2026-10-21T22:44:14.932230+00:00",
+      "notes": [
+        "text '₹' at 17.0 s is 38.9 px, below the 44 px minimum",
+        "text 'Phone fund' at 25.6 s runs outside the frame",
+        "2 of 9 consecutive stills look the same (at 35 s, 35 s): change the set, the shot size or what is on screen"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:44:31.429335+00:00",
+      "finishedAt": "2026-10-21T22:44:31.429335+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-21T22:44:32.658452+00:00",
+      "finishedAt": "2026-10-21T22:45:02.412019+00:00",
+      "notes": [
+        "text 'Bank' at 16.6 s runs outside the frame",
+        "text '₹4,000' at 16.6 s runs outside the frame",
+        "text 'EMI debited' at 16.6 s runs outside the frame",
+        "text 'Phone fund' at 25.2 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:45:10.925668+00:00",
+      "finishedAt": "2026-10-21T22:45:10.925668+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:45:12.134738+00:00",
+      "finishedAt": "2026-10-21T22:45:35.409984+00:00",
+      "notes": [
+        "35 s, ember/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-21T22:46:57.243486+00:00",
+      "finishedAt": "2026-10-21T22:46:57.243486+00:00",
+      "notes": [
+        "[script] thumbnail: words 'The *no-cost* EMI trap' show the asterisks literally ('THE *NO- COST* EMI TRAP'); the story-layout thumbnail (remotion/src/compositions/Thumbnail.tsx) prints th.words raw and does not parse *highlight* like ThumbFormats BigWords does. Drop the asterisks (and the owner may want the scene to parse them).",
+        "[script] thumbnail: 'COULD HAVE BEEN' runs past the receipt's right edge onto the background, and Rohan's head overlaps the bottom of the receipt and is cut off by the right frame edge (half his face/body off frame). Another thumbnail layout/hero or shorter 'to' fixes it.",
+        "[scene] 0.0s hook beat (scene hook, set market): the '{phone_emi} a month' tag card sits at the very top and is cut off by the top edge ('₹4,000' half cropped). This is the first frame of the loop.",
+        "[script] 15.0s drain beat (shot, set bank): the top word 'Forever' overlaps the bank phone's 'EMI debited' toast (text on text). Use word where other than top, or put the phone lower/left.",
+        "[script] 20.0s shop beat and 25.0s move beat: same composition twice in a row (Sharma alone, centre, same pointing pose, arm running off the right edge, night city-window backdrop); the shop beat also shows nothing of 'the shop' or 'the bigger phone'. Add an object (a price tag/phone pair) or another shot size/set.",
+        "[scene] 34.7s loop beat (shot, rohan facepalm with prop phone, extreme close-up): the phone is pressed flat across his face, covering nose and between the eyes; facepalm should drop or lower the phone prop. Script fix: give the facepalm acting no prop."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:47:13.070500+00:00",
+      "finishedAt": "2026-10-21T22:47:13.070500+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-21T22:47:14.433326+00:00",
+      "finishedAt": "2026-10-21T22:47:43.741708+00:00",
+      "notes": [
+        "15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:47:51.761199+00:00",
+      "finishedAt": "2026-10-21T22:47:51.761199+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:47:53.306573+00:00",
+      "finishedAt": "2026-10-21T22:48:17.751236+00:00",
+      "notes": [
+        "35 s, ember/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:48:26.388213+00:00",
+      "finishedAt": "2026-10-21T22:48:26.388213+00:00",
+      "notes": [
+        "14 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:48:27.772015+00:00",
+      "finishedAt": "2026-10-21T22:48:52.802880+00:00",
+      "notes": [
+        "35 s, ember/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:49:13.400781+00:00",
+      "finishedAt": "2026-10-21T22:49:13.400781+00:00",
+      "notes": [
+        "Re-review after fixes: hook tag fully in frame at 0.0s, no text overlaps (Forever removed at 15s), shop (market close on Sharma) and move (penthouse) now differ, loop Rohan worried with phone low in flat set, disclaimer over last moments, thumbnail words clean with 'If invested' inside the receipt and figures matching maths; layout/craft problems empty, 35 s, peak -1.0 dB, mean -16.3 dB."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:49:19.411265+00:00",
+      "finishedAt": "2026-10-21T22:51:48.581207+00:00",
+      "notes": [
+        "35 s, ember/pop, peak -1.0 dB, mean -16.3 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-21T22:51:52.452143+00:00",
+      "finishedAt": "2026-10-21T22:51:52.452143+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261022-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261022-01"
+  }
+}
