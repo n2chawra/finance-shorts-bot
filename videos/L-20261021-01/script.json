@@ -1,0 +1,4790 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "id": "L-20261021-01",
+  "seed": 60621,
+  "title": "The 6 levels of money in India: which one are you?",
+  "story": "which_one_are_you",
+  "feed_id": "2026-10-21-money-levels-india",
+  "currency": "INR",
+  "style": {
+    "palette": "sky",
+    "genre": "acoustic",
+    "key": "G",
+    "bpm": 96
+  },
+  "thumbnail": {
+    "layout": "story",
+    "angle": "warning",
+    "hero": "piggy",
+    "tag": "FD",
+    "small": "{cushion_final}",
+    "to": "Really worth",
+    "figure": "{cushion_real_final}",
+    "who": "rohan",
+    "pose": "worried",
+    "expression": "sad",
+    "words": "The level two trap"
+  },
+  "thumbnails": [
+    {
+      "layout": "story",
+      "angle": "question",
+      "hero": "piggy",
+      "tag": "Every month",
+      "small": "{crore_amount}",
+      "to": "Level five",
+      "figure": "{crore_final}",
+      "who": "rohan",
+      "pose": "stand",
+      "expression": "shock",
+      "words": "Which money level?"
+    },
+    {
+      "layout": "story",
+      "angle": "versus",
+      "hero": "piggy",
+      "tag": "Start late",
+      "small": "{late_final}",
+      "to": "Start now",
+      "figure": "{crore_final}",
+      "who": "sharma",
+      "pose": "hips",
+      "expression": "smirk",
+      "words": "Start now or later?"
+    }
+  ],
+  "maths": [
+    {
+      "name": "month",
+      "kind": "price_rise",
+      "monthly": 40000,
+      "inflation_pct": 6,
+      "years": 10
+    },
+    {
+      "name": "cushion",
+      "kind": "real_return",
+      "amount": 240000,
+      "rate_pct": 7,
+      "inflation_pct": 6,
+      "years": 10
+    },
+    {
+      "name": "card",
+      "kind": "card_min_due",
+      "amount": 50000,
+      "rate_pct_month": 3.5,
+      "min_due_pct": 5,
+      "min_due_floor": 200
+    },
+    {
+      "name": "emi",
+      "kind": "emi",
+      "amount": 50000,
+      "rate_pct": 16,
+      "years": 1
+    },
+    {
+      "name": "first",
+      "kind": "sip",
+      "monthly": 10000,
+      "rate_pct": 12,
+      "years": 5
+    },
+    {
+      "name": "crore",
+      "kind": "sip",
+      "monthly": 15000,
+      "rate_pct": 12,
+      "years": 20
+    },
+    {
+      "name": "late",
+      "kind": "sip",
+      "monthly": 15000,
+      "rate_pct": 12,
+      "years": 10
+    },
+    {
+      "name": "life",
+      "kind": "price_rise",
+      "monthly": 480000,
+      "inflation_pct": 6,
+      "years": 20
+    },
+    {
+      "name": "rich",
+      "kind": "lumpsum",
+      "amount": 80000000,
+      "rate_pct": 8,
+      "years": 1
+    }
+  ],
+  "beats": [
+    {
+      "id": "open",
+      "scene": "bill",
+      "say": "Salary day was three weeks ago. Rohan has already spent {month_amount}, and his account is almost empty. At {month_inflation} inflation, in ten years the same month could cost {month_new_monthly}.",
+      "events": {
+        "spent": {
+          "word": "spent"
+        },
+        "cost": {
+          "word": "cost"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "beep",
+          "at": "start"
+        },
+        {
+          "kind": "pop",
+          "at": "spent"
+        },
+        {
+          "kind": "boom",
+          "at": "cost",
+          "gain": 0.8
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "place": "home",
+        "time": "night",
+        "screen": [
+          {
+            "text": "Spent this month",
+            "at": "start"
+          },
+          {
+            "text": "{month_amount}",
+            "at": "start"
+          }
+        ],
+        "lines": [
+          {
+            "text": "Rent and bills"
+          },
+          {
+            "text": "Food and travel"
+          },
+          {
+            "text": "Prices rise {month_inflation} a year"
+          }
+        ],
+        "total": {
+          "label": "Same month, ten years on",
+          "text": "{month_new_monthly}",
+          "at": "cost"
+        },
+        "acting": [
+          {
+            "sec": 0,
+            "pose": "phone",
+            "expression": "neutral",
+            "prop": "phone"
+          },
+          {
+            "at": "cost",
+            "pose": "worried",
+            "expression": "shock"
+          }
+        ]
+      },
+      "chapter": "Six levels"
+    },
+    {
+      "id": "gone",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "fade",
+      "camera": "punch:start",
+      "say": "Where does it all go? Every single month!",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.42,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused",
+                "turn": 0.2,
+                "bubble": {
+                  "icon": "?"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "levels",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "Here is the thing. There are six levels of money, and almost everyone starts on the first two.",
+      "events": {
+        "six": {
+          "word": "six"
+        },
+        "first": {
+          "word": "first"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "six"
+        },
+        {
+          "kind": "pop-high",
+          "at": "first"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "city",
+        "lines": [
+          {
+            "text": "Six levels of money",
+            "at": "six"
+          },
+          {
+            "text": "Most start on the first two",
+            "at": "first"
+          }
+        ],
+        "city": "mumbai",
+        "night": true,
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "equation",
+      "transition": "wipe",
+      "say": "By the end, you will know which level you are on, the trap waiting on every floor, and the one move that takes you up.",
+      "events": {
+        "level": {
+          "word": "level"
+        },
+        "trap": {
+          "word": "trap"
+        },
+        "move": {
+          "word": "move"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "level"
+        },
+        {
+          "kind": "pop",
+          "at": "trap"
+        },
+        {
+          "kind": "ding",
+          "at": "move"
+        }
+      ],
+      "params": {
+        "title": "By the end",
+        "items": [
+          {
+            "icon": "person",
+            "label": "Your level",
+            "at": "level"
+          },
+          {
+            "icon": "chartdown",
+            "label": "The trap",
+            "at": "trap"
+          },
+          {
+            "icon": "chartup",
+            "label": "The move up",
+            "at": "move"
+          }
+        ],
+        "ops": [
+          "+",
+          "+"
+        ],
+        "pattern": "dots",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tease",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "And the last level? It is not about earning more. You will see.",
+      "events": {
+        "see": {
+          "word": "see"
+        }
+      },
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "x": 0.55,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.2
+              },
+              {
+                "at": "see",
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "road",
+      "scene": "road",
+      "transition": "fade",
+      "say": "Think of it as a road with six signposts. Rohan is standing at the very first one.",
+      "events": {
+        "six": {
+          "word": "six"
+        },
+        "first": {
+          "word": "road"
+        },
+        "very": {
+          "word": "very"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "first"
+        },
+        {
+          "kind": "tick",
+          "at": "six"
+        },
+        {
+          "kind": "tick",
+          "at": "very"
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "land": "city",
+        "time": "dawn",
+        "title": "Six levels",
+        "signs": [
+          {
+            "label": "Level one",
+            "at": "first"
+          },
+          {
+            "label": "Level three",
+            "at": "six"
+          },
+          {
+            "label": "Level six",
+            "good": true,
+            "at": "very"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch1",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Level one",
+        "title": "Paycheck to paycheck"
+      }
+    },
+    {
+      "id": "l1-in-out",
+      "scene": "prop",
+      "transition": "zoom",
+      "say": "On level one, {month_amount} comes in, and {month_amount} goes out. Every single month, back to zero.",
+      "events": {
+        "out": {
+          "word": "out"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "out"
+        }
+      ],
+      "params": {
+        "world": "kitchen",
+        "prop": "calendar",
+        "text": "{month_amount}",
+        "at": "out",
+        "kicker": "In, then out",
+        "sub": "every month",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "phone",
+              "expression": "neutral",
+              "prop": "phone"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l1-month",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "Rent on the first. Food delivery all week. A friend's wedding on the twentieth. And by the twenty fifth, he is counting coins.",
+      "events": {
+        "rent": {
+          "word": "Rent"
+        },
+        "food": {
+          "word": "Food"
+        },
+        "wed": {
+          "word": "wedding"
+        },
+        "coins": {
+          "word": "coins"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rent"
+        },
+        {
+          "kind": "pop",
+          "at": "food"
+        },
+        {
+          "kind": "pop",
+          "at": "wed"
+        },
+        {
+          "kind": "fail",
+          "at": "coins",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "mode": "type",
+        "lines": [
+          {
+            "text": "Rent",
+            "at": "rent"
+          },
+          {
+            "text": "Food delivery",
+            "at": "food"
+          },
+          {
+            "text": "A wedding gift",
+            "at": "wed"
+          },
+          {
+            "text": "Counting coins",
+            "at": "coins"
+          }
+        ],
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "think",
+              "expression": "worried"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l1-sikka",
+      "scene": "stage",
+      "transition": "cut",
+      "say": "Even Sikka has nothing left to cheer about.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.36,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "sikka": {
+          "x": 0.62,
+          "drop": true,
+          "expression": "sad"
+        }
+      }
+    },
+    {
+      "id": "l1-priya",
+      "scene": "stage",
+      "speaker": "priya",
+      "say": "Rohan, what happens if your job stops next month?",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.33,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "thinking",
+                "turn": -0.4
+              }
+            ],
+            "enter": "right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l1-rohan",
+      "scene": "stage",
+      "speaker": "rohan",
+      "say": "Next month? I would be broke in a week.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.33,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "worried",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "neutral",
+                "turn": -0.4
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l1-normal",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "And that is normal. Most first jobs start right here, so level one is not a failure. Staying here is the problem.",
+      "events": {
+        "normal": {
+          "word": "normal"
+        },
+        "Staying": {
+          "word": "Staying"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "normal"
+        },
+        {
+          "kind": "pop",
+          "at": "Staying"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "street",
+        "lines": [
+          {
+            "text": "Level one is normal",
+            "at": "normal"
+          },
+          {
+            "text": "Staying is the problem",
+            "at": "Staying"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "neutral"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l1-raise",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "And a raise alone does not fix it. When the salary goes up, the spending quietly follows. A bigger flat, a nicer phone, more dinners out.",
+      "events": {
+        "salary": {
+          "word": "salary"
+        },
+        "follows": {
+          "word": "follows"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "salary"
+        },
+        {
+          "kind": "fail",
+          "at": "follows",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "office",
+        "lines": [
+          {
+            "text": "Salary up",
+            "at": "salary"
+          },
+          {
+            "text": "Spending follows",
+            "at": "follows"
+          }
+        ],
+        "city": "mumbai",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "celebrate",
+              "expression": "happy"
+            },
+            {
+              "at": "follows",
+              "pose": "shrug",
+              "expression": "confused"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l1-trap",
+      "scene": "prop",
+      "transition": "zoom",
+      "camera": "punch:cost",
+      "say": "Because here is the trap of level one. Prices never stand still. At {month_inflation} inflation a year, the life that costs {month_amount} a month today will cost {month_new_monthly}.",
+      "events": {
+        "cost": {
+          "word": "cost"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.4
+        },
+        {
+          "kind": "kaching",
+          "at": "cost"
+        }
+      ],
+      "params": {
+        "world": "shop",
+        "prop": "tag",
+        "text": "{month_new_monthly}",
+        "at": "start",
+        "kicker": "The same month",
+        "sub": "in ten years",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "stand",
+              "expression": "neutral"
+            },
+            {
+              "at": "cost",
+              "pose": "worried",
+              "expression": "shock"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l1-screen",
+      "scene": "screen",
+      "transition": "fade",
+      "say": "Watch the cost of the same life climb, year after year. Nothing new in his cart. Just the same rent, the same food, the same bills.",
+      "events": {
+        "climb": {
+          "word": "climb"
+        },
+        "bills": {
+          "word": "bills"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        },
+        {
+          "kind": "pop",
+          "at": "bills"
+        }
+      ],
+      "params": {
+        "world": "office",
+        "city": "mumbai",
+        "title": "The same month, every year",
+        "series": "@month.cost",
+        "label1": "Monthly cost",
+        "callouts": [
+          {
+            "x": 1.0,
+            "text": "{month_new_monthly}",
+            "at": "bills"
+          }
+        ],
+        "pen": [
+          {
+            "kind": "arrow",
+            "x": 0.15,
+            "y": 0.8,
+            "x2": 0.85,
+            "y2": 0.25,
+            "color": "bad",
+            "at": "climb"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "aim",
+              "expression": "thinking",
+              "prop": "pointer"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l1-extra",
+      "scene": "split",
+      "transition": "slide",
+      "camera": "punch:ten",
+      "say": "That is {month_extra_month} more every month. And over ten years, {month_extra_total} extra, just to live exactly the same life.",
+      "events": {
+        "month": {
+          "word": "more"
+        },
+        "ten": {
+          "word": "over"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "month"
+        },
+        {
+          "kind": "boom",
+          "at": "ten",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "left": {
+          "label": "Extra every month",
+          "text": "{month_extra_month}",
+          "value": "@month.extra_month",
+          "at": "month"
+        },
+        "right": {
+          "label": "Extra over ten years",
+          "text": "{month_extra_total}",
+          "value": "@month.extra_total",
+          "at": "ten"
+        }
+      }
+    },
+    {
+      "id": "l1-sharma",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "So your salary has to rise every year, just to stand still.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "worried",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.66,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "smirk",
+                "turn": -0.4
+              }
+            ],
+            "enter": "right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l1-move",
+      "scene": "equation",
+      "transition": "zoom",
+      "say": "The move off level one is boring, and it works. Spend a little less than you earn, and keep the gap somewhere you will not touch.",
+      "events": {
+        "less": {
+          "word": "less"
+        },
+        "earn": {
+          "word": "earn"
+        },
+        "gap": {
+          "word": "gap"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "less"
+        },
+        {
+          "kind": "pop",
+          "at": "earn"
+        },
+        {
+          "kind": "ding",
+          "at": "gap"
+        }
+      ],
+      "params": {
+        "title": "The move up",
+        "items": [
+          {
+            "icon": "cash",
+            "label": "Earn",
+            "at": "earn"
+          },
+          {
+            "icon": "cart",
+            "label": "Spend less",
+            "at": "less"
+          },
+          {
+            "icon": "piggy",
+            "label": "Keep the gap",
+            "at": "gap"
+          }
+        ],
+        "ops": [
+          ">",
+          "→"
+        ],
+        "pattern": "waves",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l1-cliff",
+      "scene": "stage",
+      "transition": "fade",
+      "say": "Do that for long enough, and he reaches level two. The floor where most people think they are finally safe.",
+      "events": {
+        "safe": {
+          "word": "safe"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "safe",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy"
+              },
+              {
+                "at": "safe",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch2",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Level two",
+        "title": "The cushion"
+      }
+    },
+    {
+      "id": "l2-fd",
+      "scene": "prop",
+      "transition": "zoom",
+      "say": "On level two, six months of spending, {cushion_amount}, sitting safely in a fixed deposit.",
+      "events": {
+        "fd": {
+          "word": "fixed"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "clink",
+          "at": "fd"
+        }
+      ],
+      "params": {
+        "world": "street",
+        "prop": "piggy",
+        "text": "{cushion_amount}",
+        "at": "start",
+        "kicker": "Six months of spending",
+        "sub": "in a fixed deposit",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l2-size",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "How big should a cushion be? The usual rule is three to six months of spending. Rohan goes for six, because his job is new.",
+      "events": {
+        "rule": {
+          "word": "rule"
+        },
+        "goes": {
+          "word": "goes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rule"
+        },
+        {
+          "kind": "pop-high",
+          "at": "goes"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "kitchen",
+        "lines": [
+          {
+            "text": "Three to six months",
+            "at": "rule"
+          },
+          {
+            "text": "Rohan picks six",
+            "at": "goes"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "thinking"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l2-rich",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "fade",
+      "say": "Six months covered! I am basically rich now!",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "sikka": {
+          "x": 0.64,
+          "drop": true,
+          "cheer": true,
+          "expression": "happy"
+        }
+      }
+    },
+    {
+      "id": "l2-safe",
+      "scene": "stage",
+      "speaker": "priya",
+      "say": "Not rich, Rohan. Safe. That is a different thing.",
+      "events": {
+        "Safe": {
+          "word": "Safe"
+        }
+      },
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.33,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy",
+                "turn": 0.4
+              },
+              {
+                "at": "Safe",
+                "pose": "think",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.4
+              }
+            ],
+            "enter": "right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l2-why",
+      "scene": "equation",
+      "transition": "slide",
+      "say": "And safe matters. If the job stops, the cushion pays the rent while he finds the next one. No loan, no panic, no card.",
+      "events": {
+        "job": {
+          "word": "job"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "next": {
+          "word": "next"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "job"
+        },
+        {
+          "kind": "pop",
+          "at": "pays"
+        },
+        {
+          "kind": "ding",
+          "at": "next"
+        }
+      ],
+      "params": {
+        "title": "What a cushion buys",
+        "items": [
+          {
+            "icon": "chartdown",
+            "label": "Job stops",
+            "at": "job"
+          },
+          {
+            "icon": "piggy",
+            "label": "Cushion pays",
+            "at": "pays"
+          },
+          {
+            "icon": "clock",
+            "label": "Time to recover",
+            "at": "next"
+          }
+        ],
+        "ops": [
+          "→",
+          "→"
+        ],
+        "pattern": "rays"
+      }
+    },
+    {
+      "id": "l2-rule",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "So level two is a must. But it hides a quiet trap, and it is the reason so many people never climb past it.",
+      "events": {
+        "must": {
+          "word": "must"
+        },
+        "trap": {
+          "word": "trap"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "must"
+        },
+        {
+          "kind": "fail",
+          "at": "trap",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "office",
+        "lines": [
+          {
+            "text": "A must",
+            "at": "must"
+          },
+          {
+            "text": "With a quiet trap",
+            "at": "trap"
+          }
+        ],
+        "city": "mumbai",
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "pointUp",
+              "expression": "neutral"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l2-rates",
+      "scene": "split",
+      "transition": "zoom",
+      "say": "The fixed deposit pays {cushion_rate} a year. But prices are rising at {cushion_inflation}. So most of the interest just keeps up with prices.",
+      "events": {
+        "pays": {
+          "word": "pays"
+        },
+        "rising": {
+          "word": "rising"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pays"
+        },
+        {
+          "kind": "pop-high",
+          "at": "rising"
+        }
+      ],
+      "params": {
+        "left": {
+          "label": "FD pays",
+          "text": "{cushion_rate}",
+          "at": "pays"
+        },
+        "right": {
+          "label": "Prices rise",
+          "text": "{cushion_inflation}",
+          "at": "rising"
+        }
+      }
+    },
+    {
+      "id": "l2-years",
+      "scene": "calendar",
+      "transition": "fade",
+      "say": "Ten years go by. He never touches it. The FD keeps renewing, quietly.",
+      "events": {
+        "never": {
+          "word": "never"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "loops": 10,
+        "label": "Ten years",
+        "sub": "Untouched, renewing",
+        "subAt": "never"
+      }
+    },
+    {
+      "id": "l2-paper",
+      "scene": "prop",
+      "transition": "zoom",
+      "say": "On paper, it has grown to {cushion_final}. Almost double. It looks wonderful.",
+      "events": {
+        "grown": {
+          "word": "grown"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "grown"
+        }
+      ],
+      "params": {
+        "world": "street",
+        "prop": "stack",
+        "text": "{cushion_final}",
+        "at": "start",
+        "kicker": "On paper",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "thumbsUp",
+              "expression": "happy"
+            }
+          ]
+        },
+        "fill": 0.8
+      }
+    },
+    {
+      "id": "l2-screen",
+      "scene": "screen",
+      "transition": "fade",
+      "say": "But in today's money, after ten years of rising prices, it buys what {cushion_real_final} buys now. The green line is the paper. The red line is what it can actually buy.",
+      "events": {
+        "buys": {
+          "word": "buys"
+        },
+        "green": {
+          "word": "green"
+        },
+        "red": {
+          "word": "red"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        },
+        {
+          "kind": "boom",
+          "at": "buys",
+          "gain": 0.6
+        },
+        {
+          "kind": "pop",
+          "at": "red"
+        }
+      ],
+      "params": {
+        "world": "office",
+        "city": "mumbai",
+        "title": "The same FD",
+        "series": "@cushion.real",
+        "series2": "@cushion.value",
+        "label1": "In today's money",
+        "label2": "On paper",
+        "callouts": [
+          {
+            "x": 1.0,
+            "text": "{cushion_real_final}",
+            "at": "buys",
+            "series": 1
+          }
+        ],
+        "pen": [
+          {
+            "kind": "gap",
+            "x": 0.92,
+            "y": 0.2,
+            "y2": 0.55,
+            "color": "bad",
+            "at": "red"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "aim",
+              "expression": "thinking",
+              "prop": "pointer"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l2-real",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "His real growth? About {cushion_real_rate} a year. Ten years of saving, and his cushion barely grew at all.",
+      "events": {
+        "about": {
+          "word": "About"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "about"
+        }
+      ],
+      "params": {
+        "mode": "type",
+        "lines": [
+          {
+            "text": "Real growth",
+            "at": "start"
+          },
+          {
+            "text": "{cushion_real_rate} a year",
+            "at": "about"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "hips",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l2-cash",
+      "scene": "prop",
+      "transition": "zoom",
+      "say": "And if he had kept it as cash at home? In today's money it would be worth just {cushion_cash_real}. Rising prices quietly take {cushion_cash_lost}.",
+      "events": {
+        "take": {
+          "word": "take"
+        },
+        "worth": {
+          "word": "worth"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "worth"
+        },
+        {
+          "kind": "fail",
+          "at": "take",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "world": "kitchen",
+        "prop": "bucket",
+        "text": "{cushion_cash_real}",
+        "at": "worth",
+        "kicker": "Kept as cash",
+        "sub": "worth in today's money",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "worried",
+              "expression": "shock"
+            }
+          ]
+        },
+        "level": 0.5
+      }
+    },
+    {
+      "id": "l2-sharma",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "A cushion is for falling on. It was never meant for growing.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.66,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "neutral",
+                "turn": -0.4
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l2-move",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "So the move on level two: keep the cushion, and stop adding to it once it is full. Every rupee after that needs a different job.",
+      "events": {
+        "keep": {
+          "word": "keep"
+        },
+        "different": {
+          "word": "different"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "keep"
+        },
+        {
+          "kind": "ding",
+          "at": "different"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "street",
+        "lines": [
+          {
+            "text": "Keep the cushion",
+            "at": "keep"
+          },
+          {
+            "text": "Then: a different job",
+            "at": "different"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l2-cliff",
+      "scene": "stage",
+      "transition": "fade",
+      "say": "But first, there is one trap that knocks people from level two straight back down to level one. And it fits in your wallet.",
+      "events": {
+        "wallet": {
+          "word": "wallet"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "wallet",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "wallet",
+                "pose": "phone",
+                "expression": "confused",
+                "prop": "card"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch3",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Level three",
+        "title": "Debt-free"
+      }
+    },
+    {
+      "id": "l3-sale",
+      "scene": "stage",
+      "transition": "slide",
+      "say": "Level three is simple. You owe nobody. Then a festive sale arrives, and Rohan puts {card_amount} on his credit card.",
+      "events": {
+        "puts": {
+          "word": "puts"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "puts"
+        }
+      ],
+      "params": {
+        "set": "store",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy"
+              },
+              {
+                "at": "puts",
+                "pose": "phone",
+                "expression": "laugh",
+                "prop": "card"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l3-statement",
+      "scene": "statement",
+      "transition": "zoom",
+      "say": "The bill arrives. Total due, {card_amount}. Minimum due, just {card_min_due}.",
+      "events": {
+        "total": {
+          "word": "Total"
+        },
+        "min": {
+          "word": "Minimum"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "total"
+        },
+        {
+          "kind": "pop-high",
+          "at": "min"
+        }
+      ],
+      "params": {
+        "total": "{card_amount}",
+        "min": "{card_min_due}",
+        "totalAt": "total",
+        "minAt": "min"
+      }
+    },
+    {
+      "id": "l3-pick",
+      "scene": "statement",
+      "say": "So he does what millions of people do. He pays the minimum.",
+      "events": {
+        "pays": {
+          "word": "pays"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pays",
+          "gain": 0.8
+        }
+      ],
+      "params": {
+        "total": "{card_amount}",
+        "min": "{card_min_due}",
+        "totalAt": "start",
+        "minAt": "start",
+        "pick": "min",
+        "pickAt": "pays"
+      }
+    },
+    {
+      "id": "l3-easy",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "fade",
+      "say": "Only {card_min_due}? Easy. Bill paid!",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.42,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l3-rate",
+      "scene": "prop",
+      "transition": "zoom",
+      "camera": "punch:rate",
+      "say": "But the card charges {card_rate_month} a month on everything still owed.",
+      "events": {
+        "rate": {
+          "word": "charges"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "rate",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "world": "office",
+        "prop": "anvil",
+        "text": "{card_rate_month}",
+        "at": "rate",
+        "kicker": "Interest, every month",
+        "sub": "on what is still owed",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l3-year",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "That sounds small. Over a year, it is {card_rate_year}. And because interest lands on interest, it really works out to about {card_rate_effective}.",
+      "events": {
+        "year": {
+          "word": "Over"
+        },
+        "works": {
+          "word": "works"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "year"
+        },
+        {
+          "kind": "pop-high",
+          "at": "works"
+        }
+      ],
+      "params": {
+        "mode": "type",
+        "lines": [
+          {
+            "text": "{card_rate_month} a month",
+            "at": "start"
+          },
+          {
+            "text": "{card_rate_year} a year",
+            "at": "year"
+          },
+          {
+            "text": "about {card_rate_effective} in practice",
+            "at": "works"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "hips",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l3-cal",
+      "scene": "calendar",
+      "transition": "fade",
+      "say": "Twelve months go by. Rohan pays every minimum, on time, not once late.",
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "label": "One year",
+        "sub": "Every minimum paid",
+        "loops": 1
+      }
+    },
+    {
+      "id": "l3-split",
+      "scene": "split",
+      "transition": "slide",
+      "camera": "punch:owed",
+      "say": "By now he has paid {card_paid_year1}. And he still owes {card_owed_year1}.",
+      "events": {
+        "paid": {
+          "word": "paid"
+        },
+        "owed": {
+          "word": "owes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "paid"
+        },
+        {
+          "kind": "boom",
+          "at": "owed",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "left": {
+          "label": "Paid so far",
+          "text": "{card_paid_year1}",
+          "value": "@card.paid_year1",
+          "at": "start"
+        },
+        "right": {
+          "label": "Still owed",
+          "text": "{card_owed_year1}",
+          "value": "@card.owed_year1",
+          "at": "owed"
+        }
+      }
+    },
+    {
+      "id": "l3-what",
+      "scene": "stage",
+      "speaker": "rohan",
+      "camera": "punch:start",
+      "say": "What? I paid more than half of it already!",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "angry",
+                "bubble": {
+                  "icon": "!"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l3-interest",
+      "scene": "prop",
+      "transition": "zoom",
+      "say": "Because {card_interest_year1} of what he paid went straight to interest. Only the rest touched the actual debt.",
+      "events": {
+        "went": {
+          "word": "went"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "clink",
+          "at": "went"
+        }
+      ],
+      "params": {
+        "world": "kitchen",
+        "prop": "bucket",
+        "text": "{card_interest_year1}",
+        "at": "start",
+        "kicker": "Year one",
+        "sub": "went to interest",
+        "level": 0.6
+      }
+    },
+    {
+      "id": "l3-road",
+      "scene": "road",
+      "transition": "fade",
+      "say": "And the minimum shrinks as the balance shrinks, so the road goes on and on. Year after year, the debt walks beside him.",
+      "events": {
+        "road": {
+          "word": "road"
+        },
+        "Year": {
+          "word": "Year"
+        },
+        "debt": {
+          "word": "debt"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "road"
+        },
+        {
+          "kind": "tick",
+          "at": "Year"
+        },
+        {
+          "kind": "tick",
+          "at": "debt"
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "land": "snow",
+        "time": "noon",
+        "weather": "snow",
+        "title": "Minimum only",
+        "expression": "worried",
+        "signs": [
+          {
+            "label": "Year one",
+            "text": "{card_owed_year1}",
+            "at": "road"
+          },
+          {
+            "label": "Still paying",
+            "at": "Year"
+          },
+          {
+            "label": "Still paying",
+            "at": "debt"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l3-months",
+      "scene": "calendar",
+      "transition": "fade",
+      "say": "It takes {card_months} monthly payments. That is about {card_years} years.",
+      "events": {
+        "m": {
+          "word": "takes"
+        },
+        "y": {
+          "word": "about"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "m"
+        },
+        {
+          "kind": "boom",
+          "at": "y",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "loops": "@card.years",
+        "label": "{card_months} payments",
+        "labelAt": "m",
+        "sub": "about {card_years} years",
+        "subAt": "y"
+      }
+    },
+    {
+      "id": "l3-total",
+      "scene": "prop",
+      "transition": "zoom",
+      "camera": "punch:pays",
+      "say": "All in, he pays {card_total_paid} to clear {card_amount}. That is about {card_ratio} what he spent.",
+      "events": {
+        "pays": {
+          "word": "pays"
+        },
+        "tag": {
+          "word": "spent"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "pays",
+          "gain": 0.8
+        },
+        {
+          "kind": "pop",
+          "at": "tag"
+        }
+      ],
+      "params": {
+        "world": "shop",
+        "prop": "tag",
+        "text": "{card_total_paid}",
+        "at": "start",
+        "kicker": "All in, with interest",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "phone",
+              "expression": "neutral",
+              "prop": "phone"
+            },
+            {
+              "at": "pays",
+              "pose": "shrug",
+              "expression": "shock"
+            },
+            {
+              "at": "tag",
+              "pose": "facepalm",
+              "expression": "sad"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l3-sharma",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "In my bank days, we had a name for people who pay only the minimum. Our best customers.",
+      "events": {
+        "best": {
+          "word": "best"
+        }
+      },
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "confused",
+                "turn": 0.4
+              },
+              {
+                "at": "best",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.64,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "smirk",
+                "turn": -0.4
+              },
+              {
+                "at": "best",
+                "pose": "think",
+                "expression": "proud",
+                "turn": -0.3
+              }
+            ],
+            "enter": "right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l3-down",
+      "scene": "stage",
+      "transition": "fade",
+      "say": "And that is how one sale pushes a person back down. Every month, part of his salary belongs to the card, and he is back on level one.",
+      "events": {
+        "down": {
+          "word": "down"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "down",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "sikka": {
+          "x": 0.66,
+          "drop": true,
+          "expression": "sad"
+        }
+      }
+    },
+    {
+      "id": "l3-fork",
+      "scene": "fork",
+      "transition": "zoom",
+      "say": "Even converting the bill into a one year EMI at {emi_rate} would cost about {emi_interest} in interest. The minimum road costs {card_interest}.",
+      "events": {
+        "emi": {
+          "word": "converting"
+        },
+        "min": {
+          "word": "minimum"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "emi"
+        },
+        {
+          "kind": "boom",
+          "at": "min",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "land": "fields",
+        "time": "sunset",
+        "weather": "leaves",
+        "pose": "think",
+        "expression": "thinking",
+        "short": {
+          "label": "One year EMI",
+          "time": "{emi_months} months",
+          "cost": "{emi_interest}",
+          "at": "emi"
+        },
+        "long": {
+          "label": "Minimum only",
+          "time": "{card_years} years",
+          "cost": "{card_interest}",
+          "at": "min"
+        }
+      }
+    },
+    {
+      "id": "l3-steps",
+      "scene": "checklist",
+      "speaker": "priya",
+      "transition": "slide",
+      "say": "The move on level three. Pay the total due every month, with autopay. Never take cash from a card.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "Staying debt-free",
+        "active": 0,
+        "items": [
+          {
+            "text": "Pay the total due",
+            "icon": "autopay"
+          },
+          {
+            "text": "Can't? A short EMI",
+            "icon": "emi"
+          },
+          {
+            "text": "Spend only what you have",
+            "icon": "debit"
+          }
+        ],
+        "actor": {
+          "who": "priya",
+          "x": 0.84,
+          "scale": 1.15,
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy",
+              "turn": -0.3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l3-steps2",
+      "scene": "checklist",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "If you truly cannot, a short EMI beats the minimum. And spend on the card only what is already in your account.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "Staying debt-free",
+        "active": 2,
+        "items": [
+          {
+            "text": "Pay the total due",
+            "icon": "autopay"
+          },
+          {
+            "text": "Can't? A short EMI",
+            "icon": "emi"
+          },
+          {
+            "text": "Spend only what you have",
+            "icon": "debit"
+          }
+        ],
+        "actor": {
+          "who": "priya",
+          "x": 0.84,
+          "scale": 1.15,
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "thumbsUp",
+              "expression": "smirk",
+              "turn": -0.3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "recap1",
+      "scene": "equation",
+      "transition": "fade",
+      "say": "So that is three floors. Spend less than you earn. Build the cushion. Owe nobody.",
+      "events": {
+        "spend": {
+          "word": "Spend"
+        },
+        "cushion": {
+          "word": "cushion"
+        },
+        "owe": {
+          "word": "Owe"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "spend"
+        },
+        {
+          "kind": "tick",
+          "at": "cushion"
+        },
+        {
+          "kind": "ding",
+          "at": "owe"
+        }
+      ],
+      "params": {
+        "title": "Three floors",
+        "items": [
+          {
+            "icon": "cart",
+            "label": "Spend less",
+            "at": "spend"
+          },
+          {
+            "icon": "piggy",
+            "label": "The cushion",
+            "at": "cushion"
+          },
+          {
+            "icon": "card",
+            "label": "Owe nobody",
+            "at": "owe"
+          }
+        ],
+        "ops": [
+          "→",
+          "→"
+        ],
+        "pattern": "grid",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "think",
+              "expression": "thinking"
+            },
+            {
+              "at": "owe",
+              "pose": "thumbsUp",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tease2",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "And on the next floor, something changes. For the first time, your money starts climbing on its own.",
+      "events": {
+        "climbing": {
+          "word": "climbing"
+        },
+        "own": {
+          "word": "own"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "climbing",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "confused",
+                "turn": 0.4
+              },
+              {
+                "at": "own",
+                "pose": "think",
+                "expression": "thinking",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.66,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.4
+              },
+              {
+                "at": "climbing",
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch4",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Level four",
+        "title": "Your money gets a job"
+      }
+    },
+    {
+      "id": "l4-sip",
+      "scene": "prop",
+      "transition": "zoom",
+      "camera": "punch:month",
+      "say": "On level four, Rohan invests {first_amount} a month, every month, for {first_years} years. Not into the cushion this time, into investments.",
+      "events": {
+        "month": {
+          "word": "month"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "month"
+        }
+      ],
+      "params": {
+        "world": "office",
+        "prop": "cheque",
+        "text": "{first_amount}",
+        "at": "start",
+        "kicker": "Every month",
+        "sub": "into investments",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l4-what",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "The usual way in India is a SIP. A fixed amount goes into a mutual fund on the same date, every month, on autopilot.",
+      "events": {
+        "SIP": {
+          "word": "SIP"
+        },
+        "same": {
+          "word": "same"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "SIP"
+        },
+        {
+          "kind": "pop",
+          "at": "same"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "city",
+        "lines": [
+          {
+            "text": "A SIP",
+            "at": "SIP"
+          },
+          {
+            "text": "Same date, every month",
+            "at": "same"
+          }
+        ],
+        "city": "mumbai",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l4-alot",
+      "scene": "stage",
+      "speaker": "rohan",
+      "say": "But {first_amount} every month? That is a lot.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.33,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "worried",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.4
+              }
+            ],
+            "enter": "right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l4-less",
+      "scene": "kinetic",
+      "speaker": "priya",
+      "transition": "slide",
+      "say": "Then start with less. The habit matters more than the amount. Raise it with every raise.",
+      "events": {
+        "less": {
+          "word": "less"
+        },
+        "Raise": {
+          "word": "Raise"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "less"
+        },
+        {
+          "kind": "ding",
+          "at": "Raise"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "kitchen",
+        "lines": [
+          {
+            "text": "Start smaller",
+            "at": "less"
+          },
+          {
+            "text": "Raise it with every raise",
+            "at": "Raise"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l4-assume",
+      "scene": "kinetic",
+      "speaker": "sharma",
+      "transition": "fade",
+      "say": "We will assume {first_rate} a year. That is an assumption, not a promise. Markets swing.",
+      "events": {
+        "promise": {
+          "word": "promise"
+        },
+        "swing": {
+          "word": "swing"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "promise"
+        }
+      ],
+      "params": {
+        "mode": "type",
+        "lines": [
+          {
+            "text": "Assume {first_rate} a year",
+            "at": "start"
+          },
+          {
+            "text": "Not a promise",
+            "at": "promise"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "pointUp",
+              "expression": "neutral"
+            },
+            {
+              "at": "swing",
+              "pose": "shrug",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l4-cal",
+      "scene": "calendar",
+      "transition": "fade",
+      "say": "Five years of the same date, the same amount. Good months, bad months, he keeps paying in.",
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "loops": 5,
+        "label": "Five years",
+        "sub": "Every month, on autopilot"
+      }
+    },
+    {
+      "id": "l4-split",
+      "scene": "split",
+      "transition": "slide",
+      "camera": "punch:worth",
+      "say": "He put in {first_invested}. It is now worth about {first_final}.",
+      "events": {
+        "put": {
+          "word": "put"
+        },
+        "worth": {
+          "word": "worth"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "put"
+        },
+        {
+          "kind": "kaching",
+          "at": "worth"
+        }
+      ],
+      "params": {
+        "left": {
+          "label": "He put in",
+          "text": "{first_invested}",
+          "value": "@first.invested",
+          "at": "put"
+        },
+        "right": {
+          "label": "Now worth",
+          "text": "{first_final}",
+          "value": "@first.final",
+          "at": "worth"
+        }
+      }
+    },
+    {
+      "id": "l4-gains",
+      "scene": "prop",
+      "transition": "zoom",
+      "say": "That difference, {first_gains}, is money he never worked a single shift for.",
+      "events": {
+        "never": {
+          "word": "never"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "never"
+        }
+      ],
+      "params": {
+        "world": "street",
+        "prop": "stack",
+        "text": "{first_gains}",
+        "at": "start",
+        "kicker": "Money he never worked for",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "stand",
+              "expression": "neutral"
+            },
+            {
+              "at": "never",
+              "pose": "celebrate",
+              "expression": "shock"
+            }
+          ]
+        },
+        "fill": 0.5
+      }
+    },
+    {
+      "id": "l4-rohan",
+      "scene": "stage",
+      "speaker": "rohan",
+      "say": "It made {first_gains} without me doing anything?",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.33,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.4
+              }
+            ]
+          }
+        ],
+        "sikka": {
+          "x": 0.5,
+          "drop": true,
+          "cheer": true,
+          "expression": "laugh"
+        }
+      }
+    },
+    {
+      "id": "l4-priya",
+      "scene": "stage",
+      "speaker": "priya",
+      "say": "Not without you. You kept paying in, even in the months it went down.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.33,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "neutral",
+                "turn": -0.4
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l4-catch",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "Here is the honest catch. Some years the value will fall, sometimes a lot. The people who climb further are the ones who do not stop.",
+      "events": {
+        "fall": {
+          "word": "fall"
+        },
+        "stop": {
+          "word": "stop"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "fall",
+          "gain": 0.4
+        },
+        {
+          "kind": "pop",
+          "at": "stop"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "street",
+        "lines": [
+          {
+            "text": "Some years it falls",
+            "at": "fall"
+          },
+          {
+            "text": "The climbers don't stop",
+            "at": "stop"
+          }
+        ],
+        "night": true,
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "neutral"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l4-why",
+      "scene": "equation",
+      "transition": "zoom",
+      "say": "Why does it grow? Returns earn returns. This year's growth joins the pile, and next year the pile grows on that too.",
+      "events": {
+        "Returns": {
+          "word": "Returns"
+        },
+        "joins": {
+          "word": "joins"
+        },
+        "too": {
+          "word": "too"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "Returns"
+        },
+        {
+          "kind": "pop",
+          "at": "joins"
+        },
+        {
+          "kind": "ding",
+          "at": "too"
+        }
+      ],
+      "params": {
+        "title": "Why it grows",
+        "items": [
+          {
+            "icon": "cash",
+            "label": "Money",
+            "at": "Returns"
+          },
+          {
+            "icon": "chartup",
+            "label": "Growth",
+            "at": "joins"
+          },
+          {
+            "icon": "piggy",
+            "label": "A bigger pile",
+            "at": "too"
+          }
+        ],
+        "ops": [
+          "+",
+          "="
+        ],
+        "pattern": "waves",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "snowball",
+      "scene": "prop",
+      "transition": "wipe",
+      "say": "Like a pile of cash that keeps adding to itself. Small at first. And the longer you leave it, the bigger it gets.",
+      "events": {
+        "longer": {
+          "word": "longer"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        },
+        {
+          "kind": "kaching",
+          "at": "longer"
+        }
+      ],
+      "params": {
+        "world": "street",
+        "prop": "stack",
+        "text": "{first_final}",
+        "at": "start",
+        "kicker": "Growth on growth",
+        "sub": "after five years",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "stand",
+              "expression": "happy"
+            },
+            {
+              "at": "longer",
+              "pose": "thumbsUp",
+              "expression": "happy"
+            }
+          ]
+        },
+        "fill": 0.6
+      }
+    },
+    {
+      "id": "l4-move",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "So the move on level four: automate it. The SIP leaves on salary day, before you can spend it.",
+      "events": {
+        "automate": {
+          "word": "automate"
+        },
+        "salary": {
+          "word": "salary"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "automate"
+        },
+        {
+          "kind": "ding",
+          "at": "salary"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "office",
+        "lines": [
+          {
+            "text": "Automate it",
+            "at": "automate"
+          },
+          {
+            "text": "Invest first, spend the rest",
+            "at": "salary"
+          }
+        ],
+        "city": "mumbai",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "thumbsUp",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l4-cliff",
+      "scene": "stage",
+      "transition": "fade",
+      "say": "Now watch what happens when you give the very same habit a lot more time.",
+      "events": {
+        "time": {
+          "word": "time"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "time",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "time",
+                "pose": "pointUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch5",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Level five",
+        "title": "The crore"
+      }
+    },
+    {
+      "id": "l5-sip",
+      "scene": "prop",
+      "transition": "zoom",
+      "say": "On level five, it is {crore_amount} a month, for {crore_years} years. Same idea, just a longer hill.",
+      "events": {
+        "month": {
+          "word": "month"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "month"
+        }
+      ],
+      "params": {
+        "world": "office",
+        "prop": "cheque",
+        "text": "{crore_amount}",
+        "at": "start",
+        "kicker": "Every month",
+        "sub": "a longer hill",
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l5-cal",
+      "scene": "calendar",
+      "transition": "fade",
+      "say": "Twenty years. Four phones, two jobs, one wedding. And the SIP never stops.",
+      "events": {
+        "never": {
+          "word": "never"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "loops": 20,
+        "label": "Twenty years",
+        "sub": "The SIP never stops",
+        "subAt": "never"
+      }
+    },
+    {
+      "id": "l5-road",
+      "scene": "road",
+      "transition": "fade",
+      "say": "At year ten, the pot has reached {late_final}. Nice, but not life changing. Then the second ten years begin.",
+      "events": {
+        "ten": {
+          "word": "ten"
+        },
+        "Nice": {
+          "word": "Nice"
+        },
+        "second": {
+          "word": "second"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "ten"
+        },
+        {
+          "kind": "tick",
+          "at": "Nice"
+        },
+        {
+          "kind": "tick",
+          "at": "second"
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "land": "coast",
+        "time": "noon",
+        "weather": "clear",
+        "title": "The same SIP",
+        "expression": "happy",
+        "signs": [
+          {
+            "label": "Year ten",
+            "text": "{late_final}",
+            "at": "ten"
+          },
+          {
+            "label": "Year fifteen",
+            "at": "Nice"
+          },
+          {
+            "label": "Year twenty",
+            "good": true,
+            "at": "second"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l5-reveal",
+      "scene": "reveal",
+      "transition": "zoom",
+      "camera": "punch:is",
+      "say": "At year twenty, it is {crore_final}. A crore and a half, from {crore_amount} a month.",
+      "events": {
+        "is": {
+          "word": "is"
+        },
+        "from": {
+          "word": "from"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "is",
+          "gain": 0.8
+        },
+        {
+          "kind": "ding",
+          "at": "from"
+        }
+      ],
+      "params": {
+        "lines": [
+          {
+            "text": "Year twenty",
+            "style": "kicker",
+            "at": "start"
+          },
+          {
+            "text": "{crore_final}",
+            "style": "hero",
+            "value": "@crore.final",
+            "at": "is"
+          },
+          {
+            "text": "from {crore_amount} a month",
+            "style": "sub",
+            "at": "from"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l5-cheer",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "fade",
+      "say": "A crorepati? Me?",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "sikka": {
+          "x": 0.64,
+          "drop": true,
+          "cheer": true,
+          "expression": "laugh"
+        }
+      }
+    },
+    {
+      "id": "l5-late",
+      "scene": "split",
+      "transition": "slide",
+      "camera": "punch:late",
+      "say": "Now the painful part. Start the same SIP ten years late, and you reach only {late_final}. The same monthly amount.",
+      "events": {
+        "Start": {
+          "word": "Start"
+        },
+        "late": {
+          "word": "late"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "Start"
+        },
+        {
+          "kind": "boom",
+          "at": "late",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "left": {
+          "label": "Start now",
+          "text": "{crore_final}",
+          "value": "@crore.final",
+          "at": "start"
+        },
+        "right": {
+          "label": "Start ten years late",
+          "text": "{late_final}",
+          "value": "@late.final",
+          "at": "late"
+        }
+      }
+    },
+    {
+      "id": "l5-priya",
+      "scene": "stage",
+      "speaker": "priya",
+      "transition": "fade",
+      "say": "Same Rohan. Same salary. Same SIP. The only difference is the year he started.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "sad",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral",
+                "turn": -0.4
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l5-decade",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "Most of that crore arrives in the last ten years. Waiting does not cost you the first ten years. It costs you the last ten.",
+      "events": {
+        "Waiting": {
+          "word": "Waiting"
+        },
+        "last": {
+          "word": 17
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "Waiting"
+        },
+        {
+          "kind": "boom",
+          "at": "last",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "mode": "type",
+        "lines": [
+          {
+            "text": "Waiting costs",
+            "at": "Waiting"
+          },
+          {
+            "text": "the last ten years",
+            "at": "last"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "hips",
+              "expression": "neutral"
+            },
+            {
+              "at": "last",
+              "pose": "pointUp",
+              "expression": "proud"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l5-sharma",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "Time does the heavy lifting. Not the amount.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.66,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "proud",
+                "turn": -0.4
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l5-honest",
+      "scene": "prop",
+      "transition": "zoom",
+      "say": "And the honest catch. Remember the cushion? Prices keep rising, so a crore in twenty years buys a lot less than a crore today.",
+      "events": {
+        "less": {
+          "word": "less"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "less",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "world": "shop",
+        "prop": "tag",
+        "text": "{crore_final}",
+        "at": "less",
+        "kicker": "In twenty years",
+        "sub": "buys less than today",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "thinking"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l5-move",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "So the move on level five is the cheapest one in this whole video. Start now, even small, and do not stop.",
+      "events": {
+        "Start": {
+          "word": "Start"
+        },
+        "small": {
+          "word": "small"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "Start"
+        },
+        {
+          "kind": "ding",
+          "at": "small"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "city",
+        "lines": [
+          {
+            "text": "Start now",
+            "at": "Start"
+          },
+          {
+            "text": "Even small",
+            "at": "small"
+          }
+        ],
+        "city": "mumbai",
+        "night": false,
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "thumbsUp",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l5-delay",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "And every year you wait, the finish line moves further away. To catch up later, the monthly amount has to be much bigger, right when life gets more expensive.",
+      "events": {
+        "wait": {
+          "word": "wait"
+        },
+        "catch": {
+          "word": "catch"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "wait"
+        },
+        {
+          "kind": "fail",
+          "at": "catch",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "street",
+        "lines": [
+          {
+            "text": "Every year you wait",
+            "at": "wait"
+          },
+          {
+            "text": "Catching up costs more",
+            "at": "catch"
+          }
+        ],
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "think",
+              "expression": "worried"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "recap2",
+      "scene": "equation",
+      "transition": "fade",
+      "say": "Five floors now. And the last one is not about having more money. It is about what your money does while you sleep.",
+      "events": {
+        "Five": {
+          "word": "Five"
+        },
+        "more": {
+          "word": "more"
+        },
+        "sleep": {
+          "word": "sleep"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "Five"
+        },
+        {
+          "kind": "tick",
+          "at": "more"
+        },
+        {
+          "kind": "riser",
+          "at": "sleep",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "title": "Five floors",
+        "items": [
+          {
+            "icon": "piggy",
+            "label": "Cushion",
+            "at": "Five"
+          },
+          {
+            "icon": "chartup",
+            "label": "Invest",
+            "at": "more"
+          },
+          {
+            "icon": "clock",
+            "label": "While you sleep",
+            "at": "sleep"
+          }
+        ],
+        "ops": [
+          "→",
+          "→"
+        ],
+        "pattern": "rays",
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "hips",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ch6",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Level six",
+        "title": "Money does the work"
+      }
+    },
+    {
+      "id": "l6-split",
+      "scene": "split",
+      "transition": "zoom",
+      "camera": "punch:other",
+      "say": "Level six. Of that {crore_final}, only {crore_invested} ever came from his salary. The other {crore_gains} was the money working.",
+      "events": {
+        "only": {
+          "word": "only"
+        },
+        "other": {
+          "word": "other"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "only"
+        },
+        {
+          "kind": "kaching",
+          "at": "other"
+        }
+      ],
+      "params": {
+        "left": {
+          "label": "From his salary",
+          "text": "{crore_invested}",
+          "value": "@crore.invested",
+          "at": "only"
+        },
+        "right": {
+          "label": "The money working",
+          "text": "{crore_gains}",
+          "value": "@crore.gains",
+          "at": "other"
+        }
+      }
+    },
+    {
+      "id": "l6-sharma",
+      "scene": "stage",
+      "speaker": "sharma",
+      "transition": "fade",
+      "say": "This is my floor. My money goes to work before I wake up.",
+      "events": {
+        "wake": {
+          "word": "wake"
+        }
+      },
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "x": 0.5,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "proud"
+              },
+              {
+                "at": "wake",
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l6-year",
+      "scene": "prop",
+      "transition": "zoom",
+      "say": "Level six needs a much bigger pot than that. Say {rich_amount}. At an assumed {rich_rate} a year, it grows by about {rich_gains} in a single year.",
+      "events": {
+        "grows": {
+          "word": "grows"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "clink",
+          "at": "grows"
+        },
+        {
+          "kind": "kaching",
+          "at": "grows"
+        }
+      ],
+      "params": {
+        "world": "street",
+        "prop": "stack",
+        "text": "{rich_gains}",
+        "at": "grows",
+        "kicker": "One year of growth",
+        "sub": "on {rich_amount}",
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "smirk"
+            }
+          ]
+        },
+        "fill": 0.9
+      }
+    },
+    {
+      "id": "l6-more",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "Twenty years from now, at {month_inflation} inflation, Rohan's life costs about {life_new_monthly} a year. The growth is bigger than the bill.",
+      "events": {
+        "life": {
+          "word": "life"
+        },
+        "bigger": {
+          "word": "bigger"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "life"
+        },
+        {
+          "kind": "ding",
+          "at": "bigger"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "office",
+        "lines": [
+          {
+            "text": "A year of life: {life_new_monthly}",
+            "at": "life"
+          },
+          {
+            "text": "Growth beats the bill",
+            "at": "bigger"
+          }
+        ],
+        "city": "mumbai",
+        "night": true,
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "stand",
+              "expression": "shock"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l6-rohan",
+      "scene": "stage",
+      "speaker": "rohan",
+      "say": "So the money pays the bills, and the job becomes optional?",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.33,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.4
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l6-sharma2",
+      "scene": "stage",
+      "speaker": "sharma",
+      "say": "That is the idea. But nobody jumps here. Every floor below has to hold.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.33,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "neutral",
+                "turn": -0.4
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "l6-catch",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "And one last honest catch. Returns are never guaranteed, and a bad year can wipe the growth out. So people here spend less than the full growth, and let the rest keep up with prices.",
+      "events": {
+        "never": {
+          "word": "never"
+        },
+        "bad": {
+          "word": "bad"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "never",
+          "gain": 0.4
+        },
+        {
+          "kind": "pop",
+          "at": "bad"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "street",
+        "lines": [
+          {
+            "text": "Never guaranteed",
+            "at": "never"
+          },
+          {
+            "text": "Bad years happen",
+            "at": "bad"
+          }
+        ],
+        "night": true,
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "worried"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l6-cushion",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "Which is exactly why people on level six still keep the cushion, and still owe nobody. The lower floors never go away.",
+      "events": {
+        "cushion": {
+          "word": "cushion"
+        },
+        "owe": {
+          "word": "owe"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "cushion"
+        },
+        {
+          "kind": "ding",
+          "at": "owe"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "kitchen",
+        "lines": [
+          {
+            "text": "Still a cushion",
+            "at": "cushion"
+          },
+          {
+            "text": "Still no debt",
+            "at": "owe"
+          }
+        ],
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "thumbsUp",
+              "expression": "proud"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l6-climb",
+      "scene": "stage",
+      "transition": "fade",
+      "say": "And Sharma Uncle did not get here in one jump. He climbed every floor, one boring month at a time, for decades.",
+      "events": {
+        "boring": {
+          "word": "boring"
+        }
+      },
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "sharma",
+            "x": 0.42,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "proud"
+              },
+              {
+                "at": "boring",
+                "pose": "think",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "sikka": {
+          "x": 0.66,
+          "drop": true,
+          "cheer": true,
+          "expression": "happy"
+        }
+      }
+    },
+    {
+      "id": "l6-three",
+      "scene": "equation",
+      "transition": "zoom",
+      "say": "So level six is three things at once. A cushion. No debt. And a pot so big that its growth covers the bills, with room to spare.",
+      "events": {
+        "cushion": {
+          "word": "cushion"
+        },
+        "debt": {
+          "word": "debt"
+        },
+        "covers": {
+          "word": "covers"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "cushion"
+        },
+        {
+          "kind": "pop",
+          "at": "debt"
+        },
+        {
+          "kind": "ding",
+          "at": "covers"
+        }
+      ],
+      "params": {
+        "title": "Level six",
+        "items": [
+          {
+            "icon": "piggy",
+            "label": "A cushion",
+            "at": "cushion"
+          },
+          {
+            "icon": "card",
+            "label": "No debt",
+            "at": "debt"
+          },
+          {
+            "icon": "chartup",
+            "label": "Growth covers bills",
+            "at": "covers"
+          }
+        ],
+        "ops": [
+          "+",
+          "+"
+        ],
+        "pattern": "grid",
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "l6-tease",
+      "scene": "stage",
+      "transition": "fade",
+      "say": "So, which floor are you on? And one move on that floor matters more than all the others.",
+      "events": {
+        "matters": {
+          "word": "matters"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "matters",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "matters",
+                "pose": "pointUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch7",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Level check",
+        "title": "Which one are you?"
+      }
+    },
+    {
+      "id": "which-honest",
+      "scene": "kinetic",
+      "transition": "slide",
+      "say": "Now be honest with yourself. Not the level you wish you were on. The one your bank account says you are on today.",
+      "events": {
+        "wish": {
+          "word": "wish"
+        },
+        "account": {
+          "word": "account"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "wish"
+        },
+        {
+          "kind": "pop-high",
+          "at": "account"
+        }
+      ],
+      "params": {
+        "mode": "box",
+        "world": "city",
+        "lines": [
+          {
+            "text": "Not where you wish",
+            "at": "wish"
+          },
+          {
+            "text": "Where your account says",
+            "at": "account"
+          }
+        ],
+        "city": "mumbai",
+        "night": true,
+        "presenter": {
+          "who": "sharma",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "hips",
+              "expression": "smirk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "which-road",
+      "scene": "road",
+      "transition": "fade",
+      "say": "Walk the road with Rohan. Each signpost is a floor. Stop at the one that sounds like your life today.",
+      "events": {
+        "road": {
+          "word": "road"
+        },
+        "floor": {
+          "word": "floor"
+        },
+        "life": {
+          "word": "life"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "road"
+        },
+        {
+          "kind": "tick",
+          "at": "floor"
+        },
+        {
+          "kind": "tick",
+          "at": "life"
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "land": "fields",
+        "time": "dawn",
+        "weather": "clear",
+        "title": "Which one are you?",
+        "expression": "happy",
+        "signs": [
+          {
+            "label": "Level one",
+            "at": "road"
+          },
+          {
+            "label": "Level three",
+            "at": "floor"
+          },
+          {
+            "label": "Level five",
+            "good": true,
+            "at": "life"
+          }
+        ]
+      }
+    },
+    {
+      "id": "which-1",
+      "scene": "checklist",
+      "speaker": "priya",
+      "transition": "slide",
+      "say": "Level one, the month ends before the money. Your move: spend less than you earn.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "One move per floor",
+        "active": 0,
+        "items": [
+          {
+            "text": "One: spend less than you earn",
+            "icon": "debit"
+          },
+          {
+            "text": "Two: a cushion, then stop",
+            "icon": "check"
+          },
+          {
+            "text": "Three: pay the total due",
+            "icon": "autopay"
+          }
+        ],
+        "actor": {
+          "who": "priya",
+          "x": 0.84,
+          "scale": 1.15,
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy",
+              "turn": -0.3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "which-1b",
+      "scene": "checklist",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "Level two, you have a cushion. Your move: keep it, and stop there.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "One move per floor",
+        "active": 1,
+        "items": [
+          {
+            "text": "One: spend less than you earn",
+            "icon": "debit"
+          },
+          {
+            "text": "Two: a cushion, then stop",
+            "icon": "check"
+          },
+          {
+            "text": "Three: pay the total due",
+            "icon": "autopay"
+          }
+        ],
+        "actor": {
+          "who": "priya",
+          "x": 0.84,
+          "scale": 1.15,
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "happy",
+              "turn": -0.3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "which-2",
+      "scene": "checklist",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "Level three, nobody owns your salary. Your move: pay the total due, every single month.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "One move per floor",
+        "active": 2,
+        "items": [
+          {
+            "text": "One: spend less than you earn",
+            "icon": "debit"
+          },
+          {
+            "text": "Two: a cushion, then stop",
+            "icon": "check"
+          },
+          {
+            "text": "Three: pay the total due",
+            "icon": "autopay"
+          }
+        ],
+        "actor": {
+          "who": "priya",
+          "x": 0.84,
+          "scale": 1.15,
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "smirk",
+              "turn": -0.3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "which-3",
+      "scene": "checklist",
+      "speaker": "priya",
+      "transition": "slide",
+      "say": "Level four, you invest. Your move: automate it.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "One move per floor",
+        "active": 0,
+        "items": [
+          {
+            "text": "Four: automate it",
+            "icon": "emi"
+          },
+          {
+            "text": "Five: never stop",
+            "icon": "check"
+          },
+          {
+            "text": "Six: keep the floors below",
+            "icon": "autopay"
+          }
+        ],
+        "actor": {
+          "who": "priya",
+          "x": 0.84,
+          "scale": 1.15,
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "present",
+              "expression": "happy",
+              "turn": -0.3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "which-3b",
+      "scene": "checklist",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "Level five, time is on your side. Your move: do not stop.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "One move per floor",
+        "active": 1,
+        "items": [
+          {
+            "text": "Four: automate it",
+            "icon": "emi"
+          },
+          {
+            "text": "Five: never stop",
+            "icon": "check"
+          },
+          {
+            "text": "Six: keep the floors below",
+            "icon": "autopay"
+          }
+        ],
+        "actor": {
+          "who": "priya",
+          "x": 0.84,
+          "scale": 1.15,
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "point",
+              "expression": "happy",
+              "turn": -0.3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "which-3c",
+      "scene": "checklist",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "And level six, keep every floor below you standing.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ],
+      "params": {
+        "title": "One move per floor",
+        "active": 2,
+        "items": [
+          {
+            "text": "Four: automate it",
+            "icon": "emi"
+          },
+          {
+            "text": "Five: never stop",
+            "icon": "check"
+          },
+          {
+            "text": "Six: keep the floors below",
+            "icon": "autopay"
+          }
+        ],
+        "actor": {
+          "who": "priya",
+          "x": 0.84,
+          "scale": 1.15,
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "thumbsUp",
+              "expression": "happy",
+              "turn": -0.3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "biggest",
+      "scene": "fork",
+      "transition": "zoom",
+      "say": "And the move that matters most is the cheapest one: start early. Same {crore_amount} a month. Start now, {crore_final}. Start ten years late, {late_final}.",
+      "events": {
+        "now": {
+          "word": "now"
+        },
+        "late": {
+          "word": "late"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "now"
+        },
+        {
+          "kind": "boom",
+          "at": "late",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "who": "rohan",
+        "land": "desert",
+        "time": "sunset",
+        "weather": "clear",
+        "pose": "think",
+        "expression": "thinking",
+        "short": {
+          "label": "Start now",
+          "time": "{crore_years} years",
+          "cost": "{crore_final}",
+          "at": "now"
+        },
+        "long": {
+          "label": "Ten years late",
+          "time": "{late_years} years",
+          "cost": "{late_final}",
+          "at": "late"
+        }
+      }
+    },
+    {
+      "id": "rohan-level",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "slide",
+      "say": "I am on level two. Next stop, a card I pay in full, and a SIP on salary day.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.36,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "x": 0.7,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "happy",
+                "turn": -0.3
+              }
+            ]
+          }
+        ],
+        "sikka": {
+          "x": 0.54,
+          "drop": true,
+          "cheer": true,
+          "expression": "happy"
+        }
+      }
+    },
+    {
+      "id": "priya-end",
+      "scene": "stage",
+      "speaker": "priya",
+      "transition": "fade",
+      "say": "And wherever you are, the next floor is one move away. Not six. Just one.",
+      "events": {
+        "one": {
+          "word": "one"
+        }
+      },
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.33,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "x": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "happy",
+                "turn": -0.4
+              },
+              {
+                "at": "one",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "rohan-sip",
+      "scene": "stage",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Just one? Fine. Starting this month.",
+      "params": {
+        "set": "home",
+        "actors": [
+          {
+            "who": "rohan",
+            "x": 0.42,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "sikka": {
+          "x": 0.66,
+          "drop": true,
+          "cheer": true,
+          "expression": "laugh"
+        }
+      }
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "transition": "fade",
+      "say": "Our maths is simplified, before tax and fees, so real life will be messier. So, which level are you on? Comment your number. And follow the panchayat for one money question, settled with real maths.",
+      "params": {
+        "cta": "Which level are you on? Comment your number",
+        "follow": "Follow Paisa Panchayat",
+        "assumption": "Assumes {month_inflation} inflation, FD {cushion_rate}, card {card_rate_month} a month, returns {crore_rate} ({rich_rate} at level six), before tax and fees."
+      }
+    }
+  ],
+  "narrator": "af_heart"
+}

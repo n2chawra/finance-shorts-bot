@@ -1,0 +1,315 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:33:12.480540+00:00",
+    "finishedAt": "2026-10-21T09:33:12.480540+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:33:26.179570+00:00",
+    "finishedAt": "2026-10-21T09:33:26.179570+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-21T09:37:31.718951+00:00",
+    "finishedAt": "2026-10-21T09:37:31.718951+00:00",
+    "notes": [
+      "beat 'l2-fd'.params.value: maths 'cushion' has no value or series 'amount'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-21T09:37:55.892787+00:00",
+    "finishedAt": "2026-10-21T09:37:55.892787+00:00",
+    "notes": [
+      "beat 'l4-cal'.params.loops: maths 'first' has no value or series 'years'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:38:02.565264+00:00",
+    "finishedAt": "2026-10-21T09:38:02.565264+00:00",
+    "notes": [
+      "71 figures computed from inputs; 44 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:38:54.137993+00:00",
+    "finishedAt": "2026-10-21T09:38:54.137993+00:00",
+    "notes": [
+      "71 figures computed from inputs; 44 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-21T09:39:01.091549+00:00",
+    "finishedAt": "2026-10-21T09:39:01.101546+00:00",
+    "notes": [
+      "kokoro-onnx is not installed; run: bash scripts/setup-voice.sh"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:39:33.092988+00:00",
+    "finishedAt": "2026-10-21T09:39:33.092988+00:00",
+    "notes": [
+      "71 figures computed from inputs; 44 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-21T09:42:15.947644+00:00",
+    "finishedAt": "2026-10-21T09:42:15.947644+00:00",
+    "notes": [
+      "Beat l6-more (with l6-year, l6-rohan, l6-sharma2): 'That is more than Rohan spends in a whole year, even at ₹40,000 a month. The money now earns more than the life costs' compares year-20 nominal growth (₹12.0 L at 8% on ₹1.50 Cr) with TODAY's spending. By the video's own 6% inflation (l1-trap, l5-honest) the same life costs about ₹1.28 L a month, ~₹15.4 L a year, by year 20, so the growth does NOT cover it; and spending all 8% growth while prices rise 6% shrinks the pot in real terms (real growth ~2%, before tax). The conclusion the numbers do not support (rule 3), and Rohan 'the job becomes optional' / Sharma 'That is the idea' builds on it. Fix: compare like with like: add a price_rise maths for ₹40,000 at 6% over 20 years and show the year-20 cost next to the growth, or move the comparison to today's money (real_return), or make the level-6 pot large enough that its growth covers the year-20 cost and say a sustainable draw is well below the full nominal return; reword l6-more so it is true under the stated assumptions.",
+      "Note (not a reject): open beat says the same month 'will cost ₹71,634' as a certainty; better 'at 6% inflation, could cost' (l1-trap already words it as an assumption). l3-down 'The cushion goes into the card' sits oddly with 15 years of minimums; l3/l3-fork omit 18% GST on card interest and EMI-conversion processing fees (both make the minimum road worse, so not misleading). FD at 7%: SBI general-public top rate is 6.80% (5-10y 6.05%), within the channel's 6-7.5% band; 6% inflation fits Sept 2026 CPI 5.54% (MoSPI). 3.5%/month and 5% minimum due match issuer MITCs (Bajaj/IndusInd 3.5%, IndusInd MAD 5%). Description 'Chapters' list is empty until render fills timestamps; disclaimer present at the end."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:43:04.922253+00:00",
+    "finishedAt": "2026-10-21T09:43:04.922253+00:00",
+    "notes": [
+      "80 figures computed from inputs; 50 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-21T09:44:19.936865+00:00",
+    "finishedAt": "2026-10-21T09:44:19.936865+00:00",
+    "notes": [
+      "Beats l6-year/l6-more/l6-catch with l6-rohan/l6-sharma2 (re-review): the like-for-like comparison is now right (₹24.0 L growth on ₹3 Cr at 8% vs ₹15,39,425 a year of life in year 20 at 6%), but l6-catch's remedy contradicts the video's own numbers. Spending ₹15.4 L of the ₹24.0 L leaves ₹8.6 L, while keeping ₹3 Cr level with 6% inflation needs ₹18 L a year. So 'spend less than the full growth, and let the rest keep up with prices' is impossible at this pot, the pot shrinks in real terms every year, and 'the job becomes optional?' / 'That is the idea' is still not supported (rule 3). The real return is about 2% (8% vs 6%), so a pot whose growth covers the bill AND keeps up with prices needs about ₹15.4 L / 0.02 = ~₹7.7 Cr (before tax). Fix: either raise the rich pot to about ₹8 Cr (say ₹8,00,00,000: ₹64 L growth, ₹48 L to keep up with prices, ₹16 L left > ₹15.4 L bill) and keep the lines, or keep ₹3 Cr and reword l6-more/l6-catch/l6-sharma2 honestly (the growth covers the bill for now, but to also keep up with prices the pot must be far bigger, so level six is a direction, not a finish line), with no 'job becomes optional' / 'That is the idea' endorsement at ₹3 Cr.",
+      "Fixed from the first review: open now says 'At 6% inflation ... could cost'; l3-down no longer has the cushion going into the card. Small point: life maths puts a yearly ₹4,80,000 into price_rise's 'monthly' field, so {life_new_monthly} is a yearly figure; the screen label says 'A year of life', so it is correct as shown, but don't use the other life_* figures (extra_year, extra_total are meaningless with a yearly input). Everything else from the first review still stands: 3.5%/month card with 5% minimum, FD at 7%, 6% inflation, 12% assumed, disclaimer present."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:44:40.923770+00:00",
+    "finishedAt": "2026-10-21T09:44:40.923770+00:00",
+    "notes": [
+      "80 figures computed from inputs; 50 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:45:14.372828+00:00",
+    "finishedAt": "2026-10-21T09:45:14.372828+00:00",
+    "notes": [
+      "Re-review after the ₹8 Cr fix: l6-year/l6-more/l6-catch now hold (₹64.0 L growth at an assumed 8%; ₹48 L keeps ₹8 Cr level with 6% inflation, ₹16 L left covers the ₹15.4 L year-20 bill), so 'job becomes optional' is supported under the stated assumptions; open and l3-down fixed; card 3.5%/month + 5% minimum, FD 7%, 6% inflation, 12% assumed all realistic and said as assumptions; no product advice; disclaimer in description and end card. Notes: the margin at level six is thin and before tax (say so if reworded later); end-card assumption line lists 12% on investments but not the 8% used at level six; life maths feeds a yearly figure into price_rise 'monthly', fine as labelled but use only {life_new_monthly}."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:45:29.933055+00:00",
+    "finishedAt": "2026-10-21T09:45:29.933055+00:00",
+    "notes": [
+      "80 figures computed from inputs; 50 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:46:12.971095+00:00",
+    "finishedAt": "2026-10-21T09:46:12.971095+00:00",
+    "notes": [
+      "80 figures computed from inputs; 50 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:46:22.031288+00:00",
+    "finishedAt": "2026-10-21T09:46:22.031288+00:00",
+    "notes": [
+      "80 figures computed from inputs; 50 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-21T09:49:39.895702+00:00",
+    "finishedAt": "2026-10-21T09:49:39.895702+00:00",
+    "notes": [
+      "Re-review of the current script (110 beats): the six added beats carry no figures and make no false claims. l5-delay (waiting means a bigger monthly amount later) is true; l6-climb and rohan-sip are character lines, not instructions to the viewer; l6-three's 'growth covers the bills, with room to spare' holds at ₹8 Cr (₹64.0 L growth vs ₹15.4 L bill; still ₹16 L over after ₹48 L keeps up with 6% inflation); which-honest and priya-end are framing only. The outro now says 'before tax and fees' and the end card names 8% at level six. Earlier checks stand: card 3.5%/month with 5% minimum, FD 7%, 6% inflation, 12% assumed, no product advice, disclaimer in description and end card. Note: 'room to spare' is thin once inflation is counted; keep it hedged if reworded."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-21T09:49:23.947892+00:00",
+    "finishedAt": "2026-10-21T09:51:37.621881+00:00",
+    "notes": [
+      "text 'Money' at 385.0 s runs outside the frame",
+      "text 'you' at 385.0 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:02:57.031930+00:00",
+    "finishedAt": "2026-10-21T10:02:57.031930+00:00",
+    "notes": [
+      "80 figures computed from inputs; 50 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:02:58.185132+00:00",
+    "finishedAt": "2026-10-21T10:05:00.230456+00:00",
+    "notes": [
+      "500 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-21T10:11:56.483236+00:00",
+    "finishedAt": "2026-10-21T10:11:56.483236+00:00",
+    "notes": [
+      "[scene] outro (end card, 490.9s-500.2s, EndScene): the assumption paragraph's last line 'Returns are not guaranteed.' is drawn on top of the disclaimer 'Illustrative only. Not financial advice.'; the two lines overlap and the disclaimer is hard to read. The disclaimer needs its own line below the paragraph.",
+      "[scene] prop tag/cheque/stack show the value as ₹0 before their 'at' event instead of hiding it: l1-trap 56.7-63.3s price tag reads '₹0' for about 6.5 s while the voice talks about ₹40,000 and ₹71,634; l4-sip 259.3-261.5s cheque reads '₹0'; l4-gains 289.0-290s stack reads '₹0'.",
+      "[script] l2-cash (143.5s): the bucket shows 'Kept as cash ₹1.1 L' from the start while the voice says 'worth just ₹1.3 L'. ₹1.1 L is the amount lost, but its sub-label 'lost to rising prices' only appears at 'take' (5.4 s in), so for about 4 s the label and value contradict the narration. Show ₹1.3 L, or change the kicker to 'Lost to rising prices'.",
+      "[script] the figures appear after the voice has said them, because the 'at' events are on a later word: l4-gains (at 'never'; at 291.6s the count-up reads ₹19,278 after ₹2.2 L was spoken), l5-sip (at 'month'; 325s reads ₹82 after ₹15,000 was spoken), l6-split (at 'salary'/'working'; at 390s the left card reads ₹6.2 L while the caption is already on ₹1.14 Cr, and the right card only appears at 7 s). Put each 'at' on the number word.",
+      "[scene] vault prop: the open door covers the left of the figure. In l2-fd at 96.8s the ₹ sign is hidden ('2,40,000'), and the number runs into the rim on the right. In l3-interest at 205s only ',816' shows, and in l6-year at 400.4s only 'L' shows while the door swings. Centre the figure in the opening and size it to fit.",
+      "[scene] l3-total (215.8-221.5s, receipt prop): the receipt's '₹1.4 L' sits at the bottom of the frame, directly under the big caption; at 219.6s and 220.7s the caption ('THAT IS ABOUT', '2.9× WHAT HE') touches or overlaps the ₹1.4 L figure. The figure should sit higher on the receipt.",
+      "[scene] l3-sale (165.4-171.2s, stage set=store): the ₹50,000 chip is placed over the middle of the store banner, so the banner text reads 'PH ₹50,000 LD' (text on text).",
+      "[scene] split scene starts empty: l3-split at 195.0s and l5-late at 345.0s show nothing but the background and a caption for about 1 s, until the first card's 'at' (frames 26 and 38). Draw the card frames from the start (or [script]: put the first 'at' at 0).",
+      "[scene] calendar (l4-cal, 284-288s): the sub-label 'Same date, same amount' renders with almost no word spacing and reads 'Same date, sameamount'.",
+      "[scene] snowball (309.6-313.9s): the '+ returns' ticks are pale pink on white or light-blue snow and nearly unreadable; at 310s '+Returns' also sits at the top-left edge.",
+      "[scene] checklist (which-1 454.6s, which-3 465.1s): the highlight is fixed for the whole beat, so at 459s 'One' is highlighted while the voice is on level two, and at 470.3s 'Four' is highlighted while the voice is on level six. The highlight should follow the spoken item (or [script]: one beat per item).",
+      "[scene] l5-reveal (338.2-343.0s): Rohan at x 0.86 is cut off by the bottom edge, shown only from the chest up in the corner at 340-341s, while the rest of the cast stands full length.",
+      "[script] the same home set (couch, window, plant) is held for three beats in a row, l4-alot, l4-less and l4-assume (271.4-281.9s, about 10.5 s, only poses changing). It is the backdrop of about 25 beats in all, and 'l3-sharma' + 'l3-down' (221.5-231.2s) repeat it too. Vary the set or scene.",
+      "[scene] thumbnail.png: Rohan's pointing hand covers 'Cr' in '₹1.50 Cr' (it reads '₹1.50 c'); at small size the hero figure is the main promise and is cut. thumbnail-b.png: Sharma's 'think' pose has a broken arm (a hand floating at his neck and a fist at the lower right, with the arms crossing in a Y), and its ₹40,000 → ₹1.50 Cr arrow implies a salary becomes a crore, which the video never claims. thumbnail-c.png is fine."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:13:29.455457+00:00",
+    "finishedAt": "2026-10-21T10:13:29.455457+00:00",
+    "notes": [
+      "80 figures computed from inputs; 50 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:13:30.688885+00:00",
+    "finishedAt": "2026-10-21T10:15:49.042413+00:00",
+    "notes": [
+      "502 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-21T10:17:52.234870+00:00",
+    "finishedAt": "2026-10-21T10:17:52.234870+00:00",
+    "notes": [
+      "[scene] l3-total (215.8-221.3s, prop=receipt, world=shop): the receipt draws its figure '₹1.4 L' at the very bottom of the receipt, in the caption band, so the big caption sits on top of it for the whole beat: 'TO CLEAR ₹50,000.' at 218.7s, 'THAT IS ABOUT' at 219.6s, '2.9× WHAT HE' at 220.7s all cover the lower half of ₹1.4 L. Removing the kicker did not move it. Place the receipt total higher (above about 75% of the frame height), or [script] use the tag or stack prop for this beat."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:18:18.648358+00:00",
+    "finishedAt": "2026-10-21T10:18:18.648358+00:00",
+    "notes": [
+      "80 figures computed from inputs; 50 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:18:20.064826+00:00",
+    "finishedAt": "2026-10-21T10:20:25.066777+00:00",
+    "notes": [
+      "502 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:21:06.262951+00:00",
+    "finishedAt": "2026-10-21T10:21:06.262951+00:00",
+    "notes": [
+      "Round 3: l3-total tag prop shows ₹1.4 L clear of captions (216-221s); all round-1/2 fixes hold across preview and probe stills; end card disclaimer clean; 502 s; audio -1.0/-16.9 dB; three thumbnails readable and on-promise."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:21:20.473655+00:00",
+    "finishedAt": "2026-10-21T10:50:31.808984+00:00",
+    "notes": [
+      "502 s, sky/acoustic, peak -1.0 dB, mean -16.9 dB"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:50:50.366188+00:00",
+    "finishedAt": "2026-10-21T10:50:50.366188+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:50:51.547604+00:00",
+    "finishedAt": "2026-10-21T10:50:51.547604+00:00",
+    "notes": [
+      "80 figures computed from inputs; 50 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:50:58.179963+00:00",
+    "finishedAt": "2026-10-21T10:50:58.179963+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:51:05.353337+00:00",
+    "finishedAt": "2026-10-21T10:51:05.353337+00:00",
+    "notes": [
+      "Manifest written; release asset uploaded."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-21T10:51:37.050099+00:00",
+    "finishedAt": "2026-10-21T10:51:37.050099+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
