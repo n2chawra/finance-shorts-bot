@@ -2,6 +2,154 @@
   "note": "Long-video topics, written by the Scout agent (agents/scout.md) and used by Studio (agents/studio.md). These first four were seeded by the owner's session to give Studio something to start on; Scout adds to them daily.",
   "topics": [
     {
+      "id": "2026-10-21-money-levels-india",
+      "format": "long",
+      "title": "The 6 levels of money in India: which one are you?",
+      "stories": [
+        "which_one_are_you"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "Every Level of Wealth in 13 Minutes (Memeable Data)",
+        "views": 4936915,
+        "url": "https://www.youtube.com/watch?v=9t2TQ8-mf5w"
+      },
+      "category": "net_worth",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Which money level am I on, and what is the one move that gets me to the next?",
+      "why_now": "'Levels of wealth' is a proven long shape: Memeable Data 4.9M, The Analyst 2.5M, Casually Explained 13.5M (4:38), and Humphrey Yang's '7 Levels of Investing' is in this week's fastest-growing long videos (market-data, ~1,550 views/h). Nobody does it in rupees with Indian salaries. For 22-35-year-olds who comment their level: built-in engagement.",
+      "outline": [
+        "hook (bill scene): Rohan's salary SMS on the 1st, balance near zero by the 25th. 'There are six money levels. Most of India is stuck on level one or two.' The picture the video hangs on: a six-floor building, Rohan in the stairwell, a lift that only works from floor four",
+        "level 1, paycheck to paycheck: Rohan, the month that ends before the money; Sikka empty",
+        "level 2, a cushion: six months of expenses in an FD; Priya shows what 10 years of inflation do to it (real_return: ₹2.4 L at 7% with 6% inflation is worth ₹2.6 L in today's money)",
+        "level 3, debt-free: the trap that pushes people back down a floor: ₹50,000 on a card paying the minimum costs ₹1.4 L over 15 years (card_min_due)",
+        "recap-and-tease: three floors, and the lift appears on the next one",
+        "level 4, the first ₹8 lakh invested: ₹10,000 a month for 5 years at an assumed 12% (sip) - the first time money earns more than a month's salary in a year",
+        "level 5, crorepati: ₹15,000 a month for 20 years becomes ₹1.50 Cr (sip); start 10 years late and it is ₹34.9 L - reveal at ~two thirds",
+        "recap-and-tease: the last floor is not about more money",
+        "level 6, money works harder than you: Sharma Uncle; the gains (₹1.14 Cr) are three times what went in (₹36 L)",
+        "ending: which floor are you on? Comment your level; one move per floor on screen; disclaimer end card"
+      ],
+      "maths": "real_return (FD vs inflation), card_min_due (₹50,000, 3.5%/month, 5% min, ₹200 floor), sip x3 (₹10,000/5y, ₹15,000/20y, ₹15,000/10y, 12% assumed)",
+      "verify": [
+        "Typical Indian credit card interest of about 3.5% a month and a 5% minimum due (card issuers' published MITC)",
+        "FD rates of 6-7.5% at large banks, and CPI inflation used is an assumption, said as one",
+        "12% is an assumed long-run equity return, never a promise"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=9t2TQ8-mf5w",
+        "https://www.youtube.com/watch?v=k6pcAcFKW30",
+        "https://www.youtube.com/watch?v=95iRn8vKWao"
+      ],
+      "found": "2026-10-21",
+      "expires": "2027-10-21",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-21-how-credit-cards-make-money",
+      "format": "long",
+      "title": "How credit card companies make money from you, even when you pay on time",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "How Credit Cards Work? Should I own a Credit Card? (Dhruv Rathee)",
+        "views": 5833344,
+        "url": "https://www.youtube.com/watch?v=cYMeZs_EcqE"
+      },
+      "category": "credit_card",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Where does a credit card company's money really come from, and which of those streams am I paying?",
+      "why_now": "Proven in India at long length: Dhruv Rathee 5.8M (11:51), Nitish Rajput 'Reality of Credit Cards' 7.8M (16:47), Warikoo 'Credit cards se paise aise kamate hain' 4.5M (17:55); TED-Ed's '3 things to never do with a credit card' is the #2 fastest-growing long video this week (~6,600 views/h). For first-salary card holders. credit_card is in the Shorts category window today; it clears in a few videos.",
+      "outline": [
+        "hook (bill scene): Rohan pays his card in full every month and feels clever. 'The card company still made money from you this month. Here are its seven ways, and the biggest one is last.' The picture: a pipe network under the city, seven pipes into one bank vault",
+        "1 the swipe fee the shop pays on every purchase (a share of the bill; fee_take maths kind, see backlog)",
+        "2 the annual fee and the 'waived if you spend' target that makes you spend",
+        "3 the late fee: one day late, and interest on the whole statement",
+        "recap-and-tease after 3: three pipes, and the next one looks free",
+        "4 the 'no-cost EMI': who pays the interest (emi at 0% next to the same loan at 16%; the processing fee)",
+        "5 cash from an ATM: a fee plus interest from day one",
+        "6 the minimum due: ₹50,000 paying only the minimum costs ₹1.4 L and 15 years (card_min_due) - reveal at ~two thirds",
+        "recap-and-tease: the biggest pipe is people like Rohan's friend",
+        "7 the biggest stream, interest from people who carry a balance: 42% a year, 51% effective (card_min_due figures); Sharma Uncle has seen it",
+        "ending: which pipes you can close (pay in full, autopay, never cash); disclaimer end card"
+      ],
+      "maths": "card_min_due (₹50,000, 3.5%/month, 5%, ₹200), emi x2 (₹60,000 for 12 months at 0% and at 16%), fee_take (new kind: swipe fee as a share of a year's spending)",
+      "verify": [
+        "Merchant discount rate / interchange range on Indian credit cards (RBI/NPCI or issuer disclosures)",
+        "RBI Master Direction on credit cards (2022): late fee only after 3 days past due, interest rules, minimum due cannot cause negative amortisation",
+        "Cash advance fee and interest from the withdrawal date (issuer MITC)",
+        "No-cost EMI: RBI 2013 circular on 0% EMI schemes; merchant pays the discount, processing fee and GST remain"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=cYMeZs_EcqE",
+        "https://www.youtube.com/watch?v=pBO9JLe3iV8",
+        "https://www.youtube.com/watch?v=dbBbaQqIOu0",
+        "https://youtube.com/watch?v=av3zdxYvCp8"
+      ],
+      "found": "2026-10-21",
+      "expires": "2027-10-21",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-21-how-banks-make-money",
+      "format": "long",
+      "title": "Your bank pays you $253. Here's what it makes with your money",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "Banking Explained – Money and Credit (Kurzgesagt, animated)",
+        "views": 10924730,
+        "url": "https://www.youtube.com/watch?v=fTTGALaRZoc"
+      },
+      "category": "banking",
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "What does my bank actually do with the money in my savings account, and how much does it earn from it?",
+      "why_now": "'How banks work' is one of the most-watched money shapes on YouTube: Kurzgesagt 10.9M (animated), Ray Dalio's 'How the Economic Machine Works' 130M, Wendover's 'How Airlines Quietly Became Banks' 7.4M. US half of the audience, a category no long video has used. For anyone with a savings account at a big bank.",
+      "outline": [
+        "hook (prop scene): $10,000 in a savings account at 0.5% earns $253 in 5 years (lumpsum). The same $10,000 lent as a car loan at 7% earns the bank $1,881 (emi). The picture: one stack of cash that walks out of the vault and comes back bigger",
+        "1 the spread: pay little on deposits, lend at more (lumpsum vs emi, side by side)",
+        "2 the mortgage: $300,000 at 6.5% for 30 years pays $382,633 in interest, more than the house (emi)",
+        "recap-and-tease: two streams so far, and the next one you pay without noticing",
+        "3 fees: overdraft and monthly maintenance (sourced, verify)",
+        "4 your card swipes (fee_take)",
+        "5 the float: money in transit earns while it waits",
+        "recap-and-tease: the last one is the reason the savings rate stays low",
+        "6 the biggest: you leave money in a 0.5% account; the same $10,000 at a 4% high-yield account (lumpsum) - reveal at ~two thirds",
+        "ending: Priya's two moves (know your rate, move idle cash); Sharma Uncle: 'banks don't hide this, people just don't ask'; disclaimer end card"
+      ],
+      "maths": "lumpsum x2 ($10,000 for 5 years at 0.5% and at 4%), emi x2 ($10,000 car loan 7%/5y; $300,000 mortgage 6.5%/30y), fee_take (new kind)",
+      "verify": [
+        "FDIC national average savings rate (fdic.gov national rates and rate caps) - the 0.5% must match or be said as an example",
+        "Average new-car loan and 30-year mortgage rates (Federal Reserve G.19 / Freddie Mac PMMS)",
+        "CFPB data on overdraft fee revenue and the typical overdraft fee",
+        "Interchange on US credit cards about 2% (Federal Reserve / CFPB)"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=fTTGALaRZoc",
+        "https://www.youtube.com/watch?v=PHe0bXAIuk0",
+        "https://www.youtube.com/watch?v=ggUduBmvQ_4"
+      ],
+      "found": "2026-10-21",
+      "expires": "2027-10-21",
+      "status": "new"
+    },
+    {
       "id": "2026-10-21-middle-class-traps",
       "format": "long",
       "title": "Every money trap the middle class falls into, explained",
@@ -17,8 +165,8 @@
       "currency": "INR",
       "demand": {
         "title": "The Middle Class TRAP | Why You'll Work Till You Die",
-        "views": 10062024,
-        "url": ""
+        "views": 10063105,
+        "url": "https://www.youtube.com/watch?v=D7Y-nJ8uiEA"
       },
       "hook": "There are seven money traps the middle class falls into. Most families are in at least four.",
       "angle": "Seven traps, one chapter each, each priced in rupees.",

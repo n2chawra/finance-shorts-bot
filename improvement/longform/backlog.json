@@ -289,6 +289,94 @@
       "priority": "low",
       "found": "2026-10-20",
       "status": "open"
+    },
+    {
+      "id": "2026-10-21-chart-gap-fill",
+      "kind": "craft",
+      "title": "chart/screen: shade the gap between the two lines and label it with its figure",
+      "detail": "Rich vs poor, early vs late and every 'same money, two paths' chapter is a story about the gap, but our charts draw two glowing lines and leave the viewer to see the distance. Add optional `gap` {text: '{name.key}', at} to `chart` and `screen` (remotion/src/scenes/data.tsx ChartScene, and the screen scene): fill the area between `series` and `series2` up to the drawing head in the good colour at ~25% opacity, and at `gap.at` pop a chip at the right end, midway between the two lines, holding the figure. The figure must be a placeholder from maths (a difference of two results needs the `compare` kind below, or an existing `gains` key). Behind an A/B flag `chart-gap-fill`. Worked when: stills of the 2026-10-21-same-salary-rich-vs-poor chapters show the chip inside the plot, clear of both lines, layout gate passes; then evaluate on % viewed of the chart beats.",
+      "where": "scene",
+      "route": "template",
+      "priority": "high",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-maths-compare",
+      "kind": "craft",
+      "title": "New maths kind `compare`: the difference and ratio of two named results",
+      "detail": "Rich vs poor and early vs late videos need 'the gap' as one figure (₹1.50 Cr vs ₹34.9 L is a ₹1.15 Cr gap). Today the writer can only show both numbers. Add `compare` to renderer/models/maths.py: inputs `a` and `b` ('name.value_key', both computed earlier in the same maths list), figures `diff` (a-b, fm.short), `ratio` (times(a/b)), `pct` (how much bigger in %). Mirror it in the number check's closed-form recompute and add tests (tests only grow). Worked when: number-check passes a script using {gap.diff} and rejects a hard-coded gap.",
+      "where": "template",
+      "route": "template",
+      "priority": "high",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-maths-fee-take",
+      "kind": "craft",
+      "title": "New maths kind `fee_take`: a fee as a share of an amount, over a year and over N years",
+      "detail": "Both how_they_make_money topics added today (credit cards, banks) need 'the shop pays 2% of every swipe: on ₹30,000 a month that is ₹7,200 a year'. Add `fee_take` to renderer/models/maths.py: inputs `amount` (per period), `fee_pct`, `per_year` (12 for monthly), `years`; figures `per_period`, `per_year_total`, `total`, `fee_pct`; series: the cumulative take by year (so it can be a chart). Number check and tests as for every kind. Worked when: Studio can write the swipe-fee chapter with only placeholders.",
+      "where": "template",
+      "route": "template",
+      "priority": "high",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-chart-tip-counter",
+      "kind": "craft",
+      "title": "chart: a live value label riding the leading dot",
+      "detail": "Every top animated money channel counts the number up at the tip of the line as it draws (the 'counter' and 'wipe' techniques together, onlinejournalismblog 2026-06-23). Ours draws a pulsing dot with no number, and the figure only appears in a chip or a later beat. In ChartScene add optional `tip1`/`tip2` = a figure placeholder: a chip beside the head dot that counts up with `counted()` from 0 to the series' final value, landing on the Python-formatted string exactly when drawTo is reached (count-ups only fill the frames before it lands, as data.tsx already does). Flag `chart-tip-counter`. Worked when: the last still of a chart beat shows the formatted final figure at the line's end, inside the frame and the right-edge zone.",
+      "where": "scene",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-chart-focus-grey",
+      "kind": "craft",
+      "title": "chart: the line the story is not about goes neutral grey",
+      "detail": "Video chart guidance: one strong colour for the focus, everything else grey or pale, so the eye knows where to look. Our charts draw red and green at full glow every time, so the viewer has two focal points. Add optional `focus: 1|2` to chart/screen: the other series draws in pal.muted at 60% opacity with no drop-shadow. Script rule for Studio once flagged: set focus on the line the sentence is about. Flag `chart-focus`; evaluate on % viewed.",
+      "where": "scene",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-chart-zoom-out",
+      "kind": "craft",
+      "title": "chart: start zoomed on the first years, then zoom out to the whole curve",
+      "detail": "The classic compounding reveal: the first 5 years look flat and boring, then the axis rescales and the curve shoots up. It is a built-in 'wait for it' at the moment viewers drift. Add optional `zoomAt` (event) to ChartScene: until zoomAt the y and x scales fit the series up to the head; from zoomAt they ease (0.8 s) to the full ticks. Tick labels re-fade at the new scale. Flag `chart-zoom-out`; best used in the level 5 chapter of 2026-10-21-money-levels-india. Worked when: two stills either side of zoomAt show different scales and both pass the layout gate.",
+      "where": "scene",
+      "route": "template",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-chart-takeaway-line",
+      "kind": "craft",
+      "title": "Script rule: a chart's spoken line states the takeaway, and a chart holds at most two lines",
+      "detail": "Studio rule for long_story (renderer/templates/long_story/README.md, 'chart' and 'screen'): the beat's `say` and the screen's `title` state the conclusion ('Starting ten years late costs more than a crore'), not the subject ('Here is the chart'). L-20261019-02 opened its chart beats with 'Here is the whole journey' and 'Look how the red line...'. Build in stages: drawFrom/drawTo and marks tied to events in the spoken line, one new figure per beat. Never more than two series; anything else is a `split` or `prop`.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-feed-demand-urls",
+      "kind": "bug",
+      "title": "Reset feed topics had empty demand URLs",
+      "detail": "The three topics added with the 2026-10-21 reset had `demand.url` \"\". I filled the middle-class one (Dhruv Rathee, https://www.youtube.com/watch?v=D7Y-nJ8uiEA, 10.06M). The other two reference videos are listed in formats.json without URLs too; Studio can cite the reference by title. Research could fill URLs in formats.json examples on its next run.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-21",
+      "status": "open"
     }
   ]
 }
