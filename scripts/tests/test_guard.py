@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 import guard  # noqa: E402
 
 COPIED = ["remotion/src/design/rules.ts", "remotion/src/design/frame.ts", "remotion/src/scenes/stage.tsx",
+          "remotion/src/compositions/StoryVideo.tsx",
           "renderer/timeline/build.py", "renderer/gates.py", "generator/run.py", "generator/numbers.py"]
 
 
