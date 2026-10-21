@@ -161,6 +161,39 @@
       "description": "New maths kinds sip_stepup (yearly step-up vs flat SIP) and loan_prepay (prepay: lower EMI vs shorter loan), each recomputed in closed form by the number check; example examples/short_story_prepay.json.",
       "evidence": "Scout backlog (template/high): feed topics on step-up SIPs and EMI-vs-tenure prepayment could not be told with sip/emi. 5,382 random input sets: figures agree except 8 half-unit rounding edges on prepayments in a loan's last months (the number check rejects those; the writer picks other inputs).",
       "commits": []
+    },
+    {
+      "id": "maths-real-return-tax-bands",
+      "proposal": "maths-real-return-price-rise, maths-income-tax-bands",
+      "area": "template",
+      "status": "adopted",
+      "startedAt": "2026-10-21",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "New maths kinds real_return (growth vs inflation, in today's money), price_rise (a monthly cost rising yearly) and income_tax_bands (tax by bands, optional second income), each recomputed by an independent closed form in the number check; example examples/short_story_tax.json (UK frozen allowance).",
+      "evidence": "Research template/high (19 and 21 Oct): the feed had inflation topics (US CPI energy, UK price cap) and the UK Budget frozen-allowance topic with no computed kind. 1,500 random input sets: maths and number check agree on every figure.",
+      "commits": [
+        "7682962"
+      ]
+    },
+    {
+      "id": "event-gap-warning",
+      "proposal": "event-gap-max-3s",
+      "area": "pacing",
+      "status": "adopted",
+      "startedAt": "2026-10-21",
+      "templates": [
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "description": "number-check warns (estimated timing) and render logs (measured timing) every Shorts beat over 5 s with more than 3 s between named events; a warning, not a failure, plus a writer note in short_story/README.md.",
+      "evidence": "CLAUDE.md: a new picture every 3-5 s in Shorts. Measured on the last 10 Shorts' timelines: 30 beats over 5 s have a 3.2-5.8 s gap with no event (longest 5.8 s, v-20261021-02 'frozen'). Kept as a warning because headline/source scenes animate on their own and may be false positives.",
+      "commits": [
+        "663ae9a"
+      ]
     }
   ]
 }

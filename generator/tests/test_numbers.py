@@ -128,3 +128,46 @@ def test_chapter_timestamps_in_a_long_description_are_not_claims() -> None:
     short = sip_story()
     short_plan = make_plan(description="0:00 Intro. Illustrative only. Not financial advice.")
     assert any("description mentions '0:00'" in n or "description mentions '0'" in n for n in number_check(short, short_plan)[1])
+
+
+@pytest.mark.parametrize("amount, rate, inflation, years", [(10000, 4, 3.8, 10), (500000, 7, 6, 15), (2500, 2, 5, 3), (1000, 5, 0, 1)])
+def test_real_return_closed_form_matches_the_story_maths(amount: int, rate: float, inflation: float, years: int) -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "real_return", "amount": amount, "rate_pct": rate,
+                               "inflation_pct": inflation, "years": years}])
+    script["beats"][0]["say"] = "What does {sip_amount} really become?"
+    script["beats"][0]["params"]["lines"][0]["text"] = "{sip_real_final}"
+    passed, notes = number_check(script)
+    assert passed, notes
+
+
+@pytest.mark.parametrize("monthly, inflation, years", [(150, 6, 5), (12000, 4.5, 10), (99, 0, 3), (2000, 20.4, 1)])
+def test_price_rise_closed_form_matches_the_story_maths(monthly: int, inflation: float, years: int) -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "price_rise", "monthly": monthly, "inflation_pct": inflation, "years": years}])
+    script["beats"][0]["params"]["lines"][0]["text"] = "{sip_extra_total}"
+    passed, notes = number_check(script)
+    assert passed, notes
+
+
+@pytest.mark.parametrize("income, income2, allowance, bands", [
+    (48000, 52000, 12570, [[50270, 20], [125140, 40], [None, 45]]),
+    (30000, None, 12570, [[50270, 20], [125140, 40], [None, 45]]),
+    (130000, 150000, 12570, [[50270, 20], [125140, 40], [None, 45]]),
+    (1500000, 1800000, 400000, [[800000, 5], [1200000, 10], [1600000, 15], [2000000, 20], [2400000, 25], [None, 30]]),
+])
+def test_income_tax_bands_closed_form_matches_the_story_maths(income: int, income2: int | None, allowance: int, bands: list) -> None:
+    m = {"name": "sip", "kind": "income_tax_bands", "income": income, "allowance": allowance, "bands": bands}
+    if income2:
+        m["income2"] = income2
+    script = sip_story(maths=[m])
+    script["beats"][0]["say"] = "What is the tax on {sip_income}?"
+    script["beats"][0]["params"]["lines"][0]["text"] = "{sip_tax}"
+    passed, notes = number_check(script)
+    assert passed, notes
+
+
+def test_a_wrong_tax_figure_fails_the_number_check(monkeypatch: pytest.MonkeyPatch) -> None:
+    from renderer.models import maths
+    script = example("short_story_tax")
+    monkeypatch.setattr(maths, "_tax", lambda income, bands: (1.0, 20.0))
+    passed, notes = number_check(script)
+    assert not passed and any("tax_tax" in n for n in notes)

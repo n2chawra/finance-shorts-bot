@@ -27,7 +27,7 @@ from pathlib import Path
 
 from renderer import remotion
 from renderer.engine.formatting import CURRENCIES
-from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script
+from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
 from . import experiments, history, topics, variety
 from .numbers import number_check
@@ -205,6 +205,10 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
     d = _dir(vid, root)
     script, plan = _read(d / "script.json"), _read(d / "plan.json")
     passed, notes = number_check(script, plan, topics.source_topic(plan, root))
+    if passed:   # pacing warnings never fail the check, but the writer sees them and they are logged
+        for w in check_script(script).get("warnings", []):
+            print(f"WARN: {w}")
+            notes.append(f"warning: {w}")
     log_step(vid, "number_check", passed, notes, root)
     return [] if passed else notes
 
@@ -259,7 +263,10 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     if audio and not (-1.6 <= audio["peak_db"] <= -0.4 and -21 <= audio["mean_db"] <= -15):
         problems.append(f"audio levels off target: peak {audio['peak_db']} dB, mean {audio['mean_db']} dB")
     ok_note = f"{report['duration_sec']} s, {report['style']['palette']}/{report['style']['genre']}" + (f", peak {audio['peak_db']} dB, mean {audio['mean_db']} dB" if audio else " (preview only)")
-    log_step(vid, "render", not problems, problems or [ok_note], root, started)
+    warnings = []
+    if plan_format(script) == "short" and (d / "timeline.json").exists():   # measured on the real voice timing
+        warnings = [f"warning: {w}" for w in event_gaps(_read(d / "timeline.json")["beats"])]
+    log_step(vid, "render", not problems, (problems or [ok_note]) + warnings, root, started)
     return problems
 
 

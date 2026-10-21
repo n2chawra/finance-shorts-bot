@@ -1,0 +1,21 @@
+{
+  "agent": "improver",
+  "day": "2026-10-21",
+  "startedAt": "2026-10-21T00:48:27Z",
+  "finishedAt": "2026-10-21T00:57:01Z",
+  "summary": "Added three maths kinds (real return after inflation, a rising monthly price, income tax by bands) with independent number checks and a checked UK tax example Short. Shorts beats over 5 s with more than 3 s and no event now get a pacing warning in the number check.",
+  "decision": "acted",
+  "why": "Both maths proposals were research template/high and had waited two nights; the UK Budget (28 Oct) frozen-allowance topic in the feed had no way to compute a tax figure. The pacing rule is in CLAUDE.md, and 30 beats in the last 10 Shorts break it. Both experiments still have no data (0 of 8 Shorts and 0 of 4 long videos per arm), so nothing to close.",
+  "findings": [
+    {"title": "7 videos with 48 h data", "detail": "Both running experiments wait: hook-voice-matches-frame 0 of 8 Shorts per arm (about 8 more days), quiet-bed 0 of 4 long videos per arm."},
+    {"title": "No recurring failures", "detail": "The evaluator lists no QA or fact reason repeated twice in 3 days."},
+    {"title": "Shorts beats stand still for 3–6 s", "detail": "30 beats over 5 s in the last 10 Shorts have a gap of 3.2–5.8 s with no event, often where a long figure is spoken. Some may be false positives where a scene animates by itself (headline, source)."},
+    {"title": "Early pattern (n = 3–5)", "detail": "Palette ember 1.45× median 48 h views; 19:00 IST uploads 0.66×; 90–99 BPM 0.32×. Too few videos to act on."}
+  ],
+  "changes": [
+    {"title": "Maths kinds real_return, price_rise, income_tax_bands", "detail": "renderer/models/maths.py and closed forms in generator/numbers.py; documented in the long_story README; examples/short_story_tax.json. 1,500 random input sets agree.", "branch": "agent/improver/2026-10-21", "experiment": "maths-real-return-tax-bands"},
+    {"title": "Pacing warning for long Shorts beats", "detail": "number-check prints WARN for a beat over 5 s with more than 3 s between events; render logs the measured gaps. Writer note in short_story/README.md. Warning only, never a failure.", "branch": "agent/improver/2026-10-21", "experiment": "event-gap-warning"}
+  ],
+  "nextCheck": "2026-10-22",
+  "links": [{"label": "Journal", "url": "improvement/journal.md"}]
+}

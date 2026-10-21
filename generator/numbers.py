@@ -126,6 +126,25 @@ def loan_prepay(amount: float, annual_pct: float, months: int, prepay: float, pr
             "interest_reduce_tenure": by_tenure, "months_reduce_tenure": tenure}
 
 
+def price_rise_extra(monthly: float, inflation_pct: float, years: int) -> float:
+    """Extra paid over `years` when a monthly cost rises once a year (year 1 already at the raised
+    price), against today's price: 12m(Σ(1 + i)^y - n), the sum a geometric series."""
+    i = inflation_pct/100
+    if i == 0:
+        return 0.0
+    return round(12*monthly*((1 + i)*((1 + i)**years - 1)/i - years), 6)
+
+
+def banded_tax(income: float, allowance: float, bands: list) -> tuple[float, float]:
+    """(tax, marginal %) as a sum of rate steps: each threshold adds (rate - rate below) on all
+    income above it. A different route from the band-by-band sum in renderer/models/maths.py."""
+    thresholds = [allowance] + [b[0] for b in bands[:-1]]
+    rates = [0.0] + [b[1] for b in bands]
+    tax = sum((rates[k + 1] - rates[k])/100*max(0.0, income - t) for k, t in enumerate(thresholds))
+    marginal = next((rates[k + 1] for k in reversed(range(len(thresholds))) if income >= thresholds[k]), 0.0)
+    return round(tax, 6), marginal
+
+
 def _long_story(s: dict) -> dict[str, str]:
     """The figures of a story script (long or short): its `maths` from the closed forms above, and
     its sourced facts exactly as the feed published them."""
@@ -168,6 +187,32 @@ def _long_story(s: dict) -> dict[str, str]:
                     f"{n}_months_saved": str(months - c["months_reduce_tenure"]),
                     f"{n}_saved_reduce_emi": fm.short(c["interest_base"] - c["interest_reduce_emi"]),
                     f"{n}_saved_reduce_tenure": fm.short(c["interest_base"] - c["interest_reduce_tenure"])}
+        elif kind == "real_return":
+            final = lumpsum_fv(m["amount"], m["rate_pct"], m["years"])
+            real, cash = real_value(final, m["inflation_pct"], m["years"]), real_value(m["amount"], m["inflation_pct"], m["years"])
+            out |= {f"{n}_final": fm.short(final), f"{n}_real_final": fm.short(real), f"{n}_real_gains": fm.short(real - m["amount"]),
+                    f"{n}_inflation_cost": fm.short(final - real), f"{n}_cash_real": fm.short(cash),
+                    f"{n}_cash_lost": fm.short(m["amount"] - cash),
+                    f"{n}_real_rate": f"{(cagr(m['amount'], real, m['years']) if m['years'] else 0.0):.1f}%"}
+        elif kind == "price_rise":
+            new = lumpsum_fv(m["monthly"], m["inflation_pct"], m["years"])
+            extra = price_rise_extra(m["monthly"], m["inflation_pct"], m["years"])
+            out |= {f"{n}_new_monthly": fm.full(new), f"{n}_extra_month": fm.full(new - m["monthly"]),
+                    f"{n}_extra_year": fm.full(12*(new - m["monthly"])), f"{n}_extra_total": fm.short(extra),
+                    f"{n}_total_cost": fm.short(12*m["monthly"]*m["years"] + extra), f"{n}_ratio": times(new/m["monthly"])}
+        elif kind == "income_tax_bands":
+            for sfx, income in (("", m["income"]), ("2", m.get("income2"))):
+                if income is None:
+                    continue
+                tax, marginal = banded_tax(income, m["allowance"], m["bands"])
+                out |= {f"{n}_tax{sfx}": fm.full(tax), f"{n}_take_home{sfx}": fm.full(income - tax),
+                        f"{n}_take_home_month{sfx}": fm.full((income - tax)/12), f"{n}_marginal{sfx}": f"{marginal:g}%",
+                        f"{n}_effective{sfx}": f"{tax/income*100:.1f}%"}
+            if "income2" in m:
+                (t1, _), (t2, _) = banded_tax(m["income"], m["allowance"], m["bands"]), banded_tax(m["income2"], m["allowance"], m["bands"])
+                rise = m["income2"] - m["income"]
+                out |= {f"{n}_extra_tax": fm.full(t2 - t1), f"{n}_kept": fm.full(rise - (t2 - t1)),
+                        f"{n}_kept_pct": f"{(rise - (t2 - t1))/rise*100:.0f}%"}
         elif kind == "lumpsum":
             final = lumpsum_fv(m["amount"], m["rate_pct"], m["years"])
             out |= {f"{n}_final": fm.short(final), f"{n}_final_long": fm.long(final), f"{n}_gains": fm.short(final - m["amount"]),

@@ -14,6 +14,10 @@ Example: [`examples/short_story.json`](../../../examples/short_story.json). Ther
 - **The first second is the hook.** The first beat's opening lines (`"at": "start"`) are on screen
   from frame 0, because that frame is what the feed shows: a big figure or a sharp question.
 - **One idea.** A Short makes one point with one calculation. Cut every beat that doesn't move it.
+- **A new picture every 3 s.** A beat longer than 5 s needs a named event at least every 3 s (a
+  line appearing, a count-up, a pose, a camera punch), or split it in two. Spoken figures are long
+  ("two thousand eight hundred fifty-four pounds"), so the gap is usually around a number.
+  `number-check` prints a `WARN:` line for each beat that misses it; fix those before rendering.
 - **No captions on screen**: the voice carries the words, the picture carries the figures.
 - **Vertical layouts**: scenes stack their content for the tall frame. Keep `actors` to one or two
   per `stage` beat, near the middle (`x` 0.3–0.7).

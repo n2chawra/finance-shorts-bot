@@ -210,6 +210,19 @@ def test_number_check_failure_is_logged(root: Path) -> None:
     assert log[-1]["agent"] == "number_check" and log[-1]["status"] == "failed"
 
 
+def test_a_long_short_beat_with_no_event_warns_but_passes(root: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    plan = make_plan()
+    script = script_for(plan)
+    script["beats"][0]["say"] = ("What does {sip_amount} a month become if you leave it alone, never touch it, "
+                                 "never stop it, and simply let the years do the heavy lifting for you?")
+    put(root, "plan.json", plan)
+    put(root, "script.json", script)
+    assert run.run_number_check(VID, root) == []
+    assert "WARN: beat 'hook'" in capsys.readouterr().out
+    log = json.loads((root / "videos" / VID / "run.json").read_text(encoding="utf-8"))
+    assert log[-1]["status"] != "failed" and any(n.startswith("warning: beat 'hook'") for n in log[-1]["notes"])
+
+
 def test_render_rejects_length_outside_settings(root: Path) -> None:
     settings(root, lengthMinSec=50, lengthMaxSec=60)
     plan = make_plan()
