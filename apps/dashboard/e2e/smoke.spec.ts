@@ -123,3 +123,15 @@ test("calendar plans long videos on their own days and time", async ({ page }) =
   }
   expect(text).toContain("20:07");
 });
+
+test("template cards keep a readable text column", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/templates");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Templates/, { timeout: 30_000 });
+  // the long story's 16:9 player once left its description a ~150 px column on phones
+  for (const name of ["Short story", "Long story"]) {
+    const column = page.getByRole("heading", { level: 2, name }).locator("xpath=ancestor::div[contains(@class,'flex-1')][1]");
+    const box = await column.boundingBox();
+    expect(box?.width ?? 0, `${name} text column`).toBeGreaterThanOrEqual(220);
+  }
+});

@@ -31,9 +31,9 @@ export default function TemplatesPage() {
             const long = t.id.startsWith("long");
             return (
               <Card key={t.id} className={t.enabled ? "" : "opacity-75"}>
-                <div className="flex gap-4">
+                <div className={`flex gap-4 ${long ? "flex-col sm:flex-row" : ""}`}>
                   <video controls preload="none" poster={t.sampleThumbnailUrl || undefined} src={t.sampleVideoUrl || undefined} aria-label={`Sample video for ${t.name}`}
-                    className={`${long ? "aspect-video w-40 md:w-48" : "aspect-[9/16] w-24 md:w-28"} shrink-0 rounded-lg border border-ring bg-black transition-[filter] ${t.enabled ? "" : "grayscale"}`} />
+                    className={`${long ? "aspect-video w-full sm:w-40 md:w-48" : "aspect-[9/16] w-24 md:w-28"} shrink-0 rounded-lg border border-ring bg-black transition-[filter] ${t.enabled ? "" : "grayscale"}`} />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
