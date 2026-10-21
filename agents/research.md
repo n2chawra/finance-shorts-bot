@@ -6,7 +6,7 @@ sound) and what new Claude capabilities could improve the pipeline, then write i
 and concrete proposals. **You never change code.** The improver agent decides what to act on.
 
 Keep it lean: at most **12 web searches** and **15 page reads** per night. The craft pass and the
-money news scan happen every night, even when nothing else is new: a night that ends with no
+demand scan happen every night, even when nothing else is new: a night that ends with no
 topic and no proposal must say in the report what you looked at and why none of it was worth one.
 
 ## 0. Start
@@ -53,7 +53,7 @@ excited, conversational); speed (estimate words per minute from the transcript a
 pauses before reveals; how loud the voice sits against the music; how the script is written for
 the ear (sentence length, questions, "you").
 Compare with our videos (`render.json` → `voice`: voice name, speed, each line; every video is
-voiced, with no on-screen captions by the owner's choice). Proposals must fit
+voiced, with big word-by-word captions since 2026-10-21). Proposals must fit
 what we can build: the offline Kokoro voices in `renderer/engine/voice.py` (in use: hf_alpha,
 af_heart, af_bella, am_michael, am_fenrir, am_puck; narrators and cast voices in
 `renderer/timeline/build.py`; the owner rejected the other Indian voices by ear; British
@@ -68,44 +68,43 @@ accent mix is a fair proposal; say what evidence supports it.
 | Tue | Music, sound design and voiceover (voice type, pace, script style) |
 | Wed | Pacing, motion and animation style |
 | Thu | Titles, descriptions, hashtags, thumbnails/first frame |
-| Fri | Personal-finance trends: what people search and ask about this week (worldwide, US, UK, India) |
+| Fri | Demand: the most-watched finance Shorts and long videos this month (India, US), new formats |
 | Sat | YouTube Shorts policy and algorithm changes (monetisation, "inauthentic content", AI labels) |
 | Sun | Competitor teardown: 2 channels in the same niche, what they do that we don't |
 
-## 2b. Every night: money news scan (feeds the next morning's videos)
-Check what happened in personal finance in the last 2 days, worldwide first: central bank
-decisions (Fed, Bank of England, ECB, RBI), inflation releases (US CPI, UK CPI, euro area HICP,
-India CPI), household debt and credit card data, big rule changes for savers and borrowers (SEC,
-CFPB, FCA, SEBI), budgets and tax changes, big bank or app changes. India stays in the mix (AMFI
-monthly data, RBI, SEBI, the Budget) for about one video in five. Prefer the official source (the
-list in `channel/profile.md`); a news article is fine to find a story, but each fact needs a URL
-where the exact figure appears, and its `currency` is the currency it was published in.
-Every story worth a video goes into the topic feed (section 4) the same night: the 04:07 video run
-reads it. Skip rumours, market predictions and single stocks.
+## 2b. Every night: demand scan (feeds the next morning's videos)
+**Owner reset, 2026-10-21:** "We have to make videos that people want to see, not what we want to
+create. Demand and supply." Until that day this section was a money *news* scan, and the channel
+became a news channel nobody watched (17 videos, 1-60 views, 20-35% viewed). The topic feed is now
+built from **demand**: what people already watch in the millions in personal finance, in India and
+the US. News is not a source of ideas any more.
 
-**Trends** (every night, a few searches): what English-speaking viewers are searching and talking
-about with money right now — Google Trends (worldwide and US, finance), what's trending in finance
-Shorts (`market.json`), viral money conversations, sale-season spending, a new app, rule or scheme
-everyone is asking about. A money trend that people are talking about *this week* goes into the feed as
-`"kind": "trend", "priority": "trending"` with a short `expires` (2–4 days): the next video run
-must take it, and it jumps the upload queue. Use `trending` only for real, current attention you
-can show with a source; an evergreen idea is `high` or `normal`.
+1. **Read the demand.** From `market.json` and a few YouTube searches (Shorts and long videos, India
+   and US English; e.g. "rich vs poor", "how billionaires", "the ___ trap", "how ___ makes money",
+   "salary", "retire at", "middle class"), list the finance videos with the most views in the last
+   1-4 weeks and the evergreen ones with millions. Note views, age, title, channel and the format.
+2. **Update `improvement/research/formats.json`:** add a new example (title, views, url) to a format
+   when you find a stronger one; add a new format when 2+ videos with 1M+ views share a shape we
+   don't have (id, format, markets, name, emotion, hook, beats, titles, examples). Every format id
+   must be a story in `generator/variety.py` `STORIES`; if it isn't, propose adding it (route
+   `adopt`) instead of writing the format. Remove nothing; the improver retires formats our own
+   numbers reject.
+3. **Write 6-10 topics into the feed** (section 4), half India (`INR`) and half US (`USD`), each
+   tagged with its `format` (the story id), a concrete everyday situation inside it ("rich vs poor:
+   a ₹20,000 raise", "the 0% EMI phone", "what a $100K salary leaves you in New York"), the
+   reference video (`demand`: title, views, url), the hook line, and `maths` inputs that make the
+   numbers real. Priority `high` for formats whose reference has 5M+ views, else `normal`.
+4. **News only when it is a trend people are already talking about** (a viral scam, a tax change
+   everyone is angry about, a sale everyone is buying in), told in one of the formats, never as a
+   bulletin: `"kind": "trend", "priority": "trending"`, `expires` in 2-4 days, with the source URLs.
+   Central bank decisions, inflation releases and rate moves are not video ideas on their own.
+5. **Learn from our own numbers:** each night, compare our 3 best and 3 worst Shorts by
+   `avgViewPct` with their format's reference video (first 2 seconds, number of characters, beat
+   count, length, title) and write one concrete change as a proposal.
 
-**Money calendar** (`improvement/research/calendar.json`, keep it rolling 60 days ahead): dated
-moments viewers care about — the calendar in `channel/profile.md`: Fed, Bank of England, ECB and RBI
-meeting dates (each publishes them), US CPI release days, US tax day and the UK tax year, Black
-Friday and holiday spending, New Year resolutions, back-to-school costs, and for India stories the
-Budget, ITR deadline and Diwali spending. Each entry:
-`{"date", "event", "ideas": ["…"], "prepare_by"}`. When a moment is 3–10 days away, put its best
-idea in the feed as `seasonal` (`high`), so the video is ready before the day, not after.
-
-**Announcement days** (an official number comes out on a known date: a Fed, Bank of England, ECB
-or RBI decision, a budget, an inflation release): the night before, write `improvement/events/<date>-<slug>.json` for the event-day
-run (`generator/prompts/event_day.md` has the format): where and when the source publishes, the
-current figure as a sourced fact (`before`), storyboard notes for each outcome (`cut`, `hold`,
-`hike` or the Budget's likely changes), and the `maths` that turns the outcome into the viewer's
-money, in that country's currency. In your report, remind the owner that the event-day run needs a one-off routine at about
-10:45 IST on that date (raise an `owner` notification a week ahead).
+The money calendar (`improvement/research/calendar.json`) stays for seasonal spending moments
+(Diwali and Black Friday sales, tax day, New Year resolutions), each told in a format. Announcement
+days and event-day runs are retired.
 
 ## 3. Every night: Claude updates
 Check the Claude Code changelog (github.com/anthropics/claude-code, CHANGELOG.md), Anthropic's
@@ -120,25 +119,25 @@ Decide for each finding what it needs. That decision is the most useful thing yo
 
 | Route | When | Where it goes |
 |---|---|---|
-| `video` | A topic viewers want now (news, a trend, a seasonal moment) or a strong evergreen idea that an existing template can tell | `improvement/research/topics.json` (below) |
+| `video` | A topic in a format with proven demand (`formats.json`), or a trend people are already talking about, told in a format | `improvement/research/topics.json` (below) |
 | `adopt` | Already proven or required: a platform/legal requirement (YouTube policy, SEBI rule), a clear bug or broken behaviour, or a practice with strong, consistent evidence from 3+ independent sources that is low-risk and easy to undo | `proposals.json`, the improver applies it directly |
 | `experiment` | Plausible but uncertain: it could help or hurt views | `proposals.json`, the improver A/B tests it |
 | `template` | A story or format that keeps coming up and no template can tell (it needs a new calculation or layout), e.g. a tax split, an EMI comparison | `proposals.json`, the improver builds it as template work |
 | `owner` | Only the owner can do it (model, schedule, money, accounts) | your notifications file, with exact steps |
 
-Priority, for every route: `breaking` (big news everyone in the niche will talk about this week:
-an RBI rate change, a Budget or tax change, a new SEBI rule for retail investors, a record figure
-from AMFI/RBI; at most one or two a week), `trending` (a money topic people are searching and
-talking about right now, with a source that shows it; expires in 2–4 days), `high` (clearly timely
-or clearly valuable), `normal`. Don't inflate: `breaking` and `trending` topics jump ahead of
-everything else in the next run and to the front of the upload queue.
+Priority, for every route: `trending` (a money moment people are talking about right now, with a
+source that shows it, told in a format; expires in 2–4 days; at most a few a week), `high` (a
+format whose reference video has 5M+ views), `normal`. `breaking` is not used any more. Nothing is
+forced on a video: `trending` topics are offered first and jump the upload queue when taken.
 
 **Topic feed** `improvement/research/topics.json` (`{"topics": [...]}`; add to it, never delete
 entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is no longer right):
 ```json
-{"id": "<DAY>-short-kebab", "title": "what the video is about, one line", "category": "sip|tax|...",
- "kind": "news|trend|seasonal|evergreen", "priority": "breaking|trending|high|normal",
- "stories": ["decision_duel", "how_it_works"],
+{"id": "<DAY>-short-kebab", "title": "what the video is about, one line", "category": "salary|car|tax|...",
+ "kind": "evergreen|trend|seasonal", "priority": "trending|high|normal",
+ "stories": ["rich_vs_poor"], "currency": "INR|USD",
+ "demand": {"title": "reference video", "views": 8800000, "url": "https://..."},
+ "hook": "the first spoken line",
  "templates": ["any"],
  "angle": "the viewer's question it answers", "why_now": "why this week",
  "facts": [{"label": "what the figure is, no digits", "value": 4.25, "unit": "money|money_thousand|money_million|money_billion|money_trillion|percent|count|count_thousand|count_million|count_billion|rupees|rupees_lakh|rupees_crore|count_lakh|count_crore",
@@ -150,13 +149,10 @@ entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is n
 - `facts` are figures reported by the source, copied exactly (value and unit as published). Only
   news topics need them, and a `headline` beat shows them with their source; 1–3 per topic, the headline one first.
   A fact you can't tie to a URL showing that exact figure stays out.
-- `expires`: news about 10–14 days after `found`; `trending` topics 2–4 days; other trends 3–4
-  weeks; evergreen 90 days.
-- `stories`: what kind of story the topic tells (`generator/variety.py` `STORIES`). The planner may
-  not tell the same story twice in 3 videos, and "what $X becomes in N years" stories
-  (`future_value`, `early_vs_late`, `cost_of_habit`) are capped at a quarter of the last 20 — 8 of 11 Shorts up
-  to 2026-10-17 told that one story. So **most of your ideas should be other stories**: a decision
-  duel, a myth, a trap, how something works, a rule change, a case study.
+- `expires`: `trending` topics 2–4 days; seasonal moments the day after; evergreen 90 days.
+- `stories`: the format the topic is told in, one id from `improvement/research/formats.json` (a
+  story in `generator/variety.py` `STORIES`). Spread ideas across formats; the planner may not tell
+  the same format twice in a row.
 - `templates`: always `["any"]`: every video is a storyboard from the story templates. If a story
   needs a recipe or a calculation the templates don't have (`renderer/templates/short_story/README.md`),
   add a `template` proposal for it as well.
@@ -181,7 +177,7 @@ Upsert `improvement/research/proposals.json` entries:
  "title": "…", "change": "what exactly to change, specific enough to implement",
  "evidence": ["https://…"], "expectedEffect": "…", "confidence": "low|medium|high", "effort": "S|M|L",
  "risk": "…", "metric": "views48h | views7d | avgViewPct | qa_failures", "status": "new",
- "route": "adopt|experiment|template", "priority": "breaking|high|normal"}
+ "route": "adopt|experiment|template", "priority": "high|normal"}
 ```
 Don't re-propose something whose status is testing, kept, reverted or rejected unless you have new
 evidence (then add it to `evidence` and explain in the report). Update `seen.json`.

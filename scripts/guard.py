@@ -106,10 +106,17 @@ def invariants(head: str) -> list[str]:
         out.append("the Shorts frame's bottomSafe must stay at least 120 px")
     timeline = show(head, "renderer/timeline/build.py") or ""
     if 'DISCLAIMER = "Illustrative only. Not financial advice."' not in timeline or "must be the end card" not in timeline:
-        out.append("renderer/timeline/build.py must keep the disclaimer and require every video to end on the end card")
+        out.append("renderer/timeline/build.py must keep the disclaimer and require long videos to end on the end card")
     stage = show(head, "remotion/src/scenes/stage.tsx") or ""
     if "tl.disclaimer" not in stage:
         out.append("remotion/src/scenes/stage.tsx: the end card must still draw the disclaimer")
+    # a Short has no end card since 2026-10-21: the disclaimer is a line over its last moments
+    story = show(head, "remotion/src/compositions/StoryVideo.tsx") or ""
+    if "<DisclaimerLine" not in story or "{tl.disclaimer}" not in story:
+        out.append("remotion/src/compositions/StoryVideo.tsx must still draw the disclaimer line on a video without an end card")
+    run_py = show(head, "generator/run.py") or ""
+    if 'description must include the disclaimer' not in run_py:
+        out.append("generator/run.py check-plan must still require the disclaimer in every description")
     gates = show(head, "renderer/gates.py") or ""
     for name, floor in (("LIVELY_MEDIAN", 1.2), ("STILL", 0.5)):
         m = re.search(rf"^{name} = ([\d.]+)", gates, re.M)

@@ -1,6 +1,6 @@
 # short_story — Shorts on Remotion
 
-A vertical Short (1080×1920, 30–45 s) told in beats by the recurring cast, drawn by Remotion.
+A vertical Short (1080×1920, 20–35 s) told in beats by the recurring cast, drawn by Remotion.
 Same pipeline, scenes, cast, numbers and rules as [`long_story`](../long_story/README.md): read
 that README for the script fields, `maths` kinds, beats, events, acting and the scene table.
 Example: [`examples/short_story.json`](../../../examples/short_story.json). There is no
@@ -9,8 +9,8 @@ Example: [`examples/short_story.json`](../../../examples/short_story.json). Ther
 ## What is different in a Short
 
 - `"format": "short"`, `"template": "short_story"`.
-- **Pace:** tempo 1.3 (voice included), about **185 spoken words a minute**. 30–45 s is
-  **95–135 words in 6–9 beats**. No `chapter` beats.
+- **Pace:** tempo 1.4 (voice included), about **200 spoken words a minute**. 20–35 s is
+  **65–115 words in 7–11 short beats**. No `chapter` beats.
 - **The first second is the hook.** The first beat's opening lines (`"at": "start"`) are on screen
   from frame 0, because that frame is what the feed shows: a big figure or a sharp question.
 - **One idea.** A Short makes one point with one calculation. Cut every beat that doesn't move it.
@@ -18,11 +18,14 @@ Example: [`examples/short_story.json`](../../../examples/short_story.json). Ther
   line appearing, a count-up, a pose, a camera punch), or split it in two. Spoken figures are long
   ("two thousand eight hundred fifty-four pounds"), so the gap is usually around a number.
   `number-check` prints a `WARN:` line for each beat that misses it; fix those before rendering.
-- **No captions on screen**: the voice carries the words, the picture carries the figures.
+- **Big captions on screen** (owner, 2026-10-21): every spoken word is drawn big over the picture,
+  a little below the middle, automatically. Keep the area around 60–75% of the height free of other
+  text; put scene labels and figures in the top half.
 - **Vertical layouts**: scenes stack their content for the tall frame. Keep `actors` to one or two
   per `stage` beat, near the middle (`x` 0.3–0.7).
-- **Loop:** let the last line lead back into the first, so a replay feels continuous.
-- End with the `end` beat (it carries the disclaimer).
+- **Loop:** the last line leads back into the first, so a replay feels continuous.
+- **No `end` beat:** the disclaimer shows as a small line over the last moments and is in the
+  description (owner, 2026-10-21). An end card stops the loop.
 
 ## The visual kit in a Short
 
@@ -56,14 +59,21 @@ scenes work vertically: `bill` (a small payment turning into a big bill) is the 
 a cost; `road` for anything that takes years; `fork` instead of side-by-side bars. Retired:
 `monster`. Avoid: `towers`.
 
-## Story recipes
+## Story recipes: the formats people watch (owner reset, 2026-10-21)
 
-Pick the recipe that fits the plan's `story`; never reuse the beat order of the last few Shorts.
+The plan's `story` is a format from `improvement/research/formats.json` (hook, beats, reference
+videos). Tell it as a **skit**: the cast talk to each other, react, and the numbers land on things
+in a place. Most lines belong to characters (`speaker`), the narrator only links.
 
-| recipe | beats |
+| format (`story`) | beats |
 |---|---|
-| **Trap alert** | the shocking cost (`reveal`) → how the trap works (`statement`/`monster`) → what it does in a year (`split`) → how long it lasts (`calendar`) → the way out (`towers`) → a cast line → `end` |
-| **Two lives** | two people, one choice (`stage`, two actors) → the gap after a year (`split`) → the gap after N years (`chart` or `towers`) → who wins and why (`bignumber`) → `end` |
-| **Myth bust** | the myth, said by a character (`stage`) → "actually…" (`reveal`) → the numbers (`split`/`chart`) → the rule of thumb (`checklist` with one or two items) → `end` |
-| **The leak** | a small daily habit (`stage` with a prop) → its monthly cost (`bignumber`) → the yearly drain (`monster`/`snowball`) → what that money could become (`towers`) → `end` |
-| **Quiz** | a question with the stakes (`bignumber`) → two or three options (`checklist`) → the answer lands on a word (`reveal`) → why (`split`) → `end` |
+| **rich_vs_poor** | `stage`, two actors, the same moment (Rohan the poor move, Sharma or Priya the rich move), the hook line is the conflict → the poor move and its cost (`prop`/`bill` in a place, figure computed) → the rich move and what it becomes (`prop`/`road`) → the gap after N years (`fork`) → punchline line that loops to the hook |
+| **secret_of_rich** | `stage`: the rich mentor (Sharma) says the secret in one line, Rohan: "Wait, what?" → the normal way and its cost (`bill` or `prop`) → the rich way step by step (`kinetic` box over an office or city world, or `equation`), figures computed → the catch (who it works for) → loop line |
+| **trap_alert** | the shock number in a place (`bill` is ideal) → how the trap looks friendly (`prop` `tag` or `receipt`, a salesman character smiling) → what it really takes (`road` for years, `prop` `bucket`) → who it's built for → the one move that beats it (`fork`) → loop line |
+| **how_they_make_money** | the everyday thing in its world (`prop` in `shop`, `street` with a bank, `city`) → what you pay → where their money really comes from, computed (`equation`, `screen` with `pen`) → the surprise, a character's outrage → loop line |
+| **salary_breakdown** | the salary on a `bill` phone screen → each cost subtracted (`bill` lines, or a `kinetic` box per cost over the city) → what's left (`reveal`, once) → what the left-over becomes invested (`road`) → loop line "and that's ₹X a month" |
+| **which_one_are_you** | "There are 5 money levels" → one short beat per level, a character acting it, one computed figure each (`stage` with `chip`, `prop`) → where most people are stuck → the one move up → "which one are you?" |
+| **guess_the_number** | the question with stakes (a `stage` with three characters guessing) → the working, step by step (`equation`, `kinetic`) → the answer lands in the last seconds (`reveal`) → loop |
+| **cost_of_habit** | the habit in its place (`prop` in a `kitchen`/`shop`) → per day → per year → invested instead for N years (`road`) → the small change (`fork`) → loop |
+
+Any of these may use one `reveal`/`bignumber` at most. Example: `examples/short_story.json`.

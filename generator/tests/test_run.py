@@ -149,6 +149,7 @@ def test_disabled_template_is_not_offered(root: Path) -> None:
 # ---------------- steps ----------------
 
 def test_full_run_ships_manifest_and_history(root: Path) -> None:
+    settings(root, lengthMinSec=30, lengthMaxSec=45)   # the sample script runs 36 s
     plan = make_plan()
     put(root, "plan.json", plan)
     put(root, "script.json", script_for(plan))
@@ -236,7 +237,7 @@ def test_long_story_renders_with_remotion_and_fails_a_frozen_picture(root: Path,
 
     def fake_story(script: dict, out: Path, preview: bool = False) -> dict:
         seen["template"] = script["template"]
-        return {"renderer": "remotion", "duration_sec": 240, "layout_problems": [], "style": {"palette": "night", "genre": "lofi"},
+        return {"renderer": "remotion", "duration_sec": 540, "layout_problems": [], "style": {"palette": "night", "genre": "lofi"},
                 "voice": {"name": "am_michael", "lines": [{"scene": "a", "fill": 0.8, "window": 5, "seconds": 4}]},
                 "audio": {"peak_db": -1.0, "mean_db": -17.0},
                 "liveliness_problems": ["12 s with nothing moving (limit 4 s)"]}
@@ -327,7 +328,7 @@ def test_a_trending_topic_earns_one_extra_video(root: Path, today: None) -> None
          "templates": ["any"], "found": "2026-10-13", "expires": "2026-10-15", "status": "new"}]}), encoding="utf-8")
     s = run.state(root)
     assert s["mode"] == "video" and "trending topic is waiting" in s["reason"]
-    assert s["topic_feed"]["required"] == "hot"
+    assert s["topic_feed"]["urgent"] == "hot" and s["topic_feed"]["required"] is None
     history.append(entry(3, days_ago=0.05), root)
     assert run.state(root)["mode"] == "idle"                     # only one extra a day
 

@@ -36,21 +36,32 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 - **No digits and no currency sign ($, £, €, ₹) in any text or spoken line.** Placeholders only;
   code reads them aloud ("$1.2M" → "1.2 million dollars", "₹12.4 L" → "12.4 lakh rupees"). The
   build rejects a typed number.
-- **The voice tells the story, the screen shows the figures.** Talk like a person: short sentences,
-  everyday words, one idea each. Don't put the spoken line on screen.
-- **The first beat shows the topic and the shock together** (owner, 2026-10-19): within five
-  seconds a viewer knows what the video is about and why it matters to them, in a place with
-  something moving (`bill`, `source`, a `prop` in a `world`), never a figure on a plain background.
-  It hooks in the plan's hook style, and its opening lines are on screen from the first frame:
-  - `question`: ask something the viewer wants answered.
-  - `shock_number`: lead with a computed figure.
-  - `myth`: state a common belief the video will test (a character can say it).
-  - `challenge`: dare the viewer to guess or do something.
-- **Length:** 30–45 s is about 95–135 spoken words in 6–9 beats (the README has the pace).
-- The `end` beat comes last; its `cta` carries the plan's `cta`. The disclaimer is on the end card;
-  don't say it.
-- Write for a global audience in plain international English: everyday words a newcomer anywhere
-  understands, no slang one country owns. Products by what they are ("an index fund", "a savings
+- **It's a skit, not a lecture** (owner reset, 2026-10-21). The viral finance Shorts are two or
+  three characters talking: a rich mentor and a broke friend, a rich and a poor version of the same
+  person, a salesman and a customer. Give most lines to the cast (`speaker`: rohan, priya, sharma),
+  keep the narrator for a line or two. Characters react: surprise, envy, outrage, a punchline.
+  Talk like a person: short sentences, everyday words, one idea each, a joke where it fits.
+- **Big captions show every spoken word** (drawn automatically from the voice), so scenes carry the
+  picture and the figures, not sentences. Keep on-screen text to labels and numbers.
+- **The first second decides everything.** The first spoken line lands in under 1.5 s and is the
+  format's hook (`formats` in `state`): a conflict ("Poor person gets a raise. Rich person gets a
+  raise."), a secret ("Billionaires never sell their shares."), or the shock number. No greeting, no
+  "did you know", no setup before the hook. The first frame already shows the characters or the
+  number, in a place with something moving, never a figure on a plain background:
+  - `conflict`: two characters, opposite moves · `secret`: the mentor says the secret ·
+    `question`: ask what the viewer wants answered · `shock_number`: a computed figure ·
+    `myth`: a character states the belief · `challenge`: dare the viewer to guess.
+- **Something new every 2–3 seconds:** a new beat, a figure landing, a character reacting. A Short
+  is 7–11 short beats.
+- **Length:** 20–35 s, about 60–100 spoken words. Shorter is better if the story is complete.
+- **Loop it:** the last line hands back to the first, so a viewer who keeps watching sees the hook
+  again and it plays on ("…and that's why the rich one never needed the raise." → "Poor person
+  gets a raise."). **No `end` beat in a Short:** the disclaimer shows as a small line over the last
+  moments and sits in the description. Put the plan's `cta` in a character's last line only if it
+  doesn't break the loop.
+- Write in plain English for the plan's market: an India Short talks about Indian life (salaries in
+  lakhs, EMIs, rent in Bangalore, the food-app habit) in simple Indian English; a US Short about US
+  life ($100K salaries, car payments, credit card debt). No Hinglish, no slang only insiders know. Products by what they are ("an index fund", "a savings
   account", "a credit card"); a local product (a 401(k), an ISA, a SIP, a PPF) only in a story about
   that country, explained in a few words.
 - Pick realistic inputs for the script's currency (`channel/profile.md`). Returns are assumptions,

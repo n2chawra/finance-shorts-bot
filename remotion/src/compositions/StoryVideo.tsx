@@ -9,10 +9,13 @@
  */
 import React from "react";
 import { AbsoluteFill, type CalculateMetadataFunction, useCurrentFrame, useVideoConfig } from "remotion";
+import { useMemo } from "react";
 import { isScene, SCENE_NAMES, type SceneName } from "../contract/scenes";
 import { onStoryClock } from "../contract/clock";
 import { Timeline, type Beat } from "../contract/timeline";
 import { LayoutProbe } from "../fx/probe";
+import { captionGroups, captionTokens, Captions } from "../fx/captions";
+import { FONT } from "../design/fonts";
 import { cameraTransform, TRANSITION_FRAMES, transitionStyle, Vignette } from "../fx/camera";
 import type { SceneProps } from "../scenes/kit";
 import { ChapterScene, ChecklistScene, EndScene, StageScene } from "../scenes/stage";
@@ -37,6 +40,17 @@ const LogoBug: React.FC<{ w: number; h: number }> = ({ w, h }) => {
       <circle cx={m + size / 2} cy={m + size / 2} r={size / 2 + 6} fill="rgba(0,0,0,0.25)" />
       <Sikka x={m + size / 2} y={m + size / 2} size={size} expression="happy" />
     </svg>
+  );
+};
+
+/** A Short without an end card (it loops back to its hook) still says this, small, in its last moments. */
+const DisclaimerLine: React.FC<{ tl: Timeline }> = ({ tl }) => {
+  const v = tl.height > tl.width;
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, top: v ? tl.height * 0.15 : tl.height * 0.06, display: "flex", justifyContent: "center" }}>
+      <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: v ? 44 : 30, color: "#fff", background: "rgba(0,0,0,0.62)",
+        padding: v ? "10px 28px" : "6px 20px", borderRadius: 999 }}>{tl.disclaimer}</div>
+    </div>
   );
 };
 
@@ -74,6 +88,8 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe }) => {
   const cur = beats[i]!;
   const local = (frame - cur.from) * timeline.tempo;      // transitions run on the story clock too
   const overlap = i > 0 && cur.transition !== "cut" && local < TRANSITION_FRAMES;
+  const groups = useMemo(() => captionGroups(captionTokens(timeline)), [timeline]);
+  const hasEnd = beats.some((b) => b.scene === "end");
   return (
     <AbsoluteFill style={{ background: timeline.palette.bg }}>
       {overlap && <BeatView beat={beats[i - 1]!} tl={timeline} frame={frame} fps={fps} />}
@@ -83,6 +99,8 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe }) => {
       <Vignette />
       <Grain />
       {cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} />}
+      {timeline.captions && <Captions tl={timeline} frame={frame} groups={groups} />}
+      {!hasEnd && frame >= timeline.durationInFrames - Math.round(fps * 1.4) && <DisclaimerLine tl={timeline} />}
       {probe && <LayoutProbe frame={frame} />}
     </AbsoluteFill>
   );

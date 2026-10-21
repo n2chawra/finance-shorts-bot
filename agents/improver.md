@@ -65,6 +65,12 @@ reweight or retire; variety comes from the story, the recipe and the beats.
   the README, add `examples/<recipe>.json` that passes the script check and the number check, and
   record it as an experiment in `improvement/experiments.json` with area `template`. At most one
   two new recipes a week.
+- **Formats live or die by % viewed** (owner reset, 2026-10-21). Read the evaluator's ranking `by
+  story` (each Short's `story` is its format from `improvement/research/formats.json`): a format
+  with 3+ Shorts whose mean % viewed is under the channel median for two weeks gets
+  `"retired": true` and a `reason` in `formats.json` (the planner then skips it); one well above
+  the median gets a note in research's next report to find more topics for it. Retention is the
+  number that makes YouTube show a Short to more people; views follow it.
 
 ## Research routes (read `route` and `priority` on every new proposal)
 Research sorts its findings. Act on them in this order, highest priority first:

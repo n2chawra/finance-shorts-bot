@@ -1,6 +1,6 @@
 # long_story — long-form videos on Remotion
 
-A long video (4–6 min, 1920×1080) told as a story by the recurring cast, drawn by Remotion from a
+A long video (8–12 min, 1920×1080) told as a story by the recurring cast, drawn by Remotion from a
 timeline Python builds. Example: [`examples/long_story.json`](../../../examples/long_story.json).
 
 ```
@@ -160,9 +160,16 @@ the first sample at 1.5× and called it right). The voice speaks at 1.5× and ev
 animation, transition and camera move runs 1.5× faster with it, like watching at that playback
 speed. Write on the story clock: `min_sec` and `{"sec": …}` events are story seconds.
 
-At this pace narration runs about **215 words a minute**. A 4–6 min video needs roughly
-**850–1,300 words** across 50–75 beats (the first sample: 574 words in 34 beats, which comes out
-at about 2:45 at this pace, too short to ship).
+At this pace narration runs about **215 words a minute**. An 8–12 min video needs roughly
+**1,700–2,600 words** across 100–150 beats.
+
+**Shape (owner reset, 2026-10-21):** the plan's `story` is a long format from
+`improvement/research/formats.json` (`list_explained`, `once_you_understand`, `which_one_are_you`,
+`how_they_make_money`, `rich_vs_poor`). Build it as a list: a 30-second hook that promises every
+item and teases the worst one, then one `chapter` per item (6–9), each a mini story with the cast,
+one or two computed figures and a cliffhanger line into the next chapter; a recap-and-tease every
+2–3 minutes ("that's three traps; the next one costs the most"); the strongest item last; the end
+card. Big captions run along the bottom automatically: keep the bottom 15% free of scene text.
 
 ## Craft rules
 

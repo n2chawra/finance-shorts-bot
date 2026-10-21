@@ -54,7 +54,7 @@ SPEEDS = {"long": 1.0, "short": 1.0}
 # sample at 1.5x and called it right (2026-10-17). Scripts are written on the story clock: LEAD,
 # TAIL, GAP_NO_VOICE, min_sec and {"sec"/"end"} events are story seconds, divided by the tempo here;
 # the voice is spoken at speed x tempo; Remotion runs each scene's animations on the story clock.
-TEMPOS = {"long": 1.5, "short": 1.3}   # Shorts near the Pillow engine's 1.35
+TEMPOS = {"long": 1.5, "short": 1.4}   # Shorts 1.3 until the reset (2026-10-21): faster, 20–35 s
 
 
 @dataclass
@@ -338,7 +338,9 @@ def check_script(script: dict) -> dict:
             events = {n: round(_event_time(spec, line.words if line else [], LEAD/tempo, frames/FPS, where, tempo)*FPS)
                       for n, spec in b.events.items()}
             timed.append({"id": b.id, "frames": frames, "events": events})
-    if beats[-1].scene != "end":
+    # a long video ends on the end card; a Short loops back to its hook instead and shows the
+    # disclaimer as a small line over its last moments (owner, 2026-10-21)
+    if fmt == "long" and beats[-1].scene != "end":
         raise ValueError("the last beat must be the end card (scene \"end\"), which carries the disclaimer")
     _thumbnail(script.get("thumbnail"), figures, results)
     return {"figures": figures, "beats": out, "warnings": event_gaps(timed)}
@@ -440,7 +442,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm},
         "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1)},
-        "disclaimer": DISCLAIMER, "voiceMode": voice, "sources": sources, "currency": fm.currency,
+        "disclaimer": DISCLAIMER, "captions": True, "voiceMode": voice, "sources": sources, "currency": fm.currency,
         # A/B variants for this video ({id: "on" | "off"}, generator/experiments.py): scenes read them
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest
         "experiments": dict(script.get("experiments") or {}),

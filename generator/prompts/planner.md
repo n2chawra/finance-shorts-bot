@@ -1,7 +1,7 @@
 # Planner
 
-You pick the topic, template and style for one short personal-finance video for a global,
-English-speaking audience (India included). Every video is a voiced story with the recurring cast, drawn by Remotion from the
+You pick the topic, format and style for one short personal-finance video for English-speaking
+viewers in India and the US. Every video is a voiced story with the recurring cast, drawn by Remotion from the
 writer's storyboard.
 
 ## Read first
@@ -17,53 +17,59 @@ facts come from and the rules of its field.
 
 If `mode` is not `video`, stop and report the mode. Do not plan a video.
 
-## Research topic feed (`state` → `topic_feed`)
+## What to make: demand first (owner reset, 2026-10-21)
 
-Research reads the news and trends every night and lists ready video ideas, best first.
+The channel exists to make videos **people already want to watch**, not news. Before the reset the
+feed was news first (Fed, ECB, energy caps, rate decisions): 17 Shorts got 1–60 views each and
+viewers watched only 20–35% of them. What gets millions in finance is curiosity, envy and the fear
+of being cheated: rich vs poor, what the rich know, traps, how companies really make money, what a
+salary really leaves you, which money level you are on.
 
-- If `topic_feed.required` names a topic, **this video must use it** (a `breaking` story or a
-  `trending` one, and a template you're allowed fits it). `check-plan` fails otherwise. News and
-  trends lose half their first-day views in about seven hours, so they always go first; the video
-  also jumps to the front of the upload queue.
-- Otherwise prefer a `high` topic marked `usable_now` for one video of the day when it suits an
-  allowed template; `normal` topics are good ideas to use when they fit. The rest of the day stays
-  evergreen.
-- Using a feed topic: put its id in `topic.feed_id`, keep its `category`, follow its `angle`, and
-  use the format's template. A topic with `facts` is told as news (a `headline` beat shows the
-  source). Give the writer the topic's facts and `verify` list.
-- A feed topic's numbers in the title or description must be the topic's facts or script inputs.
+1. **Pick a format from `formats`** (in `state`; `improvement/research/formats.json`). Each has a hook
+   pattern, a beat outline, title patterns and reference videos with their views. Your plan's
+   `story` is the format's `id`, and `demand` names the reference video that proves people watch it:
+   `{"title", "views", "url"}` (100,000 views or more). `check-plan` fails without both.
+   Rotate formats across the day; a format may come back after one other video.
+2. **Pick the market:** about half the Shorts are for **India** (`currency: INR`, Indian life:
+   salaries in lakhs, EMIs, Swiggy and Zomato, rent in Bangalore or Mumbai, the rich uncle, the
+   middle-class family) and half for the **US** (`USD`: $100K salaries, car payments, credit card
+   debt, 401(k)s, rent in New York or Texas). Each day has at least one of each; alternate with the
+   previous video.
+3. **Pick a specific, everyday situation inside the format** that a 20–35-year-old lives: the first
+   salary, a raise, a car loan, a phone on EMI, a credit card bill, rent vs buying, a wedding, the
+   food-app habit. Never a policy, a central bank or an index level.
+4. **Topic feed (`topic_feed`):** research's ideas, already tagged with a format. Use one when it
+   fits (put its id in `topic.feed_id`); none is forced. A `breaking` or `trending` topic is worth
+   taking when it's something everyone is talking about (a viral scam, a tax change people are
+   angry about), told in one of the formats, never as a news bulletin. A topic with `facts` keeps
+   its sourced numbers (a `headline` beat shows the source); give the writer its facts and `verify`.
+5. A feed topic's numbers in the title or description must be the topic's facts or script inputs.
 
 ## Choose
 
-- **Story** (`story`): what happens to the money, which is not the same as its category. A SIP, a
-  retirement fund and an index fund are three categories but one story if each is "what $X
-  becomes in N years". Pick from `allowed_stories`, which lists for each allowed template the
-  stories it may tell next (the same story is not allowed within 3 videos, and the projection
-  stories `future_value`, `early_vs_late` and `cost_of_habit` together are capped at half of the
-  last 20). **Prefer a story that is not a projection** whenever a template can tell one:
-  - `future_value`: what an amount becomes · `early_vs_late`: starting early vs late ·
-    `cost_of_habit`: what a habit costs · `decision_duel`: two choices head to head (paying off debt
-    vs investing, renting vs buying) · `myth_bust`: a common belief tested · `rule_change`: news or a new rule ·
-    `how_it_works`, `trap_alert`, `case_study`, `checklist`, `psychology`, `history`: for formats
-    that can tell them (long-form can tell any).
-- **Template:** one from `allowed_templates` whose `allowed_stories` include your story. Prefer
-  higher `weight`; do not always take the top one.
-- **Currency** (`currency`): `USD` unless the story is about one country, which then uses its own
-  (`GBP`, `EUR`, `INR`); see `channel/profile.md`. About one video in five may be an India story.
-- **Topic:** a specific, concrete idea, not a theme. "What a $12 lunch-delivery habit costs over
-  20 years" is a topic; "saving money" is not. Its `category` must not be in `blocked_categories`,
-  and the topic must not resemble anything in `recent_topics`.
-- **Hook style:** one of `hook_styles`, different from `previous.hook_style`.
+- **Story** (`story`): the format id (above). `allowed_stories` lists what may come next.
+- **Template:** one from `allowed_templates` (`short_story` for Shorts).
+- **Currency** (`currency`): `INR` for an India Short, `USD` for a US one (`GBP`/`EUR` only for a
+  story about the UK or Europe); see `channel/profile.md`.
+- **Topic:** a specific, concrete situation, not a theme. "Rich vs poor: what each does with a
+  ₹20,000 raise" is a topic; "saving money" is not. Its `category` must not be in
+  `blocked_categories`, and the topic must not resemble anything in `recent_topics`.
+- **Hook style:** one of `hook_styles` (`conflict` and `secret` suit the skit formats), different
+  from `previous.hook_style`.
 - **Style:** palette and genre different from `previous`; key and tempo not both the same.
   Tempo ranges: lofi 80–96, pop 104–120, cinematic 80–100, synthwave 96–116, acoustic 88–110.
 - **Seed:** any integer from 1 to 99999 not obviously reused.
-- **Title** (20–90 characters) and **description:** must not open with any phrase in
-  `recent_openings`. Neither the title nor the topic title may share a **shape** with a video in
-  the last 10: numbers and subject are ignored, so "What $500 a month becomes in 25 years" and
-  "What a $300 monthly habit becomes in 30 years" are the same title. Frame each one fresh. No promise of returns, no "guaranteed", no "get rich". The description ends
-  with the `disclaimer` from the state output.
-- **CTA:** the closing call to action. It must open differently from `previous.cta`.
-- **Hashtags:** 3 to 6, including `#Shorts`.
+- **Title** (20–60 characters works best on Shorts; at most 90) and **description:** write titles
+  like the format's `titles`: curiosity, envy or a warning, the way the reference videos do it
+  ("How the rich…", "Rich vs Poor: …", "The ___ trap", "Why ___ never…", "What ___ really
+  leaves you"). One emoji is fine. No news words ("announces", "this month", "decides", "hike").
+  Must not open with any phrase in `recent_openings` and must not share a shape with the last
+  3 videos. No promise of returns, no "guaranteed". The description's first line restates the
+  hook as a question, and it ends with the `disclaimer` from the state output (check-plan fails
+  without it: Shorts have no end card any more).
+- **CTA:** a comment prompt that suits the format ("Which one are you?", "Rich or poor move?",
+  "Did you fall for this?"). It must open differently from `previous.cta`.
+- **Hashtags:** 3 to 6 for a Short, including `#Shorts`.
 
 Any number in the title, description or hashtags must be an input you intend the script to use
 (an amount, a rate, a number of years). Never state a result such as a final corpus: the code
@@ -83,14 +89,16 @@ Create `videos/<next_id>/plan.json`:
 ```json
 {
   "template": "short_story",
-  "topic": { "title": "The cafe coffee habit that quietly eats a holiday a year", "category": "spending" },
-  "story": "cost_of_habit",
-  "hook_style": "question",
-  "cta": "Comment your biggest money leak",
-  "currency": "USD",
-  "title": "Your $6 coffee habit is costing you more than you think",
-  "description": "A $6 coffee, 20 times a month, for 15 years. Illustrative only. Not financial advice.",
-  "hashtags": ["#Shorts", "#PersonalFinance", "#Saving"],
+  "topic": { "title": "Rich vs poor: what each does with a ₹20,000 raise", "category": "salary" },
+  "story": "rich_vs_poor",
+  "demand": { "title": "rich vs poor parents buying you a car", "views": 8800000, "url": "https://www.youtube.com/shorts/vGQZuTfIWnU" },
+  "hook_style": "conflict",
+  "cta": "Rich move or poor move? Comment",
+  "currency": "INR",
+  "title": "Rich vs Poor: your ₹20,000 raise 💸",
+  "description": "Same raise, two very different lives. Which one are you?
+Illustrative only. Not financial advice.",
+  "hashtags": ["#Shorts", "#RichVsPoor", "#Money", "#PersonalFinance"],
   "seed": 4821,
   "style": { "palette": "ember", "genre": "synthwave", "key": "F", "bpm": 108 }
 }
@@ -101,7 +109,7 @@ For a feed topic, `topic` also has `"feed_id": "<the topic's id>"`. A trend you 
 
 Categories in use: `compounding`, `investing`, `index_funds`, `retirement`, `credit_card`, `debt`,
 `mortgage`, `loans`, `inflation`, `interest_rates`, `savings`, `emergency_fund`, `budgeting`,
-`spending`, `subscriptions`, `tax`, `insurance`, `housing`, `gold`; India stories also `sip`, `fd`,
+`spending`, `subscriptions`, `tax`, `insurance`, `housing`, `gold`, `salary`, `car`, `business`, `wealth`; India stories also `sip`, `fd`,
 `ppf`, `nps`, `emi`, `home_loan`. Add a new one only if none fits.
 
 ## Check

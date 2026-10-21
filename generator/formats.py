@@ -1,0 +1,56 @@
+"""Formats with proven demand: what people already watch in the millions (owner reset, 2026-10-21).
+
+`improvement/research/formats.json` lists them per format (written by research, seeded by hand):
+each has an `id` (a plan's `story`), a hook pattern, a beat outline and reference videos with their
+views. Every plan tells one of its format's stories and names the video that shows the demand:
+
+    plan["story"]  = "rich_vs_poor"
+    plan["demand"] = {"title": "rich vs poor parents buying you a car", "views": 8800000, "url": "https://..."}
+
+News stopped deciding what we make: before the reset the feed was news first, and 17 videos got
+1-60 views each while viewers watched 20-35% of every Short.
+"""
+import json
+from pathlib import Path
+
+from .settings import ROOT
+
+FILE = Path("improvement") / "research" / "formats.json"
+MIN_VIEWS = 100_000      # a reference video below this doesn't show demand
+
+
+def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+    path = root / FILE
+    if not path.is_file():
+        return []
+    return [f for f in json.loads(path.read_text(encoding="utf-8")).get("formats", [])
+            if isinstance(f, dict) and f.get("id") and f.get("format") == fmt and not f.get("retired")]
+
+
+def ids(root: Path = ROOT, fmt: str = "short") -> list[str]:
+    return [f["id"] for f in load(root, fmt)]
+
+
+def for_state(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+    """What `state` shows the planner: each format with its hook, beats, title patterns and best example."""
+    out = []
+    for f in load(root, fmt):
+        best = max(f.get("examples") or [{}], key=lambda e: e.get("views", 0))
+        out.append({k: f.get(k) for k in ("id", "name", "emotion", "hook", "beats", "titles", "markets")} | {"best_example": best})
+    return out
+
+
+def check_plan(plan: dict, root: Path = ROOT, fmt: str = "short") -> list[str]:
+    """A plan tells a format with proven demand and names the video that proves it."""
+    known = ids(root, fmt)
+    if not known:
+        return []
+    out = []
+    if plan.get("story") not in known:
+        out.append(f"story must be a {fmt} format with proven demand: one of {', '.join(known)} ({FILE.as_posix()})")
+    demand = plan.get("demand")
+    if not isinstance(demand, dict) or not demand.get("title") or not isinstance(demand.get("views"), int):
+        out.append("plan needs `demand`: {title, views, url} of a video in this format that people watch")
+    elif demand["views"] < MIN_VIEWS:
+        out.append(f"demand.views {demand['views']:,} is under {MIN_VIEWS:,}: pick a reference video that shows real demand")
+    return out

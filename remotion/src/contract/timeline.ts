@@ -13,8 +13,8 @@ export const BeatVoice = z.object({
   speaker: z.string(),
   words: z.array(Word),
   phonemes: z.array(Phoneme),
-  // caption tokens as written ("₹60,000"), timed by the words that speak them; not drawn (the owner
-  // prefers voice only, 2026-10-17), kept for uploading as YouTube subtitles
+  // caption tokens as written ("₹60,000"), timed by the words that speak them; drawn big on screen
+  // when the timeline's `captions` is on (fx/captions.tsx; owner, 2026-10-21)
   captions: z.array(z.object({ t: z.string(), s: z.number(), e: z.number() })).optional(),
 });
 
@@ -78,6 +78,7 @@ export const Timeline = z.object({
   music: z.object({ genre: z.string(), key: z.string(), bpm: z.number() }),
   audio: z.object({ file: z.string(), peak_db: z.number(), mean_db: z.number() }),
   disclaimer: z.literal("Illustrative only. Not financial advice."),
+  captions: z.boolean().default(false),   // big word-by-word captions over the picture
   voiceMode: z.enum(["kokoro", "estimate"]),
   // news: "Data: AMFI · Jun 2026", shown by every headline scene (sourced facts, hard rule)
   sources: z.string().nullable().optional(),

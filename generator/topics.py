@@ -10,8 +10,9 @@
 
 A topic is used once: a video records it as `plan.topic.feed_id`, and history makes it unavailable
 (the video run never edits the feed, so it can't conflict with the research agent's branch).
-A `breaking` topic, then a `trending` one, must be taken by the next video that can use it: news
-and trends lose half their first-day views in about seven hours.
+Nothing in the feed is forced on a video any more (owner reset, 2026-10-21: the channel had turned
+into a news channel nobody watched). A `breaking` or `trending` topic is offered first and jumps the
+upload queue when a video takes it, but the planner picks what has demand.
 
 A video run that finds a trend itself (the midday trend run) can't add it to the feed, so it carries
 it in the plan instead: `plan.topic.trend = {"id": "trend-<today>-<slug>", "why_now", "sources": [urls], "found",
@@ -77,23 +78,25 @@ def of_format(topics: list[dict], fmt: str) -> list[dict]:
 
 def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT,
               fmt: str = "short") -> dict:
-    """What `state` tells the planner: the open topics, best first, and a breaking one it must use."""
+    """What `state` tells the planner: the open topics, best first (`required` is always None now)."""
     open_ = [t for t in of_format(load(root, fmt), fmt) if why_unavailable(t, entries, today) is None]
     open_.sort(key=lambda t: t.get("found", ""), reverse=True)   # newest first within a priority (stable sorts)
     open_.sort(key=lambda t: PRIORITIES.index(t["priority"]) if t.get("priority") in PRIORITIES else len(PRIORITIES) - 1)
     usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed)]
-    required = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p), None)
+    # offered first, and it still earns one extra video that day, but no plan is forced to take it
+    urgent = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p), None)
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
             "expires", "format", "outline", "sources")
     return {
         "topics": [{**{k: t.get(k) for k in keys}, "usable_now": t in usable} for t in open_[:SHOWN]],
-        "required": required,
+        "required": None,   # nothing is forced since the reset (see the module doc)
+        "urgent": urgent,
     }
 
 
 def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT,
                fmt: str = "short") -> list[str]:
-    """Feed rules for a plan: a feed topic must be open, and a usable breaking topic must be taken.
+    """Feed rules for a plan: a feed topic must be open.
     (A news script's sourced facts are traced to the feed by the number check.)"""
     out = []
     feed_id = (plan.get("topic") or {}).get("feed_id")
@@ -105,10 +108,6 @@ def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], 
             out.append(f"feed topic {feed_id!r} can't be used: {why}")
     elif (trend := (plan.get("topic") or {}).get("trend")) is not None:
         out += check_trend(trend, today)
-    required = for_state(entries, today, blocked, allowed, root, fmt)["required"]
-    if required and feed_id != required:
-        level = (get(required, root, fmt) or {}).get("priority", "breaking")
-        out.append(f"{level} feed topic {required!r} is waiting and fits an allowed template: this video must use it")
     return out
 
 

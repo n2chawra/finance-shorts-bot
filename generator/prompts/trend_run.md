@@ -20,28 +20,29 @@ Then the rest of section 0 of `generator/prompts/routine.md` (find the Python, f
 
 Run `python -m generator.run state`.
 - `paused`: report "generation is paused" and stop.
-- `video`: a `breaking` or `trending` topic is already waiting in the feed (`topic_feed.required`)
-  or today's videos aren't all made. Make **one** video by following `routine.md` sections 2–7,
+- `video`: a `trending` topic is waiting in the feed (`topic_feed.urgent`) or today's videos
+  aren't all made. Make **one** video by following `routine.md` sections 2–7,
   then stop. Skip the sweep.
 - `idle`: today's videos are made. If `videos_today` is already more than `daily_target`, an extra
   video was made today: stop. Otherwise do the sweep.
 
 ## 2. The sweep (at most 4 web searches, 4 page reads)
 
-Look for one personal-finance topic that lots of English-speaking people are searching or
-talking about **today or since yesterday** (anywhere: the US, UK, Europe, India…):
-- Google Trends (worldwide and US) for money terms (interest rates, inflation, mortgage rates,
-  student loans, credit cards, tax, gold, a new app or rule).
-- News from the last 24 hours: central banks (Fed, Bank of England, ECB, RBI), inflation releases,
-  regulators (SEC, FCA, SEBI), a bank or app change that affects ordinary savers.
-- What finance Shorts are being made about right now.
+Look for one money moment that lots of people in **India or the US** are talking about **today or
+since yesterday**, the kind that fills finance Shorts comments, not a news bulletin (owner reset,
+2026-10-21: central bank decisions and inflation releases are not trends people watch):
+- A viral money conversation: a salary reveal, a scam everyone is warning about, a celebrity or
+  billionaire money story, a sale everyone is buying in, a tax change people are angry about.
+- What finance Shorts are blowing up right now (`market-data`: `market.json`).
+- Google Trends (India and US) for money terms.
 
 It is worth a video only if **all** of these hold:
 1. It is current: you can show a source dated today or yesterday that shows the attention.
 2. It is about the viewer's money, and you can explain what it means for them without predicting
    prices or giving buy/sell advice (no recent market prices used to suggest future prices, no
    return claims, no single stocks).
-3. A template allowed in `state` can tell it (read its README), with a story in `allowed_stories`.
+3. It can be told in one of the `formats` in `state` (rich vs poor, what the rich know, the trap,
+   how they make money, salary breakdown…), with that format's `story` and `demand`.
 4. It isn't already in `recent_topics` or the feed.
 
 If nothing passes, report what you checked in two lines and stop.

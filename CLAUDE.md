@@ -2,8 +2,8 @@
 
 Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for a
 global English-speaking audience (India included; the channel is "Paisa Panchayat", see
-`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 30–45 s, two a day) and
-**long-form explainers** (landscape, 4–6 min, character-led animation). A dashboard shows everything.
+`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 20–35 s skits that loop) and
+**long videos** (landscape, 8–12 min list and "explained" formats, character-led animation). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
 Read `PLAN.md` for milestones and current status. Update its checkboxes as work lands.
@@ -16,7 +16,8 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   installed by `scripts/setup-voice.sh`, never committed). One Indian-English and five American
   voices, rotated per video; numbers are spoken as words.
   Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Every
-  video is voiced; no on-screen captions (owner, 2026-10-17).
+  video is voiced, with big word-by-word captions drawn from the voice timings (owner, 2026-10-21;
+  `remotion/src/fx/captions.tsx`).
 - **Three Shorts per day**, at 07:07, 12:37 and 19:07 IST (setting `uploadTimes`), plus **trend
   slots** at 16:07 and 22:07 (`trendUploadTimes`): each breaking or trending video of the day opens
   one, so a trend never pushes a normal video back; quiet days leave them empty. Upload time barely
@@ -36,7 +37,13 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   result, or two independent reputable outlets agreeing on value, unit and date) — or the video fails.
   A video that fails never ends a generation run; the run moves on to the next video.
 - **All audio is synthesized in code** (music + SFX). No downloaded music, no copyrighted assets.
-- Every video ends with the disclaimer: "Illustrative only. Not financial advice."
+- **Demand first** (owner reset, 2026-10-21): every video tells a format people already watch in the
+  millions (`improvement/research/formats.json`: rich vs poor, what the rich know, traps, how they
+  make money, salary breakdowns, which one are you…), named in the plan's `story` with a reference
+  video in `demand`. News is never a reason to make a video on its own.
+- Every video carries the disclaimer "Illustrative only. Not financial advice.": long videos on the
+  end card; Shorts (no end card, they loop) as a small line over the last moments; and every
+  description (check-plan).
 - Generation runs as **Claude Code routines on a Claude Pro plan** (subscription usage, no API key).
   Keep runs lean. Never enable paid usage credits.
 
@@ -72,7 +79,7 @@ Four nightly Claude Code routines check and improve the automation itself, 23:00
 **auditor** (23:00, after the 18:37 `data-audit.yml` compares the dashboard's numbers with YouTube and
 the database into `metrics/data-audit.json`: fixes data bugs and code bugs anywhere, one refactor a
 night; may change `workers/` and `lib/live-stats.ts` but never uploads, sign-in or the audit itself),
-**research** (23:47, reports + proposals, never code), **improver** (06:17, A/B experiments on ~50% of
+**research** (23:47, demand scan: formats and topics people watch, reports + proposals, never code), **improver** (06:17, A/B experiments on ~50% of
 videos via `config/experiments.json`, keep/revert by `python -m improvement.evaluate`, recipes,
 scenes, cast, camera and design in `remotion/src` behind flags, fixes recurring failures) and **dashboard** (07:37, bug hunt + smoke tests, UI
 trends Mon/Wed/Fri). Agents only push `agent/<name>/<date>` branches; `.github/workflows/agent-merge.yml`
@@ -124,8 +131,8 @@ is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
 |---|---|---|
 | Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Mon/Wed/Fri 14:37 IST, 1 a run) |
 | Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, daily 09:37 IST) |
-| Template | `short_story` (1080×1920, story recipes in its README; news via `facts` + a `headline` beat) | `long_story` (1920×1080, chapters, the scene catalog in its README) |
-| Length / pace | 30–45 s, tempo 1.3 (~185 spoken words a minute) | 180–900 s, aiming for 4–6 min, tempo 1.5 (~215 words a minute) |
+| Template | `short_story` (1080×1920, a skit per format in its README) | `long_story` (1920×1080, a list of chapters, the scene catalog in its README) |
+| Length / pace | 20–35 s, tempo 1.4 (~200 spoken words a minute) | 480–900 s, aiming for 8–12 min, tempo 1.5 (~215 words a minute) |
 | Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
 
@@ -198,7 +205,7 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
 6. **Render (code)**: `python -m generator.run render <id>` → voice + timeline, Remotion render,
    mp4 + thumbnail + preview contact sheet, liveliness gate.
 7. **QA review (separate agent)**: looks at the contact sheet + audio levels. Rejects overlaps,
-   cut-off or tiny text, empty scenes, unreadable contrast, length outside 30–45 s.
+   cut-off or tiny text, empty scenes, unreadable contrast, length outside 20–35 s.
 8. **Ship**: write manifest (title, description, hashtags, style, template, topic), append to
    history, commit to `main`, upload mp4 as a Release asset. Log every step as an AgentRun entry
    inside the manifest.
@@ -217,21 +224,23 @@ the agent steps follow `generator/prompts/*.md`.
 
 - Each format has one template, so variety comes from the story, the recipe and the beats (the
   template rotation rules in `variety.py` only bind if templates are added).
+- Each plan's `story` is a demand-proven format (`generator/formats.py`); the same format not twice
+  in a row (`STORY_WINDOW` 1 since the reset).
 - Same topic category not in the last 3 videos; near-duplicate topics not within 60 days
   (embedding cosine > 0.85 once topics live in pgvector; until M4 a word-overlap cosine > 0.6).
 - Rotate per video: color palette, hook style (question / shock number /
-  myth / challenge), music (key, tempo 80–120 BPM, genre: lo-fi / upbeat pop / cinematic /
+  myth / challenge / conflict / secret), music (key, tempo 80–120 BPM, genre: lo-fi / upbeat pop / cinematic /
   synthwave / acoustic-ish), SFX set, end CTA.
 - Titles and descriptions must not reuse an opening phrase from the last 20 videos.
 - **Story, not just category** (`STORIES` in `variety.py`): every plan names the story it tells
   (future value, early vs late, cost of habit, decision duel, myth bust, how it works, trap alert,
   rule change, case study…). The same story not in the last 3 videos; the "$X becomes $Y in N
   years" family at most a quarter of the last 20.
-  Neither the title nor the topic title may repeat a **shape** from the last 10 (numbers and
+  Neither the title nor the topic title may repeat a **shape** from the last 3 (numbers and
   subject removed). Up to 2026-10-17, 8 of 11 Shorts told one story in different categories.
-- **Trends go first**: a `breaking` or `trending` feed topic must be taken by the next video that
-  can use it, earns one extra video past the daily target, and jumps the upload queue (manifest
-  `priority`). The midday trend run (`generator/prompts/trend_run.md`) can carry a trend it found
+- **Trends**: a `trending` feed topic (something people are already talking about, told in a
+  format) is offered first, earns one extra video past the daily target, and jumps the upload
+  queue (manifest `priority`). Nothing in the feed is forced on a video. The midday trend run (`generator/prompts/trend_run.md`) can carry a trend it found
   in `plan.topic.trend`. Publish fills each slot only ~4.5 h ahead, so a midday trend can still
   take the 19:07 slot.
 

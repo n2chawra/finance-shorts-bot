@@ -14,10 +14,10 @@ DEFAULTS: dict = {
     "backlogCap": 30,
     "generationPaused": False,    # routines do nothing at all while this is on
     "uploadsPaused": False,
-    "lengthMinSec": 30,
-    "lengthMaxSec": 45,
-    "longLengthMinSec": 180,      # long-form: 3-15 minutes, aiming for 4-6. Length is not the
-    "longLengthMaxSec": 900,      # goal; a tight 4-minute video beats a padded 9-minute one
+    "lengthMinSec": 20,
+    "lengthMaxSec": 35,
+    "longLengthMinSec": 480,      # long-form: 8-15 minutes, aiming for 8-12 (owner reset, 2026-10-21:
+    "longLengthMaxSec": 900,      # the long winners run 12-30 min, and mid-roll ads start at 8)
     "longPerWeek": 0,             # long videos to make per IST week (0 pauses long-form)
     "longBacklogCap": 4,
     "disclaimer": "Illustrative only. Not financial advice.",

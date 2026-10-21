@@ -44,10 +44,14 @@ notification for the owner — do not invent a topic, Scout's research is what m
 Write `videos/<id>/plan.json`, following `generator/prompts/planner.md` for the fields, with:
 - `template`: `long_story`
 - `topic`: `{"title", "category", "feed_id": "<the topic's id>"}` from the feed topic
-- `title`: what someone would click — a clear promise, not a riddle. 40–70 characters.
+- `story`: the topic's long format (`formats` in `state`: `list_explained`, `once_you_understand`,
+  `which_one_are_you`, `how_they_make_money`, `rich_vs_poor`) and `demand`: the topic's reference
+  video `{title, views, url}`. `check-plan` fails without both (owner reset, 2026-10-21).
+- `title`: a big promise someone would click, in the shape of the reference video's ("Every money
+  trap the middle class falls into", "Once you understand X, you'll never Y"). 40–70 characters.
 - `description`: 3–5 lines on what the video covers, then the chapter list (you fill in the real
   timestamps after rendering), then the disclaimer from `state`.
-- `hashtags`, `hook_style`, `cta`, `seed`, `style` as for a Short.
+- `hashtags` (3–6, no `#Shorts`), `hook_style`, `cta`, `seed`, `style` as for a Short.
 
 ```
 python -m generator.run check-plan <id>
@@ -63,12 +67,12 @@ A long video is a **story with the recurring cast**, told in beats. Start from t
 `outline` and its central picture (the leaking bucket, the snowball, the treadmill): what does
 the viewer *see* happen?
 - **Length and pace.** Long videos play at tempo 1.5, about **215 spoken words a minute**. Aim for
-  **4–6 minutes: 850–1,300 words across 50–75 beats** (a beat is one line and one picture, 3–8 s).
-  Length is not the goal; a tight four minutes beats a padded six. Add a beat that *does*
-  something, never stretch one.
-- **Shape.** Hook with money stakes in the first 20 seconds (a person, a choice, the cost). Then
-  chapters (`chapter` beats, 4–6 of them) from the start. An escalation around 1:30 and again
-  around 3:00. End on what to do, then the `end` beat.
+  **8–12 minutes: 1,700–2,600 words across 100–150 beats** (a beat is one line and one picture,
+  3–8 s). Add a beat that *does* something, never stretch one.
+- **Shape (the format's list).** A 30-second hook that promises every item and teases the worst one.
+  Then one `chapter` per item (6–9), each a mini story with the cast, one or two computed figures
+  and a cliffhanger into the next; a recap-and-tease every 2–3 minutes; the strongest item last.
+  End on what to do, then the `end` beat. Big captions run along the bottom automatically.
 - **People, not slides.** Put a cast moment (`stage`, someone reacting, a line of dialogue)
   between data scenes. Rohan makes the mistake, Priya explains, Sharma has seen it all, Sikka
   cheers. They are characters in a story, never advisors: nobody tells the viewer what to buy.

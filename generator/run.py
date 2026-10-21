@@ -29,7 +29,7 @@ from renderer import remotion
 from renderer.engine.formatting import CURRENCIES
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
-from . import experiments, history, topics, variety
+from . import experiments, formats, history, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -131,8 +131,8 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     allowed = variety.allowed_templates(entries, enabled)
     blocked = variety.blocked_categories(entries)
     feed = topics.for_state(entries, today, blocked, allowed, root, fmt)
-    if fmt == "short" and mode == "idle" and feed["required"] and made_today < target + TREND_EXTRA_PER_DAY:
-        level = (topics.get(feed["required"], root, fmt) or {}).get("priority", "breaking")
+    if fmt == "short" and mode == "idle" and feed["urgent"] and made_today < target + TREND_EXTRA_PER_DAY:
+        level = (topics.get(feed["urgent"], root, fmt) or {}).get("priority", "breaking")
         mode, why = "video", f"{why}, but a {level} topic is waiting: one extra video for it"
     return {
         "format": fmt,
@@ -151,6 +151,8 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "recent_stories": [variety.story_of(e) for e in entries[-variety.STORY_WINDOW:]],
         "blocked_categories": blocked,
         "topic_feed": feed,
+        # what to make: formats people already watch in the millions (improvement/research/formats.json)
+        "formats": formats.for_state(root, fmt),
         "previous": last and {"palette": last["style"]["palette"], "genre": last["style"]["genre"], "key": last["style"]["key"],
                               "bpm": last["style"]["bpm"], "hook_style": last["hook_style"], "cta": last["cta"]},
         "hook_styles": list(variety.HOOK_STYLES),
@@ -188,6 +190,7 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         entries = history.of_format(history.load(root), fmt)
         enabled = enabled_templates(load_settings(root), fmt, root)
         problems = variety.check_plan(plan, entries, enabled)
+        problems += formats.check_plan(plan, root, fmt)
         problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
                                       variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
         if not 20 <= len(plan["title"]) <= 90:
@@ -197,6 +200,9 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         # global since 2026-10-18: every plan names its money (channel/profile.md)
         if plan.get("currency") not in CURRENCIES:
             problems.append(f"currency must be one of {', '.join(CURRENCIES)}: USD unless the story is about one country")
+        # a Short has no end card any more, so the description always carries the disclaimer
+        if load_settings(root)["disclaimer"] not in plan["description"]:
+            problems.append(f"description must include the disclaimer: {load_settings(root)['disclaimer']}")
     log_step(vid, "planner", not problems, problems or ["Plan passes the variety rules."], root)
     return problems
 

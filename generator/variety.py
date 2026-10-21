@@ -14,7 +14,7 @@ from renderer.engine.style import PALETTES
 
 from .history import now as utc_now
 
-HOOK_STYLES = ("question", "shock_number", "myth", "challenge")
+HOOK_STYLES = ("question", "shock_number", "myth", "challenge", "conflict", "secret")
 CATEGORY_WINDOW = 3          # same topic category not in the last 3 videos
 SHARE_WINDOW = 20            # template share is measured over the last 20 videos
 DUPLICATE_DAYS = 60          # near-duplicate topics not within 60 days
@@ -29,13 +29,16 @@ _STOP = frozenset("a an and are as at be by do does for from how in is it its of
 # the story says what happens to that money. Up to 2026-10-17, 8 of 11 Shorts told one story —
 # "what ₹X becomes in N years" — in different categories, which the category rule could not see.
 STORIES = ("future_value", "early_vs_late", "cost_of_habit", "decision_duel", "myth_bust", "how_it_works",
-           "trap_alert", "rule_change", "case_study", "checklist", "psychology", "history")
+           "trap_alert", "rule_change", "case_study", "checklist", "psychology", "history",
+           # the formats with proven demand (improvement/research/formats.json; owner reset, 2026-10-21)
+           "rich_vs_poor", "secret_of_rich", "how_they_make_money", "salary_breakdown", "which_one_are_you",
+           "guess_the_number", "list_explained", "once_you_understand")
 PROJECTION = ("future_value", "early_vs_late", "cost_of_habit")   # the "₹X becomes ₹Y in N years" family
-STORY_WINDOW = 3          # the same story not in the last 3 videos
+STORY_WINDOW = 1          # a winning format may come back after one other (owner reset, 2026-10-21; was 3)
 # Projection stories may be at most this share of the last 20. 0.5 while three of the four evergreen
 # Lowered from 0.5 when Shorts moved to Remotion story recipes, which can tell any story.
-PROJECTION_SHARE = 0.25
-SHAPE_WINDOW = 10         # a title's shape may not repeat within the last 10 videos
+PROJECTION_SHARE = 0.35   # 0.25 until the reset: our best Short so far is a habit-cost one
+SHAPE_WINDOW = 3          # proven title shapes may come back ("Rich vs Poor: …"); was 10 until the reset
 # The stories the first engine's templates could tell. Only for reading old history entries that
 # have no `story`; the story templates (short_story, long_story) can tell any story.
 TEMPLATE_STORIES = {

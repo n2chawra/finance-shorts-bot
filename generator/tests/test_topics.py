@@ -36,18 +36,19 @@ def test_open_topics_best_first(root: Path) -> None:
     assert s["required"] is None
 
 
-def test_breaking_topic_is_required_when_usable(root: Path) -> None:
+def test_breaking_topic_is_offered_first_when_usable(root: Path) -> None:
     feed(root, topic("calm", "high"), topic("big", "breaking"))
-    assert topics.for_state([], TODAY, [], TEMPLATES, root)["required"] == "big"
+    s = topics.for_state([], TODAY, [], TEMPLATES, root)
+    assert s["urgent"] == "big" and s["required"] is None and s["topics"][0]["id"] == "big"
     # not usable: category blocked, or no template enabled for the format
-    assert topics.for_state([], TODAY, ["sip"], TEMPLATES, root)["required"] is None
-    assert topics.for_state([], TODAY, [], [], root)["required"] is None
+    assert topics.for_state([], TODAY, ["sip"], TEMPLATES, root)["urgent"] is None
+    assert topics.for_state([], TODAY, [], [], root)["urgent"] is None
 
 
-def test_plan_must_take_the_breaking_topic(root: Path) -> None:
+def test_no_feed_topic_is_forced_on_a_plan(root: Path) -> None:
+    """Since the reset (2026-10-21) the planner picks what has demand; news never forces a video."""
     feed(root, topic("big", "breaking"))
-    problems = topics.check_plan(make_plan(), [], TODAY, [], TEMPLATES, root)
-    assert any("breaking feed topic 'big'" in p for p in problems)
+    assert topics.check_plan(make_plan(), [], TODAY, [], TEMPLATES, root) == []
     plan = make_plan(topic={"title": "x", "category": "sip", "feed_id": "big"})
     assert topics.check_plan(plan, [], TODAY, [], TEMPLATES, root) == []
 
@@ -75,14 +76,11 @@ def test_number_check_traces_news_facts_to_the_feed() -> None:
 
 # ---------------- trending topics ----------------
 
-def test_trending_topic_is_required_after_breaking(root: Path) -> None:
+def test_trending_topic_is_urgent_after_breaking(root: Path) -> None:
     feed(root, topic("calm", "high"), topic("hot", "trending"))
-    assert topics.for_state([], TODAY, [], TEMPLATES, root)["required"] == "hot"
+    assert topics.for_state([], TODAY, [], TEMPLATES, root)["urgent"] == "hot"
     feed(root, topic("hot", "trending"), topic("big", "breaking"))
-    assert topics.for_state([], TODAY, [], TEMPLATES, root)["required"] == "big"
-    feed(root, topic("hot", "trending"))
-    problems = topics.check_plan(make_plan(), [], TODAY, [], TEMPLATES, root)
-    assert any("trending feed topic 'hot'" in p for p in problems)
+    assert topics.for_state([], TODAY, [], TEMPLATES, root)["urgent"] == "big"
 
 
 def trend(**over) -> dict:
