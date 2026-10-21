@@ -108,3 +108,30 @@ test("video page names the narrator's accent and gender", async ({ page }) => {
     await expect(page.locator("dt", { hasText: "Voiceover" }).locator("+ dd")).toHaveText(label!, { timeout: 30_000 });
   }
 });
+
+test("calendar plans long videos on their own days and time", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  await page.waitForLoadState("networkidle");
+  // the sample queue holds two long videos; they post at 20:07 IST (Tue/Thu/Sat), never in a Short's slot
+  const cells = page.locator("button[aria-pressed]");
+  let text = (await cells.allTextContents()).join(" ");
+  if (!text.includes("20:07")) {
+    await page.getByRole("button", { name: "Next month" }).click();
+    text += (await cells.allTextContents()).join(" ");
+  }
+  expect(text).toContain("20:07");
+});
+
+test("template cards keep a readable text column", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/templates");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Templates/, { timeout: 30_000 });
+  // the long story's 16:9 player once left its description a ~150 px column on phones
+  for (const name of ["Short story", "Long story"]) {
+    const column = page.getByRole("heading", { level: 2, name }).locator("xpath=ancestor::div[contains(@class,'flex-1')][1]");
+    const box = await column.boundingBox();
+    expect(box?.width ?? 0, `${name} text column`).toBeGreaterThanOrEqual(220);
+  }
+});
