@@ -768,6 +768,221 @@
       "expires": "2026-10-28",
       "status": "rejected",
       "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
+    },
+    {
+      "id": "2026-10-22-diwali-bonus-rich-vs-poor",
+      "format": "short",
+      "title": "Rich vs poor: the same ₹1 lakh Diwali bonus",
+      "category": "bonus",
+      "kind": "seasonal",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "Rich vs Poor",
+        "views": 26000000,
+        "url": "https://www.youtube.com/shorts/55ezEOnK1Nk"
+      },
+      "hook": "Poor guy gets a ₹1 lakh Diwali bonus. Rich guy gets the same bonus.",
+      "angle": "Spend the bonus on a sale vs put it to work: what is the gap after 15 years?",
+      "why_now": "Diwali is on 8 Nov: bonuses and festive sales land now; told as rich vs poor, the format, not as news.",
+      "maths": "lumpsum: amount 100000, rate_pct 12 (assumed), years 15; the spent side is 0",
+      "found": "2026-10-22",
+      "expires": "2026-11-09",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-22-bengaluru-50k-salary",
+      "format": "short",
+      "title": "What a ₹50,000 salary really leaves you in Bengaluru",
+      "category": "salary",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "salary_breakdown"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "How much money is in your bank account?",
+        "views": 42000000,
+        "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
+      },
+      "hook": "Fifty thousand rupees a month in Bengaluru. Here's what's left.",
+      "angle": "Rent, food, transport and a phone EMI subtracted (stated assumptions), then the leftover invested for 10 years.",
+      "why_now": "Demand first: a format with proven demand (see demand).",
+      "maths": "sip of the leftover: monthly = 50000 minus stated costs (code subtracts), rate_pct 12 (assumed), years 10",
+      "found": "2026-10-22",
+      "expires": "2027-01-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-22-bank-earns-on-your-savings",
+      "format": "short",
+      "title": "Your ₹1 lakh in a savings account: what the bank earns on it",
+      "category": "banking",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "Monkey Economics How Bank Work",
+        "views": 7600000,
+        "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"
+      },
+      "hook": "Your bank pays you a little on your ₹1 lakh. Then it lends it out for a lot more.",
+      "angle": "The spread: what you earn at an assumed savings rate vs what the bank earns lending the same money at an assumed loan rate, over 5 years.",
+      "why_now": "Demand first: a format with proven demand (see demand).",
+      "maths": "two lumpsums: amount 100000, years 5, rate_pct 2.5 vs 9 (both stated as assumptions, no bank named)",
+      "found": "2026-10-22",
+      "expires": "2027-01-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-22-inflation-savings-account",
+      "format": "short",
+      "title": "Once you understand inflation, you'll never leave money idle in a savings account",
+      "category": "inflation",
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "once_you_understand"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "Once You Understand MONEY, You'll Stop Saving It (LITTLE BIT BETTER, animated)",
+        "views": 2479142
+      },
+      "hook": "Once you understand this, you'll never leave money sitting in a savings account.",
+      "angle": "Real return: an assumed 3% account against an assumed 5% price rise, what ₹1 lakh buys after 10 years.",
+      "why_now": "Demand first: a format with proven demand (see demand).",
+      "maths": "real_return / price_rise: amount 100000, rate_pct 3, inflation_pct 5 (assumed), years 10",
+      "found": "2026-10-22",
+      "expires": "2027-01-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-22-car-loan-72-months",
+      "format": "short",
+      "title": "The 72-month car loan trap",
+      "category": "car",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "trap_alert"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "The Middle Class EMI Trap",
+        "views": 7000000,
+        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
+      },
+      "hook": "The dealer says only $650 a month. Nobody says for how long.",
+      "angle": "A $40,000 car on 72 months vs 48 months at an assumed rate: the monthly payment looks smaller, the interest doesn't.",
+      "why_now": "Demand first: a format with proven demand (see demand).",
+      "maths": "emi: amount 40000, rate_pct 9 (assumed), months 72 vs 48; the hook's monthly figure must come from the 72-month emi",
+      "found": "2026-10-22",
+      "expires": "2027-01-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-22-401k-match-free-money",
+      "format": "short",
+      "title": "The free money most workers leave on the table",
+      "category": "retirement",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "How to Avoid Paying Taxes (Legally)",
+        "views": 14000000,
+        "url": "https://www.youtube.com/shorts/luo0aKcAyIs"
+      },
+      "hook": "Your boss will literally give you free money. Most people say no.",
+      "angle": "An employer match (stated example: 50% of 6% on a $60,000 salary) left unclaimed, and what it becomes over 30 years.",
+      "why_now": "Demand first: a format with proven demand (see demand).",
+      "maths": "sip: monthly = 60000*0.06*0.5/12 (code computes), rate_pct 7 (assumed), years 30; match rules vary by employer, say so",
+      "found": "2026-10-22",
+      "expires": "2027-01-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-22-us-money-levels",
+      "format": "short",
+      "title": "The 5 money levels in America: which one are you?",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "which_one_are_you"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "Do These 5 Things To Win With Money",
+        "views": 6400000,
+        "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"
+      },
+      "hook": "There are five money levels. Which one are you on?",
+      "angle": "Paycheck to paycheck, emergency fund, debt-free, investing, money works for you: one computed figure per level.",
+      "why_now": "Demand first: a format with proven demand (see demand).",
+      "maths": "one sip per level with stated monthly amounts (e.g. 0, 100, 300, 750, 1500), rate_pct 7 (assumed), years 20; no claim about where 'most' are unless sourced: say 'many'",
+      "found": "2026-10-22",
+      "expires": "2027-01-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-22-10-dollars-a-day-guess",
+      "format": "short",
+      "title": "Guess what $10 a day becomes in 30 years",
+      "category": "habit",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "guess_the_number"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "How Much Do You Need To Retire At 40?",
+        "views": 5100000,
+        "url": "https://www.youtube.com/shorts/Jk5ThWdybis"
+      },
+      "hook": "Ten dollars a day. Thirty years. Guess the number before I show you.",
+      "angle": "Three guesses on screen, then the computed answer; a projection, so keep the PROJECTION share in mind.",
+      "why_now": "Demand first: a format with proven demand (see demand).",
+      "maths": "sip: monthly 304 (10 a day, code computes 10*365/12), rate_pct 7 (assumed), years 30",
+      "found": "2026-10-22",
+      "expires": "2027-01-20",
+      "status": "new"
     }
   ]
 }

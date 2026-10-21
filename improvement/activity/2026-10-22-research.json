@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "day": "2026-10-22",
+  "startedAt": "2026-10-21T18:21:09Z",
+  "finishedAt": "2026-10-21T18:25:09Z",
+  "summary": "Titles and first-frame night: added 8 demand-format topics (4 INR, 4 US) and 2 proposals; found that our newest Short's first frame doesn't show its hook figure.",
+  "decision": "acted",
+  "why": "Our own rule says the first frame shows a big number or question; v-20261021-04 shows only 'POOR GUY GETS' at 0 s because chip.at='start' falls back to 0.4 s. The feed needed fresh topics in formats with 5M+ view references.",
+  "findings": [
+    {
+      "title": "First frame misses the hook figure",
+      "detail": "v-20261021-04 at 0.0 s: no chip, the ₹20,000 raise isn't on screen. Proposal hook-text-on-frame-0 (adopt).",
+      "link": "improvement/research/2026-10-22.md"
+    },
+    {
+      "title": "First reset Short is doing well",
+      "detail": "'Rich vs Poor: your ₹20,000 raise 💸' has 59 views, third most of any Short; the billionaires one has 12.",
+      "link": "improvement/research/2026-10-22.md"
+    },
+    {
+      "title": "Emojis in Shorts titles correlate with +49% views",
+      "detail": "vidIQ, 128.5M videos (long videos −11%). Correlation only; our planner already allows one emoji. No change.",
+      "link": "https://vidiq.com/blog/post/emojis-in-youtube-titles/"
+    },
+    {
+      "title": "Debt-trap Shorts are hot this week",
+      "detail": "Caleb Hammer's bankruptcy Short: 1.09M views in 4 days (28 s). Added to formats.json trap_alert; feed topic: the 72-month car loan trap.",
+      "link": "https://youtube.com/shorts/SzTWCWHzMJQ"
+    },
+    {
+      "title": "Claude Code 2.1.305–2.1.306",
+      "detail": "Cloud-session and retry fixes; nothing for the pipeline to change.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "8 topics in the feed",
+      "detail": "Diwali bonus rich vs poor, ₹50K Bengaluru salary, bank's spread, inflation vs savings, 72-month car loan, 401(k) match, US money levels, $10 a day guess.",
+      "branch": "agent/research/2026-10-22"
+    },
+    {
+      "title": "2 proposals",
+      "detail": "hook-text-on-frame-0 (adopt), title-names-the-moment (experiment).",
+      "branch": "agent/research/2026-10-22"
+    }
+  ],
+  "nextCheck": "2026-10-23",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-22.md"
+    }
+  ]
+}

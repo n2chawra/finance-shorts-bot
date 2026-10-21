@@ -1,32 +1,18 @@
 {
   "notifications": [
     {
-      "key": "uk-budget-event-day-2026-10-28",
-      "severity": "info",
-      "title": "Optional: a one-off event-day run for the UK Budget on Wed 28 Oct",
-      "detail": "The Chancellor delivers the Budget on 28 Oct from about 12:30 London = 18:00 IST. The Fed decides the same day at 23:30 IST, which the 23:47 research run picks up on its own. Without a one-off run, the Budget video is made on 29 Oct at 04:07 IST, a day after everyone else covers it.",
-      "fix": "1. Wait for the 27 Oct research run to write improvement/events/2026-10-28-uk-budget.json (it lands on main by the morning of the 28th). 2. claude.ai/code → Routines → New → one-off on 28 Oct at 19:15 IST, this repo, prompt: 'Read generator/prompts/event_day.md and follow it exactly.' 3. Otherwise do nothing: the 29 Oct video run takes it from the feed."
-    },
-    {
-      "key": "uk-cpi-event-day-2026-10-21",
-      "severity": "info",
-      "title": "Optional: a one-off event-day run for UK inflation today, Wed 21 Oct",
-      "detail": "ONS publishes September CPI at 07:00 London = 11:30 IST. The event file improvement/events/2026-10-21-uk-cpi.json is already on main. Without a one-off run, tonight's research run feeds it to the 22 Oct 04:07 video run.",
-      "fix": "1. claude.ai/code → Routines → New → one-off today at 11:45 IST, this repo, prompt: 'Read generator/prompts/event_day.md and follow it exactly.' 2. Otherwise do nothing."
-    },
-    {
       "key": "published-short-inconsistent-figures",
       "severity": "warning",
       "title": "A published Short shows the same amount two different ways",
-      "detail": "v-20261017-04 ('How much do impulse orders really cost you in 15 years?') shows '₹6.5 L gone' at 15.9 s but 'Put in ₹6.4 L' at 26.7 s, and 'Worth ₹16.3 L' at 26.7 s but '₹16.5 L' on the bar at 32.2 s. It is now the channel's most-viewed video (283 views). It was made by the old money_leak_meter template, which no longer exists; the adopted same-figure-same-text check stops new videos doing this.",
+      "detail": "v-20261017-04 ('How much do impulse orders really cost you in 15 years?') shows '₹6.5 L gone' at 15.9 s but 'Put in ₹6.4 L' at 26.7 s, and 'Worth ₹16.3 L' at 26.7 s but '₹16.5 L' on the bar at 32.2 s. It is one of the channel's most-viewed videos (284 views). It was made by the old money_leak_meter template, which no longer exists; the adopted same-figure-same-text check stops new videos doing this.",
       "fix": "Only the owner handles uploads: in YouTube Studio, open that Short and either set it to Private/Unlisted or leave it up (the gap is a rounding and convention difference, not a wrong claim). Nothing to change in the repo."
     },
     {
       "key": "narrator-voice-listen-test",
       "severity": "info",
       "title": "Optional: listen to two better-rated voices for the narrator",
-      "detail": "Kokoro's own grades: af_heart A, af_bella A-, bf_emma (British) B-, but am_michael, am_fenrir and am_puck only C+. bf_emma could suit the UK stories (pound videos, the Budget next week). Voices are picked by your ear, so research hasn't proposed a change.",
-      "fix": "1. On your computer: bash scripts/setup-voice.sh, then make a short sample with bf_emma and am_michael (renderer/engine/voice.py speak_timed). 2. If you like bf_emma, ask the improver (or edit NARRATOR_VOICES in renderer/timeline/build.py) to add it, for example for GBP scripts only. 3. Otherwise ignore this."
+      "detail": "Kokoro's own grades: af_heart A, af_bella A-, bf_emma (British) B-, but am_michael, am_fenrir and am_puck only C+. Voices are picked by your ear, so research hasn't proposed a change.",
+      "fix": "1. On your computer: bash scripts/setup-voice.sh, then make a short sample with bf_emma and am_michael (renderer/engine/voice.py speak_timed). 2. If you like one, ask the improver (or edit NARRATOR_VOICES in renderer/timeline/build.py) to add it. 3. Otherwise ignore this."
     }
   ]
 }
