@@ -29,7 +29,7 @@ def script_for(plan: dict) -> dict:
 @pytest.fixture(autouse=True)
 def fake_render(monkeypatch: pytest.MonkeyPatch) -> None:
     """Remotion stands in: tests don't launch Chrome. A 36 s video in the script's style."""
-    def story(script: dict, out: Path, preview: bool = False) -> dict:
+    def story(script: dict, out: Path, preview: bool = False, stop_if=None) -> dict:
         report = {"renderer": "remotion", "template": script["template"], "seed": script["seed"], "duration_sec": 36,
                   "style": dict(script["style"]), "voice": None, "layout_problems": [], "liveliness_problems": []}
         out.mkdir(parents=True, exist_ok=True)
@@ -235,7 +235,7 @@ def test_render_rejects_length_outside_settings(root: Path) -> None:
 def test_long_story_renders_with_remotion_and_fails_a_frozen_picture(root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     seen = {}
 
-    def fake_story(script: dict, out: Path, preview: bool = False) -> dict:
+    def fake_story(script: dict, out: Path, preview: bool = False, stop_if=None) -> dict:
         seen["template"] = script["template"]
         return {"renderer": "remotion", "duration_sec": 540, "layout_problems": [], "style": {"palette": "night", "genre": "lofi"},
                 "voice": {"name": "am_michael", "lines": [{"scene": "a", "fill": 0.8, "window": 5, "seconds": 4}]},

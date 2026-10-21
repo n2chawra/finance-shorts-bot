@@ -13,8 +13,9 @@ way a viewer on a phone would. You did not make it.
 - `videos/<id>/script.json`: the storyboard, so you know what each beat meant to show.
 
 Code has already checked text size, the bottom safe zone, text inside the frame, movement and
-audio levels (`layout_problems` and `liveliness_problems` must be empty). You are checking what
-code cannot see.
+audio levels (`layout_problems` and `liveliness_problems` must be empty). You usually review the
+stills before the video is drawn: then `liveliness` isn't in `render.json` yet, and the video's
+own render checks it. You are checking what code cannot see.
 
 ## Reject if any of these is true
 

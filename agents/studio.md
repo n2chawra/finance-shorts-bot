@@ -113,24 +113,37 @@ Spawn one subagent. Give it only the video id and the instruction to read
 It will also check the topic's `verify` list. If it fails the script, fix exactly what it named and
 ask the **same** subagent again. Two rewrites at most.
 
-## 5. Render
-```
-nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
-```
-**This takes 20–40 minutes** and a command may only run 10, so start it in the background like
-this and check `tail -3 /tmp/render-<id>.log` every few minutes. If it is cut off, run the same
-command again: finished 60-second chunks are kept and it carries on. It must end with `ok`. If it
-prints `FAIL:` lines (a beat with no visible movement, a length outside 180–900 s), fix the
-script and go back to section 3.
+## 5. Stills first, then QA review, then the video
+The video is the slow part, so QA looks at the stills **before** it is drawn (2026-10-21: the
+first long video was rendered three times, twice for problems the stills already showed).
+
+1. **Stills** (a few minutes):
+   ```
+   nohup python -m generator.run render <id> --preview > /tmp/stills-<id>.log 2>&1 &
+   ```
+   It builds the voice and timeline, draws the contact sheet, the thumbnails and the layout
+   probe, and checks layout, length (480–900 s) and sound. It must end with `ok`. `FAIL:` lines:
+   fix the script and go back to section 3.
+2. **QA review** (section 6) on those stills; fix what it names and run the stills again (the
+   voice is cached).
+3. **The video**, once QA has passed:
+   ```
+   nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
+   ```
+   **This takes 15–30 minutes** and a command may only run 10, so start it in the background like
+   this and check `tail -3 /tmp/render-<id>.log` every few minutes. If it is cut off, run the same
+   command again: finished 60-second chunks are kept and it carries on. It must end with `ok`. A
+   `FAIL:` here is the motion gate (a beat with no visible movement): fix that beat and render
+   again; a re-render that only changed the sound reuses the picture.
 
 ## 6. QA review (a subagent with fresh context)
 Spawn a second subagent: the video id, and the instruction to read `generator/prompts/qa_reviewer.md`
-and follow it exactly. For a long video it must also look at `videos/<id>/thumbnail.png` on its own
-(is it readable small? does it promise what the video delivers?), at `videos/<id>/preview.png`
-(a still every 5 seconds: cut-off or tiny text, overlaps, an empty frame, the same picture too
-long) and at `liveliness` in `render.json`.
+and follow it exactly, on the stills from step 5.1. For a long video it must also look at
+`videos/<id>/thumbnail.png` on its own (is it readable small? does it promise what the video
+delivers?) and at `videos/<id>/preview.png` (a still every 5 seconds: cut-off or tiny text,
+overlaps, an empty frame, the same picture too long).
 
-Fix what it names and re-render. **Two re-renders at most**; each one costs half an hour.
+Fix what it names and render the stills again. **Two rounds at most**.
 
 ## 7. Ship
 Put the chapter timestamps into the description (`chapters` in `videos/<id>/render.json`, in

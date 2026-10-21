@@ -2,22 +2,17 @@
  * Surface: a fine paper grain over every frame (the handmade, printed feel of the best animated
  * finance channels) and quiet patterned backgrounds (grid paper, dots, soft waves) for scenes that
  * need a backdrop but no place. The grain is static: it adds texture, never fake motion, so the
- * liveliness gate still measures only real animation.
+ * liveliness gate still measures only real animation. It is a tiled image (public/grain.png: 256 px of
+ * seeded noise, black with the darkening in its alpha, which equals the old 7% multiply blend): the
+ * full-frame SVG noise filter and blend it replaced were recomputed on every frame and cost about a
+ * third of the render time (measured 2026-10-21).
  */
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, staticFile } from "remotion";
 import type { PaletteT } from "../contract/timeline";
 
-export const Grain: React.FC<{ opacity?: number }> = ({ opacity = 0.07 }) => (
-  <AbsoluteFill style={{ pointerEvents: "none", mixBlendMode: "multiply", opacity }} data-probe="skip">
-    <svg width="100%" height="100%">
-      <filter id="grain-f" x="0" y="0">
-        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves={2} seed={7} stitchTiles="stitch" />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
-      <rect width="100%" height="100%" filter="url(#grain-f)" />
-    </svg>
-  </AbsoluteFill>
+export const Grain: React.FC = () => (
+  <AbsoluteFill style={{ pointerEvents: "none", backgroundImage: `url(${staticFile("grain.png")})`, backgroundRepeat: "repeat" }} data-probe="skip" />
 );
 
 export type PatternKind = "grid" | "dots" | "waves" | "rays";

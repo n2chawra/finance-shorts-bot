@@ -79,27 +79,41 @@ script or why you wrote it that way. Wait for its verdict.
 If it fails the script: fix the lines it named (section 3 again, including the number check),
 then ask the **same** subagent to review again. Two rewrites at most.
 
-## 5. Render (code)
+## 5. Stills first, then QA review, then the video
 
-```
-python -m generator.run render <id>
-```
+Rendering the video is the slow part, so QA looks at the stills **before** it is drawn
+(2026-10-21: most re-renders were QA or layout rejections found after a full render).
 
-This takes several minutes: run it with a long timeout or in the background and wait for it.
-A Short takes 4–8 minutes; start it in the background
-(`nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &`) and check
-`tail -3 /tmp/render-<id>.log` every minute or two. It must print `ok`. If it prints `FAIL:` lines, fix the script and go back to section 3.
+1. **Stills** (about a minute):
+   ```
+   python -m generator.run render <id> --preview
+   ```
+   It builds the voice and timeline, draws the contact sheet (`preview.png`), the thumbnail and
+   the layout probe, and checks layout, length and sound levels. It must print `ok`. `FAIL:` lines:
+   fix the script and go back to section 3.
+2. **QA review** (section 6) on those stills. Fix what it names and run the stills again; the
+   voice is cached, so this is quick.
+3. **The video**, once QA has passed:
+   ```
+   nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
+   ```
+   A Short takes 2–5 minutes; check `tail -3 /tmp/render-<id>.log` every minute or two. It must
+   print `ok`. A `FAIL:` here is the motion gate (`liveliness`): fix the beat it names and render
+   again. A re-render that only changed the sound reuses the picture already drawn, and the
+   Remotion bundle is built once per run.
 
 ## 6. QA review (a subagent with fresh context)
 
 Spawn one subagent. Give it only the video id and the instruction to read
 `generator/prompts/qa_reviewer.md` and follow it exactly, opening the PNG files so it sees them.
+It reviews the stills from step 5.1; after the video is rendered it doesn't need to look again
+unless the video's render printed `FAIL:`.
 
-If it fails the video, fix each problem according to its tag. Re-render and ask the **same**
-QA subagent to review again. Three re-renders at most per video.
+If it fails the video, fix each problem according to its tag, render the stills again and ask the
+**same** QA subagent to review again. Three rounds at most per video.
 
 - **`[script]`:** fix the script lines it named, re-run the number check, ask the fact reviewer
-  to re-review the changed lines, then render again.
+  to re-review the changed lines, then render the stills again.
 - **`[template]`** or **`[scene]`:** a problem in how a scene draws (overlap, cut-off text, a frozen
   picture) is in Remotion code, which the routine does not change. First try a script fix that
   avoids it (another scene, fewer words on screen, an actor moved). If no script change can, go

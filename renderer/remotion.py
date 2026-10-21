@@ -8,7 +8,9 @@ chunk is retried alone), joins the chunks, muxes the WAV, and lays out a contact
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -23,6 +25,28 @@ from renderer.engine.preview import contact_sheet
 from renderer.gates import check_liveliness, layout_problems
 
 REMOTION = Path(__file__).resolve().parent.parent/"remotion"
+# survives a render's work folder: the bundle (per source version) and silent videos (per picture),
+# so a re-render after a script, sound or gate fix redoes only what changed
+CACHE = Path(os.environ.get("REMOTION_CACHE", Path(tempfile.gettempdir())/"remotion-cache"))
+KEEP_SILENT = 12          # silent videos kept in the cache, newest first
+CORES = max(1, os.cpu_count() or 1)   # Remotion renders at most one frame per core at a time
+
+
+def source_hash() -> str:
+    """Everything that decides how a frame is drawn: the Remotion source, assets and lockfile."""
+    h = hashlib.sha1()
+    files = sorted(f for d in ("src", "public", "scripts") for f in (REMOTION/d).rglob("*") if f.is_file())
+    for f in [*files, REMOTION/"package-lock.json"]:
+        if f.is_file():
+            h.update(f.relative_to(REMOTION).as_posix().encode())
+            h.update(f.read_bytes())
+    return h.hexdigest()[:16]
+
+
+def picture_key(tl: dict) -> str:
+    """A silent video depends on the timeline and the source, not on the mixed sound's levels."""
+    visual = {k: v for k, v in tl.items() if k != "audio"}
+    return hashlib.sha1((source_hash() + json.dumps(visual, sort_keys=True)).encode()).hexdigest()[:20]
 
 
 def _node(args: list[str], on_line: Callable[[str], None] = print) -> None:
@@ -43,15 +67,28 @@ def _node(args: list[str], on_line: Callable[[str], None] = print) -> None:
         raise RuntimeError(f"render.ts {args[0]} failed:\n" + "\n".join(tail))
 
 
-def bundle(out: Path) -> Path:
-    _node(["bundle", "--out", str(out)])
-    return out
+def bundle() -> Path:
+    """The Remotion bundle, built once per source version and reused (about 6-20 s each time)."""
+    cached = CACHE/f"bundle-{source_hash()}"
+    if (cached/"index.html").is_file():
+        return cached
+    tmp = CACHE/f"bundle-tmp-{os.getpid()}"
+    shutil.rmtree(tmp, ignore_errors=True)
+    tmp.parent.mkdir(parents=True, exist_ok=True)
+    _node(["bundle", "--out", str(tmp)])
+    if (cached/"index.html").is_file():          # built meanwhile by another render
+        shutil.rmtree(tmp, ignore_errors=True)
+    else:
+        shutil.rmtree(cached, ignore_errors=True)
+        tmp.replace(cached)
+    return cached
 
 
 def stills(timeline: Path, out: Path, *, frames: list[int] | None = None, every: float = 5.0,
            bundle_dir: Path | None = None, probe: list[dict] | None = None) -> list[Path]:
-    """Stills as f<frame>.jpg. Pass a list as `probe` to also collect the layout probe's text boxes."""
-    args = ["stills", "--timeline", str(timeline), "--out", str(out)]
+    """Stills as f<frame>.jpg, several at once. Pass a list as `probe` to also collect the layout
+    probe's text boxes."""
+    args = ["stills", "--timeline", str(timeline), "--out", str(out), "--concurrency", str(CORES)]
     args += ["--frames", ",".join(map(str, frames))] if frames else ["--every", str(every)]
     if bundle_dir:
         args += ["--bundle", str(bundle_dir)]
@@ -68,11 +105,20 @@ def stills(timeline: Path, out: Path, *, frames: list[int] | None = None, every:
 
 
 def video(timeline: Path, out: Path, *, chunk: int = 1800, bundle_dir: Path | None = None,
-          concurrency: int = 4) -> Path:
+          concurrency: int = CORES) -> Path:
     """Silent mp4 of the whole timeline, rendered `chunk` frames at a time and joined without
-    re-encoding. A chunk already on disk is kept, so a rerun resumes where a cut-off one stopped."""
-    total = json.loads(timeline.read_text(encoding="utf-8"))["durationInFrames"]
-    parts_dir = out.parent/(out.stem + "-parts")
+    re-encoding. A chunk already on disk is kept, so a rerun resumes where a cut-off one stopped,
+    and a picture rendered before (same timeline and source, only the sound changed) is reused."""
+    tl = json.loads(timeline.read_text(encoding="utf-8"))
+    key = picture_key(tl)
+    cached = CACHE/f"silent-{key}.mp4"
+    if cached.is_file():
+        print("video: reusing the picture rendered before (only the sound changed)", flush=True)
+        shutil.copyfile(cached, out)
+        return out
+    total = tl["durationInFrames"]
+    # chunks belong to this picture only: a cut-off render resumes them, a changed script never does
+    parts_dir = out.parent/f"{out.stem}-parts-{key}"
     parts_dir.mkdir(parents=True, exist_ok=True)
     parts = []
     for i, start in enumerate(range(0, total, chunk)):
@@ -91,6 +137,10 @@ def video(timeline: Path, out: Path, *, chunk: int = 1800, bundle_dir: Path | No
     listing = parts_dir/"parts.txt"
     listing.write_text("".join(f"file '{p.name}'\n" for p in parts), encoding="utf-8")
     _ffmpeg(["-f", "concat", "-safe", "0", "-i", str(listing), "-c", "copy", str(out)])
+    CACHE.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(out, cached)
+    for stale in sorted(CACHE.glob("silent-*.mp4"), key=lambda f: f.stat().st_mtime, reverse=True)[KEEP_SILENT:]:
+        stale.unlink(missing_ok=True)
     return out
 
 
@@ -125,14 +175,15 @@ def check_thumbnail(path: Path, fmt: str) -> None:
 
 
 def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = False, every: float = 5.0,
-                    chunk: int = 1800, concurrency: int = 4) -> dict:
+                    chunk: int = 1800, concurrency: int = CORES,
+                    stop_if: Callable[[dict], list[str]] | None = None) -> dict:
     """timeline.json (+ its audio.wav) -> out/{video.mp4, thumbnail.png, preview.png, render.json}.
     `work` holds the bundle, stills and chunks. `preview` stops after the stills. Returns the
     report, in the keys the Pillow renderer's render.json has, so ship and the workers read either."""
     timeline, out, work = timeline.resolve(), out.resolve(), work.resolve()   # render.ts runs in remotion/
     out.mkdir(parents=True, exist_ok=True)
     tl = json.loads(timeline.read_text(encoding="utf-8"))
-    b = bundle(work/"bundle")
+    b = bundle()
     shots = stills(timeline, work/"stills", every=every, bundle_dir=b)
     # layout gate: each beat once its entrances have settled (70% through), measured by the probe
     probes: list[dict] = []
@@ -167,23 +218,30 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         "chapters": ([] if any(bt["from"] == 0 for bt in tl["beats"] if bt["scene"] == "chapter") else [{"title": "Intro", "start": 0.0}])
         + [{"title": bt["params"].get("title", ""), "start": round(bt["from"]/tl["fps"], 1)} for bt in tl["beats"] if bt["scene"] == "chapter"],
     }
-    if not preview:
+    report["audio"] = {"peak_db": tl["audio"]["peak_db"], "mean_db": tl["audio"]["mean_db"]}
+    # no point rendering a video the gates will reject: a layout problem, or one `stop_if` finds in
+    # the report (length, sound levels), skips it
+    early = list(report["layout_problems"]) + (stop_if(report) if stop_if else [])
+    if early and not preview:
+        print("video skipped: " + "; ".join(early), flush=True)
+        report["video_skipped"] = early
+    if not preview and not early:
         silent = video(timeline, work/"silent.mp4", chunk=chunk, bundle_dir=b, concurrency=concurrency)
         final = mux(silent, timeline.parent/tl["audio"]["file"], out/"video.mp4")
-        report["audio"] = {"peak_db": tl["audio"]["peak_db"], "mean_db": tl["audio"]["mean_db"]}
         report["liveliness"], report["liveliness_problems"] = check_liveliness(final)
     (out/"render.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return report
 
 
-def render_story(script: dict, out: Path, *, preview: bool = False, voice: str = "kokoro") -> dict:
+def render_story(script: dict, out: Path, *, preview: bool = False, voice: str = "kokoro",
+                 stop_if: Callable[[dict], list[str]] | None = None) -> dict:
     """A long_story script -> videos/<id>/ files: the timeline and audio are built into `out`,
     everything bulky (bundle, stills, chunks) goes to a work folder removed after a full render."""
     from renderer.timeline.build import build
     build(script, out, voice=voice)
     # a fixed work folder, so a render cut off part way resumes from its finished chunks
     work = Path(tempfile.gettempdir())/f"remotion-{out.name}"
-    report = render_timeline(out/"timeline.json", out, work, preview=preview)
+    report = render_timeline(out/"timeline.json", out, work, preview=preview, stop_if=stop_if)
     if not preview:
         shutil.rmtree(work, ignore_errors=True)
     return report
@@ -196,7 +254,7 @@ def main() -> int:
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--chunk", type=int, default=1800, help="frames per render chunk")
     ap.add_argument("--every", type=float, default=5.0, help="seconds between QA stills")
-    ap.add_argument("--concurrency", type=int, default=4)
+    ap.add_argument("--concurrency", type=int, default=CORES)
     ap.add_argument("--stills-only", action="store_true")
     a = ap.parse_args()
     report = render_timeline(a.timeline, a.out, a.out, preview=a.stills_only, every=a.every, chunk=a.chunk,
@@ -204,6 +262,8 @@ def main() -> int:
     print(f"preview: {a.out/'preview.png'}")
     if a.stills_only:
         return 0
+    if report.get("video_skipped"):
+        return 1
     print(f"video: {a.out/'video.mp4'}  liveliness {report['liveliness']}")
     for problem in report["liveliness_problems"]:
         print(f"FAIL: {problem}")

@@ -45,3 +45,13 @@ def test_a_thumbnail_must_match_its_format(tmp_path) -> None:
     check_thumbnail(tmp_path/"long.png", "long")
     with pytest.raises(RuntimeError, match="must be 1080x1920"):
         check_thumbnail(tmp_path/"long.png", "short")   # 2026-10-18: Shorts got landscape thumbnails
+
+
+def test_the_picture_key_ignores_the_sound_but_not_the_picture() -> None:
+    """A re-render that only changed the mix reuses the silent video (renderer/remotion.py)."""
+    from renderer import remotion
+    tl = {"id": "v", "beats": [{"id": "a", "frames": 30}], "audio": {"file": "audio.wav", "peak_db": -1.0, "mean_db": -14.8}}
+    quieter = {**tl, "audio": {**tl["audio"], "mean_db": -16.2}}
+    changed = {**tl, "beats": [{"id": "a", "frames": 31}]}
+    assert remotion.picture_key(tl) == remotion.picture_key(quieter)
+    assert remotion.picture_key(tl) != remotion.picture_key(changed)

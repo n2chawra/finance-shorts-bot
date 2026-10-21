@@ -231,6 +231,24 @@ def record(vid: str, agent: str, passed: bool, notes: list[str], root: Path = RO
     log_step(vid, agent, passed, notes, root)
 
 
+def gate_problems(report: dict, settings: dict, fmt: str) -> list[str]:
+    """The gates a render report can fail before or after the video: length, thin narration (long
+    videos) and sound levels."""
+    out = []
+    lo, hi = length_range(settings, fmt)
+    if not lo <= report["duration_sec"] <= hi:
+        out.append(f"length {report['duration_sec']} s is outside {lo}–{hi} s")
+    voice = report.get("voice")
+    if voice and fmt == "long":
+        for l in [l for l in voice.get("lines", []) if l["fill"] < MIN_VOICE_FILL]:
+            out.append(f"section {l['scene']}: the narration fills only {l['fill']*100:.0f}% of its "
+                       f"{l['window']:.0f} s ({l['seconds']:.0f} s spoken). Write more, or shorten the section.")
+    audio = report.get("audio")
+    if audio and not (-1.6 <= audio["peak_db"] <= -0.4 and -21 <= audio["mean_db"] <= -15):
+        out.append(f"audio levels off target: peak {audio['peak_db']} dB, mean {audio['mean_db']} dB")
+    return out
+
+
 def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     """Render into videos/<id>/ and apply the mechanical QA gates (layout, length, audio levels)."""
     d = _dir(vid, root)
@@ -251,24 +269,17 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
             _write(d / "script.json", script)
         # the video's A/B variants travel in the timeline, so scenes can read them and ship records them
         script["experiments"] = experiments.for_video(vid, script.get("template"), root)
-        report = remotion.render_story(script, d, preview=preview)
+        # length, narration and sound are known before the video is drawn: a render that would fail
+        # on them stops after the stills instead of after the whole video
+        gate = lambda r: gate_problems(r, settings, plan_format(script))
+        report = remotion.render_story(script, d, preview=preview, stop_if=gate)
     except (ValueError, RuntimeError) as e:
         log_step(vid, "render", False, [str(e)], root, started)
         return [str(e)]
-    problems = list(report["layout_problems"]) + list(report.get("liveliness_problems", []))
-    lo, hi = length_range(settings, plan_format(script))
-    if not lo <= report["duration_sec"] <= hi:
-        problems.append(f"length {report['duration_sec']} s is outside {lo}–{hi} s")
-    voice = report.get("voice")
-    if voice and plan_format(script) == "long":
-        thin = [l for l in voice.get("lines", []) if l["fill"] < MIN_VOICE_FILL]
-        for l in thin:
-            problems.append(f"section {l['scene']}: the narration fills only {l['fill']*100:.0f}% of its "
-                            f"{l['window']:.0f} s ({l['seconds']:.0f} s spoken). Write more, or shorten the section.")
+    problems = list(report["layout_problems"]) + list(report.get("liveliness_problems", [])) + gate_problems(report, settings, plan_format(script))
     audio = report.get("audio")
-    if audio and not (-1.6 <= audio["peak_db"] <= -0.4 and -21 <= audio["mean_db"] <= -15):
-        problems.append(f"audio levels off target: peak {audio['peak_db']} dB, mean {audio['mean_db']} dB")
-    ok_note = f"{report['duration_sec']} s, {report['style']['palette']}/{report['style']['genre']}" + (f", peak {audio['peak_db']} dB, mean {audio['mean_db']} dB" if audio else " (preview only)")
+    rendered = "liveliness" in report
+    ok_note = f"{report['duration_sec']} s, {report['style']['palette']}/{report['style']['genre']}" + (f", peak {audio['peak_db']} dB, mean {audio['mean_db']} dB" if audio and rendered else " (preview only)")
     warnings = []
     if plan_format(script) == "short" and (d / "timeline.json").exists():   # measured on the real voice timing
         warnings = [f"warning: {w}" for w in event_gaps(_read(d / "timeline.json")["beats"])]

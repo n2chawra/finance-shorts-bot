@@ -14,6 +14,7 @@
 import { bundle } from "@remotion/bundler";
 import { openBrowser, renderMedia, renderStill, selectComposition } from "@remotion/renderer";
 import { mkdirSync, readFileSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { findBrowser } from "./browser";
@@ -40,7 +41,7 @@ async function serveUrl(dir: string | undefined): Promise<string> {
 async function main(): Promise<void> {
   const { mode, opts } = args(process.argv.slice(2));
   const browserExecutable = findBrowser();
-  const concurrency = Number(opts.concurrency ?? 4);
+  const concurrency = Number(opts.concurrency ?? Math.max(1, os.cpus().length));
 
   if (mode === "bundle") {
     if (!opts.out) throw new Error("bundle needs --out");
@@ -69,6 +70,9 @@ async function main(): Promise<void> {
     await renderMedia({
       composition, serveUrl: url, inputProps, codec: "h264", outputLocation: path.resolve(opts.out),
       muted: true, imageFormat: "jpeg", jpegQuality: 92, crf: 18, pixelFormat: "yuv420p",
+      // veryfast: 15% quicker than the default medium at the same crf (measured 2026-10-21), and
+      // YouTube re-encodes every upload anyway
+      x264Preset: "veryfast",
       frameRange: [from, to], concurrency, browserExecutable,
       onProgress: ({ progress }) => {
         const p = Math.floor(progress * 50) / 50;                     // every 2%
@@ -93,14 +97,20 @@ async function main(): Promise<void> {
   }
   const browser = await openBrowser("chrome", { browserExecutable });
   try {
-    for (const [i, frame] of frames.entries()) {
-      const file = path.join(out, `f${String(frame).padStart(5, "0")}.jpg`);
-      await renderStill({
-        composition, serveUrl: url, inputProps, frame, output: file, imageFormat: "jpeg", jpegQuality: 85, puppeteerInstance: browser,
-        onBrowserLog: (log) => { if (log.text.startsWith("PROBE ")) console.log("probe " + log.text.slice(6)); },
-      });
-      console.log(`progress ${((i + 1) / frames.length).toFixed(2)}`);
-    }
+    // several tabs at once, one per core: a long video has 100+ stills and probes
+    let next = 0, done = 0;
+    const worker = async (): Promise<void> => {
+      while (next < frames.length) {
+        const frame = frames[next++]!;
+        const file = path.join(out, `f${String(frame).padStart(5, "0")}.jpg`);
+        await renderStill({
+          composition, serveUrl: url, inputProps, frame, output: file, imageFormat: "jpeg", jpegQuality: 85, puppeteerInstance: browser,
+          onBrowserLog: (log) => { if (log.text.startsWith("PROBE ")) console.log("probe " + log.text.slice(6)); },
+        });
+        console.log(`progress ${(++done / frames.length).toFixed(2)}`);
+      }
+    };
+    await Promise.all(Array.from({ length: Math.max(1, Math.min(concurrency, frames.length)) }, worker));
   } finally {
     await browser.close({ silent: true });
   }
