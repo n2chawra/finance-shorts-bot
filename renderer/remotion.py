@@ -23,6 +23,7 @@ from PIL import Image
 
 from renderer.engine.mux import find_ffmpeg
 from renderer.engine.preview import contact_sheet
+from renderer.craft import frame_problems, shot_problems
 from renderer.gates import check_liveliness, layout_problems
 
 REMOTION = Path(__file__).resolve().parent.parent/"remotion"
@@ -136,7 +137,7 @@ def stills(timeline: Path, out: Path, *, frames: list[int] | None = None, every:
     return sorted(out.glob("f*.jpg"))
 
 
-def video(timeline: Path, out: Path, *, chunk: int = 1800, bundle_dir: Path | None = None,
+def video(timeline: Path, out: Path, *, chunk: int = 1200, bundle_dir: Path | None = None,
           concurrency: int = CORES) -> Path:
     """Silent mp4 of the whole timeline, rendered `chunk` frames at a time and joined without
     re-encoding. A chunk already on disk is kept, so a rerun resumes where a cut-off one stopped,
@@ -207,7 +208,7 @@ def check_thumbnail(path: Path, fmt: str) -> None:
 
 
 def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = False, every: float = 5.0,
-                    chunk: int = 1800, concurrency: int = CORES,
+                    chunk: int = 1200, concurrency: int = CORES,
                     stop_if: Callable[[dict], list[str]] | None = None) -> dict:
     """timeline.json (+ its audio.wav) -> out/{video.mp4, thumbnail.png, preview.png, render.json}.
     `work` holds the bundle, stills and chunks. `preview` stops after the stills. Returns the
@@ -251,9 +252,12 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         + [{"title": bt["params"].get("title", ""), "start": round(bt["from"]/tl["fps"], 1)} for bt in tl["beats"] if bt["scene"] == "chapter"],
     }
     report["audio"] = {"peak_db": tl["audio"]["peak_db"], "mean_db": tl["audio"]["mean_db"]}
+    # a video that looks templated (empty frames, the same picture, one shot size, one set) fails
+    # here, on the stills, before the video is drawn (renderer/craft.py)
+    report["craft_problems"] = shot_problems(tl) + frame_problems(shots, tl["fps"])
     # no point rendering a video the gates will reject: a layout problem, or one `stop_if` finds in
     # the report (length, sound levels), skips it
-    early = list(report["layout_problems"]) + (stop_if(report) if stop_if else [])
+    early = list(report["layout_problems"]) + list(report["craft_problems"]) + (stop_if(report) if stop_if else [])
     if early and not preview:
         msg = "video skipped: " + "; ".join(early)
         enc = getattr(sys.stdout, "encoding", None) or "utf-8"
@@ -290,7 +294,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="timeline.json + audio.wav -> video.mp4, stills and preview.png")
     ap.add_argument("timeline", type=Path)
     ap.add_argument("--out", type=Path, required=True)
-    ap.add_argument("--chunk", type=int, default=1800, help="frames per render chunk")
+    ap.add_argument("--chunk", type=int, default=1200, help="frames per render chunk (under ~8 min each at the shot system's pace)")
     ap.add_argument("--every", type=float, default=5.0, help="seconds between QA stills")
     ap.add_argument("--concurrency", type=int, default=CORES)
     ap.add_argument("--stills-only", action="store_true")

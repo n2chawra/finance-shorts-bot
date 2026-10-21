@@ -70,6 +70,12 @@ Follow `generator/prompts/planner.md`. Use the id from `next_id` for the whole r
 Follow `generator/prompts/writer.md`. It ends with the number check, which is code and must
 print `ok`.
 
+Then write the video's **custom hook**, `remotion/src/videos/<id>/Hook.tsx`, as
+`remotion/src/videos/README.md` describes (build it from the studio kit; copy the reference hook's
+structure, not its picture: each video's hook is its own). The render checks it (imports, no
+randomness or clocks, `tsc`); if it fails twice, delete the file and the hook beat renders as its
+fallback shot. Ship commits it with the video.
+
 ## 4. Fact review (a subagent with fresh context)
 
 Spawn one subagent. Give it only this: the video id, and the instruction to read

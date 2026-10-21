@@ -36,6 +36,17 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 - **No digits and no currency sign ($, £, €, ₹) in any text or spoken line.** Placeholders only;
   code reads them aloud ("$1.2M" → "1.2 million dollars", "₹12.4 L" → "12.4 lakh rupees"). The
   build rejects a typed number.
+- **Build it from shots** (owner, 2026-10-21: "most of the screen empty, every video works like a
+  template"). Read `renderer/templates/SHOTS.md` and `.claude/skills/motion-direction/SKILL.md`
+  first; copy the shape of `examples/short_story_shot.json`, not its words. At least 60% of the
+  beats are `shot`s: a lit set, the cast big, money as a thing (a `stack`, a `flow`, a `phone`), a
+  camera that cuts between shot sizes on the words (wide, medium, close, extreme), a new set when the
+  story moves, a travelling transition (`zoom-through`, `match`, `whip`). The render fails a video
+  with empty frames, one shot size or one set (`renderer/craft.py`).
+- **The first beat is a custom hook** (`"scene": "hook"`, with a normal shot's `params` as its
+  fallback): write `remotion/src/videos/<id>/Hook.tsx` for this video, following
+  `remotion/src/videos/README.md` and its reference hook. The topic's world at its most extreme, the
+  conflict on screen in the first second.
 - **It's a skit, not a lecture** (owner reset, 2026-10-21). The viral finance Shorts are two or
   three characters talking: a rich mentor and a broke friend, a rich and a poor version of the same
   person, a salesman and a customer. Give most lines to the cast (`speaker`: rohan, priya, sharma),

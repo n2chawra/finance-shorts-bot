@@ -39,7 +39,13 @@ own render checks it. You are checking what code cannot see.
 
 10. **Story:** a beat whose picture doesn't match what is said over it, the same picture held
     for many beats in a row, or a character acting against the line (laughing at a loss).
-11. **Characters:** a limb bent the wrong way, a character cut off where it shouldn't be, two
+11. **Templated look** (motion direction, 2026-10-21): a still that is mostly flat background, a
+    number shown as text on a card when it could be a thing (a stack, a phone, a bill), the cast
+    small at the edge of a big empty frame, a set with no light or depth, or the same composition
+    as the still before. Code catches the worst (`craft_problems`); judge the rest against
+    `.claude/skills/motion-direction/SKILL.md`. Tag it `[script]` (another shot size, set or object
+    fixes it).
+12. **Characters:** a limb bent the wrong way, a character cut off where it shouldn't be, two
     characters overlapping. These are `[scene]` unless another actor position in the script fixes it.
 
 Confetti passing in front of text for a moment is acceptable. Judge the frames you can see; do

@@ -231,6 +231,9 @@ def record(vid: str, agent: str, passed: bool, notes: list[str], root: Path = RO
     log_step(vid, agent, passed, notes, root)
 
 
+LIVELY_BAR = {"short": 3.0, "long": 2.0}   # the shot system moves far more than the old layouts (gates.py floor: 1.2)
+
+
 def gate_problems(report: dict, settings: dict, fmt: str) -> list[str]:
     """The gates a render report can fail before or after the video: length, thin narration (long
     videos) and sound levels."""
@@ -243,6 +246,11 @@ def gate_problems(report: dict, settings: dict, fmt: str) -> list[str]:
         for l in [l for l in voice.get("lines", []) if l["fill"] < MIN_VOICE_FILL]:
             out.append(f"section {l['scene']}: the narration fills only {l['fill']*100:.0f}% of its "
                        f"{l['window']:.0f} s ({l['seconds']:.0f} s spoken). Write more, or shorten the section.")
+    lively = report.get("liveliness")
+    bar = LIVELY_BAR[fmt]
+    if lively and lively.get("median", 99) < bar:
+        out.append(f"motion median {lively['median']:.2f} is under {bar} for a {fmt} video in the shot system: "
+                   f"more camera moves, money in motion, set changes (the showcase scored 9.3)")
     audio = report.get("audio")
     if audio and not (-1.6 <= audio["peak_db"] <= -0.4 and -21 <= audio["mean_db"] <= -15):
         out.append(f"audio levels off target: peak {audio['peak_db']} dB, mean {audio['mean_db']} dB")
@@ -276,7 +284,8 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     except (ValueError, RuntimeError) as e:
         log_step(vid, "render", False, [str(e)], root, started)
         return [str(e)]
-    problems = list(report["layout_problems"]) + list(report.get("liveliness_problems", [])) + gate_problems(report, settings, plan_format(script))
+    problems = (list(report["layout_problems"]) + list(report.get("craft_problems", [])) + list(report.get("liveliness_problems", []))
+                + gate_problems(report, settings, plan_format(script)))
     # a Short's cover is designed, never a frame grabbed from the middle of the video (owner, 2026-10-21:
     # the first two new-style Shorts got a half-cut caption as their cover)
     if plan_format(script) == "short" and not script.get("thumbnail"):
@@ -364,7 +373,10 @@ def gh_exe() -> str:
 
 
 def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) -> None:
-    subprocess.run(["git", "add", f"videos/{vid}", "history/history.json"], cwd=root, check=True)
+    paths = [f"videos/{vid}", "history/history.json"]
+    if (root / "remotion" / "src" / "videos" / vid / "Hook.tsx").is_file():   # the video's own hook ships with it
+        paths.append(f"remotion/src/videos/{vid}")
+    subprocess.run(["git", "add", *paths], cwd=root, check=True)
     subprocess.run(["git", "commit", "-q", "-m", message], cwd=root, check=True)
     if push:
         subprocess.run(["git", "push", "-q", "origin", "HEAD:main"], cwd=root, check=True)

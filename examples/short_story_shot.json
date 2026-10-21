@@ -1,0 +1,579 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "id": "v-showcase-raise",
+  "seed": 52017,
+  "story": "rich_vs_poor",
+  "currency": "INR",
+  "narrator": "hf_alpha",
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "E",
+    "bpm": 112
+  },
+  "maths": [
+    {
+      "name": "rich",
+      "kind": "sip",
+      "monthly": 20000,
+      "rate_pct": 12,
+      "years": 10
+    },
+    {
+      "name": "phone",
+      "kind": "emi",
+      "amount": 150000,
+      "rate_pct": 16,
+      "years": 2
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "pose": "phone",
+    "prop": "phone",
+    "expression": "worried",
+    "who2": "sharma",
+    "pose2": "thumbsUp",
+    "expression2": "proud",
+    "layout": "versus",
+    "angle": "versus",
+    "words": "Your {rich_amount} *raise*",
+    "small": "{phone_emi}",
+    "tag": "Phone EMI",
+    "figure": "{rich_final}",
+    "to": "Invested"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "speaker": "narrator",
+      "say": "Poor guy gets {rich_amount} more salary. Rich guy gets the same raise.",
+      "events": {
+        "poor": {
+          "word": "Poor"
+        },
+        "rich": {
+          "word": "Rich"
+        },
+        "same": {
+          "word": "same"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "poor"
+        },
+        {
+          "kind": "kaching",
+          "at": "poor",
+          "gain": 0.4
+        },
+        {
+          "kind": "pop",
+          "at": "rich"
+        },
+        {
+          "kind": "kaching",
+          "at": "rich",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "poor": "Poor",
+        "rich": "Rich",
+        "toast": "+{rich_amount}",
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "emi",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "New phone! Only {phone_emi} a month!",
+      "events": {
+        "only": {
+          "word": "Only"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "only"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "laugh"
+              },
+              {
+                "at": "only",
+                "pose": "celebrate",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "emi",
+            "spot": "right",
+            "height": 0.4,
+            "title": "EMI plan",
+            "figure": "{phone_emi}",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Months",
+                "value": "{phone_months}"
+              },
+              {
+                "label": "Interest",
+                "value": "{phone_interest}"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "emi"
+          }
+        ]
+      }
+    },
+    {
+      "id": "drain",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Every month, that EMI walks out of his account. Two years, and {phone_interest} is just interest.",
+      "events": {
+        "walks": {
+          "word": "walks"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "two": {
+          "word": "Two"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "walks",
+          "gain": 0.4
+        },
+        {
+          "kind": "fail",
+          "at": "interest",
+          "gain": 0.5
+        },
+        {
+          "kind": "tick",
+          "at": "two",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried",
+                "turn": 0.4
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "flow",
+            "from": "rohan",
+            "to": "center",
+            "at": "walks",
+            "dur": 2.6,
+            "n": 16
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "two",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          },
+          {
+            "at": "interest",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "EMI",
+          "at": "walks",
+          "color": "bad"
+        }
+      }
+    },
+    {
+      "id": "rich",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Same raise. I invest all of it. Every single month.",
+      "events": {
+        "inv": {
+          "word": "invest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "inv"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "inv",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "kept",
+            "spot": "right",
+            "amount": "@rich.final",
+            "text": "{rich_final}",
+            "label": "Invested",
+            "at": "inv",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "inv",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Invest",
+          "at": "inv",
+          "color": "good",
+          "where": "left"
+        }
+      }
+    },
+    {
+      "id": "grow",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Ten years at {rich_rate} a year, and that raise becomes {rich_final}.",
+      "events": {
+        "bec": {
+          "word": "becomes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.35
+        },
+        {
+          "kind": "boom",
+          "at": "bec",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "tower",
+            "spot": "center",
+            "amount": "@rich.final",
+            "text": "{rich_final}",
+            "label": "Ten years",
+            "at": "start",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "tower"
+          },
+          {
+            "at": "bec",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "and-me",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "And my phone?",
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "punch",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Your phone? Old in two years. Worth almost nothing.",
+      "events": {
+        "nothing": {
+          "word": "nothing"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "nothing",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "nothing",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "gap",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Spend it, and the raise is gone. Invest it, and it becomes {rich_final}.",
+      "events": {
+        "spend": {
+          "word": "Spend"
+        },
+        "bec": {
+          "word": "becomes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "spend",
+          "gain": 0.4
+        },
+        {
+          "kind": "kaching",
+          "at": "bec"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "spent",
+            "spot": "left",
+            "amount": "@phone.total_paid",
+            "text": "{phone_total_paid}",
+            "label": "Spent",
+            "at": "spend",
+            "tone": "bad"
+          },
+          {
+            "kind": "stack",
+            "id": "kept",
+            "spot": "right",
+            "amount": "@rich.final",
+            "text": "{rich_final}",
+            "label": "Invested",
+            "at": "bec",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "spent"
+          },
+          {
+            "at": "bec",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Same raise. Two lives. So, next time a poor guy gets a raise...",
+      "events": {
+        "next": {
+          "word": "next"
+        }
+      },
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "enter": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "next",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Rich or poor?",
+          "at": "next"
+        }
+      }
+    }
+  ]
+}

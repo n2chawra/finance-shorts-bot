@@ -58,7 +58,14 @@ python -m generator.run check-plan <id>
 ```
 
 ## 3. Write the script
-Read `renderer/templates/long_story/README.md` and `examples/long_story.json` first: the README is
+**The shot system first** (owner, 2026-10-21): read `renderer/templates/SHOTS.md`,
+`.claude/skills/motion-direction/SKILL.md` and `examples/short_story_shot.json` (the approved
+showcase, a Short: the same shots work in 16:9). At least 60% of the beats are `shot`s, each chapter
+in its own set, the camera changing size on the words; then write the video's custom hook,
+`remotion/src/videos/<id>/Hook.tsx` (`remotion/src/videos/README.md`). The render fails a video
+with empty frames, one shot size or one set (`renderer/craft.py`).
+
+Then read `renderer/templates/long_story/README.md` and `examples/long_story.json`: the README is
 the contract (beats, scenes, cast, acting, events, numbers) and the example is a video the owner
 approved. Write `videos/<id>/script.json` with `"template": "long_story"`, `"format": "long"`,
 and the plan's `seed` and `style`.
@@ -130,9 +137,9 @@ first long video was rendered three times, twice for problems the stills already
    ```
    nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
    ```
-   **This takes 15–30 minutes** and a command may only run 10, so start it in the background like
+   **This takes 40–80 minutes** for 8–12 min at the shot system's detail, and a command may only run 10, so start it in the background like
    this and check `tail -3 /tmp/render-<id>.log` every few minutes. If it is cut off, run the same
-   command again: finished 60-second chunks are kept and it carries on. It must end with `ok`. A
+   command again: finished 40-second chunks are kept and it carries on. It must end with `ok`. A
    `FAIL:` here is the motion gate (a beat with no visible movement): fix that beat and render
    again; a re-render that only changed the sound reuses the picture.
 

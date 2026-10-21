@@ -10,6 +10,15 @@ script.json ──python -m renderer.timeline.build──▶ timeline.json + aud
 
 Python owns every number, every moment and every sound. Remotion only draws.
 
+## The shot system (required since 2026-10-21)
+
+**Read [`../SHOTS.md`](../SHOTS.md) and `.claude/skills/motion-direction/SKILL.md` first.** A long
+video is built from composed `shot` beats (at least 60% of the beats, chapters and the end card
+aside), with a custom `hook` beat first. Each chapter moves to its own set; shot sizes change on the
+words (at least 4 sizes per video, a close shot at least every 15 s). The scene table below is the
+older layout kit: a `screen` chart, a `source` document or a `chapter` card still fit, as the
+exception.
+
 ## The script
 
 | field | |

@@ -41,6 +41,12 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   millions (`improvement/research/formats.json`: rich vs poor, what the rich know, traps, how they
   make money, salary breakdowns, which one are you…), named in the plan's `story` with a reference
   video in `demand`. News is never a reason to make a video on its own.
+- **The shot system** (owner, 2026-10-21: "every video works like a template"): videos are built
+  from composed `shot` beats (lit layered sets, the cast big, money as a thing, a camera with shot
+  sizes, travelling transitions; `remotion/src/studio/`, `renderer/templates/SHOTS.md`, the
+  `motion-direction` skill) and a custom hook per video (`remotion/src/videos/<id>/Hook.tsx`). The
+  craft gates (`renderer/craft.py`) fail a video with empty frames, repeated pictures, one shot
+  size or one set.
 - Every video carries the disclaimer "Illustrative only. Not financial advice.": long videos on the
   end card; Shorts (no end card, they loop) as a small line over the last moments; and every
   description (check-plan).

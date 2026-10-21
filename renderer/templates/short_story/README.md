@@ -6,6 +6,14 @@ that README for the script fields, `maths` kinds, beats, events, acting and the 
 Example: [`examples/short_story.json`](../../../examples/short_story.json). There is no
 `schema.json`: `python -m generator.run number-check <id>` validates the whole script.
 
+## The shot system (required since 2026-10-21)
+
+**Read [`../SHOTS.md`](../SHOTS.md) and `.claude/skills/motion-direction/SKILL.md` first.** A new
+Short is built from composed `shot` beats (a lit set, the cast big, money as a thing, a camera
+with shot sizes) plus a custom `hook` for its first beat: at least 60% of the beats, or the render
+fails. The older scenes below (`stage`, `bill`, `road`, `fork`, `prop`, `kinetic`…) may still fill
+a beat or two, never more. Reference: [`examples/short_story_shot.json`](../../../examples/short_story_shot.json).
+
 ## What is different in a Short
 
 - `"format": "short"`, `"template": "short_story"`.
@@ -30,7 +38,7 @@ Example: [`examples/short_story.json`](../../../examples/short_story.json). Ther
 
 ## The visual kit in a Short
 
-Most beats should be `prop`, `screen`, `equation` or `kinetic` with a `presenter` at the bottom:
+(Before the shot system) Most beats were `prop`, `screen`, `equation` or `kinetic` with a `presenter` at the bottom:
 the graphic carries the figure in the top part, a cast member talks below (see the long_story
 README for every option). Use a `kinetic` typed card for the turn of the story, one `stage` beat
 for a character moment with a `bubble`, and keep plain `bignumber` beats rare. Example:
