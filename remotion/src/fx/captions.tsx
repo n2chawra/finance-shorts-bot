@@ -4,7 +4,8 @@
  * times (`voice.captions`: words as written, a figure as it shows on screen). A few words at a
  * time, the word being spoken highlighted, each group popping in as it starts.
  *
- * Shorts: big, centred a little below the middle, clear of the bottom UI and the right-hand buttons.
+ * Shorts: big, over the wall above the cast's heads in a `stage` beat and in the lower third
+ * elsewhere, clear of the bottom UI and the right-hand buttons.
  * Long videos: a smaller line in the lower third.
  */
 import React from "react";
@@ -16,6 +17,7 @@ interface Token { t: string; s: number; e: number }   // real seconds from the s
 const MAX_WORDS = 3;          // words in a group
 const MAX_CHARS = 18;         // a group breaks early when it would get wider than this
 const BREAK_GAP = 0.32;       // a pause this long starts a new group
+const HIGH = new Set(["stage"]);   // scenes with an empty wall above the cast
 
 /** Every caption token of the video on the real clock. */
 export function captionTokens(tl: Timeline): Token[] {
@@ -46,18 +48,22 @@ export function captionGroups(tokens: Token[]): Token[][] {
   return groups;
 }
 
-export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][] }> = ({ tl, frame, groups }) => {
+export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]; scene: string }> = ({ tl, frame, groups, scene }) => {
   const t = frame / tl.fps;
   // the group on screen: from its first word until the next group starts (or shortly after its last word)
-  const i = groups.findIndex((g, k) => t >= g[0]!.s && t < Math.min(groups[k + 1]?.[0]!.s ?? Infinity, g[g.length - 1]!.e + 0.45));
+  let i = groups.findIndex((g, k) => t >= g[0]!.s && t < Math.min(groups[k + 1]?.[0]!.s ?? Infinity, g[g.length - 1]!.e + 0.45));
+  // the hook's first words are on screen from frame 0: that frame is what the feed shows
+  if (i < 0 && groups.length && t < groups[0]![0]!.s && groups[0]![0]!.s < 1) i = 0;
   if (i < 0) return null;
   const g = groups[i]!;
   const v = tl.height > tl.width;
   const size = v ? 96 : 58;
-  const since = t - g[0]!.s;
+  const since = t < g[0]!.s ? 1 : t - g[0]!.s;          // already shown in full before it is spoken
   const k = Math.min(1, since / 0.12);
   const scale = 0.82 + 0.18 * (1 - (1 - k) ** 3) + (k >= 1 ? 0 : 0.04 * Math.sin(k * Math.PI));
-  const top = v ? tl.height * 0.6 : tl.height * 0.8;
+  // Shorts: on the wall above the cast's heads in a `stage` beat; lower in the other scenes, whose
+  // labels and figures sit in the top half
+  const top = v ? tl.height * (HIGH.has(scene) ? 0.4 : scene === "road" ? 0.72 : 0.66) : tl.height * 0.8;   // road: below the walker's face
   const left = v ? 60 : tl.width * 0.12, width = v ? tl.width - 60 - 150 : tl.width * 0.76;   // Shorts: clear of the right-hand buttons
   return (
     <div style={{ position: "absolute", left, top, width, display: "flex", justifyContent: "center", pointerEvents: "none" }}>

@@ -19,8 +19,9 @@ Example: [`examples/short_story.json`](../../../examples/short_story.json). Ther
   ("two thousand eight hundred fifty-four pounds"), so the gap is usually around a number.
   `number-check` prints a `WARN:` line for each beat that misses it; fix those before rendering.
 - **Big captions on screen** (owner, 2026-10-21): every spoken word is drawn big over the picture,
-  a little below the middle, automatically. Keep the area around 60–75% of the height free of other
-  text; put scene labels and figures in the top half.
+  automatically: at about 40–48% of the height in a `stage` beat (on the wall above the cast's
+  heads) and at about 66–74% in every other scene; the hook's first words are already there in
+  frame 0. Keep those bands free of other text; put scene labels and figures in the top half.
 - **Vertical layouts**: scenes stack their content for the tall frame. Keep `actors` to one or two
   per `stage` beat, near the middle (`x` 0.3–0.7).
 - **Loop:** the last line leads back into the first, so a replay feels continuous.

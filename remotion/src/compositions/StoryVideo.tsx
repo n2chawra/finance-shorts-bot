@@ -99,7 +99,7 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe }) => {
       <Vignette />
       <Grain />
       {cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} />}
-      {timeline.captions && <Captions tl={timeline} frame={frame} groups={groups} />}
+      {timeline.captions && <Captions tl={timeline} frame={frame} groups={groups} scene={cur.scene} />}
       {!hasEnd && frame >= timeline.durationInFrames - Math.round(fps * 1.4) && <DisclaimerLine tl={timeline} />}
       {probe && <LayoutProbe frame={frame} />}
     </AbsoluteFill>
