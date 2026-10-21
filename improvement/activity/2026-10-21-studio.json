@@ -1,0 +1,46 @@
+{
+  "agent": "studio",
+  "day": "2026-10-21",
+  "startedAt": "2026-10-21T09:30:03Z",
+  "finishedAt": "2026-10-21T10:53:04Z",
+  "summary": "Made long video L-20261021-01, 'The 6 levels of money in India: which one are you?' (8:22, 113 beats, 1,884 words, 7 chapters), from Scout's top feed topic. It passed every check and is committed to main, but its 244 MB mp4 couldn't be uploaded from the cloud.",
+  "decision": "blocked",
+  "why": "The video passed every check: number check, fact review (4th pass), QA (3rd pass) and the render gates (liveliness median 2.72, 0.4% still, longest still 2 s; audio -1.0/-16.9 dB; 502 s). Shipping the mp4 failed: Releases return HTTP 403 in cloud sessions, and the media branch was rejected because GitHub refuses files over 100 MB. The owner has to upload it.",
+  "findings": [
+    {
+      "title": "Fact review failed twice on level six, then passed",
+      "detail": "Review 1: year-20 growth (8% on ₹1.5 Cr) was compared with today's ₹40,000 a month of spending. Review 2: at ₹3 Cr the growth covered the bills but couldn't also keep up with 6% inflation. Fixed with an ₹8 Cr pot (₹64 L a year) against a ₹15.4 L year-20 cost of living. Also: the opener now says 'could cost', and the end card names the 8%."
+    },
+    {
+      "title": "QA failed twice on scene problems, then passed",
+      "detail": "Round 1, 13 items: props counted up from ₹0, the vault hid its figures, the receipt sat in the caption band, unreadable snowball ticks, a calendar spacing bug, checklist highlights, the end card overlapping the disclaimer, and stale stills in the contact sheet. Worked around in the script. Round 2: the receipt still sat under the captions, so the beat now uses a tag. Scene bugs are logged for the improver."
+    },
+    {
+      "title": "Length",
+      "detail": "The first cut was 471 s, under the 480 s floor. Six beats with no new figures brought it to 502 s, with the big reveal (₹1.50 Cr vs ₹34.9 L) at 68% of the runtime."
+    },
+    {
+      "title": "Environment",
+      "detail": "`python3` resolves to /usr/local/bin/python3 (3.11, no kokoro), while setup-cloud installs into /usr/bin/python3. Renders must use /usr/bin/python3. The full render took about 27 min (9 chunks)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "L-20261021-01 committed to main (fea7aea)",
+      "detail": "Manifest, plan, script, timeline, thumbnails (warning, question, versus) and preview; history.json updated. The mp4 is not uploaded.",
+      "branch": "main"
+    },
+    {
+      "title": "11 backlog items",
+      "detail": "6 scene bugs (₹0 count-up, vault, receipt, snowball, calendar spacing, stale stills dir), the render.json tempo, 2 script rules (chapter title length, one checklist beat per item), a yearly living-cost maths kind, and the long-mp4 upload path.",
+      "branch": "agent/studio/2026-10-21"
+    }
+  ],
+  "nextCheck": "2026-10-23",
+  "links": [
+    {
+      "label": "Video folder",
+      "url": "videos/L-20261021-01/"
+    }
+  ]
+}

@@ -377,6 +377,127 @@
       "priority": "low",
       "found": "2026-10-21",
       "status": "open"
+    },
+    {
+      "id": "2026-10-21-stale-stills-dir",
+      "kind": "bug",
+      "title": "renderer/remotion.py keeps old stills and probe frames between renders",
+      "detail": "render_timeline does not clear /tmp/remotion-<id>/stills and probe before rendering. After L-20261021-01 got 30 s longer, preview.png still showed an end card at 471.5 s from the earlier render, and the probe kept 19 stale frames. That could pass or fail QA on frames the video no longer has. Fix: empty both folders at the start of a render. How we know: after a re-render, every file in stills/ has the new mtime.",
+      "where": "renderer",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-renderjson-tempo",
+      "kind": "bug",
+      "title": "render.json reports tempo 1.0 for long videos rendered at 1.5",
+      "detail": "L-20261021-01: timeline.json has tempo and speed 1.5, but render.json says tempo 1.0 (L-20261019-02 too). The dashboard or the evaluator may read the wrong pace. Fix: write the timeline's tempo into render.json.",
+      "where": "renderer",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-prop-zero-countup",
+      "kind": "bug",
+      "title": "Money props show ₹0 until their `at` event when they have a `value`",
+      "detail": "A tag, cheque or stack prop with `value` and a late `at` showed '₹0' for up to 6.5 s (L-20261021-01 l1-trap, l4-sip, l4-gains; QA round 1), then counted up after the voice had already said the figure. Studio worked around it by dropping `value` and using at: start. Scene fix: hide the figure, not show 0, before `at`, or start the count at `start`. Script rule meanwhile: a prop's `at` is the word just before the figure is spoken, or `start`.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-vault-hides-figure",
+      "kind": "bug",
+      "title": "The vault prop's door covers the left of its figure",
+      "detail": "QA, L-20261021-01: the vault hid the ₹ of ₹2,40,000, all but ',816' of ₹18,211, and all but 'L' of ₹64.0 L. Studio swapped in piggy, bucket and stack. Scene fix: put the figure clear of the door, or on a plaque above it.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-receipt-in-caption-band",
+      "kind": "bug",
+      "title": "The receipt prop draws its total in the caption band",
+      "detail": "QA, L-20261021-01 l3-total (round 2): the receipt's '₹1.4 L' sat at the bottom of the frame under the word-by-word captions for the whole beat, with or without a kicker. Studio used the tag prop instead. Scene fix: keep the receipt total above about 75% of the frame height.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-snowball-ticks-snow",
+      "kind": "bug",
+      "title": "The snowball scene's tick labels are pale pink on white snow",
+      "detail": "QA, L-20261021-01: '+ returns' ticks were nearly unreadable, and one sat at the top-left edge, next to the Sikka mark. Studio replaced the beat with a stack prop. Scene fix: a dark chip behind tick text and a safe-area clamp.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-calendar-sub-spacing",
+      "kind": "bug",
+      "title": "Calendar sub-label loses word spacing",
+      "detail": "QA, L-20261021-01 l4-cal: 'Same date, same amount' rendered as 'Same date, sameamount'. Probably a line-wrap or kerning bug in the calendar sub text.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-chapter-title-length",
+      "kind": "craft",
+      "title": "Script rule: a long chapter title is at most about 20 characters",
+      "detail": "The probe failed 'Money works harder than you' (27 characters) on the chapter card as running outside the frame, while 'Your money gets a job' (21) passed. Keep chapter titles to about 20 characters, or have the improver let the card wrap to two lines.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-checklist-one-active",
+      "kind": "craft",
+      "title": "Script rule: one checklist beat per highlighted item",
+      "detail": "Checklist `active` is fixed for the whole beat. A beat that speaks two items leaves the highlight on the first while the voice is on the second (QA, L-20261021-01 which-1 and which-3). Split such lines into one beat per item. A scene option to move `active` on an event would allow longer beats.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-yearly-cost-kind",
+      "kind": "craft",
+      "title": "No maths kind for a year of living costs in the future",
+      "detail": "To compare a pot's yearly growth with future yearly spending, Studio fed a yearly amount into price_rise's `monthly` input (L-20261021-01 'life'); only {life_new_monthly} is valid there. The fact reviewer twice failed level six for comparing like with unlike (year-20 growth vs today's spending; then a pot that couldn't also keep up with inflation). A `living_cost` or `withdrawal` kind (yearly cost after N years, and the pot whose real growth covers it) would make level-of-wealth stories safe to write.",
+      "where": "maths",
+      "route": "template",
+      "priority": "normal",
+      "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-21-long-mp4-over-100mb",
+      "kind": "bug",
+      "title": "A long video's mp4 can't leave a cloud session: 244 MB is over GitHub's 100 MB push limit, and Releases are refused",
+      "detail": "L-20261021-01 (8:22, about 4 Mbps) shipped its manifest to main, but `ship --release` got HTTP 403 (cloud sessions may not create releases) and `--media-branch` was rejected (GH001: file over 100 MB). Every long video will be over 100 MB at this bitrate. Options for the improver or owner: encode long videos so the mp4 stays under about 95 MB (about 1.5 Mbps at 8 min), or split the mp4 into parts on media/<id> for release-video.yml to rejoin, or use Git LFS. Until then the owner uploads it locally.",
+      "where": "renderer",
+      "route": "owner",
+      "priority": "high",
+      "found": "2026-10-21",
+      "status": "open"
     }
   ]
 }
