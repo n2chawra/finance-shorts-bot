@@ -1,5 +1,6 @@
 # Routines run in cloud sessions that may push branches but may not create GitHub Releases.
-# A routine pushes a branch media/<id> (main plus video.mp4 at the root); this workflow turns
+# A routine pushes a branch media/<id> (main plus video.mp4 at the root, or video.mp4.part-NNN
+# parts when it is over GitHub's 100 MB file limit); this workflow turns
 # that into Release video-<id> and deletes the branch, so the repo does not keep video files.
 name: Release video
 
@@ -27,6 +28,11 @@ jobs:
           set -euo pipefail
           id="${BRANCH#media/}"
           tag="video-$id"
+          # a video over 100 MB comes in parts (video.mp4.part-000, -001, ...): join them in order
+          if [ ! -s video.mp4 ] && ls video.mp4.part-* >/dev/null 2>&1; then
+            cat $(ls video.mp4.part-* | sort) > video.mp4
+            echo "joined $(ls video.mp4.part-* | wc -l) parts into video.mp4 ($(stat -c %s video.mp4) bytes)"
+          fi
           test -s video.mp4 || { echo "::error::video.mp4 is missing or empty on $BRANCH"; exit 1; }
 
           # title from the manifest on main; fall back to the id if it is not there yet

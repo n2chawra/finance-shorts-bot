@@ -370,6 +370,9 @@ def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) 
         subprocess.run(["git", "push", "-q", "origin", "HEAD:main"], cwd=root, check=True)
 
 
+MEDIA_PART_BYTES = 90 * 1024 * 1024   # under GitHub's 100 MB limit for one file in a push
+
+
 def push_media_branch(vid: str, root: Path = ROOT) -> str:
     """Push a branch media/<id> that is the current commit plus video.mp4 at the repo root.
 
@@ -387,9 +390,20 @@ def push_media_branch(vid: str, root: Path = ROOT) -> str:
         def git(*args: str) -> str:
             return subprocess.run(["git", *args], cwd=root, check=True, capture_output=True, env=env).stdout.decode().strip()
 
-        blob = git("hash-object", "-w", str(mp4))
         git("read-tree", "HEAD")
-        git("update-index", "--add", "--cacheinfo", f"100644,{blob},video.mp4")
+        # GitHub refuses a file over 100 MB in a push, and a long video is 200 MB+: it goes in parts
+        # (video.mp4.part-000, -001, ...), which release-video.yml joins back byte for byte
+        data = mp4.read_bytes()
+        if len(data) <= MEDIA_PART_BYTES:
+            parts = [("video.mp4", mp4)]
+        else:
+            parts = []
+            for i in range(0, len(data), MEDIA_PART_BYTES):
+                part = Path(tmp) / f"video.mp4.part-{i // MEDIA_PART_BYTES:03d}"
+                part.write_bytes(data[i:i + MEDIA_PART_BYTES])
+                parts.append((part.name, part))
+        for name, path in parts:
+            git("update-index", "--add", "--cacheinfo", f"100644,{git('hash-object', '-w', str(path))},{name}")
         commit = git("commit-tree", git("write-tree"), "-p", "HEAD", "-m", f"Video {vid}")
         branch = f"media/{vid}"
         git("push", "-q", "origin", f"{commit}:refs/heads/{branch}")

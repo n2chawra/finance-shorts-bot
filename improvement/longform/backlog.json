@@ -497,7 +497,8 @@
       "route": "owner",
       "priority": "high",
       "found": "2026-10-21",
-      "status": "open"
+      "status": "closed",
+      "resolution": "Fixed 2026-10-21: media branches carry a long mp4 in 90 MB parts that release-video.yml joins; Studio ships with --media-branch, not --release."
     }
   ]
 }

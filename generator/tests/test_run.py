@@ -314,6 +314,37 @@ def test_media_branch_is_head_plus_the_video(root: Path, tmp_path_factory: pytes
     assert git("status", "--porcelain", "--untracked-files=no") == ""                     # index and tree untouched
     assert git("rev-parse", "--abbrev-ref", "HEAD") == "main"
 
+def test_a_video_over_the_push_limit_goes_in_parts_that_join_back(root: Path, tmp_path_factory: pytest.TempPathFactory,
+                                                                  monkeypatch: pytest.MonkeyPatch) -> None:
+    """GitHub refuses a file over 100 MB; a long video (244 MB on 2026-10-21) is pushed in parts."""
+    import subprocess
+    for k, v in {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@example.com", "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@example.com"}.items():
+        monkeypatch.setenv(k, v)
+    monkeypatch.setattr(run, "MEDIA_PART_BYTES", 10)
+
+    def git(*args: str, cwd: Path = root) -> str:
+        return subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True).stdout.decode().strip()
+
+    remote = tmp_path_factory.mktemp("remote")
+    git("init", "-q", "--bare", str(remote))
+    git("init", "-q", "-b", "main")
+    git("remote", "add", "origin", str(remote))
+    (root / "workflow.yml").write_text("on: push\n", encoding="utf-8")
+    git("add", "workflow.yml")
+    git("commit", "-q", "-m", "base")
+    git("push", "-q", "origin", "main")
+    d = root / "videos" / VID
+    d.mkdir(parents=True)
+    video = bytes(range(256)) * 3 + b"tail"          # 772 bytes -> 78 parts of at most 10
+    (d / "video.mp4").write_bytes(video)
+
+    run.push_media_branch(VID, root)
+    names = sorted(n for n in git("ls-tree", "--name-only", f"media/{VID}", cwd=remote).split() if n.startswith("video"))
+    assert "video.mp4" not in names and len(names) == 78 and names[0] == "video.mp4.part-000"
+    joined = b"".join(subprocess.run(["git", "show", f"media/{VID}:{n}"], cwd=remote, check=True, capture_output=True).stdout for n in names)
+    assert joined == video
+
+
 def test_media_branch_needs_the_video(root: Path) -> None:
     with pytest.raises(ValueError, match="video.mp4 is missing"):
         run.push_media_branch(VID, root)

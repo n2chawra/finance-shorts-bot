@@ -149,8 +149,12 @@ Fix what it names and render the stills again. **Two rounds at most**.
 Put the chapter timestamps into the description (`chapters` in `videos/<id>/render.json`, in
 seconds; YouTube needs the first one to be `0:00`). Then:
 ```
-python -m generator.run ship <id> --commit --release --push
+python -m generator.run ship <id> --commit --push --media-branch
 ```
+This commits the manifest to `main`, then pushes the mp4 on a branch `media/<id>`; a workflow turns
+it into Release `video-<id>` and deletes the branch. Cloud sessions may not create releases, so
+never use `gh release` or `--release`. A long video is over GitHub's 100 MB file limit, so it goes up
+in 90 MB parts that the workflow joins back (2026-10-21); nothing to do by hand.
 
 ## 8. If it cannot be made to pass
 After the limits above (two plan attempts, two rewrites, two re-renders):

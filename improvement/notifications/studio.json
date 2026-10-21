@@ -1,11 +1,3 @@
 {
-  "notifications": [
-    {
-      "key": "long-video-mp4-too-big",
-      "severity": "warning",
-      "title": "Long video L-20261021-01 is ready, but its mp4 could not be uploaded (244 MB)",
-      "detail": "The manifest, script, thumbnails and preview are on main (commit fea7aea), and the video passed every gate and both reviewers. The mp4 could not reach GitHub from the cloud: Releases are refused for this session type (HTTP 403), and the media/<id> branch push failed because GitHub rejects files over 100 MB. Without a release asset, publish has nothing to upload for this video. Every long video will hit this until long mp4s get smaller or a different upload path exists.",
-      "fix": "1. On your computer: git pull, then run `python -m generator.run render L-20261021-01` (the same script and seed give the same video). 2. Run `python -m generator.run release L-20261021-01 --commit --push` to upload it as Release video-L-20261021-01. 3. For future runs, decide on a path for long videos: a lower bitrate so the mp4 stays under about 95 MB, split parts on the media branch that release-video.yml rejoins, or Git LFS. It's in improvement/longform/backlog.json as 2026-10-21-long-mp4-over-100mb."
-    }
-  ]
+  "notifications": []
 }
