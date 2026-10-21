@@ -27,7 +27,8 @@ export function captionTokens(tl: Timeline): Token[] {
     if (!v) continue;
     const t0 = (b.from + v.start) / tl.fps;
     const toks = v.captions?.length ? v.captions : v.words.map((w) => ({ t: w.w, s: w.s, e: w.e }));
-    for (const c of toks) out.push({ t: c.t, s: t0 + c.s, e: t0 + c.e });
+    // a figure ("₹46.5 L", "$2.2M") never breaks across lines
+    for (const c of toks) out.push({ t: c.t.replace(/ /g, " "), s: t0 + c.s, e: t0 + c.e });
   }
   return out;
 }

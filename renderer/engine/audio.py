@@ -56,13 +56,19 @@ class Mixer:
         self.left += mono*gain
         self.right += mono*gain
 
-    def master(self, fade_out: float = 0.6, peak: float = 0.89) -> np.ndarray:
-        """Fade the tail, soft-clip and normalise. peak 0.89 ≈ −1 dB."""
+    def master(self, fade_out: float = 0.6, peak: float = 0.89, loudest: float = -16.0) -> np.ndarray:
+        """Fade the tail, soft-clip and normalise. peak 0.89 ≈ −1 dB. A dense mix (dialogue from start
+        to end, the skits since 2026-10-21) came out at a mean above −15 dB with the fixed drive, so
+        the soft clip backs off until the mean is no louder than `loudest`."""
         st = np.stack([self.left, self.right], 1)
         k = int(fade_out*SR)
         st[-k:] *= np.linspace(1, 0, k)[:, None]
-        st = np.tanh(st*1.1)
-        return st/np.max(np.abs(st))*peak
+        for drive in (1.1, 0.8, 0.6, 0.45, 0.3):
+            out = np.tanh(st*drive)
+            out = out/np.max(np.abs(out))*peak
+            if 20*np.log10(np.sqrt(np.mean(out**2)) or 1e-9) <= loudest:
+                break
+        return out
 
     def write_wav(self, path: str | Path) -> None:
         st = self.master()
