@@ -1,0 +1,45 @@
+{
+  "agent": "scout",
+  "day": "2026-10-21",
+  "startedAt": "2026-10-21T08:40:47Z",
+  "finishedAt": "2026-10-21T08:45:59Z",
+  "summary": "Added three demand-first long topics (6 levels of money in India, how credit card companies make money, how banks make money), bringing the feed from 3 to 6 usable topics. I studied how our charts explain numbers and routed six chart findings and two new maths kinds.",
+  "decision": "acted",
+  "why": "The feed was below its minimum of four usable topics (3 after the demand-first reset), with Studio running today. Each new topic has a reference video at 4.9M–10.9M views. Our chart scene has no gap figure, no tip counter and no single focus colour, which the 2026 video-chart guidance treats as basics.",
+  "findings": [
+    {
+      "title": "'Levels of wealth' is a proven long shape",
+      "detail": "Memeable Data 4.94M, The Analyst 2.51M; Humphrey Yang's 7 Levels of Investing is growing ~1,550 views/h this week.",
+      "link": "https://www.youtube.com/watch?v=9t2TQ8-mf5w"
+    },
+    {
+      "title": "How credit cards make money: 4.5M–7.8M views in India",
+      "detail": "Nitish Rajput 7.75M, Dhruv Rathee 5.83M, Warikoo 4.49M.",
+      "link": "https://www.youtube.com/watch?v=cYMeZs_EcqE"
+    },
+    {
+      "title": "Charts on video: one focus colour, direct labels, wipe + counter",
+      "detail": "Our ChartScene draws two glowing lines, no value at the tip, no gap figure.",
+      "link": "https://onlinejournalismblog.com/2026/06/23/showing-charts-on-video-here-are-two-essential-techniques-to-make-them-effective/"
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 long topics added",
+      "detail": "2026-10-21-money-levels-india, 2026-10-21-how-credit-cards-make-money, 2026-10-21-how-banks-make-money",
+      "branch": "agent/scout/2026-10-21"
+    },
+    {
+      "title": "8 backlog items",
+      "detail": "template: chart gap fill, compare maths, fee_take maths, chart zoom-out; experiment: tip counter, focus grey; adopt: chart takeaway line, demand URLs",
+      "branch": "agent/scout/2026-10-21"
+    }
+  ],
+  "nextCheck": "2026-10-22",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/longform/2026-10-21.md"
+    }
+  ]
+}
