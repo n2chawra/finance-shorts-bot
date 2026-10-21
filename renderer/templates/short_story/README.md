@@ -60,6 +60,26 @@ scenes work vertically: `bill` (a small payment turning into a big bill) is the 
 a cost; `road` for anything that takes years; `fork` instead of side-by-side bars. Retired:
 `monster`. Avoid: `towers`.
 
+## The cover (`thumbnail`, required)
+
+The cover is what makes someone tap (owner, 2026-10-21): on the channel page, in search and on the
+Shorts shelf. A Short without one fails the render; a frame from the middle of the video is never
+the cover. Three layouts, by format:
+
+- **`versus`** (`rich_vs_poor`): a red and a green half, `POOR` and `RICH`. `who` (the poor move,
+  e.g. rohan with `prop: "phone"`, worried) and `who2` (the rich one, sharma, proud); `small` the
+  poor side's figure with `tag` above it ("Phone EMI"); `figure` the rich side's with `to` above it
+  ("Invested"); `words` the topic ("Your {rich_amount} *raise*").
+- **`secret`** (`secret_of_rich`, `how_they_make_money`): dark and gold, the rich mentor smirking.
+  `figure` the cost everyone else pays, crossed out, with `tag` ("Tax if you sell"); `small` what
+  the rich keep, with `to` ("Stock keeps growing"); `words` the claim ("Billionaires *never* sell").
+- **`story`** (`trap_alert`, `cost_of_habit`, `salary_breakdown`, `guess_the_number`): the small
+  amount on the thing (`hero`, `small`, `tag`) turning into the big one on a receipt (`figure`, `to`).
+
+`words`: four at most, the topic in the viewer's words; one word between asterisks is highlighted
+yellow. Figures are placeholders, like everywhere else. Example covers: `videos/v-20261021-04`,
+`videos/v-20261021-05`.
+
 ## Story recipes: the formats people watch (owner reset, 2026-10-21)
 
 The plan's `story` is a format from `improvement/research/formats.json` (hook, beats, reference

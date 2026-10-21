@@ -50,7 +50,12 @@ export const Thumbnail = z.object({
   angle: z.string().optional(),
   // "story": one picture that tells the story (a small payment on the phone, a giant bill) and the
   // words alone, big; the default "card" is the older words + figure + character layout
-  layout: z.enum(["card", "story"]).optional(),
+  // "versus" (rich vs poor) and "secret" (what the rich know): the demand-first formats' covers
+  // (compositions/ThumbFormats.tsx; 2026-10-21)
+  layout: z.enum(["card", "story", "versus", "secret"]).optional(),
+  who2: z.string().optional(),        // versus: the rich side's cast member (sharma by default)
+  pose2: z.string().optional(),
+  expression2: z.string().optional(),
   small: z.string().optional(),       // story layout: the small amount on the hero (one of `figures`)
   hero: z.enum(["card", "phone", "house", "car", "cash", "piggy"]).optional(),   // story layout: what the story is about
   tag: z.string().optional(),         // story layout: the words above `small` on the hero ("MINIMUM DUE")

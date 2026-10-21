@@ -14,6 +14,7 @@ import { Timeline } from "../contract/timeline";
 import { FONT } from "../design/fonts";
 import { PROPS } from "../scenes/kit";
 import type { StoryProps } from "./StoryVideo";
+import { SecretThumb, VersusThumb } from "./ThumbFormats";
 
 export const THUMB = { width: 1280, height: 720 } as const;
 export const SHORT_THUMB = { width: 1080, height: 1920 } as const;
@@ -101,7 +102,13 @@ const StoryThumb: React.FC<StoryProps> = ({ timeline }) => {
   );
 };
 
-export const Thumbnail: React.FC<StoryProps> = (props) => props.timeline.thumbnail?.layout === "story" ? <StoryThumb {...props} /> : <CardThumb {...props} />;
+export const Thumbnail: React.FC<StoryProps> = (props) => {
+  const th = props.timeline.thumbnail;
+  const { width: w, height: h } = thumbSize(props.timeline);
+  if (th?.layout === "versus") return <VersusThumb th={th} w={w} h={h} />;
+  if (th?.layout === "secret") return <SecretThumb th={th} w={w} h={h} />;
+  return th?.layout === "story" ? <StoryThumb {...props} /> : <CardThumb {...props} />;
+};
 
 const CardThumb: React.FC<StoryProps> = ({ timeline }) => {
   const th = timeline.thumbnail;

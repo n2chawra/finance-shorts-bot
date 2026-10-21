@@ -59,6 +59,8 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   gets a raise."). **No `end` beat in a Short:** the disclaimer shows as a small line over the last
   moments and sits in the description. Put the plan's `cta` in a character's last line only if it
   doesn't break the loop.
+- **The cover (`thumbnail`) is required**: the layout for the format (`versus`, `secret` or `story`) as the
+  README's "The cover" section says. It decides whether anyone taps the Short.
 - Write in plain English for the plan's market: an India Short talks about Indian life (salaries in
   lakhs, EMIs, rent in Bangalore, the food-app habit) in simple Indian English; a US Short about US
   life ($100K salaries, car payments, credit card debt). No Hinglish, no slang only insiders know. Products by what they are ("an index fund", "a savings

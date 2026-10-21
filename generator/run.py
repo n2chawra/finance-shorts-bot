@@ -277,6 +277,11 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         log_step(vid, "render", False, [str(e)], root, started)
         return [str(e)]
     problems = list(report["layout_problems"]) + list(report.get("liveliness_problems", [])) + gate_problems(report, settings, plan_format(script))
+    # a Short's cover is designed, never a frame grabbed from the middle of the video (owner, 2026-10-21:
+    # the first two new-style Shorts got a half-cut caption as their cover)
+    if plan_format(script) == "short" and not script.get("thumbnail"):
+        problems.append("a Short needs a `thumbnail` (its cover): `versus` for rich vs poor, `secret` for what the rich know, "
+                        "`story` for a trap or a cost (renderer/templates/short_story/README.md)")
     audio = report.get("audio")
     rendered = "liveliness" in report
     ok_note = f"{report['duration_sec']} s, {report['style']['palette']}/{report['style']['genre']}" + (f", peak {audio['peak_db']} dB, mean {audio['mean_db']} dB" if audio and rendered else " (preview only)")

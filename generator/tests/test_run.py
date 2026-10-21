@@ -21,6 +21,7 @@ def script_for(plan: dict) -> dict:
     """A small Short: ₹10,000 a month for 20 years at 12%, matching make_plan's title."""
     return {"template": "short_story", "format": "short", "seed": plan["seed"], "style": plan["style"], "currency": plan.get("currency", "INR"),
             "maths": [{"name": "sip", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 20}],
+            "thumbnail": {"who": "rohan", "figure": "{sip_final}", "words": "What it becomes", "layout": "story"},
             "beats": [{"id": "hook", "scene": "bignumber", "say": "What does {sip_amount} a month become in {sip_years} years?",
                        "params": {"lines": [{"text": "{sip_final}", "style": "hero", "at": "start"}]}},
                       {"id": "outro", "scene": "end", "say": "Follow for one money idea a day.", "params": {"cta": "Start early."}}]}
@@ -379,3 +380,12 @@ def test_render_sets_a_missing_or_repeated_narrator_and_keeps_it(root: Path) -> 
     assert saved["narrator"] not in ("am_michael", None) and "experiments" not in saved
     run.render(VID, preview=True, root=root)
     assert json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))["narrator"] == saved["narrator"]
+
+
+def test_a_short_without_a_designed_cover_fails_the_render(root: Path) -> None:
+    plan = make_plan()
+    put(root, "plan.json", plan)
+    script = script_for(plan)
+    del script["thumbnail"]
+    put(root, "script.json", script)
+    assert any("needs a `thumbnail`" in p for p in run.render(VID, preview=True, root=root))

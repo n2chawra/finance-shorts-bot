@@ -238,6 +238,12 @@ def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict) -> dic
         raise ValueError(f"thumbnail.small must be one placeholder, like {{card_min_due}}; got {spec.get('small')!r}")
     if t.get("layout") == "story" and t.get("hero") not in (None, "card", "phone", "house", "car", "cash", "piggy"):
         raise ValueError("thumbnail.hero must be card, phone, house, car, cash or piggy")
+    if t.get("layout") not in (None, "card", "story", "versus", "secret"):
+        raise ValueError("thumbnail.layout must be card, story, versus (rich vs poor) or secret (what the rich know)")
+    if t.get("layout") == "versus" and not t.get("small"):
+        raise ValueError("a versus thumbnail needs `small` (the poor side's figure) beside `figure` (the rich side's)")
+    if len(str(t.get("words", "")).replace("*", "").split()) > 4:
+        raise ValueError("thumbnail.words: four words at most, it is read at a glance")
     return t
 
 
