@@ -1,0 +1,138 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:04:59.880779+00:00",
+    "finishedAt": "2026-10-21T23:04:59.880779+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-21T23:05:23.695658+00:00",
+    "finishedAt": "2026-10-21T23:05:23.695658+00:00",
+    "notes": [
+      "beat 'rich'.params.objects[0].amount: maths 'bonus' has no value or series 'amount'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:05:30.291663+00:00",
+    "finishedAt": "2026-10-21T23:05:30.291663+00:00",
+    "notes": [
+      "7 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:06:32.687560+00:00",
+    "finishedAt": "2026-10-21T23:06:32.687560+00:00",
+    "notes": [
+      "No sourced facts and no verify list on feed topic 2026-10-22-diwali-bonus-rich-vs-poor; lumpsum 1 lakh at assumed 12% (at, not above, the INR equity bar) for 15 years = 5.5 L stated as 'assumed'/'could be'; no product named, no advice or guarantee words; TV-worth-nothing punchline fair; description ends with disclaimer plus adviser line. Notes: figures are nominal (no inflation/LTCG mention) and the bonus is implicitly post-tax; both minor for a skit."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:06:14.870617+00:00",
+    "finishedAt": "2026-10-21T23:07:03.043698+00:00",
+    "notes": [
+      "25 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:07:08.953335+00:00",
+    "finishedAt": "2026-10-21T23:07:08.953335+00:00",
+    "notes": [
+      "7 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:07:10.219730+00:00",
+    "finishedAt": "2026-10-21T23:07:38.750465+00:00",
+    "notes": [
+      "25 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:07:51.651270+00:00",
+    "finishedAt": "2026-10-21T23:07:51.651270+00:00",
+    "notes": [
+      "7 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:07:52.896637+00:00",
+    "finishedAt": "2026-10-21T23:08:18.808757+00:00",
+    "notes": [
+      "25 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-21T23:09:05.951214+00:00",
+    "finishedAt": "2026-10-21T23:09:05.951214+00:00",
+    "notes": [
+      "[script] thumbnail: the right card reads 'INVESTED ₹5.5 L', but ₹1,00,000 was invested and ₹5.5 L is its assumed value after 15 years, so the label doesn't match its value (rule 5); set thumbnail 'to' to something like 'In 15 years' / 'After 15 yrs'",
+      "[script] 24.6s and 24.8s (beat 'loop', bank set): the camera pushes in to medium on Rohan and Sharma is cut off at the right edge, half his face out of frame (rule 12); keep both in frame (stay wide or move Sharma toward center-right) or frame Rohan without Sharma at the edge"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:09:19.503661+00:00",
+    "finishedAt": "2026-10-21T23:09:19.503661+00:00",
+    "notes": [
+      "7 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:09:20.876703+00:00",
+    "finishedAt": "2026-10-21T23:09:44.171179+00:00",
+    "notes": [
+      "25 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:10:21.360490+00:00",
+    "finishedAt": "2026-10-21T23:10:21.360490+00:00",
+    "notes": [
+      "Re-review after fixes: thumbnail now 'IF INVESTED ₹5.5 L' vs 'DIWALI SALE ₹1,00,000' (labels match values); 24.6s loop beat is wide with Rohan and Sharma both fully in frame, disclaimer shown; hook, numbers (1L at 12% for 15y = 5.5 L), captions and sets fine. Contact sheet's 24.8s tile (old 'RICH OR POOR?' framing, Sharma cut off) lies past the 740-frame timeline and matches nothing in it, so it is a stale still; check the final render's last frame."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:10:27.006239+00:00",
+    "finishedAt": "2026-10-21T23:12:13.524148+00:00",
+    "notes": [
+      "25 s, sky/acoustic, peak -1.0 dB, mean -16.4 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-21T23:12:31.370897+00:00",
+    "finishedAt": "2026-10-21T23:12:31.370897+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

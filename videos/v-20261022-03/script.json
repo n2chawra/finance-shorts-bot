@@ -1,0 +1,530 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 81356,
+  "story": "rich_vs_poor",
+  "currency": "INR",
+  "feed_id": "2026-10-22-diwali-bonus-rich-vs-poor",
+  "style": {
+    "palette": "sky",
+    "genre": "acoustic",
+    "key": "G",
+    "bpm": 96
+  },
+  "maths": [
+    {
+      "name": "bonus",
+      "kind": "lumpsum",
+      "amount": 100000,
+      "rate_pct": 12,
+      "years": 15
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "speaker": "narrator",
+      "say": "Poor guy gets a {bonus_amount} Diwali bonus. Rich guy gets the same.",
+      "events": {
+        "poor": {
+          "word": "Poor"
+        },
+        "rich": {
+          "word": "Rich"
+        },
+        "same": {
+          "word": "same"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "poor"
+        },
+        {
+          "kind": "kaching",
+          "at": "poor",
+          "gain": 0.4
+        },
+        {
+          "kind": "pop",
+          "at": "rich"
+        },
+        {
+          "kind": "kaching",
+          "at": "rich",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "poor": "Poor",
+        "rich": "Rich",
+        "bonus": "{bonus_amount}",
+        "label": "Diwali bonus",
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sale",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "Diwali sale! A bigger TV, a new phone, gifts for everyone. Gone in a weekend.",
+      "events": {
+        "tv": {
+          "word": "TV"
+        },
+        "phone": {
+          "word": "phone"
+        },
+        "gifts": {
+          "word": "gifts"
+        },
+        "gone": {
+          "word": "Gone"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tv"
+        },
+        {
+          "kind": "pop",
+          "at": "phone"
+        },
+        {
+          "kind": "pop",
+          "at": "gifts"
+        },
+        {
+          "kind": "fail",
+          "at": "gone",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "laugh"
+              },
+              {
+                "at": "gifts",
+                "pose": "celebrate",
+                "expression": "happy"
+              },
+              {
+                "at": "gone",
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "cart",
+            "spot": "right",
+            "height": 0.4,
+            "title": "Festive sale",
+            "figure": "{bonus_amount}",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Big TV",
+                "at": "tv"
+              },
+              {
+                "label": "New phone",
+                "at": "phone"
+              },
+              {
+                "label": "Gifts",
+                "at": "gifts"
+              }
+            ],
+            "toasts": [
+              {
+                "text": "Bonus spent",
+                "at": "gone"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "tv",
+            "size": "medium",
+            "on": "cart",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "rich",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Same bonus. I put all of it to work, and I forget about it.",
+      "events": {
+        "work": {
+          "word": "work"
+        },
+        "forget": {
+          "word": "forget"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "work"
+        },
+        {
+          "kind": "pop",
+          "at": "forget"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "work",
+                "pose": "thumbsUp",
+                "expression": "proud",
+                "turn": 0.3
+              },
+              {
+                "at": "forget",
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "kept",
+            "spot": "right",
+            "amount": "@bonus.invested",
+            "text": "{bonus_amount}",
+            "label": "Invested",
+            "at": "work",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "work",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Invest",
+          "at": "work",
+          "color": "good",
+          "where": "left"
+        }
+      }
+    },
+    {
+      "id": "grow",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "At an assumed {bonus_rate} a year, in {bonus_years} years it could be {bonus_final}.",
+      "events": {
+        "rate": {
+          "word": "assumed"
+        },
+        "years": {
+          "word": "years"
+        },
+        "be": {
+          "word": "be"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.35
+        },
+        {
+          "kind": "pop",
+          "at": "rate"
+        },
+        {
+          "kind": "boom",
+          "at": "be",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "tower",
+            "spot": "center",
+            "amount": "@bonus.final",
+            "text": "{bonus_final}",
+            "label": "Assumed {bonus_rate} a year",
+            "at": "start",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "be",
+            "size": "medium",
+            "on": "tower",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "and-me",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "And my TV?",
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "punch",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Your TV? {bonus_years} years old by then. Worth almost nothing.",
+      "events": {
+        "old": {
+          "word": "old"
+        },
+        "nothing": {
+          "word": "nothing"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "old",
+          "gain": 0.5
+        },
+        {
+          "kind": "fail",
+          "at": "nothing",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "laugh"
+              },
+              {
+                "at": "nothing",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "nothing",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Nothing",
+          "at": "nothing",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Same bonus. Two lives. So this Diwali, when a poor guy gets a bonus...",
+      "events": {
+        "two": {
+          "word": "Two"
+        },
+        "diwali": {
+          "word": "Diwali"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "two"
+        },
+        {
+          "kind": "whoosh",
+          "at": "diwali",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "thinking",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.4
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "diwali",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "pose": "phone",
+    "prop": "phone",
+    "expression": "worried",
+    "who2": "sharma",
+    "pose2": "thumbsUp",
+    "expression2": "proud",
+    "layout": "versus",
+    "angle": "versus",
+    "words": "Your Diwali *bonus*",
+    "small": "{bonus_amount}",
+    "tag": "Diwali sale",
+    "figure": "{bonus_final}",
+    "to": "If invested"
+  },
+  "narrator": "hf_alpha"
+}
