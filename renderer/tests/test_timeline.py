@@ -193,6 +193,16 @@ def test_event_gaps_flags_a_long_beat_with_a_still_stretch() -> None:
     assert len(warnings) == 1 and "'still'" in warnings[0] and "7.0 s" in warnings[0]
 
 
+def test_first_frame_warns_for_a_stage_opening_without_a_chip() -> None:
+    bare = [{"id": "open", "scene": "stage", "params": {"actors": [{"who": "rohan", "x": 0.5}]}}]
+    warned = tb.first_frame(bare)
+    assert len(warned) == 1 and "'open'" in warned[0] and "frame 0" in warned[0]
+    assert tb.first_frame([{"id": "open", "scene": "stage", "params": {"chip": {"text": "Raise", "at": "start"}}}]) == []
+    assert tb.first_frame([{"id": "open", "scene": "bignumber", "params": {}}]) == []
+    # only the opening beat counts
+    assert tb.first_frame([{"id": "a", "scene": "hook", "params": {}}, *bare]) == []
+
+
 def test_check_script_warns_only_for_shorts() -> None:
     line = ("This balance is paid down slowly, month after month, year after year, while the bank keeps "
             "adding interest on everything that is still left over at the end of each month.")
