@@ -150,3 +150,13 @@ test("video page calls a due slot due, not minutes ago", async ({ page }) => {
   await expect(publish).toContainText("Due now", { timeout: 30_000 });
   await expect(publish).not.toContainText("ago");
 });
+
+test("overview stat cards leave no half-empty row", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
+  // on phones five cards wrap 2-2-1; the last one once sat alone beside an empty half row
+  const grid = page.getByTestId("overview-stats");
+  const edges = await grid.evaluate((g) => ({ right: g.getBoundingClientRect().right, last: g.lastElementChild!.getBoundingClientRect().right }));
+  expect(Math.abs(edges.right - edges.last)).toBeLessThanOrEqual(2);
+});
