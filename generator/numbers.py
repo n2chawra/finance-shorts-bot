@@ -145,15 +145,84 @@ def banded_tax(income: float, allowance: float, bands: list) -> tuple[float, flo
     return round(tax, 6), marginal
 
 
+def fee_take_total(amount: float, fee_pct: float, per_year: int, years: int) -> float:
+    """A fee taken every period for `years`: amount × fee × periods, in one product."""
+    return round(amount*fee_pct*per_year*years/100, 6)
+
+
+def _values(m: dict, done: dict[str, dict[str, float]]) -> dict[str, float]:
+    """The raw results of one maths entry from the closed forms above, keyed as the story maths'
+    `values`, for a `compare` to read. Only the money results a story compares are here."""
+    kind = m["kind"]
+    if kind in ("sip", "lumpsum", "real_return"):
+        final = (sip_fv(m["monthly"], m["rate_pct"], m["years"]*12) if kind == "sip"
+                 else lumpsum_fv(m["amount"], m["rate_pct"], m["years"]))
+        invested = m["monthly"]*m["years"]*12 if kind == "sip" else m["amount"]
+        out = {"final": final, "invested": invested, "gains": final - invested}
+        if kind == "real_return":
+            real, cash = real_value(final, m["inflation_pct"], m["years"]), real_value(m["amount"], m["inflation_pct"], m["years"])
+            out = {"final": final, "real_final": real, "real_gains": real - m["amount"], "inflation_cost": final - real,
+                   "cash_real": cash, "cash_lost": m["amount"] - cash}
+        return out
+    if kind == "sip_stepup":
+        final, invested = sip_stepup_fv(m["monthly"], m["step_pct"], m["rate_pct"], m["years"])
+        flat = sip_fv(m["monthly"], m["rate_pct"], m["years"]*12)
+        return {"final": final, "invested": invested, "gains": final - invested, "final_flat": flat,
+                "invested_flat": m["monthly"]*m["years"]*12, "extra": final - flat}
+    if kind == "emi":
+        pay = emi(m["amount"], m["rate_pct"], m["years"])
+        return {"emi": pay, "total_paid": pay*round(m["years"]*12), "interest": pay*round(m["years"]*12) - m["amount"]}
+    if kind == "card_min_due":
+        c = card_min_due(m["amount"], m["rate_pct_month"], m["min_due_pct"], m["min_due_floor"])
+        return {k: c[k] for k in ("total_paid", "interest", "paid_year1", "owed_year1", "interest_year1")}
+    if kind == "loan_prepay":
+        c = loan_prepay(m["amount"], m["rate_pct"], round(m["months"]), m["prepay"], round(m["prepay_month"]))
+        return {**{k: c[k] for k in ("emi", "emi_reduced", "interest_base", "interest_reduce_emi", "interest_reduce_tenure")},
+                "saved_reduce_emi": c["interest_base"] - c["interest_reduce_emi"],
+                "saved_reduce_tenure": c["interest_base"] - c["interest_reduce_tenure"]}
+    if kind == "price_rise":
+        extra = price_rise_extra(m["monthly"], m["inflation_pct"], m["years"])
+        return {"extra_total": extra, "total_cost": 12*m["monthly"]*m["years"] + extra,
+                "new_monthly": lumpsum_fv(m["monthly"], m["inflation_pct"], m["years"])}
+    if kind == "income_tax_bands":
+        tax = banded_tax(m["income"], m["allowance"], m["bands"])[0]
+        return {"tax": tax, "take_home": m["income"] - tax}
+    if kind == "fee_take":
+        total = fee_take_total(m["amount"], m["fee_pct"], round(m["per_year"]), m["years"])
+        return {"total": total, "per_year_total": total/m["years"], "per_period": m["amount"]*m["fee_pct"]/100}
+    if kind == "compare":
+        a, b = (_ref(m[side], done, m["name"]) for side in ("a", "b"))
+        return {"a": a, "b": b, "diff": a - b}
+    return {}
+
+
+def _ref(ref: object, done: dict[str, dict[str, float]], name: str) -> float:
+    n, _, key = str(ref).lstrip("@").partition(".")
+    if key not in done.get(n, {}):
+        raise ValueError(f"compare {name!r}: the number check cannot recompute {ref!r}; compare a money result "
+                         "(renderer/templates/long_story/README.md lists them)")
+    return done[n][key]
+
+
 def _long_story(s: dict) -> dict[str, str]:
     """The figures of a story script (long or short): its `maths` from the closed forms above, and
     its sourced facts exactly as the feed published them."""
     fm = money_for(s)
     out: dict[str, str] = {f"fact{i}": fact_value(f["value"], f["unit"], f.get("currency") or fm.currency)
                            for i, f in enumerate(s.get("facts") or [], 1)}
+    done: dict[str, dict[str, float]] = {}
     for m in s.get("maths", []):
         n, kind = m["name"], m["kind"]
-        if kind == "card_min_due":
+        done[n] = _values(m, done)
+        if kind == "compare":
+            a, b = done[n]["a"], done[n]["b"]
+            out |= {f"{n}_a": fm.short(a), f"{n}_b": fm.short(b), f"{n}_diff": fm.short(a - b),
+                    f"{n}_ratio": times(a/b), f"{n}_pct": f"{(a - b)/b*100:.0f}%"}
+        elif kind == "fee_take":
+            total = done[n]["total"]
+            out |= {f"{n}_per_period": fm.full(m["amount"]*m["fee_pct"]/100), f"{n}_per_year_total": fm.full(total/m["years"]),
+                    f"{n}_total": fm.short(total)}
+        elif kind == "card_min_due":
             c = card_min_due(m["amount"], m["rate_pct_month"], m["min_due_pct"], m["min_due_floor"])
             out |= {f"{n}_months": str(c["months"]), f"{n}_years": str(round(c["months"]/12)),
                     f"{n}_total_paid": fm.short(c["total_paid"]), f"{n}_interest": fm.short(c["interest"]),
@@ -280,10 +349,11 @@ def number_check(script: dict, plan: dict | None = None, feed_topic: dict | None
         if script.get("template") not in EXPECTED:
             return False, [f"template must be one of {', '.join(EXPECTED)}"]
         shown = check_script(script)["figures"]
+        expected = EXPECTED[script["template"]](script)
     except ValueError as e:
         return False, [str(e)]
     notes = []
-    for key, want in EXPECTED[script["template"]](script).items():
+    for key, want in expected.items():
         got = shown.get(key)
         if got != want:
             notes.append(f"{key}: template shows {got!r} but the independent formula gives {want!r}")
@@ -306,4 +376,4 @@ def number_check(script: dict, plan: dict | None = None, feed_topic: dict | None
         notes += topics.check_facts(script, feed_topic)
     if notes:
         return False, notes
-    return True, [f"{len(shown)} figures computed from inputs; {len(EXPECTED[script['template']](script))} cross-checked against closed-form formulas."]
+    return True, [f"{len(shown)} figures computed from inputs; {len(expected)} cross-checked against closed-form formulas."]

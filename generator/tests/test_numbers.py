@@ -171,3 +171,41 @@ def test_a_wrong_tax_figure_fails_the_number_check(monkeypatch: pytest.MonkeyPat
     monkeypatch.setattr(maths, "_tax", lambda income, bands: (1.0, 20.0))
     passed, notes = number_check(script)
     assert not passed and any("tax_tax" in n for n in notes)
+
+
+@pytest.mark.parametrize("amount, fee, per_year, years", [(30000, 2, 12, 10), (125000, 1.5, 1, 25), (999, 0.35, 52, 3)])
+def test_fee_take_closed_form_matches_the_story_maths(amount: int, fee: float, per_year: int, years: int) -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "fee_take", "amount": amount, "fee_pct": fee, "per_year": per_year, "years": years}])
+    script["beats"][0]["params"]["lines"][0]["text"] = "{sip_total}"
+    passed, notes = number_check(script)
+    assert passed, notes
+
+
+@pytest.mark.parametrize("a, b", [("rich.final", "poor.final"), ("rich.gains", "poor.invested"), ("fee.total", "fee.per_year_total")])
+def test_compare_closed_form_matches_the_story_maths(a: str, b: str) -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 20},
+                              {"name": "rich", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 30},
+                              {"name": "poor", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 20},
+                              {"name": "fee", "kind": "fee_take", "amount": 30000, "fee_pct": 2, "per_year": 12, "years": 10},
+                              {"name": "gap", "kind": "compare", "a": a, "b": b}])
+    script["beats"][0]["params"]["lines"][0]["text"] = "{gap_diff}"
+    passed, notes = number_check(script)
+    assert passed, notes
+
+
+def test_a_compare_the_number_check_cannot_recompute_fails() -> None:
+    script = sip_story(maths=[{"name": "sip", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 20},
+                              {"name": "gap", "kind": "compare", "a": "sip.final", "b": "sip.monthly"}])
+    passed, notes = number_check(script)
+    assert not passed and "cannot recompute 'sip.monthly'" in notes[0]
+
+
+def test_a_wrong_gap_fails_the_number_check(monkeypatch: pytest.MonkeyPatch) -> None:
+    from renderer.models import maths
+    script = sip_story(maths=[{"name": "sip", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 30},
+                              {"name": "late", "kind": "sip", "monthly": 10000, "rate_pct": 12, "years": 20},
+                              {"name": "gap", "kind": "compare", "a": "sip.final", "b": "late.final"}])
+    real = maths.compare
+    monkeypatch.setattr(maths, "compare", lambda m, fm, results: {**real(m, fm, results), "figures": {**real(m, fm, results)["figures"], "diff": "₹1"}})
+    passed, notes = number_check(script)
+    assert not passed and any("gap_diff" in n for n in notes)
