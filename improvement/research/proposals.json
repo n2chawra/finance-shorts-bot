@@ -308,7 +308,7 @@
       "effort": "S",
       "risk": "Low: a chip that is already in the script shows 0.4 s earlier; stills-only check.",
       "metric": "hookHold",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
       "priority": "high"
     },
@@ -328,7 +328,7 @@
       "effort": "S",
       "risk": "Confounded with voice and length in our data; may make titles longer. A/B on avgViewPct.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
       "priority": "normal"
     }

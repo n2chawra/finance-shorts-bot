@@ -1,0 +1,50 @@
+{
+  "agent": "improver",
+  "day": "2026-10-22",
+  "startedAt": "2026-10-22T00:48:44Z",
+  "finishedAt": "2026-10-22T00:56:26Z",
+  "summary": "Applied three fixes and two new maths kinds, and started one title experiment. The first frame of a stage opening now shows its chip; long and short scripts can show a fee's take and the gap between two results; renders no longer reuse old stills.",
+  "decision": "acted",
+  "why": "Research's adopt/high hook-text-on-frame-0 (v-20261021-04 opened with no figure on screen) and Scout's two template/high maths kinds come first; both running experiments are still at 0 of their videos per arm, so nothing could be closed.",
+  "findings": [
+    {
+      "title": "Experiments: nothing matured",
+      "detail": "10 videos with 48 h data. quiet-bed 0 of 4 long videos per arm; hook-voice-matches-frame 0 of 8 Shorts per arm (about 8 more days)."
+    },
+    {
+      "title": "Hook style",
+      "detail": "shock_number 1.14x median 48 h views (n=3, 35.0% viewed) vs myth 0.34x (n=3, 30.2% viewed). Unvoiced and 50-54 s Shorts sit at 0.34x (22% viewed)."
+    },
+    {
+      "title": "Music",
+      "detail": "synthwave and 100-109 BPM: 37.1% viewed (n=3); 90-99 BPM 28.1% (n=3)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Frame 0 shows the stage chip",
+      "detail": "remotion/src/scenes/kit.tsx at() treats \"start\" as 0 s; stage.tsx draws the first beat's chip fully from frame 0; check_script warns on a stage opening with no chip. Still at 0 s of v-20261021-04 re-rendered: chip visible.",
+      "branch": "agent/improver/2026-10-22",
+      "experiment": "hook-chip-frame-zero"
+    },
+    {
+      "title": "Maths kinds fee_take and compare",
+      "detail": "fee_take: per period, per year and total of a fee, with a cumulative chart series. compare: diff, ratio and % of two earlier results. Both recomputed independently in generator/numbers.py; documented in long_story/README.md.",
+      "branch": "agent/improver/2026-10-22",
+      "experiment": "maths-fee-take-compare"
+    },
+    {
+      "title": "Fresh stills on every render",
+      "detail": "renderer/remotion.py empties work/stills and work/probe before rendering, so QA and the layout gate only see this render's frames.",
+      "branch": "agent/improver/2026-10-22",
+      "experiment": "fresh-stills"
+    },
+    {
+      "title": "Experiment: title-names-the-moment",
+      "detail": "Shorts, prompt-only, half the videos: the title names who and the everyday moment. Judged on average % viewed, 8 per arm.",
+      "branch": "agent/improver/2026-10-22",
+      "experiment": "title-names-the-moment"
+    }
+  ],
+  "nextCheck": "2026-10-23"
+}

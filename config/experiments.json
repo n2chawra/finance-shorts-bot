@@ -31,6 +31,24 @@
       },
       "proposal": "hook-voice-matches-frame",
       "description": "Shorts: the first spoken words say what frame 0 shows; no warm-up opener"
+    },
+    {
+      "id": "title-names-the-moment",
+      "area": "title",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-10-22",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "prompt": {
+        "on": "Title rule for this video: the title names who and the everyday moment the viewer has lived ('Shopkeeper says UPI above ₹2,000 costs extra?', 'Rich vs Poor: your ₹20,000 raise', 'The dealer says $650 a month'), never an abstract claim about money ('Your emergency fund is quietly losing buying power'). Keep the usual title length and at most one emoji.",
+        "off": null
+      },
+      "proposal": "title-names-the-moment",
+      "metric": "avgViewPct",
+      "description": "Shorts: titles name who and the everyday moment (a shopkeeper, a payslip, a dealer's offer), not an abstract claim about money"
     }
   ]
 }
