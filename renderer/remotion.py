@@ -207,6 +207,14 @@ def check_thumbnail(path: Path, fmt: str) -> None:
         raise RuntimeError(f"thumbnail is {size[0]}x{size[1]}; a {fmt} video's must be {THUMB_SIZES[fmt][0]}x{THUMB_SIZES[fmt][1]}")
 
 
+def fresh(folder: Path) -> Path:
+    """`folder`, emptied: stills or probe frames left from an earlier, longer render would reach the
+    contact sheet and the layout gate as frames the video no longer has."""
+    shutil.rmtree(folder, ignore_errors=True)
+    folder.mkdir(parents=True)
+    return folder
+
+
 def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = False, every: float = 5.0,
                     chunk: int = 1200, concurrency: int = CORES,
                     stop_if: Callable[[dict], list[str]] | None = None) -> dict:
@@ -217,11 +225,11 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
     out.mkdir(parents=True, exist_ok=True)
     tl = json.loads(timeline.read_text(encoding="utf-8"))
     b = bundle()
-    shots = stills(timeline, work/"stills", every=every, bundle_dir=b)
+    shots = stills(timeline, fresh(work/"stills"), every=every, bundle_dir=b)
     # layout gate: each beat once its entrances have settled (70% through), measured by the probe
     probes: list[dict] = []
     settled = [bt["from"] + round(bt["frames"]*0.7) for bt in tl["beats"]]
-    stills(timeline, work/"probe", frames=settled, bundle_dir=b, probe=probes)
+    stills(timeline, fresh(work/"probe"), frames=settled, bundle_dir=b, probe=probes)
     sheet(shots, tl["fps"], out/"preview.png")
     if tl.get("thumbnail"):
         _node(["thumbnail", "--timeline", str(timeline), "--out", str(out/"thumbnail.png"), "--bundle", str(b)])

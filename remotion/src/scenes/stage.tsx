@@ -33,7 +33,8 @@ export const StageScene: React.FC<SceneProps> = (p) => {
       </svg>
       {params.chip && (
         <div style={{ position: "absolute", top: 60, width: w, textAlign: "center" }}>
-          <Chip text={params.chip.text} k={pop(p, at(p, params.chip.at, 0.4))} bg={p.tl.palette.accent} fg="#1b1b1b" size={42} />
+          {/* the video's first beat shows its stake on frame 0: the first frame is the hook */}
+          <Chip text={params.chip.text} k={p.beat.from === 0 ? 1 : pop(p, at(p, params.chip.at, 0.4))} bg={p.tl.palette.accent} fg="#1b1b1b" size={42} />
         </div>
       )}
     </AbsoluteFill>

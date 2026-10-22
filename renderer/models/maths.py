@@ -286,8 +286,50 @@ def income_tax_bands(m: dict, fm: Money = Money()) -> Result:
     return {"values": values, "figures": figures, "series": {}}
 
 
+def fee_take(m: dict, fm: Money = Money()) -> Result:
+    """A fee of fee_pct taken from `amount` every period (per_year periods a year, 12 for monthly):
+    what it takes per period, per year and over `years`, added up period by period."""
+    per_year, years = round(m["per_year"]), m["years"]
+    if per_year < 1 or years < 1:
+        raise ValueError("fee_take: per_year and years must be at least 1")
+    one = m["amount"]*m["fee_pct"]/100
+    total, cumulative = 0.0, [0.0]
+    for period in range(per_year*years):
+        total += one
+        if period % per_year == per_year - 1:
+            cumulative.append(total)
+    total, year = round(total, 6), round(one*per_year, 6)
+    return {
+        "values": {"per_period": one, "per_year_total": year, "total": total},
+        "figures": {"amount": fm.full(m["amount"]), "fee_pct": _pct(m["fee_pct"]), "years": str(years),
+                    "per_period": fm.full(one), "per_year_total": fm.full(year), "total": fm.short(total)},
+        "series": {"take": {"x": list(range(years + 1)), "y": cumulative}, **_ticks(total, years*12, fm)},
+    }
+
+
+def compare(m: dict, fm: Money, results: dict[str, Result]) -> Result:
+    """The gap between two results computed earlier in the same list: `a` and `b` are
+    "name.value_key" (as in @references), the bigger one first. Gives the difference, how many
+    times bigger a is, and by how many percent."""
+    def get(ref: object, side: str) -> float:
+        name, _, key = str(ref).lstrip("@").partition(".")
+        if name not in results or key not in results[name]["values"]:
+            raise ValueError(f"compare {m['name']!r}: {side} {ref!r} must be 'name.value_key' of a result computed earlier in maths")
+        return float(results[name]["values"][key])
+    a, b = get(m["a"], "a"), get(m["b"], "b")
+    if not 0 < b <= a:
+        raise ValueError(f"compare {m['name']!r}: b must be above zero and a at least b (put the bigger result first)")
+    return {
+        "values": {"a": a, "b": b, "diff": a - b, "ratio": a/b, "pct": (a/b - 1)*100},
+        "figures": {"a": fm.short(a), "b": fm.short(b), "diff": fm.short(a - b), "ratio": times(a/b),
+                    "pct": f"{(a/b - 1)*100:.0f}%"},
+        "series": {},
+    }
+
+
 KINDS = {"sip": sip, "lumpsum": lumpsum, "emi": emi, "card_min_due": card_min_due, "sip_stepup": sip_stepup,
-         "loan_prepay": loan_prepay, "real_return": real_return, "price_rise": price_rise, "income_tax_bands": income_tax_bands}
+         "loan_prepay": loan_prepay, "real_return": real_return, "price_rise": price_rise, "income_tax_bands": income_tax_bands, "fee_take": fee_take,
+         "compare": compare}
 
 # the inputs each kind needs, for messages a writer can act on
 INPUTS = {
@@ -300,6 +342,8 @@ INPUTS = {
     "real_return": ("amount", "rate_pct", "inflation_pct", "years"),
     "price_rise": ("monthly", "inflation_pct", "years"),
     "income_tax_bands": ("income", "allowance", "bands"),
+    "fee_take": ("amount", "fee_pct", "per_year", "years"),
+    "compare": ("a", "b"),
 }
 
 
@@ -316,7 +360,7 @@ def compute(maths: list[dict], fm: Money | None = None) -> dict[str, Result]:
             raise ValueError(f"maths {m['name']!r} is a {kind}, so it needs {', '.join(missing)}")
         if m["name"] in out:
             raise ValueError(f"maths name {m['name']!r} is used twice")
-        out[m["name"]] = KINDS[kind](m, fm)
+        out[m["name"]] = compare(m, fm, out) if kind == "compare" else KINDS[kind](m, fm)
     return out
 
 

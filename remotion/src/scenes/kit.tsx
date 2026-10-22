@@ -28,9 +28,9 @@ export const easeOut = (x: number) => 1 - Math.pow(1 - clamp(x), 3);
 
 /** Seconds since the beat started. */
 export const sec = (p: SceneProps) => p.frame / p.fps;
-/** Seconds at which a named event happens in this beat (falls back to `dflt`). */
+/** Seconds at which a named event happens in this beat (falls back to `dflt`); "start" is 0 s. */
 export const at = (p: SceneProps, name: string | undefined, dflt = 0) =>
-  name !== undefined && name in p.beat.events ? p.beat.events[name]! / p.fps : dflt;
+  name !== undefined && name in p.beat.events ? p.beat.events[name]! / p.fps : name === "start" ? 0 : dflt;
 /** A 0..1 spring that starts at `start` seconds. */
 export const pop = (p: SceneProps, start: number, damping = 12, stiffness = 140) =>
   p.frame / p.fps < start ? 0 : spring({ frame: p.frame - start * p.fps, fps: p.fps, config: { damping, stiffness, mass: 0.9 } });

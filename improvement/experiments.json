@@ -194,6 +194,68 @@
       "commits": [
         "663ae9a"
       ]
+    },
+    {
+      "id": "title-names-the-moment",
+      "proposal": "title-names-the-moment",
+      "area": "title",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-10-22",
+      "templates": [
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "minPerArm": 8,
+      "maxDays": 28,
+      "metric": "avgViewPct",
+      "hypothesis": "A title naming a lived moment brings viewers who recognise the situation and stay: higher average % viewed than an abstract-claim title.",
+      "description": "Shorts: titles name who and the everyday moment (a shopkeeper, a payslip, a dealer's offer), not an abstract claim about money"
+    },
+    {
+      "id": "hook-chip-frame-zero",
+      "proposal": "hook-text-on-frame-0, 2026-10-19-stage-chip-frame-zero",
+      "area": "hook",
+      "status": "adopted",
+      "startedAt": "2026-10-22",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "A stage chip with at \"start\" shows at 0 s (kit.tsx at()), and the video's first beat draws its chip fully from frame 0; check_script warns when a video opens on a stage with no chip.",
+      "evidence": "videos/v-20261021-04/preview.png: the 0.0 s still had no chip; the script's 'Raise: {rich_amount} a month' chip popped in at the 0.4 s default because \"start\" was not an event. 3 of 19 openings use a stage chip with at \"start\". Re-rendered still at 0 s now shows the chip. CLAUDE.md: first frame hooks.",
+      "commits": []
+    },
+    {
+      "id": "maths-fee-take-compare",
+      "proposal": "2026-10-21-maths-fee-take, 2026-10-21-maths-compare",
+      "area": "template",
+      "status": "adopted",
+      "startedAt": "2026-10-22",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "New maths kinds fee_take (a fee per period, per year, over N years, with a cumulative chart series) and compare (diff, ratio and % of two earlier results), each recomputed independently by the number check.",
+      "evidence": "Scout template/high (21 Oct): rich vs poor and early vs late need the gap as one figure; both how_they_make_money topics need a swipe-fee figure. Tests cover closed forms and a wrong gap failing.",
+      "commits": []
+    },
+    {
+      "id": "fresh-stills",
+      "proposal": "2026-10-21-stale-stills-dir",
+      "area": "pipeline",
+      "status": "adopted",
+      "startedAt": "2026-10-22",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "render_timeline empties work/stills and work/probe before rendering.",
+      "evidence": "Scout (21 Oct): after L-20261021-01 got 30 s longer, preview.png still showed an end card from the earlier render and the probe kept 19 stale frames. Checked: a planted stale still is gone after a re-render.",
+      "commits": []
     }
   ]
 }

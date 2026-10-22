@@ -55,3 +55,13 @@ def test_the_picture_key_ignores_the_sound_but_not_the_picture() -> None:
     changed = {**tl, "beats": [{"id": "a", "frames": 31}]}
     assert remotion.picture_key(tl) == remotion.picture_key(quieter)
     assert remotion.picture_key(tl) != remotion.picture_key(changed)
+
+
+def test_a_render_starts_from_empty_stills_and_probe_folders(tmp_path) -> None:
+    """Frames from an earlier, longer render must not reach the contact sheet or the layout gate."""
+    from renderer import remotion
+    old = tmp_path/"stills"
+    old.mkdir()
+    (old/"f14145.jpg").write_bytes(b"old end card")
+    assert remotion.fresh(old) == old and old.is_dir() and list(old.iterdir()) == []
+    assert remotion.fresh(tmp_path/"probe").is_dir()

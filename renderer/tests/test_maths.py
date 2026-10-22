@@ -1,6 +1,7 @@
-"""The newer maths kinds (step-up SIP, loan prepayment, inflation, income tax): what a writer can count on them to show."""
+"""The newer maths kinds (step-up SIP, loan prepayment, inflation, income tax, fees, comparisons): what a writer can count on them to show."""
 import pytest
 
+from renderer.engine.formatting import times
 from renderer.models import maths
 
 
@@ -81,3 +82,27 @@ def test_income_tax_bands_rejects_a_broken_table(over: dict, match: str) -> None
     m = {"name": "t", "kind": "income_tax_bands", "income": 50000, "allowance": 12570, "bands": [[50270, 20], [None, 40]], **over}
     with pytest.raises(ValueError, match=match):
         maths.compute([m])
+
+
+def test_fee_take_adds_up_a_fee_every_period_and_charts_it() -> None:
+    r = maths.compute([{"name": "f", "kind": "fee_take", "amount": 30000, "fee_pct": 2, "per_year": 12, "years": 10}])["f"]
+    f, v = r["figures"], r["values"]
+    assert (f["per_period"], f["per_year_total"], f["total"], f["fee_pct"]) == ("₹600", "₹7,200", "₹72,000", "2%")
+    assert r["series"]["take"]["y"][1] == pytest.approx(7200) and r["series"]["take"]["y"][-1] == pytest.approx(v["total"])
+    with pytest.raises(ValueError, match="at least 1"):
+        maths.compute([{"name": "f", "kind": "fee_take", "amount": 100, "fee_pct": 1, "per_year": 0, "years": 1}])
+
+
+def test_compare_gives_the_gap_between_two_earlier_results() -> None:
+    r = maths.compute([{"name": "late", "kind": "lumpsum", "amount": 1000, "rate_pct": 10, "years": 1},
+                       {"name": "early", "kind": "lumpsum", "amount": 1000, "rate_pct": 10, "years": 2},
+                       {"name": "gap", "kind": "compare", "a": "early.final", "b": "@late.final"}])["gap"]
+    assert r["values"]["diff"] == pytest.approx(110) and r["figures"]["pct"] == "10%" and r["figures"]["ratio"] == times(1.1)
+
+
+@pytest.mark.parametrize("a, b, match", [("x.final", "early.final", "computed earlier"), ("early.nope", "early.final", "computed earlier"),
+                                         ("early.invested", "early.final", "bigger result first")])
+def test_compare_rejects_a_missing_or_reversed_result(a: str, b: str, match: str) -> None:
+    with pytest.raises(ValueError, match=match):
+        maths.compute([{"name": "early", "kind": "lumpsum", "amount": 1000, "rate_pct": 10, "years": 2},
+                       {"name": "gap", "kind": "compare", "a": a, "b": b}])

@@ -309,12 +309,22 @@ def event_gaps(beats: list[dict], fps: int = FPS) -> list[str]:
     return out
 
 
+def first_frame(beats: list[dict]) -> list[str]:
+    """A warning when the video's first beat is a stage with no chip: the cast alone on a set,
+    so frame 0 shows no figure or question (captions show only a word or two at 0 s)."""
+    b = beats[0] if beats else None
+    if b and b.get("scene") == "stage" and not (b.get("params") or {}).get("chip"):
+        return [f"beat {b.get('id')!r} opens the video on a stage with no chip: frame 0 must show the hook's "
+                "figure or question, so add params.chip (it shows from the first frame) or open on a hook beat"]
+    return []
+
+
 def check_script(script: dict) -> dict:
     """Everything a build would reject, without speaking or mixing anything: maths inputs, typed
     numbers, placeholders, @references, scene names, sound kinds, ids and event words. Returns
     {"figures": {placeholder: shown}, "beats": [{"id", "scene", "speaker", "say", "spoken"}],
-    "warnings": [...]} for the number check and the reviewers. Warnings (Shorts pacing, on an
-    estimated voice timing) never fail a script."""
+    "warnings": [...]} for the number check and the reviewers. Warnings (a first frame with no
+    stake; Shorts pacing, on an estimated voice timing) never fail a script."""
     fmt = script.get("format", "long")
     if fmt not in SIZES:
         raise ValueError("format must be long or short")
@@ -362,7 +372,7 @@ def check_script(script: dict) -> dict:
     if fmt == "long" and beats[-1].scene != "end":
         raise ValueError("the last beat must be the end card (scene \"end\"), which carries the disclaimer")
     _thumbnail(script.get("thumbnail"), figures, results)
-    return {"figures": figures, "beats": out, "warnings": event_gaps(timed)}
+    return {"figures": figures, "beats": out, "warnings": first_frame(script["beats"]) + event_gaps(timed)}
 
 
 def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
