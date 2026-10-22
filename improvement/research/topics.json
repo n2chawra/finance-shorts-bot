@@ -861,12 +861,13 @@
         "any"
       ],
       "stories": [
-        "once_you_understand"
+        "trap_alert"
       ],
       "currency": "INR",
       "demand": {
-        "title": "Once You Understand MONEY, You'll Stop Saving It (LITTLE BIT BETTER, animated)",
-        "views": 2479142
+        "title": "The Middle Class EMI Trap",
+        "views": 7000000,
+        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
       },
       "hook": "Once you understand this, you'll never leave money sitting in a savings account.",
       "angle": "Real return: an assumed 3% account against an assumed 5% price rise, what ₹1 lakh buys after 10 years.",
@@ -874,7 +875,8 @@
       "maths": "real_return / price_rise: amount 100000, rate_pct 3, inflation_pct 5 (assumed), years 10",
       "found": "2026-10-22",
       "expires": "2027-01-20",
-      "status": "new"
+      "status": "new",
+      "note": "2026-10-23 research: was once_you_understand, which is a long-video format only (formats.json), so a Short plan with it fails check-plan; told as a trap_alert instead."
     },
     {
       "id": "2026-10-22-car-loan-72-months",
@@ -898,7 +900,7 @@
       "hook": "The dealer says only $650 a month. Nobody says for how long.",
       "angle": "A $40,000 car on 72 months vs 48 months at an assumed rate: the monthly payment looks smaller, the interest doesn't.",
       "why_now": "Demand first: a format with proven demand (see demand).",
-      "maths": "emi: amount 40000, rate_pct 9 (assumed), months 72 vs 48; the hook's monthly figure must come from the 72-month emi",
+      "maths": "emi: amount 40000, rate_pct 9 (assumed), years 6 vs years 4 (the emi kind takes years; 6 years = 72 months); the hook's monthly figure must come from the 6-year emi",
       "found": "2026-10-22",
       "expires": "2027-01-20",
       "status": "new"
@@ -982,6 +984,262 @@
       "maths": "sip: monthly 304 (10 a day, code computes 10*365/12), rate_pct 7 (assumed), years 30",
       "found": "2026-10-22",
       "expires": "2027-01-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-first-salary-rich-vs-poor",
+      "title": "Rich vs poor: the same ₹40,000 first salary",
+      "category": "salary",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "Rich vs Poor",
+        "views": 26000000,
+        "url": "https://www.youtube.com/shorts/55ezEOnK1Nk"
+      },
+      "hook": "Two friends. Same first salary. One buys a bike on EMI in month one.",
+      "angle": "What the first-month choice costs: a bike EMI for three years vs a ₹10,000 SIP that keeps going for 20 years.",
+      "why_now": "Demand first: rich vs poor is the channel's proven format (26M reference); a first salary is the audience's own moment.",
+      "maths": "emi: amount 150000, rate_pct 10 (assumed), years 3; sip: monthly 10000, rate_pct 12 (assumed), years 20; the poor move's monthly EMI and the rich move's final value both computed",
+      "expires": "2027-01-21",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "found": "2026-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-tax-refund-rich-vs-poor",
+      "title": "Rich vs poor: what each does with a $3,000 tax refund",
+      "category": "tax",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "Rich vs Poor",
+        "views": 26000000,
+        "url": "https://www.youtube.com/shorts/55ezEOnK1Nk"
+      },
+      "hook": "Same $3,000 refund. One spends it by Friday. One never touches it.",
+      "angle": "A tax refund spent vs invested once and left alone for 30 years.",
+      "why_now": "Demand first: rich vs poor (26M reference); our USD Short got 11x the views of our INR one this week, so the US side gets a rich-vs-poor too.",
+      "maths": "lumpsum: amount 3000, rate_pct 8 (assumed), years 30; the refund amount is an input, not a sourced average",
+      "expires": "2027-01-21",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "found": "2026-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-card-points-how-they-make-money",
+      "title": "Your 'free' rewards card: how the card company really makes money",
+      "category": "credit_card",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "Monkey Economics How Bank Work",
+        "views": 7600000,
+        "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"
+      },
+      "hook": "Your card gives you 1% back. Guess who paid for it.",
+      "angle": "A swipe fee on every purchase (assumed ~2%) plus interest on any balance carried: the 'free' points are a small slice of what the card earns from you and the shop.",
+      "why_now": "Demand first: how they make money (7.6M reference); credit card debt is the busiest theme in this week's market data.",
+      "maths": "fee_take: amount 2500 (monthly card spending), fee_pct 2 (assumed swipe fee), per_year 12, years 1; card_min_due: amount 3000, rate_pct_month 2 (assumed, about 24% a year), min_due_pct 2, min_due_floor 25",
+      "verify": [
+        "no card network or bank is named",
+        "swipe fee shown as an assumed rate, not a published one"
+      ],
+      "expires": "2027-01-21",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "found": "2026-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-jewellery-making-charges",
+      "title": "How the jewellery shop makes money on your Dhanteras gold",
+      "category": "gold",
+      "kind": "seasonal",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "Monkey Economics How Bank Work",
+        "views": 7600000,
+        "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"
+      },
+      "hook": "You paid for 10 grams of gold. You didn't get 10 grams of gold's worth.",
+      "angle": "Making charges (assumed 12%) on jewellery: what the shop keeps on a ₹1 lakh purchase, and what you get back if you sell it later.",
+      "why_now": "Dhanteras is Fri 6 Nov 2026 (shubhpanchang.com, bluestone.com): the busiest gold-buying day of the year in India.",
+      "maths": "fee_take: amount 100000, fee_pct 12 (assumed making charge), per_year 1, years 1; no gold price shown (a live market figure, not computed)",
+      "verify": [
+        "no jeweller named",
+        "making charge shown as an assumed example, not a rule",
+        "GST on gold mentioned only if confirmed on a government page"
+      ],
+      "sources": [
+        "https://shubhpanchang.com/festivals/dhanteras",
+        "https://blog.bluestone.com/best-day-to-buy-gold-jewellery-in-2026-according-to-astrology/"
+      ],
+      "expires": "2026-11-07",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "found": "2026-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-4000-take-home-us",
+      "title": "What $4,000 a month take-home really leaves you in the US",
+      "category": "salary",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "salary_breakdown"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "How much money is in your bank account?",
+        "views": 42000000,
+        "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
+      },
+      "hook": "$4,000 lands on payday. Watch it disappear.",
+      "angle": "Rent, car, groceries, phone and subscriptions taken off one by one (illustrative amounts), then what the leftover becomes invested.",
+      "why_now": "Demand first: salary breakdown (42M reference; the $100K-salary Short has 275K).",
+      "maths": "the costs are script inputs subtracted by code; sip: monthly <the computed leftover>, rate_pct 8 (assumed), years 20",
+      "expires": "2027-01-21",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "found": "2026-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-black-friday-on-the-card",
+      "title": "The Black Friday haul you pay for until next Black Friday",
+      "category": "credit_card",
+      "kind": "seasonal",
+      "priority": "high",
+      "stories": [
+        "trap_alert"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "The Middle Class EMI Trap",
+        "views": 7000000,
+        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
+      },
+      "hook": "$800 of deals. Paid off with the minimum, it takes years.",
+      "angle": "Holiday shopping put on a card and paid at the minimum due: months to clear and interest paid, computed.",
+      "why_now": "Black Friday is 27 Nov 2026; deal season starts in early November. Credit card debt is the busiest theme in this week's market data (Ramsey, Caleb Hammer, TED-Ed, Martin Lewis).",
+      "maths": "card_min_due: amount 800, rate_pct_month 2 (assumed, about 24% a year), min_due_pct 2, min_due_floor 25",
+      "expires": "2026-11-28",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "found": "2026-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-home-loan-guess",
+      "title": "Guess what a ₹30 lakh home loan really costs",
+      "category": "home_loan",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "guess_the_number"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "3 ways to get rich before you turn 30",
+        "views": 5200000,
+        "url": "https://www.youtube.com/shorts/tgeNZq-E-BE"
+      },
+      "hook": "₹30 lakh loan. 20 years. Three guesses: how much do you pay back?",
+      "angle": "Three characters guess; the answer (total paid and interest) lands at the end. Not a projection story.",
+      "why_now": "Demand first: guess the number (5.1M reference); a non-projection guess to keep the projection share down.",
+      "maths": "emi: amount 3000000, rate_pct 8.5 (assumed), years 20; the guesses are written as fractions of the computed total (e.g. 'about the loan', 'one and a half times'), never as typed figures",
+      "expires": "2027-01-21",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "found": "2026-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-rich-dont-park-cash",
+      "title": "Why the rich never leave cash sitting at almost 0%",
+      "category": "savings",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "How Billionaires never pay Taxes",
+        "views": 54000000,
+        "url": "https://www.youtube.com/shorts/klS_tpY7V04"
+      },
+      "hook": "Rich people keep cash too. They just never let it sit still.",
+      "angle": "$20,000 left 10 years at an assumed 0.4% vs an assumed 4%: the gap the rich don't leave on the table. No product named.",
+      "why_now": "Our best Short so far is a secret_of_rich USD one (v-20261021-05, 918 views in two days, 11x any other); this is the same format with a new secret.",
+      "maths": "lumpsum: amount 20000, rate_pct 0.4 (assumed), years 10; lumpsum: amount 20000, rate_pct 4 (assumed), years 10; compare a vs b",
+      "expires": "2027-01-21",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "found": "2026-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-money-level-at-25-india",
+      "title": "Which money level are you at 25? (India)",
+      "category": "net_worth",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "which_one_are_you"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "Do These 5 Things To Win With Money",
+        "views": 6400000,
+        "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"
+      },
+      "hook": "Five people, all 25. Only one of them is level five. Which one are you?",
+      "angle": "Five levels in 30 seconds (salary spent, emergency fund, no card debt, SIP running, SIP stepped up), each with one computed figure: what that level's monthly habit becomes by 45.",
+      "why_now": "Demand first: which one are you (6.4M reference). The long video L-20261021-01 told India's money levels at 8 min; this is a Short with a different cut (one age, five habits), so check the title shape against it.",
+      "maths": "sip: monthly 2000 / 5000 / 10000 (assumed), rate_pct 12 (assumed), years 20; sip_stepup: monthly 10000, step_pct 10, rate_pct 12, years 20 for level five",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
       "status": "new"
     }
   ]

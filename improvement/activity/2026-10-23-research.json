@@ -1,0 +1,42 @@
+{
+  "agent": "research",
+  "day": "2026-10-23",
+  "startedAt": "2026-10-22T18:21:11Z",
+  "finishedAt": "2026-10-22T18:27:27Z",
+  "summary": "Demand night: 9 new Shorts topics (4 INR, 5 USD) in proven formats, fixed two of last night's topics, two proposals, and one owner item: the daily market scan still searches pre-reset queries.",
+  "decision": "acted",
+  "why": "Our first demand-format Short, 'Why billionaires never sell their stock' (secret_of_rich, USD), has 918 views, three times any earlier video, so the feed stays on proven formats. One of last night's topics used a long-only format and would have failed check-plan.",
+  "findings": [
+    {
+      "title": "Our best Short yet: secret_of_rich, 918 views",
+      "detail": "v-20261021-05 opens on a counter-intuitive claim plus 'Wait, what?', like the 54M reference. Proposed as an A/B experiment (claim-then-wait-what).",
+      "link": "https://www.youtube.com/shorts/klS_tpY7V04"
+    },
+    {
+      "title": "The market scan misses the formats we make",
+      "detail": "config/market.json still searches pre-reset queries; 0 of this week's top 30 Shorts were rich-vs-poor or salary videos. Owner notification with replacement queries."
+    },
+    {
+      "title": "cost_of_habit can't be planned",
+      "detail": "Its only reference has 287 views, under the planner's 100,000 floor (adopt: formats-below-demand-floor)."
+    },
+    {
+      "title": "Fastest Short of the week: inflation explained in Minecraft (9.8K views/h)",
+      "detail": "Money ideas acted out in a world the viewer knows; supports the cast-and-sets shot system.",
+      "link": "https://youtube.com/shorts/Rif1GQXP7oA"
+    },
+    {
+      "title": "Dhanteras is Fri 6 Nov",
+      "detail": "A seasonal how-they-make-money topic on jewellery making charges, expires 7 Nov.",
+      "link": "https://shubhpanchang.com/festivals/dhanteras"
+    }
+  ],
+  "changes": [],
+  "nextCheck": "2026-10-24",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-23.md"
+    }
+  ]
+}
