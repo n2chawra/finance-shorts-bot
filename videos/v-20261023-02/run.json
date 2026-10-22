@@ -1,0 +1,156 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-10-22T22:45:59.952864+00:00",
+    "finishedAt": "2026-10-22T22:45:59.952864+00:00",
+    "notes": [
+      "style.genre must be one of lofi, pop, cinematic, synthwave, acoustic",
+      "palette 'sky' was used by the previous video"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:46:06.179029+00:00",
+    "finishedAt": "2026-10-22T22:46:06.179029+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:46:36.772197+00:00",
+    "finishedAt": "2026-10-22T22:46:36.772197+00:00",
+    "notes": [
+      "7 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:46:44.167893+00:00",
+    "finishedAt": "2026-10-22T22:46:44.167893+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:46:45.452608+00:00",
+    "finishedAt": "2026-10-22T22:46:45.452608+00:00",
+    "notes": [
+      "7 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:47:36.451829+00:00",
+    "finishedAt": "2026-10-22T22:47:36.451829+00:00",
+    "notes": [
+      "No sourced facts. Topic verify list met: no jeweller named, making charge said as 'an assumed 10%', GST not mentioned. Claims hold for India: gold priced at the day's rate, making charge on top, buyers of old jewellery usually pay for gold only. Disclaimer ends the description, no product advice. Notes: the real bill also carries 3% GST (about ₹1.13 L, still ₹1.1 L rounded); the making charge also pays for labour, so 'where the shop earns' simplifies a little."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:48:04.898854+00:00",
+    "finishedAt": "2026-10-22T22:48:04.898854+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-22T22:48:05.948376+00:00",
+    "finishedAt": "2026-10-22T22:48:35.089450+00:00",
+    "notes": [
+      "text 'Making charge' at 17.1 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:48:40.467174+00:00",
+    "finishedAt": "2026-10-22T22:48:40.467174+00:00",
+    "notes": [
+      "7 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-22T22:48:41.596598+00:00",
+    "finishedAt": "2026-10-22T22:48:58.228371+00:00",
+    "notes": [
+      "text 'Making charge' at 17.1 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:49:05.918021+00:00",
+    "finishedAt": "2026-10-22T22:49:05.918021+00:00",
+    "notes": [
+      "7 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:49:06.865062+00:00",
+    "finishedAt": "2026-10-22T22:49:23.380862+00:00",
+    "notes": [
+      "22 s, mint/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:49:30.195280+00:00",
+    "finishedAt": "2026-10-22T22:49:50.386976+00:00",
+    "notes": [
+      "22 s, mint/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:49:54.761324+00:00",
+    "finishedAt": "2026-10-22T22:50:14.498596+00:00",
+    "notes": [
+      "22 s, mint/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:50:52.579773+00:00",
+    "finishedAt": "2026-10-22T22:50:52.579773+00:00",
+    "notes": [
+      "22 s, six beats on six sets (market hook with Gold 1,00,000 vs bill 1.1 L cards, phone bill adding the 10,000 making line, vault stack 'Shop's cut', flat celebrate, bank stack 'Lost', penthouse loop), shot sizes vary, no overlaps/cut-offs/placeholders, captions clear of faces, disclaimer on last frame, thumbnail clean, audio -1.0/-16.2 dB. Minor: Sharma and Priya's 'present' arm points off-frame away from their stacks (vault 10 s, bank 15 s), Sharma's raised fingertip clips the right edge at 20 s."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:51:06.263223+00:00",
+    "finishedAt": "2026-10-22T22:52:26.843652+00:00",
+    "notes": [
+      "22 s, mint/pop, peak -1.0 dB, mean -16.2 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:52:31.176175+00:00",
+    "finishedAt": "2026-10-22T22:52:31.176175+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

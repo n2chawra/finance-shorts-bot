@@ -1,0 +1,96 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52806,
+  "duration_sec": 22,
+  "tempo": 1.0,
+  "style": {
+    "palette": "mint",
+    "genre": "pop",
+    "key": "A",
+    "bpm": 112
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "This gold is worth ₹1,00,000. So why is my bill ₹1.1 L?",
+        "start": 0.27,
+        "seconds": 3.65,
+        "window": 3.97,
+        "fill": 0.919
+      },
+      {
+        "scene": "making",
+        "text": "Making charges. An assumed 10% on top of the gold.",
+        "start": 4.23,
+        "seconds": 2.96,
+        "window": 3.53,
+        "fill": 0.839
+      },
+      {
+        "scene": "earns",
+        "text": "Gold sells at the day's rate. Every shop pays it. The making charge is where the shop earns.",
+        "start": 7.77,
+        "seconds": 3.88,
+        "window": 4.47,
+        "fill": 0.868
+      },
+      {
+        "scene": "sell",
+        "text": "Fine. One day I'll sell it and get it all back.",
+        "start": 12.23,
+        "seconds": 1.65,
+        "window": 2.1,
+        "fill": 0.786
+      },
+      {
+        "scene": "gone",
+        "text": "When you sell, shops usually pay for the gold only. That ₹10,000? Gone.",
+        "start": 14.33,
+        "seconds": 3.73,
+        "window": 4.3,
+        "fill": 0.867
+      },
+      {
+        "scene": "loop",
+        "text": "So ask for the making charge first. Because this gold...",
+        "start": 18.63,
+        "seconds": 2.21,
+        "window": 2.77,
+        "fill": 0.798
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 9.502,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

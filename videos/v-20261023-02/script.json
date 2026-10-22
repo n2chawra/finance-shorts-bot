@@ -1,0 +1,484 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52806,
+  "story": "how_they_make_money",
+  "currency": "INR",
+  "feed_id": "2026-10-23-jewellery-making-charges",
+  "style": {
+    "palette": "mint",
+    "genre": "pop",
+    "key": "A",
+    "bpm": 112
+  },
+  "maths": [
+    {
+      "name": "bill",
+      "kind": "lumpsum",
+      "amount": 100000,
+      "rate_pct": 10,
+      "years": 1
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "speaker": "rohan",
+      "say": "This gold is worth {bill_amount}. So why is my bill {bill_final}?",
+      "events": {
+        "gold": {
+          "word": "gold"
+        },
+        "bill": {
+          "word": "bill"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "gold",
+          "gain": 0.5
+        },
+        {
+          "kind": "boom",
+          "at": "bill",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "goldLabel": "Gold",
+        "gold": "{bill_amount}",
+        "billLabel": "Your bill",
+        "bill": "{bill_final}",
+        "sign": "Dhanteras sale",
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "making",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "Making charges. An assumed {bill_rate} on top of the gold.",
+      "events": {
+        "making": {
+          "word": "Making"
+        },
+        "top": {
+          "word": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "making"
+        },
+        {
+          "kind": "ding",
+          "at": "top",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "top",
+                "pose": "hips",
+                "expression": "happy",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "slip",
+            "spot": 0.66,
+            "height": 0.46,
+            "title": "Jewellery bill",
+            "figure": "{bill_final}",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Gold",
+                "value": "{bill_amount}",
+                "at": "making"
+              },
+              {
+                "label": "Making",
+                "value": "{bill_gains}",
+                "at": "top"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "making",
+            "size": "medium",
+            "on": "slip",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "earns",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Gold sells at the day's rate. Every shop pays it. The making charge is where the shop earns.",
+      "events": {
+        "rate": {
+          "word": "rate"
+        },
+        "every": {
+          "word": "Every"
+        },
+        "earns": {
+          "word": "earns"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rate"
+        },
+        {
+          "kind": "tick",
+          "at": "every",
+          "gain": 0.5
+        },
+        {
+          "kind": "kaching",
+          "at": "earns",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "earns",
+                "pose": "thumbsUp",
+                "expression": "laugh",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "shop",
+            "spot": 0.66,
+            "amount": "@bill.gains",
+            "text": "{bill_gains}",
+            "label": "Shop's cut",
+            "at": "every",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "every",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "earns",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Earns",
+          "at": "earns",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "sell",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Fine. One day I'll sell it and get it all back.",
+      "events": {
+        "sell": {
+          "word": "sell"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "sell"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "proud"
+              },
+              {
+                "at": "sell",
+                "pose": "celebrate",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "sell",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "gone",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "When you sell, shops usually pay for the gold only. That {bill_gains}? Gone.",
+      "events": {
+        "only": {
+          "word": "only"
+        },
+        "gone": {
+          "word": "Gone"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "only",
+          "gain": 0.5
+        },
+        {
+          "kind": "fail",
+          "at": "gone",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral",
+                "turn": 0.3
+              },
+              {
+                "at": "gone",
+                "pose": "shrug",
+                "expression": "sad",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "lost",
+            "spot": 0.6,
+            "amount": "@bill.gains",
+            "text": "{bill_gains}",
+            "label": "Lost",
+            "at": "start",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "only",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "gone",
+            "size": "close",
+            "on": "lost",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Gone",
+          "at": "gone",
+          "color": "bad",
+          "where": "right"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "So ask for the making charge first. Because this gold...",
+      "events": {
+        "ask": {
+          "word": "ask"
+        },
+        "gold": {
+          "word": "gold"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "ask"
+        },
+        {
+          "kind": "whoosh",
+          "at": "gold",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk",
+                "turn": -0.4
+              },
+              {
+                "at": "gold",
+                "pose": "point",
+                "expression": "proud",
+                "turn": -0.4
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "gold",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "secret",
+    "angle": "versus",
+    "who": "sharma",
+    "pose": "pointUp",
+    "expression": "smirk",
+    "words": "Your gold's *hidden* charge",
+    "figure": "{bill_gains}",
+    "tag": "Making charge",
+    "small": "{bill_amount}",
+    "to": "Gold you get"
+  },
+  "narrator": "af_heart"
+}
