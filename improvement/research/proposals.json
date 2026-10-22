@@ -331,6 +331,45 @@
       "status": "testing",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "formats-below-demand-floor",
+      "date": "2026-10-23",
+      "area": "pipeline",
+      "title": "Don't offer the planner a format that check-plan will reject",
+      "change": "In generator/formats.py, `load`/`for_state` (what `state` shows the planner) leave out a format whose best example has fewer views than MIN_VIEWS (100,000), and `check_plan`'s error names why. Today `cost_of_habit` (short) has one example, our own Short at 284 views, so the planner is offered it but any plan in it fails `demand.views ... is under 100,000`. Add a test with a format below the floor. Research will add a 100K+ cost_of_habit reference when it finds one; the format comes back by itself then.",
+      "evidence": [
+        "improvement/research/formats.json: cost_of_habit examples = [284 views]",
+        "generator/formats.py: MIN_VIEWS = 100_000; for_state() lists every non-retired format"
+      ],
+      "expectedEffect": "No wasted planner rewrites or failed plans on an unplannable format.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "None: a hidden format returns when a reference is added.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
+    },
+    {
+      "id": "claim-then-wait-what",
+      "date": "2026-10-23",
+      "area": "script",
+      "title": "Open with a counter-intuitive claim and a cast 'Wait, what?' in the first 4 seconds",
+      "change": "Behind a flag, in the short_story README recipes and the writer prompt (generator/prompts/writer.md): beat 1 is one short, surprising claim the viewer can't resolve on their own ('Billionaires almost never sell their stock.'), at most ~10 words and shown as hook text from frame 0; beat 2 is a cast member's disbelief ('Wait, what? Why borrow if you're rich?'), under 2 s. Off: the recipe's usual hook. Applies to every format, not only secret_of_rich.",
+      "evidence": [
+        "metrics/videos.json: v-20261021-05 'Why billionaires never sell their stock' (secret_of_rich, USD) 918 views in about two days vs 80 (v-20261021-04 rich_vs_poor) and 178 (v-20261022-01 trap_alert): the only one of the three that opens on a claim + 'Wait, what?'",
+        "https://www.youtube.com/shorts/klS_tpY7V04 (How Billionaires never pay Taxes, 54M: the same claim-first shape)",
+        "n=1 and confounded with USD vs INR and the topic itself"
+      ],
+      "expectedEffect": "Higher hold past the first 3 s and more replays.",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "May force a claim where the story has none; the topic, not the hook, may explain the gap. A/B on hookHold and avgViewPct.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }
