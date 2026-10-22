@@ -1,0 +1,36 @@
+{
+  "agent": "scout",
+  "day": "2026-10-22",
+  "startedAt": "2026-10-22T04:08:36Z",
+  "finishedAt": "2026-10-22T04:13:05Z",
+  "summary": "Thursday (thumbnails and titles): added 3 long topics (BNPL 'free' loans, the Indian salary cycle, why salary pays more tax than gains) and 7 thumbnail/title findings; the feed has 8 usable topics.",
+  "decision": "acted",
+  "why": "Our three Test & Compare thumbnails per long video are near-identical (same layout x3), which YouTube says makes tests inconclusive; the new topics have reference videos of 1.9M, 38.9M and 3.9M views.",
+  "findings": [
+    {
+      "title": "Test & Compare thumbnails are one picture three times",
+      "detail": "Every long video since 2026-10-19 uses layout 'story' three times; YouTube asks for meaningfully different variants and picks by watch-time share.",
+      "link": "https://support.google.com/youtube/answer/13861714"
+    },
+    {
+      "title": "versus and secret thumbnail layouts exist but are undocumented",
+      "detail": "Thumbnail.tsx renders them; the long_story README only documents 'story'."
+    },
+    {
+      "title": "Long titles should be short: a named thing plus one loaded word",
+      "detail": "Outliers are 31-39 characters ('The Car Loan Trap, Explained' 1.2M); ours run 57-63 with figures."
+    },
+    {
+      "title": "New long shape: 'The ___ trap, explained'",
+      "detail": "6.04M, 2.72M, 1.23M, 1.06M; routed to add a long trap_alert format.",
+      "link": "https://www.youtube.com/watch?v=KkN6I3gZfGI"
+    }
+  ],
+  "nextCheck": "2026-10-23",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/longform/2026-10-22.md"
+    }
+  ]
+}
