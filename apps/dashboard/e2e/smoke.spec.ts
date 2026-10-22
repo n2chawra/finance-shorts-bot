@@ -135,3 +135,28 @@ test("template cards keep a readable text column", async ({ page }) => {
     expect(box?.width ?? 0, `${name} text column`).toBeGreaterThanOrEqual(220);
   }
 });
+
+test("video page calls a due slot due, not minutes ago", async ({ page }) => {
+  // tomorrow 07:20 IST: the 07:07 Shorts slot is due, and the queue's first Short is the one to post
+  const tomorrow = new Date(Date.now() + 330 * 60_000 + 86_400_000).toISOString().slice(0, 10);
+  await page.clock.setFixedTime(new Date(`${tomorrow}T07:20:00+05:30`));
+  await signIn(page);
+  await page.goto("/queue");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Queue/, { timeout: 30_000 });
+  const first = page.locator("ol li").first();
+  await expect(first.locator("text=Uploading now >> visible=true").first()).toBeVisible();
+  await first.locator("a[href^='/videos/'] >> visible=true").first().click();
+  const publish = page.locator("dt", { hasText: "Publish at" }).locator("+ dd");
+  await expect(publish).toContainText("Due now", { timeout: 30_000 });
+  await expect(publish).not.toContainText("ago");
+});
+
+test("overview stat cards leave no half-empty row", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
+  // on phones five cards wrap 2-2-1; the last one once sat alone beside an empty half row
+  const grid = page.getByTestId("overview-stats");
+  const edges = await grid.evaluate((g) => ({ right: g.getBoundingClientRect().right, last: g.lastElementChild!.getBoundingClientRect().right }));
+  expect(Math.abs(edges.right - edges.last)).toBeLessThanOrEqual(2);
+});

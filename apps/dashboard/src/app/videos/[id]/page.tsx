@@ -57,7 +57,6 @@ function ThumbTest({ v }: { v: VideoDetail }) {
           const kind = THUMB_KIND[t.file] ?? "thumbnail", won = winner === t.file;
           return (
             <div key={t.file} className={`flex flex-col gap-1.5 rounded-lg border p-1.5 ${won ? "border-brand" : "border-ring"}`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`/api/media/${v.id}/${kind}`} alt={`Thumbnail ${"ABC"[i]}`} className="aspect-video w-full rounded object-cover" />
               <span className="text-[11px] text-ink2">{"ABC"[i]} · {titleCase(t.angle ?? "—")}</span>
               <a href={`/api/media/${v.id}/${kind}`} download={`${v.id}-${kind}.png`} className={buttonClass("ghost")}><ImageDown aria-hidden className="size-4" />Download</a>
@@ -159,7 +158,9 @@ export default function VideoPage() {
                 {publishAt ? (
                   <span className="block text-right leading-tight">
                     <span className="block tabular-nums">{fmtDateTime(publishAt)} IST{!v.upload && v.queuePosition ? ` · queue #${v.queuePosition}` : ""}</span>
-                    {!v.upload && <span className="block text-[11px] text-muted">{fmtRelative(publishAt)}, if the queue order holds</span>}
+                    {!v.upload && (planned?.state === "due"
+                      ? <span className="block text-[11px] font-medium text-warning-text">Due now: this slot is open</span>
+                      : <span className="block text-[11px] text-muted">{fmtRelative(publishAt)}, if the queue order holds</span>)}
                   </span>
                 ) : v.queuePosition ? `Queue #${v.queuePosition}` : "—"}
               </Row>
