@@ -1,0 +1,104 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61942,
+  "duration_sec": 29,
+  "tempo": 1.0,
+  "style": {
+    "palette": "night",
+    "genre": "synthwave",
+    "key": "E",
+    "bpm": 104
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "My Black Friday haul cost $1,500. Paid at the minimum, it costs $3,019.",
+        "start": 0.27,
+        "seconds": 5.07,
+        "window": 5.3,
+        "fill": 0.957
+      },
+      {
+        "scene": "easy",
+        "text": "The bill says only $45 due this month. Easy!",
+        "start": 5.57,
+        "seconds": 2.56,
+        "window": 3.0,
+        "fill": 0.853
+      },
+      {
+        "scene": "trap",
+        "text": "That's the trap. The card charges about 22.8% a year on everything you leave.",
+        "start": 8.57,
+        "seconds": 4.29,
+        "window": 4.83,
+        "fill": 0.888
+      },
+      {
+        "scene": "year",
+        "text": "Next Black Friday, he has paid $507. He still owes $1,304.",
+        "start": 13.4,
+        "seconds": 4.45,
+        "window": 5.03,
+        "fill": 0.885
+      },
+      {
+        "scene": "still",
+        "text": "Still?!",
+        "start": 18.43,
+        "seconds": 0.42,
+        "window": 1.03,
+        "fill": 0.408
+      },
+      {
+        "scene": "years",
+        "text": "At the minimum, it takes about 9 years. That's $1,519 in interest, for stuff you forgot.",
+        "start": 19.47,
+        "seconds": 4.99,
+        "window": 5.53,
+        "fill": 0.902
+      },
+      {
+        "scene": "loop",
+        "text": "Pay the full bill, and a deal stays a deal. If not, this Black Friday haul...",
+        "start": 25.0,
+        "seconds": 3.14,
+        "window": 3.67,
+        "fill": 0.856
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.4
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 8.916,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

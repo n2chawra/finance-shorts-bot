@@ -1,0 +1,594 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 61942,
+  "story": "trap_alert",
+  "currency": "USD",
+  "feed_id": "2026-10-23-black-friday-on-the-card",
+  "style": {
+    "palette": "night",
+    "genre": "synthwave",
+    "key": "E",
+    "bpm": 104
+  },
+  "maths": [
+    {
+      "name": "card",
+      "kind": "card_min_due",
+      "amount": 1500,
+      "rate_pct_month": 1.9,
+      "min_due_pct": 3,
+      "min_due_floor": 25
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "speaker": "rohan",
+      "say": "My Black Friday haul cost {card_amount}. Paid at the minimum, it costs {card_total_paid}.",
+      "events": {
+        "haul": {
+          "word": "haul"
+        },
+        "minimum": {
+          "word": "minimum"
+        },
+        "costs": {
+          "word": "costs"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "haul",
+          "gain": 0.5
+        },
+        {
+          "kind": "riser",
+          "at": "minimum",
+          "gain": 0.35
+        },
+        {
+          "kind": "boom",
+          "at": "costs",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "sign": "Black Friday",
+        "cartLabel": "Your haul",
+        "cart": "{card_amount}",
+        "realLabel": "At the minimum",
+        "real": "{card_total_paid}",
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "easy",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "The bill says only {card_min_due} due this month. Easy!",
+      "events": {
+        "due": {
+          "word": "due"
+        },
+        "easy": {
+          "word": "Easy"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "due",
+          "gain": 0.5
+        },
+        {
+          "kind": "pop",
+          "at": "easy"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "happy"
+              },
+              {
+                "at": "easy",
+                "pose": "thumbsUp",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "bill",
+            "spot": 0.66,
+            "height": 0.46,
+            "title": "Card bill",
+            "figure": "{card_amount}",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Minimum",
+                "value": "{card_min_due}",
+                "at": "due"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "due",
+            "size": "medium",
+            "on": "bill",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "trap",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "That's the trap. The card charges about {card_rate_year} a year on everything you leave.",
+      "events": {
+        "trap": {
+          "word": "trap"
+        },
+        "charges": {
+          "word": "charges"
+        },
+        "leave": {
+          "word": "leave"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "trap",
+          "gain": 0.6
+        },
+        {
+          "kind": "tick",
+          "at": "charges",
+          "gain": 0.5
+        },
+        {
+          "kind": "fail",
+          "at": "leave",
+          "gain": 0.4
+        },
+        {
+          "kind": "pop",
+          "at": "year"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.32,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "angry",
+                "turn": 0.3
+              },
+              {
+                "at": "leave",
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "left",
+            "spot": 0.62,
+            "amount": "@card.amount",
+            "text": "{card_amount}",
+            "label": "On the card",
+            "at": "start",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "charges",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "year",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "leave",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Trap",
+          "at": "trap",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "year",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Next Black Friday, he has paid {card_paid_year1}. He still owes {card_owed_year1}.",
+      "events": {
+        "paid": {
+          "word": "paid"
+        },
+        "owes": {
+          "word": "owes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "paid"
+        },
+        {
+          "kind": "boom",
+          "at": "owes",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "set": "office",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "paid",
+            "spot": 0.52,
+            "amount": "@card.paid_year1",
+            "text": "{card_paid_year1}",
+            "label": "Paid",
+            "at": "paid",
+            "tone": "good"
+          },
+          {
+            "kind": "stack",
+            "id": "owed",
+            "spot": 0.78,
+            "amount": "@card.owed_year1",
+            "text": "{card_owed_year1}",
+            "label": "Still owed",
+            "at": "owes",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "paid",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "owes",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.22,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "happy",
+                "turn": 0.3
+              },
+              {
+                "at": "owes",
+                "pose": "worried",
+                "expression": "sad",
+                "turn": 0.3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "still",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Still?!",
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "years",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "At the minimum, it takes about {card_years} years. That's {card_interest} in interest, for stuff you forgot.",
+      "events": {
+        "takes": {
+          "word": "takes"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "forgot": {
+          "word": "forgot"
+        },
+        "thats": {
+          "word": "That's"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "takes",
+          "gain": 0.5
+        },
+        {
+          "kind": "boom",
+          "at": "interest",
+          "gain": 0.7
+        },
+        {
+          "kind": "fail",
+          "at": "forgot",
+          "gain": 0.4
+        },
+        {
+          "kind": "pop",
+          "at": "thats"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral",
+                "turn": 0.3
+              },
+              {
+                "at": "forgot",
+                "pose": "shrug",
+                "expression": "sad",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "int",
+            "spot": 0.64,
+            "amount": "@card.interest",
+            "text": "{card_interest}",
+            "label": "Interest",
+            "at": "interest",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "thats",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "interest",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "{card_years} years",
+          "at": "takes",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Pay the full bill, and a deal stays a deal. If not, this Black Friday haul...",
+      "events": {
+        "full": {
+          "word": "full"
+        },
+        "deal": {
+          "word": "deal"
+        },
+        "haul": {
+          "word": "haul"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "full",
+          "gain": 0.5
+        },
+        {
+          "kind": "pop",
+          "at": "deal"
+        },
+        {
+          "kind": "whoosh",
+          "at": "haul",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "proud",
+                "turn": -0.4
+              },
+              {
+                "at": "haul",
+                "pose": "point",
+                "expression": "smirk",
+                "turn": -0.4
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "haul",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "story",
+    "angle": "warning",
+    "who": "rohan",
+    "pose": "worried",
+    "expression": "worried",
+    "hero": "card",
+    "tag": "Black Friday",
+    "small": "{card_amount}",
+    "to": "At the minimum",
+    "figure": "{card_total_paid}",
+    "words": "The minimum due trap"
+  },
+  "narrator": "af_bella"
+}

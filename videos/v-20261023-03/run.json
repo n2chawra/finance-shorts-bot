@@ -1,0 +1,178 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:51:15.774370+00:00",
+    "finishedAt": "2026-10-22T22:51:15.774370+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:51:51.393083+00:00",
+    "finishedAt": "2026-10-22T22:51:51.393083+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas.",
+      "warning: beat 'trap' runs 5.4 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:51:59.110204+00:00",
+    "finishedAt": "2026-10-22T22:51:59.110204+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas.",
+      "warning: beat 'years' runs 6.2 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:52:03.328271+00:00",
+    "finishedAt": "2026-10-22T22:52:03.328271+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:53:05.922964+00:00",
+    "finishedAt": "2026-10-22T22:53:05.922964+00:00",
+    "notes": [
+      "USD card story, no sourced facts and no verify list on feed topic 2026-10-23-black-friday-on-the-card (seasonal, expires 2026-11-28, current). Assumptions realistic: 22.8% APR (1.9%/month) within US 20-25%, 3% minimum due with $25 floor is a typical US formula, stated as 'about' a year on a hypothetical card. Claims hold: paying the full statement balance avoids purchase interest (US grace period), minimum-only takes ~9 years (103 months). No product/bank named, no guarantees, tone light. Description ends with the disclaimer. Notes: the 3% minimum is shown only via the $45 bill line, and the model is simplified in the card's favour (real cost can be higher); neither is grounds to reject."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:53:15.217954+00:00",
+    "finishedAt": "2026-10-22T22:53:15.217954+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:53:16.300950+00:00",
+    "finishedAt": "2026-10-22T22:53:48.126635+00:00",
+    "notes": [
+      "29 s, night/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:54:01.115940+00:00",
+    "finishedAt": "2026-10-22T22:54:01.115940+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:54:02.146827+00:00",
+    "finishedAt": "2026-10-22T22:54:23.918072+00:00",
+    "notes": [
+      "29 s, night/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:54:39.426255+00:00",
+    "finishedAt": "2026-10-22T22:54:39.426255+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:54:40.484934+00:00",
+    "finishedAt": "2026-10-22T22:55:01.806607+00:00",
+    "notes": [
+      "29 s, night/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:55:11.945335+00:00",
+    "finishedAt": "2026-10-22T22:55:11.945335+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:55:12.975821+00:00",
+    "finishedAt": "2026-10-22T22:55:29.988502+00:00",
+    "notes": [
+      "29 s, night/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-22T22:56:19.504637+00:00",
+    "finishedAt": "2026-10-22T22:56:19.504637+00:00",
+    "notes": [
+      "[scene] thumbnail.png (layout story): the words markup is drawn literally as '*MINIMUM*' with the asterisks visible instead of highlighting the word, which the short_story README says should work. Also 'AT THE MINIMUM' runs to the right edge of the receipt and Rohan's head clips the bottom of '$3,019'. Workaround: [script] drop the asterisks from thumbnail.words",
+      "[scene] 10.0s (beat trap, shot scene, stack object 'left'): as the stack rises in on 'charges', its 'ON THE CARD' label sweeps through the caption band and sits on top of the caption 'THE CARD CHARGES' (text over text). By 11.7s the stack has grown taller and the label is clear",
+      "[scene] 18.9s (beat still, extreme close-up, Rohan facepalm/shock) and 5.0s (hook, Rohan shock): Rohan's open mouth is drawn as a dark blob between his nose and right eye, overlapping the eye, with a tiny mouth below it. The shock mouth is misplaced when the face is turned. The thumbnail draws the same expression correctly",
+      "[script] 15.0-16.7s (beat year, office set): wide on the room with no cast, so two-thirds of the frame is skyline and one small stack. The yellow caption '$1,304.' also lands across the 'STILL OWED' label and the bottom of the green '$507' pill. Put Rohan in the shot or move closer on the stacks, and move the stacks so their labels clear the caption band"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:56:38.984594+00:00",
+    "finishedAt": "2026-10-22T22:56:38.984594+00:00",
+    "notes": [
+      "14 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:56:39.943705+00:00",
+    "finishedAt": "2026-10-22T22:57:01.076123+00:00",
+    "notes": [
+      "29 s, night/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:57:29.053322+00:00",
+    "finishedAt": "2026-10-22T22:57:29.053322+00:00",
+    "notes": [
+      "Re-review after fixes: the thumbnail reads 'The minimum due trap' with no asterisks. The trap stack label stays clear of the captions. Rohan's worried face is drawn cleanly in the hook and the Still?! close-up. The year beat now has Rohan beside the Paid/Still owed stacks. Hook, disclaimer, figures, 29 s length and audio all check out. Minor: the office set's mug is drawn in front of the 'owed' stack at 16.7s."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:57:36.413651+00:00",
+    "finishedAt": "2026-10-22T22:59:21.018486+00:00",
+    "notes": [
+      "29 s, night/synthwave, peak -1.0 dB, mean -16.4 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-22T22:59:25.256920+00:00",
+    "finishedAt": "2026-10-22T22:59:25.256920+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
