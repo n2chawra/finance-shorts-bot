@@ -1,0 +1,326 @@
+{
+  "id": "v-20261023-01",
+  "createdAt": "2026-10-22T22:47:50.280626+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why the rich never leave $20,000 of cash sitting at almost 0% for 10 years",
+    "category": "savings",
+    "feed_id": "2026-10-23-rich-dont-park-cash"
+  },
+  "title": "Your $20,000 savings: what the rich do with it 🤫",
+  "description": "Is your emergency cash sleeping at almost 0%? The rich don't let it.\nSame $20,000, same 10 years: an assumed 0.4% vs an assumed 4% a year, computed. No product named, rates are assumptions. Speak to a licensed financial adviser in your country before making financial decisions.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Money",
+    "#Savings",
+    "#PersonalFinance",
+    "#RichHabits"
+  ],
+  "hookStyle": "secret",
+  "cta": "Is your cash asleep? Comment",
+  "seed": 37419,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 90,
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Rich people never let their cash sleep.",
+        "start": 0.27,
+        "seconds": 1.27,
+        "window": 1.83,
+        "fill": 0.694
+      },
+      {
+        "scene": "mine",
+        "text": "Wait, what? My $20,000 is safe in the bank. It pays about 0.4%.",
+        "start": 2.1,
+        "seconds": 4.01,
+        "window": 4.23,
+        "fill": 0.948
+      },
+      {
+        "scene": "asleep",
+        "text": "Safe, and asleep. In 10 years, it grows to just $20,815.",
+        "start": 6.33,
+        "seconds": 3.83,
+        "window": 4.4,
+        "fill": 0.87
+      },
+      {
+        "scene": "awake",
+        "text": "Mine sits in an account paying an assumed 4%. Still cash. It just works.",
+        "start": 10.73,
+        "seconds": 3.79,
+        "window": 4.37,
+        "fill": 0.867
+      },
+      {
+        "scene": "gap",
+        "text": "Same $20,000. Same 10 years. That's $8,790 more, for doing nothing.",
+        "start": 15.1,
+        "seconds": 5.36,
+        "window": 5.73,
+        "fill": 0.935
+      },
+      {
+        "scene": "table",
+        "text": "I left that on the table? For 10 years?",
+        "start": 20.83,
+        "seconds": 1.4,
+        "window": 1.9,
+        "fill": 0.737
+      },
+      {
+        "scene": "loop",
+        "text": "Is your cash asleep? Because rich people...",
+        "start": 22.73,
+        "seconds": 1.46,
+        "window": 2.03,
+        "fill": 0.719
+      }
+    ]
+  },
+  "durationSec": 25,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.1
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on"
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "No sourced facts and no verify list on feed topic 2026-10-23-rich-dont-park-cash; checked claims: ~0.4% is a realistic US big-bank savings rate (Rohan's own), 4% is labelled an assumption and within the <=5% savings bar, both options are still cash so risk/liquidity comparison is fair, no product named, no guarantee words, title delivered, description ends with disclaimer. Notes: 'for doing nothing' and a flat 4% for 10 years ignore that savings rates move with the Fed and interest is taxed in both cases; inflation not mentioned. None decisive."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fix: gap beat now wide with stacks at 0.36/0.64, both tags (ASLEEP $20,815, AWAKE $29,605) fully in frame and uncovered at 18.8s/20s; hook, figures, disclaimer at 25s, thumbnail and code checks (25s, -1.0/-17.1 dB, no layout/craft problems) all fine."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:39:42.654806+00:00",
+      "finishedAt": "2026-10-22T22:39:42.654806+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:40:13.984877+00:00",
+      "finishedAt": "2026-10-22T22:40:13.984877+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas.",
+        "warning: beat 'gap' runs 5.4 s with 3.7 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:40:19.628362+00:00",
+      "finishedAt": "2026-10-22T22:40:19.628362+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:41:15.611162+00:00",
+      "finishedAt": "2026-10-22T22:41:15.611162+00:00",
+      "notes": [
+        "No sourced facts and no verify list on feed topic 2026-10-23-rich-dont-park-cash; checked claims: ~0.4% is a realistic US big-bank savings rate (Rohan's own), 4% is labelled an assumption and within the <=5% savings bar, both options are still cash so risk/liquidity comparison is fair, no product named, no guarantee words, title delivered, description ends with disclaimer. Notes: 'for doing nothing' and a flat 4% for 10 years ignore that savings rates move with the Fed and interest is taxed in both cases; inflation not mentioned. None decisive."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-22T22:41:23.460200+00:00",
+      "finishedAt": "2026-10-22T22:42:12.959860+00:00",
+      "notes": [
+        "text 'Savings' at 4.8 s runs outside the frame",
+        "text '$20,000' at 4.8 s runs outside the frame",
+        "text 'Interest rate' at 4.8 s runs outside the frame",
+        "text '0.4%' at 4.8 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:42:18.449575+00:00",
+      "finishedAt": "2026-10-22T22:42:18.449575+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-22T22:42:19.450098+00:00",
+      "finishedAt": "2026-10-22T22:42:36.540684+00:00",
+      "notes": [
+        "text '$20,815' at 9.1 s runs outside the frame",
+        "text 'Savings' at 4.8 s runs outside the frame",
+        "text '$20,000' at 4.8 s runs outside the frame",
+        "text 'Interest rate' at 4.8 s runs outside the frame",
+        "text '0.4%' at 4.8 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:42:57.065136+00:00",
+      "finishedAt": "2026-10-22T22:42:57.065136+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-22T22:42:58.033091+00:00",
+      "finishedAt": "2026-10-22T22:43:20.627417+00:00",
+      "notes": [
+        "text 'Interest rate' at 4.8 s is 36.9 px, below the 44 px minimum",
+        "text 'Cash at work' at 13.5 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:43:26.200583+00:00",
+      "finishedAt": "2026-10-22T22:43:26.200583+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-22T22:43:27.187651+00:00",
+      "finishedAt": "2026-10-22T22:43:44.546974+00:00",
+      "notes": [
+        "text 'Rate' at 4.8 s is 36.9 px, below the 44 px minimum"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:43:49.763774+00:00",
+      "finishedAt": "2026-10-22T22:43:49.763774+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:43:50.802276+00:00",
+      "finishedAt": "2026-10-22T22:44:08.841461+00:00",
+      "notes": [
+        "25 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-22T22:44:53.638237+00:00",
+      "finishedAt": "2026-10-22T22:44:53.638237+00:00",
+      "notes": [
+        "[script] 18.8s (beat 'gap', camera 'medium on all' at 'years'): the push-in is too tight for two stacks; the green 'AWAKE $29,605' tag runs off the right edge and the red 'ASLEEP $20,815' tag off the left edge (both pills clipped, digits touching the frame). Keep the beat on the wide room shot or frame the stacks closer together.",
+        "[scene] 20.0s (beat 'gap', flow object from 'low' to 'high' at 'more'): the flying bills land on the high stack's label and hide '$29,605' (reads '$2.,605') exactly while the narrator says '$8,790 more'; the flow should end on the stack body below its label."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:45:08.147792+00:00",
+      "finishedAt": "2026-10-22T22:45:08.147792+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:45:09.117102+00:00",
+      "finishedAt": "2026-10-22T22:45:26.390901+00:00",
+      "notes": [
+        "25 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:45:43.046157+00:00",
+      "finishedAt": "2026-10-22T22:45:43.046157+00:00",
+      "notes": [
+        "Re-review after fix: gap beat now wide with stacks at 0.36/0.64, both tags (ASLEEP $20,815, AWAKE $29,605) fully in frame and uncovered at 18.8s/20s; hook, figures, disclaimer at 25s, thumbnail and code checks (25s, -1.0/-17.1 dB, no layout/craft problems) all fine."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:46:03.910546+00:00",
+      "finishedAt": "2026-10-22T22:47:38.344485+00:00",
+      "notes": [
+        "25 s, ember/cinematic, peak -1.0 dB, mean -17.1 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-22T22:47:50.280712+00:00",
+      "finishedAt": "2026-10-22T22:47:50.280712+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261023-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261023-01"
+  }
+}

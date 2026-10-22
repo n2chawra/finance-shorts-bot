@@ -1,0 +1,104 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 37419,
+  "duration_sec": 25,
+  "tempo": 1.0,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 90
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Rich people never let their cash sleep.",
+        "start": 0.27,
+        "seconds": 1.27,
+        "window": 1.83,
+        "fill": 0.694
+      },
+      {
+        "scene": "mine",
+        "text": "Wait, what? My $20,000 is safe in the bank. It pays about 0.4%.",
+        "start": 2.1,
+        "seconds": 4.01,
+        "window": 4.23,
+        "fill": 0.948
+      },
+      {
+        "scene": "asleep",
+        "text": "Safe, and asleep. In 10 years, it grows to just $20,815.",
+        "start": 6.33,
+        "seconds": 3.83,
+        "window": 4.4,
+        "fill": 0.87
+      },
+      {
+        "scene": "awake",
+        "text": "Mine sits in an account paying an assumed 4%. Still cash. It just works.",
+        "start": 10.73,
+        "seconds": 3.79,
+        "window": 4.37,
+        "fill": 0.867
+      },
+      {
+        "scene": "gap",
+        "text": "Same $20,000. Same 10 years. That's $8,790 more, for doing nothing.",
+        "start": 15.1,
+        "seconds": 5.36,
+        "window": 5.73,
+        "fill": 0.935
+      },
+      {
+        "scene": "table",
+        "text": "I left that on the table? For 10 years?",
+        "start": 20.83,
+        "seconds": 1.4,
+        "window": 1.9,
+        "fill": 0.737
+      },
+      {
+        "scene": "loop",
+        "text": "Is your cash asleep? Because rich people...",
+        "start": 22.73,
+        "seconds": 1.46,
+        "window": 2.03,
+        "fill": 0.719
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.1
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.294,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

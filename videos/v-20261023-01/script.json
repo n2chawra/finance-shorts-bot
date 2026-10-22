@@ -1,0 +1,556 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 37419,
+  "story": "secret_of_rich",
+  "currency": "USD",
+  "feed_id": "2026-10-23-rich-dont-park-cash",
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 90
+  },
+  "maths": [
+    {
+      "name": "park",
+      "kind": "lumpsum",
+      "amount": 20000,
+      "rate_pct": 0.4,
+      "years": 10
+    },
+    {
+      "name": "work",
+      "kind": "lumpsum",
+      "amount": 20000,
+      "rate_pct": 4,
+      "years": 10
+    },
+    {
+      "name": "gap",
+      "kind": "compare",
+      "a": "work.final",
+      "b": "park.final"
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "speaker": "sharma",
+      "say": "Rich people never let their cash sleep.",
+      "events": {
+        "never": {
+          "word": "never"
+        },
+        "sleep": {
+          "word": "sleep"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "never",
+          "gain": 0.6
+        },
+        {
+          "kind": "pop",
+          "at": "sleep"
+        }
+      ],
+      "params": {
+        "secret": "Never let cash sleep",
+        "asleep": "{park_amount}",
+        "label": "Savings account",
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mine",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "Wait, what? My {park_amount} is safe in the bank. It pays about {park_rate}.",
+      "events": {
+        "safe": {
+          "word": "safe"
+        },
+        "pays": {
+          "word": "pays"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "safe"
+        },
+        {
+          "kind": "ding",
+          "at": "pays",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              },
+              {
+                "at": "safe",
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "app",
+            "spot": 0.66,
+            "height": 0.46,
+            "title": "Savings",
+            "figure": "{park_amount}",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Rate",
+                "value": "{park_rate}",
+                "at": "pays"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "safe",
+            "size": "medium",
+            "on": "app",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "asleep",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Safe, and asleep. In {park_years} years, it grows to just {park_final}.",
+      "events": {
+        "asleep": {
+          "word": "asleep"
+        },
+        "just": {
+          "word": "just"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "asleep",
+          "gain": 0.5
+        },
+        {
+          "kind": "fail",
+          "at": "just",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "just",
+                "pose": "shrug",
+                "expression": "neutral",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "slow",
+            "spot": 0.66,
+            "amount": "@park.final",
+            "text": "{park_final}",
+            "label": "Savings",
+            "at": "asleep",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "just",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Asleep",
+          "at": "asleep",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "awake",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Mine sits in an account paying an assumed {work_rate}. Still cash. It just works.",
+      "events": {
+        "assumed": {
+          "word": "assumed"
+        },
+        "cash": {
+          "word": "cash"
+        },
+        "works": {
+          "word": "works"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "assumed"
+        },
+        {
+          "kind": "pop",
+          "at": "cash"
+        },
+        {
+          "kind": "kaching",
+          "at": "works",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "works",
+                "pose": "thumbsUp",
+                "expression": "proud",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "fast",
+            "spot": 0.62,
+            "amount": "@work.final",
+            "text": "{work_final}",
+            "label": "At work",
+            "at": "assumed",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "cash",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Awake",
+          "at": "works",
+          "color": "good",
+          "where": "left"
+        }
+      }
+    },
+    {
+      "id": "gap",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Same {park_amount}. Same {park_years} years. That's {gap_diff} more, for doing nothing.",
+      "events": {
+        "same": {
+          "word": "Same"
+        },
+        "more": {
+          "word": "more"
+        },
+        "nothing": {
+          "word": "nothing"
+        },
+        "years": {
+          "word": "years"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.35
+        },
+        {
+          "kind": "boom",
+          "at": "more",
+          "gain": 0.7
+        },
+        {
+          "kind": "pop",
+          "at": "nothing"
+        },
+        {
+          "kind": "pop",
+          "at": "years"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "low",
+            "spot": 0.36,
+            "amount": "@park.final",
+            "text": "{park_final}",
+            "label": "Asleep",
+            "at": "start",
+            "tone": "bad"
+          },
+          {
+            "kind": "stack",
+            "id": "high",
+            "spot": 0.64,
+            "amount": "@work.final",
+            "text": "{work_final}",
+            "label": "Awake",
+            "at": "same",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "years",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "more",
+            "size": "wide",
+            "on": "high",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "table",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "I left that on the table? For {park_years} years?",
+      "events": {
+        "table": {
+          "word": "table"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "table",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "shock"
+              },
+              {
+                "at": "table",
+                "pose": "worried",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Is your cash asleep? Because rich people...",
+      "events": {
+        "asleep": {
+          "word": "asleep"
+        },
+        "rich": {
+          "word": "rich"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "asleep"
+        },
+        {
+          "kind": "whoosh",
+          "at": "rich",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "prop": "phone",
+                "expression": "thinking",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.4
+              },
+              {
+                "at": "rich",
+                "pose": "pointUp",
+                "expression": "proud",
+                "turn": -0.4
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "rich",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "secret",
+    "angle": "versus",
+    "who": "sharma",
+    "pose": "pointUp",
+    "expression": "smirk",
+    "words": "Your cash is *asleep*",
+    "figure": "{park_final}",
+    "tag": "Cash asleep",
+    "small": "{work_final}",
+    "to": "Cash at work"
+  },
+  "narrator": "am_michael"
+}
