@@ -1,0 +1,38 @@
+{
+  "agent": "dashboard",
+  "day": "2026-10-22",
+  "startedAt": "2026-10-22T02:08:20Z",
+  "finishedAt": "2026-10-22T02:24:10Z",
+  "summary": "Bug hunt found two small bugs and fixed one, plus one backlog idea: the video page now says a due slot is due, and the last Overview stat card no longer sits alone on phones.",
+  "decision": "acted",
+  "why": "Both were visible in tonight's phone screenshots; each fix has a smoke test that fails without it. All checks pass (45 smoke tests).",
+  "findings": [
+    {
+      "title": "Video page said '34m ago' for a slot that is due now",
+      "detail": "The Queue page said 'Uploading now' for the same video. Fixed."
+    },
+    {
+      "title": "Overview Backlog card counts long videos as Shorts",
+      "detail": "Shows about 4 days where the Queue page says about 3. The line names a guarded schedule setting, so the dashboard agent can't change it; left in the backlog for the auditor or the owner."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Video page: 'Due now' for a due slot",
+      "detail": "Uses the posting plan's own due state, like the Queue page. Also cleaned an unused lint directive.",
+      "branch": "agent/dashboard/2026-10-22"
+    },
+    {
+      "title": "Overview: last stat card spans the row on phones",
+      "detail": "No more half-empty row under the five stat cards.",
+      "branch": "agent/dashboard/2026-10-22"
+    }
+  ],
+  "nextCheck": "2026-10-23",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/dashboard/2026-10-22.md"
+    }
+  ]
+}

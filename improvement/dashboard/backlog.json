@@ -82,7 +82,11 @@
       "detail": "At 390 px the five stat cards wrap 2-2-1, leaving the last card next to empty space. Let the last odd card span the full row (or fold 'Made today' into the Backlog card) so the top of the page is one tidy block.",
       "page": "overview",
       "found": "2026-10-19",
-      "status": "open"
+      "status": "done",
+      "done": "2026-10-22",
+      "lastTouched": {
+        "apps/dashboard/src/app/page.tsx": "2026-10-22"
+      }
     },
     {
       "id": "calendar-plan-formats",
@@ -113,6 +117,28 @@
       "detail": "The posting plan already knows the first empty slot. Showing it as a dashed 'Nothing ready' entry makes a running-dry backlog visible on the calendar, not just on the Queue page.",
       "page": "calendar",
       "found": "2026-10-21",
+      "status": "open"
+    },
+    {
+      "id": "video-due-slot-label",
+      "kind": "bug",
+      "title": "Video page: a due slot read as 'minutes ago'",
+      "detail": "The queue's first Short showed '34m ago, if the queue order holds' while the Queue page said it was uploading now. It now reads 'Due now: this slot is open', the same posting plan state the Queue page uses.",
+      "page": "video",
+      "found": "2026-10-22",
+      "status": "done",
+      "done": "2026-10-22",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-10-22"
+      }
+    },
+    {
+      "id": "overview-backlog-days-counts-long",
+      "kind": "bug",
+      "title": "Overview: Backlog card's 'days of uploads' counts long videos as Shorts",
+      "detail": "The card divides every queued video (long ones too) by the daily Short slots, so 10 Shorts + 2 long videos show '≈ 4 days' while the Queue page says about 3 days of Shorts. The fix is one line, but that line names a guarded schedule setting, so the guard blocks the dashboard agent from changing it. Left for the auditor or the owner: use the Queue page's runway('short', …) on that card.",
+      "page": "overview",
+      "found": "2026-10-22",
       "status": "open"
     }
   ]
