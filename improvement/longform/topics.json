@@ -2,6 +2,153 @@
   "note": "Long-video topics, written by the Scout agent (agents/scout.md) and used by Studio (agents/studio.md). These first four were seeded by the owner's session to give Studio something to start on; Scout adds to them daily.",
   "topics": [
     {
+      "id": "2026-10-22-bnpl-free-loans",
+      "format": "long",
+      "title": "Buy now, pay later: how a 'free' loan makes billions",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "How 'Buy Now, Pay Later' Makes Billions From 'Free' Loans (WSJ)",
+        "views": 1927120,
+        "url": "https://www.youtube.com/watch?v=3yC8WDjCIAU"
+      },
+      "category": "bnpl",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "If pay-in-four costs me nothing, who pays, and when does it start costing me?",
+      "why_now": "BNPL is one of the biggest long-form money subjects on YouTube: Grant Rudow's 'The Buy Now Pay Later Trap, Explained' has 6.04M views (and a 2.7M follow-up), How Money Works 1.55M, Modern MBA 1.13M, WSJ 1.93M. Holiday shopping (Black Friday) is five weeks out, when US viewers use it most. For 18-30-year-old US shoppers who split everything into four. A new category for the long feed (`bnpl`), outside the blocked credit_card window.",
+      "outline": [
+        "hook: Rohan splits $300 sneakers into four $75 payments at checkout. 'Zero interest. Zero fees. So how is this a business worth billions?' The picture the video hangs on: a checkout button with a hidden pipe running from the shop's till to the lender",
+        "item 1, the shop pays: the merchant fee. $300 of BNPL shopping a month at a 5% fee is $15 a month, $180 a year, $900 over five years (fee_take), paid by the shop and built into prices",
+        "item 2, you buy more: Priya on why shops pay that fee (bigger baskets); Sikka grows with every click",
+        "recap-and-tease at ~2:30: the shop pays now. Next: the moment you start paying",
+        "item 3, the late fee: one missed $75 instalment and the fee schedule (verify the provider caps)",
+        "item 4, the longer plans: the same 'pay over time' button on a $1,500 laptop at 30% APR for 12 months is $146 a month, $255 in interest (emi)",
+        "item 5, stacking: four plans with four apps, four due dates; the calendar fills up",
+        "recap-and-tease at ~6:00: the biggest cost isn't a fee at all",
+        "item 6 (strongest, ~2/3 in): what the $300 a month would have become: invested at an assumed 8% for 10 years it is $55,250 (sip)",
+        "ending: Sharma Uncle's rule for the button; how the business really works in one picture; disclaimer end card"
+      ],
+      "maths": "fee_take ($300 a month, 5% merchant fee, 12 a year, 5 years), emi ($1,500 at 30% for 12 months), sip ($300 a month, 8% assumed, 10 years); compare for the two biggest numbers",
+      "verify": [
+        "Merchant fees for BNPL of 'as much as 5%' (WSJ, the providers' own merchant pricing pages)",
+        "Late fee amounts and caps of a named provider, or say 'late fees' without a figure",
+        "Longer BNPL plans can charge interest up to around 30-36% APR (provider disclosures, CFPB)",
+        "8% is an assumed long-run return, said as one"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=3yC8WDjCIAU",
+        "https://www.youtube.com/watch?v=KkN6I3gZfGI",
+        "https://www.ngpf.org/blog/wsj--dow-jones-resources/wsj-wednesday-video-how-buy-now-pay-later-makes-billions-from-free-loans/",
+        "https://www.bloomberg.com/news/articles/2024-05-09/what-is-buy-now-pay-later-how-bnpl-plans-work"
+      ],
+      "found": "2026-10-22",
+      "expires": "2027-10-22",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-22-salary-cycle-india",
+      "format": "long",
+      "title": "Once you understand where your salary goes, you'll stop waiting for a raise",
+      "stories": [
+        "once_you_understand"
+      ],
+      "currency": "INR",
+      "demand": {
+        "title": "FAMILY SALARY CYCLE || Middle Class Family (Sumit Bhyan)",
+        "views": 38922837,
+        "url": "https://www.youtube.com/watch?v=u_Mnlq7RRQY"
+      },
+      "category": "budgeting",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Why does a ₹60,000 salary disappear by the 20th, and what does the month look like once you see it?",
+      "why_now": "The salary-cycle skit is the biggest middle-class money video in India (38.9M, a 14-minute sketch), and it fits our cast-led skits exactly. Warikoo's 'Escaping the Middle Class Trap' (2.87M) and Nishant Patel (2.42M) show the 'why am I still broke' search is huge. Takes the subject (a month of salary), not the treatment: our version follows one month in chapters with computed numbers. For 22-32-year-olds on their first or second salary. Category `budgeting` is not blocked.",
+      "outline": [
+        "hook: day 1, the salary SMS lands; day 20, Rohan checks his balance and hides the phone from Priya. 'Here is where every rupee went.' The picture the video hangs on: a calendar wall, one page torn off per chapter, money draining out of a tank",
+        "day 1-3, the fixed bills: rent, the bike EMI: ₹1,00,000 at 12% for 3 years is ₹3,321 a month, ₹19,572 in interest (emi)",
+        "day 5, the phone EMI: ₹1.2 lakh phone at 16% over a year is ₹10,888 a month, ₹10,652 just for the wait (emi)",
+        "recap-and-tease at ~2:30: two EMIs took a quarter of the month. Next: the cost nobody budgets",
+        "day 10, the quiet raise in prices: ₹40,000 of monthly living costs at 6% inflation is ₹71,634 in 10 years (price_rise), so a raise that matches prices leaves you exactly here",
+        "day 15, the 'safe' savings: ₹1 lakh in a 7% FD with 6% inflation earns a real 0.9% a year (real_return)",
+        "recap-and-tease at ~6:00: Sharma Uncle has seen this month thirty years in a row; what he did differently is one line",
+        "day 20 (strongest, ~2/3 in): the ₹6,000 that was left on day 1: ₹6,000 a month for 20 years at an assumed 12% is ₹59.9 lakh (sip), ₹45.5 lakh of it gains",
+        "day 30: the same month replayed with the ₹6,000 moved to day 1; Priya, Sikka cheers",
+        "ending: 'Once you understand the cycle, the raise is not the answer, the order is.' Comment your day-20 balance; disclaimer end card"
+      ],
+      "maths": "emi x2 (bike ₹1 L 12% 3y; phone ₹1.2 L 16% 1y), price_rise (₹40,000/month, 6%, 10y), real_return (₹1 L, 7% FD, 6% inflation, 10y), sip (₹6,000/month, 12% assumed, 20y)",
+      "verify": [
+        "Two-wheeler loan rates around 10-14% and consumer-durable/phone EMI rates around 14-18% at Indian lenders (lender rate pages)",
+        "FD rates of 6-7.5% at large banks; 6% inflation is an assumption, said as one",
+        "12% is an assumed long-run equity return, never a promise"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=u_Mnlq7RRQY",
+        "https://www.youtube.com/watch?v=XOWlHWgT2SQ",
+        "https://www.youtube.com/watch?v=fNk93gR7_Tk"
+      ],
+      "found": "2026-10-22",
+      "expires": "2027-10-22",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-22-rich-pay-less-tax",
+      "format": "long",
+      "title": "Rich vs poor: why $100,000 of salary pays 2.5× the tax of $100,000 of gains",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "USD",
+      "demand": {
+        "title": "How the rich avoid paying taxes (Vox)",
+        "views": 3903016,
+        "url": "https://www.youtube.com/watch?v=t6V9i8fFADI"
+      },
+      "category": "tax",
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Why does the same $100,000 get taxed so differently depending on whether you work for it or own something that earns it?",
+      "why_now": "'How the rich avoid taxes' is a proven long subject: Vox 3.9M, Grant Cardone 2.9M, How Money Works 1.7M. US tax season content peaks Jan-Apr but this is evergreen. Education only (how the US code treats wages vs long-term gains), never 'how to avoid tax'. For US salaried 22-35-year-olds. Category `tax` is not blocked.",
+      "outline": [
+        "hook: Rohan and Sharma Uncle both 'earn' $100,000 this year. Rohan's tax: $13,170. Sharma's: $5,168. The picture the video hangs on: two identical stacks of cash walking through two different doors, one a turnstile that takes a slice, one a revolving door",
+        "item 1, wages: the brackets explained band by band; $100,000 of salary pays $13,170, 13.2% effective, 22% on the last dollar (income_tax_bands, 2026 single, standard deduction)",
+        "item 2, the payroll slice: 7.65% FICA on wages is another $7,650 that gains never pay (fee_take)",
+        "recap-and-tease at ~2:30: the salary door takes two slices. Next: the other door",
+        "item 3, long-term gains: the 0% band up to $49,450 of taxable income, then 15%: $100,000 of gains pays $5,168, 5.2% (income_tax_bands)",
+        "item 4, the gap: $8,002 a year, 2.5× (compare)",
+        "recap-and-tease at ~6:00: the rich also have a way to spend without selling",
+        "item 5 (strongest, ~2/3 in): buy, borrow, die explained: borrowing $100,000 against assets at 6% costs $3,280 in interest for a year (emi) and no income tax; Priya explains why that works only with assets",
+        "item 6: what the rest of us can actually use: tax-advantaged accounts named only to explain them (401(k), IRA), no recommendation",
+        "ending: the two doors side by side; which door does your money go through? Disclaimer end card"
+      ],
+      "maths": "income_tax_bands x2 (wages: allowance 16,100, 2026 single brackets shifted by the deduction; gains: allowance 16,100, 0% to 65,550 gross, 15% to 561,600, 20% above), fee_take (7.65% FICA on $100,000, 1 period), compare (wage tax vs gains tax), emi ($100,000 at 6% for 12 months)",
+      "verify": [
+        "2026 single standard deduction $16,100 and single brackets 10/12/22/24/32/35/37% with tops 12,400 / 50,400 / 105,700 / 201,775 / 256,225 / 640,600 of taxable income (IRS Rev. Proc. 2025-32; my bands assume these, the writer must confirm)",
+        "2026 long-term capital gains 0% up to $49,450 and 15% up to $545,500 taxable income, single (IRS Rev. Proc. 2025-32; Kiplinger)",
+        "FICA: 6.2% Social Security + 1.45% Medicare on wages (ssa.gov / irs.gov)",
+        "The script must say it ignores state tax, NIIT and the wage cap, and that gains stacked on top of a salary are taxed differently"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=t6V9i8fFADI",
+        "https://www.kiplinger.com/taxes/irs-updates-capital-gains-tax-thresholds",
+        "https://clark.com/personal-finance-credit/taxes/irs-announces-new-tax-brackets-and-other-changes-for-2026/"
+      ],
+      "found": "2026-10-22",
+      "expires": "2027-10-22",
+      "status": "new"
+    },
+    {
       "id": "2026-10-21-money-levels-india",
       "format": "long",
       "title": "The 6 levels of money in India: which one are you?",
@@ -47,7 +194,8 @@
       ],
       "found": "2026-10-21",
       "expires": "2027-10-21",
-      "status": "new"
+      "status": "used",
+      "used_by": "L-20261021-01"
     },
     {
       "id": "2026-10-21-how-credit-cards-make-money",

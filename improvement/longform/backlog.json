@@ -499,6 +499,83 @@
       "found": "2026-10-21",
       "status": "closed",
       "resolution": "Fixed 2026-10-21: media branches carry a long mp4 in 90 MB parts that release-video.yml joins; Studio ships with --media-branch, not --release."
+    },
+    {
+      "id": "2026-10-22-thumbs-one-layout",
+      "kind": "craft",
+      "title": "Test & Compare thumbnails are three copies of one picture",
+      "detail": "All three thumbnails of L-20261021-01 (and of L-20261019-01/-02) use layout 'story' with the same hero (piggy or card), the same receipt, arrow, background and character spot; only the words and figures change. YouTube's own Test & Compare help says variants must be 'meaningfully different' or the test runs long and ends inconclusive, and it picks the winner by watch-time share. Change: the long_story README's `thumbnails` row requires the three thumbnails to use three different layouts (story, versus, secret) or at least a different hero and cast member; check-plan or the writer prompt rejects two thumbnails with the same layout+hero. Worked when: thumbWinner in metrics/videos.json is set (not inconclusive) for most long videos after 14 days.",
+      "where": "thumbnail",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-22",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-22-thumb-layouts-undocumented",
+      "kind": "bug",
+      "title": "The versus and secret thumbnail layouts exist but no README tells the writer",
+      "detail": "remotion/src/compositions/Thumbnail.tsx renders layout 'versus' (VersusThumb) and 'secret' (SecretThumb) from ThumbFormats.tsx, but renderer/templates/long_story/README.md (line 32-33) only documents layout 'story', so every long video since 2026-10-19 uses story x3. Change: document both layouts and their fields in the long_story README (and short_story if missing), with which angle each suits (versus for rich_vs_poor, secret for how_they_make_money/once_you_understand). Worked when: the next long videos use at least two layouts across their three thumbnails.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-22",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-22-thumb-words-not-title",
+      "kind": "craft",
+      "title": "Thumbnail words repeat the title instead of adding to it",
+      "detail": "L-20261021-01: title 'The 6 levels of money in India: which one are you?', thumbnail-b words 'Which money level?'. Thumbnail guides agree the picture should open the curiosity gap and the title give context, never repeat it. Script rule for the long_story README: thumbnail `words` share no content word with the title (stop words aside) and add a feeling or a stake ('Stuck on level 2?', 'Banks love level 2'). Can be a check in check-plan later.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-22",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-22-title-variants",
+      "kind": "idea",
+      "title": "Write three titles per long video for Test & Compare, not one",
+      "detail": "Test & Compare now tests titles too (title only, thumbnail only, or both; up to 3), winner by watch-time share. We write one title per video. Change: long_story script gets `titles` (two alternates, each a different promise shape: 'The ___ trap, explained' / 'Once you understand ___' / a 'which one are you' question), shown on the dashboard's video page next to the thumbnails so the owner pastes them into Test & Compare when uploading. Needs the manifest and dashboard to carry the field. Worked when: the owner runs title tests and metrics record a winner.",
+      "where": "template",
+      "route": "template",
+      "priority": "normal",
+      "found": "2026-10-22",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-22-title-shape-short",
+      "kind": "craft",
+      "title": "Long titles: a named thing plus a loaded noun, under ~55 characters, no figures",
+      "detail": "The outliers found today: 'The 'Buy Now Pay Later' Trap, Explained' (39 chars, 6.0M), 'The 'Car Loan' Trap, Explained' (1.2M), 'How the rich avoid paying taxes' (31, 3.9M), 'Every Level Of Wealth In 13 Minutes' (35, 2.5M), 'Why It's More Expensive To Be Poor' (34, 2.6M). Ours: 'Only paying the minimum on a $5,000 card? Here is the real cost' (63), 'Repo rate hiked: the quiet way your home loan gets longer' (57, a news headline). Rule for the long_story README: titles of at most ~55 characters, the subject named first, one loaded word (trap, rich, poor, explained, secretly), figures go on the thumbnail, not the title. Worked when: long-video CTR in metrics rises above the channel's Shorts-free baseline (needs impressions data).",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-22",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-22-long-format-trap-explained",
+      "kind": "idea",
+      "title": "Add a long `trap_alert` format: 'The ___ trap, explained' (single-trap deep dive)",
+      "detail": "formats.json has trap_alert only for Shorts. The single-trap long shape is proven: 'The Buy Now Pay Later Trap, Explained' 6.04M (https://www.youtube.com/watch?v=KkN6I3gZfGI), 'The Buy Now Pay Later Trap Is Getting Worse' 2.72M, 'The Car Loan Trap, Explained' 1.23M, 'Stupid & Evil Business Model - Buy Now Pay Later' 1.06M. One trap, 8-12 min: how it hooks you, the maths of it, who profits, how people get out. Scout cannot write formats.json; research or the improver adds a `format: long` entry with id trap_alert (the story id already exists in generator/variety.py), then Scout feeds topics in it (car loan, BNPL, lifestyle EMIs).",
+      "where": "template",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-22",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-22-thumb-badge-corner",
+      "kind": "craft",
+      "title": "The cast member sits under YouTube's duration badge",
+      "detail": "In the story layout the character fills the bottom-right corner, where YouTube draws the duration badge on long videos (it hides hands and lanyard, not the face, today). Guides say keep critical elements clear of that corner. Check when a new layout is added: no figure or face in the bottom-right ~180x70 px of 1280x720.",
+      "where": "thumbnail",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-22",
+      "status": "open"
     }
   ]
 }
