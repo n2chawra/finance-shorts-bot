@@ -101,11 +101,13 @@ export default function NotificationsPage() {
   if (error || !data) return <ErrorNote error={error} />;
   const run = (ids: string[], action: "resolve" | "reopen" | "approve" | "decline", done: string) => act.mutate({ ids, action }, { onSuccess: () => toast(done), onError: (e) => toast(e.message, "error") });
   const critical = data.open.filter((n) => n.severity === "critical").length;
+  // proposals wait for Approve or Decline; resolving one would drop it with no decision
+  const resolvable = data.open.filter((n) => !n.proposal).map((n) => n.id);
 
   return (
     <Stagger>
       <PageHeader title="Notifications" sub="Only things that need you: anything the automation can't fix by itself. Fixed problems clear themselves on the next check.">
-        {data.open.length > 1 && <Button icon={CheckCheck} disabled={act.isPending} onClick={() => run(data.open.map((n) => n.id), "resolve", "All marked resolved")}>Resolve all</Button>}
+        {resolvable.length > 1 && <Button icon={CheckCheck} disabled={act.isPending} onClick={() => run(resolvable, "resolve", "All marked resolved")}>Resolve all</Button>}
       </PageHeader>
 
       {data.open.length === 0 ? (

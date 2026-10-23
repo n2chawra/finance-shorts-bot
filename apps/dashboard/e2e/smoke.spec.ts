@@ -181,3 +181,22 @@ test("data audit badge counts in the right number", async ({ page }) => {
   // sample data has 0 errors and 1 warning; the badge once read "0 errors · 1 warnings"
   await expect(page.getByText("0 errors · 1 warning", { exact: true })).toBeVisible();
 });
+
+test("resolve all leaves setting proposals for a decision", async ({ page }) => {
+  await signIn(page);
+  let sent: { ids: string[]; action: string } | null = null;
+  // answer the PATCH here so the shared sample data stays as it is for the other tests
+  await page.route("**/api/notifications", async (route) => {
+    if (route.request().method() !== "PATCH") return route.continue();
+    const body = route.request().postDataJSON() as { ids: string[]; action: string };
+    if (body.action === "resolve") sent = body;
+    const res = await route.fetch({ method: "GET" });
+    await route.fulfill({ response: res });
+  });
+  await page.goto("/notifications");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
+  await expect(page.getByRole("button", { name: "Approve" })).toBeVisible();
+  await page.getByRole("button", { name: "Resolve all" }).click();
+  await expect.poll(() => sent?.ids.length ?? 0).toBeGreaterThan(0);
+  expect(sent!.ids, "the open proposal must not be resolved").not.toContain("n0");
+});
