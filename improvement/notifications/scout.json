@@ -1,3 +1,11 @@
 {
-    "notifications": []
+    "notifications": [
+        {
+            "key": "long-end-screen",
+            "severity": "info",
+            "title": "Set one end screen on each long video",
+            "detail": "Guides rate a single, specific next video as the best ending for session watch time. End screens can only be set in YouTube Studio, at upload.",
+            "fix": "1. When uploading a long video, open Editor → End screen. 2. Add one 'Video' element pointing to our closest long video in subject (e.g. 'The 6 levels of money in India' for any rich-vs-poor or which-one-are-you video). 3. Add the Subscribe element. Nothing else."
+        }
+    ]
 }

@@ -576,6 +576,61 @@
       "priority": "low",
       "found": "2026-10-22",
       "status": "open"
+    },
+    {
+      "id": "2026-10-23-ending-after-payoff",
+      "kind": "craft",
+      "title": "Stop within 30 seconds of the payoff: no checklist re-run of every item at the end",
+      "detail": "L-20261021-01 delivered its payoff (level six) by 7:24 and then spent 58 s (12% of 502 s) restating all six levels as a checklist before the end card. Retention guides agree that 'before the final payoff, the ending runs long' is a main drop point, and that once the payoff lands you shouldn't drift (overseeros, outlierkit: payoff, then one CTA in the last 20-30 s). The rule goes in renderer/templates/long_story/README.md under Shape: after the strongest item's payoff, at most 30 s and about 4 beats (one synthesis line naming the single move, one character beat, the end card with one CTA). The per-item recap belongs in the recap-and-tease beats during the video, not at the end. We'll know it worked when time after the last chapter's payoff is ≤ 6% of runtime in render.json, and when average % viewed on the next long videos holds or rises (improvement.evaluate, long format).",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-23-recap-timing",
+      "kind": "craft",
+      "title": "First recap-and-tease by 2:30, then every 2-3 minutes (the last video's first one came at 4:15)",
+      "detail": "The README asks for a recap-and-tease every 2-3 minutes, but L-20261021-01's first ('So that is three floors') came at 4:15 and its second at 6:20, after three chapters of 64-94 s. Guides put the first big retention dip at about 3:00 and a re-hook just before it. Script rule for long_story: put a recap-and-tease line as the last beat of the chapter that ends nearest 2:30, 5:00 and 7:30 (story seconds at tempo 1.5 ≈ the chapter boundaries after items 2, 4 and 6), each naming what was covered and teasing one concrete thing still to come. To check it, list the recap beats' start times in render.json; the hold at each chapter start (2026-10-20-chapter-hold-metric) will show whether it helps.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-23-strongest-chapter-longest",
+      "kind": "idea",
+      "title": "Give the strongest item the most time (it got the least)",
+      "detail": "In L-20261021-01 the chapters ran 64, 73, 94, 64, 63, 60 and 57 s. The card-minimum chapter (item 3, a topic we'd already made a whole video of) was the longest, and the last two items (the payoff) were the shortest. Experiment on the long format: the strongest item's chapter runs 1.5× the average chapter, with two reveals inside it (a figure, then a turn), and no other chapter runs over 1.2× the average. Arm A keeps the current behaviour. Metric: average % viewed and the hold at that chapter's start. Writer instruction text goes through config/experiments.json like the Shorts hook experiment.",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-23-negative-money-format",
+      "kind": "bug",
+      "title": "Money formats a negative amount as '$-19,470' / '₹-19,470'",
+      "detail": "maths lumpsum with a negative rate_pct (a car losing 15% a year, which tomorrow's debt topic uses) gives figures.gains = '$-19,470'. The sign belongs before the currency: '−$19,470' (or '-$19,470'), and the same for INR and the short forms. Fix it in renderer/engine/formatting.py Money (full and short) and the mirror in remotion/src/fmt/inr.ts, and add a test for a negative amount in each currency. Also note in the long_story README's maths table that lumpsum accepts a negative rate_pct for something losing value. Until then, writers should show `final`, not `gains`, for a falling value. Check: compute([{kind:'lumpsum', amount:35000, rate_pct:-15, years:5}], Money('USD'))['…']['figures']['gains'] starts with the sign.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-23-end-screen-next-video",
+      "kind": "idea",
+      "title": "Point every long video's end screen at one specific long video",
+      "detail": "The guides give one CTA, pointing to one specific next video, as the best ending for session watch time. End screens are set in YouTube Studio when uploading, which only the owner does. When there are 2+ long videos, pick the closest one in subject (e.g. the money-levels video for any which_one_are_you or rich_vs_poor video) as the single end-screen element. The spoken CTA on the end card stays a single ask.",
+      "where": "thumbnail",
+      "route": "owner",
+      "priority": "low",
+      "found": "2026-10-23",
+      "status": "open"
     }
   ]
 }
