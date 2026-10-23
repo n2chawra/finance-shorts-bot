@@ -360,12 +360,53 @@
       "evidence": [
         "metrics/videos.json: v-20261021-05 'Why billionaires never sell their stock' (secret_of_rich, USD) 918 views in about two days vs 80 (v-20261021-04 rich_vs_poor) and 178 (v-20261022-01 trap_alert): the only one of the three that opens on a claim + 'Wait, what?'",
         "https://www.youtube.com/shorts/klS_tpY7V04 (How Billionaires never pay Taxes, 54M: the same claim-first shape)",
-        "n=1 and confounded with USD vs INR and the topic itself"
+        "n=1 and confounded with USD vs INR and the topic itself",
+        "v-20261023-01 (secret_of_rich, opens 'Rich people never let their cash sleep.' then 'Wait, what?'): 220 views, 2nd-best reset USD Short after v-20261021-05 (1,142); question-opened v-20261023-02 got 25 (2026-10-24 research)"
       ],
       "expectedEffect": "Higher hold past the first 3 s and more replays.",
       "confidence": "low",
       "effort": "S",
       "risk": "May force a claim where the story has none; the topic, not the hook, may explain the gap. A/B on hookHold and avgViewPct.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
+    },
+    {
+      "id": "no-expert-persona",
+      "date": "2026-10-24",
+      "area": "script",
+      "title": "No narrator or cast line presents itself as an expert advising the viewer",
+      "change": "generator/prompts/writer.md (narration rules) and generator/prompts/fact_reviewer.md (point 4): fail any line where the narrator or a character claims credentials or expertise ('as a financial adviser', 'I'm a banker', 'trust me') or tells the viewer what to do with their money in the imperative ('you should', 'do this', 'put your money in'); the cast speaks about themselves, each other or 'the rich'. Writer: add one sentence to every description before the disclaimer: 'An animated story with illustrative numbers; the characters are not advisers.'",
+      "evidence": [
+        "https://support.google.com/youtube/answer/1311392?hl=en",
+        "https://www.androidheadlines.com/2026/07/youtube-monetization-rules-ai-slop-inauthentic-content.html"
+      ],
+      "expectedEffect": "Keeps the channel eligible for ads: YouTube's monetization policy excludes content presenting 'itself as a human expert providing advice' on finances, with 'AI-generated podcast hosts offering financial guidance' as its example. Our narrator is a synthetic voice, so the framing must stay a story, never an adviser.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "Low: wording only; lines like 'The rich don't let it.' stay allowed, 'You should do this' does not.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "loop-picture-matches-hook",
+      "date": "2026-10-24",
+      "area": "ending",
+      "title": "The last second returns to the hook's set and shot size, so the replay seam is invisible",
+      "change": "Behind a flag: the final beat's camera ends on the first beat's set and shot size (wide), cutting the held close-up to at most 1 s. Today v-20261022-01 holds one static close-up for its last 2.6 s (4 identical stills 32.8-35.4 s) before looping to a wide street shot, and v-20261023-01 ends on a close-up in a different set from its bank-vault opening. The loop line already leads back in sound; the picture doesn't.",
+      "evidence": [
+        "https://www.shortimize.com/blog/youtube-shorts-retention-rate",
+        "videos/v-20261022-01/preview.png",
+        "videos/v-20261023-01/preview.png",
+        "renderer/templates/short_story/README.md (Loop rule)"
+      ],
+      "expectedEffect": "Since 31 March 2025 every replay counts as a Short view; a seamless loop raises replays and % viewed above 100%.",
+      "confidence": "low",
+      "effort": "M",
+      "risk": "An abrupt pull-back could read as a glitch; stills check the last frame against frame 0.",
       "metric": "avgViewPct",
       "status": "new",
       "route": "experiment",

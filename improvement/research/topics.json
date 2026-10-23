@@ -2,6 +2,206 @@
   "note": "Video ideas for the planner, written by the research agent (agents/research.md). A video uses a topic once (plan.topic.feed_id); breaking topics go first.",
   "topics": [
     {
+      "id": "2026-10-24-billionaire-tax-5-percent",
+      "format": "short",
+      "title": "California votes on a one-time 5% tax on billionaires: why can't they just pay it in cash?",
+      "category": "tax",
+      "kind": "trend",
+      "priority": "trending",
+      "stories": [
+        "billionaire_question"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why Elon Musk Can't Just \"Give Away\" His Wealth",
+        "views": 11701053,
+        "url": "https://www.youtube.com/shorts/ylTx5h2ILnY"
+      },
+      "hook": "Five percent of a billion dollars. Why can't they just write the cheque?",
+      "templates": [
+        "any"
+      ],
+      "angle": "A fortune is mostly shares, not cash. A 5% bill on an illustrative $100 billion is $5 billion of cash they don't hold, so they would have to sell or borrow against the shares. Neutral: the numbers, not a side in the vote.",
+      "why_now": "Proposition 40, a one-time 5% tax on Californians worth $1 billion or more, is on the 3 November ballot; billionaire Shorts about it are already up, and our best Short (1,142 views) is the same 'billionaires don't hold cash' idea.",
+      "maths": "fee_take on an illustrative $100 billion (amount 100000000000, fee_pct 5, per_year 1, years 1) for the bill; the cash share of the fortune as an assumption stated on screen",
+      "verify": [
+        "Prop 40 (Nov 3, 2026 California ballot) is a one-time 5% tax on net worth of $1 billion or more, for people resident on Jan 1, 2026, payable over up to five years (official voter guide or LAO, else two outlets agreeing)",
+        "Never say how to vote or whether the tax is good or bad; never name a real person's net worth, say 'an illustrative $100 billion'"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/2026_California_billionaire_tax_initiative",
+        "https://kqed.org/news/12088883/california-billionaire-tax-november-ballot-measures",
+        "https://www.hoover.org/research/prop-40-billionaire-tax-act",
+        "https://www.foxla.com/news/california-november-ballot-billionaire-wealth-tax-medicaid"
+      ],
+      "found": "2026-10-24",
+      "expires": "2026-10-27",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-24-rich-vs-poor-first-car",
+      "format": "short",
+      "title": "Rich vs poor: the first car",
+      "category": "car",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "rich vs poor parents buying you a car",
+        "views": 8800000,
+        "url": "https://www.youtube.com/shorts/vGQZuTfIWnU"
+      },
+      "hook": "Poor guy buys a $40,000 car on a loan. Rich guy buys a $15,000 one in cash.",
+      "templates": [
+        "any"
+      ],
+      "angle": "What the six-year loan really costs, and what the $25,000 difference becomes if it is left invested instead.",
+      "why_now": "Evergreen, global, and a 8.8M reference; cars are the one rich_vs_poor moment we haven't told (raise and Diwali bonus done).",
+      "maths": "emi (amount 40000, rate_pct an assumed 8, years 6) for the loan; lumpsum (amount 25000, rate_pct an assumed 7, years 20) for the difference",
+      "verify": [
+        "8% car-loan rate and 7% return are stated as assumptions, never as what the viewer will get"
+      ],
+      "found": "2026-10-24",
+      "expires": "2027-01-22",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-24-how-bnpl-makes-money",
+      "format": "short",
+      "title": "Pay in 4, no interest: so how does the app make money?",
+      "category": "debt",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Monkey Economics How Bank Work",
+        "views": 7600000,
+        "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"
+      },
+      "hook": "Four payments, zero interest. So who's paying?",
+      "templates": [
+        "any"
+      ],
+      "angle": "The shop pays the app a cut of every sale (an assumed 5%), and late fees do the rest: you buy more because it feels smaller.",
+      "why_now": "Holiday shopping starts in a month in every market; pay-later checkouts are everywhere (US, UK, Australia, India).",
+      "maths": "fee_take on an illustrative $400 order (amount 400, fee_pct an assumed 5, per_year 12, years 1) for what the shop hands over in a year of monthly orders",
+      "verify": [
+        "The merchant fee is an assumption, said as 'an assumed 5%'; no app named",
+        "Late fees described in general terms only"
+      ],
+      "found": "2026-10-24",
+      "expires": "2027-01-22",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-24-retire-at-40-guess",
+      "format": "short",
+      "title": "Guess: $1,000 a month from 25 to 40. How much is there at 40?",
+      "category": "retirement",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "guess_the_number"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Much Do You Need To Retire At 40?",
+        "views": 5100000,
+        "url": "https://www.youtube.com/shorts/Jk5ThWdybis"
+      },
+      "hook": "Fifteen years, a thousand a month. Most people guess way too low.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Three cast guesses, then the computed answer, then what the same habit gives if it starts at 30 instead.",
+      "why_now": "Evergreen and global; retire-early is the most-watched guess shape (5.1M).",
+      "maths": "sip (monthly 1000, rate_pct an assumed 7, years 15); a second sip (monthly 1000, rate_pct 7, years 10) for starting at 30",
+      "verify": [
+        "7% is an assumed return, never promised"
+      ],
+      "found": "2026-10-24",
+      "expires": "2027-01-22",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-24-rich-pay-themselves-first",
+      "format": "short",
+      "title": "The rich pay themselves first: the same $4,000 paycheck, two orders",
+      "category": "budgeting",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "What's a money move only rich people know that sounds completely insane?",
+        "views": 7639307,
+        "url": "https://www.youtube.com/shorts/IYVO-_TfXZY"
+      },
+      "hook": "Rich people pay one bill before rent. Themselves.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Saving what's left at month end (about $100) vs moving 20% ($800) out on payday, over 30 years.",
+      "why_now": "secret_of_rich is our best format (1,142 and 220 views); this secret works for anyone, anywhere.",
+      "maths": "sip (monthly 800, rate_pct an assumed 7, years 30) vs sip (monthly 100, rate_pct 7, years 30)",
+      "verify": [
+        "Returns are assumptions; no product or account type recommended"
+      ],
+      "found": "2026-10-24",
+      "expires": "2027-01-22",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-24-diwali-gift-rich-vs-poor",
+      "format": "short",
+      "title": "Diwali gift for a 10-year-old: a ₹5,000 gadget vs a ₹5,000 investment",
+      "category": "festival",
+      "kind": "seasonal",
+      "priority": "high",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "INR",
+      "reach": "local",
+      "reach_reason": {
+        "kind": "occasion",
+        "name": "Diwali",
+        "date": "2026-11-08"
+      },
+      "demand": {
+        "title": "Rich Parents Don't Raise Kids Like This",
+        "views": 3719883,
+        "url": "https://www.youtube.com/shorts/Ibb4xOMTiWU"
+      },
+      "hook": "Same Diwali, same ₹5,000. One kid gets a gadget. One gets a gift that grows.",
+      "templates": [
+        "any"
+      ],
+      "angle": "The gadget is worth nothing by the time the kid is 25; the same ₹5,000 every Diwali for 15 years becomes a real sum.",
+      "why_now": "Diwali is Sunday 8 November; gift shopping peaks the two weeks before.",
+      "maths": "sip (monthly 420, about ₹5,000 a year, rate_pct an assumed 11, years 15) for a yearly gift left invested; the gadget is worth ₹0 by then",
+      "verify": [
+        "Diwali 2026 falls on 8 November",
+        "11% equity return stated as an assumption; no fund named"
+      ],
+      "found": "2026-10-24",
+      "expires": "2026-11-09",
+      "status": "new"
+    },
+    {
       "id": "2026-10-23-elon-cant-give-it-away",
       "format": "short",
       "title": "Why can't Elon Musk just sell his shares and give the money away?",
