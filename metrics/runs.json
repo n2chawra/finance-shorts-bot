@@ -50,6 +50,11 @@
       "day": "2026-10-23",
       "shipped": 4,
       "failed": 0
+    },
+    {
+      "day": "2026-10-24",
+      "shipped": 1,
+      "failed": 0
     }
   ],
   "videos": [
@@ -337,6 +342,13 @@
       "id": "L-20261023-01",
       "day": "2026-10-23",
       "template": "long_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261024-01",
+      "day": "2026-10-24",
+      "template": "short_story",
       "status": "shipped",
       "reason": null
     }
