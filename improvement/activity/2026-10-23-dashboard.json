@@ -1,0 +1,21 @@
+{
+  "agent": "dashboard",
+  "day": "2026-10-23",
+  "startedAt": "2026-10-23T02:08:18Z",
+  "finishedAt": "2026-10-23T02:16:16Z",
+  "summary": "Fixed three bugs: clipped tab labels on phones (Agents, video page), a '1 warnings' badge, and 'Resolve all' closing setting proposals without a decision. Added two ideas from Friday's trend check.",
+  "decision": "acted",
+  "why": "Phone screenshots showed the Agents tabs cut off; reading the Notifications page found that Resolve all could silently drop a proposal the owner must approve or decline. All checks pass (51 smoke tests).",
+  "findings": [
+    {"title": "Agents tabs clipped on phones", "detail": "'Experiments (1)', 'Topic feed (1)' and 'Merge log' wrapped inside a fixed-height bar."},
+    {"title": "Resolve all swept up proposals", "detail": "A proposal resolved this way could no longer be approved."},
+    {"title": "Live site healthy", "detail": "/api/health answered, database 2.8 s."}
+  ],
+  "changes": [
+    {"title": "Tab labels stay on one line", "detail": "Agents and video page; smoke test added.", "branch": "agent/dashboard/2026-10-23"},
+    {"title": "Data audit badge: '1 warning'", "detail": "Singular and plural counted right; smoke test added.", "branch": "agent/dashboard/2026-10-23"},
+    {"title": "Resolve all skips proposals", "detail": "Proposals wait for Approve or Decline; smoke test added.", "branch": "agent/dashboard/2026-10-23"}
+  ],
+  "nextCheck": "2026-10-24",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-10-23.md"}]
+}
