@@ -105,3 +105,18 @@ def test_urgent_videos_carry_a_queue_priority(root: Path) -> None:
     assert topics.urgency(make_plan(topic={"title": "x", "category": "gold", "trend": trend()}), root) == \
         {"level": "trending", "until": "2026-10-18"}
     assert topics.urgency(make_plan(), root) is None
+
+
+def test_usable_topics_are_never_hidden_behind_blocked_ones(root: Path) -> None:
+    # more blocked high topics than the planner is shown must not push the usable one off the list
+    blocked = [topic(f"sip{i}", "high", found="2026-10-16") for i in range(topics.SHOWN)]
+    feed(root, *blocked, topic("car", "normal", category="car"))
+    s = topics.for_state([], TODAY, ["sip"], TEMPLATES, root)
+    assert len(s["topics"]) == topics.SHOWN
+    assert s["topics"][0] == {**s["topics"][0], "id": "car", "usable_now": True}
+
+
+def test_null_dates_in_the_feed_read_as_missing(root: Path) -> None:
+    feed(root, topic("a", expires=None), topic("b", found=None), topic("c", expires="2026-10-01"))
+    s = topics.for_state([], TODAY, [], TEMPLATES, root)
+    assert [t["id"] for t in s["topics"]] == ["a", "b"]

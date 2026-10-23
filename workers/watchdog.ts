@@ -10,7 +10,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { TOKEN_FIX, type Notice, notify, resolve, resolveOthers } from "./lib/notify.ts";
 import { istDay } from "./lib/publishing.ts";
-import { type ObservedRun, clusterRuns, isScheduled, scheduleOverlap, videoRunId } from "./lib/schedule.ts";
+import { type ObservedRun, clusterRuns, isScheduled, scheduleOverlap, videoRunId, videoSteps } from "./lib/schedule.ts";
 import { loadSettings } from "./lib/settings.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
 import { TokenError, accessToken } from "./lib/youtube.ts";
@@ -121,9 +121,9 @@ function agentChecks(now: Date, enabled: Record<string, boolean>, paused: boolea
 async function scheduleCheck(prisma: PrismaClient, now: Date): Promise<Check | null> {
   const since = new Date(now.getTime() - 30 * HOUR);
   const agents = await prisma.agentActivity.findMany({ where: { startedAt: { gte: since }, finishedAt: { not: null } }, select: { agent: true, startedAt: true, finishedAt: true } });
-  const steps = await prisma.agentRun.findMany({ where: { videoId: { not: null }, startedAt: { gte: since } }, select: { videoId: true, startedAt: true, finishedAt: true } });
+  const steps = await prisma.agentRun.findMany({ where: { videoId: { not: null }, startedAt: { gte: since } }, select: { videoId: true, agent: true, startedAt: true, finishedAt: true } });
   const observed: ObservedRun[] = agents.flatMap((a) => (isScheduled(a.agent) ? [{ id: a.agent, start: a.startedAt!, finish: a.finishedAt! }] : []));
-  for (const r of clusterRuns(steps.map((x) => ({ videoId: x.videoId!, start: x.startedAt, end: x.finishedAt ?? x.startedAt })))) {
+  for (const r of clusterRuns(videoSteps(steps))) {
     observed.push({ id: videoRunId(r.start), start: r.start, finish: r.finish });
   }
   if (!observed.length) return null;   // nothing recorded: leave any earlier verdict as it is

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { totals } from "../../apps/dashboard/src/lib/totals.ts";
+import { meanViewPct, totals } from "../../apps/dashboard/src/lib/totals.ts";
 
 const day = (views: number, avgViewPct: number) => ({ views, likes: 0, comments: 0, subsGained: 0, avgViewPct });
 const live = (liveViews: number) => ({ liveViews, liveLikes: 3, liveComments: 1, liveAt: new Date("2026-10-19T12:00:00Z") });
@@ -32,4 +32,14 @@ test("days without views don't drag the average down", () => {
 
 test("only zero-view days: average 0", () => {
   assert.equal(totals([day(0, 0)])!.avgViewPct, 0);
+});
+
+test("channel average % viewed skips videos that only have live counters so far", () => {
+  const measured = [day(100, 40)];
+  const a = { stats: measured, totals: totals(measured, null)! };
+  const b = { stats: [day(50, 60)], totals: totals([day(50, 60)], null)! };
+  const fresh = { stats: [], totals: totals([], live(12))! };
+  assert.equal(meanViewPct([a, b, fresh]), 50);
+  assert.equal(meanViewPct([fresh]), 0);
+  assert.equal(meanViewPct([]), 0);
 });

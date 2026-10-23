@@ -62,3 +62,12 @@ export function fillFromLive(byDay: Map<string, DayRow>, videos: GapVideo[]): vo
     }
   }
 }
+
+/**
+ * The channel's average % viewed across videos. Only videos with Analytics rows count: a video
+ * that so far has only live counters has no watch % yet, not 0%.
+ */
+export function meanViewPct(videos: { stats: StatRow[]; totals: Totals }[]): number {
+  const measured = videos.filter((x) => x.stats.length > 0);
+  return measured.length ? Math.round(measured.reduce((a, x) => a + x.totals.avgViewPct, 0) / measured.length * 10) / 10 : 0;
+}

@@ -4,6 +4,8 @@
  * may no longer start a fresh window. Times are IST (UTC+5:30); keep this list in step with the
  * cron lines of the routines at claude.ai → Code → Routines.
  */
+import { AFTER_RUN } from "../../apps/dashboard/src/lib/run-span.ts";
+
 export type RunId = "auditor" | "research" | "video-main" | "improver" | "dashboard" | "video-spare";
 
 /** In order of the night: window A (23:00, 23:47), window B (04:07, 06:17, 07:37), window C (09:07). */
@@ -96,6 +98,12 @@ export function scheduleOverlap(runs: ObservedRun[]): ScheduleFinding | null {
     detail: lines.join("\n"),
     fix: [...new Set(fixes)].map((f, i) => `${i + 1}. ${f}`).join("\n") + "\nSchedules are changed at claude.ai → Code → Routines; then update SCHEDULE in workers/lib/schedule.ts.",
   };
+}
+
+/** clusterRuns' input from AgentRun rows: the owner's later dashboard actions on a video are not part of its run. */
+export function videoSteps(rows: { videoId: string | null; agent: string; startedAt: Date; finishedAt: Date | null }[]): { videoId: string; start: Date; end: Date }[] {
+  return rows.filter((r) => r.videoId !== null && !AFTER_RUN.includes(r.agent))
+    .map((r) => ({ videoId: r.videoId!, start: r.startedAt, end: r.finishedAt ?? r.startedAt }));
 }
 
 /** Group per-video step windows into runs: videos separated by more than `gapMin` start a new run. */

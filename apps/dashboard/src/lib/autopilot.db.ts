@@ -2,6 +2,7 @@
 import type { Notification as Row } from "@prisma/client";
 
 import { prisma } from "./prisma";
+import { AFTER_RUN } from "./run-span";
 import { clusterVideoRuns } from "./run-times";
 import { AgentsSchema, ActivitySchema } from "./schemas";
 import type { Agents, Notification, Notifications } from "./schemas";
@@ -52,7 +53,7 @@ export async function getAgents(): Promise<Agents> {
   const [rows, docs, steps] = await Promise.all([
     prisma.agentActivity.findMany({ orderBy: [{ day: "desc" }, { agent: "asc" }], take: 120 }),
     prisma.repoDoc.findMany({ where: { key: { in: ["experimentLedger", "experiments", "proposals", "mergeLog", "dashboardBacklog", "auditorBacklog", "dataAudit", "topicFeed"] } } }),
-    prisma.agentRun.findMany({ where: { videoId: { not: null }, startedAt: { gte: new Date(Date.now() - 16 * 86_400_000) } }, select: { videoId: true, startedAt: true, finishedAt: true } }),
+    prisma.agentRun.findMany({ where: { videoId: { not: null }, agent: { notIn: AFTER_RUN }, startedAt: { gte: new Date(Date.now() - 16 * 86_400_000) } }, select: { videoId: true, startedAt: true, finishedAt: true } }),
   ]);
   const doc = Object.fromEntries(docs.map((d) => [d.key, d.value]));
   // the ledger has the detail; the live config has the status the renderer actually uses

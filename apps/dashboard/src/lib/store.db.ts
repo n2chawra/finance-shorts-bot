@@ -8,7 +8,8 @@ import type { Prisma } from "@prisma/client";
 import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
 import { SettingsSchema, mostLoved } from "./schemas";
-import { fillFromLive, totals, type DayRow } from "./totals";
+import { runEndMs } from "./run-span";
+import { fillFromLive, meanViewPct, totals, type DayRow } from "./totals";
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 
 const DAY_MS = 86_400_000;
@@ -79,7 +80,7 @@ export async function listVideos(f: { status?: string; template?: string; catego
       ...(f.category ? { topic: { category: f.category } } : {}),
       ...(q ? { OR: [{ title: { contains: q, mode: "insensitive" } }, { id: { contains: q, mode: "insensitive" } }, { topic: { title: { contains: q, mode: "insensitive" } } }] } : {}),
     },
-    include: withRelations, take: 300,
+    include: withRelations, orderBy: { createdAt: "desc" }, take: 300,
   });
   const when = (v: VideoRow) => (v.upload?.publishAt ?? v.createdAt).getTime();
   return rows.sort((a, b) => when(b) - when(a)).map(toVideo);
@@ -327,7 +328,7 @@ export async function listRuns(): Promise<Run[]> {
   return [...groups.entries()].map(([key, steps]): Run => {
     const ordered = [...steps].sort((a, b) => a.startedAt.getTime() - b.startedAt.getTime() || a.id.localeCompare(b.id));
     const first = ordered[0];
-    const end = Math.max(...ordered.map((s) => (s.finishedAt ?? s.startedAt).getTime()));
+    const end = runEndMs(ordered);
     const isVideo = first.videoId !== null;
     const failed = isVideo ? first.video?.status === "failed" : first.status === "failed";
     return {
@@ -378,7 +379,7 @@ export async function getAnalytics(): Promise<Analytics> {
     totals: {
       views: rows.reduce((a, r) => a + r.views, 0), subsGained: ranked.reduce((a, x) => a + x.t!.subsGained, 0), videos: published.length,
       likes: rows.reduce((a, r) => a + r.likes, 0), comments: rows.reduce((a, r) => a + r.comments, 0),
-      avgViewPct: ranked.length ? Math.round(ranked.reduce((a, x) => a + x.t!.avgViewPct, 0) / ranked.length * 10) / 10 : 0,
+      avgViewPct: meanViewPct(ranked.map(({ v, t }) => ({ stats: v.upload?.stats ?? [], totals: t! }))),
     },
   };
 }
