@@ -1,13 +1,13 @@
 "use client";
 
-import { AlignLeft, Check, CircleCheckBig, Copy, Link2, MonitorPlay, Tags, Type } from "lucide-react";
+import { AlignLeft, Check, CircleCheckBig, Copy, Link2, MonitorPlay, Pencil, Tags, Type } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { Dialog } from "radix-ui";
 import { useState } from "react";
 
 import { Button, Card, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { useManualUpload } from "@/lib/queries";
+import { useEditVideo, useManualUpload } from "@/lib/queries";
 import type { Video } from "@/lib/schemas";
 import { youtubeIdFrom } from "@/lib/youtube-link";
 
@@ -155,6 +155,98 @@ export function MarkUploaded({ v }: { v: Pick<Video, "id" | "status"> }) {
             <div className="mt-5 flex justify-end gap-2">
               <Dialog.Close className={buttonClass("default")}>Cancel</Dialog.Close>
               <Button type="submit" tone="primary" disabled={bad || !when || mark.isPending}>{mark.isPending ? "Saving…" : relink ? "Save link" : "Mark uploaded"}</Button>
+            </div>
+          </form>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+
+// ---------------- edit details ----------------
+
+const toLocal = (iso: string) => {
+  const d = new Date(iso);
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60_000).toISOString().slice(0, 16);
+};
+const inputClass = "mt-1.5 min-h-11 w-full rounded-lg border border-ring bg-surface px-3 text-sm shadow-card";
+
+/** Fix anything on a video after the fact: title, description, tags, and once it is uploaded its YouTube link and time. */
+export function EditDetails({ v }: { v: Pick<Video, "id" | "title" | "description" | "tags" | "upload"> }) {
+  const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState(v.title);
+  const [description, setDescription] = useState(v.description);
+  const [tags, setTags] = useState(v.tags.join(", "));
+  const [link, setLink] = useState("");
+  const [when, setWhen] = useState("");
+  const edit = useEditVideo();
+  const toast = useToast();
+  const uploaded = !!v.upload;
+  const newId = youtubeIdFrom(link);
+  const badLink = link.trim() !== "" && !newId;
+
+  const reset = () => {
+    setTitle(v.title); setDescription(v.description); setTags(v.tags.join(", "));
+    setLink(v.upload?.youtubeId ? `https://youtube.com/shorts/${v.upload.youtubeId}` : "");
+    setWhen(v.upload?.publishAt ? toLocal(v.upload.publishAt) : "");
+  };
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (badLink || !title.trim()) return;
+    const tagList = tags.split(",").map((t) => t.trim()).filter(Boolean);
+    const body = {
+      ...(title.trim() !== v.title ? { title: title.trim() } : {}),
+      ...(description !== v.description ? { description } : {}),
+      ...(tagList.join(",") !== v.tags.join(",") ? { tags: tagList } : {}),
+      ...(uploaded && (newId ?? null) !== (v.upload?.youtubeId ?? null) ? { youtubeId: newId } : {}),
+      ...(uploaded && when && v.upload && new Date(when).toISOString() !== new Date(v.upload.publishAt).toISOString() ? { publishAt: new Date(when).toISOString() } : {}),
+    };
+    if (!Object.keys(body).length) { setOpen(false); return; }
+    edit.mutate({ id: v.id, ...body }, {
+      onSuccess: () => { toast("Saved"); setOpen(false); },
+      onError: (err) => toast(err.message, "error"),
+    });
+  };
+
+  return (
+    <Dialog.Root open={open} onOpenChange={(o) => { setOpen(o); if (o) reset(); }}>
+      <Dialog.Trigger className={buttonClass("default")}><Pencil aria-hidden className="size-4" />Edit details</Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-40 animate-fade bg-black/45 backdrop-blur-[2px]" />
+        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 max-h-[calc(100dvh-2rem)] w-[min(560px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop overflow-y-auto rounded-2xl border border-ring bg-surface p-5 shadow-lift">
+          <form onSubmit={submit}>
+            <Dialog.Title className="text-base font-semibold">Edit details</Dialog.Title>
+            <Dialog.Description className="mt-1.5 text-sm text-ink2">
+              Changes the dashboard{uploaded ? " and what the stats track" : " and what the bot uploads"}. It doesn&apos;t change the video on YouTube: edit it in YouTube Studio too.
+            </Dialog.Description>
+
+            <label htmlFor="ed-title" className="mt-4 block text-sm font-medium">Title</label>
+            <input id="ed-title" required maxLength={100} value={title} onChange={(e) => setTitle(e.target.value)} className={inputClass} />
+            <p className="mt-1 text-xs text-muted">{title.length}/100</p>
+
+            <label htmlFor="ed-desc" className="mt-3 block text-sm font-medium">Description</label>
+            <textarea id="ed-desc" rows={5} maxLength={5000} value={description} onChange={(e) => setDescription(e.target.value)}
+              className={`${inputClass} py-2`} />
+
+            <label htmlFor="ed-tags" className="mt-3 block text-sm font-medium">Tags</label>
+            <input id="ed-tags" value={tags} onChange={(e) => setTags(e.target.value)} placeholder="money, rich vs poor" className={inputClass} />
+            <p className="mt-1 text-xs text-muted">Separated by commas</p>
+
+            {uploaded && <>
+              <label htmlFor="ed-link" className="mt-3 block text-sm font-medium">YouTube link</label>
+              <input id="ed-link" value={link} onChange={(e) => setLink(e.target.value)} placeholder="https://youtube.com/shorts/…" inputMode="url"
+                aria-invalid={badLink} className={`${inputClass} ${badLink ? "border-critical" : ""}`} />
+              <p className={`mt-1 text-xs ${badLink ? "text-critical-text" : "text-muted"}`}>
+                {badLink ? "That doesn't look like a YouTube video link." : newId && newId !== v.upload?.youtubeId ? `New video id ${newId}: its numbers are fetched again` : "Fix a wrong link here"}
+              </p>
+
+              <label htmlFor="ed-when" className="mt-3 block text-sm font-medium">Published at</label>
+              <input id="ed-when" type="datetime-local" value={when} onChange={(e) => setWhen(e.target.value)} className={inputClass} />
+            </>}
+
+            <div className="mt-5 flex justify-end gap-2">
+              <Dialog.Close className={buttonClass("default")}>Cancel</Dialog.Close>
+              <Button type="submit" tone="primary" disabled={badLink || !title.trim() || edit.isPending}>{edit.isPending ? "Saving…" : "Save"}</Button>
             </div>
           </form>
         </Dialog.Content>

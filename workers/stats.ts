@@ -49,7 +49,7 @@ async function main(): Promise<void> {
     const refreshed = await refreshPublished(prisma, token);
     const yesterday = istDay(new Date(Date.now() - DAY_MS));
     const earliest = istDay(new Date(Date.now() - KEEP_DAYS * DAY_MS));
-    const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] } }, include: { video: { select: { format: true, durationSec: true } } } });
+    const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, video: { deletedAt: null } }, include: { video: { select: { format: true, durationSec: true } } } });
     let rows = 0;
     const errors: string[] = [];
     for (const u of uploads) {

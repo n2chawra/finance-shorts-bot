@@ -6,7 +6,7 @@ import { useEffect, useId, useRef, useState } from "react";
 
 import { Tip } from "./ui";
 
-export type Point = { label: string; value: number };
+export type Point = { label: string; value: number; estimated?: boolean };
 
 function useWidth(): [React.RefObject<HTMLDivElement | null>, number] {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -72,6 +72,7 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var
   const every = Math.max(1, Math.ceil(data.length / Math.max(2, Math.floor(innerW / 64))));
   const gradId = `area${useId().replace(/:/g, "")}`;
   const line = data.map((d, i) => `${i ? "L" : "M"}${x(i)},${y(d.value)}`).join(" ");
+  const est = data.findIndex((d) => d.estimated);
   const onMove = (e: React.PointerEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const i = Math.round(((e.clientX - rect.left - PAD.left) / innerW) * (data.length - 1));
@@ -95,6 +96,13 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} />
           <motion.path key={`l${data.length}`} d={line} fill="none" stroke={color} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round"
             initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }} />
+          {/* days YouTube Analytics hasn't reached yet: shaded, the line dashed (estimated from live counts) */}
+          {est >= 0 && <>
+            <rect x={x(Math.max(0, est - 0.5))} y={PAD.top} width={x(data.length - 1) - x(Math.max(0, est - 0.5))} height={height - PAD.top - PAD.bottom}
+              fill="var(--ring)" opacity={0.25} />
+            <path d={data.slice(Math.max(0, est - 1)).map((d, j) => `${j ? "L" : "M"}${x(Math.max(0, est - 1) + j)},${y(d.value)}`).join(" ")}
+              fill="none" stroke="var(--surface)" strokeWidth={2.5} strokeDasharray="4 4" />
+          </>}
           {hover !== null && (
             <>
               <line x1={x(hover)} x2={x(hover)} y1={PAD.top} y2={height - PAD.bottom} stroke="var(--ring-strong)" strokeWidth={1} />
@@ -103,7 +111,7 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var
           )}
         </svg>
       )}
-      {hover !== null && w > 0 && <ChartTooltip x={x(hover)} y={y(data[hover].value)} width={w} label={data[hover].label} value={fmtFull(data[hover].value)} />}
+      {hover !== null && w > 0 && <ChartTooltip x={x(hover)} y={y(data[hover].value)} width={w} label={data[hover].estimated ? `${data[hover].label} (est.)` : data[hover].label} value={fmtFull(data[hover].value)} />}
     </div>
   );
 }

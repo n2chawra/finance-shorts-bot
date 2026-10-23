@@ -52,7 +52,7 @@ async function main(): Promise<void> {
 
     const now = new Date();
     const existing = await prisma.upload.findMany({
-      where: { state: { in: ["scheduled", "uploaded", "published"] } },
+      where: { state: { in: ["scheduled", "uploaded", "published"] }, video: { deletedAt: null } },
       select: { publishAt: true, video: { select: { format: true } } },
     });
     const taken = new Set(existing.map((u) => slotKey(u.publishAt)));

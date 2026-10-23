@@ -51,7 +51,7 @@ export function refreshLiveStats(): Promise<void> {
 
 async function run(): Promise<void> {
   const stale = await prisma.upload.findMany({
-    where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, OR: [{ liveAt: null }, { liveAt: { lt: new Date(Date.now() - FRESH_MS) } }] },
+    where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, video: { deletedAt: null }, OR: [{ liveAt: null }, { liveAt: { lt: new Date(Date.now() - FRESH_MS) } }] },
     select: { id: true, youtubeId: true },
   });
   for (let i = 0; i < stale.length; i += 50) {

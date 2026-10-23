@@ -14,7 +14,7 @@ export function youtubeConfigured(): boolean {
  * public. Until the API audit is approved YouTube keeps API uploads private, so they stay scheduled.
  */
 export async function refreshPublished(prisma: PrismaClient, token: string, now = new Date()): Promise<{ published: string[]; stillPrivate: string[]; missing: string[] }> {
-  const due = await prisma.upload.findMany({ where: { state: "scheduled", publishAt: { lte: now }, youtubeId: { not: null } } });
+  const due = await prisma.upload.findMany({ where: { state: "scheduled", publishAt: { lte: now }, youtubeId: { not: null }, video: { deletedAt: null } } });
   const result = { published: [] as string[], stillPrivate: [] as string[], missing: [] as string[] };
   if (!due.length) return result;
   const statuses = await videoStatuses(token, due.map((u) => u.youtubeId!));

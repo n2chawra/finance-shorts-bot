@@ -50,7 +50,7 @@ async function comments(token: string, now: Date) {
   const prisma = new PrismaClient();
   try {
     const uploads = await prisma.upload.findMany({
-      where: { youtubeId: { not: null }, publishAt: { gte: new Date(now.getTime() - 30 * DAY_MS), lte: now } },
+      where: { youtubeId: { not: null }, video: { deletedAt: null }, publishAt: { gte: new Date(now.getTime() - 30 * DAY_MS), lte: now } },
       include: { video: { select: { id: true, title: true, format: true } } },
     });
     const out = [];

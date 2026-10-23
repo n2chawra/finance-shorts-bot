@@ -8,8 +8,8 @@ import type { Prisma } from "@prisma/client";
 import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
 import { SettingsSchema, mostLoved } from "./schemas";
-import { totals } from "./totals";
-import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
+import { fillFromLive, totals, type DayRow } from "./totals";
+import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 
 const DAY_MS = 86_400_000;
 const IST_OFFSET = "+05:30";
@@ -128,9 +128,15 @@ export async function videoAction(id: string, action: VideoAction): Promise<{ ok
   const v = await prisma.video.findFirst({ where: { id, ...live } });
   if (!v) return { ok: false, error: "Video not found" };
   if (action === "delete") {
-    if (v.status !== "queued" && v.status !== "failed") return { ok: false, error: "Only queued or failed videos can be deleted" };
-    // keep the row so ingest does not add the video again from its manifest
-    await prisma.video.update({ where: { id }, data: { deletedAt: new Date(), queuePosition: null } });
+    // keep the row so ingest does not add the video again from its manifest; a published or
+    // scheduled one is "removed from YouTube": it leaves every list, total and graph, and the
+    // publisher, stats and audit jobs skip it (its stats rows stay, uncounted)
+    const removed = v.status === "published" || v.status === "scheduled";
+    await prisma.$transaction([
+      prisma.video.update({ where: { id }, data: { deletedAt: new Date(), queuePosition: null } }),
+      prisma.agentRun.create({ data: { videoId: id, agent: "manual_remove", status: "ok", startedAt: new Date(), finishedAt: new Date(),
+        log: [removed ? "Removed from YouTube by the owner" : "Deleted by the owner", `Was ${v.status}`] } }),
+    ]);
     await renumber();
     return { ok: true };
   }
@@ -181,6 +187,35 @@ export async function markUploaded(id: string, m: ManualUpload): Promise<{ ok: t
   return { ok: true };
 }
 
+/**
+ * The owner's edits from the video page: title, description and tags (what the publisher uploads,
+ * and what the owner copies when posting by hand), and for an uploaded video its YouTube link and
+ * publish time. A new link drops the old link's numbers so the stats jobs fetch the right video's.
+ */
+export async function updateVideo(id: string, e: VideoEdit): Promise<{ ok: true } | { ok: false; error: string }> {
+  const v = await prisma.video.findFirst({ where: { id, ...live }, include: { upload: true } });
+  if (!v) return { ok: false, error: "Video not found" };
+  if ((e.youtubeId !== undefined || e.publishAt) && !v.upload) return { ok: false, error: "This video is not uploaded yet: use Mark as uploaded" };
+  const newLink = e.youtubeId !== undefined && e.youtubeId !== v.upload?.youtubeId;
+  if (newLink && e.youtubeId) {
+    const taken = await prisma.upload.findFirst({ where: { youtubeId: e.youtubeId, videoId: { not: id } }, select: { videoId: true } });
+    if (taken) return { ok: false, error: `That YouTube video is already linked to ${taken.videoId}` };
+  }
+  const changed = (Object.keys(e) as (keyof VideoEdit)[]).filter((k) => e[k] !== undefined);
+  const upload = v.upload;
+  await prisma.$transaction([
+    prisma.video.update({ where: { id }, data: { title: e.title, description: e.description, tags: e.tags } }),
+    ...(upload && (newLink || e.publishAt) ? [prisma.upload.update({ where: { id: upload.id }, data: {
+      publishAt: e.publishAt ? new Date(e.publishAt) : undefined,
+      ...(newLink ? { youtubeId: e.youtubeId, liveViews: null, liveLikes: null, liveComments: null, liveAt: null } : {}),
+    } })] : []),
+    ...(upload && newLink ? [prisma.videoStat.deleteMany({ where: { uploadId: upload.id } })] : []),
+    prisma.agentRun.create({ data: { videoId: id, agent: "manual_edit", status: "ok", startedAt: new Date(), finishedAt: new Date(),
+      log: [`Edited by the owner: ${changed.join(", ")}`, ...(newLink ? [`YouTube link ${upload?.youtubeId ?? "none"} -> ${e.youtubeId ?? "none"}`] : [])] } }),
+  ]);
+  return { ok: true };
+}
+
 /** Log which thumbnail won YouTube's Test & Compare (kept in the video's style, read by the agents). */
 export async function setThumbWinner(id: string, winner: string | null): Promise<{ ok: true } | { ok: false; error: string }> {
   const v = await prisma.video.findFirst({ where: { id, ...live }, select: { style: true } });
@@ -210,7 +245,7 @@ export async function getOverview(): Promise<Overview> {
     prisma.video.findFirst({ where: { ...live, status: "scheduled", upload: { isNot: null } }, include: withRelations, orderBy: { upload: { publishAt: "asc" } } }),
     prisma.video.findMany({ where: { ...live, status: "failed" }, orderBy: { createdAt: "desc" }, take: 5 }),
     prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations, orderBy: { upload: { publishAt: "desc" } } }),
-    prisma.videoStat.aggregate({ where: { day: { gte: since } }, _sum: { views: true, subsGained: true, likes: true, comments: true } }),
+    prisma.videoStat.aggregate({ where: { day: { gte: since }, upload: { video: live } }, _sum: { views: true, subsGained: true, likes: true, comments: true } }),
     prisma.upload.count({ where: { state: "published", publishAt: { gte: new Date(Date.now() - 7 * DAY_MS) } } }),
     prisma.template.count(),
     prisma.agentRun.count({ where: { agent: "template_builder", startedAt: { gte: new Date(`${today}T00:00:00${IST_OFFSET}`) } } }),
@@ -311,15 +346,22 @@ export async function getAnalytics(): Promise<Analytics> {
   const today = istDay(new Date());
   const from = addDays(today, -28);
   const [stats, published] = await Promise.all([
-    prisma.videoStat.findMany({ where: { day: { gte: new Date(`${from}T00:00:00Z`) } } }),
+    // removed videos' rows are kept in the database but not counted
+    prisma.videoStat.findMany({ where: { day: { gte: new Date(`${from}T00:00:00Z`) }, upload: { video: live } } }),
     prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations }),
   ]);
-  const byDay = new Map<string, { views: number; subsGained: number; likes: number; comments: number }>();
-  for (let k = 28; k >= 1; k--) byDay.set(addDays(today, -k), { views: 0, subsGained: 0, likes: 0, comments: 0 });
+  // the last 28 days, today included (its views are live-counter estimates until Analytics has it)
+  const byDay = new Map<string, DayRow>();
+  for (let k = 27; k >= 0; k--) byDay.set(addDays(today, -k), { views: 0, subsGained: 0, likes: 0, comments: 0, estimated: false });
   for (const s of stats) {
     const d = byDay.get(dayKey(s.day));
     if (d) { d.views += s.views; d.subsGained += s.subsGained; d.likes += s.likes; d.comments += s.comments; }
   }
+  // Analytics runs days behind: what the live counters have beyond it fills those days, marked estimated
+  fillFromLive(byDay, published.filter((v) => v.upload).map((v) => ({
+    publishDay: istDay(v.upload!.publishAt), live: v.upload,
+    stats: v.upload!.stats.map((st) => ({ day: dayKey(st.day), views: st.views, likes: st.likes, comments: st.comments, subsGained: st.subsGained, avgViewPct: st.avgViewPct })),
+  })));
   const names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const wd = names.map(() => ({ views: 0, n: 0 }));
   const ranked = published.map((v) => ({ v, t: totals(v.upload?.stats ?? [], v.upload) })).filter((x) => x.t !== null);

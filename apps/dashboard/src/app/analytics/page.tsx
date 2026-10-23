@@ -28,18 +28,22 @@ export default function AnalyticsPage() {
   const days = data.daily.slice(-n);
   const allViews = data.daily.map((d) => d.views);
   const allSubs = data.daily.map((d) => d.subsGained);
-  const views = days.map((d) => ({ label: fmtDayKey(d.day), value: d.views }));
-  const subs = days.map((d) => ({ label: fmtDayKey(d.day), value: d.subsGained }));
-  const likes = days.map((d) => ({ label: fmtDayKey(d.day), value: d.likes }));
+  const views = days.map((d) => ({ label: fmtDayKey(d.day), value: d.views, estimated: d.estimated }));
+  const subs = days.map((d) => ({ label: fmtDayKey(d.day), value: d.subsGained, estimated: d.estimated }));
+  const likes = days.map((d) => ({ label: fmtDayKey(d.day), value: d.likes, estimated: d.estimated }));
   const comments = days.map((d) => d.comments);
   const allLikes = data.daily.map((d) => d.likes);
   const allComments = data.daily.map((d) => d.comments);
   const loved = perThousand(data.totals);
+  const anyEst = days.some((d) => d.estimated);
+  const est = (p: { label: string; estimated?: boolean }) => (p.estimated ? `${p.label} (est.)` : p.label);
   const best = [...data.weekday].sort((a, b) => b.avgViews - a.avgViews)[0];
 
   return (
     <Stagger>
-      <PageHeader title="Analytics" sub="YouTube Analytics daily numbers (1–2 days behind) and live lifetime counts">
+      <PageHeader title="Analytics" sub={anyEst
+        ? "Shaded days are estimated from YouTube's live counts until YouTube Analytics catches up (it runs a few days behind)"
+        : "YouTube Analytics daily numbers and live lifetime counts"}>
         <Segmented label="Range" value={range} onChange={setRange} options={[{ value: "7", label: "7 days" }, { value: "14", label: "14 days" }, { value: "28", label: "28 days" }]} />
       </PageHeader>
 
@@ -60,18 +64,18 @@ export default function AnalyticsPage() {
       <div className="mt-3 grid gap-3 lg:grid-cols-2">
         <Card title="Views per day" icon={TrendingUp}>
           <LineChart data={views} fmt={fmtCompact} fmtFull={(x) => `${fmtNum(x)} views`} />
-          <DataTable head={["Day", "Views"]} rows={views.map((p) => [p.label, fmtNum(p.value)])} />
+          <DataTable head={["Day", "Views"]} rows={views.map((p) => [est(p), fmtNum(p.value)])} />
         </Card>
         <Card title="Subscribers gained per day" icon={UserPlus}>
           <LineChart data={subs} fmt={fmtCompact} fmtFull={(x) => `+${fmtNum(x)} subscribers`} color="var(--good)" />
-          <DataTable head={["Day", "Subscribers"]} rows={subs.map((p) => [p.label, fmtNum(p.value)])} />
+          <DataTable head={["Day", "Subscribers"]} rows={subs.map((p) => [est(p), fmtNum(p.value)])} />
         </Card>
       </div>
 
       <Card title="Likes and comments per day" icon={Heart} className="mt-3"
         description="The clearest sign that people love a video: they took a second to react.">
         <LineChart data={likes} fmt={fmtCompact} fmtFull={(x) => `${fmtNum(x)} likes`} color="var(--danger)" />
-        <DataTable head={["Day", "Likes · comments"]} rows={likes.map((p, i) => [p.label, `${fmtNum(p.value)} · ${fmtNum(comments[i] ?? 0)}`])} />
+        <DataTable head={["Day", "Likes · comments"]} rows={likes.map((p, i) => [est(p), `${fmtNum(p.value)} · ${fmtNum(comments[i] ?? 0)}`])} />
       </Card>
 
       <Card title="Average views by upload day" icon={CalendarDays} className="mt-3"

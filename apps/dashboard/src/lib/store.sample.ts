@@ -5,7 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail } from "./schemas";
+import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 import { mostLoved } from "./schemas";
 
 const VERSION = 8; // bump to regenerate the sample data without restarting the server
@@ -374,7 +374,7 @@ export function getAnalytics(): Analytics {
     .sort((a, b) => b.views - a.views);
   const views = published.reduce((a, v) => a + v.totals!.views, 0);
   return {
-    daily: [...byDay].map(([day, d]) => ({ day, ...d })),
+    daily: [...byDay].map(([day, d]) => ({ day, ...d, estimated: false })),
     weekday: names.map((weekday, i) => ({ weekday, avgViews: wd[i].n ? Math.round(wd[i].views / wd[i].n) : 0, uploads: wd[i].n })),
     top: ranked.slice(0, 5), bottom: ranked.slice(-5).reverse(), loved: mostLoved(ranked),
     totals: {
@@ -412,6 +412,18 @@ export function markUploaded(id: string, m: ManualUpload): { ok: true } | { ok: 
   return { ok: true };
 }
 
+export function updateVideo(id: string, e: VideoEdit): { ok: true } | { ok: false; error: string } {
+  const v = db().videos.find((x) => x.id === id);
+  if (!v) return { ok: false, error: "Video not found" };
+  if ((e.youtubeId !== undefined || e.publishAt) && !v.upload) return { ok: false, error: "This video is not uploaded yet: use Mark as uploaded" };
+  if (e.title !== undefined) v.title = e.title;
+  if (e.description !== undefined) v.description = e.description;
+  if (e.tags !== undefined) v.tags = e.tags;
+  if (v.upload && e.youtubeId !== undefined) v.upload = { ...v.upload, youtubeId: e.youtubeId };
+  if (v.upload && e.publishAt) v.upload = { ...v.upload, publishAt: e.publishAt };
+  return { ok: true };
+}
+
 export function setThumbWinner(id: string, winner: string | null): { ok: true } | { ok: false; error: string } {
   const v = db().videos.find((x) => x.id === id);
   if (!v) return { ok: false, error: "Video not found" };
@@ -425,7 +437,6 @@ export function videoAction(id: string, action: VideoAction): { ok: true } | { o
   const v = s.videos.find((x) => x.id === id);
   if (!v) return { ok: false, error: "Video not found" };
   if (action === "delete") {
-    if (v.status !== "queued" && v.status !== "failed") return { ok: false, error: "Only queued or failed videos can be deleted" };
     s.videos = s.videos.filter((x) => x.id !== id);
     s.runs = s.runs.map((r) => (r.videoId === id ? { ...r, videoId: null } : r));
     renumber(s, queue(s));

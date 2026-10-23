@@ -207,7 +207,8 @@ export type Overview = z.infer<typeof OverviewSchema>;
 
 const RankedSchema = z.object({ videoId: z.string(), title: z.string(), templateId: z.string(), views: z.number(), likes: z.number(), comments: z.number(), thumbnailUrl: z.string() });
 export const AnalyticsSchema = z.object({
-  daily: z.array(z.object({ day: z.string(), views: z.number(), subsGained: z.number(), likes: z.number(), comments: z.number() })),
+  daily: z.array(z.object({ day: z.string(), views: z.number(), subsGained: z.number(), likes: z.number(), comments: z.number(),
+    estimated: z.boolean().default(false) })), // a day YouTube Analytics hasn't reached: from the live counters
   weekday: z.array(z.object({ weekday: z.string(), avgViews: z.number(), uploads: z.number() })),
   top: z.array(RankedSchema),
   bottom: z.array(RankedSchema),
@@ -235,6 +236,16 @@ export const ManualUploadSchema = z.object({
   publishedAt: z.string().datetime({ offset: true }),
 });
 export type ManualUpload = z.infer<typeof ManualUploadSchema>;
+
+/** Owner edits from the video page: any field left out stays as it is. */
+export const VideoEditSchema = z.object({
+  title: z.string().trim().min(1).max(100).optional(),
+  description: z.string().max(5000).optional(),
+  tags: z.array(z.string().trim().min(1).max(100)).max(40).optional(),
+  youtubeId: z.string().regex(/^[\w-]{11}$/).nullable().optional(),   // a corrected link (uploaded videos)
+  publishAt: z.string().datetime({ offset: true }).optional(),
+}).refine((e) => Object.values(e).some((x) => x !== undefined), "Nothing to change");
+export type VideoEdit = z.infer<typeof VideoEditSchema>;
 
 export const THUMB_FILES = ["thumbnail.png", "thumbnail-b.png", "thumbnail-c.png"] as const;
 /** The thumbnail that won YouTube's Test & Compare (null clears it). */

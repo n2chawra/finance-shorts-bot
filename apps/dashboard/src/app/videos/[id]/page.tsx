@@ -16,7 +16,7 @@ import { postingPlan } from "@/lib/posting-plan";
 import { useQueue, useSettings, useThumbWinner, useVideo, useVideoAction, useVideos } from "@/lib/queries";
 import type { VideoAction, VideoDetail } from "@/lib/schemas";
 
-import { MarkUploaded, YouTubeDetails } from "./publish-tools";
+import { EditDetails, MarkUploaded, YouTubeDetails } from "./publish-tools";
 
 const CHECK_NAMES: Record<string, string> = { number_check: "Number check", fact_review: "Fact review", qa_review: "QA review" };
 
@@ -93,9 +93,11 @@ export default function VideoPage() {
   if (isLoading) return <Loading />;
   if (error || !v) return <ErrorNote error={error} />;
 
+  // a video already on YouTube (or scheduled there) is "removed", not deleted: YouTube keeps it until the owner deletes it there
+  const onYouTube = v.status === "published" || v.status === "scheduled";
   const run = (action: VideoAction) => {
     act.mutate({ id: v.id, action }, {
-      onSuccess: () => { toast(action === "delete" ? "Video deleted" : action === "skip" ? "Moved to the end of the queue" : "Marked for upload"); if (action === "delete") router.push("/videos"); },
+      onSuccess: () => { toast(action === "delete" ? (onYouTube ? "Removed" : "Video deleted") : action === "skip" ? "Moved to the end of the queue" : "Marked for upload"); if (action === "delete") router.push("/videos"); },
       onError: (e) => toast(e.message, "error"),
     });
   };
@@ -111,7 +113,7 @@ export default function VideoPage() {
       { label: "Upload now", icon: Upload, disabled: act.isPending, onSelect: () => run("upload-now") },
       { label: "Skip to end of queue", icon: ChevronsDown, disabled: act.isPending, onSelect: () => run("skip") },
     ] as MenuItem[] : []),
-    ...(v.status === "queued" || v.status === "failed" ? ["separator", { label: "Delete…", icon: Trash2, danger: true, onSelect: () => setConfirmDelete(true) }] as MenuItem[] : []),
+    "separator", { label: onYouTube ? "Removed from YouTube…" : "Delete…", icon: Trash2, danger: true, onSelect: () => setConfirmDelete(true) },
   ];
   while (menu[0] === "separator") menu.shift();
   const tabs = [
@@ -137,7 +139,8 @@ export default function VideoPage() {
         <div className="flex flex-wrap items-center gap-2">
           {v.status !== "failed" && v.fileUrl && <a href={v.fileUrl} download={`${v.id}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>}
           {v.status !== "failed" && <a href={v.thumbnailUrl} download={`${v.id}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>}
-          {(v.status !== "published" || !v.upload?.youtubeId) && <MarkUploaded v={v} />}
+          {v.status !== "published" && <MarkUploaded v={v} />}
+          <EditDetails v={v} />
           {menu.length > 0 && <ActionMenu items={menu} />}
         </div>
       </div>
@@ -262,8 +265,11 @@ export default function VideoPage() {
         </Tabs.Root>
       </div>
 
-      <ConfirmButton hideTrigger open={confirmDelete} onOpenChange={setConfirmDelete} label="Delete" title="Delete this video?" confirmLabel="Delete video"
-        description={`"${v.title}" will be removed. This cannot be undone.`} onConfirm={() => run("delete")} />
+      <ConfirmButton hideTrigger open={confirmDelete} onOpenChange={setConfirmDelete} label={onYouTube ? "Remove" : "Delete"}
+        title={onYouTube ? "Removed from YouTube?" : "Delete this video?"} confirmLabel={onYouTube ? "Remove from dashboard" : "Delete video"}
+        description={onYouTube
+          ? `"${v.title}" leaves the dashboard: its lists, totals and graphs, and the stats jobs stop tracking it. This does not delete it from YouTube: do that in YouTube Studio.`
+          : `"${v.title}" will be removed. This cannot be undone.`} onConfirm={() => run("delete")} />
     </Stagger>
   );
 }

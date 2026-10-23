@@ -65,7 +65,7 @@ async function main(): Promise<void> {
 
     const linked = videos.filter((v) => v.upload?.youtubeId && ["scheduled", "published"].includes(v.upload.state));
     const youtube = await youtubeNumbers(linked.map((v) => v.upload!.youtubeId!));
-    const rows = await prisma.videoStat.findMany({ select: { day: true, views: true, upload: { select: { videoId: true } } } });
+    const rows = await prisma.videoStat.findMany({ where: { upload: { video: { deletedAt: null } } }, select: { day: true, views: true, upload: { select: { videoId: true } } } });
     const analytics = new Map<string, { day: string; views: number }[]>();
     for (const r of rows) analytics.set(r.upload.videoId, [...(analytics.get(r.upload.videoId) ?? []), { day: r.day.toISOString().slice(0, 10), views: r.views }]);
     const refreshed = await prisma.setting.findUnique({ where: { key: "statsRefreshedAt" } });

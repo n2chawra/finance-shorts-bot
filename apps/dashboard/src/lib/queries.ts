@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { getJson, send } from "./api";
 import { AgentsSchema, AnalyticsSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
-import type { ManualUpload, NotificationAction, Settings, VideoAction } from "./schemas";
+import type { ManualUpload, NotificationAction, Settings, VideoAction, VideoEdit } from "./schemas";
 
 export const useOverview = () => useQuery({ queryKey: ["overview"], queryFn: () => getJson("/api/overview", OverviewSchema) });
 export const useQueue = () => useQuery({ queryKey: ["queue"], queryFn: () => getJson("/api/queue", z.array(VideoSchema)) });
@@ -27,6 +27,7 @@ function useWrite<T>(fn: (arg: T) => Promise<void>) {
 }
 
 export const useVideoAction = () => useWrite(({ id, action }: { id: string; action: VideoAction }) => send("POST", `/api/videos/${id}/${action}`));
+export const useEditVideo = () => useWrite(({ id, ...body }: VideoEdit & { id: string }) => send("PATCH", `/api/videos/${id}`, body));
 export const useManualUpload = () => useWrite(({ id, ...body }: ManualUpload & { id: string }) => send("POST", `/api/videos/${id}/manual-upload`, body));
 export const useThumbWinner = () => useWrite(({ id, winner }: { id: string; winner: string | null }) => send("POST", `/api/videos/${id}/thumb-test`, { winner }));
 export const useReorder = () => useWrite((ids: string[]) => send("PATCH", "/api/queue/order", { ids }));
