@@ -1,0 +1,44 @@
+{
+  "agent": "studio",
+  "day": "2026-10-23",
+  "startedAt": "2026-10-23T05:00:20Z",
+  "finishedAt": "2026-10-23T06:06:39Z",
+  "summary": "Made and shipped L-20261023-01, 'Why the rich borrow money and the poor pay it back' (8:19, USD, rich vs poor): five debts (car loan, card balance, mortgage, student loan, the never-ending car payment), the first long video on the shot system with a custom split-screen hook.",
+  "decision": "acted",
+  "why": "Weekly target 3, 2 made this week; Scout's top usable feed topic (2026-10-23-rich-borrow-poor-save, priority high, reference 5.9M views).",
+  "findings": [
+    {
+      "title": "Fact review passed on the third pass",
+      "detail": "Round 1: the hook mixed a 5-year car value with a 10-year house value, car depreciation said as fact, three 'most people' claims, description said six debts for five. Round 2: a stack labelled 'Borrowed' showed the house's assumed value; the hook tags lacked years and 'assumed'. All fixed."
+    },
+    {
+      "title": "QA passed on the third pass",
+      "detail": "Round 1: hook frame 0 black, two phone labels overlapping values, three empty vault openings, a stray chart underline. Round 2: faces cut at the frame edge in phone shots, a phone title too wide. All fixed."
+    },
+    {
+      "title": "The shot system needs long-format fixes",
+      "detail": "Close shots on stacks/phones push tags off the frame, phone text is under 30 px in wide shots, drop-in words start off-frame, flying notes' glyphs are 20 px. Worked around in the script; five items added to improvement/longform/backlog.json for the improver."
+    },
+    {
+      "title": "Card example changed from the outline",
+      "detail": "The outline's 2% minimum ($44,200, 67 years) is an extreme case; used a 3% minimum ($35 floor): $6,746 interest over 15 years."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Shipped L-20261023-01",
+      "detail": "499 s, 136 beats, 1,902 words, liveliness median 6.03; manifest on main, mp4 on media/L-20261023-01. Thumbnail angles: warning (main), versus, question."
+    }
+  ],
+  "nextCheck": "2026-10-26",
+  "links": [
+    {
+      "label": "Script",
+      "url": "videos/L-20261023-01/script.json"
+    },
+    {
+      "label": "Backlog",
+      "url": "improvement/longform/backlog.json"
+    }
+  ]
+}
