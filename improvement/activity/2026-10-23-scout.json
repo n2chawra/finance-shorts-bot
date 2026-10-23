@@ -1,0 +1,53 @@
+{
+  "agent": "scout",
+  "day": "2026-10-23",
+  "startedAt": "2026-10-23T04:08:28Z",
+  "finishedAt": "2026-10-23T04:13:26Z",
+  "summary": "Friday script-structure study: measured our last long video's chapter timings against two retention guides, routed 5 findings, and added 2 long topics: why the rich borrow (USD, 5.9M reference) and boring businesses in India (INR, 2.3M reference).",
+  "decision": "acted",
+  "why": "The feed has 10 usable topics. L-20261021-01 spends 58 s (12%) after its payoff, its first recap comes at 4:15 instead of 2-3 min, and its strongest items get the shortest chapters.",
+  "findings": [
+    {
+      "title": "The ending drifts after the payoff",
+      "detail": "58 s of checklist recap after level six, 12% of runtime. adopt, high.",
+      "link": "https://www.overseeros.com/blog/youtube-retention-architecture"
+    },
+    {
+      "title": "The first recap comes at 4:15",
+      "detail": "The README asks for one every 2-3 minutes. adopt, normal.",
+      "link": "https://outlierkit.com/resources/youtube-script-template/"
+    },
+    {
+      "title": "The strongest items get the shortest chapters",
+      "detail": "Chapters ran 64/73/94/64/63/60 s. Experiment: the strongest gets 1.5× the average."
+    },
+    {
+      "title": "Debt as a tool is a proven long subject and trending now",
+      "detail": "Proactive Thinker 5.9M; Galloway/Housel gaining ~2,500 views/h.",
+      "link": "https://www.youtube.com/watch?v=nZ4SAXgUrIc"
+    },
+    {
+      "title": "Money prints negative amounts as '$-19,470'",
+      "detail": "Sign before the currency symbol; fix in formatting.py and inr.ts. adopt, low."
+    }
+  ],
+  "changes": [
+    {
+      "title": "2 long topics added",
+      "detail": "2026-10-23-rich-borrow-poor-save (USD, high), 2026-10-23-boring-businesses-india (INR, normal)",
+      "branch": "agent/scout/2026-10-23"
+    },
+    {
+      "title": "5 backlog items",
+      "detail": "2 adopt (script), 1 experiment, 1 adopt bug, 1 owner (info)",
+      "branch": "agent/scout/2026-10-23"
+    }
+  ],
+  "nextCheck": "2026-10-24",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/longform/2026-10-23.md"
+    }
+  ]
+}
