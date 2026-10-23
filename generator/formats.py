@@ -19,12 +19,19 @@ FILE = Path("improvement") / "research" / "formats.json"
 MIN_VIEWS = 100_000      # a reference video below this doesn't show demand
 
 
-def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+def load(root: Path = ROOT, fmt: str = "short", plannable: bool = True) -> list[dict]:
+    """The format's live entries; `plannable` leaves out one with no reference video at MIN_VIEWS,
+    since check_plan would reject any plan in it (it comes back once research adds one)."""
     path = root / FILE
     if not path.is_file():
         return []
     return [f for f in json.loads(path.read_text(encoding="utf-8")).get("formats", [])
-            if isinstance(f, dict) and f.get("id") and f.get("format") == fmt and not f.get("retired")]
+            if isinstance(f, dict) and f.get("id") and f.get("format") == fmt and not f.get("retired")
+            and (not plannable or best_views(f) >= MIN_VIEWS)]
+
+
+def best_views(f: dict) -> int:
+    return max([e.get("views", 0) for e in f.get("examples") or [] if isinstance(e, dict) and isinstance(e.get("views"), int)] or [0])
 
 
 def ids(root: Path = ROOT, fmt: str = "short") -> list[str]:
@@ -46,7 +53,11 @@ def check_plan(plan: dict, root: Path = ROOT, fmt: str = "short") -> list[str]:
     if not known:
         return []
     out = []
-    if plan.get("story") not in known:
+    below = {f["id"]: best_views(f) for f in load(root, fmt, plannable=False) if f["id"] not in known}
+    if plan.get("story") in below:
+        out.append(f"story {plan['story']} has no reference video with {MIN_VIEWS:,}+ views yet (best {below[plan['story']]:,}): "
+                   f"pick one of {', '.join(known)}")
+    elif plan.get("story") not in known:
         out.append(f"story must be a {fmt} format with proven demand: one of {', '.join(known)} ({FILE.as_posix()})")
     demand = plan.get("demand")
     if not isinstance(demand, dict) or not demand.get("title") or not isinstance(demand.get("views"), int):

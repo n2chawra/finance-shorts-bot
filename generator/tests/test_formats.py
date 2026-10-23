@@ -44,3 +44,17 @@ def test_the_repo_formats_are_well_formed() -> None:
             assert f["id"] in STORIES, f["id"]
             assert f.get("hook") and f.get("beats") and f.get("examples"), f["id"]
     assert formats.ids(REPO, "short") and formats.ids(REPO, "long")
+
+
+def test_a_format_below_the_demand_floor_is_not_offered(root: Path) -> None:
+    """A format whose best example is under MIN_VIEWS can't pass check_plan, so the planner never sees it."""
+    (root / formats.FILE).parent.mkdir(parents=True, exist_ok=True)
+    (root / formats.FILE).write_text(json.dumps({"formats": [
+        {"id": "rich_vs_poor", "format": "short", "hook": "h", "beats": "b", "examples": [{"title": "t", "views": 8800000}]},
+        {"id": "cost_of_habit", "format": "short", "hook": "h", "beats": "b", "examples": [{"title": "ours", "views": 284}]}]}),
+        encoding="utf-8")
+    assert [f["id"] for f in formats.for_state(root, "short")] == ["rich_vs_poor"]
+    assert formats.ids(root, "short") == ["rich_vs_poor"]
+    plan = make_plan(story="cost_of_habit", demand={"title": "t", "views": 8800000, "url": "u"})
+    assert any("no reference video with 100,000+ views" in p for p in formats.check_plan(plan, root))
+    assert formats.check_plan({**plan, "story": "rich_vs_poor"}, root) == []
