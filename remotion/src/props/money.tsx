@@ -138,14 +138,21 @@ export const LeakyBucket: React.FC<PropArgs & { level?: number }> = ({ s, k, t, 
   );
 };
 
-/** A bank vault door; the wheel turns and the door swings open. */
+/** A bank vault door; the wheel turns and the door swings open on gold bars. The figure sits on a
+ * plaque above the door, where the opened door can't cover it (L-20261021-01). */
 export const Vault: React.FC<PropArgs> = ({ s, k, t, text, fs, pal }) => {
   const open = Math.min(1, Math.max(0, (t - 0.6) / 0.8));
+  const plateW = Math.max(s * 0.7, (text?.length ?? 0) * fs * 0.62 + fs), plateY = -s * 0.46 - fs * 0.95;
   return (
     <g transform={`scale(${0.3 + 0.7 * k})`}>
       <circle r={s * 0.46} fill="#5c6474" stroke="#3a404c" strokeWidth={14} />
       <circle r={s * 0.38} fill="#20242c" />
-      {text && <T x={0} y={0} fs={fs} fill={pal.accent}>{text}</T>}
+      {[[-0.13, 0.12], [0.13, 0.12], [0, -0.02]].map(([x, y], i) =>
+        <rect key={i} x={s * (x! - 0.12)} y={s * y!} width={s * 0.24} height={s * 0.12} rx={s * 0.015} fill="#e8b93a" stroke="#a57c12" strokeWidth={4} />)}
+      {text && <g>
+        <rect x={-plateW / 2} y={plateY - fs * 0.7} width={plateW} height={fs * 1.4} rx={fs * 0.25} fill="#2b303b" stroke="#8a93a5" strokeWidth={6} />
+        <T x={0} y={plateY} fs={fs} fill={pal.accent}>{text}</T>
+      </g>}
       <g transform={`translate(${-s * 0.38 * open},0) scale(${1 - 0.85 * open},1)`}>
         <circle r={s * 0.38} fill="#8a93a5" stroke="#5c6474" strokeWidth={8} />
         <g transform={`rotate(${t * 120})`}>
@@ -159,15 +166,17 @@ export const Vault: React.FC<PropArgs> = ({ s, k, t, text, fs, pal }) => {
 
 /** A long receipt printing out line by line; its total is the figure. */
 export const Receipt: React.FC<PropArgs & { rows?: number }> = ({ s, k, text, label, fs, rows = 6 }) => {
-  const h = s * 1.3 * k;
+  // shorter, so the total lands above the caption band (it sat under the word-by-word captions at
+  // 1.3 s tall, L-20261021-01), and its top still clears a kicker above the prop
+  const top = -s * 0.72, h = s * 1.05 * k;
   return (
     <g>
-      <rect x={-s / 2} y={-s * 0.65} width={s} height={h} fill="#fffdf8" stroke="#ddd3c0" strokeWidth={4} />
+      <rect x={-s / 2} y={top} width={s} height={h} fill="#fffdf8" stroke="#ddd3c0" strokeWidth={4} />
       {Array.from({ length: rows }, (_, i) => i * s * 0.1 + s * 0.08 < h - s * 0.3
-        ? <g key={i}><rect x={-s * 0.4} y={-s * 0.55 + i * s * 0.1} width={s * (0.3 + (i % 3) * 0.1)} height={10} rx={5} fill="#d8ccb4" /><rect x={s * 0.2} y={-s * 0.55 + i * s * 0.1} width={s * 0.2} height={10} rx={5} fill="#d8ccb4" /></g>
+        ? <g key={i}><rect x={-s * 0.4} y={top + s * 0.1 + i * s * 0.1} width={s * (0.3 + (i % 3) * 0.1)} height={10} rx={5} fill="#d8ccb4" /><rect x={s * 0.2} y={top + s * 0.1 + i * s * 0.1} width={s * 0.2} height={10} rx={5} fill="#d8ccb4" /></g>
         : null)}
-      {k > 0.95 && label && <T x={-s * 0.4} y={-s * 0.65 + h - s * 0.2} fs={fs * 0.45} fill="#6b5f4a" weight={700} anchor="start">{label}</T>}
-      {k > 0.95 && text && <T x={s * 0.42} y={-s * 0.65 + h - s * 0.08} fs={fs} fill="#1d2433" anchor="end">{text}</T>}
+      {k > 0.95 && label && <T x={-s * 0.4} y={top + h - s * 0.2} fs={fs * 0.45} fill="#6b5f4a" weight={700} anchor="start">{label}</T>}
+      {k > 0.95 && text && <T x={s * 0.42} y={top + h - s * 0.08} fs={fs} fill="#1d2433" anchor="end">{text}</T>}
     </g>
   );
 };
