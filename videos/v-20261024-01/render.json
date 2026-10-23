@@ -1,0 +1,112 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 70413,
+  "duration_sec": 33,
+  "tempo": 1.0,
+  "style": {
+    "palette": "plum",
+    "genre": "cinematic",
+    "key": "F",
+    "bpm": 92
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why can't a billionaire just pay a tax bill of $5.00B?",
+        "start": 0.27,
+        "seconds": 2.55,
+        "window": 2.97,
+        "fill": 0.859
+      },
+      {
+        "scene": "vote",
+        "text": "California votes on a one-time 5% billionaire tax, paid over 5 years. On an illustrative $100,000,000,000 fortune, that's $1.00B a year.",
+        "start": 3.23,
+        "seconds": 8.2,
+        "window": 8.67,
+        "fill": 0.946
+      },
+      {
+        "scene": "easy",
+        "text": "Easy. He's super rich. Just pay it!",
+        "start": 11.9,
+        "seconds": 1.31,
+        "window": 1.73,
+        "fill": 0.757
+      },
+      {
+        "scene": "where",
+        "text": "Worth it, yes. In cash? No. Say just 0.5% is cash. That's $500.0M.",
+        "start": 13.63,
+        "seconds": 4.59,
+        "window": 5.17,
+        "fill": 0.888
+      },
+      {
+        "scene": "shares",
+        "text": "The other $99.50B is shares. You can't pay tax with shares.",
+        "start": 18.8,
+        "seconds": 3.71,
+        "window": 4.27,
+        "fill": 0.869
+      },
+      {
+        "scene": "short",
+        "text": "So even in year one, he's short $500.0M?",
+        "start": 23.07,
+        "seconds": 2.23,
+        "window": 2.63,
+        "fill": 0.848
+      },
+      {
+        "scene": "sell",
+        "text": "Exactly. So he sells shares, or borrows against them. Selling that much can push the price down.",
+        "start": 25.7,
+        "seconds": 3.92,
+        "window": 4.47,
+        "fill": 0.877
+      },
+      {
+        "scene": "loop",
+        "text": "Rich on paper. Short on cash. That's the real answer to...",
+        "start": 30.17,
+        "seconds": 2.35,
+        "window": 2.93,
+        "fill": 0.802
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.7
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 8.89,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

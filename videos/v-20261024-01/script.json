@@ -1,0 +1,719 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 70413,
+  "story": "billionaire_question",
+  "currency": "USD",
+  "feed_id": "2026-10-24-billionaire-tax-5-percent",
+  "style": {
+    "palette": "plum",
+    "genre": "cinematic",
+    "key": "F",
+    "bpm": 92
+  },
+  "maths": [
+    {
+      "name": "bill",
+      "kind": "fee_take",
+      "amount": 100000000000,
+      "fee_pct": 5,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "yearly",
+      "kind": "fee_take",
+      "amount": 5000000000,
+      "fee_pct": 20,
+      "per_year": 1,
+      "years": 5
+    },
+    {
+      "name": "cash",
+      "kind": "fee_take",
+      "amount": 100000000000,
+      "fee_pct": 0.5,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "shares",
+      "kind": "fee_take",
+      "amount": 100000000000,
+      "fee_pct": 99.5,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "gap",
+      "kind": "compare",
+      "a": "yearly.per_period",
+      "b": "cash.total"
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "speaker": "rohan",
+      "say": "Why can't a billionaire just pay a tax bill of {bill_total}?",
+      "events": {
+        "why": {
+          "word": "Why"
+        },
+        "pay": {
+          "word": "pay"
+        },
+        "bill": {
+          "word": "bill"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "why",
+          "gain": 0.6
+        },
+        {
+          "kind": "pop",
+          "at": "pay"
+        },
+        {
+          "kind": "kaching",
+          "at": "bill",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "question": "Why can't they just pay?",
+        "bill": "{bill_total}",
+        "billLabel": "Tax bill",
+        "worth": "{gap_a}",
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "vote",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "California votes on a one-time {bill_fee_pct} billionaire tax, paid over {yearly_years} years. On an illustrative {bill_amount} fortune, that's {gap_a} a year.",
+      "events": {
+        "votes": {
+          "word": "votes"
+        },
+        "one": {
+          "word": "one-time"
+        },
+        "paid": {
+          "word": "paid"
+        },
+        "illus": {
+          "word": "illustrative"
+        },
+        "year": {
+          "word": "year."
+        },
+        "thats": {
+          "word": "that's"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "votes"
+        },
+        {
+          "kind": "ding",
+          "at": "one",
+          "gain": 0.5
+        },
+        {
+          "kind": "tick",
+          "at": "paid",
+          "gain": 0.5
+        },
+        {
+          "kind": "kaching",
+          "at": "year",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.32,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral",
+                "turn": 0.3
+              },
+              {
+                "at": "paid",
+                "pose": "pointUp",
+                "expression": "thinking",
+                "turn": 0.3
+              },
+              {
+                "at": "thats",
+                "pose": "point",
+                "expression": "shock",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "tax",
+            "spot": 0.68,
+            "amount": "@bill.total",
+            "text": "{bill_total}",
+            "label": "Tax bill",
+            "at": "one",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "one",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "illus",
+            "size": "close",
+            "on": "tax",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "easy",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Easy. He's super rich. Just pay it!",
+      "events": {
+        "worth": {
+          "word": "rich."
+        },
+        "pay": {
+          "word": "pay"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "worth"
+        },
+        {
+          "kind": "kaching",
+          "at": "pay",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "pay",
+                "pose": "point",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "pay",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Easy?",
+          "at": "worth",
+          "color": "white",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "where",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Worth it, yes. In cash? No. Say just {cash_fee_pct} is cash. That's {cash_total}.",
+      "events": {
+        "no": {
+          "word": "No."
+        },
+        "cash": {
+          "word": "cash."
+        },
+        "thats": {
+          "word": "That's"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "no",
+          "gain": 0.4
+        },
+        {
+          "kind": "pop",
+          "at": "cash"
+        },
+        {
+          "kind": "ding",
+          "at": "thats",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "cash",
+                "pose": "point",
+                "expression": "proud",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "pocket",
+            "spot": 0.64,
+            "amount": "@cash.total",
+            "text": "{cash_total}",
+            "label": "Cash",
+            "at": "cash",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "cash",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Cash",
+          "at": "cash",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "shares",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "zoom-through",
+      "say": "The other {shares_total} is shares. You can't pay tax with shares.",
+      "events": {
+        "other": {
+          "word": "other"
+        },
+        "shares": {
+          "word": "shares."
+        },
+        "cant": {
+          "word": "can't"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.35
+        },
+        {
+          "kind": "boom",
+          "at": "shares",
+          "gain": 0.6
+        },
+        {
+          "kind": "fail",
+          "at": "cant",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "big",
+            "spot": 0.68,
+            "amount": "@shares.total",
+            "text": "{shares_total}",
+            "label": "Shares",
+            "at": "other",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "shares",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "cant",
+                "pose": "shrug",
+                "expression": "neutral",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "word": {
+          "text": "Shares",
+          "at": "shares",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "short",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "So even in year one, he's short {gap_diff}?",
+      "events": {
+        "short": {
+          "word": "short"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "short",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ],
+        "word": {
+          "text": "Short",
+          "at": "short",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "sell",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Exactly. So he sells shares, or borrows against them. Selling that much can push the price down.",
+      "events": {
+        "sells": {
+          "word": "sells"
+        },
+        "borrows": {
+          "word": "borrows"
+        },
+        "down": {
+          "word": "down."
+        },
+        "billions": {
+          "word": "much"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "sells",
+          "gain": 0.4
+        },
+        {
+          "kind": "ding",
+          "at": "borrows",
+          "gain": 0.5
+        },
+        {
+          "kind": "fail",
+          "at": "down",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking",
+                "turn": 0.3
+              },
+              {
+                "at": "borrows",
+                "pose": "pointUp",
+                "expression": "smirk",
+                "turn": 0.3
+              },
+              {
+                "at": "down",
+                "pose": "shrug",
+                "expression": "worried",
+                "turn": 0.3
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "pile",
+            "spot": 0.66,
+            "amount": "@shares.total",
+            "text": "{shares_total}",
+            "label": "Shares",
+            "at": "start",
+            "tone": "good"
+          },
+          {
+            "kind": "flow",
+            "from": "pile",
+            "to": "left",
+            "at": "sells",
+            "dur": 2.4,
+            "n": 14
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "borrows",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "down",
+            "size": "close",
+            "on": "pile",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Sell?",
+          "at": "sells",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Rich on paper. Short on cash. That's the real answer to...",
+      "events": {
+        "paper": {
+          "word": "paper."
+        },
+        "cash": {
+          "word": "cash."
+        },
+        "real": {
+          "word": "real"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "paper"
+        },
+        {
+          "kind": "pop",
+          "at": "cash"
+        },
+        {
+          "kind": "whoosh",
+          "at": "real",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking",
+                "turn": 0.4
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk",
+                "turn": -0.4
+              },
+              {
+                "at": "real",
+                "pose": "pointUp",
+                "expression": "proud",
+                "turn": -0.4
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "real",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "where",
+    "sec": 4.2,
+    "angle": "question",
+    "who": "sharma",
+    "words": "Why can't they *pay*?",
+    "figure": "{bill_total}",
+    "tag": "Tax bill"
+  },
+  "narrator": "am_michael"
+}

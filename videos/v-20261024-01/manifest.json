@@ -1,0 +1,463 @@
+{
+  "id": "v-20261024-01",
+  "createdAt": "2026-10-23T22:56:23.855395+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "A one-time 5% tax on billionaires: why can't they just pay it in cash?",
+    "category": "tax",
+    "reach": "global",
+    "feed_id": "2026-10-24-billionaire-tax-5-percent"
+  },
+  "title": "Why can't billionaires just pay a 5% tax? 🤔",
+  "description": "Why can't a billionaire just write the cheque for a one-time 5% tax?\nAn illustrative $100 billion fortune, a 5% bill paid over five years and an assumed cash share, computed: the money is in shares, not in the bank. No real person's wealth, no side taken on any vote. Speak to a licensed financial adviser in your country before making financial decisions.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Billionaire",
+    "#WealthTax",
+    "#Money",
+    "#PersonalFinance"
+  ],
+  "hookStyle": "question",
+  "cta": "Sell or borrow? Comment",
+  "seed": 70413,
+  "style": {
+    "palette": "plum",
+    "genre": "cinematic",
+    "key": "F",
+    "bpm": 92,
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why can't a billionaire just pay a tax bill of $5.00B?",
+        "start": 0.27,
+        "seconds": 2.55,
+        "window": 2.97,
+        "fill": 0.859
+      },
+      {
+        "scene": "vote",
+        "text": "California votes on a one-time 5% billionaire tax, paid over 5 years. On an illustrative $100,000,000,000 fortune, that's $1.00B a year.",
+        "start": 3.23,
+        "seconds": 8.2,
+        "window": 8.67,
+        "fill": 0.946
+      },
+      {
+        "scene": "easy",
+        "text": "Easy. He's super rich. Just pay it!",
+        "start": 11.9,
+        "seconds": 1.31,
+        "window": 1.73,
+        "fill": 0.757
+      },
+      {
+        "scene": "where",
+        "text": "Worth it, yes. In cash? No. Say just 0.5% is cash. That's $500.0M.",
+        "start": 13.63,
+        "seconds": 4.59,
+        "window": 5.17,
+        "fill": 0.888
+      },
+      {
+        "scene": "shares",
+        "text": "The other $99.50B is shares. You can't pay tax with shares.",
+        "start": 18.8,
+        "seconds": 3.71,
+        "window": 4.27,
+        "fill": 0.869
+      },
+      {
+        "scene": "short",
+        "text": "So even in year one, he's short $500.0M?",
+        "start": 23.07,
+        "seconds": 2.23,
+        "window": 2.63,
+        "fill": 0.848
+      },
+      {
+        "scene": "sell",
+        "text": "Exactly. So he sells shares, or borrows against them. Selling that much can push the price down.",
+        "start": 25.7,
+        "seconds": 3.92,
+        "window": 4.47,
+        "fill": 0.877
+      },
+      {
+        "scene": "loop",
+        "text": "Rich on paper. Short on cash. That's the real answer to...",
+        "start": 30.17,
+        "seconds": 2.35,
+        "window": 2.93,
+        "fill": 0.802
+      }
+    ]
+  },
+  "durationSec": 33,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.7
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off"
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "29 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of changed beat 'short': 'So even in year one, he's short $500.0M?' is correct ($1.00B first installment minus the assumed $500.0M cash) and fixes the earlier 'every year' overstatement; rest unchanged from the previous pass (Prop 40 details confirmed via Wikipedia, AP/ABC7, NBC LA; description has adviser line and disclaimer)."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-render: vote beat now Priya whole beside a 'Tax bill $5.00B' cash stack (5s wide) then a close on the stack (10s); nothing cut off, captions clear of faces, hook and disclaimer present, 'even in year one' line correct, cover is the Sharma + $500.0M cash stack frame, audio -1.0/-16.7 dB, 33 s."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:40:21.794231+00:00",
+      "finishedAt": "2026-10-23T22:40:21.794231+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:41:18.350629+00:00",
+      "finishedAt": "2026-10-23T22:41:18.350629+00:00",
+      "notes": [
+        "23 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'sell' runs 5.6 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:41:30.886393+00:00",
+      "finishedAt": "2026-10-23T22:41:30.886393+00:00",
+      "notes": [
+        "23 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'vote' runs 6.4 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:41:38.344959+00:00",
+      "finishedAt": "2026-10-23T22:41:38.344959+00:00",
+      "notes": [
+        "23 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-23T22:42:13.861093+00:00",
+      "finishedAt": "2026-10-23T22:43:13.525676+00:00",
+      "notes": [
+        "text 'One-time tax' at 8.3 s runs outside the frame",
+        "text 'Cash' at 15.7 s runs outside the frame",
+        "text '$2.00B' at 15.7 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-10-23T22:43:18.788610+00:00",
+      "finishedAt": "2026-10-23T22:43:18.788610+00:00",
+      "notes": [
+        "Beats vote/where/short/sell: the shortfall ($5.00B bill vs $2.00B cash = short $3.00B, so he must sell or borrow) assumes the whole bill is due at once, but the measure the video names (Prop 40, California, 3 Nov 2026) can be paid in five annual installments (NBC Los Angeles; CA Budget Center; ITEP) - $1B a year, less than the assumed $2B cash - and lets illiquid assets be deferred until sold (Northern Trust, ITEP). Hides a decisive term; the conclusion is not supported. Fix: either drop 'California votes' and make it a hypothetical one-time tax due in full now, or tell the installment option and redo the cash gap.",
+        "Verify item checked: Prop 40 is a one-time 5% tax on net worth above $1B for residents as of Jan 1, 2026, on the Nov 3, 2026 ballot (Wikipedia; AP via ABC7; NBC LA), payable over five annual installments (NBC LA) - confirmed and current. Neutral on the vote, no real person's wealth named: OK.",
+        "Minor (not a reason alone): plan description ends with the disclaimer but lacks the profile's 'speak to a licensed financial adviser in your country' line."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:43:35.835986+00:00",
+      "finishedAt": "2026-10-23T22:43:35.835986+00:00",
+      "notes": [
+        "23 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-23T22:43:37.039579+00:00",
+      "finishedAt": "2026-10-23T22:43:58.826806+00:00",
+      "notes": [
+        "text 'Who' at 8.3 s is 37.1 px, below the 44 px minimum",
+        "text 'Billionaires' at 8.3 s is 23.7 px, below the 44 px minimum"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:44:19.533566+00:00",
+      "finishedAt": "2026-10-23T22:44:19.533566+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:44:20.770989+00:00",
+      "finishedAt": "2026-10-23T22:44:20.770989+00:00",
+      "notes": [
+        "29 figures computed from inputs; 17 cross-checked against closed-form formulas.",
+        "warning: beat 'vote' runs 8.3 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:44:30.636756+00:00",
+      "finishedAt": "2026-10-23T22:44:30.636756+00:00",
+      "notes": [
+        "29 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-23T22:44:31.842033+00:00",
+      "finishedAt": "2026-10-23T22:45:05.558391+00:00",
+      "notes": [
+        "text 'Bill' at 9.4 s is 36.7 px, below the 44 px minimum",
+        "text '$5.00B' at 9.4 s is 43.4 px, below the 44 px minimum",
+        "length 36 s is outside 20–35 s"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:45:15.945994+00:00",
+      "finishedAt": "2026-10-23T22:45:15.945994+00:00",
+      "notes": [
+        "29 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:45:17.104892+00:00",
+      "finishedAt": "2026-10-23T22:45:46.386691+00:00",
+      "notes": [
+        "33 s, plum/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:46:19.013497+00:00",
+      "finishedAt": "2026-10-23T22:46:19.013497+00:00",
+      "notes": [
+        "Re-review after rewrite: Prop 40 (CA, 3 Nov 2026 ballot) one-time 5% tax on net worth over $1B for residents as of 1 Jan 2026, payable in five annual installments - confirmed (Wikipedia Prop 40 page; AP via ABC7; NBC Los Angeles), still current; video now tells the 5-year installment ($1B/yr), cash share is a stated assumption (0.5%), illustrative fortune, neutral on the vote, no advice; description has adviser line and ends with the disclaimer. Notes: 'every year, he's short by $500.0M' treats a one-off $500M cash pile as yearly (later years would be short more, ignoring income) - wording could be 'in year one'; omits the installment interest charge and the deferral for illiquid (private) assets, minor for a public-shares story; hook 'worth' param is unused."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-23T22:46:38.006073+00:00",
+      "finishedAt": "2026-10-23T22:46:38.006073+00:00",
+      "notes": [
+        "[script] 5.0s and 10.0s (beat 'vote'): Priya at spot 0.3 is cut off by the left edge, half her face out of frame, because the camera frames the phone ('medium' on 'news' from 'one-time'); move her spot inward or frame 'all'.",
+        "[script] 5.0s and 10.0s (beat 'vote', 3.2-11.4 s): the same composition (phone + clipped Priya, 'One-time tax 5%, Bill $5.00B') is held for about 6 s, over the 3-5 s picture rule; add a shot change (e.g. a close on Priya at 'illustrative' or a money object for the $100B fortune) before 'that's'.",
+        "[script] beat 'short' (~23-25 s): 'So every year, he's short by $500.0M?' is wrong as stated: $500.0M cash is a one-off and covers only half of year one, after which the gap is the whole $1.00B a year; say 'In year one, he's short by...' or change the inputs/wording.",
+        "[scene] thumbnail (layout 'scene', at 'hook'): the 'Tax bill $5.00B' card is depth-of-field blurred behind the title, so the 'TAX BILL' tag is unreadable and the key figure is soft; keep the thumbnail's figure card in focus."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:47:07.117779+00:00",
+      "finishedAt": "2026-10-23T22:47:07.117779+00:00",
+      "notes": [
+        "29 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-23T22:47:08.142950+00:00",
+      "finishedAt": "2026-10-23T22:47:37.041865+00:00",
+      "notes": [
+        "text 'One-time tax' at 9.0 s runs outside the frame",
+        "text '5%' at 9.0 s runs outside the frame",
+        "text 'Bill' at 9.0 s runs outside the frame",
+        "text '$5.00B' at 9.0 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:47:46.344152+00:00",
+      "finishedAt": "2026-10-23T22:47:46.344152+00:00",
+      "notes": [
+        "29 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-23T22:47:47.415457+00:00",
+      "finishedAt": "2026-10-23T22:48:08.874450+00:00",
+      "notes": [
+        "text 'Bill' at 9.0 s is 38.3 px, below the 44 px minimum"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-23T22:48:16.331372+00:00",
+      "finishedAt": "2026-10-23T22:48:37.240429+00:00",
+      "notes": [
+        "text 'Bill' at 9.0 s is 38.3 px, below the 44 px minimum"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:48:43.998278+00:00",
+      "finishedAt": "2026-10-23T22:49:05.947372+00:00",
+      "notes": [
+        "33 s, plum/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:49:17.133152+00:00",
+      "finishedAt": "2026-10-23T22:49:38.127324+00:00",
+      "notes": [
+        "33 s, plum/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:49:56.361377+00:00",
+      "finishedAt": "2026-10-23T22:49:56.361377+00:00",
+      "notes": [
+        "Re-review of changed beat 'short': 'So even in year one, he's short $500.0M?' is correct ($1.00B first installment minus the assumed $500.0M cash) and fixes the earlier 'every year' overstatement; rest unchanged from the previous pass (Prop 40 details confirmed via Wikipedia, AP/ABC7, NBC LA; description has adviser line and disclaimer)."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-23T22:50:06.288384+00:00",
+      "finishedAt": "2026-10-23T22:50:06.288384+00:00",
+      "notes": [
+        "[script] 5.0s (beat 'vote', opening framing 'medium' on 'all' before 'paid'): the phone object runs off the top and right edges, so its 'One-time tax' title is cut off and the card is clipped; open on 'wide'/'room' (as before) or move the phone spot inward / lower its height.",
+        "[script] 10.0s (beat 'vote', camera 'medium' on 'news' from 'paid' to 'that's'): Priya (spot 0.32) is still cut by the left edge with half her face out of frame; frame 'all' here too, or move her spot inward so the news framing keeps her whole."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:50:27.296096+00:00",
+      "finishedAt": "2026-10-23T22:50:27.296096+00:00",
+      "notes": [
+        "29 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:50:28.297246+00:00",
+      "finishedAt": "2026-10-23T22:50:48.972600+00:00",
+      "notes": [
+        "33 s, plum/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:50:59.761119+00:00",
+      "finishedAt": "2026-10-23T22:51:19.692332+00:00",
+      "notes": [
+        "33 s, plum/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:51:27.662100+00:00",
+      "finishedAt": "2026-10-23T22:51:48.686083+00:00",
+      "notes": [
+        "33 s, plum/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:52:03.611599+00:00",
+      "finishedAt": "2026-10-23T22:52:03.611599+00:00",
+      "notes": [
+        "Re-render: vote beat now Priya whole beside a 'Tax bill $5.00B' cash stack (5s wide) then a close on the stack (10s); nothing cut off, captions clear of faces, hook and disclaimer present, 'even in year one' line correct, cover is the Sharma + $500.0M cash stack frame, audio -1.0/-16.7 dB, 33 s."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:52:49.025506+00:00",
+      "finishedAt": "2026-10-23T22:55:32.364973+00:00",
+      "notes": [
+        "33 s, plum/cinematic, peak -1.0 dB, mean -16.7 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-23T22:56:23.855555+00:00",
+      "finishedAt": "2026-10-23T22:56:23.855555+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261024-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261024-01"
+  },
+  "priority": {
+    "level": "trending",
+    "until": "2026-10-27"
+  }
+}
