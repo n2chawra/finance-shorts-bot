@@ -7,7 +7,7 @@
  *   market.json    the fastest-growing Shorts and long videos for config/market.json's searches
  *   comments.json  top comments on our videos published in the last 30 days (text only, no names)
  *
- * Quota: one search (100 units) per query plus a few cheap lookups, about 600 units a day.
+ * Quota: one search (100 units) per query and region plus a few cheap lookups, about 1,600 units a day.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -31,9 +31,10 @@ async function get<T>(token: string, url: string, schema: { parse: (x: unknown) 
 async function market(token: string, cfg: MarketConfig, now: Date) {
   const after = new Date(now.getTime() - cfg.days * DAY_MS).toISOString();
   const queryOf = new Map<string, string>();
-  for (const q of cfg.queries) {
+  const regions = [...new Set([cfg.regionCode, ...cfg.regions])];
+  for (const regionCode of regions) for (const q of cfg.queries) {
     const params = new URLSearchParams({ part: "id", type: "video", order: "viewCount", maxResults: "50", q,
-      publishedAfter: after, regionCode: cfg.regionCode, relevanceLanguage: cfg.relevanceLanguage });
+      publishedAfter: after, regionCode, relevanceLanguage: cfg.relevanceLanguage });
     for (const item of (await get(token, `${API}/search?${params}`, SearchList)).items) if (!queryOf.has(item.id.videoId)) queryOf.set(item.id.videoId, q);
   }
   const ids = [...queryOf.keys()];
@@ -41,7 +42,7 @@ async function market(token: string, cfg: MarketConfig, now: Date) {
   for (let i = 0; i < ids.length; i += 50) {
     details.push(...(await get(token, `${API}/videos?part=snippet,contentDetails,statistics&id=${ids.slice(i, i + 50).join(",")}`, VideoDetails)).items);
   }
-  return { searched: cfg.queries, since: after, ...rankMarket(details, queryOf, cfg, now) };
+  return { searched: cfg.queries, regions, since: after, ...rankMarket(details, queryOf, cfg, now) };
 }
 
 async function comments(token: string, now: Date) {

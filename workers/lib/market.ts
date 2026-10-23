@@ -7,6 +7,8 @@ import { z } from "zod";
 /** The channel's market: what to search and where (config/market.json; one file per channel). */
 export const MarketConfig = z.object({
   regionCode: z.string().length(2),
+  // extra regions searched with the same queries (the channel splits Shorts between India and the US)
+  regions: z.array(z.string().length(2)).max(2).default([]),
   relevanceLanguage: z.string().min(2),
   queries: z.array(z.string().min(2)).min(1).max(8),
   days: z.number().int().min(1).max(30).default(7),

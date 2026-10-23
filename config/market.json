@@ -1,16 +1,21 @@
 {
-  "note": "What the market job searches each day (workers/market.ts → the market-data branch). The channel's niche: global English-speaking personal finance since 2026-10-18.",
+  "note": "What the market job searches each day (workers/market.ts → the market-data branch). The channel's niche: global English-speaking personal finance since 2026-10-18. Since the 21 Oct demand reset the queries are the formats people watch (improvement/research/formats.json), searched in the US and India.",
   "regionCode": "US",
   "relevanceLanguage": "en",
   "queries": [
-    "personal finance explained",
-    "compound interest explained",
+    "rich vs poor money",
+    "how billionaires avoid tax",
+    "middle class trap",
+    "how does this business make money",
+    "salary breakdown after expenses",
     "credit card debt",
-    "investing for beginners",
-    "inflation explained",
-    "how money works animated"
+    "which money level are you",
+    "retire early how much"
   ],
   "days": 7,
   "shortMaxSec": 180,
-  "top": 30
+  "top": 30,
+  "regions": [
+    "IN"
+  ]
 }

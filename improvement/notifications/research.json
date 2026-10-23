@@ -1,13 +1,6 @@
 {
   "notifications": [
     {
-      "key": "market-queries-pre-reset",
-      "severity": "warning",
-      "title": "The daily market scan still searches the old news topics, not the formats people watch",
-      "detail": "config/market.json (yours to change) searches 'personal finance explained', 'compound interest explained', 'credit card debt', 'investing for beginners', 'inflation explained', 'how money works animated'. Since the 21 Oct demand reset the channel only makes rich-vs-poor, secret-of-the-rich, trap, how-they-make-money, salary-breakdown and which-one-are-you videos, but the 21 Oct market.json held mostly trading tips, IPO news (Jio, IDBI) and foreign-language explainers: 0 of the top 30 Shorts were rich-vs-poor or salary videos. Research can't find new references for those formats any other way (web search returns blogs, YouTube pages don't load), so the formats list only grows slowly.",
-      "fix": "1. Edit config/market.json 'queries' to: \"rich vs poor money\", \"how billionaires avoid tax\", \"middle class trap\", \"how does make money business\", \"salary breakdown after expenses\", \"credit card debt\", \"which money level are you\", \"retire early how much\". 2. Optionally add a second run with regionCode IN (or a second query list) for the India half. 3. Commit to main; the next 22:17 IST market.yml run uses it. Each query costs 100 quota units (search.list), so 8 queries = 800 a day, still well inside 10,000."
-    },
-    {
       "key": "published-short-inconsistent-figures",
       "severity": "warning",
       "title": "A published Short shows the same amount two different ways",

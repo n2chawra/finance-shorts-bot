@@ -22,7 +22,7 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 `agents.auditor` false. Read:
 - `improvement/merge-log.json`: your last 5 entries. A blocked branch is tonight's first job: fix the
   reason it gives.
-- `metrics/data-audit.json`: written at 18:37 IST by the data-audit workflow (dashboard vs YouTube vs
+- `metrics/data-audit.json`: written around 19:00 IST (cron 13:53, GitHub starts it late) by the data-audit workflow (dashboard vs YouTube vs
   database). Check `generatedAt` is from tonight; if it is older than 6 h, say so in your activity
   and an owner notification (the workflow failed), and skip duty 1.
 - `improvement/auditor/backlog.json` (`{"items": [...]}`) and `improvement/auditor/state.json`

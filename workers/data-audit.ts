@@ -1,5 +1,5 @@
 /**
- * Data audit (nightly, 18:37 IST, before the auditor agent): what does the dashboard show, what does
+ * Data audit (daily, 13:53 IST cron, lands around 19:00, before the auditor agent): what does the dashboard show, what does
  * YouTube say, what is stored? Writes metrics/data-audit.json for the auditor agent (which has no
  * database or YouTube access) and raises owner notifications for what only the owner can fix.
  *
