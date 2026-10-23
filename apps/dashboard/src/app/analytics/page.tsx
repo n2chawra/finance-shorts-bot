@@ -74,7 +74,7 @@ export default function AnalyticsPage() {
 
       <Card title="Likes and comments per day" icon={Heart} className="mt-3"
         description="The clearest sign that people love a video: they took a second to react.">
-        <LineChart data={likes} fmt={fmtCompact} fmtFull={(x) => `${fmtNum(x)} likes`} color="var(--danger)" />
+        <LineChart data={likes} fmt={fmtCompact} fmtFull={(x) => `${fmtNum(x)} likes`} color="var(--likes)" />
         <DataTable head={["Day", "Likes · comments"]} rows={likes.map((p, i) => [est(p), `${fmtNum(p.value)} · ${fmtNum(comments[i] ?? 0)}`])} />
       </Card>
 

@@ -114,7 +114,7 @@ export default function OverviewPage() {
         <Stat label="Likes" icon={Heart} href="/analytics" value={<Num value={data.allTime.likes} fmt={fmtCompact} />}
           delta={<Delta value={likes.delta} />}
           sub={`${fmtNum(data.allTime.comments)} comments · ${fmtLoved(data.allTime)} · +${fmtNum(data.last7.likes)} likes in 7 days`}
-          chart={<Sparkline values={likes.spark} color="var(--danger)" />} />
+          chart={<Sparkline values={likes.spark} color="var(--likes)" />} />
         <Stat label="Backlog" icon={Layers} href="/queue" value={<><Num value={data.backlog} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-base font-normal text-muted">/ {data.backlogCap}</span></>}
           sub={`≈ ${Math.floor(data.backlog / (settings.data?.uploadTimes.length ?? 1))} days of uploads`} chart={<div className="pt-3"><Meter value={data.backlog} max={data.backlogCap} label="Backlog" /></div>} />
         <Stat label="Made today" icon={Clapperboard} href="/runs" value={<><Num value={today.shipped} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-base font-normal text-muted">/ {DAILY_TARGET}</span></>}
