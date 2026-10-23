@@ -92,6 +92,8 @@ function ActivityCard({ a }: { a: Activity }) {
 const SEVERITY: Record<NonNullable<Agents["dataAudit"]>["issues"][number]["severity"], Tone> = { error: "critical", warning: "warning", owner: "brand", info: "neutral" };
 
 /** Tonight's data audit: the dashboard's numbers checked against YouTube and the database. */
+const count = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
+
 function DataAuditCard({ audit }: { audit: Agents["dataAudit"] }) {
   if (!audit) return null;
   const s = audit.summary;
@@ -99,7 +101,7 @@ function DataAuditCard({ audit }: { audit: Agents["dataAudit"] }) {
   const clean = s.error + s.warning + s.owner === 0;
   return (
     <Card title="Data audit" icon={Scale} description={`${fmtRelative(audit.generatedAt)} · ${s.checked} videos checked ${audit.youtubeChecked ? "against YouTube" : "(YouTube not connected)"}`}
-      action={<Badge tone={s.error ? "critical" : s.warning || s.owner ? "warning" : "good"} dot>{clean ? "Numbers match" : `${s.error} errors · ${s.warning + s.owner} warnings`}</Badge>}>
+      action={<Badge tone={s.error ? "critical" : s.warning || s.owner ? "warning" : "good"} dot>{clean ? "Numbers match" : `${count(s.error, "error")} · ${count(s.warning + s.owner, "warning")}`}</Badge>}>
       {shown.length > 0 ? (
         <ul className="flex flex-col gap-1.5">
           {shown.slice(0, 6).map((i, n) => (
@@ -307,7 +309,7 @@ function TopicsTab({ data }: { data: Agents }) {
   );
 }
 
-const TAB = "relative h-9 px-2.5 text-[13px] text-ink2 transition-colors hover:text-ink data-[state=active]:font-medium data-[state=active]:text-ink";
+const TAB = "relative h-9 shrink-0 whitespace-nowrap px-2.5 text-[13px] text-ink2 transition-colors hover:text-ink data-[state=active]:font-medium data-[state=active]:text-ink";
 
 export default function AgentsPage() {
   const { data, error, isLoading } = useAgents();

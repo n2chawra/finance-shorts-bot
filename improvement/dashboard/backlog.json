@@ -140,6 +140,64 @@
       "page": "overview",
       "found": "2026-10-22",
       "status": "open"
+    },
+    {
+      "id": "tabs-wrap-clipped",
+      "kind": "bug",
+      "title": "Agents and video page: tab labels wrapped and were clipped on phones",
+      "detail": "On phones 'Experiments (1)', 'Topic feed (1)' and 'Merge log' wrapped to two lines inside the fixed-height tab bar, cutting off '(1)' and 'log'. Tabs now stay on one line and the row scrolls sideways. Smoke test 'section tabs keep their labels on one line'.",
+      "page": "agents",
+      "found": "2026-10-23",
+      "status": "done",
+      "done": "2026-10-23",
+      "lastTouched": {
+        "apps/dashboard/src/app/agents/page.tsx": "2026-10-23",
+        "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-10-23"
+      }
+    },
+    {
+      "id": "audit-badge-plural",
+      "kind": "bug",
+      "title": "Agents: data audit badge read '1 warnings'",
+      "detail": "The badge now counts in the right number ('0 errors · 1 warning'). Smoke test 'data audit badge counts in the right number'.",
+      "page": "agents",
+      "found": "2026-10-23",
+      "status": "done",
+      "done": "2026-10-23",
+      "lastTouched": {
+        "apps/dashboard/src/app/agents/page.tsx": "2026-10-23"
+      }
+    },
+    {
+      "id": "resolve-all-proposals",
+      "kind": "bug",
+      "title": "Notifications: Resolve all closed setting proposals without a decision",
+      "detail": "A proposal has no 'Mark resolved' button because it needs Approve or Decline, but 'Resolve all' swept it into Resolved undecided, where it could no longer be approved. Resolve all now skips proposals. Smoke test 'resolve all leaves setting proposals for a decision'.",
+      "page": "notifications",
+      "found": "2026-10-23",
+      "status": "done",
+      "done": "2026-10-23",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-10-23"
+      }
+    },
+    {
+      "id": "tabs-overflow-cue",
+      "kind": "idea",
+      "title": "Agents and video page: show that the tab row scrolls on phones",
+      "detail": "The tab rows now scroll sideways on phones with no scrollbar. A soft fade on the edge with more tabs (design-system guides recommend it where browsers hide scrollbars) tells the owner there is a 'Merge log' tab off-screen.",
+      "page": "agents",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "notifications-resolve-undo",
+      "kind": "idea",
+      "title": "Notifications: Undo on the 'Resolve all' toast",
+      "detail": "Notification-centre guides agree a mark-all action must be predictable and easy to undo. An Undo button in the toast that reopens exactly the items just resolved saves a trip to 'recently resolved' after a mis-tap on the phone.",
+      "page": "notifications",
+      "found": "2026-10-23",
+      "status": "open"
     }
   ]
 }
