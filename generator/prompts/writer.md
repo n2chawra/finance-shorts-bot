@@ -70,8 +70,10 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   gets a raise."). **No `end` beat in a Short:** the disclaimer shows as a small line over the last
   moments and sits in the description. Put the plan's `cta` in a character's last line only if it
   doesn't break the loop.
-- **The cover (`thumbnail`) is required**: the layout for the format (`versus`, `secret` or `story`) as the
-  README's "The cover" section says. It decides whether anyone taps the Short.
+- **The cover (`thumbnail`) is required**: `layout: "scene"` by default, a frame of this video (the
+  hook, or the beat you name in `at`) under the big words, so no two covers look alike (pick a frame whose top third is free of the scene's own words);
+  `versus`, `secret` or `story` only when no frame can carry it, as the README's "The cover" section
+  says. It decides whether anyone taps the Short.
 - Write in plain English for the plan's reach: a **global** video (`topic.reach`) needs no country:
   famous names, dollars, universal money moves, nothing only one country knows. A local India Short talks about Indian life (salaries in
   lakhs, EMIs, rent in Bangalore, the food-app habit) in simple Indian English; a US Short about US

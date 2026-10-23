@@ -71,8 +71,12 @@ a cost; `road` for anything that takes years; `fork` instead of side-by-side bar
 ## The cover (`thumbnail`, required)
 
 The cover is what makes someone tap (owner, 2026-10-21): on the channel page, in search and on the
-Shorts shelf. A Short without one fails the render; a frame from the middle of the video is never
-the cover. Three layouts, by format:
+Shorts shelf. A Short without one fails the render.
+
+**`scene`, the default** (owner, 2026-10-24: "the thumbnails look the same with different texts"): the cover is a frame of the video itself, its custom hook near the end by default, with the channel's look on top: the big `words` over a blurred, darkened band (the scene's own money objects carry the figures; `figure` stays required by the contract). Every video has its own hook and sets, so every cover is a different picture. `at` picks another beat (its id) and `sec` the second into it (story clock): choose the frame that tells the story at a glance, the cast big, a money object in view, nothing mid-transition. The fixed layouts below are for when no frame can carry the cover; never the same layout two videos in a row. The render fails a cover that looks like one of the last six of its format (`renderer/craft.py` `cover_problems`).
+
+`{"layout": "scene", "at": "hook", "words": "Billionaires *never* sell", "figure": "{tax_total}", "tag": "Tax if you sell", "angle": "number", "who": "sharma"}`
+(`who` stays required by the contract; the scene draws the cast itself). The other layouts, by format:
 
 - **`versus`** (`rich_vs_poor`): a red and a green half, `POOR` and `RICH`. `who` (the poor move,
   e.g. rohan with `prop: "phone"`, worried) and `who2` (the rich one, sharma, proud); `small` the

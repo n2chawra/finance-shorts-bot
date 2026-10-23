@@ -240,10 +240,12 @@ def _thumbnail_variants(script: dict, figures: dict[str, str], results: dict) ->
 def _thumb_picture(t: dict) -> tuple[str, str | None]:
     """What a thumbnail looks like at a glance: its layout, and for `story` the hero object."""
     layout = t.get("layout") or "card"
+    if layout == "scene":   # a frame of the video: another beat is another picture
+        return layout, t.get("at") or "hook"
     return layout, (t.get("hero") or "card") if layout == "story" else None
 
 
-def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict) -> dict | None:
+def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_ids: list[str] | None = None) -> dict | None:
     if not spec:
         return None
     t = _resolve(spec, figures, results, "thumbnail")
@@ -255,8 +257,13 @@ def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict) -> dic
         raise ValueError(f"thumbnail.small must be one placeholder, like {{card_min_due}}; got {spec.get('small')!r}")
     if t.get("layout") == "story" and t.get("hero") not in (None, "card", "phone", "house", "car", "cash", "piggy"):
         raise ValueError("thumbnail.hero must be card, phone, house, car, cash or piggy")
-    if t.get("layout") not in (None, "card", "story", "versus", "secret"):
-        raise ValueError("thumbnail.layout must be card, story, versus (rich vs poor) or secret (what the rich know)")
+    if t.get("layout") not in (None, "card", "story", "versus", "secret", "scene"):
+        raise ValueError("thumbnail.layout must be scene (a frame of the video: the default), card, story, versus (rich vs poor) "
+                         "or secret (what the rich know)")
+    if t.get("layout") == "scene" and beat_ids is not None and t.get("at") is not None and t["at"] not in beat_ids:
+        raise ValueError(f"thumbnail.at {t['at']!r} must be a beat id: one of {', '.join(beat_ids)}")
+    if t.get("sec") is not None and not (isinstance(t["sec"], (int, float)) and t["sec"] >= 0):
+        raise ValueError("thumbnail.sec must be seconds into the beat (0 or more)")
     if t.get("layout") == "versus" and not t.get("small"):
         raise ValueError("a versus thumbnail needs `small` (the poor side's figure) beside `figure` (the rich side's)")
     if len(str(t.get("words", "")).replace("*", "").split()) > 4:
@@ -383,7 +390,7 @@ def check_script(script: dict) -> dict:
     # disclaimer as a small line over its last moments (owner, 2026-10-21)
     if fmt == "long" and beats[-1].scene != "end":
         raise ValueError("the last beat must be the end card (scene \"end\"), which carries the disclaimer")
-    _thumbnail(script.get("thumbnail"), figures, results)
+    _thumbnail(script.get("thumbnail"), figures, results, [b.get("id") for b in script.get("beats") or []])
     return {"figures": figures, "beats": out, "warnings": first_frame(script["beats"]) + event_gaps(timed)}
 
 
@@ -501,7 +508,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest
         "experiments": dict(script.get("experiments") or {}),
         # the thumbnail card: a cast member reacting, one computed figure, at most four words
-        "thumbnail": _thumbnail(script.get("thumbnail"), figures, results),
+        "thumbnail": _thumbnail(script.get("thumbnail"), figures, results, [b.get("id") for b in script.get("beats") or []]),
         # extra thumbnails for a Test & Compare on YouTube (long videos): thumbnail-b.png, thumbnail-c.png
         "thumbnailVariants": _thumbnail_variants(script, figures, results),
     }

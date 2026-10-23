@@ -13,8 +13,8 @@ import { POSES, type PoseName } from "../cast/poses";
 import { Timeline } from "../contract/timeline";
 import { FONT } from "../design/fonts";
 import { PROPS } from "../scenes/kit";
-import type { StoryProps } from "./StoryVideo";
-import { SecretThumb, VersusThumb } from "./ThumbFormats";
+import { StoryVideo, type StoryProps } from "./StoryVideo";
+import { BigWords, SecretThumb, VersusThumb } from "./ThumbFormats";
 
 export const THUMB = { width: 1280, height: 720 } as const;
 export const SHORT_THUMB = { width: 1080, height: 1920 } as const;
@@ -102,11 +102,51 @@ const StoryThumb: React.FC<StoryProps> = ({ timeline }) => {
   );
 };
 
+/** The frame a scene cover shows: `at` (a beat id) and `sec` into it, else the first hook beat near its end. */
+export function coverFrame(tl: Timeline): number {
+  const th = tl.thumbnail!;
+  const beat = tl.beats.find((b) => b.id === th.at) ?? tl.beats.find((b) => b.scene === "hook") ?? tl.beats[0]!;
+  const into = th.sec !== undefined ? Math.round((th.sec * tl.fps) / tl.tempo) : Math.round(beat.frames * 0.8);
+  return beat.from + Math.max(0, Math.min(beat.frames - 1, into));
+}
+
+/**
+ * The "scene" cover (2026-10-24): the video's own picture, so no two covers look alike, with the
+ * channel's look on top: huge words over a blurred, darkened band (the scene's own money objects
+ * carry the figures, so no extra card that would repeat one or cover a face). A long video's
+ * 1920x1080 frame is scaled to the 1280x720 thumbnail.
+ */
+const SceneThumb: React.FC<StoryProps> = ({ timeline }) => {
+  const th = timeline.thumbnail!;
+  const { width: w, height: h } = thumbSize(timeline);
+  const v = h > w;
+  const k = w / timeline.width;
+  return (
+    <AbsoluteFill style={{ overflow: "hidden", background: timeline.palette.bg }}>
+      <div style={{ position: "absolute", left: 0, top: 0, width: timeline.width, height: timeline.height, transform: `scale(${k})`, transformOrigin: "0 0" }}>
+        <StoryVideo timeline={timeline} atFrame={coverFrame(timeline)} />
+      </div>
+      {/* the title band: the scene's own words and tags under it are blurred and darkened away */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: v ? h * 0.36 : h, width: v ? w : w * 0.6,
+        backdropFilter: "blur(14px) brightness(0.55)", WebkitBackdropFilter: "blur(14px) brightness(0.55)",
+        maskImage: v ? "linear-gradient(180deg, #000 72%, transparent 100%)" : "linear-gradient(90deg, #000 70%, transparent 100%)",
+        WebkitMaskImage: v ? "linear-gradient(180deg, #000 72%, transparent 100%)" : "linear-gradient(90deg, #000 70%, transparent 100%)" }} />
+      <AbsoluteFill style={{ background: v
+        ? "linear-gradient(180deg, rgba(5,6,14,0.7) 0%, rgba(5,6,14,0.35) 26%, rgba(5,6,14,0) 40%)"
+        : "linear-gradient(90deg, rgba(5,6,14,0.7) 0%, rgba(5,6,14,0.3) 45%, rgba(5,6,14,0) 62%)" }} />
+      <div style={{ position: "absolute", left: v ? 44 : 40, right: v ? 44 : w * 0.42, top: v ? 70 : 34, textAlign: v ? "center" : "left" }}>
+        <BigWords text={th.words} size={v ? 136 : 92} />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 export const Thumbnail: React.FC<StoryProps> = (props) => {
   const th = props.timeline.thumbnail;
   const { width: w, height: h } = thumbSize(props.timeline);
   if (th?.layout === "versus") return <VersusThumb th={th} w={w} h={h} />;
   if (th?.layout === "secret") return <SecretThumb th={th} w={w} h={h} />;
+  if (th?.layout === "scene") return <SceneThumb {...props} />;
   return th?.layout === "story" ? <StoryThumb {...props} /> : <CardThumb {...props} />;
 };
 

@@ -39,7 +39,7 @@ const Pill: React.FC<{ text: string; bg: string; size: number; rot?: number }> =
 );
 
 /** A figure on a card: a small caption above a huge number. */
-const FigureCard: React.FC<{ label?: string; value: string; color: string; size: number; rot?: number; strike?: boolean }> =
+export const FigureCard: React.FC<{ label?: string; value: string; color: string; size: number; rot?: number; strike?: boolean }> =
   ({ label, value, color, size, rot = 0, strike }) => (
     <div style={{ display: "inline-block", background: "#ffffff", borderRadius: size * 0.16, padding: `${size * 0.1}px ${size * 0.22}px ${size * 0.08}px`,
       transform: `rotate(${rot}deg)`, boxShadow: "0 14px 0 rgba(0,0,0,0.45)", border: `${Math.max(5, size * 0.06)}px solid ${color}`, textAlign: "center", position: "relative" }}>

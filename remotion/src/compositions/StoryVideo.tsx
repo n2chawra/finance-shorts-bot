@@ -62,7 +62,9 @@ const DisclaimerLine: React.FC<{ tl: Timeline }> = ({ tl }) => {
   );
 };
 
-export type StoryProps = { timeline: Timeline; probe?: boolean };   // probe: log text boxes (fx/probe.tsx)
+// probe: log text boxes (fx/probe.tsx); atFrame: draw this one frame (a cover), without captions,
+// logo or disclaimer, on the timeline's own clock (a Still has no fps of its own)
+export type StoryProps = { timeline: Timeline; probe?: boolean; atFrame?: number };
 
 export const calculateStoryMetadata: CalculateMetadataFunction<StoryProps> = ({ props }) => {
   const tl = Timeline.parse(props.timeline);
@@ -87,9 +89,12 @@ const BeatView: React.FC<{ beat: Beat; tl: Timeline; frame: number; fps: number 
   );
 };
 
-export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe, atFrame }) => {
+  const now = useCurrentFrame();
+  const config = useVideoConfig();
+  const cover = atFrame !== undefined;
+  const frame = cover ? atFrame : now;
+  const fps = cover ? timeline.fps : config.fps;
   const beats = timeline.beats;
   let i = beats.findIndex((b) => frame >= b.from && frame < b.from + b.frames);
   if (i < 0) i = beats.length - 1;
@@ -110,9 +115,9 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe }) => {
       </AbsoluteFill>
       <Vignette />
       <Grain />
-      {cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} />}
-      {timeline.captions && <Captions tl={timeline} frame={frame} groups={groups} scene={cur.scene} />}
-      {!hasEnd && frame >= timeline.durationInFrames - Math.round(fps * 1.4) && <DisclaimerLine tl={timeline} />}
+      {!cover && cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} />}
+      {!cover && timeline.captions && <Captions tl={timeline} frame={frame} groups={groups} scene={cur.scene} />}
+      {!cover && !hasEnd && frame >= timeline.durationInFrames - Math.round(fps * 1.4) && <DisclaimerLine tl={timeline} />}
       {probe && <LayoutProbe frame={frame} />}
     </AbsoluteFill>
   );

@@ -34,6 +34,10 @@ SET_RUN = 2
 SET_SHARE = {"short": 0.45, "long": 0.25}
 SIZES_NEEDED = {"short": 3, "long": 4}
 SHOT_SCENES = ("shot", "hook")
+# covers (owner, 2026-10-24: "the thumbnails look the same with different texts"): measured on the
+# real covers, the same layout with new words is 3-11 bits apart, different pictures 19 or more
+COVER_SAME_BITS = 12
+COVER_WINDOW = 6
 
 
 def empty_share(img: Image.Image) -> float:
@@ -113,3 +117,15 @@ def shot_problems(tl: dict) -> list[str]:
         if sets.count(top) / len(sets) > SET_SHARE[fmt]:
             out.append(f"set {top!r} in {sets.count(top)} of {len(sets)} shots (at most {SET_SHARE[fmt]:.0%})")
     return out
+
+
+def cover_problems(cover: Path, earlier: list[tuple[str, Path]]) -> list[str]:
+    """A cover that looks like one of the last COVER_WINDOW covers of its format (`earlier`: id, path)."""
+    if not cover.is_file():
+        return []
+    mine = dhash(Image.open(cover))
+    for vid, path in earlier[-COVER_WINDOW:]:
+        if path.is_file() and bin(mine ^ dhash(Image.open(path))).count("1") <= COVER_SAME_BITS:
+            return [f"the cover looks like {vid}'s: pick another frame (`thumbnail.at`) or layout, so the channel page "
+                    f"doesn't show the same picture twice"]
+    return []

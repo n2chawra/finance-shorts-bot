@@ -6,6 +6,8 @@ from PIL import Image
 
 from renderer import craft
 
+REPO = Path(__file__).resolve().parents[2]
+
 
 def flat(color=(230, 220, 200)) -> Image.Image:
     return Image.new("RGB", (540, 960), color)
@@ -60,3 +62,12 @@ def test_old_layouts_one_size_and_one_set_fail() -> None:
     problems = craft.shot_problems(tl(same))
     assert any("shot sizes" in p for p in problems) and any("four shots in a row" in p for p in problems)
     assert any("in a row" in p and "set" in p for p in problems) and any("without a close" in p for p in problems)
+
+
+def test_cover_gate_flags_the_same_layout_with_new_words():
+    from renderer.craft import cover_problems
+    v = REPO / "videos"
+    same = cover_problems(v / "v-20261023-02" / "thumbnail.png", [("v-20261023-01", v / "v-20261023-01" / "thumbnail.png")])
+    assert same and "v-20261023-01" in same[0]
+    other = cover_problems(v / "v-20261022-03" / "thumbnail.png", [("v-20261022-01", v / "v-20261022-01" / "thumbnail.png")])
+    assert other == []

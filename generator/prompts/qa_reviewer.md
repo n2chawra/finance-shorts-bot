@@ -33,7 +33,8 @@ own render checks it. You are checking what code cannot see.
    the first caption words count).
 7. **No disclaimer:** the last frame does not show "Illustrative only. Not financial advice." (a
    Short shows it as a small line over its last moments; a long video on its end card).
-8. **Thumbnail:** the thumbnail frame is empty or mid-transition.
+8. **Thumbnail:** the thumbnail frame is empty or mid-transition, the words cover a face or the
+   money object, or it looks like the covers of the last few videos (same picture, new words).
 9. **Code checks:** `layout_problems` is not empty, the length is outside the allowed range, or
    audio is off target (peak about −1 dB, mean about −18 dB).
 

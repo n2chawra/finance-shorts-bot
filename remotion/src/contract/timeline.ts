@@ -52,7 +52,12 @@ export const Thumbnail = z.object({
   // words alone, big; the default "card" is the older words + figure + character layout
   // "versus" (rich vs poor) and "secret" (what the rich know): the demand-first formats' covers
   // (compositions/ThumbFormats.tsx; 2026-10-21)
-  layout: z.enum(["card", "story", "versus", "secret"]).optional(),
+  // "scene" (default since 2026-10-24, owner: "the thumbnails look the same with different texts"):
+  // a frame of the video itself (its custom hook by default) under the big words and the figure, so
+  // every cover is a different picture in the channel's style (compositions/Thumbnail.tsx)
+  layout: z.enum(["card", "story", "versus", "secret", "scene"]).optional(),
+  at: z.string().optional(),          // scene: the beat whose frame is the picture (default: the first hook beat)
+  sec: z.number().min(0).optional(),  // scene: seconds into that beat on the story clock (default: near its end)
   who2: z.string().optional(),        // versus: the rich side's cast member (sharma by default)
   pose2: z.string().optional(),
   expression2: z.string().optional(),
