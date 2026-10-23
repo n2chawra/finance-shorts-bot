@@ -173,3 +173,11 @@ test("section tabs keep their labels on one line", async ({ page }) => {
     expect(clipped, `clipped tabs on ${path}`).toEqual([]);
   }
 });
+
+test("data audit badge counts in the right number", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/agents");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Agents/, { timeout: 30_000 });
+  // sample data has 0 errors and 1 warning; the badge once read "0 errors · 1 warnings"
+  await expect(page.getByText("0 errors · 1 warning", { exact: true })).toBeVisible();
+});
