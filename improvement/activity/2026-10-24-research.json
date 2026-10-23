@@ -1,0 +1,50 @@
+{
+  "agent": "research",
+  "day": "2026-10-24",
+  "startedAt": "2026-10-23T18:20:49Z",
+  "finishedAt": "2026-10-23T18:26:15Z",
+  "summary": "Saturday policy night: found YouTube's official rule against synthetic 'experts' giving finance advice and the confirmed Feb 2027 Shorts pay change; added 6 topics (5 global, incl. a trending billionaire-tax Short) and 2 proposals.",
+  "decision": "acted",
+  "why": "The monetization policy names 'AI-generated podcast hosts offering financial guidance' as not allowed, and our narrator is synthetic, so the writer rule is required (adopt). Our two best reset Shorts open on a claim; endings don't loop in picture; replays count as views.",
+  "findings": [
+    {
+      "title": "YouTube: no ads for synthetic hosts posing as finance experts",
+      "detail": "Official monetization policy lists content presenting 'itself as a human expert providing advice' on finances; proposal no-expert-persona (adopt).",
+      "link": "https://support.google.com/youtube/answer/1311392?hl=en"
+    },
+    {
+      "title": "Shorts revenue needs 10M Shorts views/90 days from 1 Feb 2027",
+      "detail": "New YPP applicants: 8,000 watch hours or 20M Shorts views; long videos keep earning below the Shorts bar. Owner info.",
+      "link": "https://blog.youtube/news-and-events/youtube-partner-program-updates-2027-new-opportunities-earn/"
+    },
+    {
+      "title": "Trend: California's one-time 5% billionaire tax on the 3 Nov ballot",
+      "detail": "Fed into the feed as a neutral billionaire_question Short, expires 27 Oct.",
+      "link": "https://en.wikipedia.org/wiki/2026_California_billionaire_tax_initiative"
+    },
+    {
+      "title": "Our endings don't loop in picture",
+      "detail": "v-20261022-01 holds a static close-up for its last 2.6 s; proposal loop-picture-matches-hook (experiment).",
+      "link": "https://www.shortimize.com/blog/youtube-shorts-retention-rate"
+    },
+    {
+      "title": "Claude Code 2.1.309",
+      "detail": "Sandbox and permission hardening; nothing for the pipeline to change.",
+      "link": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "6 topics, 2 proposals",
+      "detail": "topics.json +6; proposals no-expert-persona (adopt), loop-picture-matches-hook (experiment); claim-then-wait-what evidence updated",
+      "branch": "agent/research/2026-10-24"
+    }
+  ],
+  "nextCheck": "2026-10-25",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-24.md"
+    }
+  ]
+}

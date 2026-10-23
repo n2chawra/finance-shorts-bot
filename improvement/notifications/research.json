@@ -13,6 +13,13 @@
       "title": "Optional: listen to two better-rated voices for the narrator",
       "detail": "Kokoro's own grades: af_heart A, af_bella A-, bf_emma (British) B-, but am_michael, am_fenrir and am_puck only C+. Voices are picked by your ear, so research hasn't proposed a change.",
       "fix": "1. On your computer: bash scripts/setup-voice.sh, then make a short sample with bf_emma and am_michael (renderer/engine/voice.py speak_timed). 2. If you like one, ask the improver (or edit NARRATOR_VOICES in renderer/timeline/build.py) to add it. 3. Otherwise ignore this."
+    },
+    {
+      "key": "ypp-2027-shorts-threshold",
+      "severity": "info",
+      "title": "YouTube changes Shorts monetisation on 1 Feb 2027",
+      "detail": "YouTube's own blog (10 Aug 2026): from 1 Feb 2027 new Partner Program applicants need 8,000 watch hours in 365 days or 20 million Shorts views in 90 days, and Shorts ad/Premium revenue goes only to channels with 10 million Shorts views in the last 90 days. Channels below that keep long-video earnings. For us that means long videos are the realistic path to revenue; Shorts mainly grow the audience. Nothing changes in the pipeline.",
+      "fix": "1. Nothing to do now. 2. In YouTube Studio > Earn, check the current entry bar and whether the channel can apply before 1 Feb 2027. 3. If you want long videos weighted more, change longPerWeek in settings (owner-only). Source: https://blog.youtube/news-and-events/youtube-partner-program-updates-2027-new-opportunities-earn/"
     }
   ]
 }
