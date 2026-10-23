@@ -1,0 +1,377 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:03:44.924474+00:00",
+    "finishedAt": "2026-10-23T05:03:44.924474+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:07:36.696817+00:00",
+    "finishedAt": "2026-10-23T05:07:36.696817+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:07:41.422401+00:00",
+    "finishedAt": "2026-10-23T05:07:41.422401+00:00",
+    "notes": [
+      "beat 'c3-buy'.params.objects[0].amount: maths 'home' has no value or series 'amount'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:07:47.682033+00:00",
+    "finishedAt": "2026-10-23T05:07:47.682033+00:00",
+    "notes": [
+      "beat 'c3-buy'.params.objects[1].amount: maths 'mortgage' has no value or series 'amount'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:07:56.950061+00:00",
+    "finishedAt": "2026-10-23T05:07:56.950061+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:08:35.587036+00:00",
+    "finishedAt": "2026-10-23T05:08:35.587036+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:09:02.463581+00:00",
+    "finishedAt": "2026-10-23T05:09:02.463581+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:09:18.611540+00:00",
+    "finishedAt": "2026-10-23T05:09:18.611540+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:10:17.220551+00:00",
+    "finishedAt": "2026-10-23T05:10:17.220551+00:00",
+    "notes": [
+      "beat 'c5-close'.events.owns: no word 'owns' in this beat's spoken line"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:10:26.214656+00:00",
+    "finishedAt": "2026-10-23T05:10:26.214656+00:00",
+    "notes": [
+      "beat 'c5-close'.events.owns: no word 'owns' in this beat's spoken line"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:10:31.977258+00:00",
+    "finishedAt": "2026-10-23T05:10:31.977258+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:12:13.160291+00:00",
+    "finishedAt": "2026-10-23T05:12:13.160291+00:00",
+    "notes": [
+      "hook: 'Years later, his car is worth $15,530. Her house is worth $444,073.' sets the car at 5 years beside the house at 10 years as if it were the same moment, and states the house value as fact before the 4% assumption is given. Name both times (e.g. 'Five years on, his car is worth $15,530. Ten years on, her house could be worth $444,073') or compute the house at 5 years, and use 'could be' for the house",
+      "c1-value / c1-lost (and the hook): the car's value (-15% a year) is spoken as fact ('After five years, his is worth $15,530'). Topic verify item 2 requires it to be said as an assumption: say e.g. 'Cars often lose around 15% a year. Assume his does: after five years it's worth $15,530', and label the c1-value chart as assumed",
+      "c6-forever 'Most people always have a car payment', c6-keep 'the way most people keep a car payment', c5-tease 'most people carry it their whole lives': unsupported claims about most people. Change to 'many people'",
+      "plan.json description: 'six kinds of debt: a car loan, a credit card balance, a mortgage, a student loan, and the monthly payment that never ends' lists five. Make the count match the list (five), or name the sixth"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:10:35.030377+00:00",
+    "finishedAt": "2026-10-23T05:15:16.504885+00:00",
+    "notes": [
+      "text 'Auto loan' at 9.5 s runs outside the frame",
+      "text 'Same day' at 5.0 s runs outside the frame",
+      "text 'Loan' at 12.6 s is 27.9 px, below the 30 px minimum",
+      "text '$240,000' at 12.6 s is 26.7 px, below the 30 px minimum",
+      "text 'Rate' at 12.6 s is 27.9 px, below the 30 px minimum",
+      "text 'Monthly' at 50.4 s runs outside the frame",
+      "text 'Paid' at 57.1 s runs outside the frame",
+      "text '$45,424' at 57.1 s runs outside the frame",
+      "text 'Car now' at 71.6 s runs outside the frame",
+      "text '$15,530' at 71.6 s runs outside the frame",
+      "text 'Lost' at 71.6 s runs outside the frame",
+      "text '$19,470' at 71.6 s runs outside the frame",
+      "text 'Against you' at 82.2 s runs outside the frame",
+      "text 'Card' at 106.4 s runs outside the frame",
+      "text 'Jacket' at 106.4 s runs outside the frame",
+      "text 'Card statement' at 111.1 s runs outside the frame",
+      "text 'Minimum due' at 114.9 s runs outside the frame",
+      "text 'Pay the minimum?' at 114.9 s runs outside the frame",
+      "text 'Still owed' at 126.9 s runs outside the frame",
+      "text 'Borrowed' at 139.6 s runs outside the frame",
+      "text 'Paid in full' at 149.9 s runs outside the frame",
+      "text 'Mortgage' at 167.1 s runs outside the frame",
+      "text '$1,517' at 167.1 s runs outside the frame",
+      "text '360 months' at 167.1 s runs outside the frame",
+      "text \"Bank's interest\" at 179.5 s runs outside the frame",
+      "text 'Per year' at 216.4 s runs outside the frame",
+      "text 'Catch' at 221.9 s runs outside the frame",
+      "text 'Student loan' at 237.5 s runs outside the frame",
+      "text '$' at 254.8 s runs outside the frame",
+      "text 'Diploma' at 257.9 s runs outside the frame",
+      "text 'One question' at 283.6 s runs outside the frame",
+      "text 'Debt costs' at 291.4 s is 28.2 px, below the 30 px minimum",
+      "text 'Pay me?' at 288.0 s runs outside the frame",
+      "text 'Car loan' at 330.7 s runs outside the frame",
+      "text '$631' at 347.2 s runs outside the frame",
+      "text 'Approved!' at 347.2 s runs outside the frame",
+      "text 'Six years' at 358.9 s runs outside the frame",
+      "text 'Cheap?' at 386.7 s runs outside the frame",
+      "length 420 s is outside 480–900 s"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:18:16.026752+00:00",
+    "finishedAt": "2026-10-23T05:18:16.026752+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:18:28.209474+00:00",
+    "finishedAt": "2026-10-23T05:18:28.209474+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:18:44.721436+00:00",
+    "finishedAt": "2026-10-23T05:18:44.721436+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:19:20.944514+00:00",
+    "finishedAt": "2026-10-23T05:19:20.944514+00:00",
+    "notes": [
+      "love-debt: the on-screen stack shows {home_final} ($444,073) labelled 'Borrowed'. Nobody borrowed that: Priya borrowed $240,000 and $444,073 is the house's assumed value in 10 years. Change the label (e.g. 'House, assumed') or show {mortgage_amount} under 'Borrowed'",
+      "hook (picture): the voice is now right, but the card still shows 'Same day' with His car {carval_final} beside Her house {home_final} and no years or 'assumed'. Add the times to the figures (e.g. '5 yrs' / '10 yrs, assumed') so the picture matches the line ('could be')"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:18:56.701038+00:00",
+    "finishedAt": "2026-10-23T05:21:45.438454+00:00",
+    "notes": [
+      "text '$' at 290.0 s runs outside the frame",
+      "17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "length 479 s is outside 480–900 s"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:22:16.996345+00:00",
+    "finishedAt": "2026-10-23T05:22:16.996345+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:23:01.922271+00:00",
+    "finishedAt": "2026-10-23T05:23:01.922271+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:23:30.815594+00:00",
+    "finishedAt": "2026-10-23T05:23:30.815594+00:00",
+    "notes": [
+      "Third pass. No sourced facts. Every topic check-list item met: car depreciation (-15%/yr), 4% home growth and 8% market return said and shown as assumptions; 9% car, 22.8% card, 6.5% mortgage and 6.5% student loan are realistic (federal undergrad 6.52% for 2026-27). Hook gives both times, with 'assumed' on the house. love-debt label fixed. Wording is 'many people'. No advice (c5-yourself). Description says five debts and ends with the disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:23:10.522729+00:00",
+    "finishedAt": "2026-10-23T05:25:34.334749+00:00",
+    "notes": [
+      "text '$' at 294.5 s is 23.1 px, below the 30 px minimum",
+      "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:26:04.974655+00:00",
+    "finishedAt": "2026-10-23T05:26:04.974655+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:26:10.200274+00:00",
+    "finishedAt": "2026-10-23T05:28:26.085955+00:00",
+    "notes": [
+      "499 s, ocean/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:28:37.782242+00:00",
+    "finishedAt": "2026-10-23T05:28:37.782242+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:28:38.760933+00:00",
+    "finishedAt": "2026-10-23T05:30:54.002625+00:00",
+    "notes": [
+      "499 s, ocean/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:33:13.369924+00:00",
+    "finishedAt": "2026-10-23T05:33:13.369924+00:00",
+    "notes": [
+      "[scene] 0.0s, beat hook (remotion/src/videos/L-20261023-01/Hook.tsx): the first frame is pure black with only the caption 'SAME DAY,'. At t=0 both halves are translated fully off screen (inL/inR=0), and the tags and the 'Same day' stamp are at opacity 0, so there is no hook picture, number or question on frame 0. Start the halves on screen (or show the stamp or a figure tag at t=0).",
+      "[script] 350.0s, beat c5-card: the phone line label 'Market, assumed' runs into its value '8%', so the two texts overlap and both are unreadable. Shorten the label (e.g. 'Market*' or 'Fund').",
+      "[script] 365.0s, beat c5-house: same overlap. The phone line label 'Home, assumed' runs into its value '4%'. Shorten the label (e.g. 'Home').",
+      "[script] 200.0s, beat c3-honest: an empty vault with no cast and no object (the 'Bank's interest' stack only arrives at 'collects'), about 2 s of background only. Add an actor (Priya or Rohan) or bring the stack in at start.",
+      "[script] 280.0s, beat c4-cost: an empty vault with no cast and no object until the word 'interest' (the stack arrives at 'interest'), so it shows background only while '$341 a month' is said. Add an actor or show an object (a phone with the payment) from the start. c6-reveal (437.9s) uses the same empty-vault pattern for the video's biggest number; give it a character reacting too.",
+      "[script] 155.0s, beat c2-line: the pen 'underline' (y 0.9, red) draws a flat red line along the bottom of the chart in the same colour as the balance series. It underlines nothing and reads as a second data line or a chart glitch. Drop it, or point it at the '15 years' callout."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:33:50.747498+00:00",
+    "finishedAt": "2026-10-23T05:33:50.747498+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:33:56.965339+00:00",
+    "finishedAt": "2026-10-23T05:36:22.454468+00:00",
+    "notes": [
+      "499 s, ocean/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-23T05:37:34.340467+00:00",
+    "finishedAt": "2026-10-23T05:37:34.340467+00:00",
+    "notes": [
+      "[script] Characters with half their face cut off at the frame edge, where the camera is 'medium' on a phone object and the actor stands at spot left/right: 10.0s sign-car (Rohan, left edge), 120.0s c2-bal (Rohan, left edge, one eye showing), 345.0s c5-compare (Priya, left edge, one eye showing), 365.0s c5-house (Priya, right edge, one eye showing), 410.0s c6-new (Rohan, left edge). Frame these shots on 'all' (or a wider size), or move the actor toward centre, so the face is fully in frame.",
+      "[script] 350.0s, beat c5-card: the phone title 'Market: assumed' is wider than the phone's header bar. It spills past the blue header onto the bezel on both sides ('M' and 'd' sit on the frame). Use a shorter title (e.g. 'Assumed', or 'Per year' with an asterisk). 365.0s c5-house 'Home: assumed' just fits."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:38:05.733348+00:00",
+    "finishedAt": "2026-10-23T05:38:05.733348+00:00",
+    "notes": [
+      "67 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:38:06.829324+00:00",
+    "finishedAt": "2026-10-23T05:40:33.539186+00:00",
+    "notes": [
+      "499 s, ocean/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:41:26.480644+00:00",
+    "finishedAt": "2026-10-23T05:41:26.480644+00:00",
+    "notes": [
+      "All 101 stills reviewed (0-498.7s). The hook opens on the full split picture with the $35,000/$300,000 tags. Phone shots keep faces in frame, phone titles '*Assumed' fit with no label/value overlap, no empty frames, chart clean. Disclaimer on the end card. layout/craft problems empty, 499s, peak -1.0 dB, mean -16.6 dB. Thumbnails readable and on-promise."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-23T05:41:37.598420+00:00",
+    "finishedAt": "2026-10-23T06:05:09.143562+00:00",
+    "notes": [
+      "499 s, ocean/cinematic, peak -1.0 dB, mean -16.6 dB"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-23T06:05:17.579865+00:00",
+    "finishedAt": "2026-10-23T06:05:17.579865+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-23T06:05:21.865986+00:00",
+    "finishedAt": "2026-10-23T06:05:21.865986+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

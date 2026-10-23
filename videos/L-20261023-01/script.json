@@ -1,0 +1,7634 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "id": "L-20261023-01",
+  "seed": 73418,
+  "title": "Why the rich borrow money and the poor pay it back",
+  "story": "rich_vs_poor",
+  "feed_id": "2026-10-23-rich-borrow-poor-save",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92
+  },
+  "maths": [
+    {
+      "name": "car",
+      "kind": "emi",
+      "amount": 35000,
+      "rate_pct": 9,
+      "years": 6
+    },
+    {
+      "name": "carval",
+      "kind": "lumpsum",
+      "amount": 35000,
+      "rate_pct": -15,
+      "years": 5
+    },
+    {
+      "name": "carloss",
+      "kind": "compare",
+      "a": "carval.invested",
+      "b": "carval.final"
+    },
+    {
+      "name": "card",
+      "kind": "card_min_due",
+      "amount": 5000,
+      "rate_pct_month": 1.9,
+      "min_due_pct": 3,
+      "min_due_floor": 35
+    },
+    {
+      "name": "home",
+      "kind": "lumpsum",
+      "amount": 300000,
+      "rate_pct": 4,
+      "years": 10
+    },
+    {
+      "name": "mortgage",
+      "kind": "emi",
+      "amount": 240000,
+      "rate_pct": 6.5,
+      "years": 30
+    },
+    {
+      "name": "school",
+      "kind": "emi",
+      "amount": 30000,
+      "rate_pct": 6.5,
+      "years": 10
+    },
+    {
+      "name": "six",
+      "kind": "sip",
+      "monthly": 631,
+      "rate_pct": 8,
+      "years": 6
+    },
+    {
+      "name": "life",
+      "kind": "sip",
+      "monthly": 631,
+      "rate_pct": 8,
+      "years": 30
+    }
+  ],
+  "thumbnail": {
+    "layout": "story",
+    "angle": "warning",
+    "hero": "car",
+    "tag": "A month",
+    "small": "{car_emi}",
+    "to": "Really costs",
+    "figure": "{car_total_paid}",
+    "who": "rohan",
+    "pose": "worried",
+    "expression": "shock",
+    "words": "Your car loan trap"
+  },
+  "thumbnails": [
+    {
+      "layout": "versus",
+      "angle": "versus",
+      "who": "rohan",
+      "pose": "worried",
+      "expression": "worried",
+      "prop": "card",
+      "who2": "priya",
+      "pose2": "thumbsUp",
+      "expression2": "proud",
+      "tag": "Card interest",
+      "small": "{card_interest}",
+      "to": "House growth, assumed",
+      "figure": "{home_gains}",
+      "words": "Good debt vs *bad*"
+    },
+    {
+      "layout": "secret",
+      "angle": "question",
+      "who": "sharma",
+      "pose": "hips",
+      "expression": "smirk",
+      "tag": "You pay",
+      "figure": "{car_interest}",
+      "to": "Assumed gain",
+      "small": "{home_gains}",
+      "words": "Their debt *works*"
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "speaker": "narrator",
+      "say": "Same day, two loans. Five years on, his car is worth {carval_final}. Ten years on, her house could be worth {home_final}.",
+      "events": {
+        "same": {
+          "word": "Same"
+        },
+        "car": {
+          "word": "car"
+        },
+        "house": {
+          "word": "house"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        },
+        {
+          "kind": "fail",
+          "at": "car",
+          "gain": 0.6
+        },
+        {
+          "kind": "kaching",
+          "at": "house"
+        }
+      ],
+      "params": {
+        "stamp": "Same day",
+        "left": "His car, five years on",
+        "right": "Her house, ten years on",
+        "note": "assumed",
+        "leftFig": "{carval_final}",
+        "rightFig": "{home_final}",
+        "leftFrom": "{car_amount}",
+        "rightFrom": "{home_amount}",
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sign-car",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "I just signed for my dream car. Only {car_emi} a month!",
+      "events": {
+        "only": {
+          "word": "Only"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "only"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "happy",
+                "prop": "phone"
+              },
+              {
+                "at": "only",
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "loan",
+            "spot": "right",
+            "title": "Auto loan",
+            "figure": "{car_emi}",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Price",
+                "value": "{car_amount}"
+              },
+              {
+                "label": "Rate",
+                "value": "{car_rate}"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "loan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sign-house",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "And I signed for a mortgage. Thirty years of payments. Ugh.",
+      "events": {
+        "ugh": {
+          "word": "Ugh"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        },
+        {
+          "kind": "tick",
+          "at": "ugh"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              },
+              {
+                "at": "ugh",
+                "pose": "facepalm",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "mort",
+            "spot": "right",
+            "title": "Mortgage",
+            "figure": "{mortgage_emi}",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Loan",
+                "value": "{mortgage_amount}"
+              },
+              {
+                "label": "Rate",
+                "value": "{mortgage_rate}"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "mort"
+          }
+        ]
+      }
+    },
+    {
+      "id": "both",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Both of them borrowed. But only one of them borrowed the way the rich do.",
+      "events": {
+        "rich": {
+          "word": "rich"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "rich"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "rich",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "rich",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "love-debt",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "People think the rich hate debt. We love it. We just never use it the way you do.",
+      "events": {
+        "love": {
+          "word": "love"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "love",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "love",
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "gold",
+            "spot": "right",
+            "amount": "@home.final",
+            "text": "{home_final}",
+            "label": "House, assumed",
+            "at": "love",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "So here are five kinds of debt you are likely to carry, the one question that sorts good from bad, and why the most expensive loan is the one that looks cheapest.",
+      "events": {
+        "question": {
+          "word": "question"
+        },
+        "cheapest": {
+          "word": "cheapest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "question"
+        },
+        {
+          "kind": "boom",
+          "at": "cheapest",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "neutral"
+              },
+              {
+                "at": "cheapest",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "question",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "cheapest",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch1",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Debt one",
+        "title": "The car loan"
+      }
+    },
+    {
+      "id": "c1-price",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Rohan's car costs {car_amount}. The bank lends him all of it, at {car_rate} a year, for six years.",
+      "events": {
+        "lends": {
+          "word": "lends"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "lends"
+        },
+        {
+          "kind": "clink",
+          "at": "lends",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy"
+              },
+              {
+                "at": "lends",
+                "pose": "thumbsUp",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "price",
+            "spot": "right",
+            "amount": "@carloss.a",
+            "text": "{carloss_a}",
+            "label": "Borrowed",
+            "at": "lends",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-afford",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "And the payment is just {car_emi}. I can totally afford that.",
+      "events": {
+        "afford": {
+          "word": "afford"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "afford"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "happy",
+                "prop": "phone"
+              },
+              {
+                "at": "afford",
+                "pose": "hips",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "afford",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-howlong",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Just? Rohan, how long is just?",
+      "events": {
+        "long": {
+          "word": "long"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "long"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "long",
+                "pose": "pointUp",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "happy",
+                "prop": "phone"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "long",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-mine",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Six years. And then it's all mine. Everyone I know has a car loan anyway.",
+      "events": {
+        "everyone": {
+          "word": "Everyone"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "everyone"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "happy"
+              },
+              {
+                "at": "everyone",
+                "pose": "shrug",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "everyone",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-uncle",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Everybody can afford the payment, beta. Ask what the car costs you.",
+      "events": {
+        "costs": {
+          "word": "costs"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "costs"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk"
+              },
+              {
+                "at": "costs",
+                "pose": "point",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "costs",
+            "size": "extreme",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-broke",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Yes. And everyone you know says they are broke.",
+      "events": {
+        "broke": {
+          "word": "broke"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "broke",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "broke",
+                "pose": "shrug",
+                "expression": "laugh"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "confused"
+              },
+              {
+                "at": "broke",
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "broke",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-only",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Rohan isn't foolish. The monthly payment is the only number anyone ever showed him.",
+      "events": {
+        "showed": {
+          "word": "showed"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "showed"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "neutral",
+                "prop": "phone"
+              },
+              {
+                "at": "showed",
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "showed",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-dealer",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "The dealer shows him a shiny car and one small monthly number. Here's what that number hides.",
+      "events": {
+        "hides": {
+          "word": "hides"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "hides",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "happy",
+                "prop": "phone"
+              },
+              {
+                "at": "hides",
+                "pose": "stand",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "hides",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-total",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "{car_months} payments of {car_emi} add up to {car_total_paid}. And {car_interest} of that is pure interest.",
+      "events": {
+        "pure": {
+          "word": "pure"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.3
+        },
+        {
+          "kind": "boom",
+          "at": "pure",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "paid",
+            "spot": "left",
+            "amount": "@car.total_paid",
+            "text": "{car_total_paid}",
+            "label": "Paid",
+            "at": "start",
+            "tone": "bad"
+          },
+          {
+            "kind": "stack",
+            "id": "int",
+            "spot": "right",
+            "amount": "@car.interest",
+            "text": "{car_interest}",
+            "label": "Interest",
+            "at": "pure",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-fine",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Okay, some interest. But at least I own a really nice car now.",
+      "events": {
+        "own": {
+          "word": "own"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "own"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "neutral"
+              },
+              {
+                "at": "own",
+                "pose": "celebrate",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "own",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-value",
+      "scene": "screen",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "A car starts losing value the day it leaves the lot. Assume it loses fifteen percent a year. After five years, his is worth {carval_final}.",
+      "events": {
+        "loses": {
+          "word": "loses"
+        },
+        "worth": {
+          "word": "worth"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        },
+        {
+          "kind": "fail",
+          "at": "worth",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "world": "office",
+        "city": "newyork",
+        "title": "Car value, assumed",
+        "series": "@carval.value",
+        "label1": "Car value",
+        "callouts": [
+          {
+            "x": 1.0,
+            "text": "{carval_final}",
+            "at": "worth"
+          }
+        ],
+        "pen": [
+          {
+            "kind": "arrow",
+            "x": 0.15,
+            "y": 0.2,
+            "x2": 0.85,
+            "y2": 0.75,
+            "color": "bad",
+            "at": "loses"
+          }
+        ],
+        "presenter": {
+          "who": "priya",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "aim",
+              "expression": "thinking",
+              "prop": "pointer"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c1-half",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "So after five years, he has paid a lot, and he owns a car worth less than half its price. Here is the damage.",
+      "events": {
+        "half": {
+          "word": "half"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "half",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "half",
+                "pose": "worried",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "half",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-lost",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "He borrowed {carloss_a}. The car has already lost {carloss_diff} of it.",
+      "events": {
+        "lost": {
+          "word": "lost"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "lost",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried"
+              },
+              {
+                "at": "lost",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "carnow",
+            "spot": "center",
+            "amount": "@carval.final",
+            "text": "{carval_final}",
+            "label": "Car now",
+            "at": "start",
+            "tone": "bad"
+          },
+          {
+            "kind": "stack",
+            "id": "gone",
+            "spot": "right",
+            "amount": "@carloss.diff",
+            "text": "{carloss_diff}",
+            "label": "Lost",
+            "at": "lost",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-shrink",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "So the loan bought something that shrinks. And he pays interest the whole time it shrinks.",
+      "events": {
+        "shrinks": {
+          "word": "shrinks"
+        },
+        "interest": {
+          "word": "interest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "shrinks"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              },
+              {
+                "at": "shrinks",
+                "pose": "point",
+                "expression": "neutral"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "interest",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-wait",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Wait. I'm paying the bank to watch my car get cheaper?",
+      "events": {
+        "cheaper": {
+          "word": "cheaper"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "cheaper",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              },
+              {
+                "at": "cheaper",
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "cheaper",
+            "size": "close",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-against",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Exactly. That is debt working against you. Every month, a little more of your pay walks out the door.",
+      "events": {
+        "against": {
+          "word": "against"
+        },
+        "walks": {
+          "word": "walks"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "walks",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "neutral"
+              },
+              {
+                "at": "walks",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "walks",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-need",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "But I need a car to get to work.",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "sec": 1.0,
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-that",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Sure. But needing a car and needing that car are two very different things.",
+      "events": {
+        "that": {
+          "word": "that"
+        },
+        "different": {
+          "word": "different"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "different"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "that",
+                "pose": "point",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "different",
+            "size": "extreme",
+            "on": "priya"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-rule",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "That's the first difference. The poor borrow for things that lose value. The rich borrow for things that gain it.",
+      "events": {
+        "poor": {
+          "word": "poor"
+        },
+        "rich": {
+          "word": "rich"
+        },
+        "gain": {
+          "word": "gain"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "poor",
+          "gain": 0.4
+        },
+        {
+          "kind": "ding",
+          "at": "gain"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "sad"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "gain",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "rich",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "gain",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-cash",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Rich people buy cars too. Usually with money they've already made, and often a cheaper car than they could afford.",
+      "events": {
+        "cheaper": {
+          "word": "cheaper"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "cheaper"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "cheaper",
+                "pose": "thumbsUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "cheaper",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-tease",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "And a car loan, at least, ends. The next debt can follow you for {card_years} years.",
+      "events": {
+        "follow": {
+          "word": "follow"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.3
+        },
+        {
+          "kind": "boom",
+          "at": "follow",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "neutral",
+                "prop": "phone"
+              },
+              {
+                "at": "follow",
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "follow",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch2",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Debt two",
+        "title": "The card balance"
+      }
+    },
+    {
+      "id": "c2-start",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "It started with one dinner he couldn't quite afford. Then a jacket on sale. Then a trip with friends.",
+      "events": {
+        "dinner": {
+          "word": "dinner"
+        },
+        "jacket": {
+          "word": "jacket"
+        },
+        "trip": {
+          "word": "trip"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "beep",
+          "at": "dinner"
+        },
+        {
+          "kind": "beep",
+          "at": "jacket"
+        },
+        {
+          "kind": "beep",
+          "at": "trip"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "happy",
+                "prop": "phone"
+              },
+              {
+                "at": "jacket",
+                "pose": "celebrate",
+                "expression": "laugh"
+              },
+              {
+                "at": "trip",
+                "pose": "phone",
+                "expression": "worried",
+                "prop": "phone"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "jacket",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          },
+          {
+            "at": "trip",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-bal",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Rohan's card has a balance of {card_amount}. The interest rate is {card_rate_year} a year.",
+      "events": {
+        "rate": {
+          "word": "rate"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "beep",
+          "at": "start"
+        },
+        {
+          "kind": "pop",
+          "at": "rate"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "neutral",
+                "prop": "phone"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "stmt",
+            "spot": "right",
+            "title": "Card statement",
+            "figure": "{card_amount}",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Rate",
+                "value": "{card_rate_year}",
+                "at": "rate"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "stmt"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-min",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "No problem. The app says I only have to pay {card_min_due} this month.",
+      "events": {
+        "only": {
+          "word": "only"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "only"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "happy",
+                "prop": "phone"
+              },
+              {
+                "at": "only",
+                "pose": "thumbsUp",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "mini",
+            "spot": "right",
+            "title": "Minimum due",
+            "figure": "{card_min_due}",
+            "at": "only",
+            "toasts": [
+              {
+                "text": "Pay the minimum?",
+                "at": "only"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "mini"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-ontime",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "But I pay every single month. I'm never late!",
+      "events": {
+        "late": {
+          "word": "late"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "late"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "proud"
+              },
+              {
+                "at": "late",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "late",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-fees",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Paying on time keeps the late fees away. It doesn't touch the interest.",
+      "events": {
+        "interest": {
+          "word": "interest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "interest"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "neutral"
+              },
+              {
+                "at": "interest",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "interest",
+            "size": "medium",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-slice",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "The minimum is a small slice of the balance. At first, most of it goes straight to interest.",
+      "events": {
+        "interest": {
+          "word": "interest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "interest",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              },
+              {
+                "at": "interest",
+                "pose": "point",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "interest",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-kind",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "A low minimum feels kind. But the longer you take to pay, the more interest the bank earns.",
+      "events": {
+        "earns": {
+          "word": "earns"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "earns",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              },
+              {
+                "at": "earns",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "earns",
+            "size": "medium",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-bucket",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Picture a bucket with a hole. He pours in {card_min_due} a month, and interest leaks most of it straight back out.",
+      "events": {
+        "pours": {
+          "word": "pours"
+        },
+        "leaks": {
+          "word": "leaks"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "pours",
+          "gain": 0.4
+        },
+        {
+          "kind": "fail",
+          "at": "leaks",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried"
+              },
+              {
+                "at": "leaks",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "leaks",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-year",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "After a whole year of payments, he still owes {card_owed_year1}.",
+      "events": {
+        "owes": {
+          "word": "owes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "start"
+        },
+        {
+          "kind": "boom",
+          "at": "owes",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "owes",
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "owed",
+            "spot": "right",
+            "amount": "@card.owed_year1",
+            "text": "{card_owed_year1}",
+            "label": "Still owed",
+            "at": "owes",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-movie",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "I have seen this film before. It runs for {card_years} years.",
+      "events": {
+        "runs": {
+          "word": "runs"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "runs"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "neutral"
+              },
+              {
+                "at": "runs",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "runs",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-line",
+      "scene": "screen",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Paying only the minimum, his balance crawls toward zero for {card_years} years.",
+      "events": {
+        "crawls": {
+          "word": "crawls"
+        },
+        "years": {
+          "word": "years"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        },
+        {
+          "kind": "tick",
+          "at": "years"
+        }
+      ],
+      "params": {
+        "world": "office",
+        "city": "newyork",
+        "title": "Paying only the minimum",
+        "series": "@card.balance",
+        "label1": "Balance",
+        "callouts": [
+          {
+            "x": 0.08,
+            "text": "{card_amount}",
+            "at": "start"
+          },
+          {
+            "x": 1.0,
+            "text": "{card_years} years",
+            "at": "years"
+          }
+        ],
+        "presenter": {
+          "who": "rohan",
+          "acting": [
+            {
+              "sec": 0,
+              "pose": "worried",
+              "expression": "worried"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2-kids",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "{card_years} years? I'll have kids in school by then!",
+      "events": {
+        "school": {
+          "word": "school"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "school",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "shock"
+              },
+              {
+                "at": "school",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "school",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-total",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "The interest alone adds up to {card_interest}. More than the whole balance he borrowed.",
+      "events": {
+        "more": {
+          "word": "More"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.3
+        },
+        {
+          "kind": "boom",
+          "at": "more",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "borrowed",
+            "spot": "left",
+            "amount": "@card.amount",
+            "text": "{card_amount}",
+            "label": "Borrowed",
+            "at": "start"
+          },
+          {
+            "kind": "stack",
+            "id": "cardint",
+            "spot": "right",
+            "amount": "@card.interest",
+            "text": "{card_interest}",
+            "label": "Interest",
+            "at": "more",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-dinners",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "So the card bought dinners and a jacket. And he's still paying for them years later.",
+      "events": {
+        "still": {
+          "word": "still"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "still"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "neutral"
+              },
+              {
+                "at": "still",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "still",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-jacket",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "The jacket is already out of fashion!",
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "start",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-full",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Rich people use cards too. They pay the full statement every month, and the bank earns nothing from them in interest.",
+      "events": {
+        "full": {
+          "word": "full"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "full"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "smirk",
+                "prop": "phone"
+              },
+              {
+                "at": "full",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "full",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-recap",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "So that's two debts. A car that shrinks and a card that never ends. Next, the debt the rich actually like.",
+      "events": {
+        "next": {
+          "word": "Next"
+        },
+        "like": {
+          "word": "like"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "next",
+          "gain": 0.4
+        },
+        {
+          "kind": "ding",
+          "at": "like"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "like",
+                "pose": "thumbsUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "like",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch3",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Debt three",
+        "title": "The house"
+      }
+    },
+    {
+      "id": "c3-buy",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Priya buys a home for {home_amount}. She puts some savings down, and borrows {mortgage_amount}.",
+      "events": {
+        "borrows": {
+          "word": "borrows"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        },
+        {
+          "kind": "clink",
+          "at": "borrows",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "borrows",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "house",
+            "spot": "right",
+            "amount": "@home.invested",
+            "text": "{home_amount}",
+            "label": "Home",
+            "at": "start"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-thirty",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Thirty years at {mortgage_rate}. That's {mortgage_emi} every month. A lot of payments.",
+      "events": {
+        "every": {
+          "word": "every"
+        },
+        "lot": {
+          "word": "lot"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "beep",
+          "at": "every"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "thinking",
+                "prop": "phone"
+              },
+              {
+                "at": "lot",
+                "pose": "shrug",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "every",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-rent",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Why didn't she just keep renting? No mortgage, no stress.",
+      "events": {
+        "stress": {
+          "word": "stress"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "stress"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "neutral"
+              },
+              {
+                "at": "stress",
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "stress",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-rentans",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Rent buys me a place to live this month. A mortgage payment also buys me a little more of the house.",
+      "events": {
+        "more": {
+          "word": "more"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "more"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "more",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "more",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-honest",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Here's the honest number first. Over thirty years, the bank collects {mortgage_interest} in interest.",
+      "events": {
+        "honest": {
+          "word": "honest"
+        },
+        "collects": {
+          "word": "collects"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.3
+        },
+        {
+          "kind": "boom",
+          "at": "collects",
+          "gain": 0.7
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "collects",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "mint",
+            "spot": "right",
+            "amount": "@mortgage.interest",
+            "text": "{mortgage_interest}",
+            "label": "Bank's interest",
+            "at": "start",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-more",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "That's way more interest than my car! So she's worse off than me?",
+      "events": {
+        "worse": {
+          "word": "worse"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "worse"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "shock"
+              },
+              {
+                "at": "worse",
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "worse",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-diff",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Not so fast. Look at what her loan bought.",
+      "events": {
+        "bought": {
+          "word": "bought"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "bought"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk"
+              },
+              {
+                "at": "bought",
+                "pose": "present",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "bought",
+            "size": "extreme",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-assume",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Assume homes in her town grow {home_rate} a year. That's an assumption, not a promise.",
+      "events": {
+        "assumption": {
+          "word": "assumption"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "assumption"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "thinking"
+              },
+              {
+                "at": "assumption",
+                "pose": "think",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "assumption",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-final",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Ten years later, her house could be worth {home_final}.",
+      "events": {
+        "worth": {
+          "word": "worth"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.3
+        },
+        {
+          "kind": "kaching",
+          "at": "worth"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "homenow",
+            "spot": "center",
+            "amount": "@home.final",
+            "text": "{home_final}",
+            "label": "House",
+            "at": "worth",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-could",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Could be? So it might not be?",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "sec": 1.0,
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-couldans",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Could be. That's the honest word. Nobody knows what house prices will do next.",
+      "events": {
+        "honest": {
+          "word": "honest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "honest"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "neutral"
+              },
+              {
+                "at": "honest",
+                "pose": "stand",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "honest",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-gain",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "That's {home_gains} more than the price. And that growth is mine, not the bank's.",
+      "events": {
+        "mine": {
+          "word": "mine"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "start"
+        },
+        {
+          "kind": "pop",
+          "at": "mine"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              },
+              {
+                "at": "mine",
+                "pose": "hips",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "gain",
+            "spot": "right",
+            "amount": "@home.gains",
+            "text": "{home_gains}",
+            "label": "Growth",
+            "at": "start",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-lever",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "The bank gets its interest. She gets the growth on the whole house, not just on the part she paid.",
+      "events": {
+        "whole": {
+          "word": "whole"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "whole"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "whole",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "speech",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "whole",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-leverage",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That's called leverage. Borrow most of the price, and the whole thing grows for you.",
+      "events": {
+        "leverage": {
+          "word": "leverage"
+        },
+        "grows": {
+          "word": "grows"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "leverage",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "grows",
+                "pose": "stand",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "grows",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-signed",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Notice what each of them signed for. Rohan, a car that loses value every year. Priya, a house that can gain value.",
+      "events": {
+        "Rohan": {
+          "word": "Rohan"
+        },
+        "gain": {
+          "word": "gain"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "Rohan",
+          "gain": 0.3
+        },
+        {
+          "kind": "kaching",
+          "at": "gain"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "sad"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "gain",
+                "pose": "celebrate",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "Rohan",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          },
+          {
+            "at": "gain",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-second",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Here's the second difference. The rich borrow at low rates. The poor borrow at high ones.",
+      "events": {
+        "low": {
+          "word": "low"
+        },
+        "high": {
+          "word": "high"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "low"
+        },
+        {
+          "kind": "fail",
+          "at": "high",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk"
+              },
+              {
+                "at": "low",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "high",
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "low",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "high",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-cheapmoney",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "And she pays {mortgage_rate}, while his card charges {card_rate_year}. Cheap money is the rich person's favourite tool.",
+      "events": {
+        "pays": {
+          "word": "pays"
+        },
+        "charges": {
+          "word": "charges"
+        },
+        "tool": {
+          "word": "tool"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pays"
+        },
+        {
+          "kind": "fail",
+          "at": "charges",
+          "gain": 0.4
+        },
+        {
+          "kind": "ding",
+          "at": "tool"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "tool",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "pair",
+            "spot": "right",
+            "title": "Per year",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Mortgage",
+                "value": "{mortgage_rate}",
+                "at": "pays"
+              },
+              {
+                "label": "Card",
+                "value": "{card_rate_year}",
+                "at": "charges"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "pair"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-backed",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Banks charge less when a loan is backed by something valuable, like a house.",
+      "events": {
+        "house": {
+          "word": "house"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "house"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "house",
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "house",
+            "size": "extreme",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-mycar",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "And my card is backed by... a jacket.",
+      "events": {
+        "jacket": {
+          "word": "jacket"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "jacket",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "jacket",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "jacket",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-catch",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "The catch: a house also costs taxes, insurance and repairs. And prices can fall. In some years, they did.",
+      "events": {
+        "catch": {
+          "word": "catch"
+        },
+        "fall": {
+          "word": "fall"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "catch"
+        },
+        {
+          "kind": "fail",
+          "at": "fall",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "worried"
+              },
+              {
+                "at": "fall",
+                "pose": "worried",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "fall",
+            "size": "extreme",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-notfree",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "So a house can make you richer. But it's not free money.",
+      "events": {
+        "free": {
+          "word": "free"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "free"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "free",
+                "pose": "point",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "free",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-question",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Right. The question is never the monthly payment. It's what the loan buys.",
+      "events": {
+        "buys": {
+          "word": "buys"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "buys"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "neutral"
+              },
+              {
+                "at": "buys",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "buys",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-ride",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "His car payment buys a ride. My mortgage payment buys a roof, and a little more of the house every month.",
+      "events": {
+        "roof": {
+          "word": "roof"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "roof"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "roof",
+                "pose": "hips",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "roof",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3-tease",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "And the next loan doesn't buy a thing you can touch at all. It buys a skill.",
+      "events": {
+        "skill": {
+          "word": "skill"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.3
+        },
+        {
+          "kind": "pop",
+          "at": "skill"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "confused"
+              },
+              {
+                "at": "skill",
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "skill",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch4",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Debt four",
+        "title": "The skill loan"
+      }
+    },
+    {
+      "id": "c4-loan",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Priya's cousin borrows {school_amount} for a degree, at {school_rate}, over ten years.",
+      "events": {
+        "degree": {
+          "word": "degree"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "beep",
+          "at": "start"
+        },
+        {
+          "kind": "pop",
+          "at": "degree"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "thinking",
+                "prop": "phone"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "study",
+            "spot": "right",
+            "title": "Student loan",
+            "figure": "{school_amount}",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Rate",
+                "value": "{school_rate}",
+                "at": "degree"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "study"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-cost",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That's {school_emi} a month, and {school_interest} in interest.",
+      "events": {
+        "interest": {
+          "word": "interest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "start"
+        },
+        {
+          "kind": "boom",
+          "at": "interest",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "thinking",
+                "prop": "phone"
+              },
+              {
+                "at": "interest",
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "sint",
+            "spot": "right",
+            "amount": "@school.interest",
+            "text": "{school_interest}",
+            "label": "Interest",
+            "at": "start",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-same",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "About the same interest as Rohan's car loan. But a very different bet.",
+      "events": {
+        "bet": {
+          "word": "bet"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "bet"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "neutral"
+              },
+              {
+                "at": "bet",
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "bet",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-another",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "So it's just another loan, like my car.",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "sec": 1.2,
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-depends",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "It depends on one thing. What does the course do to the salary?",
+      "events": {
+        "salary": {
+          "word": "salary"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "salary"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "thinking"
+              },
+              {
+                "at": "salary",
+                "pose": "point",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "pay",
+            "spot": "right",
+            "title": "Payslip",
+            "at": "salary",
+            "toasts": [
+              {
+                "text": "Salary?",
+                "at": "salary"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "pay"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-pays",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "If the degree lifts her pay by more than {school_emi} a month, the loan pays for itself, and then some.",
+      "events": {
+        "pays": {
+          "word": "pays"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "pays"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "pays",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "pays",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-diploma",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "And if it doesn't, it's a car loan with a diploma.",
+      "events": {
+        "diploma": {
+          "word": "diploma"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "diploma",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "diploma",
+                "pose": "shrug",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "diploma",
+            "size": "extreme",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-steal",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "A car loan with a diploma. Okay, I'm stealing that one.",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "sec": 1.4,
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-asked",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "Before I signed anything, I asked what people with that degree actually earn.",
+      "events": {
+        "earn": {
+          "word": "earn"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "earn"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "thinking",
+                "prop": "phone"
+              },
+              {
+                "at": "earn",
+                "pose": "present",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "earn",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-never",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Rohan took an online course once too. He never asked what it would pay him back.",
+      "events": {
+        "never": {
+          "word": "never"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "never",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy"
+              },
+              {
+                "at": "never",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "never",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-answer",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "If a course can't tell you what its students go on to earn, that's your answer.",
+      "events": {
+        "answer": {
+          "word": "answer"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "answer"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk"
+              },
+              {
+                "at": "answer",
+                "pose": "hips",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "answer",
+            "size": "medium",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-which",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "What course was it, Rohan?",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "sec": 1.2,
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-rich-from-home",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "How to get rich from home. It had really good reviews.",
+      "events": {
+        "reviews": {
+          "word": "reviews"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "reviews",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "happy"
+              },
+              {
+                "at": "reviews",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "reviews",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-self",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "The skill loan is the one rich people take most happily: a loan on themselves. But only when the numbers say it pays.",
+      "events": {
+        "numbers": {
+          "word": "numbers"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "numbers"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "proud"
+              },
+              {
+                "at": "numbers",
+                "pose": "pointUp",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "numbers",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-repo",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "A skill can't be repossessed, and it can't lose value sitting in a parking lot.",
+      "events": {
+        "parking": {
+          "word": "parking"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "parking"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy"
+              },
+              {
+                "at": "parking",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "parking",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-check",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "So before the next course, I check what it pays first. Got it.",
+      "events": {
+        "first": {
+          "word": "first"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "first"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "first",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "first",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-good",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Good. That one habit puts you ahead before you borrow a cent.",
+      "events": {
+        "ahead": {
+          "word": "ahead"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "ahead"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "ahead",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "ahead",
+            "size": "medium",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-recap",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "So that's four debts. Two bought things that shrink. Two bought things that can grow.",
+      "events": {
+        "shrink": {
+          "word": "shrink"
+        },
+        "grow": {
+          "word": "grow"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "shrink",
+          "gain": 0.4
+        },
+        {
+          "kind": "ding",
+          "at": "grow"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "sad"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "happy"
+              },
+              {
+                "at": "grow",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "shrink",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          },
+          {
+            "at": "grow",
+            "size": "medium",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4-tease",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Next, the one question that sorts every loan you will ever take.",
+      "events": {
+        "question": {
+          "word": "question"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.3
+        },
+        {
+          "kind": "boom",
+          "at": "question",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "question",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch5",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "The test",
+        "title": "The one question"
+      }
+    },
+    {
+      "id": "c5-ask",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Before any loan, I ask one thing. Does it pay me, or do I pay it?",
+      "events": {
+        "pay": {
+          "word": "pay"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "pay"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "neutral"
+              },
+              {
+                "at": "pay",
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "pay",
+            "size": "extreme",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-compare",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "So compare two numbers. What the debt costs a year, and what the money could earn a year.",
+      "events": {
+        "costs": {
+          "word": "costs"
+        },
+        "earn": {
+          "word": "earn"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "costs"
+        },
+        {
+          "kind": "pop",
+          "at": "earn"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              },
+              {
+                "at": "earn",
+                "pose": "point",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "cmp",
+            "spot": "right",
+            "title": "Cost vs earn",
+            "at": "costs",
+            "lines": [
+              {
+                "label": "Debt costs",
+                "value": null,
+                "at": "costs"
+              },
+              {
+                "label": "Money earns",
+                "value": null,
+                "at": "earn"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "cmp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-card",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Rohan's card costs {card_rate_year} a year. Assume a broad stock market fund returns {six_rate} a year over the long run.",
+      "events": {
+        "costs": {
+          "word": "costs"
+        },
+        "assume": {
+          "word": "Assume"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "costs",
+          "gain": 0.5
+        },
+        {
+          "kind": "pop",
+          "at": "assume"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "rates",
+            "spot": "center",
+            "title": "*Assumed",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Card",
+                "value": "{card_rate_year}",
+                "at": "costs"
+              },
+              {
+                "label": "Market*",
+                "value": "{six_rate}",
+                "at": "assume"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rates"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-earning",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "Paying off that card is like earning {card_rate_year} on your money. No fund promises you that.",
+      "events": {
+        "promises": {
+          "word": "promises"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "promises"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "neutral"
+              },
+              {
+                "at": "promises",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "promises",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-best",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "So clearing my card is the best deal I've got?",
+      "events": {
+        "best": {
+          "word": "best"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "best"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              },
+              {
+                "at": "best",
+                "pose": "celebrate",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "best",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-rich",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "That's why rich people rarely carry a card balance. That debt only ever pays the bank.",
+      "events": {
+        "pays": {
+          "word": "pays"
+        },
+        "bank": {
+          "word": "bank"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "pays",
+          "gain": 0.4
+        },
+        {
+          "kind": "fail",
+          "at": "bank",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "bank",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "bank",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-house",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Her mortgage costs {mortgage_rate}. Her home, if it grows {home_rate} a year, gives her growth on the whole price.",
+      "events": {
+        "costs": {
+          "word": "costs"
+        },
+        "grows": {
+          "word": "grows"
+        },
+        "whole": {
+          "word": "whole"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "costs"
+        },
+        {
+          "kind": "ding",
+          "at": "whole"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.55,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "whole",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "mrates",
+            "spot": "left",
+            "title": "*Assumed",
+            "at": "start",
+            "lines": [
+              {
+                "label": "Mortgage",
+                "value": "{mortgage_rate}",
+                "at": "costs"
+              },
+              {
+                "label": "Home*",
+                "value": "{home_rate}",
+                "at": "grows"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "mrates"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-close",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "On paper, the interest costs her a bit more than the growth. But she also gets a place to live, and a fixed payment that does not rise with rent.",
+      "events": {
+        "live": {
+          "word": "live"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "live"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "thinking"
+              },
+              {
+                "at": "live",
+                "pose": "hips",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "live",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-runall",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Now run every loan through that one question.",
+      "events": {
+        "question": {
+          "word": "question"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.3
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "neutral"
+              },
+              {
+                "at": "question",
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "speech",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "question",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-list",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Card: I pay it. Car: I pay it. Her house: it can pay her. The degree: it depends.",
+      "events": {
+        "house": {
+          "word": "house"
+        },
+        "depends": {
+          "word": "depends"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "start",
+          "gain": 0.3
+        },
+        {
+          "kind": "ding",
+          "at": "house"
+        },
+        {
+          "kind": "tick",
+          "at": "depends"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "house",
+                "pose": "point",
+                "expression": "neutral"
+              },
+              {
+                "at": "depends",
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "depends",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-test",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "If the borrowed money earns more than its rate, the debt works for you. If not, you work for the debt.",
+      "events": {
+        "works": {
+          "word": "works"
+        },
+        "work": {
+          "word": "work"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "works"
+        },
+        {
+          "kind": "fail",
+          "at": "work",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "work",
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "works",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "works",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "work",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-car",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "And Rohan's car loan? It costs {car_rate} a year, for a thing that loses value every year. It fails the question twice.",
+      "events": {
+        "twice": {
+          "word": "twice"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "twice",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "neutral",
+                "prop": "phone"
+              },
+              {
+                "at": "twice",
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "carrates",
+            "spot": "right",
+            "title": "Car loan",
+            "figure": "{car_rate}",
+            "at": "start",
+            "toasts": [
+              {
+                "text": "Fails twice",
+                "at": "twice"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "carrates"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-rule",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "So here's most of the rule. Cheap debt, for things that can grow. No debt, for things that shrink.",
+      "events": {
+        "rule": {
+          "word": "rule"
+        },
+        "grow": {
+          "word": "grow"
+        },
+        "shrink": {
+          "word": "shrink"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "grow"
+        },
+        {
+          "kind": "fail",
+          "at": "shrink",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "shrink",
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "grow",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "grow",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "shrink",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-what",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "So what should I do with my card right now?",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "worried",
+                "prop": "phone"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "sec": 1.2,
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-yourself",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "We don't tell anyone what to do. But you can run the question yourself, on every loan you have.",
+      "events": {
+        "yourself": {
+          "word": "yourself"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "yourself"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "yourself",
+                "pose": "point",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "yourself",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5-tease",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "But there's one debt that looks cheaper than all of them. And many people carry it their whole lives.",
+      "events": {
+        "lives": {
+          "word": "lives"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.3
+        },
+        {
+          "kind": "boom",
+          "at": "lives",
+          "gain": 0.6
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "neutral",
+                "prop": "phone"
+              },
+              {
+                "at": "lives",
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "lives",
+            "size": "extreme",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch6",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Debt five",
+        "title": "The forever payment"
+      }
+    },
+    {
+      "id": "c6-done",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Six years later, Rohan finally pays off the car. So what does he do next?",
+      "events": {
+        "next": {
+          "word": "next"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "start"
+        },
+        {
+          "kind": "tick",
+          "at": "next"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              },
+              {
+                "at": "next",
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "next",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-new",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "New car! Same payment, new smell.",
+      "events": {
+        "smell": {
+          "word": "smell"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "smell"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "happy",
+                "prop": "phone"
+              },
+              {
+                "at": "smell",
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "loan",
+            "spot": "right",
+            "title": "Auto loan",
+            "figure": "{car_emi}",
+            "at": "start",
+            "toasts": [
+              {
+                "text": "Approved!",
+                "at": "smell"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "loan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-forever",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Many people always have a car payment. One loan ends, and the next one starts.",
+      "events": {
+        "starts": {
+          "word": "starts"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "starts",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "neutral"
+              },
+              {
+                "at": "starts",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "speech",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "starts",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-what",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "So what if the same {car_emi} went into investments instead, every month?",
+      "events": {
+        "instead": {
+          "word": "instead"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "instead",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "thinking"
+              },
+              {
+                "at": "instead",
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "instead",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-forrich",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Investments? Isn't that only for people who are already rich?",
+      "events": {
+        "rich": {
+          "word": "rich"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rich"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "rich",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-become",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "It's how a lot of people become rich. Slowly, with ordinary amounts like this one.",
+      "events": {
+        "slowly": {
+          "word": "Slowly"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "slowly"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "slowly",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "slowly",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-six",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "At an assumed {six_rate} a year, six years of that payment grows to {six_final}.",
+      "events": {
+        "grows": {
+          "word": "grows"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "grows"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "grows",
+                "pose": "stand",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "sixst",
+            "spot": "right",
+            "amount": "@six.final",
+            "text": "{six_final}",
+            "label": "Six years",
+            "at": "grows",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-one",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "And that is from just one car.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "sec": 1.0,
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-more",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "That's more than the whole car cost me!",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "sec": 1.4,
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-keep",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Now keep it going for thirty years, the way many people keep a car payment.",
+      "events": {
+        "thirty": {
+          "word": "thirty"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "thirty",
+                "pose": "stand",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "thirty",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-howmuch",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Okay. How much are we talking?",
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "sec": 1.0,
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-reveal",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Thirty years of that payment, invested, becomes {life_final}.",
+      "events": {
+        "becomes": {
+          "word": "becomes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "start",
+          "gain": 0.5
+        },
+        {
+          "kind": "boom",
+          "at": "becomes",
+          "gain": 0.8
+        },
+        {
+          "kind": "kaching",
+          "at": "becomes"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "becomes",
+                "pose": "stand",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "life",
+            "spot": "right",
+            "amount": "@life.final",
+            "text": "{life_final}",
+            "label": "Thirty years",
+            "at": "start",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-why",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Not because the payment was big. Because it never stopped, and it had thirty years to grow.",
+      "events": {
+        "stopped": {
+          "word": "stopped"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "stopped",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "stopped",
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "stopped",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-split",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "He would have put in {life_invested}. The other {life_gains} is growth.",
+      "events": {
+        "put": {
+          "word": "put"
+        },
+        "growth": {
+          "word": "growth"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "put"
+        },
+        {
+          "kind": "kaching",
+          "at": "growth"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "put",
+            "spot": "left",
+            "amount": "@life.invested",
+            "text": "{life_invested}",
+            "label": "Put in",
+            "at": "put"
+          },
+          {
+            "kind": "stack",
+            "id": "growth",
+            "spot": "right",
+            "amount": "@life.gains",
+            "text": "{life_gains}",
+            "label": "Growth",
+            "at": "growth",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-ordinary",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "And that's with no stock tips and no luck. Just a payment that stayed home every month.",
+      "events": {
+        "home": {
+          "word": "home"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "home"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "home",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "home",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-cheap",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "That is the payment people call cheap.",
+      "events": {
+        "cheap": {
+          "word": "cheap"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "cheap",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "cheap",
+                "pose": "shrug",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "cheap",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-driveway",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "All of that, parked in my driveway.",
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "start",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-fair",
+      "scene": "shot",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "To be fair, you still need a car. But a cheaper one, kept longer, frees up most of that payment.",
+      "events": {
+        "frees": {
+          "word": "frees"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "frees"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "frees",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "sad"
+              },
+              {
+                "at": "frees",
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "frees",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-honest",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "And markets don't go up in a straight line. {six_rate} is an assumption, and some years will be down.",
+      "events": {
+        "down": {
+          "word": "down"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "down"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "down",
+                "pose": "think",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "down",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-scooter",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "At your age, I rode a scooter, not a new car. And every month, I paid myself the car payment instead.",
+      "events": {
+        "myself": {
+          "word": "myself"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "myself"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "smirk"
+              },
+              {
+                "at": "myself",
+                "pose": "present",
+                "expression": "proud"
+              }
+            ]
+          },
+          {
+            "who": "rohan",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "myself",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-penthouse",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Wait. Is that why you live in a penthouse?",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "sec": 1.5,
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-patience",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "That, and a lot of patience.",
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "sharma"
+          },
+          {
+            "sec": 1.2,
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-recap",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "So, five debts. A car and a card that shrink. A house and a skill that can grow. And a payment that never ends.",
+      "events": {
+        "shrink": {
+          "word": "shrink"
+        },
+        "grow": {
+          "word": "grow"
+        },
+        "ends": {
+          "word": "ends"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "shrink",
+          "gain": 0.3
+        },
+        {
+          "kind": "ding",
+          "at": "grow"
+        },
+        {
+          "kind": "boom",
+          "at": "ends",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "sad"
+              },
+              {
+                "at": "grow",
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "neutral"
+              },
+              {
+                "at": "grow",
+                "pose": "celebrate",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "shrink",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          },
+          {
+            "at": "grow",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "ends",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-rule",
+      "scene": "shot",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "So here is how the rich borrow. Cheap money, for things that pay them back.",
+      "events": {
+        "back": {
+          "word": "back"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "back"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "back",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "back",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-next",
+      "scene": "shot",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Okay. Next car: a cheaper one, and I keep it longer.",
+      "events": {
+        "longer": {
+          "word": "longer"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "longer"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "longer",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "longer",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6-poor",
+      "scene": "shot",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "And the poor borrow expensive money for things that don't. Does your loan pay you, or do you pay it?",
+      "events": {
+        "loan": {
+          "word": "loan"
+        },
+        "you": {
+          "word": "you"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "loan",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "thinking",
+                "prop": "phone"
+              },
+              {
+                "at": "you",
+                "pose": "point",
+                "expression": "neutral"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "loan",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "transition": "fade",
+      "say": "Our maths is simplified: before tax, fees and upkeep, with assumed growth rates. Good debt or bad debt? Tell us which one you have.",
+      "params": {
+        "cta": "Good debt or bad debt? Tell us which one you have",
+        "follow": "Follow Paisa Panchayat",
+        "assumption": "Assumes car loan {car_rate}, car value {carval_rate} a year, card {card_rate_year} paying the minimum, homes {home_rate} a year, market {six_rate} a year; before tax, fees and upkeep."
+      }
+    }
+  ],
+  "narrator": "af_bella"
+}
