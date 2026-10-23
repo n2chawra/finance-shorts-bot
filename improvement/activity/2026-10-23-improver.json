@@ -1,0 +1,60 @@
+{
+  "agent": "improver",
+  "day": "2026-10-23",
+  "startedAt": "2026-10-23T00:47:42Z",
+  "finishedAt": "2026-10-23T00:57:39Z",
+  "summary": "Adopted four fixes (three distinct Test & Compare thumbnails with versus and secret documented, no unplannable formats offered to the planner, a prop figure hidden until its cue, vault and receipt figures kept visible) and started one long-video experiment, chart-gap-fill.",
+  "decision": "acted",
+  "why": "Four Scout/research adopt items (two high) with QA evidence from L-20261021-01 and earlier long videos; chart-gap-fill was the top template/high item waiting since 10-21. All three running experiments are still waiting for data (0 videos per arm with 48 h data).",
+  "findings": [
+    {
+      "title": "12 Shorts have 48 h data",
+      "detail": "No experiment arm has data yet: quiet-bed 0/4 long per arm, hook-voice-matches-frame and title-names-the-moment 0/8 per arm."
+    },
+    {
+      "title": "Hook style",
+      "detail": "shock_number 1.54× median 48 h views (n=3, 35.0% viewed), question 1.00× (n=3), myth 0.62× (n=4)."
+    },
+    {
+      "title": "Length",
+      "detail": "35-39 s Shorts 1.35× (46.2% viewed, n=3); 50-54 s 0.46× (22.7%, n=3)."
+    },
+    {
+      "title": "Stories",
+      "detail": "No format has 3+ Shorts with 48 h data yet, so no format was retired."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Three different thumbnail pictures",
+      "detail": "check_script rejects two Test & Compare covers with the same layout (and story hero); long_story README documents versus and secret.",
+      "branch": "agent/improver/2026-10-23",
+      "experiment": "thumbs-three-pictures"
+    },
+    {
+      "title": "Formats below the demand floor hidden",
+      "detail": "state leaves out a format with no 100K+ reference video (cost_of_habit today); check-plan says why.",
+      "branch": "agent/improver/2026-10-23",
+      "experiment": "formats-demand-floor"
+    },
+    {
+      "title": "Prop figure hidden until its cue",
+      "detail": "No more ₹0 on screen while the voice says the figure.",
+      "branch": "agent/improver/2026-10-23",
+      "experiment": "prop-figure-hidden-until-cue"
+    },
+    {
+      "title": "Vault and receipt figures visible",
+      "detail": "Vault figure on a plaque above the door; receipt total above the caption band, top clear of the kicker. Stills checked long and Short.",
+      "branch": "agent/improver/2026-10-23",
+      "experiment": "vault-receipt-figures-clear"
+    },
+    {
+      "title": "Started chart-gap-fill",
+      "detail": "Long videos: a two-line chart shades the gap and pops a chip with its computed figure (half the videos). Judged on % viewed, 4 per arm, up to 42 days.",
+      "branch": "agent/improver/2026-10-23",
+      "experiment": "chart-gap-fill"
+    }
+  ],
+  "nextCheck": "2026-10-24"
+}

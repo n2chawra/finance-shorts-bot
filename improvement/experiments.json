@@ -256,6 +256,82 @@
       "description": "render_timeline empties work/stills and work/probe before rendering.",
       "evidence": "Scout (21 Oct): after L-20261021-01 got 30 s longer, preview.png still showed an end card from the earlier render and the probe kept 19 stale frames. Checked: a planted stale still is gone after a re-render.",
       "commits": []
+    },
+    {
+      "id": "thumbs-three-pictures",
+      "proposal": "2026-10-22-thumbs-one-layout",
+      "area": "thumbnail",
+      "status": "adopted",
+      "startedAt": "2026-10-23",
+      "templates": [
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "check_script rejects two Test & Compare thumbnails with the same layout (and, for `story`, the same hero); long_story README documents the versus and secret layouts (also 2026-10-22-thumb-layouts-undocumented).",
+      "evidence": "Scout (22 Oct): all three thumbnails of L-20261019-01/-02 and L-20261021-01 were layout story with one hero; YouTube's Test & Compare help says variants must be meaningfully different or the test ends inconclusive. Worked when thumbWinner is set (not inconclusive) for most long videos after 14 days.",
+      "commits": []
+    },
+    {
+      "id": "formats-demand-floor",
+      "proposal": "formats-below-demand-floor",
+      "area": "pipeline",
+      "status": "adopted",
+      "startedAt": "2026-10-23",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "state no longer offers a format whose best example is under MIN_VIEWS (100,000); check-plan names why a plan in one fails.",
+      "evidence": "Research (23 Oct): cost_of_habit's only example is our own Short at 284 views, so any plan in it failed demand.views.",
+      "commits": []
+    },
+    {
+      "id": "prop-figure-hidden-until-cue",
+      "proposal": "2026-10-21-prop-zero-countup",
+      "area": "motion",
+      "status": "adopted",
+      "startedAt": "2026-10-23",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "Prop scene: a counted figure (`value`) is hidden until its `at`, not shown as 0; on the video's first frame it shows in full.",
+      "evidence": "Studio QA, L-20261021-01: tag/cheque/stack showed ₹0 for up to 6.5 s while the voice said the figure. Stills: vault with at 'out' shows nothing, then counts up.",
+      "commits": []
+    },
+    {
+      "id": "vault-receipt-figures-clear",
+      "proposal": "2026-10-21-vault-hides-figure",
+      "area": "motion",
+      "status": "adopted",
+      "startedAt": "2026-10-23",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "Vault figure on a plaque above the door (gold bars inside); receipt shorter (top -0.72 s, 1.05 s tall) so its total lands above the caption band and its top clears a kicker (also 2026-10-21-receipt-in-caption-band).",
+      "evidence": "Studio QA, L-20261021-01: the opened door hid ₹2,40,000 / ₹18,211 / ₹64.0 L; the receipt total sat under the captions. Stills long and Short: figures fully visible, layout gate clean.",
+      "commits": []
+    },
+    {
+      "id": "chart-gap-fill",
+      "proposal": "2026-10-21-chart-gap-fill",
+      "area": "motion",
+      "format": "long",
+      "status": "running",
+      "startedAt": "2026-10-23",
+      "templates": [
+        "long_story"
+      ],
+      "share": 0.5,
+      "guard": "qa_failures",
+      "minPerArm": 4,
+      "maxDays": 42,
+      "description": "Two-line charts shade the gap up to the drawing head and pop a chip with the gap's computed figure at `gap.at` (default: when the lines finish).",
+      "hypothesis": "Rich vs poor and early vs late chapters are about the gap; showing and naming it raises average % viewed of long videos."
     }
   ]
 }
