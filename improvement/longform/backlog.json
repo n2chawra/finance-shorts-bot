@@ -631,6 +631,61 @@
       "priority": "low",
       "found": "2026-10-23",
       "status": "open"
+    },
+    {
+      "id": "2026-10-23-shot-close-crops-tags",
+      "kind": "bug",
+      "title": "Long shots: a close or medium camera on a stack or phone pushes its tag off the frame",
+      "detail": "First long video on the shot system (L-20261023-01): close shots on a stack (tag sits above the stack top) and close or moving shots in a beat with a phone made the layout probe fail 30+ texts as 'runs outside the frame'. Studio worked around it: phone beats use one medium key on the phone, stack beats stay wide, close-ups only on actor-only beats. Fix in remotion/src/studio/shot.tsx: frame a stack on its tag (not the top + 80 px), and keep every money tag inside the frame when the camera targets an object.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-23-shot-phone-text-small-wide",
+      "kind": "bug",
+      "title": "Long shots: phone text is below 30 px in a wide shot",
+      "detail": "PhoneApp is drawn 280 px wide in 16:9 (380 in a Short), so its lines are ~28 px at camera scale 1 and fail the 30 px minimum; labels over ~9 characters also run into their value ('Market, assumed' / '8%'). Make the long phone wider (~360 px) and let labels wrap or truncate.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-23-shot-word-drop-offframe",
+      "kind": "bug",
+      "title": "Long shots: the drop-in `word` starts above the frame",
+      "detail": "The shot `word` sits at top h*0.1 (108 px) and drops in from translateY(-260 px), so the probe fails it as off-frame when sampled during the drop (7 words in L-20261023-01). Studio dropped all `word`s from the video. Fix: start the drop from inside the frame on the long format (or shorter drop).",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-23-shot-flow-glyph-small",
+      "kind": "bug",
+      "title": "Long shots: flying notes' sign glyph is 20 px",
+      "detail": "MoneyFlow notes are 100 px wide in 16:9, so the '$' on each note measures ~20-23 px and fails the probe in wide shots (and runs off-frame in close ones). Studio removed all flows. Fix: mark the note glyph data-probe=\"skip\" (decoration) or draw it as a path.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-23-shot-phone-actor-edge",
+      "kind": "bug",
+      "title": "Script rule: in a phone beat the actor stands near the phone, not on the far spot",
+      "detail": "A medium shot framed on a phone at the right spot crops an actor at the left spot in half (QA, 5 beats). Put the actor at 0.45 (phone right) or 0.55 (phone left).",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-23",
+      "status": "open"
     }
   ]
 }
