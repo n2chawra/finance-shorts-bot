@@ -126,7 +126,7 @@ icon (`{icon: "!" | "?" | "$" | "idea"}`) beside the character's head for about 
 | `snowball` | a snowball rolling and growing downhill | `label`, `tick` |
 | `calendar` | a calendar flipping months | `pages`?, `loops` (number or `@x.years`), `label`, `labelAt`, `sub`, `subAt` |
 | `split` | two figures side by side, counting up | `left`/`right` {label, text, value, at} |
-| `chart` | lines drawing themselves, with marks | `series`, `series2`, `ticks`, `xticks`, `xLabel`, `label1`, `label2`, `marks` [{x, text, at}], `drawFrom`, `drawTo` |
+| `chart` | lines drawing themselves, with marks | `series`, `series2`, `ticks`, `xticks`, `xLabel`, `label1`, `label2`, `marks` [{x, text, at}], `drawFrom`, `drawTo`, `gap`? {text: "{name.key}", at?}: when the two lines are two paths for the same money, name the distance between them with one computed figure (a `compare` or `gains` key, e.g. "{gap.diff} more"); half the videos shade the gap and pop this chip at its end (experiment `chart-gap-fill`), so always give it on a two-line chart |
 | `towers` | **avoid** (owner, 2026-10-19: bars are basic): compare with `fork` instead | `title`, `items` [{label, text, value, at, color: danger/good}] |
 | `checklist` | steps ticking off, active one highlighted | `title`, `items` [{text, icon: autopay/emi/debit/check}], `active`, `actor` |
 | `end` | the CTA, the cast, the assumption and the disclaimer | `cta`, `follow`, `assumption` |
