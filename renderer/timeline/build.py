@@ -145,7 +145,7 @@ def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float
     if isinstance(w, int):
         if not words:
             return speech_start
-        i = max(0, min(len(words) - 1, w))
+        i = max(0, min(len(words) - 1, w if w >= 0 else len(words) + w))   # -1 is the last word
         return speech_start + words[i][1]
     if isinstance(w, str):
         target = w.lower().strip(".,!?")
@@ -153,7 +153,7 @@ def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float
             if text.lower().strip(".,!?;:\"'") == target:
                 return speech_start + a
         raise ValueError(f"{where}: no word {w!r} in this beat's line")
-    if spec.get("end"):
+    if "end" in spec:
         return max(0.0, duration - float(spec["end"])/tempo)
     raise ValueError(f"{where}: an event is {{'word': n}}, {{'word': 'text'}}, {{'sec': x}} or {{'end': x}}")
 

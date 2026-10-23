@@ -54,7 +54,7 @@
       "id": "ren-003",
       "kind": "bug",
       "title": "Zero amounts give bare ZeroDivisionError / math domain error",
-      "detail": "lumpsum/sip/card_min_due with amount 0 (ratio = final/0, nice_axis(0)) fail with an unhelpful message instead of a writer-facing one. Writer error only; validate inputs > 0 in maths.compute.",
+      "detail": "lumpsum/sip/card_min_due with amount 0 (ratio = final/0, nice_axis(0)) fail with an unhelpful message instead of a writer-facing one. Writer error only; validate inputs > 0 in maths.compute. Also (2026-10-24): loan_prepay at 0% interest and income_tax_bands with income 0 divide by zero, in renderer/models/maths.py and generator/numbers.py alike. Unlikely inputs; a clear ValueError would do.",
       "files": [
         "renderer/models/maths.py",
         "renderer/engine/formatting.py"
@@ -73,7 +73,8 @@
       ],
       "severity": "low",
       "found": "2026-10-18",
-      "status": "open"
+      "status": "fixed",
+      "fixed": "2026-10-23"
     },
     {
       "id": "ren-q01",
@@ -160,6 +161,235 @@
       ],
       "severity": "low",
       "found": "2026-10-20",
+      "status": "fixed",
+      "fixed": "2026-10-23"
+    },
+    {
+      "id": "gen-003",
+      "kind": "bug",
+      "title": "Usable feed topics hidden behind blocked ones",
+      "detail": "topics.for_state showed the first 8 open topics by priority; when they were all in blocked categories, usable ones further down never reached the planner. Usable topics are now listed first. Null expires/found in the feed no longer crash state.",
+      "files": [
+        "generator/topics.py"
+      ],
+      "severity": "medium",
+      "found": "2026-10-23",
+      "status": "fixed",
+      "fixed": "2026-10-23"
+    },
+    {
+      "id": "dui-001",
+      "kind": "bug",
+      "title": "Mark-uploaded stretches run durations to days",
+      "detail": "The manual_upload AgentRun shares the video id, so the Runs page duration and the Agents page video-run clusters ran from 04:07 to the moment the owner marked it uploaded. Fixed: runEndMs ignores it; getAgents excludes it.",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts",
+        "apps/dashboard/src/lib/autopilot.db.ts",
+        "apps/dashboard/src/lib/run-span.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-10-23",
+      "status": "fixed",
+      "fixed": "2026-10-23"
+    },
+    {
+      "id": "dui-002",
+      "kind": "bug",
+      "title": "Analytics Avg viewed counted fresh videos as 0%",
+      "detail": "Videos with only live counters (no Analytics rows yet) entered the channel mean at 0%. Fixed with meanViewPct.",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts",
+        "apps/dashboard/src/lib/totals.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-10-23",
+      "status": "fixed",
+      "fixed": "2026-10-23"
+    },
+    {
+      "id": "dui-003",
+      "kind": "bug",
+      "title": "Week-over-week change biased down",
+      "detail": "Overview and Analytics compare the last 7 days with the 7 before, but Analytics runs 1-2 days behind, so the last days are 0 and flat traffic shows about -20%. Fix: drop trailing days after the latest day with a VideoStat row.",
+      "files": [
+        "apps/dashboard/src/app/page.tsx",
+        "apps/dashboard/src/app/analytics/page.tsx"
+      ],
+      "severity": "medium",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-004",
+      "kind": "bug",
+      "title": "Settings row labels click their first button",
+      "detail": "Row renders a <label>; clicking the Upload days text toggles Sun, clicking the Trend slots text adds a slot. Fix: Row as <div> for multi-control rows. The file holds owner-only schedule lines, so the guard may block an agent edit; may need the owner.",
+      "files": [
+        "apps/dashboard/src/app/settings/page.tsx"
+      ],
+      "severity": "medium",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-005",
+      "kind": "bug",
+      "title": "Saving settings can undo a change made elsewhere",
+      "detail": "Save sends the whole form, reverting a proposal approval or pause toggle made from another page while the form had unsaved edits. Fix: send only changed keys. Same guard caveat as dui-004.",
+      "files": [
+        "apps/dashboard/src/app/settings/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-006",
+      "kind": "bug",
+      "title": "Calendar hides planned slots while uploads are paused",
+      "detail": "Paused is the manual-posting mode, where the slots matter most. Same guard caveat.",
+      "files": [
+        "apps/dashboard/src/app/calendar/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-007",
+      "kind": "bug",
+      "title": "Made today / Daily output count long videos against the Shorts target",
+      "detail": "app/page.tsx counts all video runs; needs the format on Run.",
+      "files": [
+        "apps/dashboard/src/app/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-008",
+      "kind": "bug",
+      "title": "Overview backlog days mix Shorts and long videos",
+      "detail": "Divides all queued videos by the daily Short slots; should use runway('short') from posting-plan.ts.",
+      "files": [
+        "apps/dashboard/src/app/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-009",
+      "kind": "bug",
+      "title": "Video page shows global queue number for long videos",
+      "detail": "queue # uses the global queuePosition; the queue page numbers each format separately.",
+      "files": [
+        "apps/dashboard/src/app/videos/[id]/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-010",
+      "kind": "bug",
+      "title": "Videos search box keeps a cleared query",
+      "detail": "q state isn't synced with the URL; navigating to /videos keeps the old text.",
+      "files": [
+        "apps/dashboard/src/app/videos/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-011",
+      "kind": "bug",
+      "title": "Sign-out unhandled rejection",
+      "detail": "await fetch without catch; on a network error the redirect never runs. try/finally.",
+      "files": [
+        "apps/dashboard/src/components/nav.tsx",
+        "apps/dashboard/src/components/command.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-q01",
+      "kind": "quality",
+      "title": "Step timeline copied between Runs and video page",
+      "detail": "app/runs/page.tsx and app/videos/[id]/page.tsx render the same step list; one component.",
+      "files": [
+        "apps/dashboard/src/app/runs/page.tsx",
+        "apps/dashboard/src/app/videos/[id]/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-q02",
+      "kind": "quality",
+      "title": "IST day helper written five ways",
+      "detail": "istDayOf (slots.ts, posting-plan.ts), istDay (format.ts, store.db.ts), dayFmt (run-times.ts): one helper in format.ts.",
+      "files": [
+        "apps/dashboard/src/lib"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "dui-q03",
+      "kind": "quality",
+      "title": "Overview hardcodes the daily target",
+      "detail": "DAILY_TARGET = 3 in app/page.tsx instead of settings; TAB/WEEKDAYS constants duplicated across pages.",
+      "files": [
+        "apps/dashboard/src/app/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-10-23",
+      "status": "open"
+    },
+    {
+      "id": "wrk-004",
+      "kind": "bug",
+      "title": "Watchdog counted the owner's dashboard actions as part of a video run",
+      "detail": "workers/watchdog.ts scheduleCheck clustered every AgentRun with a video from the last 30 h. Marking a video uploaded, editing or removing it logs a manual_* step hours later, so the main run looked like it ran from 04:07 to the time of the click, raising a false 'A routine overran its slot' warning. videoSteps() in workers/lib/schedule.ts now drops them (the dashboard's AFTER_RUN list).",
+      "files": [
+        "workers/watchdog.ts",
+        "workers/lib/schedule.ts",
+        "workers/tests/schedule.test.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-10-24",
+      "status": "fixed"
+    },
+    {
+      "id": "dsh-003",
+      "kind": "bug",
+      "title": "Editing or removing a video stretched its run on the Runs page",
+      "detail": "apps/dashboard/src/lib/run-span.ts AFTER_RUN listed only manual_upload; the newer manual_edit and manual_remove steps (store.db.ts) stretched the run's duration the same way. Added both.",
+      "files": [
+        "apps/dashboard/src/lib/run-span.ts",
+        "workers/tests/dashboard-run-span.test.ts"
+      ],
+      "severity": "low",
+      "found": "2026-10-24",
+      "status": "fixed"
+    },
+    {
+      "id": "ren-005",
+      "kind": "bug",
+      "title": "Cover and frame gates open images without closing them",
+      "detail": "renderer/craft.py frame_problems and cover_problems call Image.open per still without closing. Harmless at today's still counts; worth a `with` if long videos grow their contact sheets.",
+      "files": [
+        "renderer/craft.py"
+      ],
+      "severity": "low",
+      "found": "2026-10-24",
       "status": "open"
     }
   ]

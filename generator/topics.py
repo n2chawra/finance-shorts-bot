@@ -58,7 +58,7 @@ def used_ids(entries: list[dict]) -> set[str]:
 def why_unavailable(topic: dict, entries: list[dict], today: str) -> str | None:
     if topic.get("status", "new") != "new":
         return f"its status is {topic.get('status')!r}"
-    if topic.get("expires", "9999-12-31") < today:
+    if (topic.get("expires") or "9999-12-31") < today:
         return f"it expired on {topic['expires']}"
     if topic["id"] in used_ids(entries):
         return "an earlier video already used it"
@@ -80,15 +80,18 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
               fmt: str = "short") -> dict:
     """What `state` tells the planner: the open topics, best first (`required` is always None now)."""
     open_ = [t for t in of_format(load(root, fmt), fmt) if why_unavailable(t, entries, today) is None]
-    open_.sort(key=lambda t: t.get("found", ""), reverse=True)   # newest first within a priority (stable sorts)
+    open_.sort(key=lambda t: t.get("found") or "", reverse=True)   # newest first within a priority (stable sorts)
     open_.sort(key=lambda t: PRIORITIES.index(t["priority"]) if t.get("priority") in PRIORITIES else len(PRIORITIES) - 1)
     usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed)]
     # offered first, and it still earns one extra video that day, but no plan is forced to take it
     urgent = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p), None)
+    # usable topics first, so blocked ones never push them past the SHOWN cut
+    shown = [t for t in open_ if t in usable][:SHOWN]
+    shown += [t for t in open_ if t not in usable][:SHOWN - len(shown)]
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
             "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths")
     return {
-        "topics": [{**{k: t.get(k) for k in keys}, "usable_now": t in usable} for t in open_[:SHOWN]],
+        "topics": [{**{k: t.get(k) for k in keys}, "usable_now": t in usable} for t in shown],
         "required": None,   # nothing is forced since the reset (see the module doc)
         "urgent": urgent,
     }

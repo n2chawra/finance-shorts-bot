@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { SCHEDULE, clusterRuns, isScheduled, scheduleOverlap, videoRunId, type ObservedRun } from "../lib/schedule.ts";
+import { SCHEDULE, clusterRuns, isScheduled, scheduleOverlap, videoRunId, videoSteps, type ObservedRun } from "../lib/schedule.ts";
 
 const z = (s: string) => new Date(s);
 // IST = UTC + 5:30. 23:00 IST on 15 Oct = 17:30Z; 04:07 IST on 16 Oct = 22:37Z (15 Oct).
@@ -82,4 +82,20 @@ test("runs outside the nightly schedule (scout, studio, monthly) are ignored, no
   assert.match(f?.detail ?? "", /Auditor ran 23:05–00:03 IST/);
   assert.ok(isScheduled("auditor"));
   assert.ok(!isScheduled("scout"));
+});
+
+test("marking a video uploaded hours later is not part of the video run", () => {
+  // main run 04:08-04:50 IST; the owner marks a video uploaded at 13:40 IST the same day
+  const step = (videoId: string | null, agent: string, start: string, end: string | null) => ({ videoId, agent, startedAt: z(start), finishedAt: end ? z(end) : null });
+  const runs = clusterRuns(videoSteps([
+    step("a", "planner", "2026-10-15T22:38:00Z", "2026-10-15T22:50:00Z"),
+    step("a", "render", "2026-10-15T22:51:00Z", null),
+    step("b", "render", "2026-10-15T23:00:00Z", "2026-10-15T23:20:00Z"),
+    step("a", "manual_upload", "2026-10-16T08:10:00Z", "2026-10-16T08:10:00Z"),
+    step("b", "manual_edit", "2026-10-16T08:12:00Z", "2026-10-16T08:12:00Z"),
+    step(null, "template_builder", "2026-10-15T22:30:00Z", "2026-10-15T22:35:00Z"),
+  ]));
+  assert.equal(runs.length, 1);
+  assert.equal(runs[0]!.finish.toISOString(), "2026-10-15T23:20:00.000Z");
+  assert.equal(scheduleOverlap(runs.map((r) => ({ id: videoRunId(r.start), start: r.start, finish: r.finish }))), null);
 });
