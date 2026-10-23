@@ -172,7 +172,8 @@ def test_three_thumbnails_need_different_angles() -> None:
     s = json.loads((Path(__file__).resolve().parents[2] / "examples" / "long_story.json").read_text(encoding="utf-8"))
     t = s["thumbnail"]
     s["thumbnail"] = {**t, "angle": "number"}
-    s["thumbnails"] = [{**t, "angle": "question"}, {**t, "angle": "reaction"}]
+    s["thumbnails"] = [{**t, "angle": "question", "layout": "story", "hero": "phone"},
+                       {**t, "angle": "reaction", "layout": "story", "hero": "piggy"}]
     check_script(s)
     same = copy.deepcopy(s)
     same["thumbnails"][0]["angle"] = "number"
@@ -182,6 +183,28 @@ def test_three_thumbnails_need_different_angles() -> None:
     too_many["thumbnails"].append({**t, "angle": "warning"})
     with pytest.raises(ValueError, match="two more at most"):
         check_script(too_many)
+
+
+def test_three_thumbnails_need_different_pictures() -> None:
+    import copy
+    import json
+    from pathlib import Path
+
+    from renderer.timeline.build import check_script
+    s = json.loads((Path(__file__).resolve().parents[2] / "examples" / "long_story.json").read_text(encoding="utf-8"))
+    t = {**s["thumbnail"], "layout": "story", "hero": "card"}
+    s["thumbnail"] = {**t, "angle": "number"}
+    s["thumbnails"] = [{**t, "angle": "question", "hero": "phone"}, {**t, "angle": "reaction", "layout": "secret"}]
+    check_script(s)
+    same = copy.deepcopy(s)
+    same["thumbnails"][0]["hero"] = "card"   # story + card twice: one picture, new words
+    with pytest.raises(ValueError, match="different picture"):
+        check_script(same)
+    cards = copy.deepcopy(s)
+    for th in [cards["thumbnail"], *cards["thumbnails"]]:
+        th.pop("layout"), th.pop("hero")
+    with pytest.raises(ValueError, match="different picture"):
+        check_script(cards)
 
 
 def test_event_gaps_flags_a_long_beat_with_a_still_stretch() -> None:

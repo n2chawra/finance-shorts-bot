@@ -228,7 +228,19 @@ def _thumbnail_variants(script: dict, figures: dict[str, str], results: dict) ->
         raise ValueError(f"every thumbnail needs an angle: one of {', '.join(THUMB_ANGLES)}")
     if len(set(angles)) != len(angles):
         raise ValueError("each thumbnail needs a different angle, so the test compares ideas, not small tweaks")
+    # YouTube's Test & Compare needs "meaningfully different" pictures, or it ends inconclusive:
+    # no two thumbnails may share a layout and (for `story`) a hero (Scout, 2026-10-22)
+    pictures = [_thumb_picture(t) for t in [script["thumbnail"], *extra]]
+    if len(set(pictures)) != len(pictures):
+        raise ValueError("each thumbnail needs a different picture: use different layouts (story, versus, secret, card) "
+                         "or, for two `story` covers, a different hero; same picture with new words tests nothing")
     return variants
+
+
+def _thumb_picture(t: dict) -> tuple[str, str | None]:
+    """What a thumbnail looks like at a glance: its layout, and for `story` the hero object."""
+    layout = t.get("layout") or "card"
+    return layout, (t.get("hero") or "card") if layout == "story" else None
 
 
 def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict) -> dict | None:
