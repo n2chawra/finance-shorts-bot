@@ -160,3 +160,16 @@ test("overview stat cards leave no half-empty row", async ({ page }) => {
   const edges = await grid.evaluate((g) => ({ right: g.getBoundingClientRect().right, last: g.lastElementChild!.getBoundingClientRect().right }));
   expect(Math.abs(edges.right - edges.last)).toBeLessThanOrEqual(2);
 });
+
+test("section tabs keep their labels on one line", async ({ page }) => {
+  await signIn(page);
+  // on phones the Agents tabs wrapped to two lines inside a fixed-height bar and clipped "(1)" and "log"
+  for (const [path, heading] of [["/agents", /Agents/], ["/videos/v030", /.+/]] as const) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(heading, { timeout: 30_000 });
+    const tabs = page.getByRole("tab");
+    await expect(tabs.first()).toBeVisible();
+    const clipped = await tabs.evaluateAll((els) => els.filter((e) => e.scrollHeight > e.clientHeight + 1).map((e) => e.textContent));
+    expect(clipped, `clipped tabs on ${path}`).toEqual([]);
+  }
+});

@@ -75,7 +75,7 @@ function Row({ k, children }: { k: string; children: React.ReactNode }) {
   return <div className="flex items-baseline justify-between gap-3 border-b border-line py-2 text-[13px] last:border-0"><dt className="text-muted">{k}</dt><dd className="min-w-0 text-right">{children}</dd></div>;
 }
 
-const TAB = "relative h-9 px-2.5 text-[13px] text-ink2 transition-colors hover:text-ink data-[state=active]:font-medium data-[state=active]:text-ink";
+const TAB = "relative h-9 shrink-0 whitespace-nowrap px-2.5 text-[13px] text-ink2 transition-colors hover:text-ink data-[state=active]:font-medium data-[state=active]:text-ink";
 
 export default function VideoPage() {
   const { id } = useParams<{ id: string }>();

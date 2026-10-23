@@ -307,7 +307,7 @@ function TopicsTab({ data }: { data: Agents }) {
   );
 }
 
-const TAB = "relative h-9 px-2.5 text-[13px] text-ink2 transition-colors hover:text-ink data-[state=active]:font-medium data-[state=active]:text-ink";
+const TAB = "relative h-9 shrink-0 whitespace-nowrap px-2.5 text-[13px] text-ink2 transition-colors hover:text-ink data-[state=active]:font-medium data-[state=active]:text-ink";
 
 export default function AgentsPage() {
   const { data, error, isLoading } = useAgents();
