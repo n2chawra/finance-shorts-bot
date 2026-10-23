@@ -49,6 +49,21 @@
       "proposal": "title-names-the-moment",
       "metric": "avgViewPct",
       "description": "Shorts: titles name who and the everyday moment (a shopkeeper, a payslip, a dealer's offer), not an abstract claim about money"
+    },
+    {
+      "id": "chart-gap-fill",
+      "area": "motion",
+      "format": "long",
+      "status": "running",
+      "startedAt": "2026-10-23",
+      "templates": [
+        "long_story"
+      ],
+      "share": 0.5,
+      "proposal": "2026-10-21-chart-gap-fill",
+      "description": "Long videos: a two-line chart shades the gap between the lines as it draws and pops a chip naming the gap's figure (remotion/src/scenes/data.tsx ChartScene, `gap`)",
+      "minPerArm": 4,
+      "maxDays": 42
     }
   ]
 }

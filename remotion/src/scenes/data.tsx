@@ -9,6 +9,7 @@ import { evolvePath } from "@remotion/paths";
 import { Sikka } from "../cast/Sikka";
 import { blinkAt, settle } from "../cast/acting";
 import { FONT } from "../design/fonts";
+import { flag } from "../contract/flags";
 import { Marks, type MarkSpec } from "../fx/marks";
 import { Actor, type ActorSpec, at, Chip, clamp, counted, DataSet, ease, easeOut, Kinetic, num, pop, type SceneProps, sec, str } from "./kit";
 
@@ -299,6 +300,7 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
     xticks: { x: number[]; labels: string[] }; xLabel: string; label1: string; label2?: string;
     marks?: { x: number; text: string; at?: string }[]; drawFrom?: string; drawTo?: string;
     pen?: MarkSpec[];   // marker marks over the plot area (fx/marks.tsx), 0..1 of it
+    gap?: { text: string; at?: string };   // experiment chart-gap-fill: the gap between the lines, named
   };
   const t = sec(p);
   const v = h > w, small = v ? 44 : 34;    // a Short: text at 44 px and up, plot above the captions
@@ -313,10 +315,22 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
   const ev1 = evolvePath(prog, d1), ev2 = d2 ? evolvePath(prog, d2) : null;
   const headI = Math.min(P.series.x.length - 1, Math.floor(prog * (P.series.x.length - 1)));
   const grid = easeOut(t / 0.6);
+  // chart-gap-fill: shade the distance between the two paths up to the drawing head, and name it
+  const gapOn = flag(p.tl, "chart-gap-fill") && !!P.gap && !!P.series2 && prog > 0;
+  const s2 = P.series2;
+  const gapI = s2 ? Math.min(headI, s2.x.length - 1) : 0;
+  const gapPath = gapOn && s2 ? [
+    ...P.series.x.slice(0, gapI + 1).map((x, i) => `${i ? "L" : "M"}${X(x).toFixed(1)},${Y(P.series.y[i]!).toFixed(1)}`),
+    ...s2.x.slice(0, gapI + 1).map((x, i) => `L${X(x).toFixed(1)},${Y(s2.y[i]!).toFixed(1)}`).reverse(), "Z"].join(" ") : null;
+  const gapK = gapOn ? pop(p, at(p, P.gap!.at, b), 12, 160) : 0;
+  // the chip ends at the head and sits midway between the lines a little behind it, under its middle
+  const gapM = Math.round(gapI * 0.85);
+  const gapX = s2 ? X(s2.x[gapI]!) : 0, gapY = s2 ? clamp(((Y(P.series.y[gapM]!) + Y(s2.y[gapM]!)) / 2 - T) / (B - T), 0.1, 0.9) * (B - T) + T : 0;
   return (
     <AbsoluteFill>
       <DataSet pal={pal} w={w} h={h} t={t} seed={p.beat.id} />
       <svg width={w} height={h} style={{ position: "absolute" }}>
+        {gapPath && <path d={gapPath} fill={pal.accent} opacity={0.25} />}
         {P.ticks.y.map((v, i) => (
           <g key={i} opacity={grid}>
             <line x1={L} x2={L + (R - L) * grid} y1={Y(v)} y2={Y(v)} stroke={pal.grid} strokeWidth={2} />
@@ -348,6 +362,9 @@ export const ChartScene: React.FC<SceneProps> = (p) => {
           <Chip text={m.text} k={k} bg={pal.text} fg={pal.bg} size={v ? 44 : 36} />
         </div>;
       })}
+      {gapOn && gapK > 0 && <div style={{ position: "absolute", left: gapX - 28, top: gapY, transform: "translate(-100%, -50%)", whiteSpace: "nowrap" }}>
+        <Chip text={P.gap!.text} k={gapK} bg={pal.accent} fg="#1b1b1b" size={v ? 48 : 40} style={{ fontWeight: 900 }} />
+      </div>}
       <div style={{ position: "absolute", right: v ? 90 : 190, top: v ? 120 : 90, display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-end", opacity: grid }}>
         <Chip text={P.label1} k={1} bg={pal.danger} fg="#ffffff" size={v ? 44 : 32} />
         {P.label2 && <Chip text={P.label2} k={1} bg={pal.accent} fg="#1b1b1b" size={v ? 44 : 32} />}

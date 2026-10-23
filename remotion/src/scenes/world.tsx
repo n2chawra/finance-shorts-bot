@@ -87,7 +87,11 @@ export const PropScene: React.FC<SceneProps> = (p) => {
   const start = at(p, P.at, 0.35);
   const k = p.beat.from === 0 ? 1 : pop(p, 0.1, 11, 120);
   const Prop = MONEY_PROPS[P.prop] ?? MONEY_PROPS.cheque;
-  const text = P.text !== undefined && P.value !== undefined ? counted(p, P.value, P.text, start, start + 0.9) : P.text;
+  // a counted figure is hidden until `at`, never a "0" sitting there while the voice says the number
+  // (L-20261021-01); on the video's first frame it shows in full, the hook's stake
+  const text = P.text !== undefined && P.value !== undefined
+    ? (p.beat.from === 0 && start <= 0.35 ? P.text : sec(p) < start ? undefined : counted(p, P.value, P.text, start, start + 0.9))
+    : P.text;
   const s = v ? (P.presenter ? 700 : 820) : 520, fs = v ? 112 : 84;
   const cx = A.x + A.w / 2, cy = A.y + A.h * (P.kicker ? (v ? 0.56 : 0.6) : 0.5) + (1 - easeOut(k)) * 160;
   const kick = v ? 64 : 56;
