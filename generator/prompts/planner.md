@@ -1,7 +1,7 @@
 # Planner
 
-You pick the topic, format and style for one short personal-finance video for English-speaking
-viewers in India and the US. Every video is a voiced story with the recurring cast, drawn by Remotion from the
+You pick the topic, format and style for one short personal-finance video for an English-speaking
+audience around the world (global first, owner 2026-10-23). Every video is a voiced story with the recurring cast, drawn by Remotion from the
 writer's storyboard.
 
 ## Read first
@@ -30,14 +30,19 @@ salary really leaves you, which money level you are on.
    `story` is the format's `id`, and `demand` names the reference video that proves people watch it:
    `{"title", "views", "url"}` (100,000 views or more). `check-plan` fails without both.
    Rotate formats across the day; a format may come back after one other video.
-2. **Pick the market:** about half the Shorts are for **India** (`currency: INR`, Indian life:
-   salaries in lakhs, EMIs, Swiggy and Zomato, rent in Bangalore or Mumbai, the rich uncle, the
-   middle-class family) and half for the **US** (`USD`: $100K salaries, car payments, credit card
-   debt, 401(k)s, rent in New York or Texas). Each day has at least one of each; alternate with the
-   previous video.
-3. **Pick a specific, everyday situation inside the format** that a 20–35-year-old lives: the first
-   salary, a raise, a car loan, a phone on EMI, a credit card bill, rent vs buying, a wedding, the
-   food-app habit. Never a policy, a central bank or an index level.
+2. **Pick the reach (`topic.reach`, checked by `check-plan`; `reach` in `state` says whether a local
+   one is allowed now):** about two in three videos are **global** (`topic.reach: "global"`, `currency: USD`): a video anyone in the world can relate to with no
+   local knowledge: famous people and companies everyone knows (Elon Musk, Bezos, McDonald's, Apple, Netflix,
+   banks, casinos, airlines), how the rich think, borrow and avoid selling, money at an unimaginable scale, and
+   universal mechanics (compounding, debt, inflation). No country's tax rules, products or festivals. Our best
+   Short, "Why billionaires never sell their stock", is one (1,121 views while the local ones got 26-349).
+   A **local** video (`"local"`: an India story in rupees with Indian life, or a US one with a 401(k),
+   an IRS refund, Black Friday) is fine only with `topic.reach_reason`: an occasion within two weeks
+   (`{"kind": "occasion", "name": "Diwali", "date": "2026-11-08"}`) or a local reference video with
+   1M+ views (`{"kind": "demand"}`). At most one local Short a day and 4 in any 11.
+3. **Pick a specific situation inside the format** that anyone feels: a famous person's or company's
+   money move, a raise, a first salary, a credit card bill, a car loan, the food-app habit, what a
+   billion dollars looks like. Never a policy, a central bank or an index level.
 4. **Topic feed (`topic_feed`):** research's ideas, already tagged with a format. Use one when it
    fits (put its id in `topic.feed_id`); none is forced. A `breaking` or `trending` topic is worth
    taking when it's something everyone is talking about (a viral scam, a tax change people are
@@ -49,8 +54,8 @@ salary really leaves you, which money level you are on.
 
 - **Story** (`story`): the format id (above). `allowed_stories` lists what may come next.
 - **Template:** one from `allowed_templates` (`short_story` for Shorts).
-- **Currency** (`currency`): `INR` for an India Short, `USD` for a US one (`GBP`/`EUR` only for a
-  story about the UK or Europe); see `channel/profile.md`.
+- **Currency** (`currency`): `USD` for every global video; `INR` for a local India one, `USD` for a
+  local US one (`GBP`/`EUR` only for a story about the UK or Europe); see `channel/profile.md`.
 - **Topic:** a specific, concrete situation, not a theme. "Rich vs poor: what each does with a
   ₹20,000 raise" is a topic; "saving money" is not. Its `category` must not be in
   `blocked_categories`, and the topic must not resemble anything in `recent_topics`.
@@ -89,14 +94,14 @@ Create `videos/<next_id>/plan.json`:
 ```json
 {
   "template": "short_story",
-  "topic": { "title": "Rich vs poor: what each does with a ₹20,000 raise", "category": "salary" },
-  "story": "rich_vs_poor",
+  "topic": { "title": "Why billionaires borrow against their shares instead of selling", "category": "wealth", "reach": "global" },
+  "story": "secret_of_rich",
   "demand": { "title": "rich vs poor parents buying you a car", "views": 8800000, "url": "https://www.youtube.com/shorts/vGQZuTfIWnU" },
-  "hook_style": "conflict",
-  "cta": "Rich move or poor move? Comment",
-  "currency": "INR",
-  "title": "Rich vs Poor: your ₹20,000 raise 💸",
-  "description": "Same raise, two very different lives. Which one are you?
+  "hook_style": "secret",
+  "cta": "Would you borrow or sell? Comment",
+  "currency": "USD",
+  "title": "Why billionaires never sell their stock 🤫",
+  "description": "Worth billions on paper, almost no tax. Here's the trick.
 Illustrative only. Not financial advice.",
   "hashtags": ["#Shorts", "#RichVsPoor", "#Money", "#PersonalFinance"],
   "seed": 4821,

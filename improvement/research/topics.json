@@ -2,6 +2,307 @@
   "note": "Video ideas for the planner, written by the research agent (agents/research.md). A video uses a topic once (plan.topic.feed_id); breaking topics go first.",
   "topics": [
     {
+      "id": "2026-10-23-elon-cant-give-it-away",
+      "format": "short",
+      "title": "Why can't Elon Musk just sell his shares and give the money away?",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "billionaire_question"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why Elon Musk Can't Just \"Give Away\" His Wealth",
+        "views": 11701053,
+        "url": "https://www.youtube.com/shorts/ylTx5h2ILnY"
+      },
+      "hook": "He's worth hundreds of billions. So why can't he just give it away?",
+      "angle": "His money isn't cash: it's shares. Selling a big block drops the price and brings a huge tax bill, so the money shrinks before it's given.",
+      "maths": "fee_take on an illustrative $100 billion sale (amount, fee_pct the US top capital-gains rate with the 3.8% surtax, per_year 1, years 1) for the tax; lumpsum for the shares kept instead",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
+      "verify": [
+        "US long-term capital gains top rate 20% plus 3.8% net investment income tax (IRS)",
+        "Say 'an illustrative $100 billion', never his exact net worth"
+      ]
+    },
+    {
+      "id": "2026-10-23-mcdonalds-is-a-landlord",
+      "format": "short",
+      "title": "How McDonald's really makes money: it's a landlord",
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How McDonald's REALLY Makes Money",
+        "views": 2801534,
+        "url": "https://www.youtube.com/shorts/N4lHgcRcp5w"
+      },
+      "hook": "McDonald's isn't really in the burger business.",
+      "angle": "Franchisees buy the burgers' ingredients; McDonald's owns or leases the land and charges them rent and fees on every sale.",
+      "maths": "fee_take (amount a restaurant's illustrative yearly sales, fee_pct the rent plus royalty share, per_year 1, years 20); compare against the burger margin",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
+      "verify": [
+        "McDonald's franchise rent and royalty structure as a share of sales (McDonald's franchising disclosures or annual report)"
+      ]
+    },
+    {
+      "id": "2026-10-23-billion-in-100-bills",
+      "format": "short",
+      "title": "What $1 billion really looks like in $100 bills",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "money_scale"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "What Can You Buy With $1 to $1 QUADRILLION?",
+        "views": 1865718,
+        "url": "https://www.youtube.com/shorts/jIs5WrvxcQ4"
+      },
+      "hook": "This is one hundred dollars. Here's a billion.",
+      "angle": "From a single note to a briefcase, a pallet, a room: a billion as things you can see, and how long a salary takes to earn it.",
+      "maths": "lumpsum at 0% for each step ($10K, $1M, $1B, years 1), compare for 'times bigger' and for a $50,000 salary against a billion (ratio = years of work)",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
+    },
+    {
+      "id": "2026-10-23-casino-always-wins",
+      "format": "short",
+      "title": "Why the casino always wins, even when you win",
+      "category": "spending",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Banks Turn Old Cash Into Compost",
+        "views": 8214714,
+        "url": "https://www.youtube.com/shorts/c0ROPL2D6gY"
+      },
+      "hook": "Every bet you place, the casino has already won a little.",
+      "angle": "The house edge: a small cut on every bet that adds up to almost all of what you bring over a night.",
+      "maths": "fee_take (amount the bet, fee_pct the roulette house edge on a double-zero wheel, per_year bets in a night, years 1)",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
+      "verify": [
+        "American (double-zero) roulette house edge of about 5.26%"
+      ]
+    },
+    {
+      "id": "2026-10-23-forgot-to-cancel",
+      "format": "short",
+      "title": "How streaming apps and gyms make money from you forgetting to cancel",
+      "category": "subscriptions",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Weird Ways Brands Make Their Money",
+        "views": 1656553,
+        "url": "https://www.youtube.com/shorts/gaFvy03NDMw"
+      },
+      "hook": "Some companies make their money from people who never show up.",
+      "angle": "Free trials and gym plans count on the month you forget: what one forgotten subscription costs over the years.",
+      "maths": "fee_take (amount the monthly price, fee_pct 100, per_year 12, years 5); sip of the same money invested instead",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
+    },
+    {
+      "id": "2026-10-23-rich-buy-assets",
+      "format": "short",
+      "title": "Things rich people buy that poor people don't",
+      "category": "investing",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Things Poor People Do That Rich People Don't",
+        "views": 6340389,
+        "url": "https://www.youtube.com/shorts/V7OZd5zJcK4"
+      },
+      "hook": "Poor people buy things that cost them money. Rich people buy things that pay them.",
+      "angle": "Same money each month: one buys a car payment and new gadgets, the other buys things that pay back. The gap after 10 years.",
+      "maths": "emi for the car (amount, rate_pct, years); sip of the same monthly at an assumed 8% for 10 years; compare",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
+    },
+    {
+      "id": "2026-10-23-rich-love-debt",
+      "format": "short",
+      "title": "Why rich people love debt and you're scared of it",
+      "category": "debt",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "This Is How RICH PEOPLE Borrow MONEY",
+        "views": 9263906,
+        "url": "https://www.youtube.com/shorts/RZdRTW8xybs"
+      },
+      "hook": "You're scared of debt. The rich use it to get richer.",
+      "angle": "Good debt buys something that grows faster than the loan costs; bad debt buys something that loses value. The rule in one line.",
+      "maths": "lumpsum of an illustrative $100K at an assumed 8% for 10 years; emi on $100K at 6% for 10 years; compare the gain with the interest",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
+    },
+    {
+      "id": "2026-10-23-penny-or-million",
+      "format": "short",
+      "title": "A penny doubled every day for 30 days, or $1 million today?",
+      "category": "compounding",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "guess_the_number"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Compound interest explained",
+        "views": 9061008,
+        "url": "https://www.youtube.com/shorts/rrpn3zo2Slo"
+      },
+      "hook": "One cent doubled every day for a month, or a million dollars right now. Pick one.",
+      "angle": "The penny wins, but only at the very end: compounding looks like nothing for weeks, then explodes.",
+      "maths": "lumpsum (amount 0.01, rate_pct 100, years 30: call the periods days in the script, never years); compare with $1,000,000",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
+    },
+    {
+      "id": "2026-10-23-diwali-no-cost-emi-india",
+      "format": "short",
+      "title": "The 'no-cost EMI' Diwali sale: what the festive offer really costs",
+      "category": "credit_card",
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "trap_alert"
+      ],
+      "currency": "INR",
+      "reach": "local",
+      "demand": {
+        "title": "The Middle Class EMI Trap",
+        "views": 7000000,
+        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
+      },
+      "hook": "No-cost EMI this Diwali. Read the fine print.",
+      "angle": "The discount you lose and the processing fee you pay make a 'no-cost' EMI cost money.",
+      "maths": "emi on the phone price, plus the lost discount and the processing fee; compare with paying upfront",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Local, kept for its reason (reach_reason).",
+      "reach_reason": {
+        "kind": "occasion",
+        "name": "Diwali",
+        "date": "2026-11-08"
+      }
+    },
+    {
+      "id": "2026-10-23-100k-new-york",
+      "format": "short",
+      "title": "What a $100K salary really leaves you in New York",
+      "category": "salary",
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "any"
+      ],
+      "stories": [
+        "salary_breakdown"
+      ],
+      "currency": "USD",
+      "reach": "local",
+      "demand": {
+        "title": "How much money is in your bank account?",
+        "views": 42000000,
+        "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
+      },
+      "hook": "A hundred thousand dollars a year. Here's what's left.",
+      "angle": "Tax, rent, food and the car taken off one by one: what's left each month, and what it becomes invested.",
+      "maths": "income_tax_bands for federal + state + city tax as published; sip of what's left at an assumed 8%",
+      "found": "2026-10-23",
+      "expires": "2027-01-21",
+      "status": "new",
+      "why_now": "Local, kept for its reason (reach_reason).",
+      "reach_reason": {
+        "kind": "demand"
+      },
+      "verify": [
+        "2026 US federal tax brackets (IRS), New York State and New York City rates"
+      ]
+    },
+    {
       "id": "2026-10-21-raise-rich-vs-poor",
       "format": "short",
       "title": "Rich vs Poor: what each does with a ₹20,000 raise",
@@ -81,121 +382,6 @@
       "status": "new",
       "why_now": "Owner reset 2026-10-21: a format with proven demand (see demand).",
       "maths": "emi with the fee folded in"
-    },
-    {
-      "id": "2026-10-21-100k-salary-nyc",
-      "format": "short",
-      "title": "What a $100K salary really leaves you in New York",
-      "category": "salary",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "salary_breakdown"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "How much money is in your bank account?",
-        "views": 42000000,
-        "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
-      },
-      "hook": "A hundred thousand dollars a year in New York. Here's what's left.",
-      "angle": "Tax, rent, food, transit subtracted; the leftover invested for 10 years.",
-      "found": "2026-10-21",
-      "expires": "2027-01-19",
-      "status": "new",
-      "why_now": "Owner reset 2026-10-21: a format with proven demand (see demand).",
-      "maths": "lumpsum or sip of the leftover"
-    },
-    {
-      "id": "2026-10-21-credit-card-on-time",
-      "format": "short",
-      "title": "How credit card companies make money even when you pay on time",
-      "category": "credit_card",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "Monkey Economics How Bank Work",
-        "views": 7600000,
-        "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"
-      },
-      "hook": "You pay your card on time, every month. They still make money from you.",
-      "angle": "Merchant fees, the minimum-due trap for others, annual fees, computed on one purchase.",
-      "found": "2026-10-21",
-      "expires": "2027-01-19",
-      "status": "new",
-      "why_now": "Owner reset 2026-10-21: a format with proven demand (see demand).",
-      "maths": "card_min_due for the other customer"
-    },
-    {
-      "id": "2026-10-21-retire-at-40-india",
-      "format": "short",
-      "title": "How much do you need to retire at 40 in India?",
-      "category": "retirement",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "guess_the_number"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "3 ways to get rich before you turn 30",
-        "views": 5200000,
-        "url": "https://www.youtube.com/shorts/tgeNZq-E-BE"
-      },
-      "hook": "How much money do you need to retire at forty? Most people guess way too low.",
-      "angle": "Yearly spend, inflation and years left, worked out live.",
-      "found": "2026-10-21",
-      "expires": "2027-01-19",
-      "status": "new",
-      "why_now": "Owner reset 2026-10-21: a format with proven demand (see demand).",
-      "maths": "sip needed to reach the corpus"
-    },
-    {
-      "id": "2026-10-16-sip-record-inflows",
-      "title": "Indians put a record amount into SIPs in one month",
-      "category": "sip",
-      "kind": "news",
-      "priority": "high",
-      "templates": [
-        "money_news"
-      ],
-      "angle": "The record is a crowd signal; what a single SIP of your own becomes is the story.",
-      "why_now": "AMFI's monthly data showed record gross SIP inflows; SIP numbers are widely shared and searched.",
-      "facts": [
-        {
-          "label": "SIP money in one month",
-          "value": 31781,
-          "unit": "rupees_crore",
-          "as_of": "2026-06-30",
-          "source": "AMFI",
-          "url": "https://www.oquilia.com/news/amfi-june-2026-sip-record-31781-crore"
-        }
-      ],
-      "verify": [
-        "AMFI's own monthly data (amfiindia.com) shows gross SIP inflows of ₹31,781 crore for June 2026",
-        "It was a record high when reported; if a later month is higher, say 'a record' only if still true, or update the fact"
-      ],
-      "sources": [
-        "https://www.oquilia.com/news/amfi-june-2026-sip-record-31781-crore"
-      ],
-      "found": "2026-10-16",
-      "expires": "2026-10-30",
-      "status": "expired",
-      "from": "sip-record-inflows-hook",
-      "reason": "Superseded: AMFI published September 2026 data (record Rs 32,490 cr) on 2026-10-12; June figure is stale."
     },
     {
       "id": "2026-10-17-rbi-repo-hike",
@@ -797,169 +983,6 @@
       "status": "new"
     },
     {
-      "id": "2026-10-22-bengaluru-50k-salary",
-      "format": "short",
-      "title": "What a ₹50,000 salary really leaves you in Bengaluru",
-      "category": "salary",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "salary_breakdown"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "How much money is in your bank account?",
-        "views": 42000000,
-        "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
-      },
-      "hook": "Fifty thousand rupees a month in Bengaluru. Here's what's left.",
-      "angle": "Rent, food, transport and a phone EMI subtracted (stated assumptions), then the leftover invested for 10 years.",
-      "why_now": "Demand first: a format with proven demand (see demand).",
-      "maths": "sip of the leftover: monthly = 50000 minus stated costs (code subtracts), rate_pct 12 (assumed), years 10",
-      "found": "2026-10-22",
-      "expires": "2027-01-20",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-22-bank-earns-on-your-savings",
-      "format": "short",
-      "title": "Your ₹1 lakh in a savings account: what the bank earns on it",
-      "category": "banking",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "Monkey Economics How Bank Work",
-        "views": 7600000,
-        "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"
-      },
-      "hook": "Your bank pays you a little on your ₹1 lakh. Then it lends it out for a lot more.",
-      "angle": "The spread: what you earn at an assumed savings rate vs what the bank earns lending the same money at an assumed loan rate, over 5 years.",
-      "why_now": "Demand first: a format with proven demand (see demand).",
-      "maths": "two lumpsums: amount 100000, years 5, rate_pct 2.5 vs 9 (both stated as assumptions, no bank named)",
-      "found": "2026-10-22",
-      "expires": "2027-01-20",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-22-inflation-savings-account",
-      "format": "short",
-      "title": "Once you understand inflation, you'll never leave money idle in a savings account",
-      "category": "inflation",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "trap_alert"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "The Middle Class EMI Trap",
-        "views": 7000000,
-        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
-      },
-      "hook": "Once you understand this, you'll never leave money sitting in a savings account.",
-      "angle": "Real return: an assumed 3% account against an assumed 5% price rise, what ₹1 lakh buys after 10 years.",
-      "why_now": "Demand first: a format with proven demand (see demand).",
-      "maths": "real_return / price_rise: amount 100000, rate_pct 3, inflation_pct 5 (assumed), years 10",
-      "found": "2026-10-22",
-      "expires": "2027-01-20",
-      "status": "new",
-      "note": "2026-10-23 research: was once_you_understand, which is a long-video format only (formats.json), so a Short plan with it fails check-plan; told as a trap_alert instead."
-    },
-    {
-      "id": "2026-10-22-car-loan-72-months",
-      "format": "short",
-      "title": "The 72-month car loan trap",
-      "category": "car",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "trap_alert"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "The Middle Class EMI Trap",
-        "views": 7000000,
-        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
-      },
-      "hook": "The dealer says only $650 a month. Nobody says for how long.",
-      "angle": "A $40,000 car on 72 months vs 48 months at an assumed rate: the monthly payment looks smaller, the interest doesn't.",
-      "why_now": "Demand first: a format with proven demand (see demand).",
-      "maths": "emi: amount 40000, rate_pct 9 (assumed), years 6 vs years 4 (the emi kind takes years; 6 years = 72 months); the hook's monthly figure must come from the 6-year emi",
-      "found": "2026-10-22",
-      "expires": "2027-01-20",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-22-401k-match-free-money",
-      "format": "short",
-      "title": "The free money most workers leave on the table",
-      "category": "retirement",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "secret_of_rich"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "How to Avoid Paying Taxes (Legally)",
-        "views": 14000000,
-        "url": "https://www.youtube.com/shorts/luo0aKcAyIs"
-      },
-      "hook": "Your boss will literally give you free money. Most people say no.",
-      "angle": "An employer match (stated example: 50% of 6% on a $60,000 salary) left unclaimed, and what it becomes over 30 years.",
-      "why_now": "Demand first: a format with proven demand (see demand).",
-      "maths": "sip: monthly = 60000*0.06*0.5/12 (code computes), rate_pct 7 (assumed), years 30; match rules vary by employer, say so",
-      "found": "2026-10-22",
-      "expires": "2027-01-20",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-22-us-money-levels",
-      "format": "short",
-      "title": "The 5 money levels in America: which one are you?",
-      "category": "wealth",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "which_one_are_you"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "Do These 5 Things To Win With Money",
-        "views": 6400000,
-        "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"
-      },
-      "hook": "There are five money levels. Which one are you on?",
-      "angle": "Paycheck to paycheck, emergency fund, debt-free, investing, money works for you: one computed figure per level.",
-      "why_now": "Demand first: a format with proven demand (see demand).",
-      "maths": "one sip per level with stated monthly amounts (e.g. 0, 100, 300, 750, 1500), rate_pct 7 (assumed), years 20; no claim about where 'most' are unless sourced: say 'many'",
-      "found": "2026-10-22",
-      "expires": "2027-01-20",
-      "status": "new"
-    },
-    {
       "id": "2026-10-22-10-dollars-a-day-guess",
       "format": "short",
       "title": "Guess what $10 a day becomes in 30 years",
@@ -984,91 +1007,6 @@
       "maths": "sip: monthly 304 (10 a day, code computes 10*365/12), rate_pct 7 (assumed), years 30",
       "found": "2026-10-22",
       "expires": "2027-01-20",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-23-first-salary-rich-vs-poor",
-      "title": "Rich vs poor: the same ₹40,000 first salary",
-      "category": "salary",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "rich_vs_poor"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "Rich vs Poor",
-        "views": 26000000,
-        "url": "https://www.youtube.com/shorts/55ezEOnK1Nk"
-      },
-      "hook": "Two friends. Same first salary. One buys a bike on EMI in month one.",
-      "angle": "What the first-month choice costs: a bike EMI for three years vs a ₹10,000 SIP that keeps going for 20 years.",
-      "why_now": "Demand first: rich vs poor is the channel's proven format (26M reference); a first salary is the audience's own moment.",
-      "maths": "emi: amount 150000, rate_pct 10 (assumed), years 3; sip: monthly 10000, rate_pct 12 (assumed), years 20; the poor move's monthly EMI and the rich move's final value both computed",
-      "expires": "2027-01-21",
-      "templates": [
-        "any"
-      ],
-      "format": "short",
-      "found": "2026-10-23",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-23-tax-refund-rich-vs-poor",
-      "title": "Rich vs poor: what each does with a $3,000 tax refund",
-      "category": "tax",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "rich_vs_poor"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "Rich vs Poor",
-        "views": 26000000,
-        "url": "https://www.youtube.com/shorts/55ezEOnK1Nk"
-      },
-      "hook": "Same $3,000 refund. One spends it by Friday. One never touches it.",
-      "angle": "A tax refund spent vs invested once and left alone for 30 years.",
-      "why_now": "Demand first: rich vs poor (26M reference); our USD Short got 11x the views of our INR one this week, so the US side gets a rich-vs-poor too.",
-      "maths": "lumpsum: amount 3000, rate_pct 8 (assumed), years 30; the refund amount is an input, not a sourced average",
-      "expires": "2027-01-21",
-      "templates": [
-        "any"
-      ],
-      "format": "short",
-      "found": "2026-10-23",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-23-card-points-how-they-make-money",
-      "title": "Your 'free' rewards card: how the card company really makes money",
-      "category": "credit_card",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "Monkey Economics How Bank Work",
-        "views": 7600000,
-        "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"
-      },
-      "hook": "Your card gives you 1% back. Guess who paid for it.",
-      "angle": "A swipe fee on every purchase (assumed ~2%) plus interest on any balance carried: the 'free' points are a small slice of what the card earns from you and the shop.",
-      "why_now": "Demand first: how they make money (7.6M reference); credit card debt is the busiest theme in this week's market data.",
-      "maths": "fee_take: amount 2500 (monthly card spending), fee_pct 2 (assumed swipe fee), per_year 12, years 1; card_min_due: amount 3000, rate_pct_month 2 (assumed, about 24% a year), min_due_pct 2, min_due_floor 25",
-      "verify": [
-        "no card network or bank is named",
-        "swipe fee shown as an assumed rate, not a published one"
-      ],
-      "expires": "2027-01-21",
-      "templates": [
-        "any"
-      ],
-      "format": "short",
-      "found": "2026-10-23",
       "status": "new"
     },
     {
@@ -1108,33 +1046,6 @@
       "status": "new"
     },
     {
-      "id": "2026-10-23-4000-take-home-us",
-      "title": "What $4,000 a month take-home really leaves you in the US",
-      "category": "salary",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "salary_breakdown"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "How much money is in your bank account?",
-        "views": 42000000,
-        "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
-      },
-      "hook": "$4,000 lands on payday. Watch it disappear.",
-      "angle": "Rent, car, groceries, phone and subscriptions taken off one by one (illustrative amounts), then what the leftover becomes invested.",
-      "why_now": "Demand first: salary breakdown (42M reference; the $100K-salary Short has 275K).",
-      "maths": "the costs are script inputs subtracted by code; sip: monthly <the computed leftover>, rate_pct 8 (assumed), years 20",
-      "expires": "2027-01-21",
-      "templates": [
-        "any"
-      ],
-      "format": "short",
-      "found": "2026-10-23",
-      "status": "new"
-    },
-    {
       "id": "2026-10-23-black-friday-on-the-card",
       "title": "The Black Friday haul you pay for until next Black Friday",
       "category": "credit_card",
@@ -1154,33 +1065,6 @@
       "why_now": "Black Friday is 27 Nov 2026; deal season starts in early November. Credit card debt is the busiest theme in this week's market data (Ramsey, Caleb Hammer, TED-Ed, Martin Lewis).",
       "maths": "card_min_due: amount 800, rate_pct_month 2 (assumed, about 24% a year), min_due_pct 2, min_due_floor 25",
       "expires": "2026-11-28",
-      "templates": [
-        "any"
-      ],
-      "format": "short",
-      "found": "2026-10-23",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-23-home-loan-guess",
-      "title": "Guess what a ₹30 lakh home loan really costs",
-      "category": "home_loan",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "guess_the_number"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "3 ways to get rich before you turn 30",
-        "views": 5200000,
-        "url": "https://www.youtube.com/shorts/tgeNZq-E-BE"
-      },
-      "hook": "₹30 lakh loan. 20 years. Three guesses: how much do you pay back?",
-      "angle": "Three characters guess; the answer (total paid and interest) lands at the end. Not a projection story.",
-      "why_now": "Demand first: guess the number (5.1M reference); a non-projection guess to keep the projection share down.",
-      "maths": "emi: amount 3000000, rate_pct 8.5 (assumed), years 20; the guesses are written as fractions of the computed total (e.g. 'about the loan', 'one and a half times'), never as typed figures",
-      "expires": "2027-01-21",
       "templates": [
         "any"
       ],
@@ -1213,33 +1097,6 @@
       ],
       "format": "short",
       "found": "2026-10-23",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-23-money-level-at-25-india",
-      "title": "Which money level are you at 25? (India)",
-      "category": "net_worth",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "which_one_are_you"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "Do These 5 Things To Win With Money",
-        "views": 6400000,
-        "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"
-      },
-      "hook": "Five people, all 25. Only one of them is level five. Which one are you?",
-      "angle": "Five levels in 30 seconds (salary spent, emergency fund, no card debt, SIP running, SIP stepped up), each with one computed figure: what that level's monthly habit becomes by 45.",
-      "why_now": "Demand first: which one are you (6.4M reference). The long video L-20261021-01 told India's money levels at 8 min; this is a Short with a different cut (one age, five habits), so check the title shape against it.",
-      "maths": "sip: monthly 2000 / 5000 / 10000 (assumed), rate_pct 12 (assumed), years 20; sip_stepup: monthly 10000, step_pct 10, rate_pct 12, years 20 for level five",
-      "templates": [
-        "any"
-      ],
-      "format": "short",
-      "found": "2026-10-23",
-      "expires": "2027-01-21",
       "status": "new"
     }
   ]

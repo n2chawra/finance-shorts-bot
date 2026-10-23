@@ -78,10 +78,10 @@ the cover. Three layouts, by format:
   e.g. rohan with `prop: "phone"`, worried) and `who2` (the rich one, sharma, proud); `small` the
   poor side's figure with `tag` above it ("Phone EMI"); `figure` the rich side's with `to` above it
   ("Invested"); `words` the topic ("Your {rich_amount} *raise*").
-- **`secret`** (`secret_of_rich`, `how_they_make_money`): dark and gold, the rich mentor smirking.
+- **`secret`** (`secret_of_rich`, `how_they_make_money`, `billionaire_question`): dark and gold, the rich mentor smirking.
   `figure` the cost everyone else pays, crossed out, with `tag` ("Tax if you sell"); `small` what
   the rich keep, with `to` ("Stock keeps growing"); `words` the claim ("Billionaires *never* sell").
-- **`story`** (`trap_alert`, `cost_of_habit`, `salary_breakdown`, `guess_the_number`): the small
+- **`story`** (`trap_alert`, `cost_of_habit`, `salary_breakdown`, `guess_the_number`, `money_scale`): the small
   amount on the thing (`hero`, `small`, `tag`) turning into the big one on a receipt (`figure`, `to`).
 
 `words`: four at most, the topic in the viewer's words; one word between asterisks is highlighted
@@ -91,7 +91,8 @@ yellow. Figures are placeholders, like everywhere else. Example covers: `videos/
 ## Story recipes: the formats people watch (owner reset, 2026-10-21)
 
 The plan's `story` is a format from `improvement/research/formats.json` (hook, beats, reference
-videos). Tell it as a **skit**: the cast talk to each other, react, and the numbers land on things
+videos). About two in three videos are **global** (`topic.reach`, `generator/reach.py`): dollars, famous
+names and situations anyone in the world knows, no country's products or festivals. Tell it as a **skit**: the cast talk to each other, react, and the numbers land on things
 in a place. Most lines belong to characters (`speaker`), the narrator only links.
 
 | format (`story`) | beats |
@@ -104,5 +105,7 @@ in a place. Most lines belong to characters (`speaker`), the narrator only links
 | **which_one_are_you** | "There are 5 money levels" → one short beat per level, a character acting it, one computed figure each (`stage` with `chip`, `prop`) → where most people are stuck → the one move up → "which one are you?" |
 | **guess_the_number** | the question with stakes (a `stage` with three characters guessing) → the working, step by step (`equation`, `kinetic`) → the answer lands in the last seconds (`reveal`) → loop |
 | **cost_of_habit** | the habit in its place (`prop` in a `kitchen`/`shop`) → per day → per year → invested instead for N years (`road`) → the small change (`fork`) → loop |
+| **billionaire_question** (global) | the question everyone has asked, over the rich world (`shot` in `penthouse`, the cast big): "Why can't a billionaire just ___?" → the obvious answer, Rohan says it → where the money really is (`stack` of shares, not cash, figure computed) → what happens if they tried (the stack shrinks, a `flow` to the tax bill, computed) → the real answer in one line (`close` on Sharma) → loop line to the question |
+| **money_scale** (global) | one note as a thing, then the camera pulls back as it multiplies (`shot` with `stack`s in `vault`, `wide` → `extreme`), each step ten or a thousand times bigger and each figure computed → what each step buys or how long a salary takes to earn it → the punchline comparison (seconds for a billionaire, a lifetime for a salary) → loop line |
 
 Any of these may use one `reveal`/`bignumber` at most. Example: `examples/short_story.json`.

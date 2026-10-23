@@ -1,159 +1,505 @@
 {
-  "note": "Formats with proven demand (owner reset, 2026-10-21). Every plan's `story` is one of these ids for its format, and its `demand` names a reference video. Research adds formats and examples from the nightly demand scan; the improver retires formats our own numbers say don't work. Views as read on the day in `seen`.",
+  "note": "Formats with proven demand (owner reset, 2026-10-21). Every plan's `story` is one of these ids for its format, and its `demand` names a reference video. Research adds formats and examples from the nightly demand scan; the improver retires formats our own numbers say don't work. Views as read on the day in `seen`. Since 2026-10-23 the channel is global first (generator/reach.py): `markets` lists `global` for formats anyone in the world can relate to.",
   "seen": "2026-10-23",
   "formats": [
     {
-      "id": "rich_vs_poor", "format": "short", "markets": ["IN", "US"],
+      "id": "rich_vs_poor",
+      "format": "short",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "Rich vs Poor",
       "emotion": "envy and identity: which side am I on?",
       "hook": "Two characters, the same moment, opposite moves, in the first second: 'Poor person gets a raise. Rich person gets a raise.'",
       "beats": "the same situation for both (raise, bonus, car, first salary) -> what the poor one does, number computed -> what the rich one does, number computed -> the gap after N years, the punchline -> last line leads back to the first",
-      "titles": ["Rich vs Poor: what they do with a {raise}", "Poor people buy a car. Rich people buy...", "Rich vs Poor: your first salary"],
+      "titles": [
+        "Rich vs Poor: what they do with a {raise}",
+        "Poor people buy a car. Rich people buy...",
+        "Rich vs Poor: your first salary"
+      ],
       "examples": [
-        {"title": "rich vs poor parents buying you a car", "views": 8800000, "url": "https://www.youtube.com/shorts/vGQZuTfIWnU"},
-        {"title": "Rich vs Poor", "views": 26000000, "url": "https://www.youtube.com/shorts/55ezEOnK1Nk"},
-        {"title": "Middle-Class vs. Rich Mindset", "views": 953000, "url": "https://www.youtube.com/shorts/C6BJlVtmxgo"}
+        {
+          "title": "rich vs poor parents buying you a car",
+          "views": 8800000,
+          "url": "https://www.youtube.com/shorts/vGQZuTfIWnU"
+        },
+        {
+          "title": "Rich vs Poor",
+          "views": 26000000,
+          "url": "https://www.youtube.com/shorts/55ezEOnK1Nk"
+        },
+        {
+          "title": "Middle-Class vs. Rich Mindset",
+          "views": 953000,
+          "url": "https://www.youtube.com/shorts/C6BJlVtmxgo"
+        },
+        {
+          "title": "Things Poor People Do That Rich People Don't",
+          "views": 6340389,
+          "url": "https://www.youtube.com/shorts/V7OZd5zJcK4"
+        },
+        {
+          "title": "Rich Parents Don't Raise Kids Like This",
+          "views": 3719883,
+          "url": "https://www.youtube.com/shorts/Ibb4xOMTiWU"
+        },
+        {
+          "title": "The Difference Between Rich & Billionaire Rich",
+          "views": 3624376,
+          "url": "https://www.youtube.com/shorts/MV4MdRHC2NA"
+        }
       ]
     },
     {
-      "id": "secret_of_rich", "format": "short", "markets": ["IN", "US"],
+      "id": "secret_of_rich",
+      "format": "short",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "What the rich know (and don't tell you)",
       "emotion": "curiosity and a feeling of being let in on a secret",
       "hook": "A rich mentor character says the secret line first: 'Billionaires don't sell their shares. They borrow against them.' The other character: 'Wait, what?'",
       "beats": "the secret in one line -> the normal person's way, with its cost computed -> the rich way step by step, figures computed -> why it works (legal, how) -> the twist or limit (who it doesn't work for) -> loop line",
-      "titles": ["How billionaires never pay tax", "Why the rich never sell", "The loan rich people love and you're scared of"],
+      "titles": [
+        "How billionaires never pay tax",
+        "Why the rich never sell",
+        "The loan rich people love and you're scared of"
+      ],
       "examples": [
-        {"title": "How Billionaires never pay Taxes", "views": 54000000, "url": "https://www.youtube.com/shorts/klS_tpY7V04"},
-        {"title": "How to Avoid Paying Taxes (Legally)", "views": 14000000, "url": "https://www.youtube.com/shorts/luo0aKcAyIs"},
-        {"title": "How Billionaires AVOID Paying Tax", "views": 13000000, "url": "https://www.youtube.com/shorts/oh6owoiGFp8"}
+        {
+          "title": "How Billionaires never pay Taxes",
+          "views": 54000000,
+          "url": "https://www.youtube.com/shorts/klS_tpY7V04"
+        },
+        {
+          "title": "How to Avoid Paying Taxes (Legally)",
+          "views": 14000000,
+          "url": "https://www.youtube.com/shorts/luo0aKcAyIs"
+        },
+        {
+          "title": "How Billionaires AVOID Paying Tax",
+          "views": 13000000,
+          "url": "https://www.youtube.com/shorts/oh6owoiGFp8"
+        },
+        {
+          "title": "This Is How RICH PEOPLE Borrow MONEY",
+          "views": 9263906,
+          "url": "https://www.youtube.com/shorts/RZdRTW8xybs"
+        },
+        {
+          "title": "What's a money move only rich people know that sounds completely insane?",
+          "views": 7639307,
+          "url": "https://www.youtube.com/shorts/IYVO-_TfXZY"
+        },
+        {
+          "title": "Billionaire Reveals Why He Took On $2 BILLION in Debt",
+          "views": 3027582,
+          "url": "https://www.youtube.com/shorts/U7ioIch9Mg8"
+        }
       ]
     },
     {
-      "id": "trap_alert", "format": "short", "markets": ["IN", "US"],
+      "id": "trap_alert",
+      "format": "short",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "The trap",
       "emotion": "fear of being cheated, then relief",
       "hook": "The shocking number on screen in the first second: 'This ₹2,000 EMI costs you ₹1.4 lakh.' / 'This $0 down car costs $11,000 extra.'",
       "beats": "the shock number -> how the trap looks friendly (0% EMI, minimum due, BNPL, free trial) -> how it really takes your money, computed -> who it is built for (the company's side) -> the one move that beats it -> loop line",
-      "titles": ["The middle class EMI trap", "The 0% EMI trick", "Why 'minimum due' is a trap"],
+      "titles": [
+        "The middle class EMI trap",
+        "The 0% EMI trick",
+        "Why 'minimum due' is a trap"
+      ],
       "examples": [
-        {"title": "The Middle Class EMI Trap", "views": 7000000, "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"},
-        {"title": "Don't fall into the debt trap", "views": 862000, "url": "https://www.youtube.com/shorts/7KsKkXga0gs"},
-        {"title": "Filing Bankruptcy on $1.3 Million of DEBT (Caleb Hammer, 28 s, 4 days old)", "views": 1094401, "url": "https://youtube.com/shorts/SzTWCWHzMJQ"},
-        {"title": "3 things to never do with a credit card (TED-Ed, long, animated, 6 days old)", "views": 824274, "url": "https://youtube.com/watch?v=av3zdxYvCp8"}
+        {
+          "title": "The Middle Class EMI Trap",
+          "views": 7000000,
+          "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
+        },
+        {
+          "title": "Don't fall into the debt trap",
+          "views": 862000,
+          "url": "https://www.youtube.com/shorts/7KsKkXga0gs"
+        },
+        {
+          "title": "Filing Bankruptcy on $1.3 Million of DEBT (Caleb Hammer, 28 s, 4 days old)",
+          "views": 1094401,
+          "url": "https://youtube.com/shorts/SzTWCWHzMJQ"
+        },
+        {
+          "title": "3 things to never do with a credit card (TED-Ed, long, animated, 6 days old)",
+          "views": 824274,
+          "url": "https://youtube.com/watch?v=av3zdxYvCp8"
+        }
       ]
     },
     {
-      "id": "how_they_make_money", "format": "short", "markets": ["IN", "US"],
+      "id": "how_they_make_money",
+      "format": "short",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "How they really make money",
       "emotion": "curiosity, a little outrage",
       "hook": "'Your bank pays you 3%. Here's what it does with your money.' A thing everyone uses, a business model nobody thinks about.",
       "beats": "the everyday thing (bank, credit card, airline, food app, gym, casino, cinema popcorn) -> what you pay -> where their money really comes from, computed -> the surprise -> what it means for you -> loop line",
-      "titles": ["How banks make money from your money", "How credit cards make money when you pay on time", "Why the gym wants you to quit"],
+      "titles": [
+        "How banks make money from your money",
+        "How credit cards make money when you pay on time",
+        "Why the gym wants you to quit"
+      ],
       "examples": [
-        {"title": "Monkey Economics How Bank Work", "views": 7600000, "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"},
-        {"title": "How do banks actually create money? We explain", "views": 1600000, "url": "https://www.youtube.com/shorts/5HszJ9VqI8g"}
+        {
+          "title": "Monkey Economics How Bank Work",
+          "views": 7600000,
+          "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"
+        },
+        {
+          "title": "How do banks actually create money? We explain",
+          "views": 1600000,
+          "url": "https://www.youtube.com/shorts/5HszJ9VqI8g"
+        },
+        {
+          "title": "How Banks Turn Old Cash Into Compost",
+          "views": 8214714,
+          "url": "https://www.youtube.com/shorts/c0ROPL2D6gY"
+        },
+        {
+          "title": "How McDonald's REALLY Makes Money",
+          "views": 2801534,
+          "url": "https://www.youtube.com/shorts/N4lHgcRcp5w"
+        },
+        {
+          "title": "Weird Ways Brands Make Their Money",
+          "views": 1656553,
+          "url": "https://www.youtube.com/shorts/gaFvy03NDMw"
+        }
       ]
     },
     {
-      "id": "salary_breakdown", "format": "short", "markets": ["IN", "US"],
+      "id": "salary_breakdown",
+      "format": "short",
+      "markets": [
+        "IN",
+        "US"
+      ],
       "name": "What a salary really leaves you",
       "emotion": "comparison: is that me? am I behind?",
       "hook": "'₹50,000 a month in Bangalore. Here's what's left.' / 'A $100K salary in New York, after everything.' The figure counts down as each cost lands.",
       "beats": "the salary -> tax -> rent -> food, travel, EMI, each subtracted on screen -> what is left -> what that left-over becomes if invested, computed -> loop line",
-      "titles": ["What a $100K salary really leaves you", "₹50K salary in Bangalore: what's left", "Is ₹1 lakh a month rich?"],
+      "titles": [
+        "What a $100K salary really leaves you",
+        "₹50K salary in Bangalore: what's left",
+        "Is ₹1 lakh a month rich?"
+      ],
       "examples": [
-        {"title": "What Does A $100K Salary Look Like After Expenses?", "views": 275000, "url": "https://www.youtube.com/shorts/W6FPiJtU9JE"},
-        {"title": "How much money is in your bank account?", "views": 42000000, "url": "https://www.youtube.com/shorts/IKXiyApvKjI"}
+        {
+          "title": "What Does A $100K Salary Look Like After Expenses?",
+          "views": 275000,
+          "url": "https://www.youtube.com/shorts/W6FPiJtU9JE"
+        },
+        {
+          "title": "How much money is in your bank account?",
+          "views": 42000000,
+          "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
+        }
       ]
     },
     {
-      "id": "which_one_are_you", "format": "short", "markets": ["IN", "US"],
+      "id": "which_one_are_you",
+      "format": "short",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "Which one are you?",
       "emotion": "identity: viewers place themselves and comment their level",
       "hook": "'There are 5 money levels. Most people are stuck at level 2.'",
       "beats": "level 1 to 5, a character acting each, one computed figure per level -> where most people are -> the one move to the next level -> loop line asking which one you are",
-      "titles": ["The 5 money levels: which one are you?", "Broke, stable or rich: which one are you?"],
+      "titles": [
+        "The 5 money levels: which one are you?",
+        "Broke, stable or rich: which one are you?"
+      ],
       "examples": [
-        {"title": "5 Stages to Getting Rich: Which One Are You? (Mark Tilbury, long)", "views": 2500000, "url": ""},
-        {"title": "Do These 5 Things To Win With Money", "views": 6400000, "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"}
+        {
+          "title": "5 Stages to Getting Rich: Which One Are You? (Mark Tilbury, long)",
+          "views": 2500000,
+          "url": ""
+        },
+        {
+          "title": "Do These 5 Things To Win With Money",
+          "views": 6400000,
+          "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"
+        }
       ]
     },
     {
-      "id": "guess_the_number", "format": "short", "markets": ["IN", "US"],
+      "id": "guess_the_number",
+      "format": "short",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "Guess the number",
       "emotion": "a challenge: viewers guess, then stay for the answer",
       "hook": "'How much do you need to retire at 40? Most people guess way too low.'",
       "beats": "the question with stakes -> three wrong guesses from the cast -> the working, computed step by step -> the answer lands in the last seconds -> loop line",
-      "titles": ["How much do you need to retire at 40?", "How much money is 'rich' in India?"],
+      "titles": [
+        "How much do you need to retire at 40?",
+        "How much money is 'rich' in India?"
+      ],
       "examples": [
-        {"title": "How Much Do You Need To Retire At 40?", "views": 5100000, "url": "https://www.youtube.com/shorts/Jk5ThWdybis"},
-        {"title": "3 ways to get rich before you turn 30", "views": 5200000, "url": "https://www.youtube.com/shorts/tgeNZq-E-BE"}
+        {
+          "title": "How Much Do You Need To Retire At 40?",
+          "views": 5100000,
+          "url": "https://www.youtube.com/shorts/Jk5ThWdybis"
+        },
+        {
+          "title": "3 ways to get rich before you turn 30",
+          "views": 5200000,
+          "url": "https://www.youtube.com/shorts/tgeNZq-E-BE"
+        },
+        {
+          "title": "Compound interest explained",
+          "views": 9061008,
+          "url": "https://www.youtube.com/shorts/rrpn3zo2Slo"
+        }
       ]
     },
     {
-      "id": "cost_of_habit", "format": "short", "markets": ["IN", "US"],
+      "id": "cost_of_habit",
+      "format": "short",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "What your habit really costs",
       "emotion": "guilty recognition",
       "hook": "A habit everyone has, its tiny price, then the huge total in the first two seconds.",
       "beats": "the habit -> per day -> per year -> invested instead for N years, computed -> the one small change -> loop line",
-      "titles": ["How much do impulse orders really cost you?"],
+      "titles": [
+        "How much do impulse orders really cost you?"
+      ],
       "examples": [
-        {"title": "How much do impulse orders really cost you in 15 years? (ours, best so far)", "views": 284, "url": ""}
+        {
+          "title": "How much do impulse orders really cost you in 15 years? (ours, best so far)",
+          "views": 284,
+          "url": ""
+        }
       ]
     },
     {
-      "id": "list_explained", "format": "long", "markets": ["IN", "US"],
+      "id": "list_explained",
+      "format": "long",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "Every ___ explained (a list)",
       "emotion": "completeness: 'I'll finally understand all of it'",
       "hook": "'There are 9 money traps the middle class falls into. Most people are in at least 4.'",
       "beats": "one chapter per item, each a mini story with a computed figure and a cliffhanger into the next; recap-and-tease every 2-3 min; the worst one saved for last",
-      "titles": ["Every money trap the middle class falls into, explained", "8 boring businesses that make money while you sleep"],
+      "titles": [
+        "Every money trap the middle class falls into, explained",
+        "8 boring businesses that make money while you sleep"
+      ],
       "examples": [
-        {"title": "Every Financial Trap Middle Class People Fall Into Explained", "views": 1083493, "url": ""},
-        {"title": "8 BORING BUSINESSES That Make Money While You Sleep", "views": 2303730, "url": ""},
-        {"title": "The Middle Class TRAP | Why You'll Work Till You Die (Dhruv Rathee)", "views": 10062024, "url": ""}
+        {
+          "title": "Every Financial Trap Middle Class People Fall Into Explained",
+          "views": 1083493,
+          "url": ""
+        },
+        {
+          "title": "8 BORING BUSINESSES That Make Money While You Sleep",
+          "views": 2303730,
+          "url": ""
+        },
+        {
+          "title": "The Middle Class TRAP | Why You'll Work Till You Die (Dhruv Rathee)",
+          "views": 10062024,
+          "url": ""
+        }
       ]
     },
     {
-      "id": "once_you_understand", "format": "long", "markets": ["IN", "US"],
+      "id": "once_you_understand",
+      "format": "long",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "Once you understand ___, you'll never ___",
       "emotion": "a promise of a new way of seeing money",
       "hook": "'Once you understand how money really works, you'll stop saving it.'",
       "beats": "the big claim -> the common belief -> chapter by chapter the mechanism (inflation, interest, assets vs liabilities), each with computed figures and a character story -> what changes for you -> recap",
-      "titles": ["Once you understand money, you'll stop saving it", "Once you understand interest, you'll never borrow the same way"],
+      "titles": [
+        "Once you understand money, you'll stop saving it",
+        "Once you understand interest, you'll never borrow the same way"
+      ],
       "examples": [
-        {"title": "Once You Understand MONEY, You'll Stop Saving It (LITTLE BIT BETTER, animated)", "views": 2479142, "url": ""},
-        {"title": "Once You Understand Economics, You Can't Be MANIPULATED Anymore", "views": 3700294, "url": ""}
+        {
+          "title": "Once You Understand MONEY, You'll Stop Saving It (LITTLE BIT BETTER, animated)",
+          "views": 2479142,
+          "url": ""
+        },
+        {
+          "title": "Once You Understand Economics, You Can't Be MANIPULATED Anymore",
+          "views": 3700294,
+          "url": ""
+        }
       ]
     },
     {
-      "id": "which_one_are_you", "format": "long", "markets": ["IN", "US"],
+      "id": "which_one_are_you",
+      "format": "long",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "N stages of money: which one are you?",
       "emotion": "identity and progress",
       "hook": "'There are 7 stages of money. Each one has a trap that keeps you there.'",
       "beats": "one chapter per stage: who is here, a character living it, the number that defines it, the trap, the move to the next stage",
-      "titles": ["The 7 stages of money: which one are you?"],
-      "examples": [{"title": "5 Stages to Getting Rich in 2026: Which One Are You?", "views": 2501953, "url": ""},
-        {"title": "The 7 Levels of Investing: What Changes At Every Stage (Humphrey Yang, about 6 days old)", "views": 196388, "url": "https://youtube.com/watch?v=95iRn8vKWao"}]
+      "titles": [
+        "The 7 stages of money: which one are you?"
+      ],
+      "examples": [
+        {
+          "title": "5 Stages to Getting Rich in 2026: Which One Are You?",
+          "views": 2501953,
+          "url": ""
+        },
+        {
+          "title": "The 7 Levels of Investing: What Changes At Every Stage (Humphrey Yang, about 6 days old)",
+          "views": 196388,
+          "url": "https://youtube.com/watch?v=95iRn8vKWao"
+        }
+      ]
     },
     {
-      "id": "how_they_make_money", "format": "long", "markets": ["IN", "US"],
+      "id": "how_they_make_money",
+      "format": "long",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "How ___ really makes money",
       "emotion": "curiosity about something everyone uses",
       "hook": "'Your credit card company loves you most when you pay on time. Here's why.'",
       "beats": "chapter per money stream, each computed; a character as the customer; the reveal of the biggest stream last",
-      "titles": ["How credit card companies really make money", "How banks make money from your salary account"],
-      "examples": [{"title": "Financial Bubbles Explained with Bananas (Primate Economics, animated)", "views": 1130166, "url": ""},
-        {"title": "How Did Costco Become a Members-Only Retail Giant? (CNBC)", "views": 4800000, "url": "https://glasp.co/youtube/dzejHGniMTQ"}]
+      "titles": [
+        "How credit card companies really make money",
+        "How banks make money from your salary account"
+      ],
+      "examples": [
+        {
+          "title": "Financial Bubbles Explained with Bananas (Primate Economics, animated)",
+          "views": 1130166,
+          "url": ""
+        },
+        {
+          "title": "How Did Costco Become a Members-Only Retail Giant? (CNBC)",
+          "views": 4800000,
+          "url": "https://glasp.co/youtube/dzejHGniMTQ"
+        }
+      ]
     },
     {
-      "id": "rich_vs_poor", "format": "long", "markets": ["IN", "US"],
+      "id": "rich_vs_poor",
+      "format": "long",
+      "markets": [
+        "global",
+        "IN",
+        "US"
+      ],
       "name": "Rich vs poor: ___ explained",
       "emotion": "envy and identity",
       "hook": "'Two people earn the same salary. 20 years later, one is rich. Here's every decision that made the difference.'",
       "beats": "two characters with the same salary; one chapter per decision (first salary, car, house, credit card, investing, raise); the gap computed after each; the final gap",
-      "titles": ["Same salary, different lives: rich vs poor, explained"],
-      "examples": [{"title": "Rich vs Poor Mindset (Robert Kiyosaki, Motiversity)", "views": 21887021, "url": ""}]
+      "titles": [
+        "Same salary, different lives: rich vs poor, explained"
+      ],
+      "examples": [
+        {
+          "title": "Rich vs Poor Mindset (Robert Kiyosaki, Motiversity)",
+          "views": 21887021,
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "billionaire_question",
+      "format": "short",
+      "markets": [
+        "global"
+      ],
+      "name": "Why can't a billionaire just ___?",
+      "emotion": "curiosity about famous money everyone has wondered about",
+      "hook": "The question everyone has asked, first second, over the famous person's world: 'Why can't Elon Musk just give away his money?'",
+      "beats": "the question -> the obvious answer and why it's wrong -> where the money really is (shares, not cash), figures computed -> what would happen if he tried (the price falls, the tax bill), computed -> the real answer in one line -> loop line back to the question",
+      "titles": [
+        "Why Elon Musk can't just give away his wealth",
+        "Why billionaires can't just pay off everyone's debt",
+        "The youngest billionaires: where their money came from"
+      ],
+      "examples": [
+        {
+          "title": "Why Elon Musk Can't Just \"Give Away\" His Wealth",
+          "views": 11701053,
+          "url": "https://www.youtube.com/shorts/ylTx5h2ILnY"
+        },
+        {
+          "title": "Rich Elon - Poor Billionaires",
+          "views": 10301799,
+          "url": "https://www.youtube.com/shorts/ifNXESSbw7M"
+        },
+        {
+          "title": "The Youngest Billionaires In The World",
+          "views": 4352132,
+          "url": "https://www.youtube.com/shorts/6skOh-IjMNY"
+        }
+      ]
+    },
+    {
+      "id": "money_scale",
+      "format": "short",
+      "markets": [
+        "global"
+      ],
+      "name": "Money at a scale you can't imagine",
+      "emotion": "awe: how big is a billion, really?",
+      "hook": "One note on screen, then the camera pulls back as it multiplies: 'This is one dollar. Here's a billion.'",
+      "beats": "a small amount as a thing (a note, a stack) -> each step ten or a thousand times bigger, as a physical object (a briefcase, a pallet, a room, a stadium), each figure computed -> what each step buys or how long it takes to earn -> the punchline comparison (seconds a billionaire earns it vs a lifetime for a salary) -> loop line",
+      "titles": [
+        "What $1 to $1 trillion looks like",
+        "How long it takes to spend a billion dollars",
+        "A billionaire earns your salary in…"
+      ],
+      "examples": [
+        {
+          "title": "What Can You Buy With $1 to $1 QUADRILLION?",
+          "views": 1865718,
+          "url": "https://www.youtube.com/shorts/jIs5WrvxcQ4"
+        }
+      ]
     }
   ]
 }

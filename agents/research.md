@@ -80,7 +80,7 @@ built from **demand**: what people already watch in the millions in personal fin
 the US. News is not a source of ideas any more.
 
 1. **Read the demand.** From `market.json` and a few YouTube searches (Shorts and long videos, India
-   and US English; e.g. "rich vs poor", "how billionaires", "the ___ trap", "how ___ makes money",
+   and US English, and worldwide; e.g. "rich vs poor", "billionaire", "how billionaires", "the ___ trap", "how ___ makes money",
    "salary", "retire at", "middle class"), list the finance videos with the most views in the last
    1-4 weeks and the evergreen ones with millions. Note views, age, title, channel and the format.
 2. **Update `improvement/research/formats.json`:** add a new example (title, views, url) to a format
@@ -89,7 +89,11 @@ the US. News is not a source of ideas any more.
    must be a story in `generator/variety.py` `STORIES`; if it isn't, propose adding it (route
    `adopt`) instead of writing the format. Remove nothing; the improver retires formats our own
    numbers reject.
-3. **Write 6-10 topics into the feed** (section 4), half India (`INR`) and half US (`USD`), each
+3. **Write 6-10 topics into the feed** (section 4), **two in three global** (`"reach": "global"`, USD:
+   anyone in the world can relate, no country needed: famous people and companies, how the rich
+   think and borrow, money at scale, compounding and debt; owner 2026-10-23, our best Short is one)
+   and the rest local (`"reach": "local"`, INR or USD, each with a `reach_reason`: an occasion within
+   two weeks or a local reference with 1M+ views; `generator/reach.py`). Each
    tagged with its `format` (the story id), a concrete everyday situation inside it ("rich vs poor:
    a ₹20,000 raise", "the 0% EMI phone", "what a $100K salary leaves you in New York"), the
    reference video (`demand`: title, views, url), the hook line, and `maths` inputs that make the
@@ -135,7 +139,8 @@ entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is n
 ```json
 {"id": "<DAY>-short-kebab", "title": "what the video is about, one line", "category": "salary|car|tax|...",
  "kind": "evergreen|trend|seasonal", "priority": "trending|high|normal",
- "stories": ["rich_vs_poor"], "currency": "INR|USD",
+ "stories": ["rich_vs_poor"], "currency": "USD|INR", "reach": "global|local",
+ "reach_reason": {"kind": "occasion", "name": "Diwali", "date": "YYYY-MM-DD"} or {"kind": "demand"} (local only),
  "demand": {"title": "reference video", "views": 8800000, "url": "https://..."},
  "hook": "the first spoken line",
  "templates": ["any"],

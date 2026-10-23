@@ -72,7 +72,8 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   doesn't break the loop.
 - **The cover (`thumbnail`) is required**: the layout for the format (`versus`, `secret` or `story`) as the
   README's "The cover" section says. It decides whether anyone taps the Short.
-- Write in plain English for the plan's market: an India Short talks about Indian life (salaries in
+- Write in plain English for the plan's reach: a **global** video (`topic.reach`) needs no country:
+  famous names, dollars, universal money moves, nothing only one country knows. A local India Short talks about Indian life (salaries in
   lakhs, EMIs, rent in Bangalore, the food-app habit) in simple Indian English; a US Short about US
   life ($100K salaries, car payments, credit card debt). No Hinglish, no slang only insiders know. Products by what they are ("an index fund", "a savings
   account", "a credit card"); a local product (a 401(k), an ISA, a SIP, a PPF) only in a story about

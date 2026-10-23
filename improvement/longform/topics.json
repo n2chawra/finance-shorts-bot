@@ -2,6 +2,139 @@
   "note": "Long-video topics, written by the Scout agent (agents/scout.md) and used by Studio (agents/studio.md). These first four were seeded by the owner's session to give Studio something to start on; Scout adds to them daily.",
   "topics": [
     {
+      "id": "2026-10-23-billionaires-tax-explained",
+      "format": "long",
+      "title": "Every way billionaires avoid paying tax, explained",
+      "stories": [
+        "list_explained"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Billionaires never pay Taxes",
+        "views": 54000000,
+        "url": "https://www.youtube.com/shorts/klS_tpY7V04"
+      },
+      "category": "tax",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Billionaires pay a smaller share of their wealth in tax than a teacher. Every legal trick, one by one, with the numbers.",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
+      "outline": [
+        "hook: Sharma Uncle and Rohan each make money this year; Rohan's payslip loses a fifth to tax, Sharma's billions grow and he pays almost nothing. The picture: a tax collector at two doors",
+        "promise (by 0:25): seven legal moves, from the simplest to the one that never ends, and which one anyone can copy",
+        "item 1, salary vs shares: wages taxed every month, gains only when you sell (income_tax_bands for a salary; lumpsum for shares growing untaxed)",
+        "item 2, never sell: buy, borrow, die. A loan against shares at an assumed rate instead of selling (emi vs fee_take for the tax on a sale)",
+        "item 3, the step-up at death: the gain is wiped for the heirs (lumpsum, the gain never taxed)",
+        "recap-and-tease at ~2:30",
+        "item 4, a foundation: giving shares away, keeping control",
+        "item 5, losses against gains: selling losers to cancel the tax on winners",
+        "item 6, living on a $1 salary: why the CEO doesn't need a paycheque",
+        "recap-and-tease at ~5:30",
+        "item 7 (strongest): the move anyone can copy, tax-free growth in a retirement account (sip at an assumed 8%)",
+        "ending: Sharma's one-line rule, a single CTA, disclaimer end card"
+      ],
+      "maths": "income_tax_bands, lumpsum, emi, fee_take, sip, compare",
+      "verify": [
+        "US capital gains rates and the step-up in basis at death (IRS)",
+        "All illustrative amounts said as such; no advice to copy any strategy"
+      ],
+      "found": "2026-10-23",
+      "expires": "2027-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-how-giants-make-money",
+      "format": "long",
+      "title": "How the world's biggest companies really make money",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Did Costco Become a Members-Only Retail Giant? (CNBC)",
+        "views": 4800000,
+        "url": "https://www.youtube.com/watch?v=dzejHGniMTQ"
+      },
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "You know what they sell. That's not where the money comes from.",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
+      "outline": [
+        "hook: Rohan buys a burger, a coffee, a phone and a streaming plan in one day; a gold thread runs from each to where the money really ends up",
+        "promise (by 0:25): six companies everyone knows, and the business hiding behind each",
+        "item 1, McDonald's: a landlord (fee_take on a restaurant's sales)",
+        "item 2, Costco: the membership, not the goods (fee_take on the yearly fee)",
+        "recap-and-tease at ~2:30",
+        "item 3, banks: the gap between what they pay you and what they charge (compare rates)",
+        "item 4, airlines: the loyalty points sold to card companies",
+        "item 5, Netflix and gyms: the people who forget to cancel",
+        "recap-and-tease at ~5:30",
+        "item 6 (strongest), casinos: the house edge on every bet (fee_take)",
+        "ending: the one question to ask about anything you buy, a single CTA, disclaimer end card"
+      ],
+      "maths": "fee_take, compare, lumpsum",
+      "verify": [
+        "Each company's model from its own annual report or a reputable outlet",
+        "No company is called a scam; describe how the model works"
+      ],
+      "found": "2026-10-23",
+      "expires": "2027-10-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-10-23-once-you-understand-compounding",
+      "format": "long",
+      "title": "Once you understand compound interest, you'll never waste money the same way",
+      "stories": [
+        "once_you_understand"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Once You Understand Economics, You Can't Be MANIPULATED Anymore",
+        "views": 3700294,
+        "url": "https://www.youtube.com/results?search_query=once+you+understand+economics"
+      },
+      "category": "compounding",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "The same idea makes billionaires richer and keeps card debt growing. Once you see it, you see it everywhere.",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
+      "outline": [
+        "hook: a single coin on a table that slowly fills the room; Priya smiles, Rohan panics because his is a card bill",
+        "promise (by 0:25): six places compounding works for you or against you",
+        "item 1, the penny doubled for 30 days (lumpsum at 100% per period, periods called days)",
+        "item 2, starting at 25 vs 35 (sip, compare)",
+        "recap-and-tease at ~2:30",
+        "item 3, the card balance that compounds against you (card_min_due)",
+        "item 4, fees that compound too (fee_take)",
+        "item 5, inflation, compounding in reverse (real_return)",
+        "recap-and-tease at ~5:30",
+        "item 6 (strongest): Buffett made most of his money after 60, the time effect (lumpsum over decades; his age as a sourced fact or left out)",
+        "ending: the one rule, a single CTA, disclaimer end card"
+      ],
+      "maths": "lumpsum, sip, compare, card_min_due, fee_take, real_return",
+      "verify": [
+        "Returns are assumptions, said as such",
+        "Buffett's wealth timing only if sourced"
+      ],
+      "found": "2026-10-23",
+      "expires": "2027-10-23",
+      "status": "new"
+    },
+    {
       "id": "2026-10-23-rich-borrow-poor-save",
       "format": "long",
       "title": "Why the rich borrow money and the poor pay it back",
@@ -54,205 +187,6 @@
       "status": "new"
     },
     {
-      "id": "2026-10-23-boring-businesses-india",
-      "format": "long",
-      "title": "7 boring businesses in India that quietly make lakhs",
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "8 BORING BUSINESSES That Make Money While You Sleep (Growth Story Studio)",
-        "views": 2326459,
-        "url": "https://www.youtube.com/watch?v=13q83q7rFbw"
-      },
-      "category": "business",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "How do the dull businesses on your own street (the tiffin aunty, the parking lot, the PG) actually make their money, and how long does it take to earn it back?",
-      "why_now": "'Boring businesses' is one of the biggest long finance shapes: 2.8M, 2.3M, 1.63M and 1.36M globally, and 908K for 'Boring Businesses That Are Making Millionaires in India 2026' (Think Wings). It's for Indian 22-35-year-olds who dream of a side business. `business` is a new category for the long feed. We explain the money and never tell anyone to start one: every margin is an assumption, said as one.",
-      "outline": [
-        "hook: Rohan walks past a parking lot, a tiffin kitchen and a PG building on his way to an office job that pays less than all three. The picture the video hangs on is a street of shop shutters, each lifting to show its cash counter",
-        "promise (by 0:25): seven businesses, what each makes in a month, how long each takes to pay back, and the most boring one of all is last",
-        "item 1, the tiffin service: ₹1,50,000 of orders a month at an assumed 25% margin is ₹37,500 a month, ₹4.5 L a year (fee_take). Priya's mother runs one",
-        "item 2, the parking lot: ₹90,000 a month at a 60% margin is ₹54,000 a month (fee_take); the catch is the land",
-        "item 3, the photocopy and print shop by a college: ₹80,000 a month at 40% is ₹32,000 a month (fee_take)",
-        "recap-and-tease at ~2:30: three small counters. Next: the one that needs a loan",
-        "item 4, the PG hostel: ₹2,40,000 of rent a month at 35% is ₹84,000 a month (fee_take), but a ₹20 L loan at 11% for 7 years costs ₹34,245 a month (emi). Sharma Uncle has seen PGs go empty",
-        "item 5, the water-can delivery: ₹1,20,000 a month at 20% is ₹24,000 a month (fee_take); thin margins, many trips",
-        "item 6, the laundry: ₹12 L to set up against ₹7.2 L of profit a year, so 1.7× a year's profit, almost two years to earn it back (fee_take, compare)",
-        "recap-and-tease at ~5:30: every one of them is a job with long hours. Next: the business that needs no shop at all",
-        "item 7 (strongest, ~2/3 in): the most boring business is owning a small piece of thousands of businesses. ₹10,000 a month for 20 years at an assumed 12% is ₹99.9 L (sip). Sikka grows",
-        "ending (under 30 s after the payoff): Sharma Uncle on what all seven have in common (customers who come back every month), a single CTA, disclaimer end card"
-      ],
-      "maths": "fee_take for each business's monthly profit (revenue × assumed margin, per year and over 5 years), emi for the PG loan, lumpsum at 0% for the set-up costs plus compare for payback, sip for the last item",
-      "verify": [
-        "Every revenue and margin is an assumption, said as one ('if it sells… at a margin of about…')",
-        "Business loan rates for small businesses in India around 11% or above (a bank's MSME loan page)",
-        "12% is an assumed long-run equity return, said as one",
-        "Never tell the viewer to start a business or which fund to buy"
-      ],
-      "sources": [
-        "https://www.youtube.com/watch?v=13q83q7rFbw",
-        "https://www.youtube.com/watch?v=woY8e0-aRB0",
-        "https://www.youtube.com/watch?v=vdXlkMW2nqc",
-        "https://www.youtube.com/watch?v=N98wGZxLg8E"
-      ],
-      "found": "2026-10-23",
-      "expires": "2027-10-23",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-22-bnpl-free-loans",
-      "format": "long",
-      "title": "Buy now, pay later: how a 'free' loan makes billions",
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "How 'Buy Now, Pay Later' Makes Billions From 'Free' Loans (WSJ)",
-        "views": 1927120,
-        "url": "https://www.youtube.com/watch?v=3yC8WDjCIAU"
-      },
-      "category": "bnpl",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "If pay-in-four costs me nothing, who pays, and when does it start costing me?",
-      "why_now": "BNPL is one of the biggest long-form money subjects on YouTube: Grant Rudow's 'The Buy Now Pay Later Trap, Explained' has 6.04M views (and a 2.7M follow-up), How Money Works 1.55M, Modern MBA 1.13M, WSJ 1.93M. Holiday shopping (Black Friday) is five weeks out, when US viewers use it most. For 18-30-year-old US shoppers who split everything into four. A new category for the long feed (`bnpl`), outside the blocked credit_card window.",
-      "outline": [
-        "hook: Rohan splits $300 sneakers into four $75 payments at checkout. 'Zero interest. Zero fees. So how is this a business worth billions?' The picture the video hangs on: a checkout button with a hidden pipe running from the shop's till to the lender",
-        "item 1, the shop pays: the merchant fee. $300 of BNPL shopping a month at a 5% fee is $15 a month, $180 a year, $900 over five years (fee_take), paid by the shop and built into prices",
-        "item 2, you buy more: Priya on why shops pay that fee (bigger baskets); Sikka grows with every click",
-        "recap-and-tease at ~2:30: the shop pays now. Next: the moment you start paying",
-        "item 3, the late fee: one missed $75 instalment and the fee schedule (verify the provider caps)",
-        "item 4, the longer plans: the same 'pay over time' button on a $1,500 laptop at 30% APR for 12 months is $146 a month, $255 in interest (emi)",
-        "item 5, stacking: four plans with four apps, four due dates; the calendar fills up",
-        "recap-and-tease at ~6:00: the biggest cost isn't a fee at all",
-        "item 6 (strongest, ~2/3 in): what the $300 a month would have become: invested at an assumed 8% for 10 years it is $55,250 (sip)",
-        "ending: Sharma Uncle's rule for the button; how the business really works in one picture; disclaimer end card"
-      ],
-      "maths": "fee_take ($300 a month, 5% merchant fee, 12 a year, 5 years), emi ($1,500 at 30% for 12 months), sip ($300 a month, 8% assumed, 10 years); compare for the two biggest numbers",
-      "verify": [
-        "Merchant fees for BNPL of 'as much as 5%' (WSJ, the providers' own merchant pricing pages)",
-        "Late fee amounts and caps of a named provider, or say 'late fees' without a figure",
-        "Longer BNPL plans can charge interest up to around 30-36% APR (provider disclosures, CFPB)",
-        "8% is an assumed long-run return, said as one"
-      ],
-      "sources": [
-        "https://www.youtube.com/watch?v=3yC8WDjCIAU",
-        "https://www.youtube.com/watch?v=KkN6I3gZfGI",
-        "https://www.ngpf.org/blog/wsj--dow-jones-resources/wsj-wednesday-video-how-buy-now-pay-later-makes-billions-from-free-loans/",
-        "https://www.bloomberg.com/news/articles/2024-05-09/what-is-buy-now-pay-later-how-bnpl-plans-work"
-      ],
-      "found": "2026-10-22",
-      "expires": "2027-10-22",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-22-salary-cycle-india",
-      "format": "long",
-      "title": "Once you understand where your salary goes, you'll stop waiting for a raise",
-      "stories": [
-        "once_you_understand"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "FAMILY SALARY CYCLE || Middle Class Family (Sumit Bhyan)",
-        "views": 38922837,
-        "url": "https://www.youtube.com/watch?v=u_Mnlq7RRQY"
-      },
-      "category": "budgeting",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "Why does a ₹60,000 salary disappear by the 20th, and what does the month look like once you see it?",
-      "why_now": "The salary-cycle skit is the biggest middle-class money video in India (38.9M, a 14-minute sketch), and it fits our cast-led skits exactly. Warikoo's 'Escaping the Middle Class Trap' (2.87M) and Nishant Patel (2.42M) show the 'why am I still broke' search is huge. Takes the subject (a month of salary), not the treatment: our version follows one month in chapters with computed numbers. For 22-32-year-olds on their first or second salary. Category `budgeting` is not blocked.",
-      "outline": [
-        "hook: day 1, the salary SMS lands; day 20, Rohan checks his balance and hides the phone from Priya. 'Here is where every rupee went.' The picture the video hangs on: a calendar wall, one page torn off per chapter, money draining out of a tank",
-        "day 1-3, the fixed bills: rent, the bike EMI: ₹1,00,000 at 12% for 3 years is ₹3,321 a month, ₹19,572 in interest (emi)",
-        "day 5, the phone EMI: ₹1.2 lakh phone at 16% over a year is ₹10,888 a month, ₹10,652 just for the wait (emi)",
-        "recap-and-tease at ~2:30: two EMIs took a quarter of the month. Next: the cost nobody budgets",
-        "day 10, the quiet raise in prices: ₹40,000 of monthly living costs at 6% inflation is ₹71,634 in 10 years (price_rise), so a raise that matches prices leaves you exactly here",
-        "day 15, the 'safe' savings: ₹1 lakh in a 7% FD with 6% inflation earns a real 0.9% a year (real_return)",
-        "recap-and-tease at ~6:00: Sharma Uncle has seen this month thirty years in a row; what he did differently is one line",
-        "day 20 (strongest, ~2/3 in): the ₹6,000 that was left on day 1: ₹6,000 a month for 20 years at an assumed 12% is ₹59.9 lakh (sip), ₹45.5 lakh of it gains",
-        "day 30: the same month replayed with the ₹6,000 moved to day 1; Priya, Sikka cheers",
-        "ending: 'Once you understand the cycle, the raise is not the answer, the order is.' Comment your day-20 balance; disclaimer end card"
-      ],
-      "maths": "emi x2 (bike ₹1 L 12% 3y; phone ₹1.2 L 16% 1y), price_rise (₹40,000/month, 6%, 10y), real_return (₹1 L, 7% FD, 6% inflation, 10y), sip (₹6,000/month, 12% assumed, 20y)",
-      "verify": [
-        "Two-wheeler loan rates around 10-14% and consumer-durable/phone EMI rates around 14-18% at Indian lenders (lender rate pages)",
-        "FD rates of 6-7.5% at large banks; 6% inflation is an assumption, said as one",
-        "12% is an assumed long-run equity return, never a promise"
-      ],
-      "sources": [
-        "https://www.youtube.com/watch?v=u_Mnlq7RRQY",
-        "https://www.youtube.com/watch?v=XOWlHWgT2SQ",
-        "https://www.youtube.com/watch?v=fNk93gR7_Tk"
-      ],
-      "found": "2026-10-22",
-      "expires": "2027-10-22",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-22-rich-pay-less-tax",
-      "format": "long",
-      "title": "Rich vs poor: why $100,000 of salary pays 2.5× the tax of $100,000 of gains",
-      "stories": [
-        "rich_vs_poor"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "How the rich avoid paying taxes (Vox)",
-        "views": 3903016,
-        "url": "https://www.youtube.com/watch?v=t6V9i8fFADI"
-      },
-      "category": "tax",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "Why does the same $100,000 get taxed so differently depending on whether you work for it or own something that earns it?",
-      "why_now": "'How the rich avoid taxes' is a proven long subject: Vox 3.9M, Grant Cardone 2.9M, How Money Works 1.7M. US tax season content peaks Jan-Apr but this is evergreen. Education only (how the US code treats wages vs long-term gains), never 'how to avoid tax'. For US salaried 22-35-year-olds. Category `tax` is not blocked.",
-      "outline": [
-        "hook: Rohan and Sharma Uncle both 'earn' $100,000 this year. Rohan's tax: $13,170. Sharma's: $5,168. The picture the video hangs on: two identical stacks of cash walking through two different doors, one a turnstile that takes a slice, one a revolving door",
-        "item 1, wages: the brackets explained band by band; $100,000 of salary pays $13,170, 13.2% effective, 22% on the last dollar (income_tax_bands, 2026 single, standard deduction)",
-        "item 2, the payroll slice: 7.65% FICA on wages is another $7,650 that gains never pay (fee_take)",
-        "recap-and-tease at ~2:30: the salary door takes two slices. Next: the other door",
-        "item 3, long-term gains: the 0% band up to $49,450 of taxable income, then 15%: $100,000 of gains pays $5,168, 5.2% (income_tax_bands)",
-        "item 4, the gap: $8,002 a year, 2.5× (compare)",
-        "recap-and-tease at ~6:00: the rich also have a way to spend without selling",
-        "item 5 (strongest, ~2/3 in): buy, borrow, die explained: borrowing $100,000 against assets at 6% costs $3,280 in interest for a year (emi) and no income tax; Priya explains why that works only with assets",
-        "item 6: what the rest of us can actually use: tax-advantaged accounts named only to explain them (401(k), IRA), no recommendation",
-        "ending: the two doors side by side; which door does your money go through? Disclaimer end card"
-      ],
-      "maths": "income_tax_bands x2 (wages: allowance 16,100, 2026 single brackets shifted by the deduction; gains: allowance 16,100, 0% to 65,550 gross, 15% to 561,600, 20% above), fee_take (7.65% FICA on $100,000, 1 period), compare (wage tax vs gains tax), emi ($100,000 at 6% for 12 months)",
-      "verify": [
-        "2026 single standard deduction $16,100 and single brackets 10/12/22/24/32/35/37% with tops 12,400 / 50,400 / 105,700 / 201,775 / 256,225 / 640,600 of taxable income (IRS Rev. Proc. 2025-32; my bands assume these, the writer must confirm)",
-        "2026 long-term capital gains 0% up to $49,450 and 15% up to $545,500 taxable income, single (IRS Rev. Proc. 2025-32; Kiplinger)",
-        "FICA: 6.2% Social Security + 1.45% Medicare on wages (ssa.gov / irs.gov)",
-        "The script must say it ignores state tax, NIIT and the wage cap, and that gains stacked on top of a salary are taxed differently"
-      ],
-      "sources": [
-        "https://www.youtube.com/watch?v=t6V9i8fFADI",
-        "https://www.kiplinger.com/taxes/irs-updates-capital-gains-tax-thresholds",
-        "https://clark.com/personal-finance-credit/taxes/irs-announces-new-tax-brackets-and-other-changes-for-2026/"
-      ],
-      "found": "2026-10-22",
-      "expires": "2027-10-22",
-      "status": "new"
-    },
-    {
       "id": "2026-10-21-money-levels-india",
       "format": "long",
       "title": "The 6 levels of money in India: which one are you?",
@@ -302,363 +236,6 @@
       "used_by": "L-20261021-01"
     },
     {
-      "id": "2026-10-21-how-credit-cards-make-money",
-      "format": "long",
-      "title": "How credit card companies make money from you, even when you pay on time",
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "How Credit Cards Work? Should I own a Credit Card? (Dhruv Rathee)",
-        "views": 5833344,
-        "url": "https://www.youtube.com/watch?v=cYMeZs_EcqE"
-      },
-      "category": "credit_card",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "Where does a credit card company's money really come from, and which of those streams am I paying?",
-      "why_now": "Proven in India at long length: Dhruv Rathee 5.8M (11:51), Nitish Rajput 'Reality of Credit Cards' 7.8M (16:47), Warikoo 'Credit cards se paise aise kamate hain' 4.5M (17:55); TED-Ed's '3 things to never do with a credit card' is the #2 fastest-growing long video this week (~6,600 views/h). For first-salary card holders. credit_card is in the Shorts category window today; it clears in a few videos.",
-      "outline": [
-        "hook (bill scene): Rohan pays his card in full every month and feels clever. 'The card company still made money from you this month. Here are its seven ways, and the biggest one is last.' The picture: a pipe network under the city, seven pipes into one bank vault",
-        "1 the swipe fee the shop pays on every purchase (a share of the bill; fee_take maths kind, see backlog)",
-        "2 the annual fee and the 'waived if you spend' target that makes you spend",
-        "3 the late fee: one day late, and interest on the whole statement",
-        "recap-and-tease after 3: three pipes, and the next one looks free",
-        "4 the 'no-cost EMI': who pays the interest (emi at 0% next to the same loan at 16%; the processing fee)",
-        "5 cash from an ATM: a fee plus interest from day one",
-        "6 the minimum due: ₹50,000 paying only the minimum costs ₹1.4 L and 15 years (card_min_due) - reveal at ~two thirds",
-        "recap-and-tease: the biggest pipe is people like Rohan's friend",
-        "7 the biggest stream, interest from people who carry a balance: 42% a year, 51% effective (card_min_due figures); Sharma Uncle has seen it",
-        "ending: which pipes you can close (pay in full, autopay, never cash); disclaimer end card"
-      ],
-      "maths": "card_min_due (₹50,000, 3.5%/month, 5%, ₹200), emi x2 (₹60,000 for 12 months at 0% and at 16%), fee_take (new kind: swipe fee as a share of a year's spending)",
-      "verify": [
-        "Merchant discount rate / interchange range on Indian credit cards (RBI/NPCI or issuer disclosures)",
-        "RBI Master Direction on credit cards (2022): late fee only after 3 days past due, interest rules, minimum due cannot cause negative amortisation",
-        "Cash advance fee and interest from the withdrawal date (issuer MITC)",
-        "No-cost EMI: RBI 2013 circular on 0% EMI schemes; merchant pays the discount, processing fee and GST remain"
-      ],
-      "sources": [
-        "https://www.youtube.com/watch?v=cYMeZs_EcqE",
-        "https://www.youtube.com/watch?v=pBO9JLe3iV8",
-        "https://www.youtube.com/watch?v=dbBbaQqIOu0",
-        "https://youtube.com/watch?v=av3zdxYvCp8"
-      ],
-      "found": "2026-10-21",
-      "expires": "2027-10-21",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-21-how-banks-make-money",
-      "format": "long",
-      "title": "Your bank pays you $253. Here's what it makes with your money",
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "Banking Explained – Money and Credit (Kurzgesagt, animated)",
-        "views": 10924730,
-        "url": "https://www.youtube.com/watch?v=fTTGALaRZoc"
-      },
-      "category": "banking",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "What does my bank actually do with the money in my savings account, and how much does it earn from it?",
-      "why_now": "'How banks work' is one of the most-watched money shapes on YouTube: Kurzgesagt 10.9M (animated), Ray Dalio's 'How the Economic Machine Works' 130M, Wendover's 'How Airlines Quietly Became Banks' 7.4M. US half of the audience, a category no long video has used. For anyone with a savings account at a big bank.",
-      "outline": [
-        "hook (prop scene): $10,000 in a savings account at 0.5% earns $253 in 5 years (lumpsum). The same $10,000 lent as a car loan at 7% earns the bank $1,881 (emi). The picture: one stack of cash that walks out of the vault and comes back bigger",
-        "1 the spread: pay little on deposits, lend at more (lumpsum vs emi, side by side)",
-        "2 the mortgage: $300,000 at 6.5% for 30 years pays $382,633 in interest, more than the house (emi)",
-        "recap-and-tease: two streams so far, and the next one you pay without noticing",
-        "3 fees: overdraft and monthly maintenance (sourced, verify)",
-        "4 your card swipes (fee_take)",
-        "5 the float: money in transit earns while it waits",
-        "recap-and-tease: the last one is the reason the savings rate stays low",
-        "6 the biggest: you leave money in a 0.5% account; the same $10,000 at a 4% high-yield account (lumpsum) - reveal at ~two thirds",
-        "ending: Priya's two moves (know your rate, move idle cash); Sharma Uncle: 'banks don't hide this, people just don't ask'; disclaimer end card"
-      ],
-      "maths": "lumpsum x2 ($10,000 for 5 years at 0.5% and at 4%), emi x2 ($10,000 car loan 7%/5y; $300,000 mortgage 6.5%/30y), fee_take (new kind)",
-      "verify": [
-        "FDIC national average savings rate (fdic.gov national rates and rate caps) - the 0.5% must match or be said as an example",
-        "Average new-car loan and 30-year mortgage rates (Federal Reserve G.19 / Freddie Mac PMMS)",
-        "CFPB data on overdraft fee revenue and the typical overdraft fee",
-        "Interchange on US credit cards about 2% (Federal Reserve / CFPB)"
-      ],
-      "sources": [
-        "https://www.youtube.com/watch?v=fTTGALaRZoc",
-        "https://www.youtube.com/watch?v=PHe0bXAIuk0",
-        "https://www.youtube.com/watch?v=ggUduBmvQ_4"
-      ],
-      "found": "2026-10-21",
-      "expires": "2027-10-21",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-21-middle-class-traps",
-      "format": "long",
-      "title": "Every money trap the middle class falls into, explained",
-      "category": "debt",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "list_explained"
-      ],
-      "currency": "INR",
-      "demand": {
-        "title": "The Middle Class TRAP | Why You'll Work Till You Die",
-        "views": 10063105,
-        "url": "https://www.youtube.com/watch?v=D7Y-nJ8uiEA"
-      },
-      "hook": "There are seven money traps the middle class falls into. Most families are in at least four.",
-      "angle": "Seven traps, one chapter each, each priced in rupees.",
-      "found": "2026-10-21",
-      "expires": "2027-01-19",
-      "status": "new",
-      "why_now": "Owner reset 2026-10-21: a format with proven demand (see demand).",
-      "outline": [
-        "hook: seven traps, most families are in four",
-        "1 the EMI phone",
-        "2 the credit card minimum",
-        "3 the car loan at 25",
-        "4 lifestyle creep after a raise",
-        "5 the FD that loses to inflation",
-        "6 no emergency fund",
-        "7 the big wedding loan (worst, last)",
-        "recap-and-tease after 3 and 5",
-        "what the rich family does instead"
-      ],
-      "maths": "emi, card_min_due, sip, lumpsum"
-    },
-    {
-      "id": "2026-10-21-once-you-understand-interest",
-      "format": "long",
-      "title": "Once you understand interest, you'll never borrow the same way",
-      "category": "interest_rates",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "once_you_understand"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "Once You Understand MONEY, You'll Stop Saving It",
-        "views": 2479142,
-        "url": ""
-      },
-      "hook": "Once you understand how interest really works, you'll never look at a loan the same way.",
-      "angle": "Interest working for you vs against you, chapter by chapter with the cast.",
-      "found": "2026-10-21",
-      "expires": "2027-01-19",
-      "status": "new",
-      "why_now": "Owner reset 2026-10-21: a format with proven demand (see demand).",
-      "outline": [
-        "hook: the same 20% works for the bank and against you",
-        "what interest really is",
-        "the card at 22%",
-        "the car loan",
-        "the mortgage's first years",
-        "the same maths working for you: investing",
-        "why the rich borrow",
-        "what changes for you"
-      ],
-      "maths": "card_min_due, emi, lumpsum, sip"
-    },
-    {
-      "id": "2026-10-21-same-salary-rich-vs-poor",
-      "format": "long",
-      "title": "Same salary, different lives: rich vs poor, explained",
-      "category": "wealth",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "rich_vs_poor"
-      ],
-      "currency": "USD",
-      "demand": {
-        "title": "RICH VS POOR MINDSET | An Eye Opening Interview with Robert Kiyosaki",
-        "views": 21887021,
-        "url": ""
-      },
-      "hook": "Two people earn the same salary. Twenty years later, one is rich. Here is every decision that made the difference.",
-      "angle": "Six decisions, the gap computed after each.",
-      "found": "2026-10-21",
-      "expires": "2027-01-19",
-      "status": "new",
-      "why_now": "Owner reset 2026-10-21: a format with proven demand (see demand).",
-      "outline": [
-        "hook: same salary, 20 years, one rich",
-        "first salary",
-        "the car",
-        "the credit card",
-        "the raise",
-        "the house",
-        "investing",
-        "the final gap"
-      ],
-      "maths": "emi, card_min_due, sip, lumpsum"
-    },
-    {
-      "id": "2026-10-16-rent-vs-buy",
-      "format": "long",
-      "title": "Rent or buy a home in India: the honest maths",
-      "category": "home_loan",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "Whether buying beats renting once you count the interest, not just the EMI",
-      "why_now": "The question every salaried Indian in their thirties argues about, and almost nobody runs the numbers on properly.",
-      "outline": [
-        "hook: the total interest on a typical home loan, as one number",
-        "the setup: the same person, same city, two choices",
-        "the EMI, and what it really adds up to over the full term",
-        "what the renter does with the difference, invested",
-        "chart: loan outstanding against the renter's invested pot",
-        "the costs nobody puts in the spreadsheet: registration, maintenance, stamp duty",
-        "the catch: a house is forced saving, and rent rises",
-        "when buying clearly wins, and when it clearly doesn't",
-        "what to actually do",
-        "recap",
-        "end"
-      ],
-      "maths": "one emi for the loan, one sip for the renter's invested difference, one inflation for rising rent",
-      "verify": [
-        "Typical home loan rates in India at the time of writing",
-        "Stamp duty and registration ranges, which vary by state"
-      ],
-      "sources": [],
-      "found": "2026-10-16",
-      "expires": "2027-10-16",
-      "status": "rejected",
-      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot.",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
-      "id": "2026-10-16-nps-vs-mutual-fund",
-      "format": "long",
-      "title": "NPS or a plain mutual fund for retirement?",
-      "category": "nps",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "Whether the NPS tax break is worth the lock-in and the annuity rule",
-      "why_now": "NPS is pushed hard every March for the tax deduction, and the trade-offs are rarely explained.",
-      "outline": [
-        "hook: the tax saved in one year, and what it costs in flexibility",
-        "the setup: the same monthly amount into each",
-        "how NPS actually works: tiers, allocation, the lock-in",
-        "the tax break, computed properly",
-        "chart: both pots growing to retirement",
-        "the annuity rule and what it does to the end result",
-        "the catch: you cannot get it all as cash",
-        "who NPS genuinely suits",
-        "what to do",
-        "recap",
-        "end"
-      ],
-      "maths": "two sips at the same rate (one standing for NPS, one for the fund), plus an inflation one for the retirement number",
-      "verify": [
-        "Current NPS tax deduction limits and sections",
-        "The share of the NPS corpus that must buy an annuity, and the tax treatment of the rest"
-      ],
-      "sources": [],
-      "found": "2026-10-16",
-      "expires": "2027-10-16",
-      "status": "rejected",
-      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot.",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
-      "id": "2026-10-16-emergency-fund-size",
-      "format": "long",
-      "title": "How big should your emergency fund actually be?",
-      "category": "emergency_fund",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "How many months of expenses, where to keep it, and what it costs you to hold it",
-      "why_now": "Everyone repeats 'six months' without checking what it costs to hold that much in cash.",
-      "outline": [
-        "hook: what a year of expenses held in a savings account loses to inflation",
-        "what an emergency fund is actually for",
-        "the three-month, six-month and twelve-month versions",
-        "chart: the real value of each, eroding over time",
-        "where to keep it: savings, sweep-in, liquid funds",
-        "the catch: too big a fund is its own cost",
-        "how to size yours in one minute",
-        "recap",
-        "end"
-      ],
-      "maths": "one inflation on a year of expenses, one fd for the sweep-in option, one sip for the money not held back",
-      "verify": [
-        "Typical savings account and liquid fund returns in India",
-        "Any tax treatment mentioned for liquid funds"
-      ],
-      "sources": [],
-      "found": "2026-10-16",
-      "expires": "2027-10-16",
-      "status": "rejected",
-      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot.",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
-      "id": "2026-10-16-sip-stepup",
-      "format": "long",
-      "title": "Raising your SIP every year: what it's really worth",
-      "category": "sip",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "What a yearly increase does to the final number, compared with starting bigger",
-      "why_now": "A step-up is the easiest change a salaried investor can make, and the effect is dramatic and easy to compute.",
-      "outline": [
-        "hook: the gap between a flat SIP and one raised every year",
-        "the setup: same start, one raises with salary",
-        "the flat SIP result",
-        "the stepped-up result",
-        "chart: the two side by side over twenty years",
-        "why a small yearly rise compounds so hard",
-        "the catch: it only works if you automate it",
-        "how to set it up",
-        "recap",
-        "end"
-      ],
-      "maths": "two sips at the same rate, the second standing for the stepped-up contributions, plus one inflation for context",
-      "verify": [
-        "That the step-up percentage used is realistic against typical salary growth"
-      ],
-      "sources": [],
-      "found": "2026-10-16",
-      "expires": "2027-10-16",
-      "status": "rejected",
-      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot.",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
       "id": "2026-10-18-repo-hike-your-emi",
       "format": "long",
       "title": "RBI raised the repo rate: what it really does to your home loan EMI",
@@ -703,122 +280,6 @@
       "reason": "made as L-20261018-01 on 2026-10-18"
     },
     {
-      "id": "2026-10-18-prepay-emi-or-tenure",
-      "format": "long",
-      "title": "Prepaying your home loan: cut the EMI or cut the years?",
-      "category": "home_loan",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "With a bonus in hand, which prepayment choice saves more, by how much, and when the 'worse' one is still right",
-      "why_now": "A decision every home-loan holder faces at bonus time, searched all year ('reduce EMI or tenure'); more pressing now that rates are rising. Fintech and lender blogs answer it with tables; nobody shows it as a story.",
-      "outline": [
-        "hook: Rohan gets a ₹3 lakh bonus. Two buttons on the bank's app; one saves lakhs more",
-        "chapter 1, the loan: ₹40 lakh, 20 years; why the first years are mostly interest (the interest monster eating the early EMIs)",
-        "choice A, cut the EMI: same years, smaller EMI, interest saved",
-        "choice B, cut the years: same EMI, the calendar stops early; interest saved",
-        "towers: A vs B interest saved, the reveal",
-        "Sharma: 'I prepaid in year fifteen once. It barely mattered' - timing chart, the same prepayment in year 2 vs year 12",
-        "chapter 2, when A is right: a tight budget, or investing the freed EMI (a sip at 12% vs the loan rate)",
-        "split: B's interest saved vs A plus the freed EMI invested",
-        "the catch: fixed-rate loans can charge prepayment fees; floating ones for individuals generally cannot",
-        "checklist: what to ask the bank before you prepay",
-        "recap",
-        "end"
-      ],
-      "maths": "emi for the base loan and for the reduced-EMI case (smaller amount, same months); the reduced-tenure months and interest need a new loan_prepay kind (backlog 2026-10-18-maths-loan-tenure); one sip for the invested freed EMI. Not usable until that kind exists unless Studio tells only choice A plus the sip.",
-      "verify": [
-        "RBI rule that individual floating-rate home loans carry no prepayment charges",
-        "Typical fixed-rate prepayment charges"
-      ],
-      "sources": [
-        "https://www.finnovate.in/learn/blog/reduce-emi-vs-reduce-tenure-for-loan-prepayment",
-        "https://homefirstindia.com/blog/article/reduce-emi-or-reduce-tenure-for-home-loan-prepayment/"
-      ],
-      "found": "2026-10-18",
-      "expires": "2027-10-18",
-      "status": "rejected",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
-      "id": "2026-10-18-lifestyle-inflation",
-      "format": "long",
-      "title": "Your salary went up. Why do you still feel broke?",
-      "category": "inflation",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "How spending that rises with every raise (plus inflation) eats the raise, and what saving half of each hike is worth over 15 years",
-      "why_now": "'Why a normal life now feels like a luxury' was the fastest-growing long video in our niche this week (~13.6k views/hour); the feeling is universal for 25-35 salaried viewers and fully computable.",
-      "outline": [
-        "hook: Rohan's salary doubled in eight years. His savings didn't move. The one number that explains it",
-        "chapter 1, the treadmill (the one picture): every raise speeds up the treadmill, he stays in place",
-        "what ₹40,000 of monthly expenses costs in 10 and 15 years at 6% inflation (bignumber)",
-        "Rohan upgrades: the flat, the car EMI, the deliveries; each raise spent the month it lands",
-        "Priya's rule: half of every raise goes to a SIP before it hits the account",
-        "chapter 2, a year of it: the first hike invested, small",
-        "chart: Priya's SIP pot over 15 years vs Rohan's zero",
-        "reveal: the gap at year 15",
-        "Sharma: 'the raise is real, the extra lifestyle is a loan from your future self'",
-        "chapter 3, what to do: automate the split on appraisal day; checklist",
-        "recap",
-        "end"
-      ],
-      "maths": "a lumpsum at the inflation rate for future expenses (₹40,000 at 6% over 10 and 15 years); a sip for the invested half-raise (e.g. ₹5,000 at 11% for 15 years; a true yearly step-up needs the sip_stepup kind, backlog 2026-10-18-maths-sip-stepup, so tell it as one invested hike until then)",
-      "verify": [
-        "CPI inflation range in recent years from MoSPI, to justify 6% as an assumption",
-        "That 11% equity return is stated as an assumption"
-      ],
-      "sources": [
-        "https://resources.instahyre.com/news/is-a-six-figure-salary-no-longer-enough-for-indias-middle-class/"
-      ],
-      "found": "2026-10-18",
-      "expires": "2027-10-18",
-      "status": "rejected",
-      "note": "2026-10-19: priority lowered from high because the channel went global on 2026-10-18 and about one long video in five may be an India story; keep it for that slot.",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
-      "id": "2026-10-18-30k-salary-plan",
-      "format": "long",
-      "title": "Earning ₹30,000 a month: a money plan that actually adds up",
-      "category": "budgeting",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "Advice built for ₹1 lakh salaries breaks at ₹30,000; what a realistic split, a small SIP and a starter emergency fund are worth",
-      "why_now": "A warikoo video on exactly this pain is growing fast this week (~3.9k views/hour). Most of our audience starts here; we take the subject, not the treatment: our version is the numbers.",
-      "outline": [
-        "hook: '50-30-20' on ₹30,000 leaves ₹6,000. What ₹2,000 a month really becomes",
-        "chapter 1, the honest budget: rent and home first (Rohan's actual month, towers of where it goes)",
-        "the first ₹1,000: an emergency buffer before investing (calendar flipping the months to three months of expenses)",
-        "chapter 2, the small SIP: ₹2,000 a month at 11% for 20 years (snowball)",
-        "reveal: final vs invested, the ratio",
-        "Sharma: 'I started with ₹500. Starting mattered more than the amount'",
-        "split: start now with ₹2,000 vs wait five years and start with ₹4,000",
-        "the traps at this salary: buy-now-pay-later, card minimum due (quick card_min_due beat)",
-        "chapter 3, when the salary grows: raise the SIP with it",
-        "checklist: three things for this month",
-        "recap",
-        "end"
-      ],
-      "maths": "sip ₹2,000 at 11% for 20 years; two sip for start-now vs start-later; card_min_due for the trap beat; plain arithmetic of the budget split as code figures",
-      "verify": [
-        "That the 50-30-20 rule is described as a common rule of thumb, not an official guideline"
-      ],
-      "sources": [],
-      "found": "2026-10-18",
-      "expires": "2027-10-18",
-      "status": "rejected",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
       "format": "long",
       "templates": [
         "long_story"
@@ -861,215 +322,6 @@
       ],
       "expires": "2027-10-19",
       "note": "Made as L-20261019-02 (qa_passed, 277 s) on 2026-10-19; the first attempt L-20261019-01 failed on layout."
-    },
-    {
-      "format": "long",
-      "templates": [
-        "long_story"
-      ],
-      "found": "2026-10-19",
-      "status": "rejected",
-      "id": "2026-10-19-401k-match",
-      "title": "Skipping your 401(k) match: what that free money is worth by 65",
-      "category": "retirement",
-      "kind": "evergreen",
-      "priority": "high",
-      "angle": "What an employer match of $200 a month grows to over a career, what waiting ten years to take it costs, and why vesting decides whether it is really yours",
-      "why_now": "Fidelity reports more than one in five employees leave some of their match on the table; 'how to invest for beginners' (Nischa, ~4.4k views/hour) and 'the 7 levels of investing' (Humphrey Yang, ~2.2k/h) are this week's fastest-growing beginner long videos, and the match is step one in nearly every beginner plan. Evergreen, US (USD), computable with sip. For 22-32 viewers in a first job.",
-      "outline": [
-        "hook: Priya slides an envelope with $200 across the table every month. Rohan pushes it back because he 'can't spare' his own share. Stake on screen in 5 s: what that envelope is worth at 65",
-        "the promise: three numbers, what the match is, what skipping it costs, and the catch nobody reads",
-        "chapter 1, the envelope (the one picture): how a match works, your contribution unlocks theirs (illustrative formula, stated as one example)",
-        "Rohan's salary $60,000; a 4% match is $200 a month (computed)",
-        "chart: the match alone, invested for 40 years at an assumed 7% (sip); reveal the pot",
-        "tease: 'but Rohan has a plan: start at 35'",
-        "chapter 2, early vs late: same $200 from 25 vs from 35 (two sips), side by side; the ten-year gap reveal (best moment, about two thirds in)",
-        "Sharma: 'the envelope doesn't wait for you'",
-        "chapter 3, the catch: vesting, cliff vs graded explained in words; leaving early can mean leaving some behind",
-        "what to do: find your match formula, contribute at least enough to get all of it, check your vesting date; checklist",
-        "Sikka cheers; recap of the figures",
-        "disclaimer"
-      ],
-      "maths": "sip (200 a month, 7%, 40 years: ~$528K from $96K put in) vs sip (200, 7%, 30 years: ~$245K). Optional: salary share as a figure computed from 60000*4%. Currency USD.",
-      "verify": [
-        "IRS: maximum vesting schedules for employer matching contributions (3-year cliff or 6-year graded), irs.gov",
-        "That dollar-for-dollar on the first 3% plus 50% of the next 2% is a common (safe-harbor) formula, irs.gov",
-        "Fidelity: share of workers not contributing enough to get the full match",
-        "7% is stated as an assumed long-run return, not a promise"
-      ],
-      "sources": [
-        "https://www.nasdaq.com/articles/heres-how-much-the-average-401k-match-is-worth",
-        "https://www.empower.com/the-currency/work/how-does-401k-matching-work"
-      ],
-      "expires": "2027-10-19",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
-      "format": "long",
-      "templates": [
-        "long_story"
-      ],
-      "found": "2026-10-19",
-      "status": "rejected",
-      "id": "2026-10-19-savings-vs-inflation",
-      "title": "Is your savings account quietly losing money? The real-return maths",
-      "category": "savings",
-      "kind": "evergreen",
-      "priority": "high",
-      "angle": "What $10,000 does over ten years in a 0.45% account, in a ~4% high-yield account, and against prices rising ~3% a year: which one actually keeps up",
-      "why_now": "The September US CPI release (14 Oct) put headline inflation back in the news; savers keep asking whether their bank pays enough. A universal question (works for US, UK, EU viewers in dollars), evergreen, computable with three lumpsums. For anyone with an emergency fund parked in a big-bank account.",
-      "outline": [
-        "hook: Rohan's banking app shows +$45 interest for the year and a party emoji. Stake on screen in 5 s: his groceries went up more than that",
-        "the promise: one test that tells you if your savings are growing or shrinking",
-        "chapter 1, the melting ice cube (the one picture): money in a warm room; interest is the freezer, inflation the heat",
-        "the big-bank account: $10,000 at 0.45% for 10 years (lumpsum)",
-        "what the same basket costs in 10 years at an assumed 3% a year (lumpsum on prices)",
-        "reveal: the gap between the two, the ice cube shrinking",
-        "tease: 'Priya's account is in the same room'",
-        "chapter 2, the high-yield account: $10,000 at an assumed 4% (lumpsum); side by side with prices (best moment, about two thirds in)",
-        "Sharma: 'the rate on the sign is not the rate you keep', inflation and tax explained in words, no new numbers",
-        "chapter 3, what to do: the break-even test (rate vs inflation), where an emergency fund belongs, rates change so check yearly; checklist",
-        "Sikka cheers; recap",
-        "disclaimer"
-      ],
-      "maths": "lumpsum (10000, 0.45%, 10: ~$10.5K), lumpsum (10000, 4%, 10: ~$14.8K), lumpsum (10000, 3%, 10: prices ~$13.4K). All rates stated as assumptions. Currency USD.",
-      "verify": [
-        "FDIC national average savings rate (fdic.gov national rates and rate caps), to justify 0.45%",
-        "BLS CPI-U 12-month change for September 2026 (bls.gov), if quoted at all; otherwise keep 3% as a plain assumption",
-        "That high-yield account rates of ~4% are available in late 2026, stated as an assumption"
-      ],
-      "sources": [
-        "https://www.raisin.com/en-us/news/breaking-down-cpi-numbers-for-savers/",
-        "https://www.bankrate.com/banking/savings-money-market-account-rate-forecast/"
-      ],
-      "expires": "2027-10-19",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
-      "format": "long",
-      "templates": [
-        "long_story"
-      ],
-      "found": "2026-10-19",
-      "status": "rejected",
-      "id": "2026-10-19-invest-200-a-month",
-      "title": "Investing $200 a month: what it becomes, and the 1% that eats a quarter of it",
-      "category": "investing",
-      "kind": "evergreen",
-      "priority": "high",
-      "angle": "What $200 a month in a broad index fund becomes over 40 years at an assumed 7%, and how a 1% yearly fee cuts the pot by about a quarter",
-      "why_now": "'How to invest for beginners in 2027' (Nischa, ~4.4k views/hour) is the fastest-growing beginner long video in the niche this week; 'how much should I invest a month' is one of the most repeated beginner questions on forums. The fee angle is ours: a number most beginner videos skip, fully computable with two sips. Evergreen, global (USD).",
-      "outline": [
-        "hook: two identical $200 deposits, two identical funds, same market; 40 years later one pot is $128K smaller. Stake on screen in 5 s",
-        "the promise: what $200 becomes, why starting matters more than picking, and the one line in the fund factsheet to check",
-        "chapter 1, the snowball (the one picture): Rohan and Priya each start a snowball down the same hill",
-        "how an index fund works, in plain words (no fund names)",
-        "chart: $200 a month for 40 years at an assumed 7% (sip); invested vs grown",
-        "tease: 'Rohan's snowball has a hole in it'",
-        "chapter 2, the leak: Rohan's fund costs 1% a year, so he keeps about 6% (sip at 6%); side by side; reveal the gap (best moment, about two thirds in)",
-        "Sharma: 'the fee looks tiny because it is charged on everything, every year'",
-        "what can go wrong: markets fall, sometimes for years; the 7% is an assumption, not a promise",
-        "chapter 3, what to do: emergency fund first, then a regular amount, check the expense ratio, don't stop in a crash; checklist",
-        "Sikka cheers; recap of the three figures",
-        "disclaimer"
-      ],
-      "maths": "sip (200, 7%, 40: ~$528K from $96K) vs sip (200, 6%, 40: ~$400K). The gap is computed by code from the two results. Currency USD.",
-      "verify": [
-        "SEC / investor.gov: how ongoing fund fees reduce returns over time",
-        "That 7% is stated as an assumed long-run return of a broad stock index, with the risk of falls",
-        "No fund, provider or product named"
-      ],
-      "sources": [
-        "https://www.investor.gov/introduction-investing/investing-basics/save-and-invest/fees-expenses",
-        "https://www.fool.com/investing/2024/10/10/how-far-100-per-month-go-investing-stock-market"
-      ],
-      "expires": "2027-10-19",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
-      "id": "2026-10-20-car-loan-84-months",
-      "format": "long",
-      "title": "A 7-year car loan: what the low monthly payment really costs you",
-      "category": "car_loan",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "The same $40,000 car on a 48-month and an 84-month loan at the same 7% APR: what the lower payment buys, what it costs in interest, and why the long loan usually costs more than that",
-      "why_now": "Edmunds reports a record 25.5% of financed new cars in Q3 2026 were on loans of 84 months or longer, with the average APR around 7% and an average payment of $787. Dealers sell the monthly number; almost nobody shows the total. A decision people are in right now, evergreen, US (USD), computable with two emi plans. For 22-40 viewers buying their first or second car.",
-      "outline": [
-        "hook: Rohan at the dealer, two payment offers on screen: $958 a month or $604 a month for the same car. He picks the smaller one. Frame one shows both numbers",
-        "Priya: 'Same car, same rate. Before you sign, ask one question: how many payments?' (promise line by 25 s: the total cost, the hidden catch, and the one question to ask)",
-        "chapter: the two loans. 48 payments of $958 against 84 payments of $604, as two stacks of payment slips side by side",
-        "the reveal: total paid $45,977 vs $50,711. The long loan costs $10,711 in interest, nearly twice the $5,977 on the short one",
-        "picture the whole video hangs on: a car on a road with a loan balance trailing behind it like a chain. On the long loan the chain is still attached years after the new-car smell is gone",
-        "Sharma has seen it before: 'In my bank days, the 84-month buyer came back in year four wanting a new car, and still owed on the old one'",
-        "the catch in words (no number unless a maths kind computes it): cars lose value fastest in the first years, so on a long loan you can owe more than the car is worth. Trading it in rolls that debt into the next loan",
-        "chapter: the rate is rarely the same. Longer loans usually carry a higher APR: at 8.5% for 84 months the interest becomes $13,211 (emi at 8.5%). Reveal at about two thirds",
-        "Rohan: 'So the cheap payment was never cheap.' Sikka cheers the turn",
-        "chapter: what to do. 1) ask for the total cost, not the payment; 2) compare 48 and 60 months at the same price; 3) if only the 84-month payment fits, the car may be too expensive",
-        "side by side recap: two roads, two totals, one question",
-        "end: disclaimer, CTA 'Ask the dealer: how many payments?'"
-      ],
-      "maths": "three emi plans on $40,000: 7% for 4 years, 7% for 7 years, 8.5% for 7 years (checked with renderer.models.maths.compute: $958/$45,977/$5,977; $604/$50,711/$10,711; $633/$53,211/$13,211)",
-      "verify": [
-        "Edmunds: share of financed new vehicles on 84+ month terms in Q3 2026 (reported 25.5%) and average new-vehicle APR (~7%), edmunds.com",
-        "CFPB: longer auto loans tend to carry higher interest rates and higher default risk (consumerfinance.gov auto-loan research)",
-        "7% and 8.5% are stated on screen as illustrative rates, not quotes",
-        "Negative equity is described in words only, with no invented depreciation figure"
-      ],
-      "sources": [
-        "https://www.cbtnews.com/new-car-loans-reach-record-highs/",
-        "https://fordauthority.com/2026/07/more-new-car-shoppers-took-out-long-loans-in-q2-than-ever-before/"
-      ],
-      "found": "2026-10-20",
-      "expires": "2027-10-20",
-      "status": "rejected",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
-    },
-    {
-      "id": "2026-10-20-cash-isa-limit-12k",
-      "format": "long",
-      "title": "The cash ISA limit drops to £12,000: what it means for your savings",
-      "category": "isa",
-      "kind": "seasonal",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "From 6 April 2027 under-65s can put only £12,000 a year into a cash ISA (the total ISA allowance stays £20,000). What the rule actually changes, who it touches, and what the same money does in cash at 4% vs invested at an assumed 7% over 20 years",
-      "why_now": "The regulations were made on 10 September 2026 and take effect on 6 April 2027, so UK savers will be searching this all winter and again before the tax year ends. It is the channel's first UK story in pounds, which helps country variety. Explain the rule, never recommend a product. For UK savers 25-45 with cash ISAs. Use it between now and April 2027; best made by January.",
-      "outline": [
-        "hook: Priya holds two jars labelled Cash ISA and Stocks & Shares ISA. A lid slams on the cash jar at £12,000. 'From April 2027, this jar gets smaller.'",
-        "promise by 25 s: what changes, who it affects, and what the money left over could do",
-        "chapter: the rule in plain words. Total allowance still £20,000; cash part £12,000 for under-65s; 65 and over unchanged. Source card: gov.uk",
-        "Rohan: 'So the government took £8,000 of my allowance?' Priya: 'No, it moved it'",
-        "chapter: who it actually touches. Only people putting more than £1,000 a month into cash ISAs. Most savers never reach the old limit (said in words unless sourced)",
-        "Sharma: the anti-workaround rules: no transfers from stocks and shares ISAs into cash ISAs, and a 22% charge on interest on cash parked inside a stocks and shares ISA (from the gov.uk factsheet)",
-        "picture the whole video hangs on: two jars filling over 20 years, one rising slowly (4%), one faster but with a wobbling line (7% assumed, can fall)",
-        "chapter: the maths. £1,000 a month for 20 years: £367,997 at 4% vs £523,965 at an assumed 7% (both sip). Reveal at about two thirds",
-        "the honest catch: investments can fall, and money you need within a few years belongs in cash. That is what the emergency fund is for",
-        "chapter: what to check. 1) how much you put into cash ISAs a year; 2) what this money is for and when you need it; 3) the dates: the old limit applies until 5 April 2027",
-        "recap: one allowance, two jars, the rule date",
-        "end: disclaimer, CTA 'Check last year's cash ISA total before April'"
-      ],
-      "maths": "two sip plans of £1,000 a month for 20 years at 4% and 7% (checked: £367,997 vs £523,965, £240,000 paid in)",
-      "verify": [
-        "gov.uk: cash ISA limit of £12,000 for under-65s from 6 April 2027, overall ISA limit stays £20,000, 65+ keep £20,000",
-        "gov.uk ISA reform 2027 factsheet: no transfers from non-cash ISAs into cash ISAs; 22% charge on interest on cash held in non-cash ISAs",
-        "legislation.gov.uk: The Individual Savings Account (Amendment) (No. 2) Regulations 2026, made 10 September 2026",
-        "4% and 7% are stated as assumptions; the video recommends no ISA provider or fund"
-      ],
-      "sources": [
-        "https://www.gov.uk/government/publications/reduction-in-the-cash-individual-savings-account-isa-limit/cash-individual-savings-account-isa-limit-reduction",
-        "https://www.gov.uk/government/publications/fiscal-events-2026-factsheets/isa-reform-2027-anti-circumvention-rules-factsheet",
-        "https://www.legislation.gov.uk/uksi/2026/1018/made"
-      ],
-      "found": "2026-10-20",
-      "expires": "2027-04-05",
-      "status": "rejected",
-      "reason": "Owner reset 2026-10-21: demand first. Topics now come from formats people already watch (improvement/research/formats.json), not news."
     }
   ]
 }

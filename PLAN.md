@@ -361,3 +361,9 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   dollars/pounds/euros and millions, maths, facts and the number check follow it; plans must name
   one. Profile, prompts, research, Scout, Studio and the market searches rewritten for a global
   audience; `examples/short_story_usd.json`. Old rupee scripts unchanged.
+- 2026-10-23 **Global first.** "Why billionaires never sell their stock" got 1,121 views; local Shorts
+  26-349. Every plan and feed topic has `topic.reach` (`global`: USD, anyone in the world can relate;
+  `local`: one country, needs an occasion within two weeks or a 1M+ local reference). At most one local
+  Short a day and 4 in any 11 (`generator/reach.py`, check-plan). New formats `billionaire_question`
+  and `money_scale`, global references added; unused feed topics cleared and reseeded (8 of 10 Shorts
+  and 3 of 3 long topics global); market scan on global queries.

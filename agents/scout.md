@@ -41,7 +41,9 @@ People Fall Into Explained" (1.1M), "Financial Bubbles Explained with Bananas" (
   and a cliffhanger into the next; a recap-and-tease every 2–3 minutes; the strongest item last.
 - **Title and thumbnail carry a big promise**: curiosity, envy or fear ("The middle class trap",
   "Once you understand X…", "Which one are you?"). Never a news headline.
-- India and US about half each, like the Shorts (`currency` INR or USD).
+- **Two in three global** (`"reach": "global"`, USD: anyone in the world can relate: famous people and
+  companies, how the rich work, universal mechanics), the rest local with a `reach_reason`, like the
+  Shorts (`generator/reach.py`; owner 2026-10-23).
 - It must be **computable**: every figure comes from `maths` (sip, lumpsum, emi, card_min_due…).
   If a format needs a calculation we lack, route a `template` proposal.
 
@@ -64,7 +66,7 @@ delete; set `"status": "rejected"` with a `reason` when you change your mind):
 ```json
 {"id": "<DAY>-short-kebab", "format": "long",
  "title": "the video's big promise, as a viewer would click it",
- "stories": ["list_explained"], "currency": "INR|USD",
+ "stories": ["list_explained"], "currency": "USD|INR", "reach": "global|local",
  "demand": {"title": "reference video", "views": 2300000, "url": "https://..."},
  "category": "sip|tax|home_loan|...", "kind": "evergreen|trend|seasonal",
  "priority": "high|normal", "templates": ["long_story"],

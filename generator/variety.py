@@ -32,7 +32,9 @@ STORIES = ("future_value", "early_vs_late", "cost_of_habit", "decision_duel", "m
            "trap_alert", "rule_change", "case_study", "checklist", "psychology", "history",
            # the formats with proven demand (improvement/research/formats.json; owner reset, 2026-10-21)
            "rich_vs_poor", "secret_of_rich", "how_they_make_money", "salary_breakdown", "which_one_are_you",
-           "guess_the_number", "list_explained", "once_you_understand")
+           "guess_the_number", "list_explained", "once_you_understand",
+           # global formats anyone in the world relates to (owner, 2026-10-23)
+           "billionaire_question", "money_scale")
 PROJECTION = ("future_value", "early_vs_late", "cost_of_habit")   # the "₹X becomes ₹Y in N years" family
 STORY_WINDOW = 1          # a winning format may come back after one other (owner reset, 2026-10-21; was 3)
 # Projection stories may be at most this share of the last 20. 0.5 while three of the four evergreen

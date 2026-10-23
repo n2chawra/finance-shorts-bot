@@ -28,8 +28,11 @@ Run `python -m generator.run state`.
 
 ## 2. The sweep (at most 4 web searches, 4 page reads)
 
-Look for one money moment that lots of people in **India or the US** are talking about **today or
-since yesterday**, the kind that fills finance Shorts comments, not a news bulletin (owner reset,
+Look for one money moment that lots of people **around the world** (or in India or the US) are
+talking about **today or since yesterday**. A global one (a billionaire, a famous company, something
+anyone can relate to) is best: `topic.reach: "global"`. A one-country trend is `"local"` with
+`topic.reach_reason: {"kind": "occasion", "name": "<the trend>", "date": "<today>"}`, and only if
+`reach.local_allowed` in `state` is true (`generator/reach.py`). Look for the kind that fills finance Shorts comments, not a news bulletin (owner reset,
 2026-10-21: central bank decisions and inflation releases are not trends people watch):
 - A viral money conversation: a salary reveal, a scam everyone is warning about, a celebrity or
   billionaire money story, a sale everyone is buying in, a tax change people are angry about.

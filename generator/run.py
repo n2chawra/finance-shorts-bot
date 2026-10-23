@@ -29,7 +29,7 @@ from renderer import remotion
 from renderer.engine.formatting import CURRENCIES
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
-from . import experiments, formats, history, topics, variety
+from . import experiments, formats, history, reach, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -151,6 +151,8 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "recent_stories": [variety.story_of(e) for e in entries[-variety.STORY_WINDOW:]],
         "blocked_categories": blocked,
         "topic_feed": feed,
+        # global first (owner, 2026-10-23): about two in three videos anyone in the world can relate to
+        "reach": reach.for_state(entries, today, fmt),
         # what to make: formats people already watch in the millions (improvement/research/formats.json)
         "formats": formats.for_state(root, fmt),
         "previous": last and {"palette": last["style"]["palette"], "genre": last["style"]["genre"], "key": last["style"]["key"],
@@ -191,6 +193,7 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         enabled = enabled_templates(load_settings(root), fmt, root)
         problems = variety.check_plan(plan, entries, enabled)
         problems += formats.check_plan(plan, root, fmt)
+        problems += reach.check_plan(plan, entries, history.ist_day(history.now().isoformat()), fmt)
         problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
                                       variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
         if not 20 <= len(plan["title"]) <= 90:

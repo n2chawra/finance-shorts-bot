@@ -86,7 +86,7 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     # offered first, and it still earns one extra video that day, but no plan is forced to take it
     urgent = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p), None)
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
-            "expires", "format", "outline", "sources")
+            "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths")
     return {
         "topics": [{**{k: t.get(k) for k in keys}, "usable_now": t in usable} for t in open_[:SHOWN]],
         "required": None,   # nothing is forced since the reset (see the module doc)

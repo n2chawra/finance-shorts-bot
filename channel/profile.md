@@ -18,12 +18,14 @@ videos and views, are in `improvement/research/formats.json`. The name and the c
 Priya, Sharma Uncle, Sikka) stay: they are the brand, and they act the skits.
 
 ## Who it's for
-- **Audience:** English-speaking adults, roughly 18-35, in **India and the US, about half each**.
+- **Audience:** English-speaking adults, roughly 18-35, **around the world** (most views so far from
+  India and the US). **Global first** (owner, 2026-10-23): about two in three videos are ones anyone
+  anywhere can relate to (`topic.reach: "global"`), like "Why billionaires never sell their stock".
   Earning their first salaries, carrying an EMI or a credit card, wondering why they're not rich
   yet and how the rich do it.
 - **Promise:** the money secrets, traps and rich-vs-poor truths people actually want, with real,
   computed numbers.
-- **Language and voice:** plain English. India Shorts use Indian life and simple Indian English (no
+- **Language and voice:** plain English. Global videos use names and situations known everywhere; India Shorts use Indian life and simple Indian English (no
   Hinglish); US Shorts use US life. No jargon a newcomer can't follow.
 - **Tone:** entertaining first: a skit with a punchline, characters who react, a friend who did the
   maths. Never an advisor; nobody tells the viewer what to buy.
@@ -36,8 +38,10 @@ Priya, Sharma Uncle, Sikka) stay: they are the brand, and they act the skits.
   budget story in rupees (`INR`, with lakh and crore).
 - Keep the story true to its currency: US credit cards charge around 20–25% a year, Indian cards
   around 3.5% a month; a US savings account pays a few percent, an Indian FD 6–7.5%.
-- **About half the Shorts are India stories (`INR`) and half US (`USD`)**, at least one of each a
-  day. UK and Europe only when the story is about them.
+- **Global videos are in dollars** and need no country: famous people and companies, how the rich
+  think, money at scale, compounding and debt. **Local videos** (India in `INR`, US in `USD`) are for an
+  occasion (Diwali, Black Friday, tax day) or a local format with 1M+ views: at most one Short a day
+  and about one in three overall (`generator/reach.py`). UK and Europe only when the story is about them.
 
 ## What it covers
 - **Topics (global):** compound interest, investing basics and index funds, retirement saving

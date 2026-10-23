@@ -41,6 +41,11 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   millions (`improvement/research/formats.json`: rich vs poor, what the rich know, traps, how they
   make money, salary breakdowns, which one are you…), named in the plan's `story` with a reference
   video in `demand`. News is never a reason to make a video on its own.
+- **Global first** (owner, 2026-10-23: "Why billionaires never sell their stock" got 1,121 views, the
+  local Shorts 26-349): about two in three videos are `topic.reach: "global"` (USD, anyone in the
+  world can relate: famous people and companies, how the rich work, money at scale). A local video
+  (one country: rupees, a 401(k), Diwali) needs an occasion within two weeks or a 1M+ local
+  reference; at most one local Short a day (`generator/reach.py`, check-plan).
 - **The shot system** (owner, 2026-10-21: "every video works like a template"): videos are built
   from composed `shot` beats (lit layered sets, the cast big, money as a thing, a camera with shot
   sizes, travelling transitions; `remotion/src/studio/`, `renderer/templates/SHOTS.md`, the
