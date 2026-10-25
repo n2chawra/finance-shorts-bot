@@ -1298,6 +1298,198 @@
       "format": "short",
       "found": "2026-10-23",
       "status": "new"
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-26",
+      "expires": "2027-01-24",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-26-money-that-out-earns-a-salary",
+      "title": "$10 million doing nothing out-earns a $500,000 salary",
+      "category": "investing",
+      "priority": "high",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "demand": {
+        "title": "How Billionaires never pay Taxes",
+        "views": 54000000,
+        "url": "https://www.youtube.com/shorts/klS_tpY7V04"
+      },
+      "hook": "A $500,000 salary just lost to money that did nothing.",
+      "angle": "Why the rich care about what their money earns, not what they earn: the same year, a salary vs $10M left invested.",
+      "why_now": "Billionaire Shorts fill this week's market.json top 4 (2.39M, 2.28M, 1.50M, 627K); our two secret_of_rich Shorts are the channel's best (1,161 and 1,166 views, 73.5% viewed).",
+      "maths": "lumpsum (amount 10000000, rate_pct an assumed 7, years 1) for what the money earns in a year; compare it with the $500,000 salary (lumpsum amount 500000, rate_pct 0, years 1) via compare",
+      "verify": [
+        "7% is an assumed return, never a promise",
+        "no real person's fortune is named with a figure"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-26",
+      "expires": "2027-01-24",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-26-billion-earns-per-day",
+      "title": "What $1 billion earns while its owner sleeps",
+      "category": "wealth",
+      "priority": "normal",
+      "stories": [
+        "money_scale"
+      ],
+      "demand": {
+        "title": "What Can You Buy With $1 to $1 QUADRILLION?",
+        "views": 2279275,
+        "url": "https://youtube.com/shorts/jIs5WrvxcQ4"
+      },
+      "hook": "This billion dollars just earned another hundred grand. Today.",
+      "angle": "Money at a scale you can't imagine, made daily: what a billion pays per day at a plain savings-like rate.",
+      "why_now": "Money-scale ladder Short is #3 in this week's market.json (2.28M views in 6 days).",
+      "maths": "fee_take (amount 1000000000, fee_pct an assumed 0.01, per_year 365, years 1): per day and per year at an assumed ~3.65% a year",
+      "verify": [
+        "the rate is an illustrative assumption"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-26",
+      "expires": "2027-01-24",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-26-which-saver-are-you",
+      "title": "0%, 10% or 20% of a $60,000 salary: which saver are you?",
+      "category": "saving",
+      "priority": "high",
+      "stories": [
+        "which_one_are_you"
+      ],
+      "demand": {
+        "title": "Do These 5 Things To Win With Money",
+        "views": 6400000,
+        "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"
+      },
+      "hook": "Three people. Same $60,000 salary. Thirty years later, one is a millionaire.",
+      "angle": "Where the viewer stands: the same salary, three saving rates, the gap in 30 years.",
+      "why_now": "which_one_are_you has never been told as a Short (only the long L-20261021-01); identity formats lead the market list.",
+      "maths": "sip (monthly 500, rate_pct an assumed 7, years 30) for 10%; sip (monthly 1000, rate_pct an assumed 7, years 30) for 20%; the 0% saver has nothing",
+      "verify": [
+        "7% assumed return stated as illustrative"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-26",
+      "expires": "2027-01-24",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-26-dealer-makes-money-on-the-loan",
+      "title": "How a car dealer makes more on your loan than on the car",
+      "category": "car",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "demand": {
+        "title": "Monkey Economics How Bank Work",
+        "views": 7600000,
+        "url": "https://www.youtube.com/shorts/rWbZwFnI7dQ"
+      },
+      "hook": "The dealer gave you a discount on the car. Then took it back on the loan.",
+      "angle": "The same $35,000 car at an assumed 6% and an assumed 9% loan rate: what the higher rate costs over five years.",
+      "why_now": "Evergreen, global; how_they_make_money's best Shorts this week were about money mechanics, and ours on jewellery making charges reached 1,137 views.",
+      "maths": "emi (amount 35000, rate_pct an assumed 6, years 5) and emi (amount 35000, rate_pct an assumed 9, years 5); compare the two totals",
+      "verify": [
+        "dealer markups on loan rates are described generally, both rates are assumptions, no lender is named"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-26",
+      "expires": "2027-01-24",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-26-minimum-payment-5000-card",
+      "title": "The minimum payment trap: a $5,000 card balance",
+      "category": "debt",
+      "priority": "high",
+      "stories": [
+        "trap_alert"
+      ],
+      "demand": {
+        "title": "The Middle Class EMI Trap",
+        "views": 7000000,
+        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
+      },
+      "hook": "Pay the minimum on this $5,000 card and you'll still be paying it in ten years.",
+      "angle": "What the minimum due really costs in interest and years.",
+      "why_now": "Debt and card stories led market.json for two weeks; told only as a long video so far (L-20261019-02), never as a Short.",
+      "maths": "card_min_due (amount 5000, rate_pct_month an assumed 2 (about 24% a year), min_due_pct an assumed 3, min_due_floor 25)",
+      "verify": [
+        "APR and minimum-payment rule are assumptions, no issuer named"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "seasonal",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-26",
+      "expires": "2026-11-09",
+      "status": "new",
+      "currency": "INR",
+      "reach": "local",
+      "id": "2026-10-26-diwali-car-on-emi",
+      "title": "The Diwali car on EMI: what an ₹8 lakh car really costs",
+      "category": "car",
+      "priority": "high",
+      "stories": [
+        "trap_alert"
+      ],
+      "reach_reason": {
+        "kind": "occasion",
+        "name": "Diwali",
+        "date": "2026-11-08"
+      },
+      "demand": {
+        "title": "The Middle Class EMI Trap",
+        "views": 7000000,
+        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
+      },
+      "hook": "This ₹8 lakh car will cost you more than ₹8 lakh. Much more.",
+      "angle": "Diwali is India's biggest car-buying week: the 7-year EMI's total interest and what the down-payment gap would have grown to.",
+      "why_now": "Diwali is 8 Nov; dealers advertise festive EMI offers now.",
+      "maths": "emi (amount 800000, rate_pct an assumed 9, years 7)",
+      "verify": [
+        "9% is an assumed car-loan rate, no bank or carmaker named"
+      ]
     }
   ]
 }

@@ -411,6 +411,47 @@
       "status": "new",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "no-exposition-before-8s",
+      "date": "2026-10-26",
+      "area": "hook",
+      "title": "Nothing but hook and reaction in a Short's first 8 seconds; no beat over 6 s before the payoff",
+      "change": "Behind a flag in the writer's short_story rules and check_script: beat 2 must be a cast reaction or a question (at most 2.5 s spoken), and no beat in the first 8 s or before the first computed reveal may run past 6 s; context (rules, dates, who votes) moves after the first number lands. Today v-20261024-01 follows a 3.0 s hook with an 8.7 s explanation of the ballot measure (3-11.7 s) and has the fewest views of the global reset Shorts (162); v-20261021-05 follows its 3.1 s claim with a 1.7 s 'Wait, what?' and is the best (73.5% viewed, 1,161 views).",
+      "evidence": [
+        "videos/v-20261024-01/timeline.json (beats 3.0, 8.7 s)",
+        "videos/v-20261021-05/timeline.json (beats 3.1, 1.7 s)",
+        "metrics/videos.json",
+        "https://www.clipspeed.ai/blog/hook-first-second-video-retention.html"
+      ],
+      "expectedEffect": "Fewer swipes in seconds 3-10, the stretch right after the hook where a long explanation loses people.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Some stories need one line of context; it moves later, not away.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "high"
+    },
+    {
+      "id": "midpoint-rehook",
+      "date": "2026-10-26",
+      "area": "script",
+      "title": "A one-line re-hook at the midpoint of every Short",
+      "change": "Behind a flag: the writer puts one short line (at most 6 words) at 40-60% of the runtime that re-opens the question before the payoff ('But that's not the crazy part.', 'Now watch the other one.'), with a camera punch-in and a hit SFX on it. Our Shorts that hold best already do this by accident (v-20261021-05 punches in on 'final' at ~16 s); most others drift through the middle with no change of energy.",
+      "evidence": [
+        "videos/v-20261021-05/timeline.json (punch:final mid-video)",
+        "https://www.gofaceless.ai/en/blog/high-retention-youtube-shorts-attributes",
+        "https://adamconnell.me/improve-video-retention-social-media/"
+      ],
+      "expectedEffect": "Flatter retention curve through the middle of 25-35 s Shorts.",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Adds ~1 s; on a 22 s Short it may feel padded. Skip under 24 s.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }

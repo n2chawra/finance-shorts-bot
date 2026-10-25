@@ -1,6 +1,13 @@
 {
   "notifications": [
     {
+      "key": "usage-limit-24-oct",
+      "severity": "warning",
+      "title": "The Pro plan's usage limit stopped the routines on 24-25 Oct",
+      "detail": "The 04:07 IST video run on 24 Oct made 1 of 3 Shorts and ended with 'usage limit reached'; the improver (06:17) and dashboard (07:37) runs on 24 Oct failed for the same reason, and no Short, improver, dashboard or research run happened on 25 Oct. The backlog is 0, so the 24 Oct afternoon and all 25 Oct slots had nothing new. The Studio, Scout and trend routines are disabled (since 23 Oct). The routines were edited on 25 Oct around 13:34 IST and the next video run is due 04:07 IST on 26 Oct.",
+      "fix": "1. On claude.ai, check Settings > Usage to see when the weekly limit resets. 2. If it keeps running out, keep Studio/Scout off and consider moving the improver or dashboard routine to every other day (owner-only schedule change). 3. Never turn on paid usage credits. 4. Check tomorrow that videos/v-20261026-* appear on main."
+    },
+    {
       "key": "published-short-inconsistent-figures",
       "severity": "warning",
       "title": "A published Short shows the same amount two different ways",
