@@ -1,0 +1,292 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:49:11.290465+00:00",
+    "finishedAt": "2026-10-25T22:49:11.290465+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:49:43.256020+00:00",
+    "finishedAt": "2026-10-25T22:49:43.256020+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas.",
+      "warning: beat 'gap' runs 5.9 s with 5.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:49:50.180014+00:00",
+    "finishedAt": "2026-10-25T22:49:50.180014+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas.",
+      "warning: beat 'gap' runs 5.9 s with 3.7 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:49:59.914268+00:00",
+    "finishedAt": "2026-10-25T22:49:59.914268+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas.",
+      "warning: beat 'hook' runs 5.1 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:50:27.550777+00:00",
+    "finishedAt": "2026-10-25T22:50:27.550777+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:50:56.368502+00:00",
+    "finishedAt": "2026-10-25T22:50:56.368502+00:00",
+    "notes": [
+      "No sourced facts; feed verify item met (7% said as 'an assumed' return, within the 7-10% equity range); 10%/20% of $60,000 = $500/$1,000 a month correct; no product, advice or guarantee; description ends with disclaimer. Notes: $1.2M 'millionaire' is nominal (no inflation adjustment) and assumes a flat pre-tax salary for 30 years, acceptable as illustration."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:50:34.514855+00:00",
+    "finishedAt": "2026-10-25T22:51:10.129107+00:00",
+    "notes": [
+      "text 'Savings' at 6.4 s runs outside the frame",
+      "text '$0' at 6.4 s runs outside the frame",
+      "text 'Order placed' at 6.4 s runs outside the frame",
+      "text '10%' at 12.8 s runs outside the frame",
+      "text '$' at 9.3 s is 29.1 px, below the 44 px minimum",
+      "text 'Invest' at 22.2 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:51:22.674652+00:00",
+    "finishedAt": "2026-10-25T22:51:22.674652+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:51:23.623762+00:00",
+    "finishedAt": "2026-10-25T22:51:23.623762+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:51:24.517126+00:00",
+    "finishedAt": "2026-10-25T22:51:43.478163+00:00",
+    "notes": [
+      "text '10%' at 12.8 s runs outside the frame",
+      "text 'Savings' at 6.4 s runs outside the frame",
+      "text '$0' at 6.4 s runs outside the frame",
+      "text 'Order placed' at 6.4 s runs outside the frame",
+      "text 'Invest' at 22.2 s runs outside the frame",
+      "text '$1,000' at 22.2 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:51:52.618974+00:00",
+    "finishedAt": "2026-10-25T22:51:52.618974+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:51:53.739142+00:00",
+    "finishedAt": "2026-10-25T22:52:13.536040+00:00",
+    "notes": [
+      "text '10%' at 12.8 s runs outside the frame",
+      "text 'Savings' at 6.4 s runs outside the frame",
+      "text '$0' at 6.4 s runs outside the frame",
+      "text 'Order placed' at 6.4 s runs outside the frame",
+      "text 'Millionaire' at 25.9 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:52:38.958685+00:00",
+    "finishedAt": "2026-10-25T22:52:38.958685+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:52:39.971948+00:00",
+    "finishedAt": "2026-10-25T22:52:59.015136+00:00",
+    "notes": [
+      "text 'Of salary' at 12.8 s is 36.5 px, below the 44 px minimum",
+      "text '10%' at 12.8 s is 43.1 px, below the 44 px minimum",
+      "four shots in a row open wide (from 'spender'): vary the shot size"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:53:07.195953+00:00",
+    "finishedAt": "2026-10-25T22:53:07.195953+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:53:08.110375+00:00",
+    "finishedAt": "2026-10-25T22:53:27.676152+00:00",
+    "notes": [
+      "33 s, mint/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:53:39.616395+00:00",
+    "finishedAt": "2026-10-25T22:54:02.385887+00:00",
+    "notes": [
+      "33 s, mint/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:54:52.005485+00:00",
+    "finishedAt": "2026-10-25T22:54:52.005485+00:00",
+    "notes": [
+      "[scene] 30.0s, beat 'gap' (scene shot, Priya pose 'facepalm'): her forearm crosses her chest and the fingertip lands on her nose, so it reads as nose-picking, not a facepalm; the hand should cover the forehead/eyes. Fix the facepalm pose in the cast, or use another pose (e.g. 'shock' hands-on-head) at 'difference'.",
+      "[script] 25.0s, beat 'twentygrow' (market set, camera wide on all): the only visible object is the small $613,544 stack pushed to the lower left, partly behind the stall and auto-rickshaw, the upper ~55% of the frame is empty building backdrop, and the caption 'SAME 30 YEARS.' runs across the stack. Start the camera at medium on the two stacks (or put the stacks centre-frame and larger) so the 613K vs 1.2M comparison fills the frame, and let the 1.2M stack appear earlier than 'years'."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:55:07.674923+00:00",
+    "finishedAt": "2026-10-25T22:55:07.674923+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:55:08.553487+00:00",
+    "finishedAt": "2026-10-25T22:55:27.727914+00:00",
+    "notes": [
+      "text 'Saves a little' at 25.9 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:55:33.707019+00:00",
+    "finishedAt": "2026-10-25T22:55:33.707019+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:55:34.708160+00:00",
+    "finishedAt": "2026-10-25T22:55:55.952064+00:00",
+    "notes": [
+      "33 s, mint/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:56:15.910699+00:00",
+    "finishedAt": "2026-10-25T22:56:15.910699+00:00",
+    "notes": [
+      "[script] 25.0s, beat 'twentygrow' (market set, medium on all): the stacks at spot 0.4 and 0.62 now touch, and the $1.2M stack is drawn over the left stack's price tag, so it reads '$613,54' with the last digit hidden. Move them apart (e.g. spots 0.3 and 0.7) so the 'A little' tag shows in full and a gap separates the stacks. Everything else is fixed: Priya's 'worried' pose at 30.0s reads correctly."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:56:27.900877+00:00",
+    "finishedAt": "2026-10-25T22:56:27.900877+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:56:28.880768+00:00",
+    "finishedAt": "2026-10-25T22:56:48.077737+00:00",
+    "notes": [
+      "33 s, mint/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:57:00.430524+00:00",
+    "finishedAt": "2026-10-25T22:57:00.430524+00:00",
+    "notes": [
+      "40 figures computed from inputs; 25 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:57:01.428947+00:00",
+    "finishedAt": "2026-10-25T22:57:20.084464+00:00",
+    "notes": [
+      "33 s, mint/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:57:36.817401+00:00",
+    "finishedAt": "2026-10-25T22:57:36.817401+00:00",
+    "notes": [
+      "Stills clean: hook (SAME JOB + $60,000 card) at 0s, both twentygrow stacks separated with full $613,544 and $1.2M tags at 25s, Priya worried pose fine at 30s, disclaimer at 32.8s; layout/craft empty, audio -1/-17 dB, 33 s; thumbnail distinct."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:57:46.924826+00:00",
+    "finishedAt": "2026-10-25T22:59:34.907539+00:00",
+    "notes": [
+      "33 s, mint/lofi, peak -1.0 dB, mean -17.0 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:59:39.255381+00:00",
+    "finishedAt": "2026-10-25T22:59:39.255381+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

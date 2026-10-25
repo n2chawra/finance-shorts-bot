@@ -1,0 +1,739 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 28461,
+ "story": "which_one_are_you",
+ "currency": "USD",
+ "feed_id": "2026-10-26-which-saver-are-you",
+ "style": {
+  "palette": "mint",
+  "genre": "lofi",
+  "key": "D",
+  "bpm": 88
+ },
+ "maths": [
+  {
+   "name": "salary",
+   "kind": "lumpsum",
+   "amount": 60000,
+   "rate_pct": 0,
+   "years": 1
+  },
+  {
+   "name": "cut10",
+   "kind": "fee_take",
+   "amount": 5000,
+   "fee_pct": 10,
+   "per_year": 12,
+   "years": 1
+  },
+  {
+   "name": "cut20",
+   "kind": "fee_take",
+   "amount": 5000,
+   "fee_pct": 20,
+   "per_year": 12,
+   "years": 1
+  },
+  {
+   "name": "low",
+   "kind": "sip",
+   "monthly": 500,
+   "rate_pct": 7,
+   "years": 30
+  },
+  {
+   "name": "high",
+   "kind": "sip",
+   "monthly": 1000,
+   "rate_pct": 7,
+   "years": 30
+  },
+  {
+   "name": "gap",
+   "kind": "compare",
+   "a": "high.final",
+   "b": "low.final"
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "words": "Which saver are *you*?",
+  "figure": "{high_final}",
+  "tag": "Saves the most",
+  "angle": "question",
+  "who": "priya"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "speaker": "narrator",
+   "say": "Same job. Same salary, {salary_amount}. In {low_years} years, only one of them is a millionaire.",
+   "events": {
+    "job": {
+     "word": "job"
+    },
+    "salary": {
+     "word": "salary"
+    },
+    "millionaire": {
+     "word": "millionaire"
+    },
+    "years": {
+     "word": "years"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "job"
+    },
+    {
+     "kind": "pop-high",
+     "at": "salary"
+    },
+    {
+     "kind": "boom",
+     "at": "millionaire",
+     "gain": 0.6
+    },
+    {
+     "kind": "tick",
+     "at": "years",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "salary": "{salary_amount}",
+    "salaryLabel": "Salary",
+    "rates": [
+     "{salary_rate}",
+     "{cut10_fee_pct}",
+     "{cut20_fee_pct}"
+    ],
+    "rateLabel": "saved",
+    "set": "office",
+    "actors": [
+     {
+      "who": "priya",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "spender",
+   "scene": "shot",
+   "speaker": "rohan",
+   "transition": "zoom-through",
+   "say": "Me? I spend it all. Life is short!",
+   "events": {
+    "spend": {
+     "word": "spend"
+    },
+    "short": {
+     "word": "short"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "spend",
+     "gain": 0.5
+    },
+    {
+     "kind": "pop",
+     "at": "short"
+    }
+   ],
+   "params": {
+    "set": "flat",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "happy"
+       },
+       {
+        "at": "short",
+        "pose": "celebrate",
+        "expression": "laugh"
+       }
+      ]
+     }
+    ],
+    "objects": [
+     {
+      "kind": "phone",
+      "id": "shop",
+      "spot": 0.62,
+      "height": 0.36,
+      "title": "Savings",
+      "figure": "{salary_gains}",
+      "at": "start",
+      "toasts": [
+       {
+        "text": "Order placed",
+        "at": "spend"
+       },
+       {
+        "text": "Order placed",
+        "at": "short"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "short",
+      "size": "medium",
+      "on": "shop",
+      "move": true
+     }
+    ],
+    "word": {
+     "text": "Spender",
+     "at": "spend",
+     "color": "bad",
+     "where": "top"
+    }
+   }
+  },
+  {
+   "id": "nothing",
+   "scene": "shot",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Every year, the whole salary is gone. Retirement savings? Nothing.",
+   "events": {
+    "gone": {
+     "word": "gone"
+    },
+    "nothing": {
+     "word": "Nothing"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "gone",
+     "gain": 0.4
+    },
+    {
+     "kind": "fail",
+     "at": "nothing",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "set": "bank",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused",
+        "turn": 0.4
+       },
+       {
+        "at": "nothing",
+        "pose": "worried",
+        "expression": "sad"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "nothing",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ],
+    "word": {
+     "text": "Gone",
+     "at": "gone",
+     "color": "bad",
+     "where": "top"
+    }
+   }
+  },
+  {
+   "id": "ten",
+   "scene": "shot",
+   "speaker": "priya",
+   "transition": "match",
+   "say": "I save {cut10_fee_pct}. That's {cut10_per_period} a month, invested.",
+   "events": {
+    "save": {
+     "word": "save"
+    },
+    "month": {
+     "word": "month"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "save"
+    },
+    {
+     "kind": "clink",
+     "at": "month"
+    }
+   ],
+   "params": {
+    "set": "office",
+    "actors": [
+     {
+      "who": "priya",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "happy",
+        "turn": 0.3
+       },
+       {
+        "at": "month",
+        "pose": "thumbsUp",
+        "expression": "proud",
+        "turn": 0.3
+       }
+      ]
+     }
+    ],
+    "objects": [
+     {
+      "kind": "phone",
+      "id": "plan",
+      "spot": 0.62,
+      "height": 0.34,
+      "title": "Invest",
+      "figure": "{cut10_per_period}",
+      "at": "month",
+      "lines": [
+       {
+        "label": "Of salary",
+        "value": "{cut10_fee_pct}",
+        "at": "save"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "plan"
+     }
+    ]
+   }
+  },
+  {
+   "id": "tengrow",
+   "scene": "shot",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "At an assumed {low_rate} a year, after {low_years} years, that's {low_final}.",
+   "events": {
+    "assumed": {
+     "word": "assumed"
+    },
+    "after": {
+     "word": "after"
+    },
+    "lands": {
+     "word": "that's"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "start",
+     "gain": 0.35
+    },
+    {
+     "kind": "tick",
+     "at": "after",
+     "gain": 0.5
+    },
+    {
+     "kind": "kaching",
+     "at": "lands"
+    }
+   ],
+   "params": {
+    "set": "vault",
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "mid",
+      "spot": "center",
+      "amount": "@low.final",
+      "text": "{low_final}",
+      "label": "Saves a little",
+      "at": "assumed",
+      "tone": "good"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "after",
+      "size": "medium",
+      "on": "mid",
+      "move": true
+     },
+     {
+      "at": "lands",
+      "size": "close",
+      "on": "mid",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "twenty",
+   "scene": "shot",
+   "speaker": "sharma",
+   "transition": "whip",
+   "say": "I save {cut20_fee_pct}, so {cut20_per_period} a month. Same job, same salary.",
+   "events": {
+    "save": {
+     "word": "save"
+    },
+    "month": {
+     "word": "month"
+    },
+    "same": {
+     "word": "Same"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "save"
+    },
+    {
+     "kind": "clink",
+     "at": "month"
+    },
+    {
+     "kind": "pop",
+     "at": "same"
+    }
+   ],
+   "params": {
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk",
+        "turn": -0.3
+       },
+       {
+        "at": "same",
+        "pose": "pointUp",
+        "expression": "proud",
+        "turn": -0.3
+       }
+      ]
+     }
+    ],
+    "objects": [
+     {
+      "kind": "phone",
+      "id": "plan",
+      "spot": 0.38,
+      "height": 0.34,
+      "title": "Invest",
+      "figure": "{cut20_per_period}",
+      "at": "month",
+      "lines": [
+       {
+        "label": "Of salary",
+        "value": "{cut20_fee_pct}",
+        "at": "save"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "sharma"
+     },
+     {
+      "at": "month",
+      "size": "medium",
+      "on": "plan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "twentygrow",
+   "scene": "shot",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Same assumed return. Same {high_years} years. {high_final}.",
+   "events": {
+    "years": {
+     "word": "years"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "years"
+    },
+    {
+     "kind": "boom",
+     "at": "end",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "set": "market",
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "mid",
+      "spot": 0.3,
+      "amount": "@low.final",
+      "text": "{low_final}",
+      "label": "A little",
+      "at": "start",
+      "tone": "bad"
+     },
+     {
+      "kind": "stack",
+      "id": "top",
+      "spot": 0.7,
+      "amount": "@high.final",
+      "text": "{high_final}",
+      "label": "More",
+      "at": "start",
+      "tone": "good"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     }
+    ],
+    "word": {
+     "text": "Rich",
+     "at": "years",
+     "color": "gold",
+     "where": "top"
+    }
+   }
+  },
+  {
+   "id": "gap",
+   "scene": "shot",
+   "speaker": "priya",
+   "transition": "cut",
+   "say": "Wait. Just {cut10_per_period} more a month, and the gap is that big?",
+   "events": {
+    "wait": {
+     "word": "Wait"
+    },
+    "more": {
+     "word": "more"
+    },
+    "difference": {
+     "word": "big"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "wait"
+    },
+    {
+     "kind": "boom",
+     "at": "difference",
+     "gain": 0.6
+    },
+    {
+     "kind": "tick",
+     "at": "more",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "set": "flat",
+    "actors": [
+     {
+      "who": "priya",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "shock"
+       },
+       {
+        "at": "more",
+        "pose": "point",
+        "expression": "confused"
+       },
+       {
+        "at": "difference",
+        "pose": "worried",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme",
+      "on": "priya"
+     },
+     {
+      "at": "more",
+      "size": "medium",
+      "on": "priya",
+      "move": true
+     },
+     {
+      "at": "difference",
+      "size": "close",
+      "on": "priya",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "shot",
+   "speaker": "sharma",
+   "transition": "match",
+   "say": "So, which one are you? Remember...",
+   "events": {
+    "which": {
+     "word": "which"
+    },
+    "remember": {
+     "word": "Remember"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "which"
+    },
+    {
+     "kind": "whoosh",
+     "at": "remember",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "set": "office",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused",
+        "turn": 0.4
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "spot": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "point",
+        "expression": "smirk",
+        "turn": -0.4
+       },
+       {
+        "at": "remember",
+        "pose": "pointUp",
+        "expression": "proud",
+        "turn": -0.4
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "remember",
+      "size": "close",
+      "on": "sharma",
+      "move": true
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "af_bella"
+}
