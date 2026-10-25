@@ -1,0 +1,743 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61873,
+ "story": "secret_of_rich",
+ "currency": "USD",
+ "feed_id": "2026-10-26-money-that-out-earns-a-salary",
+ "style": {
+  "palette": "ember",
+  "genre": "synthwave",
+  "key": "A",
+  "bpm": 104
+ },
+ "maths": [
+  {
+   "name": "heir",
+   "kind": "lumpsum",
+   "amount": 10000000,
+   "rate_pct": 7,
+   "years": 1
+  },
+  {
+   "name": "salary",
+   "kind": "lumpsum",
+   "amount": 500000,
+   "rate_pct": 0,
+   "years": 1
+  },
+  {
+   "name": "gap",
+   "kind": "compare",
+   "a": "heir.gains",
+   "b": "salary.final"
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "words": "Lazy money *beats* surgeons",
+  "figure": "{heir_gains}",
+  "tag": "Earned doing nothing",
+  "angle": "number",
+  "who": "sharma"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "speaker": "sharma",
+   "say": "In an average year, my money out-earns a surgeon. And it never goes to work.",
+   "events": {
+    "money": {
+     "word": "money"
+    },
+    "doctor": {
+     "word": "surgeon"
+    },
+    "never": {
+     "word": "never"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "money",
+     "gain": 0.5
+    },
+    {
+     "kind": "pop",
+     "at": "doctor"
+    },
+    {
+     "kind": "boom",
+     "at": "never",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "toast": "+{heir_gains}",
+    "toastLabel": "Assumed return",
+    "label": "Invested",
+    "stack": "{heir_amount}",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "sharma"
+     }
+    ],
+    "secret": "Money that out-earns a surgeon",
+    "rival": "{salary_amount}",
+    "rivalLabel": "Surgeon's salary"
+   }
+  },
+  {
+   "id": "doctor",
+   "scene": "shot",
+   "speaker": "rohan",
+   "transition": "zoom-through",
+   "say": "Wait, what? A top surgeon makes {salary_amount} a year!",
+   "events": {
+    "wait": {
+     "word": "Wait"
+    },
+    "makes": {
+     "word": "makes"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "wait"
+    },
+    {
+     "kind": "kaching",
+     "at": "makes",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "set": "office",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused"
+       },
+       {
+        "at": "makes",
+        "pose": "point",
+        "expression": "shock",
+        "turn": 0.3
+       }
+      ]
+     }
+    ],
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "pay",
+      "spot": 0.68,
+      "amount": "@salary.final",
+      "text": "{salary_final}",
+      "label": "Salary",
+      "at": "makes",
+      "tone": "good"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "rohan"
+     },
+     {
+      "at": "makes",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "shifts",
+   "scene": "shot",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Night shifts. Weekends. Every dollar earned with his own hands.",
+   "events": {
+    "night": {
+     "word": "Night"
+    },
+    "weekends": {
+     "word": "Weekends"
+    },
+    "hour": {
+     "word": "hands"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "night",
+     "gain": 0.5
+    },
+    {
+     "kind": "tick",
+     "at": "weekends",
+     "gain": 0.5
+    },
+    {
+     "kind": "clink",
+     "at": "hour"
+    }
+   ],
+   "params": {
+    "set": "bank",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "worried",
+        "expression": "worried",
+        "turn": 0.4
+       },
+       {
+        "at": "hour",
+        "pose": "facepalm",
+        "expression": "sad"
+       }
+      ]
+     }
+    ],
+    "objects": [
+     {
+      "kind": "phone",
+      "id": "rota",
+      "spot": 0.66,
+      "height": 0.4,
+      "title": "Shifts",
+      "at": "start",
+      "lines": [
+       {
+        "label": "Night shift",
+        "at": "night"
+       },
+       {
+        "label": "Weekend",
+        "at": "weekends"
+       },
+       {
+        "label": "On call",
+        "at": "hour"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "weekends",
+      "size": "medium",
+      "on": "rota",
+      "move": true
+     },
+     {
+      "at": "hour",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ],
+    "word": {
+     "text": "Tired",
+     "at": "weekends",
+     "color": "bad",
+     "where": "top"
+    }
+   }
+  },
+  {
+   "id": "heir",
+   "scene": "shot",
+   "speaker": "sharma",
+   "transition": "match",
+   "say": "My {heir_amount} just sits invested, at an assumed {heir_rate} a year.",
+   "events": {
+    "sits": {
+     "word": "sits"
+    },
+    "assumed": {
+     "word": "assumed"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "sits"
+    },
+    {
+     "kind": "ding",
+     "at": "assumed"
+    }
+   ],
+   "params": {
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "smirk",
+        "turn": -0.3
+       },
+       {
+        "at": "assumed",
+        "pose": "thumbsUp",
+        "expression": "proud",
+        "turn": -0.3
+       }
+      ]
+     }
+    ],
+    "objects": [
+     {
+      "kind": "phone",
+      "id": "app",
+      "spot": 0.36,
+      "height": 0.38,
+      "title": "Portfolio",
+      "figure": "{heir_amount}",
+      "at": "sits",
+      "lines": [
+       {
+        "label": "Assumed return",
+        "value": "{heir_rate}",
+        "at": "assumed"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "sharma"
+     },
+     {
+      "at": "assumed",
+      "size": "medium",
+      "on": "app",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "earns",
+   "scene": "shot",
+   "speaker": "sharma",
+   "transition": "zoom-through",
+   "say": "In an average year, it earns {heir_gains}. I didn't lift a finger.",
+   "events": {
+    "earns": {
+     "word": "earns"
+    },
+    "finger": {
+     "word": "finger"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "start",
+     "gain": 0.35
+    },
+    {
+     "kind": "kaching",
+     "at": "earns"
+    },
+    {
+     "kind": "pop",
+     "at": "finger"
+    }
+   ],
+   "params": {
+    "set": "vault",
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "gains",
+      "spot": "center",
+      "amount": "@heir.gains",
+      "text": "{heir_gains}",
+      "label": "Earned",
+      "at": "earns",
+      "tone": "good"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "earns",
+      "size": "medium",
+      "on": "gains",
+      "move": true
+     },
+     {
+      "at": "finger",
+      "size": "close",
+      "on": "gains",
+      "move": true
+     }
+    ],
+    "word": {
+     "text": "Zero work",
+     "at": "finger",
+     "color": "gold",
+     "where": "top"
+    }
+   }
+  },
+  {
+   "id": "gap",
+   "scene": "shot",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "That's {gap_diff} more than the surgeon's whole salary.",
+   "events": {
+    "more": {
+     "word": "more"
+    },
+    "whole": {
+     "word": "whole"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "more",
+     "gain": 0.7
+    },
+    {
+     "kind": "pop",
+     "at": "whole"
+    }
+   ],
+   "params": {
+    "set": "market",
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "work",
+      "spot": 0.34,
+      "amount": "@salary.final",
+      "text": "{salary_final}",
+      "label": "Salary",
+      "at": "start",
+      "tone": "bad"
+     },
+     {
+      "kind": "stack",
+      "id": "money",
+      "spot": 0.66,
+      "amount": "@heir.gains",
+      "text": "{heir_gains}",
+      "label": "Money at work",
+      "at": "more",
+      "tone": "good"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "whole",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "harder",
+   "scene": "shot",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "So your money works harder than a surgeon? And what if it drops?",
+   "events": {
+    "harder": {
+     "word": "harder"
+    },
+    "drops": {
+     "word": "drops"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "harder",
+     "gain": 0.5
+    },
+    {
+     "kind": "tick",
+     "at": "drops",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "set": "flat",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "confused"
+       },
+       {
+        "at": "harder",
+        "pose": "facepalm",
+        "expression": "shock"
+       },
+       {
+        "at": "drops",
+        "pose": "worried",
+        "expression": "worried"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme",
+      "on": "rohan"
+     },
+     {
+      "at": "drops",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "catch",
+   "scene": "shot",
+   "speaker": "sharma",
+   "transition": "whip",
+   "say": "Some years it falls. Some years it jumps. I just never sell.",
+   "events": {
+    "falls": {
+     "word": "falls"
+    },
+    "jumps": {
+     "word": "jumps"
+    },
+    "sell": {
+     "word": "sell"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "falls",
+     "gain": 0.4
+    },
+    {
+     "kind": "ding",
+     "at": "jumps"
+    },
+    {
+     "kind": "boom",
+     "at": "sell",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "set": "bank",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "neutral",
+        "turn": 0.3
+       },
+       {
+        "at": "jumps",
+        "pose": "celebrate",
+        "expression": "happy",
+        "turn": 0.3
+       },
+       {
+        "at": "sell",
+        "pose": "hips",
+        "expression": "smirk",
+        "turn": 0.3
+       }
+      ]
+     }
+    ],
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "kept",
+      "spot": 0.68,
+      "amount": "@heir.final",
+      "text": "{heir_final}",
+      "label": "Still invested",
+      "at": "jumps",
+      "tone": "good"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "sharma"
+     },
+     {
+      "at": "jumps",
+      "size": "wide",
+      "on": "all",
+      "move": true
+     },
+     {
+      "at": "sell",
+      "size": "close",
+      "on": "sharma",
+      "move": true
+     }
+    ],
+    "word": {
+     "text": "Never sell",
+     "at": "sell",
+     "color": "gold",
+     "where": "top"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "shot",
+   "speaker": "sharma",
+   "transition": "match",
+   "say": "Every dollar you leave invested goes to work for you. That's why I say...",
+   "events": {
+    "worker": {
+     "word": "work"
+    },
+    "say": {
+     "word": "say"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "worker"
+    },
+    {
+     "kind": "whoosh",
+     "at": "say",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "set": "office",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "thinking",
+        "turn": 0.4
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "spot": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk",
+        "turn": -0.4
+       },
+       {
+        "at": "worker",
+        "pose": "pointUp",
+        "expression": "proud",
+        "turn": -0.4
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "say",
+      "size": "close",
+      "on": "sharma",
+      "move": true
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "af_heart"
+}

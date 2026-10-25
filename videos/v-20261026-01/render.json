@@ -1,0 +1,120 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61873,
+  "duration_sec": 30,
+  "tempo": 1.0,
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 104
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "In an average year, my money out-earns a surgeon. And it never goes to work.",
+        "start": 0.27,
+        "seconds": 3.0,
+        "window": 3.57,
+        "fill": 0.84
+      },
+      {
+        "scene": "doctor",
+        "text": "Wait, what? A top surgeon makes $500,000 a year!",
+        "start": 3.83,
+        "seconds": 2.6,
+        "window": 2.93,
+        "fill": 0.887
+      },
+      {
+        "scene": "shifts",
+        "text": "Night shifts. Weekends. Every dollar earned with his own hands.",
+        "start": 6.77,
+        "seconds": 2.72,
+        "window": 3.3,
+        "fill": 0.824
+      },
+      {
+        "scene": "heir",
+        "text": "My $10,000,000 just sits invested, at an assumed 7% a year.",
+        "start": 10.07,
+        "seconds": 3.15,
+        "window": 3.73,
+        "fill": 0.845
+      },
+      {
+        "scene": "earns",
+        "text": "In an average year, it earns $700,000. I didn't lift a finger.",
+        "start": 13.8,
+        "seconds": 3.17,
+        "window": 3.7,
+        "fill": 0.857
+      },
+      {
+        "scene": "gap",
+        "text": "That's $200,000 more than the surgeon's whole salary.",
+        "start": 17.5,
+        "seconds": 2.5,
+        "window": 3.03,
+        "fill": 0.825
+      },
+      {
+        "scene": "harder",
+        "text": "So your money works harder than a surgeon? And what if it drops?",
+        "start": 20.53,
+        "seconds": 2.34,
+        "window": 2.77,
+        "fill": 0.845
+      },
+      {
+        "scene": "catch",
+        "text": "Some years it falls. Some years it jumps. I just never sell.",
+        "start": 23.3,
+        "seconds": 2.14,
+        "window": 2.7,
+        "fill": 0.793
+      },
+      {
+        "scene": "loop",
+        "text": "Every dollar you leave invested goes to work for you. That's why I say...",
+        "start": 26.0,
+        "seconds": 2.73,
+        "window": 3.27,
+        "fill": 0.835
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 9.594,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

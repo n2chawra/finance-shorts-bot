@@ -1,0 +1,352 @@
+{
+  "id": "v-20261026-01",
+  "createdAt": "2026-10-25T22:48:21.273514+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "$10 million doing nothing out-earns a $500,000 salary",
+    "category": "investing",
+    "reach": "global",
+    "feed_id": "2026-10-26-money-that-out-earns-a-salary"
+  },
+  "title": "The $500,000 surgeon vs the $10 million heir 🤫",
+  "description": "Can $10 million that never goes to work out-earn a $500,000 salary?\nOne year: the surgeon works every shift; the heir's money sits invested at an assumed 7% a year, computed. Returns are assumptions, never promises. Speak to a licensed financial adviser in your country before making financial decisions.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Money",
+    "#RichHabits",
+    "#Investing",
+    "#PersonalFinance"
+  ],
+  "hookStyle": "secret",
+  "cta": "Salary or money at work? Comment",
+  "seed": 61873,
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 104,
+    "voice": "af_heart"
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "In an average year, my money out-earns a surgeon. And it never goes to work.",
+        "start": 0.27,
+        "seconds": 3.0,
+        "window": 3.57,
+        "fill": 0.84
+      },
+      {
+        "scene": "doctor",
+        "text": "Wait, what? A top surgeon makes $500,000 a year!",
+        "start": 3.83,
+        "seconds": 2.6,
+        "window": 2.93,
+        "fill": 0.887
+      },
+      {
+        "scene": "shifts",
+        "text": "Night shifts. Weekends. Every dollar earned with his own hands.",
+        "start": 6.77,
+        "seconds": 2.72,
+        "window": 3.3,
+        "fill": 0.824
+      },
+      {
+        "scene": "heir",
+        "text": "My $10,000,000 just sits invested, at an assumed 7% a year.",
+        "start": 10.07,
+        "seconds": 3.15,
+        "window": 3.73,
+        "fill": 0.845
+      },
+      {
+        "scene": "earns",
+        "text": "In an average year, it earns $700,000. I didn't lift a finger.",
+        "start": 13.8,
+        "seconds": 3.17,
+        "window": 3.7,
+        "fill": 0.857
+      },
+      {
+        "scene": "gap",
+        "text": "That's $200,000 more than the surgeon's whole salary.",
+        "start": 17.5,
+        "seconds": 2.5,
+        "window": 3.03,
+        "fill": 0.825
+      },
+      {
+        "scene": "harder",
+        "text": "So your money works harder than a surgeon? And what if it drops?",
+        "start": 20.53,
+        "seconds": 2.34,
+        "window": 2.77,
+        "fill": 0.845
+      },
+      {
+        "scene": "catch",
+        "text": "Some years it falls. Some years it jumps. I just never sell.",
+        "start": 23.3,
+        "seconds": 2.14,
+        "window": 2.7,
+        "fill": 0.793
+      },
+      {
+        "scene": "loop",
+        "text": "Every dollar you leave invested goes to work for you. That's why I say...",
+        "start": 26.0,
+        "seconds": 2.73,
+        "window": 3.27,
+        "fill": 0.835
+      }
+    ]
+  },
+  "durationSec": 30,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.3
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on"
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after revision: 'top surgeon' at $500K is realistic (US top specialists), hook pop-up now 'Assumed return' not interest, 7% hedged as an assumed average ('in an average year') with a new catch beat on down years; verify list met (assumed 7%, no real fortune named); no product advice; description ends with disclaimer. Minor: thumbnail 'Lazy money beats surgeons' is punchy but OK."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: hook card fits $10,000,000, gap beat shows both labelled stacks, heir arm in frame, thumbnail cards clear of Sharma's face and NEVER WORKS stamp whole; hook, disclaimer, 30 s, audio -1/-17.3 dB all fine."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:40:10.607428+00:00",
+      "finishedAt": "2026-10-25T22:40:10.607428+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-25T22:40:51.489421+00:00",
+      "finishedAt": "2026-10-25T22:40:51.489421+00:00",
+      "notes": [
+        "thumbnail.words: four words at most, it is read at a glance"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-25T22:40:56.577667+00:00",
+      "finishedAt": "2026-10-25T22:40:56.577667+00:00",
+      "notes": [
+        "title mentions '$500K', which is neither a script input nor a computed figure"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:41:02.581036+00:00",
+      "finishedAt": "2026-10-25T22:41:02.581036+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:41:05.635132+00:00",
+      "finishedAt": "2026-10-25T22:41:05.635132+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:41:48.321571+00:00",
+      "finishedAt": "2026-10-25T22:41:48.321571+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-10-25T22:42:26.074961+00:00",
+      "finishedAt": "2026-10-25T22:42:26.074961+00:00",
+      "notes": [
+        "doctor beat: 'A doctor makes $500,000 a year!' is stated as a general fact in a global video; typical US physician pay is roughly $350-400K (and far lower in most countries), $500K is top-specialist pay. Make it 'this surgeon' / 'a top surgeon' or use a typical figure.",
+        "hook beat: toast 'Interest credited +$700,000' frames a 7% stock-market-style return as interest; no savings/deposit pays 7% in USD (ceiling ~5%). Label it as an assumed investment return (e.g. 'Assumed return'), not interest.",
+        "hook/earns beats: 'My money earns more than a doctor' and 'In a single year, it earns $700,000' present one year's 7% as certain; 7% is a long-run average assumption and a single year can be negative. Hedge the claim (e.g. 'in an average year', 'at that assumed 7%') so the comparison doesn't hide the risk."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-25T22:42:01.075750+00:00",
+      "finishedAt": "2026-10-25T22:42:54.235560+00:00",
+      "notes": [
+        "text 'Portfolio' at 11.4 s runs outside the frame",
+        "text '$' at 2.1 s is 27.5 px, below the 44 px minimum",
+        "text '$' at 2.1 s runs outside the frame",
+        "length 25 s is outside 30–45 s"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:43:25.326818+00:00",
+      "finishedAt": "2026-10-25T22:43:25.326818+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:43:26.419443+00:00",
+      "finishedAt": "2026-10-25T22:43:26.419443+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-25T22:43:30.281969+00:00",
+      "finishedAt": "2026-10-25T22:44:02.305056+00:00",
+      "notes": [
+        "text '$' at 8.8 s is 29.1 px, below the 44 px minimum",
+        "text 'Portfolio' at 12.4 s runs outside the frame",
+        "length 29 s is outside 30–45 s"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:44:14.793903+00:00",
+      "finishedAt": "2026-10-25T22:44:14.793903+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:44:15.712825+00:00",
+      "finishedAt": "2026-10-25T22:44:37.023308+00:00",
+      "notes": [
+        "30 s, ember/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:44:52.500389+00:00",
+      "finishedAt": "2026-10-25T22:44:52.500389+00:00",
+      "notes": [
+        "Re-review after revision: 'top surgeon' at $500K is realistic (US top specialists), hook pop-up now 'Assumed return' not interest, 7% hedged as an assumed average ('in an average year') with a new catch beat on down years; verify list met (assumed 7%, no real fortune named); no product advice; description ends with disclaimer. Minor: thumbnail 'Lazy money beats surgeons' is punchy but OK."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-25T22:45:23.028858+00:00",
+      "finishedAt": "2026-10-25T22:45:23.028858+00:00",
+      "notes": [
+        "[scene] 0.0s hook beat (hook scene): the 'Invested' card's figure $10,000,000 overflows the card, the last '000' spills past its right edge onto the background; same overflow on the thumbnail. The card must size to its figure.",
+        "[script] 20.0s gap beat (shot, market set): the camera push to 'medium on money' at 'whole' crops the left Salary stack so its label and figure are cut off at the left edge ('ALARY', '0,000'); keep the camera on 'all' (wide) or push in only after the salary figure has been read.",
+        "[scene] thumbnail (hook layout): the 'Surgeon's salary $500,000' rival card sits on top of Sharma's head, and the red stamp is cut off at the left edge ('EVER WORKS').",
+        "[script] 10.0s heir beat (shot, penthouse): Sharma's 'present' arm reaches off the left edge with the hand cut off, presenting away from the phone that appears to his right; flip the spots (Sharma right) or use another pose."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:45:44.827861+00:00",
+      "finishedAt": "2026-10-25T22:45:44.827861+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:45:45.783404+00:00",
+      "finishedAt": "2026-10-25T22:46:08.522307+00:00",
+      "notes": [
+        "30 s, ember/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:46:25.582440+00:00",
+      "finishedAt": "2026-10-25T22:46:25.582440+00:00",
+      "notes": [
+        "Re-review after fixes: hook card fits $10,000,000, gap beat shows both labelled stacks, heir arm in frame, thumbnail cards clear of Sharma's face and NEVER WORKS stamp whole; hook, disclaimer, 30 s, audio -1/-17.3 dB all fine."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:46:35.552460+00:00",
+      "finishedAt": "2026-10-25T22:48:17.907031+00:00",
+      "notes": [
+        "30 s, ember/synthwave, peak -1.0 dB, mean -17.3 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-25T22:48:21.273669+00:00",
+      "finishedAt": "2026-10-25T22:48:21.273669+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261026-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261026-01"
+  }
+}

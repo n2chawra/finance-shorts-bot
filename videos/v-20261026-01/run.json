@@ -1,0 +1,192 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:40:10.607428+00:00",
+    "finishedAt": "2026-10-25T22:40:10.607428+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:40:51.489421+00:00",
+    "finishedAt": "2026-10-25T22:40:51.489421+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:40:56.577667+00:00",
+    "finishedAt": "2026-10-25T22:40:56.577667+00:00",
+    "notes": [
+      "title mentions '$500K', which is neither a script input nor a computed figure"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:41:02.581036+00:00",
+    "finishedAt": "2026-10-25T22:41:02.581036+00:00",
+    "notes": [
+      "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:41:05.635132+00:00",
+    "finishedAt": "2026-10-25T22:41:05.635132+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:41:48.321571+00:00",
+    "finishedAt": "2026-10-25T22:41:48.321571+00:00",
+    "notes": [
+      "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:42:26.074961+00:00",
+    "finishedAt": "2026-10-25T22:42:26.074961+00:00",
+    "notes": [
+      "doctor beat: 'A doctor makes $500,000 a year!' is stated as a general fact in a global video; typical US physician pay is roughly $350-400K (and far lower in most countries), $500K is top-specialist pay. Make it 'this surgeon' / 'a top surgeon' or use a typical figure.",
+      "hook beat: toast 'Interest credited +$700,000' frames a 7% stock-market-style return as interest; no savings/deposit pays 7% in USD (ceiling ~5%). Label it as an assumed investment return (e.g. 'Assumed return'), not interest.",
+      "hook/earns beats: 'My money earns more than a doctor' and 'In a single year, it earns $700,000' present one year's 7% as certain; 7% is a long-run average assumption and a single year can be negative. Hedge the claim (e.g. 'in an average year', 'at that assumed 7%') so the comparison doesn't hide the risk."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:42:01.075750+00:00",
+    "finishedAt": "2026-10-25T22:42:54.235560+00:00",
+    "notes": [
+      "text 'Portfolio' at 11.4 s runs outside the frame",
+      "text '$' at 2.1 s is 27.5 px, below the 44 px minimum",
+      "text '$' at 2.1 s runs outside the frame",
+      "length 25 s is outside 30–45 s"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:43:25.326818+00:00",
+    "finishedAt": "2026-10-25T22:43:25.326818+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:43:26.419443+00:00",
+    "finishedAt": "2026-10-25T22:43:26.419443+00:00",
+    "notes": [
+      "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:43:30.281969+00:00",
+    "finishedAt": "2026-10-25T22:44:02.305056+00:00",
+    "notes": [
+      "text '$' at 8.8 s is 29.1 px, below the 44 px minimum",
+      "text 'Portfolio' at 12.4 s runs outside the frame",
+      "length 29 s is outside 30–45 s"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:44:14.793903+00:00",
+    "finishedAt": "2026-10-25T22:44:14.793903+00:00",
+    "notes": [
+      "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:44:15.712825+00:00",
+    "finishedAt": "2026-10-25T22:44:37.023308+00:00",
+    "notes": [
+      "30 s, ember/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:44:52.500389+00:00",
+    "finishedAt": "2026-10-25T22:44:52.500389+00:00",
+    "notes": [
+      "Re-review after revision: 'top surgeon' at $500K is realistic (US top specialists), hook pop-up now 'Assumed return' not interest, 7% hedged as an assumed average ('in an average year') with a new catch beat on down years; verify list met (assumed 7%, no real fortune named); no product advice; description ends with disclaimer. Minor: thumbnail 'Lazy money beats surgeons' is punchy but OK."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-25T22:45:23.028858+00:00",
+    "finishedAt": "2026-10-25T22:45:23.028858+00:00",
+    "notes": [
+      "[scene] 0.0s hook beat (hook scene): the 'Invested' card's figure $10,000,000 overflows the card, the last '000' spills past its right edge onto the background; same overflow on the thumbnail. The card must size to its figure.",
+      "[script] 20.0s gap beat (shot, market set): the camera push to 'medium on money' at 'whole' crops the left Salary stack so its label and figure are cut off at the left edge ('ALARY', '0,000'); keep the camera on 'all' (wide) or push in only after the salary figure has been read.",
+      "[scene] thumbnail (hook layout): the 'Surgeon's salary $500,000' rival card sits on top of Sharma's head, and the red stamp is cut off at the left edge ('EVER WORKS').",
+      "[script] 10.0s heir beat (shot, penthouse): Sharma's 'present' arm reaches off the left edge with the hand cut off, presenting away from the phone that appears to his right; flip the spots (Sharma right) or use another pose."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:45:44.827861+00:00",
+    "finishedAt": "2026-10-25T22:45:44.827861+00:00",
+    "notes": [
+      "19 figures computed from inputs; 13 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:45:45.783404+00:00",
+    "finishedAt": "2026-10-25T22:46:08.522307+00:00",
+    "notes": [
+      "30 s, ember/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:46:25.582440+00:00",
+    "finishedAt": "2026-10-25T22:46:25.582440+00:00",
+    "notes": [
+      "Re-review after fixes: hook card fits $10,000,000, gap beat shows both labelled stacks, heir arm in frame, thumbnail cards clear of Sharma's face and NEVER WORKS stamp whole; hook, disclaimer, 30 s, audio -1/-17.3 dB all fine."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:46:35.552460+00:00",
+    "finishedAt": "2026-10-25T22:48:17.907031+00:00",
+    "notes": [
+      "30 s, ember/synthwave, peak -1.0 dB, mean -17.3 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-25T22:48:21.273669+00:00",
+    "finishedAt": "2026-10-25T22:48:21.273669+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
