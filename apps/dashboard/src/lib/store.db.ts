@@ -10,6 +10,7 @@ import { prisma } from "./prisma";
 import { SettingsSchema, mostLoved } from "./schemas";
 import { runEndMs } from "./run-span";
 import { fillFromLive, meanViewPct, totals, type DayRow } from "./totals";
+import { relinked } from "./youtube-link";
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 
 const DAY_MS = 86_400_000;
@@ -47,6 +48,8 @@ function toVideo(v: VideoRow): Video {
 }
 
 const live = { deletedAt: null } satisfies Prisma.VideoWhereInput;
+// a new YouTube link starts from nothing: GREATEST in live-stats would otherwise keep the old video's counts
+const noLiveCounters = { liveViews: null, liveLikes: null, liveComments: null, liveAt: null } satisfies Prisma.UploadUpdateInput;
 
 // ---------------- settings ----------------
 
@@ -161,7 +164,7 @@ export async function videoAction(id: string, action: VideoAction): Promise<{ ok
 /**
  * Mark a video as uploaded by hand, whatever state the pipeline had it in. It leaves the queue,
  * the publisher never uploads it, and the stats job tracks the given YouTube video. Can be
- * repeated to add or correct the link.
+ * repeated to add or correct the link; a corrected link drops the old link's numbers, as in updateVideo.
  */
 export async function markUploaded(id: string, m: ManualUpload): Promise<{ ok: true } | { ok: false; error: string }> {
   const v = await prisma.video.findFirst({ where: { id, ...live }, include: { upload: true } });
@@ -172,13 +175,16 @@ export async function markUploaded(id: string, m: ManualUpload): Promise<{ ok: t
   }
   const at = new Date(m.publishedAt);
   const youtubeId = m.youtubeId ?? v.upload?.youtubeId ?? null;
+  const upload = v.upload;
+  const newLink = !!upload && relinked(upload.youtubeId, youtubeId);
   await prisma.$transaction([
     prisma.video.update({ where: { id }, data: { status: "published", queuePosition: null, failReason: null } }),
     prisma.upload.upsert({
       where: { videoId: id },
-      update: { youtubeId, publishAt: at, state: "published", error: null },
+      update: { youtubeId, publishAt: at, state: "published", error: null, ...(newLink ? noLiveCounters : {}) },
       create: { videoId: id, youtubeId, publishAt: at, state: "published" },
     }),
+    ...(upload && newLink ? [prisma.videoStat.deleteMany({ where: { uploadId: upload.id } })] : []),
     prisma.agentRun.create({
       data: { videoId: id, agent: "manual_upload", status: "ok", startedAt: new Date(), finishedAt: new Date(),
         log: [youtubeId ? `Uploaded by hand as YouTube video ${youtubeId}` : "Uploaded by hand (no YouTube link yet)", `Was ${v.status}`] },
@@ -197,7 +203,7 @@ export async function updateVideo(id: string, e: VideoEdit): Promise<{ ok: true 
   const v = await prisma.video.findFirst({ where: { id, ...live }, include: { upload: true } });
   if (!v) return { ok: false, error: "Video not found" };
   if ((e.youtubeId !== undefined || e.publishAt) && !v.upload) return { ok: false, error: "This video is not uploaded yet: use Mark as uploaded" };
-  const newLink = e.youtubeId !== undefined && e.youtubeId !== v.upload?.youtubeId;
+  const newLink = relinked(v.upload?.youtubeId, e.youtubeId);
   if (newLink && e.youtubeId) {
     const taken = await prisma.upload.findFirst({ where: { youtubeId: e.youtubeId, videoId: { not: id } }, select: { videoId: true } });
     if (taken) return { ok: false, error: `That YouTube video is already linked to ${taken.videoId}` };
@@ -208,7 +214,7 @@ export async function updateVideo(id: string, e: VideoEdit): Promise<{ ok: true 
     prisma.video.update({ where: { id }, data: { title: e.title, description: e.description, tags: e.tags } }),
     ...(upload && (newLink || e.publishAt) ? [prisma.upload.update({ where: { id: upload.id }, data: {
       publishAt: e.publishAt ? new Date(e.publishAt) : undefined,
-      ...(newLink ? { youtubeId: e.youtubeId, liveViews: null, liveLikes: null, liveComments: null, liveAt: null } : {}),
+      ...(newLink ? { youtubeId: e.youtubeId, ...noLiveCounters } : {}),
     } })] : []),
     ...(upload && newLink ? [prisma.videoStat.deleteMany({ where: { uploadId: upload.id } })] : []),
     prisma.agentRun.create({ data: { videoId: id, agent: "manual_edit", status: "ok", startedAt: new Date(), finishedAt: new Date(),
@@ -247,7 +253,7 @@ export async function getOverview(): Promise<Overview> {
     prisma.video.findMany({ where: { ...live, status: "failed" }, orderBy: { createdAt: "desc" }, take: 5 }),
     prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations, orderBy: { upload: { publishAt: "desc" } } }),
     prisma.videoStat.aggregate({ where: { day: { gte: since }, upload: { video: live } }, _sum: { views: true, subsGained: true, likes: true, comments: true } }),
-    prisma.upload.count({ where: { state: "published", publishAt: { gte: new Date(Date.now() - 7 * DAY_MS) } } }),
+    prisma.upload.count({ where: { state: "published", publishAt: { gte: new Date(Date.now() - 7 * DAY_MS) }, video: live } }),
     prisma.template.count(),
     prisma.agentRun.count({ where: { agent: "template_builder", startedAt: { gte: new Date(`${today}T00:00:00${IST_OFFSET}`) } } }),
     prisma.agentRun.findFirst({ orderBy: { startedAt: "desc" }, select: { startedAt: true } }),

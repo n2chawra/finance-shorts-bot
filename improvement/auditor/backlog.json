@@ -391,6 +391,56 @@
       "severity": "low",
       "found": "2026-10-24",
       "status": "open"
+    },
+    {
+      "id": "dsh-004",
+      "kind": "data",
+      "title": "Mark as uploaded with a corrected link kept the old video's numbers",
+      "detail": "markUploaded (store.db.ts) can be repeated to correct the YouTube link, but unlike updateVideo it kept the Upload's live counters and VideoStat rows. live-stats writes GREATEST(old, new), so a wrong link with more views stayed on the dashboard for good. Now both paths use relinked() (lib/youtube-link.ts) and drop the old counters and stats. Test: workers/tests/dashboard-relink.test.ts.",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts",
+        "apps/dashboard/src/lib/youtube-link.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-10-26",
+      "status": "fixed"
+    },
+    {
+      "id": "dsh-005",
+      "kind": "data",
+      "title": "Overview 'uploads in 7 days' counted removed videos",
+      "detail": "getOverview's upload count had no deletedAt filter, while every other overview total skips videos the owner removed. Added video: live to the count (a Prisma filter; no DB in unit tests).",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts"
+      ],
+      "severity": "low",
+      "found": "2026-10-26",
+      "status": "fixed"
+    },
+    {
+      "id": "gen-004",
+      "kind": "bug",
+      "title": "check-plan crashed on a malformed demand or reach reason",
+      "detail": "reach.check_plan compared plan.demand.views with 1,000,000 without checking it is a number (\"1.2M\" raised TypeError) and called .get on reach_reason and demand without checking they are objects. formats.check_plan already reports those as problems; reach now treats them as missing. Test in generator/tests/test_reach.py.",
+      "files": [
+        "generator/reach.py"
+      ],
+      "severity": "low",
+      "found": "2026-10-26",
+      "status": "fixed"
+    },
+    {
+      "id": "dsh-006",
+      "kind": "bug",
+      "title": "Overview 7-day totals take 8 days of Analytics rows",
+      "detail": "getOverview (and store.sample.ts) sum VideoStat days >= today-7, which is 8 calendar days counting today. Today and yesterday are usually empty (Analytics lag), so the effect is small; decide the window together with dui-003 (week-over-week delta) so both use the same 7 days.",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts",
+        "apps/dashboard/src/lib/store.sample.ts"
+      ],
+      "severity": "low",
+      "found": "2026-10-26",
+      "status": "open"
     }
   ]
 }
