@@ -51,3 +51,15 @@ def test_one_local_short_a_day():
 def test_old_history_without_reach_is_not_counted():
     history = [entry(i, None) for i in range(10)]
     assert reach.for_state(history, TODAY, "short")["recent"] == []
+
+
+def test_malformed_reason_or_demand_is_a_problem_not_a_crash():
+    # the planner is an LLM: "1.2M" views or a bare string reason must come back as problems
+    p = plan("local", "INR", {"kind": "demand"})
+    p["demand"] = {"views": "1.2M"}
+    assert reach.check_plan(p, [], TODAY, "short")
+    p["demand"] = "a 1M video"
+    assert reach.check_plan(p, [], TODAY, "short")
+    p = plan("local", "INR")
+    p["topic"]["reach_reason"] = "Diwali"
+    assert reach.check_plan(p, [], TODAY, "short")

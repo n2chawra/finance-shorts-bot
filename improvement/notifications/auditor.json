@@ -1,18 +1,11 @@
 {
   "notifications": [
     {
-      "key": "data-audit-stale",
-      "severity": "info",
-      "title": "No data audit ran on 23 Oct, so the auditor skipped the data check",
-      "detail": "The data-audit cron was moved to 08:23 UTC (13:53 IST) at 10:18 UTC on 23 Oct, after that day's slot, so the newest metrics/data-audit.json is from 22 Oct 17:57 UTC. The workflow is not failing. The new time should give tomorrow's auditor a fresh file. The 22 Oct file has five warnings: v-20261022-02 private on YouTube, v-20261022-03 unknown to YouTube, v-20261022-01 178 vs 120 views, and L-20261019-02 and L-20261018-01 unlisted on YouTube while published here.",
-      "fix": "1. Nothing needed if tomorrow's audit lands before 23:00 IST.\n2. For a fresh check tonight: GitHub → Actions → Data audit → Run workflow.\n3. Check v-20261022-03's YouTube link on its video page (YouTube doesn't know that id), and whether v-20261022-02 and the two long videos are meant to be private or unlisted."
-    },
-    {
-      "key": "agent-merge-hang",
-      "severity": "info",
-      "title": "An agent branch was blocked by a hung CI runner, not by a failing test",
-      "detail": "agent/auditor/2026-10-23 was logged 'tests or build failed', but its Python step was cancelled after 40 minutes with no output during the silent apt/pip install (job 119987869699). The same commit passes locally in 19 s. Tonight's branch re-ships its fixes.",
-      "fix": "1. Nothing required. 2. Optional: in .github/workflows/agent-merge.yml give the Python step a timeout-minutes (e.g. 15) and drop the -qq on apt-get, so a hang shows where it stopped and fails fast."
+      "key": "long-videos-unlisted",
+      "severity": "warning",
+      "title": "Three long videos are unlisted on YouTube but published on the dashboard",
+      "detail": "Tonight's data audit (25 Oct 13:15 UTC) and the 22 Oct one both found L-20261021-01 (kYACrRwlx1s), L-20261019-02 (Y_qa18IDfm0) and L-20261018-01 (NxoAcDZWCh4) unlisted on YouTube. Not a code bug: the dashboard's state comes from the upload record, and YouTube reports the privacy you set in Studio. Unlisted videos get almost no views (1-2 each so far), and they count as published in the dashboard's totals and the agents' metrics. L-20261023-01 is public.",
+      "fix": "1. If they should be public: YouTube Studio → Content → each video → Visibility → Public. The next audit clears the warning.\n2. If they are meant to stay unlisted (for example held back on purpose): on each video's dashboard page use Remove, so they stop counting as published videos."
     }
   ]
 }

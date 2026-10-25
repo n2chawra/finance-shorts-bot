@@ -69,7 +69,8 @@ def check_plan(plan: dict, entries: list[dict], today: str, fmt: str) -> list[st
         if plan.get("currency") != "USD":
             out.append("a global video is told in USD; rupees, pounds or euros make it local")
         return out
-    why = topic.get("reach_reason") or {}
+    why = topic.get("reach_reason")
+    why = why if isinstance(why, dict) else {}
     if why.get("kind") == "occasion":
         try:
             d = date.fromisoformat(str(why.get("date")))
@@ -81,7 +82,9 @@ def check_plan(plan: dict, entries: list[dict], today: str, fmt: str) -> list[st
         elif not t - timedelta(days=OCCASION_AFTER) <= d <= t + timedelta(days=OCCASION_BEFORE):
             out.append(f"occasion {why['name']!r} on {d} is not within {OCCASION_BEFORE} days: make a global video instead")
     elif why.get("kind") == "demand":
-        views = (plan.get("demand") or {}).get("views") or 0
+        demand = plan.get("demand")
+        views = demand.get("views") if isinstance(demand, dict) else None
+        views = views if isinstance(views, int) else 0   # formats.check_plan names a missing or non-number one
         if views < LOCAL_DEMAND_VIEWS:
             out.append(f"a local video for its demand needs a reference with {LOCAL_DEMAND_VIEWS:,}+ views (has {views:,})")
     else:
