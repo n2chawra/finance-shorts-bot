@@ -1,0 +1,44 @@
+{
+  "agent": "research",
+  "day": "2026-10-26",
+  "startedAt": "2026-10-25T18:21:32Z",
+  "finishedAt": "2026-10-25T18:26:29Z",
+  "summary": "Monday hooks-and-retention night: our Shorts lose people right after the hook (an 8.7 s explanation in the 5% tax Short vs a 1.7 s 'Wait, what?' in our best); added 6 topics (5 global) and 2 hook/retention experiments.",
+  "decision": "acted",
+  "why": "v-20261021-05 holds 73.5% with a 3.1 s claim and a 1.7 s reaction; v-20261024-01 follows its hook with 8.7 s of context and has 162 views. This week's market data is all billionaire Shorts (2.39M, 2.28M, 1.50M). The usage limit stopped the routines on 24-25 Oct, so the run was kept lean and the owner is told.",
+  "findings": [
+    {
+      "title": "Exposition right after the hook loses viewers",
+      "detail": "v-20261024-01: 3.0 s hook then an 8.7 s ballot explanation; proposal no-exposition-before-8s (experiment).",
+      "link": "improvement/research/2026-10-26.md"
+    },
+    {
+      "title": "Billionaire Shorts own the week",
+      "detail": "Top 4 in market.json: animated billionaire story 2.39M, $1-to-$1-quadrillion ladder 2.28M, casino 1.50M, 'Why Billionaire is Billionaire' 627K.",
+      "link": "https://youtube.com/shorts/jIs5WrvxcQ4"
+    },
+    {
+      "title": "Only our best Short changes energy mid-way",
+      "detail": "Every other reset Short is one camera drift; proposal midpoint-rehook (experiment).",
+      "link": "https://www.gofaceless.ai/en/blog/high-retention-youtube-shorts-attributes"
+    },
+    {
+      "title": "Usage limit stopped the routines on 24-25 Oct",
+      "detail": "1 of 3 Shorts on 24 Oct, none on 25 Oct; improver and dashboard failed. Owner notification.",
+      "link": "improvement/notifications/research.json"
+    },
+    {
+      "title": "Claude Code 2.1.310",
+      "detail": "Routine form and token fixes, Monitor tool on cloud providers; no model, limit or pricing change.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [],
+  "nextCheck": "2026-10-27",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-26.md"
+    }
+  ]
+}
