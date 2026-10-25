@@ -1,0 +1,656 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 73952,
+ "story": "trap_alert",
+ "currency": "INR",
+ "feed_id": "2026-10-26-diwali-car-on-emi",
+ "style": {
+  "palette": "plum",
+  "genre": "pop",
+  "key": "E",
+  "bpm": 112
+ },
+ "maths": [
+  {
+   "name": "car",
+   "kind": "emi",
+   "amount": 800000,
+   "rate_pct": 9,
+   "years": 7
+  },
+  {
+   "name": "price",
+   "kind": "lumpsum",
+   "amount": 800000,
+   "rate_pct": 0,
+   "years": 1
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "words": "The Diwali car *trap*",
+  "figure": "{car_total_paid}",
+  "tag": "You really pay",
+  "angle": "warning",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "speaker": "narrator",
+   "say": "This {car_amount} Diwali car will cost you {car_total_paid}.",
+   "events": {
+    "car": {
+     "word": "car"
+    },
+    "cost": {
+     "word": "cost"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "car"
+    },
+    {
+     "kind": "boom",
+     "at": "cost",
+     "gain": 0.7
+    }
+   ],
+   "params": {
+    "price": "{car_amount}",
+    "priceLabel": "Diwali offer",
+    "total": "{car_total_paid}",
+    "totalLabel": "You really pay",
+    "set": "market",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "laugh"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "rohan"
+     }
+    ]
+   }
+  },
+  {
+   "id": "offer",
+   "scene": "shot",
+   "speaker": "rohan",
+   "transition": "zoom-through",
+   "say": "Festive offer! Only {car_emi} a month. Easy!",
+   "events": {
+    "only": {
+     "word": "Only"
+    },
+    "easy": {
+     "word": "Easy"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "only",
+     "gain": 0.5
+    },
+    {
+     "kind": "pop",
+     "at": "easy"
+    }
+   ],
+   "params": {
+    "set": "market",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.7,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "happy",
+        "turn": -0.3
+       },
+       {
+        "at": "easy",
+        "pose": "thumbsUp",
+        "expression": "laugh",
+        "turn": -0.3
+       }
+      ]
+     }
+    ],
+    "objects": [
+     {
+      "kind": "phone",
+      "id": "deal",
+      "spot": 0.34,
+      "height": 0.36,
+      "title": "Car loan",
+      "figure": "{car_emi}",
+      "at": "only",
+      "lines": [
+       {
+        "label": "Per month",
+        "at": "easy"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "rohan"
+     },
+     {
+      "at": "only",
+      "size": "medium",
+      "on": "deal",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "howlong",
+   "scene": "shot",
+   "speaker": "priya",
+   "transition": "whip",
+   "say": "Easy for how long, Rohan?",
+   "events": {
+    "long": {
+     "word": "long"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "long",
+     "gain": 0.6
+    }
+   ],
+   "params": {
+    "set": "flat",
+    "actors": [
+     {
+      "who": "priya",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "thinking"
+       },
+       {
+        "at": "long",
+        "pose": "point",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "priya"
+     }
+    ]
+   }
+  },
+  {
+   "id": "months",
+   "scene": "shot",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "Umm... {car_months} months?",
+   "events": {
+    "months": {
+     "word": "months"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "months",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "set": "flat",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused"
+       },
+       {
+        "at": "months",
+        "pose": "worried",
+        "expression": "worried"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme",
+      "on": "rohan"
+     }
+    ]
+   }
+  },
+  {
+   "id": "payments",
+   "scene": "shot",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "At an assumed {car_rate} a year, that's {car_months} payments, every single month.",
+   "events": {
+    "assumed": {
+     "word": "assumed"
+    },
+    "payments": {
+     "word": "payments"
+    },
+    "every": {
+     "word": "every"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "assumed"
+    },
+    {
+     "kind": "tick",
+     "at": "payments",
+     "gain": 0.5
+    },
+    {
+     "kind": "tick",
+     "at": "every",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "set": "bank",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "worried",
+        "expression": "worried",
+        "turn": 0.3
+       },
+       {
+        "at": "every",
+        "pose": "facepalm",
+        "expression": "sad",
+        "turn": 0.3
+       }
+      ]
+     }
+    ],
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "paid",
+      "spot": 0.68,
+      "amount": "@car.total_paid",
+      "text": "{car_total_paid}",
+      "label": "Paid",
+      "at": "assumed",
+      "tone": "bad"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "every",
+      "size": "close",
+      "on": "paid",
+      "move": true
+     }
+    ],
+    "word": {
+     "text": "Every month",
+     "at": "every",
+     "color": "bad",
+     "where": "left"
+    }
+   }
+  },
+  {
+   "id": "total",
+   "scene": "shot",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "The car costs {car_amount}. On top, {car_interest} is just interest. Gone.",
+   "events": {
+    "costs": {
+     "word": "costs"
+    },
+    "interest": {
+     "word": "interest"
+    },
+    "gone": {
+     "word": "Gone"
+    },
+    "top": {
+     "word": "top"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "costs"
+    },
+    {
+     "kind": "boom",
+     "at": "interest",
+     "gain": 0.7
+    },
+    {
+     "kind": "fail",
+     "at": "gone",
+     "gain": 0.5
+    },
+    {
+     "kind": "pop",
+     "at": "top"
+    }
+   ],
+   "params": {
+    "set": "vault",
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "price",
+      "spot": 0.36,
+      "amount": "@price.final",
+      "text": "{car_amount}",
+      "label": "The car",
+      "at": "costs",
+      "tone": "good"
+     },
+     {
+      "kind": "stack",
+      "id": "extra",
+      "spot": 0.66,
+      "amount": "@car.interest",
+      "text": "{car_interest}",
+      "label": "Interest",
+      "at": "interest",
+      "tone": "bad"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "price"
+     },
+     {
+      "at": "top",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     },
+     {
+      "at": "interest",
+      "size": "medium",
+      "on": "extra",
+      "move": true
+     },
+     {
+      "at": "gone",
+      "size": "close",
+      "on": "extra",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "who",
+   "scene": "shot",
+   "speaker": "priya",
+   "transition": "match",
+   "say": "That's who the festive offer is built for. The lender, not you. A small EMI hides a big total.",
+   "events": {
+    "built": {
+     "word": "built"
+    },
+    "lender": {
+     "word": "lender"
+    },
+    "hides": {
+     "word": "hides"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "built"
+    },
+    {
+     "kind": "kaching",
+     "at": "lender",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "set": "office",
+    "actors": [
+     {
+      "who": "priya",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "thinking",
+        "turn": 0.3
+       },
+       {
+        "at": "lender",
+        "pose": "point",
+        "expression": "angry",
+        "turn": 0.3
+       }
+      ]
+     },
+     {
+      "who": "rohan",
+      "spot": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "worried",
+        "expression": "sad",
+        "turn": -0.3
+       },
+       {
+        "at": "hides",
+        "pose": "facepalm",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "lender",
+      "size": "close",
+      "on": "priya",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "move",
+   "scene": "shot",
+   "speaker": "sharma",
+   "transition": "whip",
+   "say": "Smart buyers don't ask about the EMI. They ask for the total.",
+   "events": {
+    "emi": {
+     "word": "EMI"
+    },
+    "total": {
+     "word": "total"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "emi",
+     "gain": 0.4
+    },
+    {
+     "kind": "ding",
+     "at": "total"
+    }
+   ],
+   "params": {
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "pointUp",
+        "expression": "smirk"
+       },
+       {
+        "at": "total",
+        "pose": "thumbsUp",
+        "expression": "proud"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "sharma"
+     },
+     {
+      "at": "total",
+      "size": "close",
+      "on": "sharma",
+      "move": true
+     }
+    ],
+    "word": {
+     "text": "Total",
+     "at": "total",
+     "color": "gold",
+     "where": "top"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "shot",
+   "speaker": "rohan",
+   "transition": "zoom-through",
+   "say": "So what does this shiny Diwali car really cost me? Well...",
+   "events": {
+    "really": {
+     "word": "really"
+    },
+    "well": {
+     "word": "Well"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "really"
+    },
+    {
+     "kind": "whoosh",
+     "at": "well",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "set": "flat",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "prop": "phone",
+        "expression": "thinking"
+       },
+       {
+        "at": "well",
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "rohan"
+     },
+     {
+      "at": "well",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}
