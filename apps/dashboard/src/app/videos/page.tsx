@@ -10,7 +10,6 @@ import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, SelectField, Status
 import { fmtCompact, fmtDateTime, titleCase } from "@/lib/format";
 import { useOverview, useTemplates, useVideos } from "@/lib/queries";
 
-const CATEGORIES = ["compounding", "sip", "retirement", "nps", "ppf", "tax", "index_funds", "inflation", "fd", "credit_card", "gold", "insurance", "home_loan", "emi", "spending", "subscriptions", "emergency_fund"];
 const TABS = [
   { value: "", label: "All" },
   { value: "queued", label: "Queued" },
@@ -27,6 +26,9 @@ function Videos() {
   const { data, error, isLoading } = useVideos(filters);
   const templates = useTemplates();
   const counts = useOverview().data?.counts;
+  // topic options come from the videos themselves: a fixed list missed every category added since
+  const everything = useVideos({});
+  const categories = [...new Set([...(everything.data ?? []).map((v) => v.topic.category), ...(filters.category ? [filters.category] : [])])].sort();
 
   const set = (key: string, value: string) => {
     const next = new URLSearchParams(params);
@@ -61,7 +63,7 @@ function Videos() {
             aria-label="Search videos" className={`${fieldClass} pl-8`} />
         </label>
         <SelectField label="Template" all="All templates" value={filters.template} onChange={(v) => set("template", v)} options={(templates.data ?? []).map((t) => ({ value: t.id, label: t.name }))} />
-        <SelectField label="Topic" all="All topics" value={filters.category} onChange={(v) => set("category", v)} options={CATEGORIES.map((c) => ({ value: c, label: titleCase(c) }))} />
+        <SelectField label="Topic" all="All topics" value={filters.category} onChange={(v) => set("category", v)} options={categories.map((c) => ({ value: c, label: titleCase(c) }))} />
       </form>
 
       {isLoading ? <Loading /> : error || !data ? <ErrorNote error={error} /> : data.length === 0 ? <Card><Empty icon={Film} title="No videos match">Try another status, template or search.</Empty></Card> : (

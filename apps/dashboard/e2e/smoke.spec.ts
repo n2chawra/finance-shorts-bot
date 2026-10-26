@@ -218,3 +218,14 @@ test("stat cards in a row share one height", async ({ page }) => {
   });
   expect(ragged).toEqual([]);
 });
+
+test("videos topic filter offers every category it is given", async ({ page }) => {
+  await signIn(page);
+  // the topic list was fixed in code and missed newer categories: a link to one showed an empty filter
+  await page.goto("/videos?category=net_worth");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Videos/, { timeout: 30_000 });
+  await expect(page.getByRole("combobox", { name: "Topic" })).toHaveText(/Net worth/);
+  await page.goto("/videos");
+  await page.getByRole("combobox", { name: "Topic" }).click();
+  await expect(page.getByRole("option", { name: "Credit card" })).toBeVisible();
+});
