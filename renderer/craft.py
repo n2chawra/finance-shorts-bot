@@ -35,7 +35,9 @@ CLOSE_EVERY = 15.0
 SET_RUN = 2
 SET_SHARE = {"short": 0.45, "long": 0.25}
 SIZES_NEEDED = {"short": 3, "long": 4}
-SHOT_SCENES = ("shot", "hook", "build", "custom")   # composed beats (build and custom since 2026-10-26)
+SHOT_SCENES = ("shot", "hook", "build", "custom", "framework", "type", "journey", "stats", "case")
+DOCU = ("framework", "type", "journey", "stats", "case")   # full-frame documentary devices
+DOCU_SIZE = {"framework": "wide", "journey": "wide", "stats": "medium", "type": "close", "case": "close"}   # how each frames   # composed beats (build and custom since 2026-10-26)
 # covers (owner, 2026-10-24: "the thumbnails look the same with different texts"): measured on the
 # real covers, the same layout with new words is 3-11 bits apart, different pictures 19 or more
 COVER_SAME_BITS = 12
@@ -91,7 +93,7 @@ def shot_problems(tl: dict) -> list[str]:
     closes: list[float] = [0.0]
     for b in shots:
         keys = ((b["params"].get("camera") or []) + [{"size": a.get("size", "close")} for a in b["params"].get("actions") or [] if isinstance(a, dict) and a.get("do") == "focus"]
-                if b["scene"] in ("shot", "build") else (b["params"].get("camera") or [{"size": "medium"}]))   # a custom beat may declare its sizes
+                if b["scene"] in ("shot", "build") else (b["params"].get("camera") or [{"size": DOCU_SIZE.get(b["scene"], "medium")}]))   # a custom beat may declare its sizes
         if b["scene"] == "build" and not keys:
             keys = [{"size": "wide"}]
         sizes = [k.get("size", "medium") for k in keys] or ["medium"]
@@ -152,6 +154,19 @@ FREE_VERBS = {"focus", "glow", "shake"}   # camera and emphasis: they need not n
 COMPOSED = ("shot", "hook", "build", "custom")
 
 
+def _all_ats(node, ev: dict, fps: int, out: list[float]) -> None:
+    """Every `at` event anywhere in a beat's params (lines, cards, stops, items...)."""
+    if isinstance(node, dict):
+        a = node.get("at")
+        if isinstance(a, str) and a in ev:
+            out.append(ev[a] / fps)
+        for v in node.values():
+            _all_ats(v, ev, fps, out)
+    elif isinstance(node, list):
+        for v in node:
+            _all_ats(v, ev, fps, out)
+
+
 def _visual_times(b: dict, fps: int) -> list[float]:
     """Seconds into a beat at which something new appears: its start, camera keys, build actions,
     a shot's objects, actions and acting keys, its word."""
@@ -167,6 +182,8 @@ def _visual_times(b: dict, fps: int) -> list[float]:
                 out.append(x)
     if isinstance(p.get("word"), dict) and (x := t(p["word"])) is not None:
         out.append(x)
+    if b.get("scene") in DOCU:
+        _all_ats(p, ev, fps, out)
     return sorted(out)
 
 
@@ -175,7 +192,7 @@ def picture_problems(tl: dict) -> list[str]:
     fps, out = tl["fps"], []
     worst = (0.0, "")
     for b in tl["beats"]:
-        if b["scene"] not in ("shot", "build"):
+        if b["scene"] not in ("shot", "build", *DOCU):
             continue          # custom beats are animated by hand; old fixed scenes keep their own rules
         times = [*_visual_times(b, fps), b["frames"] / fps]
         gap = max((y - x for x, y in zip(times, times[1:])), default=0.0)
@@ -220,9 +237,13 @@ def build_props(tl: dict) -> set[str]:
     """The props a timeline's build beats use (shared money things not counted)."""
     out = set()
     for b in tl.get("beats") or []:
+        p = b.get("params") or {}
+        if b.get("scene") in DOCU:   # framework items, the journey's traveller, a case's picture
+            out |= {i["prop"] for i in p.get("items") or [] if isinstance(i, dict) and i.get("prop")}
+            out |= {x for x in (p.get("traveller"), p.get("prop")) if isinstance(x, str)}
+            continue
         if b.get("scene") != "build":
             continue
-        p = b.get("params") or {}
         out |= {i["prop"] for i in p.get("items") or [] if isinstance(i, dict) and i.get("prop")}
         out |= {a["into"] for a in p.get("actions") or [] if isinstance(a, dict) and a.get("into")}
         out |= {hz["prop"] for hz in (p.get("world") or {}).get("horizon") or [] if isinstance(hz, dict) and hz.get("prop")}
@@ -232,7 +253,7 @@ def build_props(tl: dict) -> set[str]:
 def prop_problems(tl: dict, earlier: list[tuple[str, dict]]) -> list[str]:
     """A video's own things: enough of them, and not the last videos' things again (`earlier`: (id, timeline))."""
     mine = build_props(tl)
-    if not any(b["scene"] == "build" for b in tl["beats"]):
+    if not any(b["scene"] in ("build", *DOCU) for b in tl["beats"]):
         return []
     out = []
     if len(mine) < OWN_PROPS_MIN:
@@ -243,5 +264,33 @@ def prop_problems(tl: dict, earlier: list[tuple[str, dict]]) -> list[str]:
         if mine and theirs and len(mine & theirs) / len(mine) > PROP_OVERLAP_MAX:
             out.append(f"{len(mine & theirs)} of its {len(mine)} props were in {vid} too ({', '.join(sorted(mine & theirs))}): "
                        f"at most {PROP_OVERLAP_MAX:.0%}; the story's own things, not the last video's")
+            break
+    return out
+
+
+# ---------------- no repetition inside a video (owner, 2026-10-26: "dynamic with the script, no repetition") ----------------
+DEVICES_MIN = {"short": 2, "long": 5}   # different composed scenes a video uses
+DEVICE_SHARE = 0.4                      # no one scene in more than this share of a long video's composed beats
+DEVICE_RUN = 3                          # nor more than this many beats in a row
+
+
+def device_problems(tl: dict) -> list[str]:
+    fmt = tl.get("format", "short")
+    beats = [b for b in tl["beats"] if b["scene"] in SHOT_SCENES]
+    if fmt != "long" or len(beats) < 6:
+        return []
+    out = []
+    kinds = [b["scene"] for b in beats]
+    if len(set(kinds)) < DEVICES_MIN[fmt]:
+        out.append(f"only {len(set(kinds))} kinds of scene ({', '.join(sorted(set(kinds)))}); a long video mixes {DEVICES_MIN[fmt]}+ "
+                   f"(build, framework, type, journey, stats, case, custom...) so it never settles into one look")
+    top = max(set(kinds), key=kinds.count)
+    if kinds.count(top) / len(kinds) > DEVICE_SHARE:
+        out.append(f"{top} is {kinds.count(top)} of {len(kinds)} composed beats (at most {DEVICE_SHARE:.0%}): vary how each idea is shown")
+    run = 1
+    for a, b in zip(kinds, kinds[1:]):
+        run = run + 1 if a == b and a != "build" else 1   # build worlds change every phrase; the others repeat a look
+        if run > DEVICE_RUN:
+            out.append(f"{a} {run} times in a row: change the device")
             break
     return out

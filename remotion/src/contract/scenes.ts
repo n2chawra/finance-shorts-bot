@@ -6,6 +6,8 @@ export const SCENE_NAMES = [
   "prop", "screen", "equation", "kinetic", "source", "bill", "road", "fork", "shot", "hook",
   // a world built per phrase from the video's own props, and a video's own coded beats (2026-10-26)
   "build", "custom",
+  // documentary devices for long videos (studio/docu.tsx; 2026-10-26)
+  "framework", "type", "journey", "stats", "case",
 ] as const;
 
 export type SceneName = (typeof SCENE_NAMES)[number];

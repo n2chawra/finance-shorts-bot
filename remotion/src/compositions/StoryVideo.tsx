@@ -25,6 +25,7 @@ import { BillScene, ForkScene, RoadScene } from "../scenes/journey";
 import { ShotScene } from "../studio/shot";
 import { HOOKS, VIDEOS } from "../videos/hooks";
 import { BuildScene } from "../studio/build";
+import { CaseScene, FrameworkScene, JourneyScene, StatsScene, TypeScene } from "../studio/docu";
 import { StoryHud } from "../studio/hud";
 import { Grain } from "../design/texture";
 import { Sikka } from "../cast/Sikka";
@@ -50,6 +51,7 @@ export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   snowball: SnowballScene, calendar: CalendarScene, split: SplitScene, chart: ChartScene, towers: TowersScene,
   prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene, source: SourceScene, bill: BillScene, road: RoadScene, fork: ForkScene, shot: ShotScene, hook: HookScene,
   build: BuildScene, custom: CustomScene,
+  framework: FrameworkScene, type: TypeScene, journey: JourneyScene, stats: StatsScene, case: CaseScene,
 };
 
 /** The channel's mark in the top-left corner of every frame: Sikka, small, never text. */

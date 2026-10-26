@@ -99,3 +99,12 @@ def test_props_must_be_the_videos_own():
     assert craft.prop_problems(tl(mine), [("v-old", tl(["other"]))]) == []
     assert any("were in v-old" in p for p in craft.prop_problems(tl(mine), [("v-old", tl(mine[:5]))]))
     assert any("props of its own" in p for p in craft.prop_problems(tl(mine[:3]), []))
+
+
+def test_long_videos_mix_their_devices():
+    def tl(kinds):
+        return {"format": "long", "beats": [{"scene": k} for k in kinds]}
+    assert craft.device_problems(tl(["build", "framework", "stats", "type", "case", "journey", "build"])) == []
+    one_look = craft.device_problems(tl(["stats"] * 4 + ["build", "type"]))
+    assert any("kinds of scene" in p for p in one_look) and any("in a row" in p for p in one_look)
+    assert any("composed beats" in p for p in craft.device_problems(tl(["type", "build", "type", "case", "type", "build", "type", "stats"])))

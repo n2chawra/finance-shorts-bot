@@ -23,7 +23,7 @@ from PIL import Image
 
 from renderer.engine.mux import find_ffmpeg
 from renderer.engine.preview import contact_sheet
-from renderer.craft import frame_problems, picture_problems, shot_problems
+from renderer.craft import device_problems, frame_problems, picture_problems, shot_problems
 from renderer.gates import check_liveliness, layout_problems
 
 REMOTION = Path(__file__).resolve().parent.parent/"remotion"
@@ -69,6 +69,15 @@ def custom_problems(video_id: str) -> list[str]:
 
 
 hook_problems = custom_problems   # the name routines and tests used before custom beats (2026-10-26)
+
+
+def _not_end_cards(shots: list[Path], tl: dict) -> list[Path]:
+    """The stills to judge for empty frames: an end card is a card by design (text, the cast, the
+    disclaimer), so its frames don't count."""
+    ends = [(b["from"], b["from"] + b["frames"]) for b in tl["beats"] if b["scene"] in ("end", "chapter")]
+    def frame(p: Path) -> int:
+        return int(p.stem[1:]) if p.stem[1:].isdigit() else -1
+    return [p for p in shots if not any(a <= frame(p) < z for a, z in ends)]
 
 
 def source_hash() -> str:
@@ -268,7 +277,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
     report["audio"] = {"peak_db": tl["audio"]["peak_db"], "mean_db": tl["audio"]["mean_db"]}
     # a video that looks templated (empty frames, the same picture, one shot size, one set) fails
     # here, on the stills, before the video is drawn (renderer/craft.py)
-    report["craft_problems"] = shot_problems(tl) + picture_problems(tl) + frame_problems(shots, tl["fps"])
+    report["craft_problems"] = shot_problems(tl) + picture_problems(tl) + device_problems(tl) + frame_problems(_not_end_cards(shots, tl), tl["fps"])
     # no point rendering a video the gates will reject: a layout problem, or one `stop_if` finds in
     # the report (length, sound levels), skips it
     early = list(report["layout_problems"]) + list(report["craft_problems"]) + (stop_if(report) if stop_if else [])

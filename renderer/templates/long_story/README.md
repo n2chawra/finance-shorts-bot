@@ -35,6 +35,23 @@ build scene"), at long-video scale. `generator/story.py` checks it:
 6. **The turn** (`role: turn`, 50–85% in) and **the payoff** (`role: payoff`): coded `Turn.tsx` and
    `Payoff.tsx`. Then the end card (`role: end`).
 
+**Documentary devices** (`remotion/src/studio/docu.tsx`; after The Curious Plot's long videos, 2026-10-26).
+Mix them with `build` beats so the video never settles into one look; every one takes its content
+from the script and the video's own props, every reveal fires on a spoken word:
+
+| scene | what it is | params |
+|---|---|---|
+| `framework` | the promise as a picture the story keeps returning to: the video's things in a row, an arc or rising steps; each chapter opens the next one, earlier ones get a tick | `items: [{prop, label, at?}]`, `open: n`, `layout: row\|arc\|steps`, `title?`, `at?`, `bg` |
+| `type` | words that edit themselves: a line types in on its word, is struck out, and is replaced ("He bought a car" → "He bought a payment") | `lines: [{text, at, size: huge\|big\|small, color?, strike?: event, replace?: {text, at}}]`, `kicker?`, `prop?` (faint, behind), `bg` |
+| `journey` | a road drawn a stop at a time, the story's thing travelling along it (a career, a loan's years, a move between cities) | `stops: [{name, note?, at}]`, `traveller?: prop`, `bg` |
+| `stats` | a dashboard of figures counting up on their words, the thing beside them | `cards: [{label, value: @x.y, text: "{x_y}", at, color?}]`, `title?`, `kicker?`, `prop?`, `at?` (the title flashes), `bg` |
+| `case` | a case-study card: the person or thing in a circle, a kicker, a big name, one line | `name`, `line?`, `kicker?`, `who?` or `prop?`, `at?`, `lineAt?`, `side?`, `bg` |
+
+`bg` is the chapter's colour (sand, sky, mint, plum, night, coral, cream, slate): one per chapter,
+so the viewer always knows where they are. No figure is ever typed: cards and notes are placeholders.
+The render fails a long video with fewer than 5 kinds of scene, one kind in more than 40% of the
+composed beats, or the same device more than 3 times in a row (`renderer/craft.py` `device_problems`).
+
 Draw the story's things in `remotion/src/videos/<id>/props.tsx` (10-20 for a long video). Reference:
 `videos/L-remake-borrow/script.json` with `remotion/src/videos/L-remake-borrow/` (hook and chapter one).
 
