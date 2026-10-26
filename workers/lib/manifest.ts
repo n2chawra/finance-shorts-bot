@@ -40,7 +40,8 @@ export const ShippedManifest = z.object({
    * views in about seven hours. */
   priority: z.object({ level: z.enum(["breaking", "trending"]), until: z.string() }).optional(),
   /** Three thumbnails for YouTube's Test & Compare (long videos), each with the angle it leads with. */
-  thumbnails: z.array(z.object({ file: z.string().regex(/^thumbnail(-[bc])?\.png$/), angle: z.string().nullable() })).max(3).optional(),
+  // and since 2026-10-26 its type (grid, ladder, extremes, face, scene: renderer/thumbs.py), so wins are tracked per type
+  thumbnails: z.array(z.object({ file: z.string().regex(/^thumbnail(-[bc])?\.png$/), angle: z.string().nullable(), layout: z.string().nullable().optional() })).max(3).optional(),
 });
 
 /** Manifest of a video that was given up on (written by `generator.run fail`). */

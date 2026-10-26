@@ -113,3 +113,12 @@ def test_thumbnail_angles_count_wins_per_test() -> None:
     assert rows["number"] == {"angle": "number", "tests": 2, "wins": 2, "winRate": 1.0, "expected": 0.33}
     assert rows["reaction"]["tests"] == 2 and rows["reaction"]["wins"] == 0
     assert ev.thumbnail_angles(vs)[0]["angle"] == "number"
+
+
+def test_thumbnail_types_are_ranked_like_angles():
+    from improvement.evaluate import thumbnail_angles
+    vs = [{"thumbLayouts": ["grid", "face", "extremes"], "thumbWinnerLayout": "grid"},
+          {"thumbLayouts": ["grid", "ladder", "face"], "thumbWinnerLayout": "grid"},
+          {"thumbLayouts": ["face", "scene"], "thumbWinnerLayout": None}]
+    rows = thumbnail_angles(vs, "thumbLayouts", "thumbWinnerLayout")
+    assert rows[0]["angle"] == "grid" and rows[0]["wins"] == 2 and rows[0]["tests"] == 2

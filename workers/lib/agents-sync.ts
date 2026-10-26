@@ -169,7 +169,7 @@ export async function applyTemplateDecisions(prisma: PrismaClient, root: string)
 }
 
 type Style = { palette?: string; genre?: string; bpm?: number; voice?: string | null; experiments?: Record<string, string>;
-  thumbs?: { file: string; angle: string | null }[]; thumbTest?: { winner: string; at: string } };
+  thumbs?: { file: string; angle: string | null; layout?: string | null }[]; thumbTest?: { winner: string; at: string } };
 
 /** metrics/videos.json + metrics/runs.json. Returns true when either file changed. */
 export async function exportMetrics(prisma: PrismaClient, root: string, now = new Date()): Promise<boolean> {
@@ -202,6 +202,9 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
       // a Test & Compare of three thumbnails: the angle of each, and the one YouTube picked (owner logs it)
       thumbAngles: (style.thumbs ?? []).map((t) => t.angle),
       thumbWinner: style.thumbTest?.winner ? (style.thumbs ?? []).find((t) => t.file === style.thumbTest!.winner)?.angle ?? null : null,
+      // the same test by thumbnail type (long videos, 2026-10-26: grid, ladder, extremes, face, scene)
+      thumbLayouts: (style.thumbs ?? []).map((t) => t.layout ?? null),
+      thumbWinnerLayout: style.thumbTest?.winner ? (style.thumbs ?? []).find((t) => t.file === style.thumbTest!.winner)?.layout ?? null : null,
     };
   });
   const since = new Date(now.getTime() - 60 * DAY_MS);

@@ -174,13 +174,14 @@ def rank(videos: list[dict], key, label: str) -> list[dict]:
     return sorted(rows, key=lambda r: -r["relative"])
 
 
-def thumbnail_angles(videos: list[dict]) -> list[dict]:
-    """Which thumbnail angle wins YouTube's Test & Compare: for every angle, how often it was in a test
-    and how often it won (the owner logs the winner on the dashboard). Ranked by win rate."""
+def thumbnail_angles(videos: list[dict], key: str = "thumbAngles", winner_key: str = "thumbWinner") -> list[dict]:
+    """Which thumbnail angle (or, with key thumbLayouts, type) wins YouTube's Test & Compare: for every
+    one, how often it was in a test and how often it won (the owner logs the winner on the dashboard).
+    Ranked by win rate."""
     tested: dict[str, int] = {}
     won: dict[str, int] = {}
     for v in videos:
-        angles, winner = [a for a in v.get("thumbAngles") or [] if a], v.get("thumbWinner")
+        angles, winner = [a for a in v.get(key) or [] if a], v.get(winner_key)
         if len(angles) < 2 or not winner:
             continue
         for a in angles:
@@ -262,6 +263,8 @@ def report(root: Path = ROOT, now: datetime | None = None) -> dict:
         "experiments": [judge(e, videos, attempts, now) for e in exps.load(root)],
         "attributes": {f: attributes(vs, stories) for f, vs in by_format.items()},
         "thumbnailAngles": thumbnail_angles(videos),
+        # long-video thumbnail types (renderer/thumbs.py): which kind of picture gets the click
+        "thumbnailTypes": thumbnail_angles(videos, "thumbLayouts", "thumbWinnerLayout"),
         "recurringFailures": recurring_failures(attempts, now),
     }
 
@@ -286,6 +289,10 @@ def main() -> int:
     if r["thumbnailAngles"]:
         print("\nThumbnail angles in Test & Compare (a third is chance with three thumbnails):")
         for t in r["thumbnailAngles"]:
+            print(f"  {t['angle']:<10} won {t['wins']} of {t['tests']} tests ({t['winRate']:.0%})")
+    if r["thumbnailTypes"]:
+        print("\nThumbnail types in Test & Compare (long videos):")
+        for t in r["thumbnailTypes"]:
             print(f"  {t['angle']:<10} won {t['wins']} of {t['tests']} tests ({t['winRate']:.0%})")
     if r["recurringFailures"]:
         print("\nRecurring failures (fix these):")

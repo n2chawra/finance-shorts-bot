@@ -94,6 +94,26 @@ videos use the `LONG` frame), experiments with `"templates": ["long_story"]`. Le
 item against a Shorts proposal by priority; long videos earn most of the channel's money, so at
 equal priority take the long one. Set the item's `status` as you would a proposal's.
 
+**What long videos are built from now (2026-10-26), and what is yours to improve.** Read the
+`long_story` README ("The story spine", "Documentary devices"), `renderer/templates/SHOTS.md`
+("The build scene") and `renderer/thumbs.py` first. Long videos (and Shorts) follow a story spine
+(`generator/story.py`: hook, promise, chapters as levels with a climbing number, a tease closing each
+chapter, a turn, the payoff), are drawn from each video's own props in `build` beats, and mix five
+documentary devices (`remotion/src/studio/docu.tsx`: `framework`, `type`, `journey`, `stats`,
+`case`). Thumbnails are one of five types (`remotion/src/compositions/LongThumbs.tsx`: `grid`,
+`ladder`, `extremes`, `face`, `scene`). Good long-video experiments, one area at a time, judged on
+average % viewed (thumbnails on Test & Compare wins: `thumbnailTypes` in `python -m improvement.evaluate`):
+- **devices**: which device holds viewers through a chapter (more `type` beats vs more `build`),
+  the framework's layouts, the journey's pace, the stats cards' count-up length (area `motion`)
+- **chapter colours and backdrops** in `docu.tsx` and `worlds.tsx` (area `look`)
+- **the spine's timing**: the promise earlier, shorter chapters, a tease line per chapter (area
+  `script`, through a `prompt` on the experiment: Studio writes the scripts)
+- **thumbnail types per format** in `renderer/thumbs.py` `FORMAT_TYPES` once `thumbnailTypes` has
+  3+ decided tests per type (area `thumbnail`)
+Never weaken the gates that keep them honest: the story checks, `picture_problems`, `prop_problems`,
+`device_problems`, the thumbnail rules. Long videos are few: say in your report when a long-video
+experiment is waiting only for data (Studio paused, or long videos not public).
+
 ## 4. Start up to two new experiments
 Each only if: fewer running experiments than `agents.maxActiveExperiments`, and its area is shared
 by no running experiment and not by the other one you start tonight (so the evaluator can tell their
