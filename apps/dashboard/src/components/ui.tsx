@@ -120,7 +120,7 @@ export function Stat({ label, value, sub, delta, chart, icon: Icon, href }: {
       {chart && <div className="mt-3">{chart}</div>}
     </>
   );
-  const cls = "block min-w-0 rounded-xl border border-ring bg-surface p-4 shadow-card transition-colors";
+  const cls = "block h-full min-w-0 rounded-xl border border-ring bg-surface p-4 shadow-card transition-colors";
   return (
     <motion.div variants={rise} className="min-w-0">
       {href ? <Link href={href} className={`${cls} hover:border-ring-strong`}>{body}</Link> : <div className={cls}>{body}</div>}

@@ -200,3 +200,21 @@ test("resolve all leaves setting proposals for a decision", async ({ page }) => 
   await expect.poll(() => sent?.ids.length ?? 0).toBeGreaterThan(0);
   expect(sent!.ids, "the open proposal must not be resolved").not.toContain("n0");
 });
+
+test("stat cards in a row share one height", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
+  await page.waitForTimeout(1200);   // entrance animations move the cards
+  // a card with a wrapped label or a longer line once stood taller than its neighbours, leaving a ragged row
+  const ragged = await page.getByTestId("overview-stats").evaluate((g) => {
+    const rows = new Map<number, number[]>();
+    for (const cell of Array.from(g.children)) {
+      const card = cell.firstElementChild!.getBoundingClientRect();
+      const top = Math.round(cell.getBoundingClientRect().top);
+      rows.set(top, [...(rows.get(top) ?? []), Math.round(card.height)]);
+    }
+    return [...rows.values()].filter((hs) => Math.max(...hs) - Math.min(...hs) > 1);
+  });
+  expect(ragged).toEqual([]);
+});
