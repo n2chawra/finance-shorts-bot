@@ -1,0 +1,1357 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 61284,
+  "story": "how_they_make_money",
+  "currency": "USD",
+  "style": {
+    "palette": "plum",
+    "genre": "lofi",
+    "key": "A",
+    "bpm": 90
+  },
+  "structure": {
+    "levels": [
+      "Hour",
+      "Night",
+      "Year",
+      "Decade"
+    ]
+  },
+  "maths": [
+    {
+      "name": "spin",
+      "kind": "fee_take",
+      "amount": 10,
+      "fee_pct": 5.26,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "hour",
+      "kind": "fee_take",
+      "amount": 10,
+      "fee_pct": 5.26,
+      "per_year": 38,
+      "years": 1
+    },
+    {
+      "name": "night",
+      "kind": "fee_take",
+      "amount": 10,
+      "fee_pct": 5.26,
+      "per_year": 190,
+      "years": 1
+    },
+    {
+      "name": "year",
+      "kind": "fee_take",
+      "amount": 10,
+      "fee_pct": 5.26,
+      "per_year": 9880,
+      "years": 1
+    },
+    {
+      "name": "decade",
+      "kind": "fee_take",
+      "amount": 10,
+      "fee_pct": 5.26,
+      "per_year": 9880,
+      "years": 10
+    }
+  ],
+  "thumbnail": {
+    "who": "sharma",
+    "layout": "scene",
+    "at": "hook",
+    "angle": "secret",
+    "words": "The casino *never* gambles",
+    "figure": "{spin_fee_pct}"
+  },
+  "cta": "Ever left a casino richer? Comment",
+  "hook_style": "secret",
+  "title": "How the casino wins even on your lucky night 🎰",
+  "description": "If you can win at roulette, how does the casino always come out ahead?\nThe house edge on a double-zero roulette wheel (5.26%) on every $10 bet, added up over an hour, a night, a year of Saturdays and ten years of them: on average, computed. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "sharma",
+      "say": "The casino never gambles. It wins a slice of every bet.",
+      "events": {
+        "never": {
+          "word": "never"
+        },
+        "slice": {
+          "word": "slice"
+        },
+        "spins": {
+          "word": "bet"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "never"
+        },
+        {
+          "kind": "kaching",
+          "at": "slice"
+        },
+        {
+          "kind": "whoosh",
+          "at": "spins"
+        }
+      ],
+      "params": {
+        "edge": "{spin_fee_pct}",
+        "hud": {
+          "hide": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "chips",
+            "spot": "right",
+            "amount": "@decade.total",
+            "text": "{spin_fee_pct}",
+            "label": "House edge",
+            "at": "slice",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "slice",
+            "size": "close",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Let's follow Rohan's chips through four levels. The last one takes a whole decade.",
+      "events": {
+        "chips": {
+          "word": "chips"
+        },
+        "levels": {
+          "word": "levels"
+        },
+        "last": {
+          "word": "last"
+        },
+        "saturdays": {
+          "word": "decade"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "chips"
+        },
+        {
+          "kind": "ding",
+          "at": "levels"
+        },
+        {
+          "kind": "tick",
+          "at": "saturdays"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "purple",
+          "horizon": [
+            {
+              "prop": "casino",
+              "x": 0.8,
+              "size": 0.14
+            },
+            {
+              "prop": "slots",
+              "x": 0.15,
+              "size": 0.08
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "saturdays",
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "wheel",
+            "prop": "wheel",
+            "x": 0.74,
+            "size": 0.2,
+            "k": 0.4
+          },
+          {
+            "id": "chips",
+            "prop": "chips",
+            "x": 0.6,
+            "size": 0.13
+          },
+          {
+            "id": "saturdays",
+            "prop": "clock",
+            "x": 0.84,
+            "y": 0.3,
+            "size": 0.1,
+            "hidden": true,
+            "label": "Decade",
+            "k": 0.8
+          }
+        ],
+        "actions": [
+          {
+            "at": "chips",
+            "do": "enter",
+            "target": "chips"
+          },
+          {
+            "at": "levels",
+            "do": "multiply",
+            "target": "chips",
+            "n": 4,
+            "cols": 4
+          },
+          {
+            "at": "saturdays",
+            "do": "enter",
+            "target": "saturdays"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "saturdays",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "edge",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "See the green zeros on the wheel? When the ball lands there, every red and black bet loses. That's my edge: {spin_fee_pct}, on average.",
+      "events": {
+        "green": {
+          "word": "green"
+        },
+        "wheel": {
+          "word": "wheel"
+        },
+        "ball": {
+          "word": "ball"
+        },
+        "loses": {
+          "word": "loses"
+        },
+        "edge": {
+          "word": "edge"
+        },
+        "average": {
+          "word": "average"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "green"
+        },
+        {
+          "kind": "tick",
+          "at": "ball"
+        },
+        {
+          "kind": "fail",
+          "at": "loses"
+        },
+        {
+          "kind": "kaching",
+          "at": "edge"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "studio",
+          "tint": "green"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "smirk"
+              },
+              {
+                "at": "edge",
+                "pose": "hips",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "wheel",
+            "prop": "wheel",
+            "x": 0.66,
+            "size": 0.26,
+            "k": 0.6
+          },
+          {
+            "id": "edge",
+            "prop": "edge",
+            "x": 0.8,
+            "y": 0.35,
+            "size": 0.12,
+            "hidden": true,
+            "label": "Edge"
+          },
+          {
+            "id": "bet",
+            "prop": "chips",
+            "x": 0.5,
+            "size": 0.07,
+            "label": "Bet"
+          }
+        ],
+        "actions": [
+          {
+            "at": "green",
+            "do": "state",
+            "target": "wheel",
+            "state": "zero"
+          },
+          {
+            "at": "ball",
+            "do": "fill",
+            "target": "wheel",
+            "k": 0.05,
+            "dur": 1.0
+          },
+          {
+            "at": "loses",
+            "do": "move",
+            "target": "bet",
+            "to": "wheel"
+          },
+          {
+            "at": "edge",
+            "do": "enter",
+            "target": "edge"
+          },
+          {
+            "at": "average",
+            "do": "glow",
+            "target": "edge"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "loses",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "hour",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Level one. I bet {hour_amount} a spin for an hour. On average, the house keeps {hour_total}.",
+      "events": {
+        "one": {
+          "word": "one"
+        },
+        "bet": {
+          "word": "bet"
+        },
+        "hour": {
+          "word": "hour"
+        },
+        "house": {
+          "word": "house"
+        },
+        "keeps": {
+          "word": "keeps"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "one"
+        },
+        {
+          "kind": "pop",
+          "at": "bet"
+        },
+        {
+          "kind": "tick",
+          "at": "hour"
+        },
+        {
+          "kind": "clink",
+          "at": "keeps"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "purple",
+          "horizon": [
+            {
+              "prop": "casino",
+              "x": 0.8,
+              "size": 0.14
+            },
+            {
+              "prop": "slots",
+              "x": 0.15,
+              "size": 0.08
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "happy"
+              },
+              {
+                "at": "keeps",
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "bet",
+            "prop": "chips",
+            "x": 0.62,
+            "size": 0.08
+          },
+          {
+            "id": "hour",
+            "prop": "clock",
+            "x": 0.84,
+            "y": 0.3,
+            "size": 0.1,
+            "hidden": true,
+            "k": 0.6
+          },
+          {
+            "id": "house",
+            "prop": "rake",
+            "x": 0.72,
+            "size": 0.14,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "bet",
+            "do": "shake",
+            "target": "bet"
+          },
+          {
+            "at": "hour",
+            "do": "enter",
+            "target": "hour"
+          },
+          {
+            "at": "house",
+            "do": "enter",
+            "target": "house"
+          },
+          {
+            "at": "keeps",
+            "do": "move",
+            "target": "house",
+            "to": "bet"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "hour",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@hour.total",
+            "text": "{hour_total}",
+            "label": "House keeps",
+            "at": "one"
+          }
+        }
+      }
+    },
+    {
+      "id": "night",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Level two, a whole night of spins. The same few chips, bet over and over. That's {night_total} to the house.",
+      "events": {
+        "two": {
+          "word": "two"
+        },
+        "night": {
+          "word": "night"
+        },
+        "chips": {
+          "word": "chips"
+        },
+        "over": {
+          "word": "over"
+        },
+        "house": {
+          "word": -1
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "two"
+        },
+        {
+          "kind": "pop",
+          "at": "night"
+        },
+        {
+          "kind": "whoosh",
+          "at": "over"
+        },
+        {
+          "kind": "fail",
+          "at": "house"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "purple",
+          "horizon": [
+            {
+              "prop": "casino",
+              "x": 0.8,
+              "size": 0.14
+            },
+            {
+              "prop": "slots",
+              "x": 0.15,
+              "size": 0.08
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "house",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "night",
+            "prop": "moon",
+            "x": 0.82,
+            "y": 0.2,
+            "size": 0.08,
+            "hidden": true
+          },
+          {
+            "id": "chips",
+            "prop": "chips",
+            "x": 0.62,
+            "size": 0.14
+          },
+          {
+            "id": "house",
+            "prop": "casino",
+            "x": 0.68,
+            "size": 0.16
+          }
+        ],
+        "actions": [
+          {
+            "at": "night",
+            "do": "enter",
+            "target": "night"
+          },
+          {
+            "at": "chips",
+            "do": "multiply",
+            "target": "chips",
+            "n": 3,
+            "cols": 3
+          },
+          {
+            "at": "over",
+            "do": "shrink",
+            "target": "chips",
+            "scale": 0.6
+          },
+          {
+            "at": "house",
+            "do": "grow",
+            "target": "house",
+            "scale": 1.15
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "chips",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@night.total",
+            "text": "{night_total}",
+            "label": "House keeps",
+            "at": "two"
+          }
+        }
+      }
+    },
+    {
+      "id": "year",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Level three: every Saturday for a year. The house collects {year_total}, one little slice at a time.",
+      "events": {
+        "three": {
+          "word": "three"
+        },
+        "saturday": {
+          "word": "saturday"
+        },
+        "year": {
+          "word": "year"
+        },
+        "mid": {
+          "word": 13
+        },
+        "collects": {
+          "word": "collects"
+        },
+        "slice": {
+          "word": "slice"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "three"
+        },
+        {
+          "kind": "tick",
+          "at": "saturday"
+        },
+        {
+          "kind": "kaching",
+          "at": "collects"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "purple",
+          "horizon": [
+            {
+              "prop": "casino",
+              "x": 0.8,
+              "size": 0.14
+            },
+            {
+              "prop": "slots",
+              "x": 0.15,
+              "size": 0.08
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "slice",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "saturday",
+            "prop": "moon",
+            "x": 0.62,
+            "y": 0.3,
+            "size": 0.09
+          },
+          {
+            "id": "slice",
+            "prop": "edge",
+            "x": 0.58,
+            "y": 0.12,
+            "size": 0.14
+          },
+          {
+            "id": "house",
+            "prop": "casino",
+            "x": 0.72,
+            "size": 0.14
+          }
+        ],
+        "actions": [
+          {
+            "at": "saturday",
+            "do": "multiply",
+            "target": "saturday",
+            "n": 6,
+            "cols": 3
+          },
+          {
+            "at": "mid",
+            "do": "glow",
+            "target": "house"
+          },
+          {
+            "at": "collects",
+            "do": "shake",
+            "target": "house"
+          },
+          {
+            "at": "slice",
+            "do": "grow",
+            "target": "slice",
+            "scale": 1.3
+          },
+          {
+            "at": "slice",
+            "do": "glow",
+            "target": "slice"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "mid",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@year.total",
+            "text": "{year_total}",
+            "label": "House keeps",
+            "at": "three"
+          }
+        }
+      }
+    },
+    {
+      "id": "decade",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "zoom-through",
+      "say": "Level four: {decade_years} years of Saturdays. On average, {decade_total} of Rohan's money, slipped into my casino.",
+      "events": {
+        "four": {
+          "word": "four"
+        },
+        "saturdays": {
+          "word": "saturdays"
+        },
+        "mid": {
+          "word": 11
+        },
+        "money": {
+          "word": "money"
+        },
+        "casino": {
+          "word": "casino"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "four"
+        },
+        {
+          "kind": "riser",
+          "at": "saturdays"
+        },
+        {
+          "kind": "boom",
+          "at": "casino"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "purple"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "casino",
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "casino",
+            "prop": "casino",
+            "x": 0.68,
+            "size": 0.26
+          },
+          {
+            "id": "money",
+            "prop": "chips",
+            "x": 0.5,
+            "size": 0.08,
+            "label": "Money"
+          }
+        ],
+        "actions": [
+          {
+            "at": "saturdays",
+            "do": "glow",
+            "target": "casino"
+          },
+          {
+            "at": "mid",
+            "do": "shake",
+            "target": "casino"
+          },
+          {
+            "at": "money",
+            "do": "multiply",
+            "target": "money",
+            "n": 6,
+            "cols": 3
+          },
+          {
+            "at": "casino",
+            "do": "move",
+            "target": "money",
+            "to": "casino"
+          },
+          {
+            "at": "casino",
+            "do": "grow",
+            "target": "casino",
+            "scale": 1.15
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "saturdays",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "casino",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@decade.total",
+            "text": "{decade_total}",
+            "label": "House keeps",
+            "at": "four"
+          }
+        }
+      }
+    },
+    {
+      "id": "lucky",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Hold on. Last Saturday I won! I walked out with a trophy and a free drink.",
+      "events": {
+        "won": {
+          "word": "won"
+        },
+        "walked": {
+          "word": "walked"
+        },
+        "trophy": {
+          "word": "trophy"
+        },
+        "drink": {
+          "word": "drink"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "won"
+        },
+        {
+          "kind": "pop",
+          "at": "trophy"
+        },
+        {
+          "kind": "clink",
+          "at": "drink"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "purple",
+          "horizon": [
+            {
+              "prop": "casino",
+              "x": 0.8,
+              "size": 0.14
+            },
+            {
+              "prop": "slots",
+              "x": 0.15,
+              "size": 0.08
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              },
+              {
+                "at": "drink",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "trophy",
+            "prop": "trophy",
+            "x": 0.66,
+            "size": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "drink",
+            "prop": "cocktail",
+            "x": 0.8,
+            "size": 0.1,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "trophy",
+            "do": "enter",
+            "target": "trophy"
+          },
+          {
+            "at": "drink",
+            "do": "enter",
+            "target": "drink"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "walked",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4
+        }
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "And I love that night. A win is what brings him back next Saturday. The edge never sleeps.",
+      "events": {
+        "love": {
+          "word": "love"
+        },
+        "win": {
+          "word": "win"
+        },
+        "back": {
+          "word": "back"
+        },
+        "edge": {
+          "word": "edge"
+        },
+        "sleeps": {
+          "word": "sleeps"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "love"
+        },
+        {
+          "kind": "whoosh",
+          "at": "back"
+        },
+        {
+          "kind": "boom",
+          "at": "edge"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "edge": "{spin_fee_pct}",
+        "label": "Every bet",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "back",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "So the casino doesn't need luck. It just needs players who keep coming back.",
+      "events": {
+        "casino": {
+          "word": "casino"
+        },
+        "luck": {
+          "word": "luck"
+        },
+        "players": {
+          "word": "players"
+        },
+        "back": {
+          "word": "back"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "luck"
+        },
+        {
+          "kind": "kaching",
+          "at": "players"
+        },
+        {
+          "kind": "boom",
+          "at": "back"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "total": "{decade_total}",
+        "label": "Rohan's Saturdays",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Still, one more spin couldn't hurt. Right?",
+      "events": {
+        "spin": {
+          "word": "spin"
+        },
+        "hurt": {
+          "word": "hurt"
+        },
+        "right": {
+          "word": "right"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "spin"
+        },
+        {
+          "kind": "tick",
+          "at": "right"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "right",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "chips",
+            "spot": "right",
+            "amount": "@decade.total",
+            "text": "{spin_fee_pct}",
+            "label": "House edge",
+            "at": "spin",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "spin",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}

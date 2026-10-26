@@ -1,0 +1,137 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61284,
+  "duration_sec": 48,
+  "tempo": 1.0,
+  "style": {
+    "palette": "plum",
+    "genre": "lofi",
+    "key": "A",
+    "bpm": 90
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The casino never gambles. It wins a slice of every bet.",
+        "start": 0.27,
+        "seconds": 2.38,
+        "window": 2.9,
+        "fill": 0.821
+      },
+      {
+        "scene": "promise",
+        "text": "Let's follow Rohan's chips through four levels. The last one takes a whole decade.",
+        "start": 3.17,
+        "seconds": 3.28,
+        "window": 3.87,
+        "fill": 0.848
+      },
+      {
+        "scene": "edge",
+        "text": "See the green zeros on the wheel? When the ball lands there, every red and black bet loses. That's my edge: 5.26%, on average.",
+        "start": 7.03,
+        "seconds": 6.34,
+        "window": 6.93,
+        "fill": 0.915
+      },
+      {
+        "scene": "hour",
+        "text": "Level one. I bet $10 a spin for an hour. On average, the house keeps $20.",
+        "start": 13.97,
+        "seconds": 3.64,
+        "window": 3.97,
+        "fill": 0.917
+      },
+      {
+        "scene": "night",
+        "text": "Level two, a whole night of spins. The same few chips, bet over and over. That's $100 to the house.",
+        "start": 17.93,
+        "seconds": 4.56,
+        "window": 4.8,
+        "fill": 0.95
+      },
+      {
+        "scene": "year",
+        "text": "Level three: every Saturday for a year. The house collects $5,197, one little slice at a time.",
+        "start": 22.73,
+        "seconds": 5.07,
+        "window": 5.63,
+        "fill": 0.901
+      },
+      {
+        "scene": "decade",
+        "text": "Level four: 10 years of Saturdays. On average, $51,969 of Rohan's money, slipped into my casino.",
+        "start": 28.37,
+        "seconds": 6.26,
+        "window": 6.67,
+        "fill": 0.939
+      },
+      {
+        "scene": "lucky",
+        "text": "Hold on. Last Saturday I won! I walked out with a trophy and a free drink.",
+        "start": 35.03,
+        "seconds": 2.98,
+        "window": 3.33,
+        "fill": 0.895
+      },
+      {
+        "scene": "turn",
+        "text": "And I love that night. A win is what brings him back next Saturday. The edge never sleeps.",
+        "start": 38.37,
+        "seconds": 3.7,
+        "window": 4.27,
+        "fill": 0.867
+      },
+      {
+        "scene": "payoff",
+        "text": "So the casino doesn't need luck. It just needs players who keep coming back.",
+        "start": 42.63,
+        "seconds": 3.16,
+        "window": 3.67,
+        "fill": 0.861
+      },
+      {
+        "scene": "loop",
+        "text": "Still, one more spin couldn't hurt. Right?",
+        "start": 46.3,
+        "seconds": 1.41,
+        "window": 1.83,
+        "fill": 0.77
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "off",
+    "loop-picture-matches-hook": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.5
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 10.688,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

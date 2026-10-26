@@ -1,0 +1,238 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:05:15.832147+00:00",
+    "finishedAt": "2026-10-26T23:05:15.832147+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:07:01.775922+00:00",
+    "finishedAt": "2026-10-26T23:07:01.775922+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:07:56.968942+00:00",
+    "finishedAt": "2026-10-26T23:07:56.968942+00:00",
+    "notes": [
+      "30 figures computed from inputs; 15 cross-checked against closed-form formulas.",
+      "warning: beat 'decade' runs 6.7 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:08:13.439515+00:00",
+    "finishedAt": "2026-10-26T23:08:13.439515+00:00",
+    "notes": [
+      "30 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:09:37.386933+00:00",
+    "finishedAt": "2026-10-26T23:09:37.386933+00:00",
+    "notes": [
+      "No sourced facts; verify item confirmed: double-zero roulette edge is 2/38 = 5.26% and every red/black bet loses on 0/00. Spin rates realistic (38/hr, 190/night = 5h, 52 Saturdays). Every total framed 'on average' as expected loss; anti-gambling tone, no advice or expert claims; description ends with disclaimer. Note: 'The casino never gambles' is figurative (casinos do face short-run variance) but fine with the 'on average' framing."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:10:59.184441+00:00",
+    "finishedAt": "2026-10-26T23:10:59.184441+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:11:00.264141+00:00",
+    "finishedAt": "2026-10-26T23:11:00.264141+00:00",
+    "notes": [
+      "30 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T23:11:01.283258+00:00",
+    "finishedAt": "2026-10-26T23:11:47.427908+00:00",
+    "notes": [
+      "21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "beat 'hour': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'night': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'year': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "3 of 11 stills are mostly empty background (at 5 s, 20 s, 45 s): fill the frame (a set, the cast big, money as a thing)",
+      "the hook runs 4.2 s; keep it to 4 s or less"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:12:28.571469+00:00",
+    "finishedAt": "2026-10-26T23:12:28.571469+00:00",
+    "notes": [
+      "30 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T23:12:29.664013+00:00",
+    "finishedAt": "2026-10-26T23:13:01.475080+00:00",
+    "notes": [
+      "four shots in a row open close (from 'hour'): vary the shot size",
+      "3.5 s with nothing new on screen in beat 'year' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:13:17.788765+00:00",
+    "finishedAt": "2026-10-26T23:13:17.788765+00:00",
+    "notes": [
+      "30 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T23:13:18.801319+00:00",
+    "finishedAt": "2026-10-26T23:13:43.931716+00:00",
+    "notes": [
+      "2 of 11 stills are mostly empty background (at 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:14:13.893923+00:00",
+    "finishedAt": "2026-10-26T23:14:13.893923+00:00",
+    "notes": [
+      "30 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:14:15.047939+00:00",
+    "finishedAt": "2026-10-26T23:14:44.562847+00:00",
+    "notes": [
+      "48 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:15:06.082487+00:00",
+    "finishedAt": "2026-10-26T23:15:06.082487+00:00",
+    "notes": [
+      "30 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:15:07.127526+00:00",
+    "finishedAt": "2026-10-26T23:15:37.850762+00:00",
+    "notes": [
+      "48 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:15:58.963306+00:00",
+    "finishedAt": "2026-10-26T23:15:58.963306+00:00",
+    "notes": [
+      "Re-review after gate edits: new hook ('It wins a slice of every bet') and promise lines plus changed props (wheel in promise, casino in year) checked; maths, title and description unchanged. Double-zero edge 2/38 = 5.26% confirmed; red/black lose on 0/00; spin counts realistic; totals framed 'on average'; no advice or expert claims; disclaimer ends description. Note: hook 'wins a slice of every bet' means the expected take, made explicit by 'on average' in the edge beat."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-26T23:16:54.701100+00:00",
+    "finishedAt": "2026-10-26T23:16:54.701100+00:00",
+    "notes": [
+      "[scene] 40.0s turn beat (Turn component, set penthouse): the speaker Sharma (script spot 'center') is pushed to the bottom-left corner behind the level-chip HUD; the '1 Hour' chip sits over his face and he is mostly out of frame, so the turn has no speaker on screen.",
+      "[script] 25.0s year beat: the caption '$5,197,' runs straight into the 'Slice' label of the edge prop (text touching text), and the 'Saturday' label is cut by the edge prop's green disc. Move the 'slice' item (x 0.66) and the 'saturday' label away from the caption band, or drop the labels.",
+      "[scene] 25.0s year beat (also 20.0s night beat): the moon prop draws as a bare black crescent outline; multiplied 6x for 'every Saturday' it reads as stray C-shaped scribbles with dots, not Saturdays. Fill the moon prop, or [script] use a calendar prop for Saturdays.",
+      "[script] 20.0s night beat: the casino item (x 0.8, size 0.22, grown 1.15 on 'house') runs off the right edge so the sign reads 'CASIN', and the moon at top-right is cut by the frame edge. Use a smaller size or x near 0.65.",
+      "[scene] 15.0s hour beat: a cut-off white text fragment ('E') sits at the right edge at ground level after the camera moves to medium; an off-camera label is leaking into frame."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:17:23.027315+00:00",
+    "finishedAt": "2026-10-26T23:17:23.027315+00:00",
+    "notes": [
+      "30 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:17:24.056796+00:00",
+    "finishedAt": "2026-10-26T23:17:54.133941+00:00",
+    "notes": [
+      "48 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:18:04.968518+00:00",
+    "finishedAt": "2026-10-26T23:18:04.968518+00:00",
+    "notes": [
+      "30 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:18:06.035784+00:00",
+    "finishedAt": "2026-10-26T23:18:32.041418+00:00",
+    "notes": [
+      "48 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:19:01.069350+00:00",
+    "finishedAt": "2026-10-26T23:19:01.069350+00:00",
+    "notes": [
+      "Re-review after fixes: Sharma clear of the level chips at 40s, year labels gone with yellow moons reading as Saturdays at 25s, full CASINO sign in frame at 20s, no stray text at 15s; hook, disclaimer at 48.4s, numbers and thumbnail fine; layout/craft empty, 48 s, peak -1.0 dB, mean -16.5 dB."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:19:12.121512+00:00",
+    "finishedAt": "2026-10-26T23:22:18.815755+00:00",
+    "notes": [
+      "48 s, plum/lofi, peak -1.0 dB, mean -16.5 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:22:22.335686+00:00",
+    "finishedAt": "2026-10-26T23:22:22.335686+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
