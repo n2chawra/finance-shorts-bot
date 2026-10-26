@@ -200,3 +200,47 @@ test("resolve all leaves setting proposals for a decision", async ({ page }) => 
   await expect.poll(() => sent?.ids.length ?? 0).toBeGreaterThan(0);
   expect(sent!.ids, "the open proposal must not be resolved").not.toContain("n0");
 });
+
+test("stat cards in a row share one height", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
+  await page.waitForTimeout(1200);   // entrance animations move the cards
+  // a card with a wrapped label or a longer line once stood taller than its neighbours, leaving a ragged row
+  const ragged = await page.getByTestId("overview-stats").evaluate((g) => {
+    const rows = new Map<number, number[]>();
+    for (const cell of Array.from(g.children)) {
+      const card = cell.firstElementChild!.getBoundingClientRect();
+      const top = Math.round(cell.getBoundingClientRect().top);
+      rows.set(top, [...(rows.get(top) ?? []), Math.round(card.height)]);
+    }
+    return [...rows.values()].filter((hs) => Math.max(...hs) - Math.min(...hs) > 1);
+  });
+  expect(ragged).toEqual([]);
+});
+
+test("videos topic filter offers every category it is given", async ({ page }) => {
+  await signIn(page);
+  // the topic list was fixed in code and missed newer categories: a link to one showed an empty filter
+  await page.goto("/videos?category=net_worth");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Videos/, { timeout: 30_000 });
+  await expect(page.getByRole("combobox", { name: "Topic" })).toHaveText(/Net worth/);
+  await page.goto("/videos");
+  await page.getByRole("combobox", { name: "Topic" }).click();
+  await expect(page.getByRole("option", { name: "Credit card" })).toBeVisible();
+});
+
+test("videos search box clears when the link drops the search", async ({ page, isMobile }) => {
+  test.skip(isMobile, "the sidebar link is a desktop feature");
+  await signIn(page);
+  await page.goto("/videos");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Videos/, { timeout: 30_000 });
+  const box = page.getByRole("searchbox", { name: "Search videos" });
+  await box.fill("sip");
+  await box.press("Enter");
+  await expect(page).toHaveURL(/q=sip/);
+  // the sidebar's Videos link drops ?q= but the box once kept "sip" while the list showed everything
+  await page.getByRole("navigation", { name: "Main" }).locator(`a[href="/videos"]`).click();
+  await expect(page).not.toHaveURL(/q=/);
+  await expect(box).toHaveValue("");
+});
