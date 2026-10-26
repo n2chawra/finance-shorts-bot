@@ -198,6 +198,54 @@
       "page": "notifications",
       "found": "2026-10-23",
       "status": "open"
+    },
+    {
+      "id": "stat-cards-ragged-height",
+      "kind": "bug",
+      "title": "Stat cards in one row had different heights",
+      "detail": "The card inside each grid cell didn't fill the cell, so a card with a wrapped label ('Subscribers · 7 days') or a longer line stood taller than its neighbours on Overview (desktop and phone) and on Analytics, Runs, Agents and the video page. Cards now fill the row; smoke test 'stat cards in a row share one height'.",
+      "page": "overview",
+      "found": "2026-10-26",
+      "status": "done",
+      "done": "2026-10-26",
+      "lastTouched": {
+        "apps/dashboard/src/components/ui.tsx": "2026-10-26"
+      }
+    },
+    {
+      "id": "videos-topic-filter-fixed-list",
+      "kind": "bug",
+      "title": "Videos: Topic filter missed most newer categories",
+      "detail": "The Topic list was a fixed list of 17 categories; history now has 27 (savings, loans, investing, salary, wealth, net_worth, debt, car…), so 12 categories could not be filtered and a link with one of them showed an empty filter. Options now come from the videos themselves; smoke test.",
+      "page": "videos",
+      "found": "2026-10-26",
+      "status": "done",
+      "done": "2026-10-26",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/page.tsx": "2026-10-26"
+      }
+    },
+    {
+      "id": "videos-search-stale-box",
+      "kind": "bug",
+      "title": "Videos: search box kept old text after the URL changed",
+      "detail": "The box read ?q= once on load. Following the sidebar's Videos link (or Back) changed the list but left the old text in the box. It now follows the URL; smoke test, checked to fail without the fix.",
+      "page": "videos",
+      "found": "2026-10-26",
+      "status": "done",
+      "done": "2026-10-26",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/page.tsx": "2026-10-26"
+      }
+    },
+    {
+      "id": "videos-topic-counts",
+      "kind": "idea",
+      "title": "Videos: show how many videos each Topic option has",
+      "detail": "Faceted-filter guides agree: a count beside each option sets expectations and avoids empty results. 'Credit card (4)' tells the owner at a glance which money topics the channel leans on, with no extra page.",
+      "page": "videos",
+      "found": "2026-10-26",
+      "status": "open"
     }
   ]
 }
