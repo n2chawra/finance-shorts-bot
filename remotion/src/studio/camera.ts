@@ -22,6 +22,18 @@ export function frameOn(size: ShotSize, x: number, y: number, w: number, h: numb
   return { s, tx, ty };
 }
 
+/** Keep a box (stage coordinates) whole on screen (owner's long video L-20261023-01: close shots
+ * on a stack or a phone pushed their figures off the frame): zoom out just enough, then slide it in. */
+export function keepInside(f: Frame, box: [number, number, number, number], w: number, h: number, m = 24): Frame {
+  const [x0, y0, x1, y1] = box;
+  const s = Math.max(1, Math.min(f.s, (w - 2 * m) / (x1 - x0), (h - 2 * m) / (y1 - y0)));
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;    // zoom about the box so it stays where the shot put it
+  let tx = cx * f.s + f.tx - cx * s, ty = cy * f.s + f.ty - cy * s;
+  tx = Math.max(m - x0 * s, Math.min(w - m - x1 * s, tx));
+  ty = Math.max(m - y0 * s, Math.min(h - m - y1 * s, ty));
+  return { s, tx: Math.min(0, Math.max(w - w * s, tx)), ty: Math.min(0, Math.max(h - h * s, ty)) };
+}
+
 const ease = (x: number) => { const c = Math.min(1, Math.max(0, x)); return c < 0.5 ? 4 * c * c * c : 1 - Math.pow(-2 * c + 2, 3) / 2; };
 
 /** Between two framings: a cut (dur 0) or a move. Scale moves in log space so a zoom feels even. */
