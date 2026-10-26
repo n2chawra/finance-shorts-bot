@@ -4,7 +4,7 @@ import { Film, Search } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, SelectField, StatusBadge, Thumb, fieldClass } from "@/components/ui";
 import { fmtCompact, fmtDateTime, titleCase } from "@/lib/format";
@@ -22,6 +22,8 @@ function Videos() {
   const params = useSearchParams();
   const router = useRouter();
   const [q, setQ] = useState(params.get("q") ?? "");
+  const urlQ = params.get("q") ?? "";
+  useEffect(() => setQ(urlQ), [urlQ]);   // Back/Forward change the URL: keep the box in step with the list it filters
   const filters = { status: params.get("status") ?? "", template: params.get("template") ?? "", category: params.get("category") ?? "", q: params.get("q") ?? "" };
   const { data, error, isLoading } = useVideos(filters);
   const templates = useTemplates();

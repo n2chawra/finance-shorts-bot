@@ -229,3 +229,18 @@ test("videos topic filter offers every category it is given", async ({ page }) =
   await page.getByRole("combobox", { name: "Topic" }).click();
   await expect(page.getByRole("option", { name: "Credit card" })).toBeVisible();
 });
+
+test("videos search box clears when the link drops the search", async ({ page, isMobile }) => {
+  test.skip(isMobile, "the sidebar link is a desktop feature");
+  await signIn(page);
+  await page.goto("/videos");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Videos/, { timeout: 30_000 });
+  const box = page.getByRole("searchbox", { name: "Search videos" });
+  await box.fill("sip");
+  await box.press("Enter");
+  await expect(page).toHaveURL(/q=sip/);
+  // the sidebar's Videos link drops ?q= but the box once kept "sip" while the list showed everything
+  await page.getByRole("navigation", { name: "Main" }).locator(`a[href="/videos"]`).click();
+  await expect(page).not.toHaveURL(/q=/);
+  await expect(box).toHaveValue("");
+});
