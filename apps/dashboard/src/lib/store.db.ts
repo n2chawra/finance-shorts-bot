@@ -10,7 +10,7 @@ import { prisma } from "./prisma";
 import { SettingsSchema, mostLoved } from "./schemas";
 import { runEndMs } from "./run-span";
 import { fillFromLive, meanViewPct, totals, type DayRow } from "./totals";
-import { relinked } from "./youtube-link";
+import { manualState, relinked } from "./youtube-link";
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 
 const DAY_MS = 86_400_000;
@@ -177,12 +177,13 @@ export async function markUploaded(id: string, m: ManualUpload): Promise<{ ok: t
   const youtubeId = m.youtubeId ?? v.upload?.youtubeId ?? null;
   const upload = v.upload;
   const newLink = !!upload && relinked(upload.youtubeId, youtubeId);
+  const state = manualState(youtubeId, at);
   await prisma.$transaction([
-    prisma.video.update({ where: { id }, data: { status: "published", queuePosition: null, failReason: null } }),
+    prisma.video.update({ where: { id }, data: { status: state, queuePosition: null, failReason: null } }),
     prisma.upload.upsert({
       where: { videoId: id },
-      update: { youtubeId, publishAt: at, state: "published", error: null, ...(newLink ? noLiveCounters : {}) },
-      create: { videoId: id, youtubeId, publishAt: at, state: "published" },
+      update: { youtubeId, publishAt: at, state, error: null, ...(newLink ? noLiveCounters : {}) },
+      create: { videoId: id, youtubeId, publishAt: at, state },
     }),
     ...(upload && newLink ? [prisma.videoStat.deleteMany({ where: { uploadId: upload.id } })] : []),
     prisma.agentRun.create({

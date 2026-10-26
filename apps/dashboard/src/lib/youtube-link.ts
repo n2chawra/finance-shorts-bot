@@ -17,3 +17,13 @@ export function youtubeIdFrom(input: string): string | null {
 export function relinked(current: string | null | undefined, next: string | null | undefined): boolean {
   return next !== undefined && next !== (current ?? null);
 }
+
+/**
+ * The state a video marked as uploaded by hand starts in. A linked video with a publish time still
+ * ahead was scheduled in YouTube Studio and is private until then: it stays scheduled, and the
+ * stats and publish jobs mark it published once YouTube shows it public (`refreshPublished`).
+ * Without a link nothing can confirm it, so the owner's word stands.
+ */
+export function manualState(youtubeId: string | null, publishAt: Date, now = new Date()): "scheduled" | "published" {
+  return youtubeId && publishAt.getTime() > now.getTime() ? "scheduled" : "published";
+}
