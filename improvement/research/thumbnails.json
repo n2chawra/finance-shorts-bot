@@ -1,0 +1,23 @@
+{
+  "note": "Long-video thumbnails that get clicked: real hits per thumbnail type (renderer/thumbs.py, remotion/src/compositions/LongThumbs.tsx). Ids and views only (YouTube data refreshed by Scout from market.json; thumbnails are fetched by id for the feed preview, never stored in the repo). Started 2026-10-26.",
+  "types": {
+    "grid": "a list video: every item at once, the video's own things in a grid, a 2-4 word headline",
+    "ladder": "a levels video: the whole ladder, coloured columns rising, a level chip on each",
+    "extremes": "rich vs poor: the two ends of the scale facing each other, one huge word each",
+    "face": "a secret or a warning: one face very big, one strong expression, 2-3 huge words",
+    "scene": "a story: one dramatic still of the video, no or one word"
+  },
+  "examples": [
+    { "id": "D7Y-nJ8uiEA", "type": "face", "title": "The Middle Class TRAP | Why You'll Work Till You Die", "views": 10119497 },
+    { "id": "zxVoCw3P1Gc", "type": "grid", "title": "Once You Understand Economics, You Can't Be MANIPULATED Anymore", "views": 3787627 },
+    { "id": "tcpBWjAikxM", "type": "face", "title": "Why HMRC Doesn't Want You to Understand This", "views": 2861494 },
+    { "id": "2LXED3ENhck", "type": "scene", "title": "How Banks Treat You at Every Level of Wealth — $0 to $25M", "views": 1154849 },
+    { "id": "FHSsR1gfLJA", "type": "ladder", "title": "The 7 Levels of wealth", "views": 1128269 },
+    { "id": "6mBnmX6hN0s", "type": "grid", "title": "Every Financial Trap Middle Class People Fall Into Explained", "views": 1087398 },
+    { "id": "mFiZG43v_4A", "type": "scene", "title": "Everyone Called Him an Idiot. He Got Richer Every Time.", "views": 990297 },
+    { "id": "Pd3HYjpmks4", "type": "grid", "title": "How To Hit Financial Freedom SO Fast It's Almost Unfair", "views": 858448 },
+    { "id": "BpFTM_EyP7Q", "type": "face", "title": "ACCOUNTANT EXPLAINS: Why The Rich Own Nothing", "views": 661476 },
+    { "id": "Ge9ULqDk3Fg", "type": "extremes", "title": "What Every Level of Wealth ACTUALLY Feels like", "views": 554976 },
+    { "id": "FF9Hd-0w_co", "type": "grid", "title": "Every Way to Get Rich Explained in 14 Minutes", "views": 550617 }
+  ]
+}

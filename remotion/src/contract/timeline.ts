@@ -43,7 +43,7 @@ export const Thumbnail = z.object({
   pose: z.string().optional(),
   expression: z.string().optional(),
   prop: z.string().optional(),
-  figure: z.string(),                 // one of `figures`, never typed
+  figure: z.string().default(""),     // one of `figures`, never typed ("" for the long types: no figure)
   words: z.string(),                  // four words at most
   sub: z.string().optional(),
   // what it leads with (renderer/timeline/build.py THUMB_ANGLES): number, question, reaction, versus, warning
@@ -55,7 +55,13 @@ export const Thumbnail = z.object({
   // "scene" (default since 2026-10-24, owner: "the thumbnails look the same with different texts"):
   // a frame of the video itself (its custom hook by default) under the big words and the figure, so
   // every cover is a different picture in the channel's style (compositions/Thumbnail.tsx)
-  layout: z.enum(["card", "story", "versus", "secret", "scene"]).optional(),
+  layout: z.enum(["card", "story", "versus", "secret", "scene", "grid", "ladder", "extremes", "face"]).optional(),
+  // long-video types (compositions/LongThumbs.tsx; 2026-10-26): the things in a grid, the levels of a
+  // ladder, the two ends of an extremes thumbnail; each a prop of the video or a cast member
+  items: z.array(z.object({ prop: z.string().optional(), label: z.string().optional(), who: z.string().optional(), pose: z.string().optional(), expression: z.string().optional() })).max(12).optional(),
+  levels: z.array(z.object({ prop: z.string().optional(), label: z.string().optional(), who: z.string().optional(), pose: z.string().optional(), expression: z.string().optional() })).max(7).optional(),
+  ends: z.array(z.object({ word: z.string().optional(), prop: z.string().optional(), who: z.string().optional(), pose: z.string().optional(), expression: z.string().optional() })).max(2).optional(),
+  color: z.string().optional(),
   at: z.string().optional(),          // scene: the beat whose frame is the picture (default: the first hook beat)
   sec: z.number().min(0).optional(),  // scene: seconds into that beat on the story clock (default: near its end)
   who2: z.string().optional(),        // versus: the rich side's cast member (sharma by default)

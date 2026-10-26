@@ -25,7 +25,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from renderer import craft, remotion
+from renderer import craft, remotion, thumbs
 from renderer.engine.formatting import CURRENCIES
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
@@ -304,6 +304,9 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     if plan_format(script) == "short" and not script.get("thumbnail"):
         problems.append("a Short needs a `thumbnail` (its cover): `scene` (a frame of the video under the words: the default), "
                         "`versus`, `secret` or `story` (renderer/templates/short_story/README.md)")
+    # a long video's thumbnails sell the whole promise, in words that add to the title (renderer/thumbs.py)
+    plan_ = _read(d / "plan.json") if (d / "plan.json").is_file() else {}
+    problems += thumbs.problems({**script, "title": plan_.get("title", script.get("title", "")), "story": script.get("story") or plan_.get("story")}, d)
     # the story's own things, not the last videos' (build beats; 2026-10-26)
     tl_now = _read(d / "timeline.json") if (d / "timeline.json").is_file() else {"beats": []}
     def _tl(e: dict) -> dict:
@@ -365,7 +368,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     if (urgent := topics.urgency(plan, root)) is not None:
         manifest["priority"] = urgent   # ingest puts it at the front of the upload queue
     if script.get("thumbnails"):   # three thumbnails for YouTube's Test & Compare, with what each leads with
-        manifest["thumbnails"] = [{"file": f, "angle": t.get("angle")} for f, t in
+        manifest["thumbnails"] = [{"file": f, "angle": t.get("angle"), "layout": t.get("layout")} for f, t in
                                   zip(("thumbnail.png", "thumbnail-b.png", "thumbnail-c.png"), [script["thumbnail"], *script["thumbnails"]])]
     _write(d / "manifest.json", manifest)
     history.append({

@@ -186,3 +186,16 @@ git push origin HEAD:refs/heads/agent/studio/$DAY
 ```
 End with a 5-line report: the topic, the length, how many rewrites, what the reviewers said, and
 anything for the owner.
+
+## The title and the thumbnail are one pair (owner, 2026-10-26)
+
+Our long videos got almost no clicks: the thumbnails sold one small detail (a receipt and a
+figure) and twice promised a different video from the title ("The 6 levels of money" with "The
+level two trap"). Write the pair together:
+- **The title** says *what*: 60 characters at most, the format's proven shape.
+- **The thumbnail** says *why click*: the whole promise as a picture (every item, the whole ladder,
+  the two extremes) and 1-4 huge words that add the emotion or the stakes. No figure.
+- Pick the type for the format (`renderer/thumbs.py` `FORMAT_TYPES`), three different types for
+  the three thumbnails, and check them in the feed (`python -m renderer.thumbs feed <id>`) before
+  shipping: would you click ours over the hits next to it?
+

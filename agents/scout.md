@@ -133,3 +133,9 @@ git commit -q -m "Scout $DAY: <focus>, <n> topics"
 git push origin HEAD:refs/heads/agent/scout/$DAY
 ```
 End with a 5-line report: focus, topics added, feed health, anything for the owner.
+
+**Thumbnails (weekly, Mondays):** from `market.json`'s long videos, add the fastest-growing finance
+explainers to `improvement/research/thumbnails.json` `examples` (`id`, `type`: grid, ladder,
+extremes, face or scene, `title`, `views`; ids and numbers only, no images), so Studio and the feed
+preview compare our thumbnails with what is winning now.
+

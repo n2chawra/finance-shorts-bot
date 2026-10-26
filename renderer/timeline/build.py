@@ -256,6 +256,8 @@ def _thumb_picture(t: dict) -> tuple[str, str | None]:
     layout = t.get("layout") or "card"
     if layout == "scene":   # a frame of the video: another beat is another picture
         return layout, t.get("at") or "hook"
+    if layout in ("grid", "ladder", "extremes", "face"):   # long types: each its own idea (renderer/thumbs.py)
+        return layout, None
     return layout, (t.get("hero") or "card") if layout == "story" else None
 
 
@@ -263,7 +265,9 @@ def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_i
     if not spec:
         return None
     t = _resolve(spec, figures, results, "thumbnail")
-    if t.get("figure") not in figures.values():
+    if t.get("layout") in ("grid", "ladder", "extremes", "face") and not t.get("figure"):
+        t["figure"] = ""          # long-video types sell the promise in words and pictures, no figure (renderer/thumbs.py)
+    elif t.get("figure") not in figures.values():
         raise ValueError(f"thumbnail.figure must be one placeholder, like {{card_total_paid}}; got {spec.get('figure')!r}")
     if len(str(t.get("words", "")).split()) > 4:
         raise ValueError("thumbnail.words: four words at most, it is read at a glance")
@@ -271,9 +275,9 @@ def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_i
         raise ValueError(f"thumbnail.small must be one placeholder, like {{card_min_due}}; got {spec.get('small')!r}")
     if t.get("layout") == "story" and t.get("hero") not in (None, "card", "phone", "house", "car", "cash", "piggy"):
         raise ValueError("thumbnail.hero must be card, phone, house, car, cash or piggy")
-    if t.get("layout") not in (None, "card", "story", "versus", "secret", "scene"):
+    if t.get("layout") not in (None, "card", "story", "versus", "secret", "scene", "grid", "ladder", "extremes", "face"):
         raise ValueError("thumbnail.layout must be scene (a frame of the video: the default), card, story, versus (rich vs poor) "
-                         "or secret (what the rich know)")
+                         "or secret (what the rich know); long videos: grid, ladder, extremes, face (renderer/thumbs.py)")
     if t.get("layout") == "scene" and beat_ids is not None and t.get("at") is not None and t["at"] not in beat_ids:
         raise ValueError(f"thumbnail.at {t['at']!r} must be a beat id: one of {', '.join(beat_ids)}")
     if t.get("sec") is not None and not (isinstance(t["sec"], (int, float)) and t["sec"] >= 0):

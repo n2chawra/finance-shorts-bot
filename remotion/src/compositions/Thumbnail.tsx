@@ -15,6 +15,7 @@ import { FONT } from "../design/fonts";
 import { PROPS } from "../scenes/kit";
 import { StoryVideo, type StoryProps } from "./StoryVideo";
 import { BigWords, SecretThumb, VersusThumb } from "./ThumbFormats";
+import { LONG_LAYOUTS, LongThumb } from "./LongThumbs";
 
 export const THUMB = { width: 1280, height: 720 } as const;
 export const SHORT_THUMB = { width: 1080, height: 1920 } as const;
@@ -147,6 +148,7 @@ export const Thumbnail: React.FC<StoryProps> = (props) => {
   if (th?.layout === "versus") return <VersusThumb th={th} w={w} h={h} />;
   if (th?.layout === "secret") return <SecretThumb th={th} w={w} h={h} />;
   if (th?.layout === "scene") return <SceneThumb {...props} />;
+  if (th?.layout && (LONG_LAYOUTS as readonly string[]).includes(th.layout)) return <LongThumb tl={props.timeline} w={w} h={h} />;
   return th?.layout === "story" ? <StoryThumb {...props} /> : <CardThumb {...props} />;
 };
 
