@@ -1,0 +1,1444 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 38417,
+  "story": "money_scale",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "genre": "cinematic",
+    "key": "C",
+    "bpm": 86
+  },
+  "structure": {
+    "levels": [
+      "Strap",
+      "Briefcase",
+      "Pallet",
+      "Room"
+    ]
+  },
+  "maths": [
+    {
+      "name": "note",
+      "kind": "lumpsum",
+      "amount": 100,
+      "rate_pct": 0,
+      "years": 1
+    },
+    {
+      "name": "strap",
+      "kind": "lumpsum",
+      "amount": 10000,
+      "rate_pct": 0,
+      "years": 1
+    },
+    {
+      "name": "case",
+      "kind": "lumpsum",
+      "amount": 1000000,
+      "rate_pct": 0,
+      "years": 1
+    },
+    {
+      "name": "pallet",
+      "kind": "lumpsum",
+      "amount": 100000000,
+      "rate_pct": 0,
+      "years": 1
+    },
+    {
+      "name": "room",
+      "kind": "lumpsum",
+      "amount": 1000000000,
+      "rate_pct": 0,
+      "years": 1
+    },
+    {
+      "name": "pay",
+      "kind": "fee_take",
+      "amount": 50000,
+      "fee_pct": 100,
+      "per_year": 1,
+      "years": 20
+    },
+    {
+      "name": "career",
+      "kind": "fee_take",
+      "amount": 50000,
+      "fee_pct": 100,
+      "per_year": 1,
+      "years": 40
+    }
+  ],
+  "thumbnail": {
+    "who": "sharma",
+    "layout": "scene",
+    "at": "hook",
+    "angle": "number",
+    "words": "A *billion* in hundreds",
+    "figure": "{room_final_long}"
+  },
+  "cta": "Guess how many briefcases a billion is? Comment",
+  "hook_style": "challenge",
+  "title": "What $1 billion looks like in $100 bills 💵",
+  "description": "How big is a billion dollars, really?\nFrom one $100 bill to a room full of pallets, level by level, and how far a whole $50,000-a-year career gets you, computed.\nAn animated story with illustrative numbers; the characters are not advisers.\nSpeak to a licensed financial adviser in your country before making financial decisions.\nIllustrative only. Not financial advice.",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "sharma",
+      "say": "This is {note_amount}. Now picture {room_final_long}.",
+      "events": {
+        "this": {
+          "word": "this"
+        },
+        "picture": {
+          "word": "picture"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "this"
+        },
+        {
+          "kind": "boom",
+          "at": "picture"
+        }
+      ],
+      "params": {
+        "note": "{note_amount}",
+        "big": "{room_final_long}",
+        "hud": {
+          "hide": true
+        },
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "picture",
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "pile",
+            "spot": "right",
+            "amount": "@room.final",
+            "text": "{room_final_long}",
+            "label": "In hundreds",
+            "at": "picture",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "picture",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Four levels to get there, each one bigger than the last. And the final one needs a forklift.",
+      "events": {
+        "levels": {
+          "word": "levels"
+        },
+        "there": {
+          "word": "there"
+        },
+        "bigger": {
+          "word": "bigger"
+        },
+        "last": {
+          "word": "final"
+        },
+        "forklift": {
+          "word": "forklift"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "levels"
+        },
+        {
+          "kind": "whoosh",
+          "at": "there"
+        },
+        {
+          "kind": "beep",
+          "at": "forklift"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "horizon": [
+            {
+              "prop": "warehouse",
+              "x": 0.85,
+              "size": 0.14
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.36,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "forklift",
+                "pose": "pointUp",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "levels",
+            "prop": "hundred",
+            "x": 0.5,
+            "y": 0.25,
+            "size": 0.09
+          },
+          {
+            "id": "there",
+            "prop": "warehouse",
+            "x": 0.72,
+            "size": 0.2,
+            "hidden": true
+          },
+          {
+            "id": "forklift",
+            "prop": "forklift",
+            "x": 0.55,
+            "size": 0.15,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "levels",
+            "do": "multiply",
+            "target": "levels",
+            "n": 4,
+            "cols": 4
+          },
+          {
+            "at": "there",
+            "do": "enter",
+            "target": "there"
+          },
+          {
+            "at": "bigger",
+            "do": "grow",
+            "target": "there",
+            "scale": 1.2
+          },
+          {
+            "at": "last",
+            "do": "glow",
+            "target": "there"
+          },
+          {
+            "at": "forklift",
+            "do": "enter",
+            "target": "forklift"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "there",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "strap",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Level one. Band a stack of those notes together, and that's {strap_amount}. It fits in my pocket.",
+      "events": {
+        "band": {
+          "word": "band"
+        },
+        "stack": {
+          "word": "stack"
+        },
+        "notes": {
+          "word": "notes"
+        },
+        "fits": {
+          "word": "fits"
+        },
+        "pocket": {
+          "word": "pocket"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "stack"
+        },
+        {
+          "kind": "kaching",
+          "at": "band"
+        },
+        {
+          "kind": "whoosh",
+          "at": "fits"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.32,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "happy"
+              },
+              {
+                "at": "pocket",
+                "pose": "thumbsUp",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "notes",
+            "prop": "hundred",
+            "x": 0.6,
+            "y": 0.2,
+            "size": 0.08
+          },
+          {
+            "id": "band",
+            "prop": "strap",
+            "x": 0.6,
+            "size": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "pocket",
+            "prop": "pocket",
+            "x": 0.85,
+            "y": 0.15,
+            "size": 0.14
+          }
+        ],
+        "actions": [
+          {
+            "at": "band",
+            "do": "glow",
+            "target": "notes"
+          },
+          {
+            "at": "stack",
+            "do": "multiply",
+            "target": "notes",
+            "n": 6,
+            "cols": 2
+          },
+          {
+            "at": "notes",
+            "do": "exit",
+            "target": "notes"
+          },
+          {
+            "at": "notes",
+            "do": "enter",
+            "target": "band"
+          },
+          {
+            "at": "fits",
+            "do": "move",
+            "target": "band",
+            "to": "pocket"
+          },
+          {
+            "at": "pocket",
+            "do": "shake",
+            "target": "pocket"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "stack",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "fits",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@strap.final",
+            "text": "{strap_amount}",
+            "label": "In hundreds",
+            "at": "notes"
+          }
+        }
+      }
+    },
+    {
+      "id": "case",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Level two is {case_final_long}. Strap after strap, packed into one briefcase. You could carry it in one hand.",
+      "events": {
+        "two": {
+          "word": "two"
+        },
+        "strap": {
+          "word": "strap"
+        },
+        "packed": {
+          "word": "packed"
+        },
+        "briefcase": {
+          "word": "briefcase"
+        },
+        "carry": {
+          "word": "carry"
+        },
+        "hand": {
+          "word": "hand"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "strap"
+        },
+        {
+          "kind": "whoosh",
+          "at": "packed"
+        },
+        {
+          "kind": "clink",
+          "at": "briefcase"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "bank"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.36,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "briefcase",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "strap",
+            "prop": "strap",
+            "x": 0.45,
+            "size": 0.08
+          },
+          {
+            "id": "briefcase",
+            "prop": "briefcase",
+            "x": 0.72,
+            "size": 0.18,
+            "hidden": true,
+            "state": "open"
+          }
+        ],
+        "actions": [
+          {
+            "at": "strap",
+            "do": "multiply",
+            "target": "strap",
+            "n": 9,
+            "cols": 3
+          },
+          {
+            "at": "packed",
+            "do": "enter",
+            "target": "briefcase"
+          },
+          {
+            "at": "packed",
+            "do": "move",
+            "target": "strap",
+            "to": "briefcase"
+          },
+          {
+            "at": "briefcase",
+            "do": "exit",
+            "target": "strap"
+          },
+          {
+            "at": "briefcase",
+            "do": "glow",
+            "target": "briefcase"
+          },
+          {
+            "at": "carry",
+            "do": "state",
+            "target": "briefcase",
+            "state": "shut"
+          },
+          {
+            "at": "hand",
+            "do": "shake",
+            "target": "briefcase"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "briefcase",
+            "size": "close",
+            "on": "briefcase",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@case.final",
+            "text": "{case_final_long}",
+            "label": "In one briefcase",
+            "at": "two"
+          }
+        }
+      }
+    },
+    {
+      "id": "salary",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "One briefcase? On a salary of {pay_amount}, saving every cent, that takes {pay_years} years!",
+      "events": {
+        "briefcase": {
+          "word": "briefcase"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "cent": {
+          "word": "cent"
+        },
+        "years": {
+          "word": -1
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "salary"
+        },
+        {
+          "kind": "tick",
+          "at": "cent"
+        },
+        {
+          "kind": "fail",
+          "at": "years"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "office"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.32,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "shock"
+              },
+              {
+                "at": "years",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "briefcase",
+            "prop": "briefcase",
+            "x": 0.6,
+            "size": 0.13,
+            "state": "shut"
+          },
+          {
+            "id": "salary",
+            "prop": "paycheck",
+            "x": 0.75,
+            "y": 0.25,
+            "size": 0.11,
+            "hidden": true
+          },
+          {
+            "id": "years",
+            "prop": "calendar",
+            "x": 0.82,
+            "y": 0.05,
+            "size": 0.16,
+            "hidden": true,
+            "k": 0
+          }
+        ],
+        "actions": [
+          {
+            "at": "briefcase",
+            "do": "shake",
+            "target": "briefcase"
+          },
+          {
+            "at": "salary",
+            "do": "enter",
+            "target": "salary"
+          },
+          {
+            "at": "cent",
+            "do": "move",
+            "target": "salary",
+            "to": "briefcase"
+          },
+          {
+            "at": "years",
+            "do": "enter",
+            "target": "years"
+          },
+          {
+            "at": "years",
+            "do": "fill",
+            "target": "years",
+            "k": 1,
+            "dur": 1.4
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "salary",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2
+        }
+      }
+    },
+    {
+      "id": "pallet",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "Level three is {pallet_final_long}. Briefcase after briefcase, stacked onto one pallet, wrapped in plastic.",
+      "events": {
+        "three": {
+          "word": "three"
+        },
+        "briefcase": {
+          "word": "briefcase"
+        },
+        "pallet": {
+          "word": "pallet"
+        },
+        "wrapped": {
+          "word": "wrapped"
+        },
+        "plastic": {
+          "word": "plastic"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "briefcase"
+        },
+        {
+          "kind": "boom",
+          "at": "pallet"
+        },
+        {
+          "kind": "riser",
+          "at": "wrapped"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.32,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              },
+              {
+                "at": "wrapped",
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "briefcase",
+            "prop": "briefcase",
+            "x": 0.55,
+            "size": 0.08,
+            "state": "shut"
+          },
+          {
+            "id": "pallet",
+            "prop": "pallet",
+            "x": 0.66,
+            "size": 0.3,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "briefcase",
+            "do": "multiply",
+            "target": "briefcase",
+            "n": 8,
+            "cols": 4
+          },
+          {
+            "at": "pallet",
+            "do": "exit",
+            "target": "briefcase"
+          },
+          {
+            "at": "pallet",
+            "do": "enter",
+            "target": "pallet"
+          },
+          {
+            "at": "wrapped",
+            "do": "grow",
+            "target": "pallet",
+            "scale": 1.25
+          },
+          {
+            "at": "plastic",
+            "do": "glow",
+            "target": "pallet"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "pallet",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@pallet.final",
+            "text": "{pallet_final_long}",
+            "label": "On one pallet",
+            "at": "three"
+          }
+        }
+      }
+    },
+    {
+      "id": "heavy",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Way too heavy to carry. You'd need a forklift just to move it.",
+      "events": {
+        "heavy": {
+          "word": "heavy"
+        },
+        "carry": {
+          "word": "carry"
+        },
+        "forklift": {
+          "word": "forklift"
+        },
+        "move": {
+          "word": "move"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "heavy"
+        },
+        {
+          "kind": "beep",
+          "at": "forklift"
+        },
+        {
+          "kind": "whoosh",
+          "at": "move"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.32,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried"
+              },
+              {
+                "at": "forklift",
+                "pose": "point",
+                "expression": "happy"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "heavy",
+            "prop": "pallet",
+            "x": 0.55,
+            "size": 0.28
+          },
+          {
+            "id": "forklift",
+            "prop": "forklift",
+            "x": 0.88,
+            "size": 0.2,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "heavy",
+            "do": "shake",
+            "target": "heavy"
+          },
+          {
+            "at": "carry",
+            "do": "glow",
+            "target": "heavy"
+          },
+          {
+            "at": "forklift",
+            "do": "enter",
+            "target": "forklift"
+          },
+          {
+            "at": "move",
+            "do": "move",
+            "target": "forklift",
+            "to": {
+              "x": 0.72,
+              "y": 0
+            }
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "forklift",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3
+        }
+      }
+    },
+    {
+      "id": "room",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Level four, {room_final_long}. Pallet after pallet, until they fill a whole room.",
+      "events": {
+        "four": {
+          "word": "four"
+        },
+        "pallet": {
+          "word": "pallet"
+        },
+        "fill": {
+          "word": "fill"
+        },
+        "whole": {
+          "word": "whole"
+        },
+        "room": {
+          "word": "room"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pallet"
+        },
+        {
+          "kind": "riser",
+          "at": "fill"
+        },
+        {
+          "kind": "boom",
+          "at": "room"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "horizon": [
+            {
+              "prop": "warehouse",
+              "x": 0.2,
+              "size": 0.1
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.36,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "proud"
+              },
+              {
+                "at": "room",
+                "pose": "pointUp",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "room",
+            "prop": "warehouse",
+            "x": 0.66,
+            "size": 0.42,
+            "hidden": true
+          },
+          {
+            "id": "pallet",
+            "prop": "pallet",
+            "x": 0.66,
+            "size": 0.18
+          }
+        ],
+        "actions": [
+          {
+            "at": "pallet",
+            "do": "multiply",
+            "target": "pallet",
+            "n": 10,
+            "cols": 5,
+            "dur": 1.2
+          },
+          {
+            "at": "room",
+            "do": "enter",
+            "target": "room"
+          },
+          {
+            "at": "fill",
+            "do": "grow",
+            "target": "pallet",
+            "scale": 1.15
+          },
+          {
+            "at": "whole",
+            "do": "glow",
+            "target": "pallet"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "room",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@room.final",
+            "text": "{room_final_long}",
+            "label": "In one room",
+            "at": "four"
+          }
+        }
+      }
+    },
+    {
+      "id": "small",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Hold on. A billion is just one room? That doesn't sound so big.",
+      "events": {
+        "billion": {
+          "word": "billion"
+        },
+        "room": {
+          "word": "room"
+        },
+        "big": {
+          "word": "big"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "room"
+        },
+        {
+          "kind": "tick",
+          "at": "big"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.32,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              },
+              {
+                "at": "big",
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "billion",
+            "prop": "pallet",
+            "x": 0.7,
+            "size": 0.12
+          },
+          {
+            "id": "room",
+            "prop": "warehouse",
+            "x": 0.7,
+            "size": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "at": "billion",
+            "do": "glow",
+            "target": "billion"
+          },
+          {
+            "at": "room",
+            "do": "shrink",
+            "target": "room",
+            "scale": 0.75
+          },
+          {
+            "at": "big",
+            "do": "shake",
+            "target": "room"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "room",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4
+        }
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Here's the part that hurts. Saving my whole salary for {career_years} years, I'd never even leave level two.",
+      "events": {
+        "hurts": {
+          "word": "hurts"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "room": {
+          "word": "never"
+        },
+        "years": {
+          "word": -1
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "hurts"
+        },
+        {
+          "kind": "tick",
+          "at": "salary"
+        },
+        {
+          "kind": "riser",
+          "at": "room"
+        },
+        {
+          "kind": "fail",
+          "at": "years"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "years": "{career_years} years",
+        "label": "Still level two",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "room",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "A whole career is a couple of briefcases. A billion is the whole room.",
+      "events": {
+        "career": {
+          "word": "career"
+        },
+        "pay": {
+          "word": "whole"
+        },
+        "couple": {
+          "word": "couple"
+        },
+        "briefcases": {
+          "word": "briefcases"
+        },
+        "room": {
+          "word": "room"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "career"
+        },
+        {
+          "kind": "clink",
+          "at": "briefcases"
+        },
+        {
+          "kind": "boom",
+          "at": "room"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "career": "{career_years} years",
+        "room": "{room_final_long}",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "And that whole room? It's only one note, piled up.",
+      "events": {
+        "whole": {
+          "word": "whole"
+        },
+        "note": {
+          "word": "note"
+        },
+        "piled": {
+          "word": "piled"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "whole"
+        },
+        {
+          "kind": "ding",
+          "at": "note"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "note",
+                "pose": "point",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "pile",
+            "spot": "right",
+            "amount": "@room.final",
+            "text": "{room_final_long}",
+            "label": "One note, piled up",
+            "at": "whole",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "whole",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Piled up",
+          "at": "piled",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    }
+  ],
+  "narrator": "af_heart"
+}
