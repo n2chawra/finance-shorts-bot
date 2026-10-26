@@ -1,0 +1,1447 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 71533,
+  "story": "secret_of_rich",
+  "currency": "USD",
+  "narrator": "af_heart",
+  "style": {
+    "palette": "night",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92
+  },
+  "structure": {
+    "levels": [
+      "Sell",
+      "Borrow",
+      "Never sell"
+    ]
+  },
+  "maths": [
+    {
+      "name": "shares",
+      "kind": "lumpsum",
+      "amount": 10000000,
+      "rate_pct": 8,
+      "years": 10
+    },
+    {
+      "name": "tax",
+      "kind": "income_tax_bands",
+      "income": 1000000,
+      "allowance": 0,
+      "bands": [
+        [
+          null,
+          20
+        ]
+      ]
+    },
+    {
+      "name": "loan",
+      "kind": "fee_take",
+      "amount": 1000000,
+      "fee_pct": 5,
+      "per_year": 1,
+      "years": 1
+    }
+  ],
+  "thumbnail": {
+    "who": "sharma",
+    "layout": "scene",
+    "at": "hook",
+    "angle": "question",
+    "words": "Billionaires *never* sell",
+    "figure": "{tax_tax}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "sharma",
+      "say": "Billionaires never sell their stock. So where's their cash?",
+      "events": {
+        "never": {
+          "word": "never"
+        },
+        "cash": {
+          "word": "cash"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "never"
+        },
+        {
+          "kind": "pop",
+          "at": "cash"
+        }
+      ],
+      "params": {
+        "worth": "{shares_amount}",
+        "hud": {
+          "hide": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "It's a trick in three levels. And the last one is the one banks love.",
+      "events": {
+        "trick": {
+          "word": "trick"
+        },
+        "levels": {
+          "word": "levels"
+        },
+        "banks": {
+          "word": "banks"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "levels"
+        },
+        {
+          "kind": "pop",
+          "at": "banks"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "horizon": [
+            {
+              "prop": "mansion",
+              "x": 0.12,
+              "size": 0.14
+            },
+            {
+              "prop": "yacht",
+              "x": 0.5,
+              "size": 0.1
+            },
+            {
+              "prop": "bank",
+              "x": 0.9,
+              "size": 0.14
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.24,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "banks",
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.4,
+            "size": 0.16
+          },
+          {
+            "id": "levels",
+            "prop": "stairs",
+            "x": 0.7,
+            "y": 0.0,
+            "size": 0.26,
+            "hidden": true
+          },
+          {
+            "id": "bank",
+            "prop": "bank",
+            "x": 0.86,
+            "size": 0.16,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "trick",
+            "do": "glow",
+            "target": "shares"
+          },
+          {
+            "at": "levels",
+            "do": "enter",
+            "target": "levels"
+          },
+          {
+            "at": "banks",
+            "do": "enter",
+            "target": "bank"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "levels"
+          },
+          {
+            "at": "banks",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "sellidea",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Easy. Sell {tax_income} of shares and spend it.",
+      "events": {
+        "sell": {
+          "word": "sell"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "spend": {
+          "word": "spend"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "shares"
+        },
+        {
+          "kind": "kaching",
+          "at": "spend"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.24,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "happy"
+              },
+              {
+                "at": "spend",
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.66,
+            "size": 0.16
+          }
+        ],
+        "actions": [
+          {
+            "at": "sell",
+            "do": "shake",
+            "target": "shares"
+          },
+          {
+            "at": "shares",
+            "do": "swap",
+            "target": "shares",
+            "into": "cash"
+          },
+          {
+            "at": "spend",
+            "do": "grow",
+            "target": "shares",
+            "scale": 1.35
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "shares",
+            "size": "medium",
+            "on": "shares",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "id": "selltax",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "say": "Sell, and the tax man takes {tax_tax} of that cash. Gone.",
+      "events": {
+        "tax": {
+          "word": "tax"
+        },
+        "takes": {
+          "word": "takes"
+        },
+        "cash": {
+          "word": "cash"
+        },
+        "gone": {
+          "word": "gone"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tax"
+        },
+        {
+          "kind": "whoosh",
+          "at": "cash"
+        },
+        {
+          "kind": "boom",
+          "at": "gone"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "red"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.18,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "cash",
+            "prop": "cash",
+            "x": 0.48,
+            "size": 0.14
+          },
+          {
+            "id": "tax",
+            "prop": "taxman",
+            "x": 0.8,
+            "size": 0.2,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "tax",
+            "do": "enter",
+            "target": "tax"
+          },
+          {
+            "at": "takes",
+            "do": "grow",
+            "target": "tax",
+            "scale": 1.25
+          },
+          {
+            "at": "cash",
+            "do": "move",
+            "target": "cash",
+            "to": "tax"
+          },
+          {
+            "at": "gone",
+            "do": "exit",
+            "target": "cash"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "gone",
+            "size": "close",
+            "on": "tax",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@tax.tax",
+            "text": "{tax_tax}",
+            "label": "Tax if he sells",
+            "at": "takes"
+          }
+        }
+      }
+    },
+    {
+      "id": "borrow",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "So I never sell. I lock my shares at the bank as a promise, and borrow the cash instead.",
+      "events": {
+        "lock": {
+          "word": "lock"
+        },
+        "bank": {
+          "word": "bank"
+        },
+        "promise": {
+          "word": "promise"
+        },
+        "borrow": {
+          "word": "borrow"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "lock"
+        },
+        {
+          "kind": "pop",
+          "at": "bank"
+        },
+        {
+          "kind": "ding",
+          "at": "borrow"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "bank"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.15,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "borrow",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.44,
+            "size": 0.14
+          },
+          {
+            "id": "lock",
+            "prop": "padlock",
+            "x": 0.47,
+            "y": 0.1,
+            "size": 0.07,
+            "hidden": true
+          },
+          {
+            "id": "bank",
+            "prop": "bank",
+            "x": 0.8,
+            "size": 0.22,
+            "hidden": true
+          },
+          {
+            "id": "loan",
+            "prop": "loan",
+            "x": 0.62,
+            "y": 0.02,
+            "size": 0.15,
+            "hidden": true,
+            "label": "Borrowed"
+          }
+        ],
+        "actions": [
+          {
+            "at": "lock",
+            "do": "enter",
+            "target": "lock"
+          },
+          {
+            "at": "bank",
+            "do": "enter",
+            "target": "bank"
+          },
+          {
+            "at": "promise",
+            "do": "glow",
+            "target": "lock"
+          },
+          {
+            "at": "borrow",
+            "do": "enter",
+            "target": "loan"
+          },
+          {
+            "at": "borrow",
+            "do": "state",
+            "target": "loan",
+            "state": "signed"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "shares"
+          },
+          {
+            "at": "bank",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2
+        }
+      }
+    },
+    {
+      "id": "taxq",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "And the tax on that loan?",
+      "events": {
+        "tax": {
+          "word": "tax"
+        },
+        "loan": {
+          "word": "loan"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "bank"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "tax",
+            "prop": "taxman",
+            "x": 0.74,
+            "size": 0.18
+          },
+          {
+            "id": "loan",
+            "prop": "loan",
+            "x": 0.55,
+            "size": 0.12
+          }
+        ],
+        "actions": [
+          {
+            "at": "tax",
+            "do": "shake",
+            "target": "tax"
+          },
+          {
+            "at": "loan",
+            "do": "glow",
+            "target": "loan"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          }
+        ],
+        "hud": {
+          "level": 2
+        }
+      }
+    },
+    {
+      "id": "zero",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "say": "Zero tax. A loan isn't income. It just costs me {loan_per_year_total} a year in interest.",
+      "events": {
+        "zero": {
+          "word": "zero"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "costs": {
+          "word": "costs"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "income": {
+          "word": "income"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "zero"
+        },
+        {
+          "kind": "clink",
+          "at": "interest"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "bank"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.2,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "tax",
+            "prop": "taxman",
+            "x": 0.75,
+            "size": 0.18
+          },
+          {
+            "id": "loan",
+            "prop": "loan",
+            "x": 0.5,
+            "size": 0.14,
+            "state": "signed"
+          },
+          {
+            "id": "coin",
+            "prop": "coin",
+            "x": 0.72,
+            "y": 0.05,
+            "size": 0.09,
+            "hidden": true,
+            "label": "Interest"
+          }
+        ],
+        "actions": [
+          {
+            "at": "zero",
+            "do": "exit",
+            "target": "tax"
+          },
+          {
+            "at": "loan",
+            "do": "grow",
+            "target": "loan",
+            "scale": 1.3
+          },
+          {
+            "at": "income",
+            "do": "glow",
+            "target": "loan"
+          },
+          {
+            "at": "interest",
+            "do": "enter",
+            "target": "coin"
+          },
+          {
+            "at": "interest",
+            "do": "focus",
+            "target": "coin",
+            "size": "close"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "tax"
+          },
+          {
+            "at": "loan",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@loan.per_year_total",
+            "text": "{loan_per_year_total}",
+            "label": "Interest a year",
+            "at": "costs"
+          }
+        }
+      }
+    },
+    {
+      "id": "yacht",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "zoom-through",
+      "say": "The cash buys me a yacht. The shares stay mine.",
+      "events": {
+        "cash": {
+          "word": "cash"
+        },
+        "yacht": {
+          "word": "yacht"
+        },
+        "shares": {
+          "word": "shares"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "yacht"
+        },
+        {
+          "kind": "ding",
+          "at": "shares"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "horizon": [
+            {
+              "prop": "mansion",
+              "x": 0.82,
+              "size": 0.1
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.2,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "cash",
+            "prop": "cash",
+            "x": 0.5,
+            "size": 0.1
+          },
+          {
+            "id": "yacht",
+            "prop": "yacht",
+            "x": 0.6,
+            "y": 0.02,
+            "size": 0.2,
+            "hidden": true
+          },
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.85,
+            "size": 0.12
+          }
+        ],
+        "actions": [
+          {
+            "at": "cash",
+            "do": "move",
+            "target": "cash",
+            "to": "yacht"
+          },
+          {
+            "at": "yacht",
+            "do": "enter",
+            "target": "yacht"
+          },
+          {
+            "at": "yacht",
+            "do": "exit",
+            "target": "cash"
+          },
+          {
+            "at": "shares",
+            "do": "glow",
+            "target": "shares"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "yacht",
+            "size": "medium",
+            "on": "yacht",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2
+        }
+      }
+    },
+    {
+      "id": "again",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Next year? I borrow again. The bank is happy to wait, because my shares keep growing.",
+      "events": {
+        "borrow": {
+          "word": "borrow"
+        },
+        "bank": {
+          "word": "bank"
+        },
+        "wait": {
+          "word": "wait"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "growing": {
+          "word": "growing"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "borrow"
+        },
+        {
+          "kind": "tick",
+          "at": "wait"
+        },
+        {
+          "kind": "riser",
+          "at": "growing"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "bank"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.16,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "growing",
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "loan",
+            "prop": "loan",
+            "x": 0.45,
+            "size": 0.12,
+            "state": "signed",
+            "label": "Borrowed"
+          },
+          {
+            "id": "bank",
+            "prop": "bank",
+            "x": 0.8,
+            "size": 0.2
+          },
+          {
+            "id": "wait",
+            "prop": "hourglass",
+            "x": 0.62,
+            "y": 0.18,
+            "size": 0.1,
+            "hidden": true,
+            "k": 0
+          },
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.62,
+            "size": 0.12
+          }
+        ],
+        "actions": [
+          {
+            "at": "borrow",
+            "do": "multiply",
+            "target": "loan",
+            "n": 2,
+            "cols": 2
+          },
+          {
+            "at": "bank",
+            "do": "glow",
+            "target": "bank"
+          },
+          {
+            "at": "wait",
+            "do": "enter",
+            "target": "wait"
+          },
+          {
+            "at": "wait",
+            "do": "fill",
+            "target": "wait",
+            "k": 1,
+            "dur": 1.4
+          },
+          {
+            "at": "shares",
+            "do": "shake",
+            "target": "shares"
+          },
+          {
+            "at": "growing",
+            "do": "grow",
+            "target": "shares",
+            "scale": 1.5
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "bank",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2
+        }
+      }
+    },
+    {
+      "id": "neversell",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Level three: never sell. At an assumed {shares_rate} a year, my shares grow from {shares_amount} to {shares_final} in {shares_years} years.",
+      "events": {
+        "never": {
+          "word": "never"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "grow": {
+          "word": "grow"
+        },
+        "years": {
+          "word": -1
+        },
+        "to": {
+          "word": "to"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "never"
+        },
+        {
+          "kind": "riser",
+          "at": "grow"
+        },
+        {
+          "kind": "ding",
+          "at": "years"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field",
+          "horizon": [
+            {
+              "prop": "mansion",
+              "x": 0.12,
+              "size": 0.12
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.15,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "growth",
+            "prop": "chart",
+            "x": 0.7,
+            "y": 0.0,
+            "size": 0.2,
+            "k": 0.1
+          },
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.36,
+            "size": 0.075
+          },
+          {
+            "id": "years",
+            "prop": "hourglass",
+            "x": 0.9,
+            "size": 0.12,
+            "hidden": true,
+            "k": 0,
+            "y": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "at": "never",
+            "do": "glow",
+            "target": "shares"
+          },
+          {
+            "at": "shares",
+            "do": "grow",
+            "target": "shares",
+            "scale": 1.2
+          },
+          {
+            "at": "grow",
+            "do": "fill",
+            "target": "growth",
+            "k": 1,
+            "dur": 2.4
+          },
+          {
+            "at": "grow",
+            "do": "multiply",
+            "target": "shares",
+            "n": 12,
+            "dur": 2.2,
+            "cols": 3
+          },
+          {
+            "at": "to",
+            "do": "glow",
+            "target": "growth"
+          },
+          {
+            "at": "years",
+            "do": "enter",
+            "target": "years"
+          },
+          {
+            "at": "years",
+            "do": "fill",
+            "target": "years",
+            "k": 1,
+            "dur": 1.2
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "grow",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "to",
+            "size": "medium",
+            "on": "growth",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@shares.final",
+            "text": "{shares_final}",
+            "label": "His shares",
+            "at": "grow"
+          }
+        }
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "But if the market crashes, the bank won't wait. It sells my shares for me, at the worst price.",
+      "events": {
+        "crashes": {
+          "word": "crashes"
+        },
+        "bank": {
+          "word": "bank"
+        },
+        "sells": {
+          "word": "sells"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "crashes"
+        },
+        {
+          "kind": "beep",
+          "at": "bank"
+        },
+        {
+          "kind": "whoosh",
+          "at": "sells"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "bank",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "So the rich pick a small interest bill over a big tax bill. Cash borrowed, never sold.",
+      "events": {
+        "small": {
+          "word": "small"
+        },
+        "big": {
+          "word": "big"
+        },
+        "borrowed": {
+          "word": "borrowed"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "clink",
+          "at": "small"
+        },
+        {
+          "kind": "boom",
+          "at": "big"
+        },
+        {
+          "kind": "boom",
+          "at": "borrowed"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "tax": "{tax_tax}",
+        "interest": "{loan_per_year_total}",
+        "stamp": "Borrowed, never sold",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "build",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "So that's why billionaires never sell their stock.",
+      "events": {
+        "never": {
+          "word": "never"
+        },
+        "stock": {
+          "word": "stock"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "stock"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "horizon": [
+            {
+              "prop": "mansion",
+              "x": 0.15,
+              "size": 0.14
+            },
+            {
+              "prop": "yacht",
+              "x": 0.55,
+              "size": 0.1
+            },
+            {
+              "prop": "bank",
+              "x": 0.88,
+              "size": 0.14
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.28,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "stock",
+                "pose": "point",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "stock",
+            "prop": "shares",
+            "x": 0.66,
+            "size": 0.12
+          },
+          {
+            "id": "lock",
+            "prop": "padlock",
+            "x": 0.69,
+            "y": 0.08,
+            "size": 0.06,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "never",
+            "do": "multiply",
+            "target": "stock",
+            "n": 9,
+            "cols": 3,
+            "dur": 0.9
+          },
+          {
+            "at": "stock",
+            "do": "glow",
+            "target": "stock"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "never",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      }
+    }
+  ],
+  "cta": "Would you borrow or sell? Comment",
+  "hook_style": "secret",
+  "title": "Why billionaires never sell their stock 🤫 (3 levels)",
+  "description": "They're worth millions on paper and pay almost no tax. Here's the trick, level by level.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice."
+}

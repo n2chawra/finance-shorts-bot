@@ -29,7 +29,7 @@ from renderer import craft, remotion
 from renderer.engine.formatting import CURRENCIES
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
-from . import experiments, formats, history, reach, topics, variety
+from . import experiments, formats, history, reach, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -43,6 +43,11 @@ PLAN_KEYS = ("template", "topic", "story", "hook_style", "cta", "title", "descri
 
 def _dir(vid: str, root: Path) -> Path:
     return root / "videos" / vid
+
+
+def _read_script(vid: str, root: Path = ROOT) -> dict:
+    f = root / "videos" / vid / "script.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {}
 
 
 def _read(path: Path) -> dict:
@@ -218,6 +223,11 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
         for w in check_script(script).get("warnings", []):
             print(f"WARN: {w}")
             notes.append(f"warning: {w}")
+    # the story spine (generator/story.py): fixed before anything is voiced or drawn
+    entries = [e for e in history.of_format(history.load(root), plan_format(script)) if e["id"] != vid]
+    spine = story.script_problems(script, [_read_script(e["id"], root) for e in entries[-10:]])
+    if spine:
+        passed, notes = False, [*notes, *spine]
     log_step(vid, "number_check", passed, notes, root)
     return [] if passed else notes
 
@@ -294,6 +304,13 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     if plan_format(script) == "short" and not script.get("thumbnail"):
         problems.append("a Short needs a `thumbnail` (its cover): `scene` (a frame of the video under the words: the default), "
                         "`versus`, `secret` or `story` (renderer/templates/short_story/README.md)")
+    # the story's own things, not the last videos' (build beats; 2026-10-26)
+    tl_now = _read(d / "timeline.json") if (d / "timeline.json").is_file() else {"beats": []}
+    def _tl(e: dict) -> dict:
+        f = root / "videos" / e["id"] / "timeline.json"
+        return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {"beats": []}
+    problems += craft.prop_problems(tl_now, [(e["id"], _tl(e)) for e in earlier[-craft.PROP_WINDOW:]])
+    problems += story.timeline_problems(script, tl_now, [_read_script(e["id"], root) for e in earlier[-10:]])
     # every cover a different picture: not like the last covers of this format
     problems += craft.cover_problems(d / "thumbnail.png", [(e["id"], root / "videos" / e["id"] / "thumbnail.png") for e in earlier])
     audio = report.get("audio")

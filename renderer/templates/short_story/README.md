@@ -1,6 +1,6 @@
 # short_story — Shorts on Remotion
 
-A vertical Short (1080×1920, 20–35 s) told in beats by the recurring cast, drawn by Remotion.
+A vertical Short (1080×1920, 45–75 s since 2026-10-26) told in beats by the recurring cast, drawn by Remotion.
 Same pipeline, scenes, cast, numbers and rules as [`long_story`](../long_story/README.md): read
 that README for the script fields, `maths` kinds, beats, events, acting and the scene table.
 Example: [`examples/short_story.json`](../../../examples/short_story.json). There is no
@@ -17,8 +17,8 @@ a beat or two, never more. Reference: [`examples/short_story_shot.json`](../../.
 ## What is different in a Short
 
 - `"format": "short"`, `"template": "short_story"`.
-- **Pace:** tempo 1.4 (voice included), about **200 spoken words a minute**. 20–35 s is
-  **65–115 words in 7–11 short beats**. No `chapter` beats.
+- **Pace:** tempo 1.4 (voice included), about **200 spoken words a minute**. 45–75 s is
+  **150–250 words in 11–16 short beats** (about 3–5 s each), following "The story spine" below. No `chapter` beats.
 - **The first second is the hook.** The first beat's opening lines (`"at": "start"`) are on screen
   from frame 0, because that frame is what the feed shows: a big figure or a sharp question.
 - **One idea.** A Short makes one point with one calculation. Cut every beat that doesn't move it.
@@ -91,6 +91,30 @@ Shorts shelf. A Short without one fails the render.
 `words`: four at most, the topic in the viewer's words; one word between asterisks is highlighted
 yellow. Figures are placeholders, like everywhere else. Example covers: `videos/v-20261021-04`,
 `videos/v-20261021-05`.
+
+## The story spine: depth without losing the hook (owner, 2026-10-26)
+
+Our Shorts stopped at about 1,100 views: viewers left right after the hook (the no-cost EMI Short
+lost most of them between 5 and 10 s) and stayed for about half. The hooks work; what followed was
+a fact or two and a reaction. The references that hold people (The Curious Plot's 1.1M egg-selling
+story, the 4-levels lemonade stand) promise a structure and climb through it. Every Short now runs
+**45–75 s** and follows this spine (`generator/story.py` checks it):
+
+1. **Hook** (`role: hook`, 3 s or less): unchanged, it works.
+2. **Promise** by 6 s (`role: promise`): the structure the viewer will wait for: "It's a trick in
+   three levels. The last one is the one banks love." Declare it: `"structure": {"levels": [...]}`.
+3. **A figure on screen** by 9 s: the first level lands fast. No setup line, no "let me explain".
+4. **Levels** (`role: level`, `params.hud.level` 1..n): each one is a scene with stakes (a
+   character wants something and pays for it), moves the **climbing number** (`params.hud.counter`,
+   3 changes or more) and changes the picture. End each beat on an open loop ("…and that's level one").
+5. **The turn** (`role: turn`, 50–85% in): the catch, the surprise, the rule flipped. A custom beat.
+6. **The payoff** (`role: payoff`): answers the hook. A custom beat.
+7. **Loop** (`role: loop`): the last line leads back into the first.
+
+Never: "Wait, what?", "Wait. So my…", "Same X. Same Y.", "didn't lift a finger", "for doing
+nothing", or a line opening from the last 10 scripts. The picture follows every phrase: build
+beats with the story's own props (`renderer/templates/SHOTS.md`, "The build scene").
+Reference: `videos/v-remake-billionaires/script.json`.
 
 ## Story recipes: the formats people watch (owner reset, 2026-10-21)
 

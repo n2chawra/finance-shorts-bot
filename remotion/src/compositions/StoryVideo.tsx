@@ -23,7 +23,9 @@ import { BigNumberScene, CalendarScene, ChartScene, HeadlineScene, MonsterScene,
 import { EquationScene, KineticScene, PropScene, ScreenScene, SourceScene } from "../scenes/world";
 import { BillScene, ForkScene, RoadScene } from "../scenes/journey";
 import { ShotScene } from "../studio/shot";
-import { HOOKS } from "../videos/hooks";
+import { HOOKS, VIDEOS } from "../videos/hooks";
+import { BuildScene } from "../studio/build";
+import { StoryHud } from "../studio/hud";
 import { Grain } from "../design/texture";
 import { Sikka } from "../cast/Sikka";
 
@@ -33,11 +35,21 @@ const HookScene: React.FC<SceneProps> = (p) => {
   return Custom ? <Custom {...p} /> : <ShotScene {...p} />;
 };
 
+/** A video's own coded beat (videos/<id>/<params.component>.tsx: the turn, the payoff...), or the
+ * build scene / a plain shot with the same params if the file is missing or failed its check. */
+const CustomScene: React.FC<SceneProps> = (p) => {
+  const name = typeof p.beat.params.component === "string" ? p.beat.params.component : "";
+  const Custom = VIDEOS[p.tl.id]?.components[name];
+  if (Custom) return <Custom {...p} />;
+  return Array.isArray(p.beat.params.items) ? <BuildScene {...p} /> : <ShotScene {...p} />;
+};
+
 export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   stage: StageScene, chapter: ChapterScene, checklist: ChecklistScene, end: EndScene, headline: HeadlineScene,
   bignumber: BigNumberScene, reveal: RevealScene, statement: StatementScene, monster: MonsterScene,
   snowball: SnowballScene, calendar: CalendarScene, split: SplitScene, chart: ChartScene, towers: TowersScene,
   prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene, source: SourceScene, bill: BillScene, road: RoadScene, fork: ForkScene, shot: ShotScene, hook: HookScene,
+  build: BuildScene, custom: CustomScene,
 };
 
 /** The channel's mark in the top-left corner of every frame: Sikka, small, never text. */
@@ -113,6 +125,7 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe, atFrame }) =
       <AbsoluteFill style={overlap ? transitionStyle(cur.transition, local) : undefined}>
         <BeatView beat={cur} tl={timeline} frame={frame} fps={fps} />
       </AbsoluteFill>
+      {!cover && <StoryHud tl={timeline} index={i} beat={cur} frame={frame} fps={fps} />}
       <Vignette />
       <Grain />
       {!cover && cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} />}

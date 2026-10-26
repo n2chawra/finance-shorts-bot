@@ -23,7 +23,7 @@ from PIL import Image
 
 from renderer.engine.mux import find_ffmpeg
 from renderer.engine.preview import contact_sheet
-from renderer.craft import frame_problems, shot_problems
+from renderer.craft import frame_problems, picture_problems, shot_problems
 from renderer.gates import check_liveliness, layout_problems
 
 REMOTION = Path(__file__).resolve().parent.parent/"remotion"
@@ -40,22 +40,25 @@ HOOK_BANNED = ("fetch(", "eval(", "Function(", "Math.random", "Date.now", "new D
                "require(", "import(", "process.", "setTimeout", "setInterval", "XMLHttpRequest", "useFrame")
 
 
-def hook_problems(video_id: str) -> list[str]:
-    """A video's custom hook (remotion/src/videos/<id>/Hook.tsx) may only build on the studio kit:
-    known imports, nothing random or clock-driven (renders must be deterministic), no network, no
-    globals, and it must type-check. Nothing to check when the video has no custom hook."""
-    hook = REMOTION/"src"/"videos"/video_id/"Hook.tsx"
-    if not hook.is_file():
-        return []
-    code = hook.read_text(encoding="utf-8")
+def custom_problems(video_id: str) -> list[str]:
+    """A video's own code (remotion/src/videos/<id>/*.tsx: Hook, other custom beats, props) may only
+    build on the studio kit: known imports (and its own folder's files), nothing random or
+    clock-driven (renders must be deterministic), no network, no globals, and it must type-check.
+    Nothing to check when the video has no code of its own."""
+    folder = REMOTION/"src"/"videos"/video_id
+    files = sorted(folder.glob("*.tsx")) if folder.is_dir() else []
     out = []
-    for m in re.finditer(r"""^\s*import[^'"]*['"]([^'"]+)['"]""", code, re.M):
-        if not any(m.group(1) == a or m.group(1).startswith(a) for a in HOOK_IMPORTS):
-            out.append(f"import {m.group(1)!r} is not allowed (only the studio kit, cast, fx, design, fmt and remotion)")
-    out += [f"{b!r} is not allowed in a hook" for b in HOOK_BANNED if b in code]
-    if "export default" not in code:
-        out.append("Hook.tsx must default-export the hook component")
-    if not out:
+    for f in files:
+        code = f.read_text(encoding="utf-8")
+        for m in re.finditer(r"""^\s*import[^'"]*['"]([^'"]+)['"]""", code, re.M):
+            mod = m.group(1)
+            own = mod.startswith("./") and ".." not in mod
+            if not own and not any(mod == a or mod.startswith(a) for a in HOOK_IMPORTS):
+                out.append(f"{f.name}: import {mod!r} is not allowed (only the studio kit, cast, fx, design, fmt, remotion and this folder)")
+        out += [f"{f.name}: {b!r} is not allowed" for b in HOOK_BANNED if b in code]
+        if "export default" not in code:
+            out.append(f"{f.name} must default-export its component (or, props.tsx, its props)")
+    if files and not out:
         node = shutil.which("node")
         tsc = REMOTION/"node_modules"/"typescript"/"bin"/"tsc"
         if node and tsc.is_file():
@@ -63,6 +66,9 @@ def hook_problems(video_id: str) -> list[str]:
             if r.returncode != 0:
                 out.append("it does not type-check: " + " | ".join(l for l in r.stdout.splitlines() if "videos/" in l.replace("\\", "/"))[:900])
     return out
+
+
+hook_problems = custom_problems   # the name routines and tests used before custom beats (2026-10-26)
 
 
 def source_hash() -> str:
@@ -262,7 +268,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
     report["audio"] = {"peak_db": tl["audio"]["peak_db"], "mean_db": tl["audio"]["mean_db"]}
     # a video that looks templated (empty frames, the same picture, one shot size, one set) fails
     # here, on the stills, before the video is drawn (renderer/craft.py)
-    report["craft_problems"] = shot_problems(tl) + frame_problems(shots, tl["fps"])
+    report["craft_problems"] = shot_problems(tl) + picture_problems(tl) + frame_problems(shots, tl["fps"])
     # no point rendering a video the gates will reject: a layout problem, or one `stop_if` finds in
     # the report (length, sound levels), skips it
     early = list(report["layout_problems"]) + list(report["craft_problems"]) + (stop_if(report) if stop_if else [])
@@ -285,9 +291,9 @@ def render_story(script: dict, out: Path, *, preview: bool = False, voice: str =
     everything bulky (bundle, stills, chunks) goes to a work folder removed after a full render."""
     from renderer.timeline.build import build
     script = {**script, "id": script.get("id") or out.name}   # the timeline's id finds the video's own hook
-    problems = hook_problems(script["id"])
+    problems = custom_problems(script["id"])
     if problems:
-        raise RuntimeError("custom hook: " + "; ".join(problems))
+        raise RuntimeError("the video's own code: " + "; ".join(problems))
     build(script, out, voice=voice)
     # a fixed work folder, so a render cut off part way resumes from its finished chunks
     work = Path(tempfile.gettempdir())/f"remotion-{out.name}"

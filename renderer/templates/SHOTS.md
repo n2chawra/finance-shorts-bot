@@ -64,3 +64,55 @@ The first beat is `"scene": "hook"`. Its picture is written for this video: a co
 `remotion/src/videos/<video id>/Hook.tsx` (see `remotion/src/videos/README.md`). Give the hook beat
 the `params` of a normal shot too: if the hook file is missing or fails its check, the render
 draws the shot instead and says so.
+
+## The build scene, and the picture following the words (owner, 2026-10-26)
+
+"Animation should be dynamic to the script, not hardcoded props, so no two videos look alike."
+Our Shorts lost most viewers right after the hook, where every video turned into the same phone →
+stack → vault. The references show the rule: **what is on screen is what is being said, and it
+changes on every phrase**. Zack D. Films (8.2M) cuts to a literal picture of each phrase; The Curious
+Plot (1.1M) keeps one world and adds or changes a thing on each phrase (egg → hen → crate → a flock
+of 312 hens), with a level tracker and a climbing number.
+
+**Draw the story's own things** in `remotion/src/videos/<id>/props.tsx` (default-export
+`{ name: PropFC }`, built with `../../studio/draw`: `Box`, `Ball`, `Shape`, `Shadow`, `Paint`,
+`PALETTE`, `shade`, `bob`). A prop is drawn centred on x = 0, base on y = 0, about `s` tall; `k`
+(0..1) and `state` are what the story changes (a chart's climb, `"crash"`, a loan `"signed"`).
+Ten things for a 60-second Short is normal. Shared money things: `note`, `coin`, `cash`, `box`.
+Example: `remotion/src/videos/v-remake-billionaires/props.tsx`.
+
+**A build beat** (`"scene": "build"`) is one world filling up phrase by phrase:
+
+```json
+{ "id": "selltax", "scene": "build", "role": "level", "speaker": "sharma",
+  "say": "Sell, and the tax man takes {tax_tax} of that cash. Gone.",
+  "events": { "tax": { "word": "tax" }, "takes": { "word": "takes" }, "cash": { "word": "cash" }, "gone": { "word": "gone" } },
+  "params": {
+    "world": { "kind": "city", "tint": "red", "horizon": [ { "prop": "mansion", "x": 0.15, "size": 0.12 } ] },
+    "actors": [ { "who": "sharma", "spot": 0.18, "acting": [ { "sec": 0, "pose": "shrug", "expression": "smirk" } ] } ],
+    "items": [ { "id": "cash", "prop": "cash", "x": 0.48, "size": 0.14 },
+               { "id": "tax", "prop": "taxman", "x": 0.8, "size": 0.2, "hidden": true } ],
+    "actions": [ { "at": "tax", "do": "enter", "target": "tax" },
+                 { "at": "cash", "do": "move", "target": "cash", "to": "tax" },
+                 { "at": "gone", "do": "exit", "target": "cash" } ],
+    "camera": [ { "sec": 0, "size": "wide", "on": "room" }, { "at": "gone", "size": "close", "on": "tax", "move": true } ],
+    "hud": { "level": 1, "counter": { "value": "@tax.tax", "text": "{tax_tax}", "label": "Tax if he sells", "at": "takes" } } } }
+```
+
+- `world.kind`: field, street, city, bank, kitchen, office, night, desert, space, studio; `tint`: red,
+  gold, blue, green, purple, dark; `horizon`: this video's props, small and far. One or two worlds a video.
+- `items`: `{id, prop, x: 0..1, y?: above the ground, size?: share of height, label?, tag?, hidden?, state?, k?}`.
+- verbs: `enter`, `exit`, `multiply {n (from @maths), text?}`, `grow`/`shrink {scale}`, `move {to: id | {x, y}}`,
+  `swap {into: prop}`, `break`, `fill`/`drain {k}`, `state {state}`, `label {text}`, `tag {text}`,
+  `count {value, text}`, `glow`, `shake`, `focus {size}` (camera).
+- **Each action fires on the word that names its thing** ("tax" enters the tax sack). An item's id,
+  prop or label must share a word with what is said around that moment (`renderer/craft.py`).
+- `hud`: the level tracker (`structure.levels` at the top of the script) and the climbing number;
+  they carry over between beats. `"hud": {"hide": true}` on the hook.
+
+**Custom beats**: besides `Hook.tsx`, write `Turn.tsx` and `Payoff.tsx` (`"scene": "custom",
+"params": {"component": "Turn", ...}`), same contract as the hook (`remotion/src/videos/README.md`).
+
+**The gates** (fail the render): nothing new on screen for more than 2.5 s in a shot or build beat;
+under 70% of a build beat's actions showing a thing said at that moment; fewer than 8 props of its
+own; more than 30% of its props used by one of the last 10 videos.

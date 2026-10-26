@@ -75,6 +75,8 @@ class Beat:
     sfx: list = field(default_factory=list)          # [{"kind", "at": event name, "gain"?}]
     min_sec: float = 0.0
     chapter: str | None = None
+    # its part in the story (generator/story.py): hook | promise | level | turn | payoff | loop
+    role: str | None = None
 
 
 def _fill(text: str, figures: dict[str, str], where: str) -> str:
@@ -235,6 +237,18 @@ def _thumbnail_variants(script: dict, figures: dict[str, str], results: dict) ->
         raise ValueError("each thumbnail needs a different picture: use different layouts (story, versus, secret, card) "
                          "or, for two `story` covers, a different hero; same picture with new words tests nothing")
     return variants
+
+
+def _structure(spec: dict | None) -> dict | None:
+    """A story's promised steps: `{"levels": ["Sell", "Borrow", "Never sell"]}`, short names, no figures."""
+    if not spec:
+        return None
+    levels = spec.get("levels") or []
+    if not isinstance(levels, list) or not 2 <= len(levels) <= 6 or not all(isinstance(x, str) and 0 < len(x) <= 18 for x in levels):
+        raise ValueError("structure.levels: 2 to 6 short names (18 characters at most), e.g. [\"Sell\", \"Borrow\", \"Never sell\"]")
+    if any(re.search(r"\d", x) for x in levels):
+        raise ValueError("structure.levels: names only, no digits (the tracker numbers them)")
+    return {"levels": levels}
 
 
 def _thumb_picture(t: dict) -> tuple[str, str | None]:
@@ -508,6 +522,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest
         "experiments": dict(script.get("experiments") or {}),
         # the thumbnail card: a cast member reacting, one computed figure, at most four words
+        # the promised steps (a level tracker over the beats, studio/hud.tsx; 2026-10-26)
+        "structure": _structure(script.get("structure")),
         "thumbnail": _thumbnail(script.get("thumbnail"), figures, results, [b.get("id") for b in script.get("beats") or []]),
         # extra thumbnails for a Test & Compare on YouTube (long videos): thumbnail-b.png, thumbnail-c.png
         "thumbnailVariants": _thumbnail_variants(script, figures, results),

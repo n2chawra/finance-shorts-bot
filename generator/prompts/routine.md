@@ -70,11 +70,16 @@ Follow `generator/prompts/planner.md`. Use the id from `next_id` for the whole r
 Follow `generator/prompts/writer.md`. It ends with the number check, which is code and must
 print `ok`.
 
-Then write the video's **custom hook**, `remotion/src/videos/<id>/Hook.tsx`, as
-`remotion/src/videos/README.md` describes (build it from the studio kit; copy the reference hook's
-structure, not its picture: each video's hook is its own). The render checks it (imports, no
-randomness or clocks, `tsc`); if it fails twice, delete the file and the hook beat renders as its
-fallback shot. Ship commits it with the video.
+Then write the video's **own code** in `remotion/src/videos/<id>/`, as `remotion/src/videos/README.md`
+and `renderer/templates/SHOTS.md` ("The build scene") describe (owner, 2026-10-26: "animation
+should be dynamic to the script"):
+- `props.tsx`: the story's own things (8 or more), drawn with `../../studio/draw`;
+- `Hook.tsx`, `Turn.tsx` and `Payoff.tsx`: the hook, the turn and the payoff, coded for this story.
+
+Reference: `remotion/src/videos/v-remake-billionaires/` with `videos/v-remake-billionaires/script.json`
+(copy the structure, never the pictures). The render checks every file (imports, no randomness or
+clocks, `tsc`); a file that fails twice is deleted and its beat renders as its fallback. Ship commits
+the folder with the video.
 
 ## 4. Fact review (a subagent with fresh context)
 

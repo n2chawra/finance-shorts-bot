@@ -1,32 +1,49 @@
 /**
- * Custom hooks: one bespoke component per video for its first seconds (owner, 2026-10-21: a shot
- * system for the body, the hook written for each video). A routine writes
- * remotion/src/videos/<video id>/Hook.tsx, default-exporting a React.FC<SceneProps>, built from the
- * studio kit; a beat with scene "hook" draws it. Webpack (the Remotion bundler) finds every
- * Hook.tsx below this folder; elsewhere (unit tests) there are none, and "hook" beats fall back to
- * a plain shot with the same params.
+ * A video's own code (owner, 2026-10-21 and 2026-10-26): its custom beats and its props.
+ *
+ *   remotion/src/videos/<video id>/Hook.tsx     the first seconds (scene "hook")
+ *   remotion/src/videos/<video id>/<Name>.tsx   any other custom beat (scene "custom", params.component: "<Name>"),
+ *                                               e.g. Turn.tsx and Payoff.tsx
+ *   remotion/src/videos/<video id>/props.tsx    default-exports { name: PropFC }: the story's own things, drawn
+ *                                               with studio/draw, used by "build" beats
+ *
+ * Each component default-exports a React.FC<SceneProps>. Webpack (the Remotion bundler) finds them
+ * all; elsewhere (unit tests) there are none, and those beats fall back to a plain shot or build.
  */
 import type React from "react";
 import type { SceneProps } from "../scenes/kit";
+import type { PropSet } from "../studio/draw";
 
-type Ctx = { keys(): string[]; (key: string): { default?: React.FC<SceneProps> } };
+type Mod = { default?: unknown };
+type Ctx = { keys(): string[]; (key: string): Mod };
 type WebpackRequire = { context?: (dir: string, deep: boolean, re: RegExp) => Ctx };
 
-function load(): Record<string, React.FC<SceneProps>> {
+export interface VideoCode { components: Record<string, React.FC<SceneProps>>; props: PropSet }
+
+function load(): Record<string, VideoCode> {
   let ctx: Ctx;
   try {
     // must stay a literal require.context call: webpack resolves it at build time
-    ctx = (require as unknown as Required<WebpackRequire>).context("./", true, /\/Hook\.tsx$/);
+    ctx = (require as unknown as Required<WebpackRequire>).context("./", true, /\/[A-Za-z]+\.tsx$/);
   } catch {
-    return {};          // not bundled by webpack (unit tests): no custom hooks
+    return {};          // not bundled by webpack (unit tests): no custom code
   }
-  const out: Record<string, React.FC<SceneProps>> = {};
+  const out: Record<string, VideoCode> = {};
   for (const key of ctx.keys()) {
-    const id = key.split("/").slice(-2, -1)[0];
+    const parts = key.split("/");
+    const id = parts.at(-2), file = parts.at(-1)?.replace(/\.tsx$/, "");
+    if (!id || !file || id === ".") continue;
     const mod = ctx(key);
-    if (id && mod.default) out[id] = mod.default;
+    const v = (out[id] ??= { components: {}, props: {} });
+    if (file === "props") {
+      if (mod.default && typeof mod.default === "object") v.props = mod.default as PropSet;
+    } else if (typeof mod.default === "function") {
+      v.components[file] = mod.default as React.FC<SceneProps>;
+    }
   }
   return out;
 }
 
-export const HOOKS: Record<string, React.FC<SceneProps>> = load();
+export const VIDEOS: Record<string, VideoCode> = load();
+export const HOOKS: Record<string, React.FC<SceneProps>> = Object.fromEntries(
+  Object.entries(VIDEOS).flatMap(([id, v]) => (v.components.Hook ? [[id, v.components.Hook]] : [])));

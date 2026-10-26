@@ -93,6 +93,8 @@ export const Timeline = z.object({
   // news: "Data: AMFI · Jun 2026", shown by every headline scene (sourced facts, hard rule)
   sources: z.string().nullable().optional(),
   thumbnail: Thumbnail.nullable().optional(),
+  // the story's promised steps, drawn as a level tracker by studio/hud.tsx (2026-10-26)
+  structure: z.object({ levels: z.array(z.string()).max(6).default([]) }).nullable().optional(),
   // extra thumbnails for YouTube's Test & Compare (long videos), rendered as thumbnail-b.png, thumbnail-c.png
   thumbnailVariants: z.array(Thumbnail).max(2).default([]),
   // the script's currency (renderer/engine/formatting.py): count-ups format in it; rupees before 2026-10-18

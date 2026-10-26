@@ -28,6 +28,13 @@ def script_for(plan: dict) -> dict:
 
 
 @pytest.fixture(autouse=True)
+def no_story_spine(monkeypatch: pytest.MonkeyPatch) -> None:
+    """These tests are about running and shipping; the story spine has its own (test_story.py)."""
+    from generator import story
+    monkeypatch.setattr(story, "applies", lambda script: False)
+
+
+@pytest.fixture(autouse=True)
 def fake_render(monkeypatch: pytest.MonkeyPatch) -> None:
     """Remotion stands in: tests don't launch Chrome. A 36 s video in the script's style."""
     def story(script: dict, out: Path, preview: bool = False, stop_if=None) -> dict:

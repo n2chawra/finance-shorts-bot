@@ -4,6 +4,8 @@ export const SCENE_NAMES = [
   "stage", "chapter", "checklist", "end", "headline",
   "bignumber", "reveal", "statement", "monster", "snowball", "calendar", "split", "chart", "towers",
   "prop", "screen", "equation", "kinetic", "source", "bill", "road", "fork", "shot", "hook",
+  // a world built per phrase from the video's own props, and a video's own coded beats (2026-10-26)
+  "build", "custom",
 ] as const;
 
 export type SceneName = (typeof SCENE_NAMES)[number];

@@ -367,3 +367,10 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   Short a day and 4 in any 11 (`generator/reach.py`, check-plan). New formats `billionaire_question`
   and `money_scale`, global references added; unused feed topics cleared and reseeded (8 of 10 Shorts
   and 3 of 3 long topics global); market scan on global queries.
+- 2026-10-26 **Depth and a picture that follows the words.** Shorts stalled at ~1.1K views, losing
+  most viewers right after the hook. Now 45–75 s on a story spine (promise by 6 s, levels with a
+  climbing number, a turn, the payoff; `generator/story.py`), `build` beats made of each video's own
+  drawn props whose actions fire on the words (`remotion/src/studio/build.tsx`, `draw.tsx`,
+  `worlds.tsx`, `hud.tsx`), coded Hook/Turn/Payoff per video, and gates for visual gaps, literal
+  match and prop reuse. Reference remake: v-remake-billionaires (47 s, picture changes 5.5 per 10 s
+  vs 1.8, motion 9.6). Length setting 45–75 s in the database.

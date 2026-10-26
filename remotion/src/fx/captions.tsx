@@ -64,7 +64,7 @@ export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]
   const scale = 0.82 + 0.18 * (1 - (1 - k) ** 3) + (k >= 1 ? 0 : 0.04 * Math.sin(k * Math.PI));
   // Shorts: on the wall above the cast's heads in a `stage` beat; lower in the other scenes, whose
   // labels and figures sit in the top half
-  const top = v ? tl.height * (HIGH.has(scene) ? 0.4 : scene === "road" || scene === "shot" ? 0.72 : 0.66) : tl.height * 0.8;   // road: below the walker's face
+  const top = v ? tl.height * (HIGH.has(scene) ? 0.4 : scene === "road" || scene === "shot" || scene === "build" || scene === "custom" ? 0.72 : 0.66) : tl.height * 0.8;   // road: below the walker's face
   const left = v ? 60 : tl.width * 0.12, width = v ? tl.width - 60 - 150 : tl.width * 0.76;   // Shorts: clear of the right-hand buttons
   return (
     <div style={{ position: "absolute", left, top, width, display: "flex", justifyContent: "center", pointerEvents: "none" }}>

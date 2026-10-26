@@ -76,6 +76,11 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   gets a raise."). **No `end` beat in a Short:** the disclaimer shows as a small line over the last
   moments and sits in the description. Put the plan's `cta` in a character's last line only if it
   doesn't break the loop.
+- **The story spine** (README "The story spine", owner 2026-10-26): hook → promise by 6 s →
+  a figure by 9 s → 3+ levels with a climbing number → a turn 50–85% in → the payoff → loop,
+  45–75 s. Every beat has a `role`. Then the picture: draw the story's own things in
+  `remotion/src/videos/<id>/props.tsx`, build beats whose actions fire on the words that name them,
+  and code `Hook.tsx`, `Turn.tsx` and `Payoff.tsx` (`renderer/templates/SHOTS.md`, "The build scene").
 - **The cover (`thumbnail`) is required**: `layout: "scene"` by default, a frame of this video (the
   hook, or the beat you name in `at`) under the big words, so no two covers look alike (pick a frame whose top third is free of the scene's own words);
   `versus`, `secret` or `story` only when no frame can carry it, as the README's "The cover" section

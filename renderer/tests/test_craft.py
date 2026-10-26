@@ -71,3 +71,31 @@ def test_cover_gate_flags_the_same_layout_with_new_words():
     assert same and "v-20261023-01" in same[0]
     other = cover_problems(v / "v-20261022-03" / "thumbnail.png", [("v-20261022-01", v / "v-20261022-01" / "thumbnail.png")])
     assert other == []
+
+
+def _build_tl(actions, words, gap_beat_frames=90):
+    return {"fps": 30, "beats": [{"id": "b", "scene": "build", "frames": gap_beat_frames, "params": {
+        "items": [{"id": "hen", "prop": "hen"}, {"id": "jar", "prop": "jar", "label": "Savings"}], "actions": actions},
+        "events": {"hen": 15, "jar": 45}, "voice": {"start": 0, "words": words}}]}
+
+
+def test_actions_must_show_what_is_said():
+    words = [{"w": "The", "s": 0.3, "e": 0.4}, {"w": "hen", "s": 0.5, "e": 0.7}, {"w": "lays", "s": 0.8, "e": 1.0}]
+    ok = _build_tl([{"at": "hen", "do": "enter", "target": "hen"}], words)
+    assert not any("actions show" in p for p in craft.picture_problems(ok))
+    bad = _build_tl([{"at": "hen", "do": "enter", "target": "jar"}], words)
+    assert any("actions show" in p for p in craft.picture_problems(bad))
+
+
+def test_a_long_still_stretch_fails():
+    tl = _build_tl([{"at": "hen", "do": "enter", "target": "hen"}], [], gap_beat_frames=150)
+    assert any("nothing new on screen" in p for p in craft.picture_problems(tl))
+
+
+def test_props_must_be_the_videos_own():
+    def tl(props):
+        return {"beats": [{"scene": "build", "params": {"items": [{"id": p, "prop": p} for p in props]}}]}
+    mine = [f"thing{c}" for c in "abcdefgh"]
+    assert craft.prop_problems(tl(mine), [("v-old", tl(["other"]))]) == []
+    assert any("were in v-old" in p for p in craft.prop_problems(tl(mine), [("v-old", tl(mine[:5]))]))
+    assert any("props of its own" in p for p in craft.prop_problems(tl(mine[:3]), []))
