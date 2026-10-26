@@ -1,0 +1,36 @@
+{
+  "agent": "studio",
+  "day": "2026-10-26",
+  "startedAt": "2026-10-26T14:42:35Z",
+  "finishedAt": "2026-10-26T17:10:00Z",
+  "summary": "Made and shipped long video L-20261026-01, '6 ways billionaires avoid paying tax, explained' (8:32, 121 beats), from Scout's top topic.",
+  "decision": "acted",
+  "why": "0 of 3 long videos made this week; the feed's first usable high-priority topic had a 54M-view reference (How Billionaires never pay Taxes).",
+  "findings": [
+    {
+      "title": "Fact review: 1 rewrite",
+      "detail": "Failed first on an over-broad title ('Every way...') and 'he just saved $2.4M' for loss harvesting (it defers, not erases); both fixed, then passed."
+    },
+    {
+      "title": "QA review: 1 rewrite",
+      "detail": "Failed first on the carried HUD counter covering text and showing old figures, a weak first frame, an empty frame at 210 s, story order in move six and the thumbnails; all fixed, then passed."
+    },
+    {
+      "title": "Gates hit along the way",
+      "detail": "Max 6 levels (folded the tiny-salary move into move one), framework text too small with 6 tiles, shot words left/right off-frame, empty-frame share, close-up every 15 s. Logged in improvement/longform/backlog.json."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Video L-20261026-01 shipped",
+      "detail": "Manifest on main; mp4 pushed as media/L-20261026-01 for the Release workflow. Two thumbnails (face + grid): list_explained cannot have three of different types (backlog bug)."
+    }
+  ],
+  "nextCheck": "2026-10-28",
+  "links": [
+    {
+      "label": "Backlog",
+      "url": "improvement/longform/backlog.json"
+    }
+  ]
+}

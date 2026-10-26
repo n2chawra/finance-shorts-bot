@@ -686,6 +686,61 @@
       "priority": "normal",
       "found": "2026-10-23",
       "status": "open"
+    },
+    {
+      "id": "2026-10-26-list-thumb-types",
+      "kind": "bug",
+      "title": "A list_explained video cannot have three thumbnails of different types",
+      "detail": "renderer/thumbs.py FORMAT_TYPES allows only grid or face for list_explained, and variant_problems needs every thumbnail to be a different type, so the third thumbnail Studio is asked for can never pass. L-20261026-01 shipped with two (face + grid). Improver: allow a third type for list_explained (scene?) or let the check accept two.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-26",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-26-framework-six-tiles",
+      "kind": "bug",
+      "title": "framework with 6+ items draws its numbers below the 30 px minimum in 16:9",
+      "detail": "docu.tsx framework tile = min(w*0.66/n, h*0.3); with 6 items the step numbers are 28 px and the layout probe fails. Script rule until fixed: at most 5 framework items in a long video (L-20261026-01 used a journey for its 6-step promise).",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-26",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-26-hud-counter-carry",
+      "kind": "craft",
+      "title": "Script rule: turn the HUD counter off on beats that don't set it",
+      "detail": "QA failed L-20261026-01's first stills: the carried counter covered top words, chapter titles and phone titles, and showed the previous chapter's figure. Fix used: hud.noCounter on every beat without its own counter. Improver: make the counter fade after its beat, or yield to top text, in remotion/src/studio/hud.tsx.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-26",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-26-word-top-only",
+      "kind": "craft",
+      "title": "Script rule: in a long video a shot's `word` goes `where: top`",
+      "detail": "Every `word` with where left/right ran outside the 16:9 frame in the layout probe (L-20261026-01, 20 failures). Build item labels and stack labels also run out of frame when the camera goes close; leave them off.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-26",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-26-max-six-levels",
+      "kind": "craft",
+      "title": "A long video has at most 6 levels (structure.levels)",
+      "detail": "The render refuses more than 6 levels, so a 7-item list outline (like the billionaire-tax topic) must be folded to 6. Scout: write long outlines with 4-6 chapters.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-26",
+      "status": "open"
     }
   ]
 }
