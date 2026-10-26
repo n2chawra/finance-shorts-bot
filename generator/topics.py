@@ -71,20 +71,68 @@ def why_unavailable(topic: dict, entries: list[dict], today: str) -> str | None:
     return None
 
 
-def score(topic: dict, today: str) -> float:
-    """How good a topic looks: its reference video's demand (log10 of views: 1M = 6, 10M = 7), a
-    bonus for trending and high priority and for a global topic (owner, 2026-10-23: global first),
-    minus a little for every day it has waited."""
+DEMAND_CAP = 7.0      # log10 views: past 10M a reference proves nothing more (a 54M video must not win alone)
+OURS_WEIGHT = 0.5     # how much our own results in a format move its topics, per doubling vs our median
+EXPLORE = {0: 0.5, 1: 0.25}   # a format we told 0 or 1 times in the last RECENT Shorts: try it (owner, 2026-10-26)
+OVERUSED = (4, -0.25)         # told this many times or more in the last RECENT: give others a turn
+RECENT = 15
+
+
+def _story(topic: dict) -> str | None:
+    s = topic.get("stories") or []
+    return s[0] if s else topic.get("story")
+
+
+def context(entries: list[dict], root: Path = ROOT) -> dict:
+    """What the channel itself knows about each format: our videos' 48 h views per story relative
+    to our median (metrics/videos.json + history), and how often each was told lately."""
+    import statistics
+    from .variety import story_of
+    stories = {e["id"]: story_of(e) for e in entries if e.get("id")}
+    recent: dict[str, int] = {}
+    for e in entries[-RECENT:]:
+        if (s := stories.get(e.get("id", ""))):
+            recent[s] = recent.get(s, 0) + 1
+    path = root / "metrics" / "videos.json"
+    vids = json.loads(path.read_text(encoding="utf-8")).get("videos", []) if path.is_file() else []
+    scored = [(stories.get(v["id"]), v["views48h"]) for v in vids if v.get("views48h") is not None and v.get("format", "short") == "short"]
+    overall = statistics.median([x for _, x in scored]) if scored else 0
+    by: dict[str, list[float]] = {}
+    for s, x in scored:
+        if s:
+            by.setdefault(s, []).append(x)
+    ours = {s: {"n": len(xs), "relative": round((statistics.median(xs) + 1) / (overall + 1), 2)} for s, xs in by.items()}
+    return {"recent": recent, "ours": ours}
+
+
+def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, float]:
+    """Why a topic ranks where it does (owner, 2026-10-26: "rank on the topic too, not just views";
+    "test all kinds of video"): proven demand (its reference video, capped), our own results with
+    this format, a bonus for a format we haven't tried lately, priority, global, and its age."""
     import math
     views = (topic.get("demand") or {}).get("views") or 0
-    s = math.log10(max(views, 10_000))
-    s += {"breaking": 2.0, "trending": 2.0, "high": 0.4}.get(topic.get("priority") or "", 0.0)
-    s += 0.6 if topic.get("reach") == "global" else 0.0
+    if not isinstance(views, (int, float)):
+        views = 0
+    parts = {"demand": round(min(DEMAND_CAP, math.log10(max(views, 10_000))), 2)}
+    parts["priority"] = {"breaking": 2.0, "trending": 2.0, "high": 0.4}.get(topic.get("priority") or "", 0.0)
+    parts["global"] = 0.6 if topic.get("reach") == "global" else 0.0
+    story = _story(topic)
+    if ctx and story:
+        o = ctx["ours"].get(story)
+        if o:   # shrunk toward 0 while we have few videos of it
+            parts["ours"] = round(max(-1.0, min(1.0, math.log2(o["relative"]))) * OURS_WEIGHT * min(1.0, o["n"] / 3), 2)
+        told = ctx["recent"].get(story, 0)
+        parts["explore"] = EXPLORE.get(told, OVERUSED[1] if told >= OVERUSED[0] else 0.0)
     try:
         age = (date.fromisoformat(today) - date.fromisoformat(str(topic.get("found")))).days
     except ValueError:
         age = 0
-    return round(s - AGE_PENALTY * max(0, age), 2)
+    parts["age"] = round(-AGE_PENALTY * max(0, age), 2)
+    return parts
+
+
+def score(topic: dict, today: str, ctx: dict | None = None) -> float:
+    return round(sum(score_parts(topic, today, ctx).values()), 2)
 
 
 def prune(topics: list[dict], entries: list[dict], today: str) -> tuple[list[dict], list[str]]:
@@ -110,10 +158,11 @@ def prune(topics: list[dict], entries: list[dict], today: str) -> tuple[list[dic
             gone.append(f"{t['id']}: {why}")
         else:
             kept.append(t)
-    open_ = sorted((t for t in kept if t["id"] not in used), key=lambda t: score(t, today), reverse=True)
+    ctx = context(entries)
+    open_ = sorted((t for t in kept if t["id"] not in used), key=lambda t: score(t, today, ctx), reverse=True)
     for t in open_[MAX_OPEN:]:
         kept.remove(t)
-        gone.append(f"{t['id']}: score {score(t, today)} below the best {MAX_OPEN}")
+        gone.append(f"{t['id']}: score {score(t, today, ctx)} below the best {MAX_OPEN}")
     return kept, gone
 
 
@@ -130,6 +179,26 @@ def prune_file(entries: list[dict], today: str, root: Path = ROOT, fmt: str = "s
     return gone
 
 
+def _all_entries(root: Path = ROOT) -> list[dict]:
+    from . import history
+    try:
+        return history.load(root)
+    except (OSError, ValueError):
+        return []
+
+
+def too_close(topic: dict, everything: list[dict], today: str) -> str | None:
+    """A video of either format (Short or long) already told this idea within the duplicate window
+    (owner, 2026-10-26: the $5,000-card Short topic came back after the long video told it)."""
+    from .variety import DUPLICATE_DAYS, DUPLICATE_SIMILARITY, similarity
+    cutoff = (date.fromisoformat(today) - timedelta(days=DUPLICATE_DAYS)).isoformat()
+    for e in everything:
+        title = (e.get("topic") or {}).get("title") or ""
+        if e.get("created_at", "") >= cutoff and title and similarity(topic.get("title", ""), title) > DUPLICATE_SIMILARITY:
+            return e["id"]
+    return None
+
+
 def fits(topic: dict, templates: list[str]) -> bool:
     """A story template tells any topic of its format, so a topic fits whenever its format has one
     enabled. (Topics written before the Remotion rebuild still name old templates; ignored.)"""
@@ -144,9 +213,12 @@ def of_format(topics: list[dict], fmt: str) -> list[dict]:
 def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT,
               fmt: str = "short") -> dict:
     """What `state` tells the planner: the open topics, best first (`required` is always None now)."""
-    open_ = [t for t in of_format(load(root, fmt), fmt) if why_unavailable(t, entries, today) is None]
+    everything = _all_entries(root)
+    open_ = [t for t in of_format(load(root, fmt), fmt)
+             if why_unavailable(t, entries, today) is None and too_close(t, everything, today) is None]
+    ctx = context(entries, root)
     # every unused topic competes, old or new: best score first (urgent ones still lead)
-    open_.sort(key=lambda t: score(t, today), reverse=True)
+    open_.sort(key=lambda t: score(t, today, ctx), reverse=True)
     open_.sort(key=lambda t: 0 if t.get("priority") in URGENT else 1)
     usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed)]
     # offered first, and it still earns one extra video that day, but no plan is forced to take it
@@ -157,7 +229,8 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
             "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths")
     return {
-        "topics": [{**{k: t.get(k) for k in keys}, "score": score(t, today), "found": t.get("found"), "usable_now": t in usable} for t in shown],
+        "topics": [{**{k: t.get(k) for k in keys}, "score": score(t, today, ctx), "why_score": score_parts(t, today, ctx),
+                    "found": t.get("found"), "usable_now": t in usable} for t in shown],
         "open_total": len(open_),
         "required": None,   # nothing is forced since the reset (see the module doc)
         "urgent": urgent,
@@ -176,6 +249,8 @@ def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], 
             out.append(f"topic.feed_id {feed_id!r} is not in {FILES[fmt].as_posix()}")
         elif (why := why_unavailable(topic, entries, today)) is not None:
             out.append(f"feed topic {feed_id!r} can't be used: {why}")
+        elif (dup := too_close(topic, _all_entries(root), today)) is not None:
+            out.append(f"feed topic {feed_id!r} tells the same idea as {dup} (a Short or long video within the duplicate window)")
     elif (trend := (plan.get("topic") or {}).get("trend")) is not None:
         out += check_trend(trend, today)
     return out

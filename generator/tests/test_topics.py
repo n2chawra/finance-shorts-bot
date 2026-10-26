@@ -150,3 +150,20 @@ def test_prune_caps_open_topics_by_score():
     kept, gone = tp.prune(many, [], "2026-10-26")
     assert len(kept) == tp.MAX_OPEN and len(gone) == 5
     assert "t0" not in {t["id"] for t in kept}
+
+
+def test_untried_formats_and_our_results_move_the_ranking():
+    from generator.topics import score_parts
+    t = {"id": "x", "found": "2026-10-26", "priority": "high", "reach": "global", "stories": ["money_scale"], "demand": {"views": 2_000_000}}
+    fresh = score_parts(t, "2026-10-26", {"recent": {}, "ours": {}})
+    worn = score_parts(t, "2026-10-26", {"recent": {"money_scale": 5}, "ours": {"money_scale": {"n": 3, "relative": 0.5}}})
+    assert fresh["explore"] == 0.5 and worn["explore"] < 0 and worn["ours"] < 0
+    huge = score_parts({**t, "demand": {"views": 54_000_000}}, "2026-10-26")
+    assert huge["demand"] == 7.0      # capped: a giant reference proves nothing more past 10M
+
+
+def test_an_idea_told_by_a_long_video_is_not_offered_as_a_short():
+    from generator.topics import too_close
+    long_entry = {"id": "L-1", "created_at": "2026-10-20T00:00:00+00:00", "topic": {"title": "How McDonald's really makes money from land"}}
+    assert too_close({"title": "How McDonald's really makes money: land"}, [long_entry], "2026-10-26") == "L-1"
+    assert too_close({"title": "Why casinos always win"}, [long_entry], "2026-10-26") is None

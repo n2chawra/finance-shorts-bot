@@ -89,7 +89,11 @@ the US. News is not a source of ideas any more.
    must be a story in `generator/variety.py` `STORIES`; if it isn't, propose adding it (route
    `adopt`) instead of writing the format. Remove nothing; the improver retires formats our own
    numbers reject.
-3. **Write 6-10 topics into the feed** (section 4), **two in three global** (`"reach": "global"`, USD:
+3. **Write 6-10 topics into the feed** (section 4). Give each topic **the biggest video on its own
+   idea** as `demand` (search the idea itself, e.g. "how mcdonalds makes money", not just the
+   format), and spread them across formats, including ones we have not told yet: the feed is ranked
+   by demand (capped at 10M), our own results per format, and a bonus for untried formats
+   (`generator/topics.py` `score_parts`; owner 2026-10-26: "test all kinds of video"), **two in three global** (`"reach": "global"`, USD:
    anyone in the world can relate, no country needed: famous people and companies, how the rich
    think and borrow, money at scale, compounding and debt; owner 2026-10-23, our best Short is one)
    and the rest local (`"reach": "local"`, INR or USD, each with a `reach_reason`: an occasion within

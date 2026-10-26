@@ -44,8 +44,10 @@ salary really leaves you, which money level you are on.
    money move, a raise, a first salary, a credit card bill, a car loan, the food-app habit, what a
    billion dollars looks like. Never a policy, a central bank or an index level.
 4. **Topic feed (`topic_feed`):** research's ideas, already tagged with a format: **every unused
-   topic, old or new, best `score` first** (the reference video's views, global and priority
-   bonuses, minus a little per day waiting; `generator/topics.py`). Judge the whole list, not just
+   topic, old or new, best `score` first**. `why_score` shows the parts: proven demand (capped at
+   10M views), our own results with that format (`ours`), a bonus for a format we haven't told
+   lately (`explore`: test every kind of video, not only the most viewed), global, priority, and
+   age (`generator/topics.py`). Judge the whole list, not just
    the newest night's: an older topic with a stronger reference is often the better video. Pick the
    one with the biggest proven demand that fits today's rules (reach, category, format), put its id
    in `topic.feed_id`; none is forced. A `breaking` or `trending` topic is worth
