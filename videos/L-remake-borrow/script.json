@@ -1,0 +1,756 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "seed": 4417,
+  "story": "rich_vs_poor",
+  "currency": "USD",
+  "narrator": "am_michael",
+  "style": {
+    "palette": "night",
+    "genre": "cinematic",
+    "key": "A",
+    "bpm": 90
+  },
+  "title": "Why the rich borrow money and the poor pay it back",
+  "structure": {
+    "levels": [
+      "Car loan",
+      "Card",
+      "House",
+      "Skill loan",
+      "Forever"
+    ]
+  },
+  "maths": [
+    {
+      "name": "car",
+      "kind": "emi",
+      "amount": 35000,
+      "rate_pct": 9,
+      "years": 6
+    },
+    {
+      "name": "value",
+      "kind": "lumpsum",
+      "amount": 35000,
+      "rate_pct": -15,
+      "years": 5
+    }
+  ],
+  "thumbnail": {
+    "layout": "grid",
+    "who": "rohan",
+    "color": "navy",
+    "angle": "question",
+    "words": "Only one *makes* money",
+    "items": [
+      {
+        "prop": "car",
+        "label": "Car loan"
+      },
+      {
+        "prop": "card",
+        "label": "Card"
+      },
+      {
+        "prop": "house",
+        "label": "House"
+      },
+      {
+        "prop": "diploma",
+        "label": "Degree"
+      },
+      {
+        "prop": "forever",
+        "label": "Forever EMI"
+      },
+      {
+        "prop": "question",
+        "label": "The test"
+      }
+    ]
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "Rohan and Priya sign a loan on the same day. Five years later, one is richer. One is broke.",
+      "events": {
+        "sign": {
+          "word": "sign"
+        },
+        "later": {
+          "word": "later"
+        },
+        "richer": {
+          "word": "richer"
+        },
+        "broke": {
+          "word": "broke"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "sign"
+        },
+        {
+          "kind": "whoosh",
+          "at": "later"
+        },
+        {
+          "kind": "ding",
+          "at": "richer"
+        },
+        {
+          "kind": "fail",
+          "at": "broke"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "A car loan, a credit card, a house, a degree, and the payment that never ends. One question sorts them all.",
+      "events": {
+        "car": {
+          "word": "car"
+        },
+        "card": {
+          "word": "card"
+        },
+        "house": {
+          "word": "house"
+        },
+        "degree": {
+          "word": "degree"
+        },
+        "never": {
+          "word": "never"
+        },
+        "question": {
+          "word": "question"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "car"
+        },
+        {
+          "kind": "pop",
+          "at": "card"
+        },
+        {
+          "kind": "pop",
+          "at": "house"
+        },
+        {
+          "kind": "pop",
+          "at": "degree"
+        },
+        {
+          "kind": "pop",
+          "at": "never"
+        },
+        {
+          "kind": "ding",
+          "at": "question"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "studio"
+        },
+        "items": [
+          {
+            "id": "car",
+            "prop": "car",
+            "x": 0.14,
+            "size": 0.26,
+            "hidden": true
+          },
+          {
+            "id": "card",
+            "prop": "card",
+            "x": 0.32,
+            "size": 0.22,
+            "hidden": true
+          },
+          {
+            "id": "house",
+            "prop": "house",
+            "x": 0.5,
+            "size": 0.3,
+            "hidden": true
+          },
+          {
+            "id": "degree",
+            "prop": "diploma",
+            "x": 0.68,
+            "size": 0.24,
+            "hidden": true
+          },
+          {
+            "id": "never",
+            "prop": "forever",
+            "x": 0.86,
+            "size": 0.26,
+            "hidden": true
+          },
+          {
+            "id": "question",
+            "prop": "question",
+            "x": 0.5,
+            "y": 0.34,
+            "size": 0.2,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "car",
+            "do": "enter",
+            "target": "car"
+          },
+          {
+            "at": "card",
+            "do": "enter",
+            "target": "card"
+          },
+          {
+            "at": "house",
+            "do": "enter",
+            "target": "house"
+          },
+          {
+            "at": "degree",
+            "do": "enter",
+            "target": "degree"
+          },
+          {
+            "at": "never",
+            "do": "enter",
+            "target": "never"
+          },
+          {
+            "at": "question",
+            "do": "enter",
+            "target": "question"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "question",
+            "size": "medium",
+            "on": "question",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "ch1",
+      "scene": "chapter",
+      "transition": "wipe",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "kicker": "Part one",
+        "title": "The car loan",
+        "hud": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "id": "newcar",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "My new car! And it's only {car_emi} a month.",
+      "events": {
+        "car": {
+          "word": "car"
+        },
+        "month": {
+          "word": "month"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "car"
+        },
+        {
+          "kind": "pop",
+          "at": "month"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.2,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "car",
+            "prop": "car",
+            "x": 0.58,
+            "size": 0.34,
+            "hidden": true
+          },
+          {
+            "id": "monthly",
+            "prop": "coin",
+            "x": 0.84,
+            "y": 0.18,
+            "size": 0.12,
+            "hidden": true,
+            "label": "A month"
+          }
+        ],
+        "actions": [
+          {
+            "at": "car",
+            "do": "enter",
+            "target": "car"
+          },
+          {
+            "at": "month",
+            "do": "enter",
+            "target": "monthly"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "car",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@car.emi",
+            "text": "{car_emi}",
+            "label": "A month",
+            "at": "month"
+          }
+        }
+      }
+    },
+    {
+      "id": "sixyears",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "For six years, that adds up to {car_total_paid}. And {car_interest} of it is just interest.",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "adds": {
+          "word": "adds"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "and": {
+          "word": "And"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "years"
+        },
+        {
+          "kind": "kaching",
+          "at": "adds"
+        },
+        {
+          "kind": "boom",
+          "at": "interest"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "bank"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.16,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "years",
+            "prop": "forever",
+            "x": 0.4,
+            "size": 0.28,
+            "hidden": true,
+            "label": "Six years"
+          },
+          {
+            "id": "interest",
+            "prop": "gold",
+            "x": 0.84,
+            "size": 0.2,
+            "hidden": true,
+            "label": "Interest"
+          },
+          {
+            "id": "adds",
+            "prop": "receipt",
+            "x": 0.62,
+            "size": 0.3,
+            "hidden": true,
+            "label": "Adds up"
+          }
+        ],
+        "actions": [
+          {
+            "at": "years",
+            "do": "enter",
+            "target": "years"
+          },
+          {
+            "at": "adds",
+            "do": "enter",
+            "target": "adds"
+          },
+          {
+            "at": "and",
+            "do": "glow",
+            "target": "adds"
+          },
+          {
+            "at": "interest",
+            "do": "enter",
+            "target": "interest"
+          },
+          {
+            "at": "interest",
+            "do": "multiply",
+            "target": "interest",
+            "n": 6,
+            "cols": 3
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "years",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@car.total_paid",
+            "text": "{car_total_paid}",
+            "label": "He pays",
+            "at": "adds"
+          }
+        }
+      }
+    },
+    {
+      "id": "worth",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "And after five years? The car itself is worth just {value_final}. The loan outlived the shine.",
+      "events": {
+        "car": {
+          "word": "car"
+        },
+        "worth": {
+          "word": "worth"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "shine": {
+          "word": "shine"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "worth"
+        },
+        {
+          "kind": "boom",
+          "at": "loan"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "dark"
+        },
+        "items": [
+          {
+            "id": "car",
+            "prop": "car",
+            "x": 0.36,
+            "size": 0.34
+          },
+          {
+            "id": "loan",
+            "prop": "forever",
+            "x": 0.7,
+            "size": 0.26,
+            "label": "Loan"
+          }
+        ],
+        "actions": [
+          {
+            "at": "car",
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "worth",
+            "do": "shrink",
+            "target": "car",
+            "scale": 0.55
+          },
+          {
+            "at": "worth",
+            "do": "state",
+            "target": "car",
+            "state": "old"
+          },
+          {
+            "at": "loan",
+            "do": "grow",
+            "target": "loan",
+            "scale": 1.4
+          },
+          {
+            "at": "shine",
+            "do": "shake",
+            "target": "car"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "car"
+          },
+          {
+            "at": "worth",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@value.final",
+            "text": "{value_final}",
+            "label": "The car is worth",
+            "at": "worth"
+          }
+        }
+      }
+    },
+    {
+      "id": "tease1",
+      "scene": "build",
+      "role": "tease",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "His loan bought something that shrinks. Mine bought something that grows. That's next.",
+      "events": {
+        "shrinks": {
+          "word": "shrinks"
+        },
+        "grows": {
+          "word": "grows"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "shrinks"
+        },
+        {
+          "kind": "riser",
+          "at": "grows"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.82,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "grows",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "car",
+            "prop": "car",
+            "x": 0.2,
+            "size": 0.2,
+            "label": "Shrinks"
+          },
+          {
+            "id": "house",
+            "prop": "house",
+            "x": 0.54,
+            "size": 0.22,
+            "hidden": true,
+            "label": "Grows"
+          }
+        ],
+        "actions": [
+          {
+            "at": "shrinks",
+            "do": "shrink",
+            "target": "car",
+            "scale": 0.6
+          },
+          {
+            "at": "grows",
+            "do": "enter",
+            "target": "house"
+          },
+          {
+            "at": "grows",
+            "do": "grow",
+            "target": "house",
+            "scale": 1.5
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "car"
+          },
+          {
+            "at": "grows",
+            "size": "medium",
+            "on": "house",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "role": "end",
+      "transition": "fade",
+      "say": "That's chapter one of six. Follow for the rest.",
+      "params": {
+        "cta": "Ask what the loan buys.",
+        "follow": "Follow for one money idea a day",
+        "assumption": "Assumes a {car_rate} car loan over {car_months} months and cars losing value each year."
+      }
+    }
+  ],
+  "description": "Six kinds of debt, one question. Illustrative only. Not financial advice."
+}

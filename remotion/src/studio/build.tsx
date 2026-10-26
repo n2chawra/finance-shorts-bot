@@ -80,7 +80,8 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
 
   const home = (it: Item): [number, number] => [it.x * w, gy - (it.y ?? 0) * h];
   const byId = Object.fromEntries(items.map((it) => [it.id, it]));
-  const sizeOf = (it: Item) => h * (it.size ?? (v ? 0.16 : 0.22));
+  // a wide frame has room to spare: things are drawn bigger there so the frame stays full
+  const sizeOf = (it: Item) => h * (it.size ?? (v ? 0.16 : 0.22)) * (v ? 1 : 1.3);
 
   const now = (it: Item): ItemNow => {
     const mine = actions.filter((a) => a.target === it.id);
@@ -116,7 +117,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
 
   // the camera: keys and focus actions, framing items or actors
   const actorsP = P.actors ?? [];
-  const aScale = (a: { scale?: number }) => a.scale ?? (v ? 1.5 : 1.1);
+  const aScale = (a: { scale?: number }) => a.scale ?? (v ? 1.5 : 1.55);
   const target = (on: string | undefined): [number, number] => {
     if (!on || on === "room") return [w / 2, h / 2];
     const st = states.find((x) => x.it.id === on);

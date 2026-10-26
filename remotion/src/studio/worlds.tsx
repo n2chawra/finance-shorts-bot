@@ -54,6 +54,8 @@ export const World: React.FC<{
         const y = gy * (0.14 + 0.16 * i);
         return <g key={i} opacity={0.85}><ellipse cx={x} cy={y} rx={110} ry={34} fill="#fff" /><ellipse cx={x + 60} cy={y - 18} rx={70} ry={30} fill="#fff" /></g>;
       })}
+      {/* when the script names no horizon, the world still has one: a skyline, hills, shelves */}
+      {horizon.length === 0 && <Backdrop kind={(kind ?? "studio") as WorldKind} w={w} gy={gy} seed={seed} t={t} />}
       {/* the horizon: this video's own things, small and hazy, standing on the far ground */}
       {horizon.map((hz, i) => {
         const P = props[hz.prop];
@@ -79,4 +81,45 @@ export const World: React.FC<{
       {tint && <rect width={w} height={h} fill={TINTS[tint] ?? tint} opacity={0.18} style={{ mixBlendMode: "multiply" }} />}
     </svg>
   );
+};
+
+/** A horizon for any world: city blocks with lit windows, rolling hills with trees, desert dunes,
+ * shelves and a window inside. Seeded, so the same world always looks the same. */
+const Backdrop: React.FC<{ kind: WorldKind; w: number; gy: number; seed: string; t: number }> = ({ kind, w, gy, seed, t }) => {
+  if (kind === "field") {
+    return <g opacity={0.9}>
+      <path d={`M0,${gy} Q${w * 0.2},${gy - gy * 0.18} ${w * 0.45},${gy - gy * 0.05} T${w},${gy - gy * 0.12} L${w},${gy} Z`} fill="#8fcf72" />
+      <path d={`M0,${gy} Q${w * 0.35},${gy - gy * 0.1} ${w * 0.6},${gy} Z`} fill="#6fb85a" />
+      {Array.from({ length: 7 }, (_, i) => { const x = random(`${seed}tr${i}`) * w, s = 40 + random(`${seed}ts${i}`) * 50;
+        return <g key={i}><rect x={x - 5} y={gy - s * 0.6} width={10} height={s * 0.6} fill="#7a5530" /><circle cx={x} cy={gy - s * 0.75} r={s * 0.4} fill="#4f9a45" /></g>; })}
+    </g>;
+  }
+  if (kind === "desert") {
+    return <path d={`M0,${gy} Q${w * 0.25},${gy - gy * 0.14} ${w * 0.5},${gy - gy * 0.03} T${w},${gy - gy * 0.1} L${w},${gy} Z`} fill="#f0c27e" opacity={0.85} />;
+  }
+  if (kind === "kitchen" || kind === "office" || kind === "bank") {
+    const shelf = kind === "kitchen" ? "#b9805a" : kind === "bank" ? "#cdbb98" : "#b7c3d3";
+    return <g opacity={0.85}>
+      <rect x={w * 0.62} y={gy * 0.22} width={w * 0.26} height={gy * 0.42} rx={12} fill="#cfe9ff" stroke="#8d9bb0" strokeWidth={8} />
+      <line x1={w * 0.75} y1={gy * 0.22} x2={w * 0.75} y2={gy * 0.64} stroke="#8d9bb0" strokeWidth={6} />
+      {[0.32, 0.5].map((y, i) => <g key={i}><rect x={w * 0.06} y={gy * y} width={w * 0.3} height={14} fill={shelf} />
+        {Array.from({ length: 6 }, (_, j) => <rect key={j} x={w * 0.07 + j * w * 0.045} y={gy * y - 50 - (j % 3) * 10} width={w * 0.03} height={50 + (j % 3) * 10} rx={4}
+          fill={["#e5484d", "#3d7bf5", "#ffd23f", "#2fb37a"][(i + j) % 4]} opacity={0.75} />)}</g>)}
+    </g>;
+  }
+  // city, street, night, studio, space: a skyline of blocks with windows that flicker on
+  const n = 14;
+  return <g opacity={kind === "space" ? 0.4 : 0.85}>
+    {Array.from({ length: n }, (_, i) => {
+      const bw = w / n * (0.8 + random(`${seed}bw${i}`) * 0.5), bh = gy * (0.18 + random(`${seed}bh${i}`) * 0.35), x = (w / n) * i;
+      const dark = kind === "night" || kind === "studio" || kind === "space";
+      return <g key={i}>
+        <rect x={x} y={gy - bh} width={bw} height={bh} fill={dark ? "#1d2346" : "#8a9bc4"} />
+        {Array.from({ length: 6 }, (_, j) => {
+          const on = random(`${seed}win${i}-${j}`) > 0.45 || (dark && Math.sin(t * 0.8 + i + j) > 0.6);
+          return on ? <rect key={j} x={x + bw * 0.2 + (j % 2) * bw * 0.36} y={gy - bh + 16 + Math.floor(j / 2) * 34} width={bw * 0.2} height={16} fill={dark ? "#ffd86b" : "#e6eeff"} opacity={0.8} /> : null;
+        })}
+      </g>;
+    })}
+  </g>;
 };

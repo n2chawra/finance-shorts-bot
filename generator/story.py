@@ -24,7 +24,14 @@ FIRST_FIGURE_BY = 9.0
 LEVELS_MIN = 3
 COUNTER_CHANGES = 3
 TURN_FROM, TURN_TO = 0.5, 0.85
-ROLES = ("hook", "promise", "level", "turn", "payoff", "loop")
+ROLES = ("hook", "promise", "level", "tease", "turn", "payoff", "loop", "end")
+# long videos (owner, 2026-10-26: "do the same upgrade for long videos"): the levels are the
+# chapters, the promise comes within 30 s, every chapter but the last ends on a `tease` beat (the
+# open loop into the next), and the hook may run longer
+SPINE = {
+    "short": {"promise_by": PROMISE_BY, "figure_by": FIRST_FIGURE_BY, "levels_min": LEVELS_MIN, "hook_max": 3.6, "teases": False},
+    "long": {"promise_by": 30.0, "figure_by": 45.0, "levels_min": 4, "hook_max": 15.0, "teases": True},
+}
 # lines our Shorts said again and again (2026-10-21..26): viewers hear the template
 BANNED = (
     (re.compile(r"\bwait,?\s+what\b", re.I), "\"Wait, what?\""),
@@ -37,7 +44,12 @@ OPENING_WORDS = 3
 
 
 def applies(script: dict) -> bool:
-    return script.get("format", "short") == "short" and script.get("template", "short_story") == "short_story"
+    fmt = script.get("format", "short")
+    return (fmt, script.get("template") or f"{fmt}_story") in (("short", "short_story"), ("long", "long_story"))
+
+
+def _spine(script: dict) -> dict:
+    return SPINE["long" if script.get("format") == "long" else "short"]
 
 
 def _opening(line: str) -> str:
@@ -51,19 +63,25 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
         return []
     beats = script.get("beats") or []
     out = []
+    sp = _spine(script)
     levels = ((script.get("structure") or {}).get("levels")) or []
-    if len(levels) < LEVELS_MIN:
-        out.append(f"`structure.levels` needs {LEVELS_MIN} or more steps the viewer waits for (\"Sell\", \"Borrow\", \"Never sell\"): "
+    if sp["teases"] and len(levels) >= sp["levels_min"]:
+        teases = sum(1 for b in beats if b.get("role") == "tease")
+        if teases < len(levels) - 1:
+            out.append(f"{teases} `tease` beats for {len(levels)} chapters: every chapter but the last ends on a tease "
+                       f"(the open loop into the next), or viewers leave between chapters")
+    if len(levels) < sp["levels_min"]:
+        out.append(f"`structure.levels` needs {sp['levels_min']} or more steps the viewer waits for (\"Sell\", \"Borrow\", \"Never sell\"): "
                    f"the promise of a structure is what keeps people past the hook")
     roles = [b.get("role") for b in beats]
-    bad = sorted({r for r in roles if r not in ROLES})
+    bad = sorted({str(b.get("role")) for b in beats if b.get("role") not in ROLES and b.get("scene") not in ("chapter", "end")})
     if bad:
         out.append(f"beat roles must be one of {', '.join(ROLES)} (got {', '.join(map(str, bad))})")
     if beats and not (roles[0] == "hook" or beats[0].get("scene") == "hook"):
         out.append("the first beat is the hook (`role: hook`)")
     for need in ("promise", "turn", "payoff"):
         if need not in roles:
-            out.append(f"no `{need}` beat: every Short has a promise early, a turn about two thirds in, and a payoff that answers the hook")
+            out.append(f"no `{need}` beat: every video has a promise early, a turn about two thirds in, and a payoff that answers the hook")
     if "turn" in roles and "payoff" in roles and roles.index("payoff") < roles.index("turn"):
         out.append("the payoff comes after the turn")
     huds = [(b.get("params") or {}).get("hud") or {} for b in beats]
@@ -93,12 +111,13 @@ def timeline_problems(script: dict, tl: dict, earlier: list[dict] | None = None)
         return []
     out = script_problems(script, earlier)
     fps = tl["fps"]
+    sp = _spine(script)
     starts = {b["id"]: b["from"] / fps for b in tl["beats"]}
     total = tl["durationInFrames"] / fps
     role = {b.get("id"): b.get("role") for b in script.get("beats") or []}
     promise = [starts[i] for i, r in role.items() if r == "promise" and i in starts]
-    if promise and min(promise) > PROMISE_BY:
-        out.append(f"the promise starts at {min(promise):.1f} s; by {PROMISE_BY:.0f} s, or viewers leave before they know why to stay")
+    if promise and min(promise) > sp["promise_by"]:
+        out.append(f"the promise starts at {min(promise):.1f} s; by {sp['promise_by']:.0f} s, or viewers leave before they know why to stay")
     figures = set(tl.get("figures", {}).values())
     first = None
     for b in tl["beats"]:
@@ -106,12 +125,12 @@ def timeline_problems(script: dict, tl: dict, earlier: list[dict] | None = None)
         if (b.get("params") or {}).get("hud", {}).get("counter") or any(f and f in text for f in figures):
             first = b["from"] / fps
             break
-    if first is None or first > FIRST_FIGURE_BY:
-        out.append(f"the first figure appears at {'never' if first is None else f'{first:.1f} s'}; one by {FIRST_FIGURE_BY:.0f} s")
+    if first is None or first > sp["figure_by"]:
+        out.append(f"the first figure appears at {'never' if first is None else f'{first:.1f} s'}; one by {sp['figure_by']:.0f} s")
     turns = [starts[i] for i, r in role.items() if r == "turn" and i in starts]
     if turns and not TURN_FROM <= turns[0] / total <= TURN_TO:
         out.append(f"the turn starts at {turns[0] / total:.0%} of the video; between {TURN_FROM:.0%} and {TURN_TO:.0%}")
     hook = tl["beats"][0]
-    if hook["frames"] / fps > 3.6:
-        out.append(f"the hook runs {hook['frames'] / fps:.1f} s; keep it to about 3 s")
+    if hook["frames"] / fps > sp["hook_max"]:
+        out.append(f"the hook runs {hook['frames'] / fps:.1f} s; keep it to {sp['hook_max']:.0f} s or less")
     return out

@@ -48,3 +48,13 @@ def test_timing_promise_figure_and_turn():
     problems = " ".join(story.timeline_problems(s, tl))
     assert "promise starts at 9.0 s" in problems and "first figure appears at 12.0 s" in problems
     assert "turn starts at 44%" in problems   # 24 of 55 s: too early
+
+
+def test_long_videos_need_chapters_and_teases():
+    s = good()
+    s.update(format="long", template="long_story", structure={"levels": ["Car", "Card", "House", "Skill"]})
+    for b, lv in zip([b for b in s["beats"] if b["role"] == "level"], (1, 2, 3)):
+        b["params"]["hud"]["level"] = lv
+    problems = " ".join(story.script_problems(s))
+    assert "tease" in problems and "level" in problems   # level 4 has no beat, and no teases
+    assert story.applies(s)

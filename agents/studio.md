@@ -187,6 +187,15 @@ git push origin HEAD:refs/heads/agent/studio/$DAY
 End with a 5-line report: the topic, the length, how many rewrites, what the reviewers said, and
 anything for the owner.
 
+## The story spine and the build scene (owner, 2026-10-26)
+
+Long videos now follow the Shorts upgrade: a story spine (hook within 15 s, every chapter promised
+within 30 s, chapters as levels with a climbing number, a `tease` closing each chapter, a turn and a
+payoff) and pictures made of the video's own drawn props in `build` beats that change on the words,
+with coded `Hook.tsx`, `Turn.tsx` and `Payoff.tsx`. Read the long_story README "The story spine"
+and `renderer/templates/SHOTS.md` "The build scene"; the reference is `L-remake-borrow`. The render
+fails a video that breaks the spine, leaves 2.5 s with nothing new, or shows things nobody is saying.
+
 ## The title and the thumbnail are one pair (owner, 2026-10-26)
 
 Our long videos got almost no clicks: the thumbnails sold one small detail (a receipt and a

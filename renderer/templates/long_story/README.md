@@ -19,6 +19,25 @@ words (at least 4 sizes per video, a close shot at least every 15 s). The scene 
 older layout kit: a `screen` chart, a `source` document or a `chapter` card still fit, as the
 exception.
 
+## The story spine and a picture that follows the words (owner, 2026-10-26)
+
+The same upgrade as the Shorts (`../short_story/README.md` "The story spine", `../SHOTS.md` "The
+build scene"), at long-video scale. `generator/story.py` checks it:
+
+1. **Hook** (`role: hook`, 15 s or less): a coded `Hook.tsx`, the whole story's stakes in one picture.
+2. **Promise** by 30 s (`role: promise`): every chapter named at once, each thing entering on its word.
+   `"structure": {"levels": [chapter names]}`, 4 or more; the level tracker shows them all video long.
+3. **A figure on screen** by 45 s.
+4. **Chapters are the levels**: a `chapter` card, then `build` beats (`params.hud.level` n) where the
+   video's own props enter, multiply, shrink and move on the words, and the climbing number
+   (`params.hud.counter`) moves 3+ times over the video.
+5. **Every chapter but the last ends on a `tease`** (`role: tease`): the open loop into the next.
+6. **The turn** (`role: turn`, 50–85% in) and **the payoff** (`role: payoff`): coded `Turn.tsx` and
+   `Payoff.tsx`. Then the end card (`role: end`).
+
+Draw the story's things in `remotion/src/videos/<id>/props.tsx` (10-20 for a long video). Reference:
+`videos/L-remake-borrow/script.json` with `remotion/src/videos/L-remake-borrow/` (hook and chapter one).
+
 ## The script
 
 | field | |

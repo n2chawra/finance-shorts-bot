@@ -74,7 +74,7 @@ export const StoryHud: React.FC<{ tl: Timeline; index: number; beat: Beat; frame
         </div>
       )}
       {levels.length > 0 && (
-        <div style={{ position: "absolute", bottom: v ? 150 : 26, left: 0, right: 0, display: "flex", justifyContent: "center", gap: v ? 14 : 10, flexWrap: "wrap", padding: "0 30px" }}>
+        <div style={{ position: "absolute", bottom: v ? 150 : 70, left: 0, right: 0, display: "flex", justifyContent: "center", gap: v ? 14 : 10, flexWrap: "wrap", padding: "0 30px" }}>
           {levels.map((name, i) => {
             const n = i + 1, on = level === n, done = level !== undefined && n < level;
             return (
