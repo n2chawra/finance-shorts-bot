@@ -1362,38 +1362,6 @@
     },
     {
       "format": "short",
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-10-26",
-      "expires": "2027-01-24",
-      "status": "rejected",
-      "currency": "USD",
-      "reach": "global",
-      "id": "2026-10-26-minimum-payment-5000-card",
-      "title": "The minimum payment trap: a $5,000 card balance",
-      "category": "debt",
-      "priority": "high",
-      "stories": [
-        "trap_alert"
-      ],
-      "demand": {
-        "title": "The Middle Class EMI Trap",
-        "views": 7000000,
-        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
-      },
-      "hook": "Pay the minimum on this $5,000 card and you'll still be paying it in ten years.",
-      "angle": "What the minimum due really costs in interest and years.",
-      "why_now": "Debt and card stories led market.json for two weeks; told only as a long video so far (L-20261019-02), never as a Short.",
-      "maths": "card_min_due (amount 5000, rate_pct_month an assumed 2 (about 24% a year), min_due_pct an assumed 3, min_due_floor 25)",
-      "verify": [
-        "APR and minimum-payment rule are assumptions, no issuer named"
-      ],
-      "reason": "same idea as L-20261019-02 (Only paying the minimum on a $5,000 card), already made"
-    },
-    {
-      "format": "short",
       "kind": "seasonal",
       "templates": [
         "any"
@@ -1426,6 +1394,194 @@
       "maths": "emi (amount 800000, rate_pct an assumed 9, years 7)",
       "verify": [
         "9% is an assumed car-loan rate, no bank or carmaker named"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-27",
+      "expires": "2027-01-25",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-27-why-billionaires-take-a-1-salary",
+      "title": "Why do billionaire CEOs take a $1 salary?",
+      "category": "tax",
+      "priority": "high",
+      "stories": [
+        "billionaire_question"
+      ],
+      "demand": {
+        "title": "Rich Elon - Poor Billionaires",
+        "views": 10301799,
+        "url": "https://www.youtube.com/shorts/ifNXESSbw7M"
+      },
+      "hook": "This CEO is worth billions. His salary? One dollar.",
+      "angle": "Why a $1 salary is the rich move: a salary is taxed as it's paid, shares that grow aren't taxed until they're sold.",
+      "why_now": "billionaire_question has one Short so far (1,179 views, among our best four); billionaire is the word of the market week (25 Oct snapshot).",
+      "maths": "fee_take (amount 50000000, fee_pct an assumed 37, per_year 1, years 1) for the tax a $50M salary would pay; lumpsum (amount 50000000, rate_pct an assumed 7, years 10) for the same value left in shares; compare the two",
+      "verify": [
+        "the top US federal income tax rate is 37% (said as an assumed rate, illustrative)",
+        "unrealised gains on shares are not taxed until sold (US, general terms)",
+        "no real CEO named with a real figure"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-27",
+      "expires": "2027-01-25",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-27-a-billion-is-250-careers",
+      "title": "$1 billion is 250 whole working lives at $100,000 a year",
+      "category": "wealth",
+      "priority": "normal",
+      "stories": [
+        "money_scale"
+      ],
+      "demand": {
+        "title": "What Can You Buy With $1 to $1 QUADRILLION?",
+        "views": 2640270,
+        "url": "https://www.youtube.com/shorts/jIs5WrvxcQ4"
+      },
+      "hook": "You earn $100,000 a year. To make one billion, start working ten thousand years ago.",
+      "angle": "How big a billion really is, in lifetimes of a good salary.",
+      "why_now": "money_scale tops the market list again (2.64M, 17,200 views an hour); the open money_scale topic ($1B in $100 bills) is about size, this one about time.",
+      "maths": "fee_take (amount 100000, fee_pct 100, per_year 1, years 40) for a 40-year career at $100,000; compare against 1,000,000,000 (a lumpsum amount 1000000000, rate_pct 0, years 1) for the ratio (250 careers, 10,000 years)",
+      "verify": [
+        "arithmetic only; no claim about any real person's wealth"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-27",
+      "expires": "2027-01-25",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-27-raise-that-leaves-you-no-richer",
+      "title": "The lifestyle trap: the raise that leaves you no richer",
+      "category": "salary",
+      "priority": "high",
+      "stories": [
+        "trap_alert"
+      ],
+      "demand": {
+        "title": "The Middle Class EMI Trap",
+        "views": 7000000,
+        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
+      },
+      "hook": "He got a $10,000 raise. Five years later, he's exactly as broke.",
+      "angle": "Lifestyle creep: the bigger car and flat swallow every raise; the same raise half invested.",
+      "why_now": "No trap_alert topic is open (the $5,000 minimum-payment one was rejected as a repeat); 'middle class trap' is one of the market queries.",
+      "maths": "sip (monthly 417, rate_pct an assumed 7, years 25) for half the raise invested; the spender has nothing; emi (amount 30000, rate_pct an assumed 8, years 5) for the car the raise pays for",
+      "verify": [
+        "7% and 8% stated as assumed, illustrative"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-27",
+      "expires": "2027-01-25",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-27-rich-vs-poor-year-end-bonus",
+      "title": "Rich vs poor: the same $5,000 year-end bonus",
+      "category": "saving",
+      "priority": "high",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "demand": {
+        "title": "Rich vs Poor",
+        "views": 26000000,
+        "url": "https://www.youtube.com/shorts/55ezEOnK1Nk"
+      },
+      "hook": "Same bonus. Same day. One buys a TV. One buys the company that makes it.",
+      "angle": "Where a bonus goes: a $5,000 gadget vs $5,000 in an index fund for 30 years.",
+      "why_now": "Year-end bonuses land in December; rich_vs_poor is our strongest demand format and the only open global one is the first car.",
+      "maths": "lumpsum (amount 5000, rate_pct an assumed 7, years 30); the TV is worth nothing; price_rise optional for what the TV costs again",
+      "verify": [
+        "7% assumed return stated as illustrative",
+        "no single stock named as a pick (the 'company' is a share of an index fund)"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-27",
+      "expires": "2027-01-25",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-27-five-money-levels",
+      "title": "5 money levels: which one are you on?",
+      "category": "saving",
+      "priority": "high",
+      "stories": [
+        "which_one_are_you"
+      ],
+      "demand": {
+        "title": "Do These 5 Things To Win With Money",
+        "views": 6400000,
+        "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"
+      },
+      "hook": "There are five money levels. Most people never leave level two.",
+      "angle": "Level 1 broke, 2 a $1,000 buffer, 3 debt-free, 4 investing $500 a month, 5 the money pays the bills: a climbing number per level.",
+      "why_now": "Fits the new story spine (levels with a climbing number) exactly; which_one_are_you Short (v-20261026-02) has no numbers yet, so the next one should differ in shape (levels, not three savers).",
+      "maths": "sip (monthly 500, rate_pct an assumed 7, years 30) for level 4; fee_take (amount = that sip total, fee_pct an assumed 4, per_year 1, years 1) for what it pays a year at level 5",
+      "verify": [
+        "7% and 4% stated as assumed, illustrative"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-27",
+      "expires": "2027-01-25",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "id": "2026-10-27-once-you-understand-inflation",
+      "title": "Once you understand inflation, you'll never keep cash at 0%",
+      "category": "inflation",
+      "priority": "normal",
+      "stories": [
+        "once_you_understand"
+      ],
+      "demand": {
+        "title": "Once You Understand MONEY, You'll Stop Saving It (LITTLE BIT BETTER, animated)",
+        "views": 2479142
+      },
+      "hook": "Once you understand this, you'll never keep your savings in cash again.",
+      "angle": "$10,000 kept in cash for 20 years at an assumed 3% inflation buys what $5,500 buys today; the same money at an assumed 7%.",
+      "why_now": "once_you_understand has never been told (untried-format bonus, owner 2026-10-26: 'test all kinds of video'); reference from formats.json (no URL on file).",
+      "maths": "real_return (amount 10000, rate_pct 0, inflation_pct an assumed 3, years 20); real_return (amount 10000, rate_pct an assumed 7, inflation_pct an assumed 3, years 20); compare",
+      "verify": [
+        "3% inflation and 7% return stated as assumed, illustrative"
       ]
     }
   ]

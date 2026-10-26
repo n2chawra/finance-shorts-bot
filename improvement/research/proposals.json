@@ -452,6 +452,63 @@
       "status": "new",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "cast-voices-the-story",
+      "date": "2026-10-27",
+      "area": "voice",
+      "title": "Shorts open on a cast line and the cast carries the story; the narrator only bridges",
+      "change": "Behind a flag (writer prompt + a check in generator/story.py or check_script): the first spoken line belongs to a cast character (Sharma, Rohan, Priya or Sikka, each with their fixed CAST_VOICES voice), and the narrator speaks at most 25% of the words (a bridge or the payoff line, never the hook). Off arm: today's free choice.",
+      "evidence": [
+        "videos/v-20261021-05, v-20261023-01, v-20261023-02, v-20261024-01: cast speaks first, narrator 0-22% of words: 1,164 / 1,166 / 1,140 / 1,179 views",
+        "videos/v-20261021-04, v-20261022-01, -02, -03, v-20261026-02: narrator first, narrator 38-64% of words: 90 / 727 / 451 / 323 / 151 views",
+        "market.json 25 Oct: top Short is an animated character story (AniMatters, 2.62M, 135 s)"
+      ],
+      "expectedEffect": "More Shorts in the ~1.1K+ band: the skit form (characters talking to each other) instead of a voice explaining to the viewer; also keeps clear of YouTube's 'synthetic adviser' wording (no-expert-persona).",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Confounded with story (3 of the 4 cast-first Shorts are secret_of_rich/billionaire) and reach; some formats (guess_the_number, money_scale) may need a narrator voice for the question.",
+      "metric": "views48h",
+      "status": "new",
+      "route": "experiment",
+      "priority": "high"
+    },
+    {
+      "id": "evaluate-voice-heard",
+      "date": "2026-10-27",
+      "area": "pipeline",
+      "title": "Rank voices by what viewers hear, not the narrator's name",
+      "change": "Record per Short, from script.json/render.json: hookVoice (the voice of the first spoken line) and narratorShare (narrator words / all words, %). Add both to the manifest/metrics row and rank them in python -m improvement.evaluate next to 'voice'. Today 'voice am_michael' credits am_michael for v-20261021-05 and v-20261023-01, where the narrator speaks 15-16% of the words and Sharma (am_fenrir) most of them.",
+      "evidence": [
+        "metrics/videos.json voice field vs videos/*/script.json speakers (2026-10-27 report table)"
+      ],
+      "expectedEffect": "The evaluator's voice ranking becomes meaningful; needed to read cast-voices-the-story.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "None for videos; a measurement field only.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "music-follows-story",
+      "date": "2026-10-27",
+      "area": "music",
+      "title": "Pick the music genre from the story's emotion",
+      "change": "Behind a flag in the style picker (generator/variety.py pick stays untouched; the planner/writer chooses within the rule 'not the previous video's genre'): secret_of_rich and billionaire_question -> cinematic 88-96 BPM; trap_alert and how_they_make_money -> synthwave; rich_vs_poor, which_one_are_you, guess_the_number, money_scale -> pop 108-116; if that genre was the previous video's, the second choice for the story. Off arm: the seeded random genre.",
+      "evidence": [
+        "Our three cinematic 90-92 BPM Shorts are three of our four best: 1,164 / 1,166 / 1,179 views (all secret/billionaire)",
+        "evaluate 2026-10-27: pop 5.19x (n=4), tempo 110-119 5.19x; acoustic 0.34x, lofi 0.74x (48 h views)"
+      ],
+      "expectedEffect": "Music that fits the mood (mystery for secrets, tension for traps, bright for duels); small lift in % viewed.",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Heavily confounded with story, voice and reach; fewer genre combinations per story (variety still enforced by the previous-video rule).",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }
