@@ -210,7 +210,7 @@
       "id": "dui-003",
       "kind": "bug",
       "title": "Week-over-week change biased down",
-      "detail": "Overview and Analytics compare the last 7 days with the 7 before, but Analytics runs 1-2 days behind, so the last days are 0 and flat traffic shows about -20%. Fix: drop trailing days after the latest day with a VideoStat row.",
+      "detail": "Overview and Analytics compare the last 7 days with the 7 before, but Analytics runs 1-2 days behind, so the last days are 0 and flat traffic shows about -20%. Fix: drop trailing days after the latest day with a VideoStat row. Update 2026-10-27: views and likes now fill lagging days from the live counters (estimated days, lib/totals.ts), so the bias is mostly gone for them; subscribers have no live counter and are still biased down.",
       "files": [
         "apps/dashboard/src/app/page.tsx",
         "apps/dashboard/src/app/analytics/page.tsx"
@@ -441,6 +441,20 @@
       "severity": "low",
       "found": "2026-10-26",
       "status": "open"
+    },
+    {
+      "id": "dsh-007",
+      "kind": "data",
+      "title": "Mark as uploaded with a future time counts the video as published",
+      "detail": "markUploaded always set status and upload state to published. A Short scheduled in YouTube Studio (private until its time) then counted as published in the dashboard's totals and lists before it went live; data audit 2026-10-26 flagged v-20261026-01 (publishAt 2026-10-27 01:37 UTC, private). Now a linked video with a publish time ahead starts as scheduled, and refreshPublished (stats/publish jobs) promotes it once YouTube shows it public. Test in workers/tests/dashboard-relink.test.ts.",
+      "files": [
+        "apps/dashboard/src/lib/youtube-link.ts",
+        "apps/dashboard/src/lib/store.db.ts",
+        "apps/dashboard/src/lib/store.sample.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-10-27",
+      "status": "fixed"
     }
   ]
 }

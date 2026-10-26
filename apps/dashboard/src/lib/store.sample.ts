@@ -7,6 +7,7 @@ import path from "node:path";
 
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 import { mostLoved } from "./schemas";
+import { manualState } from "./youtube-link";
 
 const VERSION = 8; // bump to regenerate the sample data without restarting the server
 const IST_OFFSET = "+05:30";
@@ -404,10 +405,12 @@ export function markUploaded(id: string, m: ManualUpload): { ok: true } | { ok: 
   const s = db();
   const v = s.videos.find((x) => x.id === id);
   if (!v) return { ok: false, error: "Video not found" };
-  v.status = "published";
+  const youtubeId = m.youtubeId ?? v.upload?.youtubeId ?? null;
+  const state = manualState(youtubeId, new Date(m.publishedAt));
+  v.status = state;
   v.queuePosition = null;
   v.failReason = null;
-  v.upload = { youtubeId: m.youtubeId ?? v.upload?.youtubeId ?? null, publishAt: m.publishedAt, state: "published", error: null, attempts: v.upload?.attempts ?? 0 };
+  v.upload = { youtubeId, publishAt: m.publishedAt, state, error: null, attempts: v.upload?.attempts ?? 0 };
   renumber(s, queue(s));
   return { ok: true };
 }

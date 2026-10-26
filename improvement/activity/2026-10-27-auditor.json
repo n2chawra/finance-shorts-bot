@@ -1,0 +1,33 @@
+{
+  "agent": "auditor",
+  "day": "2026-10-27",
+  "startedAt": "2026-10-26T17:37:50Z",
+  "finishedAt": "2026-10-26T17:41:36Z",
+  "summary": "Fixed Mark as uploaded counting a Short scheduled in YouTube Studio as already published; all checks green.",
+  "decision": "acted",
+  "why": "Tonight's data audit (26 Oct 15:18 UTC) had 4 warnings, 0 errors. v-20261026-01 was marked published but private on YouTube: its publish time is 07:07 IST on 27 Oct, and Mark as uploaded always recorded published. The three unlisted long videos are an owner setting, not a code bug.",
+  "findings": [
+    {
+      "title": "v-20261026-01 published here, private on YouTube",
+      "detail": "Scheduled in Studio for 2026-10-27 01:37 UTC; the dashboard recorded it as published at once. Code bug, fixed (dsh-007). Its existing row clears itself when it goes public."
+    },
+    {
+      "title": "Three long videos still unlisted",
+      "detail": "L-20261021-01, L-20261019-02, L-20261018-01: third audit in a row. Owner notification kept."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Mark as uploaded with a future time starts as scheduled",
+      "detail": "A linked video whose publish time is ahead is now scheduled; the stats and publish jobs mark it published once YouTube shows it public. New tests in workers/tests/dashboard-relink.test.ts.",
+      "branch": "agent/auditor/2026-10-27"
+    }
+  ],
+  "nextCheck": "2026-10-28",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-10-27.md"
+    }
+  ]
+}
