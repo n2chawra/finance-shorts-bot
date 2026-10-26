@@ -1,0 +1,424 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-26T14:44:57.972061+00:00",
+    "finishedAt": "2026-10-26T14:44:57.972061+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-26T14:55:46.205771+00:00",
+    "finishedAt": "2026-10-26T14:55:46.205771+00:00",
+    "notes": [
+      "beat 'c1-year'.params.cards[0].value: maths 'salary' has no value or series 'income'",
+      "beat 'c1-life' opens like a line in one of the last scripts (\"that's more than\"): new words",
+      "beat 'c4-causes' opens like a line in one of the last scripts ('so the money'): new words",
+      "beat 'outro' opens like a line in one of the last scripts ('our maths is'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-26T14:55:54.910712+00:00",
+    "finishedAt": "2026-10-26T14:55:54.910712+00:00",
+    "notes": [
+      "beat 'c2-rate'.params.cards[0].value: maths 'sell' has no value or series 'amount'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-26T14:56:04.494847+00:00",
+    "finishedAt": "2026-10-26T14:56:04.494847+00:00",
+    "notes": [
+      "beat 'c2-never'.params.objects[0].amount: maths 'borrow' has no value or series 'amount'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-26T14:56:17.063975+00:00",
+    "finishedAt": "2026-10-26T14:56:17.063975+00:00",
+    "notes": [
+      "beat 'c3-stepup'.events.step: no word 'step' in this beat's spoken line"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T14:56:29.484918+00:00",
+    "finishedAt": "2026-10-26T14:56:29.484918+00:00",
+    "notes": [
+      "109 figures computed from inputs; 49 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T14:56:46.546675+00:00",
+    "finishedAt": "2026-10-26T14:56:46.546675+00:00",
+    "notes": [
+      "109 figures computed from inputs; 49 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T14:57:14.372299+00:00",
+    "finishedAt": "2026-10-26T14:57:14.372299+00:00",
+    "notes": [
+      "109 figures computed from inputs; 49 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-26T14:57:59.276264+00:00",
+    "finishedAt": "2026-10-26T14:57:59.276264+00:00",
+    "notes": [
+      "beat 'c6-fair'.events.founder: no word 'founder' in this beat's spoken line",
+      "beat 'c6-fair' opens like a line in one of the last scripts ('to be fair'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T14:58:08.680589+00:00",
+    "finishedAt": "2026-10-26T14:58:08.680589+00:00",
+    "notes": [
+      "109 figures computed from inputs; 49 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-26T15:03:36.169825+00:00",
+    "finishedAt": "2026-10-26T15:03:36.169825+00:00",
+    "notes": [
+      "Title (plan.json title and topic.title, script title, thumbnail if it repeats it): 'Every way billionaires avoid paying tax, explained' promises more than the video shows. It covers seven moves and leaves out well-known ones (GRATs/dynasty trusts beyond a passing mention, QSBS, real-estate depreciation, carried interest). Retitle to the count the video delivers, e.g. '7 ways billionaires avoid paying tax, explained' (or 'How billionaires legally avoid tax: 7 moves').",
+      "Beat c5-saved: 'He just saved $2.4M' overstates tax-loss harvesting. Selling the loser and buying something similar resets his starting price lower, so the tax is generally deferred, not erased (unless he holds to death, move three). Say it cuts this year's bill instead, e.g. 'Taxable gain left this year: nothing. His tax bill this year drops by $2.4M.' Adjust the matching stats card label if it says 'saved'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T14:58:15.177897+00:00",
+    "finishedAt": "2026-10-26T15:03:47.438755+00:00",
+    "notes": [
+      "structure.levels: 2 to 6 short names (18 characters at most), e.g. [\"Sell\", \"Borrow\", \"Never sell\"]"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:05:04.624690+00:00",
+    "finishedAt": "2026-10-26T15:05:04.624690+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:05:13.822475+00:00",
+    "finishedAt": "2026-10-26T15:05:13.822475+00:00",
+    "notes": [
+      "109 figures computed from inputs; 49 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:06:06.780813+00:00",
+    "finishedAt": "2026-10-26T15:06:06.780813+00:00",
+    "notes": [
+      "Re-review after revision: title now '6 ways...' matches the six chapters; c5-saved now says this year's bill drops by $2.4M (card 'Tax cut this year'); c2-compare notes interest recurs; dividends and 'one of the most heavily taxed' fixed. US rules checked: 2026 brackets/$16,100 deduction (Rev. Proc. 2025-32), 23.8% LTCG+NIIT, step-up, $15M/40% estate tax, foundation 5% payout, wash sale, Roth; assumptions labelled; no advice; description ends with disclaimer. Note: c1-life/c1-nothing ('that much', 'that gain') now sit after the Jobs beats, so their referent is less clear."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T15:05:20.837309+00:00",
+    "finishedAt": "2026-10-26T15:07:43.272261+00:00",
+    "notes": [
+      "render.ts stills failed:\nDetected differing memory amounts:\nMemory reported by CGroup: 8796093019209.96 MB\nMemory reported by /proc/meminfo MemAvailable: 14436.56 MB\nYou might have inadvertently set the --memory flag of `docker run` to a value that is higher than the global Docker memory limit.\nUsing the lower amount of memory for calculation.\nDetected differing memory amounts:\nMemory reported by CGroup: 8796093018899.38 MB\nMemory reported by /proc/meminfo MemAvailable: 14439.16 MB\nYou might have inadvertently set the --memory flag of `docker run` to a value that is higher than the global Docker memory limit.\nUsing the lower amount of memory for calculation.\nZodError\n    at calculateStoryMetadata (http://localhost:3000/bundle.js:8913:23)\n    at resolveVideoConfigWithMetadata (http://localhost:3000/bundle.js:30022:46)\n    at Object.resolveVideoConfig (http://localhost:3000/bundle.js:30055:20)\n    at window.remotion_calculateComposition (http://localhost:3000/bundle.js:14902:88)\n    at __puppeteer_evaluation_script__:2:21"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:08:10.427401+00:00",
+    "finishedAt": "2026-10-26T15:08:10.427401+00:00",
+    "notes": [
+      "109 figures computed from inputs; 49 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T15:08:11.945389+00:00",
+    "finishedAt": "2026-10-26T15:11:19.770856+00:00",
+    "notes": [
+      "text '1' at 17.8 s is 28.1 px, below the 30 px minimum",
+      "text '2' at 17.8 s is 28.1 px, below the 30 px minimum",
+      "text '3' at 17.8 s is 28.1 px, below the 30 px minimum",
+      "text '4' at 17.8 s is 28.1 px, below the 30 px minimum",
+      "text '5' at 17.8 s is 28.1 px, below the 30 px minimum",
+      "text '6' at 17.8 s is 28.1 px, below the 30 px minimum",
+      "text 'Less?' at 11.7 s runs outside the frame",
+      "text 'My whole life' at 50.2 s runs outside the frame",
+      "text 'Never?' at 58.0 s runs outside the frame",
+      "text 'Untaxed' at 61.7 s runs outside the frame",
+      "text 'The boss' at 70.9 s runs outside the frame",
+      "text 'For free?' at 78.0 s runs outside the frame",
+      "text 'Own' at 93.4 s runs outside the frame",
+      "text 'Salary' at 106.3 s reaches 1091 px, inside the bottom 36 px",
+      "text 'Shares' at 106.3 s reaches 1091 px, inside the bottom 36 px",
+      "text '✓' at 117.8 s is 26.6 px, below the 30 px minimum",
+      "text 'Loan' at 136.1 s reaches 1052 px, inside the bottom 36 px",
+      "text 'Shares' at 136.1 s runs outside the frame",
+      "text 'Loan' at 154.0 s runs outside the frame",
+      "text 'Interest' at 150.1 s runs outside the frame",
+      "text 'Faster' at 173.2 s runs outside the frame",
+      "text 'Worth today' at 207.3 s runs outside the frame",
+      "text 'Basis' at 227.6 s reaches 1107 px, inside the bottom 36 px",
+      "text 'Gain' at 227.6 s reaches 1107 px, inside the bottom 36 px",
+      "text 'Gain' at 227.6 s runs outside the frame",
+      "text 'Price' at 234.1 s reaches 1227 px, inside the bottom 36 px",
+      "text 'Plan' at 265.1 s runs outside the frame",
+      "text 'Gone?' at 278.5 s runs outside the frame",
+      "text 'Foundation' at 306.8 s runs outside the frame",
+      "text 'On purpose?' at 351.3 s runs outside the frame",
+      "text 'December' at 359.7 s runs outside the frame",
+      "text 'Account' at 368.7 s reaches 1854 px, inside the bottom 36 px",
+      "text 'Account' at 368.7 s runs outside the frame",
+      "text 'Roth account' at 389.4 s reaches 1144 px, inside the bottom 36 px",
+      "text 'Pay' at 389.4 s reaches 1144 px, inside the bottom 36 px",
+      "text 'Pay' at 389.4 s runs outside the frame",
+      "text 'Me too?' at 401.3 s runs outside the frame",
+      "text 'Now, not later' at 404.3 s runs outside the frame",
+      "text 'Small?' at 420.5 s runs outside the frame",
+      "text 'Nest egg' at 424.1 s runs outside the frame",
+      "text 'Rules' at 460.4 s reaches 1059 px, inside the bottom 36 px",
+      "text 'Money' at 460.4 s reaches 1059 px, inside the bottom 36 px",
+      "text 'Money' at 460.4 s runs outside the frame",
+      "four shots in a row open medium (from 'c1-never'): vary the shot size",
+      "27 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "5.1 s with nothing new on screen in beat 'c4-tease' (at most 2.5 s): add an action on the phrase being said there",
+      "beat 'c1-payslip': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'c6-jobs': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'c2-sell': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'c2-backed': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'c3-price': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'c5-winner': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "shot 4 times in a row: change the device",
+      "length 468 s is outside 480–900 s",
+      "thumbnail-b.png is flat at phone size (contrast 44.7, at least 45.0): bolder colours, darker outlines"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:12:52.073941+00:00",
+    "finishedAt": "2026-10-26T15:12:52.073941+00:00",
+    "notes": [
+      "109 figures computed from inputs; 49 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:17:03.220007+00:00",
+    "finishedAt": "2026-10-26T15:17:03.220007+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:18:34.372982+00:00",
+    "finishedAt": "2026-10-26T15:18:34.372982+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:19:59.390609+00:00",
+    "finishedAt": "2026-10-26T15:19:59.390609+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:21:04.303848+00:00",
+    "finishedAt": "2026-10-26T15:21:04.303848+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:22:56.416823+00:00",
+    "finishedAt": "2026-10-26T15:22:56.416823+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T15:24:04.300310+00:00",
+    "finishedAt": "2026-10-26T15:27:44.481082+00:00",
+    "notes": [
+      "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "2.8 s with nothing new on screen in beat 'c2-growing' (at most 2.5 s): add an action on the phrase being said there",
+      "19 of 102 stills are mostly empty background (at 0 s, 15 s, 20 s, 25 s, 45 s, 125 s): fill the frame (a set, the cast big, money as a thing)",
+      "thumbnail-b.png is flat at phone size (contrast 44.7, at least 45.0): bolder colours, darker outlines"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:35:24.744672+00:00",
+    "finishedAt": "2026-10-26T15:35:24.744672+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:36:58.052611+00:00",
+    "finishedAt": "2026-10-26T15:36:58.052611+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:38:17.647411+00:00",
+    "finishedAt": "2026-10-26T15:42:30.147943+00:00",
+    "notes": [
+      "512 s, ember/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-26T15:44:54.880475+00:00",
+    "finishedAt": "2026-10-26T15:44:54.880475+00:00",
+    "notes": [
+      "[script] 0.0s hook: first frame shows no large number, question or statement, only the small caption 'ROHAN EARNS', and Rohan is cut in half by the left edge. Beat hook: open on a big number (e.g. Sharma's $100M gain vs $0 tax) and move Rohan inside the frame.",
+      "[script] 80.0s c6-noble: the top word 'For free?' sits under the carried HUD counter 'GAIN, UNTAXED $100.0M' and reads 'FO$100.0ME?'. Same collision at 340s c4-break ('Of course'), 385s c5-dec ('December') and 430s c7-now ('Now, not later'). Set hud.noCounter on these beats or move the word off the top.",
+      "[script] 120s c2-open and the chapter map at 290s (ch4/c4-open): the chapter title 'MOVE TWO' / 'MOVE FOUR' is covered by the previous chapter's counter. Chapter beats need hud.noCounter.",
+      "[script] 85.0s c6-clever: the HUD $100.0M covers the phone title 'Big salary' (only 'salary' visible); 435s c7-countries: the HUD $119.0M covers the phone title; 460s c7-payday: the HUD sits on the payslip's top. Hide the counter or place the phone lower.",
+      "[script] stale counter: 'TAX NEVER PAID $119.0M' (the foundation figure) stays on screen through move five and move six (345-470s), over the $2.4M harvest and Rohan's Roth account; '$23.8M TAX IF HE SELLS' over the move-three opening (210-220s); '$100.0M GAIN, UNTAXED' over Steve Jobs' $1 salary (70-90s). Each chapter should set its own counter (c5-winner harvest tax; c7-roth or c7-month) or noCounter.",
+      "[script] 480-485s payoff: HUD 'PUT IN $180,000' duplicates the 'HE PUTS IN $180,000' card beside it, the umbrella runs behind the HUD, and the 'TAX-FREE GROWTH' banner is cut off at the right edge. Drop the counter on payoff and pull the banner inside the frame.",
+      "[script] 210s ch3 into c3-life: frame is nearly all flat background with one tiny certificate stack in the far left corner; give the reset opening a real picture.",
+      "[script] c7-ten (451s, pot $92,083 after 10 years) plays before c7-month (465s) introduces the $500 a month; put the input before the result.",
+      "[script] thumbnail.png 'THEM VS YOU' with a grid of 7 small labelled icons: unreadable at feed size, 7 tiles for '6 ways' (7th is 'Tax man'), no billionaire and no promise of avoided tax. Use one big contrast (billionaire $0 tax vs Rohan's $7,670). thumbnail-b 'THEY PAY LESS' reads well small but repeats the shocked-Rohan-right, text-top-left cover of L-20261021-01 and L-20261023-01 and shows the earner, not the billionaire; put Sharma in it.",
+      "[scene] studio/hud.tsx: the carried counter is drawn at top 40 px over whatever a beat puts at the top (shot word where:top, phone titles, chapter titles) with no collision avoidance; it should yield to top-placed text or drop out on chapter beats automatically."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:46:07.951198+00:00",
+    "finishedAt": "2026-10-26T15:46:07.951198+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:47:15.797023+00:00",
+    "finishedAt": "2026-10-26T15:47:15.797023+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:48:19.924666+00:00",
+    "finishedAt": "2026-10-26T15:48:19.924666+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T15:49:20.314111+00:00",
+    "finishedAt": "2026-10-26T15:53:01.153620+00:00",
+    "notes": [
+      "thumbnail.png is flat at phone size (contrast 44.2, at least 45.0): bolder colours, darker outlines"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:54:10.768062+00:00",
+    "finishedAt": "2026-10-26T15:54:10.768062+00:00",
+    "notes": [
+      "117 figures computed from inputs; 54 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T15:54:12.298793+00:00",
+    "finishedAt": "2026-10-26T15:57:48.801573+00:00",
+    "notes": [
+      "512 s, ember/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-26T16:03:21.765383+00:00",
+    "finishedAt": "2026-10-26T16:03:21.765383+00:00",
+    "notes": [
+      "Re-review after revision: hook opens on Sharma's $100.0M gain card with Rohan in frame; HUD counter no longer collides with top words, chapter titles or phone titles and is off where stale; payoff banner inside frame; $500/month now precedes the 10-year pot; disclaimer on end card; thumbnail 'YOU PAY. HE DOESN'T.' with Sharma reads small and matches the title, B 'ALL LEGAL?' six-move grid is the alternate; 512 s, peak -1.0 dB, mean -16.6 dB, no layout or craft problems."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T16:03:38.521217+00:00",
+    "finishedAt": "2026-10-26T16:43:34.067741+00:00",
+    "notes": [
+      "512 s, ember/synthwave, peak -1.0 dB, mean -16.6 dB"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-26T17:06:44.974209+00:00",
+    "finishedAt": "2026-10-26T17:06:44.974209+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-26T17:06:46.562719+00:00",
+    "finishedAt": "2026-10-26T17:06:46.562719+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
