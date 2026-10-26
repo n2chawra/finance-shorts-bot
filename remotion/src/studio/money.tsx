@@ -26,7 +26,7 @@ export const Note: React.FC<{ cur: Cur; nw: number; rot?: number; x?: number; y?
     <g transform={`translate(${x},${y}) rotate(${rot})`} opacity={opacity}>
       <rect x={-nw / 2} y={-nh / 2} width={nw} height={nh} rx={nw * 0.04} fill={c.body} stroke={c.ink} strokeWidth={nw * 0.02} />
       <circle cx={nw * 0.18} cy={0} r={nh * 0.3} fill={c.band} />
-      <text x={nw * 0.18} y={nh * 0.13} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={nh * 0.42} fill={c.ink}>{c.sign}</text>
+      <text data-probe="skip" x={nw * 0.18} y={nh * 0.13} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={nh * 0.42} fill={c.ink}>{c.sign}</text>
       <rect x={-nw * 0.42} y={-nh * 0.3} width={nw * 0.34} height={nh * 0.12} rx={nh * 0.06} fill={c.ink} opacity={0.35} />
       <rect x={-nw * 0.42} y={nh * 0.12} width={nw * 0.24} height={nh * 0.1} rx={nh * 0.05} fill={c.ink} opacity={0.25} />
     </g>
@@ -125,11 +125,14 @@ export const PhoneApp: React.FC<{
         const k = easeOut((t - l.at) / 0.35);
         if (k <= 0) return null;
         const ly = -ph / 2 + ph * (0.44 + i * 0.15);
+        const vs = l.value ? Math.min(fs * 0.85, (pw * 0.4) / Math.max(2, l.value.length * 0.58)) : 0;
+        // a label too long to share the row with its value ('Market, assumed' / '8%') goes above it
+        const two = !!l.value && l.label.length * 0.6 * fs * 0.72 + l.value.length * 0.62 * vs > pw * 0.72;
         return (
           <g key={i} opacity={k} transform={`translate(${(1 - k) * pw * 0.4},0)`}>
             <rect x={-pw * 0.44} y={ly - fs * 0.95} width={pw * 0.88} height={fs * 1.7} rx={fs * 0.4} fill="#ffffff" stroke="#e3e6ef" strokeWidth={3} />
-            <text x={-pw * 0.39} y={ly + fs * 0.15} fontFamily={FONT} fontWeight={700} fontSize={fs * 0.72} fill="#3f4656">{l.label}</text>
-            {l.value && <text x={pw * 0.4} y={ly + fs * 0.15} textAnchor="end" fontFamily={FONT} fontWeight={900} fontSize={Math.min(fs * 0.85, (pw * 0.4) / Math.max(2, l.value.length * 0.58))} fill={l.bad ? "#e03131" : "#1f9d61"}>{l.value}</text>}
+            <text x={-pw * 0.39} y={ly + (two ? -fs * 0.22 : fs * 0.15)} fontFamily={FONT} fontWeight={700} fontSize={fs * 0.72} fill="#3f4656">{l.label}</text>
+            {l.value && <text x={pw * 0.4} y={ly + (two ? fs * 0.6 : fs * 0.15)} textAnchor="end" fontFamily={FONT} fontWeight={900} fontSize={two ? Math.min(vs, fs * 0.72) : vs} fill={l.bad ? "#e03131" : "#1f9d61"}>{l.value}</text>}
           </g>
         );
       })}
