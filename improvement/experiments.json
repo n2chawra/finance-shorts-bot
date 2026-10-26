@@ -332,6 +332,102 @@
       "maxDays": 42,
       "description": "Two-line charts shade the gap up to the drawing head and pop a chip with the gap's computed figure at `gap.at` (default: when the lines finish).",
       "hypothesis": "Rich vs poor and early vs late chapters are about the gap; showing and naming it raises average % viewed of long videos."
+    },
+    {
+      "id": "loop-picture-matches-hook",
+      "proposal": "loop-picture-matches-hook",
+      "area": "ending",
+      "format": "short",
+      "flag": "loop-picture-matches-hook",
+      "arms": [
+        "on",
+        "off"
+      ],
+      "startedAt": "2026-10-26",
+      "minPerArm": 8,
+      "maxDays": 21,
+      "primary": "avgViewPct",
+      "guard": "qa_failures",
+      "status": "running",
+      "templates": [
+        "short_story"
+      ],
+      "description": "The writer ends the last beat on the hook's set at a wide shot (close-ups there at most 1 s)",
+      "hypothesis": "v-20261022-01 held one close-up for its last 2.6 s before looping to a wide street shot, and v-20261023-01 ended on a close-up in a different set from its vault opening. Since March 2025 every replay counts as a view; a picture that returns to frame 0 should raise replays and % viewed.",
+      "notes": "Prompt-only (writer). On keep: fold into generator/prompts/writer.md 'Loop it' and the short_story README loop rule. On revert: drop the prompt.",
+      "commits": []
+    },
+    {
+      "id": "no-expert-persona",
+      "proposal": "no-expert-persona",
+      "area": "script",
+      "status": "adopted",
+      "startedAt": "2026-10-26",
+      "templates": [
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "description": "Writer rule, fact-review reject reason and a description line: no narrator or cast line presents itself as an adviser or tells the viewer what to do with their money.",
+      "evidence": "Research 2026-10-24 (high confidence): YouTube's monetization policy excludes content presenting itself as a human expert giving financial advice.",
+      "commits": []
+    },
+    {
+      "id": "2026-10-23-shot-close-crops-tags",
+      "proposal": "2026-10-23-shot-close-crops-tags",
+      "area": "motion",
+      "status": "adopted",
+      "startedAt": "2026-10-26",
+      "templates": [
+        "long_story",
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "description": "A shot on a stack frames its tag and label; a shot on a stack or phone zooms out just enough to keep it whole (camera.ts keepInside), also through the slow push.",
+      "evidence": "Scout 2026-10-23: L-20261023-01 failed the layout probe on 30+ texts on close stack/phone shots. Test timeline: 6 off-frame texts before, the targeted stacks and phone whole after.",
+      "commits": []
+    },
+    {
+      "id": "2026-10-23-shot-phone-text-small-wide",
+      "proposal": "2026-10-23-shot-phone-text-small-wide",
+      "area": "text",
+      "status": "adopted",
+      "startedAt": "2026-10-26",
+      "templates": [
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "Long phone drawn 360 px wide (was 280: lines ~25 px, under the 30 px minimum); a label too long to share its row with the value goes above it.",
+      "evidence": "Scout 2026-10-23: 'Market, assumed' ran into '8%' and phone lines failed the 30 px minimum.",
+      "commits": []
+    },
+    {
+      "id": "2026-10-23-shot-word-drop-offframe",
+      "proposal": "2026-10-23-shot-word-drop-offframe",
+      "area": "motion",
+      "status": "adopted",
+      "startedAt": "2026-10-26",
+      "templates": [
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "The long frame's drop-in word drops 50 px with less spin instead of 260 px from above the frame.",
+      "evidence": "Scout 2026-10-23: 7 words in L-20261023-01 failed the probe as off-frame mid-drop; Studio dropped them all.",
+      "commits": []
+    },
+    {
+      "id": "2026-10-23-shot-flow-glyph-small",
+      "proposal": "2026-10-23-shot-flow-glyph-small",
+      "area": "text",
+      "status": "adopted",
+      "startedAt": "2026-10-26",
+      "templates": [
+        "long_story",
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "description": "The banknote's sign glyph is decoration (data-probe skip, like Sikka's coin), not text to read.",
+      "evidence": "Scout 2026-10-23: the 20 px '$' on flying notes failed the probe; Studio removed every flow.",
+      "commits": []
     }
   ]
 }

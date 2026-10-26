@@ -387,7 +387,7 @@
       "effort": "S",
       "risk": "Low: wording only; lines like 'The rich don't let it.' stay allowed, 'You should do this' does not.",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
       "priority": "high"
     },
@@ -408,7 +408,7 @@
       "effort": "M",
       "risk": "An abrupt pull-back could read as a glitch; stills check the last frame against frame 0.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
       "priority": "normal"
     },
