@@ -1,0 +1,1344 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52906,
+  "story": "rich_vs_poor",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "G",
+    "bpm": 104
+  },
+  "structure": {
+    "levels": [
+      "First",
+      "Second",
+      "Final"
+    ]
+  },
+  "maths": [
+    {
+      "name": "r10",
+      "kind": "lumpsum",
+      "amount": 5000,
+      "rate_pct": 7,
+      "years": 10
+    },
+    {
+      "name": "r20",
+      "kind": "lumpsum",
+      "amount": 5000,
+      "rate_pct": 7,
+      "years": 20
+    },
+    {
+      "name": "r30",
+      "kind": "lumpsum",
+      "amount": 5000,
+      "rate_pct": 7,
+      "years": 30
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "angle": "versus",
+    "words": "TV or the *shop*?",
+    "figure": "{r30_final}"
+  },
+  "cta": "TV or the shop: which one are you? Comment",
+  "hook_style": "conflict",
+  "title": "Poor buys the TV. Rich buys the shop 📺",
+  "description": "Where does a $5,000 bonus really go?\nOne spends it on a TV, one puts it in an index fund at an assumed 7% a year: checked after 10, 20 and 30 years, computed. The return is an assumption, not a promise; no fund named. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "sharma",
+      "say": "His bonus bought a TV. Mine bought a slice of the companies selling it.",
+      "events": {
+        "tv": {
+          "word": "tv"
+        },
+        "mine": {
+          "word": "mine"
+        },
+        "slice": {
+          "word": "slice"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tv"
+        },
+        {
+          "kind": "boom",
+          "at": "mine"
+        },
+        {
+          "kind": "ding",
+          "at": "slice"
+        }
+      ],
+      "params": {
+        "amount": "{r30_amount}",
+        "hud": {
+          "hide": true
+        },
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "bonus",
+            "spot": "center",
+            "amount": "@r30.invested",
+            "text": "{r30_amount}",
+            "label": "Bonus",
+            "at": "mine",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "mine",
+            "size": "close",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Both got {r30_amount}. Three check-ins, and the last one stings.",
+      "events": {
+        "both": {
+          "word": "both"
+        },
+        "check": {
+          "word": "three"
+        },
+        "last": {
+          "word": "last"
+        },
+        "stings": {
+          "word": "stings"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "both"
+        },
+        {
+          "kind": "tick",
+          "at": "check"
+        },
+        {
+          "kind": "boom",
+          "at": "stings"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "stings",
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "both",
+            "prop": "envelope",
+            "x": 0.62,
+            "size": 0.1
+          },
+          {
+            "id": "check",
+            "prop": "years",
+            "x": 0.82,
+            "y": 0.12,
+            "size": 0.14,
+            "hidden": true,
+            "k": 0
+          }
+        ],
+        "actions": [
+          {
+            "at": "both",
+            "do": "multiply",
+            "target": "both",
+            "n": 2,
+            "cols": 2
+          },
+          {
+            "at": "check",
+            "do": "enter",
+            "target": "check"
+          },
+          {
+            "at": "last",
+            "do": "fill",
+            "target": "check",
+            "k": 1,
+            "dur": 1.2
+          },
+          {
+            "at": "stings",
+            "do": "shake",
+            "target": "check"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "check",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "spend",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "I went straight to the store. Biggest screen they had, plus a sound bar. Bonus, gone in a day.",
+      "events": {
+        "store": {
+          "word": "store"
+        },
+        "screen": {
+          "word": "screen"
+        },
+        "sound": {
+          "word": "sound"
+        },
+        "gone": {
+          "word": "gone"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "store"
+        },
+        {
+          "kind": "kaching",
+          "at": "screen"
+        },
+        {
+          "kind": "pop",
+          "at": "sound"
+        },
+        {
+          "kind": "fail",
+          "at": "gone"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              },
+              {
+                "at": "gone",
+                "pose": "shrug",
+                "expression": "happy"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "bonus",
+            "prop": "envelope",
+            "x": 0.6,
+            "y": 0.25,
+            "size": 0.08
+          },
+          {
+            "id": "store",
+            "prop": "bag",
+            "x": 0.85,
+            "size": 0.1,
+            "hidden": true
+          },
+          {
+            "id": "screen",
+            "prop": "tv",
+            "x": 0.64,
+            "size": 0.15,
+            "hidden": true
+          },
+          {
+            "id": "sound",
+            "prop": "soundbar",
+            "x": 0.65,
+            "size": 0.08,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "store",
+            "do": "enter",
+            "target": "store"
+          },
+          {
+            "at": "screen",
+            "do": "enter",
+            "target": "screen"
+          },
+          {
+            "at": "sound",
+            "do": "enter",
+            "target": "sound"
+          },
+          {
+            "at": "gone",
+            "do": "exit",
+            "target": "bonus"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "screen",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "invest",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "I put mine in an index fund. A tiny slice of a whole market of companies, the TV shops included.",
+      "events": {
+        "fund": {
+          "word": "fund"
+        },
+        "slice": {
+          "word": "slice"
+        },
+        "companies": {
+          "word": "companies"
+        },
+        "shops": {
+          "word": "shops"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "fund"
+        },
+        {
+          "kind": "pop",
+          "at": "companies"
+        },
+        {
+          "kind": "clink",
+          "at": "shops"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "gold",
+          "horizon": [
+            {
+              "prop": "factory",
+              "x": 0.85,
+              "size": 0.12
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "shops",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "mine",
+            "prop": "envelope",
+            "x": 0.6,
+            "y": 0.2,
+            "size": 0.08
+          },
+          {
+            "id": "fund",
+            "prop": "fund",
+            "x": 0.62,
+            "size": 0.16,
+            "hidden": true
+          },
+          {
+            "id": "companies",
+            "prop": "factory",
+            "x": 0.85,
+            "size": 0.16,
+            "hidden": true
+          },
+          {
+            "id": "shops",
+            "prop": "bag",
+            "x": 0.78,
+            "y": 0.2,
+            "size": 0.08,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "fund",
+            "do": "swap",
+            "target": "mine",
+            "into": "fund"
+          },
+          {
+            "at": "slice",
+            "do": "glow",
+            "target": "mine"
+          },
+          {
+            "at": "companies",
+            "do": "enter",
+            "target": "companies"
+          },
+          {
+            "at": "shops",
+            "do": "enter",
+            "target": "shops"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "companies",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "check1",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "zoom-through",
+      "say": "Check-in one, after {r10_years} years. At an assumed {r10_rate} a year, my bonus is {r10_final}.",
+      "events": {
+        "one": {
+          "word": "one"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "bonus": {
+          "word": "bonus"
+        },
+        "years": {
+          "word": "years"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "one"
+        },
+        {
+          "kind": "riser",
+          "at": "bonus"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "bonus",
+            "prop": "tree",
+            "x": 0.62,
+            "size": 0.22,
+            "k": 0.15
+          },
+          {
+            "id": "years",
+            "prop": "years",
+            "x": 0.84,
+            "y": 0.1,
+            "size": 0.1,
+            "k": 0
+          }
+        ],
+        "actions": [
+          {
+            "at": "years",
+            "do": "fill",
+            "target": "years",
+            "k": 1,
+            "dur": 1.0
+          },
+          {
+            "at": "assumed",
+            "do": "glow",
+            "target": "bonus"
+          },
+          {
+            "at": "bonus",
+            "do": "fill",
+            "target": "bonus",
+            "k": 0.4,
+            "dur": 1.4
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "bonus",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@r10.final",
+            "text": "{r10_final}",
+            "label": "Invested bonus",
+            "at": "one"
+          }
+        }
+      }
+    },
+    {
+      "id": "tv1",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Meanwhile, my TV? Scratched, slow, and nobody wants to buy it.",
+      "events": {
+        "tv": {
+          "word": "tv"
+        },
+        "scratched": {
+          "word": "scratched"
+        },
+        "slow": {
+          "word": "slow"
+        },
+        "buy": {
+          "word": "buy"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tv"
+        },
+        {
+          "kind": "fail",
+          "at": "scratched"
+        },
+        {
+          "kind": "tick",
+          "at": "buy"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "worried"
+              },
+              {
+                "at": "buy",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "tv",
+            "prop": "tv",
+            "x": 0.64,
+            "size": 0.13,
+            "label": "Scratched"
+          },
+          {
+            "id": "buy",
+            "prop": "pricetag",
+            "x": 0.85,
+            "y": 0.2,
+            "size": 0.1,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "scratched",
+            "do": "state",
+            "target": "tv",
+            "state": "scratched"
+          },
+          {
+            "at": "slow",
+            "do": "shake",
+            "target": "tv"
+          },
+          {
+            "at": "buy",
+            "do": "enter",
+            "target": "buy"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "scratched",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "id": "check2",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Check-in two, {r20_years} years in: {r20_final}. And my money tree is speeding up.",
+      "events": {
+        "two": {
+          "word": "two"
+        },
+        "years": {
+          "word": "years"
+        },
+        "amount": {
+          "word": 8
+        },
+        "tree": {
+          "word": "tree"
+        },
+        "speeding": {
+          "word": "speeding"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "two"
+        },
+        {
+          "kind": "riser",
+          "at": "speeding"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "speeding",
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "tree",
+            "prop": "tree",
+            "x": 0.62,
+            "size": 0.22,
+            "k": 0.4
+          },
+          {
+            "id": "years",
+            "prop": "years",
+            "x": 0.84,
+            "y": 0.1,
+            "size": 0.1,
+            "k": 0
+          }
+        ],
+        "actions": [
+          {
+            "at": "years",
+            "do": "fill",
+            "target": "years",
+            "k": 1,
+            "dur": 1.0
+          },
+          {
+            "at": "two",
+            "do": "glow",
+            "target": "tree"
+          },
+          {
+            "at": "years",
+            "do": "shake",
+            "target": "tree"
+          },
+          {
+            "at": "amount",
+            "do": "glow",
+            "target": "years"
+          },
+          {
+            "at": "tree",
+            "do": "fill",
+            "target": "tree",
+            "k": 0.7,
+            "dur": 1.2
+          },
+          {
+            "at": "speeding",
+            "do": "grow",
+            "target": "tree",
+            "scale": 1.1
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "speeding",
+            "size": "medium",
+            "on": "tree",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@r20.final",
+            "text": "{r20_final}",
+            "label": "Invested bonus",
+            "at": "two"
+          }
+        }
+      }
+    },
+    {
+      "id": "tv2",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "My TV finally died. Straight into the bin.",
+      "events": {
+        "tv": {
+          "word": "tv"
+        },
+        "died": {
+          "word": "died"
+        },
+        "bin": {
+          "word": "bin"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "died"
+        },
+        {
+          "kind": "boom",
+          "at": "bin"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "dark"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "sad"
+              },
+              {
+                "at": "bin",
+                "pose": "shrug",
+                "expression": "sad"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "tv",
+            "prop": "tv",
+            "x": 0.6,
+            "size": 0.16,
+            "state": "scratched",
+            "label": "Died"
+          },
+          {
+            "id": "bin",
+            "prop": "bin",
+            "x": 0.85,
+            "size": 0.16
+          }
+        ],
+        "actions": [
+          {
+            "at": "died",
+            "do": "state",
+            "target": "tv",
+            "state": "dead"
+          },
+          {
+            "at": "bin",
+            "do": "move",
+            "target": "bin",
+            "to": {
+              "x": 0.68,
+              "y": 0
+            }
+          },
+          {
+            "at": "bin",
+            "do": "shake",
+            "target": "bin"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "bin",
+            "size": "close",
+            "on": "bin",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2
+        }
+      }
+    },
+    {
+      "id": "check3",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Check-in three, {r30_years} years: {r30_final}. That whole tree grew from one bonus I never touched.",
+      "events": {
+        "three": {
+          "word": "three"
+        },
+        "years": {
+          "word": "years"
+        },
+        "tree": {
+          "word": "tree"
+        },
+        "bonus": {
+          "word": "bonus"
+        },
+        "touched": {
+          "word": "touched"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "three"
+        },
+        {
+          "kind": "riser",
+          "at": "years"
+        },
+        {
+          "kind": "kaching",
+          "at": "touched"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "proud"
+              },
+              {
+                "at": "touched",
+                "pose": "thumbsUp",
+                "expression": "smirk"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "tree",
+            "prop": "tree",
+            "x": 0.66,
+            "size": 0.26,
+            "k": 0.7
+          },
+          {
+            "id": "envelope",
+            "prop": "envelope",
+            "x": 0.88,
+            "size": 0.08,
+            "hidden": true,
+            "label": "Bonus"
+          }
+        ],
+        "actions": [
+          {
+            "at": "three",
+            "do": "glow",
+            "target": "tree"
+          },
+          {
+            "at": "years",
+            "do": "shake",
+            "target": "tree"
+          },
+          {
+            "at": "tree",
+            "do": "fill",
+            "target": "tree",
+            "k": 1,
+            "dur": 1.4
+          },
+          {
+            "at": "bonus",
+            "do": "enter",
+            "target": "envelope"
+          },
+          {
+            "at": "touched",
+            "do": "glow",
+            "target": "tree"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "years",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@r30.final",
+            "text": "{r30_final}",
+            "label": "Invested bonus",
+            "at": "three"
+          }
+        }
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "So that TV never really cost {r30_amount}. It cost Rohan {r30_final}.",
+      "events": {
+        "never": {
+          "word": "never"
+        },
+        "cost": {
+          "word": "cost"
+        },
+        "rohan": {
+          "word": "rohan"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "never"
+        },
+        {
+          "kind": "boom",
+          "at": "rohan"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "paid": "{r30_amount}",
+        "real": "{r30_final}",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "rohan",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Poor people buy the thing. Rich people buy a piece of the people selling it.",
+      "events": {
+        "poor": {
+          "word": "poor"
+        },
+        "thing": {
+          "word": "thing"
+        },
+        "rich": {
+          "word": "rich"
+        },
+        "piece": {
+          "word": "piece"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "thing"
+        },
+        {
+          "kind": "ding",
+          "at": "piece"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "poor": "Poor",
+        "rich": "Rich",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Next bonus? I'm buying the shop, not the screen.",
+      "events": {
+        "next": {
+          "word": "next"
+        },
+        "shop": {
+          "word": "shop"
+        },
+        "screen": {
+          "word": "screen"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "next"
+        },
+        {
+          "kind": "ding",
+          "at": "shop"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "shop",
+                "pose": "point",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "bonus",
+            "spot": "right",
+            "amount": "@r30.invested",
+            "text": "{r30_amount}",
+            "label": "Next bonus",
+            "at": "next",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "next",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "The shop",
+          "at": "shop",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    }
+  ],
+  "narrator": "af_bella"
+}

@@ -1,0 +1,255 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-10-26T22:55:50.627029+00:00",
+    "finishedAt": "2026-10-26T22:55:50.627029+00:00",
+    "notes": [
+      "music genre 'pop' was used by the previous video"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-26T22:55:55.484166+00:00",
+    "finishedAt": "2026-10-26T22:55:55.484166+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-26T22:56:59.632347+00:00",
+    "finishedAt": "2026-10-26T22:56:59.632347+00:00",
+    "notes": [
+      "beat 'hook'.params.objects[0].amount: maths 'r30' has no value or series 'amount'",
+      "beat 'tv1' opens like a line in one of the last scripts ('and my tv'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-26T22:57:11.828406+00:00",
+    "finishedAt": "2026-10-26T22:57:11.828406+00:00",
+    "notes": [
+      "beat 'promise'.events.check: no word 'check' in this beat's spoken line"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T22:57:17.883296+00:00",
+    "finishedAt": "2026-10-26T22:57:17.883296+00:00",
+    "notes": [
+      "21 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+      "warning: beat 'check2' runs 5.1 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T22:57:25.234406+00:00",
+    "finishedAt": "2026-10-26T22:57:25.234406+00:00",
+    "notes": [
+      "21 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T22:57:31.205178+00:00",
+    "finishedAt": "2026-10-26T22:57:31.205178+00:00",
+    "notes": [
+      "21 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-26T22:58:26.666152+00:00",
+    "finishedAt": "2026-10-26T22:58:26.666152+00:00",
+    "notes": [
+      "No sourced facts; feed verify items met (7% stated as assumed in check-in one voice + captions and in description; index fund, no stock or fund named). Lumpsum 5000 at 7% nominal realistic for USD. No imperatives or adviser claims; disclaimer ends description. Notes: figures are nominal (not inflation-adjusted, taxes/fees ignored); 'It cost Rohan $38,061' is opportunity-cost framing (paid 5,000 + 33,061 forgone growth), acceptable; 'Poor people buy the thing' is the format's convention, mild."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-26T22:59:02.790363+00:00",
+    "finishedAt": "2026-10-26T22:59:02.790363+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T22:59:04.011569+00:00",
+    "finishedAt": "2026-10-26T22:59:04.011569+00:00",
+    "notes": [
+      "21 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T22:59:05.090547+00:00",
+    "finishedAt": "2026-10-26T22:59:52.537686+00:00",
+    "notes": [
+      "2.6 s with nothing new on screen in beat 'check2' (at most 2.5 s): add an action on the phrase being said there",
+      "beat 'tv1': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'check2': only 1 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'tv2': only 0 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'check3': only 0 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:00:28.260927+00:00",
+    "finishedAt": "2026-10-26T23:00:28.260927+00:00",
+    "notes": [
+      "21 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+      "warning: beat 'check2' runs 5.6 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-26T23:00:29.322132+00:00",
+    "finishedAt": "2026-10-26T23:01:00.148009+00:00",
+    "notes": [
+      "2.9 s with nothing new on screen in beat 'check2' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:01:15.631025+00:00",
+    "finishedAt": "2026-10-26T23:01:15.631025+00:00",
+    "notes": [
+      "21 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:01:16.871444+00:00",
+    "finishedAt": "2026-10-26T23:01:44.323213+00:00",
+    "notes": [
+      "49 s, ember/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:02:03.198706+00:00",
+    "finishedAt": "2026-10-26T23:02:03.198706+00:00",
+    "notes": [
+      "21 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:02:04.396072+00:00",
+    "finishedAt": "2026-10-26T23:02:34.894725+00:00",
+    "notes": [
+      "49 s, ember/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-26T23:03:49.283569+00:00",
+    "finishedAt": "2026-10-26T23:03:49.283569+00:00",
+    "notes": [
+      "[scene] Payoff component, payoff beat (45.0s): the big caption 'A PIECE OF' sits right over Sharma's face; the component stands him center with his head in the caption band, so his face is hidden.",
+      "[script] check1 (20.0s) and check2 (30.0s): the 'years' prop at x 0.88 runs off the right edge (half a blank card, no readable years count), after the camera moves in; move it inside the frame (~x 0.78) or drop the close-up.",
+      "[script] check2 (30.0s): Sharma is cut in half by the left edge (wide on room); spend (10.0s): Rohan is half off the left edge after the move to medium on all. Use spot ~0.38 or frame the camera on the actor too."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:04:08.035842+00:00",
+    "finishedAt": "2026-10-26T23:04:08.035842+00:00",
+    "notes": [
+      "21 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:04:09.180043+00:00",
+    "finishedAt": "2026-10-26T23:04:39.291109+00:00",
+    "notes": [
+      "49 s, ember/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-26T23:05:07.214683+00:00",
+    "finishedAt": "2026-10-26T23:05:07.214683+00:00",
+    "notes": [
+      "[script] check1 (20.0s): after the camera's close-up on the tree ('bonus'), Sharma (spot 0.38) is cut by the left edge through his face. Frame the close-up on all, or a medium on the tree, so he stays in.",
+      "[script] check2 (30.0s): the years card (x 0.8, moved higher) now sits on the 'INVESTED BONUS' HUD label, covering its last letters, and runs off the top edge. Put it below the HUD, e.g. y ~0.3, on the right."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:05:23.176180+00:00",
+    "finishedAt": "2026-10-26T23:05:23.176180+00:00",
+    "notes": [
+      "21 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:05:24.251829+00:00",
+    "finishedAt": "2026-10-26T23:05:50.475211+00:00",
+    "notes": [
+      "49 s, ember/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:06:08.847874+00:00",
+    "finishedAt": "2026-10-26T23:06:08.847874+00:00",
+    "notes": [
+      "Re-review after fixes: check1/check2 medium shots keep Sharma whole, years card clear of the HUD and inside the frame (only its flipping page grazes the right edge), payoff face below the caption; hook, disclaimer, numbers (9,836/19,348/38,061), thumbnail and audio fine."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:07:29.592412+00:00",
+    "finishedAt": "2026-10-26T23:07:29.592412+00:00",
+    "notes": [
+      "Re-review after render-gate edits: check2/check3 'money tree' lines are a growth metaphor over the computed figures (no promise; 7% stated as assumed in check-in one voice+captions and description), level names First/Second/Final and labels Scratched/Died/Bonus make no claims. No sourced facts; feed verify items met (index fund, nothing named). No imperatives or adviser claims; disclaimer ends description. Notes: figures nominal (no inflation, tax, fees); 'It cost Rohan $38,061' is opportunity-cost framing, acceptable; 'Poor people buy the thing' is the format's convention, mild."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:07:10.766912+00:00",
+    "finishedAt": "2026-10-26T23:10:18.886073+00:00",
+    "notes": [
+      "49 s, ember/synthwave, peak -1.0 dB, mean -16.5 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-26T23:10:33.956004+00:00",
+    "finishedAt": "2026-10-26T23:10:33.956004+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
