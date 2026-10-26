@@ -11,8 +11,11 @@ export function findBrowser(): string | null {
   if (!existsSync(root)) return null;
   const shells = readdirSync(root).filter((d) => d.startsWith("chromium_headless_shell-")).sort().reverse();
   for (const d of shells) {
-    const exe = path.join(root, d, "chrome-linux", "headless_shell");
-    if (existsSync(exe)) return exe;
+    // the layout changed in newer Playwright builds (2026-10-26): accept both
+    for (const exe of [path.join(root, d, "chrome-linux", "headless_shell"),
+      path.join(root, d, "chrome-headless-shell-linux64", "chrome-headless-shell")]) {
+      if (existsSync(exe)) return exe;
+    }
   }
   return null;
 }

@@ -134,8 +134,13 @@ source that shows it, told in a format; expires in 2–4 days; at most a few a w
 format whose reference video has 5M+ views), `normal`. `breaking` is not used any more. Nothing is
 forced on a video: `trending` topics are offered first and jump the upload queue when taken.
 
-**Topic feed** `improvement/research/topics.json` (`{"topics": [...]}`; add to it, never delete
-entries; set `"status": "expired"` or `"rejected"` with a `reason` when one is no longer right):
+**Topic feed** `improvement/research/topics.json` (`{"topics": [...]}`). **First run
+`python -m generator.run prune-feed`**: it drops unused topics that expired, were rejected, waited
+over three weeks, or fall below the best 30 by score, and keeps every topic a video used (owner,
+2026-10-24: old topics compete with new ones, and the feed must not pile up). Then add new ones
+only when they beat what is already open (compare `score` in `python -m generator.run state`);
+set `"status": "rejected"` with a `reason` on any open topic you now judge weak, and the next prune
+removes it:
 ```json
 {"id": "<DAY>-short-kebab", "title": "what the video is about, one line", "category": "salary|car|tax|...",
  "kind": "evergreen|trend|seasonal", "priority": "trending|high|normal",

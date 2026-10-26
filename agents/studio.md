@@ -50,7 +50,9 @@ Write `videos/<id>/plan.json`, following `generator/prompts/planner.md` for the 
 - `title`: a big promise someone would click, in the shape of the reference video's ("Every money
   trap the middle class falls into", "Once you understand X, you'll never Y"). 40–70 characters.
 - `description`: 3–5 lines on what the video covers, then the chapter list (you fill in the real
-  timestamps after rendering), then the disclaimer from `state`.
+  timestamps after rendering), then the line "An animated story with illustrative numbers; the
+  characters are not advisers.", then the disclaimer from `state` (YouTube's policy on content that
+  presents itself as an expert giving financial advice; Shorts carry the same line).
 - `hashtags` (3–6, no `#Shorts`), `hook_style`, `cta`, `seed`, `style` as for a Short.
 
 ```

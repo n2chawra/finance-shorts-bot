@@ -32,7 +32,13 @@ FILE = FILES["short"]   # the Shorts feed, for messages that name it
 PRIORITIES = ("breaking", "trending", "high", "normal")
 URGENT = ("breaking", "trending")   # must be taken next, and jump the upload queue
 TREND_DAYS = 3                       # a trend found by a video run stays urgent this long
-SHOWN = 8   # topics listed to the planner
+SHOWN = 16  # topics listed to the planner, best score first
+# Every unused topic competes, old or new (owner, 2026-10-24: "what if the old topics were actually
+# good"): the planner sees the best by score, not the newest, and `prune` drops what is stale or weak
+# so the feed doesn't pile up.
+STALE_DAYS = 21     # an unused evergreen topic this old is dropped: research has had three weeks to beat it
+MAX_OPEN = 30       # at most this many open topics per feed; the lowest scores go first
+AGE_PENALTY = 0.03  # score lost per day since found (a 21-day-old topic loses 0.63, about a 4x smaller reference)
 
 
 def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
@@ -65,6 +71,65 @@ def why_unavailable(topic: dict, entries: list[dict], today: str) -> str | None:
     return None
 
 
+def score(topic: dict, today: str) -> float:
+    """How good a topic looks: its reference video's demand (log10 of views: 1M = 6, 10M = 7), a
+    bonus for trending and high priority and for a global topic (owner, 2026-10-23: global first),
+    minus a little for every day it has waited."""
+    import math
+    views = (topic.get("demand") or {}).get("views") or 0
+    s = math.log10(max(views, 10_000))
+    s += {"breaking": 2.0, "trending": 2.0, "high": 0.4}.get(topic.get("priority") or "", 0.0)
+    s += 0.6 if topic.get("reach") == "global" else 0.0
+    try:
+        age = (date.fromisoformat(today) - date.fromisoformat(str(topic.get("found")))).days
+    except ValueError:
+        age = 0
+    return round(s - AGE_PENALTY * max(0, age), 2)
+
+
+def prune(topics: list[dict], entries: list[dict], today: str) -> tuple[list[dict], list[str]]:
+    """The feed without what can't or shouldn't be used any more, and why each one went.
+    Kept always: every topic a video used (shipped videos' fact checks look them up). Dropped: an
+    unused topic that expired, was rejected or expired by status, is an evergreen idea older than
+    STALE_DAYS, or falls below the best MAX_OPEN open topics by score."""
+    used = used_ids(entries)
+    kept, gone = [], []
+    for t in topics:
+        if t["id"] in used:
+            kept.append(t)
+            continue
+        why = None
+        if t.get("status", "new") != "new":
+            why = f"status {t.get('status')}"
+        elif (t.get("expires") or "9999-12-31") < today:
+            why = f"expired {t['expires']}"
+        elif t.get("kind", "evergreen") == "evergreen" and t.get("found") and \
+                (date.fromisoformat(today) - date.fromisoformat(t["found"])).days > STALE_DAYS:
+            why = f"unused for over {STALE_DAYS} days"
+        if why:
+            gone.append(f"{t['id']}: {why}")
+        else:
+            kept.append(t)
+    open_ = sorted((t for t in kept if t["id"] not in used), key=lambda t: score(t, today), reverse=True)
+    for t in open_[MAX_OPEN:]:
+        kept.remove(t)
+        gone.append(f"{t['id']}: score {score(t, today)} below the best {MAX_OPEN}")
+    return kept, gone
+
+
+def prune_file(entries: list[dict], today: str, root: Path = ROOT, fmt: str = "short") -> list[str]:
+    """Prune one feed file in place; returns what went (empty: nothing changed)."""
+    path = root / FILES[fmt]
+    if not path.is_file():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    kept, gone = prune([t for t in data.get("topics", []) if isinstance(t, dict) and t.get("id")], entries, today)
+    if gone:
+        data["topics"] = kept
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return gone
+
+
 def fits(topic: dict, templates: list[str]) -> bool:
     """A story template tells any topic of its format, so a topic fits whenever its format has one
     enabled. (Topics written before the Remotion rebuild still name old templates; ignored.)"""
@@ -80,8 +145,9 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
               fmt: str = "short") -> dict:
     """What `state` tells the planner: the open topics, best first (`required` is always None now)."""
     open_ = [t for t in of_format(load(root, fmt), fmt) if why_unavailable(t, entries, today) is None]
-    open_.sort(key=lambda t: t.get("found") or "", reverse=True)   # newest first within a priority (stable sorts)
-    open_.sort(key=lambda t: PRIORITIES.index(t["priority"]) if t.get("priority") in PRIORITIES else len(PRIORITIES) - 1)
+    # every unused topic competes, old or new: best score first (urgent ones still lead)
+    open_.sort(key=lambda t: score(t, today), reverse=True)
+    open_.sort(key=lambda t: 0 if t.get("priority") in URGENT else 1)
     usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed)]
     # offered first, and it still earns one extra video that day, but no plan is forced to take it
     urgent = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p), None)
@@ -91,7 +157,8 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
             "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths")
     return {
-        "topics": [{**{k: t.get(k) for k in keys}, "usable_now": t in usable} for t in shown],
+        "topics": [{**{k: t.get(k) for k in keys}, "score": score(t, today), "found": t.get("found"), "usable_now": t in usable} for t in shown],
+        "open_total": len(open_),
         "required": None,   # nothing is forced since the reset (see the module doc)
         "urgent": urgent,
     }

@@ -18,7 +18,8 @@ bash scripts/setup-voice.sh "$PY"
 command -v node >/dev/null || { echo "setup-cloud: node is missing (Remotion needs Node 18+)" >&2; exit 1; }
 (cd remotion && npm ci --no-audit --no-fund --loglevel=error)
 
-if [ -z "${REMOTION_BROWSER_EXECUTABLE:-}" ] && ! ls /opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell >/dev/null 2>&1; then
+if [ -z "${REMOTION_BROWSER_EXECUTABLE:-}" ] && ! compgen -G "/opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell" >/dev/null \
+  && ! compgen -G "/opt/pw-browsers/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell" >/dev/null; then
   echo "setup-cloud: no headless Chrome under /opt/pw-browsers; set REMOTION_BROWSER_EXECUTABLE" >&2
   exit 1
 fi

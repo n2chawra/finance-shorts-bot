@@ -119,4 +119,34 @@ def test_usable_topics_are_never_hidden_behind_blocked_ones(root: Path) -> None:
 def test_null_dates_in_the_feed_read_as_missing(root: Path) -> None:
     feed(root, topic("a", expires=None), topic("b", found=None), topic("c", expires="2026-10-01"))
     s = topics.for_state([], TODAY, [], TEMPLATES, root)
-    assert [t["id"] for t in s["topics"]] == ["a", "b"]
+    assert sorted(t["id"] for t in s["topics"]) == ["a", "b"]
+
+
+def _t(id_, found, views, **kw):
+    return {"id": id_, "found": found, "status": "new", "kind": "evergreen", "priority": "high",
+            "demand": {"views": views}, "expires": "2027-12-31", **kw}
+
+
+def test_old_topics_with_more_demand_outrank_new_weak_ones():
+    from generator.topics import score
+    old_strong = _t("a", "2026-10-20", 10_000_000, reach="global")
+    new_weak = _t("b", "2026-10-26", 300_000, reach="global")
+    assert score(old_strong, "2026-10-26") > score(new_weak, "2026-10-26")
+
+
+def test_prune_drops_stale_rejected_and_expired_but_keeps_used():
+    from generator.topics import prune
+    topics = [_t("used", "2026-09-01", 1_000_000), _t("stale", "2026-09-01", 9_000_000),
+              _t("rejected", "2026-10-25", 9_000_000, status="rejected"), _t("expired", "2026-10-01", 9_000_000, expires="2026-10-20"),
+              _t("fresh", "2026-10-25", 2_000_000), _t("seasonal", "2026-09-01", 2_000_000, kind="seasonal")]
+    kept, gone = prune(topics, [{"topic": {"feed_id": "used"}}], "2026-10-26")
+    assert [t["id"] for t in kept] == ["used", "fresh", "seasonal"]
+    assert len(gone) == 3
+
+
+def test_prune_caps_open_topics_by_score():
+    from generator import topics as tp
+    many = [_t(f"t{i}", "2026-10-25", 100_000 * (i + 1)) for i in range(tp.MAX_OPEN + 5)]
+    kept, gone = tp.prune(many, [], "2026-10-26")
+    assert len(kept) == tp.MAX_OPEN and len(gone) == 5
+    assert "t0" not in {t["id"] for t in kept}

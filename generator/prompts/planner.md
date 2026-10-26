@@ -43,8 +43,12 @@ salary really leaves you, which money level you are on.
 3. **Pick a specific situation inside the format** that anyone feels: a famous person's or company's
    money move, a raise, a first salary, a credit card bill, a car loan, the food-app habit, what a
    billion dollars looks like. Never a policy, a central bank or an index level.
-4. **Topic feed (`topic_feed`):** research's ideas, already tagged with a format. Use one when it
-   fits (put its id in `topic.feed_id`); none is forced. A `breaking` or `trending` topic is worth
+4. **Topic feed (`topic_feed`):** research's ideas, already tagged with a format: **every unused
+   topic, old or new, best `score` first** (the reference video's views, global and priority
+   bonuses, minus a little per day waiting; `generator/topics.py`). Judge the whole list, not just
+   the newest night's: an older topic with a stronger reference is often the better video. Pick the
+   one with the biggest proven demand that fits today's rules (reach, category, format), put its id
+   in `topic.feed_id`; none is forced. A `breaking` or `trending` topic is worth
    taking when it's something everyone is talking about (a viral scam, a tax change people are
    angry about), told in one of the formats, never as a news bulletin. A topic with `facts` keeps
    its sourced numbers (a `headline` beat shows the source); give the writer its facts and `verify`.

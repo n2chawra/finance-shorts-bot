@@ -1,18 +1,3 @@
 {
-  "notifications": [
-    {
-      "key": "setup-cloud-headless-path",
-      "severity": "info",
-      "title": "setup-cloud.sh no longer finds the cloud image's headless Chrome",
-      "detail": "The cloud image now ships Playwright's headless shell at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell, but scripts/setup-cloud.sh and remotion/scripts/browser.ts look for chrome-linux/headless_shell. setup-cloud.sh exits 1 before its ffmpeg step; renders still work because Remotion downloads its own browser (checked 2026-10-26). Both files are outside the improver's lane.",
-      "fix": "1. In scripts/setup-cloud.sh and remotion/scripts/browser.ts, also accept chrome-headless-shell-linux64/chrome-headless-shell under each chromium_headless_shell-* folder. 2. Or let the auditor fix it (it may change scripts used by renders)."
-    },
-    {
-      "key": "studio-no-adviser-line",
-      "severity": "info",
-      "title": "Long videos: add the 'not advisers' description line to Studio",
-      "detail": "Shorts now carry 'An animated story with illustrative numbers; the characters are not advisers.' before the disclaimer (research no-expert-persona, YouTube's policy on content presenting itself as a human expert giving financial advice). Studio writes long descriptions from agents/studio.md, which the improver may not change. The fact reviewer already rejects adviser lines for both formats.",
-      "fix": "1. In agents/studio.md, under `description`, add: the line before the disclaimer is \"An animated story with illustrative numbers; the characters are not advisers.\""
-    }
-  ]
+  "notifications": []
 }

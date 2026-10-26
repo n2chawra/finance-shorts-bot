@@ -485,6 +485,8 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("fail")
     p.add_argument("id")
     p.add_argument("--reason", required=True)
+    # research and Scout run this before writing new topics: stale, expired and weak unused topics go
+    sub.add_parser("prune-feed").add_argument("--format", choices=("short", "long"), default="short")
     p = sub.add_parser("template-work")
     p.add_argument("template")
     p.add_argument("action")
@@ -518,6 +520,10 @@ def main(argv: list[str] | None = None) -> int:
         if a.cmd == "fail":
             fail(a.id, a.reason)
             print(f"marked {a.id} failed")
+            return 0
+        if a.cmd == "prune-feed":
+            gone = topics.prune_file(history.of_format(history.load(), a.format), history.ist_day(history.now().isoformat()), fmt=a.format)
+            print("\n".join(f"dropped {g}" for g in gone) or "nothing to drop")
             return 0
         if a.cmd == "template-work":
             print(json.dumps(history.append_template_work(a.template, a.action, a.enabled)))
