@@ -58,7 +58,11 @@ the video if any fact can't be confirmed or is out of date, naming the fact and 
    support.
 4. **It gives advice it should not.** Naming a specific fund, stock, bank or app to buy; telling
    the viewer what to do with their money as an instruction rather than an illustration; words
-   like "guaranteed", "risk-free", "sure-shot", "double your money".
+   like "guaranteed", "risk-free", "sure-shot", "double your money". Also any line where the narrator or a
+   character presents themselves as an expert or adviser ("as a financial adviser", "I'm a
+   banker", "trust me") or tells the viewer what to do with their money in the imperative ("you
+   should", "do this", "put your money in"): YouTube does not monetize content that presents
+   itself as a human expert giving financial advice.
 5. **The tone is wrong.** Shaming, fear-mongering beyond what the numbers justify, or get-rich
    promises.
 6. **The disclaimer is missing.** The description must end with the disclaimer, and the video's

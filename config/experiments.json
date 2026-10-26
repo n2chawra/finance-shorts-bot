@@ -64,6 +64,23 @@
       "description": "Long videos: a two-line chart shades the gap between the lines as it draws and pops a chip naming the gap's figure (remotion/src/scenes/data.tsx ChartScene, `gap`)",
       "minPerArm": 4,
       "maxDays": 42
+    },
+    {
+      "id": "loop-picture-matches-hook",
+      "area": "ending",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-10-26",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "prompt": {
+        "on": "Ending rule for this video: the last beat returns to the picture of the first beat, so the replay seam is invisible. Use the hook's set (its fallback `params.set`) in the last beat, and end its camera on a `wide` key on the same subject the hook shows, at least 1 s before the end. No close-up in the last beat holds longer than 1 s. The loop line already leads back in sound; make the picture lead back too.",
+        "off": null
+      },
+      "proposal": "loop-picture-matches-hook",
+      "description": "Shorts: the last beat ends on the hook's set at a wide shot, so the loop seam is invisible"
     }
   ]
 }

@@ -22,7 +22,7 @@ import { AbsoluteFill, spring } from "remotion";
 import { CAST } from "../cast/cast";
 import { Actor, type ActorSpec, at, clamp, type SceneProps, sec } from "../scenes/kit";
 import { FONT } from "../design/fonts";
-import { between, breathe, frameOn, type Frame, type ShotSize } from "./camera";
+import { between, breathe, frameOn, type Frame, keepInside, type ShotSize } from "./camera";
 import { CashStack, type Cur, MoneyFlow, PhoneApp } from "./money";
 import { SETS } from "./sets";
 
@@ -54,6 +54,7 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
   const maxAmount = Math.max(1, ...stacks.map((s) => s.amount ?? 1));
   const stackFull = h * (v ? 0.42 : 0.5);
   const stackTop = (o: StackObj) => S.ground - stackFull * ((o.amount ?? 1) / maxAmount);
+  const stackW = v ? 230 : 180, phoneW = v ? 380 : 360;   // a long phone at 280 drew its lines under 30 px
   const head = (who: string) => {
     const a = actors.find((x) => x.who === who);
     if (!a) return null;
@@ -64,6 +65,15 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
   const phoneAt = (o: PhoneObj): [number, number] => [spotX(o.spot, S.center), h * (o.height ?? 0.42)];
   const byId = (id: string) => objects.find((o) => (o.kind === "stack" || o.kind === "phone") && o.id === id) as StackObj | PhoneObj | undefined;
   const objAt = (o: StackObj | PhoneObj): [number, number] => o.kind === "stack" ? [spotX(o.spot, S.center), stackTop(o)] : phoneAt(o);
+  // what a shot on an object must keep whole: a stack's tag and label, a whole phone (tilted)
+  const box = (o: StackObj | PhoneObj): [number, number, number, number] => {
+    if (o.kind === "stack") {
+      const x = spotX(o.spot, S.center), y = stackTop(o) - 40;
+      return [x - stackW * 0.75, y - (o.label ? 78 + stackW * 0.25 : 62), x + stackW * 0.75, y + 16];
+    }
+    const [x, y] = phoneAt(o), hw = phoneW / 2 + 16, hh = phoneW * 1.025 + 16;
+    return [x - hw - hh * 0.09, y - hh - hw * 0.09, x + hw + hh * 0.09, y + hh + hw * 0.09];
+  };
   const place = (name: string): [number, number] => {
     const o = byId(name);
     if (o) return objAt(o);
@@ -79,7 +89,7 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
       return [pts.reduce((a, b) => a + b[0], 0) / pts.length, pts.reduce((a, b) => a + b[1], 0) / pts.length + h * 0.06];
     }
     const o = byId(on);
-    if (o) { const [x, y] = objAt(o); return o.kind === "stack" ? [x, y + 80] : [x, y]; }
+    if (o) { const [x0, y0, x1, y1] = box(o); return [(x0 + x1) / 2, (y0 + y1) / 2]; }   // a stack is framed on its tag
     return head(on) ?? [w / 2, h / 2];
   };
 
@@ -87,16 +97,24 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
   const keys = (P.camera?.length ? P.camera : [{ size: "medium" as ShotSize, on: actors[0]?.who }]).map((k) => ({
     ...k, start: k.sec ?? at(p, k.at, 0),
   }));
-  let fr: Frame = frameOn(keys[0]!.size, ...target(keys[0]!.on), w, h);
-  let since = t - keys[0]!.start;
+  const keyObj = (k: CamKey) => k.on ? byId(k.on) : undefined;
+  const frameKey = (k: CamKey): Frame => {
+    const f = frameOn(k.size, ...target(k.on), w, h), o = keyObj(k);
+    return o ? keepInside(f, box(o), w, h) : f;
+  };
+  let fr: Frame = frameKey(keys[0]!);
+  let since = t - keys[0]!.start, cur0 = keys[0]!, moving = false;
   for (let i = 1; i < keys.length; i++) {
     const k = keys[i]!;
     if (t < k.start) break;
-    const next = frameOn(k.size, ...target(k.on), w, h);
+    const next = frameKey(k);
+    moving = !!k.move && t - k.start < 0.6;
     fr = k.move ? between(fr, next, (t - k.start) / 0.6) : next;
-    since = t - k.start;
+    since = t - k.start; cur0 = k;
   }
   fr = breathe(fr, since, w, h, p.beat.from % 7);
+  const held = keyObj(cur0);
+  if (held && !moving) fr = keepInside(fr, box(held), w, h);   // the slow push never crops the figure
   const layer = (depth: number) => {      // parallax: the back moves less, the front more
     const s = 1 + (fr.s - 1) * depth;
     return { transform: `translate(${fr.tx * depth}px, ${fr.ty * depth}px) scale(${s})`, transformOrigin: "0 0" };
@@ -119,7 +137,7 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
           {stacks.map((o, i) => {
             const start = at(p, o.at, 0.2);
             const k = clamp((t - start) / 1.1);
-            return <CashStack key={`s${i}`} x={spotX(o.spot, S.center)} ground={S.ground} width={v ? 230 : 180} full={stackFull * ((o.amount ?? 1) / maxAmount)}
+            return <CashStack key={`s${i}`} x={spotX(o.spot, S.center)} ground={S.ground} width={stackW} full={stackFull * ((o.amount ?? 1) / maxAmount)}
               k={k} cur={cur} label={o.label} text={o.text} textShown={k >= 1} tone={o.tone} seed={`${p.beat.id}s${i}`} />;
           })}
           {actors.map((a, i) => <Actor key={a.who + i} p={p} spec={{ ...a, x: spotX(a.spot, S.center) / w, scale: aScale(a) }} ground={S.ground} index={i} />)}
@@ -129,7 +147,7 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
             const k = clamp((t - start) / 0.45);
             return (
               <g key={`p${i}`} transform={`translate(0,${(1 - k) * h * 0.5})`} opacity={k}>
-                <PhoneApp x={x} y={y} pw={v ? 380 : 280} t={t} title={o.title ?? ""} figure={o.figure} figureShown={t >= start + 0.4}
+                <PhoneApp x={x} y={y} pw={phoneW} t={t} title={o.title ?? ""} figure={o.figure} figureShown={t >= start + 0.4}
                   lines={(o.lines ?? []).map((l, j) => ({ ...l, at: at(p, l.at, start + 0.6 + j * 0.5) }))}
                   toasts={(o.toasts ?? []).map((n, j) => ({ ...n, at: at(p, n.at, start + 0.3 + j * 0.7) }))} />
               </g>
@@ -151,7 +169,8 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
           top: v ? h * 0.15 : h * 0.1, textAlign: word.where === "left" ? "left" : word.where === "right" ? "right" : "center" }}>
           <span style={{ display: "inline-block", fontFamily: FONT, fontWeight: 900, fontSize: v ? 150 : 110, lineHeight: 1, textTransform: "uppercase",
             color: WORD_COLORS[word.color ?? "gold"] ?? WORD_COLORS.gold, WebkitTextStroke: `${v ? 16 : 12}px #000`, paintOrder: "stroke fill",
-            transform: `translateY(${(1 - wk) * -260}px) scale(${0.7 + 0.3 * wk}) rotate(${(1 - wk) * -8 - 3}deg)`,
+            // a long frame's word sits 108 px from the top: a short drop keeps it inside the frame
+            transform: `translateY(${(1 - wk) * (v ? -260 : -50)}px) scale(${0.7 + 0.3 * wk}) rotate(${(1 - wk) * (v ? -8 : -4) - 3}deg)`,
             filter: "drop-shadow(0 14px 0 rgba(0,0,0,0.5))" }}>{word.text}</span>
         </div>
       )}

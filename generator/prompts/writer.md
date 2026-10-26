@@ -52,6 +52,12 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   person, a salesman and a customer. Give most lines to the cast (`speaker`: rohan, priya, sharma),
   keep the narrator for a line or two. Characters react: surprise, envy, outrage, a punchline.
   Talk like a person: short sentences, everyday words, one idea each, a joke where it fits.
+- **Nobody on screen is an adviser** (YouTube's monetization policy excludes content presenting
+  itself as a human expert giving financial advice; our narrator is a synthetic voice). No line
+  claims credentials or expertise ("as a financial adviser", "I'm a banker", "trust me") and no
+  line tells the viewer what to do with their money ("you should", "do this", "put your money
+  in"). The cast talk about themselves, each other or "the rich": "The rich don't let it." is
+  fine, "You should do this." is not.
 - **Big captions show every spoken word** (drawn automatically from the voice), so scenes carry the
   picture and the figures, not sentences. Keep on-screen text to labels and numbers.
 - **The first second decides everything.** The first spoken line lands in under 1.5 s and is the

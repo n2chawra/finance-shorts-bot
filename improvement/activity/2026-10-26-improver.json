@@ -1,0 +1,76 @@
+{
+  "agent": "improver",
+  "day": "2026-10-26",
+  "startedAt": "2026-10-26T00:48:24Z",
+  "finishedAt": "2026-10-26T00:56:40Z",
+  "summary": "Fixed four long-video shot bugs that made Studio drop close shots on money, big words and flying notes, adopted a rule that nobody on screen acts as a financial adviser, and started one Shorts experiment on the loop seam (loop-picture-matches-hook).",
+  "decision": "acted",
+  "why": "Two high-priority Scout adopt items (L-20261023-01 failed the layout probe on 30+ texts) plus two related ones, and a high-confidence research adopt item tied to YouTube's monetization policy. All four running experiments still wait for data; one experiment slot (5 max) was free and the ending area unused.",
+  "findings": [
+    {
+      "title": "22 Shorts have 48 h data",
+      "detail": "quiet-bed 1 of 4 long per arm, hook-voice-matches-frame 1 of 8, title-names-the-moment 0 of 8, chart-gap-fill 0 of 4: all wait."
+    },
+    {
+      "title": "Hook style",
+      "detail": "shock_number 1.14× median 48 h views (n=5, 38.1% viewed), question 0.74× (n=5), myth 0.34× (n=5, 24.9%)."
+    },
+    {
+      "title": "Length",
+      "detail": "25-29 s Shorts 3.51× (52.3% viewed, n=3); 50-54 s 0.34× (22.0%, n=3)."
+    },
+    {
+      "title": "Voice",
+      "detail": "am_michael 1.00× with 49.3% viewed (n=6); videos without a narrator voice 0.34× (22.1%, n=5)."
+    },
+    {
+      "title": "Formats",
+      "detail": "Only rule_change has 3+ Shorts (n=3, 43.2% viewed): not under the median, so no format retired."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Close shots on money keep the figure in frame",
+      "detail": "A shot on a stack frames its tag and label; a shot on a stack or phone zooms out just enough to keep it whole, also through the slow push (camera.ts keepInside, with tests). Test timeline: the targeted stacks' and phone's figures no longer leave the frame.",
+      "branch": "agent/improver/2026-10-26",
+      "experiment": "2026-10-23-shot-close-crops-tags"
+    },
+    {
+      "title": "Long phone readable",
+      "detail": "The phone is 360 px wide in long videos (was 280, lines ~25 px under the 30 px minimum); a label too long for its row ('Market, assumed' / '8%') goes above the value.",
+      "branch": "agent/improver/2026-10-26",
+      "experiment": "2026-10-23-shot-phone-text-small-wide"
+    },
+    {
+      "title": "Big word stays inside the frame",
+      "detail": "In long videos the drop-in word falls 50 px from inside the frame instead of 260 px from above it.",
+      "branch": "agent/improver/2026-10-26",
+      "experiment": "2026-10-23-shot-word-drop-offframe"
+    },
+    {
+      "title": "Flying notes no longer fail the probe",
+      "detail": "The note's small currency sign is decoration (like Sikka's coin), not text to read.",
+      "branch": "agent/improver/2026-10-26",
+      "experiment": "2026-10-23-shot-flow-glyph-small"
+    },
+    {
+      "title": "No adviser persona",
+      "detail": "Writer rule and fact-review reject reason: no line claims expertise or tells the viewer what to do with their money; descriptions say the characters are not advisers.",
+      "branch": "agent/improver/2026-10-26",
+      "experiment": "no-expert-persona"
+    },
+    {
+      "title": "Experiment: loop picture matches the hook",
+      "detail": "Half the Shorts end their last beat on the hook's set at a wide shot, so the replay seam is invisible. Judged on % viewed, 8 per arm.",
+      "branch": "agent/improver/2026-10-26",
+      "experiment": "loop-picture-matches-hook"
+    }
+  ],
+  "nextCheck": "2026-10-27",
+  "links": [
+    {
+      "label": "Research report",
+      "url": "improvement/research/2026-10-26.md"
+    }
+  ]
+}
