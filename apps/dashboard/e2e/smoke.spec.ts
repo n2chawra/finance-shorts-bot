@@ -244,3 +244,21 @@ test("videos search box clears when the link drops the search", async ({ page, i
   await expect(page).not.toHaveURL(/q=/);
   await expect(box).toHaveValue("");
 });
+
+test("queue trend badge names its post-by day, or none", async ({ page }) => {
+  await signIn(page);
+  // a trend topic without an expiry has until "" and the badge once read "Trending · post by "; a dated one read "10-28"
+  await page.route("**/api/queue", async (route) => {
+    if (route.request().method() !== "GET") return route.continue();
+    const res = await route.fetch();
+    const videos = (await res.json()) as { style: { source?: Record<string, unknown> } }[];
+    videos[0].style.source = { feedId: "t1", kind: "trend", feedPriority: "trending", urgent: { level: "trending", until: "2026-10-28" } };
+    videos[1].style.source = { feedId: "t2", kind: "news", feedPriority: "breaking", urgent: { level: "breaking", until: "" } };
+    await route.fulfill({ response: res, json: videos });
+  });
+  await page.goto("/queue");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Queue/, { timeout: 30_000 });
+  await expect(page.getByText("Trending · post by 28 Oct", { exact: true })).toBeVisible();
+  await expect(page.getByText("Breaking", { exact: true })).toBeVisible();
+  await expect(page.getByText(/post by\s*$/)).toHaveCount(0);
+});

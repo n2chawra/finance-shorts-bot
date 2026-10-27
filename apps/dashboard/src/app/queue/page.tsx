@@ -8,7 +8,7 @@ import { useState } from "react";
 import { CopyButton, MarkUploaded, uploadText } from "@/app/videos/[id]/publish-tools";
 import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, Loading, PageHeader, Stagger, Thumb, Toggle, VideoLink, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
+import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
 import { type Format, type PlanSlot, madeBy, postingPlan, runway } from "@/lib/posting-plan";
 import { useOverview, usePatchSettings, useQueue, useReorder, useSettings, useVideoAction, useVideos } from "@/lib/queries";
 import { describeTimes } from "@/lib/slots";
@@ -30,7 +30,7 @@ function Origin({ v }: { v: Video }) {
   return (
     <span className="inline-flex flex-wrap items-center gap-1">
       <Badge>{madeBy(v)}</Badge>
-      {s?.urgent ? <Badge tone="critical" icon={Flame}>{titleCase(s.urgent.level)} · post by {s.urgent.until.slice(5)}</Badge>
+      {s?.urgent ? <Badge tone="critical" icon={Flame}>{titleCase(s.urgent.level)}{/^\d{4}-\d{2}-\d{2}/.test(s.urgent.until) ? ` · post by ${fmtDayKey(s.urgent.until.slice(0, 10))}` : ""}</Badge>
         : s?.feedId ? <Badge tone="info">{s.kind ? `${titleCase(s.kind)} topic` : "Feed topic"}</Badge>
         : <Badge tone="neutral">Evergreen pick</Badge>}
     </span>
