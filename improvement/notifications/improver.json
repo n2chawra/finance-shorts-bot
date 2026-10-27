@@ -1,3 +1,11 @@
 {
-  "notifications": []
+  "notifications": [
+    {
+      "key": "evaluate-voice-heard-ranking",
+      "severity": "info",
+      "title": "Let the evaluator rank voices by what viewers hear",
+      "detail": "Research's evaluate-voice-heard: 'voice' in the evaluator names only the narrator, but in our best Shorts the cast speaks 80-100% of the words. Manifests now carry heard.hookVoice and heard.narratorShare (from tonight's ship code). improvement/evaluate.py is owner-only, so the ranking is yours to add. Measured on today's data from the scripts: hook voice am_fenrir (Sharma) 15.8x median 48 h views (n=4), narrator 0-24% of words 31.2x (n=3) vs 75-100% 0.66x (n=5).",
+      "fix": "1. In improvement/evaluate.py attributes(), add two keys: (lambda v: v.get('hookVoice'), 'hook voice') and the narrator share in quarters, (lambda v: <'0-24% of words' … '75-100% of words'>, 'narrator'). 2. Fill them in report(): for each row without narratorShare, read videos/<id>/script.json and take the first spoken beat's voice (CAST_VOICES from renderer/timeline/build.py, else render.json voice.name) and the narrator's share of words; generator.run.heard(script, narrator) already computes both. 3. Add a test in improvement/tests/test_evaluate.py."
+    }
+  ]
 }

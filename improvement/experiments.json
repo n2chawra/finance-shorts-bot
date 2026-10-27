@@ -428,6 +428,65 @@
       "description": "The banknote's sign glyph is decoration (data-probe skip, like Sikka's coin), not text to read.",
       "evidence": "Scout 2026-10-23: the 20 px '$' on flying notes failed the probe; Studio removed every flow.",
       "commits": []
+    },
+    {
+      "id": "evaluate-voice-heard",
+      "proposal": "evaluate-voice-heard",
+      "area": "voice",
+      "status": "adopted",
+      "startedAt": "2026-10-27",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "The manifest records `heard`: hookVoice (the voice of the first spoken line) and narratorShare (% of words the narrator speaks), so the voice ranking can follow what viewers hear. The ranking itself needs improvement/evaluate.py (owner-only): see notifications.",
+      "evidence": "Research 2026-10-27: 'voice am_michael' is credited for v-20261021-05 and v-20261023-01, where the narrator speaks 15-16% of the words and Sharma most. On today's data, cast-first Shorts (hook voice am_fenrir, n=4) and narrator 0-24% of words (n=3) lead 48 h views.",
+      "commits": []
+    },
+    {
+      "id": "2026-10-26-list-thumb-types",
+      "proposal": "2026-10-26-list-thumb-types",
+      "area": "thumbnail",
+      "status": "adopted",
+      "startedAt": "2026-10-27",
+      "templates": [
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "list_explained videos may use a scene thumbnail as a third type, so Test & Compare gets three different types.",
+      "evidence": "Scout 2026-10-26: L-20261026-01 could ship only two thumbnails (FORMAT_TYPES allowed grid or face, variants must differ).",
+      "commits": []
+    },
+    {
+      "id": "2026-10-21-renderjson-tempo",
+      "proposal": "2026-10-21-renderjson-tempo",
+      "area": "pipeline",
+      "status": "adopted",
+      "startedAt": "2026-10-27",
+      "templates": [
+        "long_story",
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "description": "render.json reports the timeline's tempo (1.4 Shorts, 1.5 long) instead of a fixed 1.0.",
+      "evidence": "Scout 2026-10-21: L-20261021-01 and L-20261019-02 rendered at 1.5, render.json said 1.0.",
+      "commits": []
+    },
+    {
+      "id": "2026-10-23-negative-money-format",
+      "proposal": "2026-10-23-negative-money-format",
+      "area": "text",
+      "status": "adopted",
+      "startedAt": "2026-10-27",
+      "templates": [
+        "long_story",
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "description": "A negative amount shows its sign before the currency (-$19,470, -₹15.0 L) in Python and the Remotion count-up, and the voice reads it as 'minus'. long_story README notes lumpsum takes a negative rate_pct.",
+      "evidence": "Scout 2026-10-23: lumpsum at -15% gave gains '$-19,470'.",
+      "commits": []
     }
   ]
 }

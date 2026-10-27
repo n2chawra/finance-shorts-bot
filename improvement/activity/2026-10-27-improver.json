@@ -1,0 +1,54 @@
+{
+  "agent": "improver",
+  "day": "2026-10-27",
+  "startedAt": "2026-10-27T00:48:37Z",
+  "finishedAt": "2026-10-27T00:55:57Z",
+  "summary": "Adopted four fixes: manifests now record whose voice viewers hear (the hook's voice and the narrator's share of words), list videos can get three different thumbnail types, render.json reports the real tempo, and a falling value shows as -$19,470 and is read as 'minus'. All five experiments still wait for data.",
+  "decision": "acted",
+  "why": "Nothing matured (all five experiments short of their per-arm minimum) and experiments are at the cap of 5, so no new A/B. One research adopt/high item and three Scout adopt bugs were ready and inside the improver's lane.",
+  "findings": [
+    {
+      "title": "25 videos have 48 h data",
+      "detail": "quiet-bed 1 of 4 long per arm, hook-voice-matches-frame 3 of 8, title-names-the-moment 1 of 8, chart-gap-fill 0 of 4, loop-picture-matches-hook 0 of 8: all wait."
+    },
+    {
+      "title": "Who speaks matters more than the narrator's name",
+      "detail": "From the scripts: Shorts opened by Sharma (am_fenrir) 15.8x median 48 h views (n=4, 79% viewed); narrator under 25% of words 31.2x (n=3) vs narrator 75-100% 0.66x (n=5). Supports research's cast-voices-the-story, queued for the next free slot."
+    },
+    {
+      "title": "Music and length",
+      "detail": "cinematic 30.8x (n=3, 96% viewed), 25-29 s Shorts 17.1x (n=4, 82% viewed); myth hooks 0.33x (n=5, 24.5%)."
+    },
+    {
+      "title": "Formats",
+      "detail": "Only rule_change has 3+ Shorts (n=3, 42.9% viewed): not under the median, nothing retired."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Manifest field heard {hookVoice, narratorShare}",
+      "detail": "generator/run.py heard(); ranking in the evaluator needs the owner (notification).",
+      "branch": "agent/improver/2026-10-27",
+      "experiment": "evaluate-voice-heard"
+    },
+    {
+      "title": "list_explained thumbnails: grid, face or scene",
+      "detail": "renderer/thumbs.py; test that every format allows 3 types.",
+      "branch": "agent/improver/2026-10-27",
+      "experiment": "2026-10-26-list-thumb-types"
+    },
+    {
+      "title": "render.json tempo",
+      "detail": "renderer/remotion.py reports the timeline's tempo instead of 1.0.",
+      "branch": "agent/improver/2026-10-27",
+      "experiment": "2026-10-21-renderjson-tempo"
+    },
+    {
+      "title": "Negative money: sign before the currency",
+      "detail": "formatting.py and remotion/src/fmt/inr.ts (parity fixtures with negatives), voice reads 'minus', long_story README notes negative rate_pct.",
+      "branch": "agent/improver/2026-10-27",
+      "experiment": "2026-10-23-negative-money-format"
+    }
+  ],
+  "nextCheck": "2026-10-28"
+}
