@@ -29,7 +29,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 LONG_TYPES = ("grid", "ladder", "extremes", "face", "scene")
 FORMAT_TYPES = {
-    "list_explained": ("grid", "face"),
+    "list_explained": ("grid", "face", "scene"),   # three: Test & Compare asks for three different types
     "which_one_are_you": ("ladder", "extremes", "face"),
     "rich_vs_poor": ("extremes", "grid", "face"),
     "how_they_make_money": ("scene", "face", "grid"),
