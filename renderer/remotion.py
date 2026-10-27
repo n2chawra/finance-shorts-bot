@@ -266,7 +266,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         line["fill"] = round(line["seconds"]/line["window"], 3) if line["window"] else 0.0
     report = {
         "template": tl.get("template"), "renderer": "remotion", "seed": tl["seed"], "duration_sec": round(seconds),
-        "tempo": 1.0, "style": tl.get("style") or {"palette": None, **tl["music"]},
+        "tempo": tl.get("tempo", 1.0), "style": tl.get("style") or {"palette": None, **tl["music"]},
         "voice": {"name": tl["voices"]["narrator"], "base_speed": tl["speed"], "cast": tl["voices"], "lines": lines},
         "layout_problems": layout_problems(probes, tl["format"], tl["width"], tl["height"], tl["fps"]),
         "experiments": tl.get("experiments") or {},
