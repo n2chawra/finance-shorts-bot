@@ -1583,6 +1583,191 @@
       "verify": [
         "3% inflation and 7% return stated as assumed, illustrative"
       ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-28",
+      "expires": "2027-01-26",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "id": "2026-10-28-where-a-60k-salary-goes",
+      "title": "$60,000 a year: where every dollar actually goes",
+      "category": "salary",
+      "priority": "high",
+      "stories": [
+        "salary_breakdown"
+      ],
+      "demand": {
+        "title": "How much money is in your bank account?",
+        "views": 42000000,
+        "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
+      },
+      "hook": "$60,000 a year sounds like a lot. Watch where it goes.",
+      "angle": "A $60,000 salary split by assumed shares (tax, rent, car, food, phone and subscriptions) leaves a few hundred a month; that leftover invested for 30 years is the only line that grows.",
+      "why_now": "salary_breakdown has never been told (untried-format bonus) and its only open topic is local (New York); this is the global version of a 42M-view format.",
+      "maths": "fee_take per share (amount 60000, fee_pct an assumed 22 tax / 30 rent / 10 car / 12 food / 4 phone+subscriptions, per_year 1, years 1); sip (monthly = what is left / 12, rate_pct an assumed 7, years 30)",
+      "verify": [
+        "every share and the 7% return stated as assumed, illustrative; no country tax rule named"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-28",
+      "expires": "2027-01-26",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "id": "2026-10-28-split-a-billionaire-with-everyone",
+      "title": "If one $200 billion fortune were split among everyone on Earth",
+      "category": "wealth",
+      "priority": "normal",
+      "stories": [
+        "money_scale"
+      ],
+      "demand": {
+        "title": "What If Billionaires Divided Their Money Among Everyone? 😱💰🌍",
+        "views": 204308,
+        "url": "https://www.youtube.com/shorts/5oZL2CD8njY"
+      },
+      "hook": "Split the richest fortune on Earth with everyone. What do you get?",
+      "angle": "An assumed $200B fortune shared by 8 billion people is about $25 each, a dinner; the same fortune is still 2,000 lifetimes of $100,000 a year. Huge to one person, tiny spread out.",
+      "why_now": "In this week's market data (204K views, 89 s); the split-the-billions idea trends in articles (Upworthy, GOBankingRates).",
+      "maths": "fee_take (amount 200000000000, fee_pct 0.0000000125 = 1 share in 8 billion, per_year 1, years 1) for the per-person figure; fee_take (amount 100000, fee_pct 100, per_year 1, years 40) for one career; compare. Clumsy: see proposal maths-divide-and-scale.",
+      "verify": [
+        "$200B and 8 billion people stated as assumed round figures, not a named person's net worth"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-28",
+      "expires": "2027-01-26",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "id": "2026-10-28-guess-what-a-1-percent-fee-costs",
+      "title": "Guess what a 1% fee costs you over 40 years",
+      "category": "investing",
+      "priority": "high",
+      "stories": [
+        "guess_the_number"
+      ],
+      "demand": {
+        "title": "Compound interest explained",
+        "views": 9061008,
+        "url": "https://www.youtube.com/shorts/rrpn3zo2Slo"
+      },
+      "hook": "A 1% fee. Guess what it costs you.",
+      "angle": "$500 a month for 40 years at an assumed 7% vs 6% after a 1% fee: the gap is hundreds of thousands. Viewers guess low; the reveal is the gap.",
+      "why_now": "guess_the_number is told once (v-20261022-02, 68% viewed, our third best by % viewed); this is a new number, not the same $X a month becomes.",
+      "maths": "sip (monthly 500, rate_pct an assumed 7, years 40); sip (monthly 500, rate_pct an assumed 6, years 40); compare",
+      "verify": [
+        "7% and 1% fee stated as assumed, illustrative; no fund or provider named"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-28",
+      "expires": "2027-01-26",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "id": "2026-10-28-the-forever-car-payment",
+      "title": "The car payment that never ends",
+      "category": "car",
+      "priority": "high",
+      "stories": [
+        "trap_alert"
+      ],
+      "demand": {
+        "title": "The Middle Class EMI Trap",
+        "views": 7000000,
+        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
+      },
+      "hook": "He has paid for a car every month for 40 years.",
+      "angle": "Trading in for a new car on a loan every 5 years means $600 a month forever; the same $600 invested from 25 to 65 at an assumed 7%. Levels: year 5, 20, 40.",
+      "why_now": "trap_alert is our most-told format, but every open one is about raises, cards or EMIs on a single purchase; the forever payment is the repeating version.",
+      "maths": "emi (amount 30000, rate_pct an assumed 7, months 60); fee_take (amount = emi, fee_pct 100, per_year 12, years 40); sip (monthly = emi, rate_pct an assumed 7, years 40); compare",
+      "verify": [
+        "loan rate and return stated as assumed, illustrative"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-28",
+      "expires": "2027-01-26",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "id": "2026-10-28-once-you-understand-doubling",
+      "title": "Once you understand the rule of 72, you see money double",
+      "category": "investing",
+      "priority": "normal",
+      "stories": [
+        "once_you_understand"
+      ],
+      "demand": {
+        "title": "Once You Understand Economics, You Can't Be MANIPULATED Anymore",
+        "views": 3700294
+      },
+      "hook": "Once you understand this rule, you'll know when your money doubles.",
+      "angle": "72 divided by the return: at an assumed 7%, $10,000 doubles about every 10 years, so 40 years is four doublings, $160,000 (lumpsum shows the exact figure).",
+      "why_now": "once_you_understand has one open topic and has never been told; a second idea lets the planner try the format either way.",
+      "maths": "lumpsum (amount 10000, rate_pct an assumed 7, years 10); lumpsum (amount 10000, rate_pct an assumed 7, years 40)",
+      "verify": [
+        "the rule of 72 called an approximation; the exact lumpsum figure shown"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-28",
+      "expires": "2027-01-26",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "id": "2026-10-28-which-car-buyer-are-you",
+      "title": "Which car buyer are you: new on a loan, used in cash, or the bus?",
+      "category": "car",
+      "priority": "high",
+      "stories": [
+        "which_one_are_you"
+      ],
+      "demand": {
+        "title": "Do These 5 Things To Win With Money",
+        "views": 6400000,
+        "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"
+      },
+      "hook": "Three friends, three cars. Which one are you?",
+      "angle": "Same $50,000 salary: a $40,000 new car on a loan, a $12,000 used car in cash, or the bus; what each one has invested after 10 years. Three levels, one per friend.",
+      "why_now": "v-20261026-02 (which saver are you) has 515 views in its first day, ahead of every other Short that week; a second idea in the same format.",
+      "maths": "emi (amount 40000, rate_pct an assumed 7, months 72); sip (monthly = the payment avoided, rate_pct an assumed 7, years 10) ×2; compare",
+      "verify": [
+        "prices, loan rate and return stated as assumed, illustrative"
+      ]
     }
   ]
 }

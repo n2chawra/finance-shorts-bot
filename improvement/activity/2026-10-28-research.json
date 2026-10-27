@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "day": "2026-10-28",
+  "startedAt": "2026-10-27T18:21:37Z",
+  "finishedAt": "2026-10-27T18:26:06Z",
+  "summary": "Wednesday pacing and motion pass on our first three 45-75 s Shorts: the levels play on flat sets and all three share one shot skeleton with an action-free ending. Added 6 global topics (salary_breakdown now tops the feed) and 4 proposals.",
+  "decision": "acted",
+  "why": "Own timelines: build beats on a flat lavender set while hook/turn/payoff are lit; identical transitions and ending framing in 3 of 3 new Shorts; turn+payoff+loop (9.6-10.5 s) carry no prop actions. Feed gaps: salary_breakdown never told (42M reference), once_you_understand untried.",
+  "findings": [
+    {
+      "title": "The levels look flatter than the hook",
+      "detail": "v-20261027-03: lit night sets at 0, 40, 48 s; flat lavender sky with an empty top half at 5-35 s. Same in -01 and -02.",
+      "link": "videos/v-20261027-03/preview.png"
+    },
+    {
+      "title": "Three Shorts, one skeleton",
+      "detail": "Transitions cut 1 / match 5-6 / whip 4-5 / zoom 1 and the same turn/payoff/loop framing in all three; the last ~10 s have no prop actions.",
+      "link": "videos/v-20261027-02/timeline.json"
+    },
+    {
+      "title": "Which-saver Short off to the best start this week",
+      "detail": "v-20261026-02: 515 views in its first day; a second which_one_are_you topic added.",
+      "link": "metrics/videos.json"
+    },
+    {
+      "title": "Split-the-billionaires Short in the market data",
+      "detail": "204K views, 89 s; money-scale topics need a share/division maths kind (template proposal).",
+      "link": "https://www.youtube.com/shorts/5oZL2CD8njY"
+    },
+    {
+      "title": "Claude Code 2.1.311",
+      "detail": "Fixes and runner/cloud-session changes; nothing for the pipeline.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "6 topics added to the feed",
+      "detail": "where-a-60k-salary-goes (8.50), guess-what-a-1-percent-fee-costs (8.38), which-car-buyer-are-you, the-forever-car-payment, once-you-understand-doubling, split-a-billionaire-with-everyone",
+      "branch": "agent/research/2026-10-28"
+    },
+    {
+      "title": "4 proposals",
+      "detail": "build-beats-on-lit-sets, ending-beats-act-and-vary (experiments, high); first-action-by-1s (experiment); maths-divide-and-scale (template)",
+      "branch": "agent/research/2026-10-28"
+    }
+  ],
+  "nextCheck": "2026-10-29",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-28.md"
+    }
+  ]
+}

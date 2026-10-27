@@ -511,6 +511,91 @@
       "status": "new",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "build-beats-on-lit-sets",
+      "date": "2026-10-28",
+      "area": "motion",
+      "title": "Give the level beats the same lit, layered sets as the hook and the turn",
+      "change": "In the three 45-75 s Shorts of 27 Oct, the hook, turn and payoff stand in lit night sets (city lights, lamp, depth), but every build beat in between draws a flat lavender sky over a grey floor, with the top half empty apart from the HUD counter (v-20261027-03 stills at 5, 15, 20, 25 and 35 s; the same in -01 and -02). Behind a flag, have build beats inherit the hook's world, lit and layered (far skyline, mid props, floor light, a light pool on the speaker), and fill the upper half with the level's money prop or skyline instead of sky. Shot system and motion-direction skill apply; stills only.",
+      "evidence": [
+        "videos/v-20261027-03/preview.png",
+        "videos/v-20261027-01/timeline.json",
+        "videos/v-20261027-02/timeline.json",
+        "CLAUDE.md shot system: 'lit layered sets'"
+      ],
+      "expectedEffect": "The middle 30 s, where the levels play, looks as made as the opening; fewer viewers leave after the hook.",
+      "confidence": "medium",
+      "effort": "M",
+      "risk": "Busier backgrounds can hurt caption contrast; the layout and craft gates catch it.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "high"
+    },
+    {
+      "id": "ending-beats-act-and-vary",
+      "date": "2026-10-28",
+      "area": "pacing",
+      "title": "The coded Turn, Payoff and Loop beats: actions on the words, and camera and transitions drawn per video",
+      "change": "All three new Shorts share one skeleton to the beat: 11-12 beats, transitions cut 1 / match 5-6 / whip 4-5 / zoom-through 1, the turn framed close then wide, the payoff wide, the loop medium then wide, and the last 9.6-10.5 s (turn + payoff + loop) carry no prop actions at all (only the actor and captions move). Two changes: (a) adopt: seed the camera sizes and transitions of the coded Hook/Turn/Payoff/Loop beats from the video seed (from the allowed set) so no two videos in a row share the ending's shot pattern, a repeated-template risk under YouTube's inauthentic-content rule; (b) experiment behind a flag: give the Turn and Payoff beats 2-3 actions on the words that name them (the counter slams, the prop from the last level returns and shrinks or grows), so nothing goes 2.5 s without a new picture.",
+      "evidence": [
+        "videos/v-20261027-01/timeline.json",
+        "videos/v-20261027-02/timeline.json",
+        "videos/v-20261027-03/timeline.json",
+        "https://www.netinfluencer.com/youtube-clarifies-july-15-policy-update-repetitious-content-rebranded-as-inauthentic-content/"
+      ],
+      "expectedEffect": "Less templated look across videos; the ending, where the loop decides replays, keeps moving.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Low; seeded choices stay deterministic.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "high"
+    },
+    {
+      "id": "first-action-by-1s",
+      "date": "2026-10-28",
+      "area": "pacing",
+      "title": "Every build beat's first action within 1 s of its start",
+      "change": "In the new Shorts the first action of several build beats lands late: 'case' 2.0 s, 'pallet' 2.2 s, 'invest' 1.6 s, 'check1' 1.3 s, 'decade' 1.4 s; until then one character stands beside a still prop. Writer rule behind a flag: the first action of a build beat fires on a word in its first 1 s (the first noun), even if just a prop entering; check-script can warn when it doesn't. The 2026 blogs agree on a visual change every 1.5-3 s; a late first action plus the transition makes a 3 s still.",
+      "evidence": [
+        "videos/v-20261027-01/timeline.json",
+        "videos/v-20261027-02/timeline.json",
+        "videos/v-20261027-03/timeline.json",
+        "https://aibrify.com/en/blog/youtube-shorts-retention-curve-playbook",
+        "https://opus.pro/blog/ideal-youtube-shorts-length-format-retention"
+      ],
+      "expectedEffect": "Fewer still moments in the levels.",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Forcing a word early can make lines awkward.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
+    },
+    {
+      "id": "maths-divide-and-scale",
+      "date": "2026-10-28",
+      "area": "template",
+      "title": "A `share` maths kind: a total split among N, and how long a rate takes to reach it",
+      "change": "money_scale and billionaire stories keep needing a division (a $200B fortune split among 8 billion people; how many years at $100,000 to reach $1B; the 2.64M quadrillion Short and the 'It Would Take You 10,000 Years To Save A Billion' Short this week). Today writers abuse fee_take with tiny percentages. Add `share` (total, parts → per_part; and per_year → years_to_reach) with closed-form figures and number-check support.",
+      "evidence": [
+        "https://www.youtube.com/shorts/5oZL2CD8njY",
+        "https://www.youtube.com/shorts/yN8oFv1q0Wg",
+        "https://www.youtube.com/shorts/jIs5WrvxcQ4",
+        "improvement/research/topics.json 2026-10-28-split-a-billionaire-with-everyone, 2026-10-27-a-billion-is-250-careers"
+      ],
+      "expectedEffect": "Money-scale topics written cleanly, without fee_take workarounds.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "None beyond a new kind's tests.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "template",
+      "priority": "normal"
     }
   ]
 }
