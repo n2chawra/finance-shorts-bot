@@ -1,0 +1,137 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 30517,
+  "duration_sec": 48,
+  "tempo": 1.4,
+  "style": {
+    "palette": "ocean",
+    "genre": "pop",
+    "key": "D",
+    "bpm": 112
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Payday! $5,000 on my payslip!",
+        "start": 0.27,
+        "seconds": 1.66,
+        "window": 2.13,
+        "fill": 0.779
+      },
+      {
+        "scene": "promise",
+        "text": "Rich for about a minute. Five bites come out of that pay first. Whatever survives is the only part that grows.",
+        "start": 2.4,
+        "seconds": 4.55,
+        "window": 5.1,
+        "fill": 0.892
+      },
+      {
+        "scene": "tax",
+        "text": "Bite one is tax. 22% of his pay goes to tax before it reaches him. $1,100 gone.",
+        "start": 7.5,
+        "seconds": 5.36,
+        "window": 5.9,
+        "fill": 0.908
+      },
+      {
+        "scene": "rent",
+        "text": "Bite two, my rent. $1,500 for a tiny apartment with a view of another apartment.",
+        "start": 13.4,
+        "seconds": 4.35,
+        "window": 4.53,
+        "fill": 0.96
+      },
+      {
+        "scene": "car",
+        "text": "Bite three is the car. The loan, the gas and the insurance come to $600 a month.",
+        "start": 17.93,
+        "seconds": 3.95,
+        "window": 4.47,
+        "fill": 0.884
+      },
+      {
+        "scene": "food",
+        "text": "Bite four is food. Groceries, plus takeout way too many nights. $600.",
+        "start": 22.4,
+        "seconds": 3.75,
+        "window": 4.07,
+        "fill": 0.921
+      },
+      {
+        "scene": "fun",
+        "text": "Bite five is fun. His phone, streaming, nights out: $700. In total, $4,500 is spent.",
+        "start": 26.47,
+        "seconds": 5.5,
+        "window": 6.03,
+        "fill": 0.912
+      },
+      {
+        "scene": "left",
+        "text": "Hold on. Out of my $5,000 pay, what's even left for me?",
+        "start": 32.5,
+        "seconds": 2.6,
+        "window": 2.97,
+        "fill": 0.875
+      },
+      {
+        "scene": "turn",
+        "text": "Here's the catch. The $500 that survives is the only money that can grow.",
+        "start": 35.47,
+        "seconds": 3.42,
+        "window": 3.97,
+        "fill": 0.861
+      },
+      {
+        "scene": "payoff",
+        "text": "Invested every month at an assumed 7% for 30 years, that little pile becomes $613,544.",
+        "start": 39.43,
+        "seconds": 6.31,
+        "window": 6.83,
+        "fill": 0.924
+      },
+      {
+        "scene": "loop",
+        "text": "Fine. It starts on my next payday.",
+        "start": 46.27,
+        "seconds": 1.36,
+        "window": 1.83,
+        "fill": 0.743
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on",
+    "loop-picture-matches-hook": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 8.157,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

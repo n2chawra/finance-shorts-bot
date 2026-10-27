@@ -1,0 +1,1394 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 30517,
+  "story": "salary_breakdown",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "genre": "pop",
+    "key": "D",
+    "bpm": 112
+  },
+  "structure": {
+    "levels": [
+      "Tax",
+      "Rent",
+      "Car",
+      "Food",
+      "Fun"
+    ]
+  },
+  "maths": [
+    {
+      "name": "tax",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 22,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "rent",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 30,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "car",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 12,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "food",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 12,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "fun",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 14,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "gone2",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 52,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "gone3",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 64,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "gone4",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 76,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "gone5",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 90,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "left",
+      "kind": "fee_take",
+      "amount": 5000,
+      "fee_pct": 10,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "grow",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 7,
+      "years": 30
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "loop",
+    "sec": 1.8,
+    "angle": "number",
+    "words": "Where does it *go*?",
+    "figure": "{tax_amount}"
+  },
+  "cta": "How much is left of yours? Comment",
+  "hook_style": "shock_number",
+  "title": "Rohan gets paid $5,000. Watch where it goes 💸",
+  "description": "$5,000 a month sounds like a lot, so where does it all go?\nAssumed shares of a $5,000 month (tax, rent, car, food, fun) and what the small leftover becomes at an assumed 7% a year over 30 years, computed. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "feed_id": "2026-10-28-where-a-60k-salary-goes",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "rohan",
+      "say": "Payday! {tax_amount} on my payslip!",
+      "events": {
+        "payday": {
+          "word": "payday"
+        },
+        "landed": {
+          "word": "payslip"
+        },
+        "rich": {
+          "sec": 1.9
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "payday"
+        },
+        {
+          "kind": "kaching",
+          "at": "landed"
+        },
+        {
+          "kind": "whoosh",
+          "at": "rich"
+        }
+      ],
+      "params": {
+        "pay": "{tax_amount}",
+        "hud": {
+          "hide": true
+        },
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "pay",
+            "spot": "right",
+            "amount": "@gone5.per_period",
+            "text": "{tax_amount}",
+            "label": "Payday",
+            "at": "landed",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "landed",
+            "size": "close",
+            "on": "pay"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "Rich for about a minute. Five bites come out of that pay first. Whatever survives is the only part that grows.",
+      "events": {
+        "minute": {
+          "word": "minute"
+        },
+        "bites": {
+          "word": "bites"
+        },
+        "pay": {
+          "word": "pay"
+        },
+        "survives": {
+          "word": "survives"
+        },
+        "grows": {
+          "word": "grows"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "minute"
+        },
+        {
+          "kind": "pop",
+          "at": "bites"
+        },
+        {
+          "kind": "fail",
+          "at": "pay"
+        },
+        {
+          "kind": "ding",
+          "at": "survives"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "blue",
+          "horizon": [
+            {
+              "prop": "apartment",
+              "x": 0.85,
+              "size": 0.14
+            },
+            {
+              "prop": "apartment",
+              "x": 0.12,
+              "size": 0.1
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.36,
+            "scale": 1.05,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "survives",
+                "pose": "pointUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "pay",
+            "prop": "payslip",
+            "x": 0.72,
+            "size": 0.22,
+            "state": "open"
+          },
+          {
+            "id": "bites",
+            "prop": "taxbill",
+            "x": 0.72,
+            "y": 0.4,
+            "size": 0.07,
+            "hidden": true,
+            "k": 0.8
+          },
+          {
+            "id": "survives",
+            "prop": "piggy",
+            "x": 0.66,
+            "y": 0.5,
+            "size": 0.12,
+            "hidden": true,
+            "k": 0.2,
+            "label": "Survives"
+          }
+        ],
+        "actions": [
+          {
+            "at": "minute",
+            "do": "shake",
+            "target": "pay"
+          },
+          {
+            "at": "bites",
+            "do": "enter",
+            "target": "bites"
+          },
+          {
+            "at": "bites",
+            "do": "multiply",
+            "target": "bites",
+            "n": 3,
+            "cols": 3
+          },
+          {
+            "at": "pay",
+            "do": "shrink",
+            "target": "pay",
+            "scale": 0.6
+          },
+          {
+            "at": "survives",
+            "do": "enter",
+            "target": "survives"
+          },
+          {
+            "at": "grows",
+            "do": "grow",
+            "target": "survives",
+            "scale": 1.3
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "tax",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Bite one is tax. {tax_fee_pct} of his pay goes to tax before it reaches him. {tax_per_period} gone.",
+      "events": {
+        "tax": {
+          "word": "tax"
+        },
+        "pay": {
+          "word": "pay"
+        },
+        "goes": {
+          "word": "goes"
+        },
+        "reaches": {
+          "word": "reaches"
+        },
+        "gone": {
+          "word": "gone"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "tax"
+        },
+        {
+          "kind": "whoosh",
+          "at": "goes"
+        },
+        {
+          "kind": "fail",
+          "at": "gone"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "office",
+          "tint": "red"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.4,
+            "scale": 0.78,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "gone",
+                "pose": "shrug",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "pay",
+            "prop": "payslip",
+            "x": 0.66,
+            "size": 0.12,
+            "state": "open"
+          },
+          {
+            "id": "tax",
+            "prop": "taxbill",
+            "x": 0.82,
+            "size": 0.12,
+            "hidden": true,
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "at": "tax",
+            "do": "enter",
+            "target": "tax"
+          },
+          {
+            "at": "pay",
+            "do": "shrink",
+            "target": "pay",
+            "scale": 0.8
+          },
+          {
+            "at": "goes",
+            "do": "fill",
+            "target": "tax",
+            "k": 0.9
+          },
+          {
+            "at": "reaches",
+            "do": "shake",
+            "target": "pay"
+          },
+          {
+            "at": "gone",
+            "do": "glow",
+            "target": "tax"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "tax",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@tax.per_period",
+            "text": "{tax_per_period}",
+            "label": "Spent",
+            "at": "gone"
+          }
+        }
+      }
+    },
+    {
+      "id": "rent",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Bite two, my rent. {rent_per_period} for a tiny apartment with a view of another apartment.",
+      "events": {
+        "rent": {
+          "word": "rent"
+        },
+        "tiny": {
+          "word": "tiny"
+        },
+        "view": {
+          "word": "view"
+        },
+        "another": {
+          "word": "another"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "rent"
+        },
+        {
+          "kind": "pop",
+          "at": "tiny"
+        },
+        {
+          "kind": "boom",
+          "at": "another"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "scale": 0.78,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "sad"
+              },
+              {
+                "at": "another",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "rent",
+            "prop": "apartment",
+            "x": 0.66,
+            "size": 0.22,
+            "hidden": true
+          },
+          {
+            "id": "another",
+            "prop": "apartment",
+            "x": 0.84,
+            "size": 0.22,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "rent",
+            "do": "enter",
+            "target": "rent"
+          },
+          {
+            "at": "tiny",
+            "do": "shrink",
+            "target": "rent",
+            "scale": 0.7
+          },
+          {
+            "at": "view",
+            "do": "glow",
+            "target": "rent"
+          },
+          {
+            "at": "another",
+            "do": "enter",
+            "target": "another"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "tiny",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@gone2.per_period",
+            "text": "{gone2_per_period}",
+            "label": "Spent",
+            "at": "rent"
+          }
+        }
+      }
+    },
+    {
+      "id": "car",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Bite three is the car. The loan, the gas and the insurance come to {car_per_period} a month.",
+      "events": {
+        "car": {
+          "word": "car"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "gas": {
+          "word": "gas"
+        },
+        "insurance": {
+          "word": "insurance"
+        },
+        "month": {
+          "word": "month"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "car"
+        },
+        {
+          "kind": "whoosh",
+          "at": "loan"
+        },
+        {
+          "kind": "pop",
+          "at": "gas"
+        },
+        {
+          "kind": "clink",
+          "at": "month"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.4,
+            "scale": 0.78,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "neutral"
+              },
+              {
+                "at": "month",
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "car",
+            "prop": "car",
+            "x": 0.68,
+            "size": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "loan",
+            "prop": "taxbill",
+            "x": 0.7,
+            "y": 0.22,
+            "size": 0.07,
+            "hidden": true,
+            "label": "Loan",
+            "k": 0.2
+          },
+          {
+            "id": "gas",
+            "prop": "gaspump",
+            "x": 0.85,
+            "size": 0.12,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "car",
+            "do": "enter",
+            "target": "car"
+          },
+          {
+            "at": "loan",
+            "do": "enter",
+            "target": "loan"
+          },
+          {
+            "at": "gas",
+            "do": "enter",
+            "target": "gas"
+          },
+          {
+            "at": "insurance",
+            "do": "shake",
+            "target": "car"
+          },
+          {
+            "at": "month",
+            "do": "glow",
+            "target": "car"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "car",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@gone3.per_period",
+            "text": "{gone3_per_period}",
+            "label": "Spent",
+            "at": "car"
+          }
+        }
+      }
+    },
+    {
+      "id": "food",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Bite four is food. Groceries, plus takeout way too many nights. {food_per_period}.",
+      "events": {
+        "food": {
+          "word": "food"
+        },
+        "groceries": {
+          "word": "groceries"
+        },
+        "takeout": {
+          "word": "takeout"
+        },
+        "many": {
+          "word": "many"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "food"
+        },
+        {
+          "kind": "pop",
+          "at": "groceries"
+        },
+        {
+          "kind": "pop-high",
+          "at": "takeout"
+        },
+        {
+          "kind": "kaching",
+          "at": "many"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "scale": 0.78,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "happy"
+              },
+              {
+                "at": "many",
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "groceries",
+            "prop": "groceries",
+            "x": 0.66,
+            "size": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "takeout",
+            "prop": "takeout",
+            "x": 0.84,
+            "size": 0.09,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "groceries",
+            "do": "enter",
+            "target": "groceries"
+          },
+          {
+            "at": "takeout",
+            "do": "enter",
+            "target": "takeout"
+          },
+          {
+            "at": "many",
+            "do": "multiply",
+            "target": "takeout",
+            "n": 4,
+            "cols": 2
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "groceries",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@gone4.per_period",
+            "text": "{gone4_per_period}",
+            "label": "Spent",
+            "at": "food"
+          }
+        }
+      }
+    },
+    {
+      "id": "fun",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Bite five is fun. His phone, streaming, nights out: {fun_per_period}. In total, {gone5_per_period} is spent.",
+      "events": {
+        "fun": {
+          "word": "fun"
+        },
+        "phone": {
+          "word": "phone"
+        },
+        "streaming": {
+          "word": "streaming"
+        },
+        "nights": {
+          "word": "nights"
+        },
+        "total": {
+          "word": "total"
+        },
+        "spent": {
+          "word": "spent"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "fun"
+        },
+        {
+          "kind": "pop",
+          "at": "phone"
+        },
+        {
+          "kind": "pop-high",
+          "at": "nights"
+        },
+        {
+          "kind": "boom",
+          "at": "spent"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "purple"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.36,
+            "scale": 1.05,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "total",
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "phone",
+            "prop": "mobile",
+            "x": 0.7,
+            "size": 0.24,
+            "hidden": true
+          },
+          {
+            "id": "nights",
+            "prop": "ticket",
+            "x": 0.78,
+            "y": 0.42,
+            "size": 0.16,
+            "hidden": true
+          },
+          {
+            "id": "fun",
+            "prop": "ticket",
+            "x": 0.62,
+            "y": 0.6,
+            "size": 0.1,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "fun",
+            "do": "enter",
+            "target": "fun"
+          },
+          {
+            "at": "phone",
+            "do": "enter",
+            "target": "phone"
+          },
+          {
+            "at": "streaming",
+            "do": "glow",
+            "target": "phone"
+          },
+          {
+            "at": "nights",
+            "do": "enter",
+            "target": "nights"
+          },
+          {
+            "at": "total",
+            "do": "shake",
+            "target": "nights"
+          },
+          {
+            "at": "spent",
+            "do": "exit",
+            "target": "fun"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "counter": {
+            "value": "@gone5.per_period",
+            "text": "{gone5_per_period}",
+            "label": "Spent",
+            "at": "total"
+          }
+        }
+      }
+    },
+    {
+      "id": "left",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "Hold on. Out of my {tax_amount} pay, what's even left for me?",
+      "events": {
+        "hold": {
+          "word": "hold"
+        },
+        "pay": {
+          "word": "pay"
+        },
+        "left": {
+          "word": "left"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "beep",
+          "at": "hold"
+        },
+        {
+          "kind": "whoosh",
+          "at": "pay"
+        },
+        {
+          "kind": "fail",
+          "at": "left"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "bank",
+          "tint": "blue"
+        },
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.36,
+            "scale": 1.05,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "worried"
+              },
+              {
+                "at": "left",
+                "pose": "shrug",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "pay",
+            "prop": "payslip",
+            "x": 0.72,
+            "size": 0.22,
+            "state": "open"
+          },
+          {
+            "id": "left",
+            "prop": "piggy",
+            "x": 0.76,
+            "y": 0.4,
+            "size": 0.12,
+            "hidden": true,
+            "k": 0.1
+          }
+        ],
+        "actions": [
+          {
+            "at": "hold",
+            "do": "shake",
+            "target": "pay"
+          },
+          {
+            "at": "pay",
+            "do": "shrink",
+            "target": "pay",
+            "scale": 0.45
+          },
+          {
+            "at": "left",
+            "do": "enter",
+            "target": "left"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "pay",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Here's the catch. The {left_per_period} that survives is the only money that can grow.",
+      "events": {
+        "catch": {
+          "word": "catch"
+        },
+        "survives": {
+          "word": "survives"
+        },
+        "money": {
+          "word": "money"
+        },
+        "grow": {
+          "word": "grow"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "catch"
+        },
+        {
+          "kind": "kaching",
+          "at": "survives"
+        },
+        {
+          "kind": "riser",
+          "at": "grow"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "left": "{left_per_period}",
+        "spent": "{gone5_per_period}",
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        },
+        "world": {
+          "kind": "studio",
+          "tint": "dark"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.75,
+            "scale": 0.8,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "survives",
+            "prop": "piggy",
+            "x": 0.4,
+            "size": 0.14,
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "at": "grow",
+            "do": "grow",
+            "target": "survives",
+            "scale": 1.3
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "grow",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "Invested every month at an assumed {grow_rate} for {grow_years} years, that little pile becomes {grow_final}.",
+      "events": {
+        "invested": {
+          "word": "invested"
+        },
+        "years": {
+          "word": "years"
+        },
+        "becomes": {
+          "word": "becomes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "clink",
+          "at": "invested"
+        },
+        {
+          "kind": "riser",
+          "at": "years"
+        },
+        {
+          "kind": "kaching",
+          "at": "becomes"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "final": "{grow_final}",
+        "rate": "{grow_rate}",
+        "years": "{grow_years}",
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        },
+        "world": {
+          "kind": "field",
+          "tint": "green"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.8,
+            "scale": 0.8,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "pile",
+            "prop": "sapling",
+            "x": 0.45,
+            "size": 0.3,
+            "k": 0.9
+          }
+        ],
+        "actions": [
+          {
+            "at": "becomes",
+            "do": "glow",
+            "target": "pile"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "pile"
+          },
+          {
+            "at": "years",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Fine. It starts on my next payday.",
+      "events": {
+        "fine": {
+          "word": "fine"
+        },
+        "starts": {
+          "word": "starts"
+        },
+        "payday": {
+          "word": "payday"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "fine"
+        },
+        {
+          "kind": "whoosh",
+          "at": "payday"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "payday",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "pay",
+            "spot": "right",
+            "amount": "@gone5.per_period",
+            "text": "{tax_amount}",
+            "label": "Payday",
+            "at": "fine",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "starts",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "af_heart"
+}

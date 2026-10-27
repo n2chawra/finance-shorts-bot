@@ -1,0 +1,543 @@
+{
+  "id": "v-20261028-01",
+  "createdAt": "2026-10-27T22:59:53.859727+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Where a $60,000 salary goes every month: tax, rent, car, food, fun, and what is left",
+    "category": "salary",
+    "reach": "global",
+    "feed_id": "2026-10-28-where-a-60k-salary-goes"
+  },
+  "title": "Rohan gets paid $5,000. Watch where it goes 💸",
+  "description": "$5,000 a month sounds like a lot, so where does it all go?\nAssumed shares of a $5,000 month (tax, rent, car, food, fun) and what the small leftover becomes at an assumed 7% a year over 30 years, computed. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Salary",
+    "#Money",
+    "#PersonalFinance",
+    "#Budgeting"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "How much is left of yours? Comment",
+  "seed": 30517,
+  "style": {
+    "palette": "ocean",
+    "genre": "pop",
+    "key": "D",
+    "bpm": 112,
+    "voice": "af_heart"
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Payday! $5,000 on my payslip!",
+        "start": 0.27,
+        "seconds": 1.66,
+        "window": 2.13,
+        "fill": 0.779
+      },
+      {
+        "scene": "promise",
+        "text": "Rich for about a minute. Five bites come out of that pay first. Whatever survives is the only part that grows.",
+        "start": 2.4,
+        "seconds": 4.55,
+        "window": 5.1,
+        "fill": 0.892
+      },
+      {
+        "scene": "tax",
+        "text": "Bite one is tax. 22% of his pay goes to tax before it reaches him. $1,100 gone.",
+        "start": 7.5,
+        "seconds": 5.36,
+        "window": 5.9,
+        "fill": 0.908
+      },
+      {
+        "scene": "rent",
+        "text": "Bite two, my rent. $1,500 for a tiny apartment with a view of another apartment.",
+        "start": 13.4,
+        "seconds": 4.35,
+        "window": 4.53,
+        "fill": 0.96
+      },
+      {
+        "scene": "car",
+        "text": "Bite three is the car. The loan, the gas and the insurance come to $600 a month.",
+        "start": 17.93,
+        "seconds": 3.95,
+        "window": 4.47,
+        "fill": 0.884
+      },
+      {
+        "scene": "food",
+        "text": "Bite four is food. Groceries, plus takeout way too many nights. $600.",
+        "start": 22.4,
+        "seconds": 3.75,
+        "window": 4.07,
+        "fill": 0.921
+      },
+      {
+        "scene": "fun",
+        "text": "Bite five is fun. His phone, streaming, nights out: $700. In total, $4,500 is spent.",
+        "start": 26.47,
+        "seconds": 5.5,
+        "window": 6.03,
+        "fill": 0.912
+      },
+      {
+        "scene": "left",
+        "text": "Hold on. Out of my $5,000 pay, what's even left for me?",
+        "start": 32.5,
+        "seconds": 2.6,
+        "window": 2.97,
+        "fill": 0.875
+      },
+      {
+        "scene": "turn",
+        "text": "Here's the catch. The $500 that survives is the only money that can grow.",
+        "start": 35.47,
+        "seconds": 3.42,
+        "window": 3.97,
+        "fill": 0.861
+      },
+      {
+        "scene": "payoff",
+        "text": "Invested every month at an assumed 7% for 30 years, that little pile becomes $613,544.",
+        "start": 39.43,
+        "seconds": 6.31,
+        "window": 6.83,
+        "fill": 0.924
+      },
+      {
+        "scene": "loop",
+        "text": "Fine. It starts on my next payday.",
+        "start": 46.27,
+        "seconds": 1.36,
+        "window": 1.83,
+        "fill": 0.743
+      }
+    ]
+  },
+  "durationSec": 48,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on",
+    "loop-picture-matches-hook": "on"
+  },
+  "heard": {
+    "hookVoice": "am_puck",
+    "narratorShare": 0
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after 'left' beat edit: 'Out of my $5,000 pay, what's even left for me?' now shows a payslip and piggy bank instead of the phone; no new claims or figures, consistent with the gross-pay framing. No sourced facts; topic verify item met; 7% stated as assumed on voice and screen; no advice, imperatives or expert claims; disclaimer ends description. Style note: spoken as 'five thousand dollars pay' (slightly awkward); $613,544 is nominal, before inflation."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: cast whole and in frame in every beat, no text overlaps, nothing cut off, hook ($5,000 PAYDAY) and disclaimer present, picture follows each bite; cover is Rohan whole beside the $5,000 payday stack. Minor: Priya sits low in the bottom-right corner in the payoff (40-45s) and the cast is smallish in tax/car."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:40:12.563533+00:00",
+      "finishedAt": "2026-10-27T22:40:12.563533+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:44:17.688454+00:00",
+      "finishedAt": "2026-10-27T22:44:17.688454+00:00",
+      "notes": [
+        "beat 'hook'.params.objects[0].amount: maths 'tax' has no value or series 'amount'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:44:26.199438+00:00",
+      "finishedAt": "2026-10-27T22:44:26.199438+00:00",
+      "notes": [
+        "description mentions '$60,000', which is neither a script input nor a computed figure"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:44:33.057488+00:00",
+      "finishedAt": "2026-10-27T22:44:33.057488+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:44:33.996399+00:00",
+      "finishedAt": "2026-10-27T22:44:33.996399+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:45:21.466088+00:00",
+      "finishedAt": "2026-10-27T22:45:21.466088+00:00",
+      "notes": [
+        "No sourced facts; checked every beat (voice + screen), title, description, topic verify item: shares are one character's illustrative budget (22% tax is a realistic all-in share for a $60k earner, no country tax rule named), 7% stated as assumed in voice/captions, no advice/imperatives/expert claims, disclaimer ends description. Style notes: hook says $5,000 'just landed' while tax beat says tax is taken before it reaches him (gross vs take-home wording); payoff screen reads '7% a year' without 'assumed' (voice says it); $613,544 is nominal, before inflation."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:44:53.314869+00:00",
+      "finishedAt": "2026-10-27T22:45:54.645869+00:00",
+      "notes": [
+        "text '$5,000' at 34.0 s runs outside the frame",
+        "text '$1,100' at 34.0 s runs outside the frame",
+        "text '$1,500' at 34.0 s runs outside the frame",
+        "text '$600' at 34.0 s runs outside the frame",
+        "four shots in a row open medium (from 'car'): vary the shot size",
+        "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "beat 'tax': only 1 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:46:40.885840+00:00",
+      "finishedAt": "2026-10-27T22:46:40.885840+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:46:41.886912+00:00",
+      "finishedAt": "2026-10-27T22:47:14.370352+00:00",
+      "notes": [
+        "text '$5,000' at 34.1 s runs outside the frame",
+        "text '$1,100' at 34.1 s runs outside the frame",
+        "text '$1,500' at 34.1 s runs outside the frame",
+        "text '$600' at 34.1 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:47:29.909274+00:00",
+      "finishedAt": "2026-10-27T22:47:29.909274+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:47:30.944498+00:00",
+      "finishedAt": "2026-10-27T22:47:55.102486+00:00",
+      "notes": [
+        "text 'My bank' at 34.1 s runs outside the frame",
+        "text '$5,000' at 34.1 s runs outside the frame",
+        "text '$1,100' at 34.1 s runs outside the frame",
+        "text '$1,500' at 34.1 s runs outside the frame",
+        "text '$600' at 34.1 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:48:12.501058+00:00",
+      "finishedAt": "2026-10-27T22:48:12.501058+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:48:13.466206+00:00",
+      "finishedAt": "2026-10-27T22:48:37.049403+00:00",
+      "notes": [
+        "48 s, ocean/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:48:55.992519+00:00",
+      "finishedAt": "2026-10-27T22:48:55.992519+00:00",
+      "notes": [
+        "Re-review after edits: hook now 'on my payslip' and tax beat 'goes to tax before it reaches him' (gross vs take-home now consistent); left-beat phone lines Tax $1,100 / Rent $1,500 / Spent $4,500 match the computed figures; payoff screen now says 'assumed 7% a year'. No sourced facts; topic verify item met; no advice, imperatives or expert claims; disclaimer ends description. Minor note: the phone is titled 'My bank' but headlines the gross $5,000; $613,544 is nominal, before inflation."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:49:25.358314+00:00",
+      "finishedAt": "2026-10-27T22:49:25.358314+00:00",
+      "notes": [
+        "[script] 35.0s, beat 'left': the red 'Left?' word (word.where top) sits on top of the phone's 'My bank' title, text over text; move the word (where bottom/side) or lower/shrink the phone. Rohan's face is also cut off at the left edge here.",
+        "[script] Cast pushed off the left edge or missing in the build beats: 15.0s 'rent' Rohan half out of frame; 25.0s 'food' only Rohan's arm visible; 20.0s 'car' Priya small and clipped at the edge; 5.0s 'promise', 10.0s 'tax' and 30.0s 'fun' the speaker (Priya/Sharma/Priya) is not in frame at all. Actor spots 0.20-0.25 with close/medium cameras on props crop them; move spots inward (~0.3-0.35) or frame the actor so the cast is big, not at the edge.",
+        "[script] 5.0s 'promise': the row of five tax bills (multiply n=5 cols=5 at x 0.82) runs off the right edge (third bill cut), and the frame is mostly flat sky with small props. 10.0s 'tax': the bite on the tax bill (x 0.8, size 0.18) is cut by the right edge. Pull these items left/smaller.",
+        "[script] Thumbnail (rent, sec 2.0): Rohan is cut in half by the left edge, the bottom half of the frame is empty floor, and the top of the building is motion-blurred (mid-move). Pick another moment/layout (e.g. hook stack or the left-beat phone) with the cast whole and the figure shown."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:50:02.453958+00:00",
+      "finishedAt": "2026-10-27T22:50:02.453958+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:50:03.379415+00:00",
+      "finishedAt": "2026-10-27T22:50:27.187728+00:00",
+      "notes": [
+        "text 'Tax' at 34.1 s is 37.5 px, below the 44 px minimum",
+        "text 'Rent' at 34.1 s is 37.5 px, below the 44 px minimum"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:50:33.967877+00:00",
+      "finishedAt": "2026-10-27T22:50:33.967877+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:50:34.895577+00:00",
+      "finishedAt": "2026-10-27T22:50:58.709953+00:00",
+      "notes": [
+        "text 'My bank' at 34.1 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:51:13.242538+00:00",
+      "finishedAt": "2026-10-27T22:51:13.242538+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:51:14.197394+00:00",
+      "finishedAt": "2026-10-27T22:51:40.652047+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 30 s, 35 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:52:01.521901+00:00",
+      "finishedAt": "2026-10-27T22:52:01.521901+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:52:02.523311+00:00",
+      "finishedAt": "2026-10-27T22:52:26.099645+00:00",
+      "notes": [
+        "48 s, ocean/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:52:46.701045+00:00",
+      "finishedAt": "2026-10-27T22:52:46.701045+00:00",
+      "notes": [
+        "Re-review after 'left' beat edit: 'Out of my $5,000 pay, what's even left for me?' now shows a payslip and piggy bank instead of the phone; no new claims or figures, consistent with the gross-pay framing. No sourced facts; topic verify item met; 7% stated as assumed on voice and screen; no advice, imperatives or expert claims; disclaimer ends description. Style note: spoken as 'five thousand dollars pay' (slightly awkward); $613,544 is nominal, before inflation."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:52:53.115296+00:00",
+      "finishedAt": "2026-10-27T22:52:53.115296+00:00",
+      "notes": [
+        "[scene] build scene camera 'medium on all' still crops the actor at the left edge although spots are now 0.30-0.32: 5.0s 'promise' Priya half cut (face clipped), 10.0s 'tax' Sharma half cut, 20.0s 'car' Priya's face cut, 30.0s 'fun' Priya small and clipped at the bottom-left. The 'all' framing appears to fit the items only, not the actor's body; it should include the cast (script workaround: spot ~0.4 or camera on the speaker).",
+        "[script] Thumbnail (beat 'car', sec 3.5): Priya's face is cut by the left edge, the 'Loan' bill and label are blurred/half-faded (mid-move), the bottom ~40% is empty floor, and no figure is shown although thumbnail.figure is set. Pick a settled moment with the cast whole and the money object big (e.g. the loop's payday stack with Rohan)."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:53:16.605682+00:00",
+      "finishedAt": "2026-10-27T22:53:16.605682+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:53:17.698988+00:00",
+      "finishedAt": "2026-10-27T22:53:41.450116+00:00",
+      "notes": [
+        "48 s, ocean/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:54:03.851129+00:00",
+      "finishedAt": "2026-10-27T22:54:03.851129+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:54:04.842075+00:00",
+      "finishedAt": "2026-10-27T22:54:27.701674+00:00",
+      "notes": [
+        "3 of 11 stills are mostly empty background (at 5 s, 30 s, 35 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:54:41.106525+00:00",
+      "finishedAt": "2026-10-27T22:54:41.106525+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T22:54:42.099694+00:00",
+      "finishedAt": "2026-10-27T22:55:05.253904+00:00",
+      "notes": [
+        "text 'What survives' at 5.7 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:55:11.310318+00:00",
+      "finishedAt": "2026-10-27T22:55:11.310318+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:55:12.290674+00:00",
+      "finishedAt": "2026-10-27T22:55:36.795212+00:00",
+      "notes": [
+        "48 s, ocean/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:55:45.621267+00:00",
+      "finishedAt": "2026-10-27T22:55:45.621267+00:00",
+      "notes": [
+        "68 figures computed from inputs; 35 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:55:46.564112+00:00",
+      "finishedAt": "2026-10-27T22:56:11.089465+00:00",
+      "notes": [
+        "48 s, ocean/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:56:28.840897+00:00",
+      "finishedAt": "2026-10-27T22:56:28.840897+00:00",
+      "notes": [
+        "Round 3: cast whole and in frame in every beat, no text overlaps, nothing cut off, hook ($5,000 PAYDAY) and disclaimer present, picture follows each bite; cover is Rohan whole beside the $5,000 payday stack. Minor: Priya sits low in the bottom-right corner in the payoff (40-45s) and the cast is smallish in tax/car."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:56:39.501319+00:00",
+      "finishedAt": "2026-10-27T22:59:50.431595+00:00",
+      "notes": [
+        "48 s, ocean/pop, peak -1.0 dB, mean -16.1 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-27T22:59:53.859897+00:00",
+      "finishedAt": "2026-10-27T22:59:53.859897+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261028-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261028-01"
+  }
+}
