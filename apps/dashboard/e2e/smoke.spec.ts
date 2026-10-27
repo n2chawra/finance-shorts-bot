@@ -271,3 +271,19 @@ test("queue says when the scheduled video goes out, on phones too", async ({ pag
   const card = page.getByText("Already scheduled on YouTube").locator("xpath=ancestor::div[contains(@class,'items-center')][1]");
   await expect(card.getByText(/IST/).filter({ visible: true })).toHaveCount(1);
 });
+
+test("queue section details wrap as a block, not a narrow column", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/queue");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Queue/, { timeout: 30_000 });
+  // on phones "· 10 ready · posts daily at …" squeezed beside "Shorts" into a column four lines tall
+  const metas = await page.getByRole("heading", { level: 2 }).locator("span", { hasText: "ready · posts" }).all();
+  expect(metas.length).toBe(2);
+  for (const meta of metas) {
+    const { left, lines, h2Left } = await meta.evaluate((m) => {
+      const r = m.getBoundingClientRect();
+      return { left: r.left, lines: r.height / parseFloat(getComputedStyle(m).lineHeight), h2Left: m.parentElement!.getBoundingClientRect().left };
+    });
+    if (lines > 1.5) expect(left - h2Left, "a wrapped line starts at the heading's edge").toBeLessThanOrEqual(1);
+  }
+});

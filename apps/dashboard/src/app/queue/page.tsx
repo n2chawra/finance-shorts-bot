@@ -100,7 +100,8 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
   return (
     <section className="mb-6">
       <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <h2 className="flex items-center gap-2 text-sm font-semibold"><Icon aria-hidden className="size-4 text-muted" />{format === "short" ? "Shorts" : "Long videos"}
+        {/* the details wrap under the name as one block: beside it they made a narrow column on phones */}
+        <h2 className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm font-semibold"><Icon aria-hidden className="size-4 text-muted" />{format === "short" ? "Shorts" : "Long videos"}
           <span className="font-normal text-muted">· {r.n} ready · posts {when}</span></h2>
         {r.days !== null && <span className="text-xs text-muted">{r.n ? `Enough for about ${r.days} day${r.days === 1 ? "" : "s"}` : "Nothing ready"}</span>}
       </div>
