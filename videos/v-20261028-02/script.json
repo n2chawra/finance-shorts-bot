@@ -1,0 +1,1165 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 72914,
+  "story": "billionaire_question",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "F",
+    "bpm": 92
+  },
+  "structure": {
+    "levels": [
+      "Salary",
+      "Shares",
+      "Never sell"
+    ]
+  },
+  "maths": [
+    {
+      "name": "one",
+      "kind": "fee_take",
+      "amount": 1,
+      "fee_pct": 100,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "tax",
+      "kind": "fee_take",
+      "amount": 50000000,
+      "fee_pct": 37,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "kept",
+      "kind": "fee_take",
+      "amount": 50000000,
+      "fee_pct": 63,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "g5",
+      "kind": "lumpsum",
+      "amount": 50000000,
+      "rate_pct": 7,
+      "years": 5
+    },
+    {
+      "name": "g10",
+      "kind": "lumpsum",
+      "amount": 50000000,
+      "rate_pct": 7,
+      "years": 10
+    }
+  ],
+  "thumbnail": {
+    "who": "sharma",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.6,
+    "angle": "secret",
+    "words": "Why one *dollar*?",
+    "figure": "{one_amount}"
+  },
+  "cta": "Would you take the dollar? Comment",
+  "hook_style": "question",
+  "title": "A billionaire's payday: one dollar. Here's why 🤫",
+  "description": "Why would someone worth billions take a one-dollar salary?\nA salary is taxed when it is paid; shares that grow are not taxed until they are sold. An illustrative $50 million salary at an assumed 37% top tax rate, next to the same value left in shares growing at an assumed 7% a year, computed. No real person or company. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "feed_id": "2026-10-27-why-billionaires-take-a-1-salary",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "rohan",
+      "say": "Worth billions, and his salary is a single dollar? Why?",
+      "events": {
+        "worth": {
+          "word": "worth"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "why": {
+          "word": "why"
+        },
+        "dollar": {
+          "word": "dollar"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "worth"
+        },
+        {
+          "kind": "kaching",
+          "at": "salary"
+        },
+        {
+          "kind": "pop-high",
+          "at": "why"
+        }
+      ],
+      "params": {
+        "one": "{one_amount}",
+        "hud": {
+          "hide": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "shares",
+            "spot": "right",
+            "amount": "@one.per_period",
+            "text": "{one_amount}",
+            "label": "His salary",
+            "at": "salary",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "why",
+            "size": "close",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "Three levels explain it, and the last one is where the billions quietly grow, year after year.",
+      "events": {
+        "levels": {
+          "word": "levels"
+        },
+        "explain": {
+          "word": "explain"
+        },
+        "last": {
+          "word": "last"
+        },
+        "billions": {
+          "word": "billions"
+        },
+        "grow": {
+          "word": "grow"
+        },
+        "after": {
+          "word": "after"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "levels"
+        },
+        {
+          "kind": "pop",
+          "at": "billions"
+        },
+        {
+          "kind": "riser",
+          "at": "grow"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "gold",
+          "horizon": [
+            {
+              "prop": "tower",
+              "x": 0.86,
+              "size": 0.16
+            },
+            {
+              "prop": "tower",
+              "x": 0.1,
+              "size": 0.1
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.36,
+            "scale": 1.05,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "billions",
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "levels",
+            "prop": "certificate",
+            "x": 0.72,
+            "y": 0.42,
+            "size": 0.08,
+            "hidden": true
+          },
+          {
+            "id": "billions",
+            "prop": "certificate",
+            "x": 0.7,
+            "size": 0.16,
+            "hidden": true
+          },
+          {
+            "id": "grow",
+            "prop": "chart",
+            "x": 0.82,
+            "size": 0.18,
+            "hidden": true,
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "at": "levels",
+            "do": "enter",
+            "target": "levels"
+          },
+          {
+            "at": "levels",
+            "do": "multiply",
+            "target": "levels",
+            "n": 3,
+            "cols": 3
+          },
+          {
+            "at": "billions",
+            "do": "enter",
+            "target": "billions"
+          },
+          {
+            "at": "grow",
+            "do": "enter",
+            "target": "grow"
+          },
+          {
+            "at": "grow",
+            "do": "fill",
+            "target": "grow",
+            "k": 0.9
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "salary",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "The normal way is a salary. Say {tax_amount} a year. At an assumed top rate of {tax_fee_pct}, the tax takes {tax_total} first. He keeps {kept_total}.",
+      "events": {
+        "normal": {
+          "word": "normal"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "year": {
+          "word": "year"
+        },
+        "rate": {
+          "word": "rate"
+        },
+        "tax": {
+          "word": "tax"
+        },
+        "first": {
+          "word": "first"
+        },
+        "keeps": {
+          "word": "keeps"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "salary"
+        },
+        {
+          "kind": "pop",
+          "at": "year"
+        },
+        {
+          "kind": "whoosh",
+          "at": "tax"
+        },
+        {
+          "kind": "fail",
+          "at": "first"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "office",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.36,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "tax",
+                "pose": "shrug",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "salary",
+            "prop": "cheque",
+            "x": 0.72,
+            "y": 0.35,
+            "size": 0.14,
+            "hidden": true
+          },
+          {
+            "id": "tax",
+            "prop": "taxbag",
+            "x": 0.7,
+            "y": 0.18,
+            "size": 0.12,
+            "hidden": true,
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "at": "salary",
+            "do": "enter",
+            "target": "salary"
+          },
+          {
+            "at": "year",
+            "do": "glow",
+            "target": "salary"
+          },
+          {
+            "at": "tax",
+            "do": "enter",
+            "target": "tax"
+          },
+          {
+            "at": "tax",
+            "do": "fill",
+            "target": "tax",
+            "k": 0.9
+          },
+          {
+            "at": "first",
+            "do": "shake",
+            "target": "tax"
+          },
+          {
+            "at": "keeps",
+            "do": "glow",
+            "target": "salary"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "salary",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@kept.total",
+            "text": "{kept_total}",
+            "label": "His money",
+            "at": "keeps"
+          }
+        }
+      }
+    },
+    {
+      "id": "shares",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "But he already owns shares worth {g5_amount}. In {g5_years} years, at an assumed {g5_rate}, those shares are worth {g5_final}.",
+      "events": {
+        "owns": {
+          "word": "owns"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "years": {
+          "word": "years"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "worth": {
+          "word": "worth"
+        },
+        "worthy": {
+          "word": -2
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "shares"
+        },
+        {
+          "kind": "tick",
+          "at": "years"
+        },
+        {
+          "kind": "kaching",
+          "at": "worthy"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.36,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "worthy",
+                "pose": "celebrate",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "shares",
+            "prop": "certificate",
+            "x": 0.6,
+            "size": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "years",
+            "prop": "hourglass",
+            "x": 0.62,
+            "y": 0.4,
+            "size": 0.1,
+            "hidden": true
+          },
+          {
+            "id": "worth",
+            "prop": "chart",
+            "x": 0.74,
+            "size": 0.14,
+            "hidden": true,
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "at": "owns",
+            "do": "enter",
+            "target": "shares"
+          },
+          {
+            "at": "shares",
+            "do": "multiply",
+            "target": "shares",
+            "n": 2,
+            "cols": 2
+          },
+          {
+            "at": "worth",
+            "do": "glow",
+            "target": "shares"
+          },
+          {
+            "at": "years",
+            "do": "enter",
+            "target": "years"
+          },
+          {
+            "at": "assumed",
+            "do": "shake",
+            "target": "years"
+          },
+          {
+            "at": "worthy",
+            "do": "enter",
+            "target": "worth"
+          },
+          {
+            "at": "worthy",
+            "do": "fill",
+            "target": "worth",
+            "k": 0.7
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "owns",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@g5.final",
+            "text": "{g5_final}",
+            "label": "His money",
+            "at": "worthy"
+          }
+        }
+      }
+    },
+    {
+      "id": "decade",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Give it {g10_years} years: {g10_final}. And the tax on all that growth? Nothing, as long as he never sells.",
+      "events": {
+        "give": {
+          "word": "give"
+        },
+        "years": {
+          "word": "years"
+        },
+        "tax": {
+          "word": "tax"
+        },
+        "growth": {
+          "word": "growth"
+        },
+        "nothing": {
+          "word": "nothing"
+        },
+        "sells": {
+          "word": "sells"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "give"
+        },
+        {
+          "kind": "kaching",
+          "at": "growth"
+        },
+        {
+          "kind": "pop",
+          "at": "nothing"
+        },
+        {
+          "kind": "clink",
+          "at": "sells"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "gold",
+          "horizon": [
+            {
+              "prop": "yacht",
+              "x": 0.14,
+              "size": 0.07
+            },
+            {
+              "prop": "tower",
+              "x": 0.88,
+              "size": 0.18
+            },
+            {
+              "prop": "tower",
+              "x": 0.6,
+              "size": 0.12
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.36,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "nothing",
+                "pose": "shrug",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "years",
+            "prop": "chart",
+            "x": 0.72,
+            "y": 0.1,
+            "size": 0.24,
+            "k": 0.4
+          },
+          {
+            "id": "tax",
+            "prop": "taxbag",
+            "x": 0.82,
+            "size": 0.16,
+            "k": 0.1
+          },
+          {
+            "id": "sells",
+            "prop": "padlock",
+            "x": 0.66,
+            "y": 0.3,
+            "size": 0.09,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "give",
+            "do": "fill",
+            "target": "years",
+            "k": 1.0
+          },
+          {
+            "at": "years",
+            "do": "glow",
+            "target": "years"
+          },
+          {
+            "at": "tax",
+            "do": "shake",
+            "target": "tax"
+          },
+          {
+            "at": "growth",
+            "do": "shrink",
+            "target": "tax",
+            "scale": 0.4
+          },
+          {
+            "at": "nothing",
+            "do": "glow",
+            "target": "years"
+          },
+          {
+            "at": "sells",
+            "do": "enter",
+            "target": "sells"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "give",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@g10.final",
+            "text": "{g10_final}",
+            "label": "His money",
+            "at": "give"
+          }
+        }
+      }
+    },
+    {
+      "id": "paycheck",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Hang on. My paycheck gets taxed every single month, and I don't own a company to grow instead!",
+      "events": {
+        "hang": {
+          "word": "hang"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "taxed": {
+          "word": "taxed"
+        },
+        "month": {
+          "word": "month"
+        },
+        "company": {
+          "word": "company"
+        },
+        "grow": {
+          "word": "grow"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "beep",
+          "at": "hang"
+        },
+        {
+          "kind": "pop",
+          "at": "paycheck"
+        },
+        {
+          "kind": "fail",
+          "at": "taxed"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "office",
+          "tint": "red"
+        },
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.36,
+            "scale": 1.05,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "shock"
+              },
+              {
+                "at": "taxed",
+                "pose": "facepalm",
+                "expression": "angry"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "paycheck",
+            "prop": "cheque",
+            "x": 0.7,
+            "y": 0.4,
+            "size": 0.15
+          },
+          {
+            "id": "taxed",
+            "prop": "taxbag",
+            "x": 0.78,
+            "size": 0.16,
+            "hidden": true,
+            "k": 0.3
+          },
+          {
+            "id": "company",
+            "prop": "tower",
+            "x": 0.64,
+            "y": 0.0,
+            "size": 0.2,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "paycheck",
+            "do": "shake",
+            "target": "paycheck"
+          },
+          {
+            "at": "taxed",
+            "do": "enter",
+            "target": "taxed"
+          },
+          {
+            "at": "taxed",
+            "do": "move",
+            "target": "paycheck",
+            "to": "taxed"
+          },
+          {
+            "at": "month",
+            "do": "shake",
+            "target": "taxed"
+          },
+          {
+            "at": "company",
+            "do": "enter",
+            "target": "company"
+          },
+          {
+            "at": "grow",
+            "do": "grow",
+            "target": "company",
+            "scale": 1.3
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Exactly. A salary is taxed the day it's paid. Shares are taxed only when they're sold.",
+      "events": {
+        "salary": {
+          "word": "salary"
+        },
+        "paid": {
+          "word": "paid"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "sold": {
+          "word": "sold"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "salary"
+        },
+        {
+          "kind": "fail",
+          "at": "paid"
+        },
+        {
+          "kind": "kaching",
+          "at": "shares"
+        },
+        {
+          "kind": "boom",
+          "at": "sold"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "left": "Salary",
+        "right": "Shares",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "world": {
+          "kind": "studio",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.5,
+            "scale": 0.9,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "shares",
+            "prop": "certificate",
+            "x": 0.75,
+            "size": 0.14
+          }
+        ],
+        "actions": [
+          {
+            "at": "sold",
+            "do": "glow",
+            "target": "shares"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "salary",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "So the tiny salary isn't kindness. His real pay is {g10_gains} of growth, and none of it is taxed until he sells.",
+      "events": {
+        "kindness": {
+          "word": "kindness"
+        },
+        "pay": {
+          "word": "pay"
+        },
+        "none": {
+          "word": "none"
+        },
+        "sells": {
+          "word": "sells"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "kindness"
+        },
+        {
+          "kind": "kaching",
+          "at": "pay"
+        },
+        {
+          "kind": "boom",
+          "at": "none"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "gains": "{g10_gains}",
+        "label": "{g10_years} years of growth",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "world": {
+          "kind": "city",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.5,
+            "scale": 0.85,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "pay",
+            "prop": "chart",
+            "x": 0.7,
+            "size": 0.24,
+            "k": 0.9
+          }
+        ],
+        "actions": [
+          {
+            "at": "none",
+            "do": "glow",
+            "target": "pay"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Next time you hear about a boss who's...",
+      "events": {
+        "next": {
+          "word": "next"
+        },
+        "boss": {
+          "word": "boss"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "next"
+        },
+        {
+          "kind": "tick",
+          "at": "boss"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "boss",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "shares",
+            "spot": "right",
+            "amount": "@g10.final",
+            "text": "{g10_final}",
+            "label": "His shares",
+            "at": "next",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "next",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "af_bella"
+}

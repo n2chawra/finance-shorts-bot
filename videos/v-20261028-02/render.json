@@ -1,0 +1,121 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 72914,
+  "duration_sec": 47,
+  "tempo": 1.4,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "F",
+    "bpm": 92
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Worth billions, and his salary is a single dollar? Why?",
+        "start": 0.27,
+        "seconds": 2.15,
+        "window": 2.57,
+        "fill": 0.837
+      },
+      {
+        "scene": "promise",
+        "text": "Three levels explain it, and the last one is where the billions quietly grow, year after year.",
+        "start": 2.83,
+        "seconds": 3.78,
+        "window": 4.33,
+        "fill": 0.873
+      },
+      {
+        "scene": "salary",
+        "text": "The normal way is a salary. Say $50,000,000 a year. At an assumed top rate of 37%, the tax takes $18.5M first. He keeps $31.5M.",
+        "start": 7.17,
+        "seconds": 9.15,
+        "window": 9.73,
+        "fill": 0.94
+      },
+      {
+        "scene": "shares",
+        "text": "But he already owns shares worth $50,000,000. In 5 years, at an assumed 7%, those shares are worth $70.1M.",
+        "start": 16.9,
+        "seconds": 6.68,
+        "window": 6.83,
+        "fill": 0.978
+      },
+      {
+        "scene": "decade",
+        "text": "Give it 10 years: $98.4M. And the tax on all that growth? Nothing, as long as he never sells.",
+        "start": 23.73,
+        "seconds": 5.45,
+        "window": 6.0,
+        "fill": 0.908
+      },
+      {
+        "scene": "paycheck",
+        "text": "Hang on. My paycheck gets taxed every single month, and I don't own a company to grow instead!",
+        "start": 29.73,
+        "seconds": 3.63,
+        "window": 3.9,
+        "fill": 0.931
+      },
+      {
+        "scene": "turn",
+        "text": "Exactly. A salary is taxed the day it's paid. Shares are taxed only when they're sold.",
+        "start": 33.63,
+        "seconds": 3.57,
+        "window": 4.1,
+        "fill": 0.871
+      },
+      {
+        "scene": "payoff",
+        "text": "So the tiny salary isn't kindness. His real pay is $48.4M of growth, and none of it is taxed until he sells.",
+        "start": 37.73,
+        "seconds": 6.13,
+        "window": 6.67,
+        "fill": 0.919
+      },
+      {
+        "scene": "loop",
+        "text": "Next time you hear about a boss who's...",
+        "start": 44.4,
+        "seconds": 1.44,
+        "window": 1.9,
+        "fill": 0.758
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off",
+    "loop-picture-matches-hook": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 6.288,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

@@ -1,0 +1,438 @@
+{
+  "id": "v-20261028-02",
+  "createdAt": "2026-10-27T23:16:50.000113+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why a billionaire CEO pays himself a one-dollar salary: salary is taxed when paid, share growth only when sold",
+    "category": "tax",
+    "reach": "global",
+    "feed_id": "2026-10-27-why-billionaires-take-a-1-salary"
+  },
+  "title": "A billionaire's payday: one dollar. Here's why 🤫",
+  "description": "Why would someone worth billions take a one-dollar salary?\nA salary is taxed when it is paid; shares that grow are not taxed until they are sold. An illustrative $50 million salary at an assumed 37% top tax rate, next to the same value left in shares growing at an assumed 7% a year, computed. No real person or company. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Billionaire",
+    "#Money",
+    "#Tax",
+    "#PersonalFinance"
+  ],
+  "hookStyle": "question",
+  "cta": "Would you take the dollar? Comment",
+  "seed": 72914,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "F",
+    "bpm": 92,
+    "voice": "af_bella"
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Worth billions, and his salary is a single dollar? Why?",
+        "start": 0.27,
+        "seconds": 2.15,
+        "window": 2.57,
+        "fill": 0.837
+      },
+      {
+        "scene": "promise",
+        "text": "Three levels explain it, and the last one is where the billions quietly grow, year after year.",
+        "start": 2.83,
+        "seconds": 3.78,
+        "window": 4.33,
+        "fill": 0.873
+      },
+      {
+        "scene": "salary",
+        "text": "The normal way is a salary. Say $50,000,000 a year. At an assumed top rate of 37%, the tax takes $18.5M first. He keeps $31.5M.",
+        "start": 7.17,
+        "seconds": 9.15,
+        "window": 9.73,
+        "fill": 0.94
+      },
+      {
+        "scene": "shares",
+        "text": "But he already owns shares worth $50,000,000. In 5 years, at an assumed 7%, those shares are worth $70.1M.",
+        "start": 16.9,
+        "seconds": 6.68,
+        "window": 6.83,
+        "fill": 0.978
+      },
+      {
+        "scene": "decade",
+        "text": "Give it 10 years: $98.4M. And the tax on all that growth? Nothing, as long as he never sells.",
+        "start": 23.73,
+        "seconds": 5.45,
+        "window": 6.0,
+        "fill": 0.908
+      },
+      {
+        "scene": "paycheck",
+        "text": "Hang on. My paycheck gets taxed every single month, and I don't own a company to grow instead!",
+        "start": 29.73,
+        "seconds": 3.63,
+        "window": 3.9,
+        "fill": 0.931
+      },
+      {
+        "scene": "turn",
+        "text": "Exactly. A salary is taxed the day it's paid. Shares are taxed only when they're sold.",
+        "start": 33.63,
+        "seconds": 3.57,
+        "window": 4.1,
+        "fill": 0.871
+      },
+      {
+        "scene": "payoff",
+        "text": "So the tiny salary isn't kindness. His real pay is $48.4M of growth, and none of it is taxed until he sells.",
+        "start": 37.73,
+        "seconds": 6.13,
+        "window": 6.67,
+        "fill": 0.919
+      },
+      {
+        "scene": "loop",
+        "text": "Next time you hear about a boss who's...",
+        "start": 44.4,
+        "seconds": 1.44,
+        "window": 1.9,
+        "fill": 0.758
+      }
+    ]
+  },
+  "durationSec": 47,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off",
+    "loop-picture-matches-hook": "off"
+  },
+  "heard": {
+    "hookVoice": "am_puck",
+    "narratorShare": 0
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after lengthening: new promise line, salary beat 'He keeps $31.5M' (computed kept_total, consistent with 37% assumed rate), Rohan's 'I don't own a company to grow instead' are accurate and non-advisory; hook stack now sized by one.per_period ($1), fixing the earlier oversold picture. Verify items still hold (37% US top federal rate as assumption, unrealised gains untaxed until sold, no real person/company); description ends with disclaimer. Note: 'Shares are taxed only when they are sold' ignores dividends and stock pay taxed at vesting; fine in context."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: 47 s; salary tax bag now clear of the caption and inside the frame; shares certificates (2 columns) inside the frame; hook, payoff, disclaimer and thumbnail fine; layout/craft problems empty, audio -1.0/-16.8 dB."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:00:17.513537+00:00",
+      "finishedAt": "2026-10-27T23:00:17.513537+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-27T23:03:04.632678+00:00",
+      "finishedAt": "2026-10-27T23:03:04.632678+00:00",
+      "notes": [
+        "beat 'shares'.params.actors[0].acting[1].at contains a typed number; use a placeholder: 'worth2'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-27T23:03:09.020768+00:00",
+      "finishedAt": "2026-10-27T23:03:09.020768+00:00",
+      "notes": [
+        "beat 'shares'.events.rate: no word 'rate' in this beat's spoken line"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:03:13.331159+00:00",
+      "finishedAt": "2026-10-27T23:03:13.331159+00:00",
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas.",
+        "warning: beat 'decade' runs 7.0 s with 4.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:03:21.774197+00:00",
+      "finishedAt": "2026-10-27T23:03:21.774197+00:00",
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:03:33.022518+00:00",
+      "finishedAt": "2026-10-27T23:03:33.022518+00:00",
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T23:03:39.998668+00:00",
+      "finishedAt": "2026-10-27T23:03:47.232879+00:00",
+      "notes": [
+        "the video's own code: it does not type-check: src/videos/v-20261028-02/props.tsx(59,21): error TS2532: Object is possibly 'undefined'. | src/videos/v-20261028-02/props.tsx(59,40): error TS2532: Object is possibly 'undefined'."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:04:22.160137+00:00",
+      "finishedAt": "2026-10-27T23:04:22.160137+00:00",
+      "notes": [
+        "Checked all beats (say+spoken), picture params, plan title/description, topic verify list: 37% is the US top federal rate for 2026 (TCJA rates made permanent in 2025), stated as assumed; unrealised share gains untaxed until sold is true in the US and most countries; 7% growth assumed; no real person or company; no advice, imperatives or expert claims; description ends with the disclaimer. Notes: hook stack is sized by g10.final but labelled 'His salary $1' (picture oversells); 'Shares are taxed only when they are sold' ignores dividends and stock pay taxed at vesting (fine in context of shares he already owns)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T23:03:51.720532+00:00",
+      "finishedAt": "2026-10-27T23:04:34.740711+00:00",
+      "notes": [
+        "2.8 s with nothing new on screen in beat 'shares' (at most 2.5 s): add an action on the phrase being said there",
+        "beat 'salary': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'decade': only 1 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:04:54.029355+00:00",
+      "finishedAt": "2026-10-27T23:04:54.029355+00:00",
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:04:55.012168+00:00",
+      "finishedAt": "2026-10-27T23:05:18.840816+00:00",
+      "notes": [
+        "42 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:05:37.262636+00:00",
+      "finishedAt": "2026-10-27T23:06:02.836652+00:00",
+      "notes": [
+        "42 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:06:17.642213+00:00",
+      "finishedAt": "2026-10-27T23:06:17.642213+00:00",
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:06:18.645519+00:00",
+      "finishedAt": "2026-10-27T23:06:44.182258+00:00",
+      "notes": [
+        "42 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:06:59.171762+00:00",
+      "finishedAt": "2026-10-27T23:07:25.188858+00:00",
+      "notes": [
+        "42 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-27T23:08:36.114382+00:00",
+      "finishedAt": "2026-10-27T23:08:36.114382+00:00",
+      "notes": [
+        "[script] Length 42 s (render.json duration_sec 42) is under the 45-75 s Short range; all beats are short and the loop line ends at 41.2 s. Lengthen the lines or add a beat (e.g. a level between decade and paycheck).",
+        "[scene] hook (0.0 s), Hook.tsx in remotion/src/videos/v-20261028-02: Sharma is placed at x 0.3, ground h*0.97, so his head sits where the captions go and the caption 'WORTH BILLIONS,' covers his face. The crown on the certificate tower also covers the top certificate's 'SHARES' label, and the salary cheque overlaps the tower. Raise Sharma or move him out of the caption band.",
+        "[script] decade (25.0 s): the chart item's 'Growth' label sits on the caption line and runs into 'NOTHING,' (text on text). Move the chart up (y) or drop its label.",
+        "[script] shares (20.0 s): the chart (x 0.82, size 0.18) and the hourglass (x 0.84) run off the right edge in the wide shot. Bring both in to about x 0.7.",
+        "[script] thumbnail (loop, 1.2 s): same composition as v-20261028-01's cover (Rohan on the left, a green cash stack with a label on the right, in a dim room), so it is the same picture with new words. The stack's 'HIS SHARES' label has no value under it either. Pick another beat or 'who', such as Sharma with the  cheque from the hook.",
+        "[script] payoff (35.0 s): crowded and flat. Priya's arm crosses the tower, the chart is a mostly blank white board hidden behind her, and the tax bag is cut off at the right edge. The {g10_gains} figure is not on screen yet in this still."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:09:22.692110+00:00",
+      "finishedAt": "2026-10-27T23:09:22.692110+00:00",
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-27T23:09:23.633196+00:00",
+      "finishedAt": "2026-10-27T23:09:57.818729+00:00",
+      "notes": [
+        "17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "2 of 11 stills are mostly empty background (at 25 s, 30 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:10:22.840821+00:00",
+      "finishedAt": "2026-10-27T23:10:22.840821+00:00",
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:10:23.767268+00:00",
+      "finishedAt": "2026-10-27T23:10:50.718706+00:00",
+      "notes": [
+        "47 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:11:04.065460+00:00",
+      "finishedAt": "2026-10-27T23:11:04.065460+00:00",
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:11:05.015317+00:00",
+      "finishedAt": "2026-10-27T23:11:39.966822+00:00",
+      "notes": [
+        "47 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:12:01.549634+00:00",
+      "finishedAt": "2026-10-27T23:12:01.549634+00:00",
+      "notes": [
+        "Re-review after lengthening: new promise line, salary beat 'He keeps $31.5M' (computed kept_total, consistent with 37% assumed rate), Rohan's 'I don't own a company to grow instead' are accurate and non-advisory; hook stack now sized by one.per_period ($1), fixing the earlier oversold picture. Verify items still hold (37% US top federal rate as assumption, unrealised gains untaxed until sold, no real person/company); description ends with disclaimer. Note: 'Shares are taxed only when they are sold' ignores dividends and stock pay taxed at vesting; fine in context."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-27T23:12:10.697290+00:00",
+      "finishedAt": "2026-10-27T23:12:10.697290+00:00",
+      "notes": [
+        "[script] salary (15.0 s): the tax bag's red 'TAX' label runs into the caption '$31.5M.' (text on text), and the bag is cut off by the right edge. Make the taxbag smaller and move it left or up (x about 0.7) so its label clears the caption band.",
+        "[script] shares (20.0 s): the multiplied certificates (multiply n 3, cols 3, from x 0.7) run off the right edge; the third one reads 'SHAR'. Start the row further left (about x 0.55) or make it 2 columns."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:12:43.949330+00:00",
+      "finishedAt": "2026-10-27T23:12:43.949330+00:00",
+      "notes": [
+        "32 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:12:45.001183+00:00",
+      "finishedAt": "2026-10-27T23:13:12.395662+00:00",
+      "notes": [
+        "47 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:13:28.771077+00:00",
+      "finishedAt": "2026-10-27T23:13:28.771077+00:00",
+      "notes": [
+        "Round 3: 47 s; salary tax bag now clear of the caption and inside the frame; shares certificates (2 columns) inside the frame; hook, payoff, disclaimer and thumbnail fine; layout/craft problems empty, audio -1.0/-16.8 dB."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:14:07.678672+00:00",
+      "finishedAt": "2026-10-27T23:16:44.284625+00:00",
+      "notes": [
+        "47 s, ember/cinematic, peak -1.0 dB, mean -16.8 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-27T23:16:50.000243+00:00",
+      "finishedAt": "2026-10-27T23:16:50.000243+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261028-02",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261028-02"
+  }
+}
