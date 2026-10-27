@@ -177,6 +177,18 @@ def cast_voices(script: dict) -> set[str]:
     return {CAST_VOICES[b["speaker"]] for b in script.get("beats") or [] if b.get("speaker") in CAST_VOICES}
 
 
+def heard(script: dict, narrator: str | None) -> dict:
+    """What viewers hear: the voice of the first spoken line and the narrator's share of all words (%).
+    The style's `voice` names only the narrator, though the cast may speak most of a video (research, 2026-10-27)."""
+    lines = [(b.get("speaker") or "narrator", len((b.get("say") or "").split())) for b in script.get("beats") or []]
+    lines = [(who, n) for who, n in lines if n]
+    if not lines:
+        return {}
+    total = sum(n for _, n in lines)
+    return {"hookVoice": CAST_VOICES.get(lines[0][0], narrator),
+            "narratorShare": round(100 * sum(n for who, n in lines if who not in CAST_VOICES) / total)}
+
+
 def next_narrator(entries: list[dict], taken: set[str] = frozenset()) -> str:
     """The narrator voice these videos used longest ago (a never-used one first), never one in `taken`."""
     last = {v: -1 for v in NARRATOR_VOICES if v not in taken} or {v: -1 for v in NARRATOR_VOICES}
@@ -358,6 +370,8 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         "hashtags": plan["hashtags"], "hookStyle": plan["hook_style"], "cta": plan["cta"],
         "seed": script["seed"], "style": style, "voice": voice, "durationSec": report["duration_sec"], "audio": report.get("audio"),
         "experiments": report.get("experiments", {}),
+        # who speaks, for the evaluator's voice ranking: the hook's voice and the narrator's share of the words
+        "heard": heard(script, voice["name"] if voice else script.get("narrator")),
         "checks": [{"checker": c, "passed": True, "notes": checks[c]["notes"]} for c in CHECKERS],
         "agentRuns": json.loads((d / "run.json").read_text(encoding="utf-8")),
         "files": {"thumbnail": "thumbnail.png", "preview": "preview.png", "script": "script.json"},
