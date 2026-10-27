@@ -1,0 +1,328 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:17:25.822256+00:00",
+    "finishedAt": "2026-10-27T23:17:25.822256+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:17:26.844239+00:00",
+    "finishedAt": "2026-10-27T23:17:26.844239+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas.",
+      "warning: beat 'halfway' runs 5.1 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'late' runs 5.4 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 5.9 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:17:43.373188+00:00",
+    "finishedAt": "2026-10-27T23:17:43.373188+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:18:15.456589+00:00",
+    "finishedAt": "2026-10-27T23:18:15.456589+00:00",
+    "notes": [
+      "No sourced facts; topic verify item met (7% 'assumed' on screen and voice, numbers illustrative, no fund/provider named); 7% vs 6%-after-1%-fee realistic for USD; no advice, imperatives or expert claims; tone fine; description ends with disclaimer. Notes: finish beat says '$1.0M'/'one million dollars' for ~$995.7K (rounding); hook/loop stack labelled 'Fee' is sized by a40.final, could read as the fee being $1.3M."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-27T23:17:54.091995+00:00",
+    "finishedAt": "2026-10-27T23:18:28.725802+00:00",
+    "notes": [
+      "3.1 s with nothing new on screen in beat 'halfway' (at most 2.5 s): add an action on the phrase being said there",
+      "beat 'finish': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "warning: beat 'halfway' runs 5.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:18:46.769471+00:00",
+    "finishedAt": "2026-10-27T23:18:46.769471+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-27T23:18:47.758175+00:00",
+    "finishedAt": "2026-10-27T23:19:10.150657+00:00",
+    "notes": [
+      "2.9 s with nothing new on screen in beat 'halfway' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:19:21.444636+00:00",
+    "finishedAt": "2026-10-27T23:19:21.444636+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-27T23:19:22.445166+00:00",
+    "finishedAt": "2026-10-27T23:19:45.574949+00:00",
+    "notes": [
+      "2.9 s with nothing new on screen in beat 'halfway' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:19:56.651020+00:00",
+    "finishedAt": "2026-10-27T23:19:56.651020+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-27T23:19:57.623235+00:00",
+    "finishedAt": "2026-10-27T23:20:20.112218+00:00",
+    "notes": [
+      "2.6 s with nothing new on screen in beat 'late' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:20:28.686833+00:00",
+    "finishedAt": "2026-10-27T23:20:28.686833+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:20:29.689930+00:00",
+    "finishedAt": "2026-10-27T23:20:52.313725+00:00",
+    "notes": [
+      "43 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:21:21.029632+00:00",
+    "finishedAt": "2026-10-27T23:21:21.029632+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas.",
+      "warning: beat 'finish' runs 7.2 s with 4.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-27T23:21:21.991571+00:00",
+    "finishedAt": "2026-10-27T23:21:53.149507+00:00",
+    "notes": [
+      "4.2 s with nothing new on screen in beat 'finish' (at most 2.5 s): add an action on the phrase being said there",
+      "warning: beat 'finish' runs 6.4 s with 3.8 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:22:16.499942+00:00",
+    "finishedAt": "2026-10-27T23:22:16.499942+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:22:17.475745+00:00",
+    "finishedAt": "2026-10-27T23:22:40.234517+00:00",
+    "notes": [
+      "46 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:22:46.245223+00:00",
+    "finishedAt": "2026-10-27T23:22:46.245223+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:22:47.257020+00:00",
+    "finishedAt": "2026-10-27T23:23:10.210179+00:00",
+    "notes": [
+      "46 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:23:30.054354+00:00",
+    "finishedAt": "2026-10-27T23:23:30.054354+00:00",
+    "notes": [
+      "Re-review after edits (finish, turn, hook/loop stack): no sourced facts; verify item met (7% assumed, illustrative, no provider); 7% vs 6% realistic USD; no advice/imperatives/expert claims; disclaimer ends description. Notes: finish '$1.0M'/'one million' rounds ~$995.7K up; hook stack now shows the $319,338 answer while asking viewers to guess (spoils the reveal, not a fact issue)."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-27T23:24:30.299568+00:00",
+    "finishedAt": "2026-10-27T23:24:30.299568+00:00",
+    "notes": [
+      "[script] late beat, 25.0s: the purple guesscard (x 0.72, y 0.42) sits on the end of the 'FEE HAS COST $108,775' counter, covering the last digit; the magnifier (x 0.86) also runs off the right edge. Move both lower/left.",
+      "[script] halfway beat, 20.0s: the line says 'That's a whole car!' but the picture shows a rocket (the car item uses prop 'rocket'); props.tsx has no car. Add a car prop or change the line.",
+      "[script] payoff beat (custom Payoff.tsx), 40.0s: Priya is squeezed into the bottom-left corner in front of the left jar, her arm points out of frame away from the money, and the caption 'FEE COST $319,338.' lands on her just under her face. Give her room (or a closer shot) and point her at the scale/stack.",
+      "[script] turn beat (custom Turn.tsx), 30.0s: Sharma is pushed to the right edge behind the snowballs, the '3 Late' HUD pill sits over his legs and the caption runs into his chest; '+ ALL ITS GROWTH' overlaps the grey mountain peak. Move Sharma in from the edge and clear the text from the peak.",
+      "[script] early (10.0s) and finish (35.0s) beats: Priya at spot 0.34 does a 'present' pose with her arm pointing left out of frame while the jars/rocket are on the right, so she presents nothing. Put her on the right or use a pose facing the props."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:25:17.248730+00:00",
+    "finishedAt": "2026-10-27T23:25:17.248730+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:25:18.207468+00:00",
+    "finishedAt": "2026-10-27T23:25:47.368149+00:00",
+    "notes": [
+      "45 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:26:17.150670+00:00",
+    "finishedAt": "2026-10-27T23:26:17.150670+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:26:18.065702+00:00",
+    "finishedAt": "2026-10-27T23:26:45.624769+00:00",
+    "notes": [
+      "45 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:27:08.691049+00:00",
+    "finishedAt": "2026-10-27T23:27:34.759297+00:00",
+    "notes": [
+      "45 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:27:48.454677+00:00",
+    "finishedAt": "2026-10-27T23:28:15.202153+00:00",
+    "notes": [
+      "45 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:28:40.143654+00:00",
+    "finishedAt": "2026-10-27T23:28:40.143654+00:00",
+    "notes": [
+      "Re-review after halfway edit ('That's real money!' replaces the car claim, no factual claim left): no sourced facts; verify item met (7% assumed, illustrative, no provider); 7% vs 6% realistic USD; no advice/imperatives/expert claims; disclaimer ends description. Notes: finish '$1.0M' rounds ~$995.7K up; hook stack shows the $319,338 answer before the guess."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-27T23:29:03.437269+00:00",
+    "finishedAt": "2026-10-27T23:29:03.437269+00:00",
+    "notes": [
+      "[script] turn beat (custom Turn.tsx), 25.0s and 30.0s: Sharma is still small at the far right edge of a mostly flat sky-and-hill frame (his raised arm is cut by the right edge at 25.0s), and at 30.0s the caption 'COST' runs into his chest. Bring him in from the edge at medium size (or go closer) so the cast fills the frame; keep him clear of the caption band."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:29:27.113831+00:00",
+    "finishedAt": "2026-10-27T23:29:27.113831+00:00",
+    "notes": [
+      "90 figures computed from inputs; 63 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:29:28.093247+00:00",
+    "finishedAt": "2026-10-27T23:29:54.917056+00:00",
+    "notes": [
+      "45 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:30:35.797275+00:00",
+    "finishedAt": "2026-10-27T23:31:11.270801+00:00",
+    "notes": [
+      "45 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:31:42.097816+00:00",
+    "finishedAt": "2026-10-27T23:31:42.097816+00:00",
+    "notes": [
+      "Round 3: turn beat now has Sharma at medium size in from the edge with his face clear of captions; earlier overlaps, car/rocket mismatch, off-frame pointing and payoff crowding all fixed; hook, disclaimer, thumbnail, 45 s, audio -1.0/-16.4 dB fine."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:31:58.568085+00:00",
+    "finishedAt": "2026-10-27T23:34:08.123099+00:00",
+    "notes": [
+      "45 s, mint/synthwave, peak -1.0 dB, mean -16.4 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-27T23:34:09.882050+00:00",
+    "finishedAt": "2026-10-27T23:34:09.882050+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

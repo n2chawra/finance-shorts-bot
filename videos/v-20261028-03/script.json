@@ -1,0 +1,1259 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 18342,
+  "story": "guess_the_number",
+  "currency": "USD",
+  "style": {
+    "palette": "mint",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 104
+  },
+  "structure": {
+    "levels": [
+      "Early",
+      "Halfway",
+      "Late"
+    ]
+  },
+  "maths": [
+    {
+      "name": "fee",
+      "kind": "fee_take",
+      "amount": 500,
+      "fee_pct": 1,
+      "per_year": 12,
+      "years": 40
+    },
+    {
+      "name": "a10",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 7,
+      "years": 10
+    },
+    {
+      "name": "b10",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 6,
+      "years": 10
+    },
+    {
+      "name": "gap10",
+      "kind": "compare",
+      "a": "a10.final",
+      "b": "b10.final"
+    },
+    {
+      "name": "a20",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 7,
+      "years": 20
+    },
+    {
+      "name": "b20",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 6,
+      "years": 20
+    },
+    {
+      "name": "gap20",
+      "kind": "compare",
+      "a": "a20.final",
+      "b": "b20.final"
+    },
+    {
+      "name": "a30",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 7,
+      "years": 30
+    },
+    {
+      "name": "b30",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 6,
+      "years": 30
+    },
+    {
+      "name": "gap30",
+      "kind": "compare",
+      "a": "a30.final",
+      "b": "b30.final"
+    },
+    {
+      "name": "a40",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 7,
+      "years": 40
+    },
+    {
+      "name": "b40",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 6,
+      "years": 40
+    },
+    {
+      "name": "gap40",
+      "kind": "compare",
+      "a": "a40.final",
+      "b": "b40.final"
+    }
+  ],
+  "thumbnail": {
+    "who": "priya",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.4,
+    "angle": "number",
+    "words": "Guess the *gap*",
+    "figure": "{fee_fee_pct}"
+  },
+  "cta": "What was your guess? Comment",
+  "hook_style": "challenge",
+  "title": "Two friends, one 1% fee. Guess the gap 🤔",
+  "description": "How much can a tiny 1% fee really cost?\nTwo friends invest $500 a month for 40 years: one earns an assumed 7% a year, the other 6% after a 1% yearly fee. The gap at 10, 20, 30 and 40 years, computed. No fund or provider named. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "feed_id": "2026-10-28-guess-what-a-1-percent-fee-costs",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "priya",
+      "say": "A {fee_fee_pct} fee. Guess what it costs in {a40_years} years.",
+      "events": {
+        "fee": {
+          "word": "fee"
+        },
+        "guess": {
+          "word": "guess"
+        },
+        "years": {
+          "word": "years"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "fee"
+        },
+        {
+          "kind": "pop-high",
+          "at": "guess"
+        },
+        {
+          "kind": "tick",
+          "at": "years"
+        }
+      ],
+      "params": {
+        "fee": "{fee_fee_pct}",
+        "years": "{a40_years}",
+        "hud": {
+          "hide": true
+        },
+        "set": "vault",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "jar",
+            "spot": "left",
+            "amount": "@gap40.diff",
+            "text": "{gap40_diff}",
+            "label": "Fee cost",
+            "at": "fee",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "years",
+            "size": "close",
+            "on": "priya"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "rohan",
+      "transition": "zoom-through",
+      "say": "Pocket change! Fine, three checkpoints. Lock your guess in before the last flag.",
+      "events": {
+        "pocket": {
+          "word": "pocket"
+        },
+        "change": {
+          "word": "change"
+        },
+        "checkpoints": {
+          "word": "checkpoints"
+        },
+        "guess": {
+          "word": "guess"
+        },
+        "flag": {
+          "word": "flag"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pocket"
+        },
+        {
+          "kind": "ding",
+          "at": "checkpoints"
+        },
+        {
+          "kind": "pop-high",
+          "at": "guess"
+        },
+        {
+          "kind": "whoosh",
+          "at": "flag"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "green",
+          "horizon": [
+            {
+              "prop": "hill",
+              "x": 0.8,
+              "size": 0.16
+            },
+            {
+              "prop": "hill",
+              "x": 0.15,
+              "size": 0.1
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.34,
+            "scale": 1.05,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "laugh"
+              },
+              {
+                "at": "guess",
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "checkpoints",
+            "prop": "flag",
+            "x": 0.62,
+            "size": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "guess",
+            "prop": "guesscard",
+            "x": 0.74,
+            "y": 0.4,
+            "size": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "flag",
+            "prop": "flag",
+            "x": 0.84,
+            "size": 0.16,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "checkpoints",
+            "do": "enter",
+            "target": "checkpoints"
+          },
+          {
+            "at": "checkpoints",
+            "do": "multiply",
+            "target": "checkpoints",
+            "n": 2,
+            "cols": 2
+          },
+          {
+            "at": "guess",
+            "do": "enter",
+            "target": "guess"
+          },
+          {
+            "at": "flag",
+            "do": "enter",
+            "target": "flag"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "early",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Two friends each invest {a10_amount} a month at an assumed {a10_rate}. One of them pays the fee. After {a10_years} years, the gap is {gap10_diff}.",
+      "events": {
+        "friends": {
+          "word": "friends"
+        },
+        "invest": {
+          "word": "invest"
+        },
+        "month": {
+          "word": "month"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "fee": {
+          "word": "fee"
+        },
+        "gap": {
+          "word": "gap"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "friends"
+        },
+        {
+          "kind": "clink",
+          "at": "month"
+        },
+        {
+          "kind": "fail",
+          "at": "fee"
+        },
+        {
+          "kind": "ding",
+          "at": "gap"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "bank",
+          "tint": "green"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.68,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "gap",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "invest",
+            "prop": "jar",
+            "x": 0.16,
+            "size": 0.16,
+            "k": 0.2
+          },
+          {
+            "id": "friends",
+            "prop": "jar",
+            "x": 0.38,
+            "size": 0.16,
+            "k": 0.2
+          },
+          {
+            "id": "fee",
+            "prop": "leech",
+            "x": 0.38,
+            "y": 0.2,
+            "size": 0.06,
+            "hidden": true
+          },
+          {
+            "id": "gap",
+            "prop": "balance",
+            "x": 0.27,
+            "y": 0.32,
+            "size": 0.12,
+            "hidden": true,
+            "k": 0.45
+          }
+        ],
+        "actions": [
+          {
+            "at": "friends",
+            "do": "glow",
+            "target": "friends"
+          },
+          {
+            "at": "month",
+            "do": "fill",
+            "target": "invest",
+            "k": 0.4
+          },
+          {
+            "at": "month",
+            "do": "fill",
+            "target": "friends",
+            "k": 0.4
+          },
+          {
+            "at": "fee",
+            "do": "enter",
+            "target": "fee"
+          },
+          {
+            "at": "gap",
+            "do": "enter",
+            "target": "gap"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "friends",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@gap10.diff",
+            "text": "{gap10_diff}",
+            "label": "Fee has cost",
+            "at": "gap"
+          }
+        }
+      }
+    },
+    {
+      "id": "halfway",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Told you. Tiny. Now {a20_years} years... {gap20_diff}? That's real money!",
+      "events": {
+        "told": {
+          "word": "told"
+        },
+        "tiny": {
+          "word": "tiny"
+        },
+        "now": {
+          "word": "now"
+        },
+        "years": {
+          "word": "years"
+        },
+        "real": {
+          "word": "real"
+        },
+        "money": {
+          "word": "money"
+        },
+        "thats": {
+          "word": "that's"
+        },
+        "mid": {
+          "word": 9
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tiny"
+        },
+        {
+          "kind": "tick",
+          "at": "now"
+        },
+        {
+          "kind": "boom",
+          "at": "money"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "gold",
+          "horizon": [
+            {
+              "prop": "hill",
+              "x": 0.85,
+              "size": 0.14
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.34,
+            "scale": 1.05,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "now",
+                "pose": "think",
+                "expression": "confused"
+              },
+              {
+                "at": "money",
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "tiny",
+            "prop": "snowball",
+            "x": 0.66,
+            "size": 0.12,
+            "k": 0.1
+          },
+          {
+            "id": "now",
+            "prop": "flag",
+            "x": 0.84,
+            "size": 0.16,
+            "hidden": true
+          },
+          {
+            "id": "money",
+            "prop": "snowball",
+            "x": 0.74,
+            "size": 0.16,
+            "hidden": true,
+            "k": 0.8
+          },
+          {
+            "id": "dollars",
+            "prop": "jar",
+            "x": 0.86,
+            "y": 0.0,
+            "size": 0.12,
+            "hidden": true,
+            "k": 0.6,
+            "state": "leak"
+          }
+        ],
+        "actions": [
+          {
+            "at": "tiny",
+            "do": "shrink",
+            "target": "tiny",
+            "scale": 0.7
+          },
+          {
+            "at": "now",
+            "do": "enter",
+            "target": "now"
+          },
+          {
+            "at": "now",
+            "do": "grow",
+            "target": "tiny",
+            "scale": 1.8
+          },
+          {
+            "at": "years",
+            "do": "glow",
+            "target": "now"
+          },
+          {
+            "at": "mid",
+            "do": "enter",
+            "target": "dollars"
+          },
+          {
+            "at": "thats",
+            "do": "glow",
+            "target": "tiny"
+          },
+          {
+            "at": "real",
+            "do": "shake",
+            "target": "tiny"
+          },
+          {
+            "at": "money",
+            "do": "enter",
+            "target": "money"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@gap20.diff",
+            "text": "{gap20_diff}",
+            "label": "Fee has cost",
+            "at": "mid"
+          }
+        }
+      }
+    },
+    {
+      "id": "late",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "At {a30_years} years, the gap is {gap30_diff}. Still guessing low?",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "gap": {
+          "word": "gap"
+        },
+        "still": {
+          "word": "still"
+        },
+        "guessing": {
+          "word": "guessing"
+        },
+        "low": {
+          "word": "low"
+        },
+        "mid": {
+          "word": 10
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "years"
+        },
+        {
+          "kind": "kaching",
+          "at": "gap"
+        },
+        {
+          "kind": "pop-high",
+          "at": "guessing"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "purple"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.34,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "guessing",
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "gap",
+            "prop": "balance",
+            "x": 0.72,
+            "size": 0.2,
+            "k": 0.4
+          },
+          {
+            "id": "guessing",
+            "prop": "guesscard",
+            "x": 0.6,
+            "y": 0.28,
+            "size": 0.09,
+            "hidden": true
+          },
+          {
+            "id": "low",
+            "prop": "magnifier",
+            "x": 0.8,
+            "y": 0.22,
+            "size": 0.08,
+            "hidden": true
+          },
+          {
+            "id": "dollars",
+            "prop": "jar",
+            "x": 0.6,
+            "y": 0.0,
+            "size": 0.1,
+            "hidden": true,
+            "k": 0.4,
+            "state": "leak"
+          }
+        ],
+        "actions": [
+          {
+            "at": "gap",
+            "do": "fill",
+            "target": "gap",
+            "k": 0.15
+          },
+          {
+            "at": "mid",
+            "do": "enter",
+            "target": "dollars"
+          },
+          {
+            "at": "still",
+            "do": "glow",
+            "target": "gap"
+          },
+          {
+            "at": "guessing",
+            "do": "enter",
+            "target": "guessing"
+          },
+          {
+            "at": "low",
+            "do": "enter",
+            "target": "low"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "years",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@gap30.diff",
+            "text": "{gap30_diff}",
+            "label": "Fee has cost",
+            "at": "years"
+          }
+        }
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Here's why. The fee doesn't just take its slice each year. Everything it takes would have grown, for decades. That's the cost nobody sees.",
+      "events": {
+        "why": {
+          "word": "why"
+        },
+        "slice": {
+          "word": "slice"
+        },
+        "takes": {
+          "word": "takes"
+        },
+        "grown": {
+          "word": "grown"
+        },
+        "decades": {
+          "word": "decades"
+        },
+        "nobody": {
+          "word": "nobody"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "why"
+        },
+        {
+          "kind": "fail",
+          "at": "slice"
+        },
+        {
+          "kind": "whoosh",
+          "at": "takes"
+        },
+        {
+          "kind": "riser",
+          "at": "grown"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "fee": "{fee_fee_pct}",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "world": {
+          "kind": "field",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.8,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "slice",
+            "prop": "snowball",
+            "x": 0.4,
+            "size": 0.2,
+            "k": 0.5
+          }
+        ],
+        "actions": [
+          {
+            "at": "grown",
+            "do": "grow",
+            "target": "slice",
+            "scale": 1.4
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "finish",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "The last flag, {a40_years} years. The friend with no fee ends up with {a40_final}. With the fee, just {b40_final}.",
+      "events": {
+        "last": {
+          "word": "last"
+        },
+        "flag": {
+          "word": "flag"
+        },
+        "friend": {
+          "word": "friend"
+        },
+        "no": {
+          "word": "no"
+        },
+        "ends": {
+          "word": "ends"
+        },
+        "just": {
+          "word": "just"
+        },
+        "mid": {
+          "word": 15
+        },
+        "withfee": {
+          "word": 18
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "flag"
+        },
+        {
+          "kind": "kaching",
+          "at": "no"
+        },
+        {
+          "kind": "fail",
+          "at": "withfee"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "gold",
+          "horizon": [
+            {
+              "prop": "hill",
+              "x": 0.85,
+              "size": 0.12
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.68,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "withfee",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "flag",
+            "prop": "flag",
+            "x": 0.12,
+            "size": 0.18,
+            "hidden": true
+          },
+          {
+            "id": "no",
+            "prop": "rocket",
+            "x": 0.36,
+            "y": 0.3,
+            "size": 0.14,
+            "hidden": true,
+            "label": "No fee"
+          },
+          {
+            "id": "fee",
+            "prop": "jar",
+            "x": 0.28,
+            "size": 0.14,
+            "hidden": true,
+            "k": 0.5,
+            "state": "leak",
+            "label": "With fee"
+          },
+          {
+            "id": "dollars",
+            "prop": "jar",
+            "x": 0.44,
+            "y": 0.0,
+            "size": 0.12,
+            "hidden": true,
+            "k": 0.95
+          }
+        ],
+        "actions": [
+          {
+            "at": "flag",
+            "do": "enter",
+            "target": "flag"
+          },
+          {
+            "at": "no",
+            "do": "enter",
+            "target": "no"
+          },
+          {
+            "at": "mid",
+            "do": "enter",
+            "target": "dollars"
+          },
+          {
+            "at": "withfee",
+            "do": "enter",
+            "target": "fee"
+          },
+          {
+            "at": "just",
+            "do": "shake",
+            "target": "fee"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "flag",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@gap40.diff",
+            "text": "{gap40_diff}",
+            "label": "Fee has cost",
+            "at": "ends"
+          }
+        }
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "So that {fee_fee_pct} fee cost {gap40_diff}. Was your guess anywhere close?",
+      "events": {
+        "fee": {
+          "word": "fee"
+        },
+        "cost": {
+          "word": "cost"
+        },
+        "was": {
+          "word": "was"
+        },
+        "guess": {
+          "word": "guess"
+        },
+        "close": {
+          "word": "close"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "fee"
+        },
+        {
+          "kind": "boom",
+          "at": "cost"
+        },
+        {
+          "kind": "tick",
+          "at": "was"
+        },
+        {
+          "kind": "pop-high",
+          "at": "guess"
+        },
+        {
+          "kind": "ding",
+          "at": "close"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "gap": "{gap40_diff}",
+        "a": "{a40_final}",
+        "b": "{b40_final}",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "set": "vault",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "gap",
+            "spot": "right",
+            "amount": "@gap40.diff",
+            "text": "{gap40_diff}",
+            "label": "Fee cost",
+            "at": "cost",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Okay, my turn. Here's one for you.",
+      "events": {
+        "okay": {
+          "word": "okay"
+        },
+        "turn": {
+          "word": "turn"
+        },
+        "one": {
+          "word": "one"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "okay"
+        },
+        {
+          "kind": "whoosh",
+          "at": "one"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "one",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "jar",
+            "spot": "right",
+            "amount": "@gap40.diff",
+            "text": "{gap40_diff}",
+            "label": "Fee cost",
+            "at": "okay",
+            "tone": "bad"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "okay",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}
