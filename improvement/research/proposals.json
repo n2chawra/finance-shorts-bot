@@ -471,7 +471,8 @@
       "metric": "views48h",
       "status": "new",
       "route": "experiment",
-      "priority": "high"
+      "priority": "high",
+      "note": "2026-10-27: queued; experiments are at the cap of 5 (hook-voice-matches-frame frees the slot ~2026-11-01)."
     },
     {
       "id": "evaluate-voice-heard",
@@ -487,9 +488,10 @@
       "effort": "S",
       "risk": "None for videos; a measurement field only.",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "note": "2026-10-27: manifest field `heard` added (generator/run.py); the evaluator ranking needs the owner (improvement/evaluate.py is guard-protected)."
     },
     {
       "id": "music-follows-story",

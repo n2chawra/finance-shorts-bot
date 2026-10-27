@@ -67,3 +67,23 @@ def test_fact_value_rounds_before_splitting_decimals() -> None:
     assert fact_value(-0.5, "count") == "-0.5"                   # the sign survives
     assert fact_value(31781, "rupees_crore") == "₹31,781 Cr"
     assert fact_value(123456.75, "rupees") == "₹1,23,456.75"
+
+
+@pytest.mark.parametrize("currency, x, full, short, long", [
+    ("USD", -19470.3, "-$19,470", "-$19,470", "-$19,470"),
+    ("GBP", -1.5e6, "-£1,500,000", "-£1.5M", "-£1.5 million"),
+    ("INR", -1.5e6, "-₹15,00,000", "-₹15.0 L", "-₹15 Lakh"),
+    ("INR", -2.3e7, "-₹2,30,00,000", "-₹2.30 Cr", "-₹2.3 Crore"),
+    ("USD", -0.4, "$0", "$0", "$0"),
+])
+def test_a_negative_amount_puts_its_sign_before_the_currency(currency, x, full, short, long) -> None:
+    from renderer.engine.formatting import Money
+    m = Money(currency)
+    assert (m.full(x), m.short(x), m.long(x)) == (full, short, long)
+
+
+def test_a_falling_value_shows_its_loss_with_the_sign_first() -> None:
+    from renderer.engine.formatting import Money
+    from renderer.models.maths import compute
+    car = compute([{"name": "car", "kind": "lumpsum", "amount": 35000, "rate_pct": -15, "years": 5}], Money("USD"))["car"]
+    assert car["figures"]["gains"] == "-$19,470" and car["figures"]["final"] == "$15,530"

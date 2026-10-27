@@ -40,3 +40,9 @@ def test_phone_size_band():
         assert any("flat at phone size" in p for p in thumbs.image_problems(tmp))
     finally:
         tmp.unlink()
+
+
+def test_every_format_allows_three_thumbnail_types():
+    # Test & Compare asks for three thumbnails of different types (L-20261026-01 could only ship two)
+    from renderer.thumbs import FORMAT_TYPES
+    assert all(len(set(types)) >= 3 for types in FORMAT_TYPES.values()), FORMAT_TYPES

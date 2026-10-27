@@ -7,9 +7,19 @@ are rupee scripts.
 """
 import math
 from dataclasses import dataclass
+from functools import wraps
 
 CURRENCIES = {"USD": "$", "GBP": "£", "EUR": "€", "INR": "₹"}
 LEGACY_CURRENCY = "INR"       # a script without a `currency` field
+
+
+def _signed(fmt):
+    """A negative amount puts its sign before the currency: '-$19,470', not '$-19,470' (an amount that
+    rounds to zero shows no sign). The TypeScript mirror does the same (remotion/src/fmt/inr.ts)."""
+    @wraps(fmt)
+    def signed(x: float, *args):
+        return "-" + fmt(-x, *args) if round(x) < 0 else fmt(abs(x) if round(x) == 0 else x, *args)
+    return signed
 
 
 def group_indian(n: int) -> str:
@@ -27,11 +37,13 @@ def group_indian(n: int) -> str:
     return sign + ",".join(parts) + "," + tail
 
 
+@_signed
 def rupees(x: float) -> str:
     """Full amount with Indian grouping: 1500000 → '₹15,00,000'."""
     return "₹" + group_indian(int(round(x)))
 
 
+@_signed
 def inr(x: float) -> str:
     """Short amount: '₹2.30 Cr', '₹94.9 L', '₹5,000'. Never shows '100.0 L' or '₹1,00,000'."""
     if x >= 1e7 or round(x/1e5, 1) >= 100:
@@ -41,6 +53,7 @@ def inr(x: float) -> str:
     return "₹" + group_indian(int(round(x)))
 
 
+@_signed
 def inr_long(x: float) -> str:
     """Spelled-out units without trailing zeros: '₹6 Lakh', '₹2.3 Crore', '₹5,000'."""
     if x >= 1e7 or round(x/1e5, 1) >= 100:
@@ -68,6 +81,7 @@ def group_western(n: int) -> str:
     return f"{n:,}"
 
 
+@_signed
 def _short_western(x: float, sym: str) -> str:
     """'$2.35B', '$1.5M', '$12,500'. Never shows '1000.0M' or '$1,000,000'."""
     if x >= 1e9 or round(x/1e6, 1) >= 1000:
@@ -77,12 +91,19 @@ def _short_western(x: float, sym: str) -> str:
     return sym + group_western(int(round(x)))
 
 
+@_signed
 def _long_western(x: float, sym: str) -> str:
     """'$1.5 million', '$2.35 billion', '$12,500'."""
     if x >= 1e9 or round(x/1e6, 1) >= 1000:
         return f"{sym}{round(x/1e9, 2):g} billion"
     if x >= 1e6 or round(x) >= 1_000_000:
         return f"{sym}{round(x/1e6, 1):g} million"
+    return sym + group_western(int(round(x)))
+
+
+@_signed
+def _full_western(x: float, sym: str) -> str:
+    """'$1,500,000'."""
     return sym + group_western(int(round(x)))
 
 
@@ -114,7 +135,7 @@ class Money:
         return self.currency == "INR"
 
     def full(self, x: float) -> str:
-        return rupees(x) if self.indian else self.symbol + group_western(int(round(x)))
+        return rupees(x) if self.indian else _full_western(x, self.symbol)
 
     def short(self, x: float) -> str:
         return inr(x) if self.indian else _short_western(x, self.symbol)

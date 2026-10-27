@@ -178,6 +178,7 @@ def test_full_run_ships_manifest_and_history(root: Path) -> None:
     assert [s["agent"] for s in manifest["agentRuns"]] == ["planner", "number_check", "fact_review", "render", "qa_review", "ship"]
     assert manifest["release"] == {"tag": f"video-{VID}", "asset": "video.mp4", "uploaded": False}
     assert manifest["style"] == {**plan["style"], "voice": None} and manifest["durationSec"] == 36
+    assert set(manifest["heard"]) == {"hookVoice", "narratorShare"}
     assert json.loads((root / "videos" / VID / "manifest.json").read_text(encoding="utf-8"))["id"] == VID
     assert [e["id"] for e in history.load(root)] == [VID]
     with pytest.raises(ValueError, match="already shipped"):
@@ -427,3 +428,12 @@ def test_a_short_without_a_designed_cover_fails_the_render(root: Path) -> None:
     del script["thumbnail"]
     put(root, "script.json", script)
     assert any("needs a `thumbnail`" in p for p in run.render(VID, preview=True, root=root))
+
+
+def test_heard_names_the_hook_voice_and_the_narrator_share() -> None:
+    script = {"beats": [{"speaker": "sharma", "say": "Rich people never let cash sleep, ever."},
+                        {"speaker": "narrator", "say": "Here is why."}, {"speaker": "rohan", "say": ""},
+                        {"say": "Same money, more years."}]}
+    assert run.heard(script, "am_michael") == {"hookVoice": "am_fenrir", "narratorShare": 50}
+    assert run.heard({"beats": [{"say": "One line."}]}, "af_heart") == {"hookVoice": "af_heart", "narratorShare": 100}
+    assert run.heard({"beats": []}, "af_heart") == {}

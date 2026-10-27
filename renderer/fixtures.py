@@ -18,7 +18,8 @@ def values() -> list[float]:
     r = random.Random("formatting-fixtures")
     edges = [0, 0.5, 1.5, 2.5, 999.5, 1000, 12345.5, 99999.4, 99999.5, 99999.6, 100000, 100049, 100050, 100051,
              999949, 999950, 9_994_999, 9_995_000, 9_995_001, 9_999_999, 10_000_000, 10_005_000, 12_345_678,
-             123_456_789.5, 2.4166e7, 31781, 5000, 6e5, 1.5e6, 2.3e7, 9.49e6, 9.5e6]
+             123_456_789.5, 2.4166e7, 31781, 5000, 6e5, 1.5e6, 2.3e7, 9.49e6, 9.5e6,
+             -0.4, -0.5, -1.5, -19_470, -99_999.5, -1.5e6, -2.3e7, -2.3456e9]   # a value that fell: sign first
     rnd = [round(10 ** r.uniform(0, 9), r.choice([0, 0, 1, 2])) for _ in range(1600)]
     halves = [r.randint(1, 10**8) + 0.5 for _ in range(200)]
     hundreds = [r.randint(1, 10**4) * 50 for _ in range(200)]   # lakh and crore boundaries land on these
