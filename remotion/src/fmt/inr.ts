@@ -40,6 +40,14 @@ export function roundTo(x: number, digits: number): number {
   return Number(fixed(x, digits));
 }
 
+/** A negative amount puts its sign before the currency: "-$19,470", not "$-19,470" (as Python's _signed). */
+function signed<A extends unknown[]>(fmt: (x: number, ...a: A) => string): (x: number, ...a: A) => string {
+  return (x, ...a) => {
+    const r = roundEven(x);
+    return r < 0 ? `-${fmt(-x, ...a)}` : fmt(r === 0 ? Math.abs(x) : x, ...a);
+  };
+}
+
 /** 12345678 → "1,23,45,678" (last three digits, then pairs). */
 export function groupIndian(n: number): string {
   const sign = n < 0 ? "-" : "";
@@ -56,16 +64,14 @@ export function groupIndian(n: number): string {
 }
 
 /** Full amount: 1500000 → "₹15,00,000". */
-export function rupees(x: number): string {
-  return `₹${groupIndian(roundEven(x))}`;
-}
+export const rupees = signed((x: number): string => `₹${groupIndian(roundEven(x))}`);
 
 /** Short amount: "₹2.30 Cr", "₹94.9 L", "₹5,000". Never "100.0 L" or "₹1,00,000". */
-export function inr(x: number): string {
+export const inr = signed((x: number): string => {
   if (x >= 1e7 || roundTo(x / 1e5, 1) >= 100) return `₹${fixed(x / 1e7, 2)} Cr`;
   if (x >= 1e5 || roundEven(x) >= 100000) return `₹${fixed(x / 1e5, 1)} L`;
   return `₹${groupIndian(roundEven(x))}`;
-}
+});
 
 /** Python's "%g": up to 6 significant digits, trailing zeros dropped. */
 export function g(x: number): string {
@@ -77,11 +83,11 @@ export function g(x: number): string {
 }
 
 /** Spelled-out units without trailing zeros: "₹6 Lakh", "₹2.3 Crore", "₹5,000". */
-export function inrLong(x: number): string {
+export const inrLong = signed((x: number): string => {
   if (x >= 1e7 || roundTo(x / 1e5, 1) >= 100) return `₹${g(roundTo(x / 1e7, 2))} Crore`;
   if (x >= 1e5 || roundEven(x) >= 100000) return `₹${g(roundTo(x / 1e5, 1))} Lakh`;
   return `₹${groupIndian(roundEven(x))}`;
-}
+});
 
 /** Chart tick label: "0", "50 L", "1.5 Cr", "25K". */
 export function axisLabel(v: number): string {
@@ -109,27 +115,26 @@ export function groupWestern(n: number): string {
 }
 
 /** Full amount: "$1,500,000" (rupees: "₹15,00,000"). */
-export function money(x: number, cur: Currency): string {
-  return cur === "INR" ? rupees(x) : `${CURRENCY_SYMBOL[cur]}${groupWestern(roundEven(x))}`;
-}
+export const money = signed((x: number, cur: Currency): string =>
+  cur === "INR" ? rupees(x) : `${CURRENCY_SYMBOL[cur]}${groupWestern(roundEven(x))}`);
 
 /** Short amount: "$2.35B", "$1.5M", "$12,500" (rupees: "₹2.30 Cr", "₹94.9 L"). Never "1000.0M". */
-export function moneyShort(x: number, cur: Currency): string {
+export const moneyShort = signed((x: number, cur: Currency): string => {
   if (cur === "INR") return inr(x);
   const s = CURRENCY_SYMBOL[cur];
   if (x >= 1e9 || roundTo(x / 1e6, 1) >= 1000) return `${s}${fixed(x / 1e9, 2)}B`;
   if (x >= 1e6 || roundEven(x) >= 1_000_000) return `${s}${fixed(x / 1e6, 1)}M`;
   return `${s}${groupWestern(roundEven(x))}`;
-}
+});
 
 /** Spelled out: "$1.5 million", "$2.35 billion" (rupees: "₹6 Lakh", "₹2.3 Crore"). */
-export function moneyLong(x: number, cur: Currency): string {
+export const moneyLong = signed((x: number, cur: Currency): string => {
   if (cur === "INR") return inrLong(x);
   const s = CURRENCY_SYMBOL[cur];
   if (x >= 1e9 || roundTo(x / 1e6, 1) >= 1000) return `${s}${g(roundTo(x / 1e9, 2))} billion`;
   if (x >= 1e6 || roundEven(x) >= 1_000_000) return `${s}${g(roundTo(x / 1e6, 1))} million`;
   return `${s}${groupWestern(roundEven(x))}`;
-}
+});
 
 /** The text of a count-up at progress p (0..1) towards `value`, landing exactly on `final`. */
 export function countUp(value: number, p: number, final: string, kind: "inr" | "rupees" | "inrLong" = "inr", cur: Currency = "INR"): string {

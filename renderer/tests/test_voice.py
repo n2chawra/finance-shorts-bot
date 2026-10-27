@@ -39,3 +39,9 @@ def test_examples_pass_the_script_check() -> None:
     from renderer.timeline.build import check_script
     for f in sorted((Path(__file__).resolve().parents[2] / "examples").glob("*.json")):
         check_script(json.loads(f.read_text(encoding="utf-8")))
+
+
+def test_a_negative_figure_is_read_as_minus() -> None:
+    from renderer.engine.voice import spoken
+    assert spoken("-$19,470", "USD") == "minus nineteen thousand four hundred seventy dollars"
+    assert spoken("-₹15.0 L") == "minus fifteen lakh rupees"

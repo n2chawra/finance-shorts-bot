@@ -45,6 +45,8 @@ def spoken(display: str, currency: str = "INR") -> str:
     digit strings badly ("ten zero zero zero zero" for 10,000).
     """
     s = display.strip()
+    if s[:1] in "-−" and len(s) > 1:   # '-$19,470' (a value that fell) → 'minus nineteen thousand … dollars'
+        return "minus " + spoken(s[1:], currency)
     western = _western(s)
     if western is not None:
         return say_numbers(western, indian=False)
