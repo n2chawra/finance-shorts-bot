@@ -48,7 +48,7 @@ function toVideo(v: VideoRow): Video {
 }
 
 const live = { deletedAt: null } satisfies Prisma.VideoWhereInput;
-// a new YouTube link starts from nothing: GREATEST in live-stats would otherwise keep the old video's counts
+// a new YouTube link starts from nothing: live-stats keeps the larger count on a small dip and would otherwise mix in the old video's
 const noLiveCounters = { liveViews: null, liveLikes: null, liveComments: null, liveAt: null } satisfies Prisma.UploadUpdateInput;
 
 // ---------------- settings ----------------
