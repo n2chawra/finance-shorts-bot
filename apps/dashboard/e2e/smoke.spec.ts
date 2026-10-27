@@ -262,3 +262,12 @@ test("queue trend badge names its post-by day, or none", async ({ page }) => {
   await expect(page.getByText("Breaking", { exact: true })).toBeVisible();
   await expect(page.getByText(/post by\s*$/)).toHaveCount(0);
 });
+
+test("queue says when the scheduled video goes out, on phones too", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/queue");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Queue/, { timeout: 30_000 });
+  // the publish time sat in a column hidden below 640 px, so on a phone the card gave no time at all
+  const card = page.getByText("Already scheduled on YouTube").locator("xpath=ancestor::div[contains(@class,'items-center')][1]");
+  await expect(card.getByText(/IST/).filter({ visible: true })).toHaveCount(1);
+});

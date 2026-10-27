@@ -226,6 +226,7 @@ export default function QueuePage() {
             <div className="min-w-0 flex-1">
               <div className="text-xs text-muted">Already scheduled on YouTube</div>
               <VideoLink id={overview.data.nextUpload.videoId} className="block truncate text-[13px] font-medium">{overview.data.nextUpload.title}</VideoLink>
+              <div data-testid="scheduled-when" className="mt-0.5 text-xs tabular-nums text-muted sm:hidden">{fmtDateTime(overview.data.nextUpload.publishAt)} IST · {fmtRelative(overview.data.nextUpload.publishAt)}</div>
             </div>
             <div className="hidden text-right text-xs text-muted sm:block">
               <div className="font-medium text-ink">{fmtDateTime(overview.data.nextUpload.publishAt)} IST</div>
