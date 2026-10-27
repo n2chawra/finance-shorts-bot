@@ -1,0 +1,21 @@
+{
+  "agent": "dashboard",
+  "day": "2026-10-27",
+  "startedAt": "2026-10-27T02:08:07Z",
+  "finishedAt": "2026-10-27T02:22:08Z",
+  "summary": "Fixed three Queue bugs: a trend badge that read 'post by 10-28' or ended in nothing, a scheduled-video card with no time on phones, and section details squeezed into a narrow column on phones.",
+  "decision": "acted",
+  "why": "Reading the Queue code (last reviewed 10-17) found the badge cut ISO dates and broke on topics without an expiry; phone screenshots showed the other two. All checks pass (62 smoke tests).",
+  "findings": [
+    {"title": "Trend badge date", "detail": "'post by 10-28', and 'post by ' with nothing after it when a trend has no expiry."},
+    {"title": "Scheduled card time hidden on phones", "detail": "The publish time sat in a column hidden below 640 px."},
+    {"title": "Live site healthy", "detail": "/api/health answered, database 2.8 s."}
+  ],
+  "changes": [
+    {"title": "Trend badge says 'post by 28 Oct'", "detail": "Queue; no date shown when the topic has none; smoke test added.", "branch": "agent/dashboard/2026-10-27"},
+    {"title": "Scheduled card shows its time on phones", "detail": "Queue; smoke test added.", "branch": "agent/dashboard/2026-10-27"},
+    {"title": "Section details wrap under the name", "detail": "Queue, phone width; smoke test added.", "branch": "agent/dashboard/2026-10-27"}
+  ],
+  "nextCheck": "2026-10-28",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-10-27.md"}]
+}

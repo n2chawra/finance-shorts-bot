@@ -8,7 +8,7 @@ import { useState } from "react";
 import { CopyButton, MarkUploaded, uploadText } from "@/app/videos/[id]/publish-tools";
 import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, Loading, PageHeader, Stagger, Thumb, Toggle, VideoLink, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
+import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
 import { type Format, type PlanSlot, madeBy, postingPlan, runway } from "@/lib/posting-plan";
 import { useOverview, usePatchSettings, useQueue, useReorder, useSettings, useVideoAction, useVideos } from "@/lib/queries";
 import { describeTimes } from "@/lib/slots";
@@ -30,7 +30,7 @@ function Origin({ v }: { v: Video }) {
   return (
     <span className="inline-flex flex-wrap items-center gap-1">
       <Badge>{madeBy(v)}</Badge>
-      {s?.urgent ? <Badge tone="critical" icon={Flame}>{titleCase(s.urgent.level)} · post by {s.urgent.until.slice(5)}</Badge>
+      {s?.urgent ? <Badge tone="critical" icon={Flame}>{titleCase(s.urgent.level)}{/^\d{4}-\d{2}-\d{2}/.test(s.urgent.until) ? ` · post by ${fmtDayKey(s.urgent.until.slice(0, 10))}` : ""}</Badge>
         : s?.feedId ? <Badge tone="info">{s.kind ? `${titleCase(s.kind)} topic` : "Feed topic"}</Badge>
         : <Badge tone="neutral">Evergreen pick</Badge>}
     </span>
@@ -100,7 +100,8 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
   return (
     <section className="mb-6">
       <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <h2 className="flex items-center gap-2 text-sm font-semibold"><Icon aria-hidden className="size-4 text-muted" />{format === "short" ? "Shorts" : "Long videos"}
+        {/* the details wrap under the name as one block: beside it they made a narrow column on phones */}
+        <h2 className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm font-semibold"><Icon aria-hidden className="size-4 text-muted" />{format === "short" ? "Shorts" : "Long videos"}
           <span className="font-normal text-muted">· {r.n} ready · posts {when}</span></h2>
         {r.days !== null && <span className="text-xs text-muted">{r.n ? `Enough for about ${r.days} day${r.days === 1 ? "" : "s"}` : "Nothing ready"}</span>}
       </div>
@@ -226,6 +227,7 @@ export default function QueuePage() {
             <div className="min-w-0 flex-1">
               <div className="text-xs text-muted">Already scheduled on YouTube</div>
               <VideoLink id={overview.data.nextUpload.videoId} className="block truncate text-[13px] font-medium">{overview.data.nextUpload.title}</VideoLink>
+              <div data-testid="scheduled-when" className="mt-0.5 text-xs tabular-nums text-muted sm:hidden">{fmtDateTime(overview.data.nextUpload.publishAt)} IST · {fmtRelative(overview.data.nextUpload.publishAt)}</div>
             </div>
             <div className="hidden text-right text-xs text-muted sm:block">
               <div className="font-medium text-ink">{fmtDateTime(overview.data.nextUpload.publishAt)} IST</div>
