@@ -1,11 +1,18 @@
 {
-    "notifications": [
-        {
-            "key": "long-end-screen",
-            "severity": "info",
-            "title": "Set one end screen on each long video",
-            "detail": "Guides rate a single, specific next video as the best ending for session watch time. End screens can only be set in YouTube Studio, at upload.",
-            "fix": "1. When uploading a long video, open Editor → End screen. 2. Add one 'Video' element pointing to our closest long video in subject (e.g. 'The 6 levels of money in India' for any rich-vs-poor or which-one-are-you video). 3. Add the Subscribe element. Nothing else."
-        }
-    ]
+  "notifications": [
+    {
+      "key": "long-end-screen",
+      "severity": "info",
+      "title": "Set one end screen on each long video",
+      "detail": "Guides rate a single, specific next video as the best ending for session watch time. End screens can only be set in YouTube Studio, at upload.",
+      "fix": "1. When uploading a long video, open Editor → End screen. 2. Add one 'Video' element pointing to our closest long video in subject (e.g. 'The 6 levels of money in India' for any rich-vs-poor or which-one-are-you video). 3. Add the Subscribe element. Nothing else."
+    },
+    {
+      "key": "scout-missed-runs",
+      "severity": "warning",
+      "title": "Scout didn't run on Oct 24, 25 and 26",
+      "detail": "There's no scout activity file or agent/scout branch for 2026-10-24 to 26, and the last one before today is 2026-10-23. The other agents ran on the 24th and 26th, so the Scout routine itself didn't fire or stopped early. The feed was down to 2 usable topics by this morning (now 5). Monday's weekly thumbnail examples were missed too.",
+      "fix": "1. Open claude.ai/code → Routines and check the Scout routine (daily 09:37 IST): enabled, and on a daily schedule. 2. Open its runs for Oct 24–26 and check whether they failed or hit the usage limit. 3. If it hit the limit, nothing to change: today's run worked. If it's disabled or failing, re-enable it or fix the error shown."
+    }
+  ]
 }

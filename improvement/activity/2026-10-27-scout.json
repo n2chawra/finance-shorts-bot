@@ -1,0 +1,20 @@
+{
+  "agent": "scout",
+  "day": "2026-10-27",
+  "startedAt": "2026-10-27T04:08:31Z",
+  "finishedAt": "2026-10-27T04:13:44Z",
+  "summary": "The long-video feed was down to 2 usable topics, so I added 3 global ones: airlines' card money (7.4M reference), the middle-class traps (10.1M) and the levels of wealth (5.0M). I also studied where our long videos lose viewers, and routed one adopt and two experiments.",
+  "decision": "acted",
+  "why": "Studio needs at least 4 usable topics, and it still has 2 long videos to make this week. Our long videos lose the average viewer around 1:48, inside a first chapter that runs 85–95 s.",
+  "findings": [
+    {"title": "The first chapter runs 85–95 s, and the average viewer leaves inside it", "detail": "In L-20261023-01, the average view is 21.6% of 499 s, about 1:48. Its chapter 1 runs 0:28–1:53. That's only 6 views, so it's a hint.", "link": "https://support.google.com/youtube/answer/9314415"},
+    {"title": "The intro reads out every chapter name", "detail": "L-20261026-01 names all six moves at 0:12, which closes the open loops."},
+    {"title": "Recaps are still late", "detail": "The first recap is at 3:25. The 2026-10-23 adopt asked for 2:30."}
+  ],
+  "changes": [
+    {"title": "3 long topics added", "detail": "2026-10-27-airlines-really-make-money, 2026-10-27-middle-class-traps-explained, 2026-10-27-levels-of-wealth-ultra-rich", "branch": "agent/scout/2026-10-27"},
+    {"title": "3 backlog items, 2 updated", "detail": "adopt first-chapter-60s (high). Experiments no-table-of-contents and early-spike. chapter-hold-metric raised to high.", "branch": "agent/scout/2026-10-27"}
+  ],
+  "nextCheck": "2026-10-28",
+  "links": [{"label": "Report", "url": "improvement/longform/2026-10-27.md"}]
+}

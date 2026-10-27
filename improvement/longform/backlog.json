@@ -275,9 +275,10 @@
       "detail": "workers/stats.ts already stores each upload's retention curve (Upload.retention) and computes hookHold from it. For long videos, also compute the hold at each chapter start (render.json 'chapters' has the times; workers/lib/retention.ts holdAt interpolates) and write it to metrics/videos.json as 'chapterHolds': [{t, hold}]. Then Scout's Saturday review and improvement.evaluate can see which chapter loses viewers instead of guessing. YouTube only shows key moments for videos >= 60 s with >= 100 views, so this stays empty until the long videos get views. Lane: the auditor (workers/) or improver; no new YouTube scope needed, the curve is already fetched. Worked when: metrics/videos.json carries chapterHolds for every long video with a curve.",
       "where": "template",
       "route": "adopt",
-      "priority": "normal",
+      "priority": "high",
       "found": "2026-10-20",
-      "status": "open"
+      "status": "open",
+      "note": "Scout 2026-10-27: raised to high. Every retention idea in this backlog is unmeasurable without it: metrics/videos.json has only avgViewPct and a null hookHold for long videos. The YouTube Analytics API reports audienceWatchRatio by the elapsedVideoTimeRatio dimension for one video at a time; export it per long video (100 points) and the hold at each chapter start from timeline.json."
     },
     {
       "id": "2026-10-20-spike-not-confusion",
@@ -598,7 +599,8 @@
       "route": "adopt",
       "priority": "normal",
       "found": "2026-10-23",
-      "status": "open"
+      "status": "open",
+      "note": "Scout 2026-10-27: still not followed. L-20261026-01's first recap ('Two moves down') came at 3:25, its chapters at 0:20, 1:55, 3:28, 4:47, 5:43, 6:47. Put the rule's numbers into the long_story README's Shape paragraph (it still says only 'every 2–3 minutes'), so Studio sees it while writing."
     },
     {
       "id": "2026-10-23-strongest-chapter-longest",
@@ -744,6 +746,39 @@
       "priority": "normal",
       "found": "2026-10-26",
       "status": "open"
+    },
+    {
+      "id": "2026-10-27-first-chapter-60s",
+      "kind": "craft",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-27",
+      "status": "open",
+      "title": "Keep the first chapter to about 60 seconds, with a reveal near 0:45",
+      "detail": "The first two minutes are where a long video loses most people, and our first chapter is one of our longest. L-20261023-01: chapter 1 runs 0:28–1:53 (85 s); its average view is 21.6% of 499 s, so the average viewer leaves at about 1:48, inside that first chapter (only 6 views, so a hint, not proof). L-20261026-01: chapter 1 runs 0:20–1:55 (95 s), the second-longest in the video, and the 94-second card chapter in L-20261021-01 was the same pattern. YouTube's own retention help says audiences 'usually shrink as a video goes on' and to move compelling content earlier. Change: in renderer/templates/long_story/README.md (Craft rules), the first chapter is at most ~60 s spoken (about 200 words at tempo 1.5) and lands its computed figure by ~0:45 from the video start; the time saved goes to the strongest item. How we'll know: the chapter starts in timeline.json (chapter 2 before 1:30), and, once the chapter-hold metric exists, hold at chapter 2's start against L-20261023-01 and L-20261026-01."
+    },
+    {
+      "id": "2026-10-27-no-table-of-contents",
+      "kind": "craft",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-10-27",
+      "status": "open",
+      "title": "Promise the count and one mystery, not every chapter's name, in the intro",
+      "detail": "L-20261026-01's journey beat at 0:12 reads out all six chapter names ('Shares, not salary. Borrow, don't sell. The reset. The foundation...'). It tells the viewer the whole list before they have a reason to stay, which closes the open loops the chapters are meant to open; the reference videos promise a count and tease the last item ('most people are in at least four'). Arm B: the intro journey shows the count as empty slots and names only the first item, with the last one as a locked or blurred slot; each chapter fills its slot. Arm A: today's full list. Measure on the 30-second intro hold (YouTube's 'Intros' figure) and average view %, per arm, once there are at least 3 long videos in each."
+    },
+    {
+      "id": "2026-10-27-early-spike",
+      "kind": "craft",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-10-27",
+      "status": "open",
+      "title": "A second big reveal at ~2:00, not only the one at two-thirds",
+      "detail": "We put the strongest item about two-thirds in (adopted 2026-10-19), but YouTube's retention help says top moments that come late should move earlier, because fewer people are still there. Both can hold: Arm B puts the video's second-most surprising computed figure (e.g. a 10× compare, a lifetime total) at the end of chapter 2, around 2:00, staged as a reveal (a counter climbing, a camera push), and keeps the strongest at two-thirds. Arm A: today's order, where chapters 1–2 carry the setup. Measure on average view % and, when exported, the hold at chapter 3's start."
     }
   ]
 }
