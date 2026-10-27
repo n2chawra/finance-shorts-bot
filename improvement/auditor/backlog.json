@@ -455,6 +455,19 @@
       "severity": "medium",
       "found": "2026-10-27",
       "status": "fixed"
+    },
+    {
+      "id": "dsh-008",
+      "kind": "data",
+      "title": "Live counters never follow YouTube down",
+      "detail": "live-stats.ts wrote GREATEST(stored, fetched), so when YouTube removed invalid views the dashboard kept the old peak for good (audit 27 Oct: v-20261026-03 showed 75 views, YouTube 57). Fixed 2026-10-28: nextLiveCount() in lib/live-counter.ts keeps the larger number only on a small dip (2 or 2%, under the audit's slack) and follows a real drop.",
+      "files": [
+        "apps/dashboard/src/lib/live-stats.ts",
+        "apps/dashboard/src/lib/live-counter.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-10-28",
+      "status": "fixed"
     }
   ]
 }

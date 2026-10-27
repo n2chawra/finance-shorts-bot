@@ -12,7 +12,7 @@ export function youtubeIdFrom(input: string): string | null {
 /**
  * Whether a change points an upload at a different YouTube video (`next` undefined: no change
  * asked). The old link's numbers must then go: its daily stats belong to another video, and the
- * live counters only ever go up, so they would never fall back to the new video's.
+ * live counters keep the larger number on a small dip, so they could keep the old video's counts.
  */
 export function relinked(current: string | null | undefined, next: string | null | undefined): boolean {
   return next !== undefined && next !== (current ?? null);
