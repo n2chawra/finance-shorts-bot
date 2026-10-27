@@ -246,6 +246,45 @@
       "page": "videos",
       "found": "2026-10-26",
       "status": "open"
+    },
+    {
+      "id": "queue-trend-badge-date",
+      "kind": "bug",
+      "title": "Queue: trend badge read 'post by 10-28', or 'post by ' with nothing after it",
+      "detail": "The badge cut the ISO date to '10-28', and a trend topic without an expiry (generator/topics.py writes until \"\") left 'Trending · post by ' dangling. It now says 'post by 28 Oct', or just 'Trending' when there is no date.",
+      "page": "queue",
+      "found": "2026-10-27",
+      "status": "done",
+      "done": "2026-10-27",
+      "lastTouched": {
+        "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
+      }
+    },
+    {
+      "id": "queue-scheduled-time-phone",
+      "kind": "bug",
+      "title": "Queue: 'Already scheduled on YouTube' card showed no time on phones",
+      "detail": "The publish time sat in a column hidden below 640 px, so on a phone the card named the video but not when it goes out. It now shows the time under the title on phones.",
+      "page": "queue",
+      "found": "2026-10-27",
+      "status": "done",
+      "done": "2026-10-27",
+      "lastTouched": {
+        "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
+      }
+    },
+    {
+      "id": "queue-section-meta-column",
+      "kind": "bug",
+      "title": "Queue: section details squeezed into a narrow column on phones",
+      "detail": "'· 10 ready · posts daily at …' sat beside 'Shorts' and wrapped into a column four lines tall. It now wraps under the name at full width.",
+      "page": "queue",
+      "found": "2026-10-27",
+      "status": "done",
+      "done": "2026-10-27",
+      "lastTouched": {
+        "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
+      }
     }
   ]
 }
