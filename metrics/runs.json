@@ -73,7 +73,7 @@
     },
     {
       "day": "2026-10-29",
-      "shipped": 1,
+      "shipped": 2,
       "failed": 1
     }
   ],
@@ -455,6 +455,13 @@
       "template": "short_story",
       "status": "failed",
       "reason": "QA review failed after three rounds: the custom hook's split frame kept either Rohan's face under the captions or the actors floating above the floor"
+    },
+    {
+      "id": "v-20261029-03",
+      "day": "2026-10-29",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
     }
   ]
 }
