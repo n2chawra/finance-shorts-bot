@@ -287,3 +287,11 @@ test("queue section details wrap as a block, not a narrow column", async ({ page
     if (lines > 1.5) expect(left - h2Left, "a wrapped line starts at the heading's edge").toBeLessThanOrEqual(1);
   }
 });
+
+test("calendar heading names the long-video days too", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  // the line under the heading spoke only of the daily Shorts, though the grid shows long videos at 20:07
+  await expect(page.getByText(/long videos Tue\/Thu\/Sat at 20:07 IST/)).toBeVisible();
+});

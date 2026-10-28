@@ -12,6 +12,7 @@ import { describeTimes } from "@/lib/slots";
 import type { Video } from "@/lib/schemas";
 
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const LONG_DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];   // settings count days from Sunday = 0
 type Kind = "published" | "scheduled" | "planned";
 type Entry = { video: Video; kind: Kind; at: number };
 
@@ -64,11 +65,14 @@ export default function CalendarPage() {
   const shift = (n: number) => setYm(({ y, m }) => { const d = new Date(Date.UTC(y, m + n, 1)); return { y: d.getUTCFullYear(), m: d.getUTCMonth() }; });
   const picked = byDay.get(selected) ?? [];
   const monthName = new Intl.DateTimeFormat("en-IN", { month: "long", year: "numeric", timeZone: "UTC" }).format(first);
+  const long = settings.data;
+  const longWhen = long?.longUploadDays.length && long.longUploadTimes.length
+    ? ` · long videos ${[...long.longUploadDays].sort().map((d) => LONG_DAYS[d]).join("/")} at ${describeTimes(long.longUploadTimes)}` : "";
   const monthCount = [...byDay.keys()].filter((k) => k.startsWith(key(ym.y, ym.m, 1).slice(0, 7))).length;
 
   return (
     <Stagger>
-      <PageHeader title="Calendar" sub={`${times.length} upload${times.length === 1 ? "" : "s"} a day at ${describeTimes(times)}`}>
+      <PageHeader title="Calendar" sub={`${times.length} Short${times.length === 1 ? "" : "s"} a day at ${describeTimes(times)}${longWhen}`}>
         <div className="flex items-center gap-1">
           <Button iconOnly icon={ChevronLeft} title="Previous month" onClick={() => shift(-1)}>Previous month</Button>
           <span className="w-36 text-center text-[13px] font-medium">{monthName}</span>
