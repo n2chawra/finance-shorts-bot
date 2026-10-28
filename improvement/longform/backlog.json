@@ -779,6 +779,72 @@
       "status": "open",
       "title": "A second big reveal at ~2:00, not only the one at two-thirds",
       "detail": "We put the strongest item about two-thirds in (adopted 2026-10-19), but YouTube's retention help says top moments that come late should move earlier, because fewer people are still there. Both can hold: Arm B puts the video's second-most surprising computed figure (e.g. a 10× compare, a lifetime total) at the end of chapter 2, around 2:00, staged as a reveal (a counter climbing, a camera push), and keeps the strongest at two-thirds. Arm A: today's order, where chapters 1–2 carry the setup. Measure on average view % and, when exported, the hold at chapter 3's start."
+    },
+    {
+      "id": "2026-10-28-chart-per-video",
+      "kind": "craft",
+      "title": "Every long video tells its biggest change over time as a chart (the last two had 2 and 0 chart beats)",
+      "detail": "L-20261023-01 used 2 `screen` beats in 136; L-20261026-01 used no `chart` or `screen` beat at all in 121 (43 shot, 31 build, 10 stats, 10 case). Its sip/lumpsum figures were stat cards and props, so the viewer never saw money grow or shrink. The long explainers people watch draw the number moving over time (a line, an area, a road of years). Rule for renderer/templates/long_story/README.md and Studio: whenever `maths` holds a kind with a `series` (sip, lumpsum, real_return, price_rise, fee_take, sip_stepup), the strongest chapter carries one `chart` or `screen` beat of it, and at most one chart per 3 chapters. The spoken line states the takeaway (2026-10-21-chart-takeaway-line). Done when the next two long videos each have 1-3 chart beats, the strongest chapter's among them.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-28",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-28-chart-stacked-crossover",
+      "kind": "craft",
+      "title": "chart: a stacked area of money put in vs growth, with the crossover year marked",
+      "detail": "The compounding picture the explainer world uses is two stacked bands: contributions below (light), growth above (dark), and the year growth overtakes what you put in marked on the axis. That crossover is the 'aha' moment the whole video hangs on. We have two lines and a gap fill (2026-10-21-chart-gap-fill), not this. Build: a `sip` result already has invested and value per year; add `crossover_year` (first year gains ≥ invested) to `sip` in renderer/models/maths.py (with a test), and a `chart` option `fill: \"stacked\"` in remotion/src/scenes/data.tsx that draws invested as the lower band and gains as the upper band, a pen mark at the crossover with `{name.crossover_year}`. For $500/month at 7% the crossover is around year 10-11 (code decides). Ship behind a flag; measured by % viewed on the chart beat's chapter.",
+      "where": "scene",
+      "route": "template",
+      "priority": "normal",
+      "found": "2026-10-28",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-28-scale-zoom-ladder",
+      "kind": "craft",
+      "title": "New scene: a money-scale zoom-out, where each bigger amount shrinks the last one to a dot",
+      "detail": "Four videos with 7-12M views (jack pockets, RealLifeLore, Tom Scott, Corridor Crew) all use one device: show an amount at a size you can feel, then pull the camera back until it is a speck next to the next amount ($1M, then $1B, then $1T), each with a time or distance equivalent. We have no scene for it, and the 2026-10-28 billion topic needs it. Build in remotion/src/studio (a set or `build` action): `rungs: [{label, value: @x.y, text, at}]`, each rung a thing (a road length, a timer, a stack) scaled by its value, with a camera pull-back of value[i+1]/value[i] on its event (log-eased so it reads). Figures from `share` (years at a spend rate). Stills test: each rung's text ≥ 30 px when it is the focus. Flag it; measured by % viewed on its chapter.",
+      "where": "scene",
+      "route": "template",
+      "priority": "normal",
+      "found": "2026-10-28",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-28-money-trillion-format",
+      "kind": "bug",
+      "title": "Money formats a trillion as '$1000.00B' / '$1000 billion' (and '₹100000.00 Cr')",
+      "detail": "renderer/engine/formatting.py Money('USD').short(1e12) gives '$1000.00B' and .long(1e12) '$1000 billion' (seen in share total for 1,000,000,000,000; Money('INR') gives '₹100000.00 Cr' / '₹100000 Crore'). The 2026-10-28 billion topic shows a trillion on screen. Fix: USD/GBP/EUR short → '$1T' / '$1.0T', long → '$1 trillion' at ≥ 1e12; INR → '₹1 lakh crore' (long) and '₹1L Cr' or keep crore with grouping ('₹1,00,000 Cr') per formatting.py's rupee rules; mirror in remotion/src/fmt/inr.ts. Add tests in the money formatting tests for 1e12 and 2.5e12 in both currencies.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-28",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-28-figure-as-time",
+      "kind": "craft",
+      "title": "Script rule: say a huge figure as a time too ('a billion is 2,740 years of $1,000 a day')",
+      "detail": "Every money-scale hit converts dollars into time or distance, because nobody feels '$1B' but everybody feels '2,740 years'. Our `share` kind already gives `years` for a total at a per_year rate. Rule for the long_story README (and Studio): any figure of $10M or more said on screen gets one time equivalent from a `share` maths entry in the same beat or the next, with the per_year rate said as an assumption. Done when the next long video with a figure ≥ $10M carries one.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-28",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-28-long-format-money-scale",
+      "kind": "idea",
+      "title": "Propose a long format `money_scale` ('___ visualized / to scale') in formats.json",
+      "detail": "Four videos with 1M+ views share a shape we have no long format for: jack pockets 'Could You Spend $1 Trillion?' 12.3M, RealLifeLore 'The Absurd True Scale of Pablo Escobar's Wealth Visualized' 9.5M, Tom Scott 'A Million Dollars vs A Billion Dollars, Visualized' 8.3M, Corridor Crew 'VFX Artist Uses CGI to Reveal the True Scale of A BILLION!' 7.0M. The story id `money_scale` already exists in generator/variety.py (Shorts). Scout can't write improvement/research/formats.json (guard), so the research agent or improver adds a long entry: id money_scale, format long, markets global, name '___ visualized: how big is it really?', beats 'a ladder of amounts, each turned into time or distance, the camera pulling back at every rung; the biggest last', with these four examples. Until then today's topic is filed as once_you_understand.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-28",
+      "status": "open"
     }
   ]
 }
