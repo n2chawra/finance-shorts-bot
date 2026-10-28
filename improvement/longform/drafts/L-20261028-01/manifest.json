@@ -1,0 +1,353 @@
+{
+  "id": "L-20261028-01",
+  "createdAt": "2026-10-28T10:52:09.666630+00:00",
+  "status": "failed",
+  "failReason": "QA review failed three times on the stills (two fix rounds used): actors cropped headless at the frame edge in build beats (the build camera's 'all' and item framings ignore the cast; c1-ticket, c2-late, c3-basic, c4-hold, c4-corner, c5-shrink, c6-club, c6-borrow), Rohan's phone drawn across his face in the facepalm pose (c5-currency, c3-change), and the jet prop's BANK label covered mid-peel (c4-hold). Number check and fact review passed; all render gates passed (493 s).",
+  "template": "long_story",
+  "topic": {
+    "title": "How airlines really make money (it isn't the seats)",
+    "category": "credit_card",
+    "feed_id": "2026-10-27-airlines-really-make-money",
+    "reach": "global"
+  },
+  "title": "How airlines really make money (it isn't the seats)",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-28T09:15:55.707266+00:00",
+      "finishedAt": "2026-10-28T09:15:55.707266+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:23:31.654912+00:00",
+      "finishedAt": "2026-10-28T09:23:31.654912+00:00",
+      "notes": [
+        "beat 'c6-fee'.params.hud.counter.value: maths 'annual' has no value or series 'amount'",
+        "beat 'c2-plan' opens like a line in one of the last scripts ('which is why'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:24:52.915126+00:00",
+      "finishedAt": "2026-10-28T09:24:52.915126+00:00",
+      "notes": [
+        "beat 'outro'.params.assumption contains a typed number; use a placeholder: 'Illustrative fares, margin, cargo share, swipe fee and card fee, all assumed; growth at an assumed 7% a year, before fees and taxes; no inflation.'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T09:31:15.645322+00:00",
+      "finishedAt": "2026-10-28T09:31:15.645322+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T09:31:35.249597+00:00",
+      "finishedAt": "2026-10-28T09:31:35.249597+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:31:42.887570+00:00",
+      "finishedAt": "2026-10-28T09:31:52.486937+00:00",
+      "notes": [
+        "kokoro-onnx is not installed; run: bash scripts/setup-voice.sh"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:32:55.004602+00:00",
+      "finishedAt": "2026-10-28T09:32:55.004602+00:00",
+      "notes": [
+        "c5-sign (Sharma): 'I used to sign these deals at the bank. We bought the miles, and the miles brought us customers.' presents a character as a banker/industry insider (rule 4: no narrator or character presented as a banker or expert). Rewrite without the first-person bank role, e.g. 'Banks buy the miles, and the miles bring them customers.'",
+        "c6-sum (Sharma): 'Do the sum once a year: what did the card give you, and what did it cost you?' is an imperative instruction to the viewer about their money (rule 4: 'do this'). Make it Rohan's own illustrated habit, e.g. 'Rohan does the sum once a year: what did the card give him, and what did it cost him?', and change the on-screen label 'Do the sum' to e.g. 'The yearly sum'."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T09:33:28.686003+00:00",
+      "finishedAt": "2026-10-28T09:33:28.686003+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-28T09:33:51.551086+00:00",
+      "finishedAt": "2026-10-28T09:33:51.551086+00:00",
+      "notes": [
+        "Re-review after rewrite: c5-sign no longer presents Sharma as a banker, c6-sum is Rohan's own habit (no imperative to viewer); verify list met (card-partner money in words, 2% swipe and 3% margin as assumptions, no 'scam'); general claims (fuel ~1/4 of costs, Buffett quote, 2008 bag fees, Boston Fed study, 2020 loyalty-backed loans) sound; disclaimer ends description. Note: description has a single chapter stamp."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:33:42.287730+00:00",
+      "finishedAt": "2026-10-28T09:35:54.442259+00:00",
+      "notes": [
+        "render.ts stills failed:\nDetected differing memory amounts:\nMemory reported by CGroup: 8796093019732.88 MB\nMemory reported by /proc/meminfo MemAvailable: 14549.76 MB\nYou might have inadvertently set the --memory flag of `docker run` to a value that is higher than the global Docker memory limit.\nUsing the lower amount of memory for calculation.\nDetected differing memory amounts:\nMemory reported by CGroup: 8796093019421.57 MB\nMemory reported by /proc/meminfo MemAvailable: 14504.30 MB\nYou might have inadvertently set the --memory flag of `docker run` to a value that is higher than the global Docker memory limit.\nUsing the lower amount of memory for calculation.\nZodError\n    at calculateStoryMetadata (http://localhost:3000/bundle.js:8915:23)\n    at resolveVideoConfigWithMetadata (http://localhost:3000/bundle.js:32543:46)\n    at Object.resolveVideoConfig (http://localhost:3000/bundle.js:32576:20)\n    at window.remotion_calculateComposition (http://localhost:3000/bundle.js:17423:88)\n    at __puppeteer_evaluation_script__:2:21"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T09:36:13.923804+00:00",
+      "finishedAt": "2026-10-28T09:36:13.923804+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:36:15.105099+00:00",
+      "finishedAt": "2026-10-28T09:38:28.060876+00:00",
+      "notes": [
+        "text '$160' at 68.5 s runs outside the frame",
+        "text '$400' at 72.3 s is 22.8 px, below the 30 px minimum",
+        "text 'Tuesday' at 104.8 s runs outside the frame",
+        "text 'Letter' at 231.3 s runs outside the frame",
+        "5.2 s with nothing new on screen in beat 'c5-tease' (at most 2.5 s): add an action on the phrase being said there",
+        "beat 'c2-early': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'c2-late': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'c2-buckets': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'c3-basic': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'c4-ship': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'c4-letters': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'c4-online': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'c4-corner': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'c6-worth': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "the cover looks like L-20261026-01's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T09:39:26.093524+00:00",
+      "finishedAt": "2026-10-28T09:39:26.093524+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:39:27.250163+00:00",
+      "finishedAt": "2026-10-28T09:41:44.336144+00:00",
+      "notes": [
+        "4.9 s with nothing new on screen in beat 'c3-tease' (at most 2.5 s): add an action on the phrase being said there"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:41:57.055370+00:00",
+      "finishedAt": "2026-10-28T09:44:04.693764+00:00",
+      "notes": [
+        "3.6 s with nothing new on screen in beat 'c5-partner' (at most 2.5 s): add an action on the phrase being said there"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T09:44:54.523229+00:00",
+      "finishedAt": "2026-10-28T09:44:54.523229+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:44:55.912661+00:00",
+      "finishedAt": "2026-10-28T09:47:03.653941+00:00",
+      "notes": [
+        "3.0 s with nothing new on screen in beat 'c5-ten' (at most 2.5 s): add an action on the phrase being said there"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T09:47:18.487451+00:00",
+      "finishedAt": "2026-10-28T09:49:27.701970+00:00",
+      "notes": [
+        "2.5 s with nothing new on screen in beat 'c1-fuel' (at most 2.5 s): add an action on the phrase being said there"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:27:51.069047+00:00",
+      "finishedAt": "2026-10-28T10:27:51.069047+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:27:55.601973+00:00",
+      "finishedAt": "2026-10-28T10:30:07.404795+00:00",
+      "notes": [
+        "492 s, sky/acoustic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-28T10:33:38.300159+00:00",
+      "finishedAt": "2026-10-28T10:33:38.300159+00:00",
+      "notes": [
+        "[scene] hook 5.0s (remotion/src/videos/L-20261028-01/Hook.tsx, profit Tag at y=0.66h): the 'Airline's profit $12' tag sits in the caption band; the caption 'WENT SOMEWHERE' covers its $12 value. Move the tag up (about 0.5h, under the jet) so it clears the captions.",
+        "[script] c2-gap 73.5-78.0s (still 75.0s): '$240 more' is spoken at 74.9s while the 'Booked late' and 'The gap' cards are still empty; the gap card fires on 'hers' at 77.5s, 16 frames before the whip, so its count-up never lands on $240. Show Booked late on an early word and The gap on 'more', or reorder the line so the gap is said with at least 1 s left in the beat.",
+        "[script] c5-year 284.6-290.0s (still 290.0s): the 'Fees a year' card and HUD counter fire on 'year' at 289.53s, 14 frames before the beat ends; the count-up reaches only $336 and the whip cuts before $480 is shown. Move them to an earlier word or add a trailing clause so at least 1 s follows the event.",
+        "[scene] StoryHud (remotion/src/studio/hud.tsx, shows the previous counter while d<0): c5-year 284.6-289.5s (still 285.0s) shows a stale 'EXTRAS ON HIS TRIP $60' from c3-total over the swipe-fees chapter. Script workaround: hud {level:5, noCounter:true} on c5-year, since the card already shows the figure.",
+        "[script] c3-tease 192.5-197.6s (still 195.0s): the faded crate prop's 'CARGO' label sits directly behind the 'Seat, fare, fees' line (text on text). Use a prop with no label here (the type scene draws the prop behind the lines).",
+        "[script] characters cut by the frame: c2-late 70.0s Rohan's head cut off at the top-left (spot 0.16, camera medium on 'booked'); c3-change 175.0s Rohan cut at the top, face under the phone at the edge; c4-online 235.0s only a leg and arm sliver at the left edge. Move his spot inward (about 0.25-0.3) or frame 'all'.",
+        "[script] thumbnail-b.png: same composition as L-20261026-01 thumbnail-b ('ALL LEGAL?' yellow 2x3 icon grid with a headline): same picture, new words. Pick another composition (e.g. the $400 ticket against the $12 profit, or the miles coin flowing into the bank).",
+        "[scene] c6-chart 475.0s (screen scene, chart-gap-fill pen): the green gap arrow and dashed line run through the '$16,500' callout and cut it in two. Offset the callout left of the gap pen or the pen right of the callout."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:34:30.218267+00:00",
+      "finishedAt": "2026-10-28T10:34:30.218267+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T10:34:36.174369+00:00",
+      "finishedAt": "2026-10-28T10:36:51.332817+00:00",
+      "notes": [
+        "15 of 98 stills are mostly empty background (at 15 s, 25 s, 165 s, 205 s, 245 s, 250 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:38:25.540263+00:00",
+      "finishedAt": "2026-10-28T10:38:25.540263+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:38:36.932314+00:00",
+      "finishedAt": "2026-10-28T10:38:36.932314+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T10:38:40.613483+00:00",
+      "finishedAt": "2026-10-28T10:40:44.056274+00:00",
+      "notes": [
+        "text '$400' at 26.6 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:40:56.690121+00:00",
+      "finishedAt": "2026-10-28T10:43:02.354647+00:00",
+      "notes": [
+        "493 s, sky/acoustic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-28T10:45:00.905206+00:00",
+      "finishedAt": "2026-10-28T10:45:00.905206+00:00",
+      "notes": [
+        "[scene] build-scene camera (remotion/src/studio/build.tsx): medium/close shots on an item leave the actor as a headless torso or legs at the frame edge: c1-ticket 25.0s, c2-late 70.0s, c3-basic 165.0s, c4-hold 205.0s, c4-online 235.0s, c4-corner 250.0s, c5-shrink 340.0s, c6-club 415.0s, c6-borrow 425.0s, c6-fee 450.0s; head cut at the top in c3-change 175.0s and c6-club 420.0s. Moving Rohan's spot to 0.28 did not fix c2-late, c3-change or c4-online. An item shot should keep an actor's head in frame or leave the actor fully out. Script workaround: in these beats use 'on': 'all' (medium/wide) instead of a medium/close shot on the item.",
+        "[scene] phone prop/pose: c5-currency 345.0s (shot scene) and c3-change 175.0s draw Rohan's phone over the middle of his face.",
+        "[scene] jet prop state 'peel', c4-corner 250.0s: the 'BANK' label under the fuselage is covered by the window boxes and the wing, so it reads 'B..NK'.",
+        "[script] thumbnail-b.png: still the same composition as L-20261026-01 thumbnail-b ('ALL LEGAL?'): a headline over a grid of white icon tiles. The red background and 2x4 grid are new words on the same picture. Use another composition (e.g. the $400 ticket against the $12 profit, or the miles coin flowing into the bank)."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:45:34.449586+00:00",
+      "finishedAt": "2026-10-28T10:45:34.449586+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:45:46.284254+00:00",
+      "finishedAt": "2026-10-28T10:45:46.284254+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T10:45:47.300651+00:00",
+      "finishedAt": "2026-10-28T10:47:56.640249+00:00",
+      "notes": [
+        "text 'Early' at 68.5 s reaches 1818 px, inside the bottom 36 px",
+        "text 'Early' at 68.5 s runs outside the frame",
+        "text 'Interest' at 394.0 s reaches 1839 px, inside the bottom 36 px",
+        "text 'Interest' at 394.0 s runs outside the frame"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:48:09.535987+00:00",
+      "finishedAt": "2026-10-28T10:48:09.535987+00:00",
+      "notes": [
+        "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-28T10:48:13.570214+00:00",
+      "finishedAt": "2026-10-28T10:50:18.682781+00:00",
+      "notes": [
+        "493 s, sky/acoustic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-28T10:51:25.407978+00:00",
+      "finishedAt": "2026-10-28T10:51:25.407978+00:00",
+      "notes": [
+        "[scene] build camera 'on: all' (remotion/src/studio/build.tsx target(): 'all' averages only the shown items and ignores the actors), so the switch to medium 'all' still leaves the cast as a headless torso or legs at the frame edge: c1-ticket 25.0s, c2-late 70.0s, c3-basic 165.0s, c4-hold 205.0s (Priya), c4-corner 250.0s (Sharma), c5-shrink 340.0s, c6-club 415.0s and 420.0s (Sharma's head cut at the top), c6-borrow 425.0s and 430.0s (Sharma, half his face at the left edge). 'all' should frame the actors too. Script workaround: use size 'wide', on 'room' in place of medium 'all' in these beats (wide frames show the actor whole).",
+        "[scene] facepalm pose with the phone prop: c5-currency 345.0s (shot scene; Rohan has no prop in the script) draws the phone across the middle of his face; c3-change 175.0s shows the same pose.",
+        "[scene] jet prop: c4-hold 205.0s shows a 'BANK' label under the fuselage, covered by the window boxes and the wing so it reads 'B..NK' (c4-corner at 250 s is clean now)."
+      ]
+    }
+  ]
+}

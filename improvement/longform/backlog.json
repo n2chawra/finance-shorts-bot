@@ -845,6 +845,61 @@
       "priority": "normal",
       "found": "2026-10-28",
       "status": "open"
+    },
+    {
+      "id": "2026-10-28-build-camera-ignores-cast",
+      "kind": "bug",
+      "title": "Build camera framings crop the cast: 'all' and item shots leave a headless actor at the edge",
+      "detail": "QA failed L-20261028-01 three times on this. In remotion/src/studio/build.tsx target(), on: \"all\" averages only the items on screen and leaves the actors out, and a medium or close shot on an item crops an actor at spot 0.1-0.3 to legs or a body (c1-ticket, c2-late, c3-basic, c4-hold, c4-corner, c5-shrink, c6-club, c6-borrow). Moving the actor to 0.28 did not help. Fix: 'all' includes every actor head to feet, and an item shot either keeps an actor's head in frame or leaves the actor out. Script workaround until then: in a build beat with actors, frame wide on room, or close on the actor's who; never medium/close on an item.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-10-28",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-28-facepalm-phone",
+      "kind": "bug",
+      "title": "Rohan's facepalm pose draws his phone across his face",
+      "detail": "QA, L-20261028-01 c5-currency (345 s) and c3-change (175 s): in the facepalm pose the phone is drawn over the middle of Rohan's face, even when the beat gives no prop (an earlier acting key's phone carries over). Fix in remotion/src/cast: facepalm drops the held prop. Script workaround: no facepalm on a beat where Rohan held a phone earlier.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-28",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-28-scene-thumb-long",
+      "kind": "bug",
+      "title": "A long video can't have a scene thumbnail, so how_they_make_money gets one thumbnail, not three",
+      "detail": "renderer/thumbs.py FORMAT_TYPES allows scene, face and grid for how_they_make_money (and scene for list_explained and once_you_understand), but renderer/timeline/build.py _thumbnail requires a figure for every layout except grid/ladder/extremes/face, while thumbs.py fails any long thumbnail with a figure. So scene is unusable for long videos. A second grid repeats the last video's grid composition (QA flagged it as the same picture). Fix: let _thumbnail accept a long scene thumbnail with no figure. L-20261028-01 dropped to one thumbnail.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-28",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-28-case-one-timed-element",
+      "kind": "craft",
+      "title": "Script rule: a `case` beat holds about 4 seconds at most",
+      "detail": "The 2.5 s visual-gap gate counts only `at` keys in docu params; a case has one (`at`; `lineAt` isn't counted), so any case line longer than about 4.5 s fails. Also the gate prints only the worst gap, so fixes come one per render: measure every beat with craft._visual_times on timeline.json first. L-20261028-01 turned its long teases into `type` beats.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-28",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-28-airlines-draft",
+      "kind": "idea",
+      "title": "L-20261028-01 (How airlines really make money) is drafted and fact-checked: finish it once the build camera is fixed",
+      "detail": "Failed on QA scene bugs only. improvement/longform/drafts/L-20261028-01/ holds plan.json, script.json (number check and fact review passed, 119 beats, 8:13), the video's Hook/Turn/Payoff/props (rename .tsx.txt back to .tsx under remotion/src/videos/<new id>/) and build_script.py.txt, which writes the script. Next Studio run on this topic: copy them under a new id, apply the two scene fixes or their script workarounds, fix the jet prop's BANK label when half-peeled (c4-hold), render stills, QA.",
+      "where": "script",
+      "route": "video",
+      "priority": "high",
+      "found": "2026-10-28",
+      "status": "open"
     }
   ]
 }
