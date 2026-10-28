@@ -9,7 +9,7 @@ import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
 import { SettingsSchema, mostLoved } from "./schemas";
 import { runEndMs } from "./run-span";
-import { fillFromLive, meanViewPct, totals, type DayRow } from "./totals";
+import { fillFromLive, meanViewPct, totals, windowStart, type DayRow } from "./totals";
 import { manualState, relinked } from "./youtube-link";
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 
@@ -247,7 +247,7 @@ export async function getOverview(): Promise<Overview> {
   await liveCounters(); // fresh YouTube counters first, so this response is current
   const settingsP = getSettings(); // in parallel with the queries below, not before them
   const today = istDay(new Date());
-  const since = new Date(`${addDays(today, -7)}T00:00:00Z`);
+  const since = new Date(`${windowStart(today, 7)}T00:00:00Z`); // 7 days, today included
   const [groups, next, failures, recent, stats, uploads7, templates, templateRunsToday, lastRun] = await Promise.all([
     prisma.video.groupBy({ by: ["status"], where: live, _count: true }),
     prisma.video.findFirst({ where: { ...live, status: "scheduled", upload: { isNot: null } }, include: withRelations, orderBy: { upload: { publishAt: "asc" } } }),

@@ -433,14 +433,15 @@
       "id": "dsh-006",
       "kind": "bug",
       "title": "Overview 7-day totals take 8 days of Analytics rows",
-      "detail": "getOverview (and store.sample.ts) sum VideoStat days >= today-7, which is 8 calendar days counting today. Today and yesterday are usually empty (Analytics lag), so the effect is small; decide the window together with dui-003 (week-over-week delta) so both use the same 7 days.",
+      "detail": "getOverview (and store.sample.ts) sum VideoStat days >= today-7, which is 8 calendar days counting today. Today and yesterday are usually empty (Analytics lag), so the effect is small; decide the window together with dui-003 (week-over-week delta) so both use the same 7 days. Fixed 2026-10-29: windowStart(today, 7) in lib/totals.ts (today-6 to today, the same 7 days as the week-over-week chart's last 7 daily rows), used by store.db.ts and store.sample.ts; test workers/tests/dashboard-window.test.ts.",
       "files": [
         "apps/dashboard/src/lib/store.db.ts",
         "apps/dashboard/src/lib/store.sample.ts"
       ],
       "severity": "low",
       "found": "2026-10-26",
-      "status": "open"
+      "status": "fixed",
+      "fixed": "2026-10-29"
     },
     {
       "id": "dsh-007",

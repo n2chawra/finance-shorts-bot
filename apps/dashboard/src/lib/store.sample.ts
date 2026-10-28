@@ -7,6 +7,7 @@ import path from "node:path";
 
 import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 import { mostLoved } from "./schemas";
+import { windowStart } from "./totals";
 import { manualState } from "./youtube-link";
 
 const VERSION = 8; // bump to regenerate the sample data without restarting the server
@@ -305,7 +306,7 @@ export function getOverview(): Overview {
   const counts: Record<string, number> = {};
   for (const v of s.videos) counts[v.status] = (counts[v.status] ?? 0) + 1;
   const next = s.videos.filter((v) => v.status === "scheduled").sort((a, b) => a.upload!.publishAt.localeCompare(b.upload!.publishAt))[0];
-  const since = addDays(istDay(new Date()), -7);   // the 7 full days ending yesterday
+  const since = windowStart(istDay(new Date()), 7);   // 7 days, today included
   const recentStats = s.videos.flatMap((v) => v.stats).filter((x) => x.day >= since);
   return {
     source: "sample", counts, backlog: (counts.queued ?? 0), backlogCap: s.settings.backlogCap, uploadsPaused: s.settings.uploadsPaused,
