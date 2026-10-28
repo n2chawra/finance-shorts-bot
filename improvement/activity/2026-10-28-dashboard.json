@@ -1,0 +1,22 @@
+{
+  "agent": "dashboard",
+  "day": "2026-10-28",
+  "startedAt": "2026-10-28T02:08:12Z",
+  "finishedAt": "2026-10-28T02:22:29Z",
+  "summary": "Calendar now names the long-video days in its heading, draws long thumbnails landscape, and marks long videos apart from Shorts.",
+  "decision": "acted",
+  "why": "Reading the Calendar code (free of the 7-day rule today) found the heading spoke only of Shorts and every thumbnail was drawn 9:16; the 'Long' marker was the oldest open Calendar idea. All checks pass (68 smoke tests).",
+  "findings": [
+    {"title": "Calendar heading left out long videos", "detail": "'3 uploads a day at 07:07, 12:37 and 19:07 IST' while the grid plans 20:07 long videos."},
+    {"title": "Long thumbnails squashed", "detail": "16:9 thumbnails drawn in a 9:16 box."},
+    {"title": "Live site healthy", "detail": "/api/health answered, database 2.7 s."},
+    {"title": "Idea: show how old the YouTube stats are", "detail": "Stats stop silently when sign-in fails; a freshness line would say so.", "link": "https://www.paradime.io/guides/blog-dbt-source-freshness-best-practices"}
+  ],
+  "changes": [
+    {"title": "Calendar heading names long-video days", "detail": "Smoke test added.", "branch": "agent/dashboard/2026-10-28"},
+    {"title": "Long thumbnails drawn landscape", "detail": "Calendar grid and day list; smoke test added.", "branch": "agent/dashboard/2026-10-28"},
+    {"title": "Long videos marked on the Calendar", "detail": "'Long' tag, a dash on phones, legend entry; smoke test added.", "branch": "agent/dashboard/2026-10-28"}
+  ],
+  "nextCheck": "2026-10-29",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-10-28.md"}]
+}
