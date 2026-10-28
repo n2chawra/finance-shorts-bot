@@ -1,0 +1,322 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:41:00.936207+00:00",
+    "finishedAt": "2026-10-28T22:41:00.936207+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:44:25.464737+00:00",
+    "finishedAt": "2026-10-28T22:44:25.464737+00:00",
+    "notes": [
+      "thumbnail.words contains a typed number; use a placeholder: 'Same day, *1000×* pay'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:44:31.039297+00:00",
+    "finishedAt": "2026-10-28T22:44:31.039297+00:00",
+    "notes": [
+      "42 figures computed from inputs; 42 cross-checked against closed-form formulas.",
+      "warning: beat 'day' runs 5.1 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'week' runs 6.2 s with 4.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:44:57.843007+00:00",
+    "finishedAt": "2026-10-28T22:44:57.843007+00:00",
+    "notes": [
+      "43 figures computed from inputs; 43 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:45:04.239976+00:00",
+    "finishedAt": "2026-10-28T22:45:04.239976+00:00",
+    "notes": [
+      "43 figures computed from inputs; 43 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:46:40.474830+00:00",
+    "finishedAt": "2026-10-28T22:46:40.474830+00:00",
+    "notes": [
+      "No sourced facts; feed verify item met (description states $25,000 and $25M are round illustrative incomes, not a real person). Hour/day/week/year splits labelled before tax; sports car ~$68K and house ~$480K plausible for US prices; no rates, no product names, no imperative advice or guarantees; description ends with the disclaimer. Notes: 'Still $58,493 left' is pre-tax (after tax on $25M it would be roughly $28-30K, conclusion unchanged); hook 'I make $68 today' is a calendar-day average while the hour is per work hour (a Tuesday's 8 hours would be ~$96) - minor, not misleading."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:46:04.800775+00:00",
+    "finishedAt": "2026-10-28T22:47:11.888041+00:00",
+    "notes": [
+      "text 'Sharma' at 11.7 s runs outside the frame",
+      "text 'Year' at 34.1 s runs outside the frame",
+      "text 'Working' at 50.2 s runs outside the frame",
+      "3.0 s with nothing new on screen in beat 'nightrich' (at most 2.5 s): add an action on the phrase being said there",
+      "length 54 s is outside 35–50 s",
+      "the hook runs 4.1 s; keep it to 4 s or less"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:47:44.194884+00:00",
+    "finishedAt": "2026-10-28T22:47:44.194884+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:47:45.097441+00:00",
+    "finishedAt": "2026-10-28T22:48:19.909942+00:00",
+    "notes": [
+      "text 'Living large' at 41.7 s runs outside the frame",
+      "the hook runs 4.3 s; keep it to 4 s or less"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:48:30.429225+00:00",
+    "finishedAt": "2026-10-28T22:48:30.429225+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:48:31.302296+00:00",
+    "finishedAt": "2026-10-28T22:49:00.848799+00:00",
+    "notes": [
+      "the hook runs 4.1 s; keep it to 4 s or less"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:49:08.834774+00:00",
+    "finishedAt": "2026-10-28T22:49:08.834774+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:49:09.682696+00:00",
+    "finishedAt": "2026-10-28T22:49:38.419342+00:00",
+    "notes": [
+      "the hook runs 4.2 s; keep it to 4 s or less"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:49:51.839409+00:00",
+    "finishedAt": "2026-10-28T22:49:51.839409+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:49:52.755357+00:00",
+    "finishedAt": "2026-10-28T22:50:21.022663+00:00",
+    "notes": [
+      "the hook runs 3.7 s; keep it to 4 s or less"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:50:37.320982+00:00",
+    "finishedAt": "2026-10-28T22:50:37.320982+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:50:38.189216+00:00",
+    "finishedAt": "2026-10-28T22:51:06.862691+00:00",
+    "notes": [
+      "49 s, forest/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:51:30.516181+00:00",
+    "finishedAt": "2026-10-28T22:51:30.516181+00:00",
+    "notes": [
+      "Re-review after revision (hook, promise, week, night changed; rohanday removed). No sourced facts; feed verify item met (description states both incomes are round illustrative numbers, not a real person). Hook now states the yearly incomes ($25,000 vs $25 million), matching the title; week 'enough for a house, paid in cash' plausible at ~$480K; night 'My $68? Gone on rent, the bus and lunch' is a plausible skit line with no figure claimed. Splits labelled before tax; no rates, products or imperative advice; description ends with the disclaimer. Note: nightrich 'Still $58,493 left' is pre-tax (roughly $28-30K after tax on $25M), conclusion unchanged."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:52:43.901897+00:00",
+    "finishedAt": "2026-10-28T22:52:43.901897+00:00",
+    "notes": [
+      "[script] 48.5s loop: the caption 'TUESDAY' sits on top of the stack's 'TODAY' label (reads 'TUESDAY DAY $68'), and a cash tower taller than Rohan labelled $68 contradicts its value (same Rohan-plus-tall-stack picture as v-20261028-01's cover). Use a small object for $68 (a few notes/coins) placed clear of the caption band, or another camera.",
+      "[scene] 45s payoff (custom Payoff beat, set penthouse split ASLEEP/WORKING): Sharma is placed bottom-centre with his face squeezed between the caption 'MINE NEVER CLOCKS' and the level pills; the pills cover his mouth and chin. Raise him or put him on one side of the split.",
+      "[scene] 30s turn (custom Turn beat): Priya is small at the bottom-left edge, her head just under the caption 'BUT THE PAY' and her body behind the level pills; the rest of the frame is a flat wall plus a stopwatch. Cast should be big and clear of the caption/HUD bands.",
+      "[script] 10s hour: while Sharma says 'I earn $12,019' the camera is still close on Rohan's wallet; the moneybag is not in view, Sharma is off-screen (only a hand at top-left), the stopwatch is cut off by the top edge, and the frame is mostly flat background. Move the close-up to the moneybag/Sharma on 'earn' and keep the stopwatch inside the frame.",
+      "[script] 15s month and 35s night: Rohan (spot 0.34 / 0.3) is pushed half out of the left edge (body cut, at 35s his face is at the edge). At 15s the stopwatch also sits right under the '$12,019' counter, touching the number. Move Rohan inward and the stopwatch lower.",
+      "[script] 20s day: Sharma is drawn behind the sports car, which covers his body (frame also looks washed out), so the character and the prop overlap. Place the car beside him."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:53:37.683222+00:00",
+    "finishedAt": "2026-10-28T22:53:37.683222+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:53:38.584230+00:00",
+    "finishedAt": "2026-10-28T22:53:45.517831+00:00",
+    "notes": [
+      "the video's own code: it does not type-check: src/videos/v-20261029-02/props.tsx(20,100): error TS18048: 'x' is possibly 'undefined'. | src/videos/v-20261029-02/props.tsx(20,111): error TS18048: 'y' is possibly 'undefined'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:53:50.730898+00:00",
+    "finishedAt": "2026-10-28T22:54:17.866867+00:00",
+    "notes": [
+      "text 'Car' at 18.5 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:54:24.327207+00:00",
+    "finishedAt": "2026-10-28T22:54:24.327207+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:54:25.198234+00:00",
+    "finishedAt": "2026-10-28T22:54:47.296696+00:00",
+    "notes": [
+      "49 s, forest/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:55:27.091451+00:00",
+    "finishedAt": "2026-10-28T22:55:27.091451+00:00",
+    "notes": [
+      "[script] 20s day: the sports car still covers Sharma. Its body runs across his torso at spot 0.26 (car x 0.66 then moved to 0.62, but the car is drawn far wider than size 0.09 suggests), and both are faded. Put Sharma on the other side (e.g. spot 0.75 with the car at 0.35) or move the car fully right of him.",
+      "[script] 10s hour: Sharma (spot 0.34, scale 0.78) is cut in half by the left edge under the medium camera. Only his face and one arm are in frame. Move him inward (spot ~0.4) so the speaker is whole."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:56:18.303214+00:00",
+    "finishedAt": "2026-10-28T22:56:18.303214+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:56:19.257165+00:00",
+    "finishedAt": "2026-10-28T22:56:41.547958+00:00",
+    "notes": [
+      "text 'Car' at 18.5 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:56:48.910901+00:00",
+    "finishedAt": "2026-10-28T22:56:48.910901+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:56:49.738727+00:00",
+    "finishedAt": "2026-10-28T22:57:11.922178+00:00",
+    "notes": [
+      "49 s, forest/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:57:30.668987+00:00",
+    "finishedAt": "2026-10-28T22:57:30.668987+00:00",
+    "notes": [
+      "39 figures computed from inputs; 39 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:57:31.616162+00:00",
+    "finishedAt": "2026-10-28T22:57:54.567216+00:00",
+    "notes": [
+      "49 s, forest/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:58:10.666003+00:00",
+    "finishedAt": "2026-10-28T22:58:10.666003+00:00",
+    "notes": [
+      "Round 3: hook split $25,000 vs $25 million, cast whole and clear of captions/HUD in every still (Sharma inward at 10s, no car over him; 20s is the day-to-week cross-fade), loop shows a small coin pile with the disclaimer, numbers consistent, thumbnail distinct; layout/craft empty, 49 s, peak -1.0 dB."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:58:23.377897+00:00",
+    "finishedAt": "2026-10-28T23:01:17.906789+00:00",
+    "notes": [
+      "49 s, forest/acoustic, peak -1.0 dB, mean -16.2 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:01:27.091748+00:00",
+    "finishedAt": "2026-10-28T23:01:27.091748+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

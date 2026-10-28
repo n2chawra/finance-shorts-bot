@@ -1,0 +1,1563 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 61873,
+  "story": "rich_vs_poor",
+  "currency": "USD",
+  "style": {
+    "palette": "forest",
+    "genre": "acoustic",
+    "key": "E",
+    "bpm": 98
+  },
+  "structure": {
+    "levels": [
+      "Hour",
+      "Day",
+      "Week",
+      "Year"
+    ]
+  },
+  "maths": [
+    {
+      "name": "poor_hour",
+      "kind": "share",
+      "total": 25000,
+      "parts": 2080
+    },
+    {
+      "name": "rich_hour",
+      "kind": "share",
+      "total": 25000000,
+      "parts": 2080
+    },
+    {
+      "name": "poor_month",
+      "kind": "share",
+      "total": 25000,
+      "parts": 12
+    },
+    {
+      "name": "poor_day",
+      "kind": "share",
+      "total": 25000,
+      "parts": 365
+    },
+    {
+      "name": "rich_day",
+      "kind": "share",
+      "total": 25000000,
+      "parts": 365
+    },
+    {
+      "name": "rich_week",
+      "kind": "share",
+      "total": 25000000,
+      "parts": 52
+    },
+    {
+      "name": "spend",
+      "kind": "share",
+      "total": 3650000,
+      "parts": 365
+    },
+    {
+      "name": "rohanyears",
+      "kind": "share",
+      "total": 25000000,
+      "parts": 1,
+      "per_year": 25000
+    },
+    {
+      "name": "left",
+      "kind": "compare",
+      "a": "rich_day.per_part",
+      "b": "spend.per_part"
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "angle": "versus",
+    "words": "{poor_day_per_part} vs *{rich_day_per_part}*",
+    "figure": "{rich_day_per_part}"
+  },
+  "cta": "Whose Tuesday is yours? Comment",
+  "hook_style": "conflict",
+  "title": "Rohan makes $25,000 a year. Sharma makes $25M ⏰",
+  "description": "What does one ordinary Tuesday look like on $25,000 a year, and on $25 million?\nOne hour, one day, one week, one year: both incomes split by the clock, before tax, computed. Both incomes are round, illustrative numbers, not a real person; the spending figures are assumptions. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "feed_id": "2026-10-29-25k-vs-25m-one-day",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "rohan",
+      "say": "Me? {poor_day_total}. Uncle? {rich_day_total_long}.",
+      "events": {
+        "me": {
+          "word": "me"
+        },
+        "uncle": {
+          "word": "uncle"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "me"
+        },
+        {
+          "kind": "boom",
+          "at": "uncle"
+        }
+      ],
+      "params": {
+        "poor": "{poor_day_total}",
+        "rich": "{rich_day_total_long}",
+        "hud": {
+          "hide": true
+        },
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "worried"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "uncle",
+            "spot": "center",
+            "amount": "@rich_day.total",
+            "text": "{rich_day_total_long}",
+            "label": "A year",
+            "at": "uncle",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "uncle",
+            "size": "close",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "One Tuesday, two lives. Four clocks: an hour, a day, a week, a year.",
+      "events": {
+        "tuesday": {
+          "word": "tuesday"
+        },
+        "lives": {
+          "word": "lives"
+        },
+        "clocks": {
+          "word": "clocks"
+        },
+        "hour": {
+          "word": "hour"
+        },
+        "week": {
+          "word": "week"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tuesday"
+        },
+        {
+          "kind": "tick",
+          "at": "clocks"
+        },
+        {
+          "kind": "tick",
+          "at": "hour"
+        },
+        {
+          "kind": "riser",
+          "at": "year"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.36,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "clocks",
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "tuesday",
+            "prop": "tuesday",
+            "x": 0.66,
+            "size": 0.11,
+            "y": 0.18,
+            "label": "Tuesday",
+            "hidden": true
+          },
+          {
+            "id": "clocks",
+            "prop": "stopwatch",
+            "x": 0.7,
+            "size": 0.15,
+            "hidden": true,
+            "k": 0
+          }
+        ],
+        "actions": [
+          {
+            "at": "tuesday",
+            "do": "enter",
+            "target": "tuesday"
+          },
+          {
+            "at": "lives",
+            "do": "shake",
+            "target": "tuesday"
+          },
+          {
+            "at": "clocks",
+            "do": "enter",
+            "target": "clocks"
+          },
+          {
+            "at": "hour",
+            "do": "fill",
+            "target": "clocks",
+            "k": 0.25,
+            "dur": 0.5
+          },
+          {
+            "at": "week",
+            "do": "glow",
+            "target": "clocks"
+          },
+          {
+            "at": "year",
+            "do": "shake",
+            "target": "clocks"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "clocks",
+            "size": "close",
+            "on": "clocks",
+            "move": true
+          },
+          {
+            "at": "year",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "hour",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Hour one, before tax. Rohan earns {poor_hour_per_part}. I earn {rich_hour_per_part}.",
+      "events": {
+        "hour": {
+          "word": "hour"
+        },
+        "tax": {
+          "word": "tax"
+        },
+        "rohan": {
+          "word": "rohan"
+        },
+        "earn": {
+          "word": "earn"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "hour"
+        },
+        {
+          "kind": "clink",
+          "at": "rohan"
+        },
+        {
+          "kind": "kaching",
+          "at": "earn"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "office"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.42,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "smirk"
+              },
+              {
+                "at": "earn",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "hour",
+            "prop": "stopwatch",
+            "x": 0.7,
+            "size": 0.1,
+            "y": 0.08,
+            "k": 0
+          },
+          {
+            "id": "rohanWallet",
+            "prop": "wallet",
+            "x": 0.66,
+            "size": 0.07,
+            "hidden": true,
+            "label": "Rohan"
+          },
+          {
+            "id": "earnings",
+            "prop": "moneybag",
+            "x": 0.82,
+            "size": 0.13,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "hour",
+            "do": "fill",
+            "target": "hour",
+            "k": 1,
+            "dur": 1.6
+          },
+          {
+            "at": "rohan",
+            "do": "enter",
+            "target": "rohanWallet"
+          },
+          {
+            "at": "earn",
+            "do": "enter",
+            "target": "earnings"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "earn",
+            "size": "close",
+            "on": "earnings",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@rich_hour.per_part",
+            "text": "{rich_hour_per_part}",
+            "label": "Sharma, per hour",
+            "at": "earn"
+          }
+        }
+      }
+    },
+    {
+      "id": "month",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "So his one hour beats my whole month of pay, {poor_month_per_part}.",
+      "events": {
+        "hour": {
+          "word": "hour"
+        },
+        "beats": {
+          "word": "beats"
+        },
+        "month": {
+          "word": "month"
+        },
+        "pay": {
+          "word": "pay"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "hour"
+        },
+        {
+          "kind": "fail",
+          "at": "month"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "red"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.42,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              },
+              {
+                "at": "month",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "hour",
+            "prop": "stopwatch",
+            "x": 0.64,
+            "size": 0.1,
+            "y": 0.08,
+            "k": 1,
+            "hidden": true
+          },
+          {
+            "id": "month",
+            "prop": "monthpay",
+            "x": 0.7,
+            "size": 0.1,
+            "hidden": true,
+            "label": "Month"
+          }
+        ],
+        "actions": [
+          {
+            "at": "hour",
+            "do": "enter",
+            "target": "hour"
+          },
+          {
+            "at": "beats",
+            "do": "shake",
+            "target": "hour"
+          },
+          {
+            "at": "month",
+            "do": "enter",
+            "target": "month"
+          },
+          {
+            "at": "pay",
+            "do": "shrink",
+            "target": "month",
+            "scale": 0.7
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme",
+            "on": "rohan"
+          },
+          {
+            "at": "beats",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "id": "day",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Day one: {rich_day_per_part}. A brand-new sports car, every single morning.",
+      "events": {
+        "day": {
+          "word": "day"
+        },
+        "sports": {
+          "word": "sports"
+        },
+        "car": {
+          "word": "car"
+        },
+        "morning": {
+          "word": "morning"
+        },
+        "num": {
+          "word": 6
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "day"
+        },
+        {
+          "kind": "whoosh",
+          "at": "sports"
+        },
+        {
+          "kind": "kaching",
+          "at": "morning"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.74,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "proud"
+              },
+              {
+                "at": "car",
+                "pose": "point",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "morning",
+            "prop": "sunrise",
+            "x": 0.3,
+            "size": 0.12,
+            "y": 0.28,
+            "hidden": true,
+            "k": 1
+          },
+          {
+            "id": "sports",
+            "prop": "sportscar",
+            "x": 0.34,
+            "size": 0.08,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "day",
+            "do": "glow",
+            "target": "sports"
+          },
+          {
+            "at": "sports",
+            "do": "enter",
+            "target": "sports"
+          },
+          {
+            "at": "car",
+            "do": "move",
+            "target": "sports",
+            "to": {
+              "x": 0.34,
+              "y": 0
+            }
+          },
+          {
+            "at": "morning",
+            "do": "enter",
+            "target": "morning"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "num",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "sports",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "morning",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@rich_day.per_part",
+            "text": "{rich_day_per_part}",
+            "label": "Sharma, per day",
+            "at": "day"
+          }
+        }
+      }
+    },
+    {
+      "id": "week",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Week one: {rich_week_per_part}. Enough for a house, paid in cash, by Friday.",
+      "events": {
+        "week": {
+          "word": "week"
+        },
+        "house": {
+          "word": "house"
+        },
+        "cash": {
+          "word": "cash"
+        },
+        "friday": {
+          "word": "friday"
+        },
+        "enough": {
+          "word": "enough"
+        },
+        "num": {
+          "word": 6
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "week"
+        },
+        {
+          "kind": "boom",
+          "at": "house"
+        },
+        {
+          "kind": "kaching",
+          "at": "cash"
+        },
+        {
+          "kind": "pop",
+          "at": "friday"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "green"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "house",
+                "pose": "present",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "house",
+            "prop": "mansion",
+            "x": 0.68,
+            "size": 0.16,
+            "hidden": true
+          },
+          {
+            "id": "cash",
+            "prop": "cash",
+            "x": 0.86,
+            "size": 0.07,
+            "hidden": true
+          },
+          {
+            "id": "friday",
+            "prop": "friday",
+            "x": 0.5,
+            "size": 0.1,
+            "y": 0.3,
+            "hidden": true,
+            "label": "Friday"
+          }
+        ],
+        "actions": [
+          {
+            "at": "house",
+            "do": "enter",
+            "target": "house"
+          },
+          {
+            "at": "cash",
+            "do": "enter",
+            "target": "cash"
+          },
+          {
+            "at": "friday",
+            "do": "enter",
+            "target": "friday"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "num",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "enough",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "house",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "friday",
+            "size": "close",
+            "on": "friday",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@rich_week.per_part",
+            "text": "{rich_week_per_part}",
+            "label": "Sharma, per week",
+            "at": "week"
+          }
+        }
+      }
+    },
+    {
+      "id": "year",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "Year one: {rich_day_total_long}. Rohan would need {rohanyears_years} years to earn that.",
+      "events": {
+        "year": {
+          "word": "year"
+        },
+        "rohan": {
+          "word": "rohan"
+        },
+        "need": {
+          "word": "need"
+        },
+        "earn": {
+          "word": "earn"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "year"
+        },
+        {
+          "kind": "boom",
+          "at": "rohan"
+        },
+        {
+          "kind": "clink",
+          "at": "earn"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "desert",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.26,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "shock"
+              },
+              {
+                "at": "need",
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "year",
+            "prop": "moneymountain",
+            "x": 0.62,
+            "size": 0.22,
+            "hidden": true
+          },
+          {
+            "id": "rohanPile",
+            "prop": "coinpile",
+            "x": 0.9,
+            "size": 0.06,
+            "hidden": true,
+            "label": "Rohan"
+          }
+        ],
+        "actions": [
+          {
+            "at": "year",
+            "do": "enter",
+            "target": "year"
+          },
+          {
+            "at": "rohan",
+            "do": "enter",
+            "target": "rohanPile"
+          },
+          {
+            "at": "need",
+            "do": "shake",
+            "target": "rohanPile"
+          },
+          {
+            "at": "earn",
+            "do": "grow",
+            "target": "year",
+            "scale": 1.12
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "year",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "rohan",
+            "size": "extreme",
+            "on": "rohanPile",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@rich_day.total",
+            "text": "{rich_day_total}",
+            "label": "Sharma, per year",
+            "at": "year"
+          }
+        }
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "But the pay isn't the real gap. The real gap opens at midnight.",
+      "events": {
+        "pay": {
+          "word": "pay"
+        },
+        "real": {
+          "word": "real"
+        },
+        "gap": {
+          "word": "gap"
+        },
+        "midnight": {
+          "word": "midnight"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pay"
+        },
+        {
+          "kind": "tick",
+          "at": "gap"
+        },
+        {
+          "kind": "boom",
+          "at": "midnight"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "word": "Midnight",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "midnight",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "night",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Midnight. My {poor_day_per_part}? Gone on rent, the bus and lunch. Bed.",
+      "events": {
+        "midnight": {
+          "word": "midnight"
+        },
+        "gone": {
+          "word": "gone"
+        },
+        "rent": {
+          "word": "rent"
+        },
+        "bus": {
+          "word": "bus"
+        },
+        "lunch": {
+          "word": "lunch"
+        },
+        "bed": {
+          "word": "bed"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "midnight"
+        },
+        {
+          "kind": "fail",
+          "at": "gone"
+        },
+        {
+          "kind": "pop",
+          "at": "rent"
+        },
+        {
+          "kind": "whoosh",
+          "at": "bus"
+        },
+        {
+          "kind": "pop",
+          "at": "bed"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "sad"
+              },
+              {
+                "at": "bed",
+                "pose": "facepalm",
+                "expression": "worried"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "gone",
+            "prop": "wallet",
+            "x": 0.6,
+            "size": 0.08,
+            "y": 0.2,
+            "label": "Gone"
+          },
+          {
+            "id": "rent",
+            "prop": "rentkey",
+            "x": 0.72,
+            "size": 0.09,
+            "y": 0.3,
+            "hidden": true,
+            "label": "Rent"
+          },
+          {
+            "id": "bus",
+            "prop": "bus",
+            "x": 0.76,
+            "size": 0.08,
+            "hidden": true
+          },
+          {
+            "id": "lunch",
+            "prop": "lunchbox",
+            "x": 0.6,
+            "size": 0.07,
+            "hidden": true,
+            "label": "Lunch"
+          },
+          {
+            "id": "bed",
+            "prop": "bed",
+            "x": 0.74,
+            "size": 0.12,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "gone",
+            "do": "state",
+            "target": "gone",
+            "state": "empty"
+          },
+          {
+            "at": "rent",
+            "do": "enter",
+            "target": "rent"
+          },
+          {
+            "at": "bus",
+            "do": "enter",
+            "target": "bus"
+          },
+          {
+            "at": "lunch",
+            "do": "enter",
+            "target": "lunch"
+          },
+          {
+            "at": "bed",
+            "do": "enter",
+            "target": "bed"
+          },
+          {
+            "at": "bed",
+            "do": "exit",
+            "target": "bus"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "gone",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4
+        }
+      }
+    },
+    {
+      "id": "nightrich",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "My day cost {spend_per_part}, living large. Still {left_diff} left, and it works the night shift.",
+      "events": {
+        "living": {
+          "word": "living"
+        },
+        "large": {
+          "word": "large"
+        },
+        "still": {
+          "word": "still"
+        },
+        "left": {
+          "word": "left"
+        },
+        "shift": {
+          "word": "shift"
+        },
+        "num": {
+          "word": 12
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "large"
+        },
+        {
+          "kind": "kaching",
+          "at": "left"
+        },
+        {
+          "kind": "ding",
+          "at": "shift"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "purple"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.28,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              },
+              {
+                "at": "shift",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "living",
+            "prop": "champagne",
+            "x": 0.52,
+            "size": 0.09,
+            "hidden": true
+          },
+          {
+            "id": "left",
+            "prop": "moneybag",
+            "x": 0.7,
+            "size": 0.13,
+            "hidden": true,
+            "label": "Left"
+          },
+          {
+            "id": "shift",
+            "prop": "hardhat",
+            "x": 0.88,
+            "size": 0.09,
+            "hidden": true,
+            "label": "Night shift"
+          }
+        ],
+        "actions": [
+          {
+            "at": "living",
+            "do": "enter",
+            "target": "living"
+          },
+          {
+            "at": "left",
+            "do": "enter",
+            "target": "left"
+          },
+          {
+            "at": "shift",
+            "do": "enter",
+            "target": "shift"
+          },
+          {
+            "at": "shift",
+            "do": "multiply",
+            "target": "shift",
+            "n": 3,
+            "cols": 3
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "num",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "left",
+            "size": "close",
+            "on": "left",
+            "move": true
+          },
+          {
+            "at": "shift",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4
+        }
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Rohan's money sleeps when he sleeps. Mine never clocks out.",
+      "events": {
+        "money": {
+          "word": "money"
+        },
+        "sleeps": {
+          "word": "sleeps"
+        },
+        "mine": {
+          "word": "mine"
+        },
+        "never": {
+          "word": "never"
+        },
+        "clocks": {
+          "word": "clocks"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "sleeps"
+        },
+        {
+          "kind": "ding",
+          "at": "mine"
+        },
+        {
+          "kind": "kaching",
+          "at": "clocks"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "poor": "Asleep",
+        "rich": "Working",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "build",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Alarm. Another Tuesday. And again, guess who earns what.",
+      "events": {
+        "alarm": {
+          "word": "alarm"
+        },
+        "tuesday": {
+          "word": "tuesday"
+        },
+        "guess": {
+          "word": "guess"
+        },
+        "earns": {
+          "word": "earns"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "alarm"
+        },
+        {
+          "kind": "whoosh",
+          "at": "tuesday"
+        },
+        {
+          "kind": "pop",
+          "at": "earns"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "gold"
+        },
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "shock"
+              },
+              {
+                "at": "guess",
+                "pose": "shrug",
+                "expression": "thinking"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "alarm",
+            "prop": "stopwatch",
+            "x": 0.66,
+            "size": 0.1,
+            "y": 0.1,
+            "hidden": true,
+            "k": 0
+          },
+          {
+            "id": "tuesday",
+            "prop": "tuesday",
+            "x": 0.82,
+            "size": 0.09,
+            "y": 0.2,
+            "hidden": true,
+            "label": "Tuesday"
+          },
+          {
+            "id": "earns",
+            "prop": "coinpile",
+            "x": 0.7,
+            "size": 0.06,
+            "hidden": true,
+            "label": "Rohan earns"
+          }
+        ],
+        "actions": [
+          {
+            "at": "alarm",
+            "do": "enter",
+            "target": "alarm"
+          },
+          {
+            "at": "alarm",
+            "do": "shake",
+            "target": "alarm"
+          },
+          {
+            "at": "tuesday",
+            "do": "enter",
+            "target": "tuesday"
+          },
+          {
+            "at": "earns",
+            "do": "enter",
+            "target": "earns"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "tuesday",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "af_heart"
+}
