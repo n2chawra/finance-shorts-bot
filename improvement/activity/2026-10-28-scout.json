@@ -1,0 +1,47 @@
+{
+  "agent": "scout",
+  "day": "2026-10-28",
+  "startedAt": "2026-10-28T04:08:13Z",
+  "finishedAt": "2026-10-28T04:13:16Z",
+  "summary": "Added 2 global long-video topics (inflation, 1.4-5.4M references; how big a billion is, 7-12M references), bringing the feed to 7. Studied charts: our last two long videos barely draw money over time, so I routed 4 adopts (one a trillion-formatting bug) and 2 new chart/scene templates.",
+  "decision": "acted",
+  "why": "L-20261023-01 had 2 chart beats in 136 and L-20261026-01 none in 121, while the long explainers people watch spend their best moments on a number moving. Money-at-scale (jack pockets 12.3M, RealLifeLore 9.5M, Tom Scott 8.3M) and inflation (5.4M, 2.5M, 1.55M) are proven long shapes we haven't told.",
+  "findings": [
+    {
+      "title": "Our long videos stopped drawing charts",
+      "detail": "2 chart beats in L-20261023-01, none in L-20261026-01: figures became stat cards and props."
+    },
+    {
+      "title": "Compounding is shown as a stacked area with a crossover year",
+      "detail": "Contributions vs growth as bands, the year growth overtakes what you put in as the reveal. We draw two lines."
+    },
+    {
+      "title": "Money at scale is sold by zooming out and converting to time",
+      "detail": "Four 7-12M-view videos use one device: each bigger amount shrinks the last to a dot.",
+      "link": "https://www.youtube.com/watch?v=apFPtyZHuns"
+    },
+    {
+      "title": "Bug: a trillion formats as '$1000.00B'",
+      "detail": "Money('USD').short(1e12) and .long(1e12); INR gives '₹100000.00 Cr'."
+    }
+  ],
+  "changes": [
+    {
+      "title": "2 topics added to the long-form feed",
+      "detail": "2026-10-28-once-you-understand-inflation (high), 2026-10-28-once-you-understand-a-billion (from mid-November).",
+      "branch": "agent/scout/2026-10-28"
+    },
+    {
+      "title": "6 backlog items routed",
+      "detail": "adopt: chart-per-video (high), money-trillion-format (high), figure-as-time, long-format-money-scale; template: chart-stacked-crossover, scale-zoom-ladder.",
+      "branch": "agent/scout/2026-10-28"
+    }
+  ],
+  "nextCheck": "2026-10-29",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/longform/2026-10-28.md"
+    }
+  ]
+}
