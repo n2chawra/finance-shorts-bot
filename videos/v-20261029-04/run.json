@@ -1,0 +1,292 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:19:53.618651+00:00",
+    "finishedAt": "2026-10-28T23:19:53.618651+00:00",
+    "notes": [
+      "description opens with 'what does a', already used by v-20261023-03"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:19:57.986954+00:00",
+    "finishedAt": "2026-10-28T23:19:57.986954+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:20:34.781005+00:00",
+    "finishedAt": "2026-10-28T23:20:34.781005+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:21:15.365651+00:00",
+    "finishedAt": "2026-10-28T23:21:15.365651+00:00",
+    "notes": [
+      "27 figures computed from inputs; 18 cross-checked against closed-form formulas.",
+      "warning: beat 'poorlater' runs 6.2 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'richlater' runs 5.4 s with 3.5 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'turn' runs 5.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:21:32.167507+00:00",
+    "finishedAt": "2026-10-28T23:21:32.167507+00:00",
+    "notes": [
+      "27 figures computed from inputs; 18 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:22:42.111073+00:00",
+    "finishedAt": "2026-10-28T23:22:42.111073+00:00",
+    "notes": [
+      "No sourced facts; feed verify item met (7% stated as an assumption in voice, no product/account named); global USD pay-yourself-first comparison, 7% within 7-10% band, no advice/imperatives/expert claims, tone fine, description ends with disclaimer. Note: figures are nominal (no inflation/tax), acceptable as illustrative; 'only the order changed' is rhetorical but the $100 vs $800 difference is shown on screen."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:22:24.007117+00:00",
+    "finishedAt": "2026-10-28T23:23:07.333806+00:00",
+    "notes": [
+      "beat 'promise': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "2 of 9 stills are mostly empty background (at 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:23:42.488062+00:00",
+    "finishedAt": "2026-10-28T23:23:42.488062+00:00",
+    "notes": [
+      "27 figures computed from inputs; 18 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:23:43.382931+00:00",
+    "finishedAt": "2026-10-28T23:24:08.381124+00:00",
+    "notes": [
+      "36 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:24:19.321768+00:00",
+    "finishedAt": "2026-10-28T23:24:19.321768+00:00",
+    "notes": [
+      "27 figures computed from inputs; 18 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:24:20.211017+00:00",
+    "finishedAt": "2026-10-28T23:24:40.682545+00:00",
+    "notes": [
+      "four shots in a row open medium (from 'poorway'): vary the shot size"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:24:47.803469+00:00",
+    "finishedAt": "2026-10-28T23:24:47.803469+00:00",
+    "notes": [
+      "27 figures computed from inputs; 18 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:24:48.740399+00:00",
+    "finishedAt": "2026-10-28T23:25:09.358337+00:00",
+    "notes": [
+      "36 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:25:56.579873+00:00",
+    "finishedAt": "2026-10-28T23:25:56.579873+00:00",
+    "notes": [
+      "[script] Length 36.4 s is outside the Shorts range of 45-75 s (render.json duration_sec 36). The story is 9 short beats with about 3-6 s each. Add a level (for example a mid-way checkpoint at 10 or 20 years, or a cost-of-waiting beat) and give the turn and payoff more lines to reach at least 45 s.",
+      "[script] 15.0s (poorlater): the HUD still reads 'SHARMA SAVES A MONTH $800' while Rohan says 'My leftovers', because the counter only switches to 'Rohan's pot' on 'assumed'. The label does not match the speaker. Start the counter at sec 0 of the beat, or hide it until it switches.",
+      "[script] 15.0s (poorlater): opening wide shot leaves Rohan small in the middle of a mostly empty field, with the coin plate and sapling tiny. Open on medium or close on Rohan and the leftovers plate instead of wide/room.",
+      "[script] 35.0s (loop): the two-line caption 'BILL BEFORE / RENT.' sits right on top of the level pills ('1 Rohan's way'). They touch with no gap. Shorten the final line or break the words so the caption stays on one line."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:26:30.858298+00:00",
+    "finishedAt": "2026-10-28T23:26:30.858298+00:00",
+    "notes": [
+      "43 figures computed from inputs; 28 cross-checked against closed-form formulas.",
+      "warning: beat 'tenyears' runs 8.3 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:26:31.787562+00:00",
+    "finishedAt": "2026-10-28T23:26:59.130139+00:00",
+    "notes": [
+      "3.0 s with nothing new on screen in beat 'tenyears' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:27:10.967666+00:00",
+    "finishedAt": "2026-10-28T23:27:10.967666+00:00",
+    "notes": [
+      "43 figures computed from inputs; 28 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:27:12.034375+00:00",
+    "finishedAt": "2026-10-28T23:27:33.477510+00:00",
+    "notes": [
+      "46 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:27:48.133936+00:00",
+    "finishedAt": "2026-10-28T23:27:48.133936+00:00",
+    "notes": [
+      "43 figures computed from inputs; 28 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:27:48.970901+00:00",
+    "finishedAt": "2026-10-28T23:28:10.104412+00:00",
+    "notes": [
+      "46 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:28:29.869658+00:00",
+    "finishedAt": "2026-10-28T23:28:29.869658+00:00",
+    "notes": [
+      "Re-review after edits: new tenyears beat states 7% as assumed (10-yr pots from code maths), turn line is rhetorical but the $100 vs $800 difference is shown, loop 'I'm paying me first' is Rohan's own choice not an instruction; no sourced facts, feed verify item met, 7% in band, no advice/expert claims, description ends with disclaimer."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:28:46.670448+00:00",
+    "finishedAt": "2026-10-28T23:28:46.670448+00:00",
+    "notes": [
+      "[script] 20.0s (tenyears): the pot labels under the acorn and oak read 'Rohan  Sharm', so the 'Sharma' label runs off the right edge. Priya is also cut off by the left edge. The 'medium on all' camera with the oak at x 0.76 crops both. Move the oak and acorn inward (for example x 0.55 and 0.72) or use a wider shot at 'sharma's'.",
+      "[script] 15.0s (tenyears): the HUD still shows 'SHARMA SAVES A MONTH $800' from richway while Priya says 'Check one, 10 years in', and Rohan's $17,409 never gets a counter. Add a 'Rohan's pot' counter at 'rohan's' (or hide the counter until 'sharma's).",
+      "[script] 25.0s (poorlater): the close shot on 'invested' leaves Rohan out of frame while he is speaking, and the leftovers plate (the money object) is cut off at the left edge. Frame the plate and the tree together, or keep Rohan in shot.",
+      "[script] 30.0s (richlater): Sharma is pressed against the left edge with his arm at the frame edge, and the frame is mostly empty sky and grass around a tiny acorn. Use a closer shot on Sharma and the acorn, or move the spot inward."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:29:09.050072+00:00",
+    "finishedAt": "2026-10-28T23:29:09.050072+00:00",
+    "notes": [
+      "43 figures computed from inputs; 28 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:29:09.889595+00:00",
+    "finishedAt": "2026-10-28T23:29:30.460440+00:00",
+    "notes": [
+      "46 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:29:47.725654+00:00",
+    "finishedAt": "2026-10-28T23:29:47.725654+00:00",
+    "notes": [
+      "43 figures computed from inputs; 28 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:29:48.521104+00:00",
+    "finishedAt": "2026-10-28T23:30:09.118954+00:00",
+    "notes": [
+      "46 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:30:34.974652+00:00",
+    "finishedAt": "2026-10-28T23:30:34.974652+00:00",
+    "notes": [
+      "43 figures computed from inputs; 28 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:30:35.828890+00:00",
+    "finishedAt": "2026-10-28T23:30:57.439964+00:00",
+    "notes": [
+      "46 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:31:21.085561+00:00",
+    "finishedAt": "2026-10-28T23:31:21.085561+00:00",
+    "notes": [
+      "Round 3: 46 s; layout/craft checks clean; audio -1.0/-16.2 dB; hook and disclaimer present; all earlier fixes check out (tenyears labels gone, Priya cropped at 20 s only mid-pan, Rohan in frame at 25 s, Sharma and acorn framed together at 30 s); minor: at 15 s the Sharma's-pot count-up runs while Rohan's $17,409 is spoken"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:31:26.707839+00:00",
+    "finishedAt": "2026-10-28T23:33:44.715069+00:00",
+    "notes": [
+      "46 s, plum/lofi, peak -1.0 dB, mean -16.2 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:34:01.814476+00:00",
+    "finishedAt": "2026-10-28T23:34:01.814476+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -1,0 +1,129 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 19437,
+  "duration_sec": 46,
+  "tempo": 1.4,
+  "style": {
+    "palette": "plum",
+    "genre": "lofi",
+    "key": "F",
+    "bpm": 86
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "I pay one bill before rent. Myself.",
+        "start": 0.27,
+        "seconds": 1.34,
+        "window": 1.9,
+        "fill": 0.705
+      },
+      {
+        "scene": "promise",
+        "text": "We both earn $4,000 a month. Three checks, and the last one hurts.",
+        "start": 2.17,
+        "seconds": 3.17,
+        "window": 3.57,
+        "fill": 0.888
+      },
+      {
+        "scene": "poorway",
+        "text": "My way: rent, food, fun. Whatever's left at month end, I save. Usually $100.",
+        "start": 5.73,
+        "seconds": 4.0,
+        "window": 4.3,
+        "fill": 0.93
+      },
+      {
+        "scene": "richway",
+        "text": "My way: on payday, 20% moves out first. That's $800, before I can touch it.",
+        "start": 10.03,
+        "seconds": 4.21,
+        "window": 4.73,
+        "fill": 0.89
+      },
+      {
+        "scene": "tenyears",
+        "text": "Check one, 10 years in, at an assumed 7%. Rohan's pot: $17,409. Sharma's: $139,276.",
+        "start": 14.77,
+        "seconds": 7.78,
+        "window": 8.33,
+        "fill": 0.934
+      },
+      {
+        "scene": "poorlater",
+        "text": "My leftovers, invested 30 years at an assumed 7%: $122,709. Not bad!",
+        "start": 23.1,
+        "seconds": 6.01,
+        "window": 6.2,
+        "fill": 0.969
+      },
+      {
+        "scene": "richlater",
+        "text": "Mine, at the same assumed rate, over 30 years: $981,670.",
+        "start": 29.3,
+        "seconds": 4.42,
+        "window": 5.0,
+        "fill": 0.884
+      },
+      {
+        "scene": "turn",
+        "text": "Nobody earned more. Only the order changed. Sharma saved before life could spend it. That's $858,961.",
+        "start": 34.3,
+        "seconds": 6.39,
+        "window": 6.93,
+        "fill": 0.922
+      },
+      {
+        "scene": "payoff",
+        "text": "The rich don't save what's left. They spend what's left.",
+        "start": 41.23,
+        "seconds": 1.97,
+        "window": 2.53,
+        "fill": 0.779
+      },
+      {
+        "scene": "loop",
+        "text": "Fine. Next payday, I'm paying me first.",
+        "start": 43.77,
+        "seconds": 1.53,
+        "window": 2.0,
+        "fill": 0.765
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off",
+    "loop-picture-matches-hook": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 8.111,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

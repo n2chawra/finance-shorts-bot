@@ -1,0 +1,1235 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 19437,
+  "story": "secret_of_rich",
+  "currency": "USD",
+  "style": {
+    "palette": "plum",
+    "genre": "lofi",
+    "key": "F",
+    "bpm": 86
+  },
+  "structure": {
+    "levels": [
+      "Rohan's way",
+      "Sharma's way",
+      "Ten years",
+      "Thirty years"
+    ]
+  },
+  "maths": [
+    {
+      "name": "pay",
+      "kind": "fee_take",
+      "amount": 4000,
+      "fee_pct": 20,
+      "per_year": 12,
+      "years": 1
+    },
+    {
+      "name": "poor",
+      "kind": "sip",
+      "monthly": 100,
+      "rate_pct": 7,
+      "years": 30
+    },
+    {
+      "name": "rich",
+      "kind": "sip",
+      "monthly": 800,
+      "rate_pct": 7,
+      "years": 30
+    },
+    {
+      "name": "poor10",
+      "kind": "sip",
+      "monthly": 100,
+      "rate_pct": 7,
+      "years": 10
+    },
+    {
+      "name": "rich10",
+      "kind": "sip",
+      "monthly": 800,
+      "rate_pct": 7,
+      "years": 10
+    },
+    {
+      "name": "gap",
+      "kind": "compare",
+      "a": "rich.final",
+      "b": "poor.final"
+    }
+  ],
+  "thumbnail": {
+    "who": "sharma",
+    "layout": "scene",
+    "at": "richlater",
+    "sec": 4.0,
+    "angle": "secret",
+    "words": "The bill *before* rent",
+    "figure": "{rich_final}"
+  },
+  "cta": "Who gets paid first on your payday? Comment",
+  "hook_style": "secret",
+  "title": "Payday: Sharma pays one bill before rent. Himself 🤫",
+  "description": "Who gets paid first on payday: the landlord, or the person who earned it?\nThe same $4,000 a month, two orders: saving whatever is left at month end (about $100) or moving 20% out on payday, both invested for 30 years at an assumed 7% a year, computed. The return is an assumption, not a promise; no account or product named. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "feed_id": "2026-10-24-rich-pay-themselves-first",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "sharma",
+      "say": "I pay one bill before rent. Myself.",
+      "events": {
+        "bill": {
+          "word": "bill"
+        },
+        "rent": {
+          "word": "rent"
+        },
+        "myself": {
+          "word": "myself"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "bill"
+        },
+        {
+          "kind": "tick",
+          "at": "rent"
+        },
+        {
+          "kind": "kaching",
+          "at": "myself"
+        }
+      ],
+      "params": {
+        "pay": "{pay_amount}",
+        "first": "{pay_per_period}",
+        "hud": {
+          "hide": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "myself",
+            "spot": "right",
+            "amount": "@pay.per_period",
+            "text": "{pay_per_period}",
+            "label": "Paid first",
+            "at": "myself",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "myself",
+            "size": "close",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "We both earn {pay_amount} a month. Three checks, and the last one hurts.",
+      "events": {
+        "both": {
+          "word": "both"
+        },
+        "earn": {
+          "word": "earn"
+        },
+        "checks": {
+          "word": "checks"
+        },
+        "last": {
+          "word": "last"
+        },
+        "hurts": {
+          "word": "hurts"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "earn"
+        },
+        {
+          "kind": "tick",
+          "at": "checks"
+        },
+        {
+          "kind": "fail",
+          "at": "hurts"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "purple"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "hurts",
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "checks",
+            "prop": "paystub",
+            "x": 0.7,
+            "size": 0.1,
+            "y": 0.1
+          }
+        ],
+        "actions": [
+          {
+            "at": "both",
+            "do": "glow",
+            "target": "checks"
+          },
+          {
+            "at": "earn",
+            "do": "shake",
+            "target": "checks"
+          },
+          {
+            "at": "checks",
+            "do": "multiply",
+            "target": "checks",
+            "n": 2,
+            "cols": 2
+          },
+          {
+            "at": "hurts",
+            "do": "shake",
+            "target": "checks"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "earn",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "hurts",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "poorway",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "My way: rent, food, fun. Whatever's left at month end, I save. Usually {poor_amount}.",
+      "events": {
+        "rent": {
+          "word": "rent"
+        },
+        "food": {
+          "word": "food"
+        },
+        "fun": {
+          "word": "fun"
+        },
+        "left": {
+          "word": "left"
+        },
+        "usually": {
+          "word": "usually"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rent"
+        },
+        {
+          "kind": "pop",
+          "at": "food"
+        },
+        {
+          "kind": "pop",
+          "at": "fun"
+        },
+        {
+          "kind": "fail",
+          "at": "usually"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "red"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              },
+              {
+                "at": "usually",
+                "pose": "shrug",
+                "expression": "sad"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "rent",
+            "prop": "frontdoor",
+            "x": 0.66,
+            "size": 0.14,
+            "hidden": true
+          },
+          {
+            "id": "food",
+            "prop": "fridge",
+            "x": 0.84,
+            "size": 0.13,
+            "hidden": true
+          },
+          {
+            "id": "fun",
+            "prop": "gamepad",
+            "x": 0.62,
+            "size": 0.06,
+            "y": 0.3,
+            "hidden": true
+          },
+          {
+            "id": "left",
+            "prop": "leftovers",
+            "x": 0.72,
+            "size": 0.07,
+            "y": 0.05,
+            "hidden": true,
+            "label": "Left"
+          }
+        ],
+        "actions": [
+          {
+            "at": "rent",
+            "do": "enter",
+            "target": "rent"
+          },
+          {
+            "at": "food",
+            "do": "enter",
+            "target": "food"
+          },
+          {
+            "at": "fun",
+            "do": "enter",
+            "target": "fun"
+          },
+          {
+            "at": "left",
+            "do": "enter",
+            "target": "left"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "food",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "left",
+            "size": "close",
+            "on": "left",
+            "move": true
+          },
+          {
+            "at": "usually",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@poor.monthly",
+            "text": "{poor_amount}",
+            "label": "Rohan saves a month",
+            "at": "usually"
+          }
+        }
+      }
+    },
+    {
+      "id": "richway",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "My way: on payday, {pay_fee_pct} moves out first. That's {pay_per_period}, before I can touch it.",
+      "events": {
+        "payday": {
+          "word": "payday"
+        },
+        "moves": {
+          "word": "moves"
+        },
+        "first": {
+          "word": "first"
+        },
+        "touch": {
+          "word": "touch"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "payday"
+        },
+        {
+          "kind": "whoosh",
+          "at": "moves"
+        },
+        {
+          "kind": "ding",
+          "at": "touch"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "office",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "touch",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "first",
+            "prop": "payslice",
+            "x": 0.66,
+            "size": 0.15,
+            "k": 0
+          },
+          {
+            "id": "touch",
+            "prop": "safebox",
+            "x": 0.86,
+            "size": 0.1,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "payday",
+            "do": "glow",
+            "target": "first"
+          },
+          {
+            "at": "first",
+            "do": "fill",
+            "target": "first",
+            "k": 1,
+            "dur": 0.8
+          },
+          {
+            "at": "touch",
+            "do": "enter",
+            "target": "touch"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "moves",
+            "size": "close",
+            "on": "first",
+            "move": true
+          },
+          {
+            "at": "touch",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@pay.per_period",
+            "text": "{pay_per_period}",
+            "label": "Sharma saves a month",
+            "at": "first"
+          }
+        }
+      }
+    },
+    {
+      "id": "tenyears",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "zoom-through",
+      "say": "Check one, {rich10_years} years in, at an assumed {rich10_rate}. Rohan's pot: {poor10_final}. Sharma's: {rich10_final}.",
+      "events": {
+        "check": {
+          "word": "check"
+        },
+        "years": {
+          "word": "years"
+        },
+        "percent": {
+          "word": "percent"
+        },
+        "rohan's": {
+          "word": "rohan's"
+        },
+        "seventeen": {
+          "word": "seventeen"
+        },
+        "sharma's": {
+          "word": "sharma's"
+        },
+        "thirty": {
+          "word": "thirty"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "check"
+        },
+        {
+          "kind": "pop",
+          "at": "rohan's"
+        },
+        {
+          "kind": "kaching",
+          "at": "sharma's"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "sharma's",
+                "pose": "pointUp",
+                "expression": "shock"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "rohansPot",
+            "prop": "acorn",
+            "x": 0.58,
+            "size": 0.08,
+            "hidden": true
+          },
+          {
+            "id": "sharmasPot",
+            "prop": "oak",
+            "x": 0.72,
+            "size": 0.14,
+            "k": 0.3,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "check",
+            "do": "glow",
+            "target": "rohansPot"
+          },
+          {
+            "at": "rohan's",
+            "do": "enter",
+            "target": "rohansPot"
+          },
+          {
+            "at": "sharma's",
+            "do": "enter",
+            "target": "sharmasPot"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "years",
+            "size": "medium",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "percent",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "rohan's",
+            "size": "close",
+            "on": "rohansPot",
+            "move": true
+          },
+          {
+            "at": "seventeen",
+            "size": "medium",
+            "on": "rohansPot",
+            "move": true
+          },
+          {
+            "at": "sharma's",
+            "size": "close",
+            "on": "sharmasPot",
+            "move": true
+          },
+          {
+            "at": "thirty",
+            "size": "medium",
+            "on": "sharmasPot",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@rich10.final",
+            "text": "{rich10_final}",
+            "label": "Sharma's pot",
+            "at": "check"
+          }
+        }
+      }
+    },
+    {
+      "id": "poorlater",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "My leftovers, invested {poor_years} years at an assumed {poor_rate}: {poor_final}. Not bad!",
+      "events": {
+        "leftovers": {
+          "word": "leftovers"
+        },
+        "invested": {
+          "word": "invested"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "twenty": {
+          "word": "twenty"
+        },
+        "bad": {
+          "word": "bad"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "leftovers"
+        },
+        {
+          "kind": "ding",
+          "at": "assumed"
+        },
+        {
+          "kind": "kaching",
+          "at": "bad"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "bad",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "leftovers",
+            "prop": "leftovers",
+            "x": 0.6,
+            "size": 0.09
+          },
+          {
+            "id": "invested",
+            "prop": "oak",
+            "x": 0.76,
+            "size": 0.15,
+            "k": 0.1
+          }
+        ],
+        "actions": [
+          {
+            "at": "leftovers",
+            "do": "shake",
+            "target": "leftovers"
+          },
+          {
+            "at": "invested",
+            "do": "fill",
+            "target": "invested",
+            "k": 0.2,
+            "dur": 0.6
+          },
+          {
+            "at": "assumed",
+            "do": "fill",
+            "target": "invested",
+            "k": 0.35,
+            "dur": 1.2
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "invested",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "twenty",
+            "size": "close",
+            "on": "invested",
+            "move": true
+          },
+          {
+            "at": "bad",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@poor.final",
+            "text": "{poor_final}",
+            "label": "Rohan's pot",
+            "at": "leftovers"
+          }
+        }
+      }
+    },
+    {
+      "id": "richlater",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Mine, at the same assumed rate, over {rich_years} years: {rich_final}.",
+      "events": {
+        "mine": {
+          "word": "mine"
+        },
+        "rate": {
+          "word": "rate"
+        },
+        "over": {
+          "word": "over"
+        },
+        "eighty": {
+          "word": "eighty"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "mine"
+        },
+        {
+          "kind": "riser",
+          "at": "over"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.44,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "over",
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "mine",
+            "prop": "acorn",
+            "x": 0.64,
+            "size": 0.12
+          },
+          {
+            "id": "over",
+            "prop": "oak",
+            "x": 0.72,
+            "size": 0.24,
+            "k": 0.2,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "mine",
+            "do": "shake",
+            "target": "mine"
+          },
+          {
+            "at": "rate",
+            "do": "swap",
+            "target": "mine",
+            "into": "oak"
+          },
+          {
+            "at": "over",
+            "do": "enter",
+            "target": "over"
+          },
+          {
+            "at": "over",
+            "do": "fill",
+            "target": "over",
+            "k": 1,
+            "dur": 1.8
+          },
+          {
+            "at": "over",
+            "do": "exit",
+            "target": "mine"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "rate",
+            "size": "close",
+            "on": "mine",
+            "move": true
+          },
+          {
+            "at": "over",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "eighty",
+            "size": "close",
+            "on": "over",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@rich.final",
+            "text": "{rich_final}",
+            "label": "Sharma's pot",
+            "at": "mine"
+          }
+        }
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Nobody earned more. Only the order changed. Sharma saved before life could spend it. That's {gap_diff}.",
+      "events": {
+        "nobody": {
+          "word": "nobody"
+        },
+        "order": {
+          "word": "order"
+        },
+        "changed": {
+          "word": "changed"
+        },
+        "that's": {
+          "word": "that's"
+        },
+        "nine": {
+          "word": "nine"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "nobody"
+        },
+        {
+          "kind": "whoosh",
+          "at": "order"
+        },
+        {
+          "kind": "boom",
+          "at": "that's"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "gap": "{gap_diff}",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "that's",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "nine",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "The rich don't save what's left. They spend what's left.",
+      "events": {
+        "rich": {
+          "word": "rich"
+        },
+        "save": {
+          "word": "save"
+        },
+        "spend": {
+          "word": "spend"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "rich"
+        },
+        {
+          "kind": "fail",
+          "at": "save"
+        },
+        {
+          "kind": "kaching",
+          "at": "spend"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "a": "Save what's left",
+        "b": "Spend what's left",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "build",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Fine. Next payday, I'm paying me first.",
+      "events": {
+        "fine": {
+          "word": "fine"
+        },
+        "next": {
+          "word": "next"
+        },
+        "payday": {
+          "word": "payday"
+        },
+        "first": {
+          "word": "first"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "fine"
+        },
+        {
+          "kind": "kaching",
+          "at": "payday"
+        },
+        {
+          "kind": "ding",
+          "at": "first"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "gold"
+        },
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "thinking"
+              },
+              {
+                "at": "first",
+                "pose": "pointUp",
+                "expression": "happy"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "payday",
+            "prop": "paystub",
+            "x": 0.7,
+            "size": 0.1,
+            "y": 0.1,
+            "hidden": true
+          },
+          {
+            "id": "first",
+            "prop": "safebox",
+            "x": 0.84,
+            "size": 0.08,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "payday",
+            "do": "enter",
+            "target": "payday"
+          },
+          {
+            "at": "first",
+            "do": "enter",
+            "target": "first"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "payday",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}
