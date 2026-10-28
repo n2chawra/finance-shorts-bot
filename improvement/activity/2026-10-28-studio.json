@@ -1,0 +1,45 @@
+{
+  "agent": "studio",
+  "day": "2026-10-28",
+  "startedAt": "2026-10-28T09:11:51Z",
+  "finishedAt": "2026-10-28T10:52:46Z",
+  "summary": "Wrote, fact-checked and rendered stills for L-20261028-01, 'How airlines really make money (it isn't the seats)' (8:13, 119 beats), from Scout's top topic, but marked it failed: QA still found scene-code bugs after the two allowed fix rounds.",
+  "decision": "blocked",
+  "why": "1 of 3 long videos this week, so a video was due. Number check passed and fact review passed after 1 rewrite. Every render gate passed. QA failed three times; the last failure was all scene code Studio may not change: the build camera crops actors headless, and Rohan's facepalm pose puts his phone over his face. The rule is two QA fix rounds, and a failed long video beats a bad one shipped.",
+  "findings": [
+    {
+      "title": "Fact review: 1 rewrite",
+      "detail": "Failed first because Sharma spoke as a banker who signed miles deals, and because a line told the viewer to 'do the sum'. Both were fixed (plus a gate-coffee price, 'by morning' parcels and a Hindi word), then it passed."
+    },
+    {
+      "title": "QA review: 3 rounds, failed",
+      "detail": "Round 1 failed on 8 points, all fixed: hook tag under the captions, two count-ups cut off, a stale HUD counter, text over text, Rohan cut off, a repeated grid thumbnail and a chart callout. Round 2 failed because build-beat camera framing crops the cast, plus phone-over-face and the jet's BANK label. Round 3: the same scene bugs remain."
+    },
+    {
+      "title": "Gates hit along the way",
+      "detail": "Literal-action rule (9 beats), 2.5 s visual gaps (case beats can't pass it past about 4 s; the gate prints only the worst gap), labels and tags off-frame on close-ups, and 16% empty stills. All fixed in the script and logged in the backlog."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Video L-20261028-01 failed, draft kept",
+      "detail": "The checked script, plan, Hook/Turn/Payoff/props and the script builder are in improvement/longform/drafts/L-20261028-01/, ready to finish under a new id once the build camera is fixed. The topic was not added to history, so it stays usable.",
+      "branch": "agent/studio/2026-10-28"
+    },
+    {
+      "title": "5 backlog items",
+      "detail": "Build camera crops the cast (high, for the improver); facepalm phone; a long scene thumbnail is impossible (thumbs.py vs build.py), so one thumbnail only; the case-beat 2.5 s rule; and the airlines draft to finish."
+    }
+  ],
+  "nextCheck": "2026-10-30",
+  "links": [
+    {
+      "label": "Backlog",
+      "url": "improvement/longform/backlog.json"
+    },
+    {
+      "label": "Draft",
+      "url": "improvement/longform/drafts/L-20261028-01/manifest.json"
+    }
+  ]
+}

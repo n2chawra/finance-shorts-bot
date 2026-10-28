@@ -1,0 +1,1055 @@
+"""Builds videos/L-20261028-01/script.json from compact beat specs."""
+import json, re, sys
+
+VID = "L-20261028-01"
+OUT = f"/home/user/finance-shorts-bot/videos/{VID}/script.json"
+
+
+def E(*words):
+    ev = {}
+    for w in words:
+        name = re.sub(r"[^a-z0-9]", "", w.lower()) or "w"
+        while name in ev:
+            name += "x"
+        ev[name] = {"word": w}
+    return ev
+
+
+def nm(w):
+    return re.sub(r"[^a-z0-9]", "", w.lower())
+
+
+def A(at, pose, expr, **kw):
+    d = {"sec": 0} if at == 0 else {"at": nm(at)}
+    d.update({"pose": pose, "expression": expr}, **kw)
+    return d
+
+
+def C(at, size, on, move=True):
+    d = {"sec": 0, "size": size, "on": on} if at == 0 else {"at": nm(at), "size": size, "on": on}
+    if at != 0 and move:
+        d["move"] = True
+    return d
+
+
+def S(kind, at, **kw):
+    d = {"kind": kind, "at": at if at in ("start", "end", "speech") else nm(at)}
+    d.update(kw)
+    return d
+
+
+def hud(level=None, counter=None):
+    h = {}
+    if level is not None:
+        h["level"] = level
+    if counter:
+        h["counter"] = counter
+    else:
+        h["noCounter"] = True
+    return h
+
+
+def ctr(name, key, label, at):
+    return {"value": f"@{name}.{key}", "text": f"{{{name}_{key}}}", "label": label, "at": nm(at)}
+
+
+BEATS = []
+
+
+def beat(id, scene, speaker, say, ev, sfx, params, role="level", tr="cut"):
+    b = {"id": id, "scene": scene}
+    if role:
+        b["role"] = role
+    b.update({"speaker": speaker, "transition": tr, "say": say, "events": ev, "sfx": sfx, "params": params})
+    BEATS.append(b)
+
+
+def shot(id, who, say, ev, set, acting, cam, level, word=None, objects=None, tr="cut", spot="center", extra_actors=None, counter=None, role="level", sfx=None):
+    p = {"set": set, "actors": [{"who": who, "acting": acting, "spot": spot}] + (extra_actors or [])}
+    if objects:
+        p["objects"] = objects
+    p["camera"] = cam
+    if word:
+        p["word"] = {"text": word[0], "at": nm(word[1]), "color": word[2], "where": "top"}
+    p["hud"] = hud(level, counter)
+    beat(id, "shot", who, say, ev, sfx or [], p, role=role, tr=tr)
+
+
+def build(id, say, ev, world, items, actions, cam, level, actors=None, speaker="narrator", tr="match", counter=None, role="level", sfx=None):
+    p = {"world": world}
+    if actors:
+        p["actors"] = actors
+        who = actors[0]["who"]
+        items = [{k: v for k, v in i.items() if k != "label"} for i in items]   # labels run off-frame on a close-up of the cast
+        cam = [k if k.get("on") in ("room", "all") else dict(k, on=who) if k.get("size") in ("close", "extreme") else dict(k, size="medium", on="all") for k in cam]
+    p.update({"items": items, "actions": actions, "camera": cam, "hud": hud(level, counter)})
+    beat(id, "build", speaker, say, ev, sfx or [], p, role=role, tr=tr)
+
+
+def I(id, prop, x, size, hidden=False, **kw):
+    d = {"id": id, "prop": prop, "x": x, "size": size}
+    if hidden:
+        d["hidden"] = True
+    d.update(kw)
+    return d
+
+
+def act(at, do, target, **kw):
+    d = {"at": nm(at), "do": do, "target": target}
+    d.update(kw)
+    return d
+
+
+def actor(who, spot, acting, **kw):
+    d = {"who": who, "acting": acting, "spot": spot}
+    d.update(kw)
+    return d
+
+
+def docu(id, scene, say, ev, params, level, tr="whip", role="level", sfx=None, speaker="narrator"):
+    params = dict(params)
+    params["hud"] = hud(level, params.pop("counter", None))
+    beat(id, scene, speaker, say, ev, sfx or [], params, role=role, tr=tr)
+
+
+def chapter(n, kicker, title, say, ev):
+    beat(f"ch{n}", "chapter", "narrator", say, ev, [S("whoosh", "start")], {"kicker": kicker, "title": title, "hud": hud(n)}, role=None, tr="fade")
+
+
+LEVELS = ["Seat", "Fares", "Fees", "Cargo", "Miles", "The bank"]
+FRAME5 = [{"prop": "airseat", "label": "Seat"}, {"prop": "fareboard", "label": "Fares"}, {"prop": "suitcase", "label": "Fees"},
+          {"prop": "crate", "label": "Cargo"}, {"prop": "milescoin", "label": "Miles"}]
+
+# ------------------------------------------------------------------ hook + promise
+beat("hook", "hook", "narrator",
+     "Rohan just paid {seat_amount} for this flight. The airline's profit on his seat? About {seat_per_period}. The real money went somewhere else: through his card, and into a bank.",
+     E("paid", "profit", "real", "card", "bank"),
+     [S("pop", "paid"), S("fail", "profit"), S("whoosh", "real"), S("kaching", "card"), S("boom", "bank")],
+     {"ticket": "{seat_amount}", "profit": "{seat_per_period}", "stamp": "Follow the card", "hud": {"hide": True},
+      "set": "office", "actors": [{"who": "rohan", "acting": [{"sec": 0, "pose": "present", "expression": "happy"}], "spot": "center"}],
+      "camera": [{"sec": 0, "size": "medium", "on": "all"}]},
+     role="hook", tr="cut")
+
+shot("begging", "rohan", "Hold on. That little? Then why does every airline keep begging me to sign up for its credit card?",
+     E("little", "begging", "credit"), "flat",
+     [A(0, "think", "confused", prop="phone"), A("little", "shrug", "shock"), A("begging", "phone", "angry", prop="phone"), A("credit", "facepalm", "confused")],
+     [C(0, "medium", "rohan"), C("begging", "close", "rohan")], None,
+     word=("Why?", "credit", "bad"), tr="whip", role="hook",
+     sfx=[S("pop", "little"), S("beep", "begging"), S("boom", "credit")])
+
+docu("promise", "journey",
+     "Six ways an airline makes money. The seat. The fare ladder. The fees. The cargo under your feet. The miles. And the last one, the bank hiding inside the airline.",
+     E("Six", "seat", "ladder", "fees", "cargo", "miles", "bank"),
+     {"traveller": "jet", "bg": "sky",
+      "stops": [{"name": "Seat", "at": "seat"}, {"name": "Fares", "note": "The ladder", "at": "ladder"}, {"name": "Fees", "at": "fees"},
+                {"name": "Cargo", "note": "Under you", "at": "cargo"}, {"name": "Miles", "at": "miles"}, {"name": "The bank", "note": "Hidden inside", "at": "bank"}],
+      "marks": [{"at": "six"}]}, 0, tr="match", role="promise",
+     sfx=[S("whoosh", "six"), S("pop", "seat"), S("pop", "ladder"), S("pop", "fees"), S("pop", "cargo"), S("pop", "miles"), S("boom", "bank")])
+
+shot("promise2", "sharma", "And by the end, you'll know who really pays for every free flight. Hint: it might be you.",
+     E("end", "really", "free", "Hint", "you"), "penthouse",
+     [A(0, "present", "smirk", turn=0.3), A("really", "point", "thinking"), A("hint", "pointUp", "smirk"), A("you", "aim", "smirk")],
+     [C(0, "wide", "room"), C("really", "medium", "sharma"), C("you", "close", "sharma")], 0,
+     word=("You?", "you", "gold"), tr="whip",
+     sfx=[S("pop", "really"), S("ding", "free"), S("boom", "you")])
+
+# ------------------------------------------------------------------ chapter 1: the seat
+chapter(1, "Way one", "The seat", "Way one. The seat.", E("seat"))
+
+build("c1-ticket", "Start with the ticket. Rohan paid {seat_amount} for one seat on one flight.",
+      E("Start", "ticket", "paid", "seat", "flight"),
+      {"kind": "city", "tint": "blue", "horizon": [{"prop": "jet", "x": 0.8, "size": 0.1}]},
+      [I("ticket", "boardingpass", 0.48, 0.32, True), I("seat", "airseat", 0.75, 0.36, True)],
+      [act("ticket", "enter", "ticket"), act("seat", "enter", "seat")],
+      [C(0, "medium", "all"), C("ticket", "medium", "ticket"), C("seat", "close", "seat")], 1,
+      actors=[actor("rohan", 0.17, [A(0, "present", "happy", prop="phone"), A("seat", "point", "proud")])],
+      sfx=[S("pop", "ticket"), S("kaching", "paid"), S("pop", "seat")])
+
+build("c1-costs", "Out of that fare comes the fuel, the crew's pay, the airport fees and the plane itself.",
+      E("fare", "fuel", "crew's", "airport", "plane"),
+      {"kind": "city", "tint": "blue"},
+      [I("fare", "boardingpass", 0.2, 0.24), I("fuel", "fuelcan", 0.4, 0.2, True), I("crew", "cash", 0.56, 0.16, True, label="Crew"),
+       I("airport", "box", 0.7, 0.14, True, label="Airport"), I("plane", "jet", 0.62, 0.22, True, y=0.32)],
+      [act("fuel", "enter", "fuel"), act("crew's", "enter", "crew"), act("airport", "enter", "airport"), act("plane", "enter", "plane"),
+       act("plane", "shrink", "fare", scale=0.6)],
+      [C(0, "medium", "fare"), C("fuel", "close", "fuel"), C("airport", "wide", "room")], 1,
+      sfx=[S("pop", "fuel"), S("pop", "crew's"), S("pop", "airport"), S("whoosh", "plane")])
+
+shot("c1-fuel", "priya", "Fuel alone can eat around a quarter of an airline's costs, and no airline controls the price of oil.",
+     E("Fuel", "quarter", "costs", "oil"), "office",
+     [A(0, "present", "neutral"), A("quarter", "point", "thinking"), A("costs", "think", "worried"), A("oil", "shrug", "worried")],
+     [C(0, "close", "priya"), C("quarter", "medium", "priya"), C("oil", "wide", "room")], 1,
+     word=("Fuel", "fuel", "bad"), tr="whip",
+     sfx=[S("pop", "fuel"), S("pop", "quarter"), S("fail", "oil")])
+
+docu("c1-margin", "stats",
+     "After all of it, an airline keeps about {seat_fee_pct} of the fare as profit. On Rohan's ticket, that's {seat_per_period}.",
+     E("After", "keeps", "profit", "ticket"),
+     {"kicker": "One seat", "title": "Where the fare goes", "bg": "sky", "prop": "airseat", "at": "keeps",
+      "cards": [{"label": "Fare", "text": "{seat_amount}", "at": "after", "color": "blue"},
+                {"label": "Margin, assumed", "text": "{seat_fee_pct}", "at": "keeps", "color": "orange"},
+                {"label": "Profit", "value": "@seat.per_period", "text": "{seat_per_period}", "at": "ticket", "color": "red"}],
+      "counter": ctr("seat", "per_period", "Profit on his seat", "ticket")}, 1,
+     sfx=[S("pop", "after"), S("pop", "keeps"), S("fail", "ticket")])
+
+shot("c1-coffee", "rohan", "That's about the price of a sandwich at the gate.",
+     E("price", "sandwich", "gate"), "market",
+     [A(0, "stand", "confused", turn=0.3), A("sandwich", "shrug", "shock"), A("gate", "facepalm", "angry")],
+     [C(0, "close", "rohan"), C("sandwich", "medium", "all")], 1, word=("A sandwich", "sandwich", "bad"), tr="whip",
+     sfx=[S("pop", "price"), S("fail", "sandwich")])
+
+docu("c1-thin", "type",
+     "Airlines run on thin margins. One bad year of fuel prices, a strike or a storm season, and the profit is simply gone.",
+     E("thin", "fuel", "strike", "storm", "gone"),
+     {"kicker": "The seat business", "bg": "sky", "prop": "jet",
+      "lines": [{"text": "Thin margins", "at": "thin", "size": "huge", "strike": "gone", "replace": {"text": "Gone", "at": "gone"}},
+                {"text": "Fuel prices", "at": "fuel", "size": "small"}, {"text": "A strike", "at": "strike", "size": "small"},
+                {"text": "Storms", "at": "storm", "size": "small"}]}, 1,
+     sfx=[S("pop", "thin"), S("pop", "fuel"), S("pop", "strike"), S("boom", "gone")])
+
+shot("c1-buffett", "sharma", "Warren Buffett once joked that a smart investor at Kitty Hawk should have shot the first plane down.",
+     E("Buffett", "joked", "Kitty", "shot", "down"), "penthouse",
+     [A(0, "think", "smirk"), A("joked", "present", "laugh"), A("shot", "aim", "smirk"), A("down", "thumbsUp", "laugh")],
+     [C(0, "medium", "sharma"), C("shot", "close", "sharma"), C("down", "wide", "room")], 1,
+     word=("Bad business", "down", "gold"), tr="match",
+     sfx=[S("pop", "joked"), S("whoosh", "shot"), S("boom", "down")])
+
+shot("c1-why", "priya", "So why run an airline at all? Because the seat isn't really the product. It's the doorway.",
+     E("why", "seat", "product", "doorway"), "office",
+     [A(0, "think", "thinking"), A("seat", "present", "neutral"), A("product", "point", "smirk"), A("doorway", "pointUp", "proud")],
+     [C(0, "wide", "room"), C("seat", "medium", "priya"), C("doorway", "close", "priya")], 1,
+     word=("Doorway", "doorway", "gold"), tr="whip",
+     sfx=[S("pop", "seat"), S("ding", "doorway")])
+
+docu("c1-tease", "type",
+     "And not every seat sells for {seat_amount}. The woman beside Rohan paid far less, for the very same seat.",
+     E("every", "sells", "woman", "less", "same"),
+     {"kicker": "Next · Fares", "bg": "mint", "prop": "airseat",
+      "lines": [{"text": "Same seat", "at": "every", "size": "big"}, {"text": "The woman beside him", "at": "woman", "size": "small"},
+                {"text": "Paid far less", "at": "less", "size": "huge"}, {"text": "Why?", "at": "same", "size": "small"}]},
+     1, role="tease", tr="match",
+     sfx=[S("pop", "sells"), S("pop", "woman"), S("riser", "same")])
+
+# ------------------------------------------------------------------ chapter 2: fares
+chapter(2, "Way two", "The fare ladder", "Way two. The fare ladder.", E("ladder"))
+
+docu("c2-open", "framework", "Way two starts at the departures board. One flight, and a whole ladder of prices.",
+     E("starts", "departures", "flight", "ladder", "prices"),
+     {"items": [dict(FRAME5[0], at="starts"), dict(FRAME5[1], at="departures"), dict(FRAME5[2], at="flight"), dict(FRAME5[3], at="ladder"), dict(FRAME5[4], at="prices")], "layout": "steps", "open": 2, "at": "departures", "title": "Way two", "bg": "mint"}, 2, tr="zoom-through",
+     sfx=[S("pop", "departures"), S("ding", "ladder")])
+
+build("c2-early", "Priya booked this flight months ahead. She paid {fare_amount}.",
+      E("Priya", "booked", "months", "paid"),
+      {"kind": "street", "tint": "green", "horizon": [{"prop": "jet", "x": 0.82, "size": 0.09}]},
+      [I("booked", "boardingpass", 0.48, 0.24, True, label="Early"), I("months", "fareboard", 0.76, 0.3, k=0.2)],
+      [act("booked", "enter", "booked"), act("months", "glow", "months")],
+      [C(0, "wide", "room"), C("booked", "medium", "booked"), C("paid", "close", "booked")], 2,
+      actors=[actor("priya", 0.18, [A(0, "phone", "happy", prop="phone"), A("paid", "thumbsUp", "proud")])],
+      sfx=[S("pop", "booked"), S("ding", "paid")])
+
+build("c2-late", "Rohan booked last week, for the seat right beside hers. His fare: {fare_final}.",
+      E("Rohan", "booked", "seat", "fare"),
+      {"kind": "street", "tint": "red"},
+      [I("booked", "boardingpass", 0.48, 0.24, True, label="Late"), I("seat", "airseat", 0.72, 0.28, True), I("board", "fareboard", 0.88, 0.22, k=0.9)],
+      [act("booked", "enter", "booked"), act("seat", "enter", "seat")],
+      [C(0, "medium", "booked"), C("seat", "wide", "room"), C("fare", "close", "booked")], 2,
+      actors=[actor("rohan", 0.28, [A(0, "phone", "neutral", prop="phone"), A("fare", "worried", "shock")])],
+      sfx=[S("pop", "booked"), S("pop", "seat"), S("fail", "fare")])
+
+docu("c2-gap", "stats",
+     "That's {fare_gains} more for the identical trip. Rohan's fare is {fare_ratio} hers.",
+     E("That's", "more", "identical", "fare", "hers"),
+     {"kicker": "Same flight", "title": "Two fares", "bg": "mint", "prop": "fareboard", "at": "identical",
+      "cards": [{"label": "Booked early", "text": "{fare_amount}", "at": "thats", "color": "green"},
+                {"label": "Booked late", "text": "{fare_final}", "at": "thats", "color": "red"},
+                {"label": "The gap", "value": "@fare.gains", "text": "{fare_gains}", "at": "more", "color": "orange"}]}, 2,
+     sfx=[S("pop", "more"), S("fail", "fare"), S("ding", "hers")])
+
+shot("c2-double", "rohan", "I paid more than double for the exact same seat? Next to her?",
+     E("double", "exact", "her"), "flat",
+     [A(0, "worried", "shock"), A("double", "facepalm", "angry"), A("her", "point", "confused", turn=0.6)],
+     [C(0, "close", "rohan"), C("her", "medium", "all")], 2, word=("Double?", "double", "bad"), tr="whip",
+     sfx=[S("boom", "double"), S("pop", "her")],
+     extra_actors=[actor("priya", "right", [A(0, "smirk" if False else "hips", "smirk"), A("her", "shrug", "laugh")])])
+
+build("c2-buckets", "Airlines sell every flight in buckets. The cheapest bucket sells out first, then the next, and the price of every bucket keeps climbing.",
+      E("buckets", "cheapest", "first", "next", "climbing"),
+      {"kind": "city", "tint": "purple"},
+      [I("buckets", "fareboard", 0.5, 0.42, k=0.2)],
+      [act("buckets", "glow", "buckets"), act("cheapest", "fill", "buckets", k=0.4), act("next", "fill", "buckets", k=0.7), act("climbing", "fill", "buckets", k=1.0)],
+      [C(0, "wide", "room"), C("cheapest", "medium", "buckets"), C("climbing", "close", "buckets")], 2,
+      actors=[actor("priya", 0.15, [A(0, "aim", "neutral", prop="pointer"), A("next", "aimUp", "thinking", prop="pointerUp"), A("climbing", "present", "smirk")])],
+      sfx=[S("pop", "buckets"), S("tick", "cheapest"), S("tick", "next"), S("riser", "climbing")])
+
+build("c2-software", "Software watches every booking. When seats sell fast, the price jumps. When they sell slowly, a sale appears.",
+      E("Software", "booking", "seats", "jumps", "slowly", "sale"),
+      {"kind": "office", "tint": "purple"},
+      [I("seats", "fareboard", 0.42, 0.36, k=0.4), I("sale", "box", 0.76, 0.14, True, label="Sale")],
+      [act("booking", "glow", "seats"), act("seats", "fill", "seats", k=0.6), act("jumps", "fill", "seats", k=1.0), act("slowly", "drain", "seats", k=0.3), act("sale", "enter", "sale")],
+      [C(0, "wide", "room"), C("jumps", "close", "seats"), C("sale", "medium", "all")], 2,
+      actors=[actor("rohan", 0.14, [A(0, "phone", "neutral", prop="phone"), A("jumps", "worried", "shock"), A("sale", "celebrate", "happy")])],
+      sfx=[S("pop", "booking"), S("riser", "jumps"), S("pop", "slowly"), S("ding", "sale")])
+
+shot("c2-look", "rohan", "So the price I pay depends on when I happen to look?",
+     E("price", "depends", "look"), "vault",
+     [A(0, "phone", "confused", prop="phone"), A("depends", "think", "thinking"), A("look", "shrug", "confused")],
+     [C(0, "close", "rohan"), C("look", "medium", "rohan")], 2, tr="whip",
+     sfx=[S("pop", "price"), S("pop", "look")])
+
+shot("c2-need", "priya", "And on how badly you need to go. The system can't read your mind, but it can read the calendar.",
+     E("badly", "need", "mind", "calendar"), "penthouse",
+     [A(0, "hips", "smirk"), A("need", "point", "smirk"), A("mind", "think", "thinking"), A("calendar", "pointUp", "proud")],
+     [C(0, "medium", "priya"), C("need", "close", "priya"), C("calendar", "wide", "room")], 2, tr="match",
+     word=("Need", "need", "gold"),
+     sfx=[S("pop", "badly"), S("ding", "calendar")])
+
+shot("c2-paper", "sharma", "Before the software, a ticket had one price on a paper coupon. Now one flight can carry dozens of prices at once.",
+     E("software", "paper", "Now", "dozens"), "market",
+     [A(0, "think", "smirk"), A("software", "point", "thinking"), A("paper", "present", "neutral", prop="letter"), A("now", "shrug", "smirk"), A("dozens", "pointUp", "laugh")],
+     [C(0, "wide", "room"), C("paper", "medium", "sharma"), C("dozens", "close", "sharma")], 2, tr="whip",
+     word=("Dozens", "dozens", "gold"),
+     sfx=[S("pop", "paper"), S("whoosh", "now"), S("ding", "dozens")])
+
+build("c2-friday", "Fly on a quiet Tuesday instead of a busy Friday, and the very same seat can cost less.",
+      E("quiet", "Tuesday", "busy", "Friday", "seat", "less"),
+      {"kind": "field", "tint": "green", "horizon": [{"prop": "jet", "x": 0.2, "size": 0.07}]},
+      [I("tuesday", "fareboard", 0.3, 0.26, True, k=0.3), I("friday", "fareboard", 0.62, 0.26, True, k=1.0), I("seat", "airseat", 0.85, 0.22, True)],
+      [act("tuesday", "enter", "tuesday"), act("friday", "enter", "friday"), act("seat", "enter", "seat"), act("less", "shrink", "friday", scale=0.8)],
+      [C(0, "wide", "room"), C("friday", "medium", "friday"), C("less", "close", "tuesday")], 2,
+      sfx=[S("pop", "tuesday"), S("pop", "friday"), S("pop", "seat"), S("ding", "less")])
+
+docu("c2-who", "type",
+     "Who buys the top bucket? People who must fly: business trips, family emergencies, plans made the night before.",
+     E("top", "must", "business", "emergencies", "night"),
+     {"kicker": "The top of the ladder", "bg": "mint", "prop": "fareboard",
+      "lines": [{"text": "Must fly", "at": "must", "size": "huge"}, {"text": "Business trips", "at": "business", "size": "small"},
+                {"text": "Emergencies", "at": "emergencies", "size": "small"}, {"text": "Last minute", "at": "night", "size": "small"}]}, 2,
+     sfx=[S("pop", "top"), S("boom", "must"), S("pop", "business"), S("pop", "emergencies")])
+
+build("c2-holiday", "School holidays, a festival, a big game in town: the moment demand jumps, every bucket climbs with it.",
+      E("holidays", "festival", "game", "demand", "bucket"),
+      {"kind": "city", "tint": "purple", "horizon": [{"prop": "jet", "x": 0.85, "size": 0.08}]},
+      [I("holidays", "suitcase", 0.22, 0.18, True), I("festival", "box", 0.38, 0.12, True, label="Festival"), I("game", "box", 0.52, 0.12, True, label="Game"), I("bucket", "fareboard", 0.74, 0.3, k=0.3)],
+      [act("holidays", "enter", "holidays"), act("festival", "enter", "festival"), act("game", "enter", "game"), act("bucket", "fill", "bucket", k=1.0)],
+      [C(0, "wide", "room"), C("game", "medium", "all"), C("bucket", "close", "bucket")], 2,
+      sfx=[S("pop", "holidays"), S("pop", "festival"), S("pop", "game"), S("riser", "bucket")])
+
+shot("c2-cheapfill", "sharma", "The cheap seats fill the plane. The expensive ones pay for it.",
+     E("cheap", "fill", "expensive", "pay"), "bank",
+     [A(0, "stand", "neutral"), A("cheap", "present", "smirk"), A("expensive", "pointUp", "smirk"), A("pay", "thumbsUp", "laugh")],
+     [C(0, "medium", "sharma"), C("expensive", "close", "sharma"), C("pay", "wide", "room")], 2,
+     word=("Pay for it", "pay", "gold"), tr="match",
+     sfx=[S("pop", "cheap"), S("kaching", "pay")])
+
+shot("c2-plan", "priya", "That's why I book early. The cheap bucket is built for people who plan.",
+     E("early", "cheap", "plan"), "office",
+     [A(0, "present", "happy"), A("cheap", "point", "smirk"), A("plan", "thumbsUp", "proud")],
+     [C(0, "wide", "room"), C("cheap", "medium", "priya"), C("plan", "close", "priya")], 2, tr="whip",
+     sfx=[S("pop", "early"), S("ding", "plan")])
+
+docu("c2-tease", "type",
+     "But the fare is only the price you see up front. The next way waits for Rohan at the check-in desk.",
+     E("fare", "front", "next", "Rohan", "desk"),
+     {"kicker": "Next · Fees", "bg": "cream", "prop": "suitcase",
+      "lines": [{"text": "The fare", "at": "fare", "size": "big"}, {"text": "Only the front", "at": "front", "size": "small"},
+                {"text": "Then the desk", "at": "rohan", "size": "huge"}]},
+     2, role="tease", tr="match",
+     sfx=[S("pop", "fare"), S("pop", "front"), S("riser", "desk")])
+
+# ------------------------------------------------------------------ chapter 3: fees
+chapter(3, "Way three", "The fees", "Way three. The fees.", E("fees"))
+
+build("c3-desk", "At the desk, Rohan's suitcase costs extra. So does a seat with legroom, and the snack on board.",
+      E("desk", "suitcase", "legroom", "snack"),
+      {"kind": "office", "tint": "gold"},
+      [I("suitcase", "suitcase", 0.42, 0.26, True), I("legroom", "airseat", 0.62, 0.28, True, state="premium"), I("snack", "box", 0.82, 0.12, True, label="Snack")],
+      [act("suitcase", "enter", "suitcase"), act("legroom", "enter", "legroom"), act("snack", "enter", "snack")],
+      [C(0, "wide", "room"), C("suitcase", "medium", "suitcase"), C("legroom", "close", "legroom"), C("snack", "medium", "all")], 3,
+      actors=[actor("rohan", 0.15, [A(0, "stand", "happy"), A("suitcase", "worried", "shock"), A("snack", "facepalm", "angry")])],
+      sfx=[S("fail", "suitcase"), S("fail", "legroom"), S("pop", "snack")])
+
+build("c3-family", "On the cheapest tickets, even sitting next to your own family can cost extra.",
+      E("cheapest", "sitting", "family", "extra"),
+      {"kind": "office", "tint": "gold"},
+      [I("sitting", "airseat", 0.4, 0.26), I("family", "airseat", 0.62, 0.26, True), I("extra", "coin", 0.8, 0.1, True)],
+      [act("sitting", "glow", "sitting"), act("family", "enter", "family"), act("extra", "enter", "extra")],
+      [C(0, "medium", "sitting"), C("family", "wide", "room"), C("extra", "close", "extra")], 3,
+      sfx=[S("pop", "sitting"), S("pop", "family"), S("kaching", "extra")])
+
+shot("c3-mother", "rohan", "I have to pay to sit next to my own mother?",
+     E("pay", "sit", "mother"), "penthouse",
+     [A(0, "worried", "shock"), A("sit", "facepalm", "angry"), A("mother", "shrug", "confused")],
+     [C(0, "close", "rohan"), C("mother", "medium", "rohan")], 3, word=("Seriously?", "mother", "bad"), tr="whip",
+     sfx=[S("fail", "pay"), S("boom", "mother")])
+
+docu("c3-total", "stats",
+     "Say his extras add {extras_per_period} to the trip. That's {fees_diff} more than the airline's profit on his whole seat.",
+     E("extras", "trip", "profit", "seat"),
+     {"kicker": "His trip", "title": "The extras", "bg": "cream", "prop": "suitcase", "at": "extras",
+      "cards": [{"label": "Seat profit", "text": "{seat_per_period}", "at": "profit", "color": "blue"},
+                {"label": "His extras", "value": "@extras.per_period", "text": "{extras_per_period}", "at": "trip", "color": "orange"},
+                {"label": "More than the seat", "text": "{fees_diff}", "at": "seat", "color": "red"}],
+      "counter": ctr("extras", "per_period", "Extras on his trip", "trip")}, 3,
+     sfx=[S("pop", "extras"), S("kaching", "trip"), S("boom", "seat")])
+
+docu("c3-cost", "type",
+     "Fees aren't pure profit. But a bag in a hold that's flying anyway costs the airline far less than it charges.",
+     E("pure", "bag", "flying", "less", "charges"),
+     {"kicker": "The honest bit", "bg": "cream", "prop": "suitcase",
+      "lines": [{"text": "Pure profit", "at": "pure", "size": "huge", "strike": "bag", "replace": {"text": "Cheap to carry", "at": "less"}},
+                {"text": "Flying anyway", "at": "flying", "size": "small"}]}, 3,
+     sfx=[S("pop", "pure"), S("fail", "bag"), S("ding", "less")])
+
+shot("c3-bait", "sharma", "The ticket is the bait, my friend. The extras are the meal.",
+     E("ticket", "bait", "extras", "meal"), "market",
+     [A(0, "hips", "smirk"), A("bait", "point", "smirk"), A("extras", "present", "neutral"), A("meal", "thumbsUp", "laugh")],
+     [C(0, "medium", "sharma"), C("bait", "close", "sharma"), C("meal", "wide", "room")], 3,
+     word=("Bait", "bait", "gold"), tr="whip",
+     sfx=[S("pop", "bait"), S("kaching", "meal")])
+
+shot("c3-kid", "rohan", "When did bags stop flying for free? I remember when they just did.",
+     E("bags", "free", "remember"), "flat",
+     [A(0, "think", "confused"), A("free", "shrug", "sad"), A("remember", "present", "thinking")],
+     [C(0, "medium", "rohan"), C("free", "close", "rohan")], 3, tr="whip",
+     sfx=[S("pop", "bags"), S("pop", "remember")])
+
+shot("c3-oil", "sharma", "In America, around the time fuel prices spiked. The fuel came down. The bag fees stayed.",
+     E("America", "fuel", "spiked", "came", "stayed"), "vault",
+     [A(0, "stand", "neutral"), A("spiked", "pointUp", "worried"), A("came", "present", "smirk"), A("stayed", "hips", "smirk")],
+     [C(0, "wide", "room"), C("spiked", "medium", "sharma"), C("stayed", "close", "sharma")], 3,
+     word=("Stayed", "stayed", "bad"), tr="match",
+     sfx=[S("riser", "spiked"), S("pop", "came"), S("boom", "stayed")])
+
+docu("c3-unbundle", "type",
+     "Airlines call it unbundling. The low fare gets you through the door. Everything else is sold piece by piece.",
+     E("unbundling", "low", "door", "Everything", "piece"),
+     {"kicker": "The trick has a name", "bg": "cream", "prop": "boardingpass",
+      "lines": [{"text": "Unbundling", "at": "unbundling", "size": "huge"}, {"text": "Low fare", "at": "low", "size": "big", "strike": "everything", "replace": {"text": "Piece by piece", "at": "piece"}},
+                {"text": "Through the door", "at": "door", "size": "small"}]}, 3, tr="match",
+     sfx=[S("pop", "unbundling"), S("pop", "low"), S("whoosh", "everything"), S("ding", "piece")])
+
+shot("c3-billions", "priya", "Airlines in America collect billions of dollars a year from bag fees alone.",
+     E("America", "billions", "bag", "alone"), "bank",
+     [A(0, "present", "neutral"), A("billions", "pointUp", "shock"), A("bag", "point", "thinking"), A("alone", "hips", "smirk")],
+     [C(0, "wide", "room"), C("billions", "medium", "priya"), C("alone", "close", "priya")], 3,
+     word=("Billions", "billions", "gold"), tr="whip",
+     sfx=[S("pop", "america"), S("kaching", "billions"), S("ding", "alone")])
+
+build("c3-basic", "The very cheapest tickets often come with the fewest rights: no seat choice, no changes, sometimes not even a big cabin bag.",
+      E("cheapest", "rights", "seat", "changes", "cabin", "bag"),
+      {"kind": "desert", "tint": "red"},
+      [I("cheapest", "boardingpass", 0.3, 0.22), I("seat", "airseat", 0.5, 0.24, True), I("changes", "fareboard", 0.68, 0.2, True, k=0.5), I("bag", "suitcase", 0.85, 0.2, True)],
+      [act("cheapest", "glow", "cheapest"), act("seat", "enter", "seat"), act("changes", "enter", "changes"), act("bag", "enter", "bag")],
+      [C(0, "medium", "all"), C("seat", "close", "seat"), C("bag", "wide", "room")], 3,
+      actors=[actor("rohan", 0.15, [A(0, "present", "happy"), A("changes", "worried", "shock"), A("bag", "facepalm", "angry")])],
+      sfx=[S("pop", "cheapest"), S("fail", "seat"), S("fail", "changes"), S("boom", "bag")])
+
+build("c3-change", "And if Rohan's plans change, the cheapest fare may not let him change a thing. He buys a whole new ticket.",
+      E("plans", "change", "cheapest", "whole", "ticket"),
+      {"kind": "desert", "tint": "red"},
+      [I("cheapest", "boardingpass", 0.52, 0.22), I("ticket", "boardingpass", 0.76, 0.22, True)],
+      [act("change", "shake", "cheapest"), act("cheapest", "break", "cheapest"), act("ticket", "enter", "ticket")],
+      [C(0, "medium", "cheapest"), C("cheapest", "close", "cheapest"), C("ticket", "wide", "room")], 3,
+      actors=[actor("rohan", 0.28, [A(0, "present", "worried"), A("whole", "facepalm", "angry")])],
+      sfx=[S("pop", "plans"), S("fail", "cheapest"), S("kaching", "ticket")])
+
+shot("c3-overhead", "priya", "And the scramble for overhead space? Plenty of people are just dodging the checked-bag fee.",
+     E("scramble", "overhead", "dodging", "fee"), "bank",
+     [A(0, "present", "neutral"), A("overhead", "pointUp", "smirk"), A("dodging", "shrug", "laugh"), A("fee", "hips", "smirk")],
+     [C(0, "medium", "priya"), C("dodging", "close", "priya"), C("fee", "wide", "room")], 3, tr="whip",
+     sfx=[S("pop", "scramble"), S("whoosh", "dodging"), S("fail", "fee")])
+
+shot("c3-whole", "priya", "That's why the fare on the first screen is the least useful number. The whole trip is the real one.",
+     E("fare", "first", "useful", "whole", "real"), "office",
+     [A(0, "present", "neutral"), A("first", "point", "thinking"), A("whole", "present", "smirk"), A("real", "thumbsUp", "proud")],
+     [C(0, "wide", "room"), C("first", "medium", "priya"), C("real", "close", "priya")], 3, tr="whip",
+     sfx=[S("pop", "fare"), S("fail", "useful"), S("ding", "real")])
+
+build("c3-bargain", "Add it all up, and Rohan's bargain fare is not much of a bargain any more.",
+      E("Add", "bargain", "much", "more"),
+      {"kind": "office", "tint": "red"},
+      [I("bargain", "boardingpass", 0.5, 0.26), I("add", "suitcase", 0.28, 0.18, True), I("more", "coin", 0.74, 0.1, True)],
+      [act("add", "enter", "add"), act("bargain", "glow", "bargain"), act("more", "enter", "more"), act("more", "multiply", "more", n=5)],
+      [C(0, "medium", "bargain"), C("much", "close", "bargain"), C("more", "wide", "room")], 3,
+      actors=[actor("rohan", 0.12, [A(0, "think", "confused"), A("more", "facepalm", "sad")])],
+      sfx=[S("pop", "add"), S("fail", "much"), S("kaching", "more")])
+
+build("c3-bags", "Bag after bag, flight after flight, those little fees pile into a mountain.",
+      E("Bag", "flight", "fees", "mountain"),
+      {"kind": "desert", "tint": "gold"},
+      [I("bag", "suitcase", 0.5, 0.2), I("fees", "coin", 0.72, 0.1, True)],
+      [act("bag", "multiply", "bag", n=6), act("flight", "glow", "bag"), act("fees", "enter", "fees"), act("mountain", "multiply", "fees", n=9)],
+      [C(0, "close", "bag"), C("flight", "medium", "all"), C("mountain", "wide", "room")], 3,
+      sfx=[S("pop", "bag"), S("pop", "flight"), S("kaching", "fees"), S("boom", "mountain")])
+
+shot("c3-real", "rohan", "So the cheap fare was never the real price. Got it.",
+     E("cheap", "never", "real", "Got"), "flat",
+     [A(0, "think", "thinking"), A("never", "shrug", "sad"), A("real", "point", "angry"), A("got", "thumbsUp", "smirk")],
+     [C(0, "medium", "rohan"), C("real", "close", "rohan")], 3, word=("Real price", "real", "bad"), tr="match",
+     sfx=[S("pop", "cheap"), S("fail", "real")])
+
+docu("c3-tease", "type",
+     "Three ways so far: the seat, the fare and the fees. All small. The next one is riding right under Rohan's feet.",
+     E("Three", "fees", "small", "riding", "feet"),
+     {"kicker": "Next · Cargo", "bg": "plum", "prop": "jet",
+      "lines": [{"text": "Three ways", "at": "three", "size": "big"}, {"text": "Seat, fare, fees", "at": "fees", "size": "small"}, {"text": "All small", "at": "small", "size": "small"},
+                {"text": "Under his feet", "at": "riding", "size": "huge"}]},
+     3, role="tease", tr="match",
+     sfx=[S("pop", "three"), S("pop", "small"), S("riser", "feet")])
+
+# ------------------------------------------------------------------ chapter 4: cargo
+chapter(4, "Way four", "The cargo", "Way four. The cargo.", E("cargo"))
+
+docu("c4-open", "framework", "Three ways are on the board. The fourth is hiding under the floor of the plane.",
+     E("Three", "board", "fourth", "floor"),
+     {"items": FRAME5, "layout": "row", "open": 4, "at": "fourth", "title": "Way four", "bg": "plum"}, 4, tr="zoom-through",
+     sfx=[S("pop", "three"), S("pop", "fourth"), S("whoosh", "floor")])
+
+build("c4-hold", "Below the cabin floor is the hold. Next to the suitcases ride crates, parcels and sacks of mail.",
+      E("cabin", "hold", "suitcases", "crates", "mail"),
+      {"kind": "night", "tint": "blue"},
+      [I("cabin", "jet", 0.5, 0.26, y=0.28), I("suitcases", "suitcase", 0.3, 0.16, True), I("crates", "crate", 0.5, 0.18, True), I("mail", "mailbag", 0.7, 0.17, True)],
+      [act("hold", "state", "cabin", state="peel"), act("suitcases", "enter", "suitcases"), act("crates", "enter", "crates"), act("mail", "enter", "mail")],
+      [C(0, "medium", "all"), C("suitcases", "medium", "suitcases"), C("crates", "close", "crates"), C("mail", "medium", "all")], 4,
+      actors=[actor("priya", 0.12, [A(0, "aim", "neutral", prop="pointer"), A("mail", "point", "smirk")])],
+      sfx=[S("whoosh", "hold"), S("pop", "suitcases"), S("pop", "crates"), S("pop", "mail")])
+
+docu("c4-tons", "type",
+     "A big passenger jet can carry tons of freight below the cabin, on almost every trip it flies.",
+     E("passenger", "tons", "cabin", "every", "flies"),
+     {"kicker": "Below your seat", "bg": "plum", "prop": "crate",
+      "lines": [{"text": "Tons of freight", "at": "tons", "size": "huge"}, {"text": "Below the cabin", "at": "cabin", "size": "small"},
+                {"text": "Almost every trip", "at": "every", "size": "small"}]}, 4,
+     sfx=[S("pop", "passenger"), S("boom", "tons"), S("pop", "cabin"), S("whoosh", "flies")])
+
+build("c4-ship", "Companies pay to ship their goods on a plane that was flying that route anyway.",
+      E("Companies", "ship", "goods", "plane", "anyway"),
+      {"kind": "street", "tint": "blue", "horizon": [{"prop": "mailbag", "x": 0.1, "size": 0.06}]},
+      [I("goods", "crate", 0.24, 0.2, True), I("plane", "jet", 0.68, 0.26)],
+      [act("ship", "enter", "goods"), act("goods", "multiply", "goods", n=3), act("plane", "move", "goods", to="plane"), act("anyway", "glow", "plane")],
+      [C(0, "wide", "room"), C("goods", "medium", "goods"), C("anyway", "close", "plane")], 4,
+      actors=[actor("sharma", 0.1, [A(0, "present", "neutral"), A("anyway", "thumbsUp", "smirk")])],
+      sfx=[S("pop", "ship"), S("pop", "goods"), S("whoosh", "anyway")])
+
+docu("c4-flight", "stats",
+     "Take one full flight: {flight_parts} seats at {flight_per_part} is {flight_total} of fares. Say cargo adds another {cargo_fee_pct} on top. That's {cargo_per_period}.",
+     E("full", "seats", "fares", "cargo", "top"),
+     {"kicker": "One flight", "title": "Seats and cargo", "bg": "plum", "prop": "crate", "at": "cargo",
+      "cards": [{"label": "Seats", "text": "{flight_parts}", "at": "seats", "color": "blue"},
+                {"label": "Fares", "text": "{flight_total}", "at": "fares", "color": "green"},
+                {"label": "Cargo, assumed", "value": "@cargo.per_period", "text": "{cargo_per_period}", "at": "top", "color": "orange"}]}, 4,
+     sfx=[S("pop", "full"), S("pop", "seats"), S("kaching", "fares"), S("kaching", "top")])
+
+shot("c4-pandemic", "sharma", "In the pandemic, some airlines flew planes with no passengers at all. Only cargo.",
+     E("pandemic", "planes", "passengers", "cargo"), "vault",
+     [A(0, "think", "thinking"), A("planes", "present", "neutral"), A("passengers", "shrug", "smirk"), A("cargo", "pointUp", "proud")],
+     [C(0, "medium", "sharma"), C("passengers", "wide", "room"), C("cargo", "close", "sharma")], 4,
+     word=("Only cargo", "cargo", "gold"), tr="whip",
+     sfx=[S("pop", "pandemic"), S("whoosh", "planes"), S("ding", "cargo")])
+
+shot("c4-kept", "priya", "When nobody could travel, the parcels kept some of those planes in the air.",
+     E("nobody", "parcels", "air"), "office",
+     [A(0, "worried", "sad"), A("parcels", "present", "thinking"), A("air", "pointUp", "happy")],
+     [C(0, "close", "priya"), C("parcels", "medium", "priya"), C("air", "wide", "room")], 4, tr="match",
+     sfx=[S("fail", "nobody"), S("pop", "parcels"), S("whoosh", "air")])
+
+build("c4-letters", "Post offices pay airlines to carry mail, too. A letter sent abroad often rides in the hold of a passenger flight.",
+      E("Post", "mail", "letter", "abroad", "hold", "flight"),
+      {"kind": "street", "tint": "purple"},
+      [I("mail", "mailbag", 0.36, 0.22, True), I("letter", "box", 0.56, 0.1, True), I("flight", "jet", 0.78, 0.22, y=0.18)],
+      [act("mail", "enter", "mail"), act("letter", "enter", "letter"), act("abroad", "move", "letter", to="flight"), act("flight", "glow", "flight")],
+      [C(0, "wide", "room"), C("mail", "close", "mail"), C("hold", "medium", "all")], 4,
+      actors=[actor("priya", 0.12, [A(0, "present", "happy"), A("hold", "point", "smirk")])],
+      sfx=[S("pop", "mail"), S("pop", "letter"), S("whoosh", "hold")])
+
+build("c4-online", "Online shopping made it bigger. A phone ordered tonight on the other side of the world can fly under passengers within days.",
+      E("Online", "bigger", "phone", "world", "passengers"),
+      {"kind": "night", "tint": "purple"},
+      [I("online", "crate", 0.5, 0.18, True), I("passengers", "jet", 0.76, 0.24, y=0.2)],
+      [act("online", "enter", "online"), act("bigger", "grow", "online", scale=1.3), act("world", "glow", "passengers"), act("passengers", "glow", "passengers")],
+      [C(0, "wide", "room"), C("bigger", "close", "online"), C("passengers", "medium", "all")], 4,
+      actors=[actor("rohan", 0.28, [A(0, "phone", "happy", prop="phone"), A("passengers", "celebrate", "laugh")])],
+      sfx=[S("pop", "online"), S("riser", "bigger"), S("whoosh", "passengers")])
+
+shot("c4-share", "rohan", "So my suitcase shares a ride with someone's online shopping.",
+     E("suitcase", "ride", "shopping"), "market",
+     [A(0, "think", "confused"), A("ride", "shrug", "laugh"), A("shopping", "phone", "happy", prop="phone")],
+     [C(0, "medium", "rohan"), C("shopping", "close", "rohan")], 4, word=("Roommates", "shopping", "white"), tr="whip",
+     sfx=[S("pop", "suitcase"), S("pop", "shopping")])
+
+docu("c4-journey", "journey",
+     "A parcel's day: the warehouse, the airport, the hold under Rohan's seat, and a doorstep on the other side of the world within days.",
+     E("warehouse", "airport", "hold", "doorstep", "world", "days"),
+     {"traveller": "crate", "bg": "plum",
+      "stops": [{"name": "Warehouse", "at": "warehouse"}, {"name": "Airport", "at": "airport"}, {"name": "The hold", "note": "Under his seat", "at": "hold"},
+                {"name": "Doorstep", "note": "Within days", "at": "doorstep"}],
+      "marks": [{"at": "hold"}, {"at": "world"}]}, 4,
+     sfx=[S("pop", "warehouse"), S("pop", "airport"), S("pop", "hold"), S("ding", "doorstep")])
+
+shot("c4-quiet", "sharma", "Cargo is quiet money. Nobody posts about a parcel's flight.",
+     E("quiet", "Nobody", "parcel's"), "penthouse",
+     [A(0, "hips", "smirk"), A("quiet", "present", "smirk"), A("nobody", "shrug", "laugh")],
+     [C(0, "wide", "room"), C("quiet", "close", "sharma"), C("parcel's", "medium", "sharma")], 4,
+     word=("Quiet money", "quiet", "gold"), tr="match",
+     sfx=[S("pop", "quiet"), S("ding", "parcel's")])
+
+build("c4-corner", "Every empty corner of the hold is space the airline can sell, on a trip it was making anyway.",
+      E("empty", "corner", "hold", "sell", "trip"),
+      {"kind": "night", "tint": "blue"},
+      [I("hold", "jet", 0.5, 0.3, y=0.2), I("corner", "crate", 0.3, 0.14, True), I("sell", "coin", 0.72, 0.1, True)],
+      [act("corner", "enter", "corner"), act("hold", "glow", "hold"), act("sell", "enter", "sell"), act("trip", "shake", "corner")],
+      [C(0, "medium", "all"), C("corner", "close", "corner"), C("trip", "medium", "all")], 4,
+      actors=[actor("sharma", 0.12, [A(0, "hips", "smirk"), A("sell", "thumbsUp", "laugh")])],
+      sfx=[S("pop", "corner"), S("kaching", "sell"), S("whoosh", "trip")])
+
+docu("c4-tease", "type",
+     "Four ways down, and none of them is the big one. The big one is sitting in Rohan's wallet.",
+     E("Four", "none", "big", "sitting", "wallet"),
+     {"kicker": "Next · Miles", "bg": "night", "prop": "wingcard",
+      "lines": [{"text": "Four ways", "at": "four", "size": "big"}, {"text": "Not the big one", "at": "none", "size": "small"},
+                {"text": "In his wallet", "at": "wallet", "size": "huge"}]},
+     4, role="tease", tr="match",
+     sfx=[S("pop", "four"), S("boom", "none"), S("riser", "wallet")])
+
+# ------------------------------------------------------------------ chapter 5: miles
+chapter(5, "Way five", "The miles", "Way five. The miles.", E("miles"))
+
+build("c5-earn", "Every flight earns Rohan miles. Here's the strange part: the airline can create as many miles as it likes.",
+      E("flight", "miles", "strange", "create", "likes"),
+      {"kind": "night", "tint": "gold"},
+      [I("miles", "milescoin", 0.4, 0.14, True), I("create", "mintpress", 0.68, 0.32, True, k=0.3)],
+      [act("miles", "enter", "miles"), act("create", "enter", "create"), act("likes", "multiply", "miles", n=8)],
+      [C(0, "wide", "room"), C("miles", "close", "miles"), C("create", "medium", "create"), C("likes", "wide", "room")], 5,
+      actors=[actor("rohan", 0.14, [A(0, "phone", "happy", prop="phone"), A("strange", "think", "confused"), A("likes", "worried", "shock")])],
+      sfx=[S("pop", "miles"), S("whoosh", "create"), S("kaching", "likes")])
+
+docu("c5-print", "type",
+     "In effect, an airline prints its own money. And then it sells that money to banks.",
+     E("effect", "prints", "money", "sells", "banks"),
+     {"kicker": "The real product", "bg": "night", "prop": "mintpress",
+      "lines": [{"text": "Its own money", "at": "prints", "size": "huge"}, {"text": "Sold to banks", "at": "sells", "size": "big"}]}, 5,
+     sfx=[S("pop", "effect"), S("boom", "prints"), S("kaching", "banks")])
+
+build("c5-banks", "A bank buys miles by the billion, to hand out on the airline's credit card.",
+      E("bank", "buys", "billion", "credit", "card"),
+      {"kind": "bank", "tint": "gold"},
+      [I("bank", "bankhall", 0.75, 0.34, True), I("miles", "milescoin", 0.35, 0.12), I("card", "wingcard", 0.52, 0.18, True)],
+      [act("bank", "enter", "bank"), act("buys", "move", "miles", to="bank"), act("billion", "multiply", "miles", n=6), act("card", "enter", "card")],
+      [C(0, "medium", "miles"), C("bank", "wide", "room"), C("card", "close", "card")], 5,
+      sfx=[S("pop", "bank"), S("whoosh", "buys"), S("kaching", "billion"), S("pop", "card")])
+
+docu("c5-sold", "type",
+     "And not only to banks. Airlines sell miles to hotels, car rental firms and shops: anyone who wants to reward a customer.",
+     E("banks", "hotels", "car", "shops", "customer"),
+     {"kicker": "Who buys miles", "bg": "night", "prop": "milescoin",
+      "lines": [{"text": "Banks", "at": "banks", "size": "huge"}, {"text": "Hotels", "at": "hotels", "size": "small"},
+                {"text": "Car rentals", "at": "car", "size": "small"}, {"text": "Shops", "at": "shops", "size": "small"}]}, 5,
+     sfx=[S("pop", "banks"), S("pop", "hotels"), S("pop", "car"), S("pop", "shops"), S("kaching", "customer")])
+
+shot("c5-pays", "priya", "Why would a bank pay for miles? Because miles make people swipe, and every swipe pays the bank.",
+     E("bank", "miles", "swipe", "every", "pays"), "bank",
+     [A(0, "think", "thinking"), A("miles", "present", "neutral"), A("swipe", "point", "smirk"), A("pays", "thumbsUp", "proud")],
+     [C(0, "wide", "room"), C("swipe", "medium", "priya"), C("pays", "close", "priya")], 5,
+     word=("Swipe", "swipe", "gold"), tr="whip",
+     sfx=[S("pop", "miles"), S("beep", "swipe"), S("kaching", "pays")])
+
+build("c5-reader", "Each time Rohan pays with the card, the shop pays a swipe fee: an assumed {swipe_fee_pct} of the bill.",
+      E("pays", "card", "shop", "fee", "bill"),
+      {"kind": "kitchen", "tint": "gold"},
+      [I("card", "wingcard", 0.42, 0.16), I("shop", "cardreader", 0.62, 0.24, True), I("fee", "coin", 0.8, 0.1, True)],
+      [act("card", "move", "card", to="shop"), act("shop", "enter", "shop"), act("fee", "enter", "fee"), act("bill", "state", "shop", state="paid")],
+      [C(0, "medium", "all"), C("shop", "close", "shop"), C("bill", "wide", "room")], 5,
+      actors=[actor("rohan", 0.15, [A(0, "present", "happy", prop="card"), A("fee", "think", "confused")])],
+      sfx=[S("beep", "card"), S("pop", "shop"), S("kaching", "fee"), S("ding", "bill")])
+
+docu("c5-year", "stats",
+     "He spends {swipe_amount} a month on the card. That's {swipe_per_period} of swipe fees every month, and {swipe_per_year_total} a year, from just one card.",
+     E("spends", "month", "card", "fees", "year"),
+     {"kicker": "His card", "title": "Swipe fees", "bg": "night", "prop": "cardreader", "at": "card",
+      "cards": [{"label": "He spends a month", "text": "{swipe_amount}", "at": "spends", "color": "blue"},
+                {"label": "Fees a month", "text": "{swipe_per_period}", "at": "fees", "color": "orange"},
+                {"label": "Fees a year", "value": "@swipe.per_year_total", "text": "{swipe_per_year_total}", "at": "year", "color": "red"}]}, 5,
+     sfx=[S("pop", "spends"), S("pop", "fees"), S("kaching", "year")])
+
+build("c5-split", "Part of that fee comes back to Rohan as miles. The rest stays with the bank, which bought those miles from the airline.",
+      E("fee", "Rohan", "miles", "rest", "bank", "airline"),
+      {"kind": "bank", "tint": "blue"},
+      [I("fee", "coin", 0.5, 0.12), I("miles", "milescoin", 0.3, 0.12, True), I("bank", "bankhall", 0.74, 0.3, True), I("airline", "jet", 0.88, 0.14, True, y=0.4)],
+      [act("fee", "multiply", "fee", n=4), act("miles", "enter", "miles"), act("bank", "enter", "bank"), act("airline", "enter", "airline")],
+      [C(0, "close", "fee"), C("miles", "medium", "all"), C("bank", "wide", "room")], 5,
+      actors=[actor("rohan", 0.12, [A(0, "present", "neutral"), A("miles", "celebrate", "happy"), A("bank", "think", "confused")])],
+      sfx=[S("pop", "fee"), S("ding", "miles"), S("pop", "bank"), S("whoosh", "airline")])
+
+shot("c5-millions", "priya", "And that's one shopper. Now multiply him by millions of cardholders.",
+     E("one", "multiply", "millions"), "penthouse",
+     [A(0, "present", "neutral"), A("multiply", "point", "smirk"), A("millions", "pointUp", "proud")],
+     [C(0, "medium", "priya"), C("millions", "close", "priya")], 5, word=("Millions", "millions", "gold"), tr="whip",
+     sfx=[S("pop", "one"), S("kaching", "millions")])
+
+shot("c5-sign", "sharma", "Banks buy the miles, and the miles bring them customers. Customers who swipe and swipe.",
+     E("Banks", "buy", "miles", "customers"), "vault",
+     [A(0, "present", "smirk"), A("buy", "point", "proud"), A("miles", "think", "smirk"), A("customers", "celebrate", "laugh")],
+     [C(0, "medium", "sharma"), C("buy", "close", "sharma"), C("customers", "wide", "room")], 5,
+     word=("Customers", "customers", "gold"), tr="match",
+     sfx=[S("pop", "buy"), S("kaching", "customers")])
+
+build("c5-partner", "One of America's biggest airlines reports getting billions of dollars a year from its card partner. Not from flights. From a bank.",
+      E("airlines", "billions", "card", "flights", "bank"),
+      {"kind": "bank", "tint": "gold"},
+      [I("airlines", "jet", 0.3, 0.24, y=0.2), I("billions", "cash", 0.52, 0.16, True), I("card", "wingcard", 0.66, 0.16, True), I("bank", "bankhall", 0.82, 0.3, True)],
+      [act("airlines", "glow", "airlines"), act("billions", "enter", "billions"), act("card", "enter", "card"), act("bank", "enter", "bank")],
+      [C(0, "wide", "room"), C("billions", "close", "billions"), C("flights", "medium", "airlines"), C("bank", "wide", "room")], 5,
+      sfx=[S("pop", "airlines"), S("kaching", "billions"), S("pop", "flights"), S("boom", "bank")])
+
+build("c5-signup", "Banks often pay the airline extra for every new cardholder who signs up. That's why the crew sometimes walk the aisle with card offers.",
+      E("Banks", "cardholder", "signs", "crew", "aisle", "offers"),
+      {"kind": "night", "tint": "blue"},
+      [I("cardholder", "wingcard", 0.46, 0.2, True), I("bank", "bankhall", 0.8, 0.26), I("aisle", "airseat", 0.32, 0.28)],
+      [act("cardholder", "enter", "cardholder"), act("signs", "glow", "cardholder"), act("aisle", "glow", "aisle"), act("offers", "multiply", "cardholder", n=4)],
+      [C(0, "medium", "all"), C("cardholder", "close", "cardholder"), C("aisle", "medium", "all")], 5,
+      actors=[actor("priya", 0.12, [A(0, "present", "neutral", prop="card"), A("offers", "point", "smirk")])],
+      sfx=[S("pop", "banks"), S("kaching", "signs"), S("pop", "aisle"), S("pop", "offers")])
+
+shot("c5-begging", "rohan", "That's why they keep begging me to sign up. It was never about the flight.",
+     E("begging", "sign", "never", "flight"), "office",
+     [A(0, "think", "thinking"), A("sign", "point", "angry"), A("never", "facepalm", "shock"), A("flight", "shrug", "smirk")],
+     [C(0, "medium", "rohan"), C("never", "close", "rohan")], 5, word=("Never the flight", "never", "gold"), tr="match",
+     sfx=[S("pop", "begging"), S("boom", "never")])
+
+shot("c5-groceries", "rohan", "So when I swipe for groceries, an airline gets paid?",
+     E("swipe", "groceries", "paid"), "market",
+     [A(0, "present", "confused", prop="card"), A("groceries", "shrug", "shock"), A("paid", "facepalm", "confused")],
+     [C(0, "medium", "rohan"), C("paid", "close", "rohan")], 5, word=("Groceries?", "groceries", "white"), tr="whip",
+     sfx=[S("beep", "swipe"), S("pop", "groceries"), S("kaching", "paid")])
+
+shot("c5-through", "priya", "Through the bank, yes. Your weekly shop is part of the airline business now.",
+     E("bank", "weekly", "airline"), "office",
+     [A(0, "present", "neutral"), A("weekly", "point", "smirk"), A("airline", "thumbsUp", "proud")],
+     [C(0, "close", "priya"), C("weekly", "medium", "priya"), C("airline", "wide", "room")], 5, tr="match",
+     sfx=[S("pop", "bank"), S("ding", "airline")])
+
+docu("c5-breakage", "type",
+     "And many miles are never spent at all. They expire, or sit forgotten in old accounts. The industry has a word for it: breakage.",
+     E("never", "expire", "forgotten", "word", "breakage"),
+     {"kicker": "Miles nobody uses", "bg": "night", "prop": "milescoin",
+      "lines": [{"text": "Never spent", "at": "never", "size": "big"}, {"text": "Expired", "at": "expire", "size": "small"},
+                {"text": "Forgotten", "at": "forgotten", "size": "small"}, {"text": "Breakage", "at": "breakage", "size": "huge"}]}, 5,
+     sfx=[S("pop", "never"), S("fail", "expire"), S("pop", "forgotten"), S("boom", "breakage")])
+
+shot("c5-giveback", "sharma", "A mile sold and never spent is money the airline never has to give back in seats.",
+     E("sold", "never", "money", "seats"), "market",
+     [A(0, "hips", "smirk"), A("sold", "present", "smirk"), A("money", "pointUp", "proud"), A("seats", "thumbsUp", "laugh")],
+     [C(0, "medium", "sharma"), C("money", "close", "sharma"), C("seats", "wide", "room")], 5,
+     word=("Kept", "money", "gold"), tr="whip",
+     sfx=[S("pop", "sold"), S("kaching", "money")])
+
+docu("c5-cheapmake", "type",
+     "A mile costs the airline very little to create. It only costs a seat when someone spends it, often a seat that would have flown empty.",
+     E("little", "create", "seat", "spends", "empty"),
+     {"kicker": "Cheap to print", "bg": "night", "prop": "milescoin",
+      "lines": [{"text": "Costs little", "at": "little", "size": "huge"}, {"text": "Paid in seats", "at": "spends", "size": "big"},
+                {"text": "Often empty ones", "at": "empty", "size": "small"}]}, 5,
+     sfx=[S("pop", "little"), S("pop", "spends"), S("ding", "empty")])
+
+build("c5-shrink", "The airline can also change what a mile buys. Ask for more miles for the same seat, and everyone's miles quietly shrink.",
+      E("change", "mile", "Ask", "seat", "shrink"),
+      {"kind": "space", "tint": "purple"},
+      [I("mile", "milescoin", 0.36, 0.2), I("seat", "airseat", 0.7, 0.26, True)],
+      [act("change", "glow", "mile"), act("mile", "multiply", "mile", n=3), act("seat", "enter", "seat"), act("shrink", "shrink", "mile", scale=0.5)],
+      [C(0, "medium", "mile"), C("seat", "wide", "room"), C("shrink", "close", "mile")], 5,
+      actors=[actor("rohan", 0.12, [A(0, "present", "happy"), A("shrink", "worried", "shock")])],
+      sfx=[S("pop", "change"), S("pop", "seat"), S("fail", "shrink")])
+
+shot("c5-currency", "rohan", "So my miles are a currency the airline can shrink whenever it wants?",
+     E("miles", "currency", "shrink"), "flat",
+     [A(0, "worried", "worried"), A("currency", "think", "confused"), A("shrink", "facepalm", "angry")],
+     [C(0, "medium", "rohan"), C("shrink", "close", "rohan")], 5, word=("Shrink?", "shrink", "bad"), tr="match",
+     sfx=[S("pop", "currency"), S("fail", "shrink")])
+
+shot("c5-central", "priya", "Like any currency. Except this one has one central bank, and it's the airline.",
+     E("currency", "central", "airline"), "bank",
+     [A(0, "present", "neutral"), A("central", "pointUp", "smirk"), A("airline", "hips", "smirk")],
+     [C(0, "wide", "room"), C("central", "medium", "priya"), C("airline", "close", "priya")], 5, tr="whip",
+     sfx=[S("pop", "currency"), S("boom", "central")])
+
+docu("c5-ten", "journey",
+     "Year one, Rohan's swipes send {swipe_per_year_total} through the system. Year five, the same again. After {swipe_years} years, {swipe_total}, from one ordinary shopper.",
+     E("one", "swipes", "system", "five", "After", "years", "ordinary"),
+     {"traveller": "wingcard", "bg": "night",
+      "stops": [{"name": "Year one", "note": "{swipe_per_year_total}", "at": "one"}, {"name": "Year five", "note": "Again", "at": "five"},
+                {"name": "The total", "note": "{swipe_total}", "at": "after"}, {"name": "One shopper", "at": "ordinary"}],
+      "marks": [{"at": "swipes"}, {"at": "system"}, {"at": "after"}, {"at": "years"}]}, 5,
+     sfx=[S("pop", "one"), S("pop", "five"), S("kaching", "after"), S("ding", "ordinary")])
+
+docu("c5-tease", "type",
+     "So that's five ways: seats, fares, fees, cargo and miles. But someone has to pay for all those free flights. The last way shows who.",
+     E("five", "seats", "miles", "free", "last", "who"),
+     {"kicker": "Next · The bank", "bg": "slate", "prop": "bankhall",
+      "lines": [{"text": "Five ways", "at": "five", "size": "big"}, {"text": "Seats to miles", "at": "miles", "size": "small"},
+                {"text": "Free flights?", "at": "free", "size": "huge"}, {"text": "Who pays", "at": "who", "size": "big"}]},
+     5, role="tease", tr="match",
+     sfx=[S("pop", "five"), S("pop", "miles"), S("pop", "free"), S("riser", "who")])
+
+# ------------------------------------------------------------------ chapter 6: the bank
+chapter(6, "Way six", "The bank inside", "Way six. The bank inside the airline.", E("bank"))
+
+docu("c6-open", "framework", "Five ways so far, all lined up. Before the sixth, Rohan has a question.",
+     E("Five", "far", "lined", "Before", "sixth", "question"),
+     {"items": [dict(FRAME5[0], at="five"), dict(FRAME5[1], at="far"), dict(FRAME5[2], at="lined"), dict(FRAME5[3], at="before"), dict(FRAME5[4], at="sixth")], "layout": "steps", "open": 5, "at": "lined", "title": "Way six", "bg": "slate"}, 6, tr="zoom-through",
+     sfx=[S("pop", "five"), S("pop", "lined"), S("riser", "question")])
+
+shot("c6-lounge", "rohan", "Fine. Then who's paying for all these free flights?",
+     E("Fine", "paying", "free", "flights"), "market",
+     [A(0, "hips", "angry"), A("paying", "point", "confused"), A("flights", "shrug", "confused")],
+     [C(0, "close", "rohan"), C("free", "medium", "rohan"), C("flights", "wide", "room")], 6, tr="whip",
+     word=("Who pays?", "paying", "white"),
+     sfx=[S("pop", "fine"), S("riser", "flights")])
+
+# the turn
+beat("turn", "custom", "narrator",
+     "Here's the twist. Those free flights aren't free. The shop pays the swipe fee, then builds it into its prices, for everyone. Even the people paying cash.",
+     E("twist", "free", "shop", "fee", "prices", "everyone", "cash"),
+     [S("riser", "twist"), S("ding", "free"), S("pop", "shop"), S("kaching", "fee"), S("fail", "prices"), S("boom", "cash")],
+     {"component": "Turn", "stamp": "Everyone pays",
+      "camera": [{"sec": 0, "size": "wide"}, {"at": "cash", "size": "close"}],
+      "world": {"kind": "night", "tint": "red"},
+      "items": [{"id": "shop", "prop": "till", "x": 0.5, "size": 0.3}],
+      "actions": [{"at": "prices", "do": "state", "target": "shop", "state": "up"}],
+      "hud": {"noCounter": True}},
+     role="turn", tr="zoom-through")
+
+shot("c6-priceit", "sharma", "Shops don't swallow that fee. They price it in. Groceries, coffee, fuel: a little higher for everyone.",
+     E("swallow", "price", "Groceries", "fuel", "everyone"), "market",
+     [A(0, "stand", "neutral"), A("price", "point", "smirk"), A("groceries", "present", "thinking"), A("everyone", "shrug", "smirk")],
+     [C(0, "medium", "sharma"), C("groceries", "wide", "room"), C("everyone", "close", "sharma")], 6, tr="whip",
+     word=("Priced in", "price", "bad"),
+     sfx=[S("pop", "swallow"), S("pop", "price"), S("fail", "everyone")])
+
+docu("c6-fed", "type",
+     "Economists at the Federal Reserve Bank of Boston found that people paying cash end up helping fund card rewards.",
+     E("Economists", "Boston", "cash", "fund", "rewards"),
+     {"kicker": "Who really pays", "bg": "slate", "prop": "till",
+      "lines": [{"text": "Free rewards", "at": "economists", "size": "huge", "strike": "cash", "replace": {"text": "Cash payers chip in", "at": "fund"}},
+                {"text": "Boston Fed study", "at": "boston", "size": "small"}]}, 6,
+     sfx=[S("pop", "economists"), S("fail", "cash"), S("boom", "rewards")])
+
+build("c6-fancy", "And the fancier the card, the bigger the swipe fee the shop usually pays on it.",
+      E("fancier", "card", "bigger", "swipe", "shop"),
+      {"kind": "kitchen", "tint": "red"},
+      [I("card", "wingcard", 0.36, 0.2, state="glow"), I("swipe", "coin", 0.58, 0.1, True), I("shop", "till", 0.8, 0.26)],
+      [act("card", "grow", "card", scale=1.3), act("swipe", "enter", "swipe"), act("bigger", "multiply", "swipe", n=4), act("shop", "state", "shop", state="up")],
+      [C(0, "medium", "card"), C("bigger", "close", "swipe"), C("shop", "wide", "room")], 6,
+      sfx=[S("pop", "fancier"), S("boom", "bigger"), S("fail", "shop")])
+
+build("c6-balance", "And anyone who carries a balance pays interest, often far more than the rewards they earn.",
+      E("balance", "interest", "more", "rewards"),
+      {"kind": "night", "tint": "red"},
+      [I("balance", "wingcard", 0.42, 0.2), I("interest", "cash", 0.66, 0.16, True, label="Interest"), I("rewards", "milescoin", 0.84, 0.1, True)],
+      [act("balance", "shake", "balance"), act("interest", "enter", "interest"), act("more", "multiply", "interest", n=5), act("rewards", "enter", "rewards")],
+      [C(0, "wide", "room"), C("interest", "close", "interest"), C("rewards", "medium", "all")], 6,
+      actors=[actor("rohan", 0.14, [A(0, "worried", "worried"), A("more", "facepalm", "sad")])],
+      sfx=[S("fail", "balance"), S("pop", "interest"), S("boom", "more"), S("pop", "rewards")])
+
+shot("c6-least", "rohan", "So the people paying for my free flight might be the ones who can least afford it.",
+     E("paying", "free", "least", "afford"), "flat",
+     [A(0, "think", "sad"), A("free", "worried", "worried"), A("least", "facepalm", "sad"), A("afford", "shrug", "sad")],
+     [C(0, "close", "rohan"), C("least", "medium", "rohan"), C("afford", "extreme", "rohan")], 6,
+     word=("Who pays", "least", "bad"), tr="match",
+     sfx=[S("pop", "paying"), S("fail", "least")])
+
+shot("c6-fair", "priya", "That doesn't make the card a scam. It means the rewards are paid for. Just not always by the person earning them.",
+     E("scam", "paid", "always", "earning"), "office",
+     [A(0, "present", "neutral"), A("scam", "shrug", "thinking"), A("paid", "point", "smirk"), A("earning", "hips", "smirk")],
+     [C(0, "medium", "priya"), C("paid", "close", "priya"), C("earning", "wide", "room")], 6, tr="whip",
+     sfx=[S("pop", "scam"), S("ding", "paid"), S("pop", "earning")])
+
+docu("c6-winners", "type",
+     "The winners: people who pay in full and actually use the perks. The losers: people who pay interest, and people who pay cash.",
+     E("winners", "full", "perks", "losers", "interest", "cash"),
+     {"kicker": "Who wins, who pays", "bg": "slate", "prop": "wingcard",
+      "lines": [{"text": "Winners", "at": "winners", "size": "big", "color": "good"}, {"text": "Pay in full, use perks", "at": "full", "size": "small"},
+                {"text": "Losers", "at": "losers", "size": "big", "color": "bad"}, {"text": "Pay interest, pay cash", "at": "interest", "size": "small"}]}, 6,
+     sfx=[S("ding", "winners"), S("pop", "perks"), S("fail", "losers"), S("boom", "cash")])
+
+build("c6-flow", "Now follow all of those payments. The swipe fees, the sign-ups, the annual fees. They flow into one place: the loyalty programme.",
+      E("follow", "swipe", "sign-ups", "annual", "flow", "loyalty"),
+      {"kind": "studio", "tint": "gold"},
+      [I("swipe", "cardreader", 0.2, 0.2, True), I("signups", "wingcard", 0.38, 0.16, True), I("annual", "feeletter", 0.56, 0.18, True), I("loyalty", "lounge", 0.8, 0.26, True)],
+      [act("swipe", "enter", "swipe"), act("sign-ups", "enter", "signups"), act("annual", "enter", "annual"), act("loyalty", "enter", "loyalty"), act("loyalty", "glow", "loyalty")],
+      [C(0, "medium", "all"), C("annual", "medium", "annual"), C("loyalty", "close", "loyalty")], 6,
+      actors=[actor("rohan", 0.1, [A(0, "think", "confused"), A("loyalty", "worried", "shock")])],
+      sfx=[S("pop", "swipe"), S("pop", "sign-ups"), S("pop", "annual"), S("riser", "flow"), S("boom", "loyalty")])
+
+build("c6-club", "That loyalty programme is where Rohan's miles live. Its members, its card deals and its partners are a business of their own.",
+      E("miles", "loyalty", "members", "card", "business"),
+      {"kind": "studio", "tint": "gold", "horizon": [{"prop": "jet", "x": 0.85, "size": 0.08}]},
+      [I("miles", "milescoin", 0.36, 0.2), I("loyalty", "lounge", 0.56, 0.3, True), I("card", "wingcard", 0.76, 0.22, True), I("business", "bankhall", 0.62, 0.4, True)],
+      [act("loyalty", "enter", "loyalty"), act("members", "multiply", "miles", n=5), act("card", "enter", "card"), act("business", "enter", "business")],
+      [C(0, "medium", "all"), C("loyalty", "wide", "room"), C("card", "close", "card"), C("business", "wide", "room")], 6,
+      actors=[actor("sharma", 0.15, [A(0, "present", "smirk"), A("business", "celebrate", "laugh")])],
+      sfx=[S("pop", "loyalty"), S("pop", "members"), S("pop", "card"), S("boom", "business")])
+
+build("c6-loop", "The bank pays for the miles. The airline keeps the cash. And the members keep chasing their next free flight.",
+      E("bank", "miles", "cash", "members", "flight"),
+      {"kind": "studio", "tint": "gold"},
+      [I("bank", "bankhall", 0.22, 0.3), I("miles", "milescoin", 0.45, 0.13, True), I("cash", "cash", 0.66, 0.16, True), I("flight", "jet", 0.84, 0.18, True, y=0.25)],
+      [act("bank", "glow", "bank"), act("miles", "enter", "miles"), act("cash", "enter", "cash"), act("members", "move", "miles", to="flight"), act("flight", "enter", "flight")],
+      [C(0, "wide", "room"), C("cash", "close", "cash"), C("flight", "medium", "all")], 6,
+      sfx=[S("pop", "bank"), S("pop", "miles"), S("kaching", "cash"), S("whoosh", "flight")])
+
+build("c6-borrow", "In the pandemic, with planes parked, big American airlines borrowed billions of dollars, and put up their loyalty programmes as security.",
+      E("pandemic", "planes", "borrowed", "loyalty", "security"),
+      {"kind": "desert", "tint": "dark"},
+      [I("planes", "jet", 0.42, 0.3), I("borrowed", "cash", 0.66, 0.2, True), I("loyalty", "lounge", 0.84, 0.26, True)],
+      [act("planes", "multiply", "planes", n=3), act("borrowed", "enter", "borrowed"), act("loyalty", "enter", "loyalty"), act("security", "glow", "loyalty")],
+      [C(0, "medium", "all"), C("borrowed", "medium", "borrowed"), C("security", "close", "loyalty")], 6,
+      actors=[actor("sharma", 0.13, [A(0, "worried", "worried"), A("borrowed", "present", "smirk")])],
+      sfx=[S("fail", "planes"), S("kaching", "borrowed"), S("pop", "loyalty"), S("ding", "security")])
+
+build("c6-worth", "And the lenders valued those programmes at more than the whole airline was worth on the stock market.",
+      E("lenders", "programmes", "whole", "airline", "worth"),
+      {"kind": "bank", "tint": "gold"},
+      [I("airline", "jet", 0.5, 0.36), I("programmes", "bankhall", 0.5, 0.42, True)],
+      [act("lenders", "glow", "airline"), act("programmes", "enter", "programmes"), act("whole", "state", "airline", state="peel"), act("worth", "shrink", "airline", scale=0.7)],
+      [C(0, "medium", "airline"), C("programmes", "wide", "room"), C("worth", "close", "programmes")], 6,
+      actors=[actor("sharma", 0.12, [A(0, "think", "smirk"), A("worth", "celebrate", "laugh")])],
+      sfx=[S("pop", "lenders"), S("riser", "programmes"), S("whoosh", "whole"), S("boom", "worth")])
+
+shot("c6-less", "priya", "Think about that. The whole company, planes and all, was valued at less than its points.",
+     E("Think", "company", "planes", "less", "points"), "flat",
+     [A(0, "think", "thinking"), A("company", "present", "neutral"), A("less", "point", "shock"), A("points", "pointUp", "smirk")],
+     [C(0, "wide", "room"), C("less", "medium", "priya"), C("points", "close", "priya")], 6, tr="whip",
+     word=("Less than points", "less", "gold"),
+     sfx=[S("pop", "company"), S("boom", "less"), S("ding", "points")])
+
+shot("c6-attached", "rohan", "So it's a bank. With some planes attached.",
+     E("bank", "planes", "attached"), "vault",
+     [A(0, "worried", "shock"), A("bank", "facepalm", "shock"), A("attached", "shrug", "laugh")],
+     [C(0, "close", "rohan"), C("attached", "medium", "rohan")], 6, word=("A bank", "bank", "gold"), tr="whip",
+     sfx=[S("boom", "bank"), S("pop", "attached")])
+
+docu("c6-window", "type",
+     "The plane is the shop window. The loyalty programme is the bank behind it.",
+     E("plane", "window", "loyalty", "bank"),
+     {"kicker": "What an airline is", "bg": "slate", "prop": "jet",
+      "lines": [{"text": "Shop window", "at": "window", "size": "big"}, {"text": "The bank behind it", "at": "bank", "size": "huge"}]}, 6,
+     sfx=[S("pop", "plane"), S("pop", "window"), S("boom", "bank")])
+
+shot("c6-badyears", "sharma", "In a bad year, the planes lose money. People still swipe their cards.",
+     E("bad", "planes", "swipe"), "bank",
+     [A(0, "stand", "neutral"), A("planes", "worried", "sad"), A("swipe", "hips", "smirk")],
+     [C(0, "wide", "room"), C("planes", "medium", "sharma"), C("swipe", "close", "sharma")], 6, tr="match",
+     sfx=[S("fail", "planes"), S("beep", "swipe")])
+
+build("c6-fee", "And Rohan pays to belong to that bank. His premium card charges an annual fee of {annual_amount}.",
+      E("belong", "premium", "card", "annual", "fee"),
+      {"kind": "office", "tint": "red"},
+      [I("card", "wingcard", 0.48, 0.2), I("fee", "feeletter", 0.74, 0.24, True)],
+      [act("premium", "glow", "card"), act("annual", "enter", "fee"), act("fee", "state", "fee", state="open")],
+      [C(0, "wide", "room"), C("card", "medium", "card"), C("fee", "close", "fee")], 6,
+      actors=[actor("rohan", 0.15, [A(0, "present", "proud", prop="card"), A("fee", "worried", "shock")])],
+      counter=ctr("annual", "per_period", "Card fee a year", "fee"),
+      sfx=[S("pop", "premium"), S("pop", "annual"), S("fail", "fee")])
+
+docu("c6-ten", "stats",
+     "Over {annual_years} years, that's {annual_total} in fees alone, before he books a single seat.",
+     E("years", "fees", "single"),
+     {"kicker": "Ten years of the card", "title": "The fee adds up", "bg": "slate", "prop": "feeletter", "at": "fees",
+      "cards": [{"label": "Fee a year", "text": "{annual_amount}", "at": "years", "color": "orange"},
+                {"label": "Over the years", "value": "@annual.total", "text": "{annual_total}", "at": "fees", "color": "red"}],
+      "counter": ctr("annual", "total", "Fees over the years", "fees")}, 6,
+     sfx=[S("pop", "years"), S("boom", "fees"), S("pop", "single")])
+
+build("c6-perkvalue", "Lounge visits, a free bag, a companion ticket. Each perk is only worth something if Rohan actually uses it.",
+      E("Lounge", "bag", "companion", "perk", "worth", "uses"),
+      {"kind": "field", "tint": "gold"},
+      [I("lounge", "lounge", 0.3, 0.24, True), I("bag", "suitcase", 0.52, 0.2, True), I("companion", "boardingpass", 0.72, 0.2, True)],
+      [act("lounge", "enter", "lounge"), act("bag", "enter", "bag"), act("companion", "enter", "companion"), act("uses", "glow", "lounge")],
+      [C(0, "wide", "room"), C("bag", "medium", "bag"), C("worth", "medium", "all"), C("uses", "close", "lounge")], 6,
+      actors=[actor("rohan", 0.12, [A(0, "present", "happy"), A("uses", "think", "thinking")])],
+      sfx=[S("pop", "lounge"), S("pop", "bag"), S("pop", "companion"), S("ding", "uses")])
+
+shot("c6-perks", "rohan", "But I get lounge access and a free checked bag!",
+     E("lounge", "free", "bag"), "penthouse",
+     [A(0, "present", "happy"), A("lounge", "celebrate", "laugh"), A("bag", "thumbsUp", "proud")],
+     [C(0, "medium", "rohan"), C("lounge", "wide", "room"), C("bag", "close", "rohan")], 6, word=("Perks!", "lounge", "good"), tr="whip",
+     sfx=[S("ding", "lounge"), S("pop", "bag")])
+
+shot("c6-use", "priya", "If you use them, they can be worth it. Lots of people pay for perks they never touch.",
+     E("use", "worth", "perks", "never"), "office",
+     [A(0, "present", "neutral"), A("worth", "thumbsUp", "happy"), A("perks", "point", "thinking"), A("never", "shrug", "smirk")],
+     [C(0, "close", "priya"), C("perks", "medium", "priya"), C("never", "wide", "room")], 6, tr="match",
+     sfx=[S("pop", "worth"), S("fail", "never")])
+
+shot("c6-sum", "rohan", "So once a year, I do the sum: what did the card give me, and what did it cost me?",
+     E("sum", "year", "give", "cost"), "vault",
+     [A(0, "present", "neutral", prop="letter"), A("year", "point", "thinking"), A("give", "present", "smirk"), A("cost", "pointUp", "smirk")],
+     [C(0, "medium", "rohan"), C("give", "wide", "room"), C("cost", "close", "rohan")], 6, tr="match",
+     word=("The yearly sum", "sum", "gold"),
+     sfx=[S("pop", "sum"), S("ding", "give"), S("fail", "cost")])
+
+beat("c6-chart", "screen", "narrator",
+     "And if the perks don't beat the fee, about the same money, {invest_amount} a month, invested at an assumed {invest_rate}, could grow to {invest_final} in {invest_years} years.",
+     E("perks", "fee", "invested", "grow"),
+     [S("pop", "perks"), S("fail", "fee"), S("riser", "invested"), S("kaching", "grow")],
+     {"world": "office", "city": "newyork", "title": "The fee, or the fee invested", "series": "@annual30.take", "series2": "@invest.value",
+      "label1": "Fees paid", "label2": "Invested instead",
+      "callouts": [{"x": 1.0, "text": "{invest_final}", "at": "grow"}, {"x": 0.78, "text": "{annual30_total}", "at": "fee"}],
+      "pen": [{"kind": "gap", "x": 0.97, "y": 0.2, "y2": 0.75, "color": "good", "at": "grow"}],
+      "presenter": {"who": "priya", "acting": [{"sec": 0, "pose": "aim", "expression": "thinking", "prop": "pointer"}, {"at": "grow", "pose": "aimUp", "expression": "happy", "prop": "pointerUp"}]},
+      "hud": {"level": 6, "noCounter": True}},
+     role="level", tr="fade")
+
+beat("payoff", "custom", "narrator",
+     "So Rohan makes one rule. The card is cash: he pays it off in full, every single month. That way the miles are his, and the interest is nobody's.",
+     E("rule", "cash", "full", "month", "miles", "interest"),
+     [S("pop", "rule"), S("whoosh", "cash"), S("boom", "full"), S("tick", "month"), S("kaching", "miles"), S("ding", "interest")],
+     {"component": "Payoff", "stamp": "Paid in full", "cloud": "Interest",
+      "camera": [{"sec": 0, "size": "medium"}, {"at": "full", "size": "close"}, {"at": "miles", "size": "wide"}],
+      "world": {"kind": "field"},
+      "items": [{"id": "card", "prop": "wingcard", "x": 0.55, "size": 0.3}],
+      "actions": [{"at": "cash", "do": "glow", "target": "card"}],
+      "hud": {"noCounter": True}},
+     role="payoff", tr="zoom-through")
+
+shot("c6-final", "sharma", "Six ways to make money, and only one of them actually flies you anywhere.",
+     E("Six", "money", "only", "flies"), "penthouse",
+     [A(0, "present", "smirk"), A("only", "pointUp", "smirk"), A("flies", "thumbsUp", "laugh")],
+     [C(0, "medium", "sharma"), C("only", "close", "sharma"), C("flies", "wide", "room")], 6,
+     word=("Only one", "only", "gold"), tr="whip",
+     sfx=[S("pop", "six"), S("ding", "only"), S("whoosh", "flies")])
+
+beat("outro", "end", "narrator",
+     "Simplified maths with assumed margins, fees and returns. Would you still take the airline card? Comment below.",
+     {}, [],
+     {"cta": "Would you still take the airline card?", "follow": "Follow for one money idea a day",
+      "assumption": "Illustrative fares, margin, cargo share, swipe fee and card fee, all assumed; growth at an assumed {invest_rate} a year, before fees and taxes; no inflation.",
+      "hud": {"noCounter": True}},
+     role="end", tr="fade")
+
+MATHS = [
+    {"name": "seat", "kind": "fee_take", "amount": 400, "fee_pct": 3, "per_year": 1, "years": 1},
+    {"name": "fare", "kind": "lumpsum", "amount": 160, "rate_pct": 150, "years": 1},
+    {"name": "extras", "kind": "fee_take", "amount": 400, "fee_pct": 15, "per_year": 1, "years": 1},
+    {"name": "fees", "kind": "compare", "a": "extras.per_period", "b": "seat.per_period"},
+    {"name": "flight", "kind": "share", "total": 80000, "parts": 200},
+    {"name": "cargo", "kind": "fee_take", "amount": 80000, "fee_pct": 10, "per_year": 1, "years": 1},
+    {"name": "swipe", "kind": "fee_take", "amount": 2000, "fee_pct": 2, "per_year": 12, "years": 10},
+    {"name": "annual", "kind": "fee_take", "amount": 550, "fee_pct": 100, "per_year": 1, "years": 10},
+    {"name": "annual30", "kind": "fee_take", "amount": 550, "fee_pct": 100, "per_year": 1, "years": 30},
+    {"name": "invest", "kind": "sip", "monthly": 45, "rate_pct": 7, "years": 30},
+    {"name": "gap", "kind": "compare", "a": "invest.final", "b": "annual30.total"},
+]
+
+plan = json.load(open(f"/home/user/finance-shorts-bot/videos/{VID}/plan.json"))
+script = {
+    "template": "long_story", "format": "long", "id": VID, "seed": plan["seed"], "story": plan["story"],
+    "feed_id": plan["topic"]["feed_id"], "currency": "USD", "title": plan["title"], "style": plan["style"],
+    "structure": {"levels": LEVELS},
+    "maths": MATHS,
+    "thumbnail": {"layout": "face", "angle": "versus", "who": "priya", "expression": "smirk", "color": "teal", "words": "Plane? No. *Bank.*", "items": [{"prop": "jet"}]},
+    "beats": BEATS,
+}
+json.dump(script, open(OUT, "w"), indent=1, ensure_ascii=False)
+words = sum(len(re.findall(r"\S+", b.get("say", ""))) for b in BEATS)
+print(f"{len(BEATS)} beats, {words} words written")
