@@ -1,0 +1,44 @@
+{
+  "agent": "research",
+  "day": "2026-10-29",
+  "startedAt": "2026-10-28T18:21:55Z",
+  "finishedAt": "2026-10-28T18:29:39Z",
+  "summary": "Thursday title and cover pass: titles that ask a Why/How/What question about billionaires or the rich are our best Shorts, and a cast name in the title flopped. Added 3 global topics (one now tops the feed) and 1 title experiment proposal.",
+  "decision": "acted",
+  "why": "Since the reset, Shorts with Why/How/What titles have a median of 1,167 views vs 331 for the rest; 'Rohan gets paid $5,000' got 45 on day one. In the running title-names-the-moment test the 'on' arm has a median of 119 views vs 1,103 for 'off' (n=5 each, ages differ). The feed lacked a high-demand rich_vs_poor day-in-the-life topic (6.7M reference).",
+  "findings": [
+    {
+      "title": "Question titles about the rich win",
+      "detail": "4 Why/How/What titles: median 1,167 views vs 331; 7 billion/rich titles: 1,103 vs 452. Market leaders read the same way ('Why Billionaire is Billionaire' 887K, casino 1.89M).",
+      "link": "improvement/research/2026-10-29.md"
+    },
+    {
+      "title": "title-names-the-moment looks weak on views",
+      "detail": "On-arm median 119 views vs 1,103 for off (n=5 each). The evaluator decides on avgViewPct.",
+      "link": "metrics/videos.json"
+    },
+    {
+      "title": "First 45-75 s Short passes 1,000 views",
+      "detail": "v-20261027-01 ($1 billion in $100 bills, 46 s): 1,103 views.",
+      "link": "metrics/videos.json"
+    },
+    {
+      "title": "Custom Shorts covers: desktop and Partner Program only",
+      "detail": "Rolled out 25 Jul 2026, no A/B testing; mobile frame pick works for everyone. Owner info note added.",
+      "link": "https://ppc.land/youtube-ends-2-year-wait-for-shorts-thumbnails-but-blocks-a-b-testing/"
+    },
+    {
+      "title": "New top topic: one day on $25K vs $25M",
+      "detail": "rich_vs_poor, score 8.16; reference Johnny Harris 6.7M.",
+      "link": "https://www.youtube.com/watch?v=NfMdvee5HoY"
+    }
+  ],
+  "changes": [],
+  "nextCheck": "2026-10-30",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-10-29.md"
+    }
+  ]
+}
