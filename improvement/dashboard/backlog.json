@@ -105,16 +105,20 @@
       "id": "calendar-format-marker",
       "kind": "idea",
       "title": "Calendar: tell long videos from Shorts at a glance",
-      "detail": "Content calendars colour or label entries by channel/format. A small 'Long' tag (text, not colour alone) on long entries lets the owner see the week's two long uploads without opening each day.",
+      "detail": "Content calendars colour or label entries by channel/format. A small 'Long' tag (text, not colour alone) on long entries lets the owner see the week's two long uploads without opening each day. Done: a 'Long' tag in the day list and beside the time on wide screens, a dash instead of a dot on phones, and a legend entry.",
       "page": "calendar",
       "found": "2026-10-21",
-      "status": "open"
+      "status": "done",
+      "done": "2026-10-28",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-10-28"
+      }
     },
     {
       "id": "calendar-empty-slots",
       "kind": "idea",
       "title": "Calendar: show slots nothing is ready for",
-      "detail": "The posting plan already knows the first empty slot. Showing it as a dashed 'Nothing ready' entry makes a running-dry backlog visible on the calendar, not just on the Queue page.",
+      "detail": "The posting plan already knows the first empty slot. Showing it as a dashed 'Nothing ready' entry makes a running-dry backlog visible on the calendar, not just on the Queue page. Content-planner calendars also make an empty slot a link to act on (here: to the Queue page).",
       "page": "calendar",
       "found": "2026-10-21",
       "status": "open"
@@ -285,6 +289,41 @@
       "lastTouched": {
         "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
       }
+    },
+    {
+      "id": "calendar-subtitle-long",
+      "kind": "bug",
+      "title": "Calendar: heading line spoke only of Shorts",
+      "detail": "'3 uploads a day at 07:07, 12:37 and 19:07 IST' while the grid also plans long videos at 20:07 on Tue/Thu/Sat. It now reads '3 Shorts a day at … · long videos Tue/Thu/Sat at 20:07 IST'.",
+      "page": "calendar",
+      "found": "2026-10-28",
+      "status": "done",
+      "done": "2026-10-28",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-10-28"
+      }
+    },
+    {
+      "id": "calendar-long-thumbs",
+      "kind": "bug",
+      "title": "Calendar: long-video thumbnails squashed into portrait",
+      "detail": "Every thumbnail in the grid and the day list was drawn 9:16, so a 16:9 long-video thumbnail became a sliver. Long ones are now drawn landscape.",
+      "page": "calendar",
+      "found": "2026-10-28",
+      "status": "done",
+      "done": "2026-10-28",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-10-28"
+      }
+    },
+    {
+      "id": "stats-freshness",
+      "kind": "idea",
+      "title": "Overview and Analytics: say how old the YouTube numbers are",
+      "detail": "Views and subscriber cards come from stats.yml, which stops when YouTube sign-in fails (as now in the notifications). A small 'YouTube stats as of 27 Oct' line that turns amber after 36 h and red after 3 days would stop the owner trusting frozen numbers. Data-freshness guides agree: show the age of the newest data point, not the last job run, with warn/error steps (dbt source freshness, basedash).",
+      "page": "overview",
+      "found": "2026-10-28",
+      "status": "open"
     }
   ]
 }

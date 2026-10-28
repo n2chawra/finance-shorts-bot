@@ -287,3 +287,45 @@ test("queue section details wrap as a block, not a narrow column", async ({ page
     if (lines > 1.5) expect(left - h2Left, "a wrapped line starts at the heading's edge").toBeLessThanOrEqual(1);
   }
 });
+
+test("calendar heading names the long-video days too", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  // the line under the heading spoke only of the daily Shorts, though the grid shows long videos at 20:07
+  await expect(page.getByText(/long videos Tue\/Thu\/Sat at 20:07 IST/)).toBeVisible();
+});
+
+test("calendar draws long-video thumbnails landscape", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  await page.waitForLoadState("networkidle");
+  // long videos are 1920×1080, but every thumbnail was drawn 9:16, squashing them into a portrait sliver
+  let day = page.locator("button[aria-pressed]", { hasText: "20:07" }).first();
+  if (!(await day.count())) {
+    await page.getByRole("button", { name: "Next month" }).click();
+    day = page.locator("button[aria-pressed]", { hasText: "20:07" }).first();
+  }
+  await day.click();
+  const thumbs = page.locator("main li img");
+  const ratios = await thumbs.evaluateAll((imgs) => imgs.map((i) => i.getBoundingClientRect()).map((r) => r.width / r.height));
+  expect(ratios.some((r) => r > 1.5), `a landscape thumbnail among ${ratios.map((r) => r.toFixed(2))}`).toBe(true);
+});
+
+test("calendar marks long videos apart from Shorts", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  await page.waitForLoadState("networkidle");
+  // a long upload looked like any Short: same dot, same row, nothing that said "Long"
+  let day = page.getByRole("button", { name: /long video/ }).first();
+  if (!(await day.count())) {
+    await page.getByRole("button", { name: "Next month" }).click();
+    day = page.getByRole("button", { name: /long video/ }).first();
+  }
+  await expect(day).toBeVisible();
+  await day.click();
+  await expect(page.locator("main li").getByText("Long", { exact: true })).toBeVisible();
+  await expect(page.getByText("Long video", { exact: true })).toBeVisible();   // legend
+});
