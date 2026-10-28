@@ -4,8 +4,15 @@
       "key": "long-videos-unlisted",
       "severity": "warning",
       "title": "Three long videos are unlisted on YouTube but published on the dashboard",
-      "detail": "The data audits of 22, 25, 26 and 27 Oct all found L-20261021-01 (kYACrRwlx1s), L-20261019-02 (Y_qa18IDfm0) and L-20261018-01 (NxoAcDZWCh4) unlisted on YouTube. Not a code bug: the dashboard's state comes from the upload record, and YouTube reports the privacy you set in Studio. Unlisted videos get almost no views, and they count as published in the dashboard's totals and the agents' metrics.",
+      "detail": "The data audits of 22, 25, 26, 27 and 28 Oct all found L-20261021-01 (kYACrRwlx1s), L-20261019-02 (Y_qa18IDfm0) and L-20261018-01 (NxoAcDZWCh4) unlisted on YouTube. Not a code bug: the dashboard's state comes from the upload record, and YouTube reports the privacy you set in Studio. Unlisted videos get almost no views, and they count as published in the dashboard's totals and the agents' metrics.",
       "fix": "1. If they should be public: YouTube Studio → Content → each video → Visibility → Public. The next audit clears the warning.\n2. If they are meant to stay unlisted (for example held back on purpose): on each video's dashboard page use Remove, so they stop counting as published videos."
+    },
+    {
+      "key": "audit-went-down-rule",
+      "severity": "info",
+      "title": "The data audit calls a YouTube correction an error (\"views went down\")",
+      "detail": "The 28 Oct audit raised went_down for v-20261023-01: dashboard 1,175 → 1,166 views. YouTube itself revised the video: its Analytics days were rewritten from 1,175 to 1,164 views (stats.ts replaces each video's history with YouTube's fresh numbers), and its public counter reads 1,166, exactly what the dashboard now shows. YouTube removes invalid (spam) views after the fact, and the dashboard must follow it down or it over-counts for good. The rule in workers/lib/data-audit.ts (\"shown counts must never go down\") can't tell this apart from a bug, and agents may not change the audit, so it will keep flagging every real YouTube correction as an error.",
+      "fix": "1. Nothing to do for v-20261023-01: the dashboard and YouTube agree.\n2. Optional, in workers/lib/data-audit.ts: raise went_down only when the new dashboard number is also below YouTube's current count (dash.views < yt.views - slack), or make it a warning when it matches YouTube. The auditor can't make this change (the audit is owner-only)."
     }
   ]
 }

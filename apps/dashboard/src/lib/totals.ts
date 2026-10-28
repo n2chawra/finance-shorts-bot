@@ -25,6 +25,14 @@ export function totals(stats: StatRow[], live?: LiveRow | null): Totals | null {
   };
 }
 
+/**
+ * The first IST day of the `days`-day window that ends today ("YYYY-MM-DD"), today included: the
+ * window the Overview's 7-day totals and its week-over-week chart (the last 7 daily rows) share.
+ */
+export function windowStart(today: string, days: number): string {
+  return new Date(Date.parse(`${today}T00:00:00Z`) - (days - 1) * 86_400_000).toISOString().slice(0, 10);
+}
+
 export type DayRow = { views: number; likes: number; comments: number; subsGained: number; estimated: boolean };
 export type GapVideo = { publishDay: string; stats: (StatRow & { day: string })[]; live?: LiveRow | null };
 
