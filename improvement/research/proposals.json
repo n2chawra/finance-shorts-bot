@@ -321,7 +321,8 @@
       "evidence": [
         "metrics/videos.json: best % viewed v-20261017-02 50.5%, v-20261018-01 48.6% (a shopkeeper scene), worst v-20261016-03 9.5% (abstract claim); small n and the worst four were also unvoiced and 48-60 s, so the title is only one of the differences",
         "https://air.io/en/audience-growth/how-to-write-a-youtube-title-that-gets-clicked-research-across-11-niches",
-        "https://www.youtube.com/shorts/55ezEOnK1Nk (Rich vs Poor, 26M: the title is the situation)"
+        "https://www.youtube.com/shorts/55ezEOnK1Nk (Rich vs Poor, 26M: the title is the situation)",
+        "2026-10-29 early read (views, not the experiment's avgViewPct): 'on' titles v-20261023-01 1,166, v-20261026-03 179, v-20261027-02 119, v-20261028-01 45, v-20261026-01 35 (median 119); 'off' titles v-20261024-01 1,188, v-20261023-02 1,144, v-20261027-01 1,103, v-20261026-02 798, v-20261027-03 388 (median 1,103). Ages differ; let the evaluator decide."
       ],
       "expectedEffect": "Higher swipe-through and % viewed from people who recognise the situation.",
       "confidence": "low",
@@ -600,6 +601,27 @@
       "route": "template",
       "priority": "normal",
       "note": "2026-10-28: built. maths kind `share` (total, parts, optional per_year → per_part, parts, years), number-checked, in the long_story README table."
+    },
+    {
+      "id": "title-asks-the-viewers-question",
+      "date": "2026-10-29",
+      "area": "title",
+      "title": "Titles ask the viewer's own Why/How/What question about a famous subject, keyword in the first 40 characters",
+      "change": "generator/prompts/planner.md title rule, behind a flag: the title is the question the viewer would type, opening Why / How / What (or 'Is ___ really ___?') and naming the big subject (billionaires, the rich, a casino, a famous company, a salary figure) within the first 40 characters; no cast names in the title (Rohan means nothing to a stranger). Keep 20-60 characters, one emoji. Start it only after title-names-the-moment ends (they pull titles in opposite directions; one title experiment at a time).",
+      "evidence": [
+        "metrics/videos.json, Shorts since 2026-10-21: the 4 titles opening Why/How/What have median 1,167 views vs 331 for the other 11; the 7 naming billion/rich median 1,103 vs 452; the one naming a cast member (v-20261028-01 'Rohan gets paid $5,000...') 45 views on day one",
+        "market.json 27 Oct: 'How Billionaire's use Casino to clean Dirty' 1.89M, 'Why Billionaire is Billionaire' 887K, 'What If Billionaires Divided Their Money Among Everyone?' 215K, 'Is McDonald's really a burger company?' 28K: question titles with a famous subject",
+        "https://schedulala.com/blog/youtube-shorts-seo-optimize-for-discovery (keyword in the first 40 characters; vendor blog)",
+        "https://metricool.com/youtube-trends/ (61% of Shorts views from the feed, 9% from search: the title matters most where the cover and title show, search and the channel page)"
+      ],
+      "expectedEffect": "More views from search and the channel's Shorts tab; a clearer promise for the feed's title line.",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Confounded with topic: our question titles are also our billionaire topics. Could make titles samey; the shape rule (no repeat of the last 3 shapes) still applies.",
+      "metric": "views48h",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }

@@ -1635,13 +1635,13 @@
       ],
       "demand": {
         "title": "What If Billionaires Divided Their Money Among Everyone? 😱💰🌍",
-        "views": 204308,
+        "views": 215226,
         "url": "https://www.youtube.com/shorts/5oZL2CD8njY"
       },
       "hook": "Split the richest fortune on Earth with everyone. What do you get?",
       "angle": "An assumed $200B fortune shared by 8 billion people is about $25 each, a dinner; the same fortune is still 2,000 lifetimes of $100,000 a year. Huge to one person, tiny spread out.",
       "why_now": "In this week's market data (204K views, 89 s); the split-the-billions idea trends in articles (Upworthy, GOBankingRates).",
-      "maths": "fee_take (amount 200000000000, fee_pct 0.0000000125 = 1 share in 8 billion, per_year 1, years 1) for the per-person figure; fee_take (amount 100000, fee_pct 100, per_year 1, years 40) for one career; compare. Clumsy: see proposal maths-divide-and-scale.",
+      "maths": "share (total 200000000000, parts 8000000000) for the per-person figure; share (total 200000000000, parts 1, per_year 100000) for how many years of a $100,000 salary it is. The `share` kind exists now (maths-divide-and-scale, done).",
       "verify": [
         "$200B and 8 billion people stated as assumed round figures, not a named person's net worth"
       ]
@@ -1767,6 +1767,109 @@
       "maths": "emi (amount 40000, rate_pct an assumed 7, months 72); sip (monthly = the payment avoided, rate_pct an assumed 7, years 10) ×2; compare",
       "verify": [
         "prices, loan rate and return stated as assumed, illustrative"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-29",
+      "expires": "2027-01-27",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "id": "2026-10-29-25k-vs-25m-one-day",
+      "title": "One day on $25,000 a year vs one day on $25 million a year",
+      "category": "wealth",
+      "priority": "high",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "demand": {
+        "title": "$25,000 vs. $25,000,000",
+        "views": 6700000,
+        "url": "https://www.youtube.com/watch?v=NfMdvee5HoY"
+      },
+      "hook": "Same city, same Tuesday. One of them has a thousand times more to spend.",
+      "angle": "What a single day really looks like at each income: breakfast, rent, the commute, the evening, level by level, and what the rich one does with what is left over.",
+      "why_now": "Johnny Harris's $25,000 vs $25,000,000 (6.7M) is the biggest video on this exact idea; rich vs poor keeps topping this week's market data (Two daughters-in-law 2.65M, BeamNG rich parents 269K).",
+      "maths": "share (total 25000, parts 365) and share (total 25000000, parts 365) for each one's day; compare. Spending shares are stated as assumptions; no real person.",
+      "verify": [
+        "$25,000 and $25 million are assumed round incomes, not a named person"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=NfMdvee5HoY"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-29",
+      "expires": "2027-01-27",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "id": "2026-10-29-paid-while-they-sleep",
+      "title": "How the rich get paid while they sleep",
+      "category": "investing",
+      "priority": "normal",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "demand": {
+        "title": "THIS Is How to Make Money While You Sleep",
+        "views": 676964,
+        "url": "https://youtube.com/shorts/bqSBYrq1qyM"
+      },
+      "hook": "He was asleep at three a.m. His money was not.",
+      "angle": "An assumed $1 million paying an assumed 4% a year in dividends and interest earns every night while the owner sleeps; the same 4% on $10,000 earns a coffee. It is the size of the pile, not the hours.",
+      "why_now": "School of Hard Knocks' make-money-while-you-sleep Short: 677K views in 5 days, 6,824 an hour (market data, 27 Oct).",
+      "maths": "fee_take (amount 1000000, fee_pct 4, per_year 1, years 30) and fee_take (amount 10000, fee_pct 4, per_year 1, years 30) for the yearly and 30-year payouts; share (total = the first per_year_total, parts 365) for one night. Rates are assumptions, no product or company named.",
+      "verify": [
+        "4% stated as an assumed yearly payout, not a promise; no fund or stock named"
+      ],
+      "sources": [
+        "https://youtube.com/shorts/bqSBYrq1qyM"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-10-29",
+      "expires": "2027-01-27",
+      "status": "new",
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "id": "2026-10-29-why-a-billionaire-cant-spend-it",
+      "title": "Why a billionaire couldn't spend it all even if he tried",
+      "category": "wealth",
+      "priority": "normal",
+      "stories": [
+        "billionaire_question"
+      ],
+      "demand": {
+        "title": "Why Billionaire is Billionaire",
+        "views": 887061,
+        "url": "https://youtube.com/shorts/HgTNoSzvKi4"
+      },
+      "hook": "Spend a million dollars every single day. You still end the year richer.",
+      "angle": "An assumed $10 billion growing at an assumed 5% a year adds more than spending $1 million a day can take out: the growth out-runs the shopping. Why spending sprees never make a dent.",
+      "why_now": "Billionaire questions lead this week's market data: 'Why Billionaire is Billionaire' 887K in 5 days, 'I Tried to Spend $1 TRILLION in One Day' 133K, 'Spending $1 TRILLION In 24 Hours' 34K; our own billionaire Shorts are our best (1,167-1,188 views).",
+      "maths": "lumpsum (principal 10000000000, rate 5, years 1) for one year of growth; fee_take (amount 1000000, fee_pct 100, per_year 365, years 1) for a million a day spent; compare. Illustrative fortune, no real person.",
+      "verify": [
+        "$10B and 5% are assumptions, not a named person or a promised return"
+      ],
+      "sources": [
+        "https://youtube.com/shorts/HgTNoSzvKi4",
+        "https://youtube.com/shorts/kQCpFXtG9RE"
       ]
     }
   ]
