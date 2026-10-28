@@ -1,0 +1,21 @@
+{
+  "agent": "studio",
+  "day": "2026-10-28",
+  "startedAt": "2026-10-28T11:12:10Z",
+  "finishedAt": "2026-10-28T11:13:04Z",
+  "summary": "Second Studio firing today (11:11 UTC, off the 09:07 schedule, 19 minutes after the first run ended). Made no video: the bug that failed L-20261028-01 is still unfixed, so another attempt would fail QA the same way.",
+  "decision": "waited",
+  "why": "state says a video is due (1 of 3 this week), but the earlier run today failed QA after two fix rounds on scene code Studio may not change (backlog 2026-10-28-build-camera-ignores-cast, high: the build camera crops the cast). No commit has touched remotion/src since; every long video uses build beats, so a new 2-3 hour run would hit the same wall and spend Pro usage for nothing.",
+  "findings": [
+    {
+      "title": "Blocker still open",
+      "detail": "2026-10-28-build-camera-ignores-cast (route adopt, scene, high) is the improver's; it runs next at 06:17 IST. Once it lands, the fact-checked airlines draft (improvement/longform/drafts/L-20261028-01/) can be finished on Friday's run."
+    }
+  ],
+  "changes": [],
+  "nextCheck": "2026-10-30",
+  "links": [
+    {"label": "Earlier run today", "url": "improvement/activity/2026-10-28-studio.json"},
+    {"label": "Backlog", "url": "improvement/longform/backlog.json"}
+  ]
+}
