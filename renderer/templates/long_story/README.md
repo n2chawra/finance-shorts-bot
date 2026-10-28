@@ -86,6 +86,7 @@ chart series with `"@<maths name>.<key>"`. The builder rejects anything else.
 | `price_rise` | monthly, inflation_pct, years: a monthly cost rising once a year, at the start of the year (year 1 already costs the raised price) | amount, inflation, years, new_monthly, extra_month, extra_year, extra_total (over all the years, against today's price), total_cost, ratio | cost (yearly) |
 | `income_tax_bands` | income, allowance, bands `[[upper, rate_pct], …, [null, rate_pct]]` on gross income, optional income2 (a pay rise under the same bands) | income, allowance, tax, take_home, take_home_month, marginal, effective, rate1…, band1… (each band's upper limit); with income2 also income2, tax2, take_home2, take_home_month2, marginal2, effective2, rise, extra_tax, kept, kept_pct | — |
 | `fee_take` | amount (per period), fee_pct, per_year (12 monthly, 1 yearly), years: a fee taken from every period's amount ("2% of every swipe") | amount, fee_pct, years, per_period, per_year_total, total (over all the years) | take (cumulative, yearly), ticks, years |
+| `share` | total, parts, optional per_year: a total split evenly among parts (people, workers), and how many years per_year a year takes to reach it ("a $200B fortune among 8 billion people", "a billion at $100,000 a year"). Not fee_take with a tiny percentage | total, total_long, parts (a count: "8B", "10,000"), per_part; with per_year also per_year, years (rounded, a count) | — |
 | `compare` | a, b: `"<maths name>.<value key>"` of two results earlier in the list, the bigger first ("rich.final", "poor.final") | a, b, diff (the gap, a − b), ratio (a ÷ b), pct (how much bigger a is) | — |
 
 `income_tax_bands` is a plain band table: it does not shrink an allowance with income (UK above
@@ -101,7 +102,7 @@ lumpsum, sip_stepup also `final_flat`, `invested_flat`, `extra`), `real_final`, 
 `inflation_cost`, `cash_lost` (real_return), `emi`, `total_paid`, `interest` (emi), `total_paid`,
 `interest`, `*_year1` (card_min_due), `emi*`, `interest_*`, `saved_*` (loan_prepay), `extra_total`,
 `total_cost`, `new_monthly` (price_rise), `tax`, `take_home` (income_tax_bands), `total`,
-`per_year_total`, `per_period` (fee_take), and `a`, `b`, `diff` of another compare.
+`per_year_total`, `per_period` (fee_take), `total`, `per_part`, `per_year` (share), and `a`, `b`, `diff` of another compare.
 
 ## A beat
 

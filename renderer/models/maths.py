@@ -10,7 +10,7 @@ Each kind takes the inputs a writer chooses and returns:
 from __future__ import annotations
 
 from renderer.engine.finance import lumpsum_series, sip_series
-from renderer.engine.formatting import Money, nice_axis, times
+from renderer.engine.formatting import Money, count, nice_axis, times
 
 Result = dict[str, dict]
 
@@ -307,6 +307,27 @@ def fee_take(m: dict, fm: Money = Money()) -> Result:
     }
 
 
+def share(m: dict, fm: Money = Money()) -> Result:
+    """`total` split evenly among `parts` (people, workers, years): what each part gets. With an
+    optional `per_year`, also how many years that much a year takes to add up to `total` ("a
+    billion at $100,000 a year"). For money-scale stories that would otherwise bend fee_take."""
+    total, parts = m["total"], m["parts"]
+    if total <= 0 or parts < 1:
+        raise ValueError("share: total must be above zero and parts at least 1")
+    each = total/parts
+    if each < 1:
+        raise ValueError("share: each part gets less than one unit of money; use fewer parts or a bigger total")
+    values = {"total": total, "parts": parts, "per_part": each}
+    figures = {"total": fm.short(total), "total_long": fm.long(total), "parts": count(parts, fm.indian), "per_part": fm.short(each)}
+    if "per_year" in m:
+        if not 0 < m["per_year"] <= total:
+            raise ValueError("share: per_year must be above zero and at most total")
+        years = total/m["per_year"]
+        values |= {"per_year": m["per_year"], "years": years}
+        figures |= {"per_year": fm.full(m["per_year"]), "years": count(round(years), fm.indian)}
+    return {"values": values, "figures": figures, "series": {}}
+
+
 def compare(m: dict, fm: Money, results: dict[str, Result]) -> Result:
     """The gap between two results computed earlier in the same list: `a` and `b` are
     "name.value_key" (as in @references), the bigger one first. Gives the difference, how many
@@ -329,7 +350,7 @@ def compare(m: dict, fm: Money, results: dict[str, Result]) -> Result:
 
 KINDS = {"sip": sip, "lumpsum": lumpsum, "emi": emi, "card_min_due": card_min_due, "sip_stepup": sip_stepup,
          "loan_prepay": loan_prepay, "real_return": real_return, "price_rise": price_rise, "income_tax_bands": income_tax_bands, "fee_take": fee_take,
-         "compare": compare}
+         "share": share, "compare": compare}
 
 # the inputs each kind needs, for messages a writer can act on
 INPUTS = {
@@ -343,6 +364,7 @@ INPUTS = {
     "price_rise": ("monthly", "inflation_pct", "years"),
     "income_tax_bands": ("income", "allowance", "bands"),
     "fee_take": ("amount", "fee_pct", "per_year", "years"),
+    "share": ("total", "parts"),
     "compare": ("a", "b"),
 }
 

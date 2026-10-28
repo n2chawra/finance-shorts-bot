@@ -487,6 +487,21 @@
       "description": "A negative amount shows its sign before the currency (-$19,470, -₹15.0 L) in Python and the Remotion count-up, and the voice reads it as 'minus'. long_story README notes lumpsum takes a negative rate_pct.",
       "evidence": "Scout 2026-10-23: lumpsum at -15% gave gains '$-19,470'.",
       "commits": []
+    },
+    {
+      "id": "maths-divide-and-scale",
+      "proposal": "maths-divide-and-scale",
+      "area": "template",
+      "status": "adopted",
+      "startedAt": "2026-10-28",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "New maths kind `share`: total split among parts (per_part, parts as a count '8B'), and with per_year the years it takes to reach total. Independent check in generator/numbers.py; long_story README table.",
+      "evidence": "Research 2026-10-28: money_scale/billionaire topics (2026-10-28-split-a-billionaire-with-everyone, 2026-10-27-a-billion-is-250-careers) need a division; writers bent fee_take with tiny percentages. Reference Shorts 204K and 32K this week.",
+      "commits": []
     }
   ]
 }

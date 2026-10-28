@@ -9,7 +9,7 @@ import re
 from collections.abc import Callable, Mapping
 
 from renderer.timeline.build import check_script
-from renderer.engine.formatting import fact_value, group_indian, group_western, money_for, times
+from renderer.engine.formatting import count, fact_value, group_indian, group_western, money_for, times
 
 from . import topics
 
@@ -150,6 +150,15 @@ def fee_take_total(amount: float, fee_pct: float, per_year: int, years: int) -> 
     return round(amount*fee_pct*per_year*years/100, 6)
 
 
+def share_split(total: float, parts: float, per_year: float | None = None) -> dict[str, float]:
+    """A total split among parts, and the years per_year a year takes to reach it, as products of
+    reciprocals (the story maths divides directly)."""
+    out = {"total": total, "per_part": total*(1/parts)}
+    if per_year is not None:
+        out |= {"per_year": per_year, "years": total*(1/per_year)}
+    return out
+
+
 def _values(m: dict, done: dict[str, dict[str, float]]) -> dict[str, float]:
     """The raw results of one maths entry from the closed forms above, keyed as the story maths'
     `values`, for a `compare` to read. Only the money results a story compares are here."""
@@ -190,6 +199,8 @@ def _values(m: dict, done: dict[str, dict[str, float]]) -> dict[str, float]:
     if kind == "fee_take":
         total = fee_take_total(m["amount"], m["fee_pct"], round(m["per_year"]), m["years"])
         return {"total": total, "per_year_total": total/m["years"], "per_period": m["amount"]*m["fee_pct"]/100}
+    if kind == "share":
+        return share_split(m["total"], m["parts"], m.get("per_year"))
     if kind == "compare":
         a, b = (_ref(m[side], done, m["name"]) for side in ("a", "b"))
         return {"a": a, "b": b, "diff": a - b}
@@ -222,6 +233,12 @@ def _long_story(s: dict) -> dict[str, str]:
             total = done[n]["total"]
             out |= {f"{n}_per_period": fm.full(m["amount"]*m["fee_pct"]/100), f"{n}_per_year_total": fm.full(total/m["years"]),
                     f"{n}_total": fm.short(total)}
+        elif kind == "share":
+            c = done[n]
+            out |= {f"{n}_total": fm.short(c["total"]), f"{n}_total_long": fm.long(c["total"]),
+                    f"{n}_parts": count(m["parts"], fm.indian), f"{n}_per_part": fm.short(c["per_part"])}
+            if "years" in c:
+                out |= {f"{n}_per_year": fm.full(c["per_year"]), f"{n}_years": count(round(c["years"]), fm.indian)}
         elif kind == "card_min_due":
             c = card_min_due(m["amount"], m["rate_pct_month"], m["min_due_pct"], m["min_due_floor"])
             out |= {f"{n}_months": str(c["months"]), f"{n}_years": str(round(c["months"]/12)),
