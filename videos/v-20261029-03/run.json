@@ -1,0 +1,189 @@
+[
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:07:46.141740+00:00",
+    "finishedAt": "2026-10-28T23:07:46.141740+00:00",
+    "notes": [
+      "beat 'hook'.params.objects[0].amount: maths 'pot' has no value or series 'amount'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:07:53.457773+00:00",
+    "finishedAt": "2026-10-28T23:07:53.457773+00:00",
+    "notes": [
+      "35 figures computed from inputs; 21 cross-checked against closed-form formulas.",
+      "warning: beat 'nodebt' runs 6.2 s with 3.7 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'invest' runs 7.2 s with 3.5 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:08:04.006315+00:00",
+    "finishedAt": "2026-10-28T23:08:04.006315+00:00",
+    "notes": [
+      "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:09:41.237793+00:00",
+    "finishedAt": "2026-10-28T23:09:41.237793+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:09:42.239202+00:00",
+    "finishedAt": "2026-10-28T23:10:18.464867+00:00",
+    "notes": [
+      "text 'Empty' at 8.3 s runs outside the frame",
+      "four shots in a row open medium (from 'hook'): vary the shot size",
+      "beat 'nodebt': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'invest': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:10:30.545323+00:00",
+    "finishedAt": "2026-10-28T23:10:30.545323+00:00",
+    "notes": [
+      "Beat 'promise' (Sharma): 'Most people stop at level two.' is an unsourced statistical claim stated as fact for a global audience; no source shows that most people have a $1,000 buffer but stop there (US surveys suggest many never reach a $1,000 buffer at all). Reword without a statistic, e.g. 'Lots of people get stuck early.'",
+      "Beat 'nodebt' (Priya): 'Minimums on $3,000 would cost $3,909 in interest' depends on the assumed 22.8% APR (1.9%/month) and 3% minimum, but neither is said or shown, so the figure reads as certain. State it as an assumption on screen or in the line (e.g. 'at an assumed {card_rate_year}')."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:10:53.197317+00:00",
+    "finishedAt": "2026-10-28T23:10:53.197317+00:00",
+    "notes": [
+      "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:10:54.084733+00:00",
+    "finishedAt": "2026-10-28T23:11:19.149677+00:00",
+    "notes": [
+      "43 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:11:34.856429+00:00",
+    "finishedAt": "2026-10-28T23:11:34.856429+00:00",
+    "notes": [
+      "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:11:54.326975+00:00",
+    "finishedAt": "2026-10-28T23:11:54.326975+00:00",
+    "notes": [
+      "Re-review: promise now has no statistic ('Lots of people get stuck early'); nodebt states the card rate as an assumed 22.8% (realistic US APR); 7%/4% stated as assumed; no advice or expert claims; description ends with disclaimer. Style note: '22.8%' could add 'a year'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:11:41.576011+00:00",
+    "finishedAt": "2026-10-28T23:12:09.260247+00:00",
+    "notes": [
+      "45 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:12:28.497008+00:00",
+    "finishedAt": "2026-10-28T23:12:28.497008+00:00",
+    "notes": [
+      "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:12:29.427934+00:00",
+    "finishedAt": "2026-10-28T23:12:56.782089+00:00",
+    "notes": [
+      "45 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:13:16.660044+00:00",
+    "finishedAt": "2026-10-28T23:13:42.444790+00:00",
+    "notes": [
+      "45 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:15:00.828769+00:00",
+    "finishedAt": "2026-10-28T23:15:00.828769+00:00",
+    "notes": [
+      "[script] 25.0s (beat invest): the sprout carries the item label \"Years\" with no number next to it; it floats under the pot as a lone word, reads like a broken or missing value, and just repeats the caption \"AFTER 30 YEARS\" below it. Drop the label or make it say what the sprout is (e.g. \"$500 a month\").",
+      "[script] 25.0s (beat invest): the 'close on invested' framing crops the speaker Priya out of the shot except a lone orange forearm poking in at the top-left edge. Keep her in frame (medium on all, or move her spot) while the sprout is close."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:15:21.360211+00:00",
+    "finishedAt": "2026-10-28T23:15:21.360211+00:00",
+    "notes": [
+      "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:15:22.225664+00:00",
+    "finishedAt": "2026-10-28T23:15:44.446830+00:00",
+    "notes": [
+      "45 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:16:01.946610+00:00",
+    "finishedAt": "2026-10-28T23:16:01.946610+00:00",
+    "notes": [
+      "Re-render fixes both invest notes: at 25s Priya is fully in frame celebrating next to the money tree, no orphan label; hook, level HUD, captions, figures ($1,000/$3,909/$613,544), disclaimer at 44.8s and a distinct thumbnail all fine; layout/craft empty, audio -1.0/-16.4 dB, 45 s."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:16:13.763603+00:00",
+    "finishedAt": "2026-10-28T23:18:51.121997+00:00",
+    "notes": [
+      "45 s, sky/pop, peak -1.0 dB, mean -16.4 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:19:02.770206+00:00",
+    "finishedAt": "2026-10-28T23:19:02.770206+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

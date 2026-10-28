@@ -1,0 +1,362 @@
+{
+  "id": "v-20261029-03",
+  "createdAt": "2026-10-28T23:19:02.770131+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "5 money levels: which one are you on?",
+    "category": "saving",
+    "reach": "global",
+    "feed_id": "2026-10-27-five-money-levels"
+  },
+  "title": "Payday hits. Which money level are you on? 🪜",
+  "description": "Which of the five money levels are you on after payday?\nBroke, a $1,000 buffer, no card debt, $500 a month invested at an assumed 7% a year, and a pot big enough to pay the bills at an assumed 4% a year: each level computed. Returns are assumptions, not promises; no product named. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#MoneyLevels",
+    "#Money",
+    "#PersonalFinance",
+    "#Saving"
+  ],
+  "hookStyle": "question",
+  "cta": "Which level are you on right now? Comment",
+  "seed": 72519,
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "C",
+    "bpm": 110,
+    "voice": "af_bella"
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Five money levels. Which one are you on?",
+        "start": 0.27,
+        "seconds": 1.93,
+        "window": 2.47,
+        "fill": 0.781
+      },
+      {
+        "scene": "promise",
+        "text": "Lots of people get stuck early. The last level pays the bills for you.",
+        "start": 2.73,
+        "seconds": 2.87,
+        "window": 3.43,
+        "fill": 0.837
+      },
+      {
+        "scene": "broke",
+        "text": "Level one, me. Payday, and by Friday it's gone. Jar's empty again.",
+        "start": 6.17,
+        "seconds": 3.05,
+        "window": 3.4,
+        "fill": 0.897
+      },
+      {
+        "scene": "buffer",
+        "text": "Level two: $1,000 put aside. Then the rain comes, and the buffer holds.",
+        "start": 9.57,
+        "seconds": 3.71,
+        "window": 4.07,
+        "fill": 0.912
+      },
+      {
+        "scene": "nodebt",
+        "text": "Level three: no card debt. Minimums on $3,000 at an assumed 22.8%: $3,909 in interest. Snip.",
+        "start": 13.63,
+        "seconds": 7.17,
+        "window": 7.7,
+        "fill": 0.931
+      },
+      {
+        "scene": "invest",
+        "text": "Level four: $500 a month, invested at an assumed 7%. After 30 years: $613,544.",
+        "start": 21.33,
+        "seconds": 6.74,
+        "window": 7.3,
+        "fill": 0.923
+      },
+      {
+        "scene": "turn",
+        "text": "The twist? Level four doesn't need a big salary. It needs a head start.",
+        "start": 28.63,
+        "seconds": 3.08,
+        "window": 3.63,
+        "fill": 0.848
+      },
+      {
+        "scene": "free",
+        "text": "Level five: $1,000,000 in the pot. At an assumed 4% a year, it pays $40,000. Bills, paid.",
+        "start": 32.27,
+        "seconds": 5.74,
+        "window": 6.27,
+        "fill": 0.915
+      },
+      {
+        "scene": "payoff",
+        "text": "Level five isn't luck. It's level four, left alone long enough.",
+        "start": 38.53,
+        "seconds": 2.67,
+        "window": 3.2,
+        "fill": 0.834
+      },
+      {
+        "scene": "loop",
+        "text": "Me? Still on one. Payday's tomorrow. So, which one are you on?",
+        "start": 41.73,
+        "seconds": 2.36,
+        "window": 2.73,
+        "fill": 0.864
+      }
+    ]
+  },
+  "durationSec": 45,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.4
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on",
+    "loop-picture-matches-hook": "off"
+  },
+  "heard": {
+    "hookVoice": "hf_alpha",
+    "narratorShare": 0
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review: promise now has no statistic ('Lots of people get stuck early'); nodebt states the card rate as an assumed 22.8% (realistic US APR); 7%/4% stated as assumed; no advice or expert claims; description ends with disclaimer. Style note: '22.8%' could add 'a year'."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-render fixes both invest notes: at 25s Priya is fully in frame celebrating next to the money tree, no orphan label; hook, level HUD, captions, figures ($1,000/$3,909/$613,544), disclaimer at 44.8s and a distinct thumbnail all fine; layout/craft empty, audio -1.0/-16.4 dB, 45 s."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-10-28T23:07:46.141740+00:00",
+      "finishedAt": "2026-10-28T23:07:46.141740+00:00",
+      "notes": [
+        "beat 'hook'.params.objects[0].amount: maths 'pot' has no value or series 'amount'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:07:53.457773+00:00",
+      "finishedAt": "2026-10-28T23:07:53.457773+00:00",
+      "notes": [
+        "35 figures computed from inputs; 21 cross-checked against closed-form formulas.",
+        "warning: beat 'nodebt' runs 6.2 s with 3.7 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'invest' runs 7.2 s with 3.5 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:08:04.006315+00:00",
+      "finishedAt": "2026-10-28T23:08:04.006315+00:00",
+      "notes": [
+        "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:09:41.237793+00:00",
+      "finishedAt": "2026-10-28T23:09:41.237793+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-28T23:09:42.239202+00:00",
+      "finishedAt": "2026-10-28T23:10:18.464867+00:00",
+      "notes": [
+        "text 'Empty' at 8.3 s runs outside the frame",
+        "four shots in a row open medium (from 'hook'): vary the shot size",
+        "beat 'nodebt': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "beat 'invest': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-10-28T23:10:30.545323+00:00",
+      "finishedAt": "2026-10-28T23:10:30.545323+00:00",
+      "notes": [
+        "Beat 'promise' (Sharma): 'Most people stop at level two.' is an unsourced statistical claim stated as fact for a global audience; no source shows that most people have a $1,000 buffer but stop there (US surveys suggest many never reach a $1,000 buffer at all). Reword without a statistic, e.g. 'Lots of people get stuck early.'",
+        "Beat 'nodebt' (Priya): 'Minimums on $3,000 would cost $3,909 in interest' depends on the assumed 22.8% APR (1.9%/month) and 3% minimum, but neither is said or shown, so the figure reads as certain. State it as an assumption on screen or in the line (e.g. 'at an assumed {card_rate_year}')."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:10:53.197317+00:00",
+      "finishedAt": "2026-10-28T23:10:53.197317+00:00",
+      "notes": [
+        "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:10:54.084733+00:00",
+      "finishedAt": "2026-10-28T23:11:19.149677+00:00",
+      "notes": [
+        "43 s, sky/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:11:34.856429+00:00",
+      "finishedAt": "2026-10-28T23:11:34.856429+00:00",
+      "notes": [
+        "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:11:54.326975+00:00",
+      "finishedAt": "2026-10-28T23:11:54.326975+00:00",
+      "notes": [
+        "Re-review: promise now has no statistic ('Lots of people get stuck early'); nodebt states the card rate as an assumed 22.8% (realistic US APR); 7%/4% stated as assumed; no advice or expert claims; description ends with disclaimer. Style note: '22.8%' could add 'a year'."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:11:41.576011+00:00",
+      "finishedAt": "2026-10-28T23:12:09.260247+00:00",
+      "notes": [
+        "45 s, sky/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:12:28.497008+00:00",
+      "finishedAt": "2026-10-28T23:12:28.497008+00:00",
+      "notes": [
+        "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:12:29.427934+00:00",
+      "finishedAt": "2026-10-28T23:12:56.782089+00:00",
+      "notes": [
+        "45 s, sky/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:13:16.660044+00:00",
+      "finishedAt": "2026-10-28T23:13:42.444790+00:00",
+      "notes": [
+        "45 s, sky/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-10-28T23:15:00.828769+00:00",
+      "finishedAt": "2026-10-28T23:15:00.828769+00:00",
+      "notes": [
+        "[script] 25.0s (beat invest): the sprout carries the item label \"Years\" with no number next to it; it floats under the pot as a lone word, reads like a broken or missing value, and just repeats the caption \"AFTER 30 YEARS\" below it. Drop the label or make it say what the sprout is (e.g. \"$500 a month\").",
+        "[script] 25.0s (beat invest): the 'close on invested' framing crops the speaker Priya out of the shot except a lone orange forearm poking in at the top-left edge. Keep her in frame (medium on all, or move her spot) while the sprout is close."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:15:21.360211+00:00",
+      "finishedAt": "2026-10-28T23:15:21.360211+00:00",
+      "notes": [
+        "35 figures computed from inputs; 21 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:15:22.225664+00:00",
+      "finishedAt": "2026-10-28T23:15:44.446830+00:00",
+      "notes": [
+        "45 s, sky/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:16:01.946610+00:00",
+      "finishedAt": "2026-10-28T23:16:01.946610+00:00",
+      "notes": [
+        "Re-render fixes both invest notes: at 25s Priya is fully in frame celebrating next to the money tree, no orphan label; hook, level HUD, captions, figures ($1,000/$3,909/$613,544), disclaimer at 44.8s and a distinct thumbnail all fine; layout/craft empty, audio -1.0/-16.4 dB, 45 s."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:16:13.763603+00:00",
+      "finishedAt": "2026-10-28T23:18:51.121997+00:00",
+      "notes": [
+        "45 s, sky/pop, peak -1.0 dB, mean -16.4 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-28T23:19:02.770206+00:00",
+      "finishedAt": "2026-10-28T23:19:02.770206+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261029-03",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261029-03"
+  }
+}

@@ -1,0 +1,1215 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 72519,
+  "story": "which_one_are_you",
+  "currency": "USD",
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "C",
+    "bpm": 110
+  },
+  "structure": {
+    "levels": [
+      "Broke",
+      "Buffer",
+      "No debt",
+      "Investing",
+      "Free"
+    ]
+  },
+  "maths": [
+    {
+      "name": "buffer",
+      "kind": "lumpsum",
+      "amount": 1000,
+      "rate_pct": 0,
+      "years": 1
+    },
+    {
+      "name": "card",
+      "kind": "card_min_due",
+      "amount": 3000,
+      "rate_pct_month": 1.9,
+      "min_due_pct": 3,
+      "min_due_floor": 25
+    },
+    {
+      "name": "sip",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 7,
+      "years": 30
+    },
+    {
+      "name": "pot",
+      "kind": "fee_take",
+      "amount": 1000000,
+      "fee_pct": 4,
+      "per_year": 1,
+      "years": 1
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "angle": "question",
+    "words": "Which *level* are you?",
+    "figure": "{pot_per_year_total}"
+  },
+  "cta": "Which level are you on right now? Comment",
+  "hook_style": "question",
+  "title": "Payday hits. Which money level are you on? 🪜",
+  "description": "Which of the five money levels are you on after payday?\nBroke, a $1,000 buffer, no card debt, $500 a month invested at an assumed 7% a year, and a pot big enough to pay the bills at an assumed 4% a year: each level computed. Returns are assumptions, not promises; no product named. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "feed_id": "2026-10-27-five-money-levels",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "priya",
+      "say": "Five money levels. Which one are you on?",
+      "events": {
+        "money": {
+          "word": "money"
+        },
+        "levels": {
+          "word": "levels"
+        },
+        "which": {
+          "word": "which"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "money"
+        },
+        {
+          "kind": "riser",
+          "at": "levels"
+        },
+        {
+          "kind": "ding",
+          "at": "which"
+        }
+      ],
+      "params": {
+        "q": "Which level?",
+        "hud": {
+          "hide": true
+        },
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "pot",
+            "spot": "center",
+            "amount": "@sip.final",
+            "text": "{sip_final}",
+            "label": "Level four",
+            "at": "levels",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "which",
+            "size": "close",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Lots of people get stuck early. The last level pays the bills for you.",
+      "events": {
+        "lots": {
+          "word": "lots"
+        },
+        "stuck": {
+          "word": "stuck"
+        },
+        "last": {
+          "word": "last"
+        },
+        "bills": {
+          "word": "bills"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "stuck"
+        },
+        {
+          "kind": "riser",
+          "at": "last"
+        },
+        {
+          "kind": "kaching",
+          "at": "bills"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "last",
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "stuck",
+            "prop": "ladder",
+            "x": 0.7,
+            "size": 0.2,
+            "k": 0.4
+          },
+          {
+            "id": "bills",
+            "prop": "billpile",
+            "x": 0.86,
+            "size": 0.08,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "stuck",
+            "do": "shake",
+            "target": "stuck"
+          },
+          {
+            "at": "last",
+            "do": "fill",
+            "target": "stuck",
+            "k": 1,
+            "dur": 0.8
+          },
+          {
+            "at": "bills",
+            "do": "enter",
+            "target": "bills"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "stuck",
+            "size": "close",
+            "on": "stuck",
+            "move": true
+          },
+          {
+            "at": "bills",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "broke",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Level one, me. Payday, and by Friday it's gone. Jar's empty again.",
+      "events": {
+        "me": {
+          "word": "me"
+        },
+        "payday": {
+          "word": "payday"
+        },
+        "friday": {
+          "word": "friday"
+        },
+        "gone": {
+          "word": "gone"
+        },
+        "empty": {
+          "word": "empty"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "payday"
+        },
+        {
+          "kind": "fail",
+          "at": "gone"
+        },
+        {
+          "kind": "pop",
+          "at": "empty"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "red"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "happy"
+              },
+              {
+                "at": "gone",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "payday",
+            "prop": "cash",
+            "x": 0.68,
+            "size": 0.07,
+            "y": 0.14,
+            "hidden": true
+          },
+          {
+            "id": "jar",
+            "prop": "tipjar",
+            "x": 0.72,
+            "size": 0.1
+          }
+        ],
+        "actions": [
+          {
+            "at": "payday",
+            "do": "enter",
+            "target": "payday"
+          },
+          {
+            "at": "gone",
+            "do": "exit",
+            "target": "payday"
+          },
+          {
+            "at": "empty",
+            "do": "shake",
+            "target": "jar"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "payday",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "gone",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          },
+          {
+            "at": "empty",
+            "size": "close",
+            "on": "jar",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "id": "buffer",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Level two: {buffer_amount} put aside. Then the rain comes, and the buffer holds.",
+      "events": {
+        "aside": {
+          "word": "aside"
+        },
+        "rain": {
+          "word": "rain"
+        },
+        "buffer": {
+          "word": "buffer"
+        },
+        "holds": {
+          "word": "holds"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "aside"
+        },
+        {
+          "kind": "whoosh",
+          "at": "rain"
+        },
+        {
+          "kind": "pop",
+          "at": "holds"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "dark"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "rain",
+                "pose": "worried",
+                "expression": "worried"
+              },
+              {
+                "at": "holds",
+                "pose": "thumbsUp",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "rain",
+            "prop": "raincloud",
+            "x": 0.66,
+            "size": 0.12,
+            "y": 0.32,
+            "hidden": true
+          },
+          {
+            "id": "buffer",
+            "prop": "umbrella",
+            "x": 0.7,
+            "size": 0.13,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "rain",
+            "do": "enter",
+            "target": "rain"
+          },
+          {
+            "at": "buffer",
+            "do": "enter",
+            "target": "buffer"
+          },
+          {
+            "at": "holds",
+            "do": "glow",
+            "target": "buffer"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "rain",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "holds",
+            "size": "close",
+            "on": "buffer",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@buffer.invested",
+            "text": "{buffer_amount}",
+            "label": "Buffer",
+            "at": "aside"
+          }
+        }
+      }
+    },
+    {
+      "id": "nodebt",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Level three: no card debt. Minimums on {card_amount} at an assumed {card_rate_year}: {card_interest} in interest. Snip.",
+      "events": {
+        "card": {
+          "word": "card"
+        },
+        "minimums": {
+          "word": "minimums"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "nine": {
+          "word": "nine"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "snip": {
+          "word": "snip"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "card"
+        },
+        {
+          "kind": "fail",
+          "at": "interest"
+        },
+        {
+          "kind": "ding",
+          "at": "snip"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "purple"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "snip",
+                "pose": "thumbsUp",
+                "expression": "smirk"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "card",
+            "prop": "creditcard",
+            "x": 0.7,
+            "size": 0.1,
+            "y": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "snip",
+            "prop": "scissors",
+            "x": 0.86,
+            "size": 0.08,
+            "y": 0.22,
+            "hidden": true
+          },
+          {
+            "id": "interest",
+            "prop": "billpile",
+            "x": 0.86,
+            "size": 0.06,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "card",
+            "do": "enter",
+            "target": "card"
+          },
+          {
+            "at": "minimums",
+            "do": "shake",
+            "target": "card"
+          },
+          {
+            "at": "interest",
+            "do": "enter",
+            "target": "interest"
+          },
+          {
+            "at": "snip",
+            "do": "enter",
+            "target": "snip"
+          },
+          {
+            "at": "snip",
+            "do": "state",
+            "target": "card",
+            "state": "cut"
+          },
+          {
+            "at": "snip",
+            "do": "exit",
+            "target": "interest"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "minimums",
+            "size": "close",
+            "on": "card",
+            "move": true
+          },
+          {
+            "at": "assumed",
+            "size": "medium",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "nine",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "snip",
+            "size": "close",
+            "on": "card",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@card.interest",
+            "text": "{card_interest}",
+            "label": "Interest dodged",
+            "at": "interest"
+          }
+        }
+      }
+    },
+    {
+      "id": "invest",
+      "scene": "build",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Level four: {sip_amount} a month, invested at an assumed {sip_rate}. After {sip_years} years: {sip_final}.",
+      "events": {
+        "month": {
+          "word": "month"
+        },
+        "invested": {
+          "word": "invested"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "after": {
+          "word": "after"
+        },
+        "years": {
+          "word": "years"
+        },
+        "forty": {
+          "word": "forty"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "month"
+        },
+        {
+          "kind": "ding",
+          "at": "invested"
+        },
+        {
+          "kind": "riser",
+          "at": "after"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "green"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "after",
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "invested",
+            "prop": "sprout",
+            "x": 0.7,
+            "size": 0.16,
+            "k": 0.1
+          }
+        ],
+        "actions": [
+          {
+            "at": "invested",
+            "do": "fill",
+            "target": "invested",
+            "k": 1,
+            "dur": 4.0
+          },
+          {
+            "at": "assumed",
+            "do": "glow",
+            "target": "invested"
+          },
+          {
+            "at": "after",
+            "do": "shake",
+            "target": "invested"
+          },
+          {
+            "at": "forty",
+            "do": "glow",
+            "target": "invested"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "invested",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "after",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "years",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "forty",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@sip.final",
+            "text": "{sip_final}",
+            "label": "Invested",
+            "at": "after"
+          }
+        }
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "The twist? Level four doesn't need a big salary. It needs a head start.",
+      "events": {
+        "twist": {
+          "word": "twist"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "head": {
+          "word": "head"
+        },
+        "start": {
+          "word": "start"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "twist"
+        },
+        {
+          "kind": "fail",
+          "at": "salary"
+        },
+        {
+          "kind": "ding",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "word": "Head start",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "office",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "start",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "free",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Level five: {pot_amount} in the pot. At an assumed {pot_fee_pct} a year, it pays {pot_per_year_total}. Bills, paid.",
+      "events": {
+        "pot": {
+          "word": "pot"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "bills": {
+          "word": "bills"
+        },
+        "paid": {
+          "word": "paid"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "pot"
+        },
+        {
+          "kind": "ding",
+          "at": "pays"
+        },
+        {
+          "kind": "pop",
+          "at": "paid"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "desert",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "proud"
+              },
+              {
+                "at": "paid",
+                "pose": "thumbsUp",
+                "expression": "laugh"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "pot",
+            "prop": "cash",
+            "x": 0.66,
+            "size": 0.1,
+            "hidden": true
+          },
+          {
+            "id": "bills",
+            "prop": "billpile",
+            "x": 0.86,
+            "size": 0.1,
+            "hidden": true
+          },
+          {
+            "id": "chair",
+            "prop": "beachchair",
+            "x": 0.72,
+            "size": 0.12,
+            "hidden": true,
+            "label": "Paid"
+          }
+        ],
+        "actions": [
+          {
+            "at": "pot",
+            "do": "enter",
+            "target": "pot"
+          },
+          {
+            "at": "assumed",
+            "do": "glow",
+            "target": "pot"
+          },
+          {
+            "at": "bills",
+            "do": "enter",
+            "target": "bills"
+          },
+          {
+            "at": "paid",
+            "do": "enter",
+            "target": "chair"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "pays",
+            "size": "close",
+            "on": "pot",
+            "move": true
+          },
+          {
+            "at": "bills",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "counter": {
+            "value": "@pot.per_year_total",
+            "text": "{pot_per_year_total}",
+            "label": "Paid to him a year",
+            "at": "pays"
+          }
+        }
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Level five isn't luck. It's level four, left alone long enough.",
+      "events": {
+        "luck": {
+          "word": "luck"
+        },
+        "four": {
+          "word": "four"
+        },
+        "alone": {
+          "word": "alone"
+        },
+        "enough": {
+          "word": "enough"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "luck"
+        },
+        {
+          "kind": "riser",
+          "at": "alone"
+        },
+        {
+          "kind": "kaching",
+          "at": "enough"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "word": "Left alone",
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "build",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Me? Still on one. Payday's tomorrow. So, which one are you on?",
+      "events": {
+        "still": {
+          "word": "still"
+        },
+        "tomorrow": {
+          "word": "tomorrow"
+        },
+        "which": {
+          "word": "which"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "still"
+        },
+        {
+          "kind": "kaching",
+          "at": "tomorrow"
+        },
+        {
+          "kind": "ding",
+          "at": "which"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "gold"
+        },
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "worried"
+              },
+              {
+                "at": "which",
+                "pose": "point",
+                "expression": "happy"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "still",
+            "prop": "ladder",
+            "x": 0.72,
+            "size": 0.18,
+            "k": 0.2
+          },
+          {
+            "id": "tomorrow",
+            "prop": "tipjar",
+            "x": 0.86,
+            "size": 0.08,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "still",
+            "do": "shake",
+            "target": "still"
+          },
+          {
+            "at": "tomorrow",
+            "do": "enter",
+            "target": "tomorrow"
+          },
+          {
+            "at": "which",
+            "do": "glow",
+            "target": "still"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "tomorrow",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "af_bella"
+}
