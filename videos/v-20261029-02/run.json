@@ -1,0 +1,188 @@
+[
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-28T22:56:07.034040+00:00",
+    "finishedAt": "2026-10-28T22:56:07.034040+00:00",
+    "notes": [
+      "beat 'hook'.params.objects[0].amount: maths 'bld' has no value or series 'amount'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:58:08.670447+00:00",
+    "finishedAt": "2026-10-28T22:58:08.670447+00:00",
+    "notes": [
+      "31 figures computed from inputs; 19 cross-checked against closed-form formulas.",
+      "warning: beat 'grow' runs 7.0 s with 4.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:58:20.139908+00:00",
+    "finishedAt": "2026-10-28T22:58:20.139908+00:00",
+    "notes": [
+      "31 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T22:59:33.881322+00:00",
+    "finishedAt": "2026-10-28T22:59:33.881322+00:00",
+    "notes": [
+      "31 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:01:45.396280+00:00",
+    "finishedAt": "2026-10-28T23:01:45.396280+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:02:26.791217+00:00",
+    "finishedAt": "2026-10-28T23:02:26.791217+00:00",
+    "notes": [
+      "No sourced facts and no verify items (feed 2026-10-23-rich-love-debt, evergreen, expires 2027-01-21). Rates realistic for USD and every one is said as assumed: 8% car loan over 72 months, 15%/yr depreciation, 6% loan, 8%/yr building growth. Good-vs-bad debt framing holds: gain minus interest equals equity minus total repaid. Risk is flagged on screen ('If it stops growing, it's just debt') and in the description. No products, no imperatives, no adviser claims. Description ends with the disclaimer. Style notes: 8%/yr price growth is generous for property (closer to 3-5% long run), but the conclusion still holds at 4%. Rent income, upkeep, taxes and the down payment a commercial loan would need are left out on purpose for the illustration."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:01:52.074928+00:00",
+    "finishedAt": "2026-10-28T23:02:32.277237+00:00",
+    "notes": [
+      "2.9 s with nothing new on screen in beat 'net' (at most 2.5 s): add an action on the phrase being said there",
+      "beat 'bldloan': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "beat 'net': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:02:46.823056+00:00",
+    "finishedAt": "2026-10-28T23:02:46.823056+00:00",
+    "notes": [
+      "beat 'net'.params.camera[1].at contains a typed number; use a placeholder: 'num1'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:02:52.142117+00:00",
+    "finishedAt": "2026-10-28T23:02:52.142117+00:00",
+    "notes": [
+      "31 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:02:53.003586+00:00",
+    "finishedAt": "2026-10-28T23:03:15.076175+00:00",
+    "notes": [
+      "3.0 s with nothing new on screen in beat 'bldloan' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:03:24.609696+00:00",
+    "finishedAt": "2026-10-28T23:03:24.609696+00:00",
+    "notes": [
+      "31 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:03:25.493247+00:00",
+    "finishedAt": "2026-10-28T23:03:47.936458+00:00",
+    "notes": [
+      "46 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:04:02.284458+00:00",
+    "finishedAt": "2026-10-28T23:04:02.284458+00:00",
+    "notes": [
+      "31 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:04:03.221455+00:00",
+    "finishedAt": "2026-10-28T23:04:29.127731+00:00",
+    "notes": [
+      "46 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:06:09.812855+00:00",
+    "finishedAt": "2026-10-28T23:06:09.812855+00:00",
+    "notes": [
+      "[script] thumbnail (at hook): same cover as the previous video v-20261029-01 - the same split Rohan-apartment (calendar, couch) / Sharma-penthouse (lamp, night skyline) set with both characters cropped into the bottom corners, only the words and props changed; pick another thumbnail beat/layout (e.g. Sharma big beside the shop building, or the 35s scales) so it doesn't read as same picture, new words",
+      "[script] 0.0s hook: the cast is small and cut off at the bottom corners (Rohan's body clipped bottom-left, Sharma only head and shoulders at the bottom-right edge) in a mostly empty split frame; frame the hook with the two characters bigger and fully in shot (another shot size/spot)",
+      "[scene] 30.0s turn (custom Turn component, beat 'turn'): the 'SINKS' label is tiny next to its neighbours and pink on the red/orange sky, hard to read; draw it bigger with a contrasting fill or plate",
+      "[script] 35.0s beat 'net': the loan anchor (item 'loan', y 0.3) hangs through the 'BUILDING WORTH' counter label, and the shop building sits on top of the scales' right pan; place the anchor lower/away from the HUD and the building clear of the scales"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:07:02.138805+00:00",
+    "finishedAt": "2026-10-28T23:07:02.138805+00:00",
+    "notes": [
+      "31 figures computed from inputs; 19 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:07:02.922642+00:00",
+    "finishedAt": "2026-10-28T23:07:28.274174+00:00",
+    "notes": [
+      "46 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:08:10.181689+00:00",
+    "finishedAt": "2026-10-28T23:08:10.181689+00:00",
+    "notes": [
+      "[script] 0.0s hook (beat 'hook'): now that Rohan is bigger, his head sits in the caption band and the first caption 'ROHAN'S SCARED OF' covers the right half of his face (the word 'SCARED' runs over his eyes); move Rohan's spot/camera (e.g. a wider shot or actors lower/further left) so his face stays clear of the captions. Other fixes confirmed: new grow-beat cover, Turn labels on plates, net anchor and building clear."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-28T23:09:03.816555+00:00",
+    "finishedAt": "2026-10-28T23:09:29.594961+00:00",
+    "notes": [
+      "46 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-28T23:09:55.429617+00:00",
+    "finishedAt": "2026-10-28T23:09:55.429617+00:00",
+    "notes": [
+      "[script] 0.0s hook (beat 'hook'): faces are now clear of the caption, but raising the actors to 63% height left them small and off the floor. Rohan stands on top of the couch cushion, Sharma floats in mid-air in front of the night-skyline window, and the bottom ~40% of the first frame is empty floor. Keep both actors' feet on the floor line and fix the caption overlap with framing instead: a medium/close camera on the pair, or actors at the outer edges with heads outside the caption's centre span. Everything else checked OK (cover, Turn plates, net layout, disclaimer, numbers, audio -1.0/-16.7 dB, 46 s)."
+    ]
+  }
+]

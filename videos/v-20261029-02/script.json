@@ -1,0 +1,1295 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 38214,
+  "story": "secret_of_rich",
+  "currency": "USD",
+  "style": {
+    "palette": "night",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 88
+  },
+  "structure": {
+    "levels": [
+      "Car loan",
+      "Car later",
+      "Rich loan",
+      "Rich later"
+    ]
+  },
+  "maths": [
+    {
+      "name": "car",
+      "kind": "emi",
+      "amount": 40000,
+      "rate_pct": 8,
+      "years": 6
+    },
+    {
+      "name": "carval",
+      "kind": "lumpsum",
+      "amount": 40000,
+      "rate_pct": -15,
+      "years": 6
+    },
+    {
+      "name": "bld",
+      "kind": "emi",
+      "amount": 100000,
+      "rate_pct": 6,
+      "years": 10
+    },
+    {
+      "name": "grow",
+      "kind": "lumpsum",
+      "amount": 100000,
+      "rate_pct": 8,
+      "years": 10
+    },
+    {
+      "name": "net",
+      "kind": "compare",
+      "a": "grow.gains",
+      "b": "bld.interest"
+    }
+  ],
+  "thumbnail": {
+    "who": "sharma",
+    "layout": "scene",
+    "at": "grow",
+    "sec": 4.5,
+    "angle": "secret",
+    "words": "Rich people *love* debt",
+    "figure": "{net_diff}"
+  },
+  "cta": "Good debt or bad debt: which one do you have? Comment",
+  "hook_style": "secret",
+  "title": "Rohan's car loan vs Sharma's building loan 🏢",
+  "description": "Why do the rich love debt while everyone else is scared of it?\nTwo loans: a $40,000 car at an assumed 8% that loses value, and $100,000 for something that grows at an assumed 8% a year while the loan costs an assumed 6%. Every figure computed. Returns and rates are assumptions, not promises; borrowing to buy anything can lose money. Speak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "feed_id": "2026-10-23-rich-love-debt",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "sharma",
+      "say": "Rohan's scared of debt. I borrow on purpose.",
+      "events": {
+        "scared": {
+          "word": "scared"
+        },
+        "borrow": {
+          "word": "borrow"
+        },
+        "purpose": {
+          "word": "purpose"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "scared"
+        },
+        {
+          "kind": "boom",
+          "at": "borrow"
+        },
+        {
+          "kind": "ding",
+          "at": "purpose"
+        }
+      ],
+      "params": {
+        "poor": "{car_amount}",
+        "rich": "{bld_amount}",
+        "hud": {
+          "hide": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "loan",
+            "spot": "center",
+            "amount": "@grow.invested",
+            "text": "{bld_amount}",
+            "label": "Loan",
+            "at": "borrow",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "borrow",
+            "size": "close",
+            "on": "sharma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "priya",
+      "transition": "match",
+      "say": "Two loans, four checks. The last one is the rule the rich live by.",
+      "events": {
+        "loans": {
+          "word": "loans"
+        },
+        "checks": {
+          "word": "checks"
+        },
+        "last": {
+          "word": "last"
+        },
+        "rule": {
+          "word": "rule"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "loans"
+        },
+        {
+          "kind": "tick",
+          "at": "checks"
+        },
+        {
+          "kind": "riser",
+          "at": "rule"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "priya",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "rule",
+                "pose": "pointUp",
+                "expression": "smirk"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "loans",
+            "prop": "loanpaper",
+            "x": 0.66,
+            "size": 0.1,
+            "y": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "rule",
+            "prop": "scales",
+            "x": 0.72,
+            "size": 0.14,
+            "hidden": true,
+            "k": 0.5
+          }
+        ],
+        "actions": [
+          {
+            "at": "loans",
+            "do": "enter",
+            "target": "loans"
+          },
+          {
+            "at": "loans",
+            "do": "multiply",
+            "target": "loans",
+            "n": 2,
+            "cols": 2
+          },
+          {
+            "at": "checks",
+            "do": "shake",
+            "target": "loans"
+          },
+          {
+            "at": "rule",
+            "do": "enter",
+            "target": "rule"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "checks",
+            "size": "close",
+            "on": "loans",
+            "move": true
+          },
+          {
+            "at": "rule",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 0
+        }
+      }
+    },
+    {
+      "id": "carloan",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "My loan: {car_amount} for a car, at an assumed {car_rate}. Interest alone: {car_interest}.",
+      "events": {
+        "loan": {
+          "word": "loan"
+        },
+        "car": {
+          "word": "car"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "interest": {
+          "word": "interest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "loan"
+        },
+        {
+          "kind": "kaching",
+          "at": "car"
+        },
+        {
+          "kind": "fail",
+          "at": "interest"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              },
+              {
+                "at": "interest",
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "loan",
+            "prop": "loanpaper",
+            "x": 0.66,
+            "size": 0.1,
+            "y": 0.16,
+            "hidden": true
+          },
+          {
+            "id": "car",
+            "prop": "hatchback",
+            "x": 0.66,
+            "size": 0.1,
+            "hidden": true
+          },
+          {
+            "id": "interest",
+            "prop": "anchor",
+            "x": 0.82,
+            "size": 0.08,
+            "y": 0.12,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "loan",
+            "do": "enter",
+            "target": "loan"
+          },
+          {
+            "at": "car",
+            "do": "enter",
+            "target": "car"
+          },
+          {
+            "at": "assumed",
+            "do": "state",
+            "target": "loan",
+            "state": "signed"
+          },
+          {
+            "at": "interest",
+            "do": "enter",
+            "target": "interest"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "car",
+            "size": "close",
+            "on": "car",
+            "move": true
+          },
+          {
+            "at": "interest",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "counter": {
+            "value": "@car.interest",
+            "text": "{car_interest}",
+            "label": "Rohan's interest",
+            "at": "interest"
+          }
+        }
+      }
+    },
+    {
+      "id": "carvalue",
+      "scene": "build",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "After {carval_years} years? Dents, rust, and it's worth {carval_final}.",
+      "events": {
+        "after": {
+          "word": "after"
+        },
+        "dents": {
+          "word": "dents"
+        },
+        "rust": {
+          "word": "rust"
+        },
+        "worth": {
+          "word": "worth"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "after"
+        },
+        {
+          "kind": "fail",
+          "at": "rust"
+        },
+        {
+          "kind": "boom",
+          "at": "worth"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "dark"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "sad"
+              },
+              {
+                "at": "worth",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "dents",
+            "prop": "hatchback",
+            "x": 0.68,
+            "size": 0.11
+          },
+          {
+            "id": "worth",
+            "prop": "valuearrow",
+            "x": 0.84,
+            "size": 0.08,
+            "y": 0.16,
+            "hidden": true,
+            "state": "down"
+          }
+        ],
+        "actions": [
+          {
+            "at": "dents",
+            "do": "shake",
+            "target": "dents"
+          },
+          {
+            "at": "rust",
+            "do": "state",
+            "target": "dents",
+            "state": "old"
+          },
+          {
+            "at": "worth",
+            "do": "enter",
+            "target": "worth"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "dents",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "worth",
+            "size": "medium",
+            "on": "dents",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@carval.final",
+            "text": "{carval_final}",
+            "label": "Car worth now",
+            "at": "worth"
+          }
+        }
+      }
+    },
+    {
+      "id": "bldloan",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "I borrowed {bld_amount} at an assumed {bld_rate}, for a shop building. Interest: {bld_interest}.",
+      "events": {
+        "borrowed": {
+          "word": "borrowed"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "shop": {
+          "word": "shop"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "tail": {
+          "word": 19
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "borrowed"
+        },
+        {
+          "kind": "boom",
+          "at": "shop"
+        },
+        {
+          "kind": "tick",
+          "at": "interest"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "shop",
+                "pose": "point",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "borrowed",
+            "prop": "loanpaper",
+            "x": 0.64,
+            "size": 0.1,
+            "y": 0.16,
+            "hidden": true
+          },
+          {
+            "id": "shop",
+            "prop": "shopbuilding",
+            "x": 0.7,
+            "size": 0.14,
+            "hidden": true
+          },
+          {
+            "id": "interest",
+            "prop": "anchor",
+            "x": 0.84,
+            "size": 0.07,
+            "y": 0.14,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "borrowed",
+            "do": "enter",
+            "target": "borrowed"
+          },
+          {
+            "at": "borrowed",
+            "do": "state",
+            "target": "borrowed",
+            "state": "signed"
+          },
+          {
+            "at": "shop",
+            "do": "enter",
+            "target": "shop"
+          },
+          {
+            "at": "interest",
+            "do": "enter",
+            "target": "interest"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "assumed",
+            "size": "close",
+            "on": "borrowed",
+            "move": true
+          },
+          {
+            "at": "shop",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "interest",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "tail",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@bld.interest",
+            "text": "{bld_interest}",
+            "label": "Sharma's interest",
+            "at": "interest"
+          }
+        }
+      }
+    },
+    {
+      "id": "grow",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Tenants pay rent. The value climbs. At an assumed {grow_rate}, it's {grow_final} in {grow_years} years.",
+      "events": {
+        "tenants": {
+          "word": "tenants"
+        },
+        "rent": {
+          "word": "rent"
+        },
+        "value": {
+          "word": "value"
+        },
+        "climbs": {
+          "word": "climbs"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "years": {
+          "word": "years"
+        },
+        "num": {
+          "word": 15
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rent"
+        },
+        {
+          "kind": "ding",
+          "at": "value"
+        },
+        {
+          "kind": "riser",
+          "at": "assumed"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "green"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "assumed",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "tenants",
+            "prop": "shopbuilding",
+            "x": 0.64,
+            "size": 0.15
+          },
+          {
+            "id": "rent",
+            "prop": "rentmail",
+            "x": 0.84,
+            "size": 0.09,
+            "hidden": true,
+            "label": "Rent"
+          },
+          {
+            "id": "value",
+            "prop": "valuearrow",
+            "x": 0.62,
+            "size": 0.08,
+            "y": 0.22,
+            "hidden": true,
+            "state": "up"
+          },
+          {
+            "id": "climbs",
+            "prop": "crane",
+            "x": 0.86,
+            "size": 0.17,
+            "hidden": true,
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "at": "tenants",
+            "do": "glow",
+            "target": "tenants"
+          },
+          {
+            "at": "rent",
+            "do": "enter",
+            "target": "rent"
+          },
+          {
+            "at": "value",
+            "do": "enter",
+            "target": "value"
+          },
+          {
+            "at": "climbs",
+            "do": "enter",
+            "target": "climbs"
+          },
+          {
+            "at": "assumed",
+            "do": "fill",
+            "target": "climbs",
+            "k": 1,
+            "dur": 1.5
+          },
+          {
+            "at": "assumed",
+            "do": "exit",
+            "target": "rent"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "rent",
+            "size": "close",
+            "on": "rent",
+            "move": true
+          },
+          {
+            "at": "value",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "assumed",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          },
+          {
+            "at": "num",
+            "size": "close",
+            "on": "tenants",
+            "move": true
+          },
+          {
+            "at": "years",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@grow.final",
+            "text": "{grow_final}",
+            "label": "Building worth",
+            "at": "assumed"
+          }
+        }
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "priya",
+      "transition": "whip",
+      "say": "Both are debt. One sinks you. One lifts you.",
+      "events": {
+        "both": {
+          "word": "both"
+        },
+        "debt": {
+          "word": "debt"
+        },
+        "sinks": {
+          "word": "sinks"
+        },
+        "lifts": {
+          "word": "lifts"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "both"
+        },
+        {
+          "kind": "fail",
+          "at": "sinks"
+        },
+        {
+          "kind": "riser",
+          "at": "lifts"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "bad": "Sinks",
+        "good": "Lifts",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "priya"
+          },
+          {
+            "at": "lifts",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "net",
+      "scene": "build",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "My loan cost {bld_interest}. The building gained {grow_gains}. I keep the gap.",
+      "events": {
+        "loan": {
+          "word": "loan"
+        },
+        "building": {
+          "word": "building"
+        },
+        "gained": {
+          "word": "gained"
+        },
+        "keep": {
+          "word": "keep"
+        },
+        "gap": {
+          "word": "gap"
+        },
+        "cost": {
+          "word": 6
+        },
+        "big": {
+          "word": 17
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "loan"
+        },
+        {
+          "kind": "kaching",
+          "at": "gained"
+        },
+        {
+          "kind": "ding",
+          "at": "gap"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "bank",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": 0.4,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "gap",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "loan",
+            "prop": "anchor",
+            "x": 0.56,
+            "size": 0.06,
+            "hidden": true
+          },
+          {
+            "id": "building",
+            "prop": "shopbuilding",
+            "x": 0.9,
+            "size": 0.09,
+            "hidden": true
+          },
+          {
+            "id": "gains",
+            "prop": "scales",
+            "x": 0.7,
+            "size": 0.13,
+            "k": 0.5,
+            "label": "Gap"
+          }
+        ],
+        "actions": [
+          {
+            "at": "loan",
+            "do": "enter",
+            "target": "loan"
+          },
+          {
+            "at": "building",
+            "do": "enter",
+            "target": "building"
+          },
+          {
+            "at": "gained",
+            "do": "fill",
+            "target": "gains",
+            "k": 1,
+            "dur": 0.8
+          },
+          {
+            "at": "gap",
+            "do": "glow",
+            "target": "gains"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "cost",
+            "size": "close",
+            "on": "loan",
+            "move": true
+          },
+          {
+            "at": "building",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "gained",
+            "size": "close",
+            "on": "gains",
+            "move": true
+          },
+          {
+            "at": "big",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "keep",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@net.diff",
+            "text": "{net_diff}",
+            "label": "Sharma keeps",
+            "at": "keep"
+          }
+        }
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Poor people borrow for things that shrink. Rich people borrow for things that grow. If it stops growing, it's just debt.",
+      "events": {
+        "poor": {
+          "word": "poor"
+        },
+        "shrink": {
+          "word": "shrink"
+        },
+        "rich": {
+          "word": "rich"
+        },
+        "grow": {
+          "word": "grow"
+        },
+        "stops": {
+          "word": "stops"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "fail",
+          "at": "shrink"
+        },
+        {
+          "kind": "ding",
+          "at": "grow"
+        },
+        {
+          "kind": "boom",
+          "at": "stops"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "poor": "Shrinks",
+        "rich": "Grows",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "build",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Me? Still scared of debt. Well, my kind.",
+      "events": {
+        "me": {
+          "word": "me"
+        },
+        "scared": {
+          "word": "scared"
+        },
+        "debt": {
+          "word": "debt"
+        },
+        "kind": {
+          "word": "kind"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "me"
+        },
+        {
+          "kind": "fail",
+          "at": "debt"
+        },
+        {
+          "kind": "tick",
+          "at": "kind"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "red"
+        },
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "worried"
+              },
+              {
+                "at": "kind",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ],
+            "scale": 0.78
+          }
+        ],
+        "items": [
+          {
+            "id": "debt",
+            "prop": "anchor",
+            "x": 0.68,
+            "size": 0.09,
+            "y": 0.14,
+            "hidden": true
+          },
+          {
+            "id": "kind",
+            "prop": "hatchback",
+            "x": 0.7,
+            "size": 0.09,
+            "hidden": true,
+            "state": "old"
+          }
+        ],
+        "actions": [
+          {
+            "at": "debt",
+            "do": "enter",
+            "target": "debt"
+          },
+          {
+            "at": "kind",
+            "do": "enter",
+            "target": "kind"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "debt",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "af_bella"
+}

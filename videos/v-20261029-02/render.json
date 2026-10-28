@@ -1,0 +1,123 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 38214,
+  "duration_sec": 46,
+  "tempo": 1.4,
+  "style": {
+    "palette": "night",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 88
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Rohan's scared of debt. I borrow on purpose.",
+        "start": 0.27,
+        "seconds": 1.78,
+        "window": 2.33,
+        "fill": 0.764
+      },
+      {
+        "scene": "promise",
+        "text": "Two loans, four checks. The last one is the rule the rich live by.",
+        "start": 2.6,
+        "seconds": 2.93,
+        "window": 3.5,
+        "fill": 0.837
+      },
+      {
+        "scene": "carloan",
+        "text": "My loan: $40,000 for a car, at an assumed 8%. Interest alone: $10,496.",
+        "start": 6.1,
+        "seconds": 5.76,
+        "window": 5.93,
+        "fill": 0.971
+      },
+      {
+        "scene": "carvalue",
+        "text": "After 6 years? Dents, rust, and it's worth $15,086.",
+        "start": 12.03,
+        "seconds": 3.34,
+        "window": 3.7,
+        "fill": 0.903
+      },
+      {
+        "scene": "bldloan",
+        "text": "I borrowed $100,000 at an assumed 6%, for a shop building. Interest: $33,225.",
+        "start": 15.73,
+        "seconds": 6.14,
+        "window": 6.67,
+        "fill": 0.921
+      },
+      {
+        "scene": "grow",
+        "text": "Tenants pay rent. The value climbs. At an assumed 8%, it's $215,892 in 10 years.",
+        "start": 22.4,
+        "seconds": 5.92,
+        "window": 6.47,
+        "fill": 0.915
+      },
+      {
+        "scene": "turn",
+        "text": "Both are debt. One sinks you. One lifts you.",
+        "start": 28.87,
+        "seconds": 2.04,
+        "window": 2.6,
+        "fill": 0.785
+      },
+      {
+        "scene": "net",
+        "text": "My loan cost $33,225. The building gained $115,892. I keep the gap.",
+        "start": 31.47,
+        "seconds": 6.65,
+        "window": 7.2,
+        "fill": 0.924
+      },
+      {
+        "scene": "payoff",
+        "text": "Poor people borrow for things that shrink. Rich people borrow for things that grow. If it stops growing, it's just debt.",
+        "start": 38.67,
+        "seconds": 4.67,
+        "window": 5.17,
+        "fill": 0.903
+      },
+      {
+        "scene": "loop",
+        "text": "Me? Still scared of debt. Well, my kind.",
+        "start": 43.83,
+        "seconds": 1.55,
+        "window": 2.0,
+        "fill": 0.775
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off",
+    "loop-picture-matches-hook": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.7
+  },
+  "craft_problems": []
+}
