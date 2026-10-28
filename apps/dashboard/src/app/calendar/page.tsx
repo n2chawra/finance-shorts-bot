@@ -4,7 +4,7 @@
 import { CalendarDays, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 
-import { Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, StatusBadge, Thumb, VideoLink } from "@/components/ui";
+import { Badge, Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, StatusBadge, Thumb, VideoLink } from "@/components/ui";
 import { fmtCompact, fmtDateTime, istDay } from "@/lib/format";
 import { useOverview, useQueue, useSettings, useVideos } from "@/lib/queries";
 import { postingPlan } from "@/lib/posting-plan";
@@ -12,6 +12,7 @@ import { describeTimes } from "@/lib/slots";
 import type { Video } from "@/lib/schemas";
 
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const LONG_MARK = "w-3 rounded-sm";   // long videos get a dash on phones (no room for "Long"), so they stand apart without colour
 const LONG_DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];   // settings count days from Sunday = 0
 type Kind = "published" | "scheduled" | "planned";
 type Entry = { video: Video; kind: Kind; at: number };
@@ -95,15 +96,15 @@ export default function CalendarPage() {
               const on = selected === k;
               return (
                 <button key={k} type="button" onClick={() => setSelected(k)} aria-pressed={on}
-                  aria-label={`${d} ${monthName}${list.length ? `, ${list.map((e) => `${KIND[e.kind].label}: ${e.video.title}`).join("; ")}` : ", no upload"}`}
+                  aria-label={`${d} ${monthName}${list.length ? `, ${list.map((e) => `${KIND[e.kind].label}${e.video.format === "long" ? " long video" : ""}: ${e.video.title}`).join("; ")}` : ", no upload"}`}
                   className={`relative flex min-h-16 flex-col gap-1 p-1.5 text-left text-xs transition-colors md:min-h-[92px] md:p-2 ${edge} ${on ? "bg-brand-soft" : "hover:bg-wash"}`}>
                   <span className={`grid size-6 place-items-center rounded-full tabular-nums ${k === today ? "bg-primary font-semibold text-primary-ink" : on ? "font-medium text-ink" : "text-ink2"}`}>{d}</span>
                   <span className="flex flex-col gap-1">
                     {list.map((e) => (
-                      <span key={e.video.id} className="flex min-w-0 items-center gap-1.5">
-                        <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden shrink-0 rounded-[3px] border border-ring object-cover md:block ${e.video.format === "long" ? "aspect-video w-7" : "aspect-[9/16] w-4"} ${e.kind === "planned" ? "opacity-60" : ""}`} />
-                        <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${KIND[e.kind].dot}`} />
-                        <span className="hidden truncate text-[11px] text-ink2 md:inline">{e.kind === "published" ? `${fmtCompact(e.video.totals?.views ?? 0)} views` : new Date(e.at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false })}</span>
+                      <span key={e.video.id} className="flex min-w-0 items-center gap-1.5 md:gap-1">
+                        <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden shrink-0 rounded-[3px] border border-ring object-cover md:block ${e.video.format === "long" ? "aspect-video w-6" : "aspect-[9/16] w-4"} ${e.kind === "planned" ? "opacity-60" : ""}`} />
+                        <span aria-hidden className={`h-1.5 shrink-0 ${e.video.format === "long" ? `${LONG_MARK} md:w-1.5 md:rounded-full` : "w-1.5 rounded-full"} ${KIND[e.kind].dot}`} />
+                        <span className="hidden truncate text-[11px] text-ink2 md:inline">{e.kind === "published" ? `${fmtCompact(e.video.totals?.views ?? 0)} views` : new Date(e.at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false })}{e.video.format === "long" && <span className="ml-1 font-semibold text-brand-text">Long</span>}</span>
                       </span>
                     ))}
                   </span>
@@ -124,6 +125,7 @@ export default function CalendarPage() {
                       <VideoLink id={e.video.id} className="line-clamp-2 font-medium">{e.video.title}</VideoLink>
                       <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-muted">
                         <StatusBadge status={e.video.status} />
+                        {e.video.format === "long" && <Badge tone="brand">Long</Badge>}
                         <span>{fmtDateTime(new Date(e.at).toISOString())} IST{e.kind === "planned" ? " · if the queue order holds" : ""}</span>
                       </div>
                       {e.video.totals && <p className="mt-1 text-xs text-ink2">{fmtCompact(e.video.totals.views)} views · +{e.video.totals.subsGained} subscribers</p>}
@@ -136,6 +138,7 @@ export default function CalendarPage() {
           <Card title="Legend" description={`${monthCount} day${monthCount === 1 ? "" : "s"} with an upload this month`}>
             <ul className="flex flex-col gap-2 text-[13px] text-ink2">
               {(Object.keys(KIND) as Kind[]).map((k) => <li key={k} className="flex items-center gap-2"><span aria-hidden className={`size-2 rounded-full ${KIND[k].dot}`} />{KIND[k].label}</li>)}
+              <li className="flex items-center gap-2"><span aria-hidden className={`h-2 ${LONG_MARK} bg-muted`} />Long video</li>
             </ul>
           </Card>
         </div>

@@ -312,3 +312,20 @@ test("calendar draws long-video thumbnails landscape", async ({ page }) => {
   const ratios = await thumbs.evaluateAll((imgs) => imgs.map((i) => i.getBoundingClientRect()).map((r) => r.width / r.height));
   expect(ratios.some((r) => r > 1.5), `a landscape thumbnail among ${ratios.map((r) => r.toFixed(2))}`).toBe(true);
 });
+
+test("calendar marks long videos apart from Shorts", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  await page.waitForLoadState("networkidle");
+  // a long upload looked like any Short: same dot, same row, nothing that said "Long"
+  let day = page.getByRole("button", { name: /long video/ }).first();
+  if (!(await day.count())) {
+    await page.getByRole("button", { name: "Next month" }).click();
+    day = page.getByRole("button", { name: /long video/ }).first();
+  }
+  await expect(day).toBeVisible();
+  await day.click();
+  await expect(page.locator("main li").getByText("Long", { exact: true })).toBeVisible();
+  await expect(page.getByText("Long video", { exact: true })).toBeVisible();   // legend
+});
