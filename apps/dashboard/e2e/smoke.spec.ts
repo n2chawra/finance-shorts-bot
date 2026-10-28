@@ -295,3 +295,20 @@ test("calendar heading names the long-video days too", async ({ page }) => {
   // the line under the heading spoke only of the daily Shorts, though the grid shows long videos at 20:07
   await expect(page.getByText(/long videos Tue\/Thu\/Sat at 20:07 IST/)).toBeVisible();
 });
+
+test("calendar draws long-video thumbnails landscape", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  await page.waitForLoadState("networkidle");
+  // long videos are 1920×1080, but every thumbnail was drawn 9:16, squashing them into a portrait sliver
+  let day = page.locator("button[aria-pressed]", { hasText: "20:07" }).first();
+  if (!(await day.count())) {
+    await page.getByRole("button", { name: "Next month" }).click();
+    day = page.locator("button[aria-pressed]", { hasText: "20:07" }).first();
+  }
+  await day.click();
+  const thumbs = page.locator("main li img");
+  const ratios = await thumbs.evaluateAll((imgs) => imgs.map((i) => i.getBoundingClientRect()).map((r) => r.width / r.height));
+  expect(ratios.some((r) => r > 1.5), `a landscape thumbnail among ${ratios.map((r) => r.toFixed(2))}`).toBe(true);
+});

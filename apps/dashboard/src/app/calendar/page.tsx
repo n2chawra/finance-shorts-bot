@@ -101,7 +101,7 @@ export default function CalendarPage() {
                   <span className="flex flex-col gap-1">
                     {list.map((e) => (
                       <span key={e.video.id} className="flex min-w-0 items-center gap-1.5">
-                        <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden aspect-[9/16] w-4 shrink-0 rounded-[3px] border border-ring object-cover md:block ${e.kind === "planned" ? "opacity-60" : ""}`} />
+                        <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden shrink-0 rounded-[3px] border border-ring object-cover md:block ${e.video.format === "long" ? "aspect-video w-7" : "aspect-[9/16] w-4"} ${e.kind === "planned" ? "opacity-60" : ""}`} />
                         <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${KIND[e.kind].dot}`} />
                         <span className="hidden truncate text-[11px] text-ink2 md:inline">{e.kind === "published" ? `${fmtCompact(e.video.totals?.views ?? 0)} views` : new Date(e.at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false })}</span>
                       </span>
@@ -119,7 +119,7 @@ export default function CalendarPage() {
               <ul className="flex flex-col divide-y divide-line">
                 {picked.map((e) => (
                   <li key={e.video.id} className="flex gap-3 py-3 first:pt-0 last:pb-0">
-                    <Thumb src={e.video.thumbnailUrl} alt="" className="w-12" />
+                    <Thumb src={e.video.thumbnailUrl} alt="" className={e.video.format === "long" ? "w-20 self-start aspect-video" : "w-12"} />
                     <div className="min-w-0 text-[13px]">
                       <VideoLink id={e.video.id} className="line-clamp-2 font-medium">{e.video.title}</VideoLink>
                       <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-muted">
