@@ -1,7 +1,7 @@
 """The newer maths kinds (step-up SIP, loan prepayment, inflation, income tax, fees, comparisons): what a writer can count on them to show."""
 import pytest
 
-from renderer.engine.formatting import times
+from renderer.engine.formatting import Money, times
 from renderer.models import maths
 
 
@@ -106,3 +106,28 @@ def test_compare_rejects_a_missing_or_reversed_result(a: str, b: str, match: str
     with pytest.raises(ValueError, match=match):
         maths.compute([{"name": "early", "kind": "lumpsum", "amount": 1000, "rate_pct": 10, "years": 2},
                        {"name": "gap", "kind": "compare", "a": a, "b": b}])
+
+
+def test_share_splits_a_total_and_counts_the_years_to_reach_it() -> None:
+    fm = Money("USD")
+    r = maths.compute([{"name": "s", "kind": "share", "total": 200e9, "parts": 8e9, "per_year": 100000}], fm)["s"]
+    f, v = r["figures"], r["values"]
+    assert (f["total"], f["total_long"], f["parts"], f["per_part"]) == ("$200.00B", "$200 billion", "8B", "$25")
+    assert (f["per_year"], f["years"]) == ("$100,000", "2M") and v["years"] == pytest.approx(2e6)
+    r = maths.compute([{"name": "s", "kind": "share", "total": 1e9, "parts": 4, "per_year": 100000}], fm)["s"]
+    assert (r["figures"]["per_part"], r["figures"]["years"]) == ("$250.0M", "10,000")
+    assert "years" not in maths.compute([{"name": "s", "kind": "share", "total": 1e6, "parts": 4}], fm)["s"]["figures"]
+
+
+@pytest.mark.parametrize("over, match", [({"parts": 0}, "parts at least 1"), ({"parts": 2e9}, "less than one unit"),
+                                         ({"per_year": 2e9}, "at most total")])
+def test_share_rejects_a_split_it_cannot_show(over: dict, match: str) -> None:
+    with pytest.raises(ValueError, match=match):
+        maths.compute([{"name": "s", "kind": "share", "total": 1e9, "parts": 8, **over}], Money("USD"))
+
+
+def test_count_reads_as_a_number_of_things() -> None:
+    from renderer.engine import voice
+    from renderer.engine.formatting import count
+    assert (count(8e9), count(340e6), count(10000), count(250000, indian=True)) == ("8B", "340M", "10,000", "2,50,000")
+    assert (voice.spoken("8B", "USD"), voice.spoken("10,000", "USD")) == ("eight billion", "ten thousand")

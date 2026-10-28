@@ -117,6 +117,16 @@ def axis_label_western(v: float) -> str:
     return f"{v:g}"
 
 
+def count(n: float, indian: bool = False) -> str:
+    """A number of things or years, not money: '8B', '340M', '10,000' ('10,000' or '1,00,000' grouped
+    the script's way below a million). The voice reads '8B' as 'eight billion' in any currency."""
+    if n >= 1e9 or round(n/1e6, 1) >= 1000:
+        return f"{round(n/1e9, 2):g}B"
+    if n >= 1e6 or round(n) >= 1_000_000:
+        return f"{round(n/1e6, 1):g}M"
+    return (group_indian if indian else group_western)(int(round(n)))
+
+
 @dataclass(frozen=True)
 class Money:
     """The formatters for one currency: full amounts, short ones, spelled-out ones and chart ticks."""

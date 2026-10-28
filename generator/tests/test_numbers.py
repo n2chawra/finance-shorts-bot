@@ -209,3 +209,31 @@ def test_a_wrong_gap_fails_the_number_check(monkeypatch: pytest.MonkeyPatch) -> 
     monkeypatch.setattr(maths, "compare", lambda m, fm, results: {**real(m, fm, results), "figures": {**real(m, fm, results)["figures"], "diff": "₹1"}})
     passed, notes = number_check(script)
     assert not passed and any("gap_diff" in n for n in notes)
+
+
+@pytest.mark.parametrize("currency, total, parts, per_year", [("USD", 200e9, 8e9, 100000), ("USD", 1e9, 250, None), ("INR", 1e7, 40, 250000)])
+def test_share_closed_form_matches_the_story_maths(currency: str, total: float, parts: float, per_year: float | None) -> None:
+    m = {"name": "sip", "kind": "share", "total": total, "parts": parts} | ({"per_year": per_year} if per_year else {})
+    script = sip_story(currency=currency, maths=[m])
+    script["beats"][0]["say"] = "Split {sip_total} among {sip_parts}." + (" Saving {sip_per_year} a year takes {sip_years} years." if per_year else "")
+    script["beats"][0]["params"]["lines"][0]["text"] = "{sip_per_part}"
+    passed, notes = number_check(script)
+    assert passed, notes
+
+
+def test_a_share_can_be_compared_and_a_wrong_split_fails(monkeypatch: pytest.MonkeyPatch) -> None:
+    from renderer.models import maths
+    script = sip_story(currency="USD", maths=[{"name": "sip", "kind": "sip", "monthly": 500, "rate_pct": 7, "years": 40},
+                                              {"name": "each", "kind": "share", "total": 200e9, "parts": 8e9},
+                                              {"name": "gap", "kind": "compare", "a": "sip.final", "b": "each.per_part"}])
+    script["beats"][0]["params"]["lines"][0]["text"] = "{gap_ratio}"
+    passed, notes = number_check(script)
+    assert passed, notes
+    real = maths.share
+    monkeypatch.setattr(maths, "share", lambda m, fm: {**real(m, fm), "figures": {**real(m, fm)["figures"], "per_part": "$26"}})
+    maths.KINDS["share"] = maths.share
+    try:
+        passed, notes = number_check(script)
+    finally:
+        maths.KINDS["share"] = real
+    assert not passed and any("each_per_part" in n for n in notes)
