@@ -278,7 +278,7 @@
       "priority": "high",
       "found": "2026-10-20",
       "status": "open",
-      "note": "Scout 2026-10-27: raised to high. Every retention idea in this backlog is unmeasurable without it: metrics/videos.json has only avgViewPct and a null hookHold for long videos. The YouTube Analytics API reports audienceWatchRatio by the elapsedVideoTimeRatio dimension for one video at a time; export it per long video (100 points) and the hold at each chapter start from timeline.json."
+      "note": "Scout 2026-10-27: raised to high. Every retention idea in this backlog is unmeasurable without it: metrics/videos.json has only avgViewPct and a null hookHold for long videos. The YouTube Analytics API reports audienceWatchRatio by the elapsedVideoTimeRatio dimension for one video at a time; export it per long video (100 points) and the hold at each chapter start from timeline.json. Improver 2026-10-28: the work is in workers/stats.ts and metrics/videos.json, both outside the improver's lane (scripts/guard.py forbids workers/* and metrics/*); it is the auditor's (workers/ is unlocked for it)."
     },
     {
       "id": "2026-10-20-spike-not-confusion",

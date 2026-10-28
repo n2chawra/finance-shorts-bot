@@ -1,0 +1,42 @@
+{
+  "agent": "improver",
+  "day": "2026-10-28",
+  "startedAt": "2026-10-28T00:48:05Z",
+  "finishedAt": "2026-10-28T00:52:09Z",
+  "summary": "Added a `share` maths kind so money-scale Shorts can split a fortune among people or count the years a salary takes to reach a billion, with figures checked by the number check. All five experiments still wait for data.",
+  "decision": "acted",
+  "why": "Nothing matured (all five experiments short of their per-arm minimum) and experiments are at the cap of 5, so no new A/B. Research's maths-divide-and-scale (template, high confidence, effort S) unblocks a feed topic and stops writers bending fee_take.",
+  "findings": [
+    {
+      "title": "27 videos have 48 h data",
+      "detail": "quiet-bed 1 of 4 long per arm, hook-voice-matches-frame 3 of 8, title-names-the-moment 1 of 8, chart-gap-fill 0 of 4, loop-picture-matches-hook 0 of 8: all wait."
+    },
+    {
+      "title": "Music, length and hooks",
+      "detail": "cinematic 30.2x median 48 h views (n=4, 85.8% viewed); 25-29 s Shorts 16.4x (n=4, 81.4%); myth hooks 0.32x (n=5, 24.5%); forest palette 0.30x (n=4, 19.9%)."
+    },
+    {
+      "title": "Formats",
+      "detail": "Only rule_change has 3+ Shorts (n=3, 42.9% viewed): not under the median, nothing retired."
+    },
+    {
+      "title": "High-priority ideas waiting for a slot",
+      "detail": "build-beats-on-lit-sets (motion), ending-beats-act-and-vary (pacing), cast-voices-the-story (voice), no-exposition-before-8s (hook). The first slot frees around 2026-11-02 when hook-voice-matches-frame matures."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Maths kind share",
+      "detail": "renderer/models/maths.py share(), count() in formatting.py, independent check in generator/numbers.py, tests, long_story README row; compare can use total, per_part, per_year.",
+      "branch": "agent/improver/2026-10-28",
+      "experiment": "maths-divide-and-scale"
+    }
+  ],
+  "nextCheck": "2026-10-29",
+  "links": [
+    {
+      "label": "Research report",
+      "url": "improvement/research/2026-10-28.md"
+    }
+  ]
+}
