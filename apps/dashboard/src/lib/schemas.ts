@@ -118,6 +118,7 @@ export const RunSchema = z.object({
   id: z.string(),
   kind: z.enum(["video", "template_work"]),
   videoId: z.string().nullable(),
+  format: z.enum(["short", "long"]).optional(), // video runs only; a long video doesn't count toward the daily Shorts target
   title: z.string(),
   status: z.enum(["ok", "failed"]),
   startedAt: z.string(),
@@ -214,6 +215,7 @@ export const AnalyticsSchema = z.object({
   bottom: z.array(RankedSchema),
   loved: z.array(RankedSchema),   // most likes + comments per 1,000 views (videos with at least LOVED_MIN_VIEWS)
   totals: z.object({ views: z.number(), subsGained: z.number(), videos: z.number(), avgViewPct: z.number(), likes: z.number(), comments: z.number() }),
+  statsThrough: z.string().nullable().default(null), // newest day YouTube Analytics has sent (YYYY-MM-DD); null = none in the last 28 days
 });
 export type Analytics = z.infer<typeof AnalyticsSchema>;
 

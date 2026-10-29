@@ -326,7 +326,7 @@ export async function patchTemplate(id: string, patch: { enabled?: boolean; weig
 // ---------------- runs ----------------
 
 export async function listRuns(): Promise<Run[]> {
-  const rows = await prisma.agentRun.findMany({ orderBy: [{ startedAt: "desc" }, { id: "desc" }], take: 600, include: { video: { select: { title: true, status: true, failReason: true } } } });
+  const rows = await prisma.agentRun.findMany({ orderBy: [{ startedAt: "desc" }, { id: "desc" }], take: 600, include: { video: { select: { title: true, status: true, failReason: true, format: true } } } });
   const groups = new Map<string, typeof rows>();
   for (const r of rows) {
     const key = r.videoId ?? r.id; // template-work rows have no video and stand alone
@@ -339,7 +339,7 @@ export async function listRuns(): Promise<Run[]> {
     const isVideo = first.videoId !== null;
     const failed = isVideo ? first.video?.status === "failed" : first.status === "failed";
     return {
-      id: key, kind: isVideo ? "video" : "template_work", videoId: first.videoId, title: isVideo ? first.video?.title ?? key : asNotes(first.log)[0] ?? "Template work",
+      id: key, kind: isVideo ? "video" : "template_work", videoId: first.videoId, ...(isVideo && { format: first.video?.format === "long" ? "long" as const : "short" as const }), title: isVideo ? first.video?.title ?? key : asNotes(first.log)[0] ?? "Template work",
       status: failed ? "failed" : "ok", startedAt: first.startedAt.toISOString(), durationSec: Math.round((end - first.startedAt.getTime()) / 1000),
       error: isVideo ? first.video?.failReason ?? null : null, sessionUrl: ordered.find((s) => s.routineSessionUrl)?.routineSessionUrl ?? null,
       steps: ordered.map(toStep),
@@ -381,6 +381,7 @@ export async function getAnalytics(): Promise<Analytics> {
   const rows = ranked.map(({ v, t }) => ({ videoId: v.id, title: v.title, templateId: v.templateId, views: t!.views, likes: t!.likes, comments: t!.comments, thumbnailUrl: `/api/media/${v.id}/thumbnail` })).sort((a, b) => b.views - a.views);
   return {
     daily: [...byDay].map(([day, d]) => ({ day, ...d })),
+    statsThrough: stats.map((x) => dayKey(x.day)).sort().at(-1) ?? null,
     weekday: names.map((weekday, i) => ({ weekday, avgViews: wd[i].n ? Math.round(wd[i].views / wd[i].n) : 0, uploads: wd[i].n })),
     top: rows.slice(0, 5), bottom: rows.length > 5 ? rows.slice(-5).reverse() : [], loved: mostLoved(rows),
     totals: {

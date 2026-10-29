@@ -320,9 +320,40 @@
       "id": "stats-freshness",
       "kind": "idea",
       "title": "Overview and Analytics: say how old the YouTube numbers are",
-      "detail": "Views and subscriber cards come from stats.yml, which stops when YouTube sign-in fails (as now in the notifications). A small 'YouTube stats as of 27 Oct' line that turns amber after 36 h and red after 3 days would stop the owner trusting frozen numbers. Data-freshness guides agree: show the age of the newest data point, not the last job run, with warn/error steps (dbt source freshness, basedash).",
+      "detail": "Views and subscriber cards come from stats.yml, which stops when YouTube sign-in fails (as now in the notifications). A small 'YouTube stats as of 27 Oct' line that turns amber after 36 h and red after 3 days would stop the owner trusting frozen numbers. Data-freshness guides agree: show the age of the newest data point, not the last job run, with warn/error steps (dbt source freshness, basedash). Shipped 2026-10-29 with thresholds fitted to Analytics' normal lag (a few days): 'YouTube Analytics through <day>' on the Overview Subscribers card and the Analytics heading, amber from 4 days old, red from 7.",
       "page": "overview",
       "found": "2026-10-28",
+      "status": "done",
+      "done": "2026-10-29",
+      "lastTouched": {
+        "apps/dashboard/src/app/page.tsx": "2026-10-29",
+        "apps/dashboard/src/app/analytics/page.tsx": "2026-10-29",
+        "apps/dashboard/src/lib/stats-age.ts": "2026-10-29"
+      }
+    },
+    {
+      "id": "overview-made-today-counts-long",
+      "kind": "bug",
+      "title": "Overview: long videos counted toward the 3-Shorts daily target",
+      "detail": "'Made today' and 'Daily output' counted every video run, Studio's long videos too, so a day with 2 Shorts and 1 long video showed 3/3 'target met' (sample data: 21 instead of 19 over 14 days). Runs now carry the video's format and only Shorts count.",
+      "page": "overview",
+      "found": "2026-10-29",
+      "status": "done",
+      "done": "2026-10-29",
+      "lastTouched": {
+        "apps/dashboard/src/app/page.tsx": "2026-10-29",
+        "apps/dashboard/src/lib/store.db.ts": "2026-10-29",
+        "apps/dashboard/src/lib/store.sample.ts": "2026-10-29",
+        "apps/dashboard/src/lib/schemas.ts": "2026-10-29"
+      }
+    },
+    {
+      "id": "overview-agents-last-night-split",
+      "kind": "bug",
+      "title": "Overview: 'Agents last night' shows only the first agents after 23:00",
+      "detail": "The card shows the newest activity day only. The auditor (23:00) and research (23:47) already write the next day's date, so from 23:00 until the improver's 06:17 run the card shows those two and 'no report' for everyone else, hiding the previous night's improver and dashboard reports. Fix: show each agent's latest report from the last ~24 h instead of one day's set.",
+      "page": "overview",
+      "found": "2026-10-29",
       "status": "open"
     }
   ]

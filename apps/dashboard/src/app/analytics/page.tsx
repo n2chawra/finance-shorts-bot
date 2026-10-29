@@ -8,6 +8,7 @@ import { Card, Delta, Empty, ErrorNote, Loading, Num, PageHeader, Segmented, Sta
 import { fmtCompact, fmtDayKey, fmtNum, titleCase } from "@/lib/format";
 import { useAnalytics } from "@/lib/queries";
 import { LOVED_MIN_VIEWS, perThousand } from "@/lib/schemas";
+import { STATS_AGE_CLASS, statsAge } from "@/lib/stats-age";
 
 type Range = "7" | "14" | "28";
 
@@ -37,13 +38,15 @@ export default function AnalyticsPage() {
   const loved = perThousand(data.totals);
   const anyEst = days.some((d) => d.estimated);
   const est = (p: { label: string; estimated?: boolean }) => (p.estimated ? `${p.label} (est.)` : p.label);
+  const age = statsAge(data.statsThrough);
   const best = [...data.weekday].sort((a, b) => b.avgViews - a.avgViews)[0];
 
   return (
     <Stagger>
-      <PageHeader title="Analytics" sub={anyEst
+      <PageHeader title="Analytics" sub={<>{anyEst
         ? "Shaded days are estimated from YouTube's live counts until YouTube Analytics catches up (it runs a few days behind)"
-        : "YouTube Analytics daily numbers and live lifetime counts"}>
+        : "YouTube Analytics daily numbers and live lifetime counts"}
+        {" · "}<span data-testid="stats-age" data-tone={age.tone} className={STATS_AGE_CLASS[age.tone]}>{age.label}</span></>}>
         <Segmented label="Range" value={range} onChange={setRange} options={[{ value: "7", label: "7 days" }, { value: "14", label: "14 days" }, { value: "28", label: "28 days" }]} />
       </PageHeader>
 

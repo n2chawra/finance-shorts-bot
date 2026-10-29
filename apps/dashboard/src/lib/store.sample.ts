@@ -223,7 +223,7 @@ function build(): Store {
   const runs: Run[] = videos.map((v) => {
     const durationSec = v.steps.reduce((s, x) => s + x.durationSec, 0);
     return {
-      id: `run-${v.id}`, kind: "video", videoId: v.id, title: v.title, status: v.status === "failed" ? "failed" : "ok",
+      id: `run-${v.id}`, kind: "video", videoId: v.id, format: v.format, title: v.title, status: v.status === "failed" ? "failed" : "ok",
       startedAt: new Date(Date.parse(v.createdAt) - durationSec * 1000).toISOString(), durationSec,
       error: v.failReason, sessionUrl: null, steps: v.steps,
     };
@@ -377,6 +377,7 @@ export function getAnalytics(): Analytics {
   const views = published.reduce((a, v) => a + v.totals!.views, 0);
   return {
     daily: [...byDay].map(([day, d]) => ({ day, ...d, estimated: false })),
+    statsThrough: published.flatMap((v) => v.stats).map((x) => x.day).filter((d) => d < today).sort().at(-1) ?? null,
     weekday: names.map((weekday, i) => ({ weekday, avgViews: wd[i].n ? Math.round(wd[i].views / wd[i].n) : 0, uploads: wd[i].n })),
     top: ranked.slice(0, 5), bottom: ranked.slice(-5).reverse(), loved: mostLoved(ranked),
     totals: {
