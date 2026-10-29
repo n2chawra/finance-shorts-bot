@@ -1,6 +1,6 @@
 # short_story — Shorts on Remotion
 
-A vertical Short (1080×1920, 45–75 s since 2026-10-26) told in beats by the recurring cast, drawn by Remotion.
+A vertical Short (1080×1920; its length is the setting `lengthMinSec`–`lengthMaxSec`, 35–50 s since 2026-10-29) told in beats by the recurring cast, drawn by Remotion.
 Same pipeline, scenes, cast, numbers and rules as [`long_story`](../long_story/README.md): read
 that README for the script fields, `maths` kinds, beats, events, acting and the scene table.
 Example: [`examples/short_story.json`](../../../examples/short_story.json). There is no
@@ -17,8 +17,8 @@ a beat or two, never more. Reference: [`examples/short_story_shot.json`](../../.
 ## What is different in a Short
 
 - `"format": "short"`, `"template": "short_story"`.
-- **Pace:** tempo 1.4 (voice included), about **200 spoken words a minute**. 45–75 s is
-  **150–250 words in 11–16 short beats** (about 3–5 s each), following "The story spine" below. No `chapter` beats.
+- **Pace:** tempo 1.4 (voice included), about **200 spoken words a minute**. 35–50 s is
+  **115–165 words in 9–13 short beats** (about 3–5 s each; read the current range in `config/settings.json`), following "The story spine" below. No `chapter` beats.
 - **The first second is the hook.** The first beat's opening lines (`"at": "start"`) are on screen
   from frame 0, because that frame is what the feed shows: a big figure or a sharp question.
 - **One idea.** A Short makes one point with one calculation. Cut every beat that doesn't move it.
@@ -97,8 +97,8 @@ yellow. Figures are placeholders, like everywhere else. Example covers: `videos/
 Our Shorts stopped at about 1,100 views: viewers left right after the hook (the no-cost EMI Short
 lost most of them between 5 and 10 s) and stayed for about half. The hooks work; what followed was
 a fact or two and a reaction. The references that hold people (The Curious Plot's 1.1M egg-selling
-story, the 4-levels lemonade stand) promise a structure and climb through it. Every Short now runs
-**45–75 s** and follows this spine (`generator/story.py` checks it):
+story, the 4-levels lemonade stand) promise a structure and climb through it. Every Short runs
+the settings' length (35–50 s since 2026-10-29) and follows this spine (`generator/story.py` checks it):
 
 1. **Hook** (`role: hook`, 3 s or less): unchanged, it works.
 2. **Promise** by 6 s (`role: promise`): the structure the viewer will wait for: "It's a trick in

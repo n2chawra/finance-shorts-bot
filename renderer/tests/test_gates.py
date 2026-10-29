@@ -24,6 +24,13 @@ def test_bottom_zone_and_frame_edges() -> None:
     assert any("'Still owed'" in p and "outside the frame" in p for p in problems)
 
 
+def test_text_wholly_off_the_frame_is_not_a_problem() -> None:
+    """A label the camera left behind can't be seen (2026-10-29); one cut in half still fails."""
+    probes = [{"frame": 0, "items": [box("Behind", x=-500, w=300), box("Below", y=2000), box("Half", x=-100, w=300)]}]
+    problems = layout_problems(probes, "short", 1080, 1920)
+    assert len(problems) == 1 and "'Half'" in problems[0]
+
+
 def test_a_problem_is_reported_once() -> None:
     probes = [{"frame": f, "items": [box("tiny", fs=20)]} for f in (0, 30, 60)]
     assert len(layout_problems(probes, "short", 1080, 1920)) == 1

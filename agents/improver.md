@@ -46,6 +46,11 @@ For each experiment the evaluator marks:
 Closing counts as tonight's change if it touches code.
 
 ## 2. Fix recurring failures
+Start from `python -m generator.run failures` (Shorts and long: the last two weeks' failed checks,
+grouped, most widespread first). A kind that hit three or more videos is fixed **at its source**: in the
+component that draws it (labels and tags clamp themselves since 2026-10-29: `studio/labels.tsx`,
+`design/fit.ts`), the check's message (say how to fix it), or `generator/prompts/checklist.md` (what
+writers read before writing). Add a line to the checklist for each new kind you see.
 If the evaluator lists recurring failures (the same QA/fact reason twice in 3 days), fix the cause
 (usually a prompt or recipe that keeps producing rejected scripts, or a check in `generator/` or
 `renderer/timeline/`) before starting anything new. Reproduce with
@@ -100,16 +105,16 @@ equal priority take the long one. Set the item's `status` as you would a proposa
 (`generator/story.py`: hook, promise, chapters as levels with a climbing number, a tease closing each
 chapter, a turn, the payoff), are drawn from each video's own props in `build` beats, and mix five
 documentary devices (`remotion/src/studio/docu.tsx`: `framework`, `type`, `journey`, `stats`,
-`case`). Thumbnails are one of five types (`remotion/src/compositions/LongThumbs.tsx`: `grid`,
-`ladder`, `extremes`, `face`, `scene`). Good long-video experiments, one area at a time, judged on
-average % viewed (thumbnails on Test & Compare wins: `thumbnailTypes` in `python -m improvement.evaluate`):
+`case`). Since 2026-10-29 each long video has **one** thumbnail, its own `Thumb.tsx`, modelled on its
+topic's most viewed thumbnails (`renderer/thumbs.py`, the kit `remotion/src/studio/thumb.tsx`; the
+manifest's `thumbnailModel` names the pattern and the hits). Good long-video experiments, one area at a
+time, judged on average % viewed (thumbnails on views in the first 48 h):
 - **devices**: which device holds viewers through a chapter (more `type` beats vs more `build`),
   the framework's layouts, the journey's pace, the stats cards' count-up length (area `motion`)
 - **chapter colours and backdrops** in `docu.tsx` and `worlds.tsx` (area `look`)
 - **the spine's timing**: the promise earlier, shorter chapters, a tease line per chapter (area
   `script`, through a `prompt` on the experiment: Studio writes the scripts)
-- **thumbnail types per format** in `renderer/thumbs.py` `FORMAT_TYPES` once `thumbnailTypes` has
-  3+ decided tests per type (area `thumbnail`)
+- **the thumbnail kit** (`studio/thumb.tsx`): new pieces the topics' hits keep using (area `thumbnail`)
 Never weaken the gates that keep them honest: the story checks, `picture_problems`, `prop_problems`,
 `device_problems`, the thumbnail rules. Long videos are few: say in your report when a long-video
 experiment is waiting only for data (Studio paused, or long videos not public).

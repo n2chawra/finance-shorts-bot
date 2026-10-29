@@ -55,7 +55,13 @@ export const Thumbnail = z.object({
   // "scene" (default since 2026-10-24, owner: "the thumbnails look the same with different texts"):
   // a frame of the video itself (its custom hook by default) under the big words and the figure, so
   // every cover is a different picture in the channel's style (compositions/Thumbnail.tsx)
-  layout: z.enum(["card", "story", "versus", "secret", "scene", "grid", "ladder", "extremes", "face"]).optional(),
+  layout: z.enum(["card", "story", "versus", "secret", "scene", "grid", "ladder", "extremes", "face", "custom"]).optional(),
+  // "custom" (long videos since 2026-10-29, owner: "for each video its references are searched... make
+  // something like that"): the video's own remotion/src/videos/<id>/<component>.tsx, modelled on the
+  // topic's most viewed thumbnails (`references`, `pattern`: notes, never drawn; renderer/thumbs.py)
+  component: z.string().optional(),
+  pattern: z.string().optional(),
+  references: z.array(z.object({ id: z.string(), views: z.number().optional(), what: z.string().optional() }).passthrough()).optional(),
   // long-video types (compositions/LongThumbs.tsx; 2026-10-26): the things in a grid, the levels of a
   // ladder, the two ends of an extremes thumbnail; each a prop of the video or a cast member
   items: z.array(z.object({ prop: z.string().optional(), label: z.string().optional(), who: z.string().optional(), pose: z.string().optional(), expression: z.string().optional() })).max(12).optional(),

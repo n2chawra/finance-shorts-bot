@@ -24,7 +24,9 @@ import { CAST } from "../cast/cast";
 import { Actor, type ActorSpec, at, clamp, type SceneProps, sec } from "../scenes/kit";
 import { FONT } from "../design/fonts";
 import { countUp } from "../fmt/inr";
-import { between, breathe, type Box as Rect, frameOn, type Frame, keepHeads, keepInside, type ShotSize, union } from "./camera";
+import { between, breathe, type Box as Rect, frameOn, type Frame, keepHeads, keepInside, type ShotSize, holds, shows, union } from "./camera";
+import { type ScreenText, ScreenTexts } from "./labels";
+import { counterBottom, counterShown } from "./hud";
 import { Ball, Box, INK, PALETTE, type PropFC, type PropSet, Shadow, Shape } from "./draw";
 import { Note, type Cur } from "./money";
 import { VIDEOS } from "../videos/hooks";
@@ -76,7 +78,8 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   const items = P.items ?? [];
   const actions = (P.actions ?? []).map((a) => ({ ...a, start: a.sec ?? at(p, a.at, 0) })).sort((a, b) => a.start - b.start);
   const cur = (p.tl.currency ?? "USD") as Cur;
-  const spotX = (s: Spot | undefined, d: number) => typeof s === "number" ? s * w : s === "left" ? w * 0.24 : s === "right" ? w * 0.76 : s === "center" ? w * 0.5 : d;
+  // an actor's body always fits the frame (QA: a spot of 0.1 cut people in half at the edge)
+  const spotX = (s: Spot | undefined, d: number) => typeof s === "number" ? Math.min(v ? 0.8 : 0.89, Math.max(v ? 0.2 : 0.11, s)) * w : s === "left" ? w * 0.24 : s === "right" ? w * 0.76 : s === "center" ? w * 0.5 : d;
 
   const home = (it: Item): [number, number] => [it.x * w, gy - (it.y ?? 0) * h];
   const byId = Object.fromEntries(items.map((it) => [it.id, it]));
@@ -192,27 +195,39 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
       }
     }
     const lead = s.copies > 1 ? Math.min(1, 2.6 / Math.sqrt(Math.min(s.copies, 60))) : 1;
-    const tagY = s.y - size * s.scale * s.show * (s.copies > 1 ? 1.25 : 1.12);
-    const countText = s.count ? (t >= s.count.start + 0.9 ? s.count.text : countUp(s.count.to, easeIO((t - s.count.start) / 0.9), s.count.text, "inr", p.tl.currency)) : undefined;
-    const tagText = countText ?? s.copyText ?? s.tag;
+    // a multiplied row never runs off the frame: the whole group slides in (QA: five bills at x 0.82 cut the third)
+    let slide = 0;
+    if (s.copies > 1) {
+      const n = Math.min(s.copies, 60), cols = s.cols || Math.ceil(Math.sqrt(n * 1.6));
+      const half = ((Math.min(cols, n) - 1) / 2) * size * lead * 0.85 + size * lead * 0.6;
+      slide = Math.min(w * 0.97 - half, Math.max(w * 0.03 + half, s.x)) - s.x;
+    }
+    // a thing only partly on screen keeps its picture but not its lettering (it would be cut)
     return (
-      <g key={it.id + i}>
+      <g key={it.id + i} className={holds(fr, itemBox({ it, s }), w, h) ? undefined : "decor"} transform={slide ? `translate(${slide},0)` : undefined}>
         {copies.reverse()}
         {one(s.copies > 1 ? -(Math.ceil(Math.sqrt(Math.min(s.copies, 60) * 1.6)) - 1) / 2 * size * lead * 0.85 : 0, 0, lead, "m")}
-        {tagText && s.tagK > 0 && (
-          <g transform={`translate(${s.x},${tagY}) scale(${clamp(s.tagK, 0, 1.2) * s.show})`}>
-            <rect x={-(tagText.length * (v ? 30 : 22) + 40) / 2} y={v ? -84 : -64} width={tagText.length * (v ? 30 : 22) + 40} height={v ? 84 : 64} rx={18}
-              fill="#fff" stroke={INK} strokeWidth={5} />
-            <text x={0} y={v ? -24 : -18} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={v ? 56 : 44} fill={INK}>{tagText}</text>
-          </g>
-        )}
-        {s.label && (
-          <text x={s.x} y={s.y + (v ? 62 : 48)} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={v ? 46 : 34} fill="#fff"
-            stroke={INK} strokeWidth={v ? 9 : 7} paintOrder="stroke">{s.label}</text>
-        )}
       </g>
     );
   };
+
+  // tags and labels: in screen space, after the camera (labels.tsx), only for things on screen
+  const scr = (x: number, y: number): [number, number] => [x * fr.s + fr.tx, y * fr.s + fr.ty];
+  const texts: ScreenText[] = [];
+  for (const st of states) {
+    const { it, s } = st;
+    if (s.show <= 0.05 || !shows(fr, itemBox(st), w, h, 60)) continue;
+    const size = sizeOf(it);
+    const tagY = s.y - size * s.scale * s.show * (s.copies > 1 ? 1.25 : 1.12);
+    const countText = s.count ? (t >= s.count.start + 0.9 ? s.count.text : countUp(s.count.to, easeIO((t - s.count.start) / 0.9), s.count.text, "inr", p.tl.currency)) : undefined;
+    const tagText = countText ?? s.copyText ?? s.tag;
+    const [tx, ty] = scr(s.x, tagY - 6);
+    if (tagText && s.tagK > 0) texts.push({ key: `t${it.id}`, kind: "tag", text: tagText, x: tx, y: ty, k: Math.min(s.tagK, 1.2) * s.show });
+    if (s.label) {
+      const [lx, ly] = scr(s.x, s.y + 14);
+      texts.push({ key: `l${it.id}`, kind: "label", text: s.label, x: lx, y: ly, above: tagText ? ty - (v ? 96 : 74) : ty, k: s.show });
+    }
+  }
 
   return (
     <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
@@ -225,6 +240,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
           {actorsP.map((a, i) => <Actor key={a.who + i} p={p} spec={{ ...a, x: spotX(a.spot, w / 2) / w, scale: aScale(a) }} ground={gy} index={i} />)}
         </svg>
       </div>
+      <ScreenTexts items={texts} w={w} h={h} scene="build" top={counterShown(p.tl, p.beat) ? counterBottom(w, h) : undefined} />
     </div>
   );
 };

@@ -344,6 +344,32 @@ def allowed_numbers(script: dict, figures: Mapping[str, str]) -> set[str]:
 
 
 _CHAPTER = re.compile(r"^\s*(?:\d+:)?\d+:\d\d(?=\s)", re.MULTILINE)
+_PLACEHOLDER = re.compile(r"\{([a-z][a-z0-9_]*)\}")
+_MONTHS = r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?"
+# a calendar date or a year is not a money claim ("October 28", "28 Oct", "in 2027", "2026-27")
+_DATE = re.compile(rf"\b{_MONTHS}\s+\d{{1,2}}(?:st|nd|rd|th)?\b|\b\d{{1,2}}(?:st|nd|rd|th)?\s+{_MONTHS}|\b(?:19|20)\d\d(?:[-–/]\d\d)?\b", re.IGNORECASE)
+
+
+def fill_text(text: str, figures: Mapping[str, str]) -> tuple[str, list[str]]:
+    """A title or description with its {placeholders} filled from the computed figures (2026-10-29:
+    a typed "$500K" in a title failed the number check; the writer now writes "{worth_final}").
+    Returns (filled text, unknown keys)."""
+    unknown: list[str] = []
+
+    def one(m: re.Match) -> str:
+        if m.group(1) in figures:
+            return figures[m.group(1)]
+        unknown.append(m.group(1))
+        return m.group()
+    return _PLACEHOLDER.sub(one, text), unknown
+
+
+def fill_plan(plan: dict, script: dict) -> dict:
+    """The plan with its title and description filled from the script's figures (ship, thumbnails)."""
+    if not any("{" in str(plan.get(k, "")) for k in ("title", "description")):
+        return plan
+    figures = check_script(script)["figures"]
+    return {**plan, **{k: fill_text(plan[k], figures)[0] for k in ("title", "description") if k in plan}}
 
 
 def check_claims(texts: Mapping[str, str], script: dict, figures: Mapping[str, str]) -> list[str]:
@@ -351,10 +377,16 @@ def check_claims(texts: Mapping[str, str], script: dict, figures: Mapping[str, s
     ok = allowed_numbers(script, figures)
     out = []
     for field, text in texts.items():
+        text, unknown = fill_text(text, figures)
+        if unknown:
+            out.append(f"{field} uses {', '.join('{' + u + '}' for u in unknown)}, which no maths computes; the figures are: "
+                       + ", ".join(sorted(figures)))
+        text = _DATE.sub(" ", text)
         for m in _NUMBER.finditer(text):
             token = _norm(m.group())
             if token not in ok and token.lstrip("₹$£€") not in ok:
-                out.append(f"{field} mentions {m.group().strip()!r}, which is neither a script input nor a computed figure")
+                out.append(f"{field} mentions {m.group().strip()!r}, which is neither a script input nor a computed figure: "
+                           f"write the figure as a placeholder ({', '.join('{' + k + '}' for k in sorted(figures)[:6])}…) or drop it")
     return out
 
 

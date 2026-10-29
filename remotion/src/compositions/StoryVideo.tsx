@@ -119,6 +119,8 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe, atFrame }) =
   const hasEnd = beats.some((b) => b.scene === "end");
   return (
     <AbsoluteFill style={{ background: timeline.palette.bg }}>
+      {/* decoration (a ghost prop, a thing half off the frame) never shows lettering: it can't be read */}
+      <style>{".decor text{display:none}"}</style>
       {overlap && (
         <AbsoluteFill style={exitStyle(cur.transition, local)}>
           <BeatView beat={beats[i - 1]!} tl={timeline} frame={frame} fps={fps} />

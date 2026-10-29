@@ -53,7 +53,7 @@ Priya, Sharma Uncle, Sikka) stay: they are the brand, and they act the skits.
 - **India stories:** SIPs and mutual funds, FDs, PPF, EPF, NPS, Indian tax regimes, RBI and SEBI news.
 - **Never:** single stocks, tips, market predictions, crypto trading, options or F&O strategies,
   guaranteed returns, anything that reads as investment advice.
-- **Formats:** Shorts (45–75 s story skits with levels, that loop) and long videos (8–12 min, list and "explained"
+- **Formats:** Shorts (35–50 s story skits with levels, that loop) and long videos (7–10 min, list and "explained"
   formats) with the recurring cast: Rohan makes the mistake (the "poor" move), Priya explains,
   Sharma Uncle is the rich one who has seen it all, Sikka cheers.
 

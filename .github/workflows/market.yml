@@ -36,8 +36,13 @@ jobs:
         working-directory: workers
       - run: npm run generate
         working-directory: workers
+      - name: Last run's thumbnail references (they carry over for a week)
+        run: |
+          git fetch -q origin market-data && git show origin/market-data:thumb-refs.json > "$RUNNER_TEMP/prev-thumb-refs.json" || true
       - name: Market and comments
         working-directory: workers
+        env:
+          PREV_THUMB_REFS: ${{ runner.temp }}/prev-thumb-refs.json
         shell: bash   # bash -eo pipefail: a failing job turns red instead of hiding behind tee
         run: npm run market -- "$RUNNER_TEMP/market-data" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Replace the market-data branch
@@ -47,6 +52,6 @@ jobs:
           git init -q -b market-data
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add market.json comments.json
+          git add market.json comments.json $( [ -f thumb-refs.json ] && echo thumb-refs.json )
           git commit -q -m "Market data $(date -u +%F)"
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" market-data

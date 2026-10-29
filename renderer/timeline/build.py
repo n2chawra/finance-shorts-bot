@@ -88,6 +88,13 @@ def _fill(text: str, figures: dict[str, str], where: str) -> str:
         raise ValueError(f"{where} has a bad placeholder ({e}); allowed: {', '.join(sorted(figures))}") from e
 
 
+# keys whose values name things (an event, an item, a prop, a component) and are never shown: an id
+# like "y1" or "c6-worth" is not a typed number (2026-10-29: six scripts failed on one)
+ID_KEYS = frozenset({"at", "id", "target", "on", "component", "prop", "into", "strike", "lineAt", "who", "kind", "set", "layout",
+                     "bg", "color", "tint", "traveller", "pose", "expression", "spot", "where", "from", "to", "tone", "world", "open_at"})
+_IDENT = re.compile(r"^[A-Za-z_][\w-]*$")
+
+
 def _resolve(value, figures: dict[str, str], results: dict, where: str):
     """Scene params: strings get placeholders filled (no typed numbers); "@name.key" pulls a raw
     value or a series from the maths; numbers, booleans, lists and dicts pass through recursively."""
@@ -96,17 +103,19 @@ def _resolve(value, figures: dict[str, str], results: dict, where: str):
             name, _, key = value[1:].partition(".")
             r = results.get(name)
             if r is None:
-                raise ValueError(f"{where}: no maths named {name!r}")
+                raise ValueError(f"{where}: no maths named {name!r}; the maths are " + ", ".join(sorted(results)))
             if key in r["series"]:
                 return r["series"][key]
             if key in r["values"]:
                 return r["values"][key]
-            raise ValueError(f"{where}: maths {name!r} has no value or series {key!r}")
+            raise ValueError(f"{where}: maths {name!r} has no value or series {key!r}; it has "
+                             + ", ".join(sorted([*r["values"], *r["series"]])))
         return _fill(value, figures, where)
     if isinstance(value, list):
         return [_resolve(v, figures, results, f"{where}[{i}]") for i, v in enumerate(value)]
     if isinstance(value, dict):
-        return {k: _resolve(v, figures, results, f"{where}.{k}") for k, v in value.items()}
+        return {k: v if k in ID_KEYS and isinstance(v, str) and _IDENT.match(v) else _resolve(v, figures, results, f"{where}.{k}")
+                for k, v in value.items()}
     return value
 
 
@@ -210,33 +219,18 @@ def _facts(script: dict) -> tuple[dict[str, str], str | None]:
     return figures, line
 
 
-# what a thumbnail leads with: long videos get three, each a different angle, for YouTube's Test &
-# Compare; the winners teach the agents which angle works (improvement/evaluate.py)
+# what a thumbnail leads with (a note on the thumbnail; the three-variant Test & Compare ended 2026-10-29)
 THUMB_ANGLES = ("number", "question", "reaction", "versus", "warning")
 
 
 def _thumbnail_variants(script: dict, figures: dict[str, str], results: dict) -> list[dict]:
-    """The extra thumbnails (`thumbnails`, up to two) beside `thumbnail`, each with its own angle."""
+    """The extra thumbnails (`thumbnails`). None since 2026-10-29 (owner: "long video thumbnail: only
+    1 is enough"): one thumbnail, made for this video from what works for its topic."""
     extra = script.get("thumbnails") or []
     if not extra:
         return []
-    if not script.get("thumbnail"):
-        raise ValueError("thumbnails needs a main thumbnail too")
-    if len(extra) > 2:
-        raise ValueError("thumbnails: two more at most (three in all, the most Test & Compare takes)")
-    variants = [_thumbnail(t, figures, results) for t in extra]
-    angles = [t.get("angle") for t in [script["thumbnail"], *extra]]
-    if any(a not in THUMB_ANGLES for a in angles):
-        raise ValueError(f"every thumbnail needs an angle: one of {', '.join(THUMB_ANGLES)}")
-    if len(set(angles)) != len(angles):
-        raise ValueError("each thumbnail needs a different angle, so the test compares ideas, not small tweaks")
-    # YouTube's Test & Compare needs "meaningfully different" pictures, or it ends inconclusive:
-    # no two thumbnails may share a layout and (for `story`) a hero (Scout, 2026-10-22)
-    pictures = [_thumb_picture(t) for t in [script["thumbnail"], *extra]]
-    if len(set(pictures)) != len(pictures):
-        raise ValueError("each thumbnail needs a different picture: use different layouts (story, versus, secret, card) "
-                         "or, for two `story` covers, a different hero; same picture with new words tests nothing")
-    return variants
+    raise ValueError("one thumbnail per video (owner, 2026-10-29): drop `thumbnails` and make `thumbnail` the best one, "
+                     "modelled on the topic's reference thumbnails (python -m renderer.thumbs refs <id>)")
 
 
 def _structure(spec: dict | None) -> dict | None:
@@ -251,21 +245,16 @@ def _structure(spec: dict | None) -> dict | None:
     return {"levels": levels}
 
 
-def _thumb_picture(t: dict) -> tuple[str, str | None]:
-    """What a thumbnail looks like at a glance: its layout, and for `story` the hero object."""
-    layout = t.get("layout") or "card"
-    if layout == "scene":   # a frame of the video: another beat is another picture
-        return layout, t.get("at") or "hook"
-    if layout in ("grid", "ladder", "extremes", "face"):   # long types: each its own idea (renderer/thumbs.py)
-        return layout, None
-    return layout, (t.get("hero") or "card") if layout == "story" else None
+# a thumbnail's notes on what it copies (YouTube ids, view counts, the pattern in words): never shown
+THUMB_META = ("references", "pattern", "component")
 
 
 def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_ids: list[str] | None = None) -> dict | None:
     if not spec:
         return None
-    t = _resolve(spec, figures, results, "thumbnail")
-    if t.get("layout") in ("grid", "ladder", "extremes", "face", "scene") and not t.get("figure"):
+    meta = {k: spec[k] for k in THUMB_META if k in spec}
+    t = {**_resolve({k: v for k, v in spec.items() if k not in THUMB_META}, figures, results, "thumbnail"), **meta}
+    if t.get("layout") in ("grid", "ladder", "extremes", "face", "scene", "custom") and not t.get("figure"):
         # long-video types sell the promise in words and pictures, no figure (renderer/thumbs.py); a scene cover
         # shows the video's own frame, whose money objects carry the figures (a long one may have none)
         t["figure"] = ""
@@ -277,9 +266,11 @@ def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_i
         raise ValueError(f"thumbnail.small must be one placeholder, like {{card_min_due}}; got {spec.get('small')!r}")
     if t.get("layout") == "story" and t.get("hero") not in (None, "card", "phone", "house", "car", "cash", "piggy"):
         raise ValueError("thumbnail.hero must be card, phone, house, car, cash or piggy")
-    if t.get("layout") not in (None, "card", "story", "versus", "secret", "scene", "grid", "ladder", "extremes", "face"):
+    if t.get("layout") not in (None, "card", "story", "versus", "secret", "scene", "grid", "ladder", "extremes", "face", "custom"):
         raise ValueError("thumbnail.layout must be scene (a frame of the video: the default), card, story, versus (rich vs poor) "
-                         "or secret (what the rich know); long videos: grid, ladder, extremes, face (renderer/thumbs.py)")
+                         "or secret (what the rich know); long videos: custom (the video's own Thumb.tsx, renderer/thumbs.py)")
+    if t.get("layout") == "custom" and not re.fullmatch(r"[A-Z][A-Za-z]*", str(t.get("component") or "Thumb")):
+        raise ValueError("thumbnail.component names the video's own file, like \"Thumb\" (remotion/src/videos/<id>/Thumb.tsx)")
     if t.get("layout") == "scene" and beat_ids is not None and t.get("at") is not None and t["at"] not in beat_ids:
         raise ValueError(f"thumbnail.at {t['at']!r} must be a beat id: one of {', '.join(beat_ids)}")
     if t.get("sec") is not None and not (isinstance(t["sec"], (int, float)) and t["sec"] >= 0):

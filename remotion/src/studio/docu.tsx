@@ -28,6 +28,7 @@ import type { Expression } from "../cast/face";
 import { POSES, type PoseName } from "../cast/poses";
 import { at, clamp, type SceneProps, sec } from "../scenes/kit";
 import { FONT } from "../design/fonts";
+import { fitLine, fitWords, minText } from "../design/fit";
 import { countUp } from "../fmt/inr";
 import { INK, type PropSet, shade } from "./draw";
 import { SHARED_PROPS } from "./build";
@@ -88,11 +89,14 @@ const Backdrop: React.FC<{ p: SceneProps; bg?: string; rays?: [number, number]; 
   );
 };
 
-const Kicker: React.FC<{ text: string; k: number; bg?: string; size: number }> = ({ text, k, bg = "sand", size }) => (
+const Kicker: React.FC<{ text: string; k: number; bg?: string; size: number; maxW?: number }> = ({ text, k, bg = "sand", size: size0, maxW = 900 }) => {
+  const size = fitLine(text, size0, maxW - size0 * 1.6, { upper: true, spacing: 3, min: size0 > 34 ? 44 : 30 });
+  return (
   <span style={{ display: "inline-block", fontFamily: FONT, fontWeight: 800, fontSize: size, letterSpacing: 3, textTransform: "uppercase",
     color: dark(bg) ? INK : "#fff", background: dark(bg) ? "#ffd23f" : INK, padding: `${size * 0.2}px ${size * 0.8}px`, borderRadius: 999,
     opacity: clamp(k * 2), transform: `scale(${0.7 + 0.3 * k})` }}>{text}</span>
-);
+  );
+};
 
 // ---------------- framework ----------------
 interface FwItem { prop?: string; label?: string; at?: string }
@@ -119,7 +123,8 @@ export const FrameworkScene: React.FC<SceneProps> = (p) => {
   return (
     <Backdrop p={p} bg={P.bg}>
       {P.title && <div style={{ position: "absolute", top: v ? 170 : 50, left: 0, right: 0, textAlign: "center", fontFamily: FONT, fontWeight: 900,
-        fontSize: v ? 70 : 64, color: dark(P.bg ?? "sand") ? "#fff" : INK, textTransform: "uppercase", opacity: clamp(t / 0.4) }}>{P.title}</div>}
+        fontSize: fitWords(P.title, v ? 70 : 64, w - 160, { upper: true, min: minText(w, h) }), padding: "0 60px",
+        color: dark(P.bg ?? "sand") ? "#fff" : INK, textTransform: "uppercase", opacity: clamp(t / 0.4) }}>{P.title}</div>}
       <svg width={w} height={h} style={{ position: "absolute", transform: `translate(${tx}px, ${ty}px) scale(${zoom})`, transformOrigin: `${fx}px ${fy}px` }}>
         {layout === "steps" && <path d={items.map((_, i) => `${i ? "L" : "M"}${pos(i)[0]},${pos(i)[1]}`).join(" ")} stroke={INK} strokeWidth={6} strokeDasharray="14 12" fill="none" opacity={0.4} />}
         {items.map((it, i) => {
@@ -134,9 +139,10 @@ export const FrameworkScene: React.FC<SceneProps> = (p) => {
               <rect x={-tile * 0.48} y={-tile * 1.02} width={tile * 0.96} height={tile * 1.06} rx={tile * 0.1}
                 fill={isOpen ? "#fff" : "rgba(255,255,255,0.55)"} stroke={isOpen ? "#ffd23f" : INK} strokeWidth={isOpen ? 10 : 5} />
               {isOpen && <circle cx={0} cy={-tile * 0.5} r={tile * 0.7} fill="#ffd23f" opacity={0.25 * kOpen} />}
-              {P_ && appear0 > 0.05 && <g transform={`translate(0,${-tile * 0.12}) scale(${appear0})`}><P_ s={s * 0.8} t={t} /></g>}
-              <circle cx={-tile * 0.36} cy={-tile * 0.9} r={tile * 0.1} fill={done ? "#2fb37a" : isOpen ? "#ffd23f" : INK} />
-              <text x={-tile * 0.36} y={-tile * 0.86} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={tile * 0.12} fill={done || isOpen ? INK : "#fff"}>
+              {P_ && appear0 > 0.05 && <g className="decor" transform={`translate(0,${-tile * 0.12}) scale(${appear0})`}><P_ s={s * 0.8} t={t} /></g>}
+              <circle cx={-tile * 0.36} cy={-tile * 0.9} r={Math.max(tile * 0.1, (minText(w, h) + 2) * 0.8)} fill={done ? "#2fb37a" : isOpen ? "#ffd23f" : INK} />
+              <text x={-tile * 0.36} y={-tile * 0.9 + Math.max(tile * 0.12, minText(w, h) + 2) * 0.36} textAnchor="middle" fontFamily={FONT} fontWeight={900}
+                fontSize={Math.max(tile * 0.12, minText(w, h) + 2)} fill={done || isOpen ? INK : "#fff"}>
                 {done ? "✓" : String(i + 1)}</text>
               {it.label && <text data-probe="skip" x={0} y={tile * 0.2} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={Math.max(30, tile * 0.13)}
                 fill={dark(P.bg ?? "sand") ? "#fff" : INK}>{it.label}</text>}
@@ -162,17 +168,19 @@ export const TypeScene: React.FC<SceneProps> = (p) => {
   const typed = (text: string, start: number) => text.slice(0, Math.max(0, Math.floor((t - start) / 0.035)));
   return (
     <Backdrop p={p} bg={bg}>
-      {Behind && <svg width={w} height={h} style={{ position: "absolute", opacity: 0.22 }}>
+      {Behind && <svg className="decor" width={w} height={h} style={{ position: "absolute", opacity: 0.22 }}>
         <g transform={`translate(${w * 0.5},${h * 0.92}) scale(${1 + 0.02 * t})`}><Behind s={h * 0.8} t={t} /></g></svg>}
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: v ? 26 : 18, padding: "0 70px" }}>
-        {P.kicker && <Kicker text={P.kicker} k={clamp(t / 0.3)} bg={bg} size={v ? 40 : 30} />}
+        {P.kicker && <Kicker text={P.kicker} k={clamp(t / 0.3)} bg={bg} size={v ? 40 : 30} maxW={w - 140} />}
         {(P.lines ?? []).map((l, i) => {
           const start = at(p, l.at, i * 0.6);
           if (t < start) return <div key={i} style={{ height: sizes[l.size ?? "big"] }} />;
           const strikeAt = l.strike ? at(p, l.strike, 999) : 999;
           const ks = clamp((t - strikeAt) / 0.35);
           const rep = l.replace ? at(p, l.replace.at, 999) : 999;
-          const fs = sizes[l.size ?? "big"] ?? sizes.big!;
+          const fs0 = sizes[l.size ?? "big"] ?? sizes.big!;
+          const fit = (x: string) => fitWords(x, fs0, w - 180, { upper: true, min: minText(w, h) });
+          const fs = Math.min(fit(l.text), l.replace ? fit(l.replace.text) : fs0);
           return (
             <div key={i} style={{ position: "relative", textAlign: "center" }}>
               <span style={{ position: "relative", display: "inline-block", fontFamily: FONT, fontWeight: 900, fontSize: fs, lineHeight: 1.05,
@@ -233,19 +241,22 @@ export const JourneyScene: React.FC<SceneProps> = (p) => {
           const k = sp(p, times[i]!, 9);
           if (k <= 0) return null;
           const [x, y] = pts[i]!;
+          const room = Math.min((w * 0.72) / (n - 1) * 0.94, 2 * (x - 40), 2 * (w - 40 - x));
+          const fsName = fitLine(s.name, v ? 50 : 44, room, { min: minText(w, h) + 1 });
+          const fsNote = s.note ? fitLine(s.note, v ? 46 : 36, room, { min: minText(w, h) + 1 }) : 0;
           return (
-            <g key={i} transform={`translate(${x},${y}) scale(${k})`}>
+            <g key={i} transform={`translate(${x},${y}) scale(${Math.min(1, k)})`}>
               <path d="M0,0 C-24,-30 -24,-58 0,-62 C24,-58 24,-30 0,0 Z" fill="#e5484d" stroke={INK} strokeWidth={5} />
               <circle cx={0} cy={-40} r={9} fill="#fff" />
-              <text x={0} y={46} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={v ? 50 : 44} fill={dark(bg) ? "#fff" : INK}>{s.name}</text>
-              {s.note && <text x={0} y={v ? 92 : 84} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={v ? 44 : 34} fill={dark(bg) ? "#ffd23f" : shade(INK, 0.25)}>{s.note}</text>}
+              <text x={0} y={46} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={fsName} fill={dark(bg) ? "#fff" : INK}>{s.name}</text>
+              {s.note && <text x={0} y={46 + fsName * 0.2 + fsNote} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={fsNote} fill={dark(bg) ? "#ffd23f" : shade(INK, 0.25)}>{s.note}</text>}
             </g>
           );
         })}
         {Trav && (() => {
           // a hop on each marked word ("shiny", "car"): the thing reacts to what is said about it
           const hop = Math.max(0, ...(P.marks ?? []).map((m) => { const d = t - at(p, m.at, 999); return d >= 0 && d < 0.5 ? Math.sin((d / 0.5) * Math.PI) : 0; }));
-          return <g transform={`translate(${tx},${ty - 8 - hop * h * 0.06}) rotate(${hop * -8})`}><Trav s={h * 0.12} t={t} /></g>;
+          return <g className="decor" transform={`translate(${tx},${ty - 8 - hop * h * 0.06}) rotate(${hop * -8})`}><Trav s={h * 0.12} t={t} /></g>;
         })()}
       </svg>
     </Backdrop>
@@ -265,22 +276,25 @@ export const StatsScene: React.FC<SceneProps> = (p) => {
   const flash = P.at ? Math.max(0, 1 - Math.abs(t - at(p, P.at, 999)) / 0.4) : 0;   // the title flashes on its word
   return (
     <Backdrop p={p} bg={bg} rays={[w / 2, h * 0.45]}>
-      {Thing && <svg width={w} height={h} style={{ position: "absolute" }}>
+      {Thing && <svg className="decor" width={w} height={h} style={{ position: "absolute" }}>
         <g transform={`translate(${v ? w * 0.5 : w * 0.14},${v ? h * 0.97 : h * 0.86}) scale(${0.9 + 0.1 * sp(p, 0, 10)})`}><Thing s={h * (v ? 0.2 : 0.3)} t={t} /></g></svg>}
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: v ? 40 : 34 }}>
-        {P.kicker && <Kicker text={P.kicker} k={clamp(t / 0.3)} bg={bg} size={v ? 40 : 30} />}
-        {P.title && <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: v ? 76 : 70, textTransform: "uppercase", textAlign: "center", padding: "0 50px",
+        {P.kicker && <Kicker text={P.kicker} k={clamp(t / 0.3)} bg={bg} size={v ? 40 : 30} maxW={w - 140} />}
+        {P.title && <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitWords(P.title, v ? 76 : 70, w - 140, { upper: true, min: minText(w, h) }), textTransform: "uppercase", textAlign: "center", padding: "0 50px",
           color: P.at && t >= at(p, P.at, 999) ? "#e5484d" : dark(bg) ? "#fff" : INK, transform: `scale(${1 + 0.08 * flash})` }}>{P.title}</div>}
         <div style={{ display: "flex", flexDirection: v ? "column" : "row", gap: v ? 26 : 30 }}>
           {cards.map((c, i) => {
             const start = at(p, c.at, 0.3 + i * 0.7);
             const k = Math.max(0.35, sp(p, start, 11));   // the card waits, empty, for its figure
+            const cardW = v ? w * 0.7 : Math.min(w * 0.3, (w - 160) / cards.length - 30) - 60;
+            const fsLabel = fitLine(c.label, v ? 44 : 34, cardW, { upper: true, spacing: 2, min: minText(w, h) + 1 });
+            const fsValue = fitLine(c.text, v ? 104 : 88, cardW, { min: minText(w, h) + 1 });
             const shown = c.value !== undefined && t < start + 1 ? countUp(c.value, clamp((t - start) / 1), c.text, "inr", p.tl.currency) : c.text;
             return (
               <div key={i} style={{ minWidth: v ? w * 0.7 : w * 0.17, background: "#fff", border: `6px solid ${INK}`, borderRadius: 26, padding: v ? "22px 34px" : "18px 30px",
                 textAlign: "center", boxShadow: "0 12px 0 rgba(0,0,0,0.25)", opacity: clamp(k * 2), transform: `translateY(${(1 - k) * 40}px) scale(${0.85 + 0.15 * k})` }}>
-                <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: v ? 44 : 34, color: shade(INK, 0.25), textTransform: "uppercase", letterSpacing: 2 }}>{c.label}</div>
-                <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: v ? 104 : 88, color: ACCENT[c.color ?? "blue"] ?? "#3d7bf5", lineHeight: 1.05 }}>{t >= start ? shown : ""}</div>
+                <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: fsLabel, color: shade(INK, 0.25), textTransform: "uppercase", letterSpacing: 2, whiteSpace: "nowrap" }}>{c.label}</div>
+                <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: fsValue, whiteSpace: "nowrap", color: ACCENT[c.color ?? "blue"] ?? "#3d7bf5", lineHeight: 1.05 }}>{t >= start ? shown : ""}</div>
               </div>
             );
           })}
@@ -309,14 +323,14 @@ export const CaseScene: React.FC<SceneProps> = (p) => {
         <defs><clipPath id={`cc${p.beat.id}`}><circle cx={cx} cy={cy} r={r} /></clipPath></defs>
         <circle cx={cx} cy={cy} r={r * kPic} fill={dark(bg) ? "#2a3463" : "rgba(255,255,255,0.7)"} stroke={INK} strokeWidth={6} />
         <g clipPath={`url(#cc${p.beat.id})`} transform={`translate(0,${(1 - kPic) * 60})`}>
-          {Prop && <g transform={`translate(${cx},${cy + r * 0.55})`}><Prop s={r * 1.1} t={t} /></g>}
+          {Prop && <g className="decor" transform={`translate(${cx},${cy + r * 0.55})`}><Prop s={r * 1.1} t={t} /></g>}
           {m && <Character id={`case${p.beat.id}`} look={m.look} pose={POSES[(P.pose ?? "present") as PoseName] ?? POSES.present}
             expression={(P.expression ?? "happy") as Expression} x={cx} y={cy + r * 1.9} scale={r / 260} shadow={false} />}
         </g>
       </svg>
       <div style={{ position: "absolute", left: v ? 60 : right ? 70 : w * 0.52, right: v ? 60 : right ? w * 0.5 : 70, top: v ? h * 0.6 : h * 0.3, textAlign: v ? "center" : "left" }}>
-        {P.kicker && <Kicker text={P.kicker} k={kName} bg={bg} size={v ? 38 : 30} />}
-        <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: v ? 120 : 110, lineHeight: 1.05, color: dark(bg) ? "#fff" : INK, textTransform: "uppercase",
+        {P.kicker && <Kicker text={P.kicker} k={kName} bg={bg} size={v ? 38 : 30} maxW={v ? w - 120 : w * 0.46} />}
+        <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitWords(P.name, v ? 120 : 110, v ? w - 140 : w * 0.44, { upper: true, min: minText(w, h) }), lineHeight: 1.05, color: dark(bg) ? "#fff" : INK, textTransform: "uppercase",
           opacity: clamp(kName * 2), transform: `translateX(${(1 - kName) * (right ? -60 : 60)}px)`, marginTop: 14 }}>{P.name}</div>
         {P.line && <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: v ? 52 : 46, color: dark(bg) ? "#ffd23f" : shade(INK, 0.2), opacity: clamp(kLine * 2), marginTop: 12 }}>{P.line}</div>}
       </div>

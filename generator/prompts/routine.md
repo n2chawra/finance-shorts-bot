@@ -67,14 +67,20 @@ Follow `generator/prompts/planner.md`. Use the id from `next_id` for the whole r
 
 ## 3. Write (you)
 
-Follow `generator/prompts/writer.md`. It ends with the number check, which is code and must
-print `ok`.
+First read `generator/prompts/checklist.md` and run `python -m generator.run failures --format short`:
+the mistakes the last runs made, each with its fix (2026-10-29: videos took up to twelve failed
+steps to ship). Then follow `generator/prompts/writer.md`. It ends with the number check, which is
+code and must print `ok`.
 
 Then write the video's **own code** in `remotion/src/videos/<id>/`, as `remotion/src/videos/README.md`
 and `renderer/templates/SHOTS.md` ("The build scene") describe (owner, 2026-10-26: "animation
 should be dynamic to the script"):
 - `props.tsx`: the story's own things (8 or more), drawn with `../../studio/draw`;
 - `Hook.tsx`, `Turn.tsx` and `Payoff.tsx`: the hook, the turn and the payoff, coded for this story.
+
+When the script and the code are written, run `python -m generator.run lint <id>` (about twenty
+seconds, no voice or frames) and fix until it prints `ok`. Run it again after every later fix, before
+the stills.
 
 Reference: `remotion/src/videos/v-remake-billionaires/` with `videos/v-remake-billionaires/script.json`
 (copy the structure, never the pictures). The render checks every file (imports, no randomness or

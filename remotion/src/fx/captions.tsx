@@ -49,6 +49,14 @@ export function captionGroups(tokens: Token[]): Token[][] {
   return groups;
 }
 
+/** Where the captions band starts (road: below the walker's face). Scenes keep their own labels out
+ * of [top, top + CAPTION_BAND] (QA, 2026-10-28: captions sat on the stack labels). */
+export function captionTop(w: number, h: number, scene: string): number {
+  const v = h > w;
+  return v ? h * (HIGH.has(scene) ? 0.4 : scene === "road" || scene === "shot" || scene === "build" || scene === "custom" ? 0.72 : 0.66) : h * 0.8;
+}
+export const captionBand = (w: number, h: number): number => (h > w ? 240 : 150);
+
 export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]; scene: string }> = ({ tl, frame, groups, scene }) => {
   const t = frame / tl.fps;
   // the group on screen: from its first word until the next group starts (or shortly after its last word)
@@ -64,7 +72,7 @@ export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]
   const scale = 0.82 + 0.18 * (1 - (1 - k) ** 3) + (k >= 1 ? 0 : 0.04 * Math.sin(k * Math.PI));
   // Shorts: on the wall above the cast's heads in a `stage` beat; lower in the other scenes, whose
   // labels and figures sit in the top half
-  const top = v ? tl.height * (HIGH.has(scene) ? 0.4 : scene === "road" || scene === "shot" || scene === "build" || scene === "custom" ? 0.72 : 0.66) : tl.height * 0.8;   // road: below the walker's face
+  const top = captionTop(tl.width, tl.height, scene);
   const left = v ? 60 : tl.width * 0.12, width = v ? tl.width - 60 - 150 : tl.width * 0.76;   // Shorts: clear of the right-hand buttons
   return (
     <div style={{ position: "absolute", left, top, width, display: "flex", justifyContent: "center", pointerEvents: "none" }}>

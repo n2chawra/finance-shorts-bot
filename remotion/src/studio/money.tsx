@@ -33,12 +33,19 @@ export const Note: React.FC<{ cur: Cur; nw: number; rot?: number; x?: number; y?
   );
 };
 
+export const STACK_TONE: Record<string, string> = { good: "#1f9d61", bad: "#e03131", plain: "#2b2f3a" };
+/** The top of a stack's notes at `k` (where its tag sits). */
+export const stackTop = (ground: number, width: number, full: number, k: number) => {
+  const bundle = Math.max(18, width * 0.16), n = Math.max(1, Math.round(full / bundle));
+  return ground - Math.max(1, k * n) * bundle;
+};
+
 /** A stack of bundled notes, `k` 0..1 of its full height, growing bundle by bundle with a settle,
  * and a tag on top showing Python's figure once it is reached. */
 export const CashStack: React.FC<{
   x: number; ground: number; width: number; full: number; k: number; cur: Cur; label?: string; text?: string;
-  textShown: boolean; tone?: "good" | "bad" | "plain"; seed: string;
-}> = ({ x, ground, width, full, k, cur, label, text, textShown, tone = "plain", seed }) => {
+  textShown: boolean; tone?: "good" | "bad" | "plain"; seed: string; bare?: boolean;
+}> = ({ x, ground, width, full, k, cur, label, text, textShown, tone = "plain", seed, bare = false }) => {
   const c = NOTE[cur];
   const bundle = Math.max(18, width * 0.16);
   const n = Math.max(1, Math.round(full / bundle));
@@ -61,7 +68,7 @@ export const CashStack: React.FC<{
           </g>
         );
       })}
-      {k > 0 && (label || (text && textShown)) && (
+      {!bare && k > 0 && (label || (text && textShown)) && (
         <g transform={`translate(${x},${tagY})`}>
           {label && <text y={text && textShown ? -78 : -10} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={width * 0.2} fill="#fff"
             stroke="#000" strokeWidth={width * 0.04} paintOrder="stroke" style={{ textTransform: "uppercase" }}>{label}</text>}
@@ -95,7 +102,9 @@ export const MoneyFlow: React.FC<{
 export const PhoneApp: React.FC<{
   x: number; y: number; pw: number; t: number; title: string; figure?: string; figureShown: boolean; figureColor?: string;
   lines?: { label: string; value?: string; at: number; bad?: boolean }[]; toasts?: { text: string; at: number }[]; tilt?: number;
-}> = ({ x, y, pw, t, title, figure, figureShown, figureColor = "#e03131", lines = [], toasts = [], tilt = -4 }) => {
+  /** the smallest text the frame allows (Shorts 44, long 30): rows never go below it */
+  minFs?: number;
+}> = ({ x, y, pw, t, title, figure, figureShown, figureColor = "#e03131", lines = [], toasts = [], tilt = -4, minFs = 0 }) => {
   const ph = pw * 2.05;
   const fs = pw * 0.125;   // readable at medium framing (Shorts text >= 44 px on screen)
   return (
@@ -125,14 +134,17 @@ export const PhoneApp: React.FC<{
         const k = easeOut((t - l.at) / 0.35);
         if (k <= 0) return null;
         const ly = -ph / 2 + ph * (0.44 + i * 0.15);
-        const vs = l.value ? Math.min(fs * 0.85, (pw * 0.4) / Math.max(2, l.value.length * 0.58)) : 0;
-        // a label too long to share the row with its value ('Market, assumed' / '8%') goes above it
-        const two = !!l.value && l.label.length * 0.6 * fs * 0.72 + l.value.length * 0.62 * vs > pw * 0.72;
+        const ls = Math.max(fs * 0.72, minFs);
+        const vs1 = l.value ? Math.min(fs * 0.85, (pw * 0.4) / Math.max(2, l.value.length * 0.58)) : 0;
+        // a label too long to share the row with its value ('Market, assumed' / '8%') goes above it,
+        // and so does a value that would have to shrink under the minimum to fit beside it
+        const two = !!l.value && (vs1 < minFs || l.label.length * 0.6 * ls + l.value.length * 0.62 * vs1 > pw * 0.72);
+        const vs = !l.value ? 0 : two ? Math.max(minFs, Math.min(fs * 0.85, (pw * 0.78) / Math.max(2, l.value.length * 0.62))) : vs1;
         return (
           <g key={i} opacity={k} transform={`translate(${(1 - k) * pw * 0.4},0)`}>
-            <rect x={-pw * 0.44} y={ly - fs * 0.95} width={pw * 0.88} height={fs * 1.7} rx={fs * 0.4} fill="#ffffff" stroke="#e3e6ef" strokeWidth={3} />
-            <text x={-pw * 0.39} y={ly + (two ? -fs * 0.22 : fs * 0.15)} fontFamily={FONT} fontWeight={700} fontSize={fs * 0.72} fill="#3f4656">{l.label}</text>
-            {l.value && <text x={pw * 0.4} y={ly + (two ? fs * 0.6 : fs * 0.15)} textAnchor="end" fontFamily={FONT} fontWeight={900} fontSize={two ? Math.min(vs, fs * 0.72) : vs} fill={l.bad ? "#e03131" : "#1f9d61"}>{l.value}</text>}
+            <rect x={-pw * 0.44} y={ly - fs * 0.95} width={pw * 0.88} height={fs * (two ? 2.05 : 1.7)} rx={fs * 0.4} fill="#ffffff" stroke="#e3e6ef" strokeWidth={3} />
+            <text x={-pw * 0.39} y={ly + (two ? -fs * 0.22 : fs * 0.15)} fontFamily={FONT} fontWeight={700} fontSize={ls} fill="#3f4656">{l.label}</text>
+            {l.value && <text x={pw * 0.4} y={ly + (two ? fs * 0.82 : fs * 0.15)} textAnchor="end" fontFamily={FONT} fontWeight={900} fontSize={two ? Math.max(minFs, Math.min(vs, fs * 0.72)) : vs} fill={l.bad ? "#e03131" : "#1f9d61"}>{l.value}</text>}
           </g>
         );
       })}

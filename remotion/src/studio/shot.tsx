@@ -22,8 +22,11 @@ import { AbsoluteFill, spring } from "remotion";
 import { CAST } from "../cast/cast";
 import { Actor, type ActorSpec, at, clamp, type SceneProps, sec } from "../scenes/kit";
 import { FONT } from "../design/fonts";
-import { between, breathe, frameOn, type Frame, keepInside, type ShotSize } from "./camera";
-import { CashStack, type Cur, MoneyFlow, PhoneApp } from "./money";
+import { between, breathe, frameOn, type Frame, holds, keepInside, shows, type ShotSize } from "./camera";
+import { type ScreenText, ScreenTexts } from "./labels";
+import { counterBottom, counterShown } from "./hud";
+import { CashStack, type Cur, MoneyFlow, PhoneApp, STACK_TONE, stackTop as notesTop } from "./money";
+import { minText } from "../design/fit";
 import { SETS } from "./sets";
 
 type Spot = "left" | "center" | "right" | number;
@@ -44,6 +47,8 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
   const set = SETS[P.set ?? "flat"] ?? SETS.flat!;
   const S = set.spots(w, h);
   const spotX = (s: Spot | undefined, d: number) => typeof s === "number" ? s * w : s ? S[s] : d;
+  // an actor's body always fits the frame (QA: a spot of 0.1 cut people in half at the edge)
+  const actorX = (s: Spot | undefined, d: number) => typeof s === "number" ? Math.min(v ? 0.8 : 0.89, Math.max(v ? 0.2 : 0.11, s)) * w : spotX(s, d);
   const cur = (p.tl.currency ?? "INR") as Cur;
   const actors = P.actors ?? [];
   const objects = P.objects ?? [];
@@ -54,12 +59,12 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
   const maxAmount = Math.max(1, ...stacks.map((s) => s.amount ?? 1));
   const stackFull = h * (v ? 0.42 : 0.5);
   const stackTop = (o: StackObj) => S.ground - stackFull * ((o.amount ?? 1) / maxAmount);
-  const stackW = v ? 230 : 180, phoneW = v ? 380 : 360;   // a long phone at 280 drew its lines under 30 px
+  const stackW = v ? 230 : 180, phoneW = v ? 460 : 360;   // a long phone at 280 drew its lines under 30 px; a Short at 380 under 44
   const head = (who: string) => {
     const a = actors.find((x) => x.who === who);
     if (!a) return null;
     const look = CAST[who]?.look.scale ?? 1;
-    return [spotX(a.spot, S.center), S.ground - 440 * aScale(a) * look] as [number, number];
+    return [actorX(a.spot, S.center), S.ground - 440 * aScale(a) * look] as [number, number];
   };
   const phones = objects.filter((o): o is PhoneObj => o.kind === "phone");
   const phoneAt = (o: PhoneObj): [number, number] => [spotX(o.spot, S.center), h * (o.height ?? 0.42)];
@@ -121,6 +126,22 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
   };
   const dof = clamp((fr.s - 1.6) / 1.4) * 7;   // depth of field on close shots
 
+  // stack tags and labels: in screen space, after the camera (labels.tsx)
+  const texts: ScreenText[] = [];
+  stacks.forEach((o, i) => {
+    const k = clamp((t - at(p, o.at, 0.2)) / 1.1);
+    if (k <= 0 || !shows(fr, box(o), w, h, 60)) return;
+    const x = spotX(o.spot, S.center), full = stackFull * ((o.amount ?? 1) / maxAmount);
+    const top = notesTop(S.ground, stackW, full, k) - 24;
+    const sx = x * fr.s + fr.tx, sy = top * fr.s + fr.ty;
+    const tagOn = !!o.text && k >= 1;
+    if (tagOn) texts.push({ key: `st${i}`, kind: "tag", text: o.text!, x: sx, y: sy, fill: STACK_TONE[o.tone ?? "plain"], ink: "#fff" });
+    if (o.label) {
+      const bottom = tagOn ? sy - (v ? 96 : 74) : sy;
+      texts.push({ key: `sl${i}`, kind: "label", text: o.label, x: sx, y: bottom - (v ? 60 : 44), above: bottom, upper: true });
+    }
+  });
+
   const Back = set.back, Front = set.front;
   const word = P.word;
   const wordStart = word ? at(p, word.at, 0.3) : 0;
@@ -138,16 +159,16 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
             const start = at(p, o.at, 0.2);
             const k = clamp((t - start) / 1.1);
             return <CashStack key={`s${i}`} x={spotX(o.spot, S.center)} ground={S.ground} width={stackW} full={stackFull * ((o.amount ?? 1) / maxAmount)}
-              k={k} cur={cur} label={o.label} text={o.text} textShown={k >= 1} tone={o.tone} seed={`${p.beat.id}s${i}`} />;
+              k={k} cur={cur} label={o.label} text={o.text} textShown={k >= 1} tone={o.tone} seed={`${p.beat.id}s${i}`} bare />;
           })}
-          {actors.map((a, i) => <Actor key={a.who + i} p={p} spec={{ ...a, x: spotX(a.spot, S.center) / w, scale: aScale(a) }} ground={S.ground} index={i} />)}
+          {actors.map((a, i) => <Actor key={a.who + i} p={p} spec={{ ...a, x: actorX(a.spot, S.center) / w, scale: aScale(a) }} ground={S.ground} index={i} />)}
           {phones.map((o, i) => {
             const [x, y] = phoneAt(o);
             const start = at(p, o.at, 0);
             const k = clamp((t - start) / 0.45);
             return (
-              <g key={`p${i}`} transform={`translate(0,${(1 - k) * h * 0.5})`} opacity={k}>
-                <PhoneApp x={x} y={y} pw={phoneW} t={t} title={o.title ?? ""} figure={o.figure} figureShown={t >= start + 0.4}
+              <g key={`p${i}`} transform={`translate(0,${(1 - k) * h * 0.5})`} opacity={k} className={holds(fr, box(o), w, h) ? undefined : "decor"}>
+                <PhoneApp x={x} y={y} pw={phoneW} t={t} title={o.title ?? ""} figure={o.figure} figureShown={t >= start + 0.4} minFs={minText(w, h) + 2}
                   lines={(o.lines ?? []).map((l, j) => ({ ...l, at: at(p, l.at, start + 0.6 + j * 0.5) }))}
                   toasts={(o.toasts ?? []).map((n, j) => ({ ...n, at: at(p, n.at, start + 0.3 + j * 0.7) }))} />
               </g>
@@ -164,9 +185,10 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
           <Front w={w} h={h} t={t} seed={`${p.beat.id}-${P.set}f`} />
         </AbsoluteFill>
       )}
+      <AbsoluteFill style={{ pointerEvents: "none" }}><ScreenTexts items={texts} w={w} h={h} scene="shot" top={counterShown(p.tl, p.beat) ? counterBottom(w, h) : undefined} /></AbsoluteFill>
       {word && wk > 0 && (
         <div style={{ position: "absolute", left: word.where === "right" ? w * 0.42 : 40, right: word.where === "left" ? w * 0.42 : v ? 150 : 40,
-          top: v ? h * 0.15 : h * 0.1, textAlign: word.where === "left" ? "left" : word.where === "right" ? "right" : "center" }}>
+          top: counterShown(p.tl, p.beat) ? (v ? h * 0.2 : h * 0.19) : v ? h * 0.15 : h * 0.1, textAlign: word.where === "left" ? "left" : word.where === "right" ? "right" : "center" }}>
           <span style={{ display: "inline-block", fontFamily: FONT, fontWeight: 900, fontSize: v ? 150 : 110, lineHeight: 1, textTransform: "uppercase",
             color: WORD_COLORS[word.color ?? "gold"] ?? WORD_COLORS.gold, WebkitTextStroke: `${v ? 16 : 12}px #000`, paintOrder: "stroke fill",
             // a long frame's word sits 108 px from the top: a short drop keeps it inside the frame

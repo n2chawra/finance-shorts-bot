@@ -1,6 +1,6 @@
 # long_story — long-form videos on Remotion
 
-A long video (8–12 min, 1920×1080) told as a story by the recurring cast, drawn by Remotion from a
+A long video (the settings' length, 400–600 s since 2026-10-29; 1920×1080) told as a story by the recurring cast, drawn by Remotion from a
 timeline Python builds. Example: [`examples/long_story.json`](../../../examples/long_story.json).
 
 ```
@@ -65,8 +65,7 @@ Draw the story's things in `remotion/src/videos/<id>/props.tsx` (10-20 for a lon
 | `style` | optional `{palette, genre, key, bpm}` (resolved from the seed otherwise) |
 | `currency` | `USD`, `GBP`, `EUR` or `INR`, from the plan: how every figure is shown and spoken (rupees use lakh and crore, the others K/M/B) |
 | `maths` | named calculations, `[{name, kind, ...inputs}]`; see below |
-| `thumbnail` | **The long-video thumbnail sells the whole promise** (owner, 2026-10-26: our long videos got almost no clicks; their thumbnails sold one small detail, a receipt with a figure, and often a different video from the title). One of five types (`remotion/src/compositions/LongThumbs.tsx`, examples in `improvement/research/thumbnails.json`): **`grid`** for a list video (`items`: 6-12 of the video's own props with 1-2 word `label`s, every item at once, "DON'T FALL FOR THESE"), **`ladder`** for levels (`levels`: 4-7, each a prop or a cast member, the whole ladder), **`extremes`** for rich vs poor (`ends`: two, each `{word, who, pose, expression, prop}`: HOMELESS ↔ TRILLIONAIRE), **`face`** for a secret or a warning (`who`, `expression`, one prop in `items`), **`scene`** for a story (`at`: a beat). `words`: 1-4 huge words that **add to the title** (the emotion or the stakes), sharing at most one word with it; **no figure**; `color` for grid and face (teal, yellow, red, navy, green, purple, orange). Things are the video's own props (`remotion/src/videos/<id>/props.tsx`). The render fails a thumbnail that breaks these (`renderer/thumbs.py`). |
-| `thumbnails` | two more for YouTube's Test & Compare, **each a different type** (e.g. `grid`, `extremes`, `face`): three ideas, not three layouts of one. Before shipping, look at them in the feed: `python -m renderer.thumbs feed <id>` (our three among real hits at YouTube size, `videos/<id>/feed-preview.png`). |
+| `thumbnail` | **One thumbnail, made for this video from what works on its topic** (owner, 2026-10-29: "only 1 is enough... for each video its references are searched, see what type of thumbnail actually works and make something like that"; the five fixed types of 2026-10-26 got no clicks). Run `python -m renderer.thumbs refs <id>`: the topic's most viewed videos (the market job searches each open topic weekly, plus the topic's `demand` video) on one sheet. Look at it and name what the hits share: the picture (a chain of things with red arrows, two ends facing, one object huge), the face (who, how big, which side, looking where), the words (how many, stacked, which one coloured), the colours. Then code `remotion/src/videos/<id>/Thumb.tsx` in that pattern with our cast and the video's own props, from the kit `remotion/src/studio/thumb.tsx` (`Glow`, `Face`, `Thing`, `Words`, `Arrow`, `Ring`, `Badge`, `Split`; reference: `remotion/src/videos/L-remake-borrow/Thumb.tsx`). The block: `{"layout": "custom", "component": "Thumb", "who", "pose", "expression", "words": "1-4 huge words, *one* coloured", "pattern": "<what the hits share, one sentence>", "references": [{"id": "<YouTube id>", "views": 1314740, "what": "<what its thumbnail does>"}, ... 3 or more, 100K+ views]}`. `words` add to the title (the emotion or the stakes) and share at most one word with it. A figure, if the hits use one, comes from `tl.figures`. Copy the pattern, never the picture: no other channel's image, logo or face. The render fails a thumbnail that breaks these (`renderer/thumbs.py`); `python -m renderer.thumbs feed <id>` shows ours among the hits. |
 | `beats` | the video, in order |
 
 **Numbers.** Text never contains a digit or a currency sign (`$`, `£`, `€`, `₹`). Every figure comes
@@ -217,8 +216,8 @@ the first sample at 1.5× and called it right). The voice speaks at 1.5× and ev
 animation, transition and camera move runs 1.5× faster with it, like watching at that playback
 speed. Write on the story clock: `min_sec` and `{"sec": …}` events are story seconds.
 
-At this pace narration runs about **215 words a minute**. An 8–12 min video needs roughly
-**1,700–2,600 words** across 100–150 beats.
+At this pace narration runs about **215 words a minute**. A 400–600 s video needs roughly
+**1,450–2,150 words** across 85–125 beats (the range is `longLengthMinSec`–`longLengthMaxSec` in `config/settings.json`).
 
 **Shape (owner reset, 2026-10-21):** the plan's `story` is a long format from
 `improvement/research/formats.json` (`list_explained`, `once_you_understand`, `which_one_are_you`,

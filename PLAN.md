@@ -374,3 +374,15 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   `worlds.tsx`, `hud.tsx`), coded Hook/Turn/Payoff per video, and gates for visual gaps, literal
   match and prop reuse. Reference remake: v-remake-billionaires (47 s, picture changes 5.5 per 10 s
   vs 1.8, motion 9.6). Length setting 45–75 s in the database.
+- 2026-10-29 **Fewer retries, one researched long thumbnail.** The last 33 videos took up to twelve
+  failed steps each (147 of ~200 render failures were words off the frame). Labels and tags are now
+  drawn after the camera, clamped and fitted (`studio/labels.tsx`, `design/fit.ts`); the devices fit
+  their words and decorative props drop their lettering; the HUD counter gives way on its own; actors
+  and multiplied rows stay inside the frame; titles and descriptions take `{placeholders}`; ids may hold
+  digits; a maths entry's inputs are readable (`@home.amount`); errors list the valid keys. New:
+  `generator.run lint <id>` (every check without voice or pixels, ~20 s), `generator.run failures` (what
+  failed lately, grouped, with the fix) and `generator/prompts/checklist.md`. Long videos get one
+  thumbnail, coded per video (`videos/<id>/Thumb.tsx`, kit `studio/thumb.tsx`) from the topic's most
+  viewed thumbnails, which the market job searches weekly per open topic (`thumb-refs.json`;
+  `python -m renderer.thumbs refs <id>`); Test & Compare variants are gone. Length settings now
+  35–50 s and 400–600 s (owner, dashboard); docs read the settings.

@@ -32,6 +32,27 @@ function carried(tl: Timeline, index: number) {
   return { level, counter, prev, counterBeat };
 }
 
+// scenes that put their own words in the top of the frame: a carried counter there covered titles,
+// type and figures (QA, 17 rejections by 2026-10-29), so the HUD gives way on its own
+const TOP_SCENES = new Set(["type", "stats", "case", "chapter", "custom", "hook", "bignumber", "kinetic", "screen", "equation", "end"]);
+function topTaken(beat: Beat): boolean {
+  const P = beat.params as { title?: string; word?: unknown; hud?: HudParams };
+  if (TOP_SCENES.has(beat.scene)) return true;
+  if (beat.scene === "framework" && P.title) return true;
+  if (beat.scene === "shot" && P.word && !P.hud?.counter) return true;   // a shot that sets a counter moves its word down
+  return false;
+}
+
+/** Does the HUD draw a counter on this beat? Scenes keep their labels below it (labels.tsx). */
+export function counterShown(tl: Timeline, beat: Beat): boolean {
+  const hud = (beat.params.hud ?? {}) as HudParams;
+  if (hud.hide || hud.noCounter || topTaken(beat)) return false;
+  const index = tl.beats.findIndex((b) => b.id === beat.id);
+  return index >= 0 && !!carried(tl, index).counter?.text;
+}
+/** How far down the counter reaches (px), so labels start below it. */
+export const counterBottom = (w: number, h: number): number => (h > w ? 360 : 190);
+
 export const StoryHud: React.FC<{ tl: Timeline; index: number; beat: Beat; frame: number; fps: number }> = ({ tl, index, beat, frame, fps }) => {
   const levels = (tl as Timeline & { structure?: { levels?: string[] } }).structure?.levels ?? [];
   const hud = (beat.params.hud ?? {}) as HudParams;
@@ -44,12 +65,13 @@ export const StoryHud: React.FC<{ tl: Timeline; index: number; beat: Beat; frame
   const evAt = (name?: string) => (name && name in beat.events ? beat.events[name]! / fps : 0);
 
   // the counter: counts up from the previous value when this beat sets a new one
-  let counterText = hud.noCounter ? undefined : counter?.text;
+  let counterText = hud.noCounter || topTaken(beat) ? undefined : counter?.text;
   let label = counter?.label;
   let pulse = 0;
   if (counter && counterBeat === index && counter.value !== undefined) {
     const start = evAt(counter.at), d = t - start;
-    if (d < 0) { counterText = prev?.text; label = prev?.label; }
+    if (counterText === undefined) { /* hidden here: the value still carries to the next beat */ }
+    else if (d < 0) { counterText = prev?.text; label = prev?.label; }
     else if (d < 1) counterText = countUp(counter.value, ease(d), counter.text ?? "", "inr", tl.currency);
     pulse = d >= 0 && d < 1.3 ? Math.sin(Math.min(1, d / 1.3) * Math.PI) : 0;
   }

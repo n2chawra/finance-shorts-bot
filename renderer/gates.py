@@ -93,6 +93,9 @@ def layout_problems(probes: list[dict], fmt: str, width: int, height: int, fps: 
     for p in probes:
         at = f"{p['frame']/fps:.1f} s"
         for it in p["items"]:
+            # wholly off the frame (a thing the camera left behind): nobody can see it, nothing to fix
+            if it["x"] + it["w"] <= 0 or it["x"] >= width or it["y"] + it["h"] <= 0 or it["y"] >= height:
+                continue
             problems = []
             if it["fs"] + 0.5 < rules["min_text"]:
                 problems.append(f"is {it['fs']:g} px, below the {rules['min_text']} px minimum")

@@ -1,4 +1,5 @@
 """Long-video thumbnail rules (renderer/thumbs.py)."""
+import json
 from pathlib import Path
 
 from PIL import Image
@@ -7,29 +8,50 @@ from renderer import thumbs
 
 REPO = Path(__file__).resolve().parents[2]
 TITLE = "Why the rich borrow money and the poor pay it back"
+REFS = [{"id": "D7Y-nJ8uiEA", "views": 10119497, "what": "one huge face, three words"},
+        {"id": "zxVoCw3P1Gc", "views": 3787627, "what": "a grid of the list's things"},
+        {"id": "FHSsR1gfLJA", "views": 1128269, "what": "a ladder, coloured columns"}]
+GOOD = {"layout": "custom", "component": "Thumb", "words": "Only one *wins*", "references": REFS,
+        "pattern": "one big shocked face beside the thing, two huge words, red arrow"}
 
 
-def test_the_old_receipt_thumbnail_fails():
-    old = {"layout": "story", "words": "Your car loan trap", "figure": "$45,424"}
-    assert any("receipt and card layouts" in p for p in thumbs.spec_problems(old, TITLE, "rich_vs_poor"))
+def test_a_fixed_type_is_no_longer_enough():
+    """Owner, 2026-10-29: the fixed types were outdated and got no clicks."""
+    for layout in ("story", "grid", "face"):
+        assert any("custom" in p for p in thumbs.spec_problems({"layout": layout, "words": "Look"}, TITLE))
 
 
-def test_a_grid_that_sells_the_whole_list_passes():
-    grid = {"layout": "grid", "words": "Only one *makes* money", "items": [{"prop": p} for p in "abcdef"]}
-    assert thumbs.spec_problems(grid, TITLE, "rich_vs_poor") == []
+def test_a_custom_thumbnail_modelled_on_the_topic_s_hits_passes():
+    assert thumbs.spec_problems(GOOD, TITLE) == []
 
 
-def test_words_figures_counts_and_type():
-    assert any("repeats the title" in p for p in thumbs.spec_problems({"layout": "face", "words": "Rich borrow money"}, TITLE, None))
-    assert any("no figure" in p for p in thumbs.spec_problems({"layout": "face", "words": "Banks love this", "figure": "$9"}, TITLE, None))
-    assert any("6-12" in p for p in thumbs.spec_problems({"layout": "grid", "words": "Look", "items": [{}]}, TITLE, None))
-    assert any("ladder or extremes or face" in p for p in thumbs.spec_problems({"layout": "grid", "words": "Look", "items": [{}] * 6}, TITLE, "which_one_are_you"))
-    assert any("4 at most" in p for p in thumbs.spec_problems({"layout": "face", "words": "one two three four five"}, TITLE, None))
+def test_references_pattern_and_words():
+    few = {**GOOD, "references": REFS[:2]}
+    assert any("3+ hits" in p for p in thumbs.spec_problems(few, TITLE))
+    small = {**GOOD, "references": [{**r, "views": 5000} for r in REFS]}
+    assert any("3+ hits" in p for p in thumbs.spec_problems(small, TITLE))
+    assert any("pattern" in p for p in thumbs.spec_problems({**GOOD, "pattern": ""}, TITLE))
+    assert any("repeats the title" in p for p in thumbs.spec_problems({**GOOD, "words": "Rich borrow money"}, TITLE))
+    assert any("4 at most" in p for p in thumbs.spec_problems({**GOOD, "words": "one two three four five"}, TITLE))
 
 
-def test_variants_are_different_ideas():
-    assert thumbs.variant_problems([{"layout": "grid"}, {"layout": "face"}, {"layout": "extremes"}]) == []
-    assert thumbs.variant_problems([{"layout": "face"}, {"layout": "face"}])
+def test_the_thumb_file_must_exist(tmp_path):
+    assert thumbs.code_problems("L-x", GOOD, tmp_path)
+    f = tmp_path / "remotion" / "src" / "videos" / "L-x"
+    f.mkdir(parents=True)
+    (f / "Thumb.tsx").write_text("export default () => null;", encoding="utf-8")
+    assert thumbs.code_problems("L-x", GOOD, tmp_path) == []
+
+
+def test_topic_refs_come_from_the_market_search_and_the_demand_video(tmp_path):
+    d = tmp_path / "videos" / "L-x"
+    d.mkdir(parents=True)
+    (d / "plan.json").write_text(json.dumps({"topic": {"feed_id": "t1", "demand": {
+        "url": "https://www.youtube.com/watch?v=apFPtyZHuns", "views": 12324195, "title": "Could You Spend $1 Trillion?"}}}), encoding="utf-8")
+    store = {"topics": {"t1": {"refs": [{"id": "abcdefghijk", "views": 2_000_000, "title": "A"}, {"id": "bcdefghijkl", "views": 900_000, "title": "B"},
+                                        {"id": "cdefghijklm", "views": 300_000, "title": "C"}]}}}
+    refs = thumbs.topic_refs("L-x", tmp_path, store)
+    assert [r["id"] for r in refs[:2]] == ["apFPtyZHuns", "abcdefghijk"] and len(refs) == 4
 
 
 def test_phone_size_band():
@@ -40,9 +62,3 @@ def test_phone_size_band():
         assert any("flat at phone size" in p for p in thumbs.image_problems(tmp))
     finally:
         tmp.unlink()
-
-
-def test_every_format_allows_three_thumbnail_types():
-    # Test & Compare asks for three thumbnails of different types (L-20261026-01 could only ship two)
-    from renderer.thumbs import FORMAT_TYPES
-    assert all(len(set(types)) >= 3 for types in FORMAT_TYPES.values()), FORMAT_TYPES

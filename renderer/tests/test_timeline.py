@@ -163,48 +163,31 @@ def test_counters_on_their_own_figure_pass() -> None:
     tb.check_script(script([{"id": "a", "scene": "towers", "params": {"items": items}}, {"id": "z", "scene": "end"}]))
 
 
-def test_three_thumbnails_need_different_angles() -> None:
-    import copy
+def test_one_thumbnail_per_video() -> None:
+    """Owner, 2026-10-29: "long video thumbnail: only 1 is enough"."""
     import json
     from pathlib import Path
 
     from renderer.timeline.build import check_script
     s = json.loads((Path(__file__).resolve().parents[2] / "examples" / "long_story.json").read_text(encoding="utf-8"))
-    t = s["thumbnail"]
-    s["thumbnail"] = {**t, "angle": "number"}
-    s["thumbnails"] = [{**t, "angle": "question", "layout": "story", "hero": "phone"},
-                       {**t, "angle": "reaction", "layout": "story", "hero": "piggy"}]
-    check_script(s)
-    same = copy.deepcopy(s)
-    same["thumbnails"][0]["angle"] = "number"
-    with pytest.raises(ValueError, match="different angle"):
-        check_script(same)
-    too_many = copy.deepcopy(s)
-    too_many["thumbnails"].append({**t, "angle": "warning"})
-    with pytest.raises(ValueError, match="two more at most"):
-        check_script(too_many)
+    s["thumbnails"] = [{**s["thumbnail"], "angle": "question"}]
+    with pytest.raises(ValueError, match="one thumbnail per video"):
+        check_script(s)
 
 
-def test_three_thumbnails_need_different_pictures() -> None:
-    import copy
+def test_a_custom_thumbnail_keeps_its_references_as_notes() -> None:
+    """YouTube ids and view counts are notes on what it copies, never shown: digits are fine there."""
     import json
     from pathlib import Path
 
-    from renderer.timeline.build import check_script
-    s = json.loads((Path(__file__).resolve().parents[2] / "examples" / "long_story.json").read_text(encoding="utf-8"))
-    t = {**s["thumbnail"], "layout": "story", "hero": "card"}
-    s["thumbnail"] = {**t, "angle": "number"}
-    s["thumbnails"] = [{**t, "angle": "question", "hero": "phone"}, {**t, "angle": "reaction", "layout": "secret"}]
-    check_script(s)
-    same = copy.deepcopy(s)
-    same["thumbnails"][0]["hero"] = "card"   # story + card twice: one picture, new words
-    with pytest.raises(ValueError, match="different picture"):
-        check_script(same)
-    cards = copy.deepcopy(s)
-    for th in [cards["thumbnail"], *cards["thumbnails"]]:
-        th.pop("layout"), th.pop("hero")
-    with pytest.raises(ValueError, match="different picture"):
-        check_script(cards)
+    from renderer.timeline.build import _thumbnail
+    th = {"layout": "custom", "component": "Thumb", "who": "rohan", "words": "Never sell",
+          "pattern": "one huge face, 2 words, a red arrow to the 1 thing",
+          "references": [{"id": "D7Y-nJ8uiEA", "views": 10119497, "what": "face + 3 words"}]}
+    t = _thumbnail(th, {}, {})
+    assert t["references"][0]["id"] == "D7Y-nJ8uiEA" and t["figure"] == ""
+    with pytest.raises(ValueError, match="component"):
+        _thumbnail({**th, "component": "../evil"}, {}, {})
 
 
 def test_event_gaps_flags_a_long_beat_with_a_still_stretch() -> None:

@@ -25,3 +25,24 @@ test("videos split into Shorts and long, ranked by views per hour", () => {
   assert.equal(r.shorts[0]!.query, "sip");
   assert.deepEqual(r.long.map((x) => x.url), ["https://youtube.com/watch?v=long"]);
 });
+
+test("long topics get their reference thumbnails searched once a week, the urgent first", async () => {
+  const { dueTopics, keepRefs, pickRefs, LongTopic } = await import("../lib/market.ts");
+  const cfg = MarketConfig.parse({ regionCode: "US", relevanceLanguage: "en", queries: ["xx"] }).thumbRefs;
+  assert.equal(cfg.perDay, 4);
+  const now = new Date("2026-10-29T12:00:00Z");
+  const topics = LongTopic.array().parse([
+    { id: "a", title: "A", status: "new" }, { id: "b", title: "B", status: "new", priority: "high" },
+    { id: "c", title: "C", status: "used" }, { id: "d", title: "D", status: "new", expires: "2026-10-01" },
+    { id: "e", title: "E", status: "new" },
+  ]);
+  const prev = { e: { query: "E", searchedAt: "2026-10-27T12:00:00Z", refs: [] } };
+  assert.deepEqual(dueTopics(topics, prev, now, cfg).map((t) => t.id), ["b", "a"]);   // e is fresh, c used, d expired
+  assert.deepEqual(Object.keys(keepRefs(prev, new Set(["e"]), now, cfg)), ["e"]);
+  assert.deepEqual(Object.keys(keepRefs(prev, new Set(["a"]), now, cfg)), []);
+  const v = (id: string, views: number, duration: string) => ({ id, snippet: { title: id, channelTitle: "c", publishedAt: "2025-01-01T00:00:00Z" },
+    contentDetails: { duration }, statistics: { viewCount: String(views) } });
+  const refs = pickRefs([v("small", 5_000, "PT9M"), v("big", 2_000_000, "PT11M"), v("short", 9_000_000, "PT50S"), v("mid", 400_000, "PT8M")], cfg);
+  assert.deepEqual(refs.map((r) => r.id), ["big", "mid"]);
+  assert.equal(refs[0]!.thumb, "https://i.ytimg.com/vi/big/hqdefault.jpg");
+});

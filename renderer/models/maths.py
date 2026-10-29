@@ -383,6 +383,11 @@ def compute(maths: list[dict], fm: Money | None = None) -> dict[str, Result]:
         if m["name"] in out:
             raise ValueError(f"maths name {m['name']!r} is used twice")
         out[m["name"]] = compare(m, fm, out) if kind == "compare" else KINDS[kind](m, fm)
+        # its own numeric inputs are readable too: "@home.amount" sizes a stack (2026-10-29: eleven
+        # scripts failed on an input they expected to reach)
+        for k, v in m.items():
+            if isinstance(v, (int, float)) and not isinstance(v, bool) and k not in out[m["name"]]["values"]:
+                out[m["name"]]["values"][k] = float(v)
     return out
 
 

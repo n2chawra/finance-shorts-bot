@@ -36,7 +36,7 @@ People Fall Into Explained" (1.1M), "Financial Bubbles Explained with Bananas" (
   `rich_vs_poor`. The topic names its format in `stories` and its reference video in `demand`
   (title, views, url; 500,000+ views). Add a new long format there when 2+ videos with 1M+ views
   share a shape we don't have (and propose the story id if `generator/variety.py` lacks it).
-- **8–12 minutes** (settings: 480–900 s): long enough for mid-roll ads, short enough for us to
+- **7–10 minutes** (settings: 400–600 s since 2026-10-29): long enough for mid-roll ads, short enough for us to
   render. A list of 6–9 items, one chapter each, every chapter a mini story with a computed figure
   and a cliffhanger into the next; a recap-and-tease every 2–3 minutes; the strongest item last.
 - **Title and thumbnail carry a big promise**: curiosity, envy or fear ("The middle class trap",
@@ -69,6 +69,7 @@ First run `python -m generator.run prune-feed --format long` (drops stale, expir
  "demand": {"title": "reference video", "views": 2300000, "url": "https://..."},
  "category": "sip|tax|home_loan|...", "kind": "evergreen|trend|seasonal",
  "priority": "high|normal", "templates": ["long_story"],
+ "search": "3-7 words people type to find this topic's hits (the market job searches it for thumbnails)",
  "angle": "the one question the video answers",
  "why_now": "why this is worth five minutes, and to whom",
  "outline": ["hook: ...", "the leak", "a year of it", "the turn", "invested instead", "side by side", "what to do"],
@@ -134,8 +135,11 @@ git push origin HEAD:refs/heads/agent/scout/$DAY
 ```
 End with a 5-line report: focus, topics added, feed health, anything for the owner.
 
-**Thumbnails (weekly, Mondays):** from `market.json`'s long videos, add the fastest-growing finance
-explainers to `improvement/research/thumbnails.json` `examples` (`id`, `type`: grid, ladder,
-extremes, face or scene, `title`, `views`; ids and numbers only, no images), so Studio and the feed
-preview compare our thumbnails with what is winning now.
+**Thumbnails (2026-10-29):** every long topic you write gets a `search`: the 3-7 words people type to
+find its hits ("why the rich borrow money instead of selling"). The daily market job searches each
+open topic once a week with it and keeps its most viewed videos (`thumb-refs.json` on the market-data
+branch), and Studio models the video's one thumbnail on them (`python -m renderer.thumbs refs <id>`).
+Weekly (Mondays), also add the fastest-growing finance explainers from `market.json` to
+`improvement/research/thumbnails.json` `examples` (`id`, `title`, `views`; ids and numbers only, no
+images): the fallback when a topic has no search yet.
 

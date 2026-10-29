@@ -7,6 +7,13 @@ dynamic to the script"):
 - `Turn.tsx`, `Payoff.tsx`, or any `<Name>.tsx`: `"scene": "custom", "params": {"component": "<Name>"}`
 - `props.tsx`: default-exports `{ name: PropFC }`, the story's own things drawn with `../../studio/draw`,
   used by `"scene": "build"` beats and importable by the beats above (`import props from "./props"`)
+- `Thumb.tsx` (long videos, since 2026-10-29): the video's one thumbnail, modelled on its topic's most
+  viewed thumbnails (`python -m renderer.thumbs refs <id>`), built from `../../studio/thumb`
+  (`Glow`, `Face`, `Thing`, `Words`, `Arrow`, `Ring`, `Badge`, `Split`). It default-exports a
+  `React.FC<ThumbProps>` (`{ tl, th, w, h }`, 1280×720) and is chosen by `"thumbnail": {"layout":
+  "custom", "component": "Thumb", ...}`. Reference: `L-remake-borrow/Thumb.tsx`.
+- Every word you draw is sized with `fitLine` / `fitWords` and `minText(w, h)` from `../../design/fit`
+  and kept inside `safeBox(w, h)`: then it never runs off the frame or under the minimum size.
 
 Every file follows the contract below (`renderer/remotion.py` `custom_problems`). A beat whose file is
 missing or fails falls back to a build or shot with the same params. Reference:

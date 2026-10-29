@@ -60,6 +60,9 @@ python -m generator.run check-plan <id>
 ```
 
 ## 3. Write the script
+**First, what keeps failing** (2026-10-29): read `generator/prompts/checklist.md` and run
+`python -m generator.run failures --format long`. Write so that none of it happens again.
+
 **The shot system first** (owner, 2026-10-21): read `renderer/templates/SHOTS.md`,
 `.claude/skills/motion-direction/SKILL.md` and `examples/short_story_shot.json` (the approved
 showcase, a Short: the same shots work in 16:9). At least 60% of the beats are `shot`s, each chapter
@@ -76,7 +79,7 @@ A long video is a **story with the recurring cast**, told in beats. Start from t
 `outline` and its central picture (the leaking bucket, the snowball, the treadmill): what does
 the viewer *see* happen?
 - **Length and pace.** Long videos play at tempo 1.5, about **215 spoken words a minute**. Aim for
-  **8–12 minutes: 1,700–2,600 words across 100–150 beats** (a beat is one line and one picture,
+  the setting `longLengthMinSec`–`longLengthMaxSec` (400–600 s since 2026-10-29: **1,450–2,150 words across 85–125 beats**) (a beat is one line and one picture,
   3–8 s). Add a beat that *does* something, never stretch one.
 - **Shape (the format's list).** A 30-second hook that promises every item and teases the worst one.
   Then one `chapter` per item (6–9), each a mini story with the cast, one or two computed figures
@@ -93,26 +96,28 @@ the viewer *see* happen?
   the story is about one country; see `channel/profile.md` for realistic inputs per currency). Never
   type a digit or a currency sign into any text.
   State the simplification on the end card (`assumption`).
-- **Thumbnail**: fill the `thumbnail` block: one cast member reacting, one figure, at most four
-  words.
+- **Thumbnail**: one, coded for this video from its topic's hits (below).
 - Say the honest thing. If the tidy answer has a catch, the catch is the most valuable beat.
 
 ```
 python -m generator.run number-check <id>     # must print ok
 python -m generator.run figures <id>          # every figure, and every beat's line as written and as spoken
+python -m generator.run lint <id>             # ~20 s: spine, picture, devices, props, thumbnail, own code; must print ok
 ```
+Run `lint` after every change to the script or the video's code, before any stills: it finds in
+seconds what used to cost a render each.
 Two rewrites at most; then stop and mark the video failed.
 
-**Three thumbnails** (owner, 2026-10-19): besides `thumbnail`, write `thumbnails` with two more, each
-with a different `angle` from `number` (the figure leads), `question` (the words ask), `reaction` (a
-cast member's face leads), `versus` (two things compared) and `warning` (a risk named). Give the
-main one an `angle` too. They are tested against each other on YouTube (Test & Compare); read
-`thumbnailAngles` in `python -m improvement.evaluate --json` first and make the angle that wins most
-often the main one, with two others to keep learning.
-All three use `layout: "story"` (one picture that says the topic: the `hero` object with the small
-amount on it, an arrow to the receipt with the big `figure`, the cast member reacting); the angle
-changes the `words`, and the words always **name the topic** ("Paying the minimum?"), never only a
-figure. Follow the **Look and motion** rules in the long_story README for every beat: the hook shows
+**One thumbnail, made from what works on its topic** (owner, 2026-10-29: "only 1 is enough... for each video its references are searched, see what type of thumbnail actually works and make something like that"). After the script:
+```
+python -m renderer.thumbs refs <id>      # the topic's most viewed videos and their thumbnails, on one sheet
+```
+Open the sheet it prints (a PNG: look at it). Name what the hits share (the picture, the face, the words, the colours),
+then code `remotion/src/videos/<id>/Thumb.tsx` in that pattern with our cast and this video's props, from
+`remotion/src/studio/thumb.tsx` (reference: `remotion/src/videos/L-remake-borrow/Thumb.tsx`), and fill the `thumbnail`
+block as the long_story README says (`layout: "custom"`, `pattern`, 3+ `references`). One thumbnail: no `thumbnails`.
+After the stills, `python -m renderer.thumbs feed <id>` puts it among the hits: if it is not the one you would click,
+change it. Then follow the **Look and motion** rules in the long_story README for every beat: the hook shows
 topic and shock in five seconds, no text-only slides, and each scene's place, time, land and weather
 chosen for this story.
 
@@ -130,8 +135,8 @@ first long video was rendered three times, twice for problems the stills already
    ```
    nohup python -m generator.run render <id> --preview > /tmp/stills-<id>.log 2>&1 &
    ```
-   It builds the voice and timeline, draws the contact sheet, the thumbnails and the layout
-   probe, and checks layout, length (480–900 s) and sound. It must end with `ok`. `FAIL:` lines:
+   It builds the voice and timeline, draws the contact sheet, the thumbnail and the layout
+   probe, and checks layout, length (the settings' range) and sound. It must end with `ok`. `FAIL:` lines:
    fix the script and go back to section 3.
 2. **QA review** (section 6) on those stills; fix what it names and run the stills again (the
    voice is cached).
@@ -139,7 +144,7 @@ first long video was rendered three times, twice for problems the stills already
    ```
    nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
    ```
-   **This takes 40–80 minutes** for 8–12 min at the shot system's detail, and a command may only run 10, so start it in the background like
+   **This takes 30–60 minutes** for 7–10 min at the shot system's detail, and a command may only run 10, so start it in the background like
    this and check `tail -3 /tmp/render-<id>.log` every few minutes. If it is cut off, run the same
    command again: finished 40-second chunks are kept and it carries on. It must end with `ok`. A
    `FAIL:` here is the motion gate (a beat with no visible movement): fix that beat and render
@@ -203,9 +208,8 @@ Our long videos got almost no clicks: the thumbnails sold one small detail (a re
 figure) and twice promised a different video from the title ("The 6 levels of money" with "The
 level two trap"). Write the pair together:
 - **The title** says *what*: 60 characters at most, the format's proven shape.
-- **The thumbnail** says *why click*: the whole promise as a picture (every item, the whole ladder,
-  the two extremes) and 1-4 huge words that add the emotion or the stakes. No figure.
-- Pick the type for the format (`renderer/thumbs.py` `FORMAT_TYPES`), three different types for
-  the three thumbnails, and check them in the feed (`python -m renderer.thumbs feed <id>`) before
-  shipping: would you click ours over the hits next to it?
+- **The thumbnail** says *why click*, in the picture language the topic's hits already use (2026-10-29:
+  `python -m renderer.thumbs refs <id>`), with 1-4 huge words that add the emotion or the stakes.
+  Check it in the feed (`python -m renderer.thumbs feed <id>`) before shipping: would you click ours
+  over the hits next to it?
 

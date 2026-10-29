@@ -2,8 +2,8 @@
 
 Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for a
 global English-speaking audience (India included; the channel is "Paisa Panchayat", see
-`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 45–75 s story skits with levels that loop) and
-**long videos** (landscape, 8–12 min list and "explained" formats, character-led animation). A dashboard shows everything.
+`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 35–50 s story skits with levels that loop) and
+**long videos** (landscape, 7–10 min list and "explained" formats, character-led animation). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
 Read `PLAN.md` for milestones and current status. Update its checkboxes as work lands.
@@ -53,7 +53,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   craft gates (`renderer/craft.py`) fail a video with empty frames, repeated pictures, one shot
   size or one set.
 - **Depth and a picture that follows the words** (owner, 2026-10-26: viewers left right after the
-  hook; every video turned into the same props): Shorts run 45–75 s on a story spine (hook → promise
+  hook; every video turned into the same props): Shorts run the length setting (35–50 s since 2026-10-29) on a story spine (hook → promise
   by 6 s → levels with a climbing number → a turn → the payoff → loop; `generator/story.py`), drawn
   from the story's own props (`remotion/src/videos/<id>/props.tsx`) in `build` beats whose actions
   fire on the words that name them, with coded Hook, Turn and Payoff beats. Gates: nothing new on
@@ -149,7 +149,7 @@ is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
 | Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Mon/Wed/Fri 14:37 IST, 1 a run) |
 | Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, daily 09:37 IST) |
 | Template | `short_story` (1080×1920, a skit per format in its README) | `long_story` (1920×1080, a list of chapters, the scene catalog in its README) |
-| Length / pace | 45–75 s, tempo 1.4 (~200 spoken words a minute) | 480–900 s, aiming for 8–12 min, tempo 1.5 (~215 words a minute) |
+| Length / pace | 35–50 s (settings), tempo 1.4 (~200 spoken words a minute) | 400–600 s (settings), tempo 1.5 (~215 words a minute) |
 | Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
 
@@ -222,7 +222,7 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
 6. **Render (code)**: `python -m generator.run render <id>` → voice + timeline, Remotion render,
    mp4 + thumbnail + preview contact sheet, liveliness gate.
 7. **QA review (separate agent)**: looks at the contact sheet + audio levels. Rejects overlaps,
-   cut-off or tiny text, empty scenes, unreadable contrast, length outside 45–75 s.
+   cut-off or tiny text, empty scenes, unreadable contrast, length outside the settings' range.
 8. **Ship**: write manifest (title, description, hashtags, style, template, topic), append to
    history, commit to `main`, upload mp4 as a Release asset. Log every step as an AgentRun entry
    inside the manifest.

@@ -78,7 +78,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   doesn't break the loop.
 - **The story spine** (README "The story spine", owner 2026-10-26): hook → promise by 6 s →
   a figure by 9 s → 3+ levels with a climbing number → a turn 50–85% in → the payoff → loop,
-  45–75 s. Every beat has a `role`. Then the picture: draw the story's own things in
+  the length in `config/settings.json` (`lengthMinSec`–`lengthMaxSec`, 35–50 s since 2026-10-29). Every beat has a `role`. Then the picture: draw the story's own things in
   `remotion/src/videos/<id>/props.tsx`, build beats whose actions fire on the words that name them,
   and code `Hook.tsx`, `Turn.tsx` and `Payoff.tsx` (`renderer/templates/SHOTS.md`, "The build scene").
 - **The cover (`thumbnail`) is required**: `layout: "scene"` by default, a frame of this video (the
@@ -110,6 +110,9 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   calculation in `maths`. No predictions about markets, no "buy now", no named funds or stocks.
 
 ## Check
+
+Before writing, read `generator/prompts/checklist.md` and the output of
+`python -m generator.run failures` (what failed lately and how to avoid it).
 
 Run `python -m generator.run number-check <id>`. If it prints `FAIL:` lines, fix the script and
 run it again. You get two rewrites; after that, stop and report the failures.

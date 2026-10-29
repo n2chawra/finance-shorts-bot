@@ -16,6 +16,8 @@ import { PROPS } from "../scenes/kit";
 import { StoryVideo, type StoryProps } from "./StoryVideo";
 import { BigWords, SecretThumb, VersusThumb } from "./ThumbFormats";
 import { LONG_LAYOUTS, LongThumb } from "./LongThumbs";
+import { VIDEOS } from "../videos/hooks";
+import type { ThumbProps } from "../studio/thumb";
 
 export const THUMB = { width: 1280, height: 720 } as const;
 export const SHORT_THUMB = { width: 1080, height: 1920 } as const;
@@ -148,6 +150,11 @@ export const Thumbnail: React.FC<StoryProps> = (props) => {
   if (th?.layout === "versus") return <VersusThumb th={th} w={w} h={h} />;
   if (th?.layout === "secret") return <SecretThumb th={th} w={w} h={h} />;
   if (th?.layout === "scene") return <SceneThumb {...props} />;
+  if (th?.layout === "custom") {
+    // the video's own thumbnail (videos/<id>/Thumb.tsx); a missing file falls back to a frame of the video
+    const Own = VIDEOS[props.timeline.id]?.components[th.component ?? "Thumb"] as unknown as React.FC<ThumbProps> | undefined;
+    return Own ? <Own tl={props.timeline} th={th} w={w} h={h} /> : <SceneThumb {...props} />;
+  }
   if (th?.layout && (LONG_LAYOUTS as readonly string[]).includes(th.layout)) return <LongThumb tl={props.timeline} w={w} h={h} />;
   return th?.layout === "story" ? <StoryThumb {...props} /> : <CardThumb {...props} />;
 };

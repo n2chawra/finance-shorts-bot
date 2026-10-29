@@ -29,7 +29,7 @@ from renderer import craft, remotion, thumbs
 from renderer.engine.formatting import CURRENCIES
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
-from . import experiments, formats, history, reach, story, topics, variety
+from . import experiments, failures, formats, history, numbers, reach, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -282,6 +282,43 @@ def gate_problems(report: dict, settings: dict, fmt: str) -> list[str]:
     return out
 
 
+def lint(vid: str, root: Path = ROOT) -> list[str]:
+    """Every check that needs neither the voice nor a single frame, in seconds (2026-10-29: the last
+    33 videos needed up to twelve failed steps each, most of them found only after a render). Builds
+    the timeline on an estimated voice in a scratch folder and runs the craft, picture, device, props,
+    story, thumbnail and own-code checks. Writes nothing and logs no step: run it after every edit,
+    before `render --preview`. Timing-based findings are on the estimated voice, so a beat that is
+    close to a limit may still differ after the real one."""
+    from renderer.timeline.build import build as build_timeline
+    d = _dir(vid, root)
+    script = _read(d / "script.json")
+    plan_ = numbers.fill_plan(_read(d / "plan.json"), script) if (d / "plan.json").is_file() else {}
+    earlier = [e for e in history.of_format(history.load(root), plan_format(script)) if e["id"] != vid]
+    script = {**script, "experiments": experiments.for_video(vid, script.get("template"), root)}
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            tl = build_timeline(script, Path(tmp), voice="estimate")
+    except (ValueError, RuntimeError) as e:
+        return [str(e)]
+    problems = craft.shot_problems(tl) + [f"{p} (on the estimated voice)" for p in craft.picture_problems(tl)] + craft.device_problems(tl)
+
+    def _tl(e: dict) -> dict:
+        f = root / "videos" / e["id"] / "timeline.json"
+        return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {"beats": []}
+    problems += craft.prop_problems(tl, [(e["id"], _tl(e)) for e in earlier[-craft.PROP_WINDOW:]])
+    problems += story.timeline_problems(script, tl, [_read_script(e["id"], root) for e in earlier[-10:]])
+    if plan_format(script) == "long" and script.get("thumbnail"):
+        th = script["thumbnail"]
+        problems += [f"thumbnail: {p}" for p in thumbs.spec_problems(th, plan_.get("title", script.get("title", "")), script.get("story") or plan_.get("story"))]
+        problems += thumbs.code_problems(vid, th, root)
+    lo, hi = length_range(load_settings(root), plan_format(script))
+    sec_ = tl["durationInFrames"] / tl["fps"]
+    if not lo * 0.95 <= sec_ <= hi * 1.05:
+        problems.append(f"length about {sec_:.0f} s on the estimated voice; it must land in {lo}–{hi} s")
+    problems += remotion.custom_problems(vid)
+    return problems
+
+
 def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     """Render into videos/<id>/ and apply the mechanical QA gates (layout, length, audio levels)."""
     d = _dir(vid, root)
@@ -317,8 +354,13 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         problems.append("a Short needs a `thumbnail` (its cover): `scene` (a frame of the video under the words: the default), "
                         "`versus`, `secret` or `story` (renderer/templates/short_story/README.md)")
     # a long video's thumbnails sell the whole promise, in words that add to the title (renderer/thumbs.py)
-    plan_ = _read(d / "plan.json") if (d / "plan.json").is_file() else {}
+    plan_ = numbers.fill_plan(_read(d / "plan.json"), script) if (d / "plan.json").is_file() else {}
     problems += thumbs.problems({**script, "title": plan_.get("title", script.get("title", "")), "story": script.get("story") or plan_.get("story")}, d)
+    if plan_format(script) == "long" and (d / "thumbnail.png").is_file():
+        try:   # ours among the topic's hits, for QA (other channels' pictures: git-ignored, never shipped)
+            thumbs.feed(vid, title=plan_.get("title"))
+        except (OSError, RuntimeError, ValueError) as e:
+            print(f"note: no feed preview ({e})", file=sys.stderr)
     # the story's own things, not the last videos' (build beats; 2026-10-26)
     tl_now = _read(d / "timeline.json") if (d / "timeline.json").is_file() else {"beats": []}
     def _tl(e: dict) -> dict:
@@ -348,6 +390,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     commit records the upload) and `push` pushes it."""
     d = _dir(vid, root)
     plan, script, report = _read(d / "plan.json"), _read(d / "script.json"), _read(d / "render.json")
+    plan = numbers.fill_plan(plan, script)     # {placeholders} in the title and description become Python's figures
     steps = json.loads((d / "run.json").read_text(encoding="utf-8"))
     checks = _latest_checks(steps)
     blockers = [f"{c} has not passed" for c in CHECKERS if checks.get(c, {}).get("status") != "ok"]
@@ -381,9 +424,9 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         manifest["release"]["mediaBranch"] = f"media/{vid}"
     if (urgent := topics.urgency(plan, root)) is not None:
         manifest["priority"] = urgent   # ingest puts it at the front of the upload queue
-    if script.get("thumbnails"):   # three thumbnails for YouTube's Test & Compare, with what each leads with
-        manifest["thumbnails"] = [{"file": f, "angle": t.get("angle"), "layout": t.get("layout")} for f, t in
-                                  zip(("thumbnail.png", "thumbnail-b.png", "thumbnail-c.png"), [script["thumbnail"], *script["thumbnails"]])]
+    if (th := script.get("thumbnail")) and fmt == "long":   # one thumbnail (2026-10-29), and the hits it was modelled on
+        manifest["thumbnails"] = [{"file": "thumbnail.png", "angle": th.get("angle"), "layout": th.get("layout")}]
+        manifest["thumbnailModel"] = {"pattern": th.get("pattern"), "references": [r.get("id") for r in th.get("references") or [] if isinstance(r, dict)]}
     _write(d / "manifest.json", manifest)
     history.append({
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],
@@ -413,7 +456,7 @@ def gh_exe() -> str:
 
 def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) -> None:
     paths = [f"videos/{vid}", "history/history.json"]
-    if (root / "remotion" / "src" / "videos" / vid / "Hook.tsx").is_file():   # the video's own hook ships with it
+    if (root / "remotion" / "src" / "videos" / vid).is_dir():   # the video's own code (hook, beats, props, thumbnail) ships with it
         paths.append(f"remotion/src/videos/{vid}")
     subprocess.run(["git", "add", *paths], cwd=root, check=True)
     subprocess.run(["git", "commit", "-q", "-m", message], cwd=root, check=True)
@@ -493,7 +536,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="generator.run", description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("state").add_argument("--format", choices=("short", "long"), default="short")
-    for name in ("check-plan", "number-check", "figures"):
+    for name in ("check-plan", "number-check", "figures", "lint"):
         sub.add_parser(name).add_argument("id")
     p = sub.add_parser("record")
     p.add_argument("id")
@@ -519,6 +562,9 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("fail")
     p.add_argument("id")
     p.add_argument("--reason", required=True)
+    p = sub.add_parser("failures")          # what failed lately, grouped: the writer reads it before writing
+    p.add_argument("--days", type=int, default=14)
+    p.add_argument("--format", choices=("short", "long"), default=None)
     # research and Scout run this before writing new topics: stale, expired and weak unused topics go
     sub.add_parser("prune-feed").add_argument("--format", choices=("short", "long"), default="short")
     p = sub.add_parser("template-work")
@@ -555,6 +601,9 @@ def main(argv: list[str] | None = None) -> int:
             fail(a.id, a.reason)
             print(f"marked {a.id} failed")
             return 0
+        if a.cmd == "failures":
+            print(failures.report(ROOT, a.days, a.format))
+            return 0
         if a.cmd == "prune-feed":
             gone = topics.prune_file(history.of_format(history.load(), a.format), history.ist_day(history.now().isoformat()), fmt=a.format)
             print("\n".join(f"dropped {g}" for g in gone) or "nothing to drop")
@@ -562,7 +611,7 @@ def main(argv: list[str] | None = None) -> int:
         if a.cmd == "template-work":
             print(json.dumps(history.append_template_work(a.template, a.action, a.enabled)))
             return 0
-        problems = {"check-plan": check_plan, "number-check": run_number_check}[a.cmd](a.id) if a.cmd != "render" else render(a.id, a.preview)
+        problems = {"check-plan": check_plan, "number-check": run_number_check, "lint": lint}[a.cmd](a.id) if a.cmd != "render" else render(a.id, a.preview)
     except (ValueError, subprocess.CalledProcessError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
