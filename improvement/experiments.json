@@ -502,6 +502,65 @@
       "description": "New maths kind `share`: total split among parts (per_part, parts as a count '8B'), and with per_year the years it takes to reach total. Independent check in generator/numbers.py; long_story README table.",
       "evidence": "Research 2026-10-28: money_scale/billionaire topics (2026-10-28-split-a-billionaire-with-everyone, 2026-10-27-a-billion-is-250-careers) need a division; writers bent fee_take with tiny percentages. Reference Shorts 204K and 32K this week.",
       "commits": []
+    },
+    {
+      "id": "2026-10-28-money-trillion-format",
+      "proposal": "2026-10-28-money-trillion-format",
+      "area": "text",
+      "status": "adopted",
+      "startedAt": "2026-10-29",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "Money at a trillion and up: USD/GBP/EUR short '$1.00T', long '$1 trillion', ticks '1T', counts '1.2T'; rupees from a lakh crore as grouped crore '₹1,00,000 Cr' / '₹1,00,000 Crore', ticks '1 L Cr'. Mirrored in remotion/src/fmt/inr.ts with parity fixtures; voice reads 'one trillion dollars', 'one lakh crore rupees'.",
+      "evidence": "Scout 2026-10-28 (adopt/high): Money('USD').short(1e12) gave '$1000.00B' and INR '₹100000.00 Cr'; the 2026-10-28 billion topic shows a trillion.",
+      "commits": []
+    },
+    {
+      "id": "2026-10-28-build-camera-ignores-cast",
+      "proposal": "2026-10-28-build-camera-ignores-cast",
+      "area": "motion",
+      "status": "adopted",
+      "startedAt": "2026-10-29",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "Build scene camera: on 'all' frames every visible thing and every actor head to feet (keepInside the union); a shot on an item that catches part of an actor zooms out just enough to keep that actor's head (camera.ts keepHeads); an actor wholly outside stays out.",
+      "evidence": "Scout 2026-10-28 (adopt/high): QA failed L-20261028-01 three times on headless actors at the edge of item and 'all' shots. Stills of that draft before/after: 7 of 19 sampled frames had a cropped actor before, none after.",
+      "commits": []
+    },
+    {
+      "id": "2026-10-28-facepalm-phone",
+      "proposal": "2026-10-28-facepalm-phone",
+      "area": "motion",
+      "status": "adopted",
+      "startedAt": "2026-10-29",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "Cast: in the facepalm pose an actor holds nothing (a prop carried from an earlier acting key no longer crosses the face); the prop returns with the next pose.",
+      "evidence": "Scout 2026-10-28 (adopt/normal): QA, L-20261028-01 c5-currency and c3-change, phone drawn over Rohan's face.",
+      "commits": []
+    },
+    {
+      "id": "2026-10-28-scene-thumb-long",
+      "proposal": "2026-10-28-scene-thumb-long",
+      "area": "thumbnail",
+      "status": "adopted",
+      "startedAt": "2026-10-29",
+      "templates": [
+        "long_story"
+      ],
+      "guard": "qa_failures",
+      "description": "check_script accepts a scene thumbnail without a figure (SceneThumb never draws one), so long videos can use the scene type FORMAT_TYPES offers.",
+      "evidence": "Scout 2026-10-28 (adopt/normal): long scene thumbnails needed a figure that thumbs.py then fails; L-20261028-01 dropped to one thumbnail.",
+      "commits": []
     }
   ]
 }

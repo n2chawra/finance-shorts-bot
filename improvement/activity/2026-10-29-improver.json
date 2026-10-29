@@ -1,0 +1,60 @@
+{
+  "agent": "improver",
+  "day": "2026-10-29",
+  "startedAt": "2026-10-29T00:48:36Z",
+  "finishedAt": "2026-10-29T00:58:03Z",
+  "summary": "Applied four of Scout's fixes from the failed airlines long video: trillion money formats, a build camera that keeps the cast's heads in frame, a facepalm that drops the held phone, and scene thumbnails for long videos. No experiment matured; all five are still collecting data.",
+  "decision": "acted",
+  "why": "Scout's adopt items (two high) blocked L-20261028-01 in QA and put '$1000.00B' on screen for a trillion. Experiments are at the cap of 5, so no new A/B test tonight.",
+  "findings": [
+    {
+      "title": "No experiment has matured",
+      "detail": "quiet-bed 1 of 4 long per arm, hook-voice-matches-frame 3 of 8, title-names-the-moment 1 of 8, chart-gap-fill 0 of 4, loop-picture-matches-hook 0 of 8."
+    },
+    {
+      "title": "Shorts with 48 h data: 27",
+      "detail": "Music cinematic 30.08x median views (n=4, 85.6% viewed); length 25-29 s 16.38x (n=4, 81.5% viewed); hook style myth 0.32x (n=5, 24.5% viewed); palette forest 0.30x (n=4)."
+    },
+    {
+      "title": "No format retired",
+      "detail": "rule_change is the only story with 3+ Shorts (n=3, 42.9% viewed, 0.68x views): it is not under the channel median for two weeks yet."
+    },
+    {
+      "title": "Build camera before and after",
+      "detail": "19 stills from the airlines draft's build beats: 7 showed an actor cut off at the neck or reduced to legs before the fix, none after."
+    }
+  ],
+  "changes": [
+    {
+      "title": "A trillion reads $1.00T / $1 trillion; a lakh crore ₹1,00,000 Cr",
+      "detail": "renderer/engine/formatting.py and remotion/src/fmt/inr.ts (parity fixtures regenerated), with chart ticks and counts. The voice reads 'one trillion dollars' and 'one lakh crore rupees'.",
+      "branch": "agent/improver/2026-10-29",
+      "experiment": "2026-10-28-money-trillion-format"
+    },
+    {
+      "title": "Build camera keeps the cast in the picture",
+      "detail": "With 'all', the frame holds every actor head to feet. An item shot that catches part of an actor zooms out just enough to keep their head (camera.ts keepHeads, with tests). SHOTS.md is updated.",
+      "branch": "agent/improver/2026-10-29",
+      "experiment": "2026-10-28-build-camera-ignores-cast"
+    },
+    {
+      "title": "Facepalm drops the held prop",
+      "detail": "A phone carried over from an earlier acting key is no longer drawn across the face.",
+      "branch": "agent/improver/2026-10-29",
+      "experiment": "2026-10-28-facepalm-phone"
+    },
+    {
+      "title": "Long videos can use a scene thumbnail",
+      "detail": "check_script no longer asks for a figure on a scene cover, so how_they_make_money can have three thumbnail types again.",
+      "branch": "agent/improver/2026-10-29",
+      "experiment": "2026-10-28-scene-thumb-long"
+    }
+  ],
+  "nextCheck": "2026-10-30",
+  "links": [
+    {
+      "label": "Journal",
+      "url": "improvement/journal.md"
+    }
+  ]
+}

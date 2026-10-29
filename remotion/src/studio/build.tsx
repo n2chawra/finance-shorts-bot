@@ -24,7 +24,7 @@ import { CAST } from "../cast/cast";
 import { Actor, type ActorSpec, at, clamp, type SceneProps, sec } from "../scenes/kit";
 import { FONT } from "../design/fonts";
 import { countUp } from "../fmt/inr";
-import { between, breathe, frameOn, type Frame, type ShotSize } from "./camera";
+import { between, breathe, type Box as Rect, frameOn, type Frame, keepHeads, keepInside, type ShotSize, union } from "./camera";
 import { Ball, Box, INK, PALETTE, type PropFC, type PropSet, Shadow, Shape } from "./draw";
 import { Note, type Cur } from "./money";
 import { VIDEOS } from "../videos/hooks";
@@ -118,28 +118,45 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   // the camera: keys and focus actions, framing items or actors
   const actorsP = P.actors ?? [];
   const aScale = (a: { scale?: number }) => a.scale ?? (v ? 1.5 : 1.55);
+  // an actor head to feet, and their head with room for the shot's slow push (rig: head top 502 px above the feet)
+  const actorBoxes = actorsP.map((a) => {
+    const x = spotX(a.spot, w / 2), k = aScale(a) * (CAST[a.who]?.look.scale ?? 1);
+    return { body: [x - 130 * k, gy - 510 * k, x + 130 * k, gy] as Rect, head: [x - 110 * k, gy - 540 * k, x + 110 * k, gy - 330 * k] as Rect };
+  });
+  const itemBox = ({ it, s }: { it: Item; s: ItemNow }): Rect => {
+    const z = sizeOf(it) * s.scale;
+    return [s.x - z * 0.6, s.y - z * 1.1, s.x + z * 0.6, s.y];
+  };
   const target = (on: string | undefined): [number, number] => {
     if (!on || on === "room") return [w / 2, h / 2];
     const st = states.find((x) => x.it.id === on);
     if (st) return [st.s.x, st.s.y - sizeOf(st.it) * st.s.scale * 0.55];
     const a = actorsP.find((x) => x.who === on);
     if (a) return [spotX(a.spot, w / 2), gy - 420 * aScale(a) * (CAST[a.who]?.look.scale ?? 1)];
-    if (on === "all") {
-      const pts = states.filter((x) => x.s.show > 0.5).map((x) => [x.s.x, x.s.y - sizeOf(x.it) * 0.5] as [number, number]);
-      return pts.length ? [pts.reduce((q, b) => q + b[0], 0) / pts.length, pts.reduce((q, b) => q + b[1], 0) / pts.length] : [w / 2, h / 2];
-    }
     return [w / 2, h / 2];
+  };
+  // "all" holds every thing on screen and every actor head to feet; a shot on a thing keeps the head of any actor it catches
+  const shoot = (size: ShotSize, on: string | undefined): Frame => {
+    if (on === "all") {
+      const boxes = [...states.filter((x) => x.s.show > 0.5).map(itemBox), ...actorBoxes.map((a) => a.body)];
+      if (!boxes.length) return frameOn(size, w / 2, h / 2, w, h);
+      const u = union(boxes);
+      return keepInside(frameOn(size, (u[0] + u[2]) / 2, (u[1] + u[3]) / 2, w, h), u, w, h);
+    }
+    const f = frameOn(size, ...target(on), w, h);
+    const st = states.find((x) => x.it.id === on);
+    return st ? keepHeads(f, itemBox(st), actorBoxes, w, h) : f;
   };
   const keys: (CamKey & { start: number })[] = [
     ...(P.camera ?? []).map((k) => ({ ...k, start: k.sec ?? at(p, k.at, 0) })),
     ...actions.filter((a) => a.do === "focus").map((a) => ({ size: a.size ?? "close", on: a.target, move: true, start: a.start })),
   ].sort((a, b) => a.start - b.start);
   if (!keys.length || keys[0]!.start > 0) keys.unshift({ size: "wide", on: "room", start: 0 });
-  let fr: Frame = frameOn(keys[0]!.size, ...target(keys[0]!.on), w, h), since = t;
+  let fr: Frame = shoot(keys[0]!.size, keys[0]!.on), since = t;
   for (let i = 1; i < keys.length; i++) {
     const k = keys[i]!;
     if (t < k.start) break;
-    const next = frameOn(k.size, ...target(k.on), w, h);
+    const next = shoot(k.size, k.on);
     fr = k.move ? between(fr, next, (t - k.start) / 0.6) : next;
     since = t - k.start;
   }

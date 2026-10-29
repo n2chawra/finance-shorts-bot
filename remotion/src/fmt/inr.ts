@@ -66,8 +66,9 @@ export function groupIndian(n: number): string {
 /** Full amount: 1500000 → "₹15,00,000". */
 export const rupees = signed((x: number): string => `₹${groupIndian(roundEven(x))}`);
 
-/** Short amount: "₹2.30 Cr", "₹94.9 L", "₹5,000". Never "100.0 L" or "₹1,00,000". */
+/** Short amount: "₹2.30 Cr", "₹94.9 L", "₹5,000", "₹1,00,000 Cr" (a lakh crore). Never "100.0 L" or "₹1,00,000". */
 export const inr = signed((x: number): string => {
+  if (x >= 1e12 || roundTo(x / 1e7, 2) >= 100000) return `₹${groupIndian(roundEven(x / 1e7))} Cr`;
   if (x >= 1e7 || roundTo(x / 1e5, 1) >= 100) return `₹${fixed(x / 1e7, 2)} Cr`;
   if (x >= 1e5 || roundEven(x) >= 100000) return `₹${fixed(x / 1e5, 1)} L`;
   return `₹${groupIndian(roundEven(x))}`;
@@ -82,16 +83,18 @@ export function g(x: number): string {
   return s.includes(".") ? s.replace(/0+$/, "").replace(/\.$/, "") : s;
 }
 
-/** Spelled-out units without trailing zeros: "₹6 Lakh", "₹2.3 Crore", "₹5,000". */
+/** Spelled-out units without trailing zeros: "₹6 Lakh", "₹2.3 Crore", "₹5,000", "₹1,00,000 Crore". */
 export const inrLong = signed((x: number): string => {
+  if (x >= 1e12 || roundTo(x / 1e7, 2) >= 100000) return `₹${groupIndian(roundEven(x / 1e7))} Crore`;
   if (x >= 1e7 || roundTo(x / 1e5, 1) >= 100) return `₹${g(roundTo(x / 1e7, 2))} Crore`;
   if (x >= 1e5 || roundEven(x) >= 100000) return `₹${g(roundTo(x / 1e5, 1))} Lakh`;
   return `₹${groupIndian(roundEven(x))}`;
 });
 
-/** Chart tick label: "0", "50 L", "1.5 Cr", "25K". */
+/** Chart tick label: "0", "50 L", "1.5 Cr", "25K", "2 L Cr" (lakh crore). */
 export function axisLabel(v: number): string {
   if (v === 0) return "0";
+  if (v >= 1e12) return `${g(v / 1e12)} L Cr`;
   if (v >= 1e7) return `${g(v / 1e7)} Cr`;
   if (v >= 1e5) return `${g(v / 1e5)} L`;
   if (v >= 1e3) return `${g(v / 1e3)}K`;
@@ -118,19 +121,21 @@ export function groupWestern(n: number): string {
 export const money = signed((x: number, cur: Currency): string =>
   cur === "INR" ? rupees(x) : `${CURRENCY_SYMBOL[cur]}${groupWestern(roundEven(x))}`);
 
-/** Short amount: "$2.35B", "$1.5M", "$12,500" (rupees: "₹2.30 Cr", "₹94.9 L"). Never "1000.0M". */
+/** Short amount: "$2.50T", "$2.35B", "$1.5M", "$12,500" (rupees: "₹2.30 Cr", "₹94.9 L"). Never "1000.0M". */
 export const moneyShort = signed((x: number, cur: Currency): string => {
   if (cur === "INR") return inr(x);
   const s = CURRENCY_SYMBOL[cur];
+  if (x >= 1e12 || roundTo(x / 1e9, 2) >= 1000) return `${s}${fixed(x / 1e12, 2)}T`;
   if (x >= 1e9 || roundTo(x / 1e6, 1) >= 1000) return `${s}${fixed(x / 1e9, 2)}B`;
   if (x >= 1e6 || roundEven(x) >= 1_000_000) return `${s}${fixed(x / 1e6, 1)}M`;
   return `${s}${groupWestern(roundEven(x))}`;
 });
 
-/** Spelled out: "$1.5 million", "$2.35 billion" (rupees: "₹6 Lakh", "₹2.3 Crore"). */
+/** Spelled out: "$1.5 million", "$2.35 billion", "$2.5 trillion" (rupees: "₹6 Lakh", "₹2.3 Crore"). */
 export const moneyLong = signed((x: number, cur: Currency): string => {
   if (cur === "INR") return inrLong(x);
   const s = CURRENCY_SYMBOL[cur];
+  if (x >= 1e12 || roundTo(x / 1e9, 2) >= 1000) return `${s}${g(roundTo(x / 1e12, 2))} trillion`;
   if (x >= 1e9 || roundTo(x / 1e6, 1) >= 1000) return `${s}${g(roundTo(x / 1e9, 2))} billion`;
   if (x >= 1e6 || roundEven(x) >= 1_000_000) return `${s}${g(roundTo(x / 1e6, 1))} million`;
   return `${s}${groupWestern(roundEven(x))}`;

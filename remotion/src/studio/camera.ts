@@ -34,6 +34,41 @@ export function keepInside(f: Frame, box: [number, number, number, number], w: n
   return { s, tx: Math.min(0, Math.max(w - w * s, tx)), ty: Math.min(0, Math.max(h - h * s, ty)) };
 }
 
+export type Box = [number, number, number, number];
+
+/** The smallest box around all of `boxes`. */
+export function union(boxes: Box[]): Box {
+  return [Math.min(...boxes.map((b) => b[0])), Math.min(...boxes.map((b) => b[1])), Math.max(...boxes.map((b) => b[2])), Math.max(...boxes.map((b) => b[3]))];
+}
+
+const screen = (f: Frame, b: Box): Box => [b[0] * f.s + f.tx, b[1] * f.s + f.ty, b[2] * f.s + f.tx, b[3] * f.s + f.ty];
+
+/** Is at least a hand's width of the box on screen? */
+export function shows(f: Frame, b: Box, w: number, h: number, min = 40): boolean {
+  const [x0, y0, x1, y1] = screen(f, b);
+  return Math.min(x1, w) - Math.max(x0, 0) >= min && Math.min(y1, h) - Math.max(y0, 0) >= min;
+}
+
+/** Is all of the box on screen? */
+export function holds(f: Frame, b: Box, w: number, h: number): boolean {
+  const [x0, y0, x1, y1] = screen(f, b);
+  return x0 >= 0 && y0 >= 0 && x1 <= w && y1 <= h;
+}
+
+/** A shot on a thing never cuts an actor off at the neck (L-20261028-01 failed QA three times on a
+ * headless actor at the edge of item shots): an actor partly in the frame keeps their head whole,
+ * the camera zooming out only as far as that needs. An actor wholly outside stays out. */
+export function keepHeads(f: Frame, subject: Box, actors: { body: Box; head: Box }[], w: number, h: number): Frame {
+  let out = f, box = subject;
+  for (let i = 0; i < 3; i++) {
+    const cut = actors.filter((a) => shows(out, a.body, w, h) && !holds(out, a.head, w, h));
+    if (!cut.length) break;
+    box = union([box, ...cut.map((a) => a.head)]);
+    out = keepInside(f, box, w, h);
+  }
+  return out;
+}
+
 const ease = (x: number) => { const c = Math.min(1, Math.max(0, x)); return c < 0.5 ? 4 * c * c * c : 1 - Math.pow(-2 * c + 2, 3) / 2; };
 
 /** Between two framings: a cut (dur 0) or a move. Scale moves in log space so a zoom feels even. */

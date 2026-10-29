@@ -265,8 +265,10 @@ def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_i
     if not spec:
         return None
     t = _resolve(spec, figures, results, "thumbnail")
-    if t.get("layout") in ("grid", "ladder", "extremes", "face") and not t.get("figure"):
-        t["figure"] = ""          # long-video types sell the promise in words and pictures, no figure (renderer/thumbs.py)
+    if t.get("layout") in ("grid", "ladder", "extremes", "face", "scene") and not t.get("figure"):
+        # long-video types sell the promise in words and pictures, no figure (renderer/thumbs.py); a scene cover
+        # shows the video's own frame, whose money objects carry the figures (a long one may have none)
+        t["figure"] = ""
     elif t.get("figure") not in figures.values():
         raise ValueError(f"thumbnail.figure must be one placeholder, like {{card_total_paid}}; got {spec.get('figure')!r}")
     if len(str(t.get("words", "")).split()) > 4:

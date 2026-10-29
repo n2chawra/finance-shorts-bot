@@ -1,7 +1,8 @@
 """Number formatting for on-screen figures, in the script's currency.
 
-Rupees keep Indian grouping and lakh/crore (₹15,00,000, ₹94.9 L, ₹2.30 Cr). Dollars, pounds and euros
-use international grouping and K/M/B ($1,500,000 in full, $1.5M short, $1.5 million long). A
+Rupees keep Indian grouping and lakh/crore (₹15,00,000, ₹94.9 L, ₹2.30 Cr; a lakh crore and up as grouped
+crore, ₹1,00,000 Cr). Dollars, pounds and euros use international grouping and K/M/B/T ($1,500,000 in
+full, $1.5M short, $1.5 million long, $1.00T and $1 trillion from a trillion). A
 script names its `currency`; scripts from before the channel went global (2026-10-18) have none and
 are rupee scripts.
 """
@@ -45,7 +46,10 @@ def rupees(x: float) -> str:
 
 @_signed
 def inr(x: float) -> str:
-    """Short amount: '₹2.30 Cr', '₹94.9 L', '₹5,000'. Never shows '100.0 L' or '₹1,00,000'."""
+    """Short amount: '₹2.30 Cr', '₹94.9 L', '₹5,000', '₹1,00,000 Cr' (a lakh crore). Never shows '100.0 L',
+    '₹1,00,000' or '₹100000.00 Cr'."""
+    if x >= 1e12 or round(x/1e7, 2) >= 100000:
+        return f"₹{group_indian(int(round(x/1e7)))} Cr"
     if x >= 1e7 or round(x/1e5, 1) >= 100:
         return f"₹{x/1e7:.2f} Cr"
     if x >= 1e5 or round(x) >= 100000:
@@ -55,7 +59,9 @@ def inr(x: float) -> str:
 
 @_signed
 def inr_long(x: float) -> str:
-    """Spelled-out units without trailing zeros: '₹6 Lakh', '₹2.3 Crore', '₹5,000'."""
+    """Spelled-out units without trailing zeros: '₹6 Lakh', '₹2.3 Crore', '₹5,000', '₹1,00,000 Crore'."""
+    if x >= 1e12 or round(x/1e7, 2) >= 100000:
+        return f"₹{group_indian(int(round(x/1e7)))} Crore"
     if x >= 1e7 or round(x/1e5, 1) >= 100:
         return f"₹{round(x/1e7, 2):g} Crore"
     if x >= 1e5 or round(x) >= 100000:
@@ -64,9 +70,11 @@ def inr_long(x: float) -> str:
 
 
 def axis_label(v: float) -> str:
-    """Chart tick label: '0', '50 L', '1.5 Cr'."""
+    """Chart tick label: '0', '50 L', '1.5 Cr', '2 L Cr' (lakh crore)."""
     if v == 0:
         return "0"
+    if v >= 1e12:
+        return f"{v/1e12:g} L Cr"
     if v >= 1e7:
         return f"{v/1e7:g} Cr"
     if v >= 1e5:
@@ -83,7 +91,9 @@ def group_western(n: int) -> str:
 
 @_signed
 def _short_western(x: float, sym: str) -> str:
-    """'$2.35B', '$1.5M', '$12,500'. Never shows '1000.0M' or '$1,000,000'."""
+    """'$2.50T', '$2.35B', '$1.5M', '$12,500'. Never shows '1000.00B', '1000.0M' or '$1,000,000'."""
+    if x >= 1e12 or round(x/1e9, 2) >= 1000:
+        return f"{sym}{x/1e12:.2f}T"
     if x >= 1e9 or round(x/1e6, 1) >= 1000:
         return f"{sym}{x/1e9:.2f}B"
     if x >= 1e6 or round(x) >= 1_000_000:
@@ -93,7 +103,9 @@ def _short_western(x: float, sym: str) -> str:
 
 @_signed
 def _long_western(x: float, sym: str) -> str:
-    """'$1.5 million', '$2.35 billion', '$12,500'."""
+    """'$1.5 million', '$2.35 billion', '$2.5 trillion', '$12,500'."""
+    if x >= 1e12 or round(x/1e9, 2) >= 1000:
+        return f"{sym}{round(x/1e12, 2):g} trillion"
     if x >= 1e9 or round(x/1e6, 1) >= 1000:
         return f"{sym}{round(x/1e9, 2):g} billion"
     if x >= 1e6 or round(x) >= 1_000_000:
@@ -108,18 +120,20 @@ def _full_western(x: float, sym: str) -> str:
 
 
 def axis_label_western(v: float) -> str:
-    """Chart tick label: '0', '500K', '1.5M', '2B'."""
+    """Chart tick label: '0', '500K', '1.5M', '2B', '1T'."""
     if v == 0:
         return "0"
-    for size, unit in ((1e9, "B"), (1e6, "M"), (1e3, "K")):
+    for size, unit in ((1e12, "T"), (1e9, "B"), (1e6, "M"), (1e3, "K")):
         if v >= size:
             return f"{v/size:g}{unit}"
     return f"{v:g}"
 
 
 def count(n: float, indian: bool = False) -> str:
-    """A number of things or years, not money: '8B', '340M', '10,000' ('10,000' or '1,00,000' grouped
+    """A number of things or years, not money: '1.2T', '8B', '340M', '10,000' ('10,000' or '1,00,000' grouped
     the script's way below a million). The voice reads '8B' as 'eight billion' in any currency."""
+    if n >= 1e12 or round(n/1e9, 2) >= 1000:
+        return f"{round(n/1e12, 2):g}T"
     if n >= 1e9 or round(n/1e6, 1) >= 1000:
         return f"{round(n/1e9, 2):g}B"
     if n >= 1e6 or round(n) >= 1_000_000:
