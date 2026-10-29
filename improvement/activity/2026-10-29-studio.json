@@ -1,0 +1,49 @@
+{
+  "agent": "studio",
+  "day": "2026-10-29",
+  "startedAt": "2026-10-29T03:07:48Z",
+  "finishedAt": "2026-10-29T04:47:31Z",
+  "summary": "Finished and shipped L-20261029-01, 'How airlines really make money (it isn't the seats)', 8:13, from yesterday's fact-checked draft now that the improver fixed the build camera and the facepalm phone.",
+  "decision": "acted",
+  "why": "state: 1 of 3 long videos this week, backlog 0. The airlines topic was first in Scout's feed (high priority, score 8.31) and yesterday's draft had failed only on scene bugs fixed this morning.",
+  "findings": [
+    {
+      "title": "Number check and fact review passed first time",
+      "detail": "65 figures from code. Fact review passed with notes: c6-flow says all fees flow to the loyalty programme (they go mainly to the issuing bank); c5-split leaves out the network's cut; 2% swipe fee is a US level."
+    },
+    {
+      "title": "QA: two fix rounds, then pass",
+      "detail": "Round 1: repeated grid thumbnail, coins on the captions (c5-shrink), a label on the captions (c2-holiday), a misleading fees callout (c6-chart), lettering behind text (c4-tons), heads cropped top-left (c5-split, c5-signup, c6-flow). Round 2: c5-signup still cropped. Round 3: pass. Render gates ok, 493 s, peak -1.0 dB, mean -16.3 dB."
+    },
+    {
+      "title": "One thumbnail, not three",
+      "detail": "The scene thumbnail failed the phone-size check twice (blurred frame, with figures) and the grid was the last video's picture again; shipped with the face thumbnail 'Plane? No. Bank.' (angle versus, the best performer). Logged for the improver."
+    },
+    {
+      "title": "Lost about 50 minutes to a stuck watcher",
+      "detail": "The first stills failed in minutes on a missing thumbnail `who` (a bare ZodError), but the wait loop matched its own command and never returned. Wait on the render's PID, not pgrep -f."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Video L-20261029-01 shipped",
+      "detail": "Manifest on main (a51967e); mp4 on media/L-20261029-01 for the release workflow. Chapters 0:00-6:03 in the description."
+    },
+    {
+      "title": "3 backlog items",
+      "detail": "Thumbnail `who` crash, blurred scene thumbnail, grid thumbnail always the same picture. Airlines draft item closed.",
+      "branch": "agent/studio/2026-10-29"
+    }
+  ],
+  "nextCheck": "2026-10-30",
+  "links": [
+    {
+      "label": "Video",
+      "url": "videos/L-20261029-01/manifest.json"
+    },
+    {
+      "label": "Backlog",
+      "url": "improvement/longform/backlog.json"
+    }
+  ]
+}
