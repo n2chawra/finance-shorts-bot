@@ -105,6 +105,9 @@ Example: `remotion/src/videos/v-remake-billionaires/props.tsx`.
 - verbs: `enter`, `exit`, `multiply {n (from @maths), text?}`, `grow`/`shrink {scale}`, `move {to: id | {x, y}}`,
   `swap {into: prop}`, `break`, `fill`/`drain {k}`, `state {state}`, `label {text}`, `tag {text}`,
   `count {value, text}`, `glow`, `shake`, `focus {size}` (camera).
+- `camera` (since 2026-10-29): `on: "all"` frames every thing on screen and every actor head to feet;
+  a `medium` or `close` shot on a thing that catches part of an actor zooms out just enough to keep
+  that actor's head in frame (an actor wholly outside stays out), so item shots beside the cast are safe.
 - **Each action fires on the word that names its thing** ("tax" enters the tax sack). An item's id,
   prop or label must share a word with what is said around that moment (`renderer/craft.py`).
 - `hud`: the level tracker (`structure.levels` at the top of the script) and the climbing number;
