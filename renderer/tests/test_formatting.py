@@ -87,3 +87,25 @@ def test_a_falling_value_shows_its_loss_with_the_sign_first() -> None:
     from renderer.models.maths import compute
     car = compute([{"name": "car", "kind": "lumpsum", "amount": 35000, "rate_pct": -15, "years": 5}], Money("USD"))["car"]
     assert car["figures"]["gains"] == "-$19,470" and car["figures"]["final"] == "$15,530"
+
+
+@pytest.mark.parametrize("currency, x, short, long, axis", [
+    ("USD", 1e12, "$1.00T", "$1 trillion", "1T"),
+    ("USD", 2.5e12, "$2.50T", "$2.5 trillion", "2.5T"),
+    ("USD", 999_995_000_000, "$1.00T", "$1 trillion", "999.995B"),   # never '$1000.00B'
+    ("USD", 999_994_999_999, "$999.99B", "$999.99 billion", "999.995B"),
+    ("INR", 1e12, "₹1,00,000 Cr", "₹1,00,000 Crore", "1 L Cr"),       # a lakh crore, not '₹100000.00 Cr'
+    ("INR", 2.5e12, "₹2,50,000 Cr", "₹2,50,000 Crore", "2.5 L Cr"),
+])
+def test_a_trillion_and_a_lakh_crore(currency, x, short, long, axis) -> None:
+    from renderer.engine.formatting import Money
+    m = Money(currency)
+    assert (m.short(x), m.long(x), m.axis(x)) == (short, long, axis)
+
+
+def test_a_trillion_is_spoken_as_one() -> None:
+    from renderer.engine.formatting import Money, count
+    from renderer.engine.voice import spoken
+    assert spoken(Money("USD").short(2.5e12), "USD") == "two point five trillion dollars"
+    assert spoken(Money("INR").short(1e12), "INR") == "one lakh crore rupees"
+    assert count(1.2e12) == "1.2T" and spoken(count(1.2e12), "USD") == "one point two trillion"
