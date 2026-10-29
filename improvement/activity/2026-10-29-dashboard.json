@@ -1,0 +1,20 @@
+{
+  "agent": "dashboard",
+  "day": "2026-10-29",
+  "startedAt": "2026-10-29T02:07:59Z",
+  "finishedAt": "2026-10-29T02:17:46Z",
+  "summary": "Overview now counts only Shorts toward the daily target of 3, and Overview and Analytics say how old the YouTube Analytics numbers are.",
+  "decision": "acted",
+  "why": "Reading the Overview code (free of the 7-day rule today) found long videos counted as Shorts in Made today and Daily output (21 shown, 19 real in the sample). The stats-age line was the newest open Overview idea and matters now that YouTube sign-in has failed. All checks pass (72 smoke tests).",
+  "findings": [
+    {"title": "Long videos counted toward the daily Shorts target", "detail": "A day with 2 Shorts and a long video read 'target met'."},
+    {"title": "'Agents last night' splits across midnight", "detail": "From 23:00 to 06:17 it shows only the auditor and research; added to the backlog."},
+    {"title": "Live site healthy", "detail": "/api/health answered, database 2.8 s."}
+  ],
+  "changes": [
+    {"title": "Overview counts only Shorts toward the daily target", "detail": "Runs carry their video's format; smoke test added, checked to fail without the fix.", "branch": "agent/dashboard/2026-10-29"},
+    {"title": "YouTube Analytics age on Overview and Analytics", "detail": "'YouTube Analytics through <day>', amber from 4 days, red from 7; smoke test added.", "branch": "agent/dashboard/2026-10-29"}
+  ],
+  "nextCheck": "2026-10-30",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-10-29.md"}]
+}
