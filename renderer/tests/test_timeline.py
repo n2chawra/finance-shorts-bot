@@ -241,3 +241,16 @@ def test_check_script_warns_only_for_shorts() -> None:
 def test_the_shorts_examples_keep_an_event_every_few_seconds() -> None:
     s = json.loads((EXAMPLES / "short_story_tax.json").read_text(encoding="utf-8"))
     assert tb.check_script(s)["warnings"] == []
+
+
+def test_a_long_scene_thumbnail_needs_no_figure() -> None:
+    # thumbs.py fails any long thumbnail with a figure, so a scene cover must be allowed without one
+    # (L-20261028-01 dropped to one thumbnail because a long scene cover could not be written)
+    import json
+    from pathlib import Path
+
+    from renderer.timeline.build import check_script
+    s = json.loads((Path(__file__).resolve().parents[2] / "examples" / "long_story.json").read_text(encoding="utf-8"))
+    s["thumbnail"] = {"layout": "scene", "words": "Where it goes", "angle": "question"}
+    s.pop("thumbnails", None)
+    check_script(s)
