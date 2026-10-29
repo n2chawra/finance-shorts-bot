@@ -345,3 +345,17 @@ test("overview counts only Shorts toward the daily target", async ({ page }) => 
   // long videos (their own weekly target) were counted as Shorts, so a day with 2 Shorts + 1 long read "target met"
   await expect(page.getByTestId("output-total")).toHaveText(`${shorts.length} Shorts`);
 });
+
+test("overview and analytics say how old the YouTube numbers are", async ({ page }) => {
+  await signIn(page);
+  const { statsThrough } = await (await page.request.get("/api/analytics")).json();
+  expect(statsThrough, "sample data has YouTube Analytics days").toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  const label = new Intl.DateTimeFormat("en-IN", { timeZone: "UTC", day: "numeric", month: "short" }).format(new Date(`${statsThrough}T00:00:00Z`));
+  // the cards kept showing numbers from a stats job that had silently stopped, with nothing saying how old they were
+  for (const path of ["/", "/analytics"]) {
+    await page.goto(path);
+    const age = page.getByTestId("stats-age");
+    await expect(age).toHaveText(`YouTube Analytics through ${label}`, { timeout: 30_000 });
+    await expect(age).toHaveAttribute("data-tone", /^(fine|warning|critical)$/);
+  }
+});

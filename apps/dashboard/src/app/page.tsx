@@ -10,6 +10,7 @@ import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
 import { useAgents, useAnalytics, useNotifications, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
 import { AGENTS, type Analytics, perThousand, type Run } from "@/lib/schemas";
+import { STATS_AGE_CLASS, statsAge } from "@/lib/stats-age";
 
 /** Videos the routines aim to ship per IST day (generator setting `dailyVideoTarget`). */
 const DAILY_TARGET = 3;
@@ -74,6 +75,8 @@ export default function OverviewPage() {
   const views = weekOverWeek(analytics.data, "views");
   const likes = weekOverWeek(analytics.data, "likes");
   const subs = weekOverWeek(analytics.data, "subsGained");
+  const age = analytics.data && statsAge(analytics.data.statsThrough);
+  const statsLine = age ? <span data-testid="stats-age" data-tone={age.tone} className={STATS_AGE_CLASS[age.tone]}>{age.label}</span> : "from YouTube Analytics";
   const days = dailyOutput(runs.data, 14);
   const today = days[days.length - 1];
   const shipped14 = days.reduce((a, d) => a + d.shipped, 0);
@@ -110,7 +113,7 @@ export default function OverviewPage() {
         <Stat label="Views" icon={Eye} href="/analytics" value={<Num value={data.allTime.views} fmt={fmtCompact} />}
           delta={<Delta value={views.delta} />} sub={`+${fmtNum(data.last7.views)} in 7 days${data.allTime.liveAt ? ` · live, ${fmtRelative(data.allTime.liveAt)}` : ""}`} chart={<Sparkline values={views.spark} />} />
         <Stat label="Subscribers · 7 days" icon={UserPlus} href="/analytics" value={<Num value={data.last7.subsGained} fmt={(n) => `+${fmtNum(n)}`} />}
-          delta={<Delta value={subs.delta} />} sub="from YouTube Analytics" chart={<Sparkline values={subs.spark} color="var(--good)" />} />
+          delta={<Delta value={subs.delta} />} sub={statsLine} chart={<Sparkline values={subs.spark} color="var(--good)" />} />
         <Stat label="Likes" icon={Heart} href="/analytics" value={<Num value={data.allTime.likes} fmt={fmtCompact} />}
           delta={<Delta value={likes.delta} />}
           sub={`${fmtNum(data.allTime.comments)} comments · ${fmtLoved(data.allTime)} · +${fmtNum(data.last7.likes)} likes in 7 days`}

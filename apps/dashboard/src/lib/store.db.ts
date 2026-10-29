@@ -381,6 +381,7 @@ export async function getAnalytics(): Promise<Analytics> {
   const rows = ranked.map(({ v, t }) => ({ videoId: v.id, title: v.title, templateId: v.templateId, views: t!.views, likes: t!.likes, comments: t!.comments, thumbnailUrl: `/api/media/${v.id}/thumbnail` })).sort((a, b) => b.views - a.views);
   return {
     daily: [...byDay].map(([day, d]) => ({ day, ...d })),
+    statsThrough: stats.map((x) => dayKey(x.day)).sort().at(-1) ?? null,
     weekday: names.map((weekday, i) => ({ weekday, avgViews: wd[i].n ? Math.round(wd[i].views / wd[i].n) : 0, uploads: wd[i].n })),
     top: rows.slice(0, 5), bottom: rows.length > 5 ? rows.slice(-5).reverse() : [], loved: mostLoved(rows),
     totals: {
