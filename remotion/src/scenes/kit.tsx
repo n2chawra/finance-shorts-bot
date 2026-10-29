@@ -151,14 +151,19 @@ export const Actor: React.FC<{ p: SceneProps; spec: ActorSpec; ground: number; i
   let pose: Pose = { ...STAND, turn: spec.turn ?? 0 };
   let expression: Expression = "neutral";
   let prop: string | undefined;
+  let poseName: string | undefined;
   for (const a of spec.acting ?? []) {
     const start = a.sec ?? at(p, a.at, 0);
     if (t < start) break;
     const target: Pose = { ...(a.pose ? POSES[a.pose] : pose), turn: a.turn ?? pose.turn };
     pose = mixPose(pose, target, Math.min(1, settle((t - start) / 0.45)));
     if (a.expression) expression = a.expression;
+    if (a.pose) poseName = a.pose;
     prop = a.prop ?? prop;
   }
+  // a facepalm's hand is on the face: a held thing (a phone carried from an earlier key) would be drawn across it
+  // (QA, L-20261028-01); it comes back with the next pose
+  if (poseName === "facepalm") prop = undefined;
   if (walking) pose = { ...pose, ...walkLegs(Math.abs(x - homeX) / STRIDE), turn: walkTurn };
   pose = idle(pose, t, index * 1.7);
   const v = p.beat.voice;
