@@ -118,6 +118,7 @@ export const RunSchema = z.object({
   id: z.string(),
   kind: z.enum(["video", "template_work"]),
   videoId: z.string().nullable(),
+  format: z.enum(["short", "long"]).optional(), // video runs only; a long video doesn't count toward the daily Shorts target
   title: z.string(),
   status: z.enum(["ok", "failed"]),
   startedAt: z.string(),

@@ -329,3 +329,19 @@ test("calendar marks long videos apart from Shorts", async ({ page }) => {
   await expect(page.locator("main li").getByText("Long", { exact: true })).toBeVisible();
   await expect(page.getByText("Long video", { exact: true })).toBeVisible();   // legend
 });
+
+test("overview counts only Shorts toward the daily target", async ({ page }) => {
+  await signIn(page);
+  const runs: { kind: string; videoId: string | null; status: string; startedAt: string }[] = await (await page.request.get("/api/runs")).json();
+  const vids = await (await page.request.get("/api/videos")).json();
+  const long = new Set((Array.isArray(vids) ? vids : vids.items).filter((v: { format?: string }) => v.format === "long").map((v: { id: string }) => v.id));
+  const ist = (d: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(d);
+  const days = new Set(Array.from({ length: 14 }, (_, i) => ist(new Date(Date.now() - i * 86_400_000))));
+  const shipped = runs.filter((r) => r.kind === "video" && r.status === "ok" && days.has(ist(new Date(r.startedAt))));
+  const shorts = shipped.filter((r) => !long.has(r.videoId));
+  expect(shorts.length, "sample data has a long video in the last 14 days").toBeLessThan(shipped.length);
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
+  // long videos (their own weekly target) were counted as Shorts, so a day with 2 Shorts + 1 long read "target met"
+  await expect(page.getByTestId("output-total")).toHaveText(`${shorts.length} Shorts`);
+});

@@ -223,7 +223,7 @@ function build(): Store {
   const runs: Run[] = videos.map((v) => {
     const durationSec = v.steps.reduce((s, x) => s + x.durationSec, 0);
     return {
-      id: `run-${v.id}`, kind: "video", videoId: v.id, title: v.title, status: v.status === "failed" ? "failed" : "ok",
+      id: `run-${v.id}`, kind: "video", videoId: v.id, format: v.format, title: v.title, status: v.status === "failed" ? "failed" : "ok",
       startedAt: new Date(Date.parse(v.createdAt) - durationSec * 1000).toISOString(), durationSec,
       error: v.failReason, sessionUrl: null, steps: v.steps,
     };

@@ -326,7 +326,7 @@ export async function patchTemplate(id: string, patch: { enabled?: boolean; weig
 // ---------------- runs ----------------
 
 export async function listRuns(): Promise<Run[]> {
-  const rows = await prisma.agentRun.findMany({ orderBy: [{ startedAt: "desc" }, { id: "desc" }], take: 600, include: { video: { select: { title: true, status: true, failReason: true } } } });
+  const rows = await prisma.agentRun.findMany({ orderBy: [{ startedAt: "desc" }, { id: "desc" }], take: 600, include: { video: { select: { title: true, status: true, failReason: true, format: true } } } });
   const groups = new Map<string, typeof rows>();
   for (const r of rows) {
     const key = r.videoId ?? r.id; // template-work rows have no video and stand alone
@@ -339,7 +339,7 @@ export async function listRuns(): Promise<Run[]> {
     const isVideo = first.videoId !== null;
     const failed = isVideo ? first.video?.status === "failed" : first.status === "failed";
     return {
-      id: key, kind: isVideo ? "video" : "template_work", videoId: first.videoId, title: isVideo ? first.video?.title ?? key : asNotes(first.log)[0] ?? "Template work",
+      id: key, kind: isVideo ? "video" : "template_work", videoId: first.videoId, ...(isVideo && { format: first.video?.format === "long" ? "long" as const : "short" as const }), title: isVideo ? first.video?.title ?? key : asNotes(first.log)[0] ?? "Template work",
       status: failed ? "failed" : "ok", startedAt: first.startedAt.toISOString(), durationSec: Math.round((end - first.startedAt.getTime()) / 1000),
       error: isVideo ? first.video?.failReason ?? null : null, sessionUrl: ordered.find((s) => s.routineSessionUrl)?.routineSessionUrl ?? null,
       steps: ordered.map(toStep),

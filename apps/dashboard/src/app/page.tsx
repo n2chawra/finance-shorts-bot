@@ -44,12 +44,12 @@ function weekOverWeek(a: Analytics | undefined, key: "views" | "subsGained" | "l
   return { spark: days.slice(-14), delta: prev > 0 ? ((last - prev) / prev) * 100 : null };
 }
 
-/** Shipped and failed video runs per IST day, for the last `n` days. */
+/** Shipped and failed Short runs per IST day, for the last `n` days (long videos have their own weekly target). */
 function dailyOutput(runs: Run[] | undefined, n: number) {
   const today = istDay(new Date());
   return Array.from({ length: n }, (_, i) => {
     const day = istDay(new Date(Date.now() - (n - 1 - i) * DAY_MS));
-    const mine = (runs ?? []).filter((r) => r.kind === "video" && istDay(r.startedAt) === day);
+    const mine = (runs ?? []).filter((r) => r.kind === "video" && r.format !== "long" && istDay(r.startedAt) === day);
     const shipped = mine.filter((r) => r.status === "ok").length;
     const failed = mine.length - shipped;
     const tone: TrackerTone = shipped >= DAILY_TARGET ? "good" : shipped > 0 ? "warning" : mine.length ? "critical" : day === today ? "empty" : "empty";
@@ -118,8 +118,8 @@ export default function OverviewPage() {
         <Stat label="Backlog" icon={Layers} href="/queue" value={<><Num value={data.backlog} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-base font-normal text-muted">/ {data.backlogCap}</span></>}
           sub={`≈ ${Math.floor(data.backlog / (settings.data?.uploadTimes.length ?? 1))} days of uploads`} chart={<div className="pt-3"><Meter value={data.backlog} max={data.backlogCap} label="Backlog" /></div>} />
         <Stat label="Made today" icon={Clapperboard} href="/runs" value={<><Num value={today.shipped} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-base font-normal text-muted">/ {DAILY_TARGET}</span></>}
-          sub={today.failed ? `${today.failed} failed attempt${today.failed === 1 ? "" : "s"}` : "daily target"}
-          chart={<div className="pt-3"><Meter value={today.shipped} max={DAILY_TARGET} label="Videos made today" tone={today.shipped >= DAILY_TARGET ? "good" : "brand"} /></div>} />
+          sub={today.failed ? `${today.failed} failed attempt${today.failed === 1 ? "" : "s"}` : "Shorts · daily target"}
+          chart={<div className="pt-3"><Meter value={today.shipped} max={DAILY_TARGET} label="Shorts made today" tone={today.shipped >= DAILY_TARGET ? "good" : "brand"} /></div>} />
       </div>
 
       <div className="mt-3 grid gap-3 lg:grid-cols-3">
@@ -154,8 +154,8 @@ export default function OverviewPage() {
       </div>
 
       <div className="mt-3 grid gap-3 lg:grid-cols-3">
-        <Card title="Daily output" description={`Videos shipped per day, last 14 days · target ${DAILY_TARGET}`} className="lg:col-span-2"
-          action={<span className="text-right text-xs text-muted"><span className="block text-sm font-medium text-ink tabular-nums">{shipped14} videos</span>target met {metDays}/14 days</span>}>
+        <Card title="Daily output" description={`Shorts shipped per day, last 14 days · target ${DAILY_TARGET}`} className="lg:col-span-2"
+          action={<span className="text-right text-xs text-muted"><span data-testid="output-total" className="block text-sm font-medium text-ink tabular-nums">{shipped14} Shorts</span>target met {metDays}/14 days</span>}>
           {runs.isLoading ? <div className="skeleton h-8 rounded-md" /> : (
             <Tracker items={days.map((d) => ({
               key: d.day, tone: d.tone,
