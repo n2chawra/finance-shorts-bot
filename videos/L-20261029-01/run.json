@@ -1,0 +1,196 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-29T03:09:25.412900+00:00",
+    "finishedAt": "2026-10-29T03:09:25.412900+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-10-29T03:10:28.443390+00:00",
+    "finishedAt": "2026-10-29T03:10:28.443390+00:00",
+    "notes": [
+      "thumbnail.at contains a typed number; use a placeholder: 'c6-worth'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-29T03:10:35.920555+00:00",
+    "finishedAt": "2026-10-29T03:10:35.920555+00:00",
+    "notes": [
+      "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-29T03:12:19.404271+00:00",
+    "finishedAt": "2026-10-29T03:12:19.404271+00:00",
+    "notes": [
+      "Read every beat (say/spoken + on-screen params) and plan; no sourced facts; verify list met (card-partner money in words only, 2% swipe fee and 3% margin said as assumptions, no 'scam'); general claims sound (fuel ~1/4 of costs, Buffett Kitty Hawk joke, 2008 US bag fees, US bag fees in billions, Boston Fed cash-payers study, 2020 loyalty-backed loans and appraisals above market cap); no advice/imperatives or expert personas; disclaimer ends description and end card. Notes: c6-flow overstates (swipe and annual fees go mainly to the issuer; the airline gets a share via mile sales), c5-split skips the network/acquirer cut, c2-paper simplifies pre-software pricing, 2% swipe fee is a US-level assumption (capped far lower in the EU), description has a single chapter stamp."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-29T03:10:42.865146+00:00",
+    "finishedAt": "2026-10-29T03:13:42.768034+00:00",
+    "notes": [
+      "render.ts stills failed:\nDetected differing memory amounts:\nMemory reported by CGroup: 8796093019304.79 MB\nMemory reported by /proc/meminfo MemAvailable: 14444.02 MB\nYou might have inadvertently set the --memory flag of `docker run` to a value that is higher than the global Docker memory limit.\nUsing the lower amount of memory for calculation.\nDetected differing memory amounts:\nMemory reported by CGroup: 8796093019003.26 MB\nMemory reported by /proc/meminfo MemAvailable: 14442.18 MB\nYou might have inadvertently set the --memory flag of `docker run` to a value that is higher than the global Docker memory limit.\nUsing the lower amount of memory for calculation.\nZodError\n    at calculateStoryMetadata (http://localhost:3000/bundle.js:8958:23)\n    at resolveVideoConfigWithMetadata (http://localhost:3000/bundle.js:33657:46)\n    at Object.resolveVideoConfig (http://localhost:3000/bundle.js:33690:20)\n    at window.remotion_calculateComposition (http://localhost:3000/bundle.js:18537:88)\n    at __puppeteer_evaluation_script__:2:21"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:04:14.272588+00:00",
+    "finishedAt": "2026-10-29T04:04:14.272588+00:00",
+    "notes": [
+      "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-29T04:04:15.397425+00:00",
+    "finishedAt": "2026-10-29T04:06:21.925637+00:00",
+    "notes": [
+      "thumbnail-b.png is empty at phone size (edges 0.12, 0.15-0.5): fill it with the story"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:06:34.132044+00:00",
+    "finishedAt": "2026-10-29T04:06:34.132044+00:00",
+    "notes": [
+      "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-29T04:08:02.041514+00:00",
+    "finishedAt": "2026-10-29T04:10:04.882079+00:00",
+    "notes": [
+      "thumbnail-b.png is empty at phone size (edges 0.133, 0.15-0.5): fill it with the story"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:10:29.134253+00:00",
+    "finishedAt": "2026-10-29T04:10:29.134253+00:00",
+    "notes": [
+      "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:10:30.012034+00:00",
+    "finishedAt": "2026-10-29T04:12:26.801139+00:00",
+    "notes": [
+      "493 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-29T04:15:29.812040+00:00",
+    "finishedAt": "2026-10-29T04:15:29.812040+00:00",
+    "notes": [
+      "[script] thumbnail-b.png: same yellow 'grid' layout as L-20261026-01's thumbnail-b ('ALL LEGAL?' 6-tile grid), only new words and icons; 8 tiles are unreadable at feed size. Give thumbnails[0] another layout/angle (e.g. versus or a face with one money object) instead of layout 'grid'.",
+      "[script] c5-shrink @340s: three milescoins (size 0.2, multiply n=3) sit on the caption line and behind the chapter pills, so the caption reads 'MILES FOR THE M' and the coins cover the pills. Use milescoin size ~0.12 or n=2 and keep them above the caption band (or a medium camera).",
+      "[script] c2-holiday @115s: the 'Game' box label touches/overlaps the caption 'EVERY BUCKET' (text on text) after the camera moves in. Move the Festival/Game boxes left/up (x 0.38/0.52 -> ~0.15/0.3) or drop their labels / keep camera wider at 'game'.",
+      "[script] c6-chart @~471-475s: from 'fee' the only callout is '$16,500' (30-year fees) placed at x 0.78 right beside the green 'Invested instead' dot, so it reads as the invested value; it is never said and x 0.78 is ~year 23, not year 30. Put the {annual30_total} callout at x 1.0 on the fees line and show it with/after 'grow', or drop it.",
+      "[script] c4-tons @210s: the type scene's ghost crate prints its red 'CARGO' lettering between 'TONS OF FREIGHT' and 'BELOW THE CABIN' (text behind text). Use a prop without lettering (e.g. jet or suitcase-free hold) for this type beat; [scene] type backdrop props should hide their own labels.",
+      "[script] c5-split @295s, c5-signup @310s, c6-flow @410s: actor at spot 0.12 in a close shot puts the head at the top-left corner, cropped by the frame top and under the logo badge. Use spot >= 0.2 for these beats."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:16:12.232225+00:00",
+    "finishedAt": "2026-10-29T04:16:12.232225+00:00",
+    "notes": [
+      "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:16:13.189410+00:00",
+    "finishedAt": "2026-10-29T04:18:11.029896+00:00",
+    "notes": [
+      "493 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-29T04:19:16.946101+00:00",
+    "finishedAt": "2026-10-29T04:19:16.946101+00:00",
+    "notes": [
+      "[script] c5-signup @310s (frame 9300, just before 'cardholder'): Priya is still framed huge at the top-left corner despite spot 0.22 - head cropped by the frame top, arm cut at the left edge, and the logo badge sits on the side of her face/earring. Start the beat with camera size 'wide' on 'room' (or 'medium' with spot ~0.3) and use 'medium' instead of 'close' at 'cardholder'. All other earlier problems (thumbnail B, c5-shrink, c2-holiday, c6-chart callout, c4-tons, c5-split, c6-flow) are fixed."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:19:36.252510+00:00",
+    "finishedAt": "2026-10-29T04:19:36.252510+00:00",
+    "notes": [
+      "65 figures computed from inputs; 41 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:19:37.292529+00:00",
+    "finishedAt": "2026-10-29T04:21:32.613684+00:00",
+    "notes": [
+      "493 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:21:55.194608+00:00",
+    "finishedAt": "2026-10-29T04:21:55.194608+00:00",
+    "notes": [
+      "Final re-review: all earlier problems fixed (c5-signup @310s now wide with Priya whole and clear of the logo; thumbnail B dropped; c5-shrink, c2-holiday, c6-chart, c4-tons, c5-split, c6-flow fixed); no regressions in the 5 s contact sheet; layout/craft clean, 493 s, audio -1.0/-16.3 dB, disclaimer on end card, thumbnail readable and on-promise."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:22:05.241027+00:00",
+    "finishedAt": "2026-10-29T04:45:41.744157+00:00",
+    "notes": [
+      "493 s, sky/acoustic, peak -1.0 dB, mean -16.3 dB"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:46:05.603541+00:00",
+    "finishedAt": "2026-10-29T04:46:05.603541+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-29T04:46:11.094448+00:00",
+    "finishedAt": "2026-10-29T04:46:11.094448+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
