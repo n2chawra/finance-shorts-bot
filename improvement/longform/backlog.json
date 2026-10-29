@@ -904,8 +904,42 @@
       "route": "video",
       "priority": "high",
       "found": "2026-10-28",
-      "status": "open",
-      "note": "2026-10-29 improver: the build camera fix and the facepalm fix are in; the script workarounds are no longer needed. The jet prop's BANK label (c4-hold) is still Studio's."
+      "status": "done",
+      "note": "2026-10-29 improver: the build camera fix and the facepalm fix are in; the script workarounds are no longer needed. The jet prop's BANK label (c4-hold) is still Studio's. 2026-10-29 Studio: finished and shipped as L-20261029-01 (jet BANK label moved onto its own plate above the wing).",
+      "done": "2026-10-29"
+    },
+    {
+      "id": "2026-10-29-thumb-variant-who",
+      "kind": "bug",
+      "title": "Extra long thumbnails without `who` crash the render (ZodError)",
+      "detail": "remotion/src/contract/timeline.ts Thumbnail requires `who`, so a grid or scene entry in `thumbnails` without it fails calculateStoryMetadata with a bare ZodError (L-20261029-01's first stills). The script builder should accept it missing (grid has no face) or check_script should name the missing field. Script workaround: give every thumbnail a `who`.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-29",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-29-scene-thumb-blurred",
+      "kind": "craft",
+      "title": "A long `scene` thumbnail draws the beat's frame blurred, with its figures, and fails the phone-size check",
+      "detail": "L-20261029-01 tried scene at 'turn' and at 'hook': both failed thumbs.py (edges 0.12-0.13 at 168x94); the hook frame was mostly depth-of-field blur and showed '$12' and the ticket figure, which a long thumbnail must not have. Improver: render a scene thumbnail with the camera sharp (no DOF) and figure tags hidden. Until then how_they_make_money has face and grid only.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-29",
+      "status": "open"
+    },
+    {
+      "id": "2026-10-29-grid-thumb-same",
+      "kind": "craft",
+      "title": "The grid thumbnail always looks like the last grid (QA, twice)",
+      "detail": "QA failed the grid variant of L-20261028-01 and of L-20261029-01 as the same picture as L-20261026-01's: a headline over white tiles. New colours and icons don't count as a new idea. Improver: a second grid composition (things scattered in one scene, or an arc), so a grid can be a Test & Compare variant again. L-20261029-01 shipped with one thumbnail.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-10-29",
+      "status": "open"
     }
   ]
 }
