@@ -78,6 +78,9 @@ OVERUSED = (4, -0.25)         # told this many times or more in the last RECENT:
 RECENT = 15
 
 
+TIER_BONUS = 0.8      # core formats up, personal-budget (low) formats down
+
+
 def _story(topic: dict) -> str | None:
     s = topic.get("stories") or []
     return s[0] if s else topic.get("story")
@@ -117,6 +120,9 @@ def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, f
     parts["priority"] = {"breaking": 2.0, "trending": 2.0, "high": 0.4}.get(topic.get("priority") or "", 0.0)
     parts["global"] = 0.6 if topic.get("reach") == "global" else 0.0
     story = _story(topic)
+    # big money first (owner, 2026-10-30): every 1K+ Short and every subscriber came from a core format
+    from . import formats
+    parts["tier"] = {"core": TIER_BONUS, "low": -TIER_BONUS}.get(formats.tiers().get(story or "", ""), 0.0)
     if ctx and story:
         o = ctx["ours"].get(story)
         if o:   # shrunk toward 0 while we have few videos of it

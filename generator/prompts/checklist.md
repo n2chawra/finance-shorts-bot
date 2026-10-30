@@ -42,6 +42,17 @@ fix any beat near a limit as well.
   the fee.
 - Real people and companies: only well-known public facts, no invented quotes.
 
+## Hook, voice and shape (owner, 2026-10-30)
+- **The hook opens a question and promises the answer, and never gives it**: "Casinos make money
+  even when you win. Here's how." The hook line ends on the question or "here's how / watch / let
+  me show you".
+- **One voice explains** (60%+ of the words, full sentences, 12+ words a beat); the cast react. The
+  speaker changes 5 times at most.
+- **Shape**: the plan's shape in `script.shape`; level chips and the word "level" only in `levels`.
+- **The thing, not the character**: in a narrator beat the camera frames the item being explained;
+  every figure sits on its thing (it pulses while said).
+- **Calm**: cut or match between beats, whip or zoom-through twice at most, one camera change a beat.
+
 ## Pictures (render gates and QA)
 - **Something new at least every 2.5 s:** an action on every phrase, each on the word that names it
   (70% of a beat's actions must show what is said then).

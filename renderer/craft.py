@@ -167,9 +167,10 @@ def _all_ats(node, ev: dict, fps: int, out: list[float]) -> None:
             _all_ats(v, ev, fps, out)
 
 
-def _visual_times(b: dict, fps: int) -> list[float]:
+def _visual_times(b: dict, fps: int, figures: set[str] | None = None) -> list[float]:
     """Seconds into a beat at which something new appears: its start, camera keys, build actions,
-    a shot's objects, actions and acting keys, its word."""
+    a shot's objects, actions and acting keys, its word, and (build and shot) each spoken figure,
+    which the scene animates by itself (studio/figures.ts, 2026-10-30)."""
     p, ev = b.get("params") or {}, b.get("events") or {}
     t = lambda k: (ev[k["at"]] / fps) if isinstance(k.get("at"), str) and k["at"] in ev else (k["sec"] if isinstance(k.get("sec"), (int, float)) else None)  # noqa: E731
     out = [0.0]
@@ -184,6 +185,9 @@ def _visual_times(b: dict, fps: int) -> list[float]:
         out.append(x)
     if b.get("scene") in DOCU:
         _all_ats(p, ev, fps, out)
+    v = b.get("voice") or {}
+    if figures and b.get("scene") in ("build", "shot"):
+        out += [v.get("start", 0) / fps + c["s"] for c in v.get("captions") or [] if c.get("t", "").rstrip(".,!?;:") in figures]
     return sorted(out)
 
 
@@ -194,7 +198,7 @@ def picture_problems(tl: dict) -> list[str]:
     for b in tl["beats"]:
         if b["scene"] not in ("shot", "build", *DOCU):
             continue          # custom beats are animated by hand; old fixed scenes keep their own rules
-        times = [*_visual_times(b, fps), b["frames"] / fps]
+        times = [*_visual_times(b, fps, set((tl.get("figures") or {}).values())), b["frames"] / fps]
         gap = max((y - x for x, y in zip(times, times[1:])), default=0.0)
         if gap > worst[0]:
             worst = (gap, b["id"])

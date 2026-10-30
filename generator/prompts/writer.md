@@ -47,11 +47,13 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   fallback): write `remotion/src/videos/<id>/Hook.tsx` for this video, following
   `remotion/src/videos/README.md` and its reference hook. The topic's world at its most extreme, the
   conflict on screen in the first second.
-- **It's a skit, not a lecture** (owner reset, 2026-10-21). The viral finance Shorts are two or
-  three characters talking: a rich mentor and a broke friend, a rich and a poor version of the same
-  person, a salesman and a customer. Give most lines to the cast (`speaker`: rohan, priya, sharma),
-  keep the narrator for a line or two. Characters react: surprise, envy, outrage, a punchline.
-  Talk like a person: short sentences, everyday words, one idea each, a joke where it fits.
+- **One voice explains, like a good teacher; the cast act it out** (owner, 2026-10-30: "the
+  characters speak one-liners; they should explain like a teacher"). Pick the explainer: the
+  narrator, or one cast member who knows the answer (Sharma for how the rich work). That voice says
+  60% or more of the words, in full sentences that connect ("because…", "so…", "which means…"),
+  about 12 or more words a beat, one clear idea at a time, a concrete example before the rule. The
+  others react in a short line where it adds something (surprise, a doubt the viewer has, a joke).
+  The speaker changes 5 times at most. Everyday words; no jargon without saying what it means.
 - **Nobody on screen is an adviser** (YouTube's monetization policy excludes content presenting
   itself as a human expert giving financial advice; our narrator is a synthetic voice). No line
   claims credentials or expertise ("as a financial adviser", "I'm a banker", "trust me") and no
@@ -60,25 +62,36 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   fine, "You should do this." is not.
 - **Big captions show every spoken word** (drawn automatically from the voice), so scenes carry the
   picture and the figures, not sentences. Keep on-screen text to labels and numbers.
-- **The first second decides everything.** The first spoken line lands in under 1.5 s and is the
-  format's hook (`formats` in `state`): a conflict ("Poor person gets a raise. Rich person gets a
-  raise."), a secret ("Billionaires never sell their shares."), or the shock number. No greeting, no
-  "did you know", no setup before the hook. The first frame already shows the characters or the
+- **The hook opens a curiosity gap** (owner, 2026-10-30: "the hook is unable to create curiosity").
+  The first spoken line lands in under 1.5 s; the hook says the surprising thing, opens the question
+  and promises the answer, and never gives it (the answer is the payoff):
+  "Casinos make money even when you win. Here's how." · "His salary is one dollar. So how does he
+  live like a billionaire?" · "Billionaires almost never sell a share. So where does their money come from?"
+  Not: "The casino never gambles. It wins a slice of every bet." (the answer; nothing left to wait
+  for). The hook line ends on the question or a promise ("here's how", "watch", "let me show you");
+  `number-check` fails one that doesn't. No greeting, no "did you know", no setup before the hook. The first frame already shows the characters or the
   number, in a place with something moving, never a figure on a plain background:
   - `conflict`: two characters, opposite moves · `secret`: the mentor says the secret ·
     `question`: ask what the viewer wants answered · `shock_number`: a computed figure ·
     `myth`: a character states the belief · `challenge`: dare the viewer to guess.
-- **Something new every 2–3 seconds:** a new beat, a figure landing, a character reacting. A Short
-  is 7–11 short beats.
-- **Length:** 20–35 s, about 60–100 spoken words. Shorter is better if the story is complete.
+- **Something new on screen every 2–3 seconds** (an action on the word that names it), while the
+  voice explains at an easy pace (tempo 1.2, about 175 words a minute). When the narrator explains,
+  the camera frames the thing being explained and the characters step back; they are big when they
+  speak, react, in the hook and the turn. Put each figure on its thing: it pulses while it is said. A Short is 8–11 beats of
+  4–7 s. One camera change per beat, cut or `match` between beats, `whip` or `zoom-through` twice
+  at most: the picture moves calmly with the explanation, never zig-zags.
+- **Length:** the setting (`lengthMinSec`–`lengthMaxSec`, 45–70 s since 2026-10-30), about 120–185
+  spoken words. Use the time to teach it properly: an example, the reason, what it means.
 - **Loop it:** the last line hands back to the first, so a viewer who keeps watching sees the hook
   again and it plays on ("…and that's why the rich one never needed the raise." → "Poor person
   gets a raise."). **No `end` beat in a Short:** the disclaimer shows as a small line over the last
   moments and sits in the description. Put the plan's `cta` in a character's last line only if it
   doesn't break the loop.
-- **The story spine** (README "The story spine", owner 2026-10-26): hook → promise by 6 s →
-  a figure by 9 s → 3+ levels with a climbing number → a turn 50–85% in → the payoff → loop,
-  the length in `config/settings.json` (`lengthMinSec`–`lengthMaxSec`, 35–50 s since 2026-10-29). Every beat has a `role`. Then the picture: draw the story's own things in
+- **The story spine and its shape** (README "The story spine"): copy the plan's shape into
+  `script.shape` (its id) and arrange the beats as that shape says: hook → promise by 6 s → a figure
+  by 9 s → 3+ `build` beats of rising stakes → a turn 50–85% in → the payoff → loop. Level chips
+  (`structure.levels`, `hud.level`), the climbing counter and the word "level" only in the `levels`
+  shape. Every beat has a `role`. Then the picture: draw the story's own things in
   `remotion/src/videos/<id>/props.tsx`, build beats whose actions fire on the words that name them,
   and code `Hook.tsx`, `Turn.tsx` and `Payoff.tsx` (`renderer/templates/SHOTS.md`, "The build scene").
 - **The cover (`thumbnail`) is required**: `layout: "scene"` by default, a frame of this video (the

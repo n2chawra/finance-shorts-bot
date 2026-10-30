@@ -14,6 +14,14 @@ Infinite Wealth Lab's bank scene) and what these checks hold every Short to:
 
 plus no stock lines the channel kept repeating, and no line opening from the last 10 scripts.
 Each beat names its part in `role`. Only Shorts on the story template are held to this.
+
+2026-10-30 (owner: "levels in all videos feels very repetitive"; "the hook is unable to create
+curiosity"; "characters speak one-liners, they should explain like a teacher"): a Short names its
+`shape` (generator/shapes.py). Levels, the chips and the climbing counter belong to the levels shape
+only; every other shape builds its stakes in `build` beats. A Short with a shape also opens on a
+curiosity hook (a question or a promise, never the answer), is carried by one explaining voice in
+full sentences, and changes speaker at most MAX_SWITCHES times. Scripts without a shape (before
+2026-10-30) and long videos keep the levels rules.
 """
 from __future__ import annotations
 
@@ -24,12 +32,20 @@ FIRST_FIGURE_BY = 9.0
 LEVELS_MIN = 3
 COUNTER_CHANGES = 3
 TURN_FROM, TURN_TO = 0.5, 0.85
-ROLES = ("hook", "promise", "level", "tease", "turn", "payoff", "loop", "end")
+ROLES = ("hook", "promise", "level", "build", "tease", "turn", "payoff", "loop", "end")
+BUILD_MIN = 3            # beats of rising stakes (levels or build steps)
+MAX_SWITCHES = 5         # speaker changes in a Short: one explainer, the cast reacting
+LEAD_SHARE = 0.6         # the explaining voice says at least this share of the words
+BEAT_WORDS = 12          # words per explaining beat on average: sentences, not one-liners
+MAX_LOUD_TRANSITIONS = 2  # whip / zoom-through: accents, not every cut (owner: the picture zig-zagged)
+# the hook leaves a question open: it asks one, or promises the answer is coming
+HOOK_GAP = re.compile(r"\?\s*$|\b(here'?s (how|why|what)|watch|let me show|find out|the answer|by the end|wait (till|until)|"
+                      r"i'?ll show|this is how|this is why|how\?|why\?)\b", re.I)
 # long videos (owner, 2026-10-26: "do the same upgrade for long videos"): the levels are the
 # chapters, the promise comes within 30 s, every chapter but the last ends on a `tease` beat (the
 # open loop into the next), and the hook may run longer
 SPINE = {
-    "short": {"promise_by": PROMISE_BY, "figure_by": FIRST_FIGURE_BY, "levels_min": LEVELS_MIN, "hook_max": 3.6, "teases": False},
+    "short": {"promise_by": PROMISE_BY, "figure_by": FIRST_FIGURE_BY, "levels_min": LEVELS_MIN, "hook_max": 4.5, "teases": False},
     "long": {"promise_by": 30.0, "figure_by": 45.0, "levels_min": 4, "hook_max": 15.0, "teases": True},
 }
 # lines our Shorts said again and again (2026-10-21..26): viewers hear the template
@@ -52,6 +68,62 @@ def _spine(script: dict) -> dict:
     return SPINE["long" if script.get("format") == "long" else "short"]
 
 
+def _levels(script: dict) -> bool:
+    """Level chips and a climbing counter: long videos (chapters), Shorts before shapes, the levels shape."""
+    if script.get("format") == "long" or script.get("shape") is None:
+        return True
+    from . import shapes
+    return shapes.shows_levels(script["shape"])
+
+
+def voice_problems(script: dict) -> list[str]:
+    """A Short with a shape: a curiosity hook, one explaining voice, full sentences."""
+    beats = script.get("beats") or []
+    out = []
+    hook = next((b for b in beats if b.get("role") == "hook" or b.get("scene") == "hook"), None)
+    if hook and not HOOK_GAP.search((hook.get("say") or "").strip()):
+        out.append("the hook gives no reason to stay: end it on the open question or a promise (\"Casinos make money even "
+                   "when you win. Here's how.\"), never on the answer")
+    spoken = [b for b in beats if (b.get("say") or "").strip() and b.get("scene") != "end"]
+    words: dict[str, int] = {}
+    for b in spoken:
+        who = b.get("speaker") or "narrator"
+        words[who] = words.get(who, 0) + len((b.get("say") or "").split())
+    total = sum(words.values())
+    if total:
+        lead, n = max(words.items(), key=lambda kv: kv[1])
+        if n / total < LEAD_SHARE:
+            out.append(f"no one explains: {lead} says {n / total:.0%} of the words; one voice (the narrator or one teacher) "
+                       f"carries {LEAD_SHARE:.0%} or more and the others react")
+    switches = sum(1 for a, b in zip(spoken, spoken[1:]) if (a.get("speaker") or "narrator") != (b.get("speaker") or "narrator"))
+    if switches > MAX_SWITCHES:
+        out.append(f"the speaker changes {switches} times; at most {MAX_SWITCHES}: one voice explains, the cast react")
+    body = [b for b in spoken if b.get("role") not in ("hook", "loop", "end")]
+    if body:
+        avg = sum(len((b.get("say") or "").split()) for b in body) / len(body)
+        if avg < BEAT_WORDS:
+            out.append(f"beats average {avg:.0f} words: explain in full sentences ({BEAT_WORDS}+ words a beat, "
+                       f"\"because… so… which means…\"), not one-liners")
+    # when the narrator explains, the camera frames the thing being explained, not a person (owner,
+    # 2026-10-30: "the animation should be the centre of impression, not the characters")
+    cast = {"rohan", "priya", "sharma", "sikka"}
+    on_people = [b.get("id") for b in beats if (b.get("speaker") or "narrator") == "narrator" and b.get("scene") in ("build", "shot")
+                 and b.get("role") not in ("hook", "turn", "loop")
+                 and any(isinstance(k, dict) and k.get("on") in cast for k in (b.get("params") or {}).get("camera") or [])]
+    if on_people:
+        out.append(f"beats {', '.join(map(str, on_people))}: the narrator explains while the camera frames a person; frame the "
+                   f"things being explained (an item or \"all\"), characters step back")
+    loud = [b.get("id") for b in beats if b.get("transition") in ("whip", "zoom-through")]
+    if len(loud) > MAX_LOUD_TRANSITIONS:
+        out.append(f"{len(loud)} whip or zoom-through transitions ({', '.join(map(str, loud))}); at most {MAX_LOUD_TRANSITIONS}: "
+                   f"cut or match between beats, so the picture doesn't zig-zag")
+    if not _levels(script):
+        said = sum(len(re.findall(r"\blevel\b", b.get("say") or "", re.I)) for b in beats)
+        if said:
+            out.append(f"\"level\" is said {said} times in a {script.get('shape')!r} video: the word is for the levels shape")
+    return out
+
+
 def _opening(line: str) -> str:
     words = re.findall(r"[a-z']+", re.sub(r"\{[^}]*\}", "", line.lower()))
     return " ".join(words[:OPENING_WORDS]) if len(words) >= OPENING_WORDS else ""
@@ -65,12 +137,22 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
     out = []
     sp = _spine(script)
     levels = ((script.get("structure") or {}).get("levels")) or []
+    laddered = _levels(script)
+    if not laddered and levels:
+        out.append(f"`structure.levels` (the level chips) belongs to the levels shape; a {script.get('shape')!r} video "
+                   f"builds its stakes in `build` beats without chips")
+    if not laddered:
+        builds = sum(1 for b in beats if b.get("role") in ("build", "level"))
+        if builds < BUILD_MIN:
+            out.append(f"{builds} `build` beats; at least {BUILD_MIN}: the stakes rise step by step before the turn")
+    if script.get("shape") is not None and script.get("format", "short") == "short":
+        out += voice_problems(script)
     if sp["teases"] and len(levels) >= sp["levels_min"]:
         teases = sum(1 for b in beats if b.get("role") == "tease")
         if teases < len(levels) - 1:
             out.append(f"{teases} `tease` beats for {len(levels)} chapters: every chapter but the last ends on a tease "
                        f"(the open loop into the next), or viewers leave between chapters")
-    if len(levels) < sp["levels_min"]:
+    if laddered and len(levels) < sp["levels_min"]:
         out.append(f"`structure.levels` needs {sp['levels_min']} or more steps the viewer waits for (\"Sell\", \"Borrow\", \"Never sell\"): "
                    f"the promise of a structure is what keeps people past the hook")
     roles = [b.get("role") for b in beats]
@@ -89,7 +171,7 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
     if levels and not set(range(1, len(levels) + 1)) <= used:
         out.append(f"every level needs a beat (params.hud.level 1..{len(levels)}); missing {sorted(set(range(1, len(levels) + 1)) - used)}")
     counters = [h["counter"].get("text") for h in huds if isinstance(h.get("counter"), dict)]
-    if len(set(counters)) < COUNTER_CHANGES:
+    if laddered and len(set(counters)) < COUNTER_CHANGES:
         out.append(f"the climbing number (params.hud.counter) changes {len(set(counters))} times; at least {COUNTER_CHANGES}: "
                    f"a number that climbs level by level is a reason to keep watching")
     for b in beats:

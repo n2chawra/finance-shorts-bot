@@ -58,3 +58,58 @@ def test_long_videos_need_chapters_and_teases():
     problems = " ".join(story.script_problems(s))
     assert "tease" in problems and "level" in problems   # level 4 has no beat, and no teases
     assert story.applies(s)
+
+
+# ---------------- shapes, hooks and one explaining voice (2026-10-30) ----------------
+
+def explained(shape: str = "reveal") -> dict:
+    """A Short in the reveal shape: a curiosity hook, the narrator explaining, the cast reacting."""
+    long = "and that is the part of the story which explains where the money really goes every night"
+    return {"format": "short", "template": "short_story", "shape": shape,
+            "beats": [{**beat("hook", "hook", "Casinos make money even when you win. Here's how."), "speaker": "narrator"},
+                      {**beat("promise", "promise", f"Three clues hide on this table {long}"), "speaker": "narrator"},
+                      {**beat("a", "build", f"Clue one is green {long}"), "speaker": "narrator"},
+                      {**beat("b", "build", f"Clue two is time {long}"), "speaker": "narrator"},
+                      {**beat("r", "build", "Only that much? That is nothing to me."), "speaker": "rohan"},
+                      {**beat("c", "build", f"Clue three is the crowd {long}"), "speaker": "narrator"},
+                      {**beat("turn", "turn", "I love your lucky nights, they bring you back"), "speaker": "sharma"},
+                      {**beat("payoff", "payoff", f"So the casino never needs luck {long}"), "speaker": "narrator"},
+                      {**beat("loop", "loop", "One more spin couldn't hurt"), "speaker": "rohan"}]}
+
+
+def test_a_reveal_needs_no_levels_or_counter():
+    assert story.script_problems(explained()) == []
+
+
+def test_level_chips_belong_to_the_levels_shape():
+    s = explained()
+    s["structure"] = {"levels": ["Hour", "Night", "Year"]}
+    s["beats"][2]["say"] += ". That's level one"
+    problems = " ".join(story.script_problems(s))
+    assert "belongs to the levels shape" in problems and '"level" is said' in problems
+
+
+def test_a_hook_that_gives_the_answer_fails():
+    s = explained()
+    s["beats"][0]["say"] = "The casino never gambles. It wins a slice of every bet."
+    assert any("hook gives no reason" in p for p in story.script_problems(s))
+
+
+def test_one_liners_traded_by_the_cast_fail():
+    s = explained()
+    for i, b in enumerate(s["beats"][1:-1]):
+        b["speaker"] = ("rohan", "priya", "sharma")[i % 3]
+        b["say"] = "Short line here."
+    problems = " ".join(story.script_problems(s))
+    assert "no one explains" in problems and "speaker changes" in problems and "not one-liners" in problems
+
+
+def test_whips_are_accents():
+    s = explained()
+    for b in s["beats"][1:5]:
+        b["transition"] = "whip"
+    assert any("whip or zoom-through" in p for p in story.script_problems(s))
+
+
+def test_scripts_from_before_shapes_keep_the_levels_rules():
+    assert story.script_problems(good()) == []          # no `shape`: the levels spine, unchanged

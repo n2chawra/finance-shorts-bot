@@ -30,6 +30,19 @@ salary really leaves you, which money level you are on.
    `story` is the format's `id`, and `demand` names the reference video that proves people watch it:
    `{"title", "views", "url"}` (100,000 views or more). `check-plan` fails without both.
    Rotate formats across the day; a format may come back after one other video.
+   **Big money first** (owner, 2026-10-30: every 1K+ Short and every subscriber so far came from
+   them): at least 2 of every 3 Shorts use a `tier: core` format (`core_formats` in `state`:
+   billionaire questions, money at scale, how famous businesses make money, secrets of the rich told
+   through real billionaires). When `core_needed` is true this one must. The third may test any
+   format, told through big money or famous names; `tier: low` formats (salary breakdowns, habit
+   costs, "$X becomes $Y") only when nothing better fits.
+1b. **Pick the shape** (`shape`): how the beats are arranged, from `shapes` in `state` (the library,
+   least used first; `blocked` ones were used in the last 3 videos). Choose by the topic: one hidden
+   answer is a `reveal`, two people one difference a `versus`, a ladder people climb `levels` (at
+   most 1 in 3 videos), one change over time `before-after` or `timeline`, an imagined scenario
+   `what-if`, a few things of one kind a `countdown`. When none fits, invent one:
+   `"shape": {"id": "the-heist", "name": "The heist", "beats": "hook -> ... -> payoff", "why": "..."}`.
+   It joins the library when the video ships, and the improver keeps it if it performs.
 2. **Pick the reach (`topic.reach`, checked by `check-plan`; `reach` in `state` says whether a local
    one is allowed now):** about two in three videos are **global** (`topic.reach: "global"`, `currency: USD`): a video anyone in the world can relate to with no
    local knowledge: famous people and companies everyone knows (Elon Musk, Bezos, McDonald's, Apple, Netflix,
@@ -103,6 +116,7 @@ Create `videos/<next_id>/plan.json`:
   "template": "short_story",
   "topic": { "title": "Why billionaires borrow against their shares instead of selling", "category": "wealth", "reach": "global" },
   "story": "secret_of_rich",
+  "shape": "reveal",
   "demand": { "title": "rich vs poor parents buying you a car", "views": 8800000, "url": "https://www.youtube.com/shorts/vGQZuTfIWnU" },
   "hook_style": "secret",
   "cta": "Would you borrow or sell? Comment",

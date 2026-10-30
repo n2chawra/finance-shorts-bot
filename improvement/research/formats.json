@@ -1,5 +1,5 @@
 {
-  "note": "Formats with proven demand (owner reset, 2026-10-21). Every plan's `story` is one of these ids for its format, and its `demand` names a reference video. Research adds formats and examples from the nightly demand scan; the improver retires formats our own numbers say don't work. Views as read on the day in `seen`. Since 2026-10-23 the channel is global first (generator/reach.py): `markets` lists `global` for formats anyone in the world can relate to.",
+  "note": "Formats with proven demand (owner reset, 2026-10-21). Every plan's `story` is one of these ids for its format, and its `demand` names a reference video. Research adds formats and examples from the nightly demand scan; the improver retires formats our own numbers say don't work. Views as read on the day in `seen`. Since 2026-10-23 the channel is global first (generator/reach.py): `markets` lists `global` for formats anyone in the world can relate to. `tier` (2026-10-30, owner: big-money topics brought every 1K+ Short and every subscriber): `core` formats fill at least 2 of every 3 Shorts; `low` ones rank last.",
   "seen": "2026-10-26",
   "formats": [
     {
@@ -105,7 +105,8 @@
           "views": 3027582,
           "url": "https://www.youtube.com/shorts/U7ioIch9Mg8"
         }
-      ]
+      ],
+      "tier": "core"
     },
     {
       "id": "trap_alert",
@@ -190,7 +191,8 @@
           "views": 1656553,
           "url": "https://www.youtube.com/shorts/gaFvy03NDMw"
         }
-      ]
+      ],
+      "tier": "core"
     },
     {
       "id": "salary_breakdown",
@@ -219,7 +221,8 @@
           "views": 42000000,
           "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
         }
-      ]
+      ],
+      "tier": "low"
     },
     {
       "id": "which_one_are_you",
@@ -282,7 +285,8 @@
           "views": 9061008,
           "url": "https://www.youtube.com/shorts/rrpn3zo2Slo"
         }
-      ]
+      ],
+      "tier": "low"
     },
     {
       "id": "cost_of_habit",
@@ -305,7 +309,8 @@
           "views": 284,
           "url": ""
         }
-      ]
+      ],
+      "tier": "low"
     },
     {
       "id": "list_explained",
@@ -481,7 +486,8 @@
           "views": 4352132,
           "url": "https://www.youtube.com/shorts/6skOh-IjMNY"
         }
-      ]
+      ],
+      "tier": "core"
     },
     {
       "id": "money_scale",
@@ -504,7 +510,8 @@
           "views": 2640270,
           "url": "https://www.youtube.com/shorts/jIs5WrvxcQ4"
         }
-      ]
+      ],
+      "tier": "core"
     }
   ]
 }

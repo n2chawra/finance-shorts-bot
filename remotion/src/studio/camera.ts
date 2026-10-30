@@ -36,6 +36,17 @@ export function keepInside(f: Frame, box: [number, number, number, number], w: n
 
 export type Box = [number, number, number, number];
 
+/** How long a camera move takes, and the least time a framing is held (owner, 2026-10-30: the
+ * camera "zig-zagged": two or three new framings in a four-second beat, each a 0.6 s move). */
+export const MOVE_SEC = 1.0, HOLD_SEC = 1.2;
+
+/** Keyframes with any that come less than HOLD_SEC after the last kept one dropped. */
+export function steady<K extends { start: number }>(keys: K[]): K[] {
+  const out: K[] = [];
+  for (const k of keys) if (!out.length || k.start - out[out.length - 1]!.start >= HOLD_SEC) out.push(k);
+  return out;
+}
+
 /** The smallest box around all of `boxes`. */
 export function union(boxes: Box[]): Box {
   return [Math.min(...boxes.map((b) => b[0])), Math.min(...boxes.map((b) => b[1])), Math.max(...boxes.map((b) => b[2])), Math.max(...boxes.map((b) => b[3]))];

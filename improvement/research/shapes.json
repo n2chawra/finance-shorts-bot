@@ -1,0 +1,96 @@
+{
+  "note": "Story shapes: how a video's beats are arranged (owner, 2026-10-30: every Short had '4 levels', which felt repetitive; the shapes must keep growing so no cycle forms). A plan names one in `shape` (generator/shapes.py), or invents a new one ({id, name, beats, why}), which ship adds here as `trial`. Every shape keeps the shared spine (generator/story.py): a curiosity hook, the promise early, rising stakes, a turn, a payoff that answers the hook. Only a shape with `levels: true` shows the level chips and a climbing counter. Research adds shapes it sees in top videos (with the reference); the improver promotes trial shapes that beat the median stayed-to-watch / % viewed, and retires ones that keep underperforming. Status: active | trial | retired.",
+  "shapes": [
+    {
+      "id": "levels",
+      "name": "Levels",
+      "status": "active",
+      "levels": true,
+      "when": "only when the topic IS a ladder people wait to climb: levels of wealth, $100 to a strap to a pallet to a room, an hour to a decade",
+      "beats": "hook -> promise the ladder ('four steps up') -> each level a beat, the counter climbing -> the turn at the top -> the payoff",
+      "reference": {
+        "title": "The 7 Levels of wealth",
+        "views": 1128269,
+        "url": "https://www.youtube.com/watch?v=FHSsR1gfLJA"
+      }
+    },
+    {
+      "id": "reveal",
+      "name": "The reveal (open loop and clues)",
+      "status": "active",
+      "levels": false,
+      "when": "how a business really makes money, a secret of the rich, a billionaire question: there is one hidden answer",
+      "beats": "hook: the surprising fact and the question, no answer -> promise ('here's how') -> clue one, clue two, clue three, each a bigger piece -> the turn (the piece nobody expects) -> the payoff answers the hook in one line",
+      "reference": {
+        "title": "Why does the casino always win, even when nobody cheats? | How Casinos Make Money",
+        "views": 22922,
+        "url": "https://youtube.com/shorts/vyisGtuV-Ls"
+      }
+    },
+    {
+      "id": "versus",
+      "name": "Versus",
+      "status": "active",
+      "levels": false,
+      "when": "two people or two choices in the same situation, one difference that decides everything",
+      "beats": "hook: the same moment, two outcomes -> promise ('one choice decides it') -> side by side: what each does, step by step, the gap widening -> the turn (the real reason) -> the payoff",
+      "reference": {
+        "title": "rich vs poor parents buying you a car",
+        "views": 8800000,
+        "url": "https://www.youtube.com/shorts/vGQZuTfIWnU"
+      }
+    },
+    {
+      "id": "countdown",
+      "name": "Countdown",
+      "status": "active",
+      "levels": false,
+      "when": "a handful of things of one kind (tricks, traps, ways): number three, two, then the biggest",
+      "beats": "hook: the biggest one teased, not shown -> promise ('three ways, the last is the worst') -> three, two -> the turn -> number one, the payoff",
+      "reference": {
+        "title": "6 Ways Rich People Make Money With Debt",
+        "views": 324776,
+        "url": "https://www.youtube.com/watch?v=rCHYttyvaw8"
+      }
+    },
+    {
+      "id": "before-after",
+      "name": "Before and after",
+      "status": "active",
+      "levels": false,
+      "when": "one change and what it did: a decision, a law, a company's move, a fortune over time",
+      "beats": "hook: the after, shocking, with the question how -> the before, in enough detail to matter -> the change -> what happened step by step -> the turn -> the payoff (the after, explained)",
+      "reference": {
+        "title": "Everyone Called Him an Idiot. He Got Richer Every Time.",
+        "views": 990297,
+        "url": "https://www.youtube.com/watch?v=mFiZG43v_4A"
+      }
+    },
+    {
+      "id": "timeline",
+      "name": "Then and now",
+      "status": "active",
+      "levels": false,
+      "when": "how something changed across years: a price, a fortune, an industry, who was the first billionaire of it",
+      "beats": "hook: today's figure next to the old one, and why -> the start -> two or three moments that changed it, in order -> the turn -> today, explained",
+      "reference": {
+        "title": "Who Was The 1st Billionaire In These Industries?!",
+        "views": 296915,
+        "url": "https://youtube.com/shorts/ek5HSFbILSE"
+      }
+    },
+    {
+      "id": "what-if",
+      "name": "What if",
+      "status": "active",
+      "levels": false,
+      "when": "an imagined scenario at a scale people can't picture: spend $1 trillion in a day, pay off the national debt, give everyone a billion",
+      "beats": "hook: the wild question -> the rules of the game -> try it, step by step, the number growing -> the turn (where it breaks) -> the payoff (what it teaches)",
+      "reference": {
+        "title": "I Tried to Spend $1 TRILLION in One Day",
+        "views": 213185,
+        "url": "https://youtube.com/shorts/kQCpFXtG9RE"
+      }
+    }
+  ]
+}

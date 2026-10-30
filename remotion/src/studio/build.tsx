@@ -24,8 +24,9 @@ import { CAST } from "../cast/cast";
 import { Actor, type ActorSpec, at, clamp, type SceneProps, sec } from "../scenes/kit";
 import { FONT } from "../design/fonts";
 import { countUp } from "../fmt/inr";
-import { between, breathe, type Box as Rect, frameOn, type Frame, keepHeads, keepInside, type ShotSize, holds, shows, union } from "./camera";
+import { between, breathe, type Box as Rect, frameOn, type Frame, keepHeads, keepInside, type ShotSize, holds, MOVE_SEC, shows, steady, union } from "./camera";
 import { type ScreenText, ScreenTexts } from "./labels";
+import { pulse, spokenFigures } from "./figures";
 import { counterBottom, counterShown } from "./hud";
 import { Ball, Box, INK, PALETTE, type PropFC, type PropSet, Shadow, Shape } from "./draw";
 import { Note, type Cur } from "./money";
@@ -100,7 +101,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
         case "grow": case "shrink": { const from = s.scale, to = a.scale ?? (a.do === "grow" ? 1.6 : 0.55);
           s.scale = from + (to - from) * spring({ frame: d * p.fps, fps: p.fps, config: { damping: 11, stiffness: 120 } }); break; }
         case "move": { const [tx, ty] = typeof a.to === "string" ? (byId[a.to] ? home(byId[a.to]!) : [s.x, s.y]) : a.to ? [a.to.x * w, gy - (a.to.y ?? 0) * h] : [s.x, s.y];
-          const e = easeIO(d / (a.dur ?? 0.8)); s.x += (tx - s.x) * e; s.y += (ty - s.y) * e - Math.sin(e * Math.PI) * h * 0.08; break; }
+          const e = easeIO(d / (a.dur ?? 1.1)); s.x += (tx - s.x) * e; s.y += (ty - s.y) * e - Math.sin(e * Math.PI) * h * 0.025; break; }
         case "swap": s.fromProp = s.prop; s.prop = a.into ?? s.prop; s.swapK = clamp(d / 0.5); break;
         case "break": s.broken = clamp(d / 0.3); s.shake = d < 0.4 ? 1 - d / 0.4 : 0; s.state = "broken"; break;
         case "fill": case "drain": { const from = s.k, to = a.k ?? (a.do === "fill" ? 1 : 0); s.k = from + (to - from) * easeIO(k); break; }
@@ -117,10 +118,18 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   };
 
   const states = items.map((it) => ({ it, s: now(it) }));
+  // every figure reacts while it is said: its thing pulses, or the figure itself pops on screen
+  const said = spokenFigures(p);
+  const carries = (st: { it: Item; s: ItemNow }, text: string) =>
+    [st.s.tag, st.s.label, st.s.copyText, st.s.count?.text].some((x) => x === text);
+  const pulseOf = (st: { it: Item; s: ItemNow }) => Math.max(0, ...said.filter((f) => carries(st, f.text)).map((f) => pulse(t, f)));
 
   // the camera: keys and focus actions, framing items or actors
   const actorsP = P.actors ?? [];
-  const aScale = (a: { scale?: number }) => a.scale ?? (v ? 1.5 : 1.55);
+  // the one speaking is big; anyone else steps back so the things being explained carry the frame
+  // (owner, 2026-10-30: "the animation should be the centre of impression, not the characters")
+  const speaking = (who: string) => p.beat.speaker === who;
+  const aScale = (a: { scale?: number; who?: string }) => a.scale ?? (speaking(a.who ?? "") ? (v ? 1.25 : 1.3) : (v ? 0.85 : 0.95));
   // an actor head to feet, and their head with room for the shot's slow push (rig: head top 502 px above the feet)
   const actorBoxes = actorsP.map((a) => {
     const x = spotX(a.spot, w / 2), k = aScale(a) * (CAST[a.who]?.look.scale ?? 1);
@@ -155,12 +164,13 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     ...actions.filter((a) => a.do === "focus").map((a) => ({ size: a.size ?? "close", on: a.target, move: true, start: a.start })),
   ].sort((a, b) => a.start - b.start);
   if (!keys.length || keys[0]!.start > 0) keys.unshift({ size: "wide", on: "room", start: 0 });
+  keys.splice(0, keys.length, ...steady(keys));
   let fr: Frame = shoot(keys[0]!.size, keys[0]!.on), since = t;
   for (let i = 1; i < keys.length; i++) {
     const k = keys[i]!;
     if (t < k.start) break;
     const next = shoot(k.size, k.on);
-    fr = k.move ? between(fr, next, (t - k.start) / 0.6) : next;
+    fr = k.move ? between(fr, next, (t - k.start) / MOVE_SEC) : next;
     since = t - k.start;
   }
   fr = breathe(fr, since, w, h, p.beat.from % 7);
@@ -172,10 +182,11 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     const From = props[s.fromProp] ?? Missing(s.fromProp);
     const shake = s.shake ? Math.sin(t * 70) * size * 0.05 * s.shake : 0;
     const tilt = s.broken * -9;
+    const beatK = pulseOf({ it, s });
     const one = (dx: number, dy: number, sc: number, key: string, opacity = 1) => (
-      <g key={key} transform={`translate(${s.x + dx + shake},${s.y + dy}) rotate(${tilt}) scale(${s.show * s.scale * sc})`} opacity={opacity}
+      <g key={key} transform={`translate(${s.x + dx + shake},${s.y + dy}) rotate(${tilt}) scale(${s.show * s.scale * sc * (1 + 0.14 * beatK)})`} opacity={opacity}
         style={{ filter: s.broken > 0 ? `saturate(${1 - s.broken * 0.7})` : undefined }}>
-        {s.glow > 0 && <circle cx={0} cy={-size * 0.5} r={size * 0.75} fill={PALETTE.yellow} opacity={0.35 * s.glow} />}
+        {Math.max(s.glow, beatK) > 0 && <circle cx={0} cy={-size * 0.5} r={size * 0.75} fill={PALETTE.yellow} opacity={0.35 * Math.max(s.glow, beatK)} />}
         {s.swapK < 1 && <g transform={`scale(${1 - s.swapK})`}><From s={size} t={t} k={s.k} state={s.state} seed={`${it.id}`} /></g>}
         <g transform={`scale(${s.swapK < 1 ? s.swapK : 1})`}><Prop s={size} t={t} k={s.k} state={s.state} seed={`${it.id}${key}`} /></g>
       </g>
@@ -214,6 +225,12 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   // tags and labels: in screen space, after the camera (labels.tsx), only for things on screen
   const scr = (x: number, y: number): [number, number] => [x * fr.s + fr.tx, y * fr.s + fr.ty];
   const texts: ScreenText[] = [];
+  // a figure no visible thing carries pops on screen by itself while it is said
+  for (const [i, f] of said.entries()) {
+    const k = pulse(t, f);
+    if (k <= 0 || states.some((st) => st.s.show > 0.5 && carries(st, f.text))) continue;
+    texts.push({ key: `said${i}`, kind: "tag", text: f.text, x: w * 0.5, y: h * (v ? 0.3 : 0.26), k: Math.min(1.15, k * 1.15), fill: "#ffd84a" });
+  }
   for (const st of states) {
     const { it, s } = st;
     if (s.show <= 0.05 || !shows(fr, itemBox(st), w, h, 60)) continue;
@@ -222,7 +239,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     const countText = s.count ? (t >= s.count.start + 0.9 ? s.count.text : countUp(s.count.to, easeIO((t - s.count.start) / 0.9), s.count.text, "inr", p.tl.currency)) : undefined;
     const tagText = countText ?? s.copyText ?? s.tag;
     const [tx, ty] = scr(s.x, tagY - 6);
-    if (tagText && s.tagK > 0) texts.push({ key: `t${it.id}`, kind: "tag", text: tagText, x: tx, y: ty, k: Math.min(s.tagK, 1.2) * s.show });
+    if (tagText && s.tagK > 0) texts.push({ key: `t${it.id}`, kind: "tag", text: tagText, x: tx, y: ty, k: Math.min(s.tagK, 1.2) * s.show * (1 + 0.15 * pulseOf(st)) });
     if (s.label) {
       const [lx, ly] = scr(s.x, s.y + 14);
       texts.push({ key: `l${it.id}`, kind: "label", text: s.label, x: lx, y: ly, above: tagText ? ty - (v ? 96 : 74) : ty, k: s.show });

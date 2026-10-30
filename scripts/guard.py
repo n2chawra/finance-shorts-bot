@@ -25,7 +25,7 @@ ALLOW: dict[str, list[str]] = {
     "improver": ["generator/*", "renderer/*", "examples/*", "remotion/src/*", "remotion/test/*",
                  "config/experiments.json", "improvement/experiments.json",
                  "improvement/journal.md", "improvement/weekly/*", "improvement/template-decisions.json",
-                 "improvement/research/proposals.json", "improvement/longform/backlog.json",
+                 "improvement/research/proposals.json", "improvement/research/shapes.json", "improvement/longform/backlog.json",
                  "improvement/activity/*-improver.json", "improvement/notifications/improver.json"],
     "dashboard": ["apps/dashboard/src/*", "apps/dashboard/e2e/*", "apps/dashboard/package.json", "apps/dashboard/package-lock.json",
                   "apps/dashboard/playwright.config.ts", "improvement/dashboard/*", "improvement/activity/*-dashboard.json",

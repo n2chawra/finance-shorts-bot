@@ -77,6 +77,12 @@ reweight or retire; variety comes from the story, the recipe and the beats.
   the median gets a note in research's next report to find more topics for it. Retention is the
   number that makes YouTube show a Short to more people; views follow it.
 
+- **Shapes live or die by stayed-to-watch and % viewed too** (`improvement/research/shapes.json`,
+  owner 2026-10-30). Read the evaluator's ranking `by shape`: a `trial` shape with 2+ Shorts at or
+  above the channel median becomes `active`; any shape with 3+ Shorts under the median for two
+  weeks gets `"status": "retired"` and a `reason`. Never delete one: retired shapes keep the history
+  readable.
+
 ## Research routes (read `route` and `priority` on every new proposal)
 Research sorts its findings. Act on them in this order, highest priority first:
 - `adopt` (proven, required or a plain fix): implement it directly tonight, no A/B flag, if the

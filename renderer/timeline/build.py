@@ -59,7 +59,10 @@ SPEEDS = {"long": 1.0, "short": 1.0}
 # sample at 1.5x and called it right (2026-10-17). Scripts are written on the story clock: LEAD,
 # TAIL, GAP_NO_VOICE, min_sec and {"sec"/"end"} events are story seconds, divided by the tempo here;
 # the voice is spoken at speed x tempo; Remotion runs each scene's animations on the story clock.
-TEMPOS = {"long": 1.5, "short": 1.4}   # Shorts 1.3 until the reset (2026-10-21): faster, 20–35 s
+# Shorts 1.4 from 2026-10-21 to 2026-10-30, when the owner found them too fast to follow ("I need to
+# watch 2 times to understand", ~205 words a minute; explainers speak 130-160): 1.1 is ~160
+# 1.1 on 2026-10-30, then 1.2 the same day (owner: "a little faster, just a little"): ~175 a minute
+TEMPOS = {"long": 1.5, "short": 1.2}
 
 
 @dataclass
@@ -283,9 +286,10 @@ def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_i
 
 
 def _estimate(text: str, speed: float) -> tts.Timed:
-    """Timing without a voice: about 2.7 words a second at speed 1.0, split evenly."""
+    """Timing without a voice: about 3.0 words a second at speed 1.0 (Kokoro, measured on
+    v-remake-casino, 2026-10-30: 2.7 put a 67 s Short at 74 s), split evenly."""
     words = text.split()
-    each = 1/(2.7*speed)
+    each = 1/(3.0*speed)
     timed = [(w, i*each, (i + 0.85)*each) for i, w in enumerate(words)]
     return tts.Timed(text, "estimate", speed, np.zeros(int(len(words)*each*SR)), [], timed)
 

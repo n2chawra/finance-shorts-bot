@@ -221,9 +221,11 @@ def test_check_script_warns_only_for_shorts() -> None:
     assert tb.check_script(script(beats, format="short"))["warnings"] == []
 
 
-def test_the_shorts_examples_keep_an_event_every_few_seconds() -> None:
-    s = json.loads((EXAMPLES / "short_story_tax.json").read_text(encoding="utf-8"))
+def test_the_shorts_reference_keeps_an_event_every_few_seconds() -> None:
+    """The reference Short (the casino remake, at the 2026-10-30 pace) keeps an event every 3 s."""
+    s = json.loads((EXAMPLES.parent / "videos" / "v-remake-casino" / "script.json").read_text(encoding="utf-8"))
     assert tb.check_script(s)["warnings"] == []
+    assert tb.TEMPOS["short"] == 1.2
 
 
 def test_a_long_scene_thumbnail_needs_no_figure() -> None:

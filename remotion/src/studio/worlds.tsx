@@ -49,13 +49,19 @@ export const World: React.FC<{
           fill="#fff" opacity={0.35 + 0.5 * Math.abs(Math.sin(t * (0.6 + random(`${seed}t${i}`)) + i))} />
       ))}
       {L.sun && <circle cx={w * 0.78} cy={gy * 0.34} r={Math.min(w, h) * 0.07} fill={L.sun} opacity={0.9} />}
+      {/* soft lights in the sky (2026-10-30: once the cast stepped back so the things could lead, a
+          flat sky and floor filled half the frame): seeded, drifting slowly */}
+      {Array.from({ length: 7 }, (_, i) => (
+        <circle key={`b${i}`} cx={(random(`${seed}bx${i}`) * w + t * (4 + i)) % w} cy={gy * (0.08 + random(`${seed}by${i}`) * 0.62)}
+          r={Math.min(w, h) * (0.04 + random(`${seed}br${i}`) * 0.09)} fill="#fff" opacity={L.stars ? 0.05 : 0.12} />
+      ))}
       {!L.stars && [0, 1, 2].map((i) => {
         const x = ((random(`${seed}c${i}`) * w + t * (14 + i * 6)) % (w + 400)) - 200;
         const y = gy * (0.14 + 0.16 * i);
         return <g key={i} opacity={0.85}><ellipse cx={x} cy={y} rx={110} ry={34} fill="#fff" /><ellipse cx={x + 60} cy={y - 18} rx={70} ry={30} fill="#fff" /></g>;
       })}
       {/* when the script names no horizon, the world still has one: a skyline, hills, shelves */}
-      {horizon.length === 0 && <Backdrop kind={(kind ?? "studio") as WorldKind} w={w} gy={gy} seed={seed} t={t} />}
+      <g opacity={horizon.length ? 0.45 : 1}><Backdrop kind={(kind ?? "studio") as WorldKind} w={w} gy={gy} seed={seed} t={t} /></g>
       {/* the horizon: this video's own things, small and hazy, standing on the far ground */}
       {horizon.map((hz, i) => {
         const P = props[hz.prop];
@@ -65,6 +71,14 @@ export const World: React.FC<{
       })}
       <rect y={gy} width={w} height={h - gy} fill={`url(#${id}g)`} />
       <rect y={gy} width={w} height={6} fill={shade(L.ground[0], 0.25)} opacity={0.7} />
+      {/* every floor has depth: bands that widen toward the viewer and lines running to the horizon */}
+      {Array.from({ length: 7 }, (_, i) => {
+        const y0 = gy + (h - gy) * (i / 7) ** 1.5, y1 = gy + (h - gy) * ((i + 0.5) / 7) ** 1.5;
+        return <rect key={`fb${i}`} y={y0} width={w} height={y1 - y0} fill={shade(L.ground[0], 0.12)} opacity={0.35} />;
+      })}
+      {L.floor === "plain" && Array.from({ length: 9 }, (_, i) => (
+        <line key={`fl${i}`} x1={w / 2 + (i - 4) * 60} y1={gy} x2={w / 2 + (i - 4) * 420} y2={h} stroke={shade(L.ground[0], 0.2)} strokeWidth={3} opacity={0.45} />
+      ))}
       {L.floor === "grass" && Array.from({ length: 40 }, (_, i) => {
         const x = random(`${seed}gx${i}`) * w, y = gy + 20 + random(`${seed}gy${i}`) * (h - gy - 40);
         return <path key={i} d={`M${x},${y} l6,-16 l6,16`} stroke={shade(L.ground[0], -0.2)} strokeWidth={4} fill="none" strokeLinecap="round" />;

@@ -22,8 +22,9 @@ import { AbsoluteFill, spring } from "remotion";
 import { CAST } from "../cast/cast";
 import { Actor, type ActorSpec, at, clamp, type SceneProps, sec } from "../scenes/kit";
 import { FONT } from "../design/fonts";
-import { between, breathe, frameOn, type Frame, holds, keepInside, shows, type ShotSize } from "./camera";
+import { between, breathe, frameOn, type Frame, holds, keepInside, MOVE_SEC, shows, type ShotSize, steady } from "./camera";
 import { type ScreenText, ScreenTexts } from "./labels";
+import { pulse, spokenFigures } from "./figures";
 import { counterBottom, counterShown } from "./hud";
 import { CashStack, type Cur, MoneyFlow, PhoneApp, STACK_TONE, stackTop as notesTop } from "./money";
 import { minText } from "../design/fit";
@@ -52,7 +53,8 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
   const cur = (p.tl.currency ?? "INR") as Cur;
   const actors = P.actors ?? [];
   const objects = P.objects ?? [];
-  const aScale = (a: ShotActor) => a.scale ?? (v ? 1.55 : 1.15);
+  // the one speaking is big; anyone else steps back so the money carries the frame (2026-10-30)
+  const aScale = (a: ShotActor) => a.scale ?? (p.beat.speaker === a.who ? (v ? 1.4 : 1.1) : (v ? 1.0 : 0.85));
 
   // where things are, so the camera can frame them and money can fly between them
   const stacks = objects.filter((o): o is StackObj => o.kind === "stack");
@@ -99,9 +101,9 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
   };
 
   // the camera: keyframes cut (or move) on words
-  const keys = (P.camera?.length ? P.camera : [{ size: "medium" as ShotSize, on: actors[0]?.who }]).map((k) => ({
+  const keys = steady((P.camera?.length ? P.camera : [{ size: "medium" as ShotSize, on: actors[0]?.who }]).map((k) => ({
     ...k, start: k.sec ?? at(p, k.at, 0),
-  }));
+  })).sort((a, b) => a.start - b.start));
   const keyObj = (k: CamKey) => k.on ? byId(k.on) : undefined;
   const frameKey = (k: CamKey): Frame => {
     const f = frameOn(k.size, ...target(k.on), w, h), o = keyObj(k);
@@ -113,8 +115,8 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
     const k = keys[i]!;
     if (t < k.start) break;
     const next = frameKey(k);
-    moving = !!k.move && t - k.start < 0.6;
-    fr = k.move ? between(fr, next, (t - k.start) / 0.6) : next;
+    moving = !!k.move && t - k.start < MOVE_SEC;
+    fr = k.move ? between(fr, next, (t - k.start) / MOVE_SEC) : next;
     since = t - k.start; cur0 = k;
   }
   fr = breathe(fr, since, w, h, p.beat.from % 7);
@@ -128,6 +130,13 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
 
   // stack tags and labels: in screen space, after the camera (labels.tsx)
   const texts: ScreenText[] = [];
+  const said = spokenFigures(p);
+  const sayK = (text?: string) => Math.max(0, ...said.filter((f) => f.text === text).map((f) => pulse(t, f)));
+  for (const [i, f] of said.entries()) {   // a figure no stack or phone carries pops by itself while it is said
+    const k = pulse(t, f);
+    const shown = stacks.some((o) => o.text === f.text) || phones.some((o) => o.figure === f.text || (o.lines ?? []).some((l) => l.value === f.text));
+    if (k > 0 && !shown) texts.push({ key: `said${i}`, kind: "tag", text: f.text, x: w * 0.5, y: h * (v ? 0.3 : 0.26), k: Math.min(1.15, k * 1.15), fill: "#ffd84a" });
+  }
   stacks.forEach((o, i) => {
     const k = clamp((t - at(p, o.at, 0.2)) / 1.1);
     if (k <= 0 || !shows(fr, box(o), w, h, 60)) return;
@@ -135,7 +144,7 @@ export const ShotScene: React.FC<SceneProps> = (p) => {
     const top = notesTop(S.ground, stackW, full, k) - 24;
     const sx = x * fr.s + fr.tx, sy = top * fr.s + fr.ty;
     const tagOn = !!o.text && k >= 1;
-    if (tagOn) texts.push({ key: `st${i}`, kind: "tag", text: o.text!, x: sx, y: sy, fill: STACK_TONE[o.tone ?? "plain"], ink: "#fff" });
+    if (tagOn) texts.push({ key: `st${i}`, kind: "tag", text: o.text!, x: sx, y: sy, fill: STACK_TONE[o.tone ?? "plain"], ink: "#fff", k: 1 + 0.15 * sayK(o.text) });
     if (o.label) {
       const bottom = tagOn ? sy - (v ? 96 : 74) : sy;
       texts.push({ key: `sl${i}`, kind: "label", text: o.label, x: sx, y: bottom - (v ? 60 : 44), above: bottom, upper: true });

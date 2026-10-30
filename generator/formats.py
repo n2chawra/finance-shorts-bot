@@ -38,12 +38,45 @@ def ids(root: Path = ROOT, fmt: str = "short") -> list[str]:
     return [f["id"] for f in load(root, fmt)]
 
 
+CORE_MIN = (2, 3)        # at least 2 of every 3 Shorts are big-money stories (owner, 2026-10-30)
+
+
+def tiers(root: Path = ROOT, fmt: str = "short") -> dict[str, str]:
+    """`core` (big money: what got every 1K+ Short and every subscriber) or `low` (personal budgeting)."""
+    return {f["id"]: f["tier"] for f in load(root, fmt, plannable=False) if f.get("tier")}
+
+
+def core_ids(root: Path = ROOT, fmt: str = "short") -> list[str]:
+    return [i for i, t in tiers(root, fmt).items() if t == "core"]
+
+
+def core_needed(entries: list[dict], root: Path = ROOT, fmt: str = "short") -> bool:
+    """Must the next Short be a core format? (the last ones already used the window's other slots)"""
+    if fmt != "short":
+        return False
+    core = set(core_ids(root, fmt))
+    if not core:
+        return False
+    need, window = CORE_MIN
+    last = [e.get("story") for e in entries[-(window - 1):]]
+    return sum(1 for s in last if s not in core) >= window - need
+
+
+def mix_problems(plan: dict, entries: list[dict], root: Path = ROOT, fmt: str = "short") -> list[str]:
+    if core_needed(entries, root, fmt) and plan.get("story") not in core_ids(root, fmt):
+        need, window = CORE_MIN
+        return [f"at least {need} of every {window} Shorts tell a big-money story ({', '.join(core_ids(root, fmt))}): the last "
+                f"ones already used the other slot, so this one must be big money (billionaires, money at scale, how a famous "
+                f"business makes money)"]
+    return []
+
+
 def for_state(root: Path = ROOT, fmt: str = "short") -> list[dict]:
     """What `state` shows the planner: each format with its hook, beats, title patterns and best example."""
     out = []
     for f in load(root, fmt):
         best = max(f.get("examples") or [{}], key=lambda e: e.get("views", 0))
-        out.append({k: f.get(k) for k in ("id", "name", "emotion", "hook", "beats", "titles", "markets")} | {"best_example": best})
+        out.append({k: f.get(k) for k in ("id", "name", "tier", "emotion", "hook", "beats", "titles", "markets")} | {"best_example": best})
     return out
 
 

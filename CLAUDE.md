@@ -2,7 +2,7 @@
 
 Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for a
 global English-speaking audience (India included; the channel is "Paisa Panchayat", see
-`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 35–50 s story skits with levels that loop) and
+`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 45–70 s explained stories that loop) and
 **long videos** (landscape, 7–10 min list and "explained" formats, character-led animation). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
@@ -41,6 +41,9 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   millions (`improvement/research/formats.json`: rich vs poor, what the rich know, traps, how they
   make money, salary breakdowns, which one are you…), named in the plan's `story` with a reference
   video in `demand`. News is never a reason to make a video on its own.
+- **Big money first** (owner, 2026-10-30: every 1K+ Short and every subscriber came from billionaires,
+  money at scale and how famous businesses make money): at least 2 of every 3 Shorts use a `tier: core`
+  format (`improvement/research/formats.json`, `generator/formats.py`); personal-budget formats rank last.
 - **Global first** (owner, 2026-10-23: "Why billionaires never sell their stock" got 1,121 views, the
   local Shorts 26-349): about two in three videos are `topic.reach: "global"` (USD, anyone in the
   world can relate: famous people and companies, how the rich work, money at scale). A local video
@@ -53,8 +56,12 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   craft gates (`renderer/craft.py`) fail a video with empty frames, repeated pictures, one shot
   size or one set.
 - **Depth and a picture that follows the words** (owner, 2026-10-26: viewers left right after the
-  hook; every video turned into the same props): Shorts run the length setting (35–50 s since 2026-10-29) on a story spine (hook → promise
-  by 6 s → levels with a climbing number → a turn → the payoff → loop; `generator/story.py`), drawn
+  hook; every video turned into the same props): Shorts run the length setting (45–70 s since 2026-10-30) on a story spine (hook → promise
+  by 6 s → rising stakes → a turn → the payoff → loop; `generator/story.py`), arranged in a **shape**
+  from a growing library (`improvement/research/shapes.json`, `generator/shapes.py`: reveal, versus,
+  levels only for real ladders…; owner 2026-10-30), opened by a **curiosity hook** that never gives
+  the answer, and explained by one voice in full sentences at ~175 words a minute (tempo 1.2) while the things being
+  explained take the centre of the frame and every spoken figure animates, drawn
   from the story's own props (`remotion/src/videos/<id>/props.tsx`) in `build` beats whose actions
   fire on the words that name them, with coded Hook, Turn and Payoff beats. Gates: nothing new on
   screen for 2.5 s, actions that don't show what is said, props reused from recent videos.
@@ -149,7 +156,7 @@ is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
 | Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Mon/Wed/Fri 14:37 IST, 1 a run) |
 | Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, daily 09:37 IST) |
 | Template | `short_story` (1080×1920, a skit per format in its README) | `long_story` (1920×1080, a list of chapters, the scene catalog in its README) |
-| Length / pace | 35–50 s (settings), tempo 1.4 (~200 spoken words a minute) | 400–600 s (settings), tempo 1.5 (~215 words a minute) |
+| Length / pace | 45–70 s (settings), tempo 1.2 (~175 spoken words a minute) | 400–600 s (settings), tempo 1.5 (~215 words a minute) |
 | Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
 

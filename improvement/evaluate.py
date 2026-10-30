@@ -239,11 +239,12 @@ def ist_hour(at: str | None) -> str | None:
     return f"{t.hour:02d}:00-{t.hour:02d}:59 IST"
 
 
-def attributes(videos: list[dict], stories: dict[str, str | None]) -> list[dict]:
+def attributes(videos: list[dict], stories: dict[str, str | None], shapes: dict[str, str | None] | None = None) -> list[dict]:
     """What performs, by every choice a video run makes, ranked within one format."""
     band = lambda b: None if b is None else f"{int(b)//10*10}-{int(b)//10*10 + 9} BPM"  # noqa: E731
     length = lambda d: None if d is None else f"{int(d)//5*5}-{int(d)//5*5 + 4} s"  # noqa: E731
-    keys = [(lambda v: stories.get(v["id"]), "story"), (lambda v: v.get("hookStyle"), "hook style"),
+    keys = [(lambda v: stories.get(v["id"]), "story"), (lambda v: (shapes or {}).get(v["id"]), "shape"),
+            (lambda v: v.get("hookStyle"), "hook style"),
             (lambda v: variety.title_shape(v["title"]) if v.get("title") else None, "title shape"),
             (lambda v: v.get("category"), "topic"), (lambda v: ist_hour(v.get("publishAt")), "upload hour"),
             (lambda v: v.get("palette"), "palette"), (lambda v: v.get("genre"), "music genre"),
@@ -257,11 +258,12 @@ def report(root: Path = ROOT, now: datetime | None = None) -> dict:
     videos = _read(root / "metrics" / "videos.json", {"videos": []})["videos"]
     attempts = _read(root / "metrics" / "runs.json", {"videos": []})["videos"]
     stories = {e["id"]: variety.story_of(e) for e in _read(root / "history" / "history.json", [])}
+    shapes = {e["id"]: e.get("shape") for e in _read(root / "history" / "history.json", [])}
     by_format = {f: [v for v in videos if v.get("format", "short") == f] for f in ("short", "long")}
     return {
         "generatedAt": now.isoformat(), "videosWithData": sum(v.get("views48h") is not None for v in videos),
         "experiments": [judge(e, videos, attempts, now) for e in exps.load(root)],
-        "attributes": {f: attributes(vs, stories) for f, vs in by_format.items()},
+        "attributes": {f: attributes(vs, stories, shapes) for f, vs in by_format.items()},
         "thumbnailAngles": thumbnail_angles(videos),
         # long-video thumbnail types (renderer/thumbs.py): which kind of picture gets the click
         "thumbnailTypes": thumbnail_angles(videos, "thumbLayouts", "thumbWinnerLayout"),

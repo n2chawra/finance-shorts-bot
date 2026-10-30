@@ -89,6 +89,16 @@ the US. News is not a source of ideas any more.
    must be a story in `generator/variety.py` `STORIES`; if it isn't, propose adding it (route
    `adopt`) instead of writing the format. Remove nothing; the improver retires formats our own
    numbers reject.
+2b. **Grow the story shapes** (`improvement/research/shapes.json`; owner, 2026-10-30: "the shapes
+   should keep increasing"). For the top Shorts you looked at, note how their beats are arranged.
+   When one with 100K+ views uses an arrangement the library doesn't have (a heist, a trial, a
+   race, a "spot the trick"…), add it: `{id, name, status: "trial", levels: false, when, beats,
+   reference: {title, views, url}}`. One or two a week at most; never edit or remove existing ones
+   (the improver does that from our results).
+2c. **Big money first** (owner, 2026-10-30): every 1K+ Short and every subscriber came from big-money
+   stories. At least two thirds of the topics you add are in a `tier: core` format (billionaires,
+   money at scale, how famous businesses make money, secrets of the rich through real billionaires),
+   each with its own curiosity question ("How do casinos make money even when you win?").
 3. **Write 6-10 topics into the feed** (section 4). Give each topic **the biggest video on its own
    idea** as `demand` (search the idea itself, e.g. "how mcdonalds makes money", not just the
    format), and spread them across formats, including ones we have not told yet: the feed is ranked

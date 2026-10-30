@@ -29,7 +29,7 @@ from renderer import craft, remotion, thumbs
 from renderer.engine.formatting import CURRENCIES
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
-from . import experiments, failures, formats, history, numbers, reach, story, topics, variety
+from . import experiments, failures, formats, history, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -160,6 +160,10 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "reach": reach.for_state(entries, today, fmt),
         # what to make: formats people already watch in the millions (improvement/research/formats.json)
         "formats": formats.for_state(root, fmt),
+        # big money first (owner, 2026-10-30): core formats fill at least 2 of every 3 Shorts
+        "core_formats": formats.core_ids(root, fmt), "core_needed": formats.core_needed(entries, root, fmt),
+        # how the beats are arranged: a growing library, least used first (improvement/research/shapes.json)
+        "shapes": shapes.for_state(entries, root),
         "previous": last and {"palette": last["style"]["palette"], "genre": last["style"]["genre"], "key": last["style"]["key"],
                               "bpm": last["style"]["bpm"], "hook_style": last["hook_style"], "cta": last["cta"]},
         "hook_styles": list(variety.HOOK_STYLES),
@@ -210,6 +214,9 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         enabled = enabled_templates(load_settings(root), fmt, root)
         problems = variety.check_plan(plan, entries, enabled)
         problems += formats.check_plan(plan, root, fmt)
+        problems += formats.mix_problems(plan, entries, root, fmt)
+        if fmt == "short" and plan.get("template") == "short_story":
+            problems += shapes.check_plan(plan, entries, root)
         problems += reach.check_plan(plan, entries, history.ist_day(history.now().isoformat()), fmt)
         problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
                                       variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
@@ -238,6 +245,8 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
     # the story spine (generator/story.py): fixed before anything is voiced or drawn
     entries = [e for e in history.of_format(history.load(root), plan_format(script)) if e["id"] != vid]
     spine = story.script_problems(script, [_read_script(e["id"], root) for e in entries[-10:]])
+    if plan.get("shape") is not None and script.get("shape") != shapes.shape_id(plan["shape"]):
+        spine.append(f"script.shape must be the plan's shape ({shapes.shape_id(plan['shape'])!r}): the spine is checked by it")
     if spine:
         passed, notes = False, [*notes, *spine]
     log_step(vid, "number_check", passed, notes, root)
@@ -431,7 +440,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     history.append({
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],
         "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": style, "format": fmt,
-        "story": plan.get("story"),
+        "story": plan.get("story"), "shape": shapes.shape_id(plan.get("shape")),
     }, root)
 
     if release:
@@ -456,6 +465,9 @@ def gh_exe() -> str:
 
 def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) -> None:
     paths = [f"videos/{vid}", "history/history.json"]
+    plan_f = root / "videos" / vid / "plan.json"
+    if plan_f.is_file() and shapes.record_new(json.loads(plan_f.read_text(encoding="utf-8")), vid, root):
+        paths.append(shapes.FILE.as_posix())   # a new story shape joins the library as `trial`
     if (root / "remotion" / "src" / "videos" / vid).is_dir():   # the video's own code (hook, beats, props, thumbnail) ships with it
         paths.append(f"remotion/src/videos/{vid}")
     subprocess.run(["git", "add", *paths], cwd=root, check=True)

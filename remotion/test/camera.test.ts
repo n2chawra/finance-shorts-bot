@@ -53,3 +53,11 @@ describe("keepHeads", () => {
     expect(holds(f, u, W9, H9)).toBe(true);
   });
 });
+
+describe("a steady camera (2026-10-30: the picture zig-zagged)", () => {
+  it("drops a new framing that comes too soon after the last", async () => {
+    const { steady, HOLD_SEC } = await import("../src/studio/camera");
+    const keys = [{ start: 0 }, { start: 0.5 }, { start: HOLD_SEC + 0.1 }, { start: HOLD_SEC + 0.6 }];
+    expect(steady(keys).map((k) => k.start)).toEqual([0, HOLD_SEC + 0.1]);
+  });
+});
