@@ -108,7 +108,9 @@ def for_state(entries: list[dict], root: Path = ROOT) -> list[dict]:
         rows.append({k: s.get(k) for k in ("id", "name", "status", "levels", "when", "beats")}
                     | {"used_in_last_20": last.count(s["id"]), "videos_since_last_use": ago,
                        "blocked": s["id"] in recent[-WINDOW:]})
-    return sorted(rows, key=lambda r: (r["blocked"], r["used_in_last_20"], -(r["videos_since_last_use"] if r["videos_since_last_use"] is not None else 99)))
+    # level chips last on a tie: they are for real ladders only
+    return sorted(rows, key=lambda r: (r["blocked"], r["used_in_last_20"], bool(r["levels"]),
+                                       -(r["videos_since_last_use"] if r["videos_since_last_use"] is not None else 99)))
 
 
 def record_new(plan: dict, vid: str, root: Path = ROOT) -> bool:

@@ -40,37 +40,6 @@
       "status": "new"
     },
     {
-      "id": "2026-10-24-rich-vs-poor-first-car",
-      "format": "short",
-      "title": "Rich vs poor: the first car",
-      "category": "car",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "rich_vs_poor"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "rich vs poor parents buying you a car",
-        "views": 8800000,
-        "url": "https://www.youtube.com/shorts/vGQZuTfIWnU"
-      },
-      "hook": "Poor guy buys a $40,000 car on a loan. Rich guy buys a $15,000 one in cash.",
-      "templates": [
-        "any"
-      ],
-      "angle": "What the six-year loan really costs, and what the $25,000 difference becomes if it is left invested instead.",
-      "why_now": "Evergreen, global, and a 8.8M reference; cars are the one rich_vs_poor moment we haven't told (raise and Diwali bonus done).",
-      "maths": "emi (amount 40000, rate_pct an assumed 8, years 6) for the loan; lumpsum (amount 25000, rate_pct an assumed 7, years 20) for the difference",
-      "verify": [
-        "8% car-loan rate and 7% return are stated as assumptions, never as what the viewer will get"
-      ],
-      "found": "2026-10-24",
-      "expires": "2027-01-22",
-      "status": "new"
-    },
-    {
       "id": "2026-10-24-how-bnpl-makes-money",
       "format": "short",
       "title": "Pay in 4, no interest: so how does the app make money?",
@@ -97,37 +66,6 @@
       "verify": [
         "The merchant fee is an assumption, said as 'an assumed 5%'; no app named",
         "Late fees described in general terms only"
-      ],
-      "found": "2026-10-24",
-      "expires": "2027-01-22",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-24-retire-at-40-guess",
-      "format": "short",
-      "title": "Guess: $1,000 a month from 25 to 40. How much is there at 40?",
-      "category": "retirement",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "guess_the_number"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How Much Do You Need To Retire At 40?",
-        "views": 5100000,
-        "url": "https://www.youtube.com/shorts/Jk5ThWdybis"
-      },
-      "hook": "Fifteen years, a thousand a month. Most people guess way too low.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Three cast guesses, then the computed answer, then what the same habit gives if it starts at 30 instead.",
-      "why_now": "Evergreen and global; retire-early is the most-watched guess shape (5.1M).",
-      "maths": "sip (monthly 1000, rate_pct an assumed 7, years 15); a second sip (monthly 1000, rate_pct 7, years 10) for starting at 30",
-      "verify": [
-        "7% is an assumed return, never promised"
       ],
       "found": "2026-10-24",
       "expires": "2027-01-22",
@@ -162,43 +100,6 @@
       ],
       "found": "2026-10-24",
       "expires": "2027-01-22",
-      "status": "new"
-    },
-    {
-      "id": "2026-10-24-diwali-gift-rich-vs-poor",
-      "format": "short",
-      "title": "Diwali gift for a 10-year-old: a ₹5,000 gadget vs a ₹5,000 investment",
-      "category": "festival",
-      "kind": "seasonal",
-      "priority": "high",
-      "stories": [
-        "rich_vs_poor"
-      ],
-      "currency": "INR",
-      "reach": "local",
-      "reach_reason": {
-        "kind": "occasion",
-        "name": "Diwali",
-        "date": "2026-11-08"
-      },
-      "demand": {
-        "title": "Rich Parents Don't Raise Kids Like This",
-        "views": 3719883,
-        "url": "https://www.youtube.com/shorts/Ibb4xOMTiWU"
-      },
-      "hook": "Same Diwali, same ₹5,000. One kid gets a gadget. One gets a gift that grows.",
-      "templates": [
-        "any"
-      ],
-      "angle": "The gadget is worth nothing by the time the kid is 25; the same ₹5,000 every Diwali for 15 years becomes a real sum.",
-      "why_now": "Diwali is Sunday 8 November; gift shopping peaks the two weeks before.",
-      "maths": "sip (monthly 420, about ₹5,000 a year, rate_pct an assumed 11, years 15) for a yearly gift left invested; the gadget is worth ₹0 by then",
-      "verify": [
-        "Diwali 2026 falls on 8 November",
-        "11% equity return stated as an assumption; no fund named"
-      ],
-      "found": "2026-10-24",
-      "expires": "2026-11-09",
       "status": "new"
     },
     {
@@ -352,34 +253,6 @@
       "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
     },
     {
-      "id": "2026-10-23-rich-buy-assets",
-      "format": "short",
-      "title": "Things rich people buy that poor people don't",
-      "category": "investing",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "rich_vs_poor"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Things Poor People Do That Rich People Don't",
-        "views": 6340389,
-        "url": "https://www.youtube.com/shorts/V7OZd5zJcK4"
-      },
-      "hook": "Poor people buy things that cost them money. Rich people buy things that pay them.",
-      "angle": "Same money each month: one buys a car payment and new gadgets, the other buys things that pay back. The gap after 10 years.",
-      "maths": "emi for the car (amount, rate_pct, years); sip of the same monthly at an assumed 8% for 10 years; compare",
-      "found": "2026-10-23",
-      "expires": "2027-01-21",
-      "status": "new",
-      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
-    },
-    {
       "id": "2026-10-23-rich-love-debt",
       "format": "short",
       "title": "Why rich people love debt and you're scared of it",
@@ -406,68 +279,6 @@
       "expires": "2027-01-21",
       "status": "new",
       "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
-    },
-    {
-      "id": "2026-10-23-penny-or-million",
-      "format": "short",
-      "title": "A penny doubled every day for 30 days, or $1 million today?",
-      "category": "compounding",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "guess_the_number"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Would You Take $1 Million or This Penny?",
-        "views": 6934548,
-        "url": "https://www.youtube.com/shorts/Th_bC3XeyqA"
-      },
-      "hook": "One cent doubled every day for a month, or a million dollars right now. Pick one.",
-      "angle": "The penny wins, but only at the very end: compounding looks like nothing for weeks, then explodes.",
-      "maths": "lumpsum (amount 0.01, rate_pct 100, years 30: call the periods days in the script, never years); compare with $1,000,000",
-      "found": "2026-10-23",
-      "expires": "2027-01-21",
-      "status": "new",
-      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
-    },
-    {
-      "id": "2026-10-23-100k-new-york",
-      "format": "short",
-      "title": "What a $100K salary really leaves you in New York",
-      "category": "salary",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "salary_breakdown"
-      ],
-      "currency": "USD",
-      "reach": "local",
-      "demand": {
-        "title": "How much money is in your bank account?",
-        "views": 42000000,
-        "url": "https://www.youtube.com/shorts/IKXiyApvKjI"
-      },
-      "hook": "A hundred thousand dollars a year. Here's what's left.",
-      "angle": "Tax, rent, food and the car taken off one by one: what's left each month, and what it becomes invested.",
-      "maths": "income_tax_bands for federal + state + city tax as published; sip of what's left at an assumed 8%",
-      "found": "2026-10-23",
-      "expires": "2027-01-21",
-      "status": "new",
-      "why_now": "Local, kept for its reason (reach_reason).",
-      "reach_reason": {
-        "kind": "demand"
-      },
-      "verify": [
-        "2026 US federal tax brackets (IRS), New York State and New York City rates"
-      ]
     },
     {
       "id": "2026-10-21-raise-rich-vs-poor",
@@ -1471,37 +1282,6 @@
       "status": "new",
       "currency": "USD",
       "reach": "global",
-      "id": "2026-10-27-raise-that-leaves-you-no-richer",
-      "title": "The lifestyle trap: the raise that leaves you no richer",
-      "category": "salary",
-      "priority": "high",
-      "stories": [
-        "trap_alert"
-      ],
-      "demand": {
-        "title": "The Middle Class EMI Trap",
-        "views": 7000000,
-        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
-      },
-      "hook": "He got a $10,000 raise. Five years later, he's exactly as broke.",
-      "angle": "Lifestyle creep: the bigger car and flat swallow every raise; the same raise half invested.",
-      "why_now": "No trap_alert topic is open (the $5,000 minimum-payment one was rejected as a repeat); 'middle class trap' is one of the market queries.",
-      "maths": "sip (monthly 417, rate_pct an assumed 7, years 25) for half the raise invested; the spender has nothing; emi (amount 30000, rate_pct an assumed 8, years 5) for the car the raise pays for",
-      "verify": [
-        "7% and 8% stated as assumed, illustrative"
-      ]
-    },
-    {
-      "format": "short",
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-10-27",
-      "expires": "2027-01-25",
-      "status": "new",
-      "currency": "USD",
-      "reach": "global",
       "id": "2026-10-27-rich-vs-poor-year-end-bonus",
       "title": "Rich vs poor: the same $5,000 year-end bonus",
       "category": "saving",
@@ -1552,36 +1332,6 @@
       "maths": "sip (monthly 500, rate_pct an assumed 7, years 30) for level 4; fee_take (amount = that sip total, fee_pct an assumed 4, per_year 1, years 1) for what it pays a year at level 5",
       "verify": [
         "7% and 4% stated as assumed, illustrative"
-      ]
-    },
-    {
-      "format": "short",
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-10-27",
-      "expires": "2027-01-25",
-      "status": "new",
-      "currency": "USD",
-      "reach": "global",
-      "id": "2026-10-27-once-you-understand-inflation",
-      "title": "Once you understand inflation, you'll never keep cash at 0%",
-      "category": "inflation",
-      "priority": "normal",
-      "stories": [
-        "once_you_understand"
-      ],
-      "demand": {
-        "title": "Once You Understand MONEY, You'll Stop Saving It (LITTLE BIT BETTER, animated)",
-        "views": 2479142
-      },
-      "hook": "Once you understand this, you'll never keep your savings in cash again.",
-      "angle": "$10,000 kept in cash for 20 years at an assumed 3% inflation buys what $5,500 buys today; the same money at an assumed 7%.",
-      "why_now": "once_you_understand has never been told (untried-format bonus, owner 2026-10-26: 'test all kinds of video'); reference from formats.json (no URL on file).",
-      "maths": "real_return (amount 10000, rate_pct 0, inflation_pct an assumed 3, years 20); real_return (amount 10000, rate_pct an assumed 7, inflation_pct an assumed 3, years 20); compare",
-      "verify": [
-        "3% inflation and 7% return stated as assumed, illustrative"
       ]
     },
     {
@@ -1675,98 +1425,6 @@
       "maths": "sip (monthly 500, rate_pct an assumed 7, years 40); sip (monthly 500, rate_pct an assumed 6, years 40); compare",
       "verify": [
         "7% and 1% fee stated as assumed, illustrative; no fund or provider named"
-      ]
-    },
-    {
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-10-28",
-      "expires": "2027-01-26",
-      "status": "new",
-      "currency": "USD",
-      "reach": "global",
-      "format": "short",
-      "id": "2026-10-28-the-forever-car-payment",
-      "title": "The car payment that never ends",
-      "category": "car",
-      "priority": "high",
-      "stories": [
-        "trap_alert"
-      ],
-      "demand": {
-        "title": "The Middle Class EMI Trap",
-        "views": 7000000,
-        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
-      },
-      "hook": "He has paid for a car every month for 40 years.",
-      "angle": "Trading in for a new car on a loan every 5 years means $600 a month forever; the same $600 invested from 25 to 65 at an assumed 7%. Levels: year 5, 20, 40.",
-      "why_now": "trap_alert is our most-told format, but every open one is about raises, cards or EMIs on a single purchase; the forever payment is the repeating version.",
-      "maths": "emi (amount 30000, rate_pct an assumed 7, months 60); fee_take (amount = emi, fee_pct 100, per_year 12, years 40); sip (monthly = emi, rate_pct an assumed 7, years 40); compare",
-      "verify": [
-        "loan rate and return stated as assumed, illustrative"
-      ]
-    },
-    {
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-10-28",
-      "expires": "2027-01-26",
-      "status": "new",
-      "currency": "USD",
-      "reach": "global",
-      "format": "short",
-      "id": "2026-10-28-once-you-understand-doubling",
-      "title": "Once you understand the rule of 72, you see money double",
-      "category": "investing",
-      "priority": "normal",
-      "stories": [
-        "once_you_understand"
-      ],
-      "demand": {
-        "title": "Once You Understand Economics, You Can't Be MANIPULATED Anymore",
-        "views": 3700294
-      },
-      "hook": "Once you understand this rule, you'll know when your money doubles.",
-      "angle": "72 divided by the return: at an assumed 7%, $10,000 doubles about every 10 years, so 40 years is four doublings, $160,000 (lumpsum shows the exact figure).",
-      "why_now": "once_you_understand has one open topic and has never been told; a second idea lets the planner try the format either way.",
-      "maths": "lumpsum (amount 10000, rate_pct an assumed 7, years 10); lumpsum (amount 10000, rate_pct an assumed 7, years 40)",
-      "verify": [
-        "the rule of 72 called an approximation; the exact lumpsum figure shown"
-      ]
-    },
-    {
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-10-28",
-      "expires": "2027-01-26",
-      "status": "new",
-      "currency": "USD",
-      "reach": "global",
-      "format": "short",
-      "id": "2026-10-28-which-car-buyer-are-you",
-      "title": "Which car buyer are you: new on a loan, used in cash, or the bus?",
-      "category": "car",
-      "priority": "high",
-      "stories": [
-        "which_one_are_you"
-      ],
-      "demand": {
-        "title": "Do These 5 Things To Win With Money",
-        "views": 6400000,
-        "url": "https://www.youtube.com/shorts/37F9l3Q1HzE"
-      },
-      "hook": "Three friends, three cars. Which one are you?",
-      "angle": "Same $50,000 salary: a $40,000 new car on a loan, a $12,000 used car in cash, or the bus; what each one has invested after 10 years. Three levels, one per friend.",
-      "why_now": "v-20261026-02 (which saver are you) has 515 views in its first day, ahead of every other Short that week; a second idea in the same format.",
-      "maths": "emi (amount 40000, rate_pct an assumed 7, months 72); sip (monthly = the payment avoided, rate_pct an assumed 7, years 10) ×2; compare",
-      "verify": [
-        "prices, loan rate and return stated as assumed, illustrative"
       ]
     },
     {
