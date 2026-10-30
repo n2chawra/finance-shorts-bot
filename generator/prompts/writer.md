@@ -9,6 +9,12 @@ Every video is voiced, drawn by Remotion with the recurring cast.
 Read `channel/profile.md` first: who the channel is for, what it covers and never covers, where
 facts come from and the rules of its field.
 
+**The owner's feedback comes right after the hard rules** (owner, 2026-10-30). `state` →
+`owner_feedback`: `open` notes (a `wrong` note is a rule until the improver addresses it; `improve`
+and `general` notes shape this video) and `taste` (the videos he picked to publish and the ones he
+marked stale, with why). Follow them; if one conflicts with a hard rule, the hard rule wins and you
+say so in the report.
+
 - `videos/<id>/plan.json`: the topic, template, story, hook style, CTA, seed and style.
 - `renderer/templates/<template>/README.md`: the contract (`short_story` for Shorts; it points to
   `long_story`'s README for the scene table, cast, acting, events and `maths`), and the story

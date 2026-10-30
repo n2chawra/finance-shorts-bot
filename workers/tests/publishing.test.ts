@@ -106,3 +106,14 @@ test("trend slots: IST time of day and the urgent marker", async () => {
   assert.equal(isUrgent({ source: { urgent: null } }, "2026-10-19"), false);
   assert.equal(isUrgent(null, "2026-10-19"), false);
 });
+
+test("one Short every 48 hours: the day after an upload rests, manual uploads included (owner, 2026-10-30)", async () => {
+  const { restDay } = await import("../lib/publishing.ts");
+  const posted = new Map([["2026-11-02", 1]]);          // Monday's Short (posted by hand or by the job)
+  assert.equal(restDay("2026-11-03", posted, 2), true);   // Tuesday rests
+  assert.equal(restDay("2026-11-04", posted, 2), false);  // Wednesday is the next slot
+  assert.equal(restDay("2026-11-03", posted, 1), false);  // every day, as before
+  // asked on Monday evening after the 19:07 Short: the next slot is Wednesday 19:07 IST
+  const next = nextSlot(new Date("2026-11-02T14:00:00Z"), ["19:07"], new Set(), posted, 30, undefined, 2);
+  assert.equal(next.toISOString(), "2026-11-04T13:37:00.000Z");
+});

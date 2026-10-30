@@ -230,5 +230,83 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
     select: { dedupeKey: true, source: true, title: true, proposal: true, decision: true, decidedAt: true } });
   write("decisions.json", { note: "Agent proposals the owner approved or declined on the dashboard. Written by the ingest workflow.",
     decisions: decided.map((d) => ({ key: d.dedupeKey, source: d.source, title: d.title, proposal: d.proposal, decision: d.decision, decidedAt: d.decidedAt!.toISOString() })) });
+  // the owner's feedback (2026-10-30): read by the video routine (state) and the agents every night
+  write("feedback.json", await feedbackExport(prisma, now));
   return changed;
+}
+
+/** metrics/feedback.json: every note of the last 90 days with the video it is about, the open ones first. */
+export async function feedbackExport(prisma: PrismaClient, now = new Date()) {
+  const since = new Date(now.getTime() - 90 * DAY_MS);
+  const rows = await prisma.feedback.findMany({ where: { createdAt: { gte: since } }, orderBy: { createdAt: "desc" },
+    include: { video: { select: { id: true, title: true, format: true, hookStyle: true, status: true, script: true } } } });
+  const about = (v: (typeof rows)[number]["video"]) => {
+    if (!v) return null;
+    const sc = (v.script ?? {}) as { story?: string; shape?: unknown; beats?: { say?: string }[] };
+    const shape = typeof sc.shape === "string" ? sc.shape : (sc.shape as { id?: string } | undefined)?.id ?? null;
+    return { id: v.id, title: v.title, format: v.format, status: v.status, story: sc.story ?? null, shape, hookStyle: v.hookStyle, hook: sc.beats?.[0]?.say ?? null };
+  };
+  const notes = rows.map((f) => ({ id: f.id, kind: f.kind, area: f.area, text: f.text, status: f.status, response: f.response,
+    at: f.createdAt.toISOString(), video: about(f.video) }));
+  return {
+    note: "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
+    open: notes.filter((n) => n.status === "open").length,
+    notes: [...notes.filter((n) => n.status === "open"), ...notes.filter((n) => n.status !== "open")],
+  };
+}
+
+const EditorRanking = z.object({
+  rankedAt: z.string(),
+  videos: z.array(z.object({ id: z.string(), rank: z.number().int().min(1), score: z.number().min(0).max(10),
+    why: z.string(), strengths: z.array(z.string()).default([]), risks: z.array(z.string()).default([]) })),
+});
+
+/** improvement/editor/ranking.json (the editor step of the video routine) into the queue: each queued
+ * video's rank, score and why; the queue is reordered by it, except videos the owner placed himself
+ * (orderLocked), which keep their place at the front. Returns the ids ranked. */
+export async function importEditorRanking(prisma: PrismaClient, root: string): Promise<string[]> {
+  const file = path.join(root, "improvement", "editor", "ranking.json");
+  if (!existsSync(file)) return [];
+  const parsed = EditorRanking.safeParse(readJson(file));
+  if (!parsed.success) { console.error(`::warning::editor/ranking.json: ${parsed.error.issues[0]?.message}`); return []; }
+  const { rankedAt, videos } = parsed.data;
+  if (!videos.length) return [];
+  const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null }, select: { id: true, format: true, queuePosition: true, orderLocked: true, createdAt: true } });
+  const byId = new Map(videos.map((v) => [v.id, v]));
+  const ranked = queued.filter((q) => byId.has(q.id));
+  await prisma.$transaction(ranked.map((q) => {
+    const r = byId.get(q.id)!;
+    return prisma.video.update({ where: { id: q.id }, data: { editorRank: r.rank, editorScore: r.score,
+      editorNote: { why: r.why, strengths: r.strengths, risks: r.risks, rankedAt } as Prisma.InputJsonValue } });
+  }));
+  // per format: the owner's own order first, then the editor's ranking, then the unranked by age
+  const updates = [];
+  for (const format of ["short", "long"]) {
+    const mine = queued.filter((q) => q.format === format);
+    const locked = mine.filter((q) => q.orderLocked).sort((a, b) => (a.queuePosition ?? 0) - (b.queuePosition ?? 0));
+    const free = mine.filter((q) => !q.orderLocked).sort((a, b) =>
+      (byId.get(a.id)?.rank ?? 1e6) - (byId.get(b.id)?.rank ?? 1e6) || (a.queuePosition ?? 1e6) - (b.queuePosition ?? 1e6));
+    updates.push(...[...locked, ...free].map((q, i) => ({ id: q.id, queuePosition: i + 1 })));
+  }
+  await prisma.$transaction(updates.map((u) => prisma.video.update({ where: { id: u.id }, data: { queuePosition: u.queuePosition } })));
+  return ranked.map((q) => q.id);
+}
+
+const FeedbackAcks = z.object({ acks: z.array(z.object({ id: z.string(), action: z.string(), note: z.string().default(""), commit: z.string().optional() })) });
+
+/** improvement/feedback-acks.json (the improver's answers to the owner's notes) into the dashboard. */
+export async function importFeedbackAcks(prisma: PrismaClient, root: string): Promise<number> {
+  const file = path.join(root, "improvement", "feedback-acks.json");
+  if (!existsSync(file)) return 0;
+  const parsed = FeedbackAcks.safeParse(readJson(file));
+  if (!parsed.success) { console.error(`::warning::feedback-acks.json: ${parsed.error.issues[0]?.message}`); return 0; }
+  let n = 0;
+  for (const a of parsed.data.acks) {
+    const row = await prisma.feedback.findUnique({ where: { id: a.id } });
+    const response = [a.action, a.note, a.commit ? `(${a.commit})` : ""].filter(Boolean).join(": ").trim();
+    if (!row || (row.status === "addressed" && row.response === response)) continue;
+    await prisma.feedback.update({ where: { id: a.id }, data: { status: "addressed", response, addressedAt: row.addressedAt ?? new Date() } });
+    n++;
+  }
+  return n;
 }

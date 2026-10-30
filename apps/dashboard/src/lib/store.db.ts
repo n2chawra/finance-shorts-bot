@@ -7,17 +7,17 @@ import type { Prisma } from "@prisma/client";
 
 import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
-import { SettingsSchema, mostLoved } from "./schemas";
+import { EditorNoteSchema, SettingsSchema, mostLoved } from "./schemas";
 import { runEndMs } from "./run-span";
 import { fillFromLive, meanViewPct, totals, windowStart, type DayRow } from "./totals";
 import { manualState, relinked } from "./youtube-link";
-import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
+import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 
 const DAY_MS = 86_400_000;
 const IST_OFFSET = "+05:30";
 
 export const DEFAULT_SETTINGS: Settings = {
-  uploadTimes: ["07:07", "12:37", "19:07"], trendUploadTimes: ["16:07", "22:07"], backlogCap: 30, lengthMinSec: 30, lengthMaxSec: 45,
+  uploadTimes: ["07:07", "12:37", "19:07"], trendUploadTimes: ["16:07", "22:07"], shortEveryDays: 1, dailyVideoTarget: 2, backlogCap: 30, lengthMinSec: 30, lengthMaxSec: 45,
   longUploadTimes: ["20:07"], longUploadDays: [2, 4, 6], longLengthMinSec: 300, longLengthMaxSec: 900,
   longPerWeek: 2, longBacklogCap: 4,
   disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
@@ -42,6 +42,9 @@ function toVideo(v: VideoRow): Video {
     style: { palette: style.palette ?? "—", genre: style.genre ?? "—", key: style.key ?? "—", bpm: style.bpm ?? 0, voice: style.voice ?? null, source: style.source ?? null, thumbs: style.thumbs ?? null, thumbTest: style.thumbTest ?? null },
     thumbnailUrl: `/api/media/${v.id}/thumbnail`, previewUrl: `/api/media/${v.id}/preview`, fileUrl: `/api/media/${v.id}/video`,
     createdAt: v.createdAt.toISOString(), queuePosition: v.queuePosition,
+    editorRank: v.editorRank, editorScore: v.editorScore,
+    editorNote: v.editorNote ? (EditorNoteSchema.safeParse(v.editorNote).data ?? null) : null,
+    pickedAt: v.pickedAt?.toISOString() ?? null, pickReason: v.pickReason, orderLocked: v.orderLocked,
     upload: v.upload && { youtubeId: v.upload.youtubeId, publishAt: v.upload.publishAt.toISOString(), state: v.upload.state, error: v.upload.error, attempts: v.upload.attempts },
     totals: totals(v.upload?.stats ?? [], v.upload),
   };
@@ -115,7 +118,9 @@ function toStep(r: { agent: string; status: string; log: unknown; startedAt: Dat
   };
 }
 
-const queued = () => prisma.video.findMany({ where: { ...live, status: "queued" }, include: withRelations, orderBy: [{ queuePosition: "asc" }, { createdAt: "asc" }] });
+// the owner's pick goes first, then the queue order (the editor's ranking, or the owner's own)
+const queued = () => prisma.video.findMany({ where: { ...live, status: "queued" }, include: withRelations,
+  orderBy: [{ pickedAt: { sort: "asc", nulls: "last" } }, { queuePosition: "asc" }, { createdAt: "asc" }] });
 
 export async function listQueue(): Promise<Video[]> {
   return (await queued()).map(toVideo);
@@ -124,13 +129,53 @@ export async function listQueue(): Promise<Video[]> {
 export async function reorderQueue(ids: string[]): Promise<Video[] | null> {
   const current = (await queued()).map((v) => v.id);
   if (ids.length !== current.length || !current.every((id) => ids.includes(id))) return null;
-  await prisma.$transaction(ids.map((id, i) => prisma.video.update({ where: { id }, data: { queuePosition: i + 1 } })));
+  // the owner's own order: kept over the editor's ranking until "Use editor's order"
+  await prisma.$transaction(ids.map((id, i) => prisma.video.update({ where: { id }, data: { queuePosition: i + 1, orderLocked: true } })));
   return listQueue();
 }
 
-export async function videoAction(id: string, action: VideoAction): Promise<{ ok: true } | { ok: false; error: string }> {
+/** Hand the order back to the editor: unlock every queued video and sort them by its ranking. */
+export async function applyEditorOrder(): Promise<Video[]> {
+  const q = await prisma.video.findMany({ where: { ...live, status: "queued" }, orderBy: [{ editorRank: { sort: "asc", nulls: "last" } }, { createdAt: "asc" }], select: { id: true } });
+  await prisma.$transaction(q.map((v, i) => prisma.video.update({ where: { id: v.id }, data: { queuePosition: i + 1, orderLocked: false } })));
+  return listQueue();
+}
+
+export async function videoAction(id: string, action: VideoAction, reason?: string): Promise<{ ok: true } | { ok: false; error: string }> {
   const v = await prisma.video.findFirst({ where: { id, ...live } });
   if (!v) return { ok: false, error: "Video not found" };
+  const why = reason?.trim() || null;
+  if (action === "pick" || action === "unpick") {
+    if (v.status !== "queued") return { ok: false, error: "Only a queued video can be picked" };
+    const format = v.format;
+    await prisma.$transaction([
+      // one pick per format: picking another replaces it
+      prisma.video.updateMany({ where: { status: "queued", format, pickedAt: { not: null } }, data: { pickedAt: null, pickReason: null } }),
+      ...(action === "pick" ? [
+        prisma.video.update({ where: { id }, data: { pickedAt: new Date(), pickReason: why } }),
+        prisma.feedback.create({ data: { videoId: id, kind: "choice", text: why ?? "Picked for the next upload" } }),
+      ] : []),
+    ]);
+    await renumber();
+    return { ok: true };
+  }
+  if (action === "stale") {
+    if (!["queued", "qa_passed", "rendered"].includes(v.status)) return { ok: false, error: "Only a video waiting to be published can be marked stale" };
+    if (!why) return { ok: false, error: "Say why it is stale: the system learns from it" };
+    await prisma.$transaction([
+      prisma.video.update({ where: { id }, data: { status: "rejected", failReason: `Stale (owner): ${why}`, queuePosition: null, pickedAt: null, pickReason: null } }),
+      prisma.feedback.create({ data: { videoId: id, kind: "stale", text: why } }),
+    ]);
+    await renumber();
+    return { ok: true };
+  }
+  if (action === "unstale") {
+    if (v.status !== "rejected") return { ok: false, error: "This video is not marked stale" };
+    const last = await prisma.video.aggregate({ where: { ...live, status: "queued" }, _max: { queuePosition: true } });
+    await prisma.video.update({ where: { id }, data: { status: "queued", failReason: null, queuePosition: (last._max.queuePosition ?? 0) + 1 } });
+    await renumber();
+    return { ok: true };
+  }
   if (action === "delete") {
     // keep the row so ingest does not add the video again from its manifest; a published or
     // scheduled one is "removed from YouTube": it leaves every list, total and graph, and the
@@ -239,6 +284,35 @@ export async function setThumbWinner(id: string, winner: string | null): Promise
 async function renumber(): Promise<void> {
   const ids = (await queued()).map((v) => v.id);
   await prisma.$transaction(ids.map((id, i) => prisma.video.update({ where: { id }, data: { queuePosition: i + 1 } })));
+}
+
+// ---------------- the owner's feedback ----------------
+
+const toFeedback = (f: { id: string; videoId: string | null; video: { title: string } | null; kind: string; area: string | null; text: string;
+  status: string; response: string | null; addressedAt: Date | null; createdAt: Date }): Feedback => ({
+  id: f.id, videoId: f.videoId, videoTitle: f.video?.title ?? null, kind: f.kind as Feedback["kind"], area: (f.area ?? null) as Feedback["area"],
+  text: f.text, status: f.status === "addressed" ? "addressed" : "open", response: f.response,
+  addressedAt: f.addressedAt?.toISOString() ?? null, createdAt: f.createdAt.toISOString(),
+});
+
+export async function listFeedback(videoId?: string): Promise<Feedback[]> {
+  const rows = await prisma.feedback.findMany({ where: videoId ? { videoId } : {}, include: { video: { select: { title: true } } }, orderBy: { createdAt: "desc" }, take: 500 });
+  return rows.map(toFeedback);
+}
+
+export async function addFeedback(f: FeedbackCreate): Promise<Feedback | null> {
+  if (f.videoId && !(await prisma.video.findUnique({ where: { id: f.videoId }, select: { id: true } }))) return null;
+  const row = await prisma.feedback.create({ data: { videoId: f.videoId, kind: f.kind, area: f.area, text: f.text }, include: { video: { select: { title: true } } } });
+  return toFeedback(row);
+}
+
+export async function setFeedbackStatus(id: string, status: "open" | "addressed"): Promise<Feedback | null> {
+  const row = await prisma.feedback.update({ where: { id }, data: { status, addressedAt: status === "addressed" ? new Date() : null }, include: { video: { select: { title: true } } } }).catch(() => null);
+  return row && toFeedback(row);
+}
+
+export async function openFeedbackCount(): Promise<number> {
+  return prisma.feedback.count({ where: { status: "open" } });
 }
 
 // ---------------- overview ----------------

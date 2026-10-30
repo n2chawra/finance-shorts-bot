@@ -9,6 +9,12 @@ writer's storyboard.
 Read `channel/profile.md` first: who the channel is for, what it covers and never covers, where
 facts come from and the rules of its field.
 
+**The owner's feedback comes right after the hard rules** (owner, 2026-10-30). `state` →
+`owner_feedback`: `open` notes (a `wrong` note is a rule until the improver addresses it; `improve`
+and `general` notes shape this video) and `taste` (the videos he picked to publish and the ones he
+marked stale, with why). Follow them; if one conflicts with a hard rule, the hard rule wins and you
+say so in the report.
+
 1. Run `python -m generator.run state`. It tells you the video id to use (`next_id`), which
    templates are allowed, which topic categories are blocked, the previous video's style, recent
    topics and recent title/description openings.

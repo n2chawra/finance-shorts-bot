@@ -18,7 +18,7 @@ import { Prisma, PrismaClient } from "@prisma/client";
 import { releaseAssetUrl, repoSlug } from "./lib/github.ts";
 import { Manifest, type ShippedManifest } from "./lib/manifest.ts";
 import { istDay } from "./lib/publishing.ts";
-import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotifications, snapshotDocs } from "./lib/agents-sync.ts";
+import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotifications, importEditorRanking, importFeedbackAcks, snapshotDocs } from "./lib/agents-sync.ts";
 import { type FeedTopic, loadFeeds, sourceOf } from "./lib/origin.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 
@@ -174,6 +174,14 @@ export async function buildRoutineSettings(prisma: PrismaClient, root = ROOT): P
     longLengthMaxSec: s.longLengthMaxSec,
     longPerWeek: s.longPerWeek,
     longBacklogCap: s.longBacklogCap,
+    // how many Shorts the routine makes a day, and how often one is published (the 48-hour test)
+    dailyVideoTarget: s.dailyVideoTarget,
+    shortEveryDays: s.shortEveryDays,
+    // the ready videos in publish order, so the editor step ranks the real queue (owner's pick first)
+    queue: (await prisma.video.findMany({ where: { status: "queued", deletedAt: null },
+      orderBy: [{ pickedAt: { sort: "asc", nulls: "last" } }, { queuePosition: "asc" }, { createdAt: "asc" }],
+      select: { id: true, format: true, queuePosition: true, orderLocked: true, pickedAt: true, editorRank: true } }))
+      .map((v) => ({ id: v.id, format: v.format, position: v.queuePosition, locked: v.orderLocked, picked: Boolean(v.pickedAt), editorRank: v.editorRank })),
     disclaimer: s.disclaimer,
     templateWork: { maxPerDay: s.templateWork.maxPerDay, maxTemplates: s.templateWork.maxTemplates, everyNthRun: current.templateWork?.everyNthRun ?? 5 },
     templates: Object.fromEntries(templates.map((t) => [t.id, { enabled: t.enabled, weight: t.weight }])),
@@ -212,6 +220,9 @@ async function main(): Promise<void> {
     const activity = await importActivity(prisma, ROOT);
     await importAgentNotifications(prisma, ROOT);
     await snapshotDocs(prisma, ROOT);
+    // the editor's ranking of the ready videos, and the improver's answers to the owner's notes
+    const ranked = await importEditorRanking(prisma, ROOT);
+    const acks = await importFeedbackAcks(prisma, ROOT);
     const metricsChanged = await exportMetrics(prisma, ROOT);
 
     const file = path.join(ROOT, "config", "settings.json");
@@ -219,7 +230,7 @@ async function main(): Promise<void> {
     const settingsChanged = !existsSync(file) || readFileSync(file, "utf8").replace(/\r\n/g, "\n") !== next;
     if (settingsChanged) writeFileSync(file, next);
 
-    console.log(JSON.stringify({ ...result, settingsChanged, metricsChanged, activity, templateDecisions, videosInDatabase: await prisma.video.count() }, null, 2));
+    console.log(JSON.stringify({ ...result, settingsChanged, metricsChanged, activity, templateDecisions, ranked: ranked.length, feedbackAnswered: acks, videosInDatabase: await prisma.video.count() }, null, 2));
     if (result.invalid.length) process.exitCode = 1;
   } finally {
     await prisma.$disconnect();

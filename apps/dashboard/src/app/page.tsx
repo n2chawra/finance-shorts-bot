@@ -13,7 +13,8 @@ import { AGENTS, type Analytics, perThousand, type Run } from "@/lib/schemas";
 import { STATS_AGE_CLASS, statsAge } from "@/lib/stats-age";
 
 /** Videos the routines aim to ship per IST day (generator setting `dailyVideoTarget`). */
-const DAILY_TARGET = 3;
+/** Shorts the routine makes a day before settings load (the setting `dailyVideoTarget`: 2 since 2026-10-30). */
+const DEFAULT_TARGET = 2;
 const DAY_MS = 86_400_000;
 
 const MODES: Record<string, { label: string; tone: Tone }> = {
@@ -46,14 +47,14 @@ function weekOverWeek(a: Analytics | undefined, key: "views" | "subsGained" | "l
 }
 
 /** Shipped and failed Short runs per IST day, for the last `n` days (long videos have their own weekly target). */
-function dailyOutput(runs: Run[] | undefined, n: number) {
+function dailyOutput(runs: Run[] | undefined, n: number, target = DEFAULT_TARGET) {
   const today = istDay(new Date());
   return Array.from({ length: n }, (_, i) => {
     const day = istDay(new Date(Date.now() - (n - 1 - i) * DAY_MS));
     const mine = (runs ?? []).filter((r) => r.kind === "video" && r.format !== "long" && istDay(r.startedAt) === day);
     const shipped = mine.filter((r) => r.status === "ok").length;
     const failed = mine.length - shipped;
-    const tone: TrackerTone = shipped >= DAILY_TARGET ? "good" : shipped > 0 ? "warning" : mine.length ? "critical" : day === today ? "empty" : "empty";
+    const tone: TrackerTone = shipped >= target ? "good" : shipped > 0 ? "warning" : mine.length ? "critical" : day === today ? "empty" : "empty";
     return { day, shipped, failed, tone, isToday: day === today };
   });
 }
@@ -63,6 +64,7 @@ export default function OverviewPage() {
   const analytics = useAnalytics();
   const runs = useRuns();
   const settings = useSettings();
+  const DAILY_TARGET = settings.data?.dailyVideoTarget ?? DEFAULT_TARGET;
   const notifications = useNotifications();
   const agents = useAgents();
   const patch = usePatchSettings();
@@ -77,7 +79,7 @@ export default function OverviewPage() {
   const subs = weekOverWeek(analytics.data, "subsGained");
   const age = analytics.data && statsAge(analytics.data.statsThrough);
   const statsLine = age ? <span data-testid="stats-age" data-tone={age.tone} className={STATS_AGE_CLASS[age.tone]}>{age.label}</span> : "from YouTube Analytics";
-  const days = dailyOutput(runs.data, 14);
+  const days = dailyOutput(runs.data, 14, DAILY_TARGET);
   const today = days[days.length - 1];
   const shipped14 = days.reduce((a, d) => a + d.shipped, 0);
   const metDays = days.filter((d) => d.shipped >= DAILY_TARGET).length;

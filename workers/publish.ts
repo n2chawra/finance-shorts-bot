@@ -1,5 +1,6 @@
 /**
- * Publisher: fills today's upload slots, one video per slot, each uploaded private with publishAt so
+ * Publisher: fills today's upload slots (Shorts every settings.shortEveryDays days: 2 in the 48-hour
+ * test of November 2026), the owner's pick first, then the queue order. One video per slot, each uploaded private with publishAt so
  * YouTube makes it public at that time. Shorts use settings.uploadTimes (07:07, 12:37 and 19:07 by
  * default), every day, plus settings.trendUploadTimes (16:07 and 22:07): extra slots, one opening
  * for each breaking or trending video of the day (it takes that video, or the next one if the trend
@@ -72,7 +73,7 @@ async function main(): Promise<void> {
       if (!times.length || (format === "long" && !days?.length)) continue;
       let uploaded = 0;
       for (let n = 0; n < times.length; n++) {
-        const slot = nextSlot(now, times, taken, perDay[format], 30, days);
+        const slot = nextSlot(now, times, taken, perDay[format], 30, days, format === "short" ? settings.shortEveryDays : 1);
         if (istDay(slot) !== istDay(now)) {
           console.log(uploaded ? `${format}: today's slots are filled. Next is ${slot.toISOString()}.`
             : `${format}: no free slot left today; next is ${slot.toISOString()}.`);
@@ -113,7 +114,9 @@ async function main(): Promise<void> {
 /** Upload the next `format` video for `slot` (only a breaking or trending one when `urgentOnly`).
  * False when there is nothing to upload; throws on failure. */
 async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string, slot: Date, format: Format, urgentOnly = false): Promise<boolean> {
-  const order = [{ queuePosition: "asc" as const }, { createdAt: "asc" as const }];
+  // the owner's pick first (owner, 2026-10-30: "the best video goes, not whatever is next"), then the
+  // queue order: the editor's ranking, or the owner's own order where they dragged it
+  const order = [{ pickedAt: { sort: "asc" as const, nulls: "last" as const } }, { queuePosition: "asc" as const }, { createdAt: "asc" as const }];
   let pending = null, video = null;
   if (urgentOnly) {
     const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null, format }, orderBy: order });
@@ -139,7 +142,7 @@ async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string
         update: { youtubeId, publishAt: slot, state: "scheduled", attempts, error: null },
         create: { videoId: video.id, youtubeId, publishAt: slot, state: "scheduled", attempts },
       }),
-      prisma.video.update({ where: { id: video.id }, data: { status: "scheduled", queuePosition: null } }),
+      prisma.video.update({ where: { id: video.id }, data: { status: "scheduled", queuePosition: null, pickedAt: null } }),
     ]);
     await renumberQueue(prisma);
     console.log(JSON.stringify({ uploaded: video.id, youtubeId, publishAt: slot.toISOString(), attempts }, null, 2));
@@ -166,7 +169,7 @@ async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string
 }
 
 async function renumberQueue(prisma: PrismaClient): Promise<void> {
-  const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null }, orderBy: [{ queuePosition: "asc" }, { createdAt: "asc" }], select: { id: true } });
+  const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null }, orderBy: [{ pickedAt: { sort: "asc", nulls: "last" } }, { queuePosition: "asc" }, { createdAt: "asc" }], select: { id: true } });
   await prisma.$transaction(queued.map((v, i) => prisma.video.update({ where: { id: v.id }, data: { queuePosition: i + 1 } })));
 }
 

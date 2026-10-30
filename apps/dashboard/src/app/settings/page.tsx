@@ -72,6 +72,12 @@ export default function SettingsPage() {
               <Row label="Pause generation" hint="Routines still start on schedule but do nothing: no videos, no template work.">
                 <Toggle label="Pause generation" checked={form.generationPaused} onChange={(generationPaused) => set({ generationPaused })} />
               </Row>
+              <Row label="Shorts made a day" hint="How many Shorts the video routine makes each day (2 since 30 Oct). The editor ranks them; the best goes out.">
+                <input type="number" min={0} max={5} required className={fieldClass} value={form.dailyVideoTarget} onChange={(e) => set({ dailyVideoTarget: int(e.target.value) })} />
+              </Row>
+              <Row label="Post a Short every … days" hint="1 = every day at the upload times. 2 = one Short every 48 hours (the November test). Days after a post rest, hand-posted ones too.">
+                <input type="number" min={1} max={7} required className={fieldClass} value={form.shortEveryDays} onChange={(e) => set({ shortEveryDays: int(e.target.value) })} />
+              </Row>
               <Row label="Backlog cap" hint="Runs stop making videos at this many ready, and switch to template work.">
                 <input type="number" min={1} max={100} required className={fieldClass} value={form.backlogCap} onChange={(e) => set({ backlogCap: int(e.target.value) })} />
               </Row>

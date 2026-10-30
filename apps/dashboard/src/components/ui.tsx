@@ -138,7 +138,7 @@ export function Tile({ label, value, sub, icon }: { label: string; value: React.
 // state is carried by the label; the dot only reinforces it
 const STATUS: Record<VideoStatus, Tone> = {
   planned: "neutral", scripted: "neutral", verified: "neutral", rendered: "neutral", qa_passed: "neutral",
-  queued: "brand", scheduled: "info", published: "good", failed: "critical",
+  queued: "brand", scheduled: "info", published: "good", failed: "critical", rejected: "warning",
 };
 
 export function Badge({ tone = "neutral", icon: Icon, children, dot }: { tone?: Tone; icon?: LucideIcon; children: React.ReactNode; dot?: boolean }) {

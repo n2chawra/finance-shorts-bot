@@ -18,7 +18,9 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 
 Read, for the month under review:
 - `metrics/videos.json` (every published video with its numbers), `metrics/runs.json`,
-  `metrics/decisions.json` (what the owner approved or declined before), `config/settings.json`.
+  `metrics/decisions.json` (what the owner approved or declined before), `config/settings.json`,
+  `metrics/feedback.json` (the owner's notes, picks and stales: summarise them in the review, say
+  which were answered and how, and turn any pattern into a focus item).
 - `python -m improvement.evaluate` (any Python 3.11+, standard library only): experiments and what
   performs, Shorts and long videos apart.
 - `improvement/activity/` (the month's files), `improvement/journal.md`, `improvement/experiments.json`,

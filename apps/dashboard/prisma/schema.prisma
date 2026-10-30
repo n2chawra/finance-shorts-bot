@@ -24,6 +24,7 @@ enum VideoStatus {
   scheduled
   published
   failed
+  rejected // the owner marked it stale (failReason holds why); never published
 }
 
 enum Checker {
@@ -86,7 +87,16 @@ model Video {
   createdAt     DateTime // when the routine shipped it
   ingestedAt    DateTime    @default(now())
   deletedAt     DateTime? // removed from the dashboard; kept so ingest does not re-add it
+  // the editor's ranking of ready videos (improvement/editor/ranking.json, imported by ingest)
+  editorRank    Int?
+  editorScore   Float?
+  editorNote    Json? // { why, strengths[], risks[], rankedAt }
+  // the owner's choice: picked for the next upload (with why), or their own order kept
+  pickedAt      DateTime?
+  pickReason    String?
+  orderLocked   Boolean     @default(false)
   qaChecks      QaCheck[]
+  feedback      Feedback[]
   upload        Upload?
   agentRuns     AgentRun[]
 
@@ -215,4 +225,22 @@ model RepoDoc {
   key       String   @id
   value     Json
   updatedAt DateTime @updatedAt
+}
+
+/** The owner's feedback (2026-10-30): on one video or on the channel overall. Exported to
+ * metrics/feedback.json for the video routine and the agents; the improver answers it through
+ * improvement/feedback-acks.json, which ingest imports. */
+model Feedback {
+  id          String    @id @default(cuid())
+  videoId     String?
+  video       Video?    @relation(fields: [videoId], references: [id], onDelete: SetNull)
+  kind        String // choice | improve | wrong | stale | general
+  area        String? // hook | script | animation | voice | pace | topic | thumbnail | other
+  text        String
+  status      String    @default("open") // open | addressed
+  response    String?
+  addressedAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([status, createdAt])
 }

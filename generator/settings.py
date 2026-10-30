@@ -21,7 +21,7 @@ DEFAULTS: dict = {
     "longPerWeek": 0,             # long videos to make per IST week (0 pauses long-form)
     "longBacklogCap": 4,
     "disclaimer": "Illustrative only. Not financial advice.",
-    "dailyVideoTarget": 3,        # videos to ship per IST day before any template work; then runs idle
+    "dailyVideoTarget": 2,        # Shorts to ship per IST day (2 since 2026-10-30, was 3); then runs idle
     "templateWork": {
         "maxPerDay": 1,           # template-building runs allowed per IST day
         "maxTemplates": 10,       # stop building new templates at this many

@@ -33,6 +33,21 @@ is tonight's first job), `improvement/monthly/focus.json` if it exists (the mont
 python -m improvement.evaluate
 ```
 
+## 0b. The owner's feedback comes first (owner, 2026-10-30)
+Read `metrics/feedback.json` (the owner's notes from the dashboard: `wrong`, `improve`, `general`
+on a video or the channel, plus why he picked or rejected videos). Every **open** note gets an answer
+tonight, before anything else:
+- If it names something to fix (a hook pattern, the pace, an animation habit, a topic kind), fix it
+  **at its source**: the prompt or recipe that produces it (`generator/prompts/*.md`, the template
+  READMEs), the check that should catch it (`generator/story.py`, `renderer/craft.py`, a lint), or the
+  scene code. One commit per note, tests passing.
+- If it can't or shouldn't be done (it breaks a hard rule, or needs the owner), say why.
+Record every answer in `improvement/feedback-acks.json` (`{"acks": [{"id": "<note id>", "action":
+"fixed" | "noted" | "needs owner" | "declined", "note": "what you changed or why not, one sentence",
+"commit": "<short sha>"}]}`; keep earlier acks). The ingest workflow shows each answer to the owner
+on the dashboard and marks the note addressed. Picks and stales are not tasks: read them as the
+owner's taste, and when 2+ stales share a reason, fix that reason like a note.
+
 ## 1. Close matured experiments (follow the verdict exactly)
 For each experiment the evaluator marks:
 - **keep**: make the "on" behaviour the default. Remove the `self.flag("<id>")` branches (keep the

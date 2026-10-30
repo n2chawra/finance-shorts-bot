@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const VIDEO_STATUSES = [
   "planned", "scripted", "verified", "rendered", "qa_passed", "queued", "scheduled", "published", "failed",
+  "rejected",   // the owner marked it stale (failReason says why); never published
 ] as const;
 export const VideoStatusSchema = z.enum(VIDEO_STATUSES);
 export type VideoStatus = z.infer<typeof VideoStatusSchema>;
@@ -62,6 +63,15 @@ export const AgentStepSchema = z.object({
   note: z.string().nullable(),
 });
 
+/** Why the editor ranks a video where it does. */
+export const EditorNoteSchema = z.object({
+  why: z.string().default(""),
+  strengths: z.array(z.string()).default([]),
+  risks: z.array(z.string()).default([]),
+  rankedAt: z.string().nullish(),
+});
+export type EditorNote = z.infer<typeof EditorNoteSchema>;
+
 export const VideoSchema = z.object({
   id: z.string(),
   templateId: z.string(),
@@ -79,6 +89,14 @@ export const VideoSchema = z.object({
   fileUrl: z.string(),
   createdAt: z.string(),
   queuePosition: z.number().int().nullable(),
+  /** the editor's ranking of ready videos (improvement/editor/ranking.json), 1 = best */
+  editorRank: z.number().int().nullable().default(null),
+  editorScore: z.number().nullable().default(null),
+  editorNote: EditorNoteSchema.nullable().default(null),
+  /** the owner's pick for the next upload, and their own order kept over the editor's */
+  pickedAt: z.string().nullable().default(null),
+  pickReason: z.string().nullable().default(null),
+  orderLocked: z.boolean().default(false),
   upload: UploadSchema.nullable(),
   totals: TotalsSchema.nullable(),
 });
@@ -133,6 +151,10 @@ export const SettingsSchema = z.object({
   uploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).min(1).max(4),
   /** Extra Short slots only a breaking or trending video may take; empty on quiet days. */
   trendUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).max(3).default(["16:07", "22:07"]),
+  /** One Short every N days (owner, 2026-10-30: the 48-hour test; 1 = every day, as before). */
+  shortEveryDays: z.number().int().min(1).max(7).default(1),
+  /** Shorts the video routine makes a day (owner, 2026-10-30: 2, down from 3). */
+  dailyVideoTarget: z.number().int().min(0).max(5).default(2),
   longUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).max(2).default(["20:07"]),
   longUploadDays: z.array(z.number().int().min(0).max(6)).max(7).default([2, 4, 6]),   // 0 = Sunday
   longLengthMinSec: z.number().int().min(60).max(3600).default(180),
@@ -180,7 +202,7 @@ export function settingsProblem(s: Settings): string | null {
 
 /** The strategy settings an agent may propose and the owner approve with one click. Pauses, the
  * disclaimer, alerts and the agents' own switches are never proposed. */
-export const PROPOSABLE_SETTINGS = ["uploadTimes", "trendUploadTimes", "longUploadTimes", "longUploadDays", "longPerWeek", "longBacklogCap",
+export const PROPOSABLE_SETTINGS = ["uploadTimes", "trendUploadTimes", "shortEveryDays", "dailyVideoTarget", "longUploadTimes", "longUploadDays", "longPerWeek", "longBacklogCap",
   "longLengthMinSec", "longLengthMaxSec", "lengthMinSec", "lengthMaxSec", "backlogCap"] as const satisfies readonly (keyof Settings)[];
 
 export const OverviewSchema = z.object({
@@ -230,7 +252,35 @@ export function mostLoved<T extends { views: number; likes: number; comments: nu
 }
 
 export const QueueOrderSchema = z.object({ ids: z.array(z.string()).min(1) });
-export const VideoActionSchema = z.enum(["skip", "delete", "upload-now"]);
+export const VideoActionSchema = z.enum(["skip", "delete", "upload-now", "pick", "unpick", "stale", "unstale"]);
+/** A reason travels with a pick ("why this one") and a stale ("why not"). */
+export const VideoActionBodySchema = z.object({ reason: z.string().trim().max(1000).optional() }).default({});
+
+// ---------------- the owner's feedback (2026-10-30) ----------------
+
+export const FEEDBACK_KINDS = ["choice", "improve", "wrong", "stale", "general"] as const;
+export const FEEDBACK_AREAS = ["hook", "script", "animation", "voice", "pace", "topic", "thumbnail", "other"] as const;
+export const FeedbackSchema = z.object({
+  id: z.string(),
+  videoId: z.string().nullable(),
+  videoTitle: z.string().nullable(),
+  kind: z.enum(FEEDBACK_KINDS),
+  area: z.enum(FEEDBACK_AREAS).nullable(),
+  text: z.string(),
+  status: z.enum(["open", "addressed"]),
+  response: z.string().nullable(),
+  addressedAt: z.string().nullable(),
+  createdAt: z.string(),
+});
+export type Feedback = z.infer<typeof FeedbackSchema>;
+export const FeedbackCreateSchema = z.object({
+  videoId: z.string().nullable().default(null),
+  kind: z.enum(FEEDBACK_KINDS),
+  area: z.enum(FEEDBACK_AREAS).nullable().default(null),
+  text: z.string().trim().min(2).max(2000),
+});
+export type FeedbackCreate = z.infer<typeof FeedbackCreateSchema>;
+export const FeedbackPatchSchema = z.object({ id: z.string(), status: z.enum(["open", "addressed"]) });
 
 /** "I uploaded this one myself": the YouTube video id (from the pasted link) and when it went live. */
 export const ManualUploadSchema = z.object({

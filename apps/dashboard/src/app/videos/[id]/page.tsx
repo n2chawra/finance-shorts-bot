@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ArrowLeft, ChevronsDown, CircleCheck, CircleX, Download, Eye, Heart, ImageDown, MessageSquare, Minus, Percent, Trash2, TrendingUp, Upload } from "lucide-react";
+import { ArrowLeft, Award, ChevronsDown, CircleCheck, CircleX, Download, Eye, Heart, ImageDown, MessageSquare, Minus, Percent, RotateCcw, Sparkles, Trash2, TrendingUp, Upload, XCircle } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -17,6 +17,7 @@ import { useQueue, useSettings, useThumbWinner, useVideo, useVideoAction, useVid
 import type { VideoAction, VideoDetail } from "@/lib/schemas";
 
 import { EditDetails, MarkUploaded, YouTubeDetails } from "./publish-tools";
+import { EditorBadge, EditorNote, FeedbackPanel, ReasonDialog } from "@/components/feedback";
 
 const CHECK_NAMES: Record<string, string> = { number_check: "Number check", fact_review: "Fact review", qa_review: "QA review" };
 
@@ -85,6 +86,7 @@ export default function VideoPage() {
   const toast = useToast();
   const [tab, setTab] = useState("details");
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [ask, setAsk] = useState<"pick" | "stale" | null>(null);
   // a queued video's slot, by the queue page's own posting plan
   const queue = useQueue();
   const settings = useSettings();
@@ -97,7 +99,8 @@ export default function VideoPage() {
   const onYouTube = v.status === "published" || v.status === "scheduled";
   const run = (action: VideoAction) => {
     act.mutate({ id: v.id, action }, {
-      onSuccess: () => { toast(action === "delete" ? (onYouTube ? "Removed" : "Video deleted") : action === "skip" ? "Moved to the end of the queue" : "Marked for upload"); if (action === "delete") router.push("/videos"); },
+      onSuccess: () => { toast(action === "delete" ? (onYouTube ? "Removed" : "Video deleted") : action === "skip" ? "Moved to the end of the queue"
+        : action === "unpick" ? "Pick removed" : action === "unstale" ? "Back in the queue" : "Marked for upload"); if (action === "delete") router.push("/videos"); },
       onError: (e) => toast(e.message, "error"),
     });
   };
@@ -110,9 +113,13 @@ export default function VideoPage() {
   const publishAt = v.upload?.publishAt ?? (planned ? new Date(planned.at).toISOString() : null);
   const menu: MenuItem[] = [
     ...(v.status === "queued" ? [
+      v.pickedAt ? { label: "Remove my pick", icon: XCircle, disabled: act.isPending, onSelect: () => run("unpick") }
+        : { label: "Pick for the next upload…", icon: Award, disabled: act.isPending, onSelect: () => setAsk("pick") },
       { label: "Upload now", icon: Upload, disabled: act.isPending, onSelect: () => run("upload-now") },
       { label: "Skip to end of queue", icon: ChevronsDown, disabled: act.isPending, onSelect: () => run("skip") },
     ] as MenuItem[] : []),
+    ...(v.status === "queued" ? [{ label: "Mark stale…", icon: XCircle, disabled: act.isPending, onSelect: () => setAsk("stale") }] as MenuItem[] : []),
+    ...(v.status === "rejected" ? [{ label: "Put back in the queue", icon: RotateCcw, disabled: act.isPending, onSelect: () => run("unstale") }] as MenuItem[] : []),
     "separator", { label: onYouTube ? "Removed from YouTube…" : "Delete…", icon: Trash2, danger: true, onSelect: () => setConfirmDelete(true) },
   ];
   while (menu[0] === "separator") menu.shift();
@@ -132,6 +139,7 @@ export default function VideoPage() {
           <h1 className="text-[22px] font-semibold tracking-[-0.02em] md:text-2xl">{v.title}</h1>
           <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-muted">
             <StatusBadge status={v.status} />
+            <EditorBadge v={v} />
             <span className="font-mono text-xs">{v.id}</span><span aria-hidden>·</span><span>{titleCase(v.templateId)}</span><span aria-hidden>·</span>
             <span>{titleCase(v.topic.category)}</span><span aria-hidden>·</span><span>{v.durationSec}s</span>
           </div>
@@ -145,9 +153,22 @@ export default function VideoPage() {
         </div>
       </div>
 
-      {v.failReason && (
+      {v.status === "queued" && (v.editorNote || v.pickedAt) && (
+        <Card className="mb-4" title={v.pickedAt ? "Your pick for the next upload" : `The editor ranks this #${v.editorRank ?? "?"}${v.editorScore !== null ? ` · ${v.editorScore.toFixed(1)}/10` : ""}`} icon={v.pickedAt ? Award : Sparkles}>
+          {v.pickedAt && <p className="mb-2 text-[13px]"><span className="font-medium">Why: </span>{v.pickReason ?? "—"}</p>}
+          <EditorNote v={v} />
+        </Card>
+      )}
+
+      {v.failReason && v.status !== "rejected" && (
         <p role="alert" className="mb-4 flex items-start gap-2 rounded-xl border border-critical/25 bg-critical-soft p-3.5 text-[13px]">
           <CircleX aria-hidden className="mt-0.5 size-4 shrink-0 text-critical" /><span><strong className="font-medium">Failed.</strong> <span className="text-ink2">{v.failReason}</span></span>
+        </p>
+      )}
+
+      {v.status === "rejected" && (
+        <p role="status" className="mb-4 flex items-start gap-2 rounded-xl border border-warning/30 bg-warning-soft p-3.5 text-[13px]">
+          <XCircle aria-hidden className="mt-0.5 size-4 shrink-0 text-warning-text" /><span><strong className="font-medium">Stale.</strong> <span className="text-ink2">{v.failReason?.replace(/^Stale \(owner\): /, "")} It will never be posted.</span></span>
         </p>
       )}
 
@@ -264,6 +285,16 @@ export default function VideoPage() {
           </Tabs.Content>
         </Tabs.Root>
       </div>
+
+      <div className="mt-4"><FeedbackPanel videoId={v.id} title="Your feedback on this video" /></div>
+
+      <ReasonDialog open={ask !== null} onOpenChange={(o) => !o && setAsk(null)} required={ask === "stale"}
+        title={ask === "pick" ? "Pick this for the next upload?" : "Mark this video stale?"}
+        description={ask === "pick" ? "It goes out in the next slot, before the editor's ranking. Why this one? The editor and the next videos learn from your choices."
+          : "It leaves the queue and will never be posted. Say why: the next videos and the improver learn from it."}
+        placeholder={ask === "pick" ? "e.g. Strongest hook; big-money topic people love" : "e.g. Personal-budget topic; the hook gives the answer away"}
+        confirmLabel={ask === "pick" ? "Pick it" : "Mark stale"}
+        onSubmit={(reason) => { if (ask) act.mutate({ id: v.id, action: ask, reason }, { onSuccess: () => toast(ask === "pick" ? "Picked: it goes out in the next slot" : "Marked stale"), onError: (e) => toast(e.message, "error") }); setAsk(null); }} />
 
       <ConfirmButton hideTrigger open={confirmDelete} onOpenChange={setConfirmDelete} label={onYouTube ? "Remove" : "Delete"}
         title={onYouTube ? "Removed from YouTube?" : "Delete this video?"} confirmLabel={onYouTube ? "Remove from dashboard" : "Delete video"}

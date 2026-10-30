@@ -1,20 +1,22 @@
 "use client";
 
-import { AlertTriangle, ArrowDown, ArrowUp, CalendarClock, ChevronsDown, ChevronsUp, Clock, Download, ExternalLink, Film, Flame, GripVertical, ImageDown, ListOrdered, Smartphone, Trash2, Upload } from "lucide-react";
+import { AlertTriangle, ArrowDown, ArrowUp, Award, CalendarClock, ChevronsDown, ChevronsUp, Clock, Download, ExternalLink, Film, Flame, GripVertical, ImageDown, ListOrdered, Smartphone, Sparkles, Trash2, Upload, XCircle } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { CopyButton, MarkUploaded, uploadText } from "@/app/videos/[id]/publish-tools";
+import { EditorBadge, ReasonDialog } from "@/components/feedback";
 import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, Loading, PageHeader, Stagger, Thumb, Toggle, VideoLink, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
 import { type Format, type PlanSlot, madeBy, postingPlan, runway } from "@/lib/posting-plan";
-import { useOverview, usePatchSettings, useQueue, useReorder, useSettings, useVideoAction, useVideos } from "@/lib/queries";
+import { useEditorOrder, useOverview, usePatchSettings, useQueue, useReorder, useSettings, useVideoAction, useVideos } from "@/lib/queries";
 import { describeTimes } from "@/lib/slots";
 import type { Settings, Video, VideoAction } from "@/lib/schemas";
 
-const DONE: Record<VideoAction, string> = { skip: "Moved to the end of the queue", delete: "Video deleted", "upload-now": "Marked for upload on the next publish run" };
+const DONE: Record<VideoAction, string> = { skip: "Moved to the end of the queue", delete: "Video deleted", "upload-now": "Marked for upload on the next publish run",
+  pick: "Picked: it goes out in the next slot", unpick: "Pick removed: the queue order decides again", stale: "Marked stale: it will never be posted", unstale: "Back in the queue" };
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const iso = (ms: number) => new Date(ms).toISOString();
 /** Save a file the dashboard serves (a menu item can't be a link). */
@@ -93,7 +95,8 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
   const slotOf = new Map(plan.filter((s) => s.video).map((s) => [s.video!.id, s]));
   const missed = plan.filter((s) => s.state === "missed");
   const r = runway(format, items, settings);
-  const when = format === "short" ? `daily at ${describeTimes(settings.uploadTimes)}${settings.trendUploadTimes.length ? `, plus trend slots at ${describeTimes(settings.trendUploadTimes)}` : ""}`
+  const every = settings.shortEveryDays ?? 1;
+  const when = format === "short" ? `${every > 1 ? `every ${every} days` : "daily"} at ${describeTimes(settings.uploadTimes)}${settings.trendUploadTimes.length ? `, plus trend slots at ${describeTimes(settings.trendUploadTimes)}` : ""}`
     : `${settings.longUploadDays.map((d) => WEEKDAYS[d]).join("/")} at ${describeTimes(settings.longUploadTimes)}`;
   const Icon = format === "short" ? Smartphone : Film;
 
@@ -136,8 +139,9 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
                       <div className="min-w-0">
                         <VideoLink id={v.id} className="block truncate text-[13px] font-medium">{v.title}</VideoLink>
                         <div className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-muted">
-                          <Origin v={v} /><span>{titleCase(v.topic.category)}</span>
+                          <EditorBadge v={v} /><Origin v={v} /><span>{titleCase(v.topic.category)}</span>
                         </div>
+                        {(v.pickReason || v.editorNote?.why) && <p className="mt-1 line-clamp-2 text-xs text-ink2">{v.pickedAt ? `Your reason: ${v.pickReason ?? "—"}` : v.editorNote?.why}</p>}
                         {slot?.stale && (
                           <p className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-critical-text">
                             <AlertTriangle aria-hidden className="size-3.5" />Stale by its slot.
@@ -154,9 +158,12 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
                           { label: "Open video", icon: ExternalLink, onSelect: () => router.push(`/videos/${v.id}`) },
                           { label: "Download video", icon: Download, onSelect: () => download(v.fileUrl, `${v.id}.mp4`) },
                           { label: "Download thumbnail", icon: ImageDown, onSelect: () => download(v.thumbnailUrl, `${v.id}-thumbnail.png`) },
+                          v.pickedAt ? { label: "Remove my pick", icon: XCircle, disabled: busy, onSelect: () => onAction(v, "unpick") }
+                            : { label: "Pick for the next upload…", icon: Award, disabled: busy, onSelect: () => onAction(v, "pick") },
                           { label: "Upload now", icon: Upload, disabled: busy || paused, onSelect: () => onAction(v, "upload-now") },
                           { label: "Skip to end", icon: ChevronsDown, disabled: busy || i === items.length - 1, onSelect: () => onAction(v, "skip") },
                           "separator",
+                          { label: "Mark stale…", icon: XCircle, disabled: busy, onSelect: () => onAction(v, "stale") },
                           { label: "Delete…", icon: Trash2, danger: true, disabled: busy, onSelect: () => onAction(v, "delete-confirm") },
                         ]} />
                       </div>
@@ -180,7 +187,9 @@ export default function QueuePage() {
   const scheduled = useVideos({ status: "scheduled" });
   const reorder = useReorder();
   const act = useVideoAction();
+  const editorOrder = useEditorOrder();
   const patch = usePatchSettings();
+  const [ask, setAsk] = useState<{ v: Video; action: "pick" | "stale" } | null>(null);
   const toast = useToast();
   const [confirm, setConfirm] = useState<{ id: string; title: string } | null>(null);
 
@@ -205,7 +214,9 @@ export default function QueuePage() {
     reorder.mutate(format === "short" ? [...ids, ...other] : [...other, ...ids], { onError: fail });
   };
   const onAction = (v: Video, a: VideoAction | "delete-confirm") => a === "delete-confirm" ? setConfirm({ id: v.id, title: v.title })
+    : a === "pick" || a === "stale" ? setAsk({ v, action: a })
     : act.mutate({ id: v.id, action: a }, { onSuccess: () => toast(DONE[a]), onError: fail });
+  const locked = items.some((v) => v.orderLocked);
 
   return (
     <Stagger>
@@ -216,6 +227,13 @@ export default function QueuePage() {
             onChange={(on) => patch.mutate({ uploadsPaused: !on }, { onSuccess: () => toast(on ? "Uploads resumed" : "Uploads paused"), onError: fail })} />
         </label>
       </PageHeader>
+
+      {locked && (
+        <p className="mb-3 flex flex-wrap items-center gap-2 text-[13px] text-ink2">
+          <Sparkles aria-hidden className="size-4 text-brand" />You set this order yourself, so the editor&apos;s ranking isn&apos;t applied.
+          <Button size="sm" disabled={editorOrder.isPending} onClick={() => editorOrder.mutate(undefined, { onSuccess: () => toast("The editor's ranking orders the queue again"), onError: fail })}>Use the editor&apos;s order</Button>
+        </p>
+      )}
 
       {paused && next && <PostNext slot={next} />}
 
@@ -243,9 +261,17 @@ export default function QueuePage() {
       ))}
 
       <p className="mt-1 text-xs text-muted">
-        Order within each list is the posting order: breaking and trending videos join at the top. Drag rows on desktop or use the arrows.
+        Order within each list is the posting order: your pick first, then the editor&apos;s ranking (best first), or your own order once you move a row. Drag rows on desktop or use the arrows.
         A slot counts as done once a video of that format is marked uploaded within three hours of it.
       </p>
+
+      <ReasonDialog open={ask !== null} onOpenChange={(o) => !o && setAsk(null)} required={ask?.action === "stale"}
+        title={ask?.action === "pick" ? "Pick this for the next upload?" : "Mark this video stale?"}
+        description={ask?.action === "pick" ? `"${ask?.v.title ?? ""}" goes out in the next slot, before the editor's ranking. Why this one? The editor and the next videos learn from your choices.`
+          : `"${ask?.v.title ?? ""}" leaves the queue and will never be posted. Say why: the next videos and the improver learn from it.`}
+        placeholder={ask?.action === "pick" ? "e.g. Strongest hook; big-money topic people love" : "e.g. Personal-budget topic; the hook gives the answer away"}
+        confirmLabel={ask?.action === "pick" ? "Pick it" : "Mark stale"}
+        onSubmit={(reason) => { if (ask) act.mutate({ id: ask.v.id, action: ask.action, reason }, { onSuccess: () => toast(DONE[ask.action]), onError: fail }); setAsk(null); }} />
 
       <ConfirmButton hideTrigger open={confirm !== null} onOpenChange={(o) => !o && setConfirm(null)} label="Delete" title="Delete this video?" confirmLabel="Delete video"
         description={`"${confirm?.title ?? ""}" will be removed from the queue. This cannot be undone.`} onConfirm={() => { if (confirm) act.mutate({ id: confirm.id, action: "delete" }, { onSuccess: () => toast(DONE.delete), onError: fail }); setConfirm(null); }} />

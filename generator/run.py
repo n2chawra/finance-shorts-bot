@@ -29,7 +29,7 @@ from renderer import craft, remotion, thumbs
 from renderer.engine.formatting import CURRENCIES
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
-from . import experiments, failures, formats, history, numbers, reach, shapes, story, topics, variety
+from . import editor, experiments, failures, feedback, formats, history, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -147,6 +147,8 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "videos_this_week": made_week, "weekly_target": per_week,
         "next_id": (next_id := history.next_id(everything, root=root, fmt=fmt)),
         "experiments": experiments.prompt_notes(next_id, root),
+        # the owner's notes from the dashboard (metrics/feedback.json): right after the hard rules
+        "owner_feedback": feedback.for_state(root, fmt),
         "template_work": {"runs_today": work_today, "max_per_day": tw["maxPerDay"],
                           "may_add_template": room, "templates": n_templates, "max_templates": tw["maxTemplates"]},
         "templates": {t: {"weight": settings["templates"].get(t, {}).get("weight", 1.0)} for t in enabled},
@@ -574,6 +576,7 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("fail")
     p.add_argument("id")
     p.add_argument("--reason", required=True)
+    sub.add_parser("rank").add_argument("--format", choices=("short", "long"), default="short")   # the editor's scores
     p = sub.add_parser("failures")          # what failed lately, grouped: the writer reads it before writing
     p.add_argument("--days", type=int, default=14)
     p.add_argument("--format", choices=("short", "long"), default=None)
@@ -614,7 +617,11 @@ def main(argv: list[str] | None = None) -> int:
             print(f"marked {a.id} failed")
             return 0
         if a.cmd == "failures":
-            print(failures.report(ROOT, a.days, a.format))
+            owner = feedback.report(ROOT, a.format or "short")
+            print((owner + "\n\n" if owner else "") + failures.report(ROOT, a.days, a.format))
+            return 0
+        if a.cmd == "rank":
+            print(json.dumps(editor.rank(ROOT, a.format), indent=2, ensure_ascii=False))
             return 0
         if a.cmd == "prune-feed":
             gone = topics.prune_file(history.of_format(history.load(), a.format), history.ist_day(history.now().isoformat()), fmt=a.format)

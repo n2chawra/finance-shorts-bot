@@ -113,13 +113,13 @@ def today(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def test_video_runs_stop_at_the_daily_target(root: Path, today: None) -> None:
-    for i in range(2):
-        history.append(entry(i, days_ago=0.1), root)
+    # 2 a day since 2026-10-30 (was 3)
+    history.append(entry(0, days_ago=0.1), root)
     s = run.state(root)
-    assert s["mode"] == "video" and s["videos_today"] == 2 and s["daily_target"] == 3
-    history.append(entry(2, days_ago=0.05), root)
+    assert s["mode"] == "video" and s["videos_today"] == 1 and s["daily_target"] == 2
+    history.append(entry(1, days_ago=0.05), root)
     s = run.state(root)
-    assert s["mode"] == "idle" and "3 videos are made" in s["reason"]   # template work is the improver's
+    assert s["mode"] == "idle" and "2 videos are made" in s["reason"]   # template work is the improver's
 
 
 def test_state_lists_experiment_instructions_for_the_next_video(root: Path) -> None:
@@ -359,7 +359,7 @@ def test_media_branch_needs_the_video(root: Path) -> None:
 
 
 def test_a_trending_topic_earns_one_extra_video(root: Path, today: None) -> None:
-    for i in range(3):
+    for i in range(2):          # the day's target (2)
         history.append(entry(i, days_ago=0.1), root)
     assert run.state(root)["mode"] == "idle"
     (root / "improvement" / "research").mkdir(parents=True)
@@ -369,7 +369,7 @@ def test_a_trending_topic_earns_one_extra_video(root: Path, today: None) -> None
     s = run.state(root)
     assert s["mode"] == "video" and "trending topic is waiting" in s["reason"]
     assert s["topic_feed"]["urgent"] == "hot" and s["topic_feed"]["required"] is None
-    history.append(entry(3, days_ago=0.05), root)
+    history.append(entry(2, days_ago=0.05), root)
     assert run.state(root)["mode"] == "idle"                     # only one extra a day
 
 

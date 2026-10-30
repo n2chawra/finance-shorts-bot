@@ -89,6 +89,8 @@ the US. News is not a source of ideas any more.
    must be a story in `generator/variety.py` `STORIES`; if it isn't, propose adding it (route
    `adopt`) instead of writing the format. Remove nothing; the improver retires formats our own
    numbers reject.
+2a. **The owner's taste** (`metrics/feedback.json`): the videos he picked to publish and the ones he
+   marked stale, each with why. Prefer topics like his picks; never add topics like his stales.
 2b. **Grow the story shapes** (`improvement/research/shapes.json`; owner, 2026-10-30: "the shapes
    should keep increasing"). For the top Shorts you looked at, note how their beats are arranged.
    When one with 100K+ views uses an arrangement the library doesn't have (a heist, a trial, a

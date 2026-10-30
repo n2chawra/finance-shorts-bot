@@ -386,3 +386,12 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   viewed thumbnails, which the market job searches weekly per open topic (`thumb-refs.json`;
   `python -m renderer.thumbs refs <id>`); Test & Compare variants are gone. Length settings now
   35–50 s and 400–600 s (owner, dashboard); docs read the settings.
+- 2026-10-30 **Best video first, and the owner's voice in the loop.** Views stall at ~1.1K: our own
+  daily numbers show YouTube pushes several Shorts at once and Shorts die on no-upload days too, so
+  frequency isn't the cause, but the owner runs a one-week test (Mon 2 – Sun 8 Nov): one Short every
+  48 hours at 19:07 IST, 2 made a day. New: `shortEveryDays` and `dailyVideoTarget` settings; the
+  editor step ranks the ready Shorts (`generator/editor.py`, `generator/prompts/editor.md`,
+  `improvement/editor/ranking.json` → queue order); the owner picks, reorders, marks stale (status
+  `rejected`) and leaves feedback on the dashboard (Queue, video page, Feedback page); feedback reaches
+  the routine (`state.owner_feedback`), the editor, research and the improver, which answers every
+  note (`improvement/feedback-acks.json`). Review on Sun 8 Nov.

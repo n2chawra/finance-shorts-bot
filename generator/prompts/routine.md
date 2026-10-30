@@ -34,8 +34,8 @@ Run `python -m generator.run state` and read `mode`:
 | mode | What to do |
 |---|---|
 | `paused` | Nothing. Report "generation is paused" and stop. |
-| `idle` | Nothing. Report the `reason` and stop. |
-| `video` | Make videos in a loop (section 1a). `videos_today` of `daily_target` are already made. |
+| `idle` | Only the editor step (section 8), then report the `reason` and stop. |
+| `video` | Make videos in a loop (section 1a), then the editor step (section 8). `videos_today` of `daily_target` are already made. |
 
 ## 1a. The video loop
 
@@ -46,7 +46,8 @@ once per video. For each video, do sections 2 to 7 (or the failure path), then r
 - If `mode` is still `video`, start the next video with the new `next_id`.
 - Otherwise the day's target is met: stop the loop.
 
-Limits per run: at most **3 shipped videos** and at most **5 attempts** (shipped + failed). Stop
+Limits per run: at most **`daily_target` shipped videos** (from `state`: 2 a day since 2026-10-30) and at
+most **`daily_target` + 2 attempts** (shipped + failed). Stop
 when either is reached, even if the target isn't met; a later run makes up the rest.
 
 **One video failing never ends the run.** Whatever stops a video — a check that won't pass, a
@@ -170,8 +171,16 @@ A failed video is never released. **Then go back to the loop** (section 1a): run
 `video` and the run's limits allow, make the next video with a **different template** from the
 one that failed.
 
+## 8. The editor (every run, also idle ones)
+
+Follow `generator/prompts/editor.md`: score every ready Short (`python -m generator.run rank`), look
+at the top candidates, and commit `improvement/editor/ranking.json`. One Short goes out every
+`shortEveryDays` days, so the best of the queue must be first (owner, 2026-10-30).
+
 ## Rules for every run
 
+- Read the owner's notes in `state` (`owner_feedback`) before planning: they come right after the
+  hard rules, and a `wrong` note is a rule until it is addressed.
 - Never edit `config/settings.json`, `CLAUDE.md`, `PLAN.md`, anything under `apps/`, `workers/`
   or `.github/`, or these prompt files. Under `renderer/`, a video run may only make the
   template repair described in section 6.

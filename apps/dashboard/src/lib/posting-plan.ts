@@ -19,7 +19,7 @@ export type PlanSlot = {
   stale: boolean;                           // a breaking/trending video whose urgency ends before this slot
   trend: boolean;                           // an extra slot only a breaking/trending video takes
 };
-type SlotSettings = Pick<Settings, "uploadTimes" | "trendUploadTimes" | "longUploadTimes" | "longUploadDays">;
+type SlotSettings = Pick<Settings, "uploadTimes" | "trendUploadTimes" | "longUploadTimes" | "longUploadDays"> & { shortEveryDays?: number };
 
 const HOUR = 3_600_000;
 const DAY = 24 * HOUR;
@@ -48,8 +48,16 @@ export function postingPlan(format: Format, queue: Video[], posted: Video[], set
   const today = istDayOf(now);
   const out: PlanSlot[] = [];
   let empty = 0;
+  // one Short every N days (the 48-hour test): the days after a posted or planned Short rest
+  const every = format === "short" ? Math.max(1, settings.shortEveryDays ?? 1) : 1;
+  const usedDays = new Set(postedAt.map(istDayOf));
+  const resting = (day: string) => {
+    for (let back = 1; back < every; back++) if (usedDays.has(istDayOf(Date.parse(`${day}T12:00:00+05:30`) - back * DAY))) return true;
+    return false;
+  };
   for (let d = 0; d < 400 && (remaining.length || empty < 1); d++) {
     const day = istDayOf(Date.parse(`${today}T12:00:00+05:30`) + d * DAY);
+    if (resting(day)) continue;
     let urgentToday = 0, trendUsed = 0;
     for (const t of sorted) {
       const at = Date.parse(`${day}T${t}:00+05:30`);
@@ -74,6 +82,7 @@ export function postingPlan(format: Format, queue: Video[], posted: Video[], set
         if (!video && ++empty > 1) break;
       }
       const until = video?.style.source?.urgent?.until;
+      if (video || day !== today) usedDays.add(day);
       out.push({ at, format, state: at <= now + DUE_BEFORE ? "due" : "upcoming", video, stale: Boolean(until && until < istDayOf(at)), trend: isTrend });
     }
   }
@@ -94,7 +103,8 @@ export function madeBy(v: Pick<Video, "format" | "createdAt">): string {
 /** How many days of posting the queue holds, and how it moves: runs make `madePerDay`. */
 export function runway(format: Format, queue: Video[], settings: SlotSettings) {
   const { times, days } = slotRule(format, settings);
-  const perWeek = new Set(times).size * (days ? new Set(days).size : 7);
+  const every = format === "short" ? Math.max(1, (settings as SlotSettings).shortEveryDays ?? 1) : 1;
+  const perWeek = (new Set(times).size * (days ? new Set(days).size : 7)) / every;
   const n = queue.filter((v) => v.format === format).length;
   return { n, perWeek, days: perWeek ? Math.floor((n / perWeek) * 7) : null };
 }

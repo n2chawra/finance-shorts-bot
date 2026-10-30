@@ -36,18 +36,29 @@ export const slotKey = (d: Date) => d.toISOString().slice(0, 16);
  * long videos go out on set days.
  */
 export function nextSlot(now: Date, times: string[], taken: Set<string>, perDay: Map<string, number>,
-                         leadMinutes = 30, days?: number[]): Date {
+                         leadMinutes = 30, days?: number[], everyDays = 1): Date {
   const sorted = [...new Set(times)].sort();
   for (let i = 0; i < 400; i++) {
     const day = istDay(new Date(now.getTime() + i * DAY_MS));
     if (days?.length && !days.includes(new Date(`${day}T00:00:00Z`).getUTCDay())) continue;
     if ((perDay.get(day) ?? 0) >= sorted.length) continue;
+    if (restDay(day, perDay, everyDays)) continue;
     for (const time of sorted) {
       const slot = istSlot(day, time);
       if (slot.getTime() - now.getTime() >= leadMinutes * 60_000 && !taken.has(slotKey(slot))) return slot;
     }
   }
   throw new Error("no free upload slot in the next 400 days");
+}
+
+/** With one upload every `everyDays` days (the 48-hour test, owner 2026-10-30), a day within
+ * `everyDays - 1` days after a day with an upload is a rest day. Manual uploads count too. */
+export function restDay(day: string, perDay: Map<string, number>, everyDays = 1): boolean {
+  for (let back = 1; back < everyDays; back++) {
+    const before = istDay(new Date(Date.parse(`${day}T12:00:00+05:30`) - back * DAY_MS));
+    if ((perDay.get(before) ?? 0) > 0) return true;
+  }
+  return false;
 }
 
 /**

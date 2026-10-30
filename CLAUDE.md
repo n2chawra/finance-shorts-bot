@@ -18,7 +18,17 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Every
   video is voiced, with big word-by-word captions drawn from the voice timings (owner, 2026-10-21;
   `remotion/src/fx/captions.tsx`).
-- **Three Shorts per day**, at 07:07, 12:37 and 19:07 IST (setting `uploadTimes`), plus **trend
+- **Best video first** (owner, 2026-10-30): the routine makes **2 Shorts a day** (`dailyVideoTarget`)
+  and, during the November test, **one Short goes out every 48 hours** at 19:07 IST
+  (`shortEveryDays: 2`, `uploadTimes: ["19:07"]`). The **editor** step of every video run
+  (`generator/prompts/editor.md`, `python -m generator.run rank`, `generator/editor.py`) rates every
+  ready Short and writes `improvement/editor/ranking.json`; ingest turns it into the queue order. The
+  **owner** decides on the dashboard: **pick** the next upload (with why), reorder, **mark stale** (with
+  why; status `rejected`, never published), and leave **feedback** on a video or the channel
+  (`Feedback` table → `metrics/feedback.json`). The routine reads it in `state` → `owner_feedback`
+  (right after the hard rules), and the improver answers every open note in
+  `improvement/feedback-acks.json`, which ingest shows on the dashboard.
+- **Shorts slots** at 07:07, 12:37 and 19:07 IST by default (setting `uploadTimes`), plus **trend
   slots** at 16:07 and 22:07 (`trendUploadTimes`): each breaking or trending video of the day opens
   one, so a trend never pushes a normal video back; quiet days leave them empty. Upload time barely
   changes who sees a Short, so slots suit the owner's manual posting, not time zones (owner,

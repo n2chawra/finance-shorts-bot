@@ -3,7 +3,7 @@
  * (store.db.ts); without it, generated sample data held in memory (store.sample.ts), so the
  * dashboard can be run and reviewed with no database at all.
  */
-import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
+import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 import * as autoDb from "./autopilot.db";
 import * as autoSample from "./autopilot.sample";
 import type { Agents, Notification, Notifications } from "./schemas";
@@ -26,7 +26,12 @@ export const reorderQueue = async (ids: string[]): Promise<Video[] | null> => (u
 export const markUploaded = async (id: string, m: ManualUpload): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.markUploaded(id, m) : sample.markUploaded(id, m));
 export const updateVideo = async (id: string, e: VideoEdit): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.updateVideo(id, e) : sample.updateVideo(id, e));
 export const setThumbWinner = async (id: string, winner: string | null): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.setThumbWinner(id, winner) : sample.setThumbWinner(id, winner));
-export const videoAction = async (id: string, action: VideoAction): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.videoAction(id, action) : sample.videoAction(id, action));
+export const videoAction = async (id: string, action: VideoAction, reason?: string): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.videoAction(id, action, reason) : sample.videoAction(id, action, reason));
+export const applyEditorOrder = async (): Promise<Video[]> => (useDb ? db.applyEditorOrder() : sample.applyEditorOrder());
+export const listFeedback = async (videoId?: string): Promise<Feedback[]> => (useDb ? db.listFeedback(videoId) : sample.listFeedback(videoId));
+export const addFeedback = async (f: FeedbackCreate): Promise<Feedback | null> => (useDb ? db.addFeedback(f) : sample.addFeedback(f));
+export const setFeedbackStatus = async (id: string, status: "open" | "addressed"): Promise<Feedback | null> => (useDb ? db.setFeedbackStatus(id, status) : sample.setFeedbackStatus(id, status));
+export const openFeedbackCount = async (): Promise<number> => (useDb ? db.openFeedbackCount() : sample.openFeedbackCount());
 
 // ---------------- autopilot ----------------
 

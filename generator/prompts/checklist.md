@@ -4,7 +4,11 @@
 videos took up to twelve failed steps each. Each item below cost several re-renders or rewrites.
 Writers (the video routine, Studio) read this before writing a script, and again before the stills.
 
-**Start with what failed lately.** `python -m generator.run failures --format short` (or `long`)
+**Start with the owner's notes.** `state` → `owner_feedback`: his open notes come right after the
+hard rules (a `wrong` note is a rule until the improver addresses it), and his picks and stales show
+what he wants on the channel. `failures` prints the open notes at the top too.
+
+**Then what failed lately.** `python -m generator.run failures --format short` (or `long`)
 groups the last two weeks' failed checks with the fix for each. Avoid every item it lists.
 
 **After every edit, run the quick check.** `python -m generator.run lint <id>` takes about twenty

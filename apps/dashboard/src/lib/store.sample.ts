@@ -5,17 +5,17 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { Analytics, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
+import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 import { mostLoved } from "./schemas";
 import { windowStart } from "./totals";
 import { manualState } from "./youtube-link";
 
-const VERSION = 8; // bump to regenerate the sample data without restarting the server
+const VERSION = 9; // bump to regenerate the sample data without restarting the server
 const IST_OFFSET = "+05:30";
 const DAY_MS = 86_400_000;
 
 type TemplateRow = Pick<Template, "id" | "name" | "description" | "version" | "weight" | "enabled"> & { durationSec: number };
-type Store = { version: number; videos: VideoDetail[]; templates: TemplateRow[]; runs: Run[]; settings: Settings };
+type Store = { version: number; videos: VideoDetail[]; templates: TemplateRow[]; runs: Run[]; settings: Settings; feedback: Feedback[] };
 
 const RETIRED = "Retired: the first engine's template, replaced by the Remotion story templates on 2026-10-17.";
 // the first engine's templates: the sample's published history was made with them
@@ -129,7 +129,7 @@ function build(): Store {
   const now = new Date();
   const today = istDay(now);
   const settings: Settings = {
-    uploadTimes: ["07:07", "12:37", "19:07"], trendUploadTimes: ["16:07", "22:07"], backlogCap: 30, lengthMinSec: 30, lengthMaxSec: 45,
+    uploadTimes: ["07:07", "12:37", "19:07"], trendUploadTimes: ["16:07", "22:07"], shortEveryDays: 1, dailyVideoTarget: 2, backlogCap: 30, lengthMinSec: 30, lengthMaxSec: 45,
     longUploadTimes: ["20:07"], longUploadDays: [2, 4, 6], longLengthMinSec: 300, longLengthMaxSec: 900,
     longPerWeek: 2, longBacklogCap: 4,
     disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
@@ -207,6 +207,13 @@ function build(): Store {
           : queuePosition === 3 ? { feedId: "sample-cpi-sept", kind: "news", feedPriority: "high", urgent: null } : null },
       thumbnailUrl: `${art}/thumbnail.png`, previewUrl: `${art}/preview.png`, fileUrl: `${art}/video.mp4`,
       createdAt: createdAt.toISOString(), queuePosition, upload,
+      // the editor ranks the queue (a sample: the third one is its pick)
+      editorRank: queuePosition === null ? null : queuePosition === 3 ? 1 : queuePosition < 3 ? queuePosition + 1 : queuePosition,
+      editorScore: queuePosition === null ? null : Math.round((queuePosition === 3 ? 8.6 : 8 - queuePosition * 0.4) * 10) / 10,
+      editorNote: queuePosition === null ? null : queuePosition === 3
+        ? { why: "The strongest hook in the queue: it opens on the question and holds the answer back.", strengths: ["Big-money topic", "Curiosity hook", "Every figure lands on a thing"], risks: ["Payoff line is long"], rankedAt: now.toISOString() }
+        : { why: "Solid, but its first frame is weaker than the pick's.", strengths: ["Clear explanation"], risks: ["Personal-budget topic"], rankedAt: now.toISOString() },
+      pickedAt: null, pickReason: null, orderLocked: false,
       totals: stats.length
         ? { views, likes: stats.reduce((s, x) => s + x.likes, 0), comments: stats.reduce((s, x) => s + x.comments, 0), subsGained: stats.reduce((s, x) => s + x.subsGained, 0), avgViewPct: stats[0].avgViewPct, liveAt: null }
         : null,
@@ -237,7 +244,10 @@ function build(): Store {
     });
   });
   runs.sort((a, b) => b.startedAt.localeCompare(a.startedAt));
-  return { version: VERSION, videos, templates: TEMPLATES.map((t) => ({ ...t })), runs, settings };
+  const feedback: Feedback[] = [
+    { id: "fb1", videoId: null, videoTitle: null, kind: "general", area: "pace", text: "Voice still a little fast in places; keep the explanations clear.", status: "open", response: null, addressedAt: null, createdAt: new Date(now.getTime() - DAY_MS).toISOString() },
+  ];
+  return { version: VERSION, videos, templates: TEMPLATES.map((t) => ({ ...t })), runs, settings, feedback };
 }
 
 const g = globalThis as unknown as { __fsbStore?: Store };
@@ -252,7 +262,9 @@ function summary(v: VideoDetail): Video {
   return rest;
 }
 
-const queue = (s: Store) => s.videos.filter((v) => v.status === "queued").sort((a, b) => (a.queuePosition ?? 0) - (b.queuePosition ?? 0));
+// the owner's pick first, then the queue order
+const queue = (s: Store) => s.videos.filter((v) => v.status === "queued")
+  .sort((a, b) => (a.pickedAt ? 0 : 1) - (b.pickedAt ? 0 : 1) || (a.queuePosition ?? 0) - (b.queuePosition ?? 0));
 
 // ---------------- queries ----------------
 
@@ -399,8 +411,45 @@ export function reorderQueue(ids: string[]): Video[] | null {
   const s = db();
   const q = queue(s);
   if (ids.length !== q.length || !q.every((v) => ids.includes(v.id))) return null;
+  for (const v of q) v.orderLocked = true;
   renumber(s, ids.map((id) => q.find((v) => v.id === id)!));
   return listQueue();
+}
+
+export function applyEditorOrder(): Video[] {
+  const s = db();
+  const q = queue(s).sort((a, b) => (a.editorRank ?? 999) - (b.editorRank ?? 999));
+  for (const v of q) v.orderLocked = false;
+  renumber(s, q);
+  return listQueue();
+}
+
+// ---------------- the owner's feedback ----------------
+
+export function listFeedback(videoId?: string): Feedback[] {
+  return db().feedback.filter((f) => !videoId || f.videoId === videoId);
+}
+
+export function addFeedback(f: FeedbackCreate): Feedback | null {
+  const s = db();
+  const v = f.videoId ? s.videos.find((x) => x.id === f.videoId) : null;
+  if (f.videoId && !v) return null;
+  const row: Feedback = { id: `fb${s.feedback.length + 1}`, videoId: f.videoId, videoTitle: v?.title ?? null, kind: f.kind, area: f.area, text: f.text,
+    status: "open", response: null, addressedAt: null, createdAt: new Date().toISOString() };
+  s.feedback.unshift(row);
+  return row;
+}
+
+export function setFeedbackStatus(id: string, status: "open" | "addressed"): Feedback | null {
+  const f = db().feedback.find((x) => x.id === id);
+  if (!f) return null;
+  f.status = status;
+  f.addressedAt = status === "addressed" ? new Date().toISOString() : null;
+  return f;
+}
+
+export function openFeedbackCount(): number {
+  return db().feedback.filter((f) => f.status === "open").length;
 }
 
 export function markUploaded(id: string, m: ManualUpload): { ok: true } | { ok: false; error: string } {
@@ -437,10 +486,34 @@ export function setThumbWinner(id: string, winner: string | null): { ok: true } 
   return { ok: true };
 }
 
-export function videoAction(id: string, action: VideoAction): { ok: true } | { ok: false; error: string } {
+export function videoAction(id: string, action: VideoAction, reason?: string): { ok: true } | { ok: false; error: string } {
   const s = db();
   const v = s.videos.find((x) => x.id === id);
   if (!v) return { ok: false, error: "Video not found" };
+  const why = reason?.trim() || null;
+  const note = (kind: Feedback["kind"], text: string) => s.feedback.unshift({ id: `fb${s.feedback.length + 1}`, videoId: id, videoTitle: v.title, kind, area: null, text,
+    status: "open", response: null, addressedAt: null, createdAt: new Date().toISOString() });
+  if (action === "pick" || action === "unpick") {
+    if (v.status !== "queued") return { ok: false, error: "Only a queued video can be picked" };
+    for (const x of s.videos) if (x.format === v.format) { x.pickedAt = null; x.pickReason = null; }
+    if (action === "pick") { v.pickedAt = new Date().toISOString(); v.pickReason = why; note("choice", why ?? "Picked for the next upload"); }
+    renumber(s, queue(s));
+    return { ok: true };
+  }
+  if (action === "stale") {
+    if (v.status !== "queued") return { ok: false, error: "Only a video waiting to be published can be marked stale" };
+    if (!why) return { ok: false, error: "Say why it is stale: the system learns from it" };
+    v.status = "rejected"; v.failReason = `Stale (owner): ${why}`; v.queuePosition = null; v.pickedAt = null; v.pickReason = null;
+    note("stale", why);
+    renumber(s, queue(s));
+    return { ok: true };
+  }
+  if (action === "unstale") {
+    if (v.status !== "rejected") return { ok: false, error: "This video is not marked stale" };
+    v.status = "queued"; v.failReason = null; v.queuePosition = 999;
+    renumber(s, queue(s));
+    return { ok: true };
+  }
   if (action === "delete") {
     s.videos = s.videos.filter((x) => x.id !== id);
     s.runs = s.runs.map((r) => (r.videoId === id ? { ...r, videoId: null } : r));

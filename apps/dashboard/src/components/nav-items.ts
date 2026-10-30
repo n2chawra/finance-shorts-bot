@@ -1,4 +1,4 @@
-import { BarChart3, Bell, Bot, CalendarDays, Film, LayoutDashboard, LayoutTemplate, ListOrdered, type LucideIcon, Settings, Workflow } from "lucide-react";
+import { BarChart3, Bell, Bot, CalendarDays, Film, LayoutDashboard, LayoutTemplate, ListOrdered, type LucideIcon, MessageSquarePlus, Settings, Workflow } from "lucide-react";
 
 export type NavItem = { href: string; label: string; icon: LucideIcon; key: string };
 
@@ -25,6 +25,7 @@ export const NAV: { group: string; items: NavItem[] }[] = [
     items: [
       { href: "/agents", label: "Agents", icon: Bot, key: "i" },
       { href: "/notifications", label: "Notifications", icon: Bell, key: "n" },
+      { href: "/feedback", label: "Feedback", icon: MessageSquarePlus, key: "f" },
     ],
   },
   {

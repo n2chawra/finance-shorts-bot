@@ -4,8 +4,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
 import { getJson, send } from "./api";
-import { AgentsSchema, AnalyticsSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
-import type { ManualUpload, NotificationAction, Settings, VideoAction, VideoEdit } from "./schemas";
+import { AgentsSchema, AnalyticsSchema, FeedbackSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
+import type { FeedbackCreate, ManualUpload, NotificationAction, Settings, VideoAction, VideoEdit } from "./schemas";
 
 export const useOverview = () => useQuery({ queryKey: ["overview"], queryFn: () => getJson("/api/overview", OverviewSchema) });
 export const useQueue = () => useQuery({ queryKey: ["queue"], queryFn: () => getJson("/api/queue", z.array(VideoSchema)) });
@@ -26,7 +26,13 @@ function useWrite<T>(fn: (arg: T) => Promise<void>) {
   return useMutation({ mutationFn: fn, onSettled: () => qc.invalidateQueries() });
 }
 
-export const useVideoAction = () => useWrite(({ id, action }: { id: string; action: VideoAction }) => send("POST", `/api/videos/${id}/${action}`));
+export const useVideoAction = () => useWrite(({ id, action, reason }: { id: string; action: VideoAction; reason?: string }) =>
+  send("POST", `/api/videos/${id}/${action}`, reason ? { reason } : undefined));
+export const useEditorOrder = () => useWrite(() => send("POST", "/api/queue/editor-order"));
+export const useFeedback = (videoId?: string) => useQuery({ queryKey: ["feedback", videoId ?? "all"],
+  queryFn: () => getJson(`/api/feedback${videoId ? `?videoId=${encodeURIComponent(videoId)}` : ""}`, z.array(FeedbackSchema)) });
+export const useAddFeedback = () => useWrite((f: Partial<FeedbackCreate> & Pick<FeedbackCreate, "kind" | "text">) => send("POST", "/api/feedback", f));
+export const usePatchFeedback = () => useWrite((p: { id: string; status: "open" | "addressed" }) => send("PATCH", "/api/feedback", p));
 export const useEditVideo = () => useWrite(({ id, ...body }: VideoEdit & { id: string }) => send("PATCH", `/api/videos/${id}`, body));
 export const useManualUpload = () => useWrite(({ id, ...body }: ManualUpload & { id: string }) => send("POST", `/api/videos/${id}/manual-upload`, body));
 export const useThumbWinner = () => useWrite(({ id, winner }: { id: string; winner: string | null }) => send("POST", `/api/videos/${id}/thumb-test`, { winner }));
