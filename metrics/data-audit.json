@@ -1,45 +1,17 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-10-29T15:18:57.466Z",
+  "generatedAt": "2026-10-30T15:07:44.970Z",
   "youtubeChecked": true,
   "summary": {
     "videos": 42,
-    "checked": 38,
+    "checked": 37,
     "error": 0,
-    "warning": 4,
-    "info": 3,
+    "warning": 3,
+    "info": 0,
     "owner": 0,
     "persistentErrors": 0
   },
   "issues": [
-    {
-      "kind": "missing_on_youtube",
-      "severity": "warning",
-      "videoId": "L-20261029-01",
-      "youtubeId": "SWtq3bAMekq",
-      "detail": "YouTube doesn't know video SWtq3bAMekq (deleted, or a wrong link)."
-    },
-    {
-      "kind": "behind_youtube_stale",
-      "severity": "info",
-      "videoId": "v-20261029-04",
-      "youtubeId": "SWtq3bAMeko",
-      "detail": "Dashboard shows 71 views, YouTube 84; live counts last refreshed 29 min ago (they refresh while the dashboard is open)."
-    },
-    {
-      "kind": "behind_youtube_stale",
-      "severity": "info",
-      "videoId": "v-20261028-02",
-      "youtubeId": "Jpzx7okFLR4",
-      "detail": "Dashboard shows 91 views, YouTube 101; live counts last refreshed 29 min ago (they refresh while the dashboard is open)."
-    },
-    {
-      "kind": "behind_youtube_stale",
-      "severity": "info",
-      "videoId": "v-20261027-02",
-      "youtubeId": "FvWYeYS5H58",
-      "detail": "Dashboard shows 291 views, YouTube 309; live counts last refreshed 29 min ago (they refresh while the dashboard is open)."
-    },
     {
       "kind": "state_wrong",
       "severity": "warning",
@@ -64,35 +36,21 @@
   ],
   "videos": [
     {
-      "id": "L-20261029-01",
-      "title": "How airlines really make money (it isn't the seats)",
-      "youtubeId": "SWtq3bAMekq",
-      "state": "scheduled",
-      "publishAt": "2026-10-29T11:30:00.000Z",
-      "dashboard": null,
-      "youtube": null,
-      "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
-      }
-    },
-    {
       "id": "v-20261029-04",
       "title": "Payday: Sharma pays one bill before rent. Himself 🤫",
       "youtubeId": "SWtq3bAMeko",
       "state": "published",
       "publishAt": "2026-10-29T05:23:00.000Z",
       "dashboard": {
-        "views": 71,
-        "likes": 1,
+        "views": 234,
+        "likes": 2,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 84,
-        "likes": 1,
+        "views": 233,
+        "likes": 2,
         "comments": 0
       },
       "analytics": {
@@ -108,14 +66,14 @@
       "state": "published",
       "publishAt": "2026-10-28T13:37:00.000Z",
       "dashboard": {
-        "views": 91,
+        "views": 150,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 101,
+        "views": 149,
         "likes": 0,
         "comments": 0
       },
@@ -132,15 +90,15 @@
       "state": "published",
       "publishAt": "2026-10-28T07:07:00.000Z",
       "dashboard": {
-        "views": 64,
+        "views": 96,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 67,
-        "likes": 0,
+        "views": 96,
+        "likes": 1,
         "comments": 0
       },
       "analytics": {
@@ -156,14 +114,14 @@
       "state": "published",
       "publishAt": "2026-10-28T01:37:00.000Z",
       "dashboard": {
-        "views": 682,
+        "views": 820,
         "likes": 5,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 682,
+        "views": 820,
         "likes": 5,
         "comments": 0
       },
@@ -183,7 +141,7 @@
         "views": 2,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -192,9 +150,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 1,
+        "days": 1,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -204,21 +162,21 @@
       "state": "published",
       "publishAt": "2026-10-27T13:37:00.000Z",
       "dashboard": {
-        "views": 291,
+        "views": 323,
         "likes": 4,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 309,
+        "views": 323,
         "likes": 3,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 94,
+        "days": 1,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -228,21 +186,21 @@
       "state": "published",
       "publishAt": "2026-10-27T07:07:00.000Z",
       "dashboard": {
-        "views": 1110,
+        "views": 1146,
         "likes": 14,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1109,
+        "views": 1146,
         "likes": 14,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 870,
+        "days": 1,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -252,21 +210,21 @@
       "state": "published",
       "publishAt": "2026-10-27T01:37:00.000Z",
       "dashboard": {
-        "views": 39,
+        "views": 40,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 39,
+        "views": 40,
         "likes": 0,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 10,
+        "days": 1,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -276,21 +234,21 @@
       "state": "published",
       "publishAt": "2026-10-26T13:37:00.000Z",
       "dashboard": {
-        "views": 182,
+        "views": 183,
         "likes": 2,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 182,
+        "views": 183,
         "likes": 2,
         "comments": 0
       },
       "analytics": {
-        "views": 50,
-        "days": 1,
-        "lastDay": "2026-10-26"
+        "views": 134,
+        "days": 2,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -300,21 +258,21 @@
       "state": "published",
       "publishAt": "2026-10-26T07:05:00.000Z",
       "dashboard": {
-        "views": 810,
+        "views": 814,
         "likes": 10,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 809,
+        "views": 814,
         "likes": 10,
         "comments": 0
       },
       "analytics": {
-        "views": 216,
-        "days": 1,
-        "lastDay": "2026-10-26"
+        "views": 793,
+        "days": 2,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -327,7 +285,7 @@
         "views": 11,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -336,9 +294,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 6,
-        "days": 3,
-        "lastDay": "2026-10-26"
+        "views": 11,
+        "days": 4,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -351,7 +309,7 @@
         "views": 1188,
         "likes": 8,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -360,9 +318,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 1180,
-        "days": 3,
-        "lastDay": "2026-10-26"
+        "views": 1188,
+        "days": 4,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -372,21 +330,21 @@
       "state": "published",
       "publishAt": "2026-10-23T13:37:00.000Z",
       "dashboard": {
-        "views": 1144,
+        "views": 1145,
         "likes": 7,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1144,
+        "views": 1145,
         "likes": 6,
         "comments": 0
       },
       "analytics": {
-        "views": 1139,
-        "days": 4,
-        "lastDay": "2026-10-26"
+        "views": 1143,
+        "days": 5,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -399,7 +357,7 @@
         "views": 1167,
         "likes": 11,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -408,9 +366,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 1161,
-        "days": 4,
-        "lastDay": "2026-10-26"
+        "views": 1166,
+        "days": 5,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -423,7 +381,7 @@
         "views": 452,
         "likes": 4,
         "comments": 1,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -432,9 +390,9 @@
         "comments": 1
       },
       "analytics": {
-        "views": 406,
-        "days": 4,
-        "lastDay": "2026-10-26"
+        "views": 408,
+        "days": 5,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -444,21 +402,21 @@
       "state": "published",
       "publishAt": "2026-10-22T13:37:00.000Z",
       "dashboard": {
-        "views": 331,
+        "views": 333,
         "likes": 5,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 331,
+        "views": 333,
         "likes": 5,
         "comments": 0
       },
       "analytics": {
-        "views": 323,
-        "days": 5,
-        "lastDay": "2026-10-26"
+        "views": 330,
+        "days": 6,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -471,7 +429,7 @@
         "views": 727,
         "likes": 3,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -480,9 +438,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 726,
-        "days": 5,
-        "lastDay": "2026-10-26"
+        "views": 727,
+        "days": 6,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -495,7 +453,7 @@
         "views": 1,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "unlisted",
@@ -505,8 +463,8 @@
       },
       "analytics": {
         "views": 1,
-        "days": 6,
-        "lastDay": "2026-10-26"
+        "days": 7,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -519,7 +477,7 @@
         "views": 1167,
         "likes": 13,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -528,9 +486,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 1165,
-        "days": 6,
-        "lastDay": "2026-10-26"
+        "views": 1167,
+        "days": 7,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -543,7 +501,7 @@
         "views": 99,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -552,9 +510,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 93,
-        "days": 6,
-        "lastDay": "2026-10-26"
+        "views": 95,
+        "days": 7,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -567,7 +525,7 @@
         "views": 54,
         "likes": 3,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -577,8 +535,8 @@
       },
       "analytics": {
         "views": 43,
-        "days": 6,
-        "lastDay": "2026-10-26"
+        "days": 7,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -591,7 +549,7 @@
         "views": 2,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "unlisted",
@@ -601,8 +559,8 @@
       },
       "analytics": {
         "views": 2,
-        "days": 7,
-        "lastDay": "2026-10-26"
+        "days": 8,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -615,7 +573,7 @@
         "views": 15,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -625,8 +583,8 @@
       },
       "analytics": {
         "views": 15,
-        "days": 7,
-        "lastDay": "2026-10-26"
+        "days": 8,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -639,7 +597,7 @@
         "views": 28,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -649,8 +607,8 @@
       },
       "analytics": {
         "views": 28,
-        "days": 7,
-        "lastDay": "2026-10-26"
+        "days": 8,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -663,7 +621,7 @@
         "views": 36,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -673,8 +631,8 @@
       },
       "analytics": {
         "views": 30,
-        "days": 7,
-        "lastDay": "2026-10-26"
+        "days": 8,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -687,7 +645,7 @@
         "views": 25,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -697,8 +655,8 @@
       },
       "analytics": {
         "views": 25,
-        "days": 8,
-        "lastDay": "2026-10-26"
+        "days": 9,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -711,7 +669,7 @@
         "views": 14,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -720,9 +678,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 13,
-        "days": 8,
-        "lastDay": "2026-10-26"
+        "views": 14,
+        "days": 9,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -735,7 +693,7 @@
         "views": 2,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "unlisted",
@@ -745,8 +703,8 @@
       },
       "analytics": {
         "views": 2,
-        "days": 9,
-        "lastDay": "2026-10-26"
+        "days": 10,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -759,7 +717,7 @@
         "views": 42,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -769,8 +727,8 @@
       },
       "analytics": {
         "views": 42,
-        "days": 9,
-        "lastDay": "2026-10-26"
+        "days": 10,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -783,7 +741,7 @@
         "views": 29,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -793,8 +751,8 @@
       },
       "analytics": {
         "views": 29,
-        "days": 9,
-        "lastDay": "2026-10-26"
+        "days": 10,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -807,7 +765,7 @@
         "views": 287,
         "likes": 3,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -817,8 +775,8 @@
       },
       "analytics": {
         "views": 287,
-        "days": 10,
-        "lastDay": "2026-10-26"
+        "days": 11,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -831,7 +789,7 @@
         "views": 40,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -841,8 +799,8 @@
       },
       "analytics": {
         "views": 40,
-        "days": 10,
-        "lastDay": "2026-10-26"
+        "days": 11,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -855,7 +813,7 @@
         "views": 7,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -864,9 +822,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 6,
-        "days": 11,
-        "lastDay": "2026-10-26"
+        "views": 7,
+        "days": 12,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -879,7 +837,7 @@
         "views": 9,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -888,9 +846,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 7,
-        "days": 11,
-        "lastDay": "2026-10-26"
+        "views": 9,
+        "days": 12,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -903,7 +861,7 @@
         "views": 44,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -912,9 +870,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 43,
-        "days": 12,
-        "lastDay": "2026-10-26"
+        "views": 44,
+        "days": 13,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -927,7 +885,7 @@
         "views": 62,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -937,8 +895,8 @@
       },
       "analytics": {
         "views": 62,
-        "days": 12,
-        "lastDay": "2026-10-26"
+        "days": 13,
+        "lastDay": "2026-10-27"
       }
     },
     {
@@ -951,7 +909,7 @@
         "views": 26,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-10-29T14:49:40.754Z"
+        "liveAt": "2026-10-30T14:46:23.315Z"
       },
       "youtube": {
         "privacy": "public",
@@ -961,8 +919,8 @@
       },
       "analytics": {
         "views": 26,
-        "days": 13,
-        "lastDay": "2026-10-26"
+        "days": 14,
+        "lastDay": "2026-10-27"
       }
     }
   ]
