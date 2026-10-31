@@ -1,7 +1,26 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 6,
+  "open": 7,
   "notes": [
+    {
+      "id": "cmvw1try60001id09srextkhs",
+      "kind": "choice",
+      "area": null,
+      "text": "this topics feels like it can attract viewers plus the animation and story telling is better than other one.",
+      "status": "open",
+      "response": null,
+      "at": "2026-10-31T06:57:28.813Z",
+      "video": {
+        "id": "v-20261031-01",
+        "title": "Every burger you buy pays McDonald's rent 🍔",
+        "format": "short",
+        "status": "scheduled",
+        "story": "how_they_make_money",
+        "shape": "reveal",
+        "hookStyle": "question",
+        "hook": "It's not the burgers. So how does McDonald's really make money?"
+      }
+    },
     {
       "id": "cmvvzu48x0001lb09pa8l2gzl",
       "kind": "improve",
@@ -24,7 +43,7 @@
         "id": "v-20261031-01",
         "title": "Every burger you buy pays McDonald's rent 🍔",
         "format": "short",
-        "status": "queued",
+        "status": "scheduled",
         "story": "how_they_make_money",
         "shape": "reveal",
         "hookStyle": "question",
@@ -43,7 +62,7 @@
         "id": "v-20261031-01",
         "title": "Every burger you buy pays McDonald's rent 🍔",
         "format": "short",
-        "status": "queued",
+        "status": "scheduled",
         "story": "how_they_make_money",
         "shape": "reveal",
         "hookStyle": "question",
