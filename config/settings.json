@@ -1,10 +1,10 @@
 {
-  "backlog": 0,
+  "backlog": 1,
   "backlogByFormat": {
-    "short": 0,
+    "short": 1,
     "long": 0
   },
-  "ingestedAt": "2026-10-29T04:46:11.094328+00:00",
+  "ingestedAt": "2026-10-31T04:22:09.463455+00:00",
   "backlogCap": 30,
   "generationPaused": false,
   "uploadsPaused": true,
@@ -16,7 +16,16 @@
   "longBacklogCap": 4,
   "dailyVideoTarget": 2,
   "shortEveryDays": 1,
-  "queue": [],
+  "queue": [
+    {
+      "id": "v-20261031-01",
+      "format": "short",
+      "position": 1,
+      "locked": false,
+      "picked": false,
+      "editorRank": null
+    }
+  ],
   "disclaimer": "Illustrative only. Not financial advice.",
   "templateWork": {
     "maxPerDay": 1,
