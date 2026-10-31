@@ -1,7 +1,55 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 3,
+  "open": 6,
   "notes": [
+    {
+      "id": "cmvvzu48x0001lb09pa8l2gzl",
+      "kind": "improve",
+      "area": "animation",
+      "text": "Find how animation should be done to engage users. Animation is the core of this . If it's not good people won't continue the video. Find other people reference as examples and improve it",
+      "status": "open",
+      "response": null,
+      "at": "2026-10-31T06:01:45.729Z",
+      "video": null
+    },
+    {
+      "id": "cmvvzncli0005i409k8n1rrr5",
+      "kind": "improve",
+      "area": null,
+      "text": "Animation are very basic things just popping up and shaking so basic . Like 5/10 could be presented way better. With correct animation this video could have been rated 9/10 but now it's 7/10.",
+      "status": "open",
+      "response": null,
+      "at": "2026-10-31T05:56:29.959Z",
+      "video": {
+        "id": "v-20261031-01",
+        "title": "Every burger you buy pays McDonald's rent 🍔",
+        "format": "short",
+        "status": "queued",
+        "story": "how_they_make_money",
+        "shape": "reveal",
+        "hookStyle": "question",
+        "hook": "It's not the burgers. So how does McDonald's really make money?"
+      }
+    },
+    {
+      "id": "cmvvzjy9e0003i4094sb0td12",
+      "kind": "improve",
+      "area": "hook",
+      "text": "It could have been better like do you think macdonalds earn through burger sales your are wrong ..  hook is ok but level of curiosity it creates is 6/10.",
+      "status": "open",
+      "response": null,
+      "at": "2026-10-31T05:53:51.411Z",
+      "video": {
+        "id": "v-20261031-01",
+        "title": "Every burger you buy pays McDonald's rent 🍔",
+        "format": "short",
+        "status": "queued",
+        "story": "how_they_make_money",
+        "shape": "reveal",
+        "hookStyle": "question",
+        "hook": "It's not the burgers. So how does McDonald's really make money?"
+      }
+    },
     {
       "id": "cmvvzbahz0001ia091z60ll7c",
       "kind": "improve",
