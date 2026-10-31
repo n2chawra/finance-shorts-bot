@@ -1,5 +1,63 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 0,
-  "notes": []
+  "open": 3,
+  "notes": [
+    {
+      "id": "cmvvzbahz0001ia091z60ll7c",
+      "kind": "improve",
+      "area": "other",
+      "text": "The background music is very dull feels like I'm doing postmortem.",
+      "status": "open",
+      "response": null,
+      "at": "2026-10-31T05:47:07.367Z",
+      "video": {
+        "id": "v-20261031-02",
+        "title": "You borrow for a car. The rich borrow for this 🤫",
+        "format": "short",
+        "status": "queued",
+        "story": "secret_of_rich",
+        "shape": "versus",
+        "hookStyle": "conflict",
+        "hook": "You're scared of debt. I love it. Let me show you why."
+      }
+    },
+    {
+      "id": "cmvvza9nu0001i40917rrjljy",
+      "kind": "improve",
+      "area": "animation",
+      "text": "The animation are pretty basic could've been presented much better. It's right now very static .",
+      "status": "open",
+      "response": null,
+      "at": "2026-10-31T05:46:19.626Z",
+      "video": {
+        "id": "v-20261031-02",
+        "title": "You borrow for a car. The rich borrow for this 🤫",
+        "format": "short",
+        "status": "queued",
+        "story": "secret_of_rich",
+        "shape": "versus",
+        "hookStyle": "conflict",
+        "hook": "You're scared of debt. I love it. Let me show you why."
+      }
+    },
+    {
+      "id": "cmvvz913v0001l009vf6tj7u9",
+      "kind": "improve",
+      "area": "hook",
+      "text": "The hook does not create curiosity.",
+      "status": "open",
+      "response": null,
+      "at": "2026-10-31T05:45:21.884Z",
+      "video": {
+        "id": "v-20261031-02",
+        "title": "You borrow for a car. The rich borrow for this 🤫",
+        "format": "short",
+        "status": "queued",
+        "story": "secret_of_rich",
+        "shape": "versus",
+        "hookStyle": "conflict",
+        "hook": "You're scared of debt. I love it. Let me show you why."
+      }
+    }
+  ]
 }
