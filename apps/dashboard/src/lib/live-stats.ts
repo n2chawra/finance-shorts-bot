@@ -39,9 +39,25 @@ let inFlight: Promise<void> | null = null;
 
 /** Refresh, waiting at most WAIT_MS, so the numbers a page reads next are current. */
 export async function liveCounters(): Promise<void> {
+  await publishDue().catch((e) => console.error("publish due:", e instanceof Error ? e.message : e));
   let timer: ReturnType<typeof setTimeout> | undefined;
   await Promise.race([refreshLiveStats(), new Promise<void>((ok) => { timer = setTimeout(ok, WAIT_MS); })]);
   clearTimeout(timer);
+}
+
+/**
+ * A scheduled video is published the moment its time passes (owner, 2026-10-31: it showed
+ * "scheduled" for hours, until the publish job's next run noticed). YouTube makes a scheduled
+ * upload public at exactly that time, and a hand-posted one was posted then, so the dashboard flips
+ * it itself on every read: two cheap updates, no YouTube call.
+ */
+export async function publishDue(now = new Date()): Promise<void> {
+  const due = { state: "scheduled" as const, publishAt: { lte: now }, youtubeId: { not: null } };
+  if (!(await prisma.upload.count({ where: due }))) return;
+  await prisma.$transaction([
+    prisma.upload.updateMany({ where: due, data: { state: "published", error: null } }),
+    prisma.video.updateMany({ where: { status: "scheduled", deletedAt: null, upload: { is: { state: "published" } } }, data: { status: "published" } }),
+  ]);
 }
 
 /** Refresh stale counters. Never throws: a YouTube hiccup must not break the page. */

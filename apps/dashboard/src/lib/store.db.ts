@@ -256,11 +256,17 @@ export async function updateVideo(id: string, e: VideoEdit): Promise<{ ok: true 
   }
   const changed = (Object.keys(e) as (keyof VideoEdit)[]).filter((k) => e[k] !== undefined);
   const upload = v.upload;
+  // a corrected link starts over (owner, 2026-10-31: a wrong first link had marked the upload failed,
+  // and the stats jobs skip failed uploads, so the real link never got numbers): published if its
+  // time has passed, scheduled until then
+  const restart = upload && newLink && e.youtubeId ? manualState(e.youtubeId, e.publishAt ? new Date(e.publishAt) : upload.publishAt) : null;
   await prisma.$transaction([
-    prisma.video.update({ where: { id }, data: { title: e.title, description: e.description, tags: e.tags } }),
+    prisma.video.update({ where: { id }, data: { title: e.title, description: e.description, tags: e.tags,
+      ...(restart && v.status !== "published" ? { status: restart } : {}) } }),
     ...(upload && (newLink || e.publishAt) ? [prisma.upload.update({ where: { id: upload.id }, data: {
       publishAt: e.publishAt ? new Date(e.publishAt) : undefined,
       ...(newLink ? { youtubeId: e.youtubeId, ...noLiveCounters } : {}),
+      ...(restart ? { state: restart, error: null } : {}),
     } })] : []),
     ...(upload && newLink ? [prisma.videoStat.deleteMany({ where: { uploadId: upload.id } })] : []),
     prisma.agentRun.create({ data: { videoId: id, agent: "manual_edit", status: "ok", startedAt: new Date(), finishedAt: new Date(),
