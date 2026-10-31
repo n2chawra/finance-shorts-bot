@@ -1,0 +1,1160 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 37214,
+ "story": "how_they_make_money",
+ "shape": "reveal",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "pop",
+  "key": "A",
+  "bpm": 108
+ },
+ "hook_style": "question",
+ "cta": "Did you know you were paying rent? Comment",
+ "maths": [
+  {
+   "name": "meal",
+   "kind": "fee_take",
+   "amount": 20,
+   "fee_pct": 15,
+   "per_year": 1,
+   "years": 1
+  },
+  {
+   "name": "year",
+   "kind": "fee_take",
+   "amount": 4000000,
+   "fee_pct": 15,
+   "per_year": 1,
+   "years": 1
+  },
+  {
+   "name": "twenty",
+   "kind": "fee_take",
+   "amount": 4000000,
+   "fee_pct": 15,
+   "per_year": 1,
+   "years": 20
+  }
+ ],
+ "thumbnail": {
+  "who": "rohan",
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "Not the *burgers*?",
+  "figure": "{year_total}"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "It's not the burgers. So how does McDonald's really make money?",
+   "events": {
+    "burgers": {
+     "word": "burgers"
+    },
+    "really": {
+     "word": "really"
+    },
+    "money": {
+     "word": "money"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "burgers"
+    },
+    {
+     "kind": "whoosh",
+     "at": "really"
+    },
+    {
+     "kind": "boom",
+     "at": "money"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "It's not the burgers",
+    "set": "market",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "happy"
+       },
+       {
+        "at": "money",
+        "pose": "think",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Picture one restaurant selling {year_amount} of food a year. Three clues explain where that money goes, and the last one is under your feet.",
+   "events": {
+    "restaurant": {
+     "word": "restaurant"
+    },
+    "food": {
+     "word": "food"
+    },
+    "clues": {
+     "word": "clues"
+    },
+    "money": {
+     "word": "money"
+    },
+    "last": {
+     "word": "last"
+    },
+    "feet": {
+     "word": "feet"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "food"
+    },
+    {
+     "kind": "ding",
+     "at": "clues"
+    },
+    {
+     "kind": "riser",
+     "at": "last"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "gold",
+     "horizon": [
+      {
+       "prop": "diner",
+       "x": 0.12,
+       "size": 0.07
+      },
+      {
+       "prop": "rentsign",
+       "x": 0.9,
+       "size": 0.06
+      }
+     ]
+    },
+    "actors": [],
+    "items": [
+     {
+      "id": "restaurant",
+      "prop": "diner",
+      "x": 0.55,
+      "size": 0.18,
+      "tag": "{year_amount}"
+     },
+     {
+      "id": "food",
+      "prop": "tray",
+      "x": 0.17,
+      "y": 0.3,
+      "size": 0.1,
+      "hidden": true
+     },
+     {
+      "id": "feet",
+      "prop": "ground",
+      "x": 0.2,
+      "size": 0.14,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "restaurant",
+      "do": "glow",
+      "target": "restaurant"
+     },
+     {
+      "at": "food",
+      "do": "enter",
+      "target": "food"
+     },
+     {
+      "at": "clues",
+      "do": "shake",
+      "target": "restaurant"
+     },
+     {
+      "at": "money",
+      "do": "glow",
+      "target": "food"
+     },
+     {
+      "at": "feet",
+      "do": "enter",
+      "target": "feet"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "restaurant"
+     },
+     {
+      "at": "last",
+      "size": "close",
+      "on": "feet",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "owner",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "Clue one: the owner. Most of these restaurants are run by a local franchise owner, who pays for the kitchen, the staff and the food.",
+   "events": {
+    "owner": {
+     "word": "owner"
+    },
+    "restaurants": {
+     "word": "restaurants"
+    },
+    "franchise": {
+     "word": "franchise"
+    },
+    "pays": {
+     "word": "pays"
+    },
+    "kitchen": {
+     "word": "kitchen"
+    },
+    "staff": {
+     "word": "staff"
+    },
+    "food": {
+     "word": "food"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "owner"
+    },
+    {
+     "kind": "tick",
+     "at": "kitchen"
+    },
+    {
+     "kind": "pop",
+     "at": "staff"
+    },
+    {
+     "kind": "clink",
+     "at": "food"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "kitchen",
+     "tint": "red"
+    },
+    "actors": [],
+    "items": [
+     {
+      "id": "owner",
+      "prop": "owner",
+      "x": 0.22,
+      "size": 0.22,
+      "label": "Franchise owner",
+      "hidden": true
+     },
+     {
+      "id": "kitchen",
+      "prop": "stove",
+      "x": 0.52,
+      "size": 0.16,
+      "hidden": true
+     },
+     {
+      "id": "staff",
+      "prop": "cap",
+      "x": 0.8,
+      "y": 0.3,
+      "size": 0.1,
+      "hidden": true
+     },
+     {
+      "id": "food",
+      "prop": "fries",
+      "x": 0.8,
+      "size": 0.12,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "owner",
+      "do": "enter",
+      "target": "owner"
+     },
+     {
+      "at": "restaurants",
+      "do": "glow",
+      "target": "owner"
+     },
+     {
+      "at": "franchise",
+      "do": "shake",
+      "target": "owner"
+     },
+     {
+      "at": "kitchen",
+      "do": "enter",
+      "target": "kitchen"
+     },
+     {
+      "at": "staff",
+      "do": "enter",
+      "target": "staff"
+     },
+     {
+      "at": "food",
+      "do": "enter",
+      "target": "food"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "kitchen",
+      "size": "close",
+      "on": "kitchen",
+      "move": true
+     },
+     {
+      "at": "food",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "sale",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Clue two: every sale. Spend {meal_amount} on a meal, and say {meal_fee_pct} of it goes to McDonald's as rent and fees. That's {meal_per_period} off every tray.",
+   "events": {
+    "sale": {
+     "word": "sale"
+    },
+    "meal": {
+     "word": "meal"
+    },
+    "goes": {
+     "word": "goes"
+    },
+    "fees": {
+     "word": "fees"
+    },
+    "tray": {
+     "word": "tray"
+    },
+    "mid": {
+     "word": -6
+    },
+    "spend": {
+     "word": "Spend"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "sale"
+    },
+    {
+     "kind": "whoosh",
+     "at": "goes"
+    },
+    {
+     "kind": "kaching",
+     "at": "fees"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "gold",
+     "horizon": [
+      {
+       "prop": "diner",
+       "x": 0.88,
+       "size": 0.07
+      }
+     ]
+    },
+    "actors": [],
+    "items": [
+     {
+      "id": "meal",
+      "prop": "tray",
+      "x": 0.28,
+      "size": 0.2,
+      "tag": "{meal_amount}"
+     },
+     {
+      "id": "fees",
+      "prop": "coin",
+      "x": 0.5,
+      "y": 0.32,
+      "size": 0.12,
+      "hidden": true,
+      "tag": "{meal_per_period}",
+      "label": "Rent and fees"
+     },
+     {
+      "id": "restaurant",
+      "prop": "diner",
+      "x": 0.74,
+      "size": 0.2
+     }
+    ],
+    "actions": [
+     {
+      "at": "sale",
+      "do": "glow",
+      "target": "meal"
+     },
+     {
+      "at": "spend",
+      "do": "shake",
+      "target": "meal"
+     },
+     {
+      "at": "meal",
+      "do": "glow",
+      "target": "meal"
+     },
+     {
+      "at": "goes",
+      "do": "enter",
+      "target": "fees"
+     },
+     {
+      "at": "fees",
+      "do": "move",
+      "target": "fees",
+      "to": "restaurant"
+     },
+     {
+      "at": "mid",
+      "do": "glow",
+      "target": "restaurant"
+     },
+     {
+      "at": "tray",
+      "do": "glow",
+      "target": "meal"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "meal"
+     },
+     {
+      "at": "goes",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "doubt",
+   "scene": "build",
+   "role": "build",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "Is that all? The burgers must make them way more than {meal_per_period}.",
+   "events": {
+    "all": {
+     "word": "all"
+    },
+    "burgers": {
+     "word": "burgers"
+    },
+    "more": {
+     "word": "more"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "burgers"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "gold",
+     "horizon": [
+      {
+       "prop": "diner",
+       "x": 0.85,
+       "size": 0.08
+      }
+     ]
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.3,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "smirk"
+       },
+       {
+        "at": "more",
+        "pose": "point",
+        "expression": "happy"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "burgers",
+      "prop": "burger",
+      "x": 0.72,
+      "size": 0.14,
+      "tag": "{meal_per_period}"
+     }
+    ],
+    "actions": [
+     {
+      "at": "all",
+      "do": "shake",
+      "target": "burgers"
+     },
+     {
+      "at": "burgers",
+      "do": "grow",
+      "target": "burgers",
+      "scale": 1.25
+     },
+     {
+      "at": "more",
+      "do": "glow",
+      "target": "burgers"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "rohan"
+     },
+     {
+      "at": "burgers",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "land",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Clue three: the land. McDonald's often owns or leases the ground under the restaurant, so the owner pays it rent every month.",
+   "events": {
+    "land": {
+     "word": "land"
+    },
+    "owns": {
+     "word": "owns"
+    },
+    "leases": {
+     "word": "leases"
+    },
+    "ground": {
+     "word": "ground"
+    },
+    "owner": {
+     "word": "owner"
+    },
+    "rent": {
+     "word": "rent"
+    },
+    "month": {
+     "word": "month"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "land"
+    },
+    {
+     "kind": "ding",
+     "at": "owns"
+    },
+    {
+     "kind": "kaching",
+     "at": "rent"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "field",
+     "tint": "green",
+     "horizon": [
+      {
+       "prop": "diner",
+       "x": 0.15,
+       "size": 0.08
+      }
+     ]
+    },
+    "actors": [],
+    "items": [
+     {
+      "id": "ground",
+      "prop": "ground",
+      "x": 0.3,
+      "size": 0.24,
+      "label": "The land"
+     },
+     {
+      "id": "deed",
+      "prop": "deed",
+      "x": 0.55,
+      "y": 0.22,
+      "size": 0.12,
+      "hidden": true
+     },
+     {
+      "id": "owner",
+      "prop": "owner",
+      "x": 0.55,
+      "size": 0.14,
+      "hidden": true
+     },
+     {
+      "id": "rent",
+      "prop": "rentsign",
+      "x": 0.8,
+      "size": 0.18,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "land",
+      "do": "glow",
+      "target": "ground"
+     },
+     {
+      "at": "owns",
+      "do": "enter",
+      "target": "deed"
+     },
+     {
+      "at": "leases",
+      "do": "state",
+      "target": "ground",
+      "state": "owned"
+     },
+     {
+      "at": "ground",
+      "do": "shake",
+      "target": "ground"
+     },
+     {
+      "at": "owner",
+      "do": "enter",
+      "target": "owner"
+     },
+     {
+      "at": "rent",
+      "do": "enter",
+      "target": "rent"
+     },
+     {
+      "at": "month",
+      "do": "shake",
+      "target": "rent"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "owns",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     },
+     {
+      "at": "rent",
+      "size": "close",
+      "on": "rent",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "year",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "Every tray adds up. In a year, this one corner sends McDonald's about {year_total}, whether the burgers make a profit or not.",
+   "events": {
+    "tray": {
+     "word": "tray"
+    },
+    "adds": {
+     "word": "adds"
+    },
+    "corner": {
+     "word": "corner"
+    },
+    "sends": {
+     "word": "sends"
+    },
+    "profit": {
+     "word": "profit"
+    },
+    "late": {
+     "word": -3
+    },
+    "about": {
+     "word": "about"
+    },
+    "burgers": {
+     "word": "burgers"
+    },
+    "year": {
+     "word": "year"
+    },
+    "make": {
+     "word": "make"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "adds"
+    },
+    {
+     "kind": "whoosh",
+     "at": "sends"
+    },
+    {
+     "kind": "kaching",
+     "at": "profit"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "gold",
+     "horizon": [
+      {
+       "prop": "keys",
+       "x": 0.9,
+       "size": 0.06
+      }
+     ]
+    },
+    "actors": [],
+    "items": [
+     {
+      "id": "corner",
+      "prop": "diner",
+      "x": 0.3,
+      "size": 0.18
+     },
+     {
+      "id": "tray",
+      "prop": "tray",
+      "x": 0.42,
+      "y": 0.24,
+      "size": 0.08,
+      "hidden": true
+     },
+     {
+      "id": "profit",
+      "prop": "cash",
+      "x": 0.68,
+      "size": 0.15,
+      "hidden": true,
+      "tag": "{year_total}",
+      "label": "Every year"
+     }
+    ],
+    "actions": [
+     {
+      "at": "tray",
+      "do": "enter",
+      "target": "tray"
+     },
+     {
+      "at": "adds",
+      "do": "multiply",
+      "target": "tray",
+      "n": 4,
+      "cols": 4
+     },
+     {
+      "at": "corner",
+      "do": "glow",
+      "target": "corner"
+     },
+     {
+      "at": "year",
+      "do": "enter",
+      "target": "profit"
+     },
+     {
+      "at": "about",
+      "do": "glow",
+      "target": "profit"
+     },
+     {
+      "at": "profit",
+      "do": "shake",
+      "target": "profit"
+     },
+     {
+      "at": "late",
+      "do": "glow",
+      "target": "corner"
+     },
+     {
+      "at": "make",
+      "do": "glow",
+      "target": "tray"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "corner"
+     },
+     {
+      "at": "adds",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     },
+     {
+      "at": "year",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "sharma",
+   "transition": "match",
+   "say": "That's the twist I love. The owner carries the risk on every burger, but McDonald's collects the rent either way, like a landlord.",
+   "events": {
+    "twist": {
+     "word": "twist"
+    },
+    "risk": {
+     "word": "risk"
+    },
+    "burger": {
+     "word": "burger"
+    },
+    "collects": {
+     "word": "collects"
+    },
+    "rent": {
+     "word": "rent"
+    },
+    "landlord": {
+     "word": "landlord"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "twist"
+    },
+    {
+     "kind": "fail",
+     "at": "risk"
+    },
+    {
+     "kind": "kaching",
+     "at": "collects"
+    },
+    {
+     "kind": "boom",
+     "at": "landlord"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "stamp": "Landlord",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "sharma"
+     },
+     {
+      "at": "rent",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "So McDonald's earns like a landlord, and the burgers pay the rent. Over {twenty_years} years, one corner hands it about {twenty_total}.",
+   "events": {
+    "earns": {
+     "word": "earns"
+    },
+    "landlord": {
+     "word": "landlord"
+    },
+    "burgers": {
+     "word": "burgers"
+    },
+    "rent": {
+     "word": "rent"
+    },
+    "corner": {
+     "word": "corner"
+    },
+    "hands": {
+     "word": "hands"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "landlord"
+    },
+    {
+     "kind": "kaching",
+     "at": "rent"
+    },
+    {
+     "kind": "boom",
+     "at": "hands"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "total": "{twenty_total}",
+    "label": "One corner",
+    "years": "{twenty_years} years",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "priya",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "neutral"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "hands",
+      "size": "close",
+      "on": "priya"
+     }
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "shot",
+   "role": "loop",
+   "speaker": "rohan",
+   "transition": "match",
+   "say": "So every burger I buy pays someone's rent? Then what is McDonald's really selling, if...",
+   "events": {
+    "burger": {
+     "word": "burger"
+    },
+    "rent": {
+     "word": "rent"
+    },
+    "selling": {
+     "word": "selling"
+    },
+    "buy": {
+     "word": "buy"
+    },
+    "mcd": {
+     "word": "McDonald's"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "burger"
+    },
+    {
+     "kind": "tick",
+     "at": "selling"
+    }
+   ],
+   "params": {
+    "set": "flat",
+    "hud": {
+     "hide": true
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       },
+       {
+        "at": "buy",
+        "pose": "point",
+        "expression": "shock"
+       },
+       {
+        "at": "mcd",
+        "pose": "think",
+        "expression": "confused"
+       },
+       {
+        "at": "selling",
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "rohan"
+     },
+     {
+      "at": "selling",
+      "size": "medium",
+      "on": "rohan",
+      "move": true
+     }
+    ],
+    "word": {
+     "text": "Rent?",
+     "at": "rent",
+     "color": "bad",
+     "where": "top"
+    }
+   }
+  }
+ ],
+ "narrator": "af_heart"
+}

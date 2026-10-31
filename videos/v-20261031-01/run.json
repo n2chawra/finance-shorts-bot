@@ -1,0 +1,273 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-10-31T03:57:39.844088+00:00",
+    "finishedAt": "2026-10-31T03:57:39.844088+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:00:30.362721+00:00",
+    "finishedAt": "2026-10-31T04:00:30.362721+00:00",
+    "notes": [
+      "18 figures computed from inputs; 9 cross-checked against closed-form formulas.",
+      "warning: beat 'year' runs 7.7 s with 4.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:00:37.569153+00:00",
+    "finishedAt": "2026-10-31T04:00:37.569153+00:00",
+    "notes": [
+      "18 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:00:49.510131+00:00",
+    "finishedAt": "2026-10-31T04:00:49.510131+00:00",
+    "notes": [
+      "18 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:02:22.922613+00:00",
+    "finishedAt": "2026-10-31T04:02:22.922613+00:00",
+    "notes": [
+      "18 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:02:50.725032+00:00",
+    "finishedAt": "2026-10-31T04:02:50.725032+00:00",
+    "notes": [
+      "18 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:03:54.380250+00:00",
+    "finishedAt": "2026-10-31T04:03:54.380250+00:00",
+    "notes": [
+      "No sourced facts; checked topic verify item: McDonald's 10-K (FY2024) confirms franchised rent+royalties are a percent of sales with minimum rent and ~95% franchised; Restaurant Dive/BTIG put royalty at 4-5% plus ~10% average rent, so the 'say 15%' rent-and-fees share and $4M yearly sales (US AUV ~$4M) are realistic, framed as assumptions; landlord claims accurate; no advice, tone fine, description ends with disclaimer. Notes: description lacks the profile's 'speak to a licensed financial adviser' line; $12.0M over 20 years assumes flat sales (illustrative)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:03:08.643746+00:00",
+    "finishedAt": "2026-10-31T04:04:05.805504+00:00",
+    "notes": [
+      "text '$3' at 31.2 s is 15.3 px, below the 44 px minimum",
+      "15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "2.7 s with nothing new on screen in beat 'loop' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:04:33.228273+00:00",
+    "finishedAt": "2026-10-31T04:04:33.228273+00:00",
+    "notes": [
+      "18 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:04:45.696005+00:00",
+    "finishedAt": "2026-10-31T04:05:09.858198+00:00",
+    "notes": [
+      "69 s, ember/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:06:02.314642+00:00",
+    "finishedAt": "2026-10-31T04:06:02.314642+00:00",
+    "notes": [
+      "[script] 68.7s loop beat: the big red 'RENT?' word (params.word, where: top) sits on top of the stack's label 'RENT PER TRAY', which reads 'EI PER TRAY'; put the word elsewhere (or the stack spot left/lower) so the two texts don't collide",
+      "[script] 68.7s loop beat: the stack is labelled 'Rent per tray' with text $3 but its amount is @year.total ($600,000), so a tall 600K-sized pile is captioned $3; make amount and label agree (amount @meal.per_period, or label it as the year's rent with {year_total})",
+      "[script] 45s year beat: the HUD counter '$600,000' and the cash prop's tag '$600,000' are stacked edge to edge (the yellow counter touches the white tag) and the cash stack runs off the right edge in the close shot; drop the prop tag or the counter and frame the cash fully",
+      "[scene] 50s and 55s turn beat (Turn component, penthouse set): camera says close on sharma but Sharma is small at the bottom-right edge, cut at the chest, with the caption 'CARRIES'/'LANDLORD' sitting on his head; most of the frame is empty skyline (cast small at the edge of a big frame)",
+      "[scene] 60s payoff beat (Payoff component): camera says close on priya but Priya is tiny in the bottom-right corner, cut off at the bottom edge, while the land set fills the frame; cast small at the edge"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:06:40.463305+00:00",
+    "finishedAt": "2026-10-31T04:06:40.463305+00:00",
+    "notes": [
+      "18 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:06:52.902809+00:00",
+    "finishedAt": "2026-10-31T04:07:21.742891+00:00",
+    "notes": [
+      "19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:07:41.070687+00:00",
+    "finishedAt": "2026-10-31T04:08:05.154203+00:00",
+    "notes": [
+      "69 s, ember/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:08:52.748618+00:00",
+    "finishedAt": "2026-10-31T04:08:52.748618+00:00",
+    "notes": [
+      "[script] 45s year beat: the close shot on 'corner' still crops the cash pile (the beat's money object) off the right edge, only about two thirds of it in frame with its tag against the edge; frame it whole (medium on all, or close on profit with the diner behind)",
+      "[scene] 50s and 55s turn beat (Turn component): Sharma is now fully in frame, but the small diner and franchise-owner figure sit in the caption band, so 'THE OWNER CARRIES' (50s) and 'LIKE A' (55s) cover the owner figure's face; move that group above or beside the captions",
+      "[script] 68.7s loop beat: the stack labelled 'Rent per tray $3' is still a full-height pile of about 20 bundles (a lone stack always draws full height, whatever its amount), so the last picture shows $3 as a mountain of cash; use a coin or single-note prop for $3, or pair it with the year stack so the heights compare"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:09:14.719946+00:00",
+    "finishedAt": "2026-10-31T04:09:14.719946+00:00",
+    "notes": [
+      "18 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:09:27.223461+00:00",
+    "finishedAt": "2026-10-31T04:09:54.828178+00:00",
+    "notes": [
+      "15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:10:12.732617+00:00",
+    "finishedAt": "2026-10-31T04:10:36.527291+00:00",
+    "notes": [
+      "69 s, ember/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:11:14.561063+00:00",
+    "finishedAt": "2026-10-31T04:11:39.027695+00:00",
+    "notes": [
+      "69 s, ember/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:11:59.096138+00:00",
+    "finishedAt": "2026-10-31T04:12:23.256183+00:00",
+    "notes": [
+      "69 s, ember/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:12:53.296563+00:00",
+    "finishedAt": "2026-10-31T04:13:16.158040+00:00",
+    "notes": [
+      "3 of 15 stills are mostly empty background (at 15 s, 35 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:13:56.296613+00:00",
+    "finishedAt": "2026-10-31T04:14:19.793854+00:00",
+    "notes": [
+      "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "2.5 s with nothing new on screen in beat 'year' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:14:47.079734+00:00",
+    "finishedAt": "2026-10-31T04:15:10.045278+00:00",
+    "notes": [
+      "15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:15:44.199792+00:00",
+    "finishedAt": "2026-10-31T04:16:10.769748+00:00",
+    "notes": [
+      "four shots in a row open close (from 'year'): vary the shot size"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-10-31T04:16:30.053771+00:00",
+    "finishedAt": "2026-10-31T04:16:54.302130+00:00",
+    "notes": [
+      "15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:17:11.611858+00:00",
+    "finishedAt": "2026-10-31T04:17:35.411954+00:00",
+    "notes": [
+      "69 s, ember/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:18:01.269821+00:00",
+    "finishedAt": "2026-10-31T04:18:01.269821+00:00",
+    "notes": [
+      "Round 3 stills clean: question hook at 0s, cash pile and $600,000 tag fully in frame at 45s, turn captions clear of Sharma and the owner figure at 50/55s, Priya and RENT sign spaced at 60s, loop ends on Rohan with RENT? under the disclaimer; no overlaps, cut-offs or placeholders, 69s, audio -1.0/-16.4 dB"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:18:11.553913+00:00",
+    "finishedAt": "2026-10-31T04:22:03.014192+00:00",
+    "notes": [
+      "69 s, ember/pop, peak -1.0 dB, mean -16.4 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-10-31T04:22:09.463533+00:00",
+    "finishedAt": "2026-10-31T04:22:09.463533+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

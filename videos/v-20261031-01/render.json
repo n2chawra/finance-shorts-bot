@@ -1,0 +1,129 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 37214,
+  "duration_sec": 69,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "A",
+    "bpm": 108
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "It's not the burgers. So how does McDonald's really make money?",
+        "start": 0.3,
+        "seconds": 3.0,
+        "window": 3.63,
+        "fill": 0.826
+      },
+      {
+        "scene": "promise",
+        "text": "Picture one restaurant selling $4,000,000 of food a year. Three clues explain where that money goes, and the last one is under your feet.",
+        "start": 3.93,
+        "seconds": 7.34,
+        "window": 8.0,
+        "fill": 0.917
+      },
+      {
+        "scene": "owner",
+        "text": "Clue one: the owner. Most of these restaurants are run by a local franchise owner, who pays for the kitchen, the staff and the food.",
+        "start": 11.93,
+        "seconds": 7.09,
+        "window": 7.73,
+        "fill": 0.917
+      },
+      {
+        "scene": "sale",
+        "text": "Clue two: every sale. Spend $20 on a meal, and say 15% of it goes to McDonald's as rent and fees. That's $3 off every tray.",
+        "start": 19.67,
+        "seconds": 8.52,
+        "window": 9.2,
+        "fill": 0.926
+      },
+      {
+        "scene": "doubt",
+        "text": "Is that all? The burgers must make them way more than $3.",
+        "start": 28.87,
+        "seconds": 3.31,
+        "window": 3.8,
+        "fill": 0.871
+      },
+      {
+        "scene": "land",
+        "text": "Clue three: the land. McDonald's often owns or leases the ground under the restaurant, so the owner pays it rent every month.",
+        "start": 32.67,
+        "seconds": 6.68,
+        "window": 7.23,
+        "fill": 0.924
+      },
+      {
+        "scene": "year",
+        "text": "Every tray adds up. In a year, this one corner sends McDonald's about $600,000, whether the burgers make a profit or not.",
+        "start": 39.9,
+        "seconds": 7.44,
+        "window": 8.1,
+        "fill": 0.919
+      },
+      {
+        "scene": "turn",
+        "text": "That's the twist I love. The owner carries the risk on every burger, but McDonald's collects the rent either way, like a landlord.",
+        "start": 48.0,
+        "seconds": 6.67,
+        "window": 7.33,
+        "fill": 0.91
+      },
+      {
+        "scene": "payoff",
+        "text": "So McDonald's earns like a landlord, and the burgers pay the rent. Over 20 years, one corner hands it about $12.0M.",
+        "start": 55.33,
+        "seconds": 6.99,
+        "window": 7.7,
+        "fill": 0.908
+      },
+      {
+        "scene": "loop",
+        "text": "So every burger I buy pays someone's rent? Then what is McDonald's really selling, if...",
+        "start": 63.03,
+        "seconds": 5.03,
+        "window": 5.4,
+        "fill": 0.931
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "on",
+    "loop-picture-matches-hook": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.4
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 6.249,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
