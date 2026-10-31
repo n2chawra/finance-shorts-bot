@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { createWriteStream, existsSync, renameSync } from "node:fs";
+import { createWriteStream, existsSync, readdirSync, renameSync } from "node:fs";
 import path from "node:path";
 import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
@@ -45,11 +45,15 @@ async function api(path: string): Promise<unknown> {
   throw new Error("no GITHUB_TOKEN and the gh CLI was not found; pass --no-release-check to skip");
 }
 
-/** API URL of the uploaded video.mp4 on Release `tag`, or null if the release or asset is not there yet. */
+/** Whether a release asset is the one asked for: "video.mp4" stands for the release's video, which is
+ * named after its title since 2026-10-31 (release-video.yml), so any .mp4 matches it. */
+export const assetMatches = (name: string, asked: string) => name === asked || (asked === "video.mp4" && name.toLowerCase().endsWith(".mp4"));
+
+/** API URL of the uploaded video on Release `tag`, or null if the release or asset is not there yet. */
 export async function releaseAssetUrl(repo: string, tag: string, asset: string): Promise<string | null> {
   const data = await api(`repos/${repo}/releases/tags/${tag}`);
   if (data === null) return null;
-  const found = Release.parse(data).assets.find((a) => a.name === asset && a.state === "uploaded" && a.size > 0);
+  const found = Release.parse(data).assets.find((a) => assetMatches(a.name, asset) && a.state === "uploaded" && a.size > 0);
   return found?.url ?? null;
 }
 
@@ -61,8 +65,11 @@ export async function downloadReleaseAsset(repo: string, tag: string, asset: str
     for (const exe of ["gh", "C:\\Program Files\\GitHub CLI\\gh.exe"]) {
       if (exe !== "gh" && !existsSync(exe)) continue;
       try {
-        execFileSync(exe, ["release", "download", tag, "--pattern", asset, "--dir", dir, "--clobber", "-R", repo], { stdio: ["ignore", "pipe", "pipe"] });
-        if (path.join(dir, asset) !== dest) renameSync(path.join(dir, asset), dest);
+        const pattern = asset === "video.mp4" ? "*.mp4" : asset;
+        const before = new Set(readdirSync(dir));
+        execFileSync(exe, ["release", "download", tag, "--pattern", pattern, "--dir", dir, "--clobber", "-R", repo], { stdio: ["ignore", "pipe", "pipe"] });
+        const got = readdirSync(dir).find((f) => !before.has(f) && assetMatches(f, asset)) ?? asset;
+        if (path.join(dir, got) !== dest) renameSync(path.join(dir, got), dest);
         return;
       } catch (e) {
         if (!String((e as { stderr?: unknown }).stderr ?? e).includes("ENOENT")) throw new Error(`gh release download ${tag} failed: ${String((e as { stderr?: unknown }).stderr ?? e).trim()}`);

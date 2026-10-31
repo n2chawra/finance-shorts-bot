@@ -9,7 +9,7 @@ import { CopyButton, MarkUploaded, uploadText } from "@/app/videos/[id]/publish-
 import { EditorBadge, ReasonDialog } from "@/components/feedback";
 import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, Loading, PageHeader, Stagger, Thumb, Toggle, VideoLink, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
+import { fmtDateTime, fmtDayKey, fmtRelative, titleCase, fileSlug } from "@/lib/format";
 import { type Format, type PlanSlot, madeBy, postingPlan, runway } from "@/lib/posting-plan";
 import { useEditorOrder, useOverview, usePatchSettings, useQueue, useReorder, useSettings, useVideoAction, useVideos } from "@/lib/queries";
 import { describeTimes } from "@/lib/slots";
@@ -65,13 +65,13 @@ function PostNext({ slot }: { slot: PlanSlot & { video: Video } }) {
           <div className="mt-1.5"><Origin v={v} /></div>
           {slot.stale && <p className="mt-2 flex items-center gap-1.5 text-xs text-critical-text"><AlertTriangle aria-hidden className="size-3.5" />Its news is stale by this slot. Post it as soon as you can.</p>}
           <div className="mt-3 flex flex-wrap gap-1.5">
-            <a href={v.fileUrl} download={`${v.id}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>
+            <a href={v.fileUrl} download={`${fileSlug(v)}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>
             {(v.style.thumbs?.length ?? 0) > 1
               ? v.style.thumbs!.map((t, i) => {
                 const kind = t.file === "thumbnail-b.png" ? "thumbnail-b" : t.file === "thumbnail-c.png" ? "thumbnail-c" : "thumbnail";
-                return <a key={t.file} href={`/api/media/${v.id}/${kind}`} download={`${v.id}-${kind}.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Thumbnail {"ABC"[i]}</a>;
+                return <a key={t.file} href={`/api/media/${v.id}/${kind}`} download={`${fileSlug(v)}-${kind}.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Thumbnail {"ABC"[i]}</a>;
               })
-              : <a href={v.thumbnailUrl} download={`${v.id}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>}
+              : <a href={v.thumbnailUrl} download={`${fileSlug(v)}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>}
             <CopyButton text={v.title} label="Copy title" />
             <CopyButton text={description} label="Copy description" />
             <CopyButton text={v.tags.join(", ")} label="Copy tags" />
@@ -156,8 +156,8 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
                         <Button size="sm" tone="ghost" iconOnly icon={ArrowDown} disabled={busy || i === items.length - 1} title="Move down" onClick={() => onMove(v.id, i + 1)}>Move down</Button>
                         <ActionMenu items={[
                           { label: "Open video", icon: ExternalLink, onSelect: () => router.push(`/videos/${v.id}`) },
-                          { label: "Download video", icon: Download, onSelect: () => download(v.fileUrl, `${v.id}.mp4`) },
-                          { label: "Download thumbnail", icon: ImageDown, onSelect: () => download(v.thumbnailUrl, `${v.id}-thumbnail.png`) },
+                          { label: "Download video", icon: Download, onSelect: () => download(v.fileUrl, `${fileSlug(v)}.mp4`) },
+                          { label: "Download thumbnail", icon: ImageDown, onSelect: () => download(v.thumbnailUrl, `${fileSlug(v)}-thumbnail.png`) },
                           v.pickedAt ? { label: "Remove my pick", icon: XCircle, disabled: busy, onSelect: () => onAction(v, "unpick") }
                             : { label: "Pick for the next upload…", icon: Award, disabled: busy, onSelect: () => onAction(v, "pick") },
                           { label: "Upload now", icon: Upload, disabled: busy || paused, onSelect: () => onAction(v, "upload-now") },

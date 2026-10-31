@@ -66,7 +66,8 @@ export async function GET(req: NextRequest, ctx: { params: Promise<{ id: string;
   }
   const release = await fetch(`${GH}/repos/${repo}/releases/tags/video-${id}`, { headers: { ...auth, accept: "application/vnd.github+json" } });
   if (!release.ok) await tokenRejected(release.status);
-  const asset = release.ok ? ((await release.json()) as { assets?: { name: string; url: string }[] }).assets?.find((a) => a.name === name) : undefined;
+  // the video is named after its title since 2026-10-31 (release-video.yml): any .mp4 is it
+  const asset = release.ok ? ((await release.json()) as { assets?: { name: string; url: string }[] }).assets?.find((a) => a.name === name || a.name.toLowerCase().endsWith(".mp4")) : undefined;
   if (!asset) return NextResponse.json({ error: "Not found" }, { status: 404 });
   // GitHub answers with a redirect to a signed URL that needs no token; hand that to the browser
   const signed = await fetch(asset.url, { headers: { ...auth, accept: "application/octet-stream" }, redirect: "manual" });

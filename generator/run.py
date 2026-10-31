@@ -517,6 +517,15 @@ def push_media_branch(vid: str, root: Path = ROOT) -> str:
         git("push", "-q", "origin", f"{commit}:refs/heads/{branch}")
     return branch
 
+def file_slug(title: str, fallback: str) -> str:
+    """A file name from a title: "How the casino wins 🎰" -> "how-the-casino-wins" (80 characters at most)."""
+    import re
+    import unicodedata
+    ascii_ = unicodedata.normalize("NFKD", title).encode("ascii", "ignore").decode()
+    slug = re.sub(r"[^a-z0-9]+", "-", ascii_.lower()).strip("-")[:80].rstrip("-")
+    return slug or fallback
+
+
 def upload_release(vid: str, root: Path = ROOT) -> dict:
     """Upload videos/<id>/video.mp4 as the asset of GitHub Release video-<id> and record it in the
     manifest. Works on a video shipped earlier without --release."""
@@ -528,8 +537,12 @@ def upload_release(vid: str, root: Path = ROOT) -> dict:
         raise ValueError(f"{vid} is already uploaded as {manifest['release']['tag']}")
     if not (d / "video.mp4").is_file():
         raise ValueError("video.mp4 is missing")
-    subprocess.run([gh_exe(), "release", "create", manifest["release"]["tag"], str(d / "video.mp4"),
-                    "--title", manifest["title"], "--notes", f"Video {vid}"], cwd=root, check=True)
+    # named after its title, so a download is "how-the-casino-wins.mp4", not "video (16).mp4"
+    with tempfile.TemporaryDirectory() as tmp:
+        named = Path(tmp) / f"{file_slug(manifest['title'], vid)}.mp4"
+        shutil.copyfile(d / "video.mp4", named)
+        subprocess.run([gh_exe(), "release", "create", manifest["release"]["tag"], str(named),
+                        "--title", manifest["title"], "--notes", f"Video {vid}"], cwd=root, check=True)
     manifest["release"].update(uploaded=True, uploadedAt=history.now().isoformat())
     _write(d / "manifest.json", manifest)
     return manifest

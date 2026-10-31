@@ -44,5 +44,11 @@ jobs:
           else
             gh release create "$tag" video.mp4 --target main --title "$title" --notes "Video $id"
           fi
+          # name the file after the video (owner, 2026-10-31: downloads were all "video (16).mp4"):
+          # GitHub signs the asset's own name into its download link, so the name lives on the asset
+          slug="$(printf '%s' "$title" | iconv -f utf-8 -t ascii//TRANSLIT 2>/dev/null | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g' | cut -c1-80 | sed -E 's/-+$//')"
+          [ -n "$slug" ] || slug="$id"
+          asset_id="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[] | select(.name == "video.mp4") | .id' | head -1)"
+          [ -z "$asset_id" ] || gh api -X PATCH "repos/$GITHUB_REPOSITORY/releases/assets/$asset_id" -f name="$slug.mp4" --silent
           git push origin --delete "$BRANCH"
           echo "Released $tag: $title" >> "$GITHUB_STEP_SUMMARY"

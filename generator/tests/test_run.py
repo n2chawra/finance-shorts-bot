@@ -281,7 +281,7 @@ def test_release_uploads_and_marks_manifest(root: Path, monkeypatch: pytest.Monk
     monkeypatch.setattr(run, "gh_exe", lambda: "gh")
     monkeypatch.setattr(run.subprocess, "run", lambda cmd, **kw: calls.append(cmd))
     m = run.upload_release(VID, root)
-    assert calls[0][:4] == ["gh", "release", "create", f"video-{VID}"] and calls[0][4].endswith("video.mp4")
+    assert calls[0][:4] == ["gh", "release", "create", f"video-{VID}"] and calls[0][4].endswith(".mp4") and "video.mp4" not in calls[0][4]   # named after its title (2026-10-31)
     assert m["release"]["uploaded"] is True and "uploadedAt" in m["release"]
     assert json.loads((root / "videos" / VID / "manifest.json").read_text(encoding="utf-8"))["release"]["uploaded"] is True
     with pytest.raises(ValueError, match="already uploaded"):

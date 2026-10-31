@@ -11,7 +11,7 @@ import { useState } from "react";
 import { DataTable, LineChart } from "@/components/charts";
 import { ActionMenu, Card, ConfirmButton, buttonClass, Empty, ErrorNote, Loading, type MenuItem, Num, ResultBadge, Stagger, Stat, StatusBadge } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, fmtRelative, titleCase } from "@/lib/format";
+import { fmtCompact, fmtDateTime, fmtDayKey, fmtDuration, fmtNum, fmtRelative, titleCase, fileSlug } from "@/lib/format";
 import { postingPlan } from "@/lib/posting-plan";
 import { useQueue, useSettings, useThumbWinner, useVideo, useVideoAction, useVideos } from "@/lib/queries";
 import type { VideoAction, VideoDetail } from "@/lib/schemas";
@@ -60,7 +60,7 @@ function ThumbTest({ v }: { v: VideoDetail }) {
             <div key={t.file} className={`flex flex-col gap-1.5 rounded-lg border p-1.5 ${won ? "border-brand" : "border-ring"}`}>
               <img src={`/api/media/${v.id}/${kind}`} alt={`Thumbnail ${"ABC"[i]}`} className="aspect-video w-full rounded object-cover" />
               <span className="text-[11px] text-ink2">{"ABC"[i]} · {titleCase(t.angle ?? "—")}</span>
-              <a href={`/api/media/${v.id}/${kind}`} download={`${v.id}-${kind}.png`} className={buttonClass("ghost")}><ImageDown aria-hidden className="size-4" />Download</a>
+              <a href={`/api/media/${v.id}/${kind}`} download={`${fileSlug(v)}-${kind}.png`} className={buttonClass("ghost")}><ImageDown aria-hidden className="size-4" />Download</a>
               <button type="button" disabled={pick.isPending} aria-pressed={won}
                 onClick={() => pick.mutate({ id: v.id, winner: won ? null : t.file }, { onSuccess: () => toast(won ? "Winner cleared" : `Thumbnail ${"ABC"[i]} marked as the winner`), onError: (e) => toast(e.message, "error") })}
                 className={buttonClass(won ? "primary" : "default")}>{won ? "Winner" : "Mark winner"}</button>
@@ -145,8 +145,8 @@ export default function VideoPage() {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          {v.status !== "failed" && v.fileUrl && <a href={v.fileUrl} download={`${v.id}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>}
-          {v.status !== "failed" && <a href={v.thumbnailUrl} download={`${v.id}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>}
+          {v.status !== "failed" && v.fileUrl && <a href={v.fileUrl} download={`${fileSlug(v)}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>}
+          {v.status !== "failed" && <a href={v.thumbnailUrl} download={`${fileSlug(v)}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>}
           {v.status !== "published" && <MarkUploaded v={v} />}
           <EditDetails v={v} />
           {menu.length > 0 && <ActionMenu items={menu} />}
