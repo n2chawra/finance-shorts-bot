@@ -1,0 +1,1203 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 58817,
+ "story": "secret_of_rich",
+ "shape": "versus",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "cinematic",
+  "key": "E",
+  "bpm": 94
+ },
+ "hook_style": "conflict",
+ "cta": "Car loan or growth loan: which one do you have? Comment",
+ "maths": [
+  {
+   "name": "car",
+   "kind": "emi",
+   "amount": 40000,
+   "rate_pct": 7,
+   "years": 5
+  },
+  {
+   "name": "loan",
+   "kind": "emi",
+   "amount": 100000,
+   "rate_pct": 6,
+   "years": 10
+  },
+  {
+   "name": "asset",
+   "kind": "lumpsum",
+   "amount": 100000,
+   "rate_pct": 8,
+   "years": 10
+  }
+ ],
+ "thumbnail": {
+  "who": "sharma",
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "The rich *love* debt",
+  "figure": "{loan_amount}"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "sharma",
+   "say": "You're scared of debt. I love it. Let me show you why.",
+   "events": {
+    "scared": {
+     "word": "scared"
+    },
+    "love": {
+     "word": "love"
+    },
+    "show": {
+     "word": "show"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "scared"
+    },
+    {
+     "kind": "ding",
+     "at": "love"
+    },
+    {
+     "kind": "boom",
+     "at": "show"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "You're scared of debt",
+    "set": "bank",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "worried",
+        "expression": "worried"
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "spot": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "sharma",
+   "transition": "match",
+   "say": "Same bank, two loans. Rohan borrows {car_amount}, I borrow {loan_amount}, and one question decides who gets richer.",
+   "events": {
+    "bank": {
+     "word": "bank"
+    },
+    "loans": {
+     "word": "loans"
+    },
+    "rohan": {
+     "word": "Rohan"
+    },
+    "borrow": {
+     "word": "borrow"
+    },
+    "question": {
+     "word": "question"
+    },
+    "richer": {
+     "word": "richer"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "loans"
+    },
+    {
+     "kind": "pop",
+     "at": "borrow"
+    },
+    {
+     "kind": "riser",
+     "at": "question"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "bank",
+     "tint": "blue"
+    },
+    "actors": [],
+    "items": [
+     {
+      "id": "loans",
+      "prop": "contract",
+      "x": 0.25,
+      "size": 0.16,
+      "tag": "{car_amount}",
+      "label": "Rohan's loan"
+     },
+     {
+      "id": "borrow",
+      "prop": "contract",
+      "x": 0.72,
+      "size": 0.2,
+      "hidden": true,
+      "tag": "{loan_amount}",
+      "label": "My loan"
+     },
+     {
+      "id": "question",
+      "prop": "handshake",
+      "x": 0.5,
+      "y": 0.36,
+      "size": 0.12,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "bank",
+      "do": "glow",
+      "target": "loans"
+     },
+     {
+      "at": "rohan",
+      "do": "shake",
+      "target": "loans"
+     },
+     {
+      "at": "borrow",
+      "do": "enter",
+      "target": "borrow"
+     },
+     {
+      "at": "question",
+      "do": "enter",
+      "target": "question"
+     },
+     {
+      "at": "richer",
+      "do": "glow",
+      "target": "borrow"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "loans"
+     },
+     {
+      "at": "borrow",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "carbuy",
+   "scene": "build",
+   "role": "build",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "Mine buys a shiny new car! Just {car_rate} a year, paid over {car_months} months. Easy.",
+   "events": {
+    "car": {
+     "word": "car"
+    },
+    "shiny": {
+     "word": "shiny"
+    },
+    "paid": {
+     "word": "paid"
+    },
+    "easy": {
+     "word": "Easy"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "car"
+    },
+    {
+     "kind": "pop",
+     "at": "easy"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "blue"
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.28,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "laugh"
+       },
+       {
+        "at": "easy",
+        "pose": "thumbsUp",
+        "expression": "happy"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "car",
+      "prop": "sedan",
+      "x": 0.6,
+      "size": 0.1,
+      "hidden": true,
+      "label": "New car"
+     },
+     {
+      "id": "paid",
+      "prop": "keyfob",
+      "x": 0.6,
+      "y": 0.22,
+      "size": 0.08,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "car",
+      "do": "enter",
+      "target": "car"
+     },
+     {
+      "at": "shiny",
+      "do": "glow",
+      "target": "car"
+     },
+     {
+      "at": "paid",
+      "do": "enter",
+      "target": "paid"
+     },
+     {
+      "at": "easy",
+      "do": "shake",
+      "target": "paid"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "rohan"
+     },
+     {
+      "at": "car",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "carcost",
+   "scene": "build",
+   "role": "build",
+   "speaker": "sharma",
+   "transition": "match",
+   "say": "But a car loses value every year you drive it. So Rohan pays {car_interest} in interest for something that keeps shrinking.",
+   "events": {
+    "loses": {
+     "word": "loses"
+    },
+    "value": {
+     "word": "value"
+    },
+    "drive": {
+     "word": "drive"
+    },
+    "pays": {
+     "word": "pays"
+    },
+    "interest": {
+     "word": "interest"
+    },
+    "shrinking": {
+     "word": "shrinking"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "loses"
+    },
+    {
+     "kind": "kaching",
+     "at": "interest"
+    },
+    {
+     "kind": "whoosh",
+     "at": "shrinking"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "dark"
+    },
+    "actors": [],
+    "items": [
+     {
+      "id": "car",
+      "prop": "sedan",
+      "x": 0.3,
+      "size": 0.14,
+      "label": "Rohan's car"
+     },
+     {
+      "id": "value",
+      "prop": "downarrow",
+      "x": 0.3,
+      "y": 0.3,
+      "size": 0.1,
+      "hidden": true,
+      "label": "Value"
+     },
+     {
+      "id": "interest",
+      "prop": "cash",
+      "x": 0.7,
+      "size": 0.11,
+      "hidden": true,
+      "tag": "{car_interest}",
+      "label": "Interest"
+     }
+    ],
+    "actions": [
+     {
+      "at": "loses",
+      "do": "glow",
+      "target": "car"
+     },
+     {
+      "at": "value",
+      "do": "enter",
+      "target": "value"
+     },
+     {
+      "at": "drive",
+      "do": "state",
+      "target": "car",
+      "state": "old"
+     },
+     {
+      "at": "pays",
+      "do": "glow",
+      "target": "car"
+     },
+     {
+      "at": "interest",
+      "do": "enter",
+      "target": "interest"
+     },
+     {
+      "at": "shrinking",
+      "do": "shrink",
+      "target": "car",
+      "scale": 0.7
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "car"
+     },
+     {
+      "at": "interest",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     },
+     {
+      "at": "shrinking",
+      "size": "close",
+      "on": "car",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "myloan",
+   "scene": "build",
+   "role": "build",
+   "speaker": "sharma",
+   "transition": "cut",
+   "say": "My loan costs {loan_rate} a year. Over {asset_years} years, that's {loan_interest} in interest, even more than Rohan pays.",
+   "events": {
+    "loan": {
+     "word": "loan"
+    },
+    "costs": {
+     "word": "costs"
+    },
+    "years": {
+     "word": "years"
+    },
+    "interest": {
+     "word": "interest"
+    },
+    "rohan": {
+     "word": "Rohan"
+    },
+    "that": {
+     "word": "that's"
+    },
+    "even": {
+     "word": "even"
+    },
+    "mid": {
+     "word": -8
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "loan"
+    },
+    {
+     "kind": "kaching",
+     "at": "interest"
+    },
+    {
+     "kind": "tick",
+     "at": "rohan"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "bank",
+     "tint": "gold"
+    },
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": 0.22,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "neutral"
+       },
+       {
+        "at": "years",
+        "pose": "point",
+        "expression": "neutral"
+       },
+       {
+        "at": "rohan",
+        "pose": "shrug",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "loan",
+      "prop": "contract",
+      "x": 0.48,
+      "size": 0.16,
+      "label": "My loan",
+      "k": 1
+     },
+     {
+      "id": "interest",
+      "prop": "cash",
+      "x": 0.7,
+      "size": 0.1,
+      "hidden": true,
+      "tag": "{loan_interest}",
+      "label": "Interest"
+     }
+    ],
+    "actions": [
+     {
+      "at": "loan",
+      "do": "glow",
+      "target": "loan"
+     },
+     {
+      "at": "costs",
+      "do": "shake",
+      "target": "loan"
+     },
+     {
+      "at": "years",
+      "do": "glow",
+      "target": "loan"
+     },
+     {
+      "at": "that",
+      "do": "glow",
+      "target": "loan"
+     },
+     {
+      "at": "interest",
+      "do": "enter",
+      "target": "interest"
+     },
+     {
+      "at": "rohan",
+      "do": "glow",
+      "target": "interest"
+     },
+     {
+      "at": "even",
+      "do": "shake",
+      "target": "interest"
+     },
+     {
+      "at": "mid",
+      "do": "glow",
+      "target": "loan"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "loan"
+     },
+     {
+      "at": "interest",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "buys",
+   "scene": "build",
+   "role": "build",
+   "speaker": "sharma",
+   "transition": "match",
+   "say": "The difference is what I buy with it: a building, or a business that can grow.",
+   "events": {
+    "difference": {
+     "word": "difference"
+    },
+    "buy": {
+     "word": "buy"
+    },
+    "building": {
+     "word": "building"
+    },
+    "business": {
+     "word": "business"
+    },
+    "grow": {
+     "word": "grow"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "building"
+    },
+    {
+     "kind": "pop",
+     "at": "business"
+    },
+    {
+     "kind": "riser",
+     "at": "grow"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "green"
+    },
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": 0.2,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "smirk"
+       },
+       {
+        "at": "grow",
+        "pose": "point",
+        "expression": "proud"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "building",
+      "prop": "offices",
+      "x": 0.45,
+      "size": 0.2,
+      "hidden": true,
+      "k": 0.3
+     },
+     {
+      "id": "business",
+      "prop": "shop",
+      "x": 0.75,
+      "size": 0.14,
+      "hidden": true
+     },
+     {
+      "id": "grow",
+      "prop": "uparrow",
+      "x": 0.75,
+      "y": 0.3,
+      "size": 0.1,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "difference",
+      "do": "glow",
+      "target": "building"
+     },
+     {
+      "at": "building",
+      "do": "enter",
+      "target": "building"
+     },
+     {
+      "at": "business",
+      "do": "enter",
+      "target": "business"
+     },
+     {
+      "at": "grow",
+      "do": "enter",
+      "target": "grow"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "business",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "gains",
+   "scene": "build",
+   "role": "build",
+   "speaker": "sharma",
+   "transition": "match",
+   "say": "If it grows an assumed {asset_rate} a year, in {asset_years} years it gains {asset_gains}.",
+   "events": {
+    "grows": {
+     "word": "grows"
+    },
+    "assumed": {
+     "word": "assumed"
+    },
+    "year": {
+     "word": "year"
+    },
+    "gains": {
+     "word": "gains"
+    },
+    "late": {
+     "word": -3
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "assumed"
+    },
+    {
+     "kind": "kaching",
+     "at": "gains"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "green"
+    },
+    "items": [
+     {
+      "id": "grows",
+      "prop": "offices",
+      "x": 0.3,
+      "size": 0.22,
+      "k": 0.2,
+      "label": "The building"
+     },
+     {
+      "id": "gains",
+      "prop": "cash",
+      "x": 0.7,
+      "size": 0.14,
+      "hidden": true,
+      "tag": "{asset_gains}",
+      "label": "Gains"
+     },
+     {
+      "id": "up",
+      "prop": "uparrow",
+      "x": 0.3,
+      "y": 0.36,
+      "size": 0.08,
+      "hidden": true,
+      "label": "Growth"
+     }
+    ],
+    "actions": [
+     {
+      "at": "grows",
+      "do": "fill",
+      "target": "grows",
+      "k": 0.6
+     },
+     {
+      "at": "assumed",
+      "do": "enter",
+      "target": "up"
+     },
+     {
+      "at": "year",
+      "do": "glow",
+      "target": "grows"
+     },
+     {
+      "at": "gains",
+      "do": "enter",
+      "target": "gains"
+     },
+     {
+      "at": "late",
+      "do": "glow",
+      "target": "gains"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "grows"
+     },
+     {
+      "at": "gains",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "doubt",
+   "scene": "build",
+   "role": "build",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "Hold on. You still pay the bank all that interest!",
+   "events": {
+    "hold": {
+     "word": "Hold"
+    },
+    "bank": {
+     "word": "bank"
+    },
+    "interest": {
+     "word": "interest"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "hold"
+    },
+    {
+     "kind": "tick",
+     "at": "interest"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "blue"
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.3,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "point",
+        "expression": "shock"
+       },
+       {
+        "at": "interest",
+        "pose": "think",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "interest",
+      "prop": "cash",
+      "x": 0.72,
+      "size": 0.12,
+      "label": "Interest"
+     }
+    ],
+    "actions": [
+     {
+      "at": "hold",
+      "do": "shake",
+      "target": "interest"
+     },
+     {
+      "at": "bank",
+      "do": "glow",
+      "target": "interest"
+     },
+     {
+      "at": "interest",
+      "do": "grow",
+      "target": "interest",
+      "scale": 1.2
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "rohan"
+     },
+     {
+      "at": "interest",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "sharma",
+   "transition": "match",
+   "say": "Gladly. The interest is my cost, the growth is my profit. Good debt buys something that earns more than the loan costs.",
+   "events": {
+    "gladly": {
+     "word": "Gladly"
+    },
+    "cost": {
+     "word": "cost"
+    },
+    "growth": {
+     "word": "growth"
+    },
+    "profit": {
+     "word": "profit"
+    },
+    "good": {
+     "word": "Good"
+    },
+    "earns": {
+     "word": "earns"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "gladly"
+    },
+    {
+     "kind": "pop",
+     "at": "cost"
+    },
+    {
+     "kind": "kaching",
+     "at": "profit"
+    },
+    {
+     "kind": "boom",
+     "at": "earns"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "cost": "{loan_interest}",
+    "gain": "{asset_gains}",
+    "costLabel": "Cost",
+    "gainLabel": "Growth",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "proud"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "sharma"
+     },
+     {
+      "at": "good",
+      "size": "medium",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "sharma",
+   "transition": "cut",
+   "say": "That's why the rich love debt: the car shrinks, the building grows. But if what they buy stops growing, the loan still has to be paid.",
+   "events": {
+    "rich": {
+     "word": "rich"
+    },
+    "car": {
+     "word": "car"
+    },
+    "building": {
+     "word": "building"
+    },
+    "stops": {
+     "word": "stops"
+    },
+    "loan": {
+     "word": "loan"
+    },
+    "paid": {
+     "word": "paid"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "car"
+    },
+    {
+     "kind": "kaching",
+     "at": "building"
+    },
+    {
+     "kind": "fail",
+     "at": "stops"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "left": "Shrinks",
+    "right": "Grows",
+    "warn": "Still owed",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "center",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "neutral"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "paid",
+      "size": "close",
+      "on": "sharma"
+     }
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "shot",
+   "role": "loop",
+   "speaker": "rohan",
+   "transition": "match",
+   "say": "So I'm not scared of debt. I'm scared of my car loan. And honestly, Sharma...",
+   "events": {
+    "debt": {
+     "word": "debt"
+    },
+    "car": {
+     "word": "car"
+    },
+    "honestly": {
+     "word": "honestly"
+    },
+    "scared": {
+     "word": "scared"
+    },
+    "loan": {
+     "word": "loan"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "car"
+    },
+    {
+     "kind": "tick",
+     "at": "honestly"
+    }
+   ],
+   "params": {
+    "set": "flat",
+    "hud": {
+     "hide": true
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       },
+       {
+        "at": "scared",
+        "pose": "worried",
+        "expression": "worried"
+       },
+       {
+        "at": "car",
+        "pose": "facepalm",
+        "expression": "sad"
+       },
+       {
+        "at": "loan",
+        "pose": "point",
+        "expression": "sad"
+       },
+       {
+        "at": "honestly",
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "word": {
+     "text": "Car loan",
+     "at": "car",
+     "color": "bad",
+     "where": "top"
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "rohan"
+     },
+     {
+      "at": "car",
+      "size": "medium",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "af_bella"
+}

@@ -1,0 +1,322 @@
+{
+  "id": "v-20261031-02",
+  "createdAt": "2026-10-31T04:34:33.937394+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why rich people love debt and you're scared of it",
+    "category": "debt",
+    "reach": "global",
+    "feed_id": "2026-10-23-rich-love-debt"
+  },
+  "title": "You borrow for a car. The rich borrow for this 🤫",
+  "description": "Why do the rich love debt while you're scared of it?\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#RichVsPoor",
+    "#Debt",
+    "#Money",
+    "#PersonalFinance"
+  ],
+  "hookStyle": "conflict",
+  "cta": "Car loan or growth loan: which one do you have? Comment",
+  "seed": 58817,
+  "style": {
+    "palette": "night",
+    "genre": "cinematic",
+    "key": "E",
+    "bpm": 94,
+    "voice": "af_bella"
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You're scared of debt. I love it. Let me show you why.",
+        "start": 0.3,
+        "seconds": 2.73,
+        "window": 3.4,
+        "fill": 0.803
+      },
+      {
+        "scene": "promise",
+        "text": "Same bank, two loans. Rohan borrows $40,000, I borrow $100,000, and one question decides who gets richer.",
+        "start": 3.7,
+        "seconds": 8.05,
+        "window": 8.7,
+        "fill": 0.925
+      },
+      {
+        "scene": "carbuy",
+        "text": "Mine buys a shiny new car! Just 7% a year, paid over 60 months. Easy.",
+        "start": 12.4,
+        "seconds": 4.87,
+        "window": 5.23,
+        "fill": 0.931
+      },
+      {
+        "scene": "carcost",
+        "text": "But a car loses value every year you drive it. So Rohan pays $7,523 in interest for something that keeps shrinking.",
+        "start": 17.63,
+        "seconds": 8.06,
+        "window": 8.73,
+        "fill": 0.923
+      },
+      {
+        "scene": "myloan",
+        "text": "My loan costs 6% a year. Over 10 years, that's $33,225 in interest, even more than Rohan pays.",
+        "start": 26.37,
+        "seconds": 8.31,
+        "window": 9.0,
+        "fill": 0.923
+      },
+      {
+        "scene": "buys",
+        "text": "The difference is what I buy with it: a building, or a business that can grow.",
+        "start": 35.37,
+        "seconds": 3.69,
+        "window": 4.33,
+        "fill": 0.852
+      },
+      {
+        "scene": "gains",
+        "text": "If it grows an assumed 8% a year, in 10 years it gains $115,892.",
+        "start": 39.7,
+        "seconds": 6.6,
+        "window": 7.27,
+        "fill": 0.908
+      },
+      {
+        "scene": "doubt",
+        "text": "Hold on. You still pay the bank all that interest!",
+        "start": 46.97,
+        "seconds": 2.28,
+        "window": 2.77,
+        "fill": 0.823
+      },
+      {
+        "scene": "turn",
+        "text": "Gladly. The interest is my cost, the growth is my profit. Good debt buys something that earns more than the loan costs.",
+        "start": 49.73,
+        "seconds": 6.09,
+        "window": 6.77,
+        "fill": 0.9
+      },
+      {
+        "scene": "payoff",
+        "text": "That's why the rich love debt: the car shrinks, the building grows. But if what they buy stops growing, the loan still has to be paid.",
+        "start": 56.5,
+        "seconds": 7.34,
+        "window": 8.0,
+        "fill": 0.917
+      },
+      {
+        "scene": "loop",
+        "text": "So I'm not scared of debt. I'm scared of my car loan. And honestly, Sharma...",
+        "start": 64.5,
+        "seconds": 4.04,
+        "window": 4.43,
+        "fill": 0.912
+      }
+    ]
+  },
+  "durationSec": 69,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.3
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "off",
+    "loop-picture-matches-hook": "on"
+  },
+  "heard": {
+    "hookVoice": "am_fenrir",
+    "narratorShare": 0
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "19 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "No sourced facts and no verify list (evergreen feed topic 2026-10-23-rich-love-debt). Checked: 7% 60-month car loan and 6% 10-year loan are realistic US rates; 8% asset growth is spoken as 'assumed' and under the 10% bar; good-vs-bad-debt framing is true globally and the payoff states the risk (if the asset stops growing the loan still has to be paid); no products, no imperative advice, no expert claims, no guarantees; description ends with the disclaimer. Style notes: the description could add the 'speak to a licensed financial adviser' line from channel/profile.md before the disclaimer; the turn compares gain with interest only, which is a fair simplification since both borrowers repay principal from income."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "15 stills checked: hook statement on frame 1, captions clear of faces, all tags readable and matching maths ($40,000/$100,000/$7,523/$33,225/$115,892), no empty or cut-off frames, Turn scale and Payoff split read clearly, disclaimer pill over the last frame, 69 s, audio -1.0/-17.3 dB, no layout/craft problems; hook opens a question without the answer and Sharma explains in full sentences. Minor: thumbnail crops Sharma's raised hand at the right edge; the 7% pop chip at 15.0 s is caught mid-fade-out."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:22:30.953231+00:00",
+      "finishedAt": "2026-10-31T04:22:30.953231+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:22:31.801042+00:00",
+      "finishedAt": "2026-10-31T04:22:31.801042+00:00",
+      "notes": [
+        "19 figures computed from inputs; 10 cross-checked against closed-form formulas.",
+        "warning: beat 'myloan' runs 9.6 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'grows' runs 11.0 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:23:18.129006+00:00",
+      "finishedAt": "2026-10-31T04:23:18.129006+00:00",
+      "notes": [
+        "19 figures computed from inputs; 10 cross-checked against closed-form formulas.",
+        "warning: beat 'myloan' runs 7.9 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:23:37.882652+00:00",
+      "finishedAt": "2026-10-31T04:23:37.882652+00:00",
+      "notes": [
+        "19 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:24:36.094984+00:00",
+      "finishedAt": "2026-10-31T04:24:36.094984+00:00",
+      "notes": [
+        "No sourced facts and no verify list (evergreen feed topic 2026-10-23-rich-love-debt). Checked: 7% 60-month car loan and 6% 10-year loan are realistic US rates; 8% asset growth is spoken as 'assumed' and under the 10% bar; good-vs-bad-debt framing is true globally and the payoff states the risk (if the asset stops growing the loan still has to be paid); no products, no imperative advice, no expert claims, no guarantees; description ends with the disclaimer. Style notes: the description could add the 'speak to a licensed financial adviser' line from channel/profile.md before the disclaimer; the turn compares gain with interest only, which is a fair simplification since both borrowers repay principal from income."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-31T04:24:11.395355+00:00",
+      "finishedAt": "2026-10-31T04:24:55.776910+00:00",
+      "notes": [
+        "2.6 s with nothing new on screen in beat 'myloan' (at most 2.5 s): add an action on the phrase being said there",
+        "beat 'myloan': only 1 of 2 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:25:03.569701+00:00",
+      "finishedAt": "2026-10-31T04:25:03.569701+00:00",
+      "notes": [
+        "19 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:25:15.488728+00:00",
+      "finishedAt": "2026-10-31T04:25:39.943787+00:00",
+      "notes": [
+        "69 s, night/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:26:12.029409+00:00",
+      "finishedAt": "2026-10-31T04:26:39.271229+00:00",
+      "notes": [
+        "69 s, night/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:27:00.663207+00:00",
+      "finishedAt": "2026-10-31T04:27:28.502955+00:00",
+      "notes": [
+        "69 s, night/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-10-31T04:27:52.139573+00:00",
+      "finishedAt": "2026-10-31T04:28:15.460700+00:00",
+      "notes": [
+        "text 'My loan' at 32.4 s reaches 1808 px, inside the bottom 120 px"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:28:35.581894+00:00",
+      "finishedAt": "2026-10-31T04:28:58.546520+00:00",
+      "notes": [
+        "69 s, night/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:30:48.457488+00:00",
+      "finishedAt": "2026-10-31T04:30:48.457488+00:00",
+      "notes": [
+        "15 stills checked: hook statement on frame 1, captions clear of faces, all tags readable and matching maths ($40,000/$100,000/$7,523/$33,225/$115,892), no empty or cut-off frames, Turn scale and Payoff split read clearly, disclaimer pill over the last frame, 69 s, audio -1.0/-17.3 dB, no layout/craft problems; hook opens a question without the answer and Sharma explains in full sentences. Minor: thumbnail crops Sharma's raised hand at the right edge; the 7% pop chip at 15.0 s is caught mid-fade-out."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:31:03.154050+00:00",
+      "finishedAt": "2026-10-31T04:34:29.707370+00:00",
+      "notes": [
+        "69 s, night/cinematic, peak -1.0 dB, mean -17.3 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-10-31T04:34:33.937466+00:00",
+      "finishedAt": "2026-10-31T04:34:33.937466+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261031-02",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261031-02"
+  }
+}
