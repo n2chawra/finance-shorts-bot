@@ -622,6 +622,66 @@
       "status": "new",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "hook-you-think-x-youre-wrong",
+      "date": "2026-11-02",
+      "area": "hook",
+      "title": "Hook: name the answer the viewer already believes, then deny it",
+      "change": "Behind a flag (Shorts), in the short_story hook recipes and generator/prompts/writer.md: the hook line puts the obvious answer to the video's question to the viewer as a 'you' question and flatly denies it, without giving the real answer ('You think McDonald's makes its money selling burgers? It doesn't.', 'You think the casino needs you to lose? It doesn't.'). At most ~14 words, shown as hook text from frame 0, with a hit SFX and a camera punch on the denial word. The real answer may not appear before the promise beat. Off: today's hook recipes. Supersedes claim-then-wait-what if the improver must choose one (both rewrite beat 1); start after hook-voice-matches-frame has its verdict (about one more day).",
+      "evidence": [
+        "Owner note on v-20261031-01 (31 Oct): 'It could have been better like do you think macdonalds earn through burger sales your are wrong .. level of curiosity it creates is 6/10.' Owner note on v-20261031-02: 'The hook does not create curiosity.'",
+        "python -m improvement.evaluate (2 Nov): hook style 'secret' 11.04x median views, 74.8% viewed, kept past the hook 156% (n=4); 'question' 1.05x, 37.9% (n=8); 'myth' 0.14x (n=5). Our questions mostly ask; a 'secret' hook makes a claim the viewer can't resolve.",
+        "https://dev.to/bulkdl/hook-engineering-the-science-of-the-first-3-seconds-in-short-form-video-2026-2jp9 (vendor data, directional: counterintuitive-claim and curiosity-gap hooks lead its archetype ranking; hooks must work on mute)"
+      ],
+      "expectedEffect": "Higher hookHold and avgViewPct: the viewer commits to a guess in the first second and stays to see why it's wrong.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Can read as clickbait if the denial is only half true; the fact reviewer must confirm the 'wrong' is fair. Overlaps claim-then-wait-what.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "high"
+    },
+    {
+      "id": "money-travels-not-pops",
+      "date": "2026-11-02",
+      "area": "motion",
+      "title": "Money moves along a path between the things it connects, instead of popping in and shaking",
+      "change": "Behind a flag (Shorts) in remotion/src (build beats and the props' entrance actions): when a beat names money passing from one thing to another (customer -> restaurant -> McDonald's, salary -> rent, fee -> bank), draw it as an object that travels on a visible path from the source prop to the destination prop over ~0.6-1.0 s (coins/bills/a stack moving, a trail behind it), with the camera tracking or whip-panning with it and the counter riding on the object, landing with a hit on the word that names the destination. Props that enter do so from off-frame or grow out of the previous prop (scale from 0 on its anchor, 0.25 s, overshoot) instead of an in-place pop with a shake. One 'flow' per build beat at least; the QA reviewer can check it on the contact sheet (an object between two props in mid-flight). Off: today's pop-and-shake entrances.",
+      "evidence": [
+        "Owner notes (31 Oct): 'Animation are very basic things just popping up and shaking so basic. Like 5/10'; 'The animation are pretty basic... right now very static'; 'Animation is the core of this. If it's not good people won't continue the video.'",
+        "v-20261031-01 contact sheet (videos/v-20261031-01/preview.png): from 5 s to 45 s every still is a wide shot with the restaurant or a character centred and money as small labelled tags ($20, $3, $4,000,000); nothing is in motion between two things, and the 3 lit night shots are only the turn and payoff.",
+        "Market data 31 Oct: the money-as-a-physical-thing Shorts ('Big Money Big Stack Counting' 72K, 'Real Money Euro Cash' 65K, 17-21 s) and our own 'What $1 billion looks like in $100 bills' (1,105 views, money as a physical pile) are the money-scale Shorts that travel; the flat-label how-it-works Shorts don't."
+      ],
+      "expectedEffect": "Fewer drop-offs in the middle (avgViewPct): the picture shows the money's route the voice describes, so the eye has a moving target every beat.",
+      "confidence": "medium",
+      "effort": "M",
+      "risk": "More motion can clutter the frame or fight the captions; keep the path above the caption band and one flow at a time. Overlaps build-beats-on-lit-sets and first-action-by-1s (all three are build-beat craft; they can share one flag).",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "high"
+    },
+    {
+      "id": "cinematic-bed-gets-a-pulse",
+      "date": "2026-11-02",
+      "area": "music",
+      "title": "Keep cinematic music, but give it a pulse from the first bar",
+      "change": "Behind a flag in renderer/engine/music.py _cinematic: add a soft kick on beats 1 and 3 and a ticking closed hat or shaker on eighths from bar 1 (low, around -24 dB under the voice), start on the major-first progression ([(0, MAJ)...] or rotate the minor one to start on its VI), and lift the ostinato an octave and add the full drums at the turn beat (the timeline already knows where the turn is). Off: today's bed (slow swells, low drone, toms on 1 and 2.5). Genre choice and the variety rotation stay as they are.",
+      "evidence": [
+        "Owner note on v-20261031-02 (cinematic, key E, 94 BPM, 31 Oct): 'The background music is very dull feels like I'm doing postmortem.'",
+        "python -m improvement.evaluate (2 Nov): music genre cinematic 13.42x median views, 69.6% viewed (n=6): the genre works on our numbers, so the fix is its energy, not dropping it.",
+        "renderer/engine/music.py _cinematic: two bars per chord, the first progression starts on a minor chord, and the only percussion is a tom on beats 1 and 2.5: there is no steady pulse at 80-100 BPM."
+      ],
+      "expectedEffect": "Same or better avgViewPct on cinematic videos with a bed that sounds driven rather than mournful; protects the best-performing genre from the owner's objection.",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "A busier bed can mask the voice; keep ducking as is and check levels in the mix gate. n=6 for cinematic, so its lead may be the topics, not the music.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }

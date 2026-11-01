@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "day": "2026-11-02",
+  "startedAt": "2026-11-01T18:21:13Z",
+  "finishedAt": "2026-11-01T18:28:05Z",
+  "summary": "Monday hooks-and-retention pass, built around the owner's 31 Oct notes (animation 5/10, hooks lack curiosity, cinematic music dull). Added 6 topics (4 core, 1 local India) and 3 experiment proposals: a 'you think X? wrong' hook, money that travels between props instead of popping in, and a cinematic music bed with a pulse.",
+  "decision": "acted",
+  "why": "Our 'secret' hooks (claims) get 11.0x median views and 156% kept past the hook against 1.05x for 'question' hooks (n=4 vs 8). The McDonald's contact sheet shows wide, static shots with money as small tags from 5 to 45 s. Cinematic is our best genre (13.4x, n=6), but the owner called it a 'postmortem'. The feed had 8 open topics and no local one.",
+  "findings": [
+    {
+      "title": "The owner's suggested hook matches our numbers",
+      "detail": "Claim hooks ('secret') keep 156% past the hook and 75% viewed; question hooks that half-answer ('It's not the burgers. So how...') get 38%. Proposal hook-you-think-x-youre-wrong.",
+      "link": "improvement/research/2026-11-02.md"
+    },
+    {
+      "title": "The animation problem is visible in the stills",
+      "detail": "v-20261031-01: every build beat from 5 to 45 s is a wide shot with money as small tags; nothing moves between the props even though the story is money moving. Proposal money-travels-not-pops.",
+      "link": "videos/v-20261031-01/preview.png"
+    },
+    {
+      "title": "Rich vs Poor Mindset is the fastest Short in the niche",
+      "detail": "2.2M views in 4 days (60 s). Added a rich-vs-poor $50K car topic with an 8.8M reference.",
+      "link": "https://youtube.com/shorts/CyFFcGeHLAU"
+    },
+    {
+      "title": "'Starbucks is a bank' has proven demand",
+      "detail": "PolyMatter 1.2M, ColdFusion 650K, WSJ ~900K. Added as a how_they_make_money topic with illustrative maths.",
+      "link": "https://rosetta.to/u/polymatter/why-starbucks-is-actually-a-bank"
+    },
+    {
+      "title": "Claude Code 2.1.314 and 2.1.316",
+      "detail": "Subagent effort level setting; cloud scheduled tasks are now marked failed when auto mode stops a turn. Nothing for the pipeline to change.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "6 topics in the feed",
+      "detail": "gym-paid-by-people-who-never-come, costco-barely-profits-on-the-cart, rich-vs-poor-the-50k-car, wedding-on-a-personal-loan (INR), starbucks-holds-your-money, a-trillion-at-a-million-a-day",
+      "branch": "agent/research/2026-11-02"
+    },
+    {
+      "title": "3 experiment proposals",
+      "detail": "hook-you-think-x-youre-wrong (high), money-travels-not-pops (high), cinematic-bed-gets-a-pulse (normal)",
+      "branch": "agent/research/2026-11-02"
+    }
+  ],
+  "nextCheck": "2026-11-03",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-02.md"
+    }
+  ]
+}
