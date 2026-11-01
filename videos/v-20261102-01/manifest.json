@@ -1,0 +1,313 @@
+{
+  "id": "v-20261102-01",
+  "createdAt": "2026-11-01T23:04:52.543367+00:00",
+  "status": "failed",
+  "failReason": "QA review failed three rounds: build-beat cameras either cropped items at the frame edge (medium/close) or left them small in an empty frame (wide) in beats buyers, drop and tax",
+  "template": "short_story",
+  "topic": {
+    "title": "Why can't Elon Musk just sell his shares and give the money away?",
+    "category": "wealth",
+    "reach": "global",
+    "feed_id": "2026-10-23-elon-cant-give-it-away"
+  },
+  "title": "Why Elon can't just give his billions away 🚀",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:40:44.990195+00:00",
+      "finishedAt": "2026-11-01T22:40:44.990195+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-01T22:41:45.595131+00:00",
+      "finishedAt": "2026-11-01T22:41:45.595131+00:00",
+      "notes": [
+        "compare 'after': the number check cannot recompute 'drop.amount'; compare a money result (renderer/templates/long_story/README.md lists them)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:41:54.481803+00:00",
+      "finishedAt": "2026-11-01T22:41:54.481803+00:00",
+      "notes": [
+        "23 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'promise' runs 9.3 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'tax' runs 12.9 s with 5.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:42:29.187001+00:00",
+      "finishedAt": "2026-11-01T22:42:29.187001+00:00",
+      "notes": [
+        "23 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'promise' runs 8.5 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'tax' runs 9.0 s with 5.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:42:40.383647+00:00",
+      "finishedAt": "2026-11-01T22:42:40.383647+00:00",
+      "notes": [
+        "27 figures computed from inputs; 18 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:46:02.989667+00:00",
+      "finishedAt": "2026-11-01T22:46:02.989667+00:00",
+      "notes": [
+        "27 figures computed from inputs; 18 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:47:07.570090+00:00",
+      "finishedAt": "2026-11-01T22:47:07.570090+00:00",
+      "notes": [
+        "27 figures computed from inputs; 18 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:47:59.242043+00:00",
+      "finishedAt": "2026-11-01T22:47:59.242043+00:00",
+      "notes": [
+        "27 figures computed from inputs; 18 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-01T22:49:08.711997+00:00",
+      "finishedAt": "2026-11-01T22:49:08.711997+00:00",
+      "notes": [
+        "tax/turn beats: '$16.66B to the tax office' and 'only about $53.34B is left to give' ignore that a cash gift to a public charity is deductible (up to 60% of AGI, IRC 170(b)(1)(G), permanent since the 2025 tax act); giving the proceeds the same year would cut the 20% part of the bill a lot (only the 3.8% NIIT stays), so the tax loss and 'almost half would vanish' are overstated. Fix: say the tax is 'before any charity deduction' and soften the turn/hook, or reframe the tax as the cost of selling vs. giving shares (where the difference is real: no capital-gains tax at all on donated long-held shares).",
+        "payoff beat: 'hand the shares straight to a charity, which skips the sale and his tax bill' implies giving shares also avoids the 30% price slide; the charity still has to sell to spend the money and a $100B block hits the same thin buyer pool. Only the capital-gains tax is truly skipped. Fix: 'which skips his capital-gains tax' (optionally: 'and lets the charity sell slowly')."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-01T22:48:19.901025+00:00",
+      "finishedAt": "2026-11-01T22:49:32.465090+00:00",
+      "notes": [
+        "2.8 s with nothing new on screen in beat 'tax' (at most 2.5 s): add an action on the phrase being said there",
+        "beat 'promise': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "3 of 16 stills are mostly empty background (at 5 s, 15 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+        "length 73 s is outside 45–70 s",
+        "warning: beat 'tax' runs 9.1 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 8.2 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:51:37.788347+00:00",
+      "finishedAt": "2026-11-01T22:51:37.788347+00:00",
+      "notes": [
+        "22 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:52:00.927176+00:00",
+      "finishedAt": "2026-11-01T22:52:00.927176+00:00",
+      "notes": [
+        "22 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:52:21.757372+00:00",
+      "finishedAt": "2026-11-01T22:52:21.757372+00:00",
+      "notes": [
+        "22 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:53:00.873972+00:00",
+      "finishedAt": "2026-11-01T22:53:00.873972+00:00",
+      "notes": [
+        "Re-review after rewrite: 23.8% = 20% LTCG + 3.8% NIIT top US rate (verify item ok), 'illustrative $100 billion' used, tax now 'up to 23.8%' with the charity deduction correctly said to not cover it all, turn only claims $70B before tax, payoff limited to skipping his capital-gains tax (true for donated long-held shares), hook hedged ('could'); disclaimer ends description. Style notes: turn still passes taxLabel 'Tax' with no tax value, and the unused 'tax' maths item can be dropped."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:52:44.297773+00:00",
+      "finishedAt": "2026-11-01T22:53:30.763131+00:00",
+      "notes": [
+        "69 s, ocean/synthwave (preview only)",
+        "warning: beat 'payoff' runs 8.6 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:53:57.105305+00:00",
+      "finishedAt": "2026-11-01T22:53:57.105305+00:00",
+      "notes": [
+        "22 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-01T22:54:15.955160+00:00",
+      "finishedAt": "2026-11-01T22:54:48.024475+00:00",
+      "notes": [
+        "15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'payoff' runs 8.6 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:55:08.142663+00:00",
+      "finishedAt": "2026-11-01T22:55:34.166094+00:00",
+      "notes": [
+        "69 s, ocean/synthwave (preview only)",
+        "warning: beat 'payoff' runs 8.6 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-01T22:56:38.025211+00:00",
+      "finishedAt": "2026-11-01T22:56:38.025211+00:00",
+      "notes": [
+        "[script] 25.0s beat 'buyers': the close camera on 'price' cuts the buyer off at the left edge (half his face out of frame), and a second buyer stands behind the ticker, hidden by it. 'Few buyers' (multiply n=3) ends up showing one cut-off man. Frame the shot medium on all, or move the ticker (x 0.82) clear of the buyers.",
+        "[script] 30.0s beat 'drop': the close camera on 'price' pushes the pricefall chart off the left edge (the line's start is cut off), and the 'Gone' meltcash only peeks in at the right edge. Use a medium shot, or move the chart in from x 0.3.",
+        "[script] 40.0s beat 'tax': the close camera on 'paid' cuts the 'Profit' cash stack off at the right edge, leaving its $70.00B tag floating apart from it. Frame paid and profit together, or move profit inward.",
+        "[scene] 60.0s beat 'payoff' (Payoff component): the share stack runs off the left edge, and Priya is nowhere in frame at 'charity' even though the camera is set to close on priya. Either the camera target resolves to the wrong place or the actor isn't drawn."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:57:13.707771+00:00",
+      "finishedAt": "2026-11-01T22:57:13.707771+00:00",
+      "notes": [
+        "22 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-01T22:57:27.805868+00:00",
+      "finishedAt": "2026-11-01T22:57:58.920402+00:00",
+      "notes": [
+        "17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'payoff' runs 8.6 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T22:58:56.389229+00:00",
+      "finishedAt": "2026-11-01T22:59:22.983579+00:00",
+      "notes": [
+        "69 s, ocean/synthwave (preview only)",
+        "warning: beat 'payoff' runs 8.6 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:00:06.479556+00:00",
+      "finishedAt": "2026-11-01T23:00:06.479556+00:00",
+      "notes": [
+        "[script] 10.0s beat 'promise' (new since the fix): the new close camera on 'shares' crops the share stack's top tag off the top edge and its sides off the left and right edges. The 'His shares' label also sits on top of the caption 'AND THE FIRST' (text over text). Go back to medium, or shrink the stack (size 0.24).",
+        "[script] 25.0s beat 'buyers': still cut off. The shares stack and its $100 billion tag are clipped at the left edge, and so is the first buyer, with half his face out of frame. The third buyer is still hidden behind the ticker. Move shares to x ~0.15 or drop it from this shot, and spread the buyers clear of the ticker.",
+        "[script] 30.0s beat 'drop': still cut off under the medium camera on all. The price-fall chart runs off the left edge, and the 'Gone' melting cash runs off the right edge. Move price in from x 0.3 and gone in from x 0.78 (or make both smaller); if 'medium on all' can't fit items at those x values, the build scene's framing is too tight.",
+        "[script] 40.0s beat 'tax': unchanged. The close camera on 'paid' still cuts the 'Profit' cash stack in half at the right edge, and its $70.00B tag floats on its own. Frame paid and profit together (medium), or bring profit nearer to paid.",
+        "[scene] 60.0s beat 'payoff' (Payoff component): unchanged. The share stack still runs off the left edge, and Priya is still not in frame around 'charity', even with the camera set to close on priya at 'skips'."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:00:45.219365+00:00",
+      "finishedAt": "2026-11-01T23:00:45.219365+00:00",
+      "notes": [
+        "22 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:00:58.788481+00:00",
+      "finishedAt": "2026-11-01T23:01:28.795998+00:00",
+      "notes": [
+        "69 s, ocean/synthwave (preview only)",
+        "warning: beat 'payoff' runs 8.6 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:01:49.437743+00:00",
+      "finishedAt": "2026-11-01T23:01:49.437743+00:00",
+      "notes": [
+        "22 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:02:03.657900+00:00",
+      "finishedAt": "2026-11-01T23:02:30.665995+00:00",
+      "notes": [
+        "69 s, ocean/synthwave (preview only)",
+        "warning: beat 'payoff' runs 8.6 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:02:48.829221+00:00",
+      "finishedAt": "2026-11-01T23:02:48.829221+00:00",
+      "notes": [
+        "22 figures computed from inputs; 13 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:03:01.795247+00:00",
+      "finishedAt": "2026-11-01T23:03:29.770664+00:00",
+      "notes": [
+        "69 s, ocean/synthwave (preview only)",
+        "warning: beat 'payoff' runs 8.6 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:04:30.798062+00:00",
+      "finishedAt": "2026-11-01T23:04:30.798062+00:00",
+      "notes": [
+        "[script] 20.0s+25.0s beat 'buyers': the cut-offs are fixed, but the beat is now one wide shot held for 6.8 s with no camera move. The 20s and 25s stills share one composition, the top half is empty sky, and the buyers and ticker are tiny in the bottom third (motion-direction rule 1: fill the frame). The 'lower price' drain on the ticker can barely be seen. Keep the wide opening, then push to medium on buyers+price at 'lower' (items are at x 0.28/0.5/0.72 now, so a medium shot should fit).",
+        "[script] 30.0s beat 'drop': no longer cut off, but the wide shot makes the price-fall chart (size 0.1) a small card in the lower third while more than half the frame is empty night sky. The key moment, 'the price slides 30%', plays on a thumbnail-sized chart. Start medium on price and gone (or give price size ~0.18 at x 0.4), keeping the close on pile at 'only'.",
+        "[script] 45.0s beat 'tax': the wide shot at 'taxed' leaves the receipt, the cash and the tax desk small at the bottom, and the 23.8% tag floats in the middle of the wall, attached to nothing. Hold medium on profit+tax at 'taxed' so the rate sits on the desk or the cash."
+      ]
+    }
+  ]
+}

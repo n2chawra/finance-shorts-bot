@@ -1,0 +1,1164 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52817,
+  "story": "billionaire_question",
+  "shape": "what-if",
+  "currency": "USD",
+  "feed_id": "2026-10-23-elon-cant-give-it-away",
+  "style": {
+    "palette": "ocean",
+    "genre": "synthwave",
+    "key": "G",
+    "bpm": 112
+  },
+  "hook_style": "secret",
+  "cta": "Sell it or give the shares? Comment",
+  "maths": [
+    {
+      "name": "pile",
+      "kind": "share",
+      "total": 100000000000,
+      "parts": 1
+    },
+    {
+      "name": "drop",
+      "kind": "fee_take",
+      "amount": 100000000000,
+      "fee_pct": 30,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "kept",
+      "kind": "fee_take",
+      "amount": 100000000000,
+      "fee_pct": 70,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "tax",
+      "kind": "fee_take",
+      "amount": 70000000000,
+      "fee_pct": 23.8,
+      "per_year": 1,
+      "years": 1
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 3.0,
+    "words": "Elon sells it *all*?",
+    "figure": "{kept_total}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "If Elon sold it all, a third could vanish. Here's how.",
+      "events": {
+        "gave": {
+          "word": "sold"
+        },
+        "half": {
+          "word": "third"
+        },
+        "vanish": {
+          "word": "vanish"
+        },
+        "how": {
+          "word": "how"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "gave"
+        },
+        {
+          "kind": "fail",
+          "at": "vanish"
+        },
+        {
+          "kind": "boom",
+          "at": "how"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "A third gone?",
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "happy"
+              },
+              {
+                "at": "vanish",
+                "pose": "shrug",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Play it out with an illustrative {pile_total_long} of shares. Two things eat that pile, and the first isn't the tax.",
+      "events": {
+        "play": {
+          "word": "Play"
+        },
+        "illus": {
+          "word": "illustrative"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "two": {
+          "word": "Two"
+        },
+        "eat": {
+          "word": "eat"
+        },
+        "pile": {
+          "word": "pile"
+        },
+        "first": {
+          "word": "first"
+        },
+        "tax": {
+          "word": "tax"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "shares"
+        },
+        {
+          "kind": "ding",
+          "at": "two"
+        },
+        {
+          "kind": "riser",
+          "at": "first"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "blue",
+          "horizon": [
+            {
+              "prop": "starship",
+              "x": 0.88,
+              "size": 0.08
+            }
+          ]
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.45,
+            "size": 0.24,
+            "tag": "{pile_total_long}",
+            "label": "His shares"
+          },
+          {
+            "id": "tax",
+            "prop": "taxdesk",
+            "x": 0.18,
+            "size": 0.12,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "play",
+            "do": "glow",
+            "target": "shares"
+          },
+          {
+            "at": "shares",
+            "do": "grow",
+            "target": "shares",
+            "scale": 1.1
+          },
+          {
+            "at": "two",
+            "do": "shake",
+            "target": "shares"
+          },
+          {
+            "at": "eat",
+            "do": "shake",
+            "target": "shares"
+          },
+          {
+            "at": "pile",
+            "do": "glow",
+            "target": "shares"
+          },
+          {
+            "at": "tax",
+            "do": "enter",
+            "target": "tax"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "shares"
+          },
+          {
+            "at": "first",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "where",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "His money isn't cash in a vault. It's shares of his companies, so to give a single dollar, he has to sell first.",
+      "events": {
+        "money": {
+          "word": "money"
+        },
+        "cash": {
+          "word": "cash"
+        },
+        "vault": {
+          "word": "vault"
+        },
+        "companies": {
+          "word": "companies"
+        },
+        "dollar": {
+          "word": "dollar"
+        },
+        "sell": {
+          "word": "sell"
+        },
+        "shares": {
+          "word": "shares"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "vault"
+        },
+        {
+          "kind": "tick",
+          "at": "shares"
+        },
+        {
+          "kind": "pop",
+          "at": "companies"
+        },
+        {
+          "kind": "boom",
+          "at": "sell"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "bank",
+          "tint": "blue"
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "vault",
+            "prop": "emptysafe",
+            "x": 0.24,
+            "size": 0.2,
+            "label": "Cash",
+            "hidden": true
+          },
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.58,
+            "size": 0.2,
+            "label": "Shares",
+            "hidden": true
+          },
+          {
+            "id": "companies",
+            "prop": "starship",
+            "x": 0.82,
+            "size": 0.16,
+            "hidden": true
+          },
+          {
+            "id": "sell",
+            "prop": "sellbutton",
+            "x": 0.58,
+            "y": 0.32,
+            "size": 0.1,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "money",
+            "do": "glow",
+            "target": "shares"
+          },
+          {
+            "at": "cash",
+            "do": "enter",
+            "target": "vault"
+          },
+          {
+            "at": "vault",
+            "do": "state",
+            "target": "vault",
+            "state": "empty"
+          },
+          {
+            "at": "shares",
+            "do": "enter",
+            "target": "shares"
+          },
+          {
+            "at": "companies",
+            "do": "enter",
+            "target": "companies"
+          },
+          {
+            "at": "dollar",
+            "do": "glow",
+            "target": "shares"
+          },
+          {
+            "at": "sell",
+            "do": "enter",
+            "target": "sell"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "vault"
+          },
+          {
+            "at": "shares",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "sell",
+            "size": "close",
+            "on": "sell",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "buyers",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "But who has {pile_total_long} to spend? Few buyers, so each one pays a lower price than the last.",
+      "events": {
+        "spend": {
+          "word": "spend"
+        },
+        "few": {
+          "word": "Few"
+        },
+        "buyers": {
+          "word": "buyers"
+        },
+        "each": {
+          "word": "each"
+        },
+        "lower": {
+          "word": "lower"
+        },
+        "price": {
+          "word": "price"
+        },
+        "last": {
+          "word": "last"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "spend"
+        },
+        {
+          "kind": "pop",
+          "at": "buyers"
+        },
+        {
+          "kind": "whoosh",
+          "at": "each"
+        },
+        {
+          "kind": "fail",
+          "at": "lower"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "purple"
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.28,
+            "size": 0.13,
+            "tag": "{pile_total_long}"
+          },
+          {
+            "id": "buyers",
+            "prop": "buyer",
+            "x": 0.5,
+            "size": 0.11,
+            "hidden": true
+          },
+          {
+            "id": "price",
+            "prop": "ticker",
+            "x": 0.72,
+            "size": 0.12,
+            "label": "Price",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "few",
+            "do": "enter",
+            "target": "buyers"
+          },
+          {
+            "at": "buyers",
+            "do": "multiply",
+            "target": "buyers",
+            "n": 2,
+            "cols": 2
+          },
+          {
+            "at": "price",
+            "do": "enter",
+            "target": "price"
+          },
+          {
+            "at": "lower",
+            "do": "drain",
+            "target": "price",
+            "k": 0.5
+          },
+          {
+            "at": "last",
+            "do": "drain",
+            "target": "price",
+            "k": 0.2
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "drop",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Say the price slides {drop_fee_pct} as he sells. That's {drop_total} gone, so the pile brings in only {kept_total}.",
+      "events": {
+        "price": {
+          "word": "price"
+        },
+        "slides": {
+          "word": "slides"
+        },
+        "sells": {
+          "word": "sells"
+        },
+        "gone": {
+          "word": "gone"
+        },
+        "pile": {
+          "word": "pile"
+        },
+        "brings": {
+          "word": "brings"
+        },
+        "only": {
+          "word": "only"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "slides"
+        },
+        {
+          "kind": "fail",
+          "at": "gone"
+        },
+        {
+          "kind": "kaching",
+          "at": "brings"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "red",
+          "horizon": [
+            {
+              "prop": "ticker",
+              "x": 0.1,
+              "size": 0.07
+            }
+          ]
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "price",
+            "prop": "pricefall",
+            "x": 0.4,
+            "size": 0.1,
+            "k": 0,
+            "label": "Share price"
+          },
+          {
+            "id": "gone",
+            "prop": "meltcash",
+            "x": 0.7,
+            "size": 0.15,
+            "tag": "{drop_total}",
+            "label": "Gone",
+            "hidden": true
+          },
+          {
+            "id": "pile",
+            "prop": "cash",
+            "x": 0.7,
+            "y": 0.3,
+            "size": 0.12,
+            "tag": "{kept_total}",
+            "label": "Brings in",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "price",
+            "do": "glow",
+            "target": "price"
+          },
+          {
+            "at": "slides",
+            "do": "fill",
+            "target": "price",
+            "k": 1
+          },
+          {
+            "at": "sells",
+            "do": "shake",
+            "target": "price"
+          },
+          {
+            "at": "gone",
+            "do": "enter",
+            "target": "gone"
+          },
+          {
+            "at": "pile",
+            "do": "enter",
+            "target": "pile"
+          },
+          {
+            "at": "only",
+            "do": "glow",
+            "target": "pile"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "only",
+            "size": "close",
+            "on": "pile",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "doubt",
+      "scene": "build",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Ouch. But that's still {kept_total} to give away, right?",
+      "events": {
+        "hurts": {
+          "word": "Ouch"
+        },
+        "still": {
+          "word": "still"
+        },
+        "give": {
+          "word": "give"
+        },
+        "right": {
+          "word": "right"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "still"
+        },
+        {
+          "kind": "tick",
+          "at": "right"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "red"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "worried"
+              },
+              {
+                "at": "give",
+                "pose": "point",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "give",
+            "prop": "giftbox",
+            "x": 0.72,
+            "size": 0.14,
+            "tag": "{kept_total}"
+          }
+        ],
+        "actions": [
+          {
+            "at": "hurts",
+            "do": "shake",
+            "target": "give"
+          },
+          {
+            "at": "give",
+            "do": "grow",
+            "target": "give",
+            "scale": 1.2
+          },
+          {
+            "at": "right",
+            "do": "glow",
+            "target": "give"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "give",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Thing two: he paid almost nothing for those shares, so nearly all of it is profit, taxed at up to {tax_fee_pct}. A charity deduction won't cover it all.",
+      "events": {
+        "two": {
+          "word": "two"
+        },
+        "paid": {
+          "word": "paid"
+        },
+        "nothing": {
+          "word": "nothing"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "nearly": {
+          "word": "nearly"
+        },
+        "profit": {
+          "word": "profit"
+        },
+        "taxed": {
+          "word": "taxed"
+        },
+        "up": {
+          "word": "up"
+        },
+        "charity": {
+          "word": "charity"
+        },
+        "deduction": {
+          "word": "deduction"
+        },
+        "cover": {
+          "word": "cover"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "two"
+        },
+        {
+          "kind": "tick",
+          "at": "paid"
+        },
+        {
+          "kind": "kaching",
+          "at": "profit"
+        },
+        {
+          "kind": "boom",
+          "at": "taxed"
+        },
+        {
+          "kind": "fail",
+          "at": "cover"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "office",
+          "tint": "gold"
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "paid",
+            "prop": "oldreceipt",
+            "x": 0.27,
+            "size": 0.1,
+            "label": "Paid then"
+          },
+          {
+            "id": "profit",
+            "prop": "cash",
+            "x": 0.49,
+            "size": 0.1,
+            "tag": "{kept_total}",
+            "label": "Profit"
+          },
+          {
+            "id": "tax",
+            "prop": "taxdesk",
+            "x": 0.74,
+            "size": 0.1,
+            "label": "Tax",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "two",
+            "do": "glow",
+            "target": "paid"
+          },
+          {
+            "at": "nothing",
+            "do": "shrink",
+            "target": "paid",
+            "scale": 0.75
+          },
+          {
+            "at": "shares",
+            "do": "glow",
+            "target": "paid"
+          },
+          {
+            "at": "nearly",
+            "do": "glow",
+            "target": "profit"
+          },
+          {
+            "at": "profit",
+            "do": "grow",
+            "target": "profit",
+            "scale": 1.15
+          },
+          {
+            "at": "taxed",
+            "do": "enter",
+            "target": "tax"
+          },
+          {
+            "at": "up",
+            "do": "glow",
+            "target": "profit"
+          },
+          {
+            "at": "charity",
+            "do": "glow",
+            "target": "tax"
+          },
+          {
+            "at": "deduction",
+            "do": "shake",
+            "target": "profit"
+          },
+          {
+            "at": "cover",
+            "do": "shake",
+            "target": "tax"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "taxed",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "That's where the plan breaks. From {pile_total_long} of shares, only {kept_total} reaches a charity, and that's before tax.",
+      "events": {
+        "plan": {
+          "word": "plan"
+        },
+        "breaks": {
+          "word": "breaks"
+        },
+        "start": {
+          "word": "From"
+        },
+        "only": {
+          "word": "only"
+        },
+        "left": {
+          "word": "reaches"
+        },
+        "away": {
+          "word": "tax"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "plan"
+        },
+        {
+          "kind": "boom",
+          "at": "breaks"
+        },
+        {
+          "kind": "fail",
+          "at": "only"
+        },
+        {
+          "kind": "kaching",
+          "at": "left"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "start": "{pile_total_long}",
+        "drop": "{drop_total}",
+        "left": "{kept_total}",
+        "dropLabel": "Price slide",
+        "taxLabel": "Tax",
+        "leftLabel": "Reaches charity",
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "only",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "So the very rich rarely sell to give. They hand the shares to a charity, which skips his capital-gains tax and lets the charity sell slowly.",
+      "events": {
+        "rich": {
+          "word": "rich"
+        },
+        "sell": {
+          "word": "sell"
+        },
+        "hand": {
+          "word": "hand"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "charity": {
+          "word": "charity"
+        },
+        "skips": {
+          "word": "skips"
+        },
+        "slowly": {
+          "word": "slowly"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "hand"
+        },
+        {
+          "kind": "whoosh",
+          "at": "shares"
+        },
+        {
+          "kind": "ding",
+          "at": "charity"
+        },
+        {
+          "kind": "boom",
+          "at": "skips"
+        },
+        {
+          "kind": "ding",
+          "at": "slowly"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "stamp": "Give the shares",
+        "sellLabel": "Sell",
+        "taxLabel": "Tax",
+        "set": "penthouse",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "skips",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "So he can't just sell it all. Then what happens if Elon sold it all?",
+      "events": {
+        "cant": {
+          "word": "can't"
+        },
+        "sell": {
+          "word": "sell"
+        },
+        "charity": {
+          "word": "all"
+        },
+        "really": {
+          "word": "happens"
+        },
+        "elon": {
+          "word": "Elon"
+        },
+        "away": {
+          "word": "sold"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "sell"
+        },
+        {
+          "kind": "tick",
+          "at": "really"
+        }
+      ],
+      "params": {
+        "set": "penthouse",
+        "hud": {
+          "hide": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "charity",
+                "pose": "shrug",
+                "expression": "confused"
+              },
+              {
+                "at": "elon",
+                "pose": "point",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "cant",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          },
+          {
+            "at": "really",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Vanish?",
+          "at": "really",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}
