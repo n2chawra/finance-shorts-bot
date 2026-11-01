@@ -83,7 +83,7 @@
     },
     {
       "day": "2026-11-02",
-      "shipped": 0,
+      "shipped": 1,
       "failed": 1
     }
   ],
@@ -507,6 +507,13 @@
       "template": "short_story",
       "status": "failed",
       "reason": "QA review failed three rounds: build-beat cameras either cropped items at the frame edge (medium/close) or left them small in an empty frame (wide) in beats buyers, drop and tax"
+    },
+    {
+      "id": "v-20261102-02",
+      "day": "2026-11-02",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
     }
   ]
 }
