@@ -1,0 +1,300 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:05:47.623245+00:00",
+    "finishedAt": "2026-11-01T23:05:47.623245+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:06:43.790269+00:00",
+    "finishedAt": "2026-11-01T23:06:43.790269+00:00",
+    "notes": [
+      "26 figures computed from inputs; 20 cross-checked against closed-form formulas.",
+      "warning: beat 'payoff' runs 9.9 s with 3.9 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:06:50.053856+00:00",
+    "finishedAt": "2026-11-01T23:06:50.053856+00:00",
+    "notes": [
+      "26 figures computed from inputs; 20 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:09:33.034768+00:00",
+    "finishedAt": "2026-11-01T23:09:33.034768+00:00",
+    "notes": [
+      "26 figures computed from inputs; 20 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:10:32.755783+00:00",
+    "finishedAt": "2026-11-01T23:10:32.755783+00:00",
+    "notes": [
+      "change: 'the dealer is allowed to add a couple of points to that rate' is stated as a universal rule in a reach:global video, but it is false in general: the UK FCA banned discretionary (rate-linked) motor finance commission from Jan 2021 and Australia's ASIC banned flex commissions from Nov 2018. Scope it (e.g. 'In the US, many dealers can add up to a couple of points...') or describe it as something some dealers can do.",
+      "hook/loop: 'Your car discount? You quietly pay it back.' presents the markup as certain for every viewer; it only happens when the buyer finances through the dealer and the dealer marks up the rate. Soften to 'can'/'may' (e.g. 'Your car discount? You might quietly pay it back.').",
+      "turn + title: 'the loan hands it back to the dealer, one payment at a time' and the title 'How car dealers win back your discount' say the dealer recovers the discount, but the extra $1,982 interest goes to the lender and the dealer only gets a share (and the dealer reserve is usually paid to the dealer upfront, not per payment). The 'after' beat says this correctly ('the dealer keeps a share'); make the turn and title match: the buyer pays back roughly the discount in extra interest, and the dealer gets a cut of it.",
+      "promise/before (minor, fix while rewriting): the car is $35,000 with $2,000 off, yet the loan is for the full $35,000; either make the loan $33,000 or call $35,000 the amount financed."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:09:52.462830+00:00",
+    "finishedAt": "2026-11-01T23:10:38.659054+00:00",
+    "notes": [
+      "4 of 14 stills are mostly empty background (at 15 s, 25 s, 50 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+      "warning: beat 'after' runs 9.6 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:11:21.091984+00:00",
+    "finishedAt": "2026-11-01T23:11:50.222830+00:00",
+    "notes": [
+      "3.7 s with nothing new on screen in beat 'promise' (at most 2.5 s): add an action on the phrase being said there",
+      "beats promise: the narrator explains while the camera frames a person; frame the things being explained (an item or \"all\"), characters step back",
+      "warning: beat 'after' runs 9.6 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:12:17.998235+00:00",
+    "finishedAt": "2026-11-01T23:12:17.998235+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:12:19.057201+00:00",
+    "finishedAt": "2026-11-01T23:12:19.057201+00:00",
+    "notes": [
+      "26 figures computed from inputs; 20 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:12:57.133333+00:00",
+    "finishedAt": "2026-11-01T23:12:57.133333+00:00",
+    "notes": [
+      "Re-review after rewrite: dealer rate markup now scoped ('some dealers can'), hook/loop/turn/payoff hedged and consistent (extra $1,868 interest goes via the loan, dealer gets a cut), title no longer overclaims, loan $33,000 = car after $2,000 discount, 6%/8% realistic US assumptions, no lender named, no advice, description ends with disclaimer. Style note: description could add the 'speak to a licensed financial adviser' line from channel/profile.md."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:12:41.057288+00:00",
+    "finishedAt": "2026-11-01T23:13:24.073058+00:00",
+    "notes": [
+      "4 of 14 stills are mostly empty background (at 15 s, 25 s, 50 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:14:01.181095+00:00",
+    "finishedAt": "2026-11-01T23:14:31.951302+00:00",
+    "notes": [
+      "4.0 s with nothing new on screen in beat 'promise' (at most 2.5 s): add an action on the phrase being said there",
+      "3 of 14 stills are mostly empty background (at 25 s, 50 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:15:28.181594+00:00",
+    "finishedAt": "2026-11-01T23:15:58.491170+00:00",
+    "notes": [
+      "2.8 s with nothing new on screen in beat 'promise' (at most 2.5 s): add an action on the phrase being said there",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:16:26.767170+00:00",
+    "finishedAt": "2026-11-01T23:16:52.092824+00:00",
+    "notes": [
+      "2.8 s with nothing new on screen in beat 'promise' (at most 2.5 s): add an action on the phrase being said there",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:17:24.623724+00:00",
+    "finishedAt": "2026-11-01T23:17:51.085374+00:00",
+    "notes": [
+      "65 s, mint/pop (preview only)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:18:31.941766+00:00",
+    "finishedAt": "2026-11-01T23:19:04.828813+00:00",
+    "notes": [
+      "65 s, mint/pop (preview only)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:20:15.213256+00:00",
+    "finishedAt": "2026-11-01T23:20:15.213256+00:00",
+    "notes": [
+      "[script] 0.0s hook: the first caption 'YOUR CAR DISCOUNT?' sits right across Rohan's eyes and face (actor at spot 'left', medium shot, head at caption height). Move Rohan (e.g. close/medium on rohan so his head sits above the caption band, or spot him lower/right of the car) so the first frame's face is clear.",
+      "[scene] 10.0s promise beat (shot scene, phone object 'deal'): while the narrator says 'other $33,000' the phone shows only empty grey placeholder rows: no 'Your car deal' title and no 'Discount $2,000' / 'Loan $33,000' lines, although 'knocks' and 'borrow' have already fired; the phone's top edge also runs off the top of the frame after the wide camera move. The spoken figures never appear on the phone.",
+      "[script] 40.0s after beat: multiply n=2 on 'payments' (x 0.36) pushes the first bill stub off the left edge, so the '$1,868' tag floats over a half-cut prop, and the 'Dealer fee' envelope (x 0.77) runs off the right edge. Space the items further in (e.g. payments x≈0.25 with cols 2 placed inside the frame, fee x≈0.72, smaller sizes).",
+      "[script] 50.0s-60.0s payoff: the same composition (car, dealer, loan paper, fee envelope) is held for the whole 10 s beat with almost no change between the 50 s and 55 s stills; add an event or a shot change around 'comes'/'pocket' (number check already warned 3.9 s with no event)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:20:49.177062+00:00",
+    "finishedAt": "2026-11-01T23:20:49.177062+00:00",
+    "notes": [
+      "26 figures computed from inputs; 20 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:21:03.468494+00:00",
+    "finishedAt": "2026-11-01T23:21:34.214714+00:00",
+    "notes": [
+      "2.6 s with nothing new on screen in beat 'promise' (at most 2.5 s): add an action on the phrase being said there",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:21:54.542947+00:00",
+    "finishedAt": "2026-11-01T23:22:22.640895+00:00",
+    "notes": [
+      "65 s, mint/pop (preview only)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:22:51.060121+00:00",
+    "finishedAt": "2026-11-01T23:23:22.406255+00:00",
+    "notes": [
+      "65 s, mint/pop (preview only)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:23:56.760422+00:00",
+    "finishedAt": "2026-11-01T23:24:28.605477+00:00",
+    "notes": [
+      "3 of 14 stills are mostly empty background (at 25 s, 40 s, 50 s): fill the frame (a set, the cast big, money as a thing)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:25:04.951418+00:00",
+    "finishedAt": "2026-11-01T23:25:31.671135+00:00",
+    "notes": [
+      "beat 'after': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:26:03.403341+00:00",
+    "finishedAt": "2026-11-01T23:26:34.399215+00:00",
+    "notes": [
+      "65 s, mint/pop (preview only)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-01T23:27:20.526561+00:00",
+    "finishedAt": "2026-11-01T23:27:20.526561+00:00",
+    "notes": [
+      "[script] 10.0s promise beat: the small 'Discount' stack (spot 0.5) sits at caption height, so its green $2,000 value tag is hidden under its own 'DISCOUNT' label and the caption 'OTHER $33,000,' runs straight over both (text on text). The discount figure can't be read. Make the discount stack bigger or move it so its tag and label sit above the caption band (or next to the loan stack's label), clear of the captions.",
+      "[script] 35.0s and 40.0s after beat: the label 'Interest payments' (payments x 0.30) runs into 'Discount' (x 0.49) and reads 'Interest paymeDiscount', text on text. Use a shorter label (e.g. 'Interest') or space the items wider.",
+      "[script] 50.0s-55.0s payoff (unchanged since the last review): the 50 s and 55 s stills show the same composition (car, dealer, loan paper, fee envelope). Only a few coins move in, and the beat runs 10 s. Add a shot change or event around 'comes'/'pocket' (e.g. punch in on the $1,868 box or the buyer's pocket)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:28:00.569430+00:00",
+    "finishedAt": "2026-11-01T23:28:30.007921+00:00",
+    "notes": [
+      "65 s, mint/pop (preview only)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:28:57.432197+00:00",
+    "finishedAt": "2026-11-01T23:29:27.103371+00:00",
+    "notes": [
+      "65 s, mint/pop (preview only)",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:30:01.622096+00:00",
+    "finishedAt": "2026-11-01T23:30:01.622096+00:00",
+    "notes": [
+      "Re-review: hook face clear of captions, promise shows only the $33,000 loan stack with no text overlap, after-beat labels (Interest/Discount/Dealer fee) separate and props inside frame, payoff now changes (TWICE stamp 55s, push-in + Extra interest $1,868 card 60s); disclaimer on last frame, 65 s, audio -1.0/-17.3 dB, no layout/craft problems."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:30:18.646376+00:00",
+    "finishedAt": "2026-11-01T23:34:19.777714+00:00",
+    "notes": [
+      "65 s, mint/pop, peak -1.0 dB, mean -17.3 dB",
+      "warning: beat 'after' runs 9.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-01T23:34:31.086953+00:00",
+    "finishedAt": "2026-11-01T23:34:31.086953+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

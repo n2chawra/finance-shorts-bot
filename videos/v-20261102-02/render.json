@@ -1,0 +1,121 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61349,
+  "duration_sec": 65,
+  "tempo": 1.2,
+  "style": {
+    "palette": "mint",
+    "genre": "pop",
+    "key": "D",
+    "bpm": 116
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Your car discount? You might quietly pay it back. Here's how.",
+        "start": 0.3,
+        "seconds": 3.83,
+        "window": 4.27,
+        "fill": 0.897
+      },
+      {
+        "scene": "promise",
+        "text": "Picture a new car, and the dealer knocks $2,000 off. You borrow the other $33,000, and that loan is where the discount can quietly return.",
+        "start": 4.57,
+        "seconds": 9.82,
+        "window": 10.27,
+        "fill": 0.956
+      },
+      {
+        "scene": "before",
+        "text": "Before you sign, a lender approves your loan at 6%. Over 60 months, that's $638 a month.",
+        "start": 14.83,
+        "seconds": 7.52,
+        "window": 7.9,
+        "fill": 0.952
+      },
+      {
+        "scene": "change",
+        "text": "But some dealers can add a couple of points to that rate before you see it, so your paper says 8%.",
+        "start": 22.73,
+        "seconds": 5.71,
+        "window": 6.1,
+        "fill": 0.936
+      },
+      {
+        "scene": "doubt",
+        "text": "Only $31 more a month? That's nothing next to my discount.",
+        "start": 28.83,
+        "seconds": 3.75,
+        "window": 4.13,
+        "fill": 0.908
+      },
+      {
+        "scene": "after",
+        "text": "Over 60 payments, that's $1,868 more interest, almost the whole discount, and the dealer keeps a share as a fee from the lender.",
+        "start": 32.97,
+        "seconds": 9.1,
+        "window": 9.7,
+        "fill": 0.938
+      },
+      {
+        "scene": "turn",
+        "text": "Here's the clever part. The discount comes off the price, but the loan can take it back, one payment at a time, and the dealer gets a cut.",
+        "start": 42.67,
+        "seconds": 6.76,
+        "window": 7.4,
+        "fill": 0.914
+      },
+      {
+        "scene": "payoff",
+        "text": "So the dealer can earn twice: once on the car, and again with a cut of your loan. That $1,868 comes out of the buyer's pocket, a little every month.",
+        "start": 50.07,
+        "seconds": 10.22,
+        "window": 10.87,
+        "fill": 0.94
+      },
+      {
+        "scene": "loop",
+        "text": "So the discount can come back? Then think again about your car discount.",
+        "start": 60.93,
+        "seconds": 3.38,
+        "window": 3.77,
+        "fill": 0.897
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "on",
+    "loop-picture-matches-hook": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.306,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
