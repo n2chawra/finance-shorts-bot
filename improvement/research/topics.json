@@ -1529,6 +1529,221 @@
         "https://youtube.com/shorts/HgTNoSzvKi4",
         "https://youtube.com/shorts/kQCpFXtG9RE"
       ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-02",
+      "expires": "2027-01-31",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-02-starbucks-holds-your-money",
+      "title": "The coffee chain that holds a billion dollars of its customers' money",
+      "category": "business",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why Starbucks is Actually a Bank (PolyMatter)",
+        "views": 1200000,
+        "url": "https://rosetta.to/u/polymatter/why-starbucks-is-actually-a-bank"
+      },
+      "hook": "You put twenty-five dollars on a coffee app. Who's earning on it right now?",
+      "angle": "Prepaid app and gift-card balances are money a coffee chain holds before you drink anything: an assumed $1 billion float at an assumed 4% earns interest every year, and some balances are never spent at all. How a coffee chain works like a bank.",
+      "why_now": "how_they_make_money is a core format and our McDonald's Short is the owner's pick (31 Oct). The 'Starbucks is a bank' idea has 1.2M (PolyMatter), 650K (ColdFusion) and ~900K (WSJ) on YouTube and 1.7M on TikTok. Gift-card season starts with Black Friday.",
+      "maths": "lumpsum (amount 1000000000, rate_pct 4, years 1) for one year of interest on an assumed float; fee_take (amount 25, fee_pct 100, per_year 1, years 1) for one customer's loaded balance; share (total 1000000000, parts 40000000) for the average balance per app user. All illustrative, labelled as assumptions; no company figures on screen.",
+      "verify": [
+        "$1B float, 4% and 40M users are assumptions, not Starbucks's reported figures",
+        "the brand is named only to explain the model; no claim about its accounts"
+      ],
+      "sources": [
+        "https://rosetta.to/u/polymatter/why-starbucks-is-actually-a-bank",
+        "https://thehustle.co/starbucks-gift-cards-financing-borrowing",
+        "https://www.fool.com/money/banks/articles/does-this-starbuck-app-feature-make-the-company-a-bank"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-02",
+      "expires": "2027-01-31",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-02-costco-barely-profits-on-the-cart",
+      "title": "Costco makes almost nothing on your cart. So where does the money come from?",
+      "category": "business",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Did Costco Become a Members-Only Retail Giant? (CNBC)",
+        "views": 4800000,
+        "url": "https://glasp.co/youtube/dzejHGniMTQ"
+      },
+      "hook": "You think Costco makes its money on that giant cart? Barely.",
+      "angle": "An assumed 2% margin on a $100 weekly cart earns the store about $104 a year from you; a $65 membership fee is pure profit before you buy anything. The fee, not the groceries, is the business.",
+      "why_now": "Holiday shopping season; how_they_make_money is core and untold for a retailer. CNBC's version has 4.8M views; Costco shopping-hack Shorts reach ~20M.",
+      "maths": "fee_take (amount 100, fee_pct 2, per_year 52, years 1) for the store's margin on a weekly cart; fee_take (amount 65, fee_pct 100, per_year 1, years 1) for the membership; compare (a cart.per_year_total, b fee.per_year_total). All numbers assumed and labelled.",
+      "verify": [
+        "2% margin and $65 fee are illustrative, not Costco's reported numbers",
+        "no claim that membership fees are a given share of Costco's profit"
+      ],
+      "sources": [
+        "https://glasp.co/youtube/dzejHGniMTQ",
+        "https://money.com/costco-doesnt-make-much-money-selling-you-groceries-heres-how-it-really-earns-billions-a-year/?amp=true"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-02",
+      "expires": "2027-01-31",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-02-gym-paid-by-people-who-never-come",
+      "title": "The $10 gym that's paid for by the people who never show up",
+      "category": "business",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why Do People Dislike Planet Fitness? (views from an aggregator, unverified)",
+        "views": 5361337,
+        "url": "https://recapio.com/digest/they-have-10000-members-on-average-by-alex-hormozi"
+      },
+      "hook": "A gym with six thousand members has room for three hundred. So how does it stay open?",
+      "angle": "An assumed gym sells 6,000 memberships at $10 a month but fits a few hundred people at once: the members who never come pay for the ones who do. No brand named on screen.",
+      "why_now": "'Why the gym wants you to quit' is a title in our how_they_make_money format and has never been told; New Year gym sign-ups are the next money moment. Reference views come from an aggregator and are unverified, so priority stays normal.",
+      "maths": "fee_take (amount 10, fee_pct 100, per_year 12, years 1) for one member's year; share (total 60000, parts 300) for each regular's share of a month's fees; share (total 60000, parts 6000) for comparison.",
+      "verify": [
+        "the gym, its size and members are illustrative, no real chain named"
+      ],
+      "sources": [
+        "https://medium.com/thrive-global/why-your-gym-doesnt-want-you-to-succeed-ebf27e389842"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-02",
+      "expires": "2027-01-31",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-02-a-trillion-at-a-million-a-day",
+      "title": "Spend a million dollars every day. How long until a trillion runs out?",
+      "category": "wealth",
+      "priority": "normal",
+      "stories": [
+        "money_scale"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "I Tried to Spend $1 TRILLION in One Day",
+        "views": 252019,
+        "url": "https://youtube.com/shorts/kQCpFXtG9RE"
+      },
+      "hook": "Spend a million dollars a day. When do you run out of a trillion?",
+      "angle": "$1 billion at $1 million a day lasts under three years; $1 trillion lasts about 2,740 years: since the Roman Empire. The gap between a billion and a trillion people can't picture. What-if shape.",
+      "why_now": "Money-scale Shorts are our second-best format (What $1 billion looks like: 1,105 views). The trillion-a-day Short is still growing in the market data (252K, up from 133K a week ago).",
+      "maths": "share (total 1000000000, parts 1, per_year 365000000) for the billion; share (total 1000000000000, parts 1, per_year 365000000) for the trillion; compare (a trillion.years, b billion.years) and show only its ratio ('1000x longer'): its a/b/diff figures are formatted as money.",
+      "verify": [
+        "$1M a day is a thought experiment; no real person's fortune"
+      ],
+      "sources": [
+        "https://youtube.com/shorts/kQCpFXtG9RE",
+        "https://www.uniladtech.com/news/video-shows-what-trillion-dollars-looks-like-musk-055088-20260616"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-02",
+      "expires": "2027-01-31",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-02-rich-vs-poor-the-50k-car",
+      "title": "Rich vs poor: the same $50,000 for a car",
+      "category": "car",
+      "priority": "high",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "rich vs poor parents buying you a car",
+        "views": 8800000,
+        "url": "https://www.youtube.com/shorts/vGQZuTfIWnU"
+      },
+      "hook": "Poor guy buys a fifty-thousand-dollar car. Rich guy buys a twenty-five-thousand-dollar car. Ten years later?",
+      "angle": "One finances a $50,000 car at an assumed 8% over 5 years; the other buys a $25,000 car and invests the other $25,000 at an assumed 7% for 10 years. The gap after a decade.",
+      "why_now": "'Rich Mindset vs Poor Mindset' is the fastest Short in this week's market data (2.2M in 4 days); rich_vs_poor scores 1.48x on our channel and we have no car moment in it.",
+      "maths": "emi (amount 50000, rate_pct 8, years 5); lumpsum (amount 25000, rate_pct 7, years 10); compare where the bigger result goes first.",
+      "verify": [
+        "8% and 7% are assumptions, not offers or promised returns"
+      ],
+      "sources": [
+        "https://www.youtube.com/shorts/vGQZuTfIWnU",
+        "https://youtube.com/shorts/CyFFcGeHLAU"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-02",
+      "expires": "2027-01-31",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-02-wedding-on-a-personal-loan",
+      "title": "A ₹10 lakh wedding on a personal loan: what it really costs",
+      "category": "loan",
+      "priority": "high",
+      "stories": [
+        "trap_alert"
+      ],
+      "currency": "INR",
+      "reach": "local",
+      "reach_reason": {
+        "kind": "demand"
+      },
+      "demand": {
+        "title": "The Middle Class EMI Trap",
+        "views": 7000000,
+        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
+      },
+      "hook": "A ten lakh rupee wedding. The bank's bill comes later.",
+      "angle": "₹10 lakh borrowed at an assumed 14% for 5 years: the EMI, the total paid and the interest on a single day's party. Indian wedding season runs November-December.",
+      "why_now": "Indian wedding season begins after Diwali; the market's 'Gold Trap: gold loans and wedding pressure' (86K) shows the talk. The EMI-trap reference has 7M views. The feed has had no local topic since 26 Oct.",
+      "maths": "emi (amount 1000000, rate_pct 14, years 5).",
+      "verify": [
+        "14% is an assumption within typical Indian personal-loan rates, not an offer"
+      ],
+      "sources": [
+        "https://www.youtube.com/shorts/eZH7eYaJIKk",
+        "https://www.youtube.com/watch?v=N2cV2tOI6BM"
+      ]
     }
   ]
 }
