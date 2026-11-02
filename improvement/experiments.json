@@ -348,14 +348,16 @@
       "maxDays": 21,
       "primary": "avgViewPct",
       "guard": "qa_failures",
-      "status": "running",
+      "status": "reverted",
       "templates": [
         "short_story"
       ],
       "description": "The writer ends the last beat on the hook's set at a wide shot (close-ups there at most 1 s)",
       "hypothesis": "v-20261022-01 held one close-up for its last 2.6 s before looping to a wide street shot, and v-20261023-01 ended on a close-up in a different set from its vault opening. Since March 2025 every replay counts as a view; a picture that returns to frame 0 should raise replays and % viewed.",
       "notes": "Prompt-only (writer). On keep: fold into generator/prompts/writer.md 'Loop it' and the short_story README loop rule. On revert: drop the prompt.",
-      "commits": []
+      "commits": [],
+      "endedAt": "2026-11-02",
+      "result": "Evaluator 2026-11-02: revert (guard). QA/fact failures 18% on (2 of 11 attempts) vs 0% off (0 of 7); avg viewed 39.4% on vs 35.0% off, ratio 1.08, n 3 vs 2. Prompt removed from config."
     },
     {
       "id": "no-expert-persona",
@@ -560,6 +562,61 @@
       "guard": "qa_failures",
       "description": "check_script accepts a scene thumbnail without a figure (SceneThumb never draws one), so long videos can use the scene type FORMAT_TYPES offers.",
       "evidence": "Scout 2026-10-28 (adopt/normal): long scene thumbnails needed a figure that thumbs.py then fails; L-20261028-01 dropped to one thumbnail.",
+      "commits": []
+    },
+    {
+      "id": "money-travels-not-pops",
+      "proposal": "money-travels-not-pops",
+      "area": "motion",
+      "format": "short",
+      "flag": "money-travels-not-pops",
+      "arms": [
+        "on",
+        "off"
+      ],
+      "startedAt": "2026-11-02",
+      "minPerArm": 8,
+      "maxDays": 21,
+      "primary": "avgViewPct",
+      "guard": "qa_failures",
+      "status": "running",
+      "templates": [
+        "short_story"
+      ],
+      "description": "Things arrive (fly in from the nearer side or grow out of `from`, land with a squash), shake becomes a hop, and `flow` sends notes along an arc between two things with the figure riding on the lead note.",
+      "hypothesis": "The owner rated the 31 Oct Shorts' animation 5/10 ('just popping up and shaking', 'very static'); the v-20261031-01 contact sheet shows money as small tags beside things that never move. Showing the route the voice describes gives the eye a moving target every beat and should lift % viewed.",
+      "notes": "Code + writer prompt. Stills checked on v-20261031-01's timeline (flows in 'sale' and 'year', rent growing out of the owner): both arms pass the layout gate. On keep: drop the flag branches (keep the on-path) and move the prompt into SHOTS.md verbs and writer.md. On revert: delete the on-path and travel.ts use; keep the flow test documenting the gate.",
+      "answers": [
+        "cmvvzu48x0001lb09pa8l2gzl",
+        "cmvvzncli0005i409k8n1rrr5",
+        "cmvvza9nu0001i40917rrjljy"
+      ],
+      "commits": []
+    },
+    {
+      "id": "cinematic-bed-gets-a-pulse",
+      "proposal": "cinematic-bed-gets-a-pulse",
+      "area": "music",
+      "format": "short",
+      "flag": "cinematic-bed-gets-a-pulse",
+      "arms": [
+        "on",
+        "off"
+      ],
+      "minPerArm": 8,
+      "maxDays": 28,
+      "primary": "avgViewPct",
+      "guard": "qa_failures",
+      "status": "ready",
+      "templates": [
+        "short_story"
+      ],
+      "description": "The cinematic bed with a pulse: major-first progression, soft kick on 1 and 3 and a shaker from bar 1, snare on 2 and 4 from bar 3.",
+      "hypothesis": "The owner found the cinematic bed 'very dull, like a postmortem' (v-20261031-02, E 94 BPM). Cinematic is our best genre (13.4x, 69.6% viewed, n=6), so keep it and add energy; % viewed should hold or rise.",
+      "notes": "Built and tested 2026-11-02 (renderer/engine/music.py _cinematic_pulse, test_cinematic_pulse_keeps_the_level_and_adds_a_beat). Not running: experiments are at the cap of 5. Start it (status running + startedAt in both files) when a slot frees.",
+      "answers": [
+        "cmvvzbahz0001ia091z60ll7c"
+      ],
       "commits": []
     }
   ]

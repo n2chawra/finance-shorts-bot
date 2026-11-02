@@ -69,7 +69,7 @@
       "id": "loop-picture-matches-hook",
       "area": "ending",
       "format": "short",
-      "status": "running",
+      "status": "reverted",
       "startedAt": "2026-10-26",
       "templates": [
         "short_story"
@@ -80,7 +80,47 @@
         "off": null
       },
       "proposal": "loop-picture-matches-hook",
-      "description": "Shorts: the last beat ends on the hook's set at a wide shot, so the loop seam is invisible"
+      "description": "Shorts: the last beat ends on the hook's set at a wide shot, so the loop seam is invisible",
+      "endedAt": "2026-11-02",
+      "result": {
+        "verdict": "revert",
+        "why": "QA/fact failures 18% with the change vs 0% without (guard)",
+        "ratio": 1.084,
+        "p_on_better": 0.827,
+        "n_on": 3,
+        "n_off": 2,
+        "avgPct_on": 39.4,
+        "avgPct_off": 35.0
+      }
+    },
+    {
+      "id": "money-travels-not-pops",
+      "area": "motion",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-02",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "prompt": {
+        "on": "Motion rule for this video (money-travels-not-pops): money moves, things arrive. In build beats, whenever the line says money passes from one thing to another (a customer pays the restaurant, rent goes to the landlord, a fee goes to the bank), add a `flow` action: {\"at\": <the word naming where it goes>, \"do\": \"flow\", \"target\": <source item id>, \"to\": <destination item id>, \"n\": 3-8, \"text\": \"{figure}\" (optional, a placeholder)}; notes fly on an arc from source to destination and the destination squashes as they land. At least one flow in every build beat that names money changing hands. A thing that enters because of another thing grows out of it: add \"from\": <that item id> to its `enter`. Other entries fly in from the nearer side of the frame by themselves. Use `shake` sparingly: it is now a hop, at most one per beat. After a flow, put a camera key (`move: true`) on the destination on the landing word.",
+        "off": null
+      },
+      "proposal": "money-travels-not-pops",
+      "description": "Shorts: build-beat things fly in (or grow out of `from`) and land with a squash instead of popping on their spot; shake is a hop; the `flow` verb sends notes along an arc from one thing to another with the figure riding on them (remotion/src/studio/build.tsx, travel.ts)"
+    },
+    {
+      "id": "cinematic-bed-gets-a-pulse",
+      "area": "music",
+      "format": "short",
+      "status": "ready",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "proposal": "cinematic-bed-gets-a-pulse",
+      "description": "Shorts: the cinematic bed starts on a major chord, with a soft kick on 1 and 3 and a shaker from bar 1 and a snare on 2 and 4 from bar 3 (renderer/engine/music.py _cinematic_pulse). Built 2026-11-02, waits for a free slot (maxActiveExperiments 5); set status running and startedAt to start it."
     }
   ]
 }

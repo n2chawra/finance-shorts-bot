@@ -220,6 +220,9 @@ def picture_problems(tl: dict) -> list[str]:
             when = ev[a["at"]] / fps if isinstance(a.get("at"), str) and a["at"] in ev else float(a.get("sec") or 0)
             item = items.get(a.get("target"), {})
             names = {a.get("target", ""), item.get("prop", ""), a.get("into", "") or "", *str(item.get("label", "")).split()}
+            if a.get("do") == "flow" and isinstance(a.get("to"), str):   # money travelling lands on the word that names where it goes
+                dest = items.get(a["to"], {})
+                names |= {a["to"], dest.get("prop", ""), *str(dest.get("label", "")).split()}
             stems = {_stem(x) for n in names for x in re.split(r"[^a-zA-Z]+|(?<=[a-z])(?=[A-Z])", n) if len(x) >= 3}
             near = {_stem(w) for w, s in words if abs(s - when) <= LITERAL_WINDOW and len(w) >= 3}
             hit += any(a_.startswith(b_) or b_.startswith(a_) for a_ in stems for b_ in near if min(len(a_), len(b_)) >= 3)

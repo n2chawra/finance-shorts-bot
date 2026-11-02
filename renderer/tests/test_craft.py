@@ -87,6 +87,15 @@ def test_actions_must_show_what_is_said():
     assert any("actions show" in p for p in craft.picture_problems(bad))
 
 
+def test_a_flow_lands_on_the_word_that_names_where_the_money_goes():
+    # money-travels-not-pops: "flow" sends notes from its target to `to`; saying the destination counts
+    words = [{"w": "into", "s": 1.2, "e": 1.4}, {"w": "savings", "s": 1.5, "e": 1.9}]
+    ok = _build_tl([{"at": "jar", "do": "flow", "target": "hen", "to": "jar"}], words)
+    assert not any("actions show" in p for p in craft.picture_problems(ok))
+    bad = _build_tl([{"at": "jar", "do": "flow", "target": "hen", "to": "hen"}], words)
+    assert any("actions show" in p for p in craft.picture_problems(bad))
+
+
 def test_a_long_still_stretch_fails():
     tl = _build_tl([{"at": "hen", "do": "enter", "target": "hen"}], [], gap_beat_frames=150)
     assert any("nothing new on screen" in p for p in craft.picture_problems(tl))

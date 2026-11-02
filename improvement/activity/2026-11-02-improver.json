@@ -1,0 +1,58 @@
+{
+  "agent": "improver",
+  "day": "2026-11-02",
+  "startedAt": "2026-11-02T00:47:59Z",
+  "finishedAt": "2026-11-02T00:59:55Z",
+  "summary": "Answered all 7 of the owner's notes from 31 Oct. Started an A/B where money travels between things and things fly in instead of popping and shaking, built a livelier cinematic music bed ready to test, queued the owner's hook pattern as the next hook test, and reverted the loop-picture test.",
+  "decision": "acted",
+  "why": "Owner notes come first: three say the animation is basic, popping and static (5/10), two that hooks lack curiosity, one that the cinematic music is dull. The evaluator said revert for loop-picture-matches-hook (QA/fact failures 18% vs 0%), which freed one experiment slot.",
+  "findings": [
+    {
+      "title": "loop-picture-matches-hook: revert",
+      "detail": "QA/fact failures 18% with the change (2 of 11 attempts) vs 0% without (0 of 7); 39.4% vs 35.0% viewed, n 3 vs 2."
+    },
+    {
+      "title": "Other experiments still collecting",
+      "detail": "hook-voice-matches-frame 7 of 8 per arm (about a day), title-names-the-moment 5 of 8, quiet-bed and chart-gap-fill 1 of 4 long videos per arm."
+    },
+    {
+      "title": "Shorts with 48 h data: 36",
+      "detail": "Cinematic music 13.4x median views (69.6% viewed, n=6); hook style secret 11.0x (74.8%), question 1.05x (37.9%), myth 0.14x (27.0%); length 25-29 s 7.5x, 50-54 s 0.14x."
+    },
+    {
+      "title": "No format retired",
+      "detail": "rule_change is the only weak story with 3+ Shorts (42.9% viewed): not under the median for two weeks."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Money travels, things arrive (A/B on half the Shorts)",
+      "detail": "remotion/src/studio/build.tsx + travel.ts: things fly in from the nearer side or grow out of the thing before them and land with a squash; shake is a hop; new 'flow' verb sends notes on an arc between two things with the figure riding on them. Writers in the on-group are told to use it whenever money changes hands. Checked on the McDonald's Short's timeline, layout gate clean.",
+      "branch": "agent/improver/2026-11-02",
+      "experiment": "money-travels-not-pops"
+    },
+    {
+      "title": "Livelier cinematic bed, ready to test",
+      "detail": "renderer/engine/music.py: major-first chords, soft kick and shaker from bar 1, snare from bar 3. Behind its flag, starts when an experiment slot frees.",
+      "branch": "agent/improver/2026-11-02",
+      "experiment": "cinematic-bed-gets-a-pulse"
+    },
+    {
+      "title": "Reverted loop-picture-matches-hook",
+      "detail": "Prompt dropped from config/experiments.json; status reverted.",
+      "branch": "agent/improver/2026-11-02",
+      "experiment": "loop-picture-matches-hook"
+    },
+    {
+      "title": "Answered the owner's 7 notes",
+      "detail": "improvement/feedback-acks.json: 3 fixed (animation), 4 noted (music and hook tests queued, the McDonald's pick read as taste)."
+    }
+  ],
+  "nextCheck": "2026-11-03",
+  "links": [
+    {
+      "label": "Research report",
+      "url": "improvement/research/2026-11-02.md"
+    }
+  ]
+}

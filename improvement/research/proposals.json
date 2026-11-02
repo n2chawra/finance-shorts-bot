@@ -409,7 +409,7 @@
       "effort": "M",
       "risk": "An abrupt pull-back could read as a glitch; stills check the last frame against frame 0.",
       "metric": "avgViewPct",
-      "status": "testing",
+      "status": "reverted",
       "route": "experiment",
       "priority": "normal"
     },
@@ -641,7 +641,8 @@
       "metric": "avgViewPct",
       "status": "new",
       "route": "experiment",
-      "priority": "high"
+      "priority": "high",
+      "note": "Next hook experiment: starts the night hook-voice-matches-frame gets its verdict (one more off-arm Short)."
     },
     {
       "id": "money-travels-not-pops",
@@ -659,7 +660,7 @@
       "effort": "M",
       "risk": "More motion can clutter the frame or fight the captions; keep the path above the caption band and one flow at a time. Overlaps build-beats-on-lit-sets and first-action-by-1s (all three are build-beat craft; they can share one flag).",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
       "priority": "high"
     },
@@ -679,9 +680,10 @@
       "effort": "S",
       "risk": "A busier bed can mask the voice; keep ducking as is and check levels in the mix gate. n=6 for cinematic, so its lead may be the topics, not the music.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "building",
       "route": "experiment",
-      "priority": "normal"
+      "priority": "normal",
+      "note": "Built behind its flag 2026-11-02; starts when an experiment slot frees (cap 5)."
     }
   ]
 }
