@@ -940,6 +940,50 @@
       "priority": "normal",
       "found": "2026-10-29",
       "status": "open"
+    },
+    {
+      "id": "2026-11-02-hook-keeps-the-answer",
+      "kind": "craft",
+      "title": "The hook and promise never give away the last chapter's answer",
+      "detail": "L-20261029-01 (airlines) said the payoff in its first sentence ('The real money went somewhere else: through his card, and into a bank', 0:00-0:07), its promise named it again ('the bank hiding inside the airline', 0:11), and the thumbnail said 'Plane? No. Bank.'. So chapter six, the strongest, had nothing left to reveal: it ended on 0.6% average viewed. The Shorts already have this rule (CLAUDE.md: a curiosity hook never gives the answer). Change: in renderer/templates/long_story/README.md (Hook and Promise), add 'The hook shows the stake and the question; the promise counts the items and names at most the first ones; the last item is named only as a mystery (\"and the last one, which pays for all of it\"). Title and thumbnail may point at the answer, the narration up to the last chapter may not say it.' Check: the QA reviewer reads the first 30 s of narration and fails a script whose words contain the final chapter's key noun.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-02",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-02-promise-one-line",
+      "kind": "craft",
+      "title": "README still tells the writer to name every chapter in the promise",
+      "detail": "renderer/templates/long_story/README.md line 28 says 'Promise by 30 s: every chapter named at once'. That contradicts the open experiment 2026-10-27-no-table-of-contents and the advice in the hook guides (a full table of contents in the intro reads as a spoiler; a one-line roadmap that repeats the title's number is enough: outlierkit.com/resources/youtube-hooks-and-retention). Until the experiment decides, change the README line to 'the count and the first item, the rest named only when their chapter starts', and let the framework scene show the items as covered tiles that uncover chapter by chapter. Check: the experiment's evaluator compares the 0:30 hold of both arms once each has 3 videos.",
+      "where": "template",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-02",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-02-proof-in-ten-seconds",
+      "kind": "craft",
+      "title": "First 10 s: one concrete example that proves the title, with the thumbnail's main thing on screen",
+      "detail": "The three-beat first 30 s used by the hook guides: 0-10 s a real example that proves the title (our airlines hook did this well: $400 seat, $12 profit), 10-20 s why it matters to the viewer (what they lose by not knowing), 20-30 s the one-line roadmap. Add to the README's Hook section as the default order, and require that the thumbnail's main prop or person (script.thumbnail.items / who) is in the first beat, so the click is confirmed at once (a mismatch between thumbnail and opening is the commonest early drop). Check: craft or QA flags a script whose first beat shows none of the thumbnail's props.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-02",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-02-thumb-examples-weekly",
+      "kind": "idea",
+      "title": "Weekly thumbnail examples for improvement/research/thumbnails.json (Scout can't write that file)",
+      "detail": "agents/scout.md asks Scout to add the week's fastest-growing explainers to improvement/research/thumbnails.json on Mondays, but scripts/guard.py only lets Scout write improvement/longform. This week's candidates (ids and views from YouTube result pages and market.json, 2026-11-02): 9t2TQ8-mf5w 'Every Level of Wealth in 13 Minutes' 5,020,493 (ladder); 1zjcZ661ups 'If Nobody Can Afford A Home... Who's Going To Buy Them?' 4,083,139 (scene); SnX_GHgiwu0 '7 Signs Someone is Secretly Wealthy' 1,145,318 (grid); 5KP8gugE2Xw 'Rich VS Poor Consumerism' 345,560, 4,438 views/h (extremes). Research or the improver: add them with type as given. Owner: see notification scout-thumb-examples-guard.",
+      "where": "thumbnail",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-11-02",
+      "status": "open"
     }
   ]
 }
