@@ -327,12 +327,19 @@ def check_fact_inputs(script: dict) -> list[str]:
     facts = script.get("facts") or []
     out = []
     for m in script.get("maths") or []:
-        for key, n in (m.get("facts") or {}).items():
+        links = m.get("facts") or {}
+        if not isinstance(links, dict):      # a writer's slip must come back as a note, not a traceback
+            out.append(f"maths {m.get('name')!r}.facts is an object naming the input and its fact: {{\"amount\": 1}}")
+            continue
+        for key, n in links.items():
             if not isinstance(n, int) or not 1 <= n <= len(facts):
                 out.append(f"maths {m.get('name')!r}.facts.{key}: there is no fact {n}")
                 continue
             f = facts[n - 1]
             unit = str(f.get("unit", ""))
+            if isinstance(f.get("value"), bool) or not isinstance(f.get("value"), (int, float)):
+                out.append(f"maths {m.get('name')!r}.facts.{key}: fact {n} has no numeric value")
+                continue
             want = float(f["value"]) * _UNIT_SCALE.get(unit.rsplit("_", 1)[-1], 1.0)
             got = m.get(key)
             if not isinstance(got, (int, float)) or abs(float(got) - want) > max(0.005, abs(want) * 1e-6):

@@ -1,0 +1,19 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-03",
+  "startedAt": "2026-11-02T17:39:20Z",
+  "finishedAt": "2026-11-02T17:45:13Z",
+  "summary": "Last night's branch was blocked by the merge workflow (Playwright can't install on Ubuntu 26.04), not by its code; raised it for the owner. Fixed two generator bugs in today's story and fact checks.",
+  "decision": "acted",
+  "why": "The hedge check counted \"can't\" as a hedge and could fail confident scripts; a malformed fact link crashed number-check. Both have tests that fail without the fix. The data audit is 26 h old, so the data check was skipped.",
+  "findings": [
+    {"title": "Agent merge can't install Playwright on ubuntu-latest (26.04)", "detail": "Blocks every branch that touches apps/dashboard (auditor and dashboard on 2 Nov). Fix: runs-on: ubuntu-24.04 in agent-merge.yml.", "link": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/41333205383"},
+    {"title": "No data audit on 2 Nov", "detail": "metrics/data-audit.json is from 1 Nov 15:18 UTC."}
+  ],
+  "changes": [
+    {"title": "Hedge check no longer counts \"can't\"", "detail": "generator/story.py HEDGES: can(?!['’]t).", "branch": "agent/auditor/2026-11-03"},
+    {"title": "Malformed maths fact links are notes, not crashes", "detail": "generator/topics.py check_fact_inputs.", "branch": "agent/auditor/2026-11-03"}
+  ],
+  "nextCheck": "2026-11-04",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-03.md"}]
+}
