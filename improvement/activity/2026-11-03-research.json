@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "day": "2026-11-03",
+  "startedAt": "2026-11-02T18:21:14Z",
+  "finishedAt": "2026-11-02T18:28:25Z",
+  "summary": "Sound night: measured our loudness (-14.7 LUFS, fine) and found the owner's 2 Nov board change already ships The Curious Plot's mix. I turned the feed's best topics into true stories with real filings (Costco, Starbucks, Planet Fitness, Berkshire's Coca-Cola, Google paying Apple $20B) and added 2 sound proposals.",
+  "decision": "acted",
+  "why": "Since 2 Nov every big-money topic needs 3-6 sourced figures and only 1 of 13 open topics had any; real names with real figures beat invented ones by 40x (owner's study). The evaluator still ranks secret_of_rich (7.2x) and how_they_make_money first.",
+  "findings": [
+    {
+      "title": "Our Shorts are at YouTube's loudness reference",
+      "detail": "v-20261031-01 measured -14.7 LUFS integrated, -1.0 dBFS true peak; nothing records it per video, so proposal loudness-in-render-json",
+      "link": "https://productionadvice.co.uk/youtube-loudness/"
+    },
+    {
+      "title": "Buffett's Coca-Cola: $1.3B once, $704M a year by 2022",
+      "detail": "Berkshire 2022 letter; new topic 2026-11-03-buffett-coke-pays-every-year replaces the assumed-figures version",
+      "link": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+    },
+    {
+      "title": "Google paid Apple $20B in 2022 to be Safari's default",
+      "detail": "court documents via Bloomberg; new topic, top of the feed (8.58)",
+      "link": "https://9to5mac.com/2024/05/01/heres-how-much-google-paid-apple-to-be-safaris-default-search-engine-in-2022/"
+    },
+    {
+      "title": "Costco's membership fees are 66% of its net income",
+      "detail": "FY2025: fees $5,323M, net income $8,099M; facts added to the Costco topic",
+      "link": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+    },
+    {
+      "title": "Starbucks held $1.75B of customers' money at its 2025 year end",
+      "detail": "10-K deferred revenue note; $200.4M breakage; facts added to the Starbucks topic",
+      "link": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Topic feed: 2 new sourced topics, 3 topics given real figures, 1 superseded",
+      "detail": "google-pays-apple-20-billion, buffett-coke-pays-every-year; Costco, Starbucks, Planet Fitness facts; paid-while-they-sleep rejected",
+      "branch": "agent/research/2026-11-03"
+    },
+    {
+      "title": "Proposals: loudness-in-render-json (adopt), asker-voice-contrast (experiment); 4 marked adopted by the owner's 2 Nov change",
+      "detail": "hook-you-think-x-youre-wrong, money-travels-not-pops, cinematic-bed-gets-a-pulse, reveal-beat-pause",
+      "branch": "agent/research/2026-11-03"
+    }
+  ],
+  "nextCheck": "2026-11-04",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-03.md"
+    }
+  ]
+}

@@ -206,10 +206,11 @@
       "effort": "S",
       "risk": "Slightly longer Shorts; a silence could read as a glitch if too long.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "adopted",
       "route": "experiment",
       "priority": "normal",
-      "reason": "Waits: sound area is taken by the running quiet-bed experiment."
+      "reason": "Waits: sound area is taken by the running quiet-bed experiment.",
+      "note": "adopted in another form on 2026-11-02: the music bed now drops to 12% for 0.5 s before each stamp/cross/term/equation reveal (renderer/timeline/build.py _drop_envelope)"
     },
     {
       "id": "event-gap-max-3s",
@@ -639,10 +640,10 @@
       "effort": "S",
       "risk": "Can read as clickbait if the denial is only half true; the fact reviewer must confirm the 'wrong' is fair. Overlaps claim-then-wait-what.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "adopted",
       "route": "experiment",
       "priority": "high",
-      "note": "Next hook experiment: starts the night hook-voice-matches-frame gets its verdict (one more off-arm Short)."
+      "note": "adopted by the owner on 2026-11-02 (CLAUDE.md: every Short opens on \"You think X? It isn't.\"); no A/B needed"
     },
     {
       "id": "money-travels-not-pops",
@@ -660,9 +661,10 @@
       "effort": "M",
       "risk": "More motion can clutter the frame or fight the captions; keep the path above the caption band and one flow at a time. Overlaps build-beats-on-lit-sets and first-action-by-1s (all three are build-beat craft; they can share one flag).",
       "metric": "avgViewPct",
-      "status": "testing",
+      "status": "adopted",
       "route": "experiment",
-      "priority": "high"
+      "priority": "high",
+      "note": "adopted by the owner on 2026-11-02 for every Short (travelling money no longer an A/B test)"
     },
     {
       "id": "cinematic-bed-gets-a-pulse",
@@ -680,10 +682,51 @@
       "effort": "S",
       "risk": "A busier bed can mask the voice; keep ducking as is and check levels in the mix gate. n=6 for cinematic, so its lead may be the topics, not the music.",
       "metric": "avgViewPct",
-      "status": "building",
+      "status": "adopted",
       "route": "experiment",
       "priority": "normal",
-      "note": "Built behind its flag 2026-11-02; starts when an experiment slot frees (cap 5)."
+      "note": "adopted by the owner on 2026-11-02 for every Short (pulsing cinematic bed no longer an A/B test)"
+    },
+    {
+      "id": "asker-voice-contrast",
+      "date": "2026-11-03",
+      "area": "sound",
+      "title": "The asker and the explainer sound clearly different (a question-chain is two voices)",
+      "change": "Behind a flag (Shorts, 50%), in generator/prompts/writer.md and a check in generator/story.py: on board/question-chain Shorts the asker and the explainer must have voices of different gender in CAST_VOICES/NARRATOR_VOICES (today Rohan am_puck asks and Sharma am_fenrir explains: two American male voices). On the on arm pick the asker from the other gender (Priya hf_alpha or Sikka af_bella when the explainer is male; Rohan when it is female), or, when the narrator explains, choose a narrator of the other gender from NARRATOR_VOICES. Off arm: today's free choice. No new voices; the speaker name in the captions stays.",
+      "evidence": [
+        "improvement/style-study/2026-11-02-the-curious-plot.md (a young asker and an old answerer, a question every ~9 s, 43K and 1.3M views)",
+        "renderer/timeline/build.py CAST_VOICES",
+        "python -m improvement.evaluate 2026-11-03: voice am_michael 57% viewed (n=11) vs af_heart 31% (n=7): the voice itself matters, but confounded with story"
+      ],
+      "expectedEffect": "on a two-voice script a listener can tell question from answer by ear in the first word, so the question cadence the owner wants (one every 12 s) lands as a dialogue rather than one monologue; small gain in avgViewPct",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "a female asker with a male explainer might read as a stereotype if the asker is always the one who doesn't know; rotate who asks",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
+    },
+    {
+      "id": "loudness-in-render-json",
+      "date": "2026-11-03",
+      "area": "sound",
+      "title": "Record each video's integrated loudness and the music-under-voice gap",
+      "change": "In renderer/remotion.py after muxing (or renderer/timeline/build.py on audio.wav): measure integrated loudness (LUFS, ITU-R BS.1770, e.g. ffmpeg's ebur128 filter or a numpy K-weighting) and the music stem's level during speech relative to the voice (dB), and write both into render.json audio (lufs, music_under_voice_db). A warning (not a failure) when integrated loudness is outside -16 to -13 LUFS or the bed sits less than 18 dB under the voice on a Short. Pass them into metrics/videos.json so improvement.evaluate can rank by them.",
+      "evidence": [
+        "Measured tonight with ffmpeg ebur128 on v-20261031-01 (pre-board mix): -14.7 LUFS integrated, true peak -1.0 dBFS, LRA 2.9 LU: at YouTube's widely reported -14 LUFS playback reference, so loudness is not a gap today",
+        "https://productionadvice.co.uk/youtube-loudness/",
+        "https://youlean.co/?p=30813",
+        "improvement/style-study/2026-11-02-the-curious-plot.md: their music ~29 dB under the voice vs ours ~13; the 2026-11-02 mix (SHORT_DUCK 0.89) is meant to close it, but nothing records whether it did"
+      ],
+      "expectedEffect": "no direct view change; lets the evaluator check the owner's new quieter-bed mix against % viewed and catches a mix that drifts quiet (YouTube turns loud audio down but does not raise quiet audio)",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "none to the video; a few seconds more per render",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
     }
   ]
 }
