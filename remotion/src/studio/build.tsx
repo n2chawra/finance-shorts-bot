@@ -16,6 +16,8 @@
  * verbs: enter, exit, multiply {n, cols?, text?}, grow {scale}, shrink {scale}, move {to: <item id> | {x, y}},
  *        swap {into: <prop>}, break, fill {k}, drain {k}, state {state}, label {text}, tag {text},
  *        count {value, text}, glow, shake, focus {size?}
+ *        on the `money-travels-not-pops` arm: enter {from?: <item id>} flies in (or grows out of `from`),
+ *        shake hops, flow {to: <item id>, n?, text?} sends notes from the target to `to` (studio/travel.ts)
  * Every figure is a placeholder string; numbers in actions (n, scale, k, value) come from @references.
  */
 import React from "react";
@@ -31,13 +33,15 @@ import { counterBottom, counterShown } from "./hud";
 import { Ball, Box, INK, PALETTE, type PropFC, type PropSet, Shadow, Shape } from "./draw";
 import { Note, type Cur } from "./money";
 import { VIDEOS } from "../videos/hooks";
+import { flag } from "../contract/flags";
+import { entry, entryStart, FLOW_SEC, flowEnd, flowPiece, hopAt, squashAt, squashScale } from "./travel";
 import { groundY, World } from "./worlds";
 
 type Spot = "left" | "center" | "right" | number;
 interface Item { id: string; prop: string; x: number; y?: number; size?: number; label?: string; tag?: string; hidden?: boolean; state?: string; k?: number }
 interface Act {
   at?: string; sec?: number; do: string; target: string; n?: number; cols?: number; text?: string; scale?: number;
-  to?: string | { x: number; y?: number }; into?: string; k?: number; state?: string; value?: number; size?: ShotSize; dur?: number;
+  to?: string | { x: number; y?: number }; from?: string; into?: string; k?: number; state?: string; value?: number; size?: ShotSize; dur?: number;
 }
 interface CamKey { at?: string; sec?: number; size: ShotSize; on?: string; move?: boolean }
 interface BuildParams {
@@ -66,7 +70,7 @@ const easeIO = (x: number) => { const c = clamp(x); return c < 0.5 ? 4 * c * c *
 
 /** Everything an item is at time t, from its actions so far. */
 interface ItemNow { show: number; scale: number; x: number; y: number; prop: string; swapK: number; fromProp: string; copies: number; cols: number; copyK: number;
-  copyText?: string; state?: string; k: number; label?: string; tag?: string; tagK: number; glow: number; shake: number; broken: number; count?: { from: number; to: number; text: string; start: number } }
+  copyText?: string; state?: string; k: number; label?: string; tag?: string; tagK: number; glow: number; shake: number; broken: number; hop: number; squash: number; flying: boolean; count?: { from: number; to: number; text: string; start: number } }
 
 export const BuildScene: React.FC<SceneProps> = (p) => {
   const P = p.beat.params as BuildParams;
@@ -79,6 +83,8 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   const items = P.items ?? [];
   const actions = (P.actions ?? []).map((a) => ({ ...a, start: a.sec ?? at(p, a.at, 0) })).sort((a, b) => a.start - b.start);
   const cur = (p.tl.currency ?? "USD") as Cur;
+  // A/B (2026-11-02): things arrive and money travels instead of popping in and shaking
+  const travel = flag(p.tl, "money-travels-not-pops");
   // an actor's body always fits the frame (QA: a spot of 0.1 cut people in half at the edge)
   const spotX = (s: Spot | undefined, d: number) => typeof s === "number" ? Math.min(v ? 0.8 : 0.89, Math.max(v ? 0.2 : 0.11, s)) * w : s === "left" ? w * 0.24 : s === "right" ? w * 0.76 : s === "center" ? w * 0.5 : d;
 
@@ -91,12 +97,18 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     const mine = actions.filter((a) => a.target === it.id);
     const enters = mine.some((a) => a.do === "enter");
     const s: ItemNow = { show: it.hidden || enters ? 0 : 1, scale: 1, x: home(it)[0], y: home(it)[1], prop: it.prop, swapK: 1, fromProp: it.prop,
-      copies: 0, cols: 0, copyK: 0, state: it.state, k: it.k ?? 0, label: it.label, tag: it.tag, tagK: it.tag ? 1 : 0, glow: 0, shake: 0, broken: 0 };
+      copies: 0, cols: 0, copyK: 0, state: it.state, k: it.k ?? 0, label: it.label, tag: it.tag, tagK: it.tag ? 1 : 0, glow: 0, shake: 0, broken: 0, hop: 0, squash: 0, flying: false };
     for (const a of mine) {
       if (t < a.start) break;
       const d = t - a.start, dur = a.dur ?? 0.6, k = clamp(d / dur);
       switch (a.do) {
-        case "enter": s.show = back(d / 0.45); break;
+        case "enter": {
+          if (!travel) { s.show = back(d / 0.45); break; }
+          const src = a.from && byId[a.from] ? byId[a.from]! : undefined;
+          const start = entryStart([s.x, s.y], w, h, src ? [home(src)[0], home(src)[1] - sizeOf(src) * 0.5] : undefined);
+          const e = entry(d, start, [s.x, s.y], h, !!src);
+          s.x = e.x; s.y = e.y; s.show = e.show; s.squash = e.squash; s.flying = e.e < 0.98; break;
+        }
         case "exit": s.show = 1 - easeIO(d / 0.4); break;
         case "grow": case "shrink": { const from = s.scale, to = a.scale ?? (a.do === "grow" ? 1.6 : 0.55);
           s.scale = from + (to - from) * spring({ frame: d * p.fps, fps: p.fps, config: { damping: 11, stiffness: 120 } }); break; }
@@ -111,8 +123,14 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
         case "count": s.count = { from: s.count?.to ?? 0, to: a.value ?? 0, text: a.text ?? "", start: a.start }; s.tagK = 1; break;
         case "multiply": s.copies = Math.max(1, Math.round(a.n ?? 4)); s.cols = a.cols ?? 0; s.copyK = clamp(d / (a.dur ?? 1.2)); s.copyText = a.text; break;
         case "glow": s.glow = d < 1.2 ? Math.sin((d / 1.2) * Math.PI) : 0; break;
-        case "shake": s.shake = d < 0.5 ? 1 - d / 0.5 : 0; break;
+        case "shake": if (travel) s.hop = hopAt(d); else s.shake = d < 0.5 ? 1 - d / 0.5 : 0; break;
       }
+    }
+    // the thing a flow lands on squashes as the notes arrive
+    if (travel) for (const a of actions) {
+      if (a.do !== "flow" || a.to !== it.id) continue;
+      const land = a.start + (a.dur ?? FLOW_SEC);
+      s.squash = Math.max(s.squash, squashAt(t - land), squashAt(t - land - 0.25) * 0.6);
     }
     return s;
   };
@@ -183,8 +201,11 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     const shake = s.shake ? Math.sin(t * 70) * size * 0.05 * s.shake : 0;
     const tilt = s.broken * -9;
     const beatK = pulseOf({ it, s });
+    // squash on landing, stretch on the way up a hop (scaled about the thing's base)
+    const [qx, qy] = squashScale(s.squash - s.hop * 0.6);
+    const lift = s.hop * size * 0.22;
     const one = (dx: number, dy: number, sc: number, key: string, opacity = 1) => (
-      <g key={key} transform={`translate(${s.x + dx + shake},${s.y + dy}) rotate(${tilt}) scale(${s.show * s.scale * sc * (1 + 0.14 * beatK)})`} opacity={opacity}
+      <g key={key} transform={`translate(${s.x + dx + shake},${s.y + dy - lift}) rotate(${tilt}) scale(${s.show * s.scale * sc * (1 + 0.14 * beatK)}) scale(${qx},${qy})`} opacity={opacity}
         style={{ filter: s.broken > 0 ? `saturate(${1 - s.broken * 0.7})` : undefined }}>
         {Math.max(s.glow, beatK) > 0 && <circle cx={0} cy={-size * 0.5} r={size * 0.75} fill={PALETTE.yellow} opacity={0.35 * Math.max(s.glow, beatK)} />}
         {s.swapK < 1 && <g transform={`scale(${1 - s.swapK})`}><From s={size} t={t} k={s.k} state={s.state} seed={`${it.id}`} /></g>}
@@ -225,15 +246,44 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   // tags and labels: in screen space, after the camera (labels.tsx), only for things on screen
   const scr = (x: number, y: number): [number, number] => [x * fr.s + fr.tx, y * fr.s + fr.ty];
   const texts: ScreenText[] = [];
+
+  // flows: notes travel on an arc from one thing to another, the figure riding on the lead note
+  const flowNodes: React.ReactNode[] = [];
+  const riding = new Set<string>();
+  if (travel) for (const [fi, a] of actions.entries()) {
+    if (a.do !== "flow" || t < a.start) continue;
+    const from = states.find((x) => x.it.id === a.target), to = states.find((x) => x.it.id === a.to);
+    if (!from || !to) continue;
+    const n = Math.max(1, Math.min(12, Math.round(a.n ?? 5))), dur = a.dur ?? FLOW_SEC, d = t - a.start;
+    if (d > flowEnd(n, dur)) continue;
+    const top = (st: typeof from): [number, number] => [st.s.x, st.s.y - sizeOf(st.it) * st.s.scale * 0.6];
+    const src = top(from), dst = top(to), nw = h * (v ? 0.075 : 0.1);
+    for (let j = n - 1; j >= 0; j--) {
+      const pc = flowPiece(d, j, n, src, dst, h, dur);
+      if (!pc) continue;
+      // a short trail behind each note so the eye reads the path
+      for (const lag of [0.08, 0.04]) {
+        const g = flowPiece(d - lag, j, n, src, dst, h, dur);
+        if (g) flowNodes.push(<Note key={`f${fi}-${j}-${lag}`} cur={cur} nw={nw * 0.9} x={g.x} y={g.y} rot={g.rot} opacity={0.22} />);
+      }
+      flowNodes.push(<Note key={`f${fi}-${j}`} cur={cur} nw={nw} x={pc.x} y={pc.y} rot={pc.rot * 0.15} />);
+      // the figure rides the lead note until it nears the landing; a figure an end already shows needs no rider
+      if (j === 0 && a.text && pc.k < 0.7 && ![from, to].some((st) => st.s.show > 0.5 && carries(st, a.text!))) {
+        const [rx, ry] = scr(pc.x, pc.y - nw * 0.45);
+        texts.push({ key: `flow${fi}`, kind: "tag", text: a.text, x: rx, y: ry, k: 1, fill: "#ffd84a" });
+        riding.add(a.text);
+      }
+    }
+  }
   // a figure no visible thing carries pops on screen by itself while it is said
   for (const [i, f] of said.entries()) {
     const k = pulse(t, f);
-    if (k <= 0 || states.some((st) => st.s.show > 0.5 && carries(st, f.text))) continue;
+    if (k <= 0 || riding.has(f.text) || states.some((st) => st.s.show > 0.5 && carries(st, f.text))) continue;
     texts.push({ key: `said${i}`, kind: "tag", text: f.text, x: w * 0.5, y: h * (v ? 0.3 : 0.26), k: Math.min(1.15, k * 1.15), fill: "#ffd84a" });
   }
   for (const st of states) {
     const { it, s } = st;
-    if (s.show <= 0.05 || !shows(fr, itemBox(st), w, h, 60)) continue;
+    if (s.show <= 0.05 || s.flying || !shows(fr, itemBox(st), w, h, 60)) continue;
     const size = sizeOf(it);
     const tagY = s.y - size * s.scale * s.show * (s.copies > 1 ? 1.25 : 1.12);
     const countText = s.count ? (t >= s.count.start + 0.9 ? s.count.text : countUp(s.count.to, easeIO((t - s.count.start) / 0.9), s.count.text, "inr", p.tl.currency)) : undefined;
@@ -254,6 +304,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
       <div style={{ position: "absolute", inset: 0, transform: `translate(${fr.tx}px, ${fr.ty}px) scale(${fr.s})`, transformOrigin: "0 0" }}>
         <svg width={w} height={h} style={{ position: "absolute", overflow: "visible" }}>
           {[...states].sort((a, b) => a.s.y - b.s.y).map(drawItem)}
+          {flowNodes}
           {actorsP.map((a, i) => <Actor key={a.who + i} p={p} spec={{ ...a, x: spotX(a.spot, w / 2) / w, scale: aScale(a) }} ground={gy} index={i} />)}
         </svg>
       </div>
