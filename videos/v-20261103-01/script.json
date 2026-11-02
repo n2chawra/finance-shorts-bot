@@ -1,0 +1,1040 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52817,
+  "story": "how_they_make_money",
+  "shape": "question-chain",
+  "currency": "USD",
+  "feed_id": "2026-11-03-google-pays-apple-20-billion",
+  "style": {
+    "palette": "ocean",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92,
+    "look": {
+      "stage": "city",
+      "header": "neon",
+      "holder": "phone",
+      "entrance": "pop"
+    }
+  },
+  "hook_style": "question",
+  "cta": "Would you change your search box? Tell me below",
+  "facts": [
+    {
+      "label": "What Google paid Apple in 2022 to be Safari's default search engine",
+      "value": 20,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2022-12-31",
+      "source": "Bloomberg, from US v. Google court documents (via 9to5Mac)",
+      "url": "https://9to5mac.com/2024/05/01/heres-how-much-google-paid-apple-to-be-safaris-default-search-engine-in-2022/"
+    },
+    {
+      "label": "Share of its Safari search ad revenue Google pays Apple, per trial testimony",
+      "value": 36,
+      "unit": "percent",
+      "currency": "USD",
+      "as_of": "2023-11-13",
+      "source": "Bloomberg, from US v. Google trial testimony (via 9to5Mac)",
+      "url": "https://9to5mac.com/2024/05/01/heres-how-much-google-paid-apple-to-be-safaris-default-search-engine-in-2022/"
+    }
+  ],
+  "maths": [
+    {
+      "name": "day",
+      "kind": "share",
+      "total": 20000000000,
+      "parts": 365,
+      "facts": {
+        "total": 1
+      }
+    },
+    {
+      "name": "hour",
+      "kind": "share",
+      "total": 20000000000,
+      "parts": 8760,
+      "facts": {
+        "total": 1
+      }
+    },
+    {
+      "name": "minute",
+      "kind": "share",
+      "total": 20000000000,
+      "parts": 525600,
+      "facts": {
+        "total": 1
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 3.0,
+    "words": "Google pays Apple *why*?",
+    "figure": "{fact1}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "rohan",
+      "say": "You think Apple only earns from iPhones? It doesn't. Here's why.",
+      "events": {
+        "apple": {
+          "word": "Apple"
+        },
+        "iphones": {
+          "word": "iPhones"
+        },
+        "doesnt": {
+          "word": "doesn't"
+        },
+        "why": {
+          "word": "why"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "apple"
+        },
+        {
+          "kind": "whoosh",
+          "at": "doesnt"
+        },
+        {
+          "kind": "riser",
+          "at": "why"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "Not just iPhones",
+        "tag": "From Google",
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.25,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "doesnt",
+                "pose": "shrug",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "doesnt",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "custom",
+      "role": "promise",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "Google paid Apple {fact1} in one year, for one setting. Here's what it buys.",
+      "events": {
+        "google": {
+          "word": "Google"
+        },
+        "paid": {
+          "word": "paid"
+        },
+        "year": {
+          "word": "year"
+        },
+        "setting": {
+          "word": "setting"
+        },
+        "buys": {
+          "word": "buys"
+        },
+        "apple": {
+          "word": "Apple"
+        }
+      },
+      "params": {
+        "component": "Deal",
+        "hud": {
+          "hide": true
+        },
+        "header": "Google paid Apple",
+        "rows": [
+          {
+            "label": "From",
+            "value": "Google"
+          },
+          {
+            "label": "To",
+            "value": "Apple",
+            "at": "paid"
+          },
+          {
+            "label": "Amount",
+            "value": "{fact1}",
+            "at": "paid"
+          },
+          {
+            "label": "For",
+            "value": "One setting",
+            "at": "setting"
+          }
+        ],
+        "stamp": "Paid",
+        "ask": "For what?",
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ],
+        "sourceIndex": 0
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "paid"
+        },
+        {
+          "kind": "boom",
+          "at": "year"
+        },
+        {
+          "kind": "pop",
+          "at": "setting"
+        }
+      ]
+    },
+    {
+      "id": "which",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "That much money, for one setting? Which setting is worth it?",
+      "events": {
+        "setting": {
+          "word": "setting"
+        },
+        "which": {
+          "word": "Which"
+        },
+        "worth": {
+          "word": "worth"
+        }
+      },
+      "params": {
+        "header": "Which setting?",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "shock"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "setting",
+            "prop": "iphone",
+            "size": 0.28,
+            "label": "One setting"
+          }
+        ],
+        "actions": [
+          {
+            "at": "setting",
+            "do": "glow",
+            "target": "setting"
+          },
+          {
+            "at": "which",
+            "do": "bubble",
+            "text": "Which one?"
+          },
+          {
+            "at": "worth",
+            "do": "shake",
+            "target": "setting"
+          }
+        ]
+      }
+    },
+    {
+      "id": "searchbox",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "zoom-through",
+      "say": "The search box. Type anything into Safari, the iPhone's browser, and Google answers first.",
+      "events": {
+        "search": {
+          "word": "search"
+        },
+        "type": {
+          "word": "Type"
+        },
+        "safari": {
+          "word": "Safari"
+        },
+        "google": {
+          "word": "Google"
+        },
+        "first": {
+          "word": "first"
+        }
+      },
+      "params": {
+        "header": "The search box",
+        "sub": "In Safari",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "search",
+            "prop": "searchbar",
+            "x": 0.5,
+            "size": 0.34,
+            "label": "Search box"
+          },
+          {
+            "id": "browser",
+            "prop": "compass",
+            "x": 0.22,
+            "size": 0.16,
+            "label": "Safari",
+            "hidden": true
+          },
+          {
+            "id": "iphone",
+            "prop": "iphone",
+            "x": 0.78,
+            "size": 0.24,
+            "label": "iPhone"
+          }
+        ],
+        "actions": [
+          {
+            "at": "search",
+            "do": "grow",
+            "target": "search",
+            "scale": 1.15
+          },
+          {
+            "at": "type",
+            "do": "state",
+            "target": "search",
+            "state": "typing"
+          },
+          {
+            "at": "safari",
+            "do": "enter",
+            "target": "browser",
+            "how": "rise"
+          },
+          {
+            "at": "google",
+            "do": "chip",
+            "text": "Default: Google",
+            "tone": "blue"
+          },
+          {
+            "at": "first",
+            "do": "term",
+            "name": "Default search engine",
+            "line": "The one the phone asks first"
+          }
+        ]
+      }
+    },
+    {
+      "id": "free",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "But Google search is free. How does paying for it make sense?",
+      "events": {
+        "free": {
+          "word": "free"
+        },
+        "paying": {
+          "word": "paying"
+        },
+        "sense": {
+          "word": "sense"
+        }
+      },
+      "params": {
+        "header": "Search is free?",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "free",
+            "prop": "freetag",
+            "size": 0.26,
+            "label": "Free search"
+          }
+        ],
+        "actions": [
+          {
+            "at": "free",
+            "do": "stamp",
+            "target": "free",
+            "text": "Free"
+          },
+          {
+            "at": "paying",
+            "do": "bubble",
+            "text": "Then why pay?"
+          },
+          {
+            "at": "sense",
+            "do": "shake",
+            "target": "free"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ads",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Because every search shows ads, and a shop pays Google each time someone taps one.",
+      "events": {
+        "search": {
+          "word": "search"
+        },
+        "ads": {
+          "word": "ads"
+        },
+        "shop": {
+          "word": "shop"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "taps": {
+          "word": "taps"
+        }
+      },
+      "params": {
+        "header": "Ads pay for it",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "ads",
+            "prop": "adresult",
+            "x": 0.5,
+            "size": 0.26,
+            "label": "Tap the ad"
+          },
+          {
+            "id": "shop",
+            "prop": "shopfront",
+            "x": 0.18,
+            "size": 0.2,
+            "label": "Shop",
+            "hidden": true
+          },
+          {
+            "id": "google",
+            "prop": "gvault",
+            "x": 0.82,
+            "size": 0.2,
+            "label": "Google",
+            "state": "open"
+          }
+        ],
+        "actions": [
+          {
+            "at": "ads",
+            "do": "glow",
+            "target": "ads"
+          },
+          {
+            "at": "shop",
+            "do": "enter",
+            "target": "shop",
+            "how": "rise"
+          },
+          {
+            "at": "pays",
+            "do": "flow",
+            "target": "shop",
+            "to": "google",
+            "n": 5,
+            "text": "Per tap"
+          },
+          {
+            "at": "taps",
+            "do": "state",
+            "target": "ads",
+            "state": "tapped"
+          },
+          {
+            "at": "taps",
+            "do": "stamp",
+            "target": "ads",
+            "text": "Paid per tap"
+          }
+        ]
+      }
+    },
+    {
+      "id": "howmuch",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "So what does that one deal cost Google every day?",
+      "events": {
+        "deal": {
+          "word": "deal"
+        },
+        "cost": {
+          "word": "cost"
+        },
+        "day": {
+          "word": "day"
+        }
+      },
+      "params": {
+        "header": "Every day?",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "deal",
+            "prop": "contract",
+            "size": 0.26,
+            "label": "The deal"
+          }
+        ],
+        "actions": [
+          {
+            "at": "deal",
+            "do": "glow",
+            "target": "deal"
+          },
+          {
+            "at": "cost",
+            "do": "bubble",
+            "text": "A day?"
+          },
+          {
+            "at": "day",
+            "do": "state",
+            "target": "deal",
+            "state": "signed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "perday",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "zoom-through",
+      "say": "Spread over a year, that's {day_per_part} a day, and {hour_per_part} every hour.",
+      "events": {
+        "spread": {
+          "word": "Spread"
+        },
+        "year": {
+          "word": "year"
+        },
+        "day": {
+          "word": "day"
+        },
+        "hour": {
+          "word": "hour"
+        },
+        "thats": {
+          "word": "that's"
+        },
+        "and": {
+          "word": "and"
+        }
+      },
+      "params": {
+        "header": "Split by day",
+        "bg": "purple",
+        "items": [
+          {
+            "id": "clock",
+            "prop": "clock",
+            "x": 0.5,
+            "size": 0.22,
+            "label": "Every hour",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "do": "grid",
+            "n": 365,
+            "cols": 19,
+            "label": "{day_parts} days",
+            "text": "One year",
+            "sec": 0
+          },
+          {
+            "at": "spread",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{fact1}"
+              },
+              {
+                "text": "÷ {day_parts} days",
+                "at": "year"
+              }
+            ],
+            "result": {
+              "text": "{day_per_part}",
+              "value": "@day.per_part",
+              "at": "day"
+            }
+          },
+          {
+            "at": "thats",
+            "do": "header",
+            "text": "Every single day"
+          },
+          {
+            "at": "and",
+            "do": "header",
+            "text": "And every hour"
+          },
+          {
+            "at": "hour",
+            "do": "enter",
+            "target": "clock",
+            "how": "drop"
+          },
+          {
+            "at": "hour",
+            "do": "tag",
+            "target": "clock",
+            "text": "{hour_per_part}"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "But here's the twist. It isn't a flat fee at all. Apple keeps {fact2} of the ad money Google makes from Safari searches.",
+      "events": {
+        "twist": {
+          "word": "twist"
+        },
+        "flat": {
+          "word": "flat"
+        },
+        "apple": {
+          "word": "Apple"
+        },
+        "keeps": {
+          "word": "keeps"
+        },
+        "money": {
+          "word": "money"
+        },
+        "searches": {
+          "word": "searches"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "twist"
+        },
+        {
+          "kind": "boom",
+          "at": "keeps"
+        },
+        {
+          "kind": "kaching",
+          "at": "money"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "share": "{fact2}",
+        "stamp": "Not a flat fee",
+        "adLabel": "Ad money",
+        "appleLabel": "Apple's cut",
+        "set": "office",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "keeps",
+            "size": "extreme",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "sourceIndex": 1
+      }
+    },
+    {
+      "id": "cut",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "So every time I search on my iPhone, Apple gets a cut?",
+      "events": {
+        "time": {
+          "word": "time"
+        },
+        "search": {
+          "word": "search"
+        },
+        "cut": {
+          "word": "cut"
+        }
+      },
+      "params": {
+        "header": "Every search?",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "search",
+            "prop": "searchbar",
+            "size": 0.26,
+            "label": "My search",
+            "state": "typing"
+          }
+        ],
+        "actions": [
+          {
+            "at": "time",
+            "do": "glow",
+            "target": "search"
+          },
+          {
+            "at": "search",
+            "do": "flow",
+            "target": "search",
+            "to": "rohan",
+            "n": 4,
+            "text": "Apple's cut"
+          },
+          {
+            "at": "cut",
+            "do": "bubble",
+            "text": "Every time?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Every search that shows an ad. Google isn't paying for a setting. It's renting your habit, and the rent comes to {minute_per_part} every minute.",
+      "events": {
+        "single": {
+          "word": "search"
+        },
+        "buying": {
+          "word": "paying"
+        },
+        "renting": {
+          "word": "renting"
+        },
+        "habit": {
+          "word": "habit"
+        },
+        "minute": {
+          "word": "minute"
+        },
+        "rent": {
+          "word": "rent"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "renting"
+        },
+        {
+          "kind": "kaching",
+          "at": "minute"
+        },
+        {
+          "kind": "pop",
+          "at": "rent"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "perMinute": "{minute_per_part}",
+        "minuteLabel": "Every minute",
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "minute",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "header": "Not a setting: your habit"
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "board",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Still think Apple only earns from iPhones? So, would you change your search box?",
+      "events": {
+        "apple": {
+          "word": "Apple"
+        },
+        "iphones": {
+          "word": "iPhones"
+        },
+        "change": {
+          "word": "change"
+        },
+        "box": {
+          "word": "box"
+        }
+      },
+      "params": {
+        "header": "Would you switch?",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "apple",
+            "prop": "applecrate",
+            "size": 0.24,
+            "label": "Apple",
+            "state": "gold"
+          },
+          {
+            "id": "box",
+            "prop": "searchbar",
+            "x": 0.5,
+            "size": 0.2,
+            "label": "Search box",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "apple",
+            "do": "glow",
+            "target": "apple"
+          },
+          {
+            "at": "iphones",
+            "do": "stamp",
+            "target": "apple",
+            "text": "Not just iPhones"
+          },
+          {
+            "at": "change",
+            "do": "bubble",
+            "text": "Switch it?"
+          },
+          {
+            "at": "box",
+            "do": "enter",
+            "target": "box",
+            "how": "rise"
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "af_bella"
+}

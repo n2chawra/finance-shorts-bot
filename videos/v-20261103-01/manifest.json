@@ -1,0 +1,376 @@
+{
+  "id": "v-20261103-01",
+  "createdAt": "2026-11-02T23:03:50.118029+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why Google pays Apple billions a year just to be the search box on the iPhone",
+    "category": "business",
+    "reach": "global",
+    "feed_id": "2026-11-03-google-pays-apple-20-billion"
+  },
+  "title": "Why Google pays Apple $20B for one iPhone setting 📱",
+  "description": "Why would Google pay its biggest rival billions just for one setting on your iPhone?\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Apple",
+    "#Google",
+    "#HowTheyMakeMoney",
+    "#Money"
+  ],
+  "hookStyle": "question",
+  "cta": "Would you change your search box? Tell me below",
+  "seed": 52817,
+  "style": {
+    "palette": "ocean",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92,
+    "look": {
+      "stage": "city",
+      "header": "neon",
+      "holder": "phone",
+      "entrance": "pop"
+    },
+    "voice": "af_bella"
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think Apple only earns from iPhones? It doesn't. Here's why.",
+        "start": 0.3,
+        "seconds": 3.46,
+        "window": 3.93,
+        "fill": 0.88
+      },
+      {
+        "scene": "promise",
+        "text": "Google paid Apple $20B in one year, for one setting. Here's what it buys.",
+        "start": 4.23,
+        "seconds": 4.78,
+        "window": 5.47,
+        "fill": 0.874
+      },
+      {
+        "scene": "which",
+        "text": "That much money, for one setting? Which setting is worth it?",
+        "start": 9.7,
+        "seconds": 2.8,
+        "window": 3.23,
+        "fill": 0.867
+      },
+      {
+        "scene": "searchbox",
+        "text": "The search box. Type anything into Safari, the iPhone's browser, and Google answers first.",
+        "start": 12.93,
+        "seconds": 5.05,
+        "window": 5.67,
+        "fill": 0.891
+      },
+      {
+        "scene": "free",
+        "text": "But Google search is free. How does paying for it make sense?",
+        "start": 18.6,
+        "seconds": 3.04,
+        "window": 3.5,
+        "fill": 0.869
+      },
+      {
+        "scene": "ads",
+        "text": "Because every search shows ads, and a shop pays Google each time someone taps one.",
+        "start": 22.1,
+        "seconds": 4.33,
+        "window": 5.0,
+        "fill": 0.866
+      },
+      {
+        "scene": "howmuch",
+        "text": "So what does that one deal cost Google every day?",
+        "start": 27.1,
+        "seconds": 2.38,
+        "window": 2.87,
+        "fill": 0.829
+      },
+      {
+        "scene": "perday",
+        "text": "Spread over a year, that's $54.8M a day, and $2.3M every hour.",
+        "start": 29.97,
+        "seconds": 6.28,
+        "window": 6.93,
+        "fill": 0.906
+      },
+      {
+        "scene": "turn",
+        "text": "But here's the twist. It isn't a flat fee at all. Apple keeps 36% of the ad money Google makes from Safari searches.",
+        "start": 36.9,
+        "seconds": 7.32,
+        "window": 7.97,
+        "fill": 0.918
+      },
+      {
+        "scene": "cut",
+        "text": "So every time I search on my iPhone, Apple gets a cut?",
+        "start": 44.87,
+        "seconds": 3.07,
+        "window": 3.5,
+        "fill": 0.877
+      },
+      {
+        "scene": "payoff",
+        "text": "Every search that shows an ad. Google isn't paying for a setting. It's renting your habit, and the rent comes to $38,052 every minute.",
+        "start": 48.37,
+        "seconds": 8.38,
+        "window": 9.03,
+        "fill": 0.928
+      },
+      {
+        "scene": "loop",
+        "text": "Still think Apple only earns from iPhones? So, would you change your search box?",
+        "start": 57.4,
+        "seconds": 4.42,
+        "window": 4.83,
+        "fill": 0.915
+      }
+    ]
+  },
+  "durationSec": 63,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.2
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on"
+  },
+  "heard": {
+    "hookVoice": "am_puck",
+    "narratorShare": 0
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after edits: facts unchanged ($20B paid in 2022 and 36% revenue share, both confirmed earlier on the 9to5Mac/Bloomberg page and by search: Gulf News/Bloomberg, Bloomberg Law, PhoneArena, Business Insider). Changed lines checked: 'turn' now says 36% of the ad money Google makes from Safari searches, which matches the trial testimony; 'payoff' 'every search that shows an ad' fixes the earlier overstatement; 'which', 'searchbox', 'cut', 'loop' and the custom 'promise' Deal (rows from {fact1}) are accurate. No advice, and the disclaimer is in the description. Notes: 'every time I search on my iPhone' means Safari/Google searches, and the payoff qualifies it; the per-minute rent is worked out from the 2022 figure, so keep the 'Data: … 2022' line; the description still lacks the profile's licensed-adviser sentence."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-rendered stills are clean: the Deal header fits one line with a single $20B source, the hook caption clears Rohan's face, the payoff carries its header and the $38,052-a-minute slam with nothing under the caption, the disclaimer shows at 62.5s, and layout, craft and audio checks pass (peak -1.0 dB, mean -17.2 dB, 63 s)."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:41:29.031716+00:00",
+      "finishedAt": "2026-11-02T22:41:29.031716+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:43:00.488362+00:00",
+      "finishedAt": "2026-11-02T22:43:00.488362+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:47:33.738552+00:00",
+      "finishedAt": "2026-11-02T22:47:33.738552+00:00",
+      "notes": [
+        "fact1 $20B (Google paid Apple, 2022, Safari default) confirmed on the 9to5Mac source page (citing Bloomberg / DOJ court documents) and by search (Gulf News/Bloomberg, Bloomberg Law, PhoneArena, Business Insider); fact2 36% of Safari search ad revenue confirmed on the 9to5Mac page and in search results (Google witness at trial, Nov 2023). Both verify items checked; no newer figure supersedes the 2022 payment and the revenue-share deal continues. Claims about default search, pay-per-click ads and Apple earning beyond iPhones are accurate; no advice, the tone is fine, the description ends with the disclaimer. Notes: 'every single one' / 'every time I search' simplifies a revenue share on ad revenue from Safari Google searches; the present-tense title and per-minute figure rest on the 2022 figure, so the on-screen 'Data: ... 2022' line matters; the description lacks the profile's licensed-adviser sentence."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-02T22:46:43.083441+00:00",
+      "finishedAt": "2026-11-02T22:47:47.705035+00:00",
+      "notes": [
+        "text 'Data: Bloomberg, from US v. Google court documents (via 9to5' at 12.4 s runs outside the frame",
+        "text 'August' at 35.1 s is 0.8 px, below the 44 px minimum",
+        "text 'Keep Google' at 57.0 s is 35.3 px, below the 44 px minimum",
+        "2.7 s with nothing new on screen in beat 'perday' (at most 2.5 s): add an action on the phrase being said there",
+        "length 59 s is outside 60–90 s"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:49:18.142579+00:00",
+      "finishedAt": "2026-11-02T22:49:18.142579+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'payoff' runs 7.9 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-02T22:49:52.934987+00:00",
+      "finishedAt": "2026-11-02T22:50:30.939354+00:00",
+      "notes": [
+        "2.7 s with nothing new on screen in beat 'perday' (at most 2.5 s): add an action on the phrase being said there",
+        "2 of 13 stills are mostly empty background (at 15 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+        "length 59 s is outside 60–90 s"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:50:54.891766+00:00",
+      "finishedAt": "2026-11-02T22:50:54.891766+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:51:08.822555+00:00",
+      "finishedAt": "2026-11-02T22:51:43.721247+00:00",
+      "notes": [
+        "63 s, ocean/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:52:07.958326+00:00",
+      "finishedAt": "2026-11-02T22:52:07.958326+00:00",
+      "notes": [
+        "Re-review after edits: facts unchanged ($20B paid in 2022 and 36% revenue share, both confirmed earlier on the 9to5Mac/Bloomberg page and by search: Gulf News/Bloomberg, Bloomberg Law, PhoneArena, Business Insider). Changed lines checked: 'turn' now says 36% of the ad money Google makes from Safari searches, which matches the trial testimony; 'payoff' 'every search that shows an ad' fixes the earlier overstatement; 'which', 'searchbox', 'cut', 'loop' and the custom 'promise' Deal (rows from {fact1}) are accurate. No advice, and the disclaimer is in the description. Notes: 'every time I search on my iPhone' means Safari/Google searches, and the payoff qualifies it; the per-minute rent is worked out from the 2022 figure, so keep the 'Data: … 2022' line; the description still lacks the profile's licensed-adviser sentence."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-02T22:53:05.173601+00:00",
+      "finishedAt": "2026-11-02T22:53:05.173601+00:00",
+      "notes": [
+        "[scene] 5.0s promise beat (custom Deal component): the white deal card is drawn over the header, so its second line 'APPLE' is cut in half (text over text). The source line under the card also merges both facts' sources into one four-line block dated 'Nov 2023' (the $20B is a 2022 figure; Nov 2023 belongs to fact2, which isn't on screen yet) and sits over the vault, crate and coins.",
+        "[script] 0.0s hook: the caption box 'You think Apple only' sits over Rohan's mouth and chin. He is at spot left in a close shot, so his face is at caption height. Use another spot or shot size (e.g. medium) so the caption clears his face.",
+        "[scene] 50.0s payoff beat (custom Payoff component): doesn't read on mute and is mostly empty night background. It shows a small search bar and a phone inside a dashed ring with no header, label or figure, so the 'not a setting, it's your habit' turn is only in the voice. At 55.0s, while '$38,052 every minute' is spoken, that figure shows only in the caption. The scene draws only 'YOUR HABIT' (a coin over its last letter) and a struck-out 'SETTING'. The per-minute figure and the setting-to-habit labels should be large and on screen while they are spoken."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-02T22:54:08.225482+00:00",
+      "finishedAt": "2026-11-02T22:54:08.225482+00:00",
+      "notes": [
+        "beat 'promise'.params.source contains a typed number; use a placeholder: 'Data: Bloomberg, from US v. Google court documents (via 9to5Mac) · Dec 2022'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-02T22:54:23.368862+00:00",
+      "finishedAt": "2026-11-02T22:54:23.368862+00:00",
+      "notes": [
+        "beat 'promise'.params.source contains a typed number; use a placeholder: 'Dec 2022'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:54:43.388477+00:00",
+      "finishedAt": "2026-11-02T22:54:43.388477+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:55:00.325887+00:00",
+      "finishedAt": "2026-11-02T22:55:32.854518+00:00",
+      "notes": [
+        "63 s, ocean/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-02T22:56:07.531284+00:00",
+      "finishedAt": "2026-11-02T22:56:07.531284+00:00",
+      "notes": [
+        "[scene] 55.0s payoff beat (custom Payoff component): the habit loop's label 'YOUR HABIT', now drawn below the coin orbit, sits right behind the caption box ('to $38,052 every minute.'), so the caption covers another piece of text and the label shows only as a faded strip above and below the box. Move the label up, clear of the caption band (e.g. between the orbit and the floor, or under the 'EVERY MINUTE' line), or drop it, since the header already says 'Not a setting: your habit'. The rest of the re-render is fixed: the 5.0s Deal header is on one line with one source line, the 0.0s hook caption clears Rohan's face, and the 50s and 55s payoff frames carry the header and the slammed-in $38,052."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:57:06.302358+00:00",
+      "finishedAt": "2026-11-02T22:57:39.974825+00:00",
+      "notes": [
+        "63 s, ocean/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:57:59.885039+00:00",
+      "finishedAt": "2026-11-02T22:57:59.885039+00:00",
+      "notes": [
+        "Re-rendered stills are clean: the Deal header fits one line with a single $20B source, the hook caption clears Rohan's face, the payoff carries its header and the $38,052-a-minute slam with nothing under the caption, the disclaimer shows at 62.5s, and layout, craft and audio checks pass (peak -1.0 dB, mean -17.2 dB, 63 s)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:59:18.516695+00:00",
+      "finishedAt": "2026-11-02T23:03:43.331646+00:00",
+      "notes": [
+        "63 s, ocean/cinematic, peak -1.0 dB, mean -17.2 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:03:50.118127+00:00",
+      "finishedAt": "2026-11-02T23:03:50.118127+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261103-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261103-01"
+  }
+}
