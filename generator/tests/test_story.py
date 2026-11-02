@@ -148,3 +148,14 @@ def test_a_board_beat_needs_its_header():
 
 def test_scripts_from_before_shapes_keep_the_levels_rules():
     assert story.script_problems(good()) == []          # no `shape`: the levels spine, unchanged
+
+
+def test_cant_is_certain_not_a_hedge():
+    # "You can't…" states a fact; only "can" on its own hedges (auditor 2026-11-03: \bcan\b matched "can't")
+    s = explained()
+    for b in s["beats"][2:5]:
+        b["say"] = "You can't sell it, he can’t either, and the bank cannot wait " + b["say"]
+    assert not any("hedging words" in p for p in story.script_problems(s))
+    for b in s["beats"][2:5]:
+        b["say"] = "You can sell it " + b["say"]
+    assert any("hedging words" in p for p in story.script_problems(s))

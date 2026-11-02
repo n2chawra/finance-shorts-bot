@@ -469,6 +469,98 @@
       "severity": "medium",
       "found": "2026-10-28",
       "status": "fixed"
+    },
+    {
+      "id": "dui-012",
+      "kind": "bug",
+      "title": "Skip to end / Upload now kept the owner's pick",
+      "detail": "The queue sorts pickedAt first, then queuePosition. videoAction 'skip' only moved queuePosition, so skipping the picked video left it at the front (toast said 'Moved to the end'); 'upload-now' left pickedAt set too, unlike the publisher. Fixed: lib/queue-actions.ts skipToEnd/uploadNow clear the pick; used by store.db.ts and store.sample.ts; test workers/tests/dashboard-queue-actions.test.ts. NOT MERGED: the 2026-11-02 branch was blocked by the merge workflow's Playwright install (ubuntu-latest is now 26.04, Playwright 1.56.1 can't install its deps), not by this code. The fix is commit 16e52ca; held until the owner fixes the workflow, then re-ship it as is.",
+      "files": [
+        "apps/dashboard/src/lib/queue-actions.ts",
+        "apps/dashboard/src/lib/store.db.ts",
+        "apps/dashboard/src/lib/store.sample.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-02",
+      "status": "open"
+    },
+    {
+      "id": "dsh-007",
+      "kind": "bug",
+      "title": "Every ingest re-applies the editor ranking and undoes Skip to end",
+      "detail": "importEditorRanking (workers/lib/agents-sync.ts) runs on every ingest (push + every 6h) with the same ranking.json and sorts unlocked videos by editor rank, so a video the owner skipped returns to its ranked place within hours. Skip doesn't set orderLocked (and locked videos go to the front, so it can't). Needs a design choice: apply a ranking only once per rankedAt (store the last applied rankedAt), or let skip mark the video 'held back' so the ranking keeps it last. Not fixed tonight: changes queue semantics the owner just designed.",
+      "files": [
+        "workers/lib/agents-sync.ts",
+        "apps/dashboard/src/lib/store.db.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-02",
+      "status": "open"
+    },
+    {
+      "id": "dui-013",
+      "kind": "bug",
+      "title": "Dragging the picked video does nothing",
+      "detail": "reorderQueue saves the dragged order but the list is read back pick-first, so a picked video snaps back to the top. Either clear the pick when the owner drags it, or block dragging it with a hint.",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts",
+        "apps/dashboard/src/app/queue/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-11-02",
+      "status": "open"
+    },
+    {
+      "id": "dui-014",
+      "kind": "bug",
+      "title": "Sample store: Mark stale only accepts queued videos",
+      "detail": "store.db.ts allows stale on queued, qa_passed and rendered; store.sample.ts only queued, so the sample dashboard and e2e tests behave differently.",
+      "files": [
+        "apps/dashboard/src/lib/store.sample.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-02",
+      "status": "open"
+    },
+    {
+      "id": "wrk-004",
+      "kind": "bug",
+      "title": "downloadReleaseAsset (gh path) hides rename errors as 'gh not found'",
+      "detail": "Without GITHUB_TOKEN it downloads '*.mp4' and picks a file not in the directory before; if the file already existed (re-download with --clobber) it falls back to 'video.mp4', renameSync throws ENOENT, and the ENOENT catch meant for a missing gh binary swallows it, ending in 'no GITHUB_TOKEN and the gh CLI was not found'. A release with two .mp4 assets picks one by readdir order. Local runs only (Actions has a token; publish.ts uses a fresh temp dir), so low.",
+      "files": [
+        "workers/lib/github.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-02",
+      "status": "open"
+    },
+    {
+      "id": "gen-003",
+      "kind": "bug",
+      "title": "Hedge check counted \"can't\" as the hedge \"can\"",
+      "detail": "generator/story.py HEDGES used \\bcan\\b, which matches the \"can\" in \"can't\" / \"can’t\" (the apostrophe is a word boundary), so confident lines (\"You can't sell it\") counted toward MAX_HEDGES 2 and could fail a script and use up its rewrites. Fixed 2026-11-03: can(?!['’]t). Test test_cant_is_certain_not_a_hedge. Open question left as is: \"May\" the month also counts as a hedge (true-history dates).",
+      "files": [
+        "generator/story.py",
+        "generator/tests/test_story.py"
+      ],
+      "severity": "medium",
+      "found": "2026-11-03",
+      "status": "fixed",
+      "fixed": "2026-11-03"
+    },
+    {
+      "id": "gen-004",
+      "kind": "bug",
+      "title": "A malformed maths `facts` link crashed number-check",
+      "detail": "topics.check_fact_inputs called .items() on maths[].facts and float() on the fact's value, outside number_check's ValueError guard: `\"facts\": [1]` (a list) raised AttributeError and a fact without a numeric value raised KeyError/TypeError, a traceback instead of a note the writer can fix. Fixed 2026-11-03: both come back as notes. Test test_a_malformed_fact_link_is_a_note_not_a_crash.",
+      "files": [
+        "generator/topics.py",
+        "generator/tests/test_board_rules.py"
+      ],
+      "severity": "low",
+      "found": "2026-11-03",
+      "status": "fixed",
+      "fixed": "2026-11-03"
     }
   ]
 }

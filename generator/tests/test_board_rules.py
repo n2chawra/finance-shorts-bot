@@ -78,3 +78,13 @@ def test_a_calculation_from_a_fact_must_use_its_value():
     bad = {"facts": facts, "maths": [{"name": "r", "kind": "rate", "part": 14e9, "whole": 401e9, "facts": {"part": 2, "whole": 4}}]}
     problems = " ".join(topics.check_fact_inputs(bad))
     assert "use the fact's value" in problems and "there is no fact 4" in problems
+
+
+def test_a_malformed_fact_link_is_a_note_not_a_crash():
+    # auditor 2026-11-03: `"facts": [1]` (a list, not {"amount": 1}) raised AttributeError out of number-check
+    facts = [{"value": 401, "unit": "money_billion"}, {"unit": "money_billion"}]
+    script = {"facts": facts, "maths": [{"name": "r", "kind": "rate", "part": 1, "whole": 2, "facts": [1]},
+                                        {"name": "s", "kind": "rate", "part": 1, "whole": 2, "facts": {"part": 2}}]}
+    problems = " ".join(topics.check_fact_inputs(script))
+    assert "maths 'r'.facts is an object" in problems
+    assert "fact 2 has no numeric value" in problems

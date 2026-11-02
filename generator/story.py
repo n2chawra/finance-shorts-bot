@@ -42,7 +42,8 @@ MAX_LOUD_TRANSITIONS = 4  # whip / zoom-through: travelling accents, not every c
 # discount Short rated 2/10 for saying "might", "can", "some dealers" in every line): one story told
 # with certainty, and a new open question every few beats so the viewer always waits for something
 MAX_HEDGES = 2
-HEDGES = re.compile(r"\b(might|may|maybe|could|perhaps|possibly|potentially|sometimes|often|some|quietly|can)\b", re.I)
+# "can't" / "can’t" state a fact; only a bare "can" hedges (\b alone matched the "can" in "can't")
+HEDGES = re.compile(r"\b(might|may|maybe|could|perhaps|possibly|potentially|sometimes|often|some|quietly|can(?!['’]t))\b", re.I)
 OPEN_LOOPS_MIN = 2
 OPEN_LOOP = re.compile(r"\?|\b(but|here'?s the (catch|twist|trick|clever part)|that'?s (not|only|just) (the|half|where)|"
                        r"the real|wait (till|until)|watch what|which is why|and that'?s (not|only))\b", re.I)
