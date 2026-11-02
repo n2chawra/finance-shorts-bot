@@ -1,0 +1,121 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 73418,
+  "duration_sec": 60,
+  "tempo": 1.2,
+  "style": {
+    "palette": "plum",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 104
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "A billion dollars on a good salary. When would you have to start?",
+        "start": 0.3,
+        "seconds": 3.18,
+        "window": 3.83,
+        "fill": 0.83
+      },
+      {
+        "scene": "promise",
+        "text": "Here's the game. You earn $100,000 a year and never spend a cent. Let's walk back through time until the pile reaches $1 billion.",
+        "start": 4.13,
+        "seconds": 8.1,
+        "window": 8.8,
+        "fill": 0.92
+      },
+      {
+        "scene": "career",
+        "text": "One whole career of hard work adds up to $4.0M. That's a great life, and it's nowhere near the goal.",
+        "start": 12.93,
+        "seconds": 5.82,
+        "window": 6.47,
+        "fill": 0.9
+      },
+      {
+        "scene": "years",
+        "text": "To reach $1 billion, you'd need 10,000 years of that salary. That's 250 whole careers, back to back.",
+        "start": 19.4,
+        "seconds": 6.78,
+        "window": 7.43,
+        "fill": 0.913
+      },
+      {
+        "scene": "rewind",
+        "text": "So rewind the clock. Past the moon landing, past the Colosseum, past the pyramids, and keep going, to the end of the last ice age, when people hunted mammoths.",
+        "start": 26.83,
+        "seconds": 8.8,
+        "window": 9.5,
+        "fill": 0.926
+      },
+      {
+        "scene": "doubt",
+        "text": "So nobody gets a billion from a salary? Then how do billionaires get there?",
+        "start": 36.33,
+        "seconds": 4.25,
+        "window": 4.67,
+        "fill": 0.91
+      },
+      {
+        "scene": "turn",
+        "text": "Because they don't get paid by the year. They own a piece of something that grows, like a company, so the pile grows even while they sleep.",
+        "start": 41.0,
+        "seconds": 7.12,
+        "window": 7.77,
+        "fill": 0.916
+      },
+      {
+        "scene": "payoff",
+        "text": "That's the gap. A salary adds $100,000 a year, while a big fortune can move by more than that in a single minute.",
+        "start": 48.77,
+        "seconds": 6.45,
+        "window": 7.13,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "So to get a billion on my salary, when would I have needed to start?",
+        "start": 55.9,
+        "seconds": 3.36,
+        "window": 3.73,
+        "fill": 0.901
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "off",
+    "loop-picture-matches-hook": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.4
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.161,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

@@ -1,0 +1,934 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 73418,
+  "story": "money_scale",
+  "shape": "timeline",
+  "currency": "USD",
+  "feed_id": "2026-10-27-a-billion-is-250-careers",
+  "style": {
+    "palette": "plum",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 104
+  },
+  "hook_style": "challenge",
+  "cta": "When would you have had to start? Comment",
+  "maths": [
+    {
+      "name": "car",
+      "kind": "fee_take",
+      "amount": 100000,
+      "fee_pct": 100,
+      "per_year": 1,
+      "years": 40
+    },
+    {
+      "name": "bil",
+      "kind": "share",
+      "total": 1000000000,
+      "parts": 1,
+      "per_year": 100000
+    },
+    {
+      "name": "careers",
+      "kind": "share",
+      "total": 1000000000,
+      "parts": 1,
+      "per_year": 4000000
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 3.0,
+    "words": "Billion takes *how* long?",
+    "figure": "{bil_years}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "A billion dollars on a good salary. When would you have to start?",
+      "events": {
+        "billion": {
+          "word": "billion"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "pyramids": {
+          "word": "When"
+        },
+        "watch": {
+          "word": "start"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "billion"
+        },
+        {
+          "kind": "pop",
+          "at": "salary"
+        },
+        {
+          "kind": "whoosh",
+          "at": "pyramids"
+        },
+        {
+          "kind": "riser",
+          "at": "watch"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "How many years?",
+        "layout": "v3",
+        "set": "vault",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "happy"
+              },
+              {
+                "at": "pyramids",
+                "pose": "shrug",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "shot",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Here's the game. You earn {car_amount} a year and never spend a cent. Let's walk back through time until the pile reaches {bil_total_long}.",
+      "events": {
+        "game": {
+          "word": "game"
+        },
+        "earn": {
+          "word": "earn"
+        },
+        "never": {
+          "word": "never"
+        },
+        "spend": {
+          "word": "spend"
+        },
+        "walk": {
+          "word": "walk"
+        },
+        "time": {
+          "word": "time"
+        },
+        "pile": {
+          "word": "pile"
+        },
+        "reaches": {
+          "word": "reaches"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "game"
+        },
+        {
+          "kind": "kaching",
+          "at": "earn"
+        },
+        {
+          "kind": "whoosh",
+          "at": "walk"
+        },
+        {
+          "kind": "riser",
+          "at": "reaches"
+        }
+      ],
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "earn",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              },
+              {
+                "at": "never",
+                "pose": "point",
+                "expression": "happy"
+              },
+              {
+                "at": "walk",
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "pile",
+                "pose": "shrug",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "pay",
+            "spot": 0.68,
+            "amount": "@car.per_period",
+            "text": "{car_amount}",
+            "label": "One year",
+            "at": "earn",
+            "tone": "good"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "time",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "career",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "One whole career of hard work adds up to {car_total}. That's a great life, and it's nowhere near the goal.",
+      "events": {
+        "career": {
+          "word": "career"
+        },
+        "work": {
+          "word": "work"
+        },
+        "adds": {
+          "word": "adds"
+        },
+        "great": {
+          "word": "great"
+        },
+        "life": {
+          "word": "life"
+        },
+        "goal": {
+          "word": "goal"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "career"
+        },
+        {
+          "kind": "tick",
+          "at": "work"
+        },
+        {
+          "kind": "kaching",
+          "at": "adds"
+        },
+        {
+          "kind": "fail",
+          "at": "goal"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "purple",
+          "horizon": [
+            {
+              "prop": "billiontower",
+              "x": 0.92,
+              "size": 0.07
+            },
+            {
+              "prop": "sundial",
+              "x": 0.08,
+              "size": 0.04
+            },
+            {
+              "prop": "moonflag",
+              "x": 0.18,
+              "size": 0.04
+            },
+            {
+              "prop": "colosseum",
+              "x": 0.62,
+              "size": 0.03
+            },
+            {
+              "prop": "pyramid",
+              "x": 0.8,
+              "size": 0.04
+            },
+            {
+              "prop": "glacier",
+              "x": 0.42,
+              "size": 0.03
+            },
+            {
+              "prop": "mammoth",
+              "x": 0.52,
+              "size": 0.03
+            },
+            {
+              "prop": "spear",
+              "x": 0.3,
+              "size": 0.04
+            }
+          ]
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "career",
+            "prop": "worker",
+            "x": 0.3,
+            "size": 0.2,
+            "label": "One career"
+          },
+          {
+            "id": "work",
+            "prop": "payenvelope",
+            "x": 0.5,
+            "size": 0.12,
+            "hidden": true
+          },
+          {
+            "id": "goal",
+            "prop": "billiontower",
+            "x": 0.71,
+            "size": 0.24,
+            "label": "The goal",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "career",
+            "do": "glow",
+            "target": "career"
+          },
+          {
+            "at": "work",
+            "do": "enter",
+            "target": "work"
+          },
+          {
+            "at": "adds",
+            "do": "tag",
+            "target": "work",
+            "text": "{car_total}"
+          },
+          {
+            "at": "life",
+            "do": "state",
+            "target": "career",
+            "state": "old"
+          },
+          {
+            "at": "great",
+            "do": "glow",
+            "target": "work"
+          },
+          {
+            "at": "goal",
+            "do": "enter",
+            "target": "goal"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "career"
+          },
+          {
+            "at": "work",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "years",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "To reach {bil_total_long}, you'd need {bil_years} years of that salary. That's {careers_years} whole careers, back to back.",
+      "events": {
+        "reach": {
+          "word": "reach"
+        },
+        "need": {
+          "word": "need"
+        },
+        "years": {
+          "word": "years"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "careers": {
+          "word": "careers"
+        },
+        "back": {
+          "word": "back"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "reach"
+        },
+        {
+          "kind": "boom",
+          "at": "years"
+        },
+        {
+          "kind": "pop",
+          "at": "careers"
+        },
+        {
+          "kind": "whoosh",
+          "at": "back"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "gold",
+          "horizon": [
+            {
+              "prop": "pyramid",
+              "x": 0.1,
+              "size": 0.04
+            }
+          ]
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "salary",
+            "prop": "payenvelope",
+            "x": 0.22,
+            "size": 0.13,
+            "tag": "{car_amount}",
+            "label": "Salary"
+          },
+          {
+            "id": "careers",
+            "prop": "sundial",
+            "x": 0.5,
+            "size": 0.13,
+            "label": "Years",
+            "hidden": true
+          },
+          {
+            "id": "reach",
+            "prop": "billiontower",
+            "x": 0.75,
+            "size": 0.26,
+            "tag": "{bil_total_long}"
+          }
+        ],
+        "actions": [
+          {
+            "at": "reach",
+            "do": "glow",
+            "target": "reach"
+          },
+          {
+            "at": "years",
+            "do": "enter",
+            "target": "careers"
+          },
+          {
+            "at": "years",
+            "do": "tag",
+            "target": "careers",
+            "text": "{bil_years}"
+          },
+          {
+            "at": "salary",
+            "do": "shake",
+            "target": "salary"
+          },
+          {
+            "at": "careers",
+            "do": "label",
+            "target": "careers",
+            "text": "Careers"
+          },
+          {
+            "at": "careers",
+            "do": "tag",
+            "target": "careers",
+            "text": "{careers_years}"
+          },
+          {
+            "at": "back",
+            "do": "glow",
+            "target": "reach"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rewind",
+      "scene": "custom",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "So rewind the clock. Past the moon landing, past the Colosseum, past the pyramids, and keep going, to the end of the last ice age, when people hunted mammoths.",
+      "events": {
+        "rewind": {
+          "word": "rewind"
+        },
+        "moon": {
+          "word": "moon"
+        },
+        "colosseum": {
+          "word": "Colosseum"
+        },
+        "pyramids": {
+          "word": "pyramids"
+        },
+        "going": {
+          "word": "going"
+        },
+        "ice": {
+          "word": "ice"
+        },
+        "mammoths": {
+          "word": "mammoths"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "rewind"
+        },
+        {
+          "kind": "pop",
+          "at": "moon"
+        },
+        {
+          "kind": "pop",
+          "at": "colosseum"
+        },
+        {
+          "kind": "boom",
+          "at": "pyramids"
+        },
+        {
+          "kind": "whoosh",
+          "at": "going"
+        },
+        {
+          "kind": "boom",
+          "at": "mammoths"
+        }
+      ],
+      "params": {
+        "component": "Rewind",
+        "hud": {
+          "hide": true
+        },
+        "layout": "v4",
+        "moonLabel": "Moon landing",
+        "romeLabel": "Rome",
+        "pyrLabel": "Pyramids",
+        "iceLabel": "Ice age",
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "ice",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "doubt",
+      "scene": "shot",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "So nobody gets a billion from a salary? Then how do billionaires get there?",
+      "events": {
+        "nobody": {
+          "word": "nobody"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "billionaires": {
+          "word": "billionaires"
+        },
+        "there": {
+          "word": "there"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "salary"
+        },
+        {
+          "kind": "tick",
+          "at": "there"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.5,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              },
+              {
+                "at": "salary",
+                "pose": "point",
+                "expression": "worried"
+              },
+              {
+                "at": "billionaires",
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "there",
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "billionaires",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "Because they don't get paid by the year. They own a piece of something that grows, like a company, so the pile grows even while they sleep.",
+      "events": {
+        "paid": {
+          "word": "paid"
+        },
+        "own": {
+          "word": "own"
+        },
+        "piece": {
+          "word": "piece"
+        },
+        "grows": {
+          "word": "grows"
+        },
+        "company": {
+          "word": "company"
+        },
+        "pile": {
+          "word": "pile"
+        },
+        "sleep": {
+          "word": "sleep"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "own"
+        },
+        {
+          "kind": "pop",
+          "at": "company"
+        },
+        {
+          "kind": "kaching",
+          "at": "pile"
+        },
+        {
+          "kind": "riser",
+          "at": "sleep"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "stamp": "Own it",
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "company",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That's the gap. A salary adds {car_amount} a year, while a big fortune can move by more than that in a single minute.",
+      "events": {
+        "gap": {
+          "word": "gap"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "adds": {
+          "word": "adds"
+        },
+        "fortune": {
+          "word": "fortune"
+        },
+        "move": {
+          "word": "move"
+        },
+        "minute": {
+          "word": "minute"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "gap"
+        },
+        {
+          "kind": "tick",
+          "at": "adds"
+        },
+        {
+          "kind": "kaching",
+          "at": "fortune"
+        },
+        {
+          "kind": "boom",
+          "at": "minute"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "salary": "{car_amount}",
+        "salaryLabel": "A year of salary",
+        "fortuneLabel": "A big fortune",
+        "layout": "v2",
+        "set": "vault",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "minute",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "So to get a billion on my salary, when would I have needed to start?",
+      "events": {
+        "billion": {
+          "word": "billion"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "needed": {
+          "word": "needed"
+        },
+        "start": {
+          "word": "start"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "billion"
+        },
+        {
+          "kind": "tick",
+          "at": "start"
+        }
+      ],
+      "params": {
+        "set": "vault",
+        "hud": {
+          "hide": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "salary",
+                "pose": "shrug",
+                "expression": "confused"
+              },
+              {
+                "at": "start",
+                "pose": "point",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "billion",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          },
+          {
+            "at": "needed",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "When?",
+          "at": "needed",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    }
+  ],
+  "narrator": "af_heart"
+}

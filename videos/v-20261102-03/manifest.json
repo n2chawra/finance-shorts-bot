@@ -1,0 +1,395 @@
+{
+  "id": "v-20261102-03",
+  "createdAt": "2026-11-02T00:00:25.185690+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "$1 billion is 250 whole working lives at $100,000 a year",
+    "category": "wealth",
+    "reach": "global",
+    "feed_id": "2026-10-27-a-billion-is-250-careers"
+  },
+  "title": "To earn a billion, start 10,000 years ago ⏳",
+  "description": "How long would a good salary take to earn one billion dollars?\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Billionaire",
+    "#Money",
+    "#Salary"
+  ],
+  "hookStyle": "challenge",
+  "cta": "When would you have had to start? Comment",
+  "seed": 73418,
+  "style": {
+    "palette": "plum",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 104,
+    "voice": "af_heart"
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "A billion dollars on a good salary. When would you have to start?",
+        "start": 0.3,
+        "seconds": 3.18,
+        "window": 3.83,
+        "fill": 0.83
+      },
+      {
+        "scene": "promise",
+        "text": "Here's the game. You earn $100,000 a year and never spend a cent. Let's walk back through time until the pile reaches $1 billion.",
+        "start": 4.13,
+        "seconds": 8.1,
+        "window": 8.8,
+        "fill": 0.92
+      },
+      {
+        "scene": "career",
+        "text": "One whole career of hard work adds up to $4.0M. That's a great life, and it's nowhere near the goal.",
+        "start": 12.93,
+        "seconds": 5.82,
+        "window": 6.47,
+        "fill": 0.9
+      },
+      {
+        "scene": "years",
+        "text": "To reach $1 billion, you'd need 10,000 years of that salary. That's 250 whole careers, back to back.",
+        "start": 19.4,
+        "seconds": 6.78,
+        "window": 7.43,
+        "fill": 0.913
+      },
+      {
+        "scene": "rewind",
+        "text": "So rewind the clock. Past the moon landing, past the Colosseum, past the pyramids, and keep going, to the end of the last ice age, when people hunted mammoths.",
+        "start": 26.83,
+        "seconds": 8.8,
+        "window": 9.5,
+        "fill": 0.926
+      },
+      {
+        "scene": "doubt",
+        "text": "So nobody gets a billion from a salary? Then how do billionaires get there?",
+        "start": 36.33,
+        "seconds": 4.25,
+        "window": 4.67,
+        "fill": 0.91
+      },
+      {
+        "scene": "turn",
+        "text": "Because they don't get paid by the year. They own a piece of something that grows, like a company, so the pile grows even while they sleep.",
+        "start": 41.0,
+        "seconds": 7.12,
+        "window": 7.77,
+        "fill": 0.916
+      },
+      {
+        "scene": "payoff",
+        "text": "That's the gap. A salary adds $100,000 a year, while a big fortune can move by more than that in a single minute.",
+        "start": 48.77,
+        "seconds": 6.45,
+        "window": 7.13,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "So to get a billion on my salary, when would I have needed to start?",
+        "start": 55.9,
+        "seconds": 3.36,
+        "window": 3.73,
+        "fill": 0.901
+      }
+    ]
+  },
+  "durationSec": 60,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.4
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "off",
+    "loop-picture-matches-hook": "on"
+  },
+  "heard": {
+    "hookVoice": "af_heart",
+    "narratorShare": 69
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "18 figures computed from inputs; 15 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "No sourced facts; feed verify item (arithmetic only, no real person's wealth) holds. Checked history: 10,000 years back passes moon landing (~57y), Colosseum (~1,950y), pyramids (~4,500y) and lands near the end of the last ice age (~11,700y) when humans still hunted mammoths - fair with 'around'. Zero-spend, zero-growth salary premise stated as a game; no advice, no products, no expert claims; 'fortune can move by more than that in a minute' is hedged ('can', 'move') and the Payoff shows it going up and down. Description ends with the disclaimer. Notes: Turn stamp 'Own it' and 'grows even while they sleep' are slightly one-sided (owned assets can fall), acceptable as illustration; description could add the 'speak to a licensed financial adviser' line from channel/profile.md."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: hook now asks without answering, Rohan larger with the tower outline from 0s; years beat spaced with a labelled Careers 250 chip; payoff on its own night set with a clock; disclaimer at 59.9s; 60 s, peak -1.0 / mean -16.4 dB, no layout or craft problems"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:35:41.964370+00:00",
+      "finishedAt": "2026-11-01T23:35:41.964370+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:36:21.445277+00:00",
+      "finishedAt": "2026-11-01T23:36:21.445277+00:00",
+      "notes": [
+        "thumbnail.words: four words at most, it is read at a glance"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:36:30.009120+00:00",
+      "finishedAt": "2026-11-01T23:36:30.009120+00:00",
+      "notes": [
+        "18 figures computed from inputs; 15 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:38:45.625120+00:00",
+      "finishedAt": "2026-11-01T23:38:45.625120+00:00",
+      "notes": [
+        "18 figures computed from inputs; 15 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:40:06.817726+00:00",
+      "finishedAt": "2026-11-01T23:40:06.817726+00:00",
+      "notes": [
+        "No sourced facts; feed verify item (arithmetic only, no real person's wealth) holds. Checked history: 10,000 years back passes moon landing (~57y), Colosseum (~1,950y), pyramids (~4,500y) and lands near the end of the last ice age (~11,700y) when humans still hunted mammoths - fair with 'around'. Zero-spend, zero-growth salary premise stated as a game; no advice, no products, no expert claims; 'fortune can move by more than that in a minute' is hedged ('can', 'move') and the Payoff shows it going up and down. Description ends with the disclaimer. Notes: Turn stamp 'Own it' and 'grows even while they sleep' are slightly one-sided (owned assets can fall), acceptable as illustration; description could add the 'speak to a licensed financial adviser' line from channel/profile.md."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:39:31.862619+00:00",
+      "finishedAt": "2026-11-01T23:40:17.444423+00:00",
+      "notes": [
+        "4 of 14 stills are mostly empty background (at 15 s, 30 s, 35 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:40:47.718114+00:00",
+      "finishedAt": "2026-11-01T23:40:47.718114+00:00",
+      "notes": [
+        "18 figures computed from inputs; 15 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:41:02.600798+00:00",
+      "finishedAt": "2026-11-01T23:41:32.125108+00:00",
+      "notes": [
+        "4 of 14 stills are mostly empty background (at 20 s, 30 s, 35 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:42:10.058031+00:00",
+      "finishedAt": "2026-11-01T23:42:36.817137+00:00",
+      "notes": [
+        "4 of 14 stills are mostly empty background (at 20 s, 30 s, 35 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:43:09.634082+00:00",
+      "finishedAt": "2026-11-01T23:43:09.634082+00:00",
+      "notes": [
+        "18 figures computed from inputs; 15 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:44:13.209057+00:00",
+      "finishedAt": "2026-11-01T23:44:44.731946+00:00",
+      "notes": [
+        "61 s, plum/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:45:27.476961+00:00",
+      "finishedAt": "2026-11-01T23:45:56.558167+00:00",
+      "notes": [
+        "61 s, plum/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:46:35.789912+00:00",
+      "finishedAt": "2026-11-01T23:47:05.129049+00:00",
+      "notes": [
+        "beat 'years': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "3 of 14 stills are mostly empty background (at 20 s, 30 s, 35 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:47:28.238621+00:00",
+      "finishedAt": "2026-11-01T23:48:00.314354+00:00",
+      "notes": [
+        "3 of 14 stills are mostly empty background (at 20 s, 30 s, 35 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:48:33.373237+00:00",
+      "finishedAt": "2026-11-01T23:49:03.400280+00:00",
+      "notes": [
+        "3 of 14 stills are mostly empty background (at 20 s, 30 s, 35 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:49:35.099260+00:00",
+      "finishedAt": "2026-11-01T23:50:03.744329+00:00",
+      "notes": [
+        "61 s, plum/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:50:39.827867+00:00",
+      "finishedAt": "2026-11-01T23:51:08.587752+00:00",
+      "notes": [
+        "61 s, plum/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-01T23:52:22.100074+00:00",
+      "finishedAt": "2026-11-01T23:52:22.100074+00:00",
+      "notes": [
+        "[script] 0.0s hook: Rohan is small, cut off at the bottom-left corner of a mostly empty vault (templated look: cast small at the edge of a big empty frame); use a closer shot size / centre spot so the cast and the money object fill the first frame",
+        "[script] hook line (0.3-4.1s): 'On a good salary, start before the pyramids' answers the on-screen question 'How many years?' instead of opening it (7b); keep the answer (pyramids/ice age) for the rewind beat, e.g. end the hook on 'further back than you think'",
+        "[script] 25.0s years beat: the 'Salary $100,000' and 'Years 10,000' tags touch edge to edge, and a bare '250' chip floats beside '$1 billion' with no label, reading as if it belongs to the tower; space the items (salary x / years x) and label the 250 as careers",
+        "[script] 50.0s/55.0s payoff repeats the years beat's composition (same city sky, pay envelope left, green tower right as 20-25s) and nothing shows 'in a single minute'; give the payoff its own set/object (e.g. a clock or ticker beside the fortune)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:53:02.407350+00:00",
+      "finishedAt": "2026-11-01T23:53:02.407350+00:00",
+      "notes": [
+        "18 figures computed from inputs; 15 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:53:15.476761+00:00",
+      "finishedAt": "2026-11-01T23:53:46.708227+00:00",
+      "notes": [
+        "60 s, plum/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:54:25.836264+00:00",
+      "finishedAt": "2026-11-01T23:54:55.045062+00:00",
+      "notes": [
+        "60 s, plum/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:55:20.574862+00:00",
+      "finishedAt": "2026-11-01T23:55:48.447927+00:00",
+      "notes": [
+        "60 s, plum/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:56:35.054174+00:00",
+      "finishedAt": "2026-11-01T23:56:35.054174+00:00",
+      "notes": [
+        "Re-review after fixes: hook now asks without answering, Rohan larger with the tower outline from 0s; years beat spaced with a labelled Careers 250 chip; payoff on its own night set with a clock; disclaimer at 59.9s; 60 s, peak -1.0 / mean -16.4 dB, no layout or craft problems"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-01T23:56:52.218899+00:00",
+      "finishedAt": "2026-11-01T23:59:59.707304+00:00",
+      "notes": [
+        "60 s, plum/synthwave, peak -1.0 dB, mean -16.4 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-02T00:00:25.185793+00:00",
+      "finishedAt": "2026-11-02T00:00:25.185793+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261102-03",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261102-03"
+  }
+}
