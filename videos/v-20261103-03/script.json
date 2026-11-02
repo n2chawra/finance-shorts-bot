@@ -1,0 +1,850 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 64093,
+  "story": "billionaire_question",
+  "shape": "what-if",
+  "currency": "USD",
+  "feed_id": "2026-11-02-one-dollar-salary-true-tax",
+  "style": {
+    "palette": "mint",
+    "genre": "lofi",
+    "key": "E",
+    "bpm": 88,
+    "look": {
+      "stage": "city",
+      "header": "chalk",
+      "holder": "blackboard",
+      "entrance": "draw"
+    }
+  },
+  "hook_style": "shock_number",
+  "cta": "Who pays the higher rate, you or them? Comment",
+  "facts": [
+    {
+      "label": "Mark Zuckerberg's base salary",
+      "value": 1,
+      "unit": "money",
+      "currency": "USD",
+      "as_of": "2023-12-31",
+      "source": "Fortune",
+      "url": "https://fortune.com/2024/04/24/mark-zuckerberg-24-million-compensation-meta-median-employee-379000"
+    },
+    {
+      "label": "How much the 25 richest Americans' wealth grew in five years",
+      "value": 401,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2018-12-31",
+      "source": "ProPublica",
+      "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+    },
+    {
+      "label": "Federal income tax they paid in those years",
+      "value": 13.6,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2018-12-31",
+      "source": "ProPublica",
+      "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+    }
+  ],
+  "maths": [
+    {
+      "name": "true",
+      "kind": "rate",
+      "part": 13600000000,
+      "whole": 401000000000,
+      "facts": {
+        "part": 3,
+        "whole": 2
+      }
+    },
+    {
+      "name": "each",
+      "kind": "share",
+      "total": 401000000000,
+      "parts": 25,
+      "facts": {
+        "total": 2
+      }
+    },
+    {
+      "name": "yr",
+      "kind": "share",
+      "total": 401000000000,
+      "parts": 5,
+      "facts": {
+        "total": 2
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "priya",
+    "layout": "scene",
+    "at": "turn",
+    "sec": 11.5,
+    "words": "Paid *how* much tax?",
+    "figure": "{fact3}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "You think Zuckerberg lives on his salary? Here's why he doesn't need to.",
+      "events": {
+        "zuckerberg": {
+          "word": "Zuckerberg"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "why": {
+          "word": "why"
+        },
+        "cant": {
+          "word": "need"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "zuckerberg"
+        },
+        {
+          "kind": "pop",
+          "at": "salary"
+        },
+        {
+          "kind": "riser",
+          "at": "why"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "Lives on his salary?",
+        "slip": "{fact1}",
+        "slipLabel": "Base salary",
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "why",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "custom",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "His base salary was {fact1}, for a whole year of running one of the biggest companies on Earth. So where does the real money of the richest come from?",
+      "events": {
+        "base": {
+          "word": "base"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "year": {
+          "word": "year"
+        },
+        "watch": {
+          "word": "where"
+        },
+        "money": {
+          "word": "money"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "salary"
+        },
+        {
+          "kind": "boom",
+          "at": "year"
+        },
+        {
+          "kind": "riser",
+          "at": "watch"
+        }
+      ],
+      "params": {
+        "component": "Slip",
+        "hud": {
+          "hide": true
+        },
+        "header": "His pay slip",
+        "rows": [
+          {
+            "label": "Pay to",
+            "value": "M. Zuckerberg"
+          },
+          {
+            "label": "Base salary",
+            "value": "{fact1}",
+            "at": "salary"
+          },
+          {
+            "label": "Period",
+            "value": "One year",
+            "at": "year"
+          },
+          {
+            "label": "Real money",
+            "value": "?",
+            "at": "money"
+          }
+        ],
+        "sourceIndex": 0,
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ],
+        "ask": "Where from?"
+      }
+    },
+    {
+      "id": "coffee",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "A salary that won't even buy a coffee? So what do the richest live on?",
+      "events": {
+        "coffee": {
+          "word": "coffee"
+        },
+        "live": {
+          "word": "live"
+        }
+      },
+      "params": {
+        "header": "Not even a coffee",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "coffee",
+            "prop": "coffeecup",
+            "size": 0.2,
+            "label": "One coffee",
+            "x": 0.5,
+            "y": 0.32
+          }
+        ],
+        "actions": [
+          {
+            "at": "coffee",
+            "do": "cross",
+            "target": "coffee"
+          },
+          {
+            "at": "coffee",
+            "do": "shake",
+            "target": "coffee"
+          },
+          {
+            "at": "live",
+            "do": "bubble",
+            "text": "Live on what?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shares",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "For the richest, wealth isn't a paycheck. It's shares in their companies, which grow with them.",
+      "events": {
+        "wealth": {
+          "word": "wealth"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "company": {
+          "word": "companies"
+        },
+        "grow": {
+          "word": "grow"
+        }
+      },
+      "params": {
+        "header": "Shares, not pay",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "shares",
+            "prop": "payslip",
+            "x": 0.62,
+            "size": 0.34,
+            "label": "Paycheck"
+          },
+          {
+            "id": "wealth",
+            "prop": "villa",
+            "x": 0.22,
+            "size": 0.24,
+            "label": "Wealth"
+          }
+        ],
+        "actions": [
+          {
+            "at": "wealth",
+            "do": "glow",
+            "target": "wealth"
+          },
+          {
+            "at": "paycheck",
+            "do": "cross",
+            "target": "shares"
+          },
+          {
+            "at": "shares",
+            "do": "swap",
+            "target": "shares",
+            "into": "sharetower"
+          },
+          {
+            "at": "company",
+            "do": "label",
+            "target": "shares",
+            "text": "Company shares"
+          },
+          {
+            "at": "company",
+            "do": "grow",
+            "target": "shares",
+            "scale": 1.35
+          },
+          {
+            "at": "grow",
+            "do": "stamp",
+            "target": "shares",
+            "text": "Grows with the company"
+          }
+        ]
+      }
+    },
+    {
+      "id": "untaxed",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "And in America, shares that rise aren't taxed as income until they're sold.",
+      "events": {
+        "america": {
+          "word": "America"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "rise": {
+          "word": "rise"
+        },
+        "taxed": {
+          "word": "taxed"
+        },
+        "sold": {
+          "word": "sold"
+        }
+      },
+      "params": {
+        "header": "No sale, no tax",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "shares",
+            "prop": "sharetower",
+            "x": 0.3,
+            "size": 0.34,
+            "label": "Shares",
+            "k": 0.5
+          },
+          {
+            "id": "taxed",
+            "prop": "taxjar",
+            "x": 0.76,
+            "size": 0.28,
+            "label": "Income tax"
+          }
+        ],
+        "actions": [
+          {
+            "at": "rise",
+            "do": "grow",
+            "target": "shares",
+            "scale": 1.25
+          },
+          {
+            "at": "taxed",
+            "do": "try",
+            "target": "shares",
+            "to": "taxed"
+          },
+          {
+            "at": "sold",
+            "do": "stamp",
+            "target": "taxed",
+            "text": "Only when sold"
+          },
+          {
+            "at": "sold",
+            "do": "term",
+            "name": "Unrealized gain",
+            "line": "A rise in value you haven't sold"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jet",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "But if they don't sell, how do they pay for the jets and the houses?",
+      "events": {
+        "sells": {
+          "word": "sell"
+        },
+        "jet": {
+          "word": "jets"
+        },
+        "houses": {
+          "word": "houses"
+        }
+      },
+      "params": {
+        "header": "Then how do they pay?",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "stand",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "jet",
+            "prop": "privatejet",
+            "x": 0.5,
+            "y": 0.32,
+            "size": 0.2,
+            "label": "Jet",
+            "hidden": false
+          }
+        ],
+        "actions": [
+          {
+            "at": "jet",
+            "do": "glow",
+            "target": "jet"
+          },
+          {
+            "at": "sells",
+            "do": "bubble",
+            "text": "Don't sell?"
+          },
+          {
+            "at": "houses",
+            "do": "bubble",
+            "text": "And houses?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "borrow",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "The richest can borrow against their shares. A loan isn't income, so there's no income tax.",
+      "events": {
+        "borrows": {
+          "word": "borrow"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "income": {
+          "word": "income"
+        },
+        "tax": {
+          "word": "tax"
+        }
+      },
+      "params": {
+        "header": "Borrow, don't sell",
+        "bg": "gold",
+        "items": [
+          {
+            "id": "bank",
+            "prop": "lender",
+            "x": 0.22,
+            "size": 0.3,
+            "label": "Bank"
+          },
+          {
+            "id": "loan",
+            "prop": "creditline",
+            "x": 0.75,
+            "size": 0.28,
+            "label": "Loan",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "borrows",
+            "do": "glow",
+            "target": "bank"
+          },
+          {
+            "at": "shares",
+            "do": "stamp",
+            "target": "bank",
+            "text": "Shares as security"
+          },
+          {
+            "at": "loan",
+            "do": "enter",
+            "target": "loan",
+            "from": "bank"
+          },
+          {
+            "at": "loan",
+            "do": "flow",
+            "target": "bank",
+            "to": "loan",
+            "n": 5,
+            "text": "Loan"
+          },
+          {
+            "at": "tax",
+            "do": "stamp",
+            "target": "loan",
+            "text": "No income tax"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Here's the twist. The {each_parts} richest Americans grew {fact2} richer in {yr_parts} years, and paid {fact3} in federal income tax.",
+      "events": {
+        "twist": {
+          "word": "twist"
+        },
+        "richest": {
+          "word": "richest"
+        },
+        "richer": {
+          "word": "richer"
+        },
+        "paid": {
+          "word": "paid"
+        },
+        "tax": {
+          "word": "tax"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "twist"
+        },
+        {
+          "kind": "kaching",
+          "at": "richer"
+        },
+        {
+          "kind": "boom",
+          "at": "paid"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "grew": "{fact2}",
+        "paid": "{fact3}",
+        "grewLabel": "Grew",
+        "paidLabel": "Tax paid",
+        "sourceIndex": 1,
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "paid",
+            "size": "extreme",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "ratio": "{true_pct}"
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That's why a paycheck barely matters to them. Shares grow untaxed until sold, loans aren't income, and for those richest Americans, the true tax rate was {true_pct}.",
+      "events": {
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "grow": {
+          "word": "grow"
+        },
+        "borrows": {
+          "word": "loans"
+        },
+        "americans": {
+          "word": "Americans"
+        },
+        "true": {
+          "word": "true"
+        },
+        "rate": {
+          "word": "rate"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "grow"
+        },
+        {
+          "kind": "kaching",
+          "at": "borrows"
+        },
+        {
+          "kind": "boom",
+          "at": "rate"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "header": "Their true tax rate",
+        "rate": "{true_pct}",
+        "steps": [
+          "Shares grow untaxed",
+          "Loans aren't income",
+          "Little income tax"
+        ],
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "rate",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "wealthLabel": "New wealth",
+        "taxLabel": "Income tax"
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "board",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "And a paycheck is taxed every payday. So who pays the higher rate, you or them?",
+      "events": {
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "payday": {
+          "word": "payday"
+        },
+        "rate": {
+          "word": "rate"
+        },
+        "them": {
+          "word": "them"
+        }
+      },
+      "params": {
+        "header": "Who pays more?",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "angry"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "paycheck",
+            "prop": "wageslip",
+            "x": 0.5,
+            "y": 0.32,
+            "size": 0.2,
+            "label": "Paycheck"
+          }
+        ],
+        "actions": [
+          {
+            "at": "payday",
+            "do": "stamp",
+            "target": "paycheck",
+            "text": "Taxed"
+          },
+          {
+            "at": "rate",
+            "do": "shake",
+            "target": "paycheck"
+          },
+          {
+            "at": "them",
+            "do": "bubble",
+            "text": "You or them?"
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}

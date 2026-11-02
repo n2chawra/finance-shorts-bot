@@ -1,0 +1,431 @@
+{
+  "id": "v-20261103-03",
+  "createdAt": "2026-11-02T23:28:57.334683+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Zuckerberg's base salary is $1 a year: why the richest barely need a paycheck and pay little income tax",
+    "category": "tax",
+    "reach": "global",
+    "feed_id": "2026-11-02-one-dollar-salary-true-tax"
+  },
+  "title": "Zuckerberg's salary is $1. The richest barely need one 💸",
+  "description": "How can a billionaire's salary be one dollar, and how do the richest pay so little income tax?\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Billionaire",
+    "#Tax",
+    "#Money"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Who pays the higher rate, you or them? Comment",
+  "seed": 64093,
+  "style": {
+    "palette": "mint",
+    "genre": "lofi",
+    "key": "E",
+    "bpm": 88,
+    "look": {
+      "stage": "city",
+      "header": "chalk",
+      "holder": "blackboard",
+      "entrance": "draw"
+    },
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think Zuckerberg lives on his salary? Here's why he doesn't need to.",
+        "start": 0.3,
+        "seconds": 3.81,
+        "window": 4.4,
+        "fill": 0.866
+      },
+      {
+        "scene": "promise",
+        "text": "His base salary was $1, for a whole year of running one of the biggest companies on Earth. So where does the real money of the richest come from?",
+        "start": 4.7,
+        "seconds": 8.3,
+        "window": 8.83,
+        "fill": 0.94
+      },
+      {
+        "scene": "coffee",
+        "text": "A salary that won't even buy a coffee? So what do the richest live on?",
+        "start": 13.53,
+        "seconds": 3.61,
+        "window": 4.03,
+        "fill": 0.896
+      },
+      {
+        "scene": "shares",
+        "text": "For the richest, wealth isn't a paycheck. It's shares in their companies, which grow with them.",
+        "start": 17.57,
+        "seconds": 5.09,
+        "window": 5.57,
+        "fill": 0.914
+      },
+      {
+        "scene": "untaxed",
+        "text": "And in America, shares that rise aren't taxed as income until they're sold.",
+        "start": 23.13,
+        "seconds": 4.17,
+        "window": 4.63,
+        "fill": 0.901
+      },
+      {
+        "scene": "jet",
+        "text": "But if they don't sell, how do they pay for the jets and the houses?",
+        "start": 27.77,
+        "seconds": 3.12,
+        "window": 3.57,
+        "fill": 0.874
+      },
+      {
+        "scene": "borrow",
+        "text": "The richest can borrow against their shares. A loan isn't income, so there's no income tax.",
+        "start": 31.33,
+        "seconds": 5.58,
+        "window": 6.2,
+        "fill": 0.9
+      },
+      {
+        "scene": "turn",
+        "text": "Here's the twist. The 25 richest Americans grew $401B richer in 5 years, and paid $13.6B in federal income tax.",
+        "start": 37.53,
+        "seconds": 10.56,
+        "window": 11.23,
+        "fill": 0.94
+      },
+      {
+        "scene": "payoff",
+        "text": "That's why a paycheck barely matters to them. Shares grow untaxed until sold, loans aren't income, and for those richest Americans, the true tax rate was 3.4%.",
+        "start": 48.77,
+        "seconds": 10.92,
+        "window": 11.43,
+        "fill": 0.955
+      },
+      {
+        "scene": "loop",
+        "text": "And a paycheck is taxed every payday. So who pays the higher rate, you or them?",
+        "start": 60.2,
+        "seconds": 4.46,
+        "window": 4.83,
+        "fill": 0.923
+      }
+    ]
+  },
+  "durationSec": 65,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 74
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'promise' runs 9.0 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-checked after QA edits: the coffee line now speaks no figure; the Turn labels 'Grew'/'Tax paid' and Payoff labels 'New wealth'/'Income tax' match ProPublica's wealth growth vs federal income tax ($401B, $13.6B, 3.4%, 2014-2018) as spoken. Facts confirmed on Fortune and ProPublica; nothing says Zuckerberg sells or borrows; no advice; disclaimer is in the description."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review: all five fixes confirmed. Turn labels GREW/TAX PAID are clear, the payoff disc is labelled (NEW WEALTH, INCOME TAX slice) and its chips land on their words, 'One year' reads, the coffee beat has no wrong source line, and the thumbnail shows $13.6B landed. Hook question at 0s, disclaimer at 65s, 65 s long, layout and craft checks clean. Leftovers: the thumbnail's $401B label is still blurred and the audio mean is -16.3 dB."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:06:07.038626+00:00",
+      "finishedAt": "2026-11-02T23:06:07.038626+00:00",
+      "notes": [
+        "hook style 'question' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:06:14.012760+00:00",
+      "finishedAt": "2026-11-02T23:06:14.012760+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:06:53.317969+00:00",
+      "finishedAt": "2026-11-02T23:06:53.317969+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:15:07.029549+00:00",
+      "finishedAt": "2026-11-02T23:15:07.029549+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:15:50.150548+00:00",
+      "finishedAt": "2026-11-02T23:15:50.150548+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'promise' runs 8.2 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'payoff' runs 9.6 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:16:12.407766+00:00",
+      "finishedAt": "2026-11-02T23:16:12.407766+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'promise' runs 8.2 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:17:52.701813+00:00",
+      "finishedAt": "2026-11-02T23:17:52.701813+00:00",
+      "notes": [
+        "Beats 'jet' and 'payoff' state as fact about a real person that Zuckerberg never sells ('if he never sells') and 'borrows against them for everything'. No source says this: neither Fortune nor ProPublica reports Zuckerberg borrowing against Meta shares, and searches found none; filings show he sells regularly (about $428M Nov-Dec 2023, over $2.2B in 2024 per Fortune Dec 2024, more in 2025 via 10b5-1 plans). Lines about a real person may say only what the sources say.",
+        "Beat 'borrow' ('He borrows against the shares'), the 'jet' question and the plan title ('So who pays his bills?') pin the buy-borrow-die mechanism on Zuckerberg. The cited Fortune article says his 2023 pay was about $24M in total, mostly Meta paying for security and his personal use of private aircraft. So the video's answer to who pays for the jet is wrong and hides the decisive fact. Fix: frame the borrowing as how the richest can do it (ProPublica's general finding that loans aren't income), not as what Zuckerberg does, drop 'never sells', and mention that Meta covers his security and jet costs or leave the jet out.",
+        "Facts confirmed on their source pages: $1 base salary in 2023 (Fortune, 24 Apr 2024); 25 richest grew $401B over 2014-2018, paid $13.6B federal income tax, true tax rate 3.4% (ProPublica, 8 Jun 2021); loans aren't income (ProPublica). Shares untaxed until sold is correct. Note: the ProPublica figures are from 2014-2018, so the board should show them as 'Data: ProPublica · Jun 2021'. Disclaimer is in the description."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:16:37.824169+00:00",
+      "finishedAt": "2026-11-02T23:18:02.686753+00:00",
+      "notes": [
+        "6 of 14 stills are mostly empty background (at 20 s, 25 s, 30 s, 35 s, 45 s, 61 s): fill the frame (a set, the cast big, money as a thing)",
+        "the cover looks like v-20261103-01's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice",
+        "warning: beat 'turn' runs 10.7 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:18:38.338104+00:00",
+      "finishedAt": "2026-11-02T23:18:38.338104+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:18:39.411022+00:00",
+      "finishedAt": "2026-11-02T23:18:39.411022+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'promise' runs 9.0 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "board beat 'shares' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds",
+        "board beat 'borrow' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:18:59.490634+00:00",
+      "finishedAt": "2026-11-02T23:18:59.490634+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'promise' runs 9.0 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:19:46.349432+00:00",
+      "finishedAt": "2026-11-02T23:19:46.349432+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:19:47.373640+00:00",
+      "finishedAt": "2026-11-02T23:20:33.128103+00:00",
+      "notes": [
+        "5 of 15 stills are mostly empty background (at 5 s, 20 s, 30 s, 50 s, 65 s): fill the frame (a set, the cast big, money as a thing)",
+        "warning: beat 'promise' runs 8.8 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 11.2 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:21:15.713392+00:00",
+      "finishedAt": "2026-11-02T23:21:15.713392+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:21:29.131162+00:00",
+      "finishedAt": "2026-11-02T23:21:59.956598+00:00",
+      "notes": [
+        "65 s, mint/lofi (preview only)",
+        "warning: beat 'promise' runs 8.8 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 11.2 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:22:37.578877+00:00",
+      "finishedAt": "2026-11-02T23:22:37.578877+00:00",
+      "notes": [
+        "Beat 'jet': the board header still says 'Then how does he pay?' over the jet, with the bubble 'Don't sell?'. On screen this still means Zuckerberg pays for his jet by not selling. That's the claim already removed from the voice, and Fortune (Apr 2024) contradicts it: Meta pays for his security and personal jet use. Change the header to 'Then how do they pay?' (or similar, about the richest in general).",
+        "Everything else re-checked and fine. The voice no longer says Zuckerberg never sells or borrows; borrowing is now 'the richest can'. Facts confirmed on their source pages: $1 base salary in 2023 (Fortune); $401B wealth growth 2014-2018, $13.6B federal income tax, 3.4% (ProPublica, Jun 2021); loans aren't income. Shares untaxed until sold is correct for the US. The new title is supported. Source line 'Data: ProPublica'. Disclaimer is in the description."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:22:58.691527+00:00",
+      "finishedAt": "2026-11-02T23:22:58.691527+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'promise' runs 9.0 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:23:04.747249+00:00",
+      "finishedAt": "2026-11-02T23:23:04.747249+00:00",
+      "notes": [
+        "[scene] Turn component, turn beat (40.0s, 45.0s, and the thumbnail): the bar labels collide, 'WEALTH GREW' is cut to 'WEALTH GRE' with 'INCOME TAX PAID' printed on top of it; the two labels sit too close for their width.",
+        "[scene] Payoff component, payoff beat (50.0s, 55.0s): an empty green disc fills the card for about 10 s with no figure or label in it. 3.4% only shows up near the word 'rate' (around 59s, half-faded in the 60.0s transition), so on mute the payoff tells nothing. The disc also covers the paycheck prop on the right, and the same picture is held across both stills.",
+        "[scene] Slip component, promise beat (10.0s): the red stamp lands on the Period value, and 'One year' is hard to read under it.",
+        "[scene] Source line, coffee beat (15.0s): 'Data: Fortune · ProPublica · Dec 2023' joins both sources under one date. The ProPublica figures are as of 2018 and don't appear on this card, so the label doesn't match what is shown.",
+        "[script] Thumbnail (turn, sec 8.0): taken while the 01B label is still blurred and the tax-paid bar is an empty dashed box, so it looks mid-transition. It also carries the overlapping bar labels. Take it later in the turn beat, once $13.6B has landed."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:23:08.474018+00:00",
+      "finishedAt": "2026-11-02T23:23:08.474018+00:00",
+      "notes": [
+        "Facts confirmed on their source pages: $1 base salary 2023 (Fortune Apr 2024); 25 richest +$401B 2014-2018, $13.6B federal income tax, 3.4% true rate, loans not income (ProPublica Jun 2021). Lines about Zuckerberg now stick to his salary; borrowing and not selling are framed as what the richest can do; the jet header now says 'they'. US tax claims are correct, no advice, disclaimer is in the description."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:23:37.159325+00:00",
+      "finishedAt": "2026-11-02T23:23:37.159325+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas.",
+        "warning: beat 'promise' runs 9.0 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:23:56.096749+00:00",
+      "finishedAt": "2026-11-02T23:24:28.236952+00:00",
+      "notes": [
+        "65 s, mint/lofi (preview only)",
+        "warning: beat 'promise' runs 8.8 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 11.2 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:25:01.696298+00:00",
+      "finishedAt": "2026-11-02T23:25:01.696298+00:00",
+      "notes": [
+        "Re-review: all five fixes confirmed. Turn labels GREW/TAX PAID are clear, the payoff disc is labelled (NEW WEALTH, INCOME TAX slice) and its chips land on their words, 'One year' reads, the coffee beat has no wrong source line, and the thumbnail shows $13.6B landed. Hook question at 0s, disclaimer at 65s, 65 s long, layout and craft checks clean. Leftovers: the thumbnail's $401B label is still blurred and the audio mean is -16.3 dB."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:25:04.142800+00:00",
+      "finishedAt": "2026-11-02T23:25:04.142800+00:00",
+      "notes": [
+        "Re-checked after QA edits: the coffee line now speaks no figure; the Turn labels 'Grew'/'Tax paid' and Payoff labels 'New wealth'/'Income tax' match ProPublica's wealth growth vs federal income tax ($401B, $13.6B, 3.4%, 2014-2018) as spoken. Facts confirmed on Fortune and ProPublica; nothing says Zuckerberg sells or borrows; no advice; disclaimer is in the description."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:25:15.542143+00:00",
+      "finishedAt": "2026-11-02T23:28:47.599104+00:00",
+      "notes": [
+        "65 s, mint/lofi, peak -1.0 dB, mean -16.3 dB",
+        "warning: beat 'promise' runs 8.8 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 11.2 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:28:57.334833+00:00",
+      "finishedAt": "2026-11-02T23:28:57.334833+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261103-03",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261103-03"
+  }
+}
