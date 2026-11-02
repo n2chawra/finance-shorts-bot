@@ -1,0 +1,50 @@
+{
+  "agent": "scout",
+  "day": "2026-11-02",
+  "startedAt": "2026-11-02T04:08:09Z",
+  "finishedAt": "2026-11-02T04:12:48Z",
+  "summary": "Monday hooks study: our airlines video gave its answer away in the first sentence, so I routed a rule that the hook never names the last chapter's answer. Added two global long topics (7 signs someone is secretly rich; why your house costs twice its price).",
+  "decision": "acted",
+  "why": "Feed had 6 usable topics with Studio needing 3 this week; now 8. L-20261029-01 said 'into a bank' at 0:06 and in the promise, leaving chapter six nothing to reveal (0.6% viewed on 1 view, too little data to be sure, but it breaks the curiosity-hook rule the Shorts already follow).",
+  "findings": [
+    {
+      "title": "The long hook spends the payoff",
+      "detail": "Airlines video: the answer (a bank) in line one, the promise and the thumbnail. Routed adopt, high.",
+      "link": "improvement/longform/2026-11-02.md"
+    },
+    {
+      "title": "README asks for a table of contents in the promise",
+      "detail": "Contradicts our no-TOC experiment and hook guides. Routed experiment.",
+      "link": "https://outlierkit.com/resources/youtube-hooks-and-retention/"
+    },
+    {
+      "title": "Housing explainers pull millions",
+      "detail": "How Money Works 4.08M, IWTTBR 1.02M: added 'Why your house really costs you twice its price'.",
+      "link": "https://www.youtube.com/watch?v=1zjcZ661ups"
+    },
+    {
+      "title": "'What the rich do differently' is hot",
+      "detail": "Rich Dad Poor Dad Explained 2.7M in 3 months; Humphrey Yang 7 signs 1.15M: added '7 signs someone is secretly rich'.",
+      "link": "https://www.youtube.com/watch?v=SnX_GHgiwu0"
+    }
+  ],
+  "changes": [
+    {
+      "title": "2 long topics added, airlines topic marked used",
+      "detail": "improvement/longform/topics.json",
+      "branch": "agent/scout/2026-11-02"
+    },
+    {
+      "title": "4 backlog items",
+      "detail": "hook-keeps-the-answer (adopt, high), promise-one-line (experiment), proof-in-ten-seconds (adopt), thumb-examples-weekly (adopt, low)",
+      "branch": "agent/scout/2026-11-02"
+    }
+  ],
+  "nextCheck": "2026-11-03",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/longform/2026-11-02.md"
+    }
+  ]
+}
