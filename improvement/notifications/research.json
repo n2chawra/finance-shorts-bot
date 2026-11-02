@@ -26,7 +26,7 @@
       "severity": "info",
       "title": "Shorts covers: pick the frame when you post",
       "detail": "YouTube began rolling out custom Shorts thumbnails on 25 Jul 2026, but uploading one is desktop-only and Partner Program channels first; there's no A/B testing for Shorts. Every channel can still choose a frame from the video as the cover in the YouTube mobile app. The cover only shows on the channel's Shorts tab, the home page and search (most Shorts views come from the feed, which shows none), so this is small. Each Short already has a designed cover in videos/<id>/thumbnail.png.",
-      "fix": "1. When posting a Short from the mobile app, pick a frame with the big headline words (usually the first second) as the cover. 2. Once the channel is in the Partner Program, upload videos/<id>/thumbnail.png as the custom cover from YouTube Studio on desktop. 3. Nothing to change in the repo. Source: https://ppc.land/youtube-ends-2-year-wait-for-shorts-thumbnails-but-blocks-a-b-testing/"
+      "fix": "1. Uploads are automatic now (API, 12:37 and 19:07 IST), so YouTube picks the cover; if one looks wrong, change it in the YouTube mobile app (Edit > Cover). 2. Once the channel is in the Partner Program, upload videos/<id>/thumbnail.png as the custom cover from YouTube Studio on desktop. 3. Nothing to change in the repo. Source: https://ppc.land/youtube-ends-2-year-wait-for-shorts-thumbnails-but-blocks-a-b-testing/"
     }
   ]
 }

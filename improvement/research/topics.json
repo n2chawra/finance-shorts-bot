@@ -1468,7 +1468,7 @@
       ],
       "found": "2026-10-29",
       "expires": "2027-01-27",
-      "status": "new",
+      "status": "rejected",
       "currency": "USD",
       "reach": "global",
       "format": "short",
@@ -1493,7 +1493,8 @@
       ],
       "sources": [
         "https://youtube.com/shorts/bqSBYrq1qyM"
-      ]
+      ],
+      "reason": "superseded on 2026-11-03 by 2026-11-03-buffett-coke-pays-every-year: the same idea told with Berkshire's real figures instead of an assumed $1M at 4%"
     },
     {
       "kind": "evergreen",
@@ -1556,15 +1557,55 @@
       "hook": "You put twenty-five dollars on a coffee app. Who's earning on it right now?",
       "angle": "Prepaid app and gift-card balances are money a coffee chain holds before you drink anything: an assumed $1 billion float at an assumed 4% earns interest every year, and some balances are never spent at all. How a coffee chain works like a bank.",
       "why_now": "how_they_make_money is a core format and our McDonald's Short is the owner's pick (31 Oct). The 'Starbucks is a bank' idea has 1.2M (PolyMatter), 650K (ColdFusion) and ~900K (WSJ) on YouTube and 1.7M on TikTok. Gift-card season starts with Black Friday.",
-      "maths": "lumpsum (amount 1000000000, rate_pct 4, years 1) for one year of interest on an assumed float; fee_take (amount 25, fee_pct 100, per_year 1, years 1) for one customer's loaded balance; share (total 1000000000, parts 40000000) for the average balance per app user. All illustrative, labelled as assumptions; no company figures on screen.",
+      "maths": "fee_take (amount 1751700000, fee_pct 4, per_year 1, years 1, facts {amount: 1}) for what an assumed 4% would earn on the held balance in a year; share (total = that yearly sum, parts 365) for a day. Breakage $200.4M is shown as the fact itself. The 4% is an assumption, said as one.",
       "verify": [
         "$1B float, 4% and 40M users are assumptions, not Starbucks's reported figures",
-        "the brand is named only to explain the model; no claim about its accounts"
+        "Starbucks is named only to explain the model with its 10-K figures; the 4% earned on the balance is an assumption",
+        "$1,751.7M stored value and loyalty balance at 28 Sep 2025 and $200.4M company-operated breakage in Starbucks' FY2025 10-K (deferred revenue note and revenue recognition note)"
       ],
       "sources": [
         "https://rosetta.to/u/polymatter/why-starbucks-is-actually-a-bank",
         "https://thehustle.co/starbucks-gift-cards-financing-borrowing",
-        "https://www.fool.com/money/banks/articles/does-this-starbuck-app-feature-make-the-company-a-bank"
+        "https://www.fool.com/money/banks/articles/does-this-starbuck-app-feature-make-the-company-a-bank",
+        "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+      ],
+      "facts": [
+        {
+          "label": "Money customers held on Starbucks cards and loyalty at the 2025 year end",
+          "value": 1751.7,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-09-28",
+          "source": "Starbucks 10-K (fiscal 2025)",
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+        },
+        {
+          "label": "Money loaded onto Starbucks cards and Stars earned in fiscal 2025",
+          "value": 15245.8,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-09-28",
+          "source": "Starbucks 10-K (fiscal 2025)",
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+        },
+        {
+          "label": "Card money never spent that Starbucks kept as revenue in its own stores, fiscal 2025",
+          "value": 200.4,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-09-28",
+          "source": "Starbucks 10-K (fiscal 2025)",
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+        },
+        {
+          "label": "Starbucks' total net revenues in fiscal 2025",
+          "value": 37184.4,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-09-28",
+          "source": "Starbucks 10-K (fiscal 2025)",
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+        }
       ]
     },
     {
@@ -1593,14 +1634,54 @@
       "hook": "You think Costco makes its money on that giant cart? Barely.",
       "angle": "An assumed 2% margin on a $100 weekly cart earns the store about $104 a year from you; a $65 membership fee is pure profit before you buy anything. The fee, not the groceries, is the business.",
       "why_now": "Holiday shopping season; how_they_make_money is core and untold for a retailer. CNBC's version has 4.8M views; Costco shopping-hack Shorts reach ~20M.",
-      "maths": "fee_take (amount 100, fee_pct 2, per_year 52, years 1) for the store's margin on a weekly cart; fee_take (amount 65, fee_pct 100, per_year 1, years 1) for the membership; compare (a cart.per_year_total, b fee.per_year_total). All numbers assumed and labelled.",
+      "maths": "fee_take (amount 100, fee_pct 2, per_year 52, years 1) for the store's margin on a weekly cart; fee_take (amount 65, fee_pct 100, per_year 1, years 1) for the membership; compare (a cart.per_year_total, b fee.per_year_total). All numbers assumed and labelled. Since 2026-11-03 also: rate (part = membership fees 5,323,000,000, whole = net income 8,099,000,000, facts {part: 1, whole: 2}) gives 66%: fees alone equal two thirds of the profit; the cart example stays an assumption.",
       "verify": [
         "2% margin and $65 fee are illustrative, not Costco's reported numbers",
-        "no claim that membership fees are a given share of Costco's profit"
+        "membership fees as a share of profit only as the rate of the two sourced FY2025 figures (66%), never a rounder claim",
+        "fiscal 2025 membership fees $5,323M and net income $8,099M as in Costco's 25 Sep 2025 results release"
       ],
       "sources": [
         "https://glasp.co/youtube/dzejHGniMTQ",
-        "https://money.com/costco-doesnt-make-much-money-selling-you-groceries-heres-how-it-really-earns-billions-a-year/?amp=true"
+        "https://money.com/costco-doesnt-make-much-money-selling-you-groceries-heres-how-it-really-earns-billions-a-year/?amp=true",
+        "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+      ],
+      "facts": [
+        {
+          "label": "Costco's membership fee revenue in fiscal 2025",
+          "value": 5323,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-08-31",
+          "source": "Costco Wholesale (FY2025 results)",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+        },
+        {
+          "label": "Costco's net income in fiscal 2025",
+          "value": 8099,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-08-31",
+          "source": "Costco Wholesale (FY2025 results)",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+        },
+        {
+          "label": "Costco's net sales in fiscal 2025",
+          "value": 269912,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-08-31",
+          "source": "Costco Wholesale (FY2025 results)",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+        },
+        {
+          "label": "Costco's operating income in fiscal 2025",
+          "value": 10383,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-08-31",
+          "source": "Costco Wholesale (FY2025 results)",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+        }
       ]
     },
     {
@@ -1629,12 +1710,52 @@
       "hook": "A gym with six thousand members has room for three hundred. So how does it stay open?",
       "angle": "An assumed gym sells 6,000 memberships at $10 a month but fits a few hundred people at once: the members who never come pay for the ones who do. No brand named on screen.",
       "why_now": "'Why the gym wants you to quit' is a title in our how_they_make_money format and has never been told; New Year gym sign-ups are the next money moment. Reference views come from an aggregator and are unverified, so priority stays normal.",
-      "maths": "fee_take (amount 10, fee_pct 100, per_year 12, years 1) for one member's year; share (total 60000, parts 300) for each regular's share of a month's fees; share (total 60000, parts 6000) for comparison.",
+      "maths": "fee_take (amount 10, fee_pct 100, per_year 12, years 1) for one member's year; share (total 60000, parts 300) for each regular's share of a month's fees; share (total 60000, parts 6000) for comparison. Since 2026-11-03: share (total 4800000000, parts 19700000, facts {total: 3, parts: 1}) is about $244 a member a year; share (total 19700000, parts 2722) about 7,237 members a club. How many of them come is an assumption, said as one; never claim a share of members who don't go without a source.",
       "verify": [
-        "the gym, its size and members are illustrative, no real chain named"
+        "the club-level example (members, how many come) is illustrative and said as an assumption; Planet Fitness is named only with its 10-K figures",
+        "19.7 million members, 2,722 clubs, $4.8B system-wide sales, $15 Classic Card: Planet Fitness 2024 10-K, Business section"
       ],
       "sources": [
-        "https://medium.com/thrive-global/why-your-gym-doesnt-want-you-to-succeed-ebf27e389842"
+        "https://medium.com/thrive-global/why-your-gym-doesnt-want-you-to-succeed-ebf27e389842",
+        "https://www.sec.gov/Archives/edgar/data/1637207/000163720725000016/plnt-20241231.htm"
+      ],
+      "facts": [
+        {
+          "label": "Planet Fitness members at the end of 2024",
+          "value": 19.7,
+          "unit": "count_million",
+          "currency": "USD",
+          "as_of": "2024-12-31",
+          "source": "Planet Fitness 10-K (2024)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1637207/000163720725000016/plnt-20241231.htm"
+        },
+        {
+          "label": "Planet Fitness clubs at the end of 2024",
+          "value": 2722,
+          "unit": "count",
+          "currency": "USD",
+          "as_of": "2024-12-31",
+          "source": "Planet Fitness 10-K (2024)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1637207/000163720725000016/plnt-20241231.htm"
+        },
+        {
+          "label": "Planet Fitness system-wide sales in 2024 (dues and annual fees)",
+          "value": 4.8,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2024-12-31",
+          "source": "Planet Fitness 10-K (2024)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1637207/000163720725000016/plnt-20241231.htm"
+        },
+        {
+          "label": "Planet Fitness Classic Card price for new members",
+          "value": 15,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2024-12-31",
+          "source": "Planet Fitness 10-K (2024)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1637207/000163720725000016/plnt-20241231.htm"
+        }
       ]
     },
     {
@@ -1816,6 +1937,155 @@
       ],
       "found": "2026-11-02",
       "expires": "2027-11-02",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-03-buffett-coke-pays-every-year",
+      "title": "Buffett bought Coca-Cola once, in 1994. It now pays him more than half the price back every year",
+      "category": "investing",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "THIS Is How to Make Money While You Sleep",
+        "views": 676964,
+        "url": "https://youtube.com/shorts/bqSBYrq1qyM"
+      },
+      "hook": "You think Warren Buffett got rich selling stock? He hasn't sold this one in thirty years.",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "angle": "how one purchase keeps paying: the 1994 dividend of $75M grew to $704M a year on a $1.3B cost, without selling a share; American Express did the same ($41M to $302M on $1.3B)",
+      "why_now": "replaces the assumed-figures version of the same idea (677K-view 'money while you sleep' Short); the owner wants real people with real figures (2026-11-02)",
+      "facts": [
+        {
+          "label": "What Berkshire paid for its Coca-Cola shares, purchase completed in 1994",
+          "value": 1.3,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2022-12-31",
+          "source": "Berkshire Hathaway 2022 shareholder letter",
+          "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+        },
+        {
+          "label": "Coca-Cola shares Berkshire owns",
+          "value": 400,
+          "unit": "count_million",
+          "currency": "USD",
+          "as_of": "2022-12-31",
+          "source": "Berkshire Hathaway 2022 shareholder letter",
+          "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+        },
+        {
+          "label": "Coca-Cola dividend Berkshire received in 1994",
+          "value": 75,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2022-12-31",
+          "source": "Berkshire Hathaway 2022 shareholder letter",
+          "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+        },
+        {
+          "label": "Coca-Cola dividend Berkshire received in 2022",
+          "value": 704,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2022-12-31",
+          "source": "Berkshire Hathaway 2022 shareholder letter",
+          "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+        },
+        {
+          "label": "American Express dividends to Berkshire, first year",
+          "value": 41,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2022-12-31",
+          "source": "Berkshire Hathaway 2022 shareholder letter",
+          "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+        },
+        {
+          "label": "American Express dividends to Berkshire in 2022",
+          "value": 302,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2022-12-31",
+          "source": "Berkshire Hathaway 2022 shareholder letter",
+          "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+        }
+      ],
+      "maths": "rate (part 704000000, whole 1300000000, facts {part: 4, whole: 1}) = 54% of the price back in one year; compare the 2022 dividend with the 1994 one (about 9x); share (total 704000000, parts 365, facts {total: 4}) is about $1.9M a day. Say plainly this is one company's past, not a promise; no 'buy Coca-Cola'.",
+      "verify": [
+        "Berkshire's 2022 letter, 'The Secret Sauce': $1.3B cost, 400 million shares, purchase completed August 1994, $75M dividend in 1994, $704M in 2022; Amex $1.3B, $41M to $302M",
+        "no stock recommendation: the story is how dividends grow on a fixed cost"
+      ],
+      "sources": [
+        "https://www.berkshirehathaway.com/letters/2022ltr.pdf",
+        "https://youtube.com/shorts/bqSBYrq1qyM"
+      ],
+      "found": "2026-11-03",
+      "expires": "2027-02-01",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-03-google-pays-apple-20-billion",
+      "title": "Google paid Apple $20 billion in one year just to be the search box on your iPhone",
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How McDonald's REALLY Makes Money",
+        "views": 2801534,
+        "url": "https://www.youtube.com/shorts/N4lHgcRcp5w"
+      },
+      "hook": "You think Apple makes its money selling iPhones? Google sends it billions for one setting.",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "angle": "why Google pays its rival to be the default search engine: every search on an iPhone shows Google's ads, and Apple gets a share of that ad money",
+      "why_now": "how_they_make_money is the owner's pick format (McDonald's, 31 Oct); no reference video with a view count found on this exact idea, so the format's 2.8M McDonald's Short stands in",
+      "facts": [
+        {
+          "label": "What Google paid Apple in 2022 to be Safari's default search engine",
+          "value": 20,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2022-12-31",
+          "source": "Bloomberg, from US v. Google court documents (via 9to5Mac)",
+          "url": "https://9to5mac.com/2024/05/01/heres-how-much-google-paid-apple-to-be-safaris-default-search-engine-in-2022/"
+        },
+        {
+          "label": "Share of its Safari search ad revenue Google pays Apple, per trial testimony",
+          "value": 36,
+          "unit": "percent",
+          "currency": "USD",
+          "as_of": "2023-11-13",
+          "source": "Bloomberg, from US v. Google trial testimony (via 9to5Mac)",
+          "url": "https://9to5mac.com/2024/05/01/heres-how-much-google-paid-apple-to-be-safaris-default-search-engine-in-2022/"
+        }
+      ],
+      "maths": "share (total 20000000000, parts 365, facts {total: 1}) is about $55M a day; share (total = that day, parts 24) per hour. The 36% is shown as the fact. Fewer than 3 facts: the fact reviewer should also confirm the $20B on a second outlet (AppleInsider, Gulf News/Bloomberg) before it ships.",
+      "verify": [
+        "$20 billion in 2022 from unsealed court documents in the DOJ antitrust case (Bloomberg; also AppleInsider, heise)",
+        "36% of search ad revenue: trial testimony, as reported"
+      ],
+      "sources": [
+        "https://9to5mac.com/2024/05/01/heres-how-much-google-paid-apple-to-be-safaris-default-search-engine-in-2022/",
+        "https://appleinsider.com/articles/24/05/01/google-paid-apple-20-billion-to-be-default-search-engine-in-2022",
+        "https://gulfnews.com/technology/companies/googles-payments-to-apple-reached-20-billion-in-2022-antitrust-court-documents-show-1.1714660457987"
+      ],
+      "found": "2026-11-03",
+      "expires": "2027-02-01",
       "status": "new"
     }
   ]
