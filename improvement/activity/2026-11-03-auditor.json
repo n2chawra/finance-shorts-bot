@@ -7,13 +7,37 @@
   "decision": "acted",
   "why": "The hedge check counted \"can't\" as a hedge and could fail confident scripts; a malformed fact link crashed number-check. Both have tests that fail without the fix. The data audit is 26 h old, so the data check was skipped.",
   "findings": [
-    {"title": "Agent merge can't install Playwright on ubuntu-latest (26.04)", "detail": "Blocks every branch that touches apps/dashboard (auditor and dashboard on 2 Nov). Fix: runs-on: ubuntu-24.04 in agent-merge.yml.", "link": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/41333205383"},
-    {"title": "No data audit on 2 Nov", "detail": "metrics/data-audit.json is from 1 Nov 15:18 UTC."}
+    {
+      "title": "Agent merge can't install Playwright on ubuntu-latest (26.04)",
+      "detail": "Blocks every branch that touches apps/dashboard (auditor and dashboard on 2 Nov). Fix: runs-on: ubuntu-24.04 in agent-merge.yml.",
+      "link": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/41333205383"
+    },
+    {
+      "title": "No data audit on 2 Nov",
+      "detail": "metrics/data-audit.json is from 1 Nov 15:18 UTC."
+    },
+    {
+      "title": "The auditor routine fired twice tonight",
+      "detail": "Second run at 17:56 UTC found nothing new (same code, data audit still from 1 Nov) and only added a note to the report."
+    }
   ],
   "changes": [
-    {"title": "Hedge check no longer counts \"can't\"", "detail": "generator/story.py HEDGES: can(?!['’]t).", "branch": "agent/auditor/2026-11-03"},
-    {"title": "Malformed maths fact links are notes, not crashes", "detail": "generator/topics.py check_fact_inputs.", "branch": "agent/auditor/2026-11-03"}
+    {
+      "title": "Hedge check no longer counts \"can't\"",
+      "detail": "generator/story.py HEDGES: can(?!['’]t).",
+      "branch": "agent/auditor/2026-11-03"
+    },
+    {
+      "title": "Malformed maths fact links are notes, not crashes",
+      "detail": "generator/topics.py check_fact_inputs.",
+      "branch": "agent/auditor/2026-11-03"
+    }
   ],
   "nextCheck": "2026-11-04",
-  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-03.md"}]
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-03.md"
+    }
+  ]
 }
