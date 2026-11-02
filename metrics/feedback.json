@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 4,
+  "open": 0,
   "notes": [
     {
       "id": "cmvz2ct9j0003kz09yuamro4u",
       "kind": "stale",
       "area": null,
       "text": "Weak animation and poor story  telling and script",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "noted: Stale. The new storytelling and presentation rules (one concrete story, open questions, the camera following the action) apply to every Short from the next run.",
       "at": "2026-11-02T09:35:35.511Z",
       "video": {
         "id": "v-20261031-02",
@@ -26,8 +26,8 @@
       "kind": "stale",
       "area": null,
       "text": "Weak animation and story script",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "noted: Stale. Its 9 hedging words and a 'Picture...' opener now fail the number check, so a script like it can't ship again; the topic is kept and remade as v-remake-car.",
       "at": "2026-11-02T09:35:01.269Z",
       "video": {
         "id": "v-20261102-02",
@@ -45,8 +45,8 @@
       "kind": "general",
       "area": "animation",
       "text": "Animation also was very weak . Animation don't mean just put object when u speak of it. It's a way of presentation. It very weak other with same topic earna view but we don't because our animation is not up to the mark that it can attract viewers. It lacks wow factor",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: The new board scene: questions in a room, every answer a full-frame labelled card (documents with real data, sums, chips, charts, things that turn into and feed each other), a new picture every sentence, every clause animated (90%+ gate), readable on mute (QA check). Approved on the fourth demo take.",
       "at": "2026-11-02T09:24:08.445Z",
       "video": {
         "id": "v-20261102-02",
@@ -64,8 +64,8 @@
       "kind": "improve",
       "area": "script",
       "text": "Story telling needs lots of work. 1 min video should have a convincing script. This script gave the message but the way was very poor. I myself don't like the video atall . What to expect from others. \n\nI rate the topic good. But the video is 2/10. Way of explanation is very weak.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Rebuilt after a frame-by-frame study of The Curious Plot: a question in the viewer's voice every 12 s, answers early then deeper, real names with sourced facts, every figure built from units with the sum on screen, a named term per step, an ending that asks the viewer something; checked by code (generator/story.py). Shown to you as the v-remake-salary demo.",
       "at": "2026-11-02T09:22:18.861Z",
       "video": {
         "id": "v-20261102-02",
