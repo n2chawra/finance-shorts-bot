@@ -9,12 +9,12 @@ export const SettingsSchema = z.object({
   /** One Short every N days (owner, 2026-10-30: the 48-hour test; 1 = every day, as before). */
   shortEveryDays: z.number().int().min(1).max(7).default(1),
   /** Shorts the video routine makes a day (owner, 2026-10-30: 2, down from 3). */
-  dailyVideoTarget: z.number().int().min(0).max(5).default(2),
+  dailyVideoTarget: z.number().int().min(0).max(5).default(3),
   longUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/)).max(2).default(["20:07"]),
-  longUploadDays: z.array(z.number().int().min(0).max(6)).max(7).default([2, 4, 6]),   // 0 = Sunday
+  longUploadDays: z.array(z.number().int().min(0).max(6)).max(7).default([6]),   // 0 = Sunday
   longLengthMinSec: z.number().int().default(180),
   longLengthMaxSec: z.number().int().default(900),
-  longPerWeek: z.number().int().min(0).max(7).default(2),
+  longPerWeek: z.number().int().min(0).max(7).default(1),
   longBacklogCap: z.number().int().min(1).max(20).default(4),
   backlogCap: z.number().int().min(1).max(100),
   lengthMinSec: z.number().int(),
@@ -37,15 +37,15 @@ export const SettingsSchema = z.object({
 export type Settings = z.infer<typeof SettingsSchema>;
 
 export const DEFAULT_SETTINGS: Settings = {
-  uploadTimes: ["07:07", "12:37", "19:07"],
-  trendUploadTimes: ["16:07", "22:07"],
+  uploadTimes: ["12:37", "19:07"],
+  trendUploadTimes: [],
   shortEveryDays: 1,
-  dailyVideoTarget: 2,
+  dailyVideoTarget: 3,
   longUploadTimes: ["20:07"],
-  longUploadDays: [2, 4, 6],
+  longUploadDays: [6],
   longLengthMinSec: 180,
   longLengthMaxSec: 900,
-  longPerWeek: 2,
+  longPerWeek: 1,
   longBacklogCap: 4,
   backlogCap: 30,
   lengthMinSec: 30,

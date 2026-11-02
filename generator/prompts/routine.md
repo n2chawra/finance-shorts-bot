@@ -46,7 +46,7 @@ once per video. For each video, do sections 2 to 7 (or the failure path), then r
 - If `mode` is still `video`, start the next video with the new `next_id`.
 - Otherwise the day's target is met: stop the loop.
 
-Limits per run: at most **`daily_target` shipped videos** (from `state`: 2 a day since 2026-10-30) and at
+Limits per run: at most **`daily_target` shipped videos** (from `state`: 3 a day) and at
 most **`daily_target` + 2 attempts** (shipped + failed). Stop
 when either is reached, even if the target isn't met; a later run makes up the rest.
 

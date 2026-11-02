@@ -15,7 +15,7 @@ import type { Activity, Agents } from "@/lib/schemas";
 const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeof Bot; time: string }> = {
   auditor: { name: "Auditor", role: "Checks the numbers against YouTube, fixes bugs, keeps the code clean", icon: ShieldCheck, time: "23:00" },
   scout: { name: "Scout", role: "Finds long-video topics and studies how long-form is made", icon: Telescope, time: "09:37" },
-  studio: { name: "Studio", role: "Makes one long video end to end, with its thumbnail", icon: Clapperboard, time: "14:37 Mon/Wed/Fri" },
+  studio: { name: "Studio", role: "Makes one long video end to end, with its thumbnail", icon: Clapperboard, time: "14:37 Wed" },
   research: { name: "Research", role: "Finds what makes Shorts better and what's new in Claude", icon: Search, time: "23:47" },
   improver: { name: "Improver", role: "Tests changes on half the videos, keeps what works", icon: Wrench, time: "06:17" },
   dashboard: { name: "Dashboard", role: "Hunts bugs and polishes this dashboard", icon: LayoutDashboard, time: "07:37" },

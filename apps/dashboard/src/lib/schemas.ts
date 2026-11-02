@@ -154,12 +154,12 @@ export const SettingsSchema = z.object({
   /** One Short every N days (owner, 2026-10-30: the 48-hour test; 1 = every day, as before). */
   shortEveryDays: z.number().int().min(1).max(7).default(1),
   /** Shorts the video routine makes a day (owner, 2026-10-30: 2, down from 3). */
-  dailyVideoTarget: z.number().int().min(0).max(5).default(2),
+  dailyVideoTarget: z.number().int().min(0).max(5).default(3),
   longUploadTimes: z.array(z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (24 h)")).max(2).default(["20:07"]),
-  longUploadDays: z.array(z.number().int().min(0).max(6)).max(7).default([2, 4, 6]),   // 0 = Sunday
+  longUploadDays: z.array(z.number().int().min(0).max(6)).max(7).default([6]),   // 0 = Sunday
   longLengthMinSec: z.number().int().min(60).max(3600).default(180),
   longLengthMaxSec: z.number().int().min(60).max(3600).default(900),
-  longPerWeek: z.number().int().min(0).max(7).default(2),
+  longPerWeek: z.number().int().min(0).max(7).default(1),
   longBacklogCap: z.number().int().min(1).max(20).default(4),
   backlogCap: z.number().int().min(1).max(100),
   lengthMinSec: z.number().int().min(15).max(180),

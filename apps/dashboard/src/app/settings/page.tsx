@@ -190,10 +190,10 @@ export default function SettingsPage() {
               <Row label="Auditor (23:00)" hint="Checks the dashboard's numbers against YouTube, fixes bugs anywhere, one careful refactor a night.">
                 <Toggle label="Auditor agent on" checked={form.agents.auditor} disabled={form.agents.paused} onChange={(auditor) => setAgents({ auditor })} />
               </Row>
-              <Row label="Scout (09:37)" hint="Finds long-video topics and researches how long-form explainers are made. Never changes code.">
+              <Row label="Scout (09:37, Mon/Thu)" hint="Finds long-video topics and researches how long-form explainers are made. Never changes code.">
                 <Toggle label="Scout agent on" checked={form.agents.scout} disabled={form.agents.paused} onChange={(scout) => setAgents({ scout })} />
               </Row>
-              <Row label="Studio (14:37, Mon/Wed/Fri)" hint="Makes one long video end to end, with its thumbnail, from Scout's topics.">
+              <Row label="Studio (14:37, Wed)" hint="Makes one long video end to end, with its thumbnail, from Scout's topics.">
                 <Toggle label="Studio agent on" checked={form.agents.studio} disabled={form.agents.paused} onChange={(studio) => setAgents({ studio })} />
               </Row>
               <Row label="Monthly review (12:07, 1st)" hint="Reviews the month and proposes setting changes on the Notifications page. Never changes settings itself.">

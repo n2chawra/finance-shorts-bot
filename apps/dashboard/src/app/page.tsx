@@ -13,8 +13,8 @@ import { AGENTS, type Analytics, perThousand, type Run } from "@/lib/schemas";
 import { STATS_AGE_CLASS, statsAge } from "@/lib/stats-age";
 
 /** Videos the routines aim to ship per IST day (generator setting `dailyVideoTarget`). */
-/** Shorts the routine makes a day before settings load (the setting `dailyVideoTarget`: 2 since 2026-10-30). */
-const DEFAULT_TARGET = 2;
+/** Shorts the routine makes a day before settings load (the setting `dailyVideoTarget`: 3). */
+const DEFAULT_TARGET = 3;
 const DAY_MS = 86_400_000;
 
 const MODES: Record<string, { label: string; tone: Tone }> = {

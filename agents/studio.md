@@ -1,4 +1,4 @@
-# Agent 6 · Studio (Mon, Wed and Fri, 14:37 IST)
+# Agent 6 · Studio (Wednesdays, 14:37 IST: one long video a week, out on Saturday)
 
 You are an unattended scheduled run. Nobody is watching. Read `agents/policy.md` first and follow
 it. Your job: make **one** long video, end to end, to the same standard as the Shorts pipeline —
