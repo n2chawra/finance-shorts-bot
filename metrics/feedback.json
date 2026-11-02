@@ -1,7 +1,83 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 0,
+  "open": 4,
   "notes": [
+    {
+      "id": "cmvz2ct9j0003kz09yuamro4u",
+      "kind": "stale",
+      "area": null,
+      "text": "Weak animation and poor story  telling and script",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-02T09:35:35.511Z",
+      "video": {
+        "id": "v-20261031-02",
+        "title": "You borrow for a car. The rich borrow for this 🤫",
+        "format": "short",
+        "status": "rejected",
+        "story": "secret_of_rich",
+        "shape": "versus",
+        "hookStyle": "conflict",
+        "hook": "You're scared of debt. I love it. Let me show you why."
+      }
+    },
+    {
+      "id": "cmvz2c2ug0001kz09bkbawzck",
+      "kind": "stale",
+      "area": null,
+      "text": "Weak animation and story script",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-02T09:35:01.269Z",
+      "video": {
+        "id": "v-20261102-02",
+        "title": "How a car discount can cost you on the loan 🚗",
+        "format": "short",
+        "status": "rejected",
+        "story": "how_they_make_money",
+        "shape": "before-after",
+        "hookStyle": "question",
+        "hook": "Your car discount? You might quietly pay it back. Here's how."
+      }
+    },
+    {
+      "id": "cmvz1y2yl0001l009td1n07oc",
+      "kind": "general",
+      "area": "animation",
+      "text": "Animation also was very weak . Animation don't mean just put object when u speak of it. It's a way of presentation. It very weak other with same topic earna view but we don't because our animation is not up to the mark that it can attract viewers. It lacks wow factor",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-02T09:24:08.445Z",
+      "video": {
+        "id": "v-20261102-02",
+        "title": "How a car discount can cost you on the loan 🚗",
+        "format": "short",
+        "status": "rejected",
+        "story": "how_they_make_money",
+        "shape": "before-after",
+        "hookStyle": "question",
+        "hook": "Your car discount? You might quietly pay it back. Here's how."
+      }
+    },
+    {
+      "id": "cmvz1vqel0001l20aaaxqyvoq",
+      "kind": "improve",
+      "area": "script",
+      "text": "Story telling needs lots of work. 1 min video should have a convincing script. This script gave the message but the way was very poor. I myself don't like the video atall . What to expect from others. \n\nI rate the topic good. But the video is 2/10. Way of explanation is very weak.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-02T09:22:18.861Z",
+      "video": {
+        "id": "v-20261102-02",
+        "title": "How a car discount can cost you on the loan 🚗",
+        "format": "short",
+        "status": "rejected",
+        "story": "how_they_make_money",
+        "shape": "before-after",
+        "hookStyle": "question",
+        "hook": "Your car discount? You might quietly pay it back. Here's how."
+      }
+    },
     {
       "id": "cmvw1try60001id09srextkhs",
       "kind": "choice",
@@ -81,7 +157,7 @@
         "id": "v-20261031-02",
         "title": "You borrow for a car. The rich borrow for this 🤫",
         "format": "short",
-        "status": "queued",
+        "status": "rejected",
         "story": "secret_of_rich",
         "shape": "versus",
         "hookStyle": "conflict",
@@ -100,7 +176,7 @@
         "id": "v-20261031-02",
         "title": "You borrow for a car. The rich borrow for this 🤫",
         "format": "short",
-        "status": "queued",
+        "status": "rejected",
         "story": "secret_of_rich",
         "shape": "versus",
         "hookStyle": "conflict",
@@ -119,7 +195,7 @@
         "id": "v-20261031-02",
         "title": "You borrow for a car. The rich borrow for this 🤫",
         "format": "short",
-        "status": "queued",
+        "status": "rejected",
         "story": "secret_of_rich",
         "shape": "versus",
         "hookStyle": "conflict",
