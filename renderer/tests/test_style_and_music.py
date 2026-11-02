@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 
 from renderer.engine.finance import lumpsum_at, lumpsum_series, sip_series
-from renderer.engine.music import BED_RMS, BPM_RANGE, GENRES, make_bed
+from renderer.engine.music import BED_RMS, BPM_RANGE, GENRES, SR, make_bed
 from renderer.engine.style import PALETTES, resolve_style
 
 
@@ -43,6 +43,26 @@ def test_beds_differ_by_genre_key_and_tempo() -> None:
     base = bed()
     for other in (bed(genre="synthwave"), bed(key="G"), bed(bpm=118)):
         assert not np.allclose(base, other)
+
+
+def test_cinematic_pulse_keeps_the_level_and_adds_a_beat() -> None:
+    # cinematic-bed-gets-a-pulse (owner, 2026-10-31: "very dull, feels like a postmortem")
+    plain = make_bed(np.random.default_rng(1), 20, "cinematic", "E", 94)
+    pulse = make_bed(np.random.default_rng(1), 20, "cinematic", "E", 94, pulse=True)
+    assert np.isfinite(pulse).all() and np.sqrt(np.mean(pulse**2)) == pytest.approx(BED_RMS)
+    assert not np.allclose(plain, pulse)
+    assert (pulse == make_bed(np.random.default_rng(1), 20, "cinematic", "E", 94, pulse=True)).all()
+    # other genres ignore the flag
+    assert (make_bed(np.random.default_rng(1), 10, "pop", "D", 110, pulse=True) == make_bed(np.random.default_rng(1), 10, "pop", "D", 110)).all()
+
+    # the pulse: energy on every beat in the first two bars, where the plain bed only swells
+    beat = int(SR*60/94)
+
+    def onsets(bed: np.ndarray) -> float:
+        env = np.abs(np.diff(bed[: 8*beat]))
+        on = np.mean([env[q*beat: q*beat + 600].mean() for q in range(8)])
+        return on/env.mean()
+    assert onsets(pulse) > onsets(plain)
 
 
 def test_finance() -> None:

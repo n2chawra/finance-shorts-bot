@@ -47,6 +47,7 @@ SFX_BUS = 0.5
 SFX_UNDER_VOICE = 0.6
 VOICE_RMS = 0.2                   # every line levelled to the same loudness, peaks kept under 0.95
 QUIET_BED, QUIET_LEVEL, QUIET_DUCK = "quiet-bed", 0.32, 0.92   # the experiment's bed level and duck
+CINEMATIC_PULSE = "cinematic-bed-gets-a-pulse"   # A/B: the cinematic bed with a pulse (renderer/engine/music.py)
 DISCLAIMER = "Illustrative only. Not financial advice."
 TYPED_NUMBER = re.compile(r"[0-9₹$£€]")   # a digit or any currency sign
 PLACEHOLDER = re.compile(r"\{[a-z][a-z0-9_]*\}")   # names may hold digits ({card_paid_year1}); text may not
@@ -471,7 +472,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     length = cursor + 0.6
     total_frames = round(length*FPS)
     mixer = Mixer(length, seed + 4)
-    bed = make_bed(mixer.rng, length, style.genre, style.key, style.bpm)
+    bed = make_bed(mixer.rng, length, style.genre, style.key, style.bpm,
+                   pulse=(script.get("experiments") or {}).get(CINEMATIC_PULSE) == "on")
     speech = np.zeros(mixer.n)
     for start, line, _ in lines:
         i = int(start*SR)

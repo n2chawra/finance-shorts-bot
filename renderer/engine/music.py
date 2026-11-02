@@ -202,6 +202,28 @@ def _cinematic(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
             bed.add("drums", tom, st + 3.5*beat, 0.34)
 
 
+# A/B "cinematic-bed-gets-a-pulse" (owner, 2026-10-31, on a cinematic Short: "the background music is
+# very dull, feels like I'm doing a postmortem"): the same strings and ostinato, but a progression that
+# starts on a major chord and a pulse from the first bar (soft kick on 1 and 3, a shaker on the
+# eighths), with a snare on 2 and 4 from the third bar so the bed lifts after the hook.
+PULSE_PROGRESSIONS = [[(8, MAJ), (3, MAJ), (10, MAJ), (0, MIN)], [(0, MAJ), (7, MAJ), (9, MIN), (5, MAJ)]]
+
+
+def _cinematic_pulse(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """Cinematic with a pulse: string swells and the ostinato over a steady soft groove."""
+    _cinematic(bed, rng, chords)
+    beat, kick, shaker, snare = bed.beat, _kick(), _shaker(rng), _snare(rng, 30)
+    for b in range(bed.bars):
+        st = b*bed.bar
+        for e in range(8):
+            bed.add("drums", shaker, st + e*beat/2, 0.07 if e % 2 else 0.045)
+        for q in (0, 2):
+            bed.add("drums", kick, st + q*beat, 0.3)
+        if b >= 2:
+            for q in (1, 3):
+                bed.add("drums", snare, st + q*beat, 0.14)
+
+
 def _synthwave(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
     """Octave-jumping saw bass, sixteenth-note square arpeggio, big snare on 2 and 4."""
     beat, kick, snare, hat = bed.beat, _kick(), _snare(rng, 14), _hat(rng)
@@ -249,19 +271,21 @@ _BUILDERS: dict[str, Callable[[_Bed, np.random.Generator, Chords], None]] = {
     "pop": _pop, "cinematic": _cinematic, "synthwave": _synthwave, "acoustic": _acoustic}
 
 
-def make_bed(rng: np.random.Generator, dur: float, genre: str, key: str, bpm: float) -> np.ndarray:
-    """Mono music bed of `dur` seconds, normalised to BED_RMS."""
+def make_bed(rng: np.random.Generator, dur: float, genre: str, key: str, bpm: float, pulse: bool = False) -> np.ndarray:
+    """Mono music bed of `dur` seconds, normalised to BED_RMS. `pulse`: the cinematic bed's A/B
+    variant (cinematic-bed-gets-a-pulse); other genres ignore it."""
     k = KEYS.index(key)
     if genre == "lofi":
         shift = (k - 9 + 6) % 12 - 6          # the lo-fi chords are written in A minor
         out = lofi_bed(rng, dur, bpm, [[m + shift for m in ch] for ch in LOFI_CHORDS])
     else:
         root = 43 + (k - 7) % 12              # G2 … F#3
-        options = PROGRESSIONS[genre]
+        pulse = pulse and genre == "cinematic"
+        options = PULSE_PROGRESSIONS if pulse else PROGRESSIONS[genre]
         prog = options[int(rng.integers(len(options)))]
         chords = [[root + (off - 12 if off > 6 else off) + q for q in qual] for off, qual in prog]
         bed = _Bed(dur, 60/bpm)
-        _BUILDERS[genre](bed, rng, chords)
+        (_cinematic_pulse if pulse else _BUILDERS[genre])(bed, rng, chords)
         out = sum(lp(buf, CUTOFF[genre][name]) for name, buf in bed.layers.items())
     return out*(BED_RMS/np.sqrt(np.mean(out**2)))
 
