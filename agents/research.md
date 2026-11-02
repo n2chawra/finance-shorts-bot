@@ -172,9 +172,14 @@ removes it:
  "verify": ["claims the fact reviewer must confirm"], "sources": ["https://…"],
  "found": "<DAY>", "expires": "YYYY-MM-DD", "status": "new"}
 ```
-- `facts` are figures reported by the source, copied exactly (value and unit as published). Only
-  news topics need them, and a `headline` beat shows them with their source; 1–3 per topic, the headline one first.
-  A fact you can't tie to a URL showing that exact figure stays out.
+- `facts` are figures reported by the source, copied exactly (value and unit as published).
+  **Every big-money topic carries 3–6 of them** since 2026-11-02 (owner, after The Curious Plot's
+  "$0 salary" Short: real names with real figures, Musk's $0 salary, Bezos ~$80K a year, the 25 richest
+  paying 3.4%, beat our invented "$50M salary" by 40×): a real person's or company's figure with its
+  year (salary, shares pledged, tax paid, revenue per store, founding sum, outlets), from primary or
+  reputable sources (company filings and proxy statements, official statistics, ProPublica, Reuters,
+  Bloomberg, Forbes, the FT). Never a figure that alleges a crime, never a guess; "legal" mechanics only.
+  News topics keep 1–3, the headline one first. A fact you can't tie to a URL showing that exact figure stays out.
 - `expires`: `trending` topics 2–4 days; seasonal moments the day after; evergreen 90 days.
 - `stories`: the format the topic is told in, one id from `improvement/research/formats.json` (a
   story in `generator/variety.py` `STORIES`). Spread ideas across formats; the planner may not tell

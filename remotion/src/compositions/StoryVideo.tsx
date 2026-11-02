@@ -25,6 +25,7 @@ import { BillScene, ForkScene, RoadScene } from "../scenes/journey";
 import { ShotScene } from "../studio/shot";
 import { HOOKS, VIDEOS } from "../videos/hooks";
 import { BuildScene } from "../studio/build";
+import { BoardScene } from "../studio/board";
 import { CaseScene, FrameworkScene, JourneyScene, StatsScene, TypeScene } from "../studio/docu";
 import { StoryHud } from "../studio/hud";
 import { Grain } from "../design/texture";
@@ -52,6 +53,7 @@ export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene, source: SourceScene, bill: BillScene, road: RoadScene, fork: ForkScene, shot: ShotScene, hook: HookScene,
   build: BuildScene, custom: CustomScene,
   framework: FrameworkScene, type: TypeScene, journey: JourneyScene, stats: StatsScene, case: CaseScene,
+  board: BoardScene,
 };
 
 /** The channel's mark in the top-left corner of every frame: Sikka, small, never text. */
@@ -66,10 +68,11 @@ const LogoBug: React.FC<{ w: number; h: number }> = ({ w, h }) => {
 };
 
 /** A Short without an end card (it loops back to its hook) still says this, small, in its last moments. */
-const DisclaimerLine: React.FC<{ tl: Timeline }> = ({ tl }) => {
+const DisclaimerLine: React.FC<{ tl: Timeline; low?: boolean }> = ({ tl, low }) => {
   const v = tl.height > tl.width;
+  // over a board the top belongs to its header: the line sits just above the captions instead
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: v ? tl.height * 0.09 : tl.height * 0.06, display: "flex", justifyContent: "center" }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top: low ? (v ? tl.height * 0.69 : tl.height * 0.76) : v ? tl.height * 0.09 : tl.height * 0.06, display: "flex", justifyContent: "center" }}>
       <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: v ? 44 : 30, color: "#fff", background: "rgba(0,0,0,0.62)",
         padding: v ? "10px 28px" : "6px 20px", borderRadius: 999 }}>{tl.disclaimer}</div>
     </div>
@@ -134,7 +137,7 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe, atFrame }) =
       <Grain />
       {!cover && cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} />}
       {!cover && timeline.captions && <Captions tl={timeline} frame={frame} groups={groups} scene={cur.scene} />}
-      {!cover && !hasEnd && frame >= timeline.durationInFrames - Math.round(fps * 1.4) && <DisclaimerLine tl={timeline} />}
+      {!cover && !hasEnd && frame >= timeline.durationInFrames - Math.round(fps * 1.4) && <DisclaimerLine tl={timeline} low={cur.scene === "board"} />}
       {probe && <LayoutProbe frame={frame} />}
     </AbsoluteFill>
   );

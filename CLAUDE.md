@@ -2,7 +2,7 @@
 
 Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for a
 global English-speaking audience (India included; the channel is "Paisa Panchayat", see
-`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 45–70 s explained stories that loop) and
+`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 60–90 s explained stories) and
 **long videos** (landscape, 7–10 min list and "explained" formats, character-led animation). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
@@ -16,8 +16,8 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   installed by `scripts/setup-voice.sh`, never committed). One Indian-English and five American
   voices, rotated per video; numbers are spoken as words.
   Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Every
-  video is voiced, with big word-by-word captions drawn from the voice timings (owner, 2026-10-21;
-  `remotion/src/fx/captions.tsx`).
+  video is voiced, with captions of every word drawn from the voice timings (owner, 2026-10-21;
+  small sentence captions with the speaker's name since 2026-11-02; `remotion/src/fx/captions.tsx`).
 - **Best video first** (owner, 2026-10-30; cadence 2026-11-02 after the 48-hour test didn't help): the
   routine makes **3 Shorts a day** (`dailyVideoTarget`) and **2 go out a day**, uploaded automatically
   by the API at 12:37 and 19:07 IST (`uploadTimes`, `shortEveryDays: 1`, `uploadsPaused: false`), so the
@@ -41,9 +41,12 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 - **Every video must be unique.** YouTube demonetizes repetitive, mass-produced content
   ("inauthentic content"). The variety rules below are mandatory, not nice-to-have.
 - **Every number on screen is computed by code**, never typed by an LLM. The one exception is a
-  **sourced fact** in a news video (a script's `facts`): a figure published by an official source, put in
+  **sourced fact** (a script's `facts`; news only until 2026-11-02, since then any video that tells a
+  true story with real people and companies, owner-approved after The Curious Plot study): a figure
+  published by an official or reputable source, put in
   the topic feed by research with its URL, copied unchanged into the script (the number check
-  compares them), shown with "Data: <source> · <month>", and confirmed by the fact reviewer — on
+  compares them, and a calculation starting from one names it: maths `"facts": {"amount": 1}`),
+  shown with "Data: <source> · <month>", and confirmed by the fact reviewer — on
   the source page, or, when that page can't be reached, by web search (the official source's own
   result, or two independent reputable outlets agreeing on value, unit and date) — or the video fails.
   A video that fails never ends a generation run; the run moves on to the next video.
@@ -67,7 +70,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   craft gates (`renderer/craft.py`) fail a video with empty frames, repeated pictures, one shot
   size or one set.
 - **Depth and a picture that follows the words** (owner, 2026-10-26: viewers left right after the
-  hook; every video turned into the same props): Shorts run the length setting (45–70 s since 2026-10-30) on a story spine (hook → promise
+  hook; every video turned into the same props): Shorts run the length setting (60–90 s since 2026-11-02) on a story spine (hook → promise
   by 6 s → rising stakes → a turn → the payoff → loop; `generator/story.py`), arranged in a **shape**
   from a growing library (`improvement/research/shapes.json`, `generator/shapes.py`: reveal, versus,
   levels only for real ladders…; owner 2026-10-30), opened by a **curiosity hook** that never gives
@@ -76,6 +79,24 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   from the story's own props (`remotion/src/videos/<id>/props.tsx`) in `build` beats whose actions
   fire on the words that name them, with coded Hook, Turn and Payoff beats. Gates: nothing new on
   screen for 2.5 s, actions that don't show what is said, props reused from recent videos.
+- **Story and presentation for 70% viewed** (owner, 2026-11-02, after rating the car-discount Short
+  2/10): every Short opens on "You think X? It isn't." and tells one person's concrete story with
+  certainty (at most 2 hedges, no "Picture…" warm-ups, a new open question every 2–3 beats;
+  `generator/story.py`). The build scene's camera follows each action, things are big and transform,
+  money travels (`flow`), spoken figures slam in huge; the travelling-money motion and the pulsing
+  cinematic bed are on for every Short (no longer A/B tests).
+- **The board: rooms and cards** (owner, 2026-11-02, after a frame-by-frame study of The Curious
+  Plot and four reviewed demos, `improvement/style-study/2026-11-02-the-curious-plot.md`): Shorts and
+  long videos are told on `board` beats (`remotion/src/studio/board.tsx`, README "The board"). Questions
+  in a room with the cast, every answer a full-frame card (no cast) that is a labelled diagram: a
+  document with real data, sums written out, chips, charts, things that turn into, move into and feed
+  each other. One sentence per beat, a new picture and colour every beat, every clause animated (90%+,
+  `renderer/craft.py` `clause_problems`), readable on mute (the QA reviewer checks). A question in the
+  viewer's voice every 12 s (30 s in a long video), and the ending asks the viewer something
+  (`generator/story.py`). The look (`style.look`) rotates per video (`generator/looks.py`). Story
+  shapes `question-chain`, `ladder`, `true-history`. Captions are whole sentences in a small box low on
+  the frame with the speaker's name (owner-approved); the music sits lower under speech and drops
+  before each reveal.
 - Every video carries the disclaimer "Illustrative only. Not financial advice.": long videos on the
   end card; Shorts (no end card, they loop) as a small line over the last moments; and every
   description (check-plan).
@@ -167,7 +188,7 @@ is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
 | Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Wednesdays 14:37 IST, 1 a week) |
 | Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, Mon and Thu 09:37 IST) |
 | Template | `short_story` (1080×1920, a skit per format in its README) | `long_story` (1920×1080, a list of chapters, the scene catalog in its README) |
-| Length / pace | 45–70 s (settings), tempo 1.2 (~175 spoken words a minute) | 400–600 s (settings), tempo 1.5 (~215 words a minute) |
+| Length / pace | 60–90 s (settings), tempo 1.2 (~175 spoken words a minute) | 400–600 s (settings), tempo 1.5 (~215 words a minute) |
 | Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
 

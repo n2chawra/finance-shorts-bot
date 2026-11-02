@@ -14,7 +14,8 @@ const INK = "#1d2433";
 
 export interface ScreenText {
   key: string;
-  kind: "tag" | "label";
+  /** hero: a spoken figure no thing carries, huge in the middle of the frame (owner, 2026-11-02) */
+  kind: "tag" | "label" | "hero";
   text: string;
   /** tag: the bottom centre of the tag; label: the top centre of the label (screen px) */
   x: number; y: number;
@@ -40,6 +41,19 @@ export const ScreenTexts: React.FC<{ items: ScreenText[]; w: number; h: number; 
       {items.map((it) => {
         const k = Math.max(0, it.k ?? 1);
         if (k <= 0.01 || !it.text) return null;
+        if (it.kind === "hero") {
+          const fs = fitLine(it.text, v ? 150 : 110, maxW - 40, { min });
+          const H = fs * 1.1;
+          let yb = clampN(it.y, box.y0 + H, box.y1);
+          if (onBand(yb - H, yb)) yb = bandTop - 10 >= box.y0 + H ? bandTop - 10 : Math.min(box.y1, bandBot + H + 10);
+          return (
+            <g key={it.key} transform={`translate(${w / 2},${yb - H / 2}) scale(${Math.min(k, 1.3)}) rotate(-3)`}>
+              <text x={0} y={fs * 0.36 + 10} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={fs} fill="rgba(0,0,0,0.35)">{it.text}</text>
+              <text x={0} y={fs * 0.36} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={fs} fill={it.fill ?? "#ffd84a"}
+                stroke={INK} strokeWidth={v ? 16 : 12} paintOrder="stroke" strokeLinejoin="round">{it.text}</text>
+            </g>
+          );
+        }
         if (it.kind === "tag") {
           const H = v ? 84 : 64;
           const fs = fitLine(it.text, v ? 56 : 44, maxW - 48, { min, upper: it.upper });

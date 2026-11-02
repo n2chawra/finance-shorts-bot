@@ -395,3 +395,13 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   `rejected`) and leaves feedback on the dashboard (Queue, video page, Feedback page); feedback reaches
   the routine (`state.owner_feedback`), the editor, research and the improver, which answers every
   note (`improvement/feedback-acks.json`). Review on Sun 8 Nov.
+- 2026-11-02 **The board: rooms, cards and real facts.** The 48-hour test ended early (owner): 3 Shorts
+  made and 2 auto-uploaded a day (12:37, 19:07 IST), one long video a week (Studio Wed, out Sat),
+  Scout Mon/Thu. After a frame-by-frame study of The Curious Plot (`improvement/style-study/2026-11-02-the-curious-plot.md`)
+  and four owner-reviewed demo takes (`v-remake-salary`, local): the `board` scene (questions in a
+  room, answers on labelled cards: documents, sums, terms, chips, charts, things that turn into and
+  feed each other), sentence subtitles with the speaker's name, story checks (a question every 12 s,
+  one sentence and a new picture per beat, labelled cards, no hedges or warm-ups), clause coverage
+  ≥ 90%, the mute review, sourced facts in every video (`rate` maths, `year` facts), shapes
+  `question-chain`, `ladder`, `true-history`, rotating looks, quieter music dropping before reveals,
+  Shorts 60–90 s. The travelling-money motion and the pulsing cinematic bed are adopted for every Short.

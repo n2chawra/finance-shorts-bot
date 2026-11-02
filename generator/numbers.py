@@ -204,6 +204,8 @@ def _values(m: dict, done: dict[str, dict[str, float]]) -> dict[str, float]:
     if kind == "compare":
         a, b = (_ref(m[side], done, m["name"]) for side in ("a", "b"))
         return {"a": a, "b": b, "diff": a - b}
+    if kind == "rate":
+        return {"part": float(m["part"]), "whole": float(m["whole"])}
     return {}
 
 
@@ -229,6 +231,10 @@ def _long_story(s: dict) -> dict[str, str]:
             a, b = done[n]["a"], done[n]["b"]
             out |= {f"{n}_a": fm.short(a), f"{n}_b": fm.short(b), f"{n}_diff": fm.short(a - b),
                     f"{n}_ratio": times(a/b), f"{n}_pct": f"{(a - b)/b*100:.0f}%"}
+        elif kind == "rate":
+            pct = done[n]["part"]/done[n]["whole"]*100
+            out |= {f"{n}_part": fm.short(done[n]["part"]), f"{n}_whole": fm.short(done[n]["whole"]),
+                    f"{n}_pct": f"{pct:.1f}%" if pct < 10 else f"{pct:.0f}%"}
         elif kind == "fee_take":
             total = done[n]["total"]
             out |= {f"{n}_per_period": fm.full(m["amount"]*m["fee_pct"]/100), f"{n}_per_year_total": fm.full(total/m["years"]),

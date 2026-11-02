@@ -47,7 +47,6 @@ SFX_BUS = 0.5
 SFX_UNDER_VOICE = 0.6
 VOICE_RMS = 0.2                   # every line levelled to the same loudness, peaks kept under 0.95
 QUIET_BED, QUIET_LEVEL, QUIET_DUCK = "quiet-bed", 0.32, 0.92   # the experiment's bed level and duck
-CINEMATIC_PULSE = "cinematic-bed-gets-a-pulse"   # A/B: the cinematic bed with a pulse (renderer/engine/music.py)
 DISCLAIMER = "Illustrative only. Not financial advice."
 TYPED_NUMBER = re.compile(r"[0-9₹$£€]")   # a digit or any currency sign
 PLACEHOLDER = re.compile(r"\{[a-z][a-z0-9_]*\}")   # names may hold digits ({card_paid_year1}); text may not
@@ -139,7 +138,9 @@ def _one_string(raw, resolved, where: str, fm: Money) -> None:
             if ref != 0:
                 raise ValueError(f"{where}.value is a typed number ({ref}); use \"@maths.key\" or 0")
         elif isinstance(v, (int, float)) and v != 0:
-            shown = {fm.full(v), fm.short(v), fm.long(v), fm.group(round(v)), f"{v:g}"}
+            short = fm.short(v)
+            # a sourced fact is shown as published ("$401B", "$13.6B"): the same amount without trailing zeros
+            shown = {fm.full(v), short, re.sub(r"\.?0+(?=[KMBT]$)", "", short) if "." in short else short, fm.long(v), fm.group(round(v)), f"{v:g}"}
             if not any(s in str(text) for s in shown):
                 raise ValueError(f"{where}: counts to {fm.short(v)} ({ref}) but lands on {text!r}; one quantity, "
                                  f"one string: use the placeholder that shows the same number")
@@ -316,7 +317,59 @@ SFX = {
 }
 
 
-WHOOSH_TRANSITIONS = ("zoom-through", "whip", "match")
+WHOOSH_TRANSITIONS = ("zoom-through", "whip", "match", "slide", "blinds")
+
+# The Curious Plot's sound (measured 2026-11-02): music ~29 dB under the voice (ours ~13), the bed
+# dropping out ~0.5 s before each reveal (7 times in 50 s), ~12 soft pops a minute on entrances.
+SHORT_DUCK = 0.89                 # Shorts: the bed about 8 dB lower under speech than VOICE_DUCK left it
+DROP_BEFORE, DROP_LEVEL = 0.5, 0.12   # the bed dips this long before a reveal, to this share of its level
+REVEALS = {"stamp", "cross", "term", "equation"}   # actions a drop announces (an equation: its result)
+AUTO_SFX = {"stamp": ("boom", 0.32), "cross": ("fail", 0.28), "tick": ("ding", 0.28), "header": ("whoosh", 0.22),
+            "enter": ("pop", 0.3), "equation": ("pop", 0.3), "term": ("pop-high", 0.32), "bars": ("pop", 0.28),
+            "ring": ("pop", 0.28), "grid": ("pop", 0.28), "calendar": ("tick", 0.4), "buttons": ("pop", 0.28),
+            "click": ("tick", 0.45), "person": ("pop-high", 0.3), "bubble": ("pop", 0.26), "arrow": ("whoosh", 0.18)}
+
+
+def _cues(params: dict, events: dict[str, int], start: float) -> tuple[list[tuple[float, dict]], list[float]]:
+    """Automatic sounds and music drops from a build or board beat's actions (absolute seconds)."""
+    sfx, drops = [], []
+    t = lambda name, dflt=None: start + events[name]/FPS if isinstance(name, str) and name in events else dflt  # noqa: E731
+    for a in params.get("actions") or []:
+        if not isinstance(a, dict):
+            continue
+        at = t(a.get("at")) if a.get("at") else (start + float(a["sec"]) if isinstance(a.get("sec"), (int, float)) else None)
+        if at is None:
+            continue
+        kind = a.get("do")
+        if kind in AUTO_SFX:
+            name, gain = AUTO_SFX[kind]
+            sfx.append((at, {"kind": name, "at": "auto", "gain": gain}))
+        if kind == "equation":
+            res = (a.get("result") or {})
+            rt = t(res.get("at"), at + 1.0)
+            sfx.append((rt, {"kind": "kaching", "at": "auto", "gain": 0.3}))
+            drops.append(rt)
+        elif kind in REVEALS:
+            drops.append(at)
+        for it in a.get("items") or []:          # bars and buttons arrive one by one
+            if isinstance(it, dict) and it.get("at") and (x := t(it["at"])) is not None:
+                sfx.append((x, {"kind": "pop", "at": "auto", "gain": 0.26}))
+    return sfx, drops
+
+
+def _drop_envelope(n: int, drops: list[float]) -> np.ndarray:
+    """1 everywhere, dipping to DROP_LEVEL for DROP_BEFORE s before each reveal, back over 0.25 s."""
+    env = np.ones(n)
+    for d in drops:
+        a, b = int(max(0.0, d - DROP_BEFORE)*SR), int(d*SR)
+        if b <= a or a >= n:
+            continue
+        down = min(b - a, int(0.12*SR))
+        env[a:a + down] = np.minimum(env[a:a + down], np.linspace(1.0, DROP_LEVEL, down))
+        env[a + down:b] = np.minimum(env[a + down:b], DROP_LEVEL)
+        up = min(n - b, int(0.25*SR))
+        env[b:b + up] = np.minimum(env[b:b + up], np.linspace(DROP_LEVEL, 1.0, up))
+    return env
 
 SCENES_TS = Path(__file__).resolve().parents[2]/"remotion"/"src"/"contract"/"scenes.ts"
 
@@ -372,8 +425,10 @@ def check_script(script: dict) -> dict:
         raise ValueError("a story needs beats")
     if script.get("thumbnails"):
         _thumbnail_variants(script, figures, results)
-    if sources and not any(b.scene == "headline" for b in beats):
-        raise ValueError("a script with sourced facts needs a headline beat, which shows where they come from")
+    # where the facts come from is on screen: a headline beat, or a board beat's source footer
+    # (sourced facts in every Short since 2026-11-02, not only news)
+    if sources and not any(b.scene in ("headline", "board") for b in beats):
+        raise ValueError("a script with sourced facts needs a headline or board beat, which shows where they come from")
     if len({b.id for b in beats}) != len(beats):
         raise ValueError("beat ids must be unique")
     scenes, out, timed = scene_names(), [], []
@@ -429,7 +484,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     if len({b.id for b in beats}) != len(beats):
         raise ValueError("beat ids must be unique")
 
-    timeline_beats, lines, cursor = [], [], 0.0
+    timeline_beats, lines, cursor, drops = [], [], 0.0, []
     for b in beats:
         where = f"beat {b.id!r}"
         params = _resolve(b.params, figures, results, f"{where}.params")
@@ -466,6 +521,15 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         # a transition that travels somewhere carries its own sound (motion direction, 2026-10-21)
         if b.transition in WHOOSH_TRANSITIONS and not any(s.get("at", "start") == "start" and s.get("kind") == "whoosh" for s in b.sfx):
             b_sfx.append((max(0.0, cursor - 0.05), {"kind": "whoosh", "at": "start", "gain": 0.55}))
+        if fmt == "short" and b.scene in ("build", "board"):
+            auto, beat_drops = _cues(params, events, cursor)
+            mine = [x for x, _ in b_sfx]
+            last = -9.0
+            for x, sp in sorted(auto, key=lambda c: c[0]):
+                if all(abs(x - y) > 0.15 for y in mine) and x - last >= 0.22:   # never on top of the script's own sounds
+                    b_sfx.append((x, sp))
+                    last = x
+            drops.extend(beat_drops)
         timeline_beats[-1]["_sfx"] = b_sfx
         cursor += dur
 
@@ -473,7 +537,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     total_frames = round(length*FPS)
     mixer = Mixer(length, seed + 4)
     bed = make_bed(mixer.rng, length, style.genre, style.key, style.bpm,
-                   pulse=(script.get("experiments") or {}).get(CINEMATIC_PULSE) == "on")
+                   pulse=script.get("format", "short") == "short")   # adopted for every Short (owner, 2026-11-02)
     speech = np.zeros(mixer.n)
     for start, line, _ in lines:
         i = int(start*SR)
@@ -482,8 +546,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     # A/B "quiet-bed" (owner, 2026-10-19, after Casual Finance: voice only, 2.3M views): music about
     # 4 dB lower overall and nearly gone under speech, so it only fills the pauses
     quiet = (script.get("experiments") or {}).get(QUIET_BED) == "on"
-    level, duck_by = (QUIET_LEVEL, QUIET_DUCK) if quiet else (0.5, VOICE_DUCK)
-    mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck))
+    level, duck_by = (QUIET_LEVEL, QUIET_DUCK) if quiet else (0.5, SHORT_DUCK if fmt == "short" else VOICE_DUCK)
+    mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck)*_drop_envelope(mixer.n, drops))
     # three stems, measured apart (timeline audio.stems), then summed into the mix
     voice_m, sfx_m = Mixer(length, seed + 5), Mixer(length, seed + 6)
     for tb in timeline_beats:
@@ -518,12 +582,15 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         "figures": figures, "beats": timeline_beats,
         "voices": {"narrator": narrator, **CAST_VOICES}, "speed": speed, "tempo": tempo,
         "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm},
-        "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm},
+        "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm,
+                  **({"look": (script.get("style") or {})["look"]} if (script.get("style") or {}).get("look") else {})},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1), "stems": stems},
         "disclaimer": DISCLAIMER, "captions": True, "voiceMode": voice, "sources": sources, "currency": fm.currency,
         # A/B variants for this video ({id: "on" | "off"}, generator/experiments.py): scenes read them
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest
         "experiments": dict(script.get("experiments") or {}),
+        # the board's look (generator/looks.py): from the plan's style, carried into history by the render report
+        "look": (script.get("style") or {}).get("look"),
         # the thumbnail card: a cast member reacting, one computed figure, at most four words
         # the promised steps (a level tracker over the beats, studio/hud.tsx; 2026-10-26)
         "structure": _structure(script.get("structure")),

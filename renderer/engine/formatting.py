@@ -194,7 +194,7 @@ def nice_axis(vmax: float, max_ticks: int = 5) -> list[float]:
     raise AssertionError("unreachable")
 
 
-FACT_UNITS = ("rupees", "rupees_lakh", "rupees_crore", "percent", "count", "count_lakh", "count_crore",
+FACT_UNITS = ("year", "rupees", "rupees_lakh", "rupees_crore", "percent", "count", "count_lakh", "count_crore",
               "money", "money_thousand", "money_million", "money_billion", "money_trillion",
               "count_thousand", "count_million", "count_billion")
 _SCALE = {"thousand": "K", "million": "M", "billion": "B", "trillion": "T"}
@@ -205,6 +205,10 @@ def fact_value(value: float, unit: str, currency: str = LEGACY_CURRENCY) -> str:
     (6.5, 'percent') → '6.5%', (9.87, 'count_crore') → '9.87 Cr', (4500000, 'count') → '45,00,000',
     (2.1, 'money_trillion', 'USD') → '$2.1T', (340, 'count_million', 'USD') → '340M'. `money*` units are
     in the fact's currency; counts group the Indian way only in a rupee story."""
+    if unit == "year":          # a dated step in a true story (2026-11-02): "2007", never "2,007"
+        if not (float(value).is_integer() and 1000 <= value <= 2999):
+            raise ValueError(f"a year fact is a whole year, not {value!r}")
+        return str(int(value))
     m = Money(currency)
     whole, frac = f"{abs(value):.2f}".split(".")         # round first: 9.996 is "10", not "9."
     sign = "-" if value < 0 and f"{abs(value):.2f}" != "0.00" else ""

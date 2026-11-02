@@ -46,6 +46,72 @@ README for every option). Use a `kinetic` typed card for the turn of the story, 
 for a character moment with a `bubble`, and keep plain `bignumber` beats rare. Example:
 [`examples/short_story_kit.json`](../../../examples/short_story_kit.json).
 
+## The board: rooms and cards (owner, 2026-11-02; the default for Shorts and long videos)
+
+After a frame-by-frame study of The Curious Plot (their "$0 salary" Short 43K, "egg selling" 1.3M;
+ours on the same topic 151) and four demos the owner reviewed (`v-remake-salary`): the question is
+asked in a **room**, every answer is a **card**, a new picture every sentence, every clause animated,
+and the whole story readable with the sound off. `scene: "board"`, `remotion/src/studio/board.tsx`.
+
+- **Room** (`cast` given): both characters stand low, the picture floats big above them. For the
+  asker's questions and reactions.
+- **Card** (no `cast`): one flat colour (`bg`: sand, sky, mint, plum, night, coral, cream, slate, blue,
+  purple, teal, gold; a different one each card), the picture fills the middle. For every answer.
+- **One sentence per beat** (6.5 s of speech at most), a **new picture every beat**, every board beat
+  opens with its `header` (the point, readable on mute) and its picture in place at `sec: 0`.
+- **A card is a labelled diagram, not one icon**: 3+ changes and 2+ pieces of text (rows, chips,
+  labels, callouts, a term). A thing comes back in at most 4 beats, drawn differently (`state`).
+- Clause coverage: 90%+ of spoken clauses get their own change within 0.8 s (`renderer/craft.py`).
+
+```json
+{"id": "salary", "scene": "board", "role": "promise", "speaker": "rohan", "transition": "slide",
+ "say": "His salary is {fact1}. A year.", "events": {"his": {"word": "His"}, "salary": {"word": "salary"}, "year": {"word": "year"}},
+ "params": {"header": "His salary", "sub": "Meta's founder", "bg": "coral", "items": [],
+            "actions": [{"sec": 0, "do": "doc", "title": "Pay slip", "rows": [{"label": "Pay to", "value": "Mark Zuckerberg"},
+                                                                            {"label": "Amount", "value": "{fact1}", "at": "salary"}],
+                         "stamp": {"text": "One dollar", "at": "salary"}},
+                        {"at": "year", "do": "calendar", "steps": ["January", "April", "August", "December"], "flipAt": "year", "label": "Pay for the year"},
+                        {"at": "year", "do": "chip", "text": "Per year"}]}}
+```
+
+params: `header`, `sub?`, `bg`, `stage?` (a room's world: flat, street, city, field, kitchen, office,
+night, desert, studio, space), `cast?` ([{who, spot, acting}]), `items` (the video's own props:
+{id, prop, x?, y?, size?, label?, tag?, state?, hidden?}; a thing without `x` is placed by count, in
+a room it floats above the cast), `actions` (each on a spoken word: `at` an event, or `sec`).
+
+| verb | what it does | params |
+|---|---|---|
+| `header` | rewrites the line at the top | `text`, `sub?` |
+| `doc` | a document whose rows fill in on their words; a value can be struck and replaced | `title`, `rows: [{label, value, at?, strike?: {to, at}}]`, `stamp?: {text, at}`, `tone?` |
+| `equation` | a sum written term by term, the result counts up | `terms: [{text, at?}]`, `result: {text, value?, at?}` |
+| `term` | a named money word with one line | `name`, `line?`, `kicker?` |
+| `chip` | a small label joining the picture | `text`, `tone?` (good, bad, accent, blue) |
+| `bars` | bars growing side by side, can turn red | `items: [{label, text, value, at?, tone?, turn?}]`, `title?` |
+| `ring` | a donut filling to a share, a pointer chip on its slice | `value` (percent, `@ref`), `text`, `label?`, `callout?` |
+| `grid` | N units (up to 400), a share marked or locked | `n`, `share?`, `lock?`, `prop?`, `text?`, `label?`, `cols?`, `markAt?` |
+| `calendar` | a page turning, or ticking through steps | `from`/`to` or `steps: [...]`, `label?`, `flipAt?` |
+| `buttons` / `click` | buttons appearing one per word; a hand cursor presses one | `items: [{text, at?, prop?}]` / `index` |
+| `person` | an ID card | `name`, `kicker?`, `figure?`, `value?`, `prop?` |
+| `clear` | the panels go, the stage comes back | |
+| `enter` | a thing arrives: flies in, grows out of `from`, `how: "rise"` (out of the ground), `how: "drop"` | `target`, `from?`, `how?` |
+| `swap` / `move` / `try` | turns into another prop / goes to a thing or place / heads for a thing and bounces back | `into` / `to` / `to` |
+| `flow` | money flies from one thing to another | `target`, `to`, `n?`, `text?` |
+| `stamp` / `cross` / `tick` / `strike` | marks on a thing | `text` / – / – / `text?` (the new tag) |
+| `arrow` / `bubble` / `step` | an arrow with a label / a speech bubble / an actor steps forward | `to`, `text?` / `text` / `target: who` |
+| `grow`, `shrink`, `state`, `tag`, `label`, `count`, `multiply`, `glow`, `shake` | as in the build scene | |
+
+Panels (`doc`, `bars`, `ring`, `grid`, `calendar`, `buttons`, `person`) build up into one picture,
+three at most, stacked in the middle; chips line up under them; `clear` (or `"replace": true` on a
+panel) starts over. While panels show, the stage's things step aside; the thing just acted on stays
+sharp and the rest dim. Sourced facts print their source on the board ("Data: ProPublica · Jun 2021").
+
+**The look** (`style.look` in the plan; `generator/looks.py`, rotated by `check-plan`): `stage`, `header`
+(ribbon, sticky, neon, strip, chalk), `holder` for sums (box, receipt, phone, blackboard, sign),
+`entrance` (pop, drop, slide, draw, stamp). The same combination never within 10 videos.
+
+**Captions on a board video**: whole sentences in a dark box low on the frame with the speaker's
+name, the word being said and every figure in yellow.
+
 ## Evidence: `source` and `pen` (2026-10-19)
 
 From the Casual Finance study (`improvement/style-study/2026-10-19-casual-finance.md`): show the
@@ -140,9 +206,14 @@ by default). Characters are big when they speak or react, in the hook and in the
 pulses and glows, and a figure no thing carries pops on screen by itself (`studio/figures.ts`). Put
 each figure on the thing it belongs to, so the number lands on the picture.
 
-**Calm motion.** One camera change per beat (the camera holds a framing at least 1.2 s and moves
-in 1 s); cut or `match` between beats, with `whip` or `zoom-through` at most twice a video. Use
-`shake` and `glow` as accents on the biggest moments, not on every beat.
+**Directed motion** (owner, 2026-11-02: "it's a way of presentation … it lacks wow factor"; calm,
+one-move-per-beat camera until then). The build scene's camera follows the action by itself: it
+pushes in on each thing as its action fires (holding a framing at least 1.2 s, moving in 1 s), so
+write camera keys only for a deliberate wide reveal. One hero thing per moment, big (`size`
+0.24–0.34), at most three on screen; every build beat transforms something (`swap`, `grow`,
+`flow`, `multiply`, `break`, `drain`), money travels between things on `flow`. Travel between
+beats with `match`, `whip` or `zoom-through` (four loud ones at most), a cut before a punchline.
+`shake` (a hop) and `glow` stay accents.
 
 Never: "Wait, what?", "Wait. So my…", "Same X. Same Y.", "didn't lift a finger", "for doing
 nothing", or a line opening from the last 10 scripts. The picture follows every phrase: build

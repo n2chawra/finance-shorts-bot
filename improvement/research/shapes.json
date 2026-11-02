@@ -91,6 +91,62 @@
         "views": 213185,
         "url": "https://youtube.com/shorts/kQCpFXtG9RE"
       }
+    },
+    {
+      "id": "question-chain",
+      "name": "The question chain (asker and explainer)",
+      "status": "active",
+      "levels": false,
+      "when": "a billionaire or big-money mechanism with several layers: how the rich pay no tax, how a company really earns, why a famous person does something strange",
+      "beats": "hook: the asker states the shocking fact and asks why -> the explainer answers in one line and one picture -> the asker's next, sharper question (doubt, then how, then a real example, then outrage, then 'and people like us?') -> each answer a real name and a figure, a named term on a card -> the named secret -> a 3-line recap, the lesson, the asker's last question to the viewer",
+      "rules": {
+        "asker_questions_min": 6,
+        "two_voices": true
+      },
+      "reference": {
+        "title": "Why Billionaires Take $0 Salary… But Never Go Broke",
+        "views": 43000,
+        "url": "https://www.youtube.com/watch?v=5x0wu-p5-do"
+      },
+      "added": "2026-11-02",
+      "origin": "owner + style study (The Curious Plot)"
+    },
+    {
+      "id": "ladder",
+      "name": "The ladder parable (same start, different steps)",
+      "status": "active",
+      "levels": false,
+      "when": "one money idea shown as people climbing it: same $100, four brothers; same salary, three friends. Each step a named finance term, the result multiplied at every step",
+      "beats": "hook: the same start and the wildly different end -> the cast in a lineup -> person one: the simplest move, the sum built on screen from units, its term -> person two, three, four: each one more clever move, a small conflict (who pays if it fails?) and how it's solved, the sum and the term -> the bars side by side -> the 3-line contrast recap -> 'which one are you?'",
+      "rules": {
+        "steps_min": 3,
+        "terms": true
+      },
+      "reference": {
+        "title": "How $100 Became $204,984: The Egg Selling Mindset",
+        "views": 1300000,
+        "url": "https://www.youtube.com/shorts/LYPNLzaZafQ"
+      },
+      "added": "2026-11-02",
+      "origin": "style study (The Curious Plot)"
+    },
+    {
+      "id": "true-history",
+      "name": "The true rise (and the hits)",
+      "status": "active",
+      "levels": false,
+      "when": "how a real company, person or place got rich: a founding sum, dated steps, a crisis, the comeback",
+      "beats": "hook: the question written huge over today's picture ('why is X so rich?') -> rewind to the start with its date and sum -> growth you can count (stores, customers, ships) -> 'but then' the dated setbacks -> the comeback -> the lesson and a question to the viewer",
+      "rules": {
+        "dates_min": 2
+      },
+      "reference": {
+        "title": "Why Are Dubai Locals So Rich? (It's Not Oil)",
+        "views": 94000,
+        "url": "https://www.youtube.com/shorts/oe2vpJKCJHY"
+      },
+      "added": "2026-11-02",
+      "origin": "style study (The Curious Plot)"
     }
   ]
 }

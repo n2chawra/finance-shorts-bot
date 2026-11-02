@@ -35,9 +35,11 @@ CLOSE_EVERY = 15.0
 SET_RUN = 2
 SET_SHARE = {"short": 0.45, "long": 0.25}
 SIZES_NEEDED = {"short": 3, "long": 4}
-SHOT_SCENES = ("shot", "hook", "build", "custom", "framework", "type", "journey", "stats", "case")
+SHOT_SCENES = ("shot", "hook", "build", "custom", "framework", "type", "journey", "stats", "case", "board")
+# the board (studio/board.tsx, 2026-11-02) holds a still camera on one stage by design: it counts as a
+# composed picture and as a close look (its header and panels fill the frame), never against shot sizes
 DOCU = ("framework", "type", "journey", "stats", "case")   # full-frame documentary devices
-DOCU_SIZE = {"framework": "wide", "journey": "wide", "stats": "medium", "type": "close", "case": "close"}   # how each frames   # composed beats (build and custom since 2026-10-26)
+DOCU_SIZE = {"framework": "wide", "journey": "wide", "stats": "medium", "type": "close", "case": "close", "board": "close"}   # how each frames   # composed beats (build and custom since 2026-10-26)
 # covers (owner, 2026-10-24: "the thumbnails look the same with different texts"): measured on the
 # real covers, the same layout with new words is 3-11 bits apart, different pictures 19 or more
 COVER_SAME_BITS = 12
@@ -91,7 +93,13 @@ def shot_problems(tl: dict) -> list[str]:
     sizes_seen: set[str] = set()
     opening: list[str] = []
     closes: list[float] = [0.0]
+    sized = [b for b in shots if b["scene"] != "board"]
+    if len(sized) < 4 and len(sized) < len(shots):      # a board-led video: the camera rules don't apply
+        return out
     for b in shots:
+        if b["scene"] == "board":
+            closes.append(b["from"] / fps)
+            continue
         keys = ((b["params"].get("camera") or []) + [{"size": a.get("size", "close")} for a in b["params"].get("actions") or [] if isinstance(a, dict) and a.get("do") == "focus"]
                 if b["scene"] in ("shot", "build") else (b["params"].get("camera") or [{"size": DOCU_SIZE.get(b["scene"], "medium")}]))   # a custom beat may declare its sizes
         if b["scene"] == "build" and not keys:
@@ -150,7 +158,8 @@ OWN_PROPS_MIN = 8         # distinct props of its own a video's build beats use
 PROP_OVERLAP_MAX = 0.3    # share of its props any of the last PROP_WINDOW videos also used
 PROP_WINDOW = 10
 SHARED_PROPS = {"note", "coin", "cash", "box"}
-FREE_VERBS = {"focus", "glow", "shake"}   # camera and emphasis: they need not name a noun
+FREE_VERBS = {"focus", "glow", "shake", "header", "equation", "term", "bars", "ring", "grid", "calendar", "buttons",
+              "click", "person", "bubble", "step", "stamp", "cross", "tick", "strike"}   # emphasis and the board's own words
 COMPOSED = ("shot", "hook", "build", "custom")
 
 
@@ -183,7 +192,7 @@ def _visual_times(b: dict, fps: int, figures: set[str] | None = None) -> list[fl
                 out.append(x)
     if isinstance(p.get("word"), dict) and (x := t(p["word"])) is not None:
         out.append(x)
-    if b.get("scene") in DOCU:
+    if b.get("scene") in (*DOCU, "board"):
         _all_ats(p, ev, fps, out)
     v = b.get("voice") or {}
     if figures and b.get("scene") in ("build", "shot"):
@@ -196,7 +205,7 @@ def picture_problems(tl: dict) -> list[str]:
     fps, out = tl["fps"], []
     worst = (0.0, "")
     for b in tl["beats"]:
-        if b["scene"] not in ("shot", "build", *DOCU):
+        if b["scene"] not in ("shot", "build", "board", *DOCU):
             continue          # custom beats are animated by hand; old fixed scenes keep their own rules
         times = [*_visual_times(b, fps, set((tl.get("figures") or {}).values())), b["frames"] / fps]
         gap = max((y - x for x, y in zip(times, times[1:])), default=0.0)
@@ -206,7 +215,7 @@ def picture_problems(tl: dict) -> list[str]:
         out.append(f"{worst[0]:.1f} s with nothing new on screen in beat {worst[1]!r} (at most {VISUAL_GAP} s): "
                    f"add an action on the phrase being said there")
     for b in tl["beats"]:
-        if b["scene"] != "build" or not b.get("voice"):
+        if b["scene"] not in ("build", "board") or not b.get("voice"):
             continue
         p, ev = b["params"], b["events"]
         items = {i["id"]: i for i in p.get("items") or [] if isinstance(i, dict) and i.get("id")}
@@ -249,9 +258,12 @@ def build_props(tl: dict) -> set[str]:
             out |= {i["prop"] for i in p.get("items") or [] if isinstance(i, dict) and i.get("prop")}
             out |= {x for x in (p.get("traveller"), p.get("prop")) if isinstance(x, str)}
             continue
-        if b.get("scene") != "build":
+        if b.get("scene") not in ("build", "board"):
             continue
         out |= {i["prop"] for i in p.get("items") or [] if isinstance(i, dict) and i.get("prop")}
+        for a in p.get("actions") or []:     # a board's grid units, button icons and person pictures are the video's own too
+            if isinstance(a, dict):
+                out |= {x for x in [a.get("prop"), *[i.get("prop") for i in a.get("items") or [] if isinstance(i, dict)]] if isinstance(x, str)}
         out |= {a["into"] for a in p.get("actions") or [] if isinstance(a, dict) and a.get("into")}
         out |= {hz["prop"] for hz in (p.get("world") or {}).get("horizon") or [] if isinstance(hz, dict) and hz.get("prop")}
     return out - SHARED_PROPS
@@ -260,7 +272,7 @@ def build_props(tl: dict) -> set[str]:
 def prop_problems(tl: dict, earlier: list[tuple[str, dict]]) -> list[str]:
     """A video's own things: enough of them, and not the last videos' things again (`earlier`: (id, timeline))."""
     mine = build_props(tl)
-    if not any(b["scene"] in ("build", *DOCU) for b in tl["beats"]):
+    if not any(b["scene"] in ("build", "board", *DOCU) for b in tl["beats"]):
         return []
     out = []
     if len(mine) < OWN_PROPS_MIN:
@@ -301,3 +313,57 @@ def device_problems(tl: dict) -> list[str]:
             out.append(f"{a} {run} times in a row: change the device")
             break
     return out
+
+
+# ---------------- every clause gets its own picture (owner, 2026-11-02) ----------------
+# "literally everything which is said is being animated in a nice way; ours only the important things,
+# you have to listen to know". Measured on The Curious Plot: every clause had its own visual change
+# within about half a second of its key word. Board beats are held to it (other scenes keep their rules).
+CLAUSE_WINDOW = 0.8       # seconds either side of a clause
+CLAUSE_SHARE = 0.9        # of a board video's clauses that must have a visual change
+CLAUSE_WORDS = 7          # a clause longer than this counts as two
+_JOINS = {"and", "but", "so", "because", "then", "while", "which", "or"}
+
+
+def clauses(words: list[dict]) -> list[tuple[float, float]]:
+    """(start, end) of each clause in a line's captions or words: split at punctuation, at joining
+    words and every CLAUSE_WORDS words."""
+    out, cur = [], []
+    for w in words:
+        text = str(w.get("t", w.get("w", ""))).strip()
+        if cur and (text.lower().strip(".,!?;:") in _JOINS or len(cur) >= CLAUSE_WORDS):
+            out.append((cur[0]["s"], cur[-1]["e"]))
+            cur = []
+        cur.append(w)
+        if re.search(r"[.,!?;:]$", text):
+            out.append((cur[0]["s"], cur[-1]["e"]))
+            cur = []
+    if cur:
+        out.append((cur[0]["s"], cur[-1]["e"]))
+    return out
+
+
+def clause_problems(tl: dict) -> list[str]:
+    """Board beats: the share of spoken clauses that get a visual change near them."""
+    fps = tl["fps"]
+    boards = [b for b in tl["beats"] if b["scene"] == "board" and b.get("voice")]
+    if len(boards) < 3:
+        return []
+    total = covered = 0
+    bare: list[str] = []
+    figures = set((tl.get("figures") or {}).values())
+    for b in boards:
+        v = b["voice"]
+        start = v["start"] / fps
+        times = _visual_times({**b, "scene": "build"}, fps, figures)
+        _all_ats(b.get("params") or {}, b.get("events") or {}, fps, times)
+        for s, e in clauses(v.get("captions") or v.get("words") or []):
+            total += 1
+            if any(start + s - CLAUSE_WINDOW <= x <= start + e + CLAUSE_WINDOW for x in times[1:]):
+                covered += 1
+            elif len(bare) < 4:
+                bare.append(b["id"])
+    if total and covered / total < CLAUSE_SHARE:
+        return [f"only {covered} of {total} spoken clauses get their own picture ({covered / total:.0%}, at least {CLAUSE_SHARE:.0%}; "
+                f"bare clauses in {', '.join(dict.fromkeys(bare))}): put an action on each clause's key word"]
+    return []

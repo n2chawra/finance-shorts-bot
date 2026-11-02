@@ -313,4 +313,28 @@ def check_facts(script: dict, topic: dict | None) -> list[str]:
             out.append(f"facts[{i}] ({f.get('value')} {f.get('unit')}, {f.get('as_of')}) is not one of the feed topic's facts; copy them exactly")
         elif match.get("source") != f.get("source"):
             out.append(f"facts[{i}].source must be {match.get('source')!r} as in the feed")
+    return out + check_fact_inputs(script)
+
+
+# a fact's unit suffix → how many of its base unit (a "money_million" fact of 544 is 544,000,000)
+_UNIT_SCALE = {"thousand": 1e3, "lakh": 1e5, "million": 1e6, "crore": 1e7, "billion": 1e9, "trillion": 1e12}
+
+
+def check_fact_inputs(script: dict) -> list[str]:
+    """A calculation that starts from a real figure says so (owner, 2026-11-02: true stories with real
+    figures): `"facts": {"amount": 1}` on a maths entry means its `amount` input is fact 1, and must
+    equal it in base units (a percent fact is the rate as published)."""
+    facts = script.get("facts") or []
+    out = []
+    for m in script.get("maths") or []:
+        for key, n in (m.get("facts") or {}).items():
+            if not isinstance(n, int) or not 1 <= n <= len(facts):
+                out.append(f"maths {m.get('name')!r}.facts.{key}: there is no fact {n}")
+                continue
+            f = facts[n - 1]
+            unit = str(f.get("unit", ""))
+            want = float(f["value"]) * _UNIT_SCALE.get(unit.rsplit("_", 1)[-1], 1.0)
+            got = m.get(key)
+            if not isinstance(got, (int, float)) or abs(float(got) - want) > max(0.005, abs(want) * 1e-6):
+                out.append(f"maths {m.get('name')!r}.{key} is {got!r} but fact {n} is {want:g} ({f.get('value')} {unit}): use the fact's value")
     return out

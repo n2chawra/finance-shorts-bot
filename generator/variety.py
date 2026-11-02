@@ -214,6 +214,8 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
         out.append(f"style.bpm must be {lo}–{hi} for {style['genre']}")
     if style.get("key") not in KEYS:
         out.append(f"style.key must be one of {', '.join(KEYS)}")
+    from . import looks          # the board's look rotates like the palette (owner, 2026-11-02)
+    out += looks.problems(style.get("look"), [e for e in history if e.get("format", "short") == plan.get("format", "short")])
 
     if last:
         if style.get("palette") == last["style"]["palette"]:

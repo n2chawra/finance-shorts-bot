@@ -579,7 +579,7 @@
       "maxDays": 21,
       "primary": "avgViewPct",
       "guard": "qa_failures",
-      "status": "running",
+      "status": "adopted",
       "templates": [
         "short_story"
       ],
@@ -591,7 +591,9 @@
         "cmvvzncli0005i409k8n1rrr5",
         "cmvvza9nu0001i40917rrjljy"
       ],
-      "commits": []
+      "commits": [],
+      "closedAt": "2026-11-02",
+      "verdict": "Adopted by the owner on 2026-11-02 without waiting for the A/B (\"fix them right now\"): on for every Short; flag branches dropped."
     },
     {
       "id": "cinematic-bed-gets-a-pulse",
@@ -607,7 +609,7 @@
       "maxDays": 28,
       "primary": "avgViewPct",
       "guard": "qa_failures",
-      "status": "ready",
+      "status": "adopted",
       "templates": [
         "short_story"
       ],
@@ -617,7 +619,9 @@
       "answers": [
         "cmvvzbahz0001ia091z60ll7c"
       ],
-      "commits": []
+      "commits": [],
+      "closedAt": "2026-11-02",
+      "verdict": "Adopted by the owner on 2026-11-02 without waiting for the A/B (\"fix them right now\"): on for every Short; flag branches dropped."
     }
   ]
 }

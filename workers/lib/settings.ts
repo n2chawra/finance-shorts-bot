@@ -48,8 +48,8 @@ export const DEFAULT_SETTINGS: Settings = {
   longPerWeek: 1,
   longBacklogCap: 4,
   backlogCap: 30,
-  lengthMinSec: 30,
-  lengthMaxSec: 45,
+  lengthMinSec: 60,   // Shorts 60–90 s since 2026-11-02 (owner, after The Curious Plot study)
+  lengthMaxSec: 90,
   disclaimer: "Illustrative only. Not financial advice.",
   uploadsPaused: false,
   generationPaused: false,

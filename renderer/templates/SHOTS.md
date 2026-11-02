@@ -65,6 +65,12 @@ The first beat is `"scene": "hook"`. Its picture is written for this video: a co
 the `params` of a normal shot too: if the hook file is missing or fails its check, the render
 draws the shot instead and says so.
 
+## The board (owner, 2026-11-02)
+Since the Curious Plot study, Shorts and long videos are told on `board` beats: rooms for the
+questions, labelled cards for the answers, one sentence per beat, every clause animated, readable on
+mute. The verbs, params and rules: `renderer/templates/short_story/README.md`, "The board". The
+build scene below is the board's stage and still works on its own.
+
 ## The build scene, and the picture following the words (owner, 2026-10-26)
 
 "Animation should be dynamic to the script, not hardcoded props, so no two videos look alike."

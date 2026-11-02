@@ -328,6 +328,19 @@ def share(m: dict, fm: Money = Money()) -> Result:
     return {"values": values, "figures": figures, "series": {}}
 
 
+def rate(m: dict, fm: Money = Money()) -> Result:
+    """What share `part` is of `whole`, in percent (2026-11-02, true stories: the 25 richest Americans'
+    $13.6 billion of tax on $401 billion of new wealth is a 3.4% rate). Inputs may be sourced facts
+    (maths `"facts": {"part": 2, "whole": 1}`)."""
+    part, whole = float(m["part"]), float(m["whole"])
+    if not 0 < part <= whole:
+        raise ValueError("rate: part must be above zero and at most whole")
+    pct = part/whole*100
+    shown = f"{pct:.1f}%" if pct < 10 else f"{pct:.0f}%"
+    return {"values": {"part": part, "whole": whole, "pct": pct},
+            "figures": {"part": fm.short(part), "whole": fm.short(whole), "pct": shown}, "series": {}}
+
+
 def compare(m: dict, fm: Money, results: dict[str, Result]) -> Result:
     """The gap between two results computed earlier in the same list: `a` and `b` are
     "name.value_key" (as in @references), the bigger one first. Gives the difference, how many
@@ -350,7 +363,7 @@ def compare(m: dict, fm: Money, results: dict[str, Result]) -> Result:
 
 KINDS = {"sip": sip, "lumpsum": lumpsum, "emi": emi, "card_min_due": card_min_due, "sip_stepup": sip_stepup,
          "loan_prepay": loan_prepay, "real_return": real_return, "price_rise": price_rise, "income_tax_bands": income_tax_bands, "fee_take": fee_take,
-         "share": share, "compare": compare}
+         "share": share, "compare": compare, "rate": rate}
 
 # the inputs each kind needs, for messages a writer can act on
 INPUTS = {
@@ -366,6 +379,7 @@ INPUTS = {
     "fee_take": ("amount", "fee_pct", "per_year", "years"),
     "share": ("total", "parts"),
     "compare": ("a", "b"),
+    "rate": ("part", "whole"),
 }
 
 

@@ -70,11 +70,11 @@ def explained(shape: str = "reveal") -> dict:
                       {**beat("promise", "promise", f"Three clues hide on this table {long}"), "speaker": "narrator"},
                       {**beat("a", "build", f"Clue one is green {long}"), "speaker": "narrator"},
                       {**beat("b", "build", f"Clue two is time {long}"), "speaker": "narrator"},
-                      {**beat("r", "build", "Only that much? That is nothing to me."), "speaker": "rohan"},
-                      {**beat("c", "build", f"Clue three is the crowd {long}"), "speaker": "narrator"},
-                      {**beat("turn", "turn", "I love your lucky nights, they bring you back"), "speaker": "sharma"},
+                      {**beat("r", "build", "Only that much? So why worry? That is nothing to me."), "speaker": "rohan"},
+                      {**beat("c", "build", f"But clue three is the crowd {long}"), "speaker": "narrator"},
+                      {**beat("turn", "turn", "Why do I love your lucky nights? They bring you back"), "speaker": "sharma"},
                       {**beat("payoff", "payoff", f"So the casino never needs luck {long}"), "speaker": "narrator"},
-                      {**beat("loop", "loop", "One more spin couldn't hurt"), "speaker": "rohan"}]}
+                      {**beat("loop", "loop", "One more spin couldn't hurt, right?"), "speaker": "rohan"}]}
 
 
 def test_a_reveal_needs_no_levels_or_counter():
@@ -106,9 +106,44 @@ def test_one_liners_traded_by_the_cast_fail():
 
 def test_whips_are_accents():
     s = explained()
-    for b in s["beats"][1:5]:
+    for b in s["beats"][1:7]:
         b["transition"] = "whip"
     assert any("whip or zoom-through" in p for p in story.script_problems(s))
+
+
+def test_hedging_and_no_open_questions_fail():
+    # owner, 2026-11-02: the car-discount Short said "might", "can", "some dealers" in every line
+    s = explained()
+    for b in s["beats"][2:4]:
+        b["say"] = "Some dealers might quietly add a point, and you could pay it back, which can cost you"
+    s["beats"][5]["say"] = "Clue three is the crowd and that is where the money goes every single night here"
+    for b in s["beats"][4:7]:
+        b["say"] = b["say"].replace("?", ".")
+    problems = " ".join(story.script_problems(s))
+    assert "hedging words" in problems and "open a new question" in problems
+
+
+def test_warm_up_openers_fail():
+    s = explained()
+    s["beats"][1]["say"] = "Picture a new car " + s["beats"][1]["say"]
+    assert any("warm-up" in p for p in story.script_problems(s))
+
+
+def test_too_few_questions_and_a_silent_ending_fail():
+    # The Curious Plot asks the viewer's next question every ~9 s and ends on one (2026-11-02)
+    s = explained()
+    for b in s["beats"]:
+        b["say"] = b["say"].replace("?", ".")
+    problems = " ".join(story.script_problems(s))
+    assert "questions in about" in problems and "ending asks the viewer nothing" in problems
+
+
+def test_a_board_beat_needs_its_header():
+    s = explained()
+    s["beats"][2]["scene"] = "board"
+    assert any("opens with `header`" in p for p in story.script_problems(s))
+    s["beats"][2]["params"] = {"header": "THE HOUSE ALWAYS WINS"}
+    assert not any("opens with `header`" in p for p in story.script_problems(s))
 
 
 def test_scripts_from_before_shapes_keep_the_levels_rules():

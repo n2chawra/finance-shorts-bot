@@ -55,6 +55,22 @@ composed beats, or the same device more than 3 times in a row (`renderer/craft.p
 Draw the story's things in `remotion/src/videos/<id>/props.tsx` (10-20 for a long video). Reference:
 `videos/L-remake-borrow/script.json` with `remotion/src/videos/L-remake-borrow/` (hook and chapter one).
 
+## The board in a long video (owner, 2026-11-02: "make these changes for long video also")
+
+The rules of the Shorts board (`renderer/templates/short_story/README.md`, "The board") hold for long
+videos at 16:9, and `board` beats carry most of the explaining:
+- **Chapters are the ladder's steps or the history's eras**; each opens on a room beat where the
+  asker voices the viewer's next question, and its answers are cards (no `cast`), one sentence each
+  (9 s of speech at most), a new picture and colour every card.
+- **A question in the viewer's voice at least every 30 s**, and at every chapter's end (the `tease`
+  beat is that question). The video ends on a 3-line recap, the lesson and a question to the viewer.
+- **Every figure built from units with the sum on screen** (`equation`), a **named term** per chapter
+  (`term`), **real names with sourced facts** (Scout supplies them; `facts` and `"year"` facts for dates).
+- On a landscape board the header and sum run across the top, panels sit on the right half, the
+  stage on the left; captions are whole sentences in a box low on the frame with the speaker's name.
+- The documentary devices below stay; mix them with board beats so a 7–10 minute video never settles
+  into one look. Clause coverage (90%+), the card check and the mute review apply here too.
+
 ## The script
 
 | field | |

@@ -80,12 +80,64 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   - `conflict`: two characters, opposite moves · `secret`: the mentor says the secret ·
     `question`: ask what the viewer wants answered · `shock_number`: a computed figure ·
     `myth`: a character states the belief · `challenge`: dare the viewer to guess.
-- **Something new on screen every 2–3 seconds** (an action on the word that names it), while the
-  voice explains at an easy pace (tempo 1.2, about 175 words a minute). When the narrator explains,
-  the camera frames the thing being explained and the characters step back; they are big when they
-  speak, react, in the hook and the turn. Put each figure on its thing: it pulses while it is said. A Short is 8–11 beats of
-  4–7 s. One camera change per beat, cut or `match` between beats, `whip` or `zoom-through` twice
-  at most: the picture moves calmly with the explanation, never zig-zags.
+- **Your hook pattern, for every Short** (owner, 2026-10-31, adopted 2026-11-02): put the belief
+  everyone holds to the viewer and deny it, never give the answer: "You think McDonald's makes its
+  money selling burgers? It doesn't." · "You think the dealer gave you that discount? He didn't."
+  · "You think billionaires live on their salary? Not one of them." The first line names something
+  famous or everyday, 10 words or fewer; the frame shows that very thing.
+- **Storytelling that holds to the last second** (owner, 2026-11-02: "story telling needs lots of
+  work … the way of explanation is very weak", the car-discount Short 2/10; target 70% viewed):
+  - **One story, one person, one moment.** Follow a character through one concrete situation in
+    the present tense ("Rohan walks into the showroom. The dealer takes two thousand off."), not a
+    general explanation ("some dealers can add points"). The example *is* the explanation.
+  - **Say it with certainty.** No "might", "may", "could", "can", "some", "often", "quietly": tell
+    what happens in this story. The on-screen disclaimer covers it (`number-check` allows 2 hedges).
+  - **Always an open question.** Every 2–3 beats a line opens the next one before the last is
+    closed: "But that's not where he makes his money." · "So why would he give it away?" · "Here's
+    the clever part." The hook's answer comes only in the payoff, in the last quarter.
+  - **Escalate.** Each build beat reveals something bigger or worse than the one before; the turn
+    flips what the viewer believed; the payoff is one punchline sentence with the biggest figure.
+  - **Start every line on the action.** No "Picture…", "Imagine…", "Here's the game", "Let's…".
+- **The board: rooms and cards, a new picture every sentence** (owner, 2026-11-02, after The
+  Curious Plot study and two demos; `scene: "board"`, `remotion/src/studio/board.tsx`, its verbs in
+  `renderer/templates/short_story/README.md`):
+  - **One sentence per beat** (6.5 s of speech at most) and **a new picture every beat**: new things,
+    a new panel or a new state, never the last beat's picture again (`number-check` fails it).
+  - **Questions in the room, answers on cards.** The asker's beats have `cast` (both characters,
+    standing low, the picture above them); the explainer's answers are cards: no `cast`, one flat
+    colour (`bg`, a different one each card), the picture filling the middle.
+  - **Every clause gets its own change on its word**: a stamp, a cross, a tick, a strike, an arrow, a
+    sum building (`equation`), a named term (`term`), a panel (`bars`, `ring`, `grid`, `calendar`,
+    `buttons` + `click`, `person`), or a thing that **turns into** (`swap`), **moves into** (`move`),
+    **rises** (`enter` with `how: "rise"`), **drops** in, **tries and bounces back** (`try`), or sends money
+    (`flow`). Prefer the verbs that connect things over `enter`: the story is one thing leading to the next.
+  - **A thing returns at most 4 beats**, and drawn differently when it does (`state`: locked shares,
+    a stamped slip): the same set all video long reads as static.
+  - Every board beat opens with its `header` (the point of the sentence, readable on mute) and its
+    picture already in place at `sec: 0`.
+- **Presentation, not props on a shelf** (owner, 2026-11-02: "animation don't mean just put object
+  when you speak of it. It's a way of presentation … it lacks wow factor"):
+  - **One hero thing per moment, big.** At most three things on screen; the one being talked about
+    is `size` 0.24–0.34 and the camera goes to it. Never a row of small labelled icons.
+  - **Every build beat transforms something**: a thing turns into another (`swap`), grows into a
+    threat (`grow`), breaks, drains, multiplies, or money flies from one thing to another (`flow`);
+    `enter` alone is not an action. Show the idea as a picture: the discount tag is pulled back
+    on a hook into the loan; the loan paper grows taller than the buyer.
+  - **Money travels, things arrive**: whenever money passes from one thing to another add a `flow`
+    ({"at": <the word naming where it goes>, "do": "flow", "target": <source>, "to": <destination>,
+    "n": 3-8, "text": "{figure}"}); a thing that comes from another grows out of it (`enter` with
+    `from`). `shake` is a hop: once a beat at most.
+  - **The camera follows the action by itself**: the build scene pushes in on the target of each
+    action as it fires. Write camera keys only for a deliberate wide reveal.
+  - **The world is the story's place** (a car story on the `street` or in a showroom), never a bank
+    vault behind a car.
+  - **Travel between beats**: `match`, `whip` or `zoom-through` (4 loud ones at most); a plain cut
+    only before a punchline.
+- **Something new on screen every 2 seconds** (an action on the word that names it), while the
+  voice explains at tempo 1.2 (about 175 words a minute). When the narrator explains, the camera
+  frames the thing being explained and the characters step back; they are big when they speak,
+  react, in the hook and the turn. A spoken figure no thing carries appears huge in the middle of
+  the frame by itself. A Short is 8–11 beats of 4–7 s.
 - **Length:** the setting (`lengthMinSec`–`lengthMaxSec`, 45–70 s since 2026-10-30), about 120–185
   spoken words. Use the time to teach it properly: an example, the reason, what it means.
 - **Loop it:** the last line hands back to the first, so a viewer who keeps watching sees the hook
@@ -117,14 +169,22 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 - Never promise returns, name a specific fund or company, or tell the viewer to buy something.
   The cast are characters in a story, never advisors.
 
-## News scripts (feed topics with facts)
+## Real people and real figures (feed topics with facts)
 
+Since 2026-11-02 every Short and long video may tell a true story with real figures (owner, after
+The Curious Plot: "Bezos took about $80,000 a year for decades" beats "a billionaire with an assumed
+$50 million salary").
 - Set `feed_id` to the plan's `topic.feed_id` (or `topic.trend.id`) and copy the topic's `facts`
   **exactly** (`value`, `unit`, `currency`, `as_of`, `source`, `url`); you may only shorten a `label`. The
   number check compares them with the feed and fails on any difference. Never add a figure the
-  feed doesn't have.
-- The facts become `{fact1}`, `{fact2}`, … Open with a `headline` beat showing the main one; it
-  always prints where the figure comes from ("Data: Federal Reserve · Oct 2026").
+  feed doesn't have, and never a claim about a real person the sources don't make.
+- The facts become `{fact1}`, `{fact2}`, … A `board` beat (its source footer) or a `headline` beat
+  prints where they come from ("Data: ProPublica · Jun 2021").
+- A calculation that starts from a real figure takes it as an input and names it:
+  `{"name": "bezos", "kind": "...", "amount": 81840, "facts": {"amount": 1}}` — the number check
+  fails if `amount` isn't fact 1's value (in its unit). Everything computed still comes from `maths`.
+- News: report it plainly ("what happened", "why it matters"), then make it personal with a
+  calculation in `maths`.
 - Report the news plainly ("what happened", "why it matters"), then make it personal with a
   calculation in `maths`. No predictions about markets, no "buy now", no named funds or stocks.
 

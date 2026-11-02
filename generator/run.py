@@ -29,7 +29,7 @@ from renderer import craft, remotion, thumbs
 from renderer.engine.formatting import CURRENCIES
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
-from . import editor, experiments, failures, feedback, formats, history, numbers, reach, shapes, story, topics, variety
+from . import editor, experiments, failures, feedback, formats, history, looks, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -166,6 +166,8 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "core_formats": formats.core_ids(root, fmt), "core_needed": formats.core_needed(entries, root, fmt),
         # how the beats are arranged: a growing library, least used first (improvement/research/shapes.json)
         "shapes": shapes.for_state(entries, root),
+        # the board's look for this video (generator/looks.py): options and what the last videos used
+        "looks": looks.for_state(entries),
         "previous": last and {"palette": last["style"]["palette"], "genre": last["style"]["genre"], "key": last["style"]["key"],
                               "bpm": last["style"]["bpm"], "hook_style": last["hook_style"], "cta": last["cta"]},
         "hook_styles": list(variety.HOOK_STYLES),

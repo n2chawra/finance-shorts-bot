@@ -192,6 +192,13 @@ git push origin HEAD:refs/heads/agent/studio/$DAY
 End with a 5-line report: the topic, the length, how many rewrites, what the reviewers said, and
 anything for the owner.
 
+## The board (owner, 2026-11-02)
+Tell the video on `board` beats (`renderer/templates/long_story/README.md`, "The board in a long
+video", and the Shorts README's verb table): questions in a room, every answer a labelled card (a
+document with real data, a sum written out, chips, charts, things that turn into and feed each
+other), one sentence per beat, a question every 30 s, readable on mute, real names with the sourced
+facts Scout put in the topic. `python -m generator.run number-check` holds you to it.
+
 ## The story spine and the build scene (owner, 2026-10-26)
 
 Long videos now follow the Shorts upgrade: a story spine (hook within 15 s, every chapter promised

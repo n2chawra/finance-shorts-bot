@@ -45,6 +45,8 @@ def spoken(display: str, currency: str = "INR") -> str:
     digit strings badly ("ten zero zero zero zero" for 10,000).
     """
     s = display.strip()
+    if re.fullmatch(r"(1[89]|20)\d\d", s):      # a year fact: "2018" → "twenty eighteen"
+        return year_words(int(s))
     if s[:1] in "-−" and len(s) > 1:   # '-$19,470' (a value that fell) → 'minus nineteen thousand … dollars'
         return "minus " + spoken(s[1:], currency)
     western = _western(s)
@@ -59,7 +61,8 @@ def _western(s: str) -> str | None:
     m = re.fullmatch(r"([$£€])\s*([\d.,]+)\s*(K|M|B|T|thousand|million|billion|trillion)?", s)
     if m:
         sym, num, scale = m.groups()
-        return f"{_trim(num.replace(',', ''))} {_SCALES[scale] + ' ' if scale else ''}{_MONEY[sym]}"
+        unit = _MONEY[sym][:-1] if not scale and _trim(num.replace(",", "")) == "1" else _MONEY[sym]   # "one dollar"
+        return f"{_trim(num.replace(',', ''))} {_SCALES[scale] + ' ' if scale else ''}{unit}"
     m = re.fullmatch(r"([\d.,]+)\s*(K|M|B|T)", s)   # a count such as '340M'
     if m:
         return f"{_trim(m.group(1).replace(',', ''))} {_SCALES[m.group(2)]}"
@@ -118,6 +121,16 @@ def say_numbers(text: str, indian: bool = True) -> str:
         out = number_words(int(whole), indian)
         return out + (" point " + " ".join(_ONES[int(d)] for d in frac) if frac else "")
     return re.sub(r"\d[\d,]*(?:\.\d+)?", word, text)
+
+
+def year_words(y: int) -> str:
+    """2007 → 'two thousand seven', 2018 → 'twenty eighteen', 1999 → 'nineteen ninety nine', 1900 → 'nineteen hundred'."""
+    head, tail = divmod(y, 100)
+    if 2000 <= y <= 2009:
+        return "two thousand" + ("" if y == 2000 else " " + _ONES[y - 2000])
+    if tail == 0:
+        return f"{number_words(head)} hundred"
+    return f"{number_words(head)} {'oh ' + _ONES[tail] if tail < 10 else number_words(tail)}"
 
 
 def _trim(num: str) -> str:

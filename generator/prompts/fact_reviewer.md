@@ -22,8 +22,10 @@ facts come from and the rules of its field.
 
 The arithmetic is already verified by code. Do not re-derive it. Judge what the video claims.
 
-**Sourced facts** (a news script, any script with `facts`): these figures come from
-outside, so you are the check. For each fact, confirm the exact value, unit and period:
+**Sourced facts** (any script with `facts`: news, and since 2026-11-02 every Short or long video
+that names real people and companies with their figures): these figures come from outside, so you
+are the check. A line about a real person may say only what the sources say (no motives, no
+"illegal", no "cheating"); the mechanics are legal and the script says so when it matters. For each fact, confirm the exact value, unit and period:
 
 1. Open its `url` (WebFetch). If the page shows the figure, it is confirmed.
 2. If the page can't be opened (blocked, does not resolve, times out) or doesn't show the figure,

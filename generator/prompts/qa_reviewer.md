@@ -20,9 +20,13 @@ own render checks it. You are checking what code cannot see.
 ## Reject if any of these is true
 
 1. **Overlap:** text on top of other text, or text over a character's face or a chart so that
-   either is hard to read. The big captions (bold white words with a black outline, one word
-   yellow) are meant to sit over the picture, a character's body included; flag them only when
-   they cover a face or another piece of text.
+   either is hard to read. The captions (a dark box low on the frame with the speaker's name, the
+   word being said in yellow) are meant to sit over the picture; flag them only when they cover a
+   face or another piece of text.
+0. **Doesn't read on mute** (owner, 2026-11-02; board videos): cover the captions with your hand and
+   read the stills in order. If the headers, labels, rows, chips and pictures alone don't tell the
+   story (what happens, to whom, with what figure), reject it and name the stills where the meaning
+   is only in the voice. A card that is one icon with nothing written on it is a reject.
 2. **Cut off:** any text or important shape running off an edge.
 3. **Unreadable:** text whose colour is too close to what is behind it, or a line shrunk so far
    it looks tiny next to its neighbours.

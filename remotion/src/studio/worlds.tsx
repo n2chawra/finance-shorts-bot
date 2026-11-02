@@ -8,7 +8,7 @@ import React from "react";
 import { random } from "remotion";
 import { shade, type PropSet } from "./draw";
 
-export type WorldKind = "field" | "street" | "city" | "bank" | "kitchen" | "office" | "night" | "desert" | "space" | "studio";
+export type WorldKind = "field" | "street" | "city" | "bank" | "kitchen" | "office" | "night" | "desert" | "space" | "studio" | "flat";
 
 interface Look { sky: [string, string]; ground: [string, string]; groundAt: number; sun?: string; stars?: boolean; floor?: "grass" | "tiles" | "boards" | "sand" | "plain" }
 const LOOKS: Record<WorldKind, Look> = {
@@ -22,21 +22,54 @@ const LOOKS: Record<WorldKind, Look> = {
   desert: { sky: ["#ffc77a", "#fff0cf"], ground: ["#e8b46c", "#c98e47"], groundAt: 0.68, sun: "#fff3c0", floor: "sand" },
   space: { sky: ["#05060f", "#1b1f45"], ground: ["#2a2f55", "#1a1d3a"], groundAt: 0.78, stars: true, floor: "plain" },
   studio: { sky: ["#2a2f4a", "#4a5280"], ground: ["#3a4066", "#262b48"], groundAt: 0.72, floor: "plain" },
+  // a flat section colour and one ground line (the board scene; The Curious Plot's cards): `tint` names the colour
+  flat: { sky: ["#f7d9a0", "#eab866"], ground: ["#c9955a", "#a8773f"], groundAt: 0.7, floor: "plain" },
 };
+/** Section colours by name (script text holds no hex): one per section, so the viewer knows where they are. */
+export const SECTION_BG: Record<string, [string, string]> = {
+  sand: ["#f7d9a0", "#eab866"], sky: ["#bfe3f2", "#86c3df"], mint: ["#c9eedb", "#8fd3b0"], plum: ["#3b2a6b", "#241845"],
+  night: ["#1b2347", "#0f1430"], coral: ["#ffc2a8", "#f2876a"], cream: ["#fbf3e2", "#f0dfbb"], slate: ["#3d4a63", "#262f42"],
+  blue: ["#4f7fe8", "#2f56b8"], purple: ["#8a63d2", "#5a3c9e"], teal: ["#2fa3a8", "#1d7377"], gold: ["#f2b33d", "#c98a1a"],
+};
+const darkSection = (name: string) => ["plum", "night", "slate", "blue", "purple", "teal"].includes(name);
 export const WORLD_KINDS = Object.keys(LOOKS) as WorldKind[];
 // tints by name (script text may not hold digits, so no hex in a script)
 const TINTS: Record<string, string> = { red: "#ff3b3b", gold: "#ffb020", blue: "#3d7bf5", green: "#2fb37a", purple: "#8a63d2", dark: "#000010" };
 
 /** Where the ground line is, so items and actors can stand on it. */
-export const groundY = (kind: string | undefined, h: number) => h * (LOOKS[(kind ?? "studio") as WorldKind] ?? LOOKS.studio).groundAt;
+export const groundY = (kind: string | undefined, h: number, ground?: number) => h * (ground ?? (LOOKS[(kind ?? "studio") as WorldKind] ?? LOOKS.studio).groundAt);
 
 export const World: React.FC<{
   kind?: string; tint?: string; w: number; h: number; t: number; seed: string;
-  horizon?: { prop: string; x: number; size?: number }[]; props: PropSet;
-}> = ({ kind, tint, w, h, t, seed, horizon = [], props }) => {
+  horizon?: { prop: string; x: number; size?: number }[]; props: PropSet; ground?: number; bare?: boolean;
+}> = ({ kind, tint, w, h, t, seed, horizon = [], props, ground, bare }) => {
   const L = LOOKS[(kind ?? "studio") as WorldKind] ?? LOOKS.studio;
-  const gy = h * L.groundAt;
+  const gy = h * (ground ?? L.groundAt);
   const id = `w${seed.replace(/[^a-z0-9]/gi, "")}`;
+  if (kind === "flat") {
+    const name = tint && SECTION_BG[tint] ? tint : "sand";
+    const [a, b] = SECTION_BG[name]!;
+    const dk = darkSection(name);
+    return (
+      <svg width={w} height={h} style={{ position: "absolute" }}>
+        <defs><radialGradient id={`${id}f`} cx="50%" cy="38%" r="75%"><stop offset="0" stopColor={a} /><stop offset="1" stopColor={b} /></radialGradient></defs>
+        <rect width={w} height={h} fill={`url(#${id}f)`} />
+        {/* a few soft shapes drifting, so the field is never a dead card */}
+        {Array.from({ length: 5 }, (_, i) => (
+          <circle key={i} cx={(random(`${seed}fx${i}`) * w + t * (6 + i * 3)) % (w + 300) - 150} cy={gy * (0.1 + random(`${seed}fy${i}`) * 0.8)}
+            r={Math.min(w, h) * (0.06 + random(`${seed}fr${i}`) * 0.1)} fill={dk ? "#ffffff" : shade(b, -0.2)} opacity={dk ? 0.05 : 0.1} />
+        ))}
+        {horizon.map((hz, i) => {
+          const P = props[hz.prop];
+          if (!P) return null;
+          return <g key={i} transform={`translate(${hz.x * w},${gy + 4})`} opacity={0.4}><P s={h * (hz.size ?? 0.12)} t={t} seed={`${seed}h${i}`} /></g>;
+        })}
+        {/* a card (the board without the cast) is one flat colour, no floor */}
+        {!bare && <rect y={gy} width={w} height={h - gy} fill={shade(b, dk ? -0.35 : -0.22)} />}
+        {!bare && <rect y={gy} width={w} height={8} fill={shade(b, dk ? 0.25 : -0.4)} opacity={0.8} />}
+      </svg>
+    );
+  }
   return (
     <svg width={w} height={h} style={{ position: "absolute" }}>
       <defs>

@@ -72,7 +72,9 @@ salary really leaves you, which money level you are on.
    in `topic.feed_id`; none is forced. A `breaking` or `trending` topic is worth
    taking when it's something everyone is talking about (a viral scam, a tax change people are
    angry about), told in one of the formats, never as a news bulletin. A topic with `facts` keeps
-   its sourced numbers (a `headline` beat shows the source); give the writer its facts and `verify`.
+   its sourced numbers (a `headline` or `board` beat shows the source); give the writer its facts and
+   `verify`. **Prefer topics with facts** (owner, 2026-11-02): real names with real figures hold
+   viewers far longer than invented examples. A topic told as a parable (`ladder` shape) needs none.
 5. A feed topic's numbers in the title or description must be the topic's facts or script inputs.
 
 ## Choose
@@ -87,6 +89,14 @@ salary really leaves you, which money level you are on.
 - **Hook style:** one of `hook_styles` (`conflict` and `secret` suit the skit formats), different
   from `previous.hook_style`.
 - **Style:** palette and genre different from `previous`; key and tempo not both the same.
+- **Look** (`style.look`, the board's look; `state.looks` has the options and the last videos' looks):
+  `{"stage", "header", "holder", "entrance"}`, not the same combination as any of the last 10 videos and
+  neither the stage nor the header style of the previous one (`check-plan` enforces it). Pick what
+  suits the story (a night stage for a secret, a receipt for a shop's money, a phone for an app).
+- **Shape** for a big-money question with layers: `question-chain` (Rohan asks, Sharma answers on
+  cards; real names and sourced facts); for one money idea shown as people climbing it: `ladder` (a
+  parable, the sum built from units at every step, a named term per step); for how a real company or
+  place got rich: `true-history` (dated facts). Their rules: `renderer/templates/short_story/README.md`.
   Tempo ranges: lofi 80–96, pop 104–120, cinematic 80–100, synthwave 96–116, acoustic 88–110.
 - **Seed:** any integer from 1 to 99999 not obviously reused.
 - **Title** (20–60 characters works best on Shorts; at most 90) and **description:** write titles
@@ -133,7 +143,8 @@ An animated story with illustrative numbers; the characters are not advisers.
 Illustrative only. Not financial advice.",
   "hashtags": ["#Shorts", "#RichVsPoor", "#Money", "#PersonalFinance"],
   "seed": 4821,
-  "style": { "palette": "ember", "genre": "synthwave", "key": "F", "bpm": 108 }
+  "style": { "palette": "ember", "genre": "synthwave", "key": "F", "bpm": 108,
+             "look": {"stage": "flat", "header": "strip", "holder": "blackboard", "entrance": "pop"} }
 }
 ```
 

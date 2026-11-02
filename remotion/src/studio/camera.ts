@@ -91,7 +91,7 @@ export function between(a: Frame, b: Frame, k: number): Frame {
 
 /** A little life on every shot: a slow push and a hand-held drift, never perfectly still. */
 export function breathe(f: Frame, t: number, w: number, h: number, seed: number): Frame {
-  const push = 1 + 0.018 * t;
+  const push = 1 + 0.03 * t;   // 0.018 until 2026-11-02 (too still)
   const s = f.s * push;
   const dx = Math.sin(t * 0.7 + seed) * 6, dy = Math.cos(t * 0.53 + seed * 1.7) * 5;
   const tx = Math.min(0, Math.max(w - w * s, f.tx - (s - f.s) * w * 0.5 + dx));

@@ -113,6 +113,8 @@ export const Timeline = z.object({
   currency: z.enum(["USD", "GBP", "EUR", "INR"]).default("INR"),
   // A/B variants for this video (generator/experiments.py); read them with flag() from ./flags
   experiments: z.record(z.string(), z.enum(["on", "off"])).default({}),
+  // the board's look for this video (generator/looks.py, studio/board.tsx): stage, header, holder, entrance
+  look: z.object({ stage: z.string(), header: z.string(), holder: z.string(), entrance: z.string() }).partial().nullable().optional(),
 });
 
 export type Timeline = z.infer<typeof Timeline>;

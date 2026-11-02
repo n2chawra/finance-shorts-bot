@@ -8,6 +8,8 @@ export const SCENE_NAMES = [
   "build", "custom",
   // documentary devices for long videos (studio/docu.tsx; 2026-10-26)
   "framework", "type", "journey", "stats", "case",
+  // the board: header, sums, terms, panels over a still stage (studio/board.tsx; 2026-11-02)
+  "board",
 ] as const;
 
 export type SceneName = (typeof SCENE_NAMES)[number];

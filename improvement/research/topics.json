@@ -1744,6 +1744,79 @@
         "https://www.youtube.com/shorts/eZH7eYaJIKk",
         "https://www.youtube.com/watch?v=N2cV2tOI6BM"
       ]
+    },
+    {
+      "id": "2026-11-02-one-dollar-salary-true-tax",
+      "title": "Paid $1 a year: how the richest pay almost no income tax",
+      "category": "tax",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "billionaire_question"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why Billionaires Take $0 Salary… But Never Go Broke",
+        "views": 43000,
+        "url": "https://www.youtube.com/watch?v=5x0wu-p5-do"
+      },
+      "hook": "You think Mark Zuckerberg lives on his paycheck?",
+      "templates": [
+        "any"
+      ],
+      "angle": "why a $1 salary makes sense when your wealth is shares, and what the richest really pay",
+      "why_now": "owner demo of the board scene (2026-11-02)",
+      "facts": [
+        {
+          "label": "Mark Zuckerberg's base salary",
+          "value": 1,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2023-12-31",
+          "source": "Fortune",
+          "url": "https://fortune.com/2024/04/24/mark-zuckerberg-24-million-compensation-meta-median-employee-379000"
+        },
+        {
+          "label": "How much the 25 richest Americans' wealth grew in five years",
+          "value": 401,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2018-12-31",
+          "source": "ProPublica",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+        },
+        {
+          "label": "Federal income tax they paid in those years",
+          "value": 13.6,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2018-12-31",
+          "source": "ProPublica",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+        },
+        {
+          "label": "Warren Buffett's true tax rate",
+          "value": 0.1,
+          "unit": "percent",
+          "currency": "USD",
+          "as_of": "2018-12-31",
+          "source": "ProPublica",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+        }
+      ],
+      "verify": [
+        "Zuckerberg's base salary was $1 in 2023 (Fortune, from Meta's proxy)",
+        "ProPublica's 25 richest: wealth +$401B 2014-2018, $13.6B federal income tax, 3.4%; Buffett 0.1%",
+        "borrowing against shares is not taxed as income in the US"
+      ],
+      "sources": [
+        "https://fortune.com/2024/04/24/mark-zuckerberg-24-million-compensation-meta-median-employee-379000",
+        "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+      ],
+      "found": "2026-11-02",
+      "expires": "2027-11-02",
+      "status": "new"
     }
   ]
 }

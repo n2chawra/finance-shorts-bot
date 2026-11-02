@@ -55,7 +55,10 @@ fix any beat near a limit as well.
 - **Shape**: the plan's shape in `script.shape`; level chips and the word "level" only in `levels`.
 - **The thing, not the character**: in a narrator beat the camera frames the item being explained;
   every figure sits on its thing (it pulses while said).
-- **Calm**: cut or match between beats, whip or zoom-through twice at most, one camera change a beat.
+- **Directed**: one big hero thing per moment, every build beat transforms something, money travels
+  (`flow`), travelling transitions (whip or zoom-through four times at most); no row of small labelled icons.
+- **Story**: one person in one concrete moment, no more than 2 hedges (might, can, some), no warm-up
+  opener, a new open question every 2–3 beats, the hook's answer only in the payoff.
 
 ## Pictures (render gates and QA)
 - **Something new at least every 2.5 s:** an action on every phrase, each on the word that names it
