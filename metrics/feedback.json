@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 7,
+  "open": 0,
   "notes": [
     {
       "id": "cmvw1try60001id09srextkhs",
       "kind": "choice",
       "area": null,
       "text": "this topics feels like it can attract viewers plus the animation and story telling is better than other one.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "noted: Read as taste: how-famous-companies-make-money stories with a clear money route; research added three more (gym, Costco, Starbucks) to the feed, and the new travelling-money animation is built for exactly this story.",
       "at": "2026-10-31T06:57:28.813Z",
       "video": {
         "id": "v-20261031-01",
@@ -26,8 +26,8 @@
       "kind": "improve",
       "area": "animation",
       "text": "Find how animation should be done to engage users. Animation is the core of this . If it's not good people won't continue the video. Find other people reference as examples and improve it",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Started A/B money-travels-not-pops on half the Shorts: money now flies on an arc between the things it connects (customer to restaurant to McDonald's) and things fly in and land instead of popping; reference-based research on animation continues in research's reports.: (a9330ad)",
       "at": "2026-10-31T06:01:45.729Z",
       "video": null
     },
@@ -36,8 +36,8 @@
       "kind": "improve",
       "area": null,
       "text": "Animation are very basic things just popping up and shaking so basic . Like 5/10 could be presented way better. With correct animation this video could have been rated 9/10 but now it's 7/10.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Pop-and-shake replaced on half the Shorts (A/B money-travels-not-pops): things fly in or grow out of the thing before them and land with a squash, shake is a hop, and money travels with its figure riding on it; checked on this video's own timeline.: (a9330ad)",
       "at": "2026-10-31T05:56:29.959Z",
       "video": {
         "id": "v-20261031-01",
@@ -55,8 +55,8 @@
       "kind": "improve",
       "area": "hook",
       "text": "It could have been better like do you think macdonalds earn through burger sales your are wrong ..  hook is ok but level of curiosity it creates is 6/10.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "noted: Your pattern ('You think McDonald's makes its money from burgers? It doesn't.') is the next hook experiment (hook-you-think-x-youre-wrong); it starts the night hook-voice-matches-frame gets its verdict, about one more Short, so two hook tests don't blur each other.",
       "at": "2026-10-31T05:53:51.411Z",
       "video": {
         "id": "v-20261031-01",
@@ -74,8 +74,8 @@
       "kind": "improve",
       "area": "other",
       "text": "The background music is very dull feels like I'm doing postmortem.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "noted: Built a livelier cinematic bed (major-first chords, soft kick and shaker from the first bar, snare after the hook) behind flag cinematic-bed-gets-a-pulse; it starts as an A/B as soon as an experiment slot frees (5 of 5 running, next frees in about a day). Cinematic is our best genre by % viewed (69.6%, n=6), so it stays and gets energy.: (da68f16)",
       "at": "2026-10-31T05:47:07.367Z",
       "video": {
         "id": "v-20261031-02",
@@ -93,8 +93,8 @@
       "kind": "improve",
       "area": "animation",
       "text": "The animation are pretty basic could've been presented much better. It's right now very static .",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Same fix as the McDonald's note: on the A/B's on-half, every beat where money changes hands shows notes travelling between the two things, so the middle of the video always has something moving.: (a9330ad)",
       "at": "2026-10-31T05:46:19.626Z",
       "video": {
         "id": "v-20261031-02",
@@ -112,8 +112,8 @@
       "kind": "improve",
       "area": "hook",
       "text": "The hook does not create curiosity.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "noted: 'Let me show you why' gives the viewer nothing to guess; the next hook experiment (hook-you-think-x-youre-wrong: put the belief to the viewer and deny it, never the answer) starts once the current hook test ends in about a day.",
       "at": "2026-10-31T05:45:21.884Z",
       "video": {
         "id": "v-20261031-02",
