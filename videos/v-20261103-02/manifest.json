@@ -1,0 +1,440 @@
+{
+  "id": "v-20261103-02",
+  "createdAt": "2026-11-02T23:19:19.140084+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Buffett bought Coca-Cola once, decades ago, and its dividend now pays back more than half the price every year",
+    "category": "investing",
+    "reach": "global",
+    "feed_id": "2026-11-03-buffett-coke-pays-every-year"
+  },
+  "title": "Buffett bought Coca-Cola once. He never sold 🥤",
+  "description": "Why has Warren Buffett kept the same Coca-Cola shares for decades?\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#WarrenBuffett",
+    "#Dividends",
+    "#Money"
+  ],
+  "hookStyle": "myth",
+  "cta": "Would you have sold early? Comment",
+  "seed": 31947,
+  "style": {
+    "palette": "ember",
+    "genre": "acoustic",
+    "key": "G",
+    "bpm": 98,
+    "look": {
+      "stage": "studio",
+      "header": "sticky",
+      "holder": "receipt",
+      "entrance": "stamp"
+    },
+    "voice": "am_fenrir"
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think Buffett sells his big winners? Not this one. Here's why.",
+        "start": 0.3,
+        "seconds": 3.33,
+        "window": 4.0,
+        "fill": 0.833
+      },
+      {
+        "scene": "promise",
+        "text": "Berkshire finished buying these Coca-Cola shares decades ago, for $1.3B in total. Watch what that one purchase does.",
+        "start": 4.3,
+        "seconds": 7.85,
+        "window": 8.53,
+        "fill": 0.92
+      },
+      {
+        "scene": "never",
+        "text": "Never sold a single share? Then how does he get any money out of it?",
+        "start": 12.83,
+        "seconds": 3.29,
+        "window": 3.7,
+        "fill": 0.889
+      },
+      {
+        "scene": "dividend",
+        "text": "Coca-Cola pays its owners a slice of its profit every year. That slice is called a dividend.",
+        "start": 16.53,
+        "seconds": 5.15,
+        "window": 5.8,
+        "fill": 0.888
+      },
+      {
+        "scene": "y1994",
+        "text": "When the buying finished, the dividend was $205,479 a day. Worth waiting decades?",
+        "start": 22.33,
+        "seconds": 6.85,
+        "window": 7.53,
+        "fill": 0.91
+      },
+      {
+        "scene": "why",
+        "text": "Exactly. Why not sell and buy something faster?",
+        "start": 29.87,
+        "seconds": 2.22,
+        "window": 2.73,
+        "fill": 0.813
+      },
+      {
+        "scene": "raise",
+        "text": "Because Coca-Cola kept raising its dividend, year after year, while Berkshire's cost never moved.",
+        "start": 32.6,
+        "seconds": 5.14,
+        "window": 5.83,
+        "fill": 0.882
+      },
+      {
+        "scene": "turn",
+        "text": "And here's the twist. Decades later, the dividend was $704M a year. That's 54% of the whole price, paid back in one year.",
+        "start": 38.43,
+        "seconds": 8.71,
+        "window": 9.37,
+        "fill": 0.93
+      },
+      {
+        "scene": "payoff",
+        "text": "That's why Berkshire never sold. It keeps the tree and eats the fruit, about $1.9M a day by then.",
+        "start": 47.8,
+        "seconds": 6.46,
+        "window": 7.1,
+        "fill": 0.91
+      },
+      {
+        "scene": "loop",
+        "text": "That's one company's past, not a promise. But would you have kept it all those years, like Buffett?",
+        "start": 54.9,
+        "seconds": 4.94,
+        "window": 5.53,
+        "fill": 0.893
+      }
+    ]
+  },
+  "durationSec": 61,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.3
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off"
+  },
+  "heard": {
+    "hookVoice": "am_fenrir",
+    "narratorShare": 85
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "15 figures computed from inputs; 15 cross-checked against closed-form formulas.",
+        "warning: beat 'y1994' runs 6.5 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite: all 4 facts confirmed on berkshirehathaway.com 2022 letter 'Secret Sauce' ($1.3B cost, 400M shares, buying completed Aug 1994, $75M dividend 1994, $704M 2022); y1994 now correctly 'when the buying finished', bars 'Back then'/'Decades on', payoff ties $1.9M/day to 'by then' (no superseded 'now'); 400M shares still held per latest 13F; no advice, 'not a promise' line, disclaimer in description. Style note: payoff card label 'Every day' reads as current on mute; 'Every day, 2022' would be tighter."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: every frame is clean. Labels stay clear of faces, nothing runs off an edge, the Turn has Sharma on the right pointing at the 1.3B and 704M columns with his hand in frame, the cover shows no copy of the hook text behind its words, and the figures match the facts. Hook, disclaimer, 61 s length and audio (-1.0/-17.3 dB) are all OK."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:52:56.083447+00:00",
+      "finishedAt": "2026-11-02T22:52:56.083447+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-02T22:53:31.006844+00:00",
+      "finishedAt": "2026-11-02T22:53:31.006844+00:00",
+      "notes": [
+        "beat 'hook'.say contains a typed number; use a placeholder: \"You think Warren Buffett sells his big winners? He's kept this one since 1994. Here's why.\""
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:55:54.532283+00:00",
+      "finishedAt": "2026-11-02T22:55:54.532283+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-02T22:55:55.501525+00:00",
+      "finishedAt": "2026-11-02T22:55:55.501525+00:00",
+      "notes": [
+        "15 figures computed from inputs; 15 cross-checked against closed-form formulas.",
+        "warning: beat 'y1994' runs 7.9 s with 3.9 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "board beat 'y1994' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:56:01.986962+00:00",
+      "finishedAt": "2026-11-02T22:56:01.986962+00:00",
+      "notes": [
+        "15 figures computed from inputs; 15 cross-checked against closed-form formulas.",
+        "warning: beat 'y1994' runs 6.8 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:59:00.383038+00:00",
+      "finishedAt": "2026-11-02T22:59:00.383038+00:00",
+      "notes": [
+        "15 figures computed from inputs; 15 cross-checked against closed-form formulas.",
+        "warning: beat 'y1994' runs 6.8 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T22:59:37.931073+00:00",
+      "finishedAt": "2026-11-02T22:59:37.931073+00:00",
+      "notes": [
+        "15 figures computed from inputs; 15 cross-checked against closed-form formulas.",
+        "warning: beat 'y1994' runs 6.8 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:01:27.259296+00:00",
+      "finishedAt": "2026-11-02T23:01:27.259296+00:00",
+      "notes": [
+        "Beat 'payoff' says 'now about $1.9M every single day' (d22_per_part from the 2022 dividend of $704M). That figure is superseded: Coca-Cola has raised its dividend every year since; at $2.04/share (2025) Berkshire's 400M shares get about $816M a year (Yahoo Finance, Barchart), and 2026 reports give $2.12/share, about $848M. That is roughly $2.2-2.3M a day, so 'now' is false. Either say 'by 2022' / 'in 2022' (and keep 'Decades later' in 'turn' tied to 2022), or add a sourced current-year fact.",
+        "Beat 'y1994' says 'Year one, that dividend came to $205,479 a day', and the picture shows 'Year: The first' and the 'raise' bars label 'First year'. 1994 was not Berkshire's first year of Coke dividends: the letter says Berkshire completed a seven-year purchase in August 1994 (buying began 1988), and $75M is the 1994 dividend. Reword to 'In 1994' / 'The year the buying finished' and relabel the doc row and bar.",
+        "Facts confirmed on the source page (Berkshire 2022 letter, 'Secret Sauce', text pulled from the PDF): $1.3B total cost, 400M shares, purchase completed Aug 1994, $75M dividend 1994, $704M in 2022. No advice, disclaimer present, 'one company's past, not a promise' is good. Small point for the rewrite: Buffett stopped being CEO at the start of 2026 (Greg Abel took over), so 'he never sells' would be safer as 'Berkshire never sold'."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:00:36.505971+00:00",
+      "finishedAt": "2026-11-02T23:02:06.145464+00:00",
+      "notes": [
+        "text \"ONE YEAR'S DIVIDEND\" at 44.9 s runs outside the frame",
+        "4 of 14 stills are mostly empty background (at 20 s, 55 s, 60 s, 61 s): fill the frame (a set, the cast big, money as a thing)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:02:40.320737+00:00",
+      "finishedAt": "2026-11-02T23:02:40.320737+00:00",
+      "notes": [
+        "15 figures computed from inputs; 15 cross-checked against closed-form formulas.",
+        "warning: beat 'y1994' runs 6.5 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:03:00.612813+00:00",
+      "finishedAt": "2026-11-02T23:03:43.380910+00:00",
+      "notes": [
+        "3 of 14 stills are mostly empty background (at 55 s, 60 s, 61 s): fill the frame (a set, the cast big, money as a thing)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:04:32.815524+00:00",
+      "finishedAt": "2026-11-02T23:05:00.717931+00:00",
+      "notes": [
+        "61 s, ember/acoustic (preview only)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:05:22.388359+00:00",
+      "finishedAt": "2026-11-02T23:05:22.388359+00:00",
+      "notes": [
+        "Re-review after rewrite: all 4 facts confirmed on berkshirehathaway.com 2022 letter 'Secret Sauce' ($1.3B cost, 400M shares, buying completed Aug 1994, $75M dividend 1994, $704M 2022); y1994 now correctly 'when the buying finished', bars 'Back then'/'Decades on', payoff ties $1.9M/day to 'by then' (no superseded 'now'); 400M shares still held per latest 13F; no advice, 'not a promise' line, disclaimer in description. Style note: payoff card label 'Every day' reads as current on mute; 'Every day, 2022' would be tighter."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:06:11.364551+00:00",
+      "finishedAt": "2026-11-02T23:06:11.364551+00:00",
+      "notes": [
+        "[scene] 15.0s beat 'never' (board, cast + items): the item label 'Coca-Cola share' is drawn straight across Rohan's eyes and the 'Sell' label sits against Priya's head; the stock certificate runs off the left edge and the red cross hides the button's own SELL text. The board puts item labels at the cast's head height when a room has both cast and items.",
+        "[script] 20.0s beat 'dividend': factory (x 0.3, size 0.32), owners certificate (x 0.76, size 0.26) and the cheque (x 0.55, y 0.25) pile on top of each other: the certificate covers the factory's right end, the cheque sits on the chimneys with a grey slice block over it and the 'Every year' label on top, and the factory runs off the left edge. Use smaller sizes and spread the positions so the profit flows across a gap to the owners.",
+        "[scene] 55.0s-60.7s beat 'loop' (board, cast + items): the 'One company' label crosses Rohan's face and the cola bottle sits on his head; the 'Kept' label is on Priya's face; the fruit tree runs off the right edge. Same board item-placement bug as 15.0s.",
+        "[scene] 40.0s and 45.0s beat 'turn' (Turn component): Sharma (script spot 'right') is drawn at the far left edge with his presenting arm cut off by the frame.",
+        "[scene] thumbnail.png (hook at 3.0s): the hook's 'NEVER SOLD' scene header shows through, blurred, behind the thumbnail words 'BUFFETT NEVER SOLD', so you see doubled yellow text behind the title. The thumbnail should hide the scene header."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:07:30.675228+00:00",
+      "finishedAt": "2026-11-02T23:08:00.661898+00:00",
+      "notes": [
+        "61 s, ember/acoustic (preview only)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:08:25.442551+00:00",
+      "finishedAt": "2026-11-02T23:08:52.326441+00:00",
+      "notes": [
+        "61 s, ember/acoustic (preview only)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:09:02.710095+00:00",
+      "finishedAt": "2026-11-02T23:09:38.115661+00:00",
+      "notes": [
+        "61 s, ember/acoustic (preview only)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:09:48.129648+00:00",
+      "finishedAt": "2026-11-02T23:10:15.329473+00:00",
+      "notes": [
+        "61 s, ember/acoustic (preview only)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-02T23:11:04.127034+00:00",
+      "finishedAt": "2026-11-02T23:11:04.127034+00:00",
+      "notes": [
+        "[scene] 40.0s and 45.0s beat 'turn' (Turn component, actor spot 'left'): Sharma still stands against the left edge, and his presenting arm points out of the frame, away from the columns, with the hand cut off. He needs to stand further in (or face right) so he presents the 1.3B and 704M columns and his hand stays inside the frame.",
+        "[script] thumbnail.png (hook, sec 3.9): the hook's NEVER SOLD header is still mid-fade, so a faint blurred yellow ghost of it shows behind the words BUFFETT NEVER SOLD. Take the cover after the fade has finished (about 4.2s, still inside the hook beat, which ends at 4.3s), or make the fade finish sooner."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:11:58.663696+00:00",
+      "finishedAt": "2026-11-02T23:12:28.702740+00:00",
+      "notes": [
+        "61 s, ember/acoustic (preview only)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:12:48.914347+00:00",
+      "finishedAt": "2026-11-02T23:13:18.971455+00:00",
+      "notes": [
+        "61 s, ember/acoustic (preview only)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:13:32.778993+00:00",
+      "finishedAt": "2026-11-02T23:14:04.574664+00:00",
+      "notes": [
+        "61 s, ember/acoustic (preview only)",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:14:33.389999+00:00",
+      "finishedAt": "2026-11-02T23:14:33.389999+00:00",
+      "notes": [
+        "Round 3: every frame is clean. Labels stay clear of faces, nothing runs off an edge, the Turn has Sharma on the right pointing at the 1.3B and 704M columns with his hand in frame, the cover shows no copy of the hook text behind its words, and the figures match the facts. Hook, disclaimer, 61 s length and audio (-1.0/-17.3 dB) are all OK."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:15:28.377997+00:00",
+      "finishedAt": "2026-11-02T23:18:52.359893+00:00",
+      "notes": [
+        "61 s, ember/acoustic, peak -1.0 dB, mean -17.3 dB",
+        "warning: beat 'promise' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'y1994' runs 7.5 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-02T23:19:19.140183+00:00",
+      "finishedAt": "2026-11-02T23:19:19.140183+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261103-02",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261103-02"
+  }
+}

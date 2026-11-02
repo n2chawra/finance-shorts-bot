@@ -1,0 +1,134 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 31947,
+  "duration_sec": 61,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "acoustic",
+    "key": "G",
+    "bpm": 98,
+    "look": {
+      "stage": "studio",
+      "header": "sticky",
+      "holder": "receipt",
+      "entrance": "stamp"
+    }
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think Buffett sells his big winners? Not this one. Here's why.",
+        "start": 0.3,
+        "seconds": 3.33,
+        "window": 4.0,
+        "fill": 0.833
+      },
+      {
+        "scene": "promise",
+        "text": "Berkshire finished buying these Coca-Cola shares decades ago, for $1.3B in total. Watch what that one purchase does.",
+        "start": 4.3,
+        "seconds": 7.85,
+        "window": 8.53,
+        "fill": 0.92
+      },
+      {
+        "scene": "never",
+        "text": "Never sold a single share? Then how does he get any money out of it?",
+        "start": 12.83,
+        "seconds": 3.29,
+        "window": 3.7,
+        "fill": 0.889
+      },
+      {
+        "scene": "dividend",
+        "text": "Coca-Cola pays its owners a slice of its profit every year. That slice is called a dividend.",
+        "start": 16.53,
+        "seconds": 5.15,
+        "window": 5.8,
+        "fill": 0.888
+      },
+      {
+        "scene": "y1994",
+        "text": "When the buying finished, the dividend was $205,479 a day. Worth waiting decades?",
+        "start": 22.33,
+        "seconds": 6.85,
+        "window": 7.53,
+        "fill": 0.91
+      },
+      {
+        "scene": "why",
+        "text": "Exactly. Why not sell and buy something faster?",
+        "start": 29.87,
+        "seconds": 2.22,
+        "window": 2.73,
+        "fill": 0.813
+      },
+      {
+        "scene": "raise",
+        "text": "Because Coca-Cola kept raising its dividend, year after year, while Berkshire's cost never moved.",
+        "start": 32.6,
+        "seconds": 5.14,
+        "window": 5.83,
+        "fill": 0.882
+      },
+      {
+        "scene": "turn",
+        "text": "And here's the twist. Decades later, the dividend was $704M a year. That's 54% of the whole price, paid back in one year.",
+        "start": 38.43,
+        "seconds": 8.71,
+        "window": 9.37,
+        "fill": 0.93
+      },
+      {
+        "scene": "payoff",
+        "text": "That's why Berkshire never sold. It keeps the tree and eats the fruit, about $1.9M a day by then.",
+        "start": 47.8,
+        "seconds": 6.46,
+        "window": 7.1,
+        "fill": 0.91
+      },
+      {
+        "scene": "loop",
+        "text": "That's one company's past, not a promise. But would you have kept it all those years, like Buffett?",
+        "start": 54.9,
+        "seconds": 4.94,
+        "window": 5.53,
+        "fill": 0.893
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 4.365,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

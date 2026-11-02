@@ -1,0 +1,918 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 31947,
+  "story": "secret_of_rich",
+  "shape": "reveal",
+  "currency": "USD",
+  "feed_id": "2026-11-03-buffett-coke-pays-every-year",
+  "style": {
+    "palette": "ember",
+    "genre": "acoustic",
+    "key": "G",
+    "bpm": 98,
+    "look": {
+      "stage": "studio",
+      "header": "sticky",
+      "holder": "receipt",
+      "entrance": "stamp"
+    }
+  },
+  "hook_style": "myth",
+  "cta": "Would you have sold early? Comment",
+  "facts": [
+    {
+      "label": "What Berkshire paid for its Coca-Cola shares, purchase completed in 1994",
+      "value": 1.3,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2022-12-31",
+      "source": "Berkshire Hathaway 2022 shareholder letter",
+      "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+    },
+    {
+      "label": "Coca-Cola shares Berkshire owns",
+      "value": 400,
+      "unit": "count_million",
+      "currency": "USD",
+      "as_of": "2022-12-31",
+      "source": "Berkshire Hathaway 2022 shareholder letter",
+      "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+    },
+    {
+      "label": "Coca-Cola dividend Berkshire received in 1994",
+      "value": 75,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2022-12-31",
+      "source": "Berkshire Hathaway 2022 shareholder letter",
+      "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+    },
+    {
+      "label": "Coca-Cola dividend Berkshire received in 2022",
+      "value": 704,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2022-12-31",
+      "source": "Berkshire Hathaway 2022 shareholder letter",
+      "url": "https://www.berkshirehathaway.com/letters/2022ltr.pdf"
+    }
+  ],
+  "maths": [
+    {
+      "name": "pay",
+      "kind": "rate",
+      "part": 704000000,
+      "whole": 1300000000,
+      "facts": {
+        "part": 4,
+        "whole": 1
+      }
+    },
+    {
+      "name": "d94",
+      "kind": "share",
+      "total": 75000000,
+      "parts": 365,
+      "facts": {
+        "total": 3
+      }
+    },
+    {
+      "name": "d22",
+      "kind": "share",
+      "total": 704000000,
+      "parts": 365,
+      "facts": {
+        "total": 4
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "sharma",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 4.1,
+    "words": "Buffett *never* sold",
+    "figure": "{fact4}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "You think Buffett sells his big winners? Not this one. Here's why.",
+      "events": {
+        "buffett": {
+          "word": "Buffett"
+        },
+        "sells": {
+          "word": "sells"
+        },
+        "kept": {
+          "word": "Not"
+        },
+        "why": {
+          "word": "why"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "buffett"
+        },
+        {
+          "kind": "whoosh",
+          "at": "kept"
+        },
+        {
+          "kind": "riser",
+          "at": "why"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "Never sold",
+        "set": "office",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "kept",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "custom",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Berkshire finished buying these Coca-Cola shares decades ago, for {fact1} in total. Watch what that one purchase does.",
+      "events": {
+        "berkshire": {
+          "word": "Berkshire"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "total": {
+          "word": "total"
+        },
+        "watch": {
+          "word": "Watch"
+        },
+        "purchase": {
+          "word": "purchase"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "shares"
+        },
+        {
+          "kind": "kaching",
+          "at": "total"
+        },
+        {
+          "kind": "riser",
+          "at": "watch"
+        }
+      ],
+      "params": {
+        "component": "Letter",
+        "hud": {
+          "hide": true
+        },
+        "header": "One purchase",
+        "title": "Shareholder letter",
+        "rows": [
+          {
+            "label": "Bought",
+            "value": "Coca-Cola",
+            "at": "shares"
+          },
+          {
+            "label": "Shares",
+            "value": "{fact2}",
+            "at": "shares"
+          },
+          {
+            "label": "Cost",
+            "value": "{fact1}",
+            "at": "total"
+          },
+          {
+            "label": "Sold since",
+            "value": "None",
+            "at": "purchase"
+          }
+        ],
+        "stamp": "Kept",
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          }
+        ],
+        "sourceIndex": 0
+      }
+    },
+    {
+      "id": "never",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Never sold a single share? Then how does he get any money out of it?",
+      "events": {
+        "sold": {
+          "word": "sold"
+        },
+        "share": {
+          "word": "share"
+        },
+        "money": {
+          "word": "money"
+        }
+      },
+      "params": {
+        "header": "Never sold?",
+        "bg": "night",
+        "stage": "studio",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.32,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.7,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "share",
+            "prop": "stockcert",
+            "size": 0.2,
+            "label": "Share",
+            "y": 0.32,
+            "x": 0.5
+          }
+        ],
+        "actions": [
+          {
+            "at": "sold",
+            "do": "stamp",
+            "target": "share",
+            "text": "Never sold"
+          },
+          {
+            "at": "share",
+            "do": "glow",
+            "target": "share"
+          },
+          {
+            "at": "money",
+            "do": "bubble",
+            "text": "Then how?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dividend",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Coca-Cola pays its owners a slice of its profit every year. That slice is called a dividend.",
+      "events": {
+        "pays": {
+          "word": "pays"
+        },
+        "owners": {
+          "word": "owners"
+        },
+        "profit": {
+          "word": "profit"
+        },
+        "year": {
+          "word": "year"
+        },
+        "dividend": {
+          "word": "dividend"
+        }
+      },
+      "params": {
+        "header": "A slice of profit",
+        "bg": "sand",
+        "items": [
+          {
+            "id": "factory",
+            "prop": "colafactory",
+            "x": 0.24,
+            "size": 0.22,
+            "label": "Profit"
+          },
+          {
+            "id": "owners",
+            "prop": "stockcert",
+            "x": 0.78,
+            "size": 0.19,
+            "label": "Owners",
+            "state": "gold"
+          },
+          {
+            "id": "cheque",
+            "prop": "cheque",
+            "x": 0.52,
+            "y": 0.32,
+            "size": 0.15,
+            "label": "Every year",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "pays",
+            "do": "glow",
+            "target": "factory"
+          },
+          {
+            "at": "owners",
+            "do": "flow",
+            "target": "factory",
+            "to": "owners",
+            "n": 5,
+            "text": "Slice"
+          },
+          {
+            "at": "profit",
+            "do": "grow",
+            "target": "factory",
+            "scale": 1.12
+          },
+          {
+            "at": "year",
+            "do": "enter",
+            "target": "cheque",
+            "from": "factory"
+          },
+          {
+            "at": "dividend",
+            "do": "term",
+            "name": "Dividend",
+            "line": "A slice of profit, paid in cash"
+          }
+        ]
+      }
+    },
+    {
+      "id": "y1994",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "When the buying finished, the dividend was {d94_per_part} a day. Worth waiting decades?",
+      "events": {
+        "dividend": {
+          "word": "dividend"
+        },
+        "came": {
+          "word": "buying"
+        },
+        "to": {
+          "word": "was"
+        },
+        "day": {
+          "word": "day"
+        },
+        "nice": {
+          "word": "Worth"
+        },
+        "decades": {
+          "word": "decades"
+        }
+      },
+      "params": {
+        "header": "When buying ended",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "dividend",
+            "prop": "cheque",
+            "x": 0.5,
+            "size": 0.28,
+            "label": "Dividend cheque"
+          },
+          {
+            "id": "chair",
+            "prop": "rockingchair",
+            "x": 0.2,
+            "size": 0.18,
+            "label": "Waiting",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "dividend",
+            "do": "state",
+            "target": "dividend",
+            "state": "signed"
+          },
+          {
+            "at": "came",
+            "do": "doc",
+            "title": "Dividend",
+            "rows": [
+              {
+                "label": "Year",
+                "value": "Buying ends"
+              },
+              {
+                "label": "Paid",
+                "value": "{fact3}",
+                "at": "to"
+              },
+              {
+                "label": "Per day",
+                "value": "{d94_per_part}",
+                "at": "day"
+              }
+            ]
+          },
+          {
+            "at": "nice",
+            "do": "header",
+            "text": "Worth the wait?"
+          },
+          {
+            "at": "decades",
+            "do": "enter",
+            "target": "chair",
+            "how": "rise"
+          },
+          {
+            "at": "decades",
+            "do": "tag",
+            "target": "chair",
+            "text": "Decades?"
+          },
+          {
+            "sec": 2.0,
+            "do": "glow",
+            "target": "dividend"
+          },
+          {
+            "sec": 3.6,
+            "do": "shake",
+            "target": "dividend"
+          },
+          {
+            "sec": 5.2,
+            "do": "glow",
+            "target": "dividend"
+          }
+        ]
+      }
+    },
+    {
+      "id": "why",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Exactly. Why not sell and buy something faster?",
+      "events": {
+        "sell": {
+          "word": "sell"
+        },
+        "buy": {
+          "word": "buy"
+        },
+        "faster": {
+          "word": "faster"
+        }
+      },
+      "params": {
+        "header": "Why not sell?",
+        "bg": "night",
+        "stage": "studio",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.32,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.7,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "sell",
+            "prop": "sellbutton",
+            "size": 0.24,
+            "label": "Sell",
+            "state": "pressed",
+            "y": 0.32,
+            "x": 0.5
+          }
+        ],
+        "actions": [
+          {
+            "at": "sell",
+            "do": "glow",
+            "target": "sell"
+          },
+          {
+            "at": "buy",
+            "do": "shake",
+            "target": "sell"
+          },
+          {
+            "at": "faster",
+            "do": "bubble",
+            "text": "Something faster?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "raise",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Because Coca-Cola kept raising its dividend, year after year, while Berkshire's cost never moved.",
+      "events": {
+        "raising": {
+          "word": "raising"
+        },
+        "after": {
+          "word": "after"
+        },
+        "cost": {
+          "word": "cost"
+        },
+        "moved": {
+          "word": "moved"
+        }
+      },
+      "params": {
+        "header": "The cost stays put",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "tree",
+            "prop": "fruittree",
+            "x": 0.6,
+            "size": 0.3,
+            "label": "Dividend tree",
+            "k": 0.3
+          },
+          {
+            "id": "cost",
+            "prop": "berkletter",
+            "x": 0.2,
+            "size": 0.2,
+            "label": "Cost",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "raising",
+            "do": "grow",
+            "target": "tree",
+            "scale": 1.25
+          },
+          {
+            "at": "after",
+            "do": "bars",
+            "items": [
+              {
+                "label": "Back then",
+                "text": "{fact3}",
+                "value": "@d94.total",
+                "tone": "accent"
+              },
+              {
+                "label": "Decades on",
+                "text": "{fact4}",
+                "value": "@d22.total",
+                "at": "after",
+                "tone": "good"
+              }
+            ],
+            "title": "Dividend a year"
+          },
+          {
+            "at": "cost",
+            "do": "enter",
+            "target": "cost",
+            "how": "drop"
+          },
+          {
+            "at": "moved",
+            "do": "tag",
+            "target": "cost",
+            "text": "{fact1}"
+          },
+          {
+            "at": "moved",
+            "do": "tick",
+            "target": "cost"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "And here's the twist. Decades later, the dividend was {fact4} a year. That's {pay_pct} of the whole price, paid back in one year.",
+      "events": {
+        "twist": {
+          "word": "twist"
+        },
+        "dividend": {
+          "word": "dividend"
+        },
+        "year": {
+          "word": "year"
+        },
+        "whole": {
+          "word": "whole"
+        },
+        "price": {
+          "word": "price"
+        },
+        "back": {
+          "word": "back"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "twist"
+        },
+        {
+          "kind": "kaching",
+          "at": "dividend"
+        },
+        {
+          "kind": "boom",
+          "at": "whole"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "paid": "{fact4}",
+        "cost": "{fact1}",
+        "pct": "{pay_pct}",
+        "costLabel": "Price paid",
+        "paidLabel": "Dividend",
+        "set": "office",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "whole",
+            "size": "extreme",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "sourceIndex": 0
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That's why Berkshire never sold. It keeps the tree and eats the fruit, about {d22_per_part} a day by then.",
+      "events": {
+        "sells": {
+          "word": "sold"
+        },
+        "tree": {
+          "word": "tree"
+        },
+        "fruit": {
+          "word": "fruit"
+        },
+        "single": {
+          "word": "about"
+        },
+        "day": {
+          "word": "day"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "tree"
+        },
+        {
+          "kind": "pop",
+          "at": "fruit"
+        },
+        {
+          "kind": "kaching",
+          "at": "day"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "perDay": "{d22_per_part}",
+        "dayLabel": "A day, by then",
+        "treeLabel": "Never sold",
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "day",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "header": "Keep the tree, eat the fruit"
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "board",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "That's one company's past, not a promise. But would you have kept it all those years, like Buffett?",
+      "events": {
+        "company": {
+          "word": "company's"
+        },
+        "promise": {
+          "word": "promise"
+        },
+        "kept": {
+          "word": "kept"
+        },
+        "buffett": {
+          "word": "Buffett"
+        }
+      },
+      "params": {
+        "header": "Would you keep it?",
+        "items": [
+          {
+            "id": "company",
+            "prop": "colabottle",
+            "size": 0.2,
+            "label": "One company",
+            "y": 0.32,
+            "x": 0.5
+          }
+        ],
+        "actions": [
+          {
+            "at": "company",
+            "do": "glow",
+            "target": "company"
+          },
+          {
+            "at": "promise",
+            "do": "stamp",
+            "target": "company",
+            "text": "Not a promise"
+          },
+          {
+            "at": "kept",
+            "do": "shake",
+            "target": "company"
+          },
+          {
+            "at": "buffett",
+            "do": "bubble",
+            "text": "Keep or sell?"
+          }
+        ],
+        "stage": "studio",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.28,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.74,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "am_fenrir"
+}
