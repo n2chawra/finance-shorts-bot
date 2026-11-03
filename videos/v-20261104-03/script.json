@@ -1,0 +1,654 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 38861,
+  "story": "how_they_make_money",
+  "shape": "question-chain",
+  "currency": "USD",
+  "feed_id": "2026-10-24-how-bnpl-makes-money",
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "D",
+    "bpm": 112,
+    "look": {
+      "stage": "street",
+      "header": "neon",
+      "holder": "receipt",
+      "entrance": "pop"
+    }
+  },
+  "hook_style": "secret",
+  "cta": "Did you think pay-later was free? Comment",
+  "facts": [
+    {
+      "label": "Affirm's merchant network revenue in one quarter",
+      "value": 239.5,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2025-08-28",
+      "source": "Affirm Q4 FY2025 results (Zacks via Nasdaq)",
+      "url": "https://www.nasdaq.com/articles/affirm-q4-earnings-beat-estimates-increasing-transaction-volumes"
+    },
+    {
+      "label": "spending through Affirm in that quarter (GMV)",
+      "value": 10.4,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2025-08-28",
+      "source": "Affirm Q4 FY2025 results (Zacks via Nasdaq)",
+      "url": "https://www.nasdaq.com/articles/affirm-q4-earnings-beat-estimates-increasing-transaction-volumes"
+    }
+  ],
+  "maths": [
+    {
+      "name": "cut",
+      "kind": "rate",
+      "part": 239500000,
+      "whole": 10400000000,
+      "facts": {
+        "part": 1,
+        "whole": 2
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.0,
+    "words": "Who pays *Affirm*?",
+    "figure": "{cut_pct}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "You think pay in four is free? Watch who pays.",
+      "events": {
+        "four": {
+          "word": "four"
+        },
+        "free": {
+          "word": "free"
+        },
+        "someone": {
+          "word": "Watch"
+        },
+        "who": {
+          "word": "pays"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "four"
+        },
+        {
+          "kind": "whoosh",
+          "at": "someone"
+        },
+        {
+          "kind": "riser",
+          "at": "who"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "Free money?",
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "someone",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask",
+      "scene": "board",
+      "role": "promise",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "Zero interest? Then who pays for it? The app?",
+      "events": {
+        "zero": {
+          "word": "Zero"
+        },
+        "who": {
+          "word": "who"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "app": {
+          "word": "app"
+        }
+      },
+      "params": {
+        "header": "Who pays for zero?",
+        "bg": "night",
+        "stage": "street",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "zero",
+            "prop": "checkout",
+            "x": 0.36,
+            "size": 0.22,
+            "label": "Zero interest"
+          },
+          {
+            "id": "app",
+            "prop": "lenderhq",
+            "x": 0.66,
+            "size": 0.18,
+            "label": "The app",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "zero",
+            "do": "state",
+            "target": "zero",
+            "state": "pressed"
+          },
+          {
+            "at": "who",
+            "do": "grow",
+            "target": "zero",
+            "scale": 1.12
+          },
+          {
+            "at": "pays",
+            "do": "tag",
+            "target": "zero",
+            "text": "Who pays?"
+          },
+          {
+            "at": "app",
+            "do": "enter",
+            "target": "app",
+            "how": "drop"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shop",
+      "scene": "custom",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "The shop does. In one quarter last year, shops paid Affirm {fact1}.",
+      "events": {
+        "shop": {
+          "word": "shop"
+        },
+        "quarter": {
+          "word": "quarter"
+        },
+        "paid": {
+          "word": "paid"
+        },
+        "affirm": {
+          "word": "Affirm"
+        }
+      },
+      "params": {
+        "component": "Shop",
+        "hud": {
+          "hide": true
+        },
+        "header": "The shop pays",
+        "fee": "{fact1}",
+        "shopLabel": "The shop",
+        "appLabel": "Affirm",
+        "quarterLabel": "One quarter",
+        "set": "market",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "paid",
+            "size": "close",
+            "on": "all"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "shop"
+        },
+        {
+          "kind": "kaching",
+          "at": "paid"
+        }
+      ]
+    },
+    {
+      "id": "spend",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "zoom-through",
+      "say": "That money came from all the shopping people did with Affirm.",
+      "events": {
+        "money": {
+          "word": "money"
+        },
+        "shopping": {
+          "word": "shopping"
+        },
+        "people": {
+          "word": "people"
+        },
+        "affirm": {
+          "word": "Affirm"
+        }
+      },
+      "params": {
+        "header": "All that shopping",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "shopping",
+            "prop": "bag",
+            "x": 0.26,
+            "size": 0.26,
+            "label": "Shopping"
+          },
+          {
+            "id": "sneaker",
+            "prop": "sneaker",
+            "x": 0.72,
+            "size": 0.22,
+            "label": "With Affirm"
+          }
+        ],
+        "actions": [
+          {
+            "do": "doc",
+            "title": "One quarter",
+            "rows": [
+              {
+                "label": "Shops paid",
+                "value": "{fact1}",
+                "at": "money"
+              },
+              {
+                "label": "Spent",
+                "value": "{fact2}",
+                "at": "shopping"
+              }
+            ],
+            "at": "people"
+          },
+          {
+            "at": "shopping",
+            "do": "grow",
+            "target": "shopping",
+            "scale": 1.2
+          },
+          {
+            "at": "people",
+            "do": "multiply",
+            "target": "shopping",
+            "n": 3
+          },
+          {
+            "at": "affirm",
+            "do": "grow",
+            "target": "sneaker",
+            "scale": 1.15
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask2",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "The shop pays? How much? Per dollar?",
+      "events": {
+        "shop": {
+          "word": "shop"
+        },
+        "much": {
+          "word": "much"
+        },
+        "dollar": {
+          "word": "dollar"
+        }
+      },
+      "params": {
+        "header": "How big a cut?",
+        "bg": "night",
+        "stage": "street",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "cut",
+            "prop": "shopfront",
+            "size": 0.22,
+            "label": "Shop's cut",
+            "x": 0.36
+          },
+          {
+            "id": "dollar",
+            "prop": "coincut",
+            "x": 0.64,
+            "size": 0.16,
+            "label": "Per dollar",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "shop",
+            "do": "grow",
+            "target": "cut",
+            "scale": 1.2
+          },
+          {
+            "at": "much",
+            "do": "shake",
+            "target": "cut"
+          },
+          {
+            "at": "dollar",
+            "do": "enter",
+            "target": "dollar",
+            "how": "drop"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "zoom-through",
+      "say": "On average, about {cut_pct} of every dollar spent. Paid by the shop, not the buyer.",
+      "events": {
+        "average": {
+          "word": "average"
+        },
+        "dollar": {
+          "word": "dollar"
+        },
+        "shop": {
+          "word": "shop"
+        },
+        "buyer": {
+          "word": "buyer"
+        },
+        "every": {
+          "word": "every"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "dollar"
+        },
+        {
+          "kind": "kaching",
+          "at": "shop"
+        },
+        {
+          "kind": "pop",
+          "at": "buyer"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "pct": "{cut_pct}",
+        "header": "The shop's cut",
+        "dollarLabel": "Average dollar",
+        "shopLabel": "Shop pays",
+        "buyerLabel": "Buyer",
+        "set": "market",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "shop",
+            "size": "wide",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "match",
+      "say": "So on zero interest, the shop pays. On longer plans, buyers pay interest too.",
+      "events": {
+        "zero": {
+          "word": "zero"
+        },
+        "shop": {
+          "word": "shop"
+        },
+        "longer": {
+          "word": "longer"
+        },
+        "interest": {
+          "word": "interest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "app"
+        },
+        {
+          "kind": "boom",
+          "at": "does"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "header": "Zero interest: the shop pays",
+        "appLabel": "Affirm",
+        "shopLabel": "The shop",
+        "youLabel": "Buyer",
+        "set": "market",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "does",
+            "size": "close",
+            "on": "all"
+          }
+        ],
+        "longLabel": "Longer plans: interest"
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "board",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Still think pay in four is free money?",
+      "events": {
+        "still": {
+          "word": "Still"
+        },
+        "four": {
+          "word": "four"
+        },
+        "money": {
+          "word": "money"
+        }
+      },
+      "params": {
+        "header": "Still free?",
+        "bg": "night",
+        "stage": "street",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "four",
+            "prop": "split4",
+            "x": 0.3,
+            "size": 0.22,
+            "label": "Pay in four",
+            "k": 0.3
+          },
+          {
+            "id": "money",
+            "prop": "register",
+            "x": 0.72,
+            "size": 0.22,
+            "label": "Free money?"
+          }
+        ],
+        "actions": [
+          {
+            "at": "still",
+            "do": "grow",
+            "target": "four",
+            "scale": 1.1
+          },
+          {
+            "at": "four",
+            "do": "state",
+            "target": "four",
+            "state": "open"
+          },
+          {
+            "at": "money",
+            "do": "state",
+            "target": "money",
+            "state": "open"
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}

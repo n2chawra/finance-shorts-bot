@@ -1,0 +1,121 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 38861,
+  "duration_sec": 33,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "D",
+    "bpm": 112,
+    "look": {
+      "stage": "street",
+      "header": "neon",
+      "holder": "receipt",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think pay in four is free? Watch who pays.",
+        "start": 0.3,
+        "seconds": 2.73,
+        "window": 3.23,
+        "fill": 0.845
+      },
+      {
+        "scene": "ask",
+        "text": "Zero interest? Then who pays for it? The app?",
+        "start": 3.53,
+        "seconds": 2.72,
+        "window": 3.23,
+        "fill": 0.842
+      },
+      {
+        "scene": "shop",
+        "text": "The shop does. In one quarter last year, shops paid Affirm $239.5M.",
+        "start": 6.77,
+        "seconds": 6.02,
+        "window": 6.7,
+        "fill": 0.899
+      },
+      {
+        "scene": "spend",
+        "text": "That money came from all the shopping people did with Affirm.",
+        "start": 13.47,
+        "seconds": 2.82,
+        "window": 3.5,
+        "fill": 0.806
+      },
+      {
+        "scene": "ask2",
+        "text": "The shop pays? How much? Per dollar?",
+        "start": 16.97,
+        "seconds": 1.72,
+        "window": 2.27,
+        "fill": 0.758
+      },
+      {
+        "scene": "turn",
+        "text": "On average, about 2.3% of every dollar spent. Paid by the shop, not the buyer.",
+        "start": 19.23,
+        "seconds": 5.11,
+        "window": 5.77,
+        "fill": 0.886
+      },
+      {
+        "scene": "payoff",
+        "text": "So on zero interest, the shop pays. On longer plans, buyers pay interest too.",
+        "start": 25.0,
+        "seconds": 4.71,
+        "window": 5.37,
+        "fill": 0.877
+      },
+      {
+        "scene": "loop",
+        "text": "Still think pay in four is free money?",
+        "start": 30.37,
+        "seconds": 2.11,
+        "window": 2.53,
+        "fill": 0.834
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on",
+    "ending-beats-act-and-vary": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -15.2,
+    "music_under_voice_db": 21.5
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 4.707,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

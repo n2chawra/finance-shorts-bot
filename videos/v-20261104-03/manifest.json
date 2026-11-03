@@ -1,0 +1,353 @@
+{
+  "id": "v-20261104-03",
+  "createdAt": "2026-11-03T22:32:38.828440+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Pay in 4, no interest: so who pays for it?",
+    "category": "debt",
+    "reach": "global",
+    "feed_id": "2026-10-24-how-bnpl-makes-money"
+  },
+  "title": "Pay in four, zero interest. So who pays for it? 🛍️",
+  "description": "Four payments, no interest: so who pays for it?\nIn one quarter of 2025, shops paid Affirm $239.5M on $10.4B of spending; on longer plans, buyers pay interest.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#BuyNowPayLater",
+    "#Affirm",
+    "#Money"
+  ],
+  "hookStyle": "secret",
+  "cta": "Did you think pay-later was free? Comment",
+  "seed": 38861,
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "D",
+    "bpm": 112,
+    "look": {
+      "stage": "street",
+      "header": "neon",
+      "holder": "receipt",
+      "entrance": "pop"
+    },
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think pay in four is free? Watch who pays.",
+        "start": 0.3,
+        "seconds": 2.73,
+        "window": 3.23,
+        "fill": 0.845
+      },
+      {
+        "scene": "ask",
+        "text": "Zero interest? Then who pays for it? The app?",
+        "start": 3.53,
+        "seconds": 2.72,
+        "window": 3.23,
+        "fill": 0.842
+      },
+      {
+        "scene": "shop",
+        "text": "The shop does. In one quarter last year, shops paid Affirm $239.5M.",
+        "start": 6.77,
+        "seconds": 6.02,
+        "window": 6.7,
+        "fill": 0.899
+      },
+      {
+        "scene": "spend",
+        "text": "That money came from all the shopping people did with Affirm.",
+        "start": 13.47,
+        "seconds": 2.82,
+        "window": 3.5,
+        "fill": 0.806
+      },
+      {
+        "scene": "ask2",
+        "text": "The shop pays? How much? Per dollar?",
+        "start": 16.97,
+        "seconds": 1.72,
+        "window": 2.27,
+        "fill": 0.758
+      },
+      {
+        "scene": "turn",
+        "text": "On average, about 2.3% of every dollar spent. Paid by the shop, not the buyer.",
+        "start": 19.23,
+        "seconds": 5.11,
+        "window": 5.77,
+        "fill": 0.886
+      },
+      {
+        "scene": "payoff",
+        "text": "So on zero interest, the shop pays. On longer plans, buyers pay interest too.",
+        "start": 25.0,
+        "seconds": 4.71,
+        "window": 5.37,
+        "fill": 0.877
+      },
+      {
+        "scene": "loop",
+        "text": "Still think pay in four is free money?",
+        "start": 30.37,
+        "seconds": 2.11,
+        "window": 2.53,
+        "fill": 0.834
+      }
+    ]
+  },
+  "durationSec": 33,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -15.2,
+    "music_under_voice_db": 21.5
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on",
+    "ending-beats-act-and-vary": "on"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 21
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite. fact1 $239.5M merchant network revenue and fact2 $10.4B GMV confirmed for Affirm fiscal Q4 2025 (quarter to 30 Jun 2025): the nasdaq page returned 503 and the Affirm investor letter 403, so confirmed by search (Zacks/finanzen.net, TipRanks, FY2025 10-K on sec.gov). The figures are now dated ('one quarter last year', 'of 2025'), and the 2.3% average still matches the latest data (FY2026 10-K: merchant network revenue 2.3% of GMV), so the dated quarter is acceptable; research should still refresh the feed to fiscal Q4 2026 (about $14.1B GMV, about $302.4M merchant revenue). The framing is fixed: the question is now who pays for 0% plans, and the payoff says buyers pay interest on longer plans. Both verify items hold. No advice, the tone is fine, and the description ends with the disclaimer. Small notes: the Payoff card puts $239.5M under 'Zero interest: the shop pays', but that revenue also includes merchant fees on interest-bearing loans; some longer Affirm plans are also 0% APR, so 'often' would be more precise than 'buyers pay interest too'."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: 'One quarter' chip over $239.5M, coins fly under the figure shop→Affirm, spend beat shows the shopping bag acting on its word, payoff row inside frame, 'Longer plans: interest' on a readable red pill; hook, mute story, disclaimer, 33 s length, audio and layout all fine."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:18:25.975004+00:00",
+      "finishedAt": "2026-11-03T22:18:25.975004+00:00",
+      "notes": [
+        "title mentions '4,', which is neither a script input nor a computed figure: write the figure as a placeholder ({cut_part}, {cut_pct}, {cut_whole}, {fact1}, {fact2}…) or drop it",
+        "the hook gives no reason to stay: end it on the open question or a promise (\"Casinos make money even when you win. Here's how.\"), never on the answer",
+        "the asker asks 5 questions; a question-chain has 6+, each sharper than the last"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:18:39.218854+00:00",
+      "finishedAt": "2026-11-03T22:18:39.218854+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:20:03.398604+00:00",
+      "finishedAt": "2026-11-03T22:20:03.398604+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:21:36.063560+00:00",
+      "finishedAt": "2026-11-03T22:21:36.063560+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:21:41.379863+00:00",
+      "finishedAt": "2026-11-03T22:22:17.788172+00:00",
+      "notes": [
+        "text 'Data: Affirm Q4 FY2025 results (Zacks via Nasdaq)' at 11.3 s runs outside the frame",
+        "text 'One quarter' at 11.3 s is 13.4 px, below the 44 px minimum",
+        "text 'ZERO INTEREST' at 28.1 s runs outside the frame",
+        "2.6 s with nothing new on screen in beat 'shop' (at most 2.5 s): add an action on the phrase being said there",
+        "warning: beat 'shop' runs 6.2 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:22:56.861512+00:00",
+      "finishedAt": "2026-11-03T22:22:56.861512+00:00",
+      "notes": [
+        "Facts fact1 ($239.5M merchant network revenue) and fact2 ($10.4B GMV) are confirmed for Affirm fiscal Q4 2025 (quarter to 30 Jun 2025) - nasdaq.com page returned 503 and the investors.affirm.com letter returned 403, confirmed by search via Zacks/finanzen.net, TipRanks and the FY2025 10-K on sec.gov - but they are out of date: four newer quarters have been reported, latest fiscal Q4 2026 (quarter to 30 Jun 2026, reported Aug 2026): GMV about $14.1B, merchant network revenue about $302.4M (Affirm FQ4'26 shareholder letter, CrowdFund Insider, FY2026 10-K: merchant network revenue 2.3% of GMV). 'In one quarter' with a 15-month-old quarter is superseded data. Research should refresh the feed facts to the latest quarter from Affirm's release/10-K.",
+        "Framing misleads (rule 3): beat 'ask' asks 'how does Affirm make money?' and beat 'shop' answers 'The shop pays it', with the payoff saying the shop pays the app. In that same quarter interest income (about $419.1M, mostly paid by buyers on interest-bearing plans) was larger than merchant network revenue ($239.5M) out of $876M total revenue, so the shop is not the main answer to how Affirm makes money. Either narrow the question to who pays for the 0% pay-in-4 plan, or say that shop fees are about a quarter of revenue and buyers paying interest on longer plans bring in more. The 'turn' line 'about 2.3% of every dollar spent' is a blended average over all GMV, including interest-bearing loans, so it is fine as an average but should not be called the fee on a 0% plan."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:23:08.907471+00:00",
+      "finishedAt": "2026-11-03T22:23:08.907471+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:23:53.993159+00:00",
+      "finishedAt": "2026-11-03T22:23:53.993159+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:23:54.901556+00:00",
+      "finishedAt": "2026-11-03T22:23:54.901556+00:00",
+      "notes": [
+        "beat 'shop'.params.quarterLabel contains a typed number; use a placeholder: 'One quarter, 2025'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:24:02.262063+00:00",
+      "finishedAt": "2026-11-03T22:24:02.262063+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:24:54.475381+00:00",
+      "finishedAt": "2026-11-03T22:24:54.475381+00:00",
+      "notes": [
+        "Re-review after rewrite. fact1 $239.5M merchant network revenue and fact2 $10.4B GMV confirmed for Affirm fiscal Q4 2025 (quarter to 30 Jun 2025): the nasdaq page returned 503 and the Affirm investor letter 403, so confirmed by search (Zacks/finanzen.net, TipRanks, FY2025 10-K on sec.gov). The figures are now dated ('one quarter last year', 'of 2025'), and the 2.3% average still matches the latest data (FY2026 10-K: merchant network revenue 2.3% of GMV), so the dated quarter is acceptable; research should still refresh the feed to fiscal Q4 2026 (about $14.1B GMV, about $302.4M merchant revenue). The framing is fixed: the question is now who pays for 0% plans, and the payoff says buyers pay interest on longer plans. Both verify items hold. No advice, the tone is fine, and the description ends with the disclaimer. Small notes: the Payoff card puts $239.5M under 'Zero interest: the shop pays', but that revenue also includes merchant fees on interest-bearing loans; some longer Affirm plans are also 0% APR, so 'often' would be more precise than 'buyers pay interest too'."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:24:36.572220+00:00",
+      "finishedAt": "2026-11-03T22:25:15.854079+00:00",
+      "notes": [
+        "33 s, sky/pop (preview only)",
+        "warning: beat 'shop' runs 6.7 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:25:34.465985+00:00",
+      "finishedAt": "2026-11-03T22:25:58.840234+00:00",
+      "notes": [
+        "33 s, sky/pop (preview only)",
+        "warning: beat 'shop' runs 6.7 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:26:29.143157+00:00",
+      "finishedAt": "2026-11-03T22:26:57.075780+00:00",
+      "notes": [
+        "33 s, sky/pop (preview only)",
+        "warning: beat 'shop' runs 6.7 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:28:13.194522+00:00",
+      "finishedAt": "2026-11-03T22:28:13.194522+00:00",
+      "notes": [
+        "[script] 10.0s shop beat: the chip 'LAST YEAR' sits directly over $239.5M, so on mute it reads as a yearly figure, but it is one quarter's merchant revenue (label does not match value). Set quarterLabel to 'One quarter' (e.g. 'One quarter, 2025').",
+        "[script] 15.0s spend beat: the doc panel at sec 0 replaces the stage, so the bag and sneaker items and their grow/multiply actions on 'shopping', 'people', 'Affirm' never appear; the still is a small table on mostly flat sky and 'all the shopping people did' has no picture. Let the items act first and bring the doc in later (e.g. at 'people'), or drop the dead items and make the card itself carry the shopping.",
+        "[scene] 25.0s and 30.0s payoff (remotion/src/videos/v-20261104-03/Payoff.tsx): 'THE SHOP' shopfront runs off the right edge of the frame (awning and wall clipped); pull the buyer/Affirm/shop row inward.",
+        "[scene] 30.0s payoff (Payoff.tsx, longLabel): 'LONGER PLANS: INTEREST' is pink-red text on the peach sky, low contrast, and floats unattached to the buyer; put it on a chip/holder and link it to the buyer.",
+        "[scene] 10.0s shop beat (Shop.tsx): the flowing coins sit on top of the $239.5M figure exactly as it is named, and the cash prop collides with the 'THE SHOP' label; route the coins below the figure."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:28:47.832996+00:00",
+      "finishedAt": "2026-11-03T22:29:15.092549+00:00",
+      "notes": [
+        "33 s, sky/pop (preview only)",
+        "warning: beat 'shop' runs 6.7 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:29:37.401899+00:00",
+      "finishedAt": "2026-11-03T22:29:37.401899+00:00",
+      "notes": [
+        "Re-review after fixes: 'One quarter' chip over $239.5M, coins fly under the figure shop→Affirm, spend beat shows the shopping bag acting on its word, payoff row inside frame, 'Longer plans: interest' on a readable red pill; hook, mute story, disclaimer, 33 s length, audio and layout all fine."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:29:47.530519+00:00",
+      "finishedAt": "2026-11-03T22:32:33.127211+00:00",
+      "notes": [
+        "33 s, sky/pop, peak -1.0 dB, mean -16.8 dB",
+        "warning: beat 'shop' runs 6.7 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:32:38.828545+00:00",
+      "finishedAt": "2026-11-03T22:32:38.828545+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261104-03",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261104-03"
+  }
+}
