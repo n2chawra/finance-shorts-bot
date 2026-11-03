@@ -82,7 +82,8 @@ async function main(): Promise<void> {
     try {
       const from = istDay(new Date(Date.now() - KEEP_DAYS * DAY_MS));
       const all = await report(token, { startDate: from, endDate: yesterday, dimensions: "day", metrics: DAY_METRICS, sort: "day" });
-      const split = await report(token, { startDate: from, endDate: yesterday, dimensions: "day,creatorContentType", metrics: DAY_METRICS, sort: "day" });
+      // YouTube rejects videosAddedToPlaylists split by content type (2026-11-03), so the per-format days go without it
+      const split = await report(token, { startDate: from, endDate: yesterday, dimensions: "day,creatorContentType", metrics: DAY_METRICS.replace(",videosAddedToPlaylists", ""), sort: "day" });
       const data = channelDays(all, split);
       await prisma.$transaction([prisma.channelDay.deleteMany(), prisma.channelDay.createMany({ data: data.map(({ day, ...m }) => ({ day: new Date(`${day}T00:00:00Z`), ...m })) })]);
     } catch (e) {
