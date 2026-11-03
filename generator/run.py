@@ -295,6 +295,26 @@ def gate_problems(report: dict, settings: dict, fmt: str) -> list[str]:
     return out
 
 
+LUFS_RANGE = (-16.0, -13.0)     # YouTube plays back against about -14 LUFS (research, 2026-11-03)
+MIN_MUSIC_UNDER_VOICE = 18.0    # dB the bed sits under the voice in a Short (The Curious Plot ~29)
+
+
+def loudness_warnings(audio: dict | None, fmt: str) -> list[str]:
+    """Warnings, never failures: integrated loudness off YouTube's reference, or a Short's music
+    too close under the voice (research loudness-in-render-json, adopted 2026-11-03)."""
+    out: list[str] = []
+    if not audio:
+        return out
+    lufs = audio.get("lufs")
+    if isinstance(lufs, (int, float)) and not LUFS_RANGE[0] <= lufs <= LUFS_RANGE[1]:
+        out.append(f"integrated loudness {lufs} LUFS is outside {LUFS_RANGE[0]:g} to {LUFS_RANGE[1]:g} "
+                   f"(YouTube turns loud audio down but never quiet audio up)")
+    gap = audio.get("music_under_voice_db")
+    if fmt == "short" and isinstance(gap, (int, float)) and gap < MIN_MUSIC_UNDER_VOICE:
+        out.append(f"the music sits only {gap} dB under the voice (at least {MIN_MUSIC_UNDER_VOICE:g} in a Short)")
+    return out
+
+
 def lint(vid: str, root: Path = ROOT) -> list[str]:
     """Every check that needs neither the voice nor a single frame, in seconds (2026-10-29: the last
     33 videos needed up to twelve failed steps each, most of them found only after a render). Builds
@@ -389,6 +409,7 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     warnings = []
     if plan_format(script) == "short" and (d / "timeline.json").exists():   # measured on the real voice timing
         warnings = [f"warning: {w}" for w in event_gaps(_read(d / "timeline.json")["beats"])]
+    warnings += [f"warning: {w}" for w in loudness_warnings(audio, plan_format(script))] if rendered else []
     log_step(vid, "render", not problems, (problems or [ok_note]) + warnings, root, started)
     return problems
 

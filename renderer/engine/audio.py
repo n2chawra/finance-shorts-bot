@@ -152,3 +152,44 @@ def sfx_riser(rng: np.random.Generator, dur: float) -> np.ndarray:
 
 def sfx_kaching() -> np.ndarray:
     return np.concatenate([sfx_clink(1.0)[:3000]*1.5, sfx_ding(1760, 1.2)])
+
+
+# ---------------- loudness (ITU-R BS.1770-4) ----------------
+
+def _k_weight(x: np.ndarray, sr: int) -> np.ndarray:
+    """The K-weighting pre-filter (a high shelf, then a high pass) for any sample rate, by the
+    analogue-prototype formulas libebur128 uses, so 44.1 kHz needs no resampling."""
+    k = np.tan(np.pi*1681.974450955533/sr)
+    q = 0.7071752369554196
+    vh = 10**(3.999843853973347/20)
+    vb = vh**0.4996667741545416
+    a0 = 1 + k/q + k*k
+    b1 = [(vh + vb*k/q + k*k)/a0, 2*(k*k - vh)/a0, (vh - vb*k/q + k*k)/a0]
+    a1 = [1.0, 2*(k*k - 1)/a0, (1 - k/q + k*k)/a0]
+    k = np.tan(np.pi*38.13547087602444/sr)
+    q = 0.5003270373238773
+    a0 = 1 + k/q + k*k
+    a2 = [1.0, 2*(k*k - 1)/a0, (1 - k/q + k*k)/a0]
+    return lfilter([1.0, -2.0, 1.0], a2, lfilter(b1, a1, x, axis=0), axis=0)
+
+
+def integrated_lufs(st: np.ndarray, sr: int = SR) -> float:
+    """Integrated loudness of a mono (n,) or stereo (n, 2) signal in LUFS: K-weighted, 400 ms blocks
+    with 75% overlap, gated at -70 LUFS and then 10 LU under the ungated mean (BS.1770-4). YouTube
+    plays Shorts back against about -14 LUFS and turns louder audio down, never quieter audio up."""
+    x = np.asarray(st, dtype=float)
+    x = x[:, None] if x.ndim == 1 else x
+    y = _k_weight(x, sr)
+    n, hop = int(0.4*sr), int(0.1*sr)
+    if len(y) < n:
+        return -70.0
+    c = np.concatenate([np.zeros((1, y.shape[1])), np.cumsum(y**2, axis=0)])
+    starts = np.arange(0, len(y) - n + 1, hop)
+    z = ((c[starts + n] - c[starts])/n).sum(axis=1)      # channel weights are 1 for left and right
+    lk = -0.691 + 10*np.log10(z + 1e-20)
+    z = z[lk > -70]
+    if not len(z):
+        return -70.0
+    rel = -0.691 + 10*np.log10(z.mean()) - 10
+    z = z[-0.691 + 10*np.log10(z) > rel]
+    return round(float(-0.691 + 10*np.log10(z.mean())), 1)

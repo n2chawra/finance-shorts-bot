@@ -239,3 +239,22 @@ def test_a_long_scene_thumbnail_needs_no_figure() -> None:
     s["thumbnail"] = {"layout": "scene", "words": "Where it goes", "angle": "question"}
     s.pop("thumbnails", None)
     check_script(s)
+
+
+def test_audio_reports_loudness(tmp_path: Path) -> None:
+    """Integrated loudness goes into the timeline (research loudness-in-render-json, 2026-11-03); the
+    music-under-voice gap only when a real voice spoke (estimate mode places none)."""
+    beat = {"id": "a", "scene": "bignumber", "say": "It costs {card_amount} today."}
+    a = tb.build(script([beat]), tmp_path, voice="estimate")["audio"]
+    assert -30 < a["lufs"] < -5
+    assert "music_under_voice_db" not in a
+
+
+def test_integrated_lufs_matches_bs1770() -> None:
+    """A full-scale-relative 1 kHz sine at -20 dBFS on both channels reads -20.0 LUFS (ffmpeg ebur128
+    agrees); silence is gated out."""
+    from renderer.engine.audio import SR, integrated_lufs
+    t = np.arange(int(5*SR))/SR
+    x = 0.1*np.sin(2*np.pi*1000*t)
+    assert integrated_lufs(np.stack([x, x], 1)) == pytest.approx(-20.0, abs=0.15)
+    assert integrated_lufs(np.zeros((SR, 2))) == -70.0

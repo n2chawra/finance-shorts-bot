@@ -438,3 +438,13 @@ def test_heard_names_the_hook_voice_and_the_narrator_share() -> None:
     assert run.heard(script, "am_michael") == {"hookVoice": "am_fenrir", "narratorShare": 50}
     assert run.heard({"beats": [{"say": "One line."}]}, "af_heart") == {"hookVoice": "af_heart", "narratorShare": 100}
     assert run.heard({"beats": []}, "af_heart") == {}
+
+
+def test_loudness_warnings() -> None:
+    """Loudness is a warning, never a failure (adopted 2026-11-03)."""
+    from generator.run import loudness_warnings
+    assert loudness_warnings({"lufs": -14.2, "music_under_voice_db": 21.0}, "short") == []
+    assert loudness_warnings(None, "short") == []
+    w = loudness_warnings({"lufs": -18.5, "music_under_voice_db": 12.4}, "short")
+    assert len(w) == 2 and "LUFS" in w[0] and "12.4 dB" in w[1]
+    assert loudness_warnings({"music_under_voice_db": 12.4}, "long") == []
