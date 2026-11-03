@@ -117,3 +117,30 @@ def test_long_videos_mix_their_devices():
     one_look = craft.device_problems(tl(["stats"] * 4 + ["build", "type"]))
     assert any("kinds of scene" in p for p in one_look) and any("in a row" in p for p in one_look)
     assert any("composed beats" in p for p in craft.device_problems(tl(["type", "build", "type", "case", "type", "build", "type", "stats"])))
+
+
+def _board_tl(dos_per_beat: list[list[str]]) -> dict:
+    return {"fps": 30, "beats": [{"id": f"b{i}", "scene": "board", "params": {"actions": [{"do": d} for d in dos]}}
+                                 for i, dos in enumerate(dos_per_beat)]}
+
+
+def test_mark_problems_flags_a_board_video_of_glows_and_stamps():
+    # v-20261103-03 (owner: "same stuff coming"): 71% marks
+    tl = _board_tl([["glow", "stamp", "bubble"], ["glow", "stamp", "grow"], ["bubble", "cross", "stamp"], ["glow", "bubble", "enter"]])
+    probs = craft.mark_problems(tl)
+    assert probs and "only mark" in probs[0] and "enters" in probs[0]
+
+
+def test_mark_problems_passes_a_board_video_that_changes_the_picture():
+    tl = _board_tl([["enter", "glow", "flow"], ["swap", "stamp", "doc"], ["bubble", "multiply", "grow"], ["glow", "bars", "stamp"]])
+    assert craft.mark_problems(tl) == []
+    assert craft.mark_problems(_board_tl([["glow"], ["glow"]])) == []   # fewer than three boards: not a board video
+
+
+def test_mark_problems_on_the_real_scripts():
+    import json
+    for vid, bad in (("v-20261103-03", True), ("v-20261103-02", False), ("v-20261103-01", False)):
+        f = REPO / "videos" / vid / "script.json"
+        if not f.is_file():
+            continue
+        assert bool(craft.mark_problems(json.loads(f.read_text()))) is bad, vid
