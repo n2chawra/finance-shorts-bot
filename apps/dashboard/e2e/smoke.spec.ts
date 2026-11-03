@@ -409,3 +409,22 @@ test("overview and analytics say how old the YouTube numbers are", async ({ page
     await expect(age).toHaveAttribute("data-tone", /^(fine|warning|critical)$/);
   }
 });
+
+test("card header actions never sit on the card's title", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/analytics");
+  // on phones the Over time card's five-way metric switch covered "Over time" and squeezed its description to one word a line
+  const card = page.locator("section", { has: page.getByRole("heading", { name: "Over time" }) }).first();
+  await expect(card).toBeVisible({ timeout: 30_000 });
+  await page.waitForTimeout(1200);   // entrance animations
+  const title = await card.getByRole("heading", { name: "Over time" }).boundingBox();
+  const desc = await card.getByText("Hover a day to see which videos went out that day").boundingBox();
+  const sw = await card.getByRole("radiogroup", { name: "Metric" }).boundingBox();
+  const overlap = (a: NonNullable<typeof sw>, b: NonNullable<typeof sw>) =>
+    a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
+  expect(title && desc && sw, "header parts found").toBeTruthy();
+  expect(overlap(title!, sw!), "metric switch over the title").toBe(false);
+  expect(overlap(desc!, sw!), "metric switch over the description").toBe(false);
+  expect(desc!.width, "description column width").toBeGreaterThanOrEqual(200);
+  expect(sw!.height, "switch labels stay on one line").toBeLessThanOrEqual(34);
+});
