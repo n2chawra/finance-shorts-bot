@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { frameOn, holds, keepHeads, keepInside, shows, union } from "../src/studio/camera";
+import { frameOn, holds, keepHeads, keepInside, labelTop, shows, union } from "../src/studio/camera";
 
 const W = 1920, H = 1080;
 const onScreen = (f: { s: number; tx: number; ty: number }, b: [number, number, number, number]) =>
@@ -59,5 +59,18 @@ describe("a steady camera (2026-10-30: the picture zig-zagged)", () => {
     const { steady, HOLD_SEC } = await import("../src/studio/camera");
     const keys = [{ start: 0 }, { start: 0.5 }, { start: HOLD_SEC + 0.1 }, { start: HOLD_SEC + 0.6 }];
     expect(steady(keys).map((k) => k.start)).toEqual([0, HOLD_SEC + 0.1]);
+  });
+});
+
+describe("labelTop", () => {
+  const head: [number, number, number, number] = [300, 1000, 500, 1200];
+  it("keeps a label under its thing when no head is there", () => {
+    expect(labelTop(900, 700, 800, 200, 58, [head])).toBe(900);
+  });
+  it("moves a label above its thing when it would cross a face", () => {
+    expect(labelTop(1050, 700, 400, 200, 58, [head])).toBe(642);
+  });
+  it("stays under when above is no better", () => {
+    expect(labelTop(1050, 1150, 400, 200, 58, [head])).toBe(1050);
   });
 });

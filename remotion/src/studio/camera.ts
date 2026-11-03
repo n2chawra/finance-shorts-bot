@@ -98,3 +98,11 @@ export function breathe(f: Frame, t: number, w: number, h: number, seed: number)
   const ty = Math.min(0, Math.max(h - h * s, f.ty - (s - f.s) * h * 0.42 + dy));
   return { s, tx, ty };
 }
+
+/** Where a thing's label goes (screen px, its top edge): under the thing, unless that lands on an
+ * actor (`bodies`: head to feet), then above the thing (QA, v-20261103-02 twice: in a board room the things float just
+ * above the cast, so a label hung under them crossed Rohan's eyes and Priya's head). */
+export const labelTop = (below: number, above: number, x: number, tw: number, lh: number, bodies: Box[]): number => {
+  const hit = (y: number) => bodies.some(([x0, y0, x1, y1]) => x + tw / 2 > x0 && x - tw / 2 < x1 && y + lh > y0 && y < y1);
+  return hit(below) && !hit(above - lh) ? above - lh : below;
+};

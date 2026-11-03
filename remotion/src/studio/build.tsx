@@ -39,7 +39,7 @@ import { Actor, type ActorSpec, at, clamp, type SceneProps, sec } from "../scene
 import { FONT } from "../design/fonts";
 import { fitLine, minText, textWidth } from "../design/fit";
 import { countUp } from "../fmt/inr";
-import { between, breathe, type Box as Rect, frameOn, type Frame, keepHeads, keepInside, type ShotSize, holds, MOVE_SEC, shows, steady, union } from "./camera";
+import { between, breathe, type Box as Rect, frameOn, type Frame, keepHeads, keepInside, type ShotSize, holds, labelTop, MOVE_SEC, shows, steady, union } from "./camera";
 import { type ScreenText, ScreenTexts } from "./labels";
 import { pulse, spokenFigures } from "./figures";
 import { counterBottom, counterShown } from "./hud";
@@ -449,6 +449,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     const [ax, ay] = scr(a.x, a.y);
     texts.push({ key: a.key, kind: "tag", text: a.text, x: ax, y: ay, k: a.k });
   }
+  const bodies = actorBoxes.map(({ body: [x0, y0, x1, y1] }): Rect => [...scr(x0, y0), ...scr(x1, y1)]);
   for (const st of states) {
     const { it, s } = st;
     if (s.show <= 0.05 || s.flying || !shows(fr, itemBox(st), w, h, 60)) continue;
@@ -460,7 +461,11 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     if (tagText && s.tagK > 0) texts.push({ key: `t${it.id}`, kind: "tag", text: tagText, x: tx, y: ty, k: Math.min(s.tagK, 1.2) * s.show * (1 + 0.15 * pulseOf(st)) });
     if (s.label) {
       const [lx, ly] = scr(s.x, s.y + 14);
-      texts.push({ key: `l${it.id}`, kind: "label", text: s.label, x: lx, y: ly, above: tagText ? ty - (v ? 96 : 74) : ty, k: s.show });
+      const above = tagText ? ty - (v ? 96 : 74) : ty;
+      // a label never sits on a face or a body: over an actor it goes above the thing instead
+      const lfs = fitLine(s.label, v ? 50 : 36, w, { min: minText(w, h) });
+      const top = labelTop(ly, above, lx, textWidth(s.label, lfs) + 24, lfs * 1.15, bodies);
+      texts.push({ key: `l${it.id}`, kind: "label", text: s.label, x: lx, y: top, above, k: s.show });
     }
   }
 
