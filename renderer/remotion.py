@@ -274,7 +274,8 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         "chapters": ([] if any(bt["from"] == 0 for bt in tl["beats"] if bt["scene"] == "chapter") else [{"title": "Intro", "start": 0.0}])
         + [{"title": bt["params"].get("title", ""), "start": round(bt["from"]/tl["fps"], 1)} for bt in tl["beats"] if bt["scene"] == "chapter"],
     }
-    report["audio"] = {"peak_db": tl["audio"]["peak_db"], "mean_db": tl["audio"]["mean_db"]}
+    report["audio"] = {"peak_db": tl["audio"]["peak_db"], "mean_db": tl["audio"]["mean_db"],
+                       **{k: tl["audio"][k] for k in ("lufs", "music_under_voice_db") if k in tl["audio"]}}
     # a video that looks templated (empty frames, the same picture, one shot size, one set) fails
     # here, on the stills, before the video is drawn (renderer/craft.py)
     report["craft_problems"] = shot_problems(tl) + picture_problems(tl) + clause_problems(tl) + device_problems(tl) + frame_problems(_not_end_cards(shots, tl), tl["fps"])

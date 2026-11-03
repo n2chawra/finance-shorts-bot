@@ -471,10 +471,11 @@
       "effort": "S",
       "risk": "Confounded with story (3 of the 4 cast-first Shorts are secret_of_rich/billionaire) and reach; some formats (guess_the_number, money_scale) may need a narrator voice for the question.",
       "metric": "views48h",
-      "status": "new",
+      "status": "rejected",
       "route": "experiment",
       "priority": "high",
-      "note": "2026-10-27: queued; experiments are at the cap of 5 (hook-voice-matches-frame frees the slot ~2026-11-01)."
+      "note": "2026-10-27: queued; experiments are at the cap of 5 (hook-voice-matches-frame frees the slot ~2026-11-01).",
+      "reason": "Superseded by the board (owner, 2026-11-02): one explainer carries the story in full sentences and the cast asks the viewer's questions; a narrator capped at 25% contradicts that rule. asker-voice-contrast tests the voice question within the board."
     },
     {
       "id": "evaluate-voice-heard",
@@ -531,10 +532,11 @@
       "effort": "M",
       "risk": "Busier backgrounds can hurt caption contrast; the layout and craft gates catch it.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "rejected",
       "route": "experiment",
       "priority": "high",
-      "note": "2026-10-28: queued; experiments are at the cap of 5 (hook-voice-matches-frame frees a slot ~2026-11-02)."
+      "note": "2026-10-28: queued; experiments are at the cap of 5 (hook-voice-matches-frame frees a slot ~2026-11-02).",
+      "reason": "Superseded by the board (2026-11-02): story beats are now board rooms (lit stage worlds with the cast) and full-frame cards, not build beats on a flat sky."
     },
     {
       "id": "ending-beats-act-and-vary",
@@ -553,10 +555,10 @@
       "effort": "S",
       "risk": "Low; seeded choices stay deterministic.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
       "priority": "high",
-      "note": "2026-10-28: queued; experiments are at the cap of 5 (hook-voice-matches-frame frees a slot ~2026-11-02). Part (a) not adopted alone: the turn/payoff/loop cameras and transitions are the writer's choices in script.json, not coded, so a seeded override would fight the writer; it goes into the experiment's prompt with part (b)."
+      "note": "2026-10-28: queued; experiments are at the cap of 5 (hook-voice-matches-frame frees a slot ~2026-11-02). Part (a) not adopted alone: the turn/payoff/loop cameras and transitions are the writer's choices in script.json, not coded, so a seeded override would fight the writer; it goes into the experiment's prompt with part (b). 2026-11-03: started as a prompt experiment (area pacing, 8 per arm, 28 days); QA's empty-payoff notes on two 2026-11-03 Shorts are the same problem."
     },
     {
       "id": "first-action-by-1s",
@@ -724,9 +726,10 @@
       "effort": "S",
       "risk": "none to the video; a few seconds more per render",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "normal"
+      "priority": "normal",
+      "note": "2026-11-03: adopted: render.json audio.lufs and music_under_voice_db, render-step warnings; metrics/videos.json is the ingest worker's (auditor lane)."
     }
   ]
 }

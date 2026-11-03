@@ -26,7 +26,7 @@ from pathlib import Path
 import numpy as np
 
 from renderer.engine import voice as tts
-from renderer.engine.audio import (SR, Mixer, sfx_beep, sfx_boom, sfx_clink, sfx_ding, sfx_fail, sfx_kaching,
+from renderer.engine.audio import (SR, Mixer, integrated_lufs, sfx_beep, sfx_boom, sfx_clink, sfx_ding, sfx_fail, sfx_kaching,
                                    sfx_pop, sfx_riser, sfx_tick, sfx_whoosh)
 from renderer.engine.music import gain_curve, make_bed
 from renderer.engine.formatting import LEGACY_CURRENCY, Money, fact_value, money_for, month_year
@@ -564,12 +564,16 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
             peak = float(np.max(np.abs(x))) or 1.0
             voice_m.place_out(x*min(VOICE_RMS/rms, 0.95/peak), start, 1.0)
     stems = {"music": _db(mixer.left), "sfx": _db(sfx_m.left), "voice": _db(voice_m.left, speech > 0)}
+    # how far the bed sits under the voice while someone speaks (research loudness-in-render-json,
+    # 2026-11-03: The Curious Plot ~29 dB, ours ~13 before SHORT_DUCK; nothing recorded whether it closed)
+    under = round(stems["voice"] - _db(mixer.left, speech > 0), 1) if (speech > 0).any() and stems["voice"] > -100 else None
     for m in (voice_m, sfx_m):
         mixer.left += m.left
         mixer.right += m.right
     out.mkdir(parents=True, exist_ok=True)
     mixer.write_wav(out/"audio.wav")
     peak, mean = mixer.levels()
+    lufs = integrated_lufs(mixer.master())
 
     p = style.palette
     hexc = lambda c: "#%02x%02x%02x" % c   # noqa: E731
@@ -584,7 +588,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm},
         "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm,
                   **({"look": (script.get("style") or {})["look"]} if (script.get("style") or {}).get("look") else {})},
-        "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1), "stems": stems},
+        "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1), "stems": stems, "lufs": lufs,
+                  **({"music_under_voice_db": under} if under is not None else {})},
         "disclaimer": DISCLAIMER, "captions": True, "voiceMode": voice, "sources": sources, "currency": fm.currency,
         # A/B variants for this video ({id: "on" | "off"}, generator/experiments.py): scenes read them
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest

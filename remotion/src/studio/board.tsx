@@ -133,6 +133,12 @@ const holderStyle = (style: string, fs: number): { box: React.CSSProperties; ink
   }
 };
 
+/** How high a room's things float above the ground in a Short, as a share of the frame height. The
+ * cast stands at 0.86 scale with the head top about 0.225 of the frame above the ground, so 0.2 hung
+ * every thing (and its label) at eye level (QA, v-20261103-02: labels across Rohan's eyes and Priya's
+ * head, the cola bottle on his head); 0.27 keeps a thing and its label over the heads. */
+export const ROOM_FLOAT_SHORT = 0.27;
+
 export const BoardScene: React.FC<SceneProps> = (p) => {
   const P = p.beat.params as { header?: string; sub?: string; bg?: string; stage?: string; cast?: unknown[]; actors?: unknown[]; items?: unknown[]; actions?: BoardAct[] };
   const { width: w, height: h } = p.tl;
@@ -187,7 +193,7 @@ export const BoardScene: React.FC<SceneProps> = (p) => {
       items: P.items ?? [], yieldAll: card,
       actors: ((P.cast ?? P.actors ?? []) as { scale?: number }[]).map((a) => ({ ...a, scale: a.scale ?? (v ? 0.86 : 0.8) })),
       actions: (P.actions ?? []).filter((a) => !OVERLAY.has(a.do)), locked: true, carried: [...carried], yieldTo: panelIn,
-      attention: true, floatY: card ? 0 : v ? 0.2 : 0.22, heroY: card ? undefined : v ? 0.255 : 0.24 },
+      attention: true, floatY: card ? 0 : v ? ROOM_FLOAT_SHORT : 0.22, heroY: card ? undefined : v ? 0.255 : 0.24 },
   };
   // a panel needs room: the stage shrinks toward its ground (a Short) or slides left (a long video)
   // (smoke test 2026-11-02: shrinking the whole stage in a Short framed it like a box; the Short's stage
