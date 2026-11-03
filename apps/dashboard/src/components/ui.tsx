@@ -43,7 +43,7 @@ export function Card({ title, description, action, children, className = "", ico
   return (
     <motion.section variants={rise} className={`min-w-0 rounded-xl border border-ring bg-surface shadow-card ${flush ? "overflow-hidden" : "p-4 md:p-5"} ${className}`}>
       {(title || action) && (
-        <div className={`flex items-start justify-between gap-3 ${flush ? "border-b border-line px-4 py-3 md:px-5" : "mb-4"}`}>
+        <div className={`flex flex-wrap items-start justify-between gap-3 ${flush ? "border-b border-line px-4 py-3 md:px-5" : "mb-4"}`}>
           <div className="min-w-0">
             {title && (
               <h2 className="flex items-center gap-2 text-sm font-medium text-ink">
@@ -221,10 +221,10 @@ export function Segmented<T extends string>({ value, onChange, options, label }:
 }) {
   return (
     <ToggleGroup.Root type="single" value={value} onValueChange={(v) => v && onChange(v as T)} aria-label={label}
-      className="inline-flex h-8 items-center rounded-lg border border-ring bg-surface-2 p-0.5">
+      className="no-scrollbar inline-flex h-8 max-w-full items-center overflow-x-auto rounded-lg border border-ring bg-surface-2 p-0.5">
       {options.map((o) => (
         <ToggleGroup.Item key={o.value} value={o.value}
-          className="relative h-full rounded-md px-2.5 text-[13px] font-medium text-ink2 transition-colors hover:text-ink data-[state=on]:text-ink">
+          className="relative h-full shrink-0 whitespace-nowrap rounded-md px-2.5 text-[13px] font-medium text-ink2 transition-colors hover:text-ink data-[state=on]:text-ink">
           {value === o.value && <motion.span layoutId={`seg-${label}`} className="absolute inset-0 rounded-md border border-ring bg-surface shadow-card" transition={{ type: "spring", stiffness: 500, damping: 38 }} />}
           <span className="relative flex items-center gap-1.5">{o.label}</span>
         </ToggleGroup.Item>

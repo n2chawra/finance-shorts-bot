@@ -14,6 +14,7 @@ import { AiChannelCard, AiVideoCard, ContentTable, HeroStat, MiniStat, StudioSke
 import { Card, ErrorNote, PageHeader, Segmented, Stagger } from "@/components/ui";
 import { fmtCompact, fmtDayKey, fmtNum, fmtRelative } from "@/lib/format";
 import { useStudio } from "@/lib/queries";
+import { STATS_AGE_CLASS, statsAge } from "@/lib/stats-age";
 import { pctChange } from "@/lib/studio-calc";
 import type { Fmt, Range, Studio } from "@/lib/studio-schema";
 
@@ -81,9 +82,11 @@ export default function AnalyticsPage() {
 }
 
 function Freshness({ data }: { data: Studio }) {
+  const age = statsAge(data.refreshed.through);
   return (
     <span>
-      Through {data.refreshed.through ? fmtDayKey(data.refreshed.through) : "—"}
+      {/* coloured when the newest YouTube Analytics day is 4+ days old: the stats job has likely stopped */}
+      <span data-testid="stats-age" data-tone={age.tone} className={STATS_AGE_CLASS[age.tone]}>{age.label}</span>
       {data.refreshed.daily && <> · daily numbers {fmtRelative(data.refreshed.daily)}</>}
       {data.refreshed.deep && <> · sources and audience {fmtRelative(data.refreshed.deep)}</>}
     </span>

@@ -129,7 +129,8 @@ export async function getStudio(range: Range, format: Fmt): Promise<Studio> {
   const channelDays = await safe(prisma.channelDay.findMany({ where: { format }, orderBy: { day: "asc" } }), []);
   const videoDays = sumByDay(videos.flatMap((v) => v.upload!.stats.map(toDay)));
   const source = channelDays.length ? channelDays.map(toDay) : videoDays;
-  const through = source.at(-1)?.day ?? addDays(istDay(new Date()), -1);
+  const lastDay = source.at(-1)?.day ?? null;   // null: no YouTube Analytics yet, which the page shows in red, not as "through yesterday"
+  const through = lastDay ?? addDays(istDay(new Date()), -1);
   const from = addDays(through, -(n - 1));
   const daily = fillDays(source.filter((d) => d.day >= from && d.day <= through), from, through);
   const prevDays = source.filter((d) => d.day >= addDays(from, -n) && d.day < from);
@@ -184,7 +185,7 @@ export async function getStudio(range: Range, format: Fmt): Promise<Studio> {
       return { attrs: attrsOf(v), avgViewPct: r.avgViewPct, views48: r.views48, engagedRatio: r.engagedRatio, hookHold: r.hookHold };
     }), ATTRS),
     ai: { channel: ai.channel, videos: ai.videos.flatMap((a) => { const v = videos.find((x) => x.id === a.videoId); return v ? [{ ...a, title: v.title, thumbnailUrl: media(v.id, "thumbnail") }] : []; }) },
-    refreshed: { daily: dailyAt, deep: deepAt, through },
+    refreshed: { daily: dailyAt, deep: deepAt, through: lastDay },
     missing,
   };
 }

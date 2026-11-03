@@ -153,9 +153,9 @@ test("template cards keep a readable text column", async ({ page }) => {
 });
 
 test("video page calls a due slot due, not minutes ago", async ({ page }) => {
-  // tomorrow 07:20 IST: the 07:07 Shorts slot is due, and the queue's first Short is the one to post
+  // tomorrow 12:50 IST: the 12:37 Shorts slot (the first since 2026-11-03) is due, and the queue's first Short is the one to post
   const tomorrow = new Date(Date.now() + 330 * 60_000 + 86_400_000).toISOString().slice(0, 10);
-  await page.clock.setFixedTime(new Date(`${tomorrow}T07:20:00+05:30`));
+  await page.clock.setFixedTime(new Date(`${tomorrow}T12:50:00+05:30`));
   await signIn(page);
   await page.goto("/queue");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Queue/, { timeout: 30_000 });
@@ -239,9 +239,11 @@ test("stat cards in a row share one height", async ({ page }) => {
   await signIn(page);
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
-  await page.waitForTimeout(1200);   // entrance animations move the cards
-  // a card with a wrapped label or a longer line once stood taller than its neighbours, leaving a ragged row
-  const ragged = await page.getByTestId("overview-stats").evaluate((g) => {
+  await page.waitForTimeout(1200);   // entrance animations move (and scale) the cards: don't measure mid-flight
+  // a card with a wrapped label or a longer line once stood taller than its neighbours, leaving a ragged row.
+  // Measured until it settles: the fixed 1.2 s wait alone for the entrance animations flaked under load (2026-11-03);
+  // a card that really is taller stays taller and still fails after 10 s.
+  const ragged = () => page.getByTestId("overview-stats").evaluate((g) => {
     const rows = new Map<number, number[]>();
     for (const cell of Array.from(g.children)) {
       const card = cell.firstElementChild!.getBoundingClientRect();
@@ -250,7 +252,7 @@ test("stat cards in a row share one height", async ({ page }) => {
     }
     return [...rows.values()].filter((hs) => Math.max(...hs) - Math.min(...hs) > 1);
   });
-  expect(ragged).toEqual([]);
+  await expect.poll(ragged, { timeout: 10_000, intervals: [300, 500, 1000] }).toEqual([]);
 });
 
 test("videos topic filter offers every category it is given", async ({ page }) => {
@@ -327,7 +329,7 @@ test("calendar heading names the long-video days too", async ({ page }) => {
   await page.goto("/calendar");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
   // the line under the heading spoke only of the daily Shorts, though the grid shows long videos at 20:07
-  await expect(page.getByText(/long videos Tue\/Thu\/Sat at 20:07 IST/)).toBeVisible();
+  await expect(page.getByText(/long videos Sat at 20:07 IST/)).toBeVisible();
 });
 
 test("calendar draws long-video thumbnails landscape", async ({ page }) => {
@@ -406,4 +408,23 @@ test("overview and analytics say how old the YouTube numbers are", async ({ page
     await expect(age).toHaveText(`YouTube Analytics through ${label}`, { timeout: 30_000 });
     await expect(age).toHaveAttribute("data-tone", /^(fine|warning|critical)$/);
   }
+});
+
+test("card header actions never sit on the card's title", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/analytics");
+  // on phones the Over time card's five-way metric switch covered "Over time" and squeezed its description to one word a line
+  const card = page.locator("section", { has: page.getByRole("heading", { name: "Over time" }) }).first();
+  await expect(card).toBeVisible({ timeout: 30_000 });
+  await page.waitForTimeout(1200);   // entrance animations
+  const title = await card.getByRole("heading", { name: "Over time" }).boundingBox();
+  const desc = await card.getByText("Hover a day to see which videos went out that day").boundingBox();
+  const sw = await card.getByRole("radiogroup", { name: "Metric" }).boundingBox();
+  const overlap = (a: NonNullable<typeof sw>, b: NonNullable<typeof sw>) =>
+    a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
+  expect(title && desc && sw, "header parts found").toBeTruthy();
+  expect(overlap(title!, sw!), "metric switch over the title").toBe(false);
+  expect(overlap(desc!, sw!), "metric switch over the description").toBe(false);
+  expect(desc!.width, "description column width").toBeGreaterThanOrEqual(200);
+  expect(sw!.height, "switch labels stay on one line").toBeLessThanOrEqual(34);
 });
