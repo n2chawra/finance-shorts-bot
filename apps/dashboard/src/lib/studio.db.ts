@@ -10,7 +10,7 @@ import {
   type AiVideo, type BreakdownKind, type ContentRow, type Day, type Fmt, type Range, type Slice, type Studio, type VideoStudio,
 } from "./studio-schema";
 import {
-  averageCurve, fillDays, hourlyGains, istSlot, istWeekday, lengthBucket, median, quickVerdict, sumByDay, totalsOf, whatWorks, type Curve,
+  averageCurve, fillDays, hourlyGains, istSlot, istWeekday, latest, lengthBucket, median, quickVerdict, sumByDay, totalsOf, whatWorks, type Curve,
 } from "./studio-calc";
 import { z } from "zod";
 
@@ -66,6 +66,7 @@ async function aiDocs(): Promise<{ channel: Studio["ai"]["channel"]; videos: AiV
 const published = (format: Fmt) => ({ deletedAt: null, status: "published" as const, ...(format === "all" ? {} : { format }), upload: { youtubeId: { not: null } } });
 
 type Loaded = Awaited<ReturnType<typeof loadVideos>>[number];
+const publishedAt = (v: Loaded) => v.upload!.publishAt;
 async function loadVideos(format: Fmt) {
   return prisma.video.findMany({ where: published(format), include: { topic: true, upload: { include: { stats: { orderBy: { day: "asc" } } } } } });
 }
@@ -158,7 +159,7 @@ export async function getStudio(range: Range, format: Fmt): Promise<Studio> {
   const hours = Array.from({ length: 48 }, (_, i) => perVideo.reduce((a, p) => a + p.hours[i]!, 0));
 
   const rows = benchmarked(videos.map((v) => contentRow(v)), aiMap).sort((a, b) => b.publishAt.localeCompare(a.publishAt));
-  const recent = (f: "short" | "long") => videos.filter((v) => v.format === f && v.upload!.retention).sort((a, b) => b.upload!.publishAt.getTime() - a.upload!.publishAt.getTime()).slice(0, 10);
+  const recent = (f: "short" | "long") => latest(videos.filter((v) => v.format === f && v.upload!.retention), publishedAt, 10);
 
   const missing: string[] = [];
   if (!statRows.some((s) => s.impressions !== null)) missing.push("impressions");
@@ -209,7 +210,7 @@ export async function getVideoStudio(id: string): Promise<VideoStudio | null> {
     return snaps.length ? hourlyGains([{ hour: new Date(publishAt.getTime() - 3_600_000), views: 0 }, ...snaps], new Date(publishAt.getTime() + 48 * 3_600_000)) : [];
   };
   const hourly = u ? await firstHours(u.id, u.publishAt) : [];
-  const others = await Promise.all(peers.filter((p) => p.id !== id).sort((a, b) => b.upload!.publishAt.getTime() - a.upload!.publishAt.getTime()).slice(0, 10).map((p) => firstHours(p.upload!.id, p.upload!.publishAt)));
+  const others = await Promise.all(latest(peers.filter((p) => p.id !== id), publishedAt, 10).map((p) => firstHours(p.upload!.id, p.upload!.publishAt)));
   const withData = others.filter((h) => h.some((x) => x > 0));
   const typicalHourly = withData.length ? Array.from({ length: 48 }, (_, i) => median(withData.map((h) => h[i] ?? 0)) ?? 0) : [];
 
@@ -222,7 +223,8 @@ export async function getVideoStudio(id: string): Promise<VideoStudio | null> {
     videoId: id, format, durationSec: v.durationSec, previewUrl: media(id, "preview"), published: Boolean(u?.youtubeId && v.status === "published"),
     totals: totalsOf(days, reachOf(u?.stats ?? [])), daily: days,
     curve, relative: ((u?.relRetention as Curve | null) ?? []),
-    typical: averageCurve(peers.filter((p) => p.id !== id && p.upload!.retention).slice(0, 10).map((p) => p.upload!.retention as Curve)),
+    // the 10 newest peers with a curve (peers come back unordered, so a plain slice took 10 arbitrary ones)
+    typical: averageCurve(latest(peers.filter((p) => p.id !== id && p.upload!.retention), publishedAt, 10).map((p) => p.upload!.retention as Curve)),
     drops: drops.success ? drops.data : [], hookHold: u?.hookHold ?? null, endHold: curve.length ? [...curve].sort((a, b) => a[0] - b[0]).at(-1)![1] : null,
     breakdowns: slices(bRows),
     hourly, typicalHourly,

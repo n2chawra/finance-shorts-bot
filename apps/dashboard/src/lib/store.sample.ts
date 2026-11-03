@@ -7,6 +7,7 @@ import path from "node:path";
 
 import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 import { mostLoved } from "./schemas";
+import { NO_PICK, canMarkStale, uploadNow } from "./queue-actions";
 import { windowStart } from "./totals";
 import { manualState } from "./youtube-link";
 
@@ -501,7 +502,7 @@ export function videoAction(id: string, action: VideoAction, reason?: string): {
     return { ok: true };
   }
   if (action === "stale") {
-    if (v.status !== "queued") return { ok: false, error: "Only a video waiting to be published can be marked stale" };
+    if (!canMarkStale(v.status)) return { ok: false, error: "Only a video waiting to be published can be marked stale" };
     if (!why) return { ok: false, error: "Say why it is stale: the system learns from it" };
     v.status = "rejected"; v.failReason = `Stale (owner): ${why}`; v.queuePosition = null; v.pickedAt = null; v.pickReason = null;
     note("stale", why);
@@ -522,12 +523,12 @@ export function videoAction(id: string, action: VideoAction, reason?: string): {
   }
   if (v.status !== "queued") return { ok: false, error: "Only queued videos can be skipped or uploaded" };
   if (action === "skip") {
+    Object.assign(v, NO_PICK);
     renumber(s, [...queue(s).filter((x) => x.id !== id), v]);
     return { ok: true };
   }
   if (s.settings.uploadsPaused) return { ok: false, error: "Uploads are paused" };
-  v.status = "scheduled";
-  v.queuePosition = null;
+  Object.assign(v, uploadNow());
   v.upload = { youtubeId: null, publishAt: new Date().toISOString(), state: "pending", error: null, attempts: 0 };
   renumber(s, queue(s));
   return { ok: true };

@@ -1,0 +1,52 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-04",
+  "startedAt": "2026-11-03T16:35:01Z",
+  "finishedAt": "2026-11-03T16:42:06Z",
+  "summary": "Data audit clean (0 errors, 0 warnings). Re-shipped the held Skip-to-end fix now that merges work again, fixed two small dashboard bugs, and wrote the first AI analysis for the Analytics page (23 videos and a channel review).",
+  "decision": "acted",
+  "why": "Audit 2026-11-03T16:22Z: 47 videos, 0 issues. The merge check's Playwright was fixed on 3 Nov, so dui-012 could ship. Review of the new Studio analytics found the typical retention curve built from 10 arbitrary videos. All checks green: pytest 398, workers 100 tests, dashboard tsc + lint.",
+  "findings": [
+    {
+      "title": "Big-money Shorts reach far more people",
+      "detail": "Shorts with a dollar figure or 'billion' in the title: median 793 views in 48 h (9 videos) vs 39 for the rest (24)."
+    },
+    {
+      "title": "Viewers leave when the structure is announced",
+      "detail": "'Four levels…'/'Three clues…' right after the hook lost 24–41% of viewers in about 2 s in five recent Shorts."
+    },
+    {
+      "title": "Long videos unlisted warning cleared",
+      "detail": "The 3 Nov audit no longer finds the three long videos unlisted."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Skip to end / Upload now drop the owner's pick (dui-012)",
+      "detail": "lib/queue-actions.ts, used by both stores; test workers/tests/dashboard-queue-actions.test.ts.",
+      "branch": "agent/auditor/2026-11-04"
+    },
+    {
+      "title": "Sample store marks stale like the database (dui-014)",
+      "detail": "canMarkStale in lib/queue-actions.ts.",
+      "branch": "agent/auditor/2026-11-04"
+    },
+    {
+      "title": "Typical retention curve uses the 10 newest videos (dd-010)",
+      "detail": "latest() in studio-calc.ts; test workers/tests/dashboard-studio-calc.test.ts.",
+      "branch": "agent/auditor/2026-11-04"
+    },
+    {
+      "title": "AI analysis for the Analytics page",
+      "detail": "improvement/analysis/videos.json (23 videos) and channel.json.",
+      "branch": "agent/auditor/2026-11-04"
+    }
+  ],
+  "nextCheck": "2026-11-05",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-04.md"
+    }
+  ]
+}

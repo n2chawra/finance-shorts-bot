@@ -128,3 +128,8 @@ export function quickVerdict(vs48: number | null, vsPct: number | null): "hit" |
 
 /** % change, null without a base. */
 export const pctChange = (now: number, before: number | null | undefined) => (before && before > 0 ? ((now - before) / before) * 100 : null);
+
+/** The `n` newest items by `at` (newest first), whatever order they came in: the database returns rows unordered. */
+export function latest<T>(items: T[], at: (t: T) => Date, n: number): T[] {
+  return [...items].sort((a, b) => at(b).getTime() - at(a).getTime()).slice(0, n);
+}

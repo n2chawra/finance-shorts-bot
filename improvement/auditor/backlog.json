@@ -474,7 +474,7 @@
       "id": "dui-012",
       "kind": "bug",
       "title": "Skip to end / Upload now kept the owner's pick",
-      "detail": "The queue sorts pickedAt first, then queuePosition. videoAction 'skip' only moved queuePosition, so skipping the picked video left it at the front (toast said 'Moved to the end'); 'upload-now' left pickedAt set too, unlike the publisher. Fixed: lib/queue-actions.ts skipToEnd/uploadNow clear the pick; used by store.db.ts and store.sample.ts; test workers/tests/dashboard-queue-actions.test.ts. NOT MERGED: the 2026-11-02 branch was blocked by the merge workflow's Playwright install (ubuntu-latest is now 26.04, Playwright 1.56.1 can't install its deps), not by this code. The fix is commit 16e52ca; held until the owner fixes the workflow, then re-ship it as is.",
+      "detail": "The queue sorts pickedAt first, then queuePosition. videoAction 'skip' only moved queuePosition, so skipping the picked video left it at the front (toast said 'Moved to the end'); 'upload-now' left pickedAt set too, unlike the publisher. Fixed: lib/queue-actions.ts skipToEnd/uploadNow clear the pick; used by store.db.ts and store.sample.ts; test workers/tests/dashboard-queue-actions.test.ts. Re-shipped 2026-11-04 from commit 16e52ca once the merge check's Playwright was upgraded (dashboard agent, 1.64.1).",
       "files": [
         "apps/dashboard/src/lib/queue-actions.ts",
         "apps/dashboard/src/lib/store.db.ts",
@@ -482,7 +482,8 @@
       ],
       "severity": "medium",
       "found": "2026-11-02",
-      "status": "open"
+      "status": "fixed",
+      "fixed": "2026-11-04"
     },
     {
       "id": "dsh-007",
@@ -514,13 +515,16 @@
       "id": "dui-014",
       "kind": "bug",
       "title": "Sample store: Mark stale only accepts queued videos",
-      "detail": "store.db.ts allows stale on queued, qa_passed and rendered; store.sample.ts only queued, so the sample dashboard and e2e tests behave differently.",
+      "detail": "store.db.ts allows stale on queued, qa_passed and rendered; store.sample.ts only queued, so the sample dashboard and e2e tests behave differently. Fixed: one rule, lib/queue-actions.ts canMarkStale (STALE_STATUSES), used by both stores; test in workers/tests/dashboard-queue-actions.test.ts.",
       "files": [
+        "apps/dashboard/src/lib/queue-actions.ts",
+        "apps/dashboard/src/lib/store.db.ts",
         "apps/dashboard/src/lib/store.sample.ts"
       ],
       "severity": "low",
       "found": "2026-11-02",
-      "status": "open"
+      "status": "fixed",
+      "fixed": "2026-11-04"
     },
     {
       "id": "wrk-004",
@@ -561,6 +565,44 @@
       "found": "2026-11-03",
       "status": "fixed",
       "fixed": "2026-11-03"
+    },
+    {
+      "id": "dd-010",
+      "kind": "bug",
+      "title": "Video page 'typical' retention curve used 10 arbitrary peers",
+      "detail": "getVideoStudio averaged the curves of peers.slice(0, 10), but loadVideos has no orderBy, so the 'typical' curve on a video's Analytics tab came from whichever 10 published videos Postgres returned first (old Shorts of a different length and story), not the last 10 as the overview card does. Fixed: studio-calc latest() (newest first by publishAt), used for the typical curve, the typical first-48-hours line and the overview's recent curves. Test workers/tests/dashboard-studio-calc.test.ts.",
+      "files": [
+        "apps/dashboard/src/lib/studio.db.ts",
+        "apps/dashboard/src/lib/studio-calc.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-04",
+      "status": "fixed",
+      "fixed": "2026-11-04"
+    },
+    {
+      "id": "dd-011",
+      "kind": "data",
+      "title": "48-hour views mix IST publish days with YouTube's Pacific-time days",
+      "detail": "contentRow's views48 sums VideoStat days from the IST publish date to the next day, but YouTube Analytics days are Pacific time. A 12:37 IST Short goes out at 23:07 PST the day before, so its first ~1 h is left out and the window runs ~49 h. Small and consistent across videos, so benchmarks are still fair; fix only together with the other 48 h figures (metrics/videos.json views48h) so they agree.",
+      "files": [
+        "apps/dashboard/src/lib/studio.db.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-04",
+      "status": "open"
+    },
+    {
+      "id": "wrk-005",
+      "kind": "data",
+      "title": "Hourly snapshots skip a Short until stats marks it published",
+      "detail": "workers/snapshot.ts only reads uploads with state 'published'; a scheduled Short becomes 'published' when stats.ts (every 3 h) sees it public, so the first 1–3 hours have no snapshot and the video page's first-48-hours chart spreads those views evenly from publish time. Option: also snapshot 'scheduled' uploads whose publishAt has passed.",
+      "files": [
+        "workers/snapshot.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-04",
+      "status": "open"
     }
   ]
 }
