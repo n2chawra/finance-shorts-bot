@@ -201,6 +201,24 @@ test("resolve all leaves setting proposals for a decision", async ({ page }) => 
   expect(sent!.ids, "the open proposal must not be resolved").not.toContain("n0");
 });
 
+test("undo on the resolve-all toast reopens exactly what it resolved", async ({ page }) => {
+  await signIn(page);
+  const sent: { ids: string[]; action: string }[] = [];
+  await page.route("**/api/notifications", async (route) => {
+    if (route.request().method() !== "PATCH") return route.continue();
+    const body = route.request().postDataJSON() as { ids: string[]; action: string };
+    if (body.action !== "seen") sent.push(body);
+    await route.fulfill({ response: await route.fetch({ method: "GET" }) });
+  });
+  await page.goto("/notifications");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
+  await page.getByRole("button", { name: "Resolve all" }).click();
+  // a mis-tap on the phone used to mean reopening each item from "recently resolved"
+  await page.getByRole("button", { name: "Undo" }).click();
+  await expect.poll(() => sent.map((b) => b.action)).toEqual(["resolve", "reopen"]);
+  expect(sent[1].ids).toEqual(sent[0].ids);
+});
+
 test("stat cards in a row share one height", async ({ page }) => {
   await signIn(page);
   await page.goto("/");

@@ -99,7 +99,10 @@ export default function NotificationsPage() {
 
   if (isLoading) return <Loading />;
   if (error || !data) return <ErrorNote error={error} />;
-  const run = (ids: string[], action: "resolve" | "reopen" | "approve" | "decline", done: string) => act.mutate({ ids, action }, { onSuccess: () => toast(done), onError: (e) => toast(e.message, "error") });
+  const run = (ids: string[], action: "resolve" | "reopen" | "approve" | "decline", done: string, undo?: () => void) =>
+    act.mutate({ ids, action }, { onSuccess: () => toast(done, "ok", undo && { label: "Undo", onClick: undo }), onError: (e) => toast(e.message, "error") });
+  // a mis-tap on "Resolve all" reopens exactly the items it resolved, not the older resolved ones
+  const resolveAll = (ids: string[]) => run(ids, "resolve", `${ids.length} marked resolved`, () => run(ids, "reopen", `${ids.length} reopened`));
   const critical = data.open.filter((n) => n.severity === "critical").length;
   // proposals wait for Approve or Decline; resolving one would drop it with no decision
   const resolvable = data.open.filter((n) => !n.proposal).map((n) => n.id);
@@ -107,7 +110,7 @@ export default function NotificationsPage() {
   return (
     <Stagger>
       <PageHeader title="Notifications" sub="Only things that need you: anything the automation can't fix by itself. Fixed problems clear themselves on the next check.">
-        {resolvable.length > 1 && <Button icon={CheckCheck} disabled={act.isPending} onClick={() => run(resolvable, "resolve", "All marked resolved")}>Resolve all</Button>}
+        {resolvable.length > 1 && <Button icon={CheckCheck} disabled={act.isPending} onClick={() => resolveAll(resolvable)}>Resolve all</Button>}
       </PageHeader>
 
       {data.open.length === 0 ? (
