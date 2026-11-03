@@ -117,6 +117,9 @@ const DOCS: Record<string, string> = {
   topicFeed: "improvement/research/topics.json",
   longTopicFeed: "improvement/longform/topics.json",
   longBacklog: "improvement/longform/backlog.json",
+  // the auditor's AI analysis of the numbers (2026-11-03), shown on the Analytics page
+  aiChannel: "improvement/analysis/channel.json",
+  aiVideos: "improvement/analysis/videos.json",
 };
 
 /** The topic feed with each topic's video (from history.json: the video run records topic.feed_id there). */
@@ -232,7 +235,53 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
     decisions: decided.map((d) => ({ key: d.dedupeKey, source: d.source, title: d.title, proposal: d.proposal, decision: d.decision, decidedAt: d.decidedAt!.toISOString() })) });
   // the owner's feedback (2026-10-30): read by the video routine (state) and the agents every night
   write("feedback.json", await feedbackExport(prisma, now));
+  // Studio-grade numbers for the auditor's AI analysis (2026-11-03)
+  write("analytics.json", await analyticsExport(prisma, now));
   return changed;
+}
+
+type Curve = [number, number][];
+
+/** metrics/analytics.json: what the auditor's AI analysis reads (the routines have no database). Per video
+ * the wider numbers, where viewers left (matched to the script), traffic, countries, searches and, for the
+ * last 14 days, comment texts (no names); per channel the 28-day breakdowns by format. Replaced daily. */
+export async function analyticsExport(prisma: PrismaClient, now = new Date()) {
+  const published = await prisma.video.findMany({
+    where: { status: "published", deletedAt: null, upload: { youtubeId: { not: null } } },
+    include: { upload: { include: { stats: true, comments: { orderBy: { likes: "desc" }, take: 20 } } } },
+    orderBy: { createdAt: "asc" },
+  });
+  const breakdowns = await prisma.breakdown.findMany({ where: { OR: [{ scope: { startsWith: "video:" } }, { scope: { in: ["channel:all:28", "channel:short:28", "channel:long:28", "channel:all:90"] } }] } });
+  const top = (scope: string, kind: string, n: number) => breakdowns.filter((b) => b.scope === scope && b.kind === kind).sort((a, b) => b.views - a.views).slice(0, n)
+    .map((b) => ({ key: b.key, views: Math.round(b.views * 10) / 10, share: Math.round(b.share * 1000) / 1000, ...(b.extra && typeof b.extra === "object" ? b.extra as object : {}) }));
+  const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
+  const videos = published.map((v) => {
+    const u = v.upload!;
+    const views = sum(u.stats.map((s) => s.views));
+    const imp = sum(u.stats.map((s) => s.impressions ?? 0));
+    const scope = `video:${v.id}`;
+    const recent = now.getTime() - u.publishAt.getTime() < 14 * DAY_MS;
+    return {
+      id: v.id, format: v.format, title: v.title, publishAt: u.publishAt.toISOString(), durationSec: v.durationSec,
+      views, engagedRatio: views ? Math.round((sum(u.stats.map((s) => s.engagedViews)) / views) * 1000) / 1000 : null,
+      watchHours: Math.round((sum(u.stats.map((s) => s.watchMinutes)) / 60) * 10) / 10, shares: sum(u.stats.map((s) => s.shares)),
+      subsGained: sum(u.stats.map((s) => s.subsGained)), subsLost: sum(u.stats.map((s) => s.subsLost)),
+      impressions: imp || null, ctr: imp ? Math.round((sum(u.stats.map((s) => (s.impressions ?? 0) * (s.ctr ?? 0))) / imp) * 10000) / 10000 : null,
+      hookHold: u.hookHold, endHold: Array.isArray(u.retention) && u.retention.length ? (u.retention as Curve).at(-1)![1] : null,
+      vsSimilarLength: Array.isArray(u.relRetention) && u.relRetention.length ? Math.round(((u.relRetention as Curve).reduce((a, p) => a + p[1], 0) / u.relRetention.length) * 100) / 100 : null,
+      drops: u.drops ?? [],
+      traffic: top(scope, "traffic", 6), countries: top(scope, "country", 5), searches: top(scope, "search", 8), devices: top(scope, "device", 3), subscribed: top(scope, "subscribed", 2),
+      comments: recent ? u.comments.map((c) => ({ text: c.text.slice(0, 300), likes: c.likes })) : [],
+    };
+  });
+  const channel = Object.fromEntries(["all:28", "short:28", "long:28", "all:90"].map((k) => [k, Object.fromEntries(
+    ["traffic", "search", "suggested", "external", "country", "ageGender", "device", "subscribed", "sharing"].map((kind) => [kind, top(`channel:${k}`, kind, 12)]))]));
+  const days = await prisma.channelDay.findMany({ where: { day: { gte: new Date(now.getTime() - 56 * DAY_MS) } }, orderBy: { day: "asc" } });
+  return {
+    note: "Studio-grade YouTube numbers for the auditor's AI analysis (agents/auditor.md step 3b). Written by the ingest workflow; replaced daily.",
+    channel, channelDays: days.map((d) => ({ day: d.day.toISOString().slice(0, 10), format: d.format, views: d.views, engagedViews: d.engagedViews, watchMinutes: Math.round(d.watchMinutes), avgViewPct: d.avgViewPct, subsGained: d.subsGained, subsLost: d.subsLost, shares: d.shares })),
+    videos,
+  };
 }
 
 /** metrics/feedback.json: every note of the last 90 days with the video it is about, the open ones first. */

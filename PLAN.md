@@ -71,6 +71,9 @@ Frontend (mobile-first). Ticked pages run on in-memory sample data until M4 land
 - [x] Queue controls: skip, delete, drag to reorder, upload now, pause all uploads
 - [x] Templates page: avg views per template, enable/disable, weight, sample preview video
 - [x] Analytics page: views + subscribers over time, best/worst videos, best upload days
+- [x] Studio-grade analytics (2026-11-03): 8 tabs (overview, realtime, content, reach, engagement,
+  audience, what works, AI insights), per-video retention over key frames with drops matched to the
+  script, hourly snapshots, `stats-deep.yml`, the auditor's AI analysis in `improvement/analysis/`
 - [x] Runs page: every routine run, result, duration, errors, link to the Claude session
 - [x] Settings page (fields above)
 - [x] Deploy to Netlify (`netlify.toml`; builds skipped when `apps/dashboard` is unchanged)

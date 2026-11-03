@@ -56,7 +56,11 @@ erDiagram
 | `Video` | video | `id` (`v-YYYYMMDD-NN`), `status`, `failReason`, `script`, `style`, `title`, `description`, `tags`, `queuePosition`, `createdAt`, `deletedAt` (soft delete, so ingest won't re-add it) | ingest, dashboard, publish |
 | `QaCheck` | check per video | `checker` (number_check / fact_review / qa_review), `passed`, `notes` | ingest |
 | `Upload` | YouTube upload (one per video) | `youtubeId`, `publishAt`, `state` (pending / uploaded / scheduled / published / failed), `error`, `attempts`, `liveViews/Likes/Comments`, `liveAt` | publish, stats, dashboard (manual upload, live counts) |
-| `VideoStat` | upload × day | `views`, `likes`, `comments`, `subsGained`, `avgViewPct` | stats |
+| `VideoStat` | upload × day | `views`, `engagedViews`, `watchMinutes`, `avgViewPct`, `avgViewSec`, `likes`, `dislikes`, `comments`, `shares`, `subsGained`, `subsLost`, `playlistAdds`, `impressions`, `ctr` | stats |
+| `ChannelDay` | day × format | the same day metrics for the whole channel (`all`, `short`, `long`) | stats |
+| `Breakdown` | scope × kind × key | traffic, search terms, suggested, external, country, age × gender, device, OS, subscribed, sharing; `scope` is `video:<id>` or `channel:<format>:<days>`; reach rows `reach/videoDay` | stats-deep |
+| `LiveSnapshot` | upload × hour | public views, likes, comments (kept 7 days) | snapshot (watchdog) |
+| `Comment` | comment | top-level public comments (text, likes, replies) | stats-deep |
 | `AgentRun` | step of a run | `agent` (planner, number_check, fact_review, render, qa_review, ship, template_builder, manual_upload…), `status`, `log`, `startedAt`, `finishedAt` | ingest (from each manifest), dashboard (manual upload) |
 | `Setting` | setting | `key`, `value` (JSON) | dashboard; read by workers; mirrored to `config/settings.json` |
 

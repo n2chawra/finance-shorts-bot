@@ -1,9 +1,9 @@
 // Shared by the dashboard and the workers (workers generate their client from this file).
 
 generator client {
-  provider      = "prisma-client-js"
+  provider        = "prisma-client-js"
   // native for local dev and GitHub Actions; rhel-openssl-3.0.x for Netlify's serverless functions
-  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  binaryTargets   = ["native", "rhel-openssl-3.0.x"]
   // load relations with one JOIN query instead of one query per relation (each costs a round trip)
   previewFeatures = ["relationJoins"]
 }
@@ -115,15 +115,15 @@ model QaCheck {
 }
 
 model Upload {
-  id        String      @id @default(cuid())
-  videoId   String      @unique
-  video     Video       @relation(fields: [videoId], references: [id], onDelete: Cascade)
-  youtubeId String?
-  publishAt DateTime
-  state     UploadState @default(pending)
-  error     String?
-  attempts  Int         @default(0)
-  stats     VideoStat[]
+  id           String         @id @default(cuid())
+  videoId      String         @unique
+  video        Video          @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  youtubeId    String?
+  publishAt    DateTime
+  state        UploadState    @default(pending)
+  error        String?
+  attempts     Int            @default(0)
+  stats        VideoStat[]
   // current public counters from the YouTube Data API, refreshed by the dashboard at most once a minute
   liveViews    Int?
   liveLikes    Int?
@@ -134,20 +134,100 @@ model Upload {
   retention    Json?
   hookHold     Float?
   retentionAt  DateTime?
+  // the same curve against YouTube's typical video of this length (0..1, 0.5 = typical), and the
+  // three steepest drops matched to the script's spoken lines (workers/lib/retention.ts dropPoints)
+  relRetention Json?
+  drops        Json?
+  snapshots    LiveSnapshot[]
+  comments     Comment[]
 }
 
 model VideoStat {
-  id         String   @id @default(cuid())
-  uploadId   String
-  upload     Upload   @relation(fields: [uploadId], references: [id], onDelete: Cascade)
-  day        DateTime @db.Date
-  views      Int      @default(0)
-  likes      Int      @default(0)
-  comments   Int      @default(0)
-  subsGained Int      @default(0)
-  avgViewPct Float    @default(0)
+  id           String   @id @default(cuid())
+  uploadId     String
+  upload       Upload   @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+  day          DateTime @db.Date
+  views        Int      @default(0)
+  likes        Int      @default(0)
+  comments     Int      @default(0)
+  subsGained   Int      @default(0)
+  avgViewPct   Float    @default(0)
+  // widened 2026-11-03 (Studio-grade analytics)
+  engagedViews Int      @default(0)
+  watchMinutes Float    @default(0)
+  avgViewSec   Float    @default(0)
+  shares       Int      @default(0)
+  dislikes     Int      @default(0)
+  subsLost     Int      @default(0)
+  playlistAdds Int      @default(0)
+  // thumbnail impressions and click-through from the YouTube Reporting API's reach report (null until it arrives)
+  impressions  Int?
+  ctr          Float?
 
   @@unique([uploadId, day])
+}
+
+/// The channel's day totals from YouTube Analytics, per format ("short" | "long" | "all").
+model ChannelDay {
+  day          DateTime @db.Date
+  format       String
+  views        Int      @default(0)
+  engagedViews Int      @default(0)
+  watchMinutes Float    @default(0)
+  avgViewSec   Float    @default(0)
+  avgViewPct   Float    @default(0)
+  likes        Int      @default(0)
+  dislikes     Int      @default(0)
+  comments     Int      @default(0)
+  shares       Int      @default(0)
+  subsGained   Int      @default(0)
+  subsLost     Int      @default(0)
+  playlistAdds Int      @default(0)
+
+  @@id([day, format])
+}
+
+/// One row of a breakdown: traffic source, search term, country, age and gender, device, subscribed or
+/// not, sharing app. scope is "video:<videoId>" or "channel:<all|short|long>:<days>" (7, 28, 90, 365).
+model Breakdown {
+  scope        String
+  kind         String
+  key          String
+  views        Float    @default(0)
+  watchMinutes Float    @default(0)
+  share        Float    @default(0)
+  extra        Json?
+  refreshedAt  DateTime @default(now())
+
+  @@id([scope, kind, key])
+  @@index([scope, kind])
+}
+
+/// The public counters once an hour (watchdog), kept 7 days: our own "realtime" chart.
+model LiveSnapshot {
+  uploadId String
+  upload   Upload   @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+  hour     DateTime
+  views    Int
+  likes    Int      @default(0)
+  comments Int      @default(0)
+
+  @@id([uploadId, hour])
+  @@index([hour])
+}
+
+/// Top-level public comments on our videos (YouTube Data API), replaced on every refresh.
+model Comment {
+  id          String   @id
+  uploadId    String
+  upload      Upload   @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+  author      String
+  text        String
+  likes       Int      @default(0)
+  replies     Int      @default(0)
+  publishedAt DateTime
+
+  @@index([uploadId])
 }
 
 model AgentRun {
@@ -180,21 +260,21 @@ enum Severity {
 /// Something only the owner can fix. Written by workers, the watchdog, the dashboard and the agents;
 /// auto-resolved when the condition clears (same dedupeKey).
 model Notification {
-  id         String    @id @default(cuid())
-  dedupeKey  String    @unique
-  source     String // watchdog | publish | stats | ingest | dashboard | research | improver | dashboard-agent
-  severity   Severity
-  title      String
-  detail     String
-  fix        String // what the owner should do, step by step
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  seenAt     DateTime?
-  resolvedAt DateTime?
+  id          String    @id @default(cuid())
+  dedupeKey   String    @unique
+  source      String // watchdog | publish | stats | ingest | dashboard | research | improver | dashboard-agent
+  severity    Severity
+  title       String
+  detail      String
+  fix         String // what the owner should do, step by step
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  seenAt      DateTime?
+  resolvedAt  DateTime?
   /// an agent's proposed setting change, { setting, value, current? }: the owner approves or declines it
-  proposal   Json?
-  decision   String? // approved | declined
-  decidedAt  DateTime?
+  proposal    Json?
+  decision    String? // approved | declined
+  decidedAt   DateTime?
   /// the owner marked it resolved: it stays closed for a week even if its check still fails
   dismissedAt DateTime?
 
@@ -203,19 +283,19 @@ model Notification {
 
 /// One agent's night: what it did, found and decided (from improvement/activity/<day>-<agent>.json).
 model AgentActivity {
-  id        String   @id // <day>-<agent>
-  agent     String // research | improver | dashboard
-  day       String // YYYY-MM-DD, IST
-  summary   String
-  decision  String // acted | waited | blocked | nothing
-  why       String
-  findings  Json // [{title, detail, link?}]
-  changes   Json // [{title, detail, branch?, experiment?}]
-  nextCheck String?
-  links     Json // [{label, url}]
+  id         String    @id // <day>-<agent>
+  agent      String // research | improver | dashboard
+  day        String // YYYY-MM-DD, IST
+  summary    String
+  decision   String // acted | waited | blocked | nothing
+  why        String
+  findings   Json // [{title, detail, link?}]
+  changes    Json // [{title, detail, branch?, experiment?}]
+  nextCheck  String?
+  links      Json // [{label, url}]
   startedAt  DateTime? // run times from the agent's own clock (optional)
   finishedAt DateTime?
-  createdAt DateTime @default(now())
+  createdAt  DateTime  @default(now())
 
   @@index([day])
 }
@@ -227,9 +307,11 @@ model RepoDoc {
   updatedAt DateTime @updatedAt
 }
 
-/** The owner's feedback (2026-10-30): on one video or on the channel overall. Exported to
+/**
+ * The owner's feedback (2026-10-30): on one video or on the channel overall. Exported to
  * metrics/feedback.json for the video routine and the agents; the improver answers it through
- * improvement/feedback-acks.json, which ingest imports. */
+ * improvement/feedback-acks.json, which ingest imports.
+ */
 model Feedback {
   id          String    @id @default(cuid())
   videoId     String?

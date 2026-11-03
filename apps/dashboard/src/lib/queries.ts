@@ -5,6 +5,7 @@ import { z } from "zod";
 
 import { getJson, send } from "./api";
 import { AgentsSchema, AnalyticsSchema, FeedbackSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
+import { StudioSchema, VideoStudioSchema, type Fmt, type Range } from "./studio-schema";
 import type { FeedbackCreate, ManualUpload, NotificationAction, Settings, VideoAction, VideoEdit } from "./schemas";
 
 export const useOverview = () => useQuery({ queryKey: ["overview"], queryFn: () => getJson("/api/overview", OverviewSchema) });
@@ -12,6 +13,10 @@ export const useQueue = () => useQuery({ queryKey: ["queue"], queryFn: () => get
 export const useTemplates = () => useQuery({ queryKey: ["templates"], queryFn: () => getJson("/api/templates", z.array(TemplateSchema)) });
 export const useRuns = () => useQuery({ queryKey: ["runs"], queryFn: () => getJson("/api/runs", z.array(RunSchema)) });
 export const useAnalytics = () => useQuery({ queryKey: ["analytics"], queryFn: () => getJson("/api/analytics", AnalyticsSchema) });
+/** Studio-grade analytics; refetched every minute so the realtime card ticks. */
+export const useStudio = (range: Range, format: Fmt) => useQuery({ queryKey: ["studio", range, format], queryFn: () => getJson(`/api/analytics/studio?range=${range}&format=${format}`, StudioSchema),
+  refetchInterval: 60_000, placeholderData: (prev) => prev });
+export const useVideoStudio = (id: string) => useQuery({ queryKey: ["video-studio", id], queryFn: () => getJson(`/api/videos/${id}/studio`, VideoStudioSchema) });
 export const useSettings = () => useQuery({ queryKey: ["settings"], queryFn: () => getJson("/api/settings", SettingsSchema) });
 export const useVideo = (id: string) => useQuery({ queryKey: ["video", id], queryFn: () => getJson(`/api/videos/${id}`, VideoDetailSchema) });
 

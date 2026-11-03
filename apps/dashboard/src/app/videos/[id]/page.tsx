@@ -18,6 +18,7 @@ import type { VideoAction, VideoDetail } from "@/lib/schemas";
 
 import { EditDetails, MarkUploaded, YouTubeDetails } from "./publish-tools";
 import { EditorBadge, EditorNote, FeedbackPanel, ReasonDialog } from "@/components/feedback";
+import { VideoAnalytics } from "@/components/video-analytics";
 
 const CHECK_NAMES: Record<string, string> = { number_check: "Number check", fact_review: "Fact review", qa_review: "QA review" };
 
@@ -227,6 +228,7 @@ export default function VideoPage() {
                     </>
                   ) : <Empty icon={TrendingUp}>Daily numbers appear once YouTube Analytics has them.</Empty>}
                 </Card>
+                <VideoAnalytics id={v.id} />
               </>
             ) : <Card><Empty icon={Eye} title="No numbers yet">{v.status === "published" ? "Add the YouTube link to track live views." : "Views show up once the video is published."}</Empty></Card>}
           </Tabs.Content>

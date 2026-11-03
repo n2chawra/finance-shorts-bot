@@ -9,6 +9,9 @@ import * as autoSample from "./autopilot.sample";
 import type { Agents, Notification, Notifications } from "./schemas";
 import * as db from "./store.db";
 import * as sample from "./store.sample";
+import * as studioDb from "./studio.db";
+import * as studioSample from "./studio.sample";
+import type { Fmt, Range, Studio, VideoStudio } from "./studio-schema";
 
 const useDb = Boolean(process.env.DATABASE_URL);
 
@@ -22,6 +25,8 @@ export const listTemplates = async (): Promise<Template[]> => (useDb ? db.listTe
 export const patchTemplate = async (id: string, patch: { enabled?: boolean; weight?: number }): Promise<Template | null> => (useDb ? db.patchTemplate(id, patch) : sample.patchTemplate(id, patch));
 export const listRuns = async (): Promise<Run[]> => (useDb ? db.listRuns() : sample.listRuns());
 export const getAnalytics = async (): Promise<Analytics> => (useDb ? db.getAnalytics() : sample.getAnalytics());
+export const getStudio = async (range: Range, format: Fmt): Promise<Studio> => (useDb ? studioDb.getStudio(range, format) : studioSample.getStudio(range, format));
+export const getVideoStudio = async (id: string): Promise<VideoStudio | null> => (useDb ? studioDb.getVideoStudio(id) : studioSample.getVideoStudio(id));
 export const reorderQueue = async (ids: string[]): Promise<Video[] | null> => (useDb ? db.reorderQueue(ids) : sample.reorderQueue(ids));
 export const markUploaded = async (id: string, m: ManualUpload): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.markUploaded(id, m) : sample.markUploaded(id, m));
 export const updateVideo = async (id: string, e: VideoEdit): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.updateVideo(id, e) : sample.updateVideo(id, e));

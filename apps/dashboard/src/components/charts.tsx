@@ -33,13 +33,14 @@ export function niceTicks(max: number): number[] {
 
 const PAD = { top: 10, right: 8, bottom: 24, left: 40 };
 
-function ChartTooltip({ x, y, width, label, value }: { x: number; y: number; width: number; label: string; value: string }) {
+function ChartTooltip({ x, y, width, label, value, detail }: { x: number; y: number; width: number; label: string; value: string; detail?: React.ReactNode }) {
   const left = Math.min(Math.max(x, 64), width - 64);
   return (
     <div className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg border border-ring bg-surface px-2.5 py-1.5 text-xs shadow-lift"
       style={{ left, top: Math.max(y - 10, 36) }}>
       <div className="text-muted">{label}</div>
       <div className="mt-0.5 font-medium tabular-nums text-ink">{value}</div>
+      {detail}
     </div>
   );
 }
@@ -59,8 +60,10 @@ function Axes({ w, h, ticks, y, fmt }: { w: number; h: number; ticks: number[]; 
 }
 
 /** Single-series area over time with a crosshair tooltip. */
-export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var(--series)" }: {
+export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var(--series)", detail }: {
   data: Point[]; height?: number; fmt: (n: number) => string; fmtFull?: (n: number) => string; color?: string;
+  /** more for the tooltip of point i (e.g. the videos published that day) */
+  detail?: (i: number) => React.ReactNode;
 }) {
   const [ref, w] = useWidth();
   const [hover, setHover] = useState<number | null>(null);
@@ -111,7 +114,7 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var
           )}
         </svg>
       )}
-      {hover !== null && w > 0 && <ChartTooltip x={x(hover)} y={y(data[hover].value)} width={w} label={data[hover].estimated ? `${data[hover].label} (est.)` : data[hover].label} value={fmtFull(data[hover].value)} />}
+      {hover !== null && w > 0 && <ChartTooltip x={x(hover)} y={y(data[hover].value)} width={w} label={data[hover].estimated ? `${data[hover].label} (est.)` : data[hover].label} value={fmtFull(data[hover].value)} detail={detail?.(hover)} />}
     </div>
   );
 }

@@ -1,0 +1,42 @@
+# The deep daily analytics pass: traffic sources, search terms, countries, age and gender, devices,
+# subscribers vs not, sharing (channel and per video), impressions and CTR (Reporting API) and comments.
+# See workers/stats-deep.ts.
+name: Stats deep
+
+on:
+  schedule:
+    - cron: "17 */3 * * *" # every 3 h (08:47 IST, …): Analytics publishes each day's numbers at an unpredictable hour
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: stats-deep
+
+jobs:
+  stats-deep:
+    runs-on: ubuntu-24.04   # pinned 2026-11-03: ubuntu-latest became 26.04, which Playwright 1.56 cannot install on
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: workers
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      YT_API_KEY: ${{ secrets.YT_API_KEY }}   # optional: public comments
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/package-lock.json
+      - run: npm ci
+      - run: npm run generate
+      - name: Stats deep
+        shell: bash   # bash -eo pipefail: a failing job turns red instead of hiding behind tee
+        run: npm run stats-deep | tee -a "$GITHUB_STEP_SUMMARY"

@@ -8,13 +8,16 @@
  * if YouTube access is lost (token revoked or expired) and nothing has been refreshed for 30 days,
  * the stored stats are deleted.
  */
+import { existsSync, readFileSync } from "node:fs";
+
 import { Prisma, PrismaClient } from "@prisma/client";
 
 import { istDay } from "./lib/publishing.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
-import { hookHold } from "./lib/retention.ts";
-import { TokenError, accessToken, dailyStats, retentionCurve } from "./lib/youtube.ts";
+import { dropPoints, hookHold, spokenBeats } from "./lib/retention.ts";
+import { channelDays } from "./lib/analytics.ts";
+import { DAY_METRICS, TokenError, accessToken, dailyStats, report, retentionCurve } from "./lib/youtube.ts";
 
 const DAY_MS = 86_400_000;
 const KEEP_DAYS = 365;       // history fetched and kept per video
@@ -26,9 +29,31 @@ async function deleteIfStale(prisma: PrismaClient): Promise<boolean> {
   const last = typeof row?.value === "string" ? Date.parse(row.value) : 0;
   if (Date.now() - last < STALE_DAYS * DAY_MS) return false;
   const { count } = await prisma.videoStat.deleteMany();
-  await prisma.upload.updateMany({ data: { retention: Prisma.DbNull, hookHold: null, retentionAt: null } });
+  await prisma.upload.updateMany({ data: { retention: Prisma.DbNull, relRetention: Prisma.DbNull, drops: Prisma.DbNull, hookHold: null, retentionAt: null } });
+  // every other table of YouTube data goes with it
+  await prisma.channelDay.deleteMany();
+  await prisma.breakdown.deleteMany();
+  await prisma.comment.deleteMany();
+  await prisma.liveSnapshot.deleteMany();
   console.log(`::warning::YouTube stats could not be refreshed for ${STALE_DAYS} days, so ${count} stored rows were deleted.`);
   return true;
+}
+
+/** The spoken beats of a video from its committed timeline (the workflow checks the repo out). */
+function beatsOf(videoId: string) {
+  const file = new URL(`../videos/${videoId}/timeline.json`, import.meta.url);
+  if (!existsSync(file)) return [];
+  try {
+    return spokenBeats(JSON.parse(readFileSync(file, "utf8")));
+  } catch {
+    return [];
+  }
+}
+
+/** Impressions and click-through per video and day, kept by stats-deep from the Reporting API. */
+async function reachRows(prisma: PrismaClient): Promise<Map<string, { impressions: number; ctr: number }>> {
+  const rows = await prisma.breakdown.findMany({ where: { scope: "reach", kind: "videoDay" } });
+  return new Map(rows.map((r) => [r.key, { impressions: Math.round(r.views), ctr: r.share }]));
 }
 
 async function main(): Promise<void> {
@@ -52,6 +77,17 @@ async function main(): Promise<void> {
     const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, video: { deletedAt: null } }, include: { video: { select: { format: true, durationSec: true } } } });
     let rows = 0;
     const errors: string[] = [];
+    const reach = await reachRows(prisma);
+    // the channel's own day totals, all formats and per format
+    try {
+      const from = istDay(new Date(Date.now() - KEEP_DAYS * DAY_MS));
+      const all = await report(token, { startDate: from, endDate: yesterday, dimensions: "day", metrics: DAY_METRICS, sort: "day" });
+      const split = await report(token, { startDate: from, endDate: yesterday, dimensions: "day,creatorContentType", metrics: DAY_METRICS, sort: "day" });
+      const data = channelDays(all, split);
+      await prisma.$transaction([prisma.channelDay.deleteMany(), prisma.channelDay.createMany({ data: data.map(({ day, ...m }) => ({ day: new Date(`${day}T00:00:00Z`), ...m })) })]);
+    } catch (e) {
+      errors.push(`channel totals: ${e instanceof Error ? e.message : e}`);
+    }
     for (const u of uploads) {
       const start = [istDay(u.publishAt), earliest].sort().at(-1)!;
       if (start > yesterday) continue;
@@ -61,20 +97,22 @@ async function main(): Promise<void> {
         await prisma.$transaction([
           prisma.videoStat.deleteMany({ where: { uploadId: u.id } }),
           prisma.videoStat.createMany({
-            data: days.map((s) => ({ uploadId: u.id, day: new Date(`${s.day}T00:00:00Z`), views: s.views, likes: s.likes, comments: s.comments, subsGained: s.subsGained, avgViewPct: s.avgViewPct })),
+            data: days.map(({ day, ...m }) => ({ uploadId: u.id, day: new Date(`${day}T00:00:00Z`), ...m, impressions: reach.get(`${u.youtubeId}|${day}`)?.impressions ?? null, ctr: reach.get(`${u.youtubeId}|${day}`)?.ctr ?? null })),
           }),
         ]);
         rows += days.length;
         // the retention curve and the hook score from it (empty until YouTube has enough views). YouTube
         // answers some videos' curve with "Internal error" (seen 2026-10-19): that video simply has no
         // hook score this run; it never fails the daily numbers above
-        const curve = await retentionCurve(token, u.youtubeId!, start, yesterday).catch((e: unknown) => {
+        const { curve, relative } = await retentionCurve(token, u.youtubeId!, start, yesterday).catch((e: unknown) => {
           console.log(`no retention curve for ${u.videoId}: ${e instanceof Error ? e.message : e}`);
-          return [] as [number, number][];
+          return { curve: [] as [number, number][], relative: [] as [number, number][] };
         });
         const format = u.video.format === "long" ? "long" : "short";
+        const drops = dropPoints(curve, u.video.durationSec, beatsOf(u.videoId));
         await prisma.upload.update({ where: { id: u.id }, data: {
-          retention: curve.length ? curve : Prisma.DbNull, hookHold: hookHold(curve, u.video.durationSec, format), retentionAt: new Date(),
+          retention: curve.length ? curve : Prisma.DbNull, relRetention: relative.length ? relative : Prisma.DbNull,
+          drops: drops.length ? drops : Prisma.DbNull, hookHold: hookHold(curve, u.video.durationSec, format), retentionAt: new Date(),
         } });
       } catch (e) {
         errors.push(`${u.videoId}: ${e instanceof Error ? e.message : e}`);

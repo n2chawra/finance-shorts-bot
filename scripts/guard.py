@@ -33,7 +33,7 @@ ALLOW: dict[str, list[str]] = {
                   "improvement/notifications/dashboard.json"],
     "auditor": ["generator/*", "renderer/*", "examples/*", "remotion/src/*", "remotion/test/*",
                 "apps/dashboard/src/*", "apps/dashboard/e2e/*", "workers/*",
-                "improvement/auditor/*", "improvement/activity/*-auditor.json", "improvement/notifications/auditor.json"],
+                "improvement/auditor/*", "improvement/analysis/*", "improvement/activity/*-auditor.json", "improvement/notifications/auditor.json"],
     # long-form: scout researches and never touches code; studio pushes its videos straight to main
     # (like the Shorts video run) and uses its branch only for reports.
     "scout": ["improvement/longform/*", "improvement/activity/*-scout.json", "improvement/notifications/scout.json",

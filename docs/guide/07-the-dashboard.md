@@ -55,10 +55,24 @@ template and topic. Click a row to open it.
   sheet QA reviewed.
 - **Script** tab: the inputs the code computes from, and the on-screen text in order.
 
-### Analytics
-7/14/28-day range with change vs the previous period; lifetime views (live); average % viewed;
-views and subscribers per day; average views by upload weekday; best and weakest videos on the
-same scale. Every chart has a "Show as table" view.
+### Analytics (Studio-grade since 2026-11-03)
+Everything YouTube Studio shows that an API gives, so Studio is only needed for the few things no API
+has (Shorts' exact stayed-to-watch, returning viewers, when viewers are online, revenue). Range 7 / 28 /
+90 days / 1 year and All / Shorts / Long apply to every tab:
+- **Overview**: views, engaged views, watch time, net subscribers with change against the previous
+  period; % viewed, impressions, click-through, likes, comments, shares; a day chart with a metric
+  picker (hover a day for the videos published on it); the AI channel summary; breakout videos.
+- **Realtime**: views per hour for the last 48 hours from the hourly snapshots, top videos right now.
+- **Content**: every video with every number, tinted against the column's median, with a verdict.
+- **Reach**: traffic sources, impression → view → engaged → like → subscribe, search terms, suggested-next-to
+  videos, external sites, sharing apps.
+- **Engagement**: the typical retention curve, hook hold and engaged views video by video, per-1K rates.
+- **Audience**: world map, age × gender, devices, subscribers vs not, operating systems.
+- **What works**: medians grouped by story format, look, voice, music, hook, topic, length, slot, day.
+- **AI insights**: the auditor's channel analysis and a verdict per video (`improvement/analysis/`).
+A video's Performance tab adds its retention curve over its own key frames with the steepest drops
+pinned to the line being spoken, its first 48 hours by hour against typical, sources, countries,
+searches, devices, comments and the AI verdict.
 
 ### Runs
 Every routine run that committed something. Success rate, videos shipped, average duration, a

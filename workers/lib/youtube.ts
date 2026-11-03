@@ -131,36 +131,82 @@ export async function myChannel(token: string): Promise<{ id: string; title: str
   return ch ? { id: ch.id, title: ch.snippet.title } : null;
 }
 
-export type DayStat = { day: string; views: number; likes: number; comments: number; subsGained: number; avgViewPct: number };
+export type DayStat = {
+  day: string; views: number; likes: number; comments: number; subsGained: number; avgViewPct: number;
+  engagedViews: number; watchMinutes: number; avgViewSec: number; shares: number; dislikes: number; subsLost: number; playlistAdds: number;
+};
 const Report = z.object({ columnHeaders: z.array(z.object({ name: z.string() })), rows: z.array(z.array(z.union([z.string(), z.number()]))).optional() });
+export type Row = Record<string, string | number>;
+
+/** One YouTube Analytics query, rows as objects keyed by column name. */
+export async function report(token: string, params: Record<string, string>): Promise<Row[]> {
+  const q = new URLSearchParams({ ids: "channel==MINE", ...params });
+  const res = await fetch(`https://youtubeanalytics.googleapis.com/v2/reports?${q}`, { headers: { authorization: `Bearer ${token}` } });
+  if (!res.ok) throw new Error(`analytics report failed (${params.dimensions ?? "totals"}${params.filters ? `; ${params.filters}` : ""}): ${await failText(res)}`);
+  return rowsOf(Report.parse(await res.json()));
+}
+
+/** Analytics rows as objects (pure, tested). */
+export function rowsOf(r: z.infer<typeof Report>): Row[] {
+  const names = r.columnHeaders.map((h) => h.name);
+  return (r.rows ?? []).map((row) => Object.fromEntries(names.map((n, i) => [n, row[i]!])));
+}
+
+/** Every per-day metric we keep (2026-11-03: everything Studio shows that the API gives). */
+export const DAY_METRICS = "views,engagedViews,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,likes,dislikes,comments,shares,subscribersGained,subscribersLost,videosAddedToPlaylists";
+
+/** A row of DAY_METRICS as our field names (pure, tested). */
+export function dayStat(r: Row): DayStat {
+  const n = (k: string) => Number(r[k] ?? 0) || 0;
+  return {
+    day: String(r.day ?? ""), views: n("views"), likes: n("likes"), comments: n("comments"), subsGained: n("subscribersGained"),
+    avgViewPct: n("averageViewPercentage"), engagedViews: n("engagedViews"), watchMinutes: n("estimatedMinutesWatched"),
+    avgViewSec: n("averageViewDuration"), shares: n("shares"), dislikes: n("dislikes"), subsLost: n("subscribersLost"), playlistAdds: n("videosAddedToPlaylists"),
+  };
+}
 
 /** Daily metrics for one video between two YYYY-MM-DD dates (inclusive). */
 export async function dailyStats(token: string, youtubeId: string, startDate: string, endDate: string): Promise<DayStat[]> {
-  const q = new URLSearchParams({
-    ids: "channel==MINE", startDate, endDate, dimensions: "day", filters: `video==${youtubeId}`,
-    metrics: "views,likes,comments,subscribersGained,averageViewPercentage", sort: "day",
-  });
-  const res = await fetch(`https://youtubeanalytics.googleapis.com/v2/reports?${q}`, { headers: { authorization: `Bearer ${token}` } });
-  if (!res.ok) throw new Error(`analytics report failed for ${youtubeId}: ${await failText(res)}`);
-  const report = Report.parse(await res.json());
-  const col = (name: string) => report.columnHeaders.findIndex((h) => h.name === name);
-  const [d, v, l, c, s, a] = ["day", "views", "likes", "comments", "subscribersGained", "averageViewPercentage"].map(col);
-  return (report.rows ?? []).map((r) => ({
-    day: String(r[d!]), views: Number(r[v!]), likes: Number(r[l!]), comments: Number(r[c!]), subsGained: Number(r[s!]), avgViewPct: Number(r[a!]),
-  }));
+  const rows = await report(token, { startDate, endDate, dimensions: "day", filters: `video==${youtubeId}`, metrics: DAY_METRICS, sort: "day" });
+  return rows.map(dayStat);
 }
 
+export type Retention = { curve: [number, number][]; relative: [number, number][] };
+
 /** A video's audience retention curve over its whole life: [elapsed share 0..1, audienceWatchRatio],
- * up to 100 points. Empty when YouTube has too few views to show one. */
-export async function retentionCurve(token: string, youtubeId: string, startDate: string, endDate: string): Promise<[number, number][]> {
-  const q = new URLSearchParams({
-    ids: "channel==MINE", startDate, endDate, dimensions: "elapsedVideoTimeRatio", filters: `video==${youtubeId}`,
-    metrics: "audienceWatchRatio", sort: "elapsedVideoTimeRatio",
+ * up to 100 points, and the same points against YouTube's typical video of that length
+ * (relativeRetentionPerformance, 0..1, 0.5 = typical). Empty when YouTube has too few views. */
+export async function retentionCurve(token: string, youtubeId: string, startDate: string, endDate: string): Promise<Retention> {
+  const rows = await report(token, {
+    startDate, endDate, dimensions: "elapsedVideoTimeRatio", filters: `video==${youtubeId}`,
+    metrics: "audienceWatchRatio,relativeRetentionPerformance", sort: "elapsedVideoTimeRatio",
   });
-  const res = await fetch(`https://youtubeanalytics.googleapis.com/v2/reports?${q}`, { headers: { authorization: `Bearer ${token}` } });
-  if (!res.ok) throw new Error(`retention report failed for ${youtubeId}: ${await failText(res)}`);
-  const report = Report.parse(await res.json());
-  const x = report.columnHeaders.findIndex((h) => h.name === "elapsedVideoTimeRatio");
-  const y = report.columnHeaders.findIndex((h) => h.name === "audienceWatchRatio");
-  return (report.rows ?? []).map((r) => [Number(r[x]), Number(r[y])] as [number, number]).filter(([a, b]) => Number.isFinite(a) && Number.isFinite(b));
+  const pts = (k: string) => rows.map((r) => [Number(r.elapsedVideoTimeRatio), Number(r[k])] as [number, number]).filter(([a, b]) => Number.isFinite(a) && Number.isFinite(b));
+  return { curve: pts("audienceWatchRatio"), relative: pts("relativeRetentionPerformance") };
+}
+
+const Comments = z.object({
+  items: z.array(z.object({
+    id: z.string(),
+    snippet: z.object({
+      totalReplyCount: z.number().default(0),
+      topLevelComment: z.object({ snippet: z.object({
+        authorDisplayName: z.string().default(""), textOriginal: z.string().default(""), likeCount: z.number().default(0), publishedAt: z.string(),
+      }).passthrough() }).passthrough(),
+    }).passthrough(),
+  })).default([]),
+});
+export type YtComment = { id: string; author: string; text: string; likes: number; replies: number; publishedAt: string };
+
+/** Up to 100 latest top-level public comments of a video, read with the Data API key (commentThreads
+ * needs a wider sign-in scope than ours; public comments are readable with the key). 1 quota unit. */
+export async function comments(apiKey: string, youtubeId: string): Promise<YtComment[]> {
+  const q = new URLSearchParams({ part: "snippet", videoId: youtubeId, maxResults: "100", order: "time", textFormat: "plainText", key: apiKey });
+  const res = await fetch(`https://www.googleapis.com/youtube/v3/commentThreads?${q}`);
+  if (res.status === 403 && (await res.clone().text()).includes("commentsDisabled")) return [];
+  if (!res.ok) throw new Error(`comments failed for ${youtubeId}: ${await failText(res)}`);
+  return Comments.parse(await res.json()).items.map((c) => {
+    const s = c.snippet.topLevelComment.snippet;
+    return { id: c.id, author: s.authorDisplayName, text: s.textOriginal.slice(0, 2000), likes: s.likeCount, replies: c.snippet.totalReplyCount, publishedAt: s.publishedAt };
+  });
 }

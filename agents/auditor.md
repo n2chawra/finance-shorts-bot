@@ -84,13 +84,35 @@ most valuable (each on its own, each meeting all of these) only if:
 Never refactor for taste alone, never reformat whole files, never change public data shapes
 (manifests, script JSON, API responses) without updating every user and test.
 
+## 3b. Analytics analysis (every night, ~10 minutes; owner 2026-11-03)
+The dashboard's Analytics page shows your analysis as "AI analysis". Read `metrics/analytics.json`
+(per video: engaged ratio, watch time, CTR, hook hold, `drops` = the steepest falls in viewers matched
+to the spoken line, traffic, countries, searches, recent comments; per channel: 28/90-day breakdowns
+and `channelDays`) and `metrics/videos.json` (48 h views, % viewed, story and style per video). Then:
+- `improvement/analysis/videos.json` `{"videos": [...]}`: one entry for every video published 2 to
+  14 days ago (keep older entries as they are, drop ones past 60 days):
+  `{"videoId", "verdict": "hit"|"okay"|"miss", "headline", "why": [{"text", "metric", "tab"}],
+  "viewersSaid": ["…"], "next": "…", "writtenAt": ISO}`. Verdict against the median of its format
+  (48 h views and % viewed). `headline` is one sentence; `why` 2–4 items, **each quoting a number from
+  the files** (the % viewed and the median, the drop and its line, the traffic share, the CTR);
+  `viewersSaid` sums up the comments' themes (questions, doubts, requests; never names; empty if none);
+  `next` is one concrete change for the next video.
+- `improvement/analysis/channel.json`, rewritten each Monday (or when missing):
+  `{"headline", "working": [...], "notWorking": [...], "audience": [...], "recommendations":
+  [{"do", "because"}], "writtenAt"}`, evidence items as above. `working`/`notWorking` compare groups
+  (story format, hook style, voice, slot, length) with at least 3 videos each; `audience` is countries,
+  age and gender, devices, subscribers; exactly 3 recommendations, each tied to a number.
+- `tab` is where the number is on the page: `overview`, `reach`, `engagement`, `audience`, `works`.
+Rules: never invent a number or a quote; say "too few videos" rather than guess; plain words, no jargon.
+The improver and planner read these files too, so a recommendation must be something a video can do.
+
 ## 4. Ship (at most two branches)
 - Branch 1 `agent/auditor/$DAY`: data and bug fixes, with their tests.
 - Branch 2 `agent/auditor/$DAY-2` (optional): the refactors, branched from `origin/main`, touching no
   file branch 1 touches; push it with `git push origin HEAD:refs/heads/agent/auditor/$DAY-2`.
 Both must pass the quick checks above. The guard allows you `generator/`, `renderer/`, `examples/`,
 `apps/dashboard/src` (including `lib/live-stats.ts`), `apps/dashboard/e2e`, `workers/` and your own
-`improvement/auditor/` files, at most 1,200 changed lines per branch and 2 merges a night. It blocks:
+`improvement/auditor/` and `improvement/analysis/` files, at most 1,200 changed lines per branch and 2 merges a night. It blocks:
 uploads, YouTube sign-in, settings defaults and upload times, login, Prisma, workflows, the guard,
 the policy, the variety rules, the evaluator, the data audit, and deleting tests.
 
@@ -102,7 +124,7 @@ if you shipped a fix, `nothing` if everything was clean) and rewrite
 `agent/auditor/$DAY` if you changed no code):
 ```
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add -A improvement/auditor improvement/activity/$DAY-auditor.json improvement/notifications/auditor.json <your code files>
+git add -A improvement/auditor improvement/analysis improvement/activity/$DAY-auditor.json improvement/notifications/auditor.json <your code files>
 git commit -q -m "Auditor $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/auditor/$DAY
 ```

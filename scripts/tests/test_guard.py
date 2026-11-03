@@ -135,6 +135,14 @@ def test_auditor_may_fix_workers_and_live_counts(repo: Path) -> None:
     assert r["areas"] == ["dashboard", "workers"]
 
 
+def test_auditor_writes_the_ai_analysis(repo: Path) -> None:
+    change(repo, "improvement/analysis/videos.json", '{"videos": []}\n')
+    change(repo, "improvement/analysis/channel.json", "{}\n")
+    r = guard.check("auditor", "main", "HEAD")
+    assert r["ok"], r["reasons"]
+    assert not guard.check("research", "main", "HEAD")["ok"]   # only the auditor writes it
+
+
 def test_auditor_never_touches_uploads_sign_in_or_the_audit(repo: Path) -> None:
     locked = ["workers/publish.ts", "workers/lib/youtube.ts", "workers/data-audit.ts", "workers/lib/data-audit.ts", "apps/dashboard/src/lib/auth.ts", ".github/workflows/x.yml", "scripts/guard.py"]
     for f in locked:

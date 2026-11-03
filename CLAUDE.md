@@ -120,7 +120,10 @@ GitHub repo (handoff point; sessions never hold DB or YouTube credentials)
 GitHub Actions (cron)
   ├─ ingest.yml   on push/release + every 6h   new manifests → Postgres (status: queued)
   ├─ publish.yml  daily    fills today's slots from the queue → YouTube (private + publishAt) → scheduled
-  └─ stats.yml    daily    YouTube Analytics → video_stats
+  ├─ stats.yml    every 3h YouTube Analytics → VideoStat, ChannelDay, retention + drop points
+  ├─ stats-deep.yml daily  traffic, searches, countries, age/gender, devices (channel + per video),
+  │                        impressions/CTR (Reporting API), comments (YT_API_KEY) → Breakdown, Comment
+  └─ watchdog.yml hourly   + public-counter snapshot → LiveSnapshot (the dashboard's "realtime")
         │
         ▼
 Postgres (Supabase free tier) ◄── Next.js dashboard (Netlify)
@@ -134,7 +137,9 @@ if free tiers get in the way. Keep the worker code portable so it runs in both p
 Four nightly Claude Code routines check and improve the automation itself, 23:00–09:00 IST:
 **auditor** (23:00, after the 13:53 `data-audit.yml` (it lands around 19:00) compares the dashboard's numbers with YouTube and
 the database into `metrics/data-audit.json`: fixes data bugs and code bugs anywhere, one refactor a
-night; may change `workers/` and `lib/live-stats.ts` but never uploads, sign-in or the audit itself),
+night; may change `workers/` and `lib/live-stats.ts` but never uploads, sign-in or the audit itself;
+and writes the AI analysis the Analytics page shows, a verdict per recent video and a weekly channel
+review from `metrics/analytics.json` into `improvement/analysis/`),
 **research** (23:47, demand scan: formats and topics people watch, reports + proposals, never code), **improver** (06:17, A/B experiments on ~50% of
 videos via `config/experiments.json`, keep/revert by `python -m improvement.evaluate`, recipes,
 scenes, cast, camera and design in `remotion/src` behind flags, fixes recurring failures) and **dashboard** (07:37, bug hunt + smoke tests, UI

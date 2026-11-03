@@ -38,6 +38,8 @@ jobs:
           cache-dependency-path: workers/package-lock.json
       - run: npm ci
       - run: npm run generate
+      - name: Hourly counters snapshot
+        run: npm run snapshot
       - name: Watchdog
         shell: bash   # bash -eo pipefail: a failing job turns red instead of hiding behind tee
         run: npm run watchdog | tee -a "$GITHUB_STEP_SUMMARY"
