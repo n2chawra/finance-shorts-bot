@@ -1,0 +1,760 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52817,
+  "story": "money_scale",
+  "shape": "before-after",
+  "currency": "USD",
+  "feed_id": "2026-11-04-neom-170km-city-shrinks",
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "C",
+    "bpm": 90,
+    "look": {
+      "stage": "desert",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "drop"
+    }
+  },
+  "hook_style": "myth",
+  "cta": "What would you build with that money? Comment",
+  "facts": [
+    {
+      "label": "what the Neom project was reported to cost",
+      "value": 1.5,
+      "unit": "money_trillion",
+      "currency": "USD",
+      "as_of": "2024-04-05",
+      "source": "Bloomberg",
+      "url": "https://www.hospitalitynet.org/news/4121311.html"
+    },
+    {
+      "label": "kilometres The Line was meant to stretch",
+      "value": 170,
+      "unit": "count",
+      "as_of": "2024-04-05",
+      "source": "Bloomberg",
+      "url": "https://www.hospitalitynet.org/news/4121311.html"
+    },
+    {
+      "label": "kilometres expected complete by 2030",
+      "value": 2.4,
+      "unit": "count",
+      "as_of": "2024-04-05",
+      "source": "Bloomberg",
+      "url": "https://www.hospitalitynet.org/news/4121311.html"
+    },
+    {
+      "label": "residents once hoped for by 2030",
+      "value": 1.5,
+      "unit": "count_million",
+      "as_of": "2024-04-05",
+      "source": "Bloomberg",
+      "url": "https://www.hospitalitynet.org/news/4121311.html"
+    },
+    {
+      "label": "residents now expected by 2030, fewer than",
+      "value": 300,
+      "unit": "count_thousand",
+      "as_of": "2024-04-05",
+      "source": "Bloomberg",
+      "url": "https://www.hospitalitynet.org/news/4121311.html"
+    }
+  ],
+  "maths": [
+    {
+      "name": "line",
+      "kind": "rate",
+      "part": 2.4,
+      "whole": 170,
+      "facts": {
+        "part": 3,
+        "whole": 2
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 3.4,
+    "words": "Money *can't* build it",
+    "figure": "{fact2}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "You think money builds any city? Not this one. Here's why.",
+      "events": {
+        "money": {
+          "word": "money"
+        },
+        "city": {
+          "word": "city"
+        },
+        "not": {
+          "word": "Not"
+        },
+        "why": {
+          "word": "why"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "money"
+        },
+        {
+          "kind": "whoosh",
+          "at": "not"
+        },
+        {
+          "kind": "riser",
+          "at": "why"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "Any city?",
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "not",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "board",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Saudi Arabia planned The Line, one straight city {fact2} kilometres long.",
+      "events": {
+        "planned": {
+          "word": "planned"
+        },
+        "line": {
+          "word": "Line"
+        },
+        "straight": {
+          "word": "straight"
+        },
+        "long": {
+          "word": "long"
+        }
+      },
+      "params": {
+        "header": "The Line",
+        "sub": "Saudi Arabia's plan",
+        "bg": "sand",
+        "items": [
+          {
+            "id": "line",
+            "prop": "blueprint",
+            "x": 0.5,
+            "size": 0.32,
+            "label": "The Line"
+          },
+          {
+            "id": "kilometres",
+            "prop": "tape",
+            "x": 0.3,
+            "y": 0.05,
+            "size": 0.16,
+            "label": "Kilometres long",
+            "k": 1,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "line"
+          },
+          {
+            "at": "planned",
+            "do": "state",
+            "target": "line",
+            "state": "open"
+          },
+          {
+            "at": "line",
+            "do": "swap",
+            "target": "line",
+            "into": "linecity"
+          },
+          {
+            "at": "straight",
+            "do": "label",
+            "target": "line",
+            "text": "One straight city"
+          },
+          {
+            "at": "long",
+            "do": "tag",
+            "target": "line",
+            "text": "{fact2} km"
+          },
+          {
+            "at": "long",
+            "do": "enter",
+            "target": "kilometres",
+            "how": "rise"
+          }
+        ]
+      }
+    },
+    {
+      "id": "people",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "It was meant to house {fact4} people by the end of the decade.",
+      "events": {
+        "meant": {
+          "word": "meant"
+        },
+        "house": {
+          "word": "house"
+        },
+        "people": {
+          "word": "people"
+        },
+        "end": {
+          "word": "end"
+        },
+        "decade": {
+          "word": "decade"
+        }
+      },
+      "params": {
+        "header": "Who would live there",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "house",
+            "prop": "linecity",
+            "x": 0.3,
+            "size": 0.26,
+            "k": 0.4,
+            "label": "The Line"
+          },
+          {
+            "id": "people",
+            "prop": "crowd",
+            "x": 0.72,
+            "size": 0.32,
+            "label": "People",
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "house"
+          },
+          {
+            "at": "house",
+            "do": "grow",
+            "target": "house",
+            "scale": 1.15
+          },
+          {
+            "at": "people",
+            "do": "fill",
+            "target": "people",
+            "k": 1
+          },
+          {
+            "at": "people",
+            "do": "tag",
+            "target": "people",
+            "text": "{fact4}"
+          },
+          {
+            "at": "end",
+            "do": "flow",
+            "target": "house",
+            "to": "people",
+            "n": 5,
+            "text": "Move in"
+          },
+          {
+            "at": "decade",
+            "do": "chip",
+            "text": "End of the decade"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Neom's reported price tag: {fact1}. So what could stop it?",
+      "events": {
+        "neom": {
+          "word": "Neom's"
+        },
+        "reported": {
+          "word": "reported"
+        },
+        "price": {
+          "word": "price"
+        },
+        "so": {
+          "word": "So"
+        },
+        "stop": {
+          "word": "stop"
+        },
+        "tag": {
+          "word": "tag"
+        },
+        "what": {
+          "word": "what"
+        }
+      },
+      "params": {
+        "header": "Neom's price tag",
+        "bg": "night",
+        "stage": "desert",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "neom",
+            "prop": "goldpile",
+            "size": 0.24,
+            "label": "Neom project"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "neom"
+          },
+          {
+            "at": "neom",
+            "do": "grow",
+            "target": "neom",
+            "scale": 1.08
+          },
+          {
+            "at": "reported",
+            "do": "shake",
+            "target": "neom"
+          },
+          {
+            "at": "price",
+            "do": "label",
+            "target": "neom",
+            "text": "Reported price tag"
+          },
+          {
+            "at": "tag",
+            "do": "grow",
+            "target": "neom",
+            "scale": 1.1
+          },
+          {
+            "at": "stop",
+            "do": "bubble",
+            "text": "What stops it?"
+          },
+          {
+            "at": "what",
+            "do": "shake",
+            "target": "neom"
+          },
+          {
+            "sec": 2.7,
+            "do": "label",
+            "target": "neom",
+            "text": "Reported {fact1}"
+          }
+        ]
+      }
+    },
+    {
+      "id": "build",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Every kilometre has to be dug, poured and glassed in. So how far did they get?",
+      "events": {
+        "kilometre": {
+          "word": "kilometre"
+        },
+        "dug": {
+          "word": "dug"
+        },
+        "poured": {
+          "word": "poured"
+        },
+        "glassed": {
+          "word": "glassed"
+        },
+        "far": {
+          "word": "far"
+        },
+        "get": {
+          "word": "get"
+        }
+      },
+      "params": {
+        "header": "Dig, pour, glass",
+        "bg": "coral",
+        "items": [
+          {
+            "id": "kilometre",
+            "prop": "kmpost",
+            "x": 0.18,
+            "size": 0.32,
+            "label": "Kilometre dug"
+          },
+          {
+            "id": "dug",
+            "prop": "mixer",
+            "x": 0.5,
+            "size": 0.3,
+            "label": "Poured"
+          },
+          {
+            "id": "glassed",
+            "prop": "crane",
+            "x": 0.82,
+            "size": 0.34,
+            "label": "Glassed",
+            "hidden": true
+          },
+          {
+            "id": "far",
+            "prop": "tape",
+            "x": 0.3,
+            "y": 0.35,
+            "size": 0.16,
+            "k": 0.1,
+            "label": "How far",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "kilometre"
+          },
+          {
+            "at": "dug",
+            "do": "grow",
+            "target": "dug",
+            "scale": 1.15
+          },
+          {
+            "at": "poured",
+            "do": "flow",
+            "target": "dug",
+            "to": "kilometre",
+            "n": 4,
+            "text": "Poured"
+          },
+          {
+            "at": "glassed",
+            "do": "enter",
+            "target": "glassed",
+            "how": "rise"
+          },
+          {
+            "at": "far",
+            "do": "enter",
+            "target": "far",
+            "how": "drop"
+          },
+          {
+            "at": "get",
+            "do": "fill",
+            "target": "far",
+            "k": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Then the plan was cut: just {fact3} kilometres this decade, {line_pct} of the line. Now even that is on hold.",
+      "events": {
+        "cut": {
+          "word": "cut"
+        },
+        "kilometres": {
+          "word": "kilometres"
+        },
+        "line": {
+          "word": "line"
+        },
+        "hold": {
+          "word": "hold"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "cut"
+        },
+        {
+          "kind": "kaching",
+          "at": "kilometres"
+        },
+        {
+          "kind": "boom",
+          "at": "line"
+        },
+        {
+          "kind": "whoosh",
+          "at": "hold"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "planned": "{fact2} km",
+        "built": "{fact3} km",
+        "pct": "{line_pct}",
+        "plannedLabel": "Planned",
+        "builtLabel": "Cut plan",
+        "header": "The plan was cut",
+        "set": "flat",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "line",
+            "size": "close",
+            "on": "all"
+          }
+        ],
+        "holdLabel": "On hold"
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Because a price tag of {fact1} is a plan, not money in the bank.",
+      "events": {
+        "price": {
+          "word": "price"
+        },
+        "plan": {
+          "word": "plan"
+        },
+        "money": {
+          "word": "money"
+        },
+        "bank": {
+          "word": "bank"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "price"
+        },
+        {
+          "kind": "whoosh",
+          "at": "money"
+        },
+        {
+          "kind": "boom",
+          "at": "bank"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "budget": "{fact1}",
+        "header": "A price tag isn't cash",
+        "budgetLabel": "Reported cost",
+        "set": "flat",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "money",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "bankLabel": "Not in the bank"
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "board",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "So, still think money builds any city?",
+      "events": {
+        "still": {
+          "word": "still"
+        },
+        "money": {
+          "word": "money"
+        },
+        "city": {
+          "word": "city"
+        }
+      },
+      "params": {
+        "header": "Still think so?",
+        "bg": "night",
+        "stage": "desert",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.28,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.74,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "money",
+            "prop": "goldpile",
+            "x": 0.28,
+            "size": 0.26,
+            "label": "Money"
+          },
+          {
+            "id": "city",
+            "prop": "linecity",
+            "x": 0.72,
+            "size": 0.22,
+            "k": 0.15,
+            "label": "Any city?"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "money"
+          },
+          {
+            "at": "money",
+            "do": "shake",
+            "target": "money"
+          },
+          {
+            "at": "city",
+            "do": "grow",
+            "target": "city",
+            "scale": 1.2
+          },
+          {
+            "at": "city",
+            "do": "bubble",
+            "text": "Any city?"
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "af_heart"
+}

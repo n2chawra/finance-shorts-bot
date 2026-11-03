@@ -1,0 +1,229 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:40:52.266161+00:00",
+    "finishedAt": "2026-11-03T21:40:52.266161+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:43:20.444913+00:00",
+    "finishedAt": "2026-11-03T21:43:20.444913+00:00",
+    "notes": [
+      "beat 'people'.say contains a typed number; use a placeholder: 'It was meant to house {fact4} people by 2030.'",
+      "1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "board beat 'promise' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:43:40.008275+00:00",
+    "finishedAt": "2026-11-03T21:43:40.008275+00:00",
+    "notes": [
+      "beat 'turn'.params.builtLabel contains a typed number; use a placeholder: 'By 2030'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:43:53.072473+00:00",
+    "finishedAt": "2026-11-03T21:43:53.072473+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:46:12.864074+00:00",
+    "finishedAt": "2026-11-03T21:47:02.378553+00:00",
+    "notes": [
+      "5 of 9 stills are mostly empty background (at 10 s, 20 s, 25 s, 30 s, 37 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:47:04.607142+00:00",
+    "finishedAt": "2026-11-03T21:47:04.607142+00:00",
+    "notes": [
+      "Out of date (beat 'turn', title, description): the 2.4 km by 2030 figure (Bloomberg, Apr 2024; confirmed on hospitalitynet.org/news/4121311.html) has been superseded. Semafor exclusive 22 May 2026 ('Saudi's NEOM halts work on The Line until after 2030', semafor.com) reports work on The Line halted until after 2030 and the 2030 population target cut to up to 100,000; repeated by Domus (27 May 2026), New Atlas (Jun 2026), Parametric Architecture. 'By the decade's end, just 2.4 kilometres' and the title 'By 2030: 2.4 km' now state a 2030 outcome the latest reporting contradicts; retell with current figures (sourced) or as the 2024 cut followed by the 2026 halt.",
+      "Misattributed fact (beat 'people', 'payoff'): 'Its budget: a reported $1.5T' attaches the $1.5T to The Line, but the source (Bloomberg headline) gives $1.5T for the whole Neom project, not The Line. Say 'Neom, the $1.5T project The Line belongs to' or similar; the payoff '$1.5T buys the plan' has the same problem.",
+      "Confirmed on the source page: 170 km, 2.4 km by 2030 (as of Apr 2024), 1.5M residents once hoped, fewer than 300,000 (Apr 2024); $1.5T only in the headline, for Neom overall. Disclaimer present in description; no advice, tone fine."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:48:33.060441+00:00",
+    "finishedAt": "2026-11-03T21:48:33.060441+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:48:33.910581+00:00",
+    "finishedAt": "2026-11-03T21:48:33.910581+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:49:19.991525+00:00",
+    "finishedAt": "2026-11-03T21:49:19.991525+00:00",
+    "notes": [
+      "Misleading conclusion (beat 'payoff', also 'hook'/'loop' framing): 'Because a $1.5T project buys the plan, not the years it takes to build' says the cut happened for lack of time despite ample money. Sources say otherwise: Bloomberg/Hospitality Net (Apr 2024) gives no reason; Semafor (22 May 2026) ties the halt to cost ('to make NEOM less costly to develop'), PIF shifting spending to ports and data centres, budget deficits and weak foreign investment. The $1.5T was a reported cost, not money in hand, so 'money can't buy years' is not supported. Retell the payoff around cost/funding (e.g. a $1.5T price tag is a plan, not money in the bank) or drop the causal 'Because'.",
+      "Same issue on screen and voice: 'ask' says the project 'had a reported $1.5T' and the payoff card labels it 'Budget'; the source gives $1.5T only as the project's headline size/cost. Say 'a reported $1.5T price tag' / label 'Reported cost'.",
+      "Confirmed: 170 km, 1.5M residents once hoped by 2030, 2.4 km by 2030 as of Apr 2024 (hospitalitynet.org/news/4121311.html, Bloomberg); 'now even that is on hold' confirmed by Semafor 22 May 2026 (work on The Line halted until at least after 2030), repeated by Domus and New Atlas. $1.5T now correctly tied to the whole Neom project. Disclaimer in description; no advice; tone fine. Style: spoken 'a one point five trillion dollars project' reads awkwardly."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:48:49.749287+00:00",
+    "finishedAt": "2026-11-03T21:49:21.318344+00:00",
+    "notes": [
+      "3.0 s with nothing new on screen in beat 'ask' (at most 2.5 s): add an action on the phrase being said there",
+      "3 of 9 stills are mostly empty background (at 10 s, 20 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:50:00.271889+00:00",
+    "finishedAt": "2026-11-03T21:50:25.075852+00:00",
+    "notes": [
+      "3.0 s with nothing new on screen in beat 'ask' (at most 2.5 s): add an action on the phrase being said there",
+      "2 of 9 stills are mostly empty background (at 10 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:51:00.717358+00:00",
+    "finishedAt": "2026-11-03T21:51:00.717358+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+      "board beat 'ask' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:51:18.224343+00:00",
+    "finishedAt": "2026-11-03T21:51:18.224343+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:51:42.394232+00:00",
+    "finishedAt": "2026-11-03T21:51:42.394232+00:00",
+    "notes": [
+      "Facts confirmed on hospitalitynet.org/news/4121311.html (Bloomberg Apr 2024: 170 km, 1.5M residents hoped by 2030, 2.4 km by 2030, $1.5T Neom in headline) and 'on hold' via Semafor 22 May 2026 (work on The Line halted until at least after 2030; also Domus, New Atlas); $1.5T now a reported price tag of the whole Neom project; payoff 'a price tag is a plan, not money in the bank' matches Semafor's reasons (cost, PIF reprioritising, deficits, weak investment); disclaimer in description, no advice, tone fine."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:51:33.220966+00:00",
+    "finishedAt": "2026-11-03T21:52:00.126392+00:00",
+    "notes": [
+      "2.7 s with nothing new on screen in beat 'ask' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:52:16.091668+00:00",
+    "finishedAt": "2026-11-03T21:52:44.991798+00:00",
+    "notes": [
+      "2.5 s with nothing new on screen in beat 'ask' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:53:05.498631+00:00",
+    "finishedAt": "2026-11-03T21:53:34.519330+00:00",
+    "notes": [
+      "39 s, ember/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:53:58.870440+00:00",
+    "finishedAt": "2026-11-03T21:54:18.434272+00:00",
+    "notes": [
+      "39 s, ember/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:54:36.115382+00:00",
+    "finishedAt": "2026-11-03T21:54:58.696302+00:00",
+    "notes": [
+      "39 s, ember/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-03T21:56:32.991281+00:00",
+    "finishedAt": "2026-11-03T21:56:32.991281+00:00",
+    "notes": [
+      "[scene] board, beat 'ask' (16.5-18.0 s): the goldpile's '$1.5T' tag (fires at sec 2.7 after grow 1.3) is placed above the pile, behind the 'NEOM'S PRICE TAG' header and off the top edge; only the top half of '$1.5T' shows, so the beat's figure is hidden and does not read on mute. Tags must clamp below the header (script workaround: smaller goldpile size or drop the 1.3 grow).",
+      "[script] beat 'loop' (37.5-39.1 s): the item labelled 'Any city?' is a camel; the picture does not match the word (use the linecity/a city prop).",
+      "[scene] board prop 'kmpost', beat 'build' (19.5-22.5 s): draws as a white jar with a red lid labelled 'Kilometre'; it does not read as a kilometre post or as anything being dug."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:57:09.316503+00:00",
+    "finishedAt": "2026-11-03T21:57:40.291646+00:00",
+    "notes": [
+      "39 s, ember/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:58:14.441965+00:00",
+    "finishedAt": "2026-11-03T21:58:14.441965+00:00",
+    "notes": [
+      "Re-review after fixes: $1.5T now reads big under the header (15-18 s), loop shows the line-city as 'Any city?', the km prop is a dug mound with a flag; hook, mute reading, turn (170 km / 2.4 km / 1.4%), disclaimer at 39 s and audio (-1.0/-16.7 dB) all fine; layout and craft problems empty."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-03T21:58:35.733560+00:00",
+    "finishedAt": "2026-11-03T22:00:04.628697+00:00",
+    "notes": [
+      "39 s, ember/cinematic, peak -1.0 dB, mean -16.7 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-03T22:00:57.686943+00:00",
+    "finishedAt": "2026-11-03T22:00:57.686943+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

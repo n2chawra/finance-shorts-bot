@@ -1,0 +1,121 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52817,
+  "duration_sec": 39,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "C",
+    "bpm": 90,
+    "look": {
+      "stage": "desert",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "drop"
+    }
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think money builds any city? Not this one. Here's why.",
+        "start": 0.3,
+        "seconds": 2.87,
+        "window": 3.5,
+        "fill": 0.82
+      },
+      {
+        "scene": "promise",
+        "text": "Saudi Arabia planned The Line, one straight city 170 kilometres long.",
+        "start": 3.8,
+        "seconds": 4.36,
+        "window": 5.0,
+        "fill": 0.872
+      },
+      {
+        "scene": "people",
+        "text": "It was meant to house 1.5M people by the end of the decade.",
+        "start": 8.8,
+        "seconds": 3.83,
+        "window": 4.5,
+        "fill": 0.851
+      },
+      {
+        "scene": "ask",
+        "text": "Neom's reported price tag: $1.5T. So what could stop it?",
+        "start": 13.3,
+        "seconds": 4.85,
+        "window": 5.2,
+        "fill": 0.933
+      },
+      {
+        "scene": "build",
+        "text": "Every kilometre has to be dug, poured and glassed in. So how far did they get?",
+        "start": 18.5,
+        "seconds": 4.14,
+        "window": 4.73,
+        "fill": 0.875
+      },
+      {
+        "scene": "turn",
+        "text": "Then the plan was cut: just 2.4 kilometres this decade, 1.4% of the line. Now even that is on hold.",
+        "start": 23.23,
+        "seconds": 7.18,
+        "window": 7.83,
+        "fill": 0.917
+      },
+      {
+        "scene": "payoff",
+        "text": "Because a price tag of $1.5T is a plan, not money in the bank.",
+        "start": 31.07,
+        "seconds": 4.57,
+        "window": 5.23,
+        "fill": 0.874
+      },
+      {
+        "scene": "loop",
+        "text": "So, still think money builds any city?",
+        "start": 36.3,
+        "seconds": 1.94,
+        "window": 2.5,
+        "fill": 0.776
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "title-names-the-moment": "on",
+    "ending-beats-act-and-vary": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.7,
+    "lufs": -15.0,
+    "music_under_voice_db": 22.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 3.501,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
