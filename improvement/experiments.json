@@ -91,7 +91,7 @@
       ],
       "startedAt": "2026-10-20",
       "minPerArm": 8,
-      "maxDays": 21,
+      "maxDays": 28,
       "primary": "views48h",
       "guard": "qa_failures",
       "status": "running",
@@ -101,7 +101,8 @@
       "description": "The writer's first line voices the on-screen hook (question or figure) within 8 words, no warm-up opener",
       "hypothesis": "v-20261018-02 showed 'Is your savings account keeping up?' at frame 0 while the voice said 'Quick question about your savings.' (1.8 s, no stakes). Saying the stakes in the first second keeps more viewers past the swipe and lifts 48 h views.",
       "notes": "Prompt-only (writer). On keep: fold the rule into generator/prompts/writer.md and add a check_script rule. On revert: drop the prompt.",
-      "commits": []
+      "commits": [],
+      "extended": true
     },
     {
       "id": "narrator-not-cast-voice",
@@ -622,6 +623,53 @@
       "commits": [],
       "closedAt": "2026-11-02",
       "verdict": "Adopted by the owner on 2026-11-02 without waiting for the A/B (\"fix them right now\"): on for every Short; flag branches dropped."
+    },
+    {
+      "id": "ending-beats-act-and-vary",
+      "proposal": "ending-beats-act-and-vary",
+      "area": "pacing",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-03",
+      "templates": [
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "minPerArm": 8,
+      "maxDays": 28,
+      "hypothesis": "QA sent back the payoff of v-20261103-01 and -03 as 'mostly empty, reads only in the voice' (an empty disc held ~10 s), and every Short's last ~10 s carry no prop actions. Turn and payoff beats that act on their words keep viewers through the ending, where the loop decides replays: higher average % viewed.",
+      "description": "Shorts: the coded Turn and Payoff beats act on their words and the ending's camera and transitions vary per video",
+      "notes": "Prompt-only (writer). On keep: fold the rule into generator/prompts/writer.md and add a craft check for actions in custom turn/payoff beats. On revert: drop the prompt.",
+      "commits": []
+    },
+    {
+      "id": "loudness-in-render-json",
+      "proposal": "loudness-in-render-json",
+      "area": "sound",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-03",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "description": "render.json audio records integrated loudness (BS.1770, LUFS) and how far the music sits under the voice; the render step warns outside -16..-13 LUFS or under 18 dB in a Short",
+      "evidence": "Research adopt (confidence high): the 2026-11-02 quieter-bed mix had no measurement of whether it closed the ~13 dB vs ~29 dB gap to The Curious Plot. integrated_lufs matches ffmpeg ebur128 to 0.1 LU on test signals.",
+      "notes": "metrics/videos.json does not carry the two fields yet: the ingest worker is the auditor's lane (notification).",
+      "commits": []
+    },
+    {
+      "id": "2026-11-03-board-room-labels",
+      "area": "motion",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-03",
+      "templates": [
+        "short_story"
+      ],
+      "description": "Board rooms float things at 0.27 of the frame (over the cast's heads, was 0.2 at eye level); a thing's label over an actor steps above the thing",
+      "evidence": "QA failed v-20261103-02 twice on the same scene bug (labels across Rohan's eyes and Priya's head, the bottle on his head). Stills before/after with the draft placement; layout and craft gates clean.",
+      "commits": []
     }
   ]
 }

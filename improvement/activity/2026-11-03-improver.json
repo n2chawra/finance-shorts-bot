@@ -1,0 +1,65 @@
+{
+  "agent": "improver",
+  "day": "2026-11-03",
+  "startedAt": "2026-11-03T00:48:43Z",
+  "finishedAt": "2026-11-03T00:59:35Z",
+  "summary": "Fixed the board rooms (things floated at the cast's eye level, so labels crossed faces), adopted a loudness measurement for every render, named two recurring board failures for writers, extended hook-voice-matches-frame and started ending-beats-act-and-vary.",
+  "decision": "acted",
+  "why": "QA failed v-20261103-02 twice on the same board scene bug, and all three 2026-11-03 Shorts were sent back for empty payoffs, board beats over 6.5 s or 3 s with no event. Research routed loudness-in-render-json as adopt. The evaluator said extend for hook-voice-matches-frame; one experiment slot was free.",
+  "findings": [
+    {
+      "title": "Evaluator",
+      "detail": "36 Shorts with 48 h data. hook-voice-matches-frame: extend (on 9, off 8, no clear effect). title-names-the-moment waits (6 of 8). quiet-bed and chart-gap-fill wait (1 of 4 long per arm). secret_of_rich 7.2x views, 76% viewed (n=4); cinematic music 11.7x, 69.5% viewed (n=6); myth hooks 0.13x."
+    },
+    {
+      "title": "Failures, last 14 days",
+      "detail": "Most widespread: QA 'cut at the edge' (31 videos), captions band (18), text off the frame (17). On the 3 board Shorts of 2026-11-03: empty frames (3 of 3), board labels on faces, empty Payoff components, beats over 6.5 s."
+    },
+    {
+      "title": "Formats",
+      "detail": "Channel median 38.6% viewed (n=34). No format with 3+ Shorts under it for two weeks (rule_change 42.2%), none retired."
+    },
+    {
+      "title": "Evaluator never uses an extension",
+      "detail": "Once both arms have minPerArm videos, an extended experiment is abandoned at once (owner notification, evaluate.py is owner-only)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Board rooms: things over the heads, labels off faces",
+      "detail": "Rooms in a Short float things at 0.27 of the frame (was 0.2, eye level); a label over an actor goes above its thing. Stills before/after on v-20261103-02, gates clean.",
+      "branch": "agent/improver/2026-11-03",
+      "experiment": "2026-11-03-board-room-labels"
+    },
+    {
+      "title": "Loudness in render.json",
+      "detail": "Integrated LUFS (BS.1770, equal to ffmpeg's ebur128) and music-under-voice dB in the timeline, render.json and manifest; render warnings outside -16..-13 LUFS or under 18 dB in a Short.",
+      "branch": "agent/improver/2026-11-03",
+      "experiment": "loudness-in-render-json"
+    },
+    {
+      "title": "Recurring board failures named",
+      "detail": "generator/failures.py groups 'board beat over 6.5 s' and '3 s with no event'; checklist lines for both, board-room placement and Turn bar labels.",
+      "branch": "agent/improver/2026-11-03"
+    },
+    {
+      "title": "Extended hook-voice-matches-frame",
+      "detail": "extended: true, maxDays 28 (evaluator verdict).",
+      "branch": "agent/improver/2026-11-03",
+      "experiment": "hook-voice-matches-frame"
+    },
+    {
+      "title": "Started ending-beats-act-and-vary",
+      "detail": "Prompt-only, Shorts, pacing: Turn and Payoff beats get 2-3 actions on their words and an ending camera unlike the last video's. 8 per arm, 28 days.",
+      "branch": "agent/improver/2026-11-03",
+      "experiment": "ending-beats-act-and-vary"
+    }
+  ],
+  "nextCheck": "2026-11-04",
+  "links": [
+    {
+      "label": "Journal",
+      "url": "improvement/journal.md"
+    }
+  ]
+}

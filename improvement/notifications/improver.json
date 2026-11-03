@@ -6,6 +6,20 @@
       "title": "Let the evaluator rank voices by what viewers hear",
       "detail": "Research's evaluate-voice-heard: 'voice' in the evaluator names only the narrator, but in our best Shorts the cast speaks 80-100% of the words. Manifests now carry heard.hookVoice and heard.narratorShare (from tonight's ship code). improvement/evaluate.py is owner-only, so the ranking is yours to add. Measured on today's data from the scripts: hook voice am_fenrir (Sharma) 15.8x median 48 h views (n=4), narrator 0-24% of words 31.2x (n=3) vs 75-100% 0.66x (n=5).",
       "fix": "1. In improvement/evaluate.py attributes(), add two keys: (lambda v: v.get('hookVoice'), 'hook voice') and the narrator share in quarters, (lambda v: <'0-24% of words' … '75-100% of words'>, 'narrator'). 2. Fill them in report(): for each row without narratorShare, read videos/<id>/script.json and take the first spoken beat's voice (CAST_VOICES from renderer/timeline/build.py, else render.json voice.name) and the narrator's share of words; generator.run.heard(script, narrator) already computes both. 3. Add a test in improvement/tests/test_evaluate.py."
+    },
+    {
+      "key": "evaluate-extension-never-waits",
+      "severity": "warning",
+      "title": "An extended experiment is abandoned the next night, with no new data",
+      "detail": "improvement/evaluate.py judge(): the wait branch is `n < min_per_arm and days < max_days`, so once both arms have minPerArm videos the maxDays an extension adds is never used, and `extended: true` returns abandon at once. Tonight hook-voice-matches-frame got 'extend' (on 9, off 8, no clear effect); with extended set and maxDays 28 it already reads 'abandon'. The improver can't change evaluate.py (owner-only), so tomorrow's run will abandon it unless this is fixed.",
+      "fix": "1. In improvement/evaluate.py judge(), before the keep/revert checks, add: `if exp.get('extended') and days < max_days: return {**out, 'verdict': 'wait', 'why': f'extended to {max_days} days; day {days}'}`. 2. Add a case to improvement/tests/test_evaluate.py test_extends_then_abandons_when_unclear: extended with maxDays beyond NOW waits, past it abandons. 3. If you'd rather drop extensions, change the extend message instead, and the improver will abandon on the first unclear verdict."
+    },
+    {
+      "key": "loudness-into-metrics",
+      "severity": "info",
+      "title": "Carry loudness into metrics/videos.json so the evaluator can rank by it",
+      "detail": "From tonight every render.json and manifest has audio.lufs (integrated loudness) and audio.music_under_voice_db (research loudness-in-render-json, adopted). metrics/videos.json is written by the ingest worker and ranked by improvement/evaluate.py, neither in the improver's lane.",
+      "fix": "1. In the ingest worker that writes metrics/videos.json, copy manifest.audio.lufs and manifest.audio.music_under_voice_db into each row (the auditor can do this if you add it to its focus). 2. In improvement/evaluate.py attributes(), add a 'music under voice' bucket (under 15 dB, 15-20, 20+)."
     }
   ]
 }

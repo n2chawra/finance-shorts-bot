@@ -30,7 +30,9 @@
         "off": null
       },
       "proposal": "hook-voice-matches-frame",
-      "description": "Shorts: the first spoken words say what frame 0 shows; no warm-up opener"
+      "description": "Shorts: the first spoken words say what frame 0 shows; no warm-up opener",
+      "extended": true,
+      "maxDays": 28
     },
     {
       "id": "title-names-the-moment",
@@ -121,6 +123,23 @@
       "share": 0.5,
       "proposal": "cinematic-bed-gets-a-pulse",
       "description": "Shorts: the cinematic bed starts on a major chord, with a soft kick on 1 and 3 and a shaker from bar 1 and a snare on 2 and 4 from bar 3 (renderer/engine/music.py _cinematic_pulse). Built 2026-11-02, waits for a free slot (maxActiveExperiments 5); set status running and startedAt to start it."
+    },
+    {
+      "id": "ending-beats-act-and-vary",
+      "area": "pacing",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-03",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "prompt": {
+        "on": "Ending rule for this video: Turn.tsx and Payoff.tsx are not one held picture. Give each 2-3 actions keyed to the events of the words that name them: the figure being said slams in big with its label, the thing from the last board beat comes back and grows, shrinks, breaks or fills, and a final label or chip says the point so the beat reads on mute. Nothing in the turn or payoff goes 2.5 s without something new. Choose the camera sizes and transitions of the hook, turn, payoff and loop beats so they differ from the previous Short's ending (not close-then-wide on the turn and wide on the payoff again).",
+        "off": null
+      },
+      "proposal": "ending-beats-act-and-vary",
+      "description": "Shorts: the coded Turn and Payoff beats act on their words (2-3 actions each, nothing held 2.5 s) and the ending's camera and transitions differ from the last video's"
     }
   ]
 }
