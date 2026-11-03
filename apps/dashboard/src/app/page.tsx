@@ -9,6 +9,7 @@ import { Badge, Button, Card, Delta, Empty, ErrorNote, Loading, Meter, Num, Page
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
 import { useAgents, useAnalytics, useNotifications, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
+import { lastNight } from "@/lib/last-night";
 import { AGENTS, type Analytics, perThousand, type Run } from "@/lib/schemas";
 import { STATS_AGE_CLASS, statsAge } from "@/lib/stats-age";
 
@@ -188,19 +189,17 @@ export default function OverviewPage() {
       </div>
 
       {(() => {
-        const days = [...new Set((agents.data?.activity ?? []).map((a) => a.day))].sort();
-        const last = days.at(-1);
-        const rows = (agents.data?.activity ?? []).filter((a) => a.day === last);
+        const { day: last, byAgent } = lastNight(agents.data?.activity ?? []);
         const label = { acted: "made a change", waited: "waited", blocked: "was blocked", nothing: "nothing to do" } as const;
         return (
           <Card title="Agents last night" icon={Sparkles} className="mt-3" description={last ? undefined : "The self-improving agents report here after their first night."}
             action={<Link href="/agents" className="flex items-center gap-1 text-xs font-medium text-ink2 hover:text-ink">Details <ArrowRight aria-hidden className="size-3.5" /></Link>}>
-            {rows.length > 0 && (
+            {byAgent.size > 0 && (
               <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
                 {AGENTS.map((k) => {
-                  const a = rows.find((r) => r.agent === k);
+                  const a = byAgent.get(k);
                   return (
-                    <li key={k} className="rounded-lg bg-surface-2 p-3 text-[13px]">
+                    <li key={k} data-testid={`last-night-${k}`} className="rounded-lg bg-surface-2 p-3 text-[13px]">
                       <div className="flex items-center justify-between gap-2"><span className="font-medium">{k[0].toUpperCase() + k.slice(1)}</span>
                         <span className="text-xs text-muted">{a ? label[a.decision] : "no report"}</span></div>
                       {a && <p className="mt-1 line-clamp-3 text-ink2">{a.summary}</p>}

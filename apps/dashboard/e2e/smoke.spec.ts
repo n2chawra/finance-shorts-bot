@@ -346,6 +346,20 @@ test("overview counts only Shorts toward the daily target", async ({ page }) => 
   await expect(page.getByTestId("output-total")).toHaveText(`${shorts.length} Shorts`);
 });
 
+test("overview shows all of last night's agents after the first ones write the next date", async ({ page }) => {
+  await signIn(page);
+  const { activity }: { activity: { agent: string; day: string; summary: string }[] } = await (await page.request.get("/api/agents")).json();
+  const newest = activity.map((a) => a.day).sort().at(-1);
+  const improver = activity.filter((a) => a.agent === "improver").sort((a, b) => b.day.localeCompare(a.day))[0];
+  expect(improver.day, "sample data: the improver hasn't reported on the newest date yet").not.toBe(newest);
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
+  // the card used to show only the newest date, so the improver and dashboard read "no report"
+  await expect(page.getByTestId("last-night-improver")).toContainText(improver.summary.slice(0, 30));
+  await expect(page.getByTestId("last-night-dashboard")).not.toContainText("no report");
+  await expect(page.getByTestId("last-night-auditor")).not.toContainText("no report");
+});
+
 test("overview and analytics say how old the YouTube numbers are", async ({ page }) => {
   await signIn(page);
   const { statsThrough } = await (await page.request.get("/api/analytics")).json();
