@@ -59,6 +59,46 @@
       "id": "cmvz2ct9j0003kz09yuamro4u",
       "action": "noted",
       "note": "Stale. The new storytelling and presentation rules (one concrete story, open questions, the camera following the action) apply to every Short from the next run."
+    },
+    {
+      "id": "cmw0a48ek0003lh09x8ge2u94",
+      "action": "fixed",
+      "note": "Things in board and build beats no longer wait on screen: anything nothing acts on until 0.6 s into a beat now flies in just before the word that names it, then animates.",
+      "commit": "379f507"
+    },
+    {
+      "id": "cmw0a5lxv0001jq09073tge9o",
+      "action": "fixed",
+      "note": "New render check: a board video fails when more than 65% of its actions only mark something already there (this Short had 71%: glows, stamps, bubbles), so writers must add things that enter, swap, flow, multiply or a panel.",
+      "commit": "15ac099"
+    },
+    {
+      "id": "cmw09x8od0001l509yhqrq3wo",
+      "action": "fixed",
+      "note": "The 'Data:' source line now prints once a video, on the first beat that says a sourced figure; a video's own beats that print it everywhere fail the own-code check.",
+      "commit": "360eb4f"
+    },
+    {
+      "id": "cmw09umpi0001lh09xy0b8j2u",
+      "action": "fixed",
+      "note": "Writer rule: a real company is shown by its name (a name card or a label on its product), never a pun object like fruit for Apple; real logos can't be used (no downloaded images, trademarks).",
+      "commit": "a953bc5"
+    },
+    {
+      "id": "cmw0adkun0003l0094mu9wrwc",
+      "action": "fixed",
+      "note": "Writer rule: the first time a real person is named they get one short clause that makes them matter; a rank or amount in it must be a sourced fact, otherwise words.",
+      "commit": "a953bc5"
+    },
+    {
+      "id": "cmw0aalom0001l009efdat7og",
+      "action": "needs owner",
+      "note": "Real faces and logos would need downloaded images, which the hard rules forbid (no downloaded or copyrighted assets), and bring likeness and trademark risk; companies now show by name instead. Only you can change that rule (see Notifications)."
+    },
+    {
+      "id": "cmw0afrth0003jq092th80vej",
+      "action": "noted",
+      "note": "Taken as taste: v-20261103-02's board mix (more things entering and growing, fewer marks) is the bar the new 65% mark cap is set against."
     }
   ]
 }

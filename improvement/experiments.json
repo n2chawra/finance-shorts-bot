@@ -670,6 +670,74 @@
       "description": "Board rooms float things at 0.27 of the frame (over the cast's heads, was 0.2 at eye level); a thing's label over an actor steps above the thing",
       "evidence": "QA failed v-20261103-02 twice on the same scene bug (labels across Rohan's eyes and Priya's head, the bottle on his head). Stills before/after with the draft placement; layout and craft gates clean.",
       "commits": []
+    },
+    {
+      "id": "2026-11-03-items-enter-on-their-word",
+      "area": "motion",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-03",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "description": "A build/board thing that nothing acts on until 0.6 s into the beat enters just before its first action instead of waiting on screen",
+      "evidence": "Owner note on v-20261103-03 ('props coming before their context is said… make them appear and animate'): coffee, jet and bank sat on screen 1.5-2.5 s before their words. Stills after: the jar flies in on 'taxed'; layout gate clean.",
+      "commits": [
+        "379f507"
+      ],
+      "proposal": "items-enter-on-their-word"
+    },
+    {
+      "id": "2026-11-03-source-once-per-source",
+      "area": "text",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-03",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "description": "The 'Data:' line prints once a video (first board beat that says a fact; own code via showsSource)",
+      "evidence": "Owner note on v-20261103-01 ('source should be shown once only'): its Deal and Turn beats both printed it.",
+      "commits": [
+        "360eb4f"
+      ],
+      "proposal": "source-once-per-source"
+    },
+    {
+      "id": "2026-11-03-actions-that-change-things",
+      "area": "motion",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-03",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "description": "Craft check: at most 65% of a board video's actions may be marks (glow, stamp, bubble…)",
+      "evidence": "Owner note on v-20261103-03 ('same stuff coming'): 71% marks; v-20261103-02 (his 'better animation' pick) 64%, -01 59%.",
+      "commits": [
+        "15ac099"
+      ],
+      "proposal": "actions-that-change-things"
+    },
+    {
+      "id": "2026-11-03-person-intro-tag",
+      "area": "script",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-03",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "description": "Writer: a real person gets one clause the first time they are named; a company is its name, never a pun object",
+      "evidence": "Owner notes on v-20261103-02 (Buffett intro) and v-20261103-01 (Apple drawn as fruit, Google as a vault).",
+      "commits": [
+        "a953bc5"
+      ],
+      "proposal": "person-intro-tag"
     }
   ]
 }
