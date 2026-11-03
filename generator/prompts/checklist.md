@@ -71,6 +71,13 @@ fix any beat near a limit as well.
 - **The HUD counter** shows on `build` and `shot` beats and gives way on its own on type, stats,
   case, chapter and custom beats. Set it in the beat whose line says that figure, with a label for
   whose figure it is (`"Rohan's pot"`), so it never shows the last speaker's number.
+- **A board beat speaks for 6.5 s at most** (one sentence, one picture), and no beat runs 3 s
+  without an event: split a long promise or turn instead of stretching it (3 of the 2026-11-03
+  Shorts were sent back for both).
+- **A board room** (cast + things): leave the things' `y` unset so they float over the heads, and
+  never put a thing's `x` on an actor's spot. Cards (no cast) have the whole middle to themselves.
+- **Custom Turn bars:** a column label fits its column's width (`fitLine(label, fs, columnWidth)`),
+  two short words at most, or two labels print over each other (QA, v-20261103-03).
 - **Inputs before results:** show the amount and the rate before the figure they make.
 - **The first frame of the hook** has words and the main thing on screen, never an empty or dark frame.
 - **A close or extreme shot every few seconds,** and never four shots of one size in a row.

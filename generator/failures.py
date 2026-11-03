@@ -15,6 +15,9 @@ from pathlib import Path
 
 # the kinds of failure, matched in order on a note; the advice is what prevents it at the writing stage
 KINDS: list[tuple[str, str, str]] = [
+    ("render", r"runs [\d.]+ s with [\d.]+ s and no event", "a long stretch with no event: an action every 3 s, or split the beat"),
+    ("number_check", r"runs [\d.]+ s with [\d.]+ s and no event", "a long stretch with no event: an action every 3 s, or split the beat"),
+    ("number_check", r"board beat .* speaks for", "a board beat over 6.5 s: one sentence, one picture per beat; split it"),
     ("render", r"runs outside the frame|inside the bottom", "text off the frame: keep words short, labels ≤ 3 words; custom code uses design/fit.ts"),
     ("render", r"below the \d+ px minimum", "text under the minimum size: custom code never sets a font below minText(w, h)"),
     ("render", r"nothing new on screen", "a gap with nothing new: an action on every phrase, at most 2.5 s apart"),

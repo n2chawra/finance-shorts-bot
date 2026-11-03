@@ -448,3 +448,11 @@ def test_loudness_warnings() -> None:
     w = loudness_warnings({"lufs": -18.5, "music_under_voice_db": 12.4}, "short")
     assert len(w) == 2 and "LUFS" in w[0] and "12.4 dB" in w[1]
     assert loudness_warnings({"music_under_voice_db": 12.4}, "long") == []
+
+
+def test_failure_kinds_name_board_and_event_gaps() -> None:
+    """The 2026-11-03 Shorts' most common unnamed notes get their own kind and advice."""
+    from generator.failures import _kind
+    assert "6.5 s" in _kind("number_check", "board beat 'y1994' speaks for about 7 s; at most 6.5: one sentence")
+    assert "every 3 s" in _kind("render", "warning: beat 'turn' runs 11.2 s with 3.2 s and no event: add an event")
+    assert "every 3 s" in _kind("number_check", "warning: beat 'promise' runs 9.0 s with 3.0 s and no event")
