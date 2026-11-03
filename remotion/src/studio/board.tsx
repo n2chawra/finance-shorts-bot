@@ -48,6 +48,7 @@ import { BuildScene } from "./build";
 import { INK, PALETTE, type PropSet, shade } from "./draw";
 import { SHARED_PROPS } from "./build";
 import { VIDEOS } from "../videos/hooks";
+import { showsSource } from "./source";
 
 /** The board's looks; generator/looks.py holds the same lists (a test keeps them in step). */
 export const LOOKS = {
@@ -209,8 +210,8 @@ export const BoardScene: React.FC<SceneProps> = (p) => {
   const panelBox = v ? { x0: w * 0.07, x1: w * 0.87, y0: h * 0.175, y1: h * (card ? (hasChips ? 0.63 : 0.69) : 0.5) } : { x0: w * 0.52, x1: w * 0.94, y0: h * 0.27, y1: h * 0.74 };
   if (v && (eq || term)) panelBox.y0 = h * 0.28;
   const progress = clamp((p.beat.from + p.frame / (p.tl.tempo || 1)) / p.tl.durationInFrames);
-  const factFigures = Object.entries(p.tl.figures ?? {}).filter(([k]) => /^fact\d+$/.test(k)).map(([, x]) => x);
-  const factSaid = factFigures.some((f) => (p.beat.say ?? "").includes(f));
+  // the source line shows once a video, on the first board beat that says a sourced figure (owner, 2026-11-03)
+  const factSaid = showsSource(p);
 
   // ---- the sum: terms appear one by one on their words, the result counts up ----
   let eqNode: React.ReactNode = null;
@@ -455,7 +456,7 @@ export const BoardScene: React.FC<SceneProps> = (p) => {
           <Header text={header.text} sub={header.sub} style={look.header} size={hdrSize} maxW={maxW} enter={headerEnter} t={t} />
         </div>
       )}
-      {/* where the facts come from: on the ground band, only while a sourced figure is being said */}
+      {/* where the facts come from: on the ground band, once, while the first sourced figure is said */}
       {p.tl.sources && factSaid && (
         <div style={{ position: "absolute", left: 0, right: 0, top: v ? h * 0.742 : h * 0.81, display: "flex", justifyContent: "center" }}>
           <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: min, color: "#fff", background: "rgba(0,0,0,0.55)", borderRadius: 999, padding: "4px 22px", maxWidth: maxW,
