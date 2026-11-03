@@ -239,9 +239,11 @@ test("stat cards in a row share one height", async ({ page }) => {
   await signIn(page);
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
-  await page.waitForTimeout(1200);   // entrance animations move the cards
-  // a card with a wrapped label or a longer line once stood taller than its neighbours, leaving a ragged row
-  const ragged = await page.getByTestId("overview-stats").evaluate((g) => {
+  await page.waitForTimeout(1200);   // entrance animations move (and scale) the cards: don't measure mid-flight
+  // a card with a wrapped label or a longer line once stood taller than its neighbours, leaving a ragged row.
+  // Measured until it settles: the fixed 1.2 s wait alone for the entrance animations flaked under load (2026-11-03);
+  // a card that really is taller stays taller and still fails after 10 s.
+  const ragged = () => page.getByTestId("overview-stats").evaluate((g) => {
     const rows = new Map<number, number[]>();
     for (const cell of Array.from(g.children)) {
       const card = cell.firstElementChild!.getBoundingClientRect();
@@ -250,7 +252,7 @@ test("stat cards in a row share one height", async ({ page }) => {
     }
     return [...rows.values()].filter((hs) => Math.max(...hs) - Math.min(...hs) > 1);
   });
-  expect(ragged).toEqual([]);
+  await expect.poll(ragged, { timeout: 10_000, intervals: [300, 500, 1000] }).toEqual([]);
 });
 
 test("videos topic filter offers every category it is given", async ({ page }) => {
