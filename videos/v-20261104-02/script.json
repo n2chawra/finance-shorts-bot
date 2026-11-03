@@ -1,0 +1,847 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 70413,
+  "story": "billionaire_question",
+  "shape": "versus",
+  "currency": "USD",
+  "feed_id": "2026-10-23-elon-cant-give-it-away",
+  "style": {
+    "palette": "night",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 108,
+    "look": {
+      "stage": "office",
+      "header": "strip",
+      "holder": "phone",
+      "entrance": "slide"
+    }
+  },
+  "hook_style": "question",
+  "cta": "Should he give shares or cash? Comment",
+  "facts": [
+    {
+      "label": "taxes Musk said he would pay that year",
+      "value": 11,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2021-12-19",
+      "source": "Reuters",
+      "url": "https://www.yahoo.com/news/teslas-musk-says-pay-over-031129726.html"
+    },
+    {
+      "label": "Tesla shares Musk had sold in the weeks before, nearly",
+      "value": 14,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2021-12-19",
+      "source": "Reuters",
+      "url": "https://www.yahoo.com/news/teslas-musk-says-pay-over-031129726.html"
+    }
+  ],
+  "maths": [
+    {
+      "name": "g",
+      "kind": "fee_take",
+      "amount": 100000000000,
+      "fee_pct": 23.8,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "pile",
+      "kind": "share",
+      "total": 100000000000,
+      "parts": 1
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.0,
+    "words": "Sell and *give*?",
+    "figure": "{g_total}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "You think Musk just sells and gives it away? Watch.",
+      "events": {
+        "musk": {
+          "word": "Musk"
+        },
+        "sell": {
+          "word": "sells"
+        },
+        "cash": {
+          "word": "gives"
+        },
+        "catch": {
+          "word": "Watch"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "musk"
+        },
+        {
+          "kind": "whoosh",
+          "at": "cash"
+        },
+        {
+          "kind": "riser",
+          "at": "catch"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "Sell and give?",
+        "set": "office",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "can't",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "shares",
+      "scene": "board",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "His money isn't cash in a bank. It's mostly Tesla shares.",
+      "events": {
+        "money": {
+          "word": "money"
+        },
+        "cash": {
+          "word": "cash"
+        },
+        "bank": {
+          "word": "bank"
+        },
+        "tesla": {
+          "word": "Tesla"
+        },
+        "shares": {
+          "word": "shares"
+        }
+      },
+      "params": {
+        "header": "Not cash",
+        "sub": "Where his money sits",
+        "bg": "slate",
+        "items": [
+          {
+            "id": "cash",
+            "prop": "cashcase",
+            "x": 0.3,
+            "size": 0.26,
+            "label": "Cash"
+          },
+          {
+            "id": "shares",
+            "prop": "sharestack",
+            "x": 0.72,
+            "size": 0.26,
+            "label": "Tesla shares"
+          },
+          {
+            "id": "teslacar",
+            "prop": "evcar",
+            "x": 0.72,
+            "y": 0.3,
+            "size": 0.2,
+            "label": "Tesla"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "person",
+            "name": "Elon Musk",
+            "kicker": "Runs Tesla",
+            "prop": "evcar"
+          },
+          {
+            "at": "cash",
+            "do": "shake",
+            "target": "cash"
+          },
+          {
+            "at": "bank",
+            "do": "cross",
+            "target": "cash"
+          },
+          {
+            "at": "tesla",
+            "do": "grow",
+            "target": "teslacar",
+            "scale": 1.15
+          },
+          {
+            "at": "shares",
+            "do": "grow",
+            "target": "shares",
+            "scale": 1.15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sold",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "In one stretch of a few weeks, he sold nearly {fact2} of Tesla.",
+      "events": {
+        "stretch": {
+          "word": "stretch"
+        },
+        "weeks": {
+          "word": "weeks"
+        },
+        "sold": {
+          "word": "sold"
+        },
+        "tesla": {
+          "word": "Tesla"
+        }
+      },
+      "params": {
+        "header": "A few weeks of selling",
+        "bg": "teal",
+        "items": [
+          {
+            "id": "tesla",
+            "prop": "sharestack",
+            "x": 0.28,
+            "size": 0.26,
+            "label": "Tesla shares"
+          },
+          {
+            "id": "sold",
+            "prop": "cashcase",
+            "x": 0.74,
+            "size": 0.26,
+            "label": "Sold"
+          },
+          {
+            "id": "weeks",
+            "prop": "ticker",
+            "x": 0.74,
+            "y": 0.32,
+            "size": 0.2,
+            "label": "Few weeks"
+          },
+          {
+            "id": "teslapack",
+            "prop": "battery",
+            "x": 0.5,
+            "y": 0.05,
+            "size": 0.14,
+            "label": "Tesla"
+          }
+        ],
+        "actions": [
+          {
+            "at": "weeks",
+            "do": "grow",
+            "target": "weeks",
+            "scale": 1.15
+          },
+          {
+            "at": "sold",
+            "do": "grow",
+            "target": "sold",
+            "scale": 1.15
+          },
+          {
+            "at": "tesla",
+            "do": "flow",
+            "target": "tesla",
+            "to": "sold",
+            "n": 6,
+            "text": "{fact2}"
+          },
+          {
+            "at": "stretch",
+            "do": "doc",
+            "title": "The sale",
+            "rows": [
+              {
+                "label": "Sold",
+                "value": "Nearly {fact2}",
+                "at": "sold"
+              },
+              {
+                "label": "Time",
+                "value": "A few weeks"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "That year he said he'd pay over {fact1} in tax, on sales and options together.",
+      "events": {
+        "year": {
+          "word": "year"
+        },
+        "said": {
+          "word": "said"
+        },
+        "pay": {
+          "word": "pay"
+        },
+        "tax": {
+          "word": "tax"
+        },
+        "options": {
+          "word": "options"
+        }
+      },
+      "params": {
+        "header": "The tax that year",
+        "bg": "coral",
+        "items": [
+          {
+            "id": "pay",
+            "prop": "taxenvelope",
+            "x": 0.5,
+            "size": 0.34,
+            "label": "Tax to pay",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "said",
+            "do": "doc",
+            "title": "His own words",
+            "rows": [
+              {
+                "label": "Tax to pay",
+                "value": "Over {fact1}",
+                "at": "pay"
+              },
+              {
+                "label": "On",
+                "value": "Sales and options",
+                "at": "options"
+              }
+            ]
+          },
+          {
+            "at": "pay",
+            "do": "enter",
+            "target": "pay",
+            "how": "drop"
+          },
+          {
+            "at": "tax",
+            "do": "grow",
+            "target": "pay",
+            "scale": 1.2
+          },
+          {
+            "at": "tax",
+            "do": "tag",
+            "target": "pay",
+            "text": "{fact1}"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "So what if he sold everything?",
+      "events": {
+        "sold": {
+          "word": "sold"
+        },
+        "everything": {
+          "word": "everything"
+        }
+      },
+      "params": {
+        "header": "Sell it all?",
+        "bg": "night",
+        "stage": "office",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "everything",
+            "prop": "sharestack",
+            "size": 0.24,
+            "label": "Everything",
+            "state": "tall"
+          }
+        ],
+        "actions": [
+          {
+            "at": "sold",
+            "do": "shake",
+            "target": "everything"
+          },
+          {
+            "at": "everything",
+            "do": "grow",
+            "target": "everything",
+            "scale": 1.2
+          }
+        ]
+      }
+    },
+    {
+      "id": "pile",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Sell an illustrative {pile_total} at the top US rate, {g_fee_pct}.",
+      "events": {
+        "sell": {
+          "word": "Sell"
+        },
+        "illustrative": {
+          "word": "illustrative"
+        },
+        "top": {
+          "word": "top"
+        },
+        "rate": {
+          "word": "rate"
+        }
+      },
+      "params": {
+        "header": "An illustrative sale",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "sell",
+            "prop": "cashcase",
+            "x": 0.32,
+            "size": 0.24,
+            "label": "Shares to sell"
+          },
+          {
+            "id": "rate",
+            "prop": "taxenvelope",
+            "x": 0.7,
+            "size": 0.2,
+            "label": "Top rate"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{pile_total}"
+              },
+              {
+                "text": "× {g_fee_pct}",
+                "at": "rate"
+              }
+            ],
+            "result": {
+              "text": "Tax ?",
+              "at": "rate"
+            }
+          },
+          {
+            "at": "sell",
+            "do": "grow",
+            "target": "sell",
+            "scale": 1.1
+          },
+          {
+            "at": "illustrative",
+            "do": "tag",
+            "target": "sell",
+            "text": "{pile_total}"
+          },
+          {
+            "at": "top",
+            "do": "grow",
+            "target": "rate",
+            "scale": 1.15
+          },
+          {
+            "at": "rate",
+            "do": "tag",
+            "target": "rate",
+            "text": "{g_fee_pct}"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rate",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Before a cent is given, {g_total} goes to tax.",
+      "events": {
+        "before": {
+          "word": "Before"
+        },
+        "cent": {
+          "word": "cent"
+        },
+        "given": {
+          "word": "given"
+        },
+        "goes": {
+          "word": "goes"
+        },
+        "tax": {
+          "word": "tax"
+        }
+      },
+      "params": {
+        "header": "Tax comes first",
+        "bg": "sand",
+        "items": [
+          {
+            "id": "cent",
+            "prop": "cashcase",
+            "x": 0.3,
+            "size": 0.24,
+            "label": "Every cent"
+          },
+          {
+            "id": "tax",
+            "prop": "taxenvelope",
+            "x": 0.7,
+            "size": 0.22,
+            "label": "Tax",
+            "hidden": true
+          },
+          {
+            "id": "given",
+            "prop": "giftbox",
+            "x": 0.5,
+            "y": 0.32,
+            "size": 0.16,
+            "label": "Given",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "before",
+            "do": "grow",
+            "target": "cent",
+            "scale": 1.1
+          },
+          {
+            "at": "given",
+            "do": "enter",
+            "target": "given",
+            "how": "drop"
+          },
+          {
+            "at": "cent",
+            "do": "grow",
+            "target": "cent",
+            "scale": 1.2
+          },
+          {
+            "sec": 2.2,
+            "do": "grow",
+            "target": "tax",
+            "scale": 1.1
+          },
+          {
+            "at": "goes",
+            "do": "enter",
+            "target": "tax",
+            "how": "drop"
+          },
+          {
+            "at": "tax",
+            "do": "flow",
+            "target": "cent",
+            "to": "tax",
+            "n": 6,
+            "text": "{g_total}"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "The twist? Give the shares themselves, and the US charges no capital gains tax on them.",
+      "events": {
+        "twist": {
+          "word": "twist"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "us": {
+          "word": "US"
+        },
+        "gains": {
+          "word": "gains"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "twist"
+        },
+        {
+          "kind": "whoosh",
+          "at": "shares"
+        },
+        {
+          "kind": "boom",
+          "at": "gains"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "header": "Give the shares",
+        "taxLabel": "No gains tax",
+        "giftLabel": "Full gift",
+        "stackLabel": "Shares",
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "gains",
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "That's the catch: selling first shrinks the gift by {g_total}.",
+      "events": {
+        "catch": {
+          "word": "catch"
+        },
+        "selling": {
+          "word": "selling"
+        },
+        "shrinks": {
+          "word": "shrinks"
+        },
+        "gift": {
+          "word": "gift"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "catch"
+        },
+        {
+          "kind": "whoosh",
+          "at": "shrinks"
+        },
+        {
+          "kind": "kaching",
+          "at": "gift"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "header": "Selling shrinks the gift",
+        "tax": "{g_total}",
+        "taxLabel": "Tax",
+        "giftLabel": "Left to give",
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "why",
+            "size": "wide",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "board",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Still think he'd just sell and hand it all out?",
+      "events": {
+        "still": {
+          "word": "still"
+        },
+        "sell": {
+          "word": "sell"
+        },
+        "out": {
+          "word": "out"
+        }
+      },
+      "params": {
+        "header": "Still think so?",
+        "bg": "night",
+        "stage": "office",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "give",
+            "prop": "charityjar",
+            "x": 0.3,
+            "size": 0.24,
+            "label": "Hand it out"
+          },
+          {
+            "id": "still",
+            "prop": "sharestack",
+            "x": 0.72,
+            "size": 0.24,
+            "label": "Sell shares"
+          }
+        ],
+        "actions": [
+          {
+            "at": "still",
+            "do": "grow",
+            "target": "still",
+            "scale": 1.1
+          },
+          {
+            "at": "sell",
+            "do": "flow",
+            "target": "still",
+            "to": "give",
+            "n": 4
+          },
+          {
+            "at": "out",
+            "do": "grow",
+            "target": "give",
+            "scale": 1.2
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "af_bella"
+}

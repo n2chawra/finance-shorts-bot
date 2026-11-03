@@ -1,0 +1,440 @@
+{
+  "id": "v-20261104-02",
+  "createdAt": "2026-11-03T22:20:21.160322+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why Elon Musk can't just sell his shares and give the money away",
+    "category": "wealth",
+    "reach": "global",
+    "feed_id": "2026-10-23-elon-cant-give-it-away"
+  },
+  "title": "Why Elon Musk doesn't just sell and give it away 💸",
+  "description": "Can Elon Musk just sell his shares and give the cash away?\nOver a few weeks in late 2021 he sold nearly $14B of Tesla; he said he'd pay over $11B in tax that year, on sales and options together.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#ElonMusk",
+    "#Billionaire",
+    "#Money"
+  ],
+  "hookStyle": "question",
+  "cta": "Should he give shares or cash? Comment",
+  "seed": 70413,
+  "style": {
+    "palette": "night",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 108,
+    "look": {
+      "stage": "office",
+      "header": "strip",
+      "holder": "phone",
+      "entrance": "slide"
+    },
+    "voice": "af_bella"
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think Musk just sells and gives it away? Watch.",
+        "start": 0.3,
+        "seconds": 2.56,
+        "window": 3.23,
+        "fill": 0.793
+      },
+      {
+        "scene": "shares",
+        "text": "His money isn't cash in a bank. It's mostly Tesla shares.",
+        "start": 3.53,
+        "seconds": 3.09,
+        "window": 3.77,
+        "fill": 0.82
+      },
+      {
+        "scene": "sold",
+        "text": "In one stretch of a few weeks, he sold nearly $14B of Tesla.",
+        "start": 7.3,
+        "seconds": 4.19,
+        "window": 4.87,
+        "fill": 0.86
+      },
+      {
+        "scene": "tax",
+        "text": "That year he said he'd pay over $11B in tax, on sales and options together.",
+        "start": 12.17,
+        "seconds": 5.05,
+        "window": 5.73,
+        "fill": 0.881
+      },
+      {
+        "scene": "ask",
+        "text": "So what if he sold everything?",
+        "start": 17.9,
+        "seconds": 1.37,
+        "window": 1.9,
+        "fill": 0.721
+      },
+      {
+        "scene": "pile",
+        "text": "Sell an illustrative $100.00B at the top US rate, 23.8%.",
+        "start": 19.8,
+        "seconds": 5.32,
+        "window": 6.0,
+        "fill": 0.887
+      },
+      {
+        "scene": "rate",
+        "text": "Before a cent is given, $23.80B goes to tax.",
+        "start": 25.8,
+        "seconds": 4.03,
+        "window": 4.7,
+        "fill": 0.857
+      },
+      {
+        "scene": "turn",
+        "text": "The twist? Give the shares themselves, and the US charges no capital gains tax on them.",
+        "start": 30.5,
+        "seconds": 4.92,
+        "window": 5.6,
+        "fill": 0.879
+      },
+      {
+        "scene": "payoff",
+        "text": "That's the catch: selling first shrinks the gift by $23.80B.",
+        "start": 36.1,
+        "seconds": 4.53,
+        "window": 5.2,
+        "fill": 0.871
+      },
+      {
+        "scene": "loop",
+        "text": "Still think he'd just sell and hand it all out?",
+        "start": 41.3,
+        "seconds": 2.27,
+        "window": 2.83,
+        "fill": 0.802
+      }
+    ]
+  },
+  "durationSec": 44,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.0,
+    "lufs": -14.3,
+    "music_under_voice_db": 22.3
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off",
+    "ending-beats-act-and-vary": "off"
+  },
+  "heard": {
+    "hookVoice": "af_bella",
+    "narratorShare": 95
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "12 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite. All 5 earlier problems are fixed. fact1 ($11B, 'on sales and options together') and fact2 (nearly $14B over a few weeks) are confirmed on the Reuters/Yahoo page. 23.8% (20% LTCG + 3.8% NIIT) is the correct top federal rate. Giving appreciated shares to charity incurs no capital-gains tax, which is correct. Title, payoff and loop now claim only that selling first costs tax. 'Illustrative $100B' as the verify list requires. Disclaimer present. Small notes: fact3 ($937B) is still in facts but used nowhere, so drop it (and its wrong Reuters credit; the figure is Bloomberg's). The 23.8% bill assumes a near-zero cost basis, which is reasonable for a founder."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: 25s pile card now clean (no tag over a label), 20s equation shows $100.00B from the start, thumbnail at hook sec 2.0 is settled; all frames read on mute, hook opens a question, disclaimer on last frame, 44s, layout/craft clean."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-03T21:58:05.708729+00:00",
+      "finishedAt": "2026-11-03T21:58:05.708729+00:00",
+      "notes": [
+        "story 'billionaire_question' was told in the last 1 videos",
+        "description opens with 'why can t', already used by v-20261024-01"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-03T21:58:09.999582+00:00",
+      "finishedAt": "2026-11-03T21:58:09.999582+00:00",
+      "notes": [
+        "story 'billionaire_question' was told in the last 1 videos"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-03T21:59:06.013474+00:00",
+      "finishedAt": "2026-11-03T21:59:06.013474+00:00",
+      "notes": [
+        "thumbnail.words: four words at most, it is read at a glance",
+        "3 hedging words (can, could); at most 2: tell one concrete story with certainty (\"The dealer takes two thousand off.\", not \"some dealers can…\"); the disclaimer covers it",
+        "board beat 'sold' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds",
+        "board beat 'rate' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T21:59:21.786736+00:00",
+      "finishedAt": "2026-11-03T21:59:21.786736+00:00",
+      "notes": [
+        "9 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "warning: beat 'rate' runs 6.3 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:02:38.088565+00:00",
+      "finishedAt": "2026-11-03T22:02:38.088565+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:04:25.422279+00:00",
+      "finishedAt": "2026-11-03T22:04:25.422279+00:00",
+      "notes": [
+        "9 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "warning: beat 'rate' runs 6.3 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "card 'tax' has 2 changes and 3 pieces of text: a card is a labelled diagram (3+ changes, 2+ labels, rows, chips or callouts), not one icon"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:04:59.120916+00:00",
+      "finishedAt": "2026-11-03T22:04:59.120916+00:00",
+      "notes": [
+        "9 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:06:12.887461+00:00",
+      "finishedAt": "2026-11-03T22:07:39.670846+00:00",
+      "notes": [
+        "2.8 s with nothing new on screen in beat 'rate' (at most 2.5 s): add an action on the phrase being said there",
+        "5 of 10 stills are mostly empty background (at 5 s, 10 s, 15 s, 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+        "warning: beat 'turn' runs 6.2 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:07:52.854391+00:00",
+      "finishedAt": "2026-11-03T22:07:52.854391+00:00",
+      "notes": [
+        "payoff + title: 'That's why he can't just give it away' / 'Elon Musk can't just give it away' is false and the numbers don't support it. He can donate shares directly with no capital-gains tax (he gave about $5.7B of Tesla shares to charity in Nov 2021), and even the video's own sale leaves 76.2% to give. The most the story shows is that selling first costs tax. Reword title, payoff and loop to 'can't just SELL and give the cash away without losing a big chunk', or mention giving shares directly.",
+        "sold + tax beats: 'nearly $14B of Tesla... And the bill? He said he'd pay over $11B in tax' presents the $11B as the bill on the $14B sale (it reads as about 79%). Most of the tax came from exercising about 15M options taxed as income (Gulf News, Deseret, Bloomberg Tax). The topic's verify list says never present the $11B as a rate on the $14B. Separate them, e.g. say the tax 'mostly came from exercising options', or drop 'And the bill?'.",
+        "sold beat: 'He did sell once' is false. Musk sold Tesla stock again in 2022 (about $23B across April, August and Nov-Dec, around the Twitter deal). Say 'In late 2021 he sold...' instead.",
+        "turn + payoff: 'while he sold, Tesla's value slid... to $937B' followed by 'his billions shrink before he gives them' credits the drop to his selling. The sources only say the value slid after the poll/tweet. Keep it as timing only, with no causal payoff.",
+        "fact3 ($937B) is not on the cited Reuters/Yahoo page (it says 'about $1 trillion'). Confirmed by search instead: Accounting Today (Bloomberg News, 21 Dec 2021: 'slid back below the $1 trillion mark to $937 billion') and Deseret News (20 Dec 2021). Credit it to Bloomberg, not Reuters. fact1 ($11B) and fact2 (nearly $14B, 'last few weeks') are confirmed on the Reuters page. 23.8% (20% LTCG + 3.8% NIIT, federal) is correct."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:07:56.074552+00:00",
+      "finishedAt": "2026-11-03T22:07:56.074552+00:00",
+      "notes": [
+        "13 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:09:02.909721+00:00",
+      "finishedAt": "2026-11-03T22:09:02.909721+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:09:03.895017+00:00",
+      "finishedAt": "2026-11-03T22:09:03.895017+00:00",
+      "notes": [
+        "13 figures computed from inputs; 10 cross-checked against closed-form formulas.",
+        "the hook gives no reason to stay: end it on the open question or a promise (\"Casinos make money even when you win. Here's how.\"), never on the answer"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:09:26.483522+00:00",
+      "finishedAt": "2026-11-03T22:09:26.483522+00:00",
+      "notes": [
+        "13 figures computed from inputs; 10 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:10:24.819997+00:00",
+      "finishedAt": "2026-11-03T22:10:24.819997+00:00",
+      "notes": [
+        "Re-review after rewrite. All 5 earlier problems are fixed. fact1 ($11B, 'on sales and options together') and fact2 (nearly $14B over a few weeks) are confirmed on the Reuters/Yahoo page. 23.8% (20% LTCG + 3.8% NIIT) is the correct top federal rate. Giving appreciated shares to charity incurs no capital-gains tax, which is correct. Title, payoff and loop now claim only that selling first costs tax. 'Illustrative $100B' as the verify list requires. Disclaimer present. Small notes: fact3 ($937B) is still in facts but used nowhere, so drop it (and its wrong Reuters credit; the figure is Bloomberg's). The 23.8% bill assumes a near-zero cost basis, which is reasonable for a founder."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:10:05.219887+00:00",
+      "finishedAt": "2026-11-03T22:10:45.522744+00:00",
+      "notes": [
+        "2 of 10 stills are mostly empty background (at 10 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:10:50.320460+00:00",
+      "finishedAt": "2026-11-03T22:10:50.320460+00:00",
+      "notes": [
+        "12 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:11:16.311448+00:00",
+      "finishedAt": "2026-11-03T22:11:41.243050+00:00",
+      "notes": [
+        "3 of 10 stills are mostly empty background (at 5 s, 10 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:12:06.345343+00:00",
+      "finishedAt": "2026-11-03T22:12:30.774334+00:00",
+      "notes": [
+        "3 of 10 stills are mostly empty background (at 5 s, 10 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:12:51.051926+00:00",
+      "finishedAt": "2026-11-03T22:12:51.051926+00:00",
+      "notes": [
+        "12 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:13:04.766872+00:00",
+      "finishedAt": "2026-11-03T22:13:29.196071+00:00",
+      "notes": [
+        "beat 'sold': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:13:49.334814+00:00",
+      "finishedAt": "2026-11-03T22:14:13.862930+00:00",
+      "notes": [
+        "44 s, night/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:14:38.681633+00:00",
+      "finishedAt": "2026-11-03T22:15:06.275288+00:00",
+      "notes": [
+        "44 s, night/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-03T22:15:53.570490+00:00",
+      "finishedAt": "2026-11-03T22:15:53.570490+00:00",
+      "notes": [
+        "[script] 25.0s (beat pile): the $100.00B tag on 'Shares to sell' lands on the 'Illustrative' item's label (reads 'Illustrati', text over text) and the battery prop itself sits hidden behind the equation box; drop the 'illustrative' item (a battery means nothing here) or move it/the tag clear. Also at 20.0s the equation box is an empty dark bar until the word 'illustrative' - start it with its first term visible.",
+        "[script] Thumbnail (sec 3.6, hook): taken during the whip transition into 'shares' (starts 3.53s): 'SELL AND GIVE?' has a blurred ghost copy behind it and flying share slips cover the 'SHARES' label; pick a settled hook moment (e.g. sec 2.0)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:16:25.861427+00:00",
+      "finishedAt": "2026-11-03T22:16:50.910704+00:00",
+      "notes": [
+        "44 s, night/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:17:21.810947+00:00",
+      "finishedAt": "2026-11-03T22:17:21.810947+00:00",
+      "notes": [
+        "Re-review after fixes: 25s pile card now clean (no tag over a label), 20s equation shows $100.00B from the start, thumbnail at hook sec 2.0 is settled; all frames read on mute, hook opens a question, disclaimer on last frame, 44s, layout/craft clean."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:18:01.118486+00:00",
+      "finishedAt": "2026-11-03T22:19:55.762640+00:00",
+      "notes": [
+        "44 s, night/synthwave, peak -1.0 dB, mean -16.0 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-03T22:20:21.160438+00:00",
+      "finishedAt": "2026-11-03T22:20:21.160438+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261104-02",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261104-02"
+  }
+}
