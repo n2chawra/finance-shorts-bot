@@ -201,7 +201,12 @@
       "detail": "Notification-centre guides agree a mark-all action must be predictable and easy to undo. An Undo button in the toast that reopens exactly the items just resolved saves a trip to 'recently resolved' after a mis-tap on the phone.",
       "page": "notifications",
       "found": "2026-10-23",
-      "status": "open"
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-11-03",
+        "apps/dashboard/src/components/toast.tsx": "2026-11-03"
+      }
     },
     {
       "id": "stat-cards-ragged-height",
@@ -354,6 +359,57 @@
       "detail": "The card shows the newest activity day only. The auditor (23:00) and research (23:47) already write the next day's date, so from 23:00 until the improver's 06:17 run the card shows those two and 'no report' for everyone else, hiding the previous night's improver and dashboard reports. Fix: show each agent's latest report from the last ~24 h instead of one day's set.",
       "page": "overview",
       "found": "2026-10-29",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/app/page.tsx": "2026-11-03",
+        "apps/dashboard/src/lib/last-night.ts": "2026-11-03",
+        "apps/dashboard/src/lib/autopilot.sample.ts": "2026-11-03"
+      }
+    },
+    {
+      "id": "merge-check-playwright-ubuntu-2604",
+      "kind": "bug",
+      "title": "Agent merge: Playwright 1.56.1 can't install Chromium on the Ubuntu 26.04 runner",
+      "detail": "The 2026-11-02 dashboard branch was blocked with 'tests or build failed' although build and lint passed: `playwright install --with-deps` stopped with 'Cannot install dependencies for ubuntu26.04-x64 with Playwright 1.56.1' after ubuntu-latest moved to 26.04. The branch was deleted, so its work (Resolve-all Undo, agents card) was redone tonight. Bumped @playwright/test to 1.64.1, which knows ubuntu26.04-x64.",
+      "page": "all",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/package.json": "2026-11-03",
+        "apps/dashboard/package-lock.json": "2026-11-03"
+      }
+    },
+    {
+      "id": "video-edit-tags-hash",
+      "kind": "bug",
+      "title": "Video page: Edit details saved '#money' as a tag, so 'Copy hashtags' gave '##money'",
+      "detail": "The Tags box split on commas only. Tags typed as hashtags kept the #, and repeats (money, Money) were kept. Now a leading # is dropped and repeats are removed, case-insensitively.",
+      "page": "video",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/[id]/publish-tools.tsx": "2026-11-03"
+      }
+    },
+    {
+      "id": "dashboard-settings-defaults-drift",
+      "kind": "bug",
+      "title": "Dashboard fallback settings disagree with the publisher's",
+      "detail": "store.db.ts DEFAULT_SETTINGS (used for any setting with no database row) and the sample settings still say 3 Short slots 07:07/12:37/19:07, trend slots 16:07/22:07, dailyVideoTarget 2, Shorts 30-45 s, long videos Tue/Thu/Sat, 2 a week, 300-900 s. workers/lib/settings.ts says 12:37/19:07, no trend slots, 3 a day, 60-90 s, Saturday only, 1 a week, 180-900 s. If a setting has no row, the Overview target, Queue, Calendar and Settings page show the old plan. That line names the upload-schedule settings, so the guard (rightly) blocks agents: owner fix, see notifications.",
+      "page": "overview",
+      "found": "2026-11-03",
+      "status": "open"
+    },
+    {
+      "id": "smoke-stat-cards-flaky",
+      "kind": "bug",
+      "title": "Smoke test 'stat cards in a row share one height' flaked once on phone-dark",
+      "detail": "Failed once in a full run under load, then passed 8 of 8 alone. It waits a fixed 1.2 s for entrance animations; waiting until the card heights stop changing would remove the flake. CI retries once, so it doesn't block merges yet.",
+      "page": "overview",
+      "found": "2026-11-03",
       "status": "open"
     }
   ]

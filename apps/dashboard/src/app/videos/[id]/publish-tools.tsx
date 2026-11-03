@@ -169,6 +169,17 @@ const toLocal = (iso: string) => {
   const d = new Date(iso);
   return new Date(d.getTime() - d.getTimezoneOffset() * 60_000).toISOString().slice(0, 16);
 };
+/** The Tags box as typed: "#money, Money, rich vs poor" → ["money", "rich vs poor"]. A leading # would
+ *  come back doubled ("##money") from "Copy hashtags", and YouTube ignores repeated tags. */
+export function parseTags(text: string): string[] {
+  const seen = new Set<string>();
+  return text.split(",").map((t) => t.trim().replace(/^#+\s*/, "")).filter((t) => {
+    const key = t.toLowerCase();
+    if (!t || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
 const inputClass = "mt-1.5 min-h-11 w-full rounded-lg border border-ring bg-surface px-3 text-sm shadow-card";
 
 /** Fix anything on a video after the fact: title, description, tags, and once it is uploaded its YouTube link and time. */
@@ -193,7 +204,7 @@ export function EditDetails({ v }: { v: Pick<Video, "id" | "title" | "descriptio
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (badLink || !title.trim()) return;
-    const tagList = tags.split(",").map((t) => t.trim()).filter(Boolean);
+    const tagList = parseTags(tags);
     const body = {
       ...(title.trim() !== v.title ? { title: title.trim() } : {}),
       ...(description !== v.description ? { description } : {}),

@@ -1,0 +1,53 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-03",
+  "startedAt": "2026-11-03T02:08:36Z",
+  "finishedAt": "2026-11-03T02:23:29Z",
+  "summary": "Unblocked dashboard merges (Playwright couldn't install on the new Ubuntu 26.04 runner), then fixed the Overview agents card after 23:00, added Undo to 'Resolve all' and fixed hashtag tags in Edit details.",
+  "decision": "acted",
+  "why": "Last night's branch was blocked by the merge check's Playwright install, not by its code, so every dashboard branch would keep failing. The other three were the top open bug, the idea lost with that branch, and a bug found in tonight's code review.",
+  "findings": [
+    {
+      "title": "Merge check: Playwright 1.56.1 can't install on Ubuntu 26.04",
+      "detail": "The 11-02 branch's run stopped at 'Cannot install dependencies for ubuntu26.04-x64'; build and lint had passed.",
+      "link": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/41377721017"
+    },
+    {
+      "title": "Dashboard fallback settings are the old plan",
+      "detail": "store.db.ts defaults say 3 Short slots + 2 trend slots, 2 a day, 30-45 s, long videos Tue/Thu/Sat; the publisher uses 2 slots, 3 a day, 60-90 s, Saturday. Owner-only line; in Notifications."
+    },
+    {
+      "title": "One flaky smoke test",
+      "detail": "'stat cards in a row share one height' failed once on phone-dark under load, then passed 8 of 8."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Playwright 1.64.1 for the merge check",
+      "detail": "apps/dashboard/package.json and lockfile: the three Playwright packages only.",
+      "branch": "agent/dashboard/2026-11-03"
+    },
+    {
+      "title": "Overview: 'Agents last night' keeps the whole night",
+      "detail": "Each agent's newest report from the newest date or the day before, so the improver and dashboard don't read 'no report' after 23:00. Smoke test.",
+      "branch": "agent/dashboard/2026-11-03"
+    },
+    {
+      "title": "Notifications: Undo on 'Resolve all'",
+      "detail": "The toast reopens exactly the items just resolved. Smoke test.",
+      "branch": "agent/dashboard/2026-11-03"
+    },
+    {
+      "title": "Video page: tags without # or repeats",
+      "detail": "Edit details strips a leading # and drops repeated tags, so 'Copy hashtags' no longer gives ##money. Smoke test.",
+      "branch": "agent/dashboard/2026-11-03"
+    }
+  ],
+  "nextCheck": "2026-11-04",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/dashboard/2026-11-03.md"
+    }
+  ]
+}

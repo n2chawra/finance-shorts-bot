@@ -72,7 +72,10 @@ export function getAgents(): Agents {
   const activity: Activity[] = [];
   for (let d = 0; d < 4; d++) {
     const day = istDay(now - d * DAY_MS);
-    activity.push(
+    // the newest date holds only the night's first agents (auditor 23:00, research 23:47 write the
+    // next day's date), as it does on the live site until the improver's 06:17 run
+    const lateAgents = d === 0 ? new Set<string>(["improver", "dashboard"]) : new Set<string>();
+    activity.push(...([
       {
         id: `${day}-research`, agent: "research", day, decision: "acted", ...sampleTimes(day, 18, 17, 38 + d * 3),
         summary: d === 0 ? "Studied 4 top finance Shorts and checked Claude updates. Added 3 proposals about hooks and sound." : "Looked at music and sound design in animated explainers; added 2 proposals.",
@@ -105,7 +108,7 @@ export function getAgents(): Agents {
         findings: d === 0 ? [{ title: "Live counts read before the refresh finished", detail: "store.db.ts: one page skipped the wait for fresh counters." }] : [{ title: "Duplicated IST date helpers", detail: "Three copies of istDay(); one shared module would do." }],
         changes: d === 0 ? [{ title: "Wait for fresh counters on every page", branch: `agent/auditor/${day}` }] : [], nextCheck: null, links: [{ label: "Report", url: `improvement/auditor/${day}.md` }],
       },
-    );
+    ] satisfies Activity[]).filter((a) => !lateAgents.has(a.agent)));
   }
   const videoRuns = Array.from({ length: 4 }, (_, d) => {
     const day = istDay(now - d * DAY_MS);

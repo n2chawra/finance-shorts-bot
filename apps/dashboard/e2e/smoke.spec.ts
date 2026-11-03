@@ -64,6 +64,22 @@ test("mark-as-uploaded dialog opens and validates the link", async ({ page }) =>
   await expect(page.getByText(/Video id AbCdEfGhIjK/)).toBeVisible();
 });
 
+test("edit details saves tags without # and without repeats", async ({ page }) => {
+  await signIn(page);
+  let sent: { tags?: string[] } | null = null;
+  await page.route("**/api/videos/v030", async (route) => {
+    if (route.request().method() !== "PATCH") return route.continue();
+    sent = route.request().postDataJSON();
+    await route.fulfill({ response: await route.fetch({ method: "GET" }) });
+  });
+  await page.goto("/videos/v030");
+  await page.getByRole("button", { name: "Edit details" }).click();
+  // typed as hashtags, these were saved as "#money", so "Copy hashtags" gave "##money"
+  await page.getByLabel("Tags", { exact: true }).fill("#money, Money, # rich vs poor,, ");
+  await page.getByRole("button", { name: "Save", exact: true }).click();
+  await expect.poll(() => sent?.tags).toEqual(["money", "rich vs poor"]);
+});
+
 test("settings show an unsaved-changes bar that can be discarded", async ({ page }) => {
   await signIn(page);
   await page.goto("/settings");
@@ -199,6 +215,24 @@ test("resolve all leaves setting proposals for a decision", async ({ page }) => 
   await page.getByRole("button", { name: "Resolve all" }).click();
   await expect.poll(() => sent?.ids.length ?? 0).toBeGreaterThan(0);
   expect(sent!.ids, "the open proposal must not be resolved").not.toContain("n0");
+});
+
+test("undo on the resolve-all toast reopens exactly what it resolved", async ({ page }) => {
+  await signIn(page);
+  const sent: { ids: string[]; action: string }[] = [];
+  await page.route("**/api/notifications", async (route) => {
+    if (route.request().method() !== "PATCH") return route.continue();
+    const body = route.request().postDataJSON() as { ids: string[]; action: string };
+    if (body.action !== "seen") sent.push(body);
+    await route.fulfill({ response: await route.fetch({ method: "GET" }) });
+  });
+  await page.goto("/notifications");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
+  await page.getByRole("button", { name: "Resolve all" }).click();
+  // a mis-tap on the phone used to mean reopening each item from "recently resolved"
+  await page.getByRole("button", { name: "Undo" }).click();
+  await expect.poll(() => sent.map((b) => b.action)).toEqual(["resolve", "reopen"]);
+  expect(sent[1].ids).toEqual(sent[0].ids);
 });
 
 test("stat cards in a row share one height", async ({ page }) => {
@@ -344,6 +378,20 @@ test("overview counts only Shorts toward the daily target", async ({ page }) => 
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
   // long videos (their own weekly target) were counted as Shorts, so a day with 2 Shorts + 1 long read "target met"
   await expect(page.getByTestId("output-total")).toHaveText(`${shorts.length} Shorts`);
+});
+
+test("overview shows all of last night's agents after the first ones write the next date", async ({ page }) => {
+  await signIn(page);
+  const { activity }: { activity: { agent: string; day: string; summary: string }[] } = await (await page.request.get("/api/agents")).json();
+  const newest = activity.map((a) => a.day).sort().at(-1);
+  const improver = activity.filter((a) => a.agent === "improver").sort((a, b) => b.day.localeCompare(a.day))[0];
+  expect(improver.day, "sample data: the improver hasn't reported on the newest date yet").not.toBe(newest);
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Overview/, { timeout: 30_000 });
+  // the card used to show only the newest date, so the improver and dashboard read "no report"
+  await expect(page.getByTestId("last-night-improver")).toContainText(improver.summary.slice(0, 30));
+  await expect(page.getByTestId("last-night-dashboard")).not.toContainText("no report");
+  await expect(page.getByTestId("last-night-auditor")).not.toContainText("no report");
 });
 
 test("overview and analytics say how old the YouTube numbers are", async ({ page }) => {
