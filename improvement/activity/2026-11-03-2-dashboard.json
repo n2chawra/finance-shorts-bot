@@ -1,0 +1,24 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-03",
+  "startedAt": "2026-11-03T18:14:01Z",
+  "finishedAt": "2026-11-03T18:37:08Z",
+  "summary": "Made main's dashboard smoke tests green again after today's owner commits, restored the stale-stats warning on the new Analytics page, and fixed its 'Over time' card on phones.",
+  "decision": "acted",
+  "why": "6 smoke-test failures on main would have blocked every dashboard branch at the merge check. The other fixes were a regression the rewrite brought back, a misleading 'through yesterday' with no data, a broken phone layout seen in tonight's screenshots, and the flaky test logged this morning.",
+  "findings": [
+    {"title": "Smoke tests expected the old upload plan", "detail": "The owner's fallback-settings fix (12:37/19:07, long videos Saturday) made two tests fail; they now follow it."},
+    {"title": "New Analytics page lost the stale-stats warning", "detail": "Plain 'Through <day>' replaced the amber/red line; its smoke test failed."},
+    {"title": "Over time card broken on phones", "detail": "The metric switch covered the title and squeezed the description to one word a line."},
+    {"title": "Two load flakes", "detail": "Settings unsaved-changes bar and Undo on resolve-all each failed once in a full run, 12/12 alone. CI retries once."}
+  ],
+  "changes": [
+    {"title": "Smoke tests follow the new fallback settings", "detail": "12:37 due slot; 'long videos Sat'.", "branch": "agent/dashboard/2026-11-03-2"},
+    {"title": "Analytics: stale-stats warning back", "detail": "Coloured 'YouTube Analytics through <day>' in the new freshness line.", "branch": "agent/dashboard/2026-11-03-2"},
+    {"title": "Analytics: no data reads 'none'", "detail": "studio.db.ts no longer falls back to yesterday for the freshness date.", "branch": "agent/dashboard/2026-11-03-2"},
+    {"title": "Smoke test: stat-card heights measured until they settle", "detail": "Removes this morning's flake without loosening the check.", "branch": "agent/dashboard/2026-11-03-2"},
+    {"title": "Cards: header actions wrap on phones", "detail": "Card headers wrap; switches scroll instead of wrapping labels. Smoke test.", "branch": "agent/dashboard/2026-11-03-2"}
+  ],
+  "nextCheck": "2026-11-04",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-03-2.md"}]
+}

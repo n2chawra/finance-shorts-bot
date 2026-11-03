@@ -398,10 +398,11 @@
       "id": "dashboard-settings-defaults-drift",
       "kind": "bug",
       "title": "Dashboard fallback settings disagree with the publisher's",
-      "detail": "store.db.ts DEFAULT_SETTINGS (used for any setting with no database row) and the sample settings still say 3 Short slots 07:07/12:37/19:07, trend slots 16:07/22:07, dailyVideoTarget 2, Shorts 30-45 s, long videos Tue/Thu/Sat, 2 a week, 300-900 s. workers/lib/settings.ts says 12:37/19:07, no trend slots, 3 a day, 60-90 s, Saturday only, 1 a week, 180-900 s. If a setting has no row, the Overview target, Queue, Calendar and Settings page show the old plan. That line names the upload-schedule settings, so the guard (rightly) blocks agents: owner fix, see notifications.",
+      "detail": "store.db.ts DEFAULT_SETTINGS (used for any setting with no database row) and the sample settings still say 3 Short slots 07:07/12:37/19:07, trend slots 16:07/22:07, dailyVideoTarget 2, Shorts 30-45 s, long videos Tue/Thu/Sat, 2 a week, 300-900 s. workers/lib/settings.ts says 12:37/19:07, no trend slots, 3 a day, 60-90 s, Saturday only, 1 a week, 180-900 s. If a setting has no row, the Overview target, Queue, Calendar and Settings page show the old plan. That line names the upload-schedule settings, so the guard (rightly) blocks agents: owner fix, see notifications. Fixed by the owner in 69013de (2026-11-03 12:25 IST); two smoke tests still expected the old plan and were updated the same night.",
       "page": "overview",
       "found": "2026-11-03",
-      "status": "open"
+      "status": "done",
+      "done": "2026-11-03"
     },
     {
       "id": "smoke-stat-cards-flaky",
@@ -409,6 +410,80 @@
       "title": "Smoke test 'stat cards in a row share one height' flaked once on phone-dark",
       "detail": "Failed once in a full run under load, then passed 8 of 8 alone. It waits a fixed 1.2 s for entrance animations; waiting until the card heights stop changing would remove the flake. CI retries once, so it doesn't block merges yet.",
       "page": "overview",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-03"
+      }
+    },
+    {
+      "id": "smoke-tests-old-schedule",
+      "kind": "bug",
+      "title": "Smoke tests still expected the old upload plan",
+      "detail": "After the owner's fallback-settings fix, 'video page calls a due slot due' waited for a 07:07 slot and 'calendar heading names the long-video days' for Tue/Thu/Sat, so main's smoke suite was red and would have blocked every dashboard branch. Now 12:50 IST for the 12:37 slot and 'long videos Sat'.",
+      "page": "queue",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-03"
+      }
+    },
+    {
+      "id": "analytics-stats-age-lost",
+      "kind": "bug",
+      "title": "Analytics: the new page lost the stale-stats warning",
+      "detail": "The Studio-grade rewrite (f0af6e0) replaced the coloured 'YouTube Analytics through <day>' line with plain 'Through <day>', so a stopped stats job no longer showed amber/red there and its smoke test failed. Restored inside the new Freshness line.",
+      "page": "analytics",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/app/analytics/page.tsx": "2026-11-03"
+      }
+    },
+    {
+      "id": "studio-through-yesterday",
+      "kind": "bug",
+      "title": "Analytics: no data said 'through yesterday'",
+      "detail": "getStudio (studio.db.ts) fell back to yesterday for refreshed.through when there were no ChannelDay or VideoStat rows, so a channel whose stats never ran looked up to date. Now null, which reads 'No YouTube Analytics in 28 days' in red. DB path only; no smoke test can reach it.",
+      "page": "analytics",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/lib/studio.db.ts": "2026-11-03"
+      }
+    },
+    {
+      "id": "card-header-action-overlap",
+      "kind": "bug",
+      "title": "Cards: a wide header action covered the title on phones",
+      "detail": "Analytics 'Over time': the five-way metric switch sat on 'Over time' and squeezed the description to one word a line. Card headers now wrap, and Segmented scrolls sideways (no scrollbar) instead of wrapping its labels. Smoke test.",
+      "page": "analytics",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/components/ui.tsx": "2026-11-03"
+      }
+    },
+    {
+      "id": "smoke-load-flakes",
+      "kind": "bug",
+      "title": "Two more smoke tests flake under full-run load",
+      "detail": "'settings show an unsaved-changes bar' and 'undo on the resolve-all toast' each failed once in a full local run (different runs), then passed 12/12 alone. Likely a click before hydration, or two workers sharing the in-memory sample store. CI retries once. Next: capture the error on a failing run before changing anything.",
+      "page": "settings",
+      "found": "2026-11-03",
+      "status": "open"
+    },
+    {
+      "id": "analytics-hash-nav",
+      "kind": "idea",
+      "title": "Analytics: switching tabs by link within the page",
+      "detail": "The tab is read from the URL hash only on first load, so a link to /analytics#reach while already on /analytics keeps the old tab. Listen for hashchange. Small; helps 'More →' style links and the browser back button.",
+      "page": "analytics",
       "found": "2026-11-03",
       "status": "open"
     }
