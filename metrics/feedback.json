@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 7,
+  "open": 0,
   "notes": [
     {
       "id": "cmw0afrth0003jq092th80vej",
       "kind": "choice",
       "area": null,
       "text": "The animation and story telling is better than other video",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "noted: Taken as taste: v-20261103-02's board mix (more things entering and growing, fewer marks) is the bar the new 65% mark cap is set against.",
       "at": "2026-11-03T06:09:36.714Z",
       "video": {
         "id": "v-20261103-02",
@@ -26,8 +26,8 @@
       "kind": "improve",
       "area": "script",
       "text": "While telling about a person u can add some more thing about him to make it more curiosity. Like warren buffett the 10th richest man in the planet he does this... Etc depending on topic to make this very clear . But don't enlarge the introduction keep it short only.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Writer rule: the first time a real person is named they get one short clause that makes them matter; a rank or amount in it must be a sourced fact, otherwise words.: (a953bc5)",
       "at": "2026-11-03T06:07:54.575Z",
       "video": {
         "id": "v-20261103-02",
@@ -45,8 +45,8 @@
       "kind": "improve",
       "area": null,
       "text": "Add real images of personality and products so that it feels very good. Not full picture just people faces and products logos.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "needs owner: Real faces and logos would need downloaded images, which the hard rules forbid (no downloaded or copyrighted assets), and bring likeness and trademark risk; companies now show by name instead. Only you can change that rule (see Notifications).",
       "at": "2026-11-03T06:05:35.686Z",
       "video": {
         "id": "v-20261103-02",
@@ -64,8 +64,8 @@
       "kind": "improve",
       "area": "animation",
       "text": "Could have added more animation/propa so that it became more engaging. Right now it's like same stuff coming.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: New render check: a board video fails when more than 65% of its actions only mark something already there (this Short had 71%: glows, stamps, bubbles), so writers must add things that enter, swap, flow, multiply or a panel.: (15ac099)",
       "at": "2026-11-03T06:01:42.740Z",
       "video": {
         "id": "v-20261103-03",
@@ -83,8 +83,8 @@
       "kind": "wrong",
       "area": "animation",
       "text": "The props are coming before even their context is said which is making it look static for few seconds. Also don't put things already in screen and then animate but  make them appear and animate so that it feels engaging.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Things in board and build beats no longer wait on screen: anything nothing acts on until 0.6 s into a beat now flies in just before the word that names it, then animates.: (379f507)",
       "at": "2026-11-03T06:00:38.540Z",
       "video": {
         "id": "v-20261103-03",
@@ -102,8 +102,8 @@
       "kind": "general",
       "area": null,
       "text": "The source should be shown once only throughout the video. No need to show again and again.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: The 'Data:' source line now prints once a video, on the first beat that says a sourced figure; a video's own beats that print it everywhere fail the own-code check.: (360eb4f)",
       "at": "2026-11-03T05:55:12.302Z",
       "video": {
         "id": "v-20261103-01",
@@ -121,8 +121,8 @@
       "kind": "wrong",
       "area": "other",
       "text": "The image showed for apple and Google ia wrong. Apple is fruit here and Google wrong thing. Use real icons of company not this fake things.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Writer rule: a real company is shown by its name (a name card or a label on its product), never a pun object like fruit for Apple; real logos can't be used (no downloaded images, trademarks).: (a953bc5)",
       "at": "2026-11-03T05:53:10.519Z",
       "video": {
         "id": "v-20261103-01",
