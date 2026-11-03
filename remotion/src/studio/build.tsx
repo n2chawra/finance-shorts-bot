@@ -46,7 +46,7 @@ import { counterBottom, counterShown } from "./hud";
 import { Ball, Box, INK, PALETTE, type PropFC, type PropSet, Shadow, Shape } from "./draw";
 import { Note, type Cur } from "./money";
 import { VIDEOS } from "../videos/hooks";
-import { entry, entryStart, FLOW_SEC, flowEnd, flowPiece, hopAt, squashAt, squashScale } from "./travel";
+import { autoEnters, entry, entryStart, FLOW_SEC, flowEnd, flowPiece, hopAt, squashAt, squashScale } from "./travel";
 import { groundY, World } from "./worlds";
 
 type Spot = "left" | "center" | "right" | number;
@@ -117,7 +117,9 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   const props: PropSet = { ...SHARED, ...own };
   const gy = groundY(P.world?.kind, h, P.world?.ground);
   const items = P.items ?? [];
-  const actions = (P.actions ?? []).map((a) => ({ ...a, start: a.sec ?? at(p, a.at, 0) })).sort((a, b) => a.start - b.start);
+  const written0 = (P.actions ?? []).map((a) => ({ ...a, start: a.sec ?? at(p, a.at, 0) }));
+  // things arrive on their words instead of waiting on screen for them (owner, 2026-11-03; travel.ts)
+  const actions = [...written0, ...autoEnters(P.items ?? [], written0).map((a) => a as unknown as (typeof written0)[number])].sort((a, b) => a.start - b.start);
   const cur = (p.tl.currency ?? "USD") as Cur;
   // things arrive and money travels instead of popping in and shaking (adopted 2026-11-02)
   const travel = true;
@@ -251,7 +253,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   // lands, a multiply pulls out to hold the crowd), unless the script put a camera key near it
   const auto: (CamKey & { start: number })[] = [];
   for (const a of actions) {
-    if (!AUTO_CAM.has(a.do) || !byId[a.target]) continue;
+    if (!AUTO_CAM.has(a.do) || !byId[a.target] || (a as { auto?: boolean }).auto) continue;
     const flowTo = a.do === "flow" && typeof a.to === "string" && byId[a.to] ? a.to : undefined;
     const start = flowTo ? a.start + (a.dur ?? FLOW_SEC) * 0.55 : a.start;
     if (written.some((k) => Math.abs(k.start - start) < 0.9)) continue;
