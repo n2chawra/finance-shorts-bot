@@ -32,10 +32,14 @@ test("a consistent channel has no issues", () => {
   assert.deepEqual(audit(input([video("a", 100), video("b", 50)])), []);
 });
 
-test("shown views that went down are an error", () => {
-  const r = audit(input([video("a", 90)], { previous: new Map([["a", 100]]) }));
-  assert.equal(r[0]?.kind, "went_down");
-  assert.equal(r[0]?.severity, "error");
+test("shown views that went down are an error, unless YouTube's own count went down too", () => {
+  const ytHigher = new Map([["yt-a", { privacy: "public", views: 100, likes: 0, comments: 0 }]]);
+  const r = audit(input([video("a", 90)], { previous: new Map([["a", 100]]), youtube: ytHigher }));
+  assert.equal(r.find((x) => x.kind === "went_down")?.severity, "error");
+  // YouTube removed invalid views and the dashboard followed it down (v-20261023-01, 1,175 -> 1,166)
+  const corrected = audit(input([video("a", 90)], { previous: new Map([["a", 100]]) }));
+  assert.equal(corrected[0]?.kind, "went_down");
+  assert.equal(corrected[0]?.severity, "warning");
 });
 
 test("behind YouTube right after a live refresh is a bug; with stale counters it is only info", () => {

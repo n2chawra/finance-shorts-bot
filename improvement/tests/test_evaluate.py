@@ -40,6 +40,8 @@ def test_extends_then_abandons_when_unclear() -> None:
     v = videos([100, 102, 98, 101, 99, 100, 103, 97], [100, 99, 101, 100, 102, 98, 100, 101])
     assert ev.judge(EXP, v, [], NOW)["verdict"] == "extend"
     assert ev.judge({**EXP, "extended": True}, v, [], NOW)["verdict"] == "abandon"
+    # an extension waits until its new maxDays (2026-11-03: it was abandoned the very next night)
+    assert ev.judge({**EXP, "extended": True, "maxDays": 400}, v, [], NOW)["verdict"] == "wait"
 
 
 def test_guard_reverts_when_the_change_makes_videos_fail() -> None:

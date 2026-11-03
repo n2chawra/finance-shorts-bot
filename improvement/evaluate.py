@@ -134,6 +134,10 @@ def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) ->
         "avgPct_off": round(statistics.mean(pct_off), 1) if pct_off else None,
         "fail_on": round(fail_on, 2), "fail_off": round(fail_off, 2), "attempts_on": tried["on"][0], "attempts_off": tried["off"][0],
     }
+    # an extension gives the test until its new maxDays before an unclear result is abandoned (owner-approved
+    # 2026-11-03: hook-voice-matches-frame was extended one night and abandoned the next with no new data)
+    if exp.get("extended") and days < max_days and not guard_bad:
+        return {**out, "verdict": "wait", "why": f"extended to {max_days} days; day {days}"}
     if guard_bad:
         return {**out, "verdict": "revert", "why": f"QA/fact failures {fail_on:.0%} with the change vs {fail_off:.0%} without"}
     label = {"views48h": "views in 48 h", "views7d": "views in 7 days", "avgViewPct": "average % viewed", "hookHold": "viewers kept past the hook"}[metric]
@@ -249,13 +253,43 @@ def attributes(videos: list[dict], stories: dict[str, str | None], shapes: dict[
             (lambda v: v.get("category"), "topic"), (lambda v: ist_hour(v.get("publishAt")), "upload hour"),
             (lambda v: v.get("palette"), "palette"), (lambda v: v.get("genre"), "music genre"),
             (lambda v: band(v.get("bpm")), "tempo"), (lambda v: v.get("voice") or "none", "voice"),
-            (lambda v: length(v.get("durationSec")), "length")]
+            (lambda v: length(v.get("durationSec")), "length"),
+            # what viewers hear (research evaluate-voice-heard, 2026-11-03): the first line's voice and the
+            # narrator's share of the words, and how far the music sits under the voice
+            (lambda v: v.get("hookVoice"), "hook voice"),
+            (lambda v: None if v.get("narratorShare") is None else ["0-24%", "25-49%", "50-74%", "75-100%"][min(3, int(v["narratorShare"]) // 25)] + " of words", "narrator"),
+            (lambda v: None if v.get("musicUnderVoiceDb") is None else "music under 15 dB" if v["musicUnderVoiceDb"] < 15 else "music 15-20 dB under" if v["musicUnderVoiceDb"] < 20 else "music 20+ dB under", "music under voice")]
     return [row for key, label in keys for row in rank(videos, key, label)]
+
+
+def _heard(root: Path, videos: list[dict]) -> list[dict]:
+    """Each row with what viewers heard, from the video's manifest, or worked out from its script."""
+    from renderer.timeline.build import CAST_VOICES
+    out = []
+    for v in videos:
+        d = root / "videos" / str(v.get("id"))
+        man = _read(d / "manifest.json", {})
+        extra = dict(man.get("heard") or {})
+        if "narratorShare" not in extra and (d / "script.json").is_file():
+            script = _read(d / "script.json", {})
+            lines = [(b.get("speaker") or "narrator", len((b.get("say") or "").split())) for b in script.get("beats") or [] if (b.get("say") or "").strip()]
+            if lines:
+                total = sum(n for _, n in lines)
+                narrator = (man.get("voice") or {}).get("name") if isinstance(man.get("voice"), dict) else (man.get("style") or {}).get("voice")
+                extra = {"hookVoice": CAST_VOICES.get(lines[0][0], narrator),
+                         "narratorShare": round(100 * sum(n for who, n in lines if who not in CAST_VOICES) / total)}
+        audio = man.get("audio") or {}
+        if audio.get("music_under_voice_db") is not None:
+            extra["musicUnderVoiceDb"] = audio["music_under_voice_db"]
+        out.append({**extra, **v})
+    return out
+
+
 
 
 def report(root: Path = ROOT, now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
-    videos = _read(root / "metrics" / "videos.json", {"videos": []})["videos"]
+    videos = _heard(root, _read(root / "metrics" / "videos.json", {"videos": []})["videos"])
     attempts = _read(root / "metrics" / "runs.json", {"videos": []})["videos"]
     stories = {e["id"]: variety.story_of(e) for e in _read(root / "history" / "history.json", [])}
     shapes = {e["id"]: e.get("shape") for e in _read(root / "history" / "history.json", [])}

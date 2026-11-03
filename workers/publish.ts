@@ -13,7 +13,7 @@
  * "Upload now" in the dashboard goes before the queue. A failed upload stops the run and is retried
  * on the next one; after 3 attempts the video is marked failed.
  */
-import { mkdtempSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
@@ -24,11 +24,30 @@ import { UPLOAD_LOOKAHEAD_HOURS, dueSoon, isUrgent, istDay, istSlot, istTime, ne
 import { loadSettings } from "./lib/settings.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
-import { TokenError, accessToken, uploadVideo } from "./lib/youtube.ts";
+import { TokenError, accessToken, setThumbnail, uploadVideo } from "./lib/youtube.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const MAX_ATTEMPTS = 3;
 type Format = "short" | "long";
+
+/** Our designed cover instead of the frame YouTube picks (owner, 2026-11-03: "the thumbnail is wrong").
+ * The video is already uploaded, so a refused cover is reported, never a failed upload. */
+async function applyCover(prisma: PrismaClient, token: string, videoId: string, youtubeId: string): Promise<void> {
+  const dir = path.join(ROOT, "videos", videoId);
+  const file = ["thumbnail.jpg", "thumbnail.png"].map((f) => path.join(dir, f)).find((f) => existsSync(f));
+  if (!file) return void console.log(`${videoId}: no cover in the repo; YouTube picks a frame`);
+  try {
+    await setThumbnail(token, youtubeId, file);
+    console.log(`${videoId}: cover set from ${path.basename(file)}`);
+    await resolve(prisma, "cover-refused");
+  } catch (e) {
+    const why = e instanceof Error ? e.message : String(e);
+    console.log(`${videoId}: ${why}`);
+    await notify(prisma, { key: "cover-refused", source: "publish", severity: "warning", title: "YouTube didn't take our cover",
+      detail: `${videoId} (${youtubeId}) went up with YouTube's own frame as its cover: ${why}`,
+      fix: "If it says the account can't set custom thumbnails: verify the channel (youtube.com/verify, a phone number) and features such as custom thumbnails turn on. Then set this cover by hand in YouTube Studio, or ask Claude to re-apply it." });
+  }
+}
 
 async function main(): Promise<void> {
   if (!youtubeConfigured()) return;
@@ -146,6 +165,7 @@ async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string
     ]);
     await renumberQueue(prisma);
     console.log(JSON.stringify({ uploaded: video.id, youtubeId, publishAt: slot.toISOString(), attempts }, null, 2));
+    await applyCover(prisma, token, video.id, youtubeId);
     return true;
   } catch (e) {
     const error = e instanceof Error ? e.message : String(e);

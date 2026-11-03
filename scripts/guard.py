@@ -36,7 +36,8 @@ ALLOW: dict[str, list[str]] = {
                 "improvement/auditor/*", "improvement/activity/*-auditor.json", "improvement/notifications/auditor.json"],
     # long-form: scout researches and never touches code; studio pushes its videos straight to main
     # (like the Shorts video run) and uses its branch only for reports.
-    "scout": ["improvement/longform/*", "improvement/activity/*-scout.json", "improvement/notifications/scout.json"],
+    "scout": ["improvement/longform/*", "improvement/activity/*-scout.json", "improvement/notifications/scout.json",
+              "improvement/research/thumbnails.json"],   # its Monday thumbnail examples (owner-approved 2026-11-03)
     "studio": ["improvement/longform/*", "improvement/activity/*-studio.json", "improvement/notifications/studio.json"],
     # the monthly review writes its review, next month's focus and setting proposals; it never changes code or settings
     "monthly": ["improvement/monthly/*", "improvement/activity/*-monthly.json", "improvement/notifications/monthly.json"],

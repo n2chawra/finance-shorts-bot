@@ -215,6 +215,19 @@ def sheet(paths: list[Path], fps: int, out: Path, cols: int = 6) -> Path:
 THUMB_SIZES = {"long": (1280, 720), "short": (1080, 1920)}   # YouTube's 16:9 thumbnail; a Short's 9:16 cover
 
 
+def cover_jpeg(png: Path) -> Path:
+    """thumbnail.jpg beside thumbnail.png, under YouTube's 2 MB limit for a custom thumbnail (2026-11-03:
+    our PNG covers are 2.0-2.3 MB, so the publisher never set them and YouTube picked a frame)."""
+    from PIL import Image
+    out = png.with_suffix(".jpg")
+    img = Image.open(png).convert("RGB")
+    for q in (90, 82, 72):
+        img.save(out, "JPEG", quality=q, optimize=True, progressive=True)
+        if out.stat().st_size < 1_900_000:
+            break
+    return out
+
+
 def check_thumbnail(path: Path, fmt: str) -> None:
     """A thumbnail the wrong shape is cropped or letterboxed on YouTube: fail the render instead."""
     size = Image.open(path).size
@@ -251,6 +264,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
     else:
         shutil.copyfile(shots[min(1, len(shots) - 1)], out/"thumbnail.png")
     check_thumbnail(out/"thumbnail.png", tl["format"])
+    cover_jpeg(out/"thumbnail.png")
     # the extra thumbnails for a Test & Compare on YouTube: the same timeline with another thumbnail block
     for letter, variant in zip("bc", tl.get("thumbnailVariants") or []):
         alt = work/f"timeline-thumb-{letter}.json"

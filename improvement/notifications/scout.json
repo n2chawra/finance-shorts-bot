@@ -6,13 +6,6 @@
       "title": "Set one end screen on each long video",
       "detail": "Guides rate a single, specific next video as the best ending for session watch time. End screens can only be set in YouTube Studio, at upload.",
       "fix": "1. When uploading a long video, open Editor → End screen. 2. Add one 'Video' element pointing to our closest long video in subject (e.g. 'The 6 levels of money in India' for any rich-vs-poor or which-one-are-you video). 3. Add the Subscribe element. Nothing else."
-    },
-    {
-      "key": "scout-thumb-examples-guard",
-      "severity": "info",
-      "title": "Scout is asked to update thumbnail examples but isn't allowed to write that file",
-      "detail": "agents/scout.md (since 2026-10-29) tells Scout to add the week's fastest-growing explainers to improvement/research/thumbnails.json every Monday, but scripts/guard.py only lets Scout write improvement/longform/*, so that edit would block the merge. This week's candidates are in backlog item 2026-11-02-thumb-examples-weekly for research or the improver to add.",
-      "fix": "Either 1. in scripts/guard.py add \"improvement/research/thumbnails.json\" to the \"scout\" allow-list, or 2. in agents/scout.md move the Monday thumbnail-examples step to the research agent. Only you can change either file."
     }
   ]
 }

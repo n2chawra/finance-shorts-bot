@@ -63,7 +63,13 @@ export function audit(input: AuditInput): Issue[] {
 
     const prev = input.previous.get(v.id);
     if (dash && prev !== undefined && dash.views < prev) {
-      out.push({ kind: "went_down", severity: "error", ...at, detail: `Dashboard views fell from ${prev} (previous audit) to ${dash.views}. Shown counts must never go down.` });
+      // YouTube removes invalid views after the fact; when the dashboard followed it down to YouTube's own
+      // count, that's a correction, not a bug (owner-approved 2026-11-03, after v-20261023-01: 1,175 -> 1,166)
+      const ytNow = yid && youtube ? youtube.get(yid) : undefined;
+      const matchesYoutube = ytNow !== undefined && ytNow.privacy === "public" && dash.views >= ytNow.views - slack(ytNow.views, 0.02, 5);
+      out.push(matchesYoutube
+        ? { kind: "went_down", severity: "warning", ...at, detail: `Dashboard views fell from ${prev} to ${dash.views}, matching YouTube's own count (${ytNow!.views}): YouTube removed invalid views.` }
+        : { kind: "went_down", severity: "error", ...at, detail: `Dashboard views fell from ${prev} (previous audit) to ${dash.views}. Shown counts must never go down.` });
     }
 
     const rows = input.analytics.get(v.id) ?? [];

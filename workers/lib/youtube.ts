@@ -1,5 +1,6 @@
 /** YouTube Data API v3 and YouTube Analytics API over plain fetch. Every response is validated. */
-import { open, stat } from "node:fs/promises";
+import { open, readFile, stat } from "node:fs/promises";
+import path from "node:path";
 
 import { z } from "zod";
 
@@ -80,6 +81,19 @@ export async function uploadVideo(token: string, file: string, meta: VideoMeta):
   } finally {
     await handle.close();
   }
+}
+
+/** Set a video's custom thumbnail (a JPEG or PNG under 2 MB). YouTube needs the channel verified for
+ * custom thumbnails; it answers 403 otherwise, which the caller reports instead of failing the upload. */
+export async function setThumbnail(token: string, youtubeId: string, file: string): Promise<void> {
+  const body = await readFile(file);
+  if (body.length >= 2_000_000) throw new Error(`thumbnail ${path.basename(file)} is ${(body.length / 1e6).toFixed(1)} MB; YouTube allows under 2 MB`);
+  const res = await fetch(`https://www.googleapis.com/upload/youtube/v3/thumbnails/set?videoId=${encodeURIComponent(youtubeId)}&uploadType=media`, {
+    method: "POST",
+    headers: { authorization: `Bearer ${token}`, "content-type": file.endsWith(".png") ? "image/png" : "image/jpeg", "content-length": String(body.length) },
+    body,
+  });
+  if (!res.ok) throw new Error(`thumbnail not set: ${await failText(res)}`);
 }
 
 const VideoList = z.object({

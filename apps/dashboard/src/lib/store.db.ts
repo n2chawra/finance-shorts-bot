@@ -17,9 +17,9 @@ const DAY_MS = 86_400_000;
 const IST_OFFSET = "+05:30";
 
 export const DEFAULT_SETTINGS: Settings = {
-  uploadTimes: ["07:07", "12:37", "19:07"], trendUploadTimes: ["16:07", "22:07"], shortEveryDays: 1, dailyVideoTarget: 2, backlogCap: 30, lengthMinSec: 30, lengthMaxSec: 45,
-  longUploadTimes: ["20:07"], longUploadDays: [2, 4, 6], longLengthMinSec: 300, longLengthMaxSec: 900,
-  longPerWeek: 2, longBacklogCap: 4,
+  uploadTimes: ["12:37", "19:07"], trendUploadTimes: [], shortEveryDays: 1, dailyVideoTarget: 3, backlogCap: 30, lengthMinSec: 60, lengthMaxSec: 90,
+  longUploadTimes: ["20:07"], longUploadDays: [6], longLengthMinSec: 400, longLengthMaxSec: 600,
+  longPerWeek: 1, longBacklogCap: 4,   // the same as workers/lib/settings.ts DEFAULT_SETTINGS (2026-11-03)
   disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
   generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
   alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },

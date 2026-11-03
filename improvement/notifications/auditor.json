@@ -1,32 +1,11 @@
 {
   "notifications": [
     {
-      "key": "agent-merge-playwright",
-      "severity": "critical",
-      "title": "Agent merge blocks every dashboard change: Playwright can't install on the new runner",
-      "detail": "ubuntu-latest is now Ubuntu 26.04, and Playwright 1.56.1 can't install its browser dependencies there (\"Cannot install dependencies for ubuntu26.04-x64 with Playwright 1.56.1!\"), so the step \"Dashboard typecheck, lint, build and smoke tests\" in .github/workflows/agent-merge.yml fails before any test runs. tsc, lint and next build all passed. Blocked so far: agent/auditor/2026-11-02 (run 41333205383, the Skip to end / Upload now fix) and agent/dashboard/2026-11-02. Every agent branch that touches apps/dashboard will be blocked until this changes; agents can't edit workflows or package.json. Tonight's auditor branch avoids the dashboard so it can merge, and holds the queue fix (dui-012, commit 16e52ca) until then.",
-      "fix": "1. In .github/workflows/agent-merge.yml, line 23: change `runs-on: ubuntu-latest` to `runs-on: ubuntu-24.04` (quickest, nothing else changes).\n2. Or upgrade @playwright/test in apps/dashboard/package.json to a release that supports Ubuntu 26.04 and run npm install to refresh the lockfile.\n3. Then re-run one blocked branch's checks, or just wait: the next auditor run re-ships the queue fix."
-    },
-    {
-      "key": "data-audit-late",
-      "severity": "warning",
-      "title": "Today's data audit hasn't run",
-      "detail": "metrics/data-audit.json is from 2026-11-01T15:18Z, about 26 h old at the auditor's 2 Nov run (17:39Z). The data-audit workflow's last run is 1 Nov (success); none started on 2 Nov, so the auditor skipped tonight's data check. GitHub delays or drops scheduled runs at busy times; one missed day is usually that.",
-      "fix": "1. GitHub → Actions → Data audit → Run workflow (main), if you want tonight's numbers checked now.\n2. If it is missing again tomorrow, check the workflow is still enabled (GitHub disables schedules on repos with no activity for 60 days, and after workflow errors)."
-    },
-    {
       "key": "long-videos-unlisted",
       "severity": "warning",
       "title": "Three long videos are unlisted on YouTube but published on the dashboard",
       "detail": "Every data audit since 22 Oct (latest 1 Nov) finds L-20261021-01 (kYACrRwlx1s), L-20261019-02 (Y_qa18IDfm0) and L-20261018-01 (NxoAcDZWCh4) unlisted on YouTube. Not a code bug: the dashboard's state comes from the upload record, and YouTube reports the privacy you set in Studio. Unlisted videos get almost no views, and they count as published in the dashboard's totals and the agents' metrics.",
       "fix": "1. If they should be public: YouTube Studio → Content → each video → Visibility → Public. The next audit clears the warning.\n2. If they are meant to stay unlisted (for example held back on purpose): on each video's dashboard page use Remove, so they stop counting as published videos."
-    },
-    {
-      "key": "audit-went-down-rule",
-      "severity": "info",
-      "title": "The data audit calls a YouTube correction an error (\"views went down\")",
-      "detail": "The 28 Oct audit raised went_down for v-20261023-01: dashboard 1,175 → 1,166 views. YouTube itself revised the video: its Analytics days were rewritten from 1,175 to 1,164 views (stats.ts replaces each video's history with YouTube's fresh numbers), and its public counter reads 1,166, exactly what the dashboard now shows. YouTube removes invalid (spam) views after the fact, and the dashboard must follow it down or it over-counts for good. The rule in workers/lib/data-audit.ts (\"shown counts must never go down\") can't tell this apart from a bug, and agents may not change the audit, so it will keep flagging every real YouTube correction as an error.",
-      "fix": "1. Nothing to do for v-20261023-01: the dashboard and YouTube agree.\n2. Optional, in workers/lib/data-audit.ts: raise went_down only when the new dashboard number is also below YouTube's current count (dash.views < yt.views - slack), or make it a warning when it matches YouTube. The auditor can't make this change (the audit is owner-only)."
     }
   ]
 }
