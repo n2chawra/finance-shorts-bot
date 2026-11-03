@@ -23,7 +23,7 @@ from PIL import Image
 
 from renderer.engine.mux import find_ffmpeg
 from renderer.engine.preview import contact_sheet
-from renderer.craft import clause_problems, device_problems, frame_problems, picture_problems, shot_problems
+from renderer.craft import clause_problems, device_problems, frame_problems, mark_problems, picture_problems, shot_problems
 from renderer.gates import check_liveliness, layout_problems
 
 REMOTION = Path(__file__).resolve().parent.parent/"remotion"
@@ -58,6 +58,10 @@ def custom_problems(video_id: str) -> list[str]:
         out += [f"{f.name}: {b!r} is not allowed" for b in HOOK_BANNED if b in code]
         if "export default" not in code:
             out.append(f"{f.name} must default-export its component (or, props.tsx, its props)")
+        # the "Data: …" line is printed once a video (owner, 2026-11-03: Deal and Turn both printed it)
+        if "tl.sources" in code and "showsSource" not in code:
+            out.append(f"{f.name} prints tl.sources on every one of its beats: print it only when showsSource(p) "
+                       f"(import {{ showsSource }} from \"../../studio/source\"), so the source shows once a video")
     if files and not out:
         node = shutil.which("node")
         tsc = REMOTION/"node_modules"/"typescript"/"bin"/"tsc"
@@ -292,7 +296,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
                        **{k: tl["audio"][k] for k in ("lufs", "music_under_voice_db") if k in tl["audio"]}}
     # a video that looks templated (empty frames, the same picture, one shot size, one set) fails
     # here, on the stills, before the video is drawn (renderer/craft.py)
-    report["craft_problems"] = shot_problems(tl) + picture_problems(tl) + clause_problems(tl) + device_problems(tl) + frame_problems(_not_end_cards(shots, tl), tl["fps"])
+    report["craft_problems"] = shot_problems(tl) + picture_problems(tl) + clause_problems(tl) + mark_problems(tl) + device_problems(tl) + frame_problems(_not_end_cards(shots, tl), tl["fps"])
     # no point rendering a video the gates will reject: a layout problem, or one `stop_if` finds in
     # the report (length, sound levels), skips it
     early = list(report["layout_problems"]) + list(report["craft_problems"]) + (stop_if(report) if stop_if else [])

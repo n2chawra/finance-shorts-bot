@@ -367,3 +367,28 @@ def clause_problems(tl: dict) -> list[str]:
         return [f"only {covered} of {total} spoken clauses get their own picture ({covered / total:.0%}, at least {CLAUSE_SHARE:.0%}; "
                 f"bare clauses in {', '.join(dict.fromkeys(bare))}): put an action on each clause's key word"]
     return []
+
+
+# Marks only point at what is already there; changes put something new on screen (owner, 2026-11-03, on
+# v-20261103-03: "could have added more animation/props so that it became more engaging. Right now it's
+# like same stuff coming": 71% of its board actions were glows, stamps and bubbles; the Short he called
+# better animated, v-20261103-02, had 64%).
+MARKS = {"glow", "shake", "stamp", "cross", "tick", "strike", "bubble", "step", "focus", "label", "tag", "header", "chip", "click"}
+MARK_SHARE_MAX = 0.65     # of a board video's actions that may be marks
+
+
+def mark_problems(tl: dict) -> list[str]:
+    """Board videos: too many of the actions only mark things already on screen."""
+    boards = [b for b in tl["beats"] if b["scene"] == "board"]
+    if len(boards) < 3:
+        return []
+    acts = [a.get("do") for b in boards for a in (b.get("params") or {}).get("actions") or [] if isinstance(a, dict)]
+    if not acts:
+        return []
+    marks = sum(1 for d in acts if d in MARKS)
+    if marks / len(acts) > MARK_SHARE_MAX:
+        return [f"{marks} of {len(acts)} board actions only mark a thing already there ({marks / len(acts):.0%}, at most {MARK_SHARE_MAX:.0%}: "
+                f"glow, stamp, bubble, cross...): give clauses a change instead, a thing that enters, swaps into another, "
+                f"flows, multiplies or grows, or a panel (doc, bars, ring, grid, calendar, person, equation)"]
+    return []
+

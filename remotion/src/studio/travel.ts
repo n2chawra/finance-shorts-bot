@@ -64,3 +64,31 @@ export function flowPiece(d: number, j: number, n: number, src: Pt, dst: Pt, h: 
 export const flowEnd = (n: number, dur = FLOW_SEC) => (n - 1) * FLOW_GAP + dur;
 
 const easeInOut = (x: number) => { const c = clamp(x); return c < 0.5 ? 2 * c * c : 1 - Math.pow(-2 * c + 2, 2) / 2; };
+
+/** How late a thing's first word may come before it waits off screen for it (s). */
+export const AUTO_ENTER_AFTER = 0.6;
+/** How long before its first word an auto-entering thing sets off, so it lands on the word (s). */
+export const AUTO_ENTER_LEAD = 0.35;
+
+/**
+ * Things arrive on their words (owner, 2026-11-03, on v-20261103-03: "the props are coming before
+ * even their context is said, which is making it look static for a few seconds. Don't put things
+ * already on screen and then animate, make them appear and animate"). A thing that is neither hidden
+ * nor given an `enter`, and that nothing acts on until AUTO_ENTER_AFTER s into the beat, enters just
+ * before its first action (as the target, or as where a flow, arrow or move goes). A thing acted on
+ * at the start, or never acted on, stays where it is: frame 0 is what the feed shows.
+ */
+export function autoEnters<A extends { do: string; start: number; target?: string; to?: unknown }>(
+  items: { id: string; hidden?: boolean }[], actions: A[],
+): { do: "enter"; target: string; start: number; auto: true }[] {
+  const out: { do: "enter"; target: string; start: number; auto: true }[] = [];
+  for (const it of items) {
+    if (it.hidden) continue;
+    const mine = actions.filter((a) => a.target === it.id || a.to === it.id);
+    if (!mine.length || mine.some((a) => a.do === "enter" && a.target === it.id)) continue;
+    const first = Math.min(...mine.map((a) => a.start));
+    if (first < AUTO_ENTER_AFTER) continue;
+    out.push({ do: "enter", target: it.id, start: Math.max(0.05, first - AUTO_ENTER_LEAD), auto: true });
+  }
+  return out;
+}

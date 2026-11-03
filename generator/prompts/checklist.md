@@ -84,6 +84,17 @@ fix any beat near a limit as well.
 - **Props:** eight or more of the story's own, at most 30% shared with the last ten videos. Prop
   lettering is fine on the subject; ghost and corner props lose theirs automatically.
 
+- **Things arrive on their words** (owner, 2026-11-03): a board thing nothing acts on until 0.6 s into
+  the beat now waits off screen and enters just before its first action, so put each thing's first
+  action on the word that names it; one that must be there at frame 0 needs an action at the start.
+- **Board actions change the picture** (`mark_problems`, owner 2026-11-03: "same stuff coming"): at
+  most 65% of a board video's actions may be marks (glow, stamp, bubble, cross, tick, strike, shake,
+  label, tag, chip). Give clauses a change: enter, swap, flow, multiply, grow, or a panel.
+- **The source line shows once** (owner, 2026-11-03): on the first board beat that says a fact; own
+  code uses `showsSource(p)`.
+- **Real people and companies** (owner, 2026-11-03): a person gets one short clause the first time
+  they are named; a company is its name on a `person` panel or a label, never a pun object.
+
 ## Your own code (Hook.tsx, Turn.tsx, Payoff.tsx, props.tsx)
 - Size every word with `fitLine` / `fitWords` and `minText(w, h)` from `../../design/fit`, and keep
   it inside `safeBox(w, h)`. That avoids every "runs outside the frame" and "below the minimum" failure.

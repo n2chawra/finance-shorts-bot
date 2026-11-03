@@ -1,12 +1,32 @@
 {
   "agent": "improver",
   "day": "2026-11-03",
-  "startedAt": "2026-11-03T00:48:43Z",
-  "finishedAt": "2026-11-03T00:59:35Z",
-  "summary": "Fixed the board rooms (things floated at the cast's eye level, so labels crossed faces), adopted a loudness measurement for every render, named two recurring board failures for writers, extended hook-voice-matches-frame and started ending-beats-act-and-vary.",
+  "startedAt": "2026-11-03T17:34:00Z",
+  "finishedAt": "2026-11-03T17:41:55Z",
+  "summary": "Two runs today. Evening: answered all 7 open owner notes from this morning's Shorts. Things now enter on their words, the source line shows once, a new check stops board videos that are mostly glows and stamps, and writers introduce people in one clause and show companies by name. Morning: Fixed the board rooms (things floated at the cast's eye level, so labels crossed faces), adopted a loudness measurement for every render, named two recurring board failures for writers, extended hook-voice-matches-frame and started ending-beats-act-and-vary.",
   "decision": "acted",
-  "why": "QA failed v-20261103-02 twice on the same board scene bug, and all three 2026-11-03 Shorts were sent back for empty payoffs, board beats over 6.5 s or 3 s with no event. Research routed loudness-in-render-json as adopt. The evaluator said extend for hook-voice-matches-frame; one experiment slot was free.",
+  "why": "Evening: The owner's feedback comes first (7 open notes). No experiment matured (all 5 wait), and experiments are at the cap of 5, so nothing new started. Morning: QA failed v-20261103-02 twice on the same board scene bug, and all three 2026-11-03 Shorts were sent back for empty payoffs, board beats over 6.5 s or 3 s with no event. Research routed loudness-in-render-json as adopt. The evaluator said extend for hook-voice-matches-frame; one experiment slot was free.",
   "findings": [
+    {
+      "title": "No experiment matured",
+      "detail": "quiet-bed 1 of 4 long per arm; hook-voice-matches-frame extended, day 14 (on 9, off 8); title-names-the-moment 6 of 8 (~2 days); chart-gap-fill 1 of 4; ending-beats-act-and-vary 0 of 8."
+    },
+    {
+      "title": "Props on screen before their words",
+      "detail": "v-20261103-03: coffee, jet and bank stood on screen 1.5-2.5 s before the words naming them (no enter action), so the beat opened static."
+    },
+    {
+      "title": "Board actions mostly marks",
+      "detail": "Share of board actions that only mark a thing already there: v-20261103-03 71%, -02 64% (the owner's 'better animation' pick), -01 59%."
+    },
+    {
+      "title": "Source printed repeatedly",
+      "detail": "v-20261103-01 printed 'Data:' from both its own Deal and Turn beats; the board printed it on every beat that said a fact."
+    },
+    {
+      "title": "What performs",
+      "detail": "secret_of_rich 7.16x median 48 h views (n=4, 76% viewed); cinematic music 11.7x (n=6); myth hooks 0.13x (n=5, 27% viewed). No format has 3+ Shorts under the median for two weeks."
+    },
     {
       "title": "Evaluator",
       "detail": "36 Shorts with 48 h data. hook-voice-matches-frame: extend (on 9, off 8, no clear effect). title-names-the-moment waits (6 of 8). quiet-bed and chart-gap-fill wait (1 of 4 long per arm). secret_of_rich 7.2x views, 76% viewed (n=4); cinematic music 11.7x, 69.5% viewed (n=6); myth hooks 0.13x."
@@ -25,6 +45,30 @@
     }
   ],
   "changes": [
+    {
+      "title": "Things arrive on their words",
+      "detail": "studio/travel.ts autoEnters + build.tsx: a thing first acted on 0.6 s or more into a beat flies in just before that action (no camera push for it). Stills on v-20261103-03: the jar flies in on 'taxed'; layout gate clean.",
+      "branch": "agent/improver/2026-11-03-2",
+      "experiment": "2026-11-03-items-enter-on-their-word"
+    },
+    {
+      "title": "Source line once a video",
+      "detail": "studio/source.ts showsSource: first board beat that says a fact (else the first beat of any scene); custom_problems fails own code that prints tl.sources without it.",
+      "branch": "agent/improver/2026-11-03-2",
+      "experiment": "2026-11-03-source-once-per-source"
+    },
+    {
+      "title": "Mark cap craft check",
+      "detail": "renderer/craft.py mark_problems: at most 65% of a board video's actions may be marks; in render and lint.",
+      "branch": "agent/improver/2026-11-03-2",
+      "experiment": "2026-11-03-actions-that-change-things"
+    },
+    {
+      "title": "Writer rules for real people and companies",
+      "detail": "writer.md, checklist.md, short_story README: one-clause introduction (figures only as sourced facts), companies by name on a person panel or label, never pun objects.",
+      "branch": "agent/improver/2026-11-03-2",
+      "experiment": "2026-11-03-person-intro-tag"
+    },
     {
       "title": "Board rooms: things over the heads, labels off faces",
       "detail": "Rooms in a Short float things at 0.27 of the frame (was 0.2, eye level); a label over an actor goes above its thing. Stills before/after on v-20261103-02, gates clean.",
@@ -55,8 +99,12 @@
       "experiment": "ending-beats-act-and-vary"
     }
   ],
-  "nextCheck": "2026-11-04",
+  "nextCheck": "2026-11-05",
   "links": [
+    {
+      "label": "Feedback answers",
+      "url": "improvement/feedback-acks.json"
+    },
     {
       "label": "Journal",
       "url": "improvement/journal.md"

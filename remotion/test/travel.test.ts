@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ENTER_SEC, entry, entryStart, flowEnd, flowPiece, hopAt, LAND_SEC, squashAt } from "../src/studio/travel";
+import { AUTO_ENTER_AFTER, AUTO_ENTER_LEAD, autoEnters, ENTER_SEC, entry, entryStart, flowEnd, flowPiece, hopAt, LAND_SEC, squashAt } from "../src/studio/travel";
 
 const W = 1080, H = 1920;
 
@@ -39,5 +39,22 @@ describe("flowPiece", () => {
   it("sends the pieces one after another and ends when the last lands", () => {
     expect(flowPiece(0.05, 3, 5, [0, 0], [100, 0], H)).toBeNull();
     expect(flowEnd(5)).toBeGreaterThan(flowEnd(1));
+  });
+});
+
+describe("autoEnters (owner 2026-11-03: things arrive on their words)", () => {
+  it("a thing first acted on late in the beat enters just before its word", () => {
+    const out = autoEnters([{ id: "jet" }], [{ do: "glow", target: "jet", start: 2.4 }]);
+    expect(out).toEqual([{ do: "enter", target: "jet", start: 2.4 - AUTO_ENTER_LEAD, auto: true }]);
+  });
+  it("counts a flow or arrow that lands on the thing as its first word", () => {
+    const out = autoEnters([{ id: "bank" }, { id: "loan" }], [{ do: "glow", target: "bank", start: 0 }, { do: "flow", target: "bank", to: "loan", start: 1.8 }]);
+    expect(out.map((a) => a.target)).toEqual(["loan"]);
+  });
+  it("leaves alone a thing acted on at the start, never acted on, hidden or entering by itself", () => {
+    const items = [{ id: "a" }, { id: "b" }, { id: "c", hidden: true }, { id: "d" }];
+    const acts = [{ do: "grow", target: "a", start: AUTO_ENTER_AFTER - 0.1 }, { do: "glow", target: "c", start: 3 },
+      { do: "enter", target: "d", start: 2 }, { do: "stamp", target: "d", start: 3 }];
+    expect(autoEnters(items, acts)).toEqual([]);
   });
 });

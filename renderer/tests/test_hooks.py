@@ -35,3 +35,13 @@ def test_a_hook_may_not_reach_outside_the_kit_or_be_random(root: Path) -> None:
     assert any("node:fs" in p for p in problems) and any("generator/run" in p for p in problems)
     assert any("fetch(" in p for p in problems) and any("Math.random" in p for p in problems)
     assert any("default-export" in p for p in problems)
+
+
+def test_own_code_prints_the_source_only_through_shows_source(root: Path) -> None:
+    # owner, 2026-11-03: "The source should be shown once only throughout the video"
+    put(root, 'import React from "react";\nconst Turn = (p) => <div>{p.tl.sources}</div>;\nexport default Turn;\n')
+    assert any("showsSource" in p for p in remotion.hook_problems("v-test"))
+    (root / "src" / "videos" / "v-test" / "Hook.tsx").write_text(
+        'import React from "react";\nimport { showsSource } from "../../studio/source";\n'
+        'const Turn = (p) => <div>{showsSource(p) ? p.tl.sources : ""}</div>;\nexport default Turn;\n', encoding="utf-8")
+    assert remotion.hook_problems("v-test") == []

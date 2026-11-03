@@ -333,7 +333,7 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
             tl = build_timeline(script, Path(tmp), voice="estimate")
     except (ValueError, RuntimeError) as e:
         return [str(e)]
-    problems = craft.shot_problems(tl) + [f"{p} (on the estimated voice)" for p in craft.picture_problems(tl)] + craft.device_problems(tl)
+    problems = craft.shot_problems(tl) + [f"{p} (on the estimated voice)" for p in craft.picture_problems(tl)] + craft.mark_problems(tl) + craft.device_problems(tl)
 
     def _tl(e: dict) -> dict:
         f = root / "videos" / e["id"] / "timeline.json"

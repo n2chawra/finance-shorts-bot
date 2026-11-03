@@ -179,7 +179,24 @@ $50 million salary").
   number check compares them with the feed and fails on any difference. Never add a figure the
   feed doesn't have, and never a claim about a real person the sources don't make.
 - The facts become `{fact1}`, `{fact2}`, … A `board` beat (its source footer) or a `headline` beat
-  prints where they come from ("Data: ProPublica · Jun 2021").
+  prints where they come from ("Data: ProPublica · Jun 2021"), **once a video** (owner, 2026-11-03):
+  the first board beat that says a fact shows it, no later one does. Your own Hook/Turn/Payoff code
+  prints it only when `showsSource(p)` (`../../studio/source`) is true, never on every beat.
+- **Introduce a real person in one short clause that makes them matter** (owner, 2026-11-03, on the
+  Buffett Short: "add some more thing about him to make it more curiosity, like Warren Buffett the
+  10th richest man on the planet… but keep the introduction short"): "Warren Buffett, who turned a
+  failing textile mill into one of the biggest companies on Earth, …", "Zuckerberg, who still owns the
+  biggest piece of Meta, …".
+  One clause, the first time they are named, never a sentence of biography. A rank or amount in it
+  is a sourced fact from the feed (`{fact2}`) or a figure from `maths`, never typed; with neither,
+  say who they are in words ("the world's most famous investor", "the man who started Facebook").
+- **A real company is shown by its name, never a pun** (owner, 2026-11-03: Apple drawn as a crate
+  of fruit and Google as a vault "is wrong… use the real company, not fake things"). Logos and
+  photos are off limits (no downloaded images, trademarks), so name it in words: a `person` panel
+  `{"name": "Apple", "kicker": "makes the iPhone", "prop": "<its product>"}`, or its product as the
+  thing with `label: "Apple"`. Draw what the company makes or does (an iPhone, a search bar, a
+  Coca-Cola-red bottle labelled "Coca-Cola"), never a literal reading of its name (an apple, an
+  amazon river, a shell).
 - A calculation that starts from a real figure takes it as an input and names it:
   `{"name": "bezos", "kind": "...", "amount": 81840, "facts": {"amount": 1}}` — the number check
   fails if `amount` isn't fact 1's value (in its unit). Everything computed still comes from `maths`.

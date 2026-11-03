@@ -1,3 +1,11 @@
 {
-  "notifications": []
+  "notifications": [
+    {
+      "key": "real-faces-and-logos",
+      "severity": "info",
+      "title": "Real faces and company logos need your decision",
+      "detail": "Your 2026-11-03 note on the Buffett Short asked for real faces and product logos. The hard rules forbid downloaded or copyrighted images, and real photos and logos also carry likeness and trademark risk (and YouTube's reused-content check). Tonight companies switched to name cards and labels on what they make instead of pun objects.",
+      "fix": "1. If you want this, decide the source (for example licensed or public-domain portraits and the companies' official press kits) and accept the trademark and likeness risk. 2. Change the 'no downloaded images' hard rule in CLAUDE.md and agents/policy.md yourself; agents can't. 3. Otherwise no action: name cards stay."
+    }
+  ]
 }

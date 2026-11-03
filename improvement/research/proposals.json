@@ -747,9 +747,10 @@
       "effort": "M",
       "risk": "Cards with many items could feel late; the gate is per item so writers can stage entrances.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "reason": "Adopted 2026-11-03 (owner note): a thing nothing acts on until 0.6 s into a build/board beat now enters just before its first action (studio/travel.ts autoEnters); no hidden-by-default flag or extra gate, since the auto-entry makes \"visible before its word\" impossible for any acted-on thing."
     },
     {
       "id": "company-wordmark-not-fake-icon",
@@ -765,9 +766,10 @@
       "effort": "S",
       "risk": "Name tiles are less instantly recognisable than real logos; real logos are the owner's call (see research notifications).",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "reason": "Adopted 2026-11-03 as a writer rule (owner note): a company is its name on a person panel or a label on its product, never a pun object; a coded brand tile prop is a possible follow-up if writers keep reaching for puns."
     },
     {
       "id": "source-once-per-source",
@@ -784,9 +786,10 @@
       "effort": "S",
       "risk": "A second, different source still shows once of its own; the fact reviewer must still see one per source.",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "normal"
+      "priority": "normal",
+      "reason": "Adopted 2026-11-03 (owner note): the full \"Data:\" line (every source and the month) prints once a video, on the first board beat that says a fact (studio/source.ts); own code that prints tl.sources without showsSource fails custom_problems."
     },
     {
       "id": "person-intro-tag",
@@ -802,9 +805,10 @@
       "effort": "S",
       "risk": "A rank changes often: it must come from a dated source, and the check-plan must refuse an unsourced rank.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "normal"
+      "priority": "normal",
+      "reason": "Adopted 2026-11-03 (owner note) in writer.md: one clause the first time a person is named; a rank or amount only as a sourced fact or maths figure, else words."
     },
     {
       "id": "actions-that-change-things",
@@ -824,7 +828,8 @@
       "metric": "avgViewPct",
       "status": "new",
       "route": "experiment",
-      "priority": "normal"
+      "priority": "normal",
+      "reason": "2026-11-03: a 65% mark cap shipped as a craft check (owner note fix, renderer/craft.py mark_problems); the stricter 25% A/B waits for a motion slot (experiments at the cap of 5)."
     }
   ]
 }

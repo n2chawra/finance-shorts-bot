@@ -12,6 +12,11 @@ dynamic to the script"):
   (`Glow`, `Face`, `Thing`, `Words`, `Arrow`, `Ring`, `Badge`, `Split`). It default-exports a
   `React.FC<ThumbProps>` (`{ tl, th, w, h }`, 1280×720) and is chosen by `"thumbnail": {"layout":
   "custom", "component": "Thumb", ...}`. Reference: `L-remake-borrow/Thumb.tsx`.
+- A sourced video's "Data: …" line is printed once (owner, 2026-11-03): print it in your own beat
+  only when `showsSource(p)` from `../../studio/source` is true, and print the whole `tl.sources`
+  line there (every source and the month), not one part of it.
+- A real company is drawn as what it makes, labelled with its name, never as a pun on its name
+  (owner, 2026-11-03: Apple as a crate of fruit was wrong). No logos or photos.
 - Every word you draw is sized with `fitLine` / `fitWords` and `minText(w, h)` from `../../design/fit`
   and kept inside `safeBox(w, h)`: then it never runs off the frame or under the minimum size.
 
