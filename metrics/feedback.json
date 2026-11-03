@@ -1,7 +1,140 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 0,
+  "open": 7,
   "notes": [
+    {
+      "id": "cmw0afrth0003jq092th80vej",
+      "kind": "choice",
+      "area": null,
+      "text": "The animation and story telling is better than other video",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-03T06:09:36.714Z",
+      "video": {
+        "id": "v-20261103-02",
+        "title": "Buffett bought Coca-Cola once. He never sold 🥤",
+        "format": "short",
+        "status": "queued",
+        "story": "secret_of_rich",
+        "shape": "reveal",
+        "hookStyle": "myth",
+        "hook": "You think Buffett sells his big winners? Not this one. Here's why."
+      }
+    },
+    {
+      "id": "cmw0adkun0003l0094mu9wrwc",
+      "kind": "improve",
+      "area": "script",
+      "text": "While telling about a person u can add some more thing about him to make it more curiosity. Like warren buffett the 10th richest man in the planet he does this... Etc depending on topic to make this very clear . But don't enlarge the introduction keep it short only.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-03T06:07:54.575Z",
+      "video": {
+        "id": "v-20261103-02",
+        "title": "Buffett bought Coca-Cola once. He never sold 🥤",
+        "format": "short",
+        "status": "queued",
+        "story": "secret_of_rich",
+        "shape": "reveal",
+        "hookStyle": "myth",
+        "hook": "You think Buffett sells his big winners? Not this one. Here's why."
+      }
+    },
+    {
+      "id": "cmw0aalom0001l009efdat7og",
+      "kind": "improve",
+      "area": null,
+      "text": "Add real images of personality and products so that it feels very good. Not full picture just people faces and products logos.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-03T06:05:35.686Z",
+      "video": {
+        "id": "v-20261103-02",
+        "title": "Buffett bought Coca-Cola once. He never sold 🥤",
+        "format": "short",
+        "status": "queued",
+        "story": "secret_of_rich",
+        "shape": "reveal",
+        "hookStyle": "myth",
+        "hook": "You think Buffett sells his big winners? Not this one. Here's why."
+      }
+    },
+    {
+      "id": "cmw0a5lxv0001jq09073tge9o",
+      "kind": "improve",
+      "area": "animation",
+      "text": "Could have added more animation/propa so that it became more engaging. Right now it's like same stuff coming.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-03T06:01:42.740Z",
+      "video": {
+        "id": "v-20261103-03",
+        "title": "Zuckerberg's salary is $1. The richest barely need one 💸",
+        "format": "short",
+        "status": "queued",
+        "story": "billionaire_question",
+        "shape": "what-if",
+        "hookStyle": "shock_number",
+        "hook": "You think Zuckerberg lives on his salary? Here's why he doesn't need to."
+      }
+    },
+    {
+      "id": "cmw0a48ek0003lh09x8ge2u94",
+      "kind": "wrong",
+      "area": "animation",
+      "text": "The props are coming before even their context is said which is making it look static for few seconds. Also don't put things already in screen and then animate but  make them appear and animate so that it feels engaging.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-03T06:00:38.540Z",
+      "video": {
+        "id": "v-20261103-03",
+        "title": "Zuckerberg's salary is $1. The richest barely need one 💸",
+        "format": "short",
+        "status": "queued",
+        "story": "billionaire_question",
+        "shape": "what-if",
+        "hookStyle": "shock_number",
+        "hook": "You think Zuckerberg lives on his salary? Here's why he doesn't need to."
+      }
+    },
+    {
+      "id": "cmw09x8od0001l509yhqrq3wo",
+      "kind": "general",
+      "area": null,
+      "text": "The source should be shown once only throughout the video. No need to show again and again.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-03T05:55:12.302Z",
+      "video": {
+        "id": "v-20261103-01",
+        "title": "Why Google pays Apple $20B for one iPhone setting 📱",
+        "format": "short",
+        "status": "scheduled",
+        "story": "how_they_make_money",
+        "shape": "question-chain",
+        "hookStyle": "question",
+        "hook": "You think Apple only earns from iPhones? It doesn't. Here's why."
+      }
+    },
+    {
+      "id": "cmw09umpi0001lh09xy0b8j2u",
+      "kind": "wrong",
+      "area": "other",
+      "text": "The image showed for apple and Google ia wrong. Apple is fruit here and Google wrong thing. Use real icons of company not this fake things.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-03T05:53:10.519Z",
+      "video": {
+        "id": "v-20261103-01",
+        "title": "Why Google pays Apple $20B for one iPhone setting 📱",
+        "format": "short",
+        "status": "scheduled",
+        "story": "how_they_make_money",
+        "shape": "question-chain",
+        "hookStyle": "question",
+        "hook": "You think Apple only earns from iPhones? It doesn't. Here's why."
+      }
+    },
     {
       "id": "cmvz2ct9j0003kz09yuamro4u",
       "kind": "stale",
