@@ -64,6 +64,22 @@ test("mark-as-uploaded dialog opens and validates the link", async ({ page }) =>
   await expect(page.getByText(/Video id AbCdEfGhIjK/)).toBeVisible();
 });
 
+test("edit details saves tags without # and without repeats", async ({ page }) => {
+  await signIn(page);
+  let sent: { tags?: string[] } | null = null;
+  await page.route("**/api/videos/v030", async (route) => {
+    if (route.request().method() !== "PATCH") return route.continue();
+    sent = route.request().postDataJSON();
+    await route.fulfill({ response: await route.fetch({ method: "GET" }) });
+  });
+  await page.goto("/videos/v030");
+  await page.getByRole("button", { name: "Edit details" }).click();
+  // typed as hashtags, these were saved as "#money", so "Copy hashtags" gave "##money"
+  await page.getByLabel("Tags", { exact: true }).fill("#money, Money, # rich vs poor,, ");
+  await page.getByRole("button", { name: "Save", exact: true }).click();
+  await expect.poll(() => sent?.tags).toEqual(["money", "rich vs poor"]);
+});
+
 test("settings show an unsaved-changes bar that can be discarded", async ({ page }) => {
   await signIn(page);
   await page.goto("/settings");
