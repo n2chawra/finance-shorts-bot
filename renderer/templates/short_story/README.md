@@ -103,7 +103,9 @@ a room it floats above the cast), `actions` (each on a spoken word: `at` an even
 Panels (`doc`, `bars`, `ring`, `grid`, `calendar`, `buttons`, `person`) build up into one picture,
 three at most, stacked in the middle; chips line up under them; `clear` (or `"replace": true` on a
 panel) starts over. While panels show, the stage's things step aside; the thing just acted on stays
-sharp and the rest dim. Sourced facts print their source on the board ("Data: ProPublica · Jun 2021").
+sharp and the rest dim. Sourced facts print their source on the board ("Data: ProPublica · Jun 2021"), once, on the first
+board beat that says one. A thing nothing acts on until 0.6 s into the beat enters just before its
+first action (owner, 2026-11-03: "make them appear and animate"), so its first action goes on its word.
 
 **The look** (`style.look` in the plan; `generator/looks.py`, rotated by `check-plan`): `stage`, `header`
 (ribbon, sticky, neon, strip, chalk), `holder` for sums (box, receipt, phone, blackboard, sign),
