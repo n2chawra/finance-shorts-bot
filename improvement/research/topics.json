@@ -60,16 +60,50 @@
       "templates": [
         "any"
       ],
-      "angle": "The shop pays the app a cut of every sale (an assumed 5%), and late fees do the rest: you buy more because it feels smaller.",
-      "why_now": "Holiday shopping starts in a month in every market; pay-later checkouts are everywhere (US, UK, Australia, India).",
-      "maths": "fee_take on an illustrative $400 order (amount 400, fee_pct an assumed 5, per_year 12, years 1) for what the shop hands over in a year of monthly orders",
+      "angle": "The shop pays the app: Affirm took $239.5M from merchants on $10.4B of spending in one quarter (about 2.3 cents of every dollar), out of $876M revenue. Interest on longer plans and the card do the rest; you buy more because it feels smaller.",
+      "why_now": "Holiday shopping starts this month; pay-later checkouts are everywhere. Now told with Affirm's own quarter instead of an assumed fee (owner, 2 Nov: real figures beat invented ones).",
+      "maths": "rate (part 239.5 merchant revenue, whole 10400 GMV, both in millions) for the merchant's cut per dollar; share of total revenue 239.5 of 876. Name Affirm; no assumed fee any more.",
       "verify": [
-        "The merchant fee is an assumption, said as 'an assumed 5%'; no app named",
-        "Late fees described in general terms only"
+        "Affirm fiscal Q4 2025 (quarter to 30 Jun 2025, reported 28 Aug 2025): GMV $10.4B, revenue $876M, merchant network revenue $239.5M; confirm on Affirm's investor site or two outlets",
+        "No claim that pay-in-4 plans charge interest: Affirm's 0% plans are merchant-paid"
       ],
       "found": "2026-10-24",
       "expires": "2027-01-22",
-      "status": "new"
+      "status": "new",
+      "facts": [
+        {
+          "label": "Affirm's merchant network revenue in one quarter",
+          "value": 239.5,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-08-28",
+          "source": "Affirm Q4 FY2025 results (Zacks via Nasdaq)",
+          "url": "https://www.nasdaq.com/articles/affirm-q4-earnings-beat-estimates-increasing-transaction-volumes"
+        },
+        {
+          "label": "spending through Affirm in that quarter (GMV)",
+          "value": 10.4,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-08-28",
+          "source": "Affirm Q4 FY2025 results (Zacks via Nasdaq)",
+          "url": "https://www.nasdaq.com/articles/affirm-q4-earnings-beat-estimates-increasing-transaction-volumes"
+        },
+        {
+          "label": "Affirm's total revenue in that quarter",
+          "value": 876,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-08-28",
+          "source": "Affirm Q4 FY2025 results (TipRanks)",
+          "url": "https://www.tipranks.com/news/company-announcements/affirm-holdings-reports-strong-q4-2025-earnings"
+        }
+      ],
+      "sources": [
+        "https://www.nasdaq.com/articles/affirm-q4-earnings-beat-estimates-increasing-transaction-volumes",
+        "https://www.tipranks.com/news/company-announcements/affirm-holdings-reports-strong-q4-2025-earnings",
+        "https://investors.affirm.com/static-files/8e83cdf4-14a0-4e3e-905c-4c85a36fc573"
+      ]
     },
     {
       "id": "2026-10-24-rich-pay-themselves-first",
@@ -123,7 +157,7 @@
         "url": "https://www.youtube.com/shorts/ylTx5h2ILnY"
       },
       "hook": "He's worth hundreds of billions. So why can't he just give it away?",
-      "angle": "His money isn't cash: it's shares. Selling a big block drops the price and brings a huge tax bill, so the money shrinks before it's given.",
+      "angle": "His money isn't cash: it's shares. When he did sell, in late 2021, he sold nearly $14B of Tesla and said he'd pay over $11B in tax, and Tesla fell below a trillion to $937B. Selling shrinks the money before it's given.",
       "maths": "fee_take on an illustrative $100 billion sale (amount, fee_pct the US top capital-gains rate with the 3.8% surtax, per_year 1, years 1) for the tax; lumpsum for the shares kept instead",
       "found": "2026-10-23",
       "expires": "2027-01-21",
@@ -131,7 +165,42 @@
       "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
       "verify": [
         "US long-term capital gains top rate 20% plus 3.8% net investment income tax (IRS)",
-        "Say 'an illustrative $100 billion', never his exact net worth"
+        "Say 'an illustrative $100 billion', never his exact net worth",
+        "Reuters, 19-20 Dec 2021: 'more than $11 billion in taxes this year', 'nearly $14 billion worth of Tesla shares', market value '$937 billion' (Gulf News carries the same story)",
+        "The tax also covered exercised options: never say the $11B was a rate on the $14B"
+      ],
+      "facts": [
+        {
+          "label": "taxes Musk said he would pay that year",
+          "value": 11,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2021-12-19",
+          "source": "Reuters",
+          "url": "https://www.yahoo.com/news/teslas-musk-says-pay-over-031129726.html"
+        },
+        {
+          "label": "Tesla shares Musk had sold in the weeks before, nearly",
+          "value": 14,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2021-12-19",
+          "source": "Reuters",
+          "url": "https://www.yahoo.com/news/teslas-musk-says-pay-over-031129726.html"
+        },
+        {
+          "label": "Tesla's market value after the selling, down from a trillion",
+          "value": 937,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2021-12-19",
+          "source": "Reuters",
+          "url": "https://www.yahoo.com/news/teslas-musk-says-pay-over-031129726.html"
+        }
+      ],
+      "sources": [
+        "https://www.yahoo.com/news/teslas-musk-says-pay-over-031129726.html",
+        "https://gulfnews.com/business/teslas-elon-musk-will-pay-over-11-billion-in-taxes---more-than-any-american-in-history-1.84518900"
       ]
     },
     {
@@ -1468,41 +1537,6 @@
       ],
       "found": "2026-10-29",
       "expires": "2027-01-27",
-      "status": "rejected",
-      "currency": "USD",
-      "reach": "global",
-      "format": "short",
-      "id": "2026-10-29-paid-while-they-sleep",
-      "title": "How the rich get paid while they sleep",
-      "category": "investing",
-      "priority": "normal",
-      "stories": [
-        "secret_of_rich"
-      ],
-      "demand": {
-        "title": "THIS Is How to Make Money While You Sleep",
-        "views": 676964,
-        "url": "https://youtube.com/shorts/bqSBYrq1qyM"
-      },
-      "hook": "He was asleep at three a.m. His money was not.",
-      "angle": "An assumed $1 million paying an assumed 4% a year in dividends and interest earns every night while the owner sleeps; the same 4% on $10,000 earns a coffee. It is the size of the pile, not the hours.",
-      "why_now": "School of Hard Knocks' make-money-while-you-sleep Short: 677K views in 5 days, 6,824 an hour (market data, 27 Oct).",
-      "maths": "fee_take (amount 1000000, fee_pct 4, per_year 1, years 30) and fee_take (amount 10000, fee_pct 4, per_year 1, years 30) for the yearly and 30-year payouts; share (total = the first per_year_total, parts 365) for one night. Rates are assumptions, no product or company named.",
-      "verify": [
-        "4% stated as an assumed yearly payout, not a promise; no fund or stock named"
-      ],
-      "sources": [
-        "https://youtube.com/shorts/bqSBYrq1qyM"
-      ],
-      "reason": "superseded on 2026-11-03 by 2026-11-03-buffett-coke-pays-every-year: the same idea told with Berkshire's real figures instead of an assumed $1M at 4%"
-    },
-    {
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-10-29",
-      "expires": "2027-01-27",
       "status": "new",
       "currency": "USD",
       "reach": "global",
@@ -2086,6 +2120,88 @@
       ],
       "found": "2026-11-03",
       "expires": "2027-02-01",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-04-neom-170km-city-shrinks",
+      "format": "short",
+      "title": "A prince planned a 170 km city for 1.5 million people. By 2030: 2.4 km",
+      "category": "megaproject",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "money_scale"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why Saudi Arabia is Building a $1 Trillion City in the Desert (Johnny Harris)",
+        "views": 7000000,
+        "url": "https://rosetta.to/u/johnnyharris/why-saudi-arabia-is-building-a-1-trillion-city-in-the-desert"
+      },
+      "hook": "You think money can build anything? A prince tried a city 170 km long.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Money at scale meets reality: a $1.5T desert project planned 170 km for 1.5 million people by 2030; the 2024 plan is 2.4 km and under 300,000. What even $1.5 trillion can't buy: time. True-story, legal facts only, no politics.",
+      "why_now": "Market data 2 Nov: a Spanish Short on the prince's 'city of the future' at 230K (8.4K views an hour, 85 s); Johnny Harris 7.0M, RealLifeLore 3.1M, Patrick Boyle 3.0M on the same idea. FT reported in Jan 2026 a further cut.",
+      "maths": "rate (part 2.4, whole 170) for how much of the line is built by 2030 (about 1.4%); rate (part 300000, whole 1500000) for the people (20%). Figures only from facts.",
+      "facts": [
+        {
+          "label": "what the Neom project was reported to cost",
+          "value": 1.5,
+          "unit": "money_trillion",
+          "currency": "USD",
+          "as_of": "2024-04-05",
+          "source": "Bloomberg",
+          "url": "https://www.hospitalitynet.org/news/4121311.html"
+        },
+        {
+          "label": "kilometres The Line was meant to stretch",
+          "value": 170,
+          "unit": "count",
+          "as_of": "2024-04-05",
+          "source": "Bloomberg",
+          "url": "https://www.hospitalitynet.org/news/4121311.html"
+        },
+        {
+          "label": "kilometres expected complete by 2030",
+          "value": 2.4,
+          "unit": "count",
+          "as_of": "2024-04-05",
+          "source": "Bloomberg",
+          "url": "https://www.hospitalitynet.org/news/4121311.html"
+        },
+        {
+          "label": "residents once hoped for by 2030",
+          "value": 1.5,
+          "unit": "count_million",
+          "as_of": "2024-04-05",
+          "source": "Bloomberg",
+          "url": "https://www.hospitalitynet.org/news/4121311.html"
+        },
+        {
+          "label": "residents now expected by 2030, fewer than",
+          "value": 300,
+          "unit": "count_thousand",
+          "as_of": "2024-04-05",
+          "source": "Bloomberg",
+          "url": "https://www.hospitalitynet.org/news/4121311.html"
+        }
+      ],
+      "verify": [
+        "Bloomberg 5 Apr 2024 'Saudis Scale Back Ambition for $1.5 Trillion Desert Project Neom' (republished by Hospitality Net): 170 km, 2.4 km by 2030, 1.5 million to fewer than 300,000",
+        "Say 'reported' for the $1.5T; never the older $500B figure without its own source",
+        "No claims about the crown prince's conduct, workers or politics; the money and the plan only"
+      ],
+      "sources": [
+        "https://www.hospitalitynet.org/news/4121311.html",
+        "https://www.bloomberg.com/news/articles/2024-04-05/saudis-scale-back-ambition-for-1-5-trillion-desert-project-neom",
+        "https://www.khl.com/news/plans-to-build-saudi-arabias-170km-linear-city-the-line-scaled-back/8036596.article",
+        "https://youtube.com/shorts/tGyZkP31mOI"
+      ],
+      "found": "2026-11-04",
+      "expires": "2027-02-02",
       "status": "new"
     }
   ]

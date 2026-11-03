@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "day": "2026-11-04",
+  "startedAt": "2026-11-03T17:04:07Z",
+  "finishedAt": "2026-11-03T17:09:47Z",
+  "summary": "Animation night: matched the owner's 3 Nov notes against the scripts (24 of 32 items are on screen before their word) and proposed 4 fixes plus 1 experiment. Added a Neom megaproject topic and put Reuters and Affirm figures into two top topics.",
+  "decision": "acted",
+  "why": "The owner's 7 open notes are all about animation, sources and logos, and the scripts confirm the main one with numbers. Since 2 Nov a big-money topic needs real figures, and two of the top three open topics had none.",
+  "findings": [
+    {
+      "title": "Props appear before their words",
+      "detail": "In the 3 Nov Shorts, 24 of 32 board items are visible at beat start and glow is the most common action. This is the owner's 'props before context'.",
+      "link": "videos/v-20261103-03/preview.png"
+    },
+    {
+      "title": "Neom: $1.5T, 170 km planned, 2.4 km by 2030",
+      "detail": "Bloomberg, 5 Apr 2024. Explainers on the same idea have 3-7M views, and a Spanish Short on it is growing at 8.4K views an hour.",
+      "link": "https://www.hospitalitynet.org/news/4121311.html"
+    },
+    {
+      "title": "Musk's 2021 sale: nearly $14B of Tesla, over $11B in tax",
+      "detail": "Reuters. These figures turn the top 'Elon can't give it away' topic into a true story.",
+      "link": "https://www.yahoo.com/news/teslas-musk-says-pay-over-031129726.html"
+    },
+    {
+      "title": "Affirm took $239.5M from merchants on $10.4B in one quarter",
+      "detail": "Replaces the assumed 5% fee in the pay-later topic.",
+      "link": "https://www.nasdaq.com/articles/affirm-q4-earnings-beat-estimates-increasing-transaction-volumes"
+    },
+    {
+      "title": "Claude Code 2.1.317",
+      "detail": "Scheduled-task and loop fixes. Nothing for the pipeline.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "5 proposals",
+      "detail": "Adopt: items-enter-on-their-word, company-wordmark-not-fake-icon, source-once-per-source, person-intro-tag. Experiment: actions-that-change-things.",
+      "branch": "agent/research/2026-11-04"
+    },
+    {
+      "title": "Topic feed",
+      "detail": "Added 2026-11-04-neom-170km-city-shrinks (top, 9.07). Added facts to the Elon and BNPL topics.",
+      "branch": "agent/research/2026-11-04"
+    }
+  ],
+  "nextCheck": "2026-11-05",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-04.md"
+    }
+  ]
+}

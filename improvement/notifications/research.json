@@ -20,6 +20,13 @@
       "title": "YouTube changes Shorts monetisation on 1 Feb 2027",
       "detail": "YouTube's own blog (10 Aug 2026): from 1 Feb 2027 new Partner Program applicants need 8,000 watch hours in 365 days or 20 million Shorts views in 90 days, and Shorts ad/Premium revenue goes only to channels with 10 million Shorts views in the last 90 days. Channels below that keep long-video earnings. For us that means long videos are the realistic path to revenue; Shorts mainly grow the audience. Nothing changes in the pipeline.",
       "fix": "1. Nothing to do now. 2. In YouTube Studio > Earn, check the current entry bar and whether the channel can apply before 1 Feb 2027. 3. If you want long videos weighted more, change longPerWeek in settings (owner-only). Source: https://blog.youtube/news-and-events/youtube-partner-program-updates-2027-new-opportunities-earn/"
+    },
+    {
+      "key": "real-logos-and-faces",
+      "severity": "info",
+      "title": "Your note asks for real faces and logos; the hard rules forbid downloaded images",
+      "detail": "On v-20261103-02 you asked for 'real images of personality and products… people faces and products logos', and on v-20261103-01 for real Apple and Google icons. CLAUDE.md and agents/policy.md say no downloaded images and no copyrighted assets, so no agent may add them. Research proposed the allowed version tonight: a coded name tile for each company (its name in our font on a flat colour, never a copied logo, `company-wordmark-not-fake-icon`) and a one-clause intro for each real person (`person-intro-tag`). Real logos would usually count as nominative use when the video is about that company, but that is a legal call, and photos of people carry their photographers' copyright and the person's publicity rights.",
+      "fix": "1. If the coded name tiles are enough, do nothing. 2. If you want real logos: decide it yourself, amend the 'All audio/no copyrighted assets' and 'no downloaded images' lines in CLAUDE.md and agents/policy.md to allow official logos from each company's own press or brand page (ideally after reading that company's brand guidelines), and say where files may live (e.g. assets/brands/, committed by you). 3. Real photos of people are not recommended; drawn caricatures of real people are also risky, so keep name cards."
     }
   ]
 }

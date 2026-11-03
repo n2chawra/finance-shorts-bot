@@ -730,6 +730,101 @@
       "route": "adopt",
       "priority": "normal",
       "note": "2026-11-03: adopted: render.json audio.lufs and music_under_voice_db, render-step warnings; metrics/videos.json is the ingest worker's (auditor lane)."
+    },
+    {
+      "id": "items-enter-on-their-word",
+      "date": "2026-11-04",
+      "area": "motion",
+      "title": "Nothing on a card before its word: every item enters on the word that names it",
+      "change": "In remotion/src/studio/build.tsx (Item show at beat start, line ~139) and the board, make items start hidden by default and enter (fly in, grow out of the thing before, or draw on, by the look) on the first event that names them (the action targeting the item, or the event whose word matches its label); `hidden: false` becomes an explicit opt-in for a set piece that should already be there. Add a craft check in renderer/craft.py: an item visible more than 0.3 s before its first naming word fails the beat ('prop before its context'). Update the writer contract in renderer/templates/short_story/README.md to match.",
+      "evidence": [
+        "metrics/feedback.json note cmw0a48ek0003lh09x8ge2u94 (v-20261103-03: 'props are coming before even their context is said… make them appear and animate')",
+        "videos/v-20261103-03/preview.png: at 5.0 s the share stack and coffee are on the card before 'salary'; at 20 s 'Wealth' and 'Paycheck' sit there before they are named",
+        "3 Nov scripts: 24 of 32 board items are on screen at beat start (v-20261103-01 9/13, -02 7/10, -03 8/9); 'glow' on something already there is the most common action (14 of 108)"
+      ],
+      "expectedEffect": "Every second has a new thing arriving on the spoken word, so the first second of each beat stops looking static; answers the owner's top animation complaint.",
+      "confidence": "high",
+      "effort": "M",
+      "risk": "Cards with many items could feel late; the gate is per item so writers can stage entrances.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "company-wordmark-not-fake-icon",
+      "date": "2026-11-04",
+      "area": "motion",
+      "title": "A real company is drawn as its name, not as a stand-in object",
+      "change": "Add a coded `brand` prop (remotion/src/studio): a rounded tile with the company's name set in our font on a flat colour chosen in code, with an optional coded glyph that is a generic category (phone, search box, cup), never a copy of the logo. The writer prompt and check-plan forbid using a pun prop for a company (apple fruit for Apple, a magnifier for Google); a `facts`/topic company name maps to `brand`. No downloaded logos (hard rule).",
+      "evidence": [
+        "metrics/feedback.json note cmw09umpi0001lh09xy0b8j2u (v-20261103-01: 'Apple is fruit here and Google wrong thing. Use real icons')"
+      ],
+      "expectedEffect": "Viewers recognise who the story is about at a glance; removes a 'looks fake' complaint without breaking the no-downloaded-assets rule.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Name tiles are less instantly recognisable than real logos; real logos are the owner's call (see research notifications).",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "source-once-per-source",
+      "date": "2026-11-04",
+      "area": "text",
+      "title": "Show each 'Data: <source>' line once, the first time its figure is said",
+      "change": "In remotion/src/studio/board.tsx (sources pill, ~line 459, shown on every beat where a sourced figure is said) and the Hook/Turn components, show the line only on the first beat that says a figure from that source (track by sourceIndex), for the length of that beat. The hard rule (sourced facts shown with 'Data: <source> · <month>') stays met.",
+      "evidence": [
+        "metrics/feedback.json note cmw09x8od0001l509yhqrq3wo (v-20261103-01: 'The source should be shown once only throughout the video')",
+        "videos/v-20261103-03/preview.png: 'Data: Fortune' at 5 s and 10 s"
+      ],
+      "expectedEffect": "Less clutter on the lower third, where captions already sit.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "A second, different source still shows once of its own; the fact reviewer must still see one per source.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
+    },
+    {
+      "id": "person-intro-tag",
+      "date": "2026-11-04",
+      "area": "script",
+      "title": "Introduce a real person in one short clause that makes them bigger",
+      "change": "Writer rule (generator/prompts and short_story README): the first time a real person is named, add one clause of at most 8 words with a sourced fact that sets their scale ('Warren Buffett, one of the ten richest people alive,…'), shown as a name card under the hook. Research adds that fact to each person topic's `facts` (rank or net worth with its date, from Forbes or Bloomberg). Never lengthen the hook: the clause goes in the promise beat.",
+      "evidence": [
+        "metrics/feedback.json note cmw0adkun0003l0094mu9wrwc (v-20261103-02: 'add some more thing about him… like Warren Buffett the 10th richest man… but don't enlarge the introduction')"
+      ],
+      "expectedEffect": "Raises the stakes of the story in two seconds; matches how the owner's picked Short worked.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "A rank changes often: it must come from a dated source, and the check-plan must refuse an unsourced rank.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
+    },
+    {
+      "id": "actions-that-change-things",
+      "date": "2026-11-04",
+      "area": "motion",
+      "title": "At most a quarter of a video's actions are highlights; the rest change something",
+      "change": "Experiment flag in remotion/src + generator check: count a script's board actions; 'glow', 'shake' and 'stamp' (marking something already there) may be at most 25% of them; the rest must transform (swap/turn into, flow, split, grow, fill, stack, enter from another item). The check-plan suggests a transforming action for each highlight over the cap.",
+      "evidence": [
+        "metrics/feedback.json note cmw0a5lxv0001jq09073tge9o (v-20261103-03: 'Right now it's like same stuff coming')",
+        "metrics/feedback.json channel note: 'Animation don't mean just put object when u speak of it. It's a way of presentation'",
+        "3 Nov scripts: glow+shake+stamp are 26 of 108 actions (24%) but 10 of 30 in v-20261103-03 (33%) with only one swap"
+      ],
+      "expectedEffect": "More 'turns into' moments per beat, the thing the owner and The Curious Plot study both call the wow factor.",
+      "confidence": "low",
+      "effort": "M",
+      "risk": "Forcing transforms can make beats busy or confusing; A/B on % viewed.",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }
