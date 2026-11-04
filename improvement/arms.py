@@ -67,6 +67,17 @@ def _length(sec: float | None) -> str | None:
     return "20-27" if sec <= 27.5 else "28-35" if sec <= 35.5 else None
 
 
+# the publisher's category for a video without arms (workers/lib/youtube.ts UPLOAD_CATEGORY) is 22 since
+# 2026-11-04; the API uploads before it used 27, every manual upload 22
+API_CATEGORY_22_SINCE = "2026-11-04"
+
+
+def _category(video: dict) -> str:
+    if video.get("manual") or (video.get("publishAt") or "")[:10] >= API_CATEGORY_22_SINCE:
+        return "22"
+    return "27"
+
+
 def infer(video: dict, root: Path = ROOT) -> dict:
     """A video's options: from its plan's `arms` when it has one, else read from what it was."""
     from generator import formats
@@ -79,7 +90,7 @@ def infer(video: dict, root: Path = ROOT) -> dict:
         "hook": (video.get("hookStyle") or plan.get("hook_style") or "").lower().replace(" ", "_") or None,
         "title": "figure_or_name" if not formats.title_problems(video.get("title") or "") else "plain",
         "style": "board" if any(b.get("scene") == "board" for b in script.get("beats") or []) else "shot",
-        "category": "22" if video.get("manual") else "27",
+        "category": _category(video),
     }
     if not (plan.get("story") or video.get("story")):
         out["topic"] = None

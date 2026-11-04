@@ -89,3 +89,11 @@ def test_a_plan_must_carry_a_valid_assignment(tmp_path):
     assert arms.plan_problems({"arms": {"length": "28-35", "title": "figure_or_name", "category": "22"}}, root) == []
     bad = arms.plan_problems({"arms": {"length": "20-27", "title": "plain", "category": "27"}}, root)
     assert any("at most 2" in p for p in bad)
+
+
+def test_an_api_upload_without_arms_counts_as_the_category_it_went_out_with(tmp_path):
+    # since 2026-11-04 the publisher uploads a video without style.arms as 22 (workers/lib/youtube.ts)
+    root = root_with(tmp_path, [])
+    later = {**short(3, 30, 100, manual=False), "publishAt": "2026-11-05T01:37:00Z"}
+    assert arms.infer(later, root)["category"] == "22"
+    assert arms.infer(short(4, 30, 100, manual=False), root)["category"] == "27"   # API upload of 25 Oct
