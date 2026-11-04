@@ -20,6 +20,8 @@ concurrency:
 
 jobs:
   merge:
+    # a routine's work-in-progress push ("WIP …") is not a submission: skip it instead of logging a block
+    if: ${{ !startsWith(github.event.head_commit.message, 'WIP') }}
     runs-on: ubuntu-24.04   # pinned 2026-11-03: ubuntu-latest became 26.04, which Playwright 1.56 cannot install on
     timeout-minutes: 40
     env:
@@ -42,8 +44,27 @@ jobs:
         with:
           python-version: "3.12"
 
+      # bring the branch up to date with main first, so the checks run on what would actually land and a
+      # branch made while main moved on (2026-11-03: the improver's evening branch) still merges
+      - name: Sync with main
+        id: sync
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch -q origin main
+          if git merge -q --no-edit origin/main; then
+            echo "head=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            files=$(git diff --name-only --diff-filter=U | paste -sd ' ' -)
+            git merge --abort
+            echo "::error::conflicts with main in: $files"
+            echo "{\"ok\": false, \"reasons\": [\"conflicts with main in: $files (rebase the branch on origin/main and push again)\"]}" > "$RUNNER_TEMP/guard.json"
+            echo "conflict=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Guard
         id: guard
+        if: steps.sync.outputs.conflict != 'true'
         run: |
           git fetch -q origin main
           python scripts/guard.py --agent "${{ steps.who.outputs.agent }}" --base origin/main --head HEAD --json > "$RUNNER_TEMP/guard.json" || true
@@ -113,7 +134,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -q main
           git pull -q origin main
-          git merge --no-ff -q "origin/$BRANCH" -m "Merge $BRANCH (self-improving agent)"
+          git merge --no-ff -q "${{ steps.sync.outputs.head }}" -m "Merge $BRANCH (self-improving agent)"
           git push -q origin main
           echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 

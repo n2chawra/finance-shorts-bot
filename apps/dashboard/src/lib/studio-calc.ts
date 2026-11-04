@@ -1,5 +1,5 @@
 /** Pure calculations for the Studio-grade analytics (shared by studio.db.ts and studio.sample.ts). */
-import type { Attribute, Day, Totals } from "./studio-schema";
+import type { Attribute, Day, Totals } from "./studio-types";
 
 export type Curve = [number, number][];
 

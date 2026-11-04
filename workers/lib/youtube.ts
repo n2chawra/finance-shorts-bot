@@ -139,11 +139,27 @@ const Report = z.object({ columnHeaders: z.array(z.object({ name: z.string() }))
 export type Row = Record<string, string | number>;
 
 /** One YouTube Analytics query, rows as objects keyed by column name. */
-export async function report(token: string, params: Record<string, string>): Promise<Row[]> {
+export async function report(token: string, params: Record<string, string>, waits: number[] = RETRY_WAITS): Promise<Row[]> {
   const q = new URLSearchParams({ ids: "channel==MINE", ...params });
-  const res = await fetch(`https://youtubeanalytics.googleapis.com/v2/reports?${q}`, { headers: { authorization: `Bearer ${token}` } });
-  if (!res.ok) throw new Error(`analytics report failed (${params.dimensions ?? "totals"}${params.filters ? `; ${params.filters}` : ""}): ${await failText(res)}`);
-  return rowsOf(Report.parse(await res.json()));
+  for (let attempt = 0; ; attempt++) {
+    const res = await fetch(`https://youtubeanalytics.googleapis.com/v2/reports?${q}`, { headers: { authorization: `Bearer ${token}` } });
+    if (res.ok) return rowsOf(Report.parse(await res.json()));
+    const why = await failText(res);
+    // YouTube answers some calls with a passing "Internal error" or a 5xx (2026-11-04): try again before giving up
+    if (attempt < waits.length && transient(res.status, why)) {
+      await new Promise((r) => setTimeout(r, waits[attempt]));
+      continue;
+    }
+    throw new Error(`analytics report failed (${params.dimensions ?? "totals"}${params.filters ? `; ${params.filters}` : ""}): ${why}`);
+  }
+}
+
+/** Waits between retries of a passing YouTube error (ms). */
+export const RETRY_WAITS = [1000, 3000, 9000];
+
+/** A failure worth retrying: a server error, rate limiting, or YouTube's own "Internal error" / "backendError". */
+export function transient(status: number, message: string): boolean {
+  return status >= 500 || status === 429 || /internal error|backend ?error|try again/i.test(message);
 }
 
 /** Analytics rows as objects (pure, tested). */

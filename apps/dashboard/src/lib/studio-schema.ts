@@ -140,3 +140,10 @@ export function sliceLabel(kind: BreakdownKind, key: string): string {
   if (kind === "sharing") return titleish(key).replace("Whats App", "WhatsApp");
   return key;
 }
+
+// studio-types.ts mirrors these shapes without zod; these lines fail the typecheck if the two drift apart
+type Same<A, B> = [A] extends [B] ? ([B] extends [A] ? true : false) : false;
+const sameDay: Same<Day, import("./studio-types").Day> = true;
+const sameTotals: Same<Totals, import("./studio-types").Totals> = true;
+const sameAttribute: Same<Attribute, import("./studio-types").Attribute> = true;
+void sameDay; void sameTotals; void sameAttribute;
