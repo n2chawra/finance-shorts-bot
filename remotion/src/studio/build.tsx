@@ -48,6 +48,7 @@ import { Note, type Cur } from "./money";
 import { VIDEOS } from "../videos/hooks";
 import { autoEnters, entry, entryStart, FLOW_SEC, flowEnd, flowPiece, hopAt, squashAt, squashScale } from "./travel";
 import { groundY, World } from "./worlds";
+import { PLACES } from "./places";
 
 type Spot = "left" | "center" | "right" | number;
 interface Item { id: string; prop: string; x?: number; y?: number; size?: number; label?: string; tag?: string; hidden?: boolean; state?: string; k?: number }
@@ -84,6 +85,8 @@ const SHARED: PropSet = {
   coin: ({ s, t }) => <g transform={`translate(0,${-s * 0.5})`}><Ball cx={0} cy={0} rx={s * 0.48} ry={s * 0.48 * Math.abs(Math.cos(t * 2)) + s * 0.08} fill={PALETTE.gold} s={s} /></g>,
   cash: ({ s }) => <g>{[0, 1, 2, 3].map((i) => <g key={i} transform={`translate(0,${-s * 0.18 - i * s * 0.2})`}><Note cur="USD" nw={s * 1.3} /></g>)}</g>,
   box: ({ s, state }) => <g><Shadow w={s} s={s} /><Box x={-s * 0.5} y={-s} w={s} h={s} fill={state === "red" ? PALETTE.red : PALETTE.tan} s={s} /></g>,
+  // a city reads as a skyline, never a slab (owner, 2026-11-04; studio/places.tsx)
+  ...PLACES,
 };
 
 /** What an unknown prop draws: a labelled card, so a missing drawing never breaks a render. */
