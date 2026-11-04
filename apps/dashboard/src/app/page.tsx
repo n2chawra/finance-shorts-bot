@@ -10,8 +10,9 @@ import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
 import { useAgents, useAnalytics, useNotifications, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
 import { lastNight } from "@/lib/last-night";
-import { AGENTS, type Analytics, perThousand, type Run } from "@/lib/schemas";
+import { AGENTS, perThousand, type Run } from "@/lib/schemas";
 import { STATS_AGE_CLASS, statsAge } from "@/lib/stats-age";
+import { weekOverWeek } from "@/lib/totals";
 
 /** Videos the routines aim to ship per IST day (generator setting `dailyVideoTarget`). */
 /** Shorts the routine makes a day before settings load (the setting `dailyVideoTarget`: 3). */
@@ -37,15 +38,6 @@ function Countdown({ iso }: { iso: string }) {
 
 /** Likes + comments per 1,000 views, as a short label. */
 const fmtLoved = (t: { views: number; likes: number; comments: number }) => `${perThousand(t).toFixed(1)} per 1K views`;
-
-/** Last 7 days against the 7 before, from the daily Analytics rows. */
-function weekOverWeek(a: Analytics | undefined, key: "views" | "subsGained" | "likes") {
-  if (!a) return { spark: [] as number[], delta: null as number | null };
-  const days = a.daily.map((d) => d[key]);
-  const last = days.slice(-7).reduce((x, y) => x + y, 0);
-  const prev = days.slice(-14, -7).reduce((x, y) => x + y, 0);
-  return { spark: days.slice(-14), delta: prev > 0 ? ((last - prev) / prev) * 100 : null };
-}
 
 /** Shipped and failed Short runs per IST day, for the last `n` days (long videos have their own weekly target). */
 function dailyOutput(runs: Run[] | undefined, n: number, target = DEFAULT_TARGET) {
@@ -75,9 +67,9 @@ export default function OverviewPage() {
   const g = data.generation;
   const set = (p: { uploadsPaused?: boolean; generationPaused?: boolean }, done: string) =>
     patch.mutate(p, { onSuccess: () => toast(done), onError: (e) => toast(e.message, "error") });
-  const views = weekOverWeek(analytics.data, "views");
-  const likes = weekOverWeek(analytics.data, "likes");
-  const subs = weekOverWeek(analytics.data, "subsGained");
+  const views = weekOverWeek(analytics.data?.daily ?? [], "views");
+  const likes = weekOverWeek(analytics.data?.daily ?? [], "likes");
+  const subs = weekOverWeek(analytics.data?.daily ?? [], "subsGained");
   const age = analytics.data && statsAge(analytics.data.statsThrough);
   const statsLine = age ? <span data-testid="stats-age" data-tone={age.tone} className={STATS_AGE_CLASS[age.tone]}>{age.label}</span> : "from YouTube Analytics";
   const days = dailyOutput(runs.data, 14, DAILY_TARGET);

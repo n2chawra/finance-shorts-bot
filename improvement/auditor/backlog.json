@@ -210,14 +210,14 @@
       "id": "dui-003",
       "kind": "bug",
       "title": "Week-over-week change biased down",
-      "detail": "Overview and Analytics compare the last 7 days with the 7 before, but Analytics runs 1-2 days behind, so the last days are 0 and flat traffic shows about -20%. Fix: drop trailing days after the latest day with a VideoStat row. Update 2026-10-27: views and likes now fill lagging days from the live counters (estimated days, lib/totals.ts), so the bias is mostly gone for them; subscribers have no live counter and are still biased down.",
+      "detail": "Overview and Analytics compare the last 7 days with the 7 before, but Analytics runs 1-2 days behind, so the last days are 0 and flat traffic shows about -20%. Fix: drop trailing days after the latest day with a VideoStat row. Update 2026-10-27: views and likes now fill lagging days from the live counters (estimated days, lib/totals.ts), so the bias is mostly gone for them; subscribers have no live counter and are still biased down. Fixed 2026-11-05: weekOverWeek moved to lib/totals.ts; subscribers leave out trailing estimated days (test workers/tests/dashboard-week-over-week.test.ts). The Analytics page now compares server-side periods and has no such delta.",
       "files": [
         "apps/dashboard/src/app/page.tsx",
         "apps/dashboard/src/app/analytics/page.tsx"
       ],
       "severity": "medium",
       "found": "2026-10-23",
-      "status": "open"
+      "status": "fixed"
     },
     {
       "id": "dui-004",
@@ -617,6 +617,44 @@
       "found": "2026-11-04",
       "status": "fixed",
       "fixed": "2026-11-04"
+    },
+    {
+      "id": "gen-003",
+      "kind": "bug",
+      "title": "Nothing checks the script carries the plan's arms",
+      "detail": "story.script_problems / timeline_problems check the variant system's style (shot vs board) and length band from script.arms, but only the writer prompt asks for the copy. A script without arms (or with different ones) skipped both checks silently, so a 'board' test could ship as shot beats or a 20-27 s assignment run 34 s. run_number_check now fails when script.arms != plan.arms, like script.shape. Test in generator/tests/test_run.py.",
+      "files": [
+        "generator/run.py",
+        "generator/tests/test_run.py"
+      ],
+      "severity": "medium",
+      "found": "2026-11-05",
+      "status": "fixed"
+    },
+    {
+      "id": "gen-004",
+      "kind": "bug",
+      "title": "A budget-test plan could tell a big-money story",
+      "detail": "formats.mix_problems let any plan with arms.topic 'budget' through, including one whose story is a core (big-money) format; improvement/arms.py then credits that video's views to the budget option (it reads plan.arms). Dormant while 'budget' is dropped. Now a problem; test in generator/tests/test_shapes.py.",
+      "files": [
+        "generator/formats.py",
+        "generator/tests/test_shapes.py"
+      ],
+      "severity": "low",
+      "found": "2026-11-05",
+      "status": "fixed"
+    },
+    {
+      "id": "arm-001",
+      "kind": "data",
+      "title": "Variant system labels pre-arms auto uploads as category 27",
+      "detail": "improvement/arms.py infer(): category = '22' if manual else '27'. But workers/lib/youtube.ts categoryOf uploads a video without style.arms as UPLOAD_CATEGORY '22'. Every ready Short made before 4 Nov (no plan.arms) that the API publishes from 5 Nov (the category dimension's since) is counted as option '27' while it went out as 22, so the category test compares 22 with 22. Owner-only file (guard): raised as notification arms-category-label.",
+      "files": [
+        "improvement/arms.py"
+      ],
+      "severity": "medium",
+      "found": "2026-11-05",
+      "status": "open"
     }
   ]
 }

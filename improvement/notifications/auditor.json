@@ -1,3 +1,11 @@
 {
-  "notifications": []
+  "notifications": [
+    {
+      "key": "arms-category-label",
+      "severity": "warning",
+      "title": "Variant system counts 22-category uploads as category 27",
+      "detail": "improvement/arms.py infer() reads a video's upload category as \"22\" if manual else \"27\". The publisher (workers/lib/youtube.ts categoryOf) uploads any video without style.arms as \"22\". Every Short in the backlog made before 4 Nov has no plan.arms, so each one the API publishes from 5 Nov (the category dimension's since date) is counted as option 27 though it went out as 22. Judge would then compare 22 with 22 and could drop or promote 27 on wrong data. The auditor can't change improvement/arms.py (guard).",
+      "fix": "1. In improvement/arms.py infer(), set category to \"22\" when the video is not manual and has no plan arms (match UPLOAD_CATEGORY), or read style.arms.category from videos/<id>/manifest.json and fall back to \"22\". 2. Add a test in improvement/tests/test_arms.py: a non-manual video without plan.arms infers category \"22\". 3. Run python -m improvement.arms status and check the category counts."
+    }
+  ]
 }

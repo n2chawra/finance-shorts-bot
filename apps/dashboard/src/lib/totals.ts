@@ -79,3 +79,20 @@ export function meanViewPct(videos: { stats: StatRow[]; totals: Totals }[]): num
   const measured = videos.filter((x) => x.stats.length > 0);
   return measured.length ? Math.round(measured.reduce((a, x) => a + x.totals.avgViewPct, 0) / measured.length * 10) / 10 : 0;
 }
+
+export type WeekDay = { views: number; likes: number; subsGained: number; estimated: boolean };
+
+/**
+ * The last 7 days against the 7 before, from the daily rows, and the last 14 days for a sparkline.
+ * Analytics runs a day or two behind. Views and likes fill those days from the live counters
+ * (`fillFromLive`, marked estimated); subscribers have no live counter, so their trailing estimated
+ * days are left out instead of counted as 0 (flat growth read about -20%).
+ */
+export function weekOverWeek(daily: WeekDay[], key: "views" | "subsGained" | "likes"): { spark: number[]; delta: number | null } {
+  let end = daily.length;
+  if (key === "subsGained") while (end > 0 && daily[end - 1]!.estimated) end--;
+  const days = daily.slice(0, end).map((d) => d[key]);
+  const last = days.slice(-7).reduce((x, y) => x + y, 0);
+  const prev = days.slice(-14, -7).reduce((x, y) => x + y, 0);
+  return { spark: days.slice(-14), delta: prev > 0 ? ((last - prev) / prev) * 100 : null };
+}

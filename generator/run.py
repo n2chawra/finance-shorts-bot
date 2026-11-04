@@ -258,6 +258,10 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
     spine = story.script_problems(script, [_read_script(e["id"], root) for e in entries[-10:]])
     if plan.get("shape") is not None and script.get("shape") != shapes.shape_id(plan["shape"]):
         spine.append(f"script.shape must be the plan's shape ({shapes.shape_id(plan['shape'])!r}): the spine is checked by it")
+    # the variant system's style and length checks (generator/story.py) read script.arms
+    if plan.get("arms") and script.get("arms") != plan["arms"]:
+        spine.append(f"script.arms must be the plan's arms ({json.dumps(plan['arms'])}): copy them unchanged; the style and "
+                     f"length checks read them")
     if spine:
         passed, notes = False, [*notes, *spine]
     log_step(vid, "number_check", passed, notes, root)
