@@ -31,6 +31,9 @@ function Videos() {
   // topic options come from the videos themselves: a fixed list missed every category added since
   const everything = useVideos({});
   const categories = [...new Set([...(everything.data ?? []).map((v) => v.topic.category), ...(filters.category ? [filters.category] : [])])].sort();
+  // a count beside each topic says which ones the channel leans on and never offers an empty result unawares
+  const perCategory = new Map<string, number>();
+  for (const v of everything.data ?? []) perCategory.set(v.topic.category, (perCategory.get(v.topic.category) ?? 0) + 1);
 
   const set = (key: string, value: string) => {
     const next = new URLSearchParams(params);
@@ -43,7 +46,7 @@ function Videos() {
     <>
       <PageHeader title="Videos" sub="Everything the routines have made, newest first" />
 
-      <div className="no-scrollbar -mx-4 mb-3 flex gap-1 overflow-x-auto border-b border-ring px-4 md:mx-0 md:px-0" role="tablist" aria-label="Status">
+      <div className="no-scrollbar scroll-fade-x -mx-4 mb-3 flex gap-1 overflow-x-auto border-b border-ring px-4 md:mx-0 md:px-0" role="tablist" aria-label="Status">
         {TABS.map((t) => {
           const on = filters.status === t.value;
           const n = t.value ? counts?.[t.value] : total;
@@ -65,7 +68,7 @@ function Videos() {
             aria-label="Search videos" className={`${fieldClass} pl-8`} />
         </label>
         <SelectField label="Template" all="All templates" value={filters.template} onChange={(v) => set("template", v)} options={(templates.data ?? []).map((t) => ({ value: t.id, label: t.name }))} />
-        <SelectField label="Topic" all="All topics" value={filters.category} onChange={(v) => set("category", v)} options={categories.map((c) => ({ value: c, label: titleCase(c) }))} />
+        <SelectField label="Topic" all="All topics" value={filters.category} onChange={(v) => set("category", v)} options={categories.map((c) => ({ value: c, label: everything.data ? `${titleCase(c)} (${perCategory.get(c) ?? 0})` : titleCase(c) }))} />
       </form>
 
       {isLoading ? <Loading /> : error || !data ? <ErrorNote error={error} /> : data.length === 0 ? <Card><Empty icon={Film} title="No videos match">Try another status, template or search.</Empty></Card> : (

@@ -266,6 +266,14 @@ test("videos topic filter offers every category it is given", async ({ page }) =
   await expect(page.getByRole("option", { name: "Credit card" })).toBeVisible();
 });
 
+test("videos topic filter shows how many videos each topic has", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/videos");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Videos/, { timeout: 30_000 });
+  await page.getByRole("combobox", { name: "Topic" }).click();
+  await expect(page.getByRole("option", { name: /^Credit card \(\d+\)$/ })).toBeVisible();
+});
+
 test("videos search box clears when the link drops the search", async ({ page, isMobile }) => {
   test.skip(isMobile, "the sidebar link is a desktop feature");
   await signIn(page);
