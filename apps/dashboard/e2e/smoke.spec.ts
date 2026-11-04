@@ -349,6 +349,22 @@ test("calendar draws long-video thumbnails landscape", async ({ page }) => {
   expect(ratios.some((r) => r > 1.5), `a landscape thumbnail among ${ratios.map((r) => r.toFixed(2))}`).toBe(true);
 });
 
+test("calendar shows the first slot nothing is ready for", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  await page.waitForLoadState("networkidle");
+  // a running-dry backlog showed only on the Queue page: the calendar just stopped drawing uploads
+  let day = page.getByRole("button", { name: /nothing ready for the \d\d:\d\d Short slot/ }).first();
+  if (!(await day.count())) {
+    await page.getByRole("button", { name: "Next month" }).click();
+    day = page.getByRole("button", { name: /nothing ready for the \d\d:\d\d Short slot/ }).first();
+  }
+  await day.click();
+  await expect(page.getByText(/Nothing is ready for the \d\d:\d\d IST Short slot/)).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open the queue" })).toHaveAttribute("href", "/queue");
+});
+
 test("calendar marks long videos apart from Shorts", async ({ page }) => {
   await signIn(page);
   await page.goto("/calendar");
