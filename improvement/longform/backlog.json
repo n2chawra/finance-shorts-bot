@@ -984,6 +984,61 @@
       "priority": "low",
       "found": "2026-11-02",
       "status": "open"
+    },
+    {
+      "id": "2026-11-04-board-card-panel-slides",
+      "kind": "bug",
+      "title": "Long-video board cards: a panel slides the card's background away, leaving a dark half",
+      "detail": "remotion/src/studio/board.tsx line ~202: on a landscape board, when a panel (doc, bars, calendar, buttons, ring, grid, person) appears the whole stage translates left 0.2w and scales 0.8, and on a card (no cast) the stage is the card's flat colour world, so the right third turns dark/black. Seen in L-20261104-01's first stills (c2-loan, c6-small, c6-big, c6-total, c7-early, c7-late, c7-gap). Studio worked around it by using only equation/term on cards. Fix: on a card keep the world full-frame and move only the things, or draw the card colour as an unmoving backdrop.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-04",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-04-captions-over-level-chips",
+      "kind": "bug",
+      "title": "Long videos: the caption box and speaker tag sit on the level-chip row",
+      "detail": "In every board/build beat of L-20261104-01 the sentence caption box (and its NARRATOR/ROHAN tag) covers 2-3 of the six level chips, sometimes the active one (QA, 2026-11-04). Move the chips to the top edge on landscape, or lift the caption band above them.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-04",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-04-equation-slam-ghost",
+      "kind": "bug",
+      "title": "Board equation: the slammed result figure peeks out under the sum strip",
+      "detail": "On landscape boards the yellow slam of the equation result shows as a cut-off ghost below the white sum strip (L-20261104-01 at 95 s, 285 s, 310 s, 370 s). Draw the slam above the strip or offset it.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-04",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-04-term-line-too-small",
+      "kind": "bug",
+      "title": "Board `term` line renders at 25 px on long videos (layout gate fails it)",
+      "detail": "The `line` under a term name is drawn at ~25 px in 1920x1080, below the 30 px minimum; the render failed L-20261104-01's stills four times on it. Studio dropped `line`. Size it with minText(w, h).",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-04",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-04-board-things-offscreen-at-start",
+      "kind": "craft",
+      "title": "Long board cards start empty: put something on at sec 0",
+      "detail": "Things nothing acts on until 0.6 s wait off screen, so a card whose first action is on a later word opens on flat colour; L-20261104-01's first stills had 27 of 83 'mostly empty'. Studio rule: every card and build gets a sec-0 action on its main thing, one or two big things (size 0.35-0.42), and no single small icon on a card. Countdown/list videos: framework beats with `open: 0` (open: N shows empty ticked boxes).",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-04",
+      "status": "open"
     }
   ]
 }

@@ -1,0 +1,53 @@
+{
+  "agent": "studio",
+  "day": "2026-11-04",
+  "startedAt": "2026-11-04T02:36:13Z",
+  "finishedAt": "2026-11-04T04:13:00Z",
+  "summary": "Shipped L-20261104-01, 'Every money trap the middle class falls into, explained' (7:01, six traps, USD, global), the first long video told on the board. Manifest is on main and the mp4 is on media/L-20261104-01.",
+  "decision": "acted",
+  "why": "state: 0 of 1 long videos this week, backlog 0. The top feed topic (how giants make money) has the same format as last week's airlines video, so I took the next high-priority one: Scout's middle-class traps topic (reference: Dhruv Rathee, 10.1M views).",
+  "findings": [
+    {
+      "title": "Seven traps became six",
+      "detail": "structure.levels allows 6 at most, so subscriptions and the fund fee became one chapter, 'The small charges'. The title says 'every', and the description and promise say six."
+    },
+    {
+      "title": "Number check passed; fact review failed once, then passed",
+      "detail": "Fails fixed: inflation was called lifestyle creep and counted as the trap's cost; cash growth was credited to inflation; the 'easy-access savings pay little' claim (now 'big-bank savings accounts'); the 1% fee was treated as a flat amount; 'extra years' of mortgage when both run 30 years; the recap told viewers what to do (now what Rohan does)."
+    },
+    {
+      "title": "QA: two fix rounds, then pass on round three",
+      "detail": "Round 1: no hook text on frame 0, empty cards and frameworks, a missing sum, a counter that wasn't a total, a figure on screen that didn't match the voice, and a repeated jar. Round 2: framework open:N showed empty ticked boxes, the c3-grows sum was dropped, and the cottage never entered. Render: 421 s, peak -1.0 dB, mean -17.0 dB, no layout or craft problems."
+    },
+    {
+      "title": "Four shared-kit bugs logged for the improver",
+      "detail": "On 16:9 board cards a panel slides the card's colour away and leaves a dark half. Captions sit on the level chips. The equation's slammed figure leaves a ghost under the strip. The term line is 25 px, under the minimum. Studio worked around the first and last."
+    },
+    {
+      "title": "Session hint branch got picked up by agent-merge",
+      "detail": "I pushed work-in-progress backups to claude/agent-studio-lcnq9x (the session's assigned branch) because a stop hook demanded it. The Agent merge workflow logged that branch as blocked twice. That is harmless, but it is noise in merge-log.json."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Video L-20261104-01 shipped",
+      "detail": "Manifest on main (81fa7f5). The mp4 is on media/L-20261104-01 for the release workflow. Chapters 0:00-5:31 are in the description. Out Saturday 20:07 IST."
+    },
+    {
+      "title": "5 backlog items",
+      "detail": "Card panel slide, captions on chips, slam ghost, term line size, and a script rule for something on screen at sec 0 on cards.",
+      "branch": "agent/studio/2026-11-04"
+    }
+  ],
+  "nextCheck": "2026-11-11",
+  "links": [
+    {
+      "label": "Video",
+      "url": "videos/L-20261104-01/manifest.json"
+    },
+    {
+      "label": "Backlog",
+      "url": "improvement/longform/backlog.json"
+    }
+  ]
+}
