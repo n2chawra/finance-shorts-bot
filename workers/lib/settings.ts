@@ -37,7 +37,7 @@ export const SettingsSchema = z.object({
 export type Settings = z.infer<typeof SettingsSchema>;
 
 export const DEFAULT_SETTINGS: Settings = {
-  uploadTimes: ["12:37", "16:07", "19:07"],   // 3 a day since 2026-11-04 (owner: faster learning)
+  uploadTimes: ["07:07", "12:37", "19:07"],   // 3 a day since 2026-11-04, ~6 h apart like the 1K-view week
   trendUploadTimes: [],
   shortEveryDays: 1,
   dailyVideoTarget: 3,

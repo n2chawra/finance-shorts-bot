@@ -153,9 +153,9 @@ test("template cards keep a readable text column", async ({ page }) => {
 });
 
 test("video page calls a due slot due, not minutes ago", async ({ page }) => {
-  // tomorrow 12:50 IST: the 12:37 Shorts slot (the first since 2026-11-03) is due, and the queue's first Short is the one to post
+  // tomorrow 07:20 IST: the 07:07 Shorts slot (the first since 2026-11-04) is due, and the queue's first Short is the one to post
   const tomorrow = new Date(Date.now() + 330 * 60_000 + 86_400_000).toISOString().slice(0, 10);
-  await page.clock.setFixedTime(new Date(`${tomorrow}T12:50:00+05:30`));
+  await page.clock.setFixedTime(new Date(`${tomorrow}T07:20:00+05:30`));
   await signIn(page);
   await page.goto("/queue");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Queue/, { timeout: 30_000 });

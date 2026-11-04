@@ -20,7 +20,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   small sentence captions with the speaker's name since 2026-11-02; `remotion/src/fx/captions.tsx`).
 - **Best video first** (owner, 2026-10-30; cadence 2026-11-02 after the 48-hour test didn't help): the
   routine makes **3 Shorts a day** (`dailyVideoTarget`) and **all 3 go out**, uploaded automatically
-  by the API at 12:37, 16:07 and 19:07 IST (`uploadTimes`, `shortEveryDays: 1`, `uploadsPaused: false`;
+  by the API at 07:07, 12:37 and 19:07 IST (about 6 h apart, like the 1K-view week of 22–28 Oct) (`uploadTimes`, `shortEveryDays: 1`, `uploadsPaused: false`;
   owner 2026-11-04: more videos, faster learning). Never a gap: the 30 Oct–1 Nov pause cost the channel its momentum. The **editor** step of every video run
   (`generator/prompts/editor.md`, `python -m generator.run rank`, `generator/editor.py`) rates every
   ready Short and writes `improvement/editor/ranking.json`; ingest turns it into the queue order. The
@@ -29,7 +29,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   (`Feedback` table → `metrics/feedback.json`). The routine reads it in `state` → `owner_feedback`
   (right after the hard rules), and the improver answers every open note in
   `improvement/feedback-acks.json`, which ingest shows on the dashboard.
-- **Shorts slots** at 12:37, 16:07 and 19:07 IST (setting `uploadTimes`); **trend slots** (`trendUploadTimes`)
+- **Shorts slots** at 07:07, 12:37 and 19:07 IST (setting `uploadTimes`); **trend slots** (`trendUploadTimes`)
   are off since 2026-11-02 (when set, each breaking or trending video of the day opens
   one, so a trend never pushes a normal video back; quiet days leave them empty). Upload time barely
   changes who sees a Short, so slots suit the evening peaks we saw, not time zones (owner,

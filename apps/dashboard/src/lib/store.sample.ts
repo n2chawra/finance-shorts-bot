@@ -130,7 +130,7 @@ function build(): Store {
   const now = new Date();
   const today = istDay(now);
   const settings: Settings = {
-    uploadTimes: ["12:37", "16:07", "19:07"], trendUploadTimes: [], shortEveryDays: 1, dailyVideoTarget: 3, backlogCap: 30, lengthMinSec: 20, lengthMaxSec: 35,
+    uploadTimes: ["07:07", "12:37", "19:07"], trendUploadTimes: [], shortEveryDays: 1, dailyVideoTarget: 3, backlogCap: 30, lengthMinSec: 20, lengthMaxSec: 35,
     longUploadTimes: ["20:07"], longUploadDays: [6], longLengthMinSec: 300, longLengthMaxSec: 400,
     longPerWeek: 1, longBacklogCap: 4,   // the same as workers/lib/settings.ts DEFAULT_SETTINGS (2026-11-03)
     disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
