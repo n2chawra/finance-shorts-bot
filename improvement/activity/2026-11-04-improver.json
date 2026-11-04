@@ -1,0 +1,68 @@
+{
+  "agent": "improver",
+  "day": "2026-11-04",
+  "startedAt": "2026-11-04T17:32:27Z",
+  "finishedAt": "2026-11-04T17:42:36Z",
+  "summary": "Answered all four of the owner's open notes with fixes: props stay on screen under board cards, a real city skyline prop, the disclaimer small at the bottom, and slower, fuller long videos. Reverted the title experiment and started a topic-mix experiment for the 'same category' note.",
+  "decision": "acted",
+  "why": "Owner notes come first (4 open). The evaluator says REVERT for title-names-the-moment (-9% average % viewed, 87% confidence, 7 vs 7). The owner's topic note matches research's you-in-the-core-story proposal, and no running experiment is in the script area.",
+  "findings": [
+    {
+      "title": "title-names-the-moment: revert",
+      "detail": "-9% average % viewed, 87% confidence it is worse (on 7, off 7)."
+    },
+    {
+      "title": "What works in Shorts (48 h views vs median)",
+      "detail": "how_they_make_money 6.5x, secret_of_rich 6.2x, cinematic music 10.2x, 25-29 s 5.7x, narrator 0-24% of words 4.3x (n=12); myth hooks 0.11x (n=5), forest palette 0.11x."
+    },
+    {
+      "title": "Why v-20261104-02 had 17 s of words only",
+      "detail": "On a board card (no cast) every panel (person card, documents) hid all the beat's props; 5-17 s showed only cards."
+    },
+    {
+      "title": "Topics since 31 Oct",
+      "detail": "Every Short is a named billionaire or company; the 22-28 Oct 1K week also had the viewer's own money ('Your $20,000 savings' 1,161 views, 'Your Dhanteras necklace' 1,133)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Board cards keep their things",
+      "detail": "A Short's card with one person card or a document of up to 3 rows keeps its props under it (remotion/src/studio/cardshare.ts); checklist rule.",
+      "branch": "agent/improver/2026-11-04"
+    },
+    {
+      "title": "Shared city and building props",
+      "detail": "A skyline of towers with lit windows, roofs and a crane, k = how much is built (remotion/src/studio/places.tsx); checklist: places read as places.",
+      "branch": "agent/improver/2026-11-04"
+    },
+    {
+      "title": "Disclaimer at the bottom, small",
+      "detail": "Minimum text size, slim pill just above the Shorts bottom zone (StoryVideo.tsx).",
+      "branch": "agent/improver/2026-11-04"
+    },
+    {
+      "title": "Long videos slower and fuller",
+      "detail": "Tempo 1.5 -> 1.25 (~180 words a minute); 3-5 things per long beat with an action on every clause; a figure the sum already shows is not slammed in again behind it.",
+      "branch": "agent/improver/2026-11-04"
+    },
+    {
+      "title": "Reverted title-names-the-moment",
+      "detail": "Prompt dropped; status reverted.",
+      "branch": "agent/improver/2026-11-04",
+      "experiment": "title-names-the-moment"
+    },
+    {
+      "title": "Started you-in-the-core-story",
+      "detail": "Half of Shorts tell a core big-money format through the viewer's own money; judged on 48 h views.",
+      "branch": "agent/improver/2026-11-04",
+      "experiment": "you-in-the-core-story"
+    }
+  ],
+  "nextCheck": "2026-11-06",
+  "links": [
+    {
+      "label": "Journal",
+      "url": "improvement/journal.md"
+    }
+  ]
+}
