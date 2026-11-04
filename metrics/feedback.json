@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 4,
+  "open": 0,
   "notes": [
     {
       "id": "cmw1pidrv0001l009mdsdcmtk",
       "kind": "wrong",
       "area": null,
       "text": "Speed is very fast can't hear things clearly.\nAdd lots of more props and animation than this atleast 80% more than currently in video.\nSome texts if getting overlapped and hiding behind",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Long videos now play at tempo 1.25 (~180 words a minute, was 1.5 / ~215); the long writer guide asks for 3-5 things per beat with an action on every clause (yours had 1.9), and a figure the sum already shows no longer slams in behind it (the QA-found overlap at 95 s and 285 s).: (dcc98af)",
       "at": "2026-11-04T05:59:19.099Z",
       "video": {
         "id": "L-20261104-01",
@@ -26,8 +26,8 @@
       "kind": "improve",
       "area": null,
       "text": "The topics are good . But every topics is of same category before when our videos were working 1k views we had more category of videos . Now I'm not getting good views. Analyse and create topics accordingly",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: You're right: since 31 Oct every Short is about a named billionaire or company, while the 1K week mixed in the viewer's own money ('Your $20,000 savings' 1,161, 'Your Dhanteras necklace' 1,133); half of new Shorts now tell a big-money format through the viewer's own money, measured on 48 h views (experiment you-in-the-core-story).: (c734ec8)",
       "at": "2026-11-04T02:53:13.531Z",
       "video": null
     },
@@ -36,8 +36,8 @@
       "kind": "wrong",
       "area": null,
       "text": "The city props is shit. What the fuck is that??\n\nAlso the disclaimer put it at the below end of screen small",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Added a shared 'city' prop (a skyline of towers with lit windows, roofs and a crane, built up to k) so a city is never a tilted slab again, plus a checklist rule that places read as places; the disclaimer is now a small line at the very bottom of the frame at the minimum text size (commit 6226210).: (3c97fe8)",
       "at": "2026-11-04T02:49:59.647Z",
       "video": {
         "id": "v-20261104-01",
@@ -55,8 +55,8 @@
       "kind": "improve",
       "area": null,
       "text": "After hook 17 second of video has texts only no props animation. User might leave the video because of it.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Found it: on a card the person card and the two documents hid every prop for 12 s; now a Short's card keeps its things standing under one person card or short document (stills: cash case, shares and tax envelope back at 5-15 s), and the checklist forbids card beats without things.: (e4f8051)",
       "at": "2026-11-04T02:47:03.579Z",
       "video": {
         "id": "v-20261104-02",
