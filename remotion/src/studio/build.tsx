@@ -41,7 +41,7 @@ import { fitLine, minText, textWidth } from "../design/fit";
 import { countUp } from "../fmt/inr";
 import { between, breathe, type Box as Rect, frameOn, type Frame, keepHeads, keepInside, type ShotSize, holds, labelTop, MOVE_SEC, shows, steady, union } from "./camera";
 import { type ScreenText, ScreenTexts } from "./labels";
-import { pulse, spokenFigures } from "./figures";
+import { pulse, shownIn, spokenFigures } from "./figures";
 import { counterBottom, counterShown } from "./hud";
 import { Ball, Box, INK, PALETTE, type PropFC, type PropSet, Shadow, Shape } from "./draw";
 import { Note, type Cur } from "./money";
@@ -447,7 +447,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   // a figure no visible thing carries pops on screen by itself while it is said
   for (const [i, f] of said.entries()) {
     const k = pulse(t, f);
-    if (k <= 0 || riding.has(f.text) || carriedElsewhere.has(f.text) || states.some((st) => st.s.show > 0.5 && carries(st, f.text))) continue;
+    if (k <= 0 || riding.has(f.text) || shownIn(f.text, carriedElsewhere) || states.some((st) => st.s.show > 0.5 && carries(st, f.text))) continue;
     texts.push({ key: `said${i}`, kind: "hero", text: f.text, x: w * 0.5, y: h * (P.heroY ?? (v ? 0.34 : 0.3)), k: slam(t - f.s) * Math.min(1, k * 1.6), fill: "#ffd84a" });
   }
   for (const a of arrowTexts) {

@@ -167,7 +167,7 @@ def voice_problems(script: dict) -> list[str]:
 # a named term per step, a board header stating each sentence's point, and an ending that asks the
 # viewer something ("Which son are you?"). Sentence length and the number of actions were the same.
 QUESTION_EVERY = {"short": 20.0, "long": 30.0}   # seconds of speech per question, at least (Shorts 12 s until 2026-11-04: they are 20–35 s now)
-WPM = {"short": 175.0, "long": 215.0}
+WPM = {"short": 175.0, "long": 180.0}   # long 215 until tempo 1.5 -> 1.25 (owner, 2026-11-04)
 BOARD_VERBS = ("header", "equation", "term", "stamp", "cross", "tick", "strike", "arrow", "bubble", "bars",
                "ring", "grid", "calendar", "buttons", "click", "person", "step")
 

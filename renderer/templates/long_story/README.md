@@ -70,6 +70,15 @@ videos at 16:9, and `board` beats carry most of the explaining:
   stage on the left; captions are whole sentences in a box low on the frame with the speaker's name.
 - The documentary devices below stay; mix them with board beats so a 7–10 minute video never settles
   into one look. Clause coverage (90%+), the card check and the mute review apply here too.
+- **Many more things, always moving** (owner, 2026-11-04, on L-20261104-01: "add lots more props and
+  animation, at least 80% more"; it had 1.9 things per build/board beat and 120 s, 215 s and 245 s
+  showed one prop on an empty set): every `build` and `board` beat lists **3–5 `items`** (the
+  subject, what acts on it, where it ends up), and **every clause fires an action** on one of them
+  (`enter`, `flow`, `grow`, `swap`, `fill`, `multiply`…, not only `glow`/`tag`). A thing from the last
+  beat comes back changed. A beat with one thing or one action is a rewrite.
+- **Nothing written twice** (same note: "some texts are overlapped and hiding behind"): a figure the
+  sum or a panel already writes is not also a `tag` on a thing in the same beat, and the counter's
+  running total is not repeated as a tag (300 s of L-20261104-01 showed $127,544 twice, overlapping).
 
 ## The script
 
@@ -227,13 +236,13 @@ number (or `value` is 0), or the build fails. Every video ends with an
 
 ## Pace and length
 
-Long videos play at **tempo 1.5** (`TEMPOS` in `renderer/timeline/build.py`; the owner watched
-the first sample at 1.5× and called it right). The voice speaks at 1.5× and every pause,
-animation, transition and camera move runs 1.5× faster with it, like watching at that playback
+Long videos play at **tempo 1.25** (`TEMPOS` in `renderer/timeline/build.py`; 1.5 until
+2026-11-04, when the owner found it too fast to hear clearly). The voice speaks at 1.25× and every pause,
+animation, transition and camera move runs 1.25× faster with it, like watching at that playback
 speed. Write on the story clock: `min_sec` and `{"sec": …}` events are story seconds.
 
-At this pace narration runs about **215 words a minute**. A 400–600 s video needs roughly
-**1,450–2,150 words** across 85–125 beats (the range is `longLengthMinSec`–`longLengthMaxSec` in `config/settings.json`).
+At this pace narration runs about **180 words a minute**. A 300–400 s video needs roughly
+**900–1,200 words** across 60–85 beats (the range is `longLengthMinSec`–`longLengthMaxSec` in `config/settings.json`).
 
 **Shape (owner reset, 2026-10-21):** the plan's `story` is a long format from
 `improvement/research/formats.json` (`list_explained`, `once_you_understand`, `which_one_are_you`,

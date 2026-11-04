@@ -113,4 +113,4 @@ fix any beat near a limit as well.
 ## Length
 - Read the range from `config/settings.json` (`lengthMinSec`–`lengthMaxSec` for Shorts,
   `longLengthMinSec`–`longLengthMaxSec` for long videos). It changes. Count words at about 200 a
-  minute (Shorts) or 215 a minute (long), and check `lint`'s estimate.
+  minute (Shorts) or 180 a minute (long, tempo 1.25 since 2026-11-04), and check `lint`'s estimate.

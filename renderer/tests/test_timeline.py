@@ -108,11 +108,11 @@ def test_long_videos_play_at_their_tempo(tmp_path: Path) -> None:
              {"id": "b", "scene": "chapter"}]
     slow = tb.build(script(beats, tempo=1), tmp_path / "slow", voice="estimate")
     fast = tb.build(script(beats), tmp_path / "fast", voice="estimate")
-    assert fast["tempo"] == tb.TEMPOS["long"] == 1.5 and fast["speed"] == 1.5 and slow["speed"] == 1.0
+    assert fast["tempo"] == tb.TEMPOS["long"] == 1.25 and fast["speed"] == 1.25 and slow["speed"] == 1.0   # owner, 2026-11-04: 1.5 too fast
     for s, f in zip(slow["beats"], fast["beats"]):
-        assert f["frames"] == pytest.approx(s["frames"] / 1.5, abs=1)       # voice, pauses, chapter cards
-    assert fast["beats"][0]["events"]["later"] == round(3 / 1.5 * tb.FPS)   # story seconds -> real
-    assert fast["beats"][0]["voice"]["words"][-1]["e"] == pytest.approx(slow["beats"][0]["voice"]["words"][-1]["e"] / 1.5, rel=0.02)
+        assert f["frames"] == pytest.approx(s["frames"] / 1.25, abs=1)       # voice, pauses, chapter cards
+    assert fast["beats"][0]["events"]["later"] == round(3 / 1.25 * tb.FPS)   # story seconds -> real
+    assert fast["beats"][0]["voice"]["words"][-1]["e"] == pytest.approx(slow["beats"][0]["voice"]["words"][-1]["e"] / 1.25, rel=0.02)
 
 
 def test_long_story_example_builds(tmp_path: Path) -> None:
