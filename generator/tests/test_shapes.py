@@ -60,6 +60,15 @@ def test_two_in_three_shorts_are_big_money(tmp_path):
             {"id": "salary_breakdown", "format": "short", "tier": "low", "examples": [{"views": 10**6}]}]
     root = root_with(tmp_path, fmts=fmts)
     personal = {"story": "salary_breakdown"}
-    assert formats.mix_problems(personal, [{"story": "billionaire_question"}, {"story": "billionaire_question"}], root) == []
-    assert formats.mix_problems(personal, [{"story": "billionaire_question"}, {"story": "salary_breakdown"}], root)
+    # since 2026-11-04 a personal-budget Short only runs as a test the variant system assigns
+    assert formats.mix_problems(personal, [{"story": "billionaire_question"}, {"story": "billionaire_question"}], root)
+    assert formats.mix_problems({**personal, "arms": {"topic": "budget"}}, [{"story": "billionaire_question"}] * 2, root) == []
     assert formats.mix_problems({"story": "billionaire_question"}, [{"story": "salary_breakdown"}] * 2, root) == []
+
+
+def test_titles_carry_a_figure_or_a_name():
+    assert formats.title_problems("Why Google pays Apple $20B for one iPhone setting") == []
+    assert formats.title_problems("Why billionaires never sell their stock") == []
+    assert formats.title_problems("Buffett bought Coca-Cola once. He never sold") == []
+    assert formats.title_problems("Payday hits. Which money level are you on?")
+    assert formats.title_problems("Payday hits. Which money level are you on?", {"title": "plain"}) == []

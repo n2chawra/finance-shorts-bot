@@ -247,7 +247,7 @@ def test_long_story_renders_with_remotion_and_fails_a_frozen_picture(root: Path,
 
     def fake_story(script: dict, out: Path, preview: bool = False, stop_if=None) -> dict:
         seen["template"] = script["template"]
-        return {"renderer": "remotion", "duration_sec": 540, "layout_problems": [], "style": {"palette": "night", "genre": "lofi"},
+        return {"renderer": "remotion", "duration_sec": 360, "layout_problems": [], "style": {"palette": "night", "genre": "lofi"},
                 "voice": {"name": "am_michael", "lines": [{"scene": "a", "fill": 0.8, "window": 5, "seconds": 4}]},
                 "audio": {"peak_db": -1.0, "mean_db": -17.0},
                 "liveliness_problems": ["12 s with nothing moving (limit 4 s)"]}

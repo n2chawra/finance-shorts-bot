@@ -42,6 +42,23 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 - **No digits and no currency sign ($, £, €, ₹) in any text or spoken line.** Placeholders only;
   code reads them aloud ("$1.2M" → "1.2 million dollars", "₹12.4 L" → "12.4 lakh rupees"). The
   build rejects a typed number.
+- **Copy the plan's `arms` into the script as `"arms"`** and follow them: `length` is the band in
+  seconds the Short must land in (the render fails it outside), `style` "shot" means no board beats,
+  "board" means most beats are board cards.
+- **The hit recipe (default since 2026-11-04; read this first).** Our 1K-view Shorts (21–27 Oct)
+  were 22–35 s long, 70–100 spoken words in 6–8 beats: a hook that asks one big-money question, two
+  or three beats that build the surprise with the cast and the money as things, one turn, a
+  one-sentence punchline with the biggest figure, and a last line that hands back to the hook so it
+  loops. Shorts of 35 s or less got a median of 729 views and 55% viewed; 36–50 s got 216; the 60 s+
+  board Shorts got 19–144. Shorter is the single biggest lever we have:
+  - **20–35 s** (the length setting), **60–100 words**, 6–8 beats of 3–5 s. Cut every sentence that
+    doesn't move toward the punchline; a second example is a second video.
+  - **Never announce the structure after the hook** ("three clues", "four levels", "here are five
+    ways"): those lines lost 24–41% of viewers within 2 s in five Shorts (auditor, 2026-11-03).
+    Go straight into the first surprising fact.
+  - **The title and hook carry a money figure or a famous name** (titles with "$…" or "billion" got
+    a median of 793 views in 48 h; the rest 39).
+  - The style is `shot`/`build` beats with the cast, unless the plan's `arms.style` says `board`.
 - **Build it from shots** (owner, 2026-10-21: "most of the screen empty, every video works like a
   template"). Read `renderer/templates/SHOTS.md` and `.claude/skills/motion-direction/SKILL.md`
   first; copy the shape of `examples/short_story_shot.json`, not its words. At least 60% of the
@@ -57,7 +74,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   characters speak one-liners; they should explain like a teacher"). Pick the explainer: the
   narrator, or one cast member who knows the answer (Sharma for how the rich work). That voice says
   60% or more of the words, in full sentences that connect ("because…", "so…", "which means…"),
-  about 12 or more words a beat, one clear idea at a time, a concrete example before the rule. The
+  about 10–13 words a beat, one clear idea at a time, a concrete example before the rule. The
   others react in a short line where it adds something (surprise, a doubt the viewer has, a joke).
   The speaker changes 5 times at most. Everyday words; no jargon without saying what it means.
 - **Nobody on screen is an adviser** (YouTube's monetization policy excludes content presenting
@@ -98,7 +115,8 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   - **Escalate.** Each build beat reveals something bigger or worse than the one before; the turn
     flips what the viewer believed; the payoff is one punchline sentence with the biggest figure.
   - **Start every line on the action.** No "Picture…", "Imagine…", "Here's the game", "Let's…".
-- **The board: rooms and cards, a new picture every sentence** (owner, 2026-11-02, after The
+- **The board (a test variant since 2026-11-04: only when the plan's `arms.style` is `board`):
+  rooms and cards, a new picture every sentence** (owner, 2026-11-02, after The
   Curious Plot study and two demos; `scene: "board"`, `remotion/src/studio/board.tsx`, its verbs in
   `renderer/templates/short_story/README.md`):
   - **One sentence per beat** (6.5 s of speech at most) and **a new picture every beat**: new things,
@@ -137,9 +155,9 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   voice explains at tempo 1.2 (about 175 words a minute). When the narrator explains, the camera
   frames the thing being explained and the characters step back; they are big when they speak,
   react, in the hook and the turn. A spoken figure no thing carries appears huge in the middle of
-  the frame by itself. A Short is 8–11 beats of 4–7 s.
-- **Length:** the setting (`lengthMinSec`–`lengthMaxSec`, 45–70 s since 2026-10-30), about 120–185
-  spoken words. Use the time to teach it properly: an example, the reason, what it means.
+  the frame by itself. A Short is 6–8 beats of 3–5 s.
+- **Length:** the setting (`lengthMinSec`–`lengthMaxSec`, 20–35 s since 2026-11-04), about 60–100
+  spoken words. One question, one surprising answer, one punchline.
 - **Loop it:** the last line hands back to the first, so a viewer who keeps watching sees the hook
   again and it plays on ("…and that's why the rich one never needed the raise." → "Poor person
   gets a raise."). **No `end` beat in a Short:** the disclaimer shows as a small line over the last

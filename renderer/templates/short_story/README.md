@@ -19,8 +19,8 @@ a beat or two, never more. Reference: [`examples/short_story_shot.json`](../../.
 - `"format": "short"`, `"template": "short_story"`.
 - **Pace** (owner, 2026-10-30: "too fast, I need to watch it twice", then "a little faster"): tempo 1.2,
   about **175 spoken words a minute**, voice and animation together. The length is the setting (`lengthMinSec`–
-  `lengthMaxSec` in `config/settings.json`, 45–70 s since 2026-10-30): **120–185 words in 8–11 beats**
-  of 4–7 s, following "The story spine" below. Teach it fully; length is there to explain, never to pad. No `chapter` beats.
+  `lengthMaxSec` in `config/settings.json`, 20–35 s since 2026-11-04, the length of every 1K-view Short): **60–100 words in 6–8 beats**
+  of 3–5 s, following "The story spine" below. One question, one surprise, one punchline. No `chapter` beats.
 - **The first second is the hook.** The first beat's opening lines (`"at": "start"`) are on screen
   from frame 0, because that frame is what the feed shows: a big figure or a sharp question.
 - **One idea.** A Short makes one point with one calculation. Cut every beat that doesn't move it.
@@ -46,7 +46,7 @@ README for every option). Use a `kinetic` typed card for the turn of the story, 
 for a character moment with a `bubble`, and keep plain `bignumber` beats rare. Example:
 [`examples/short_story_kit.json`](../../../examples/short_story_kit.json).
 
-## The board: rooms and cards (owner, 2026-11-02; the default for Shorts and long videos)
+## The board: rooms and cards (owner, 2026-11-02; a test variant for Shorts since 2026-11-04, used when the plan's `arms.style` is `board`; long videos keep it)
 
 After a frame-by-frame study of The Curious Plot (their "$0 salary" Short 43K, "egg selling" 1.3M;
 ours on the same topic 151) and four demos the owner reviewed (`v-remake-salary`): the question is
@@ -194,7 +194,7 @@ Other shapes show their figures on things in the scene, and may still use `param
 
 **Explain like a teacher** (owner, 2026-10-30: "characters speak one-liners; they should explain").
 One voice carries the video, the narrator or one cast member as the teacher, saying 60% or more
-of the words in full, connected sentences ("because… so… which means…"), 12+ words a beat on
+of the words in full, connected sentences ("because… so… which means…"), 10–13 words a beat on
 average. The others act it out and react in a short line. The speaker changes 5 times at most.
 
 **The things take the centre, not the characters** (owner, 2026-10-30: "when the script explains

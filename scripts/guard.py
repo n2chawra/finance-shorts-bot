@@ -64,6 +64,9 @@ LOCKED = [
     "workers/lib/settings.ts", "workers/prisma/*", "workers/scripts/*", "workers/package.json", "workers/package-lock.json",
     # the layout gate measures the rendered text with this probe: it never changes with the scenes it measures
     "remotion/src/fx/probe.tsx",
+    # the variant system (2026-11-04): its options, rules and verdicts change only by the owner or its own
+    # judging in the ingest workflow; an agent proposes a new option in a notification instead
+    "config/arms.json", "improvement/arms.py", "improvement/arms-state.json", "improvement/arms-log.json",
 ]
 FORBID += LOCKED
 TEST_FILE = re.compile(r"(^|/)(tests?|e2e)/|(^|/)test_[^/]*\.py$|\.(test|spec)\.ts$")

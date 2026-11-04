@@ -67,7 +67,7 @@ def explained(shape: str = "reveal") -> dict:
     long = "and that is the part of the story which explains where the money really goes every night"
     return {"format": "short", "template": "short_story", "shape": shape,
             "beats": [{**beat("hook", "hook", "Casinos make money even when you win. Here's how."), "speaker": "narrator"},
-                      {**beat("promise", "promise", f"Three clues hide on this table {long}"), "speaker": "narrator"},
+                      {**beat("promise", "promise", f"The table itself hides the trick {long}"), "speaker": "narrator"},
                       {**beat("a", "build", f"Clue one is green {long}"), "speaker": "narrator"},
                       {**beat("b", "build", f"Clue two is time {long}"), "speaker": "narrator"},
                       {**beat("r", "build", "Only that much? So why worry? That is nothing to me."), "speaker": "rohan"},
@@ -135,7 +135,17 @@ def test_too_few_questions_and_a_silent_ending_fail():
     for b in s["beats"]:
         b["say"] = b["say"].replace("?", ".")
     problems = " ".join(story.script_problems(s))
-    assert "questions in about" in problems and "ending asks the viewer nothing" in problems
+    assert "questions in about" in problems
+    assert "ending asks the viewer nothing" not in problems     # a Short that loops back to its hook ends on the loop
+    s["beats"][-1]["role"] = "payoff"
+    assert "ending asks the viewer nothing" in " ".join(story.script_problems(s))
+
+
+def test_announcing_the_structure_after_the_hook_fails():
+    # "three clues…" / "four levels…" right after the hook lost 24–41% of viewers within 2 s (2026-11-03)
+    s = explained()
+    s["beats"][1]["say"] = "Three clues explain where the money goes, and the last one is under your feet right now."
+    assert any("announces the structure" in p for p in story.script_problems(s))
 
 
 def test_a_board_beat_needs_its_header():

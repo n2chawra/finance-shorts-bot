@@ -52,7 +52,7 @@ const listOf = (v: unknown, key: string): unknown[] => (v && typeof v === "objec
 export async function getAgents(): Promise<Agents> {
   const [rows, docs, steps] = await Promise.all([
     prisma.agentActivity.findMany({ orderBy: [{ day: "desc" }, { agent: "asc" }], take: 120 }),
-    prisma.repoDoc.findMany({ where: { key: { in: ["experimentLedger", "experiments", "proposals", "mergeLog", "dashboardBacklog", "auditorBacklog", "dataAudit", "topicFeed"] } } }),
+    prisma.repoDoc.findMany({ where: { key: { in: ["experimentLedger", "experiments", "proposals", "mergeLog", "dashboardBacklog", "auditorBacklog", "dataAudit", "topicFeed", "armsConfig", "armsState", "armsLog"] } } }),
     prisma.agentRun.findMany({ where: { videoId: { not: null }, agent: { notIn: AFTER_RUN }, startedAt: { gte: new Date(Date.now() - 16 * 86_400_000) } }, select: { videoId: true, startedAt: true, finishedAt: true } }),
   ]);
   const doc = Object.fromEntries(docs.map((d) => [d.key, d.value]));
@@ -62,6 +62,7 @@ export async function getAgents(): Promise<Agents> {
   for (const [id, e] of live) if (!experiments.some((x) => (x as { id: string }).id === id)) experiments.push(e);
   const activity = rows.map((r) => ActivitySchema.safeParse({ ...r, nextCheck: r.nextCheck ?? null, startedAt: r.startedAt?.toISOString() ?? null, finishedAt: r.finishedAt?.toISOString() ?? null })).filter((p) => p.success).map((p) => p.data!);
   const parsed = AgentsSchema.safeParse({
+    ...variantsOf(doc.armsConfig, doc.armsState, doc.armsLog),
     activity,
     videoRuns: clusterVideoRuns(steps.map((x) => ({ videoId: x.videoId!, start: x.startedAt, end: x.finishedAt ?? x.startedAt }))),
     experiments,
@@ -74,7 +75,24 @@ export async function getAgents(): Promise<Agents> {
     dataAudit: doc.dataAudit ?? null,
     topics: listOf(doc.topicFeed, "topics").reverse(),   // newest first
   });
-  return parsed.success ? parsed.data : { activity, videoRuns: [], experiments: [], proposals: [], merges: [], backlog: [], dataAudit: null, topics: [] };
+  return parsed.success ? parsed.data : { variants: [], variantLog: [], variantsAt: null, activity, videoRuns: [], experiments: [], proposals: [], merges: [], backlog: [], dataAudit: null, topics: [] };
+}
+
+type ArmsConfig = { dimensions?: Record<string, { options: string[]; default: string; why?: string }> };
+type ArmsState = { updatedAt?: string; dimensions?: Record<string, { default: string; dropped: string[] }>; numbers?: Record<string, Record<string, { n: number; median: number | null }>> };
+
+/** The variant system's dimensions for the Agents page, from config/arms.json and improvement/arms-state.json. */
+export function variantsOf(config: unknown, state: unknown, log: unknown) {
+  const cfg = (config ?? {}) as ArmsConfig, st = (state ?? {}) as ArmsState;
+  const variants = Object.entries(cfg.dimensions ?? {}).map(([dimension, d]) => {
+    const s = st.dimensions?.[dimension];
+    return {
+      dimension, why: d.why ?? "", default: s?.default ?? d.default, dropped: s?.dropped ?? [],
+      options: d.options.map((option) => ({ option, n: st.numbers?.[dimension]?.[option]?.n ?? 0, median: st.numbers?.[dimension]?.[option]?.median ?? null })),
+    };
+  });
+  const entries = Array.isArray((log as { entries?: unknown[] } | null)?.entries) ? (log as { entries: unknown[] }).entries : [];
+  return { variants, variantLog: entries.slice(-30).reverse(), variantsAt: st.updatedAt ?? null };
 }
 
 /** Raise or update an owner notification from the dashboard server (e.g. a key it relies on failed). */

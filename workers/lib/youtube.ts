@@ -46,7 +46,17 @@ export async function accessToken(): Promise<string> {
   return TokenResponse.parse(await res.json()).access_token;
 }
 
-export type VideoMeta = { title: string; description: string; tags: string[]; publishAt: Date };
+/** YouTube category: 22 People & Blogs, as on every manually uploaded hit (21–27 Oct). The API uploads of
+ * 3 Nov used 27 Education and were our two weakest Shorts; the variant system may test 27 again. */
+export const UPLOAD_CATEGORY = "22";
+
+/** The upload category for a video: its variant (style.arms.category, improvement/arms.py) when valid. */
+export function categoryOf(style: unknown): string {
+  const c = (style as { arms?: { category?: unknown } } | null)?.arms?.category;
+  return c === "22" || c === "27" ? c : UPLOAD_CATEGORY;
+}
+
+export type VideoMeta = { title: string; description: string; tags: string[]; publishAt: Date; categoryId?: string };
 
 const Inserted = z.object({ id: z.string(), status: z.object({ uploadStatus: z.string().optional(), privacyStatus: z.string().optional() }).passthrough().optional() }).passthrough();
 
@@ -60,7 +70,7 @@ export async function uploadVideo(token: string, file: string, meta: VideoMeta):
       "x-upload-content-length": String(size), "x-upload-content-type": "video/mp4",
     },
     body: JSON.stringify({
-      snippet: { title: meta.title, description: meta.description, tags: meta.tags, categoryId: "27", defaultLanguage: "en" },
+      snippet: { title: meta.title, description: meta.description, tags: meta.tags, categoryId: meta.categoryId ?? UPLOAD_CATEGORY, defaultLanguage: "en" },
       status: { privacyStatus: "private", publishAt: meta.publishAt.toISOString(), selfDeclaredMadeForKids: false, containsSyntheticMedia: false, embeddable: true },
     }),
   });

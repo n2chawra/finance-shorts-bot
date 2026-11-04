@@ -22,6 +22,18 @@ job), `improvement/monthly/focus.json` if it exists (items `"for": "scout"` come
 `improvement/longform/backlog.json`, and `python -m generator.run state --format long` (what Studio
 will face next: its backlog, how many long videos this week, which topics it can use).
 
+## 1a. Long videos grow out of our winning Shorts (owner, 2026-11-04; this comes first)
+Our long videos got 1–11 views each: no browse or suggested impressions, only our channel page and
+search, 13% viewed. A 13-subscriber channel whose audience came from Shorts has nobody for YouTube to
+test a generic 8-minute video on. So from now on:
+- **Every long topic is the full story of one of our Shorts with 1,000+ views in the last 30 days**
+  (`metrics/videos.json`: `views`, `publishAt`, `title`). Name it in the topic as `"from_short": "<id>"`;
+  a topic without one is not offered to Studio. Rank by that Short's views.
+- **Title as people search it**, the question the Short raised ("How do billionaires avoid taxes?",
+  "Why don't billionaires sell their stock?"), 40–65 characters.
+- **5–6 minutes** (settings 300–400 s): 4–6 items, the strongest last.
+- The format list and demand references below still apply to the shape of the video.
+
 ## 1. How long-form is different (owner reset, 2026-10-21)
 "Search the same for long videos and plan accordingly. That's where the money is." Our first long
 videos were 4–6 min explainers of rate decisions and card maths, and got 1–2 views each. The long
@@ -36,8 +48,8 @@ People Fall Into Explained" (1.1M), "Financial Bubbles Explained with Bananas" (
   `rich_vs_poor`. The topic names its format in `stories` and its reference video in `demand`
   (title, views, url; 500,000+ views). Add a new long format there when 2+ videos with 1M+ views
   share a shape we don't have (and propose the story id if `generator/variety.py` lacks it).
-- **7–10 minutes** (settings: 400–600 s since 2026-10-29): long enough for mid-roll ads, short enough for us to
-  render. A list of 6–9 items, one chapter each, every chapter a mini story with a computed figure
+- **5–6 minutes** (settings: 300–400 s since 2026-11-04; 400–600 s before got 1–11 views): a list of
+  4–6 items, one chapter each, every chapter a mini story with a computed figure
   and a cliffhanger into the next; a recap-and-tease every 2–3 minutes; the strongest item last.
 - **Title and thumbnail carry a big promise**: curiosity, envy or fear ("The middle class trap",
   "Once you understand X…", "Which one are you?"). Never a news headline.

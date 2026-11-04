@@ -14,10 +14,10 @@ DEFAULTS: dict = {
     "backlogCap": 30,
     "generationPaused": False,    # routines do nothing at all while this is on
     "uploadsPaused": False,
-    "lengthMinSec": 60,   # story Shorts 60-90 s since 2026-11-02 (45-75 from 2026-10-26)
-    "lengthMaxSec": 90,
-    "longLengthMinSec": 480,      # long-form: 8-15 minutes, aiming for 8-12 (owner reset, 2026-10-21:
-    "longLengthMaxSec": 900,      # the long winners run 12-30 min, and mid-roll ads start at 8)
+    "lengthMinSec": 20,   # Shorts 20-35 s since 2026-11-04 (the 21-27 Oct hits); 60-90 s from 2026-11-02 lost 90% of views
+    "lengthMaxSec": 35,
+    "longLengthMinSec": 300,      # long-form 5-6 min since 2026-11-04: the full story of a winning Short
+    "longLengthMaxSec": 400,      # (7-10 min generic topics got 1-11 views on a Shorts-only audience)
     "longPerWeek": 0,             # long videos to make per IST week (0 pauses long-form)
     "longBacklogCap": 4,
     "disclaimer": "Illustrative only. Not financial advice.",

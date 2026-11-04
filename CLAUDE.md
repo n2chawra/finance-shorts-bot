@@ -2,7 +2,7 @@
 
 Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for a
 global English-speaking audience (India included; the channel is "Paisa Panchayat", see
-`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 60–90 s explained stories) and
+`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 20–35 s big-money stories that loop) and
 **long videos** (landscape, 7–10 min list and "explained" formats, character-led animation). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
@@ -19,9 +19,9 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   video is voiced, with captions of every word drawn from the voice timings (owner, 2026-10-21;
   small sentence captions with the speaker's name since 2026-11-02; `remotion/src/fx/captions.tsx`).
 - **Best video first** (owner, 2026-10-30; cadence 2026-11-02 after the 48-hour test didn't help): the
-  routine makes **3 Shorts a day** (`dailyVideoTarget`) and **2 go out a day**, uploaded automatically
-  by the API at 12:37 and 19:07 IST (`uploadTimes`, `shortEveryDays: 1`, `uploadsPaused: false`), so the
-  editor's best two of each day ship. The **editor** step of every video run
+  routine makes **3 Shorts a day** (`dailyVideoTarget`) and **all 3 go out**, uploaded automatically
+  by the API at 12:37, 16:07 and 19:07 IST (`uploadTimes`, `shortEveryDays: 1`, `uploadsPaused: false`;
+  owner 2026-11-04: more videos, faster learning). Never a gap: the 30 Oct–1 Nov pause cost the channel its momentum. The **editor** step of every video run
   (`generator/prompts/editor.md`, `python -m generator.run rank`, `generator/editor.py`) rates every
   ready Short and writes `improvement/editor/ranking.json`; ingest turns it into the queue order. The
   **owner** decides on the dashboard: **pick** the next upload (with why), reorder, **mark stale** (with
@@ -29,7 +29,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   (`Feedback` table → `metrics/feedback.json`). The routine reads it in `state` → `owner_feedback`
   (right after the hard rules), and the improver answers every open note in
   `improvement/feedback-acks.json`, which ingest shows on the dashboard.
-- **Shorts slots** at 12:37 and 19:07 IST (setting `uploadTimes`); **trend slots** (`trendUploadTimes`)
+- **Shorts slots** at 12:37, 16:07 and 19:07 IST (setting `uploadTimes`); **trend slots** (`trendUploadTimes`)
   are off since 2026-11-02 (when set, each breaking or trending video of the day opens
   one, so a trend never pushes a normal video back; quiet days leave them empty). Upload time barely
   changes who sees a Short, so slots suit the evening peaks we saw, not time zones (owner,
@@ -70,7 +70,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   craft gates (`renderer/craft.py`) fail a video with empty frames, repeated pictures, one shot
   size or one set.
 - **Depth and a picture that follows the words** (owner, 2026-10-26: viewers left right after the
-  hook; every video turned into the same props): Shorts run the length setting (60–90 s since 2026-11-02) on a story spine (hook → promise
+  hook; every video turned into the same props): Shorts run the length setting (20–35 s since 2026-11-04) on a story spine (hook → promise
   by 6 s → rising stakes → a turn → the payoff → loop; `generator/story.py`), arranged in a **shape**
   from a growing library (`improvement/research/shapes.json`, `generator/shapes.py`: reveal, versus,
   levels only for real ladders…; owner 2026-10-30), opened by a **curiosity hook** that never gives
@@ -85,7 +85,19 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   `generator/story.py`). The build scene's camera follows each action, things are big and transform,
   money travels (`flow`), spoken figures slam in huge; the travelling-money motion and the pulsing
   cinematic bed are on for every Short (no longer A/B tests).
-- **The board: rooms and cards** (owner, 2026-11-02, after a frame-by-frame study of The Curious
+- **The October hit recipe and the variant system** (owner, 2026-11-04, after views fell 90%: Shorts of
+  35 s or less had a median of 729 views and 55% viewed, 36–50 s 216, the 60 s+ board Shorts 19–144;
+  big-money titles 773, personal budget 118). Every Short is 20–35 s, 60–100 words in 6–8 beats: one
+  big-money question, the surprise built with the cast and the money as things (`shot`/`build`), a
+  one-line punchline, a loop back to the hook; never announcing the structure after the hook
+  (`generator/story.py`); a money figure or famous name in the title (`generator/formats.py`).
+  **Each Short takes its options from the variant system** (`improvement/arms.py`, `config/arms.json`,
+  planner step 0, check-plan): length band, topic kind, hook, title kind, style (shot or board), upload
+  category. About 60% get the current best options; the rest try one or two others. `ingest.yml` judges
+  every 6 h on views 48 hours after publishing (hourly snapshots, no Analytics lag): an option at ≤0.5×
+  the best is dropped, one at ≥1.5× (≥2× from 3 videos) becomes the default. Change defaults only
+  through it; agents propose a new option in a notification (`config/arms.json` is guard-locked).
+- **The board: rooms and cards** (a Short variant since 2026-11-04; owner, 2026-11-02, after a frame-by-frame study of The Curious
   Plot and four reviewed demos, `improvement/style-study/2026-11-02-the-curious-plot.md`): Shorts and
   long videos are told on `board` beats (`remotion/src/studio/board.tsx`, README "The board"). Questions
   in a room with the cast, every answer a full-frame card (no cast) that is a labelled diagram: a
@@ -141,7 +153,7 @@ night; may change `workers/` and `lib/live-stats.ts` but never uploads, sign-in 
 and writes the AI analysis the Analytics page shows, a verdict per recent video and a weekly channel
 review from `metrics/analytics.json` into `improvement/analysis/`),
 **research** (23:47, demand scan: formats and topics people watch, reports + proposals, never code), **improver** (06:17, A/B experiments on ~50% of
-videos via `config/experiments.json`, keep/revert by `python -m improvement.evaluate`, recipes,
+videos via `config/experiments.json`, keep/revert by `python -m improvement.evaluate` (4 videos per arm, 3 when the effect is 2×, 7 days at most, on 48-hour public views since 2026-11-04), recipes,
 scenes, cast, camera and design in `remotion/src` behind flags, fixes recurring failures) and **dashboard** (07:37, bug hunt + smoke tests, UI
 trends Mon/Wed/Fri). Agents only push `agent/<name>/<date>` branches; `.github/workflows/agent-merge.yml`
 merges them only if `scripts/guard.py` (path allow-lists, hard-rule invariants, size/daily limits)
@@ -191,9 +203,9 @@ is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
 | | Shorts | Long-form |
 |---|---|---|
 | Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Wednesdays 14:37 IST, 1 a week) |
-| Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, Mon and Thu 09:37 IST) |
+| Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, Mon and Thu 09:37 IST): since 2026-11-04 always the full story of one of our Shorts with 1K+ views, titled as people search it |
 | Template | `short_story` (1080×1920, a skit per format in its README) | `long_story` (1920×1080, a list of chapters, the scene catalog in its README) |
-| Length / pace | 60–90 s (settings), tempo 1.2 (~175 spoken words a minute) | 400–600 s (settings), tempo 1.5 (~215 words a minute) |
+| Length / pace | 20–35 s (settings), tempo 1.2 (~175 spoken words a minute) | 300–400 s (settings), tempo 1.5 (~215 words a minute) |
 | Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state` | `python -m generator.run state --format long` (weekly target, own backlog) |
 

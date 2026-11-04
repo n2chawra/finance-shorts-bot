@@ -40,8 +40,8 @@ from generator import variety  # noqa: E402
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
-MIN_PER_ARM = 8          # videos per arm with 48 h data before judging
-MAX_DAYS = 14            # judge anyway after this long
+MIN_PER_ARM = 4          # videos per arm with 48 h data before judging (8 until 2026-11-04: weeks per test)
+MAX_DAYS = 7             # judge anyway after this long (14 until 2026-11-04)
 KEEP_LIFT = 1.10         # on-arm median ≥ 110% of off-arm (views)
 REVERT_DROP = 0.90       # on-arm median ≤ 90% of off-arm (views)
 # % viewed moves less than views do: five points on fifty is a real change
@@ -141,9 +141,11 @@ def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) ->
     if guard_bad:
         return {**out, "verdict": "revert", "why": f"QA/fact failures {fail_on:.0%} with the change vs {fail_off:.0%} without"}
     label = {"views48h": "views in 48 h", "views7d": "views in 7 days", "avgViewPct": "average % viewed", "hookHold": "viewers kept past the hook"}[metric]
-    if n < min_per_arm and days < max_days:
+    # a big effect (2x either way) decides from 3 videos per arm (owner, 2026-11-04: "48 hrs is enough")
+    big = ratio is not None and n >= 3 and (ratio >= 2 or ratio <= 0.5) and max(p_up, 1 - p_up) >= CONFIDENCE
+    if n < min_per_arm and days < max_days and not big:
         need = min_per_arm - n
-        pace = "about one more long video per arm a week" if fmt == "long" else f"about {need} more days at 2 uploads a day"
+        pace = "about one more long video per arm a week" if fmt == "long" else f"about {need} more days at 3 uploads a day"
         return {**out, "verdict": "wait", "why": f"{n} of {min_per_arm} {fmt} videos per arm have data; {pace}"}
     if ratio is not None and ratio >= keep_lift and p_up >= CONFIDENCE:
         return {**out, "verdict": "keep", "why": f"{(ratio - 1):+.0%} {label}, {p_up:.0%} confidence"}
@@ -290,6 +292,10 @@ def _heard(root: Path, videos: list[dict]) -> list[dict]:
 def report(root: Path = ROOT, now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
     videos = _heard(root, _read(root / "metrics" / "videos.json", {"videos": []})["videos"])
+    # views exactly 48 h after publishing from the public counter (no Analytics lag) when we have them
+    for v in videos:
+        if v.get("views48hLive") is not None:
+            v["views48h"] = v["views48hLive"]
     attempts = _read(root / "metrics" / "runs.json", {"videos": []})["videos"]
     stories = {e["id"]: variety.story_of(e) for e in _read(root / "history" / "history.json", [])}
     shapes = {e["id"]: e.get("shape") for e in _read(root / "history" / "history.json", [])}

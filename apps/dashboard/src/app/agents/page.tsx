@@ -11,6 +11,7 @@ import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
 import { useAgents, useSettings } from "@/lib/queries";
 import { fmtMinutes, fmtRunWindow, summarizeRunTimes } from "@/lib/run-times";
 import type { Activity, Agents } from "@/lib/schemas";
+import { VariantsCard } from "@/components/variants";
 
 const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeof Bot; time: string }> = {
   auditor: { name: "Auditor", role: "Checks the numbers against YouTube, fixes bugs, keeps the code clean", icon: ShieldCheck, time: "23:00" },
@@ -344,6 +345,8 @@ export default function AgentsPage() {
         <Stat label="Reverted" icon={ShieldAlert} value={String(reverted)} sub="didn't help, removed" />
         <Stat label="Last report" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="23:00 · 23:47 · 06:17 · 07:37 · 09:37 · 14:37 IST" />
       </div>
+
+      <VariantsCard data={data} />
 
       <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
         {(Object.keys(AGENT) as Activity["agent"][]).map((k) => {

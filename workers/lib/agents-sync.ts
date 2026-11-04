@@ -120,6 +120,10 @@ const DOCS: Record<string, string> = {
   // the auditor's AI analysis of the numbers (2026-11-03), shown on the Analytics page
   aiChannel: "improvement/analysis/channel.json",
   aiVideos: "improvement/analysis/videos.json",
+  // the variant system (improvement/arms.py): options, defaults, dropped ones and every verdict
+  armsConfig: "config/arms.json",
+  armsState: "improvement/arms-state.json",
+  armsLog: "improvement/arms-log.json",
 };
 
 /** The topic feed with each topic's video (from history.json: the video run records topic.feed_id there). */
@@ -181,6 +185,9 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
     include: { topic: true, upload: { include: { stats: true } } },
     orderBy: { createdAt: "asc" },
   });
+  // views 48 hours after publishing from the hourly public-counter snapshots: no Analytics lag, so the
+  // variant system (improvement/arms.py) can judge a Short two days after it went out
+  const snaps = await prisma.liveSnapshot.findMany({ where: { uploadId: { in: published.map((v) => v.upload!.id) } }, select: { uploadId: true, hour: true, views: true } }).catch(() => []);
   const videos = published.map((v) => {
     const u = v.upload!;
     const style = (v.style ?? {}) as Style;
@@ -200,6 +207,7 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
       experiments: style.experiments ?? {}, publishAt: u.publishAt.toISOString(), manual: !u.attempts,
       views48h, views7d, avgViewPct, views: Math.max(totalViews, u.liveViews ?? 0), likes: Math.max(u.stats.reduce((a, s) => a + s.likes, 0), u.liveLikes ?? 0),
       subsGained: u.stats.reduce((a, s) => a + s.subsGained, 0),
+      views48hLive: viewsAt48h(snaps.filter((s) => s.uploadId === u.id), u.publishAt),
       // viewers still watching at 3 s (Short) or 30 s (long): the hook's own score (workers/lib/retention.ts)
       hookHold: u.hookHold ?? null,
       // a Test & Compare of three thumbnails: the angle of each, and the one YouTube picked (owner logs it)
@@ -241,6 +249,13 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
 }
 
 type Curve = [number, number][];
+
+/** The public view count 48 hours after publishing: the first hourly snapshot 48–51 h after it (null until then). */
+export function viewsAt48h(snaps: { hour: Date; views: number }[], publishAt: Date): number | null {
+  const from = publishAt.getTime() + 48 * 3_600_000, to = from + 3 * 3_600_000;
+  const hit = snaps.filter((s) => s.hour.getTime() >= from && s.hour.getTime() <= to).sort((a, b) => a.hour.getTime() - b.hour.getTime())[0];
+  return hit ? hit.views : null;
+}
 
 /** metrics/analytics.json: what the auditor's AI analysis reads (the routines have no database). Per video
  * the wider numbers, where viewers left (matched to the script), traffic, countries, searches and, for the

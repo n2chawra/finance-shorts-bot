@@ -116,6 +116,22 @@ export function getAgents(): Agents {
     return { day, start: new Date(start).toISOString(), end: new Date(start + (38 + d * 7) * 60_000).toISOString(), videos: 3 };
   });
   return {
+    // the variant system's real first numbers (2026-11-04), so the sample page reads like the live one
+    variants: [
+      { dimension: "length", why: "seconds: the hits were 22-33 s; how short is best", default: "28-35", dropped: [],
+        options: [{ option: "20-27", n: 4, median: 770 }, { option: "28-35", n: 7, median: 721 }] },
+      { dimension: "topic", why: "big money vs personal budget", default: "big_money", dropped: ["budget"],
+        options: [{ option: "big_money", n: 10, median: 907 }, { option: "budget", n: 10, median: 129 }] },
+      { dimension: "hook", why: "the hook style", default: "question", dropped: ["shock_number"],
+        options: [{ option: "question", n: 5, median: 423 }, { option: "shock_number", n: 4, median: 114 }, { option: "myth", n: 0, median: null }, { option: "secret", n: 5, median: 708 }] },
+      { dimension: "style", why: "shot/build beats with the cast vs board cards", default: "shot", dropped: [],
+        options: [{ option: "shot", n: 0, median: null }, { option: "board", n: 0, median: null }] },
+    ],
+    variantLog: [
+      { at: new Date(now - 3_600_000).toISOString(), dimension: "topic", option: "budget", verdict: "drop" as const, ratio: 0.14, n: 10, confidence: 0.98 },
+      { at: new Date(now - 3_600_000).toISOString(), dimension: "hook", option: "shock_number", verdict: "drop" as const, ratio: 0.27, n: 4, confidence: 0.86 },
+    ],
+    variantsAt: new Date(now - 3_600_000).toISOString(),
     activity,
     videoRuns,
     experiments: [

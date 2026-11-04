@@ -1,0 +1,25 @@
+{
+  "note": "The variant system (improvement/arms.py, owner 2026-11-04: 'experiments are taking too long; 48 hrs is enough'). Each new Short gets one option per dimension; the defaults are the October hit recipe. Options are judged on views 48 hours after publishing and dropped or promoted within days. `since` is the first publish date whose videos count for that dimension (later for dimensions whose history is confounded). Owner-only: agents propose a new option in a notification, they never edit this file.",
+  "maxChanged": 2,
+  "exploreShare": 0.4,
+  "minN": 4,
+  "fastN": 3,
+  "dropRatio": 0.5,
+  "promoteRatio": 1.5,
+  "fastRatio": 2.0,
+  "confidence": 0.8,
+  "dimensions": {
+    "length":   {"options": ["20-27", "28-35"], "default": "28-35", "since": "2026-10-21",
+                 "why": "seconds: the hits were 22-33 s; how short is best"},
+    "topic":    {"options": ["big_money", "budget"], "default": "big_money", "since": "2026-10-21",
+                 "why": "big money (billionaires, famous companies, traps, money at scale) vs personal budget"},
+    "hook":     {"options": ["question", "shock_number", "myth", "secret"], "default": "question", "since": "2026-10-21",
+                 "why": "the hook style (plan.hook_style)"},
+    "title":    {"options": ["figure_or_name", "plain"], "default": "figure_or_name", "since": "2026-10-21",
+                 "why": "a money figure or famous name in the title, or not"},
+    "style":    {"options": ["shot", "board"], "default": "shot", "since": "2026-11-05",
+                 "why": "shot/build beats with the cast (the October hits) vs board cards; only Shorts of the current length count"},
+    "category": {"options": ["22", "27"], "default": "22", "since": "2026-11-05",
+                 "why": "YouTube category: People & Blogs (every manual hit) vs Education"}
+  }
+}

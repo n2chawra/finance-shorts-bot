@@ -11,6 +11,7 @@ News stopped deciding what we make: before the reset the feed was news first, an
 1-60 views each while viewers watched 20-35% of every Short.
 """
 import json
+import re
 from pathlib import Path
 
 from .settings import ROOT
@@ -62,13 +63,50 @@ def core_needed(entries: list[dict], root: Path = ROOT, fmt: str = "short") -> b
     return sum(1 for s in last if s not in core) >= window - need
 
 
+# Since 2026-11-04 every Short is big money unless the variant system (improvement/arms.py) assigns the
+# personal-budget topic as a test: big-money titles had a median of 773 views (8 hits in 14), personal
+# budget 118 (none in 6), and the decline began the days the planner let those back in.
+BUDGET_ARM = "budget"
+
+
 def mix_problems(plan: dict, entries: list[dict], root: Path = ROOT, fmt: str = "short") -> list[str]:
+    if fmt == "short" and core_ids(root, fmt) and plan.get("story") not in core_ids(root, fmt):
+        if ((plan.get("arms") or {}).get("topic")) != BUDGET_ARM:
+            return [f"Shorts tell big-money stories ({', '.join(core_ids(root, fmt))}): billionaires, money at scale, how a "
+                    f"famous business makes money, the traps. A personal-budget story only when `arms.topic` is "
+                    f"\"{BUDGET_ARM}\" (a test the variant system assigns)"]
+        return []
     if core_needed(entries, root, fmt) and plan.get("story") not in core_ids(root, fmt):
         need, window = CORE_MIN
         return [f"at least {need} of every {window} Shorts tell a big-money story ({', '.join(core_ids(root, fmt))}): the last "
                 f"ones already used the other slot, so this one must be big money (billionaires, money at scale, how a famous "
                 f"business makes money)"]
     return []
+
+
+MONEY_IN_TITLE = re.compile(r"[$£€₹]|\d|\b(billion|million|trillion|crore|lakh)", re.I)
+# a capitalised word that doesn't start a sentence: a person, company or place ("Google", "Coca-Cola")
+NAME_IN_TITLE = re.compile(r"(?<![.!?:]\s)(?<!^)\b[A-Z][a-zA-Z]+")
+
+
+def title_problems(title: str, arms: dict | None = None) -> list[str]:
+    """A Short's title carries a money figure or a famous name (2026-11-03: titles with "$…" or "billion" got
+    a median of 793 views in 48 h; the rest 39). The variant system may assign a plain title (`arms.title`
+    "plain") to keep testing it: the casino and EMI-trap hits had neither."""
+    t = (title or "").strip()
+    if not t or ((arms or {}).get("title") == "plain") or MONEY_IN_TITLE.search(t):
+        return []
+    names = [w for w in NAME_IN_TITLE.findall(t) if w.lower() not in COMMON_WORDS]
+    first = t.split()[0]
+    if names or (first[:1].isupper() and first.lower().strip(".,!?") not in COMMON_STARTS):
+        return []
+    return [f"title {t!r} has no money figure and no famous name: put the biggest figure or the famous person or company "
+            f"in it (\"Why Google pays Apple $20B…\"), unless `arms.title` is \"plain\""]
+
+
+COMMON_WORDS = {"i", "tv", "emi", "sip", "rich", "poor", "the"}
+COMMON_STARTS = {"why", "how", "what", "the", "your", "you", "this", "a", "an", "every", "same", "poor", "rich", "when", "who",
+                 "payday", "guess", "never", "stop", "one", "it", "they", "we", "i", "is", "are", "do", "does", "can"}
 
 
 def for_state(root: Path = ROOT, fmt: str = "short") -> list[dict]:

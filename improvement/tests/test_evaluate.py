@@ -23,7 +23,7 @@ def videos(on_views: list[int], off_views: list[int]) -> list[dict]:
 
 def test_waits_until_enough_videos_per_arm() -> None:
     r = ev.judge(EXP, videos([100] * 3, [100] * 3), [], datetime(2026, 10, 25, tzinfo=timezone.utc))
-    assert r["verdict"] == "wait" and "3 of 8" in r["why"]
+    assert r["verdict"] == "wait" and "3 of 4" in r["why"]   # 4 per arm since 2026-11-04
 
 
 def test_keeps_a_clear_winner() -> None:
@@ -124,3 +124,9 @@ def test_thumbnail_types_are_ranked_like_angles():
           {"thumbLayouts": ["face", "scene"], "thumbWinnerLayout": None}]
     rows = thumbnail_angles(vs, "thumbLayouts", "thumbWinnerLayout")
     assert rows[0]["angle"] == "grid" and rows[0]["wins"] == 2 and rows[0]["tests"] == 2
+
+
+def test_a_big_effect_decides_from_three_videos_per_arm() -> None:
+    # 2026-11-04: a 2x difference is clear enough after 3 videos per arm
+    r = ev.judge(EXP, videos([300, 320, 310], [100, 110, 90]), [], datetime(2026, 10, 25, tzinfo=timezone.utc))
+    assert r["verdict"] == "keep"

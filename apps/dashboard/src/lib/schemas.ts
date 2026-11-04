@@ -378,7 +378,19 @@ const TopicRowSchema = z.looseObject({
   templates: z.array(z.string()).optional(), sources: z.array(z.string()).optional(), usedBy: z.string().nullish(),
   facts: z.array(z.looseObject({ label: z.string(), source: z.string().optional() })).optional(),
 });
+/** The variant system (improvement/arms.py): each dimension's options with their 48-hour views. */
+export const VariantSchema = z.object({
+  dimension: z.string(), why: z.string().default(""), default: z.string(), dropped: z.array(z.string()).default([]),
+  options: z.array(z.object({ option: z.string(), n: z.number(), median: z.number().nullable() })),
+});
+export type Variant = z.infer<typeof VariantSchema>;
+export const VariantVerdictSchema = z.object({ at: z.string(), dimension: z.string(), option: z.string(), verdict: z.enum(["drop", "promote"]),
+  ratio: z.number(), n: z.number(), confidence: z.number() });
+
 export const AgentsSchema = z.object({
+  variants: z.array(VariantSchema).default([]),
+  variantLog: z.array(VariantVerdictSchema).default([]),
+  variantsAt: z.string().nullable().default(null),
   activity: z.array(ActivitySchema),
   videoRuns: z.array(VideoRunSchema).default([]),
   experiments: z.array(ExperimentRowSchema),

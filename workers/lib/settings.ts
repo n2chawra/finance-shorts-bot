@@ -37,19 +37,19 @@ export const SettingsSchema = z.object({
 export type Settings = z.infer<typeof SettingsSchema>;
 
 export const DEFAULT_SETTINGS: Settings = {
-  uploadTimes: ["12:37", "19:07"],
+  uploadTimes: ["12:37", "16:07", "19:07"],   // 3 a day since 2026-11-04 (owner: faster learning)
   trendUploadTimes: [],
   shortEveryDays: 1,
   dailyVideoTarget: 3,
   longUploadTimes: ["20:07"],
   longUploadDays: [6],
-  longLengthMinSec: 400,
-  longLengthMaxSec: 600,
+  longLengthMinSec: 300,   // 5–6 min since 2026-11-04 (the full story of a winning Short)
+  longLengthMaxSec: 400,
   longPerWeek: 1,
   longBacklogCap: 4,
   backlogCap: 30,
-  lengthMinSec: 60,   // Shorts 60–90 s since 2026-11-02 (owner, after The Curious Plot study)
-  lengthMaxSec: 90,
+  lengthMinSec: 20,   // Shorts 20–35 s since 2026-11-04: ≤35 s had a median of 729 views, 36–50 s 216, 60 s+ 19–144
+  lengthMaxSec: 35,
   disclaimer: "Illustrative only. Not financial advice.",
   uploadsPaused: false,
   generationPaused: false,

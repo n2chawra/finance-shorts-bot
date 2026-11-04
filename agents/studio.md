@@ -47,7 +47,14 @@ Write `videos/<id>/plan.json`, following `generator/prompts/planner.md` for the 
 - `story`: the topic's long format (`formats` in `state`: `list_explained`, `once_you_understand`,
   `which_one_are_you`, `how_they_make_money`, `rich_vs_poor`) and `demand`: the topic's reference
   video `{title, views, url}`. `check-plan` fails without both (owner reset, 2026-10-21).
-- `title`: a big promise someone would click, in the shape of the reference video's ("Every money
+- **The topic expands a winning Short** (owner, 2026-11-04): it must carry `from_short` (one of our
+  Shorts with 1,000+ views in the last 30 days). If the feed has none, pick that Short yourself from
+  `metrics/videos.json`. The first 30 s restate that Short's hook and promise the full answer; the
+  description's first line links it ("The 30-second version: https://youtube.com/shorts/<its YouTube id>").
+  5–6 minutes (`longLengthMinSec`–`longLengthMaxSec`). After shipping, raise an owner notification:
+  "In YouTube Studio open the Short <title> → Related video → pick <this long video>" (the API can't set it).
+- `title`: phrased as people search the question the Short raised ("How do billionaires avoid
+  taxes?"), else a big promise someone would click, in the shape of the reference video's ("Every money
   trap the middle class falls into", "Once you understand X, you'll never Y"). 40–70 characters.
 - `description`: 3–5 lines on what the video covers, then the chapter list (you fill in the real
   timestamps after rendering), then the line "An animated story with illustrative numbers; the

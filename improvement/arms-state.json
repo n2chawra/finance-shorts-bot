@@ -1,0 +1,104 @@
+{
+  "note": "Written by python -m improvement.arms judge (ingest, every 6 h). Defaults and dropped options per dimension; config/arms.json holds the options.",
+  "updatedAt": "2026-11-04T07:36:26+00:00",
+  "dimensions": {
+    "length": {
+      "default": "28-35",
+      "dropped": []
+    },
+    "topic": {
+      "default": "big_money",
+      "dropped": [
+        "budget"
+      ]
+    },
+    "hook": {
+      "default": "question",
+      "dropped": [
+        "shock_number"
+      ]
+    },
+    "title": {
+      "default": "figure_or_name",
+      "dropped": []
+    },
+    "style": {
+      "default": "shot",
+      "dropped": []
+    },
+    "category": {
+      "default": "22",
+      "dropped": []
+    }
+  },
+  "numbers": {
+    "length": {
+      "20-27": {
+        "n": 4,
+        "median": 770
+      },
+      "28-35": {
+        "n": 7,
+        "median": 721
+      }
+    },
+    "topic": {
+      "big_money": {
+        "n": 10,
+        "median": 907
+      },
+      "budget": {
+        "n": 10,
+        "median": 129
+      }
+    },
+    "hook": {
+      "question": {
+        "n": 5,
+        "median": 423
+      },
+      "shock_number": {
+        "n": 4,
+        "median": 114
+      },
+      "myth": {
+        "n": 0,
+        "median": null
+      },
+      "secret": {
+        "n": 5,
+        "median": 708
+      }
+    },
+    "title": {
+      "figure_or_name": {
+        "n": 16,
+        "median": 322
+      },
+      "plain": {
+        "n": 4,
+        "median": 460
+      }
+    },
+    "style": {
+      "shot": {
+        "n": 0,
+        "median": null
+      },
+      "board": {
+        "n": 0,
+        "median": null
+      }
+    },
+    "category": {
+      "22": {
+        "n": 0,
+        "median": null
+      },
+      "27": {
+        "n": 0,
+        "median": null
+      }
+    }
+  }
+}

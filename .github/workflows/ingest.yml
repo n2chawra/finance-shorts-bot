@@ -58,10 +58,17 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         shell: bash   # bash -eo pipefail: a failing job turns red instead of hiding behind tee
         run: npm run ingest | tee "$GITHUB_STEP_SUMMARY"
+      # the variant system judges every option on 48-hour views as soon as the numbers are in (2026-11-04)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Judge the variants
+        working-directory: .
+        run: python -m improvement.arms judge || echo "::warning::variant judging failed"
       - name: Commit settings and metrics for routines and agents
         working-directory: .
         run: |
-          git add config/settings.json metrics
+          git add config/settings.json metrics improvement/arms-state.json improvement/arms-log.json 2>/dev/null || git add config/settings.json metrics
           if git diff --cached --quiet; then echo "settings unchanged"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

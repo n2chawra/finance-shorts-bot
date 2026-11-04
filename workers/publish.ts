@@ -24,7 +24,7 @@ import { UPLOAD_LOOKAHEAD_HOURS, dueSoon, isUrgent, istDay, istSlot, istTime, ne
 import { loadSettings } from "./lib/settings.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
-import { TokenError, accessToken, setThumbnail, uploadVideo } from "./lib/youtube.ts";
+import { TokenError, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const MAX_ATTEMPTS = 3;
@@ -154,7 +154,7 @@ async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string
     const file = path.join(dir, "video.mp4");
     await downloadReleaseAsset(repoSlug(ROOT), `video-${video.id}`, "video.mp4", file);
     const meta = youtubeMeta(video, disclaimer, format);
-    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot });
+    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: categoryOf(video.style) });
     await prisma.$transaction([
       prisma.upload.upsert({
         where: { videoId: video.id },

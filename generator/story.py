@@ -36,12 +36,15 @@ ROLES = ("hook", "promise", "level", "build", "tease", "turn", "payoff", "loop",
 BUILD_MIN = 3            # beats of rising stakes (levels or build steps)
 MAX_SWITCHES = 5         # speaker changes in a Short: one explainer, the cast reacting
 LEAD_SHARE = 0.6         # the explaining voice says at least this share of the words
-BEAT_WORDS = 12          # words per explaining beat on average: sentences, not one-liners
+BEAT_WORDS = 10          # words per explaining beat on average: sentences, not one-liners (12 until 2026-11-04, for 60–90 s Shorts)
 MAX_LOUD_TRANSITIONS = 4  # whip / zoom-through: travelling accents, not every cut (2 until 2026-11-02: too static)
 # 2026-11-02 (owner: "story telling needs lots of work … the way of explanation is very weak", the car
 # discount Short rated 2/10 for saying "might", "can", "some dealers" in every line): one story told
 # with certainty, and a new open question every few beats so the viewer always waits for something
 MAX_HEDGES = 2
+# a count of what's coming, said right after the hook ("Three clues explain…", "here are the four levels")
+ANNOUNCE = re.compile(r"\b(two|three|four|five|six|seven|\d+)\s+(clues|levels|reasons|steps|ways|things|secrets|rules|tricks|stages|moves|questions)\b"
+                      r"|\bhere (are|is) (the|how)\b|\blet'?s (break|look|go)\b", re.I)
 # "can't" / "can’t" state a fact; only a bare "can" hedges (\b alone matched the "can" in "can't")
 HEDGES = re.compile(r"\b(might|may|maybe|could|perhaps|possibly|potentially|sometimes|often|some|quietly|can(?!['’]t))\b", re.I)
 OPEN_LOOPS_MIN = 2
@@ -144,6 +147,13 @@ def voice_problems(script: dict) -> list[str]:
     if middle and loops < OPEN_LOOPS_MIN:
         out.append(f"{loops} beats between the hook and the payoff open a new question; at least {OPEN_LOOPS_MIN} (\"But that's "
                    f"not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something")
+    # announcing the structure right after the hook ("three clues…", "four levels…") lost 24–41% of viewers
+    # within 2 s in five Shorts (auditor, 2026-11-03): go straight into the first surprising fact
+    for b in body[:2]:
+        m = ANNOUNCE.search(re.sub(r"\{[^}]*\}", "", b.get("say") or ""))
+        if m:
+            out.append(f"beat {b.get('id')!r} announces the structure ({m.group(0)!r}): viewers leave at that line; go "
+                       f"straight into the first surprising fact")
     if not _levels(script):
         said = sum(len(re.findall(r"\blevel\b", b.get("say") or "", re.I)) for b in beats)
         if said:
@@ -156,7 +166,7 @@ def voice_problems(script: dict) -> list[str]:
 # the viewer's voice every ~9 s (ours every ~20), every figure built from units with the sum on screen,
 # a named term per step, a board header stating each sentence's point, and an ending that asks the
 # viewer something ("Which son are you?"). Sentence length and the number of actions were the same.
-QUESTION_EVERY = {"short": 12.0, "long": 30.0}   # seconds of speech per question, at least
+QUESTION_EVERY = {"short": 20.0, "long": 30.0}   # seconds of speech per question, at least (Shorts 12 s until 2026-11-04: they are 20–35 s now)
 WPM = {"short": 175.0, "long": 215.0}
 BOARD_VERBS = ("header", "equation", "term", "stamp", "cross", "tick", "strike", "arrow", "bubble", "bars",
                "ring", "grid", "calendar", "buttons", "click", "person", "step")
@@ -209,7 +219,9 @@ def chain_problems(script: dict) -> list[str]:
         years = sum(1 for f in script.get("facts") or [] if f.get("unit") == "year")
         if years < rules["dates_min"]:
             out.append(f"{years} dated steps; a {shape['id']} dates at least {rules['dates_min']} moments (facts with unit \"year\")")
-    if "?" not in " ".join(b["say"] for b in spoken[-2:]):
+    # a Short whose last line loops back to the hook needs no closing question: the loop is the ending
+    looped = fmt == "short" and any(b.get("role") == "loop" for b in beats)
+    if not looped and "?" not in " ".join(b["say"] for b in spoken[-2:]):
         out.append("the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")")
     return out
 
@@ -306,6 +318,13 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
         return []
     beats = script.get("beats") or []
     out = []
+    # the variant system's style (improvement/arms.py): shot/build beats with the cast, or board cards
+    style = (script.get("arms") or {}).get("style")
+    n_board = sum(1 for b in beats if b.get("scene") == "board")
+    if style == "shot" and n_board:
+        out.append(f"{n_board} board beats, but this Short's style (arms.style) is \"shot\": tell it in shot/build beats with the cast")
+    if style == "board" and n_board * 2 < len(beats):
+        out.append(f"this Short's style (arms.style) is \"board\": most beats are board cards ({n_board} of {len(beats)} now)")
     sp = _spine(script)
     levels = ((script.get("structure") or {}).get("levels")) or []
     laddered = _levels(script)
@@ -366,6 +385,13 @@ def timeline_problems(script: dict, tl: dict, earlier: list[dict] | None = None)
         return []
     out = script_problems(script, earlier)
     fps = tl["fps"]
+    # the variant system's length (improvement/arms.py): the Short lands in its assigned band
+    band = (script.get("arms") or {}).get("length")
+    if script.get("format", "short") == "short" and isinstance(band, str) and "-" in band:
+        lo, hi = (float(x) for x in band.split("-"))
+        secs = tl["durationInFrames"] / fps
+        if not lo - 0.5 <= secs <= hi + 0.5:
+            out.append(f"the Short runs {secs:.1f} s but its assigned length (arms.length) is {band} s: cut or add a beat")
     sp = _spine(script)
     starts = {b["id"]: b["from"] / fps for b in tl["beats"]}
     total = tl["durationInFrames"] / fps

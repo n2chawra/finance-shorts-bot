@@ -23,6 +23,20 @@ say so in the report.
 
 If `mode` is not `video`, stop and report the mode. Do not plan a video.
 
+## Step 0 for a Short: take the variant system's options (owner, 2026-11-04)
+Run `python -m improvement.arms assign --video <id>` and copy its JSON into the plan as `"arms"`
+(it decides this Short's length band, topic kind, hook style, title kind, style and upload category;
+`check-plan` fails a plan without it or with options changed). Follow every option:
+- `length` "20-27" or "28-35": the Short's length in seconds (tell the writer; the render checks it).
+- `topic` "big_money" (billionaires, famous companies, traps, money at scale) or "budget" (a
+  personal-budget format, only when assigned).
+- `hook`: your `hook_style` (the same words, `shock_number` → "shock number" is fine as `shock_number`).
+- `title` "figure_or_name" (a money figure or a famous name in the title) or "plain".
+- `style` "shot" (shot/build beats with the cast, the October hits) or "board" (board cards).
+- `category`: nothing to do; the publisher uploads with it.
+Most Shorts get the current best recipe; some try one or two other options so we learn in days
+which ones get views (`improvement/arms-state.json`, judged on 48-hour views).
+
 ## What to make: demand first (owner reset, 2026-10-21)
 
 The channel exists to make videos **people already want to watch**, not news. Before the reset the

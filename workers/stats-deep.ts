@@ -45,13 +45,14 @@ async function reach(prisma: PrismaClient, token: string): Promise<string> {
   const h = { authorization: `Bearer ${token}` };
   const types = await fetch(`${REPORTING}/reportTypes`, { headers: h });
   if (types.status === 403) {
-    await notify(prisma, { key: "reporting-api-off", source: "stats", severity: "info", title: "Switch on the YouTube Reporting API for impressions and CTR",
-      detail: "Thumbnail impressions and click-through rate come only from the YouTube Reporting API, which is switched off in the Google Cloud project that holds our YouTube sign-in. Everything else in Analytics works without it.",
-      fix: "Open console.cloud.google.com → APIs & Services → Library, search \"YouTube Reporting API\", choose the same project as the YouTube upload sign-in and click Enable. The first numbers arrive about 2 days later." });
+    await notify(prisma, { key: "reporting-api-needed", source: "stats", severity: "warning", title: "Switch on the YouTube Reporting API: long videos can't be fixed blind",
+      detail: "Impressions and click-through rate come only from the YouTube Reporting API, which is still off in the Google Cloud project that holds our YouTube sign-in. Our long videos got 1–11 views each, and without impressions we can't tell whether YouTube isn't showing them or people see them and don't click.",
+      fix: "Open https://console.developers.google.com/apis/api/youtubereporting.googleapis.com/overview?project=926280782174 (signed in as the channel's Google account) and click Enable. The next daily stats run creates the report job; numbers arrive about 2 days later." });
     return "reporting API off";
   }
   if (!types.ok) throw new Error(`reportTypes ${types.status}`);
   await resolve(prisma, "reporting-api-off");
+  await resolve(prisma, "reporting-api-needed");
   const ids: string[] = ((await types.json()) as { reportTypes?: { id: string }[] }).reportTypes?.map((t) => t.id) ?? [];
   const typeId = ids.find((i) => /^channel_reach_basic/.test(i)) ?? ids.find((i) => /reach/.test(i));
   if (!typeId) return `no reach report for this channel (types: ${ids.length})`;

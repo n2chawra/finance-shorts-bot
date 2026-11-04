@@ -28,7 +28,8 @@ export const ShippedManifest = z.object({
   cta: z.string(),
   seed: z.number().int(),
   format: z.enum(["short", "long"]).default("short"),
-  style: z.object({ palette: z.string(), genre: z.string(), key: z.string(), bpm: z.number(), voice: z.string().nullish() }),
+  style: z.object({ palette: z.string(), genre: z.string(), key: z.string(), bpm: z.number(), voice: z.string().nullish(),
+    arms: z.record(z.string(), z.string()).nullish() }),   // the variant system's options (improvement/arms.py)
   /** A/B experiment variants this video was rendered with ({id: "on"|"off"}); see generator/experiments.py. */
   experiments: z.record(z.string(), z.enum(["on", "off"])).optional(),
   durationSec: z.number().positive(),

@@ -27,6 +27,7 @@ from pathlib import Path
 
 from renderer import craft, remotion, thumbs
 from renderer.engine.formatting import CURRENCIES
+from improvement import arms
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
 from . import editor, experiments, failures, feedback, formats, history, looks, numbers, reach, shapes, story, topics, variety
@@ -168,6 +169,9 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "shapes": shapes.for_state(entries, root),
         # the board's look for this video (generator/looks.py): options and what the last videos used
         "looks": looks.for_state(entries),
+        # the variant system (improvement/arms.py, 2026-11-04): each Short's options come from
+        # `python -m improvement.arms assign --video <id>`; here the defaults and what was dropped
+        "arms": ({d: {"default": s["default"], "dropped": s["dropped"]} for d, s in arms.state(root).items()} if fmt == "short" else None),
         "previous": last and {"palette": last["style"]["palette"], "genre": last["style"]["genre"], "key": last["style"]["key"],
                               "bpm": last["style"]["bpm"], "hook_style": last["hook_style"], "cta": last["cta"]},
         "hook_styles": list(variety.HOOK_STYLES),
@@ -226,6 +230,9 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
                                       variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
         if not 20 <= len(plan["title"]) <= 90:
             problems.append("title must be 20–90 characters")
+        if fmt == "short":
+            problems += formats.title_problems(plan["title"], plan.get("arms"))
+            problems += arms.plan_problems(plan, root)
         if fmt == "short" and "#shorts" not in [h.lower() for h in plan["hashtags"]]:
             problems.append("hashtags must include #Shorts")
         # global since 2026-10-18: every plan names its money (channel/profile.md)
@@ -440,6 +447,8 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     tag = f"video-{vid}"
     voice = report.get("voice")
     style = {**report["style"], "voice": voice["name"] if voice else None}
+    if plan.get("arms"):
+        style["arms"] = plan["arms"]     # the variant system's options: the publisher reads the upload category
     log_step(vid, "ship", True, [f"Manifest written; release asset {'uploaded' if release else 'not uploaded (dry run)'}."], root)
     manifest = {
         "id": vid, "createdAt": created, "status": "qa_passed", "format": fmt,
