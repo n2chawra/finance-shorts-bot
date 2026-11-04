@@ -1,0 +1,769 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 72418,
+  "story": "how_they_make_money",
+  "shape": "the-real-product",
+  "currency": "USD",
+  "feed_id": "2026-11-02-costco-barely-profits-on-the-cart",
+  "style": {
+    "palette": "mint",
+    "genre": "synthwave",
+    "key": "E",
+    "bpm": 108,
+    "look": {
+      "stage": "kitchen",
+      "header": "chalk",
+      "holder": "receipt",
+      "entrance": "stamp"
+    }
+  },
+  "arms": {
+    "length": "28-35",
+    "topic": "big_money",
+    "hook": "myth",
+    "title": "plain",
+    "style": "shot",
+    "category": "22"
+  },
+  "hook_style": "myth",
+  "cta": "Did you know your card was the product? Comment",
+  "facts": [
+    {
+      "label": "Costco membership fee revenue in fiscal 2025",
+      "value": 5323,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2025-08-31",
+      "source": "Costco Wholesale (FY2025 results)",
+      "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+    },
+    {
+      "label": "Costco net income in fiscal 2025",
+      "value": 8099,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2025-08-31",
+      "source": "Costco Wholesale (FY2025 results)",
+      "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+    }
+  ],
+  "maths": [
+    {
+      "name": "cart",
+      "kind": "fee_take",
+      "amount": 100,
+      "fee_pct": 2,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "fee",
+      "kind": "fee_take",
+      "amount": 65,
+      "fee_pct": 100,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "share",
+      "kind": "rate",
+      "part": 5323000000,
+      "whole": 8099000000,
+      "facts": {
+        "part": 1,
+        "whole": 2
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 3.0,
+    "words": "Costco's real *product*",
+    "figure": "{fact1}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "You think Costco gets rich on your giant cart? It doesn't. Here's how.",
+      "events": {
+        "costco": {
+          "word": "Costco"
+        },
+        "rich": {
+          "word": "rich"
+        },
+        "cart": {
+          "word": "cart"
+        },
+        "doesnt": {
+          "word": "doesn't"
+        },
+        "how": {
+          "word": "how"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "cart"
+        },
+        {
+          "kind": "fail",
+          "at": "doesnt"
+        },
+        {
+          "kind": "riser",
+          "at": "how"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "Rich on your cart?",
+        "cartLabel": "Your cart",
+        "storeLabel": "Costco",
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "doesnt",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "till",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Say your cart rings up {cart_amount}. Costco keeps about {cart_per_period} of it.",
+      "events": {
+        "cart": {
+          "word": "cart"
+        },
+        "rings": {
+          "word": "rings"
+        },
+        "costco": {
+          "word": "Costco"
+        },
+        "keeps": {
+          "word": "keeps"
+        },
+        "it": {
+          "word": "it"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "rings"
+        },
+        {
+          "kind": "pop",
+          "at": "keeps"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "blue",
+          "horizon": [
+            {
+              "prop": "warehouse",
+              "x": 0.85,
+              "size": 0.08
+            }
+          ]
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "cart",
+            "prop": "giantcart",
+            "x": 0.3,
+            "size": 0.24,
+            "label": "Your cart"
+          },
+          {
+            "id": "receipt",
+            "prop": "tillreceipt",
+            "x": 0.56,
+            "size": 0.2,
+            "label": "Rings up",
+            "hidden": true
+          },
+          {
+            "id": "keeps",
+            "prop": "coinsliver",
+            "x": 0.8,
+            "size": 0.14,
+            "label": "Costco keeps",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "cart"
+          },
+          {
+            "at": "cart",
+            "do": "grow",
+            "target": "cart",
+            "scale": 1.1
+          },
+          {
+            "at": "rings",
+            "do": "enter",
+            "target": "receipt"
+          },
+          {
+            "at": "rings",
+            "do": "tag",
+            "target": "receipt",
+            "text": "{cart_amount}"
+          },
+          {
+            "at": "costco",
+            "do": "enter",
+            "target": "keeps"
+          },
+          {
+            "at": "keeps",
+            "do": "tag",
+            "target": "keeps",
+            "text": "{cart_per_period}"
+          },
+          {
+            "at": "it",
+            "do": "flow",
+            "target": "receipt",
+            "to": "keeps",
+            "n": 3,
+            "text": "{cart_per_period}"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "keeps",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask",
+      "scene": "shot",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "That's all? Then how is Costco so very rich?",
+      "events": {
+        "all": {
+          "word": "all"
+        },
+        "then": {
+          "word": "Then"
+        },
+        "costco": {
+          "word": "Costco"
+        },
+        "rich": {
+          "word": "rich"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "all"
+        }
+      ],
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              },
+              {
+                "at": "rich",
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "objects": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "rich",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "So how?",
+          "at": "rich",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "card",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Before you buy anything at all, you pay for the card.",
+      "events": {
+        "before": {
+          "word": "Before"
+        },
+        "buy": {
+          "word": "buy"
+        },
+        "pay": {
+          "word": "pay"
+        },
+        "card": {
+          "word": "card"
+        },
+        "in": {
+          "word": "card"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "before"
+        },
+        {
+          "kind": "ding",
+          "at": "card"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "purple",
+          "horizon": [
+            {
+              "prop": "pallet",
+              "x": 0.12,
+              "size": 0.06
+            }
+          ]
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "store",
+            "prop": "warehouse",
+            "x": 0.5,
+            "y": 0.12,
+            "size": 0.24,
+            "label": "Before you buy"
+          },
+          {
+            "id": "card",
+            "prop": "membercard",
+            "x": 0.2,
+            "size": 0.18,
+            "label": "The card",
+            "hidden": true
+          },
+          {
+            "id": "gate",
+            "prop": "turnstile",
+            "x": 0.8,
+            "size": 0.16,
+            "label": "Get in"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "store"
+          },
+          {
+            "at": "before",
+            "do": "shake",
+            "target": "store"
+          },
+          {
+            "at": "buy",
+            "do": "state",
+            "target": "store",
+            "state": "open"
+          },
+          {
+            "at": "pay",
+            "do": "enter",
+            "target": "card"
+          },
+          {
+            "at": "card",
+            "do": "grow",
+            "target": "card",
+            "scale": 1.25
+          },
+          {
+            "at": "in",
+            "do": "state",
+            "target": "gate",
+            "state": "open"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "card",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "fee",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "That card costs about {fee_amount} a year. So who pays it? Its members do.",
+      "events": {
+        "card": {
+          "word": "card"
+        },
+        "costs": {
+          "word": "costs"
+        },
+        "year": {
+          "word": "year"
+        },
+        "who": {
+          "word": "Who"
+        },
+        "pays": {
+          "word": "members"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "costs"
+        },
+        {
+          "kind": "riser",
+          "at": "who"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "gold",
+          "horizon": [
+            {
+              "prop": "warehouse",
+              "x": 0.15,
+              "size": 0.07
+            }
+          ]
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "card",
+            "prop": "membercard",
+            "x": 0.32,
+            "size": 0.24,
+            "label": "The card",
+            "state": "gold"
+          },
+          {
+            "id": "sack",
+            "prop": "feesack",
+            "x": 0.74,
+            "size": 0.24,
+            "label": "Who pays?",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "card"
+          },
+          {
+            "at": "card",
+            "do": "glow",
+            "target": "card"
+          },
+          {
+            "at": "costs",
+            "do": "tag",
+            "target": "card",
+            "text": "{fee_amount}"
+          },
+          {
+            "at": "year",
+            "do": "label",
+            "target": "card",
+            "text": "Every year"
+          },
+          {
+            "at": "who",
+            "do": "enter",
+            "target": "sack"
+          },
+          {
+            "at": "pays",
+            "do": "flow",
+            "target": "card",
+            "to": "sack",
+            "n": 5,
+            "text": "{fee_amount}"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "who",
+            "size": "close",
+            "on": "sack",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "headline",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "In fiscal twenty twenty-five, members paid {fact1}.",
+      "events": {
+        "members": {
+          "word": "members"
+        },
+        "fig": {
+          "word": "fiscal"
+        },
+        "fees": {
+          "word": "paid"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "members"
+        },
+        {
+          "kind": "boom",
+          "at": "fig"
+        }
+      ],
+      "params": {
+        "kicker": "COSTCO",
+        "title": "Membership fees in one year",
+        "figure": "{fact1}",
+        "figureAt": "fig",
+        "label": "Paid by members"
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Its whole profit that year: {fact2}. Fees equal {share_pct} of it.",
+      "events": {
+        "whole": {
+          "word": "whole"
+        },
+        "profit": {
+          "word": "profit"
+        },
+        "fees": {
+          "word": "Fees"
+        },
+        "equal": {
+          "word": "equal"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "profit"
+        },
+        {
+          "kind": "boom",
+          "at": "equal"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "header": "The card is the business",
+        "profit": "{fact2}",
+        "fees": "{fact1}",
+        "pct": "{share_pct}",
+        "profitLabel": "Whole profit",
+        "feesLabel": "Card fees",
+        "set": "vault",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "equal",
+            "size": "close",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "And I thought it was my cart.",
+      "events": {
+        "thought": {
+          "word": "thought"
+        },
+        "cart": {
+          "word": "cart"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "cart"
+        }
+      ],
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "shock"
+              },
+              {
+                "at": "cart",
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.66,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "objects": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "cart",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "The cart?",
+          "at": "cart",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    }
+  ],
+  "narrator": "am_fenrir"
+}
