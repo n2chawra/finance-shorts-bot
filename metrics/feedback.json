@@ -1,7 +1,55 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 0,
+  "open": 3,
   "notes": [
+    {
+      "id": "cmw1iv2d70003l20919pyof4e",
+      "kind": "improve",
+      "area": null,
+      "text": "The topics are good . But every topics is of same category before when our videos were working 1k views we had more category of videos . Now I'm not getting good views. Analyse and create topics accordingly",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-04T02:53:13.531Z",
+      "video": null
+    },
+    {
+      "id": "cmw1iqwri0001l2093kpvl7ik",
+      "kind": "wrong",
+      "area": null,
+      "text": "The city props is shit. What the fuck is that??\n\nAlso the disclaimer put it at the below end of screen small",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-04T02:49:59.647Z",
+      "video": {
+        "id": "v-20261104-01",
+        "title": "Saudi Arabia planned a 170 km city. Then it shrank 🏜️",
+        "format": "short",
+        "status": "queued",
+        "story": "money_scale",
+        "shape": "before-after",
+        "hookStyle": "myth",
+        "hook": "You think money builds any city? Not this one. Here's why."
+      }
+    },
+    {
+      "id": "cmw1in4wq0001k009vmxta16a",
+      "kind": "improve",
+      "area": null,
+      "text": "After hook 17 second of video has texts only no props animation. User might leave the video because of it.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-04T02:47:03.579Z",
+      "video": {
+        "id": "v-20261104-02",
+        "title": "Why Elon Musk doesn't just sell and give it away 💸",
+        "format": "short",
+        "status": "scheduled",
+        "story": "billionaire_question",
+        "shape": "versus",
+        "hookStyle": "question",
+        "hook": "You think Musk just sells and gives it away? Watch."
+      }
+    },
     {
       "id": "cmw0afrth0003jq092th80vej",
       "kind": "choice",
