@@ -99,7 +99,7 @@
     {
       "day": "2026-11-05",
       "shipped": 1,
-      "failed": 1
+      "failed": 2
     }
   ],
   "videos": [
@@ -599,6 +599,13 @@
       "template": "short_story",
       "status": "failed",
       "reason": "fact review: the feed topic's Costco facts are FY2025 (fees $5,323M, net income $8,099M), superseded by Costco's FY2026 release of 24 Sep 2026 (fees $5,907M, net income $9,226M); the feed entry 2026-11-02-costco-barely-profits-on-the-cart needs updating by research"
+    },
+    {
+      "id": "v-20261105-03",
+      "day": "2026-11-05",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "check-plan: arms.hook assigns 'question' (hook_style must follow it) but the previous video v-20261105-01 also used 'question', which the variety rule forbids; no plan can pass both"
     }
   ]
 }
