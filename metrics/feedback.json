@@ -1,7 +1,26 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 3,
+  "open": 4,
   "notes": [
+    {
+      "id": "cmw1pidrv0001l009mdsdcmtk",
+      "kind": "wrong",
+      "area": null,
+      "text": "Speed is very fast can't hear things clearly.\nAdd lots of more props and animation than this atleast 80% more than currently in video.\nSome texts if getting overlapped and hiding behind",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-04T05:59:19.099Z",
+      "video": {
+        "id": "L-20261104-01",
+        "title": "Every money trap the middle class falls into, explained",
+        "format": "long",
+        "status": "queued",
+        "story": "list_explained",
+        "shape": "countdown",
+        "hookStyle": "challenge",
+        "hook": "Rohan just got a raise. His treadmill got faster, but his bank balance didn't move. Why? Six money traps take the raise before he sees it. Here's how."
+      }
+    },
     {
       "id": "cmw1iv2d70003l20919pyof4e",
       "kind": "improve",
