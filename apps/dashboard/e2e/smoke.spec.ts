@@ -428,3 +428,18 @@ test("card header actions never sit on the card's title", async ({ page }) => {
   expect(desc!.width, "description column width").toBeGreaterThanOrEqual(200);
   expect(sw!.height, "switch labels stay on one line").toBeLessThanOrEqual(34);
 });
+
+test("feedback form names the kind it will save", async ({ page }) => {
+  await signIn(page);
+  // the Kind field looked empty for the default kind (General here, Improve on a video page)
+  await page.goto("/feedback");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Feedback/, { timeout: 30_000 });
+  const kind = page.getByRole("combobox", { name: "Kind" });
+  await expect(kind).toHaveText("General");
+  await kind.click();
+  await page.getByRole("option", { name: "Wrong" }).click();
+  await expect(kind).toHaveText("Wrong");
+  await kind.click();
+  await page.getByRole("option", { name: "General" }).click();
+  await expect(kind).toHaveText("General");
+});

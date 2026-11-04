@@ -9,7 +9,7 @@ import { Award, CheckCircle2, MessageSquarePlus, Sparkles } from "lucide-react";
 import { AlertDialog } from "radix-ui";
 import { useState } from "react";
 
-import { Badge, Button, Card, Empty, SelectField, Tip, buttonClass, fieldClass } from "@/components/ui";
+import { Badge, Button, Card, Empty, ErrorNote, Loading, SelectField, Tip, buttonClass, fieldClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { fmtRelative, titleCase } from "@/lib/format";
 import { useAddFeedback, useFeedback, usePatchFeedback } from "@/lib/queries";
@@ -108,7 +108,9 @@ export function FeedbackPanel({ videoId, title = "Your feedback", showVideo = fa
       description="What's wrong, or what to do better next time. The video routine reads it before every video, and the improver answers each note.">
       <div className="flex flex-col gap-2 border-b border-line p-4">
         <div className="grid grid-cols-2 gap-2 sm:w-96">
-          <SelectField label="Kind" value={kind} onChange={(v) => setKind((v || kinds[0]) as Feedback["kind"])} all={KIND_LABEL[kinds[0]!]}
+          {/* the first kind stands in as the select's "all" option, so it goes in as no value: by name it
+              matched no option, and the field looked empty whenever the default kind was chosen */}
+          <SelectField label="Kind" value={kind === kinds[0] ? "" : kind} onChange={(v) => setKind((v || kinds[0]) as Feedback["kind"])} all={KIND_LABEL[kinds[0]!]}
             options={kinds.slice(1).map((k) => ({ value: k, label: KIND_LABEL[k] }))} />
           <SelectField label="Area" value={area} onChange={setArea} all="Any area" options={FEEDBACK_AREAS.map((a) => ({ value: a, label: titleCase(a) }))} />
         </div>
@@ -117,7 +119,8 @@ export function FeedbackPanel({ videoId, title = "Your feedback", showVideo = fa
           className={`${fieldClass} h-auto py-2 leading-snug`} />
         <div><Button tone="primary" disabled={add.isPending || text.trim().length < 2} onClick={submit}>Save feedback</Button></div>
       </div>
-      {list.data && list.data.length > 0 ? <ul>{list.data.map((f) => <Note key={f.id} f={f} showVideo={showVideo} />)}</ul>
+      {list.isLoading ? <div className="p-4"><Loading rows={2} /></div> : list.error ? <div className="p-4"><ErrorNote error={list.error} /></div>
+        : list.data && list.data.length > 0 ? <ul>{list.data.map((f) => <Note key={f.id} f={f} showVideo={showVideo} />)}</ul>
         : <div className="p-4"><Empty title="No feedback yet">Notes you add here shape the next videos.</Empty></div>}
     </Card>
   );
