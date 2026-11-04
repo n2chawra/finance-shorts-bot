@@ -1,0 +1,525 @@
+{
+  "id": "v-20261105-01",
+  "createdAt": "2026-11-04T22:05:53.977722+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "A $5,000 year-end bonus: the rich turn it into a second paycheck",
+    "category": "bonus",
+    "reach": "global",
+    "feed_id": "2026-11-05-year-end-bonus-buys-a-paycheck"
+  },
+  "title": "Your $5,000 bonus: the rich turn it into a paycheck 💸",
+  "description": "Do the rich really blow their year-end bonus?\nYour bonus buys a TV. Theirs buys shares, slices of businesses, that grow and then pay out every year (at an assumed 7% a year of growth, then taking out 4% a year).\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Bonus",
+    "#Money",
+    "#RichHabits"
+  ],
+  "hookStyle": "question",
+  "cta": "Is your bonus a TV or a paycheck? Comment",
+  "seed": 51207,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "A",
+    "bpm": 92,
+    "look": {
+      "stage": "city",
+      "header": "ribbon",
+      "holder": "box",
+      "entrance": "slide"
+    },
+    "voice": "af_heart",
+    "arms": {
+      "length": "28-35",
+      "topic": "big_money",
+      "hook": "question",
+      "title": "figure_or_name",
+      "style": "board",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think the rich blow their bonus? They don't. Watch what they buy.",
+        "start": 0.3,
+        "seconds": 3.31,
+        "window": 3.93,
+        "fill": 0.842
+      },
+      {
+        "scene": "tv",
+        "text": "Your $5,000 bonus buys a new TV, worth less every year.",
+        "start": 4.23,
+        "seconds": 3.87,
+        "window": 4.53,
+        "fill": 0.854
+      },
+      {
+        "scene": "ask",
+        "text": "And a rich person? What does he buy with it?",
+        "start": 8.77,
+        "seconds": 1.97,
+        "window": 2.47,
+        "fill": 0.798
+      },
+      {
+        "scene": "shares",
+        "text": "Shares, slices of real businesses. So where's the paycheck?",
+        "start": 11.23,
+        "seconds": 3.09,
+        "window": 3.77,
+        "fill": 0.82
+      },
+      {
+        "scene": "grow",
+        "text": "Say it grows 7% a year: it's $38,061 in 30 years.",
+        "start": 15.0,
+        "seconds": 4.89,
+        "window": 5.57,
+        "fill": 0.878
+      },
+      {
+        "scene": "turn",
+        "text": "Then he takes out just 4% a year. That's $1,522, every year.",
+        "start": 20.57,
+        "seconds": 4.93,
+        "window": 5.6,
+        "fill": 0.88
+      },
+      {
+        "scene": "payoff",
+        "text": "Your bonus bought a TV. His bought a paycheck.",
+        "start": 26.17,
+        "seconds": 2.51,
+        "window": 3.17,
+        "fill": 0.792
+      },
+      {
+        "scene": "loop",
+        "text": "Still think the rich blow their bonus?",
+        "start": 29.33,
+        "seconds": 1.72,
+        "window": 2.33,
+        "fill": 0.738
+      }
+    ]
+  },
+  "durationSec": 32,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.4,
+    "music_under_voice_db": 22.1
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "ending-beats-act-and-vary": "off",
+    "you-in-the-core-story": "on"
+  },
+  "heard": {
+    "hookVoice": "af_heart",
+    "narratorShare": 88
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Revised script: no sourced facts; number check ok. 'never sells' removed, 4% now a withdrawal ('takes out'), 7% voiced 'Say it grows' and labelled 'assumed' on screen, description says assumed; verify items met (assumptions, no product named); rates realistic; disclaimer ends description. Notes: $1,522 is nominal 30 years out and share risk is unmentioned (acceptable for a Short); Turn.tsx header comment still describes the old FOR SALE/never-sells picture (code no longer shows it)."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 4: tv and shares beats now clear (stills every 0.5 s): envelope and TV in frame, coins between certificate and factory with separate readable labels, profits flow into the coins; hook, grow, turn, payoff, loop, disclaimer, secret-layout thumbnail all fine; only a sliver of the factory's right wall touches the edge under the follow camera. Code checks empty, 32 s, peak -1.0 dB, mean -16.2 dB."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:40:46.269595+00:00",
+      "finishedAt": "2026-11-04T21:40:46.269595+00:00",
+      "notes": [
+        "shape 'reveal' is 2 of the last 10 videos: at most 25%",
+        "title 'Your {bonus_amount} bonus: the rich turn it into a paycheck 💸' has no money figure and no famous name: put the biggest figure or the famous person or company in it (\"Why Google pays Apple $20B…\"), unless `arms.title` is \"plain\""
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:41:10.125823+00:00",
+      "finishedAt": "2026-11-04T21:41:10.125823+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:43:19.730195+00:00",
+      "finishedAt": "2026-11-04T21:43:19.730195+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "warning: beat 'turn' runs 6.5 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "the hook gives no reason to stay: end it on the open question or a promise (\"Casinos make money even when you win. Here's how.\"), never on the answer",
+        "1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "board beat 'grow' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds",
+        "beat 'ask' opens like a line in one of the last scripts ('so what does'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:43:37.316491+00:00",
+      "finishedAt": "2026-11-04T21:43:37.316491+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:45:12.547600+00:00",
+      "finishedAt": "2026-11-04T21:45:12.547600+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "board beat 'grow' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds",
+        "beat 'grow' opens like a line in one of the last scripts ('if it grows'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:45:16.502358+00:00",
+      "finishedAt": "2026-11-04T21:45:16.502358+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:46:14.991757+00:00",
+      "finishedAt": "2026-11-04T21:46:14.991757+00:00",
+      "notes": [
+        "Beat 'turn' ('He never sells. At {pay_fee_pct} a year, it pays him {pay_per_period}, every year.') plus beat 'shares' (profits flowing from the business) and the description ('slices of businesses that pay them back every year... pays out 4% a year') present a 4% yearly payout from shares without selling as how shares work. That is wrong in general: a broad US stock index yields about 1-1.3% in dividends in 2026 (S&P 500 ~1.06-1.24%, long-run avg ~1.8%); 4% a year is a withdrawal rate, which means selling. Fix: either say he takes out 4% a year (drop 'never sells'), or keep 'never sells' and use an assumed dividend of ~1.5-2%.",
+        "Beats 'grow' and 'turn' state 7% growth and the 4% payout as certainties ('Growing 7% a year, in 30 years your bonus is $38,061'; 'it pays him'), with no 'if'/'say'/'assumed' in voice or on screen; the topic's verify list requires both to read as illustrative assumptions. Fix: e.g. 'If it grows an assumed 7% a year...' and an 'assumed' label on the equation chip.",
+        "Minor (not grounds alone): hook 'They spend it' then shows buying shares, which is saving/investing; the payoff contrast ignores that the 30-year-later $1,522 is nominal (worth far less in today's money) and that shares carry risk. Consider one word of risk/'before inflation' if it fits."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:45:37.469311+00:00",
+      "finishedAt": "2026-11-04T21:46:30.978893+00:00",
+      "notes": [
+        "text 'a slice of a business' at 13.6 s is 36.9 px, below the 44 px minimum",
+        "text 'FOR SALE' at 24.7 s reaches 1995 px, inside the bottom 120 px",
+        "beat 'shares': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "4 of 8 stills are mostly empty background (at 5 s, 15 s, 20 s, 30 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:47:11.869694+00:00",
+      "finishedAt": "2026-11-04T21:47:11.869694+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "board beat 'grow' speaks for about 7 s; at most 6.5: one sentence, one picture per beat (split it), so the picture changes every few seconds"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:47:16.653768+00:00",
+      "finishedAt": "2026-11-04T21:47:16.653768+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:47:34.815796+00:00",
+      "finishedAt": "2026-11-04T21:47:34.815796+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:47:56.353395+00:00",
+      "finishedAt": "2026-11-04T21:47:56.353395+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:48:07.702254+00:00",
+      "finishedAt": "2026-11-04T21:48:07.702254+00:00",
+      "notes": [
+        "Revised script: no sourced facts; number check ok. 'never sells' removed, 4% now a withdrawal ('takes out'), 7% voiced 'Say it grows' and labelled 'assumed' on screen, description says assumed; verify items met (assumptions, no product named); rates realistic; disclaimer ends description. Notes: $1,522 is nominal 30 years out and share risk is unmentioned (acceptable for a Short); Turn.tsx header comment still describes the old FOR SALE/never-sells picture (code no longer shows it)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:47:51.626585+00:00",
+      "finishedAt": "2026-11-04T21:48:26.941679+00:00",
+      "notes": [
+        "text 'Part owner' at 13.6 s is 36.9 px, below the 44 px minimum",
+        "2.8 s with nothing new on screen in beat 'grow' (at most 2.5 s): add an action on the phrase being said there",
+        "3 of 8 stills are mostly empty background (at 5 s, 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:48:45.465935+00:00",
+      "finishedAt": "2026-11-04T21:48:45.465935+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "5 whip or zoom-through transitions (tv, shares, grow, turn, loop); at most 4: cut or match between beats, so the picture doesn't zig-zag"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:48:49.215635+00:00",
+      "finishedAt": "2026-11-04T21:48:49.215635+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:49:02.592050+00:00",
+      "finishedAt": "2026-11-04T21:49:29.612202+00:00",
+      "notes": [
+        "2.8 s with nothing new on screen in beat 'grow' (at most 2.5 s): add an action on the phrase being said there",
+        "3 of 8 stills are mostly empty background (at 5 s, 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:49:37.258949+00:00",
+      "finishedAt": "2026-11-04T21:49:37.258949+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:50:08.822974+00:00",
+      "finishedAt": "2026-11-04T21:50:08.822974+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:50:21.976915+00:00",
+      "finishedAt": "2026-11-04T21:50:47.544972+00:00",
+      "notes": [
+        "2.6 s with nothing new on screen in beat 'grow' (at most 2.5 s): add an action on the phrase being said there"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:50:53.286512+00:00",
+      "finishedAt": "2026-11-04T21:50:53.286512+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:51:06.789330+00:00",
+      "finishedAt": "2026-11-04T21:51:30.217380+00:00",
+      "notes": [
+        "32 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:52:44.073438+00:00",
+      "finishedAt": "2026-11-04T21:52:44.073438+00:00",
+      "notes": [
+        "[script] 17.5s-20.0s (beat grow): the tree's '{bonus_rate}' tag action (at 'year') pins a '7%' chip at the very top of the frame where it is cut off and hidden behind the 'One bonus, growing' header; drop the tag (the equation already shows 7% assumed).",
+        "[script] 17.5s-20.0s (beat grow): the 'multiply' n=2 on the tree after growing it to 1.35 pushes the copy off the left edge (left tree cut in half); drop the multiply or the 1.35 grow.",
+        "[scene] 25.0s (beat turn, Turn component): the mailLabel 'EVERY YEAR' is drawn dimmed grey on the blue city set, nearly unreadable; also the 'Bonus at work' tree is cut off at the left edge in both 22.5s and 25.0s.",
+        "[scene] 2.5s (beat hook, Hook component): the tvLabel 'NEW TV' sits on Rohan's head/face at spot left; the TV label and the actor collide.",
+        "[scene] 12.5s (beat shares, board): the hidden item 'biz' shows its label 'A business' floating over empty background before the factory prop has entered; a hidden item's label should enter with it.",
+        "[scene] thumbnail (hook at 2.6s): the blurred hook line 'BLOW THEIR BONUS?' shows as a yellow ghost directly under the thumbnail words 'Your bonus, paid back', text on text; the planned figure ({pay_per_period}) is not on the thumbnail and Rohan is cut at the left edge."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:53:18.809423+00:00",
+      "finishedAt": "2026-11-04T21:53:18.809423+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:53:32.171650+00:00",
+      "finishedAt": "2026-11-04T21:54:00.527115+00:00",
+      "notes": [
+        "32 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:56:08.179814+00:00",
+      "finishedAt": "2026-11-04T21:56:08.179814+00:00",
+      "notes": [
+        "[script] 8.0-8.6s (beat tv): the 'calendar' action on 'year' draws its Year one/two card at the left edge, cut off ('year', 'one', 'two' clipped) and covering the $5,000 tag and the envelope for the last half-second of the beat; drop the calendar (the strike 'Worth less' already says it) [scene: the calendar card ignores the frame edge and the items under it].",
+        "[script] 5.0-7.5s (beat tv): with the close camera, the TV grown 1.15 runs past the right edge and sits on top of the envelope the whole beat; drop the 'grow' on tv (or size 0.26).",
+        "[script] 13.0-14.5s (beat shares): the factory grown 1.15 at x 0.72 runs off the right edge and covers half the share certificate; drop the 'grow' on biz or move it to x 0.66.",
+        "[scene] 14.0-14.9s (beat shares, board 'enter' with 'from' + 'flow' to a hidden item): the 'Paycheck?' coins never appear; the Profits bills fly up off the top edge, so the beat's question 'where's the paycheck?' has no picture."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:56:31.746842+00:00",
+      "finishedAt": "2026-11-04T21:56:31.746842+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:56:45.156346+00:00",
+      "finishedAt": "2026-11-04T21:57:14.304035+00:00",
+      "notes": [
+        "beat 'shares': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:57:23.177658+00:00",
+      "finishedAt": "2026-11-04T21:57:23.177658+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-04T21:57:36.732314+00:00",
+      "finishedAt": "2026-11-04T21:58:00.523551+00:00",
+      "notes": [
+        "32 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-04T21:59:26.424377+00:00",
+      "finishedAt": "2026-11-04T21:59:26.424377+00:00",
+      "notes": [
+        "[script] 13.5-14.9s (beat shares): the coins at x 0.5 sit wedged between the certificate and the factory, overlapping both, and their label 'Paycheck?' runs straight into 'A business' with no gap (reads 'Paycheck? A business'); give the three things room, e.g. cert x 0.2 size 0.22, coins x 0.5 size 0.16, factory x 0.8 size 0.2, or drop the coins' label (the caption asks the question).",
+        "[scene] 12.0-14.9s (beat shares) and 6.5-8.0s (beat tv), board camera: the close shot that follows each action crops the edge items, the factory loses its right side for the whole second half of the shares beat and the envelope/TV knob go off the left/right edges in the tv beat; the follow camera should keep every visible item inside the frame."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-04T22:00:01.199816+00:00",
+      "finishedAt": "2026-11-04T22:00:01.199816+00:00",
+      "notes": [
+        "13 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-04T22:00:15.285807+00:00",
+      "finishedAt": "2026-11-04T22:00:42.934017+00:00",
+      "notes": [
+        "32 s, ember/cinematic (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-04T22:02:00.236050+00:00",
+      "finishedAt": "2026-11-04T22:02:00.236050+00:00",
+      "notes": [
+        "Round 4: tv and shares beats now clear (stills every 0.5 s): envelope and TV in frame, coins between certificate and factory with separate readable labels, profits flow into the coins; hook, grow, turn, payoff, loop, disclaimer, secret-layout thumbnail all fine; only a sliver of the factory's right wall touches the edge under the follow camera. Code checks empty, 32 s, peak -1.0 dB, mean -16.2 dB."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-04T22:02:10.470494+00:00",
+      "finishedAt": "2026-11-04T22:04:39.066953+00:00",
+      "notes": [
+        "32 s, ember/cinematic, peak -1.0 dB, mean -16.2 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-04T22:05:53.977869+00:00",
+      "finishedAt": "2026-11-04T22:05:53.977869+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261105-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261105-01"
+  }
+}

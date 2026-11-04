@@ -1,0 +1,721 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 51207,
+  "story": "secret_of_rich",
+  "shape": "pick-one",
+  "currency": "USD",
+  "feed_id": "2026-11-05-year-end-bonus-buys-a-paycheck",
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "A",
+    "bpm": 92,
+    "look": {
+      "stage": "city",
+      "header": "ribbon",
+      "holder": "box",
+      "entrance": "slide"
+    }
+  },
+  "arms": {
+    "length": "28-35",
+    "topic": "big_money",
+    "hook": "question",
+    "title": "figure_or_name",
+    "style": "board",
+    "category": "27"
+  },
+  "hook_style": "question",
+  "cta": "Is your bonus a TV or a paycheck? Comment",
+  "maths": [
+    {
+      "name": "bonus",
+      "kind": "lumpsum",
+      "amount": 5000,
+      "rate_pct": 7,
+      "years": 30
+    },
+    {
+      "name": "pay",
+      "kind": "fee_take",
+      "amount": 38061,
+      "fee_pct": 4,
+      "per_year": 1,
+      "years": 1
+    }
+  ],
+  "thumbnail": {
+    "who": "sharma",
+    "layout": "secret",
+    "words": "Your bonus, *paid back*",
+    "figure": "{bonus_amount}",
+    "tag": "Spent on a TV",
+    "small": "{pay_per_period}",
+    "to": "Every year"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "You think the rich blow their bonus? They don't. Watch what they buy.",
+      "events": {
+        "think": {
+          "word": "think"
+        },
+        "save": {
+          "word": "blow"
+        },
+        "bonus": {
+          "word": "bonus"
+        },
+        "spend": {
+          "word": "don't"
+        },
+        "what": {
+          "word": "buy"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "bonus"
+        },
+        {
+          "kind": "whoosh",
+          "at": "spend"
+        },
+        {
+          "kind": "riser",
+          "at": "what"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "Blow their bonus?",
+        "tvLabel": "New TV",
+        "boxLabel": "Rich buy?",
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "spend",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "tv",
+      "scene": "board",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Your {bonus_amount} bonus buys a new TV, worth less every year.",
+      "events": {
+        "your": {
+          "word": "Your"
+        },
+        "bonus": {
+          "word": "bonus"
+        },
+        "buys": {
+          "word": "buys"
+        },
+        "tv": {
+          "word": "TV"
+        },
+        "worth": {
+          "word": "worth"
+        },
+        "less": {
+          "word": "less"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "params": {
+        "header": "Your bonus",
+        "bg": "coral",
+        "items": [
+          {
+            "id": "env",
+            "prop": "bonusenv",
+            "x": 0.3,
+            "size": 0.22,
+            "label": "Your bonus",
+            "tag": "{bonus_amount}"
+          },
+          {
+            "id": "tv",
+            "prop": "flattv",
+            "x": 0.7,
+            "size": 0.22,
+            "label": "New TV"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "enter",
+            "target": "tv",
+            "how": "drop"
+          },
+          {
+            "at": "your",
+            "do": "state",
+            "target": "env",
+            "state": "open"
+          },
+          {
+            "at": "bonus",
+            "do": "grow",
+            "target": "env",
+            "scale": 1.15
+          },
+          {
+            "at": "buys",
+            "do": "glow",
+            "target": "tv"
+          },
+          {
+            "at": "tv",
+            "do": "flow",
+            "target": "env",
+            "to": "tv",
+            "n": 5,
+            "text": "{bonus_amount}"
+          },
+          {
+            "at": "worth",
+            "do": "state",
+            "target": "tv",
+            "state": "old"
+          },
+          {
+            "at": "less",
+            "do": "strike",
+            "target": "tv",
+            "text": "Worth less"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "And a rich person? What does he buy with it?",
+      "events": {
+        "rich": {
+          "word": "rich"
+        },
+        "what": {
+          "word": "What"
+        },
+        "buy": {
+          "word": "buy"
+        },
+        "it": {
+          "word": "it"
+        }
+      },
+      "params": {
+        "header": "What do the rich buy?",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "box",
+            "prop": "mysterybox",
+            "x": 0.5,
+            "size": 0.24,
+            "label": "Rich buy?",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "what",
+            "do": "enter",
+            "target": "box",
+            "how": "rise"
+          },
+          {
+            "at": "rich",
+            "do": "grow",
+            "target": "box",
+            "scale": 1.15
+          },
+          {
+            "at": "buy",
+            "do": "shake",
+            "target": "box"
+          },
+          {
+            "at": "it",
+            "do": "tag",
+            "target": "box",
+            "text": "{bonus_amount}"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shares",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Shares, slices of real businesses. So where's the paycheck?",
+      "events": {
+        "shares": {
+          "word": "Shares"
+        },
+        "slices": {
+          "word": "slices"
+        },
+        "businesses": {
+          "word": "businesses"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "wheres": {
+          "word": "where's"
+        }
+      },
+      "params": {
+        "header": "The rich buy shares",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "cert",
+            "prop": "sharecert",
+            "x": 0.2,
+            "size": 0.22,
+            "label": "Shares"
+          },
+          {
+            "id": "biz",
+            "prop": "bizfactory",
+            "x": 0.8,
+            "size": 0.2,
+            "label": "A business",
+            "hidden": true
+          },
+          {
+            "id": "coins",
+            "prop": "profitcoins",
+            "x": 0.5,
+            "size": 0.16,
+            "label": "Paycheck?",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "enter",
+            "target": "cert",
+            "how": "drop"
+          },
+          {
+            "at": "shares",
+            "do": "glow",
+            "target": "cert"
+          },
+          {
+            "at": "slices",
+            "do": "chip",
+            "text": "Part owner",
+            "tone": "good"
+          },
+          {
+            "at": "slices",
+            "do": "enter",
+            "target": "biz",
+            "how": "rise"
+          },
+          {
+            "at": "businesses",
+            "do": "glow",
+            "target": "biz"
+          },
+          {
+            "at": "wheres",
+            "do": "enter",
+            "target": "coins",
+            "how": "drop"
+          },
+          {
+            "at": "paycheck",
+            "do": "flow",
+            "target": "biz",
+            "to": "coins",
+            "n": 6,
+            "text": "Profits"
+          }
+        ]
+      }
+    },
+    {
+      "id": "grow",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Say it grows {bonus_rate} a year: it's {bonus_final} in {bonus_years} years.",
+      "events": {
+        "grows": {
+          "word": "grows"
+        },
+        "year": {
+          "word": "year"
+        },
+        "becomes": {
+          "word": "in"
+        },
+        "years": {
+          "word": "years"
+        },
+        "its": {
+          "word": "it's"
+        }
+      },
+      "params": {
+        "header": "One bonus, growing",
+        "bg": "teal",
+        "items": [
+          {
+            "id": "tree",
+            "prop": "cashtree",
+            "x": 0.5,
+            "size": 0.32,
+            "label": "Grows yearly",
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "enter",
+            "target": "tree",
+            "how": "rise"
+          },
+          {
+            "at": "grows",
+            "do": "grow",
+            "target": "tree",
+            "how": "rise",
+            "scale": 1.15
+          },
+          {
+            "at": "grows",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{bonus_amount}",
+                "at": "grows"
+              },
+              {
+                "text": "{bonus_rate} assumed",
+                "at": "year"
+              },
+              {
+                "text": "{bonus_years} years",
+                "at": "years"
+              }
+            ],
+            "result": {
+              "text": "{bonus_final}",
+              "value": "@bonus.final",
+              "at": "becomes"
+            }
+          },
+          {
+            "at": "years",
+            "do": "grow",
+            "target": "tree",
+            "scale": 1.2
+          },
+          {
+            "at": "becomes",
+            "do": "state",
+            "target": "tree",
+            "state": "grown"
+          },
+          {
+            "at": "its",
+            "do": "glow",
+            "target": "tree"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Then he takes out just {pay_fee_pct} a year. That's {pay_per_period}, every year.",
+      "events": {
+        "then": {
+          "word": "Then"
+        },
+        "takes": {
+          "word": "takes"
+        },
+        "thats": {
+          "word": "That's"
+        },
+        "every": {
+          "word": "every"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "then"
+        },
+        {
+          "kind": "kaching",
+          "at": "takes"
+        },
+        {
+          "kind": "boom",
+          "at": "thats"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "header": "He takes a slice",
+        "pay": "{pay_per_period}",
+        "rate": "{pay_fee_pct} a year",
+        "treeLabel": "Bonus at work",
+        "mailLabel": "Every year",
+        "set": "penthouse",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "takes",
+            "size": "close",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Your bonus bought a TV. His bought a paycheck.",
+      "events": {
+        "your": {
+          "word": "Your"
+        },
+        "tv": {
+          "word": "TV"
+        },
+        "his": {
+          "word": "His"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "your"
+        },
+        {
+          "kind": "boom",
+          "at": "paycheck"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "header": "Same bonus",
+        "youLabel": "Your bonus",
+        "hisLabel": "His bonus",
+        "tvTag": "Worth less",
+        "pay": "{pay_per_period}",
+        "payTag": "Every year",
+        "set": "penthouse",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "paycheck",
+            "size": "close",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "board",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Still think the rich blow their bonus?",
+      "events": {
+        "still": {
+          "word": "Still"
+        },
+        "rich": {
+          "word": "rich"
+        },
+        "save": {
+          "word": "blow"
+        },
+        "bonus": {
+          "word": "bonus"
+        }
+      },
+      "params": {
+        "header": "Still blowing it?",
+        "bg": "night",
+        "stage": "city",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "env2",
+            "prop": "bonusenv",
+            "x": 0.36,
+            "size": 0.2,
+            "label": "The bonus"
+          },
+          {
+            "id": "check",
+            "prop": "paycheck",
+            "x": 0.68,
+            "size": 0.2,
+            "label": "Paycheck",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "still",
+            "do": "grow",
+            "target": "env2",
+            "scale": 1.12
+          },
+          {
+            "at": "rich",
+            "do": "enter",
+            "target": "check",
+            "how": "drop"
+          },
+          {
+            "at": "save",
+            "do": "try",
+            "target": "env2",
+            "to": "check"
+          },
+          {
+            "at": "bonus",
+            "do": "state",
+            "target": "env2",
+            "state": "open"
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "af_heart"
+}
