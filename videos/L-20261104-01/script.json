@@ -1,0 +1,8607 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "id": "L-20261104-01",
+  "seed": 61473,
+  "story": "list_explained",
+  "shape": "countdown",
+  "feed_id": "2026-10-27-middle-class-traps-explained",
+  "currency": "USD",
+  "title": "Every money trap the middle class falls into, explained",
+  "hook_style": "challenge",
+  "cta": "Which trap are you in? Comment the number",
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "A",
+    "bpm": 88,
+    "look": {
+      "stage": "kitchen",
+      "header": "sticky",
+      "holder": "receipt",
+      "entrance": "slide"
+    }
+  },
+  "structure": {
+    "levels": [
+      "Creep",
+      "New car",
+      "Safe cash",
+      "Small charges",
+      "Bigger house",
+      "Later"
+    ]
+  },
+  "maths": [
+    {
+      "name": "creep",
+      "kind": "price_rise",
+      "monthly": 3000,
+      "inflation_pct": 3,
+      "years": 20
+    },
+    {
+      "name": "car",
+      "kind": "emi",
+      "amount": 45000,
+      "rate_pct": 8,
+      "years": 6
+    },
+    {
+      "name": "carval",
+      "kind": "lumpsum",
+      "amount": 45000,
+      "rate_pct": -15,
+      "years": 6
+    },
+    {
+      "name": "cash",
+      "kind": "real_return",
+      "amount": 20000,
+      "rate_pct": 0.4,
+      "inflation_pct": 3,
+      "years": 10
+    },
+    {
+      "name": "cashbase",
+      "kind": "lumpsum",
+      "amount": 20000,
+      "rate_pct": 0,
+      "years": 10
+    },
+    {
+      "name": "cashloss",
+      "kind": "compare",
+      "a": "cashbase.final",
+      "b": "cash.real_final"
+    },
+    {
+      "name": "subs",
+      "kind": "fee_take",
+      "amount": 120,
+      "fee_pct": 100,
+      "per_year": 12,
+      "years": 10
+    },
+    {
+      "name": "fund",
+      "kind": "fee_take",
+      "amount": 100000,
+      "fee_pct": 1,
+      "per_year": 1,
+      "years": 30
+    },
+    {
+      "name": "small",
+      "kind": "emi",
+      "amount": 300000,
+      "rate_pct": 6.5,
+      "years": 30
+    },
+    {
+      "name": "big",
+      "kind": "emi",
+      "amount": 400000,
+      "rate_pct": 6.5,
+      "years": 30
+    },
+    {
+      "name": "housegap",
+      "kind": "compare",
+      "a": "big.emi",
+      "b": "small.emi"
+    },
+    {
+      "name": "houseint",
+      "kind": "compare",
+      "a": "big.interest",
+      "b": "small.interest"
+    },
+    {
+      "name": "housetotal",
+      "kind": "compare",
+      "a": "big.total_paid",
+      "b": "small.total_paid"
+    },
+    {
+      "name": "early",
+      "kind": "sip",
+      "monthly": 300,
+      "rate_pct": 7,
+      "years": 35
+    },
+    {
+      "name": "late",
+      "kind": "sip",
+      "monthly": 300,
+      "rate_pct": 7,
+      "years": 25
+    },
+    {
+      "name": "wait",
+      "kind": "compare",
+      "a": "early.final",
+      "b": "late.final"
+    },
+    {
+      "name": "investdiff",
+      "kind": "compare",
+      "a": "early.invested",
+      "b": "late.invested"
+    }
+  ],
+  "thumbnail": {
+    "layout": "custom",
+    "component": "Thumb",
+    "who": "rohan",
+    "pose": "worried",
+    "expression": "shock",
+    "words": "*Six* traps?",
+    "pattern": "a person running on a treadmill or caught in machinery, the traps as things circled in red, one huge word with a question mark in a red box, and a big worried face at the side",
+    "references": [
+      {
+        "id": "D7Y-nJ8uiEA",
+        "views": 10119497,
+        "what": "a man running on a treadmill inside giant gears, TRAPPED? huge in a red box, a big worried face on the right"
+      },
+      {
+        "id": "6mBnmX6hN0s",
+        "views": 1087398,
+        "what": "the traps as drawn things in red-ringed circles (car, house, shopping cart) under DON'T FALL FOR THESE"
+      },
+      {
+        "id": "tcpBWjAikxM",
+        "views": 2861494,
+        "what": "three huge stacked words, the last in a red box, a face on the right looking at the viewer"
+      }
+    ]
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Rohan just got a raise. His treadmill got faster, but his bank balance didn't move. Why? Six money traps take the raise before he sees it. Here's how.",
+      "events": {
+        "balance": {
+          "word": "balance"
+        },
+        "six": {
+          "word": "Six"
+        },
+        "how": {
+          "word": "how"
+        },
+        "why": {
+          "word": "Why"
+        },
+        "raise": {
+          "word": "raise"
+        },
+        "faster": {
+          "word": "faster"
+        }
+      },
+      "params": {
+        "raiseLabel": "Raise",
+        "balanceLabel": "Bank balance",
+        "stamp": "Same",
+        "count": "Six traps",
+        "headline": "Raise: yes. Balance: same.",
+        "hud": {
+          "hide": true
+        },
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "happy"
+              },
+              {
+                "at": "faster",
+                "pose": "worried",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "all"
+          },
+          {
+            "at": "six",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "raise"
+        },
+        {
+          "kind": "whoosh",
+          "at": "faster"
+        },
+        {
+          "kind": "fail",
+          "at": "balance"
+        },
+        {
+          "kind": "boom",
+          "at": "six"
+        },
+        {
+          "kind": "riser",
+          "at": "how"
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "scene": "framework",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Here they are: the life that grows, the new car, the safe cash, the small charges, the bigger house, and the worst one, saved for last.",
+      "events": {
+        "cash": {
+          "word": "cash"
+        },
+        "car": {
+          "word": "car"
+        },
+        "house": {
+          "word": "house"
+        },
+        "here": {
+          "word": "Here"
+        },
+        "worst": {
+          "word": "worst"
+        },
+        "grows": {
+          "word": "grows"
+        },
+        "charges": {
+          "word": "charges"
+        }
+      },
+      "params": {
+        "items": [
+          {
+            "prop": "risetag",
+            "label": "Creep",
+            "at": "grows"
+          },
+          {
+            "prop": "sedan",
+            "label": "New car",
+            "at": "car"
+          },
+          {
+            "prop": "cashjar",
+            "label": "Safe cash",
+            "at": "cash"
+          },
+          {
+            "prop": "feetap",
+            "label": "Small charges",
+            "at": "charges"
+          },
+          {
+            "prop": "bighouse",
+            "label": "Bigger house",
+            "at": "house"
+          },
+          {
+            "prop": "alarmclock",
+            "label": "Later",
+            "at": "worst"
+          }
+        ],
+        "layout": "arc",
+        "open": 0,
+        "title": "Six traps",
+        "bg": "plum",
+        "at": "here",
+        "hud": {
+          "level": 0,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "here"
+        },
+        {
+          "kind": "pop",
+          "at": "car"
+        },
+        {
+          "kind": "pop",
+          "at": "cash"
+        },
+        {
+          "kind": "pop",
+          "at": "house"
+        },
+        {
+          "kind": "boom",
+          "at": "worst"
+        }
+      ]
+    },
+    {
+      "id": "count",
+      "scene": "board",
+      "role": "promise",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Six traps? How many of them am I in right now?",
+      "events": {
+        "now": {
+          "word": "now"
+        },
+        "traps": {
+          "word": "traps"
+        },
+        "many": {
+          "word": "many"
+        }
+      },
+      "params": {
+        "header": "How many am I in?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "worried"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "me",
+            "prop": "treadmill",
+            "size": 0.26,
+            "label": "Traps I'm in"
+          }
+        ],
+        "actions": [
+          {
+            "at": "traps",
+            "do": "state",
+            "target": "me",
+            "state": "fast"
+          },
+          {
+            "at": "many",
+            "do": "bubble",
+            "text": "How many?"
+          },
+          {
+            "at": "now",
+            "do": "glow",
+            "target": "me"
+          }
+        ],
+        "hud": {
+          "level": 0,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "traps"
+        },
+        {
+          "kind": "whoosh",
+          "at": "many"
+        },
+        {
+          "kind": "pop-high",
+          "at": "now"
+        }
+      ]
+    },
+    {
+      "id": "countthem",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Count them as we go. Most families I knew were caught in more than one, and none of them noticed.",
+      "events": {
+        "caught": {
+          "word": "caught"
+        },
+        "noticed": {
+          "word": "noticed"
+        },
+        "families": {
+          "word": "families"
+        },
+        "count": {
+          "word": "Count"
+        },
+        "none": {
+          "word": "none"
+        }
+      },
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "families",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "caught",
+                "pose": "think",
+                "expression": "smirk"
+              },
+              {
+                "at": "none",
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "noticed",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "noticed",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 0
+        },
+        "word": {
+          "text": "Count",
+          "at": "count",
+          "color": "gold",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "count"
+        },
+        {
+          "kind": "whoosh",
+          "at": "families"
+        },
+        {
+          "kind": "pop-high",
+          "at": "caught"
+        },
+        {
+          "kind": "ding",
+          "at": "none"
+        }
+      ]
+    },
+    {
+      "id": "why-works",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Each trap feels like a reward or a smart choice, which is exactly why it works, and why the treadmill keeps speeding up.",
+      "events": {
+        "works": {
+          "word": "works"
+        },
+        "speeding": {
+          "word": "speeding"
+        },
+        "reward": {
+          "word": "reward"
+        },
+        "smart": {
+          "word": "smart"
+        },
+        "treadmill": {
+          "word": "treadmill"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "studio",
+          "tint": "purple"
+        },
+        "items": [
+          {
+            "id": "mill",
+            "prop": "treadmill",
+            "x": 0.5,
+            "size": 0.42,
+            "label": "The treadmill"
+          },
+          {
+            "id": "reward",
+            "prop": "payslip",
+            "x": 0.18,
+            "size": 0.26,
+            "label": "Reward",
+            "hidden": true
+          },
+          {
+            "id": "smart",
+            "prop": "growjar",
+            "x": 0.82,
+            "size": 0.26,
+            "label": "Smart choice",
+            "hidden": true,
+            "k": 0.4
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "mill"
+          },
+          {
+            "at": "reward",
+            "do": "enter",
+            "target": "reward"
+          },
+          {
+            "at": "smart",
+            "do": "enter",
+            "target": "smart",
+            "how": "rise"
+          },
+          {
+            "at": "works",
+            "do": "glow",
+            "target": "mill"
+          },
+          {
+            "at": "treadmill",
+            "do": "state",
+            "target": "mill",
+            "state": "fast"
+          },
+          {
+            "at": "speeding",
+            "do": "grow",
+            "target": "mill",
+            "scale": 1.15
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "treadmill",
+            "size": "close",
+            "on": "mill",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 0
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "reward"
+        },
+        {
+          "kind": "whoosh",
+          "at": "smart"
+        },
+        {
+          "kind": "pop-high",
+          "at": "works"
+        },
+        {
+          "kind": "ding",
+          "at": "treadmill"
+        }
+      ]
+    },
+    {
+      "id": "ch1",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Trap one. The life that grows.",
+      "events": {
+        "grows": {
+          "word": "grows"
+        }
+      },
+      "params": {
+        "kicker": "Trap one",
+        "title": "The life that grows",
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c1-raise",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Trap one starts the day the raise lands: a nicer place, more takeout, and every bit of it feels earned.",
+      "events": {
+        "raise": {
+          "word": "raise"
+        },
+        "takeout": {
+          "word": "takeout"
+        },
+        "place": {
+          "word": "place"
+        },
+        "earned": {
+          "word": "earned"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "gold"
+        },
+        "items": [
+          {
+            "id": "raise",
+            "prop": "payslip",
+            "x": 0.22,
+            "size": 0.36,
+            "label": "The raise",
+            "state": "raise"
+          },
+          {
+            "id": "place",
+            "prop": "cottage",
+            "x": 0.52,
+            "size": 0.36,
+            "label": "Nicer place",
+            "hidden": true
+          },
+          {
+            "id": "takeout",
+            "prop": "takeout",
+            "x": 0.8,
+            "size": 0.29,
+            "label": "Takeout",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "raise"
+          },
+          {
+            "at": "raise",
+            "do": "grow",
+            "target": "raise",
+            "scale": 1.15
+          },
+          {
+            "at": "place",
+            "do": "enter",
+            "target": "place",
+            "how": "rise"
+          },
+          {
+            "at": "takeout",
+            "do": "enter",
+            "target": "takeout",
+            "how": "drop"
+          },
+          {
+            "at": "earned",
+            "do": "grow",
+            "target": "raise",
+            "scale": 1.2
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "takeout",
+            "size": "close",
+            "on": "takeout",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 1
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "raise"
+        },
+        {
+          "kind": "whoosh",
+          "at": "place"
+        },
+        {
+          "kind": "pop-high",
+          "at": "takeout"
+        },
+        {
+          "kind": "ding",
+          "at": "earned"
+        }
+      ]
+    },
+    {
+      "id": "c1-life",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Say his whole life costs {creep_amount} a month today: the rent, the food, the phone and the fun.",
+      "events": {
+        "rent": {
+          "word": "rent"
+        },
+        "food": {
+          "word": "food"
+        },
+        "month": {
+          "word": "month"
+        },
+        "life": {
+          "word": "life"
+        },
+        "phone": {
+          "word": "phone"
+        }
+      },
+      "params": {
+        "header": "His life today",
+        "bg": "sand",
+        "items": [
+          {
+            "id": "rent",
+            "prop": "cottage",
+            "x": 0.2,
+            "size": 0.32,
+            "label": "Rent"
+          },
+          {
+            "id": "food",
+            "prop": "takeout",
+            "x": 0.5,
+            "size": 0.32,
+            "label": "Food",
+            "hidden": true
+          },
+          {
+            "id": "fun",
+            "prop": "appstack",
+            "x": 0.8,
+            "size": 0.32,
+            "label": "Phone and fun",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "rent"
+          },
+          {
+            "at": "life",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "Rent + food + fun"
+              }
+            ],
+            "result": {
+              "text": "{creep_amount} a month",
+              "value": "@creep.monthly",
+              "at": "month"
+            }
+          },
+          {
+            "at": "rent",
+            "do": "grow",
+            "target": "rent",
+            "scale": 1.15
+          },
+          {
+            "at": "food",
+            "do": "enter",
+            "target": "food"
+          },
+          {
+            "at": "phone",
+            "do": "enter",
+            "target": "fun"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "life"
+        },
+        {
+          "kind": "whoosh",
+          "at": "month"
+        },
+        {
+          "kind": "pop-high",
+          "at": "rent"
+        },
+        {
+          "kind": "ding",
+          "at": "food"
+        }
+      ]
+    },
+    {
+      "id": "c1-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "That sounds normal. So how is spending my own raise a trap?",
+      "events": {
+        "raise": {
+          "word": "raise"
+        },
+        "trap": {
+          "word": "trap"
+        },
+        "normal": {
+          "word": "normal"
+        }
+      },
+      "params": {
+        "header": "How is that a trap?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "spend",
+            "prop": "risetag",
+            "size": 0.24,
+            "label": "Spending"
+          }
+        ],
+        "actions": [
+          {
+            "at": "normal",
+            "do": "glow",
+            "target": "spend"
+          },
+          {
+            "at": "raise",
+            "do": "swap",
+            "target": "spend",
+            "into": "payslip"
+          },
+          {
+            "at": "trap",
+            "do": "bubble",
+            "text": "A trap?"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "normal"
+        },
+        {
+          "kind": "whoosh",
+          "at": "raise"
+        },
+        {
+          "kind": "pop-high",
+          "at": "trap"
+        }
+      ]
+    },
+    {
+      "id": "c1-prices",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Because prices climb: at an assumed {creep_inflation} a year, that same life costs {creep_new_monthly} a month in {creep_years} years.",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "climb": {
+          "word": "climb"
+        },
+        "month": {
+          "word": "month"
+        },
+        "prices": {
+          "word": "prices"
+        },
+        "year": {
+          "word": "year"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "life": {
+          "word": "life"
+        }
+      },
+      "params": {
+        "header": "Same life, higher price",
+        "bg": "coral",
+        "items": [
+          {
+            "id": "prices",
+            "prop": "risetag",
+            "x": 0.72,
+            "size": 0.42,
+            "label": "Prices",
+            "hidden": true
+          },
+          {
+            "id": "life",
+            "prop": "takeout",
+            "label": "Same life",
+            "x": 0.28,
+            "size": 0.38
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "life"
+          },
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "life"
+          },
+          {
+            "at": "prices",
+            "do": "enter",
+            "target": "prices",
+            "how": "rise"
+          },
+          {
+            "at": "assumed",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{creep_amount}"
+              },
+              {
+                "text": "+ {creep_inflation} a year",
+                "at": "year"
+              }
+            ],
+            "result": {
+              "text": "{creep_new_monthly}",
+              "value": "@creep.new_monthly",
+              "at": "life"
+            }
+          },
+          {
+            "at": "climb",
+            "do": "grow",
+            "target": "prices",
+            "scale": 1.3
+          },
+          {
+            "at": "month",
+            "do": "header",
+            "text": "Same life, later"
+          },
+          {
+            "at": "years",
+            "do": "shake",
+            "target": "prices"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "prices"
+        },
+        {
+          "kind": "whoosh",
+          "at": "climb"
+        },
+        {
+          "kind": "pop-high",
+          "at": "assumed"
+        },
+        {
+          "kind": "ding",
+          "at": "year"
+        }
+      ]
+    },
+    {
+      "id": "c1-gap",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "His pay goes up with each raise, but his spending climbs by the same amount, so the gap between the two never grows.",
+      "events": {
+        "climbs": {
+          "word": "climbs"
+        },
+        "pay": {
+          "word": "pay"
+        },
+        "spending": {
+          "word": "spending"
+        },
+        "gap": {
+          "word": "gap"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "flat"
+        },
+        "items": [
+          {
+            "id": "pay",
+            "prop": "payslip",
+            "x": 0.28,
+            "size": 0.36,
+            "label": "Pay",
+            "state": "raise"
+          },
+          {
+            "id": "spending",
+            "prop": "risetag",
+            "x": 0.72,
+            "size": 0.36,
+            "label": "Spending",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "pay"
+          },
+          {
+            "at": "pay",
+            "do": "grow",
+            "target": "pay",
+            "scale": 1.2
+          },
+          {
+            "at": "spending",
+            "do": "enter",
+            "target": "spending",
+            "how": "rise"
+          },
+          {
+            "at": "climbs",
+            "do": "grow",
+            "target": "spending",
+            "scale": 1.2
+          },
+          {
+            "at": "gap",
+            "do": "shake",
+            "target": "pay"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "pay"
+          },
+          {
+            "at": "spending",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 1
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pay"
+        },
+        {
+          "kind": "whoosh",
+          "at": "spending"
+        },
+        {
+          "kind": "pop-high",
+          "at": "climbs"
+        },
+        {
+          "kind": "ding",
+          "at": "gap"
+        }
+      ]
+    },
+    {
+      "id": "c1-month",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Every year the rent, the groceries and the phone plan creep up, until the same life costs {creep_extra_month} more each month.",
+      "events": {
+        "creep": {
+          "word": "creep"
+        },
+        "rent": {
+          "word": "rent"
+        },
+        "same": {
+          "word": "same"
+        },
+        "groceries": {
+          "word": "groceries"
+        },
+        "each": {
+          "word": "each"
+        },
+        "phone": {
+          "word": "phone"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "kitchen",
+          "tint": "red"
+        },
+        "items": [
+          {
+            "id": "groceries",
+            "prop": "takeout",
+            "x": 0.3,
+            "size": 0.31,
+            "label": "Groceries"
+          },
+          {
+            "id": "phone",
+            "prop": "risetag",
+            "x": 0.68,
+            "size": 0.34,
+            "label": "Phone plan",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "groceries"
+          },
+          {
+            "at": "rent",
+            "do": "glow",
+            "target": "groceries"
+          },
+          {
+            "at": "groceries",
+            "do": "grow",
+            "target": "groceries",
+            "scale": 1.15
+          },
+          {
+            "at": "phone",
+            "do": "enter",
+            "target": "phone",
+            "how": "rise"
+          },
+          {
+            "at": "creep",
+            "do": "multiply",
+            "target": "phone",
+            "n": 3
+          },
+          {
+            "at": "same",
+            "do": "tag",
+            "target": "phone",
+            "text": "+{creep_extra_month}"
+          },
+          {
+            "at": "each",
+            "do": "shake",
+            "target": "groceries"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "creep",
+            "size": "extreme",
+            "on": "phone",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 1
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rent"
+        },
+        {
+          "kind": "whoosh",
+          "at": "groceries"
+        },
+        {
+          "kind": "pop-high",
+          "at": "phone"
+        },
+        {
+          "kind": "ding",
+          "at": "creep"
+        }
+      ]
+    },
+    {
+      "id": "c1-mill",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "And each new raise buys a bigger version of the same life, so the treadmill speeds up just to keep him in place.",
+      "events": {
+        "bigger": {
+          "word": "bigger"
+        },
+        "raise": {
+          "word": "raise"
+        },
+        "treadmill": {
+          "word": "treadmill"
+        },
+        "place": {
+          "word": "place"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "studio",
+          "tint": "red"
+        },
+        "items": [
+          {
+            "id": "mill",
+            "prop": "treadmill",
+            "x": 0.45,
+            "size": 0.41,
+            "label": "The treadmill"
+          },
+          {
+            "id": "raise",
+            "prop": "payslip",
+            "x": 0.8,
+            "size": 0.26,
+            "label": "New raise",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "mill"
+          },
+          {
+            "at": "raise",
+            "do": "enter",
+            "target": "raise"
+          },
+          {
+            "at": "bigger",
+            "do": "grow",
+            "target": "raise",
+            "scale": 1.15
+          },
+          {
+            "at": "treadmill",
+            "do": "state",
+            "target": "mill",
+            "state": "fast"
+          },
+          {
+            "at": "place",
+            "do": "shake",
+            "target": "mill"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "treadmill",
+            "size": "close",
+            "on": "mill",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 1
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "raise"
+        },
+        {
+          "kind": "whoosh",
+          "at": "bigger"
+        },
+        {
+          "kind": "pop-high",
+          "at": "treadmill"
+        },
+        {
+          "kind": "ding",
+          "at": "place"
+        }
+      ]
+    },
+    {
+      "id": "c1-yearly",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "By then that's {creep_extra_year} more every year, just to live exactly the way he lives today.",
+      "events": {
+        "live": {
+          "word": "live"
+        },
+        "today": {
+          "word": "today"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "kitchen"
+        },
+        "items": [
+          {
+            "id": "year",
+            "prop": "risetag",
+            "x": 0.38,
+            "size": 0.36,
+            "label": "Every year"
+          },
+          {
+            "id": "live",
+            "prop": "cottage",
+            "x": 0.74,
+            "size": 0.34,
+            "label": "Same life",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "year"
+          },
+          {
+            "at": "year",
+            "do": "grow",
+            "target": "year",
+            "scale": 1.3
+          },
+          {
+            "at": "year",
+            "do": "tag",
+            "target": "year",
+            "text": "+{creep_extra_year}"
+          },
+          {
+            "at": "live",
+            "do": "enter",
+            "target": "live",
+            "how": "rise"
+          },
+          {
+            "at": "today",
+            "do": "shake",
+            "target": "live"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "year"
+          },
+          {
+            "at": "live",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 1
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "year"
+        },
+        {
+          "kind": "whoosh",
+          "at": "live"
+        },
+        {
+          "kind": "pop-high",
+          "at": "today"
+        }
+      ]
+    },
+    {
+      "id": "c1-term",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That's called lifestyle creep: each raise first covers rising prices, and spending the rest on a bigger life keeps the savings flat.",
+      "events": {
+        "savings": {
+          "word": "savings"
+        },
+        "raise": {
+          "word": "raise"
+        },
+        "spending": {
+          "word": "spending"
+        },
+        "called": {
+          "word": "called"
+        }
+      },
+      "params": {
+        "header": "Lifestyle creep",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "pay",
+            "prop": "payslip",
+            "x": 0.2,
+            "size": 0.35,
+            "label": "Pay raise",
+            "state": "raise"
+          },
+          {
+            "id": "spending",
+            "prop": "risetag",
+            "x": 0.8,
+            "size": 0.35,
+            "label": "Spending"
+          },
+          {
+            "id": "savings",
+            "prop": "cashjar",
+            "x": 0.5,
+            "size": 0.32,
+            "label": "Savings",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "pay"
+          },
+          {
+            "at": "called",
+            "do": "term",
+            "name": "Lifestyle creep"
+          },
+          {
+            "at": "raise",
+            "do": "grow",
+            "target": "pay",
+            "scale": 1.25
+          },
+          {
+            "at": "spending",
+            "do": "grow",
+            "target": "spending",
+            "scale": 1.25
+          },
+          {
+            "at": "savings",
+            "do": "enter",
+            "target": "savings",
+            "how": "drop"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "called"
+        },
+        {
+          "kind": "whoosh",
+          "at": "raise"
+        },
+        {
+          "kind": "pop-high",
+          "at": "spending"
+        },
+        {
+          "kind": "ding",
+          "at": "savings"
+        }
+      ]
+    },
+    {
+      "id": "c1-total",
+      "scene": "stats",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Over those {creep_years} years, the rising price of that same life adds up to {creep_extra_total} more than today's price.",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "w14": {
+          "word": 14
+        },
+        "w20": {
+          "word": 20
+        },
+        "life": {
+          "word": "life"
+        }
+      },
+      "params": {
+        "kicker": "Prices alone",
+        "title": "Same life, later",
+        "bg": "cream",
+        "prop": "risetag",
+        "at": "w20",
+        "cards": [
+          {
+            "label": "Today, a month",
+            "text": "{creep_amount}",
+            "at": "years",
+            "color": "blue"
+          },
+          {
+            "label": "Later, a month",
+            "text": "{creep_new_monthly}",
+            "at": "life",
+            "color": "orange"
+          },
+          {
+            "label": "Extra in total",
+            "value": "@creep.extra_total",
+            "text": "{creep_extra_total}",
+            "at": "w14",
+            "color": "red"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "years"
+        },
+        {
+          "kind": "whoosh",
+          "at": "life"
+        }
+      ]
+    },
+    {
+      "id": "c1-sharma",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "I watched it happen for my whole career. The raise was spent before the first new payslip ever arrived.",
+      "events": {
+        "spent": {
+          "word": "spent"
+        },
+        "career": {
+          "word": "career"
+        }
+      },
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "career",
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "spent",
+                "pose": "shrug",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "spent",
+            "size": "extreme",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 1
+        },
+        "word": {
+          "text": "Spent",
+          "at": "spent",
+          "color": "bad",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "career"
+        },
+        {
+          "kind": "whoosh",
+          "at": "spent"
+        }
+      ]
+    },
+    {
+      "id": "c1-tease",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Then a different trap pulls into the driveway, shiny and new. So why does it still cost him money years after it stops being new?",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "shiny": {
+          "word": "shiny"
+        },
+        "trap": {
+          "word": "trap"
+        },
+        "cost": {
+          "word": "cost"
+        }
+      },
+      "params": {
+        "kicker": "Next · New car",
+        "bg": "sky",
+        "prop": "sedan",
+        "lines": [
+          {
+            "text": "The driveway",
+            "at": "trap",
+            "size": "small"
+          },
+          {
+            "text": "Shiny and new",
+            "at": "shiny",
+            "size": "big"
+          },
+          {
+            "text": "Still costing",
+            "at": "cost",
+            "size": "small"
+          },
+          {
+            "text": "Years later?",
+            "at": "years",
+            "size": "huge"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "trap"
+        },
+        {
+          "kind": "whoosh",
+          "at": "shiny"
+        },
+        {
+          "kind": "pop-high",
+          "at": "cost"
+        },
+        {
+          "kind": "ding",
+          "at": "years"
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Trap two. The new car.",
+      "events": {
+        "car": {
+          "word": "car"
+        }
+      },
+      "params": {
+        "kicker": "Trap two",
+        "title": "The new car",
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c2-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "My old car still runs fine. But I earned a new one, right?",
+      "events": {
+        "runs": {
+          "word": "runs"
+        },
+        "old": {
+          "word": "old"
+        },
+        "right": {
+          "word": "right"
+        },
+        "new": {
+          "word": "new"
+        }
+      },
+      "params": {
+        "header": "A reward?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "car",
+            "prop": "sedan",
+            "size": 0.28,
+            "label": "Old or new",
+            "state": "old"
+          }
+        ],
+        "actions": [
+          {
+            "at": "old",
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "runs",
+            "do": "shake",
+            "target": "car"
+          },
+          {
+            "at": "new",
+            "do": "swap",
+            "target": "car",
+            "into": "sedan"
+          },
+          {
+            "at": "right",
+            "do": "bubble",
+            "text": "Earned it?"
+          }
+        ],
+        "stage": "street",
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "old"
+        },
+        {
+          "kind": "whoosh",
+          "at": "runs"
+        },
+        {
+          "kind": "pop-high",
+          "at": "new"
+        },
+        {
+          "kind": "ding",
+          "at": "right"
+        }
+      ]
+    },
+    {
+      "id": "c2-loan",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "So he signs for a {car_amount} car, on a loan at an assumed {car_rate} a year, for {carval_years} years.",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "car": {
+          "word": "car"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "signs": {
+          "word": "signs"
+        }
+      },
+      "params": {
+        "header": "The car loan",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "car",
+            "prop": "sedan",
+            "x": 0.2,
+            "size": 0.35,
+            "label": "New car"
+          },
+          {
+            "id": "loan",
+            "prop": "paybook",
+            "x": 0.8,
+            "size": 0.38,
+            "label": "The loan",
+            "hidden": true,
+            "k": 0.0
+          },
+          {
+            "id": "signs",
+            "prop": "carkeys",
+            "x": 0.5,
+            "size": 0.32,
+            "label": "Signed",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "car",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{car_amount}"
+              },
+              {
+                "text": "at {car_rate}, assumed",
+                "at": "assumed"
+              }
+            ],
+            "result": {
+              "text": "{car_months} payments",
+              "at": "years"
+            }
+          },
+          {
+            "at": "car",
+            "do": "grow",
+            "target": "car",
+            "scale": 1.15
+          },
+          {
+            "at": "loan",
+            "do": "enter",
+            "target": "loan",
+            "how": "rise"
+          },
+          {
+            "at": "signs",
+            "do": "enter",
+            "target": "signs",
+            "how": "drop"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "signs"
+        },
+        {
+          "kind": "whoosh",
+          "at": "car"
+        },
+        {
+          "kind": "pop-high",
+          "at": "loan"
+        },
+        {
+          "kind": "ding",
+          "at": "assumed"
+        }
+      ]
+    },
+    {
+      "id": "c2-emi",
+      "scene": "stats",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That's {car_emi} every month, and {car_interest} of it goes to interest, money that buys no car at all.",
+      "events": {
+        "month": {
+          "word": "month"
+        },
+        "and": {
+          "word": "and"
+        },
+        "interest": {
+          "word": "interest"
+        }
+      },
+      "params": {
+        "kicker": "Trap two",
+        "title": "Where the payments go",
+        "bg": "plum",
+        "prop": "paybook",
+        "at": "and",
+        "cards": [
+          {
+            "label": "A month",
+            "text": "{car_emi}",
+            "at": "month",
+            "color": "blue"
+          },
+          {
+            "label": "Interest",
+            "value": "@car.interest",
+            "text": "{car_interest}",
+            "at": "interest",
+            "color": "red"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "counter": {
+            "value": "@car.interest",
+            "text": "{car_interest}",
+            "label": "This trap costs",
+            "at": "interest"
+          }
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "month"
+        },
+        {
+          "kind": "whoosh",
+          "at": "and"
+        },
+        {
+          "kind": "pop-high",
+          "at": "interest"
+        }
+      ]
+    },
+    {
+      "id": "c2-paid",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Rohan pays {car_total_paid} in total over the loan, for a car with a sticker price of {car_amount}.",
+      "events": {
+        "total": {
+          "word": "total"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "price": {
+          "word": "price"
+        },
+        "sticker": {
+          "word": "sticker"
+        }
+      },
+      "params": {
+        "header": "What the car really cost",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "car",
+            "prop": "sedan",
+            "x": 0.5,
+            "size": 0.42,
+            "label": "Sticker price"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "pays",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{car_amount}"
+              },
+              {
+                "text": "+ {car_interest}",
+                "at": "total"
+              }
+            ],
+            "result": {
+              "text": "{car_total_paid}",
+              "value": "@car.total_paid",
+              "at": "loan"
+            }
+          },
+          {
+            "at": "sticker",
+            "do": "grow",
+            "target": "car",
+            "scale": 1.15
+          },
+          {
+            "at": "price",
+            "do": "tag",
+            "target": "car",
+            "text": "{car_amount}"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pays"
+        },
+        {
+          "kind": "whoosh",
+          "at": "total"
+        },
+        {
+          "kind": "pop-high",
+          "at": "loan"
+        },
+        {
+          "kind": "ding",
+          "at": "sticker"
+        }
+      ]
+    },
+    {
+      "id": "c2-value",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Meanwhile the car loses value every year. At an assumed steady drop, after {carval_years} years it's worth {carval_final}.",
+      "events": {
+        "value": {
+          "word": "value"
+        },
+        "drop": {
+          "word": "drop"
+        },
+        "car": {
+          "word": "car"
+        },
+        "worth": {
+          "word": "worth"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "blue"
+        },
+        "items": [
+          {
+            "id": "car",
+            "prop": "sedan",
+            "x": 0.45,
+            "size": 0.41,
+            "label": "Car's worth"
+          },
+          {
+            "id": "value",
+            "prop": "risetag",
+            "x": 0.8,
+            "size": 0.24,
+            "label": "Steady drop",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "car",
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "value",
+            "do": "enter",
+            "target": "value"
+          },
+          {
+            "at": "drop",
+            "do": "shrink",
+            "target": "value",
+            "scale": 0.7
+          },
+          {
+            "at": "worth",
+            "do": "state",
+            "target": "car",
+            "state": "old"
+          },
+          {
+            "at": "worth",
+            "do": "tag",
+            "target": "car",
+            "text": "{carval_final}"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "car"
+          },
+          {
+            "at": "drop",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "worth",
+            "size": "close",
+            "on": "car",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 2
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "car"
+        },
+        {
+          "kind": "whoosh",
+          "at": "value"
+        },
+        {
+          "kind": "pop-high",
+          "at": "drop"
+        },
+        {
+          "kind": "ding",
+          "at": "worth"
+        }
+      ]
+    },
+    {
+      "id": "c2-rohan",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Hold on. So I paid all that interest, and I'm left holding a car worth a fraction of the price?",
+      "events": {
+        "fraction": {
+          "word": "fraction"
+        },
+        "interest": {
+          "word": "interest"
+        }
+      },
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              },
+              {
+                "at": "interest",
+                "pose": "shrug",
+                "expression": "shock"
+              },
+              {
+                "at": "fraction",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "fraction",
+            "size": "extreme",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 2
+        },
+        "word": {
+          "text": "A fraction?",
+          "at": "fraction",
+          "color": "bad",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "interest"
+        },
+        {
+          "kind": "whoosh",
+          "at": "fraction"
+        }
+      ]
+    },
+    {
+      "id": "c2-loop",
+      "scene": "framework",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "And the trap is the loop: the loan ends, the car looks old, he signs for a new one, and the payments start again.",
+      "events": {
+        "loop": {
+          "word": "loop"
+        },
+        "again": {
+          "word": "again"
+        },
+        "ends": {
+          "word": "ends"
+        },
+        "old": {
+          "word": "old"
+        },
+        "signs": {
+          "word": "signs"
+        }
+      },
+      "params": {
+        "items": [
+          {
+            "prop": "paybook",
+            "label": "Loan ends",
+            "at": "ends"
+          },
+          {
+            "prop": "sedan",
+            "label": "Looks old",
+            "at": "old"
+          },
+          {
+            "prop": "carkeys",
+            "label": "New loan",
+            "at": "signs"
+          },
+          {
+            "prop": "alarmclock",
+            "label": "Again",
+            "at": "again"
+          }
+        ],
+        "layout": "row",
+        "open": 0,
+        "title": "The car loop",
+        "bg": "teal",
+        "at": "loop",
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "loop"
+        },
+        {
+          "kind": "whoosh",
+          "at": "ends"
+        },
+        {
+          "kind": "pop-high",
+          "at": "old"
+        },
+        {
+          "kind": "ding",
+          "at": "signs"
+        }
+      ]
+    },
+    {
+      "id": "c2-priya",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "The car itself isn't the trap. Replacing it every few years, on a fresh loan each time, is what keeps him running.",
+      "events": {
+        "running": {
+          "word": "running"
+        },
+        "fresh": {
+          "word": "fresh"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "replacing": {
+          "word": "Replacing"
+        },
+        "trap": {
+          "word": "trap"
+        }
+      },
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "trap",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "loan",
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "replacing",
+            "size": "medium",
+            "on": "priya",
+            "move": true
+          },
+          {
+            "at": "running",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 2
+        },
+        "word": {
+          "text": "Again",
+          "at": "fresh",
+          "color": "bad",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "trap"
+        },
+        {
+          "kind": "whoosh",
+          "at": "replacing"
+        },
+        {
+          "kind": "pop-high",
+          "at": "fresh"
+        },
+        {
+          "kind": "ding",
+          "at": "loan"
+        }
+      ]
+    },
+    {
+      "id": "c2-term",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "A car is a depreciating asset: it loses value every year, and a loan adds interest on top of the loss.",
+      "events": {
+        "loses": {
+          "word": "loses"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "car": {
+          "word": "car"
+        },
+        "loan": {
+          "word": "loan"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "red"
+        },
+        "items": [
+          {
+            "id": "car",
+            "prop": "sedan",
+            "x": 0.32,
+            "size": 0.36,
+            "label": "Loses value",
+            "state": "old"
+          },
+          {
+            "id": "loan",
+            "prop": "paybook",
+            "x": 0.74,
+            "size": 0.31,
+            "label": "The loan",
+            "hidden": true,
+            "k": 0.4
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "car",
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "loses",
+            "do": "shrink",
+            "target": "car",
+            "scale": 0.8
+          },
+          {
+            "at": "loan",
+            "do": "enter",
+            "target": "loan",
+            "how": "drop"
+          },
+          {
+            "at": "interest",
+            "do": "flow",
+            "target": "car",
+            "to": "loan",
+            "n": 4
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "car"
+          },
+          {
+            "at": "loan",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 2
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "car"
+        },
+        {
+          "kind": "whoosh",
+          "at": "loses"
+        },
+        {
+          "kind": "pop-high",
+          "at": "loan"
+        },
+        {
+          "kind": "ding",
+          "at": "interest"
+        }
+      ]
+    },
+    {
+      "id": "c2-recap",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Two traps, and both of them felt like rewards. So which trap would ever feel like being careful?",
+      "events": {
+        "two": {
+          "word": "Two"
+        },
+        "careful": {
+          "word": "careful"
+        },
+        "which": {
+          "word": "which"
+        },
+        "rewards": {
+          "word": "rewards"
+        }
+      },
+      "params": {
+        "kicker": "So far",
+        "bg": "slate",
+        "prop": "payslip",
+        "lines": [
+          {
+            "text": "Two traps",
+            "at": "two",
+            "size": "big"
+          },
+          {
+            "text": "Both felt like rewards",
+            "at": "rewards",
+            "size": "small"
+          },
+          {
+            "text": "Which trap?",
+            "at": "which",
+            "size": "small"
+          },
+          {
+            "text": "The careful one?",
+            "at": "careful",
+            "size": "huge"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "two"
+        },
+        {
+          "kind": "whoosh",
+          "at": "rewards"
+        },
+        {
+          "kind": "pop-high",
+          "at": "which"
+        },
+        {
+          "kind": "ding",
+          "at": "careful"
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Trap three. The safe cash.",
+      "events": {
+        "cash": {
+          "word": "cash"
+        }
+      },
+      "params": {
+        "kicker": "Trap three",
+        "title": "The safe cash",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c3-jar",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Rohan is careful with his savings. He keeps {cash_amount} in a big-bank savings account paying an assumed {cash_rate} a year.",
+      "events": {
+        "savings": {
+          "word": "savings"
+        },
+        "paying": {
+          "word": "paying"
+        },
+        "account": {
+          "word": "account"
+        },
+        "keeps": {
+          "word": "keeps"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "bank"
+        },
+        "items": [
+          {
+            "id": "savings",
+            "prop": "cashjar",
+            "x": 0.45,
+            "size": 0.41,
+            "label": "Savings"
+          },
+          {
+            "id": "bank",
+            "prop": "growjar",
+            "x": 0.8,
+            "size": 0.24,
+            "label": "Account interest",
+            "hidden": true,
+            "k": 0.1
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "savings"
+          },
+          {
+            "at": "savings",
+            "do": "grow",
+            "target": "savings",
+            "scale": 1.15
+          },
+          {
+            "at": "keeps",
+            "do": "tag",
+            "target": "savings",
+            "text": "{cash_amount}"
+          },
+          {
+            "at": "account",
+            "do": "enter",
+            "target": "bank"
+          },
+          {
+            "at": "paying",
+            "do": "grow",
+            "target": "bank",
+            "scale": 1.1
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "keeps",
+            "size": "close",
+            "on": "savings",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 3
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "savings"
+        },
+        {
+          "kind": "whoosh",
+          "at": "keeps"
+        },
+        {
+          "kind": "pop-high",
+          "at": "account"
+        },
+        {
+          "kind": "ding",
+          "at": "paying"
+        }
+      ]
+    },
+    {
+      "id": "c3-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Cash in a bank can't lose. What could possibly go wrong with that?",
+      "events": {
+        "cash": {
+          "word": "Cash"
+        },
+        "wrong": {
+          "word": "wrong"
+        },
+        "bank": {
+          "word": "bank"
+        }
+      },
+      "params": {
+        "header": "What could go wrong?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "proud"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "cash",
+            "prop": "cashjar",
+            "size": 0.26,
+            "label": "Safe cash"
+          }
+        ],
+        "actions": [
+          {
+            "at": "cash",
+            "do": "glow",
+            "target": "cash"
+          },
+          {
+            "at": "bank",
+            "do": "shake",
+            "target": "cash"
+          },
+          {
+            "at": "wrong",
+            "do": "bubble",
+            "text": "Safe, right?"
+          }
+        ],
+        "stage": "city",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "cash"
+        },
+        {
+          "kind": "whoosh",
+          "at": "bank"
+        },
+        {
+          "kind": "pop-high",
+          "at": "wrong"
+        }
+      ]
+    },
+    {
+      "id": "c3-race",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "His bank pays him {cash_rate} a year, while prices climb at {cash_inflation}, so his cash falls a little further behind each year.",
+      "events": {
+        "climb": {
+          "word": "climb"
+        },
+        "prices": {
+          "word": "prices"
+        },
+        "cash": {
+          "word": "cash"
+        },
+        "bank": {
+          "word": "bank"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "blue"
+        },
+        "items": [
+          {
+            "id": "cash",
+            "prop": "cashjar",
+            "x": 0.3,
+            "size": 0.36,
+            "label": "His cash"
+          },
+          {
+            "id": "prices",
+            "prop": "risetag",
+            "x": 0.72,
+            "size": 0.36,
+            "label": "Prices",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "cash"
+          },
+          {
+            "at": "bank",
+            "do": "glow",
+            "target": "cash"
+          },
+          {
+            "at": "prices",
+            "do": "enter",
+            "target": "prices",
+            "how": "rise"
+          },
+          {
+            "at": "climb",
+            "do": "grow",
+            "target": "prices",
+            "scale": 1.25
+          },
+          {
+            "at": "cash",
+            "do": "shrink",
+            "target": "cash",
+            "scale": 0.8
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "cash"
+          },
+          {
+            "at": "prices",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "climb",
+            "size": "close",
+            "on": "prices",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 3
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "bank"
+        },
+        {
+          "kind": "whoosh",
+          "at": "prices"
+        },
+        {
+          "kind": "pop-high",
+          "at": "climb"
+        },
+        {
+          "kind": "ding",
+          "at": "cash"
+        }
+      ]
+    },
+    {
+      "id": "c3-why",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Many big-bank savings accounts pay this little, because the bank lends that same money out to borrowers at much higher rates.",
+      "events": {
+        "savings": {
+          "word": "savings"
+        },
+        "money": {
+          "word": "money"
+        },
+        "borrowers": {
+          "word": "borrowers"
+        },
+        "higher": {
+          "word": "higher"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "bank",
+          "tint": "gold"
+        },
+        "items": [
+          {
+            "id": "bank",
+            "prop": "bighouse",
+            "x": 0.25,
+            "size": 0.36,
+            "label": "The bank"
+          },
+          {
+            "id": "borrowers",
+            "prop": "sedan",
+            "x": 0.75,
+            "size": 0.31,
+            "label": "Borrowers",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "bank"
+          },
+          {
+            "at": "savings",
+            "do": "glow",
+            "target": "bank"
+          },
+          {
+            "at": "borrowers",
+            "do": "enter",
+            "target": "borrowers"
+          },
+          {
+            "at": "money",
+            "do": "flow",
+            "target": "bank",
+            "to": "borrowers",
+            "n": 5
+          },
+          {
+            "at": "higher",
+            "do": "grow",
+            "target": "borrowers",
+            "scale": 1.15
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "borrowers",
+            "size": "close",
+            "on": "borrowers",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 3
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "savings"
+        },
+        {
+          "kind": "whoosh",
+          "at": "money"
+        },
+        {
+          "kind": "pop-high",
+          "at": "borrowers"
+        },
+        {
+          "kind": "ding",
+          "at": "higher"
+        }
+      ]
+    },
+    {
+      "id": "c3-grows",
+      "scene": "stats",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "At {cash_rate} a year, in {cash_years} years his cash grows to only {cash_final}.",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "grows": {
+          "word": "grows"
+        },
+        "only": {
+          "word": "only"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "params": {
+        "kicker": "Trap three",
+        "title": "The jar grows a little",
+        "bg": "gold",
+        "prop": "cashjar",
+        "at": "grows",
+        "cards": [
+          {
+            "label": "Put in",
+            "text": "{cash_amount}",
+            "at": "year",
+            "color": "blue"
+          },
+          {
+            "label": "Rate, assumed",
+            "text": "{cash_rate}",
+            "at": "years",
+            "color": "orange"
+          },
+          {
+            "label": "After {cash_years} years",
+            "text": "{cash_final}",
+            "at": "only",
+            "color": "green"
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "year"
+        },
+        {
+          "kind": "whoosh",
+          "at": "years"
+        },
+        {
+          "kind": "pop-high",
+          "at": "grows"
+        },
+        {
+          "kind": "ding",
+          "at": "only"
+        }
+      ]
+    },
+    {
+      "id": "c3-buys",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Measured in today's money, that pile only buys what {cash_real_final} buys now.",
+      "events": {
+        "only": {
+          "word": "only"
+        },
+        "pile": {
+          "word": "pile"
+        },
+        "now": {
+          "word": "now"
+        },
+        "money": {
+          "word": "money"
+        },
+        "buys": {
+          "word": "buys"
+        }
+      },
+      "params": {
+        "header": "What it really buys",
+        "bg": "purple",
+        "items": [
+          {
+            "id": "pile",
+            "prop": "meltcash",
+            "x": 0.72,
+            "size": 0.42,
+            "label": "The pile",
+            "k": 0.0
+          },
+          {
+            "id": "jar",
+            "prop": "cashjar",
+            "label": "His cash",
+            "x": 0.28,
+            "size": 0.38
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "pile"
+          },
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "jar"
+          },
+          {
+            "at": "money",
+            "do": "term",
+            "name": "Real return"
+          },
+          {
+            "at": "pile",
+            "do": "drain",
+            "target": "pile",
+            "k": 0.7
+          },
+          {
+            "at": "buys",
+            "do": "tag",
+            "target": "pile",
+            "text": "{cash_real_final}"
+          },
+          {
+            "at": "only",
+            "do": "shrink",
+            "target": "pile",
+            "scale": 0.85
+          },
+          {
+            "at": "now",
+            "do": "header",
+            "text": "In today's money"
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "money"
+        },
+        {
+          "kind": "whoosh",
+          "at": "pile"
+        },
+        {
+          "kind": "pop-high",
+          "at": "only"
+        },
+        {
+          "kind": "ding",
+          "at": "buys"
+        }
+      ]
+    },
+    {
+      "id": "c3-ask2",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "So my safe money is actually shrinking while it sits there? How did I never notice?",
+      "events": {
+        "how": {
+          "word": "How"
+        },
+        "money": {
+          "word": "money"
+        },
+        "safe": {
+          "word": "safe"
+        },
+        "sits": {
+          "word": "sits"
+        }
+      },
+      "params": {
+        "header": "Shrinking?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "money",
+            "prop": "meltcash",
+            "size": 0.24,
+            "label": "Safe money",
+            "k": 0.4
+          }
+        ],
+        "actions": [
+          {
+            "at": "safe",
+            "do": "glow",
+            "target": "money"
+          },
+          {
+            "at": "money",
+            "do": "drain",
+            "target": "money",
+            "k": 0.7
+          },
+          {
+            "at": "sits",
+            "do": "shake",
+            "target": "money"
+          },
+          {
+            "at": "how",
+            "do": "bubble",
+            "text": "Never noticed!"
+          }
+        ],
+        "stage": "night",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "safe"
+        },
+        {
+          "kind": "whoosh",
+          "at": "money"
+        },
+        {
+          "kind": "pop-high",
+          "at": "sits"
+        },
+        {
+          "kind": "ding",
+          "at": "how"
+        }
+      ]
+    },
+    {
+      "id": "c3-melt",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Because the jar looks fuller every year, while the things it can buy melt away underneath it.",
+      "events": {
+        "buy": {
+          "word": "buy"
+        },
+        "looks": {
+          "word": "looks"
+        },
+        "melt": {
+          "word": "melt"
+        },
+        "jar": {
+          "word": "jar"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "purple"
+        },
+        "items": [
+          {
+            "id": "jar",
+            "prop": "cashjar",
+            "x": 0.35,
+            "size": 0.36,
+            "label": "The jar"
+          },
+          {
+            "id": "melt",
+            "prop": "meltcash",
+            "x": 0.7,
+            "size": 0.36,
+            "label": "Things it buys",
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "jar"
+          },
+          {
+            "at": "jar",
+            "do": "grow",
+            "target": "jar",
+            "scale": 1.15
+          },
+          {
+            "at": "buy",
+            "do": "glow",
+            "target": "melt"
+          },
+          {
+            "at": "melt",
+            "do": "drain",
+            "target": "melt",
+            "k": 0.9
+          },
+          {
+            "at": "looks",
+            "do": "state",
+            "target": "jar",
+            "state": "faded"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "jar"
+          },
+          {
+            "at": "buy",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "melt",
+            "size": "extreme",
+            "on": "melt",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 3
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "jar"
+        },
+        {
+          "kind": "whoosh",
+          "at": "looks"
+        },
+        {
+          "kind": "pop-high",
+          "at": "buy"
+        },
+        {
+          "kind": "ding",
+          "at": "melt"
+        }
+      ]
+    },
+    {
+      "id": "c3-loss",
+      "scene": "stats",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That's {cashloss_diff} of buying power gone in {cash_years} years, from money that never left the bank.",
+      "events": {
+        "power": {
+          "word": "power"
+        },
+        "gone": {
+          "word": "gone"
+        },
+        "bank": {
+          "word": "bank"
+        }
+      },
+      "params": {
+        "kicker": "Trap three",
+        "title": "The safe cash",
+        "bg": "sand",
+        "prop": "cashjar",
+        "at": "gone",
+        "cards": [
+          {
+            "label": "Put in",
+            "text": "{cash_amount}",
+            "at": "power",
+            "color": "blue"
+          },
+          {
+            "label": "Buys, in today's money",
+            "text": "{cash_real_final}",
+            "at": "gone",
+            "color": "orange"
+          },
+          {
+            "label": "Lost to prices",
+            "value": "@cashloss.diff",
+            "text": "{cashloss_diff}",
+            "at": "bank",
+            "color": "red"
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "counter": {
+            "value": "@cashloss.diff",
+            "text": "{cashloss_diff}",
+            "label": "This trap costs",
+            "at": "bank"
+          }
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "power"
+        },
+        {
+          "kind": "whoosh",
+          "at": "gone"
+        },
+        {
+          "kind": "pop-high",
+          "at": "bank"
+        }
+      ]
+    },
+    {
+      "id": "c3-sharma",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Cash is safe from a crash, yes. It just isn't safe from prices, and prices never take a year off.",
+      "events": {
+        "crash": {
+          "word": "crash"
+        },
+        "prices": {
+          "word": "prices"
+        }
+      },
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "crash",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "prices",
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "crash",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "prices",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 3
+        },
+        "word": {
+          "text": "Prices",
+          "at": "prices",
+          "color": "bad",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "crash"
+        },
+        {
+          "kind": "whoosh",
+          "at": "prices"
+        }
+      ]
+    },
+    {
+      "id": "c3-tease",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "At least Rohan can see that loss if he does the sum. So what about the charges so small he never even looks?",
+      "events": {
+        "small": {
+          "word": "small"
+        },
+        "see": {
+          "word": "see"
+        },
+        "sum": {
+          "word": "sum"
+        },
+        "looks": {
+          "word": "looks"
+        }
+      },
+      "params": {
+        "kicker": "Next · Small charges",
+        "bg": "mint",
+        "prop": "appstack",
+        "lines": [
+          {
+            "text": "He can see this one",
+            "at": "see",
+            "size": "small"
+          },
+          {
+            "text": "If he does the sum",
+            "at": "sum",
+            "size": "small"
+          },
+          {
+            "text": "So small",
+            "at": "small",
+            "size": "big"
+          },
+          {
+            "text": "Never looks",
+            "at": "looks",
+            "size": "huge"
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "see"
+        },
+        {
+          "kind": "whoosh",
+          "at": "sum"
+        },
+        {
+          "kind": "pop-high",
+          "at": "small"
+        },
+        {
+          "kind": "ding",
+          "at": "looks"
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Trap four. The small charges that never stop.",
+      "events": {
+        "charges": {
+          "word": "charges"
+        }
+      },
+      "params": {
+        "kicker": "Trap four",
+        "title": "The small charges",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c4-list",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Streaming, music, cloud storage, and a gym he rarely visits: each one takes a little every month.",
+      "events": {
+        "music": {
+          "word": "music"
+        },
+        "month": {
+          "word": "month"
+        },
+        "cloud": {
+          "word": "cloud"
+        },
+        "gym": {
+          "word": "gym"
+        },
+        "streaming": {
+          "word": "Streaming"
+        },
+        "each": {
+          "word": "each"
+        }
+      },
+      "params": {
+        "header": "Small charges",
+        "bg": "blue",
+        "items": [
+          {
+            "id": "apps",
+            "prop": "appstack",
+            "x": 0.82,
+            "size": 0.42,
+            "label": "Music apps"
+          },
+          {
+            "id": "gym",
+            "prop": "alarmclock",
+            "x": 0.18,
+            "size": 0.32,
+            "label": "Gym",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "apps"
+          },
+          {
+            "at": "streaming",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "Streaming"
+              },
+              {
+                "text": "+ music",
+                "at": "music"
+              },
+              {
+                "text": "+ cloud",
+                "at": "cloud"
+              },
+              {
+                "text": "+ gym",
+                "at": "gym"
+              }
+            ],
+            "result": {
+              "text": "Every month",
+              "at": "month"
+            }
+          },
+          {
+            "at": "music",
+            "do": "state",
+            "target": "apps",
+            "state": "many"
+          },
+          {
+            "at": "each",
+            "do": "header",
+            "text": "Each one, every month"
+          },
+          {
+            "at": "gym",
+            "do": "enter",
+            "target": "gym",
+            "how": "drop"
+          },
+          {
+            "at": "streaming",
+            "do": "grow",
+            "target": "apps",
+            "scale": 1.15
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "streaming"
+        },
+        {
+          "kind": "whoosh",
+          "at": "music"
+        },
+        {
+          "kind": "pop-high",
+          "at": "cloud"
+        },
+        {
+          "kind": "ding",
+          "at": "gym"
+        }
+      ]
+    },
+    {
+      "id": "c4-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "They're tiny, though. What's the harm in a few little apps?",
+      "events": {
+        "tiny": {
+          "word": "tiny"
+        },
+        "apps": {
+          "word": "apps"
+        },
+        "harm": {
+          "word": "harm"
+        }
+      },
+      "params": {
+        "header": "Tiny, though?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "happy"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "apps",
+            "prop": "appstack",
+            "size": 0.24,
+            "label": "Little apps"
+          }
+        ],
+        "actions": [
+          {
+            "at": "tiny",
+            "do": "glow",
+            "target": "apps"
+          },
+          {
+            "at": "harm",
+            "do": "bubble",
+            "text": "So what?"
+          },
+          {
+            "at": "apps",
+            "do": "grow",
+            "target": "apps",
+            "scale": 1.2
+          }
+        ],
+        "stage": "kitchen",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tiny"
+        },
+        {
+          "kind": "whoosh",
+          "at": "harm"
+        },
+        {
+          "kind": "pop-high",
+          "at": "apps"
+        }
+      ]
+    },
+    {
+      "id": "c4-sum",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Together they come to {subs_amount} a month, which is {subs_per_year_total} every single year.",
+      "events": {
+        "month": {
+          "word": "month"
+        },
+        "every": {
+          "word": "every"
+        },
+        "come": {
+          "word": "come"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "params": {
+        "header": "Add them up",
+        "bg": "coral",
+        "items": [
+          {
+            "id": "charge",
+            "prop": "feetap",
+            "x": 0.72,
+            "size": 0.42,
+            "label": "Monthly charge",
+            "k": 0.4
+          },
+          {
+            "id": "subs",
+            "prop": "appstack",
+            "label": "Subscriptions",
+            "x": 0.28,
+            "size": 0.38
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "charge"
+          },
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "subs"
+          },
+          {
+            "at": "come",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{subs_amount} a month"
+              },
+              {
+                "text": "× a year",
+                "at": "every"
+              }
+            ],
+            "result": {
+              "text": "{subs_per_year_total}",
+              "value": "@subs.per_year_total",
+              "at": "year"
+            }
+          },
+          {
+            "at": "month",
+            "do": "grow",
+            "target": "charge",
+            "scale": 1.2
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "come"
+        },
+        {
+          "kind": "whoosh",
+          "at": "month"
+        },
+        {
+          "kind": "pop-high",
+          "at": "every"
+        },
+        {
+          "kind": "ding",
+          "at": "year"
+        }
+      ]
+    },
+    {
+      "id": "c4-renew",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "And because every charge renews by itself, he never decides to keep paying. The payments simply carry on.",
+      "events": {
+        "carry": {
+          "word": "carry"
+        },
+        "charge": {
+          "word": "charge"
+        },
+        "renews": {
+          "word": "renews"
+        },
+        "payments": {
+          "word": "payments"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "studio",
+          "tint": "blue"
+        },
+        "items": [
+          {
+            "id": "charges",
+            "prop": "appstack",
+            "x": 0.35,
+            "size": 0.36,
+            "label": "Payments",
+            "state": "many"
+          },
+          {
+            "id": "renew",
+            "prop": "alarmclock",
+            "x": 0.72,
+            "size": 0.29,
+            "label": "Renews",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "charges"
+          },
+          {
+            "at": "charge",
+            "do": "glow",
+            "target": "charges"
+          },
+          {
+            "at": "renews",
+            "do": "enter",
+            "target": "renew",
+            "how": "drop"
+          },
+          {
+            "at": "renews",
+            "do": "state",
+            "target": "renew",
+            "state": "ring"
+          },
+          {
+            "at": "payments",
+            "do": "flow",
+            "target": "charges",
+            "to": "renew",
+            "n": 5
+          },
+          {
+            "at": "carry",
+            "do": "shake",
+            "target": "charges"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "renews",
+            "size": "close",
+            "on": "renew",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 4
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "charge"
+        },
+        {
+          "kind": "whoosh",
+          "at": "renews"
+        },
+        {
+          "kind": "pop-high",
+          "at": "payments"
+        },
+        {
+          "kind": "ding",
+          "at": "carry"
+        }
+      ]
+    },
+    {
+      "id": "c4-gym",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "The gym takes its fee every month, whether he goes or not, and he hasn't been since the spring.",
+      "events": {
+        "fee": {
+          "word": "fee"
+        },
+        "whether": {
+          "word": "whether"
+        },
+        "spring": {
+          "word": "spring"
+        },
+        "month": {
+          "word": "month"
+        },
+        "gym": {
+          "word": "gym"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "street"
+        },
+        "items": [
+          {
+            "id": "gym",
+            "prop": "alarmclock",
+            "x": 0.35,
+            "size": 0.34,
+            "label": "Gym fee"
+          },
+          {
+            "id": "fee",
+            "prop": "feetap",
+            "x": 0.72,
+            "size": 0.34,
+            "label": "Fee",
+            "hidden": true,
+            "k": 0.5
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "gym"
+          },
+          {
+            "at": "gym",
+            "do": "glow",
+            "target": "gym"
+          },
+          {
+            "at": "fee",
+            "do": "enter",
+            "target": "fee"
+          },
+          {
+            "at": "month",
+            "do": "flow",
+            "target": "gym",
+            "to": "fee",
+            "n": 4
+          },
+          {
+            "at": "gym",
+            "do": "shrink",
+            "target": "gym",
+            "scale": 0.85
+          },
+          {
+            "at": "whether",
+            "do": "shake",
+            "target": "fee"
+          },
+          {
+            "at": "spring",
+            "do": "glow",
+            "target": "gym"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "gym"
+          },
+          {
+            "at": "fee",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 4
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "gym"
+        },
+        {
+          "kind": "whoosh",
+          "at": "fee"
+        },
+        {
+          "kind": "pop-high",
+          "at": "month"
+        },
+        {
+          "kind": "ding",
+          "at": "whether"
+        }
+      ]
+    },
+    {
+      "id": "c4-trial",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Then there's the app he tried free for a week and forgot. The trial ended long ago, but the charge never did.",
+      "events": {
+        "app": {
+          "word": "app"
+        },
+        "charge": {
+          "word": "charge"
+        },
+        "forgot": {
+          "word": "forgot"
+        },
+        "trial": {
+          "word": "trial"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "flat",
+          "tint": "purple"
+        },
+        "items": [
+          {
+            "id": "app",
+            "prop": "appstack",
+            "x": 0.4,
+            "size": 0.36,
+            "label": "Forgotten app"
+          },
+          {
+            "id": "charge",
+            "prop": "feetap",
+            "x": 0.76,
+            "size": 0.31,
+            "label": "Charge",
+            "hidden": true,
+            "k": 0.6
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "app"
+          },
+          {
+            "at": "app",
+            "do": "grow",
+            "target": "app",
+            "scale": 1.15
+          },
+          {
+            "at": "forgot",
+            "do": "shrink",
+            "target": "app",
+            "scale": 0.8
+          },
+          {
+            "at": "trial",
+            "do": "glow",
+            "target": "app"
+          },
+          {
+            "at": "charge",
+            "do": "enter",
+            "target": "charge"
+          },
+          {
+            "at": "charge",
+            "do": "flow",
+            "target": "app",
+            "to": "charge",
+            "n": 4
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "charge",
+            "size": "extreme",
+            "on": "charge",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 4
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "app"
+        },
+        {
+          "kind": "whoosh",
+          "at": "forgot"
+        },
+        {
+          "kind": "pop-high",
+          "at": "trial"
+        },
+        {
+          "kind": "ding",
+          "at": "charge"
+        }
+      ]
+    },
+    {
+      "id": "c4-total",
+      "scene": "stats",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Over {subs_years} years, those little charges add up to {subs_total}, for things he barely uses.",
+      "events": {
+        "barely": {
+          "word": "barely"
+        },
+        "years": {
+          "word": "years"
+        },
+        "add": {
+          "word": "add"
+        },
+        "charges": {
+          "word": "charges"
+        }
+      },
+      "params": {
+        "kicker": "Trap four",
+        "title": "The subscriptions",
+        "bg": "slate",
+        "prop": "appstack",
+        "at": "barely",
+        "cards": [
+          {
+            "label": "A month",
+            "text": "{subs_amount}",
+            "at": "years",
+            "color": "blue"
+          },
+          {
+            "label": "A year",
+            "text": "{subs_per_year_total}",
+            "at": "charges",
+            "color": "orange"
+          },
+          {
+            "label": "In {subs_years} years",
+            "value": "@subs.total",
+            "text": "{subs_total}",
+            "at": "add",
+            "color": "red"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@subs.total",
+            "text": "{subs_total}",
+            "label": "This trap costs",
+            "at": "add"
+          }
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "years"
+        },
+        {
+          "kind": "whoosh",
+          "at": "charges"
+        },
+        {
+          "kind": "pop-high",
+          "at": "add"
+        },
+        {
+          "kind": "ding",
+          "at": "barely"
+        }
+      ]
+    },
+    {
+      "id": "c4-priya",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "Rohan tries one question on each app: would he sign up again today? For half of them, the answer is no.",
+      "events": {
+        "again": {
+          "word": "again"
+        },
+        "question": {
+          "word": "question"
+        },
+        "no": {
+          "word": "no"
+        },
+        "today": {
+          "word": "today"
+        }
+      },
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              },
+              {
+                "at": "question",
+                "pose": "pointUp",
+                "expression": "smirk"
+              },
+              {
+                "at": "no",
+                "pose": "shrug",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "today",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 4
+        },
+        "word": {
+          "text": "Again?",
+          "at": "again",
+          "color": "gold",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "question"
+        },
+        {
+          "kind": "whoosh",
+          "at": "again"
+        },
+        {
+          "kind": "pop-high",
+          "at": "today"
+        },
+        {
+          "kind": "ding",
+          "at": "no"
+        }
+      ]
+    },
+    {
+      "id": "c4-next",
+      "scene": "type",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Subscriptions at least show up on a statement. But what about a charge that never shows up anywhere at all?",
+      "events": {
+        "statement": {
+          "word": "statement"
+        },
+        "charge": {
+          "word": "charge"
+        },
+        "subscriptions": {
+          "word": "Subscriptions"
+        },
+        "anywhere": {
+          "word": "anywhere"
+        }
+      },
+      "params": {
+        "kicker": "Small charges",
+        "bg": "sand",
+        "prop": "feetap",
+        "lines": [
+          {
+            "text": "Subscriptions",
+            "at": "subscriptions",
+            "size": "small"
+          },
+          {
+            "text": "On the statement",
+            "at": "statement",
+            "size": "small"
+          },
+          {
+            "text": "A hidden charge",
+            "at": "charge",
+            "size": "big"
+          },
+          {
+            "text": "Never shows up",
+            "at": "anywhere",
+            "size": "huge"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "subscriptions"
+        },
+        {
+          "kind": "whoosh",
+          "at": "statement"
+        },
+        {
+          "kind": "pop-high",
+          "at": "charge"
+        },
+        {
+          "kind": "ding",
+          "at": "anywhere"
+        }
+      ]
+    },
+    {
+      "id": "c5-invest",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Rohan finally invests. His {fund_amount} sits in a fund that charges an assumed {fund_fee_pct} a year.",
+      "events": {
+        "charges": {
+          "word": "charges"
+        },
+        "sits": {
+          "word": "sits"
+        },
+        "invests": {
+          "word": "invests"
+        },
+        "fund": {
+          "word": "fund"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "office"
+        },
+        "items": [
+          {
+            "id": "fund",
+            "prop": "growjar",
+            "x": 0.38,
+            "size": 0.38,
+            "label": "His fund",
+            "k": 0.6
+          },
+          {
+            "id": "charge",
+            "prop": "feetap",
+            "x": 0.75,
+            "size": 0.31,
+            "label": "Fund charge",
+            "hidden": true,
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "fund"
+          },
+          {
+            "at": "invests",
+            "do": "grow",
+            "target": "fund",
+            "scale": 1.15
+          },
+          {
+            "at": "sits",
+            "do": "tag",
+            "target": "fund",
+            "text": "{fund_amount}"
+          },
+          {
+            "at": "fund",
+            "do": "grow",
+            "target": "fund",
+            "scale": 1.1
+          },
+          {
+            "at": "charges",
+            "do": "enter",
+            "target": "charge"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "charges",
+            "size": "close",
+            "on": "charge",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 4
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "invests"
+        },
+        {
+          "kind": "whoosh",
+          "at": "sits"
+        },
+        {
+          "kind": "pop-high",
+          "at": "fund"
+        },
+        {
+          "kind": "ding",
+          "at": "charges"
+        }
+      ]
+    },
+    {
+      "id": "c5-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Such a tiny percentage? Why would I ever worry about that?",
+      "events": {
+        "that": {
+          "word": "that"
+        },
+        "tiny": {
+          "word": "tiny"
+        },
+        "worry": {
+          "word": "worry"
+        }
+      },
+      "params": {
+        "header": "Tiny percentage?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "papers",
+            "prop": "paybook",
+            "size": 0.24,
+            "label": "Tiny percentage",
+            "k": 0.0
+          }
+        ],
+        "actions": [
+          {
+            "at": "tiny",
+            "do": "shrink",
+            "target": "papers",
+            "scale": 0.8
+          },
+          {
+            "at": "worry",
+            "do": "bubble",
+            "text": "Why worry?"
+          },
+          {
+            "at": "that",
+            "do": "glow",
+            "target": "papers"
+          }
+        ],
+        "stage": "office",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tiny"
+        },
+        {
+          "kind": "whoosh",
+          "at": "worry"
+        },
+        {
+          "kind": "pop-high",
+          "at": "that"
+        }
+      ]
+    },
+    {
+      "id": "c5-year",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "On {fund_amount}, that's {fund_per_period} a year, and the fee is taken whether the fund does well or badly.",
+      "events": {
+        "well": {
+          "word": "well"
+        },
+        "fee": {
+          "word": "fee"
+        },
+        "fund": {
+          "word": "fund"
+        },
+        "year": {
+          "word": "year"
+        },
+        "badly": {
+          "word": "badly"
+        }
+      },
+      "params": {
+        "header": "Taken every year",
+        "bg": "teal",
+        "items": [
+          {
+            "id": "fund",
+            "prop": "growjar",
+            "x": 0.72,
+            "size": 0.38,
+            "label": "The fund",
+            "k": 0.6
+          },
+          {
+            "id": "fee",
+            "prop": "feetap",
+            "label": "The fee",
+            "x": 0.28,
+            "size": 0.38
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "fund"
+          },
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "fee"
+          },
+          {
+            "at": "fee",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{fund_amount}"
+              },
+              {
+                "text": "× {fund_fee_pct}",
+                "at": "fee"
+              }
+            ],
+            "result": {
+              "text": "{fund_per_period} a year",
+              "value": "@fund.per_period",
+              "at": "year"
+            }
+          },
+          {
+            "at": "fund",
+            "do": "glow",
+            "target": "fund"
+          },
+          {
+            "at": "well",
+            "do": "grow",
+            "target": "fund",
+            "scale": 1.15
+          },
+          {
+            "at": "badly",
+            "do": "shrink",
+            "target": "fund",
+            "scale": 0.85
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "year"
+        },
+        {
+          "kind": "whoosh",
+          "at": "fee"
+        },
+        {
+          "kind": "pop-high",
+          "at": "fund"
+        },
+        {
+          "kind": "ding",
+          "at": "well"
+        }
+      ]
+    },
+    {
+      "id": "c5-total",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Even if the pot never grew, {fund_years} years of it is {fund_total} in fees, before counting the growth that money never got to earn.",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "growth": {
+          "word": "growth"
+        },
+        "earn": {
+          "word": "earn"
+        },
+        "fees": {
+          "word": "fees"
+        },
+        "even": {
+          "word": "Even"
+        }
+      },
+      "params": {
+        "header": "Decades of fees",
+        "bg": "gold",
+        "items": [
+          {
+            "id": "fees",
+            "prop": "feetap",
+            "x": 0.82,
+            "size": 0.42,
+            "label": "Fees",
+            "k": 0.8
+          },
+          {
+            "id": "growth",
+            "prop": "moneytree",
+            "x": 0.18,
+            "size": 0.35,
+            "label": "Lost growth",
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "fees"
+          },
+          {
+            "at": "even",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{fund_per_period} a year"
+              },
+              {
+                "text": "× {fund_years} years",
+                "at": "years"
+              }
+            ],
+            "result": {
+              "text": "{fund_total}",
+              "value": "@fund.total",
+              "at": "fees"
+            }
+          },
+          {
+            "at": "fees",
+            "do": "grow",
+            "target": "fees",
+            "scale": 1.2
+          },
+          {
+            "at": "growth",
+            "do": "grow",
+            "target": "growth",
+            "scale": 1.15
+          },
+          {
+            "at": "earn",
+            "do": "shrink",
+            "target": "growth",
+            "scale": 0.7
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "even"
+        },
+        {
+          "kind": "whoosh",
+          "at": "years"
+        },
+        {
+          "kind": "pop-high",
+          "at": "fees"
+        },
+        {
+          "kind": "ding",
+          "at": "growth"
+        }
+      ]
+    },
+    {
+      "id": "c5-drip",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "The fee drips out of the fund every year, and every coin that leaves it stops growing for good.",
+      "events": {
+        "coin": {
+          "word": "coin"
+        },
+        "drips": {
+          "word": "drips"
+        },
+        "fund": {
+          "word": "fund"
+        },
+        "growing": {
+          "word": "growing"
+        },
+        "fee": {
+          "word": "fee"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "gold"
+        },
+        "items": [
+          {
+            "id": "fund",
+            "prop": "growjar",
+            "x": 0.35,
+            "size": 0.38,
+            "label": "The fund",
+            "k": 0.7
+          },
+          {
+            "id": "drip",
+            "prop": "feetap",
+            "x": 0.72,
+            "size": 0.36,
+            "label": "Fee drip",
+            "k": 0.9
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "fund"
+          },
+          {
+            "at": "drips",
+            "do": "flow",
+            "target": "fund",
+            "to": "drip",
+            "n": 6
+          },
+          {
+            "at": "fund",
+            "do": "drain",
+            "target": "fund",
+            "k": 0.4
+          },
+          {
+            "at": "coin",
+            "do": "glow",
+            "target": "drip"
+          },
+          {
+            "at": "growing",
+            "do": "shrink",
+            "target": "fund",
+            "scale": 0.85
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "drip"
+          },
+          {
+            "at": "growing",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "counter": {
+            "value": "@fund.total",
+            "text": "{fund_total}",
+            "label": "This trap costs",
+            "at": "fee"
+          }
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "fee"
+        },
+        {
+          "kind": "whoosh",
+          "at": "drips"
+        },
+        {
+          "kind": "pop-high",
+          "at": "fund"
+        },
+        {
+          "kind": "ding",
+          "at": "coin"
+        }
+      ]
+    },
+    {
+      "id": "c5-share",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "And the fee grows as the fund grows, because it's a share of the whole pot, not a flat charge.",
+      "events": {
+        "share": {
+          "word": "share"
+        },
+        "pot": {
+          "word": "pot"
+        },
+        "fee": {
+          "word": "fee"
+        },
+        "fund": {
+          "word": "fund"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "office",
+          "tint": "gold"
+        },
+        "items": [
+          {
+            "id": "pot",
+            "prop": "growjar",
+            "x": 0.4,
+            "size": 0.38,
+            "label": "The pot",
+            "k": 0.5
+          },
+          {
+            "id": "fee",
+            "prop": "feetap",
+            "x": 0.76,
+            "size": 0.31,
+            "label": "The fee",
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "pot"
+          },
+          {
+            "at": "fee",
+            "do": "glow",
+            "target": "fee"
+          },
+          {
+            "at": "fund",
+            "do": "grow",
+            "target": "pot",
+            "scale": 1.25
+          },
+          {
+            "at": "share",
+            "do": "grow",
+            "target": "fee",
+            "scale": 1.2
+          },
+          {
+            "at": "pot",
+            "do": "flow",
+            "target": "pot",
+            "to": "fee",
+            "n": 5
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "pot",
+            "size": "close",
+            "on": "pot",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 4
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "fee"
+        },
+        {
+          "kind": "whoosh",
+          "at": "fund"
+        },
+        {
+          "kind": "pop-high",
+          "at": "share"
+        },
+        {
+          "kind": "ding",
+          "at": "pot"
+        }
+      ]
+    },
+    {
+      "id": "c5-compare",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Fund fees differ a lot, so the very same pot keeps far more of its own growth just by paying less for it.",
+      "events": {
+        "less": {
+          "word": "less"
+        },
+        "pot": {
+          "word": "pot"
+        },
+        "fees": {
+          "word": "fees"
+        },
+        "growth": {
+          "word": "growth"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "green"
+        },
+        "items": [
+          {
+            "id": "high",
+            "prop": "growjar",
+            "x": 0.3,
+            "size": 0.38,
+            "label": "High fees",
+            "k": 0.5
+          },
+          {
+            "id": "low",
+            "prop": "growjar",
+            "x": 0.7,
+            "size": 0.38,
+            "label": "Pays less",
+            "k": 0.5
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "high"
+          },
+          {
+            "at": "fees",
+            "do": "drain",
+            "target": "high",
+            "k": 0.3
+          },
+          {
+            "at": "pot",
+            "do": "glow",
+            "target": "low"
+          },
+          {
+            "at": "growth",
+            "do": "glow",
+            "target": "high"
+          },
+          {
+            "at": "less",
+            "do": "grow",
+            "target": "low",
+            "scale": 1.3
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "less",
+            "size": "close",
+            "on": "low",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 4
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "fees"
+        },
+        {
+          "kind": "whoosh",
+          "at": "pot"
+        },
+        {
+          "kind": "pop-high",
+          "at": "growth"
+        },
+        {
+          "kind": "ding",
+          "at": "less"
+        }
+      ]
+    },
+    {
+      "id": "c5-sharma",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "The fee nobody reads is still a fee everybody pays, every year, in good markets and bad ones.",
+      "events": {
+        "everybody": {
+          "word": "everybody"
+        },
+        "bad": {
+          "word": "bad"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "smirk"
+              },
+              {
+                "at": "everybody",
+                "pose": "point",
+                "expression": "neutral"
+              },
+              {
+                "at": "bad",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "everybody",
+            "size": "extreme",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 4
+        },
+        "word": {
+          "text": "Every year",
+          "at": "year",
+          "color": "bad",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "everybody"
+        },
+        {
+          "kind": "whoosh",
+          "at": "year"
+        },
+        {
+          "kind": "pop-high",
+          "at": "bad"
+        }
+      ]
+    },
+    {
+      "id": "c5-term",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "The name for it is the expense ratio, printed in the small print that so few people ever open.",
+      "events": {
+        "print": {
+          "word": "print"
+        },
+        "printed": {
+          "word": "printed"
+        },
+        "ratio": {
+          "word": "ratio"
+        },
+        "name": {
+          "word": "name"
+        }
+      },
+      "params": {
+        "header": "Expense ratio",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "print",
+            "prop": "payslip",
+            "x": 0.78,
+            "size": 0.38,
+            "label": "Small print"
+          },
+          {
+            "id": "ratio",
+            "prop": "feetap",
+            "x": 0.22,
+            "size": 0.32,
+            "label": "The ratio",
+            "hidden": true,
+            "k": 0.4
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "print"
+          },
+          {
+            "at": "name",
+            "do": "term",
+            "name": "Expense ratio"
+          },
+          {
+            "at": "ratio",
+            "do": "enter",
+            "target": "ratio"
+          },
+          {
+            "at": "printed",
+            "do": "grow",
+            "target": "print",
+            "scale": 1.2
+          },
+          {
+            "at": "print",
+            "do": "glow",
+            "target": "print"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "name"
+        },
+        {
+          "kind": "whoosh",
+          "at": "ratio"
+        },
+        {
+          "kind": "pop-high",
+          "at": "printed"
+        },
+        {
+          "kind": "ding",
+          "at": "print"
+        }
+      ]
+    },
+    {
+      "id": "c5-recap",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "That's four traps you can spot once someone points at them. So what makes the last two so much harder to see?",
+      "events": {
+        "spot": {
+          "word": "spot"
+        },
+        "last": {
+          "word": "last"
+        },
+        "points": {
+          "word": "points"
+        },
+        "four": {
+          "word": "four"
+        },
+        "harder": {
+          "word": "harder"
+        }
+      },
+      "params": {
+        "kicker": "Halfway",
+        "bg": "plum",
+        "prop": "bighouse",
+        "lines": [
+          {
+            "text": "Four traps",
+            "at": "four",
+            "size": "big"
+          },
+          {
+            "text": "Easy to spot",
+            "at": "spot",
+            "size": "small"
+          },
+          {
+            "text": "Once pointed out",
+            "at": "points",
+            "size": "small"
+          },
+          {
+            "text": "The last two?",
+            "at": "last",
+            "size": "huge"
+          },
+          {
+            "text": "Harder to see",
+            "at": "harder",
+            "size": "small"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "four"
+        },
+        {
+          "kind": "whoosh",
+          "at": "spot"
+        },
+        {
+          "kind": "pop-high",
+          "at": "points"
+        },
+        {
+          "kind": "ding",
+          "at": "last"
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Trap five. The bigger house.",
+      "events": {
+        "house": {
+          "word": "house"
+        }
+      },
+      "params": {
+        "kicker": "Trap five",
+        "title": "The bigger house",
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c6-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "But a house is an investment, isn't it? So a bigger house must be better.",
+      "events": {
+        "bigger": {
+          "word": "bigger"
+        },
+        "investment": {
+          "word": "investment"
+        },
+        "house": {
+          "word": "house"
+        }
+      },
+      "params": {
+        "header": "Bigger is better?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "house",
+            "prop": "cottage",
+            "size": 0.24,
+            "label": "A house"
+          }
+        ],
+        "actions": [
+          {
+            "at": "house",
+            "do": "glow",
+            "target": "house"
+          },
+          {
+            "at": "investment",
+            "do": "bubble",
+            "text": "An investment?"
+          },
+          {
+            "at": "bigger",
+            "do": "swap",
+            "target": "house",
+            "into": "bighouse"
+          }
+        ],
+        "stage": "field",
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "house"
+        },
+        {
+          "kind": "whoosh",
+          "at": "investment"
+        },
+        {
+          "kind": "pop-high",
+          "at": "bigger"
+        }
+      ]
+    },
+    {
+      "id": "c6-small",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "A {small_amount} mortgage over {small_months} monthly payments, at an assumed {small_rate}, costs {small_emi} a month.",
+      "events": {
+        "mortgage": {
+          "word": "mortgage"
+        },
+        "month": {
+          "word": "month"
+        },
+        "assumed": {
+          "word": "assumed"
+        },
+        "payments": {
+          "word": "payments"
+        },
+        "monthly": {
+          "word": "monthly"
+        },
+        "costs": {
+          "word": "costs"
+        }
+      },
+      "params": {
+        "header": "The home he needs",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "home",
+            "prop": "cottage",
+            "x": 0.82,
+            "size": 0.42,
+            "label": "The mortgage"
+          },
+          {
+            "id": "payments",
+            "prop": "paybook",
+            "x": 0.18,
+            "size": 0.35,
+            "label": "Monthly payments",
+            "hidden": true,
+            "k": 0.0
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "home"
+          },
+          {
+            "at": "mortgage",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{small_amount}"
+              },
+              {
+                "text": "at {small_rate}, assumed",
+                "at": "assumed"
+              }
+            ],
+            "result": {
+              "text": "{small_emi} a month",
+              "value": "@small.emi",
+              "at": "costs"
+            }
+          },
+          {
+            "at": "mortgage",
+            "do": "grow",
+            "target": "home",
+            "scale": 1.15
+          },
+          {
+            "at": "monthly",
+            "do": "enter",
+            "target": "payments"
+          },
+          {
+            "at": "payments",
+            "do": "grow",
+            "target": "payments",
+            "scale": 1.15
+          },
+          {
+            "at": "month",
+            "do": "header",
+            "text": "Every month"
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "mortgage"
+        },
+        {
+          "kind": "whoosh",
+          "at": "monthly"
+        },
+        {
+          "kind": "pop-high",
+          "at": "payments"
+        },
+        {
+          "kind": "ding",
+          "at": "assumed"
+        }
+      ]
+    },
+    {
+      "id": "c6-big",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Stretch to a {big_amount} house, and the payment jumps to {big_emi}, which is {housegap_diff} more every month.",
+      "events": {
+        "which": {
+          "word": "which"
+        },
+        "more": {
+          "word": "more"
+        },
+        "payment": {
+          "word": "payment"
+        },
+        "jumps": {
+          "word": "jumps"
+        },
+        "house": {
+          "word": "house"
+        },
+        "stretch": {
+          "word": "Stretch"
+        },
+        "month": {
+          "word": "month"
+        }
+      },
+      "params": {
+        "header": "The home he wants",
+        "bg": "coral",
+        "items": [
+          {
+            "id": "house",
+            "prop": "bighouse",
+            "x": 0.82,
+            "size": 0.42,
+            "label": "Bigger house"
+          },
+          {
+            "id": "payment",
+            "prop": "paybook",
+            "x": 0.2,
+            "size": 0.32,
+            "label": "Payment",
+            "hidden": true,
+            "k": 0.0
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "house"
+          },
+          {
+            "at": "house",
+            "do": "grow",
+            "target": "house",
+            "scale": 1.15
+          },
+          {
+            "at": "stretch",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{small_emi}"
+              },
+              {
+                "text": "+ {housegap_diff}",
+                "at": "jumps"
+              }
+            ],
+            "result": {
+              "text": "{big_emi} a month",
+              "value": "@big.emi",
+              "at": "which"
+            }
+          },
+          {
+            "at": "payment",
+            "do": "enter",
+            "target": "payment"
+          },
+          {
+            "at": "jumps",
+            "do": "grow",
+            "target": "payment",
+            "scale": 1.3
+          },
+          {
+            "at": "which",
+            "do": "glow",
+            "target": "house"
+          },
+          {
+            "at": "more",
+            "do": "chip",
+            "text": "+{housegap_diff} a month",
+            "tone": "bad"
+          },
+          {
+            "at": "month",
+            "do": "shake",
+            "target": "payment"
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "stretch"
+        },
+        {
+          "kind": "whoosh",
+          "at": "house"
+        },
+        {
+          "kind": "pop-high",
+          "at": "payment"
+        },
+        {
+          "kind": "ding",
+          "at": "jumps"
+        }
+      ]
+    },
+    {
+      "id": "c6-interest",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Across the whole loan, the bigger house costs {houseint_diff} more in interest alone, before the bigger bills for heat and repairs.",
+      "events": {
+        "bills": {
+          "word": "bills"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "more": {
+          "word": "more"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "repairs": {
+          "word": "repairs"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "red"
+        },
+        "items": [
+          {
+            "id": "house",
+            "prop": "bighouse",
+            "x": 0.42,
+            "size": 0.42,
+            "label": "Bigger house"
+          },
+          {
+            "id": "interest",
+            "prop": "paybook",
+            "x": 0.8,
+            "size": 0.26,
+            "label": "Interest",
+            "hidden": true,
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "house"
+          },
+          {
+            "at": "loan",
+            "do": "glow",
+            "target": "house"
+          },
+          {
+            "at": "interest",
+            "do": "enter",
+            "target": "interest"
+          },
+          {
+            "at": "more",
+            "do": "grow",
+            "target": "interest",
+            "scale": 1.2
+          },
+          {
+            "at": "more",
+            "do": "glow",
+            "target": "interest"
+          },
+          {
+            "at": "bills",
+            "do": "state",
+            "target": "house",
+            "state": "heavy"
+          },
+          {
+            "at": "repairs",
+            "do": "shake",
+            "target": "house"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "interest",
+            "size": "close",
+            "on": "interest",
+            "move": true
+          },
+          {
+            "at": "bills",
+            "size": "medium",
+            "on": "house",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "counter": {
+            "value": "@houseint.diff",
+            "text": "{houseint_diff}",
+            "label": "This trap costs",
+            "at": "interest"
+          }
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "loan"
+        },
+        {
+          "kind": "whoosh",
+          "at": "more"
+        },
+        {
+          "kind": "pop-high",
+          "at": "interest"
+        },
+        {
+          "kind": "ding",
+          "at": "bills"
+        }
+      ]
+    },
+    {
+      "id": "c6-ask2",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "So what does the bigger house cost me in total, once every payment is made?",
+      "events": {
+        "bigger": {
+          "word": "bigger"
+        },
+        "total": {
+          "word": "total"
+        },
+        "house": {
+          "word": "house"
+        }
+      },
+      "params": {
+        "header": "In total?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "worried"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "neutral"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "house",
+            "prop": "bighouse",
+            "size": 0.26,
+            "label": "Bigger house"
+          }
+        ],
+        "actions": [
+          {
+            "at": "bigger",
+            "do": "glow",
+            "target": "house"
+          },
+          {
+            "at": "total",
+            "do": "bubble",
+            "text": "All of it?"
+          },
+          {
+            "at": "house",
+            "do": "state",
+            "target": "house",
+            "state": "heavy"
+          }
+        ],
+        "stage": "street",
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "bigger"
+        },
+        {
+          "kind": "whoosh",
+          "at": "house"
+        },
+        {
+          "kind": "pop-high",
+          "at": "total"
+        }
+      ]
+    },
+    {
+      "id": "c6-total",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "He pays {big_total_paid} for the bigger house in the end, against {small_total_paid} for the home he actually needs.",
+      "events": {
+        "actually": {
+          "word": "actually"
+        },
+        "w7": {
+          "word": 7
+        },
+        "house": {
+          "word": "house"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "needs": {
+          "word": "needs"
+        },
+        "against": {
+          "word": "against"
+        },
+        "w31": {
+          "word": 31
+        },
+        "w23": {
+          "word": 23
+        },
+        "home": {
+          "word": "home"
+        }
+      },
+      "params": {
+        "header": "The whole loan",
+        "bg": "teal",
+        "items": [
+          {
+            "id": "needs",
+            "prop": "cottage",
+            "x": 0.72,
+            "size": 0.38,
+            "label": "What he needs",
+            "hidden": true
+          },
+          {
+            "id": "bigger",
+            "prop": "bighouse",
+            "label": "Bigger house",
+            "x": 0.28,
+            "size": 0.38
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "bigger"
+          },
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "bigger"
+          },
+          {
+            "at": "pays",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{big_total_paid}"
+              },
+              {
+                "text": "− {small_total_paid}",
+                "at": "against"
+              }
+            ],
+            "result": {
+              "text": "{housetotal_diff} more",
+              "value": "@housetotal.diff",
+              "at": "w31"
+            }
+          },
+          {
+            "at": "w7",
+            "do": "header",
+            "text": "Paid in total"
+          },
+          {
+            "at": "house",
+            "do": "header",
+            "text": "The bigger house, paid off"
+          },
+          {
+            "at": "w23",
+            "do": "header",
+            "text": "Against what he needs"
+          },
+          {
+            "at": "against",
+            "do": "enter",
+            "target": "needs",
+            "how": "rise"
+          },
+          {
+            "at": "home",
+            "do": "grow",
+            "target": "needs",
+            "scale": 1.1
+          },
+          {
+            "at": "actually",
+            "do": "state",
+            "target": "needs",
+            "state": "lit"
+          },
+          {
+            "at": "needs",
+            "do": "grow",
+            "target": "needs",
+            "scale": 1.1
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pays"
+        },
+        {
+          "kind": "whoosh",
+          "at": "house"
+        },
+        {
+          "kind": "pop-high",
+          "at": "against"
+        },
+        {
+          "kind": "ding",
+          "at": "home"
+        }
+      ]
+    },
+    {
+      "id": "c6-sharma",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "The extra room is never the expensive part. The extra payment is, every month of the loan, and every one comes with a bill.",
+      "events": {
+        "payment": {
+          "word": "payment"
+        },
+        "expensive": {
+          "word": "expensive"
+        },
+        "month": {
+          "word": "month"
+        },
+        "room": {
+          "word": "room"
+        },
+        "bill": {
+          "word": "bill"
+        }
+      },
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "neutral"
+              },
+              {
+                "at": "expensive",
+                "pose": "point",
+                "expression": "smirk"
+              },
+              {
+                "at": "payment",
+                "pose": "hips",
+                "expression": "thinking"
+              },
+              {
+                "at": "bill",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "room",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "payment",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 5
+        },
+        "word": {
+          "text": "Every month",
+          "at": "month",
+          "color": "bad",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "room"
+        },
+        {
+          "kind": "whoosh",
+          "at": "expensive"
+        },
+        {
+          "kind": "pop-high",
+          "at": "payment"
+        },
+        {
+          "kind": "ding",
+          "at": "month"
+        }
+      ]
+    },
+    {
+      "id": "c6-priya",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "A house he can afford leaves room for every other goal. A house that stretches him leaves room for none.",
+      "events": {
+        "stretches": {
+          "word": "stretches"
+        },
+        "afford": {
+          "word": "afford"
+        },
+        "goal": {
+          "word": "goal"
+        },
+        "room": {
+          "word": "room"
+        },
+        "none": {
+          "word": "none"
+        }
+      },
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "afford",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "goal",
+                "pose": "pointUp",
+                "expression": "happy"
+              },
+              {
+                "at": "stretches",
+                "pose": "worried",
+                "expression": "worried"
+              },
+              {
+                "at": "none",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "none",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 5
+        },
+        "word": {
+          "text": "Room?",
+          "at": "room",
+          "color": "gold",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "afford"
+        },
+        {
+          "kind": "whoosh",
+          "at": "room"
+        },
+        {
+          "kind": "pop-high",
+          "at": "goal"
+        },
+        {
+          "kind": "ding",
+          "at": "stretches"
+        }
+      ]
+    },
+    {
+      "id": "c6-case",
+      "scene": "case",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "From the street, Rohan's bigger house looks like success.",
+      "events": {
+        "success": {
+          "word": "success"
+        },
+        "house": {
+          "word": "house"
+        }
+      },
+      "params": {
+        "name": "The bigger house",
+        "kicker": "Trap five",
+        "line": "Looks like success",
+        "prop": "bighouse",
+        "at": "house",
+        "lineAt": "success",
+        "bg": "cream",
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "house"
+        },
+        {
+          "kind": "whoosh",
+          "at": "success"
+        }
+      ]
+    },
+    {
+      "id": "c6-tease",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Five traps so far, and each one costs money he can see. The last one costs nothing at all today. So why is it the worst?",
+      "events": {
+        "last": {
+          "word": "last"
+        },
+        "worst": {
+          "word": "worst"
+        },
+        "five": {
+          "word": "Five"
+        },
+        "nothing": {
+          "word": "nothing"
+        },
+        "costs": {
+          "word": "costs"
+        },
+        "see": {
+          "word": "see"
+        }
+      },
+      "params": {
+        "kicker": "Next · Later",
+        "bg": "night",
+        "prop": "alarmclock",
+        "lines": [
+          {
+            "text": "Five traps",
+            "at": "five",
+            "size": "big"
+          },
+          {
+            "text": "Each costs money",
+            "at": "costs",
+            "size": "small"
+          },
+          {
+            "text": "Money he can see",
+            "at": "see",
+            "size": "small"
+          },
+          {
+            "text": "The last one",
+            "at": "last",
+            "size": "small"
+          },
+          {
+            "text": "Costs nothing today",
+            "at": "nothing",
+            "size": "small"
+          },
+          {
+            "text": "The worst?",
+            "at": "worst",
+            "size": "huge"
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "five"
+        },
+        {
+          "kind": "whoosh",
+          "at": "costs"
+        },
+        {
+          "kind": "pop-high",
+          "at": "see"
+        },
+        {
+          "kind": "ding",
+          "at": "last"
+        }
+      ]
+    },
+    {
+      "id": "ch6",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Trap six. I'll start later.",
+      "events": {
+        "later": {
+          "word": "later"
+        }
+      },
+      "params": {
+        "kicker": "Trap six",
+        "title": "I'll start later",
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c7-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "I'll start investing when I earn more. What's the rush, really?",
+      "events": {
+        "rush": {
+          "word": "rush"
+        },
+        "really": {
+          "word": "really"
+        },
+        "start": {
+          "word": "start"
+        }
+      },
+      "params": {
+        "header": "What's the rush?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "happy"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "worried"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "rush",
+            "prop": "alarmclock",
+            "size": 0.24,
+            "label": "The rush"
+          }
+        ],
+        "actions": [
+          {
+            "at": "start",
+            "do": "glow",
+            "target": "rush"
+          },
+          {
+            "at": "rush",
+            "do": "state",
+            "target": "rush",
+            "state": "ring"
+          },
+          {
+            "at": "really",
+            "do": "bubble",
+            "text": "Later!"
+          }
+        ],
+        "stage": "desert",
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "start"
+        },
+        {
+          "kind": "whoosh",
+          "at": "rush"
+        },
+        {
+          "kind": "pop-high",
+          "at": "really"
+        }
+      ]
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "And this is the twist. Starting late, Rohan saves only {investdiff_diff} less in total. But at the end, he's {wait_diff} behind.",
+      "events": {
+        "less": {
+          "word": "less"
+        },
+        "behind": {
+          "word": "behind"
+        },
+        "end": {
+          "word": "end"
+        },
+        "twist": {
+          "word": "twist"
+        },
+        "late": {
+          "word": "late"
+        },
+        "saves": {
+          "word": "saves"
+        }
+      },
+      "params": {
+        "component": "Turn",
+        "earlyLabel": "Plan A",
+        "lateLabel": "Plan B",
+        "savedGap": "{investdiff_diff} less saved",
+        "endGap": "{wait_diff} behind",
+        "stamp": "Waiting costs most",
+        "world": {
+          "kind": "field"
+        },
+        "items": [
+          {
+            "id": "tree",
+            "prop": "moneytree",
+            "x": 0.5,
+            "size": 0.3,
+            "k": 0.5
+          }
+        ],
+        "actions": [
+          {
+            "at": "end",
+            "do": "grow",
+            "target": "tree",
+            "scale": 1.3
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "behind",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 6
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "twist"
+        },
+        {
+          "kind": "pop",
+          "at": "saves"
+        },
+        {
+          "kind": "whoosh",
+          "at": "end"
+        },
+        {
+          "kind": "boom",
+          "at": "behind"
+        }
+      ]
+    },
+    {
+      "id": "c7-road",
+      "scene": "framework",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Here's how. Plan A starts today. Plan B starts later. And both of them stop on exactly the same day, the day Rohan retires.",
+      "events": {
+        "retires": {
+          "word": "retires"
+        },
+        "same": {
+          "word": "same"
+        },
+        "how": {
+          "word": "how"
+        },
+        "later": {
+          "word": "later"
+        },
+        "today": {
+          "word": "today"
+        }
+      },
+      "params": {
+        "items": [
+          {
+            "prop": "moneytree",
+            "label": "Plan A starts",
+            "at": "today"
+          },
+          {
+            "prop": "alarmclock",
+            "label": "Plan B starts",
+            "at": "later"
+          },
+          {
+            "prop": "growjar",
+            "label": "Same day",
+            "at": "same"
+          },
+          {
+            "prop": "exitdoor",
+            "label": "Retires",
+            "at": "retires"
+          }
+        ],
+        "layout": "row",
+        "open": 0,
+        "title": "Two plans",
+        "bg": "coral",
+        "at": "how",
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "how"
+        },
+        {
+          "kind": "whoosh",
+          "at": "today"
+        },
+        {
+          "kind": "pop-high",
+          "at": "later"
+        },
+        {
+          "kind": "ding",
+          "at": "same"
+        }
+      ]
+    },
+    {
+      "id": "c7-early",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Plan A puts {early_amount} a month into investments for {early_years} years, growing at an assumed {early_rate} a year.",
+      "events": {
+        "years": {
+          "word": "years"
+        },
+        "investments": {
+          "word": "investments"
+        },
+        "month": {
+          "word": "month"
+        },
+        "plan": {
+          "word": "Plan"
+        },
+        "growing": {
+          "word": "growing"
+        }
+      },
+      "params": {
+        "header": "Plan A: start now",
+        "bg": "teal",
+        "items": [
+          {
+            "id": "plan",
+            "prop": "moneytree",
+            "x": 0.72,
+            "size": 0.42,
+            "label": "Plan A investments",
+            "hidden": true,
+            "k": 0.2
+          },
+          {
+            "id": "monthly",
+            "prop": "growjar",
+            "label": "Monthly amount",
+            "x": 0.28,
+            "size": 0.38
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "monthly"
+          },
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "monthly"
+          },
+          {
+            "at": "plan",
+            "do": "enter",
+            "target": "plan",
+            "how": "rise"
+          },
+          {
+            "at": "month",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{early_amount} a month"
+              },
+              {
+                "text": "for {early_years} years",
+                "at": "years"
+              }
+            ],
+            "result": {
+              "text": "at {early_rate}, assumed",
+              "at": "growing"
+            }
+          },
+          {
+            "at": "investments",
+            "do": "grow",
+            "target": "plan",
+            "scale": 1.15
+          },
+          {
+            "at": "years",
+            "do": "state",
+            "target": "plan",
+            "state": "grown"
+          },
+          {
+            "at": "growing",
+            "do": "glow",
+            "target": "plan"
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "plan"
+        },
+        {
+          "kind": "whoosh",
+          "at": "month"
+        },
+        {
+          "kind": "pop-high",
+          "at": "investments"
+        },
+        {
+          "kind": "ding",
+          "at": "years"
+        }
+      ]
+    },
+    {
+      "id": "c7-earlyend",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "When he retires, all those small monthly amounts have grown into {early_final}, far more than he ever put in.",
+      "events": {
+        "far": {
+          "word": "far"
+        },
+        "retires": {
+          "word": "retires"
+        },
+        "put": {
+          "word": "put"
+        },
+        "grown": {
+          "word": "grown"
+        },
+        "amounts": {
+          "word": "amounts"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "gold"
+        },
+        "items": [
+          {
+            "id": "amounts",
+            "prop": "growjar",
+            "x": 0.3,
+            "size": 0.31,
+            "label": "Small amounts",
+            "k": 0.3
+          },
+          {
+            "id": "grown",
+            "prop": "moneytree",
+            "x": 0.68,
+            "size": 0.42,
+            "label": "Grown",
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "amounts"
+          },
+          {
+            "at": "retires",
+            "do": "glow",
+            "target": "grown"
+          },
+          {
+            "at": "amounts",
+            "do": "flow",
+            "target": "amounts",
+            "to": "grown",
+            "n": 5
+          },
+          {
+            "at": "grown",
+            "do": "grow",
+            "target": "grown",
+            "scale": 1.4
+          },
+          {
+            "at": "far",
+            "do": "glow",
+            "target": "grown"
+          },
+          {
+            "at": "put",
+            "do": "shake",
+            "target": "amounts"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "grown",
+            "size": "close",
+            "on": "grown",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 6
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "retires"
+        },
+        {
+          "kind": "whoosh",
+          "at": "amounts"
+        },
+        {
+          "kind": "pop-high",
+          "at": "grown"
+        },
+        {
+          "kind": "ding",
+          "at": "far"
+        }
+      ]
+    },
+    {
+      "id": "c7-late",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Plan B waits, then puts in the same amount for only {late_years} years. That grows to {late_final}, less than half as much.",
+      "events": {
+        "half": {
+          "word": "half"
+        },
+        "only": {
+          "word": "only"
+        },
+        "amount": {
+          "word": "amount"
+        },
+        "waits": {
+          "word": "waits"
+        },
+        "w21": {
+          "word": 21
+        },
+        "plan": {
+          "word": "Plan"
+        },
+        "grows": {
+          "word": "grows"
+        }
+      },
+      "params": {
+        "header": "Plan B: wait",
+        "bg": "slate",
+        "items": [
+          {
+            "id": "plan",
+            "prop": "moneytree",
+            "x": 0.72,
+            "size": 0.38,
+            "label": "Plan B",
+            "hidden": true,
+            "k": 0.3
+          },
+          {
+            "id": "waited",
+            "prop": "alarmclock",
+            "label": "Waited",
+            "x": 0.28,
+            "size": 0.38
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "waited"
+          },
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "waited"
+          },
+          {
+            "at": "waits",
+            "do": "header",
+            "text": "Plan B waits"
+          },
+          {
+            "at": "amount",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{late_amount} a month"
+              },
+              {
+                "text": "× {late_years} years",
+                "at": "only"
+              }
+            ],
+            "result": {
+              "text": "{late_final}",
+              "value": "@late.final",
+              "at": "grows"
+            }
+          },
+          {
+            "at": "plan",
+            "do": "enter",
+            "target": "plan",
+            "how": "rise"
+          },
+          {
+            "at": "grows",
+            "do": "glow",
+            "target": "plan"
+          },
+          {
+            "at": "w21",
+            "do": "shake",
+            "target": "plan"
+          },
+          {
+            "at": "half",
+            "do": "header",
+            "text": "Less than half"
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "plan"
+        },
+        {
+          "kind": "whoosh",
+          "at": "waits"
+        },
+        {
+          "kind": "pop-high",
+          "at": "amount"
+        },
+        {
+          "kind": "ding",
+          "at": "only"
+        }
+      ]
+    },
+    {
+      "id": "c7-gap",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Plan B puts in {late_invested} of his own money, and Plan A puts in {early_invested}: more, but not that much more on paper.",
+      "events": {
+        "own": {
+          "word": "own"
+        },
+        "but": {
+          "word": "but"
+        },
+        "more": {
+          "word": "more"
+        },
+        "puts": {
+          "word": "puts"
+        },
+        "much": {
+          "word": "much"
+        },
+        "paper": {
+          "word": "paper"
+        },
+        "a": {
+          "word": "A"
+        }
+      },
+      "params": {
+        "header": "What each one saves",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "paper",
+            "prop": "payslip",
+            "x": 0.72,
+            "size": 0.38,
+            "label": "On paper",
+            "hidden": true
+          },
+          {
+            "id": "putin",
+            "prop": "cash",
+            "label": "Put in",
+            "x": 0.28,
+            "size": 0.38
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "putin"
+          },
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "putin"
+          },
+          {
+            "at": "puts",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "Plan B: {late_invested}"
+              },
+              {
+                "text": "+ {investdiff_diff}",
+                "at": "a"
+              }
+            ],
+            "result": {
+              "text": "Plan A: {early_invested}",
+              "value": "@early.invested",
+              "at": "more"
+            }
+          },
+          {
+            "at": "own",
+            "do": "header",
+            "text": "His own money"
+          },
+          {
+            "at": "but",
+            "do": "header",
+            "text": "More, but not much"
+          },
+          {
+            "at": "much",
+            "do": "enter",
+            "target": "paper",
+            "how": "drop"
+          },
+          {
+            "at": "paper",
+            "do": "grow",
+            "target": "paper",
+            "scale": 1.2
+          },
+          {
+            "at": "paper",
+            "do": "glow",
+            "target": "paper"
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "puts"
+        },
+        {
+          "kind": "whoosh",
+          "at": "own"
+        },
+        {
+          "kind": "pop-high",
+          "at": "a"
+        },
+        {
+          "kind": "ding",
+          "at": "more"
+        }
+      ]
+    },
+    {
+      "id": "c7-ask2",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Hold on. I save almost the same money and still end up that far behind? How?",
+      "events": {
+        "how": {
+          "word": "How"
+        },
+        "save": {
+          "word": "save"
+        },
+        "money": {
+          "word": "money"
+        }
+      },
+      "params": {
+        "header": "How?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "shock"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.72,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "money",
+            "prop": "growjar",
+            "size": 0.24,
+            "label": "My money",
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "at": "save",
+            "do": "glow",
+            "target": "money"
+          },
+          {
+            "at": "money",
+            "do": "shrink",
+            "target": "money",
+            "scale": 0.8
+          },
+          {
+            "at": "how",
+            "do": "bubble",
+            "text": "How?!"
+          }
+        ],
+        "stage": "field",
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "save"
+        },
+        {
+          "kind": "whoosh",
+          "at": "money"
+        },
+        {
+          "kind": "pop-high",
+          "at": "how"
+        }
+      ]
+    },
+    {
+      "id": "c7-why",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "That's because early money has years to earn on its own earnings, and those last years are where the tree grows biggest.",
+      "events": {
+        "earnings": {
+          "word": "earnings"
+        },
+        "early": {
+          "word": "early"
+        },
+        "earn": {
+          "word": "earn"
+        },
+        "biggest": {
+          "word": "biggest"
+        },
+        "tree": {
+          "word": "tree"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "green"
+        },
+        "items": [
+          {
+            "id": "tree",
+            "prop": "moneytree",
+            "x": 0.4,
+            "size": 0.42,
+            "label": "Early money",
+            "k": 0.3
+          },
+          {
+            "id": "earnings",
+            "prop": "growjar",
+            "x": 0.78,
+            "size": 0.29,
+            "label": "Earnings",
+            "hidden": true,
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "tree"
+          },
+          {
+            "at": "early",
+            "do": "glow",
+            "target": "tree"
+          },
+          {
+            "at": "earn",
+            "do": "enter",
+            "target": "earnings"
+          },
+          {
+            "at": "earnings",
+            "do": "flow",
+            "target": "earnings",
+            "to": "tree",
+            "n": 5
+          },
+          {
+            "at": "tree",
+            "do": "grow",
+            "target": "tree",
+            "scale": 1.35
+          },
+          {
+            "at": "biggest",
+            "do": "shake",
+            "target": "tree"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "tree",
+            "size": "close",
+            "on": "tree",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 6
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "early"
+        },
+        {
+          "kind": "whoosh",
+          "at": "earn"
+        },
+        {
+          "kind": "pop-high",
+          "at": "earnings"
+        },
+        {
+          "kind": "ding",
+          "at": "tree"
+        }
+      ]
+    },
+    {
+      "id": "c7-term",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "This is compounding, and the one thing it needs most is the one thing waiting takes away: time.",
+      "events": {
+        "waiting": {
+          "word": "waiting"
+        },
+        "compounding": {
+          "word": "compounding"
+        },
+        "time": {
+          "word": "time"
+        },
+        "needs": {
+          "word": "needs"
+        }
+      },
+      "params": {
+        "header": "Compounding",
+        "bg": "purple",
+        "items": [
+          {
+            "id": "time",
+            "prop": "alarmclock",
+            "x": 0.78,
+            "size": 0.38,
+            "label": "Time",
+            "hidden": true
+          },
+          {
+            "id": "compound",
+            "prop": "moneytree",
+            "x": 0.22,
+            "size": 0.38,
+            "label": "Compounding",
+            "k": 0.6
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "compound"
+          },
+          {
+            "at": "compounding",
+            "do": "term",
+            "name": "Compounding"
+          },
+          {
+            "at": "compounding",
+            "do": "grow",
+            "target": "compound",
+            "scale": 1.2
+          },
+          {
+            "at": "needs",
+            "do": "header",
+            "text": "It needs one thing"
+          },
+          {
+            "at": "waiting",
+            "do": "header",
+            "text": "Waiting takes it away"
+          },
+          {
+            "at": "time",
+            "do": "enter",
+            "target": "time",
+            "how": "drop"
+          },
+          {
+            "at": "time",
+            "do": "grow",
+            "target": "time",
+            "scale": 1.2
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "compounding"
+        },
+        {
+          "kind": "whoosh",
+          "at": "needs"
+        },
+        {
+          "kind": "pop-high",
+          "at": "waiting"
+        },
+        {
+          "kind": "ding",
+          "at": "time"
+        }
+      ]
+    },
+    {
+      "id": "c7-total",
+      "scene": "stats",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "No bill ever arrives for waiting, yet it's the biggest cost on the list: {wait_diff}, just for starting later.",
+      "events": {
+        "waiting": {
+          "word": "waiting"
+        },
+        "starting": {
+          "word": "starting"
+        },
+        "list": {
+          "word": "list"
+        },
+        "bill": {
+          "word": "bill"
+        },
+        "cost": {
+          "word": "cost"
+        }
+      },
+      "params": {
+        "kicker": "Trap six",
+        "title": "The cost of later",
+        "bg": "sand",
+        "prop": "alarmclock",
+        "at": "starting",
+        "cards": [
+          {
+            "label": "Plan A",
+            "text": "{early_final}",
+            "at": "bill",
+            "color": "green"
+          },
+          {
+            "label": "Plan B",
+            "text": "{late_final}",
+            "at": "waiting",
+            "color": "orange"
+          },
+          {
+            "label": "The gap",
+            "value": "@wait.diff",
+            "text": "{wait_diff}",
+            "at": "list",
+            "color": "red"
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "counter": {
+            "value": "@wait.diff",
+            "text": "{wait_diff}",
+            "label": "This trap costs",
+            "at": "cost"
+          }
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "bill"
+        },
+        {
+          "kind": "whoosh",
+          "at": "waiting"
+        },
+        {
+          "kind": "pop-high",
+          "at": "cost"
+        },
+        {
+          "kind": "ding",
+          "at": "list"
+        }
+      ]
+    },
+    {
+      "id": "c7-sharma",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Every young man I lent money to thought time was the one thing he had plenty of. None of them was right.",
+      "events": {
+        "right": {
+          "word": "right"
+        },
+        "time": {
+          "word": "time"
+        },
+        "plenty": {
+          "word": "plenty"
+        }
+      },
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "neutral"
+              },
+              {
+                "at": "time",
+                "pose": "pointUp",
+                "expression": "thinking"
+              },
+              {
+                "at": "right",
+                "pose": "shrug",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "plenty",
+            "size": "extreme",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 6
+        },
+        "word": {
+          "text": "Time",
+          "at": "time",
+          "color": "gold",
+          "where": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "time"
+        },
+        {
+          "kind": "whoosh",
+          "at": "plenty"
+        },
+        {
+          "kind": "pop-high",
+          "at": "right"
+        }
+      ]
+    },
+    {
+      "id": "recap7",
+      "scene": "framework",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Six traps: the creep, the car, the cash, the small charges, the house and later. Each one took a slice of every raise.",
+      "events": {
+        "creep": {
+          "word": "creep"
+        },
+        "cash": {
+          "word": "cash"
+        },
+        "car": {
+          "word": "car"
+        },
+        "house": {
+          "word": "house"
+        },
+        "slice": {
+          "word": "slice"
+        },
+        "later": {
+          "word": "later"
+        },
+        "charges": {
+          "word": "charges"
+        }
+      },
+      "params": {
+        "items": [
+          {
+            "prop": "risetag",
+            "label": "Creep",
+            "at": "creep"
+          },
+          {
+            "prop": "sedan",
+            "label": "New car",
+            "at": "car"
+          },
+          {
+            "prop": "cashjar",
+            "label": "Safe cash",
+            "at": "cash"
+          },
+          {
+            "prop": "feetap",
+            "label": "Small charges",
+            "at": "charges"
+          },
+          {
+            "prop": "bighouse",
+            "label": "Bigger house",
+            "at": "house"
+          },
+          {
+            "prop": "alarmclock",
+            "label": "Later",
+            "at": "later"
+          }
+        ],
+        "layout": "row",
+        "open": 6,
+        "title": "All six",
+        "bg": "night",
+        "at": "slice",
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "creep"
+        },
+        {
+          "kind": "whoosh",
+          "at": "car"
+        },
+        {
+          "kind": "pop-high",
+          "at": "cash"
+        },
+        {
+          "kind": "ding",
+          "at": "charges"
+        }
+      ]
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "So that's why the raise never moved his balance: six traps took their share first. One rule for each, and Rohan finally steps off the treadmill.",
+      "events": {
+        "six": {
+          "word": "six"
+        },
+        "balance": {
+          "word": "balance"
+        },
+        "steps": {
+          "word": "steps"
+        },
+        "rule": {
+          "word": "rule"
+        },
+        "raise": {
+          "word": "raise"
+        },
+        "treadmill": {
+          "word": "treadmill"
+        }
+      },
+      "params": {
+        "component": "Payoff",
+        "rules": [
+          "Saves half a raise",
+          "Keeps the car longer",
+          "Beats rising prices",
+          "Checks every fee",
+          "Buys what he needs",
+          "Starts now"
+        ],
+        "stamp": "Off the treadmill",
+        "world": {
+          "kind": "kitchen"
+        },
+        "items": [
+          {
+            "id": "mill",
+            "prop": "treadmill",
+            "x": 0.5,
+            "size": 0.34
+          }
+        ],
+        "actions": [
+          {
+            "at": "steps",
+            "do": "state",
+            "target": "mill",
+            "state": "slow"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "rule",
+            "size": "close",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "steps",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "noCounter": true,
+          "level": 6
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "raise"
+        },
+        {
+          "kind": "pop",
+          "at": "six"
+        },
+        {
+          "kind": "ding",
+          "at": "rule"
+        },
+        {
+          "kind": "kaching",
+          "at": "steps"
+        },
+        {
+          "kind": "boom",
+          "at": "treadmill"
+        }
+      ]
+    },
+    {
+      "id": "recap",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Rohan's way out: he spends less than each raise, reads the fees, and starts early. So which trap are you in right now? Tell me the number.",
+      "events": {
+        "spends": {
+          "word": "spends"
+        },
+        "early": {
+          "word": "early"
+        },
+        "trap": {
+          "word": "trap"
+        },
+        "fees": {
+          "word": "fees"
+        },
+        "number": {
+          "word": "number"
+        }
+      },
+      "params": {
+        "header": "Which one are you in?",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "spends",
+            "prop": "payslip",
+            "x": 0.16,
+            "size": 0.38,
+            "label": "Spends less"
+          },
+          {
+            "id": "fees",
+            "prop": "note",
+            "x": 0.39,
+            "size": 0.32,
+            "label": "Reads fees",
+            "hidden": true
+          },
+          {
+            "id": "early",
+            "prop": "coin",
+            "x": 0.61,
+            "size": 0.32,
+            "label": "Starts early",
+            "hidden": true
+          },
+          {
+            "id": "door",
+            "prop": "exitdoor",
+            "x": 0.84,
+            "size": 0.42,
+            "label": "Your number?",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "spends"
+          },
+          {
+            "at": "spends",
+            "do": "grow",
+            "target": "spends",
+            "scale": 1.15
+          },
+          {
+            "at": "fees",
+            "do": "enter",
+            "target": "fees"
+          },
+          {
+            "at": "early",
+            "do": "enter",
+            "target": "early"
+          },
+          {
+            "at": "trap",
+            "do": "header",
+            "text": "Your trap?"
+          },
+          {
+            "at": "number",
+            "do": "enter",
+            "target": "door",
+            "how": "rise"
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "spends"
+        },
+        {
+          "kind": "whoosh",
+          "at": "fees"
+        },
+        {
+          "kind": "pop-high",
+          "at": "early"
+        },
+        {
+          "kind": "ding",
+          "at": "trap"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "role": "end",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Illustrative numbers with assumed rates. Which trap are you in? Comment the number below.",
+      "events": {},
+      "params": {
+        "cta": "Which trap are you in?",
+        "follow": "Follow for more money stories",
+        "assumption": "Illustrative amounts; inflation, loan, savings, fee and growth rates are assumed and held steady; before taxes; car value changes by an assumed {carval_rate} a year."
+      },
+      "sfx": []
+    }
+  ],
+  "narrator": "af_bella"
+}

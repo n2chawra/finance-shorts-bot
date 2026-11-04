@@ -1,0 +1,463 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-04T02:38:05.088441+00:00",
+    "finishedAt": "2026-11-04T02:38:05.088441+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-04T02:46:05.811650+00:00",
+    "finishedAt": "2026-11-04T02:46:05.811650+00:00",
+    "notes": [
+      "beat 'c2-loan'.params.actions[0].rows[2].value has a bad placeholder ('car_years'); allowed: big_amount, big_emi, big_interest, big_months, big_rate, big_total_paid, car_amount, car_emi, car_interest, car_months, car_rate, car_total_paid, carval_amount, carval_final, carval_final_long, carval_gains, carval_rate, carval_ratio, carval_years, cash_amount, cash_cash_lost, cash_cash_real, cash_final, cash_inflation, cash_inflation_cost, cash_rate, cash_real_final, cash_real_gains, cash_real_rate, cash_years, cashbase_amount, cashbase_final, cashbase_final_long, cashbase_gains, cashbase_rate, cashbase_ratio, cashbase_years, cashloss_a, cashloss_b, cashloss_diff, cashloss_pct, cashloss_ratio, creep_amount, creep_extra_month, creep_extra_total, creep_extra_year, creep_inflation, creep_new_monthly, creep_ratio, creep_total_cost, creep_years, early_amount, early_final, early_final_long, early_gains, early_invested, early_rate, early_ratio, early_years, fund_amount, fund_fee_pct, fund_per_period, fund_per_year_total, fund_total, fund_years, housegap_a, housegap_b, housegap_diff, housegap_pct, housegap_ratio, houseint_a, houseint_b, houseint_diff, houseint_pct, houseint_ratio, investdiff_a, investdiff_b, investdiff_diff, investdiff_pct, investdiff_ratio, late_amount, late_final, late_final_long, late_gains, late_invested, late_rate, late_ratio, late_years, small_amount, small_emi, small_interest, small_months, small_rate, small_total_paid, subs_amount, subs_fee_pct, subs_per_period, subs_per_year_total, subs_total, subs_years, wait_a, wait_b, wait_diff, wait_pct, wait_ratio",
+      "beat 'c1-tease' opens like a line in one of the last scripts ('and the next'): new words",
+      "beat 'c3-buys' opens like a line in one of the last scripts (\"but in today's\"): new words",
+      "beat 'c5-total' opens like a line in one of the last scripts (\"over years that's\"): new words",
+      "beat 'c6-interest' opens like a line in one of the last scripts ('over the whole'): new words",
+      "beat 'c7-early' opens like a line in one of the last scripts ('say rohan puts'): new words",
+      "beat 'c7-earlyend' opens like a line in one of the last scripts ('by the end'): new words",
+      "beat 'turn' opens like a line in one of the last scripts (\"here's the twist\"): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-04T02:47:10.236953+00:00",
+    "finishedAt": "2026-11-04T02:47:10.236953+00:00",
+    "notes": [
+      "beat 'c3-race'.params.actions[0].items[0].value: maths 'cash' has no value or series 'rate'; it has amount, cash_lost, cash_real, final, inflation_cost, inflation_pct, rate_pct, real, real_final, real_gains, real_rate, ticks, value, years, years",
+      "board beats 'c4-gym' and 'c5-ask' show the same picture: every beat brings a new one",
+      "beat 'c2-paid' opens like a line in one of the last scripts ('add it all'): new words",
+      "beat 'c3-race' opens like a line in one of the last scripts ('the bank pays'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-04T02:47:38.741856+00:00",
+    "finishedAt": "2026-11-04T02:47:38.741856+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas.",
+      "board beats 'c5-ask' and 'c5-year' show the same picture: every beat brings a new one",
+      "beat 'c2-paid' opens like a line in one of the last scripts ('all in he'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T02:47:51.915209+00:00",
+    "finishedAt": "2026-11-04T02:47:51.915209+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T02:49:11.273284+00:00",
+    "finishedAt": "2026-11-04T02:49:11.273284+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-04T02:53:31.531802+00:00",
+    "finishedAt": "2026-11-04T02:53:31.531802+00:00",
+    "notes": [
+      "beat 'c1-life'.params.actions[0].result.value: maths 'creep' has no value or series 'amount'; it has cost, extra_month, extra_total, extra_year, inflation_pct, monthly, new_monthly, total_cost, years",
+      "moneytree on screen in more than 4 beats: the same things all video long read as one static set; bring new things, or draw a returning one differently (a `state`)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T02:54:14.180959+00:00",
+    "finishedAt": "2026-11-04T02:54:14.180959+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T02:55:59.906345+00:00",
+    "finishedAt": "2026-11-04T02:55:59.906345+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T02:58:20.629198+00:00",
+    "finishedAt": "2026-11-04T02:58:20.629198+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T02:59:51.853230+00:00",
+    "finishedAt": "2026-11-04T02:59:51.853230+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:00:43.802150+00:00",
+    "finishedAt": "2026-11-04T03:00:43.802150+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:01:40.910029+00:00",
+    "finishedAt": "2026-11-04T03:01:40.910029+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:02:28.716954+00:00",
+    "finishedAt": "2026-11-04T03:02:28.716954+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:03:23.801291+00:00",
+    "finishedAt": "2026-11-04T03:03:23.801291+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:08:54.519514+00:00",
+    "finishedAt": "2026-11-04T03:08:54.519514+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:10:24.742671+00:00",
+    "finishedAt": "2026-11-04T03:10:24.742671+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:11:15.082336+00:00",
+    "finishedAt": "2026-11-04T03:11:15.082336+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:12:53.382702+00:00",
+    "finishedAt": "2026-11-04T03:12:53.382702+00:00",
+    "notes": [
+      "c1-term/c1-total: trap one labels pure inflation as lifestyle creep. c1-prices..c1-total compute what the SAME life costs at an assumed 3% (price_rise), then c1-term calls it lifestyle creep and the c1-total card 'What creep costs' plus the HUD 'Cost of the traps' counts $276,353 as the trap's cost. That cost is inflation, which happens whether or not Rohan spends his raise, so the number does not support the conclusion. Fix: retitle the c1-total card (e.g. 'Same life, 20 years on'), keep it out of the 'Cost of the traps' counter, and say the creep is what comes on top: each raise first has to cover rising prices, and spending the rest is what leaves savings flat.",
+      "c3-grows: 'With assumed inflation of 3%, in 10 years his cash grows to only $20,815' is wrong: the cash grows to $20,815 because of the 0.4% interest (the on-screen equation is $20,000 + 0.4% a year), not because of inflation. Fix: 'At 0.4% a year, in 10 years his cash grows to only $20,815.' and move the equation trigger from 'inflation' to a word in the new line.",
+      "c3-why: 'Easy-access savings pay little' is not true in general: US high-yield easy-access savings accounts pay a few percent (channel profile: US savings 3-5%). Only the typical big-bank account pays around 0.4%. Fix: 'Many big-bank savings accounts pay this little, because the bank lends that same money out at much higher rates.' and in c3-jar say 'a big-bank savings account'.",
+      "c5-year/c5-total: 'that fee is $1,000 every single year, whether the fund does well or badly' (header 'Every year, no matter what') and 'at least $30,000 in fees' are wrong for a percentage fee: 1% of a pot that falls is less than $1,000, and c5-share itself says the fee moves with the pot. Fix c5-year: 'On $100,000, that's $1,000 a year, and the fee is taken whether the fund does well or badly.' (header 'Taken every year'); c5-total: 'Even if the pot never grew, 30 years of it is $30,000 in fees, before counting the growth that money never got to earn.'",
+      "c6-sharma: 'The extra years of payments are [the expensive part]' (word overlay 'Years') is false: both mortgages are 360 months (small_months = big_months = 360); the bigger house costs a bigger payment, not more years. Fix: 'The extra payment is, every month for thirty years, and every one comes with a bill.' and change the word overlay to 'Every month'.",
+      "recap: 'Spend less than each raise, read the fees, and start early.' tells the viewer what to do with their money in the imperative (rule 4), and the recap equation shows 'Spend less + read fees = Start early'. Fix: 'Rohan's way out: he spends less than each raise, reads the fees, and starts early. So which trap are you in right now? Tell me the number.' Also reframe the payoff rules card (all imperatives: 'Save half of a raise', 'Keep the car longer', 'Beat rising prices', 'Check every fee', 'Buy what you need', 'Start now') as what Rohan does, e.g. 'He saves half of each raise', 'He keeps the car longer', 'He starts now'."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:14:18.553910+00:00",
+    "finishedAt": "2026-11-04T03:14:18.553910+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:15:37.419250+00:00",
+    "finishedAt": "2026-11-04T03:15:37.419250+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:16:54.998441+00:00",
+    "finishedAt": "2026-11-04T03:16:54.998441+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:11:16.354674+00:00",
+    "finishedAt": "2026-11-04T03:16:58.820344+00:00",
+    "notes": [
+      "text 'Spending grows with pay' at 67.4 s is 25.1 px, below the 30 px minimum",
+      "text 'Growth minus rising prices' at 165.3 s is 25.1 px, below the 30 px minimum",
+      "text 'The yearly fee of a fund' at 266.7 s is 25.1 px, below the 30 px minimum",
+      "text '$543,468' at 355.1 s runs outside the frame",
+      "text 'Growth on growth' at 382.4 s is 25.1 px, below the 30 px minimum",
+      "27 of 83 stills are mostly empty background (at 40 s, 65 s, 90 s, 105 s, 155 s, 160 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:18:05.710409+00:00",
+    "finishedAt": "2026-11-04T03:18:05.710409+00:00",
+    "notes": [
+      "105 figures computed from inputs; 71 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:20:47.550081+00:00",
+    "finishedAt": "2026-11-04T03:20:47.550081+00:00",
+    "notes": [
+      "110 figures computed from inputs; 76 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:22:37.147863+00:00",
+    "finishedAt": "2026-11-04T03:22:37.147863+00:00",
+    "notes": [
+      "Re-review of revised script: all six earlier problems fixed (c1 inflation no longer counted as creep cost, c3-grows credits the 0.4% rate, c3-why/c3-jar say big-bank accounts, c5 fee wording proportional, c6-sharma no 'extra years', recap and payoff rules describe Rohan, not imperatives). No sourced facts; topic verify items met; rates assumed and realistic; disclaimer ends description."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:22:14.157795+00:00",
+    "finishedAt": "2026-11-04T03:24:39.820040+00:00",
+    "notes": [
+      "text '$543,468' at 358.8 s runs outside the frame",
+      "25 of 84 stills are mostly empty background (at 40 s, 65 s, 70 s, 105 s, 120 s, 160 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:25:06.505612+00:00",
+    "finishedAt": "2026-11-04T03:25:06.505612+00:00",
+    "notes": [
+      "110 figures computed from inputs; 76 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:25:59.069537+00:00",
+    "finishedAt": "2026-11-04T03:27:52.996055+00:00",
+    "notes": [
+      "18 of 84 stills are mostly empty background (at 40 s, 120 s, 160 s, 165 s, 200 s, 215 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:28:25.557090+00:00",
+    "finishedAt": "2026-11-04T03:28:25.557090+00:00",
+    "notes": [
+      "110 figures computed from inputs; 76 cross-checked against closed-form formulas.",
+      "cashjar on screen in more than 4 beats: the same things all video long read as one static set; bring new things, or draw a returning one differently (a `state`)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:29:08.534627+00:00",
+    "finishedAt": "2026-11-04T03:29:08.534627+00:00",
+    "notes": [
+      "110 figures computed from inputs; 76 cross-checked against closed-form formulas.",
+      "paybook on screen in more than 4 beats: the same things all video long read as one static set; bring new things, or draw a returning one differently (a `state`)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:29:52.537259+00:00",
+    "finishedAt": "2026-11-04T03:29:52.537259+00:00",
+    "notes": [
+      "110 figures computed from inputs; 76 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:31:16.500357+00:00",
+    "finishedAt": "2026-11-04T03:33:13.794024+00:00",
+    "notes": [
+      "421 s, ember/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:35:53.022949+00:00",
+    "finishedAt": "2026-11-04T03:35:53.022949+00:00",
+    "notes": [
+      "[scene] Every beat, e.g. 35s c1-life, 95s c2-loan, 160s c3-grows, 240s c5-year, 370s c7-gap: the caption box and its speaker tag (NARRATOR/ROHAN) are drawn on top of the chapter chip row (1 Creep ... 6 Later), hiding '3 Safe cash' and '4 Small charges' and half of '2 New car'. Fix in the long-video HUD/captions: lift the chapter chips above the caption band (or move them to the top edge) so captions never sit over them.",
+      "[script] 0s hook (frame 0): no large number, question or statement on screen, only Rohan standing still on a treadmill and the caption 'Rohan just got a'. Fix: open the custom Hook on a big on-screen statement from frame 0 (e.g. 'RAISE: YES. BANK BALANCE: SAME.' or 'Six traps eat every raise'), with Rohan already running on the treadmill.",
+      "[script] 160s c3-grows: the equation ({cash_amount} + {cash_rate} a year = {cash_final}) never appears; only a tiny ~14 px '0.4%' floats between the jars and the beat shows no figure at all. Likely the event named 'at' (word 'At') does not resolve; rename the event key to 'rate' and point the equation's 'at' to it, so the strip shows 0,000 + 0.4% a year = the computed final.",
+      "[scene] board equation strip: the slammed figure is drawn behind the white strip and peeks out below it as a cut-off yellow ghost: 95s c2-loan ('8%' under '$45,000 at 8%, assumed'), 285s c6-small ('6.5%'), 310s c6-total ('$682,633'). Draw the slam above the strip or offset it below so the two texts never overlap.",
+      "[script] 295s-300s c6-interest: the HUD counter labelled 'COST OF THE TRAPS' shows $30,000 (the fund-fee total from trap four) during the house beat, then jumps to $127,544, which is the house interest alone; the label claims a running total it isn't. Also at 300s the tag '$127,544' on the paybook sits right under the counter's '$127,544', two copies of one number overlapping. Fix: label the counter 'This trap costs' (or make it a real running sum) and drop the duplicate tag action on 'interest'.",
+      "[script] 310s c6-total: header switches to 'The home he needs' at w23 while only the Bigger house is on screen; the 'needs' cottage enters at w31. Enter the cottage on 'against' (same word as the second term) so the header names something visible.",
+      "[script] 370s c7-gap: voice says 'Plan B puts in $90,000' while the strip shows '$126,000' (Plan A's figure). Reorder: say Plan A first, or make the equation's first term {late_invested} on 'B' and the second {early_invested} on 'A', so the figure on screen is the one being spoken.",
+      "[script] 120s c2-loop and 345s c7-road (journey scene): a tiny car / tiny pin and tree in the corner of a mostly empty flat background, no stop labels readable; the loop (loan ends, looks old, new loan, again) does not read on mute. Use a board with the four stops as big chips around a cycle arrow with the car moving between them, or a closer camera on the traveller.",
+      "[script] 260s c5-compare: the line compares two fee levels ('fund fees differ a lot... paying less') but the still shows one jar alone on a field. Show two pots side by side (high fee vs low fee) with labelled fee rates and the growth each keeps.",
+      "[script] 245s c5-total: frame is mostly flat orange with a tap at the right edge before the equation lands; and 140s-175s the same savings jar is the main picture for six beats in a row (c3-jar, c3-race, c3-why, c3-grows, c3-buys, c3-melt). Give c3-why a bank/lending picture (bank lends at a higher rate) and c3-race a race between the 0.4% jar and a 3% price tag, so each beat has a new picture.",
+      "[script] 415s recap: equation 'Spends less + reads fees = Starts early' reads as nonsense on mute, and the 'Your trap' trapdoor is cut off by the left edge. Use a three-item checklist (Spend less than each raise / Read the fees / Start early) and move the trap item to x>=0.28."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:35:58.974528+00:00",
+    "finishedAt": "2026-11-04T03:35:58.974528+00:00",
+    "notes": [
+      "[script] thumbnail (minor, fix alongside): the treadmill is empty, so nobody is 'trapped' on it, and the house circle is partly hidden behind Rohan's arm. 'TRAPPED?' in red is the exact word and colour of the 10M-view Dhruv Rathee cover right next to it in feed-preview.png. Put Rohan running on the treadmill (worried face big on the right still), keep both trap circles clear of his arm, and use our own word (e.g. 'SIX TRAPS?' in a red box)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:37:16.993019+00:00",
+    "finishedAt": "2026-11-04T03:37:16.993019+00:00",
+    "notes": [
+      "110 figures computed from inputs; 76 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:38:07.291409+00:00",
+    "finishedAt": "2026-11-04T03:38:07.291409+00:00",
+    "notes": [
+      "110 figures computed from inputs; 76 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:39:39.980203+00:00",
+    "finishedAt": "2026-11-04T03:41:36.432470+00:00",
+    "notes": [
+      "text 'Which trap are you in?' at 414.8 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:42:24.570830+00:00",
+    "finishedAt": "2026-11-04T03:44:12.529248+00:00",
+    "notes": [
+      "421 s, ember/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-04T03:45:37.556767+00:00",
+    "finishedAt": "2026-11-04T03:45:37.556767+00:00",
+    "notes": [
+      "[script] 120s c2-loop and 345s c7-road (framework): every card is drawn as an empty, faded box with a done-tick and no prop inside ('Loan ends', 'Looks old', 'New loan', 'Again'; 'Plan B starts', 'Same day', 'Retires'), and the first card hangs off the left edge. 'open': 4 marks all four as already done (recap7 uses open 6 the same way). Fix: set 'open': 0 so each card fills with its prop on its word; if the first card still clips, use layout 'row'.",
+      "[scene] 160s c3-grows (board): still no sum strip. At 160s the caption has reached 'in 10 years his cash grows to' (the 'year' event has passed), but the frame shows only a ~14 px '0.4%' floating between the jars and no figure. The same equation action works in c1-life, c5-total and c7-late, so the board drops this one. Script workaround: make c3-grows a stats beat with cards Put in {cash_amount} / Rate {cash_rate} / After {cash_years} years {cash_final}.",
+      "[script] 310s c6-total: the line has finished ('against $682,633 for the home he actually needs') but the 'needs' cottage never appears and the header is gone; only the bigger house and the sum '$910,178 - $682,633' are on screen, so the home he needs isn't shown. Enter the cottage on 'against' instead of 'home', and keep the camera wide (medium on all) so x 0.72 stays in frame."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:46:35.493159+00:00",
+    "finishedAt": "2026-11-04T03:46:35.493159+00:00",
+    "notes": [
+      "110 figures computed from inputs; 76 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:47:57.547219+00:00",
+    "finishedAt": "2026-11-04T03:49:54.043332+00:00",
+    "notes": [
+      "421 s, ember/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:50:58.376599+00:00",
+    "finishedAt": "2026-11-04T03:50:58.376599+00:00",
+    "notes": [
+      "Round 3: the c2-loop/c7-road frameworks fill card by card with props on their words, c3-grows shows Put in $20,000 / Rate 0.4% / After 10 years $20,815, c6-total brings in the 'What he needs' cottage beside the bigger house, hook, thumbnail ('SIX TRAPS?') and disclaimer OK, code checks clean (421 s, -1/-17 dB). Non-blocking: captions over the chapter chip row and the slam ghost under sum strips (kit, logged for improver); c3-grows count-up passes through $14,570 (below the $20,000 put in) while $20,815 is spoken, so start it at the put-in or slam it."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:51:16.605344+00:00",
+    "finishedAt": "2026-11-04T03:51:16.605344+00:00",
+    "notes": [
+      "110 figures computed from inputs; 76 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-04T03:51:57.194818+00:00",
+    "finishedAt": "2026-11-04T04:11:06.335939+00:00",
+    "notes": [
+      "421 s, ember/cinematic, peak -1.0 dB, mean -17.0 dB"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-04T04:11:34.034636+00:00",
+    "finishedAt": "2026-11-04T04:11:34.034636+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-04T04:11:35.039319+00:00",
+    "finishedAt": "2026-11-04T04:11:35.039319+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
