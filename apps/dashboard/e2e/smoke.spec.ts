@@ -266,6 +266,14 @@ test("videos topic filter offers every category it is given", async ({ page }) =
   await expect(page.getByRole("option", { name: "Credit card" })).toBeVisible();
 });
 
+test("videos topic filter shows how many videos each topic has", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/videos");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Videos/, { timeout: 30_000 });
+  await page.getByRole("combobox", { name: "Topic" }).click();
+  await expect(page.getByRole("option", { name: /^Credit card \(\d+\)$/ })).toBeVisible();
+});
+
 test("videos search box clears when the link drops the search", async ({ page, isMobile }) => {
   test.skip(isMobile, "the sidebar link is a desktop feature");
   await signIn(page);
@@ -349,6 +357,22 @@ test("calendar draws long-video thumbnails landscape", async ({ page }) => {
   expect(ratios.some((r) => r > 1.5), `a landscape thumbnail among ${ratios.map((r) => r.toFixed(2))}`).toBe(true);
 });
 
+test("calendar shows the first slot nothing is ready for", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  await page.waitForLoadState("networkidle");
+  // a running-dry backlog showed only on the Queue page: the calendar just stopped drawing uploads
+  let day = page.getByRole("button", { name: /nothing ready for the \d\d:\d\d Short slot/ }).first();
+  if (!(await day.count())) {
+    await page.getByRole("button", { name: "Next month" }).click();
+    day = page.getByRole("button", { name: /nothing ready for the \d\d:\d\d Short slot/ }).first();
+  }
+  await day.click();
+  await expect(page.getByText(/Nothing is ready for the \d\d:\d\d IST Short slot/)).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open the queue" })).toHaveAttribute("href", "/queue");
+});
+
 test("calendar marks long videos apart from Shorts", async ({ page }) => {
   await signIn(page);
   await page.goto("/calendar");
@@ -427,4 +451,39 @@ test("card header actions never sit on the card's title", async ({ page }) => {
   expect(overlap(desc!, sw!), "metric switch over the description").toBe(false);
   expect(desc!.width, "description column width").toBeGreaterThanOrEqual(200);
   expect(sw!.height, "switch labels stay on one line").toBeLessThanOrEqual(34);
+});
+
+test("tab rows that scroll on phones fade at the edge with more tabs", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "the tab row fits on desktop");
+  await signIn(page);
+  await page.goto("/agents");
+  const list = page.getByRole("tablist", { name: "Agent sections" });
+  await expect(list).toBeVisible({ timeout: 30_000 });
+  // the row scrolled with no scrollbar and nothing said a "Merge log" tab sat off-screen
+  const fade = () => list.evaluate((el) => ({
+    overflows: el.scrollWidth > el.clientWidth + 1,
+    left: parseFloat(getComputedStyle(el).getPropertyValue("--fade-l")),
+    right: parseFloat(getComputedStyle(el).getPropertyValue("--fade-r")),
+  }));
+  const start = await fade();
+  test.skip(!start.overflows, "every tab fits at this width");
+  expect(start.right, "a fade on the right while tabs hide there").toBeGreaterThan(0);
+  expect(start.left, "no fade on the left at the start").toBe(0);
+  await list.evaluate((el) => el.scrollTo({ left: el.scrollWidth }));
+  await expect.poll(async () => (await fade()).right).toBe(0);
+});
+
+test("feedback form names the kind it will save", async ({ page }) => {
+  await signIn(page);
+  // the Kind field looked empty for the default kind (General here, Improve on a video page)
+  await page.goto("/feedback");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Feedback/, { timeout: 30_000 });
+  const kind = page.getByRole("combobox", { name: "Kind" });
+  await expect(kind).toHaveText("General");
+  await kind.click();
+  await page.getByRole("option", { name: "Wrong" }).click();
+  await expect(kind).toHaveText("Wrong");
+  await kind.click();
+  await page.getByRole("option", { name: "General" }).click();
+  await expect(kind).toHaveText("General");
 });

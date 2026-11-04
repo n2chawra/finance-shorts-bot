@@ -365,7 +365,7 @@ export default function AgentsPage() {
       </div>
 
       <Tabs.Root value={tab} onValueChange={setTab} className="mt-6">
-        <Tabs.List aria-label="Agent sections" className="no-scrollbar mb-4 flex gap-1 overflow-x-auto border-b border-ring">
+        <Tabs.List aria-label="Agent sections" className="no-scrollbar scroll-fade-x mb-4 flex gap-1 overflow-x-auto border-b border-ring">
           {tabs.map((t) => (
             <Tabs.Trigger key={t.value} value={t.value} className={TAB}>
               {t.label}

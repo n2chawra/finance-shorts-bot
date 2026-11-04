@@ -118,10 +118,14 @@
       "id": "calendar-empty-slots",
       "kind": "idea",
       "title": "Calendar: show slots nothing is ready for",
-      "detail": "The posting plan already knows the first empty slot. Showing it as a dashed 'Nothing ready' entry makes a running-dry backlog visible on the calendar, not just on the Queue page. Content-planner calendars also make an empty slot a link to act on (here: to the Queue page).",
+      "detail": "The posting plan already knows the first empty slot. Showing it as a dashed 'Nothing ready' entry makes a running-dry backlog visible on the calendar, not just on the Queue page. Content-planner calendars also make an empty slot a link to act on (here: to the Queue page). Done: the posting plan's first empty Short and long-video slots show as a dashed amber \"Nothing ready\" entry; the day panel says which slot and links to the Queue; the legend explains it. Smoke test.",
       "page": "calendar",
       "found": "2026-10-21",
-      "status": "open"
+      "status": "done",
+      "done": "2026-11-04",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-11-04"
+      }
     },
     {
       "id": "video-due-slot-label",
@@ -189,10 +193,16 @@
       "id": "tabs-overflow-cue",
       "kind": "idea",
       "title": "Agents and video page: show that the tab row scrolls on phones",
-      "detail": "The tab rows now scroll sideways on phones with no scrollbar. A soft fade on the edge with more tabs (design-system guides recommend it where browsers hide scrollbars) tells the owner there is a 'Merge log' tab off-screen.",
+      "detail": "The tab rows now scroll sideways on phones with no scrollbar. A soft fade on the edge with more tabs (design-system guides recommend it where browsers hide scrollbars) tells the owner there is a 'Merge log' tab off-screen. Done: a `scroll-fade-x` class (globals.css) fades the edge that has more tabs, driven by the row's own scroll position, so a row that fits shows no fade. On the Agents, video page and Videos status tabs. Smoke test on phone.",
       "page": "agents",
       "found": "2026-10-23",
-      "status": "open"
+      "status": "done",
+      "done": "2026-11-04",
+      "lastTouched": {
+        "apps/dashboard/src/app/globals.css": "2026-11-04",
+        "apps/dashboard/src/app/agents/page.tsx": "2026-11-04",
+        "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-11-04"
+      }
     },
     {
       "id": "notifications-resolve-undo",
@@ -251,10 +261,14 @@
       "id": "videos-topic-counts",
       "kind": "idea",
       "title": "Videos: show how many videos each Topic option has",
-      "detail": "Faceted-filter guides agree: a count beside each option sets expectations and avoids empty results. 'Credit card (4)' tells the owner at a glance which money topics the channel leans on, with no extra page.",
+      "detail": "Faceted-filter guides agree: a count beside each option sets expectations and avoids empty results. 'Credit card (4)' tells the owner at a glance which money topics the channel leans on, with no extra page. Done: each Topic option reads e.g. \"Credit card (4)\", counted from the same video list the options come from. Smoke test.",
       "page": "videos",
       "found": "2026-10-26",
-      "status": "open"
+      "status": "done",
+      "done": "2026-11-04",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/page.tsx": "2026-11-04"
+      }
     },
     {
       "id": "queue-trend-badge-date",
@@ -485,6 +499,37 @@
       "detail": "The tab is read from the URL hash only on first load, so a link to /analytics#reach while already on /analytics keeps the old tab. Listen for hashchange. Small; helps 'More →' style links and the browser back button.",
       "page": "analytics",
       "found": "2026-11-03",
+      "status": "open"
+    },
+    {
+      "id": "feedback-kind-blank",
+      "kind": "bug",
+      "title": "Feedback: the Kind field looked empty for the default kind",
+      "detail": "FeedbackPanel passed its first kind by name to SelectField, which uses that kind as its 'all' option (value ''), so no option matched and the field showed nothing: 'General' on the Feedback page, 'Improve' on every video page, also after picking it again. Now passed as no value. Also: a failed feedback load said 'No feedback yet'; it now shows the error, and a skeleton while loading. Smoke test, checked to fail without the fix.",
+      "page": "feedback",
+      "found": "2026-11-04",
+      "status": "done",
+      "done": "2026-11-04",
+      "lastTouched": {
+        "apps/dashboard/src/components/feedback.tsx": "2026-11-04"
+      }
+    },
+    {
+      "id": "calendar-phone-dot-shape",
+      "kind": "idea",
+      "title": "Calendar on phones: tell scheduled from planned by shape, not colour alone",
+      "detail": "At phone width a day cell shows only dots, and Scheduled (blue) vs Planned (grey) differ by colour only. Ops-dashboard guidance pairs status colour with a shape or text for colour-blind readers: a filled dot for scheduled, a hollow one for planned (the 'Nothing ready' gap is already dashed). Helps the owner read the week on the phone at a glance.",
+      "page": "calendar",
+      "found": "2026-11-04",
+      "status": "open"
+    },
+    {
+      "id": "overview-needs-you",
+      "kind": "idea",
+      "title": "Overview: one 'Needs you' list at the top",
+      "detail": "Exception-first layout: the sign-in alert, today's missed slots, a backlog running dry ('Nothing ready' from the posting plan) and open critical notifications, gathered in one short list above the stat cards, and nothing at all on a healthy day. The owner checks twice a day; today these sit in four places (banner, Queue, Calendar, bell).",
+      "page": "overview",
+      "found": "2026-11-04",
       "status": "open"
     }
   ]

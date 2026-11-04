@@ -2,6 +2,7 @@
 "use client";
 
 import { CalendarDays, ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { Badge, Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, StatusBadge, Thumb, VideoLink } from "@/components/ui";
@@ -16,6 +17,7 @@ const LONG_MARK = "w-3 rounded-sm";   // long videos get a dash on phones (no ro
 const LONG_DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];   // settings count days from Sunday = 0
 type Kind = "published" | "scheduled" | "planned";
 type Entry = { video: Video; kind: Kind; at: number };
+type Gap = { at: number; format: "short" | "long" };   // the first slot nothing is ready for
 
 const key = (y: number, m: number, d: number) => `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 const KIND: Record<Kind, { dot: string; label: string }> = {
@@ -36,6 +38,7 @@ export default function CalendarPage() {
   const times = useMemo(() => settings.data?.uploadTimes ?? ["19:07"], [settings.data]);
   const byDay = useMemo(() => {
     const map = new Map<string, Entry[]>();
+    const gaps = new Map<string, Gap[]>();
     const add = (e: Entry) => { const k = istDay(new Date(e.at)); map.set(k, [...(map.get(k) ?? []), e].sort((a, b) => a.at - b.at)); };
     const posted: Video[] = [];
     for (const v of videos.data ?? []) {
@@ -50,9 +53,12 @@ export default function CalendarPage() {
     if (!overview.data?.uploadsPaused) {
       const q = queue.data ?? [];
       const plan = s ? [...postingPlan("short", q, posted, s), ...postingPlan("long", q, posted, s)] : [];
-      for (const slot of plan) if (slot.video) add({ video: slot.video, kind: "planned", at: slot.at });
+      for (const slot of plan) {
+        if (slot.video) add({ video: slot.video, kind: "planned", at: slot.at });
+        else if (slot.state === "upcoming") { const k = istDay(new Date(slot.at)); gaps.set(k, [...(gaps.get(k) ?? []), { at: slot.at, format: slot.format }]); }
+      }
     }
-    return map;
+    return { map, gaps };
   }, [videos.data, queue.data, overview.data, settings.data]);
 
   if (videos.isLoading || queue.isLoading || overview.isLoading) return <Loading />;
@@ -64,12 +70,14 @@ export default function CalendarPage() {
   const cells: (number | null)[] = [...Array(lead).fill(null), ...Array.from({ length: days }, (_, i) => i + 1)];
   while (cells.length % 7) cells.push(null);
   const shift = (n: number) => setYm(({ y, m }) => { const d = new Date(Date.UTC(y, m + n, 1)); return { y: d.getUTCFullYear(), m: d.getUTCMonth() }; });
-  const picked = byDay.get(selected) ?? [];
+  const picked = byDay.map.get(selected) ?? [];
+  const pickedGaps = byDay.gaps.get(selected) ?? [];
+  const hhmm = (at: number) => new Date(at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false });
   const monthName = new Intl.DateTimeFormat("en-IN", { month: "long", year: "numeric", timeZone: "UTC" }).format(first);
   const long = settings.data;
   const longWhen = long?.longUploadDays.length && long.longUploadTimes.length
     ? ` · long videos ${[...long.longUploadDays].sort().map((d) => LONG_DAYS[d]).join("/")} at ${describeTimes(long.longUploadTimes)}` : "";
-  const monthCount = [...byDay.keys()].filter((k) => k.startsWith(key(ym.y, ym.m, 1).slice(0, 7))).length;
+  const monthCount = [...byDay.map.keys()].filter((k) => k.startsWith(key(ym.y, ym.m, 1).slice(0, 7))).length;
 
   return (
     <Stagger>
@@ -92,11 +100,12 @@ export default function CalendarPage() {
               const edge = `${i % 7 !== 6 ? "border-r" : ""} ${i < cells.length - 7 ? "border-b" : ""} border-line`;
               if (d === null) return <div key={`b${i}`} className={`bg-surface-2/50 ${edge}`} />;
               const k = key(ym.y, ym.m, d);
-              const list = byDay.get(k) ?? [];
+              const list = byDay.map.get(k) ?? [];
+              const gaps = byDay.gaps.get(k) ?? [];
               const on = selected === k;
               return (
                 <button key={k} type="button" onClick={() => setSelected(k)} aria-pressed={on}
-                  aria-label={`${d} ${monthName}${list.length ? `, ${list.map((e) => `${KIND[e.kind].label}${e.video.format === "long" ? " long video" : ""}: ${e.video.title}`).join("; ")}` : ", no upload"}`}
+                  aria-label={`${d} ${monthName}${list.length ? `, ${list.map((e) => `${KIND[e.kind].label}${e.video.format === "long" ? " long video" : ""}: ${e.video.title}`).join("; ")}` : gaps.length ? "" : ", no upload"}${gaps.map((g) => `, nothing ready for the ${hhmm(g.at)} ${g.format === "long" ? "long-video" : "Short"} slot`).join("")}`}
                   className={`relative flex min-h-16 flex-col gap-1 p-1.5 text-left text-xs transition-colors md:min-h-[92px] md:p-2 ${edge} ${on ? "bg-brand-soft" : "hover:bg-wash"}`}>
                   <span className={`grid size-6 place-items-center rounded-full tabular-nums ${k === today ? "bg-primary font-semibold text-primary-ink" : on ? "font-medium text-ink" : "text-ink2"}`}>{d}</span>
                   <span className="flex flex-col gap-1">
@@ -105,6 +114,12 @@ export default function CalendarPage() {
                         <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden shrink-0 rounded-[3px] border border-ring object-cover md:block ${e.video.format === "long" ? "aspect-video w-6" : "aspect-[9/16] w-4"} ${e.kind === "planned" ? "opacity-60" : ""}`} />
                         <span aria-hidden className={`h-1.5 shrink-0 ${e.video.format === "long" ? `${LONG_MARK} md:w-1.5 md:rounded-full` : "w-1.5 rounded-full"} ${KIND[e.kind].dot}`} />
                         <span className="hidden truncate text-[11px] text-ink2 md:inline">{e.kind === "published" ? `${fmtCompact(e.video.totals?.views ?? 0)} views` : new Date(e.at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false })}{e.video.format === "long" && <span className="ml-1 font-semibold text-brand-text">Long</span>}</span>
+                      </span>
+                    ))}
+                    {gaps.map((g) => (
+                      <span key={`gap-${g.format}`} data-gap className="flex min-w-0 items-center gap-1.5 md:gap-1">
+                        <span aria-hidden className={`h-1.5 shrink-0 border border-dashed border-warning ${g.format === "long" ? `${LONG_MARK} md:w-1.5 md:rounded-full` : "w-1.5 rounded-full"}`} />
+                        <span className="hidden truncate text-[11px] text-warning-text md:inline">Nothing ready{g.format === "long" && <span className="ml-1 font-semibold text-brand-text">Long</span>}</span>
                       </span>
                     ))}
                   </span>
@@ -116,6 +131,11 @@ export default function CalendarPage() {
 
         <div className="flex flex-col gap-3">
           <Card title={new Intl.DateTimeFormat("en-IN", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${selected}T00:00:00Z`))}>
+            {pickedGaps.map((g) => (
+              <p key={`gap-${g.format}`} className="mb-3 rounded-md border border-dashed border-warning bg-warning-soft px-3 py-2 text-[13px] text-warning-text">
+                Nothing is ready for the {hhmm(g.at)} IST {g.format === "long" ? "long-video" : "Short"} slot. <Link href="/queue" className="font-medium underline underline-offset-2">Open the queue</Link>
+              </p>
+            ))}
             {picked.length ? (
               <ul className="flex flex-col divide-y divide-line">
                 {picked.map((e) => (
@@ -133,12 +153,13 @@ export default function CalendarPage() {
                   </li>
                 ))}
               </ul>
-            ) : <Empty icon={CalendarDays}>No upload on this day.</Empty>}
+            ) : !pickedGaps.length && <Empty icon={CalendarDays}>No upload on this day.</Empty>}
           </Card>
           <Card title="Legend" description={`${monthCount} day${monthCount === 1 ? "" : "s"} with an upload this month`}>
             <ul className="flex flex-col gap-2 text-[13px] text-ink2">
               {(Object.keys(KIND) as Kind[]).map((k) => <li key={k} className="flex items-center gap-2"><span aria-hidden className={`size-2 rounded-full ${KIND[k].dot}`} />{KIND[k].label}</li>)}
               <li className="flex items-center gap-2"><span aria-hidden className={`h-2 ${LONG_MARK} bg-muted`} />Long video</li>
+              <li className="flex items-center gap-2"><span aria-hidden className="size-2 rounded-full border border-dashed border-warning" />Nothing ready for this slot yet</li>
             </ul>
           </Card>
         </div>

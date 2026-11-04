@@ -1,0 +1,53 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-04",
+  "startedAt": "2026-11-04T18:11:15Z",
+  "finishedAt": "2026-11-04T18:24:04Z",
+  "summary": "Fixed the feedback form's Kind field (it looked empty for the default kind), and shipped three backlog ideas: 'Nothing ready' slots on the Calendar, topic counts on the Videos filter, and an edge fade on tab rows that scroll on phones.",
+  "decision": "acted",
+  "why": "All checks were green and last night's branch merged, so tonight went to a bug found in the code review of the feedback panel (the owner sees it on every video page) and the three smallest open ideas on pages not touched in the last 7 days.",
+  "findings": [
+    {
+      "title": "Feedback: Kind field blank for the default kind",
+      "detail": "FeedbackPanel passed its first kind by name to a select that uses it as the 'all' option, so 'General' (Feedback page) and 'Improve' (video pages) showed as an empty field."
+    },
+    {
+      "title": "Live site healthy",
+      "detail": "/api/health answered: us-east-2, database 2.9 s."
+    },
+    {
+      "title": "Trends: exception-first ops dashboards",
+      "detail": "Guides pair status colour with shape and show only what needs attention; two ideas added (Overview 'Needs you' list, filled vs hollow calendar dots on phones).",
+      "link": "https://products-by-klivvr.pages.dev/products/web-ops-console/articles/data-visualization-patterns"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Feedback Kind field shows the default kind",
+      "detail": "components/feedback.tsx; also an error note and a skeleton instead of 'No feedback yet' when the list fails or loads. Smoke test.",
+      "branch": "agent/dashboard/2026-11-04"
+    },
+    {
+      "title": "Calendar: 'Nothing ready' slots",
+      "detail": "The first empty Short and long-video slot shows dashed amber on the grid; the day panel names the slot and links to the Queue. Smoke test.",
+      "branch": "agent/dashboard/2026-11-04"
+    },
+    {
+      "title": "Videos: topic counts",
+      "detail": "Each Topic option reads e.g. 'Credit card (4)'. Smoke test.",
+      "branch": "agent/dashboard/2026-11-04"
+    },
+    {
+      "title": "Tab rows fade at the edge with more tabs",
+      "detail": "globals.css scroll-fade-x on the Agents, video page and Videos tabs; no fade when the row fits. Smoke test on phone.",
+      "branch": "agent/dashboard/2026-11-04"
+    }
+  ],
+  "nextCheck": "2026-11-05",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/dashboard/2026-11-04.md"
+    }
+  ]
+}

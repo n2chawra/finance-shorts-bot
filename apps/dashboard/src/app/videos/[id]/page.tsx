@@ -200,7 +200,7 @@ export default function VideoPage() {
         </div>
 
         <Tabs.Root value={current} onValueChange={setTab} className="min-w-0">
-          <Tabs.List aria-label="Video sections" className="no-scrollbar mb-4 flex gap-1 overflow-x-auto border-b border-ring">
+          <Tabs.List aria-label="Video sections" className="no-scrollbar scroll-fade-x mb-4 flex gap-1 overflow-x-auto border-b border-ring">
             {tabs.map((t) => (
               <Tabs.Trigger key={t.value} value={t.value} className={TAB}>
                 {t.label}
