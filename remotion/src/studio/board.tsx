@@ -49,6 +49,7 @@ import { INK, PALETTE, type PropSet, shade } from "./draw";
 import { SHARED_PROPS } from "./build";
 import { VIDEOS } from "../videos/hooks";
 import { showsSource } from "./source";
+import { SHARED_GROUND, SHARED_PANEL_BOTTOM, sharesCard } from "./cardshare";
 
 /** The board's looks; generator/looks.py holds the same lists (a test keeps them in step). */
 export const LOOKS = {
@@ -183,6 +184,11 @@ export const BoardScene: React.FC<SceneProps> = (p) => {
 
   // a room has the cast; a card has none (the answer fills the frame)
   const card = !((P.cast ?? P.actors ?? []) as unknown[]).length;
+  // a Short's card whose one panel is small (a person, a short document) keeps its things on screen:
+  // the panel takes the top, the things stand under it (owner, 2026-11-04, v-20261104-02: "after the
+  // hook 17 seconds of video has texts only, no props animation"; a person card and two documents
+  // had hidden every thing). A card with several panels or a long document still gives them the frame.
+  const keepThings = sharesCard(P.actions ?? [], (P.items ?? []).length, v);
   // the stage: the build scene, camera still, the board's own verbs taken out
   const stageBeat = {
     ...p.beat,
@@ -190,8 +196,8 @@ export const BoardScene: React.FC<SceneProps> = (p) => {
     // (owner, 2026-11-02: "the animations are over the characters' heads while there's lots of space
     // below"): in a room the cast stands low and the picture floats big above them; a card (no cast:
     // the answer, as The Curious Plot shows it) is one flat colour with the picture in its middle
-    params: { world: card ? { kind: "flat", tint: P.bg, ground: v ? 0.62 : 0.7, bare: true } : { kind: P.stage ?? look.stage, tint: P.bg, ground: v ? 0.735 : 0.8 },
-      items: P.items ?? [], yieldAll: card,
+    params: { world: card ? { kind: "flat", tint: P.bg, ground: v ? (keepThings ? SHARED_GROUND : 0.62) : 0.7, bare: true } : { kind: P.stage ?? look.stage, tint: P.bg, ground: v ? 0.735 : 0.8 },
+      items: P.items ?? [], yieldAll: card && !keepThings,
       actors: ((P.cast ?? P.actors ?? []) as { scale?: number }[]).map((a) => ({ ...a, scale: a.scale ?? (v ? 0.86 : 0.8) })),
       actions: (P.actions ?? []).filter((a) => !OVERLAY.has(a.do)), locked: true, carried: [...carried], yieldTo: panelIn,
       attention: true, floatY: card ? 0 : v ? ROOM_FLOAT_SHORT : 0.22, heroY: card ? undefined : v ? 0.255 : 0.24 },
@@ -209,6 +215,7 @@ export const BoardScene: React.FC<SceneProps> = (p) => {
   const hasChips = acts.some((a) => a.do === "chip");
   const panelBox = v ? { x0: w * 0.07, x1: w * 0.87, y0: h * 0.175, y1: h * (card ? (hasChips ? 0.63 : 0.69) : 0.5) } : { x0: w * 0.52, x1: w * 0.94, y0: h * 0.27, y1: h * 0.74 };
   if (v && (eq || term)) panelBox.y0 = h * 0.28;
+  if (v && card && keepThings) panelBox.y1 = h * SHARED_PANEL_BOTTOM;
   const progress = clamp((p.beat.from + p.frame / (p.tl.tempo || 1)) / p.tl.durationInFrames);
   // the source line shows once a video, on the first board beat that says a sourced figure (owner, 2026-11-03)
   const factSaid = showsSource(p);
@@ -435,7 +442,7 @@ export const BoardScene: React.FC<SceneProps> = (p) => {
   // chips line up under the picture, each arriving on its word
   const chipTone = (tone?: string) => ({ bg: TONE[tone ?? "accent"] ?? PALETTE.yellow, ink: tone === "bad" || tone === "blue" ? "#fff" : INK });
   const chipNode = chips.length ? (
-    <div style={{ position: "absolute", left: box.x0 + 20, right: w - box.x1 + 20, top: v ? h * (card ? (stack.length ? 0.645 : 0.665) : 0.52) : h * 0.76, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 18 }}>
+    <div style={{ position: "absolute", left: box.x0 + 20, right: w - box.x1 + 20, top: v ? h * (card ? (keepThings ? SHARED_GROUND + 0.012 : stack.length ? 0.645 : 0.665) : 0.52) : h * 0.76, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 18 }}>
       {chips.map((c, i) => { const cs = chipTone(c.tone); return (
         <div key={i} style={{ fontFamily: FONT, fontWeight: 900, fontSize: Math.max(min, fitLine((c.text ?? "").toUpperCase(), v ? 50 : 36, maxW * 0.9, { min, upper: true })), textTransform: "uppercase",
           background: cs.bg, color: cs.ink, border: `6px solid ${INK}`, borderRadius: 16, padding: "4px 20px", boxShadow: "0 8px 0 rgba(0,0,0,0.22)", ...arrive("stamp", t - c.start, c.start) }}>{c.text}</div>

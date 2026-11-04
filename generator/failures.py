@@ -24,7 +24,7 @@ KINDS: list[tuple[str, str, str]] = [
     ("render", r"picture|shows|don't show|literal", "the picture doesn't show what is said: each action fires on the word that names it"),
     ("render", r"close or extreme|shot size|same size|in a row", "camera variety: a close shot at least every few seconds, never four of one size in a row"),
     ("render", r"props? of its own|were in v-|were in L-", "props: draw 8+ of the story's own things, not the last videos'"),
-    ("render", r"^length|length about", "length outside the settings' range: count the words (about 175 a minute for Shorts, 215 long)"),
+    ("render", r"^length|length about", "length outside the settings' range: count the words (about 175 a minute for Shorts, 180 long)"),
     ("render", r"empty|blank", "empty frames: something on screen from the first frame of every beat"),
     ("render", r"tsc|import|Hook\.tsx|Turn\.tsx|Payoff\.tsx|props\.tsx", "own code: type-safe (`!` or `??` on lookups), only kit imports"),
     ("render", r"thumbnail", "thumbnail rules: ≤ 4 words, no digits, adds to the title, big at phone size"),

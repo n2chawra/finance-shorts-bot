@@ -62,7 +62,9 @@ SPEEDS = {"long": 1.0, "short": 1.0}
 # Shorts 1.4 from 2026-10-21 to 2026-10-30, when the owner found them too fast to follow ("I need to
 # watch 2 times to understand", ~205 words a minute; explainers speak 130-160): 1.1 is ~160
 # 1.1 on 2026-10-30, then 1.2 the same day (owner: "a little faster, just a little"): ~175 a minute
-TEMPOS = {"long": 1.5, "short": 1.2}
+# Long 1.5 from 2026-10-17 to 2026-11-04, when the owner found L-20261104-01 too fast ("Speed is very
+# fast, can't hear things clearly", ~215 a minute): 1.25, ~180 a minute, close to the Shorts' pace
+TEMPOS = {"long": 1.25, "short": 1.2}
 
 
 @dataclass

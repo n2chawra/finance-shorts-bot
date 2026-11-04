@@ -330,7 +330,7 @@
       "effort": "S",
       "risk": "Confounded with voice and length in our data; may make titles longer. A/B on avgViewPct.",
       "metric": "avgViewPct",
-      "status": "testing",
+      "status": "reverted",
       "route": "experiment",
       "priority": "normal"
     },
@@ -846,7 +846,7 @@
       "effort": "S",
       "risk": "Personal-budget formats were dropped by the variant system (0.14x); this must stay inside core formats (secret_of_rich, how_they_make_money), not drift back to budgeting",
       "metric": "views48h",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
       "priority": "normal"
     }

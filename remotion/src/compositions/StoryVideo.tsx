@@ -16,6 +16,7 @@ import { Timeline, type Beat } from "../contract/timeline";
 import { LayoutProbe } from "../fx/probe";
 import { captionGroups, captionTokens, Captions } from "../fx/captions";
 import { FONT } from "../design/fonts";
+import { LONG, SHORT } from "../design/frame";
 import { cameraTransform, exitStyle, transitionFrames, transitionStyle, Vignette } from "../fx/camera";
 import type { SceneProps } from "../scenes/kit";
 import { ChapterScene, ChecklistScene, EndScene, StageScene } from "../scenes/stage";
@@ -68,13 +69,16 @@ const LogoBug: React.FC<{ w: number; h: number }> = ({ w, h }) => {
 };
 
 /** A Short without an end card (it loops back to its hook) still says this, small, in its last moments. */
-const DisclaimerLine: React.FC<{ tl: Timeline; low?: boolean }> = ({ tl, low }) => {
+const DisclaimerLine: React.FC<{ tl: Timeline; low?: boolean }> = ({ tl }) => {
   const v = tl.height > tl.width;
-  // over a board the top belongs to its header: the line sits just above the captions instead
+  // small, at the bottom of the frame, under the captions and just clear of the Shorts UI zone (owner,
+  // 2026-11-04: "put the disclaimer at the below end of the screen, small"; it sat over the cast's legs).
+  // The smallest text a frame allows, a slim pill; its bottom edge stays above the frame's bottom zone.
+  const f = v ? SHORT : LONG, size = f.minText, pill = Math.round(size * 1.15) + 8;
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: low ? (v ? tl.height * 0.69 : tl.height * 0.76) : v ? tl.height * 0.09 : tl.height * 0.06, display: "flex", justifyContent: "center" }}>
-      <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: v ? 44 : 30, color: "#fff", background: "rgba(0,0,0,0.62)",
-        padding: v ? "10px 28px" : "6px 20px", borderRadius: 999 }}>{tl.disclaimer}</div>
+    <div style={{ position: "absolute", left: 0, right: 0, top: tl.height - f.bottomSafe - pill - 12, display: "flex", justifyContent: "center" }}>
+      <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: size, lineHeight: 1.15, color: "#fff", background: "rgba(0,0,0,0.5)",
+        padding: "4px 22px", borderRadius: 999, whiteSpace: "nowrap" }}>{tl.disclaimer}</div>
     </div>
   );
 };

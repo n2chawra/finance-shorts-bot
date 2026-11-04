@@ -201,7 +201,7 @@
       "proposal": "title-names-the-moment",
       "area": "title",
       "format": "short",
-      "status": "running",
+      "status": "reverted",
       "startedAt": "2026-10-22",
       "templates": [
         "short_story"
@@ -211,7 +211,19 @@
       "maxDays": 28,
       "metric": "avgViewPct",
       "hypothesis": "A title naming a lived moment brings viewers who recognise the situation and stay: higher average % viewed than an abstract-claim title.",
-      "description": "Shorts: titles name who and the everyday moment (a shopkeeper, a payslip, a dealer's offer), not an abstract claim about money"
+      "description": "Shorts: titles name who and the everyday moment (a shopkeeper, a payslip, a dealer's offer), not an abstract claim about money",
+      "endedAt": "2026-11-04",
+      "result": {
+        "verdict": "revert",
+        "ratio": 0.91,
+        "confidence": 0.87,
+        "n": {
+          "on": 7,
+          "off": 7
+        },
+        "metric": "avgViewPct",
+        "note": "-9% average % viewed, 87% confidence it is worse"
+      }
     },
     {
       "id": "hook-chip-frame-zero",
@@ -738,6 +750,25 @@
         "a953bc5"
       ],
       "proposal": "person-intro-tag"
+    },
+    {
+      "id": "you-in-the-core-story",
+      "proposal": "you-in-the-core-story",
+      "area": "script",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-04",
+      "templates": [
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "minPerArm": 8,
+      "maxDays": 28,
+      "metric": "views48h",
+      "hypothesis": "The 1K-view week (22-28 Oct) mixed subjects: the viewer's own money told in core formats (1,161 and 1,133 views) next to billionaires; since 31 Oct every Short is a named billionaire or company, and the owner says the topics feel like one category. Half the Shorts told through the viewer's own money get more 48 h views.",
+      "description": "Shorts: a big-money format told through the viewer's own money, not a named billionaire or company",
+      "notes": "Prompt-only (planner/writer); answers owner note cmw1iv2d70003l20919pyof4e. On keep: fold into generator/prompts/planner.md as a daily mix rule. On revert: drop the prompt.",
+      "commits": []
     }
   ]
 }

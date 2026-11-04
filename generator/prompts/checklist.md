@@ -92,6 +92,10 @@ fix any beat near a limit as well.
   label, tag, chip). Give clauses a change: enter, swap, flow, multiply, grow, or a panel.
 - **The source line shows once** (owner, 2026-11-03): on the first board beat that says a fact; own
   code uses `showsSource(p)`.
+- **No stretch of words only** (owner, 2026-11-04, v-20261104-02: 12 s of cards with no things): a
+  card beat with a `person` or `doc` panel still lists 1–3 `items` that act on its words; they stand
+  under the panel (a doc of at most three rows, no `equation` on the same beat). Two card beats in a
+  row with a panel and no things is a fail.
 - **Real people and companies** (owner, 2026-11-03): a person gets one short clause the first time
   they are named; a company is its name on a `person` panel or a label, never a pun object.
 
@@ -100,8 +104,13 @@ fix any beat near a limit as well.
   it inside `safeBox(w, h)`. That avoids every "runs outside the frame" and "below the minimum" failure.
 - Type-safe: a lookup that may be undefined gets `!` or `?? fallback` (`tsc` fails the file).
 - Only kit imports, no randomness or clocks: use `random(seed)` from remotion.
+- **A place reads as that place** (owner, 2026-11-04: "the city props is shit", a tilted glass slab
+  for Neom): a city, downtown or skyline is the shared `city` prop (towers with windows, roofs, a
+  crane; `k` 0..1 = how much is built, `state: "dark"` = lights off), one tower is `building`. Your
+  own props draw a recognisable thing with its telling details (a shop has an awning and a sign, a
+  factory a chimney), never a plain box or slab with a label doing the work.
 
 ## Length
 - Read the range from `config/settings.json` (`lengthMinSec`–`lengthMaxSec` for Shorts,
   `longLengthMinSec`–`longLengthMaxSec` for long videos). It changes. Count words at about 200 a
-  minute (Shorts) or 215 a minute (long), and check `lint`'s estimate.
+  minute (Shorts) or 180 a minute (long, tempo 1.25 since 2026-11-04), and check `lint`'s estimate.

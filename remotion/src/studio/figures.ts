@@ -25,3 +25,15 @@ export function pulse(t: number, f: Spoken): number {
   const down = t > f.e ? 1 - (t - f.e) / 0.6 : 1;
   return Math.max(0, Math.min(up, down));
 }
+
+/** Whether a figure is already written inside one of these texts ("8%" in "$45,000 at 8%, assumed"),
+ *  as a whole figure, not part of a bigger one ("$1" is not in "$100"). QA on L-20261104-01 (owner
+ *  note: "some texts are overlapped and hiding behind"): a figure the board's sum already shows slammed
+ *  in again behind it. */
+export function shownIn(figure: string, texts: Iterable<string>): boolean {
+  if (!figure) return false;
+  const esc = figure.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp(`(^|[^0-9A-Za-z.,$₹£€])${esc}(?![0-9A-Za-z]|[.,][0-9])`);
+  for (const t of texts) if (t === figure || re.test(t)) return true;
+  return false;
+}
