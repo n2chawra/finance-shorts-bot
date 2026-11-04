@@ -830,6 +830,25 @@
       "route": "experiment",
       "priority": "normal",
       "reason": "2026-11-03: a 65% mark cap shipped as a craft check (owner note fix, renderer/craft.py mark_problems); the stricter 25% A/B waits for a motion slot (experiments at the cap of 5)."
+    },
+    {
+      "id": "you-in-the-core-story",
+      "date": "2026-11-05",
+      "area": "script",
+      "title": "One Short a day tells a big-money format through the viewer's own money",
+      "change": "Behind a flag on about half the days: the planner gives one of the day's 3 Shorts a tier-core topic framed on the viewer's own money (your savings, your bonus, your salary, your gold) told through what the rich or a famous business does with it, with 'Your' or 'you' plus a figure in the title (e.g. 'Your $20,000 savings: what the rich do with it'). The other two stay as they are (named billionaires and companies). The research feed now carries such topics (2026-11-05-year-end-bonus-buys-a-paycheck, 2026-11-05-diwali-gold-coin-the-shop-wins-twice).",
+      "evidence": [
+        "metrics/videos.json: in tier-core formats, the two titles about the viewer's own money (v-20261023-01 'Your $20,000 savings' 1,161 views 48 h, 165% viewed; v-20261023-02 'Your Dhanteras necklace' 1,133) vs the named-billionaire and named-company Shorts since 28 Oct (148, 423, and under 200 so far for 2-4 Nov)",
+        "metrics/feedback.json: owner, 4 Nov: 'every topic is of same category… when our videos were working 1k views we had more category of videos'"
+      ],
+      "expectedEffect": "Wider subject mix like the 21-28 Oct week; more views48h on the 'you' arm",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Personal-budget formats were dropped by the variant system (0.14x); this must stay inside core formats (secret_of_rich, how_they_make_money), not drift back to budgeting",
+      "metric": "views48h",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }

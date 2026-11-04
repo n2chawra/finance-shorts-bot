@@ -1,0 +1,60 @@
+{
+  "agent": "research",
+  "day": "2026-11-05",
+  "startedAt": "2026-11-04T17:03:19Z",
+  "finishedAt": "2026-11-04T17:11:58Z",
+  "summary": "Thursday (titles). I answered the owner's 'every topic is one category' note: I added 4 topics in new categories (airline, sports, bonus, Diwali gold), two of them framed on the viewer's own money, rejected one duplicate, added the 'pick-one' shape and one experiment proposal, and told the owner the variant system's 'budget' option also holds the trap and which-one formats.",
+  "decision": "acted",
+  "why": "The 21-28 Oct week had 7 Shorts at 700+ views on 7 different subjects, 3 with the viewer's own money in the title. Since 1 Nov every Short is a named billionaire or company, and the open feed was 4 business and 3 wealth topics. Core formats are still the best on our numbers (secret_of_rich 6.2x, how_they_make_money 6.5x), so the new topics stay inside them.",
+  "findings": [
+    {
+      "title": "The feed and the variant system narrowed topics to famous names",
+      "detail": "The 'budget' option (dropped, 0.14x) includes trap_alert (721 views) and which_one_are_you (793), so only the four core formats remain, and research filled them with billionaires and companies. Owner notification added.",
+      "link": "improvement/research/2026-11-05.md"
+    },
+    {
+      "title": "Delta: American Express paid more than Delta's whole pre-tax profit",
+      "detail": "2024 pre-tax income was $4.7B (SEC). Amex paid $1.7B + $1.9B + $1.8B in three quarters. Now a how_they_make_money topic.",
+      "link": "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm"
+    },
+    {
+      "title": "Magic Johnson: $40M from the NBA, $1.2B net worth (Forbes)",
+      "detail": "A 19 s Short on this story is gaining 1,745 views an hour in the market data. Added as a secret_of_rich topic.",
+      "link": "https://www.cbssports.com/nba/news/magic-johnson-becomes-fourth-athlete-billionaire-lakers-icon-joins-michael-jordan-lebron-james-tiger-woods"
+    },
+    {
+      "title": "title-names-the-moment is now REVERT",
+      "detail": "python -m improvement.evaluate: -9% viewed at 87% confidence (7 Shorts per arm). The improver acts on it.",
+      "link": "improvement/research/2026-11-05.md"
+    },
+    {
+      "title": "Claude Code 2.1.318",
+      "detail": "Bug fixes. Background subagents now move shell commands that run over 3 minutes into the background. Nothing changes for the owner.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "4 topics added, 1 rejected",
+      "detail": "year-end-bonus-buys-a-paycheck (high, top score 9.18), delta-paid-by-a-credit-card, diwali-gold-coin-the-shop-wins-twice (local, expires 9 Nov), magic-johnson-40m-to-a-billion; forgot-to-cancel rejected as a duplicate of the gym topic",
+      "branch": "agent/research/2026-11-05"
+    },
+    {
+      "title": "Shape pick-one (trial)",
+      "detail": "The viewer chooses, then the quiet option wins. Reference: 'Who Would You Choose To Become a Billionaire Overnight?' (115K).",
+      "branch": "agent/research/2026-11-05"
+    },
+    {
+      "title": "Proposal you-in-the-core-story (experiment)",
+      "detail": "One of the 3 daily Shorts tells a core format through the viewer's own money.",
+      "branch": "agent/research/2026-11-05"
+    }
+  ],
+  "nextCheck": "2026-11-06",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-05.md"
+    }
+  ]
+}
