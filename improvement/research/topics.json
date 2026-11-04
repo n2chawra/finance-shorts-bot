@@ -318,8 +318,9 @@
       "maths": "fee_take (amount the monthly price, fee_pct 100, per_year 12, years 5); sip of the same money invested instead",
       "found": "2026-10-23",
       "expires": "2027-01-21",
-      "status": "new",
-      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one."
+      "status": "rejected",
+      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
+      "reason": "2026-11-05 research: near-duplicate of 2026-11-02-gym-paid-by-people-who-never-come (both 'paid by people who don't use it', gyms in both); the gym topic has 10-K facts, this one has none."
     },
     {
       "id": "2026-10-23-rich-love-debt",
@@ -2202,6 +2203,233 @@
       ],
       "found": "2026-11-04",
       "expires": "2027-02-02",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-05-delta-paid-by-a-credit-card",
+      "title": "Delta made $4.7B before tax in 2024. A credit card company paid it more than that",
+      "category": "airline",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "demand": {
+        "title": "How Airlines Quietly Became Banks (Wendover Productions; views from an aggregator listing, unverified)",
+        "views": 7200000,
+        "url": "https://rosetta.to/u/wendoverproductions/how-airlines-quietly-became-banks"
+      },
+      "hook": "You think airlines make their money flying you? They don't. A credit card does.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Delta's whole 2024 pre-tax income was $4.7B; in just three quarters American Express paid it $5.4B for miles and the co-brand card. The money is in the card in your wallet, not the seat.",
+      "why_now": "The owner asked for more categories like the 1K-view week; airlines are a category we have never told, in our best core format (how_they_make_money 6.5x). Wendover's version of the idea is listed at 7.2M.",
+      "maths": "sum the three quarterly facts with compare or share (facts {amount: ...}); rate (part 5.4, whole 4.7) shows the card money is about 115% of the year's pre-tax income; rate (part 4.7, whole 61.6) for the thin margin on the whole business (about 7.6%). Name only Delta and American Express with the figures below.",
+      "verify": [
+        "American Express remuneration to Delta: $1.7B (March quarter 2024), $1.9B (June quarter 2024), $1.8B (September quarter 2024), each in Delta's own quarterly earnings release; the December quarter was 'nearly $2 billion' (not used as a figure)",
+        "Delta 2024 GAAP pre-tax income $4.7B and operating revenue $61.6B: Delta's 10 Jan 2025 release (SEC exhibit 99.1)",
+        "remuneration covers miles sold to Amex, card fees and related payments; never call it pure profit, and never say airlines make 'most' of their money from cards"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm",
+        "https://quantisnow.com/insight/delta-air-lines-announces-march-quarter-2024-financial-results-5401758",
+        "https://quantisnow.com/insight/delta-air-lines-announces-june-quarter-2024-financial-results-5603005",
+        "https://www.quantisnow.com/insight/delta-air-lines-announces-september-quarter-2024-financial-results-5721637"
+      ],
+      "facts": [
+        {
+          "label": "Delta pre-tax income for 2024 (GAAP)",
+          "value": 4.7,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-01-10",
+          "source": "Delta Air Lines (SEC filing)",
+          "url": "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm"
+        },
+        {
+          "label": "Delta operating revenue for 2024 (GAAP)",
+          "value": 61.6,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-01-10",
+          "source": "Delta Air Lines (SEC filing)",
+          "url": "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm"
+        },
+        {
+          "label": "American Express remuneration to Delta, March quarter 2024",
+          "value": 1.7,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2024-04-10",
+          "source": "Delta Air Lines earnings release",
+          "url": "https://quantisnow.com/insight/delta-air-lines-announces-march-quarter-2024-financial-results-5401758"
+        },
+        {
+          "label": "American Express remuneration to Delta, June quarter 2024",
+          "value": 1.9,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2024-07-11",
+          "source": "Delta Air Lines earnings release",
+          "url": "https://quantisnow.com/insight/delta-air-lines-announces-june-quarter-2024-financial-results-5603005"
+        },
+        {
+          "label": "American Express remuneration to Delta, September quarter 2024",
+          "value": 1.8,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2024-10-10",
+          "source": "Delta Air Lines earnings release",
+          "url": "https://www.quantisnow.com/insight/delta-air-lines-announces-september-quarter-2024-financial-results-5721637"
+        }
+      ],
+      "found": "2026-11-05",
+      "expires": "2027-02-03",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-05-magic-johnson-40m-to-a-billion",
+      "title": "The NBA paid Magic Johnson $40 million. He made a billion anyway",
+      "category": "sports",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "demand": {
+        "title": "The NBA Paid Magic Johnson $40M. He Made A Billion",
+        "views": 42868,
+        "url": "https://www.youtube.com/shorts/TBlgwSn5IBc"
+      },
+      "hook": "You think Magic Johnson got rich playing basketball? He didn't.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Thirteen seasons paid about $40M in total; Forbes put him at $1.2B in 2023, about 30 times his whole playing career, built from owning businesses (an insurance company, team stakes) instead of being paid by one.",
+      "why_now": "In this week's market data: a 19 s Short on exactly this story is gaining 1,745 views an hour. Sports is a category we have never told; secret_of_rich is our best format (76% viewed).",
+      "maths": "rate (part 1200000000, whole 40000000) is the 30x (facts {part: 1, whole: 2}); share (total 40000000, parts 13) is about $3.1M a season (facts {total: 2, parts: 3}). The business deals are named, never valued, unless a source gives the figure.",
+      "verify": [
+        "Forbes estimate of $1.2B net worth (Oct 2023) and about $40M in NBA career earnings: CBS Sports and Yahoo Sports, 30 Oct 2023, both citing Forbes",
+        "13-year NBA career: Yahoo Sports",
+        "Investments named (EquiTrust life insurance, stakes in the Dodgers, Sparks, LAFC, Commanders) appear in those articles; no stake size or value on screen"
+      ],
+      "sources": [
+        "https://www.cbssports.com/nba/news/magic-johnson-becomes-fourth-athlete-billionaire-lakers-icon-joins-michael-jordan-lebron-james-tiger-woods",
+        "https://ca.sports.yahoo.com/news/former-nba-star-magic-johnson-192450511.html",
+        "https://www.youtube.com/shorts/TBlgwSn5IBc"
+      ],
+      "facts": [
+        {
+          "label": "Magic Johnson's net worth, Forbes estimate",
+          "value": 1.2,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2023-10-30",
+          "source": "Forbes via CBS Sports",
+          "url": "https://www.cbssports.com/nba/news/magic-johnson-becomes-fourth-athlete-billionaire-lakers-icon-joins-michael-jordan-lebron-james-tiger-woods"
+        },
+        {
+          "label": "Magic Johnson's total NBA career earnings, Forbes",
+          "value": 40,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2023-10-30",
+          "source": "Forbes via CBS Sports",
+          "url": "https://www.cbssports.com/nba/news/magic-johnson-becomes-fourth-athlete-billionaire-lakers-icon-joins-michael-jordan-lebron-james-tiger-woods"
+        },
+        {
+          "label": "Seasons in Magic Johnson's NBA career",
+          "value": 13,
+          "unit": "count",
+          "as_of": "2023-10-30",
+          "source": "Yahoo Sports",
+          "url": "https://ca.sports.yahoo.com/news/former-nba-star-magic-johnson-192450511.html"
+        }
+      ],
+      "found": "2026-11-05",
+      "expires": "2027-02-03",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-05-year-end-bonus-buys-a-paycheck",
+      "title": "A $5,000 year-end bonus: the rich turn it into a second paycheck",
+      "category": "bonus",
+      "kind": "seasonal",
+      "priority": "high",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "demand": {
+        "title": "What's a money move only rich people know that sounds completely insane?",
+        "views": 7639307,
+        "url": "https://www.youtube.com/shorts/IYVO-_TfXZY"
+      },
+      "hook": "You think the rich spend their bonus on something big? They do. It just pays them back every month.",
+      "templates": [
+        "any"
+      ],
+      "angle": "The same $5,000 bonus: one person buys a thing that loses value, the other buys something that pays a little every month and grows (an assumed 7% a year for 30 years). The viewer's own money told through how the rich think, like our 165%-viewed 'Your $20,000 savings: what the rich do with it'.",
+      "why_now": "Year-end bonus season in the US and much of the world (Nov-Dec, calendar). The owner's note: the 1K-view week mixed categories and put the viewer's own money in the story; every topic since 1 Nov is a named billionaire or company.",
+      "maths": "lumpsum (amount 5000, rate_pct 7, years 30) for the bonus kept working; rate (part, whole) for the monthly payout at an assumed 4% a year on the end sum, or real_return (amount 5000, rate_pct 7, inflation_pct 3, years 30) for today's money. 7% and 4% are assumptions, said as ones; no product named.",
+      "verify": [
+        "7% growth and the payout rate are illustrative assumptions, not a promise or a recommendation",
+        "no fund, stock or product named; the 'rich' move is owning assets, explained, never advised"
+      ],
+      "sources": [
+        "https://www.youtube.com/shorts/IYVO-_TfXZY"
+      ],
+      "found": "2026-11-05",
+      "expires": "2026-12-31",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-05-diwali-gold-coin-the-shop-wins-twice",
+      "title": "Your Diwali gold coin: the shop wins when you buy it and again when you sell it",
+      "category": "gold",
+      "kind": "seasonal",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "INR",
+      "reach": "local",
+      "reach_reason": {
+        "kind": "occasion",
+        "name": "Diwali",
+        "date": "2026-11-08"
+      },
+      "format": "short",
+      "demand": {
+        "title": "Weird Ways Brands Make Their Money",
+        "views": 1656553,
+        "url": "https://www.youtube.com/shorts/gaFvy03NDMw"
+      },
+      "hook": "You think a gold coin is worth what you paid for it? It isn't. Not on the day you buy it.",
+      "templates": [
+        "any"
+      ],
+      "angle": "An assumed ₹1 lakh of gold on Diwali: making charges and 3% GST go on top when you buy, and the buyback deducts again when you sell, so the coin has to climb before you are even back to zero. How the shop earns on both trips.",
+      "why_now": "Dhanteras 6 Nov and Diwali 8 Nov 2026 (calendar.json). Our gold Short in the same format, 'Your Dhanteras necklace: how the jeweller really earns' (23 Oct), got 1,133 views and 53% viewed. A different angle: the round trip, a coin not a necklace.",
+      "maths": "fee_take (amount 100000, fee_pct making-charge assumption, per_year 1, years 1) for the making charge; fee_take (amount ..., fee_pct 3, ...) for GST; fee_take for an assumed buyback deduction; rate (part total_lost, whole 100000) for how far gold must rise to break even. All charges except GST are assumptions, said as ones.",
+      "verify": [
+        "GST on gold is 3% in India (CBIC); making charges and the buyback deduction are illustrative assumptions that vary by shop",
+        "no jeweller or bank named; no advice to buy or not buy gold"
+      ],
+      "sources": [
+        "https://cbic-gst.gov.in/gst-goods-services-rates.html"
+      ],
+      "found": "2026-11-05",
+      "expires": "2026-11-09",
       "status": "new"
     }
   ]
