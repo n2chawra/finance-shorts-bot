@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { failKey, seriousFailure } from "../lib/stats-failures.ts";
+import { failKey, seriousFailure, statsOutcome } from "../lib/stats-failures.ts";
 import { report, transient } from "../lib/youtube.ts";
 
 test("one passing failure is not serious; the same one twice, or many at once, is", () => {
@@ -11,6 +11,14 @@ test("one passing failure is not serious; the same one twice, or many at once, i
   assert.equal(seriousFailure([k], [k], 40), true);
   assert.equal(seriousFailure(Array.from({ length: 9 }, (_, i) => `v${i}`), [], 40), true);
   assert.equal(seriousFailure([], ["x"], 40), false);
+});
+
+test("a passing failure still counts as a refresh; only a serious one does not", () => {
+  // 2026-11-04: a green run with one passing failure must move statsRefreshedAt, or the audit reports stale stats
+  assert.equal(statsOutcome([], ["v1"], 40), "clean");
+  assert.equal(statsOutcome(["v1"], [], 40), "passing");
+  assert.equal(statsOutcome(["v1"], ["v1"], 40), "serious");
+  assert.equal(statsOutcome(["channel totals"], [], 0), "passing");
 });
 
 test("YouTube's passing errors are retried, others are not", () => {

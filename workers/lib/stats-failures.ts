@@ -11,3 +11,13 @@ export function seriousFailure(now: string[], previous: string[], videos: number
   if (!now.length) return false;
   return now.some((k) => previous.includes(k)) || now.length > Math.max(1, videos * 0.2);
 }
+
+/**
+ * A run's outcome: `clean` (nothing failed), `passing` (a passing failure, retried next run: the job stays
+ * green and the data counts as refreshed, else `statsRefreshedAt` stops moving and the data audit reports
+ * stale stats while every run is green) or `serious` (red job, email, not refreshed).
+ */
+export function statsOutcome(now: string[], previous: string[], videos: number): "clean" | "passing" | "serious" {
+  if (!now.length) return "clean";
+  return seriousFailure(now, previous, videos) ? "serious" : "passing";
+}

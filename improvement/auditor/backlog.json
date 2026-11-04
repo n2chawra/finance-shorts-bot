@@ -603,6 +603,20 @@
       "severity": "low",
       "found": "2026-11-04",
       "status": "open"
+    },
+    {
+      "id": "wrk-006",
+      "kind": "bug",
+      "title": "A green stats run with a passing failure never moves statsRefreshedAt",
+      "detail": "Since 4 Nov (owner) a single passing YouTube error leaves the Stats job green, but statsRefreshedAt was only written when nothing failed, so the Analytics page's 'updated' time froze and the data audit would report stats_stale after 48 h while every run was green. Now written unless the failure is serious (statsOutcome in workers/lib/stats-failures.ts).",
+      "files": [
+        "workers/stats.ts",
+        "workers/lib/stats-failures.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-04",
+      "status": "fixed",
+      "fixed": "2026-11-04"
     }
   ]
 }

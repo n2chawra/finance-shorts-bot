@@ -16,7 +16,7 @@ import { istDay } from "./lib/publishing.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { dropPoints, hookHold, spokenBeats } from "./lib/retention.ts";
-import { failKey, seriousFailure } from "./lib/stats-failures.ts";
+import { failKey, statsOutcome } from "./lib/stats-failures.ts";
 import { channelDays } from "./lib/analytics.ts";
 import { DAY_METRICS, TokenError, accessToken, dailyStats, report, retentionCurve } from "./lib/youtube.ts";
 
@@ -122,22 +122,23 @@ async function main(): Promise<void> {
       }
     }
     await prisma.videoStat.deleteMany({ where: { day: { lt: new Date(`${earliest}T00:00:00Z`) } } });
-    if (!errors.length) {
-      const now = new Date().toISOString();
-      await prisma.setting.upsert({ where: { key: REFRESHED_KEY }, update: { value: now }, create: { key: REFRESHED_KEY, value: now } });
-    }
-    console.log(JSON.stringify({ uploads: uploads.length, statRows: rows, through: yesterday, ...refreshed, errors }, null, 2));
     // a single passing failure is not worth an email: fail (and notify) only when the same thing failed in the
     // previous run too, or when a large share of the videos failed at once
     const failing = errors.map(failKey);
     const prevRow = await prisma.setting.findUnique({ where: { key: FAILING_KEY } });
     const prev = Array.isArray(prevRow?.value) ? (prevRow.value as string[]) : [];
     await prisma.setting.upsert({ where: { key: FAILING_KEY }, update: { value: failing }, create: { key: FAILING_KEY, value: failing } });
-    if (seriousFailure(failing, prev, uploads.length)) {
+    const outcome = statsOutcome(failing, prev, uploads.length);
+    if (outcome !== "serious") {
+      const now = new Date().toISOString();
+      await prisma.setting.upsert({ where: { key: REFRESHED_KEY }, update: { value: now }, create: { key: REFRESHED_KEY, value: now } });
+    }
+    console.log(JSON.stringify({ uploads: uploads.length, statRows: rows, through: yesterday, ...refreshed, errors }, null, 2));
+    if (outcome === "serious") {
       await notify(prisma, { key: "stats-errors", source: "stats", severity: "warning", title: "Some YouTube stats could not be read",
         detail: errors.slice(0, 5).join("\n"), fix: "Failed in two runs in a row. Open Actions → Stats in GitHub and read the log." });
       process.exitCode = 1;
-    } else if (errors.length) {
+    } else if (outcome === "passing") {
       console.log(`::warning::${errors.length} passing failure(s), tried again next run: ${errors.join(" | ")}`);
     } else {
       await resolve(prisma, "stats-errors");

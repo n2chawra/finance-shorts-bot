@@ -1,11 +1,11 @@
 {
   "agent": "auditor",
   "day": "2026-11-04",
-  "startedAt": "2026-11-03T16:35:01Z",
-  "finishedAt": "2026-11-03T16:42:06Z",
-  "summary": "Data audit clean (0 errors, 0 warnings). Re-shipped the held Skip-to-end fix now that merges work again, fixed two small dashboard bugs, and wrote the first AI analysis for the Analytics page (23 videos and a channel review).",
+  "startedAt": "2026-11-04T06:43:40Z",
+  "finishedAt": "2026-11-04T06:51:18Z",
+  "summary": "Re-shipped last night's blocked branch (Skip-to-end fix, two small dashboard fixes, the first AI analysis) on top of the owner's build fix, and fixed Stats so a green run with a passing YouTube error still counts as a refresh.",
   "decision": "acted",
-  "why": "Audit 2026-11-03T16:22Z: 47 videos, 0 issues. The merge check's Playwright was fixed on 3 Nov, so dui-012 could ship. Review of the new Studio analytics found the typical retention curve built from 10 arbitrary videos. All checks green: pytest 398, workers 100 tests, dashboard tsc + lint.",
+  "why": "Last night's branch was blocked by a zod import in studio-calc that the workers CI job can't load; the owner fixed that on main today (88b9c44). Reviewing that change found statsRefreshedAt only written when nothing failed, so it would freeze while Stats stays green. Data audit 2026-11-03T16:22Z: 0 issues. Checks green: pytest 402, workers 105 tests (without dashboard packages, as in CI), dashboard tsc, lint, build.",
   "findings": [
     {
       "title": "Big-money Shorts reach far more people",
@@ -39,6 +39,11 @@
     {
       "title": "AI analysis for the Analytics page",
       "detail": "improvement/analysis/videos.json (23 videos) and channel.json.",
+      "branch": "agent/auditor/2026-11-04"
+    },
+    {
+      "title": "Stats: a passing failure still counts as a refresh (wrk-006)",
+      "detail": "statsOutcome in workers/lib/stats-failures.ts, used by workers/stats.ts; test in workers/tests/stats-failures.test.ts.",
       "branch": "agent/auditor/2026-11-04"
     }
   ],
