@@ -7,6 +7,7 @@ import type { Prisma } from "@prisma/client";
 
 import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
+import { canMarkStale, skipToEnd, uploadNow } from "./queue-actions";
 import { EditorNoteSchema, SettingsSchema, mostLoved } from "./schemas";
 import { runEndMs } from "./run-span";
 import { fillFromLive, meanViewPct, totals, windowStart, type DayRow } from "./totals";
@@ -160,7 +161,7 @@ export async function videoAction(id: string, action: VideoAction, reason?: stri
     return { ok: true };
   }
   if (action === "stale") {
-    if (!["queued", "qa_passed", "rendered"].includes(v.status)) return { ok: false, error: "Only a video waiting to be published can be marked stale" };
+    if (!canMarkStale(v.status)) return { ok: false, error: "Only a video waiting to be published can be marked stale" };
     if (!why) return { ok: false, error: "Say why it is stale: the system learns from it" };
     await prisma.$transaction([
       prisma.video.update({ where: { id }, data: { status: "rejected", failReason: `Stale (owner): ${why}`, queuePosition: null, pickedAt: null, pickReason: null } }),
@@ -192,14 +193,14 @@ export async function videoAction(id: string, action: VideoAction, reason?: stri
   if (v.status !== "queued") return { ok: false, error: "Only queued videos can be skipped or uploaded" };
   if (action === "skip") {
     const last = await prisma.video.aggregate({ where: { ...live, status: "queued" }, _max: { queuePosition: true } });
-    await prisma.video.update({ where: { id }, data: { queuePosition: (last._max.queuePosition ?? 0) + 1 } });
+    await prisma.video.update({ where: { id }, data: skipToEnd(last._max.queuePosition) });
     await renumber();
     return { ok: true };
   }
   if ((await getSettings()).uploadsPaused) return { ok: false, error: "Uploads are paused" };
   // the publisher (M5) picks up pending uploads on its next run
   await prisma.$transaction([
-    prisma.video.update({ where: { id }, data: { status: "scheduled", queuePosition: null } }),
+    prisma.video.update({ where: { id }, data: uploadNow() }),
     prisma.upload.upsert({ where: { videoId: id }, update: { publishAt: new Date(), state: "pending" }, create: { videoId: id, publishAt: new Date(), state: "pending" } }),
   ]);
   await renumber();
