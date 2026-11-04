@@ -38,19 +38,26 @@
       "id": "title-names-the-moment",
       "area": "title",
       "format": "short",
-      "status": "running",
+      "status": "reverted",
       "startedAt": "2026-10-22",
       "templates": [
         "short_story"
       ],
       "share": 0.5,
-      "prompt": {
-        "on": "Title rule for this video: the title names who and the everyday moment the viewer has lived ('Shopkeeper says UPI above ₹2,000 costs extra?', 'Rich vs Poor: your ₹20,000 raise', 'The dealer says $650 a month'), never an abstract claim about money ('Your emergency fund is quietly losing buying power'). Keep the usual title length and at most one emoji.",
-        "off": null
-      },
       "proposal": "title-names-the-moment",
       "metric": "avgViewPct",
-      "description": "Shorts: titles name who and the everyday moment (a shopkeeper, a payslip, a dealer's offer), not an abstract claim about money"
+      "description": "Shorts: titles name who and the everyday moment (a shopkeeper, a payslip, a dealer's offer), not an abstract claim about money",
+      "endedAt": "2026-11-04",
+      "result": {
+        "verdict": "revert",
+        "ratio": 0.91,
+        "confidence": 0.87,
+        "n": {
+          "on": 7,
+          "off": 7
+        },
+        "metric": "avgViewPct"
+      }
     },
     {
       "id": "chart-gap-fill",
@@ -140,6 +147,24 @@
       },
       "proposal": "ending-beats-act-and-vary",
       "description": "Shorts: the coded Turn and Payoff beats act on their words (2-3 actions each, nothing held 2.5 s) and the ending's camera and transitions differ from the last video's"
+    },
+    {
+      "id": "you-in-the-core-story",
+      "area": "script",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-04",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "prompt": {
+        "on": "Subject rule for this video (owner, 2026-11-04: 'every topic is of same category; when we got 1K views we had more categories'): tell a tier-core format (secret_of_rich, how_they_make_money, rich_vs_poor, billionaire_question) through the viewer's OWN money: your savings, your bonus, your salary, your gold, your card, what you buy, and what the rich or a famous business does with it (the hits: 'Your $20,000 savings: what the rich do with it' 1,161 views, 'Your Dhanteras necklace: how the jeweller really earns' 1,133). Prefer such a topic from state.topic_feed. The title says 'Your' or 'you' plus a money figure. Do not make a named billionaire or company the subject (they may appear as the contrast), and never use a personal-budget format.",
+        "off": null
+      },
+      "proposal": "you-in-the-core-story",
+      "metric": "views48h",
+      "description": "Shorts: a big-money format told through the viewer's own money (your savings, bonus, gold), not a named billionaire or company"
     }
   ]
 }
