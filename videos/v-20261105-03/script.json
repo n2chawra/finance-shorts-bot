@@ -1,0 +1,745 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 30958,
+  "story": "secret_of_rich",
+  "shape": "timeline",
+  "currency": "USD",
+  "feed_id": "2026-11-02-rich-vs-poor-the-50k-car",
+  "style": {
+    "palette": "plum",
+    "genre": "lofi",
+    "key": "C",
+    "bpm": 90,
+    "look": {
+      "stage": "street",
+      "header": "sticky",
+      "holder": "phone",
+      "entrance": "drop"
+    }
+  },
+  "arms": {
+    "length": "28-35",
+    "topic": "big_money",
+    "hook": "question",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "22"
+  },
+  "hook_style": "question",
+  "cta": "Fifty-thousand car or half and half? Comment",
+  "maths": [
+    {
+      "name": "poor",
+      "kind": "emi",
+      "amount": 50000,
+      "rate_pct": 8,
+      "years": 5
+    },
+    {
+      "name": "rich",
+      "kind": "lumpsum",
+      "amount": 25000,
+      "rate_pct": 7,
+      "years": 10
+    }
+  ],
+  "thumbnail": {
+    "who": "sharma",
+    "layout": "scene",
+    "at": "turn",
+    "sec": 3.2,
+    "words": "Half the car, *double*",
+    "figure": "{rich_final}"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "You think the rich spend {poor_amount} on a car? They don't. Watch.",
+      "events": {
+        "rich": {
+          "word": "rich"
+        },
+        "spend": {
+          "word": "spend"
+        },
+        "car": {
+          "word": "car"
+        },
+        "dont": {
+          "word": "don't"
+        },
+        "watch": {
+          "word": "Watch"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "car"
+        },
+        {
+          "kind": "fail",
+          "at": "dont"
+        },
+        {
+          "kind": "riser",
+          "at": "watch"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "{poor_amount} car?",
+        "carLabel": "Dream car",
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "dont",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "loan",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Rohan drives off in the {poor_amount} car, on a loan at {poor_rate}.",
+      "events": {
+        "rohan": {
+          "word": "Rohan"
+        },
+        "drives": {
+          "word": "drives"
+        },
+        "car": {
+          "word": "car"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "at": {
+          "word": "at"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "drives"
+        },
+        {
+          "kind": "ding",
+          "at": "loan"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "red",
+          "horizon": [
+            {
+              "prop": "lenderbank",
+              "x": 0.88,
+              "size": 0.07
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.2,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "car",
+            "prop": "luxcar",
+            "x": 0.52,
+            "size": 0.26,
+            "label": "The car",
+            "tag": "{poor_amount}"
+          },
+          {
+            "id": "loan",
+            "prop": "loanpaper",
+            "x": 0.82,
+            "size": 0.2,
+            "label": "The loan",
+            "hidden": true,
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "drives",
+            "do": "shake",
+            "target": "car"
+          },
+          {
+            "at": "car",
+            "do": "grow",
+            "target": "car",
+            "scale": 1.08
+          },
+          {
+            "at": "loan",
+            "do": "enter",
+            "target": "loan"
+          },
+          {
+            "at": "at",
+            "do": "tag",
+            "target": "loan",
+            "text": "{poor_rate}"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "loan",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "emi",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That's {poor_emi} a month for {poor_months} months, and {poor_interest} of it is pure interest.",
+      "events": {
+        "month": {
+          "word": "month"
+        },
+        "months": {
+          "word": "months"
+        },
+        "pure": {
+          "word": "pure"
+        },
+        "interest": {
+          "word": "interest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "month"
+        },
+        {
+          "kind": "kaching",
+          "at": "interest"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "red",
+          "horizon": [
+            {
+              "prop": "luxcar",
+              "x": 0.15,
+              "size": 0.06
+            }
+          ]
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "wallet",
+            "prop": "wallet",
+            "x": 0.24,
+            "size": 0.2,
+            "label": "Each month"
+          },
+          {
+            "id": "loan",
+            "prop": "loanpaper",
+            "x": 0.52,
+            "size": 0.26,
+            "label": "Months of loan",
+            "k": 0.3
+          },
+          {
+            "id": "bank",
+            "prop": "lenderbank",
+            "x": 0.8,
+            "size": 0.22,
+            "label": "Interest",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "wallet"
+          },
+          {
+            "at": "month",
+            "do": "tag",
+            "target": "wallet",
+            "text": "{poor_emi}"
+          },
+          {
+            "at": "months",
+            "do": "grow",
+            "target": "loan",
+            "scale": 1.25
+          },
+          {
+            "at": "months",
+            "do": "tag",
+            "target": "loan",
+            "text": "{poor_months}"
+          },
+          {
+            "at": "pure",
+            "do": "enter",
+            "target": "bank"
+          },
+          {
+            "at": "interest",
+            "do": "flow",
+            "target": "wallet",
+            "to": "bank",
+            "n": 6,
+            "text": "{poor_interest}"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "interest",
+            "size": "close",
+            "on": "bank",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask",
+      "scene": "shot",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Fine, but what does Sharma drive then?",
+      "events": {
+        "fine": {
+          "word": "Fine"
+        },
+        "sharma": {
+          "word": "Sharma"
+        },
+        "drive": {
+          "word": "drive"
+        }
+      },
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.45,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              },
+              {
+                "at": "drive",
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "objects": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "sharma",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "And Sharma?",
+          "at": "sharma",
+          "color": "gold",
+          "where": "top"
+        }
+      }
+    },
+    {
+      "id": "half",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Sharma buys a {rich_amount} car and puts the other {rich_amount} to work.",
+      "events": {
+        "buys": {
+          "word": "buys"
+        },
+        "car": {
+          "word": "car"
+        },
+        "other": {
+          "word": "other"
+        },
+        "work": {
+          "word": "work"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "car"
+        },
+        {
+          "kind": "whoosh",
+          "at": "work"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "green",
+          "horizon": [
+            {
+              "prop": "plaincar",
+              "x": 0.1,
+              "size": 0.05
+            }
+          ]
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "car",
+            "prop": "plaincar",
+            "x": 0.24,
+            "size": 0.22,
+            "label": "His car",
+            "hidden": true
+          },
+          {
+            "id": "other",
+            "prop": "wallet",
+            "x": 0.52,
+            "size": 0.18,
+            "label": "The other half"
+          },
+          {
+            "id": "work",
+            "prop": "moneyplant",
+            "x": 0.8,
+            "size": 0.24,
+            "label": "Put to work",
+            "hidden": true,
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "other"
+          },
+          {
+            "at": "buys",
+            "do": "enter",
+            "target": "car"
+          },
+          {
+            "at": "car",
+            "do": "tag",
+            "target": "car",
+            "text": "{rich_amount}"
+          },
+          {
+            "at": "other",
+            "do": "tag",
+            "target": "other",
+            "text": "{rich_amount}"
+          },
+          {
+            "at": "work",
+            "do": "enter",
+            "target": "work"
+          },
+          {
+            "at": "work",
+            "do": "flow",
+            "target": "other",
+            "to": "work",
+            "n": 5,
+            "text": "{rich_amount}"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "work",
+            "size": "close",
+            "on": "work",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "If that grows {rich_rate} a year, after {rich_years} years it's {rich_final}.",
+      "events": {
+        "grows": {
+          "word": "grows"
+        },
+        "year": {
+          "word": "year"
+        },
+        "after": {
+          "word": "after"
+        },
+        "its": {
+          "word": "it's"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "grows"
+        },
+        {
+          "kind": "tick",
+          "at": "after"
+        },
+        {
+          "kind": "boom",
+          "at": "its"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "header": "The other half grows",
+        "rate": "{rich_rate} a year",
+        "years": "{rich_years} years",
+        "final": "{rich_final}",
+        "start": "{rich_amount}",
+        "set": "penthouse",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "its",
+            "size": "close",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Both cars are old now. Only Sharma also has {rich_final}.",
+      "events": {
+        "both": {
+          "word": "Both"
+        },
+        "old": {
+          "word": "old"
+        },
+        "only": {
+          "word": "Only"
+        },
+        "has": {
+          "word": "has"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "both"
+        },
+        {
+          "kind": "boom",
+          "at": "has"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "header": "Same budget, years later",
+        "leftLabel": "Rohan",
+        "rightLabel": "Sharma",
+        "oldTag": "Old car",
+        "final": "{rich_final}",
+        "set": "penthouse",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "has",
+            "size": "close",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "whip",
+      "say": "So, still want the {poor_amount} car?",
+      "events": {
+        "still": {
+          "word": "still"
+        },
+        "want": {
+          "word": "want"
+        },
+        "car": {
+          "word": "car"
+        }
+      },
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.68,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "car",
+                "pose": "point",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "objects": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "want",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Still?",
+          "at": "car",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    }
+  ],
+  "narrator": "af_bella"
+}
