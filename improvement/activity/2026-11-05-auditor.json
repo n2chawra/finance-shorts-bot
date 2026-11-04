@@ -1,0 +1,21 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-05",
+  "startedAt": "2026-11-04T16:37:26Z",
+  "finishedAt": "2026-11-04T16:44:27Z",
+  "summary": "Data audit clean. Fixed two gaps in the new variant system's checks (a script without the plan's arms skipped the style and length checks) and the Overview subscriber change that read about -20% on flat weeks; one owner notification about how arms.py labels upload categories.",
+  "decision": "acted",
+  "why": "Data audit 2026-11-04T16:26Z: 0 errors, 0 warnings, 1 info. Reviewing today's generator changes found the arms checks could be skipped silently; dui-003 was the oldest medium dashboard bug. Checks green: pytest 413, workers 108 tests, dashboard tsc and lint.",
+  "findings": [
+    {"title": "Variant system mislabels upload category", "detail": "improvement/arms.py counts every auto-uploaded Short without plan.arms as category 27; the publisher uploads them as 22. Owner notification arms-category-label."},
+    {"title": "Short median now 109 views in 48 h", "detail": "34 measured Shorts. v-20261102-03 (60 s) has 144 views after ~2 days; of five 60 s+ Shorts only the McDonald's one passed 150."}
+  ],
+  "changes": [
+    {"title": "Script must carry the plan's arms (gen-003)", "detail": "generator/run.py run_number_check; test generator/tests/test_run.py.", "branch": "agent/auditor/2026-11-05"},
+    {"title": "Budget test must tell a budget story (gen-004)", "detail": "generator/formats.py mix_problems; test generator/tests/test_shapes.py.", "branch": "agent/auditor/2026-11-05"},
+    {"title": "Subscriber week-over-week ignores days Analytics hasn't reached (dui-003)", "detail": "lib/totals.ts weekOverWeek, used by the Overview; test workers/tests/dashboard-week-over-week.test.ts.", "branch": "agent/auditor/2026-11-05"},
+    {"title": "AI analysis for v-20261102-03", "detail": "improvement/analysis/videos.json.", "branch": "agent/auditor/2026-11-05"}
+  ],
+  "nextCheck": "2026-11-06",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-05.md"}]
+}

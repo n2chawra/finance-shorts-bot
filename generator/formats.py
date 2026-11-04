@@ -76,6 +76,10 @@ def mix_problems(plan: dict, entries: list[dict], root: Path = ROOT, fmt: str = 
                     f"famous business makes money, the traps. A personal-budget story only when `arms.topic` is "
                     f"\"{BUDGET_ARM}\" (a test the variant system assigns)"]
         return []
+    if fmt == "short" and core_ids(root, fmt) and ((plan.get("arms") or {}).get("topic")) == BUDGET_ARM:
+        # the variant system counts this video's views as the budget option's (improvement/arms.py)
+        return [f"arms.topic is \"{BUDGET_ARM}\": tell a personal-budget story, not {plan.get('story')!r} (a big-money "
+                f"format), or the variant system credits a big-money video to the budget test"]
     if core_needed(entries, root, fmt) and plan.get("story") not in core_ids(root, fmt):
         need, window = CORE_MIN
         return [f"at least {need} of every {window} Shorts tell a big-money story ({', '.join(core_ids(root, fmt))}): the last "

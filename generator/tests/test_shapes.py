@@ -64,6 +64,9 @@ def test_two_in_three_shorts_are_big_money(tmp_path):
     assert formats.mix_problems(personal, [{"story": "billionaire_question"}, {"story": "billionaire_question"}], root)
     assert formats.mix_problems({**personal, "arms": {"topic": "budget"}}, [{"story": "billionaire_question"}] * 2, root) == []
     assert formats.mix_problems({"story": "billionaire_question"}, [{"story": "salary_breakdown"}] * 2, root) == []
+    # a Short assigned the budget test must tell a budget story, or the variant system counts a big-money
+    # video's views as the budget option's (improvement/arms.py reads plan.arms)
+    assert formats.mix_problems({"story": "billionaire_question", "arms": {"topic": "budget"}}, [], root)
 
 
 def test_titles_carry_a_figure_or_a_name():

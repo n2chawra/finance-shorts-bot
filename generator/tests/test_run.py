@@ -456,3 +456,16 @@ def test_failure_kinds_name_board_and_event_gaps() -> None:
     assert "6.5 s" in _kind("number_check", "board beat 'y1994' speaks for about 7 s; at most 6.5: one sentence")
     assert "every 3 s" in _kind("render", "warning: beat 'turn' runs 11.2 s with 3.2 s and no event: add an event")
     assert "every 3 s" in _kind("number_check", "warning: beat 'promise' runs 9.0 s with 3.0 s and no event")
+
+
+def test_number_check_requires_the_plans_arms_in_the_script(root: Path) -> None:
+    # the style and length checks (generator/story.py) read script.arms: a script without them skipped both
+    arms = {"length": "20-27", "topic": "big_money", "hook": "question", "title": "figure_or_name", "style": "shot", "category": "22"}
+    plan = {**make_plan(), "arms": arms}
+    put(root, "plan.json", plan)
+    put(root, "script.json", script_for(plan))
+    assert any("script.arms must be the plan's arms" in p for p in run.run_number_check(VID, root))
+    put(root, "script.json", {**script_for(plan), "arms": {**arms, "style": "board"}})
+    assert any("script.arms must be the plan's arms" in p for p in run.run_number_check(VID, root))
+    put(root, "script.json", {**script_for(plan), "arms": dict(arms)})
+    assert not any("script.arms" in p for p in run.run_number_check(VID, root))
