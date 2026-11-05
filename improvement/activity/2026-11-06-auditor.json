@@ -1,0 +1,19 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-06",
+  "startedAt": "2026-11-05T16:38:03Z",
+  "finishedAt": "2026-11-05T16:45:29Z",
+  "summary": "Fixed the variant system's 48-hour view counts, which were empty for every video because the hourly watchdog really runs every 5-9 hours, and gave zero-amount maths a clear error. Added AI analysis for 2 new Shorts.",
+  "decision": "acted",
+  "why": "0 of 42 videos had views48hLive: the 48-51 h snapshot window was missed by watchdog runs 5-9 h apart. Data audit clean (0 errors, 0 warnings).",
+  "findings": [
+    {"title": "The hourly watchdog runs every 5-9 hours", "detail": "5 runs in ~27 h (4-5 Nov). Raised as an info notification; the 48-hour count now interpolates across the gaps."},
+    {"title": "ren-005 was not a bug", "detail": "Pillow closes path-opened single-frame images after loading; closed it."}
+  ],
+  "changes": [
+    {"title": "48-hour live views interpolate across snapshot gaps", "detail": "workers/lib/agents-sync.ts viewsAt48h; test workers/tests/views-at-48h.test.ts", "branch": "agent/auditor/2026-11-06"},
+    {"title": "Zero amounts get a clear maths error", "detail": "renderer/models/maths.py compute; 5 tests in renderer/tests/test_maths.py", "branch": "agent/auditor/2026-11-06"}
+  ],
+  "nextCheck": "2026-11-07",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-06.md"}]
+}
