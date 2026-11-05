@@ -1,0 +1,772 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38417,
+ "story": "billionaire_question",
+ "shape": "what-if",
+ "currency": "USD",
+ "feed_id": "2026-10-29-why-a-billionaire-cant-spend-it",
+ "style": {
+  "palette": "night",
+  "genre": "cinematic",
+  "key": "F",
+  "bpm": 90,
+  "look": {
+   "stage": "night",
+   "header": "sticky",
+   "holder": "phone",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "topic": "big_money",
+  "hook": "question",
+  "title": "figure_or_name",
+  "style": "board",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Could you outspend it? Comment",
+ "maths": [
+  {
+   "name": "grow",
+   "kind": "lumpsum",
+   "amount": 10000000000,
+   "rate_pct": 5,
+   "years": 1
+  },
+  {
+   "name": "spend",
+   "kind": "fee_take",
+   "amount": 1000000,
+   "fee_pct": 100,
+   "per_year": 365,
+   "years": 1
+  },
+  {
+   "name": "gap",
+   "kind": "compare",
+   "a": "grow.gains",
+   "b": "spend.per_year_total"
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "payoff",
+  "sec": 2.6,
+  "who": "sharma",
+  "angle": "number",
+  "words": "Can't spend it *all*",
+  "figure": "{gap_diff}",
+  "tag": "Still richer"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Can {spend_amount} a day break {grow_amount}? Watch.",
+   "events": {
+    "spending": {
+     "word": "day"
+    },
+    "empty": {
+     "word": "break"
+    },
+    "wouldnt": {
+     "word": "Watch"
+    },
+    "why": {
+     "word": "Watch"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "spending"
+    },
+    {
+     "kind": "boom",
+     "at": "wouldnt"
+    },
+    {
+     "kind": "riser",
+     "at": "why"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Spend it all?",
+    "spend": "{spend_amount}",
+    "spendLabel": "Every day",
+    "cross": "Watch",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "wouldnt",
+      "size": "close",
+      "on": "sharma",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "fortune",
+   "scene": "board",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "His fortune is {grow_amount}, in shares and businesses, not cash.",
+   "events": {
+    "fortune": {
+     "word": "fortune"
+    },
+    "shares": {
+     "word": "shares"
+    },
+    "businesses": {
+     "word": "businesses"
+    },
+    "cash": {
+     "word": "cash"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "shares"
+    },
+    {
+     "kind": "pop",
+     "at": "businesses"
+    },
+    {
+     "kind": "tick",
+     "at": "cash"
+    }
+   ],
+   "params": {
+    "header": "His fortune",
+    "sub": "An assumed billionaire",
+    "bg": "slate",
+    "items": [
+     {
+      "id": "shares",
+      "prop": "sharestack",
+      "x": 0.25,
+      "size": 0.24,
+      "label": "Shares"
+     },
+     {
+      "id": "businesses",
+      "prop": "bizcampus",
+      "x": 0.75,
+      "size": 0.27,
+      "label": "Businesses",
+      "hidden": true
+     },
+     {
+      "id": "cash",
+      "prop": "cashtruck",
+      "x": 0.5,
+      "size": 0.18,
+      "label": "Cash",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "doc",
+      "title": "Net worth",
+      "rows": [
+       {
+        "label": "Owner",
+        "value": "A billionaire"
+       },
+       {
+        "label": "Worth",
+        "value": "{grow_amount}",
+        "at": "fortune"
+       }
+      ]
+     },
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "shares"
+     },
+     {
+      "at": "shares",
+      "do": "grow",
+      "target": "shares",
+      "scale": 1.2
+     },
+     {
+      "at": "businesses",
+      "do": "enter",
+      "target": "businesses",
+      "how": "rise"
+     },
+     {
+      "at": "cash",
+      "do": "enter",
+      "target": "cash",
+      "how": "drop"
+     },
+     {
+      "at": "cash",
+      "do": "cross",
+      "target": "cash"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ask",
+   "scene": "board",
+   "role": "build",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "Hang on, he spends {spend_amount} every single day?",
+   "events": {
+    "hang": {
+     "word": "Hang"
+    },
+    "spends": {
+     "word": "spends"
+    },
+    "every": {
+     "word": "every"
+    },
+    "day": {
+     "word": "day"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "spends"
+    },
+    {
+     "kind": "kaching",
+     "at": "day"
+    }
+   ],
+   "params": {
+    "header": "Spend it every day?",
+    "bg": "night",
+    "stage": "night",
+    "cast": [
+     {
+      "who": "rohan",
+      "spot": 0.3,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "spot": 0.72,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "spends",
+      "prop": "shopbag",
+      "x": 0.5,
+      "size": 0.24,
+      "label": "Every day"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "spends"
+     },
+     {
+      "at": "spends",
+      "do": "grow",
+      "target": "spends",
+      "scale": 1.1
+     },
+     {
+      "at": "day",
+      "do": "shake",
+      "target": "spends"
+     }
+    ]
+   }
+  },
+  {
+   "id": "year",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "For a year, that's {spend_per_year_total} out the door on cars and jets.",
+   "events": {
+    "every": {
+     "word": "For"
+    },
+    "year": {
+     "word": "year"
+    },
+    "thats": {
+     "word": "that's"
+    },
+    "door": {
+     "word": "door"
+    },
+    "cars": {
+     "word": "cars"
+    },
+    "jets": {
+     "word": "jets"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "year"
+    },
+    {
+     "kind": "whoosh",
+     "at": "door"
+    },
+    {
+     "kind": "pop",
+     "at": "jets"
+    }
+   ],
+   "params": {
+    "header": "A year of shopping",
+    "bg": "coral",
+    "items": [
+     {
+      "id": "door",
+      "prop": "longreceipt",
+      "x": 0.3,
+      "size": 0.28,
+      "label": "A year's bill"
+     },
+     {
+      "id": "cars",
+      "prop": "sportscar",
+      "x": 0.55,
+      "size": 0.18,
+      "label": "Cars",
+      "hidden": true
+     },
+     {
+      "id": "jets",
+      "prop": "privatejet",
+      "x": 0.82,
+      "size": 0.2,
+      "label": "Jets",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "door"
+     },
+     {
+      "at": "thats",
+      "do": "tag",
+      "target": "door",
+      "text": "{spend_per_year_total}"
+     },
+     {
+      "at": "door",
+      "do": "grow",
+      "target": "door",
+      "scale": 1.1
+     },
+     {
+      "at": "cars",
+      "do": "enter",
+      "target": "cars",
+      "from": "door"
+     },
+     {
+      "at": "jets",
+      "do": "enter",
+      "target": "jets",
+      "from": "door"
+     },
+     {
+      "at": "jets",
+      "do": "flow",
+      "target": "door",
+      "to": "jets",
+      "n": 5,
+      "text": "{spend_per_year_total}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "growth",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "But his shares grow an assumed {grow_rate}, adding {grow_gains}.",
+   "events": {
+    "shares": {
+     "word": "shares"
+    },
+    "grow": {
+     "word": "grow"
+    },
+    "assumed": {
+     "word": "assumed"
+    },
+    "add": {
+     "word": "adding"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "grow"
+    },
+    {
+     "kind": "ding",
+     "at": "add"
+    }
+   ],
+   "params": {
+    "header": "His shares grow",
+    "bg": "mint",
+    "items": [
+     {
+      "id": "grow",
+      "prop": "moneyvine",
+      "x": 0.5,
+      "size": 0.38,
+      "k": 0.2,
+      "label": "Adds a year"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "grow"
+     },
+     {
+      "at": "shares",
+      "do": "equation",
+      "terms": [
+       {
+        "text": "{grow_amount}",
+        "at": "shares"
+       },
+       {
+        "text": "{grow_rate} assumed",
+        "at": "assumed"
+       }
+      ],
+      "result": {
+       "text": "{grow_gains}",
+       "value": "@grow.gains",
+       "at": "add"
+      }
+     },
+     {
+      "at": "grow",
+      "do": "fill",
+      "target": "grow",
+      "k": 1,
+      "dur": 1.6
+     },
+     {
+      "at": "assumed",
+      "do": "grow",
+      "target": "grow",
+      "scale": 1.15
+     },
+     {
+      "at": "add",
+      "do": "tag",
+      "text": "{grow_gains}",
+      "target": "grow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "So does the pile shrink? No. The growth outruns the shopping.",
+   "events": {
+    "pile": {
+     "word": "pile"
+    },
+    "shrink": {
+     "word": "shrink"
+    },
+    "no": {
+     "word": "No"
+    },
+    "growth": {
+     "word": "growth"
+    },
+    "shopping": {
+     "word": "shopping"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "shrink"
+    },
+    {
+     "kind": "boom",
+     "at": "no"
+    },
+    {
+     "kind": "riser",
+     "at": "growth"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Does the pile shrink?",
+    "spend": "{spend_per_year_total}",
+    "spendLabel": "Spent",
+    "gain": "{grow_gains}",
+    "gainLabel": "Grew",
+    "stamp": "No",
+    "set": "vault",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "growth",
+      "size": "extreme",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "After a year of spending, he's still {gap_diff} richer on paper.",
+   "events": {
+    "whole": {
+     "word": "After"
+    },
+    "spending": {
+     "word": "spending"
+    },
+    "ends": {
+     "word": "still"
+    },
+    "richer": {
+     "word": "richer"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "whole"
+    },
+    {
+     "kind": "kaching",
+     "at": "spending"
+    },
+    {
+     "kind": "boom",
+     "at": "richer"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "diff": "{gap_diff}",
+    "diffLabel": "Still richer",
+    "month": "December",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "thumbsUp",
+        "expression": "proud"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "richer",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "board",
+   "role": "loop",
+   "speaker": "rohan",
+   "transition": "whip",
+   "say": "Could you spend it faster than it grows?",
+   "events": {
+    "spend": {
+     "word": "spend"
+    },
+    "faster": {
+     "word": "faster"
+    },
+    "grows": {
+     "word": "grows"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "spend"
+    },
+    {
+     "kind": "ding",
+     "at": "grows"
+    }
+   ],
+   "params": {
+    "header": "Could you?",
+    "bg": "night",
+    "stage": "night",
+    "cast": [
+     {
+      "who": "rohan",
+      "spot": 0.3,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "spot": 0.72,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "spend",
+      "prop": "shopbag",
+      "x": 0.26,
+      "size": 0.22,
+      "label": "Spend"
+     },
+     {
+      "id": "grows",
+      "prop": "megapile",
+      "x": 0.74,
+      "size": 0.22,
+      "k": 0.4,
+      "label": "It grows"
+     }
+    ],
+    "actions": [
+     {
+      "at": "spend",
+      "do": "flow",
+      "target": "grows",
+      "to": "spend",
+      "n": 4
+     },
+     {
+      "at": "faster",
+      "do": "shake",
+      "target": "spend"
+     },
+     {
+      "at": "grows",
+      "do": "grow",
+      "target": "grows",
+      "scale": 1.15
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "af_bella"
+}

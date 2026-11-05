@@ -1,0 +1,230 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:53:08.596762+00:00",
+    "finishedAt": "2026-11-05T02:53:08.596762+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:54:53.093892+00:00",
+    "finishedAt": "2026-11-05T02:54:53.093892+00:00",
+    "notes": [
+      "18 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+      "beat 'ask' opens like a line in one of the last scripts ('so what if'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:54:58.309333+00:00",
+    "finishedAt": "2026-11-05T02:54:58.309333+00:00",
+    "notes": [
+      "18 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:56:26.224976+00:00",
+    "finishedAt": "2026-11-05T02:56:26.224976+00:00",
+    "notes": [
+      "18 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:56:52.009267+00:00",
+    "finishedAt": "2026-11-05T02:56:52.009267+00:00",
+    "notes": [
+      "18 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:57:44.313659+00:00",
+    "finishedAt": "2026-11-05T02:57:44.313659+00:00",
+    "notes": [
+      "Title 'Spend $1,000,000 a day. A billionaire still gets richer' and hook 'would break a billionaire? It won't.' generalise to every billionaire, but the numbers only hold for the illustrative $10B fortune: at the assumed 5%, any fortune under about $7.3B (most billionaires) gains less than the $365M spent and does shrink. Name the size: e.g. 'A $10 billion fortune still gets richer' / '...would break a ten-billion-dollar fortune?'",
+      "Description 'Can a billionaire spend {spend_amount} every single day and still end the year richer?' has the same over-generalisation; tie it to the assumed $10B fortune and assumed 5% growth.",
+      "Otherwise fine (notes, not grounds): no sourced facts; 5% is labelled assumed and the fortune 'An assumed billionaire' (topic verify item met); disclaimer ends the description; no advice or expert claims. Consider 'about'/'on paper' in the payoff since spending means selling shares (tax) and the base shrinks during the year, which lowers but does not erase the $135M."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:57:11.602463+00:00",
+    "finishedAt": "2026-11-05T02:57:53.033641+00:00",
+    "notes": [
+      "text 'One year' at 16.2 s is 38.9 px, below the 44 px minimum",
+      "text 'DECEMBER' at 30.2 s runs outside the frame",
+      "4 of 8 stills are mostly empty background (at 5 s, 10 s, 15 s, 34 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:58:13.381214+00:00",
+    "finishedAt": "2026-11-05T02:58:13.381214+00:00",
+    "notes": [
+      "title 'A {grow_amount} fortune spends {spend_amount} a day and still grows 💸' has no money figure and no famous name: put the biggest figure or the famous person or company in it (\"Why Google pays Apple $20B…\"), unless `arms.title` is \"plain\""
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:58:22.071996+00:00",
+    "finishedAt": "2026-11-05T02:58:22.071996+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:58:23.128519+00:00",
+    "finishedAt": "2026-11-05T02:58:23.128519+00:00",
+    "notes": [
+      "18 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:58:57.318004+00:00",
+    "finishedAt": "2026-11-05T02:58:57.318004+00:00",
+    "notes": [
+      "Re-review after fix: title, hook and description now name the illustrative $10B fortune and the description states the assumed 5% growth, so the claim matches the numbers; payoff says 'on paper'; no sourced facts; topic verify item met (assumptions, no real person); disclaimer ends description; no advice. Style note: hook is spoken 'a ten billion dollars fortune' (awkward plural), not grounds."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:58:45.214059+00:00",
+    "finishedAt": "2026-11-05T02:59:22.214488+00:00",
+    "notes": [
+      "4 of 9 stills are mostly empty background (at 5 s, 10 s, 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+      "the hook runs 4.6 s; keep it to 4 s or less"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:59:52.023756+00:00",
+    "finishedAt": "2026-11-05T02:59:52.023756+00:00",
+    "notes": [
+      "18 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-05T03:00:06.823540+00:00",
+    "finishedAt": "2026-11-05T03:00:34.448286+00:00",
+    "notes": [
+      "35 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-05T03:00:48.479512+00:00",
+    "finishedAt": "2026-11-05T03:00:48.479512+00:00",
+    "notes": [
+      "Re-review of shortened hook 'Can $1,000,000 a day break $10,000,000,000? Watch.': names the illustrative $10B, no general billionaire claim, no answer given; title, description (assumed 5%), payoff 'on paper', verify item and disclaimer unchanged and fine; no sourced facts, no advice."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-05T03:01:44.896615+00:00",
+    "finishedAt": "2026-11-05T03:01:44.896615+00:00",
+    "notes": [
+      "[scene] hook (Hook scene, 1.5-3.0s): the '$1,000,000 EVERY DAY' spend tag and its flying bags sit on top of the 'SPEND IT ALL?' title, so both texts overlap and are hard to read",
+      "[scene] ask beat (board, multiply action, 12.0s): after 'multiply' n=4 the shopping bags fly off the left edge and the '$1,000,000' tag is pushed up off the top edge, cut off behind the 'SPEND IT EVERY DAY?' header; the frame is left nearly empty",
+      "[scene] year beat (board, calendar action, 13.5-16.5s): the full-frame calendar hides every board item; the receipt, its $365,000,000 tag, the cars and the jets never appear, so the card is only 'April/August/December' and the year's spending figure exists only in the voice (does not read on mute)",
+      "[scene] turn beat (custom Turn, vault set, 24.0-25.5s): the small red '$365,000,000 SPENT' label sits over the coloured bookshelf and is hard to read; much smaller than the '$500.0M GREW' label opposite",
+      "[script] loop beat (board, 33.0-34.7s): the shopbag at x 0.4 is hidden behind the megapile at x 0.6 and the labels 'Spend' and 'It grows' run together as one phrase; spread the items apart (e.g. x 0.25 / 0.72)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T03:02:10.204321+00:00",
+    "finishedAt": "2026-11-05T03:02:10.204321+00:00",
+    "notes": [
+      "18 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-05T03:02:24.418223+00:00",
+    "finishedAt": "2026-11-05T03:02:53.653375+00:00",
+    "notes": [
+      "35 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-05T03:03:42.694982+00:00",
+    "finishedAt": "2026-11-05T03:03:42.694982+00:00",
+    "notes": [
+      "[scene] ask beat (board, 'tag' action on the shopbag, 12.0s): the '$1,000,000' tag still lands above the bag at the very top of the frame, cut off and hidden behind the 'SPEND IT EVERY DAY?' header; the tag should sit below or beside the item, inside the frame",
+      "[script] year beat (board, 15.0s): the receipt at x 0.2 grows 1.3 and the camera follows it, so the receipt and its '$365,000,000' tag run off the left edge; move the receipt to about x 0.3 or drop the grow to ~1.1",
+      "[script] loop beat (board, 34.5-34.7s): the megapile at x 0.74 (size 0.27, grow 1.35) runs off the right edge in the last frames; use a smaller size or grow (e.g. size 0.22, scale 1.15)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T03:03:59.340308+00:00",
+    "finishedAt": "2026-11-05T03:03:59.340308+00:00",
+    "notes": [
+      "18 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-05T03:04:13.419591+00:00",
+    "finishedAt": "2026-11-05T03:04:38.322535+00:00",
+    "notes": [
+      "35 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-05T03:05:13.645672+00:00",
+    "finishedAt": "2026-11-05T03:05:13.645672+00:00",
+    "notes": [
+      "Round 3, stills every 1.5 s: hook question clear of title, every card readable on mute (net worth doc, $1,000,000 slam, $365,000,000 bill with car, 5% equation to $500.0M, spent vs grew, $135.0M still richer), nothing cut off or overlapping, disclaimer on last frames, code checks and audio on target"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-05T03:05:22.551210+00:00",
+    "finishedAt": "2026-11-05T03:07:40.402334+00:00",
+    "notes": [
+      "35 s, night/cinematic, peak -1.0 dB, mean -16.9 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-05T03:07:45.866844+00:00",
+    "finishedAt": "2026-11-05T03:07:45.866844+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
