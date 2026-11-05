@@ -1,7 +1,64 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 0,
+  "open": 3,
   "notes": [
+    {
+      "id": "cmw31ex100001l809z2cs7b7q",
+      "kind": "choice",
+      "area": null,
+      "text": "I loved the way of animation done.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-05T04:20:18.789Z",
+      "video": {
+        "id": "v-20261105-01",
+        "title": "Your $5,000 bonus: the rich turn it into a paycheck 💸",
+        "format": "short",
+        "status": "queued",
+        "story": "secret_of_rich",
+        "shape": "pick-one",
+        "hookStyle": "question",
+        "hook": "You think the rich blow their bonus? They don't. Watch what they buy."
+      }
+    },
+    {
+      "id": "cmw31atze0001jr09vt6u84fp",
+      "kind": "improve",
+      "area": "other",
+      "text": "Video length is very short could be little more like 30 atleast.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-05T04:17:08.426Z",
+      "video": {
+        "id": "v-20261105-06",
+        "title": "The $10 gym that wants you to stay home 🏋️",
+        "format": "short",
+        "status": "queued",
+        "story": "how_they_make_money",
+        "shape": "reveal",
+        "hookStyle": "myth",
+        "hook": "You think your gym wants you there? It doesn't. Here's why."
+      }
+    },
+    {
+      "id": "cmw316gwu0001lb09097delf4",
+      "kind": "wrong",
+      "area": null,
+      "text": "The billion and million is shown in numbers which is wrong . Also in tittle same mistake. People would see million and billion in words not in numbers.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-05T04:13:44.862Z",
+      "video": {
+        "id": "v-20261105-07",
+        "title": "Spend $1,000,000 a day. A $10,000,000,000 fortune still grows 💸",
+        "format": "short",
+        "status": "scheduled",
+        "story": "billionaire_question",
+        "shape": "what-if",
+        "hookStyle": "question",
+        "hook": "Can {spend_amount} a day break {grow_amount}? Watch."
+      }
+    },
     {
       "id": "cmw1pidrv0001l009mdsdcmtk",
       "kind": "wrong",
