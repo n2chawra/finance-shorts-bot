@@ -1,0 +1,25 @@
+{
+  "id": "v-20261105-05",
+  "createdAt": "2026-11-05T02:38:32.572832+00:00",
+  "status": "failed",
+  "failReason": "check-plan: arms.hook assigns 'question' (hook_style must follow it) but the previous video v-20261105-01 also used 'question', which the variety rule forbids; no plan can pass both",
+  "template": "short_story",
+  "topic": {
+    "title": "The $10 gym that's paid for by the people who never show up",
+    "category": "business",
+    "reach": "global",
+    "feed_id": "2026-11-02-gym-paid-by-people-who-never-come"
+  },
+  "title": "The $10 gym that wants you to stay home 🏋️",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-05T02:38:30.641966+00:00",
+      "finishedAt": "2026-11-05T02:38:30.641966+00:00",
+      "notes": [
+        "hook style 'question' was used by the previous video"
+      ]
+    }
+  ]
+}
