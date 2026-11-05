@@ -187,7 +187,8 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
   });
   // views 48 hours after publishing from the hourly public-counter snapshots: no Analytics lag, so the
   // variant system (improvement/arms.py) can judge a Short two days after it went out
-  const snaps = await prisma.liveSnapshot.findMany({ where: { uploadId: { in: published.map((v) => v.upload!.id) } }, select: { uploadId: true, hour: true, views: true } }).catch(() => []);
+  const snaps = await prisma.liveSnapshot.findMany({ where: { uploadId: { in: published.map((v) => v.upload!.id) } }, select: { uploadId: true, hour: true, views: true } })
+    .catch((e: unknown) => { console.log(`::warning::live snapshots unreadable, views48hLive left empty: ${e instanceof Error ? e.message : e}`); return []; });
   const videos = published.map((v) => {
     const u = v.upload!;
     const style = (v.style ?? {}) as Style;
@@ -250,11 +251,20 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
 
 type Curve = [number, number][];
 
-/** The public view count 48 hours after publishing: the first hourly snapshot 48–51 h after it (null until then). */
+/** The public view count 48 hours after publishing: the first snapshot 48–51 h after it, else a straight line
+ * between the snapshots either side of 48 h when they are at most 12 h apart (null until then). The "hourly"
+ * watchdog runs every 5–9 h on GitHub's schedule, so most Shorts get no snapshot inside the 3-hour window. */
 export function viewsAt48h(snaps: { hour: Date; views: number }[], publishAt: Date): number | null {
-  const from = publishAt.getTime() + 48 * 3_600_000, to = from + 3 * 3_600_000;
-  const hit = snaps.filter((s) => s.hour.getTime() >= from && s.hour.getTime() <= to).sort((a, b) => a.hour.getTime() - b.hour.getTime())[0];
-  return hit ? hit.views : null;
+  const at = publishAt.getTime() + 48 * 3_600_000;
+  const sorted = [...snaps].sort((a, b) => a.hour.getTime() - b.hour.getTime());
+  const after = sorted.find((s) => s.hour.getTime() >= at);
+  if (!after) return null;
+  const t1 = after.hour.getTime();
+  if (t1 <= at + 3 * 3_600_000) return after.views;
+  const before = sorted.filter((s) => s.hour.getTime() < at).at(-1);
+  if (!before || t1 - before.hour.getTime() > 12 * 3_600_000) return null;
+  const t0 = before.hour.getTime();
+  return Math.round(before.views + (after.views - before.views) * (at - t0) / (t1 - t0));
 }
 
 /** metrics/analytics.json: what the auditor's AI analysis reads (the routines have no database). Per video

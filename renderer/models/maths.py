@@ -382,6 +382,9 @@ INPUTS = {
     "rate": ("part", "whole"),
 }
 
+# money inputs that must be above zero wherever a kind takes them
+POSITIVE = ("amount", "monthly", "income")
+
 
 def compute(maths: list[dict], fm: Money | None = None) -> dict[str, Result]:
     """Every named calculation, checked for its inputs, its figures in `fm`'s currency (rupees by default)."""
@@ -396,6 +399,12 @@ def compute(maths: list[dict], fm: Money | None = None) -> dict[str, Result]:
             raise ValueError(f"maths {m['name']!r} is a {kind}, so it needs {', '.join(missing)}")
         if m["name"] in out:
             raise ValueError(f"maths name {m['name']!r} is used twice")
+        # a zero or negative principal divides by zero further down (a bare ZeroDivisionError helps no writer)
+        bad = [k for k in POSITIVE if k in INPUTS[kind] and not (isinstance(m[k], (int, float)) and m[k] > 0)]
+        if bad:
+            raise ValueError(f"maths {m['name']!r}: {', '.join(bad)} must be above zero")
+        if kind == "loan_prepay" and not m["rate_pct"] > 0:
+            raise ValueError(f"maths {m['name']!r}: loan_prepay needs a rate_pct above zero")
         out[m["name"]] = compare(m, fm, out) if kind == "compare" else KINDS[kind](m, fm)
         # its own numeric inputs are readable too: "@home.amount" sizes a stack (2026-10-29: eleven
         # scripts failed on an input they expected to reach)

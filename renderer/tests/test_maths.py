@@ -131,3 +131,16 @@ def test_count_reads_as_a_number_of_things() -> None:
     from renderer.engine.formatting import count
     assert (count(8e9), count(340e6), count(10000), count(250000, indian=True)) == ("8B", "340M", "10,000", "2,50,000")
     assert (voice.spoken("8B", "USD"), voice.spoken("10,000", "USD")) == ("eight billion", "ten thousand")
+
+
+@pytest.mark.parametrize("m, match", [
+    ({"name": "z", "kind": "lumpsum", "amount": 0, "rate_pct": 10, "years": 5}, "amount must be above zero"),
+    ({"name": "z", "kind": "sip", "monthly": 0, "rate_pct": 10, "years": 5}, "monthly must be above zero"),
+    ({"name": "z", "kind": "card_min_due", "amount": 0, "rate_pct_month": 3, "min_due_pct": 5, "min_due_floor": 200}, "amount must be above zero"),
+    ({"name": "z", "kind": "income_tax_bands", "income": 0, "allowance": 0, "bands": [[None, 20]]}, "income must be above zero"),
+    ({"name": "z", "kind": "loan_prepay", "amount": 100000, "rate_pct": 0, "months": 24, "prepay": 1000, "prepay_month": 6}, "rate_pct above zero"),
+])
+def test_zero_inputs_get_a_message_a_writer_can_act_on(m: dict, match: str) -> None:
+    """ren-003: these used to fail with a bare ZeroDivisionError or math domain error."""
+    with pytest.raises(ValueError, match=match):
+        maths.compute([m])

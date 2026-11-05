@@ -542,17 +542,42 @@
     },
     {
       "videoId": "v-20261102-03",
-      "verdict": "okay",
-      "headline": "The 10,000-years billion is a little above the typical Short on views, but Analytics has no numbers for it yet.",
+      "verdict": "hit",
+      "headline": "The 10,000-years billion is now above the typical Short on both views and how much of it people watch.",
       "why": [
         {
-          "text": "144 views on the public counter after about 2 days (no 48-hour figure yet), against a median of 109 views in 48 hours for our 34 measured Shorts.",
-          "metric": "144 views",
+          "text": "54.8% viewed against a median of 39.2% for our 35 measured Shorts, even at 60 s long.",
+          "metric": "54.8% viewed",
+          "tab": "engagement"
+        },
+        {
+          "text": "188 views on the public counter after about 3 days, against a median of 109 views in 48 hours (34 measured Shorts); no 48-hour figure from Analytics yet.",
+          "metric": "188 views",
           "tab": "overview"
         },
         {
-          "text": "It runs 60 s; of the five Shorts of 60 s or more, only the 69 s McDonald's one passed 150 views (469). The October hits ran 22–35 s.",
-          "metric": "60 s",
+          "text": "Hook hold 1.148: more viewers were there at 3 s than at the start (rewatches of the opening).",
+          "metric": "hook hold 1.148",
+          "tab": "engagement"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Keep the 'how long would it take' idea but tell it in 28-35 s: length band 28-35 has a median of 721 views in 48 hours (7 Shorts).",
+      "writtenAt": "2026-11-05T17:05:00Z"
+    },
+    {
+      "videoId": "v-20261103-01",
+      "verdict": "miss",
+      "headline": "Google paying Apple is a famous big-money story, but at 63 s it got a third of a typical Short's views.",
+      "why": [
+        {
+          "text": "33 views on the public counter after about 2.4 days, against a median of 109 views in 48 hours for our 34 measured Shorts.",
+          "metric": "33 views",
+          "tab": "overview"
+        },
+        {
+          "text": "It runs 63 s. The variant system's numbers: Shorts of 20-27 s have a median of 770 views in 48 hours (4 videos), 28-35 s 721 (7).",
+          "metric": "63 s",
           "tab": "works"
         },
         {
@@ -562,8 +587,33 @@
         }
       ],
       "viewersSaid": [],
-      "next": "Tell the same 'how long would it take' idea in 28–35 s, as the new length rule asks.",
-      "writtenAt": "2026-11-04T17:00:00Z"
+      "next": "Retell the Google-Apple deal as a 28-35 s Short with the $20B figure in the first line; the topic itself fits the big-money option (median 907 views, 10 videos).",
+      "writtenAt": "2026-11-05T17:05:00Z"
+    },
+    {
+      "videoId": "v-20261103-02",
+      "verdict": "miss",
+      "headline": "Buffett and Coca-Cola is a famous name, but at 61 s it stayed under the typical Short's views.",
+      "why": [
+        {
+          "text": "62 views on the public counter after about 2.1 days, against a median of 109 views in 48 hours for our 34 measured Shorts.",
+          "metric": "62 views",
+          "tab": "overview"
+        },
+        {
+          "text": "It runs 61 s and opens with a myth hook; the myth hook has no measured videos yet in the variant system, the question hook has a median of 423 (5 videos).",
+          "metric": "61 s",
+          "tab": "works"
+        },
+        {
+          "text": "No % viewed, traffic or drop points yet: YouTube Analytics hasn't reported this video.",
+          "metric": "no Analytics yet",
+          "tab": "engagement"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Make the next famous-investor story 20-35 s with a question hook, as the current defaults say.",
+      "writtenAt": "2026-11-05T17:05:00Z"
     }
   ]
 }
