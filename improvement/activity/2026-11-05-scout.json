@@ -1,0 +1,21 @@
+{
+  "agent": "scout",
+  "day": "2026-11-05",
+  "startedAt": "2026-11-05T04:08:57Z",
+  "finishedAt": "2026-11-05T04:16:30Z",
+  "summary": "Rebuilt the long-video feed around our five 1K+ Shorts (owner rule of 4 Nov): 4 new topics and the billion topic retitled, each with sourced facts. Retention study: our long videos lose viewers in the first 17-75 seconds, so the new rule is to open on the Short's own picture and line.",
+  "decision": "acted",
+  "why": "No topic in the feed named a from_short, so Studio had nothing that met the owner's 2026-11-04 rule. Long videos kept unsubscribed viewers 14.9%, 3.4% and 3.3% of their length (metrics/analytics.json).",
+  "findings": [
+    {"title": "Five Shorts over 1,000 views", "detail": "5% tax 1,190; never sell stock 1,170; $20K savings 1,169; $1B in $100s 1,156; Dhanteras jeweller 1,148. Each now has a long topic.", "link": "improvement/longform/2026-11-05.md"},
+    {"title": "The long-video curve is all intro cliff", "detail": "3.4% of 512 s is 17 s. Routed adopt: open on the Short's hook picture and line.", "link": "improvement/longform/2026-11-05.md"},
+    {"title": "Musk's pledged shares, from Tesla's own filing", "detail": "236M shares pledged, borrowing capped at $3.5B or 25%, and no such loans currently (6 Oct 2025).", "link": "https://ir.tesla.com/_flysystem/s3/sec/000110465925097147/tm252289d30_defa14a-gen.pdf"},
+    {"title": "state still offers topics without from_short", "detail": "Routed adopt to generator/topics.py with a test; older topics marked held meanwhile.", "link": "improvement/longform/backlog.json"}
+  ],
+  "changes": [
+    {"title": "Topic feed", "detail": "4 topics added, 1 updated, 3 marked used, 7 held (no winning Short).", "branch": "agent/scout/2026-11-05"},
+    {"title": "Backlog", "detail": "5 items: 3 adopt (high), 2 experiment.", "branch": "agent/scout/2026-11-05"}
+  ],
+  "nextCheck": "2026-11-09",
+  "links": [{"label": "Report", "url": "improvement/longform/2026-11-05.md"}]
+}

@@ -1039,6 +1039,61 @@
       "priority": "normal",
       "found": "2026-11-04",
       "status": "open"
+    },
+    {
+      "id": "2026-11-05-open-on-the-short",
+      "kind": "craft",
+      "title": "Open every long video on its Short's own first picture and line, inside 8 seconds",
+      "detail": "Our three long videos kept unsubscribed viewers for 15%, 3.4% and 3.3% of their length (metrics/analytics.json `subscribed`): about 17-75 s of a ~500 s video, so the whole curve is the intro cliff (the 20-40% loss in the first 30 s the retention guides describe). A viewer who comes from a Short's Related video link expects that Short. Rule for the writer: beat 1 shows the Short's hook picture (the same prop, same cast member) and says its hook line nearly word for word; beat 2 says 'that was the short version, here is what it left out' plus the count of items. How we'll know: once a from_short long video has 30+ views, the 0:30 hold in `hookHold` beats 50%.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-05",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-05-midpoint-reveal",
+      "kind": "craft",
+      "title": "A reveal at the midpoint (~2:45 of a 5-6 min video), not only recaps at 2:00 and 4:00",
+      "detail": "The guides agree the second-largest drop is around the middle of a video. With the new 300-400 s length our outlines have recap-and-tease at ~2:00 and ~4:00 and nothing that happens in between. Put the second strongest item (a computed figure that slams in with a chart or a transformation) at 45-55% of the runtime, and open one question in the promise that is only answered there. Check in render.json: a `reveal` or chart beat between 45% and 55% of `durationSec`. Ties to 2026-10-27-early-spike, which was written for 8-minute videos.",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-05",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-05-readme-length-stale",
+      "kind": "bug",
+      "title": "long_story README still says 400-600 s; settings say 300-400 s since 2026-11-04",
+      "detail": "renderer/templates/long_story/README.md line 3 says 'the settings' length, 400-600 s since 2026-10-29' while config/settings.json has longLengthMinSec 300, longLengthMaxSec 400 (line 244 of the README already uses 300-400). Change line 3 to '300-400 s since 2026-11-04' so the writer aims at 4-6 items, not 7-9.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-05",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-05-state-needs-from-short",
+      "kind": "bug",
+      "title": "`state --format long` offers topics without `from_short` as usable_now",
+      "detail": "Owner 2026-11-04: a long topic without `from_short` is not offered to Studio. generator/topics.py `for_state` still marks every unblocked topic usable (today 7 of 9 shown have no from_short) and doesn't pass `from_short` into the shown topic. Fix: for fmt == 'long', a topic is usable only with a `from_short` whose Short has 1,000+ views in metrics/videos.json; include `from_short` in the shown fields; add a test. Scout has marked the others `held` in the feed meanwhile.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-05",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-05-chapter-cards-every-60s",
+      "kind": "craft",
+      "title": "A visible chapter card every ~60 s, with the item number counting toward the promised total",
+      "detail": "In a 5-6 minute list the viewer's question is 'how many left?'. A small numbered card ('3 of 5') when each item starts, repeating the promise's count, is the cheapest re-hook the guides list (remind them what is coming, don't repeat the hook). Add YouTube chapters in the description at the same times. Check: every item starts with a numbered card, and the description lists matching chapters.",
+      "where": "scene",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-05",
+      "status": "open"
     }
   ]
 }

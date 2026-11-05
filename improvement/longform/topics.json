@@ -2,6 +2,422 @@
   "note": "Long-video topics, written by the Scout agent (agents/scout.md) and used by Studio (agents/studio.md). These first four were seeded by the owner's session to give Studio something to start on; Scout adds to them daily.",
   "topics": [
     {
+      "format": "long",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-11-05",
+      "expires": "2027-11-05",
+      "status": "new",
+      "kind": "evergreen",
+      "id": "2026-11-05-why-billionaires-never-sell",
+      "from_short": "v-20261021-05",
+      "from_short_views": 1170,
+      "title": "Why don't billionaires ever sell their stock?",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Billionaires never pay Taxes",
+        "views": 54000000,
+        "url": "https://www.youtube.com/shorts/klS_tpY7V04"
+      },
+      "category": "tax",
+      "priority": "high",
+      "search": "why billionaires never sell their stock",
+      "angle": "Our Short said they borrow instead. The long version answers the questions it left open: why a loan isn't taxed, who lends them billions, what happens when the shares fall, and what happens when they die.",
+      "why_now": "Expands our 1,170-view Short 'Why billionaires never sell their stock' (v-20261021-05, 72% viewed), the second-best Short we have. Owner 2026-11-04: long videos grow out of 1K+ Shorts. Different from L-20261023-01 (debt in general, 13 views): this is one question, the one the Short raised, titled as people search it.",
+      "outline": [
+        "hook (0:00): restate the Short in Sikka's words: 'billionaires almost never sell; they borrow'. Rohan: 'then where does the money for the yacht come from?' Picture the whole video hangs on: a vault of shares that never opens, with a pipe of loans coming out of its side",
+        "promise (by 0:25): four answers, and the last one is the reason the vault never has to open",
+        "item 1 (~60 s, reveal at 0:45), selling is taxed: sell $1M of stock bought for almost nothing and up to the top 20% long-term rate goes to tax (fact: IRS 20%; maths fee_take 20% of $1M = $200,000)",
+        "item 2, a loan isn't income: borrow $1M against the shares at an assumed 5% for 10 years: interest $272,786 (emi) while the untouched $1M at an assumed 8% grows to $2.16M (lumpsum). Board card: the two sums side by side",
+        "recap-and-tease at ~2:00: 'so borrowing is cheaper than selling. But who lends a billionaire money, and how much?'",
+        "item 3, the real numbers: Elon Musk has about 236 million Tesla shares pledged as collateral; Tesla caps the borrowing at $3.5B or 25% of their value, and says he has no such loans right now (facts, Tesla's own filing). Priya: the arrangement is the point, flexibility on tap",
+        "item 4, the year with no tax: ProPublica's IRS files: the 25 richest Americans grew $401B richer in 2014-2018 and paid $13.6B, a 3.4% 'true tax rate'; Musk paid no federal income tax in 2018 (facts). Sharma Uncle: legal, every step",
+        "recap-and-tease at ~4:00: 'and when the shares fall? the bank can sell them for you' (the risk, said plainly)",
+        "item 5 (strongest, last): why the vault never opens: the loan is paid from new loans while shares keep growing, and US heirs inherit at a stepped-up value (verify IRS step-up); the same mechanism at our size is just 'don't sell your index fund for a car'",
+        "ending: loop back to the Short's line, ask the viewer 'would you borrow against your shares?', one CTA, disclaimer end card"
+      ],
+      "maths": "fee_take (20% of $1M), emi ($1M at an assumed 5% for 10 years), lumpsum ($1M at an assumed 8% for 10 years), compare (interest vs growth)",
+      "facts": [
+        {
+          "label": "top US long-term capital gains tax rate (2025)",
+          "value": 20,
+          "unit": "percent",
+          "as_of": "2025",
+          "source": "IRS Topic 409",
+          "url": "https://www.irs.gov/taxtopics/tc409"
+        },
+        {
+          "label": "Tesla shares Elon Musk has pledged as loan collateral",
+          "value": 236,
+          "unit": "count_million",
+          "as_of": "2025-10-06",
+          "source": "Tesla proxy materials (SEC filing DEFA14A)",
+          "url": "https://ir.tesla.com/_flysystem/s3/sec/000110465925097147/tm252289d30_defa14a-gen.pdf"
+        },
+        {
+          "label": "Tesla's cap on what Musk may borrow against pledged shares",
+          "value": 3.5,
+          "unit": "money_billion",
+          "as_of": "2025-10-06",
+          "source": "Tesla proxy materials (SEC filing DEFA14A)",
+          "url": "https://ir.tesla.com/_flysystem/s3/sec/000110465925097147/tm252289d30_defa14a-gen.pdf",
+          "currency": "USD"
+        },
+        {
+          "label": "the 25 richest Americans' wealth growth, 2014-2018",
+          "value": 401,
+          "unit": "money_billion",
+          "as_of": "2021-06-08",
+          "source": "ProPublica, The Secret IRS Files",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+          "currency": "USD"
+        },
+        {
+          "label": "federal income tax those 25 paid, 2014-2018",
+          "value": 13.6,
+          "unit": "money_billion",
+          "as_of": "2021-06-08",
+          "source": "ProPublica, The Secret IRS Files",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+          "currency": "USD"
+        },
+        {
+          "label": "their 'true tax rate' (tax paid / wealth growth)",
+          "value": 3.4,
+          "unit": "percent",
+          "as_of": "2021-06-08",
+          "source": "ProPublica, The Secret IRS Files",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+        },
+        {
+          "label": "the year Elon Musk paid no federal income tax",
+          "value": 2018,
+          "unit": "year",
+          "as_of": "2021-06-08",
+          "source": "ProPublica, The Secret IRS Files",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+        }
+      ],
+      "verify": [
+        "IRS: 20% top long-term capital gains rate; the step-up in basis at death (IRS Publication 551)",
+        "Tesla: 236 million pledged shares, the $3.5B / 25% cap, and 'currently does not have any loans' (6 Oct 2025 filing): say the last part, never imply he has a loan now",
+        "ProPublica figures are from leaked IRS data (2021): say 'according to IRS records obtained by ProPublica'",
+        "Nothing alleges a crime: every step is legal; 5% and 8% are assumptions said as such"
+      ],
+      "sources": [
+        "https://www.irs.gov/taxtopics/tc409",
+        "https://ir.tesla.com/_flysystem/s3/sec/000110465925097147/tm252289d30_defa14a-gen.pdf",
+        "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+      ]
+    },
+    {
+      "format": "long",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-11-05",
+      "expires": "2027-11-05",
+      "status": "new",
+      "kind": "evergreen",
+      "id": "2026-11-05-why-cant-billionaires-pay-tax",
+      "from_short": "v-20261024-01",
+      "from_short_views": 1190,
+      "title": "Why can't billionaires just pay a wealth tax?",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Billionaires never pay Taxes",
+        "views": 54000000,
+        "url": "https://www.youtube.com/shorts/klS_tpY7V04"
+      },
+      "category": "tax",
+      "priority": "high",
+      "search": "why cant billionaires just pay taxes",
+      "angle": "Rich on paper, short on cash: what a 5% tax on a billion really asks for, and why the answer is never 'just pay it'.",
+      "why_now": "Expands our best Short, 'Why can't billionaires just pay a 5% tax?' (v-20261024-01, 1,190 views). Wealth taxes are in the news worldwide (NBCLA's 'Billionaire Tax' video is gaining ~300 views an hour on this week's market data). Not the same video as L-20261026-01 (ways they avoid tax): this one is about paper wealth vs cash.",
+      "outline": [
+        "hook (0:00): Rohan: 'just tax them 5%, they're billionaires'. On a $1B fortune that's $50M a year (fee_take). Picture: a mountain of share certificates with a tiny cash pile at its foot",
+        "promise (by 0:25): four things the tax collector finds when he knocks, and the last one is why the bill always comes back smaller",
+        "item 1, what they own: the top 1% own 50.9% of all US stocks and mutual funds, the next 9% another 37.2% (facts, Fed). A fortune is shares, not a bank balance",
+        "item 2, the cash problem: say an assumed 2% of the $1B is cash: $20M against a $50M bill (fee_take), short $30M (compare). Board card: the sum written out",
+        "recap-and-tease at ~2:00: 'so he must sell or borrow. Selling a billion of shares does something to the price…'",
+        "item 3, what they pay now: 400 wealthiest families, 8.2% average federal income tax rate on income including wealth gains, 2010-2018 (CEA); the 25 richest, 3.4% of $401B (ProPublica)",
+        "item 4, how many people we mean: 3,028 billionaires worldwide with $16.1T between them, 902 in the US (Forbes 2025)",
+        "recap-and-tease at ~4:00",
+        "item 5 (strongest, last): why the bill shrinks: valuing shares nobody sold, people and money moving, and the borrowing from our Short on selling. Sharma Uncle gives both sides, no verdict",
+        "ending: ask the viewer 'should paper wealth be taxed?', loop to the Short's line, one CTA, disclaimer"
+      ],
+      "maths": "fee_take (5% of $1B; 2% of $1B), compare (cash vs bill), share (the fortune as shares vs cash)",
+      "facts": [
+        {
+          "label": "share of US stocks and mutual funds owned by the top 1%",
+          "value": 50.9,
+          "unit": "percent",
+          "as_of": "2026-Q2",
+          "source": "Federal Reserve Distributional Financial Accounts (FRED)",
+          "url": "https://fred.stlouisfed.org/series/WFRBST01122"
+        },
+        {
+          "label": "share owned by the next 9% (90th-99th percentile)",
+          "value": 37.2,
+          "unit": "percent",
+          "as_of": "2026-Q2",
+          "source": "Federal Reserve Distributional Financial Accounts (FRED)",
+          "url": "https://fred.stlouisfed.org/series/WFRBSN09149"
+        },
+        {
+          "label": "average federal income tax rate of the 400 wealthiest US families, 2010-2018 (wealth gains counted as income)",
+          "value": 8.2,
+          "unit": "percent",
+          "as_of": "2021-09-23",
+          "source": "White House Council of Economic Advisers",
+          "url": "https://bidenwhitehouse.archives.gov/cea/written-materials/2021/09/23/what-is-the-average-federal-individual-income-tax-rate-on-the-wealthiest-americans/"
+        },
+        {
+          "label": "the 25 richest Americans' wealth growth, 2014-2018",
+          "value": 401,
+          "unit": "money_billion",
+          "as_of": "2021-06-08",
+          "source": "ProPublica, The Secret IRS Files",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+          "currency": "USD"
+        },
+        {
+          "label": "federal income tax those 25 paid, 2014-2018",
+          "value": 13.6,
+          "unit": "money_billion",
+          "as_of": "2021-06-08",
+          "source": "ProPublica, The Secret IRS Files",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+          "currency": "USD"
+        },
+        {
+          "label": "their 'true tax rate' (tax paid / wealth growth)",
+          "value": 3.4,
+          "unit": "percent",
+          "as_of": "2021-06-08",
+          "source": "ProPublica, The Secret IRS Files",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+        },
+        {
+          "label": "billionaires on Forbes' 2025 list (a record)",
+          "value": 3028,
+          "unit": "count",
+          "as_of": "2025-04-01",
+          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
+          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+        },
+        {
+          "label": "billionaires in the United States",
+          "value": 902,
+          "unit": "count",
+          "as_of": "2025-04-01",
+          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
+          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+        }
+      ],
+      "verify": [
+        "Fed DFA shares (Q2 2026) on FRED",
+        "CEA 8.2% is its primary estimate (range 6-12%) and counts unsold gains as income: say so",
+        "Forbes 2025 counts",
+        "Neutral on policy: show the arguments, never tell the viewer how to vote; any named ballot measure needs its own source"
+      ],
+      "sources": [
+        "https://fred.stlouisfed.org/series/WFRBST01122",
+        "https://fred.stlouisfed.org/series/WFRBSN09149",
+        "https://bidenwhitehouse.archives.gov/cea/written-materials/2021/09/23/what-is-the-average-federal-individual-income-tax-rate-on-the-wealthiest-americans/",
+        "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+        "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+      ]
+    },
+    {
+      "format": "long",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-11-05",
+      "expires": "2027-11-05",
+      "status": "new",
+      "kind": "evergreen",
+      "id": "2026-11-05-what-rich-do-with-savings",
+      "from_short": "v-20261023-01",
+      "from_short_views": 1169,
+      "title": "What do rich people do with their savings?",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Rich Dad Poor Dad Explained: 7 Rules of Money",
+        "views": 2700000,
+        "url": "https://www.youtube.com/watch?v=p9eoEFtNu1A"
+      },
+      "category": "investing",
+      "priority": "high",
+      "search": "what do rich people do with their money",
+      "angle": "Same $20,000, two homes for it. Where the rich actually keep their money, and why their cash never sleeps.",
+      "why_now": "Expands 'Your $20,000 savings: what the rich do with it' (v-20261023-01, 1,169 views, 165% viewed: people rewatched it). Rich vs poor is the strongest long shape this week (Levi Hildebrand 'Rich VS Poor Consumerism' 467K, ~3,100 views an hour).",
+      "outline": [
+        "hook (0:00): restate the Short: 'rich people never let their cash sleep'. Rohan's $20,000 at 0.5% for 20 years is $22,098; Priya's at an assumed 8% is $93,219 (lumpsum x2). Picture: two jars, one asleep under a blanket, one with a little engine",
+        "promise (by 0:25): four places the rich put money that most savers never look at, and the last is the one anyone can start this month",
+        "item 1, they own the market: top 1% hold 50.9% of US stocks and funds, the next 9% hold 37.2% (facts, Fed)",
+        "item 2, the gap in one picture: $71,121 more for doing nothing (compare) as a chart over 20 years",
+        "recap-and-tease at ~2:00",
+        "item 3, the emergency fund is still cash, but only some of it (illustrative split, share)",
+        "item 4, they save a habit, not a lump: $500 a month at an assumed 7% for 40 years is $1.32M (sip)",
+        "recap-and-tease at ~4:00",
+        "item 5 (strongest, last): the median household (about $70,000 a year, 14% in federal taxes per ProPublica) vs the owner of shares whose gains aren't taxed until sold: why owning beats earning",
+        "ending: 'is your cash asleep?' loop to the Short, one CTA, disclaimer"
+      ],
+      "maths": "lumpsum ($20,000 at 0.5% and an assumed 8% for 20 years), compare, sip ($500, 7%, 40 years), share (cash vs invested split)",
+      "facts": [
+        {
+          "label": "share of US stocks and mutual funds owned by the top 1%",
+          "value": 50.9,
+          "unit": "percent",
+          "as_of": "2026-Q2",
+          "source": "Federal Reserve Distributional Financial Accounts (FRED)",
+          "url": "https://fred.stlouisfed.org/series/WFRBST01122"
+        },
+        {
+          "label": "share owned by the next 9% (90th-99th percentile)",
+          "value": 37.2,
+          "unit": "percent",
+          "as_of": "2026-Q2",
+          "source": "Federal Reserve Distributional Financial Accounts (FRED)",
+          "url": "https://fred.stlouisfed.org/series/WFRBSN09149"
+        },
+        {
+          "label": "median US household income in the ProPublica comparison",
+          "value": 70000,
+          "unit": "money",
+          "as_of": "2021-06-08",
+          "source": "ProPublica, The Secret IRS Files",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+          "currency": "USD"
+        },
+        {
+          "label": "share of it paid in federal taxes",
+          "value": 14,
+          "unit": "percent",
+          "as_of": "2021-06-08",
+          "source": "ProPublica, The Secret IRS Files",
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+        }
+      ],
+      "verify": [
+        "Fed DFA shares on FRED (Q2 2026)",
+        "0.5%, 7% and 8% are assumptions said as such; no product recommended",
+        "ProPublica's $70,000 / 14% median household comparison (2021)"
+      ],
+      "sources": [
+        "https://fred.stlouisfed.org/series/WFRBST01122",
+        "https://fred.stlouisfed.org/series/WFRBSN09149",
+        "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+      ]
+    },
+    {
+      "format": "long",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-11-05",
+      "expires": "2026-12-31",
+      "status": "new",
+      "kind": "seasonal",
+      "id": "2026-11-05-how-jewellers-make-money",
+      "from_short": "v-20261023-02",
+      "from_short_views": 1148,
+      "title": "How do jewellers really make money on gold?",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "INR",
+      "reach": "local",
+      "reach_reason": "Expands a 1,148-view local Short (Dhanteras necklace) and the Indian wedding season runs Nov-Dec; the one local long topic in the feed",
+      "demand": {
+        "title": "How Money Works, If Nobody Can Afford A Home... (how-it-works shape)",
+        "views": 4080000,
+        "url": "https://www.youtube.com/watch?v=1zjcZ661ups"
+      },
+      "category": "gold",
+      "priority": "normal",
+      "search": "how jewellers make money on gold making charges",
+      "angle": "Gold sells at the day's rate in every shop, so where does the jeweller earn? Making charges, wastage, the buy-back and the hallmark, with the bill written out.",
+      "why_now": "Our Dhanteras jeweller Short (v-20261023-02) got 1,148 views, the only local Short above 1K. Wedding season buying is now.",
+      "outline": [
+        "hook (0:00): restate the Short: the gold is worth one amount, the bill says another. Picture: a gold bangle on a scale with a second, invisible weight labelled 'making'",
+        "promise (by 0:25): four lines on your bill, the last is the one you only see when you sell",
+        "item 1, the gold rate: the same everywhere, and taxed at 3% GST (fact)",
+        "item 2, making charges: an assumed 12% on ₹1,00,000 of gold is ₹12,000 (fee_take), where the shop earns",
+        "recap-and-tease at ~2:00",
+        "item 3, the hallmark: mandatory since 23 June 2021 in 256 districts, 343 by Sept 2023, more than 26 crore pieces with a HUID (facts): what it guarantees and what it doesn't",
+        "item 4 (strongest, last): selling it back: shops usually pay for the gold only, so the making charge is gone; ₹1,00,000 kept in gold vs the bill (compare)",
+        "ending: 'ask for the making charge first', loop to the Short, one CTA, disclaimer"
+      ],
+      "maths": "fee_take (making charge 12% and GST 3% on ₹1,00,000), compare (bill vs resale), share",
+      "facts": [
+        {
+          "label": "GST rate on gold jewellery (HSN 7113)",
+          "value": 3,
+          "unit": "percent",
+          "as_of": "2025",
+          "source": "ClearTax GST guide (verify on CBIC rate schedule)",
+          "url": "https://cleartax.in/s/gst-impact-on-gold"
+        },
+        {
+          "label": "year mandatory gold hallmarking began (23 June)",
+          "value": 2021,
+          "unit": "year",
+          "as_of": "2023-09-08",
+          "source": "All India Radio (newsonair.gov.in)",
+          "url": "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
+        },
+        {
+          "label": "districts covered in the first phase",
+          "value": 256,
+          "unit": "count",
+          "as_of": "2023-09-08",
+          "source": "All India Radio (newsonair.gov.in)",
+          "url": "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
+        },
+        {
+          "label": "districts covered after the third phase (Sept 2023)",
+          "value": 343,
+          "unit": "count",
+          "as_of": "2023-09-08",
+          "source": "All India Radio (newsonair.gov.in)",
+          "url": "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
+        },
+        {
+          "label": "gold pieces hallmarked with a HUID so far",
+          "value": 26,
+          "unit": "count_crore",
+          "as_of": "2023-09-08",
+          "source": "All India Radio (newsonair.gov.in)",
+          "url": "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
+        }
+      ],
+      "verify": [
+        "GST on making charges: sources disagree (3% on the whole value vs 5% on separately billed job work): say only the 3% on jewellery unless CBIC confirms",
+        "Hallmarking dates and counts (PIB / BIS); a newer district count may exist",
+        "12% making charge is an assumption said as one; buy-back practice 'usually', not 'always'"
+      ],
+      "sources": [
+        "https://cleartax.in/s/gst-impact-on-gold",
+        "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
+      ]
+    },
+    {
       "id": "2026-11-02-signs-secretly-rich",
       "format": "long",
       "title": "7 signs someone is secretly rich (and what they do that you don't)",
@@ -17,7 +433,7 @@
       },
       "category": "wealth_habits",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -51,7 +467,8 @@
       ],
       "found": "2026-11-02",
       "expires": "2027-11-02",
-      "status": "new"
+      "status": "new",
+      "held": "no 1K+ Short of ours tells it yet (owner 2026-11-04): Studio skips it until one does"
     },
     {
       "id": "2026-11-02-house-costs-twice",
@@ -102,12 +519,13 @@
       ],
       "found": "2026-11-02",
       "expires": "2027-11-02",
-      "status": "new"
+      "status": "new",
+      "held": "no 1K+ Short of ours tells it yet (owner 2026-11-04): Studio skips it until one does"
     },
     {
       "id": "2026-10-28-once-you-understand-a-billion",
       "format": "long",
-      "title": "Once you understand how big a billion is, you'll never see billionaires the same way",
+      "title": "What does $1 billion actually look like?",
       "stories": [
         "once_you_understand"
       ],
@@ -120,42 +538,88 @@
       },
       "category": "wealth",
       "kind": "evergreen",
-      "priority": "normal",
+      "priority": "high",
       "templates": [
         "long_story"
       ],
       "angle": "A million and a billion sound like neighbours. In time, they are 3 years and 2,740 years apart.",
-      "why_now": "Money-at-scale is one of the biggest long shapes on YouTube: jack pockets 'Could You Spend $1 Trillion?' 12.3M (9:29), RealLifeLore 'The Absurd True Scale of Pablo Escobar's Wealth Visualized' 9.5M, Tom Scott 'A Million Dollars vs A Billion Dollars, Visualized' 8.3M, Corridor Crew 'True Scale of A BILLION' 7.0M. Our billionaire Shorts are our best (1,175 and 1,187 views). Global, no country. Wait until mid-November: the Short 'What $1 billion really looks like in $100 bills' (v-20261027-01) went out on 2026-10-27, so tell it with time and earning, not stacks of notes.",
+      "why_now": "Money-at-scale is one of the biggest long shapes on YouTube: jack pockets 'Could You Spend $1 Trillion?' 12.3M (9:29), RealLifeLore 'The Absurd True Scale of Pablo Escobar's Wealth Visualized' 9.5M, Tom Scott 'A Million Dollars vs A Billion Dollars, Visualized' 8.3M, Corridor Crew 'True Scale of A BILLION' 7.0M. Our billionaire Shorts are our best (1,175 and 1,187 views). Global, no country. Now expands our 1,156-view Short 'What $1 billion looks like in $100 bills' (v-20261027-01, owner 2026-11-04): the long version keeps the notes, then goes past them to time, earning and yield.",
       "outline": [
-        "hook (0:00): Rohan says 'a billion is just a thousand millions, how different can it be?'; Sharma Uncle sets a timer: spend $1,000 a day (share: $1M lasts 3 years). The timer for $1B reads 2,740 years. The one picture the whole video hangs on: a single road of time, a short walk for a million and a road past the pyramids for a billion",
-        "promise (by 0:20): seven ways to feel a billion, and the last one changes how you hear the word 'billionaire'",
-        "level 1, spending it: $1,000 a day for 3 years is a million; the billion takes 2,740 years (share, per_year 365,000) — the road reveal",
-        "level 2, earning it: on a $60,000 salary, a billion takes 16,667 years of work, saving every cent (share) — Rohan does the maths on his payslip",
-        "level 3, saving it the normal way: $500 a month at an assumed 7% for 40 years is $1.3M (sip): a great outcome, and still 757 times short of a billion (compare) — reveal at ~2:00",
-        "recap-and-tease at ~2:30: 'so nobody saves their way there. Then how does the money keep coming?'",
-        "level 4, the money that pays itself: a billion at an assumed 4% yield throws off $40M a year without being touched (fee_take) — Priya explains why billionaires don't run out",
-        "level 5, sharing it: $200B split among 8 billion people is $25 each (share) — the turn: huge for one person, nothing for the world",
-        "recap-and-tease at ~5:00: 'and the jump from billion to trillion is bigger again'",
-        "level 6 (strongest, ~2/3 in): a trillion at $1,000 a day takes 2.7 million years (share): the road of time zooms out until the billion is a dot",
-        "payoff: why the rich think in yields and the rest of us in salaries; the one rule: own something that earns while you sleep, at any size",
-        "ending within 30 s: one CTA, disclaimer end card"
+        "hook (0:00): restate the Short: one $100 note, then a room of them. Every note weighs about a gram (fact, BEP), so $1B in $100s is 10 million notes, 10 tonnes (share). Picture: the room, then a road of time",
+        "promise (by 0:25): four ways to feel a billion, and the last changes how you hear 'billionaire'",
+        "item 1 (~60 s, reveal at 0:45), earning it: on a $60,000 salary a billion takes 16,667 years of saving every cent (share)",
+        "item 2, saving it the normal way: $500 a month at an assumed 7% for 40 years is $1.32M (sip): great, and still about 757 times short (compare)",
+        "recap-and-tease at ~2:00: 'nobody saves their way there. So how does the money keep coming?'",
+        "item 3, the money that pays itself: a billion at an assumed 4% yield is $40M a year untouched (fee_take)",
+        "item 4, how many there are: 3,028 billionaires with $16.1T together, 902 in the US (Forbes 2025)",
+        "recap-and-tease at ~4:00",
+        "item 5 (strongest, last): the richest one: Musk's $342B (Forbes Apr 2025) is 342 rooms of notes, 3,420 tonnes (share): the room zooms out to a warehouse district",
+        "ending: 'own something that earns while you sleep, at any size', loop to the note, one CTA, disclaimer"
       ],
-      "maths": "share (1M, 1B, 1T at $365,000 a year; 1B at a $60,000 salary; $200B among 8B people), sip ($500 a month, 7%, 40 years), compare (billion vs the sip), fee_take (4% of a billion, one year)",
+      "maths": "share ($1B / $100 notes x 1 g; $1B / $60,000; $342B in rooms), sip ($500, 7%, 40 years), compare, fee_take (4% of $1B)",
       "verify": [
-        "The richest people's fortunes are in the hundreds of billions (Forbes or Bloomberg real-time lists): say it in words, or as a sourced fact with the date",
-        "A 4% yield is an assumption, said as one",
-        "8 billion world population (UN, 2022)"
+        "BEP: about one gram per note",
+        "Forbes 2025 list figures (a 2026 list may exist: use the newest with its date)",
+        "4% yield and 7% return are assumptions"
       ],
       "sources": [
         "https://www.youtube.com/watch?v=apFPtyZHuns",
         "https://www.youtube.com/watch?v=hAQJ9bNENyA",
         "https://www.youtube.com/watch?v=8YUWDrLazCg",
-        "https://www.youtube.com/watch?v=tbVb63qPDQ8"
+        "https://www.youtube.com/watch?v=tbVb63qPDQ8",
+        "https://www.bep.gov/currency/faqs",
+        "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
       ],
       "found": "2026-10-28",
       "expires": "2027-10-28",
       "status": "new",
-      "search": "how big is a billion dollars visualized"
+      "search": "what does a billion dollars look like",
+      "from_short": "v-20261027-01",
+      "from_short_views": 1156,
+      "facts": [
+        {
+          "label": "grams one US banknote weighs, any denomination",
+          "value": 1,
+          "unit": "count",
+          "as_of": "current",
+          "source": "US Bureau of Engraving and Printing FAQ",
+          "url": "https://www.bep.gov/currency/faqs"
+        },
+        {
+          "label": "billionaires on Forbes' 2025 list (a record)",
+          "value": 3028,
+          "unit": "count",
+          "as_of": "2025-04-01",
+          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
+          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+        },
+        {
+          "label": "their combined wealth",
+          "value": 16.1,
+          "unit": "money_trillion",
+          "as_of": "2025-04-01",
+          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
+          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list",
+          "currency": "USD"
+        },
+        {
+          "label": "billionaires in the United States",
+          "value": 902,
+          "unit": "count",
+          "as_of": "2025-04-01",
+          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
+          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+        },
+        {
+          "label": "Elon Musk's net worth, the world's richest",
+          "value": 342,
+          "unit": "money_billion",
+          "as_of": "2025-04-01",
+          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
+          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list",
+          "currency": "USD"
+        }
+      ]
     },
     {
       "id": "2026-10-28-once-you-understand-inflation",
@@ -173,7 +637,7 @@
       },
       "category": "inflation",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -208,7 +672,8 @@
       "found": "2026-10-28",
       "expires": "2027-10-28",
       "status": "new",
-      "search": "inflation explained why cash loses value"
+      "search": "inflation explained why cash loses value",
+      "held": "no 1K+ Short of ours tells it yet (owner 2026-11-04): Studio skips it until one does"
     },
     {
       "id": "2026-10-27-airlines-really-make-money",
@@ -280,7 +745,7 @@
       },
       "category": "spending",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -314,8 +779,9 @@
       ],
       "found": "2026-10-27",
       "expires": "2027-10-27",
-      "status": "new",
-      "search": "middle class money traps explained"
+      "status": "used",
+      "search": "middle class money traps explained",
+      "used_by": "L-20261104-01"
     },
     {
       "id": "2026-10-27-levels-of-wealth-ultra-rich",
@@ -367,7 +833,8 @@
       "found": "2026-10-27",
       "expires": "2027-10-27",
       "status": "new",
-      "search": "every level of wealth explained"
+      "search": "every level of wealth explained",
+      "held": "no 1K+ Short of ours tells it yet (owner 2026-11-04): Studio skips it until one does"
     },
     {
       "id": "2026-10-23-billionaires-tax-explained",
@@ -385,7 +852,7 @@
       },
       "category": "tax",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -412,8 +879,9 @@
       ],
       "found": "2026-10-23",
       "expires": "2027-10-23",
-      "status": "new",
-      "search": "how billionaires avoid paying taxes"
+      "status": "used",
+      "search": "how billionaires avoid paying taxes",
+      "used_by": "L-20261026-01"
     },
     {
       "id": "2026-10-23-how-giants-make-money",
@@ -431,7 +899,7 @@
       },
       "category": "business",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -459,7 +927,8 @@
       "expires": "2027-10-23",
       "status": "new",
       "note": "Scout 2026-10-27: the casino house edge was told as a Short on 2026-10-27 (v-20261027-03), and airlines now have their own long topic (2026-10-27-airlines-really-make-money). If this one is made first, keep airlines out of it and pick a strongest last item that is not the casino.",
-      "search": "how big companies actually make money"
+      "search": "how big companies actually make money",
+      "held": "no 1K+ Short of ours tells it yet (owner 2026-11-04): Studio skips it until one does"
     },
     {
       "id": "2026-10-23-once-you-understand-compounding",
@@ -477,7 +946,7 @@
       },
       "category": "compounding",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -504,7 +973,8 @@
       "found": "2026-10-23",
       "expires": "2027-10-23",
       "status": "new",
-      "search": "compound interest explained"
+      "search": "compound interest explained",
+      "held": "no 1K+ Short of ours tells it yet (owner 2026-11-04): Studio skips it until one does"
     },
     {
       "id": "2026-10-23-rich-borrow-poor-save",
@@ -521,7 +991,7 @@
       },
       "category": "debt",
       "kind": "evergreen",
-      "priority": "high",
+      "priority": "normal",
       "templates": [
         "long_story"
       ],
@@ -556,8 +1026,9 @@
       ],
       "found": "2026-10-23",
       "expires": "2027-10-23",
-      "status": "new",
-      "search": "why the rich borrow money instead of selling"
+      "status": "used",
+      "search": "why the rich borrow money instead of selling",
+      "used_by": "L-20261023-01"
     },
     {
       "id": "2026-10-21-money-levels-india",
