@@ -99,7 +99,7 @@
     {
       "day": "2026-11-05",
       "shipped": 1,
-      "failed": 2
+      "failed": 4
     }
   ],
   "videos": [
@@ -602,6 +602,20 @@
     },
     {
       "id": "v-20261105-03",
+      "day": "2026-11-05",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "check-plan: arms.hook assigns 'question' (hook_style must follow it) but the previous video v-20261105-01 also used 'question', which the variety rule forbids; no plan can pass both"
+    },
+    {
+      "id": "v-20261105-04",
+      "day": "2026-11-05",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "check-plan: arms.hook assigns 'question' (hook_style must follow it) but the previous video v-20261105-01 also used 'question', which the variety rule forbids; no plan can pass both"
+    },
+    {
+      "id": "v-20261105-05",
       "day": "2026-11-05",
       "template": "short_story",
       "status": "failed",
