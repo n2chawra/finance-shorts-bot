@@ -1,0 +1,748 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61873,
+ "story": "how_they_make_money",
+ "shape": "reveal",
+ "currency": "USD",
+ "feed_id": "2026-11-02-gym-paid-by-people-who-never-come",
+ "style": {
+  "palette": "sky",
+  "genre": "pop",
+  "key": "D",
+  "bpm": 112,
+  "look": {
+   "stage": "studio",
+   "header": "chalk",
+   "holder": "receipt",
+   "entrance": "drop"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "myth",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "myth",
+ "cta": "Paying for a gym you skip? Comment",
+ "maths": [
+  {
+   "name": "gym",
+   "kind": "share",
+   "total": 60000,
+   "parts": 6000
+  },
+  {
+   "name": "regular",
+   "kind": "share",
+   "total": 60000,
+   "parts": 300
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "payoff",
+  "sec": 3.0,
+  "who": "rohan",
+  "angle": "number",
+  "words": "Gym wants you *home*",
+  "figure": "{regular_per_part}",
+  "tag": "Each regular"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "You think your gym wants you there? It doesn't. Here's why.",
+   "events": {
+    "think": {
+     "word": "think"
+    },
+    "gym": {
+     "word": "gym"
+    },
+    "there": {
+     "word": "there"
+    },
+    "doesnt": {
+     "word": "doesn't"
+    },
+    "why": {
+     "word": "why"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "gym"
+    },
+    {
+     "kind": "boom",
+     "at": "doesnt"
+    },
+    {
+     "kind": "riser",
+     "at": "why"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Your gym wants you?",
+    "cross": "It doesn't",
+    "fee": "{gym_per_part}",
+    "feeLabel": "A month",
+    "set": "flat",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "happy"
+       },
+       {
+        "at": "doesnt",
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "doesnt",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "members",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Rohan pays {gym_per_part} a month, like {gym_parts} gym members.",
+   "events": {
+    "pays": {
+     "word": "pays"
+    },
+    "month": {
+     "word": "month"
+    },
+    "gym": {
+     "word": "gym"
+    },
+    "members": {
+     "word": "members"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "month"
+    },
+    {
+     "kind": "pop",
+     "at": "members"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "blue"
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.2,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "point",
+        "expression": "happy"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "pays",
+      "prop": "membercard",
+      "x": 0.46,
+      "y": 0.18,
+      "size": 0.14,
+      "label": "A month"
+     },
+     {
+      "id": "gym",
+      "prop": "gymfront",
+      "x": 0.76,
+      "size": 0.3,
+      "label": "The gym"
+     }
+    ],
+    "actions": [
+     {
+      "at": "pays",
+      "do": "tag",
+      "target": "pays",
+      "text": "{gym_per_part}"
+     },
+     {
+      "at": "month",
+      "do": "grow",
+      "target": "pays",
+      "scale": 1.25
+     },
+     {
+      "at": "gym",
+      "do": "flow",
+      "target": "pays",
+      "to": "gym",
+      "n": 4,
+      "text": "{gym_per_part}"
+     },
+     {
+      "at": "members",
+      "do": "multiply",
+      "target": "pays",
+      "n": 9,
+      "cols": 3,
+      "text": "{gym_parts}"
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "pays"
+     },
+     {
+      "at": "gym",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "fees",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "That adds up every month, whether anyone trains or not.",
+   "events": {
+    "adds": {
+     "word": "adds"
+    },
+    "month": {
+     "word": "month"
+    },
+    "trains": {
+     "word": "trains"
+    },
+    "not": {
+     "word": "not"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "adds"
+    },
+    {
+     "kind": "kaching",
+     "at": "month"
+    },
+    {
+     "kind": "tick",
+     "at": "not"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "studio",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "gym",
+      "prop": "gymfront",
+      "x": 0.22,
+      "size": 0.24,
+      "state": "open"
+     },
+     {
+      "id": "safe",
+      "prop": "moneysafe",
+      "x": 0.56,
+      "size": 0.26,
+      "k": 0.1,
+      "label": "Adds up"
+     },
+     {
+      "id": "trains",
+      "prop": "treadmill",
+      "x": 0.84,
+      "size": 0.16,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "adds",
+      "do": "flow",
+      "target": "gym",
+      "to": "safe",
+      "n": 8,
+      "text": "{gym_total}"
+     },
+     {
+      "at": "month",
+      "do": "fill",
+      "target": "safe",
+      "k": 1,
+      "dur": 1.0
+     },
+     {
+      "at": "trains",
+      "do": "enter",
+      "target": "trains",
+      "how": "drop"
+     },
+     {
+      "at": "not",
+      "do": "state",
+      "target": "trains",
+      "state": "off"
+     }
+    ],
+    "hud": {
+     "counter": {
+      "value": "@gym.total",
+      "text": "{gym_total}",
+      "label": "Fees a month",
+      "at": "month"
+     }
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "month",
+      "size": "close",
+      "on": "safe",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "quit",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Rohan quit in January, but he still pays. Does the gym mind?",
+   "events": {
+    "quit": {
+     "word": "quit"
+    },
+    "january": {
+     "word": "January"
+    },
+    "pays": {
+     "word": "pays"
+    },
+    "gym": {
+     "word": "gym"
+    },
+    "mind": {
+     "word": "mind"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "january"
+    },
+    {
+     "kind": "kaching",
+     "at": "pays"
+    },
+    {
+     "kind": "tick",
+     "at": "mind"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "night",
+     "tint": "purple"
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.22,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "sad"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "couch",
+      "prop": "couch",
+      "x": 0.5,
+      "size": 0.18,
+      "label": "Quit"
+     },
+     {
+      "id": "january",
+      "prop": "janpage",
+      "x": 0.78,
+      "y": 0.3,
+      "size": 0.18,
+      "hidden": true
+     },
+     {
+      "id": "sneakers",
+      "prop": "sneakers",
+      "x": 0.78,
+      "size": 0.14
+     },
+     {
+      "id": "card",
+      "prop": "membercard",
+      "x": 0.5,
+      "y": 0.34,
+      "size": 0.12,
+      "hidden": true,
+      "label": "Still pays"
+     }
+    ],
+    "actions": [
+     {
+      "at": "quit",
+      "do": "state",
+      "target": "sneakers",
+      "state": "dusty"
+     },
+     {
+      "at": "january",
+      "do": "enter",
+      "target": "january",
+      "how": "drop"
+     },
+     {
+      "at": "pays",
+      "do": "enter",
+      "target": "card",
+      "from": "couch"
+     },
+     {
+      "at": "pays",
+      "do": "tag",
+      "target": "card",
+      "text": "{gym_per_part}"
+     },
+     {
+      "at": "gym",
+      "do": "grow",
+      "target": "card",
+      "scale": 1.3
+     },
+     {
+      "at": "mind",
+      "do": "shake",
+      "target": "card"
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "pays",
+      "size": "close",
+      "on": "card",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "showup",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Say only {regular_parts} members ever walk through the door.",
+   "events": {
+    "say": {
+     "word": "Say"
+    },
+    "members": {
+     "word": "members"
+    },
+    "walk": {
+     "word": "walk"
+    },
+    "door": {
+     "word": "door"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "members"
+    },
+    {
+     "kind": "ding",
+     "at": "door"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "green"
+    },
+    "items": [
+     {
+      "id": "turnstile",
+      "prop": "turnstile",
+      "x": 0.3,
+      "size": 0.26,
+      "label": "The door"
+     },
+     {
+      "id": "walk",
+      "prop": "kettlebell",
+      "x": 0.72,
+      "size": 0.18,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "say",
+      "do": "glow",
+      "target": "turnstile"
+     },
+     {
+      "at": "members",
+      "do": "count",
+      "target": "turnstile",
+      "value": "@regular.parts",
+      "text": "{regular_parts}"
+     },
+     {
+      "at": "walk",
+      "do": "state",
+      "target": "turnstile",
+      "state": "spin"
+     },
+     {
+      "at": "door",
+      "do": "enter",
+      "target": "walk",
+      "how": "drop"
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "turnstile"
+     },
+     {
+      "at": "door",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "So who pays for all their machines? Rohan does.",
+   "events": {
+    "who": {
+     "word": "who"
+    },
+    "machines": {
+     "word": "machines"
+    },
+    "rohan": {
+     "word": "Rohan"
+    },
+    "does": {
+     "word": "does"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "machines"
+    },
+    {
+     "kind": "whoosh",
+     "at": "rohan"
+    },
+    {
+     "kind": "boom",
+     "at": "does"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Who pays for these?",
+    "fee": "{gym_per_part}",
+    "stamp": "Paid by Rohan",
+    "cardLabel": "Rohan's card",
+    "set": "office",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "does",
+      "size": "extreme",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Each regular trains on {regular_per_part} a month, paid by people at home.",
+   "events": {
+    "each": {
+     "word": "Each"
+    },
+    "regular": {
+     "word": "regular"
+    },
+    "month": {
+     "word": "month"
+    },
+    "paid": {
+     "word": "paid"
+    },
+    "home": {
+     "word": "home"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "regular"
+    },
+    {
+     "kind": "boom",
+     "at": "month"
+    },
+    {
+     "kind": "kaching",
+     "at": "paid"
+    },
+    {
+     "kind": "ding",
+     "at": "home"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "big": "{regular_per_part}",
+    "bigLabel": "Each regular",
+    "small": "{gym_per_part}",
+    "smallLabel": "Rohan pays",
+    "homeLabel": "Stayed home",
+    "set": "flat",
+    "actors": [
+     {
+      "who": "priya",
+      "spot": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "happy"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "home",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "am_fenrir"
+}

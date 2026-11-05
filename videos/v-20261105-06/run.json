@@ -1,0 +1,178 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:38:41.312181+00:00",
+    "finishedAt": "2026-11-05T02:38:41.312181+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:41:34.961951+00:00",
+    "finishedAt": "2026-11-05T02:41:34.961951+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance",
+      "5 whip or zoom-through transitions (members, fees, showup, turn, loop); at most 4: cut or match between beats, so the picture doesn't zig-zag",
+      "1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:41:42.109145+00:00",
+    "finishedAt": "2026-11-05T02:41:42.109145+00:00",
+    "notes": [
+      "beat 'quit'.events.pays: no word 'pays' in this beat's spoken line"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:41:49.597266+00:00",
+    "finishedAt": "2026-11-05T02:41:49.597266+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:43:40.001979+00:00",
+    "finishedAt": "2026-11-05T02:43:40.001979+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+      "beats average 9 words: explain in full sentences (10+ words a beat, \"because… so… which means…\"), not one-liners",
+      "beats members: the narrator explains while the camera frames a person; frame the things being explained (an item or \"all\"), characters step back"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:44:28.374563+00:00",
+    "finishedAt": "2026-11-05T02:44:28.374563+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:45:26.245382+00:00",
+    "finishedAt": "2026-11-05T02:45:26.245382+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:46:08.992121+00:00",
+    "finishedAt": "2026-11-05T02:46:08.992121+00:00",
+    "notes": [
+      "No sourced facts in the script and no brand named (Planet Fitness 10-K figures unused, so nothing to confirm); the club example is illustrative and its attendance is said as an assumption ('Say only 300...'), per the topic's verify list; no advice, guarantees or expert claims; description ends with the disclaimer. Notes: 300 of 6,000 (5%) attending is an extreme assumption; '$200 paid by people at home' includes the regular's own $10 ($190 from non-attenders); description says 'room for three hundred' while the video says 300 ever come in; 'like 6,000 other members' makes 6,001."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:45:50.873985+00:00",
+    "finishedAt": "2026-11-05T02:46:45.893901+00:00",
+    "notes": [
+      "text 'ROHAN PAYS $10' at 25.1 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:47:00.569594+00:00",
+    "finishedAt": "2026-11-05T02:47:00.569594+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:47:01.576376+00:00",
+    "finishedAt": "2026-11-05T02:47:01.576376+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:47:25.652512+00:00",
+    "finishedAt": "2026-11-05T02:47:25.652512+00:00",
+    "notes": [
+      "Re-review after edits: members line 'Rohan pays $10 a month, like 6,000 gym members' fixes the off-by-one; description now matches the video (6,000 pay $10, only 300 come in, who pays for the machines) and still ends with the illustrative-numbers line and the disclaimer. No sourced facts or brand named; earlier notes on the extreme 5% attendance assumption and the $200 vs $190 nuance still stand as style points."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:47:19.137265+00:00",
+    "finishedAt": "2026-11-05T02:47:50.826168+00:00",
+    "notes": [
+      "27 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-05T02:48:44.317403+00:00",
+    "finishedAt": "2026-11-05T02:48:44.317403+00:00",
+    "notes": [
+      "[script] Thumbnail (turn beat, sec 2.2): the frame has no cast and no money object - just treadmills in an empty room with the bottom ~40% bare floor under 'GYM WANTS YOU HOME'; the spec's who=rohan and figure {regular_per_part} never appear, so the cover sells nothing. Move the cover to the payoff beat (~sec 3: $200 EACH REGULAR, couches with member cards, Priya) or to the turn after 'does' when Rohan's card/stamp is in view.",
+      "[script] 10.0s, fees beat: the same figure is drawn twice, stacked - the HUD counter 'FEES A MONTH $60,000' and the safe's tag '$60,000' sit right under it, touching, which reads as a glitch. Drop the tag action on 'safe' at 'month' (the counter already carries the figure) or tag the safe with something else."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:48:57.488134+00:00",
+    "finishedAt": "2026-11-05T02:48:57.488134+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:49:10.870267+00:00",
+    "finishedAt": "2026-11-05T02:49:34.342631+00:00",
+    "notes": [
+      "27 s, sky/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:49:52.023005+00:00",
+    "finishedAt": "2026-11-05T02:49:52.023005+00:00",
+    "notes": [
+      "Re-review after fixes: 10s now shows one $60,000 counter over the filling safe (duplicate tag gone); cover is the payoff frame - Priya big, couches with member cards, treadmill, 'GYM WANTS YOU HOME' clear of her face. Hook opens a question, figures match maths ($10, 6,000, $60,000, 300, $200), disclaimer at 26.8s, 27 s, peak -1.0/mean -17.7 dB, no layout/craft problems."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:50:00.518308+00:00",
+    "finishedAt": "2026-11-05T02:52:07.050042+00:00",
+    "notes": [
+      "27 s, sky/pop, peak -1.0 dB, mean -17.7 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-05T02:52:17.353989+00:00",
+    "finishedAt": "2026-11-05T02:52:17.353989+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61873,
+  "duration_sec": 27,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "pop",
+    "key": "D",
+    "bpm": 112,
+    "look": {
+      "stage": "studio",
+      "header": "chalk",
+      "holder": "receipt",
+      "entrance": "drop"
+    }
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think your gym wants you there? It doesn't. Here's why.",
+        "start": 0.3,
+        "seconds": 2.72,
+        "window": 3.4,
+        "fill": 0.8
+      },
+      {
+        "scene": "members",
+        "text": "Rohan pays $10 a month, like 6,000 gym members.",
+        "start": 3.7,
+        "seconds": 3.38,
+        "window": 4.07,
+        "fill": 0.83
+      },
+      {
+        "scene": "fees",
+        "text": "That adds up every month, whether anyone trains or not.",
+        "start": 7.77,
+        "seconds": 2.64,
+        "window": 3.3,
+        "fill": 0.8
+      },
+      {
+        "scene": "quit",
+        "text": "Rohan quit in January, but he still pays. Does the gym mind?",
+        "start": 11.07,
+        "seconds": 3.63,
+        "window": 4.3,
+        "fill": 0.844
+      },
+      {
+        "scene": "showup",
+        "text": "Say only 300 members ever walk through the door.",
+        "start": 15.37,
+        "seconds": 2.7,
+        "window": 3.37,
+        "fill": 0.801
+      },
+      {
+        "scene": "turn",
+        "text": "So who pays for all their machines? Rohan does.",
+        "start": 18.73,
+        "seconds": 2.53,
+        "window": 3.2,
+        "fill": 0.791
+      },
+      {
+        "scene": "payoff",
+        "text": "Each regular trains on $200 a month, paid by people at home.",
+        "start": 21.93,
+        "seconds": 3.98,
+        "window": 4.63,
+        "fill": 0.86
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "ending-beats-act-and-vary": "on",
+    "you-in-the-core-story": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.7,
+    "lufs": -15.9,
+    "music_under_voice_db": 20.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 14.512,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
