@@ -86,7 +86,7 @@ A long video is a **story with the recurring cast**, told in beats. Start from t
 `outline` and its central picture (the leaking bucket, the snowball, the treadmill): what does
 the viewer *see* happen?
 - **Length and pace.** Long videos play at tempo 1.5, about **215 spoken words a minute**. Aim for
-  the setting `longLengthMinSec`–`longLengthMaxSec` (400–600 s since 2026-10-29: **1,450–2,150 words across 85–125 beats**) (a beat is one line and one picture,
+  the setting `longLengthMinSec`–`longLengthMaxSec` (300–400 s since 2026-11-04: **1,075–1,430 words across 60–85 beats**) (a beat is one line and one picture,
   3–8 s). Add a beat that *does* something, never stretch one.
 - **Shape (the format's list).** A 30-second hook that promises every item and teases the worst one.
   Then one `chapter` per item (6–9), each a mini story with the cast, one or two computed figures
@@ -151,7 +151,7 @@ first long video was rendered three times, twice for problems the stills already
    ```
    nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
    ```
-   **This takes 30–60 minutes** for 7–10 min at the shot system's detail, and a command may only run 10, so start it in the background like
+   **This takes 30–60 minutes** for 5–6 min at the shot system's detail, and a command may only run 10, so start it in the background like
    this and check `tail -3 /tmp/render-<id>.log` every few minutes. If it is cut off, run the same
    command again: finished 40-second chunks are kept and it carries on. It must end with `ok`. A
    `FAIL:` here is the motion gate (a beat with no visible movement): fix that beat and render

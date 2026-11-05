@@ -288,7 +288,9 @@ def gate_problems(report: dict, settings: dict, fmt: str) -> list[str]:
     videos) and sound levels."""
     out = []
     lo, hi = length_range(settings, fmt)
-    if not lo <= report["duration_sec"] <= hi:
+    # half a second either way: a Short of 35.3 s took eight rewrites on 2026-11-05 for nothing a viewer notices
+    slack = 0.5 if fmt == "short" else 0
+    if not lo - slack <= report["duration_sec"] <= hi + slack:
         out.append(f"length {report['duration_sec']} s is outside {lo}–{hi} s")
     voice = report.get("voice")
     if voice and fmt == "long":

@@ -172,6 +172,13 @@ removes it:
  "verify": ["claims the fact reviewer must confirm"], "sources": ["https://…"],
  "found": "<DAY>", "expires": "YYYY-MM-DD", "status": "new"}
 ```
+- **Always the latest release** (2026-11-05: Costco's FY2025 fees sat in the feed after FY2026 was out,
+  and the fact reviewer failed the Short twice). Before adding a company's or a country's figure, search
+  for a newer annual or quarterly release and use that one. **Every night, re-check the feed's facts whose
+  `as_of` is over a year old**: if a newer figure exists, replace the fact (value, `as_of`, `url`);
+  if not (a one-time report such as ProPublica 2021, or the newest annual release), add
+  `"latest": true, "checked": "<DAY>"`. A topic with an old fact not checked in the last 30 days is not
+  offered to the planner (`generator/topics.py` `stale_facts`; `state` shows it under `blocked_by`).
 - `facts` are figures reported by the source, copied exactly (value and unit as published).
   **Every big-money topic carries 3–6 of them** since 2026-11-02 (owner, after The Curious Plot's
   "$0 salary" Short: real names with real figures, Musk's $0 salary, Bezos ~$80K a year, the 25 richest

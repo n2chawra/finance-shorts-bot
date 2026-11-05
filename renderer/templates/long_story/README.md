@@ -1,6 +1,6 @@
 # long_story — long-form videos on Remotion
 
-A long video (the settings' length, 400–600 s since 2026-10-29; 1920×1080) told as a story by the recurring cast, drawn by Remotion from a
+A long video (the settings' length, 300–400 s since 2026-11-04, the full story of one of our Shorts with 1,000+ views; 1920×1080) told as a story by the recurring cast, drawn by Remotion from a
 timeline Python builds. Example: [`examples/long_story.json`](../../../examples/long_story.json).
 
 ```
@@ -68,7 +68,7 @@ videos at 16:9, and `board` beats carry most of the explaining:
   (`term`), **real names with sourced facts** (Scout supplies them; `facts` and `"year"` facts for dates).
 - On a landscape board the header and sum run across the top, panels sit on the right half, the
   stage on the left; captions are whole sentences in a box low on the frame with the speaker's name.
-- The documentary devices below stay; mix them with board beats so a 7–10 minute video never settles
+- The documentary devices below stay; mix them with board beats so a 5–6 minute video never settles
   into one look. Clause coverage (90%+), the card check and the mute review apply here too.
 - **Many more things, always moving** (owner, 2026-11-04, on L-20261104-01: "add lots more props and
   animation, at least 80% more"; it had 1.9 things per build/board beat and 120 s, 215 s and 245 s

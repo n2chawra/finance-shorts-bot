@@ -88,7 +88,8 @@ def mix_problems(plan: dict, entries: list[dict], root: Path = ROOT, fmt: str = 
     return []
 
 
-MONEY_IN_TITLE = re.compile(r"[$£€₹]|\d|\b(billion|million|trillion|crore|lakh)", re.I)
+# a placeholder ({bonus}) is a figure too: the title shows it filled in (2026-11-05)
+MONEY_IN_TITLE = re.compile(r"[$£€₹]|\d|\{[a-z0-9_]+\}|\b(billion|million|trillion|crore|lakh)", re.I)
 # a capitalised word that doesn't start a sentence: a person, company or place ("Google", "Coca-Cola")
 NAME_IN_TITLE = re.compile(r"(?<![.!?:]\s)(?<!^)\b[A-Z][a-zA-Z]+")
 

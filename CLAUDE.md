@@ -3,7 +3,7 @@
 Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for a
 global English-speaking audience (India included; the channel is "Paisa Panchayat", see
 `channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 20–35 s big-money stories that loop) and
-**long videos** (landscape, 7–10 min list and "explained" formats, character-led animation). A dashboard shows everything.
+**long videos** (landscape, 5–6 min, the full story of a winning Short, character-led animation). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
 Read `PLAN.md` for milestones and current status. Update its checkboxes as work lands.

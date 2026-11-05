@@ -205,6 +205,63 @@ def too_close(topic: dict, everything: list[dict], today: str) -> str | None:
     return None
 
 
+# A figure over a year old may have been replaced by a newer release (2026-11-05: Costco's FY2025 fees were
+# in the feed after FY2026 was published, and the fact reviewer failed the Short twice). Research re-checks
+# such a fact and marks it `latest: true` with the day it checked (`checked`); that holds for 30 days.
+FACT_FRESH_DAYS = 365
+FACT_RECHECK_DAYS = 30
+WIN_VIEWS = 1000     # a long-video topic expands one of our Shorts with this many views (owner, 2026-11-04)
+
+
+def _day(s: object) -> date | None:
+    try:
+        return date.fromisoformat(str(s)[:10])
+    except ValueError:
+        return None
+
+
+def stale_facts(topic: dict, today: str) -> list[str]:
+    """Facts over a year old that research hasn't confirmed as still the latest in the last 30 days."""
+    now = date.fromisoformat(today)
+    out = []
+    for f in topic.get("facts") or []:
+        as_of = _day(f.get("as_of"))
+        # a year ("hallmarking became mandatory in 2021") is history, never replaced by a newer release
+        if as_of is None or f.get("unit") == "year" or (now - as_of).days <= FACT_FRESH_DAYS:
+            continue
+        checked = _day(f.get("checked"))
+        if f.get("latest") is True and checked and (now - checked).days <= FACT_RECHECK_DAYS:
+            continue
+        out.append(f"{f.get('label') or f.get('value')} (as of {f.get('as_of')})")
+    return out
+
+
+def winning_short(topic: dict, root: Path = ROOT) -> str | None:
+    """Why a long-video topic can't be used: it must name `from_short`, one of our Shorts with 1,000+ views."""
+    sid = topic.get("from_short")
+    if not sid:
+        return "names no `from_short` (a long video expands one of our Shorts with 1,000+ views)"
+    try:
+        videos = json.loads((root / "metrics" / "videos.json").read_text(encoding="utf-8")).get("videos", [])
+    except (OSError, ValueError):
+        return None      # no metrics here (tests, a fresh clone): trust the topic
+    v = next((x for x in videos if x.get("id") == sid), None)
+    if v is None:
+        return f"from_short {sid!r} is not a published video"
+    if (v.get("views") or 0) < WIN_VIEWS:
+        return f"from_short {sid} has {v.get('views') or 0} views, under {WIN_VIEWS:,}"
+    return None
+
+
+def blocked_reason(topic: dict, today: str, fmt: str, root: Path = ROOT) -> str | None:
+    """Why an otherwise open topic can't be made now: stale facts, or a long topic without a winning Short."""
+    if (old := stale_facts(topic, today)):
+        return "facts may be out of date (research must confirm the latest release): " + "; ".join(old[:3])
+    if fmt == "long":
+        return winning_short(topic, root)
+    return None
+
+
 def fits(topic: dict, templates: list[str]) -> bool:
     """A story template tells any topic of its format, so a topic fits whenever its format has one
     enabled. (Topics written before the Remotion rebuild still name old templates; ignored.)"""
@@ -226,7 +283,7 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     # every unused topic competes, old or new: best score first (urgent ones still lead)
     open_.sort(key=lambda t: score(t, today, ctx), reverse=True)
     open_.sort(key=lambda t: 0 if t.get("priority") in URGENT else 1)
-    usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed)]
+    usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed) and blocked_reason(t, today, fmt, root) is None]
     # offered first, and it still earns one extra video that day, but no plan is forced to take it
     urgent = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p), None)
     # usable topics first, so blocked ones never push them past the SHOWN cut
@@ -236,7 +293,7 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
             "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths")
     return {
         "topics": [{**{k: t.get(k) for k in keys}, "score": score(t, today, ctx), "why_score": score_parts(t, today, ctx),
-                    "found": t.get("found"), "usable_now": t in usable} for t in shown],
+                    "found": t.get("found"), "usable_now": t in usable, "blocked_by": blocked_reason(t, today, fmt, root)} for t in shown],
         "open_total": len(open_),
         "required": None,   # nothing is forced since the reset (see the module doc)
         "urgent": urgent,
@@ -257,6 +314,8 @@ def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], 
             out.append(f"feed topic {feed_id!r} can't be used: {why}")
         elif (dup := too_close(topic, _all_entries(root), today)) is not None:
             out.append(f"feed topic {feed_id!r} tells the same idea as {dup} (a Short or long video within the duplicate window)")
+        elif (why := blocked_reason(topic, today, fmt, root)) is not None:
+            out.append(f"feed topic {feed_id!r} can't be used: {why}")
     elif (trend := (plan.get("topic") or {}).get("trend")) is not None:
         out += check_trend(trend, today)
     return out

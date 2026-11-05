@@ -224,7 +224,9 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
             out.append(f"music genre {style.get('genre')!r} was used by the previous video")
         if (style.get("key"), style.get("bpm")) == (last["style"]["key"], last["style"]["bpm"]):
             out.append("music key and tempo are identical to the previous video")
-        if plan["hook_style"] == last["hook_style"]:
+        # the variant system assigns the hook (improvement/arms.py, 2026-11-04): it wins over rotation, else
+        # its default ("question") could never follow a "question" video and the run stalls (2026-11-05)
+        if plan["hook_style"] == last["hook_style"] and not (plan.get("arms") or {}).get("hook"):
             out.append(f"hook style {plan['hook_style']!r} was used by the previous video")
         if opening(plan["cta"]) == opening(last["cta"]):
             out.append("end CTA opens the same way as the previous video's")
