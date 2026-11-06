@@ -19,6 +19,26 @@
       "n": 4,
       "confidence": 0.86,
       "at": "2026-11-04T07:36:26+00:00"
+    },
+    {
+      "dimension": "title",
+      "option": "plain",
+      "verdict": "promote",
+      "over": "figure_or_name",
+      "ratio": 2.9,
+      "n": 4,
+      "confidence": 0.84,
+      "at": "2026-11-06T16:52:25+00:00"
+    },
+    {
+      "dimension": "title",
+      "option": "figure_or_name",
+      "verdict": "drop",
+      "against": "plain",
+      "ratio": 0.34,
+      "n": 20,
+      "confidence": 0.82,
+      "at": "2026-11-06T16:52:25+00:00"
     }
   ],
   "note": "Every drop and promotion the variant system made (improvement/arms.py)."
