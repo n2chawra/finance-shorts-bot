@@ -39,6 +39,26 @@
       "n": 20,
       "confidence": 0.82,
       "at": "2026-11-06T16:52:25+00:00"
+    },
+    {
+      "dimension": "hook",
+      "option": "secret",
+      "verdict": "promote",
+      "over": "question",
+      "ratio": 5.19,
+      "n": 5,
+      "confidence": 0.83,
+      "at": "2026-11-07T13:09:21+00:00"
+    },
+    {
+      "dimension": "hook",
+      "option": "question",
+      "verdict": "drop",
+      "against": "secret",
+      "ratio": 0.19,
+      "n": 8,
+      "confidence": 0.83,
+      "at": "2026-11-07T13:09:21+00:00"
     }
   ],
   "note": "Every drop and promotion the variant system made (improvement/arms.py)."

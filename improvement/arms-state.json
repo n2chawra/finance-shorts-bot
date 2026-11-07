@@ -1,6 +1,6 @@
 {
   "note": "Written by python -m improvement.arms judge (ingest, every 6 h). Defaults and dropped options per dimension; config/arms.json holds the options.",
-  "updatedAt": "2026-11-07T06:10:38+00:00",
+  "updatedAt": "2026-11-07T13:09:21+00:00",
   "dimensions": {
     "length": {
       "default": "28-35",
@@ -13,9 +13,10 @@
       ]
     },
     "hook": {
-      "default": "question",
+      "default": "secret",
       "dropped": [
-        "shock_number"
+        "shock_number",
+        "question"
       ]
     },
     "title": {
@@ -40,14 +41,14 @@
         "median": 770
       },
       "28-35": {
-        "n": 7,
-        "median": 721
+        "n": 8,
+        "median": 427
       }
     },
     "topic": {
       "big_money": {
-        "n": 15,
-        "median": 237
+        "n": 16,
+        "median": 203
       },
       "budget": {
         "n": 10,
@@ -56,8 +57,8 @@
     },
     "hook": {
       "question": {
-        "n": 7,
-        "median": 148
+        "n": 8,
+        "median": 136
       },
       "shock_number": {
         "n": 4,
@@ -74,8 +75,8 @@
     },
     "title": {
       "figure_or_name": {
-        "n": 21,
-        "median": 148
+        "n": 22,
+        "median": 140
       },
       "plain": {
         "n": 4,
@@ -88,8 +89,8 @@
         "median": null
       },
       "board": {
-        "n": 0,
-        "median": null
+        "n": 1,
+        "median": 32
       }
     },
     "category": {
@@ -98,8 +99,8 @@
         "median": null
       },
       "27": {
-        "n": 0,
-        "median": null
+        "n": 1,
+        "median": 32
       }
     }
   }
