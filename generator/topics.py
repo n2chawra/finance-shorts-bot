@@ -290,7 +290,8 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     shown = [t for t in open_ if t in usable][:SHOWN]
     shown += [t for t in open_ if t not in usable][:SHOWN - len(shown)]
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
-            "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths")
+            "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths",
+            "from_short")   # a long topic names the Short it expands (Scout, 2026-11-05)
     return {
         "topics": [{**{k: t.get(k) for k in keys}, "score": score(t, today, ctx), "why_score": score_parts(t, today, ctx),
                     "found": t.get("found"), "usable_now": t in usable, "blocked_by": blocked_reason(t, today, fmt, root)} for t in shown],

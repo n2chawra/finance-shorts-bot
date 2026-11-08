@@ -39,6 +39,7 @@ import { Actor, type ActorSpec, at, clamp, type SceneProps, sec } from "../scene
 import { FONT } from "../design/fonts";
 import { fitLine, minText, textWidth } from "../design/fit";
 import { countUp } from "../fmt/inr";
+import { capGrow, fitOnStage, grownScale } from "./stage";
 import { between, breathe, type Box as Rect, frameOn, type Frame, keepHeads, keepInside, type ShotSize, holds, labelTop, MOVE_SEC, shows, steady, union } from "./camera";
 import { type ScreenText, ScreenTexts } from "./labels";
 import { pulse, shownIn, spokenFigures } from "./figures";
@@ -132,7 +133,11 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   // things without a place are spread across the stage in the order they are listed
   const loose = items.filter((it) => typeof it.x !== "number");
   const autoX = (it: Item) => { const i = loose.indexOf(it), n = loose.length; return n === 1 ? 0.5 : 0.18 + (0.64 * i) / (n - 1); };
-  const home = (it: Item): [number, number] => [(typeof it.x === "number" ? it.x : autoX(it)) * w, gy - (it.y ?? P.floatY ?? 0) * h];
+  // a thing stays whole at its biggest: a grow is capped at the room it has, the rest slides it in (stage.ts)
+  const spotOf = (it: Item) => (typeof it.x === "number" ? it.x : autoX(it)) * w;
+  const growCap = (it: Item, to: number) => capGrow(to, spotOf(it), sizeOf(it), w);
+  const home = (it: Item): [number, number] => [fitOnStage(spotOf(it), sizeOf(it) * growCap(it, grownScale(actions, it.id)) * 0.6, w),
+    gy - (it.y ?? P.floatY ?? 0) * h];
   const byId = Object.fromEntries(items.map((it) => [it.id, it]));
   // a wide frame has room to spare: things are drawn bigger there so the frame stays full
   // (2026-11-02: 0.16 → 0.22 in a Short; the owner: "small objects put up when you speak of them")
@@ -163,7 +168,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
           s.x += (tgt[0] - s.x) * go; s.y += (tgt[1] - s.y) * go;
           s.shake = d > 0.4 && d < 0.75 ? 1 - (d - 0.4) / 0.35 : 0; break;
         }
-        case "grow": case "shrink": { const from = s.scale, to = a.scale ?? (a.do === "grow" ? 1.6 : 0.55);
+        case "grow": case "shrink": { const from = s.scale, to = a.do === "grow" ? growCap(it, a.scale ?? 1.6) : a.scale ?? 0.55;
           s.scale = from + (to - from) * spring({ frame: d * p.fps, fps: p.fps, config: { damping: 11, stiffness: 120 } }); break; }
         case "move": { const [tx, ty] = typeof a.to === "string" ? (byId[a.to] ? home(byId[a.to]!) : [s.x, s.y]) : a.to ? [a.to.x * w, gy - (a.to.y ?? 0) * h] : [s.x, s.y];
           const e = easeIO(d / (a.dur ?? 1.1)); s.x += (tx - s.x) * e; s.y += (ty - s.y) * e - Math.sin(e * Math.PI) * h * 0.025; break; }

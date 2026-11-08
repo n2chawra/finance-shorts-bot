@@ -63,3 +63,13 @@ def test_the_script_keeps_the_plans_currency() -> None:
             "description": "A plan.", "hashtags": [], "topic": {}}
     notes = numbers.number_check(script, plan)[1]              # no currency: a rupee script
     assert any("does not match the plan's 'USD'" in n for n in notes)
+
+
+def test_a_round_million_or_billion_is_shown_in_words() -> None:
+    # owner, 2026-11-05: a title and figures read "$10,000,000,000"; people read "$10 billion"
+    usd = Money("USD")
+    assert [usd.full(1e10), usd.full(1e6), usd.full(2.35e9), usd.full(1.5e6), usd.full(2.5e12)] == \
+        ["$10 billion", "$1 million", "$2.35 billion", "$1.5 million", "$2.5 trillion"]
+    assert [usd.full(1_234_567), usd.full(999_999_999), usd.full(999_999), usd.full(-1e9)] == \
+        ["$1,234,567", "$999,999,999", "$999,999", "-$1 billion"]
+    assert Money("INR").full(1e7) == "₹1,00,00,000"

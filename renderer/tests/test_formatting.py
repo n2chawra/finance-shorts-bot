@@ -71,7 +71,8 @@ def test_fact_value_rounds_before_splitting_decimals() -> None:
 
 @pytest.mark.parametrize("currency, x, full, short, long", [
     ("USD", -19470.3, "-$19,470", "-$19,470", "-$19,470"),
-    ("GBP", -1.5e6, "-£1,500,000", "-£1.5M", "-£1.5 million"),
+    ("GBP", -1.5e6, "-£1.5 million", "-£1.5M", "-£1.5 million"),     # a round million in words (owner, 2026-11-05)
+    ("GBP", -1_234_567, "-£1,234,567", "-£1.2M", "-£1.2 million"),
     ("INR", -1.5e6, "-₹15,00,000", "-₹15.0 L", "-₹15 Lakh"),
     ("INR", -2.3e7, "-₹2,30,00,000", "-₹2.30 Cr", "-₹2.3 Crore"),
     ("USD", -0.4, "$0", "$0", "$0"),

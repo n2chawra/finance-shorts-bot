@@ -1071,7 +1071,8 @@
       "route": "adopt",
       "priority": "high",
       "found": "2026-11-05",
-      "status": "open"
+      "status": "done",
+      "reason": "2026-11-08: already fixed on main (README line 3 says 300-400 s since 2026-11-04)."
     },
     {
       "id": "2026-11-05-state-needs-from-short",
@@ -1082,7 +1083,8 @@
       "route": "adopt",
       "priority": "high",
       "found": "2026-11-05",
-      "status": "open"
+      "status": "done",
+      "reason": "2026-11-08: usability was already enforced by topics.winning_short; state now also shows from_short, with a test (274c432)."
     },
     {
       "id": "2026-11-05-chapter-cards-every-60s",

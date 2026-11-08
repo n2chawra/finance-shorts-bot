@@ -769,6 +769,40 @@
       "description": "Shorts: a big-money format told through the viewer's own money, not a named billionaire or company",
       "notes": "Prompt-only (planner/writer); answers owner note cmw1iv2d70003l20919pyof4e. On keep: fold into generator/prompts/planner.md as a daily mix rule. On revert: drop the prompt.",
       "commits": []
+    },
+    {
+      "id": "2026-11-08-big-numbers-in-words",
+      "area": "text",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-08",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "description": "A round million/billion/trillion shows in words ('$10 billion') in Money.full and its TS mirror; number check rejects 7+ digits in a non-rupee title or description",
+      "evidence": "Owner note (wrong) on v-20261105-07, title 'Spend $1,000,000 a day. A $10,000,000,000 fortune still grows'; research adopt/high big-numbers-in-words.",
+      "commits": [
+        "1fc1de6",
+        "63c97ef"
+      ],
+      "proposal": "big-numbers-in-words"
+    },
+    {
+      "id": "2026-11-08-grow-stays-whole",
+      "area": "motion",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-08",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "description": "A grow is capped at the room a thing has by the frame's edge (never below 1.2) and the rest slides it inward (remotion/src/studio/stage.ts)",
+      "evidence": "generator.run failures: 'something cut at the edge' was the most widespread QA failure of 14 days (27 videos, 102 notes); stills on v-20261105-07 cut before, whole after, gates unchanged.",
+      "commits": [
+        "991234e"
+      ]
     }
   ]
 }
