@@ -490,3 +490,21 @@ test("feedback form names the kind it will save", async ({ page }) => {
   await page.getByRole("option", { name: "General" }).click();
   await expect(kind).toHaveText("General");
 });
+
+test("runs page names long videos and says when nothing failed", async ({ page, isMobile }) => {
+  await signIn(page);
+  // a long-video run read "Video" like every Short, and "Failed" with none read "No runs here: runs appear
+  // about a minute after a routine commits", as if nothing had run at all
+  await page.route("**/api/runs", async (route) => {
+    if (route.request().method() !== "GET") return route.continue();
+    const res = await route.fetch();
+    const runs = ((await res.json()) as { status: string; kind: string; format?: string }[]).filter((r) => r.status === "ok");
+    await route.fulfill({ response: res, json: runs });
+  });
+  await page.goto("/runs");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Runs/, { timeout: 30_000 });
+  const long = isMobile ? page.getByTestId("run-kind-inline").filter({ hasText: "Long video" }) : page.getByText("Long video", { exact: true }).locator("visible=true");
+  await expect(long.first()).toBeVisible();
+  await page.getByRole("radio", { name: "Failed" }).click();
+  await expect(page.getByText("No failed runs")).toBeVisible();
+});
