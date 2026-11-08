@@ -167,3 +167,18 @@ def test_an_idea_told_by_a_long_video_is_not_offered_as_a_short():
     long_entry = {"id": "L-1", "created_at": "2026-10-20T00:00:00+00:00", "topic": {"title": "How McDonald's really makes money from land"}}
     assert too_close({"title": "How McDonald's really makes money: land"}, [long_entry], "2026-10-26") == "L-1"
     assert too_close({"title": "Why casinos always win"}, [long_entry], "2026-10-26") is None
+
+
+def test_a_long_topic_shows_its_short_and_needs_a_winning_one(root: Path) -> None:
+    # Scout, 2026-11-05: `state --format long` must show `from_short`, and only a 1K+ Short makes a topic usable
+    (root / "improvement" / "longform").mkdir(parents=True, exist_ok=True)
+    (root / "metrics").mkdir(parents=True, exist_ok=True)
+    (root / "metrics" / "videos.json").write_text(json.dumps({"videos": [{"id": "v-1", "views": 1500}, {"id": "v-2", "views": 300}]}), encoding="utf-8")
+    long_topics = [topic("won", format="long", from_short="v-1", facts=[]), topic("weak", format="long", from_short="v-2", facts=[]),
+                   topic("none", format="long", facts=[])]
+    (root / "improvement" / "longform" / "topics.json").write_text(json.dumps({"topics": long_topics}), encoding="utf-8")
+    s = topics.for_state([], TODAY, [], ["long_story"], root, fmt="long")
+    shown = {t["id"]: t for t in s["topics"]}
+    assert shown["won"]["from_short"] == "v-1" and shown["won"]["usable_now"]
+    assert not shown["weak"]["usable_now"] and "under 1,000" in shown["weak"]["blocked_by"]
+    assert not shown["none"]["usable_now"] and "from_short" in shown["none"]["blocked_by"]
