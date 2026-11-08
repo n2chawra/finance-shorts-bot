@@ -1,0 +1,707 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 27731,
+ "story": "secret_of_rich",
+ "shape": "before-after",
+ "currency": "USD",
+ "feed_id": "2026-11-05-magic-johnson-40m-to-a-billion",
+ "narrator": "am_fenrir",
+ "style": {
+  "palette": "plum",
+  "genre": "acoustic",
+  "key": "D",
+  "bpm": 96,
+  "look": {
+   "stage": "office",
+   "header": "chalk",
+   "holder": "receipt",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "secret",
+  "title": "plain",
+  "style": "board",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Would you rather be paid or own? Comment",
+ "facts": [
+  {
+   "label": "Magic Johnson's net worth, Forbes estimate",
+   "value": 1.6,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-11-08",
+   "source": "Forbes (real-time profile)",
+   "url": "https://www.forbes.com/profile/magic-johnson/"
+  },
+  {
+   "label": "Magic Johnson's total NBA career earnings, Forbes",
+   "value": 40,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2023-10-30",
+   "source": "Forbes via CBS Sports",
+   "url": "https://www.cbssports.com/nba/news/magic-johnson-becomes-fourth-athlete-billionaire-lakers-icon-joins-michael-jordan-lebron-james-tiger-woods"
+  },
+  {
+   "label": "Seasons in Magic Johnson's NBA career",
+   "value": 13,
+   "unit": "count",
+   "as_of": "2023-10-30",
+   "source": "Yahoo Sports",
+   "url": "https://ca.sports.yahoo.com/news/former-nba-star-magic-johnson-192450511.html"
+  }
+ ],
+ "maths": [
+  {
+   "name": "season",
+   "kind": "share",
+   "total": 40000000,
+   "parts": 13,
+   "facts": {
+    "total": 2,
+    "parts": 3
+   }
+  },
+  {
+   "name": "worth",
+   "kind": "share",
+   "total": 1600000000,
+   "parts": 1,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "career",
+   "kind": "share",
+   "total": 40000000,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "story",
+  "who": "sharma",
+  "angle": "number",
+  "words": "Rich off the court",
+  "hero": "cash",
+  "small": "{fact2}",
+  "tag": "NBA pay",
+  "figure": "{fact1}",
+  "to": "Owning"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Basketball made Magic Johnson a billionaire? Watch this.",
+   "events": {
+    "ball": {
+     "word": "Basketball"
+    },
+    "magic": {
+     "word": "Magic"
+    },
+    "billionaire": {
+     "word": "billionaire"
+    },
+    "didnt": {
+     "word": "Watch"
+    },
+    "how": {
+     "word": "this"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "ball"
+    },
+    {
+     "kind": "boom",
+     "at": "didnt"
+    },
+    {
+     "kind": "riser",
+     "at": "how"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Basketball made him a billionaire?",
+    "cross": "Not quite",
+    "name": "Magic Johnson",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "happy"
+       },
+       {
+        "at": "didnt",
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "didnt",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "career",
+   "scene": "board",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "His {fact3} NBA seasons paid him about {fact2}.",
+   "events": {
+    "seasons": {
+     "word": "seasons"
+    },
+    "nba": {
+     "word": "NBA"
+    },
+    "paid": {
+     "word": "paid"
+    },
+    "total": {
+     "word": "about"
+    },
+    "his": {
+     "word": "His"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "seasons"
+    },
+    {
+     "kind": "kaching",
+     "at": "paid"
+    }
+   ],
+   "params": {
+    "header": "His NBA pay",
+    "bg": "coral",
+    "items": [
+     {
+      "id": "ball",
+      "prop": "hoopball",
+      "x": 0.3,
+      "size": 0.18,
+      "label": "Seasons"
+     },
+     {
+      "id": "nba",
+      "prop": "jersey",
+      "x": 0.7,
+      "size": 0.2,
+      "label": "Paid",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "his",
+      "do": "person",
+      "name": "Magic Johnson",
+      "kicker": "NBA star",
+      "figure": "{fact2}",
+      "value": "Career pay"
+     },
+     {
+      "at": "seasons",
+      "do": "multiply",
+      "target": "ball",
+      "n": 13,
+      "cols": 5,
+      "text": "{fact3}"
+     },
+     {
+      "at": "nba",
+      "do": "enter",
+      "target": "nba",
+      "how": "drop"
+     },
+     {
+      "at": "paid",
+      "do": "flow",
+      "target": "nba",
+      "to": "ball",
+      "n": 5,
+      "text": "{season_per_part}"
+     },
+     {
+      "at": "total",
+      "do": "tag",
+      "target": "nba",
+      "text": "{fact2}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ask",
+   "scene": "board",
+   "role": "build",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "So how is he worth {fact1} today?",
+   "events": {
+    "how": {
+     "word": "how"
+    },
+    "worth": {
+     "word": "worth"
+    },
+    "today": {
+     "word": "today"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "how"
+    },
+    {
+     "kind": "boom",
+     "at": "today"
+    }
+   ],
+   "params": {
+    "header": "Worth how much?",
+    "bg": "night",
+    "stage": "office",
+    "cast": [
+     {
+      "who": "rohan",
+      "spot": 0.28,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "spot": 0.74,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "worth",
+      "prop": "fortunevault",
+      "x": 0.5,
+      "size": 0.24,
+      "label": "Worth today",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "how",
+      "do": "enter",
+      "target": "worth",
+      "how": "rise"
+     },
+     {
+      "at": "worth",
+      "do": "tag",
+      "target": "worth",
+      "text": "{fact1}"
+     },
+     {
+      "at": "today",
+      "do": "grow",
+      "target": "worth",
+      "scale": 1.2
+     }
+    ]
+   }
+  },
+  {
+   "id": "own",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Because he stopped working for owners and became one.",
+   "events": {
+    "stopped": {
+     "word": "stopped"
+    },
+    "paid": {
+     "word": "working"
+    },
+    "owners": {
+     "word": "owners"
+    },
+    "became": {
+     "word": "became"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "stopped"
+    },
+    {
+     "kind": "kaching",
+     "at": "paid"
+    },
+    {
+     "kind": "boom",
+     "at": "became"
+    }
+   ],
+   "params": {
+    "header": "From paid to owner",
+    "bg": "mint",
+    "items": [
+     {
+      "id": "paid",
+      "prop": "paycheck",
+      "x": 0.28,
+      "size": 0.3,
+      "label": "Working"
+     },
+     {
+      "id": "owners",
+      "prop": "ownerdeed",
+      "x": 0.72,
+      "size": 0.32,
+      "label": "Owner",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "stopped",
+      "do": "cross",
+      "target": "paid"
+     },
+     {
+      "at": "paid",
+      "do": "shrink",
+      "target": "paid",
+      "scale": 0.8
+     },
+     {
+      "at": "owners",
+      "do": "enter",
+      "target": "owners",
+      "from": "paid"
+     },
+     {
+      "at": "became",
+      "do": "swap",
+      "target": "paid",
+      "into": "ownerdeed"
+     },
+     {
+      "at": "became",
+      "do": "term",
+      "name": "Owner",
+      "line": "keeps the profits"
+     }
+    ]
+   }
+  },
+  {
+   "id": "deals",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "He bought into a life insurance company and sports teams.",
+   "events": {
+    "bought": {
+     "word": "bought"
+    },
+    "insurance": {
+     "word": "insurance"
+    },
+    "sports": {
+     "word": "sports"
+    },
+    "teams": {
+     "word": "teams"
+    },
+    "life": {
+     "word": "life"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "insurance"
+    },
+    {
+     "kind": "pop",
+     "at": "teams"
+    }
+   ],
+   "params": {
+    "header": "What he owns",
+    "bg": "sky",
+    "items": [
+     {
+      "id": "life",
+      "prop": "lifepolicy",
+      "x": 0.5,
+      "y": 0.34,
+      "size": 0.14,
+      "label": "Life policy",
+      "hidden": true
+     },
+     {
+      "id": "insurance",
+      "prop": "insurehq",
+      "x": 0.2,
+      "size": 0.22,
+      "label": "Insurance"
+     },
+     {
+      "id": "teams",
+      "prop": "stadium",
+      "x": 0.76,
+      "size": 0.22,
+      "label": "Sports teams"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "insurance"
+     },
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "teams"
+     },
+     {
+      "at": "bought",
+      "do": "buttons",
+      "items": [
+       {
+        "text": "Life insurance",
+        "at": "insurance"
+       },
+       {
+        "text": "Team stakes",
+        "at": "teams"
+       }
+      ]
+     },
+     {
+      "at": "life",
+      "do": "enter",
+      "target": "life",
+      "how": "drop"
+     },
+     {
+      "at": "insurance",
+      "do": "grow",
+      "target": "insurance",
+      "scale": 1.08
+     },
+     {
+      "at": "sports",
+      "do": "grow",
+      "target": "teams",
+      "scale": 1.08
+     },
+     {
+      "at": "teams",
+      "do": "flow",
+      "target": "teams",
+      "to": "insurance",
+      "n": 5,
+      "text": "Profits"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "But that fortune is far bigger than anything basketball paid him.",
+   "events": {
+    "worth": {
+     "word": "fortune"
+    },
+    "basketball": {
+     "word": "basketball"
+    },
+    "paid": {
+     "word": "paid"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "worth"
+    },
+    {
+     "kind": "pop",
+     "at": "basketball"
+    },
+    {
+     "kind": "boom",
+     "at": "paid"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Owning vs playing",
+    "big": "{fact1}",
+    "bigLabel": "Owning",
+    "small": "{fact2}",
+    "smallLabel": "Playing",
+    "set": "penthouse",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "paid",
+      "size": "close",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Basketball paid a salary. Owning paid a fortune. Which pays you?",
+   "events": {
+    "court": {
+     "word": "Basketball"
+    },
+    "salary": {
+     "word": "salary"
+    },
+    "owning": {
+     "word": "Owning"
+    },
+    "fortune": {
+     "word": "fortune"
+    },
+    "you": {
+     "word": "you"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "court"
+    },
+    {
+     "kind": "kaching",
+     "at": "salary"
+    },
+    {
+     "kind": "boom",
+     "at": "fortune"
+    },
+    {
+     "kind": "ding",
+     "at": "you"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "salary": "{season_per_part}",
+    "salaryLabel": "Avg. season",
+    "fortune": "{fact1}",
+    "fortuneLabel": "Owning",
+    "ask": "Which pays you?",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "sharma",
+      "spot": "right",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "fortune",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  }
+ ]
+}

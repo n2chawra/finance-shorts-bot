@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 27731,
+  "duration_sec": 27,
+  "tempo": 1.2,
+  "style": {
+    "palette": "plum",
+    "genre": "acoustic",
+    "key": "D",
+    "bpm": 96,
+    "look": {
+      "stage": "office",
+      "header": "chalk",
+      "holder": "receipt",
+      "entrance": "stamp"
+    }
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Basketball made Magic Johnson a billionaire? Watch this.",
+        "start": 0.3,
+        "seconds": 3.09,
+        "window": 3.77,
+        "fill": 0.82
+      },
+      {
+        "scene": "career",
+        "text": "His 13 NBA seasons paid him about $40M.",
+        "start": 4.07,
+        "seconds": 3.54,
+        "window": 4.23,
+        "fill": 0.837
+      },
+      {
+        "scene": "ask",
+        "text": "So how is he worth $1.6B today?",
+        "start": 8.3,
+        "seconds": 2.9,
+        "window": 3.37,
+        "fill": 0.861
+      },
+      {
+        "scene": "own",
+        "text": "Because he stopped working for owners and became one.",
+        "start": 11.67,
+        "seconds": 2.48,
+        "window": 3.13,
+        "fill": 0.792
+      },
+      {
+        "scene": "deals",
+        "text": "He bought into a life insurance company and sports teams.",
+        "start": 14.8,
+        "seconds": 2.88,
+        "window": 3.57,
+        "fill": 0.807
+      },
+      {
+        "scene": "turn",
+        "text": "But that fortune is far bigger than anything basketball paid him.",
+        "start": 18.37,
+        "seconds": 3.35,
+        "window": 4.0,
+        "fill": 0.838
+      },
+      {
+        "scene": "payoff",
+        "text": "Basketball paid a salary. Owning paid a fortune. Which pays you?",
+        "start": 22.37,
+        "seconds": 3.46,
+        "window": 4.13,
+        "fill": 0.838
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "ending-beats-act-and-vary": "off",
+    "you-in-the-core-story": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.4,
+    "lufs": -15.6,
+    "music_under_voice_db": 20.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 6.543,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

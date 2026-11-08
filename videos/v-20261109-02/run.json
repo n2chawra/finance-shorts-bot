@@ -1,0 +1,260 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-08T21:58:51.912643+00:00",
+    "finishedAt": "2026-11-08T21:58:51.912643+00:00",
+    "notes": [
+      "style.look.stage 'night' was used by the previous video (v-20261105-07)",
+      "music genre 'cinematic' was used by the previous video"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-08T21:58:59.294993+00:00",
+    "finishedAt": "2026-11-08T21:58:59.294993+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-08T21:59:40.108552+00:00",
+    "finishedAt": "2026-11-08T21:59:40.108552+00:00",
+    "notes": [
+      "20 figures computed from inputs; 20 cross-checked against closed-form formulas.",
+      "1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-08T21:59:48.424843+00:00",
+    "finishedAt": "2026-11-08T21:59:48.424843+00:00",
+    "notes": [
+      "15 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:01:59.759940+00:00",
+    "finishedAt": "2026-11-08T22:01:59.759940+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:02:19.985480+00:00",
+    "finishedAt": "2026-11-08T22:02:19.985480+00:00",
+    "notes": [
+      "15 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:02:37.713042+00:00",
+    "finishedAt": "2026-11-08T22:02:37.713042+00:00",
+    "notes": [
+      "15 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-08T22:02:56.472845+00:00",
+    "finishedAt": "2026-11-08T22:03:23.798858+00:00",
+    "notes": [
+      "3 of 7 stills are mostly empty background (at 15 s, 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+      "the Short runs 28.0 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:03:28.282288+00:00",
+    "finishedAt": "2026-11-08T22:03:28.282288+00:00",
+    "notes": [
+      "Facts confirmed on source pages: fact1 $1.6B Forbes real-time profile (forbes.com/profile/magic-johnson, 8 Nov 2026); fact2 ~$40M NBA career earnings per Forbes (CBS Sports 30 Oct 2023 page); fact3 13-year NBA career (Yahoo Sports page). verify list: EquiTrust life insurance (60%, most of fortune) and stakes in Dodgers, Sparks, LAFC, Commanders confirmed on Forbes/CBS/Yahoo; no stake values on screen. Claims, tone, no advice, disclaimer ending description all OK. Note: payoff shows $3.1M labelled 'A season', an average of 40M/13, not his actual per-season pay."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:03:48.503312+00:00",
+    "finishedAt": "2026-11-08T22:03:48.503312+00:00",
+    "notes": [
+      "15 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-08T22:04:02.281528+00:00",
+    "finishedAt": "2026-11-08T22:04:25.894983+00:00",
+    "notes": [
+      "the Short runs 27.6 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:04:32.295762+00:00",
+    "finishedAt": "2026-11-08T22:04:32.295762+00:00",
+    "notes": [
+      "15 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-08T22:04:42.282563+00:00",
+    "finishedAt": "2026-11-08T22:05:02.979769+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-08T22:05:26.229109+00:00",
+    "finishedAt": "2026-11-08T22:05:46.426558+00:00",
+    "notes": [
+      "beat 'deals': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:06:02.134554+00:00",
+    "finishedAt": "2026-11-08T22:06:19.886939+00:00",
+    "notes": [
+      "27 s, plum/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:06:40.973512+00:00",
+    "finishedAt": "2026-11-08T22:06:40.973512+00:00",
+    "notes": [
+      "Re-review after line edits: hook 'Watch this.' + stamp 'Not quite', career line without 'in total', own line, payoff 'Basketball paid a salary...' with label 'Avg. season'. All accurate to sources; facts/maths unchanged (1.6B Forbes profile 8 Nov 2026, ~40M career per Forbes via CBS, 13-year career per Yahoo, all confirmed on the pages earlier); no advice, disclaimer ends description."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-08T22:07:06.693027+00:00",
+    "finishedAt": "2026-11-08T22:07:06.693027+00:00",
+    "notes": [
+      "[script] deals beat, 15.0s: the 'Insurance' (insurehq) and 'Sports teams' (stadium) items overlap - the stadium covers most of the insurance building and the two labels print on top of each other as 'Insura:Sports teams'. Place them apart (smaller size, or stack with y) so each object and label reads; the 'grow 1.15' actions make it worse.",
+      "[scene] Turn component (turn beat, 18.4-22.3s, seen at 20.0s and in the thumbnail at ~20.8s): the tall 'Owning' gold column has no figure or label in frame - its {fact1} $1.6B and 'Owning' label are off the top/behind the header, so only '$40M PLAYING' is readable and on mute the turn doesn't say what is bigger. The '$40M PLAYING' label also sits over the hoop backboard.",
+      "[script] thumbnail (turn at 2.4s): shows only '$40M PLAYING' next to an unlabelled column; the planned figure {fact1} $1.6B is missing, so the cover sells the small number instead of the billion. Pick a moment/layout where $1.6B is visible (e.g. the payoff).",
+      "[scene] Payoff component (payoff beat, 25.0s and 26.8s): props run off both edges - the hoop backboard is cut at the left edge with 'AVG. SEASON' printed over it, the vault door is cut at the right edge, and Sharma is clipped at the right edge under the Shorts buttons."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:08:01.830948+00:00",
+    "finishedAt": "2026-11-08T22:08:22.583651+00:00",
+    "notes": [
+      "27 s, plum/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:08:43.691286+00:00",
+    "finishedAt": "2026-11-08T22:09:05.250747+00:00",
+    "notes": [
+      "27 s, plum/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:09:19.170796+00:00",
+    "finishedAt": "2026-11-08T22:09:37.015901+00:00",
+    "notes": [
+      "27 s, plum/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-08T22:09:52.471401+00:00",
+    "finishedAt": "2026-11-08T22:09:52.471401+00:00",
+    "notes": [
+      "[scene] thumbnail (scene layout, payoff at 3.6s): the '$3.1M AVG. SEASON' and '$1.6B OWNING' figures sit right under the 'RICH OFF THE COURT' words and are blurred out by the words' backdrop, and the planned figure {fact1} ($1.6B) is not drawn anywhere else. The cover shows no readable number, only a safe, a cheque and a hoop. The thumbnail layout should draw the 'figure' or keep it clear of the blurred band (or the script picks a moment/layout where the figure sits below the words)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-08T22:10:48.481856+00:00",
+    "finishedAt": "2026-11-08T22:11:09.013570+00:00",
+    "notes": [
+      "the cover looks like v-20261105-01's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-08T22:11:15.524778+00:00",
+    "finishedAt": "2026-11-08T22:11:25.038899+00:00",
+    "notes": [
+      "thumbnail.hero must be card, phone, house, car, cash or piggy"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:11:38.409545+00:00",
+    "finishedAt": "2026-11-08T22:11:56.419503+00:00",
+    "notes": [
+      "27 s, plum/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:12:03.545560+00:00",
+    "finishedAt": "2026-11-08T22:12:21.871533+00:00",
+    "notes": [
+      "27 s, plum/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:12:33.332840+00:00",
+    "finishedAt": "2026-11-08T22:12:33.332840+00:00",
+    "notes": [
+      "27s, layout/craft clean, audio -1.0/-17.4 dB; hook question, deals/turn/payoff fixed (labels apart, $1.6B on column, nothing off-edge), disclaimer on last frame; story thumbnail reads $40M NBA pay -> $1.6B owning, words clear of Sharma's face, unlike recent scene covers"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:13:25.267331+00:00",
+    "finishedAt": "2026-11-08T22:15:06.743870+00:00",
+    "notes": [
+      "27 s, plum/acoustic, peak -1.0 dB, mean -17.4 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-08T22:15:19.418714+00:00",
+    "finishedAt": "2026-11-08T22:15:19.418714+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
