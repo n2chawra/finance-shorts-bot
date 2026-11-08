@@ -1,6 +1,6 @@
 {
   "note": "Written by python -m improvement.arms judge (ingest, every 6 h). Defaults and dropped options per dimension; config/arms.json holds the options.",
-  "updatedAt": "2026-11-08T06:13:31+00:00",
+  "updatedAt": "2026-11-08T10:31:26+00:00",
   "dimensions": {
     "length": {
       "default": "20-27",
@@ -39,8 +39,8 @@
   "numbers": {
     "length": {
       "20-27": {
-        "n": 4,
-        "median": 770
+        "n": 5,
+        "median": 908
       },
       "28-35": {
         "n": 9,
@@ -49,8 +49,8 @@
     },
     "topic": {
       "big_money": {
-        "n": 17,
-        "median": 169
+        "n": 18,
+        "median": 203
       },
       "budget": {
         "n": 10,
@@ -67,8 +67,8 @@
         "median": 114
       },
       "myth": {
-        "n": 2,
-        "median": 56
+        "n": 3,
+        "median": 62
       },
       "secret": {
         "n": 5,
@@ -77,8 +77,8 @@
     },
     "title": {
       "figure_or_name": {
-        "n": 23,
-        "median": 133
+        "n": 24,
+        "median": 140
       },
       "plain": {
         "n": 4,
@@ -87,8 +87,8 @@
     },
     "style": {
       "shot": {
-        "n": 0,
-        "median": null
+        "n": 1,
+        "median": 908
       },
       "board": {
         "n": 2,
@@ -97,8 +97,8 @@
     },
     "category": {
       "22": {
-        "n": 0,
-        "median": null
+        "n": 1,
+        "median": 908
       },
       "27": {
         "n": 2,
