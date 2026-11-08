@@ -866,9 +866,10 @@
       "effort": "S",
       "risk": "Low: formatting only; numbers still computed by code",
       "metric": "views48h",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "reason": "2026-11-08: Money.full shows a round million/billion in words (Python + TS mirror, parity fixtures), number check rejects 7+ digits in a non-rupee title/description (1fc1de6, 63c97ef)."
     },
     {
       "id": "running-counter-rehook",

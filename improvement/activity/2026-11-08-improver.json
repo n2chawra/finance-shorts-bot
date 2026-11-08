@@ -1,0 +1,53 @@
+{
+  "agent": "improver",
+  "day": "2026-11-08",
+  "startedAt": "2026-11-08T17:32:24Z",
+  "finishedAt": "2026-11-08T17:46:30Z",
+  "summary": "Answered your 3 open notes (billions now in words everywhere, the 30 s length ask needs you, the animation you liked noted), fixed the most common QA failure (things grown past the frame's edge), and showed from_short in the long-video topic list. No experiment matured; 5 running, at the cap.",
+  "decision": "acted",
+  "why": "Owner notes come first; 'something cut at the edge' hit 27 videos (102 notes) in 14 days; research's big-numbers-in-words is adopt/high; no experiment has enough videos (no Shorts since 5 Nov).",
+  "findings": [
+    {
+      "title": "Variant system: 20-27 s beats 28-35 s",
+      "detail": "48 h views median 908 (n 5) vs 133 (n 9); hook secret 708 vs question 125; plain titles 460 vs figure-or-name 140."
+    },
+    {
+      "title": "Best and worst Short formats",
+      "detail": "how_they_make_money 9.8x the median (n 5), secret_of_rich 2.1x with 66% viewed; rule_change 0.36x (42% viewed, not retired)."
+    },
+    {
+      "title": "Experiments all waiting",
+      "detail": "ending-beats-act-and-vary and you-in-the-core-story 1 of 4 per arm; quiet-bed and chart-gap-fill 1 of 4 long; hook-voice-matches-frame extended, day 19 (11 vs 11)."
+    },
+    {
+      "title": "No new Shorts since 5 Nov",
+      "detail": "Routines stop on the Pro usage limit (the auditor's critical notification); backlog 0."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Millions and billions in words",
+      "detail": "Money.full + TS mirror: '$10 billion' not '$10,000,000,000'; number check rejects 7+ digits in a non-rupee title/description (1fc1de6, 63c97ef).",
+      "branch": "agent/improver/2026-11-08",
+      "experiment": "2026-11-08-big-numbers-in-words"
+    },
+    {
+      "title": "A grown thing stays whole",
+      "detail": "remotion/src/studio/stage.ts: grow capped at the room by the edge (min 1.2), the rest slides in; stills on v-20261105-07 before/after (991234e).",
+      "branch": "agent/improver/2026-11-08",
+      "experiment": "2026-11-08-grow-stays-whole"
+    },
+    {
+      "title": "Long topics show from_short",
+      "detail": "generator/topics.py for_state, with a test (274c432).",
+      "branch": "agent/improver/2026-11-08"
+    }
+  ],
+  "nextCheck": "2026-11-11",
+  "links": [
+    {
+      "label": "Weekly summary",
+      "url": "improvement/weekly/2026-W45.md"
+    }
+  ]
+}

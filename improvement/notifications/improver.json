@@ -13,6 +13,13 @@
       "title": "Long videos now play at tempo 1.25: two docs outside my lane still say 1.5",
       "detail": "Your 4 Nov note on L-20261104-01 ('speed is very fast') lowered the long-video tempo from 1.5 (~215 words a minute) to 1.25 (~180) in renderer/timeline/build.py, the long_story README and the word-count checks. CLAUDE.md ('tempo 1.5 (~215 words a minute)') and agents/studio.md line 88 ('tempo 1.5, about 215 spoken words a minute') are outside the improver's lane. Studio reads the README too, but its own page still asks for ~215 a minute, so its first scripts may run long.",
       "fix": "1. In agents/studio.md line 88, change 'tempo 1.5, about 215 spoken words a minute' to 'tempo 1.25, about 180 spoken words a minute' (a 300-400 s video is about 900-1,200 words). 2. In CLAUDE.md's Two formats table, change 'tempo 1.5 (~215 words a minute)' to 'tempo 1.25 (~180 words a minute)'. 3. If 1.25 now feels slow, say so in a note and the improver will set it between 1.25 and 1.5."
+    },
+    {
+      "key": "short-length-floor",
+      "severity": "info",
+      "title": "Your note asks for Shorts of 30 s or more; the length test says shorter wins so far",
+      "detail": "On 5 Nov you said the 27 s gym Short was too short ('like 30 at least'). Shorts take their length from the variant system (config/arms.json, owner-only): 20-27 s or 28-35 s. At 48 h, 20-27 s Shorts have a median of 908 views (n 5) and 28-35 s 133 (n 9), so the judge has made 20-27 s the default. The evaluator agrees: 25-29 s Shorts average 81% viewed. Agents can't change lengths.",
+      "fix": "1. To keep following the data: no action. 2. To set a 30 s floor anyway: in config/arms.json change dimensions.length.options to [\"30-35\"] and default to \"30-35\" (or raise lengthMinSec to 30 in Settings on the dashboard). 3. To test it instead: add \"30-35\" as a third option next to the other two."
     }
   ]
 }
