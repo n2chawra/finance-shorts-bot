@@ -1,6 +1,13 @@
 {
   "notifications": [
     {
+      "key": "routines-usage-limit",
+      "severity": "critical",
+      "title": "Every routine has failed on 'usage limit reached' since about 6 Nov: no new Shorts, backlog 0",
+      "detail": "The last video commit on main is 5 Nov 03:07 UTC and the last Short went out 6 Nov 07:07 IST, so about 8 upload slots are empty. The routine list shows the main video run (7 Nov 03:07 IST), the spare run (8 Nov 08:05 IST), improver, research and dashboard all ending after about 5 seconds with USAGE_LIMIT_REACHED. Tonight's auditor run (8 Nov 22:35 IST) did start, so the limit may have reset. The next main video run is 9 Nov 03:07 IST.",
+      "fix": "1. Open claude.ai → Settings → Usage and check when the weekly limit resets. 2. If it resets after 9 Nov 03:07 IST, start the 'Finance Shorts generation' routine by hand once it does. 3. Until the backlog is back to 3+, pause research, dashboard and improver (config: agents.research/dashboard/improver false) so the video runs get the usage. 4. Check the dashboard's Queue on 9 Nov morning."
+    },
+    {
       "key": "watchdog-not-hourly",
       "severity": "info",
       "title": "The hourly watchdog runs only every 5-9 hours",

@@ -37,6 +37,16 @@ export function sumByDay(rows: Day[]): Day[] {
 
 export const zeroDay = (day: string): Day => ({ day, views: 0, engagedViews: 0, watchMinutes: 0, avgViewPct: 0, avgViewSec: 0, likes: 0, comments: 0, shares: 0, subsGained: 0, subsLost: 0 });
 
+/** Views in the first 48 hours: the publish day (IST) and the next, or null until Analytics has the
+ *  second day (same rule as metrics/videos.json `views48h` in workers/lib/agents-sync.ts). Before it, a
+ *  partial sum of the publish day alone made the newest videos look like misses. */
+export function views48Of(days: { day: string; views: number }[], publishDay: string): number | null {
+  const day1 = new Date(Date.parse(`${publishDay}T00:00:00Z`) + 86_400_000).toISOString().slice(0, 10);
+  const second = days.find((d) => d.day === day1);
+  if (!second) return null;
+  return (days.find((d) => d.day === publishDay)?.views ?? 0) + second.views;
+}
+
 /** Every day from `from` to `to` (YYYY-MM-DD), missing ones as zero rows. */
 export function fillDays(rows: Day[], from: string, to: string): Day[] {
   const by = new Map(rows.map((r) => [r.day, r]));

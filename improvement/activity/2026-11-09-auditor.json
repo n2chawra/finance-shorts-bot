@@ -1,0 +1,18 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-09",
+  "startedAt": "2026-11-08T17:05:57Z",
+  "finishedAt": "2026-11-08T17:13:15Z",
+  "summary": "All routines have failed on the plan's usage limit since about 6 Nov: no new Shorts and a backlog of 0. Notified the owner, fixed one small Analytics-page bug and wrote the video and weekly channel analysis.",
+  "decision": "acted",
+  "why": "The data audit was clean (0 errors, 0 warnings) and all checks passed. The routine list shows USAGE_LIMIT_REACHED on every run since 7 Nov. The Analytics page showed partial 48-hour views for new Shorts.",
+  "findings": [
+    {"title": "Routines stalled on the usage limit", "detail": "Main and spare video runs, improver, research and dashboard all failed with USAGE_LIMIT_REACHED; the last Short went out 6 Nov 07:07 IST; backlog 0."},
+    {"title": "0 gym Short is a hit", "detail": "908 views at 48 hours, 12.5 times the median of 72.5."}
+  ],
+  "changes": [
+    {"title": "48-hour views wait for Analytics' second day", "detail": "studio-calc.ts views48Of, used by studio.db.ts; test dashboard-views48.test.ts.", "branch": "agent/auditor/2026-11-09"}
+  ],
+  "nextCheck": "2026-11-10",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-09.md"}]
+}
