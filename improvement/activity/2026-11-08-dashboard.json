@@ -1,0 +1,20 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-08",
+  "startedAt": "2026-11-08T18:11:01Z",
+  "finishedAt": "2026-11-08T18:24:23Z",
+  "summary": "Fixed the smoke-test flakes (route handlers recorded requests before answering them) and made the Runs page name long videos and template work, with a clear message when a filter is empty.",
+  "decision": "acted",
+  "why": "Three smoke tests failed in the first full run with 'Fetch response has been disposed', which can block a merge; the cause was a race in the tests, now fixed (30/30 repeats). The Runs page bug came from tonight's code review. Every open idea is on a page changed in the last 7 days, so none were shipped.",
+  "findings": [
+    {"title": "Smoke flakes: fulfill raced the end of the test", "detail": "Handlers set the recorded value before route.fulfill finished; a test that ended on that value closed the page mid-fulfill."},
+    {"title": "Runs: long videos looked like Shorts", "detail": "Badge said 'Video' for both and was hidden on phones; an empty Failed filter read as if no runs had happened."},
+    {"title": "Possible new flake: stat cards share one height", "detail": "Failed once on phone in a full run, then passed 8/8 alone and in two full runs. Logged in the backlog."}
+  ],
+  "changes": [
+    {"title": "Smoke tests record PATCHes only after answering them", "detail": "apps/dashboard/e2e/smoke.spec.ts", "branch": "agent/dashboard/2026-11-08"},
+    {"title": "Runs: Short / Long video / Template labels, Shorts vs long split, per-filter empty states", "detail": "apps/dashboard/src/app/runs/page.tsx, new smoke test", "branch": "agent/dashboard/2026-11-08"}
+  ],
+  "nextCheck": "2026-11-09",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-08.md"}]
+}
