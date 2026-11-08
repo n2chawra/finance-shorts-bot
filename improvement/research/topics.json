@@ -294,35 +294,6 @@
       ]
     },
     {
-      "id": "2026-10-23-forgot-to-cancel",
-      "format": "short",
-      "title": "How streaming apps and gyms make money from you forgetting to cancel",
-      "category": "subscriptions",
-      "kind": "evergreen",
-      "priority": "high",
-      "templates": [
-        "any"
-      ],
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Weird Ways Brands Make Their Money",
-        "views": 1656553,
-        "url": "https://www.youtube.com/shorts/gaFvy03NDMw"
-      },
-      "hook": "Some companies make their money from people who never show up.",
-      "angle": "Free trials and gym plans count on the month you forget: what one forgotten subscription costs over the years.",
-      "maths": "fee_take (amount the monthly price, fee_pct 100, per_year 12, years 5); sip of the same money invested instead",
-      "found": "2026-10-23",
-      "expires": "2027-01-21",
-      "status": "rejected",
-      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
-      "reason": "2026-11-05 research: near-duplicate of 2026-11-02-gym-paid-by-people-who-never-come (both 'paid by people who don't use it', gyms in both); the gym topic has 10-K facts, this one has none."
-    },
-    {
       "id": "2026-10-23-rich-love-debt",
       "format": "short",
       "title": "Why rich people love debt and you're scared of it",
@@ -1612,7 +1583,9 @@
           "currency": "USD",
           "as_of": "2025-09-28",
           "source": "Starbucks 10-K (fiscal 2025)",
-          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "Money loaded onto Starbucks cards and Stars earned in fiscal 2025",
@@ -1621,7 +1594,9 @@
           "currency": "USD",
           "as_of": "2025-09-28",
           "source": "Starbucks 10-K (fiscal 2025)",
-          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "Card money never spent that Starbucks kept as revenue in its own stores, fiscal 2025",
@@ -1630,7 +1605,9 @@
           "currency": "USD",
           "as_of": "2025-09-28",
           "source": "Starbucks 10-K (fiscal 2025)",
-          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "Starbucks' total net revenues in fiscal 2025",
@@ -1639,7 +1616,9 @@
           "currency": "USD",
           "as_of": "2025-09-28",
           "source": "Starbucks 10-K (fiscal 2025)",
-          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm"
+          "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000114/sbux-20250928.htm",
+          "latest": true,
+          "checked": "2026-11-09"
         }
       ]
     },
@@ -1669,55 +1648,56 @@
       "hook": "You think Costco makes its money on that giant cart? Barely.",
       "angle": "An assumed 2% margin on a $100 weekly cart earns the store about $104 a year from you; a $65 membership fee is pure profit before you buy anything. The fee, not the groceries, is the business.",
       "why_now": "Holiday shopping season; how_they_make_money is core and untold for a retailer. CNBC's version has 4.8M views; Costco shopping-hack Shorts reach ~20M.",
-      "maths": "fee_take (amount 100, fee_pct 2, per_year 52, years 1) for the store's margin on a weekly cart; fee_take (amount 65, fee_pct 100, per_year 1, years 1) for the membership; compare (a cart.per_year_total, b fee.per_year_total). All numbers assumed and labelled. Since 2026-11-03 also: rate (part = membership fees 5,323,000,000, whole = net income 8,099,000,000, facts {part: 1, whole: 2}) gives 66%: fees alone equal two thirds of the profit; the cart example stays an assumption.",
+      "maths": "fee_take (amount 100, fee_pct 2, per_year 52, years 1) for the store's margin on a weekly cart; fee_take (amount 65, fee_pct 100, per_year 1, years 1) for the membership; compare (a cart.per_year_total, b fee.per_year_total). All numbers assumed and labelled. Since 2026-11-09 (FY2026 figures) also: rate (part = membership fees 5,907,000,000, whole = net income 9,226,000,000, facts {part: 1, whole: 2}) gives 64%: fees alone equal two thirds of the profit; the cart example stays an assumption.",
       "verify": [
         "2% margin and $65 fee are illustrative, not Costco's reported numbers",
-        "membership fees as a share of profit only as the rate of the two sourced FY2025 figures (66%), never a rounder claim",
-        "fiscal 2025 membership fees $5,323M and net income $8,099M as in Costco's 25 Sep 2025 results release"
+        "membership fees as a share of profit only as the rate of the two sourced FY2026 figures (64%), never a rounder claim",
+        "fiscal 2026 (52 weeks to 30 Aug 2026) membership fees $5,907M, net income $9,226M, net sales $297,247M, operating income $11,685M, as in Costco's 24 Sep 2026 results release"
       ],
       "sources": [
         "https://glasp.co/youtube/dzejHGniMTQ",
         "https://money.com/costco-doesnt-make-much-money-selling-you-groceries-heres-how-it-really-earns-billions-a-year/?amp=true",
-        "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+        "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
       ],
       "facts": [
         {
-          "label": "Costco's membership fee revenue in fiscal 2025",
-          "value": 5323,
+          "label": "Costco's membership fee revenue in fiscal 2026",
+          "value": 5907,
           "unit": "money_million",
           "currency": "USD",
-          "as_of": "2025-08-31",
-          "source": "Costco Wholesale (FY2025 results)",
-          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+          "as_of": "2026-08-30",
+          "source": "Costco Wholesale (FY2026 results)",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
         },
         {
-          "label": "Costco's net income in fiscal 2025",
-          "value": 8099,
+          "label": "Costco's net income in fiscal 2026",
+          "value": 9226,
           "unit": "money_million",
           "currency": "USD",
-          "as_of": "2025-08-31",
-          "source": "Costco Wholesale (FY2025 results)",
-          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+          "as_of": "2026-08-30",
+          "source": "Costco Wholesale (FY2026 results)",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
         },
         {
-          "label": "Costco's net sales in fiscal 2025",
-          "value": 269912,
+          "label": "Costco's net sales in fiscal 2026",
+          "value": 297247,
           "unit": "money_million",
           "currency": "USD",
-          "as_of": "2025-08-31",
-          "source": "Costco Wholesale (FY2025 results)",
-          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+          "as_of": "2026-08-30",
+          "source": "Costco Wholesale (FY2026 results)",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
         },
         {
-          "label": "Costco's operating income in fiscal 2025",
-          "value": 10383,
+          "label": "Costco's operating income in fiscal 2026",
+          "value": 11685,
           "unit": "money_million",
           "currency": "USD",
-          "as_of": "2025-08-31",
-          "source": "Costco Wholesale (FY2025 results)",
-          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results-2025.pdf"
+          "as_of": "2026-08-30",
+          "source": "Costco Wholesale (FY2026 results)",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
         }
-      ]
+      ],
+      "checked": "2026-11-09"
     },
     {
       "kind": "evergreen",
@@ -2207,7 +2187,7 @@
     },
     {
       "id": "2026-11-05-delta-paid-by-a-credit-card",
-      "title": "Delta made $4.7B before tax in 2024. A credit card company paid it more than that",
+      "title": "Delta made $6.2B before tax in 2025. A credit card company paid it $8.2B",
       "category": "airline",
       "kind": "evergreen",
       "priority": "normal",
@@ -2226,70 +2206,51 @@
       "templates": [
         "any"
       ],
-      "angle": "Delta's whole 2024 pre-tax income was $4.7B; in just three quarters American Express paid it $5.4B for miles and the co-brand card. The money is in the card in your wallet, not the seat.",
+      "angle": "Delta's whole 2025 pre-tax income (GAAP) was $6.2B; American Express paid it $8.2B in the same year for miles and the co-brand card. The money is in the card in your wallet, not the seat.",
       "why_now": "The owner asked for more categories like the 1K-view week; airlines are a category we have never told, in our best core format (how_they_make_money 6.5x). Wendover's version of the idea is listed at 7.2M.",
-      "maths": "sum the three quarterly facts with compare or share (facts {amount: ...}); rate (part 5.4, whole 4.7) shows the card money is about 115% of the year's pre-tax income; rate (part 4.7, whole 61.6) for the thin margin on the whole business (about 7.6%). Name only Delta and American Express with the figures below.",
+      "maths": "rate (part 8.2, whole 6.2, facts {part: 3, whole: 1}) shows the card money is about 132% of the year's pre-tax income; rate (part 6.2, whole 63.4, facts {part: 1, whole: 2}) for the thin margin on the whole business (about 9.8%). Name only Delta and American Express with the figures below.",
       "verify": [
-        "American Express remuneration to Delta: $1.7B (March quarter 2024), $1.9B (June quarter 2024), $1.8B (September quarter 2024), each in Delta's own quarterly earnings release; the December quarter was 'nearly $2 billion' (not used as a figure)",
-        "Delta 2024 GAAP pre-tax income $4.7B and operating revenue $61.6B: Delta's 10 Jan 2025 release (SEC exhibit 99.1)",
+        "American Express remuneration to Delta in 2025: $8.2B, up 11% (Delta's 13 Jan 2026 release, SEC 8-K)",
+        "Delta 2025 GAAP pre-tax income $6.2B (table $6,185M) and GAAP operating revenue $63.4B (table $63,364M), same release; the adjusted pre-tax income is $5.0B: say which one is shown",
         "remuneration covers miles sold to Amex, card fees and related payments; never call it pure profit, and never say airlines make 'most' of their money from cards"
       ],
       "sources": [
-        "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm",
-        "https://quantisnow.com/insight/delta-air-lines-announces-march-quarter-2024-financial-results-5401758",
-        "https://quantisnow.com/insight/delta-air-lines-announces-june-quarter-2024-financial-results-5603005",
-        "https://www.quantisnow.com/insight/delta-air-lines-announces-september-quarter-2024-financial-results-5721637"
+        "https://www.sec.gov/Archives/edgar/data/27904/000002790426000008/deltaairlinesannouncesdece.htm",
+        "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm"
       ],
       "facts": [
         {
-          "label": "Delta pre-tax income for 2024 (GAAP)",
-          "value": 4.7,
+          "label": "Delta pre-tax income for 2025 (GAAP)",
+          "value": 6.2,
           "unit": "money_billion",
           "currency": "USD",
-          "as_of": "2025-01-10",
-          "source": "Delta Air Lines (SEC filing)",
-          "url": "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm"
+          "as_of": "2026-01-13",
+          "source": "Delta Air Lines (SEC 8-K, 13 Jan 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000008/deltaairlinesannouncesdece.htm"
         },
         {
-          "label": "Delta operating revenue for 2024 (GAAP)",
-          "value": 61.6,
+          "label": "Delta operating revenue for 2025 (GAAP)",
+          "value": 63.4,
           "unit": "money_billion",
           "currency": "USD",
-          "as_of": "2025-01-10",
-          "source": "Delta Air Lines (SEC filing)",
-          "url": "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm"
+          "as_of": "2026-01-13",
+          "source": "Delta Air Lines (SEC 8-K, 13 Jan 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000008/deltaairlinesannouncesdece.htm"
         },
         {
-          "label": "American Express remuneration to Delta, March quarter 2024",
-          "value": 1.7,
+          "label": "American Express remuneration to Delta in 2025",
+          "value": 8.2,
           "unit": "money_billion",
           "currency": "USD",
-          "as_of": "2024-04-10",
-          "source": "Delta Air Lines earnings release",
-          "url": "https://quantisnow.com/insight/delta-air-lines-announces-march-quarter-2024-financial-results-5401758"
-        },
-        {
-          "label": "American Express remuneration to Delta, June quarter 2024",
-          "value": 1.9,
-          "unit": "money_billion",
-          "currency": "USD",
-          "as_of": "2024-07-11",
-          "source": "Delta Air Lines earnings release",
-          "url": "https://quantisnow.com/insight/delta-air-lines-announces-june-quarter-2024-financial-results-5603005"
-        },
-        {
-          "label": "American Express remuneration to Delta, September quarter 2024",
-          "value": 1.8,
-          "unit": "money_billion",
-          "currency": "USD",
-          "as_of": "2024-10-10",
-          "source": "Delta Air Lines earnings release",
-          "url": "https://www.quantisnow.com/insight/delta-air-lines-announces-september-quarter-2024-financial-results-5721637"
+          "as_of": "2026-01-13",
+          "source": "Delta Air Lines (SEC 8-K, 13 Jan 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000008/deltaairlinesannouncesdece.htm"
         }
       ],
       "found": "2026-11-05",
       "expires": "2027-02-03",
-      "status": "new"
+      "status": "new",
+      "checked": "2026-11-09"
     },
     {
       "id": "2026-11-05-magic-johnson-40m-to-a-billion",
@@ -2312,15 +2273,16 @@
       "templates": [
         "any"
       ],
-      "angle": "Thirteen seasons paid about $40M in total; Forbes put him at $1.2B in 2023, about 30 times his whole playing career, built from owning businesses (an insurance company, team stakes) instead of being paid by one.",
+      "angle": "Thirteen seasons paid about $40M in total; Forbes put him at $1.6B in 2023, about 30 times his whole playing career, built from owning businesses (an insurance company, team stakes) instead of being paid by one.",
       "why_now": "In this week's market data: a 19 s Short on exactly this story is gaining 1,745 views an hour. Sports is a category we have never told; secret_of_rich is our best format (76% viewed).",
-      "maths": "rate (part 1200000000, whole 40000000) is the 30x (facts {part: 1, whole: 2}); share (total 40000000, parts 13) is about $3.1M a season (facts {total: 2, parts: 3}). The business deals are named, never valued, unless a source gives the figure.",
+      "maths": "rate (part 1600000000, whole 40000000) is the 40x (facts {part: 1, whole: 2}); share (total 40000000, parts 13) is about $3.1M a season (facts {total: 2, parts: 3}). The business deals are named, never valued, unless a source gives the figure.",
       "verify": [
-        "Forbes estimate of $1.2B net worth (Oct 2023) and about $40M in NBA career earnings: CBS Sports and Yahoo Sports, 30 Oct 2023, both citing Forbes",
+        "Forbes real-time net worth $1.6B (forbes.com/profile/magic-johnson, as of 8 Nov 2026); about $40M in NBA career earnings per Forbes (CBS Sports, 30 Oct 2023)",
         "13-year NBA career: Yahoo Sports",
         "Investments named (EquiTrust life insurance, stakes in the Dodgers, Sparks, LAFC, Commanders) appear in those articles; no stake size or value on screen"
       ],
       "sources": [
+        "https://www.forbes.com/profile/magic-johnson/",
         "https://www.cbssports.com/nba/news/magic-johnson-becomes-fourth-athlete-billionaire-lakers-icon-joins-michael-jordan-lebron-james-tiger-woods",
         "https://ca.sports.yahoo.com/news/former-nba-star-magic-johnson-192450511.html",
         "https://www.youtube.com/shorts/TBlgwSn5IBc"
@@ -2328,12 +2290,12 @@
       "facts": [
         {
           "label": "Magic Johnson's net worth, Forbes estimate",
-          "value": 1.2,
+          "value": 1.6,
           "unit": "money_billion",
           "currency": "USD",
-          "as_of": "2023-10-30",
-          "source": "Forbes via CBS Sports",
-          "url": "https://www.cbssports.com/nba/news/magic-johnson-becomes-fourth-athlete-billionaire-lakers-icon-joins-michael-jordan-lebron-james-tiger-woods"
+          "as_of": "2026-11-08",
+          "source": "Forbes (real-time profile)",
+          "url": "https://www.forbes.com/profile/magic-johnson/"
         },
         {
           "label": "Magic Johnson's total NBA career earnings, Forbes",
@@ -2342,7 +2304,9 @@
           "currency": "USD",
           "as_of": "2023-10-30",
           "source": "Forbes via CBS Sports",
-          "url": "https://www.cbssports.com/nba/news/magic-johnson-becomes-fourth-athlete-billionaire-lakers-icon-joins-michael-jordan-lebron-james-tiger-woods"
+          "url": "https://www.cbssports.com/nba/news/magic-johnson-becomes-fourth-athlete-billionaire-lakers-icon-joins-michael-jordan-lebron-james-tiger-woods",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "Seasons in Magic Johnson's NBA career",
@@ -2350,12 +2314,15 @@
           "unit": "count",
           "as_of": "2023-10-30",
           "source": "Yahoo Sports",
-          "url": "https://ca.sports.yahoo.com/news/former-nba-star-magic-johnson-192450511.html"
+          "url": "https://ca.sports.yahoo.com/news/former-nba-star-magic-johnson-192450511.html",
+          "latest": true,
+          "checked": "2026-11-09"
         }
       ],
       "found": "2026-11-05",
       "expires": "2027-02-03",
-      "status": "new"
+      "status": "new",
+      "checked": "2026-11-09"
     },
     {
       "id": "2026-11-05-year-end-bonus-buys-a-paycheck",
@@ -2430,6 +2397,137 @@
       ],
       "found": "2026-11-05",
       "expires": "2026-11-09",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-09-visa-never-lends-you-a-cent",
+      "format": "short",
+      "title": "Visa never lends you a cent. It still kept $23.5B last year",
+      "category": "payments",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Visa Inc. - The 12 Trillion Dollar Money Machine | A Finance Documentary (views from a scraped listing, unverified)",
+        "views": 993230,
+        "url": "https://www.youtube.com/results?search_query=Visa+Inc+The+12+Trillion+Dollar+Money+Machine"
+      },
+      "hook": "You think Visa makes money on your card interest? Not a cent. It's the swipe.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Your bank charges the interest, not Visa. Visa takes a sliver of every swipe: $45.9B of net revenue over 281.3 billion transactions is about 16 cents a swipe, and more than half of it ($23.5B) is profit. It even paid banks $18.3B to put its logo on their cards.",
+      "why_now": "Holiday spending season (Black Friday 27 Nov) puts the card in everyone's hand; Visa's fiscal 2026 results came out 27 Oct. how_they_make_money is our best format (9.77x) and we have never told a payment network.",
+      "maths": "share (total 45900000000, parts 281300000000) for the revenue per transaction (facts {total: 1, parts: 3}); rate (part 23.5, whole 45.9, facts {part: 2, whole: 1}) for the profit share (about 51%); compare the client incentives (fact 4) with net income (fact 2). Never claim a fee rate for a single purchase: that varies.",
+      "facts": [
+        {
+          "label": "Visa net revenue, fiscal year 2026",
+          "value": 45.9,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "Visa Inc. (fiscal 2026 results, SEC 8-K)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm"
+        },
+        {
+          "label": "Visa GAAP net income, fiscal year 2026",
+          "value": 23.5,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "Visa Inc. (fiscal 2026 results, SEC 8-K)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm"
+        },
+        {
+          "label": "Transactions processed by Visa, fiscal year 2026",
+          "value": 281.3,
+          "unit": "count_billion",
+          "as_of": "2026-09-30",
+          "source": "Visa Inc. (fiscal 2026 results, SEC 8-K)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm"
+        },
+        {
+          "label": "Client incentives Visa paid to banks and partners, fiscal year 2026",
+          "value": 18.3,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "Visa Inc. (fiscal 2026 results, SEC 8-K)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm"
+        }
+      ],
+      "verify": [
+        "fiscal 2026 (year to 30 Sep 2026): net revenue $45.9B, GAAP net income $23.5B, 281.3 billion processed transactions, client incentives $18.3B, all in Visa's 27 Oct 2026 release (SEC 8-K)",
+        "Visa does not lend money or charge card interest; the issuing bank does",
+        "'about 16 cents a swipe' is revenue divided by processed transactions, not a fee Visa charges per purchase; no merchant fee rate on screen"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm",
+        "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000134/v-20260930.htm"
+      ],
+      "found": "2026-11-09",
+      "expires": "2027-02-07",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-09-your-bank-earns-on-your-balance",
+      "format": "short",
+      "title": "Your bank pays you almost nothing. JPMorgan earned $95.4B on the gap",
+      "category": "bank",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Monkey Economics How Bank Work",
+        "views": 7600000,
+        "url": "https://www.youtube.com/results?search_query=Monkey+Economics+How+Bank+Work"
+      },
+      "hook": "You think your bank keeps your money safe for free? It's renting it.",
+      "templates": [
+        "any"
+      ],
+      "angle": "A bank pays a little on your balance and lends it out at much more. Show an assumed $10,000 balance at an assumed 0.5% paid to you against an assumed 7% charged on a loan, then the real scale: JPMorgan's net interest income in 2025 was $95.4B, and its whole profit was $57.0B.",
+      "why_now": "The bank is the money everyone touches; the format's reference has 7.6M views and how_they_make_money is our best story (9.77x). We have told card, gym and BNPL businesses but never the bank itself.",
+      "maths": "fee_take (amount 10000, fee_pct 0.5, per_year 1, years 1) for what the saver earns; fee_take (amount 10000, fee_pct 7, per_year 1, years 1) for what the borrower pays; compare the two (assumptions, labelled). Then the two sourced figures side by side: net interest income (fact 1) and net income (fact 2).",
+      "facts": [
+        {
+          "label": "JPMorgan Chase net interest income in 2025",
+          "value": 95443,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "JPMorgan Chase 2025 Form 10-K",
+          "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm"
+        },
+        {
+          "label": "JPMorgan Chase net income in 2025",
+          "value": 57.0,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "JPMorgan Chase 4Q25 earnings release (SEC 8-K)",
+          "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026001902/a4q25erfexhibit991narrative.htm"
+        }
+      ],
+      "verify": [
+        "JPMorgan 2025 net interest income $95,443M (10-K income statement) and full-year net income $57.0B (14 Jan 2026 release)",
+        "0.5% and 7% are illustrative assumptions, not JPMorgan's rates; no account or product recommended",
+        "net interest income is income from all lending and securities minus interest paid, not only from savers; say 'the gap', never 'from your account alone'"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm",
+        "https://www.sec.gov/Archives/edgar/data/19617/000162828026001902/a4q25erfexhibit991narrative.htm"
+      ],
+      "found": "2026-11-09",
+      "expires": "2027-02-07",
       "status": "new"
     }
   ]
