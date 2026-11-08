@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 63358,
+  "duration_sec": 27,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "lofi",
+    "key": "F",
+    "bpm": 88,
+    "look": {
+      "stage": "field",
+      "header": "sticky",
+      "holder": "phone",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Delta makes its money flying you? Watch this.",
+        "start": 0.3,
+        "seconds": 2.31,
+        "window": 3.0,
+        "fill": 0.77
+      },
+      {
+        "scene": "revenue",
+        "text": "Last year, Delta took in $63.4B in revenue.",
+        "start": 3.3,
+        "seconds": 4.17,
+        "window": 4.7,
+        "fill": 0.887
+      },
+      {
+        "scene": "left",
+        "text": "But after costs, only $6.2B was left before tax.",
+        "start": 8.0,
+        "seconds": 3.9,
+        "window": 4.57,
+        "fill": 0.853
+      },
+      {
+        "scene": "ask",
+        "text": "And who else pays Delta, besides flyers?",
+        "start": 12.57,
+        "seconds": 2.12,
+        "window": 2.67,
+        "fill": 0.794
+      },
+      {
+        "scene": "amex",
+        "text": "Of its revenue, American Express alone paid $8.2B.",
+        "start": 15.23,
+        "seconds": 4.08,
+        "window": 4.77,
+        "fill": 0.855
+      },
+      {
+        "scene": "turn",
+        "text": "That's more than Delta's whole profit before tax.",
+        "start": 20.0,
+        "seconds": 2.26,
+        "window": 2.93,
+        "fill": 0.771
+      },
+      {
+        "scene": "payoff",
+        "text": "Your card buys Delta's miles. Is it only the seats?",
+        "start": 22.93,
+        "seconds": 2.9,
+        "window": 3.6,
+        "fill": 0.806
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "ending-beats-act-and-vary": "on",
+    "you-in-the-core-story": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.1,
+    "lufs": -15.4,
+    "music_under_voice_db": 22.4
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 6.293,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

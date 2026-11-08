@@ -1,0 +1,428 @@
+{
+  "id": "v-20261109-03",
+  "createdAt": "2026-11-08T22:24:59.158792+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Delta's 2025 pre-tax profit next to what American Express paid it for miles and the co-brand card",
+    "category": "airline",
+    "reach": "global",
+    "feed_id": "2026-11-05-delta-paid-by-a-credit-card"
+  },
+  "title": "The airline's quiet partner is in your wallet ✈️",
+  "description": "Does Delta only make its money flying you?\nOf Delta's 2025 revenue, a credit card company paid more than the airline's whole pre-tax profit. Figures from Delta's 2025 results (SEC filing).\nSpeak to a licensed financial adviser in your country before acting on money decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#HowTheyMakeMoney",
+    "#Airlines",
+    "#CreditCards"
+  ],
+  "hookStyle": "secret",
+  "cta": "Did your card just pay for a plane? Comment",
+  "seed": 63358,
+  "style": {
+    "palette": "sky",
+    "genre": "lofi",
+    "key": "F",
+    "bpm": 88,
+    "look": {
+      "stage": "field",
+      "header": "sticky",
+      "holder": "phone",
+      "entrance": "slide"
+    },
+    "voice": "af_bella",
+    "arms": {
+      "length": "20-27",
+      "topic": "big_money",
+      "hook": "secret",
+      "title": "plain",
+      "style": "board",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Delta makes its money flying you? Watch this.",
+        "start": 0.3,
+        "seconds": 2.31,
+        "window": 3.0,
+        "fill": 0.77
+      },
+      {
+        "scene": "revenue",
+        "text": "Last year, Delta took in $63.4B in revenue.",
+        "start": 3.3,
+        "seconds": 4.17,
+        "window": 4.7,
+        "fill": 0.887
+      },
+      {
+        "scene": "left",
+        "text": "But after costs, only $6.2B was left before tax.",
+        "start": 8.0,
+        "seconds": 3.9,
+        "window": 4.57,
+        "fill": 0.853
+      },
+      {
+        "scene": "ask",
+        "text": "And who else pays Delta, besides flyers?",
+        "start": 12.57,
+        "seconds": 2.12,
+        "window": 2.67,
+        "fill": 0.794
+      },
+      {
+        "scene": "amex",
+        "text": "Of its revenue, American Express alone paid $8.2B.",
+        "start": 15.23,
+        "seconds": 4.08,
+        "window": 4.77,
+        "fill": 0.855
+      },
+      {
+        "scene": "turn",
+        "text": "That's more than Delta's whole profit before tax.",
+        "start": 20.0,
+        "seconds": 2.26,
+        "window": 2.93,
+        "fill": 0.771
+      },
+      {
+        "scene": "payoff",
+        "text": "Your card buys Delta's miles. Is it only the seats?",
+        "start": 22.93,
+        "seconds": 2.9,
+        "window": 3.6,
+        "fill": 0.806
+      }
+    ]
+  },
+  "durationSec": 27,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.1,
+    "lufs": -15.4,
+    "music_under_voice_db": 22.4
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "ending-beats-act-and-vary": "on",
+    "you-in-the-core-story": "off"
+  },
+  "heard": {
+    "hookVoice": "af_bella",
+    "narratorShare": 88
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after QA: ask 'And who else pays Delta, besides flyers?' and amex 'Of its revenue, American Express alone paid $8.2B' (chip 'A credit card company', card 'American Express', badge 'Paid for miles') keep the $8.2B inside the $63.4B revenue and never call it profit; matches the SEC 8-K (13 Jan 2026). Unnamed hook card is fine. Not a fact issue: the amex sfx 'boom' still points at event 'delta', which the beat no longer defines."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: hook no longer names Amex; thumbnail (amex beat) shows $8.2B, American Express, Delta revenue, A CREDIT CARD COMPANY under THE HIDDEN PAYER; turn labels on dark plates read well; ask/amex lines clear; reads on mute; disclaimer at 26.8s; 27s, peak -1.0/mean -17.0 dB, no layout/craft problems. Not blocking, [scene] for owner: board.tsx source line ellipsizes to 'Data: Delta Air Lines (SEC 8-K, 13 Jan 2...' at 5.0s (year lost; source and month still visible); thumbnail card and jet nose touch the left/right edges."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-08T22:07:00.446598+00:00",
+      "finishedAt": "2026-11-08T22:07:00.446598+00:00",
+      "notes": [
+        "story 'how_they_make_money' was told in the last 1 videos"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-08T22:13:20.986550+00:00",
+      "finishedAt": "2026-11-08T22:13:20.986550+00:00",
+      "notes": [
+        "maths 'margin'.part is 6.2 but fact 1 is 6.2e+09 (6.2 money_billion): use the fact's value",
+        "maths 'margin'.whole is 63.4 but fact 2 is 6.34e+10 (63.4 money_billion): use the fact's value"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:13:25.232116+00:00",
+      "finishedAt": "2026-11-08T22:13:25.232116+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:13:51.700549+00:00",
+      "finishedAt": "2026-11-08T22:13:51.700549+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-08T22:14:51.923545+00:00",
+      "finishedAt": "2026-11-08T22:14:51.923545+00:00",
+      "notes": [
+        "Facts confirmed on the SEC 8-K page (13 Jan 2026): GAAP pre-tax income $6.2B (9.8% margin), operating revenue $63.4B, Amex remuneration $8.2B (up 11%). The figures are fine; the framing fails.",
+        "Title 'Airlines don't make their money on your seat' (and thumbnail 'Not your seat', payoff 'Still think it's the seats?', hook cross 'Not quite'): says seats are not where airlines make their money. That breaks the topic's verify rule (never say airlines make 'most' of their money from cards). Passenger fares are still most of Delta's $63.4B, and the video talks about one airline but the title says 'Airlines'. Reword, e.g. 'A credit card paid Delta more than its whole profit' and 'Is it only the seats?'.",
+        "Beats ask/amex/turn ('So where does the real money come from?' -> Amex $8.2B -> 'That's more than Delta's whole profit before tax'): presents the $8.2B as new money outside the $63.4B, and as if it were the profit. It is revenue that is already inside the $63.4B, and it has costs (the miles Delta has to honour). The verify list says never call it pure profit. Keep the comparison but say it is already part of the revenue and is not all profit (e.g. 'Of that $63.4B, American Express alone paid $8.2B, more than Delta's whole pre-tax profit'), and drop 'real money'.",
+        "Description: 'illustrative numbers' is wrong, since the figures are real and sourced (say 'figures from Delta's 2025 results'). The profile's 'speak to a licensed financial adviser in your country' line is also missing; add it before the disclaimer."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:15:35.999567+00:00",
+      "finishedAt": "2026-11-08T22:15:35.999567+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:15:36.742041+00:00",
+      "finishedAt": "2026-11-08T22:15:36.742041+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:15:56.529376+00:00",
+      "finishedAt": "2026-11-08T22:15:56.529376+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:16:26.584251+00:00",
+      "finishedAt": "2026-11-08T22:16:26.584251+00:00",
+      "notes": [
+        "Re-review: SEC 8-K (13 Jan 2026) confirms GAAP pre-tax $6.2B (9.8%), revenue $63.4B, Amex remuneration $8.2B; title, hook, payoff now say 'not only' the seats, Amex money placed inside revenue and not called profit, description sourced with adviser line and disclaimer. Notes: the 'illustrative numbers' sentence is required by planner/check-plan but jars with sourced figures (template fix); 'Paid for miles' on the $8.2B tag simplifies remuneration that also covers card fees."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-08T22:16:13.829371+00:00",
+      "finishedAt": "2026-11-08T22:16:43.280373+00:00",
+      "notes": [
+        "the Short runs 28.3 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:16:49.869969+00:00",
+      "finishedAt": "2026-11-08T22:16:49.869969+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-08T22:16:59.897246+00:00",
+      "finishedAt": "2026-11-08T22:17:20.045715+00:00",
+      "notes": [
+        "beat 'amex': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:17:25.301211+00:00",
+      "finishedAt": "2026-11-08T22:17:25.301211+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:17:35.410683+00:00",
+      "finishedAt": "2026-11-08T22:17:52.654364+00:00",
+      "notes": [
+        "27 s, sky/lofi (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-08T22:18:20.722246+00:00",
+      "finishedAt": "2026-11-08T22:18:40.779075+00:00",
+      "notes": [
+        "2 of 7 stills are mostly empty background (at 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:18:54.465743+00:00",
+      "finishedAt": "2026-11-08T22:19:11.275412+00:00",
+      "notes": [
+        "27 s, sky/lofi (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:19:26.997188+00:00",
+      "finishedAt": "2026-11-08T22:19:47.237138+00:00",
+      "notes": [
+        "27 s, sky/lofi (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-08T22:20:52.373466+00:00",
+      "finishedAt": "2026-11-08T22:20:52.373466+00:00",
+      "notes": [
+        "[script] hook 0.0-3.3s: on 'this' (~2.6s) the Hook flips in a gold rewards card with an AMEX chip (params.card 'Amex', plus the NOT ONLY stamp), so the hook names the hidden payer before the promise; the answer belongs to the amex beat (14.5s). Drop params.card or make it a mystery card with no name.",
+        "[scene] thumbnail (layout scene, turn @2.2s): the spec's figure $8.2B, tag 'From a card' and Rohan are not drawn; the cover is two unlabelled bars (yellow, blue) under CARD BEATS PROFIT with a blurred ghost 'PRE-TAX PROFIT' behind them, so it shows no number and looks unfinished next to recent covers (e.g. v-20261109-02 with $40M/$1.6B and a character). The thumbnail renderer drops figure/tag/who for this layout.",
+        "[script] revenue beat 5.0s: the source line is cut off ('Data: Delta Air Lines (SEC 8-K, 13 Jan 2...'), so the required month is missing; shorten the facts' source (e.g. 'Delta Air Lines 8-K').",
+        "[scene] turn beat (Turn component) 20.0s: '$6.2B PRE-TAX PROFIT' is pale blue/white text over the office set's pale door with its frame lines running through the label (low contrast), and 'FROM AMEX' sits over the wall shelf's chart props; the labels need a backing plate or the set needs to sit clear of them.",
+        "[script] amex beat 14.5s: 'Of that, American Express...' comes right after 'So who else pays Delta?' so 'that' has no clear antecedent and contradicts 'who else'; say 'Of that $63.4B, American Express... paid $8.2B' and ask 'So who pays Delta besides flyers?'."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-08T22:21:28.585192+00:00",
+      "finishedAt": "2026-11-08T22:21:28.585192+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "beat 'ask' opens like a line in one of the last scripts ('so who pays'): new words"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-08T22:21:38.452411+00:00",
+      "finishedAt": "2026-11-08T22:22:00.249494+00:00",
+      "notes": [
+        "beat 'ask' opens like a line in one of the last scripts ('so who pays'): new words",
+        "the cover looks like v-20261105-01's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:22:07.171575+00:00",
+      "finishedAt": "2026-11-08T22:22:07.171575+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:22:16.819485+00:00",
+      "finishedAt": "2026-11-08T22:22:34.588821+00:00",
+      "notes": [
+        "27 s, sky/lofi (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:22:52.505994+00:00",
+      "finishedAt": "2026-11-08T22:23:09.176871+00:00",
+      "notes": [
+        "27 s, sky/lofi (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:23:34.469172+00:00",
+      "finishedAt": "2026-11-08T22:23:34.469172+00:00",
+      "notes": [
+        "Re-review after QA: ask 'And who else pays Delta, besides flyers?' and amex 'Of its revenue, American Express alone paid $8.2B' (chip 'A credit card company', card 'American Express', badge 'Paid for miles') keep the $8.2B inside the $63.4B revenue and never call it profit; matches the SEC 8-K (13 Jan 2026). Unnamed hook card is fine. Not a fact issue: the amex sfx 'boom' still points at event 'delta', which the beat no longer defines."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:23:42.368719+00:00",
+      "finishedAt": "2026-11-08T22:23:42.368719+00:00",
+      "notes": [
+        "Re-review after fixes: hook no longer names Amex; thumbnail (amex beat) shows $8.2B, American Express, Delta revenue, A CREDIT CARD COMPANY under THE HIDDEN PAYER; turn labels on dark plates read well; ask/amex lines clear; reads on mute; disclaimer at 26.8s; 27s, peak -1.0/mean -17.0 dB, no layout/craft problems. Not blocking, [scene] for owner: board.tsx source line ellipsizes to 'Data: Delta Air Lines (SEC 8-K, 13 Jan 2...' at 5.0s (year lost; source and month still visible); thumbnail card and jet nose touch the left/right edges."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:23:44.430808+00:00",
+      "finishedAt": "2026-11-08T22:23:44.430808+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:23:56.724229+00:00",
+      "finishedAt": "2026-11-08T22:24:55.129637+00:00",
+      "notes": [
+        "27 s, sky/lofi, peak -1.0 dB, mean -17.1 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:24:59.158863+00:00",
+      "finishedAt": "2026-11-08T22:24:59.158863+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261109-03",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261109-03"
+  }
+}

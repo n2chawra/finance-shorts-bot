@@ -1,0 +1,704 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 63358,
+ "story": "how_they_make_money",
+ "shape": "hidden-payer",
+ "currency": "USD",
+ "feed_id": "2026-11-05-delta-paid-by-a-credit-card",
+ "narrator": "af_bella",
+ "style": {
+  "palette": "sky",
+  "genre": "lofi",
+  "key": "F",
+  "bpm": 88,
+  "look": {
+   "stage": "field",
+   "header": "sticky",
+   "holder": "phone",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "secret",
+  "title": "plain",
+  "style": "board",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Did your card just pay for a plane? Comment",
+ "facts": [
+  {
+   "label": "Delta pre-tax income for 2025 (GAAP)",
+   "value": 6.2,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-01-13",
+   "source": "Delta Air Lines (SEC 8-K, 13 Jan 2026)",
+   "url": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000008/deltaairlinesannouncesdece.htm"
+  },
+  {
+   "label": "Delta operating revenue for 2025 (GAAP)",
+   "value": 63.4,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-01-13",
+   "source": "Delta Air Lines (SEC 8-K, 13 Jan 2026)",
+   "url": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000008/deltaairlinesannouncesdece.htm"
+  },
+  {
+   "label": "American Express remuneration to Delta in 2025",
+   "value": 8.2,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-01-13",
+   "source": "Delta Air Lines (SEC 8-K, 13 Jan 2026)",
+   "url": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000008/deltaairlinesannouncesdece.htm"
+  }
+ ],
+ "maths": [
+  {
+   "name": "margin",
+   "kind": "rate",
+   "part": 6200000000,
+   "whole": 63400000000,
+   "facts": {
+    "part": 1,
+    "whole": 2
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "amex",
+  "sec": 3.3,
+  "who": "rohan",
+  "angle": "number",
+  "words": "The hidden *payer*",
+  "figure": "{fact3}",
+  "tag": "From a card"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Delta makes its money flying you? Watch this.",
+   "events": {
+    "delta": {
+     "word": "Delta"
+    },
+    "money": {
+     "word": "money"
+    },
+    "flying": {
+     "word": "flying"
+    },
+    "watch": {
+     "word": "Watch"
+    },
+    "this": {
+     "word": "this"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "flying"
+    },
+    {
+     "kind": "boom",
+     "at": "watch"
+    },
+    {
+     "kind": "riser",
+     "at": "this"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Delta makes money flying you?",
+    "cross": "Not only",
+    "seat": "Your seat",
+    "set": "office",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "happy"
+       },
+       {
+        "at": "watch",
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "watch",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "revenue",
+   "scene": "board",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Last year, Delta took in {fact2} in revenue.",
+   "events": {
+    "year": {
+     "word": "year"
+    },
+    "delta": {
+     "word": "Delta"
+    },
+    "took": {
+     "word": "took"
+    },
+    "business": {
+     "word": "revenue"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "delta"
+    },
+    {
+     "kind": "kaching",
+     "at": "took"
+    }
+   ],
+   "params": {
+    "header": "Delta's year",
+    "bg": "sky",
+    "items": [
+     {
+      "id": "delta",
+      "prop": "jetliner",
+      "x": 0.34,
+      "size": 0.2,
+      "label": "Delta"
+     },
+     {
+      "id": "business",
+      "prop": "farebag",
+      "x": 0.74,
+      "size": 0.22,
+      "label": "Took in",
+      "hidden": true
+     },
+     {
+      "id": "ticket",
+      "prop": "boardingpass",
+      "x": 0.5,
+      "y": 0.32,
+      "size": 0.13,
+      "label": "Delta tickets",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "delta"
+     },
+     {
+      "at": "delta",
+      "do": "enter",
+      "target": "ticket",
+      "how": "drop"
+     },
+     {
+      "at": "year",
+      "do": "calendar",
+      "steps": [
+       "January",
+       "June",
+       "December"
+      ],
+      "label": "Last year"
+     },
+     {
+      "at": "took",
+      "do": "enter",
+      "target": "business",
+      "how": "drop"
+     },
+     {
+      "at": "took",
+      "do": "flow",
+      "target": "delta",
+      "to": "business",
+      "n": 6,
+      "text": "{fact2}"
+     },
+     {
+      "at": "business",
+      "do": "tag",
+      "target": "business",
+      "text": "{fact2}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "left",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "But after costs, only {fact1} was left before tax.",
+   "events": {
+    "cost": {
+     "word": "costs"
+    },
+    "only": {
+     "word": "only"
+    },
+    "left": {
+     "word": "left"
+    },
+    "tax": {
+     "word": "tax"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "cost"
+    },
+    {
+     "kind": "tick",
+     "at": "left"
+    },
+    {
+     "kind": "pop",
+     "at": "tax"
+    }
+   ],
+   "params": {
+    "header": "What was left",
+    "bg": "coral",
+    "items": [
+     {
+      "id": "cost",
+      "prop": "fueltruck",
+      "x": 0.36,
+      "size": 0.26,
+      "label": "Every cost"
+     },
+     {
+      "id": "left",
+      "prop": "farebag",
+      "x": 0.74,
+      "size": 0.2,
+      "label": "Left over",
+      "hidden": true
+     },
+     {
+      "id": "tax",
+      "prop": "taxstamp",
+      "x": 0.5,
+      "y": 0.3,
+      "size": 0.13,
+      "label": "Before tax",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "cost"
+     },
+     {
+      "at": "cost",
+      "do": "equation",
+      "terms": [
+       {
+        "text": "{fact2}",
+        "at": "cost"
+       },
+       {
+        "text": "minus costs",
+        "at": "only"
+       }
+      ],
+      "result": {
+       "text": "{fact1}",
+       "at": "left"
+      }
+     },
+     {
+      "at": "left",
+      "do": "enter",
+      "target": "left",
+      "how": "drop"
+     },
+     {
+      "at": "left",
+      "do": "tag",
+      "target": "left",
+      "text": "{fact1}"
+     },
+     {
+      "at": "tax",
+      "do": "chip",
+      "text": "{margin_pct} margin",
+      "tone": "bad"
+     },
+     {
+      "at": "tax",
+      "do": "enter",
+      "target": "tax",
+      "how": "drop"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ask",
+   "scene": "board",
+   "role": "build",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "And who else pays Delta, besides flyers?",
+   "events": {
+    "where": {
+     "word": "who"
+    },
+    "real": {
+     "word": "pays"
+    },
+    "money": {
+     "word": "flyers"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "where"
+    },
+    {
+     "kind": "riser",
+     "at": "money"
+    }
+   ],
+   "params": {
+    "header": "Who else pays?",
+    "bg": "night",
+    "stage": "field",
+    "cast": [
+     {
+      "who": "rohan",
+      "spot": 0.28,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "spot": 0.74,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "money",
+      "prop": "mysterywallet",
+      "x": 0.5,
+      "size": 0.22,
+      "label": "Who else?",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "where",
+      "do": "enter",
+      "target": "money",
+      "how": "rise"
+     },
+     {
+      "at": "real",
+      "do": "grow",
+      "target": "money",
+      "scale": 1.15
+     },
+     {
+      "at": "money",
+      "do": "shake",
+      "target": "money"
+     }
+    ]
+   }
+  },
+  {
+   "id": "amex",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Of its revenue, American Express alone paid {fact3}.",
+   "events": {
+    "card": {
+     "word": "Express"
+    },
+    "american": {
+     "word": "American"
+    },
+    "paid": {
+     "word": "paid"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "card"
+    },
+    {
+     "kind": "kaching",
+     "at": "paid"
+    },
+    {
+     "kind": "boom",
+     "at": "paid"
+    }
+   ],
+   "params": {
+    "header": "The hidden payer",
+    "bg": "mint",
+    "items": [
+     {
+      "id": "card",
+      "prop": "rewardcard",
+      "x": 0.22,
+      "size": 0.17,
+      "label": "American Express",
+      "hidden": true
+     },
+     {
+      "id": "delta",
+      "prop": "jetliner",
+      "x": 0.72,
+      "size": 0.17,
+      "label": "Delta revenue"
+     },
+     {
+      "id": "miles",
+      "prop": "milesbadge",
+      "x": 0.48,
+      "y": 0.36,
+      "size": 0.13,
+      "label": "Paid for miles",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "delta"
+     },
+     {
+      "at": "american",
+      "do": "enter",
+      "target": "card",
+      "how": "rise"
+     },
+     {
+      "at": "card",
+      "do": "chip",
+      "text": "A credit card company",
+      "tone": "accent"
+     },
+     {
+      "at": "paid",
+      "do": "flow",
+      "target": "card",
+      "to": "delta",
+      "n": 8,
+      "text": "{fact3}"
+     },
+     {
+      "at": "paid",
+      "do": "enter",
+      "target": "miles",
+      "from": "card"
+     },
+     {
+      "at": "paid",
+      "do": "tag",
+      "target": "miles",
+      "text": "{fact3}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "That's more than Delta's whole profit before tax.",
+   "events": {
+    "more": {
+     "word": "more"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "profit": {
+     "word": "profit"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "more"
+    },
+    {
+     "kind": "boom",
+     "at": "profit"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Card beats profit",
+    "big": "{fact3}",
+    "bigLabel": "From Amex",
+    "small": "{fact1}",
+    "smallLabel": "Pre-tax profit",
+    "set": "office",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "profit",
+      "size": "close",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Your card buys Delta's miles. Is it only the seats?",
+   "events": {
+    "card": {
+     "word": "card"
+    },
+    "wallet": {
+     "word": "buys"
+    },
+    "miles": {
+     "word": "miles"
+    },
+    "seats": {
+     "word": "seats"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "card"
+    },
+    {
+     "kind": "kaching",
+     "at": "miles"
+    },
+    {
+     "kind": "ding",
+     "at": "seats"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "walletLabel": "Your wallet",
+    "milesLabel": "Miles",
+    "ask": "Only the seats?",
+    "set": "office",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       },
+       {
+        "at": "seats",
+        "pose": "shrug",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "seats",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     }
+    ]
+   }
+  }
+ ]
+}
