@@ -27,6 +27,9 @@ fix any beat near a limit as well.
 - An event's `word` is spelled exactly as in `say`. A figure is spoken as words, so put events on
   the words around it, never on the figure.
 - Ids may be anything (`y1`, `c6-worth`): they are never shown.
+- **Millions and billions read as words** (owner, 2026-11-05): "$10 billion", never
+  "$10,000,000,000". Give money inputs round values (`10000000000` shows as "$10 billion", `1500000` as
+  "$1.5 million"); a title or description showing 7+ digits fails the number check.
 - No line opens like a line in the last ten scripts (the error quotes it). Write your own openings
   and skip stock ones ("to be fair", "so the money", "that's more than").
 
@@ -66,6 +69,8 @@ fix any beat near a limit as well.
 - **The thing named is the thing drawn.** "a whole car" shows a car prop, not a rocket.
 - **Actors at spots 0.2–0.8 in a Short, beside things, never behind them.** Items at least 0.2 apart
   in `x` at the same height, and `size` 0.12 or more.
+- **A `grow` near the edge is capped** at the room the thing has (anything up to 1.2 is kept and the
+  thing slides in a little). To grow big, stand the thing nearer the middle (x 0.35–0.65).
 - **Labels of at most three words; tags hold a figure.** They are drawn after the camera, clamped
   inside the frame and kept off the captions band, but a long label still shrinks.
 - **The HUD counter** shows on `build` and `shot` beats and gives way on its own on type, stats,

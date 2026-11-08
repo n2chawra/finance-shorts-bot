@@ -237,3 +237,15 @@ def test_a_share_can_be_compared_and_a_wrong_split_fails(monkeypatch: pytest.Mon
     finally:
         maths.KINDS["share"] = real
     assert not passed and any("each_per_part" in n for n in notes)
+
+
+def test_a_title_never_shows_a_million_or_billion_in_digits() -> None:
+    # owner, 2026-11-05, on v-20261105-07: "Spend $1,000,000 a day. A $10,000,000,000 fortune still grows"
+    script = {**sip_story(), "currency": "USD"}
+    figures = {"grow_amount": "$10 billion", "odd": "$1,234,567", "spend": "$999,999"}
+    assert check_claims({"title": "A {grow_amount} fortune spends {spend} a day"}, script, figures) == []
+    notes = check_claims({"title": "A {odd} fortune"}, script, figures)
+    assert len(notes) == 1 and "in words" in notes[0] and "'1,234,567'" in notes[0]
+    assert any("in words" in n for n in check_claims({"description": "It had $10000000000 in total"}, script, figures))
+    # rupee stories group the Indian way (₹15,00,000) and are left to lakh and crore
+    assert check_claims({"title": "{amt} at 12%"}, sip_story(), {"amt": "₹15,00,000"}) == []

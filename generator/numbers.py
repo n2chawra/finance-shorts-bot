@@ -356,6 +356,11 @@ _MONTHS = r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?"
 _DATE = re.compile(rf"\b{_MONTHS}\s+\d{{1,2}}(?:st|nd|rd|th)?\b|\b\d{{1,2}}(?:st|nd|rd|th)?\s+{_MONTHS}|\b(?:19|20)\d\d(?:[-–/]\d\d)?\b", re.IGNORECASE)
 
 
+# a run of digits as written, grouped or not: "10,000,000,000", "1234567" (owner, 2026-11-05: millions and
+# billions in words, in titles too; research adopt big-numbers-in-words)
+_LONG_DIGITS = re.compile(r"\d[\d,]*\d")
+
+
 def fill_text(text: str, figures: Mapping[str, str]) -> tuple[str, list[str]]:
     """A title or description with its {placeholders} filled from the computed figures (2026-10-29:
     a typed "$500K" in a title failed the number check; the writer now writes "{worth_final}").
@@ -387,6 +392,13 @@ def check_claims(texts: Mapping[str, str], script: dict, figures: Mapping[str, s
         if unknown:
             out.append(f"{field} uses {', '.join('{' + u + '}' for u in unknown)}, which no maths computes; the figures are: "
                        + ", ".join(sorted(figures)))
+        if field in ("title", "description") and not money_for(script).indian:
+            for run in _LONG_DIGITS.finditer(text):
+                if sum(c.isdigit() for c in run.group()) >= 7:
+                    out.append(f"{field} shows {run.group()!r}: a viewer reads millions and billions in words ('$10 billion', "
+                               "'$1.5M'); use a round input (Money shows it in words) or a short figure, or leave it out of the "
+                               f"{field}")
+                    break
         text = _DATE.sub(" ", text)
         for m in _NUMBER.finditer(text):
             token = _norm(m.group())
