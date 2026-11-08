@@ -69,8 +69,11 @@ test("edit details saves tags without # and without repeats", async ({ page }) =
   let sent: { tags?: string[] } | null = null;
   await page.route("**/api/videos/v030", async (route) => {
     if (route.request().method() !== "PATCH") return route.continue();
-    sent = route.request().postDataJSON();
+    const body = route.request().postDataJSON();
     await route.fulfill({ response: await route.fetch({ method: "GET" }) });
+    // record only after answering: a test that ends on the recorded value closes the page, and a
+    // fulfill still in flight then throws "Fetch response has been disposed" (flaked under load, 2026-11-08)
+    sent = body;
   });
   await page.goto("/videos/v030");
   await page.getByRole("button", { name: "Edit details" }).click();
@@ -205,9 +208,9 @@ test("resolve all leaves setting proposals for a decision", async ({ page }) => 
   await page.route("**/api/notifications", async (route) => {
     if (route.request().method() !== "PATCH") return route.continue();
     const body = route.request().postDataJSON() as { ids: string[]; action: string };
-    if (body.action === "resolve") sent = body;
     const res = await route.fetch({ method: "GET" });
     await route.fulfill({ response: res });
+    if (body.action === "resolve") sent = body;   // after answering: see "edit details saves tags" above
   });
   await page.goto("/notifications");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
@@ -223,8 +226,8 @@ test("undo on the resolve-all toast reopens exactly what it resolved", async ({ 
   await page.route("**/api/notifications", async (route) => {
     if (route.request().method() !== "PATCH") return route.continue();
     const body = route.request().postDataJSON() as { ids: string[]; action: string };
-    if (body.action !== "seen") sent.push(body);
     await route.fulfill({ response: await route.fetch({ method: "GET" }) });
+    if (body.action !== "seen") sent.push(body);   // after answering: see "edit details saves tags" above
   });
   await page.goto("/notifications");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
