@@ -10,7 +10,7 @@ import {
   type AiVideo, type BreakdownKind, type ContentRow, type Day, type Fmt, type Range, type Slice, type Studio, type VideoStudio,
 } from "./studio-schema";
 import {
-  averageCurve, fillDays, hourlyGains, istSlot, istWeekday, latest, lengthBucket, median, quickVerdict, sumByDay, totalsOf, whatWorks, type Curve,
+  averageCurve, fillDays, hourlyGains, istSlot, istWeekday, latest, lengthBucket, median, quickVerdict, sumByDay, totalsOf, views48Of, whatWorks, type Curve,
 } from "./studio-calc";
 import { z } from "zod";
 
@@ -89,7 +89,7 @@ function contentRow(v: Loaded): Omit<ContentRow, "vs48" | "vsPct" | "verdict"> &
     likes: Math.max(t.likes, u.liveLikes ?? 0), comments: Math.max(t.comments, u.liveComments ?? 0), shares: t.shares, subsNet: t.subsGained - t.subsLost,
     impressions: reach.impressions || null, ctr: reach.impressions ? reach.clicks / reach.impressions : null,
     first7: Array.from({ length: 7 }, (_, i) => days.find((d) => d.day === addDays(publishDay, i))?.views ?? 0),
-    views48: ageDays >= 2 && days.length ? firstDays.filter((d) => d.day <= addDays(publishDay, 1)).reduce((a, d) => a + d.views, 0) : null,
+    views48: ageDays >= 2 ? views48Of(firstDays, publishDay) : null,
     pctRaw: t.views > 0 ? t.avgViewPct : null,
   };
 }

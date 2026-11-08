@@ -668,6 +668,19 @@
       "severity": "medium",
       "found": "2026-11-06",
       "status": "fixed"
+    },
+    {
+      "id": "dd-012",
+      "kind": "data",
+      "title": "Analytics page 48-hour views counted the publish day alone before Analytics had day two",
+      "detail": "studio.db.ts contentRow summed whatever VideoStat days existed in the first two IST days once a video was 2 days old. Analytics lags 2-3 days, so a new Short often had only its publish day and showed a partial 48-hour figure that benchmarked as a miss, while metrics/videos.json (agents-sync.ts) waits for day two. Now one pure function views48Of in studio-calc.ts waits for the second day too. Test workers/tests/dashboard-views48.test.ts.",
+      "files": [
+        "apps/dashboard/src/lib/studio-calc.ts",
+        "apps/dashboard/src/lib/studio.db.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-09",
+      "status": "fixed"
     }
   ]
 }
