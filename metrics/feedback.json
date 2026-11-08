@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 3,
+  "open": 0,
   "notes": [
     {
       "id": "cmw31ex100001l809z2cs7b7q",
       "kind": "choice",
       "area": null,
       "text": "I loved the way of animation done.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "noted: Noted as your taste: that Short was a 'pick-one' shape with things that turn into each other (the bonus becoming a paycheck); pick-one is a trial shape and needs one more Short at the median to become a regular.",
       "at": "2026-11-05T04:20:18.789Z",
       "video": {
         "id": "v-20261105-01",
@@ -26,8 +26,8 @@
       "kind": "improve",
       "area": "other",
       "text": "Video length is very short could be little more like 30 atleast.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "needs owner: That Short (27 s) was in the variant system's 20-27 s length test, and so far the data favours it: 20-27 s Shorts have a median of 908 views at 48 h vs 133 for 28-35 s (n 5 vs 9). Lengths are owner-only (config/arms.json); if you still want 30 s at least, the steps are on the Notifications page.",
       "at": "2026-11-05T04:17:08.426Z",
       "video": {
         "id": "v-20261105-06",
@@ -45,8 +45,8 @@
       "kind": "wrong",
       "area": null,
       "text": "The billion and million is shown in numbers which is wrong . Also in tittle same mistake. People would see million and billion in words not in numbers.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: A round million or billion now shows in words everywhere (titles, descriptions, on screen): '$10 billion', '$1 million', not '$10,000,000,000'; the number check rejects a title or description with 7+ digits, so it can't come back.: (1fc1de6)",
       "at": "2026-11-05T04:13:44.862Z",
       "video": {
         "id": "v-20261105-07",
