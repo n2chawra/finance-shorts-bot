@@ -1,0 +1,426 @@
+{
+  "id": "v-20261109-01",
+  "createdAt": "2026-11-08T22:01:46.458932+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "How a bank earns on the gap between what it pays a saver and what it charges a borrower",
+    "category": "bank",
+    "reach": "global",
+    "feed_id": "2026-11-09-your-bank-earns-on-your-balance"
+  },
+  "title": "Your bank pays you almost nothing. Here's why 🏦",
+  "description": "Does your bank really keep your money for free? Follow one saver's deposit to a borrower, and see what JPMorgan earned on the gap in 2025.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#HowTheyMakeMoney",
+    "#Banking",
+    "#Money"
+  ],
+  "hookStyle": "secret",
+  "cta": "Did you know your bank did this? Comment",
+  "seed": 40917,
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 104,
+    "look": {
+      "stage": "street",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "draw"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "20-27",
+      "topic": "big_money",
+      "hook": "secret",
+      "title": "plain",
+      "style": "shot",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Your money, held for free? Watch this.",
+        "start": 0.3,
+        "seconds": 2.42,
+        "window": 2.9,
+        "fill": 0.834
+      },
+      {
+        "scene": "save",
+        "text": "Rohan's savings earn him $50 a year from his bank.",
+        "start": 3.2,
+        "seconds": 3.31,
+        "window": 3.67,
+        "fill": 0.902
+      },
+      {
+        "scene": "lend",
+        "text": "His bank lends that money to Priya, who pays $700.",
+        "start": 6.87,
+        "seconds": 3.93,
+        "window": 4.47,
+        "fill": 0.879
+      },
+      {
+        "scene": "gap",
+        "text": "So the bank keeps the difference. But that's only one account.",
+        "start": 11.33,
+        "seconds": 3.56,
+        "window": 3.9,
+        "fill": 0.913
+      },
+      {
+        "scene": "jpm",
+        "text": "And JPMorgan's whole gap last year? Look at this.",
+        "start": 15.23,
+        "seconds": 3.19,
+        "window": 3.73,
+        "fill": 0.855
+      },
+      {
+        "scene": "turn",
+        "text": "Every single day, that gap brings the bank this much money.",
+        "start": 18.97,
+        "seconds": 3.5,
+        "window": 3.9,
+        "fill": 0.897
+      },
+      {
+        "scene": "payoff",
+        "text": "So was your money ever free? It was rented out.",
+        "start": 22.87,
+        "seconds": 2.78,
+        "window": 3.17,
+        "fill": 0.877
+      }
+    ]
+  },
+  "durationSec": 26,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1,
+    "lufs": -14.8,
+    "music_under_voice_db": 22.7
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "ending-beats-act-and-vary": "on",
+    "you-in-the-core-story": "off"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "26 figures computed from inputs; 20 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review (third version): sole fact JPM 2025 NII $95,443M confirmed on the 10-K income statement (sec.gov). New turn 'Every single day, that gap brings the bank this much money' shows $261.5M (A day) = $95.44B / 365 from maths day citing fact 1: a true daily average of 2025 NII; jpm headline still shows $95.44B as 'Interest in, minus interest paid out, one year'. Hook 'Your money, held for free?' and payoff 'It was rented out' are fair simplifications. Unsupported profit comparison is gone. Realistic illustrative rates, no advice, disclaimer ends description. Notes: $261.5M is an average (could be 'on average'); 'keeps the difference' ignores costs/defaults; description lacks licensed-adviser line."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes (stills every 1.5 s): hook question big with Rohan, gap beat medium and clear at 13.5 s, turn reads on mute (95.44B a year -> 261.5M a day, sourced), payoff inside frame with disclaimer, thumbnail has Rohan, piggy, both chips and RENTED OUT and differs from the last 5; minor: 15.0 s zoom-through crops the bag/labels for a moment, 95.44B label brushes the shelf at 19.5-22.5 s."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:41:38.083554+00:00",
+      "finishedAt": "2026-11-08T21:41:38.083554+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:42:22.362101+00:00",
+      "finishedAt": "2026-11-08T21:42:22.362101+00:00",
+      "notes": [
+        "a script with sourced facts needs a headline or board beat, which shows where they come from",
+        "2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "beat 'hook' opens like a line in one of the last scripts ('you think your'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:43:09.017324+00:00",
+      "finishedAt": "2026-11-08T21:43:09.017324+00:00",
+      "notes": [
+        "beat 'jpm'.params.label contains a typed number; use a placeholder: 'The gap in 2025'",
+        "0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:43:31.422678+00:00",
+      "finishedAt": "2026-11-08T21:43:31.422678+00:00",
+      "notes": [
+        "beat 'jpm'.say contains a typed number; use a placeholder: 'So how big is that gap at JPMorgan, the bank behind Chase? {fact1} in 2025.'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:43:36.623522+00:00",
+      "finishedAt": "2026-11-08T21:43:36.623522+00:00",
+      "notes": [
+        "19 figures computed from inputs; 13 cross-checked against closed-form formulas.",
+        "warning: beat 'jpm' runs 7.4 s with 4.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:43:59.667767+00:00",
+      "finishedAt": "2026-11-08T21:43:59.667767+00:00",
+      "notes": [
+        "23 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:46:56.988495+00:00",
+      "finishedAt": "2026-11-08T21:46:56.988495+00:00",
+      "notes": [
+        "23 figures computed from inputs; 17 cross-checked against closed-form formulas.",
+        "beats average 9 words: explain in full sentences (10+ words a beat, \"because… so… which means…\"), not one-liners"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:48:39.156652+00:00",
+      "finishedAt": "2026-11-08T21:48:39.156652+00:00",
+      "notes": [
+        "beat 'jpm'.params.label contains a typed number; use a placeholder: 'Interest gap in 2025'",
+        "the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:48:47.168417+00:00",
+      "finishedAt": "2026-11-08T21:48:47.168417+00:00",
+      "notes": [
+        "23 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:49:07.264393+00:00",
+      "finishedAt": "2026-11-08T21:49:07.264393+00:00",
+      "notes": [
+        "beat 'jpm'.events.made: no word 'make' in this beat's spoken line"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:49:13.488145+00:00",
+      "finishedAt": "2026-11-08T21:49:13.488145+00:00",
+      "notes": [
+        "23 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:50:35.198965+00:00",
+      "finishedAt": "2026-11-08T21:50:35.198965+00:00",
+      "notes": [
+        "Facts confirmed on SEC pages: JPM 2025 NII $95,443M (10-K income statement, fetched via curl: interest income 193,341 - expense 97,898), FY2025 net income $57.0B (4Q25 8-K release headline). Verify list met: 0.5%/7% are an unnamed bank's illustrative rates, JPM shown separately as 'interest in, minus interest paid out' (the gap, not one account); turn line true (95.4B > 57.0B). Realistic US rates, no advice, disclaimer ends description. Notes: 'keeps the difference' simplifies away costs and defaults; description lacks the profile's licensed-adviser line."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:50:47.007581+00:00",
+      "finishedAt": "2026-11-08T21:51:26.573459+00:00",
+      "notes": [
+        "text 'Data: JPMorgan Chase 2025 Form 10-K · JPMorgan Chase 4Q25 ea' at 19.0 s runs outside the frame",
+        "3 of 7 stills are mostly empty background (at 15 s, 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:52:28.295663+00:00",
+      "finishedAt": "2026-11-08T21:52:28.295663+00:00",
+      "notes": [
+        "22 figures computed from inputs; 16 cross-checked against closed-form formulas.",
+        "beats average 10 words: explain in full sentences (10+ words a beat, \"because… so… which means…\"), not one-liners"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:52:42.274709+00:00",
+      "finishedAt": "2026-11-08T21:52:42.274709+00:00",
+      "notes": [
+        "22 figures computed from inputs; 16 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:53:14.664172+00:00",
+      "finishedAt": "2026-11-08T21:53:14.664172+00:00",
+      "notes": [
+        "Re-review after edit: sole fact JPM 2025 NII $95,443M confirmed on the 10-K income statement (sec.gov, interest income 193,341 - expense 97,898). New jpm line 'JPMorgan's whole gap? $95.44B last year' matches NII (headline: interest in minus interest paid out), 2025 still the latest year. Turn line 'more than the bank's whole profit for that year' is true: FY2025 net income $57.0B per the 4Q25 8-K on sec.gov, though that source is no longer in facts and no profit figure is shown. 0.5%/7% realistic illustrative rates for an unnamed bank, no advice, disclaimer ends description. Notes: 'keeps the difference' ignores costs and defaults; description lacks licensed-adviser line."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:52:57.322053+00:00",
+      "finishedAt": "2026-11-08T21:53:23.142446+00:00",
+      "notes": [
+        "text 'WHOLE PROFIT' at 23.7 s is 42.3 px, below the 44 px minimum",
+        "2 of 7 stills are mostly empty background (at 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+        "the Short runs 28.9 s but its assigned length (arms.length) is 20-27 s: cut or add a beat",
+        "warning: beat 'jpm' runs 5.9 s with 3.7 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:53:49.275872+00:00",
+      "finishedAt": "2026-11-08T21:53:49.275872+00:00",
+      "notes": [
+        "22 figures computed from inputs; 16 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:53:58.984238+00:00",
+      "finishedAt": "2026-11-08T21:54:21.684740+00:00",
+      "notes": [
+        "27 s, ember/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:55:07.206305+00:00",
+      "finishedAt": "2026-11-08T21:55:07.206305+00:00",
+      "notes": [
+        "[script] turn 19.5-22.9s (Turn component): the 'more than the bank's whole profit' claim has no figure on screen - params give smallLabel 'Profit' but no 'small' value, so the profit column is unlabelled and on mute the comparison says nothing; the profit is also not a sourced fact. Add JPMorgan's 2025 net income to facts and pass it as 'small'.",
+        "[script] thumbnail (turn, sec 2.0): an empty office with one tall gold bar and a money bag - no figure ({jpm_total} not drawn), no Rohan (who: rohan, but the turn beat has no actors), header blurred, lower half bare floor. Take it from a beat with the cast and the money, e.g. payoff or lend, with the figure drawn.",
+        "[script] gap 15.0s: the close camera on the gap bag crops the balance scale off both edges, the 'The bank' label sits on the scale base under the bag, and the 'One account' passbook (x 0.82) is out of frame when the line says 'one account'. Use a medium shot or move the passbook in.",
+        "[scene] Payoff 25.0-26.7s: the piggy and Priya's car run off the right edge; the PAID BY PRIYA / PAID TO ROHAN chips sit on top of the piggy. Turn 20.0s: the $95.44B figure is drawn over the left building's lit windows.",
+        "[script] hook 0-3s: 'Think your bank keeps it free?' is unclear (keeps what free?) and Rohan stands small at the bottom-left edge; say 'You think your bank holds your money for free? It doesn't.' and bring Rohan in big."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:56:09.481903+00:00",
+      "finishedAt": "2026-11-08T21:56:09.481903+00:00",
+      "notes": [
+        "26 figures computed from inputs; 20 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-08T21:56:33.025709+00:00",
+      "finishedAt": "2026-11-08T21:56:56.719337+00:00",
+      "notes": [
+        "2 of 7 stills are mostly empty background (at 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+        "the Short runs 28.1 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:57:29.588169+00:00",
+      "finishedAt": "2026-11-08T21:57:51.332100+00:00",
+      "notes": [
+        "26 s, ember/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:58:15.904531+00:00",
+      "finishedAt": "2026-11-08T21:58:15.904531+00:00",
+      "notes": [
+        "Re-review (third version): sole fact JPM 2025 NII $95,443M confirmed on the 10-K income statement (sec.gov). New turn 'Every single day, that gap brings the bank this much money' shows $261.5M (A day) = $95.44B / 365 from maths day citing fact 1: a true daily average of 2025 NII; jpm headline still shows $95.44B as 'Interest in, minus interest paid out, one year'. Hook 'Your money, held for free?' and payoff 'It was rented out' are fair simplifications. Unsupported profit comparison is gone. Realistic illustrative rates, no advice, disclaimer ends description. Notes: $261.5M is an average (could be 'on average'); 'keeps the difference' ignores costs/defaults; description lacks licensed-adviser line."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:59:10.879019+00:00",
+      "finishedAt": "2026-11-08T21:59:10.879019+00:00",
+      "notes": [
+        "Re-review after fixes (stills every 1.5 s): hook question big with Rohan, gap beat medium and clear at 13.5 s, turn reads on mute (95.44B a year -> 261.5M a day, sourced), payoff inside frame with disclaimer, thumbnail has Rohan, piggy, both chips and RENTED OUT and differs from the last 5; minor: 15.0 s zoom-through crops the bag/labels for a moment, 95.44B label brushes the shelf at 19.5-22.5 s."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-08T21:59:32.347263+00:00",
+      "finishedAt": "2026-11-08T22:01:13.953982+00:00",
+      "notes": [
+        "26 s, ember/synthwave, peak -1.0 dB, mean -16.1 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-08T22:01:46.459013+00:00",
+      "finishedAt": "2026-11-08T22:01:46.459013+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261109-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261109-01"
+  }
+}

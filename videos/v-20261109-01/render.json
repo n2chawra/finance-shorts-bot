@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 40917,
+  "duration_sec": 26,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 104,
+    "look": {
+      "stage": "street",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Your money, held for free? Watch this.",
+        "start": 0.3,
+        "seconds": 2.42,
+        "window": 2.9,
+        "fill": 0.834
+      },
+      {
+        "scene": "save",
+        "text": "Rohan's savings earn him $50 a year from his bank.",
+        "start": 3.2,
+        "seconds": 3.31,
+        "window": 3.67,
+        "fill": 0.902
+      },
+      {
+        "scene": "lend",
+        "text": "His bank lends that money to Priya, who pays $700.",
+        "start": 6.87,
+        "seconds": 3.93,
+        "window": 4.47,
+        "fill": 0.879
+      },
+      {
+        "scene": "gap",
+        "text": "So the bank keeps the difference. But that's only one account.",
+        "start": 11.33,
+        "seconds": 3.56,
+        "window": 3.9,
+        "fill": 0.913
+      },
+      {
+        "scene": "jpm",
+        "text": "And JPMorgan's whole gap last year? Look at this.",
+        "start": 15.23,
+        "seconds": 3.19,
+        "window": 3.73,
+        "fill": 0.855
+      },
+      {
+        "scene": "turn",
+        "text": "Every single day, that gap brings the bank this much money.",
+        "start": 18.97,
+        "seconds": 3.5,
+        "window": 3.9,
+        "fill": 0.897
+      },
+      {
+        "scene": "payoff",
+        "text": "So was your money ever free? It was rented out.",
+        "start": 22.87,
+        "seconds": 2.78,
+        "window": 3.17,
+        "fill": 0.877
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "ending-beats-act-and-vary": "on",
+    "you-in-the-core-story": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1,
+    "lufs": -14.8,
+    "music_under_voice_db": 22.7
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 9.716,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

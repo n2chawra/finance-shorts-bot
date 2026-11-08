@@ -1,0 +1,730 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 40917,
+ "story": "how_they_make_money",
+ "shape": "versus",
+ "currency": "USD",
+ "feed_id": "2026-11-09-your-bank-earns-on-your-balance",
+ "narrator": "am_michael",
+ "style": {
+  "palette": "ember",
+  "genre": "synthwave",
+  "key": "A",
+  "bpm": 104,
+  "look": {
+   "stage": "street",
+   "header": "ribbon",
+   "holder": "sign",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "secret",
+  "title": "plain",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Did you know your bank did this? Comment",
+ "facts": [
+  {
+   "label": "JPMorgan Chase net interest income in 2025",
+   "value": 95443,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "JPMorgan Chase 2025 Form 10-K",
+   "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm"
+  }
+ ],
+ "maths": [
+  {
+   "name": "save",
+   "kind": "fee_take",
+   "amount": 10000,
+   "fee_pct": 0.5,
+   "per_year": 1,
+   "years": 1
+  },
+  {
+   "name": "loan",
+   "kind": "fee_take",
+   "amount": 10000,
+   "fee_pct": 7,
+   "per_year": 1,
+   "years": 1
+  },
+  {
+   "name": "gap",
+   "kind": "compare",
+   "a": "loan.per_period",
+   "b": "save.per_period"
+  },
+  {
+   "name": "jpm",
+   "kind": "share",
+   "total": 95443000000,
+   "parts": 1,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "day",
+   "kind": "share",
+   "total": 95443000000,
+   "parts": 365,
+   "facts": {
+    "total": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "payoff",
+  "sec": 3.4,
+  "who": "rohan",
+  "angle": "number",
+  "words": "Your bank's *secret*",
+  "figure": "{jpm_total}",
+  "tag": "The gap"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Your money, held for free? Watch this.",
+   "events": {
+    "bank": {
+     "word": "held"
+    },
+    "free": {
+     "word": "free"
+    },
+    "watch": {
+     "word": "Watch"
+    },
+    "goes": {
+     "word": "this"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "bank"
+    },
+    {
+     "kind": "boom",
+     "at": "free"
+    },
+    {
+     "kind": "riser",
+     "at": "watch"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Your money, held for free?",
+    "cross": "Not free",
+    "cash": "{save_amount}",
+    "set": "bank",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "happy"
+       },
+       {
+        "at": "free",
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "watch",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "save",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Rohan's savings earn him {save_per_period} a year from his bank.",
+   "events": {
+    "saves": {
+     "word": "savings"
+    },
+    "pays": {
+     "word": "earn"
+    },
+    "year": {
+     "word": "year"
+    },
+    "bank": {
+     "word": "bank"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "saves"
+    },
+    {
+     "kind": "whoosh",
+     "at": "bank"
+    },
+    {
+     "kind": "tick",
+     "at": "year"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "blue"
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.2,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "point",
+        "expression": "happy"
+       },
+       {
+        "at": "year",
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "savings",
+      "prop": "piggy",
+      "x": 0.45,
+      "y": 0.12,
+      "size": 0.16,
+      "label": "Rohan's savings"
+     },
+     {
+      "id": "bank",
+      "prop": "bankhall",
+      "x": 0.74,
+      "size": 0.32,
+      "label": "His bank"
+     },
+     {
+      "id": "pays",
+      "prop": "tinycoin",
+      "x": 0.45,
+      "y": 0.1,
+      "size": 0.12,
+      "hidden": true,
+      "label": "A year"
+     }
+    ],
+    "actions": [
+     {
+      "at": "saves",
+      "do": "tag",
+      "target": "savings",
+      "text": "{save_amount}"
+     },
+     {
+      "at": "pays",
+      "do": "enter",
+      "target": "pays",
+      "from": "bank"
+     },
+     {
+      "at": "year",
+      "do": "tag",
+      "target": "pays",
+      "text": "{save_per_period}"
+     },
+     {
+      "at": "bank",
+      "do": "flow",
+      "target": "savings",
+      "to": "bank",
+      "n": 6,
+      "text": "{save_amount}"
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "savings"
+     }
+    ]
+   }
+  },
+  {
+   "id": "lend",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "His bank lends that money to Priya, who pays {loan_per_period}.",
+   "events": {
+    "lends": {
+     "word": "lends"
+    },
+    "priya": {
+     "word": "Priya"
+    },
+    "pays": {
+     "word": "pays"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "lends"
+    },
+    {
+     "kind": "pop",
+     "at": "car"
+    },
+    {
+     "kind": "kaching",
+     "at": "pays"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "gold",
+     "horizon": [
+      {
+       "prop": "banktower",
+       "x": 0.86,
+       "size": 0.16
+      }
+     ]
+    },
+    "actors": [
+     {
+      "who": "priya",
+      "spot": 0.78,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "wave",
+        "expression": "happy"
+       },
+       {
+        "at": "pays",
+        "pose": "shrug",
+        "expression": "sad"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "bank",
+      "prop": "bankhall",
+      "x": 0.2,
+      "size": 0.26,
+      "state": "lit"
+     },
+     {
+      "id": "car",
+      "prop": "newcar",
+      "x": 0.52,
+      "size": 0.2,
+      "hidden": true,
+      "label": "Priya's car"
+     },
+     {
+      "id": "loan",
+      "prop": "loanpaper",
+      "x": 0.52,
+      "y": 0.26,
+      "size": 0.15,
+      "hidden": true,
+      "label": "She pays"
+     }
+    ],
+    "actions": [
+     {
+      "at": "lends",
+      "do": "flow",
+      "target": "bank",
+      "to": "priya",
+      "n": 6,
+      "text": "{save_amount}"
+     },
+     {
+      "at": "priya",
+      "do": "enter",
+      "target": "car",
+      "how": "drop"
+     },
+     {
+      "at": "pays",
+      "do": "enter",
+      "target": "loan",
+      "from": "car"
+     },
+     {
+      "at": "pays",
+      "do": "tag",
+      "target": "loan",
+      "text": "{loan_per_period}"
+     },
+     {
+      "at": "pays",
+      "do": "grow",
+      "target": "loan",
+      "scale": 1.25
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "pays",
+      "size": "close",
+      "on": "loan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "gap",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "So the bank keeps the difference. But that's only one account.",
+   "events": {
+    "bank": {
+     "word": "bank"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "diff": {
+     "word": "difference"
+    },
+    "one": {
+     "word": "one"
+    },
+    "account": {
+     "word": "account"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "keeps"
+    },
+    {
+     "kind": "boom",
+     "at": "gap"
+    },
+    {
+     "kind": "tick",
+     "at": "account"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "studio",
+     "tint": "green"
+    },
+    "items": [
+     {
+      "id": "bank",
+      "prop": "balancescale",
+      "x": 0.5,
+      "size": 0.3,
+      "label": "The bank"
+     },
+     {
+      "id": "gap",
+      "prop": "gapbag",
+      "x": 0.5,
+      "y": 0.0,
+      "size": 0.16,
+      "hidden": true,
+      "label": "The difference"
+     },
+     {
+      "id": "account",
+      "prop": "passbook",
+      "x": 0.74,
+      "y": 0.2,
+      "size": 0.13,
+      "hidden": true,
+      "label": "One account"
+     }
+    ],
+    "actions": [
+     {
+      "at": "bank",
+      "do": "state",
+      "target": "bank",
+      "state": "tilt"
+     },
+     {
+      "at": "keeps",
+      "do": "enter",
+      "target": "gap",
+      "from": "bank"
+     },
+     {
+      "at": "diff",
+      "do": "tag",
+      "target": "gap",
+      "text": "{gap_diff}"
+     },
+     {
+      "at": "diff",
+      "do": "grow",
+      "target": "gap",
+      "scale": 1.35
+     },
+     {
+      "at": "account",
+      "do": "enter",
+      "target": "account",
+      "how": "drop"
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "jpm",
+   "scene": "headline",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "And JPMorgan's whole gap last year? Look at this.",
+   "events": {
+    "jpm": {
+     "word": "JPMorgan's"
+    },
+    "gap": {
+     "word": "gap"
+    },
+    "year": {
+     "word": "year"
+    },
+    "made": {
+     "word": "Look"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "jpm"
+    },
+    {
+     "kind": "tick",
+     "at": "year"
+    },
+    {
+     "kind": "boom",
+     "at": "made"
+    }
+   ],
+   "params": {
+    "kicker": "JPMORGAN CHASE",
+    "title": "Interest in, minus interest paid out",
+    "figure": "{jpm_total}",
+    "figureAt": "made",
+    "label": "Interest gap, one year"
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Every single day, that gap brings the bank this much money.",
+   "events": {
+    "every": {
+     "word": "Every"
+    },
+    "day": {
+     "word": "day"
+    },
+    "brings": {
+     "word": "brings"
+    },
+    "money": {
+     "word": "money"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "every"
+    },
+    {
+     "kind": "pop",
+     "at": "day"
+    },
+    {
+     "kind": "boom",
+     "at": "money"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Every single day",
+    "year": "{jpm_total}",
+    "yearLabel": "A year",
+    "day": "{day_per_part}",
+    "dayLabel": "A day",
+    "set": "office",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "money",
+      "size": "close",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "So was your money ever free? It was rented out.",
+   "events": {
+    "money": {
+     "word": "money"
+    },
+    "never": {
+     "word": "ever"
+    },
+    "free": {
+     "word": "free"
+    },
+    "rented": {
+     "word": "rented"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "money"
+    },
+    {
+     "kind": "tick",
+     "at": "free"
+    },
+    {
+     "kind": "boom",
+     "at": "rented"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "stamp": "Rented out",
+    "cash": "{save_amount}",
+    "earn": "{save_per_period}",
+    "earnLabel": "Paid to Rohan",
+    "rent": "{loan_per_period}",
+    "rentLabel": "Paid by Priya",
+    "set": "flat",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "rented",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     }
+    ]
+   }
+  }
+ ]
+}
