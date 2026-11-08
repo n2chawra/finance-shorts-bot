@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "day": "2026-11-09",
+  "startedAt": "2026-11-08T17:16:15Z",
+  "finishedAt": "2026-11-08T17:23:51Z",
+  "summary": "Hooks and retention night. Found that every routine run on 6-8 Nov hit the usage limit (no Shorts since 5 Nov, backlog 0) and told the owner; refreshed four topics' stale facts and added two bank/payments topics, so the feed has 5 usable big-money topics instead of 0; 3 proposals.",
+  "decision": "acted",
+  "why": "state showed no usable core topic (stale_facts blocked Delta, Costco, Starbucks, Magic Johnson); how_they_make_money is 9.77x the median on 45 Shorts; the owner's digits-in-title note matches v-20261105-07 losing the click at 76% viewed.",
+  "findings": [
+    {
+      "title": "No videos since 5 Nov: usage limit",
+      "detail": "Main, spare, improver and dashboard runs failed with 'usage limit reached' on 6-8 Nov; four agents and the 03:07 video run share one 5-hour window.",
+      "link": "improvement/notifications/research.json"
+    },
+    {
+      "title": "Costco FY2026: fees $5.9B of $9.2B profit",
+      "detail": "Replaced the FY2025 facts that failed fact review.",
+      "link": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
+    },
+    {
+      "title": "Amex paid Delta $8.2B in 2025, more than its $6.2B pre-tax profit",
+      "detail": "Delta topic now on 2025 figures from the SEC 8-K.",
+      "link": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000008/deltaairlinesannouncesdece.htm"
+    },
+    {
+      "title": "Fastest on-topic Short: billionaire spending countdown, 2.63M in days",
+      "detail": "A running counter from hook to payoff; proposal running-counter-rehook.",
+      "link": "https://www.youtube.com/shorts/siIMLJRNM0c"
+    },
+    {
+      "title": "Visa FY2026: $23.5B profit on 281.3B swipes",
+      "detail": "New topic visa-never-lends-you-a-cent.",
+      "link": "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Topic feed: 4 refreshed, 2 added",
+      "detail": "Costco, Delta, Magic Johnson, Starbucks facts updated or marked latest; JPMorgan bank and Visa topics added.",
+      "branch": "agent/research/2026-11-09"
+    },
+    {
+      "title": "3 proposals",
+      "detail": "big-numbers-in-words (adopt), running-counter-rehook (experiment), powers-maths-kind (template).",
+      "branch": "agent/research/2026-11-09"
+    }
+  ],
+  "nextCheck": "2026-11-10",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-09.md"
+    }
+  ]
+}

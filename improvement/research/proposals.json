@@ -849,6 +849,66 @@
       "status": "testing",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "big-numbers-in-words",
+      "date": "2026-11-09",
+      "area": "text",
+      "title": "Millions and billions in words, in titles and on screen",
+      "change": "Any money figure of 1 million or more is written short-scale everywhere a viewer reads it: '$10 billion', '$1 million', '$23.5B' on screen (Money's K/M/B form, renderer/engine/formatting.py, remotion/src/fmt), never '$10,000,000,000'. check-plan rejects a title or description with a run of 7+ digits (with or without commas), and the slam/figure components use the short form for values >= 1,000,000. Spoken numbers already come from placeholders and stay as words.",
+      "evidence": [
+        "metrics/feedback.json: owner note on v-20261105-07 ('The billion and million is shown in numbers which is wrong. Also in title same mistake. People would see million and billion in words')",
+        "v-20261105-07 title 'Spend $1,000,000 a day. A $10,000,000,000 fortune still grows': 32 views despite 76% viewed",
+        "market.json 7 Nov: the 2.6M-view spending Short and 'What Can You Buy With $1 to $1 QUADRILLION?' (2.64M) write amounts as words"
+      ],
+      "expectedEffect": "Titles read at a glance in the feed; removes an owner-reported mistake",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "Low: formatting only; numbers still computed by code",
+      "metric": "views48h",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "running-counter-rehook",
+      "date": "2026-11-09",
+      "area": "hook",
+      "title": "A counter that keeps running from the hook to the payoff",
+      "change": "Behind a flag, for money_scale and billionaire_question Shorts whose maths is a countdown or a climb (days survived, money left, money made per second): one big counter stays on screen from the hook to the payoff (top third, inside the safe zone), ticking on every beat and slamming at each turn, so every beat re-asks the hook's question. The counter's values come from the script's maths (one figure per beat); the scenes keep running under it.",
+      "evidence": [
+        "market.json 7 Nov: 'How Long Would Billionaires Survive Spending ₹1 Lakh Every Day?' 2.63M views, 38 s, 29,863 views an hour (fastest on-topic Short this week)",
+        "formats.json money_scale: 'What Can You Buy With $1 to $1 QUADRILLION?' 2.64M (a climbing figure throughout)",
+        "our v-20261105-07 (same spending idea, a counter only in some beats): 76% viewed, our best retention since 23 Oct"
+      ],
+      "expectedEffect": "Higher % viewed and fewer swipes after the hook on scale stories",
+      "confidence": "medium",
+      "effort": "M",
+      "risk": "A corner counter can crowd the frame; keep it to one element and clear of the right-edge buttons",
+      "metric": "avgViewPct",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
+    },
+    {
+      "id": "powers-maths-kind",
+      "date": "2026-11-09",
+      "area": "template",
+      "title": "A 'powers' calculation for things that multiply (pyramid schemes, doubling)",
+      "change": "Add a maths kind `powers` (inputs: start, factor, steps, optional cap from a fact) to renderer/models/maths.py and the number check: the total at each step, and the first step where it passes the cap. Unlocks 'why every pyramid scheme must collapse' (6 recruits each: past the world's population, World Bank 2025 8,215,424,893, by step 13), 'a penny doubled for 30 days' and 'one rumour shared by 3 people'. Add a recipe to renderer/templates/short_story/README.md with a checked example.",
+      "evidence": [
+        "market.json 7 Nov: 'Pyramid Scheme Explained' 1.89M views, 80 s, 23,228 views an hour",
+        "World Bank SP.POP.TOTL 2025: https://api.worldbank.org/v2/country/WLD/indicator/SP.POP.TOTL?format=json&date=2025",
+        "no existing kind computes repeated multiplication (KINDS in renderer/models/maths.py)"
+      ],
+      "expectedEffect": "Opens a trap/money_scale family with million-view demand that we can't tell today",
+      "confidence": "medium",
+      "effort": "M",
+      "risk": "Low: a new pure function with tests; topics stay generic (no company accused)",
+      "metric": "views48h",
+      "status": "new",
+      "route": "template",
+      "priority": "normal"
     }
   ]
 }
