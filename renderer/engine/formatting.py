@@ -2,7 +2,7 @@
 
 Rupees keep Indian grouping and lakh/crore (₹15,00,000, ₹94.9 L, ₹2.30 Cr; a lakh crore and up as grouped
 crore, ₹1,00,000 Cr). Dollars, pounds and euros use international grouping and K/M/B/T ($1,500,000 in
-full, $1.5M short, $1.5 million long, $1.00T and $1 trillion from a trillion). A
+full ($10 billion when the words are exact), $1.5M short, $1.5 million long, $1.00T and $1 trillion from a trillion). A
 script names its `currency`; scripts from before the channel went global (2026-10-18) have none and
 are rupee scripts.
 """
@@ -115,8 +115,20 @@ def _long_western(x: float, sym: str) -> str:
 
 @_signed
 def _full_western(x: float, sym: str) -> str:
-    """'$1,500,000'."""
-    return sym + group_western(int(round(x)))
+    """'$1,500,000' below a million; from a million up, an amount the words say exactly is shown in
+    words: '$10 billion', '$1 million', '$2.35 billion', while '$1,234,567' stays in digits (owner,
+    2026-11-05: "People would see million and billion in words not in numbers", on a title and
+    figures that read '$10,000,000,000')."""
+    n = int(round(x))
+    if n >= 1_000_000:
+        words = _long_western(n, sym)
+        num, _, unit = words[len(sym):].partition(" ")
+        if unit in _WORD_SCALE and round(float(num) * _WORD_SCALE[unit]) == n:
+            return words
+    return sym + group_western(n)
+
+
+_WORD_SCALE = {"million": 10**6, "billion": 10**9, "trillion": 10**12}
 
 
 def axis_label_western(v: float) -> str:

@@ -117,9 +117,21 @@ export function groupWestern(n: number): string {
   return sign + String(Math.abs(Math.trunc(n))).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-/** Full amount: "$1,500,000" (rupees: "₹15,00,000"). */
-export const money = signed((x: number, cur: Currency): string =>
-  cur === "INR" ? rupees(x) : `${CURRENCY_SYMBOL[cur]}${groupWestern(roundEven(x))}`);
+const WORD_SCALE: Record<string, number> = { million: 1e6, billion: 1e9, trillion: 1e12 };
+
+/** Full amount: "$1,500,000" (rupees: "₹15,00,000"); from a million up an amount the words say
+ *  exactly is in words, "$10 billion", like Python's Money.full (owner, 2026-11-05). */
+export const money = signed((x: number, cur: Currency): string => {
+  if (cur === "INR") return rupees(x);
+  const n = roundEven(x);
+  if (n >= 1_000_000) {
+    const words = moneyLong(n, cur);
+    const [num = "", unit = ""] = words.slice(CURRENCY_SYMBOL[cur].length).split(" ");
+    const scale = WORD_SCALE[unit];
+    if (scale !== undefined && Math.round(parseFloat(num) * scale) === n) return words;
+  }
+  return `${CURRENCY_SYMBOL[cur]}${groupWestern(n)}`;
+});
 
 /** Short amount: "$2.50T", "$2.35B", "$1.5M", "$12,500" (rupees: "₹2.30 Cr", "₹94.9 L"). Never "1000.0M". */
 export const moneyShort = signed((x: number, cur: Currency): string => {
