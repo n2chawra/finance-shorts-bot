@@ -487,10 +487,14 @@
       "id": "smoke-load-flakes",
       "kind": "bug",
       "title": "Two more smoke tests flake under full-run load",
-      "detail": "'settings show an unsaved-changes bar' and 'undo on the resolve-all toast' each failed once in a full local run (different runs), then passed 12/12 alone. Likely a click before hydration, or two workers sharing the in-memory sample store. CI retries once. Next: capture the error on a failing run before changing anything.",
+      "detail": "'settings show an unsaved-changes bar' and 'undo on the resolve-all toast' each failed once in a full local run (different runs), then passed 12/12 alone. Likely a click before hydration, or two workers sharing the in-memory sample store. CI retries once. Next: capture the error on a failing run before changing anything. Cause found 2026-11-08: three route handlers recorded the PATCH before answering it, so a test could end (and close the page) while route.fulfill was still in flight, which throws 'Fetch response has been disposed'. They now record after fulfilling; 30/30 repeats and two full runs green.",
       "page": "settings",
       "found": "2026-11-03",
-      "status": "open"
+      "status": "done",
+      "done": "2026-11-08",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-08"
+      }
     },
     {
       "id": "analytics-hash-nav",
@@ -530,6 +534,28 @@
       "detail": "Exception-first layout: the sign-in alert, today's missed slots, a backlog running dry ('Nothing ready' from the posting plan) and open critical notifications, gathered in one short list above the stat cards, and nothing at all on a healthy day. The owner checks twice a day; today these sit in four places (banner, Queue, Calendar, bell).",
       "page": "overview",
       "found": "2026-11-04",
+      "status": "open"
+    },
+    {
+      "id": "runs-kind-and-empty-filter",
+      "kind": "bug",
+      "title": "Runs: long videos read as 'Video', and an empty Failed filter read as 'no runs at all'",
+      "detail": "Code review of runs/page.tsx. Long-video runs had the same 'Video' badge as Shorts (and the badge is hidden on phones, so template work wasn't named either); 'Failed' with no failures showed 'No runs here: runs appear about a minute after a routine commits'. Now the badge says Short / Long video / Template (named in the line on phones), Videos shipped splits Shorts and long, and each filter has its own empty message. Smoke test checked to fail without the fix.",
+      "page": "runs",
+      "found": "2026-11-08",
+      "status": "done",
+      "done": "2026-11-08",
+      "lastTouched": {
+        "apps/dashboard/src/app/runs/page.tsx": "2026-11-08"
+      }
+    },
+    {
+      "id": "smoke-stat-cards-load",
+      "kind": "bug",
+      "title": "'stat cards in a row share one height' failed once on phone under full-run load",
+      "detail": "Failed once in a full local run on 2026-11-08, passed 8/8 alone and in the next two full runs. It already polls for 10 s; if it fails again, capture the ragged heights it reports before changing anything.",
+      "page": "overview",
+      "found": "2026-11-08",
       "status": "open"
     }
   ]

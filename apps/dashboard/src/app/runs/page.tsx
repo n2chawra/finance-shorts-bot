@@ -8,8 +8,20 @@ import { Tracker } from "@/components/charts";
 import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, ResultBadge, Segmented, Stagger, Stat, VideoLink } from "@/components/ui";
 import { fmtDateTime, fmtDuration, fmtRelative, titleCase } from "@/lib/format";
 import { useRuns } from "@/lib/queries";
+import type { Run } from "@/lib/schemas";
 
 type Filter = "all" | "video" | "template_work" | "failed";
+
+/** What a run made: a Short, a long video or template work (long runs looked like Shorts here) */
+const kindLabel = (r: Run) => r.kind === "template_work" ? "Template" : r.format === "long" ? "Long video" : "Short";
+
+/** The empty list says why it is empty: "Failed" with none used to read as if no runs had happened at all */
+const EMPTY: Record<Filter, { title: string; body: string }> = {
+  all: { title: "No runs yet", body: "Runs appear about a minute after a routine commits." },
+  video: { title: "No video runs yet", body: "Video runs appear about a minute after a routine commits." },
+  template_work: { title: "No template work yet", body: "Runs that improve or add a template, instead of making a video, show here." },
+  failed: { title: "No failed runs", body: "Every run listed here passed." },
+};
 
 export default function RunsPage() {
   const { data, error, isLoading } = useRuns();
@@ -18,6 +30,7 @@ export default function RunsPage() {
   if (error || !data) return <ErrorNote error={error} />;
   const failed = data.filter((r) => r.status === "failed").length;
   const shipped = data.filter((r) => r.kind === "video" && r.status === "ok").length;
+  const shippedLong = data.filter((r) => r.kind === "video" && r.status === "ok" && r.format === "long").length;
   const avg = data.length ? data.reduce((a, r) => a + r.durationSec, 0) / data.length : 0;
   const rate = data.length ? Math.round(((data.length - failed) / data.length) * 100) : 0;
   const shown = data.filter((r) => filter === "all" ? true : filter === "failed" ? r.status === "failed" : r.kind === filter);
@@ -29,7 +42,7 @@ export default function RunsPage() {
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Stat label="Runs" icon={Workflow} value={String(data.length)} sub={data.length ? `since ${fmtDateTime(data[data.length - 1].startedAt)}` : undefined} />
         <Stat label="Success rate" icon={Gauge} value={`${rate}%`} sub={`${failed} failed`} />
-        <Stat label="Videos shipped" icon={CircleCheck} value={String(shipped)} />
+        <Stat label="Videos shipped" icon={CircleCheck} value={String(shipped)} sub={shippedLong ? `${shipped - shippedLong} Shorts · ${shippedLong} long` : undefined} />
         <Stat label="Avg duration" icon={Timer} value={fmtDuration(avg)} sub="first step to last" />
       </div>
 
@@ -37,7 +50,7 @@ export default function RunsPage() {
         <Card title="Recent runs" description={`Oldest to newest, last ${recent.length}`} className="mt-3">
           <Tracker height={28} items={recent.map((r) => ({
             key: r.id, tone: r.status === "ok" ? "good" : "critical",
-            tip: `${fmtDateTime(r.startedAt)} · ${r.kind === "video" ? "Video" : "Template work"} · ${r.status === "ok" ? "OK" : "Failed"}`,
+            tip: `${fmtDateTime(r.startedAt)} · ${r.kind === "video" ? kindLabel(r) : "Template work"} · ${r.status === "ok" ? "OK" : "Failed"}`,
           }))} />
         </Card>
       )}
@@ -48,7 +61,7 @@ export default function RunsPage() {
           options={[{ value: "all", label: "All" }, { value: "video", label: "Videos" }, { value: "template_work", label: "Templates" }, { value: "failed", label: "Failed" }]} />
       </div>
 
-      {shown.length === 0 ? <Card><Empty icon={Workflow} title="No runs here">Runs appear about a minute after a routine commits.</Empty></Card> : (
+      {shown.length === 0 ? <Card><Empty icon={filter === "failed" ? CircleCheck : Workflow} title={EMPTY[filter].title}>{EMPTY[filter].body}</Empty></Card> : (
         <Card flush>
           <Accordion.Root type="multiple">
             {shown.map((r) => (
@@ -60,10 +73,12 @@ export default function RunsPage() {
                       <div className="truncate text-[13px] font-medium">{r.title}</div>
                       <div className="mt-0.5 flex flex-wrap gap-x-2 text-xs text-muted">
                         <span>{fmtDateTime(r.startedAt)}</span><span aria-hidden>·</span><span>{fmtRelative(r.startedAt)}</span><span aria-hidden>·</span><span>{fmtDuration(r.durationSec)}</span>
+                        {/* the kind badge is hidden on phones; name a run that isn't a Short in the line instead */}
+                        {kindLabel(r) !== "Short" && <><span aria-hidden className="sm:hidden">·</span><span className="sm:hidden" data-testid="run-kind-inline">{kindLabel(r)}</span></>}
                       </div>
                       {r.error && <div className="mt-1 line-clamp-2 text-xs text-ink2">{r.error}</div>}
                     </div>
-                    <span className="hidden sm:inline"><Badge>{r.kind === "video" ? "Video" : "Template"}</Badge></span>
+                    <span className="hidden sm:inline"><Badge>{kindLabel(r)}</Badge></span>
                     <ResultBadge ok={r.status === "ok"} okLabel="OK" />
                     <ChevronDown aria-hidden className="size-4 shrink-0 text-muted transition-transform duration-200 group-data-[state=open]:rotate-180" />
                   </Accordion.Trigger>
