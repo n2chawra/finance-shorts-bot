@@ -1,0 +1,270 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:39:22.961148+00:00",
+    "finishedAt": "2026-11-09T21:39:22.961148+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:40:36.374814+00:00",
+    "finishedAt": "2026-11-09T21:40:36.374814+00:00",
+    "notes": [
+      "a script with sourced facts needs a headline or board beat, which shows where they come from",
+      "0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:40:47.046095+00:00",
+    "finishedAt": "2026-11-09T21:40:47.046095+00:00",
+    "notes": [
+      "beat 'turn': sfx kind must be one of pop, pop-high, whoosh, clink, ding, boom, fail, tick, beep, riser, kaching"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:40:49.740302+00:00",
+    "finishedAt": "2026-11-09T21:40:49.740302+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:44:31.291172+00:00",
+    "finishedAt": "2026-11-09T21:45:14.524630+00:00",
+    "notes": [
+      "text 'Data: Meridian Compensation Partners · Nov 2025' at 14.6 s runs outside the frame",
+      "3 of 7 stills are mostly empty background (at 5 s, 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+      "the Short runs 27.9 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:45:34.065484+00:00",
+    "finishedAt": "2026-11-09T21:45:34.065484+00:00",
+    "notes": [
+      "All 5 facts confirmed on the Meridian page (423,743,904 restricted shares, 12 equal tranches, $1T->$8.5T market cap goal, $400B EBITDA, over 75% approval on 6 Nov 2025) and in Tesla's DEF 14A of 19 Oct 2026 (12 x 35,311,992 shares, last tranche $8.5T, top EBITDA $400B, 1M bots and 1M robotaxis among the milestones). That proxy says no tranche is earned or vested, so the hook and the line 'boxes stay locked' are still current. Claims, tone and disclaimer are OK. Notes: an earned share also carries a $334.09 offset payment (not mentioned, and not misleading). The description lacks the profile's licensed-adviser line."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:45:48.346615+00:00",
+    "finishedAt": "2026-11-09T21:45:48.346615+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:46:13.712777+00:00",
+    "finishedAt": "2026-11-09T21:46:39.059956+00:00",
+    "notes": [
+      "3 of 7 stills are mostly empty background (at 5 s, 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:47:16.883196+00:00",
+    "finishedAt": "2026-11-09T21:47:39.418276+00:00",
+    "notes": [
+      "27 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:48:09.346624+00:00",
+    "finishedAt": "2026-11-09T21:48:09.346624+00:00",
+    "notes": [
+      "[script] 10.0s (beat 'target', build): the open lockbox (x 0.27, size 0.3) and the value meter (x 0.7, size 0.42) collide under the close camera on the meter: the thermometer sits on top of the box and the labels 'One box' and \"Tesla's value\" print on top of each other ('One kTesla's value'). Shrink/spread the items (e.g. box x 0.2 size 0.22, meter x 0.75 size 0.32) or frame the close shot so only the meter and flag are in it.",
+      "[script] 5.0s (beat 'boxes', build): the lockbox at x 0.72 size 0.26 runs off the right edge (half its body and padlock cut), and its 'Locked box' label is off-frame; the 'Shareholders voted' label floats under the big '12', so on mute it reads as '12 shareholders voted' instead of 12 locked boxes. Move the box inward (x ~0.62, smaller) so the multiplied 12 boxes and their label show in frame.",
+      "[scene] 20.0s (beat 'turn', custom Turn component, set 'vault'): a grey diagonal bar enters from the right edge and is cut off (also visible in the thumbnail); the '12 boxes still locked' count shows only 3 boxes. Minor, but check the vault set prop placement."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:48:35.192677+00:00",
+    "finishedAt": "2026-11-09T21:48:58.475409+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:49:12.474012+00:00",
+    "finishedAt": "2026-11-09T21:49:31.732545+00:00",
+    "notes": [
+      "27 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:49:48.839013+00:00",
+    "finishedAt": "2026-11-09T21:50:07.029184+00:00",
+    "notes": [
+      "27 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:50:22.279797+00:00",
+    "finishedAt": "2026-11-09T21:50:22.279797+00:00",
+    "notes": [
+      "Re-review after the length cuts. The hook ('was cash? It wasn't.'), robots, turn and payoff ('a giant bet') lines are still accurate, with no advice or imperative and the right tone. The fact values and URLs are unchanged (source label now 'Meridian'). All 5 are confirmed on the Meridian page and in Tesla's DEF 14A of 19 Oct 2026: 423,743,904 shares, 12 tranches, last tranche $8.5T, $400B EBITDA, over 75% approval. No tranche is earned or vested yet, so the story is current. The description ends with the disclaimer. Notes: the $334.09 per-share offset is not mentioned. The description lacks the profile's licensed-adviser line."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:50:43.796349+00:00",
+    "finishedAt": "2026-11-09T21:50:43.796349+00:00",
+    "notes": [
+      "[scene] 5.0s (beat 'boxes', build): the lockbox is still cut off by the right edge (about a quarter of its body; 'Locked box' label not visible) even at x 0.6 size 0.22. It draws centred near x 0.85 while the ballot at x 0.25 draws where asked, so the build scene's layout (likely the multiply/shake action or the wide camera framing) pushes it right. Script workaround: x ~0.45. 'The vote' label also floats far above the ballot rather than on/under it.",
+      "[script] 10.0s (beat 'target', build): the overlap is fixed, but the close shot on the meter now crops the open 'One box' off the left edge (lid and half the body gone) and the 'Big target' flag off the top edge. Use a medium shot on 'all' at 'target' (or keep the close shot but put box x ~0.3 and lower the flag, y ~0.3) so all three named things are whole in frame.",
+      "[scene] 20.0s (beat 'turn', custom Turn, set 'vault'): the flag no longer topples, but its cloth is clipped by the right edge; minor, nudge it inward."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:51:26.910228+00:00",
+    "finishedAt": "2026-11-09T21:51:26.910228+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:51:37.011812+00:00",
+    "finishedAt": "2026-11-09T21:52:00.181998+00:00",
+    "notes": [
+      "27 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:52:20.902383+00:00",
+    "finishedAt": "2026-11-09T21:52:39.478235+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 5 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:52:56.908853+00:00",
+    "finishedAt": "2026-11-09T21:53:15.175451+00:00",
+    "notes": [
+      "15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:53:29.514442+00:00",
+    "finishedAt": "2026-11-09T21:53:48.482508+00:00",
+    "notes": [
+      "27 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:54:08.734734+00:00",
+    "finishedAt": "2026-11-09T21:54:27.586983+00:00",
+    "notes": [
+      "27 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:54:52.760763+00:00",
+    "finishedAt": "2026-11-09T21:55:11.687864+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 5 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:55:33.683185+00:00",
+    "finishedAt": "2026-11-09T21:55:52.356062+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:56:12.872951+00:00",
+    "finishedAt": "2026-11-09T21:56:32.138624+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:56:53.565107+00:00",
+    "finishedAt": "2026-11-09T21:57:11.438330+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 5 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:57:26.469444+00:00",
+    "finishedAt": "2026-11-09T21:57:44.551237+00:00",
+    "notes": [
+      "27 s, night/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:58:06.876594+00:00",
+    "finishedAt": "2026-11-09T21:58:06.876594+00:00",
+    "notes": [
+      "Round 3: 5s ballot+lockbox whole and labelled, 10s box/meter/flag separate and in frame, Turn flag inside the frame; hook question at 0s, disclaimer at 27s, reads on mute, thumbnail clear, code checks and audio on target."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:58:59.738833+00:00",
+    "finishedAt": "2026-11-09T22:01:16.110575+00:00",
+    "notes": [
+      "27 s, night/cinematic, peak -1.0 dB, mean -17.8 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:01:29.620930+00:00",
+    "finishedAt": "2026-11-09T22:01:29.620930+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
