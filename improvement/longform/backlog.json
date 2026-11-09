@@ -1096,6 +1096,50 @@
       "priority": "normal",
       "found": "2026-11-05",
       "status": "open"
+    },
+    {
+      "id": "2026-11-09-board-growth-panel",
+      "kind": "craft",
+      "title": "The board has no panel for a number changing over time",
+      "detail": "Since long videos moved to board beats (2026-11-02), the only panels are bars, ring, grid, calendar, buttons, person and doc (remotion/src/studio/board.tsx PANELS). None draws a value over years, so the old `chart`/`screen` scenes are the only way and Studio no longer uses them: L-20261104-01 (421 s, 89 beats) had 0 chart, screen or panel beats; L-20261029-01 had 0 too. Three of the five topics Studio can make next are over-time stories (savings at 0.5% vs 8% for 20 years; $1M borrowed at 5% vs $1M growing at 8%; $1,000 a day for 2,740 years). Build a `growth` panel: one or two maths series (`@<name>.series`) drawing left to right on the words that name them, a year ticker under the leading dot, the current value counting beside the dot, an optional `cross` mark (the year one line overtakes the other) and the gap labelled with one computed figure at the end. Stills check: the line, ticker and value readable at 16:9 at 30 px minimum. It worked when the next long video has at least one growth panel and its QA notes no static stretch on that beat.",
+      "where": "scene",
+      "route": "template",
+      "priority": "high",
+      "found": "2026-11-09",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-09-panel-per-chapter",
+      "kind": "craft",
+      "title": "Every chapter shows its main figure as a picture, not only as an equation strip",
+      "detail": "L-20261104-01 used 14 `equation` actions and 0 panels (bars, ring, grid, calendar) across 30 board beats: every comparison was a line of text with a slammed result. The reference money-at-scale and inflation explainers (5-12M views, report 2026-10-28) spend their best moment on a quantity changing size. Rule for long_story scripts: each chapter's headline comparison gets one panel (bars for two outcomes with `turn` on the loser, ring for a share, calendar for a span of years) on the beat that says it; equations stay for the working. Studio follows it when writing; the improver adds it to the long_story README board section. Check: count panels per chapter in script.json (>= 1 for at least 4 of 5 chapters).",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-09",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-09-years-on-a-calendar",
+      "kind": "idea",
+      "title": "Say a span of years with the calendar panel while the figure counts",
+      "detail": "Our over-time figures ('in 20 years', '2,740 years of $1,000 a day', 'a loan for 10 years') are said once and shown as text. Try: on the beat that names the years, a `calendar` panel flips through them while the money value counts up beside it, ending on the computed figure. A/B on long videos (half with, half without) judged on average % viewed of the chapter's minute (improvement/evaluate.py, long). Small to build: both panel and counter exist.",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-09",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-09-long-length-check",
+      "kind": "bug",
+      "title": "L-20261104-01 ran 421 s, over the 400 s long-video maximum, and passed every gate",
+      "detail": "Settings say longLengthMinSec 300 / longLengthMaxSec 400 (since 2026-11-04); videos/L-20261104-01/render.json has duration_sec 421 and number, fact and QA checks all passed. The QA reviewer is meant to reject a length outside the settings' range. Add a code check after the timeline is built for format long: duration outside longLengthMin/MaxSec fails with the measured length and how many words to cut (at ~215 words a minute), with a test. Studio's instructions were fixed to 300-400 s on 5 Nov, after this script was written, so this is a backstop, not a blame.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-09",
+      "status": "open"
     }
   ]
 }

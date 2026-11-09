@@ -2,6 +2,105 @@
   "note": "Long-video topics, written by the Scout agent (agents/scout.md) and used by Studio (agents/studio.md). These first four were seeded by the owner's session to give Studio something to start on; Scout adds to them daily.",
   "topics": [
     {
+      "id": "2026-11-09-how-cheap-gyms-make-money",
+      "format": "long",
+      "title": "How do $10 gyms make money if nobody goes?",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Did Costco Become a Members-Only Retail Giant? (CNBC)",
+        "views": 4800000,
+        "url": "https://www.youtube.com/watch?v=dzejHGniMTQ"
+      },
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "long_story"
+      ],
+      "search": "how do cheap gyms make money",
+      "from_short": "v-20261105-06",
+      "angle": "Our Short said the gym is paid for by the people who stay home. The long version answers what it left open: how many members a club really has, what each one pays in a year, why the price is so low, and why the gym is fine with you quitting in February.",
+      "why_now": "Staged for when 'The $10 gym that wants you to stay home' (v-20261105-06) crosses 1,000 views: 920 on 9 Nov, three days after publishing, and the only Short since 27 Oct near the bar. The 1K Shorts we expand now (21-27 Oct) leave the 30-day window between 20 and 26 Nov, so this keeps Studio fed after that. Membership models are a proven long shape (Costco, 4.8M).",
+      "facts": [
+        {
+          "label": "Planet Fitness members at the end of 2025",
+          "value": 20.8,
+          "unit": "count_million",
+          "as_of": "2026-02-24",
+          "source": "Planet Fitness Q4 and full-year 2025 results (SEC 8-K, 24 Feb 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1637207/000163720726000009/plntq42025pressreleaseex991.htm",
+          "checked": "2026-11-09"
+        },
+        {
+          "label": "Planet Fitness clubs worldwide, 31 Dec 2025",
+          "value": 2896,
+          "unit": "count",
+          "as_of": "2026-02-24",
+          "source": "Planet Fitness Q4 and full-year 2025 results (SEC 8-K, 24 Feb 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1637207/000163720726000009/plntq42025pressreleaseex991.htm",
+          "checked": "2026-11-09"
+        },
+        {
+          "label": "Planet Fitness system-wide sales in 2025",
+          "value": 5.3,
+          "unit": "money_billion",
+          "as_of": "2026-02-24",
+          "source": "Planet Fitness Q4 and full-year 2025 results (SEC 8-K, 24 Feb 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1637207/000163720726000009/plntq42025pressreleaseex991.htm",
+          "checked": "2026-11-09",
+          "currency": "USD"
+        },
+        {
+          "label": "Planet Fitness total revenue in 2025",
+          "value": 1.3,
+          "unit": "money_billion",
+          "as_of": "2026-02-24",
+          "source": "Planet Fitness Q4 and full-year 2025 results (SEC 8-K, 24 Feb 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1637207/000163720726000009/plntq42025pressreleaseex991.htm",
+          "checked": "2026-11-09",
+          "currency": "USD"
+        },
+        {
+          "label": "new Planet Fitness clubs opened in 2025",
+          "value": 181,
+          "unit": "count",
+          "as_of": "2026-02-24",
+          "source": "Planet Fitness Q4 and full-year 2025 results (SEC 8-K, 24 Feb 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1637207/000163720726000009/plntq42025pressreleaseex991.htm",
+          "checked": "2026-11-09"
+        }
+      ],
+      "outline": [
+        "hook (0:00): the Short's first picture and line, Rohan's gym card in a drawer: 'You think your gym wants you there? It doesn't.' The picture the whole video hangs on: a gym full of machines and almost nobody in it, with a pipe of monthly payments flowing in from houses all around",
+        "promise (by 0:25): four answers, and the last one is why the gym is happy when you never come back",
+        "item 1 (~60 s, reveal at 0:45), the scale: 20.8 million members and 2,896 clubs (facts): 20.8M / 2,896 is about 7,182 members per club (share). Sharma Uncle: 'no building holds 7,000 people at once'",
+        "item 2, the little fee: 7,182 members at an assumed $10 a month is $71,820 a month per club (share), whoever turns up. Rohan quit in January and still pays",
+        "recap-and-tease at ~2:00: 'so the fee is small and the members are many. But a gym full of 7,000 people would break. So where are they?'",
+        "item 3, the money around the fee: system-wide sales $5.3B over 20.8M members is about $255 a member a year (share), more than twelve $10 months: the extra comes from the upgraded card and the yearly fee (verify which). Priya draws it as a payslip of the member",
+        "item 4, who really runs the clubs: total revenue $1.3B against $5.3B of system-wide sales (facts): most clubs belong to franchisees, and the brand takes a share of each (verify royalty wording on the 10-K). Board card: the $5.3B pipe splitting",
+        "recap-and-tease at ~4:00: 'and why does none of this break when nobody comes?'",
+        "item 5 (strongest, last): the gym is built for the people who don't come: if only a small share of members train in a month (an assumption, said as such), the payments of everyone else pay for the machines, and 181 new clubs a year (fact) are opened on that maths. What it means for you: cancel the one you don't use; a $10 fee for 10 years is $1,200 (share)",
+        "ending: loop to Rohan's gym card in the drawer, ask the viewer 'when did you last go?', one CTA, disclaimer end card"
+      ],
+      "maths": "share ($5.3B / 20.8M members; 20.8M / 2,896 clubs; 7,182 x $10 a month; $10 x 120 months), compare (revenue vs system-wide sales)",
+      "verify": [
+        "Planet Fitness 8-K, 24 Feb 2026: 20.8M members, 2,896 clubs, $5.3B system-wide sales, $1.3B revenue, 181 new clubs; check the Q3 2026 release (early Nov 2026) for a newer member and club count first and use the newest",
+        "Never state a real share of members who don't attend: say it as an assumption, and use 'Planet Fitness' only for the sourced figures, never 'they want you to quit'",
+        "$10 a month is an assumption (the Classic card rose 50% for new members in 2024-25): say 'an assumed $10'"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1637207/000163720726000009/plntq42025pressreleaseex991.htm",
+        "https://www.youtube.com/watch?v=dzejHGniMTQ"
+      ],
+      "found": "2026-11-09",
+      "expires": "2027-11-09",
+      "status": "new"
+    },
+    {
       "format": "long",
       "templates": [
         "long_story"
@@ -35,7 +134,7 @@
         "item 1 (~60 s, reveal at 0:45), selling is taxed: sell $1M of stock bought for almost nothing and up to the top 20% long-term rate goes to tax (fact: IRS 20%; maths fee_take 20% of $1M = $200,000)",
         "item 2, a loan isn't income: borrow $1M against the shares at an assumed 5% for 10 years: interest $272,786 (emi) while the untouched $1M at an assumed 8% grows to $2.16M (lumpsum). Board card: the two sums side by side",
         "recap-and-tease at ~2:00: 'so borrowing is cheaper than selling. But who lends a billionaire money, and how much?'",
-        "item 3, the real numbers: Elon Musk has about 236 million Tesla shares pledged as collateral; Tesla caps the borrowing at $3.5B or 25% of their value, and says he has no such loans right now (facts, Tesla's own filing). Priya: the arrangement is the point, flexibility on tap",
+        "item 3, the real numbers: Elon Musk has about 207.5 million Tesla shares pledged (Tesla's October 2026 proxy, down from about 236 million a year earlier) as collateral; Tesla caps the borrowing at $3.5B or 25% of their value, (facts). Tesla's 2025 filing said he had no loans against them; the 2026 coverage doesn't say either way, so never say he has a loan now. Priya: the arrangement is the point, flexibility on tap",
         "item 4, the year with no tax: ProPublica's IRS files: the 25 richest Americans grew $401B richer in 2014-2018 and paid $13.6B, a 3.4% 'true tax rate'; Musk paid no federal income tax in 2018 (facts). Sharma Uncle: legal, every step",
         "recap-and-tease at ~4:00: 'and when the shares fall? the bank can sell them for you' (the risk, said plainly)",
         "item 5 (strongest, last): why the vault never opens: the loan is paid from new loans while shares keep growing, and US heirs inherit at a stepped-up value (verify IRS step-up); the same mechanism at our size is just 'don't sell your index fund for a car'",
@@ -53,19 +152,21 @@
         },
         {
           "label": "Tesla shares Elon Musk has pledged as loan collateral",
-          "value": 236,
+          "value": 207.5,
           "unit": "count_million",
-          "as_of": "2025-10-06",
-          "source": "Tesla proxy materials (SEC filing DEFA14A)",
-          "url": "https://ir.tesla.com/_flysystem/s3/sec/000110465925097147/tm252289d30_defa14a-gen.pdf"
+          "as_of": "2026-10-19",
+          "source": "Reuters on Tesla's 2026 proxy statement (via The Standard, Hong Kong)",
+          "url": "https://www.thestandard.com.hk/finance/article/345885/Tesla-asks-shareholders-to-re-elect-Musk-Denholm-and-Straubel-at-December-annual-meeting",
+          "checked": "2026-11-09"
         },
         {
-          "label": "Tesla's cap on what Musk may borrow against pledged shares",
+          "label": "Tesla's cap on what Musk may borrow against pledged shares (lesser of this or 25% of their value)",
           "value": 3.5,
           "unit": "money_billion",
-          "as_of": "2025-10-06",
-          "source": "Tesla proxy materials (SEC filing DEFA14A)",
-          "url": "https://ir.tesla.com/_flysystem/s3/sec/000110465925097147/tm252289d30_defa14a-gen.pdf",
+          "as_of": "2026-10-19",
+          "source": "Reuters on Tesla's 2026 proxy statement (via The Edge Malaysia)",
+          "url": "https://theedgemalaysia.com/node/822384",
+          "checked": "2026-11-09",
           "currency": "USD"
         },
         {
@@ -75,7 +176,9 @@
           "as_of": "2021-06-08",
           "source": "ProPublica, The Secret IRS Files",
           "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-          "currency": "USD"
+          "currency": "USD",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "federal income tax those 25 paid, 2014-2018",
@@ -84,7 +187,9 @@
           "as_of": "2021-06-08",
           "source": "ProPublica, The Secret IRS Files",
           "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-          "currency": "USD"
+          "currency": "USD",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "their 'true tax rate' (tax paid / wealth growth)",
@@ -92,7 +197,9 @@
           "unit": "percent",
           "as_of": "2021-06-08",
           "source": "ProPublica, The Secret IRS Files",
-          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "the year Elon Musk paid no federal income tax",
@@ -100,19 +207,23 @@
           "unit": "year",
           "as_of": "2021-06-08",
           "source": "ProPublica, The Secret IRS Files",
-          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+          "latest": true,
+          "checked": "2026-11-09"
         }
       ],
       "verify": [
         "IRS: 20% top long-term capital gains rate; the step-up in basis at death (IRS Publication 551)",
-        "Tesla: 236 million pledged shares, the $3.5B / 25% cap, and 'currently does not have any loans' (6 Oct 2025 filing): say the last part, never imply he has a loan now",
+        "Tesla: about 207.5 million pledged shares and the lesser of $3.5B / 25% cap, from Tesla's 19 Oct 2026 proxy (DEF 14A, 'Pledging of Shares' on SEC EDGAR); Reuters reported it. The 2025 filing's 'currently does not have any loans' is a 2025 statement: say it with its year, never imply he has a loan now",
         "ProPublica figures are from leaked IRS data (2021): say 'according to IRS records obtained by ProPublica'",
         "Nothing alleges a crime: every step is legal; 5% and 8% are assumptions said as such"
       ],
       "sources": [
-        "https://www.irs.gov/taxtopics/tc409",
         "https://ir.tesla.com/_flysystem/s3/sec/000110465925097147/tm252289d30_defa14a-gen.pdf",
-        "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+        "https://theedgemalaysia.com/node/822384",
+        "https://www.irs.gov/taxtopics/tc409",
+        "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+        "https://www.thestandard.com.hk/finance/article/345885/Tesla-asks-shareholders-to-re-elect-Musk-Denholm-and-Straubel-at-December-annual-meeting"
       ]
     },
     {
@@ -150,7 +261,7 @@
         "item 2, the cash problem: say an assumed 2% of the $1B is cash: $20M against a $50M bill (fee_take), short $30M (compare). Board card: the sum written out",
         "recap-and-tease at ~2:00: 'so he must sell or borrow. Selling a billion of shares does something to the price…'",
         "item 3, what they pay now: 400 wealthiest families, 8.2% average federal income tax rate on income including wealth gains, 2010-2018 (CEA); the 25 richest, 3.4% of $401B (ProPublica)",
-        "item 4, how many people we mean: 3,028 billionaires worldwide with $16.1T between them, 902 in the US (Forbes 2025)",
+        "item 4, how many people we mean: 3,428 billionaires worldwide with $20.1T between them, 989 in the US (Forbes 2026, both records)",
         "recap-and-tease at ~4:00",
         "item 5 (strongest, last): why the bill shrinks: valuing shares nobody sold, people and money moving, and the borrowing from our Short on selling. Sharma Uncle gives both sides, no verdict",
         "ending: ask the viewer 'should paper wealth be taxed?', loop to the Short's line, one CTA, disclaimer"
@@ -179,7 +290,9 @@
           "unit": "percent",
           "as_of": "2021-09-23",
           "source": "White House Council of Economic Advisers",
-          "url": "https://bidenwhitehouse.archives.gov/cea/written-materials/2021/09/23/what-is-the-average-federal-individual-income-tax-rate-on-the-wealthiest-americans/"
+          "url": "https://bidenwhitehouse.archives.gov/cea/written-materials/2021/09/23/what-is-the-average-federal-individual-income-tax-rate-on-the-wealthiest-americans/",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "the 25 richest Americans' wealth growth, 2014-2018",
@@ -188,7 +301,9 @@
           "as_of": "2021-06-08",
           "source": "ProPublica, The Secret IRS Files",
           "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-          "currency": "USD"
+          "currency": "USD",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "federal income tax those 25 paid, 2014-2018",
@@ -197,7 +312,9 @@
           "as_of": "2021-06-08",
           "source": "ProPublica, The Secret IRS Files",
           "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-          "currency": "USD"
+          "currency": "USD",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "their 'true tax rate' (tax paid / wealth growth)",
@@ -205,37 +322,53 @@
           "unit": "percent",
           "as_of": "2021-06-08",
           "source": "ProPublica, The Secret IRS Files",
-          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
-          "label": "billionaires on Forbes' 2025 list (a record)",
-          "value": 3028,
+          "label": "billionaires on Forbes' 2026 list (a record)",
+          "value": 3428,
           "unit": "count",
-          "as_of": "2025-04-01",
-          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
-          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+          "as_of": "2026-03-10",
+          "source": "Forbes World's Billionaires 2026 (via The Spokesman-Review)",
+          "url": "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w",
+          "checked": "2026-11-09"
         },
         {
-          "label": "billionaires in the United States",
-          "value": 902,
+          "label": "billionaires in the United States (a record)",
+          "value": 989,
           "unit": "count",
-          "as_of": "2025-04-01",
-          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
-          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+          "as_of": "2026-03-10",
+          "source": "Forbes World's Billionaires 2026 (via AOL)",
+          "url": "https://www.aol.com/articles/forbes-record-989-billionaires-u-171200887.html",
+          "checked": "2026-11-09"
+        },
+        {
+          "label": "their combined wealth (a record)",
+          "value": 20.1,
+          "unit": "money_trillion",
+          "as_of": "2026-03-10",
+          "source": "Forbes World's Billionaires 2026 (via The Spokesman-Review)",
+          "url": "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w",
+          "checked": "2026-11-09",
+          "currency": "USD"
         }
       ],
       "verify": [
         "Fed DFA shares (Q2 2026) on FRED",
         "CEA 8.2% is its primary estimate (range 6-12%) and counts unsold gains as income: say so",
-        "Forbes 2025 counts",
+        "Forbes 2026 counts (published 10 March 2026)",
         "Neutral on policy: show the arguments, never tell the viewer how to vote; any named ballot measure needs its own source"
       ],
       "sources": [
-        "https://fred.stlouisfed.org/series/WFRBST01122",
-        "https://fred.stlouisfed.org/series/WFRBSN09149",
         "https://bidenwhitehouse.archives.gov/cea/written-materials/2021/09/23/what-is-the-average-federal-individual-income-tax-rate-on-the-wealthiest-americans/",
+        "https://fred.stlouisfed.org/series/WFRBSN09149",
+        "https://fred.stlouisfed.org/series/WFRBST01122",
+        "https://www.aol.com/articles/forbes-record-989-billionaires-u-171200887.html",
+        "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list",
         "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-        "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+        "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w"
       ]
     },
     {
@@ -303,7 +436,9 @@
           "as_of": "2021-06-08",
           "source": "ProPublica, The Secret IRS Files",
           "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-          "currency": "USD"
+          "currency": "USD",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
           "label": "share of it paid in federal taxes",
@@ -311,7 +446,9 @@
           "unit": "percent",
           "as_of": "2021-06-08",
           "source": "ProPublica, The Secret IRS Files",
-          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
+          "latest": true,
+          "checked": "2026-11-09"
         }
       ],
       "verify": [
@@ -360,7 +497,7 @@
         "item 1, the gold rate: the same everywhere, and taxed at 3% GST (fact)",
         "item 2, making charges: an assumed 12% on ₹1,00,000 of gold is ₹12,000 (fee_take), where the shop earns",
         "recap-and-tease at ~2:00",
-        "item 3, the hallmark: mandatory since 23 June 2021 in 256 districts, 343 by Sept 2023, more than 26 crore pieces with a HUID (facts): what it guarantees and what it doesn't",
+        "item 3, the hallmark: mandatory since 23 June 2021 in 256 districts, 380 since the sixth phase (2 March 2026), more than 60 crore gold items with a HUID (facts): what it guarantees and what it doesn't",
         "item 4 (strongest, last): selling it back: shops usually pay for the gold only, so the making charge is gone; ₹1,00,000 kept in gold vs the bill (compare)",
         "ending: 'ask for the making charge first', loop to the Short, one CTA, disclaimer"
       ],
@@ -388,23 +525,27 @@
           "unit": "count",
           "as_of": "2023-09-08",
           "source": "All India Radio (newsonair.gov.in)",
-          "url": "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
+          "url": "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect",
+          "latest": true,
+          "checked": "2026-11-09"
         },
         {
-          "label": "districts covered after the third phase (Sept 2023)",
-          "value": 343,
+          "label": "districts covered after the sixth phase (from 2 March 2026)",
+          "value": 380,
           "unit": "count",
-          "as_of": "2023-09-08",
+          "as_of": "2026-03-12",
           "source": "All India Radio (newsonair.gov.in)",
-          "url": "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
+          "url": "https://www.newsonair.gov.in/govt-adds-7-more-districts-in-6th-phase-of-mandatory-gold-hallmarking",
+          "checked": "2026-11-09"
         },
         {
-          "label": "gold pieces hallmarked with a HUID so far",
-          "value": 26,
+          "label": "gold items hallmarked with a HUID since 2021",
+          "value": 60,
           "unit": "count_crore",
-          "as_of": "2023-09-08",
-          "source": "All India Radio (newsonair.gov.in)",
-          "url": "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
+          "as_of": "2026-03-12",
+          "source": "All India Radio (newsonair.gov.in), citing BIS",
+          "url": "https://www.newsonair.gov.in/govt-adds-7-more-districts-in-6th-phase-of-mandatory-gold-hallmarking",
+          "checked": "2026-11-09"
         }
       ],
       "verify": [
@@ -414,6 +555,7 @@
       ],
       "sources": [
         "https://cleartax.in/s/gst-impact-on-gold",
+        "https://www.newsonair.gov.in/govt-adds-7-more-districts-in-6th-phase-of-mandatory-gold-hallmarking",
         "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
       ]
     },
@@ -551,24 +693,26 @@
         "item 2, saving it the normal way: $500 a month at an assumed 7% for 40 years is $1.32M (sip): great, and still about 757 times short (compare)",
         "recap-and-tease at ~2:00: 'nobody saves their way there. So how does the money keep coming?'",
         "item 3, the money that pays itself: a billion at an assumed 4% yield is $40M a year untouched (fee_take)",
-        "item 4, how many there are: 3,028 billionaires with $16.1T together, 902 in the US (Forbes 2025)",
+        "item 4, how many there are: 3,428 billionaires with $20.1T together, 989 in the US (Forbes 2026, records; $20.1T / 3,428 is $5.86B each, share)",
         "recap-and-tease at ~4:00",
-        "item 5 (strongest, last): the richest one: Musk's $342B (Forbes Apr 2025) is 342 rooms of notes, 3,420 tonnes (share): the room zooms out to a warehouse district",
+        "item 5 (strongest, last): the richest one: Musk's $839B (Forbes, March 2026, the highest it has ever recorded) is 839 rooms of notes, 8,390 tonnes (share: $839B / $100 = 8.39B notes x 1 g): the room zooms out to a warehouse district",
         "ending: 'own something that earns while you sleep, at any size', loop to the note, one CTA, disclaimer"
       ],
-      "maths": "share ($1B / $100 notes x 1 g; $1B / $60,000; $342B in rooms), sip ($500, 7%, 40 years), compare, fee_take (4% of $1B)",
+      "maths": "share ($1B / $100 notes x 1 g; $1B / $60,000; $839B in rooms), sip ($500, 7%, 40 years), compare, fee_take (4% of $1B)",
       "verify": [
         "BEP: about one gram per note",
-        "Forbes 2025 list figures (a 2026 list may exist: use the newest with its date)",
+        "Forbes 2026 list figures (published 10 March 2026, prices as of 1 March 2026): say 'as of March 2026'; Musk's wealth has moved since, so never say 'today'",
         "4% yield and 7% return are assumptions"
       ],
       "sources": [
+        "https://www.aol.com/articles/forbes-record-989-billionaires-u-171200887.html",
+        "https://www.bep.gov/currency/faqs",
+        "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list",
+        "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w",
+        "https://www.youtube.com/watch?v=8YUWDrLazCg",
         "https://www.youtube.com/watch?v=apFPtyZHuns",
         "https://www.youtube.com/watch?v=hAQJ9bNENyA",
-        "https://www.youtube.com/watch?v=8YUWDrLazCg",
-        "https://www.youtube.com/watch?v=tbVb63qPDQ8",
-        "https://www.bep.gov/currency/faqs",
-        "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+        "https://www.youtube.com/watch?v=tbVb63qPDQ8"
       ],
       "found": "2026-10-28",
       "expires": "2027-10-28",
@@ -586,37 +730,41 @@
           "url": "https://www.bep.gov/currency/faqs"
         },
         {
-          "label": "billionaires on Forbes' 2025 list (a record)",
-          "value": 3028,
+          "label": "billionaires on Forbes' 2026 list (a record)",
+          "value": 3428,
           "unit": "count",
-          "as_of": "2025-04-01",
-          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
-          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+          "as_of": "2026-03-10",
+          "source": "Forbes World's Billionaires 2026 (via The Spokesman-Review)",
+          "url": "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w",
+          "checked": "2026-11-09"
         },
         {
-          "label": "their combined wealth",
-          "value": 16.1,
+          "label": "their combined wealth (a record)",
+          "value": 20.1,
           "unit": "money_trillion",
-          "as_of": "2025-04-01",
-          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
-          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list",
+          "as_of": "2026-03-10",
+          "source": "Forbes World's Billionaires 2026 (via The Spokesman-Review)",
+          "url": "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w",
+          "checked": "2026-11-09",
           "currency": "USD"
         },
         {
-          "label": "billionaires in the United States",
-          "value": 902,
+          "label": "billionaires in the United States (a record)",
+          "value": 989,
           "unit": "count",
-          "as_of": "2025-04-01",
-          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
-          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list"
+          "as_of": "2026-03-10",
+          "source": "Forbes World's Billionaires 2026 (via AOL)",
+          "url": "https://www.aol.com/articles/forbes-record-989-billionaires-u-171200887.html",
+          "checked": "2026-11-09"
         },
         {
-          "label": "Elon Musk's net worth, the world's richest",
-          "value": 342,
+          "label": "Elon Musk's net worth, the world's richest (Forbes record)",
+          "value": 839,
           "unit": "money_billion",
-          "as_of": "2025-04-01",
-          "source": "Forbes World's Billionaires 2025 (via Connecticut Public/NPR)",
-          "url": "https://www.ctpublic.org/2025-04-01/there-are-more-billionaires-than-ever-according-to-forbes-latest-list",
+          "as_of": "2026-03-10",
+          "source": "Forbes World's Billionaires 2026 (via The Spokesman-Review)",
+          "url": "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w",
+          "checked": "2026-11-09",
           "currency": "USD"
         }
       ]

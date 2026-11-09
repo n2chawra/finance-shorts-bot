@@ -1,0 +1,52 @@
+{
+  "agent": "scout",
+  "day": "2026-11-09",
+  "startedAt": "2026-11-09T04:08:12Z",
+  "finishedAt": "2026-11-09T04:15:04Z",
+  "summary": "Every long topic with a winning Short was blocked by old facts, which would have left Studio with nothing on Wednesday. I re-checked them against the newest releases (Forbes 2026, Tesla's 2026 proxy, hallmarking phase 6), so 5 are usable again. I also staged a gym topic and routed 4 chart and visual findings.",
+  "decision": "acted",
+  "why": "state --format long showed 0 usable topics: all 5 from_short topics had facts over a year old. After the re-check, all 5 show no blocked_by. Today's focus (charts) found 0 chart, screen or panel beats in both of our last long videos.",
+  "findings": [
+    {
+      "title": "Studio had no usable long topic",
+      "detail": "The facts in all 5 from_short topics were out of date. Replaced: Forbes 2026 (3,428 billionaires, $20.1T, 989 in the US, Musk $839B), Tesla's 2026 proxy (207.5M pledged shares; $3.5B / 25% cap), hallmarking (380 districts, 60 crore HUIDs). ProPublica and CEA marked latest.",
+      "link": "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w"
+    },
+    {
+      "title": "The board can't show a number changing over time",
+      "detail": "Its panels are bars, ring, grid, calendar, buttons, person and doc. L-20261104-01 had 14 equations and 0 panels, and no chart beats."
+    },
+    {
+      "title": "Long video over length",
+      "detail": "L-20261104-01 ran 421 s against a 400 s maximum and passed every check."
+    },
+    {
+      "title": "Winning Shorts age out about 26 Nov",
+      "detail": "All five 1K Shorts were published 21-27 Oct. The nearest new one is the gym Short at 920 views."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Refreshed 5 long topics' facts",
+      "detail": "improvement/longform/topics.json",
+      "branch": "agent/scout/2026-11-09"
+    },
+    {
+      "title": "New staged topic: How do $10 gyms make money if nobody goes?",
+      "detail": "from_short v-20261105-06; 5 facts from Planet Fitness's 8-K",
+      "branch": "agent/scout/2026-11-09"
+    },
+    {
+      "title": "4 backlog items",
+      "detail": "board-growth-panel (template, high), panel-per-chapter (adopt, high), years-on-a-calendar (experiment), long-length-check (adopt)",
+      "branch": "agent/scout/2026-11-09"
+    }
+  ],
+  "nextCheck": "2026-11-12",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/longform/2026-11-09.md"
+    }
+  ]
+}
