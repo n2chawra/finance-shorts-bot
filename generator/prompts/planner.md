@@ -76,6 +76,18 @@ salary really leaves you, which money level you are on.
 3. **Pick a specific situation inside the format** that anyone feels: a famous person's or company's
    money move, a raise, a first salary, a credit card bill, a car loan, the food-app habit, what a
    billion dollars looks like. Never a policy, a central bank or an index level.
+3b. **Not a textbook topic** (owner, 2026-11-09: "the 3 topics for today are pretty basic … I don't
+   think most people would want to see it"). The format can be right and the topic still basic: the
+   test is whether a typical viewer already knows the answer. Before you pick, say the surprise in
+   one line to yourself; if it's something people have heard all their lives, pick another topic.
+   - Basic (skip): "your bank lends your savings and pays you almost nothing" (everyone knows banks
+     lend deposits), what interest or inflation is, why to budget, "save more than you spend".
+   - Not basic: a famous name doing something that contradicts what everyone assumes, or money at a
+     scale nobody pictures: "Delta earns more from its Amex card than from flying", "billionaires
+     never sell their stock, they borrow against it", "Musk's salary is $0", "what a billion dollars
+     looks like stacked". Our 1K+ Shorts were all of this kind; a famous name alone isn't enough
+     ("an athlete got rich off the court" is basic unless the how is surprising).
+   Among feed topics of similar score, take the less obvious one.
 4. **Topic feed (`topic_feed`):** research's ideas, already tagged with a format: **every unused
    topic, old or new, best `score` first**. `why_score` shows the parts: proven demand (capped at
    10M views), our own results with that format (`ours`), a bonus for a format we haven't told
