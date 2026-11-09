@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 2,
+  "open": 0,
   "notes": [
     {
       "id": "cmw9077420001lg0967jn37k7",
       "kind": "general",
       "area": null,
       "text": "The 3 topics for today are pretty basic even though its good indont think most people would want to see it . Our system would already remove the types after seeing the analytics right????",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Partly yes: formats and topic kinds are judged on views (budget is already dropped; how_they_make_money is actually our best format at 9.8x median), so the type wasn't the problem, the pick inside it was. The planner now skips topics a typical viewer already knows (e.g. 'banks lend your savings') and the editor ranks them lower.: (05a8b8d)",
       "at": "2026-11-09T08:32:56.259Z",
       "video": null
     },
@@ -17,8 +17,8 @@
       "kind": "improve",
       "area": "hook",
       "text": "The video says what people think about not that it's wrong. Like do you think ... your wrong.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: The number check now fails a hook that doesn't start 'You think ...?' and deny it ('It doesn't.' / 'You're wrong.'), or ends on 'Watch this.'/'Here's why.', or ends like a recent hook; the prompts that still taught 'end on watch' are fixed. Heads-up: the 3-6 Nov Shorts with this exact pattern got 9-63 views, so watch the next few.: (8bffe46)",
       "at": "2026-11-09T08:30:48.496Z",
       "video": {
         "id": "v-20261109-01",
