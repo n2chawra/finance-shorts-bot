@@ -99,6 +99,25 @@ test("notifications explain how to fix each problem", async ({ page }) => {
   await expect(page.getByRole("button", { name: "Mark resolved" }).first()).toBeVisible();
 });
 
+test("notification fixes written on one line show as numbered steps", async ({ page }) => {
+  await signIn(page);
+  // agents write fixes as "1. … 2. …" on one line (policy.md); they once read as one run-on paragraph
+  await page.route("**/api/notifications", async (route) => {
+    if (route.request().method() !== "GET") return route.continue();
+    const res = await route.fetch();
+    const body = await res.json();
+    const n = body.open.find((x: { proposal?: unknown }) => !x.proposal);
+    n.fix = "Pick one: 1. Open the Actions tab at tempo 1.25. 2. Run the workflow again. 3. Nothing else.";
+    await route.fulfill({ response: res, json: body });
+  });
+  await page.goto("/notifications");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
+  const steps = page.locator("ol").filter({ hasText: "Run the workflow again." }).locator("li");
+  await expect(steps).toHaveCount(3);
+  await expect(steps.first()).toHaveText(/^1\s*Open the Actions tab at tempo 1\.25\.$/);
+  await expect(page.getByText("Pick one:", { exact: true })).toBeVisible();
+});
+
 test("queue rows never clip their text sideways", async ({ page }) => {
   await signIn(page);
   await page.goto("/queue");
