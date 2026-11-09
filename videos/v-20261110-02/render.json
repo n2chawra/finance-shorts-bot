@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 38164,
+  "duration_sec": 27,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "A",
+    "bpm": 112,
+    "look": {
+      "stage": "street",
+      "header": "sticky",
+      "holder": "receipt",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think MrBeast gets rich from his videos? He doesn't.",
+        "start": 0.3,
+        "seconds": 2.98,
+        "window": 3.57,
+        "fill": 0.835
+      },
+      {
+        "scene": "loss",
+        "text": "In one year, his video business lost almost $80M.",
+        "start": 3.87,
+        "seconds": 3.51,
+        "window": 4.2,
+        "fill": 0.836
+      },
+      {
+        "scene": "ask",
+        "text": "So where does all his money come from?",
+        "start": 8.07,
+        "seconds": 1.66,
+        "window": 2.2,
+        "fill": 0.755
+      },
+      {
+        "scene": "bar",
+        "text": "His chocolate bar, Feastables, sold about $250M.",
+        "start": 10.27,
+        "seconds": 4.07,
+        "window": 4.73,
+        "fill": 0.86
+      },
+      {
+        "scene": "profit",
+        "text": "It kept over $20M in profit. So why make videos?",
+        "start": 15.0,
+        "seconds": 3.56,
+        "window": 4.23,
+        "fill": 0.842
+      },
+      {
+        "scene": "turn",
+        "text": "So every video is really an advert for the bar.",
+        "start": 19.23,
+        "seconds": 2.42,
+        "window": 2.97,
+        "fill": 0.815
+      },
+      {
+        "scene": "payoff",
+        "text": "Investors value it all at about $5B. Still the videos?",
+        "start": 22.2,
+        "seconds": 4.0,
+        "window": 4.67,
+        "fill": 0.857
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "ending-beats-act-and-vary": "on",
+    "you-in-the-core-story": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -15.1,
+    "music_under_voice_db": 21.7
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 5.731,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

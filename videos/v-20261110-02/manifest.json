@@ -1,0 +1,322 @@
+{
+  "id": "v-20261110-02",
+  "createdAt": "2026-11-09T22:08:05.031550+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "MrBeast's videos lost money in 2024 while his chocolate bar made the profit",
+    "category": "business",
+    "reach": "global",
+    "feed_id": "2026-11-10-mrbeast-videos-lose-the-chocolate-pays"
+  },
+  "title": "Why the biggest channel on earth loses money on videos 🍫",
+  "description": "Does the world's biggest YouTuber really get rich from his videos? Follow the money from the videos to a chocolate bar on the shelf.\nFigures from Bloomberg's report on Beast Industries' 2024 results; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#HowTheyMakeMoney",
+    "#MrBeast",
+    "#Business"
+  ],
+  "hookStyle": "secret",
+  "cta": "Did you buy the bar too? Comment",
+  "seed": 38164,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "A",
+    "bpm": 112,
+    "look": {
+      "stage": "street",
+      "header": "sticky",
+      "holder": "receipt",
+      "entrance": "pop"
+    },
+    "voice": "af_heart",
+    "arms": {
+      "length": "20-27",
+      "topic": "big_money",
+      "hook": "secret",
+      "title": "plain",
+      "style": "board",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think MrBeast gets rich from his videos? He doesn't.",
+        "start": 0.3,
+        "seconds": 2.98,
+        "window": 3.57,
+        "fill": 0.835
+      },
+      {
+        "scene": "loss",
+        "text": "In one year, his video business lost almost $80M.",
+        "start": 3.87,
+        "seconds": 3.51,
+        "window": 4.2,
+        "fill": 0.836
+      },
+      {
+        "scene": "ask",
+        "text": "So where does all his money come from?",
+        "start": 8.07,
+        "seconds": 1.66,
+        "window": 2.2,
+        "fill": 0.755
+      },
+      {
+        "scene": "bar",
+        "text": "His chocolate bar, Feastables, sold about $250M.",
+        "start": 10.27,
+        "seconds": 4.07,
+        "window": 4.73,
+        "fill": 0.86
+      },
+      {
+        "scene": "profit",
+        "text": "It kept over $20M in profit. So why make videos?",
+        "start": 15.0,
+        "seconds": 3.56,
+        "window": 4.23,
+        "fill": 0.842
+      },
+      {
+        "scene": "turn",
+        "text": "So every video is really an advert for the bar.",
+        "start": 19.23,
+        "seconds": 2.42,
+        "window": 2.97,
+        "fill": 0.815
+      },
+      {
+        "scene": "payoff",
+        "text": "Investors value it all at about $5B. Still the videos?",
+        "start": 22.2,
+        "seconds": 4.0,
+        "window": 4.67,
+        "fill": 0.857
+      }
+    ]
+  },
+  "durationSec": 27,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -15.1,
+    "music_under_voice_db": 21.7
+  },
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "ending-beats-act-and-vary": "on",
+    "you-in-the-core-story": "on"
+  },
+  "heard": {
+    "hookVoice": "af_heart",
+    "narratorShare": 88
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after edits: the 4 facts are unchanged and confirmed on the Fortune/Bloomberg page (2025-03-11): Feastables 2024 sales about $250M, profit more than $20M, media lost almost $80M, valued at about $5B. The profit card now reads 'over $20M', matching the source. Present-tense 'Investors value it all at about $5B' holds: searches show later rounds (Jan/Mar 2026) still at about $5B and nothing higher. 'So where does all his money come from?' and the loss card without a year (voice says 'in one year') are fine. The turn is backed by the CEO quote 'a marketing investment'. No advice; the description ends with the disclaimer."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "27 s, reads on mute (MrBeast's videos? -> video business loss card -> where's the money box -> $250M sales minus costs = over $20M -> videos lost $80M vs chocolate kept $20M -> valued at $5B, still the videos?), hook opens a question without the answer, one narrator, no overlaps or cut text, disclaimer on last frame, audio -1.0/-16.8 dB, layout/craft clean, thumbnail distinct from recent covers. Minor: Rohan's arm touches the left edge in the payoff close-up (25 s)."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-09T21:50:44.658977+00:00",
+      "finishedAt": "2026-11-09T21:50:44.658977+00:00",
+      "notes": [
+        "story 'how_they_make_money' was told in the last 1 videos",
+        "style.look.header 'sticky' was used by the previous video (v-20261109-03)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-09T21:51:18.784340+00:00",
+      "finishedAt": "2026-11-09T21:51:18.784340+00:00",
+      "notes": [
+        "beat 'loss'.params.sub contains a typed number; use a placeholder: 'Beast Industries, 2024'",
+        "1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-09T21:57:57.412083+00:00",
+      "finishedAt": "2026-11-09T21:57:57.412083+00:00",
+      "notes": [
+        "beat 'loss'.params.actions[1].rows[0].value contains a typed number; use a placeholder: '2024'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-09T21:58:00.894376+00:00",
+      "finishedAt": "2026-11-09T21:58:00.894376+00:00",
+      "notes": [
+        "beat 'loss'.say contains a typed number; use a placeholder: 'In 2024, his video business lost almost {fact3}.'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-09T21:58:06.893079+00:00",
+      "finishedAt": "2026-11-09T21:58:06.893079+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:00:21.176688+00:00",
+      "finishedAt": "2026-11-09T22:00:21.176688+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:01:35.394464+00:00",
+      "finishedAt": "2026-11-09T22:01:35.394464+00:00",
+      "notes": [
+        "All 4 facts confirmed on the source page (Fortune 2025-03-11, republishing Bloomberg/Shaw & Counts): Feastables 2024 sales about $250M, profit more than $20M, media business lost almost $80M, Beast Industries valued at about $5B (Series C). Hedges about/over/almost spoken as published. Still current: a web search found no reported 2025 actual results (only projections), and the valuation is still reported around $5B. Turn 'every video is an advert for the bar' is supported by the CEO's quote that content is 'a marketing investment in everything else we do'. No advice and no motives attributed; the description ends with the disclaimer. Style note: the profit equation card shows '$250M sales minus costs = $20M' while the source and voice say 'more than $20M'; the card could read 'over $20M'."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:01:46.422105+00:00",
+      "finishedAt": "2026-11-09T22:01:46.422105+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:01:47.191625+00:00",
+      "finishedAt": "2026-11-09T22:01:47.191625+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-09T22:01:57.657547+00:00",
+      "finishedAt": "2026-11-09T22:02:23.992465+00:00",
+      "notes": [
+        "2 of 7 stills are mostly empty background (at 5 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+        "the Short runs 27.6 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:02:40.375745+00:00",
+      "finishedAt": "2026-11-09T22:02:40.375745+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:02:50.704619+00:00",
+      "finishedAt": "2026-11-09T22:03:12.418417+00:00",
+      "notes": [
+        "27 s, ember/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:04:06.016665+00:00",
+      "finishedAt": "2026-11-09T22:04:06.016665+00:00",
+      "notes": [
+        "27 s, reads on mute (MrBeast's videos? -> video business loss card -> where's the money box -> $250M sales minus costs = over $20M -> videos lost $80M vs chocolate kept $20M -> valued at $5B, still the videos?), hook opens a question without the answer, one narrator, no overlaps or cut text, disclaimer on last frame, audio -1.0/-16.8 dB, layout/craft clean, thumbnail distinct from recent covers. Minor: Rohan's arm touches the left edge in the payoff close-up (25 s)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-09T22:04:49.096555+00:00",
+      "finishedAt": "2026-11-09T22:04:57.134712+00:00",
+      "notes": [
+        "the video's own code: it does not type-check: src/videos/v-20261110-03/props.tsx(35,20): error TS18048: 'x' is possibly 'undefined'. | src/videos/v-20261110-03/props.tsx(35,54): error TS18048: 'r' is possibly 'undefined'. | src/videos/v-20261110-03/props.tsx(36,20): error TS18048: 'x' is possibly 'undefined'. | src/videos/v-20261110-03/props.tsx(36,54): error TS18048: 'r' is possibly 'undefined'."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:05:04.947815+00:00",
+      "finishedAt": "2026-11-09T22:05:04.947815+00:00",
+      "notes": [
+        "Re-review after edits: the 4 facts are unchanged and confirmed on the Fortune/Bloomberg page (2025-03-11): Feastables 2024 sales about $250M, profit more than $20M, media lost almost $80M, valued at about $5B. The profit card now reads 'over $20M', matching the source. Present-tense 'Investors value it all at about $5B' holds: searches show later rounds (Jan/Mar 2026) still at about $5B and nothing higher. 'So where does all his money come from?' and the loss card without a year (voice says 'in one year') are fine. The turn is backed by the CEO quote 'a marketing investment'. No advice; the description ends with the disclaimer."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:06:33.912176+00:00",
+      "finishedAt": "2026-11-09T22:08:00.032062+00:00",
+      "notes": [
+        "27 s, ember/pop, peak -1.0 dB, mean -16.8 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-09T22:08:05.031607+00:00",
+      "finishedAt": "2026-11-09T22:08:05.031607+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261110-02",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261110-02"
+  }
+}

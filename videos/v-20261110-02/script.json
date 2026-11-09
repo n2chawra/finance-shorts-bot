@@ -1,0 +1,682 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38164,
+ "story": "how_they_make_money",
+ "shape": "the-advert",
+ "currency": "USD",
+ "feed_id": "2026-11-10-mrbeast-videos-lose-the-chocolate-pays",
+ "narrator": "af_heart",
+ "style": {
+  "palette": "ember",
+  "genre": "pop",
+  "key": "A",
+  "bpm": 112,
+  "look": {
+   "stage": "street",
+   "header": "sticky",
+   "holder": "receipt",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "secret",
+  "title": "plain",
+  "style": "board",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Did you buy the bar too? Comment",
+ "facts": [
+  {
+   "label": "Feastables sales in 2024, per investor documents",
+   "value": 250,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2024-12-31",
+   "source": "Bloomberg",
+   "url": "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/"
+  },
+  {
+   "label": "Feastables profit in 2024 (more than)",
+   "value": 20,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2024-12-31",
+   "source": "Bloomberg",
+   "url": "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/"
+  },
+  {
+   "label": "MrBeast media business loss in 2024 (almost)",
+   "value": 80,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2024-12-31",
+   "source": "Bloomberg",
+   "url": "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/"
+  },
+  {
+   "label": "Beast Industries valuation in its early-2025 funding round (about)",
+   "value": 5,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-03-11",
+   "source": "Bloomberg",
+   "url": "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/"
+  }
+ ],
+ "maths": [
+  {
+   "name": "margin",
+   "kind": "rate",
+   "part": 20000000,
+   "whole": 250000000,
+   "facts": {
+    "part": 2,
+    "whole": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "turn",
+  "sec": 2.4,
+  "who": "rohan",
+  "angle": "number",
+  "words": "The *chocolate* pays",
+  "figure": "{fact2}",
+  "tag": "Chocolate profit"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "You think MrBeast gets rich from his videos? He doesn't.",
+   "events": {
+    "beast": {
+     "word": "MrBeast"
+    },
+    "rich": {
+     "word": "rich"
+    },
+    "videos": {
+     "word": "videos"
+    },
+    "doesnt": {
+     "word": "doesn't"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "beast"
+    },
+    {
+     "kind": "kaching",
+     "at": "rich"
+    },
+    {
+     "kind": "boom",
+     "at": "doesnt"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "MrBeast's videos",
+    "ask": "Rich from them?",
+    "cross": "Not the videos",
+    "set": "office",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "point",
+        "expression": "happy"
+       },
+       {
+        "at": "doesnt",
+        "pose": "shrug",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "doesnt",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "loss",
+   "scene": "board",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "In one year, his video business lost almost {fact3}.",
+   "events": {
+    "video": {
+     "word": "video"
+    },
+    "business": {
+     "word": "business"
+    },
+    "lost": {
+     "word": "lost"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "video"
+    },
+    {
+     "kind": "fail",
+     "at": "lost"
+    }
+   ],
+   "params": {
+    "header": "The videos",
+    "sub": "Beast Industries",
+    "bg": "coral",
+    "items": [
+     {
+      "id": "video",
+      "prop": "videoscreen",
+      "x": 0.32,
+      "size": 0.26,
+      "label": "Video business"
+     },
+     {
+      "id": "lost",
+      "prop": "leakbag",
+      "x": 0.74,
+      "size": 0.22,
+      "label": "Lost"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "doc",
+      "title": "Video business",
+      "rows": [
+       {
+        "label": "Made by",
+        "value": "The videos"
+       },
+       {
+        "label": "Result",
+        "value": "{fact3} loss",
+        "at": "lost"
+       }
+      ],
+      "stamp": {
+       "text": "Loss",
+       "at": "lost"
+      }
+     },
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "lost"
+     },
+     {
+      "at": "video",
+      "do": "glow",
+      "target": "video"
+     },
+     {
+      "at": "business",
+      "do": "grow",
+      "target": "video",
+      "scale": 1.15
+     },
+     {
+      "at": "lost",
+      "do": "drain",
+      "target": "lost",
+      "k": 0.4
+     },
+     {
+      "at": "lost",
+      "do": "flow",
+      "target": "video",
+      "to": "lost",
+      "n": 6,
+      "text": "{fact3}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ask",
+   "scene": "board",
+   "role": "build",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "So where does all his money come from?",
+   "events": {
+    "where": {
+     "word": "where"
+    },
+    "money": {
+     "word": "money"
+    },
+    "come": {
+     "word": "come"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "where"
+    },
+    {
+     "kind": "riser",
+     "at": "come"
+    }
+   ],
+   "params": {
+    "header": "Where's the money?",
+    "bg": "night",
+    "stage": "street",
+    "cast": [
+     {
+      "who": "rohan",
+      "spot": 0.28,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused"
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "spot": 0.74,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "money",
+      "prop": "mysterybox",
+      "size": 0.22,
+      "label": "His money?",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "where",
+      "do": "enter",
+      "target": "money",
+      "how": "rise"
+     },
+     {
+      "at": "money",
+      "do": "grow",
+      "target": "money",
+      "scale": 1.15
+     },
+     {
+      "at": "come",
+      "do": "shake",
+      "target": "money"
+     }
+    ]
+   }
+  },
+  {
+   "id": "bar",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "His chocolate bar, Feastables, sold about {fact1}.",
+   "events": {
+    "chocolate": {
+     "word": "chocolate"
+    },
+    "feastables": {
+     "word": "Feastables"
+    },
+    "sold": {
+     "word": "sold"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "chocolate"
+    },
+    {
+     "kind": "kaching",
+     "at": "sold"
+    }
+   ],
+   "params": {
+    "header": "The chocolate bar",
+    "bg": "mint",
+    "items": [
+     {
+      "id": "chocolate",
+      "prop": "chocobar",
+      "x": 0.28,
+      "size": 0.22,
+      "label": "Feastables",
+      "hidden": true
+     },
+     {
+      "id": "shelf",
+      "prop": "shopshelf",
+      "x": 0.72,
+      "size": 0.28,
+      "label": "Store shelf"
+     },
+     {
+      "id": "sold",
+      "prop": "cashtill",
+      "x": 0.5,
+      "y": 0.34,
+      "size": 0.14,
+      "label": "Sold",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "shelf"
+     },
+     {
+      "at": "chocolate",
+      "do": "enter",
+      "target": "chocolate",
+      "from": "shelf"
+     },
+     {
+      "at": "feastables",
+      "do": "grow",
+      "target": "chocolate",
+      "scale": 1.2
+     },
+     {
+      "at": "sold",
+      "do": "enter",
+      "target": "sold",
+      "how": "drop"
+     },
+     {
+      "at": "sold",
+      "do": "flow",
+      "target": "chocolate",
+      "to": "sold",
+      "n": 6,
+      "text": "{fact1}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "profit",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "It kept over {fact2} in profit. So why make videos?",
+   "events": {
+    "kept": {
+     "word": "kept"
+    },
+    "profit": {
+     "word": "profit"
+    },
+    "videos": {
+     "word": "videos"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "kept"
+    },
+    {
+     "kind": "ding",
+     "at": "profit"
+    },
+    {
+     "kind": "riser",
+     "at": "videos"
+    }
+   ],
+   "params": {
+    "header": "What it kept",
+    "bg": "gold",
+    "items": [
+     {
+      "id": "kept",
+      "prop": "piggybank",
+      "x": 0.3,
+      "size": 0.24,
+      "label": "Profit kept"
+     },
+     {
+      "id": "videos",
+      "prop": "filmcam",
+      "x": 0.72,
+      "size": 0.2,
+      "label": "Why videos?",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "equation",
+      "terms": [
+       {
+        "text": "{fact1} sales"
+       },
+       {
+        "text": "minus costs",
+        "at": "kept"
+       }
+      ],
+      "result": {
+       "text": "over {fact2}",
+       "at": "profit"
+      }
+     },
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "kept"
+     },
+     {
+      "at": "kept",
+      "do": "shake",
+      "target": "kept"
+     },
+     {
+      "at": "profit",
+      "do": "tag",
+      "target": "kept",
+      "text": "{fact2}"
+     },
+     {
+      "at": "profit",
+      "do": "grow",
+      "target": "kept",
+      "scale": 1.15
+     },
+     {
+      "at": "videos",
+      "do": "enter",
+      "target": "videos",
+      "how": "rise"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "So every video is really an advert for the bar.",
+   "events": {
+    "video": {
+     "word": "video"
+    },
+    "advert": {
+     "word": "advert"
+    },
+    "bar": {
+     "word": "bar"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "video"
+    },
+    {
+     "kind": "boom",
+     "at": "advert"
+    },
+    {
+     "kind": "kaching",
+     "at": "bar"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "The real business",
+    "loss": "{fact3}",
+    "lossLabel": "Videos lost",
+    "gain": "{fact2}",
+    "gainLabel": "Chocolate kept",
+    "stamp": "Advert",
+    "set": "office",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "bar",
+      "size": "close",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Investors value it all at about {fact4}. Still the videos?",
+   "events": {
+    "investors": {
+     "word": "Investors"
+    },
+    "valued": {
+     "word": "value"
+    },
+    "still": {
+     "word": "Still"
+    },
+    "videos": {
+     "word": "videos"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "investors"
+    },
+    {
+     "kind": "boom",
+     "at": "valued"
+    },
+    {
+     "kind": "ding",
+     "at": "videos"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "worth": "{fact4}",
+    "worthLabel": "Valued at",
+    "ask": "Still the videos?",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "videos",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     }
+    ]
+   }
+  }
+ ]
+}

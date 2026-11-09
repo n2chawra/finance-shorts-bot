@@ -1,0 +1,158 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:50:44.658977+00:00",
+    "finishedAt": "2026-11-09T21:50:44.658977+00:00",
+    "notes": [
+      "story 'how_they_make_money' was told in the last 1 videos",
+      "style.look.header 'sticky' was used by the previous video (v-20261109-03)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:51:18.784340+00:00",
+    "finishedAt": "2026-11-09T21:51:18.784340+00:00",
+    "notes": [
+      "beat 'loss'.params.sub contains a typed number; use a placeholder: 'Beast Industries, 2024'",
+      "1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:57:57.412083+00:00",
+    "finishedAt": "2026-11-09T21:57:57.412083+00:00",
+    "notes": [
+      "beat 'loss'.params.actions[1].rows[0].value contains a typed number; use a placeholder: '2024'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-09T21:58:00.894376+00:00",
+    "finishedAt": "2026-11-09T21:58:00.894376+00:00",
+    "notes": [
+      "beat 'loss'.say contains a typed number; use a placeholder: 'In 2024, his video business lost almost {fact3}.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T21:58:06.893079+00:00",
+    "finishedAt": "2026-11-09T21:58:06.893079+00:00",
+    "notes": [
+      "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:00:21.176688+00:00",
+    "finishedAt": "2026-11-09T22:00:21.176688+00:00",
+    "notes": [
+      "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:01:35.394464+00:00",
+    "finishedAt": "2026-11-09T22:01:35.394464+00:00",
+    "notes": [
+      "All 4 facts confirmed on the source page (Fortune 2025-03-11, republishing Bloomberg/Shaw & Counts): Feastables 2024 sales about $250M, profit more than $20M, media business lost almost $80M, Beast Industries valued at about $5B (Series C). Hedges about/over/almost spoken as published. Still current: a web search found no reported 2025 actual results (only projections), and the valuation is still reported around $5B. Turn 'every video is an advert for the bar' is supported by the CEO's quote that content is 'a marketing investment in everything else we do'. No advice and no motives attributed; the description ends with the disclaimer. Style note: the profit equation card shows '$250M sales minus costs = $20M' while the source and voice say 'more than $20M'; the card could read 'over $20M'."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:01:46.422105+00:00",
+    "finishedAt": "2026-11-09T22:01:46.422105+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:01:47.191625+00:00",
+    "finishedAt": "2026-11-09T22:01:47.191625+00:00",
+    "notes": [
+      "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T22:01:57.657547+00:00",
+    "finishedAt": "2026-11-09T22:02:23.992465+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 5 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+      "the Short runs 27.6 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:02:40.375745+00:00",
+    "finishedAt": "2026-11-09T22:02:40.375745+00:00",
+    "notes": [
+      "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:02:50.704619+00:00",
+    "finishedAt": "2026-11-09T22:03:12.418417+00:00",
+    "notes": [
+      "27 s, ember/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:04:06.016665+00:00",
+    "finishedAt": "2026-11-09T22:04:06.016665+00:00",
+    "notes": [
+      "27 s, reads on mute (MrBeast's videos? -> video business loss card -> where's the money box -> $250M sales minus costs = over $20M -> videos lost $80M vs chocolate kept $20M -> valued at $5B, still the videos?), hook opens a question without the answer, one narrator, no overlaps or cut text, disclaimer on last frame, audio -1.0/-16.8 dB, layout/craft clean, thumbnail distinct from recent covers. Minor: Rohan's arm touches the left edge in the payoff close-up (25 s)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T22:04:49.096555+00:00",
+    "finishedAt": "2026-11-09T22:04:57.134712+00:00",
+    "notes": [
+      "the video's own code: it does not type-check: src/videos/v-20261110-03/props.tsx(35,20): error TS18048: 'x' is possibly 'undefined'. | src/videos/v-20261110-03/props.tsx(35,54): error TS18048: 'r' is possibly 'undefined'. | src/videos/v-20261110-03/props.tsx(36,20): error TS18048: 'x' is possibly 'undefined'. | src/videos/v-20261110-03/props.tsx(36,54): error TS18048: 'r' is possibly 'undefined'."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:05:04.947815+00:00",
+    "finishedAt": "2026-11-09T22:05:04.947815+00:00",
+    "notes": [
+      "Re-review after edits: the 4 facts are unchanged and confirmed on the Fortune/Bloomberg page (2025-03-11): Feastables 2024 sales about $250M, profit more than $20M, media lost almost $80M, valued at about $5B. The profit card now reads 'over $20M', matching the source. Present-tense 'Investors value it all at about $5B' holds: searches show later rounds (Jan/Mar 2026) still at about $5B and nothing higher. 'So where does all his money come from?' and the loss card without a year (voice says 'in one year') are fine. The turn is backed by the CEO quote 'a marketing investment'. No advice; the description ends with the disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:06:33.912176+00:00",
+    "finishedAt": "2026-11-09T22:08:00.032062+00:00",
+    "notes": [
+      "27 s, ember/pop, peak -1.0 dB, mean -16.8 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:08:05.031607+00:00",
+    "finishedAt": "2026-11-09T22:08:05.031607+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
