@@ -1,11 +1,11 @@
 {
   "notifications": [
     {
-      "key": "routines-usage-limit",
-      "severity": "critical",
-      "title": "No Shorts made since 5 Nov: the video runs hit the Pro usage limit",
-      "detail": "Every video run since 6 Nov failed with 'usage limit reached' within 5 seconds (last: main run 7 Nov 21:37 UTC, spare run 8 Nov 02:35 UTC); the improver and dashboard runs of 7 Nov failed the same way, and research did not run 6-8 Nov. Backlog is 0 of 30 and no video was made on 6, 7 or 8 Nov, so the upload slots have nothing to fill. The schedule has also drifted from the plan in CLAUDE.md: auditor 22:35, research 22:45, improver 23:00 and dashboard 23:40 IST now all start in the same 5-hour window, and the main video run at 03:07 IST lands at the end of that same window instead of opening a fresh one at 04:07. The spare run (08:05 IST) failing too points to the weekly limit as well, not only the 5-hour window.",
-      "fix": "1. On claude.ai, Settings > Usage: check whether the weekly limit is used up and when it resets. 2. Move the main video routine 'Finance Shorts generation' back to 04:07 IST (CRON_TZ=Asia/Kolkata 7 4 * * *) so it opens a fresh window after the 22:35 one ends at 03:35. 3. Move the improver to 06:17 and the dashboard to 07:37 IST as CLAUDE.md plans, after the video run. 4. Until the backlog is back above 5, consider pausing the improver and dashboard agents on the dashboard Settings page (agents.improver / agents.dashboard) so video runs get the usage. Do not enable paid usage credits."
+      "key": "variant-option-music",
+      "severity": "info",
+      "title": "Proposal: let the variant system judge the music genre",
+      "detail": "Across 45 Shorts with 48-hour views, the music genre is the clearest sound signal we have: pop 2.85x the median (n=10), lofi 1.90x (n=6), cinematic 1.36x (n=10, best % viewed at 64.7%), synthwave 0.48x (n=10), acoustic 0.22x (n=6). The genre is still picked at random by generator/variety.py, so a third of Shorts get our two weakest beds. Both variety.py and config/arms.json are owner-only, so no agent can change this.",
+      "fix": "1. In config/arms.json add a dimension like \"music\": {\"options\": [\"pop\", \"cinematic\", \"lofi\", \"synthwave\", \"acoustic\"], \"default\": \"pop\", \"since\": \"2026-11-10\", \"why\": \"music genre\"} and map style.genre to it in improvement/arms.py; the rotation rule (not the previous video's genre) still applies. 2. Or simpler: remove \"acoustic\" from GENRES in renderer/engine/music_constants.py. 3. Or do nothing and let the improver's music-follows-story experiment test it."
     },
     {
       "key": "owner-length-note-vs-arms",

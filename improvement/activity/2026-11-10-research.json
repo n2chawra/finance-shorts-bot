@@ -1,0 +1,50 @@
+{
+  "agent": "research",
+  "day": "2026-11-10",
+  "startedAt": "2026-11-09T17:16:34Z",
+  "finishedAt": "2026-11-09T17:22:35Z",
+  "summary": "Tuesday sound and voice pass, plus the demand scan. I added 3 famous-name big-money topics (MrBeast, California's billionaire tax, Musk's pay plan) and rejected the Visa topic after the owner called the bank/airline topics basic. I wrote 2 new proposals and re-raised the music-genre experiment.",
+  "decision": "acted",
+  "why": "Owner notes of 9 Nov: 'topics pretty basic' and 'say it's wrong' in the hook, while all three 9 Nov Shorts opened '<belief>? Watch this.' Our 45-Short evaluation: acoustic 0.22x and synthwave 0.48x vs pop 2.85x; narrator am_fenrir 0.61x vs af_bella 2.04x.",
+  "findings": [
+    {
+      "title": "Every 9 Nov hook ended 'Watch this.' with no denial",
+      "detail": "The owner asked for 'you think X? you're wrong' again. Proposal hook-denial-not-watch-this (adopt): a code check, not a prompt.",
+      "link": "improvement/research/2026-11-10.md"
+    },
+    {
+      "title": "MrBeast's videos lost almost $80M in 2024; the chocolate made >$20M profit",
+      "detail": "New high-priority topic; demand 'How MrBeast is worth $20 BILLION' (44M).",
+      "link": "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/"
+    },
+    {
+      "title": "California's 5% billionaire tax (Prop 40) heading for defeat",
+      "detail": "Trending topic until 13 Nov, told as mechanics; demand 307K Short.",
+      "link": "https://www.cpapracticeadvisor.com/?p=193162"
+    },
+    {
+      "title": "Acoustic and synthwave beds are our weakest music",
+      "detail": "pop 2.85x, lofi 1.90x, cinematic 1.36x, synthwave 0.48x, acoustic 0.22x; music-follows-story re-raised and a variant option sent to the owner.",
+      "link": "improvement/research/2026-11-10.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 topics added, 1 rejected",
+      "detail": "mrbeast-videos-lose-the-chocolate-pays (high), california-voted-on-taxing-billionaires (trending), musk-trillion-pay-only-if-tesla-8x; Visa rejected.",
+      "branch": "agent/research/2026-11-10"
+    },
+    {
+      "title": "Proposals",
+      "detail": "hook-denial-not-watch-this (adopt), narrator-from-the-strong-voices (experiment), music-follows-story re-raised (high).",
+      "branch": "agent/research/2026-11-10"
+    }
+  ],
+  "nextCheck": "2026-11-11",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-10.md"
+    }
+  ]
+}

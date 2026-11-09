@@ -2471,7 +2471,8 @@
       ],
       "found": "2026-11-09",
       "expires": "2027-02-07",
-      "status": "new"
+      "status": "rejected",
+      "reason": "2026-11-10: owner note of 9 Nov called the bank/airline/card topics basic; Visa is the same corporate-card family as the Delta and bank Shorts, and its demand (993K) is unverified. Replaced by famous-name topics (MrBeast, Musk)."
     },
     {
       "id": "2026-11-09-your-bank-earns-on-your-balance",
@@ -2528,6 +2529,243 @@
       ],
       "found": "2026-11-09",
       "expires": "2027-02-07",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-10-mrbeast-videos-lose-the-chocolate-pays",
+      "format": "short",
+      "title": "MrBeast's videos lost almost $80M. His chocolate made the money",
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How MrBeast is worth $20 BILLION 🤝",
+        "views": 44000000,
+        "url": "https://www.youtube.com/shorts/vQzyhkNzaYc"
+      },
+      "hook": "You think MrBeast gets rich from YouTube? You're wrong. The videos lose money.",
+      "templates": [
+        "any"
+      ],
+      "angle": "The world's biggest YouTuber: the videos are the advert, the chocolate bar on the shelf is the business. In 2024 his media side had about the same sales as Feastables but lost almost $80M, while Feastables sold about $250M and kept more than $20M. Investors still valued the whole company at about $5B.",
+      "why_now": "Holiday candy season; how_they_make_money is our best story (9.77x) and the owner called the bank/airline topics basic: a famous person everyone knows is the fix. Several small channels posted this exact angle in the last two weeks (chocolate-not-videos), so the idea is live.",
+      "maths": "rate (part 20, whole 250, facts {part: 2, whole: 1}) for the chocolate's profit margin (8%); compare the media loss (fact 3) with the chocolate profit (fact 2) as two named results (compare, a/b). Never invent a per-video income or a YouTube pay rate.",
+      "facts": [
+        {
+          "label": "Feastables sales in 2024, per investor documents",
+          "value": 250,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2024-12-31",
+          "source": "Bloomberg (via Fortune)",
+          "url": "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/",
+          "latest": true,
+          "checked": "2026-11-10"
+        },
+        {
+          "label": "Feastables profit in 2024 (more than)",
+          "value": 20,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2024-12-31",
+          "source": "Bloomberg (via Fortune)",
+          "url": "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/",
+          "latest": true,
+          "checked": "2026-11-10"
+        },
+        {
+          "label": "MrBeast media business loss in 2024 (almost)",
+          "value": 80,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2024-12-31",
+          "source": "Bloomberg (via Fortune)",
+          "url": "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/",
+          "latest": true,
+          "checked": "2026-11-10"
+        },
+        {
+          "label": "Beast Industries valuation in its early-2025 funding round (about)",
+          "value": 5,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-03-11",
+          "source": "Bloomberg (via Fortune)",
+          "url": "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/",
+          "latest": true,
+          "checked": "2026-11-10"
+        }
+      ],
+      "verify": [
+        "Bloomberg, 10-11 Mar 2025 (republished by Fortune): Feastables ~$250M sales and >$20M profit in 2024; the media business had similar sales and lost almost $80M; ~$5B valuation",
+        "Beast Industries is private: no audited 2025 figures were published (checked 2026-11-10; only 2025 projections and unit volumes exist), so 2024 is the latest",
+        "say 'about', 'more than' and 'almost' as published; never present the 2025 projections as results"
+      ],
+      "sources": [
+        "https://fortune.com/2025/03/11/youtube-biggest-star-mrbeast-makes-more-money-chocolate-videos/",
+        "https://www.bloomberg.com/news/articles/2025-03-10/mrbeast-makes-more-money-from-feastables-chocolate-than-youtube"
+      ],
+      "found": "2026-11-10",
+      "expires": "2027-02-08",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-10-california-voted-on-taxing-billionaires",
+      "format": "short",
+      "title": "California asked 200 billionaires for 5% of everything. Voters said no",
+      "category": "tax",
+      "kind": "trend",
+      "priority": "trending",
+      "stories": [
+        "billionaire_question"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "'Billionaire tax' divides voters in California",
+        "views": 307000,
+        "url": "https://www.youtube.com/shorts/SVP9-EE4kYQ"
+      },
+      "hook": "You think a 5% tax on billionaires is easy money? California just found out it isn't.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Why taxing a billionaire's wealth is so hard: the money is shares, not cash. Prop 40 was a one-time 5% of net worth for the 200+ billionaires living in California on 1 Jan 2026; the Google founders had already moved out, and on 3 Nov voters were turning it down. Tell the mechanics (wealth vs income, why they'd have to sell or borrow), never take a side.",
+      "why_now": "Voted on 3 Nov 2026; still in the news this week (307K-view Short, Fox Business, Channel 4). Billionaire stories are our core.",
+      "maths": "rate as a share: 5% of a labelled-assumption $100B fortune = $5B (a labelled example, not a real person's bill); facts {rate: 1}.",
+      "facts": [
+        {
+          "label": "Proposition 40 one-time tax on billionaires' net worth",
+          "value": 5,
+          "unit": "percent",
+          "as_of": "2026-11-04",
+          "source": "CPA Practice Advisor (AP)",
+          "url": "https://www.cpapracticeadvisor.com/?p=193162"
+        },
+        {
+          "label": "California billionaires the tax would have covered (more than)",
+          "value": 200,
+          "unit": "count",
+          "as_of": "2026-11-04",
+          "source": "CPA Practice Advisor (AP)",
+          "url": "https://www.cpapracticeadvisor.com/?p=193162"
+        },
+        {
+          "label": "Yes vote on Proposition 40, early returns election night",
+          "value": 43.6,
+          "unit": "percent",
+          "as_of": "2026-11-04",
+          "source": "CPA Practice Advisor (AP)",
+          "url": "https://www.cpapracticeadvisor.com/?p=193162"
+        }
+      ],
+      "verify": [
+        "the latest count on Prop 40 (California Secretary of State or AP): if the race is called, say 'voters rejected it'; if not, say 'heading for defeat' and do not show the 43.6% unless still current",
+        "Larry Page and Sergey Brin moved out of California in 2025 as the tax was discussed (CPA Practice Advisor/AP)",
+        "the tax applied only to billionaires resident on 1 Jan 2026, excluded most real estate and retirement accounts; neutral tone, no political side"
+      ],
+      "sources": [
+        "https://www.cpapracticeadvisor.com/?p=193162",
+        "https://www.youtube.com/watch?v=dIPl63KeWio"
+      ],
+      "found": "2026-11-10",
+      "expires": "2026-11-13",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-10-musk-trillion-pay-only-if-tesla-8x",
+      "format": "short",
+      "title": "Elon's $1 trillion pay: he gets nothing until Tesla hits $2 trillion",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "billionaire_question"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Elon Musk gets $1 TRILLION trillion pay package",
+        "views": 329000,
+        "url": "https://www.youtube.com/shorts/CBsJ3PSX4WA"
+      },
+      "hook": "You think Tesla just handed Elon a trillion dollars? It didn't. Not one share yet.",
+      "templates": [
+        "any"
+      ],
+      "angle": "The 'trillion-dollar pay' is 12 locked boxes of shares; each opens only when Tesla's value and its business hit a new milestone, from about $1 trillion to $8.5 trillion, with 1 million robots and robotaxis and $400B of EBITDA. A year after the vote, how does the deal actually pay?",
+      "why_now": "One year since the 6 Nov 2025 vote; billionaire_question is core and Elon is our proven name (Why billionaires never sell, 1,121 views).",
+      "maths": "share (total 423743904, parts 12) for the shares in each tranche (facts {total: 1, parts: 2}); rate (part 1, whole 8.5, facts {whole: 3}) to show today's ~$1T start is about 12% of the target (or compare the two). No share price, no value of Musk's stake on screen.",
+      "facts": [
+        {
+          "label": "Restricted Tesla shares in the 2025 CEO Performance Award",
+          "value": 423743904,
+          "unit": "count",
+          "as_of": "2025-11-06",
+          "source": "Meridian Compensation Partners (Tesla proxy)",
+          "url": "https://www.meridiancp.com/insights/tesla-shareholders-approve-2025-ceo-performance-award/",
+          "latest": true,
+          "checked": "2026-11-10"
+        },
+        {
+          "label": "Equal tranches in the award",
+          "value": 12,
+          "unit": "count",
+          "as_of": "2025-11-06",
+          "source": "Meridian Compensation Partners (Tesla proxy)",
+          "url": "https://www.meridiancp.com/insights/tesla-shareholders-approve-2025-ceo-performance-award/",
+          "latest": true,
+          "checked": "2026-11-10"
+        },
+        {
+          "label": "Tesla market value target for the full award",
+          "value": 8.5,
+          "unit": "money_trillion",
+          "currency": "USD",
+          "as_of": "2025-11-06",
+          "source": "Meridian Compensation Partners (Tesla proxy)",
+          "url": "https://www.meridiancp.com/insights/tesla-shareholders-approve-2025-ceo-performance-award/",
+          "latest": true,
+          "checked": "2026-11-10"
+        },
+        {
+          "label": "EBITDA target in the award",
+          "value": 400,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-11-06",
+          "source": "Meridian Compensation Partners (Tesla proxy)",
+          "url": "https://www.meridiancp.com/insights/tesla-shareholders-approve-2025-ceo-performance-award/",
+          "latest": true,
+          "checked": "2026-11-10"
+        },
+        {
+          "label": "Shareholder approval at the 6 Nov 2025 meeting (over)",
+          "value": 75,
+          "unit": "percent",
+          "as_of": "2025-11-06",
+          "source": "Meridian Compensation Partners",
+          "url": "https://www.meridiancp.com/insights/tesla-shareholders-approve-2025-ceo-performance-award/",
+          "latest": true,
+          "checked": "2026-11-10"
+        }
+      ],
+      "verify": [
+        "award terms in Tesla's 2025 proxy: 423,743,904 restricted shares in 12 equal tranches, market cap milestones from $2T to $8.5T, operational milestones (1M robots, 1M robotaxis, 10M FSD subscriptions, $400B EBITDA), 10-year period",
+        "whether any tranche has vested as of the video date (search Tesla's latest 10-Q/8-K); if one has, change the hook",
+        "'$1 trillion' is the media's estimate at the $8.5T target, not a payment"
+      ],
+      "sources": [
+        "https://www.meridiancp.com/insights/tesla-shareholders-approve-2025-ceo-performance-award/",
+        "https://www.aa.com.tr/en/economy/tesla-shareholders-approve-elon-musks-compensation-package/3737245"
+      ],
+      "found": "2026-11-10",
+      "expires": "2027-02-08",
       "status": "new"
     }
   ]
