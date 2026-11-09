@@ -1,11 +1,11 @@
 {
   "notifications": [
     {
-      "key": "routines-usage-limit",
-      "severity": "critical",
-      "title": "Every routine has failed on 'usage limit reached' since about 6 Nov: no new Shorts, backlog 0",
-      "detail": "The last video commit on main is 5 Nov 03:07 UTC and the last Short went out 6 Nov 07:07 IST, so about 8 upload slots are empty. The routine list shows the main video run (7 Nov 03:07 IST), the spare run (8 Nov 08:05 IST), improver, research and dashboard all ending after about 5 seconds with USAGE_LIMIT_REACHED. Tonight's auditor run (8 Nov 22:35 IST) did start, so the limit may have reset. The next main video run is 9 Nov 03:07 IST.",
-      "fix": "1. Open claude.ai → Settings → Usage and check when the weekly limit resets. 2. If it resets after 9 Nov 03:07 IST, start the 'Finance Shorts generation' routine by hand once it does. 3. Until the backlog is back to 3+, pause research, dashboard and improver (config: agents.research/dashboard/improver false) so the video runs get the usage. 4. Check the dashboard's Queue on 9 Nov morning."
+      "key": "data-audit-late-2026-11-09",
+      "severity": "info",
+      "title": "Tonight's data audit had not run by 22:37 IST",
+      "detail": "metrics/data-audit.json is from 8 Nov 15:24 UTC. The Data audit workflow's last run was on 8 Nov; no 9 Nov run had started by 17:07 UTC (GitHub starts this scheduled run late: earlier runs began between 14:56 and 16:33 UTC). So the auditor skipped tonight's dashboard-vs-YouTube comparison. Yesterday's audit had 0 errors and 0 warnings.",
+      "fix": "1. Open GitHub → Actions → Data audit and check that a 9 Nov run appears (it may just be late). 2. If none ran, start it with 'Run workflow'. Nothing else is needed; tomorrow's auditor reads the new file."
     },
     {
       "key": "watchdog-not-hourly",
