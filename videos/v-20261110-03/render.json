@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61942,
+  "duration_sec": 27,
+  "tempo": 1.2,
+  "style": {
+    "palette": "mint",
+    "genre": "synthwave",
+    "key": "E",
+    "bpm": 104,
+    "look": {
+      "stage": "field",
+      "header": "ribbon",
+      "holder": "blackboard",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "bf_emma",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "bf_emma",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think splitting one fortune makes everyone rich? It doesn't.",
+        "start": 0.3,
+        "seconds": 3.16,
+        "window": 3.8,
+        "fill": 0.832
+      },
+      {
+        "scene": "fortune",
+        "text": "Say a billionaire has $200.00B, shared by everyone alive.",
+        "start": 4.1,
+        "seconds": 3.89,
+        "window": 4.57,
+        "fill": 0.851
+      },
+      {
+        "scene": "earth",
+        "text": "That's the whole planet, each one waiting for a slice. How much?",
+        "start": 8.67,
+        "seconds": 3.21,
+        "window": 3.9,
+        "fill": 0.823
+      },
+      {
+        "scene": "slice",
+        "text": "Each person gets just $25. That's one dinner, once.",
+        "start": 12.57,
+        "seconds": 3.37,
+        "window": 4.03,
+        "fill": 0.836
+      },
+      {
+        "scene": "one",
+        "text": "But for one worker, that same pile is huge.",
+        "start": 16.6,
+        "seconds": 2.23,
+        "window": 2.9,
+        "fill": 0.769
+      },
+      {
+        "scene": "turn",
+        "text": "At $50,000 a year, earning it all takes 4M years.",
+        "start": 19.5,
+        "seconds": 3.42,
+        "window": 4.1,
+        "fill": 0.834
+      },
+      {
+        "scene": "payoff",
+        "text": "Huge for one, a dinner for all. Still want it split?",
+        "start": 23.6,
+        "seconds": 2.68,
+        "window": 3.33,
+        "fill": 0.805
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "ending-beats-act-and-vary": "off",
+    "you-in-the-core-story": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.4,
+    "music_under_voice_db": 23.2
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 9.181,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

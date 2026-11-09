@@ -1,0 +1,746 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61942,
+ "story": "money_scale",
+ "shape": "what-if",
+ "currency": "USD",
+ "feed_id": "2026-10-28-split-a-billionaire-with-everyone",
+ "narrator": "bf_emma",
+ "style": {
+  "palette": "mint",
+  "genre": "synthwave",
+  "key": "E",
+  "bpm": 104,
+  "look": {
+   "stage": "field",
+   "header": "ribbon",
+   "holder": "blackboard",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "secret",
+  "title": "plain",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Split it or leave it? Comment",
+ "maths": [
+  {
+   "name": "split",
+   "kind": "share",
+   "total": 200000000000,
+   "parts": 8000000000
+  },
+  {
+   "name": "life",
+   "kind": "share",
+   "total": 200000000000,
+   "parts": 1,
+   "per_year": 50000
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "payoff",
+  "sec": 2.2,
+  "who": "rohan",
+  "angle": "number",
+  "words": "Your *share* is tiny",
+  "figure": "{split_per_part}",
+  "tag": "Each person gets"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "You think splitting one fortune makes everyone rich? It doesn't.",
+   "events": {
+    "split": {
+     "word": "splitting"
+    },
+    "fortune": {
+     "word": "fortune"
+    },
+    "rich": {
+     "word": "rich"
+    },
+    "doesnt": {
+     "word": "doesn't"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "split"
+    },
+    {
+     "kind": "kaching",
+     "at": "rich"
+    },
+    {
+     "kind": "boom",
+     "at": "doesnt"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Split a billionaire's fortune",
+    "ask": "Everyone rich?",
+    "cross": "Not even close",
+    "set": "vault",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "happy"
+       },
+       {
+        "at": "doesnt",
+        "pose": "shrug",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "doesnt",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "fortune",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Say a billionaire has {split_total}, shared by everyone alive.",
+   "events": {
+    "take": {
+     "word": "Say"
+    },
+    "fortune": {
+     "word": "billionaire"
+    },
+    "share": {
+     "word": "shared"
+    },
+    "person": {
+     "word": "everyone"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "take"
+    },
+    {
+     "kind": "kaching",
+     "at": "fortune"
+    },
+    {
+     "kind": "whoosh",
+     "at": "share"
+    },
+    {
+     "kind": "tick",
+     "at": "person"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "bank",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "fortune",
+      "prop": "moneymountain",
+      "x": 0.32,
+      "size": 0.3,
+      "label": "Billionaire's fortune"
+     },
+     {
+      "id": "people",
+      "prop": "crowd",
+      "x": 0.74,
+      "size": 0.2,
+      "label": "Everyone alive",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "fortune"
+     },
+     {
+      "at": "fortune",
+      "do": "tag",
+      "target": "fortune",
+      "text": "{split_total}"
+     },
+     {
+      "at": "fortune",
+      "do": "grow",
+      "target": "fortune",
+      "scale": 1.1
+     },
+     {
+      "at": "person",
+      "do": "enter",
+      "target": "people",
+      "how": "rise"
+     },
+     {
+      "at": "person",
+      "do": "flow",
+      "target": "fortune",
+      "to": "people",
+      "n": 8
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "fortune",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "person",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "earth",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "That's the whole planet, each one waiting for a slice. How much?",
+   "events": {
+    "people": {
+     "word": "whole"
+    },
+    "earth": {
+     "word": "planet"
+    },
+    "slice": {
+     "word": "slice"
+    },
+    "much": {
+     "word": "much"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "everyone"
+    },
+    {
+     "kind": "whoosh",
+     "at": "earth"
+    },
+    {
+     "kind": "ding",
+     "at": "slice"
+    },
+    {
+     "kind": "riser",
+     "at": "much"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "space",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "earth",
+      "prop": "globe",
+      "x": 0.5,
+      "size": 0.42,
+      "label": "Whole planet"
+     },
+     {
+      "id": "slice",
+      "prop": "knife",
+      "x": 0.8,
+      "y": 0.3,
+      "size": 0.14,
+      "hidden": false,
+      "label": "A slice"
+     }
+    ],
+    "actions": [
+     {
+      "at": "people",
+      "do": "tag",
+      "target": "earth",
+      "text": "{split_parts}"
+     },
+     {
+      "at": "earth",
+      "do": "grow",
+      "target": "earth",
+      "scale": 1.15
+     },
+     {
+      "at": "much",
+      "do": "move",
+      "target": "slice",
+      "to": "earth"
+     },
+     {
+      "at": "slice",
+      "do": "glow",
+      "target": "slice"
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "people",
+      "size": "medium",
+      "on": "earth",
+      "move": true
+     },
+     {
+      "at": "earth",
+      "size": "medium",
+      "on": "earth"
+     },
+     {
+      "at": "slice",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "much",
+      "size": "close",
+      "on": "earth",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "slice",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Each person gets just {split_per_part}. That's one dinner, once.",
+   "events": {
+    "person": {
+     "word": "person"
+    },
+    "gets": {
+     "word": "gets"
+    },
+    "dinner": {
+     "word": "dinner"
+    },
+    "once": {
+     "word": "once"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "person"
+    },
+    {
+     "kind": "kaching",
+     "at": "gets"
+    },
+    {
+     "kind": "ding",
+     "at": "dinner"
+    },
+    {
+     "kind": "fail",
+     "at": "once"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "kitchen",
+     "tint": "green"
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.22,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "present",
+        "expression": "happy"
+       },
+       {
+        "at": "once",
+        "pose": "facepalm",
+        "expression": "sad"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "person",
+      "prop": "tinynote",
+      "x": 0.5,
+      "y": 0.22,
+      "size": 0.16,
+      "label": "Each person"
+     },
+     {
+      "id": "dinner",
+      "prop": "dinnerplate",
+      "x": 0.76,
+      "size": 0.22,
+      "hidden": false,
+      "label": "One dinner"
+     }
+    ],
+    "actions": [
+     {
+      "at": "person",
+      "do": "glow",
+      "target": "person"
+     },
+     {
+      "at": "gets",
+      "do": "tag",
+      "target": "person",
+      "text": "{split_per_part}"
+     },
+     {
+      "at": "dinner",
+      "do": "flow",
+      "target": "person",
+      "to": "dinner",
+      "n": 3
+     },
+     {
+      "at": "dinner",
+      "do": "grow",
+      "target": "dinner",
+      "scale": 1.15
+     },
+     {
+      "at": "once",
+      "do": "swap",
+      "target": "dinner",
+      "into": "emptyplate"
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "person",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "gets",
+      "size": "close",
+      "on": "person",
+      "move": true
+     },
+     {
+      "at": "dinner",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     },
+     {
+      "at": "once",
+      "size": "medium",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "one",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "But for one worker, that same pile is huge.",
+   "events": {
+    "worker": {
+     "word": "worker"
+    },
+    "pile": {
+     "word": "pile"
+    },
+    "enormous": {
+     "word": "huge"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "worker"
+    },
+    {
+     "kind": "boom",
+     "at": "pile"
+    },
+    {
+     "kind": "riser",
+     "at": "enormous"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "desert",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "worker",
+      "prop": "worker",
+      "x": 0.24,
+      "size": 0.18,
+      "label": "One worker"
+     },
+     {
+      "id": "pile",
+      "prop": "moneymountain",
+      "x": 0.66,
+      "size": 0.34,
+      "label": "Huge pile"
+     }
+    ],
+    "actions": [
+     {
+      "at": "worker",
+      "do": "glow",
+      "target": "worker"
+     },
+     {
+      "at": "pile",
+      "do": "grow",
+      "target": "pile",
+      "scale": 1.2
+     },
+     {
+      "at": "enormous",
+      "do": "shake",
+      "target": "pile"
+     }
+    ],
+    "hud": {
+     "hide": true
+    },
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "worker",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "pile",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     },
+     {
+      "at": "enormous",
+      "size": "medium",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "At {life_per_year} a year, earning it all takes {life_years} years.",
+   "events": {
+    "year": {
+     "word": "year"
+    },
+    "earning": {
+     "word": "earning"
+    },
+    "takes": {
+     "word": "takes"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "year"
+    },
+    {
+     "kind": "whoosh",
+     "at": "earning"
+    },
+    {
+     "kind": "boom",
+     "at": "takes"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "One salary",
+    "salary": "{life_per_year}",
+    "salaryLabel": "A year",
+    "years": "{life_years}",
+    "yearsLabel": "Years to earn it",
+    "set": "office",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "takes",
+      "size": "close",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Huge for one, a dinner for all. Still want it split?",
+   "events": {
+    "endless": {
+     "word": "Huge"
+    },
+    "dinner": {
+     "word": "dinner"
+    },
+    "split": {
+     "word": "split"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "endless"
+    },
+    {
+     "kind": "ding",
+     "at": "dinner"
+    },
+    {
+     "kind": "pop",
+     "at": "split"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "big": "{life_years} years",
+    "bigLabel": "For one",
+    "small": "{split_per_part}",
+    "smallLabel": "For everyone",
+    "ask": "Still split it?",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "split",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     }
+    ]
+   }
+  }
+ ]
+}

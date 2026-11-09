@@ -1,0 +1,204 @@
+[
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:03:57.186506+00:00",
+    "finishedAt": "2026-11-09T22:03:57.186506+00:00",
+    "notes": [
+      "10 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:04:03.137393+00:00",
+    "finishedAt": "2026-11-09T22:04:03.137393+00:00",
+    "notes": [
+      "10 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:06:19.205832+00:00",
+    "finishedAt": "2026-11-09T22:06:19.205832+00:00",
+    "notes": [
+      "10 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-09T22:07:05.225293+00:00",
+    "finishedAt": "2026-11-09T22:07:05.225293+00:00",
+    "notes": [
+      "Title 'Split the richest fortune with everyone. Here's your share' is false: the richest fortune today is about $869B (Forbes, 1 Nov 2026: Musk; Bloomberg higher), over 4x the $200B the video splits, so the $25 'share' it promises is wrong for the richest fortune (it would be about $100+). Drop 'richest' from the title (e.g. 'Split a $200 billion fortune with everyone') or use the real figure as a sourced fact.",
+      "Topic verify item not met: '$200B and 8 billion people stated as assumed round figures' - no beat or on-screen label says they are assumed/rounded. Beat 'fortune' says 'one billionaire's entire fortune' and tags $200.00B as if real; add an 'assume' word (e.g. 'Say one billionaire has $200 billion') or a label like 'Assumed: $200B' and 'about 8B people' (world population is ~8.2B).",
+      "Hook 'Split the richest fortune on Earth' in the topic and the hook beat's 'Split a billionaire's fortune' are fine; also note description is OK and ends with the disclaimer."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-09T22:08:27.506694+00:00",
+    "finishedAt": "2026-11-09T22:08:27.506694+00:00",
+    "notes": [
+      "topic category 'wealth' was used in the last 3 videos"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:08:28.281041+00:00",
+    "finishedAt": "2026-11-09T22:08:28.281041+00:00",
+    "notes": [
+      "10 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:08:57.449046+00:00",
+    "finishedAt": "2026-11-09T22:08:57.449046+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:08:58.229476+00:00",
+    "finishedAt": "2026-11-09T22:08:58.229476+00:00",
+    "notes": [
+      "10 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-09T22:09:13.415967+00:00",
+    "finishedAt": "2026-11-09T22:09:13.415967+00:00",
+    "notes": [
+      "10 figures computed from inputs; 10 cross-checked against closed-form formulas.",
+      "beats average 10 words: explain in full sentences (10+ words a beat, \"because… so… which means…\"), not one-liners"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:09:17.881793+00:00",
+    "finishedAt": "2026-11-09T22:09:17.881793+00:00",
+    "notes": [
+      "10 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:09:36.679237+00:00",
+    "finishedAt": "2026-11-09T22:09:36.679237+00:00",
+    "notes": [
+      "10 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T22:09:46.427420+00:00",
+    "finishedAt": "2026-11-09T22:10:11.069999+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+      "the Short runs 27.5 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:10:23.686291+00:00",
+    "finishedAt": "2026-11-09T22:10:23.686291+00:00",
+    "notes": [
+      "Re-review after fixes: title no longer claims the richest fortune; $200B fortune, 8B people and $50,000 salary are framed as assumptions ('Say a billionaire has...', description says assumed round figures), meeting the topic verify item; no sourced facts, no named person, no advice, disclaimer ends the description. Note: on-screen '8B' rounds today's ~8.2B population (fine as an assumed round figure)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:10:32.541205+00:00",
+    "finishedAt": "2026-11-09T22:10:32.541205+00:00",
+    "notes": [
+      "10 figures computed from inputs; 10 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-09T22:10:43.515627+00:00",
+    "finishedAt": "2026-11-09T22:11:06.818532+00:00",
+    "notes": [
+      "text '$200.00B' at 7.0 s is 22.1 px, below the 44 px minimum"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:11:21.665317+00:00",
+    "finishedAt": "2026-11-09T22:11:40.233610+00:00",
+    "notes": [
+      "27 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:11:56.546627+00:00",
+    "finishedAt": "2026-11-09T22:12:25.579853+00:00",
+    "notes": [
+      "27 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-09T22:13:03.010849+00:00",
+    "finishedAt": "2026-11-09T22:13:03.010849+00:00",
+    "notes": [
+      "[script] Thumbnail (thumbnail.at 'turn', sec 2.6) is caught mid-transition: the hourglass is tipped sideways mid-flip and the background holds a blurred ghost of the 'A YEAR' chip; it shows a salary slip and hourglass under 'Your share is tiny', so the words don't match the picture, there is no money object and no figure (the planned {split_per_part} $25 is not drawn), and the bottom half is empty floor. Move the thumbnail to the 'slice' beat (the $25 note + dinner plate with Rohan) at a settled moment, or to the payoff after its entrance."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:13:25.058434+00:00",
+    "finishedAt": "2026-11-09T22:13:42.523482+00:00",
+    "notes": [
+      "27 s, mint/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:13:59.688312+00:00",
+    "finishedAt": "2026-11-09T22:13:59.688312+00:00",
+    "notes": [
+      "Re-review after cover fix: thumbnail now the settled payoff (money pile with worker vs crowd with one dinner plate, Rohan full figure, 'Your share is tiny' clear of faces), matches the title; stills 0-27.2s readable on mute ($200.00B fortune, 8B planet, $25 each, $50,000 a year, 4M years vs $25), hook and disclaimer present, 27 s, layout/craft clean, audio peak -1 dB mean -16.3 dB."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:13:52.387599+00:00",
+    "finishedAt": "2026-11-09T22:15:12.505606+00:00",
+    "notes": [
+      "27 s, mint/synthwave, peak -1.0 dB, mean -16.3 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-09T22:15:17.874232+00:00",
+    "finishedAt": "2026-11-09T22:15:17.874232+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
