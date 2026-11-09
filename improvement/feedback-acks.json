@@ -139,6 +139,18 @@
       "id": "cmw31ex100001l809z2cs7b7q",
       "action": "noted",
       "note": "Noted as your taste: that Short was a 'pick-one' shape with things that turn into each other (the bonus becoming a paycheck); pick-one is a trial shape and needs one more Short at the median to become a regular."
+    },
+    {
+      "id": "cmw904gj40001jy09k8a2fwmd",
+      "action": "fixed",
+      "note": "The number check now fails a hook that doesn't start 'You think ...?' and deny it ('It doesn't.' / 'You're wrong.'), or ends on 'Watch this.'/'Here's why.', or ends like a recent hook; the prompts that still taught 'end on watch' are fixed. Heads-up: the 3-6 Nov Shorts with this exact pattern got 9-63 views, so watch the next few.",
+      "commit": "8bffe46"
+    },
+    {
+      "id": "cmw9077420001lg0967jn37k7",
+      "action": "fixed",
+      "note": "Partly yes: formats and topic kinds are judged on views (budget is already dropped; how_they_make_money is actually our best format at 9.8x median), so the type wasn't the problem, the pick inside it was. The planner now skips topics a typical viewer already knows (e.g. 'banks lend your savings') and the editor ranks them lower.",
+      "commit": "05a8b8d"
     }
   ]
 }

@@ -1139,7 +1139,8 @@
       "route": "adopt",
       "priority": "normal",
       "found": "2026-11-09",
-      "status": "open"
+      "status": "done",
+      "reason": "The render gate already fails it under today's 300-400 s setting (the 4 Nov render predated the setting); the message now says how many words to cut and a test pins the long case (27f7504)."
     }
   ]
 }

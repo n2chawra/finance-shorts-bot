@@ -930,9 +930,11 @@
       "effort": "S",
       "risk": "A strict word list can fail good hooks; keep the denial list generous and log failures as a rewrite, not a failed video.",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "adoptedAt": "2026-11-09",
+      "commit": "8bffe46"
     },
     {
       "id": "narrator-from-the-strong-voices",
