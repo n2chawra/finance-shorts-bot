@@ -557,6 +557,53 @@
       "page": "overview",
       "found": "2026-11-08",
       "status": "open"
+    },
+    {
+      "id": "notif-inline-steps",
+      "kind": "bug",
+      "title": "Notifications: one-line '1. … 2. …' fixes read as one paragraph",
+      "detail": "policy.md tells agents to write fix as '1. … 2. …' on one line, and every real notification does, but Steps only numbered lines split by newlines. Now parsed into an intro plus numbered steps (src/lib/steps.ts); smoke test fails without the fix.",
+      "page": "notifications",
+      "found": "2026-11-09",
+      "status": "done",
+      "done": "2026-11-09",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-11-09",
+        "apps/dashboard/src/lib/steps.ts": "2026-11-09",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-09"
+      }
+    },
+    {
+      "id": "notif-unread-dot-a11y",
+      "kind": "bug",
+      "title": "Notifications: unread dot invisible to screen readers",
+      "detail": "A bare span with aria-label is skipped by screen readers. Now role=img with a tooltip; smoke test added.",
+      "page": "notifications",
+      "found": "2026-11-09",
+      "status": "done",
+      "done": "2026-11-09",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-11-09",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-09"
+      }
+    },
+    {
+      "id": "notif-info-fold",
+      "kind": "idea",
+      "title": "Notifications: fold 'For your information' items under the ones that need you",
+      "detail": "Most open notifications are info-level proposals from research, the improver and Scout (about a dozen today), so a critical one like the YouTube sign-in can be the only red card in a long list. Sort critical → warning → info, and put info items in a 'For your information (N)' fold that stays open if it's the only group. Notification-centre guidance (Carbon, saasui.design 2026): ruthless prioritisation and fewer, actionable alerts. Helps the owner act on what matters in a twice-a-day check.",
+      "page": "notifications",
+      "found": "2026-11-09",
+      "status": "open"
+    },
+    {
+      "id": "video-48h-mark",
+      "kind": "idea",
+      "title": "Video page: show the 48-hour views the variant system judges on",
+      "detail": "Since 2026-11-04 every option is judged on public views 48 hours after publishing (hourly snapshots). On a published Short's page, show '48 h: N views' (or 'judged in 13 h') next to the variant options it tried. Creator-analytics guides stress that early numbers are noisy and that the dashboard should say how settled a number is; this ties the page to the one number that decides defaults.",
+      "page": "video",
+      "found": "2026-11-09",
+      "status": "open"
     }
   ]
 }

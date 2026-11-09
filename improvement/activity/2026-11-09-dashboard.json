@@ -1,0 +1,20 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-09",
+  "startedAt": "2026-11-09T18:12:43Z",
+  "finishedAt": "2026-11-09T18:34:07Z",
+  "summary": "Notifications now show each 'How to fix' as numbered steps (agents write them on one line, so they read as one paragraph), and the unread dot is announced to screen readers. Two ideas added.",
+  "decision": "acted",
+  "why": "All 15 real notifications write fixes as '1. … 2. …' on one line and the page only numbered newline-split steps; the owner reads these every day. Ideas on Overview, Analytics and Calendar wait for the 7-day rule (touched 11-03/11-04).",
+  "findings": [
+    {"title": "One-line fix steps shown as a paragraph", "detail": "Notifications page; fixed with a smoke test that fails without the fix."},
+    {"title": "Unread dot skipped by screen readers", "detail": "aria-label on a bare span; fixed with role=img."},
+    {"title": "Live site healthy", "detail": "/api/health: us-east-2, database 221 ms (two proxy resets first, not the site)."}
+  ],
+  "changes": [
+    {"title": "Numbered steps for one-line fixes", "detail": "src/lib/steps.ts + notifications/page.tsx; e2e test.", "branch": "agent/dashboard/2026-11-09"},
+    {"title": "Unread dot announced", "detail": "notifications/page.tsx role=img; e2e test.", "branch": "agent/dashboard/2026-11-09"}
+  ],
+  "nextCheck": "2026-11-10",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-09.md"}]
+}

@@ -8,6 +8,7 @@ import { Badge, Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, ty
 import { useToast } from "@/components/toast";
 import { fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
 import { useNotificationAction, useNotifications } from "@/lib/queries";
+import { splitSteps } from "@/lib/steps";
 import type { Notification } from "@/lib/schemas";
 
 const SEVERITY: Record<Notification["severity"], { tone: Tone; icon: typeof Info; label: string; ring: string }> = {
@@ -17,14 +18,17 @@ const SEVERITY: Record<Notification["severity"], { tone: Tone; icon: typeof Info
 };
 
 function Steps({ text }: { text: string }) {
-  const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
-  const numbered = lines.every((l) => /^\d+[.)]\s/.test(l));
-  if (lines.length > 1 && numbered) {
-    return <ol className="flex flex-col gap-1.5">{lines.map((l, i) => (
-      <li key={i} className="flex gap-2.5"><span className="grid size-5 shrink-0 place-items-center rounded-full bg-surface text-[11px] font-semibold tabular-nums text-ink2">{i + 1}</span><span>{l.replace(/^\d+[.)]\s*/, "")}</span></li>
-    ))}</ol>;
-  }
-  return <p className="whitespace-pre-wrap">{text}</p>;
+  // agents write "1. … 2. …" on one line (policy.md), so numbered steps aren't only split by newlines
+  const { intro, steps } = splitSteps(text);
+  if (!steps.length) return <p className="whitespace-pre-wrap">{text}</p>;
+  return (
+    <>
+      {intro && <p className="mb-2 whitespace-pre-wrap">{intro}</p>}
+      <ol className="flex flex-col gap-1.5">{steps.map((l, i) => (
+        <li key={i} className="flex gap-2.5"><span aria-hidden className="grid size-5 shrink-0 place-items-center rounded-full bg-surface text-[11px] font-semibold tabular-nums text-ink2">{i + 1}</span><span className="min-w-0 whitespace-pre-wrap break-words">{l}</span></li>
+      ))}</ol>
+    </>
+  );
 }
 
 const show = (v: unknown): string => (Array.isArray(v) ? v.join(", ") : v === undefined ? "—" : String(v));
@@ -58,7 +62,7 @@ function Item({ n, onResolve, onReopen, onDecide, busy }: { n: Notification; onR
         <div className="min-w-0 flex-1 basis-[calc(100%-2.75rem)] sm:basis-0">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-[15px] font-medium">{n.title}</h3>
-            {!n.seenAt && !n.resolvedAt && <span className="size-1.5 rounded-full bg-brand" aria-label="Unread" />}
+            {!n.seenAt && !n.resolvedAt && <span role="img" className="size-1.5 shrink-0 rounded-full bg-brand" aria-label="Unread" title="Unread" />}
           </div>
           <div className="mt-0.5 flex flex-wrap gap-x-2 text-xs text-muted">
             <Badge tone={s.tone}>{s.label}</Badge>
