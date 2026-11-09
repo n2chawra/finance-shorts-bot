@@ -198,8 +198,11 @@ Since 2026-11-02 every Short and long video may tell a true story with real figu
 The Curious Plot: "Bezos took about $80,000 a year for decades" beats "a billionaire with an assumed
 $50 million salary").
 - Set `feed_id` to the plan's `topic.feed_id` (or `topic.trend.id`) and copy the topic's `facts`
-  **exactly** (`value`, `unit`, `currency`, `as_of`, `source`, `url`); you may only shorten a `label`. The
-  number check compares them with the feed and fails on any difference. Never add a figure the
+  **exactly** (`value`, `unit`, `currency`, `as_of`, `source`, `url`); you may only shorten a `label`, and
+  cut a `source` to the publisher's name ("Delta Air Lines (SEC 8-K, 13 Jan 2026)" → "Delta Air Lines":
+  its start, at a word, before "(" or the first word with a digit). The number check compares them with
+  the feed and fails on any other difference, and on a "Data: … · month" line too wide for the frame
+  (5 Shorts in a week lost the month off the edge; `generator/topics.py` `source_line_problems`). Never add a figure the
   feed doesn't have, and never a claim about a real person the sources don't make.
 - The facts become `{fact1}`, `{fact2}`, … A `board` beat (its source footer) or a `headline` beat
   prints where they come from ("Data: ProPublica · Jun 2021"), **once a video** (owner, 2026-11-03):

@@ -98,6 +98,9 @@ fix any beat near a limit as well.
   label, tag, chip). Give clauses a change: enter, swap, flow, multiply, grow, or a panel.
 - **The source line shows once** (owner, 2026-11-03): on the first board beat that says a fact; own
   code uses `showsSource(p)`.
+- **The source line fits with its month** (2026-11-09: v-20261103-01, -04-03, -05-02, -09-01, -09-03
+  cut it at the edge): cut each `facts[].source` to the publisher ("Delta Air Lines", "JPMorgan
+  Chase"); the number check fails a line wider than the frame when there's detail left to cut.
 - **No stretch of words only** (owner, 2026-11-04, v-20261104-02: 12 s of cards with no things): a
   card beat with a `person` or `doc` panel still lists 1–3 `items` that act on its words; they stand
   under the panel (a doc of at most three rows, no `equation` on the same beat). Two card beats in a

@@ -21,6 +21,7 @@ of the upload queue.
 """
 from datetime import date, timedelta
 import json
+import re
 from pathlib import Path
 
 from .settings import ROOT
@@ -371,9 +372,75 @@ def check_facts(script: dict, topic: dict | None) -> list[str]:
         match = next((g for g in feed if all(g.get(k) == f.get(k) for k in ("value", "unit", "currency", "as_of", "url"))), None)
         if match is None:
             out.append(f"facts[{i}] ({f.get('value')} {f.get('unit')}, {f.get('as_of')}) is not one of the feed topic's facts; copy them exactly")
-        elif match.get("source") != f.get("source"):
-            out.append(f"facts[{i}].source must be {match.get('source')!r} as in the feed")
-    return out + check_fact_inputs(script)
+        elif not source_matches(f.get("source"), match.get("source")):
+            out.append(f"facts[{i}].source must be {match.get('source')!r} as in the feed, or its start cut at a word "
+                       f"or before '(' (e.g. {short_source(match.get('source'))!r})")
+    return out + check_fact_inputs(script) + source_line_problems(script)
+
+
+def short_source(feed: str | None) -> str:
+    """The publisher's name from a feed source: no parenthetical detail and nothing from the first word with a
+    digit ('Delta Air Lines (SEC 8-K, 13 Jan 2026)' → 'Delta Air Lines', 'JPMorgan Chase 2025 Form 10-K' →
+    'JPMorgan Chase')."""
+    head = re.split(r"\s*[(\[,;]", str(feed or ""), maxsplit=1)[0].strip(" ,;:-")
+    words = head.split()
+    cut = next((i for i, w in enumerate(words) if i and re.search(r"\d", w)), len(words))
+    return " ".join(words[:cut]).strip(" ,;:-") or str(feed or "")
+
+
+def source_matches(got: str | None, feed: str | None) -> bool:
+    """A script's fact source is the feed's, or its start cut at a word boundary (at least one whole word):
+    the publisher's name is the attribution, the URL stays in the fact. Since 2026-11-09: 5 Shorts in a week
+    lost their source line's month off the frame edge because the feed's source was a sentence."""
+    got, feed = str(got or "").strip(), str(feed or "").strip()
+    if not got or not feed:
+        return got == feed
+    if got == feed or got == short_source(feed):
+        return True
+    return feed.startswith(got) and (len(feed) == len(got) or not feed[len(got)].isalnum()) and got[-1].isalnum()
+
+
+# the "Data: <sources> · <month>" pill (remotion/src/studio/board.tsx): the width at which the board itself
+# drops the line to its first source (maxW, the text column) at the format's minimum size; widths per
+# character as in remotion/src/design/fit.ts
+SOURCE_LINE_WIDTH = {"short": (930, 44), "long": (1784, 30)}
+
+
+def _text_width(text: str, size: float) -> float:
+    em = 0.0
+    for ch in text:
+        if ch == " ":
+            em += 0.3
+        elif ch in "MW@%mw":
+            em += 0.95
+        elif ch in "ijlI.,:;'!|":
+            em += 0.32
+        elif ch.isupper():
+            em += 0.76
+        elif ch.isdigit() or ch in "$₹£€":
+            em += 0.66
+        else:
+            em += 0.62
+    return em * size
+
+
+def source_line_problems(script: dict) -> list[str]:
+    """The source line must fit the frame with its month (a hard rule for sourced facts): a cut-off line
+    loses the month, and a too-long one is dropped to its first source."""
+    facts = script.get("facts") or []
+    if not facts or any(not f.get("source") or not f.get("as_of") for f in facts):
+        return []
+    sources = list(dict.fromkeys(str(f["source"]) for f in facts))
+    as_of = str(max(str(f["as_of"]) for f in facts))
+    month = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()[int(as_of[5:7]) - 1] if as_of[5:7].isdigit() else "May"
+    line = f"Data: {' · '.join(sources)} · {month} {as_of[:4]}"     # as renderer.timeline.build._facts writes it
+    width, size = SOURCE_LINE_WIDTH.get(script.get("format", "short"), SOURCE_LINE_WIDTH["short"])
+    if _text_width(line, size) <= width:
+        return []
+    if all(short_source(x) == x for x in sources):    # publisher names only: nothing left to cut
+        return []
+    return [f"the source line {line!r} is too wide for the frame ({_text_width(line, size):.0f} of {width} px at {size} px): "
+            f"shorten each facts[].source to the publisher (e.g. {short_source(sources[0])!r}), one name per publisher"]
 
 
 # a fact's unit suffix → how many of its base unit (a "money_million" fact of 544 is 544,000,000)
