@@ -283,7 +283,7 @@ def record(vid: str, agent: str, passed: bool, notes: list[str], root: Path = RO
 LIVELY_BAR = {"short": 3.0, "long": 2.0}   # the shot system moves far more than the old layouts (gates.py floor: 1.2)
 
 
-WORDS_PER_MIN = {"short": 175, "long": 215}
+WORDS_PER_MIN = {"short": 175, "long": 180}
 
 
 def gate_problems(report: dict, settings: dict, fmt: str) -> list[str]:
@@ -294,7 +294,7 @@ def gate_problems(report: dict, settings: dict, fmt: str) -> list[str]:
     # half a second either way: a Short of 35.3 s took eight rewrites on 2026-11-05 for nothing a viewer notices
     slack = 0.5 if fmt == "short" else 0
     if not lo - slack <= report["duration_sec"] <= hi + slack:
-        # how much to say, at the format's spoken pace (CLAUDE.md: ~175 words a minute in a Short, ~215 in a long video)
+        # how much to say, at the format's spoken pace (~175 words a minute in a Short at tempo 1.2, ~180 in a long video at 1.25)
         off = report["duration_sec"] - hi if report["duration_sec"] > hi else lo - report["duration_sec"]
         words = max(1, round(off * WORDS_PER_MIN[fmt] / 60))
         out.append(f"length {report['duration_sec']} s is outside {lo}–{hi} s: "
