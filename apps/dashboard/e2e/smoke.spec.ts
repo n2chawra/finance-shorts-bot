@@ -120,10 +120,13 @@ test("notification fixes written on one line show as numbered steps", async ({ p
 
 test("unread notifications are announced to screen readers", async ({ page }) => {
   await signIn(page);
-  // keep the shared sample data as it is: opening the page would otherwise mark everything seen
+  // other tests open this page and mark the shared sample items seen, so serve one unread item here,
+  // and answer the "seen" PATCH without changing anything
   await page.route("**/api/notifications", async (route) => {
-    if (route.request().method() !== "PATCH") return route.continue();
-    await route.fulfill({ response: await route.fetch({ method: "GET" }) });
+    const res = await route.fetch({ method: "GET" });
+    const body = await res.json();
+    body.open[0].seenAt = null;
+    await route.fulfill({ response: res, json: body });
   });
   await page.goto("/notifications");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
