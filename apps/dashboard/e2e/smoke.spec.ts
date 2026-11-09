@@ -118,6 +118,19 @@ test("notification fixes written on one line show as numbered steps", async ({ p
   await expect(page.getByText("Pick one:", { exact: true })).toBeVisible();
 });
 
+test("unread notifications are announced to screen readers", async ({ page }) => {
+  await signIn(page);
+  // keep the shared sample data as it is: opening the page would otherwise mark everything seen
+  await page.route("**/api/notifications", async (route) => {
+    if (route.request().method() !== "PATCH") return route.continue();
+    await route.fulfill({ response: await route.fetch({ method: "GET" }) });
+  });
+  await page.goto("/notifications");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
+  // the dot was a bare span with aria-label, which screen readers skip
+  await expect(page.getByRole("img", { name: "Unread" }).first()).toBeAttached();
+});
+
 test("queue rows never clip their text sideways", async ({ page }) => {
   await signIn(page);
   await page.goto("/queue");

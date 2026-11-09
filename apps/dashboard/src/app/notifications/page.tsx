@@ -62,7 +62,7 @@ function Item({ n, onResolve, onReopen, onDecide, busy }: { n: Notification; onR
         <div className="min-w-0 flex-1 basis-[calc(100%-2.75rem)] sm:basis-0">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-[15px] font-medium">{n.title}</h3>
-            {!n.seenAt && !n.resolvedAt && <span className="size-1.5 rounded-full bg-brand" aria-label="Unread" />}
+            {!n.seenAt && !n.resolvedAt && <span role="img" className="size-1.5 shrink-0 rounded-full bg-brand" aria-label="Unread" title="Unread" />}
           </div>
           <div className="mt-0.5 flex flex-wrap gap-x-2 text-xs text-muted">
             <Badge tone={s.tone}>{s.label}</Badge>
