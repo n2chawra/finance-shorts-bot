@@ -117,3 +117,25 @@ test("one Short every 48 hours: the day after an upload rests, manual uploads in
   const next = nextSlot(new Date("2026-11-02T14:00:00Z"), ["19:07"], new Set(), posted, 30, undefined, 2);
   assert.equal(next.toISOString(), "2026-11-04T13:37:00.000Z");
 });
+
+// 9 Nov 2026: GitHub ran the publish job 26 min before the 07:07 slot and 18 min before the 19:07 one;
+// with a 30-minute lead both Shorts were skipped. Late slots are now filled or caught up.
+test("missed slots are caught up for two hours, once", async () => {
+  const { missedSlots, soonSlot, MIN_LEAD_MINUTES } = await import("../lib/publishing.ts");
+  const T = ["07:07", "12:37", "19:07"];
+  // 18 min before 19:07 IST: still fillable as a normal slot, so not missed
+  assert.deepEqual(missedSlots(at("2026-11-09T13:19:00Z"), T, []), []);
+  assert.equal(nextSlot(at("2026-11-09T13:19:00Z"), T, new Set(), new Map(), MIN_LEAD_MINUTES).toISOString(), "2026-11-09T13:37:00.000Z");
+  // 5 min before it: too close to schedule, so it is caught up
+  assert.deepEqual(missedSlots(at("2026-11-09T13:32:00Z"), T, []).map((d) => d.toISOString()), ["2026-11-09T13:37:00.000Z"]);
+  // 1.5 h after it, nothing uploaded: caught up; 07:07 (6 h ago) is too old
+  assert.deepEqual(missedSlots(at("2026-11-09T15:05:00Z"), T, [at("2026-11-09T07:07:00Z")]).map((d) => d.toISOString()), ["2026-11-09T13:37:00.000Z"]);
+  // once caught up (public at 15:20), the next run leaves it alone
+  assert.deepEqual(missedSlots(at("2026-11-09T15:30:00Z"), T, [at("2026-11-09T07:07:00Z"), at("2026-11-09T15:20:00Z")]), []);
+  // filled on time: nothing to do; 2 h 5 min late: given up
+  assert.deepEqual(missedSlots(at("2026-11-09T14:00:00Z"), T, [at("2026-11-09T13:37:00Z")]), []);
+  assert.deepEqual(missedSlots(at("2026-11-09T15:42:00Z"), T, []), []);
+  // a caught-up video goes public 15 min after the next whole minute, the next one 5 min later
+  assert.equal(soonSlot(at("2026-11-09T15:05:30Z")).toISOString(), "2026-11-09T15:21:00.000Z");
+  assert.equal(soonSlot(at("2026-11-09T15:05:00Z"), 1).toISOString(), "2026-11-09T15:25:00.000Z");
+});
