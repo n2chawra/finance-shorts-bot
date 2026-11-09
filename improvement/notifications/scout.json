@@ -8,11 +8,11 @@
       "fix": "1. When uploading a long video, open Editor → End screen. 2. Add one 'Video' element pointing to our closest long video in subject. 3. Add the Subscribe element. Nothing else."
     },
     {
-      "key": "scout-studio-length-stale",
+      "key": "scout-winning-short-window",
       "severity": "warning",
-      "title": "Studio's instructions still aim at 400-600 s long videos",
-      "detail": "agents/studio.md (section 3, 'Length and pace') says 400-600 s and 1,450-2,150 words across 85-125 beats; settings say 300-400 s since 2026-11-04 (scout.md agrees). Studio may write a script twice the target. Agents can't edit agents/* (guard).",
-      "fix": "1. In agents/studio.md, 'Length and pace': change to '300-400 s since 2026-11-04: about 1,075-1,430 words across 60-85 beats'. 2. Commit to main."
+      "title": "Long-video topics run out of winning Shorts around 26 Nov",
+      "detail": "scout.md says every long topic expands a Short with 1,000+ views 'in the last 30 days'. Our five 1K Shorts were published 21-27 Oct, so they leave that window between 20 and 26 Nov. No Short published since has 1K: the gym Short (v-20261105-06) has 920, and the other 11 have 16-469. The code (generator/topics.py winning_short) checks views but not the date, so Scout and Studio will keep using the October Shorts unless you say otherwise.",
+      "fix": "Pick one: 1. Keep it as the code does: any Short that ever reached 1,000 views qualifies (no change needed). 2. Enforce 30 days: ask the auditor/improver to add a publishAt check to winning_short. Long videos then pause from about 26 Nov until a new Short reaches 1K. 3. Lower the bar for long topics, for example to 750 views (WIN_VIEWS in generator/topics.py)."
     }
   ]
 }
