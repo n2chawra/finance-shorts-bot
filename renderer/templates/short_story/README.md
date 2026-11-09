@@ -172,13 +172,14 @@ why}` in the plan: it joins the library when the video ships). Pick the shape th
 a hidden answer is a `reveal`, two people one choice a `versus`, a ladder people climb `levels`.
 Every shape keeps one spine (`generator/story.py` checks it):
 
-1. **Hook** (`role: hook`, 4.5 s or less): **a curiosity gap**. Say the surprising thing, open the
-   question, and promise the answer. Never give the answer here: it is the payoff.
-   - Good: "Casinos make money even when you win. Here's how." / "His salary is one dollar. So how
-     does he live like a billionaire?" / "This pile is one billion dollars. Watch how long you'd
-     need to earn it."
-   - Bad: "The casino never gambles. It wins a slice of every bet." (the answer, so nothing to stay for)
-   The hook line ends on the question or a promise ("here's how", "watch", "let me show you").
+1. **Hook** (`role: hook`, 4.5 s or less): **a curiosity gap**: the belief put to the viewer and
+   denied (owner, 2026-10-31 and 2026-11-09). Never give the answer here: it is the payoff.
+   - Good: "You think McDonald's makes its money selling burgers? It doesn't." / "You think
+     billionaires live on their salary? Not one of them."
+   - Bad: "Delta makes its money flying you? Watch this." (the belief, never denied, and a stock tag) /
+     "The casino never gambles. It wins a slice of every bet." (the answer, so nothing to stay for)
+   `generator/story.py` `hook_problems` fails a hook without the denial, with a stock tag after it
+   ("Watch this.", "Here's why."), or ending like one of the last 6 Shorts' hooks.
 2. **Promise** by 6 s (`role: promise`): what the viewer will get ("three clues, and the last one
    is the one they never tell you").
 3. **A figure on screen** by 9 s.

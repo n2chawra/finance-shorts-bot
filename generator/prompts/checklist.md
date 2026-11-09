@@ -50,9 +50,10 @@ fix any beat near a limit as well.
 - Real people and companies: only well-known public facts, no invented quotes.
 
 ## Hook, voice and shape (owner, 2026-10-30)
-- **The hook opens a question and promises the answer, and never gives it**: "Casinos make money
-  even when you win. Here's how." The hook line ends on the question or "here's how / watch / let
-  me show you".
+- **The hook puts the belief to the viewer and denies it, and never gives the answer** (owner,
+  2026-11-09): "You think McDonald's makes its money selling burgers? It doesn't." No stock tag after
+  the denial ("Watch this.", "Here's why."), and not the same last 4 words as the last 6 Shorts'
+  hooks (`generator/story.py` `hook_problems`).
 - **One voice explains** (60%+ of the words, full sentences, 12+ words a beat); the cast react. The
   speaker changes 5 times at most.
 - **Shape**: the plan's shape in `script.shape`; level chips and the word "level" only in `levels`.

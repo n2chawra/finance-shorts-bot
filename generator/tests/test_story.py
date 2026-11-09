@@ -169,3 +169,50 @@ def test_cant_is_certain_not_a_hedge():
     for b in s["beats"][2:5]:
         b["say"] = "You can sell it " + b["say"]
     assert any("hedging words" in p for p in story.script_problems(s))
+
+
+# ---------------- the hook pattern: the belief, denied (owner, 2026-10-31 and 2026-11-09) ----------------
+
+def armed(hook: str) -> dict:
+    s = explained()
+    s["arms"] = {"style": "shot", "hook": "secret"}
+    s["beats"][0]["say"] = hook
+    return s
+
+
+def test_a_denied_belief_passes_without_a_question_at_the_end():
+    for hook in ("You think McDonald's makes its money selling burgers? It doesn't.",
+                 "You think the dealer gave you that discount? He didn't.",
+                 "You think billionaires live on their salary? Not one of them.",
+                 "Do you think Delta earns its {fact2} flying you? You're wrong."):
+        assert story.hook_problems(armed(hook)) == [], hook
+        assert not any("hook" in p for p in story.script_problems(armed(hook))), hook
+
+
+def test_the_9_nov_hooks_fail_belief_without_denial_and_stock_tag():
+    for hook in ("Your money, held for free? Watch this.",
+                 "Basketball made Magic Johnson a billionaire? Watch this.",
+                 "Delta makes its money flying you? Watch this."):
+        problems = " ".join(story.script_problems(armed(hook)))
+        assert "put the belief to the viewer and deny it" in problems and "stock tag" in problems, hook
+
+
+def test_a_you_think_question_needs_its_denial():
+    problems = " ".join(story.hook_problems(armed("You think your bank pays you for saving?")))
+    assert "never says it's wrong" in problems
+
+
+def test_a_denial_followed_by_a_stock_tag_fails():
+    problems = " ".join(story.hook_problems(armed("You think Apple only earns from iPhones? It doesn't. Here's why.")))
+    assert "stock tag" in problems
+
+
+def test_a_hook_may_not_end_like_a_recent_shorts_hook():
+    earlier = [armed("You think gyms want you there? They don't, you know.")]
+    problems = " ".join(story.hook_problems(armed("You think Delta flies for fares? They don't, you know."), earlier))
+    assert "ends like one of the last" in problems
+    assert story.hook_problems(armed("You think Delta flies for fares? It doesn't."), earlier) == []
+
+
+def test_scripts_without_arms_keep_the_old_hook_check():
+    assert story.script_problems(explained()) == []

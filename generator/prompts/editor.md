@@ -20,8 +20,8 @@ owner's picks and stales of the same story or shape), `quality` (motion, craft p
 ## 2. Look at the top candidates
 For the top 6 (or all, if fewer), open `videos/<id>/preview.png` and `videos/<id>/thumbnail.png`
 (look at them) and read the first two beats of `videos/<id>/script.json`. Judge, in this order:
-1. **The first second**: does frame 0 and the first line stop the thumb? A curiosity gap ("Casinos
-   make money even when you win. Here's how.") beats a statement of the answer. Reach is decided by
+1. **The first second**: does frame 0 and the first line stop the thumb? A curiosity gap (the belief,
+   denied: "You think McDonald's makes its money selling burgers? It doesn't.") beats a statement of the answer. Reach is decided by
    how many swipe away (stayed-to-watch: ours 24–51%, breakouts 70%+).
 2. **The topic**: big money (billionaires, money at scale, how famous businesses make money) first.
 3. **The picture follows the words**: the things being explained carry the frame; figures land on things.
