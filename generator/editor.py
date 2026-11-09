@@ -86,14 +86,15 @@ def score(vid: str, root: Path = ROOT, attrs: dict | None = None, taste: dict | 
     retries = sum(1 for s in steps if isinstance(s, dict) and s.get("status") == "failed")
     parts["quality"] = round((0.5 if lively and lively >= 5 else 0.0) - min(1.5, 0.5 * craft) - min(1.0, 0.1 * retries), 2)
     settings = load_settings(root)
-    lo, hi = (settings.get("lengthMinSec", 45), settings.get("lengthMaxSec", 70)) if fmt == "short" else (settings.get("longLengthMinSec", 400), settings.get("longLengthMaxSec", 600))
+    lo, hi = (settings["lengthMinSec"], settings["lengthMaxSec"]) if fmt == "short" else (settings["longLengthMinSec"], settings["longLengthMaxSec"])
     sec = render.get("duration_sec")
     parts["length"] = 0.0 if sec is None or lo <= sec <= hi else -1.0
     now = now or datetime.now(timezone.utc)
     created = manifest.get("createdAt")
     age = (now - datetime.fromisoformat(created)).days if created else 0
     urgent = (manifest.get("priority") or {}).get("until")
-    parts["fresh"] = round((1.0 if urgent and urgent >= now.date().isoformat() else 0.0) - min(1.0, 0.1 * max(0, age - 3)), 2)
+    today = now.astimezone(history.IST).date().isoformat()     # until is an IST day, as ingest reads it
+    parts["fresh"] = round((1.0 if urgent and urgent >= today else 0.0) - min(1.0, 0.1 * max(0, age - 3)), 2)
     total = round(max(0.0, min(10.0, BASE + sum(parts.values()))), 1)
     hook = ((script.get("beats") or [{}])[0] or {}).get("say", "")
     return {"id": vid, "score": total, "parts": parts, "title": plan.get("title") or manifest.get("title"), "story": story,

@@ -301,7 +301,8 @@
       ],
       "severity": "low",
       "found": "2026-10-23",
-      "status": "open"
+      "status": "fixed",
+      "fixedNote": "Already fixed on main: videos/page.tsx syncs q with the URL (useEffect on urlQ). Confirmed 2026-11-10."
     },
     {
       "id": "dui-011",
@@ -680,6 +681,19 @@
       ],
       "severity": "low",
       "found": "2026-11-09",
+      "status": "fixed"
+    },
+    {
+      "id": "gen-005",
+      "kind": "bug",
+      "title": "Editor counts an expired trend as fresh until 05:30 IST",
+      "detail": "editor.score compared manifest priority.until (an IST day, as ingest reads it) with the UTC date. The editor runs at 04:07 IST, still the previous UTC day, so a trend that expired yesterday kept +1.0 'fresh' and ranked above better videos. Now compared with the IST day. Also removed stale 45-70 s / 400-600 s length fallbacks (load() always supplies the settings).",
+      "files": [
+        "generator/editor.py",
+        "generator/tests/test_feedback_editor.py"
+      ],
+      "severity": "low",
+      "found": "2026-11-10",
       "status": "fixed"
     }
   ]

@@ -1,6 +1,31 @@
 {
   "videos": [
     {
+      "videoId": "L-20261104-01",
+      "verdict": "okay",
+      "headline": "Too early to judge: YouTube Analytics has no data for it yet, and the public counter shows 4 views since 7 Nov, in line with our other long videos.",
+      "why": [
+        {
+          "text": "4 views on the public counter about 2.5 days after publishing; our three earlier long videos had 6, 1 and 1 views at 48 hours (median 1).",
+          "metric": "views",
+          "tab": "overview"
+        },
+        {
+          "text": "Analytics shows 0 views, no % viewed and no traffic sources yet, so where viewers came from and when they left is unknown.",
+          "metric": "avgViewPct",
+          "tab": "engagement"
+        },
+        {
+          "text": "The earlier long videos held only 1.7% to 11.6% of their 8-minute runtime; this one is shorter at 421 s.",
+          "metric": "durationSec",
+          "tab": "engagement"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Make the next long video the full story of a Short with 1K+ views (as the Scout feed now does) and link it from that Short's description, so it gets traffic from viewers who already liked the story.",
+      "writtenAt": "2026-11-09T17:45:00Z"
+    },
+    {
       "videoId": "v-20261020-02",
       "verdict": "miss",
       "headline": "A news-led ECB explainer: about a third of the usual Shorts views.",

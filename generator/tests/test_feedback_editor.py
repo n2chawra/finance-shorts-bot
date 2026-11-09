@@ -53,3 +53,18 @@ def test_the_editor_prefers_big_money_and_the_owner_s_taste(tmp_path):
     best = rows[0]
     assert best["parts"]["tier"] > 0 and best["parts"]["taste"] > 0 and best["hook"] == "Hook line here."
     assert rows[1]["parts"]["tier"] < 0 and rows[1]["parts"]["taste"] < 0
+
+
+def test_the_editor_s_trend_freshness_ends_on_the_ist_day(tmp_path):
+    """priority.until is an IST day (ingest compares it with istDay); the editor runs at 04:07 IST,
+    still the previous UTC day, so a trend that expired yesterday must not count as fresh."""
+    from datetime import datetime, timezone
+    vid = "v-t"
+    write(tmp_path / "videos" / vid / "plan.json", {"story": "money_scale", "title": vid})
+    write(tmp_path / "videos" / vid / "script.json", {"format": "short", "beats": [{"say": "Hook."}]})
+    write(tmp_path / "videos" / vid / "manifest.json", {"createdAt": "2026-11-08T22:30:00+00:00",
+                                                        "priority": {"level": "trending", "until": "2026-11-09"}})
+    late = datetime(2026, 11, 9, 22, 37, tzinfo=timezone.utc)      # 10 Nov 04:07 IST: the trend ended yesterday
+    on_day = datetime(2026, 11, 9, 2, 0, tzinfo=timezone.utc)      # 9 Nov 07:30 IST: still its last day
+    assert editor.score(vid, tmp_path, attrs={}, taste={}, now=late)["parts"]["fresh"] == 0.0
+    assert editor.score(vid, tmp_path, attrs={}, taste={}, now=on_day)["parts"]["fresh"] == 1.0
