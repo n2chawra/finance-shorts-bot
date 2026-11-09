@@ -68,6 +68,37 @@ export function restDay(day: string, perDay: Map<string, number>, everyDays = 1)
  */
 export const UPLOAD_LOOKAHEAD_HOURS = 4.5;
 
+/** The least time between an upload and its publish time (owner, 2026-11-09): an upload takes ~20 s,
+ * and GitHub starts cron runs hours late, so 30 minutes made late runs skip slots they could still fill. */
+export const MIN_LEAD_MINUTES = 10;
+
+/** A slot that passed without an upload is caught up for this long after it (owner, 2026-11-09:
+ * 9 Nov lost the 07:07 and 19:07 Shorts because the only runs near them came within the lead time). */
+export const CATCH_UP_HOURS = 2;
+
+/** How far after a slot an upload still counts as that slot's (the dashboard's posting plan uses 3 h too). */
+export const FILLED_WITHIN_HOURS = 3;
+
+/** The publish time for a video uploaded right now: a catch-up, or "Upload now". `i` spaces several apart. */
+export function soonSlot(now: Date, i = 0): Date {
+  return new Date(Math.ceil(now.getTime() / 60_000) * 60_000 + (15 + 5 * i) * 60_000);
+}
+
+/**
+ * Today's slots (IST `times`) that passed in the last CATCH_UP_HOURS, or are closer than the lead
+ * time, with no upload at or up to FILLED_WITHIN_HOURS after them (`uploads`: publish times of this
+ * format), oldest first. The publisher fills each with a video that goes public in a few minutes.
+ */
+export function missedSlots(now: Date, times: string[], uploads: Date[], leadMinutes = MIN_LEAD_MINUTES,
+                            catchUpHours = CATCH_UP_HOURS): Date[] {
+  const day = istDay(now);
+  const filled = (slot: Date) => uploads.some((u) => u.getTime() >= slot.getTime() && u.getTime() - slot.getTime() <= FILLED_WITHIN_HOURS * 3_600_000);
+  return [...new Set(times)].sort().map((t) => istSlot(day, t)).filter((slot) => {
+    const ahead = slot.getTime() - now.getTime();
+    return ahead < leadMinutes * 60_000 && ahead >= -catchUpHours * 3_600_000 && !filled(slot);
+  });
+}
+
 /** Whether a slot is close enough to fill now (see UPLOAD_LOOKAHEAD_HOURS). */
 export function dueSoon(now: Date, slot: Date, hours = UPLOAD_LOOKAHEAD_HOURS): boolean {
   return slot.getTime() - now.getTime() <= hours * 3_600_000;

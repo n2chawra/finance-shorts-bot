@@ -1,6 +1,8 @@
 # Uploads today's videos to YouTube (private + publishAt), each slot only when it is within
 # UPLOAD_LOOKAHEAD_HOURS (workers/lib/publishing.ts). Default Short slots (IST): 07:07 at the 03:07
 # run, 12:37 at 10:07, 19:07 and long 20:07 at 16:07; trend slots 16:07 at 13:07 and 22:07 at 19:37.
+# A slot missed by a late run is caught up within 2 h (public ~15 min after the run); "Run workflow"
+# with upload_now uploads that many queued Shorts at once.
 # Filling late lets a trending video made at midday take an evening slot. Each slot gets a retry
 # run; GitHub can start a cron job up to ~3 h late, so every slot has a run comfortably before it.
 name: Publish
@@ -14,6 +16,11 @@ on:
     - cron: "7 14 * * *"      # 19:37 IST: the 22:07 trend slot
     - cron: "37 15 * * *"     # 21:07 IST: retry for it
   workflow_dispatch:
+    inputs:
+      upload_now:
+        description: "Upload this many queued Shorts now (public ~15 min later, 5 min apart); 0 = only fill slots"
+        required: false
+        default: "0"
 
 permissions:
   contents: read
@@ -35,6 +42,7 @@ jobs:
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
       GITHUB_TOKEN: ${{ github.token }}
+      UPLOAD_NOW: ${{ inputs.upload_now || '0' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

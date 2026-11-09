@@ -9,9 +9,13 @@
  * missing long video never costs a Short its slot.
  *
  * Runs a few times a day; the first run uploads for every free slot still ahead today, later runs
- * find the slots taken and stop. Never more uploads in a day than there are slots. A video clicked
- * "Upload now" in the dashboard goes before the queue. A failed upload stops the run and is retried
- * on the next one; after 3 attempts the video is marked failed.
+ * find the slots taken and stop. Never more uploads in a day than there are slots, except by hand.
+ * GitHub starts cron runs hours late (9 Nov 2026: the 07:07 and 19:07 Shorts were lost), so a slot is
+ * filled until MIN_LEAD_MINUTES before it, and one that passed in the last CATCH_UP_HOURS without an
+ * upload is caught up: its video goes public ~15 minutes after the run. A video clicked "Upload now"
+ * in the dashboard is uploaded on the next run, public ~15 minutes later; `UPLOAD_NOW=<n>` (the
+ * workflow's manual input) uploads the next n queued Shorts the same way. A failed upload stops the
+ * run and is retried on the next one; after 3 attempts the video is marked failed.
  */
 import { existsSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -20,7 +24,9 @@ import path from "node:path";
 import { PrismaClient } from "@prisma/client";
 
 import { downloadReleaseAsset, repoSlug } from "./lib/github.ts";
-import { UPLOAD_LOOKAHEAD_HOURS, dueSoon, isUrgent, istDay, istSlot, istTime, nextSlot, slotKey, youtubeMeta } from "./lib/publishing.ts";
+import {
+  MIN_LEAD_MINUTES, UPLOAD_LOOKAHEAD_HOURS, dueSoon, isUrgent, istDay, istSlot, istTime, missedSlots, nextSlot, slotKey, soonSlot, youtubeMeta,
+} from "./lib/publishing.ts";
 import { loadSettings } from "./lib/settings.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
@@ -76,6 +82,30 @@ async function main(): Promise<void> {
       select: { publishAt: true, video: { select: { format: true } } },
     });
     const taken = new Set(existing.map((u) => slotKey(u.publishAt)));
+    const uploadsOf = (f: Format) => existing.filter((u) => (u.video.format === "long" ? "long" : "short") === f).map((u) => u.publishAt);
+    let soon = 0;   // videos sent to go public in a few minutes this run, spaced 5 minutes apart
+    const sendSoon = async (format: Format, pendingOnly = false): Promise<boolean> => {
+      const at = soonSlot(now, soon);
+      if (!(await uploadOne(prisma, token, settings.disclaimer, at, format, pendingOnly ? "pending-now" : "queue"))) return false;
+      soon++;
+      taken.add(slotKey(at));
+      existing.push({ publishAt: at, video: { format } });
+      return true;
+    };
+    // "Upload now" from the dashboard, then the owner's manual count from the workflow input
+    for (const format of ["short", "long"] as const) while (await sendSoon(format, true));
+    const manual = Math.max(0, Math.min(5, Number(process.env.UPLOAD_NOW) || 0));
+    for (let i = 0; i < manual; i++) if (!(await sendSoon("short"))) break;
+    // slots that passed (or are too close) without an upload: catch up instead of losing them
+    for (const format of ["short", "long"] as const) {
+      const times = format === "long" ? settings.longUploadTimes : settings.uploadTimes;
+      const days = format === "long" ? settings.longUploadDays : undefined;
+      if (days?.length && !days.includes(new Date(`${istDay(now)}T00:00:00Z`).getUTCDay())) continue;
+      for (const slot of missedSlots(now, times, uploadsOf(format))) {
+        console.log(`${format}: the ${slot.toISOString()} slot was missed; catching up.`);
+        if (!(await sendSoon(format))) break;
+      }
+    }
     // one slot count per format: a long video on Tuesday must not use up a Short's slot that day
     const perDay: Record<Format, Map<string, number>> = { short: new Map(), long: new Map() };
     const trendTimes = new Set(settings.trendUploadTimes);
@@ -92,7 +122,7 @@ async function main(): Promise<void> {
       if (!times.length || (format === "long" && !days?.length)) continue;
       let uploaded = 0;
       for (let n = 0; n < times.length; n++) {
-        const slot = nextSlot(now, times, taken, perDay[format], 30, days, format === "short" ? settings.shortEveryDays : 1);
+        const slot = nextSlot(now, times, taken, perDay[format], MIN_LEAD_MINUTES, days, format === "short" ? settings.shortEveryDays : 1);
         if (istDay(slot) !== istDay(now)) {
           console.log(uploaded ? `${format}: today's slots are filled. Next is ${slot.toISOString()}.`
             : `${format}: no free slot left today; next is ${slot.toISOString()}.`);
@@ -113,7 +143,7 @@ async function main(): Promise<void> {
     const today = istDay(now);
     for (const time of [...trendTimes].sort()) {
       const slot = istSlot(today, time);
-      if (slot.getTime() - now.getTime() < 30 * 60_000 || taken.has(slotKey(slot)) || !dueSoon(now, slot)) continue;
+      if (slot.getTime() - now.getTime() < MIN_LEAD_MINUTES * 60_000 || taken.has(slotKey(slot)) || !dueSoon(now, slot)) continue;
       const shortsToday = await prisma.upload.findMany({
         where: { state: { in: ["scheduled", "uploaded", "published"] }, video: { format: "short" } },
         select: { publishAt: true, video: { select: { style: true } } },
@@ -121,7 +151,7 @@ async function main(): Promise<void> {
       const urgentToday = shortsToday.filter((u) => isUrgent(u.video.style, today)).length;
       const trendUsed = shortsToday.filter((u) => trendTimes.has(istTime(u.publishAt))).length;
       // the trend video itself if it is still waiting, else (it took a regular slot) the next video
-      const sent = await uploadOne(prisma, token, settings.disclaimer, slot, "short", true)
+      const sent = await uploadOne(prisma, token, settings.disclaimer, slot, "short", "urgent")
         || (urgentToday > trendUsed && await uploadOne(prisma, token, settings.disclaimer, slot, "short"));
       if (sent) taken.add(slotKey(slot));
     }
@@ -130,14 +160,22 @@ async function main(): Promise<void> {
   }
 }
 
-/** Upload the next `format` video for `slot` (only a breaking or trending one when `urgentOnly`).
+/** Upload the next `format` video for `slot` (only a breaking or trending one for "urgent"; only an
+ * "Upload now" click or a due retry for "pending-now").
  * False when there is nothing to upload; throws on failure. */
-async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string, slot: Date, format: Format, urgentOnly = false): Promise<boolean> {
+type Pick = "queue" | "urgent" | "pending-now";
+
+async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string, slot: Date, format: Format, pick: Pick = "queue"): Promise<boolean> {
   // the owner's pick first (owner, 2026-10-30: "the best video goes, not whatever is next"), then the
   // queue order: the editor's ranking, or the owner's own order where they dragged it
   const order = [{ pickedAt: { sort: "asc" as const, nulls: "last" as const } }, { queuePosition: "asc" as const }, { createdAt: "asc" as const }];
   let pending = null, video = null;
-  if (urgentOnly) {
+  if (pick === "pending-now") {
+    // only "Upload now" clicks and retries whose time has come; a retry for a slot still ahead waits for it
+    pending = await prisma.upload.findFirst({ where: { state: "pending", publishAt: { lte: new Date(Date.now() + MIN_LEAD_MINUTES * 60_000) }, video: { deletedAt: null, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
+    if (!pending) return false;
+    video = pending.video;
+  } else if (pick === "urgent") {
     const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null, format }, orderBy: order });
     video = queued.find((v) => isUrgent(v.style, istDay(slot))) ?? null;
     if (!video) { console.log(`No breaking or trending ${format} is waiting: the trend slot ${slot.toISOString()} stays empty.`); return false; }
