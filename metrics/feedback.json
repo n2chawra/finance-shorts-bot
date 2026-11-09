@@ -1,7 +1,36 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 0,
+  "open": 2,
   "notes": [
+    {
+      "id": "cmw9077420001lg0967jn37k7",
+      "kind": "general",
+      "area": null,
+      "text": "The 3 topics for today are pretty basic even though its good indont think most people would want to see it . Our system would already remove the types after seeing the analytics right????",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-09T08:32:56.259Z",
+      "video": null
+    },
+    {
+      "id": "cmw904gj40001jy09k8a2fwmd",
+      "kind": "improve",
+      "area": "hook",
+      "text": "The video says what people think about not that it's wrong. Like do you think ... your wrong.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-09T08:30:48.496Z",
+      "video": {
+        "id": "v-20261109-01",
+        "title": "Your bank pays you almost nothing. Here's why 🏦",
+        "format": "short",
+        "status": "scheduled",
+        "story": "how_they_make_money",
+        "shape": "versus",
+        "hookStyle": "secret",
+        "hook": "Your money, held for free? Watch this."
+      }
+    },
     {
       "id": "cmw31ex100001l809z2cs7b7q",
       "kind": "choice",
