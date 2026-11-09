@@ -1,0 +1,52 @@
+{
+  "agent": "improver",
+  "day": "2026-11-09",
+  "startedAt": "2026-11-09T17:32:37Z",
+  "finishedAt": "2026-11-09T17:43:14Z",
+  "summary": "Answered both of today's owner notes: hooks must now deny the belief ('You think X? It doesn't.') with no 'Watch this.' tag, and the planner skips textbook topics. Also fixed the source line that ran off the frame in 5 Shorts and added words-to-cut to the length gate.",
+  "decision": "acted",
+  "why": "Owner notes come first; research filed the hook fix as a high-priority adopt; the cut-off source line hit 5 videos in a week (QA and layout gate). All 5 experiments are waiting for data and we're at the cap of 5, so no new experiment.",
+  "findings": [
+    {
+      "title": "All 5 experiments wait",
+      "detail": "ending-beats-act-and-vary 2 of 4 per arm (~2 days), you-in-the-core-story 1 of 4 (~3 days), hook-voice-matches-frame extended (day 20, 12 vs 12), quiet-bed and chart-gap-fill 1 of 4 long videos per arm."
+    },
+    {
+      "title": "Best formats by 48 h views",
+      "detail": "how_they_make_money 9.77x median (n 5), money_scale 2.33x, secret_of_rich 2.06x; rule_change 0.36x but 42.0% viewed, above the 40.2% channel median, so not retired."
+    },
+    {
+      "title": "Variant system",
+      "detail": "Defaults now 20-27 s (median 908 views vs 133), secret hook (708 vs question 125, myth 62), plain title (460 vs 140)."
+    },
+    {
+      "title": "Hook pattern vs data",
+      "detail": "The 7 'You think X? It doesn't.' Shorts of 3-6 Nov got 9-63 views at 48 h (confounded with length and board); raised to the owner."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Hook: the belief, denied",
+      "detail": "generator/story.py hook_problems + writer/checklist/editor/README: 'You think ...?' then a denial, no stock tag, no ending repeated from the last 6 Shorts (research adopt hook-denial-not-watch-this; owner note).",
+      "branch": "agent/improver/2026-11-09",
+      "experiment": "2026-11-09-hook-belief-denied"
+    },
+    {
+      "title": "No textbook topics",
+      "detail": "Planner step 3b and the editor: skip a topic whose surprise a typical viewer already knows (owner note).",
+      "branch": "agent/improver/2026-11-09"
+    },
+    {
+      "title": "Source line fits with its month",
+      "detail": "A fact's source may be cut to the publisher; the number check fails a too-wide 'Data: ... · month' line when there's detail to cut.",
+      "branch": "agent/improver/2026-11-09",
+      "experiment": "2026-11-09-source-line-fits"
+    },
+    {
+      "title": "Length gate says words to cut",
+      "detail": "Scout's long-length item: the gate already fails 421 s; it now names the words to cut or add, with a test.",
+      "branch": "agent/improver/2026-11-09"
+    }
+  ],
+  "nextCheck": "2026-11-11"
+}

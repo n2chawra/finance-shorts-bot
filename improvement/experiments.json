@@ -803,6 +803,38 @@
       "commits": [
         "991234e"
       ]
+    },
+    {
+      "id": "2026-11-09-hook-belief-denied",
+      "area": "hook",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-09",
+      "templates": [
+        "short_story"
+      ],
+      "proposal": "hook-denial-not-watch-this",
+      "description": "generator/story.py hook_problems: a variant-system Short's hook starts 'You think ...?' and denies it within 6 words, never ends on a stock tag ('Watch this.', 'Here's why.'), and never ends like one of the last 6 Shorts' hooks; writer, checklist, editor and short_story README teach it.",
+      "evidence": "Owner notes 2026-10-31 and 2026-11-09 ('the video says what people think, not that it's wrong'); all three 9 Nov Shorts opened '<belief>? Watch this.' because the prompts still taught 'end on here's how / watch' and the check accepted it. Caveat: the 7 Shorts of 3-6 Nov that used 'You think X? It doesn't.' got 9-63 views at 48 h (confounded with 28-35 s and board), vs 708 median for the secret-statement hooks.",
+      "commits": [
+        "8bffe46"
+      ]
+    },
+    {
+      "id": "2026-11-09-source-line-fits",
+      "area": "text",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-09",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "description": "generator/topics.py: a fact's source may be cut to the publisher's name (its start, at a word); source_line_problems fails a 'Data: ... · month' line wider than the board's text column when there is detail left to cut.",
+      "evidence": "5 Shorts in a week had the source line cut at the frame edge, losing the month (v-20261103-01, v-20261104-03, v-20261105-02, v-20261109-01, v-20261109-03); the check flags exactly those plus v-20261103-02 and v-20261109-02, and none of the 11 earlier sourced videos.",
+      "commits": [
+        "987ed84"
+      ]
     }
   ]
 }

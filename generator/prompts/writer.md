@@ -86,13 +86,9 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 - **Big captions show every spoken word** (drawn automatically from the voice), so scenes carry the
   picture and the figures, not sentences. Keep on-screen text to labels and numbers.
 - **The hook opens a curiosity gap** (owner, 2026-10-30: "the hook is unable to create curiosity").
-  The first spoken line lands in under 1.5 s; the hook says the surprising thing, opens the question
-  and promises the answer, and never gives it (the answer is the payoff):
-  "Casinos make money even when you win. Here's how." · "His salary is one dollar. So how does he
-  live like a billionaire?" · "Billionaires almost never sell a share. So where does their money come from?"
-  Not: "The casino never gambles. It wins a slice of every bet." (the answer; nothing left to wait
-  for). The hook line ends on the question or a promise ("here's how", "watch", "let me show you");
-  `number-check` fails one that doesn't. No greeting, no "did you know", no setup before the hook. The first frame already shows the characters or the
+  The first spoken line lands in under 1.5 s; the hook opens the question and never answers it
+  (the answer is the payoff): the denied belief below is the gap. Not: "The casino never gambles. It wins a slice of every bet."
+  (the answer; nothing left to wait for). No greeting, no "did you know", no setup before the hook. The first frame already shows the characters or the
   number, in a place with something moving, never a figure on a plain background:
   - `conflict`: two characters, opposite moves · `secret`: the mentor says the secret ·
     `question`: ask what the viewer wants answered · `shock_number`: a computed figure ·
@@ -101,7 +97,16 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   everyone holds to the viewer and deny it, never give the answer: "You think McDonald's makes its
   money selling burgers? It doesn't." · "You think the dealer gave you that discount? He didn't."
   · "You think billionaires live on their salary? Not one of them." The first line names something
-  famous or everyday, 10 words or fewer; the frame shows that very thing.
+  famous or everyday, 10 words or fewer; the frame shows that very thing. **The denial is required**
+  (owner again, 2026-11-09: "the video says what people think, not that it's wrong"): `number-check`
+  fails a Short whose hook doesn't start "You think …?" and deny it within a few words, one that ends
+  on a stock tag ("Watch this.", "Here's why.", "Let me show you."), and one that ends like any of
+  the last 6 Shorts' hooks. Failed on 9 Nov: "Your money, held for free? Watch this." · "Basketball
+  made Magic Johnson a billionaire? Watch this." · "Delta makes its money flying you? Watch this."
+  (the belief, never denied). The hook style (`arms.hook`) decides what the belief is and what the
+  frame shows: `secret` the thing the rich know ("You think billionaires cash out? They borrow."),
+  `shock_number` a computed figure in the belief ("You think Delta's {fact2} comes from fares? It
+  doesn't."), `question` the viewer's own question, `myth` the common saying.
 - **Storytelling that holds to the last second** (owner, 2026-11-02: "story telling needs lots of
   work … the way of explanation is very weak", the car-discount Short 2/10; target 70% viewed):
   - **One story, one person, one moment.** Follow a character through one concrete situation in
@@ -193,8 +198,11 @@ Since 2026-11-02 every Short and long video may tell a true story with real figu
 The Curious Plot: "Bezos took about $80,000 a year for decades" beats "a billionaire with an assumed
 $50 million salary").
 - Set `feed_id` to the plan's `topic.feed_id` (or `topic.trend.id`) and copy the topic's `facts`
-  **exactly** (`value`, `unit`, `currency`, `as_of`, `source`, `url`); you may only shorten a `label`. The
-  number check compares them with the feed and fails on any difference. Never add a figure the
+  **exactly** (`value`, `unit`, `currency`, `as_of`, `source`, `url`); you may only shorten a `label`, and
+  cut a `source` to the publisher's name ("Delta Air Lines (SEC 8-K, 13 Jan 2026)" → "Delta Air Lines":
+  its start, at a word, before "(" or the first word with a digit). The number check compares them with
+  the feed and fails on any other difference, and on a "Data: … · month" line too wide for the frame
+  (5 Shorts in a week lost the month off the edge; `generator/topics.py` `source_line_problems`). Never add a figure the
   feed doesn't have, and never a claim about a real person the sources don't make.
 - The facts become `{fact1}`, `{fact2}`, … A `board` beat (its source footer) or a `headline` beat
   prints where they come from ("Data: ProPublica · Jun 2021"), **once a video** (owner, 2026-11-03):

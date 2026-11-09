@@ -469,3 +469,12 @@ def test_number_check_requires_the_plans_arms_in_the_script(root: Path) -> None:
     assert any("script.arms must be the plan's arms" in p for p in run.run_number_check(VID, root))
     put(root, "script.json", {**script_for(plan), "arms": dict(arms)})
     assert not any("script.arms" in p for p in run.run_number_check(VID, root))
+
+
+def test_a_long_video_over_the_maximum_fails_the_gate_with_words_to_cut() -> None:
+    # L-20261104-01 shipped at 421 s (Scout, 2026-11-09); the settings now say 300-400 s
+    settings = {"lengthMinSec": 20, "lengthMaxSec": 35, "longLengthMinSec": 300, "longLengthMaxSec": 400}
+    problems = run.gate_problems({"duration_sec": 421}, settings, "long")
+    assert any("length 421 s is outside 300–400 s" in p and "cut about 63 spoken words" in p for p in problems)
+    assert not any("length" in p for p in run.gate_problems({"duration_sec": 380}, settings, "long"))
+    assert any("add about" in p for p in run.gate_problems({"duration_sec": 18}, settings, "short"))

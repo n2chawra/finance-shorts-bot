@@ -182,3 +182,28 @@ def test_a_long_topic_shows_its_short_and_needs_a_winning_one(root: Path) -> Non
     assert shown["won"]["from_short"] == "v-1" and shown["won"]["usable_now"]
     assert not shown["weak"]["usable_now"] and "under 1,000" in shown["weak"]["blocked_by"]
     assert not shown["none"]["usable_now"] and "from_short" in shown["none"]["blocked_by"]
+
+
+# ---------------- the source line fits the frame with its month (2026-11-09: 5 Shorts cut it) ----------------
+
+def test_a_script_may_cut_the_feeds_source_to_the_publisher() -> None:
+    from generator.topics import short_source, source_matches
+    feed = "Delta Air Lines (SEC 8-K, 13 Jan 2026)"
+    assert short_source(feed) == "Delta Air Lines"
+    assert short_source("JPMorgan Chase 2025 Form 10-K") == "JPMorgan Chase"
+    assert source_matches("Delta Air Lines", feed) and source_matches(feed, feed)
+    assert not source_matches("Delta Ai", feed)        # not a whole word
+    assert not source_matches("United Airlines", feed)  # not the feed's source at all
+    assert not source_matches("", feed)
+
+
+def test_a_source_line_too_wide_for_a_short_fails_and_names_the_short_form() -> None:
+    from generator.topics import source_line_problems
+    def script(*sources: str, fmt: str = "short") -> dict:
+        return {"format": fmt, "facts": [{"source": s, "as_of": "2026-01-13"} for s in sources]}
+    problems = " ".join(source_line_problems(script("Delta Air Lines (SEC 8-K, 13 Jan 2026)")))
+    assert "too wide" in problems and "'Delta Air Lines'" in problems
+    assert source_line_problems(script("Delta Air Lines")) == []
+    assert source_line_problems(script("JPMorgan Chase 2025 Form 10-K", "JPMorgan Chase 4Q25 earnings"))
+    assert source_line_problems(script("JPMorgan Chase", "JPMorgan Chase")) == []
+    assert source_line_problems(script("Delta Air Lines (SEC 8-K, 13 Jan 2026)", fmt="long")) == []

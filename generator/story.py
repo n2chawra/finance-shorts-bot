@@ -53,6 +53,16 @@ OPEN_LOOP = re.compile(r"\?|\b(but|here'?s the (catch|twist|trick|clever part)|t
 # the hook leaves a question open: it asks one, or promises the answer is coming
 HOOK_GAP = re.compile(r"\?\s*$|\b(here'?s (how|why|what)|watch|let me show|find out|the answer|by the end|wait (till|until)|"
                       r"i'?ll show|this is how|this is why|how\?|why\?)\b", re.I)
+# the hook pattern (owner, 2026-10-31 and again 2026-11-09: "the video says what people think, not that it's
+# wrong. Like do you think ... you're wrong"): a variant-system Short (script.arms) opens on the belief put to
+# the viewer and denied ("You think McDonald's makes its money selling burgers? It doesn't."). On 9 Nov all
+# three Shorts ended the belief on a stock "Watch this." instead, so the check now reads the line itself.
+BELIEF = re.compile(r"^\W*(so,?\s+)?(do\s+)?you\s+(really\s+|still\s+|probably\s+)?(think|believe|assume|figure|bet)\b[^?]*\?", re.I)
+DENIAL = re.compile(r"\b(not|no|nope|never|wrong|nothing|none|nobody|zero|think again)\b|n['’]t\b", re.I)
+DENIAL_WORDS = 6        # the denial comes right after the question ("It doesn't." / "Not one of them.")
+STOCK_TAG = re.compile(r"(\bwatch( this| how| what)?|\bhere'?s (why|how|what)|\blet me show you|\bfind out)\W*$", re.I)
+HOOK_TAIL_WORDS = 4     # a hook may not end like one of the last HOOK_TAIL_SCRIPTS Shorts' hooks
+HOOK_TAIL_SCRIPTS = 6
 # long videos (owner, 2026-10-26: "do the same upgrade for long videos"): the levels are the
 # chapters, the promise comes within 30 s, every chapter but the last ends on a `tease` beat (the
 # open loop into the next), and the hook may run longer
@@ -96,7 +106,8 @@ def voice_problems(script: dict) -> list[str]:
     beats = script.get("beats") or []
     out = []
     hook = next((b for b in beats if b.get("role") == "hook" or b.get("scene") == "hook"), None)
-    if hook and not HOOK_GAP.search((hook.get("say") or "").strip()):
+    # a variant-system Short's hook is checked by hook_problems (the belief, denied); the denial is its gap
+    if hook and not script.get("arms") and not HOOK_GAP.search((hook.get("say") or "").strip()):
         out.append("the hook gives no reason to stay: end it on the open question or a promise (\"Casinos make money even "
                    "when you win. Here's how.\"), never on the answer")
     spoken = [b for b in beats if (b.get("say") or "").strip() and b.get("scene") != "end"]
@@ -312,6 +323,44 @@ def _opening(line: str) -> str:
     return " ".join(words[:OPENING_WORDS]) if len(words) >= OPENING_WORDS else ""
 
 
+def _hook_line(script: dict) -> str:
+    beats = script.get("beats") or []
+    hook = next((b for b in beats if b.get("role") == "hook" or b.get("scene") == "hook"), None)
+    return ((hook or {}).get("say") or "").strip()
+
+
+def _tail(line: str) -> str:
+    words = re.findall(r"[a-z']+", re.sub(r"\{[^}]*\}", "", line.lower().replace("’", "'")))
+    return " ".join(words[-HOOK_TAIL_WORDS:]) if len(words) >= HOOK_TAIL_WORDS else ""
+
+
+def hook_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
+    """A variant-system Short's hook: "You think X? It isn't." -- the belief put to the viewer, then denied,
+    with no stock tag after it and an ending of its own (owner, 2026-10-31 and 2026-11-09)."""
+    line = _hook_line(script)
+    if not line:
+        return []
+    out = []
+    example = "\"You think McDonald's makes its money selling burgers? It doesn't.\""
+    m = BELIEF.search(line)
+    if not m:
+        out.append(f"the hook must put the belief to the viewer and deny it: {example} (got {line!r}); start it "
+                   f"\"You think …?\" and name the famous thing or the figure")
+    else:
+        after = re.findall(r"[\w'’]+", line[m.end():])[:DENIAL_WORDS]
+        if not DENIAL.search(" ".join(after)):
+            out.append(f"the hook asks \"You think …?\" but never says it's wrong: follow the question with a short denial "
+                       f"(\"It isn't.\" / \"He didn't.\" / \"Not one of them.\" / \"You're wrong.\"), as in {example}")
+    if STOCK_TAG.search(line):
+        out.append(f"the hook ends on a stock tag ({STOCK_TAG.search(line).group(0).strip()!r}): end it on the denial; "
+                   f"the denied belief is the reason to stay")
+    tail = _tail(line)
+    recent = [_tail(_hook_line(s)) for s in (earlier or [])[-HOOK_TAIL_SCRIPTS:] if s.get("format", "short") == "short"]
+    if tail and tail in recent:
+        out.append(f"the hook ends like one of the last {HOOK_TAIL_SCRIPTS} Shorts' hooks ({tail!r}): new words")
+    return out
+
+
 def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
     """What the script says: structure, roles, counter, banned and repeated lines."""
     if not applies(script):
@@ -337,6 +386,8 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
             out.append(f"{builds} `build` beats; at least {BUILD_MIN}: the stakes rise step by step before the turn")
     if script.get("shape") is not None and script.get("format", "short") == "short":
         out += voice_problems(script)
+    if script.get("arms") and script.get("format", "short") == "short":
+        out += hook_problems(script, earlier)
     if script.get("shape") is not None or script.get("format") == "long" or any(b.get("scene") == "board" for b in beats):
         out += chain_problems(script)
     if sp["teases"] and len(levels) >= sp["levels_min"]:
