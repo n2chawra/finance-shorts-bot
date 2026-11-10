@@ -34,13 +34,6 @@
       "title": "Should titles name the famous person? Add a 'name' title option to test it",
       "detail": "Your 10 Nov note on the Elon Short. The variant system made 'plain' titles the default (median 460 views at 48 h vs 140 for a figure or name), but plain has only 4 videos, all also 20-27 s with the secret hook, which changed the same days; so it may be the length winning, not the hidden name. Since 9 Nov the plain titles hide big names ('The basketball star…' for Magic Johnson, 'the biggest channel on earth' for MrBeast). Tonight's fix makes the description and a hashtag always name the subject; the title is the arms file's call, which agents can't edit.",
       "fix": "1. In config/arms.json, dimensions.title.options, add \"name\" (the famous person or company in the title, no money figure): [\"figure_or_name\", \"plain\", \"name\"]. 2. Leave a note saying so; the improver will teach the planner the new option and the title check. 3. Or, to make every title name its subject now, set the title default to \"figure_or_name\" instead."
-    },
-    {
-      "key": "impact-tab",
-      "severity": "info",
-      "title": "The 'what did the automation improve' tab: data ready, the dashboard agent needs one line",
-      "detail": "Your 10 Nov note. improvement/weekly/impact.json (rewritten nightly by the improver) has the Shorts per week (median 48 h views, % viewed, stayed-to-watch, average view seconds) and every landed change with the Shorts 14 days before and after it. The dashboard agent builds pages from improvement/dashboard/backlog.json, which the improver may not write, and it doesn't read your feedback notes.",
-      "fix": "1. Add to improvement/dashboard/backlog.json: {\"id\": \"impact-tab\", \"kind\": \"idea\", \"title\": \"Impact page: what each improvement did to the channel\", \"detail\": \"Read improvement/weekly/impact.json: a weekly trend chart (views, % viewed, stayed to watch, view seconds) and a table of changes with before/after and links to the videos\", \"page\": \"/impact\"}. 2. Or tell me to, and approve the dashboard backlog in the improver's lane."
     }
   ]
 }

@@ -166,9 +166,9 @@
     },
     {
       "id": "cmwa724ep0001l5094chbwdlu",
-      "action": "needs owner",
-      "note": "The data for that tab exists now (improvement/weekly/impact.json: every change with the Shorts' views, % viewed and stayed-to-watch 14 days before and after), but the dashboard is the dashboard agent's lane and it doesn't read your notes; see the 'Impact tab' notification for the one step to get it built.",
-      "commit": "3fab9d1"
+      "action": "fixed",
+      "note": "New Impact page (Insights → Impact): Shorts per week on views, % viewed, stayed-to-watch and view time, and every change the agents made with the views of the Shorts before and after it, each video linked.",
+      "commit": "ce3a7a2"
     }
   ]
 }
