@@ -1,0 +1,1006 @@
+{
+ "note": "Written by python -m generator.impact (improver, nightly). weeks: Shorts by IST publish week; stayedToWatch = engaged views / views (did not swipe away); changes: Shorts 14 days before vs after each landed change (sameWeek = other changes within 3 days, so effects mix).",
+ "updatedAt": "2026-11-10T14:23:49+00:00",
+ "weeks": [
+  {
+   "week": "2026-10-12",
+   "n": 9,
+   "medianViews48h": 35,
+   "avgViewPct": 29.6,
+   "stayedToWatch": 0.24,
+   "avgViewSec": 13.3
+  },
+  {
+   "week": "2026-10-19",
+   "n": 14,
+   "medianViews48h": 103.0,
+   "avgViewPct": 51.7,
+   "stayedToWatch": 0.258,
+   "avgViewSec": 15.6
+  },
+  {
+   "week": "2026-10-26",
+   "n": 11,
+   "medianViews48h": 211,
+   "avgViewPct": 39.7,
+   "stayedToWatch": 0.388,
+   "avgViewSec": 17.9
+  },
+  {
+   "week": "2026-11-02",
+   "n": 8,
+   "medianViews48h": 43.0,
+   "avgViewPct": 54.6,
+   "stayedToWatch": 0.386,
+   "avgViewSec": 23.2
+  }
+ ],
+ "changes": [
+  {
+   "id": "2026-11-09-hook-belief-denied",
+   "area": "hook",
+   "status": "adopted",
+   "day": "2026-11-09",
+   "description": "generator/story.py hook_problems: a variant-system Short's hook starts 'You think ...?' and denies it within 6 words, never ends on a stock tag ('Watch this.', 'Here's why.'), and never ends like one of the last 6 Shorts' hooks; writer, checklist, editor and short_story README teach it.",
+   "before": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "after": {
+    "n": 0,
+    "medianViews48h": null,
+    "avgViewPct": null,
+    "stayedToWatch": null,
+    "avgViewSec": null
+   },
+   "viewsRatio": null,
+   "sameWeek": 3
+  },
+  {
+   "id": "2026-11-09-source-line-fits",
+   "area": "text",
+   "status": "adopted",
+   "day": "2026-11-09",
+   "description": "generator/topics.py: a fact's source may be cut to the publisher's name (its start, at a word); source_line_problems fails a 'Data: ... · month' line wider than the board's text column when there is detail left to cut.",
+   "before": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "after": {
+    "n": 0,
+    "medianViews48h": null,
+    "avgViewPct": null,
+    "stayedToWatch": null,
+    "avgViewSec": null
+   },
+   "viewsRatio": null,
+   "sameWeek": 3
+  },
+  {
+   "id": "2026-11-08-big-numbers-in-words",
+   "area": "text",
+   "status": "adopted",
+   "day": "2026-11-08",
+   "description": "A round million/billion/trillion shows in words ('$10 billion') in Money.full and its TS mirror; number check rejects 7+ digits in a non-rupee title or description",
+   "before": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "after": {
+    "n": 0,
+    "medianViews48h": null,
+    "avgViewPct": null,
+    "stayedToWatch": null,
+    "avgViewSec": null
+   },
+   "viewsRatio": null,
+   "sameWeek": 3
+  },
+  {
+   "id": "2026-11-08-grow-stays-whole",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-11-08",
+   "description": "A grow is capped at the room a thing has by the frame's edge (never below 1.2) and the rest slides it inward (remotion/src/studio/stage.ts)",
+   "before": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "after": {
+    "n": 0,
+    "medianViews48h": null,
+    "avgViewPct": null,
+    "stayedToWatch": null,
+    "avgViewSec": null
+   },
+   "viewsRatio": null,
+   "sameWeek": 3
+  },
+  {
+   "id": "loudness-in-render-json",
+   "area": "sound",
+   "status": "adopted",
+   "day": "2026-11-03",
+   "description": "render.json audio records integrated loudness (BS.1770, LUFS) and how far the music sits under the voice; the render step warns outside -16..-13 LUFS or under 18 dB in a Short",
+   "before": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "after": {
+    "n": 7,
+    "medianViews48h": 34,
+    "avgViewPct": 54.5,
+    "stayedToWatch": 0.363,
+    "avgViewSec": 21.9
+   },
+   "viewsRatio": 0.19,
+   "sameWeek": 7
+  },
+  {
+   "id": "2026-11-03-board-room-labels",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-11-03",
+   "description": "Board rooms float things at 0.27 of the frame (over the cast's heads, was 0.2 at eye level); a thing's label over an actor steps above the thing",
+   "before": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "after": {
+    "n": 7,
+    "medianViews48h": 34,
+    "avgViewPct": 54.5,
+    "stayedToWatch": 0.363,
+    "avgViewSec": 21.9
+   },
+   "viewsRatio": 0.19,
+   "sameWeek": 7
+  },
+  {
+   "id": "2026-11-03-items-enter-on-their-word",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-11-03",
+   "description": "A build/board thing that nothing acts on until 0.6 s into the beat enters just before its first action instead of waiting on screen",
+   "before": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "after": {
+    "n": 7,
+    "medianViews48h": 34,
+    "avgViewPct": 54.5,
+    "stayedToWatch": 0.363,
+    "avgViewSec": 21.9
+   },
+   "viewsRatio": 0.19,
+   "sameWeek": 7
+  },
+  {
+   "id": "2026-11-03-source-once-per-source",
+   "area": "text",
+   "status": "adopted",
+   "day": "2026-11-03",
+   "description": "The 'Data:' line prints once a video (first board beat that says a fact; own code via showsSource)",
+   "before": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "after": {
+    "n": 7,
+    "medianViews48h": 34,
+    "avgViewPct": 54.5,
+    "stayedToWatch": 0.363,
+    "avgViewSec": 21.9
+   },
+   "viewsRatio": 0.19,
+   "sameWeek": 7
+  },
+  {
+   "id": "2026-11-03-actions-that-change-things",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-11-03",
+   "description": "Craft check: at most 65% of a board video's actions may be marks (glow, stamp, bubble…)",
+   "before": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "after": {
+    "n": 7,
+    "medianViews48h": 34,
+    "avgViewPct": 54.5,
+    "stayedToWatch": 0.363,
+    "avgViewSec": 21.9
+   },
+   "viewsRatio": 0.19,
+   "sameWeek": 7
+  },
+  {
+   "id": "2026-11-03-person-intro-tag",
+   "area": "script",
+   "status": "adopted",
+   "day": "2026-11-03",
+   "description": "Writer: a real person gets one clause the first time they are named; a company is its name, never a pun object",
+   "before": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "after": {
+    "n": 7,
+    "medianViews48h": 34,
+    "avgViewPct": 54.5,
+    "stayedToWatch": 0.363,
+    "avgViewSec": 21.9
+   },
+   "viewsRatio": 0.19,
+   "sameWeek": 7
+  },
+  {
+   "id": "money-travels-not-pops",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-11-02",
+   "description": "Things arrive (fly in from the nearer side or grow out of `from`, land with a squash), shake becomes a hop, and `flow` sends notes along an arc between two things with the figure riding on the lead note.",
+   "before": {
+    "n": 25,
+    "medianViews48h": 148,
+    "avgViewPct": 46.4,
+    "stayedToWatch": 0.315,
+    "avgViewSec": 16.6
+   },
+   "after": {
+    "n": 8,
+    "medianViews48h": 43.0,
+    "avgViewPct": 54.6,
+    "stayedToWatch": 0.386,
+    "avgViewSec": 23.2
+   },
+   "viewsRatio": 0.29,
+   "sameWeek": 7
+  },
+  {
+   "id": "2026-10-28-money-trillion-format",
+   "area": "text",
+   "status": "adopted",
+   "day": "2026-10-29",
+   "description": "Money at a trillion and up: USD/GBP/EUR short '$1.00T', long '$1 trillion', ticks '1T', counts '1.2T'; rupees from a lakh crore as grouped crore '₹1,00,000 Cr' / '₹1,00,000 Crore', ticks '1 L Cr'. Mirrored in remotion/src/fmt/inr.ts with parity fixtures; voice reads 'one trillion dollars', 'one lakh crore rupees'.",
+   "before": {
+    "n": 30,
+    "medianViews48h": 89.0,
+    "avgViewPct": 42.6,
+    "stayedToWatch": 0.284,
+    "avgViewSec": 15.1
+   },
+   "after": {
+    "n": 11,
+    "medianViews48h": 63,
+    "avgViewPct": 51.2,
+    "stayedToWatch": 0.385,
+    "avgViewSec": 23.2
+   },
+   "viewsRatio": 0.71,
+   "sameWeek": 14
+  },
+  {
+   "id": "2026-10-28-build-camera-ignores-cast",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-10-29",
+   "description": "Build scene camera: on 'all' frames every visible thing and every actor head to feet (keepInside the union); a shot on an item that catches part of an actor zooms out just enough to keep that actor's head (camera.ts keepHeads); an actor wholly outside stays out.",
+   "before": {
+    "n": 30,
+    "medianViews48h": 89.0,
+    "avgViewPct": 42.6,
+    "stayedToWatch": 0.284,
+    "avgViewSec": 15.1
+   },
+   "after": {
+    "n": 11,
+    "medianViews48h": 63,
+    "avgViewPct": 51.2,
+    "stayedToWatch": 0.385,
+    "avgViewSec": 23.2
+   },
+   "viewsRatio": 0.71,
+   "sameWeek": 14
+  },
+  {
+   "id": "2026-10-28-facepalm-phone",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-10-29",
+   "description": "Cast: in the facepalm pose an actor holds nothing (a prop carried from an earlier acting key no longer crosses the face); the prop returns with the next pose.",
+   "before": {
+    "n": 30,
+    "medianViews48h": 89.0,
+    "avgViewPct": 42.6,
+    "stayedToWatch": 0.284,
+    "avgViewSec": 15.1
+   },
+   "after": {
+    "n": 11,
+    "medianViews48h": 63,
+    "avgViewPct": 51.2,
+    "stayedToWatch": 0.385,
+    "avgViewSec": 23.2
+   },
+   "viewsRatio": 0.71,
+   "sameWeek": 14
+  },
+  {
+   "id": "2026-10-28-scene-thumb-long",
+   "area": "thumbnail",
+   "status": "adopted",
+   "day": "2026-10-29",
+   "description": "check_script accepts a scene thumbnail without a figure (SceneThumb never draws one), so long videos can use the scene type FORMAT_TYPES offers.",
+   "before": {
+    "n": 30,
+    "medianViews48h": 89.0,
+    "avgViewPct": 42.6,
+    "stayedToWatch": 0.284,
+    "avgViewSec": 15.1
+   },
+   "after": {
+    "n": 11,
+    "medianViews48h": 63,
+    "avgViewPct": 51.2,
+    "stayedToWatch": 0.385,
+    "avgViewSec": 23.2
+   },
+   "viewsRatio": 0.71,
+   "sameWeek": 14
+  },
+  {
+   "id": "maths-divide-and-scale",
+   "area": "template",
+   "status": "adopted",
+   "day": "2026-10-28",
+   "description": "New maths kind `share`: total split among parts (per_part, parts as a count '8B'), and with per_year the years it takes to reach total. Independent check in generator/numbers.py; long_story README table.",
+   "before": {
+    "n": 28,
+    "medianViews48h": 47.0,
+    "avgViewPct": 42.9,
+    "stayedToWatch": 0.276,
+    "avgViewSec": 14.9
+   },
+   "after": {
+    "n": 14,
+    "medianViews48h": 110.0,
+    "avgViewPct": 47.3,
+    "stayedToWatch": 0.385,
+    "avgViewSec": 21.6
+   },
+   "viewsRatio": 2.34,
+   "sameWeek": 14
+  },
+  {
+   "id": "evaluate-voice-heard",
+   "area": "voice",
+   "status": "adopted",
+   "day": "2026-10-27",
+   "description": "The manifest records `heard`: hookVoice (the voice of the first spoken line) and narratorShare (% of words the narrator speaks), so the voice ranking can follow what viewers hear. The ranking itself needs improvement/evaluate.py (owner-only): see notifications.",
+   "before": {
+    "n": 25,
+    "medianViews48h": 40,
+    "avgViewPct": 43.7,
+    "stayedToWatch": 0.26,
+    "avgViewSec": 14.9
+   },
+   "after": {
+    "n": 17,
+    "medianViews48h": 125,
+    "avgViewPct": 45.3,
+    "stayedToWatch": 0.39,
+    "avgViewSec": 20.6
+   },
+   "viewsRatio": 3.12,
+   "sameWeek": 14
+  },
+  {
+   "id": "2026-10-26-list-thumb-types",
+   "area": "thumbnail",
+   "status": "adopted",
+   "day": "2026-10-27",
+   "description": "list_explained videos may use a scene thumbnail as a third type, so Test & Compare gets three different types.",
+   "before": {
+    "n": 25,
+    "medianViews48h": 40,
+    "avgViewPct": 43.7,
+    "stayedToWatch": 0.26,
+    "avgViewSec": 14.9
+   },
+   "after": {
+    "n": 17,
+    "medianViews48h": 125,
+    "avgViewPct": 45.3,
+    "stayedToWatch": 0.39,
+    "avgViewSec": 20.6
+   },
+   "viewsRatio": 3.12,
+   "sameWeek": 14
+  },
+  {
+   "id": "2026-10-21-renderjson-tempo",
+   "area": "pipeline",
+   "status": "adopted",
+   "day": "2026-10-27",
+   "description": "render.json reports the timeline's tempo (1.4 Shorts, 1.5 long) instead of a fixed 1.0.",
+   "before": {
+    "n": 25,
+    "medianViews48h": 40,
+    "avgViewPct": 43.7,
+    "stayedToWatch": 0.26,
+    "avgViewSec": 14.9
+   },
+   "after": {
+    "n": 17,
+    "medianViews48h": 125,
+    "avgViewPct": 45.3,
+    "stayedToWatch": 0.39,
+    "avgViewSec": 20.6
+   },
+   "viewsRatio": 3.12,
+   "sameWeek": 14
+  },
+  {
+   "id": "2026-10-23-negative-money-format",
+   "area": "text",
+   "status": "adopted",
+   "day": "2026-10-27",
+   "description": "A negative amount shows its sign before the currency (-$19,470, -₹15.0 L) in Python and the Remotion count-up, and the voice reads it as 'minus'. long_story README notes lumpsum takes a negative rate_pct.",
+   "before": {
+    "n": 25,
+    "medianViews48h": 40,
+    "avgViewPct": 43.7,
+    "stayedToWatch": 0.26,
+    "avgViewSec": 14.9
+   },
+   "after": {
+    "n": 17,
+    "medianViews48h": 125,
+    "avgViewPct": 45.3,
+    "stayedToWatch": 0.39,
+    "avgViewSec": 20.6
+   },
+   "viewsRatio": 3.12,
+   "sameWeek": 14
+  },
+  {
+   "id": "loop-picture-matches-hook",
+   "area": "ending",
+   "status": "reverted",
+   "day": "2026-10-26",
+   "description": "The writer ends the last beat on the hook's set at a wide shot (close-ups there at most 1 s)",
+   "before": {
+    "n": 23,
+    "medianViews48h": 38,
+    "avgViewPct": 43.0,
+    "stayedToWatch": 0.251,
+    "avgViewSec": 14.7
+   },
+   "after": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "viewsRatio": 3.5,
+   "sameWeek": 18
+  },
+  {
+   "id": "no-expert-persona",
+   "area": "script",
+   "status": "adopted",
+   "day": "2026-10-26",
+   "description": "Writer rule, fact-review reject reason and a description line: no narrator or cast line presents itself as an adviser or tells the viewer what to do with their money.",
+   "before": {
+    "n": 23,
+    "medianViews48h": 38,
+    "avgViewPct": 43.0,
+    "stayedToWatch": 0.251,
+    "avgViewSec": 14.7
+   },
+   "after": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "viewsRatio": 3.5,
+   "sameWeek": 18
+  },
+  {
+   "id": "2026-10-23-shot-close-crops-tags",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-10-26",
+   "description": "A shot on a stack frames its tag and label; a shot on a stack or phone zooms out just enough to keep it whole (camera.ts keepInside), also through the slow push.",
+   "before": {
+    "n": 23,
+    "medianViews48h": 38,
+    "avgViewPct": 43.0,
+    "stayedToWatch": 0.251,
+    "avgViewSec": 14.7
+   },
+   "after": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "viewsRatio": 3.5,
+   "sameWeek": 18
+  },
+  {
+   "id": "2026-10-23-shot-phone-text-small-wide",
+   "area": "text",
+   "status": "adopted",
+   "day": "2026-10-26",
+   "description": "Long phone drawn 360 px wide (was 280: lines ~25 px, under the 30 px minimum); a label too long to share its row with the value goes above it.",
+   "before": {
+    "n": 23,
+    "medianViews48h": 38,
+    "avgViewPct": 43.0,
+    "stayedToWatch": 0.251,
+    "avgViewSec": 14.7
+   },
+   "after": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "viewsRatio": 3.5,
+   "sameWeek": 18
+  },
+  {
+   "id": "2026-10-23-shot-word-drop-offframe",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-10-26",
+   "description": "The long frame's drop-in word drops 50 px with less spin instead of 260 px from above the frame.",
+   "before": {
+    "n": 23,
+    "medianViews48h": 38,
+    "avgViewPct": 43.0,
+    "stayedToWatch": 0.251,
+    "avgViewSec": 14.7
+   },
+   "after": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "viewsRatio": 3.5,
+   "sameWeek": 18
+  },
+  {
+   "id": "2026-10-23-shot-flow-glyph-small",
+   "area": "text",
+   "status": "adopted",
+   "day": "2026-10-26",
+   "description": "The banknote's sign glyph is decoration (data-probe skip, like Sikka's coin), not text to read.",
+   "before": {
+    "n": 23,
+    "medianViews48h": 38,
+    "avgViewPct": 43.0,
+    "stayedToWatch": 0.251,
+    "avgViewSec": 14.7
+   },
+   "after": {
+    "n": 19,
+    "medianViews48h": 133,
+    "avgViewPct": 46.0,
+    "stayedToWatch": 0.387,
+    "avgViewSec": 20.2
+   },
+   "viewsRatio": 3.5,
+   "sameWeek": 18
+  },
+  {
+   "id": "thumbs-three-pictures",
+   "area": "thumbnail",
+   "status": "adopted",
+   "day": "2026-10-23",
+   "description": "check_script rejects two Test & Compare thumbnails with the same layout (and, for `story`, the same hero); long_story README documents the versus and secret layouts (also 2026-10-22-thumb-layouts-undocumented).",
+   "before": {
+    "n": 19,
+    "medianViews48h": 35,
+    "avgViewPct": 34.1,
+    "stayedToWatch": 0.233,
+    "avgViewSec": 13.2
+   },
+   "after": {
+    "n": 22,
+    "medianViews48h": 147.0,
+    "avgViewPct": 52.0,
+    "stayedToWatch": 0.379,
+    "avgViewSec": 20.5
+   },
+   "viewsRatio": 4.2,
+   "sameWeek": 19
+  },
+  {
+   "id": "formats-demand-floor",
+   "area": "pipeline",
+   "status": "adopted",
+   "day": "2026-10-23",
+   "description": "state no longer offers a format whose best example is under MIN_VIEWS (100,000); check-plan names why a plan in one fails.",
+   "before": {
+    "n": 19,
+    "medianViews48h": 35,
+    "avgViewPct": 34.1,
+    "stayedToWatch": 0.233,
+    "avgViewSec": 13.2
+   },
+   "after": {
+    "n": 22,
+    "medianViews48h": 147.0,
+    "avgViewPct": 52.0,
+    "stayedToWatch": 0.379,
+    "avgViewSec": 20.5
+   },
+   "viewsRatio": 4.2,
+   "sameWeek": 19
+  },
+  {
+   "id": "prop-figure-hidden-until-cue",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-10-23",
+   "description": "Prop scene: a counted figure (`value`) is hidden until its `at`, not shown as 0; on the video's first frame it shows in full.",
+   "before": {
+    "n": 19,
+    "medianViews48h": 35,
+    "avgViewPct": 34.1,
+    "stayedToWatch": 0.233,
+    "avgViewSec": 13.2
+   },
+   "after": {
+    "n": 22,
+    "medianViews48h": 147.0,
+    "avgViewPct": 52.0,
+    "stayedToWatch": 0.379,
+    "avgViewSec": 20.5
+   },
+   "viewsRatio": 4.2,
+   "sameWeek": 19
+  },
+  {
+   "id": "vault-receipt-figures-clear",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-10-23",
+   "description": "Vault figure on a plaque above the door (gold bars inside); receipt shorter (top -0.72 s, 1.05 s tall) so its total lands above the caption band and its top clears a kicker (also 2026-10-21-receipt-in-caption-band).",
+   "before": {
+    "n": 19,
+    "medianViews48h": 35,
+    "avgViewPct": 34.1,
+    "stayedToWatch": 0.233,
+    "avgViewSec": 13.2
+   },
+   "after": {
+    "n": 22,
+    "medianViews48h": 147.0,
+    "avgViewPct": 52.0,
+    "stayedToWatch": 0.379,
+    "avgViewSec": 20.5
+   },
+   "viewsRatio": 4.2,
+   "sameWeek": 19
+  },
+  {
+   "id": "title-names-the-moment",
+   "area": "title",
+   "status": "reverted",
+   "day": "2026-10-22",
+   "description": "Shorts: titles name who and the everyday moment (a shopkeeper, a payslip, a dealer's offer), not an abstract claim about money",
+   "before": {
+    "n": 17,
+    "medianViews48h": 28,
+    "avgViewPct": 32.8,
+    "stayedToWatch": 0.23,
+    "avgViewSec": 13.2
+   },
+   "after": {
+    "n": 22,
+    "medianViews48h": 179.5,
+    "avgViewPct": 50.1,
+    "stayedToWatch": 0.371,
+    "avgViewSec": 19.7
+   },
+   "viewsRatio": 6.41,
+   "sameWeek": 14
+  },
+  {
+   "id": "hook-chip-frame-zero",
+   "area": "hook",
+   "status": "adopted",
+   "day": "2026-10-22",
+   "description": "A stage chip with at \"start\" shows at 0 s (kit.tsx at()), and the video's first beat draws its chip fully from frame 0; check_script warns when a video opens on a stage with no chip.",
+   "before": {
+    "n": 17,
+    "medianViews48h": 28,
+    "avgViewPct": 32.8,
+    "stayedToWatch": 0.23,
+    "avgViewSec": 13.2
+   },
+   "after": {
+    "n": 22,
+    "medianViews48h": 179.5,
+    "avgViewPct": 50.1,
+    "stayedToWatch": 0.371,
+    "avgViewSec": 19.7
+   },
+   "viewsRatio": 6.41,
+   "sameWeek": 14
+  },
+  {
+   "id": "maths-fee-take-compare",
+   "area": "template",
+   "status": "adopted",
+   "day": "2026-10-22",
+   "description": "New maths kinds fee_take (a fee per period, per year, over N years, with a cumulative chart series) and compare (diff, ratio and % of two earlier results), each recomputed independently by the number check.",
+   "before": {
+    "n": 17,
+    "medianViews48h": 28,
+    "avgViewPct": 32.8,
+    "stayedToWatch": 0.23,
+    "avgViewSec": 13.2
+   },
+   "after": {
+    "n": 22,
+    "medianViews48h": 179.5,
+    "avgViewPct": 50.1,
+    "stayedToWatch": 0.371,
+    "avgViewSec": 19.7
+   },
+   "viewsRatio": 6.41,
+   "sameWeek": 14
+  },
+  {
+   "id": "fresh-stills",
+   "area": "pipeline",
+   "status": "adopted",
+   "day": "2026-10-22",
+   "description": "render_timeline empties work/stills and work/probe before rendering.",
+   "before": {
+    "n": 17,
+    "medianViews48h": 28,
+    "avgViewPct": 32.8,
+    "stayedToWatch": 0.23,
+    "avgViewSec": 13.2
+   },
+   "after": {
+    "n": 22,
+    "medianViews48h": 179.5,
+    "avgViewPct": 50.1,
+    "stayedToWatch": 0.371,
+    "avgViewSec": 19.7
+   },
+   "viewsRatio": 6.41,
+   "sameWeek": 14
+  },
+  {
+   "id": "maths-real-return-tax-bands",
+   "area": "template",
+   "status": "adopted",
+   "day": "2026-10-21",
+   "description": "New maths kinds real_return (growth vs inflation, in today's money), price_rise (a monthly cost rising yearly) and income_tax_bands (tax by bands, optional second income), each recomputed by an independent closed form in the number check; example examples/short_story_tax.json (UK frozen allowance).",
+   "before": {
+    "n": 14,
+    "medianViews48h": 25.0,
+    "avgViewPct": 29.4,
+    "stayedToWatch": 0.233,
+    "avgViewSec": 12.6
+   },
+   "after": {
+    "n": 23,
+    "medianViews48h": 211,
+    "avgViewPct": 49.9,
+    "stayedToWatch": 0.353,
+    "avgViewSec": 19.1
+   },
+   "viewsRatio": 8.44,
+   "sameWeek": 15
+  },
+  {
+   "id": "event-gap-warning",
+   "area": "pacing",
+   "status": "adopted",
+   "day": "2026-10-21",
+   "description": "number-check warns (estimated timing) and render logs (measured timing) every Shorts beat over 5 s with more than 3 s between named events; a warning, not a failure, plus a writer note in short_story/README.md.",
+   "before": {
+    "n": 14,
+    "medianViews48h": 25.0,
+    "avgViewPct": 29.4,
+    "stayedToWatch": 0.233,
+    "avgViewSec": 12.6
+   },
+   "after": {
+    "n": 23,
+    "medianViews48h": 211,
+    "avgViewPct": 49.9,
+    "stayedToWatch": 0.353,
+    "avgViewSec": 19.1
+   },
+   "viewsRatio": 8.44,
+   "sameWeek": 15
+  },
+  {
+   "id": "narrator-not-cast-voice",
+   "area": "sound",
+   "status": "adopted",
+   "day": "2026-10-20",
+   "description": "The render step never gives the narrator the voice of a cast member who speaks in the same script (Sharma am_fenrir, Sikka af_bella); it takes the least recently used other narrator.",
+   "before": {
+    "n": 11,
+    "medianViews48h": 26,
+    "avgViewPct": 31.0,
+    "stayedToWatch": 0.255,
+    "avgViewSec": 13.5
+   },
+   "after": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "viewsRatio": 6.9,
+   "sameWeek": 15
+  },
+  {
+   "id": "stack-prop-figure",
+   "area": "motion",
+   "status": "adopted",
+   "day": "2026-10-20",
+   "description": "Prop 'stack': bills sit at half the old spacing and the figure rides just above the top bill, clear of a kicker and inside the frame under a punch.",
+   "before": {
+    "n": 11,
+    "medianViews48h": 26,
+    "avgViewPct": 31.0,
+    "stayedToWatch": 0.255,
+    "avgViewSec": 13.5
+   },
+   "after": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "viewsRatio": 6.9,
+   "sameWeek": 15
+  },
+  {
+   "id": "chapter-timestamps-not-claims",
+   "area": "pipeline",
+   "status": "adopted",
+   "day": "2026-10-20",
+   "description": "The number check ignores a leading m:ss / h:mm:ss timestamp on lines of a long video's description; numbers after it are still checked.",
+   "before": {
+    "n": 11,
+    "medianViews48h": 26,
+    "avgViewPct": 31.0,
+    "stayedToWatch": 0.255,
+    "avgViewSec": 13.5
+   },
+   "after": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "viewsRatio": 6.9,
+   "sameWeek": 15
+  },
+  {
+   "id": "maths-sip-stepup-loan-prepay",
+   "area": "template",
+   "status": "adopted",
+   "day": "2026-10-20",
+   "description": "New maths kinds sip_stepup (yearly step-up vs flat SIP) and loan_prepay (prepay: lower EMI vs shorter loan), each recomputed in closed form by the number check; example examples/short_story_prepay.json.",
+   "before": {
+    "n": 11,
+    "medianViews48h": 26,
+    "avgViewPct": 31.0,
+    "stayedToWatch": 0.255,
+    "avgViewSec": 13.5
+   },
+   "after": {
+    "n": 24,
+    "medianViews48h": 179.5,
+    "avgViewPct": 47.5,
+    "stayedToWatch": 0.324,
+    "avgViewSec": 17.5
+   },
+   "viewsRatio": 6.9,
+   "sameWeek": 15
+  },
+  {
+   "id": "narrator-rotation",
+   "area": "sound",
+   "status": "adopted",
+   "day": "2026-10-19",
+   "description": "The render step gives a script with no narrator, or the previous video's narrator, the voice in NARRATOR_VOICES its format used longest ago (never-used first), and saves it in script.json.",
+   "before": {
+    "n": 9,
+    "medianViews48h": 35,
+    "avgViewPct": 29.6,
+    "stayedToWatch": 0.24,
+    "avgViewSec": 13.3
+   },
+   "after": {
+    "n": 25,
+    "medianViews48h": 148,
+    "avgViewPct": 46.4,
+    "stayedToWatch": 0.315,
+    "avgViewSec": 16.6
+   },
+   "viewsRatio": 4.23,
+   "sameWeek": 11
+  },
+  {
+   "id": "same-figure-same-text",
+   "area": "text",
+   "status": "adopted",
+   "day": "2026-10-18",
+   "description": "A count-up or bar must land on the string Python makes from the number it counts to; its value is an @maths reference or 0, never typed.",
+   "before": {
+    "n": 7,
+    "medianViews48h": 38,
+    "avgViewPct": 27.2,
+    "stayedToWatch": 0.259,
+    "avgViewSec": 12.7
+   },
+   "after": {
+    "n": 27,
+    "medianViews48h": 133,
+    "avgViewPct": 45.8,
+    "stayedToWatch": 0.305,
+    "avgViewSec": 16.5
+   },
+   "viewsRatio": 3.5,
+   "sameWeek": 7
+  }
+ ]
+}

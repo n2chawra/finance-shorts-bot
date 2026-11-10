@@ -26,7 +26,7 @@ def make_plan(**over) -> dict:
         "template": "short_story", "topic": {"title": "How big a monthly SIP grows over two decades", "category": "sip", "reach": "local",
                   "reach_reason": {"kind": "demand"}},
         "demand": {"title": "rich vs poor parents buying you a car", "views": 8800000, "url": "https://www.youtube.com/shorts/vGQZuTfIWnU"},
-        "story": "future_value", "hook_style": "question", "cta": "Comment if you got it right",
+        "story": "future_value", "hook_style": "question", "cta": "Comment if you got it right", "subject": "",
         "title": "Quiz: what does a ₹10,000 SIP become in 20 years?",
         "description": "A quick SIP quiz with a surprising answer. Illustrative only. Not financial advice.",
         "hashtags": ["#Shorts", "#SIP", "#PersonalFinance"], "seed": 20, "currency": "INR",

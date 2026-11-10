@@ -1,0 +1,53 @@
+{
+  "agent": "improver",
+  "day": "2026-11-10",
+  "startedAt": "2026-11-10T14:17:29Z",
+  "finishedAt": "2026-11-10T14:24:18Z",
+  "summary": "Answered your three notes: every Short's description and hashtags now name its famous subject (Elon Musk) even with a plain title, and a new impact report tracks whether the channel is actually improving. Extended one experiment; the other four wait for data.",
+  "decision": "acted",
+  "why": "Owner notes come first. The evaluator asked to extend ending-beats-act-and-vary (2 vs 3 videos, no clear effect); nothing else matured, and 5 experiments run (the cap).",
+  "findings": [
+    {
+      "title": "Is the channel improving? Partly",
+      "detail": "Shorts by week (late Oct -> 2 Nov week): % viewed 39.7% -> 54.6%, average view 17.9 -> 23.2 s, but stayed-to-watch flat at ~39% (6 in 10 swipe away at the start) and median 48 h views 211 -> 43. Retention fixes worked; the first second is now the bottleneck."
+    },
+    {
+      "title": "Variant system",
+      "detail": "Defaults 20-27 s (908 median vs 133), secret hook (708), plain title (460 vs 140, only 4 videos, confounded with length)."
+    },
+    {
+      "title": "Best formats by 48 h views",
+      "detail": "how_they_make_money 9.77x (n 5), money_scale 2.33x, secret_of_rich 2.06x and 68.5% viewed; rule_change 0.36x but 42.0% viewed, not retired."
+    },
+    {
+      "title": "Experiments",
+      "detail": "ending-beats-act-and-vary extended to 21 days; hook-voice-matches-frame day 21 of 28; you-in-the-core-story 1 of 4; quiet-bed 1 of 4 and chart-gap-fill 2 of 4 long videos per arm."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Subject named in description and hashtag",
+      "detail": "Plans carry `subject`; check-plan fails a Short whose description's first two lines or hashtags don't name it (generator/formats.py, planner.md, test).",
+      "branch": "agent/improver/2026-11-10",
+      "experiment": "2026-11-10-subject-named"
+    },
+    {
+      "title": "Impact report",
+      "detail": "python -m generator.impact writes improvement/weekly/impact.json: Shorts per week (views, % viewed, stayed to watch, view seconds) and each landed change's 14 days before/after.",
+      "branch": "agent/improver/2026-11-10"
+    },
+    {
+      "title": "Extended ending-beats-act-and-vary",
+      "detail": "extended: true, maxDays 21 (evaluator verdict).",
+      "branch": "agent/improver/2026-11-10",
+      "experiment": "ending-beats-act-and-vary"
+    }
+  ],
+  "nextCheck": "2026-11-12",
+  "links": [
+    {
+      "label": "Impact data",
+      "url": "improvement/weekly/impact.json"
+    }
+  ]
+}
