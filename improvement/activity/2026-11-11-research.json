@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "day": "2026-11-11",
+  "startedAt": "2026-11-10T14:06:11Z",
+  "finishedAt": "2026-11-10T14:15:04Z",
+  "summary": "Pacing night: our own timelines show the October hits were spoken at 203-240 words a minute and the 9-10 Nov Shorts at 146-172, so I proposed an experiment to go back to that pace. Added 5 big-money topics with famous names and sourced figures (Ronaldo, IPL, Taylor Swift, Berkshire's cash, Ohtani), and told the owner why titles stopped naming Elon.",
+  "decision": "acted",
+  "why": "Shorts at 200+ wpm have a median of 237 views in 48 h (n=19) against 31 at 175-200 wpm (n=14). The variant system dropped name/figure titles on a comparison confounded by length: within 20-27 s, name/figure titles have a median of 908 views (n=5).",
+  "findings": [
+    {
+      "title": "Our hits were spoken much faster",
+      "detail": "Every 700+ view Short but one: 203-240 wpm at voice speed 1.4; the Shorts of 9-10 Nov: 146-172 wpm at 1.2. Proposed as an experiment (shorts-voice-back-to-october-pace).",
+      "link": "improvement/research/2026-11-11.md"
+    },
+    {
+      "title": "Titles hide famous names because of the variant system",
+      "detail": "title: plain promoted on 6 Nov (n=4); confounded by length. Owner notification with steps.",
+      "link": "improvement/notifications/research.json"
+    },
+    {
+      "title": "Too many highlight actions",
+      "detail": "Glow, shake, grow and tag are 40-71% of the actions in the 10 Nov Shorts; actions-that-change-things raised to high.",
+      "link": "improvement/research/proposals.json"
+    },
+    {
+      "title": "IPL money: a 17M-view local reference, and retention lists due this month",
+      "detail": "BCCI media rights ₹48,390.32 crore for 2023-27.",
+      "link": "https://www.bcci.tv/news/article/bcci-announces-the-successful-bidders-for-acquiring-the-media-rights-for-the-indian-premier-league-seasons-2023-2027"
+    },
+    {
+      "title": "Claude Code 2.1.321 adds Claude Fable 5.2",
+      "detail": "No change for the Pro-plan routines.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "5 topics added to the feed",
+      "detail": "ronaldo-300-million-while-you-watch, ipl-teams-paid-before-a-ball (high), taylor-swift-2-billion-from-one-tour, buffett-company-sits-on-377-billion, ohtani-700-million-paid-2-million-a-year",
+      "branch": "agent/research/2026-11-11"
+    },
+    {
+      "title": "2 new proposals, 1 raised",
+      "detail": "shorts-voice-back-to-october-pace (experiment, high), extreme-close-on-the-turn (experiment), actions-that-change-things raised to high",
+      "branch": "agent/research/2026-11-11"
+    }
+  ],
+  "nextCheck": "2026-11-12",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-11.md"
+    }
+  ]
+}
