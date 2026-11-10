@@ -1,5 +1,5 @@
 {
-  "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
+  "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
   "open": 0,
   "notes": [
     {
@@ -8,7 +8,7 @@
       "area": null,
       "text": "Also keep an eye on are we improving the channel performance or not like things which actually say youtube to push our video like swipe up rate . Average view duration. Because without this out channel will keep making videos without actual progress or growths. \n\nThanks th actual purpose of this automation . Why other same animated channel get so many views but we don't.",
       "status": "addressed",
-      "response": "fixed: New report python -m generator.impact (improvement/weekly/impact.json) tracks Shorts per week on 48 h views, % viewed, stayed-to-watch (didn't swipe away) and average view seconds; honest read: % viewed rose 40%→55% and view time 18→23 s, but stayed-to-watch is flat at 39% (6 in 10 swipe away in the first seconds) and median views fell 211→43, so the first second is now the improver's top target.: (3fab9d1)",
+      "response": "improver fixed: New report python -m generator.impact (improvement/weekly/impact.json) tracks Shorts per week on 48 h views, % viewed, stayed-to-watch (didn't swipe away) and average view seconds; honest read: % viewed rose 40%→55% and view time 18→23 s, but stayed-to-watch is flat at 39% (6 in 10 swipe away in the first seconds) and median views fell 211→43, so the first second is now the improver's top target. (3fab9d1)",
       "at": "2026-11-10T13:07:13.353Z",
       "video": null
     },
@@ -18,7 +18,7 @@
       "area": null,
       "text": "Make a seprate tab for division made specific to making videos better. Like we are implementing this and under that how it helped the channel with reference like this video got this much like comment views etc.\n\nSo that I can know dedicatedly that what is/ has my automation done to actually improve the system and is there actual benefitted my channel. Because just keep improving with no results means wasted money on my end. I don't want that to happen. Because ik seeing lots of good content also not getting pushed by youtube.",
       "status": "addressed",
-      "response": "fixed: New Impact page (Insights → Impact): Shorts per week on views, % viewed, stayed-to-watch and view time, and every change the agents made with the views of the Shorts before and after it, each video linked.: (ce3a7a2)",
+      "response": "improver fixed: New Impact page (Insights → Impact): Shorts per week on views, % viewed, stayed-to-watch and view time, and every change the agents made with the views of the Shorts before and after it, each video linked. (ce3a7a2)",
       "at": "2026-11-10T04:32:42.961Z",
       "video": null
     },
@@ -28,7 +28,7 @@
       "area": null,
       "text": "The title don't say elon . Title also contribute to distribution right now youtube will know it's about elon and push more if we don't specify in tittle???",
       "status": "addressed",
-      "response": "fixed: Every Short's plan now names its subject (e.g. Elon Musk) and check-plan fails it unless the description's first lines and a hashtag say it, even when the title is 'plain'; whether the title itself should name him is the variant system's call (plain beat figure_or_name 460 vs 140, but only 4 videos and confounded with the shorter length), so I've asked you on Notifications to add a 'name' title option.: (df4dd85)",
+      "response": "improver fixed: Every Short's plan now names its subject (e.g. Elon Musk) and check-plan fails it unless the description's first lines and a hashtag say it, even when the title is 'plain'; whether the title itself should name him is the variant system's call (plain beat figure_or_name 460 vs 140, but only 4 videos and confounded with the shorter length), so I've asked you on Notifications to add a 'name' title option. (df4dd85)",
       "at": "2026-11-10T03:44:49.078Z",
       "video": {
         "id": "v-20261110-01",
@@ -47,7 +47,7 @@
       "area": null,
       "text": "The 3 topics for today are pretty basic even though its good indont think most people would want to see it . Our system would already remove the types after seeing the analytics right????",
       "status": "addressed",
-      "response": "fixed: Partly yes: formats and topic kinds are judged on views (budget is already dropped; how_they_make_money is actually our best format at 9.8x median), so the type wasn't the problem, the pick inside it was. The planner now skips topics a typical viewer already knows (e.g. 'banks lend your savings') and the editor ranks them lower.: (05a8b8d)",
+      "response": "improver fixed: Partly yes: formats and topic kinds are judged on views (budget is already dropped; how_they_make_money is actually our best format at 9.8x median), so the type wasn't the problem, the pick inside it was. The planner now skips topics a typical viewer already knows (e.g. 'banks lend your savings') and the editor ranks them lower. (05a8b8d)",
       "at": "2026-11-09T08:32:56.259Z",
       "video": null
     },
@@ -57,7 +57,7 @@
       "area": "hook",
       "text": "The video says what people think about not that it's wrong. Like do you think ... your wrong.",
       "status": "addressed",
-      "response": "fixed: The number check now fails a hook that doesn't start 'You think ...?' and deny it ('It doesn't.' / 'You're wrong.'), or ends on 'Watch this.'/'Here's why.', or ends like a recent hook; the prompts that still taught 'end on watch' are fixed. Heads-up: the 3-6 Nov Shorts with this exact pattern got 9-63 views, so watch the next few.: (8bffe46)",
+      "response": "improver fixed: The number check now fails a hook that doesn't start 'You think ...?' and deny it ('It doesn't.' / 'You're wrong.'), or ends on 'Watch this.'/'Here's why.', or ends like a recent hook; the prompts that still taught 'end on watch' are fixed. Heads-up: the 3-6 Nov Shorts with this exact pattern got 9-63 views, so watch the next few. (8bffe46)",
       "at": "2026-11-09T08:30:48.496Z",
       "video": {
         "id": "v-20261109-01",
@@ -76,7 +76,7 @@
       "area": null,
       "text": "I loved the way of animation done.",
       "status": "addressed",
-      "response": "noted: Noted as your taste: that Short was a 'pick-one' shape with things that turn into each other (the bonus becoming a paycheck); pick-one is a trial shape and needs one more Short at the median to become a regular.",
+      "response": "improver noted: Noted as your taste: that Short was a 'pick-one' shape with things that turn into each other (the bonus becoming a paycheck); pick-one is a trial shape and needs one more Short at the median to become a regular.",
       "at": "2026-11-05T04:20:18.789Z",
       "video": {
         "id": "v-20261105-01",
@@ -95,7 +95,7 @@
       "area": "other",
       "text": "Video length is very short could be little more like 30 atleast.",
       "status": "addressed",
-      "response": "needs owner: That Short (27 s) was in the variant system's 20-27 s length test, and so far the data favours it: 20-27 s Shorts have a median of 908 views at 48 h vs 133 for 28-35 s (n 5 vs 9). Lengths are owner-only (config/arms.json); if you still want 30 s at least, the steps are on the Notifications page.",
+      "response": "improver needs owner: That Short (27 s) was in the variant system's 20-27 s length test, and so far the data favours it: 20-27 s Shorts have a median of 908 views at 48 h vs 133 for 28-35 s (n 5 vs 9). Lengths are owner-only (config/arms.json); if you still want 30 s at least, the steps are on the Notifications page.",
       "at": "2026-11-05T04:17:08.426Z",
       "video": {
         "id": "v-20261105-06",
@@ -114,7 +114,7 @@
       "area": null,
       "text": "The billion and million is shown in numbers which is wrong . Also in tittle same mistake. People would see million and billion in words not in numbers.",
       "status": "addressed",
-      "response": "fixed: A round million or billion now shows in words everywhere (titles, descriptions, on screen): '$10 billion', '$1 million', not '$10,000,000,000'; the number check rejects a title or description with 7+ digits, so it can't come back.: (1fc1de6)",
+      "response": "improver fixed: A round million or billion now shows in words everywhere (titles, descriptions, on screen): '$10 billion', '$1 million', not '$10,000,000,000'; the number check rejects a title or description with 7+ digits, so it can't come back. (1fc1de6)",
       "at": "2026-11-05T04:13:44.862Z",
       "video": {
         "id": "v-20261105-07",
@@ -133,7 +133,7 @@
       "area": null,
       "text": "Speed is very fast can't hear things clearly.\nAdd lots of more props and animation than this atleast 80% more than currently in video.\nSome texts if getting overlapped and hiding behind",
       "status": "addressed",
-      "response": "fixed: Long videos now play at tempo 1.25 (~180 words a minute, was 1.5 / ~215); the long writer guide asks for 3-5 things per beat with an action on every clause (yours had 1.9), and a figure the sum already shows no longer slams in behind it (the QA-found overlap at 95 s and 285 s).: (dcc98af)",
+      "response": "improver fixed: Long videos now play at tempo 1.25 (~180 words a minute, was 1.5 / ~215); the long writer guide asks for 3-5 things per beat with an action on every clause (yours had 1.9), and a figure the sum already shows no longer slams in behind it (the QA-found overlap at 95 s and 285 s). (dcc98af)",
       "at": "2026-11-04T05:59:19.099Z",
       "video": {
         "id": "L-20261104-01",
@@ -152,7 +152,7 @@
       "area": null,
       "text": "The topics are good . But every topics is of same category before when our videos were working 1k views we had more category of videos . Now I'm not getting good views. Analyse and create topics accordingly",
       "status": "addressed",
-      "response": "fixed: You're right: since 31 Oct every Short is about a named billionaire or company, while the 1K week mixed in the viewer's own money ('Your $20,000 savings' 1,161, 'Your Dhanteras necklace' 1,133); half of new Shorts now tell a big-money format through the viewer's own money, measured on 48 h views (experiment you-in-the-core-story).: (c734ec8)",
+      "response": "improver fixed: You're right: since 31 Oct every Short is about a named billionaire or company, while the 1K week mixed in the viewer's own money ('Your $20,000 savings' 1,161, 'Your Dhanteras necklace' 1,133); half of new Shorts now tell a big-money format through the viewer's own money, measured on 48 h views (experiment you-in-the-core-story). (c734ec8)",
       "at": "2026-11-04T02:53:13.531Z",
       "video": null
     },
@@ -162,7 +162,7 @@
       "area": null,
       "text": "The city props is shit. What the fuck is that??\n\nAlso the disclaimer put it at the below end of screen small",
       "status": "addressed",
-      "response": "fixed: Added a shared 'city' prop (a skyline of towers with lit windows, roofs and a crane, built up to k) so a city is never a tilted slab again, plus a checklist rule that places read as places; the disclaimer is now a small line at the very bottom of the frame at the minimum text size (commit 6226210).: (3c97fe8)",
+      "response": "improver fixed: Added a shared 'city' prop (a skyline of towers with lit windows, roofs and a crane, built up to k) so a city is never a tilted slab again, plus a checklist rule that places read as places; the disclaimer is now a small line at the very bottom of the frame at the minimum text size (commit 6226210). (3c97fe8)",
       "at": "2026-11-04T02:49:59.647Z",
       "video": {
         "id": "v-20261104-01",
@@ -181,7 +181,7 @@
       "area": null,
       "text": "After hook 17 second of video has texts only no props animation. User might leave the video because of it.",
       "status": "addressed",
-      "response": "fixed: Found it: on a card the person card and the two documents hid every prop for 12 s; now a Short's card keeps its things standing under one person card or short document (stills: cash case, shares and tax envelope back at 5-15 s), and the checklist forbids card beats without things.: (e4f8051)",
+      "response": "improver fixed: Found it: on a card the person card and the two documents hid every prop for 12 s; now a Short's card keeps its things standing under one person card or short document (stills: cash case, shares and tax envelope back at 5-15 s), and the checklist forbids card beats without things. (e4f8051)",
       "at": "2026-11-04T02:47:03.579Z",
       "video": {
         "id": "v-20261104-02",
@@ -200,7 +200,7 @@
       "area": null,
       "text": "The animation and story telling is better than other video",
       "status": "addressed",
-      "response": "noted: Taken as taste: v-20261103-02's board mix (more things entering and growing, fewer marks) is the bar the new 65% mark cap is set against.",
+      "response": "improver noted: Taken as taste: v-20261103-02's board mix (more things entering and growing, fewer marks) is the bar the new 65% mark cap is set against.",
       "at": "2026-11-03T06:09:36.714Z",
       "video": {
         "id": "v-20261103-02",
@@ -219,7 +219,7 @@
       "area": "script",
       "text": "While telling about a person u can add some more thing about him to make it more curiosity. Like warren buffett the 10th richest man in the planet he does this... Etc depending on topic to make this very clear . But don't enlarge the introduction keep it short only.",
       "status": "addressed",
-      "response": "fixed: Writer rule: the first time a real person is named they get one short clause that makes them matter; a rank or amount in it must be a sourced fact, otherwise words.: (a953bc5)",
+      "response": "improver fixed: Writer rule: the first time a real person is named they get one short clause that makes them matter; a rank or amount in it must be a sourced fact, otherwise words. (a953bc5)",
       "at": "2026-11-03T06:07:54.575Z",
       "video": {
         "id": "v-20261103-02",
@@ -238,7 +238,7 @@
       "area": null,
       "text": "Add real images of personality and products so that it feels very good. Not full picture just people faces and products logos.",
       "status": "addressed",
-      "response": "needs owner: Real faces and logos would need downloaded images, which the hard rules forbid (no downloaded or copyrighted assets), and bring likeness and trademark risk; companies now show by name instead. Only you can change that rule (see Notifications).",
+      "response": "improver needs owner: Real faces and logos would need downloaded images, which the hard rules forbid (no downloaded or copyrighted assets), and bring likeness and trademark risk; companies now show by name instead. Only you can change that rule (see Notifications).",
       "at": "2026-11-03T06:05:35.686Z",
       "video": {
         "id": "v-20261103-02",
@@ -257,7 +257,7 @@
       "area": "animation",
       "text": "Could have added more animation/propa so that it became more engaging. Right now it's like same stuff coming.",
       "status": "addressed",
-      "response": "fixed: New render check: a board video fails when more than 65% of its actions only mark something already there (this Short had 71%: glows, stamps, bubbles), so writers must add things that enter, swap, flow, multiply or a panel.: (15ac099)",
+      "response": "improver fixed: New render check: a board video fails when more than 65% of its actions only mark something already there (this Short had 71%: glows, stamps, bubbles), so writers must add things that enter, swap, flow, multiply or a panel. (15ac099)",
       "at": "2026-11-03T06:01:42.740Z",
       "video": {
         "id": "v-20261103-03",
@@ -276,7 +276,7 @@
       "area": "animation",
       "text": "The props are coming before even their context is said which is making it look static for few seconds. Also don't put things already in screen and then animate but  make them appear and animate so that it feels engaging.",
       "status": "addressed",
-      "response": "fixed: Things in board and build beats no longer wait on screen: anything nothing acts on until 0.6 s into a beat now flies in just before the word that names it, then animates.: (379f507)",
+      "response": "improver fixed: Things in board and build beats no longer wait on screen: anything nothing acts on until 0.6 s into a beat now flies in just before the word that names it, then animates. (379f507)",
       "at": "2026-11-03T06:00:38.540Z",
       "video": {
         "id": "v-20261103-03",
@@ -295,7 +295,7 @@
       "area": null,
       "text": "The source should be shown once only throughout the video. No need to show again and again.",
       "status": "addressed",
-      "response": "fixed: The 'Data:' source line now prints once a video, on the first beat that says a sourced figure; a video's own beats that print it everywhere fail the own-code check.: (360eb4f)",
+      "response": "improver fixed: The 'Data:' source line now prints once a video, on the first beat that says a sourced figure; a video's own beats that print it everywhere fail the own-code check. (360eb4f)",
       "at": "2026-11-03T05:55:12.302Z",
       "video": {
         "id": "v-20261103-01",
@@ -314,7 +314,7 @@
       "area": "other",
       "text": "The image showed for apple and Google ia wrong. Apple is fruit here and Google wrong thing. Use real icons of company not this fake things.",
       "status": "addressed",
-      "response": "fixed: Writer rule: a real company is shown by its name (a name card or a label on its product), never a pun object like fruit for Apple; real logos can't be used (no downloaded images, trademarks).: (a953bc5)",
+      "response": "improver fixed: Writer rule: a real company is shown by its name (a name card or a label on its product), never a pun object like fruit for Apple; real logos can't be used (no downloaded images, trademarks). (a953bc5)",
       "at": "2026-11-03T05:53:10.519Z",
       "video": {
         "id": "v-20261103-01",
@@ -333,7 +333,7 @@
       "area": null,
       "text": "Weak animation and poor story  telling and script",
       "status": "addressed",
-      "response": "noted: Stale. The new storytelling and presentation rules (one concrete story, open questions, the camera following the action) apply to every Short from the next run.",
+      "response": "improver noted: Stale. The new storytelling and presentation rules (one concrete story, open questions, the camera following the action) apply to every Short from the next run.",
       "at": "2026-11-02T09:35:35.511Z",
       "video": {
         "id": "v-20261031-02",
@@ -352,7 +352,7 @@
       "area": null,
       "text": "Weak animation and story script",
       "status": "addressed",
-      "response": "noted: Stale. Its 9 hedging words and a 'Picture...' opener now fail the number check, so a script like it can't ship again; the topic is kept and remade as v-remake-car.",
+      "response": "improver noted: Stale. Its 9 hedging words and a 'Picture...' opener now fail the number check, so a script like it can't ship again; the topic is kept and remade as v-remake-car.",
       "at": "2026-11-02T09:35:01.269Z",
       "video": {
         "id": "v-20261102-02",
@@ -371,7 +371,7 @@
       "area": "animation",
       "text": "Animation also was very weak . Animation don't mean just put object when u speak of it. It's a way of presentation. It very weak other with same topic earna view but we don't because our animation is not up to the mark that it can attract viewers. It lacks wow factor",
       "status": "addressed",
-      "response": "fixed: The new board scene: questions in a room, every answer a full-frame labelled card (documents with real data, sums, chips, charts, things that turn into and feed each other), a new picture every sentence, every clause animated (90%+ gate), readable on mute (QA check). Approved on the fourth demo take.",
+      "response": "improver fixed: The new board scene: questions in a room, every answer a full-frame labelled card (documents with real data, sums, chips, charts, things that turn into and feed each other), a new picture every sentence, every clause animated (90%+ gate), readable on mute (QA check). Approved on the fourth demo take.",
       "at": "2026-11-02T09:24:08.445Z",
       "video": {
         "id": "v-20261102-02",
@@ -390,7 +390,7 @@
       "area": "script",
       "text": "Story telling needs lots of work. 1 min video should have a convincing script. This script gave the message but the way was very poor. I myself don't like the video atall . What to expect from others. \n\nI rate the topic good. But the video is 2/10. Way of explanation is very weak.",
       "status": "addressed",
-      "response": "fixed: Rebuilt after a frame-by-frame study of The Curious Plot: a question in the viewer's voice every 12 s, answers early then deeper, real names with sourced facts, every figure built from units with the sum on screen, a named term per step, an ending that asks the viewer something; checked by code (generator/story.py). Shown to you as the v-remake-salary demo.",
+      "response": "improver fixed: Rebuilt after a frame-by-frame study of The Curious Plot: a question in the viewer's voice every 12 s, answers early then deeper, real names with sourced facts, every figure built from units with the sum on screen, a named term per step, an ending that asks the viewer something; checked by code (generator/story.py). Shown to you as the v-remake-salary demo.",
       "at": "2026-11-02T09:22:18.861Z",
       "video": {
         "id": "v-20261102-02",
@@ -409,7 +409,7 @@
       "area": null,
       "text": "this topics feels like it can attract viewers plus the animation and story telling is better than other one.",
       "status": "addressed",
-      "response": "noted: Read as taste: how-famous-companies-make-money stories with a clear money route; research added three more (gym, Costco, Starbucks) to the feed, and the new travelling-money animation is built for exactly this story.",
+      "response": "improver noted: Read as taste: how-famous-companies-make-money stories with a clear money route; research added three more (gym, Costco, Starbucks) to the feed, and the new travelling-money animation is built for exactly this story.",
       "at": "2026-10-31T06:57:28.813Z",
       "video": {
         "id": "v-20261031-01",
@@ -428,7 +428,7 @@
       "area": "animation",
       "text": "Find how animation should be done to engage users. Animation is the core of this . If it's not good people won't continue the video. Find other people reference as examples and improve it",
       "status": "addressed",
-      "response": "fixed: Started A/B money-travels-not-pops on half the Shorts: money now flies on an arc between the things it connects (customer to restaurant to McDonald's) and things fly in and land instead of popping; reference-based research on animation continues in research's reports.: (a9330ad)",
+      "response": "improver fixed: Started A/B money-travels-not-pops on half the Shorts: money now flies on an arc between the things it connects (customer to restaurant to McDonald's) and things fly in and land instead of popping; reference-based research on animation continues in research's reports. (a9330ad)",
       "at": "2026-10-31T06:01:45.729Z",
       "video": null
     },
@@ -438,7 +438,7 @@
       "area": null,
       "text": "Animation are very basic things just popping up and shaking so basic . Like 5/10 could be presented way better. With correct animation this video could have been rated 9/10 but now it's 7/10.",
       "status": "addressed",
-      "response": "fixed: Pop-and-shake replaced on half the Shorts (A/B money-travels-not-pops): things fly in or grow out of the thing before them and land with a squash, shake is a hop, and money travels with its figure riding on it; checked on this video's own timeline.: (a9330ad)",
+      "response": "improver fixed: Pop-and-shake replaced on half the Shorts (A/B money-travels-not-pops): things fly in or grow out of the thing before them and land with a squash, shake is a hop, and money travels with its figure riding on it; checked on this video's own timeline. (a9330ad)",
       "at": "2026-10-31T05:56:29.959Z",
       "video": {
         "id": "v-20261031-01",
@@ -457,7 +457,7 @@
       "area": "hook",
       "text": "It could have been better like do you think macdonalds earn through burger sales your are wrong ..  hook is ok but level of curiosity it creates is 6/10.",
       "status": "addressed",
-      "response": "noted: Your pattern ('You think McDonald's makes its money from burgers? It doesn't.') is the next hook experiment (hook-you-think-x-youre-wrong); it starts the night hook-voice-matches-frame gets its verdict, about one more Short, so two hook tests don't blur each other.",
+      "response": "improver noted: Your pattern ('You think McDonald's makes its money from burgers? It doesn't.') is the next hook experiment (hook-you-think-x-youre-wrong); it starts the night hook-voice-matches-frame gets its verdict, about one more Short, so two hook tests don't blur each other.",
       "at": "2026-10-31T05:53:51.411Z",
       "video": {
         "id": "v-20261031-01",
@@ -476,7 +476,7 @@
       "area": "other",
       "text": "The background music is very dull feels like I'm doing postmortem.",
       "status": "addressed",
-      "response": "noted: Built a livelier cinematic bed (major-first chords, soft kick and shaker from the first bar, snare after the hook) behind flag cinematic-bed-gets-a-pulse; it starts as an A/B as soon as an experiment slot frees (5 of 5 running, next frees in about a day). Cinematic is our best genre by % viewed (69.6%, n=6), so it stays and gets energy.: (da68f16)",
+      "response": "improver noted: Built a livelier cinematic bed (major-first chords, soft kick and shaker from the first bar, snare after the hook) behind flag cinematic-bed-gets-a-pulse; it starts as an A/B as soon as an experiment slot frees (5 of 5 running, next frees in about a day). Cinematic is our best genre by % viewed (69.6%, n=6), so it stays and gets energy. (da68f16)",
       "at": "2026-10-31T05:47:07.367Z",
       "video": {
         "id": "v-20261031-02",
@@ -495,7 +495,7 @@
       "area": "animation",
       "text": "The animation are pretty basic could've been presented much better. It's right now very static .",
       "status": "addressed",
-      "response": "fixed: Same fix as the McDonald's note: on the A/B's on-half, every beat where money changes hands shows notes travelling between the two things, so the middle of the video always has something moving.: (a9330ad)",
+      "response": "improver fixed: Same fix as the McDonald's note: on the A/B's on-half, every beat where money changes hands shows notes travelling between the two things, so the middle of the video always has something moving. (a9330ad)",
       "at": "2026-10-31T05:46:19.626Z",
       "video": {
         "id": "v-20261031-02",
@@ -514,7 +514,7 @@
       "area": "hook",
       "text": "The hook does not create curiosity.",
       "status": "addressed",
-      "response": "noted: 'Let me show you why' gives the viewer nothing to guess; the next hook experiment (hook-you-think-x-youre-wrong: put the belief to the viewer and deny it, never the answer) starts once the current hook test ends in about a day.",
+      "response": "improver noted: 'Let me show you why' gives the viewer nothing to guess; the next hook experiment (hook-you-think-x-youre-wrong: put the belief to the viewer and deny it, never the answer) starts once the current hook test ends in about a day.",
       "at": "2026-10-31T05:45:21.884Z",
       "video": {
         "id": "v-20261031-02",
