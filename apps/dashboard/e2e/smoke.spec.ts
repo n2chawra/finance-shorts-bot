@@ -549,3 +549,15 @@ test("runs page names long videos and says when nothing failed", async ({ page, 
   await page.getByRole("radio", { name: "Failed" }).click();
   await expect(page.getByText("No failed runs")).toBeVisible();
 });
+
+test("analytics switches tab when the link's hash changes on the page", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/analytics#content");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Analytics/, { timeout: 30_000 });
+  await expect(page.getByRole("tab", { name: "Content" })).toHaveAttribute("aria-selected", "true");
+  // the tab was read from the hash on first load only, so an in-page link or Back kept the old tab
+  await page.evaluate(() => { window.location.hash = "reach"; });
+  await expect(page.getByRole("tab", { name: "Reach" })).toHaveAttribute("aria-selected", "true");
+  await page.goBack();
+  await expect(page.getByRole("tab", { name: "Content" })).toHaveAttribute("aria-selected", "true");
+});
