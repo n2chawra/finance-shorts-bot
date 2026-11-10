@@ -1,0 +1,20 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-10",
+  "startedAt": "2026-11-10T14:25:52Z",
+  "finishedAt": "2026-11-10T14:38:06Z",
+  "summary": "Fixed a smoke test that broke the next test at random, made Analytics tabs follow in-page links and Back, and gave planned uploads a hollow dot on the Calendar so phones show them apart from scheduled without relying on colour.",
+  "decision": "acted",
+  "why": "The smoke run failed 1 of 96 because a mocked API was still fetching after its test ended. The other two were open backlog items whose 7-day wait had ended (Analytics touched 11-03, Calendar 11-04).",
+  "findings": [
+    {"title": "Mocked routes leaked across smoke tests", "detail": "route.fetch threw 'Test ended' in the following test; fixed with an afterEach unrouteAll."},
+    {"title": "Live site up", "detail": "/api/health answered: us-east-2, database 2847 ms."}
+  ],
+  "changes": [
+    {"title": "Smoke tests drop in-flight routes after each test", "detail": "apps/dashboard/e2e/smoke.spec.ts", "branch": "agent/dashboard/2026-11-10"},
+    {"title": "Analytics: tab follows the URL hash", "detail": "hashchange listener; new smoke test", "branch": "agent/dashboard/2026-11-10"},
+    {"title": "Calendar: hollow dot for planned uploads", "detail": "shape, not colour alone; new smoke test", "branch": "agent/dashboard/2026-11-10"}
+  ],
+  "nextCheck": "2026-11-11",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-10.md"}]
+}

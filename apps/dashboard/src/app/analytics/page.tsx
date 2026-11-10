@@ -48,8 +48,14 @@ export default function AnalyticsPage() {
   const [tab, setTabState] = useState<Tab>("overview");
   const { data, error, isLoading } = useStudio(range, format);
   useEffect(() => {
-    const h = window.location.hash.slice(1) as Tab;
-    if (TABS.some((t) => t.value === h)) setTabState(h);
+    // read on load and on every hash change, so a link to /analytics#reach (or Back) while already here switches the tab
+    const read = () => {
+      const h = window.location.hash.slice(1) as Tab;
+      if (TABS.some((t) => t.value === h)) setTabState(h);
+    };
+    read();
+    window.addEventListener("hashchange", read);
+    return () => window.removeEventListener("hashchange", read);
   }, []);
   const setTab = (t: string) => {
     setTabState(t as Tab);

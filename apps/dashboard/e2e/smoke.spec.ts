@@ -11,6 +11,12 @@ const PAGES: [string, RegExp][] = [
 
 const IGNORED = [/Download the React DevTools/, /ToggleGroup is changing from uncontrolled/];
 
+// A test that serves its own API answers (page.route + route.fetch) can end while the page is still
+// refetching; that late fetch then throws "Test ended" and fails the *next* test (2026-11-10).
+test.afterEach(async ({ page }) => {
+  await page.unrouteAll({ behavior: "ignoreErrors" });
+});
+
 async function signIn(page: Page) {
   const res = await page.request.post("/api/login", { data: { password: SMOKE_PASSWORD } });
   expect(res.ok()).toBeTruthy();
@@ -542,4 +548,31 @@ test("runs page names long videos and says when nothing failed", async ({ page, 
   await expect(long.first()).toBeVisible();
   await page.getByRole("radio", { name: "Failed" }).click();
   await expect(page.getByText("No failed runs")).toBeVisible();
+});
+
+test("analytics switches tab when the link's hash changes on the page", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/analytics#content");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Analytics/, { timeout: 30_000 });
+  await expect(page.getByRole("tab", { name: "Content" })).toHaveAttribute("aria-selected", "true");
+  // the tab was read from the hash on first load only, so an in-page link or Back kept the old tab
+  await page.evaluate(() => { window.location.hash = "reach"; });
+  await expect(page.getByRole("tab", { name: "Reach" })).toHaveAttribute("aria-selected", "true");
+  await page.goBack();
+  await expect(page.getByRole("tab", { name: "Content" })).toHaveAttribute("aria-selected", "true");
+});
+
+test("calendar tells planned from scheduled by shape, not colour alone", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  await page.waitForLoadState("networkidle");
+  // on phones a day shows only dots, and planned (grey) vs scheduled (blue) differed by colour only
+  const look = (kind: string) => page.locator(`[data-kind="${kind}"]`).first().evaluate((el) => {
+    const s = getComputedStyle(el);
+    return { hollow: s.backgroundColor === "rgba(0, 0, 0, 0)" && parseFloat(s.borderTopWidth) > 0 };
+  });
+  await expect(page.locator('[data-kind="planned"]').first()).toBeAttached();
+  expect((await look("planned")).hollow).toBe(true);
+  if (await page.locator('[data-kind="scheduled"]').count()) expect((await look("scheduled")).hollow).toBe(false);
 });

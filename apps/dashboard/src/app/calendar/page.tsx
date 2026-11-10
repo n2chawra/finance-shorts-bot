@@ -23,7 +23,7 @@ const key = (y: number, m: number, d: number) => `${y}-${String(m + 1).padStart(
 const KIND: Record<Kind, { dot: string; label: string }> = {
   published: { dot: "bg-good", label: "Published" },
   scheduled: { dot: "bg-series", label: "Scheduled" },
-  planned: { dot: "bg-muted", label: "Planned (queue order)" },
+  planned: { dot: "border-[1.5px] border-muted", label: "Planned (queue order)" },   // hollow: told from scheduled by shape, not colour alone
 };
 
 export default function CalendarPage() {
@@ -112,7 +112,7 @@ export default function CalendarPage() {
                     {list.map((e) => (
                       <span key={e.video.id} className="flex min-w-0 items-center gap-1.5 md:gap-1">
                         <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden shrink-0 rounded-[3px] border border-ring object-cover md:block ${e.video.format === "long" ? "aspect-video w-6" : "aspect-[9/16] w-4"} ${e.kind === "planned" ? "opacity-60" : ""}`} />
-                        <span aria-hidden className={`h-1.5 shrink-0 ${e.video.format === "long" ? `${LONG_MARK} md:w-1.5 md:rounded-full` : "w-1.5 rounded-full"} ${KIND[e.kind].dot}`} />
+                        <span aria-hidden data-kind={e.kind} className={`h-1.5 shrink-0 ${e.video.format === "long" ? `${LONG_MARK} md:w-1.5 md:rounded-full` : "w-1.5 rounded-full"} ${KIND[e.kind].dot}`} />
                         <span className="hidden truncate text-[11px] text-ink2 md:inline">{e.kind === "published" ? `${fmtCompact(e.video.totals?.views ?? 0)} views` : new Date(e.at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false })}{e.video.format === "long" && <span className="ml-1 font-semibold text-brand-text">Long</span>}</span>
                       </span>
                     ))}

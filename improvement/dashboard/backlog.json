@@ -503,7 +503,12 @@
       "detail": "The tab is read from the URL hash only on first load, so a link to /analytics#reach while already on /analytics keeps the old tab. Listen for hashchange. Small; helps 'More →' style links and the browser back button.",
       "page": "analytics",
       "found": "2026-11-03",
-      "status": "open"
+      "status": "done",
+      "done": "2026-11-10",
+      "lastTouched": {
+        "apps/dashboard/src/app/analytics/page.tsx": "2026-11-10",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
+      }
     },
     {
       "id": "feedback-kind-blank",
@@ -525,7 +530,12 @@
       "detail": "At phone width a day cell shows only dots, and Scheduled (blue) vs Planned (grey) differ by colour only. Ops-dashboard guidance pairs status colour with a shape or text for colour-blind readers: a filled dot for scheduled, a hollow one for planned (the 'Nothing ready' gap is already dashed). Helps the owner read the week on the phone at a glance.",
       "page": "calendar",
       "found": "2026-11-04",
-      "status": "open"
+      "status": "done",
+      "done": "2026-11-10",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-11-10",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
+      }
     },
     {
       "id": "overview-needs-you",
@@ -604,6 +614,19 @@
       "page": "video",
       "found": "2026-11-09",
       "status": "open"
+    },
+    {
+      "id": "smoke-route-after-test",
+      "kind": "bug",
+      "title": "Smoke tests: a mocked route still fetching after its test ended failed the next test",
+      "detail": "'queue rows never clip their text sideways' failed with route.fetch: Test ended, thrown by the previous test's /api/notifications mock (a refetch in flight). An afterEach now runs page.unrouteAll({behavior: 'ignoreErrors'}). Full suite passed twice after.",
+      "page": "tests",
+      "found": "2026-11-10",
+      "status": "done",
+      "done": "2026-11-10",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
+      }
     }
   ]
 }
