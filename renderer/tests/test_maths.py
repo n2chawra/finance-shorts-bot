@@ -144,3 +144,26 @@ def test_zero_inputs_get_a_message_a_writer_can_act_on(m: dict, match: str) -> N
     """ren-003: these used to fail with a bare ZeroDivisionError or math domain error."""
     with pytest.raises(ValueError, match=match):
         maths.compute([m])
+
+
+@pytest.mark.parametrize("m, match", [
+    ({"name": "y", "kind": "sip", "monthly": 100, "rate_pct": 10, "years": 0}, "whole number of years"),
+    ({"name": "y", "kind": "sip", "monthly": 100, "rate_pct": 10, "years": 2.5}, "whole number of years"),
+    ({"name": "y", "kind": "sip", "monthly": 100, "rate_pct": 10, "years": -1}, "whole number of years"),
+    ({"name": "y", "kind": "lumpsum", "amount": 100, "rate_pct": 10, "years": 10.0}, "whole number of years"),
+    ({"name": "y", "kind": "sip_stepup", "monthly": 100, "step_pct": 10, "rate_pct": 10, "years": 0}, "whole number of years"),
+    ({"name": "y", "kind": "real_return", "amount": 100, "rate_pct": 10, "inflation_pct": 5, "years": 2.5}, "whole number of years"),
+    ({"name": "y", "kind": "price_rise", "monthly": 100, "inflation_pct": 5, "years": 1.5}, "whole number of years"),
+    ({"name": "y", "kind": "fee_take", "amount": 100, "fee_pct": 1, "per_year": 12, "years": 2.5}, "whole number of years"),
+    ({"name": "y", "kind": "emi", "amount": 100000, "rate_pct": 9, "years": 0}, "at least one month"),
+    ({"name": "y", "kind": "real_return", "amount": 100, "rate_pct": 10, "inflation_pct": -100, "years": 2}, "inflation_pct must be above -100"),
+])
+def test_bad_years_or_rates_get_a_message_a_writer_can_act_on(m: dict, match: str) -> None:
+    """ren-004: these used to stop the number check with a bare ZeroDivisionError or TypeError."""
+    with pytest.raises(ValueError, match=match):
+        maths.compute([m])
+
+
+def test_an_emi_may_still_end_mid_year() -> None:
+    r = maths.compute([{"name": "e", "kind": "emi", "amount": 100000, "rate_pct": 9, "years": 2.5}])["e"]
+    assert r["values"]["months"] == 30

@@ -129,13 +129,15 @@
       "id": "wrk-q01",
       "kind": "quality",
       "title": "watchdog.ts computes the IST hour and weekday by hand in two places",
-      "detail": "pipelineChecks and agentChecks repeat the istHour formula, and agentChecks repeats the 330-minute offset for the weekday. One istClock(now) helper next to istDay in lib would remove three copies. Small; for a later night (needs a test first).",
+      "detail": "pipelineChecks and agentChecks repeat the istHour formula, and agentChecks repeats the 330-minute offset for the weekday. One istClock(now) helper next to istDay in lib would remove three copies. Small; for a later night (needs a test first). Fixed 2026-11-11 on agent/auditor/2026-11-11-2: workers/lib/ist-clock.ts istHour/istWeekday, test pins the old formulas against India's clock.",
       "files": [
-        "workers/watchdog.ts"
+        "workers/watchdog.ts",
+        "workers/lib/ist-clock.ts",
+        "workers/tests/ist-clock.test.ts"
       ],
       "severity": "low",
       "found": "2026-10-19",
-      "status": "open"
+      "status": "fixed"
     },
     {
       "id": "dsh-001",
@@ -694,6 +696,19 @@
       ],
       "severity": "low",
       "found": "2026-11-10",
+      "status": "fixed"
+    },
+    {
+      "id": "ren-004",
+      "kind": "bug",
+      "title": "Bad years or rates in a script's maths crash the number check",
+      "detail": "maths.compute let years 0, negative or fractional (2.5, 10.0) and inflation_pct -100 through, so sip/sip_stepup/emi raised a bare ZeroDivisionError and sip/lumpsum/real_return/price_rise/fee_take a TypeError from range(). check_script and number_check only catch ValueError, so `generator.run number-check` stopped with a traceback instead of a note the writer can fix. Now checked up front: a whole number of years >= 1 (an emi: at least one month), rate_pct and inflation_pct above -100. All 69 committed scripts still compute.",
+      "files": [
+        "renderer/models/maths.py",
+        "renderer/tests/test_maths.py"
+      ],
+      "severity": "low",
+      "found": "2026-11-11",
       "status": "fixed"
     }
   ]
