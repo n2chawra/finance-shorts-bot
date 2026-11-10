@@ -30,6 +30,11 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 - `git log --since=3.days --stat origin/main`: what the other agents changed recently. Don't refactor
   code another agent changed in the last 3 days (fixing a real bug in it is fine).
 
+## 0b. The owner's feedback (every run)
+Run `python3 -m generator.feedback --agent auditor` and follow `agents/policy.md`, "The owner's feedback":
+fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
+and answer each in `improvement/feedback-acks/auditor.json` (commit it with your branch).
+
 ## 1. Data bugs (when the audit has errors or warnings)
 Each issue in `metrics/data-audit.json` has a `kind`, `severity` and `detail`; `videos[]` holds the
 three sources side by side. For every `error` and `warning`:
@@ -124,7 +129,7 @@ if you shipped a fix, `nothing` if everything was clean) and rewrite
 `agent/auditor/$DAY` if you changed no code):
 ```
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add -A improvement/auditor improvement/analysis improvement/activity/$DAY-auditor.json improvement/notifications/auditor.json <your code files>
+git add -A improvement/auditor improvement/analysis improvement/activity/$DAY-auditor.json improvement/notifications/auditor.json <your code files> $(ls improvement/feedback-acks/auditor.json 2>/dev/null)
 git commit -q -m "Auditor $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/auditor/$DAY
 ```

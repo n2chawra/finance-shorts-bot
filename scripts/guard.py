@@ -20,27 +20,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 ALLOW: dict[str, list[str]] = {
-    "research": ["improvement/research/*", "improvement/events/*", "improvement/activity/*-research.json", "improvement/notifications/research.json"],
+    "research": ["improvement/research/*", "improvement/events/*", "improvement/activity/*-research.json", "improvement/notifications/research.json", "improvement/feedback-acks/research.json"],
     # the improver owns how the videos look and move too (owner, 2026-10-17): scenes, cast, camera, design
     "improver": ["generator/*", "renderer/*", "examples/*", "remotion/src/*", "remotion/test/*",
                  "config/experiments.json", "improvement/experiments.json",
                  "improvement/journal.md", "improvement/weekly/*", "improvement/template-decisions.json",
                  "improvement/research/proposals.json", "improvement/research/shapes.json", "improvement/longform/backlog.json",
-                 "improvement/feedback-acks.json",
+                 "improvement/feedback-acks/improver.json",
                  "improvement/activity/*-improver.json", "improvement/notifications/improver.json"],
     "dashboard": ["apps/dashboard/src/*", "apps/dashboard/e2e/*", "apps/dashboard/package.json", "apps/dashboard/package-lock.json",
                   "apps/dashboard/playwright.config.ts", "improvement/dashboard/*", "improvement/activity/*-dashboard.json",
-                  "improvement/notifications/dashboard.json"],
+                  "improvement/notifications/dashboard.json", "improvement/feedback-acks/dashboard.json"],
     "auditor": ["generator/*", "renderer/*", "examples/*", "remotion/src/*", "remotion/test/*",
                 "apps/dashboard/src/*", "apps/dashboard/e2e/*", "workers/*",
-                "improvement/auditor/*", "improvement/analysis/*", "improvement/activity/*-auditor.json", "improvement/notifications/auditor.json"],
+                "improvement/auditor/*", "improvement/analysis/*", "improvement/activity/*-auditor.json", "improvement/notifications/auditor.json", "improvement/feedback-acks/auditor.json"],
     # long-form: scout researches and never touches code; studio pushes its videos straight to main
     # (like the Shorts video run) and uses its branch only for reports.
-    "scout": ["improvement/longform/*", "improvement/activity/*-scout.json", "improvement/notifications/scout.json",
+    "scout": ["improvement/longform/*", "improvement/activity/*-scout.json", "improvement/notifications/scout.json", "improvement/feedback-acks/scout.json",
               "improvement/research/thumbnails.json"],   # its Monday thumbnail examples (owner-approved 2026-11-03)
-    "studio": ["improvement/longform/*", "improvement/activity/*-studio.json", "improvement/notifications/studio.json"],
+    "studio": ["improvement/longform/*", "improvement/activity/*-studio.json", "improvement/notifications/studio.json", "improvement/feedback-acks/studio.json"],
     # the monthly review writes its review, next month's focus and setting proposals; it never changes code or settings
-    "monthly": ["improvement/monthly/*", "improvement/activity/*-monthly.json", "improvement/notifications/monthly.json"],
+    "monthly": ["improvement/monthly/*", "improvement/activity/*-monthly.json", "improvement/notifications/monthly.json", "improvement/feedback-acks/monthly.json"],
 }
 # protected files an agent may still change (its fixes for data bugs live there)
 UNLOCK: dict[str, list[str]] = {

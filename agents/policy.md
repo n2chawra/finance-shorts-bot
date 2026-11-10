@@ -63,6 +63,7 @@ profile describes the channel, and where they differ about the channel, the prof
   repository content anywhere.
 - **Always leave a trace**, even when you decide to do nothing:
   - `improvement/activity/<YYYY-MM-DD>-<agent>.json` (see the format below), and
+  - `improvement/feedback-acks/<agent>.json`: your answer to every owner note you looked at (below).
   - `improvement/notifications/<agent>.json`: the full list of problems *only the owner can fix*
     right now (rewrite the file each run; an item you drop is marked resolved). Owner problems are
     things like a missing key, an expired token, a setting only the owner may change, a Claude
@@ -71,6 +72,45 @@ profile describes the channel, and where they differ about the channel, the prof
     `{"notifications": [{"key": "short-stable-id", "severity": "info | warning | critical",
     "title": "…", "detail": "…", "fix": "1. … 2. …"}]}` (an empty list when there's nothing).
   - In both files, leave an optional field out rather than writing `null`.
+
+## The owner's feedback (every agent; owner, 2026-11-10)
+The owner leaves notes on the dashboard (`wrong`, `improve`, `general`; ingest exports them to
+`metrics/feedback.json`). **Any agent whose lane can fix a note fixes it**, so a change the owner asks
+for never waits on him. Early in every run, after the merge log:
+```
+python3 -m generator.feedback --agent <your name>
+```
+It lists the open notes you haven't answered yet, the ones another agent handed to you first
+(`handed_to_you`), with every agent's answers so far. For each note, decide whose lane it is in:
+
+| The note is about | Lane |
+|---|---|
+| how videos look, move and sound; scripts, hooks, titles, descriptions, prompts, checks, recipes, scenes | improver |
+| which topics, formats and subjects we make; what viewers want; other channels | research |
+| a dashboard page, tab, chart or button; something the owner wants to see | dashboard |
+| a wrong number on the dashboard, data or sync bugs, a crash in the pipeline | auditor |
+| long-video topics and long-video craft research | scout (craft fixes in code: improver) |
+| a long video's script, pacing or thumbnail as Studio writes it | studio |
+| strategy across the month, setting proposals | monthly |
+| uploads, the schedule, `config/arms.json`, secrets, the hard rules | the owner only |
+
+- **Yours** (fully or partly): fix it at its source tonight, one commit per note, tests passing. A
+  note is a request from the owner, so it beats your own backlog of the same priority.
+- **Partly yours**: do your part and answer `"partly"` with `"to": "<agent>"` for the rest, saying
+  exactly what is left. The note stays open until that agent answers.
+- **Not yours at all**: answer `"handed"` with `"to": "<agent>"` (one sentence on why it's theirs), or
+  leave it if another agent already handed it on. Never answer "needs owner" for something an agent's
+  lane covers; that is only for the owner-only row above, or a hard rule.
+- Answer in `improvement/feedback-acks/<your name>.json` (create it if missing; keep earlier answers):
+  `{"acks": [{"id": "<note id>", "action": "fixed" | "partly" | "handed" | "noted" | "needs owner" |
+  "declined", "to": "<agent, for partly/handed>", "note": "what you did or why not, one sentence the
+  owner understands", "commit": "<short sha>"}]}`. Ingest shows every answer on the dashboard and
+  marks the note addressed once it is closed and every agent it was handed to has answered.
+- A note handed to you is first in your next run. If, after looking, it really isn't yours, hand it
+  on with the reason; don't let it bounce back and forth (a note handed twice goes to the owner as
+  `needs owner` with what blocks it).
+- Picks and stales are not tasks: they are the owner's taste. When 2+ stales share a reason, treat
+  that reason as a note.
 
 ## Activity file format
 ```json

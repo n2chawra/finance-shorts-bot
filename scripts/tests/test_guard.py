@@ -175,3 +175,15 @@ def test_blocks_changing_the_upload_schedule(repo: Path) -> None:
 def test_blocks_committing_model_weights(repo: Path) -> None:
     change(repo, "renderer/engine/kokoro-v1.0.onnx", "fake")
     assert any("model weights" in x for x in guard.check("improver", "main", "HEAD")["reasons"])
+
+
+@pytest.mark.parametrize("agent", ["improver", "research", "dashboard", "auditor", "scout", "studio", "monthly"])
+def test_every_agent_may_answer_the_owners_notes_in_its_own_file_only(repo: Path, agent: str) -> None:
+    """Owner, 2026-11-10: any agent that can fix a note gets it, and answers it in its own file."""
+    sh(repo, "checkout", "-q", "-B", f"agent/{agent}/x")
+    change(repo, f"improvement/feedback-acks/{agent}.json", '{"acks": []}\n')
+    r = guard.check(agent, "main", "HEAD")
+    assert r["ok"], r["reasons"]
+    other = "research" if agent != "research" else "dashboard"
+    change(repo, f"improvement/feedback-acks/{other}.json", '{"acks": []}\n')
+    assert not guard.check(agent, "main", "HEAD")["ok"]

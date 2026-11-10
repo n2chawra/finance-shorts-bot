@@ -27,6 +27,11 @@ Shorts and long videos apart, and what they have in common). Run `python -m impr
 story, hook, title shape, topic, upload hour, palette, music, voice and length: that's what actually
 performs on this channel, and your proposals should start from it.
 
+## 0b. The owner's feedback (every run)
+Run `python3 -m generator.feedback --agent research` and follow `agents/policy.md`, "The owner's feedback":
+fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
+and answer each in `improvement/feedback-acks/research.json` (commit it with your branch).
+
 ## 1. Every night: the craft pass (half your effort)
 Start from real numbers: `git fetch -q origin market-data && git show origin/market-data:market.json`
 lists this week's fastest-growing Shorts and long videos in our niche (views per hour, length,
@@ -227,7 +232,7 @@ added topics or proposals, otherwise `nothing`; findings = top 3–5 with links)
 ```
 git checkout -B agent/research/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add improvement/research improvement/activity improvement/notifications/research.json
+git add improvement/research improvement/activity improvement/notifications/research.json $(ls improvement/feedback-acks/research.json 2>/dev/null)
 git commit -q -m "Research $DAY: <topic>, <n> topics, <n> proposals"
 git push origin HEAD:refs/heads/agent/research/$DAY
 ```

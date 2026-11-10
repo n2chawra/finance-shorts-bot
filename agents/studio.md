@@ -29,6 +29,11 @@ false. Read `improvement/merge-log.json` (your last 3 entries) and `improvement/
 every open item with `route: adopt` and `where: script` is a rule for tonight's script, on top of the
 README. You never change code; scene, design and recipe items are the improver's.
 
+## 0b. The owner's feedback (every run)
+Run `python3 -m generator.feedback --agent studio` and follow `agents/policy.md`, "The owner's feedback":
+fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
+and answer each in `improvement/feedback-acks/studio.json` (commit it with your branch).
+
 ## 1. Decide whether to make one
 ```
 python -m generator.run state --format long
@@ -192,7 +197,7 @@ Write `improvement/activity/<DAY>-studio.json` (format in `agents/policy.md`; `s
 the reports on a branch:
 ```
 git checkout -B agent/studio/$DAY
-git add improvement/activity improvement/notifications/studio.json improvement/longform
+git add improvement/activity improvement/notifications/studio.json improvement/longform $(ls improvement/feedback-acks/studio.json 2>/dev/null)
 git commit -q -m "Studio $DAY: <video id or 'no video'>, <one line>"
 git push origin HEAD:refs/heads/agent/studio/$DAY
 ```

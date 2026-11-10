@@ -27,8 +27,9 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   **owner** decides on the dashboard: **pick** the next upload (with why), reorder, **mark stale** (with
   why; status `rejected`, never published), and leave **feedback** on a video or the channel
   (`Feedback` table → `metrics/feedback.json`). The routine reads it in `state` → `owner_feedback`
-  (right after the hard rules), and the improver answers every open note in
-  `improvement/feedback-acks.json`, which ingest shows on the dashboard.
+  (right after the hard rules), and every agent whose lane can fix a note answers it (handing on what
+  belongs to another agent; `agents/policy.md`, `python -m generator.feedback --agent <name>`) in
+  `improvement/feedback-acks/<agent>.json`, which ingest shows on the dashboard.
 - **Shorts slots** at 07:07, 12:37 and 19:07 IST (setting `uploadTimes`); **trend slots** (`trendUploadTimes`)
   are off since 2026-11-02 (when set, each breaking or trending video of the day opens
   one, so a trend never pushes a normal video back; quiet days leave them empty). Upload time barely

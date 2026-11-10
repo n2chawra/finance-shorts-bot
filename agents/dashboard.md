@@ -17,6 +17,11 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 tonight's first job), `improvement/dashboard/backlog.json` and your last 3 reports in
 `improvement/dashboard/`.
 
+## 0b. The owner's feedback (every run)
+Run `python3 -m generator.feedback --agent dashboard` and follow `agents/policy.md`, "The owner's feedback":
+fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
+and answer each in `improvement/feedback-acks/dashboard.json` (commit it with your branch).
+
 ## 1. Bug hunt (every night)
 Run with sample data (no database): `DATABASE_URL= ` in the environment.
 ```
@@ -60,7 +65,7 @@ missing). Then from the repo root:
 ```
 git checkout -B agent/dashboard/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add apps/dashboard/src apps/dashboard/e2e apps/dashboard/package.json apps/dashboard/package-lock.json improvement/dashboard improvement/activity improvement/notifications/dashboard.json
+git add apps/dashboard/src apps/dashboard/e2e apps/dashboard/package.json apps/dashboard/package-lock.json improvement/dashboard improvement/activity improvement/notifications/dashboard.json $(ls improvement/feedback-acks/dashboard.json 2>/dev/null)
 git commit -q -m "Dashboard $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/dashboard/$DAY
 ```

@@ -104,3 +104,29 @@ test("the improver's answers mark the owner's notes addressed", async () => {
   assert.match(notes.get("f1")!.response!, /fixed: hooks end on the question now/);
   assert.equal(await importFeedbackAcks(prisma as never, root), 0);   // once
 });
+
+test("a note handed to another agent stays open until that agent answers", async () => {
+  const { mkdtempSync, mkdirSync, writeFileSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { importFeedbackAcks } = await import("../lib/agents-sync.ts");
+  const root = mkdtempSync(path.join(tmpdir(), "acks-"));
+  mkdirSync(path.join(root, "improvement", "feedback-acks"), { recursive: true });
+  const put = (agent: string, acks: unknown[]) => writeFileSync(path.join(root, "improvement", "feedback-acks", `${agent}.json`), JSON.stringify({ acks }));
+  put("improver", [{ id: "f1", action: "partly", to: "dashboard", note: "the data file is ready", commit: "abc" }]);
+  const notes = new Map([
+    ["f1", { id: "f1", status: "open", response: null as string | null, addressedAt: null as Date | null }],
+    ["f2", { id: "f2", status: "addressed", response: "closed by the owner" as string | null, addressedAt: new Date() as Date | null }],
+  ]);
+  const prisma = { feedback: {
+    findUnique: async ({ where }: { where: { id: string } }) => notes.get(where.id) ?? null,
+    update: async ({ where, data }: { where: { id: string }; data: Record<string, unknown> }) => Object.assign(notes.get(where.id)!, data),
+  } };
+  await importFeedbackAcks(prisma as never, root);
+  assert.equal(notes.get("f1")!.status, "open");
+  assert.match(notes.get("f1")!.response!, /improver partly → dashboard: the data file is ready \(abc\) · waiting for dashboard/);
+  put("dashboard", [{ id: "f1", action: "fixed", note: "Impact page built" }, { id: "f2", action: "handed", to: "research", note: "topics are research's" }]);
+  await importFeedbackAcks(prisma as never, root);
+  assert.equal(notes.get("f1")!.status, "addressed");
+  assert.match(notes.get("f1")!.response!, /dashboard fixed: Impact page built/);
+  assert.equal(notes.get("f2")!.status, "addressed");   // the owner closed it: a handoff never reopens it
+});

@@ -22,6 +22,11 @@ job), `improvement/monthly/focus.json` if it exists (items `"for": "scout"` come
 `improvement/longform/backlog.json`, and `python -m generator.run state --format long` (what Studio
 will face next: its backlog, how many long videos this week, which topics it can use).
 
+## 0b. The owner's feedback (every run)
+Run `python3 -m generator.feedback --agent scout` and follow `agents/policy.md`, "The owner's feedback":
+fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
+and answer each in `improvement/feedback-acks/scout.json` (commit it with your branch).
+
 ## 1a. Long videos grow out of our winning Shorts (owner, 2026-11-04; this comes first)
 Our long videos got 1–11 views each: no browse or suggested impressions, only our channel page and
 search, 13% viewed. A 13-subscriber channel whose audience came from Shorts has nobody for YouTube to
@@ -150,7 +155,7 @@ Write `improvement/activity/<DAY>-scout.json` (format in `agents/policy.md`; `st
 or findings, else `nothing`) and rewrite `improvement/notifications/scout.json`. Then:
 ```
 git checkout -B agent/scout/$DAY
-git add improvement/longform improvement/activity improvement/notifications/scout.json
+git add improvement/longform improvement/activity improvement/notifications/scout.json $(ls improvement/feedback-acks/scout.json 2>/dev/null)
 git commit -q -m "Scout $DAY: <focus>, <n> topics"
 git push origin HEAD:refs/heads/agent/scout/$DAY
 ```

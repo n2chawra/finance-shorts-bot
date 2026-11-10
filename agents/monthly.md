@@ -29,6 +29,11 @@ Read, for the month under review:
   notifications in `improvement/notifications/`.
 No web searches: research and Scout have already looked outside. Keep the run lean.
 
+## 0b. The owner's feedback (every run)
+Run `python3 -m generator.feedback --agent monthly` and follow `agents/policy.md`, "The owner's feedback":
+fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
+and answer each in `improvement/feedback-acks/monthly.json` (commit it with your branch).
+
 ## 1. The review: `improvement/monthly/<MONTH>.md`
 Plain words, numbers first, for someone who has not looked all month:
 ```
@@ -86,7 +91,7 @@ headline numbers; decision `acted`). Then:
 ```
 git checkout -B agent/monthly/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add improvement/monthly improvement/activity improvement/notifications/monthly.json
+git add improvement/monthly improvement/activity improvement/notifications/monthly.json $(ls improvement/feedback-acks/monthly.json 2>/dev/null)
 git commit -q -m "Monthly review $MONTH: <one-line verdict>"
 git push origin HEAD:refs/heads/agent/monthly/$DAY
 ```

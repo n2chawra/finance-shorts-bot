@@ -3,7 +3,7 @@
 /**
  * The owner decides (2026-10-30): the editor's rank on a video, a dialog that asks "why" for a pick or a
  * stale, and the feedback panel (notes on one video, or on the channel when no video is given). Every
- * note reaches the next video run and the improver through metrics/feedback.json.
+ * note reaches the next video run and every agent that can fix it through metrics/feedback.json.
  */
 import { Award, CheckCircle2, MessageSquarePlus, Sparkles } from "lucide-react";
 import { AlertDialog } from "radix-ui";
@@ -78,7 +78,7 @@ function Note({ f, showVideo }: { f: Feedback; showVideo?: boolean }) {
         {showVideo && f.videoTitle && <a href={`/videos/${f.videoId}`} className="truncate font-medium text-ink2 underline-offset-2 hover:underline">{f.videoTitle}</a>}
         {showVideo && !f.videoId && <span>Channel</span>}
         <span>· {fmtRelative(f.createdAt)}</span>
-        {f.status === "addressed" ? <Badge tone="good" icon={CheckCircle2}>Answered</Badge> : <Badge tone="brand">Open</Badge>}
+        {f.status === "addressed" ? <Badge tone="good" icon={CheckCircle2}>Answered</Badge> : f.response ? <Badge tone="info">In progress</Badge> : <Badge tone="brand">Open</Badge>}
       </div>
       <p className="mt-1.5 text-[13px] leading-relaxed">{f.text}</p>
       {f.response && <p className="mt-1.5 rounded-lg bg-surface-2 px-3 py-2 text-xs leading-relaxed text-ink2"><span className="font-medium text-ink">The system: </span>{f.response}</p>}
@@ -102,10 +102,10 @@ export function FeedbackPanel({ videoId, title = "Your feedback", showVideo = fa
   const [area, setArea] = useState("");
   const [text, setText] = useState("");
   const submit = () => add.mutate({ videoId: videoId ?? null, kind, area: (area || null) as Feedback["area"], text: text.trim() },
-    { onSuccess: () => { setText(""); toast("Saved: the next videos and the improver will see it"); }, onError: (e) => toast(e.message, "error") });
+    { onSuccess: () => { setText(""); toast("Saved: the next videos and the agents will see it"); }, onError: (e) => toast(e.message, "error") });
   return (
     <Card title={title} icon={MessageSquarePlus} flush
-      description="What's wrong, or what to do better next time. The video routine reads it before every video, and the improver answers each note.">
+      description="What's wrong, or what to do better next time. The video routine reads it before every video, and the agent whose job it is fixes it and answers here.">
       <div className="flex flex-col gap-2 border-b border-line p-4">
         <div className="grid grid-cols-2 gap-2 sm:w-96">
           {/* the first kind stands in as the select's "all" option, so it goes in as no value: by name it

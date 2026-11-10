@@ -325,7 +325,7 @@ export async function feedbackExport(prisma: PrismaClient, now = new Date()) {
   const notes = rows.map((f) => ({ id: f.id, kind: f.kind, area: f.area, text: f.text, status: f.status, response: f.response,
     at: f.createdAt.toISOString(), video: about(f.video) }));
   return {
-    note: "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
+    note: "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
     open: notes.filter((n) => n.status === "open").length,
     notes: [...notes.filter((n) => n.status === "open"), ...notes.filter((n) => n.status !== "open")],
   };
@@ -368,20 +368,49 @@ export async function importEditorRanking(prisma: PrismaClient, root: string): P
   return ranked.map((q) => q.id);
 }
 
-const FeedbackAcks = z.object({ acks: z.array(z.object({ id: z.string(), action: z.string(), note: z.string().default(""), commit: z.string().optional() })) });
+const Ack = z.object({ id: z.string(), action: z.string(), note: z.string().default(""), commit: z.string().optional(),
+  agent: z.string().optional(), to: z.string().optional() });
+const FeedbackAcks = z.object({ acks: z.array(Ack) });
+type AckRow = z.infer<typeof Ack> & { agent: string };
+/** an agent's answer that leaves the note open for another agent (owner, 2026-11-10: every agent that can fix a note gets it) */
+const HANDOFF = new Set(["handed", "partly"]);
 
-/** improvement/feedback-acks.json (the improver's answers to the owner's notes) into the dashboard. */
+/** Every agent's answers: improvement/feedback-acks/<agent>.json, plus the improver's older improvement/feedback-acks.json. */
+export function readFeedbackAcks(root: string): AckRow[] {
+  const files: [string, string][] = [["improver", path.join(root, "improvement", "feedback-acks.json")]];
+  const dir = path.join(root, "improvement", "feedback-acks");
+  if (existsSync(dir)) for (const f of readdirSync(dir).sort()) if (f.endsWith(".json")) files.push([f.slice(0, -5), path.join(dir, f)]);
+  const out: AckRow[] = [];
+  for (const [agent, file] of files) {
+    if (!existsSync(file)) continue;
+    const parsed = FeedbackAcks.safeParse(readJson(file));
+    if (!parsed.success) { console.error(`::warning::${path.relative(root, file)}: ${parsed.error.issues[0]?.message}`); continue; }
+    out.push(...parsed.data.acks.map((a) => ({ ...a, agent: a.agent ?? agent })));
+  }
+  return out;
+}
+
+/** A note is addressed once some agent closed it and every agent it was handed to has answered too. */
+export function ackState(acks: AckRow[]): { addressed: boolean; response: string } {
+  const closedBy = new Set(acks.filter((a) => !HANDOFF.has(a.action)).map((a) => a.agent));
+  const waiting = acks.filter((a) => HANDOFF.has(a.action) && a.to && !closedBy.has(a.to)).map((a) => a.to!);
+  const response = acks.map((a) => `${a.agent} ${a.action}${a.to ? ` → ${a.to}` : ""}: ${a.note}${a.commit ? ` (${a.commit})` : ""}`.trim()).join(" · ");
+  return { addressed: closedBy.size > 0 && waiting.length === 0, response: waiting.length ? `${response} · waiting for ${[...new Set(waiting)].join(", ")}` : response };
+}
+
+/** The agents' answers to the owner's notes into the dashboard (open notes stay open while handed to another agent). */
 export async function importFeedbackAcks(prisma: PrismaClient, root: string): Promise<number> {
-  const file = path.join(root, "improvement", "feedback-acks.json");
-  if (!existsSync(file)) return 0;
-  const parsed = FeedbackAcks.safeParse(readJson(file));
-  if (!parsed.success) { console.error(`::warning::feedback-acks.json: ${parsed.error.issues[0]?.message}`); return 0; }
+  const byNote = new Map<string, AckRow[]>();
+  for (const a of readFeedbackAcks(root)) byNote.set(a.id, [...(byNote.get(a.id) ?? []), a]);
   let n = 0;
-  for (const a of parsed.data.acks) {
-    const row = await prisma.feedback.findUnique({ where: { id: a.id } });
-    const response = [a.action, a.note, a.commit ? `(${a.commit})` : ""].filter(Boolean).join(": ").trim();
-    if (!row || (row.status === "addressed" && row.response === response)) continue;
-    await prisma.feedback.update({ where: { id: a.id }, data: { status: "addressed", response, addressedAt: row.addressedAt ?? new Date() } });
+  for (const [id, acks] of byNote) {
+    const row = await prisma.feedback.findUnique({ where: { id } });
+    if (!row) continue;
+    const { addressed, response } = ackState(acks);
+    // the owner may close a note himself on the dashboard: an agent's handoff never reopens it
+    const status = addressed || row.status === "addressed" ? "addressed" : "open";
+    if (row.status === status && row.response === response) continue;
+    await prisma.feedback.update({ where: { id }, data: { status, response, addressedAt: status === "addressed" ? row.addressedAt ?? new Date() : null } });
     n++;
   }
   return n;
