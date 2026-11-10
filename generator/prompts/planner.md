@@ -32,6 +32,10 @@ Run `python -m improvement.arms assign --video <id>` and copy its JSON into the 
   personal-budget format, only when assigned).
 - `hook`: your `hook_style` (the same words, `shock_number` → "shock number" is fine as `shock_number`).
 - `title` "figure_or_name" (a money figure or a famous name in the title) or "plain".
+  Either way the plan names `"subject"`: the famous person or company the story is about
+  ("Elon Musk", "MrBeast", "Costco"), or `""` when there is none. A plain title may keep the name
+  back, but the description's first two lines and one hashtag (`#ElonMusk`) always name the subject,
+  so YouTube knows who the video is about (owner, 2026-11-10; check-plan fails without them).
 - `style` "shot" (shot/build beats with the cast, the October hits) or "board" (board cards).
 - `category`: nothing to do; the publisher uploads with it.
 Most Shorts get the current best recipe; some try one or two other options so we learn in days
@@ -168,6 +172,7 @@ Create `videos/<next_id>/plan.json`:
 An animated story with illustrative numbers; the characters are not advisers.
 Illustrative only. Not financial advice.",
   "hashtags": ["#Shorts", "#RichVsPoor", "#Money", "#PersonalFinance"],
+  "subject": "",
   "seed": 4821,
   "style": { "palette": "ember", "genre": "synthwave", "key": "F", "bpm": 108,
              "look": {"stage": "flat", "header": "strip", "holder": "blackboard", "entrance": "pop"} }
