@@ -1,0 +1,666 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 30711,
+ "story": "money_scale",
+ "shape": "reveal",
+ "currency": "USD",
+ "feed_id": "2026-11-11-ronaldo-300-million-while-you-watch",
+ "narrator": "am_puck",
+ "style": {
+  "palette": "ocean",
+  "genre": "pop",
+  "key": "A",
+  "bpm": 112,
+  "look": {
+   "stage": "field",
+   "header": "neon",
+   "holder": "sign",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "myth",
+  "title": "plain",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "myth",
+ "cta": "Guess how long it takes you? Comment",
+ "facts": [
+  {
+   "label": "Cristiano Ronaldo's total earnings, Forbes 2026 (May 2025 to May 2026)",
+   "value": 300,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-05-01",
+   "source": "Forbes",
+   "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/"
+  }
+ ],
+ "maths": [
+  {
+   "name": "week",
+   "kind": "share",
+   "total": 300000000,
+   "parts": 52,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "minute",
+   "kind": "share",
+   "total": 300000000,
+   "parts": 525600,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "pay",
+   "kind": "share",
+   "total": 300000000,
+   "parts": 1,
+   "per_year": 60000,
+   "facts": {
+    "total": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "payoff",
+  "sec": 2.0,
+  "who": "rohan",
+  "angle": "number",
+  "words": "Before *breakfast*",
+  "figure": "{pay_per_year}",
+  "tag": "Your year's pay"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "You think a salary's a fortune? Not to Ronaldo.",
+   "events": {
+    "pay": {
+     "word": "salary's"
+    },
+    "big": {
+     "word": "fortune"
+    },
+    "no": {
+     "word": "Not"
+    },
+    "ronaldo": {
+     "word": "Ronaldo"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "pay"
+    },
+    {
+     "kind": "kaching",
+     "at": "big"
+    },
+    {
+     "kind": "boom",
+     "at": "no"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "A salary",
+    "ask": "A fortune?",
+    "cross": "Not to Ronaldo",
+    "slip": "Your year",
+    "set": "office",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "happy"
+       },
+       {
+        "at": "no",
+        "pose": "shrug",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "no",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "forbes",
+   "scene": "custom",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Forbes estimates that Ronaldo made {fact1} in a single year.",
+   "events": {
+    "forbes": {
+     "word": "Forbes"
+    },
+    "at": {
+     "word": "made"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "forbes"
+    },
+    {
+     "kind": "kaching",
+     "at": "at"
+    },
+    {
+     "kind": "pop",
+     "at": "year"
+    }
+   ],
+   "params": {
+    "component": "Forbes",
+    "hud": {
+     "hide": true
+    },
+    "header": "Forbes estimate",
+    "sub": "Ronaldo's year",
+    "figure": "{fact1}",
+    "label": "Pitch and sponsors",
+    "world": {
+     "kind": "field",
+     "tint": "green"
+    },
+    "items": [
+     {
+      "id": "forbes",
+      "prop": "footballer",
+      "x": 0.32,
+      "size": 0.26,
+      "label": "Ronaldo"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "forbes"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "at",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "day",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "That pile grows every single week, whether he plays or not.",
+   "events": {
+    "thats": {
+     "word": "pile"
+    },
+    "day": {
+     "word": "week"
+    },
+    "whether": {
+     "word": "whether"
+    },
+    "played": {
+     "word": "plays"
+    },
+    "no": {
+     "word": "not"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "thats"
+    },
+    {
+     "kind": "kaching",
+     "at": "day"
+    },
+    {
+     "kind": "whoosh",
+     "at": "played"
+    },
+    {
+     "kind": "ding",
+     "at": "no"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "field",
+     "tint": "green"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "week",
+      "prop": "daypage",
+      "x": 0.15,
+      "size": 0.22,
+      "label": "One week"
+     },
+     {
+      "id": "pile",
+      "prop": "cashpile",
+      "x": 0.45,
+      "size": 0.2,
+      "label": "Pile"
+     },
+     {
+      "id": "he",
+      "prop": "footballer",
+      "x": 0.85,
+      "size": 0.2,
+      "hidden": true,
+      "label": "He plays"
+     },
+     {
+      "id": "played",
+      "prop": "football",
+      "x": 0.85,
+      "y": 0.3,
+      "size": 0.12,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "pile"
+     },
+     {
+      "at": "thats",
+      "do": "grow",
+      "target": "pile",
+      "scale": 1.1
+     },
+     {
+      "at": "day",
+      "do": "flow",
+      "target": "week",
+      "to": "pile",
+      "n": 5,
+      "text": "{week_per_part}"
+     },
+     {
+      "at": "day",
+      "do": "tag",
+      "target": "pile",
+      "text": "{week_per_part}"
+     },
+     {
+      "at": "whether",
+      "do": "enter",
+      "target": "he",
+      "how": "rise"
+     },
+     {
+      "at": "played",
+      "do": "enter",
+      "target": "played",
+      "how": "drop"
+     },
+     {
+      "at": "no",
+      "do": "swap",
+      "target": "he",
+      "into": "deckchair"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "no",
+      "size": "close",
+      "on": "he",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "minute",
+   "scene": "headline",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "But every minute, more lands, even while he's asleep.",
+   "events": {
+    "minute": {
+     "word": "minute"
+    },
+    "more": {
+     "word": "more"
+    },
+    "lands": {
+     "word": "lands"
+    },
+    "asleep": {
+     "word": "asleep"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "minute"
+    },
+    {
+     "kind": "kaching",
+     "at": "more"
+    },
+    {
+     "kind": "whoosh",
+     "at": "lands"
+    },
+    {
+     "kind": "ding",
+     "at": "asleep"
+    }
+   ],
+   "params": {
+    "kicker": "EVERY MINUTE",
+    "title": "Ronaldo's pay, minute by minute",
+    "figure": "{minute_per_part}",
+    "figureAt": "more",
+    "label": "Even while he's asleep"
+   }
+  },
+  {
+   "id": "salary",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "So on {pay_per_year} a year, how long would you need?",
+   "events": {
+    "salary": {
+     "word": "So"
+    },
+    "year": {
+     "word": "year"
+    },
+    "long": {
+     "word": "long"
+    },
+    "take": {
+     "word": "need"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "long"
+    },
+    {
+     "kind": "kaching",
+     "at": "salary"
+    },
+    {
+     "kind": "riser",
+     "at": "take"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "gold"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "year",
+      "prop": "payslip",
+      "x": 0.42,
+      "y": 0.05,
+      "size": 0.24
+     },
+     {
+      "id": "need",
+      "prop": "moneysack",
+      "x": 0.18,
+      "y": 0.3,
+      "size": 0.12,
+      "hidden": true
+     },
+     {
+      "id": "long",
+      "prop": "coinglass",
+      "x": 0.8,
+      "y": 0.05,
+      "size": 0.24,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "year"
+     },
+     {
+      "at": "year",
+      "do": "tag",
+      "target": "year",
+      "text": "{pay_per_year}"
+     },
+     {
+      "at": "long",
+      "do": "enter",
+      "target": "long",
+      "how": "rise"
+     },
+     {
+      "at": "take",
+      "do": "flow",
+      "target": "year",
+      "to": "long",
+      "n": 4
+     },
+     {
+      "at": "take",
+      "do": "enter",
+      "target": "need",
+      "from": "year"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "{pay_years} years of steady work, to match one of his.",
+   "events": {
+    "years": {
+     "word": "years"
+    },
+    "work": {
+     "word": "work"
+    },
+    "his": {
+     "word": "his"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "years"
+    },
+    {
+     "kind": "tick",
+     "at": "work"
+    },
+    {
+     "kind": "kaching",
+     "at": "his"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Your salary",
+    "years": "{pay_years} years",
+    "yearsLabel": "Of your work",
+    "one": "One year",
+    "oneLabel": "Of his",
+    "pay": "{pay_per_year}",
+    "set": "office",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "his",
+      "size": "close",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "And your whole year's pay? He makes it before breakfast.",
+   "events": {
+    "pay": {
+     "word": "pay"
+    },
+    "makes": {
+     "word": "makes"
+    },
+    "breakfast": {
+     "word": "breakfast"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "pay"
+    },
+    {
+     "kind": "kaching",
+     "at": "makes"
+    },
+    {
+     "kind": "boom",
+     "at": "breakfast"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "pay": "{pay_per_year}",
+    "payLabel": "Your year",
+    "minute": "{minute_per_part}",
+    "minuteLabel": "His minute",
+    "stamp": "Before breakfast",
+    "set": "flat",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "breakfast",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     }
+    ]
+   }
+  }
+ ]
+}

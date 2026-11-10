@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 30711,
+  "duration_sec": 24,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "pop",
+    "key": "A",
+    "bpm": 112,
+    "look": {
+      "stage": "field",
+      "header": "neon",
+      "holder": "sign",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "am_puck",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_puck",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think a salary's a fortune? Not to Ronaldo.",
+        "start": 0.3,
+        "seconds": 2.44,
+        "window": 2.93,
+        "fill": 0.833
+      },
+      {
+        "scene": "forbes",
+        "text": "Forbes estimates that Ronaldo made $300M in a single year.",
+        "start": 3.23,
+        "seconds": 4.38,
+        "window": 4.77,
+        "fill": 0.918
+      },
+      {
+        "scene": "day",
+        "text": "That pile grows every single week, whether he plays or not.",
+        "start": 8.0,
+        "seconds": 3.06,
+        "window": 3.5,
+        "fill": 0.874
+      },
+      {
+        "scene": "minute",
+        "text": "But every minute, more lands, even while he's asleep.",
+        "start": 11.5,
+        "seconds": 2.61,
+        "window": 3.07,
+        "fill": 0.85
+      },
+      {
+        "scene": "salary",
+        "text": "So on $60,000 a year, how long would you need?",
+        "start": 14.57,
+        "seconds": 2.96,
+        "window": 3.4,
+        "fill": 0.871
+      },
+      {
+        "scene": "turn",
+        "text": "5,000 years of steady work, to match one of his.",
+        "start": 17.97,
+        "seconds": 2.84,
+        "window": 3.33,
+        "fill": 0.853
+      },
+      {
+        "scene": "payoff",
+        "text": "And your whole year's pay? He makes it before breakfast.",
+        "start": 21.3,
+        "seconds": 2.39,
+        "window": 2.87,
+        "fill": 0.833
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "ending-beats-act-and-vary": "on",
+    "you-in-the-core-story": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.7,
+    "music_under_voice_db": 21.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 6.02,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
