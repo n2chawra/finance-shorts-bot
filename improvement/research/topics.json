@@ -2360,121 +2360,6 @@
       "status": "new"
     },
     {
-      "id": "2026-11-05-diwali-gold-coin-the-shop-wins-twice",
-      "title": "Your Diwali gold coin: the shop wins when you buy it and again when you sell it",
-      "category": "gold",
-      "kind": "seasonal",
-      "priority": "normal",
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "INR",
-      "reach": "local",
-      "reach_reason": {
-        "kind": "occasion",
-        "name": "Diwali",
-        "date": "2026-11-08"
-      },
-      "format": "short",
-      "demand": {
-        "title": "Weird Ways Brands Make Their Money",
-        "views": 1656553,
-        "url": "https://www.youtube.com/shorts/gaFvy03NDMw"
-      },
-      "hook": "You think a gold coin is worth what you paid for it? It isn't. Not on the day you buy it.",
-      "templates": [
-        "any"
-      ],
-      "angle": "An assumed ₹1 lakh of gold on Diwali: making charges and 3% GST go on top when you buy, and the buyback deducts again when you sell, so the coin has to climb before you are even back to zero. How the shop earns on both trips.",
-      "why_now": "Dhanteras 6 Nov and Diwali 8 Nov 2026 (calendar.json). Our gold Short in the same format, 'Your Dhanteras necklace: how the jeweller really earns' (23 Oct), got 1,133 views and 53% viewed. A different angle: the round trip, a coin not a necklace.",
-      "maths": "fee_take (amount 100000, fee_pct making-charge assumption, per_year 1, years 1) for the making charge; fee_take (amount ..., fee_pct 3, ...) for GST; fee_take for an assumed buyback deduction; rate (part total_lost, whole 100000) for how far gold must rise to break even. All charges except GST are assumptions, said as ones.",
-      "verify": [
-        "GST on gold is 3% in India (CBIC); making charges and the buyback deduction are illustrative assumptions that vary by shop",
-        "no jeweller or bank named; no advice to buy or not buy gold"
-      ],
-      "sources": [
-        "https://cbic-gst.gov.in/gst-goods-services-rates.html"
-      ],
-      "found": "2026-11-05",
-      "expires": "2026-11-09",
-      "status": "new"
-    },
-    {
-      "id": "2026-11-09-visa-never-lends-you-a-cent",
-      "format": "short",
-      "title": "Visa never lends you a cent. It still kept $23.5B last year",
-      "category": "payments",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Visa Inc. - The 12 Trillion Dollar Money Machine | A Finance Documentary (views from a scraped listing, unverified)",
-        "views": 993230,
-        "url": "https://www.youtube.com/results?search_query=Visa+Inc+The+12+Trillion+Dollar+Money+Machine"
-      },
-      "hook": "You think Visa makes money on your card interest? Not a cent. It's the swipe.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Your bank charges the interest, not Visa. Visa takes a sliver of every swipe: $45.9B of net revenue over 281.3 billion transactions is about 16 cents a swipe, and more than half of it ($23.5B) is profit. It even paid banks $18.3B to put its logo on their cards.",
-      "why_now": "Holiday spending season (Black Friday 27 Nov) puts the card in everyone's hand; Visa's fiscal 2026 results came out 27 Oct. how_they_make_money is our best format (9.77x) and we have never told a payment network.",
-      "maths": "share (total 45900000000, parts 281300000000) for the revenue per transaction (facts {total: 1, parts: 3}); rate (part 23.5, whole 45.9, facts {part: 2, whole: 1}) for the profit share (about 51%); compare the client incentives (fact 4) with net income (fact 2). Never claim a fee rate for a single purchase: that varies.",
-      "facts": [
-        {
-          "label": "Visa net revenue, fiscal year 2026",
-          "value": 45.9,
-          "unit": "money_billion",
-          "currency": "USD",
-          "as_of": "2026-09-30",
-          "source": "Visa Inc. (fiscal 2026 results, SEC 8-K)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm"
-        },
-        {
-          "label": "Visa GAAP net income, fiscal year 2026",
-          "value": 23.5,
-          "unit": "money_billion",
-          "currency": "USD",
-          "as_of": "2026-09-30",
-          "source": "Visa Inc. (fiscal 2026 results, SEC 8-K)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm"
-        },
-        {
-          "label": "Transactions processed by Visa, fiscal year 2026",
-          "value": 281.3,
-          "unit": "count_billion",
-          "as_of": "2026-09-30",
-          "source": "Visa Inc. (fiscal 2026 results, SEC 8-K)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm"
-        },
-        {
-          "label": "Client incentives Visa paid to banks and partners, fiscal year 2026",
-          "value": 18.3,
-          "unit": "money_billion",
-          "currency": "USD",
-          "as_of": "2026-09-30",
-          "source": "Visa Inc. (fiscal 2026 results, SEC 8-K)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm"
-        }
-      ],
-      "verify": [
-        "fiscal 2026 (year to 30 Sep 2026): net revenue $45.9B, GAAP net income $23.5B, 281.3 billion processed transactions, client incentives $18.3B, all in Visa's 27 Oct 2026 release (SEC 8-K)",
-        "Visa does not lend money or charge card interest; the issuing bank does",
-        "'about 16 cents a swipe' is revenue divided by processed transactions, not a fee Visa charges per purchase; no merchant fee rate on screen"
-      ],
-      "sources": [
-        "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000126/q42026earningsrelease.htm",
-        "https://www.sec.gov/Archives/edgar/data/0001403161/000140316126000134/v-20260930.htm"
-      ],
-      "found": "2026-11-09",
-      "expires": "2027-02-07",
-      "status": "rejected",
-      "reason": "2026-11-10: owner note of 9 Nov called the bank/airline/card topics basic; Visa is the same corporate-card family as the Delta and bank Shorts, and its demand (993K) is unverified. Replaced by famous-name topics (MrBeast, Musk)."
-    },
-    {
       "id": "2026-11-09-your-bank-earns-on-your-balance",
       "format": "short",
       "title": "Your bank pays you almost nothing. JPMorgan earned $95.4B on the gap",
@@ -2766,6 +2651,447 @@
       ],
       "found": "2026-11-10",
       "expires": "2027-02-08",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-11-taylor-swift-2-billion-from-one-tour",
+      "format": "short",
+      "title": "Taylor Swift's Eras Tour sold $2 billion of tickets: what one night made",
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Taylor Swift Makes Eras Tour Crew CRY After Giving Away $197M in Bonuses",
+        "views": 1712739,
+        "url": "https://www.youtube.com/watch?v=xIhOcKBr1xw"
+      },
+      "hook": "You think Taylor Swift got rich from streaming? She didn't. One stage did it.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Where does a pop star's money really come from? The Eras Tour: 149 shows, 10 million seats, $2.08 billion of tickets. Divide it: what one night and one seat brought in, against what streaming pays.",
+      "why_now": "A famous name with a real, official total (owner, 10 Nov: name the famous person). how_they_make_money is our best format (9.77x the median, n=5).",
+      "maths": "share (total 2077618725, parts 149) for one show (facts {total: 1, parts: 2}); share (total 2077618725, parts 10168008) for one seat (facts {total: 1, parts: 3}). No streaming figure on screen unless it gets its own sourced fact.",
+      "facts": [
+        {
+          "label": "Eras Tour ticket sales, whole tour (Taylor Swift Touring)",
+          "value": 2077618725,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2024-12-08",
+          "source": "LA Times via The Spokesman-Review",
+          "url": "https://www.spokesman.com/stories/2024/dec/09/still-in-her-record-breaking-era-taylor-swift-tour",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Sold-out Eras Tour shows",
+          "value": 149,
+          "unit": "count",
+          "as_of": "2024-12-08",
+          "source": "LA Times via The Spokesman-Review",
+          "url": "https://www.spokesman.com/stories/2024/dec/09/still-in-her-record-breaking-era-taylor-swift-tour",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "People who attended the Eras Tour",
+          "value": 10168008,
+          "unit": "count",
+          "as_of": "2024-12-08",
+          "source": "New York Times via The Spokesman-Review",
+          "url": "https://www.spokesman.com/stories/2024/dec/09/still-in-her-record-breaking-era-taylor-swift-tour",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Months the Eras Tour ran",
+          "value": 21,
+          "unit": "count",
+          "as_of": "2024-12-08",
+          "source": "LA Times via The Spokesman-Review",
+          "url": "https://www.spokesman.com/stories/2024/dec/09/still-in-her-record-breaking-era-taylor-swift-tour",
+          "latest": true,
+          "checked": "2026-11-11"
+        }
+      ],
+      "verify": [
+        "$2,077,618,725 is Taylor Swift Touring's own final total (Pollstar's estimate was $2.2B; use the official one)",
+        "ticket sales are gross, not Swift's profit: never call it her earnings"
+      ],
+      "sources": [
+        "https://www.spokesman.com/stories/2024/dec/09/still-in-her-record-breaking-era-taylor-swift-tour",
+        "https://news.pollstar.com/2024/12/09/taylor-swifts-eras-tour-sets-all-time-touring-record-breaking-2b/"
+      ],
+      "found": "2026-11-11",
+      "expires": "2027-02-09",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-11-buffett-company-sits-on-377-billion",
+      "format": "short",
+      "title": "Berkshire Hathaway holds $377 billion in cash. Why not spend it?",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "billionaire_question"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Warren Buffett Explains Why He's Holding $300 Billion in Cash | Berkshire 2025",
+        "views": 1557551,
+        "url": "https://www.youtube.com/watch?v=uVqEnuXo554"
+      },
+      "hook": "You think Warren Buffett's company is out of ideas? It isn't. It's waiting.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Berkshire's cash grew again to $377.4 billion at the end of September 2026, while it bought back $9.6 billion of its own shares. Why would the most famous investor's company keep that much in cash? (Cash earns interest in Treasury bills, waits for a bargain, and is ready when markets fall.) Legal, mechanical, no prediction.",
+      "why_now": "Q3 2026 results came out on 7 Nov 2026; Buffett handed the CEO job to Greg Abel in January and the chairman title in September. Big name, new figure.",
+      "maths": "compare (a 377.4 billion, b 365.5 billion) for the three-month rise (facts {a: 1, b: 2}); rate (part 9.6 billion, whole 377.4 billion) for the buyback against the pile (facts {part: 3, whole: 1}).",
+      "facts": [
+        {
+          "label": "Berkshire Hathaway cash pile at the end of September 2026",
+          "value": 377.4,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "AP",
+          "url": "https://mynews13.com/fl/orlando/ap-top-news/2026/11/07/berkshire-hathaway-buys-back-96-billion-of-its-own-stock-but-its-profits-declined",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Berkshire Hathaway cash pile at the end of June 2026",
+          "value": 365.5,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-06-30",
+          "source": "AP",
+          "url": "https://mynews13.com/fl/orlando/ap-top-news/2026/11/07/berkshire-hathaway-buys-back-96-billion-of-its-own-stock-but-its-profits-declined",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Berkshire shares bought back in the third quarter of 2026",
+          "value": 9.6,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "AP",
+          "url": "https://mynews13.com/fl/orlando/ap-top-news/2026/11/07/berkshire-hathaway-buys-back-96-billion-of-its-own-stock-but-its-profits-declined",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Berkshire operating earnings in the third quarter of 2026",
+          "value": 12.7,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "AP",
+          "url": "https://mynews13.com/fl/orlando/ap-top-news/2026/11/07/berkshire-hathaway-buys-back-96-billion-of-its-own-stock-but-its-profits-declined",
+          "latest": true,
+          "checked": "2026-11-11"
+        }
+      ],
+      "verify": [
+        "$377.4B is AP's figure; Reuters reported $356.9B after $20.5B of pending Treasury bill purchases: say 'about $377 billion, AP' or use the reviewer's confirmed figure",
+        "Greg Abel is CEO since January 2026; Buffett gave up the chairman title in September 2026: never call Buffett CEO now"
+      ],
+      "sources": [
+        "https://mynews13.com/fl/orlando/ap-top-news/2026/11/07/berkshire-hathaway-buys-back-96-billion-of-its-own-stock-but-its-profits-declined",
+        "https://www.thewealthadvisor.com/article/berkshire-hathaways-cash-pile-reaches-record-3252-billion"
+      ],
+      "found": "2026-11-11",
+      "expires": "2027-02-09",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-11-ronaldo-300-million-while-you-watch",
+      "format": "short",
+      "title": "Ronaldo made $300 million in a year: how much while you watch this",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "money_scale"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Cristiano Ronaldo Networth Evolution From 1985 To 2026",
+        "views": 4695655,
+        "url": "https://www.youtube.com/watch?v=ZjoxNI05QpQ"
+      },
+      "hook": "You think Ronaldo gets paid for goals? He doesn't. He gets paid by the second.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Forbes 2026: Ronaldo $300M in a year ($235M on the pitch, $65M off it), the record for an active athlete. Per day, per hour, per second; then the twist: Messi earns as much off the pitch as on it, Ohtani almost all of it off the field.",
+      "why_now": "Ronaldo Shorts fill this week's market data (four in the top 30, 130K-343K each); Forbes' 2026 list is the newest figure. Money at scale with the world's most famous footballer.",
+      "maths": "share (total 300000000, parts 365) per day (facts {total: 1}); share (total 300000000, parts 31536000) per second (facts {total: 1}); rate (part 235000000, whole 300000000) on-pitch share (facts {part: 2, whole: 1}).",
+      "facts": [
+        {
+          "label": "Cristiano Ronaldo's total earnings, Forbes 2026 (May 2025 to May 2026)",
+          "value": 300,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-05-01",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Ronaldo's on-field earnings in that year",
+          "value": 235,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-05-01",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Ronaldo's off-field earnings in that year",
+          "value": 65,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-05-01",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Lionel Messi's total earnings, Forbes 2026",
+          "value": 140,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-05-01",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Lionel Messi's off-field earnings, Forbes 2026",
+          "value": 70,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-05-01",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+          "latest": true,
+          "checked": "2026-11-11"
+        }
+      ],
+      "verify": [
+        "Forbes figures are estimates before taxes and agents' fees: say 'Forbes estimates'"
+      ],
+      "sources": [
+        "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+        "https://www.youtube.com/shorts/mAaEPQHw0Qw"
+      ],
+      "found": "2026-11-11",
+      "expires": "2027-02-09",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-11-ohtani-700-million-paid-2-million-a-year",
+      "format": "short",
+      "title": "Shohei Ohtani's $700 million deal pays him $2 million a year. On purpose",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "The Dodgers are Only Paying Ohtani $2M a Year for the Next 10 Years?!?!? | The Rich Eisen Show",
+        "views": 235486,
+        "url": "https://www.youtube.com/watch?v=6bS90DejZqw"
+      },
+      "hook": "You think the richest contract in sport pays seventy million a year? It pays two.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Ohtani asked to defer $68M of every $70M year, paid without interest from 2034 to 2043. Why would anyone wait? Because he lives on sponsors: Forbes 2026 has him at $2.6M on the field and $125M off it. The rich live on other income and let the big cheque wait.",
+      "why_now": "Forbes' 2026 list puts Ohtani's off-field income at $125M against $2.6M on the field: the deferral story has a new number. secret_of_rich is our best-viewed format (68.5% viewed).",
+      "maths": "share (total 680000000, parts 10) for each deferred yearly payment (facts {total: 2, parts: 3}); rate (part 2600000, whole 127600000) for the field share of his year (facts {part: 5, whole: 7}).",
+      "facts": [
+        {
+          "label": "Total value of Ohtani's Dodgers contract",
+          "value": 700,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2023-12-11",
+          "source": "NBC New York (The Athletic, ESPN)",
+          "url": "https://www.nbcnewyork.com/mlb/shohei-ohtani-to-defer-680-million-of-dodgers-contract-until-end-of-deal-reports-say/4941741/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Part of the contract deferred, paid without interest",
+          "value": 680,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2023-12-11",
+          "source": "NBC New York (The Athletic, ESPN)",
+          "url": "https://www.nbcnewyork.com/mlb/shohei-ohtani-to-defer-680-million-of-dodgers-contract-until-end-of-deal-reports-say/4941741/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Years of the contract",
+          "value": 10,
+          "unit": "count",
+          "as_of": "2023-12-11",
+          "source": "NBC New York (The Athletic, ESPN)",
+          "url": "https://www.nbcnewyork.com/mlb/shohei-ohtani-to-defer-680-million-of-dodgers-contract-until-end-of-deal-reports-say/4941741/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Salary paid now each year",
+          "value": 2,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2023-12-11",
+          "source": "NBC New York (The Athletic, ESPN)",
+          "url": "https://www.nbcnewyork.com/mlb/shohei-ohtani-to-defer-680-million-of-dodgers-contract-until-end-of-deal-reports-say/4941741/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Ohtani's on-field earnings, Forbes 2026",
+          "value": 2.6,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-05-01",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Ohtani's off-field earnings, Forbes 2026",
+          "value": 125,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-05-01",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "Ohtani's total earnings, Forbes 2026",
+          "value": 127.6,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-05-01",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+          "latest": true,
+          "checked": "2026-11-11"
+        }
+      ],
+      "verify": [
+        "deferred payments run 2034-2043 without interest (AP and NBC; SI's 'with interest' is the outlier)",
+        "no tax-avoidance claim: the California tax angle is disputed; tell only the cash-flow mechanics"
+      ],
+      "sources": [
+        "https://www.nbcnewyork.com/mlb/shohei-ohtani-to-defer-680-million-of-dodgers-contract-until-end-of-deal-reports-say/4941741/",
+        "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/",
+        "https://www.cbssports.com/mlb/news/shohei-ohtani-contract-deferrals-how-dodgers-are-using-mlb-cba-to-their-advantage-by-waiting-to-pay-680m"
+      ],
+      "found": "2026-11-11",
+      "expires": "2027-02-09",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-11-ipl-teams-paid-before-a-ball",
+      "format": "short",
+      "title": "How IPL teams make money before a ball is bowled",
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "INR",
+      "reach": "local",
+      "reach_reason": {
+        "kind": "demand"
+      },
+      "demand": {
+        "title": "How IPL Teams Secretly Make Money | Kuldeep Singhania #shorts",
+        "views": 17000000,
+        "url": "https://www.youtube.com/shorts/Kf08dnECLWM"
+      },
+      "hook": "You think IPL teams make their money from tickets? They don't. TV pays first.",
+      "templates": [
+        "any"
+      ],
+      "angle": "BCCI sold five seasons of IPL media rights (2023-2027) for ₹48,390 crore; a share of that pool goes to the ten franchises before any ticket is sold. Per season and per team, made big.",
+      "why_now": "All ten franchises hand in retention lists this month (deadline 15 Nov, reported moved to 17 Nov) ahead of the 16 Dec auction in Goa: India is talking about IPL money now. The reference Short has 17M views.",
+      "maths": "share (total 483903200000, parts 5) per season (facts {total: 1, parts: 2}); share (total 483903200000, parts 10) per franchise across the cycle as a scale picture only, never as what a team receives (facts {total: 1, parts: 3}).",
+      "facts": [
+        {
+          "label": "IPL media rights for seasons 2023 to 2027, all packages",
+          "value": 48390.32,
+          "unit": "rupees_crore",
+          "currency": "INR",
+          "as_of": "2022-06-15",
+          "source": "BCCI",
+          "url": "https://www.bcci.tv/news/article/bcci-announces-the-successful-bidders-for-acquiring-the-media-rights-for-the-indian-premier-league-seasons-2023-2027",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "IPL seasons covered by that media rights deal",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2022-06-15",
+          "source": "BCCI",
+          "url": "https://www.bcci.tv/news/article/bcci-announces-the-successful-bidders-for-acquiring-the-media-rights-for-the-indian-premier-league-seasons-2023-2027",
+          "latest": true,
+          "checked": "2026-11-11"
+        },
+        {
+          "label": "IPL franchises",
+          "value": 10,
+          "unit": "count",
+          "as_of": "2026-10-26",
+          "source": "CricTracker",
+          "url": "https://www.crictracker.com/cricket-news/bcci-sets-november-15-as-ipl-2027-retention-deadline-ahead-of-auction-3582/",
+          "latest": true,
+          "checked": "2026-11-11"
+        }
+      ],
+      "verify": [
+        "the share of central rights paid to franchises is not published here: never show a per-team income figure; per-franchise division is only a scale picture and must be labelled so",
+        "the deal is the newest IPL media rights cycle (2023-2027): no newer one sold yet"
+      ],
+      "sources": [
+        "https://www.bcci.tv/news/article/bcci-announces-the-successful-bidders-for-acquiring-the-media-rights-for-the-indian-premier-league-seasons-2023-2027",
+        "https://www.crictracker.com/cricket-news/bcci-sets-november-15-as-ipl-2027-retention-deadline-ahead-of-auction-3582/",
+        "https://www.deccanherald.com/sports/ipl-media-rights-each-ball-bowled-in-cash-rich-league-to-be-worth-rs-49-lakh-approximately-from-2023-to-2027-1118286.html"
+      ],
+      "found": "2026-11-11",
+      "expires": "2027-02-09",
       "status": "new"
     }
   ]

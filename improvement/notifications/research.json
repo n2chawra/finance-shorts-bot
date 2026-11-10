@@ -1,6 +1,13 @@
 {
   "notifications": [
     {
+      "key": "title-arm-hides-famous-names",
+      "severity": "warning",
+      "title": "Your 'title doesn't say Elon' note: the variant system now forbids names and figures in titles, on a confounded comparison",
+      "detail": "Yes, the name helps: YouTube reads the title (with the description and the video itself) to learn what a video is about and who to show it to, and every 1K+ Short we made had a famous subject or a money figure in its title. The reason the last 7 Shorts hide them ('The biggest pay deal ever…' instead of Elon, 'the biggest channel on earth' instead of MrBeast, 'The basketball star' instead of Magic Johnson, 'The airline' instead of Delta) is the variant system: on 6 Nov it promoted the 'plain' title option and dropped 'figure_or_name' (plain n=4, median 460 views vs n=24, median 140). That comparison is mixed up with length: the 24 'figure or name' Shorts include the long 45-69 s October-November ones, while the 4 'plain' wins were 35-49 s trap/casino Shorts. Among Shorts of 20-27 s, the band we make now, titles with a name or figure have a median of 908 views in 48 h (n=5: 1,161, 1,133, 908, 406, 123), and there is no 20-27 s 'plain' Short with 48-hour data yet. config/arms.json and improvement/arms.py are owner-only, so no agent can change this.",
+      "fix": "1. Quickest: in improvement/arms-state.json set dimensions.title.default to \"figure_or_name\" and empty dimensions.title.dropped; then in config/arms.json set dimensions.title.since to \"2026-11-07\" (the day 20-27 s became the default), so both options are judged again only on Shorts of the current length. 2. Optional: add a third title option \"name\" (the famous person or company named in the first 40 characters) so name-only titles are judged on their own. 3. Longer term, ask the auditor to make the variant judge compare options within the current length band; that file is the evaluator's rules, so it needs your go-ahead."
+    },
+    {
       "key": "variant-option-music",
       "severity": "info",
       "title": "Proposal: let the variant system judge the music genre",
