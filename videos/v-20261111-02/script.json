@@ -1,0 +1,724 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 48203,
+ "story": "billionaire_question",
+ "shape": "the-war-chest",
+ "currency": "USD",
+ "feed_id": "2026-11-11-buffett-company-sits-on-377-billion",
+ "narrator": "af_bella",
+ "style": {
+  "palette": "plum",
+  "genre": "lofi",
+  "key": "C",
+  "bpm": 88,
+  "look": {
+   "stage": "night",
+   "header": "chalk",
+   "holder": "box",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "secret",
+  "title": "plain",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Would you spend it or wait? Comment",
+ "facts": [
+  {
+   "label": "Berkshire Hathaway cash pile at the end of September 2026",
+   "value": 377.4,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "AP",
+   "url": "https://mynews13.com/fl/orlando/ap-top-news/2026/11/07/berkshire-hathaway-buys-back-96-billion-of-its-own-stock-but-its-profits-declined"
+  }
+ ],
+ "maths": [
+  {
+   "name": "int",
+   "kind": "lumpsum",
+   "amount": 377400000000,
+   "rate_pct": 4,
+   "years": 1,
+   "facts": {
+    "amount": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "secret",
+  "who": "sharma",
+  "angle": "number",
+  "words": "Waiting for a *sale*",
+  "figure": "{fact1}",
+  "tag": "Wasted cash?",
+  "small": "{int_gains}",
+  "to": "Earned a year, assumed"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "You think Berkshire's cash is wasted? It isn't.",
+   "events": {
+    "company": {
+     "word": "Berkshire's"
+    },
+    "wasting": {
+     "word": "wasted"
+    },
+    "cash": {
+     "word": "cash"
+    },
+    "isnt": {
+     "word": "isn't"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "company"
+    },
+    {
+     "kind": "fail",
+     "at": "wasting"
+    },
+    {
+     "kind": "boom",
+     "at": "isnt"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Berkshire's cash pile",
+    "ask": "Wasted?",
+    "cross": "Not wasted",
+    "set": "vault",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "smirk"
+       },
+       {
+        "at": "isnt",
+        "pose": "facepalm",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "isnt",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "holds",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Berkshire, the firm Buffett built, sits on one giant pile of cash.",
+   "events": {
+    "berk": {
+     "word": "Berkshire"
+    },
+    "built": {
+     "word": "built"
+    },
+    "holds": {
+     "word": "sits"
+    },
+    "giant": {
+     "word": "giant"
+    },
+    "cash": {
+     "word": "cash"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "berk"
+    },
+    {
+     "kind": "whoosh",
+     "at": "holds"
+    },
+    {
+     "kind": "riser",
+     "at": "giant"
+    },
+    {
+     "kind": "kaching",
+     "at": "cash"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "purple"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "company",
+      "prop": "hq",
+      "x": 0.2,
+      "size": 0.24,
+      "label": "Berkshire"
+     },
+     {
+      "id": "sits",
+      "prop": "vaultdoor",
+      "x": 0.56,
+      "size": 0.24,
+      "hidden": true
+     },
+     {
+      "id": "cash",
+      "prop": "warchest",
+      "x": 0.84,
+      "size": 0.18,
+      "label": "Giant pile",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "company"
+     },
+     {
+      "at": "holds",
+      "do": "enter",
+      "target": "sits",
+      "how": "rise"
+     },
+     {
+      "at": "giant",
+      "do": "enter",
+      "target": "cash",
+      "from": "sits"
+     },
+     {
+      "at": "giant",
+      "do": "tag",
+      "target": "cash",
+      "text": "{fact1}"
+     },
+     {
+      "at": "cash",
+      "do": "flow",
+      "target": "company",
+      "to": "cash",
+      "n": 6
+     },
+     {
+      "at": "cash",
+      "do": "grow",
+      "target": "cash",
+      "scale": 1.2
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "cash",
+      "size": "close",
+      "on": "cash",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "bills",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Here's the trick: it sits in safe government bills, working.",
+   "events": {
+    "cash": {
+     "word": "sits"
+    },
+    "safe": {
+     "word": "safe"
+    },
+    "bills": {
+     "word": "bills"
+    },
+    "working": {
+     "word": "working"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "cash"
+    },
+    {
+     "kind": "ding",
+     "at": "safe"
+    },
+    {
+     "kind": "whoosh",
+     "at": "bills"
+    },
+    {
+     "kind": "kaching",
+     "at": "working"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "bank",
+     "tint": "blue"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "sits",
+      "prop": "warchest",
+      "x": 0.2,
+      "size": 0.22
+     },
+     {
+      "id": "bills",
+      "prop": "tbill",
+      "x": 0.52,
+      "size": 0.22,
+      "label": "Government bills",
+      "hidden": true
+     },
+     {
+      "id": "working",
+      "prop": "interestjar",
+      "x": 0.84,
+      "size": 0.2,
+      "hidden": true,
+      "k": 0.2
+     },
+     {
+      "id": "safe",
+      "prop": "padlock",
+      "x": 0.2,
+      "y": 0.3,
+      "size": 0.09,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "sits"
+     },
+     {
+      "at": "safe",
+      "do": "enter",
+      "target": "safe",
+      "how": "drop"
+     },
+     {
+      "at": "safe",
+      "do": "glow",
+      "target": "sits"
+     },
+     {
+      "at": "bills",
+      "do": "enter",
+      "target": "bills",
+      "from": "sits"
+     },
+     {
+      "at": "bills",
+      "do": "flow",
+      "target": "sits",
+      "to": "bills",
+      "n": 5
+     },
+     {
+      "at": "working",
+      "do": "enter",
+      "target": "working",
+      "how": "rise"
+     },
+     {
+      "at": "working",
+      "do": "fill",
+      "target": "working",
+      "k": 0.8
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "bills",
+      "size": "close",
+      "on": "bills",
+      "move": true
+     },
+     {
+      "at": "working",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "interest",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "At an assumed rate, it earns {int_gains} a year, waiting.",
+   "events": {
+    "assumed": {
+     "word": "assumed"
+    },
+    "earns": {
+     "word": "earns"
+    },
+    "year": {
+     "word": "year"
+    },
+    "waiting": {
+     "word": "waiting"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "assumed"
+    },
+    {
+     "kind": "kaching",
+     "at": "earns"
+    },
+    {
+     "kind": "pop",
+     "at": "year"
+    },
+    {
+     "kind": "ding",
+     "at": "waiting"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "purple"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "rate",
+      "prop": "tbill",
+      "x": 0.24,
+      "size": 0.16
+     },
+     {
+      "id": "earns",
+      "prop": "interestjar",
+      "x": 0.52,
+      "size": 0.3,
+      "k": 0.2
+     },
+     {
+      "id": "year",
+      "prop": "yearpage",
+      "x": 0.78,
+      "size": 0.14
+     },
+     {
+      "id": "waiting",
+      "prop": "pocketwatch",
+      "x": 0.24,
+      "y": 0.34,
+      "size": 0.1,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "rate"
+     },
+     {
+      "at": "assumed",
+      "do": "tag",
+      "target": "rate",
+      "text": "{int_rate}"
+     },
+     {
+      "at": "earns",
+      "do": "flow",
+      "target": "rate",
+      "to": "earns",
+      "n": 6
+     },
+     {
+      "at": "earns",
+      "do": "fill",
+      "target": "earns",
+      "k": 0.9
+     },
+     {
+      "at": "earns",
+      "do": "tag",
+      "target": "earns",
+      "text": "{int_gains}"
+     },
+     {
+      "at": "waiting",
+      "do": "enter",
+      "target": "waiting",
+      "how": "drop"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "earns",
+      "size": "close",
+      "on": "earns",
+      "move": true
+     },
+     {
+      "at": "waiting",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "why",
+   "scene": "headline",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "But why would a company keep a pile this big?",
+   "events": {
+    "why": {
+     "word": "why"
+    },
+    "company": {
+     "word": "company"
+    },
+    "keep": {
+     "word": "keep"
+    },
+    "big": {
+     "word": "big"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "why"
+    },
+    {
+     "kind": "tick",
+     "at": "keep"
+    },
+    {
+     "kind": "riser",
+     "at": "big"
+    }
+   ],
+   "params": {
+    "kicker": "WHY KEEP IT?",
+    "title": "Berkshire's cash pile",
+    "figure": "{fact1}",
+    "figureAt": "keep",
+    "label": "Cash, sitting ready"
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Because when markets crash, prices drop, and cash buys first.",
+   "events": {
+    "crash": {
+     "word": "crash"
+    },
+    "drop": {
+     "word": "drop"
+    },
+    "buys": {
+     "word": "buys"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "crash"
+    },
+    {
+     "kind": "whoosh",
+     "at": "drop"
+    },
+    {
+     "kind": "kaching",
+     "at": "buys"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Markets crash",
+    "sale": "Everything on sale",
+    "buys": "Cash buys first",
+    "set": "market",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "buys",
+      "size": "close",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "So is that pile wasted? No. It waits for a sale.",
+   "events": {
+    "pile": {
+     "word": "pile"
+    },
+    "wasted": {
+     "word": "wasted"
+    },
+    "waiting": {
+     "word": "waits"
+    },
+    "sale": {
+     "word": "sale"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "pile"
+    },
+    {
+     "kind": "fail",
+     "at": "wasted"
+    },
+    {
+     "kind": "ding",
+     "at": "waiting"
+    },
+    {
+     "kind": "boom",
+     "at": "sale"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "figure": "{fact1}",
+    "figureLabel": "Cash",
+    "cross": "Wasted",
+    "stamp": "Waiting for a sale",
+    "set": "vault",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "sale",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  }
+ ]
+}

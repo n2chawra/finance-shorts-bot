@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 48203,
+  "duration_sec": 27,
+  "tempo": 1.2,
+  "style": {
+    "palette": "plum",
+    "genre": "lofi",
+    "key": "C",
+    "bpm": 88,
+    "look": {
+      "stage": "night",
+      "header": "chalk",
+      "holder": "box",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think Berkshire's cash is wasted? It isn't.",
+        "start": 0.3,
+        "seconds": 2.31,
+        "window": 2.97,
+        "fill": 0.778
+      },
+      {
+        "scene": "holds",
+        "text": "Berkshire, the firm Buffett built, sits on one giant pile of cash.",
+        "start": 3.27,
+        "seconds": 3.54,
+        "window": 4.23,
+        "fill": 0.837
+      },
+      {
+        "scene": "bills",
+        "text": "Here's the trick: it sits in safe government bills, working.",
+        "start": 7.5,
+        "seconds": 3.02,
+        "window": 3.7,
+        "fill": 0.816
+      },
+      {
+        "scene": "interest",
+        "text": "At an assumed rate, it earns $15.10B a year, waiting.",
+        "start": 11.2,
+        "seconds": 4.42,
+        "window": 4.93,
+        "fill": 0.897
+      },
+      {
+        "scene": "why",
+        "text": "But why would a company keep a pile this big?",
+        "start": 16.13,
+        "seconds": 2.03,
+        "window": 2.53,
+        "fill": 0.802
+      },
+      {
+        "scene": "turn",
+        "text": "Because when markets crash, prices drop, and cash buys first.",
+        "start": 18.67,
+        "seconds": 3.38,
+        "window": 4.07,
+        "fill": 0.83
+      },
+      {
+        "scene": "payoff",
+        "text": "So is that pile wasted? No. It waits for a sale.",
+        "start": 22.73,
+        "seconds": 2.99,
+        "window": 3.67,
+        "fill": 0.815
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "ending-beats-act-and-vary": "off",
+    "you-in-the-core-story": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.3,
+    "music_under_voice_db": 23.1
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 6.189,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

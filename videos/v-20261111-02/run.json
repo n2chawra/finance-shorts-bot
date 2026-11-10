@@ -1,0 +1,220 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-10T21:57:36.546580+00:00",
+    "finishedAt": "2026-11-10T21:57:36.546580+00:00",
+    "notes": [
+      "story 'billionaire_question' was told in the last 1 videos"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-10T21:58:43.847492+00:00",
+    "finishedAt": "2026-11-10T21:58:43.847492+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-10T21:59:23.942955+00:00",
+    "finishedAt": "2026-11-10T21:59:23.942955+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T21:59:31.688894+00:00",
+    "finishedAt": "2026-11-10T21:59:31.688894+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:01:27.890840+00:00",
+    "finishedAt": "2026-11-10T22:01:27.890840+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:02:04.950210+00:00",
+    "finishedAt": "2026-11-10T22:02:04.950210+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:02:20.866047+00:00",
+    "finishedAt": "2026-11-10T22:02:52.800543+00:00",
+    "notes": [
+      "text 'Cash' at 12.0 s reaches 1804 px, inside the bottom 120 px",
+      "2.6 s with nothing new on screen in beat 'holds' (at most 2.5 s): add an action on the phrase being said there",
+      "3 of 7 stills are mostly empty background (at 10 s, 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+      "the Short runs 28.9 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:03:10.206997+00:00",
+    "finishedAt": "2026-11-10T22:03:10.206997+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:03:38.653936+00:00",
+    "finishedAt": "2026-11-10T22:04:00.130854+00:00",
+    "notes": [
+      "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "beat 'holds': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "2 of 7 stills are mostly empty background (at 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:04:24.654566+00:00",
+    "finishedAt": "2026-11-10T22:04:24.654566+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:04:53.835954+00:00",
+    "finishedAt": "2026-11-10T22:05:17.074861+00:00",
+    "notes": [
+      "27 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:05:42.202954+00:00",
+    "finishedAt": "2026-11-10T22:06:11.003217+00:00",
+    "notes": [
+      "15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "only 7 props of its own (hq, interestjar, pocketwatch, tbill, vaultdoor, warchest, yearpage); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:06:29.434415+00:00",
+    "finishedAt": "2026-11-10T22:06:49.422689+00:00",
+    "notes": [
+      "27 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:07:12.929198+00:00",
+    "finishedAt": "2026-11-10T22:07:32.414622+00:00",
+    "notes": [
+      "27 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:08:17.921055+00:00",
+    "finishedAt": "2026-11-10T22:08:17.921055+00:00",
+    "notes": [
+      "Fact $377.4B (Berkshire cash, 30 Sep 2026, AP) CONFIRMED on its url (mynews13 AP article: 'reached $377.4 billion, up from $365.5 billion at the end of June'); 4% assumed T-bill rate realistic (3-month yield ~4.2% early Nov 2026, FRED DGS3MO); disclaimer present.",
+      "Beat 'hook' say 'You think Buffett's cash is wasted? It isn't.' and params.line 'Buffett's cash pile' misattribute the money: the $377.4B is Berkshire Hathaway's corporate cash, not Buffett's, and per the source Buffett handed the CEO job to Greg Abel in January and gave up the chairman title in September 2026 (topic verify item). Change say to 'You think Berkshire's cash is wasted? It isn't.' (event company.word -> \"Berkshire's\") and params.line to \"Berkshire's cash pile\"."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:08:21.749819+00:00",
+    "finishedAt": "2026-11-10T22:08:21.749819+00:00",
+    "notes": [
+      "[script] 11.1-15.6s, beat 'interest': the spoken figure {int_gains} ($15.10B a year) never appears on screen; the jar only fills, so the payoff number of the beat lives only in the voice (fails mute read and 'every spoken figure animates'). Fix: add {\"at\":\"earns\",\"do\":\"tag\",\"target\":\"earns\",\"text\":\"{int_gains}\"} (or label the jar '{int_gains} a year') and a close camera on 'earns' at that word.",
+      "[script] 15.0s, beat 'interest': the 'Assumed rate' bill (x 0.2) is cut off by the left edge and the 'A year' calendar (x 0.84) by the right edge at the medium shot. Fix: pull them in (x ~0.24 / ~0.78) and shrink them (size ~0.16), or add a camera move so each is framed when named.",
+      "[script] thumbnail (layout scene, at payoff, sec 2.4): the title band blurs the payoff's $377.4B into a ghost smudge behind 'WAITING FOR A SALE', so the cover's only figure reads as a broken blur. Fix: pick a cover frame whose figure sits below the top 36% band, or use a layout that draws thumbnail.figure (e.g. the card/story layout)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:09:29.066896+00:00",
+    "finishedAt": "2026-11-10T22:09:29.066896+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:09:41.119565+00:00",
+    "finishedAt": "2026-11-10T22:10:06.258839+00:00",
+    "notes": [
+      "27 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:10:26.800185+00:00",
+    "finishedAt": "2026-11-10T22:10:46.616389+00:00",
+    "notes": [
+      "27 s, plum/lofi (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:11:04.275067+00:00",
+    "finishedAt": "2026-11-10T22:11:04.275067+00:00",
+    "notes": [
+      "Re-review after fixes: $15.10B tag on the jar at 15s with close camera, bill/calendar crop only from the intended close shot, secret-layout cover shows sharp $377.4B crossed out and $15.10B; hook, disclaimer at 26.7s, no overlaps or empty frames, 27s, audio -1.0/-16.2 dB, layout/craft problems empty."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:11:12.845868+00:00",
+    "finishedAt": "2026-11-10T22:11:12.845868+00:00",
+    "notes": [
+      "Re-review: hook now 'Berkshire's cash' (correct attribution; Buffett no longer CEO/chairman, never called CEO); fact $377.4B confirmed on its AP url; interest beat {int_gains} on the jar is said 'at an assumed rate' (4% vs ~4.2% 3-month T-bill, FRED DGS3MO); secret cover 'Wasted cash?' over crossed {fact1} reads as 'not wasted' in context and 'Earned a year, assumed' states the assumption; disclaimer ends description. Notes: interest beat dropped the 'Assumed rate'/'A year' labels, so on screen only captions say assumed (restoring the label is safer); description lacks the licensed-adviser line."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:11:31.507152+00:00",
+    "finishedAt": "2026-11-10T22:13:13.126187+00:00",
+    "notes": [
+      "27 s, plum/lofi, peak -1.0 dB, mean -16.2 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:13:23.372230+00:00",
+    "finishedAt": "2026-11-10T22:13:23.372230+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
