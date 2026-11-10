@@ -151,6 +151,24 @@
       "action": "fixed",
       "note": "Partly yes: formats and topic kinds are judged on views (budget is already dropped; how_they_make_money is actually our best format at 9.8x median), so the type wasn't the problem, the pick inside it was. The planner now skips topics a typical viewer already knows (e.g. 'banks lend your savings') and the editor ranks them lower.",
       "commit": "05a8b8d"
+    },
+    {
+      "id": "cmwa5ciwm0001la09el9a159x",
+      "action": "fixed",
+      "note": "Every Short's plan now names its subject (e.g. Elon Musk) and check-plan fails it unless the description's first lines and a hashtag say it, even when the title is 'plain'; whether the title itself should name him is the variant system's call (plain beat figure_or_name 460 vs 140, but only 4 videos and confounded with the shorter length), so I've asked you on Notifications to add a 'name' title option.",
+      "commit": "df4dd85"
+    },
+    {
+      "id": "cmwapfs5l0001ii095jx1923d",
+      "action": "fixed",
+      "note": "New report python -m generator.impact (improvement/weekly/impact.json) tracks Shorts per week on 48 h views, % viewed, stayed-to-watch (didn't swipe away) and average view seconds; honest read: % viewed rose 40%→55% and view time 18→23 s, but stayed-to-watch is flat at 39% (6 in 10 swipe away in the first seconds) and median views fell 211→43, so the first second is now the improver's top target.",
+      "commit": "3fab9d1"
+    },
+    {
+      "id": "cmwa724ep0001l5094chbwdlu",
+      "action": "needs owner",
+      "note": "The data for that tab exists now (improvement/weekly/impact.json: every change with the Shorts' views, % viewed and stayed-to-watch 14 days before and after), but the dashboard is the dashboard agent's lane and it doesn't read your notes; see the 'Impact tab' notification for the one step to get it built.",
+      "commit": "3fab9d1"
     }
   ]
 }
