@@ -1,0 +1,217 @@
+[
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:11:27.459841+00:00",
+    "finishedAt": "2026-11-10T22:11:27.459841+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:13:03.534048+00:00",
+    "finishedAt": "2026-11-10T22:13:03.534048+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:13:42.970608+00:00",
+    "finishedAt": "2026-11-10T22:13:42.970608+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:13:46.987356+00:00",
+    "finishedAt": "2026-11-10T22:14:19.960442+00:00",
+    "notes": [
+      "the Short runs 27.8 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:14:32.317105+00:00",
+    "finishedAt": "2026-11-10T22:14:32.317105+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:14:44.325055+00:00",
+    "finishedAt": "2026-11-10T22:15:10.013425+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 5 s, 15 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:15:44.427271+00:00",
+    "finishedAt": "2026-11-10T22:15:44.427271+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:15:59.919464+00:00",
+    "finishedAt": "2026-11-10T22:16:23.776503+00:00",
+    "notes": [
+      "27 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:16:46.545157+00:00",
+    "finishedAt": "2026-11-10T22:17:07.652866+00:00",
+    "notes": [
+      "only 2 shot sizes (close, medium); a short video needs at least 3 of wide, medium, close, extreme",
+      "four shots in a row open medium (from 'hook'): vary the shot size"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:17:24.136016+00:00",
+    "finishedAt": "2026-11-10T22:17:45.557174+00:00",
+    "notes": [
+      "27 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:18:39.727735+00:00",
+    "finishedAt": "2026-11-10T22:18:39.727735+00:00",
+    "notes": [
+      "Beats 'why' + 'forbes' (and title 'Why a baseball superstar chose a tiny salary'): the video gives sponsors as THE reason he deferred ('why wait...? Because Forbes estimates sponsors paid him far more'). That is a motive the sources don't state; NBC/The Athletic report the deferral was Ohtani's own suggestion to help the Dodgers' future spending (luxury tax room to sign other players). Sponsors explain why he CAN wait, not why he chose to. Say the reported reason, and present sponsor income as what makes it affordable.",
+      "Beat 'hook': 'You think Ohtani cashes his salary? He doesn't.' is literally false: he is paid $2M a year now (the next beat says so). Reword to 'almost none of it' or similar.",
+      "Facts confirmed: $700M/10 yrs/$680M deferred without interest 2034-2043/$2M a year on the NBC New York page; Forbes 2026 $125M off-field (20+ sponsors, May 2025-May 2026) on forbes.com.au. Verify items OK: no interest stated; no tax claim in script. Disclaimer in description OK."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:19:09.009157+00:00",
+    "finishedAt": "2026-11-10T22:19:09.009157+00:00",
+    "notes": [
+      "[script] 13.5-15.0s beat 'why': wide night shot with Rohan small at the left edge and a small safe in a mostly dark empty frame; by 15.0s the safe runs half off the left edge, Rohan is gone and the wallet ('money') is never seen. Fix: medium shot on Rohan + safe, safe at x~0.5, sand timer at ~0.75, wallet entering in frame.",
+      "[scene] 6.0-7.5s beat 'deal' (build): the camera follow on 'pays'/'now' pushes in so the $700M tag slides under the channel badge at the top-left edge, the contract runs off the left edge and the batter's head is cut off at the top. The build camera follow must keep tagged items inside the frame (script workaround: items at x 0.25-0.75).",
+      "[scene] 24.0-26.7s beat 'payoff' (Payoff component): the 'BIG CHEQUE WAITS' stamp lands over the batter's head and the safe, and at 24.0s the cheque sits on top of the orange sponsor blimp. Place the stamp clear of the props (e.g. low centre above the caption).",
+      "[script] 16.5s beat 'forbes' (headline): for ~1.5 s the card is a header on flat background, then $125M is only text on a card; make the sponsor money a thing (stack/flow from sponsors) or keep the figure visible from the beat start.",
+      "[script] thumbnail (turn, 3.0s, layout scene): the scene layout blurs the top band where $125M SPONSORS sits, so the cover shows only '$2M HIS TEAM, NOW' under 'Not from his team' - it sells the small figure and the promise is unclear; thumbnail.figure is ignored by this layout. Use a layout that draws the figure or a moment where $125M sits below the band."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:19:11.557413+00:00",
+    "finishedAt": "2026-11-10T22:19:11.557413+00:00",
+    "notes": [
+      "beat 'forbes'.events.year: no word 'year' in this beat's spoken line"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:19:16.047295+00:00",
+    "finishedAt": "2026-11-10T22:19:16.047295+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:19:53.243467+00:00",
+    "finishedAt": "2026-11-10T22:19:53.243467+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T22:20:21.873139+00:00",
+    "finishedAt": "2026-11-10T22:20:51.215781+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+      "the Short runs 28.1 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:21:01.345964+00:00",
+    "finishedAt": "2026-11-10T22:21:01.345964+00:00",
+    "notes": [
+      "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:21:13.569861+00:00",
+    "finishedAt": "2026-11-10T22:21:35.810803+00:00",
+    "notes": [
+      "27 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:22:04.173834+00:00",
+    "finishedAt": "2026-11-10T22:22:24.208414+00:00",
+    "notes": [
+      "27 s, sky/acoustic (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:22:46.523283+00:00",
+    "finishedAt": "2026-11-10T22:22:46.523283+00:00",
+    "notes": [
+      "Re-review: hook now true ('Almost none'), deferral reason attributed to reports (his idea, frees Dodgers cash for more stars, per NBC/The Athletic), sponsors framed as how he can wait; facts $700M/$680M no interest 2034-43/10 yrs/$2M (NBC) and $125M off-field May 2025-26 (Forbes) confirmed; no tax claim; disclaimer in description."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:23:14.567663+00:00",
+    "finishedAt": "2026-11-10T22:23:14.567663+00:00",
+    "notes": [
+      "Re-review at 1.5 s stills: why beat now medium with Rohan, safe and cash in frame; deal/rest props stay in frame; Forbes $125M shows from the start of the beat with its source line; payoff stamp clear of props; story cover shows $2M vs $125M sharp; hook opens a question; disclaimer at the end; 27 s, peak -1 dB, mean -16.5 dB, no layout/craft problems. Nits: sponsor billboard slightly cropped at the right edge in payoff; why beat's 'frees cash for more stars' is carried mostly by the voice."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:23:26.115713+00:00",
+    "finishedAt": "2026-11-10T22:24:56.350893+00:00",
+    "notes": [
+      "27 s, sky/acoustic, peak -1.0 dB, mean -16.5 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-10T22:25:01.680714+00:00",
+    "finishedAt": "2026-11-10T22:25:01.680714+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -1,0 +1,745 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 72518,
+ "story": "secret_of_rich",
+ "shape": "hidden-payer",
+ "currency": "USD",
+ "feed_id": "2026-11-11-ohtani-700-million-paid-2-million-a-year",
+ "narrator": "am_michael",
+ "style": {
+  "palette": "sky",
+  "genre": "acoustic",
+  "key": "G",
+  "bpm": 98,
+  "look": {
+   "stage": "studio",
+   "header": "strip",
+   "holder": "phone",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "secret",
+  "title": "plain",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Could you wait a decade for your pay? Comment",
+ "facts": [
+  {
+   "label": "Total value of Ohtani's Dodgers contract",
+   "value": 700,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2023-12-11",
+   "source": "NBC New York",
+   "url": "https://www.nbcnewyork.com/mlb/shohei-ohtani-to-defer-680-million-of-dodgers-contract-until-end-of-deal-reports-say/4941741/"
+  },
+  {
+   "label": "Part of the contract deferred, paid without interest",
+   "value": 680,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2023-12-11",
+   "source": "NBC New York",
+   "url": "https://www.nbcnewyork.com/mlb/shohei-ohtani-to-defer-680-million-of-dodgers-contract-until-end-of-deal-reports-say/4941741/"
+  },
+  {
+   "label": "Years of the contract",
+   "value": 10,
+   "unit": "count",
+   "as_of": "2023-12-11",
+   "source": "NBC New York",
+   "url": "https://www.nbcnewyork.com/mlb/shohei-ohtani-to-defer-680-million-of-dodgers-contract-until-end-of-deal-reports-say/4941741/"
+  },
+  {
+   "label": "Salary paid now each year",
+   "value": 2,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2023-12-11",
+   "source": "NBC New York",
+   "url": "https://www.nbcnewyork.com/mlb/shohei-ohtani-to-defer-680-million-of-dodgers-contract-until-end-of-deal-reports-say/4941741/"
+  },
+  {
+   "label": "Ohtani's off-field earnings, Forbes 2026",
+   "value": 125,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-05-01",
+   "source": "Forbes",
+   "url": "https://www.forbes.com.au/news/sport/the-worlds-10-highest-paid-athletes-2026/"
+  }
+ ],
+ "maths": [
+  {
+   "name": "deal",
+   "kind": "share",
+   "total": 700000000,
+   "parts": 10,
+   "facts": {
+    "total": 1,
+    "parts": 3
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "story",
+  "hero": "cash",
+  "who": "rohan",
+  "angle": "number",
+  "words": "Not from his team",
+  "small": "{fact4}",
+  "tag": "His team, now",
+  "figure": "{fact5}",
+  "to": "Sponsors"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "You think Ohtani gets his pay now? Almost none.",
+   "events": {
+    "ohtani": {
+     "word": "Ohtani"
+    },
+    "cashes": {
+     "word": "gets"
+    },
+    "giant": {
+     "word": "pay"
+    },
+    "no": {
+     "word": "none"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "ohtani"
+    },
+    {
+     "kind": "kaching",
+     "at": "cashes"
+    },
+    {
+     "kind": "boom",
+     "at": "no"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Ohtani's pay",
+    "ask": "Paid now?",
+    "cross": "Almost none",
+    "set": "office",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "celebrate",
+        "expression": "happy"
+       },
+       {
+        "at": "no",
+        "pose": "shrug",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "no",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "deal",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "His Dodgers deal pays him {fact4} a year, for now.",
+   "events": {
+    "deal": {
+     "word": "Dodgers"
+    },
+    "pays": {
+     "word": "pays"
+    },
+    "year": {
+     "word": "year"
+    },
+    "now": {
+     "word": "now"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "deal"
+    },
+    {
+     "kind": "whoosh",
+     "at": "pays"
+    },
+    {
+     "kind": "kaching",
+     "at": "year"
+    },
+    {
+     "kind": "ding",
+     "at": "now"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "field",
+     "tint": "blue"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "deal",
+      "prop": "contract",
+      "x": 0.27,
+      "size": 0.22,
+      "label": "Dodgers deal"
+     },
+     {
+      "id": "him",
+      "prop": "batter",
+      "x": 0.5,
+      "size": 0.22
+     },
+     {
+      "id": "year",
+      "prop": "bigcheque",
+      "x": 0.74,
+      "size": 0.15,
+      "label": "Each year",
+      "hidden": true
+     },
+     {
+      "id": "dodgers",
+      "prop": "baseball",
+      "x": 0.27,
+      "y": 0.32,
+      "size": 0.07,
+      "hidden": true
+     },
+     {
+      "id": "now",
+      "prop": "sandtimer",
+      "x": 0.74,
+      "y": 0.3,
+      "size": 0.09,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "deal",
+      "auto": true
+     },
+     {
+      "at": "deal",
+      "do": "enter",
+      "target": "dodgers",
+      "how": "drop",
+      "auto": true
+     },
+     {
+      "at": "deal",
+      "do": "tag",
+      "target": "deal",
+      "text": "{fact1}",
+      "auto": true
+     },
+     {
+      "at": "pays",
+      "do": "enter",
+      "target": "year",
+      "from": "deal",
+      "auto": true
+     },
+     {
+      "at": "year",
+      "do": "tag",
+      "target": "year",
+      "text": "{fact4}",
+      "auto": true
+     },
+     {
+      "at": "now",
+      "do": "enter",
+      "target": "now",
+      "how": "drop",
+      "auto": true
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "rest",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "The rest waits a whole decade, with zero interest.",
+   "events": {
+    "other": {
+     "word": "rest"
+    },
+    "waits": {
+     "word": "waits"
+    },
+    "decade": {
+     "word": "decade"
+    },
+    "zero": {
+     "word": "zero"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "other"
+    },
+    {
+     "kind": "whoosh",
+     "at": "waits"
+    },
+    {
+     "kind": "tick",
+     "at": "decade"
+    },
+    {
+     "kind": "fail",
+     "at": "zero"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "bank",
+     "tint": "blue"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "other",
+      "prop": "contract",
+      "x": 0.2,
+      "size": 0.2,
+      "label": "The rest"
+     },
+     {
+      "id": "waits",
+      "prop": "timesafe",
+      "x": 0.52,
+      "size": 0.26,
+      "label": "Locked away",
+      "hidden": true
+     },
+     {
+      "id": "decade",
+      "prop": "decade",
+      "x": 0.84,
+      "size": 0.16,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "other",
+      "do": "tag",
+      "target": "other",
+      "text": "{fact2}",
+      "auto": true
+     },
+     {
+      "at": "waits",
+      "do": "enter",
+      "target": "waits",
+      "how": "rise",
+      "auto": true
+     },
+     {
+      "at": "waits",
+      "do": "flow",
+      "target": "other",
+      "to": "waits",
+      "n": 6,
+      "auto": true
+     },
+     {
+      "at": "decade",
+      "do": "enter",
+      "target": "decade",
+      "how": "drop",
+      "auto": true
+     },
+     {
+      "at": "zero",
+      "do": "label",
+      "target": "waits",
+      "text": "Zero interest",
+      "auto": true
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "zero",
+      "size": "close",
+      "on": "waits",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "why",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "His idea, reports say: it frees cash for more stars.",
+   "events": {
+    "why": {
+     "word": "idea"
+    },
+    "long": {
+     "word": "frees"
+    },
+    "money": {
+     "word": "cash"
+    },
+    "stars": {
+     "word": "stars"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "why"
+    },
+    {
+     "kind": "whoosh",
+     "at": "long"
+    },
+    {
+     "kind": "kaching",
+     "at": "money"
+    },
+    {
+     "kind": "ding",
+     "at": "stars"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "night",
+     "tint": "blue"
+    },
+    "hud": {
+     "hide": true
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.2,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       },
+       {
+        "at": "stars",
+        "pose": "thumbsUp",
+        "expression": "happy"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "idea",
+      "prop": "timesafe",
+      "x": 0.45,
+      "size": 0.2
+     },
+     {
+      "id": "cash",
+      "prop": "wallet",
+      "x": 0.45,
+      "y": 0.28,
+      "size": 0.09,
+      "hidden": true
+     },
+     {
+      "id": "stars",
+      "prop": "batter",
+      "x": 0.72,
+      "size": 0.2,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "why",
+      "do": "glow",
+      "target": "idea",
+      "auto": true
+     },
+     {
+      "at": "money",
+      "do": "enter",
+      "target": "cash",
+      "from": "idea",
+      "auto": true
+     },
+     {
+      "at": "stars",
+      "do": "enter",
+      "target": "stars",
+      "how": "rise",
+      "auto": true
+     },
+     {
+      "at": "stars",
+      "do": "flow",
+      "target": "cash",
+      "to": "stars",
+      "n": 5,
+      "auto": true
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     }
+    ]
+   }
+  },
+  {
+   "id": "forbes",
+   "scene": "headline",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "But how can he wait? Forbes estimates sponsors paid him far more.",
+   "events": {
+    "forbes": {
+     "word": "Forbes"
+    },
+    "sponsors": {
+     "word": "sponsors"
+    },
+    "more": {
+     "word": "more"
+    },
+    "wait": {
+     "word": "wait"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "forbes"
+    },
+    {
+     "kind": "kaching",
+     "at": "sponsors"
+    },
+    {
+     "kind": "boom",
+     "at": "more"
+    }
+   ],
+   "params": {
+    "kicker": "FORBES ESTIMATE",
+    "title": "Ohtani's pay off the field",
+    "figure": "{fact5}",
+    "figureAt": "how",
+    "label": "From sponsors, one year"
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Next to that, what's his team's money? A side cheque.",
+   "events": {
+    "that": {
+     "word": "that"
+    },
+    "team": {
+     "word": "team's"
+    },
+    "side": {
+     "word": "side"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "that"
+    },
+    {
+     "kind": "tick",
+     "at": "team"
+    },
+    {
+     "kind": "fail",
+     "at": "side"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Who pays for his life?",
+    "big": "{fact5}",
+    "bigLabel": "Sponsors",
+    "small": "{fact4}",
+    "smallLabel": "His team, now",
+    "set": "office",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "side",
+      "size": "close",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "So he lives on sponsors, and the big cheque waits.",
+   "events": {
+    "lives": {
+     "word": "lives"
+    },
+    "sponsors": {
+     "word": "sponsors"
+    },
+    "cheque": {
+     "word": "cheque"
+    },
+    "wait": {
+     "word": "waits"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "lives"
+    },
+    {
+     "kind": "kaching",
+     "at": "sponsors"
+    },
+    {
+     "kind": "whoosh",
+     "at": "cheque"
+    },
+    {
+     "kind": "boom",
+     "at": "wait"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "waiting": "{fact2}",
+    "waitingLabel": "Paid later",
+    "stamp": "Big cheque waits",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "wait",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  }
+ ]
+}
