@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61427,
+  "duration_sec": 27,
+  "tempo": 1.2,
+  "style": {
+    "palette": "forest",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 90,
+    "look": {
+      "stage": "desert",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "stamp"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.2,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "You think taxing billionaires is easy money? It isn't.",
+        "start": 0.3,
+        "seconds": 3.17,
+        "window": 3.53,
+        "fill": 0.898
+      },
+      {
+        "scene": "ask40",
+        "text": "California asked over 200 billionaires for 5% of net worth.",
+        "start": 3.83,
+        "seconds": 4.58,
+        "window": 4.93,
+        "fill": 0.929
+      },
+      {
+        "scene": "fortune",
+        "text": "Say a fortune is $100 billion: that's $5 billion.",
+        "start": 8.77,
+        "seconds": 4.35,
+        "window": 4.87,
+        "fill": 0.893
+      },
+      {
+        "scene": "justpay",
+        "text": "Just pay it?",
+        "start": 13.63,
+        "seconds": 0.75,
+        "window": 1.4,
+        "fill": 0.536
+      },
+      {
+        "scene": "shares",
+        "text": "Most is shares, not cash: paying means selling or borrowing.",
+        "start": 15.03,
+        "seconds": 3.81,
+        "window": 4.2,
+        "fill": 0.907
+      },
+      {
+        "scene": "turn",
+        "text": "But it only hit residents, and Google's founders had left.",
+        "start": 19.23,
+        "seconds": 3.38,
+        "window": 3.87,
+        "fill": 0.873
+      },
+      {
+        "scene": "payoff",
+        "text": "Voters look set to say no. Still easy money?",
+        "start": 23.1,
+        "seconds": 2.87,
+        "window": 3.33,
+        "fill": 0.862
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "off",
+    "ending-beats-act-and-vary": "on",
+    "you-in-the-core-story": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.6,
+    "lufs": -15.2,
+    "music_under_voice_db": 23.1
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.247,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

@@ -1,0 +1,681 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61427,
+ "story": "billionaire_question",
+ "shape": "the-exit",
+ "currency": "USD",
+ "feed_id": "2026-11-10-california-voted-on-taxing-billionaires",
+ "style": {
+  "palette": "forest",
+  "genre": "cinematic",
+  "key": "D",
+  "bpm": 90,
+  "look": {
+   "stage": "desert",
+   "header": "strip",
+   "holder": "sign",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "20-27",
+  "topic": "big_money",
+  "hook": "secret",
+  "title": "plain",
+  "style": "board",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Tax them or let them go? Comment",
+ "facts": [
+  {
+   "label": "Proposition 40 one-time tax on billionaires' net worth",
+   "value": 5,
+   "unit": "percent",
+   "as_of": "2026-11-04",
+   "source": "CPA Practice Advisor",
+   "url": "https://www.cpapracticeadvisor.com/?p=193162"
+  },
+  {
+   "label": "California billionaires the tax would have covered (more than)",
+   "value": 200,
+   "unit": "count",
+   "as_of": "2026-11-04",
+   "source": "CPA Practice Advisor",
+   "url": "https://www.cpapracticeadvisor.com/?p=193162"
+  }
+ ],
+ "maths": [
+  {
+   "name": "bill",
+   "kind": "fee_take",
+   "amount": 100000000000,
+   "fee_pct": 5,
+   "per_year": 1,
+   "years": 1,
+   "facts": {
+    "fee_pct": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "turn",
+  "sec": 3.5,
+  "who": "rohan",
+  "angle": "number",
+  "words": "The billionaires *left*",
+  "figure": "{fact1}",
+  "tag": "Billionaire tax"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "You think taxing billionaires is easy money? It isn't.",
+   "events": {
+    "think": {
+     "word": "think"
+    },
+    "tax": {
+     "word": "taxing"
+    },
+    "easy": {
+     "word": "easy"
+    },
+    "isnt": {
+     "word": "isn't"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "tax"
+    },
+    {
+     "kind": "kaching",
+     "at": "easy"
+    },
+    {
+     "kind": "boom",
+     "at": "isnt"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Billionaire tax",
+    "ask": "Easy money?",
+    "cross": "Not so easy",
+    "set": "office",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "point",
+        "expression": "happy"
+       },
+       {
+        "at": "isnt",
+        "pose": "shrug",
+        "expression": "shock"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "isnt",
+      "size": "close",
+      "on": "rohan",
+      "move": true
+     }
+    ],
+    "fig": "{fact1} tax"
+   }
+  },
+  {
+   "id": "ask40",
+   "scene": "board",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "California asked over {fact2} billionaires for {fact1} of net worth.",
+   "events": {
+    "california": {
+     "word": "California"
+    },
+    "asked": {
+     "word": "asked"
+    },
+    "billionaires": {
+     "word": "billionaires"
+    },
+    "worth": {
+     "word": "worth"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "california"
+    },
+    {
+     "kind": "ding",
+     "at": "billionaires"
+    },
+    {
+     "kind": "kaching",
+     "at": "worth"
+    }
+   ],
+   "params": {
+    "header": "The billionaire tax",
+    "sub": "California ballot",
+    "bg": "sand",
+    "items": [
+     {
+      "id": "capitol",
+      "prop": "capitol",
+      "x": 0.22,
+      "size": 0.22,
+      "label": "California"
+     },
+     {
+      "id": "billionaires",
+      "prop": "tophat",
+      "x": 0.5,
+      "size": 0.18,
+      "label": "Billionaires",
+      "hidden": true
+     },
+     {
+      "id": "worth",
+      "prop": "estate",
+      "x": 0.78,
+      "size": 0.22,
+      "label": "Net worth",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "doc",
+      "title": "Billionaire tax",
+      "rows": [
+       {
+        "label": "Who pays",
+        "value": "{fact2}+ billionaires",
+        "at": "billionaires"
+       },
+       {
+        "label": "Tax",
+        "value": "{fact1} of net worth",
+        "at": "worth"
+       }
+      ],
+      "stamp": {
+       "text": "One time",
+       "at": "worth"
+      }
+     },
+     {
+      "at": "california",
+      "do": "grow",
+      "target": "capitol",
+      "scale": 1.15
+     },
+     {
+      "at": "billionaires",
+      "do": "enter",
+      "target": "billionaires",
+      "how": "drop"
+     },
+     {
+      "at": "worth",
+      "do": "enter",
+      "target": "worth",
+      "from": "billionaires"
+     },
+     {
+      "at": "worth",
+      "do": "flow",
+      "target": "worth",
+      "to": "capitol",
+      "n": 6,
+      "text": "{fact1}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "fortune",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Say a fortune is {bill_amount}: that's {bill_per_period}.",
+   "events": {
+    "say": {
+     "word": "Say"
+    },
+    "fortune": {
+     "word": "fortune"
+    },
+    "thats": {
+     "word": "that's"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "say"
+    },
+    {
+     "kind": "kaching",
+     "at": "thats"
+    }
+   ],
+   "params": {
+    "header": "One example fortune",
+    "sub": "Illustrative",
+    "bg": "gold",
+    "items": [
+     {
+      "id": "fortune",
+      "prop": "sharepile",
+      "x": 0.32,
+      "size": 0.26,
+      "label": "Fortune"
+     },
+     {
+      "id": "bill",
+      "prop": "taxbill",
+      "x": 0.72,
+      "size": 0.24,
+      "label": "Tax bill",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "fortune"
+     },
+     {
+      "at": "say",
+      "do": "grow",
+      "target": "fortune",
+      "scale": 1.15
+     },
+     {
+      "at": "fortune",
+      "do": "tag",
+      "target": "fortune",
+      "text": "{bill_amount}"
+     },
+     {
+      "at": "thats",
+      "do": "enter",
+      "target": "bill",
+      "from": "fortune"
+     },
+     {
+      "at": "thats",
+      "do": "flow",
+      "target": "fortune",
+      "to": "bill",
+      "n": 6,
+      "text": "{bill_per_period}"
+     },
+     {
+      "at": "thats",
+      "do": "tag",
+      "target": "bill",
+      "text": "{bill_per_period}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "justpay",
+   "scene": "board",
+   "role": "build",
+   "speaker": "rohan",
+   "transition": "cut",
+   "say": "Just pay it?",
+   "events": {
+    "just": {
+     "word": "Just"
+    },
+    "pay": {
+     "word": "pay"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "just"
+    },
+    {
+     "kind": "riser",
+     "at": "pay"
+    }
+   ],
+   "params": {
+    "header": "Just pay it?",
+    "bg": "night",
+    "stage": "desert",
+    "cast": [
+     {
+      "who": "rohan",
+      "spot": 0.28,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "shrug",
+        "expression": "confused"
+       },
+       {
+        "at": "pay",
+        "pose": "point",
+        "expression": "happy"
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "spot": 0.74,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "hips",
+        "expression": "smirk"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "bill",
+      "prop": "taxbill",
+      "size": 0.2,
+      "label": "Tax bill"
+     },
+     {
+      "id": "cheque",
+      "prop": "bigcheque",
+      "size": 0.22,
+      "label": "Pay it",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "bill"
+     },
+     {
+      "at": "just",
+      "do": "enter",
+      "target": "cheque",
+      "how": "rise"
+     },
+     {
+      "at": "pay",
+      "do": "grow",
+      "target": "cheque",
+      "scale": 1.2
+     },
+     {
+      "at": "pay",
+      "do": "shake",
+      "target": "cheque"
+     }
+    ]
+   }
+  },
+  {
+   "id": "shares",
+   "scene": "board",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Most is shares, not cash: paying means selling or borrowing.",
+   "events": {
+    "shares": {
+     "word": "shares"
+    },
+    "cash": {
+     "word": "cash"
+    },
+    "sell": {
+     "word": "selling"
+    },
+    "borrow": {
+     "word": "borrowing"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "shares"
+    },
+    {
+     "kind": "fail",
+     "at": "cash"
+    },
+    {
+     "kind": "whoosh",
+     "at": "sell"
+    }
+   ],
+   "params": {
+    "header": "Shares, not cash",
+    "bg": "sky",
+    "items": [
+     {
+      "id": "cash",
+      "prop": "cashsafe",
+      "x": 0.28,
+      "size": 0.2,
+      "label": "Cash"
+     },
+     {
+      "id": "shares",
+      "prop": "sharepile",
+      "x": 0.72,
+      "size": 0.28,
+      "label": "Company shares",
+      "state": "locked"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "glow",
+      "target": "cash"
+     },
+     {
+      "at": "cash",
+      "do": "shrink",
+      "target": "cash",
+      "scale": 0.7
+     },
+     {
+      "at": "cash",
+      "do": "cross",
+      "target": "cash"
+     },
+     {
+      "at": "shares",
+      "do": "grow",
+      "target": "shares",
+      "scale": 1.2
+     },
+     {
+      "at": "sell",
+      "do": "swap",
+      "target": "shares",
+      "into": "sellchart"
+     },
+     {
+      "at": "borrow",
+      "do": "chip",
+      "text": "Sell or borrow",
+      "tone": "bad"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "But it only hit residents, and Google's founders had left.",
+   "events": {
+    "residents": {
+     "word": "residents"
+    },
+    "google": {
+     "word": "Google's"
+    },
+    "away": {
+     "word": "left"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "residents"
+    },
+    {
+     "kind": "whoosh",
+     "at": "google"
+    },
+    {
+     "kind": "boom",
+     "at": "away"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Residents only",
+    "sign": "California",
+    "who": "Google founders",
+    "stamp": "Moved out",
+    "chip": "Out of reach",
+    "set": "office",
+    "actors": [],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "away",
+      "size": "medium",
+      "on": "all",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Voters look set to say no. Still easy money?",
+   "events": {
+    "voters": {
+     "word": "Voters"
+    },
+    "no": {
+     "word": "no"
+    },
+    "still": {
+     "word": "Still"
+    },
+    "easy": {
+     "word": "easy"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "voters"
+    },
+    {
+     "kind": "boom",
+     "at": "no"
+    },
+    {
+     "kind": "ding",
+     "at": "easy"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "vote": "No ahead",
+    "voteLabel": "Count so far",
+    "bill": "{bill_per_period}",
+    "billLabel": "Bill",
+    "ask": "Still easy money?",
+    "set": "penthouse",
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": "left",
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "think",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "easy",
+      "size": "wide",
+      "on": "room",
+      "move": true
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}

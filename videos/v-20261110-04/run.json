@@ -1,0 +1,260 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:38:20.651822+00:00",
+    "finishedAt": "2026-11-10T02:38:20.651822+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:38:28.368563+00:00",
+    "finishedAt": "2026-11-10T02:38:28.368563+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-10T02:39:37.051746+00:00",
+    "finishedAt": "2026-11-10T02:39:37.051746+00:00",
+    "notes": [
+      "beat 'ask40'.params.header contains a typed number; use a placeholder: 'Proposition 40'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-10T02:39:43.656464+00:00",
+    "finishedAt": "2026-11-10T02:39:43.656464+00:00",
+    "notes": [
+      "description mentions '40,', which is neither a script input nor a computed figure: write the figure as a placeholder ({bill_amount}, {bill_fee_pct}, {bill_per_period}, {bill_per_year_total}, {bill_total}, {bill_years}…) or drop it"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:39:48.853638+00:00",
+    "finishedAt": "2026-11-10T02:39:48.853638+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:39:49.785566+00:00",
+    "finishedAt": "2026-11-10T02:39:49.785566+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:40:03.146137+00:00",
+    "finishedAt": "2026-11-10T02:40:03.146137+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-10T02:45:42.697800+00:00",
+    "finishedAt": "2026-11-10T02:45:42.697800+00:00",
+    "notes": [
+      "payoff beat 'Then voters said no.' (and Payoff card 'Voters said: No', topic title 'Voters said no'): Prop 40 is not called. HuffPost/AP 2026-11-09 says AP has not called the race, No leads by ~6 pts with 20%+ of ballots uncounted; CalMatters says 'appear to have rejected'. Topic verify rule: if not called, say 'heading for defeat' (e.g. 'Then voters looked set to say no.') and show no final vote.",
+      "ask40 beat 'for 5% of everything' and the 'Everything' prop: the tax was 5% of net worth generally excluding real estate, pensions and retirement accounts (CPA Practice Advisor/AP). Say '5% of their net worth' or '5% of their fortunes'; drop 'everything'.",
+      "Confirmed: fact1 5% one-time levy on net worth and fact2 more than 200 billionaires, both on cpapracticeadvisor.com/?p=193162 (AP); residents as of 1 Jan 2026 only, and Page and Brin moved out last year, on the same page. Example $100B fortune is labelled illustrative; disclaimer present in description; neutral tone."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:45:59.638744+00:00",
+    "finishedAt": "2026-11-10T02:45:59.638744+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:46:17.953457+00:00",
+    "finishedAt": "2026-11-10T02:46:17.953457+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-10T02:47:06.061633+00:00",
+    "finishedAt": "2026-11-10T02:47:06.061633+00:00",
+    "notes": [
+      "shares beat 'it's company shares, so they'd have to sell': stated as certain but wrong. Prop 40 let taxpayers pay in five installments and let illiquid taxpayers defer until liquidity, with interest (Holland & Knight, ITEP, Hoover, Stout), and billionaires can also borrow against shares. Say e.g. 'it's company shares, so paying means selling or borrowing.' and change the 'Sell to pay' chip to match ('Sell or borrow').",
+      "Re-checked and OK: ask40 now '5% of their net worth' (prop 'Net worth') matches cpapracticeadvisor.com/?p=193162 (AP); payoff 'Voters look set to say no' with card 'Count so far: No ahead' matches AP via HuffPost 2026-11-09 (not called, No ahead by ~6 pts, 20%+ uncounted); turn 'taxed only residents... Google's founders had already left' matches the AP page (residents on 1 Jan 2026; Page and Brin moved last year). fact1 5% and fact2 200+ confirmed on the source page. Disclaimer ends the description.",
+      "Non-fact notes for the rewrite: the turn beat's camera still keys on the event word 'away', which is no longer in the line ('had already left'); plan.json topic.title still reads '5% of everything. Voters said no' and should be updated to match."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T02:46:42.239193+00:00",
+    "finishedAt": "2026-11-10T02:47:30.252996+00:00",
+    "notes": [
+      "the Short runs 28.6 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:47:46.310459+00:00",
+    "finishedAt": "2026-11-10T02:47:46.310459+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-10T02:47:47.313910+00:00",
+    "finishedAt": "2026-11-10T02:47:47.313910+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:48:05.409255+00:00",
+    "finishedAt": "2026-11-10T02:48:05.409255+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:48:35.134090+00:00",
+    "finishedAt": "2026-11-10T02:48:35.134090+00:00",
+    "notes": [
+      "Re-checked all 7 beats: fact1 5% one-time tax on net worth and fact2 200+ billionaires on cpapracticeadvisor.com/?p=193162 (AP); residents-only (1 Jan 2026) and Page/Brin moving out on the same page; 'look set to say no'/'No ahead' matches AP count (not called, No ~6 pts ahead, HuffPost 2026-11-09); shares beat 'selling or borrowing' is accurate (Prop 40 also allowed instalments/deferral, so no forced sale claimed); $100B fortune labelled 'One example fortune'/'Illustrative'; neutral, no advice; disclaimer ends the description. Note: if AP calls the race before upload, 'look set to' can become 'said no'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T02:48:23.738919+00:00",
+    "finishedAt": "2026-11-10T02:48:50.818165+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+      "the Short runs 29.0 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:49:24.099322+00:00",
+    "finishedAt": "2026-11-10T02:49:24.099322+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-10T02:49:57.526078+00:00",
+    "finishedAt": "2026-11-10T02:50:30.078383+00:00",
+    "notes": [
+      "the Short runs 27.5 s but its assigned length (arms.length) is 20-27 s: cut or add a beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:50:40.452773+00:00",
+    "finishedAt": "2026-11-10T02:50:40.452773+00:00",
+    "notes": [
+      "8 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:50:55.540875+00:00",
+    "finishedAt": "2026-11-10T02:51:21.440759+00:00",
+    "notes": [
+      "27 s, forest/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:51:40.483117+00:00",
+    "finishedAt": "2026-11-10T02:51:40.483117+00:00",
+    "notes": [
+      "Re-checked trimmed lines in script.json/figures: hook, ask40 '5% of net worth' (doc row and 'Net worth' prop match AP page cpapracticeadvisor.com/?p=193162, 200+ billionaires), fortune '$100B: that's $5B' still under 'One example fortune'/'Illustrative' with 'Tax bill' label, justpay, shares 'selling or borrowing' (accurate; instalments/deferral existed, no forced sale claimed), turn 'only hit residents... Google's founders had left' (residents on 1 Jan 2026, Page/Brin moved in 2025, AP). Unchanged payoff 'look set to say no' matches AP count (not called). No new claims, no advice, neutral; disclaimer ends description."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-10T02:52:10.560186+00:00",
+    "finishedAt": "2026-11-10T02:52:10.560186+00:00",
+    "notes": [
+      "[script] thumbnail (turn beat, sec 2.6) is mid-transition: the 'GOOGLE FOUNDERS' label is caught half-faded (washed-out grey text on a pale box, hard to read) and the 'Moved out' stamp / 'Out of reach' chip that carry the story have not appeared yet; the lower ~40% of the frame is empty sand. Move thumbnail.sec to after 'left' (about 3.5 s into the turn beat) so the label is solid and the stamp is on screen."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:52:36.101962+00:00",
+    "finishedAt": "2026-11-10T02:52:59.954043+00:00",
+    "notes": [
+      "27 s, forest/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:53:18.799924+00:00",
+    "finishedAt": "2026-11-10T02:53:41.400649+00:00",
+    "notes": [
+      "27 s, forest/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:53:54.035396+00:00",
+    "finishedAt": "2026-11-10T02:53:54.035396+00:00",
+    "notes": [
+      "Re-review after thumbnail.sec 2.6->3.5: thumbnail now shows the solid GOOGLE FOUNDERS label, CALIFORNIA sign and MOVING truck leaving under 'The billionaires LEFT'; stills unchanged and clean (hook 0s, sourced doc 5s, 100B->5B fortune 10s, residents only 20s, No ahead/bill crossed 25s, disclaimer 26.7s); 27s, layout/craft empty, audio -1/-16.6 dB."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:54:03.977473+00:00",
+    "finishedAt": "2026-11-10T02:55:40.974114+00:00",
+    "notes": [
+      "27 s, forest/cinematic, peak -1.0 dB, mean -16.6 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-10T02:55:49.069982+00:00",
+    "finishedAt": "2026-11-10T02:55:49.069982+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
