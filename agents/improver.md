@@ -190,7 +190,9 @@ Write `improvement/weekly/<YYYY>-W<week>.md`: what changed, what was kept or rev
 what's running, the recipes added or changed, the best and worst performers, and next week's focus.
 
 ## 8. Finish (always)
-Append one line per decision to `improvement/journal.md`:
+Run `python -m generator.impact` (rewrites `improvement/weekly/impact.json`, the dashboard's Impact page:
+Shorts per week on views, % viewed, stayed-to-watch and view time, and each landed change before/after;
+owner, 2026-11-10) and put its latest week in your findings. Then append one line per decision to `improvement/journal.md`:
 `<DAY> <acted|waited>: <what> because <why>. Re-check <date>.`
 Write `improvement/activity/<DAY>-improver.json` (policy.md format: findings = the evaluator's key
 numbers; changes = what you changed with the experiment id) and rewrite

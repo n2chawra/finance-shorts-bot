@@ -11,6 +11,9 @@ import * as db from "./store.db";
 import * as sample from "./store.sample";
 import * as studioDb from "./studio.db";
 import * as studioSample from "./studio.sample";
+import * as impactDb from "./impact.db";
+import * as impactSample from "./impact.sample";
+import type { Impact } from "./impact";
 import type { Fmt, Range, Studio, VideoStudio } from "./studio-schema";
 
 const useDb = Boolean(process.env.DATABASE_URL);
@@ -45,3 +48,4 @@ export const notificationAction = async (ids: string[], action: "seen" | "resolv
 export const getNotification = async (id: string): Promise<Notification | null> => (useDb ? autoDb.getNotification(id) : autoSample.getNotification(id));
 export const decideNotification = async (id: string, decision: "approved" | "declined"): Promise<void> => (useDb ? autoDb.decideNotification(id, decision) : autoSample.decideNotification(id, decision));
 export const getAgents = async (): Promise<Agents> => (useDb ? autoDb.getAgents() : autoSample.getAgents());
+export const getImpact = async (): Promise<Impact> => (useDb ? impactDb.getImpact() : impactSample.getImpact());

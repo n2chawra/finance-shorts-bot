@@ -34,3 +34,11 @@ def test_weeks_and_changes(tmp_path: Path) -> None:
     assert r["weeks"][1]["stayedToWatch"] is None
     [c] = r["changes"]                            # the running experiment is not a landed change
     assert c["id"] == "fix-a" and c["before"]["n"] == 2 and c["after"]["n"] == 1 and c["viewsRatio"] == 4.5
+
+
+def test_each_number_lists_its_videos(tmp_path: Path) -> None:
+    put(tmp_path)
+    r = impact.report(tmp_path)
+    assert [v["id"] for v in r["weeks"][0]["videos"]] == ["v-2", "v-1"]        # most viewed first
+    assert r["changes"][0]["afterVideos"][0] == {"id": "v-3", "title": "", "day": "2026-11-10", "views48h": 900,
+                                                  "avgViewPct": 80.0, "stayedToWatch": None}

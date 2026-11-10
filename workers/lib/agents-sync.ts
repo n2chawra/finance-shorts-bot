@@ -124,6 +124,8 @@ const DOCS: Record<string, string> = {
   armsConfig: "config/arms.json",
   armsState: "improvement/arms-state.json",
   armsLog: "improvement/arms-log.json",
+  // what each landed change did to the Shorts (generator/impact.py, owner 2026-11-10): the Impact page
+  impact: "improvement/weekly/impact.json",
 };
 
 /** The topic feed with each topic's video (from history.json: the video run records topic.feed_id there). */

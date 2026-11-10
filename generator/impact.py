@@ -43,7 +43,7 @@ def shorts(root: Path = ROOT) -> list[dict]:
         dur = v.get("durationSec") or s.get("durationSec")
         pct = v.get("avgViewPct")
         day = datetime.fromisoformat(v["publishAt"].replace("Z", "+00:00")).astimezone(IST).date()
-        out.append({"id": v["id"], "day": day, "views48h": v["views48h"], "avgViewPct": pct,
+        out.append({"id": v["id"], "title": v.get("title") or "", "day": day, "views48h": v["views48h"], "avgViewPct": pct,
                     "stayed": s.get("engagedRatio") if s.get("views") else None,
                     "avgViewSec": round(dur * pct / 100, 1) if dur and pct is not None else None})
     return sorted(out, key=lambda v: v["day"])
@@ -58,11 +58,20 @@ def summary(videos: list[dict]) -> dict:
             "avgViewPct": mean("avgViewPct"), "stayedToWatch": mean("stayed"), "avgViewSec": mean("avgViewSec")}
 
 
+TOP = 8
+
+
+def listed(videos: list[dict]) -> list[dict]:
+    """The videos behind a number, most viewed first, so the owner can open them."""
+    return [{"id": v["id"], "title": v["title"], "day": v["day"].isoformat(), "views48h": v["views48h"], "avgViewPct": v["avgViewPct"],
+             "stayedToWatch": v["stayed"]} for v in sorted(videos, key=lambda v: -(v["views48h"] or 0))[:TOP]]
+
+
 def weeks(videos: list[dict]) -> list[dict]:
     by: dict[date, list[dict]] = {}
     for v in videos:
         by.setdefault(v["day"] - timedelta(days=v["day"].weekday()), []).append(v)
-    return [{"week": monday.isoformat(), **summary(vs)} for monday, vs in sorted(by.items())]
+    return [{"week": monday.isoformat(), **summary(vs), "videos": listed(vs)} for monday, vs in sorted(by.items())]
 
 
 def changes(videos: list[dict], root: Path = ROOT) -> list[dict]:
@@ -79,6 +88,7 @@ def changes(videos: list[dict], root: Path = ROOT) -> list[dict]:
         ratio = round(a["medianViews48h"] / b["medianViews48h"], 2) if a["n"] and b["n"] and b["medianViews48h"] else None
         out.append({"id": e["id"], "area": e.get("area"), "status": e["status"], "day": on.isoformat(),
                     "description": e.get("description") or e.get("hypothesis") or "", "before": b, "after": a,
+                    "afterVideos": listed(after),
                     "viewsRatio": ratio, "sameWeek": sum(1 for x in exps if x is not e and x.get("status") in LANDED
                                                           and abs((date.fromisoformat(str(x.get("closedAt") or x.get("startedAt") or "1970-01-01")[:10]) - on).days) <= 3)})
     return sorted(out, key=lambda c: c["day"], reverse=True)

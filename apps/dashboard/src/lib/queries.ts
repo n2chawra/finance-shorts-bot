@@ -5,12 +5,14 @@ import { z } from "zod";
 
 import { getJson, send } from "./api";
 import { AgentsSchema, AnalyticsSchema, FeedbackSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
+import { ImpactSchema } from "./impact";
 import { StudioSchema, VideoStudioSchema, type Fmt, type Range } from "./studio-schema";
 import type { FeedbackCreate, ManualUpload, NotificationAction, Settings, VideoAction, VideoEdit } from "./schemas";
 
 export const useOverview = () => useQuery({ queryKey: ["overview"], queryFn: () => getJson("/api/overview", OverviewSchema) });
 export const useQueue = () => useQuery({ queryKey: ["queue"], queryFn: () => getJson("/api/queue", z.array(VideoSchema)) });
 export const useTemplates = () => useQuery({ queryKey: ["templates"], queryFn: () => getJson("/api/templates", z.array(TemplateSchema)) });
+export const useImpact = () => useQuery({ queryKey: ["impact"], queryFn: () => getJson("/api/impact", ImpactSchema) });
 export const useRuns = () => useQuery({ queryKey: ["runs"], queryFn: () => getJson("/api/runs", z.array(RunSchema)) });
 export const useAnalytics = () => useQuery({ queryKey: ["analytics"], queryFn: () => getJson("/api/analytics", AnalyticsSchema) });
 /** Studio-grade analytics; refetched every minute so the realtime card ticks. */

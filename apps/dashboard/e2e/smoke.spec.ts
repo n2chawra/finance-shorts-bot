@@ -5,7 +5,7 @@ import { SMOKE_PASSWORD } from "../playwright.config";
 /** Every page loads on sample data without console errors, plus the flows the owner uses daily. */
 const PAGES: [string, RegExp][] = [
   ["/", /Overview/], ["/queue", /Queue/], ["/calendar", /Calendar/], ["/videos", /Videos/], ["/videos/v030", /.+/],
-  ["/analytics", /Analytics/], ["/runs", /Runs/], ["/agents", /Agents/], ["/notifications", /Notifications/],
+  ["/analytics", /Analytics/], ["/impact", /Impact/], ["/runs", /Runs/], ["/agents", /Agents/], ["/notifications", /Notifications/],
   ["/templates", /Templates/], ["/settings", /Settings/],
 ];
 
