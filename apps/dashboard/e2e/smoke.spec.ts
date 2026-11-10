@@ -11,6 +11,12 @@ const PAGES: [string, RegExp][] = [
 
 const IGNORED = [/Download the React DevTools/, /ToggleGroup is changing from uncontrolled/];
 
+// A test that serves its own API answers (page.route + route.fetch) can end while the page is still
+// refetching; that late fetch then throws "Test ended" and fails the *next* test (2026-11-10).
+test.afterEach(async ({ page }) => {
+  await page.unrouteAll({ behavior: "ignoreErrors" });
+});
+
 async function signIn(page: Page) {
   const res = await page.request.post("/api/login", { data: { password: SMOKE_PASSWORD } });
   expect(res.ok()).toBeTruthy();
