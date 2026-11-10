@@ -1,18 +1,18 @@
 {
   "notifications": [
     {
-      "key": "data-audit-late-2026-11-09",
+      "key": "auditor-before-data-audit",
       "severity": "info",
-      "title": "Tonight's data audit had not run by 22:37 IST",
-      "detail": "metrics/data-audit.json is from 8 Nov 15:24 UTC. The Data audit workflow's last run was on 8 Nov; no 9 Nov run had started by 17:07 UTC (GitHub starts this scheduled run late: earlier runs began between 14:56 and 16:33 UTC). So the auditor skipped tonight's dashboard-vs-YouTube comparison. Yesterday's audit had 0 errors and 0 warnings.",
-      "fix": "1. Open GitHub → Actions → Data audit and check that a 9 Nov run appears (it may just be late). 2. If none ran, start it with 'Run workflow'. Nothing else is needed; tomorrow's auditor reads the new file."
+      "title": "The auditor ran before the day's data audit, two nights running",
+      "detail": "Tonight's auditor routine started at 19:26 IST (13:56 UTC), not its 23:00 IST slot, and the Data audit workflow hadn't run yet (its runs start 14:56-18:55 UTC: 7 Nov 14:56, 8 Nov 15:23, 9 Nov 18:55). Last night the audit was also late. So the dashboard-vs-YouTube check was skipped both nights. The last audit (9 Nov) had 0 errors and 0 warnings across 49 checked videos.",
+      "fix": "1. In claude.ai → Code → Routines, check the auditor routine is set to 23:00 IST (17:30 UTC). 2. Optional: in GitHub → Actions → Data audit, confirm a 10 Nov run appears this evening. Nothing else is needed."
     },
     {
       "key": "watchdog-not-hourly",
       "severity": "info",
-      "title": "The hourly watchdog runs only every 5-9 hours",
-      "detail": "watchdog.yml is scheduled at minute 13 of every hour, but GitHub ran it 5 times in the last ~27 hours (4 Nov 09:04, 17:10, 22:36; 5 Nov 03:28, 12:14 UTC). The hourly view snapshots behind the dashboard's 'realtime' chart and the variant system's 48-hour views therefore have gaps of 5-9 hours, and owner alerts can arrive hours late. Tonight's auditor fix makes the 48-hour count interpolate across such gaps, so nothing is blocked; this is only about timeliness.",
-      "fix": "Optional. 1. Check the Actions tab: Watchdog runs should appear about hourly. 2. If they stay sparse, either accept it, or trigger watchdog.yml from an outside scheduler (e.g. cron-job.org calling the workflow_dispatch API with a fine-grained token limited to Actions on this repo). Workflows are owner-only files."
+      "title": "The hourly watchdog runs only every 4-11 hours",
+      "detail": "watchdog.yml is scheduled every hour, but GitHub ran it 11 times between 7 Nov 09:58 and 10 Nov 09:42 UTC (gaps of 4-11 hours). The hourly view snapshots behind the dashboard's 'realtime' chart and the variant system's 48-hour views therefore have gaps (the 48-hour count interpolates across them), and owner alerts can arrive hours late.",
+      "fix": "Optional. 1. Accept it, or 2. trigger watchdog.yml from an outside scheduler (e.g. cron-job.org calling the workflow_dispatch API with a fine-grained token limited to Actions on this repo). Workflows are owner-only files."
     }
   ]
 }

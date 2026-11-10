@@ -1,0 +1,19 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-11",
+  "startedAt": "2026-11-10T13:56:52Z",
+  "finishedAt": "2026-11-10T14:04:56Z",
+  "summary": "All checks green. Fixed the number check crashing on a bad 'years' or rate in a script's maths, and merged the watchdog's three hand-written IST clock formulas into one tested helper. The day's data audit hadn't run yet, so the data comparison was skipped.",
+  "decision": "acted",
+  "why": "A years of 0 or 2.5 stopped 'generator.run number-check' with a traceback instead of a note the writer can fix; 10 new test cases fail on the old code.",
+  "findings": [
+    {"title": "Data audit not yet run", "detail": "The routine started at 19:26 IST; metrics/data-audit.json is from 9 Nov 18:57 UTC (0 errors, 0 warnings)."},
+    {"title": "Watchdog still sparse", "detail": "11 runs between 7 Nov 09:58 and 10 Nov 09:42 UTC, gaps of 4-11 hours."}
+  ],
+  "changes": [
+    {"title": "Maths inputs checked: years and rates", "detail": "renderer/models/maths.py + renderer/tests/test_maths.py", "branch": "agent/auditor/2026-11-11"},
+    {"title": "One IST clock helper for the watchdog", "detail": "workers/lib/ist-clock.ts + test; behaviour unchanged", "branch": "agent/auditor/2026-11-11-2"}
+  ],
+  "nextCheck": "2026-11-12",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-11.md"}]
+}

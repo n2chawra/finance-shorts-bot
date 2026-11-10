@@ -386,6 +386,22 @@ INPUTS = {
 POSITIVE = ("amount", "monthly", "income")
 
 
+def _check_years_and_rates(m: dict, kind: str) -> None:
+    """`years` (a whole number of years, except an EMI's, which may end mid-year) and the rates a kind
+    divides by, checked up front: a 0, 2.5 or 10.0 here used to stop the number check with a bare
+    ZeroDivisionError or TypeError (auditor 2026-11-11, ren-004) instead of a message a writer can act on."""
+    if "years" in INPUTS[kind]:
+        y = m["years"]
+        if kind == "emi":
+            if not (isinstance(y, (int, float)) and not isinstance(y, bool) and round(y*12) >= 1):
+                raise ValueError(f"maths {m['name']!r}: years must be at least one month (1/12) for an emi")
+        elif not (isinstance(y, int) and not isinstance(y, bool) and y >= 1):
+            raise ValueError(f"maths {m['name']!r}: years must be a whole number of years, at least 1 (not {y!r})")
+    for k in ("rate_pct", "inflation_pct"):
+        if k in m and isinstance(m[k], (int, float)) and not m[k] > -100:
+            raise ValueError(f"maths {m['name']!r}: {k} must be above -100")
+
+
 def compute(maths: list[dict], fm: Money | None = None) -> dict[str, Result]:
     """Every named calculation, checked for its inputs, its figures in `fm`'s currency (rupees by default)."""
     fm = fm or Money()
@@ -405,6 +421,7 @@ def compute(maths: list[dict], fm: Money | None = None) -> dict[str, Result]:
             raise ValueError(f"maths {m['name']!r}: {', '.join(bad)} must be above zero")
         if kind == "loan_prepay" and not m["rate_pct"] > 0:
             raise ValueError(f"maths {m['name']!r}: loan_prepay needs a rate_pct above zero")
+        _check_years_and_rates(m, kind)
         out[m["name"]] = compare(m, fm, out) if kind == "compare" else KINDS[kind](m, fm)
         # its own numeric inputs are readable too: "@home.amount" sizes a stack (2026-10-29: eleven
         # scripts failed on an input they expected to reach)
