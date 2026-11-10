@@ -58,3 +58,21 @@ def test_a_format_below_the_demand_floor_is_not_offered(root: Path) -> None:
     plan = make_plan(story="cost_of_habit", demand={"title": "t", "views": 8800000, "url": "u"})
     assert any("no reference video with 100,000+ views" in p for p in formats.check_plan(plan, root))
     assert formats.check_plan({**plan, "story": "rich_vs_poor"}, root) == []
+
+
+def test_a_short_names_its_subject_in_the_description_and_a_hashtag() -> None:
+    """Owner, 2026-11-10: a plain title hid Elon; the description and hashtags must still say who it is about."""
+    plan = make_plan(subject="Elon Musk", title="The biggest pay deal ever comes with a lock",
+                     description="Was the record pay deal really cash?\nIllustrative only. Not financial advice.",
+                     hashtags=["#Shorts", "#Tesla", "#Money"])
+    problems = formats.subject_problems(plan)
+    assert any("description's first two lines" in p for p in problems)
+    assert any("#ElonMusk" in p for p in problems)
+    fixed = {**plan, "description": "Was Elon Musk's record pay deal really cash?\nIllustrative only. Not financial advice.",
+             "hashtags": ["#Shorts", "#ElonMusk", "#Money"]}
+    assert formats.subject_problems(fixed) == []
+    assert formats.subject_problems({**plan, "subject": ""}) == []
+    no_key = {k: v for k, v in plan.items() if k != "subject"}
+    assert any("plan needs `subject`" in p for p in formats.subject_problems(no_key))
+    # a famous name in the description's second line counts too
+    assert formats.subject_problems({**fixed, "description": "Was the pay deal cash?\nMusk's shares open on targets."}) == []

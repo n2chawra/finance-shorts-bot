@@ -109,6 +109,30 @@ def title_problems(title: str, arms: dict | None = None) -> list[str]:
             f"in it (\"Why Google pays Apple $20B…\"), unless `arms.title` is \"plain\""]
 
 
+# owner, 2026-11-10 (v-20261110-01, "The biggest pay deal ever comes with a lock"): a plain title may keep the
+# famous name back for curiosity, but YouTube still has to know who the video is about, so the plan names its
+# `subject` and the description's first lines and a hashtag carry it whatever the title does.
+def subject_problems(plan: dict) -> list[str]:
+    """A Short's plan names `subject`: the famous person or company the story is about ("Elon Musk", "MrBeast"),
+    or "" when it has none. A named subject appears in the description's first two lines and in a hashtag."""
+    if "subject" not in plan:
+        return ["plan needs `subject`: the famous person or company the story is about (\"Elon Musk\", \"Coca-Cola\"), "
+                "or \"\" when there is none; the description and a hashtag then name it so YouTube knows who it is about"]
+    subject = (plan.get("subject") or "").strip()
+    if not subject:
+        return []
+    words = [w.lower() for w in re.findall(r"[A-Za-z0-9]+", subject) if len(w) >= 3] or [subject.lower()]
+    head = " ".join((plan.get("description") or "").splitlines()[:2]).lower()
+    out = []
+    if not any(re.search(rf"\b{re.escape(w)}", head) for w in words):
+        out.append(f"the description's first two lines must name the subject {subject!r} (\"Elon Musk's record pay deal...\"): "
+                   f"YouTube reads it to know who the video is about, even when the title keeps the name back")
+    tags = [h.lower().lstrip("#") for h in plan.get("hashtags") or []]
+    if not any(w in t for t in tags for w in words):
+        out.append(f"add a hashtag for the subject {subject!r} (\"#{''.join(re.findall(r'[A-Za-z0-9]+', subject))}\")")
+    return out
+
+
 COMMON_WORDS = {"i", "tv", "emi", "sip", "rich", "poor", "the"}
 COMMON_STARTS = {"why", "how", "what", "the", "your", "you", "this", "a", "an", "every", "same", "poor", "rich", "when", "who",
                  "payday", "guess", "never", "stop", "one", "it", "they", "we", "i", "is", "are", "do", "does", "can"}

@@ -648,11 +648,12 @@
       ],
       "guard": "qa_failures",
       "minPerArm": 8,
-      "maxDays": 28,
+      "maxDays": 21,
       "hypothesis": "QA sent back the payoff of v-20261103-01 and -03 as 'mostly empty, reads only in the voice' (an empty disc held ~10 s), and every Short's last ~10 s carry no prop actions. Turn and payoff beats that act on their words keep viewers through the ending, where the loop decides replays: higher average % viewed.",
       "description": "Shorts: the coded Turn and Payoff beats act on their words and the ending's camera and transitions vary per video",
       "notes": "Prompt-only (writer). On keep: fold the rule into generator/prompts/writer.md and add a craft check for actions in custom turn/payoff beats. On revert: drop the prompt.",
-      "commits": []
+      "commits": [],
+      "extended": true
     },
     {
       "id": "loudness-in-render-json",
@@ -835,6 +836,21 @@
       "commits": [
         "987ed84"
       ]
+    },
+    {
+      "id": "2026-11-10-subject-named",
+      "area": "title",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-10",
+      "templates": [
+        "short_story"
+      ],
+      "commits": [
+        "df4dd85"
+      ],
+      "description": "Every Short's plan names its famous subject; the description's first two lines and a hashtag carry it whatever the title arm is.",
+      "evidence": "Owner note on v-20261110-01: the title and description never said Elon Musk; YouTube classifies a video by its title, description and tags."
     }
   ]
 }

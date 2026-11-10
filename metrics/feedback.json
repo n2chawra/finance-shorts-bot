@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Answer a note in improvement/feedback-acks.json.",
-  "open": 3,
+  "open": 0,
   "notes": [
     {
       "id": "cmwapfs5l0001ii095jx1923d",
       "kind": "general",
       "area": null,
       "text": "Also keep an eye on are we improving the channel performance or not like things which actually say youtube to push our video like swipe up rate . Average view duration. Because without this out channel will keep making videos without actual progress or growths. \n\nThanks th actual purpose of this automation . Why other same animated channel get so many views but we don't.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: New report python -m generator.impact (improvement/weekly/impact.json) tracks Shorts per week on 48 h views, % viewed, stayed-to-watch (didn't swipe away) and average view seconds; honest read: % viewed rose 40%→55% and view time 18→23 s, but stayed-to-watch is flat at 39% (6 in 10 swipe away in the first seconds) and median views fell 211→43, so the first second is now the improver's top target.: (3fab9d1)",
       "at": "2026-11-10T13:07:13.353Z",
       "video": null
     },
@@ -17,8 +17,8 @@
       "kind": "general",
       "area": null,
       "text": "Make a seprate tab for division made specific to making videos better. Like we are implementing this and under that how it helped the channel with reference like this video got this much like comment views etc.\n\nSo that I can know dedicatedly that what is/ has my automation done to actually improve the system and is there actual benefitted my channel. Because just keep improving with no results means wasted money on my end. I don't want that to happen. Because ik seeing lots of good content also not getting pushed by youtube.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "needs owner: The data for that tab exists now (improvement/weekly/impact.json: every change with the Shorts' views, % viewed and stayed-to-watch 14 days before and after), but the dashboard is the dashboard agent's lane and it doesn't read your notes; see the 'Impact tab' notification for the one step to get it built.: (3fab9d1)",
       "at": "2026-11-10T04:32:42.961Z",
       "video": null
     },
@@ -27,8 +27,8 @@
       "kind": "general",
       "area": null,
       "text": "The title don't say elon . Title also contribute to distribution right now youtube will know it's about elon and push more if we don't specify in tittle???",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "fixed: Every Short's plan now names its subject (e.g. Elon Musk) and check-plan fails it unless the description's first lines and a hashtag say it, even when the title is 'plain'; whether the title itself should name him is the variant system's call (plain beat figure_or_name 460 vs 140, but only 4 videos and confounded with the shorter length), so I've asked you on Notifications to add a 'name' title option.: (df4dd85)",
       "at": "2026-11-10T03:44:49.078Z",
       "video": {
         "id": "v-20261110-01",

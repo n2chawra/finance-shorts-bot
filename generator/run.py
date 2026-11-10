@@ -232,6 +232,7 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
             problems.append("title must be 20–90 characters")
         if fmt == "short":
             problems += formats.title_problems(plan["title"], plan.get("arms"))
+            problems += formats.subject_problems(plan)
             problems += arms.plan_problems(plan, root)
         if fmt == "short" and "#shorts" not in [h.lower() for h in plan["hashtags"]]:
             problems.append("hashtags must include #Shorts")
