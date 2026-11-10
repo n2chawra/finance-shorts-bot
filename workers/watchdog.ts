@@ -9,6 +9,7 @@ import path from "node:path";
 import { PrismaClient } from "@prisma/client";
 
 import { TOKEN_FIX, type Notice, notify, resolve, resolveOthers } from "./lib/notify.ts";
+import { istHour, istWeekday } from "./lib/ist-clock.ts";
 import { istDay } from "./lib/publishing.ts";
 import { type ObservedRun, clusterRuns, isScheduled, scheduleOverlap, videoRunId, videoSteps } from "./lib/schedule.ts";
 import { loadSettings } from "./lib/settings.ts";
@@ -29,14 +30,13 @@ async function pipelineChecks(prisma: PrismaClient, now: Date): Promise<Check[]>
   const latest = await prisma.video.findFirst({ orderBy: { createdAt: "desc" }, select: { createdAt: true } });
   const hours = latest ? (now.getTime() - latest.createdAt.getTime()) / HOUR : Infinity;
   const today = istDay(now);
-  const istHour = (now.getUTCHours() + 5 + Math.floor((now.getUTCMinutes() + 30) / 60)) % 24;
   const madeToday = await prisma.video.count({ where: { createdAt: { gte: new Date(`${today}T00:00:00+05:30`) } } });
   const backlog = await prisma.video.count({ where: { status: "queued", deletedAt: null } });
   return [
     { key: "no-videos", raise: !s.generationPaused && hours > 26 ? notice("no-videos", "critical", `No new videos for ${Number.isFinite(hours) ? Math.floor(hours) : "many"} hours`,
       "The nightly video run hasn't produced anything. The queue will run dry.",
       `1. Open ${ROUTINES} → Finance Shorts generation and read the latest run.\n2. If it hit the Pro usage limit, nothing to do: the next run continues.\n3. If it errored, paste its report into a Claude Code session in this project.`) : null },
-    { key: "made-today-zero", raise: !s.generationPaused && istHour >= 11 && madeToday === 0 && hours <= 26 ? notice("made-today-zero", "warning", "No videos made today yet",
+    { key: "made-today-zero", raise: !s.generationPaused && istHour(now) >= 11 && madeToday === 0 && hours <= 26 ? notice("made-today-zero", "warning", "No videos made today yet",
       "The 04:07 IST run made nothing and the 09:07 spare run didn't catch up.", `Check ${ROUTINES} for today's two runs and their reports.`) : null },
     { key: "queue-empty", raise: backlog === 0 && !s.uploadsPaused ? notice("queue-empty", "critical", "The upload queue is empty",
       "The next upload slot has nothing to publish.", "Videos usually arrive overnight. If this lasts past 10:00 IST, check the video runs (see 'No new videos')."): null },
@@ -94,7 +94,6 @@ async function workflowChecks(): Promise<Check[] | null> {
 function agentChecks(now: Date, enabled: Record<string, boolean>, paused: boolean): Check[] {
   const out: Check[] = [];
   const today = istDay(now);
-  const istHour = (now.getUTCHours() + 5 + Math.floor((now.getUTCMinutes() + 30) / 60)) % 24;
   const logFile = path.join(ROOT, "improvement", "merge-log.json");
   const log = existsSync(logFile) ? (JSON.parse(readFileSync(logFile, "utf8")) as { merges: { agent: string; result: string; dayIst: string; reasons: string[]; runUrl: string }[] }).merges : [];
   for (const agent of ["research", "improver", "dashboard", "auditor", "scout", "studio"]) {
@@ -108,9 +107,9 @@ function agentChecks(now: Date, enabled: Record<string, boolean>, paused: boolea
     const reported = existsSync(path.join(dir, `${today}-${agent}.json`));
     // Studio runs Wednesdays at 14:37, Scout Mon/Thu at 09:37 (owner, 2026-11-02); the others every night, done by 10:00 IST
     const when = agent === "studio" ? { days: [3], afterHour: 19 } : agent === "scout" ? { days: [1, 4], afterHour: 11 } : { days: [0, 1, 2, 3, 4, 5, 6], afterHour: 10 };
-    const dueToday = when.days.includes(new Date(now.getTime() + 330 * 60_000).getUTCDay());
+    const dueToday = when.days.includes(istWeekday(now));
     // only once the agent has reported at least once: before its first night there's nothing to miss
-    const silent = !paused && enabled[agent] && everReported && dueToday && istHour >= when.afterHour && !reported;
+    const silent = !paused && enabled[agent] && everReported && dueToday && istHour(now) >= when.afterHour && !reported;
     out.push({ key: `agent-silent:${agent}`, raise: silent ? notice(`agent-silent:${agent}`, "warning", `The ${agent} agent didn't report last night`,
       "Its routine didn't run, ran out of usage, or failed before writing its activity log.", `Open ${ROUTINES} → the ${agent} agent and read the last run.`) : null });
   }
