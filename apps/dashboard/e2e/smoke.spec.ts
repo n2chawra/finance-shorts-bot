@@ -561,3 +561,18 @@ test("analytics switches tab when the link's hash changes on the page", async ({
   await page.goBack();
   await expect(page.getByRole("tab", { name: "Content" })).toHaveAttribute("aria-selected", "true");
 });
+
+test("calendar tells planned from scheduled by shape, not colour alone", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  await page.waitForLoadState("networkidle");
+  // on phones a day shows only dots, and planned (grey) vs scheduled (blue) differed by colour only
+  const look = (kind: string) => page.locator(`[data-kind="${kind}"]`).first().evaluate((el) => {
+    const s = getComputedStyle(el);
+    return { hollow: s.backgroundColor === "rgba(0, 0, 0, 0)" && parseFloat(s.borderTopWidth) > 0 };
+  });
+  await expect(page.locator('[data-kind="planned"]').first()).toBeAttached();
+  expect((await look("planned")).hollow).toBe(true);
+  if (await page.locator('[data-kind="scheduled"]').count()) expect((await look("scheduled")).hollow).toBe(false);
+});
