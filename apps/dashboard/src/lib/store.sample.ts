@@ -7,13 +7,32 @@ import path from "node:path";
 
 import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 import { mostLoved } from "./schemas";
+import { feedIndex, originOf } from "./origin";
 import { NO_PICK, canMarkStale, uploadNow } from "./queue-actions";
 import { windowStart } from "./totals";
 import { manualState } from "./youtube-link";
 
-const VERSION = 9; // bump to regenerate the sample data without restarting the server
+const VERSION = 10; // bump to regenerate the sample data without restarting the server
 const IST_OFFSET = "+05:30";
 const DAY_MS = 86_400_000;
+
+/** A sample research feed (the real one is improvement/research/topics.json), for each video's "Why this video". */
+const SAMPLE_FEED = feedIndex({ topics: [
+  { id: "sample-upi-fee", title: "UPI fee talk is everywhere: what a 0.3% fee would cost a shop a year",
+    why_now: "Four of this week's top 30 niche Shorts are about UPI fees (120K-410K views each); the news broke yesterday.",
+    angle: "One tea stall's year of UPI payments, and the fee taken out of it.",
+    demand: { title: "Why UPI is free (and who really pays for it)", views: 2_840_000, url: "https://www.youtube.com/watch?v=sample-upi" },
+    sources: ["https://www.npci.org.in/what-we-do/upi/product-statistics", "https://www.youtube.com/watch?v=sample-upi"] },
+  { id: "sample-cpi-sept", title: "September inflation: what your savings lost this year",
+    reason: "New official inflation figure out this morning; told as the 'traps' format.",
+    angle: "A savings account at 3% against 5.5% inflation.",
+    demand: { title: "Your savings account is losing you money", views: 1_190_000, url: "https://www.youtube.com/watch?v=sample-cpi" },
+    facts: [{ label: "CPI inflation, September", source: "MOSPI", url: "https://mospi.gov.in/sample-cpi" }] },
+  { id: "sample-billionaire-stock", title: "Why billionaires never sell their stock",
+    why_now: "'Buy, borrow, die' videos are among the niche's most watched this month; money at scale, global.",
+    angle: "One founder borrows against shares instead of selling them.",
+    demand: { title: "How the rich avoid paying taxes", views: 6_420_000, url: "https://www.youtube.com/watch?v=sample-bbd" } },
+] });
 
 type TemplateRow = Pick<Template, "id" | "name" | "description" | "version" | "weight" | "enabled"> & { durationSec: number };
 type Store = { version: number; videos: VideoDetail[]; templates: TemplateRow[]; runs: Run[]; settings: Settings; feedback: Feedback[] };
@@ -215,6 +234,11 @@ function build(): Store {
         ? { why: "The strongest hook in the queue: it opens on the question and holds the answer back.", strengths: ["Big-money topic", "Curiosity hook", "Every figure lands on a thing"], risks: ["Payoff line is long"], rankedAt: now.toISOString() }
         : { why: "Solid, but its first frame is weaker than the pick's.", strengths: ["Clear explanation"], risks: ["Personal-budget topic"], rankedAt: now.toISOString() },
       pickedAt: null, pickReason: null, orderLocked: false,
+      // the hit and two queued videos came from the feed; the second queued one's topic has since left it
+      origin: (() => {
+        const feedId = i === 17 ? "sample-billionaire-stock" : queuePosition === 1 ? "sample-upi-fee" : queuePosition === 3 ? "sample-cpi-sept" : queuePosition === 2 ? "sample-gone" : null;
+        return originOf(feedId, feedId ? SAMPLE_FEED.get(feedId) : undefined);
+      })(),
       totals: stats.length
         ? { views, likes: stats.reduce((s, x) => s + x.likes, 0), comments: stats.reduce((s, x) => s + x.comments, 0), subsGained: stats.reduce((s, x) => s + x.subsGained, 0), avgViewPct: stats[0].avgViewPct, liveAt: null }
         : null,

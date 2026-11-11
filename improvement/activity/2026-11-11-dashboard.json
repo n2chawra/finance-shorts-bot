@@ -1,0 +1,18 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-11",
+  "startedAt": "2026-11-11T09:06:49Z",
+  "finishedAt": "2026-11-11T09:16:16Z",
+  "summary": "Answered your note: the Videos tab now says why each video was made, which video inspired it and how many views that got, and which pages research read. Handed your note about where demand is measured to research.",
+  "decision": "acted",
+  "why": "An owner note in the dashboard's lane beats the backlog. The data was already in the database (the research feed), so it was one change in the dashboard; all checks and 101 smoke tests pass.",
+  "findings": [
+    {"title": "Live site up", "detail": "/api/health answered: us-east-2, database 2.9 s."},
+    {"title": "Trend: event markers under time charts", "detail": "Mixpanel and Grafana draw changes in a row aligned under the chart; added as an idea for the Analytics views chart.", "link": "https://docs.mixpanel.com/changelogs/2026-01-28-annotations-timeline"}
+  ],
+  "changes": [
+    {"title": "Why this video (owner note)", "detail": "Video page card with research's reason, angle, the reference video and its views, and sources; 'Inspired by … · N views' line in the Videos list. Smoke test added.", "branch": "agent/dashboard/2026-11-11"}
+  ],
+  "nextCheck": "2026-11-12",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-11.md"}]
+}
