@@ -1,0 +1,537 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:39:51.427788+00:00",
+    "finishedAt": "2026-11-11T02:39:51.427788+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-11T02:47:15.347133+00:00",
+    "finishedAt": "2026-11-11T02:47:15.347133+00:00",
+    "notes": [
+      "beat 'c5-count'.params.actions[1].title contains a typed number; use a placeholder: 'Forbes, March 2026'",
+      "board beat 'recap' speaks for about 9 s; at most 9.0: one sentence, one picture per beat (split it), so the picture changes every few seconds",
+      "card 'c1-year' has 4 changes and 1 pieces of text: a card is a labelled diagram (3+ changes, 2+ labels, rows, chips or callouts), not one icon",
+      "card 'c3-milli' has 4 changes and 1 pieces of text: a card is a labelled diagram (3+ changes, 2+ labels, rows, chips or callouts), not one icon",
+      "card 'c4-ring' has 4 changes and 1 pieces of text: a card is a labelled diagram (3+ changes, 2+ labels, rows, chips or callouts), not one icon",
+      "card 'c4-compare' has 4 changes and 1 pieces of text: a card is a labelled diagram (3+ changes, 2+ labels, rows, chips or callouts), not one icon",
+      "card 'c4-term' has 5 changes and 1 pieces of text: a card is a labelled diagram (3+ changes, 2+ labels, rows, chips or callouts), not one icon",
+      "card 'c5-total' has 4 changes and 1 pieces of text: a card is a labelled diagram (3+ changes, 2+ labels, rows, chips or callouts), not one icon",
+      "crowd, hourglass, paycheck, savejar, warehouse on screen in more than 4 beats: the same things all video long read as one static set; bring new things, or draw a returning one differently (a `state`)",
+      "the climbing number (params.hud.counter) changes 1 times; at least 3: a number that climbs level by level is a reason to keep watching",
+      "beat 'c1-sharma' opens like a line in one of the last scripts ('that is the'): new words",
+      "beat 'c2-term' opens like a line in one of the last scripts ('that is the'): new words",
+      "beat 'turn' opens like a line in one of the last scripts ('and this is'): new words",
+      "beat 'c4-sharma' opens like a line in one of the last scripts ('that is the'): new words",
+      "beat 'c4-term' opens like a line in one of the last scripts ('there is a'): new words",
+      "beat 'c4-tease' opens like a line in one of the last scripts ('so that is'): new words",
+      "beat 'ch6' opens like a line in one of the last scripts ('way six the'): new words",
+      "beat 'outro' opens like a line in one of the last scripts ('illustrative numbers with'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-11T02:48:57.361366+00:00",
+    "finishedAt": "2026-11-11T02:48:57.361366+00:00",
+    "notes": [
+      "beat 'c5-count'.say contains a typed number; use a placeholder: 'Forbes counted {fact1} billionaires in March 2026, the most it has ever found, and {fact3} of them live in the United States.'",
+      "hourglass on screen in more than 4 beats: the same things all video long read as one static set; bring new things, or draw a returning one differently (a `state`)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-11T02:49:06.668877+00:00",
+    "finishedAt": "2026-11-11T02:49:06.668877+00:00",
+    "notes": [
+      "beat 'c5-time'.params.cards[2]: counts to $402.0M (@clubtime.years) but lands on '402M years'; one quantity, one string: use the placeholder that shows the same number",
+      "board beat 'c5-count' speaks for about 9 s; at most 9.0: one sentence, one picture per beat (split it), so the picture changes every few seconds"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-11T02:49:15.785034+00:00",
+    "finishedAt": "2026-11-11T02:49:15.785034+00:00",
+    "notes": [
+      "beat 'c6-spend'.params.actions[1].items[1]: counts to $2.3M (@muskspend.years) but lands on '2.3M'; one quantity, one string: use the placeholder that shows the same number"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-11T02:49:26.244176+00:00",
+    "finishedAt": "2026-11-11T02:49:26.244176+00:00",
+    "notes": [
+      "beat 'payoff'.events.musk: no word 'Musk' in this beat's spoken line"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-11T02:49:32.290859+00:00",
+    "finishedAt": "2026-11-11T02:49:32.290859+00:00",
+    "notes": [
+      "beat 'outro'.params.assumption contains a typed number; use a placeholder: 'Salary saved in full, no tax; growth and yield rates assumed; Forbes figures as of March 2026'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-11T02:49:37.315934+00:00",
+    "finishedAt": "2026-11-11T02:49:37.315934+00:00",
+    "notes": [
+      "description mentions '30', which is neither a script input nor a computed figure: write the figure as a placeholder ({avg_a}, {avg_b}, {avg_diff}, {avg_pct}, {avg_ratio}, {career_amount}…) or drop it",
+      "description mentions '7t', which is neither a script input nor a computed figure: write the figure as a placeholder ({avg_a}, {avg_b}, {avg_diff}, {avg_pct}, {avg_ratio}, {career_amount}…) or drop it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:52:05.641458+00:00",
+    "finishedAt": "2026-11-11T02:52:05.641458+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:52:36.429994+00:00",
+    "finishedAt": "2026-11-11T02:52:36.429994+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:53:15.582093+00:00",
+    "finishedAt": "2026-11-11T02:53:15.582093+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:53:46.088391+00:00",
+    "finishedAt": "2026-11-11T02:53:46.088391+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:54:15.768771+00:00",
+    "finishedAt": "2026-11-11T02:54:15.768771+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:55:20.365356+00:00",
+    "finishedAt": "2026-11-11T02:55:20.365356+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:55:51.848088+00:00",
+    "finishedAt": "2026-11-11T02:55:51.848088+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:56:18.191966+00:00",
+    "finishedAt": "2026-11-11T02:56:18.191966+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:56:57.399253+00:00",
+    "finishedAt": "2026-11-11T02:56:57.399253+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:57:46.165187+00:00",
+    "finishedAt": "2026-11-11T02:57:46.165187+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T02:58:58.763473+00:00",
+    "finishedAt": "2026-11-11T02:58:58.763473+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:01:22.021656+00:00",
+    "finishedAt": "2026-11-11T03:01:22.021656+00:00",
+    "notes": [
+      "c3-sharma: 'In all my years at the bank, I met plenty of careful savers...' has Sharma present himself as a banker (rule 4: a character presenting as an expert/adviser, like 'I'm a banker'). Rewrite without a profession claim, e.g. 'I have known plenty of careful savers. I never met one who saved a billion.'",
+      "payoff: '839.0x our room: a whole district of warehouses, packed with notes, all the way to the horizon' overstates the scale. Our room is $1B in $100s = 10M notes (~10 tonnes, ~10 pallets per the source Short v-20261027-01), so 839 rooms is ~8,400 pallets / ~8,400 tonnes, roughly one or two big warehouses, not a district to the horizon. The channel's promise is true scale; say what 839 rooms really is (e.g. 'a giant warehouse floor, 839 rooms of notes') and match the Payoff picture (district prop).",
+      "c5-count and c6-person: the topic's verify list says to state the Forbes figures 'as of March 2026'; both lines say 'this March'. Change to 'in March 2026' (c5-count: 'Forbes counted 3,428 billionaires in March 2026...'; c6-person: 'Forbes put him at $839B in March 2026...'), so the date holds whenever the video is watched."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-11T02:59:22.591303+00:00",
+    "finishedAt": "2026-11-11T03:01:55.381049+00:00",
+    "notes": [
+      "text 'Paid for time, or owned' at 140.3 s is 25.1 px, below the 30 px minimum",
+      "text 'Paid by what you own' at 253.3 s is 25.1 px, below the 30 px minimum",
+      "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "2.9 s with nothing new on screen in beat 'c3-short' (at most 2.5 s): add an action on the phrase being said there",
+      "19 of 74 stills are mostly empty background (at 50 s, 80 s, 105 s, 110 s, 120 s, 150 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:03:41.301940+00:00",
+    "finishedAt": "2026-11-11T03:03:41.301940+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:04:23.263576+00:00",
+    "finishedAt": "2026-11-11T03:04:23.263576+00:00",
+    "notes": [
+      "Re-review after rewrite: 4 Forbes facts confirmed (Spokesman-Review page for 3,428 / $20.1T / Musk $839B record, as of 1 Mar 2026; 989 US by search: Georgia Virtue, 10News, theonlinecitizen); c3-sharma no longer claims a banker; payoff now 'row after row of rooms', true to 839 rooms; dates spoken 'in March this year' with on-screen 'Data: Forbes · Mar 2026'; assumptions labelled; description has six ways, adviser line and disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:04:04.724608+00:00",
+    "finishedAt": "2026-11-11T03:05:22.403330+00:00",
+    "notes": [
+      "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "2.9 s with nothing new on screen in beat 'c3-short' (at most 2.5 s): add an action on the phrase being said there",
+      "21 of 74 stills are mostly empty background (at 50 s, 80 s, 105 s, 110 s, 120 s, 150 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:06:00.783001+00:00",
+    "finishedAt": "2026-11-11T03:06:00.783001+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:06:30.160179+00:00",
+    "finishedAt": "2026-11-11T03:07:30.818889+00:00",
+    "notes": [
+      "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "2.9 s with nothing new on screen in beat 'c3-short' (at most 2.5 s): add an action on the phrase being said there",
+      "19 of 74 stills are mostly empty background (at 50 s, 80 s, 105 s, 110 s, 120 s, 150 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:07:55.155465+00:00",
+    "finishedAt": "2026-11-11T03:07:55.155465+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:08:12.428587+00:00",
+    "finishedAt": "2026-11-11T03:09:13.699215+00:00",
+    "notes": [
+      "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "2.9 s with nothing new on screen in beat 'c3-short' (at most 2.5 s): add an action on the phrase being said there",
+      "17 of 74 stills are mostly empty background (at 50 s, 80 s, 105 s, 120 s, 150 s, 155 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:09:32.850390+00:00",
+    "finishedAt": "2026-11-11T03:09:32.850390+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:09:50.460686+00:00",
+    "finishedAt": "2026-11-11T03:10:51.397427+00:00",
+    "notes": [
+      "16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "2.9 s with nothing new on screen in beat 'c3-short' (at most 2.5 s): add an action on the phrase being said there",
+      "16 of 74 stills are mostly empty background (at 50 s, 80 s, 105 s, 120 s, 150 s, 180 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:11:30.516255+00:00",
+    "finishedAt": "2026-11-11T03:11:30.516255+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:11:31.346520+00:00",
+    "finishedAt": "2026-11-11T03:11:31.346520+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:11:52.101808+00:00",
+    "finishedAt": "2026-11-11T03:12:53.281357+00:00",
+    "notes": [
+      "text '16.8M' at 337.3 s is 24.8 px, below the 30 px minimum",
+      "2.7 s with nothing new on screen in beat 'c4-compare' (at most 2.5 s): add an action on the phrase being said there",
+      "beat 'c6-time': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:13:12.004739+00:00",
+    "finishedAt": "2026-11-11T03:13:12.004739+00:00",
+    "notes": [
+      "140 figures computed from inputs; 116 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:13:29.556516+00:00",
+    "finishedAt": "2026-11-11T03:14:29.381352+00:00",
+    "notes": [
+      "text '16.8M' at 337.3 s is 24.8 px, below the 30 px minimum",
+      "2.7 s with nothing new on screen in beat 'c4-compare' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:15:15.012983+00:00",
+    "finishedAt": "2026-11-11T03:15:15.012983+00:00",
+    "notes": [
+      "135 figures computed from inputs; 114 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:15:38.831130+00:00",
+    "finishedAt": "2026-11-11T03:16:47.600261+00:00",
+    "notes": [
+      "text '16.8M' at 337.1 s is 24.8 px, below the 30 px minimum",
+      "2.7 s with nothing new on screen in beat 'c4-compare' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:17:08.574035+00:00",
+    "finishedAt": "2026-11-11T03:17:08.574035+00:00",
+    "notes": [
+      "135 figures computed from inputs; 114 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:17:30.959219+00:00",
+    "finishedAt": "2026-11-11T03:18:32.760011+00:00",
+    "notes": [
+      "text '16.8M' at 337.1 s is 24.8 px, below the 30 px minimum"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:18:50.122383+00:00",
+    "finishedAt": "2026-11-11T03:18:50.122383+00:00",
+    "notes": [
+      "135 figures computed from inputs; 114 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:19:06.451195+00:00",
+    "finishedAt": "2026-11-11T03:20:07.782851+00:00",
+    "notes": [
+      "380 s, night/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:22:13.057588+00:00",
+    "finishedAt": "2026-11-11T03:22:13.057588+00:00",
+    "notes": [
+      "[scene] board scene, c6-spend (339.4-344.9 s, still 340 s): the equation box '$839B' is drawn on top of the slammed spoken figure '$1,000', which shows only as cut yellow strokes under the box (text over text). The figure slam and the equation share the same spot under the header.",
+      "[script] c3-grows (159.2-167.2 s, still 160 s): three copies of the pot figure stacked on top of each other: HUD counter '$1.3M', the tag '$1.3M' and the slammed '$1.3 million' overlapping both. Drop the tag or the counter so the slam has room.",
+      "[script] duplicated figure, counter + tag on the same item: c1-day (40.3-47.1 s, still 45 s) '$1,000' twice stacked under 'Spent a day'; c2-pay (96.3-102.6 s, still 100 s) '$50,000' twice; c2-career (121.6-128.3 s, still 125 s) '$2.0M' twice, one over the other. Keep one of hud.counter / tag.",
+      "[scene] long_story chapter chip row ('1 Spend it ... 6 The richest') sits exactly behind the caption box and its speaker name for the whole video, so captions cover chip text in almost every still (e.g. 15 s NARRATOR over '4 It pays', 30 s, 105 s, 135 s 'it.' over '4 It pays', 205 s ROHAN over chips, 325 s, 340 s). Move the chip row (top, or above the caption box) or hide it while a caption shows.",
+      "[script] recap (363.9-369.4 s, still 365 s): Rohan (spot 0.12) is cut off by the left edge and Priya (spot 0.88) by the right edge at the medium camera; move them in (about 0.2 / 0.8).",
+      "[script] c4-how (217.3-223.0 s, still 220 s): 'dividends from company shares' is shown as a red car labelled 'Shares' and nothing shows 'interest on bonds'; the deed labelled 'Buildings' is cut by the left edge. Use a share/stock prop for shares and add a bond prop.",
+      "[script] templated look: the same split composition (cast in a grey room with an empty window board on the left, a chart/card panel on the dark right) repeats 10 times: 80, 120, 150, 175, 180, 225, 275, 295, 325, 330 s (c1-bars, c2-mill, c3-plan, c3-short, c4-ring, c5-count, c5-grid, c6-person). Vary shot size/set or turn some into build beats.",
+      "[script] minor: header repeated by the term card: c2-term (140 s) 'INCOME VS WEALTH' twice, c4-term (250 s) 'PASSIVE INCOME' twice."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:23:24.939035+00:00",
+    "finishedAt": "2026-11-11T03:23:24.939035+00:00",
+    "notes": [
+      "135 figures computed from inputs; 114 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:23:57.026037+00:00",
+    "finishedAt": "2026-11-11T03:25:01.065179+00:00",
+    "notes": [
+      "380 s, night/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:26:12.103516+00:00",
+    "finishedAt": "2026-11-11T03:26:12.103516+00:00",
+    "notes": [
+      "[scene] build HUD counter carries over from the previous build beat until the new counter's 'at' word. c3-grows (159.2-167.2 s, still 160 s): the HUD reads 'HIS CAREER $2.0M' (c2-career's counter) on Rohan's pot, and the slammed '$1.3 million' sits right under it, touching it. So a wrong label is over a value, with text against text. Script workaround: counter 'at' the first word ('grows'), or noCounter until it shows.",
+      "[scene] same carry-over in c2-career (121.6-128.3 s, still 125 s): 'ROHAN'S SALARY $50,000' (c2-pay's counter) is stacked over the slammed '$2.0M', so it reads as if his salary is $2.0M. Script workaround: counter at 'career' instead of 'entire'.",
+      "[script] recap (363.9-369.4 s, still 365 s): Rohan (0.24) now stands inside the big $100 bill (0.30), and its red 'outlasts' X is drawn across his body, so he looks crossed out. Move the bill to about 0.45 or Rohan to about 0.12 with the camera wider, so the cast and the prop don't overlap.",
+      "[script] c4-how (217.3-223.0 s, still 220 s): at the beat's camera, the 'Buildings' deed is still cut by the left and top edges and half hidden behind the share certificate. Use a wider camera or space the items further apart."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:27:07.709176+00:00",
+    "finishedAt": "2026-11-11T03:27:07.709176+00:00",
+    "notes": [
+      "135 figures computed from inputs; 114 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:27:29.248696+00:00",
+    "finishedAt": "2026-11-11T03:28:33.112054+00:00",
+    "notes": [
+      "380 s, night/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-11T03:29:19.234788+00:00",
+    "finishedAt": "2026-11-11T03:29:19.234788+00:00",
+    "notes": [
+      "[script] c2-career (121.6-128.3 s, still 125 s): now that the counter starts with the beat, the HUD 'HIS CAREER $2.0M' and the slammed spoken '$2.0M' stack directly on top of each other, the same figure twice (round-1 problem back). Drop the counter here (noCounter, as in c3-grows) and let the slam carry it.",
+      "[script] c3-grows (159.2-167.2 s, still 165 s): the '$240,000' tag shows as a tiny line (about 10 px high) of yellow text on the yellow jar, near the jar's top, not on the 'Put in' cash stack. It is unreadable, and the 'Put in' cash has no figure. Put the tag where it reads (on the cash item, or in a chip)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:29:47.089059+00:00",
+    "finishedAt": "2026-11-11T03:29:47.089059+00:00",
+    "notes": [
+      "135 figures computed from inputs; 114 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:30:06.372683+00:00",
+    "finishedAt": "2026-11-11T03:31:16.626362+00:00",
+    "notes": [
+      "380 s, night/synthwave (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:32:28.328718+00:00",
+    "finishedAt": "2026-11-11T03:32:28.328718+00:00",
+    "notes": [
+      "Round 4: all earlier notes fixed (c2-career only one $2.0M, c3-grows clean: the tiny $240,000 at 165 s is the first frame of the slam, full size by frame 4958; c3-room shows Rohan's pot $1.3M; recap and c4-how cast and props in frame, no overlaps; no stale counters). Hook, end-card disclaimer, thumbnail, 380 s, audio -1/-17 dB fine. Known and handed to the improver: the long_story chapter-chip row sits under the captions."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:31:23.151612+00:00",
+    "finishedAt": "2026-11-11T03:44:46.216710+00:00",
+    "notes": [
+      "380 s, night/synthwave, peak -1.0 dB, mean -17.0 dB"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:44:58.633273+00:00",
+    "finishedAt": "2026-11-11T03:44:58.633273+00:00",
+    "notes": [
+      "135 figures computed from inputs; 114 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-11T03:45:04.042379+00:00",
+    "finishedAt": "2026-11-11T03:45:04.042379+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

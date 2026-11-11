@@ -1,0 +1,6790 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "id": "L-20261111-01",
+  "seed": 72914,
+  "story": "once_you_understand",
+  "shape": "levels",
+  "feed_id": "2026-10-28-once-you-understand-a-billion",
+  "currency": "USD",
+  "title": "What does $1 billion actually look like?",
+  "hook_style": "question",
+  "cta": "How many years would your pay need? Comment below",
+  "style": {
+    "palette": "night",
+    "genre": "synthwave",
+    "key": "D",
+    "bpm": 100,
+    "look": {
+      "stage": "office",
+      "header": "neon",
+      "holder": "sign",
+      "entrance": "drop"
+    }
+  },
+  "from_short": "v-20261027-01",
+  "structure": {
+    "levels": [
+      "Spend it",
+      "Earn it",
+      "Save it",
+      "It pays",
+      "How many",
+      "The richest"
+    ]
+  },
+  "facts": [
+    {
+      "label": "billionaires on Forbes' 2026 list (a record)",
+      "value": 3428,
+      "unit": "count",
+      "as_of": "2026-03-10",
+      "source": "Forbes",
+      "url": "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w"
+    },
+    {
+      "label": "their combined wealth (a record)",
+      "value": 20.1,
+      "unit": "money_trillion",
+      "as_of": "2026-03-10",
+      "source": "Forbes",
+      "url": "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w",
+      "currency": "USD"
+    },
+    {
+      "label": "billionaires in the United States (a record)",
+      "value": 989,
+      "unit": "count",
+      "as_of": "2026-03-10",
+      "source": "Forbes",
+      "url": "https://www.aol.com/articles/forbes-record-989-billionaires-u-171200887.html"
+    },
+    {
+      "label": "Elon Musk's net worth, the world's richest (Forbes record)",
+      "value": 839,
+      "unit": "money_billion",
+      "as_of": "2026-03-10",
+      "source": "Forbes",
+      "url": "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w",
+      "currency": "USD"
+    }
+  ],
+  "maths": [
+    {
+      "name": "note",
+      "kind": "lumpsum",
+      "amount": 100,
+      "rate_pct": 0,
+      "years": 1
+    },
+    {
+      "name": "room",
+      "kind": "lumpsum",
+      "amount": 1000000000,
+      "rate_pct": 0,
+      "years": 1
+    },
+    {
+      "name": "notes",
+      "kind": "share",
+      "total": 1000000000,
+      "parts": 1,
+      "per_year": 100
+    },
+    {
+      "name": "day",
+      "kind": "fee_take",
+      "amount": 1000,
+      "fee_pct": 100,
+      "per_year": 365,
+      "years": 1
+    },
+    {
+      "name": "spendm",
+      "kind": "share",
+      "total": 1000000,
+      "parts": 1,
+      "per_year": 365000
+    },
+    {
+      "name": "spendb",
+      "kind": "share",
+      "total": 1000000000,
+      "parts": 1,
+      "per_year": 365000
+    },
+    {
+      "name": "pay",
+      "kind": "fee_take",
+      "amount": 50000,
+      "fee_pct": 100,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "earnm",
+      "kind": "share",
+      "total": 1000000,
+      "parts": 1,
+      "per_year": 50000
+    },
+    {
+      "name": "earnb",
+      "kind": "share",
+      "total": 1000000000,
+      "parts": 1,
+      "per_year": 50000
+    },
+    {
+      "name": "career",
+      "kind": "fee_take",
+      "amount": 50000,
+      "fee_pct": 100,
+      "per_year": 1,
+      "years": 40
+    },
+    {
+      "name": "careersn",
+      "kind": "share",
+      "total": 1000000000,
+      "parts": 1,
+      "per_year": 2000000
+    },
+    {
+      "name": "save",
+      "kind": "sip",
+      "monthly": 500,
+      "rate_pct": 7,
+      "years": 40
+    },
+    {
+      "name": "short",
+      "kind": "compare",
+      "a": "room.final",
+      "b": "save.final"
+    },
+    {
+      "name": "yld",
+      "kind": "fee_take",
+      "amount": 1000000000,
+      "fee_pct": 4,
+      "per_year": 1,
+      "years": 1
+    },
+    {
+      "name": "yvc",
+      "kind": "compare",
+      "a": "yld.per_year_total",
+      "b": "career.total"
+    },
+    {
+      "name": "yldtime",
+      "kind": "share",
+      "total": 40000000,
+      "parts": 1,
+      "per_year": 50000
+    },
+    {
+      "name": "club",
+      "kind": "share",
+      "total": 20100000000000,
+      "parts": 3428,
+      "facts": {
+        "total": 2,
+        "parts": 1
+      }
+    },
+    {
+      "name": "avg",
+      "kind": "compare",
+      "a": "club.per_part",
+      "b": "room.final"
+    },
+    {
+      "name": "clubtime",
+      "kind": "share",
+      "total": 20100000000000,
+      "parts": 1,
+      "per_year": 50000,
+      "facts": {
+        "total": 2
+      }
+    },
+    {
+      "name": "musk",
+      "kind": "share",
+      "total": 839000000000,
+      "parts": 1,
+      "per_year": 50000,
+      "facts": {
+        "total": 4
+      }
+    },
+    {
+      "name": "muskspend",
+      "kind": "share",
+      "total": 839000000000,
+      "parts": 1,
+      "per_year": 365000,
+      "facts": {
+        "total": 4
+      }
+    },
+    {
+      "name": "roomsn",
+      "kind": "share",
+      "total": 839000000000,
+      "parts": 1,
+      "per_year": 1000000000,
+      "facts": {
+        "total": 4
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "custom",
+    "component": "Thumb",
+    "who": "sharma",
+    "pose": "point",
+    "expression": "smirk",
+    "words": "Million? *Cute.*",
+    "pattern": "two or three huge stacked words with one in a second colour, a row of small drawn things on a money-green ground, and one big face at the side",
+    "references": [
+      {
+        "id": "zxVoCw3P1Gc",
+        "views": 3787627,
+        "what": "BASIC ECONOMICS huge in cream, one word boxed, over a row of small drawn things (stalls, houses, soldiers, oil barrels) on a money-green ground"
+      },
+      {
+        "id": "tcpBWjAikxM",
+        "views": 2861494,
+        "what": "three stacked huge words, the last in a red box, a big face on the right looking at the viewer"
+      },
+      {
+        "id": "Pd3HYjpmks4",
+        "views": 858448,
+        "what": "ENTIRE MAP huge over a boxed subline, a row of drawn things from a beach chair to a vault on a money-green ground"
+      }
+    ]
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "This is {note_amount}. Now picture {room_final_long}: one warehouse room packed with {notes_years} of these notes. Sounds huge? That room is the smallest way to see a billion.",
+      "events": {
+        "this": {
+          "word": "This"
+        },
+        "picture": {
+          "word": "picture"
+        },
+        "notes": {
+          "word": "notes"
+        },
+        "huge": {
+          "word": "huge"
+        },
+        "smallest": {
+          "word": "smallest"
+        }
+      },
+      "params": {
+        "note": "{note_amount}",
+        "big": "{room_final_long}",
+        "count": "{notes_years} notes",
+        "question": "The smallest?",
+        "hud": {
+          "hide": true,
+          "noCounter": true
+        },
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "picture",
+                "pose": "pointUp",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "stack",
+            "id": "pile",
+            "spot": "right",
+            "amount": "@room.final",
+            "text": "{room_final_long}",
+            "label": "A billion",
+            "at": "picture"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "pile"
+          },
+          {
+            "at": "picture",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "this"
+        },
+        {
+          "kind": "whoosh",
+          "at": "picture"
+        },
+        {
+          "kind": "kaching",
+          "at": "notes"
+        },
+        {
+          "kind": "boom",
+          "at": "smallest"
+        }
+      ]
+    },
+    {
+      "id": "short",
+      "scene": "board",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "That was the short version. Here is what it left out: six more ways to feel how big a billion really is.",
+      "events": {
+        "short": {
+          "word": "short"
+        },
+        "left": {
+          "word": "left"
+        },
+        "six": {
+          "word": "six"
+        },
+        "feel": {
+          "word": "feel"
+        },
+        "billion": {
+          "word": "billion"
+        }
+      },
+      "params": {
+        "header": "The short version",
+        "sub": "What it left out",
+        "bg": "night",
+        "items": [
+          {
+            "id": "short",
+            "prop": "hundred",
+            "x": 0.2,
+            "size": 0.41,
+            "label": "One note"
+          },
+          {
+            "id": "left",
+            "prop": "pallet",
+            "x": 0.5,
+            "size": 0.42,
+            "label": "One pallet",
+            "hidden": true
+          },
+          {
+            "id": "six",
+            "prop": "warehouse",
+            "x": 0.8,
+            "size": 0.42,
+            "label": "Billion room",
+            "hidden": true,
+            "k": 1
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "short"
+          },
+          {
+            "at": "short",
+            "do": "grow",
+            "target": "short",
+            "scale": 1.15
+          },
+          {
+            "at": "left",
+            "do": "enter",
+            "target": "left",
+            "how": "drop"
+          },
+          {
+            "at": "six",
+            "do": "enter",
+            "target": "six",
+            "how": "rise"
+          },
+          {
+            "at": "billion",
+            "do": "flow",
+            "target": "short",
+            "to": "six",
+            "n": 6
+          },
+          {
+            "at": "feel",
+            "do": "stamp",
+            "target": "six",
+            "text": "Six more ways"
+          }
+        ],
+        "hud": {
+          "level": 0,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "short"
+        },
+        {
+          "kind": "whoosh",
+          "at": "left"
+        },
+        {
+          "kind": "pop-high",
+          "at": "six"
+        },
+        {
+          "kind": "ding",
+          "at": "feel"
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "scene": "framework",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Spending it, earning it, saving it, the money it pays all by itself, how many people own one, and a last one that makes a billion look small.",
+      "events": {
+        "spending": {
+          "word": "Spending"
+        },
+        "earning": {
+          "word": "earning"
+        },
+        "saving": {
+          "word": "saving"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "people": {
+          "word": "people"
+        },
+        "last": {
+          "word": "last"
+        },
+        "small": {
+          "word": "small"
+        }
+      },
+      "params": {
+        "items": [
+          {
+            "prop": "wallet",
+            "label": "Spend it",
+            "at": "spending"
+          },
+          {
+            "prop": "paycheck",
+            "label": "Earn it",
+            "at": "earning"
+          },
+          {
+            "prop": "savejar",
+            "label": "Save it",
+            "at": "saving"
+          },
+          {
+            "prop": "fountain",
+            "label": "It pays",
+            "at": "pays"
+          },
+          {
+            "prop": "crowd",
+            "label": "How many",
+            "at": "people"
+          },
+          {
+            "prop": "hourglass",
+            "label": "The last one",
+            "at": "last"
+          }
+        ],
+        "layout": "arc",
+        "open": 0,
+        "title": "Six ways",
+        "bg": "plum",
+        "at": "small",
+        "hud": {
+          "level": 0,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "spending"
+        },
+        {
+          "kind": "whoosh",
+          "at": "earning"
+        },
+        {
+          "kind": "pop-high",
+          "at": "saving"
+        },
+        {
+          "kind": "ding",
+          "at": "pays"
+        }
+      ]
+    },
+    {
+      "id": "ask0",
+      "scene": "board",
+      "role": "promise",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Hold on. A billion is just a really big million, isn't it? How different can the two of them be?",
+      "events": {
+        "hold": {
+          "word": "Hold"
+        },
+        "million": {
+          "word": "million"
+        },
+        "different": {
+          "word": "different"
+        },
+        "two": {
+          "word": "two"
+        },
+        "billion": {
+          "word": "billion"
+        }
+      },
+      "params": {
+        "header": "A big million?",
+        "bg": "slate",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.28,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.74,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "m",
+            "prop": "strap",
+            "size": 0.2,
+            "label": "A million"
+          },
+          {
+            "id": "different",
+            "prop": "warehouse",
+            "size": 0.26,
+            "label": "A billion",
+            "hidden": true,
+            "k": 1
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "m"
+          },
+          {
+            "at": "million",
+            "do": "grow",
+            "target": "m",
+            "scale": 1.2
+          },
+          {
+            "at": "different",
+            "do": "enter",
+            "target": "different",
+            "how": "rise"
+          },
+          {
+            "at": "two",
+            "do": "bubble",
+            "text": "How different?"
+          },
+          {
+            "at": "billion",
+            "do": "shake",
+            "target": "m"
+          }
+        ],
+        "hud": {
+          "level": 0,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "hold"
+        },
+        {
+          "kind": "whoosh",
+          "at": "million"
+        },
+        {
+          "kind": "pop-high",
+          "at": "different"
+        },
+        {
+          "kind": "ding",
+          "at": "two"
+        }
+      ]
+    },
+    {
+      "id": "sharma0",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "Ask anyone who has counted both. A million is a number you can picture in your head. A billion is a number nobody can.",
+      "events": {
+        "counted": {
+          "word": "counted"
+        },
+        "million": {
+          "word": "million"
+        },
+        "picture": {
+          "word": "picture"
+        },
+        "billion": {
+          "word": "billion"
+        },
+        "nobody": {
+          "word": "nobody"
+        },
+        "you": {
+          "word": "you"
+        },
+        "your": {
+          "word": "your"
+        }
+      },
+      "params": {
+        "set": "vault",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "million",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "you",
+                "pose": "shrug",
+                "expression": "smirk"
+              },
+              {
+                "at": "your",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "billion",
+                "pose": "pointUp",
+                "expression": "proud"
+              },
+              {
+                "at": "nobody",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "billion",
+            "size": "extreme",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Nobody",
+          "at": "nobody",
+          "color": "gold",
+          "where": "top"
+        },
+        "hud": {
+          "level": 0,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "counted"
+        },
+        {
+          "kind": "whoosh",
+          "at": "million"
+        },
+        {
+          "kind": "pop-high",
+          "at": "picture"
+        },
+        {
+          "kind": "ding",
+          "at": "billion"
+        }
+      ]
+    },
+    {
+      "id": "ch1",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Way one. Spend it.",
+      "events": {
+        "spend": {
+          "word": "Spend"
+        }
+      },
+      "params": {
+        "kicker": "Way one",
+        "title": "Spend it",
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c1-day",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Say you spend {day_amount} every single day: rent, dinners, trips, anything you like, with nothing coming back in.",
+      "events": {
+        "spend": {
+          "word": "spend"
+        },
+        "day": {
+          "word": "day"
+        },
+        "rent": {
+          "word": "rent"
+        },
+        "dinners": {
+          "word": "dinners"
+        },
+        "trips": {
+          "word": "trips"
+        },
+        "nothing": {
+          "word": "nothing"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "gold"
+        },
+        "items": [
+          {
+            "id": "spend",
+            "prop": "wallet",
+            "x": 0.5,
+            "size": 0.43,
+            "label": "Every day"
+          },
+          {
+            "id": "rent",
+            "prop": "box",
+            "x": 0.18,
+            "size": 0.26,
+            "label": "Rent",
+            "hidden": true
+          },
+          {
+            "id": "trips",
+            "prop": "evcar",
+            "x": 0.82,
+            "size": 0.26,
+            "label": "Trips",
+            "hidden": true
+          },
+          {
+            "id": "day",
+            "prop": "cash",
+            "x": 0.35,
+            "size": 0.26,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "spend"
+          },
+          {
+            "at": "spend",
+            "do": "grow",
+            "target": "spend",
+            "scale": 1.12
+          },
+          {
+            "at": "day",
+            "do": "enter",
+            "target": "day"
+          },
+          {
+            "at": "rent",
+            "do": "enter",
+            "target": "rent",
+            "how": "drop"
+          },
+          {
+            "at": "dinners",
+            "do": "flow",
+            "target": "spend",
+            "to": "rent",
+            "n": 5
+          },
+          {
+            "at": "trips",
+            "do": "enter",
+            "target": "trips"
+          },
+          {
+            "at": "nothing",
+            "do": "state",
+            "target": "spend",
+            "state": "empty"
+          }
+        ],
+        "hud": {
+          "counter": {
+            "value": "@day.amount",
+            "text": "{day_amount}",
+            "label": "Spent a day",
+            "at": "start"
+          },
+          "noCounter": false,
+          "level": 1
+        },
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "trips",
+            "size": "close",
+            "on": "spend",
+            "move": true
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "spend"
+        },
+        {
+          "kind": "whoosh",
+          "at": "day"
+        },
+        {
+          "kind": "pop-high",
+          "at": "rent"
+        },
+        {
+          "kind": "ding",
+          "at": "dinners"
+        }
+      ]
+    },
+    {
+      "id": "c1-year",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That comes to {day_per_year_total} a year, gone at the same steady pace, day after day.",
+      "events": {
+        "comes": {
+          "word": "comes"
+        },
+        "year": {
+          "word": "year"
+        },
+        "steady": {
+          "word": "steady"
+        },
+        "after": {
+          "word": "after"
+        }
+      },
+      "params": {
+        "header": "A year of it",
+        "bg": "sand",
+        "items": [
+          {
+            "id": "steady",
+            "prop": "wallet",
+            "x": 0.25,
+            "size": 0.41,
+            "k": 0.5,
+            "label": "Spent"
+          },
+          {
+            "id": "after",
+            "prop": "cash",
+            "x": 0.75,
+            "size": 0.41,
+            "label": "Gone"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "steady"
+          },
+          {
+            "sec": 0,
+            "do": "shake",
+            "target": "after"
+          },
+          {
+            "at": "comes",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{day_amount} a day"
+              },
+              {
+                "text": "every day of the year"
+              }
+            ],
+            "result": {
+              "text": "{day_per_year_total}",
+              "value": "@day.per_year_total",
+              "at": "year"
+            }
+          },
+          {
+            "at": "steady",
+            "do": "flow",
+            "target": "steady",
+            "to": "after",
+            "n": 6
+          },
+          {
+            "at": "after",
+            "do": "enter",
+            "target": "after"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "comes"
+        },
+        {
+          "kind": "whoosh",
+          "at": "year"
+        },
+        {
+          "kind": "pop-high",
+          "at": "steady"
+        },
+        {
+          "kind": "ding",
+          "at": "after"
+        }
+      ]
+    },
+    {
+      "id": "c1-ask",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "At that pace, how long would a whole million last me?",
+      "events": {
+        "pace": {
+          "word": "pace"
+        },
+        "long": {
+          "word": "long"
+        },
+        "million": {
+          "word": "million"
+        }
+      },
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              },
+              {
+                "at": "pace",
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "long",
+                "pose": "shrug",
+                "expression": "confused"
+              },
+              {
+                "at": "million",
+                "pose": "point",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "million",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Million",
+          "at": "million",
+          "color": "gold",
+          "where": "top"
+        },
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pace"
+        },
+        {
+          "kind": "whoosh",
+          "at": "long"
+        },
+        {
+          "kind": "pop-high",
+          "at": "million"
+        }
+      ]
+    },
+    {
+      "id": "c1-mill",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "A million runs out in about {spendm_years} years. Long enough to feel rich, and short enough to end.",
+      "events": {
+        "million": {
+          "word": "million"
+        },
+        "years": {
+          "word": "years"
+        },
+        "rich": {
+          "word": "rich"
+        },
+        "end": {
+          "word": "end"
+        },
+        "out": {
+          "word": "out"
+        }
+      },
+      "params": {
+        "items": [
+          {
+            "id": "rich",
+            "prop": "strap",
+            "x": 0.2,
+            "size": 0.36,
+            "label": "A million"
+          },
+          {
+            "id": "years",
+            "prop": "hourglass",
+            "x": 0.8,
+            "size": 0.38,
+            "k": 0.1
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "rich"
+          },
+          {
+            "at": "years",
+            "do": "state",
+            "target": "years",
+            "state": "spin"
+          },
+          {
+            "at": "rich",
+            "do": "grow",
+            "target": "rich",
+            "scale": 1.15
+          },
+          {
+            "at": "end",
+            "do": "shake",
+            "target": "rich"
+          },
+          {
+            "at": "out",
+            "do": "shake",
+            "target": "rich"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        },
+        "world": {
+          "kind": "street",
+          "tint": "blue"
+        },
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "end",
+            "size": "close",
+            "on": "rich",
+            "move": true
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "million"
+        },
+        {
+          "kind": "whoosh",
+          "at": "years"
+        },
+        {
+          "kind": "pop-high",
+          "at": "rich"
+        },
+        {
+          "kind": "ding",
+          "at": "end"
+        }
+      ]
+    },
+    {
+      "id": "c1-bill",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Now do the very same thing with a billion: the same daily spending, the same lifestyle, the same steady pace.",
+      "events": {
+        "very": {
+          "word": "very"
+        },
+        "billion": {
+          "word": "billion"
+        },
+        "daily": {
+          "word": "daily"
+        },
+        "lifestyle": {
+          "word": "lifestyle"
+        },
+        "steady": {
+          "word": "steady"
+        },
+        "thing": {
+          "word": "thing"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "purple"
+        },
+        "items": [
+          {
+            "id": "room",
+            "prop": "warehouse",
+            "x": 0.5,
+            "size": 0.46,
+            "label": "A billion",
+            "hidden": true,
+            "k": 1
+          },
+          {
+            "id": "wallet",
+            "prop": "wallet",
+            "x": 0.15,
+            "size": 0.29
+          },
+          {
+            "id": "lifestyle",
+            "prop": "hourglass",
+            "x": 0.85,
+            "size": 0.34,
+            "k": 0.05,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "wallet"
+          },
+          {
+            "at": "billion",
+            "do": "enter",
+            "target": "room",
+            "how": "rise"
+          },
+          {
+            "at": "daily",
+            "do": "flow",
+            "target": "room",
+            "to": "wallet",
+            "n": 4
+          },
+          {
+            "at": "lifestyle",
+            "do": "enter",
+            "target": "lifestyle"
+          },
+          {
+            "at": "steady",
+            "do": "state",
+            "target": "lifestyle",
+            "state": "spin"
+          },
+          {
+            "at": "thing",
+            "do": "glow",
+            "target": "lifestyle"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "lifestyle",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "steady",
+            "size": "close",
+            "on": "lifestyle",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "very"
+        },
+        {
+          "kind": "whoosh",
+          "at": "billion"
+        },
+        {
+          "kind": "pop-high",
+          "at": "daily"
+        },
+        {
+          "kind": "ding",
+          "at": "lifestyle"
+        }
+      ]
+    },
+    {
+      "id": "c1-billyrs",
+      "scene": "stats",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "A billion lasts {spendb_years} years. If you had started back in ancient times, you would still be spending it today.",
+      "events": {
+        "billion": {
+          "word": "billion"
+        },
+        "years": {
+          "word": "years"
+        },
+        "ancient": {
+          "word": "ancient"
+        },
+        "still": {
+          "word": "still"
+        }
+      },
+      "params": {
+        "kicker": "Spending it",
+        "title": "Same pace",
+        "bg": "cream",
+        "prop": "hourglass",
+        "at": "still",
+        "cards": [
+          {
+            "label": "A day",
+            "text": "{day_amount}",
+            "at": "billion",
+            "color": "blue"
+          },
+          {
+            "label": "A million lasts",
+            "text": "{spendm_years} years",
+            "at": "years",
+            "color": "orange"
+          },
+          {
+            "label": "A billion lasts",
+            "text": "{spendb_years} years",
+            "at": "ancient",
+            "color": "red"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "billion"
+        },
+        {
+          "kind": "whoosh",
+          "at": "years"
+        },
+        {
+          "kind": "pop-high",
+          "at": "ancient"
+        },
+        {
+          "kind": "ding",
+          "at": "still"
+        }
+      ]
+    },
+    {
+      "id": "c1-bars",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Same habit, wildly different endings: the million is gone in {spendm_years} years, while the billion runs for {spendb_years}.",
+      "events": {
+        "habit": {
+          "word": "habit"
+        },
+        "endings": {
+          "word": "endings"
+        },
+        "gone": {
+          "word": "gone"
+        },
+        "runs": {
+          "word": "runs"
+        },
+        "while": {
+          "word": "while"
+        }
+      },
+      "params": {
+        "header": "Same habit",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "gone",
+            "prop": "wallet",
+            "size": 0.3
+          },
+          {
+            "id": "habit",
+            "prop": "hourglass",
+            "size": 0.3,
+            "k": 0.6
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "gone"
+          },
+          {
+            "at": "habit",
+            "do": "state",
+            "target": "habit",
+            "state": "spin"
+          },
+          {
+            "at": "endings",
+            "do": "bars",
+            "title": "Years it lasts",
+            "items": [
+              {
+                "label": "Million",
+                "text": "{spendm_years}",
+                "value": "@spendm.years",
+                "at": "gone",
+                "tone": "bad"
+              },
+              {
+                "label": "Billion",
+                "text": "{spendb_years}",
+                "value": "@spendb.years",
+                "at": "runs",
+                "tone": "good"
+              }
+            ]
+          },
+          {
+            "at": "gone",
+            "do": "exit",
+            "target": "gone"
+          },
+          {
+            "at": "while",
+            "do": "shake",
+            "target": "gone"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        },
+        "stage": "city",
+        "cast": [
+          {
+            "who": "priya",
+            "spot": 0.38,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "habit"
+        },
+        {
+          "kind": "whoosh",
+          "at": "endings"
+        },
+        {
+          "kind": "pop-high",
+          "at": "gone"
+        },
+        {
+          "kind": "ding",
+          "at": "runs"
+        }
+      ]
+    },
+    {
+      "id": "c1-sharma",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "The words play a trick on you. Million and billion sound like neighbours, but they live ages apart.",
+      "events": {
+        "trick": {
+          "word": "trick"
+        },
+        "million": {
+          "word": "Million"
+        },
+        "neighbours": {
+          "word": "neighbours"
+        },
+        "apart": {
+          "word": "apart"
+        },
+        "live": {
+          "word": "live"
+        }
+      },
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "smirk"
+              },
+              {
+                "at": "million",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "neighbours",
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "live",
+                "pose": "shrug",
+                "expression": "smirk"
+              },
+              {
+                "at": "apart",
+                "pose": "shrug",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "neighbours",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "apart",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Ages apart",
+          "at": "apart",
+          "color": "gold",
+          "where": "top"
+        },
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "trick"
+        },
+        {
+          "kind": "whoosh",
+          "at": "million"
+        },
+        {
+          "kind": "pop-high",
+          "at": "neighbours"
+        },
+        {
+          "kind": "ding",
+          "at": "apart"
+        }
+      ]
+    },
+    {
+      "id": "c1-tease",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Fine, nobody just spends. So how long would it take to earn a billion with a paycheck?",
+      "events": {
+        "nobody": {
+          "word": "nobody"
+        },
+        "long": {
+          "word": "long"
+        },
+        "earn": {
+          "word": "earn"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        }
+      },
+      "params": {
+        "kicker": "Next · Earn it",
+        "bg": "teal",
+        "prop": "paycheck",
+        "lines": [
+          {
+            "text": "Nobody just spends",
+            "at": "nobody",
+            "size": "small"
+          },
+          {
+            "text": "How long",
+            "at": "long",
+            "size": "big"
+          },
+          {
+            "text": "to earn one?",
+            "at": "earn",
+            "size": "huge"
+          },
+          {
+            "text": "With a paycheck",
+            "at": "paycheck",
+            "size": "small"
+          }
+        ],
+        "hud": {
+          "level": 1,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "nobody"
+        },
+        {
+          "kind": "whoosh",
+          "at": "long"
+        },
+        {
+          "kind": "pop-high",
+          "at": "earn"
+        },
+        {
+          "kind": "ding",
+          "at": "paycheck"
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Way two. Earn it.",
+      "events": {
+        "earn": {
+          "word": "Earn"
+        }
+      },
+      "params": {
+        "kicker": "Way two",
+        "title": "Earn it",
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c2-pay",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Rohan earns {pay_amount} a year at his office job, a solid salary that pays the rent and then some.",
+      "events": {
+        "earns": {
+          "word": "earns"
+        },
+        "office": {
+          "word": "office"
+        },
+        "solid": {
+          "word": "solid"
+        },
+        "rent": {
+          "word": "rent"
+        },
+        "some": {
+          "word": "some"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "office",
+          "tint": "blue"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.18,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "happy",
+                "prop": "phone"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "earns",
+            "prop": "paycheck",
+            "x": 0.48,
+            "size": 0.32,
+            "label": "His salary"
+          },
+          {
+            "id": "rent",
+            "prop": "box",
+            "x": 0.82,
+            "size": 0.18,
+            "label": "Rent",
+            "hidden": true
+          },
+          {
+            "id": "some",
+            "prop": "savejar",
+            "x": 0.68,
+            "size": 0.2,
+            "hidden": true,
+            "k": 0.2
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "earns"
+          },
+          {
+            "at": "earns",
+            "do": "grow",
+            "target": "earns",
+            "scale": 1.1
+          },
+          {
+            "at": "solid",
+            "do": "grow",
+            "target": "earns",
+            "scale": 1.15
+          },
+          {
+            "at": "rent",
+            "do": "enter",
+            "target": "rent",
+            "how": "drop"
+          },
+          {
+            "at": "rent",
+            "do": "flow",
+            "target": "earns",
+            "to": "rent",
+            "n": 4
+          },
+          {
+            "at": "some",
+            "do": "enter",
+            "target": "some",
+            "how": "rise"
+          },
+          {
+            "at": "year",
+            "do": "shake",
+            "target": "earns"
+          }
+        ],
+        "hud": {
+          "counter": {
+            "value": "@pay.amount",
+            "text": "{pay_amount}",
+            "label": "Rohan's salary",
+            "at": "start"
+          },
+          "noCounter": false,
+          "level": 2
+        },
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "solid",
+            "size": "close",
+            "on": "earns",
+            "move": true
+          },
+          {
+            "at": "some",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "earns"
+        },
+        {
+          "kind": "whoosh",
+          "at": "office"
+        },
+        {
+          "kind": "pop-high",
+          "at": "solid"
+        },
+        {
+          "kind": "ding",
+          "at": "rent"
+        }
+      ]
+    },
+    {
+      "id": "c2-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "And if I saved every cent of it, how many years until I hit a billion?",
+      "events": {
+        "saved": {
+          "word": "saved"
+        },
+        "cent": {
+          "word": "cent"
+        },
+        "years": {
+          "word": "years"
+        },
+        "billion": {
+          "word": "billion"
+        }
+      },
+      "params": {
+        "header": "Every cent?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.28,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "priya",
+            "spot": 0.74,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "billion",
+            "prop": "paycheck",
+            "size": 0.2,
+            "label": "Every cent"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "billion"
+          },
+          {
+            "at": "saved",
+            "do": "grow",
+            "target": "billion",
+            "scale": 1.2
+          },
+          {
+            "at": "years",
+            "do": "bubble",
+            "text": "How many years?"
+          },
+          {
+            "at": "billion",
+            "do": "swap",
+            "target": "billion",
+            "into": "warehouse"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "saved"
+        },
+        {
+          "kind": "whoosh",
+          "at": "cent"
+        },
+        {
+          "kind": "pop-high",
+          "at": "years"
+        },
+        {
+          "kind": "ding",
+          "at": "billion"
+        }
+      ]
+    },
+    {
+      "id": "c2-sum",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "No rent, no food, no tax: {earnb_total} divided by {earnb_per_year} a year comes to {earnb_years} years.",
+      "events": {
+        "rent": {
+          "word": "rent"
+        },
+        "food": {
+          "word": "food"
+        },
+        "tax": {
+          "word": "tax"
+        },
+        "divided": {
+          "word": "divided"
+        },
+        "comes": {
+          "word": "comes"
+        }
+      },
+      "params": {
+        "header": "Saving every cent",
+        "bg": "coral",
+        "items": [
+          {
+            "id": "check",
+            "prop": "paycheck",
+            "x": 0.5,
+            "size": 0.4
+          },
+          {
+            "id": "comes",
+            "prop": "hourglass",
+            "x": 0.85,
+            "size": 0.35,
+            "k": 0.2,
+            "hidden": true
+          },
+          {
+            "id": "rent",
+            "prop": "box",
+            "x": 0.15,
+            "size": 0.28,
+            "label": "Rent",
+            "hidden": true
+          },
+          {
+            "id": "food",
+            "prop": "coin",
+            "x": 0.3,
+            "size": 0.28,
+            "label": "Food",
+            "hidden": true
+          },
+          {
+            "id": "tax",
+            "prop": "note",
+            "x": 0.68,
+            "size": 0.28,
+            "label": "Tax",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "check"
+          },
+          {
+            "at": "rent",
+            "do": "enter",
+            "target": "rent"
+          },
+          {
+            "at": "food",
+            "do": "enter",
+            "target": "food"
+          },
+          {
+            "at": "tax",
+            "do": "enter",
+            "target": "tax"
+          },
+          {
+            "at": "tax",
+            "do": "cross",
+            "target": "tax"
+          },
+          {
+            "at": "divided",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{earnb_total}"
+              },
+              {
+                "text": "÷ {earnb_per_year} a year"
+              }
+            ],
+            "result": {
+              "text": "{earnb_years} years",
+              "value": "@earnb.years",
+              "at": "comes"
+            }
+          },
+          {
+            "at": "comes",
+            "do": "enter",
+            "target": "comes"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rent"
+        },
+        {
+          "kind": "whoosh",
+          "at": "food"
+        },
+        {
+          "kind": "pop-high",
+          "at": "tax"
+        },
+        {
+          "kind": "ding",
+          "at": "divided"
+        }
+      ]
+    },
+    {
+      "id": "c2-mill",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "A million would take him {earnm_years} years. A billion takes {earnb_years}, longer than recorded history.",
+      "events": {
+        "million": {
+          "word": "million"
+        },
+        "billion": {
+          "word": "billion"
+        },
+        "longer": {
+          "word": "longer"
+        },
+        "history": {
+          "word": "history"
+        },
+        "years": {
+          "word": "years"
+        }
+      },
+      "params": {
+        "header": "Years of pay",
+        "bg": "cream",
+        "items": [
+          {
+            "id": "longer",
+            "prop": "hourglass",
+            "size": 0.3,
+            "k": 0.3
+          },
+          {
+            "id": "check",
+            "prop": "paycheck",
+            "size": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "longer"
+          },
+          {
+            "at": "million",
+            "do": "bars",
+            "title": "Years of his pay",
+            "items": [
+              {
+                "label": "Million",
+                "text": "{earnm_years}",
+                "value": "@earnm.years",
+                "at": "million",
+                "tone": "good"
+              },
+              {
+                "label": "Billion",
+                "text": "{earnb_years}",
+                "value": "@earnb.years",
+                "at": "billion",
+                "tone": "bad",
+                "turn": "history"
+              }
+            ]
+          },
+          {
+            "at": "longer",
+            "do": "state",
+            "target": "longer",
+            "state": "spin"
+          },
+          {
+            "at": "history",
+            "do": "shake",
+            "target": "check"
+          },
+          {
+            "at": "years",
+            "do": "shake",
+            "target": "longer"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        },
+        "stage": "field",
+        "cast": [
+          {
+            "who": "sharma",
+            "spot": 0.38,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "million"
+        },
+        {
+          "kind": "whoosh",
+          "at": "billion"
+        },
+        {
+          "kind": "pop-high",
+          "at": "longer"
+        },
+        {
+          "kind": "ding",
+          "at": "history"
+        }
+      ]
+    },
+    {
+      "id": "c2-career",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "A whole career of {career_years} years pays him {career_total}. A billion is {careersn_years} of those entire working lives.",
+      "events": {
+        "career": {
+          "word": "career"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "billion": {
+          "word": "billion"
+        },
+        "entire": {
+          "word": "entire"
+        },
+        "lives": {
+          "word": "lives"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.15,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "billion",
+                "pose": "worried",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "career",
+            "prop": "hourglass",
+            "x": 0.38,
+            "size": 0.3,
+            "k": 0.1
+          },
+          {
+            "id": "pays",
+            "prop": "strap",
+            "x": 0.6,
+            "size": 0.18,
+            "label": "Working life",
+            "hidden": true
+          },
+          {
+            "id": "room",
+            "prop": "warehouse",
+            "x": 0.82,
+            "size": 0.36,
+            "label": "A billion",
+            "hidden": true,
+            "k": 1
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "career"
+          },
+          {
+            "at": "career",
+            "do": "fill",
+            "target": "career",
+            "k": 1
+          },
+          {
+            "at": "pays",
+            "do": "enter",
+            "target": "pays"
+          },
+          {
+            "at": "billion",
+            "do": "enter",
+            "target": "room",
+            "how": "rise"
+          },
+          {
+            "at": "entire",
+            "do": "multiply",
+            "target": "pays",
+            "n": 6
+          },
+          {
+            "at": "lives",
+            "do": "shrink",
+            "target": "pays",
+            "scale": 0.6
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "career"
+          },
+          {
+            "at": "billion",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "lives",
+            "size": "close",
+            "on": "pays",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "career"
+        },
+        {
+          "kind": "whoosh",
+          "at": "pays"
+        },
+        {
+          "kind": "pop-high",
+          "at": "billion"
+        },
+        {
+          "kind": "ding",
+          "at": "entire"
+        }
+      ]
+    },
+    {
+      "id": "c2-priya",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "So nobody earns a billion with a paycheck. A salary, even a great one, is simply the wrong kind of money for it.",
+      "events": {
+        "nobody": {
+          "word": "nobody"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "great": {
+          "word": "great"
+        },
+        "wrong": {
+          "word": "wrong"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "simply": {
+          "word": "simply"
+        }
+      },
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              },
+              {
+                "at": "paycheck",
+                "pose": "shrug",
+                "expression": "smirk"
+              },
+              {
+                "at": "salary",
+                "pose": "point",
+                "expression": "neutral"
+              },
+              {
+                "at": "great",
+                "pose": "shrug",
+                "expression": "smirk"
+              },
+              {
+                "at": "simply",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "wrong",
+                "pose": "hips",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "wrong",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Wrong money",
+          "at": "wrong",
+          "color": "bad",
+          "where": "top"
+        },
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "nobody"
+        },
+        {
+          "kind": "whoosh",
+          "at": "salary"
+        },
+        {
+          "kind": "pop-high",
+          "at": "great"
+        },
+        {
+          "kind": "ding",
+          "at": "wrong"
+        }
+      ]
+    },
+    {
+      "id": "c2-term",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Income and wealth are different animals: income is what you are paid for your time, and wealth is what you own.",
+      "events": {
+        "different": {
+          "word": "different"
+        },
+        "income": {
+          "word": "income"
+        },
+        "paid": {
+          "word": "paid"
+        },
+        "wealth": {
+          "word": "wealth"
+        },
+        "own": {
+          "word": "own"
+        },
+        "time": {
+          "word": "time"
+        }
+      },
+      "params": {
+        "header": "Two kinds of money",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "check",
+            "prop": "paycheck",
+            "x": 0.2,
+            "size": 0.41,
+            "label": "Income"
+          },
+          {
+            "id": "own",
+            "prop": "warehouse",
+            "x": 0.8,
+            "size": 0.42,
+            "label": "Wealth",
+            "hidden": true,
+            "k": 1
+          },
+          {
+            "id": "paid",
+            "prop": "clock",
+            "x": 0.5,
+            "size": 0.28,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "check"
+          },
+          {
+            "at": "different",
+            "do": "term",
+            "name": "Income vs wealth"
+          },
+          {
+            "at": "paid",
+            "do": "enter",
+            "target": "paid"
+          },
+          {
+            "at": "wealth",
+            "do": "enter",
+            "target": "own",
+            "how": "rise"
+          },
+          {
+            "at": "own",
+            "do": "grow",
+            "target": "own",
+            "scale": 1.15
+          },
+          {
+            "at": "time",
+            "do": "glow",
+            "target": "paid"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "different"
+        },
+        {
+          "kind": "whoosh",
+          "at": "income"
+        },
+        {
+          "kind": "pop-high",
+          "at": "paid"
+        },
+        {
+          "kind": "ding",
+          "at": "wealth"
+        }
+      ]
+    },
+    {
+      "id": "c2-tease",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "So if a paycheck can never get there, what about saving and investing it for decades?",
+      "events": {
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "never": {
+          "word": "never"
+        },
+        "saving": {
+          "word": "saving"
+        },
+        "decades": {
+          "word": "decades"
+        }
+      },
+      "params": {
+        "kicker": "Next · Save it",
+        "bg": "sky",
+        "prop": "savejar",
+        "lines": [
+          {
+            "text": "Paychecks?",
+            "at": "paycheck",
+            "size": "small",
+            "strike": "never"
+          },
+          {
+            "text": "Never enough",
+            "at": "never",
+            "size": "big"
+          },
+          {
+            "text": "Save and invest?",
+            "at": "saving",
+            "size": "huge"
+          },
+          {
+            "text": "For decades",
+            "at": "decades",
+            "size": "small"
+          }
+        ],
+        "hud": {
+          "level": 2,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "paycheck"
+        },
+        {
+          "kind": "whoosh",
+          "at": "never"
+        },
+        {
+          "kind": "pop-high",
+          "at": "saving"
+        },
+        {
+          "kind": "ding",
+          "at": "decades"
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Way three. Save it.",
+      "events": {
+        "save": {
+          "word": "Save"
+        }
+      },
+      "params": {
+        "kicker": "Way three",
+        "title": "Save it",
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c3-plan",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Rohan puts {save_amount} a month into investments for {save_years} years, growing at an assumed {save_rate} a year.",
+      "events": {
+        "puts": {
+          "word": "puts"
+        },
+        "month": {
+          "word": "month"
+        },
+        "years": {
+          "word": "years"
+        },
+        "assumed": {
+          "word": "assumed"
+        }
+      },
+      "params": {
+        "header": "Rohan's plan",
+        "bg": "sand",
+        "items": [
+          {
+            "id": "assumed",
+            "prop": "savejar",
+            "size": 0.3,
+            "k": 0.1,
+            "label": "Investments"
+          },
+          {
+            "id": "month",
+            "prop": "coin",
+            "size": 0.3,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "assumed"
+          },
+          {
+            "at": "puts",
+            "do": "doc",
+            "title": "The plan",
+            "rows": [
+              {
+                "label": "Each month",
+                "value": "{save_amount}",
+                "at": "month"
+              },
+              {
+                "label": "For",
+                "value": "{save_years} years",
+                "at": "years"
+              },
+              {
+                "label": "Growth, assumed",
+                "value": "{save_rate} a year",
+                "at": "assumed"
+              }
+            ]
+          },
+          {
+            "at": "month",
+            "do": "enter",
+            "target": "month"
+          },
+          {
+            "at": "month",
+            "do": "flow",
+            "target": "month",
+            "to": "assumed",
+            "n": 5
+          },
+          {
+            "at": "assumed",
+            "do": "fill",
+            "target": "assumed",
+            "k": 0.4
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "stage": "kitchen",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "puts"
+        },
+        {
+          "kind": "whoosh",
+          "at": "month"
+        },
+        {
+          "kind": "pop-high",
+          "at": "years"
+        },
+        {
+          "kind": "ding",
+          "at": "assumed"
+        }
+      ]
+    },
+    {
+      "id": "c3-ask",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "That sounds like a really solid plan. So where does it actually get me?",
+      "events": {
+        "solid": {
+          "word": "solid"
+        },
+        "where": {
+          "word": "where"
+        },
+        "get": {
+          "word": "get"
+        }
+      },
+      "params": {
+        "set": "market",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "confused"
+              },
+              {
+                "at": "solid",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              },
+              {
+                "at": "where",
+                "pose": "shrug",
+                "expression": "confused"
+              },
+              {
+                "at": "get",
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "rohan"
+          },
+          {
+            "at": "get",
+            "size": "close",
+            "on": "rohan",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Where?",
+          "at": "get",
+          "color": "gold",
+          "where": "top"
+        },
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "solid"
+        },
+        {
+          "kind": "whoosh",
+          "at": "where"
+        },
+        {
+          "kind": "pop-high",
+          "at": "get"
+        }
+      ]
+    },
+    {
+      "id": "c3-grows",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "It grows to {save_final_long}, and most of that is growth, because he only ever put in {save_invested} himself.",
+      "events": {
+        "grows": {
+          "word": "grows"
+        },
+        "growth": {
+          "word": "growth"
+        },
+        "only": {
+          "word": "only"
+        },
+        "himself": {
+          "word": "himself"
+        },
+        "and": {
+          "word": "and"
+        },
+        "put": {
+          "word": "put"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "field",
+          "tint": "green"
+        },
+        "items": [
+          {
+            "id": "grows",
+            "prop": "savejar",
+            "x": 0.5,
+            "size": 0.46,
+            "k": 0.3,
+            "label": "His pot"
+          },
+          {
+            "id": "growth",
+            "prop": "coin",
+            "x": 0.2,
+            "size": 0.26,
+            "hidden": true
+          },
+          {
+            "id": "himself",
+            "prop": "cash",
+            "x": 0.82,
+            "size": 0.26,
+            "hidden": true,
+            "label": "Put in"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "grows"
+          },
+          {
+            "at": "grows",
+            "do": "fill",
+            "target": "grows",
+            "k": 1
+          },
+          {
+            "at": "growth",
+            "do": "enter",
+            "target": "growth",
+            "how": "rise"
+          },
+          {
+            "at": "growth",
+            "do": "flow",
+            "target": "growth",
+            "to": "grows",
+            "n": 6
+          },
+          {
+            "at": "only",
+            "do": "enter",
+            "target": "himself"
+          },
+          {
+            "at": "himself",
+            "do": "grow",
+            "target": "himself",
+            "scale": 1.15
+          },
+          {
+            "at": "and",
+            "do": "shake",
+            "target": "grows"
+          },
+          {
+            "at": "put",
+            "do": "glow",
+            "target": "growth"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "grows"
+          },
+          {
+            "at": "only",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "himself",
+            "size": "close",
+            "on": "himself",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "grows"
+        },
+        {
+          "kind": "whoosh",
+          "at": "growth"
+        },
+        {
+          "kind": "pop-high",
+          "at": "only"
+        },
+        {
+          "kind": "ding",
+          "at": "himself"
+        }
+      ]
+    },
+    {
+      "id": "c3-milli",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "On paper, that makes Rohan a millionaire. Now set his whole pot down right next to a billion.",
+      "events": {
+        "paper": {
+          "word": "paper"
+        },
+        "millionaire": {
+          "word": "millionaire"
+        },
+        "set": {
+          "word": "set"
+        },
+        "billion": {
+          "word": "billion"
+        },
+        "makes": {
+          "word": "makes"
+        },
+        "pot": {
+          "word": "pot"
+        }
+      },
+      "params": {
+        "items": [
+          {
+            "id": "jar",
+            "prop": "savejar",
+            "x": 0.25,
+            "size": 0.38,
+            "k": 1,
+            "label": "His pot"
+          },
+          {
+            "id": "room",
+            "prop": "warehouse",
+            "x": 0.75,
+            "size": 0.43,
+            "hidden": true,
+            "k": 1,
+            "label": "A billion"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "jar"
+          },
+          {
+            "at": "paper",
+            "do": "stamp",
+            "target": "jar",
+            "text": "Millionaire"
+          },
+          {
+            "at": "set",
+            "do": "move",
+            "target": "jar",
+            "to": {
+              "x": 0.45,
+              "y": 0
+            }
+          },
+          {
+            "at": "billion",
+            "do": "enter",
+            "target": "room",
+            "how": "rise"
+          },
+          {
+            "at": "makes",
+            "do": "shake",
+            "target": "jar"
+          },
+          {
+            "at": "pot",
+            "do": "glow",
+            "target": "room"
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "world": {
+          "kind": "bank",
+          "tint": "gold"
+        },
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "billion",
+            "size": "close",
+            "on": "room",
+            "move": true
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "paper"
+        },
+        {
+          "kind": "whoosh",
+          "at": "millionaire"
+        },
+        {
+          "kind": "pop-high",
+          "at": "set"
+        },
+        {
+          "kind": "ding",
+          "at": "billion"
+        }
+      ]
+    },
+    {
+      "id": "c3-short",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "A billion is still {short_diff} more than everything his plan grows to in {save_years} years.",
+      "events": {
+        "still": {
+          "word": "still"
+        },
+        "mid": {
+          "word": 6
+        },
+        "more": {
+          "word": "more"
+        },
+        "everything": {
+          "word": "everything"
+        },
+        "plan": {
+          "word": "plan"
+        },
+        "grows": {
+          "word": "grows"
+        }
+      },
+      "params": {
+        "header": "Next to a billion",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "everything",
+            "prop": "savejar",
+            "size": 0.3,
+            "k": 1
+          },
+          {
+            "id": "room",
+            "prop": "pallet",
+            "size": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "room"
+          },
+          {
+            "at": "still",
+            "do": "bars",
+            "title": "Rohan vs a billion",
+            "items": [
+              {
+                "label": "His plan",
+                "text": "{save_final}",
+                "value": "@save.final",
+                "at": "plan",
+                "tone": "bad"
+              },
+              {
+                "label": "A billion",
+                "text": "{room_final}",
+                "value": "@room.final",
+                "at": "still",
+                "tone": "good"
+              }
+            ]
+          },
+          {
+            "at": "more",
+            "do": "stamp",
+            "target": "everything",
+            "text": "{short_diff} short"
+          },
+          {
+            "at": "mid",
+            "do": "shake",
+            "target": "room"
+          },
+          {
+            "at": "everything",
+            "do": "shrink",
+            "target": "everything",
+            "scale": 0.6
+          },
+          {
+            "at": "grows",
+            "do": "glow",
+            "target": "room"
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        },
+        "stage": "street",
+        "cast": [
+          {
+            "who": "priya",
+            "spot": 0.38,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "still"
+        },
+        {
+          "kind": "whoosh",
+          "at": "mid"
+        },
+        {
+          "kind": "pop-high",
+          "at": "more"
+        },
+        {
+          "kind": "ding",
+          "at": "everything"
+        }
+      ]
+    },
+    {
+      "id": "c3-room",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "In our room of notes, his whole life of saving is one small bundle on the floor, and the rest of the room is still empty.",
+      "events": {
+        "room": {
+          "word": "room"
+        },
+        "saving": {
+          "word": "saving"
+        },
+        "bundle": {
+          "word": "bundle"
+        },
+        "floor": {
+          "word": "floor"
+        },
+        "empty": {
+          "word": "empty"
+        },
+        "notes": {
+          "word": "notes"
+        },
+        "rest": {
+          "word": "rest"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "bank",
+          "tint": "dark"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.16,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "empty",
+                "pose": "facepalm",
+                "expression": "sad"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "room",
+            "prop": "warehouse",
+            "x": 0.6,
+            "size": 0.5,
+            "k": 0
+          },
+          {
+            "id": "bundle",
+            "prop": "strap",
+            "x": 0.45,
+            "size": 0.1,
+            "hidden": true,
+            "label": "His saving"
+          },
+          {
+            "id": "floor",
+            "prop": "forklift",
+            "x": 0.86,
+            "size": 0.2,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "room"
+          },
+          {
+            "at": "saving",
+            "do": "enter",
+            "target": "bundle",
+            "how": "drop"
+          },
+          {
+            "at": "bundle",
+            "do": "glow",
+            "target": "bundle"
+          },
+          {
+            "at": "floor",
+            "do": "enter",
+            "target": "floor"
+          },
+          {
+            "at": "empty",
+            "do": "shake",
+            "target": "room"
+          },
+          {
+            "at": "notes",
+            "do": "glow",
+            "target": "floor"
+          },
+          {
+            "at": "rest",
+            "do": "shake",
+            "target": "room"
+          }
+        ],
+        "hud": {
+          "counter": {
+            "value": "@save.final",
+            "text": "{save_final}",
+            "label": "Rohan's pot",
+            "at": "start"
+          },
+          "noCounter": false,
+          "level": 3
+        },
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "bundle",
+            "size": "close",
+            "on": "bundle",
+            "move": true
+          },
+          {
+            "at": "empty",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "room"
+        },
+        {
+          "kind": "whoosh",
+          "at": "saving"
+        },
+        {
+          "kind": "pop-high",
+          "at": "bundle"
+        },
+        {
+          "kind": "ding",
+          "at": "floor"
+        }
+      ]
+    },
+    {
+      "id": "c3-sharma",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "I have known plenty of careful savers in my life. I never met one who saved a billion.",
+      "events": {
+        "known": {
+          "word": "known"
+        },
+        "careful": {
+          "word": "careful"
+        },
+        "never": {
+          "word": "never"
+        },
+        "billion": {
+          "word": "billion"
+        },
+        "saved": {
+          "word": "saved"
+        }
+      },
+      "params": {
+        "set": "bank",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "known",
+                "pose": "think",
+                "expression": "smirk"
+              },
+              {
+                "at": "careful",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              },
+              {
+                "at": "never",
+                "pose": "shrug",
+                "expression": "smirk"
+              },
+              {
+                "at": "saved",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "billion",
+                "pose": "hips",
+                "expression": "proud"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "never",
+            "size": "extreme",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Never",
+          "at": "never",
+          "color": "bad",
+          "where": "top"
+        },
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "known"
+        },
+        {
+          "kind": "whoosh",
+          "at": "careful"
+        },
+        {
+          "kind": "pop-high",
+          "at": "never"
+        },
+        {
+          "kind": "ding",
+          "at": "billion"
+        }
+      ]
+    },
+    {
+      "id": "c3-tease",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Spending, earning, saving: none of them come close. So how does the money keep coming for the people who already have it?",
+      "events": {
+        "spending": {
+          "word": "Spending"
+        },
+        "earning": {
+          "word": "earning"
+        },
+        "saving": {
+          "word": "saving"
+        },
+        "none": {
+          "word": "none"
+        },
+        "close": {
+          "word": "close"
+        },
+        "money": {
+          "word": "money"
+        },
+        "keep": {
+          "word": "keep"
+        },
+        "already": {
+          "word": "already"
+        }
+      },
+      "params": {
+        "kicker": "Three ways down",
+        "bg": "plum",
+        "prop": "fountain",
+        "lines": [
+          {
+            "text": "Spend · Earn · Save",
+            "at": "spending",
+            "size": "small",
+            "strike": "none"
+          },
+          {
+            "text": "None come close",
+            "at": "close",
+            "size": "big"
+          },
+          {
+            "text": "So how does money",
+            "at": "money",
+            "size": "small"
+          },
+          {
+            "text": "keep coming?",
+            "at": "keep",
+            "size": "huge"
+          },
+          {
+            "text": "For the rich",
+            "at": "already",
+            "size": "small"
+          }
+        ],
+        "hud": {
+          "level": 3,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "spending"
+        },
+        {
+          "kind": "whoosh",
+          "at": "earning"
+        },
+        {
+          "kind": "pop-high",
+          "at": "saving"
+        },
+        {
+          "kind": "ding",
+          "at": "none"
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Way four. It pays itself.",
+      "events": {
+        "pays": {
+          "word": "pays"
+        }
+      },
+      "params": {
+        "kicker": "Way four",
+        "title": "It pays",
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c4-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "If nobody earns it or saves it, then how do the rich keep getting richer every year?",
+      "events": {
+        "nobody": {
+          "word": "nobody"
+        },
+        "saves": {
+          "word": "saves"
+        },
+        "rich": {
+          "word": "rich"
+        },
+        "richer": {
+          "word": "richer"
+        },
+        "then": {
+          "word": "then"
+        }
+      },
+      "params": {
+        "header": "How do they get richer?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.28,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.74,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "room",
+            "prop": "crown",
+            "size": 0.24,
+            "label": "The rich"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "room"
+          },
+          {
+            "at": "nobody",
+            "do": "shake",
+            "target": "room"
+          },
+          {
+            "at": "rich",
+            "do": "bubble",
+            "text": "How?"
+          },
+          {
+            "at": "richer",
+            "do": "grow",
+            "target": "room",
+            "scale": 1.2
+          },
+          {
+            "at": "then",
+            "do": "shake",
+            "target": "room"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "nobody"
+        },
+        {
+          "kind": "whoosh",
+          "at": "saves"
+        },
+        {
+          "kind": "pop-high",
+          "at": "rich"
+        },
+        {
+          "kind": "ding",
+          "at": "richer"
+        }
+      ]
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "Here comes the twist. A billion never has to be spent. At an assumed {yld_fee_pct} a year, it pays {yld_per_year_total} every year, and the pile stays the same size.",
+      "events": {
+        "twist": {
+          "word": "twist"
+        },
+        "spent": {
+          "word": "spent"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "year": {
+          "word": "year"
+        },
+        "same": {
+          "word": "same"
+        }
+      },
+      "params": {
+        "component": "Turn",
+        "pile": "{room_final_long}",
+        "yearly": "{yld_per_year_total} a year",
+        "stamp": "Same size",
+        "world": {
+          "kind": "night",
+          "tint": "gold"
+        },
+        "items": [
+          {
+            "id": "room",
+            "prop": "warehouse",
+            "x": 0.25,
+            "size": 0.4,
+            "k": 1
+          },
+          {
+            "id": "fountain",
+            "prop": "fountain",
+            "x": 0.5,
+            "size": 0.3,
+            "hidden": true
+          },
+          {
+            "id": "check",
+            "prop": "paycheck",
+            "x": 0.78,
+            "size": 0.2,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "enter",
+            "target": "room"
+          },
+          {
+            "at": "pays",
+            "do": "enter",
+            "target": "fountain"
+          },
+          {
+            "at": "year",
+            "do": "enter",
+            "target": "check"
+          },
+          {
+            "at": "same",
+            "do": "glow",
+            "target": "room"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "same",
+            "size": "close",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "twist"
+        },
+        {
+          "kind": "pop",
+          "at": "pays"
+        },
+        {
+          "kind": "kaching",
+          "at": "year"
+        },
+        {
+          "kind": "boom",
+          "at": "same"
+        }
+      ]
+    },
+    {
+      "id": "c4-how",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Rent from buildings, dividends from company shares, interest on bonds: things you own pay their owners.",
+      "events": {
+        "rent": {
+          "word": "Rent"
+        },
+        "dividends": {
+          "word": "dividends"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "own": {
+          "word": "own"
+        }
+      },
+      "params": {
+        "items": [
+          {
+            "id": "rent",
+            "prop": "deed",
+            "x": 0.18,
+            "size": 0.21,
+            "label": "Buildings"
+          },
+          {
+            "id": "shares",
+            "prop": "sharecert",
+            "x": 0.39,
+            "size": 0.21,
+            "label": "Shares",
+            "hidden": true
+          },
+          {
+            "id": "bonds",
+            "prop": "bond",
+            "x": 0.61,
+            "size": 0.21,
+            "label": "Bonds",
+            "hidden": true
+          },
+          {
+            "id": "owners",
+            "prop": "fountain",
+            "x": 0.83,
+            "size": 0.21,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "rent"
+          },
+          {
+            "at": "rent",
+            "do": "grow",
+            "target": "rent",
+            "scale": 1.1
+          },
+          {
+            "at": "dividends",
+            "do": "enter",
+            "target": "shares"
+          },
+          {
+            "at": "interest",
+            "do": "enter",
+            "target": "bonds"
+          },
+          {
+            "at": "own",
+            "do": "enter",
+            "target": "owners",
+            "how": "rise"
+          },
+          {
+            "at": "own",
+            "do": "flow",
+            "target": "bonds",
+            "to": "owners",
+            "n": 5
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "world": {
+          "kind": "city",
+          "tint": "green"
+        },
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "own",
+            "size": "close",
+            "on": "bonds",
+            "move": true
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rent"
+        },
+        {
+          "kind": "whoosh",
+          "at": "dividends"
+        },
+        {
+          "kind": "pop-high",
+          "at": "interest"
+        },
+        {
+          "kind": "ding",
+          "at": "own"
+        }
+      ]
+    },
+    {
+      "id": "c4-ring",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Take just {yld_fee_pct} of the pile out each year, and everything else stays exactly where it is.",
+      "events": {
+        "take": {
+          "word": "Take"
+        },
+        "pile": {
+          "word": "pile"
+        },
+        "year": {
+          "word": "year"
+        },
+        "stays": {
+          "word": "stays"
+        },
+        "the": {
+          "word": "the"
+        }
+      },
+      "params": {
+        "header": "A small slice",
+        "bg": "cream",
+        "items": [
+          {
+            "id": "room",
+            "prop": "fountain",
+            "size": 0.3,
+            "label": "The pile"
+          },
+          {
+            "id": "coin",
+            "prop": "coin",
+            "size": 0.3,
+            "hidden": true,
+            "label": "Paid out"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "room"
+          },
+          {
+            "at": "take",
+            "do": "ring",
+            "value": "@yld.fee_pct",
+            "text": "{yld_fee_pct}",
+            "label": "Paid out a year",
+            "callout": "{yld_per_year_total}"
+          },
+          {
+            "at": "year",
+            "do": "enter",
+            "target": "coin",
+            "from": "room"
+          },
+          {
+            "at": "stays",
+            "do": "glow",
+            "target": "room"
+          },
+          {
+            "at": "the",
+            "do": "shake",
+            "target": "room"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        },
+        "stage": "studio",
+        "cast": [
+          {
+            "who": "sharma",
+            "spot": 0.38,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "take"
+        },
+        {
+          "kind": "whoosh",
+          "at": "pile"
+        },
+        {
+          "kind": "pop-high",
+          "at": "year"
+        },
+        {
+          "kind": "ding",
+          "at": "stays"
+        }
+      ]
+    },
+    {
+      "id": "c4-compare",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "That yearly income alone beats Rohan's entire career of pay by {yvc_diff}, every single year, without lifting a finger.",
+      "events": {
+        "yearly": {
+          "word": "yearly"
+        },
+        "income": {
+          "word": "income"
+        },
+        "alone": {
+          "word": "alone"
+        },
+        "entire": {
+          "word": "entire"
+        },
+        "career": {
+          "word": "career"
+        },
+        "fig": {
+          "word": 12
+        },
+        "every": {
+          "word": "every"
+        },
+        "single": {
+          "word": "single"
+        },
+        "lifting": {
+          "word": "lifting"
+        },
+        "finger": {
+          "word": "finger"
+        },
+        "pay": {
+          "word": "pay"
+        }
+      },
+      "params": {
+        "header": "Next to his pay",
+        "bg": "coral",
+        "items": [
+          {
+            "id": "single",
+            "prop": "cash",
+            "x": 0.2,
+            "size": 0.4,
+            "label": "His career"
+          },
+          {
+            "id": "finger",
+            "prop": "fountain",
+            "x": 0.8,
+            "size": 0.41,
+            "label": "The billion"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "finger"
+          },
+          {
+            "at": "yearly",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{yld_per_year_total}"
+              },
+              {
+                "text": "− {career_total}",
+                "at": "alone"
+              }
+            ],
+            "result": {
+              "text": "{yvc_diff}",
+              "at": "career"
+            }
+          },
+          {
+            "at": "income",
+            "do": "glow",
+            "target": "single"
+          },
+          {
+            "at": "entire",
+            "do": "glow",
+            "target": "single"
+          },
+          {
+            "at": "fig",
+            "do": "shake",
+            "target": "finger"
+          },
+          {
+            "at": "every",
+            "do": "glow",
+            "target": "finger"
+          },
+          {
+            "at": "single",
+            "do": "multiply",
+            "target": "single",
+            "n": 5
+          },
+          {
+            "at": "lifting",
+            "do": "shake",
+            "target": "single"
+          },
+          {
+            "at": "finger",
+            "do": "grow",
+            "target": "finger",
+            "scale": 1.2
+          },
+          {
+            "at": "pay",
+            "do": "glow",
+            "target": "finger"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "yearly"
+        },
+        {
+          "kind": "whoosh",
+          "at": "income"
+        },
+        {
+          "kind": "pop-high",
+          "at": "alone"
+        },
+        {
+          "kind": "ding",
+          "at": "entire"
+        }
+      ]
+    },
+    {
+      "id": "c4-time",
+      "scene": "stats",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "To earn what that billion pays in a single year, Rohan would have to work for {yldtime_years} years.",
+      "events": {
+        "earn": {
+          "word": "earn"
+        },
+        "billion": {
+          "word": "billion"
+        },
+        "single": {
+          "word": "single"
+        },
+        "work": {
+          "word": "work"
+        }
+      },
+      "params": {
+        "kicker": "One year of it",
+        "title": "In his years",
+        "bg": "sand",
+        "prop": "fountain",
+        "at": "earn",
+        "cards": [
+          {
+            "label": "The billion pays",
+            "text": "{yld_per_year_total}",
+            "at": "billion",
+            "color": "green"
+          },
+          {
+            "label": "His salary",
+            "text": "{pay_amount}",
+            "at": "single",
+            "color": "blue"
+          },
+          {
+            "label": "Years to match",
+            "text": "{yldtime_years} years",
+            "at": "work",
+            "color": "red"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "earn"
+        },
+        {
+          "kind": "whoosh",
+          "at": "billion"
+        },
+        {
+          "kind": "pop-high",
+          "at": "single"
+        },
+        {
+          "kind": "ding",
+          "at": "work"
+        }
+      ]
+    },
+    {
+      "id": "c4-sharma",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "No salary ever teaches you this part. Once the pile is big enough, the pile does all the work.",
+      "events": {
+        "salary": {
+          "word": "salary"
+        },
+        "teaches": {
+          "word": "teaches"
+        },
+        "pile": {
+          "word": "pile"
+        },
+        "work": {
+          "word": "work"
+        },
+        "once": {
+          "word": "Once"
+        },
+        "big": {
+          "word": "big"
+        }
+      },
+      "params": {
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "smirk"
+              },
+              {
+                "at": "teaches",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "once",
+                "pose": "shrug",
+                "expression": "smirk"
+              },
+              {
+                "at": "pile",
+                "pose": "pointUp",
+                "expression": "proud"
+              },
+              {
+                "at": "big",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "work",
+                "pose": "thumbsUp",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "room"
+          },
+          {
+            "at": "pile",
+            "size": "medium",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "work",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "The pile works",
+          "at": "work",
+          "color": "good",
+          "where": "top"
+        },
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "salary"
+        },
+        {
+          "kind": "whoosh",
+          "at": "teaches"
+        },
+        {
+          "kind": "pop-high",
+          "at": "pile"
+        },
+        {
+          "kind": "ding",
+          "at": "work"
+        }
+      ]
+    },
+    {
+      "id": "c4-term",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Its name is passive income: money that comes from what you own, not from the hours you work.",
+      "events": {
+        "name": {
+          "word": "name"
+        },
+        "passive": {
+          "word": "passive"
+        },
+        "own": {
+          "word": "own"
+        },
+        "hours": {
+          "word": "hours"
+        },
+        "money": {
+          "word": "money"
+        }
+      },
+      "params": {
+        "header": "Money that works",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "fountain",
+            "prop": "fountain",
+            "x": 0.25,
+            "size": 0.42,
+            "label": "What you own"
+          },
+          {
+            "id": "glass",
+            "prop": "clock",
+            "x": 0.75,
+            "size": 0.38,
+            "hidden": true,
+            "label": "Hours"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "fountain"
+          },
+          {
+            "at": "name",
+            "do": "term",
+            "name": "Passive income"
+          },
+          {
+            "at": "own",
+            "do": "grow",
+            "target": "fountain",
+            "scale": 1.15
+          },
+          {
+            "at": "hours",
+            "do": "enter",
+            "target": "glass"
+          },
+          {
+            "at": "hours",
+            "do": "cross",
+            "target": "glass"
+          },
+          {
+            "at": "money",
+            "do": "glow",
+            "target": "glass"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "name"
+        },
+        {
+          "kind": "whoosh",
+          "at": "passive"
+        },
+        {
+          "kind": "pop-high",
+          "at": "own"
+        },
+        {
+          "kind": "ding",
+          "at": "hours"
+        }
+      ]
+    },
+    {
+      "id": "c4-priya",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "priya",
+      "transition": "cut",
+      "say": "And it works at every size. A small pile pays a small amount, but it still pays while you sleep.",
+      "events": {
+        "every": {
+          "word": "every"
+        },
+        "small": {
+          "word": "small"
+        },
+        "still": {
+          "word": "still"
+        },
+        "sleep": {
+          "word": "sleep"
+        }
+      },
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "priya",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "happy"
+              },
+              {
+                "at": "small",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "still",
+                "pose": "thumbsUp",
+                "expression": "proud"
+              },
+              {
+                "at": "sleep",
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "priya"
+          },
+          {
+            "at": "sleep",
+            "size": "close",
+            "on": "priya",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Every size",
+          "at": "every",
+          "color": "gold",
+          "where": "top"
+        },
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "every"
+        },
+        {
+          "kind": "whoosh",
+          "at": "small"
+        },
+        {
+          "kind": "pop-high",
+          "at": "still"
+        },
+        {
+          "kind": "ding",
+          "at": "sleep"
+        }
+      ]
+    },
+    {
+      "id": "c4-tease",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "A billion keeps itself going, then. But how many people in the world actually have one?",
+      "events": {
+        "keeps": {
+          "word": "keeps"
+        },
+        "many": {
+          "word": "many"
+        },
+        "world": {
+          "word": "world"
+        },
+        "actually": {
+          "word": "actually"
+        }
+      },
+      "params": {
+        "kicker": "Next · How many",
+        "bg": "slate",
+        "prop": "globe",
+        "lines": [
+          {
+            "text": "It keeps itself",
+            "at": "keeps",
+            "size": "small"
+          },
+          {
+            "text": "But how many",
+            "at": "many",
+            "size": "big"
+          },
+          {
+            "text": "actually have one?",
+            "at": "actually",
+            "size": "huge"
+          }
+        ],
+        "hud": {
+          "level": 4,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "keeps"
+        },
+        {
+          "kind": "whoosh",
+          "at": "many"
+        },
+        {
+          "kind": "pop-high",
+          "at": "world"
+        },
+        {
+          "kind": "ding",
+          "at": "actually"
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Way five. Count them.",
+      "events": {
+        "count": {
+          "word": "Count"
+        }
+      },
+      "params": {
+        "kicker": "Way five",
+        "title": "How many",
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c5-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Billionaires feel incredibly rare. So how many of them are there, really?",
+      "events": {
+        "rare": {
+          "word": "rare"
+        },
+        "many": {
+          "word": "many"
+        },
+        "really": {
+          "word": "really"
+        }
+      },
+      "params": {
+        "header": "How many are there?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.28,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.74,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "really",
+            "prop": "crowd",
+            "size": 0.24,
+            "k": 0.1,
+            "label": "Billionaires"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "really"
+          },
+          {
+            "at": "rare",
+            "do": "shrink",
+            "target": "really",
+            "scale": 0.8
+          },
+          {
+            "at": "many",
+            "do": "bubble",
+            "text": "How many?"
+          },
+          {
+            "at": "really",
+            "do": "grow",
+            "target": "really",
+            "scale": 1.3
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "rare"
+        },
+        {
+          "kind": "whoosh",
+          "at": "many"
+        },
+        {
+          "kind": "pop-high",
+          "at": "really"
+        }
+      ]
+    },
+    {
+      "id": "c5-count",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Forbes counted {fact1} billionaires in March this year, a record, and {fact3} of them live in the United States.",
+      "events": {
+        "forbes": {
+          "word": "Forbes"
+        },
+        "billionaires": {
+          "word": "billionaires"
+        },
+        "record": {
+          "word": "record"
+        },
+        "live": {
+          "word": "live"
+        },
+        "states": {
+          "word": "States"
+        }
+      },
+      "params": {
+        "header": "The billionaire list",
+        "bg": "gold",
+        "items": [
+          {
+            "id": "record",
+            "prop": "crowd",
+            "size": 0.3,
+            "k": 0.3
+          },
+          {
+            "id": "globe",
+            "prop": "globe",
+            "size": 0.3,
+            "k": 0.2,
+            "hidden": true,
+            "label": "United States"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "record"
+          },
+          {
+            "at": "forbes",
+            "do": "doc",
+            "title": "The Forbes list",
+            "rows": [
+              {
+                "label": "Billionaires",
+                "value": "{fact1}",
+                "at": "billionaires"
+              },
+              {
+                "label": "In the US",
+                "value": "{fact3}",
+                "at": "live"
+              }
+            ],
+            "stamp": {
+              "text": "A record",
+              "at": "record"
+            }
+          },
+          {
+            "at": "record",
+            "do": "fill",
+            "target": "record",
+            "k": 1
+          },
+          {
+            "at": "live",
+            "do": "enter",
+            "target": "globe"
+          },
+          {
+            "at": "states",
+            "do": "fill",
+            "target": "globe",
+            "k": 1
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        },
+        "stage": "desert",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.38,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "forbes"
+        },
+        {
+          "kind": "whoosh",
+          "at": "billionaires"
+        },
+        {
+          "kind": "pop-high",
+          "at": "record"
+        },
+        {
+          "kind": "ding",
+          "at": "live"
+        }
+      ]
+    },
+    {
+      "id": "c5-total",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Together they own {fact2}. Split evenly, that is about {club_per_part} each.",
+      "events": {
+        "together": {
+          "word": "Together"
+        },
+        "own": {
+          "word": "own"
+        },
+        "split": {
+          "word": "Split"
+        },
+        "each": {
+          "word": "each"
+        },
+        "about": {
+          "word": "about"
+        }
+      },
+      "params": {
+        "header": "All of it together",
+        "bg": "sky",
+        "items": [
+          {
+            "id": "crowd",
+            "prop": "crowd",
+            "x": 0.2,
+            "size": 0.4,
+            "label": "The list"
+          },
+          {
+            "id": "split",
+            "prop": "pallet",
+            "x": 0.8,
+            "size": 0.41,
+            "hidden": true,
+            "label": "Each"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "crowd"
+          },
+          {
+            "at": "together",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{fact2}",
+                "at": "own"
+              },
+              {
+                "text": "÷ {fact1} people",
+                "at": "split"
+              }
+            ],
+            "result": {
+              "text": "{club_per_part} each",
+              "value": "@club.per_part",
+              "at": "each"
+            }
+          },
+          {
+            "at": "split",
+            "do": "enter",
+            "target": "split",
+            "how": "rise"
+          },
+          {
+            "at": "each",
+            "do": "glow",
+            "target": "split"
+          },
+          {
+            "at": "about",
+            "do": "shake",
+            "target": "crowd"
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "together"
+        },
+        {
+          "kind": "whoosh",
+          "at": "own"
+        },
+        {
+          "kind": "pop-high",
+          "at": "split"
+        },
+        {
+          "kind": "ding",
+          "at": "each"
+        }
+      ]
+    },
+    {
+      "id": "c5-avg",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "So the average billionaire holds about {avg_ratio} our whole room of notes, not just the one.",
+      "events": {
+        "average": {
+          "word": "average"
+        },
+        "holds": {
+          "word": "holds"
+        },
+        "room": {
+          "word": "room"
+        },
+        "one": {
+          "word": "one"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "gold"
+        },
+        "items": [
+          {
+            "id": "room",
+            "prop": "warehouse",
+            "x": 0.5,
+            "size": 0.43,
+            "k": 1,
+            "label": "Our room"
+          },
+          {
+            "id": "average",
+            "prop": "crowd",
+            "x": 0.15,
+            "size": 0.26,
+            "k": 0.1
+          },
+          {
+            "id": "holds",
+            "prop": "warehouse",
+            "x": 0.82,
+            "size": 0.29,
+            "k": 1,
+            "hidden": true,
+            "label": "More rooms"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "room"
+          },
+          {
+            "at": "average",
+            "do": "enter",
+            "target": "average"
+          },
+          {
+            "at": "holds",
+            "do": "enter",
+            "target": "holds",
+            "how": "rise"
+          },
+          {
+            "at": "room",
+            "do": "multiply",
+            "target": "holds",
+            "n": 6
+          },
+          {
+            "at": "one",
+            "do": "glow",
+            "target": "room"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "room"
+          },
+          {
+            "at": "room",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          },
+          {
+            "at": "one",
+            "size": "close",
+            "on": "room",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "average"
+        },
+        {
+          "kind": "whoosh",
+          "at": "holds"
+        },
+        {
+          "kind": "pop-high",
+          "at": "room"
+        },
+        {
+          "kind": "ding",
+          "at": "one"
+        }
+      ]
+    },
+    {
+      "id": "c5-grid",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "And the whole club is small enough to fit inside one sports arena, with plenty of seats left over.",
+      "events": {
+        "club": {
+          "word": "club"
+        },
+        "arena": {
+          "word": "arena"
+        },
+        "seats": {
+          "word": "seats"
+        },
+        "enough": {
+          "word": "enough"
+        }
+      },
+      "params": {
+        "header": "The whole club",
+        "bg": "purple",
+        "items": [
+          {
+            "id": "seats",
+            "prop": "arena",
+            "size": 0.3,
+            "k": 0.3
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "seats"
+          },
+          {
+            "at": "club",
+            "do": "grid",
+            "n": 400,
+            "share": 0.2,
+            "text": "{fact1} people",
+            "label": "One arena",
+            "markAt": "seats"
+          },
+          {
+            "at": "arena",
+            "do": "stamp",
+            "target": "seats",
+            "text": "One arena"
+          },
+          {
+            "at": "seats",
+            "do": "fill",
+            "target": "seats",
+            "k": 0.6
+          },
+          {
+            "at": "enough",
+            "do": "shake",
+            "target": "seats"
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        },
+        "stage": "space",
+        "cast": [
+          {
+            "who": "priya",
+            "spot": 0.38,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "club"
+        },
+        {
+          "kind": "whoosh",
+          "at": "arena"
+        },
+        {
+          "kind": "pop-high",
+          "at": "seats"
+        }
+      ]
+    },
+    {
+      "id": "c5-time",
+      "scene": "stats",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "At Rohan's salary, all their money together would take {clubtime_years} years of work to earn.",
+      "events": {
+        "salary": {
+          "word": "salary"
+        },
+        "together": {
+          "word": "together"
+        },
+        "years": {
+          "word": "years"
+        },
+        "earn": {
+          "word": "earn"
+        }
+      },
+      "params": {
+        "kicker": "In his years",
+        "title": "The whole list",
+        "bg": "cream",
+        "prop": "crowd",
+        "at": "earn",
+        "cards": [
+          {
+            "label": "His salary",
+            "text": "{pay_amount}",
+            "at": "salary",
+            "color": "blue"
+          },
+          {
+            "label": "Their total",
+            "text": "{fact2}",
+            "at": "together",
+            "color": "orange"
+          },
+          {
+            "label": "Years of work",
+            "text": "{clubtime_years} years",
+            "at": "years",
+            "color": "red"
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "salary"
+        },
+        {
+          "kind": "whoosh",
+          "at": "together"
+        },
+        {
+          "kind": "pop-high",
+          "at": "years"
+        },
+        {
+          "kind": "ding",
+          "at": "earn"
+        }
+      ]
+    },
+    {
+      "id": "c5-sharma",
+      "scene": "shot",
+      "role": "level",
+      "speaker": "sharma",
+      "transition": "cut",
+      "say": "And very little of it is cash, mind you. It is mostly shares in companies they built, and those prices move every day.",
+      "events": {
+        "cash": {
+          "word": "cash"
+        },
+        "mind": {
+          "word": "mind"
+        },
+        "mostly": {
+          "word": "mostly"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "companies": {
+          "word": "companies"
+        },
+        "built": {
+          "word": "built"
+        },
+        "prices": {
+          "word": "prices"
+        },
+        "move": {
+          "word": "move"
+        }
+      },
+      "params": {
+        "set": "office",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "center",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              },
+              {
+                "at": "mind",
+                "pose": "think",
+                "expression": "smirk"
+              },
+              {
+                "at": "mostly",
+                "pose": "point",
+                "expression": "thinking"
+              },
+              {
+                "at": "companies",
+                "pose": "present",
+                "expression": "neutral"
+              },
+              {
+                "at": "built",
+                "pose": "present",
+                "expression": "proud"
+              },
+              {
+                "at": "prices",
+                "pose": "pointUp",
+                "expression": "thinking"
+              },
+              {
+                "at": "move",
+                "pose": "shrug",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sharma"
+          },
+          {
+            "at": "shares",
+            "size": "close",
+            "on": "sharma",
+            "move": true
+          },
+          {
+            "at": "move",
+            "size": "extreme",
+            "on": "sharma",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Mostly shares",
+          "at": "shares",
+          "color": "gold",
+          "where": "top"
+        },
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "cash"
+        },
+        {
+          "kind": "whoosh",
+          "at": "mind"
+        },
+        {
+          "kind": "pop-high",
+          "at": "mostly"
+        },
+        {
+          "kind": "ding",
+          "at": "shares"
+        }
+      ]
+    },
+    {
+      "id": "c5-tease",
+      "scene": "type",
+      "role": "tease",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Five ways in, a billion is starting to make sense. Now meet the one fortune that makes a billion look tiny.",
+      "events": {
+        "five": {
+          "word": "Five"
+        },
+        "starting": {
+          "word": "starting"
+        },
+        "sense": {
+          "word": "sense"
+        },
+        "meet": {
+          "word": "meet"
+        },
+        "fortune": {
+          "word": "fortune"
+        },
+        "tiny": {
+          "word": "tiny"
+        }
+      },
+      "params": {
+        "kicker": "Five ways down",
+        "bg": "teal",
+        "prop": "district",
+        "lines": [
+          {
+            "text": "Five ways in",
+            "at": "starting",
+            "size": "small"
+          },
+          {
+            "text": "Making sense",
+            "at": "sense",
+            "size": "small"
+          },
+          {
+            "text": "Now meet",
+            "at": "meet",
+            "size": "big"
+          },
+          {
+            "text": "one fortune",
+            "at": "fortune",
+            "size": "small"
+          },
+          {
+            "text": "a billion, tiny",
+            "at": "tiny",
+            "size": "huge"
+          }
+        ],
+        "hud": {
+          "level": 5,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "five"
+        },
+        {
+          "kind": "whoosh",
+          "at": "starting"
+        },
+        {
+          "kind": "pop-high",
+          "at": "sense"
+        },
+        {
+          "kind": "ding",
+          "at": "meet"
+        }
+      ]
+    },
+    {
+      "id": "ch6",
+      "scene": "chapter",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "Way six. Meet the richest.",
+      "events": {
+        "richest": {
+          "word": "richest"
+        }
+      },
+      "params": {
+        "kicker": "Way six",
+        "title": "The richest",
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "start"
+        }
+      ]
+    },
+    {
+      "id": "c6-ask",
+      "scene": "board",
+      "role": "level",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "So who sits right at the very top of that list?",
+      "events": {
+        "sits": {
+          "word": "sits"
+        },
+        "top": {
+          "word": "top"
+        },
+        "list": {
+          "word": "list"
+        }
+      },
+      "params": {
+        "header": "Who is at the top?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.28,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "pointUp",
+                "expression": "thinking"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.74,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "sits",
+            "prop": "crown",
+            "size": 0.22
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "sits"
+          },
+          {
+            "at": "sits",
+            "do": "shrink",
+            "target": "sits",
+            "scale": 0.8
+          },
+          {
+            "at": "top",
+            "do": "bubble",
+            "text": "Who?"
+          },
+          {
+            "at": "list",
+            "do": "glow",
+            "target": "sits"
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "sits"
+        },
+        {
+          "kind": "whoosh",
+          "at": "top"
+        },
+        {
+          "kind": "pop-high",
+          "at": "list"
+        }
+      ]
+    },
+    {
+      "id": "c6-person",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "Elon Musk, who runs Tesla and SpaceX. Forbes put him at {fact4} in March this year, the highest it has ever recorded.",
+      "events": {
+        "musk": {
+          "word": "Musk"
+        },
+        "tesla": {
+          "word": "Tesla"
+        },
+        "spacex": {
+          "word": "SpaceX"
+        },
+        "forbes": {
+          "word": "Forbes"
+        },
+        "fig": {
+          "word": 13
+        },
+        "march": {
+          "word": "March"
+        },
+        "highest": {
+          "word": "highest"
+        },
+        "recorded": {
+          "word": "recorded"
+        }
+      },
+      "params": {
+        "header": "The richest",
+        "bg": "slate",
+        "items": [
+          {
+            "id": "car",
+            "prop": "evcar",
+            "size": 0.3,
+            "label": "Tesla",
+            "hidden": true
+          },
+          {
+            "id": "highest",
+            "prop": "rocket",
+            "size": 0.3,
+            "label": "SpaceX",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "musk",
+            "do": "person",
+            "name": "Elon Musk",
+            "kicker": "Runs Tesla and SpaceX",
+            "figure": "{fact4}"
+          },
+          {
+            "at": "tesla",
+            "do": "enter",
+            "target": "car"
+          },
+          {
+            "at": "spacex",
+            "do": "enter",
+            "target": "highest",
+            "how": "rise"
+          },
+          {
+            "at": "forbes",
+            "do": "stamp",
+            "target": "highest",
+            "text": "Forbes"
+          },
+          {
+            "at": "fig",
+            "do": "shake",
+            "target": "highest"
+          },
+          {
+            "at": "march",
+            "do": "glow",
+            "target": "car"
+          },
+          {
+            "at": "highest",
+            "do": "state",
+            "target": "highest",
+            "state": "launch"
+          },
+          {
+            "at": "recorded",
+            "do": "chip",
+            "text": "A Forbes record",
+            "tone": "accent"
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        },
+        "stage": "flat",
+        "cast": [
+          {
+            "who": "sharma",
+            "spot": 0.38,
+            "scale": 1.0,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "present",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "musk"
+        },
+        {
+          "kind": "whoosh",
+          "at": "tesla"
+        },
+        {
+          "kind": "pop-high",
+          "at": "spacex"
+        },
+        {
+          "kind": "ding",
+          "at": "forbes"
+        }
+      ]
+    },
+    {
+      "id": "c6-time",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "At Rohan's salary, earning that fortune would take {musk_years} years of work, every cent saved.",
+      "events": {
+        "salary": {
+          "word": "salary"
+        },
+        "fortune": {
+          "word": "fortune"
+        },
+        "take": {
+          "word": "take"
+        },
+        "years": {
+          "word": "years"
+        },
+        "work": {
+          "word": "work"
+        },
+        "saved": {
+          "word": "saved"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "office",
+          "tint": "gold"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.14,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "phone",
+                "expression": "thinking",
+                "prop": "phone"
+              },
+              {
+                "at": "years",
+                "pose": "facepalm",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "salary",
+            "prop": "paycheck",
+            "x": 0.36,
+            "size": 0.26,
+            "label": "His salary"
+          },
+          {
+            "id": "fortune",
+            "prop": "crown",
+            "x": 0.62,
+            "size": 0.3,
+            "label": "The fortune",
+            "hidden": true
+          },
+          {
+            "id": "take",
+            "prop": "hourglass",
+            "x": 0.86,
+            "size": 0.32,
+            "k": 0.1,
+            "hidden": true,
+            "label": "Years of work"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "salary"
+          },
+          {
+            "at": "salary",
+            "do": "grow",
+            "target": "salary",
+            "scale": 1.15
+          },
+          {
+            "at": "fortune",
+            "do": "enter",
+            "target": "fortune",
+            "how": "drop"
+          },
+          {
+            "at": "take",
+            "do": "enter",
+            "target": "take"
+          },
+          {
+            "at": "years",
+            "do": "tag",
+            "target": "take",
+            "text": "{musk_years}"
+          },
+          {
+            "at": "work",
+            "do": "glow",
+            "target": "take"
+          },
+          {
+            "at": "saved",
+            "do": "state",
+            "target": "take",
+            "state": "spin"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "salary"
+          },
+          {
+            "at": "fortune",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "salary"
+        },
+        {
+          "kind": "whoosh",
+          "at": "fortune"
+        },
+        {
+          "kind": "pop-high",
+          "at": "take"
+        },
+        {
+          "kind": "ding",
+          "at": "years"
+        }
+      ]
+    },
+    {
+      "id": "c6-spend",
+      "scene": "board",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "And spending {day_amount} a day, Musk would need {muskspend_years} years to run out.",
+      "events": {
+        "spending": {
+          "word": "spending"
+        },
+        "need": {
+          "word": "need"
+        },
+        "run": {
+          "word": "run"
+        },
+        "day": {
+          "word": "day"
+        }
+      },
+      "params": {
+        "header": "Spending it",
+        "bg": "coral",
+        "items": [
+          {
+            "id": "wallet",
+            "prop": "wallet",
+            "x": 0.2,
+            "size": 0.4,
+            "label": "A day",
+            "tag": "{day_amount}"
+          },
+          {
+            "id": "need",
+            "prop": "clock",
+            "x": 0.8,
+            "size": 0.41
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "wallet"
+          },
+          {
+            "at": "spending",
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{fact4}"
+              },
+              {
+                "text": "÷ {day_per_year_total} a year",
+                "at": "need"
+              }
+            ],
+            "result": {
+              "text": "{muskspend_years} years",
+              "at": "run"
+            }
+          },
+          {
+            "at": "need",
+            "do": "state",
+            "target": "need",
+            "state": "spin"
+          },
+          {
+            "at": "run",
+            "do": "shake",
+            "target": "wallet"
+          },
+          {
+            "at": "day",
+            "do": "shake",
+            "target": "wallet"
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "spending"
+        },
+        {
+          "kind": "whoosh",
+          "at": "need"
+        },
+        {
+          "kind": "pop-high",
+          "at": "run"
+        }
+      ]
+    },
+    {
+      "id": "c6-paper",
+      "scene": "build",
+      "role": "level",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "And almost all of it is shares, so it rises and falls with the stock price, sometimes by billions in a single day.",
+      "events": {
+        "shares": {
+          "word": "shares"
+        },
+        "rises": {
+          "word": "rises"
+        },
+        "falls": {
+          "word": "falls"
+        },
+        "billions": {
+          "word": "billions"
+        },
+        "day": {
+          "word": "day"
+        },
+        "the": {
+          "word": "the"
+        }
+      },
+      "params": {
+        "world": {
+          "kind": "space",
+          "tint": "blue"
+        },
+        "items": [
+          {
+            "id": "falls",
+            "prop": "rocket",
+            "x": 0.5,
+            "size": 0.46,
+            "label": "Shares"
+          },
+          {
+            "id": "shares",
+            "prop": "evcar",
+            "x": 0.18,
+            "size": 0.26,
+            "hidden": true
+          },
+          {
+            "id": "day",
+            "prop": "hourglass",
+            "x": 0.84,
+            "size": 0.26,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "falls"
+          },
+          {
+            "at": "shares",
+            "do": "enter",
+            "target": "shares"
+          },
+          {
+            "at": "rises",
+            "do": "state",
+            "target": "falls",
+            "state": "launch"
+          },
+          {
+            "at": "falls",
+            "do": "shrink",
+            "target": "falls",
+            "scale": 0.8
+          },
+          {
+            "at": "billions",
+            "do": "grow",
+            "target": "falls",
+            "scale": 1.2
+          },
+          {
+            "at": "day",
+            "do": "enter",
+            "target": "day"
+          },
+          {
+            "at": "the",
+            "do": "shake",
+            "target": "falls"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "falls"
+          },
+          {
+            "at": "rises",
+            "size": "close",
+            "on": "falls",
+            "move": true
+          },
+          {
+            "at": "day",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "shares"
+        },
+        {
+          "kind": "whoosh",
+          "at": "rises"
+        },
+        {
+          "kind": "pop-high",
+          "at": "falls"
+        },
+        {
+          "kind": "ding",
+          "at": "billions"
+        }
+      ]
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "zoom",
+      "say": "Now picture the richest fortune. Elon Musk's {fact4} is {roomsn_years} of our rooms of notes: row after row of rooms, every single one of them packed full.",
+      "events": {
+        "richest": {
+          "word": "richest"
+        },
+        "musk": {
+          "word": "Musk's"
+        },
+        "room": {
+          "word": "rooms"
+        },
+        "row": {
+          "word": "row"
+        },
+        "packed": {
+          "word": "packed"
+        }
+      },
+      "params": {
+        "component": "Payoff",
+        "figure": "{fact4}",
+        "rooms": "{roomsn_years} rooms",
+        "ours": "Our room",
+        "world": {
+          "kind": "night",
+          "tint": "gold"
+        },
+        "items": [
+          {
+            "id": "room",
+            "prop": "warehouse",
+            "x": 0.5,
+            "size": 0.4,
+            "k": 1
+          },
+          {
+            "id": "district",
+            "prop": "district",
+            "x": 0.5,
+            "size": 0.5,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "enter",
+            "target": "room"
+          },
+          {
+            "at": "row",
+            "do": "enter",
+            "target": "district"
+          },
+          {
+            "at": "packed",
+            "do": "fill",
+            "target": "district",
+            "k": 1
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "room"
+          },
+          {
+            "at": "row",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "richest"
+        },
+        {
+          "kind": "boom",
+          "at": "musk"
+        },
+        {
+          "kind": "pop",
+          "at": "room"
+        },
+        {
+          "kind": "whoosh",
+          "at": "row"
+        },
+        {
+          "kind": "kaching",
+          "at": "packed"
+        }
+      ]
+    },
+    {
+      "id": "recap",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "So a billion outlasts any spending, outruns any paycheck and dwarfs a whole lifetime of saving.",
+      "events": {
+        "outlasts": {
+          "word": "outlasts"
+        },
+        "outruns": {
+          "word": "outruns"
+        },
+        "dwarfs": {
+          "word": "dwarfs"
+        },
+        "lifetime": {
+          "word": "lifetime"
+        }
+      },
+      "params": {
+        "items": [
+          {
+            "id": "wallet",
+            "prop": "hundred",
+            "x": 0.4,
+            "size": 0.24,
+            "label": "Spend"
+          },
+          {
+            "id": "outruns",
+            "prop": "forklift",
+            "x": 0.62,
+            "size": 0.24,
+            "label": "Earn",
+            "hidden": true
+          },
+          {
+            "id": "dwarfs",
+            "prop": "strap",
+            "x": 0.84,
+            "size": 0.22,
+            "label": "Save",
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "wallet"
+          },
+          {
+            "at": "outlasts",
+            "do": "cross",
+            "target": "wallet"
+          },
+          {
+            "at": "outruns",
+            "do": "enter",
+            "target": "outruns"
+          },
+          {
+            "at": "dwarfs",
+            "do": "enter",
+            "target": "dwarfs"
+          },
+          {
+            "at": "lifetime",
+            "do": "shrink",
+            "target": "dwarfs",
+            "scale": 0.7
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        },
+        "world": {
+          "kind": "studio",
+          "tint": "purple"
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.14,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "lifetime",
+            "size": "close",
+            "on": "dwarfs",
+            "move": true
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "outlasts"
+        },
+        {
+          "kind": "whoosh",
+          "at": "outruns"
+        },
+        {
+          "kind": "pop-high",
+          "at": "dwarfs"
+        },
+        {
+          "kind": "ding",
+          "at": "lifetime"
+        }
+      ]
+    },
+    {
+      "id": "recap2",
+      "scene": "board",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "What builds one is owning things that pay. So how many years would your own pay need?",
+      "events": {
+        "builds": {
+          "word": "builds"
+        },
+        "owning": {
+          "word": "owning"
+        },
+        "pay": {
+          "word": "pay"
+        },
+        "years": {
+          "word": "years"
+        }
+      },
+      "params": {
+        "header": "Owning things that pay",
+        "sub": "Your turn",
+        "bg": "plum",
+        "items": [
+          {
+            "id": "fountain",
+            "prop": "district",
+            "x": 0.25,
+            "size": 0.42,
+            "k": 0.4,
+            "label": "Owned"
+          },
+          {
+            "id": "glass",
+            "prop": "clock",
+            "x": 0.78,
+            "size": 0.41,
+            "hidden": true,
+            "label": "Your years"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "glow",
+            "target": "fountain"
+          },
+          {
+            "at": "builds",
+            "do": "fill",
+            "target": "fountain",
+            "k": 1
+          },
+          {
+            "at": "owning",
+            "do": "stamp",
+            "target": "fountain",
+            "text": "Own things that pay"
+          },
+          {
+            "at": "pay",
+            "do": "glow",
+            "target": "fountain"
+          },
+          {
+            "at": "years",
+            "do": "enter",
+            "target": "glass"
+          },
+          {
+            "at": "years",
+            "do": "stamp",
+            "target": "glass",
+            "text": "Your years?"
+          }
+        ],
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "builds"
+        },
+        {
+          "kind": "whoosh",
+          "at": "owning"
+        },
+        {
+          "kind": "pop-high",
+          "at": "pay"
+        },
+        {
+          "kind": "ding",
+          "at": "years"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "role": "end",
+      "speaker": "narrator",
+      "transition": "fade",
+      "say": "These numbers are illustrative, with assumed rates. Tell me your years in the comments.",
+      "events": {
+        "illustrative": {
+          "word": "illustrative"
+        },
+        "years": {
+          "word": "years"
+        },
+        "comments": {
+          "word": "comments"
+        }
+      },
+      "params": {
+        "cta": "How many years would your pay need? Comment below",
+        "follow": "Follow for the full story behind every Short",
+        "assumption": "Salary saved in full, no tax; growth and yield rates assumed; Forbes figures from its March list",
+        "hud": {
+          "level": 6,
+          "noCounter": true
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "illustrative"
+        }
+      ]
+    }
+  ],
+  "narrator": "am_michael"
+}
