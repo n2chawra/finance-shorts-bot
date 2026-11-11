@@ -31,6 +31,7 @@ import { FONT } from "../design/fonts";
 import { fitLine, fitWords, minText } from "../design/fit";
 import { countUp } from "../fmt/inr";
 import { INK, type PropSet, shade } from "./draw";
+import { withPhotos } from "./photo";
 import { SHARED_PROPS } from "./build";
 import { VIDEOS } from "../videos/hooks";
 
@@ -43,7 +44,7 @@ const dark = (bg: string) => bg === "plum" || bg === "night" || bg === "slate";
 
 const sp = (p: SceneProps, start: number, damping = 13) =>
   sec(p) < start ? 0 : spring({ frame: (sec(p) - start) * p.fps, fps: p.fps, config: { damping, stiffness: 150, mass: 0.8 } });
-const propsOf = (p: SceneProps): PropSet => ({ ...SHARED_PROPS, ...(VIDEOS[p.tl.id]?.props ?? {}) });
+const propsOf = (p: SceneProps): PropSet => withPhotos({ ...SHARED_PROPS, ...(VIDEOS[p.tl.id]?.props ?? {}) });
 
 const Backdrop: React.FC<{ p: SceneProps; bg?: string; rays?: [number, number]; children?: React.ReactNode }> = ({ p, bg = "sand", rays, children }) => {
   const [a, b] = DOCU_BG[bg] ?? DOCU_BG.sand!;

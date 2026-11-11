@@ -46,6 +46,7 @@ import { countUp } from "../fmt/inr";
 import type { Cur } from "./money";
 import { BuildScene } from "./build";
 import { INK, PALETTE, type PropSet, shade } from "./draw";
+import { withPhotos } from "./photo";
 import { SHARED_PROPS } from "./build";
 import { VIDEOS } from "../videos/hooks";
 import { showsSource } from "./source";
@@ -150,7 +151,7 @@ export const BoardScene: React.FC<SceneProps> = (p) => {
   const min = minText(w, h);
   const box = safeBox(w, h);
   const cur = (p.tl.currency ?? "USD") as Cur;
-  const props: PropSet = { ...SHARED_PROPS, ...(VIDEOS[p.tl.id]?.props ?? {}) };
+  const props: PropSet = withPhotos({ ...SHARED_PROPS, ...(VIDEOS[p.tl.id]?.props ?? {}) });
   const acts = (P.actions ?? []).map((a) => ({ ...a, start: a.sec ?? at(p, a.at, 0) })).sort((a, b) => a.start - b.start);
   const when = (ev: string | undefined, dflt: number) => (ev ? at(p, ev, dflt) : dflt);
 

@@ -64,6 +64,9 @@ own render checks it. You are checking what code cannot see.
     fixes it).
 12. **Characters:** a limb bent the wrong way, a character cut off where it shouldn't be, two
     characters overlapping. These are `[scene]` unless another actor position in the script fixes it.
+13. **Real photos** (`photo:<name>`, owner 2026-11-11): the photo shows the person or company the
+    line names at that moment, big enough to recognise (a face at least a fifth of the frame's
+    height in a Short), not cropped through the face. A wrong person is `[script]`.
 
 Confetti passing in front of text for a moment is acceptable. Judge the frames you can see; do
 not guess about frames you cannot.

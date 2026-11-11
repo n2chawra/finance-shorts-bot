@@ -15,8 +15,9 @@ profile describes the channel, and where they differ about the channel, the prof
   research and experiments; every video is narrated.
 - **Every number on screen is computed by code**, never typed by an AI. Number check, fact review and
   QA review must pass before a video ships.
-- **All audio is synthesized in code.** No downloaded music, samples, fonts or images; no copyrighted
+- **All audio is synthesized in code.** No downloaded music, samples or fonts; no copyrighted
   assets. The renderer never uses the network.
+- **Real photos and logos only with a free licence** (owner, 2026-11-11). only with a free licence from Wikimedia Commons (public domain, CC0, CC BY, CC BY-SA; never NC/ND, a search-engine image, a stock photo or another channel's frame), fetched by `python -m generator.images` and credited in the description at ship.
 - **Every video ends with "Illustrative only. Not financial advice."** Minimum text 44 px, nothing
   within 120 px of the bottom edge.
 - **Every video unique**: the variety rules in `generator/variety.py` only ever get stricter, and only

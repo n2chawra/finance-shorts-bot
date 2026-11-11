@@ -30,7 +30,7 @@ from renderer.engine.formatting import CURRENCIES
 from improvement import arms
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
-from . import editor, experiments, failures, feedback, formats, history, looks, numbers, reach, shapes, story, topics, variety
+from . import editor, experiments, failures, feedback, formats, history, images, looks, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 
@@ -361,6 +361,7 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
         return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {"beats": []}
     problems += craft.prop_problems(tl, [(e["id"], _tl(e)) for e in earlier[-craft.PROP_WINDOW:]])
     problems += story.timeline_problems(script, tl, [_read_script(e["id"], root) for e in earlier[-10:]])
+    problems += images.script_problems(script, vid, root)
     if plan_format(script) == "long" and script.get("thumbnail"):
         for k, th in thumbs.specs(script):   # A, B and C (owner, 2026-11-11: three to pick from)
             problems += [f"thumbnail {k.upper()}: {p}" for p in thumbs.spec_problems(th, plan_.get("title", script.get("title", "")), script.get("story") or plan_.get("story"))]
@@ -430,6 +431,7 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {"beats": []}
     problems += craft.prop_problems(tl_now, [(e["id"], _tl(e)) for e in earlier[-craft.PROP_WINDOW:]])
     problems += story.timeline_problems(script, tl_now, [_read_script(e["id"], root) for e in earlier[-10:]])
+    problems += images.script_problems(script, vid, root)
     # every cover a different picture: not like the last covers of this format
     problems += craft.cover_problems(d / "thumbnail.png", [(e["id"], root / "videos" / e["id"] / "thumbnail.png") for e in earlier])
     audio = report.get("audio")
@@ -454,6 +456,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     d = _dir(vid, root)
     plan, script, report = _read(d / "plan.json"), _read(d / "script.json"), _read(d / "render.json")
     plan = numbers.fill_plan(plan, script)     # {placeholders} in the title and description become Python's figures
+    plan["description"] = images.with_credits(plan["description"], script, vid, root)   # real photos are credited (CC BY/BY-SA)
     steps = json.loads((d / "run.json").read_text(encoding="utf-8"))
     checks = _latest_checks(steps)
     blockers = [f"{c} has not passed" for c in CHECKERS if checks.get(c, {}).get("status") != "ok"]
@@ -526,6 +529,8 @@ def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) 
         paths.append(shapes.FILE.as_posix())   # a new story shape joins the library as `trial`
     if (root / "remotion" / "src" / "videos" / vid).is_dir():   # the video's own code (hook, beats, props, thumbnail) ships with it
         paths.append(f"remotion/src/videos/{vid}")
+    if images.REAL.is_dir():   # real photos it fetched, with their credits
+        paths.append(images.REAL.relative_to(ROOT).as_posix())
     subprocess.run(["git", "add", *paths], cwd=root, check=True)
     subprocess.run(["git", "commit", "-q", "-m", message], cwd=root, check=True)
     if push:

@@ -217,10 +217,17 @@ $50 million salary").
   is a sourced fact from the feed (`{fact2}`) or a figure from `maths`, never typed; with neither,
   say who they are in words ("the world's most famous investor", "the man who started Facebook").
 - **A real company is shown by its name, never a pun** (owner, 2026-11-03: Apple drawn as a crate
-  of fruit and Google as a vault "is wrong… use the real company, not fake things"). Logos and
-  photos are off limits (no downloaded images, trademarks), so name it in words: a `person` panel
-  `{"name": "Apple", "kicker": "makes the iPhone", "prop": "<its product>"}`, or its product as the
-  thing with `label: "Apple"`. Draw what the company makes or does (an iPhone, a search bar, a
+  of fruit and Google as a vault "is wrong… use the real company, not fake things"). **Use the real
+  face or logo** (owner, 2026-11-11: real images approved): `python -m generator.images search "Warren
+  Buffett"` lists Commons files with their licences (OK = free: public domain, CC0, CC BY, CC BY-SA),
+  `python -m generator.images fetch buffett "File:<the OK file>"` (add `--logo` for a logo) saves it, and
+  the prop `photo:buffett` shows it as a framed print in a build, board or docu beat (`"prop":
+  "photo:buffett"`, a `person` panel's `prop`, `into` on a swap) or `<Photo name="buffett" s={...} />` in
+  your own code. `python -m generator.images list` shows what the library already has: reuse it. The
+  photo is the person, big (the hero, size 0.3+), on the word that names them; ship credits it in the
+  description. No free file? Name it in words: a `person` panel `{"name": "Apple", "kicker": "makes the
+  iPhone", "prop": "<its product>"}`, or its product as the thing with `label: "Apple"`. Never a photo
+  from a search engine, a news site, a stock library or another channel. Draw what the company makes or does (an iPhone, a search bar, a
   Coca-Cola-red bottle labelled "Coca-Cola"), never a literal reading of its name (an apple, an
   amazon river, a shell).
 - A calculation that starts from a real figure takes it as an input and names it:

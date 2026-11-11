@@ -52,6 +52,12 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   result, or two independent reputable outlets agreeing on value, unit and date) — or the video fails.
   A video that fails never ends a generation run; the run moves on to the next video.
 - **All audio is synthesized in code** (music + SFX). No downloaded music, no copyrighted assets.
+- **Real photos and logos** (owner, 2026-11-11: "I approve using real images"): a famous person or company
+  may be shown with a real photo or logo, but only a freely licensed file from Wikimedia Commons (public
+  domain, CC0, CC BY, CC BY-SA; never NC/ND, a search-engine image, a stock photo or a frame of another
+  channel's video), fetched by `python -m generator.images fetch` into `remotion/public/real/` with its
+  author and licence in `credits.json`, drawn as the prop `photo:<name>` (`remotion/src/studio/photo.tsx`),
+  and credited in the description at ship. The renderer itself never uses the network.
 - **Demand first** (owner reset, 2026-10-21): every video tells a format people already watch in the
   millions (`improvement/research/formats.json`: rich vs poor, what the rich know, traps, how they
   make money, salary breakdowns, which one are you…), named in the plan's `story` with a reference

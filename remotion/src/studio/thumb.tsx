@@ -27,11 +27,12 @@ import { FONT } from "../design/fonts";
 import { VIDEOS } from "../videos/hooks";
 import { SHARED_PROPS } from "./build";
 import type { PropSet } from "./draw";
+import { withPhotos } from "./photo";
 
 export interface ThumbProps { tl: Timeline; th: NonNullable<Timeline["thumbnail"]>; w: number; h: number }
 
 /** The video's own props and the shared money props. */
-export const propsOf = (tl: Timeline): PropSet => ({ ...SHARED_PROPS, ...(VIDEOS[tl.id]?.props ?? {}) });
+export const propsOf = (tl: Timeline): PropSet => withPhotos({ ...SHARED_PROPS, ...(VIDEOS[tl.id]?.props ?? {}) });
 
 export const Glow: React.FC<{ from: string; to: string; at?: [number, number]; children?: React.ReactNode }> = ({ from, to, at = [0.5, 0.5], children }) => (
   <AbsoluteFill style={{ background: `radial-gradient(circle at ${at[0] * 100}% ${at[1] * 100}%, ${from} 0%, ${to} 72%)`, overflow: "hidden" }}>{children}</AbsoluteFill>

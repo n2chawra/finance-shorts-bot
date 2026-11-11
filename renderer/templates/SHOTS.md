@@ -108,6 +108,8 @@ Example: `remotion/src/videos/v-remake-billionaires/props.tsx`.
 - `world.kind`: field, street, city, bank, kitchen, office, night, desert, space, studio; `tint`: red,
   gold, blue, green, purple, dark; `horizon`: this video's props, small and far. One or two worlds a video.
 - `items`: `{id, prop, x: 0..1, y?: above the ground, size?: share of height, label?, tag?, hidden?, state?, k?}`.
+  A real person or company: `prop: "photo:<name>"` (a framed print from `remotion/public/real/`,
+  `python -m generator.images`; `state: "gone"` turns it grey). Free licences only, credited at ship.
 - verbs: `enter`, `exit`, `multiply {n (from @maths), text?}`, `grow`/`shrink {scale}`, `move {to: id | {x, y}}`,
   `swap {into: prop}`, `break`, `fill`/`drain {k}`, `state {state}`, `label {text}`, `tag {text}`,
   `count {value, text}`, `shake`, `focus {size}` (camera). No `glow` (owner, 2026-11-11; `craft.stage_problems`).

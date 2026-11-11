@@ -45,6 +45,7 @@ import { type ScreenText, ScreenTexts } from "./labels";
 import { pulse, shownIn, spokenFigures } from "./figures";
 import { counterBottom, counterShown } from "./hud";
 import { Ball, Box, INK, PALETTE, type PropFC, type PropSet, Shadow, Shape } from "./draw";
+import { withPhotos } from "./photo";
 import { Note, type Cur } from "./money";
 import { VIDEOS } from "../videos/hooks";
 import { autoEnters, entry, entryStart, FLOW_SEC, flowEnd, flowPiece, hopAt, squashAt, squashScale } from "./travel";
@@ -120,7 +121,7 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
   const v = h > w;
   const t = sec(p);
   const own = VIDEOS[p.tl.id]?.props ?? {};
-  const props: PropSet = { ...SHARED, ...own };
+  const props: PropSet = withPhotos({ ...SHARED, ...own });
   const gy = groundY(P.world?.kind, h, P.world?.ground);
   const items = P.items ?? [];
   const written0 = (P.actions ?? []).map((a) => ({ ...a, start: a.sec ?? at(p, a.at, 0) }));
