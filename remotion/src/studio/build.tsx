@@ -99,6 +99,8 @@ const Missing: (name: string) => PropFC = (name) => ({ s }) => (
 );
 
 /** Actions the camera follows by itself (labels, tags and glows don't move it). */
+/** Screen pixels a pushed-in shot keeps around a thing that carries a tag or label (the text's own height plus the badge). */
+export const TEXT_MARGIN = 170;
 const AUTO_CAM = new Set(["enter", "flow", "grow", "shrink", "swap", "break", "multiply", "count", "drain", "fill"]);
 
 const back = (x: number) => { const c = clamp(x), s = 1.7; return 1 + (s + 1) * Math.pow(c - 1, 3) + s * Math.pow(c - 1, 2); };
@@ -253,7 +255,10 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     const f = frameOn(size, ...target(on), w, h);
     const st = states.find((x) => x.it.id === on);
     // a shot on a thing keeps the whole thing in the frame (2026-11-02: close shots on a big dealer cut his head off)
-    return st ? keepHeads(keepInside(f, itemBox(st), w, h, 60), itemBox(st), actorBoxes, w, h) : f;
+    // its tag and label are drawn at screen size above and below it: a pushed-in shot leaves room for them, clear of
+    // the channel badge (2026-11-11: 26 Shorts in two weeks had a tag cut at the edge, e.g. v-20261111-03 'deal')
+    const worded = !!st && !!(st.s.tag || st.s.count || st.s.copyText || st.s.label);
+    return st ? keepHeads(keepInside(f, itemBox(st), w, h, worded ? TEXT_MARGIN : 60), itemBox(st), actorBoxes, w, h) : f;
   };
   const written: (CamKey & { start: number })[] = [
     ...(P.camera ?? []).map((k) => ({ ...k, start: k.sec ?? at(p, k.at, 0) })),

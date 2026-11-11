@@ -106,6 +106,9 @@ fix any beat near a limit as well.
   is very poor… everything is in the middle, make screen bigger"): no `glow` action anywhere; a Short's
   build beat holds at most 3 things, the one the line is about at `size` 0.28-0.40, and a `grow` is
   1.3x or more. Don't open a beat on a mark at `sec: 0`; open it on a change.
+- **Edge cuts from the follow camera** (26 Shorts in two weeks, 2026-11-11): a pushed-in shot now keeps
+  170 px around a thing that carries a tag or label; still, put the beat's things between x 0.2 and 0.8
+  (a cheque at x 0.85 is cut whatever the camera does).
 - **The source line shows once** (owner, 2026-11-03): on the first board beat that says a fact; own
   code uses `showsSource(p)`.
 - **The source line fits with its month** (2026-11-09: v-20261103-01, -04-03, -05-02, -09-01, -09-03
