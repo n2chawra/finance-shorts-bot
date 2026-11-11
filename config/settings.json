@@ -1,7 +1,7 @@
 {
-  "backlog": 2,
+  "backlog": 1,
   "backlogByFormat": {
-    "short": 1,
+    "short": 0,
     "long": 1
   },
   "ingestedAt": "2026-11-11T03:45:04.042253+00:00",
@@ -12,19 +12,11 @@
   "lengthMaxSec": 35,
   "longLengthMinSec": 300,
   "longLengthMaxSec": 400,
-  "longPerWeek": 1,
+  "longPerWeek": 0,
   "longBacklogCap": 4,
-  "dailyVideoTarget": 3,
+  "dailyVideoTarget": 2,
   "shortEveryDays": 1,
   "queue": [
-    {
-      "id": "v-20261111-02",
-      "format": "short",
-      "position": 1,
-      "locked": true,
-      "picked": false,
-      "editorRank": 3
-    },
     {
       "id": "L-20261111-01",
       "format": "long",
@@ -78,11 +70,11 @@
     "paused": false,
     "research": true,
     "improver": true,
-    "dashboard": true,
+    "dashboard": false,
     "auditor": true,
-    "scout": true,
-    "studio": true,
-    "monthly": true,
-    "maxActiveExperiments": 5
+    "scout": false,
+    "studio": false,
+    "monthly": false,
+    "maxActiveExperiments": 0
   }
 }
