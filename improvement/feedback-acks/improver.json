@@ -169,6 +169,37 @@
       "action": "fixed",
       "note": "New Impact page (Insights → Impact): Shorts per week on views, % viewed, stayed-to-watch and view time, and every change the agents made with the views of the Shorts before and after it, each video linked.",
       "commit": "ce3a7a2"
+    },
+    {
+      "id": "cmwbp37000001js09yzrn0lg3",
+      "action": "fixed",
+      "note": "No, the length didn't cause it: the Ohtani script showed the $700 million deal, the deferred sum and the sponsor money on screen but never said them. A new check now fails any Short whose picture shows a figure the voice hasn't said, and an A/B test (october-voice-pace) voices half the Shorts at the October pace with 80-100 words, so there is room to explain.",
+      "commit": "ab3ec2e"
+    },
+    {
+      "id": "cmwboyhgz0001jr09j21p10p7",
+      "action": "fixed",
+      "note": "The yellow glow is gone from the build scene. A new check fails a glow, a Short's build beat with more than 3 things or nothing big (the main thing at 0.28+ of the height, up from 0.12-0.24 in the Ronaldo Short), and a grow under 1.3x (the pile grew 1.1x). The camera also stopped cutting tags at the edges.",
+      "commit": "b12f0de"
+    },
+    {
+      "id": "cmwbukoke0001jy09t4pfhr38",
+      "action": "handed",
+      "to": "dashboard",
+      "note": "Showing why each video was made, its topic's views and its inspiration on the Videos tab is a dashboard page. The data is already in each video's plan.json (feed topic, demand reference video and its views)."
+    },
+    {
+      "id": "cmwbuj1ny0001l2097747i7wr",
+      "action": "handed",
+      "to": "research",
+      "note": "Where demand signals come from (small channels whose videos get far more views than they have subscribers, rather than big channels) is how research and the market scan pick topics."
+    },
+    {
+      "id": "cmwbpc4oy0001i8090mqs0aqk",
+      "action": "partly",
+      "to": "studio",
+      "note": "The rules for every future long thumbnail are now checked: a reacting face (not a calm smirk), at most 3 things, and words that never contradict the title ('Million?' under a $1 billion title fails). Remaking this video's thumbnail before Saturday is Studio's.",
+      "commit": "958bdd6"
     }
   ]
 }
