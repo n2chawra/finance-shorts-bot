@@ -98,7 +98,7 @@ a room it floats above the cast), `actions` (each on a spoken word: `at` an even
 | `flow` | money flies from one thing to another | `target`, `to`, `n?`, `text?` |
 | `stamp` / `cross` / `tick` / `strike` | marks on a thing | `text` / – / – / `text?` (the new tag) |
 | `arrow` / `bubble` / `step` | an arrow with a label / a speech bubble / an actor steps forward | `to`, `text?` / `text` / `target: who` |
-| `grow`, `shrink`, `state`, `tag`, `label`, `count`, `multiply`, `glow`, `shake` | as in the build scene | |
+| `grow`, `shrink`, `state`, `tag`, `label`, `count`, `multiply`, `shake` | as in the build scene (no `glow`: owner, 2026-11-11) | |
 
 Panels (`doc`, `bars`, `ring`, `grid`, `calendar`, `buttons`, `person`) build up into one picture,
 three at most, stacked in the middle; chips line up under them; `clear` (or `"replace": true` on a
@@ -206,17 +206,22 @@ by default). Characters are big when they speak or react, in the hook and in the
 `number-check` fails a narrator beat whose camera frames a person.
 
 **Every spoken number moves.** While a figure is said, the thing carrying it (a tag, a label, a count)
-pulses and glows, and a figure no thing carries pops on screen by itself (`studio/figures.ts`). Put
+pulses, and a figure no thing carries pops on screen by itself (`studio/figures.ts`). Put
 each figure on the thing it belongs to, so the number lands on the picture.
 
 **Directed motion** (owner, 2026-11-02: "it's a way of presentation … it lacks wow factor"; calm,
 one-move-per-beat camera until then). The build scene's camera follows the action by itself: it
 pushes in on each thing as its action fires (holding a framing at least 1.2 s, moving in 1 s), so
 write camera keys only for a deliberate wide reveal. One hero thing per moment, big (`size`
-0.24–0.34), at most three on screen; every build beat transforms something (`swap`, `grow`,
-`flow`, `multiply`, `break`, `drain`), money travels between things on `flow`. Travel between
-beats with `match`, `whip` or `zoom-through` (four loud ones at most), a cut before a punchline.
-`shake` (a hop) and `glow` stay accents.
+0.28–0.40, near the middle so it has room to grow), at most three things in a build beat; every
+build beat transforms something (`swap`, `grow` 1.3–1.8×, `flow`, `multiply`, `break`, `drain`),
+money travels between things on `flow`. Travel between beats with `match`, `whip` or
+`zoom-through` (four loud ones at most), a cut before a punchline. `shake` (a hop) stays an accent.
+**No `glow`** (owner, 2026-11-11, on the Ronaldo Short: "The glowing thing is very poor. Don't do
+that… make screen bigger"): `renderer/craft.py` `stage_problems` fails a glow, a Short's build beat
+with more than three things or no thing at 0.28+, and a grow under 1.3×. A pile grows by
+`multiply`/`fill` or a big `grow`; "whether he plays or not" is two states of one big thing
+(`swap`/`state`), not a small extra prop.
 
 Never: "Wait, what?", "Wait. So my…", "Same X. Same Y.", "didn't lift a finger", "for doing
 nothing", or a line opening from the last 10 scripts. The picture follows every phrase: build

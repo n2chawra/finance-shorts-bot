@@ -392,3 +392,46 @@ def mark_problems(tl: dict) -> list[str]:
                 f"flows, multiplies or grows, or a panel (doc, bars, ring, grid, calendar, person, equation)"]
     return []
 
+
+
+# One big hero thing, at most three, and no halo (owner, 2026-11-11, on v-20261111-01, Ronaldo: "The glowing
+# thing is very poor. Don't do that... pile growth and he plays or not were animated poorly... everything is in
+# the middle kinda. Make screen bigger"). Its build beats had 3-4 things at 0.12-0.24 of the height, every one
+# opened on a glow, and its pile grew 1.1x. The short_story README already asked for one hero at 0.24-0.34 and
+# three things at most; this makes it a check.
+HERO_MIN = 0.28           # share of the frame's height the biggest thing in a Short's build beat reaches
+STAGE_MAX_ITEMS = 3
+GROW_MIN = 1.3            # a grow smaller than this barely shows on a phone
+DEFAULT_ITEM_SIZE = 0.22  # remotion/src/studio/build.tsx sizeOf
+
+
+def stage_problems(tl: dict) -> list[str]:
+    """Build and board beats: no glow action (any format); in a Short's build beats one big hero, three
+    things at most, and grows that show."""
+    out: list[str] = []
+    short = tl.get("format", "short") == "short"
+    glows: list[str] = []
+    for b in tl["beats"]:
+        if b.get("scene") not in ("build", "board"):
+            continue
+        p = b.get("params") or {}
+        acts = [a for a in p.get("actions") or [] if isinstance(a, dict)]
+        if any(a.get("do") == "glow" for a in acts):
+            glows.append(b["id"])
+        if not short or b["scene"] != "build":
+            continue
+        items = [i for i in p.get("items") or [] if isinstance(i, dict)]
+        if len(items) > STAGE_MAX_ITEMS:
+            out.append(f"{b['id']}: {len(items)} things on the stage (at most {STAGE_MAX_ITEMS}): keep the one the line is about "
+                       f"and the one it turns into, move the rest to another beat")
+        if items and max(float(i.get("size") or DEFAULT_ITEM_SIZE) for i in items) < HERO_MIN:
+            out.append(f"{b['id']}: no thing is big (largest size {max(float(i.get('size') or DEFAULT_ITEM_SIZE) for i in items):.2f}, "
+                       f"the hero needs {HERO_MIN}+): make the thing the line is about the hero, size {HERO_MIN}-0.40, near the middle")
+        small = [a.get("target") for a in acts if a.get("do") == "grow" and a.get("scale") is not None and float(a["scale"]) < GROW_MIN]
+        if small:
+            out.append(f"{b['id']}: grow on {', '.join(map(str, small))} under {GROW_MIN}x barely shows: grow {GROW_MIN}-1.8x, "
+                       f"or multiply/stack/fill it so the change is visible")
+    if glows:
+        out.append(f"glow in {', '.join(glows)}: the owner asked for no glow (2026-11-11); show the change instead "
+                   f"(enter, swap, flow, grow, multiply, fill) or let the camera push in on the thing")
+    return out
