@@ -627,6 +627,38 @@
       "lastTouched": {
         "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
       }
+    },
+    {
+      "id": "video-why-from-owner-note",
+      "kind": "idea",
+      "title": "Videos: show why each video was made, what inspired it and that video's views (owner note)",
+      "detail": "Owner note cmwbukoke0001jy09t4pfhr38. Read from the research feed topic in RepoDoc (topicFeed / longTopicFeed): the reason, the angle, the reference video with its views, the sources. A 'Why this video' card on the video page and an 'Inspired by … · N views' line under each title in the list.",
+      "page": "videos",
+      "found": "2026-11-11",
+      "status": "done",
+      "done": "2026-11-11",
+      "lastTouched": {
+        "component": "videos/[id] OriginCard, videos list row",
+        "day": "2026-11-11"
+      }
+    },
+    {
+      "id": "analytics-change-markers",
+      "kind": "idea",
+      "title": "Analytics: mark landed changes and variant verdicts on the channel views chart",
+      "detail": "Mixpanel (Jan 2026) and Grafana draw events in a row aligned with the time chart, grouped by type, details on hover. Our merge log and arms log already have dates: a thin marker row under the daily views chart would show the owner which change came before a rise or fall (he asked on 11-11 why the last 3 days didn't take off), without opening the Impact page.",
+      "page": "analytics",
+      "found": "2026-11-11",
+      "status": "open"
+    },
+    {
+      "id": "videos-sort-by-demand",
+      "kind": "idea",
+      "title": "Videos: sort or filter the queue by the reference video's views",
+      "detail": "Now that each video carries its reference video's views, a 'Most proven demand' sort on the Videos list would let the owner pick the next upload by demand in one tap. Small: client-side sort on origin.demand.views.",
+      "page": "videos",
+      "found": "2026-11-11",
+      "status": "open"
     }
   ]
 }
