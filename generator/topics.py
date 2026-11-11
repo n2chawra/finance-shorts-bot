@@ -80,6 +80,11 @@ RECENT = 15
 
 
 TIER_BONUS = 0.8      # core formats up, personal-budget (low) formats down
+# Demand from breakouts (owner, 2026-11-11: "someone with millions of subscribers, any video will work because
+# they have the audience... the channel with huge views and little subscribers is the right pick"): a reference
+# whose views are many times its channel's subscribers proves the topic; a giant channel's ordinary video doesn't.
+BREAKOUT = ((10.0, 1.0), (3.0, 0.6), (1.0, 0.0))   # views per subscriber at least -> bonus
+BIG_CHANNEL_PENALTY = -0.6                           # fewer views than the channel has subscribers
 
 
 def _story(topic: dict) -> str | None:
@@ -109,6 +114,18 @@ def context(entries: list[dict], root: Path = ROOT) -> dict:
     return {"recent": recent, "ours": ours}
 
 
+def breakout_of(demand) -> float | None:
+    """Views per subscriber of a reference video (`demand.outlier`, or views / `demand.channelSubs`); None when unknown."""
+    if not isinstance(demand, dict):
+        return None
+    if isinstance(demand.get("outlier"), (int, float)):
+        return float(demand["outlier"])
+    subs, views = demand.get("channelSubs"), demand.get("views")
+    if isinstance(subs, (int, float)) and isinstance(views, (int, float)):
+        return views / max(subs, 1_000)
+    return None
+
+
 def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, float]:
     """Why a topic ranks where it does (owner, 2026-10-26: "rank on the topic too, not just views";
     "test all kinds of video"): proven demand (its reference video, capped), our own results with
@@ -118,6 +135,9 @@ def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, f
     if not isinstance(views, (int, float)):
         views = 0
     parts = {"demand": round(min(DEMAND_CAP, math.log10(max(views, 10_000))), 2)}
+    outlier = breakout_of(topic.get("demand"))
+    if outlier is not None:
+        parts["breakout"] = next((b for r, b in BREAKOUT if outlier >= r), BIG_CHANNEL_PENALTY)
     parts["priority"] = {"breaking": 2.0, "trending": 2.0, "high": 0.4}.get(topic.get("priority") or "", 0.0)
     parts["global"] = 0.6 if topic.get("reach") == "global" else 0.0
     story = _story(topic)

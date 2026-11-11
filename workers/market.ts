@@ -18,7 +18,7 @@ import path from "node:path";
 import { PrismaClient } from "@prisma/client";
 
 import { existsSync } from "node:fs";
-import { CommentThreads, LongTopic, MarketConfig, SearchList, type TopicRefs, VideoDetails, dueTopics, keepRefs, parsePrevRefs, pickRefs, rankMarket } from "./lib/market.ts";
+import { ChannelList, CommentThreads, LongTopic, MarketConfig, SearchList, type TopicRefs, VideoDetails, dueTopics, keepRefs, parsePrevRefs, pickRefs, rankMarket, subscribersOf } from "./lib/market.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
 import { accessToken } from "./lib/youtube.ts";
 
@@ -46,7 +46,14 @@ async function market(token: string, cfg: MarketConfig, now: Date) {
   for (let i = 0; i < ids.length; i += 50) {
     details.push(...(await get(token, `${API}/videos?part=snippet,contentDetails,statistics&id=${ids.slice(i, i + 50).join(",")}`, VideoDetails)).items);
   }
-  return { searched: cfg.queries, regions, since: after, ...rankMarket(details, queryOf, cfg, now) };
+  // each channel's subscribers (1 unit per 50 channels), to find videos far past their channel's audience
+  const channelIds = [...new Set(details.map((d) => d.snippet.channelId).filter((x): x is string => !!x))];
+  const subs = new Map<string, number | null>();
+  for (let i = 0; i < channelIds.length; i += 50) {
+    const list = await get(token, `${API}/channels?part=statistics&id=${channelIds.slice(i, i + 50).join(",")}`, ChannelList).catch(() => ({ items: [] }));
+    for (const [k, v] of subscribersOf(list.items)) subs.set(k, v);
+  }
+  return { searched: cfg.queries, regions, since: after, ...rankMarket(details, queryOf, cfg, now, subs) };
 }
 
 /** Each open long topic's most viewed videos, searched once a week (thumb-refs.json; renderer/thumbs.py). */
@@ -107,7 +114,7 @@ async function main(): Promise<void> {
   writeFileSync(path.join(outDir, "market.json"), JSON.stringify({ note, generatedAt: now.toISOString(), ...m }, null, 2) + "\n");
   writeFileSync(path.join(outDir, "comments.json"), JSON.stringify({ note, generatedAt: now.toISOString(), videos: c }, null, 2) + "\n");
   if (refs) writeFileSync(path.join(outDir, "thumb-refs.json"), JSON.stringify({ note, generatedAt: now.toISOString(), topics: refs }, null, 2) + "\n");
-  console.log(JSON.stringify({ shorts: m.shorts.length, long: m.long.length, videosWithComments: c.length, thumbRefTopics: refs ? Object.keys(refs).length : 0 }));
+  console.log(JSON.stringify({ shorts: m.shorts.length, long: m.long.length, breakoutShorts: m.breakout.shorts.length, videosWithComments: c.length, thumbRefTopics: refs ? Object.keys(refs).length : 0 }));
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === import.meta.filename) {

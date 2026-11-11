@@ -23,6 +23,8 @@ export const MarketConfig = z.object({
   days: z.number().int().min(1).max(30).default(7),
   shortMaxSec: z.number().int().default(180),
   top: z.number().int().min(5).max(50).default(30),
+  // a breakout: views at least this many times the channel's subscribers (owner, 2026-11-11, below)
+  breakoutRatio: z.number().min(1).default(3),
   // reference thumbnails per open long topic (see ThumbRefsConfig below)
   thumbRefs: ThumbRefsConfig,
 });
@@ -32,11 +34,20 @@ export const SearchList = z.object({ items: z.array(z.object({ id: z.object({ vi
 export const VideoDetails = z.object({
   items: z.array(z.object({
     id: z.string(),
-    snippet: z.object({ title: z.string(), channelTitle: z.string(), publishedAt: z.string(), defaultAudioLanguage: z.string().optional() }),
+    snippet: z.object({ title: z.string(), channelTitle: z.string(), channelId: z.string().optional(), publishedAt: z.string(), defaultAudioLanguage: z.string().optional() }),
     contentDetails: z.object({ duration: z.string() }),
     statistics: z.object({ viewCount: z.string().optional(), likeCount: z.string().optional(), commentCount: z.string().optional() }),
   })),
 });
+export const ChannelList = z.object({
+  items: z.array(z.object({ id: z.string(), statistics: z.object({ subscriberCount: z.string().optional(), hiddenSubscriberCount: z.boolean().optional() }) })).default([]),
+});
+
+/** Subscribers per channel id (null when the channel hides them). */
+export function subscribersOf(list: z.infer<typeof ChannelList>["items"]): Map<string, number | null> {
+  return new Map(list.map((c) => [c.id, c.statistics.hiddenSubscriberCount || c.statistics.subscriberCount === undefined ? null : Number(c.statistics.subscriberCount)]));
+}
+
 export const CommentThreads = z.object({
   items: z.array(z.object({
     snippet: z.object({ topLevelComment: z.object({ snippet: z.object({ textOriginal: z.string(), likeCount: z.number(), publishedAt: z.string() }) }) }),
@@ -54,10 +65,18 @@ export function durationSec(iso: string): number {
 export type MarketVideo = {
   id: string; url: string; title: string; channel: string; publishedAt: string; durationSec: number;
   views: number; likes: number; comments: number; viewsPerHour: number; query: string;
+  /** the channel's subscribers, and views per subscriber: a video far past its channel's audience shows
+   * demand for the topic itself, not for a big channel's fans (owner, 2026-11-11: "someone with millions
+   * of subscribers, any video will work because they have the audience... the channel with huge views and
+   * little subscribers is the right pick") */
+  channelSubs?: number | null; outlier?: number | null; breakout?: boolean;
 };
 
+const SUBS_FLOOR = 1_000;   // a brand-new channel's 12 subscribers don't make every video a 1,000x outlier
+
 /** Split into Shorts and long videos and rank each by views per hour since publishing. */
-export function rankMarket(details: z.infer<typeof VideoDetails>["items"], queryOf: Map<string, string>, cfg: MarketConfig, now: Date) {
+export function rankMarket(details: z.infer<typeof VideoDetails>["items"], queryOf: Map<string, string>, cfg: MarketConfig, now: Date,
+  subsOf: Map<string, number | null> = new Map()) {
   const rows: MarketVideo[] = details.map((v) => {
     const views = Number(v.statistics.viewCount ?? 0);
     const hours = Math.max(1, (now.getTime() - Date.parse(v.snippet.publishedAt)) / 3_600_000);
@@ -67,10 +86,25 @@ export function rankMarket(details: z.infer<typeof VideoDetails>["items"], query
       title: v.snippet.title, channel: v.snippet.channelTitle, publishedAt: v.snippet.publishedAt, durationSec: sec,
       views, likes: Number(v.statistics.likeCount ?? 0), comments: Number(v.statistics.commentCount ?? 0),
       viewsPerHour: Math.round(views / hours), query: queryOf.get(v.id) ?? "",
+      ...outlierOf(views, v.snippet.channelId ? subsOf.get(v.snippet.channelId) : undefined, cfg.breakoutRatio),
     };
   }).filter((r) => r.durationSec > 0);
   const top = (xs: MarketVideo[]) => xs.sort((a, b) => b.viewsPerHour - a.viewsPerHour).slice(0, cfg.top);
-  return { shorts: top(rows.filter((r) => r.durationSec <= cfg.shortMaxSec)), long: top(rows.filter((r) => r.durationSec > cfg.shortMaxSec)) };
+  // breakouts first by views per subscriber: the topics people want whoever makes them
+  const outliers = (xs: MarketVideo[]) => xs.filter((r) => r.breakout).sort((a, b) => (b.outlier ?? 0) - (a.outlier ?? 0) || b.viewsPerHour - a.viewsPerHour).slice(0, cfg.top);
+  const isShort = (r: MarketVideo) => r.durationSec <= cfg.shortMaxSec;
+  return {
+    shorts: top(rows.filter(isShort)), long: top(rows.filter((r) => !isShort(r))),
+    breakout: { ratio: cfg.breakoutRatio, shorts: outliers(rows.filter(isShort)), long: outliers(rows.filter((r) => !isShort(r))) },
+  };
+}
+
+/** Views per subscriber and whether that makes a breakout; nothing when the subscribers are unknown. */
+export function outlierOf(views: number, subs: number | null | undefined, ratio: number): Pick<MarketVideo, "channelSubs" | "outlier" | "breakout"> {
+  if (subs === undefined) return {};
+  if (subs === null) return { channelSubs: null, outlier: null, breakout: false };
+  const outlier = Math.round((views / Math.max(subs, SUBS_FLOOR)) * 10) / 10;
+  return { channelSubs: subs, outlier, breakout: outlier >= ratio };
 }
 
 /**

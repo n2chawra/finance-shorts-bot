@@ -91,7 +91,7 @@ First run `python -m generator.run prune-feed --format long` (drops stale, expir
 {"id": "<DAY>-short-kebab", "format": "long",
  "title": "the video's big promise, as a viewer would click it",
  "stories": ["list_explained"], "currency": "USD|INR", "reach": "global|local",
- "demand": {"title": "reference video", "views": 2300000, "url": "https://..."},
+ "demand": {"title": "reference video", "views": 2300000, "url": "https://...", "channel": "its channel", "channelSubs": 90000, "outlier": 25.6},
  "category": "sip|tax|home_loan|...", "kind": "evergreen|trend|seasonal",
  "priority": "high|normal", "templates": ["long_story"],
  "search": "3-7 words people type to find this topic's hits (the market job searches it for thumbnails)",

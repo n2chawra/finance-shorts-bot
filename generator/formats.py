@@ -164,4 +164,8 @@ def check_plan(plan: dict, root: Path = ROOT, fmt: str = "short") -> list[str]:
         out.append("plan needs `demand`: {title, views, url} of a video in this format that people watch")
     elif demand["views"] < MIN_VIEWS:
         out.append(f"demand.views {demand['views']:,} is under {MIN_VIEWS:,}: pick a reference video that shows real demand")
+    elif isinstance(demand.get("channelSubs"), int) and demand["views"] < demand["channelSubs"]:
+        # owner, 2026-11-11: a giant channel's ordinary video shows its audience, not demand for the topic
+        out.append(f"demand: {demand['views']:,} views on a channel with {demand['channelSubs']:,} subscribers is that channel's "
+                   f"audience, not demand for the topic: pick a breakout (views 3x+ the channel's subscribers, market.json `breakout`)")
     return out

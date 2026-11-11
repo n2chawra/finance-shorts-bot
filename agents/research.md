@@ -88,6 +88,13 @@ the US. News is not a source of ideas any more.
    and US English, and worldwide; e.g. "rich vs poor", "billionaire", "how billionaires", "the ___ trap", "how ___ makes money",
    "salary", "retire at", "middle class"), list the finance videos with the most views in the last
    1-4 weeks and the evergreen ones with millions. Note views, age, title, channel and the format.
+   **Breakouts first** (owner, 2026-11-11: "someone with millions of subscribers, any video will work
+   because they have the audience... the channel with huge views and little subscribers is the right
+   pick"): start from `market.json` → `breakout` (Shorts and long videos whose views are 3x or more
+   their channel's subscribers, with `channelSubs` and `outlier`). A video from a channel with millions of
+   subscribers proves demand only when it also beats that audience (views above the subscriber count);
+   otherwise it shows the channel, not the topic. For a video you find by search, open its channel and
+   note the subscribers.
 2. **Update `improvement/research/formats.json`:** add a new example (title, views, url) to a format
    when you find a stronger one; add a new format when 2+ videos with 1M+ views share a shape we
    don't have (id, format, markets, name, emotion, hook, beats, titles, examples). Every format id
@@ -117,7 +124,9 @@ the US. News is not a source of ideas any more.
    two weeks or a local reference with 1M+ views; `generator/reach.py`). Each
    tagged with its `format` (the story id), a concrete everyday situation inside it ("rich vs poor:
    a ₹20,000 raise", "the 0% EMI phone", "what a $100K salary leaves you in New York"), the
-   reference video (`demand`: title, views, url), the hook line, and `maths` inputs that make the
+   reference video (`demand`: title, views, url, channel, `channelSubs`, `outlier` = views ÷ subscribers;
+   prefer a breakout, and `check-plan` fails a reference with fewer views than its channel's
+   subscribers), the hook line, and `maths` inputs that make the
    numbers real. Priority `high` for formats whose reference has 5M+ views, else `normal`.
 4. **News only when it is a trend people are already talking about** (a viral scam, a tax change
    everyone is angry about, a sale everyone is buying in), told in one of the formats, never as a
@@ -167,7 +176,7 @@ removes it:
  "kind": "evergreen|trend|seasonal", "priority": "trending|high|normal",
  "stories": ["rich_vs_poor"], "currency": "USD|INR", "reach": "global|local",
  "reach_reason": {"kind": "occasion", "name": "Diwali", "date": "YYYY-MM-DD"} or {"kind": "demand"} (local only),
- "demand": {"title": "reference video", "views": 8800000, "url": "https://..."},
+ "demand": {"title": "reference video", "views": 8800000, "url": "https://...", "channel": "its channel", "channelSubs": 120000, "outlier": 73.3},
  "hook": "the first spoken line",
  "templates": ["any"],
  "angle": "the viewer's question it answers", "why_now": "why this week",

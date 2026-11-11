@@ -56,3 +56,27 @@ test("an empty or broken previous thumb-refs file means no references yet, never
   const ok = parsePrevRefs('{"topics": {"t": {"query": "q", "searchedAt": "2026-11-10T00:00:00Z", "refs": []}}}');
   assert.deepEqual(Object.keys(ok), ["t"]);
 });
+
+test("breakouts: views far past the channel's subscribers rank first (owner, 2026-11-11)", async () => {
+  const { outlierOf, subscribersOf } = await import("../lib/market.ts");
+  const cfg = MarketConfig.parse({ regionCode: "US", relevanceLanguage: "en", queries: ["money"] });
+  assert.equal(cfg.breakoutRatio, 3);
+  const now = new Date("2026-11-11T12:00:00Z");
+  const v = (id: string, channelId: string, views: number) => ({
+    id, snippet: { title: id, channelTitle: channelId, channelId, publishedAt: "2026-11-10T12:00:00Z" },
+    contentDetails: { duration: "PT40S" }, statistics: { viewCount: String(views) },
+  });
+  const subs = subscribersOf([
+    { id: "giant", statistics: { subscriberCount: "20000000" } },
+    { id: "small", statistics: { subscriberCount: "40000" } },
+    { id: "hidden", statistics: { hiddenSubscriberCount: true } },
+    { id: "tiny", statistics: { subscriberCount: "12" } },
+  ]);
+  const r = rankMarket([v("big-channel-hit", "giant", 2_000_000), v("small-channel-hit", "small", 900_000), v("hid", "hidden", 500_000), v("new", "tiny", 2_500)], new Map(), cfg, now, subs);
+  assert.equal(r.shorts[0]!.id, "big-channel-hit");                                  // views per hour unchanged
+  assert.deepEqual(r.breakout.shorts.map((x) => x.id), ["small-channel-hit"]);        // 22.5x its 40K subscribers
+  assert.equal(r.breakout.shorts[0]!.outlier, 22.5);
+  assert.equal(r.shorts.find((x) => x.id === "big-channel-hit")!.breakout, false);    // 0.1x of 20M
+  assert.equal(r.shorts.find((x) => x.id === "new")!.outlier, 2.5);                  // floor of 1,000 subscribers
+  assert.deepEqual(outlierOf(10, undefined, 3), {});
+});

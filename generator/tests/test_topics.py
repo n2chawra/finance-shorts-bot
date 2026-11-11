@@ -207,3 +207,25 @@ def test_a_source_line_too_wide_for_a_short_fails_and_names_the_short_form() -> 
     assert source_line_problems(script("JPMorgan Chase 2025 Form 10-K", "JPMorgan Chase 4Q25 earnings"))
     assert source_line_problems(script("JPMorgan Chase", "JPMorgan Chase")) == []
     assert source_line_problems(script("Delta Air Lines (SEC 8-K, 13 Jan 2026)", fmt="long")) == []
+
+
+def test_breakout_demand_ranks_up_and_a_giant_channels_ordinary_video_down():
+    # owner, 2026-11-11: huge views on a small channel prove the topic; a big channel's audience doesn't
+    from generator.topics import breakout_of, score_parts
+    t = {"title": "x", "stories": ["money_scale"], "found": "2026-11-11", "demand": {"views": 900_000}}
+    plain = score_parts(t, "2026-11-11")
+    small = score_parts({**t, "demand": {"views": 900_000, "channelSubs": 40_000}}, "2026-11-11")
+    giant = score_parts({**t, "demand": {"views": 900_000, "channelSubs": 20_000_000}}, "2026-11-11")
+    assert "breakout" not in plain and small["breakout"] == 1.0 and giant["breakout"] < 0
+    assert breakout_of({"outlier": 4.2}) == 4.2 and breakout_of({"views": 10}) is None
+
+
+def test_plan_demand_from_a_giant_channel_fails():
+    from generator import formats
+    story = formats.load()[0]["id"]
+    base = {"story": story, "demand": {"title": "t", "views": 2_000_000, "url": "https://youtube.com/watch?v=x"}}
+    assert not any("audience" in p for p in formats.check_plan(base))
+    giant = {**base, "demand": {**base["demand"], "channelSubs": 20_000_000}}
+    assert any("audience, not demand" in p for p in formats.check_plan(giant))
+    small = {**base, "demand": {**base["demand"], "channelSubs": 50_000}}
+    assert not any("audience" in p for p in formats.check_plan(small))
