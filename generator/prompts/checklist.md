@@ -109,9 +109,11 @@ fix any beat near a limit as well.
 - **Edge cuts from the follow camera** (26 Shorts in two weeks, 2026-11-11): a pushed-in shot now keeps
   170 px around a thing that carries a tag or label; still, put the beat's things between x 0.2 and 0.8
   (a cheque at x 0.85 is cut whatever the camera does).
-- **Real faces and logos** (owner, 2026-11-11): a famous person or company is shown with `photo:<name>`
-  (`python -m generator.images search/fetch`, free licences only). A `photo:` not in the library fails
-  lint and the render with the command to fetch it.
+- **Real faces and logos** (owner, 2026-11-11): a famous person is a bobblehead actor
+  (`"who": "photo:<name>"`, never speaking) or a die-cut sticker thing (`"prop": "photo:<name>"`); a
+  company its cut-out logo. `python -m generator.images search/fetch`, free licences only. Lint fails a
+  photo not in the library, one without a cut-out, an actor without a found face, and a real person
+  as a speaker. Look at the `-head.png` before using it.
 - **The source line shows once** (owner, 2026-11-03): on the first board beat that says a fact; own
   code uses `showsSource(p)`.
 - **The source line fits with its month** (2026-11-09: v-20261103-01, -04-03, -05-02, -09-01, -09-03

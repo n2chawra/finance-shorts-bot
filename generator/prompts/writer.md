@@ -220,12 +220,22 @@ $50 million salary").
   of fruit and Google as a vault "is wrong… use the real company, not fake things"). **Use the real
   face or logo** (owner, 2026-11-11: real images approved): `python -m generator.images search "Warren
   Buffett"` lists Commons files with their licences (OK = free: public domain, CC0, CC BY, CC BY-SA),
-  `python -m generator.images fetch buffett "File:<the OK file>"` (add `--logo` for a logo) saves it, and
-  the prop `photo:buffett` shows it as a framed print in a build, board or docu beat (`"prop":
-  "photo:buffett"`, a `person` panel's `prop`, `into` on a swap) or `<Photo name="buffett" s={...} />` in
-  your own code. `python -m generator.images list` shows what the library already has: reuse it. The
-  photo is the person, big (the hero, size 0.3+), on the word that names them; ship credits it in the
-  description. No free file? Name it in words: a `person` panel `{"name": "Apple", "kicker": "makes the
+  `python -m generator.images fetch buffett "File:<the OK file>"` (add `--logo` for a logo) saves it and
+  cuts it out of its background (`pip install -r generator/requirements-images.txt` once). Pick a
+  file where the face is big, sharp and looking roughly at the camera; then **look at**
+  `remotion/public/real/buffett-head.png`: if the face is cut wrongly, re-cut with
+  `python -m generator.images cut buffett --face x,y,w,h`. Never show a photo as a rectangle. Two ways,
+  owner 2026-11-11 after a framed print looked "very bad":
+  - **The person as a bobblehead** (best, and the niche's billionaire-Short look): an actor
+    `{"who": "photo:buffett", "spot": ..., "acting": [...]}` in a build or shot beat: their real head
+    on our cartoon body in their shirt's colour, acting with poses like the cast. They **never speak**
+    (no voice in a real person's mouth): the narrator or a cast member says the line, the guest reacts.
+  - **The person or logo as a thing**: `"prop": "photo:buffett"` (a die-cut sticker with a white edge,
+    standing on the ground), the hero at size 0.35-0.45, entering on the word that names them; a
+    `person` panel's `prop`, `into` on a swap, or `<Photo name="buffett" s={...} />` /
+    `<PhotoHead name="buffett" r={...} />` in your own code.
+  `python -m generator.images list` shows what the library already has: reuse it. Ship credits it in
+  the description. No free file? Name it in words: a `person` panel `{"name": "Apple", "kicker": "makes the
   iPhone", "prop": "<its product>"}`, or its product as the thing with `label: "Apple"`. Never a photo
   from a search engine, a news site, a stock library or another channel. Draw what the company makes or does (an iPhone, a search bar, a
   Coca-Cola-red bottle labelled "Coca-Cola"), never a literal reading of its name (an apple, an

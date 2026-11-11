@@ -1,0 +1,5 @@
+# Only for `python -m generator.images` (fetching and cutting out real photos), never for the renderer.
+# rembg downloads its 4.7 MB u2netp model once per machine into ~/.u2net (never into the repo).
+opencv-python-headless>=4.8,<5
+rembg>=2.0
+onnxruntime>=1.16

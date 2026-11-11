@@ -56,8 +56,10 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   may be shown with a real photo or logo, but only a freely licensed file from Wikimedia Commons (public
   domain, CC0, CC BY, CC BY-SA; never NC/ND, a search-engine image, a stock photo or a frame of another
   channel's video), fetched by `python -m generator.images fetch` into `remotion/public/real/` with its
-  author and licence in `credits.json`, drawn as the prop `photo:<name>` (`remotion/src/studio/photo.tsx`),
-  and credited in the description at ship. The renderer itself never uses the network.
+  author and licence in `credits.json`, cut out of its background there (never shown as a rectangle),
+  drawn as a bobblehead actor `"who": "photo:<name>"` (their real head on our cartoon body; a real person
+  never speaks) or a die-cut sticker `"prop": "photo:<name>"` (`remotion/src/studio/photo.tsx`), and
+  credited in the description at ship. The renderer itself never uses the network.
 - **Demand first** (owner reset, 2026-10-21): every video tells a format people already watch in the
   millions (`improvement/research/formats.json`: rich vs poor, what the rich know, traps, how they
   make money, salary breakdowns, which one are you…), named in the plan's `story` with a reference

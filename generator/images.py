@@ -101,7 +101,7 @@ def load() -> dict:
 
 
 def fetch(name: str, title: str, logo: bool = False) -> dict:
-    """Download a freely licensed Commons file as `photo:<name>` and record its credit."""
+    """Download a freely licensed Commons file as `photo:<name>`, cut it out, and record its credit."""
     from PIL import Image
     if not NAME.match(name):
         raise ValueError(f"name {name!r}: lowercase letters, digits and hyphens (e.g. 'ronaldo', 'apple-logo')")
@@ -114,12 +114,11 @@ def fetch(name: str, title: str, logo: bool = False) -> dict:
     img = Image.open(io.BytesIO(raw))
     img.thumbnail((WIDTH, WIDTH))
     keep_alpha = logo or img.mode in ("RGBA", "LA", "P")
-    ext = "png" if keep_alpha else "jpg"
     REAL.mkdir(parents=True, exist_ok=True)
-    for old in REAL.glob(f"{name}.*"):
-        if old.suffix in (".jpg", ".png"):
+    for old in REAL.glob(f"{name}*.*"):
+        if re.fullmatch(rf"{re.escape(name)}(-cut|-head)?\.(jpg|png)", old.name):
             old.unlink()
-    out = REAL / f"{name}.{ext}"
+    out = REAL / f"{name}.{'png' if keep_alpha else 'jpg'}"
     if keep_alpha:
         img.convert("RGBA").save(out, optimize=True)
     else:
@@ -130,8 +129,118 @@ def fetch(name: str, title: str, logo: bool = False) -> dict:
         entry["restrictions"] = i["restrictions"]
     credits = load()
     credits[name] = entry
+    _save(credits)
+    return cut(name)
+
+
+def _save(credits: dict) -> None:
     CREDITS.write_text(json.dumps(dict(sorted(credits.items())), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    return entry
+
+
+# How a real photo sits in a cartoon video (research 2026-11-11, after the owner called a framed photo
+# "very bad"): never a rectangle on top of the scene. The subject is cut out of its background (die-cut),
+# edged with a thick white sticker outline and our ink line, and dropped into the set like any other thing;
+# a person can also be a bobblehead: the real head, a little oversized, on our cartoon body (the format of
+# the billionaire-tax Short with 577K likes). One treatment for every photo keeps a video coherent.
+OUTLINE = 14      # px of white sticker edge, at the cut-out's own size
+INK = (29, 36, 51, 255)
+CUT_MAX = 760     # px: a cut-out fills at most ~40% of a Short's height; keeps each file a few hundred KB
+MODEL = "u2netp"  # rembg's 4.7 MB model, downloaded once per machine (never into the repo); --model isnet-general-use for hard cases
+
+
+def _sticker(im, border: int = OUTLINE):
+    """A die-cut sticker: the subject, a white edge `border` px wide and a thin ink line around it."""
+    from PIL import Image, ImageFilter
+    pad = border * 2 + 6
+    canvas = Image.new("RGBA", (im.width + pad * 2, im.height + pad * 2), (0, 0, 0, 0))
+    canvas.paste(im, (pad, pad))
+    alpha = canvas.split()[-1].point(lambda v: 255 if v > 40 else 0)
+    white = alpha.filter(ImageFilter.MaxFilter(border * 2 + 1)).filter(ImageFilter.GaussianBlur(1.2))
+    ink = white.point(lambda v: 255 if v > 20 else 0).filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.GaussianBlur(0.8))
+    out = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    out.paste(INK, mask=ink)
+    out.paste((255, 255, 255, 255), mask=white)
+    out.alpha_composite(canvas)
+    return out.crop(out.getbbox())
+
+
+def _face(rgb) -> tuple[int, int, int, int] | None:
+    """The biggest frontal face (x, y, w, h), or None (OpenCV's bundled Haar cascade, no download)."""
+    try:
+        import cv2
+        import numpy as np
+    except ImportError:
+        return None
+    g = cv2.cvtColor(np.asarray(rgb.convert("RGB")), cv2.COLOR_RGB2GRAY)
+    cc = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+    faces = cc.detectMultiScale(g, 1.1, 5, minSize=(max(40, g.shape[1] // 12),) * 2)
+    return tuple(int(v) for v in max(faces, key=lambda f: f[2] * f[3])) if len(faces) else None
+
+
+def _median(im, box) -> str:
+    import numpy as np
+    a = np.asarray(im.crop(box).convert("RGBA")).reshape(-1, 4)
+    a = a[a[:, 3] > 200][:, :3]
+    if not len(a):
+        return "#2d3a5c"
+    r, g, b = (int(v) for v in np.median(a, axis=0))
+    return f"#{r:02x}{g:02x}{b:02x}"
+
+
+def cut(name: str, face: tuple[int, int, int, int] | None = None, model: str = MODEL) -> dict:
+    """Cut a library photo out of its background: <name>-cut.png (the subject as a sticker) and, for a
+    person, <name>-head.png (the head alone, for a bobblehead) with the skin and top colours for the body."""
+    from PIL import Image, ImageDraw, ImageFilter
+    credits = load()
+    c = credits[name]
+    src = Image.open(REAL / c["file"])
+    if c.get("logo"):
+        im = src.convert("RGBA")
+        if im.split()[-1].getextrema()[0] == 255:   # no transparency: drop the white ground connected to the edges
+            from PIL import ImageOps
+            g = ImageOps.grayscale(im)
+            bg = g.point(lambda v: 255 if v > 235 else 0)
+            mask = Image.new("L", im.size, 0)
+            for seed in ((0, 0), (im.width - 1, 0), (0, im.height - 1), (im.width - 1, im.height - 1)):
+                tmp = bg.copy()
+                ImageDraw.floodfill(tmp, seed, 128)
+                mask = Image.composite(Image.new("L", im.size, 255), mask, tmp.point(lambda v: 255 if v == 128 else 0))
+            im.putalpha(mask.point(lambda v: 0 if v else 255))
+        subject = im
+    else:
+        try:
+            from rembg import new_session, remove
+        except ImportError as e:
+            raise ValueError("cutting out a photo needs rembg: python3 -m pip install -r generator/requirements-images.txt") from e
+        subject = remove(src.convert("RGB"), session=new_session(model))
+    subject = subject.crop(subject.getbbox())
+    subject.thumbnail((CUT_MAX, CUT_MAX))
+    st = _sticker(subject)
+    st.save(REAL / f"{name}-cut.png", optimize=True)
+    c["cut"] = f"{name}-cut.png"
+    c["cutAspect"] = round(st.width / st.height, 3)
+    c.pop("head", None)
+    if not c.get("logo"):
+        f = face or _face(subject)
+        if f:
+            x, y, w, h = f
+            box = (int(x - 0.55 * w), int(y - 0.7 * h), int(x + 1.55 * w), int(y + 1.22 * h))
+            head = subject.crop(box)
+            # the neck ends in a soft curve under the chin, so the cartoon body's neck takes over
+            m = Image.new("L", head.size, 0)
+            ImageDraw.Draw(m).ellipse((0.04 * head.width, -0.75 * head.height, 0.96 * head.width, head.height * 0.995), fill=255)
+            a = Image.composite(head.split()[-1], Image.new("L", head.size, 0), m.filter(ImageFilter.GaussianBlur(3)))
+            head.putalpha(a)
+            hs = _sticker(head.crop(head.getbbox()), border=10)
+            hs.save(REAL / f"{name}-head.png", optimize=True)
+            c["head"] = f"{name}-head.png"
+            c["headAspect"] = round(hs.width / hs.height, 3)
+            c["face"] = [x, y, w, h]
+            c["skin"] = _median(subject, (x + w // 3, y + h // 2, x + 2 * w // 3, y + 3 * h // 4))
+            c["top"] = _median(subject, (x, min(subject.height - 2, y + int(2.2 * h)), x + w, min(subject.height - 1, y + int(2.6 * h))))
+    credits[name] = c
+    _save(credits)
+    return c
 
 
 def used(node) -> set[str]:
@@ -161,8 +270,15 @@ def own_code_photos(vid: str, root: Path = ROOT) -> set[str]:
 def script_problems(script: dict, vid: str | None = None, root: Path = ROOT) -> list[str]:
     credits = json.loads((root / "remotion" / "public" / "real" / "credits.json").read_text(encoding="utf-8")) \
         if (root / "remotion" / "public" / "real" / "credits.json").is_file() else {}
-    names = used(script.get("beats") or []) | (own_code_photos(vid, root) if vid else set())
+    beats = script.get("beats") or []
+    names = used(beats) | (own_code_photos(vid, root) if vid else set())
     out = []
+    # a real person acts and reacts but never speaks: no voice is put in a real person's mouth (hard rule)
+    talkers = sorted({b.get("speaker") for b in beats if str(b.get("speaker", "")).startswith(PREFIX)})
+    if talkers:
+        out.append(f"{', '.join(talkers)} speaks: a real person never gets a voice; the narrator or a cast member says the line")
+    guests = {str(a.get("who"))[len(PREFIX):] for b in beats for a in ((b.get("params") or {}).get("actors") or [])
+              if isinstance(a, dict) and str(a.get("who", "")).startswith(PREFIX)}
     for n in sorted(names):
         c = credits.get(n)
         if not c:
@@ -172,6 +288,11 @@ def script_problems(script: dict, vid: str | None = None, root: Path = ROOT) -> 
             out.append(f"photo:{n}: remotion/public/real/{c['file']} is missing; fetch it again")
         elif not licence_ok(c.get("license", "")):
             out.append(f"photo:{n}: licence {c.get('license')!r} is not free; pick another file")
+        elif not c.get("cut"):
+            out.append(f"photo:{n} has no cut-out (a photo is never shown as a rectangle): python -m generator.images cut {n}")
+        elif n in guests and not c.get("head"):
+            out.append(f"photo:{n} is an actor but no face was found for its head: python -m generator.images cut {n} --face x,y,w,h "
+                       f"(the face box in remotion/public/real/{c['cut']}), or use it as a thing (`prop`) instead")
     return out
 
 
@@ -197,6 +318,8 @@ def main(argv: list[str] | None = None) -> int:
     s = sub.add_parser("search"); s.add_argument("query"); s.add_argument("--limit", type=int, default=10)
     f = sub.add_parser("fetch"); f.add_argument("name"); f.add_argument("title"); f.add_argument("--logo", action="store_true")
     c = sub.add_parser("credits"); c.add_argument("id")
+    k = sub.add_parser("cut"); k.add_argument("name"); k.add_argument("--face", help="x,y,w,h of the face in the cut-out, when detection misses")
+    k.add_argument("--model", default=MODEL)
     sub.add_parser("list")
     a = ap.parse_args(argv)
     if a.cmd == "search":
@@ -209,6 +332,9 @@ def main(argv: list[str] | None = None) -> int:
         except ValueError as e:
             print(e, file=sys.stderr)
             return 1
+    elif a.cmd == "cut":
+        f = tuple(int(v) for v in a.face.split(",")) if a.face else None
+        print(json.dumps(cut(a.name, f, a.model), indent=2, ensure_ascii=False))
     elif a.cmd == "credits":
         d = ROOT / "videos" / a.id
         print("\n".join(credit_lines(json.loads((d / "script.json").read_text(encoding="utf-8")), a.id)) or "(no photos)")

@@ -5,6 +5,9 @@
  *
  * Per-video variety comes from outfits, settings and roles, not from new faces every time.
  */
+import CREDITS from "../../public/real/credits.json";
+import { shade } from "../studio/draw";
+
 export type HairStyle = "side-part" | "braid" | "receding" | "bun" | "curly";
 export type Top = "shirt" | "kurti" | "kurta-vest" | "hoodie" | "tee";
 
@@ -17,6 +20,8 @@ export interface Look {
   glasses?: "rect" | "round";
   bindi?: boolean; earrings?: boolean; moustache?: boolean; watch?: boolean; dupatta?: string;
   lanyard?: string; lashes?: boolean;
+  /** a real person (owner, 2026-11-11): their cut-out head from remotion/public/real on this body, bobblehead style */
+  photo?: string;
   scale: number;                 // relative height
 }
 
@@ -29,7 +34,7 @@ export interface CastMember {
   look: Look;
 }
 
-export const CAST: Record<string, CastMember> = {
+const BASE: Record<string, CastMember> = {
   rohan: {
     id: "rohan", name: "Rohan", age: 27, role: "the hero: salaried techie in Bengaluru, first real paycheque, big plans",
     personality: "optimistic, impulsive with money, quick to laugh, learns things the hard way",
@@ -61,5 +66,30 @@ export const CAST: Record<string, CastMember> = {
 
 /** Sikka: a living ₹ coin. Comic relief and a visual for "the money itself" — it gets spent, grows, runs away. */
 export const SIKKA = { id: "sikka", name: "Sikka", gold: "#ffd34d", goldShade: "#e0a800", rim: "#b8860b", ink: "#5a3a00" } as const;
+
+/** `who: "photo:<name>"`: a real person from the photo library as a guest. Their real head (a die-cut
+ * sticker, a little oversized) sits on our cartoon body in the colour of what they wear in the photo, so
+ * photo and drawing read as one style (the bobblehead look of the niche's billionaire Shorts). A guest acts
+ * and reacts but never speaks: no voice is put in a real person's mouth. */
+function guest(name: string): CastMember | undefined {
+  const c = (CREDITS as Record<string, { head?: string; skin?: string; top?: string; author?: string }>)[name];
+  if (!c?.head) return undefined;
+  const skin = c.skin ?? "#d9a07a", top = c.top ?? "#2d3a5c";
+  return {
+    id: `photo:${name}`, name, age: 0, role: "a real person, shown with their photo", personality: "",
+    look: {
+      skin, skinShade: shade(skin, -0.18), hair: "#1d1a1f", hairStyle: "side-part", ink: "#231c22", lip: "#7a3b33",
+      top: "shirt", topColor: top, topShade: shade(top, -0.2), accent: shade(top, 0.35), bottom: "#2d3a5c", shoes: "#1d2433",
+      scale: 1, photo: name,
+    },
+  };
+}
+
+export const CAST: Record<string, CastMember> = new Proxy(BASE, {
+  get(target, key) {
+    if (typeof key === "string" && !(key in target) && key.startsWith("photo:")) return guest(key.slice(6));
+    return (target as Record<string | symbol, unknown>)[key];
+  },
+});
 
 export const CAST_ORDER = ["rohan", "priya", "sharma"] as const;

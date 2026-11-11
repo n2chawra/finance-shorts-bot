@@ -21,7 +21,7 @@ def _lib(tmp_path, credits):
 
 
 def test_photos_in_a_script_must_be_in_the_library_and_are_credited(tmp_path):
-    root = _lib(tmp_path, {"ronaldo": {"file": "ronaldo.jpg", "license": "CC BY-SA 3.0", "author": "A. Person",
+    root = _lib(tmp_path, {"ronaldo": {"file": "ronaldo.jpg", "cut": "ronaldo.jpg", "license": "CC BY-SA 3.0", "author": "A. Person",
                                        "source": "https://commons.wikimedia.org/wiki/File:X.jpg"}})
     script = {"beats": [{"id": "b", "params": {"items": [{"id": "cr7", "prop": "photo:ronaldo"}],
                                                "actions": [{"do": "swap", "target": "cr7", "into": "photo:messi"}]}}]}
@@ -45,3 +45,22 @@ def test_the_library_is_licensed():
         assert images.licence_ok(c["license"]), name
         assert (images.REAL / c["file"]).is_file(), name
         assert c["author"] and c["source"].startswith("https://commons.wikimedia.org/"), name
+
+
+def test_a_photo_is_never_a_rectangle_and_a_real_person_never_speaks(tmp_path):
+    # owner, 2026-11-11: "current image use is very bad" (a framed photo on a cartoon set)
+    root = _lib(tmp_path, {"bezos": {"file": "bezos.jpg", "license": "CC BY 2.0", "author": "A", "source": "https://commons.wikimedia.org/x"},
+                           "musk": {"file": "musk.jpg", "cut": "musk.jpg", "license": "CC BY 2.0", "author": "A", "source": "https://commons.wikimedia.org/y"}})
+    script = {"beats": [
+        {"id": "a", "speaker": "photo:musk", "params": {"actors": [{"who": "photo:musk"}], "items": [{"id": "b", "prop": "photo:bezos"}]}}]}
+    probs = " | ".join(images.script_problems(script, root=root))
+    assert "photo:musk speaks" in probs
+    assert "photo:bezos has no cut-out" in probs
+    assert "photo:musk is an actor but no face" in probs
+
+
+def test_the_library_photos_are_cut_out():
+    for name, c in images.load().items():
+        assert c.get("cut") and (images.REAL / c["cut"]).is_file(), name
+        if not c.get("logo"):
+            assert c.get("head") and (images.REAL / c["head"]).is_file(), name

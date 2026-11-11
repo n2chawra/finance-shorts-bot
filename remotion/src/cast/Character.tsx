@@ -9,6 +9,7 @@ import React from "react";
 import { BODY, chain, type Chain, type Hand, type P, type Pose, shoulder } from "./rig";
 import { Face, type Expression, type Viseme } from "./face";
 import type { Look } from "./cast";
+import { PhotoHead } from "../studio/photo";
 
 export interface CharacterProps {
   look: Look;
@@ -243,6 +244,11 @@ export const Character: React.FC<CharacterProps> = ({
       {far !== "L" && !atFace("L") && arm("L")}
       {far !== "R" && !atFace("R") && arm("R")}
       <path d={`M${headX - 21},${BODY.neckY - 30 + pose.bob} L${headX + 21},${BODY.neckY - 30 + pose.bob} L${headX + 19},${top + 6} Q${headX},${top + 18} ${headX - 19},${top + 6}Z`} fill={look.skinShade} />
+      {look.photo ? (
+        <g transform={`translate(${headX},${headY}) rotate(${(pose.headTilt * 180) / Math.PI})`}>
+          <PhotoHead name={look.photo} r={r} turn={t} />
+        </g>
+      ) : (<>
       <g transform={`translate(${headX},${headY}) rotate(${(pose.headTilt * 180) / Math.PI})`}>
         {hair(look.hairStyle, r, sh, look.hair)[0]}
         {[-1, 1].map((k) => {
@@ -280,6 +286,7 @@ export const Character: React.FC<CharacterProps> = ({
           <circle cx={r * 0.9} cy={r * 2.85} r={r * 0.08} fill="#c2432f" />
         </g>
       )}
+      </>)}
       {atFace("L") && arm("L")}
       {atFace("R") && arm("R")}
     </g>
