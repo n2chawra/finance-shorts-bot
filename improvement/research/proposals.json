@@ -851,9 +851,10 @@
       "effort": "S",
       "risk": "Personal-budget formats were dropped by the variant system (0.14x); this must stay inside core formats (secret_of_rich, how_they_make_money), not drift back to budgeting",
       "metric": "views48h",
-      "status": "testing",
+      "status": "reverted",
       "route": "experiment",
-      "priority": "normal"
+      "priority": "normal",
+      "reason": "2026-11-11: evaluator revert, -97% views in 48 h (n 2 vs 1)."
     },
     {
       "id": "big-numbers-in-words",
@@ -979,9 +980,10 @@
       "effort": "S",
       "risk": "Kokoro at 1.4 can slur numbers; listen to one line with a big figure before turning it on, and keep the 'off' arm at 1.2",
       "metric": "views48h",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
-      "priority": "high"
+      "priority": "high",
+      "note": "2026-11-11: running as october-voice-pace (area voice, 8 per arm, 21 days)."
     },
     {
       "id": "extreme-close-on-the-turn",
@@ -1022,9 +1024,10 @@
       "effort": "S",
       "risk": "Low: one thumbnail per week, easy to undo; a face can feel samey across videos (rotate the cast)",
       "metric": "views48h",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "note": "2026-11-11 improver: spec check (calm face, >3 things, scale-word mismatch) and README rules; agents/studio.md is outside the improver's lane, the README is what Studio follows. Redoing L-20261111-01's thumbnail is Studio's."
     }
   ]
 }

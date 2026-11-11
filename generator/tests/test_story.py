@@ -216,3 +216,25 @@ def test_a_hook_may_not_end_like_a_recent_shorts_hook():
 
 def test_scripts_without_arms_keep_the_old_hook_check():
     assert story.script_problems(explained()) == []
+
+
+def test_spoken_figure_problems_flags_figures_the_voice_never_says():
+    # v-20261111-03 (owner 2026-11-11: "animation showing numbers difference but voice speaking was very little")
+    from generator import story as st
+    script = {"beats": [
+        {"id": "hook", "role": "hook", "say": "You think he gets paid now? Almost none.", "params": {"figure": "{fact1}"}},
+        {"id": "deal", "role": "build", "say": "His deal pays him {fact4} a year, for now.", "params": {"items": [{"tag": "{fact1}"}, {"tag": "{fact4}"}]}},
+        {"id": "forbes", "role": "build", "say": "Sponsors paid him far more.", "params": {"figure": "{fact5}"}},
+    ]}
+    probs = st.spoken_figure_problems(script)
+    assert len(probs) == 1 and "deal {fact1}" in probs[0] and "forbes {fact5}" in probs[0] and "fact4" not in probs[0]
+
+
+def test_spoken_figure_problems_passes_a_said_figure_shown_again():
+    from generator import story as st
+    script = {"beats": [
+        {"id": "hook", "role": "hook", "say": "Guess.", "params": {"figure": "{a}"}},
+        {"id": "b1", "role": "build", "say": "He made {a} last year.", "params": {"figure": "{a}"}},
+        {"id": "b2", "role": "payoff", "say": "And that keeps growing.", "params": {"pay": "{a}"}},
+    ]}
+    assert st.spoken_figure_problems(script) == []

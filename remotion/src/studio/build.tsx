@@ -99,6 +99,8 @@ const Missing: (name: string) => PropFC = (name) => ({ s }) => (
 );
 
 /** Actions the camera follows by itself (labels, tags and glows don't move it). */
+/** Screen pixels a pushed-in shot keeps around a thing that carries a tag or label (the text's own height plus the badge). */
+export const TEXT_MARGIN = 170;
 const AUTO_CAM = new Set(["enter", "flow", "grow", "shrink", "swap", "break", "multiply", "count", "drain", "fill"]);
 
 const back = (x: number) => { const c = clamp(x), s = 1.7; return 1 + (s + 1) * Math.pow(c - 1, 3) + s * Math.pow(c - 1, 2); };
@@ -181,7 +183,9 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
         case "tag": s.tag = a.text; s.tagK = back(d / 0.4); break;
         case "count": s.count = { from: s.count?.to ?? 0, to: a.value ?? 0, text: a.text ?? "", start: a.start }; s.tagK = 1; break;
         case "multiply": s.copies = Math.max(1, Math.min(MAX_COPIES, Math.round(a.n ?? 4))); s.cols = a.cols ?? 0; s.copyK = clamp(d / (a.dur ?? 1.2)); s.copyText = a.text; break;
-        case "glow": s.glow = d < 1.2 ? Math.sin((d / 1.2) * Math.PI) : 0; break;
+        // no yellow halo any more (owner, 2026-11-11: "the glowing thing is very poor. Don't do that"):
+        // an old script's glow is a small hop on its word
+        case "glow": s.hop = Math.max(s.hop, hopAt(d) * 0.6); break;
         case "shake": if (travel) s.hop = hopAt(d); else s.shake = d < 0.5 ? 1 - d / 0.5 : 0; break;
         case "stamp": case "cross": case "tick": s.marks = [...s.marks.filter((m) => m.kind !== a.do), { kind: a.do, text: a.text, d }]; s.hop = Math.max(s.hop, hopAt(d) * 0.5); break;
         case "strike": s.marks = [...s.marks, { kind: "strike", d }]; if (a.text && d > 0.45) { s.tag = a.text; s.tagK = back((d - 0.45) / 0.4); } break;
@@ -251,7 +255,10 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     const f = frameOn(size, ...target(on), w, h);
     const st = states.find((x) => x.it.id === on);
     // a shot on a thing keeps the whole thing in the frame (2026-11-02: close shots on a big dealer cut his head off)
-    return st ? keepHeads(keepInside(f, itemBox(st), w, h, 60), itemBox(st), actorBoxes, w, h) : f;
+    // its tag and label are drawn at screen size above and below it: a pushed-in shot leaves room for them, clear of
+    // the channel badge (2026-11-11: 26 Shorts in two weeks had a tag cut at the edge, e.g. v-20261111-03 'deal')
+    const worded = !!st && !!(st.s.tag || st.s.count || st.s.copyText || st.s.label);
+    return st ? keepHeads(keepInside(f, itemBox(st), w, h, worded ? TEXT_MARGIN : 60), itemBox(st), actorBoxes, w, h) : f;
   };
   const written: (CamKey & { start: number })[] = [
     ...(P.camera ?? []).map((k) => ({ ...k, start: k.sec ?? at(p, k.at, 0) })),
@@ -299,7 +306,6 @@ export const BuildScene: React.FC<SceneProps> = (p) => {
     const one = (dx: number, dy: number, sc: number, key: string, opacity = 1) => (
       <g key={key} transform={`translate(${s.x + dx + shake},${s.y + dy - lift}) rotate(${tilt}) scale(${s.show * s.scale * sc * (1 + 0.14 * beatK) * (1 - 0.08 * dim)}) scale(${qx},${qy * s.rise})`} opacity={opacity * (1 - 0.5 * dim)}
         style={{ filter: s.broken > 0 ? `saturate(${1 - s.broken * 0.7})` : undefined }}>
-        {Math.max(s.glow, beatK) > 0 && <circle cx={0} cy={-size * 0.5} r={size * 0.75} fill={PALETTE.yellow} opacity={0.35 * Math.max(s.glow, beatK)} />}
         {s.swapK < 1 && <g transform={`scale(${1 - s.swapK})`}><From s={size} t={t} k={s.k} state={s.state} seed={`${it.id}`} /></g>}
         <g transform={`scale(${s.swapK < 1 ? s.swapK : 1})`}><Prop s={size} t={t} k={s.k} state={s.state} seed={`${it.id}${key}`} /></g>
       </g>

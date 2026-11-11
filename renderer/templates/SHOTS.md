@@ -110,7 +110,7 @@ Example: `remotion/src/videos/v-remake-billionaires/props.tsx`.
 - `items`: `{id, prop, x: 0..1, y?: above the ground, size?: share of height, label?, tag?, hidden?, state?, k?}`.
 - verbs: `enter`, `exit`, `multiply {n (from @maths), text?}`, `grow`/`shrink {scale}`, `move {to: id | {x, y}}`,
   `swap {into: prop}`, `break`, `fill`/`drain {k}`, `state {state}`, `label {text}`, `tag {text}`,
-  `count {value, text}`, `glow`, `shake`, `focus {size}` (camera).
+  `count {value, text}`, `shake`, `focus {size}` (camera). No `glow` (owner, 2026-11-11; `craft.stage_problems`).
 - `camera` (since 2026-10-29): `on: "all"` frames every thing on screen and every actor head to feet;
   a `medium` or `close` shot on a thing that catches part of an actor zooms out just enough to keep
   that actor's head in frame (an actor wholly outside stays out), so item shots beside the cast are safe.

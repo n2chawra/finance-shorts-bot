@@ -84,6 +84,40 @@ BANNED = (
 OPENING_WORDS = 3
 
 
+PLACEHOLDER = re.compile(r"\{([a-z][a-z0-9_]*)\}")
+
+
+def _shown(node, out: set) -> None:
+    if isinstance(node, str):
+        out.update(PLACEHOLDER.findall(node))
+    elif isinstance(node, dict):
+        for v in node.values():
+            _shown(v, out)
+    elif isinstance(node, list):
+        for v in node:
+            _shown(v, out)
+
+
+def spoken_figure_problems(script: dict) -> list[str]:
+    """A Short's picture may not carry a figure the voice hasn't said (owner, 2026-11-11, on v-20261111-03,
+    Ohtani: "animation were showing numbers difference but voice speaking was very little to understand").
+    Its picture showed the $700 million deal, the deferred sum and the sponsor money; the voice said "far
+    more" and "a side cheque". Every figure on screen after the hook is said in that beat or before it."""
+    unsaid, said = [], set()
+    for b in script.get("beats") or []:
+        said |= set(PLACEHOLDER.findall(b.get("say") or ""))
+        if b.get("role") == "hook" or b.get("scene") == "hook":
+            continue
+        shown: set = set()
+        _shown(b.get("params") or {}, shown)
+        unsaid += [f"{b.get('id')} {{{m}}}" for m in sorted(shown - said)]
+    if not unsaid:
+        return []
+    return [f"the picture shows figures the voice never says ({', '.join(unsaid)}): say each one where it appears, "
+            f"with what it means (\"he gets {{x}} now, and {{y}} waits ten years\"), or take it off the picture; "
+            f"viewers can't follow numbers nobody explains"]
+
+
 def applies(script: dict) -> bool:
     fmt = script.get("format", "short")
     return (fmt, script.get("template") or f"{fmt}_story") in (("short", "short_story"), ("long", "long_story"))
@@ -388,6 +422,7 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
         out += voice_problems(script)
     if script.get("arms") and script.get("format", "short") == "short":
         out += hook_problems(script, earlier)
+        out += spoken_figure_problems(script)
     if script.get("shape") is not None or script.get("format") == "long" or any(b.get("scene") == "board" for b in beats):
         out += chain_problems(script)
     if sp["teases"] and len(levels) >= sp["levels_min"]:

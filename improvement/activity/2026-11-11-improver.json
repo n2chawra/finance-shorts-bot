@@ -1,0 +1,72 @@
+{
+  "agent": "improver",
+  "day": "2026-11-11",
+  "startedAt": "2026-11-11T08:53:28Z",
+  "finishedAt": "2026-11-11T09:04:57Z",
+  "summary": "Answered both of your 11 Nov notes on the videos. The yellow glow is gone, things are bigger, and the script check now fails a Short that shows a figure the voice never says. Also reverted one test, started a faster-voice test, set new long-thumbnail rules, and fixed the camera cutting tags at the edges.",
+  "decision": "acted",
+  "why": "Your notes come first. The evaluator said revert for you-in-the-core-story (-97% views at 48 h). Edge cuts were the most common QA failure (26 Shorts in 14 days). Research's top adopt item was the long thumbnail, after 4 clicks from 100 impressions.",
+  "findings": [
+    {
+      "title": "Evaluator: 46 Shorts with 48 h data",
+      "detail": "you-in-the-core-story revert (-97%, n 2 vs 1). 4 others are still waiting: hook-voice-matches-frame (day 22 of 28, 12 vs 12), ending-beats-act-and-vary (day 8 of 21), quiet-bed and chart-gap-fill (need long videos)."
+    },
+    {
+      "title": "What wins on 48 h views",
+      "detail": "story how_they_make_money 9.77x (n 5); hook secret 9.77x (n 5); length 25-29 s 12.5x (n 5, 79% viewed). Myth (0.38x) and question (0.46x) hooks are weakest."
+    },
+    {
+      "title": "Impact, latest week (2 Nov, n 8)",
+      "detail": "Median 48 h views 43 (211 the week before), 54.1% viewed (39.7%), stayed to watch 0.383 (0.388), 23.0 s average view (17.9). Retention went up, views went down."
+    },
+    {
+      "title": "Why the Ohtani script was hard to follow",
+      "detail": "It showed the $700M deal, the deferred $680M and $125M from sponsors, but the voice never said them ('far more', 'a side cheque'). It spoke 70 words in 26.7 s (157 a minute)."
+    },
+    {
+      "title": "Top failure: edges cut",
+      "detail": "26 videos, 90 QA notes in 14 days. The follow camera kept a thing inside a 60 px margin, but its tag and label sit outside the thing's box."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Reverted you-in-the-core-story",
+      "detail": "The prompt was dropped; status set to reverted in both experiment files.",
+      "branch": "agent/improver/2026-11-11",
+      "experiment": "you-in-the-core-story"
+    },
+    {
+      "title": "No glow; one big thing; grows that show",
+      "detail": "The yellow halo is removed from remotion/src/studio/build.tsx. renderer/craft.py stage_problems runs in lint and the render gates. The README, SHOTS.md and the checklist are updated.",
+      "branch": "agent/improver/2026-11-11"
+    },
+    {
+      "title": "Every figure on screen is said",
+      "detail": "generator/story.py spoken_figure_problems runs in the script check for Shorts. The checklist is updated.",
+      "branch": "agent/improver/2026-11-11"
+    },
+    {
+      "title": "Started october-voice-pace",
+      "detail": "In half the Shorts the voice runs at 1.4 with 80-100 words, and the picture keeps its 1.2 tempo (renderer/timeline/build.py voice_speed). Judged on 48 h views, 8 per arm, 21 days at most.",
+      "branch": "agent/improver/2026-11-11",
+      "experiment": "october-voice-pace"
+    },
+    {
+      "title": "Long thumbnails that get clicked (adopt)",
+      "detail": "renderer/thumbs.py spec_problems now fails a calm face, more than 3 things, and a scale word the title doesn't use. The long_story README is updated.",
+      "branch": "agent/improver/2026-11-11"
+    },
+    {
+      "title": "Follow camera keeps tags and labels in frame",
+      "detail": "Shots pushed in on a thing that carries text keep a 170 px margin. Stills on v-20261111-03 show it fixed at 10.5 s.",
+      "branch": "agent/improver/2026-11-11"
+    }
+  ],
+  "nextCheck": "2026-11-13",
+  "links": [
+    {
+      "label": "Impact",
+      "url": "improvement/weekly/impact.json"
+    }
+  ]
+}

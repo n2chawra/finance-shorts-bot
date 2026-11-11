@@ -1,6 +1,6 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 6,
+  "open": 4,
   "notes": [
     {
       "id": "cmwbukoke0001jy09t4pfhr38",
@@ -8,7 +8,7 @@
       "area": null,
       "text": "when u make videos in dahsbaord also give me reason of why that video and how many views this topic is getting. and from where u got this inspiratrion so that i can know anytime. in the videos tab",
       "status": "open",
-      "response": null,
+      "response": "improver handed → dashboard: Showing why each video was made, its topic's views and its inspiration on the Videos tab is a dashboard page. The data is already in each video's plan.json (feed topic, demand reference video and its views). · waiting for dashboard",
       "at": "2026-11-11T08:18:46.238Z",
       "video": null
     },
@@ -18,7 +18,7 @@
       "area": null,
       "text": "one more thing i just realized my demand and supply thing is correct but where we take it from matter also. like someone with millions subscripbers their any video will work because they have the audience so from there to know the content is wrong. the channle with huge views and little subscribers is the right pick there we actually understand what is in demand and make videos on the topics that actaully people want to see. because if u see last 3 days videos are not blowing upl. something is wrong.",
       "status": "open",
-      "response": null,
+      "response": "improver handed → research: Where demand signals come from (small channels whose videos get far more views than they have subscribers, rather than big channels) is how research and the market scan pick topics. · waiting for research",
       "at": "2026-11-11T08:17:29.890Z",
       "video": null
     },
@@ -28,7 +28,7 @@
       "area": "thumbnail",
       "text": "Thumbnail is very basic . It's good according to our channel. But not enough to actually make people click. My last long video has 100 thumbnail impression but only 4 clicks. Means thumbnail is the biggest problem.\nFix it and change it for this video also as it's still time before it goes live.",
       "status": "open",
-      "response": "auditor handed → studio: A long video's thumbnail is Studio's (it makes L-20261111-01 and its thumbnail); no wrong number or crash for the auditor here. · research partly → studio: Research's part is done: I diagnosed why the thumbnail doesn't get clicks (its words say million but the title says billion, about 10 small things in it, no sense of scale, a calm face, green on green) and wrote the rules for every future long video as an adopted proposal for the improver. Redoing this video's thumbnail is Studio's lane, and Studio runs next on 18 Nov, after the Saturday upload, so see the notification for how to get it done in time. · waiting for studio",
+      "response": "auditor handed → studio: A long video's thumbnail is Studio's (it makes L-20261111-01 and its thumbnail); no wrong number or crash for the auditor here. · improver partly → studio: The rules for every future long thumbnail are now checked: a reacting face (not a calm smirk), at most 3 things, and words that never contradict the title ('Million?' under a $1 billion title fails). Remaking this video's thumbnail before Saturday is Studio's. (958bdd6) · research partly → studio: Research's part is done: I diagnosed why the thumbnail doesn't get clicks (its words say million but the title says billion, about 10 small things in it, no sense of scale, a calm face, green on green) and wrote the rules for every future long video as an adopted proposal for the improver. Redoing this video's thumbnail is Studio's lane, and Studio runs next on 18 Nov, after the Saturday upload, so see the notification for how to get it done in time. · waiting for studio",
       "at": "2026-11-11T05:52:09.155Z",
       "video": {
         "id": "L-20261111-01",
@@ -65,8 +65,8 @@
       "kind": "improve",
       "area": "script",
       "text": "Script was very poor could be explained much better. Could not understand things properly animation were showing numbers difference but voice speaking was very little to understand the script. Very poor. Are u lowering script quality because of length issue????",
-      "status": "open",
-      "response": "auditor handed → improver: Script quality and how much the voice explains are the writer prompts and story rules, which are the improver's lane. · research handed → improver: Scripts and narration are the improver's lane. I added your note as evidence to the open proposal shorts-voice-back-to-october-pace, which asks for more words and a faster voice: our 1K-view Shorts spoke 200-240 words a minute, and the recent ones only 146-172. · waiting for improver",
+      "status": "addressed",
+      "response": "auditor handed → improver: Script quality and how much the voice explains are the writer prompts and story rules, which are the improver's lane. · improver fixed: No, the length didn't cause it: the Ohtani script showed the $700 million deal, the deferred sum and the sponsor money on screen but never said them. A new check now fails any Short whose picture shows a figure the voice hasn't said, and an A/B test (october-voice-pace) voices half the Shorts at the October pace with 80-100 words, so there is room to explain. (ab3ec2e) · research handed → improver: Scripts and narration are the improver's lane. I added your note as evidence to the open proposal shorts-voice-back-to-october-pace, which asks for more words and a faster voice: our 1K-view Shorts spoke 200-240 words a minute, and the recent ones only 146-172.",
       "at": "2026-11-11T05:45:12.240Z",
       "video": {
         "id": "v-20261111-03",
@@ -84,8 +84,8 @@
       "kind": "improve",
       "area": "animation",
       "text": "The glowing thing is very poor. Don't do that. Plus some things can be animated better like pile growth and he plays or not. Animation on these were very poor. I also feel like everything is in the middle kinda . Make screen bigger and animate properly so that it feels good not conjugated.",
-      "status": "open",
-      "response": "auditor handed → improver: The glow, the pile and play animations and the framing live in remotion/src scenes and camera, which are the improver's lane. · research handed → improver: Animation is the improver's lane. I added your note as evidence to the high-priority proposal actions-that-change-things, which caps glow, shake, grow and tag at 25% of actions in favour of things that move and transform; it also covers the bigger framing you asked for. · waiting for improver",
+      "status": "addressed",
+      "response": "auditor handed → improver: The glow, the pile and play animations and the framing live in remotion/src scenes and camera, which are the improver's lane. · improver fixed: The yellow glow is gone from the build scene. A new check fails a glow, a Short's build beat with more than 3 things or nothing big (the main thing at 0.28+ of the height, up from 0.12-0.24 in the Ronaldo Short), and a grow under 1.3x (the pile grew 1.1x). The camera also stopped cutting tags at the edges. (b12f0de) · research handed → improver: Animation is the improver's lane. I added your note as evidence to the high-priority proposal actions-that-change-things, which caps glow, shake, grow and tag at 25% of actions in favour of things that move and transform; it also covers the bigger framing you asked for.",
       "at": "2026-11-11T05:41:32.532Z",
       "video": {
         "id": "v-20261111-01",

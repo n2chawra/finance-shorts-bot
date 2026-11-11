@@ -144,3 +144,31 @@ def test_mark_problems_on_the_real_scripts():
         if not f.is_file():
             continue
         assert bool(craft.mark_problems(json.loads(f.read_text()))) is bad, vid
+
+
+def _stage_tl(items: list[dict], actions: list[dict], fmt: str = "short") -> dict:
+    return {"format": fmt, "beats": [{"id": "b1", "scene": "build", "params": {"items": items, "actions": actions}}]}
+
+
+def test_stage_problems_flags_the_ronaldo_build_beat():
+    # v-20261111-01 'day' (owner 2026-11-11: no glow, poor pile growth, everything small in the middle)
+    items = [{"id": "week", "size": 0.22}, {"id": "pile", "size": 0.2}, {"id": "he", "size": 0.2}, {"id": "ball", "size": 0.12}]
+    acts = [{"do": "glow", "target": "pile"}, {"do": "grow", "target": "pile", "scale": 1.1}]
+    probs = " | ".join(craft.stage_problems(_stage_tl(items, acts)))
+    assert "4 things" in probs and "no thing is big" in probs and "barely shows" in probs and "no glow" in probs
+
+
+def test_stage_problems_passes_one_big_hero():
+    items = [{"id": "pile", "size": 0.32}, {"id": "week", "size": 0.2}]
+    acts = [{"do": "enter", "target": "week"}, {"do": "flow", "target": "week", "to": "pile"}, {"do": "grow", "target": "pile", "scale": 1.5}]
+    assert craft.stage_problems(_stage_tl(items, acts)) == []
+    # a long video's build beat keeps its own sizes; a glow still fails it
+    assert craft.stage_problems(_stage_tl([{"id": "a", "size": 0.1}] * 5, [], "long")) == []
+    assert craft.stage_problems(_stage_tl([{"id": "a"}], [{"do": "glow", "target": "a"}], "long"))
+
+
+def test_stage_problems_on_the_real_script():
+    import json
+    f = REPO / "videos" / "v-20261111-01" / "timeline.json"
+    if f.is_file():
+        assert craft.stage_problems(json.loads(f.read_text()))

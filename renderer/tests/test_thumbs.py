@@ -62,3 +62,14 @@ def test_phone_size_band():
         assert any("flat at phone size" in p for p in thumbs.image_problems(tmp))
     finally:
         tmp.unlink()
+
+
+def test_a_thumbnail_that_does_not_get_clicked_fails():
+    """Owner, 2026-11-11: L-20261111-01 got 4 clicks from 100 impressions (calm smirk, 'Million?' under a
+    $1 billion title, ten things in the picture)."""
+    title = "What does $1 billion actually look like?"
+    bad = {**GOOD, "words": "Million? *Cute.*", "expression": "smirk", "things": ["wallet", "hourglass", "fountain", "crowd", "rocket"]}
+    probs = " | ".join(thumbs.spec_problems(bad, title))
+    assert "calm" in probs and "5 things" in probs and "says million but the title says billion" in probs
+    ok = {**GOOD, "words": "Bigger than *this*", "expression": "shock", "things": ["warehouse of cash", "tiny person"]}
+    assert thumbs.spec_problems(ok, title) == []

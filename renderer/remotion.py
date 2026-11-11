@@ -23,7 +23,7 @@ from PIL import Image
 
 from renderer.engine.mux import find_ffmpeg
 from renderer.engine.preview import contact_sheet
-from renderer.craft import clause_problems, device_problems, frame_problems, mark_problems, picture_problems, shot_problems
+from renderer.craft import clause_problems, device_problems, frame_problems, mark_problems, picture_problems, shot_problems, stage_problems
 from renderer.gates import check_liveliness, layout_problems
 
 REMOTION = Path(__file__).resolve().parent.parent/"remotion"
@@ -296,7 +296,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
                        **{k: tl["audio"][k] for k in ("lufs", "music_under_voice_db") if k in tl["audio"]}}
     # a video that looks templated (empty frames, the same picture, one shot size, one set) fails
     # here, on the stills, before the video is drawn (renderer/craft.py)
-    report["craft_problems"] = shot_problems(tl) + picture_problems(tl) + clause_problems(tl) + mark_problems(tl) + device_problems(tl) + frame_problems(_not_end_cards(shots, tl), tl["fps"])
+    report["craft_problems"] = shot_problems(tl) + picture_problems(tl) + clause_problems(tl) + mark_problems(tl) + stage_problems(tl) + device_problems(tl) + frame_problems(_not_end_cards(shots, tl), tl["fps"])
     # no point rendering a video the gates will reject: a layout problem, or one `stop_if` finds in
     # the report (length, sound levels), skips it
     early = list(report["layout_problems"]) + list(report["craft_problems"]) + (stop_if(report) if stop_if else [])
