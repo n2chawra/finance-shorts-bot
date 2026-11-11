@@ -3093,6 +3093,414 @@
       "found": "2026-11-11",
       "expires": "2027-02-09",
       "status": "new"
+    },
+    {
+      "id": "2026-11-12-apple-earns-more-on-services-than-iphones",
+      "format": "short",
+      "title": "Apple sold $356 billion of products, but the App Store side is the real money machine",
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Much Money Apple Makes | Apple Revenue & Profit Breakdown Explained",
+        "views": 7800000,
+        "url": "https://www.youtube.com/shorts/kBMiZ1gUtBM"
+      },
+      "hook": "You think Apple gets rich selling iPhones? The quiet money is somewhere else.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Where does Apple's profit really come from? Products brought in $355.5B and cost $215.9B to make; Services (App Store cut, iCloud, Apple Music, Google's search payment) brought in $123.3B and cost only $29.4B. Keep-per-dollar: about 39 cents on a product, about 76 cents on a service.",
+      "why_now": "Apple's FY2026 results (8-K, 30 Oct 2026) are the newest; how_they_make_money is our best format (9.77x the median, n=5); the 7.8M Short proves demand for Apple's money split.",
+      "maths": "rate (part 93943 = 123301 - 29358 via compare, whole 123301) for services kept per dollar (facts {a: services sales, b: services cost}); the same for products (355533 - 215874 over 355533). share (total 132175, parts 365) for profit per day (facts {total: net income}).",
+      "facts": [
+        {
+          "label": "Apple Services net sales, fiscal 2026",
+          "value": 123301,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-26",
+          "source": "Apple Form 8-K (FY2026 Q4 results)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+        },
+        {
+          "label": "Apple Services cost of sales, fiscal 2026",
+          "value": 29358,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-26",
+          "source": "Apple Form 8-K (FY2026 Q4 results)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+        },
+        {
+          "label": "Apple Products net sales, fiscal 2026",
+          "value": 355533,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-26",
+          "source": "Apple Form 8-K (FY2026 Q4 results)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+        },
+        {
+          "label": "Apple Products cost of sales, fiscal 2026",
+          "value": 215874,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-26",
+          "source": "Apple Form 8-K (FY2026 Q4 results)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+        },
+        {
+          "label": "Apple net income, fiscal 2026",
+          "value": 132175,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-26",
+          "source": "Apple Form 8-K (FY2026 Q4 results)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+        },
+        {
+          "label": "iPhone net sales, fiscal 2026",
+          "value": 254098,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-26",
+          "source": "Apple Form 8-K (FY2026 Q4 results)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+        }
+      ],
+      "verify": [
+        "all six figures are in millions in the 8-K's condensed statements, fiscal year ended 26 Sep 2026",
+        "iPhones are profitable: never say Apple loses money or makes nothing on phones (a 1.4M Short claims that; it's wrong)",
+        "what Services includes (App Store, advertising incl. the Google search deal, iCloud, AppleCare, payments, subscriptions) per Apple's 10-K"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+      ],
+      "found": "2026-11-12",
+      "expires": "2027-02-10",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-12-bezos-takes-an-81840-salary",
+      "format": "short",
+      "title": "Jeff Bezos takes a five-figure salary from Amazon. Amazon pays more to guard him",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "billionaire_question"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Salary of Jeff Bezos as CEO of Amazon was $81,840 per year 😯",
+        "views": 914000,
+        "url": "https://www.youtube.com/shorts/xvddjMiJSyo"
+      },
+      "hook": "You think the man who built Amazon pays himself millions? He's paid less than a senior engineer.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Why would one of the richest men alive take an $81,840 salary, unchanged since 1998? Because the money is the 8% of Amazon he owns (about $225B), not the paycheck: Amazon spent about $1.6M on his security and travel, roughly twenty of his salaries.",
+      "why_now": "Owner's 10 Nov note: famous names in titles. Real figures from the 2026 proxy; billionaire_question last ran 11 Nov (Berkshire), so it can't run first: offer after one other format.",
+      "maths": "compare (a 1600000, b 81840) security vs salary (facts); share (total 225000000000, parts 81840) = how many of his salaries his stake is (facts).",
+      "facts": [
+        {
+          "label": "Jeff Bezos's 2025 salary from Amazon (Summary Compensation Table)",
+          "value": 81840,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Amazon 2026 proxy statement",
+          "url": "https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2026-Proxy-Statement.pdf"
+        },
+        {
+          "label": "What Amazon paid for Bezos's security and business travel in 2025",
+          "value": 1.6,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Fortune",
+          "url": "https://fortune.com/2026/04/10/amazon-jeff-bezos-80k-salary-billionaires-ceo-executive-chairman/"
+        },
+        {
+          "label": "Bezos's stake in Amazon, about",
+          "value": 8,
+          "unit": "percent",
+          "as_of": "2026-04-10",
+          "source": "Fortune",
+          "url": "https://fortune.com/2026/04/10/amazon-jeff-bezos-80k-salary-billionaires-ceo-executive-chairman/"
+        },
+        {
+          "label": "Value of that Amazon stake, approximately",
+          "value": 225,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-04-10",
+          "source": "Fortune",
+          "url": "https://fortune.com/2026/04/10/amazon-jeff-bezos-80k-salary-billionaires-ceo-executive-chairman/"
+        },
+        {
+          "label": "Andy Jassy's 2025 base salary as Amazon CEO",
+          "value": 365000,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Fortune",
+          "url": "https://fortune.com/2026/04/10/amazon-jeff-bezos-80k-salary-billionaires-ceo-executive-chairman/"
+        }
+      ],
+      "verify": [
+        "the salary: most outlets and the proxy report $81,840; Fortune's body prints $81,400. Confirm in the proxy's Summary Compensation Table and use that figure, else fail the topic",
+        "unchanged since 1998 (Fortune)",
+        "he has never received stock-based compensation from Amazon (proxy / Fortune)",
+        "the $225B stake value is at the 10 Apr 2026 share price: say 'in April'"
+      ],
+      "sources": [
+        "https://fortune.com/2026/04/10/amazon-jeff-bezos-80k-salary-billionaires-ceo-executive-chairman/",
+        "https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2026-Proxy-Statement.pdf",
+        "https://www.techradar.com/pro/jeff-bezos-still-gets-paid-an-usd80-000-salary-from-amazon-but-also-gets-usd1-6-million-for-travel-and-security-and-requested-not-to-receive-additional-compensation"
+      ],
+      "found": "2026-11-12",
+      "expires": "2027-02-10",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-12-vegas-keeps-8-billion-even-when-you-win",
+      "format": "short",
+      "title": "How Las Vegas keeps $8.8 billion a year even when you win",
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "The Magic Economics of Gambling",
+        "views": 3461748,
+        "url": "https://www.youtube.com/watch?v=7cjIWMUgPtY"
+      },
+      "hook": "You think the casino needs you to lose? It doesn't. It needs you to keep playing.",
+      "templates": [
+        "any"
+      ],
+      "angle": "How does a casino make money when people win every night? The edge: on an American roulette wheel a $10 bet on red wins 18 of 38 spins, so every $100 bet leaves about $5.26 on the table. Spread over every bet on the Strip: $8.8B kept in 2025, about $24M a day, $4.95B of it from slots.",
+      "why_now": "how_they_make_money is our best format; 'how casinos make money' has 3.5M (Wendover) and 1.1M (Infographics Show) explainers, and roulette Shorts 1.1-2.5M.",
+      "maths": "rate (part 2, whole 38) house edge on American roulette (computed, no fact); fee_take or share (total 8815212000, parts 365) Strip kept per day (facts); rate (part 4.95, whole 8.815) slots share (facts).",
+      "facts": [
+        {
+          "label": "Las Vegas Strip gaming win, 2025",
+          "value": 8815212,
+          "unit": "money_thousand",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Nevada Gaming Control Board via Casino.org",
+          "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/"
+        },
+        {
+          "label": "Nevada statewide gaming win, 2025 (a record)",
+          "value": 15798466,
+          "unit": "money_thousand",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Nevada Gaming Control Board via Casino.org",
+          "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/"
+        },
+        {
+          "label": "Strip slot win, 2025",
+          "value": 4.95,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Nevada Gaming Control Board via Casino.org",
+          "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/"
+        },
+        {
+          "label": "Strip table, sports, race and bingo win, 2025",
+          "value": 3.86,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Nevada Gaming Control Board via Casino.org",
+          "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/"
+        }
+      ],
+      "verify": [
+        "Casino.org prints the totals in thousands ($15,798,466 = $15.8B; $8,815,212 = $8.8B): cross-check with the NGCB December 2025 revenue report",
+        "gaming win is what the casinos kept after paying winners, not profit",
+        "house edge is maths (2 green pockets of 38), shown as computed, not a sourced fact",
+        "never encourage gambling: the takeaway is how the business works"
+      ],
+      "sources": [
+        "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/",
+        "https://prod.gaming.nv.gov/siteassets/content/about/quart-statistical/quarterly-statistics-report-december-31-2025.pdf"
+      ],
+      "found": "2026-11-12",
+      "expires": "2027-02-10",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-12-spotify-paid-11-billion-who-got-it",
+      "format": "short",
+      "title": "Spotify paid out $11 billion last year. So why do artists say they get pennies?",
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Understanding The Broken Business of Spotify",
+        "views": 1388327,
+        "url": "https://www.youtube.com/watch?v=mkSmUTK2FlY"
+      },
+      "hook": "You think Spotify pays artists pennies? It paid out eleven billion dollars last year.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Both are true: Spotify paid more than $11B to the music industry in 2025, but it goes to rights holders (labels, publishers) first, and only about 1,500 artists made $1M+ from it, 13,800 made $100K+. Follow one stream's money from your subscription to the label to the artist.",
+      "why_now": "how_they_make_money; a name everyone uses; Spotify's own 2026 Loud & Clear figures (newest, published 11 Mar 2026).",
+      "maths": "share (total 11000000000, parts 13800) is an upper bound only if said so; better compare (a 1500, b 13800) artists over $1M vs over $100K (facts); no per-stream rate on screen (not in a source).",
+      "facts": [
+        {
+          "label": "Spotify payouts to the music industry, 2025 (more than)",
+          "value": 11,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Spotify Loud & Clear 2026",
+          "url": "https://newsroom.spotify.com/2026-03-11/loud-and-clear-music-economics-highlights/"
+        },
+        {
+          "label": "Spotify payouts to the music industry since founding (nearly)",
+          "value": 70,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Spotify Loud & Clear 2026",
+          "url": "https://newsroom.spotify.com/2026-03-11/loud-and-clear-music-economics-highlights/"
+        },
+        {
+          "label": "Artists who earned over $100,000 from Spotify in 2025 (more than)",
+          "value": 13800,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "Spotify Loud & Clear 2026",
+          "url": "https://newsroom.spotify.com/2026-03-11/loud-and-clear-music-economics-highlights/"
+        },
+        {
+          "label": "Artists who earned over $1 million from Spotify in 2025 (more than)",
+          "value": 1500,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "Spotify Loud & Clear 2026",
+          "url": "https://newsroom.spotify.com/2026-03-11/loud-and-clear-music-economics-highlights/"
+        }
+      ],
+      "verify": [
+        "all figures are Spotify's own (self-reported): say 'Spotify says'",
+        "payouts go to rights holders (labels, distributors, publishers), not straight to artists",
+        "'more than' / 'nearly' must stay in the words"
+      ],
+      "sources": [
+        "https://newsroom.spotify.com/2026-03-11/loud-and-clear-music-economics-highlights/",
+        "https://www.hypebot.com/spotify-loud-clear-report-2026-11b-paid-as-global-musical-middle-class-expands"
+      ],
+      "found": "2026-11-12",
+      "expires": "2027-02-10",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-12-590-billionaires-too-poor-for-the-list",
+      "format": "short",
+      "title": "590 billionaires are too poor for the Forbes 400. Musk is worth 200 of the poorest one",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "money_scale"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "The Insane Scale of Jeff Bezos' Wealth Visualized",
+        "views": 2766657,
+        "url": "https://www.youtube.com/watch?v=w1zzOyksUGo"
+      },
+      "hook": "You think a billionaire is rich? 590 of them are too poor for this list.",
+      "templates": [
+        "any"
+      ],
+      "angle": "How rich is rich? It takes a record $4.4B to make the 2026 Forbes 400, so 590 American billionaires missed it. Line them up: the 400th place at $4.4B, Larry Page at $278B, Musk at $908B, about 206 of the 400th-place fortune.",
+      "why_now": "money_scale (2.33x the median, n=3); the 2026 Forbes 400 is the newest list (16 Sep 2026). The idea's own Forbes videos are small (15-35K), so the demand reference is the scale-of-wealth explainer.",
+      "maths": "share (total 908, parts 4.4) Musk in 400th-place fortunes (facts); rate (part 908, whole 8000) Musk's share of the whole list (facts).",
+      "facts": [
+        {
+          "label": "Minimum net worth to make the 2026 Forbes 400",
+          "value": 4.4,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-09-04",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+        },
+        {
+          "label": "Combined net worth of the 2026 Forbes 400",
+          "value": 8,
+          "unit": "money_trillion",
+          "currency": "USD",
+          "as_of": "2026-09-04",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+        },
+        {
+          "label": "American billionaires not rich enough for the 2026 Forbes 400",
+          "value": 590,
+          "unit": "count",
+          "as_of": "2026-09-04",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+        },
+        {
+          "label": "Elon Musk's net worth, No. 1 on the 2026 Forbes 400",
+          "value": 908,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-09-04",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+        },
+        {
+          "label": "Larry Page's net worth, No. 3 on the 2026 Forbes 400",
+          "value": 278,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-09-04",
+          "source": "Forbes",
+          "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+        }
+      ],
+      "verify": [
+        "net worths are Forbes estimates at 4 Sep 2026 share prices: say 'Forbes estimates' and 'in September'",
+        "Bezos is No. 2 but his figure isn't printed in this article: leave him out or add his fact from Forbes' list page"
+      ],
+      "sources": [
+        "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/",
+        "https://www.ibtimes.co.uk/taylor-swift-beyonce-miss-forbes-400-1820833"
+      ],
+      "found": "2026-11-12",
+      "expires": "2027-02-10",
+      "status": "new"
     }
   ]
 }

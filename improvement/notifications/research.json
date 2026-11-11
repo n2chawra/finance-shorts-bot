@@ -1,6 +1,13 @@
 {
   "notifications": [
     {
+      "key": "long-thumb-L-20261111-01-before-saturday",
+      "severity": "warning",
+      "title": "The $1 billion long video's thumbnail needs redoing before Saturday 20:07, and no nightly agent can do it",
+      "detail": "Your note is right: 4 clicks from 100 impressions is a 4% CTR. Research looked at the thumbnail of L-20261111-01 against the hits. 1) Its words say 'MILLION? CUTE.' but the title says $1 billion: the two contradict each other. 2) It has about 10 things in it (wallet, hourglass, fountain, crowd, rocket, banknote, two pallets, warehouse, Sharma); at phone feed size they turn to noise. 3) There's no sense of scale: the hits on this idea show one tiny figure against a towering stack of money. 4) Sharma's face is a calm smirk; on our own Test & Compare, face-led thumbnails won 1 of 1. 5) The money is green on a green room. Thumbnail rules for every future long video went to the improver as an adopted proposal (long-thumb-one-subject-matches-title). The video's own files (videos/L-20261111-01/) can only be changed by Studio, and agents may not touch them. Studio next runs Wed 18 Nov, after this video goes out on Saturday 14 Nov at 20:07 IST.",
+      "fix": "Pick one: 1. Run the Studio routine now (claude.ai/code, Routines, Studio, Run now) and add: 'Only redo the thumbnail of L-20261111-01 per improvement/research/2026-11-12.md: one tower of $100 bundles with a tiny Sharma, shocked, at its foot, the words \"$1 BILLION\" in huge type, max 3 elements, contrasting background; check it at feed size with python -m renderer.thumbs feed.' 2. Or after the upload, in YouTube Studio, open the video, Thumbnail, Test & Compare, and add a simpler version you make yourself. 3. Or let it go out as is, and the new rules apply from the next long video."
+    },
+    {
       "key": "title-arm-hides-famous-names",
       "severity": "warning",
       "title": "Your 'title doesn't say Elon' note: the variant system now forbids names and figures in titles, on a confounded comparison",

@@ -1,0 +1,50 @@
+{
+  "agent": "research",
+  "day": "2026-11-12",
+  "startedAt": "2026-11-11T08:44:17Z",
+  "finishedAt": "2026-11-11T08:51:08Z",
+  "summary": "Thursday (titles and thumbnails): found why the $1 billion long video's thumbnail isn't clicked and wrote thumbnail rules for every long video; added 5 big-money topics (Apple, Forbes 400, Las Vegas, Spotify, Bezos) to a feed that had 7.",
+  "decision": "acted",
+  "why": "Owner note: 4 clicks from 100 impressions on the last long video; the backlog is 1 and the feed had only 7 open topics; how_they_make_money is 9.77x the median (n=5).",
+  "findings": [
+    {
+      "title": "The long video's thumbnail contradicts its title",
+      "detail": "'MILLION? CUTE.' on a $1 billion video, about 10 small things, a calm face, green on green; the hits use one subject, a reacting face and 2-3 words.",
+      "link": "https://vidiq.com/research/youtube-thumbnail-study/"
+    },
+    {
+      "title": "Apple keeps about 76 cents per dollar of services, 39 per dollar of products",
+      "detail": "FY2026 8-K: Services $123.3B on $29.4B cost; a 7.8M-view Short proves demand.",
+      "link": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+    },
+    {
+      "title": "590 American billionaires are too poor for the Forbes 400",
+      "detail": "The cutoff is a record $4.4B; Musk is at $908B.",
+      "link": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+    },
+    {
+      "title": "Titles that name the person and the figure win in the niche",
+      "detail": "'Salary of Jeff Bezos... $81,840 per year' 914K, 'Jeff Bezos' Net Worth VS. Yours' 21M; our title arm still defaults to plain (owner notification open).",
+      "link": "https://www.youtube.com/shorts/xvddjMiJSyo"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Proposal long-thumb-one-subject-matches-title (adopt, high)",
+      "detail": "Thumbnail rules for long videos; owner notes added as evidence to the voice-pace and glow proposals.",
+      "branch": "agent/research/2026-11-12"
+    },
+    {
+      "title": "5 topics added to the feed",
+      "detail": "Apple services (high), Forbes 400 cutoff, Vegas win, Spotify payouts, Bezos salary.",
+      "branch": "agent/research/2026-11-12"
+    }
+  ],
+  "nextCheck": "2026-11-13",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-12.md"
+    }
+  ]
+}
