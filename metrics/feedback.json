@@ -1,14 +1,34 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 4,
+  "open": 6,
   "notes": [
+    {
+      "id": "cmwbukoke0001jy09t4pfhr38",
+      "kind": "improve",
+      "area": null,
+      "text": "when u make videos in dahsbaord also give me reason of why that video and how many views this topic is getting. and from where u got this inspiratrion so that i can know anytime. in the videos tab",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-11T08:18:46.238Z",
+      "video": null
+    },
+    {
+      "id": "cmwbuj1ny0001l2097747i7wr",
+      "kind": "general",
+      "area": null,
+      "text": "one more thing i just realized my demand and supply thing is correct but where we take it from matter also. like someone with millions subscripbers their any video will work because they have the audience so from there to know the content is wrong. the channle with huge views and little subscribers is the right pick there we actually understand what is in demand and make videos on the topics that actaully people want to see. because if u see last 3 days videos are not blowing upl. something is wrong.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-11T08:17:29.890Z",
+      "video": null
+    },
     {
       "id": "cmwbpc4oy0001i8090mqs0aqk",
       "kind": "improve",
       "area": "thumbnail",
       "text": "Thumbnail is very basic . It's good according to our channel. But not enough to actually make people click. My last long video has 100 thumbnail impression but only 4 clicks. Means thumbnail is the biggest problem.\nFix it and change it for this video also as it's still time before it goes live.",
       "status": "open",
-      "response": null,
+      "response": "auditor handed → studio: A long video's thumbnail is Studio's (it makes L-20261111-01 and its thumbnail); no wrong number or crash for the auditor here. · waiting for studio",
       "at": "2026-11-11T05:52:09.155Z",
       "video": {
         "id": "L-20261111-01",
@@ -46,7 +66,7 @@
       "area": "script",
       "text": "Script was very poor could be explained much better. Could not understand things properly animation were showing numbers difference but voice speaking was very little to understand the script. Very poor. Are u lowering script quality because of length issue????",
       "status": "open",
-      "response": null,
+      "response": "auditor handed → improver: Script quality and how much the voice explains are the writer prompts and story rules, which are the improver's lane. · waiting for improver",
       "at": "2026-11-11T05:45:12.240Z",
       "video": {
         "id": "v-20261111-03",
@@ -65,13 +85,13 @@
       "area": "animation",
       "text": "The glowing thing is very poor. Don't do that. Plus some things can be animated better like pile growth and he plays or not. Animation on these were very poor. I also feel like everything is in the middle kinda . Make screen bigger and animate properly so that it feels good not conjugated.",
       "status": "open",
-      "response": null,
+      "response": "auditor handed → improver: The glow, the pile and play animations and the framing live in remotion/src scenes and camera, which are the improver's lane. · waiting for improver",
       "at": "2026-11-11T05:41:32.532Z",
       "video": {
         "id": "v-20261111-01",
         "title": "You work all year for this. He does it before breakfast ⚽",
         "format": "short",
-        "status": "scheduled",
+        "status": "published",
         "story": "money_scale",
         "shape": "reveal",
         "hookStyle": "myth",

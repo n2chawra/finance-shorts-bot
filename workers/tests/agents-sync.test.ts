@@ -130,3 +130,22 @@ test("a note handed to another agent stays open until that agent answers", async
   assert.match(notes.get("f1")!.response!, /dashboard fixed: Impact page built/);
   assert.equal(notes.get("f2")!.status, "addressed");   // the owner closed it: a handoff never reopens it
 });
+
+test("an agent that does its part of a handed note and passes the rest on counts as answered", async () => {
+  const { ackState } = await import("../lib/agents-sync.ts");
+  const chain = [
+    { id: "f1", action: "partly", to: "improver", note: "data fixed", agent: "auditor" },
+    { id: "f1", action: "partly", to: "studio", note: "Shorts fixed", agent: "improver" },
+  ];
+  assert.match(ackState(chain).response, /waiting for studio$/);
+  const done = ackState([...chain, { id: "f1", action: "fixed", note: "thumbnail redone", agent: "studio" }]);
+  assert.equal(done.addressed, true);
+  assert.doesNotMatch(done.response, /waiting/);
+  // handed straight back to the agent that handed it: that one still owes an answer
+  const back = ackState([
+    { id: "f2", action: "handed", to: "improver", note: "a look", agent: "auditor" },
+    { id: "f2", action: "handed", to: "auditor", note: "a crash", agent: "improver" },
+  ]);
+  assert.match(back.response, /waiting for/);
+  assert.equal(back.addressed, false);
+});

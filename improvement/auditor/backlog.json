@@ -710,6 +710,21 @@
       "severity": "low",
       "found": "2026-11-11",
       "status": "fixed"
+    },
+    {
+      "id": "gen-003",
+      "kind": "bug",
+      "title": "A handed owner note never counts as answered when the agent it was handed to answers 'partly'",
+      "detail": "ackState (workers/lib/agents-sync.ts) only counted an agent as done with a handed note if it closed it, so 'auditor partly -> improver, improver partly -> studio' showed 'waiting for improver' on the dashboard forever, and generator.feedback listed the note to the improver every run. Now an agent has answered once it closed the note or handed it on to anyone but the agent that handed it to it (a handoff straight back still counts as owed). Same rule in Python (has_answered) and TS (hasAnswered); tests in both fail on the old code.",
+      "files": [
+        "generator/feedback.py",
+        "workers/lib/agents-sync.ts",
+        "generator/tests/test_feedback_agents.py",
+        "workers/tests/agents-sync.test.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-12",
+      "status": "fixed"
     }
   ]
 }

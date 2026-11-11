@@ -88,6 +88,15 @@ def acks(root: Path = ROOT) -> list[dict]:
     return out
 
 
+def has_answered(agent: str, note_acks: list[dict]) -> bool:
+    """Whether `agent` has answered a note: it closed it, or handed it on to someone other than an agent
+    that handed it to `agent` (a handoff back to the hander is an earlier answer, so the note is due again).
+    Mirrored in workers/lib/agents-sync.ts `ackState`."""
+    handers = {a["agent"] for a in note_acks if a.get("action") in HANDOFF and a.get("to") == agent}
+    return any(a.get("action") not in HANDOFF or a.get("to") not in handers
+               for a in note_acks if a["agent"] == agent)
+
+
 def for_agent(agent: str, root: Path = ROOT) -> list[dict]:
     """The owner's open notes this agent still has to read: not yet closed by any agent unless handed to this
     one, and not already answered by this one. Notes handed to it come first (`handed_to_you`)."""
@@ -100,9 +109,8 @@ def for_agent(agent: str, root: Path = ROOT) -> list[dict]:
             continue
         mine = answers.get(n["id"], [])
         handed = [a for a in mine if a.get("action") in HANDOFF and a.get("to") == agent]
-        if any(a["agent"] == agent for a in mine) and not (handed and not any(
-                a["agent"] == agent and a.get("action") not in HANDOFF for a in mine)):
-            continue     # answered it already (its own part done, or closed after the handoff)
+        if has_answered(agent, mine):
+            continue     # answered it already (closed it, or did its part and passed the rest on)
         closed = [a for a in mine if a.get("action") not in HANDOFF]
         if closed and not handed:
             continue
