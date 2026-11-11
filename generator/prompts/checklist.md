@@ -56,12 +56,10 @@ fix any beat near a limit as well.
 - Real people and companies: only well-known public facts, no invented quotes.
 
 ## Hook, voice and shape (owner, 2026-10-30)
-- **The hook puts the belief to the viewer and denies it, and never gives the answer** (owner,
-  2026-11-09): "You think McDonald's makes its money selling burgers? It doesn't." No stock tag after
-  the denial ("Watch this.", "Here's why."), and not the same last 4 words as the last 6 Shorts'
-  hooks (`generator/story.py` `hook_problems`).
-- **One voice explains** (60%+ of the words, full sentences, 12+ words a beat); the cast react. The
-  speaker changes 5 times at most.
+- **The hook states the surprising fact itself** (owner review, 2026-11-11): the famous name or the
+  figure in its first sentence ("The NBA paid Magic Johnson {pay}. He made a billion."). No "You
+  think …?", no stock tag ("Watch this.", "Here's why.") (`generator/story.py` `hook_problems`).
+- **Voices**: one narrator for the channel; the cast speak when they act in the story.
 - **Shape**: the plan's shape in `script.shape`; level chips and the word "level" only in `levels`.
 - **The thing, not the character**: in a narrator beat the camera frames the item being explained;
   every figure sits on its thing (it pulses while said).

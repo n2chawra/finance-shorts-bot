@@ -25,6 +25,8 @@ import re
 import numpy as np
 from PIL import Image
 
+from .advice import note
+
 EMPTY_TILE_STD = 7.0     # a tile this flat (0-255 levels) is plain background
 EMPTY_STILL = 0.55
 EMPTY_SHARE = 0.15
@@ -111,27 +113,27 @@ def shot_problems(tl: dict) -> list[str]:
             closes.append(b["from"] / fps)
     closes.append(tl["durationInFrames"] / fps)
     if len(sizes_seen) < SIZES_NEEDED[fmt]:
-        out.append(f"only {len(sizes_seen)} shot sizes ({', '.join(sorted(sizes_seen))}); a {fmt} video needs at least "
-                   f"{SIZES_NEEDED[fmt]} of wide, medium, close, extreme")
+        out.append(note(f"only {len(sizes_seen)} shot sizes ({', '.join(sorted(sizes_seen))}); a {fmt} video needs at least "
+                   f"{SIZES_NEEDED[fmt]} of wide, medium, close, extreme"))
     for i in range(len(opening) - 3):
         if len(set(opening[i:i + 4])) == 1:
-            out.append(f"four shots in a row open {opening[i]} (from {shots[i]['id']!r}): vary the shot size")
+            out.append(note(f"four shots in a row open {opening[i]} (from {shots[i]['id']!r}): vary the shot size"))
             break
     gap = max(b - a for a, b in zip(closes, closes[1:]))
     if gap > CLOSE_EVERY:
-        out.append(f"{gap:.0f} s without a close or extreme shot (at most {CLOSE_EVERY:.0f} s): emotion lives in close-ups")
+        out.append(note(f"{gap:.0f} s without a close or extreme shot (at most {CLOSE_EVERY:.0f} s): emotion lives in close-ups"))
     # a build world stays and fills up phrase by phrase (The Curious Plot's way): only shots rotate sets
     sets = [b["params"].get("set", "flat") for b in shots if b["scene"] == "shot"]
     run = 1
     for a, b in zip(sets, sets[1:]):
         run = run + 1 if a == b else 1
         if run > SET_RUN:
-            out.append(f"set {a!r} in {run} shots in a row: move the story somewhere else")
+            out.append(note(f"set {a!r} in {run} shots in a row: move the story somewhere else"))
             break
     if len(sets) >= 6:
         top = max(set(sets), key=sets.count)
         if sets.count(top) / len(sets) > SET_SHARE[fmt]:
-            out.append(f"set {top!r} in {sets.count(top)} of {len(sets)} shots (at most {SET_SHARE[fmt]:.0%})")
+            out.append(note(f"set {top!r} in {sets.count(top)} of {len(sets)} shots (at most {SET_SHARE[fmt]:.0%})"))
     return out
 
 
@@ -236,8 +238,8 @@ def picture_problems(tl: dict) -> list[str]:
             near = {_stem(w) for w, s in words if abs(s - when) <= LITERAL_WINDOW and len(w) >= 3}
             hit += any(a_.startswith(b_) or b_.startswith(a_) for a_ in stems for b_ in near if min(len(a_), len(b_)) >= 3)
         if hit / len(acts) < LITERAL_SHARE:
-            out.append(f"beat {b['id']!r}: only {hit} of {len(acts)} actions show a thing said at that moment "
-                       f"(at least {LITERAL_SHARE:.0%}): the picture must follow the words")
+            out.append(note(f"beat {b['id']!r}: only {hit} of {len(acts)} actions show a thing said at that moment "
+                       f"(at least {LITERAL_SHARE:.0%}): the picture must follow the words"))
     return out
 
 
@@ -276,13 +278,13 @@ def prop_problems(tl: dict, earlier: list[tuple[str, dict]]) -> list[str]:
         return []
     out = []
     if len(mine) < OWN_PROPS_MIN:
-        out.append(f"only {len(mine)} props of its own ({', '.join(sorted(mine)) or 'none'}); at least {OWN_PROPS_MIN}: "
-                   f"draw the things this story is about in videos/<id>/props.tsx")
+        out.append(note(f"only {len(mine)} props of its own ({', '.join(sorted(mine)) or 'none'}); at least {OWN_PROPS_MIN}: "
+                   f"draw the things this story is about in videos/<id>/props.tsx"))
     for vid, other in earlier[-PROP_WINDOW:]:
         theirs = build_props(other)
         if mine and theirs and len(mine & theirs) / len(mine) > PROP_OVERLAP_MAX:
-            out.append(f"{len(mine & theirs)} of its {len(mine)} props were in {vid} too ({', '.join(sorted(mine & theirs))}): "
-                       f"at most {PROP_OVERLAP_MAX:.0%}; the story's own things, not the last video's")
+            out.append(note(f"{len(mine & theirs)} of its {len(mine)} props were in {vid} too ({', '.join(sorted(mine & theirs))}): "
+                       f"at most {PROP_OVERLAP_MAX:.0%}; the story's own things, not the last video's"))
             break
     return out
 
@@ -301,16 +303,16 @@ def device_problems(tl: dict) -> list[str]:
     out = []
     kinds = [b["scene"] for b in beats]
     if len(set(kinds)) < DEVICES_MIN[fmt]:
-        out.append(f"only {len(set(kinds))} kinds of scene ({', '.join(sorted(set(kinds)))}); a long video mixes {DEVICES_MIN[fmt]}+ "
-                   f"(build, framework, type, journey, stats, case, custom...) so it never settles into one look")
+        out.append(note(f"only {len(set(kinds))} kinds of scene ({', '.join(sorted(set(kinds)))}); a long video mixes {DEVICES_MIN[fmt]}+ "
+                   f"(build, framework, type, journey, stats, case, custom...) so it never settles into one look"))
     top = max(set(kinds), key=kinds.count)
     if kinds.count(top) / len(kinds) > DEVICE_SHARE:
-        out.append(f"{top} is {kinds.count(top)} of {len(kinds)} composed beats (at most {DEVICE_SHARE:.0%}): vary how each idea is shown")
+        out.append(note(f"{top} is {kinds.count(top)} of {len(kinds)} composed beats (at most {DEVICE_SHARE:.0%}): vary how each idea is shown"))
     run = 1
     for a, b in zip(kinds, kinds[1:]):
         run = run + 1 if a == b and a != "build" else 1   # build worlds change every phrase; the others repeat a look
         if run > DEVICE_RUN:
-            out.append(f"{a} {run} times in a row: change the device")
+            out.append(note(f"{a} {run} times in a row: change the device"))
             break
     return out
 
@@ -364,8 +366,8 @@ def clause_problems(tl: dict) -> list[str]:
             elif len(bare) < 4:
                 bare.append(b["id"])
     if total and covered / total < CLAUSE_SHARE:
-        return [f"only {covered} of {total} spoken clauses get their own picture ({covered / total:.0%}, at least {CLAUSE_SHARE:.0%}; "
-                f"bare clauses in {', '.join(dict.fromkeys(bare))}): put an action on each clause's key word"]
+        return [note(f"only {covered} of {total} spoken clauses get their own picture ({covered / total:.0%}, at least {CLAUSE_SHARE:.0%}; "
+                f"bare clauses in {', '.join(dict.fromkeys(bare))}): put an action on each clause's key word")]
     return []
 
 
@@ -387,9 +389,9 @@ def mark_problems(tl: dict) -> list[str]:
         return []
     marks = sum(1 for d in acts if d in MARKS)
     if marks / len(acts) > MARK_SHARE_MAX:
-        return [f"{marks} of {len(acts)} board actions only mark a thing already there ({marks / len(acts):.0%}, at most {MARK_SHARE_MAX:.0%}: "
+        return [note(f"{marks} of {len(acts)} board actions only mark a thing already there ({marks / len(acts):.0%}, at most {MARK_SHARE_MAX:.0%}: "
                 f"glow, stamp, bubble, cross...): give clauses a change instead, a thing that enters, swaps into another, "
-                f"flows, multiplies or grows, or a panel (doc, bars, ring, grid, calendar, person, equation)"]
+                f"flows, multiplies or grows, or a panel (doc, bars, ring, grid, calendar, person, equation)")]
     return []
 
 
@@ -422,15 +424,15 @@ def stage_problems(tl: dict) -> list[str]:
             continue
         items = [i for i in p.get("items") or [] if isinstance(i, dict)]
         if len(items) > STAGE_MAX_ITEMS:
-            out.append(f"{b['id']}: {len(items)} things on the stage (at most {STAGE_MAX_ITEMS}): keep the one the line is about "
-                       f"and the one it turns into, move the rest to another beat")
+            out.append(note(f"{b['id']}: {len(items)} things on the stage (at most {STAGE_MAX_ITEMS}): keep the one the line is about "
+                       f"and the one it turns into, move the rest to another beat"))
         if items and max(float(i.get("size") or DEFAULT_ITEM_SIZE) for i in items) < HERO_MIN:
-            out.append(f"{b['id']}: no thing is big (largest size {max(float(i.get('size') or DEFAULT_ITEM_SIZE) for i in items):.2f}, "
-                       f"the hero needs {HERO_MIN}+): make the thing the line is about the hero, size {HERO_MIN}-0.40, near the middle")
+            out.append(note(f"{b['id']}: no thing is big (largest size {max(float(i.get('size') or DEFAULT_ITEM_SIZE) for i in items):.2f}, "
+                       f"the hero needs {HERO_MIN}+): make the thing the line is about the hero, size {HERO_MIN}-0.40, near the middle"))
         small = [a.get("target") for a in acts if a.get("do") == "grow" and a.get("scale") is not None and float(a["scale"]) < GROW_MIN]
         if small:
-            out.append(f"{b['id']}: grow on {', '.join(map(str, small))} under {GROW_MIN}x barely shows: grow {GROW_MIN}-1.8x, "
-                       f"or multiply/stack/fill it so the change is visible")
+            out.append(note(f"{b['id']}: grow on {', '.join(map(str, small))} under {GROW_MIN}x barely shows: grow {GROW_MIN}-1.8x, "
+                       f"or multiply/stack/fill it so the change is visible"))
     if glows:
         out.append(f"glow in {', '.join(glows)}: the owner asked for no glow (2026-11-11); show the change instead "
                    f"(enter, swap, flow, grow, multiply, fill) or let the camera push in on the thing")

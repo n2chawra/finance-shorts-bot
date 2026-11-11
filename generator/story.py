@@ -27,6 +27,8 @@ from __future__ import annotations
 
 import re
 
+from renderer.advice import note
+
 PROMISE_BY = 6.0
 FIRST_FIGURE_BY = 9.0
 LEVELS_MIN = 3
@@ -142,56 +144,26 @@ def voice_problems(script: dict) -> list[str]:
     hook = next((b for b in beats if b.get("role") == "hook" or b.get("scene") == "hook"), None)
     # a variant-system Short's hook is checked by hook_problems (the belief, denied); the denial is its gap
     if hook and not script.get("arms") and not HOOK_GAP.search((hook.get("say") or "").strip()):
-        out.append("the hook gives no reason to stay: end it on the open question or a promise (\"Casinos make money even "
-                   "when you win. Here's how.\"), never on the answer")
+        out.append(note("the hook gives no reason to stay: end it on the open question or a promise (\"Casinos make money even "
+                   "when you win. Here's how.\"), never on the answer"))
     spoken = [b for b in beats if (b.get("say") or "").strip() and b.get("scene") != "end"]
-    words: dict[str, int] = {}
-    for b in spoken:
-        who = b.get("speaker") or "narrator"
-        words[who] = words.get(who, 0) + len((b.get("say") or "").split())
-    total = sum(words.values())
-    from . import shapes
-    two_voices = bool(((shapes.get(shapes.shape_id(script.get("shape"))) or {}).get("rules") or {}).get("two_voices"))
-    # a question chain is two voices by design: the asker's questions are a big share (their "$0 salary": ~40%)
-    lead_share = 0.5 if two_voices else LEAD_SHARE
-    if total:
-        lead, n = max(words.items(), key=lambda kv: kv[1])
-        if n / total < lead_share:
-            out.append(f"no one explains: {lead} says {n / total:.0%} of the words; one voice (the narrator or one teacher) "
-                       f"carries {lead_share:.0%} or more and the others react")
-    switches = sum(1 for a, b in zip(spoken, spoken[1:]) if (a.get("speaker") or "narrator") != (b.get("speaker") or "narrator"))
-    if switches > MAX_SWITCHES and not two_voices:      # a question chain is two voices by design
-        out.append(f"the speaker changes {switches} times; at most {MAX_SWITCHES}: one voice explains, the cast react")
     body = [b for b in spoken if b.get("role") not in ("hook", "loop", "end")]
-    # a board video is one sentence per beat (2026-11-02): its beats are short by design
-    boards = sum(1 for b in beats if b.get("scene") == "board")
-    if body and boards * 2 < len(beats):
-        avg = sum(len((b.get("say") or "").split()) for b in body) / len(body)
-        if avg < BEAT_WORDS:
-            out.append(f"beats average {avg:.0f} words: explain in full sentences ({BEAT_WORDS}+ words a beat, "
-                       f"\"because… so… which means…\"), not one-liners")
-    # when the narrator explains, the camera frames the thing being explained, not a person (owner,
-    # 2026-10-30: "the animation should be the centre of impression, not the characters")
-    cast = {"rohan", "priya", "sharma", "sikka"}
-    on_people = [b.get("id") for b in beats if (b.get("speaker") or "narrator") == "narrator" and b.get("scene") in ("build", "shot")
-                 and b.get("role") not in ("hook", "turn", "loop")
-                 and any(isinstance(k, dict) and k.get("on") in cast for k in (b.get("params") or {}).get("camera") or [])]
-    if on_people:
-        out.append(f"beats {', '.join(map(str, on_people))}: the narrator explains while the camera frames a person; frame the "
-                   f"things being explained (an item or \"all\"), characters step back")
+    # 2026-11-11 (owner review): the one-explaining-voice rules are gone (a lead voice with 60% of the words,
+    # at most five speaker changes, 10+ words a beat, the camera off the cast). The Shorts that worked were
+    # skits the cast acted (narrator under 25% of the words: 4.3x the median), and these rules forbade them.
     loud = [b.get("id") for b in beats if b.get("transition") in ("whip", "zoom-through")]
     if len(loud) > MAX_LOUD_TRANSITIONS:
-        out.append(f"{len(loud)} whip or zoom-through transitions ({', '.join(map(str, loud))}); at most {MAX_LOUD_TRANSITIONS}: "
-                   f"cut or match between beats, so the picture doesn't zig-zag")
+        out.append(note(f"{len(loud)} whip or zoom-through transitions ({', '.join(map(str, loud))}); at most {MAX_LOUD_TRANSITIONS}: "
+                   f"cut or match between beats, so the picture doesn't zig-zag"))
     hedges = [m.group(0).lower() for b in spoken for m in HEDGES.finditer(re.sub(r"\{[^}]*\}", "", b.get("say") or ""))]
     if len(hedges) > MAX_HEDGES:
-        out.append(f"{len(hedges)} hedging words ({', '.join(sorted(set(hedges)))}); at most {MAX_HEDGES}: tell one concrete story "
-                   f"with certainty (\"The dealer takes two thousand off.\", not \"some dealers can…\"); the disclaimer covers it")
+        out.append(note(f"{len(hedges)} hedging words ({', '.join(sorted(set(hedges)))}); at most {MAX_HEDGES}: tell one concrete story "
+                   f"with certainty (\"The dealer takes two thousand off.\", not \"some dealers can…\"); the disclaimer covers it"))
     middle = [b for b in body if b.get("role") != "payoff"]
     loops = sum(1 for b in middle if OPEN_LOOP.search(b.get("say") or ""))
     if middle and loops < OPEN_LOOPS_MIN:
-        out.append(f"{loops} beats between the hook and the payoff open a new question; at least {OPEN_LOOPS_MIN} (\"But that's "
-                   f"not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something")
+        out.append(note(f"{loops} beats between the hook and the payoff open a new question; at least {OPEN_LOOPS_MIN} (\"But that's "
+                   f"not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"))
     # announcing the structure right after the hook ("three clues…", "four levels…") lost 24–41% of viewers
     # within 2 s in five Shorts (auditor, 2026-11-03): go straight into the first surprising fact
     for b in body[:2]:
@@ -202,7 +174,7 @@ def voice_problems(script: dict) -> list[str]:
     if not _levels(script):
         said = sum(len(re.findall(r"\blevel\b", b.get("say") or "", re.I)) for b in beats)
         if said:
-            out.append(f"\"level\" is said {said} times in a {script.get('shape')!r} video: the word is for the levels shape")
+            out.append(note(f"\"level\" is said {said} times in a {script.get('shape')!r} video: the word is for the levels shape"))
     return out
 
 
@@ -236,8 +208,8 @@ def chain_problems(script: dict) -> list[str]:
     asked = sum(_questions(b["say"]) for b in spoken)
     need = int(seconds // QUESTION_EVERY[fmt])
     if asked < need:
-        out.append(f"{asked} questions in about {seconds:.0f} s of speech; at least {need} (one every {QUESTION_EVERY[fmt]:.0f} s): "
-                   f"say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it")
+        out.append(note(f"{asked} questions in about {seconds:.0f} s of speech; at least {need} (one every {QUESTION_EVERY[fmt]:.0f} s): "
+                   f"say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"))
     for b in beats:
         if b.get("scene") != "board":
             continue
@@ -267,7 +239,7 @@ def chain_problems(script: dict) -> list[str]:
     # a Short whose last line loops back to the hook needs no closing question: the loop is the ending
     looped = fmt == "short" and any(b.get("role") == "loop" for b in beats)
     if not looped and "?" not in " ".join(b["say"] for b in spoken[-2:]):
-        out.append("the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")")
+        out.append(note("the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"))
     return out
 
 
@@ -369,29 +341,34 @@ def _tail(line: str) -> str:
 
 
 def hook_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
-    """A variant-system Short's hook: "You think X? It isn't." -- the belief put to the viewer, then denied,
-    with no stock tag after it and an ending of its own (owner, 2026-10-31 and 2026-11-09)."""
+    """A Short's hook states the surprising fact itself, with the famous name or the figure in it (owner
+    review, 2026-11-11). Until then the hook had to be "You think X? It isn't.": 8 of 9 Shorts opened on the
+    same sentence, and of the people YouTube showed a Short to, 55-76% swiped away within a second or two.
+    The Shorts growing in this niche open on the fact: "The NBA paid Magic Johnson $40 million. He made a
+    billion." No belief to knock down, no stock tag, an ending of its own."""
+    from . import formats
     line = _hook_line(script)
     if not line:
         return []
     out = []
-    example = "\"You think McDonald's makes its money selling burgers? It doesn't.\""
-    m = BELIEF.search(line)
-    if not m:
-        out.append(f"the hook must put the belief to the viewer and deny it: {example} (got {line!r}); start it "
-                   f"\"You think …?\" and name the famous thing or the figure")
-    else:
-        after = re.findall(r"[\w'’]+", line[m.end():])[:DENIAL_WORDS]
-        if not DENIAL.search(" ".join(after)):
-            out.append(f"the hook asks \"You think …?\" but never says it's wrong: follow the question with a short denial "
-                       f"(\"It isn't.\" / \"He didn't.\" / \"Not one of them.\" / \"You're wrong.\"), as in {example}")
+    example = "\"The NBA paid Magic Johnson {pay}. He made a billion.\""
+    if BELIEF.search(line):
+        out.append(f"the hook opens on \"You think …?\" (got {line!r}): state the surprising fact itself, as in {example}; "
+                   f"the viewer decides in the first second, and a question about what they think gives them nothing yet")
+    first = re.split(r"(?<=[.!?])\s+", line)[0]
+    names = [w for w in formats.NAME_IN_TITLE.findall(first) if w.lower() not in formats.COMMON_WORDS]
+    opener = (first.split() or [""])[0]
+    named = bool(names) or (opener[:1].isupper() and opener.lower().strip(".,!?'’s") not in formats.COMMON_STARTS)
+    if not (formats.MONEY_IN_TITLE.search(first) or named):
+        out.append(f"the hook's first sentence names no famous person or company and no figure (got {first!r}): the subject "
+                   f"and the number are said first, as in {example}")
     if STOCK_TAG.search(line):
-        out.append(f"the hook ends on a stock tag ({STOCK_TAG.search(line).group(0).strip()!r}): end it on the denial; "
-                   f"the denied belief is the reason to stay")
+        out.append(f"the hook ends on a stock tag ({STOCK_TAG.search(line).group(0).strip()!r}): end it on the fact; "
+                   f"the surprise is the reason to stay")
     tail = _tail(line)
     recent = [_tail(_hook_line(s)) for s in (earlier or [])[-HOOK_TAIL_SCRIPTS:] if s.get("format", "short") == "short"]
     if tail and tail in recent:
-        out.append(f"the hook ends like one of the last {HOOK_TAIL_SCRIPTS} Shorts' hooks ({tail!r}): new words")
+        out.append(note(f"the hook ends like one of the last {HOOK_TAIL_SCRIPTS} Shorts' hooks ({tail!r}): new words"))
     return out
 
 
@@ -417,7 +394,7 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
     if not laddered:
         builds = sum(1 for b in beats if b.get("role") in ("build", "level"))
         if builds < BUILD_MIN:
-            out.append(f"{builds} `build` beats; at least {BUILD_MIN}: the stakes rise step by step before the turn")
+            out.append(note(f"{builds} `build` beats; at least {BUILD_MIN}: the stakes rise step by step before the turn"))
     if script.get("shape") is not None and script.get("format", "short") == "short":
         out += voice_problems(script)
     if script.get("arms") and script.get("format", "short") == "short":
@@ -428,8 +405,8 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
     if sp["teases"] and len(levels) >= sp["levels_min"]:
         teases = sum(1 for b in beats if b.get("role") == "tease")
         if teases < len(levels) - 1:
-            out.append(f"{teases} `tease` beats for {len(levels)} chapters: every chapter but the last ends on a tease "
-                       f"(the open loop into the next), or viewers leave between chapters")
+            out.append(note(f"{teases} `tease` beats for {len(levels)} chapters: every chapter but the last ends on a tease "
+                       f"(the open loop into the next), or viewers leave between chapters"))
     if laddered and len(levels) < sp["levels_min"]:
         out.append(f"`structure.levels` needs {sp['levels_min']} or more steps the viewer waits for (\"Sell\", \"Borrow\", \"Never sell\"): "
                    f"the promise of a structure is what keeps people past the hook")
@@ -456,12 +433,12 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
         say = b.get("say") or ""
         for rx, name in BANNED:
             if rx.search(say):
-                out.append(f"beat {b.get('id')!r}: {name} is a line the channel has used too often; say it a new way")
+                out.append(note(f"beat {b.get('id')!r}: {name} is a line the channel has used too often; say it a new way"))
     seen = {_opening(b.get("say") or "") for s in (earlier or []) for b in (s.get("beats") or [])} - {""}
     for b in beats:
         op = _opening(b.get("say") or "")
         if op and op in seen:
-            out.append(f"beat {b.get('id')!r} opens like a line in one of the last scripts ({op!r}): new words")
+            out.append(note(f"beat {b.get('id')!r} opens like a line in one of the last scripts ({op!r}): new words"))
     return out
 
 
@@ -484,7 +461,7 @@ def timeline_problems(script: dict, tl: dict, earlier: list[dict] | None = None)
     role = {b.get("id"): b.get("role") for b in script.get("beats") or []}
     promise = [starts[i] for i, r in role.items() if r == "promise" and i in starts]
     if promise and min(promise) > sp["promise_by"]:
-        out.append(f"the promise starts at {min(promise):.1f} s; by {sp['promise_by']:.0f} s, or viewers leave before they know why to stay")
+        out.append(note(f"the promise starts at {min(promise):.1f} s; by {sp['promise_by']:.0f} s, or viewers leave before they know why to stay"))
     figures = set(tl.get("figures", {}).values())
     first = None
     for b in tl["beats"]:
@@ -493,10 +470,10 @@ def timeline_problems(script: dict, tl: dict, earlier: list[dict] | None = None)
             first = b["from"] / fps
             break
     if first is None or first > sp["figure_by"]:
-        out.append(f"the first figure appears at {'never' if first is None else f'{first:.1f} s'}; one by {sp['figure_by']:.0f} s")
+        out.append(note(f"the first figure appears at {'never' if first is None else f'{first:.1f} s'}; one by {sp['figure_by']:.0f} s"))
     turns = [starts[i] for i, r in role.items() if r == "turn" and i in starts]
     if turns and not TURN_FROM <= turns[0] / total <= TURN_TO:
-        out.append(f"the turn starts at {turns[0] / total:.0%} of the video; between {TURN_FROM:.0%} and {TURN_TO:.0%}")
+        out.append(note(f"the turn starts at {turns[0] / total:.0%} of the video; between {TURN_FROM:.0%} and {TURN_TO:.0%}"))
     hook = tl["beats"][0]
     if hook["frames"] / fps > sp["hook_max"]:
         out.append(f"the hook runs {hook['frames'] / fps:.1f} s; keep it to {sp['hook_max']:.0f} s or less")

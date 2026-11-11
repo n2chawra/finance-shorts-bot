@@ -33,15 +33,19 @@ own render checks it. You are checking what code cannot see.
 4. **Empty scene:** a frame after the first second with nothing but background.
 5. **Wrong content:** a visible placeholder such as `{amount}`, a number that is obviously
    broken (₹0, NaN, a negative amount), or a label that does not match its value.
-6. **No hook:** the first frame does not show a large number, question or statement (in a Short,
-   the first caption words count).
+6. **The first two seconds don't say who and how much** (Shorts; owner review, 2026-11-11: of the
+   people YouTube showed our Shorts to, 55-76% swiped away within a second or two). Look only at the
+   first still and the first spoken sentence, as a stranger with the sound off: do you know which
+   famous person or business this is about, and the surprising figure? Reject a first frame that is
+   an empty room, a cast member alone, a placeholder head, an unlabelled object, or a subject you
+   could not name; and a first sentence that is a question about what the viewer thinks, a tease
+   ("Watch this.") or a line that keeps the name back. A text chip standing in for a real thing
+   ("LIFE INSURANCE" in a box) anywhere in the video is a reject too: show the thing.
 7. **No disclaimer:** the last frame does not show "Illustrative only. Not financial advice." (a
    Short shows it as a small line over its last moments; a long video on its end card).
-7b. **The hook and the pace** (Shorts; owner, 2026-10-30), from the script and `render.json`'s
-   `voice`: reject `[script]` a hook that gives the answer away instead of opening a question
-   (the answer belongs to the payoff); a Short where the cast trade one-liners and nobody explains
-   (one voice should carry it in full sentences); level chips or "level one, two…" in a video
-   whose topic is not a ladder.
+7b. **Announced structure** (Shorts), from the script: reject `[script]` level chips, "three
+   clues…", "level one, two…" or any line that announces what is coming. The hook states the fact
+   (check 6); the cast may trade short lines, that is the skit.
 8. **Long-video thumbnails** (`videos/<id>/feed-preview.png`: our three, A, B and C, each among its topic's most
    viewed videos; since 2026-11-11 the owner picks one, else Studio's `thumbnail_pick` goes up). Look at each:
    does it use the picture language those hits share (its `pattern`)

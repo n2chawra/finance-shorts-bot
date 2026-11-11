@@ -47,9 +47,25 @@ def config(root: Path = ROOT) -> dict:
     return _read(root / CONFIG, {"dimensions": {}})
 
 
+def frozen(root: Path = ROOT, today: str | None = None) -> dict | None:
+    """The config's `frozen` block while it is in force (owner, 2026-11-11: one recipe for 14 days, no
+    default changes in between; at 2-3 Shorts a day the 48-hour verdicts were noise and flipped their own
+    defaults within days). `until` is the last day it holds; after it the variant system resumes."""
+    f = config(root).get("frozen")
+    if not isinstance(f, dict):
+        return None
+    today = today or datetime.now(timezone.utc).date().isoformat()
+    return f if today <= str(f.get("until", "9999-12-31")) else None
+
+
 def state(root: Path = ROOT) -> dict:
-    """Defaults and dropped options as judged so far, over the config's."""
+    """Defaults and dropped options as judged so far, over the config's. While frozen: the config's own
+    defaults, nothing dropped, and the `free` dimensions left to the planner."""
     cfg, saved = config(root), _read(root / STATE, {}).get("dimensions", {})
+    fz = frozen(root)
+    if fz:
+        return {dim: {"default": d["default"], "dropped": [], "options": d["options"], "since": d.get("since", "2000-01-01")}
+                for dim, d in cfg["dimensions"].items() if dim not in fz.get("free", [])}
     out = {}
     for dim, d in cfg["dimensions"].items():
         s = saved.get(dim, {})
@@ -138,6 +154,8 @@ def _bootstrap_better(a: list[float], b: list[float], rng: random.Random, n: int
 
 def judge(root: Path = ROOT, now: datetime | None = None, write: bool = True) -> list[dict]:
     """Drop options that clearly lose, promote one that clearly wins; returns the verdicts made now."""
+    if frozen(root):
+        return []          # no drops or promotions while the recipe is frozen; the saved state is left as it was
     cfg, st_, obs = config(root), state(root), observations(root)
     rng = random.Random(7)
     verdicts = []
@@ -195,6 +213,8 @@ def _save(root: Path, st_: dict, verdicts: list[dict], obs: dict, now: datetime)
 def assign(video_id: str, root: Path = ROOT) -> dict:
     """The options for a new Short: Thompson sampling on log-views per dimension, at most `maxChanged`
     dimensions away from the defaults. Deterministic for a video id and the same data."""
+    if frozen(root):
+        return {d: s["default"] for d, s in state(root).items()}
     cfg, st_, obs = config(root), state(root), observations(root)
     rng = random.Random(int(hashlib.sha256(video_id.encode()).hexdigest()[:12], 16))
     all_logs = [math.log1p(y) for d in obs.values() for ys in d.values() for y in ys]
@@ -253,7 +273,8 @@ def plan_problems(plan: dict, root: Path = ROOT) -> list[str]:
 
 def status(root: Path = ROOT) -> str:
     st_, obs = state(root), observations(root)
-    lines = []
+    fz = frozen(root)
+    lines = [f"FROZEN until {fz.get('until')}: every Short gets the defaults; no drops or promotions"] if fz else []
     for dim, s in st_.items():
         cells = []
         for x in s["options"]:

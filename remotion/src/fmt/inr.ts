@@ -133,13 +133,13 @@ export const money = signed((x: number, cur: Currency): string => {
   return `${CURRENCY_SYMBOL[cur]}${groupWestern(n)}`;
 });
 
-/** Short amount: "$2.50T", "$2.35B", "$1.5M", "$12,500" (rupees: "₹2.30 Cr", "₹94.9 L"). Never "1000.0M". */
+/** Short amount: "$2.5T", "$2.35B", "$500M", "$1.5M", "$12,500", no trailing zeros (rupees: "₹2.30 Cr", "₹94.9 L"). Never "1000M". */
 export const moneyShort = signed((x: number, cur: Currency): string => {
   if (cur === "INR") return inr(x);
   const s = CURRENCY_SYMBOL[cur];
-  if (x >= 1e12 || roundTo(x / 1e9, 2) >= 1000) return `${s}${fixed(x / 1e12, 2)}T`;
-  if (x >= 1e9 || roundTo(x / 1e6, 1) >= 1000) return `${s}${fixed(x / 1e9, 2)}B`;
-  if (x >= 1e6 || roundEven(x) >= 1_000_000) return `${s}${fixed(x / 1e6, 1)}M`;
+  if (x >= 1e12 || roundTo(x / 1e9, 2) >= 1000) return `${s}${g(roundTo(x / 1e12, 2))}T`;
+  if (x >= 1e9 || roundTo(x / 1e6, 1) >= 1000) return `${s}${g(roundTo(x / 1e9, 2))}B`;
+  if (x >= 1e6 || roundEven(x) >= 1_000_000) return `${s}${g(roundTo(x / 1e6, 1))}M`;
   return `${s}${groupWestern(roundEven(x))}`;
 });
 

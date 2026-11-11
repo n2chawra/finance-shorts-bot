@@ -12,9 +12,32 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 
 ## Hard constraints
 
+- **The fixed run (owner review, 2026-11-11, `docs/plans/2026-11-11-review.md`; until 2026-11-26).**
+  After a month the channel had 14 subscribers; no Short had passed about 1,200 views, and YouTube
+  Studio showed that 55–76% of the people shown a Short swiped away (the October "hits" included).
+  Nothing had run longer than five days and the tests were too small to trust. So for 14 days:
+  **one recipe, no default changes, judged once at the end on "stayed to watch"** (engaged views ÷
+  views, which matches Studio's figure within two points; `metrics/analytics.json`), not on views.
+  Where a bullet below says otherwise, this one wins.
+  - One surprising true money fact about a real, named person or business per Short; the title and
+    the hook's first sentence state it with the name and the figure. No "You think X?" hook, no
+    "Watch this" (`generator/story.py` `hook_problems`). The first frame shows the real subject.
+  - 28–35 s, the cast act a skit when they are part of the story, one narrator voice for every Short
+    (`SHORTS_NARRATOR` in `generator/run.py`), the voice at the October pace, shot/build beats.
+  - The variant system is frozen (`config/arms.json` → `frozen`; `improvement/arms.py`) and Shorts
+    A/B tests are paused (`config/experiments.json`). Agents start no Shorts experiment and change no
+    Shorts default until the freeze ends. After it: a default changes only on 20+ videos per side or
+    a 3× difference.
+  - Style checks are **notes**, not failures (`renderer/advice.py`): numbers, facts, layout, length,
+    the disclaimer, liveliness and uniqueness still fail a video; the rest advise. A video should
+    take about ten steps.
+  - Captions end 340 px above the bottom edge of a Short (YouTube's own buttons cover what is lower);
+    one upload category; no country tag on global videos.
+  - Owner-side switches (dashboard settings; routines can't change them): 2 Shorts a day, long videos
+    off, the dashboard and monthly agents off, research twice a week.
 - **Voiceover only from the offline voice engine** (`renderer/engine/voice.py`, Kokoro, Apache-2.0;
   installed by `scripts/setup-voice.sh`, never committed). One Indian-English and five American
-  voices, rotated per video; numbers are spoken as words.
+  voices; every Short has the same narrator since 2026-11-11 (long videos rotate); numbers are spoken as words.
   Spoken numbers come only from code placeholders. No recorded, cloned or online voices. Every
   video is voiced, with captions of every word drawn from the voice timings (owner, 2026-10-21;
   small sentence captions with the speaker's name since 2026-11-02; `remotion/src/fx/captions.tsx`).

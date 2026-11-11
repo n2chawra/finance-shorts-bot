@@ -95,13 +95,14 @@ def test_a_hook_that_gives_the_answer_fails():
     assert any("hook gives no reason" in p for p in story.script_problems(s))
 
 
-def test_one_liners_traded_by_the_cast_fail():
+def test_a_skit_the_cast_trade_in_short_lines_passes():
+    """2026-11-11: the one-explaining-voice rules are gone; the Shorts that worked were skits the cast acted."""
     s = explained()
     for i, b in enumerate(s["beats"][1:-1]):
         b["speaker"] = ("rohan", "priya", "sharma")[i % 3]
         b["say"] = "Short line here."
     problems = " ".join(story.script_problems(s))
-    assert "no one explains" in problems and "speaker changes" in problems and "not one-liners" in problems
+    assert "no one explains" not in problems and "speaker changes" not in problems and "not one-liners" not in problems
 
 
 def test_whips_are_accents():
@@ -180,38 +181,36 @@ def armed(hook: str) -> dict:
     return s
 
 
-def test_a_denied_belief_passes_without_a_question_at_the_end():
-    for hook in ("You think McDonald's makes its money selling burgers? It doesn't.",
-                 "You think the dealer gave you that discount? He didn't.",
-                 "You think billionaires live on their salary? Not one of them.",
-                 "Do you think Delta earns its {fact2} flying you? You're wrong."):
+def test_a_hook_that_states_the_fact_with_the_name_or_the_figure_passes():
+    """2026-11-11: the hook says the surprising fact itself; "You think X? It isn't." is no longer the pattern."""
+    for hook in ("The NBA paid Magic Johnson {pay}. He made a billion.",
+                 "McDonald's earns more from rent than from burgers.",
+                 "A {price} gym makes its money from the members who never come."):
         assert story.hook_problems(armed(hook)) == [], hook
-        assert not any("hook" in p for p in story.script_problems(armed(hook))), hook
 
 
-def test_the_9_nov_hooks_fail_belief_without_denial_and_stock_tag():
-    for hook in ("Your money, held for free? Watch this.",
-                 "Basketball made Magic Johnson a billionaire? Watch this.",
-                 "Delta makes its money flying you? Watch this."):
-        problems = " ".join(story.script_problems(armed(hook)))
-        assert "put the belief to the viewer and deny it" in problems and "stock tag" in problems, hook
+def test_a_you_think_hook_fails():
+    for hook in ("You think McDonald's makes its money selling burgers? It doesn't.",
+                 "Do you think Delta earns its {fact2} flying you? You're wrong."):
+        assert "state the surprising fact itself" in " ".join(story.hook_problems(armed(hook))), hook
 
 
-def test_a_you_think_question_needs_its_denial():
-    problems = " ".join(story.hook_problems(armed("You think your bank pays you for saving?")))
-    assert "never says it's wrong" in problems
+def test_a_hook_without_the_name_or_the_figure_fails():
+    problems = " ".join(story.hook_problems(armed("Your gym wants you to stay home.")))
+    assert "names no famous person or company and no figure" in problems
 
 
-def test_a_denial_followed_by_a_stock_tag_fails():
-    problems = " ".join(story.hook_problems(armed("You think Apple only earns from iPhones? It doesn't. Here's why.")))
-    assert "stock tag" in problems
+def test_a_hook_that_ends_on_a_stock_tag_fails():
+    for hook in ("Basketball made Magic Johnson a billionaire? Watch this.",
+                 "Apple earns {fact1} from one iPhone setting. Here's why."):
+        assert "stock tag" in " ".join(story.script_problems(armed(hook))), hook
 
 
-def test_a_hook_may_not_end_like_a_recent_shorts_hook():
-    earlier = [armed("You think gyms want you there? They don't, you know.")]
-    problems = " ".join(story.hook_problems(armed("You think Delta flies for fares? They don't, you know."), earlier))
-    assert "ends like one of the last" in problems
-    assert story.hook_problems(armed("You think Delta flies for fares? It doesn't."), earlier) == []
+def test_a_hook_ending_like_a_recent_one_is_only_a_note():
+    from renderer import advice
+    earlier = [armed("Planet Fitness charges {price}, and most never come.")]
+    problems = story.hook_problems(armed("Delta sells {fact1} of miles, and most never come."), earlier)
+    assert len(problems) == 1 and advice.is_note(problems[0]) and "ends like one of the last" in problems[0]
 
 
 def test_scripts_without_arms_keep_the_old_hook_check():

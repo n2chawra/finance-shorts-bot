@@ -55,10 +55,15 @@ export function captionGroups(tokens: Token[]): Token[][] {
 /** Where the captions band starts (road: below the walker's face). Scenes keep their own labels out
  * of [top, top + CAPTION_BAND] (QA, 2026-10-28: captions sat on the stack labels). */
 export function captionTop(w: number, h: number, scene: string): number {
-  // a board's cast stands lower (its ground at 0.735): the line sits just under their feet
-  return h > w ? h * (scene === "board" ? 0.785 : 0.755) : h * (scene === "board" ? 0.87 : 0.84);
+  // a Short's box is anchored by its bottom edge (SHORT_UI_BOTTOM) and grows upward
+  return h > w ? h - SHORT_UI_BOTTOM - captionBand(w, h, scene) : h * (scene === "board" ? 0.87 : 0.84);
 }
-export const captionBand = (w: number, h: number): number => (h > w ? 130 : 84);
+/** YouTube draws the channel row, the title and the sound row over the bottom of a Short. Seen on the
+ * live channel on 2026-11-11: the caption box was cut off by the channel name and Subscribe button in
+ * three of eight frames of one Short. The box now ends this far above the bottom edge (about 18%). */
+export const SHORT_UI_BOTTOM = 340;
+/** The tallest caption box: two lines (plus the speaker's name on a board). */
+export const captionBand = (w: number, h: number, scene?: string): number => (h > w ? (scene === "board" ? 225 : 175) : 84);
 void HIGH;
 
 export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]; scene: string }> = ({ tl, frame, groups, scene }) => {
@@ -82,7 +87,7 @@ export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]
   const who = g[0]!.who && g[0]!.board ? g[0]!.who : undefined;
   const tagColor: Record<string, string> = { rohan: "#2f7df6", priya: "#e0518f", sharma: "#f08c3a", sikka: "#d4a017", narrator: "#6b7385" };
   return (
-    <div style={{ position: "absolute", left, top, width, display: "flex", flexDirection: "column", alignItems: "center", pointerEvents: "none" }}>
+    <div style={{ position: "absolute", left, ...(v ? { bottom: SHORT_UI_BOTTOM } : { top }), width, display: "flex", flexDirection: "column", alignItems: "center", pointerEvents: "none" }}>
       {who && <div style={{ alignSelf: "center", marginBottom: -6, zIndex: 1, fontFamily: FONT, fontWeight: 900, fontSize: v ? 44 : 30, color: "#fff", textTransform: "uppercase",
         background: tagColor[who] ?? "#6b7385", borderRadius: 10, padding: "0 14px", letterSpacing: 2 }}>{who}</div>}
       <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: size, lineHeight: 1.15, textAlign: "center", maxWidth: width,

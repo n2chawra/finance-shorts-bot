@@ -1,5 +1,11 @@
 {
   "note": "The variant system (improvement/arms.py, owner 2026-11-04: 'experiments are taking too long; 48 hrs is enough'). Each new Short gets one option per dimension; the defaults are the October hit recipe. Options are judged on views 48 hours after publishing and dropped or promoted within days. `since` is the first publish date whose videos count for that dimension (later for dimensions whose history is confounded). Owner-only: agents propose a new option in a notification, they never edit this file.",
+  "frozen": {
+    "since": "2026-11-12",
+    "until": "2026-11-26",
+    "free": ["hook", "topic"],
+    "why": "Owner, 2026-11-11 (full review): one recipe for 14 days, about 30 Shorts, judged once at the end on 'stayed to watch' from YouTube Studio. While this holds every Short gets the defaults below, nothing is dropped or promoted, and the hook style and topic are the planner's (generator/formats.py keeps 2 of 3 on big money). Remove this block, or let `until` pass, to resume the variant system."
+  },
   "maxChanged": 2,
   "exploreShare": 0.4,
   "minN": 4,

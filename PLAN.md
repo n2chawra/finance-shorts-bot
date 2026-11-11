@@ -408,3 +408,20 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   ≥ 90%, the mute review, sourced facts in every video (`rate` maths, `year` facts), shapes
   `question-chain`, `ladder`, `true-history`, rotating looks, quieter music dropping before reveals,
   Shorts 60–90 s. The travelling-money motion and the pulsing cinematic bed are adopted for every Short.
+- 2026-11-11: **Full review after one month** (`docs/plans/2026-11-11-review.md`). 14 subscribers, 50
+  Shorts with ~13,500 views, 4 long videos with 25. Findings: no Short ever passed YouTube's first
+  test (~1,200 views); Studio shows 55–76% of people shown a Short swipe away, the October hits
+  included; strategy changed every few days (Shorts length 10 times in 22 days); the 48-hour variant
+  verdicts were noise; nine routines on one Pro plan starved the video run (six days with no video);
+  ~160 checks failed 27% of steps. Side by side with MoneyTalk (518 subscribers, 20–80K views a Short)
+  and The Curious Plot, the gap is the title and the first three seconds, not the animation.
+  Changed: a 14-day fixed run (variant system frozen, Shorts A/B tests paused, every Short at the
+  October voice pace with one narrator); the hook states the fact with the name and the figure instead
+  of "You think X? It isn't."; style checks became notes (`renderer/advice.py`); the one-explaining-voice
+  rules removed; trap and which-one-are-you formats back for one Short in three; captions moved above
+  YouTube's bottom overlay; "$500M" instead of "$500.0M"; one upload category; no "india" tag.
+  Review on 2026-11-26 on stayed to watch (engaged ÷ views).
+- [ ] Owner: dashboard settings for the fixed run (2 Shorts a day and two upload times, `longPerWeek` 0,
+  dashboard and monthly agents off)
+- [ ] Owner: upload the new banner (`assets/channel/banner-global-v2.png`)
+- [ ] 2026-11-26: review the fixed run on stayed to watch, then decide what the variant system resumes with

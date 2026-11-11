@@ -25,7 +25,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from renderer import craft, remotion, thumbs
+from renderer import advice, craft, remotion, thumbs
 from renderer.engine.formatting import CURRENCIES
 from improvement import arms
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
@@ -201,6 +201,9 @@ def heard(script: dict, narrator: str | None) -> dict:
             "narratorShare": round(100 * sum(n for who, n in lines if who not in CAST_VOICES) / total)}
 
 
+SHORTS_NARRATOR = "am_michael"   # the voice of "Why billionaires never sell their stock"; no cast member uses it
+
+
 def next_narrator(entries: list[dict], taken: set[str] = frozenset()) -> str:
     """The narrator voice these videos used longest ago (a never-used one first), never one in `taken`."""
     last = {v: -1 for v in NARRATOR_VOICES if v not in taken} or {v: -1 for v in NARRATOR_VOICES}
@@ -263,9 +266,12 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
     if plan.get("arms") and script.get("arms") != plan["arms"]:
         spine.append(f"script.arms must be the plan's arms ({json.dumps(plan['arms'])}): copy them unchanged; the style and "
                      f"length checks read them")
+    spine, advice_ = advice.split(spine)     # a note never fails the check (renderer/advice.py)
+    for n in advice_:
+        print(n.upper()[:5] + n[5:])
     if spine:
         passed, notes = False, [*notes, *spine]
-    log_step(vid, "number_check", passed, notes, root)
+    log_step(vid, "number_check", passed, [*notes, *advice_], root)
     return [] if passed else notes
 
 
@@ -372,6 +378,9 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
     if not lo * 0.95 <= sec_ <= hi * 1.05:
         problems.append(f"length about {sec_:.0f} s on the estimated voice; it must land in {lo}–{hi} s")
     problems += remotion.custom_problems(vid)
+    problems, advice_ = advice.split(problems)
+    for n in advice_:
+        print(n.upper()[:5] + n[5:])
     return problems
 
 
@@ -390,7 +399,13 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         earlier = [e for e in history.of_format(history.load(root), plan_format(script)) if e["id"] != vid]
         previous = (earlier[-1].get("style") or {}).get("voice") if earlier else None
         taken = cast_voices(script)
-        if not script.get("narrator") or script["narrator"] == previous or script["narrator"] in taken:
+        if plan_format(script) == "short":
+            # one narrator for every Short (owner review, 2026-11-11): the growing channels in this niche keep
+            # one voice, and ours changed every video. Long videos still rotate.
+            if script.get("narrator") != SHORTS_NARRATOR:
+                script["narrator"] = SHORTS_NARRATOR
+                _write(d / "script.json", script)
+        elif not script.get("narrator") or script["narrator"] == previous or script["narrator"] in taken:
             script["narrator"] = next_narrator(earlier, taken)
             _write(d / "script.json", script)
         # the video's A/B variants travel in the timeline, so scenes can read them and ship records them
@@ -441,7 +456,10 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     if plan_format(script) == "short" and (d / "timeline.json").exists():   # measured on the real voice timing
         warnings = [f"warning: {w}" for w in event_gaps(_read(d / "timeline.json")["beats"])]
     warnings += [f"warning: {w}" for w in loudness_warnings(audio, plan_format(script))] if rendered else []
-    log_step(vid, "render", not problems, (problems or [ok_note]) + warnings, root, started)
+    problems, advice_ = advice.split(problems)     # notes are logged and shown, and never fail the render
+    for n in advice_:
+        print(n.upper()[:5] + n[5:])
+    log_step(vid, "render", not problems, (problems or [ok_note]) + advice_ + warnings, root, started)
     return problems
 
 

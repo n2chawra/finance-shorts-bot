@@ -33,7 +33,7 @@ export const ScreenTexts: React.FC<{ items: ScreenText[]; w: number; h: number; 
   const v = h > w;
   const box = { ...safeBox(w, h) }, min = minText(w, h);
   if (top0 !== undefined) box.y0 = Math.max(box.y0, top0);     // below the HUD counter
-  const bandTop = captionTop(w, h, scene), bandBot = bandTop + captionBand(w, h);
+  const bandTop = captionTop(w, h, scene), bandBot = bandTop + captionBand(w, h, scene);
   const onBand = (y0: number, y1: number) => y1 > bandTop && y0 < bandBot;
   const maxW = box.x1 - box.x0 - 40;
   return (

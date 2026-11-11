@@ -91,13 +91,14 @@ def group_western(n: int) -> str:
 
 @_signed
 def _short_western(x: float, sym: str) -> str:
-    """'$2.50T', '$2.35B', '$1.5M', '$12,500'. Never shows '1000.00B', '1000.0M' or '$1,000,000'."""
+    """'$2.5T', '$2.35B', '$500M', '$1.5M', '$12,500': no trailing zeros (owner review, 2026-11-11:
+    '$500.0M' reads as a spreadsheet). Never shows '1000B', '1000M' or '$1,000,000'."""
     if x >= 1e12 or round(x/1e9, 2) >= 1000:
-        return f"{sym}{x/1e12:.2f}T"
+        return f"{sym}{round(x/1e12, 2):g}T"
     if x >= 1e9 or round(x/1e6, 1) >= 1000:
-        return f"{sym}{x/1e9:.2f}B"
+        return f"{sym}{round(x/1e9, 2):g}B"
     if x >= 1e6 or round(x) >= 1_000_000:
-        return f"{sym}{x/1e6:.1f}M"
+        return f"{sym}{round(x/1e6, 1):g}M"
     return sym + group_western(int(round(x)))
 
 

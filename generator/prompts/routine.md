@@ -108,7 +108,9 @@ Rendering the video is the slow part, so QA looks at the stills **before** it is
    ```
    It builds the voice and timeline, draws the contact sheet (`preview.png`), the thumbnail and
    the layout probe, and checks layout, length and sound levels. It must print `ok`. `FAIL:` lines:
-   fix the script and go back to section 3.
+   fix the script and go back to section 3. **`NOTE:` lines (from any check) are advice** (owner
+   review, 2026-11-11): act on one only when the fix is a line or two, never rewrite or re-render
+   for a note alone, and carry on. A video should be done in about ten steps.
 2. **QA review** (section 6) on those stills. Fix what it names and run the stills again; the
    voice is cached, so this is quick.
 3. **The video**, once QA has passed:

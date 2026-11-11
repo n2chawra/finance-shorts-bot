@@ -20,8 +20,9 @@ owner's picks and stales of the same story or shape), `quality` (motion, craft p
 ## 2. Look at the top candidates
 For the top 6 (or all, if fewer), open `videos/<id>/preview.png` and `videos/<id>/thumbnail.png`
 (look at them) and read the first two beats of `videos/<id>/script.json`. Judge, in this order:
-1. **The first second**: does frame 0 and the first line stop the thumb? A curiosity gap (the belief,
-   denied: "You think McDonald's makes its money selling burgers? It doesn't.") beats a statement of the answer. Reach is decided by
+1. **The first second**: does frame 0 and the first line stop the thumb? With the sound off, do you know which famous
+   person or business it is about and the surprising figure? A fact stated with the name and the number
+   ("The NBA paid Magic Johnson $40M. He made a billion.") beats a tease or a question about what the viewer thinks. Reach is decided by
    how many swipe away (stayed-to-watch: ours 24–51%, breakouts 70%+).
 2. **The topic**: big money (billionaires, money at scale, how famous businesses make money) first,
    and a surprise the viewer doesn't already know: a textbook topic ("banks lend your savings") ranks

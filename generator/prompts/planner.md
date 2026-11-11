@@ -23,23 +23,36 @@ say so in the report.
 
 If `mode` is not `video`, stop and report the mode. Do not plan a video.
 
-## Step 0 for a Short: take the variant system's options (owner, 2026-11-04)
+## The fixed run (owner review, 2026-11-11; until `config/arms.json` → `frozen.until`)
+For 14 days every Short is made to one recipe and judged on one number from YouTube Studio: the share
+of people who **stayed to watch** instead of swiping (ours was 24-52%). What the review found: of the
+people YouTube showed a Short to, most swiped within a second or two, because the title and the first
+sentence hid the subject. The same Magic Johnson story got 70,000 views on a small channel titled
+"The NBA Paid Magic Johnson $40M. He Made A Billion" and 419 on ours as "The basketball star who got
+rich off the court".
+- **Pick one surprising true money fact about a real, named person or business** (how a famous
+  business really makes money, a billionaire question, money at scale), with its figures as `facts`
+  from the topic feed. A trap or a which-one-are-you may take one Short in three; personal-budget
+  formats (`tier: low`) are off. `check-plan` enforces both.
+- **The title states the whole fact, with the name and the biggest figure**: "Planet Fitness
+  charges {price} and hopes you never come" · "McDonald's earns more from rent than from burgers".
+  Never a title that keeps the subject back ("The basketball star who…", "The biggest pay deal ever…").
+  The plan's `subject` is that name; the description's first two lines and one hashtag carry it too.
+- **The hook is the same fact in spoken words** (the writer's contract): no "You think …?", no
+  "Watch this.".
+- A `note:` from a check is advice, never a reason to plan again: only a `FAIL:` is.
+
+## Step 0 for a Short: take the variant system's options
 Run `python -m improvement.arms assign --video <id>` and copy its JSON into the plan as `"arms"`
-(it decides this Short's length band, topic kind, hook style, title kind, style and upload category;
-`check-plan` fails a plan without it or with options changed). Follow every option:
-- `length` "20-27" or "28-35": the Short's length in seconds (tell the writer; the render checks it).
-- `topic` "big_money" (billionaires, famous companies, traps, money at scale) or "budget" (a
-  personal-budget format, only when assigned).
-- `hook`: your `hook_style` (the same words, `shock_number` → "shock number" is fine as `shock_number`).
-- `title` "figure_or_name" (a money figure or a famous name in the title) or "plain".
-  Either way the plan names `"subject"`: the famous person or company the story is about
-  ("Elon Musk", "MrBeast", "Costco"), or `""` when there is none. A plain title may keep the name
-  back, but the description's first two lines and one hashtag (`#ElonMusk`) always name the subject,
-  so YouTube knows who the video is about (owner, 2026-11-10; check-plan fails without them).
-- `style` "shot" (shot/build beats with the cast, the October hits) or "board" (board cards).
-- `category`: nothing to do; the publisher uploads with it.
-Most Shorts get the current best recipe; some try one or two other options so we learn in days
-which ones get views (`improvement/arms-state.json`, judged on 48-hour views).
+(`check-plan` fails a plan without it or with options changed). During the fixed run it returns the
+same options for every Short and decides nothing else:
+- `length` "28-35": the Short's length in seconds (tell the writer; the render checks it).
+- `title` "figure_or_name": a money figure or a famous name in the title (the fixed run asks for both).
+- `style` "shot": shot/build beats, no board cards.
+- `category`: nothing to do; the publisher uploads every video in one category.
+The hook style and the topic kind are yours: rotate `hook_style` as the variety rule asks.
+The plan always names `"subject"`: the famous person or company the story is about ("Elon Musk",
+"MrBeast", "Costco"); `check-plan` fails without it.
 
 ## What to make: demand first (owner reset, 2026-10-21)
 

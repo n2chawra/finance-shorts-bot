@@ -17,10 +17,11 @@ a beat or two, never more. Reference: [`examples/short_story_shot.json`](../../.
 ## What is different in a Short
 
 - `"format": "short"`, `"template": "short_story"`.
-- **Pace** (owner, 2026-10-30: "too fast, I need to watch it twice", then "a little faster"): tempo 1.2,
-  about **175 spoken words a minute**, voice and animation together. The length is the setting (`lengthMinSec`–
-  `lengthMaxSec` in `config/settings.json`, 20–35 s since 2026-11-04, the length of every 1K-view Short): **60–100 words in 6–8 beats**
-  of 3–5 s, following "The story spine" below. One question, one surprise, one punchline. No `chapter` beats.
+- **Pace:** the picture runs at tempo 1.2 and the voice at the October pace (about 225 spoken words a
+  minute). The length is the plan's `arms.length` band: **28-35 s, about 85-115 words in 6-8 beats**
+  of 3-5 s during the fixed run (owner review, 2026-11-11; the fixed recipe in
+  `generator/prompts/writer.md` comes first wherever this file says otherwise). One fact, one
+  surprise, one punchline. No `chapter` beats.
 - **The first second is the hook.** The first beat's opening lines (`"at": "start"`) are on screen
   from frame 0, because that frame is what the feed shows: a big figure or a sharp question.
 - **One idea.** A Short makes one point with one calculation. Cut every beat that doesn't move it.
@@ -172,16 +173,16 @@ why}` in the plan: it joins the library when the video ships). Pick the shape th
 a hidden answer is a `reveal`, two people one choice a `versus`, a ladder people climb `levels`.
 Every shape keeps one spine (`generator/story.py` checks it):
 
-1. **Hook** (`role: hook`, 4.5 s or less): **a curiosity gap**: the belief put to the viewer and
-   denied (owner, 2026-10-31 and 2026-11-09). Never give the answer here: it is the payoff.
-   - Good: "You think McDonald's makes its money selling burgers? It doesn't." / "You think
-     billionaires live on their salary? Not one of them."
-   - Bad: "Delta makes its money flying you? Watch this." (the belief, never denied, and a stock tag) /
-     "The casino never gambles. It wins a slice of every bet." (the answer, so nothing to stay for)
-   `generator/story.py` `hook_problems` fails a hook without the denial, with a stock tag after it
-   ("Watch this.", "Here's why."), or ending like one of the last 6 Shorts' hooks.
-2. **Promise** by 6 s (`role: promise`): what the viewer will get ("three clues, and the last one
-   is the one they never tell you").
+1. **Hook** (`role: hook`, 4.5 s or less): **the surprising fact itself, with the famous name or the
+   figure in the first sentence** (owner review, 2026-11-11: the viewer decides in the first second).
+   - Good: "The NBA paid Magic Johnson {pay}. He made a billion." / "McDonald's earns more from rent
+     than from burgers."
+   - Bad: "You think McDonald's makes its money selling burgers? It doesn't." (asks what the viewer
+     thinks before giving them anything) / "Basketball made him rich. Watch this." (no name, a tease)
+   `generator/story.py` `hook_problems` fails a "You think …?" hook, one whose first sentence has no
+   name and no figure, and one that ends on a stock tag ("Watch this.", "Here's why.").
+2. **Promise** by 6 s (`role: promise`): the question the fact raises ("So where did the billion
+   come from?"). Never a count of what is coming ("three clues…").
 3. **A figure on screen** by 9 s.
 4. **Rising stakes** (`role: build`, 3 beats or more; `role: level` in the levels shape): each beat
    a bigger piece of the answer, the picture changing on the words.
@@ -193,10 +194,8 @@ Every shape keeps one spine (`generator/story.py` checks it):
 climbing counter and the word "level" belong to `levels`, which may be at most 1 in 3 videos.
 Other shapes show their figures on things in the scene, and may still use `params.hud.counter`.
 
-**Explain like a teacher** (owner, 2026-10-30: "characters speak one-liners; they should explain").
-One voice carries the video, the narrator or one cast member as the teacher, saying 60% or more
-of the words in full, connected sentences ("because… so… which means…"), 10–13 words a beat on
-average. The others act it out and react in a short line. The speaker changes 5 times at most.
+**Voices.** The narrator is the channel's one voice; the cast speak when they act in the story, in
+lines as short as the skit needs. (The one-explaining-voice rule ended on 2026-11-11.)
 
 **The things take the centre, not the characters** (owner, 2026-10-30: "when the script explains
 something shown in animation, the animation should be the centre of impression"). The cast are near-still

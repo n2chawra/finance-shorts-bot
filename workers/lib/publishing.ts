@@ -124,7 +124,8 @@ export function youtubeMeta(v: { title: string; description: string; tags: strin
 
   const tags: string[] = [];
   let used = 0;
-  for (const t of [...hashtags, "personal finance", "money", "india"]) {
+  // no country tag: most videos are global, and "india" on a dollar story told YouTube the wrong audience (2026-11-11)
+  for (const t of [...hashtags, "personal finance", "money"]) {
     const cost = t.length + (t.includes(" ") ? 2 : 0) + (tags.length ? 1 : 0);
     if (used + cost > 500 || tags.includes(t)) continue;
     tags.push(t);

@@ -21,6 +21,7 @@ from pathlib import Path
 
 from PIL import Image
 
+from renderer import advice
 from renderer.engine.mux import find_ffmpeg
 from renderer.engine.preview import contact_sheet
 from renderer.craft import clause_problems, device_problems, frame_problems, mark_problems, picture_problems, shot_problems, stage_problems
@@ -300,7 +301,8 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
     report["craft_problems"] = shot_problems(tl) + picture_problems(tl) + clause_problems(tl) + mark_problems(tl) + stage_problems(tl) + device_problems(tl) + frame_problems(_not_end_cards(shots, tl), tl["fps"])
     # no point rendering a video the gates will reject: a layout problem, or one `stop_if` finds in
     # the report (length, sound levels), skips it
-    early = list(report["layout_problems"]) + list(report["craft_problems"]) + (stop_if(report) if stop_if else [])
+    # a note (renderer/advice.py) never stops a render
+    early = list(report["layout_problems"]) + advice.split(list(report["craft_problems"]))[0] + (stop_if(report) if stop_if else [])
     if early and not preview:
         msg = "video skipped: " + "; ".join(early)
         enc = getattr(sys.stdout, "encoding", None) or "utf-8"

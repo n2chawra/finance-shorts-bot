@@ -50,10 +50,10 @@ export async function accessToken(): Promise<string> {
  * 3 Nov used 27 Education and were our two weakest Shorts; the variant system may test 27 again. */
 export const UPLOAD_CATEGORY = "22";
 
-/** The upload category for a video: its variant (style.arms.category, improvement/arms.py) when valid. */
-export function categoryOf(style: unknown): string {
-  const c = (style as { arms?: { category?: unknown } } | null)?.arms?.category;
-  return c === "22" || c === "27" ? c : UPLOAD_CATEGORY;
+/** The upload category for a video: always UPLOAD_CATEGORY since 2026-11-11 (one category for the whole
+ * channel, so YouTube learns one audience; the per-video variant is ignored). */
+export function categoryOf(_style: unknown): string {
+  return UPLOAD_CATEGORY;
 }
 
 export type VideoMeta = { title: string; description: string; tags: string[]; publishAt: Date; categoryId?: string };

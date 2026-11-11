@@ -70,13 +70,20 @@ BUDGET_ARM = "budget"
 
 
 def mix_problems(plan: dict, entries: list[dict], root: Path = ROOT, fmt: str = "short") -> list[str]:
-    if fmt == "short" and core_ids(root, fmt) and plan.get("story") not in core_ids(root, fmt):
+    from improvement import arms as _arms
+    fixed_run = fmt == "short" and bool(_arms.frozen(root))
+    if fixed_run and tiers(root, fmt).get(plan.get("story") or "") == "low":
+        return [f"{plan.get('story')!r} is a personal-budget format: off during the fixed run (owner, 2026-11-11). Tell a "
+                f"big-money story ({', '.join(core_ids(root, fmt))}), or a trap or which-one-are-you for one Short in three"]
+    # the fixed run (2026-11-11) lets a trap or a which-one-are-you back in for one Short in three (they had
+    # 721 and 793 views before the variant system's "budget" drop removed them); the 2-of-3 rule below holds
+    if not fixed_run and fmt == "short" and core_ids(root, fmt) and plan.get("story") not in core_ids(root, fmt):
         if ((plan.get("arms") or {}).get("topic")) != BUDGET_ARM:
             return [f"Shorts tell big-money stories ({', '.join(core_ids(root, fmt))}): billionaires, money at scale, how a "
                     f"famous business makes money, the traps. A personal-budget story only when `arms.topic` is "
                     f"\"{BUDGET_ARM}\" (a test the variant system assigns)"]
         return []
-    if fmt == "short" and core_ids(root, fmt) and ((plan.get("arms") or {}).get("topic")) == BUDGET_ARM:
+    if not fixed_run and fmt == "short" and core_ids(root, fmt) and ((plan.get("arms") or {}).get("topic")) == BUDGET_ARM:
         # the variant system counts this video's views as the budget option's (improvement/arms.py)
         return [f"arms.topic is \"{BUDGET_ARM}\": tell a personal-budget story, not {plan.get('story')!r} (a big-money "
                 f"format), or the variant system credits a big-money video to the budget test"]

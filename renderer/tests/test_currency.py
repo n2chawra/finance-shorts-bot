@@ -10,7 +10,7 @@ from renderer.models import maths
 def test_dollars_use_international_grouping_and_millions() -> None:
     usd = Money("USD")
     assert [usd.full(1_234_567), usd.short(1_234_567), usd.long(1_234_567)] == ["$1,234,567", "$1.2M", "$1.2 million"]
-    assert [usd.short(12_500), usd.short(999_950_000), usd.long(2.3456e9)] == ["$12,500", "$1.00B", "$2.35 billion"]
+    assert [usd.short(12_500), usd.short(999_950_000), usd.long(2.3456e9)] == ["$12,500", "$1B", "$2.35 billion"]
     assert [usd.axis(v) for v in (0, 5_000, 1.5e6, 2e9)] == ["0", "5K", "1.5M", "2B"]
     assert Money("GBP").short(2.5e6) == "£2.5M" and Money("EUR").full(1500) == "€1,500"
 

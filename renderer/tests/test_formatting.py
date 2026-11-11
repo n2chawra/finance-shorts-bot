@@ -91,9 +91,9 @@ def test_a_falling_value_shows_its_loss_with_the_sign_first() -> None:
 
 
 @pytest.mark.parametrize("currency, x, short, long, axis", [
-    ("USD", 1e12, "$1.00T", "$1 trillion", "1T"),
-    ("USD", 2.5e12, "$2.50T", "$2.5 trillion", "2.5T"),
-    ("USD", 999_995_000_000, "$1.00T", "$1 trillion", "999.995B"),   # never '$1000.00B'
+    ("USD", 1e12, "$1T", "$1 trillion", "1T"),
+    ("USD", 2.5e12, "$2.5T", "$2.5 trillion", "2.5T"),
+    ("USD", 999_995_000_000, "$1T", "$1 trillion", "999.995B"),   # never '$1000.00B'
     ("USD", 999_994_999_999, "$999.99B", "$999.99 billion", "999.995B"),
     ("INR", 1e12, "₹1,00,000 Cr", "₹1,00,000 Crore", "1 L Cr"),       # a lakh crore, not '₹100000.00 Cr'
     ("INR", 2.5e12, "₹2,50,000 Cr", "₹2,50,000 Crore", "2.5 L Cr"),

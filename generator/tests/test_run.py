@@ -407,17 +407,19 @@ def test_narrator_never_shares_a_speaking_cast_members_voice(root: Path) -> None
     put(root, "script.json", saved)
     run.render(VID, preview=True, root=root)
     narrator = json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))["narrator"]
-    assert narrator not in ("am_fenrir", "am_michael")
+    # every Short has the channel's one narrator since 2026-11-11; no cast member uses that voice
+    assert narrator == run.SHORTS_NARRATOR and narrator not in run.CAST_VOICES.values()
 
 
-def test_render_sets_a_missing_or_repeated_narrator_and_keeps_it(root: Path) -> None:
+def test_render_gives_every_short_the_one_narrator_and_keeps_it(root: Path) -> None:
     history.append({**entry(1, voice="am_michael"), "format": "short"}, root)
     plan = make_plan()
     put(root, "plan.json", plan)
-    put(root, "script.json", {**script_for(plan), "narrator": "am_michael"})
+    put(root, "script.json", {**script_for(plan), "narrator": "af_bella"})
     run.render(VID, preview=True, root=root)
     saved = json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))
-    assert saved["narrator"] not in ("am_michael", None) and "experiments" not in saved
+    # every Short gets the channel's one narrator (2026-11-11), whatever the script named
+    assert saved["narrator"] == run.SHORTS_NARRATOR and "experiments" not in saved
     run.render(VID, preview=True, root=root)
     assert json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))["narrator"] == saved["narrator"]
 

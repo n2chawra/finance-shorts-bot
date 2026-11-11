@@ -45,20 +45,32 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 - **Copy the plan's `arms` into the script as `"arms"`** and follow them: `length` is the band in
   seconds the Short must land in (the render fails it outside), `style` "shot" means no board beats,
   "board" means most beats are board cards.
-- **The hit recipe (default since 2026-11-04; read this first).** Our 1K-view Shorts (21–27 Oct)
-  were 22–35 s long, 70–100 spoken words in 6–8 beats: a hook that asks one big-money question, two
-  or three beats that build the surprise with the cast and the money as things, one turn, a
-  one-sentence punchline with the biggest figure, and a last line that hands back to the hook so it
-  loops. Shorts of 35 s or less got a median of 729 views and 55% viewed; 36–50 s got 216; the 60 s+
-  board Shorts got 19–144. Shorter is the single biggest lever we have:
-  - **20–35 s** (the length setting), **60–100 words**, 6–8 beats of 3–5 s. Cut every sentence that
-    doesn't move toward the punchline; a second example is a second video.
-  - **Never announce the structure after the hook** ("three clues", "four levels", "here are five
-    ways"): those lines lost 24–41% of viewers within 2 s in five Shorts (auditor, 2026-11-03).
-    Go straight into the first surprising fact.
-  - **The title and hook carry a money figure or a famous name** (titles with "$…" or "billion" got
-    a median of 793 views in 48 h; the rest 39).
-  - The style is `shot`/`build` beats with the cast, unless the plan's `arms.style` says `board`.
+- **The fixed recipe (owner review, 2026-11-11; read this first; nothing below overrides it).** For
+  14 days every Short is made the same way, and is judged on one number from YouTube Studio: the
+  share of people who **stayed to watch** instead of swiping. Ours was 24-52%; the Shorts growing in
+  this niche state a surprising true fact about a famous name in the first second.
+  - **One surprising true money fact about a real, named person or business.** The plan's `subject`
+    and its biggest figure are in the title and in the hook's first sentence.
+  - **The hook states the fact itself**: "The NBA paid Magic Johnson {pay}. He made a billion." ·
+    "McDonald's earns more from rent than from burgers." · "A {price} gym makes its money from the
+    members who never come." No "You think …?", no "Watch this.", no "Here's why." (`number-check`
+    fails those). The surprise is the reason to stay; the rest of the Short shows how it can be true.
+  - **The first frame shows the real subject, recognisable at a glance** with the sound off: the
+    thing itself drawn big (the gym, the burger, the jersey with the name), its name as a label, the
+    figure beside it. Never an empty room, never a placeholder head, never a cast member standing in
+    for a real person.
+  - **Every beat shows a named, specific thing** (the cinema, the coffee shop, the rent cheque), never
+    a text chip standing in for one ("LIFE INSURANCE", "TEAM STAKES").
+  - **The cast act it as a short skit** when they are part of the story (Rohan as the member who
+    pays and never goes; Sharma as the landlord). A cast member with no part in the story stays out.
+    Short spoken lines are fine; nobody has to "explain like a teacher".
+  - **28-35 s, about 85-115 words, 6-8 beats** (the voice runs at the October pace). One fact, how
+    it works in two or three steps, one punchline with the biggest figure, a last line that hands
+    back to the hook, and **a question to the viewer** in the last beat ("Would you have sold?").
+  - **Never announce the structure** ("three clues", "four levels"): viewers left at that line.
+  - The style is `shot`/`build` beats; no board beats.
+  - A `note:` from a check is advice. Read it once, act on it if it is cheap, and move on: only a
+    `FAIL:` needs a rewrite.
 - **Build it from shots** (owner, 2026-10-21: "most of the screen empty, every video works like a
   template"). Read `renderer/templates/SHOTS.md` and `.claude/skills/motion-direction/SKILL.md`
   first; copy the shape of `examples/short_story_shot.json`, not its words. At least 60% of the
@@ -70,13 +82,8 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   fallback): write `remotion/src/videos/<id>/Hook.tsx` for this video, following
   `remotion/src/videos/README.md` and its reference hook. The topic's world at its most extreme, the
   conflict on screen in the first second.
-- **One voice explains, like a good teacher; the cast act it out** (owner, 2026-10-30: "the
-  characters speak one-liners; they should explain like a teacher"). Pick the explainer: the
-  narrator, or one cast member who knows the answer (Sharma for how the rich work). That voice says
-  60% or more of the words, in full sentences that connect ("because…", "so…", "which means…"),
-  about 10–13 words a beat, one clear idea at a time, a concrete example before the rule. The
-  others react in a short line where it adds something (surprise, a doubt the viewer has, a joke).
-  The speaker changes 5 times at most. Everyday words; no jargon without saying what it means.
+- **Voices:** the narrator is the channel's one voice (set by the render); the cast speak when they
+  act in the story. Everyday words; no jargon without saying what it means.
 - **Nobody on screen is an adviser** (YouTube's monetization policy excludes content presenting
   itself as a human expert giving financial advice; our narrator is a synthetic voice). No line
   claims credentials or expertise ("as a financial adviser", "I'm a banker", "trust me") and no
@@ -85,28 +92,12 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   fine, "You should do this." is not.
 - **Big captions show every spoken word** (drawn automatically from the voice), so scenes carry the
   picture and the figures, not sentences. Keep on-screen text to labels and numbers.
-- **The hook opens a curiosity gap** (owner, 2026-10-30: "the hook is unable to create curiosity").
-  The first spoken line lands in under 1.5 s; the hook opens the question and never answers it
-  (the answer is the payoff): the denied belief below is the gap. Not: "The casino never gambles. It wins a slice of every bet."
-  (the answer; nothing left to wait for). No greeting, no "did you know", no setup before the hook. The first frame already shows the characters or the
-  number, in a place with something moving, never a figure on a plain background:
-  - `conflict`: two characters, opposite moves · `secret`: the mentor says the secret ·
-    `question`: ask what the viewer wants answered · `shock_number`: a computed figure ·
-    `myth`: a character states the belief · `challenge`: dare the viewer to guess.
-- **Your hook pattern, for every Short** (owner, 2026-10-31, adopted 2026-11-02): put the belief
-  everyone holds to the viewer and deny it, never give the answer: "You think McDonald's makes its
-  money selling burgers? It doesn't." · "You think the dealer gave you that discount? He didn't."
-  · "You think billionaires live on their salary? Not one of them." The first line names something
-  famous or everyday, 10 words or fewer; the frame shows that very thing. **The denial is required**
-  (owner again, 2026-11-09: "the video says what people think, not that it's wrong"): `number-check`
-  fails a Short whose hook doesn't start "You think …?" and deny it within a few words, one that ends
-  on a stock tag ("Watch this.", "Here's why.", "Let me show you."), and one that ends like any of
-  the last 6 Shorts' hooks. Failed on 9 Nov: "Your money, held for free? Watch this." · "Basketball
-  made Magic Johnson a billionaire? Watch this." · "Delta makes its money flying you? Watch this."
-  (the belief, never denied). The hook style (`arms.hook`) decides what the belief is and what the
-  frame shows: `secret` the thing the rich know ("You think billionaires cash out? They borrow."),
-  `shock_number` a computed figure in the belief ("You think Delta's {fact2} comes from fares? It
-  doesn't."), `question` the viewer's own question, `myth` the common saying.
+- **The hook** (see the fixed recipe): the first spoken line lands in under 1.5 s and states the
+  surprising fact with the name and the figure. No greeting, no "did you know", no setup. The first
+  frame already shows the subject, in a place with something moving, never a figure on a plain
+  background. The plan's `hook_style` only colours it: `shock_number` leads with the figure, `secret`
+  with what the famous subject does that others don't, `question` may add a short question *after*
+  the fact ("So where did the billion come from?"), `myth` states the fact that breaks the saying.
 - **Storytelling that holds to the last second** (owner, 2026-11-02: "story telling needs lots of
   work … the way of explanation is very weak", the car-discount Short 2/10; target 70% viewed):
   - **One story, one person, one moment.** Follow a character through one concrete situation in
@@ -157,12 +148,11 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   - **Travel between beats**: `match`, `whip` or `zoom-through` (4 loud ones at most); a plain cut
     only before a punchline.
 - **Something new on screen every 2 seconds** (an action on the word that names it), while the
-  voice explains at tempo 1.2 (about 175 words a minute). When the narrator explains, the camera
-  frames the thing being explained and the characters step back; they are big when they speak,
-  react, in the hook and the turn. A spoken figure no thing carries appears huge in the middle of
+  voice runs at the October pace (about 225 words a minute). The camera frames the thing being talked
+  about; the characters are big when they speak or react. A spoken figure no thing carries appears huge in the middle of
   the frame by itself. A Short is 6–8 beats of 3–5 s.
-- **Length:** the setting (`lengthMinSec`–`lengthMaxSec`, 20–35 s since 2026-11-04), about 60–100
-  spoken words. One question, one surprising answer, one punchline.
+- **Length:** the plan's `arms.length` band (28-35 s during the fixed run), about 85-115 spoken
+  words. One question, one surprising answer, one punchline.
 - **Loop it:** the last line hands back to the first, so a viewer who keeps watching sees the hook
   again and it plays on ("…and that's why the rich one never needed the raise." → "Poor person
   gets a raise."). **No `end` beat in a Short:** the disclaimer shows as a small line over the last
