@@ -10,6 +10,7 @@ import { prisma } from "./prisma";
 import { canMarkStale, skipToEnd, uploadNow } from "./queue-actions";
 import { EditorNoteSchema, SettingsSchema, mostLoved } from "./schemas";
 import { runEndMs } from "./run-span";
+import { feedIndex, originOf } from "./origin";
 import { fillFromLive, meanViewPct, totals, windowStart, type DayRow } from "./totals";
 import { manualState, relinked } from "./youtube-link";
 import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
@@ -34,8 +35,16 @@ const dayKey = (d: Date) => d.toISOString().slice(0, 10); // VideoStat.day is a 
 const withRelations = { topic: true, upload: { include: { stats: true } } } satisfies Prisma.VideoInclude;
 type VideoRow = Prisma.VideoGetPayload<{ include: typeof withRelations }>;
 
-function toVideo(v: VideoRow): Video {
+/** The Shorts and long-video research feeds, by topic id (for each video's origin). */
+async function loadFeeds(): Promise<Map<string, Record<string, unknown>>> {
+  const docs = await prisma.repoDoc.findMany({ where: { key: { in: ["topicFeed", "longTopicFeed"] } } });
+  return feedIndex(...docs.map((d) => d.value));
+}
+
+function toVideo(v: VideoRow, feeds?: Map<string, Record<string, unknown>>): Video {
   const style = (v.style ?? {}) as Partial<Video["style"]>;
+  const script = (v.script && typeof v.script === "object" ? v.script : {}) as { feed_id?: unknown };
+  const feedId = style.source?.feedId ?? (typeof script.feed_id === "string" ? script.feed_id : null);
   return {
     id: v.id, templateId: v.templateId, topic: { title: v.topic.title, category: v.topic.category }, status: v.status,
     format: v.format === "long" ? "long" : "short",
@@ -48,6 +57,7 @@ function toVideo(v: VideoRow): Video {
     pickedAt: v.pickedAt?.toISOString() ?? null, pickReason: v.pickReason, orderLocked: v.orderLocked,
     upload: v.upload && { youtubeId: v.upload.youtubeId, publishAt: v.upload.publishAt.toISOString(), state: v.upload.state, error: v.upload.error, attempts: v.upload.attempts },
     totals: totals(v.upload?.stats ?? [], v.upload),
+    origin: feeds ? originOf(feedId, feedId ? feeds.get(feedId) : undefined) : null,
   };
 }
 
@@ -90,7 +100,8 @@ export async function listVideos(f: { status?: string; template?: string; catego
     include: withRelations, orderBy: { createdAt: "desc" }, take: 300,
   });
   const when = (v: VideoRow) => (v.upload?.publishAt ?? v.createdAt).getTime();
-  return rows.sort((a, b) => when(b) - when(a)).map(toVideo);
+  const feeds = await loadFeeds();
+  return rows.sort((a, b) => when(b) - when(a)).map((v) => toVideo(v, feeds));
 }
 
 export async function getVideo(id: string): Promise<VideoDetail | null> {
@@ -102,7 +113,7 @@ export async function getVideo(id: string): Promise<VideoDetail | null> {
   if (!v) return null;
   const order = ["number_check", "fact_review", "qa_review"];
   return {
-    ...toVideo(v), script: v.script,
+    ...toVideo(v, await loadFeeds()), script: v.script,
     qaChecks: v.qaChecks.sort((a, b) => order.indexOf(a.checker) - order.indexOf(b.checker)).map((c) => ({ checker: c.checker, passed: c.passed, notes: asNotes(c.notes) })),
     steps: v.agentRuns.map(toStep),
     stats: (v.upload?.stats ?? []).sort((a, b) => a.day.getTime() - b.day.getTime()).map((s) => ({ day: dayKey(s.day), views: s.views, likes: s.likes, comments: s.comments, subsGained: s.subsGained, avgViewPct: s.avgViewPct })),
@@ -124,7 +135,7 @@ const queued = () => prisma.video.findMany({ where: { ...live, status: "queued" 
   orderBy: [{ pickedAt: { sort: "asc", nulls: "last" } }, { queuePosition: "asc" }, { createdAt: "asc" }] });
 
 export async function listQueue(): Promise<Video[]> {
-  return (await queued()).map(toVideo);
+  return (await queued()).map((v) => toVideo(v));
 }
 
 export async function reorderQueue(ids: string[]): Promise<Video[] | null> {
@@ -372,7 +383,7 @@ export async function getOverview(): Promise<Overview> {
       views: allViews, likes: lifetime.reduce((a, x) => a + (x.t?.likes ?? 0), 0), comments: lifetime.reduce((a, x) => a + (x.t?.comments ?? 0), 0),
       liveAt: liveAts.at(-1) ?? null,
     },
-    recent: recent.slice(0, 4).map(toVideo),
+    recent: recent.slice(0, 4).map((v) => toVideo(v)),
   };
 }
 

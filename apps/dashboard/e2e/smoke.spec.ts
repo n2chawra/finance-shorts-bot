@@ -576,3 +576,20 @@ test("calendar tells planned from scheduled by shape, not colour alone", async (
   expect((await look("planned")).hollow).toBe(true);
   if (await page.locator('[data-kind="scheduled"]').count()) expect((await look("scheduled")).hollow).toBe(false);
 });
+
+test("a video says why it was made, what inspired it and how many views that got", async ({ page }) => {
+  await signIn(page);
+  // owner, 2026-11-11: "give me reason of why that video and how many views this topic is getting"
+  await page.goto("/videos/v030");
+  const card = page.getByTestId("video-origin");
+  await expect(card).toBeVisible({ timeout: 30_000 });
+  await expect(card).toContainText("Why");
+  await expect(card.getByRole("link", { name: /Why UPI is free/ })).toHaveAttribute("href", /youtube\.com/);
+  await expect(card).toContainText(/\d\S* ?\S* views on YouTube/);   // 2,840,000 in the dashboard's compact format
+  // a topic that has left the feed says so rather than showing an empty card
+  await page.goto("/videos/v031");
+  await expect(page.getByText("which has since left the feed")).toBeVisible({ timeout: 30_000 });
+  // and the list says it in a line under each title
+  await page.goto("/videos?status=queued");
+  await expect(page.getByText(/Inspired by “Why UPI is free/)).toBeVisible({ timeout: 30_000 });
+});

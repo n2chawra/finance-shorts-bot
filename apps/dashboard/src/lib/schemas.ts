@@ -72,6 +72,20 @@ export const EditorNoteSchema = z.object({
 });
 export type EditorNote = z.infer<typeof EditorNoteSchema>;
 
+/** Why the video was made: its research feed topic (lib/origin.ts). */
+export const OriginSchema = z.object({
+  feedId: z.string(),
+  title: z.string().nullable(),
+  why: z.string().nullable(),
+  angle: z.string().nullable(),
+  /** the video already watched by millions that proves people want this */
+  demand: z.object({ title: z.string(), views: z.number().nullable(), url: z.string().nullable() }).nullable(),
+  /** a long video retelling one of our Shorts */
+  fromShort: z.object({ id: z.string(), views: z.number().nullable() }).nullable(),
+  sources: z.array(z.object({ label: z.string(), url: z.string() })),
+});
+export type Origin = z.infer<typeof OriginSchema>;
+
 export const VideoSchema = z.object({
   id: z.string(),
   templateId: z.string(),
@@ -99,6 +113,7 @@ export const VideoSchema = z.object({
   orderLocked: z.boolean().default(false),
   upload: UploadSchema.nullable(),
   totals: TotalsSchema.nullable(),
+  origin: OriginSchema.nullable().default(null),
 });
 export type Video = z.infer<typeof VideoSchema>;
 

@@ -18,6 +18,7 @@ import type { VideoAction, VideoDetail } from "@/lib/schemas";
 
 import { EditDetails, MarkUploaded, YouTubeDetails } from "./publish-tools";
 import { EditorBadge, EditorNote, FeedbackPanel, ReasonDialog } from "@/components/feedback";
+import { OriginCard } from "@/components/origin";
 import { VideoAnalytics } from "@/components/video-analytics";
 
 const CHECK_NAMES: Record<string, string> = { number_check: "Number check", fact_review: "Fact review", qa_review: "QA review" };
@@ -196,6 +197,7 @@ export default function VideoPage() {
               <Row k="Voiceover">{v.style.voice ? `On · ${voiceLabel(v.style.voice)}` : "None"}</Row>
             </dl>
           </Card>
+          <OriginCard origin={v.origin} />
           {(v.style.thumbs?.length ?? 0) > 1 && <ThumbTest v={v} />}
         </div>
 

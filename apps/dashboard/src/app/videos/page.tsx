@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, SelectField, StatusBadge, Thumb, fieldClass } from "@/components/ui";
+import { originLine } from "@/components/origin";
 import { fmtCompact, fmtDateTime, titleCase } from "@/lib/format";
 import { useOverview, useTemplates, useVideos } from "@/lib/queries";
 
@@ -97,6 +98,7 @@ function Videos() {
                         <span className="font-mono text-[11px] text-muted">{v.id}</span>
                         {v.format === "long" && <Badge tone="brand">Long</Badge>}
                       </span>
+                      {originLine(v.origin) && <span className="block max-w-[46ch] truncate text-[11px] text-ink2" title={v.origin?.why ?? undefined}>{originLine(v.origin)}</span>}
                     </div>
                   </td>
                   <td className="md:px-3 md:py-2.5"><StatusBadge status={v.status} /></td>
