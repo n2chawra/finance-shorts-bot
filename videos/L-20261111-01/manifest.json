@@ -1142,16 +1142,38 @@
   "thumbnails": [
     {
       "file": "thumbnail.png",
-      "angle": null,
-      "layout": "custom"
+      "angle": "number",
+      "layout": "custom",
+      "pattern": "three side-by-side panels, each a sum written huge over the one thing it buys or fills, a different colour each, the biggest last",
+      "score": 8,
+      "why": "Copies the topic's top hit (12.3M, three panels of climbing sums): the whole promise in one glance, readable at feed size; the billion's warehouse is smaller than the photo hits' subjects.",
+      "picked": true
+    },
+    {
+      "file": "thumbnail-b.png",
+      "angle": "reaction",
+      "layout": "custom",
+      "pattern": "one shocked face in the middle, the question in huge yellow words on a black band across the top, a wall of cash behind, a yellow frame",
+      "score": 7,
+      "why": "The strongest emotion and the question the title asks, like the 7M Corridor hit; at feed size the cash wall turns into a grid behind the face.",
+      "picked": false
+    },
+    {
+      "file": "thumbnail-c.png",
+      "angle": "number",
+      "layout": "custom",
+      "pattern": "one towering pile of cash next to something tiny for scale, the sum huge in a box, a dark plain ground",
+      "score": 6,
+      "why": "The scale contrast and $1 BILLION in a red box read well, but the money is pale and tiny Rohan disappears at feed size.",
+      "picked": false
     }
   ],
   "thumbnailModel": {
-    "pattern": "one huge subject and one big reacting face on the right, a short line of huge words stacked over a red box at top left, strong contrast between subject and ground",
+    "pattern": "three side-by-side panels, each a sum written huge over the one thing it buys or fills, a different colour each, the biggest last",
     "references": [
-      "D7Y-nJ8uiEA",
-      "tcpBWjAikxM",
-      "zxVoCw3P1Gc"
+      "apFPtyZHuns",
+      "VwoII9TQd8k",
+      "tbVb63qPDQ8"
     ]
   }
 }

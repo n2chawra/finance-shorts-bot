@@ -245,31 +245,33 @@
     "layout": "custom",
     "component": "Thumb",
     "who": "sharma",
-    "pose": "stand",
-    "expression": "shock",
-    "words": "This is",
-    "figure": "{room_final_long}",
+    "words": "",
+    "angle": "number",
     "things": [
-      "pallet"
+      "hundred",
+      "strap",
+      "warehouse"
     ],
-    "pattern": "one huge subject and one big reacting face on the right, a short line of huge words stacked over a red box at top left, strong contrast between subject and ground",
+    "pattern": "three side-by-side panels, each a sum written huge over the one thing it buys or fills, a different colour each, the biggest last",
     "references": [
       {
-        "id": "D7Y-nJ8uiEA",
-        "views": 10119497,
-        "what": "one boxed word top left over a single scene, a big face filling the right third, dark ground with a red accent"
+        "id": "apFPtyZHuns",
+        "views": 12324195,
+        "what": "three photo panels split by white seams, $1B, $25B, $990B huge in white over a painting, a rocket and a country"
       },
       {
-        "id": "tcpBWjAikxM",
-        "views": 2861494,
-        "what": "three stacked huge words, the last in a red box, a big face on the right looking at the viewer"
+        "id": "VwoII9TQd8k",
+        "views": 3068649,
+        "what": "three columns of telescope views, each labelled by its price, the sums climbing across"
       },
       {
-        "id": "zxVoCw3P1Gc",
-        "views": 3787627,
-        "what": "two huge words, one boxed, over the subject drawn as cartoon things on a single strong colour"
+        "id": "tbVb63qPDQ8",
+        "views": 7047895,
+        "what": "the sum as the headline, cash shown as stacked bricks of notes"
       }
-    ]
+    ],
+    "score": 8,
+    "why": "Copies the topic's top hit (12.3M, three panels of climbing sums): the whole promise in one glance, readable at feed size; the billion's warehouse is smaller than the photo hits' subjects."
   },
   "beats": [
     {
@@ -6790,5 +6792,73 @@
       ]
     }
   ],
-  "narrator": "am_michael"
+  "narrator": "am_michael",
+  "thumbnails": [
+    {
+      "layout": "custom",
+      "component": "ThumbB",
+      "who": "sharma",
+      "pose": "shrug",
+      "expression": "shock",
+      "words": "A billion?!",
+      "angle": "reaction",
+      "things": [
+        "pallet"
+      ],
+      "pattern": "one shocked face in the middle, the question in huge yellow words on a black band across the top, a wall of cash behind, a yellow frame",
+      "references": [
+        {
+          "id": "tbVb63qPDQ8",
+          "views": 7047895,
+          "what": "A BILLION?! in huge yellow on black across the top, a shocked face centre holding cash, a wall of notes behind, yellow frame"
+        },
+        {
+          "id": "0J6BQDKiYyM",
+          "views": 4536357,
+          "what": "a frame filled edge to edge with loose hundred-dollar bills, a face inset reacting"
+        },
+        {
+          "id": "CxOXcXH9jsU",
+          "views": 388867,
+          "what": "TOO MUCH MONEY in black on a yellow band across the top, big drawn faces with strong emotion"
+        }
+      ],
+      "score": 7,
+      "why": "The strongest emotion and the question the title asks, like the 7M Corridor hit; at feed size the cash wall turns into a grid behind the face."
+    },
+    {
+      "layout": "custom",
+      "component": "ThumbC",
+      "who": "sharma",
+      "pose": "stand",
+      "expression": "shock",
+      "words": "This is",
+      "figure": "{room_final_long}",
+      "things": [
+        "pallet"
+      ],
+      "pattern": "one towering pile of cash next to something tiny for scale, the sum huge in a box, a dark plain ground",
+      "references": [
+        {
+          "id": "Pr8P-WOQdX0",
+          "views": 844981,
+          "what": "a towering block of cash beside a jumbo jet and tiny workers, TRILLION in yellow with an arrow"
+        },
+        {
+          "id": "LLG0NVva-qw",
+          "views": 265669,
+          "what": "one stack of notes rising from the earth into space, its height marked, black around it"
+        },
+        {
+          "id": "lwk38AYSecs",
+          "views": 219713,
+          "what": "$1 BILLION! huge with a white outline over one big drawn thing on a single bright colour"
+        }
+      ],
+      "angle": "number",
+      "score": 6,
+      "why": "The scale contrast and $1 BILLION in a red box read well, but the money is pale and tiny Rohan disappears at feed size."
+    }
+  ],
+  "thumbnail_pick": "a"
 }

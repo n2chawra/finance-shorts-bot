@@ -1,47 +1,48 @@
 /**
- * The thumbnail, redone 2026-11-11 (owner: "4 clicks from 100 impressions, the thumbnail is the biggest
- * problem"; research long-thumb-one-subject-matches-title). The first cover said "Million? Cute." under a
- * $1 billion title, packed ten small things and a calm smirk. This one follows the topic's hits instead:
- * "The Middle Class TRAP" 10.1M (one boxed word top left, one scene, one big reacting face on the right),
- * "Borrow until you die" 2.86M (stacked huge words, the last in a red box, a face at the side) and the
- * scale-of-wealth explainers (one tiny person against one towering pile). Ours: a tower of cash pallets
- * running out of the top of the frame, tiny Rohan at its foot looking up, THIS IS / the billion (a figure
- * th.figure, {room_final_long} from the maths) in a red box, and Sharma big on the right, shocked. Gold-green money on a deep violet
- * ground, so the subject never melts into the background.
+ * Thumbnail A, the ladder (owner, 2026-11-11: three thumbnails from this topic's own hits). The pattern of
+ * "Could You Spend $1 Trillion?" (jack pockets, 12.3M) and "What YOU Can SEE Through a $1 Billion, $32,000 and an
+ * $800 Telescope" (3.07M): three side-by-side panels, each a sum written huge over the one thing it buys or fills,
+ * every panel a different colour, the biggest last. Ours: one note, a pile of straps, the warehouse room packed
+ * with notes. The sums are the video's own figures ({note_amount}, {spendm_total_long}, {room_final_long}).
  */
 import React from "react";
-import { Face, Glow, Thing, type ThumbProps, Words } from "../../studio/thumb";
+import { AbsoluteFill } from "remotion";
+import { Thing, type ThumbProps } from "../../studio/thumb";
 import { FONT } from "../../design/fonts";
 
-export default function Thumb({ tl, th, w, h }: ThumbProps) {
-  const s = h * 0.2;                         // one pallet
-  const colW = s * 1.06, cx = w * 0.5;       // the tower: three pallets wide, in the middle
-  const floor = h * 0.985;
-  const rows = 6;                            // runs out of the top of the frame
-  const billion = String(th.figure ?? "");   // {room_final_long}, computed by the maths
+const PANELS = [
+  { fig: "note_amount", bg: ["#2f6fe0", "#0b1f52"], prop: "hundred", s: 0.26 },
+  { fig: "spendm_total_long", bg: ["#9a4fe8", "#2b0d55"], prop: "strap", s: 0.2 },
+  { fig: "room_final_long", bg: ["#ff5a36", "#5a0d06"], prop: "warehouse", s: 0.27 },
+] as const;
+
+const Sum: React.FC<{ text: string; x: number; width: number; size: number }> = ({ text, x, width, size }) => (
+  <div style={{ position: "absolute", left: x, top: 22, width, textAlign: "center", fontFamily: FONT, fontWeight: 900, fontSize: size, lineHeight: 1,
+    color: "#fff", textTransform: "uppercase", letterSpacing: -2, WebkitTextStroke: `${Math.round(size * 0.09)}px #000`, paintOrder: "stroke fill",
+    textShadow: `0 ${Math.round(size * 0.08)}px 0 rgba(0,0,0,0.55)`, whiteSpace: "nowrap" }}>{text}</div>
+);
+
+export default function Thumb({ tl, w, h }: ThumbProps) {
+  const pw = w / 3;
   return (
-    <Glow from="#6c4cf0" to="#0a0620" at={[0.5, 0.5]}>
-      {/* the floor */}
+    <AbsoluteFill style={{ background: "#000" }}>
+      {PANELS.map((p, i) => {
+        const x = i * pw, text = String(tl.figures?.[p.fig] ?? "");
+        return (
+          <React.Fragment key={p.fig}>
+            <div style={{ position: "absolute", left: x, top: 0, width: pw, height: h, background: `radial-gradient(circle at 50% 60%, ${p.bg[0]} 0%, ${p.bg[1]} 80%)` }} />
+            {p.prop === "strap"
+              ? ([[-0.55, 0], [0.55, 0], [0, 0], [-0.28, -1], [0.28, -1], [0, -2]] as const).map(([dx, row], k) => (
+                <Thing key={k} tl={tl} prop="strap" x={x + pw / 2 + dx * h * 0.24} y={h * 0.9 + row * h * 0.115} s={h * p.s} w={w} h={h} />))
+              : <Thing tl={tl} prop={p.prop} x={x + pw / 2} y={h * (p.prop === "hundred" ? 0.82 : 0.92)} s={h * p.s} state="full" rot={p.prop === "hundred" ? -6 : 0} w={w} h={h} />}
+            <Sum text={text} x={x + 8} width={pw - 16} size={text.length > 8 ? 76 : 120} />
+          </React.Fragment>
+        );
+      })}
+      {/* white seams between the panels, as the hits draw them */}
       <svg width={w} height={h} style={{ position: "absolute" }}>
-        <rect x={0} y={floor - 8} width={w} height={h - floor + 8} fill="#07051a" />
+        {[1, 2].map((i) => <rect key={i} x={i * pw - 6} y={0} width={12} height={h} fill="#fff" />)}
       </svg>
-      {/* the tower of cash pallets, back to front */}
-      {Array.from({ length: rows }).map((_, r) => [-1, 0, 1].map((c) => (
-        <Thing key={`${r}${c}`} tl={tl} prop="pallet" x={cx + c * colW} y={floor - r * s * 0.99} s={s} w={w} h={h} />
-      )))}
-      {/* the tiny person at its foot, looking up */}
-      <Face who="rohan" x={cx - colW * 2.1} y={floor} scale={0.2} pose="worried" expression="shock" gaze={[0.6, -1]} w={w} h={h} />
-      {/* THIS IS / $1 BILLION */}
-      <Words text={th.words} x={34} y={20} width={w * 0.42} size={130} />
-      {billion && (
-        <div style={{ position: "absolute", left: 30, top: 170, fontFamily: FONT, fontWeight: 900, fontSize: 104, lineHeight: 1, color: "#fff",
-          background: "#e8202a", padding: "10px 26px 14px", borderRadius: 14, border: "8px solid #fff", whiteSpace: "nowrap", textTransform: "uppercase",
-          letterSpacing: -2, transform: "rotate(-3deg)", boxShadow: "0 14px 0 rgba(0,0,0,0.5)", WebkitTextStroke: "6px #000", paintOrder: "stroke fill" }}>
-          {billion}
-        </div>
-      )}
-      {/* Sharma, big and shocked, looking at the tower */}
-      <Face who={th.who} x={w * 0.9} y={h * 1.62} scale={2.0} pose={th.pose ?? "stand"} expression={th.expression ?? "shock"} gaze={[-1, -0.3]} flip w={w} h={h} />
-    </Glow>
+    </AbsoluteFill>
   );
 }
