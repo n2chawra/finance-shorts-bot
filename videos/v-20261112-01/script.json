@@ -1,0 +1,770 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61427,
+ "story": "how_they_make_money",
+ "shape": "versus",
+ "currency": "USD",
+ "feed_id": "2026-11-12-apple-earns-more-on-services-than-iphones",
+ "narrator": "am_michael",
+ "style": {
+  "palette": "ocean",
+  "genre": "synthwave",
+  "key": "D",
+  "bpm": 108,
+  "look": {
+   "stage": "office",
+   "header": "neon",
+   "holder": "phone",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "shock_number",
+ "cta": "Which Apple bill do you pay every month? Comment",
+ "facts": [
+  {
+   "label": "Apple Services net sales, fiscal 2026",
+   "value": 123301,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-26",
+   "source": "Apple",
+   "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+  },
+  {
+   "label": "Apple Services cost of sales, fiscal 2026",
+   "value": 29358,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-26",
+   "source": "Apple",
+   "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+  },
+  {
+   "label": "Apple Products net sales, fiscal 2026",
+   "value": 355533,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-26",
+   "source": "Apple",
+   "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+  },
+  {
+   "label": "Apple Products cost of sales, fiscal 2026",
+   "value": 215874,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-26",
+   "source": "Apple",
+   "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+  },
+  {
+   "label": "Apple net income, fiscal 2026",
+   "value": 132175,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-26",
+   "source": "Apple",
+   "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+  },
+  {
+   "label": "iPhone net sales, fiscal 2026",
+   "value": 254098,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-26",
+   "source": "Apple",
+   "url": "https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm"
+  }
+ ],
+ "maths": [
+  {
+   "name": "svc",
+   "kind": "rate",
+   "part": 93943000000,
+   "whole": 123301000000,
+   "facts": {
+    "whole": 1
+   }
+  },
+  {
+   "name": "prod",
+   "kind": "rate",
+   "part": 139659000000,
+   "whole": 355533000000,
+   "facts": {
+    "whole": 3
+   }
+  },
+  {
+   "name": "cost",
+   "kind": "share",
+   "total": 29358000000,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.6,
+  "words": "Apple keeps *this* much",
+  "figure": "{svc_pct}",
+  "tag": "Of each services dollar",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Apple keeps {svc_pct} of every dollar you pay for its services, like iCloud.",
+   "events": {
+    "apple": {
+     "word": "Apple"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "dollar": {
+     "word": "dollar"
+    },
+    "icloud": {
+     "word": "iCloud"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "apple"
+    },
+    {
+     "kind": "kaching",
+     "at": "keeps"
+    },
+    {
+     "kind": "boom",
+     "at": "dollar"
+    },
+    {
+     "kind": "ding",
+     "at": "icloud"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Apple keeps",
+    "figure": "{svc_pct}",
+    "sub": "of every services dollar",
+    "keep": "@svc.pct",
+    "set": "office",
+    "actors": [],
+    "objects": [
+     {
+      "kind": "phone",
+      "id": "apple",
+      "spot": "center",
+      "height": 0.45,
+      "title": "Apple",
+      "figure": "{svc_pct}",
+      "at": "start"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "apple"
+     }
+    ]
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "rohan",
+   "transition": "whip",
+   "say": "My new iPhone! Apple must get rich on these, right?",
+   "events": {
+    "new": {
+     "word": "new"
+    },
+    "iphone": {
+     "word": "iPhone"
+    },
+    "apple": {
+     "word": "Apple"
+    },
+    "rich": {
+     "word": "rich"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "new"
+    },
+    {
+     "kind": "kaching",
+     "at": "iphone"
+    },
+    {
+     "kind": "riser",
+     "at": "rich"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "blue"
+    },
+    "hud": {
+     "hide": true
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.24,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "expression": "happy"
+       },
+       {
+        "at": "rich",
+        "pose": "shrug",
+        "expression": "thinking"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "iphone",
+      "prop": "iphone",
+      "x": 0.62,
+      "size": 0.3,
+      "label": "iPhone",
+      "hidden": true
+     },
+     {
+      "id": "rich",
+      "prop": "cash",
+      "x": 0.62,
+      "y": 0.36,
+      "size": 0.14,
+      "label": "Rich?",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "new",
+      "do": "enter",
+      "target": "iphone",
+      "how": "rise"
+     },
+     {
+      "at": "iphone",
+      "do": "grow",
+      "target": "iphone",
+      "scale": 1.3
+     },
+     {
+      "at": "rich",
+      "do": "enter",
+      "target": "rich",
+      "from": "iphone"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "iphone",
+      "size": "close",
+      "on": "iphone",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "products",
+   "scene": "headline",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Last year, Apple sold {prod_whole} of iPhones, Macs and watches.",
+   "events": {
+    "year": {
+     "word": "year"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "iphones": {
+     "word": "iPhones"
+    },
+    "macs": {
+     "word": "Macs"
+    },
+    "watches": {
+     "word": "watches"
+    },
+    "apple": {
+     "word": "Apple"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "year"
+    },
+    {
+     "kind": "kaching",
+     "at": "sold"
+    },
+    {
+     "kind": "pop",
+     "at": "macs"
+    },
+    {
+     "kind": "pop",
+     "at": "watches"
+    }
+   ],
+   "params": {
+    "kicker": "APPLE'S LAST FISCAL YEAR",
+    "title": "iPhones, Macs and watches sold",
+    "figure": "{prod_whole}",
+    "figureAt": "sold",
+    "label": "Products sold"
+   }
+  },
+  {
+   "id": "margin",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "After making them, it keeps {prod_pct} of each dollar. But Rohan keeps paying.",
+   "events": {
+    "making": {
+     "word": "making"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "dollar": {
+     "word": "dollar"
+    },
+    "rohan": {
+     "word": "Rohan"
+    },
+    "paying": {
+     "word": "paying"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "making"
+    },
+    {
+     "kind": "kaching",
+     "at": "keeps"
+    },
+    {
+     "kind": "pop",
+     "at": "rohan"
+    },
+    {
+     "kind": "ding",
+     "at": "paying"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "blue"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "making",
+      "prop": "factory",
+      "x": 0.3,
+      "size": 0.16,
+      "label": "Making them"
+     },
+     {
+      "id": "dollar",
+      "prop": "splitbill",
+      "x": 0.68,
+      "size": 0.28,
+      "label": "Each dollar",
+      "k": 1
+     },
+     {
+      "id": "paying",
+      "prop": "wallet",
+      "x": 0.68,
+      "y": 0.34,
+      "size": 0.12,
+      "label": "Rohan",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "making",
+      "do": "flow",
+      "target": "dollar",
+      "to": "making",
+      "n": 5
+     },
+     {
+      "at": "keeps",
+      "do": "drain",
+      "target": "dollar",
+      "k": 0.39
+     },
+     {
+      "at": "dollar",
+      "do": "tag",
+      "target": "dollar",
+      "text": "{prod_pct}"
+     },
+     {
+      "at": "rohan",
+      "do": "enter",
+      "target": "paying",
+      "how": "drop"
+     },
+     {
+      "at": "paying",
+      "do": "shake",
+      "target": "paying"
+     }
+    ],
+    "locked": true
+   }
+  },
+  {
+   "id": "services",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Every month: iCloud storage, music, and a cut of every app he buys.",
+   "events": {
+    "month": {
+     "word": "month"
+    },
+    "icloud": {
+     "word": "iCloud"
+    },
+    "music": {
+     "word": "music"
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "app": {
+     "word": "app"
+    },
+    "buys": {
+     "word": "buys"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "month"
+    },
+    {
+     "kind": "pop",
+     "at": "icloud"
+    },
+    {
+     "kind": "pop",
+     "at": "music"
+    },
+    {
+     "kind": "kaching",
+     "at": "cut"
+    },
+    {
+     "kind": "ding",
+     "at": "buys"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "kitchen",
+     "tint": "blue"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "month",
+      "prop": "monthlybill",
+      "x": 0.5,
+      "size": 0.28,
+      "k": 0.1
+     },
+     {
+      "id": "icloud",
+      "prop": "icloud",
+      "x": 0.22,
+      "size": 0.15,
+      "label": "iCloud",
+      "hidden": true
+     },
+     {
+      "id": "app",
+      "prop": "appstore",
+      "x": 0.78,
+      "size": 0.15,
+      "label": "App cut",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "at": "month",
+      "do": "fill",
+      "target": "month",
+      "k": 0.4
+     },
+     {
+      "at": "icloud",
+      "do": "enter",
+      "target": "icloud",
+      "how": "rise"
+     },
+     {
+      "at": "music",
+      "do": "swap",
+      "target": "icloud",
+      "into": "headphones"
+     },
+     {
+      "at": "cut",
+      "do": "enter",
+      "target": "app",
+      "how": "drop"
+     },
+     {
+      "at": "buys",
+      "do": "flow",
+      "target": "app",
+      "to": "month",
+      "n": 5
+     }
+    ],
+    "locked": true
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Those services brought in {svc_whole}, and cost just {cost_total} to provide.",
+   "events": {
+    "those": {
+     "word": "Those"
+    },
+    "services": {
+     "word": "services"
+    },
+    "brought": {
+     "word": "brought"
+    },
+    "cost": {
+     "word": "cost"
+    },
+    "just": {
+     "word": "just"
+    },
+    "run": {
+     "word": "provide"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "services"
+    },
+    {
+     "kind": "riser",
+     "at": "brought"
+    },
+    {
+     "kind": "fail",
+     "at": "cost"
+    },
+    {
+     "kind": "kaching",
+     "at": "run"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Apple services",
+    "inLabel": "Brought in",
+    "inFig": "{svc_whole}",
+    "costLabel": "Cost to provide",
+    "costFig": "{cost_total}",
+    "keptLabel": "Kept",
+    "inV": "@svc.whole",
+    "keptV": "@svc.part",
+    "world": {
+     "kind": "studio",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "services",
+      "prop": "icloud",
+      "x": 0.3,
+      "size": 0.28,
+      "tag": "{svc_whole}"
+     },
+     {
+      "id": "cost",
+      "prop": "splitbill",
+      "x": 0.7,
+      "size": 0.2,
+      "tag": "{cost_total}"
+     }
+    ],
+    "actions": [
+     {
+      "at": "brought",
+      "do": "grow",
+      "target": "services",
+      "scale": 1.3
+     },
+     {
+      "at": "cost",
+      "do": "shake",
+      "target": "cost"
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "So Apple keeps {svc_pct} of a service dollar, and {prod_pct} of a product dollar. Which do you pay?",
+   "events": {
+    "keeps": {
+     "word": "keeps"
+    },
+    "service": {
+     "word": "service"
+    },
+    "iphone": {
+     "word": "product"
+    },
+    "which": {
+     "word": "Which"
+    },
+    "bill": {
+     "word": "pay"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "keeps"
+    },
+    {
+     "kind": "pop",
+     "at": "iphone"
+    },
+    {
+     "kind": "boom",
+     "at": "bill"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "svcLabel": "Service dollar",
+    "svcFig": "{svc_pct}",
+    "svcV": "@svc.pct",
+    "prodLabel": "Product dollar",
+    "prodFig": "{prod_pct}",
+    "prodV": "@prod.pct",
+    "ask": "Which do you pay?",
+    "world": {
+     "kind": "office",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "keeps",
+      "prop": "splitbill",
+      "x": 0.3,
+      "size": 0.28,
+      "tag": "{svc_pct}"
+     },
+     {
+      "id": "iphone",
+      "prop": "iphone",
+      "x": 0.7,
+      "size": 0.22,
+      "tag": "{prod_pct}"
+     }
+    ],
+    "actions": [
+     {
+      "at": "keeps",
+      "do": "grow",
+      "target": "keeps",
+      "scale": 1.3
+     },
+     {
+      "at": "iphone",
+      "do": "shake",
+      "target": "iphone"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61427,
+  "duration_sec": 34,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "synthwave",
+    "key": "D",
+    "bpm": 108,
+    "look": {
+      "stage": "office",
+      "header": "neon",
+      "holder": "phone",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Apple keeps 76% of every dollar you pay for its services, like iCloud.",
+        "start": 0.3,
+        "seconds": 3.91,
+        "window": 4.33,
+        "fill": 0.903
+      },
+      {
+        "scene": "promise",
+        "text": "My new iPhone! Apple must get rich on these, right?",
+        "start": 4.63,
+        "seconds": 1.96,
+        "window": 2.47,
+        "fill": 0.794
+      },
+      {
+        "scene": "products",
+        "text": "Last year, Apple sold $355.53B of iPhones, Macs and watches.",
+        "start": 7.1,
+        "seconds": 5.3,
+        "window": 5.77,
+        "fill": 0.919
+      },
+      {
+        "scene": "margin",
+        "text": "After making them, it keeps 39% of each dollar. But Rohan keeps paying.",
+        "start": 12.87,
+        "seconds": 3.99,
+        "window": 4.43,
+        "fill": 0.901
+      },
+      {
+        "scene": "services",
+        "text": "Every month: iCloud storage, music, and a cut of every app he buys.",
+        "start": 17.3,
+        "seconds": 3.46,
+        "window": 4.0,
+        "fill": 0.865
+      },
+      {
+        "scene": "turn",
+        "text": "Those services brought in $123.3B, and cost just $29.36B to provide.",
+        "start": 21.3,
+        "seconds": 6.46,
+        "window": 6.9,
+        "fill": 0.936
+      },
+      {
+        "scene": "payoff",
+        "text": "So Apple keeps 76% of a service dollar, and 39% of a product dollar. Which do you pay?",
+        "start": 28.2,
+        "seconds": 5.01,
+        "window": 5.47,
+        "fill": 0.916
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "october-voice-pace": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.8,
+    "music_under_voice_db": 22.9
+  },
+  "craft_problems": [
+    "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 3.474,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

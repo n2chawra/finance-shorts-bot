@@ -1,0 +1,444 @@
+{
+  "id": "v-20261112-01",
+  "createdAt": "2026-11-11T21:58:51.391082+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Apple keeps far more of each services dollar than of each iPhone dollar",
+    "category": "business",
+    "reach": "global",
+    "feed_id": "2026-11-12-apple-earns-more-on-services-than-iphones"
+  },
+  "title": "Apple keeps 76% of every dollar you pay for its services 📱",
+  "description": "How much of your iCloud and app money does Apple keep?\nApple's services brought in $123,301M last year and cost $29,358M to provide; its iPhones, Macs and watches brought in $355,533M. Here's which side keeps more of each dollar.\n#Apple\nSpeak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#Apple",
+    "#iPhone",
+    "#Money",
+    "#Business"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Which Apple bill do you pay every month? Comment",
+  "seed": 61427,
+  "style": {
+    "palette": "ocean",
+    "genre": "synthwave",
+    "key": "D",
+    "bpm": 108,
+    "look": {
+      "stage": "office",
+      "header": "neon",
+      "holder": "phone",
+      "entrance": "pop"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "28-35",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Apple keeps 76% of every dollar you pay for its services, like iCloud.",
+        "start": 0.3,
+        "seconds": 3.91,
+        "window": 4.33,
+        "fill": 0.903
+      },
+      {
+        "scene": "promise",
+        "text": "My new iPhone! Apple must get rich on these, right?",
+        "start": 4.63,
+        "seconds": 1.96,
+        "window": 2.47,
+        "fill": 0.794
+      },
+      {
+        "scene": "products",
+        "text": "Last year, Apple sold $355.53B of iPhones, Macs and watches.",
+        "start": 7.1,
+        "seconds": 5.3,
+        "window": 5.77,
+        "fill": 0.919
+      },
+      {
+        "scene": "margin",
+        "text": "After making them, it keeps 39% of each dollar. But Rohan keeps paying.",
+        "start": 12.87,
+        "seconds": 3.99,
+        "window": 4.43,
+        "fill": 0.901
+      },
+      {
+        "scene": "services",
+        "text": "Every month: iCloud storage, music, and a cut of every app he buys.",
+        "start": 17.3,
+        "seconds": 3.46,
+        "window": 4.0,
+        "fill": 0.865
+      },
+      {
+        "scene": "turn",
+        "text": "Those services brought in $123.3B, and cost just $29.36B to provide.",
+        "start": 21.3,
+        "seconds": 6.46,
+        "window": 6.9,
+        "fill": 0.936
+      },
+      {
+        "scene": "payoff",
+        "text": "So Apple keeps 76% of a service dollar, and 39% of a product dollar. Which do you pay?",
+        "start": 28.2,
+        "seconds": 5.01,
+        "window": 5.47,
+        "fill": 0.916
+      }
+    ]
+  },
+  "durationSec": 34,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.8,
+    "music_under_voice_db": 22.9
+  },
+  "experiments": {
+    "october-voice-pace": "on"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 89
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "16 figures computed from inputs; 16 cross-checked against closed-form formulas.",
+        "warning: beat 'products' runs 5.7 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 7.4 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite: the turn now says services 'cost just $29.36B to provide' (Apple's Services cost of sales), so 76% vs 39% compares both sides after direct costs. All six facts unchanged and confirmed on the SEC 8-K (FY ended 26 Sep 2026, $M: 123,301 / 29,358 / 355,533 / 215,874 / 132,175 / 254,098). Nothing says iPhones lose money. No advice. The description ends with the disclaimer and now has the licensed-adviser line."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: services (20s) and margin (15s) now whole under a locked wide camera, labels clear, no cut-offs; hook names Apple + 76% on frame 1 with a readable sub line; Turn bars clear of captions; disclaimer at 33.9s; layout clean, 34 s, peak -1.0 dB. Minor: 30 s without a close-up (craft note), products beat is a headline card (required by build for sourced facts)"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:39:36.025679+00:00",
+      "finishedAt": "2026-11-11T21:39:36.025679+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-11T21:43:11.211097+00:00",
+      "finishedAt": "2026-11-11T21:43:11.211097+00:00",
+      "notes": [
+        "a script with sourced facts needs a headline or board beat, which shows where they come from"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:43:35.154566+00:00",
+      "finishedAt": "2026-11-11T21:43:35.154566+00:00",
+      "notes": [
+        "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+        "warning: beat 'products' runs 6.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 8.5 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'payoff' runs 7.4 s with 3.9 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:43:45.729343+00:00",
+      "finishedAt": "2026-11-11T21:43:45.729343+00:00",
+      "notes": [
+        "16 figures computed from inputs; 16 cross-checked against closed-form formulas.",
+        "warning: beat 'products' runs 6.0 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 7.4 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'payoff' runs 7.4 s with 3.9 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:43:54.367817+00:00",
+      "finishedAt": "2026-11-11T21:43:54.367817+00:00",
+      "notes": [
+        "16 figures computed from inputs; 16 cross-checked against closed-form formulas.",
+        "warning: beat 'products' runs 6.0 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 7.4 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-11T21:45:07.533035+00:00",
+      "finishedAt": "2026-11-11T21:45:07.533035+00:00",
+      "notes": [
+        "beat 'turn': 'cost just {cost_total} to run' is wrong: $29,358M is Services *cost of sales* in Apple's 8-K, not what it costs to run the services (R&D, sales and admin are extra and not split by segment). Say 'cost just {cost_total} to provide' (the description already says 'to provide'); with that, 'keeps 76%' reads as kept after direct costs, the same basis as the products' 'after making them, it keeps 39%'. All six facts confirmed on the SEC 8-K page (FY ended 26 Sep 2026, $M): services 123,301 / cost 29,358; products 355,533 / cost 215,874; net income 132,175; iPhone 254,098."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-11T21:44:33.045455+00:00",
+      "finishedAt": "2026-11-11T21:45:15.952527+00:00",
+      "notes": [
+        "text '♪' at 26.2 s is 39 px, below the 44 px minimum",
+        "2 of 9 stills are mostly empty background (at 10 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 6.2 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:45:38.070649+00:00",
+      "finishedAt": "2026-11-11T21:45:38.070649+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-11T21:45:38.900398+00:00",
+      "finishedAt": "2026-11-11T21:45:38.900398+00:00",
+      "notes": [
+        "beat 'products'.params.kicker contains a typed number; use a placeholder: \"APPLE'S FISCAL 2026\""
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:45:42.523212+00:00",
+      "finishedAt": "2026-11-11T21:45:42.523212+00:00",
+      "notes": [
+        "16 figures computed from inputs; 16 cross-checked against closed-form formulas.",
+        "warning: beat 'products' runs 5.7 s with 3.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'turn' runs 7.4 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:46:05.738824+00:00",
+      "finishedAt": "2026-11-11T21:46:05.738824+00:00",
+      "notes": [
+        "Re-review after rewrite: the turn now says services 'cost just $29.36B to provide' (Apple's Services cost of sales), so 76% vs 39% compares both sides after direct costs. All six facts unchanged and confirmed on the SEC 8-K (FY ended 26 Sep 2026, $M: 123,301 / 29,358 / 355,533 / 215,874 / 132,175 / 254,098). Nothing says iPhones lose money. No advice. The description ends with the disclaimer and now has the licensed-adviser line."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-11T21:45:58.196737+00:00",
+      "finishedAt": "2026-11-11T21:46:26.991689+00:00",
+      "notes": [
+        "2 of 8 stills are mostly empty background (at 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:46:47.088986+00:00",
+      "finishedAt": "2026-11-11T21:47:07.153111+00:00",
+      "notes": [
+        "34 s, ocean/synthwave (preview only)",
+        "note: only 2 shot sizes (close, medium); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: four shots in a row open medium (from 'hook'): vary the shot size",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-11T21:48:00.159813+00:00",
+      "finishedAt": "2026-11-11T21:48:00.159813+00:00",
+      "notes": [
+        "[scene] 20.0s, beat 'services' (build): the item labels 'Every month' (monthlybill, x 0.5) and 'App cut' (appstore, x 0.8) are drawn on top of each other ('Every mApp cut'), and the App Store icon itself is hidden behind the enlarged bill, so the 'cut of every app' is never seen",
+        "[script] 15.0s, beat 'margin': the factory ('Making them', x 0.28) is buried behind the oversized split bill and cut off at the left edge, the bill runs to the right edge, and the 'Each dollar 39%' tag floats far above the bill over the window; shrink the bill (size 0.3) and spread the items so the factory and the drained dollar both read",
+        "[scene] 25.0s, beat 'turn' (custom Turn): the caption box covers the red 'Cost to provide' bar and the bottom of its label, so the cost side of the chart is hard to read; the coins also fly across '$123.3B'. Raise the bars above the caption zone",
+        "[scene] 0.0s and thumbnail, beat 'hook': the sub line 'OF EVERY SERVICES DOLLAR' is light outlined text on the light office wall with letters crushed together, hard to read at phone size (in the thumbnail it is the only line that says what 76% is of)",
+        "[script] 10.0s, beat 'products' (headline): $355.53B is text on a flat dark card with nothing else, while the line names iPhones, Macs and watches; show them as things (a pile of devices, a stack of money) instead of a number card"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:48:45.030922+00:00",
+      "finishedAt": "2026-11-11T21:49:10.229674+00:00",
+      "notes": [
+        "34 s, ocean/synthwave (preview only)",
+        "note: only 2 shot sizes (close, medium); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: four shots in a row open medium (from 'hook'): vary the shot size",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: margin: no thing is big (largest size 0.24, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+        "note: services: no thing is big (largest size 0.24, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:49:36.278905+00:00",
+      "finishedAt": "2026-11-11T21:50:00.991929+00:00",
+      "notes": [
+        "34 s, ocean/synthwave (preview only)",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:50:26.886384+00:00",
+      "finishedAt": "2026-11-11T21:50:51.671824+00:00",
+      "notes": [
+        "34 s, ocean/synthwave (preview only)",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:51:17.084680+00:00",
+      "finishedAt": "2026-11-11T21:51:37.345764+00:00",
+      "notes": [
+        "34 s, ocean/synthwave (preview only)",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:51:57.071641+00:00",
+      "finishedAt": "2026-11-11T21:52:19.231674+00:00",
+      "notes": [
+        "34 s, ocean/synthwave (preview only)",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-11T21:52:48.814378+00:00",
+      "finishedAt": "2026-11-11T21:52:48.814378+00:00",
+      "notes": [
+        "[script] 20.0s, beat 'services': the App Store tile (appstore, x 0.7, y 0.14) is drawn at the right frame edge with more than half of it cut off, and its 'App cut' label lands on the bill document instead of under the tile; move it in (about x 0.6) or shrink the monthly bill so the tile shows whole (if x 0.7 still lands at the edge under the wide camera, it is a [scene] placement bug in build)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:53:22.954586+00:00",
+      "finishedAt": "2026-11-11T21:53:43.581137+00:00",
+      "notes": [
+        "34 s, ocean/synthwave (preview only)",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:54:06.043227+00:00",
+      "finishedAt": "2026-11-11T21:54:26.586279+00:00",
+      "notes": [
+        "34 s, ocean/synthwave (preview only)",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:54:58.959955+00:00",
+      "finishedAt": "2026-11-11T21:55:20.202539+00:00",
+      "notes": [
+        "34 s, ocean/synthwave (preview only)",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:55:37.609498+00:00",
+      "finishedAt": "2026-11-11T21:55:37.609498+00:00",
+      "notes": [
+        "Round 3: services (20s) and margin (15s) now whole under a locked wide camera, labels clear, no cut-offs; hook names Apple + 76% on frame 1 with a readable sub line; Turn bars clear of captions; disclaimer at 33.9s; layout clean, 34 s, peak -1.0 dB. Minor: 30 s without a close-up (craft note), products beat is a headline card (required by build for sourced facts)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:56:43.841086+00:00",
+      "finishedAt": "2026-11-11T21:58:34.024105+00:00",
+      "notes": [
+        "34 s, ocean/synthwave, peak -1.0 dB, mean -16.3 dB",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "warning: beat 'products' runs 5.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:58:51.391252+00:00",
+      "finishedAt": "2026-11-11T21:58:51.391252+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261112-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261112-01"
+  }
+}
