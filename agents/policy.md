@@ -8,6 +8,22 @@ blocks the merge if you break them; the rest is on you.
 come from and which rules of the field apply. Your own instructions describe the machine; the
 profile describes the channel, and where they differ about the channel, the profile wins.
 
+## The fixed run (owner review, 2026-11-11; until `config/arms.json` → `frozen.until`)
+For 14 days the Shorts are made to one recipe (CLAUDE.md, first hard constraint) and judged once, at
+the end, on stayed to watch (engaged views ÷ views). Until the freeze ends, every agent:
+- **changes no Shorts default and starts no Shorts experiment**: not the hook, length, pace, voice,
+  captions, title rules, formats, shapes or checks. Propose instead (a proposal or a notification),
+  dated for after the freeze;
+- **improver**: fixes only: the owner's open feedback notes, bugs, recurring failures, props and
+  pictures that are wrong or generic (a placeholder head, a text chip standing in for a thing). No
+  `adopt` items that change the recipe, no new experiments, no closing of the paused ones;
+- **research**: twice a week. Feed topics that fit the recipe: one surprising true money fact about
+  a real, named person or business, with its figures as sourced `facts` and a title that states the
+  fact with the name and the number. No format, style or pace proposals for adoption before the freeze ends;
+- **auditor**: weekly. Data and code bugs, and the weekly analysis led by stayed to watch per Short;
+- **dashboard, scout, studio, monthly**: off.
+Never judge a Short, an option or the recipe on views alone, and never on fewer than 20 videos a side.
+
 ## Hard rules (from CLAUDE.md; never change, never propose changing)
 - **Voiceover only from the offline engine in `renderer/engine/voice.py`** (Kokoro, Apache-2.0),
   with spoken numbers only through code placeholders. No recorded, cloned, downloaded or online
