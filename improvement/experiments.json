@@ -881,6 +881,20 @@
       "description": "Shorts: the voice at the October pace (speed x tempo 1.4, ~225 wpm) with 80-100 words, picture tempo unchanged",
       "notes": "Area 'voice' (voice speed and word count), not 'pacing': the running ending-beats-act-and-vary changes the ending beats' actions, not the voice. Code: renderer/timeline/build.py voice_speed (Shorts, on arm, no explicit script speed). Kokoro at 1.4 timed 17 of 17 words on a big-figure line (3.8 s vs 5.3 s at 1.2); not ear-checked in the cloud. Owner found 1.4 tempo too fast on 2026-10-30 (picture and voice both); this keeps the picture at 1.2. On revert: drop voice_speed's branch and the prompt.",
       "commits": []
+    },
+    {
+      "id": "2026-11-11-long-thumb-clickable",
+      "area": "thumbnail",
+      "format": "long",
+      "status": "adopted",
+      "startedAt": "2026-11-11",
+      "templates": [
+        "long_story"
+      ],
+      "proposal": "long-thumb-one-subject-matches-title",
+      "description": "Long thumbnails: a reacting face (no calm expressions), at most 3 `things`, words never use a scale word the title doesn't (thumbs.spec_problems + long_story README)",
+      "evidence": "Owner note 2026-11-11: L-20261111-01 100 impressions, 4 clicks (4% CTR), title $1 billion vs thumbnail 'Million? Cute.', calm smirk, ~10 things; research adopt/high; Test & Compare face 1 of 1, grid 0 of 1.",
+      "commits": []
     }
   ]
 }
