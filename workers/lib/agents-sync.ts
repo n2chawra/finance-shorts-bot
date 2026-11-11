@@ -390,10 +390,17 @@ export function readFeedbackAcks(root: string): AckRow[] {
   return out;
 }
 
+/** Whether `agent` has answered a note: it closed it, or handed it on to someone other than an agent that
+ * handed it to `agent` (a handoff back to the hander is an earlier answer). Mirrors generator/feedback.py `has_answered`. */
+export function hasAnswered(agent: string, acks: AckRow[]): boolean {
+  const handers = new Set(acks.filter((a) => HANDOFF.has(a.action) && a.to === agent).map((a) => a.agent));
+  return acks.some((a) => a.agent === agent && (!HANDOFF.has(a.action) || !a.to || !handers.has(a.to)));
+}
+
 /** A note is addressed once some agent closed it and every agent it was handed to has answered too. */
 export function ackState(acks: AckRow[]): { addressed: boolean; response: string } {
   const closedBy = new Set(acks.filter((a) => !HANDOFF.has(a.action)).map((a) => a.agent));
-  const waiting = acks.filter((a) => HANDOFF.has(a.action) && a.to && !closedBy.has(a.to)).map((a) => a.to!);
+  const waiting = acks.filter((a) => HANDOFF.has(a.action) && a.to && !hasAnswered(a.to, acks)).map((a) => a.to!);
   const response = acks.map((a) => `${a.agent} ${a.action}${a.to ? ` → ${a.to}` : ""}: ${a.note}${a.commit ? ` (${a.commit})` : ""}`.trim()).join(" · ");
   return { addressed: closedBy.size > 0 && waiting.length === 0, response: waiting.length ? `${response} · waiting for ${[...new Set(waiting)].join(", ")}` : response };
 }
