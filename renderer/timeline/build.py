@@ -65,6 +65,18 @@ SPEEDS = {"long": 1.0, "short": 1.0}
 # Long 1.5 from 2026-10-17 to 2026-11-04, when the owner found L-20261104-01 too fast ("Speed is very
 # fast, can't hear things clearly", ~215 a minute): 1.25, ~180 a minute, close to the Shorts' pace
 TEMPOS = {"long": 1.25, "short": 1.2}
+# Experiment october-voice-pace (2026-11-11, research shorts-voice-back-to-october-pace): on the "on" arm a
+# Short's voice is spoken at 1.4 in total (speed x tempo), the pace of every October Short with 700+ views
+# (203-240 words a minute), while the picture keeps the 1.2 tempo; the writer adds words to fill the time.
+OCTOBER_PACE = "october-voice-pace"
+OCTOBER_VOICE = 1.4
+
+
+def voice_speed(script: dict, fmt: str, tempo: float) -> float:
+    """The voice's speed: the script's speed at the video's tempo (the October pace on that experiment's arm)."""
+    if "speed" not in script and fmt == "short" and (script.get("experiments") or {}).get(OCTOBER_PACE) == "on":
+        return OCTOBER_VOICE
+    return float(script.get("speed", SPEEDS[fmt]))*tempo
 
 
 @dataclass
@@ -435,7 +447,7 @@ def check_script(script: dict) -> dict:
         raise ValueError("beat ids must be unique")
     scenes, out, timed = scene_names(), [], []
     tempo = float(script.get("tempo", TEMPOS[fmt]))
-    speed = float(script.get("speed", SPEEDS[fmt]))*tempo
+    speed = voice_speed(script, fmt, tempo)
     for b in beats:
         where = f"beat {b.id!r}"
         if b.scene not in scenes:
@@ -479,7 +491,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     figures = {**maths.placeholders(results), **fact_figures}
     narrator = script.get("narrator") or random.Random(f"narrator:{seed}").choice(NARRATOR_VOICES)
     tempo = float(script.get("tempo", TEMPOS[fmt]))
-    speed = float(script.get("speed", SPEEDS[fmt]))*tempo        # the voice, at the video's pace
+    speed = voice_speed(script, fmt, tempo)        # the voice, at the video's pace
     lead, tail, gap = LEAD/tempo, TAIL/tempo, GAP_NO_VOICE/tempo
 
     beats = [Beat(**b) for b in script["beats"]]
