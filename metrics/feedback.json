@@ -1,24 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 4,
+  "open": 3,
   "notes": [
-    {
-      "id": "cmwbukoke0001jy09t4pfhr38",
-      "kind": "improve",
-      "area": null,
-      "text": "when u make videos in dahsbaord also give me reason of why that video and how many views this topic is getting. and from where u got this inspiratrion so that i can know anytime. in the videos tab",
-      "status": "open",
-      "response": "improver handed → dashboard: Showing why each video was made, its topic's views and its inspiration on the Videos tab is a dashboard page. The data is already in each video's plan.json (feed topic, demand reference video and its views). · waiting for dashboard",
-      "at": "2026-11-11T08:18:46.238Z",
-      "video": null
-    },
     {
       "id": "cmwbuj1ny0001l2097747i7wr",
       "kind": "general",
       "area": null,
       "text": "one more thing i just realized my demand and supply thing is correct but where we take it from matter also. like someone with millions subscripbers their any video will work because they have the audience so from there to know the content is wrong. the channle with huge views and little subscribers is the right pick there we actually understand what is in demand and make videos on the topics that actaully people want to see. because if u see last 3 days videos are not blowing upl. something is wrong.",
       "status": "open",
-      "response": "improver handed → research: Where demand signals come from (small channels whose videos get far more views than they have subscribers, rather than big channels) is how research and the market scan pick topics. · waiting for research",
+      "response": "dashboard handed → research: Where demand is measured from (channels with many views but few subscribers, not big channels) is how research picks topics, so it's research's to change; the dashboard now shows each video's reference video and its views so you can check the picks. · improver handed → research: Where demand signals come from (small channels whose videos get far more views than they have subscribers, rather than big channels) is how research and the market scan pick topics. · waiting for research",
       "at": "2026-11-11T08:17:29.890Z",
       "video": null
     },
@@ -59,6 +49,16 @@
         "hookStyle": "secret",
         "hook": "You think Ohtani gets his pay now? Almost none."
       }
+    },
+    {
+      "id": "cmwbukoke0001jy09t4pfhr38",
+      "kind": "improve",
+      "area": null,
+      "text": "when u make videos in dahsbaord also give me reason of why that video and how many views this topic is getting. and from where u got this inspiratrion so that i can know anytime. in the videos tab",
+      "status": "addressed",
+      "response": "dashboard fixed: Every video page now has a 'Why this video' card (research's reason, the angle, the video that inspired it with its YouTube views, and the pages research read), and the Videos list shows 'Inspired by … · N views' under each title. (eb39f8e) · improver handed → dashboard: Showing why each video was made, its topic's views and its inspiration on the Videos tab is a dashboard page. The data is already in each video's plan.json (feed topic, demand reference video and its views).",
+      "at": "2026-11-11T08:18:46.238Z",
+      "video": null
     },
     {
       "id": "cmwbp37000001js09yzrn0lg3",
