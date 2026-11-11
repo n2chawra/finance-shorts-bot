@@ -18,7 +18,7 @@ import path from "node:path";
 import { PrismaClient } from "@prisma/client";
 
 import { existsSync } from "node:fs";
-import { CommentThreads, LongTopic, MarketConfig, SearchList, ThumbRefsFile, type TopicRefs, VideoDetails, dueTopics, keepRefs, pickRefs, rankMarket } from "./lib/market.ts";
+import { CommentThreads, LongTopic, MarketConfig, SearchList, type TopicRefs, VideoDetails, dueTopics, keepRefs, parsePrevRefs, pickRefs, rankMarket } from "./lib/market.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
 import { accessToken } from "./lib/youtube.ts";
 
@@ -54,7 +54,7 @@ async function thumbRefs(token: string, cfg: MarketConfig, now: Date) {
   const file = path.join(ROOT, "improvement", "longform", "topics.json");
   const topics = existsSync(file) ? LongTopic.array().parse(JSON.parse(readFileSync(file, "utf8")).topics ?? []) : [];
   const prevFile = process.env.PREV_THUMB_REFS;
-  const prev = prevFile && existsSync(prevFile) ? ThumbRefsFile.parse(JSON.parse(readFileSync(prevFile, "utf8"))).topics as Record<string, TopicRefs> : {};
+  const prev = parsePrevRefs(prevFile && existsSync(prevFile) ? readFileSync(prevFile, "utf8") : null);
   const day = now.toISOString().slice(0, 10);
   const open = new Set(topics.filter((t) => t.status === "new" && (!t.expires || t.expires >= day)).map((t) => t.id));
   const out: Record<string, TopicRefs> = keepRefs(prev, open, now, cfg.thumbRefs);

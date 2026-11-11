@@ -49,7 +49,7 @@ function toVideo(v: VideoRow, feeds?: Map<string, Record<string, unknown>>): Vid
     id: v.id, templateId: v.templateId, topic: { title: v.topic.title, category: v.topic.category }, status: v.status,
     format: v.format === "long" ? "long" : "short",
     failReason: v.failReason, title: v.title, description: v.description, tags: v.tags, durationSec: v.durationSec,
-    style: { palette: style.palette ?? "—", genre: style.genre ?? "—", key: style.key ?? "—", bpm: style.bpm ?? 0, voice: style.voice ?? null, source: style.source ?? null, thumbs: style.thumbs ?? null, thumbTest: style.thumbTest ?? null },
+    style: { palette: style.palette ?? "—", genre: style.genre ?? "—", key: style.key ?? "—", bpm: style.bpm ?? 0, voice: style.voice ?? null, source: style.source ?? null, thumbs: style.thumbs ?? null, thumbTest: style.thumbTest ?? null, thumbPick: style.thumbPick ?? null },
     thumbnailUrl: `/api/media/${v.id}/thumbnail`, previewUrl: `/api/media/${v.id}/preview`, fileUrl: `/api/media/${v.id}/video`,
     createdAt: v.createdAt.toISOString(), queuePosition: v.queuePosition,
     editorRank: v.editorRank, editorScore: v.editorScore,
@@ -287,14 +287,14 @@ export async function updateVideo(id: string, e: VideoEdit): Promise<{ ok: true 
   return { ok: true };
 }
 
-/** Log which thumbnail won YouTube's Test & Compare (kept in the video's style, read by the agents). */
+/** The owner's pick of a long video's three thumbnails (style.thumbPick): the publisher sets it as the cover. */
 export async function setThumbWinner(id: string, winner: string | null): Promise<{ ok: true } | { ok: false; error: string }> {
   const v = await prisma.video.findFirst({ where: { id, ...live }, select: { style: true } });
   if (!v) return { ok: false, error: "Video not found" };
   const style = { ...((v.style ?? {}) as Record<string, unknown>) };
   if (!Array.isArray(style.thumbs) || !(style.thumbs as { file: string }[]).some((t) => t.file === winner || winner === null))
-    return { ok: false, error: "This video has no thumbnail test" };
-  if (winner) style.thumbTest = { winner, at: new Date().toISOString() }; else delete style.thumbTest;
+    return { ok: false, error: "This video has no thumbnails to pick from" };
+  if (winner) style.thumbPick = { file: winner, at: new Date().toISOString() }; else delete style.thumbPick;
   await prisma.video.update({ where: { id }, data: { style: style as Prisma.InputJsonValue } });
   return { ok: true };
 }

@@ -243,13 +243,20 @@ THUMB_ANGLES = ("number", "question", "reaction", "versus", "warning")
 
 
 def _thumbnail_variants(script: dict, figures: dict[str, str], results: dict) -> list[dict]:
-    """The extra thumbnails (`thumbnails`). None since 2026-10-29 (owner: "long video thumbnail: only
-    1 is enough"): one thumbnail, made for this video from what works for its topic."""
+    """The two extra thumbnails (`thumbnails`: B and C beside `thumbnail`, A). Owner, 2026-11-11: "give 3
+    thumbnails so that I can pick the best one, and if I don't, rate them yourself and pick before upload".
+    Each is its own Thumb component modelled on a different pattern among the topic's own hits; the long_story
+    README says how they are rated (`score`, `why`) and which one is picked (`thumbnail_pick`)."""
     extra = script.get("thumbnails") or []
     if not extra:
         return []
-    raise ValueError("one thumbnail per video (owner, 2026-10-29): drop `thumbnails` and make `thumbnail` the best one, "
-                     "modelled on the topic's reference thumbnails (python -m renderer.thumbs refs <id>)")
+    if not isinstance(extra, list) or len(extra) > 2:
+        raise ValueError("`thumbnails`: the two extra thumbnails (B and C) beside `thumbnail` (A), at most 2")
+    out = [_thumbnail(spec, figures, results) for spec in extra]
+    comps = [str((script.get("thumbnail") or {}).get("component") or "Thumb")] + [str(t.get("component") or "Thumb") for t in out]
+    if len(set(comps)) != len(comps):
+        raise ValueError(f"each thumbnail has its own component (Thumb, ThumbB, ThumbC); got {', '.join(comps)}")
+    return out
 
 
 def _structure(spec: dict | None) -> dict | None:
@@ -265,7 +272,7 @@ def _structure(spec: dict | None) -> dict | None:
 
 
 # a thumbnail's notes on what it copies (YouTube ids, view counts, the pattern in words): never shown
-THUMB_META = ("references", "pattern", "component")
+THUMB_META = ("references", "pattern", "component", "score", "why")
 
 
 def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_ids: list[str] | None = None) -> dict | None:

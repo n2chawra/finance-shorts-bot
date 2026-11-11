@@ -164,7 +164,7 @@ End with a 5-line report: focus, topics added, feed health, anything for the own
 **Thumbnails (2026-10-29):** every long topic you write gets a `search`: the 3-7 words people type to
 find its hits ("why the rich borrow money instead of selling"). The daily market job searches each
 open topic once a week with it and keeps its most viewed videos (`thumb-refs.json` on the market-data
-branch), and Studio models the video's one thumbnail on them (`python -m renderer.thumbs refs <id>`).
+branch), and Studio models the video's three thumbnails on them, never on another topic's hits; give each long topic a `search` phrased as people type it, so the live search finds its own videos (`python -m renderer.thumbs refs <id>`).
 Weekly (Mondays), also add the fastest-growing finance explainers from `market.json` to
 `improvement/research/thumbnails.json` `examples` (`id`, `title`, `views`; ids and numbers only, no
 images): the fallback when a topic has no search yet.

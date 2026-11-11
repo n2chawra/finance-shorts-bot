@@ -108,7 +108,7 @@ the viewer *see* happen?
   the story is about one country; see `channel/profile.md` for realistic inputs per currency). Never
   type a digit or a currency sign into any text.
   State the simplification on the end card (`assumption`).
-- **Thumbnail**: one, coded for this video from its topic's hits (below).
+- **Thumbnails**: three, coded for this video from its own topic's hits, rated, one picked (below).
 - Say the honest thing. If the tidy answer has a catch, the catch is the most valuable beat.
 
 ```
@@ -120,16 +120,23 @@ Run `lint` after every change to the script or the video's code, before any stil
 seconds what used to cost a render each.
 Two rewrites at most; then stop and mark the video failed.
 
-**One thumbnail, made from what works on its topic** (owner, 2026-10-29: "only 1 is enough... for each video its references are searched, see what type of thumbnail actually works and make something like that"). After the script:
+**Three thumbnails, made from this topic's own hits** (owner, 2026-11-11: "every topic's thumbnail should be
+made using the topic's own videos' thumbnails, so that ours is close to what actually gets clicked. Plus give 3
+thumbnails so that I can pick the best one, and if I don't, rate it yourself and pick it before upload"). After the script:
 ```
-python -m renderer.thumbs refs <id>      # the topic's most viewed videos and their thumbnails, on one sheet
+python -m renderer.thumbs refs <id>      # THIS topic's most viewed videos: the market search, the demand video, a live YouTube search
 ```
-Open the sheet it prints (a PNG: look at it). Name what the hits share (the picture, the face, the words, the colours),
-then code `remotion/src/videos/<id>/Thumb.tsx` in that pattern with our cast and this video's props, from
-`remotion/src/studio/thumb.tsx` (reference: `remotion/src/videos/L-remake-borrow/Thumb.tsx`), and fill the `thumbnail`
-block as the long_story README says (`layout: "custom"`, `pattern`, 3+ `references`). One thumbnail: no `thumbnails`.
-After the stills, `python -m renderer.thumbs feed <id>` puts it among the hits: if it is not the one you would click,
-change it. Then follow the **Look and motion** rules in the long_story README for every beat: the hook shows
+Open the sheet it prints (a PNG: look at it). Only this topic's videos count: never another topic's hits or the
+channel-wide examples (lint fails a `references` id that isn't on the sheet). If the sheet is off topic, set a better
+`search` on the long topic in `improvement/longform/topics.json` and run it again. Find the **three different
+patterns** the hits use (the picture, the face, the words, the colours) and code one thumbnail per pattern with our
+cast and this video's props, from `remotion/src/studio/thumb.tsx`: `remotion/src/videos/<id>/Thumb.tsx` (A),
+`ThumbB.tsx` and `ThumbC.tsx`. Fill `thumbnail` (A) and `thumbnails` ([B, C]) as the long_story README says, each with
+its own `component`, `pattern` and 3+ `references` from the sheet. After the stills, `python -m renderer.thumbs feed <id>`
+puts all three among the hits: **rate each** (`score` 1-10, `why`: would a viewer pick it over the hits beside it? Does it
+read at phone size, match the title, promise what the video delivers?) and set `thumbnail_pick` (`"a"`, `"b"` or `"c"`) to
+the best. The owner picks on the dashboard (video page, "Pick the thumbnail"); if he doesn't, yours goes up. The
+spec check fails a calm face, more than 3 things and a scale word the title doesn't use, on all three. Then follow the **Look and motion** rules in the long_story README for every beat: the hook shows
 topic and shock in five seconds, no text-only slides, and each scene's place, time, land and weather
 chosen for this story.
 
@@ -227,8 +234,8 @@ Our long videos got almost no clicks: the thumbnails sold one small detail (a re
 figure) and twice promised a different video from the title ("The 6 levels of money" with "The
 level two trap"). Write the pair together:
 - **The title** says *what*: 60 characters at most, the format's proven shape.
-- **The thumbnail** says *why click*, in the picture language the topic's hits already use (2026-10-29:
-  `python -m renderer.thumbs refs <id>`), with 1-4 huge words that add the emotion or the stakes.
-  Check it in the feed (`python -m renderer.thumbs feed <id>`) before shipping: would you click ours
-  over the hits next to it?
+- **The thumbnails** say *why click*, in the picture language this topic's own hits already use
+  (`python -m renderer.thumbs refs <id>`), with 1-4 huge words that add the emotion or the stakes.
+  Check all three in the feed (`python -m renderer.thumbs feed <id>`) before shipping and rate them: would you
+  click ours over the hits next to it?
 

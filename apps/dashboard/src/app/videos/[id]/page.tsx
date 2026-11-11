@@ -48,24 +48,37 @@ function scriptParts(script: unknown): { inputs: [string, string][]; lines: [str
 
 const THUMB_KIND: Record<string, string> = { "thumbnail.png": "thumbnail", "thumbnail-b.png": "thumbnail-b", "thumbnail-c.png": "thumbnail-c" };
 
-/** A long video's three thumbnails for YouTube's Test & Compare, and which one won. */
-function ThumbTest({ v }: { v: VideoDetail }) {
+/** A long video's three thumbnails, each rated by Studio (owner, 2026-11-11): the owner picks the cover;
+ * without a pick, the one Studio rated best goes up. */
+function ThumbPick({ v }: { v: VideoDetail }) {
   const pick = useThumbWinner();
   const toast = useToast();
-  const winner = v.style.thumbTest?.winner ?? null;
+  const thumbs = v.style.thumbs ?? [];
+  const mine = v.style.thumbPick?.file ?? null;
+  const studio = thumbs.find((t) => t.picked)?.file ?? thumbs[0]?.file ?? null;
+  const goesUp = mine ?? studio;
+  const uploaded = v.status === "scheduled" || v.status === "published";
   return (
-    <Card title="Thumbnail test" description="Upload all three in YouTube Studio → Thumbnail → Test & Compare. When YouTube names a winner, mark it here: the agents learn which angle works.">
-      <div className="grid grid-cols-3 gap-2">
-        {(v.style.thumbs ?? []).map((t, i) => {
-          const kind = THUMB_KIND[t.file] ?? "thumbnail", won = winner === t.file;
+    <Card title="Pick the thumbnail" description={uploaded
+      ? "Already uploaded with the one marked below. To change it now, download another and set it in YouTube Studio → Thumbnail."
+      : "Three thumbnails, each modelled on a different pattern among this topic's most viewed videos. Pick the cover; if you don't, the one Studio rated best goes up."}>
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+        {thumbs.map((t, i) => {
+          const kind = THUMB_KIND[t.file] ?? "thumbnail", up = goesUp === t.file, isMine = mine === t.file;
           return (
-            <div key={t.file} className={`flex flex-col gap-1.5 rounded-lg border p-1.5 ${won ? "border-brand" : "border-ring"}`}>
+            <div key={t.file} className={`flex flex-col gap-1.5 rounded-lg border p-1.5 ${up ? "border-brand" : "border-ring"}`}>
               <img src={`/api/media/${v.id}/${kind}`} alt={`Thumbnail ${"ABC"[i]}`} className="aspect-video w-full rounded object-cover" />
-              <span className="text-[11px] text-ink2">{"ABC"[i]} · {titleCase(t.angle ?? "—")}</span>
+              <span className="text-[12px] font-medium text-ink">
+                {"ABC"[i]}{t.score != null ? ` · Studio ${t.score}/10` : ""}{t.picked ? " · Studio's pick" : ""}{up ? " · goes up" : ""}
+              </span>
+              {t.pattern && <span className="text-[11px] text-muted">{t.pattern}</span>}
+              {t.why && <span className="text-[11px] text-ink2">{t.why}</span>}
               <a href={`/api/media/${v.id}/${kind}`} download={`${fileSlug(v)}-${kind}.png`} className={buttonClass("ghost")}><ImageDown aria-hidden className="size-4" />Download</a>
-              <button type="button" disabled={pick.isPending} aria-pressed={won}
-                onClick={() => pick.mutate({ id: v.id, winner: won ? null : t.file }, { onSuccess: () => toast(won ? "Winner cleared" : `Thumbnail ${"ABC"[i]} marked as the winner`), onError: (e) => toast(e.message, "error") })}
-                className={buttonClass(won ? "primary" : "default")}>{won ? "Winner" : "Mark winner"}</button>
+              {!uploaded && (
+                <button type="button" disabled={pick.isPending} aria-pressed={isMine}
+                  onClick={() => pick.mutate({ id: v.id, winner: isMine ? null : t.file }, { onSuccess: () => toast(isMine ? "Your pick cleared: Studio's pick goes up" : `Thumbnail ${"ABC"[i]} will go up`), onError: (e) => toast(e.message, "error") })}
+                  className={buttonClass(isMine ? "primary" : "default")}>{isMine ? "Your pick" : "Use this one"}</button>
+              )}
             </div>
           );
         })}
@@ -198,7 +211,7 @@ export default function VideoPage() {
             </dl>
           </Card>
           <OriginCard origin={v.origin} />
-          {(v.style.thumbs?.length ?? 0) > 1 && <ThumbTest v={v} />}
+          {(v.style.thumbs?.length ?? 0) > 1 && <ThumbPick v={v} />}
         </div>
 
         <Tabs.Root value={current} onValueChange={setTab} className="min-w-0">

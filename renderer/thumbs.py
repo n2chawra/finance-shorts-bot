@@ -10,6 +10,8 @@ the thumbnails of the most-viewed videos on its own topic:
   1. the market job searches each open long topic on YouTube once a week and keeps its top videos
      (`thumb-refs.json` on the market-data branch, workers/market.ts);
   2. `python -m renderer.thumbs refs <video id>` puts their thumbnails on one sheet, with views;
+  (2026-11-11, owner: "every topic's thumbnail should be made using the topic's own videos' thumbnails... give 3
+  thumbnails so that I can pick": refs are this topic's own only, plus a live YouTube search; three thumbnails, rated, one picked)
   3. Studio names what the hits share (`pattern`: the picture, the face, the words, the colours) and
      codes Thumb.tsx in that pattern with the video's own cast and props, listing the hits it follows
      (`references`: at least three, 100K+ views);
@@ -117,14 +119,59 @@ def image_problems(path: Path) -> list[str]:
     return out
 
 
+PICKS = {"a": "thumbnail.png", "b": "thumbnail-b.png", "c": "thumbnail-c.png"}
+
+
+def specs(script: dict) -> list[tuple[str, dict]]:
+    """A long video's thumbnails: A (`thumbnail`), then B and C (`thumbnails`)."""
+    out = [("a", script["thumbnail"])] if script.get("thumbnail") else []
+    return out + [(k, t) for k, t in zip("bc", script.get("thumbnails") or []) if isinstance(t, dict)]
+
+
+def pick_problems(script: dict) -> list[str]:
+    """Three thumbnails, each rated by Studio, one picked (owner, 2026-11-11: "give 3 thumbnails so that I can
+    pick the best one, and if I don't, rate them yourself and pick before upload")."""
+    ths = specs(script)
+    out = []
+    if len(ths) != 3:
+        out.append(f"{len(ths)} thumbnail(s): a long video has three, `thumbnail` (A) and `thumbnails` (B, C), each on a "
+                   f"different pattern among the topic's own hits (owner, 2026-11-11)")
+    for k, th in ths:
+        sc = th.get("score")
+        if not (isinstance(sc, (int, float)) and 1 <= sc <= 10) or len(str(th.get("why", ""))) < 20:
+            out.append(f"thumbnail {k.upper()}: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in "
+                       f"python -m renderer.thumbs feed?)")
+    pick = script.get("thumbnail_pick")
+    if pick not in PICKS or pick not in dict(ths):
+        out.append("`thumbnail_pick`: \"a\", \"b\" or \"c\", the one you rate best; it goes up unless the owner picks another")
+    elif all(isinstance(t.get("score"), (int, float)) for _, t in ths) and dict(ths)[pick]["score"] < max(t["score"] for _, t in ths):
+        out.append(f"`thumbnail_pick` is {pick!r} but another thumbnail has a higher score")
+    pats = [str(t.get("pattern", "")).strip().lower() for _, t in ths]
+    if len(set(pats)) != len(pats):
+        out.append("the three thumbnails share a `pattern`: each copies a different pattern among the topic's hits")
+    return out
+
+
+def manifest_entries(script: dict) -> list[dict]:
+    """The manifest's `thumbnails`: each file with its pattern, Studio's score and why, and which one Studio picked.
+    The dashboard shows them for the owner to pick; the publisher sets the owner's pick, else Studio's."""
+    pick = script.get("thumbnail_pick") or "a"
+    return [{"file": PICKS[k], "angle": th.get("angle"), "layout": th.get("layout"), "pattern": th.get("pattern"),
+             "score": th.get("score"), "why": th.get("why"), "picked": k == pick} for k, th in specs(script)]
+
+
 def problems(script: dict, out: Path) -> list[str]:
-    """Everything wrong with a long video's thumbnail (spec, code and the rendered file)."""
+    """Everything wrong with a long video's thumbnails (specs, code, the pick and the rendered files)."""
     if script.get("format") != "long" or not script.get("thumbnail"):
         return []
-    th = script["thumbnail"]
-    res = [f"thumbnail: {p}" for p in spec_problems(th, script.get("title", ""), script.get("story"))]
-    res += code_problems(out.name, th, out.parents[1] if len(out.parents) > 1 else ROOT)
-    return res + image_problems(out / "thumbnail.png")
+    root = out.parents[1] if len(out.parents) > 1 else ROOT
+    res: list[str] = []
+    for k, th in specs(script):
+        tag = "thumbnail" if k == "a" else f"thumbnail {k.upper()}"
+        res += [f"{tag}: {p}" for p in spec_problems(th, script.get("title", ""), script.get("story"))]
+        res += code_problems(out.name, th, root)
+        res += image_problems(out / PICKS[k])
+    return res + [f"thumbnails: {p}" for p in pick_problems(script)]
 
 
 # ---------------- the topic's references ----------------
@@ -144,9 +191,96 @@ def market_refs() -> dict:
     return json.loads(r.stdout) if r.returncode == 0 and r.stdout.strip() else {}
 
 
-def topic_refs(vid: str, root: Path = ROOT, store: dict | None = None) -> list[dict]:
-    """The reference videos for a video's topic, most viewed first: the market job's search for the
-    topic, the topic's own `demand` video, and the channel-wide examples as a last resort."""
+def _views(text: str) -> int:
+    """'12,324,195 views' / '1.2M views' -> 12324195 / 1200000."""
+    t = str(text or "").replace(",", "").lower()
+    m = re.search(r"([\d.]+)\s*([kmb])?", t)
+    if not m:
+        return 0
+    return int(float(m.group(1)) * {"k": 1e3, "m": 1e6, "b": 1e9}.get(m.group(2) or "", 1))
+
+
+def _seconds(text: str) -> int:
+    parts = [int(p) for p in re.findall(r"\d+", str(text or ""))]
+    out = 0
+    for p in parts:
+        out = out * 60 + p
+    return out
+
+
+def parse_search(html: str) -> list[dict]:
+    """The videos on a YouTube results page (its ytInitialData), as {id, title, channel, views, durationSec}."""
+    import json
+    m = re.search(r"ytInitialData\s*=\s*(\{.*?\});\s*</script>", html, re.S)
+    if not m:
+        return []
+    try:
+        data = json.loads(m.group(1))
+    except ValueError:
+        return []
+    out: list[dict] = []
+
+    def walk(o):
+        if isinstance(o, dict):
+            v = o.get("videoRenderer")
+            if isinstance(v, dict) and re.fullmatch(YT_ID, str(v.get("videoId", ""))):
+                runs = lambda k: "".join(r.get("text", "") for r in ((v.get(k) or {}).get("runs") or []))
+                out.append({"id": v["videoId"], "title": runs("title"), "channel": runs("ownerText") or runs("longBylineText"),
+                            "views": _views((v.get("viewCountText") or {}).get("simpleText", "")),
+                            "durationSec": _seconds((v.get("lengthText") or {}).get("simpleText", ""))})
+            for x in o.values():
+                walk(x)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+    walk(data)
+    return out
+
+
+def search_refs(query: str, timeout: int = 20) -> list[dict]:
+    """The topic's own hits, searched live on YouTube (most viewed first; long videos only: a Short's
+    cover is a different picture). Cached per query outside the repo."""
+    import json
+    import urllib.parse
+    import urllib.request
+    key = re.sub(r"[^a-z0-9]+", "-", query.lower()).strip("-")[:80]
+    f = _cache() / f"search-{key}.json"
+    if f.is_file():
+        return json.loads(f.read_text(encoding="utf-8"))
+    url = "https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": query}) + "&sp=EgIQAQ%3D%3D"  # relevance, videos only
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept-Language": "en-US,en;q=0.9"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            html = r.read().decode("utf-8", "replace")
+    except OSError:
+        return []
+    # YouTube's relevance order keeps them on topic (sorting the search by views pulls in any viral video); top 20, then by views
+    refs = [r for r in parse_search(html)[:20] if r["views"] >= REF_VIEWS and r["durationSec"] > 180]
+    refs.sort(key=lambda r: -r["views"])
+    f.write_text(json.dumps(refs, ensure_ascii=False), encoding="utf-8")
+    return refs
+
+
+def topic_query(vid: str, root: Path = ROOT) -> str:
+    """What people type for this video's topic: the long feed topic's `search`, else the plan's topic title."""
+    import json
+    plan_f = root / "videos" / vid / "plan.json"
+    plan = json.loads(plan_f.read_text(encoding="utf-8")) if plan_f.is_file() else {}
+    topic = plan.get("topic") or {}
+    tid = topic.get("feed_id") or topic.get("id")
+    feed_f = root / "improvement" / "longform" / "topics.json"
+    if tid and feed_f.is_file():
+        for t in json.loads(feed_f.read_text(encoding="utf-8")).get("topics", []):
+            if t.get("id") == tid and t.get("search"):
+                return str(t["search"])
+    return str(topic.get("title") or plan.get("title") or "")
+
+
+def topic_refs(vid: str, root: Path = ROOT, store: dict | None = None, live: bool = True) -> list[dict]:
+    """The reference videos for THIS video's topic, most viewed first (owner, 2026-11-11: "every topic's
+    thumbnail should be made using the topic's own videos' thumbnails"): the market job's weekly search
+    for the topic, the topic's own `demand` video, and a live YouTube search for the topic. Never the
+    channel-wide examples: a thumbnail modelled on other topics' hits isn't close to what gets clicked here."""
     import json
     plan_f = root / "videos" / vid / "plan.json"
     plan = json.loads(plan_f.read_text(encoding="utf-8")) if plan_f.is_file() else {}
@@ -154,13 +288,22 @@ def topic_refs(vid: str, root: Path = ROOT, store: dict | None = None) -> list[d
     tid = topic.get("feed_id") or topic.get("id")
     store = market_refs() if store is None else store
     refs = list(((store.get("topics") or {}).get(tid) or {}).get("refs") or [])
-    demand = topic.get("demand") or {}
+    demand = plan.get("demand") or topic.get("demand") or {}     # the planner writes `demand` at the plan's top level
     m = re.search(r"(?:v=|youtu\.be/|shorts/)(" + YT_ID + ")", str(demand.get("url", "")))
     if m and all(r.get("id") != m.group(1) for r in refs):
-        refs.append({"id": m.group(1), "title": demand.get("title", ""), "views": int(demand.get("views") or 0), "channel": ""})
-    if len(refs) < REF_MIN and REFS.is_file():
-        refs += [e for e in json.loads(REFS.read_text(encoding="utf-8")).get("examples", []) if all(r.get("id") != e["id"] for r in refs)]
+        refs.append({"id": m.group(1), "title": demand.get("title", ""), "views": int(demand.get("views") or 0), "channel": "", "demand": True})
+    if live and (q := topic_query(vid, root)):
+        refs += [r for r in search_refs(q) if all(x.get("id") != r["id"] for x in refs)]
     return sorted(refs, key=lambda r: -int(r.get("views") or 0))
+
+
+def reference_problems(th: dict, refs: list[dict]) -> list[str]:
+    """Every reference a thumbnail names must be one of its topic's own hits (topic_refs)."""
+    ids = {r.get("id") for r in refs}
+    named = [str(r.get("id")) for r in th.get("references") or [] if isinstance(r, dict)]
+    off = [i for i in named if i not in ids]
+    return [f"references {', '.join(off)} are not among this topic's own videos (python -m renderer.thumbs refs <id>): "
+            f"model the thumbnail on what gets clicked on this topic (owner, 2026-11-11)"] if off else []
 
 
 def fetch_thumb(yt_id: str) -> Path | None:
@@ -219,8 +362,10 @@ def feed(vid: str, out: Path | None = None, files: list[Path] | None = None, tit
     others = [(f, r.get("title", ""), int(r.get("views") or 0)) for r in topic_refs(vid)[:9] if (f := fetch_thumb(r["id"]))]
     if title is None:
         title = json.loads((d / "manifest.json").read_text(encoding="utf-8")).get("title", vid) if (d / "manifest.json").is_file() else vid
-    ours = [(f, title, None) for f in (files or [d / "thumbnail.png"]) if f.is_file()]
-    cells = others[:3] + ours[:1] + others[3:7]      # ours in the first row, among the hits
+    ours = [(f, f"{k.upper()} · {title}", None) for k, f in zip("abc", files or [d / p for p in PICKS.values()]) if f.is_file()]
+    cells = []
+    for i, o in enumerate(ours):                      # each of ours on its own row, among three of the topic's hits
+        cells += others[i * 3:i * 3 + 3][:1] + [o] + others[i * 3:i * 3 + 3][1:]
     W, H, cols = 320, 180, 4
     rows = (len(cells) + cols - 1) // cols
     sheet = Image.new("RGB", (cols * (W + 16) + 16, rows * (H + 74) + 16), (15, 15, 15))

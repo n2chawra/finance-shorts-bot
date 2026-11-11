@@ -19,7 +19,9 @@ export const StyleSchema = z.object({
     urgent: z.object({ level: z.enum(["breaking", "trending"]), until: z.string() }).nullable(),
   }).nullish(),
   /** three thumbnails for YouTube's Test & Compare (long videos), each with the angle it leads with */
-  thumbs: z.array(z.object({ file: z.string(), angle: z.string().nullable() })).nullish(),
+  thumbs: z.array(z.object({ file: z.string(), angle: z.string().nullish(), pattern: z.string().nullish(), score: z.number().nullish(), why: z.string().nullish(), picked: z.boolean().nullish() })).nullish(),
+  /** the thumbnail the owner picked before upload (owner, 2026-11-11); without one, Studio's `picked` goes up */
+  thumbPick: z.object({ file: z.string(), at: z.string() }).nullish(),
   /** the thumbnail YouTube's test picked, logged by the owner */
   thumbTest: z.object({ winner: z.string(), at: z.string() }).nullish(),
 });
@@ -315,7 +317,7 @@ export const VideoEditSchema = z.object({
 export type VideoEdit = z.infer<typeof VideoEditSchema>;
 
 export const THUMB_FILES = ["thumbnail.png", "thumbnail-b.png", "thumbnail-c.png"] as const;
-/** The thumbnail that won YouTube's Test & Compare (null clears it). */
+/** The owner's pick of a long video's three thumbnails, set as the cover at upload (null: Studio's pick). */
 export const ThumbWinnerSchema = z.object({ winner: z.enum(THUMB_FILES).nullable() });
 export type VideoAction = z.infer<typeof VideoActionSchema>;
 

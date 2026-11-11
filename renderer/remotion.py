@@ -269,13 +269,14 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         shutil.copyfile(shots[min(1, len(shots) - 1)], out/"thumbnail.png")
     check_thumbnail(out/"thumbnail.png", tl["format"])
     cover_jpeg(out/"thumbnail.png")
-    # the extra thumbnails for a Test & Compare on YouTube: the same timeline with another thumbnail block
+    # the extra thumbnails B and C (owner, 2026-11-11: three to pick from): the same timeline with another thumbnail block
     for letter, variant in zip("bc", tl.get("thumbnailVariants") or []):
         alt = work/f"timeline-thumb-{letter}.json"
         alt.parent.mkdir(parents=True, exist_ok=True)
         alt.write_text(json.dumps({**tl, "thumbnail": variant}, ensure_ascii=False), encoding="utf-8")
         _node(["thumbnail", "--timeline", str(alt), "--out", str(out/f"thumbnail-{letter}.png"), "--bundle", str(b)])
         check_thumbnail(out/f"thumbnail-{letter}.png", tl["format"])
+        cover_jpeg(out/f"thumbnail-{letter}.png")   # the publisher sets the picked one (owner's pick, else Studio's)
     seconds = tl["durationInFrames"]/tl["fps"]
     lines = [{"scene": bt["id"], "text": bt["say"], "start": round(bt["from"]/tl["fps"] + bt["voice"]["start"]/tl["fps"], 2),
               "seconds": round(bt["voice"]["words"][-1]["e"], 2) if bt["voice"]["words"] else 0.0,

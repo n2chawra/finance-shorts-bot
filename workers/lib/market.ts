@@ -89,6 +89,19 @@ export type ThumbRef = { id: string; title: string; channel: string; views: numb
 export type TopicRefs = { query: string; searchedAt: string; refs: ThumbRef[] };
 export const ThumbRefsFile = z.object({ topics: z.record(z.string(), z.object({ query: z.string(), searchedAt: z.string(), refs: z.array(z.any()) })).default({}) });
 
+/** Last run's references. An empty or broken file (the workflow's `git show > file` leaves an empty one when
+ * the branch has none) means "nothing yet", never a crash: until 2026-11-11 that crash meant thumb-refs.json was
+ * never written, so every long thumbnail fell back to generic examples instead of its own topic's hits. */
+export function parsePrevRefs(text: string | null | undefined): Record<string, TopicRefs> {
+  if (!text || !text.trim()) return {};
+  try {
+    const r = ThumbRefsFile.safeParse(JSON.parse(text));
+    return r.success ? (r.data.topics as Record<string, TopicRefs>) : {};
+  } catch {
+    return {};
+  }
+}
+
 const PRIORITY: Record<string, number> = { breaking: 0, high: 1, normal: 2, low: 3 };
 
 /** Open topics that need a (re)search today, the most urgent and the least recently searched first. */

@@ -21,6 +21,7 @@ import { istDay } from "./lib/publishing.ts";
 import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotifications, importEditorRanking, importFeedbackAcks, snapshotDocs } from "./lib/agents-sync.ts";
 import { type FeedTopic, loadFeeds, sourceOf } from "./lib/origin.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
+import { syncThumbs } from "./lib/cover.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -120,15 +121,18 @@ export async function queueSlot(tx: Prisma.TransactionClient, m: ShippedManifest
 }
 
 /** Videos waiting to be posted that were ingested before their source was recorded get it from
- * their manifest, so the posting plan can say where every one came from. */
+ * their manifest, so the posting plan can say where every one came from; and their thumbnails follow the manifest. */
 async function backfillSources(prisma: PrismaClient, feeds: Map<string, FeedTopic>): Promise<void> {
   for (const v of await prisma.video.findMany({ where: { status: { in: ["queued", "scheduled"] }, deletedAt: null }, select: { id: true, style: true } })) {
     const style = (v.style ?? {}) as Record<string, unknown>;
     const file = path.join(ROOT, "videos", v.id, "manifest.json");
-    if (style.source || !existsSync(file)) continue;
+    if (!existsSync(file)) continue;
     const m = Manifest.safeParse(readJson(file));
     if (!m.success || m.data.status !== "qa_passed") continue;
-    await prisma.video.update({ where: { id: v.id }, data: { style: { ...style, source: sourceOf(m.data, feeds) } as Prisma.InputJsonValue } });
+    // a redone set of thumbnails (and Studio's pick) reaches a video that is still waiting (owner, 2026-11-11)
+    const withThumbs = syncThumbs(style, m.data.thumbnails) ?? style;
+    if (style.source && withThumbs === style) continue;
+    await prisma.video.update({ where: { id: v.id }, data: { style: { ...withThumbs, source: style.source ?? sourceOf(m.data, feeds) } as Prisma.InputJsonValue } });
   }
 }
 

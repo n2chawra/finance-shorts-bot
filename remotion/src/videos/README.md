@@ -7,7 +7,7 @@ dynamic to the script"):
 - `Turn.tsx`, `Payoff.tsx`, or any `<Name>.tsx`: `"scene": "custom", "params": {"component": "<Name>"}`
 - `props.tsx`: default-exports `{ name: PropFC }`, the story's own things drawn with `../../studio/draw`,
   used by `"scene": "build"` beats and importable by the beats above (`import props from "./props"`)
-- `Thumb.tsx` (long videos, since 2026-10-29): the video's one thumbnail, modelled on its topic's most
+- `Thumb.tsx`, `ThumbB.tsx`, `ThumbC.tsx` (long videos; three since 2026-11-11, the owner picks one): the video's thumbnails, each modelled on its topic's most
   viewed thumbnails (`python -m renderer.thumbs refs <id>`), built from `../../studio/thumb`
   (`Glow`, `Face`, `Thing`, `Words`, `Arrow`, `Ring`, `Badge`, `Split`). It default-exports a
   `React.FC<ThumbProps>` (`{ tl, th, w, h }`, 1280×720) and is chosen by `"thumbnail": {"layout":

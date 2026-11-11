@@ -31,6 +31,7 @@ import { loadSettings } from "./lib/settings.ts";
 import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { TokenError, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
+import { coverFile } from "./lib/cover.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const MAX_ATTEMPTS = 3;
@@ -38,9 +39,9 @@ type Format = "short" | "long";
 
 /** Our designed cover instead of the frame YouTube picks (owner, 2026-11-03: "the thumbnail is wrong").
  * The video is already uploaded, so a refused cover is reported, never a failed upload. */
-async function applyCover(prisma: PrismaClient, token: string, videoId: string, youtubeId: string): Promise<void> {
+async function applyCover(prisma: PrismaClient, token: string, videoId: string, youtubeId: string, style: unknown): Promise<void> {
   const dir = path.join(ROOT, "videos", videoId);
-  const file = ["thumbnail.jpg", "thumbnail.png"].map((f) => path.join(dir, f)).find((f) => existsSync(f));
+  const file = coverFile(dir, style);   // the owner's pick, else Studio's (long videos have three; lib/cover.ts)
   if (!file) return void console.log(`${videoId}: no cover in the repo; YouTube picks a frame`);
   try {
     await setThumbnail(token, youtubeId, file);
@@ -203,7 +204,7 @@ async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string
     ]);
     await renumberQueue(prisma);
     console.log(JSON.stringify({ uploaded: video.id, youtubeId, publishAt: slot.toISOString(), attempts }, null, 2));
-    await applyCover(prisma, token, video.id, youtubeId);
+    await applyCover(prisma, token, video.id, youtubeId, video.style);
     return true;
   } catch (e) {
     const error = e instanceof Error ? e.message : String(e);

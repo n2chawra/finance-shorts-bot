@@ -163,15 +163,20 @@ def test_counters_on_their_own_figure_pass() -> None:
     tb.check_script(script([{"id": "a", "scene": "towers", "params": {"items": items}}, {"id": "z", "scene": "end"}]))
 
 
-def test_one_thumbnail_per_video() -> None:
-    """Owner, 2026-10-29: "long video thumbnail: only 1 is enough"."""
+def test_three_thumbnails_each_its_own_component() -> None:
+    """Owner, 2026-11-11: "give 3 thumbnails so that I can pick the best one" (replaces 2026-10-29's one)."""
     import json
     from pathlib import Path
 
     from renderer.timeline.build import check_script
     s = json.loads((Path(__file__).resolve().parents[2] / "examples" / "long_story.json").read_text(encoding="utf-8"))
-    s["thumbnails"] = [{**s["thumbnail"], "angle": "question"}]
-    with pytest.raises(ValueError, match="one thumbnail per video"):
+    s["thumbnails"] = [{**s["thumbnail"], "component": "ThumbB"}, {**s["thumbnail"], "component": "ThumbC"}]
+    check_script(s)
+    s["thumbnails"] = [{**s["thumbnail"], "component": "ThumbB"}, {**s["thumbnail"], "component": "ThumbB"}]
+    with pytest.raises(ValueError, match="its own component"):
+        check_script(s)
+    s["thumbnails"] = [{**s["thumbnail"], "component": f"Thumb{c}"} for c in "BCD"]
+    with pytest.raises(ValueError, match="at most 2"):
         check_script(s)
 
 

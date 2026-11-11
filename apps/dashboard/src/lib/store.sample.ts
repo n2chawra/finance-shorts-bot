@@ -506,8 +506,8 @@ export function updateVideo(id: string, e: VideoEdit): { ok: true } | { ok: fals
 export function setThumbWinner(id: string, winner: string | null): { ok: true } | { ok: false; error: string } {
   const v = db().videos.find((x) => x.id === id);
   if (!v) return { ok: false, error: "Video not found" };
-  if (!v.style.thumbs?.length) return { ok: false, error: "This video has no thumbnail test" };
-  v.style = { ...v.style, thumbTest: winner ? { winner, at: new Date().toISOString() } : null };
+  if (!v.style.thumbs?.length) return { ok: false, error: "This video has no thumbnails to pick from" };
+  v.style = { ...v.style, thumbPick: winner ? { file: winner, at: new Date().toISOString() } : null };
   return { ok: true };
 }
 

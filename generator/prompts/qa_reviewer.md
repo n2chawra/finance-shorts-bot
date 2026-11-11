@@ -42,11 +42,13 @@ own render checks it. You are checking what code cannot see.
    (the answer belongs to the payoff); a Short where the cast trade one-liners and nobody explains
    (one voice should carry it in full sentences); level chips or "level one, two…" in a video
    whose topic is not a ladder.
-8. **Long-video thumbnail** (`videos/<id>/feed-preview.png`: ours among its topic's most viewed
-   videos): does it use the picture language those hits share (the script's `thumbnail.pattern`)
+8. **Long-video thumbnails** (`videos/<id>/feed-preview.png`: our three, A, B and C, each among its topic's most
+   viewed videos; since 2026-11-11 the owner picks one, else Studio's `thumbnail_pick` goes up). Look at each:
+   does it use the picture language those hits share (its `pattern`)
    and still stand out among them? Does it promise the same video as the title? Can you read the
    words at the small size? Reject one that looks like an old fixed layout (a plain grid of icons, a
-   receipt with a number), sells one small detail, or copies another channel's picture.
+   receipt with a number), sells one small detail, or copies another channel's picture. Say which one you
+   would click and whether Studio's scores and pick agree.
 9. **Thumbnail:** the thumbnail frame is empty or mid-transition, the words cover a face or the
    money object, or it looks like the covers of the last few videos (same picture, new words).
 10. **Code checks:** `layout_problems` is not empty, the length is outside the allowed range, or

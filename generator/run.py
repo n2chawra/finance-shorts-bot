@@ -362,9 +362,10 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
     problems += craft.prop_problems(tl, [(e["id"], _tl(e)) for e in earlier[-craft.PROP_WINDOW:]])
     problems += story.timeline_problems(script, tl, [_read_script(e["id"], root) for e in earlier[-10:]])
     if plan_format(script) == "long" and script.get("thumbnail"):
-        th = script["thumbnail"]
-        problems += [f"thumbnail: {p}" for p in thumbs.spec_problems(th, plan_.get("title", script.get("title", "")), script.get("story") or plan_.get("story"))]
-        problems += thumbs.code_problems(vid, th, root)
+        for k, th in thumbs.specs(script):   # A, B and C (owner, 2026-11-11: three to pick from)
+            problems += [f"thumbnail {k.upper()}: {p}" for p in thumbs.spec_problems(th, plan_.get("title", script.get("title", "")), script.get("story") or plan_.get("story"))]
+            problems += thumbs.code_problems(vid, th, root)
+        problems += [f"thumbnails: {p}" for p in thumbs.pick_problems(script)]
     lo, hi = length_range(load_settings(root), plan_format(script))
     sec_ = tl["durationInFrames"] / tl["fps"]
     if not lo * 0.95 <= sec_ <= hi * 1.05:
@@ -410,6 +411,13 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     # a long video's thumbnails sell the whole promise, in words that add to the title (renderer/thumbs.py)
     plan_ = numbers.fill_plan(_read(d / "plan.json"), script) if (d / "plan.json").is_file() else {}
     problems += thumbs.problems({**script, "title": plan_.get("title", script.get("title", "")), "story": script.get("story") or plan_.get("story")}, d)
+    if plan_format(script) == "long" and script.get("thumbnail"):
+        try:   # every reference is one of this topic's own hits (owner, 2026-11-11), not another topic's
+            refs = thumbs.topic_refs(vid)
+            for k, th in thumbs.specs(script):
+                problems += [f"thumbnail {k.upper()}: {p}" for p in thumbs.reference_problems(th, refs)] if refs else []
+        except (OSError, RuntimeError, ValueError) as e:
+            print(f"note: topic references not checked ({e})", file=sys.stderr)
     if plan_format(script) == "long" and (d / "thumbnail.png").is_file():
         try:   # ours among the topic's hits, for QA (other channels' pictures: git-ignored, never shipped)
             thumbs.feed(vid, title=plan_.get("title"))
@@ -481,8 +489,8 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         manifest["release"]["mediaBranch"] = f"media/{vid}"
     if (urgent := topics.urgency(plan, root)) is not None:
         manifest["priority"] = urgent   # ingest puts it at the front of the upload queue
-    if (th := script.get("thumbnail")) and fmt == "long":   # one thumbnail (2026-10-29), and the hits it was modelled on
-        manifest["thumbnails"] = [{"file": "thumbnail.png", "angle": th.get("angle"), "layout": th.get("layout")}]
+    if (th := script.get("thumbnail")) and fmt == "long":   # three thumbnails, Studio's scores and pick (owner, 2026-11-11)
+        manifest["thumbnails"] = thumbs.manifest_entries(script)
         manifest["thumbnailModel"] = {"pattern": th.get("pattern"), "references": [r.get("id") for r in th.get("references") or [] if isinstance(r, dict)]}
     _write(d / "manifest.json", manifest)
     history.append({

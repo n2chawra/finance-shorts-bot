@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { ThumbWinnerSchema } from "@/lib/schemas";
 import { setThumbWinner } from "@/lib/store";
 
-/** Log which of a long video's three thumbnails won YouTube's Test & Compare. */
+/** The owner's pick of a long video's three thumbnails: the publisher sets it as the cover at upload. */
 export async function POST(req: Request, ctx: { params: Promise<{ id: string }> }) {
   const { id } = await ctx.params;
   const parsed = ThumbWinnerSchema.safeParse(await req.json().catch(() => null));

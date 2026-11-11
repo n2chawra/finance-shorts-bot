@@ -46,3 +46,13 @@ test("long topics get their reference thumbnails searched once a week, the urgen
   assert.deepEqual(refs.map((r) => r.id), ["big", "mid"]);
   assert.equal(refs[0]!.thumb, "https://i.ytimg.com/vi/big/hqdefault.jpg");
 });
+
+test("an empty or broken previous thumb-refs file means no references yet, never a crash (2026-11-11)", async () => {
+  const { parsePrevRefs } = await import("../lib/market.ts");
+  assert.deepEqual(parsePrevRefs(""), {});
+  assert.deepEqual(parsePrevRefs(null), {});
+  assert.deepEqual(parsePrevRefs("{not json"), {});
+  assert.deepEqual(parsePrevRefs('{"topics": 3}'), {});
+  const ok = parsePrevRefs('{"topics": {"t": {"query": "q", "searchedAt": "2026-11-10T00:00:00Z", "refs": []}}}');
+  assert.deepEqual(Object.keys(ok), ["t"]);
+});
