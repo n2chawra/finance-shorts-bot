@@ -1,0 +1,18 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-12",
+  "startedAt": "2026-11-11T08:37:12Z",
+  "finishedAt": "2026-11-11T08:42:54Z",
+  "summary": "All checks green. Fixed owner notes getting stuck as 'waiting' when an agent does its part and passes the rest on, handed tonight's three owner notes to Studio and the improver, and wrote the verdict for the Magic Johnson Short.",
+  "decision": "acted",
+  "why": "The new handoff rule would have left any 'partly' chain open on the dashboard forever; tests in Python and TypeScript fail on the old code.",
+  "findings": [
+    {"title": "Data audit not yet run today", "detail": "metrics/data-audit.json is from 10 Nov 16:29 UTC (0 errors, 0 warnings, 52 videos checked)."},
+    {"title": "Magic Johnson Short is a hit", "detail": "414 views at about 50 h against a 30-day 48-hour median of 73."}
+  ],
+  "changes": [
+    {"title": "Feedback handoffs: 'partly' counts as an answer", "detail": "generator/feedback.py + workers/lib/agents-sync.ts, tests in both", "branch": "agent/auditor/2026-11-12"}
+  ],
+  "nextCheck": "2026-11-12",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-12.md"}]
+}
