@@ -3,9 +3,9 @@
     {
       "key": "auditor-before-data-audit",
       "severity": "info",
-      "title": "The auditor ran before the day's data audit, two nights running",
-      "detail": "Tonight's auditor routine started at 19:26 IST (13:56 UTC), not its 23:00 IST slot, and the Data audit workflow hadn't run yet (its runs start 14:56-18:55 UTC: 7 Nov 14:56, 8 Nov 15:23, 9 Nov 18:55). Last night the audit was also late. So the dashboard-vs-YouTube check was skipped both nights. The last audit (9 Nov) had 0 errors and 0 warnings across 49 checked videos.",
-      "fix": "1. In claude.ai → Code → Routines, check the auditor routine is set to 23:00 IST (17:30 UTC). 2. Optional: in GitHub → Actions → Data audit, confirm a 10 Nov run appears this evening. Nothing else is needed."
+      "title": "The auditor ran before the day's data audit again",
+      "detail": "Today's auditor run started by hand at 14:07 IST (08:37 UTC); the nightly auditor, research, improver and dashboard routines were all switched off at 14:06 IST. The Data audit workflow runs in the evening, so metrics/data-audit.json was from 10 Nov 16:29 UTC (16 h old) and the dashboard-vs-YouTube check was skipped. That audit had 0 errors and 0 warnings across 52 checked videos.",
+      "fix": "1. If you switched the nightly agents off on purpose, nothing to do. 2. Otherwise turn the four routines back on in claude.ai → Code → Routines; the auditor's slot should be after the evening data audit (23:00 IST)."
     },
     {
       "key": "watchdog-not-hourly",
