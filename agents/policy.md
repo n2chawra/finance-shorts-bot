@@ -17,11 +17,16 @@ the end, on stayed to watch (engaged views ÷ views). Until the freeze ends, eve
 - **improver**: fixes only: the owner's open feedback notes, bugs, recurring failures, props and
   pictures that are wrong or generic (a placeholder head, a text chip standing in for a thing). No
   `adopt` items that change the recipe, no new experiments, no closing of the paused ones;
-- **research**: twice a week. Feed topics that fit the recipe: one surprising true money fact about
+- **research**: nightly, as before. Feed topics that fit the recipe: one surprising true money fact about
   a real, named person or business, with its figures as sourced `facts` and a title that states the
   fact with the name and the number. No format, style or pace proposals for adoption before the freeze ends;
-- **auditor**: weekly. Data and code bugs, and the weekly analysis led by stayed to watch per Short;
-- **dashboard, scout, studio, monthly**: off.
+- **auditor**: nightly, as before. Data and code bugs, and the weekly analysis led by stayed to watch per Short;
+- **dashboard**: weekly (Sundays): the bug hunt and smoke tests only, no UI-trend work;
+- **scout, studio, monthly**: off;
+- **the owner's feedback during the freeze**: a note about something wrong in a video (a wrong or generic
+  picture, a figure, a sound, a caption, a bug) is fixed as always. A note that asks to change the recipe
+  itself (length, hook, pace, voice, format, style) is answered in `improvement/feedback-acks.json` as
+  "held for the 26 Nov review" and changes nothing until then.
 Never judge a Short, an option or the recipe on views alone, and never on fewer than 20 videos a side.
 
 ## Hard rules (from CLAUDE.md; never change, never propose changing)

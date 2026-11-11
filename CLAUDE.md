@@ -33,8 +33,9 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
     take about ten steps.
   - Captions end 340 px above the bottom edge of a Short (YouTube's own buttons cover what is lower);
     one upload category; no country tag on global videos.
-  - Owner-side switches (dashboard settings; routines can't change them): 2 Shorts a day, long videos
-    off, the dashboard and monthly agents off, research twice a week.
+  - Settings and schedules (set 2026-11-11): 2 Shorts a day at 12:37 and 19:07 IST, long videos off
+    (scout, studio and monthly off), research, auditor and improver nightly, the dashboard agent
+    weekly. The owner's feedback goes on: fixes are applied, recipe changes are held for the review.
 - **Voiceover only from the offline voice engine** (`renderer/engine/voice.py`, Kokoro, Apache-2.0;
   installed by `scripts/setup-voice.sh`, never committed). One Indian-English and five American
   voices; every Short has the same narrator since 2026-11-11 (long videos rotate); numbers are spoken as words.

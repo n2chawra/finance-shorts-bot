@@ -423,8 +423,8 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   Review on 2026-11-26 on stayed to watch (engaged ÷ views).
 - [x] Settings for the fixed run (2026-11-11): 2 Shorts a day at 12:37 and 19:07 IST, `longPerWeek` 0, the
   dashboard, monthly, scout and studio agents off, `maxActiveExperiments` 0
-- [x] Routines (2026-11-11): research Tue and Fri 22:17 IST, auditor Sundays 22:02 IST, improver nightly
-  (fixes only, `agents/policy.md`); dashboard, scout and studio stay paused
+- [x] Routines (2026-11-11): research 22:17, auditor 22:02 and improver 22:33 IST nightly (improver: fixes
+  only, `agents/policy.md`), the dashboard agent Sundays 23:00 IST; scout and studio stay paused
 - [x] New banner uploaded (`assets/channel/banner-global-v2.png`)
 - [ ] 2026-11-26: review the fixed run on stayed to watch (a one-time routine writes
   `improvement/analysis/fixed-run-2026-11.md` that morning), then decide what the variant system resumes with

@@ -13,7 +13,9 @@ facts come from and the rules of its field.
 `owner_feedback`: `open` notes (a `wrong` note is a rule until the improver addresses it; `improve`
 and `general` notes shape this video) and `taste` (the videos he picked to publish and the ones he
 marked stale, with why). Follow them; if one conflicts with a hard rule, the hard rule wins and you
-say so in the report.
+say so in the report. During the fixed run (below) a note that asks to change the recipe itself (length,
+hook, pace, voice, format, style) is held for the review and does not shape this video; notes about
+something wrong in a video still do.
 
 1. Run `python -m generator.run state`. It tells you the video id to use (`next_id`), which
    templates are allowed, which topic categories are blocked, the previous video's style, recent
