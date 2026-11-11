@@ -1,13 +1,6 @@
 {
   "notifications": [
     {
-      "key": "long-tempo-docs",
-      "severity": "info",
-      "title": "Long videos now play at tempo 1.25: two docs outside my lane still say 1.5",
-      "detail": "Your 4 Nov note on L-20261104-01 ('speed is very fast') lowered the long-video tempo from 1.5 (~215 words a minute) to 1.25 (~180) in renderer/timeline/build.py, the long_story README and the word-count checks. CLAUDE.md ('tempo 1.5 (~215 words a minute)') and agents/studio.md line 88 ('tempo 1.5, about 215 spoken words a minute') are outside the improver's lane. Studio reads the README too, but its own page still asks for ~215 a minute, so its first scripts may run long.",
-      "fix": "1. In agents/studio.md line 88, change 'tempo 1.5, about 215 spoken words a minute' to 'tempo 1.25, about 180 spoken words a minute' (a 300-400 s video is about 900-1,200 words). 2. In CLAUDE.md's Two formats table, change 'tempo 1.5 (~215 words a minute)' to 'tempo 1.25 (~180 words a minute)'. 3. If 1.25 now feels slow, say so in a note and the improver will set it between 1.25 and 1.5."
-    },
-    {
       "key": "short-length-floor",
       "severity": "info",
       "title": "Your note asks for Shorts of 30 s or more; the length test says shorter wins so far",
@@ -27,13 +20,6 @@
       "title": "Should titles name the famous person? Add a 'name' title option to test it",
       "detail": "Your 10 Nov note on the Elon Short. The variant system made 'plain' titles the default (median 460 views at 48 h vs 140 for a figure or name), but plain has only 4 videos, all also 20-27 s with the secret hook, which changed the same days; so it may be the length winning, not the hidden name. Since 9 Nov the plain titles hide big names ('The basketball star…' for Magic Johnson, 'the biggest channel on earth' for MrBeast). Tonight's fix makes the description and a hashtag always name the subject; the title is the arms file's call, which agents can't edit.",
       "fix": "1. In config/arms.json, dimensions.title.options, add \"name\" (the famous person or company in the title, no money figure): [\"figure_or_name\", \"plain\", \"name\"]. 2. Leave a note saying so; the improver will teach the planner the new option and the title check. 3. Or, to make every title name its subject now, set the title default to \"figure_or_name\" instead."
-    },
-    {
-      "key": "long-thumb-before-saturday",
-      "severity": "warning",
-      "title": "L-20261111-01's thumbnail breaks the new thumbnail rules and goes live Saturday",
-      "detail": "Tonight's check fails 'What does $1 billion actually look like?': its thumbnail says 'Million? Cute.' under a billion title, with a calm smirk. Agents can't change a queued video's thumbnail or the upload, and Studio's next run is 18 Nov, after the Saturday 20:07 IST upload.",
-      "fix": "1. To fix it before Saturday, start the Studio routine once by hand (claude.ai/code, Routines, Studio, Run now) and tell it to redo only the thumbnail of L-20261111-01 to the long_story README's 'What gets clicked' rules. 2. Or, once it's live, upload a new thumbnail in YouTube Studio, or use Test & Compare. 3. Otherwise no action: the next long video follows the new rules."
     },
     {
       "key": "october-voice-pace-test",

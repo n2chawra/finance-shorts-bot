@@ -90,8 +90,9 @@ and the plan's `seed` and `style`.
 A long video is a **story with the recurring cast**, told in beats. Start from the topic's
 `outline` and its central picture (the leaking bucket, the snowball, the treadmill): what does
 the viewer *see* happen?
-- **Length and pace.** Long videos play at tempo 1.5, about **215 spoken words a minute**. Aim for
-  the setting `longLengthMinSec`–`longLengthMaxSec` (300–400 s since 2026-11-04: **1,075–1,430 words across 60–85 beats**) (a beat is one line and one picture,
+- **Length and pace.** Long videos play at tempo 1.25, about **180 spoken words a minute** (1.5 and ~215 until the
+  owner found it too fast, 2026-11-04). Aim for the setting `longLengthMinSec`–`longLengthMaxSec`
+  (300–400 s: **900–1,200 words across 60–85 beats**) (a beat is one line and one picture,
   3–8 s). Add a beat that *does* something, never stretch one.
 - **Shape (the format's list).** A 30-second hook that promises every item and teases the worst one.
   Then one `chapter` per item (6–9), each a mini story with the cast, one or two computed figures
