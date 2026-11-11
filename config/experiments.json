@@ -154,19 +154,26 @@
       "id": "you-in-the-core-story",
       "area": "script",
       "format": "short",
-      "status": "running",
+      "status": "reverted",
       "startedAt": "2026-11-04",
       "templates": [
         "short_story"
       ],
       "share": 0.5,
-      "prompt": {
-        "on": "Subject rule for this video (owner, 2026-11-04: 'every topic is of same category; when we got 1K views we had more categories'): tell a tier-core format (secret_of_rich, how_they_make_money, rich_vs_poor, billionaire_question) through the viewer's OWN money: your savings, your bonus, your salary, your gold, your card, what you buy, and what the rich or a famous business does with it (the hits: 'Your $20,000 savings: what the rich do with it' 1,161 views, 'Your Dhanteras necklace: how the jeweller really earns' 1,133). Prefer such a topic from state.topic_feed. The title says 'Your' or 'you' plus a money figure. Do not make a named billionaire or company the subject (they may appear as the contrast), and never use a personal-budget format.",
-        "off": null
-      },
       "proposal": "you-in-the-core-story",
       "metric": "views48h",
-      "description": "Shorts: a big-money format told through the viewer's own money (your savings, bonus, gold), not a named billionaire or company"
+      "description": "Shorts: a big-money format told through the viewer's own money (your savings, bonus, gold), not a named billionaire or company",
+      "endedAt": "2026-11-11",
+      "result": {
+        "verdict": "revert",
+        "ratio": 0.03,
+        "confidence": 1.0,
+        "n": {
+          "on": 2,
+          "off": 1
+        },
+        "metric": "views48h"
+      }
     }
   ]
 }
