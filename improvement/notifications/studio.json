@@ -1,3 +1,11 @@
 {
-  "notifications": []
+  "notifications": [
+    {
+      "key": "related-L-20261111-01",
+      "severity": "info",
+      "title": "Link the $1 billion Short to its long version",
+      "detail": "L-20261111-01 'What does $1 billion actually look like?' expands the Short 'What $1 billion looks like in $100 bills' (ssxStI7t_5w, 1,156 views). The API can't set a Short's related video. The description also couldn't carry the Short's link, because the number check rejects digits inside the URL; that bug is with the auditor.",
+      "fix": "1. Once the long video is published (Saturday 20:07 IST), open YouTube Studio. 2. Open the Short 'What $1 billion looks like in $100 bills'. 3. Related video → pick 'What does $1 billion actually look like?'. 4. Optionally add 'The 30-second version: https://youtube.com/shorts/ssxStI7t_5w' as the first line of the long video's description."
+    }
+  ]
 }
