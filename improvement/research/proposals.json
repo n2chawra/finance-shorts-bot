@@ -617,7 +617,8 @@
         "metrics/videos.json, Shorts since 2026-10-21: the 4 titles opening Why/How/What have median 1,167 views vs 331 for the other 11; the 7 naming billion/rich median 1,103 vs 452; the one naming a cast member (v-20261028-01 'Rohan gets paid $5,000...') 45 views on day one",
         "market.json 27 Oct: 'How Billionaire's use Casino to clean Dirty' 1.89M, 'Why Billionaire is Billionaire' 887K, 'What If Billionaires Divided Their Money Among Everyone?' 215K, 'Is McDonald's really a burger company?' 28K: question titles with a famous subject",
         "https://schedulala.com/blog/youtube-shorts-seo-optimize-for-discovery (keyword in the first 40 characters; vendor blog)",
-        "https://metricool.com/youtube-trends/ (61% of Shorts views from the feed, 9% from search: the title matters most where the cover and title show, search and the channel page)"
+        "https://metricool.com/youtube-trends/ (61% of Shorts views from the feed, 9% from search: the title matters most where the cover and title show, search and the channel page)",
+        "market.json 2026-11-10 + YouTube search 2026-11-12: the on-topic hits name the person and the figure in the title: 'Salary of Jeff Bezos as CEO of Amazon was $81,840 per year' (914K), 'Jeff Bezos' Net Worth VS. Yours' (21M), 'How Much Money Apple Makes' (7.8M), 'How Long Would Billionaires Survive Spending ₹1 Lakh Every Day?' (3.3M)"
       ],
       "expectedEffect": "More views from search and the channel's Shorts tab; a clearer promise for the feed's title line.",
       "confidence": "low",
@@ -822,7 +823,8 @@
         "metrics/feedback.json note cmw0a5lxv0001jq09073tge9o (v-20261103-03: 'Right now it's like same stuff coming')",
         "metrics/feedback.json channel note: 'Animation don't mean just put object when u speak of it. It's a way of presentation'",
         "3 Nov scripts: glow+shake+stamp are 26 of 108 actions (24%) but 10 of 30 in v-20261103-03 (33%) with only one swap",
-        "2026-11-11 research: highlights (glow, shake, grow, tag) are 40-71% of the actions in the 10 Nov Shorts (v-20261110-03 71%, -02 55%, -04 48%, -01 40%), above the 25% this proposal asks for and above the October hits' build Shorts (v-20261105-06 33%)"
+        "2026-11-11 research: highlights (glow, shake, grow, tag) are 40-71% of the actions in the 10 Nov Shorts (v-20261110-03 71%, -02 55%, -04 48%, -01 40%), above the 25% this proposal asks for and above the October hits' build Shorts (v-20261105-06 33%)",
+        "owner note 2026-11-11 on v-20261111-01 (Ronaldo): 'The glowing thing is very poor. Don't do that... pile growth and he plays or not were animated poorly... everything is in the middle, make screen bigger' — glow is the highlight action this proposal caps"
       ],
       "expectedEffect": "More 'turns into' moments per beat, the thing the owner and The Curious Plot study both call the wow factor.",
       "confidence": "low",
@@ -969,7 +971,8 @@
         "Shorts at 200+ wpm: n=19, median 237 views in 48 h; 175-200 wpm: n=14, median 31",
         "all 7 Shorts made on 9-10 Nov speak at 146-172 wpm with 65-78 words in 26-27 s",
         "confounded with the date (the October hits came before the 30 Oct-1 Nov gap): this is why it is an experiment and not an adopt",
-        "last night's vendor guides say 160-180 wpm, with no data behind them; our own numbers point higher"
+        "last night's vendor guides say 160-180 wpm, with no data behind them; our own numbers point higher",
+        "owner note 2026-11-11 on v-20261111-03 (Ohtani, marked stale): 'animation showing numbers difference but voice speaking was very little to understand the script... are u lowering script quality because of length?' — too few words per picture, the same symptom as the 146-172 wpm Shorts"
       ],
       "expectedEffect": "Back to the October density: more said per second, fewer gaps between reveals; expect higher views48h at the same or better % viewed",
       "confidence": "medium",
@@ -1000,6 +1003,28 @@
       "status": "new",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "long-thumb-one-subject-matches-title",
+      "date": "2026-11-12",
+      "area": "title",
+      "title": "Long-video thumbnails: one huge subject, words that match the title, a face that reacts",
+      "change": "Add to the long-video thumbnail rules (agents/studio.md 'The title and the thumbnail are one pair', the long_story README thumbnail block, and the lint thumbnail check in generator/run.py lint if it fits): (1) the thumbnail's words must carry the title's own number or name and never contradict it (L-20261111-01's title says $1 billion, its thumbnail says 'MILLION? CUTE.'); (2) at most 3 things in the picture: one subject that fills 50%+ of the frame plus a face and the words (L-20261111-01 has 10: wallet, hourglass, fountain, crowd, rocket, banknote, two pallets, warehouse, Sharma); (3) for a scale story, a scale contrast that reads at 168 px wide (a tiny figure against a towering stack, the 'what $1B looks like' hits); (4) the face shows a strong emotion (shock, disbelief), not a calm smirk, and takes 35%+ of the height; (5) subject and background in contrasting colours (no green money on a green room). Check: render the thumbnail at 168×94 (feed size on a phone) in `python -m renderer.thumbs feed` and it must still read.",
+      "evidence": [
+        "owner note 2026-11-11: the last long video got 100 thumbnail impressions and 4 clicks (4% CTR); 'thumbnail is the biggest problem'",
+        "https://vidiq.com/research/youtube-thumbnail-study/ (500 breakout thumbnails, June 2026: 69% show a face, 72% overlay text; contrast common but not what separates them)",
+        "our Test & Compare (python -m improvement.evaluate): face won 1 of 1, grid 0 of 1; versus won 2 of 2, question 0 of 2",
+        "improvement/research/thumbnails.json: the 10M 'Middle Class TRAP' and 2.9M HMRC hits are face type with 2-3 huge words",
+        "https://www.youtube.com/watch?v=w1zzOyksUGo 'The Insane Scale of Jeff Bezos' Wealth Visualized' (2.77M): scale shown as one contrast"
+      ],
+      "expectedEffect": "Long-video CTR from ~4% toward 6-8%; more of the few impressions turn into views",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Low: one thumbnail per week, easy to undo; a face can feel samey across videos (rotate the cast)",
+      "metric": "views48h",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
     }
   ]
 }
