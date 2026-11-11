@@ -1,12 +1,28 @@
 {
   "agent": "studio",
   "day": "2026-11-11",
-  "startedAt": "2026-11-11T02:36:17Z",
-  "finishedAt": "2026-11-11T03:46:03Z",
-  "summary": "Made and shipped this week's long video, L-20261111-01 'What does $1 billion actually look like?' (6:20, 63 beats, 1,077 words), the full story of our 1,156-view Short 'What $1 billion looks like in $100 bills'. It is queued for Saturday 20:07 IST.",
+  "startedAt": "2026-11-11T09:18:14Z",
+  "finishedAt": "2026-11-11T09:23:58Z",
+  "summary": "No new long video: this week's (L-20261111-01, made this morning) is already queued for Saturday 20:07 IST. Instead I redid its thumbnail, as the owner asked (4 clicks from 100 impressions), so the new cover goes up with it.",
   "decision": "acted",
-  "why": "state --format long said video (0 of 1 long videos this week). Scout's top usable topic was 2026-10-28-once-you-understand-a-billion (priority high, from_short v-20261027-01, demand: jack pockets 'Could You Spend $1 Trillion?' 12.3M). Number check, lint, the stills and the full render all ended ok. Fact review passed on its 2nd look and QA review on its 4th; QA's 3rd and 4th looks went past the two-round limit in agents/studio.md, to clear small text-overlap fixes rather than fail a finished video.",
+  "why": "state --format long said idle (1 of 1 long videos this week). The owner's thumbnail note was handed to Studio by the auditor, improver and research; the video is still queued, so the cover the publisher sets on Saturday (videos/L-20261111-01/thumbnail.jpg) can still change.",
   "findings": [
+    {
+      "title": "Why the old cover got no clicks",
+      "detail": "It said 'Million? Cute.' under a $1 billion title, had about ten small things (wallet, hourglass, fountain, crowd, rocket...), a calm smirk, and green money on a green room. It failed the improver's new thumbnail check on two counts (calm face, million vs billion)."
+    },
+    {
+      "title": "The new cover",
+      "detail": "One tower of cash pallets running out of the top of the frame, tiny Rohan at its foot for scale, 'THIS IS' over '$1 BILLION' in a red box (the figure comes from the video's maths, {room_final_long}), Sharma big on the right and shocked, deep violet ground. Modelled on 'The Middle Class TRAP' (10.1M), 'Borrow until you die' (2.86M) and 'Basic Economics' (3.79M). Passes the spec check and the phone-size check (contrast 75.8, edges 0.38); I checked it in the mock feed among the hits."
+    },
+    {
+      "title": "Not touched: the video's 'glow' beats",
+      "detail": "lint now fails this already-rendered video on the 'no glow' rule the owner set today (35 beats). It applies to new videos; re-rendering a finished 6-minute video for it was not asked for, so the video goes out as rendered."
+    },
+    {
+      "title": "Earlier today (02:36-03:46 UTC): this week's long video",
+      "detail": "Made and shipped this week's long video, L-20261111-01 'What does $1 billion actually look like?' (6:20, 63 beats, 1,077 words), the full story of our 1,156-view Short 'What $1 billion looks like in $100 bills'. It is queued for Saturday 20:07 IST. state --format long said video (0 of 1 long videos this week). Scout's top usable topic was 2026-10-28-once-you-understand-a-billion (priority high, from_short v-20261027-01, demand: jack pockets 'Could You Spend $1 Trillion?' 12.3M). Number check, lint, the stills and the full render all ended ok. Fact review passed on its 2nd look and QA review on its 4th; QA's 3rd and 4th looks went past the two-round limit in agents/studio.md, to clear small text-overlap fixes rather than fail a finished video."
+    },
     {
       "title": "Fact review round 1 fixes",
       "detail": "Sharma no longer claims to be a banker. The payoff now says 839 rooms of notes without the 'district to the horizon' overstatement. Forbes dates are said as 'in March this year' because the number check forbids digits in speech; the source line shows 'Mar 2026'."
@@ -22,6 +38,11 @@
   ],
   "changes": [
     {
+      "title": "New thumbnail for L-20261111-01",
+      "detail": "Thumb.tsx, the thumbnail block in script.json and timeline.json, thumbnail.png/.jpg and the manifest's thumbnailModel, committed to main (682c2a8).",
+      "branch": "main"
+    },
+    {
       "title": "L-20261111-01 shipped",
       "detail": "Manifest on main (280004a); mp4 on branch media/L-20261111-01 for the release workflow.",
       "branch": "main"
@@ -29,6 +50,10 @@
   ],
   "nextCheck": "2026-11-18",
   "links": [
+    {
+      "label": "New thumbnail",
+      "url": "videos/L-20261111-01/thumbnail.png"
+    },
     {
       "label": "Script",
       "url": "videos/L-20261111-01/script.json"
