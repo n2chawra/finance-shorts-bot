@@ -421,7 +421,10 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   rules removed; trap and which-one-are-you formats back for one Short in three; captions moved above
   YouTube's bottom overlay; "$500M" instead of "$500.0M"; one upload category; no "india" tag.
   Review on 2026-11-26 on stayed to watch (engaged ÷ views).
-- [ ] Owner: dashboard settings for the fixed run (2 Shorts a day and two upload times, `longPerWeek` 0,
-  dashboard and monthly agents off)
-- [ ] Owner: upload the new banner (`assets/channel/banner-global-v2.png`)
-- [ ] 2026-11-26: review the fixed run on stayed to watch, then decide what the variant system resumes with
+- [x] Settings for the fixed run (2026-11-11): 2 Shorts a day at 12:37 and 19:07 IST, `longPerWeek` 0, the
+  dashboard, monthly, scout and studio agents off, `maxActiveExperiments` 0
+- [x] Routines (2026-11-11): research Tue and Fri 22:17 IST, auditor Sundays 22:02 IST, improver nightly
+  (fixes only, `agents/policy.md`); dashboard, scout and studio stay paused
+- [x] New banner uploaded (`assets/channel/banner-global-v2.png`)
+- [ ] 2026-11-26: review the fixed run on stayed to watch (a one-time routine writes
+  `improvement/analysis/fixed-run-2026-11.md` that morning), then decide what the variant system resumes with
