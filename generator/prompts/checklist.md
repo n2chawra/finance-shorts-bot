@@ -27,6 +27,12 @@ fix any beat near a limit as well.
 - An event's `word` is spelled exactly as in `say`. A figure is spoken as words, so put events on
   the words around it, never on the figure.
 - Ids may be anything (`y1`, `c6-worth`): they are never shown.
+- **Say every figure the picture shows** (`spoken_figure_problems`, owner 2026-11-11 on the Ohtani
+  Short: "animation were showing numbers difference but voice speaking was very little to understand"):
+  after the hook, each `{figure}` in a beat's params is in that beat's `say` or an earlier one, with
+  what it means ("the deal is {fact1}, but he takes {fact4} a year now; the rest waits ten years").
+  No riddles in place of numbers ("far more", "a side cheque"): the viewer must follow the story
+  with the sound on and the screen off. Short on words? Cut a beat, not the explanation.
 - **Millions and billions read as words** (owner, 2026-11-05): "$10 billion", never
   "$10,000,000,000". Give money inputs round values (`10000000000` shows as "$10 billion", `1500000` as
   "$1.5 million"); a title or description showing 7+ digits fails the number check.
@@ -96,6 +102,13 @@ fix any beat near a limit as well.
 - **Board actions change the picture** (`mark_problems`, owner 2026-11-03: "same stuff coming"): at
   most 65% of a board video's actions may be marks (glow, stamp, bubble, cross, tick, strike, shake,
   label, tag, chip). Give clauses a change: enter, swap, flow, multiply, grow, or a panel.
+- **No glow; one big hero** (`stage_problems`, owner 2026-11-11 on the Ronaldo Short: "the glowing thing
+  is very poor… everything is in the middle, make screen bigger"): no `glow` action anywhere; a Short's
+  build beat holds at most 3 things, the one the line is about at `size` 0.28-0.40, and a `grow` is
+  1.3x or more. Don't open a beat on a mark at `sec: 0`; open it on a change.
+- **Edge cuts from the follow camera** (26 Shorts in two weeks, 2026-11-11): a pushed-in shot now keeps
+  170 px around a thing that carries a tag or label; still, put the beat's things between x 0.2 and 0.8
+  (a cheque at x 0.85 is cut whatever the camera does).
 - **The source line shows once** (owner, 2026-11-03): on the first board beat that says a fact; own
   code uses `showsSource(p)`.
 - **The source line fits with its month** (2026-11-09: v-20261103-01, -04-03, -05-02, -09-01, -09-03

@@ -38,6 +38,12 @@ REF_MIN, REF_VIEWS = 3, 100_000       # at least three hits on the topic, each 1
 YT_ID = r"[A-Za-z0-9_-]{11}"
 STOP = set("the a an of to and or in on at for is are you your how why what which one ever every it its this that".split())
 # at 168x94: luminance spread and edge share of the 2026 hits (measured: see test_thumbs) with margin
+# Long thumbnails that get clicked (research long-thumb-one-subject-matches-title, 2026-11-12; owner, 2026-11-11:
+# L-20261111-01 got 4 clicks from 100 impressions, its words said "Million? Cute." under a $1 billion title,
+# ten small things in the picture and a calm smirk): a face that reacts, one subject, words that match the title.
+CALM = {"neutral", "happy", "smirk", "thinking", "proud"}     # faces that don't stop a scroll
+THINGS_MAX = 3
+SCALES = ("thousand", "million", "billion", "trillion")
 PHONE = {"contrast_min": 45.0, "edges": (0.15, 0.5)}   # the hits: contrast 53-88, edges 0.23-0.46
 REFS = ROOT / "improvement" / "research" / "thumbnails.json"
 
@@ -66,6 +72,18 @@ def spec_problems(th: dict, title: str, story: str | None = None) -> list[str]:
     shared = ({w for w in words if w not in STOP} & {w.rstrip("s") for w in _words(title)} | {w for w in words if w not in STOP} & set(_words(title)))
     if len(shared) > 1:
         out.append(f"the thumbnail repeats the title ({', '.join(sorted(shared))}): its words add to the title (the emotion or the stakes)")
+    if th.get("expression") in CALM:
+        out.append(f"the face is calm ({th['expression']!r}): a thumbnail face reacts, shock, worried, angry, confused or laugh "
+                   f"(the hits' faces show a strong emotion and take a third of the height or more)")
+    things = th.get("things")
+    if isinstance(things, list) and not 1 <= len(things) <= THINGS_MAX:
+        out.append(f"{len(things)} things in the picture (`things`): one subject filling half the frame, {THINGS_MAX} things at most "
+                   f"besides the face and the words, so it reads at 168 px wide")
+    t_scales = {w for w in SCALES if re.search(rf"\b{w}s?\b", title, re.I)}
+    w_scales = {w for w in SCALES if re.search(rf"\b{w}s?\b", str(th.get("words", "")), re.I)}
+    if t_scales and w_scales - t_scales:
+        out.append(f"the thumbnail says {', '.join(sorted(w_scales - t_scales))} but the title says {', '.join(sorted(t_scales))}: "
+                   f"the two must tell one story (the title's figure, or no scale word at all)")
     return out
 
 
