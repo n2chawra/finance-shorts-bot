@@ -1,0 +1,41 @@
+{
+  "agent": "studio",
+  "day": "2026-11-11",
+  "startedAt": "2026-11-11T02:36:17Z",
+  "finishedAt": "2026-11-11T03:46:03Z",
+  "summary": "Made and shipped this week's long video, L-20261111-01 'What does $1 billion actually look like?' (6:20, 63 beats, 1,077 words), the full story of our 1,156-view Short 'What $1 billion looks like in $100 bills'. It is queued for Saturday 20:07 IST.",
+  "decision": "acted",
+  "why": "state --format long said video (0 of 1 long videos this week). Scout's top usable topic was 2026-10-28-once-you-understand-a-billion (priority high, from_short v-20261027-01, demand: jack pockets 'Could You Spend $1 Trillion?' 12.3M). Number check, lint, the stills and the full render all ended ok. Fact review passed on its 2nd look and QA review on its 4th; QA's 3rd and 4th looks went past the two-round limit in agents/studio.md, to clear small text-overlap fixes rather than fail a finished video.",
+  "findings": [
+    {
+      "title": "Fact review round 1 fixes",
+      "detail": "Sharma no longer claims to be a banker. The payoff now says 839 rooms of notes without the 'district to the horizon' overstatement. Forbes dates are said as 'in March this year' because the number check forbids digits in speech; the source line shows 'Mar 2026'."
+    },
+    {
+      "title": "QA fixes",
+      "detail": "A figure shown twice (HUD counter, tag and slam) on several beats. Shares were drawn as a car (now a share certificate and a bond). Cast and things were cut at the edges. Board cards with side panels left the frame empty, so they became rooms with a presenter and a rotating stage."
+    },
+    {
+      "title": "Handed on",
+      "detail": "Three items added to improvement/longform/backlog.json: the level-chip row sits under the captions on every long video (improver, high); the number check reads a Short's URL id as a typed figure, so the description can't link the Short (auditor, high); long-video panel cards hide all their things (improver)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "L-20261111-01 shipped",
+      "detail": "Manifest on main (280004a); mp4 on branch media/L-20261111-01 for the release workflow.",
+      "branch": "main"
+    }
+  ],
+  "nextCheck": "2026-11-18",
+  "links": [
+    {
+      "label": "Script",
+      "url": "videos/L-20261111-01/script.json"
+    },
+    {
+      "label": "Backlog",
+      "url": "improvement/longform/backlog.json"
+    }
+  ]
+}

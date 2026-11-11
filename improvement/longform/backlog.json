@@ -1141,6 +1141,39 @@
       "found": "2026-11-09",
       "status": "done",
       "reason": "The render gate already fails it under today's 300-400 s setting (the 4 Nov render predated the setting); the message now says how many words to cut and a test pins the long case (27f7504)."
+    },
+    {
+      "id": "2026-11-11-hud-chips-under-captions",
+      "kind": "bug",
+      "title": "The long-video level chips sit behind the caption box and speaker name",
+      "detail": "QA on L-20261111-01 (round 1): the long_story level tracker row ('1 Spend it ... 6 The richest') is drawn right where the board captions and the speaker's name sit, so captions cover chip text in almost every still. It comes from the shared HUD (remotion/src/studio/hud.tsx) and the caption box, not from any script. Improver: move the tracker to the top edge on long videos, or lift the caption box above it.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-11",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-11-short-link-number-check",
+      "kind": "bug",
+      "title": "The number check reads a Short's YouTube id as a typed figure, so a long video's description can't link its Short",
+      "detail": "agents/studio.md asks for the description's first line 'The 30-second version: https://youtube.com/shorts/<id>'. generator/numbers.py check_claims runs _NUMBER over the whole description, so '30' and the '7t' inside 'ssxStI7t_5w' fail as untraced figures. L-20261111-01 shipped naming the Short by title instead. Auditor: strip URLs (and the fixed phrase '30-second version') before the number scan, with a test.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-11",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-11-panel-card-empty",
+      "kind": "note",
+      "title": "A long-video card with a side panel hides all its things once the panel opens",
+      "detail": "board.tsx: yieldAll = card && !keepThings and sharesCard() is false for every landscape card, so a card beat with bars/doc/ring/grid/person shows flat colour on the left half; L-20261111-01's first stills had 19 of 74 'mostly empty'. Studio worked around it by giving those beats a presenting cast member (cast spot ~0.38: the stage slides left 20% when a panel opens) and rotating their stage. Improver: keep a long card's things on the left half beside the panel.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-11",
+      "status": "open"
     }
   ]
 }
