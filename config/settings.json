@@ -1,7 +1,7 @@
 {
-  "backlog": 3,
+  "backlog": 2,
   "backlogByFormat": {
-    "short": 2,
+    "short": 1,
     "long": 1
   },
   "ingestedAt": "2026-11-11T03:45:04.042253+00:00",
@@ -18,28 +18,20 @@
   "shortEveryDays": 1,
   "queue": [
     {
-      "id": "v-20261111-03",
+      "id": "v-20261111-02",
       "format": "short",
       "position": 1,
-      "locked": false,
+      "locked": true,
       "picked": false,
-      "editorRank": 2
+      "editorRank": 3
     },
     {
       "id": "L-20261111-01",
       "format": "long",
       "position": 1,
-      "locked": false,
+      "locked": true,
       "picked": false,
       "editorRank": null
-    },
-    {
-      "id": "v-20261111-02",
-      "format": "short",
-      "position": 2,
-      "locked": false,
-      "picked": false,
-      "editorRank": 3
     }
   ],
   "disclaimer": "Illustrative only. Not financial advice.",

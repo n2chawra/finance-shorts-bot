@@ -1,7 +1,83 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
+  "open": 4,
   "notes": [
+    {
+      "id": "cmwbpc4oy0001i8090mqs0aqk",
+      "kind": "improve",
+      "area": "thumbnail",
+      "text": "Thumbnail is very basic . It's good according to our channel. But not enough to actually make people click. My last long video has 100 thumbnail impression but only 4 clicks. Means thumbnail is the biggest problem.\nFix it and change it for this video also as it's still time before it goes live.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-11T05:52:09.155Z",
+      "video": {
+        "id": "L-20261111-01",
+        "title": "What does $1 billion actually look like?",
+        "format": "long",
+        "status": "queued",
+        "story": "once_you_understand",
+        "shape": "levels",
+        "hookStyle": "question",
+        "hook": "This is {note_amount}. Now picture {room_final_long}: one warehouse room packed with {notes_years} of these notes. Sounds huge? That room is the smallest way to see a billion."
+      }
+    },
+    {
+      "id": "cmwbp7vzy0003js09xdhc5ecc",
+      "kind": "stale",
+      "area": null,
+      "text": "Very poor script for a good topic. I don't want to watch it after 5 sec. Very poor script and way of explanation",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-11T05:48:51.052Z",
+      "video": {
+        "id": "v-20261111-03",
+        "title": "Why a baseball superstar chose a tiny salary ⚾",
+        "format": "short",
+        "status": "rejected",
+        "story": "secret_of_rich",
+        "shape": "hidden-payer",
+        "hookStyle": "secret",
+        "hook": "You think Ohtani gets his pay now? Almost none."
+      }
+    },
+    {
+      "id": "cmwbp37000001js09yzrn0lg3",
+      "kind": "improve",
+      "area": "script",
+      "text": "Script was very poor could be explained much better. Could not understand things properly animation were showing numbers difference but voice speaking was very little to understand the script. Very poor. Are u lowering script quality because of length issue????",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-11T05:45:12.240Z",
+      "video": {
+        "id": "v-20261111-03",
+        "title": "Why a baseball superstar chose a tiny salary ⚾",
+        "format": "short",
+        "status": "rejected",
+        "story": "secret_of_rich",
+        "shape": "hidden-payer",
+        "hookStyle": "secret",
+        "hook": "You think Ohtani gets his pay now? Almost none."
+      }
+    },
+    {
+      "id": "cmwboyhgz0001jr09j21p10p7",
+      "kind": "improve",
+      "area": "animation",
+      "text": "The glowing thing is very poor. Don't do that. Plus some things can be animated better like pile growth and he plays or not. Animation on these were very poor. I also feel like everything is in the middle kinda . Make screen bigger and animate properly so that it feels good not conjugated.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-11T05:41:32.532Z",
+      "video": {
+        "id": "v-20261111-01",
+        "title": "You work all year for this. He does it before breakfast ⚽",
+        "format": "short",
+        "status": "scheduled",
+        "story": "money_scale",
+        "shape": "reveal",
+        "hookStyle": "myth",
+        "hook": "You think a salary's a fortune? Not to Ronaldo."
+      }
+    },
     {
       "id": "cmwapfs5l0001ii095jx1923d",
       "kind": "general",
