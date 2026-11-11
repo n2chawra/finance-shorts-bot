@@ -1,0 +1,427 @@
+{
+  "id": "v-20261112-02",
+  "createdAt": "2026-11-11T22:15:31.172674+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Jeff Bezos takes a five-figure salary from Amazon while Amazon pays far more for his security",
+    "category": "wealth",
+    "reach": "global",
+    "feed_id": "2026-11-12-bezos-takes-an-81840-salary"
+  },
+  "title": "Jeff Bezos takes $81,840 from Amazon. Guarding him costs $1.6M",
+  "description": "Why would Jeff Bezos take such a small paycheck from Amazon?\nJeff Bezos's Amazon salary is $81,840; Amazon paid $1.6M for his security. Here's where his real money is.\n#JeffBezos\nSpeak to a licensed financial adviser in your country before making financial decisions.\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#JeffBezos",
+    "#Amazon",
+    "#Money",
+    "#Billionaire"
+  ],
+  "hookStyle": "question",
+  "cta": "Paycheck or shares: which would you take? Comment",
+  "seed": 38291,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "A",
+    "bpm": 92,
+    "look": {
+      "stage": "city",
+      "header": "sticky",
+      "holder": "box",
+      "entrance": "stamp"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "28-35",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Jeff Bezos takes $81,840 a year from Amazon.",
+        "start": 0.3,
+        "seconds": 3.58,
+        "window": 4.0,
+        "fill": 0.895
+      },
+      {
+        "scene": "promise",
+        "text": "Amazon spends $1.6M on his security alone. So why is his pay so small?",
+        "start": 4.3,
+        "seconds": 4.75,
+        "window": 5.2,
+        "fill": 0.913
+      },
+      {
+        "scene": "jassy",
+        "text": "Amazon's boss, Andy Jassy, gets a base salary of $365,000. Bezos's pay hasn't changed in decades.",
+        "start": 9.5,
+        "seconds": 6.82,
+        "window": 7.47,
+        "fill": 0.913
+      },
+      {
+        "scene": "stake",
+        "text": "So where's his real money? He owns about 8% of Amazon.",
+        "start": 16.97,
+        "seconds": 3.01,
+        "window": 3.43,
+        "fill": 0.878
+      },
+      {
+        "scene": "worth",
+        "text": "In April, that slice was worth about $225B.",
+        "start": 20.4,
+        "seconds": 3.5,
+        "window": 4.0,
+        "fill": 0.875
+      },
+      {
+        "scene": "turn",
+        "text": "Earning that on his salary would take 2.7M years.",
+        "start": 24.4,
+        "seconds": 2.7,
+        "window": 3.2,
+        "fill": 0.844
+      },
+      {
+        "scene": "payoff",
+        "text": "So Amazon spends 19.6× his salary just to guard him. Paycheck or shares: which would you take?",
+        "start": 27.6,
+        "seconds": 5.72,
+        "window": 6.13,
+        "fill": 0.933
+      }
+    ]
+  },
+  "durationSec": 34,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.0,
+    "lufs": -14.6,
+    "music_under_voice_db": 23.0
+  },
+  "experiments": {
+    "october-voice-pace": "on"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "24 figures computed from inputs; 24 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite: $1.6M now told as security only (promise 'on his security alone', payoff 'just to guard him', description, fact 2 label), matching proxy SCT note (3); jet/travel gone from drawn code. Confirmed: salary $81,840, Jassy $365,000, no stock comp (2026 proxy); unchanged since 1998, ~8% stake ~$225B in April (Fortune). Notes: stale 'travel/jet' comments remain in Hook.tsx/Payoff.tsx/props.tsx (not on screen); proxy shows 8.8% ownership, 'about 8%' follows Fortune."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3, stills every 1.5 s: Bezos bobblehead cut cleanly and named with $81,840 at 0 s; $1.6M tag clear at 6 s; hourglass clear of the tag at 16.5 s; figures 8%, $225B (sourced), 2.7M years, 19.6x readable on mute; no overlaps or cut-offs; settled 2.5 s thumbnail; disclaimer at the end; layout empty, 34 s, -1/-16 dB."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:59:13.149271+00:00",
+      "finishedAt": "2026-11-11T21:59:13.149271+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-11T21:59:40.435510+00:00",
+      "finishedAt": "2026-11-11T21:59:40.435510+00:00",
+      "notes": [
+        "beat 'jassy'.say contains a typed number; use a placeholder: \"Amazon's boss, Andy Jassy, gets a {fact5} base salary. Bezos's pay hasn't changed since 1998.\"",
+        "the asker asks 1 questions; a question-chain has 6+, each sharper than the last",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:59:55.684497+00:00",
+      "finishedAt": "2026-11-11T21:59:55.684497+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-11T21:59:56.501232+00:00",
+      "finishedAt": "2026-11-11T21:59:56.501232+00:00",
+      "notes": [
+        "24 figures computed from inputs; 24 cross-checked against closed-form formulas.",
+        "warning: beat 'hook' runs 7.9 s with 3.9 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:00:02.253539+00:00",
+      "finishedAt": "2026-11-11T22:00:02.253539+00:00",
+      "notes": [
+        "24 figures computed from inputs; 24 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:00:30.199439+00:00",
+      "finishedAt": "2026-11-11T22:00:30.199439+00:00",
+      "notes": [
+        "24 figures computed from inputs; 24 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-11T22:00:49.437411+00:00",
+      "finishedAt": "2026-11-11T22:01:22.424436+00:00",
+      "notes": [
+        "2 of 8 stills are mostly empty background (at 10 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: 35 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 7 props of its own (armoredcar, hourglass, jet, nameplate, paycheck, sharecert, stakepie); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-11T22:01:31.991729+00:00",
+      "finishedAt": "2026-11-11T22:01:31.991729+00:00",
+      "notes": [
+        "Fact 2 / beats promise + payoff, description, payoff ratioLabel: the $1.6M is SECURITY only, not 'security and travel'. Amazon 2026 proxy, 2025 Summary Compensation Table note (3): All Other Compensation $1,600,000 = 'approximate aggregate incremental cost to Amazon of security arrangements for Mr. Bezos in addition to security arrangements provided at business facilities and for business travel'. Fortune/TechRadar's 'security and business travel' misreads it. Fix: say 'on his security' (promise, payoff, description 'paid $1.6M for his security'), drop the jet/'Travel' prop and 'guards and jets' label; the title 'Guarding him costs $1.6M' is already right.",
+        "Confirmed otherwise: salary $81,840 (proxy SCT 2023-2025; Fortune body's $81,400 is a typo, verify item resolved), Jassy base $365,000 (proxy), never any stock-based compensation and no cash above current salary (proxy), unchanged since 1998 (Fortune) so 'hasn't changed in decades' holds, ~8% stake worth ~$225B in April (Fortune; line says 'In April'). Suggestion: the proxy's ownership table shows 8.8%; 'about 8%' follows Fortune and is acceptable but 'nearly 9%' would be more exact if paired with a matching source."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:01:54.887625+00:00",
+      "finishedAt": "2026-11-11T22:02:20.649265+00:00",
+      "notes": [
+        "35 s, ember/cinematic (preview only)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'promise': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'jassy': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'stake': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: only 7 props of its own (armoredcar, hourglass, jet, nameplate, paycheck, sharecert, stakepie); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:02:36.257196+00:00",
+      "finishedAt": "2026-11-11T22:02:36.257196+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:02:37.069721+00:00",
+      "finishedAt": "2026-11-11T22:02:37.069721+00:00",
+      "notes": [
+        "24 figures computed from inputs; 24 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:03:08.714960+00:00",
+      "finishedAt": "2026-11-11T22:03:08.714960+00:00",
+      "notes": [
+        "Re-review after rewrite: $1.6M now told as security only (promise 'on his security alone', payoff 'just to guard him', description, fact 2 label), matching proxy SCT note (3); jet/travel gone from drawn code. Confirmed: salary $81,840, Jassy $365,000, no stock comp (2026 proxy); unchanged since 1998, ~8% stake ~$225B in April (Fortune). Notes: stale 'travel/jet' comments remain in Hook.tsx/Payoff.tsx/props.tsx (not on screen); proxy shows 8.8% ownership, 'about 8%' follows Fortune."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-11T22:02:55.324092+00:00",
+      "finishedAt": "2026-11-11T22:03:24.833297+00:00",
+      "notes": [
+        "2 of 8 stills are mostly empty background (at 10 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'promise': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'jassy': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'stake': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: only 7 props of its own (armoredcar, hourglass, nameplate, parcel, paycheck, sharecert, stakepie); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:03:56.363563+00:00",
+      "finishedAt": "2026-11-11T22:04:23.597447+00:00",
+      "notes": [
+        "34 s, ember/cinematic (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'promise': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'jassy': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'stake': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: only 7 props of its own (armoredcar, hourglass, nameplate, parcel, paycheck, sharecert, stakepie); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-11T22:05:20.887386+00:00",
+      "finishedAt": "2026-11-11T22:05:20.887386+00:00",
+      "notes": [
+        "[script] Thumbnail (thumbnail.sec 4.5) is mid-whip transition: ghosted, blurred '$81,840' and 'A year from Amazon' behind the title, the paycheck cut off at the left edge and the armoured car cut off at the right; the cover has no figure and no Bezos. Take it from a settled frame, e.g. hook at ~2.5 s, or the 30 s scale.",
+        "[script] 25.0s (turn): the '$225B' tag sits on top of the caption box (they touch and overlap), the hourglass is hidden behind the stake pie and the paytower stack lies under it; while '2.7M years' is spoken, the figure is only in the caption, nothing on screen shows it (fails on mute). Move the hourglass/paytower apart from the Turn pie and keep the tag above the caption zone.",
+        "[script] 10.0s and 15.0s (jassy): Andy Jassy's nameplate is almost entirely hidden behind Bezos's enlarged paycheck (two props overlap), and the 'Andy Jassy' / 'Bezos's pay' labels float high in the sky far from their props, so on mute it is unclear which thing is whose; the paycheck shows no figure at 15 s. Space the props (nameplate x lower, paycheck smaller or further right) so both are visible.",
+        "[script] 20.0s (stake): the '8%' tag and 'His slice' label sit on the share certificate perched on top of the pie, not on the yellow slice, and the 'His slice' text overlaps the certificate's edge; 'Paycheck' label floats far above its small paycheck. Put the tag on the pie and the certificate beside it.",
+        "[script] 0.0s (hook): who and how much are readable (header 'Jeff Bezos' salary $81,840 a year from Amazon'), but the real subject is not shown: the picture is an Amazon parcel, no Bezos. Fetch a Commons photo and use 'who': 'photo:bezos' (only ronaldo is in remotion/public/real/).",
+        "[scene] hook beat: the script's object (a phone titled 'Bezos' salary' showing {sal_total}, spot center) is not drawn; the hook scene renders an Amazon parcel from 'label' instead, so params.objects is ignored."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-11T22:07:52.807851+00:00",
+      "finishedAt": "2026-11-11T22:08:18.203565+00:00",
+      "notes": [
+        "text '$81,840' at 14.4 s is 24 px, below the 44 px minimum",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'promise': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'jassy': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'stake': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: only 6 props of its own (armoredcar, hourglass, nameplate, parcel, paycheck, stakepie); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:08:36.827371+00:00",
+      "finishedAt": "2026-11-11T22:08:58.178405+00:00",
+      "notes": [
+        "34 s, ember/cinematic (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'promise': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'jassy': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'stake': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: only 6 props of its own (armoredcar, hourglass, nameplate, parcel, paycheck, stakepie); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:09:19.863503+00:00",
+      "finishedAt": "2026-11-11T22:09:44.465383+00:00",
+      "notes": [
+        "34 s, ember/cinematic (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'promise': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'jassy': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'stake': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: jassy: no thing is big (largest size 0.24, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+        "note: only 6 props of its own (armoredcar, hourglass, nameplate, parcel, paycheck, stakepie); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-11T22:11:22.483467+00:00",
+      "finishedAt": "2026-11-11T22:11:22.483467+00:00",
+      "notes": [
+        "[script] Bezos photo cut-out (photo:bezos, 0-3 s and the thumbnail): leftover background at the lower left of the head, a black microphone and a dark patch of the original photo inside the sticker edge, very visible on the cover. Re-cut with python -m generator.images cut bezos --face ... so only the head remains.",
+        "[script] 6.0s (promise beat, extra stills at 1.5 s spacing): the '$1.6M' tag stamps in huge over the armoured car and the 'Security' label runs straight through it (text on text, '$1 6M' unreadable for about a second). Drop the item label 'Security' or move the tag's label off the tag's landing spot; [scene] note: the build scene's stamp entrance draws the tag over its own item label.",
+        "[script] 16.5s (jassy beat): the hourglass ('since', x 0.7 y 0.3) drops in behind the 'Bezos's pay $81,840' tag, so the tag covers half of it; put the hourglass beside the paycheck (e.g. x 0.9 or on the ground) instead."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:12:12.841726+00:00",
+      "finishedAt": "2026-11-11T22:12:37.380956+00:00",
+      "notes": [
+        "34 s, ember/cinematic (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'promise': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'jassy': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'stake': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: jassy: no thing is big (largest size 0.24, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+        "note: only 6 props of its own (armoredcar, hourglass, nameplate, parcel, paycheck, stakepie); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:13:09.066356+00:00",
+      "finishedAt": "2026-11-11T22:13:09.066356+00:00",
+      "notes": [
+        "Round 3, stills every 1.5 s: Bezos bobblehead cut cleanly and named with $81,840 at 0 s; $1.6M tag clear at 6 s; hourglass clear of the tag at 16.5 s; figures 8%, $225B (sourced), 2.7M years, 19.6x readable on mute; no overlaps or cut-offs; settled 2.5 s thumbnail; disclaimer at the end; layout empty, 34 s, -1/-16 dB."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:13:19.832303+00:00",
+      "finishedAt": "2026-11-11T22:15:25.800356+00:00",
+      "notes": [
+        "34 s, ember/cinematic, peak -1.0 dB, mean -16.0 dB",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'promise': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'jassy': only 4 of 6 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'stake': only 3 of 5 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: jassy: no thing is big (largest size 0.24, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+        "note: only 6 props of its own (armoredcar, hourglass, nameplate, parcel, paycheck, stakepie); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-11T22:15:31.172760+00:00",
+      "finishedAt": "2026-11-11T22:15:31.172760+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261112-02",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261112-02"
+  }
+}

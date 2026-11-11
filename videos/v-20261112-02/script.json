@@ -1,0 +1,718 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38291,
+ "story": "billionaire_question",
+ "shape": "small-paycheck",
+ "currency": "USD",
+ "feed_id": "2026-11-12-bezos-takes-an-81840-salary",
+ "narrator": "am_michael",
+ "style": {
+  "palette": "ember",
+  "genre": "cinematic",
+  "key": "A",
+  "bpm": 92,
+  "look": {
+   "stage": "city",
+   "header": "sticky",
+   "holder": "box",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "question",
+ "cta": "Paycheck or shares: which would you take? Comment",
+ "facts": [
+  {
+   "label": "Jeff Bezos's 2025 salary from Amazon (Summary Compensation Table)",
+   "value": 81840,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Amazon",
+   "url": "https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2026-Proxy-Statement.pdf"
+  },
+  {
+   "label": "What Amazon paid for Bezos's security",
+   "value": 1.6,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Fortune",
+   "url": "https://fortune.com/2026/04/10/amazon-jeff-bezos-80k-salary-billionaires-ceo-executive-chairman/"
+  },
+  {
+   "label": "Bezos's stake in Amazon, about",
+   "value": 8,
+   "unit": "percent",
+   "as_of": "2026-04-10",
+   "source": "Fortune",
+   "url": "https://fortune.com/2026/04/10/amazon-jeff-bezos-80k-salary-billionaires-ceo-executive-chairman/"
+  },
+  {
+   "label": "Value of that Amazon stake, approximately",
+   "value": 225,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-04-10",
+   "source": "Fortune",
+   "url": "https://fortune.com/2026/04/10/amazon-jeff-bezos-80k-salary-billionaires-ceo-executive-chairman/"
+  },
+  {
+   "label": "Andy Jassy's 2025 base salary as Amazon CEO",
+   "value": 365000,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Fortune",
+   "url": "https://fortune.com/2026/04/10/amazon-jeff-bezos-80k-salary-billionaires-ceo-executive-chairman/"
+  }
+ ],
+ "maths": [
+  {
+   "name": "sal",
+   "kind": "share",
+   "total": 81840,
+   "parts": 1,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "sec",
+   "kind": "share",
+   "total": 1600000,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  },
+  {
+   "name": "cmp",
+   "kind": "compare",
+   "a": "sec.total",
+   "b": "sal.total"
+  },
+  {
+   "name": "stake",
+   "kind": "share",
+   "total": 225000000000,
+   "parts": 1,
+   "per_year": 81840,
+   "facts": {
+    "total": 4,
+    "per_year": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.5,
+  "words": "Bezos' *tiny* paycheck",
+  "figure": "{sal_total}",
+  "tag": "A year from Amazon",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Jeff Bezos takes {sal_total} a year from Amazon.",
+   "events": {
+    "bezos": {
+     "word": "Bezos"
+    },
+    "takes": {
+     "word": "takes"
+    },
+    "year": {
+     "word": "year"
+    },
+    "amazon": {
+     "word": "Amazon"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "bezos"
+    },
+    {
+     "kind": "kaching",
+     "at": "takes"
+    },
+    {
+     "kind": "boom",
+     "at": "amazon"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Jeff Bezos' salary",
+    "pay": "{sal_total}",
+    "payLabel": "A year from Amazon",
+    "cost": "",
+    "costLabel": "",
+    "label": "Amazon",
+    "set": "office",
+    "actors": [],
+    "objects": [
+     {
+      "kind": "phone",
+      "id": "pay",
+      "spot": "center",
+      "height": 0.4,
+      "title": "Bezos' salary",
+      "figure": "{sal_total}",
+      "at": "start"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "pay"
+     }
+    ]
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Amazon spends {sec_total} on his security alone. So why is his pay so small?",
+   "events": {
+    "spends": {
+     "word": "spends"
+    },
+    "security": {
+     "word": "security"
+    },
+    "alone": {
+     "word": "alone"
+    },
+    "why": {
+     "word": "why"
+    },
+    "pay": {
+     "word": "pay"
+    },
+    "small": {
+     "word": "small"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "spends"
+    },
+    {
+     "kind": "whoosh",
+     "at": "security"
+    },
+    {
+     "kind": "kaching",
+     "at": "alone"
+    },
+    {
+     "kind": "fail",
+     "at": "small"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "gold"
+    },
+    "hud": {
+     "hide": true
+    },
+    "locked": true,
+    "items": [
+     {
+      "id": "security",
+      "prop": "armoredcar",
+      "x": 0.5,
+      "size": 0.32,
+      "hidden": true
+     },
+     {
+      "id": "pay",
+      "prop": "paycheck",
+      "x": 0.22,
+      "size": 0.14,
+      "label": "His pay",
+      "hidden": true
+     },
+     {
+      "id": "spends",
+      "prop": "parcel",
+      "x": 0.78,
+      "size": 0.16,
+      "label": "Amazon"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "pay"
+     },
+     {
+      "at": "spends",
+      "do": "enter",
+      "target": "security",
+      "how": "drop"
+     },
+     {
+      "at": "security",
+      "do": "tag",
+      "target": "security",
+      "text": "{sec_total}"
+     },
+     {
+      "at": "alone",
+      "do": "flow",
+      "target": "spends",
+      "to": "security",
+      "n": 6
+     },
+     {
+      "at": "pay",
+      "do": "shrink",
+      "target": "pay",
+      "scale": 0.7
+     }
+    ]
+   }
+  },
+  {
+   "id": "jassy",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Amazon's boss, Andy Jassy, gets a base salary of {fact5}. Bezos's pay hasn't changed in decades.",
+   "events": {
+    "boss": {
+     "word": "boss"
+    },
+    "jassy": {
+     "word": "Jassy"
+    },
+    "salary": {
+     "word": "salary"
+    },
+    "bezos": {
+     "word": "Bezos's"
+    },
+    "changed": {
+     "word": "changed"
+    },
+    "since": {
+     "word": "decades"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "jassy"
+    },
+    {
+     "kind": "kaching",
+     "at": "salary"
+    },
+    {
+     "kind": "tick",
+     "at": "changed"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "gold"
+    },
+    "hud": {
+     "hide": true
+    },
+    "locked": true,
+    "items": [
+     {
+      "id": "jassy",
+      "prop": "nameplate",
+      "x": 0.22,
+      "size": 0.22,
+      "label": "Andy Jassy",
+      "hidden": true
+     },
+     {
+      "id": "bezos",
+      "prop": "paycheck",
+      "x": 0.76,
+      "size": 0.24,
+      "label": "Bezos's pay",
+      "hidden": true
+     },
+     {
+      "id": "since",
+      "prop": "hourglass",
+      "x": 0.5,
+      "size": 0.12,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "bezos",
+      "how": "rise"
+     },
+     {
+      "at": "boss",
+      "do": "enter",
+      "target": "jassy",
+      "how": "rise"
+     },
+     {
+      "at": "salary",
+      "do": "tag",
+      "target": "jassy",
+      "text": "{fact5}"
+     },
+     {
+      "at": "changed",
+      "do": "tag",
+      "target": "bezos",
+      "text": "{sal_total}"
+     },
+     {
+      "at": "bezos",
+      "do": "grow",
+      "target": "bezos",
+      "scale": 1.3
+     },
+     {
+      "at": "since",
+      "do": "enter",
+      "target": "since",
+      "how": "drop"
+     }
+    ]
+   }
+  },
+  {
+   "id": "stake",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "So where's his real money? He owns about {fact3} of Amazon.",
+   "events": {
+    "where": {
+     "word": "where's"
+    },
+    "money": {
+     "word": "money"
+    },
+    "owns": {
+     "word": "owns"
+    },
+    "amazon": {
+     "word": "Amazon"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "where"
+    },
+    {
+     "kind": "fail",
+     "at": "money"
+    },
+    {
+     "kind": "riser",
+     "at": "owns"
+    },
+    {
+     "kind": "kaching",
+     "at": "amazon"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "dark"
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "paycheck",
+      "prop": "paycheck",
+      "x": 0.22,
+      "size": 0.16,
+      "label": "Paycheck",
+      "hidden": true
+     },
+     {
+      "id": "amazon",
+      "prop": "stakepie",
+      "x": 0.62,
+      "size": 0.34,
+      "label": "His slice",
+      "k": 0.08,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "paycheck"
+     },
+     {
+      "at": "money",
+      "do": "shrink",
+      "target": "paycheck",
+      "scale": 0.6
+     },
+     {
+      "at": "owns",
+      "do": "enter",
+      "target": "amazon",
+      "how": "rise"
+     },
+     {
+      "at": "amazon",
+      "do": "tag",
+      "target": "amazon",
+      "text": "{fact3}"
+     },
+     {
+      "at": "amazon",
+      "do": "grow",
+      "target": "amazon",
+      "scale": 1.3
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "amazon",
+      "size": "close",
+      "on": "amazon",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "worth",
+   "scene": "headline",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "In April, that slice was worth about {fact4}.",
+   "events": {
+    "april": {
+     "word": "April"
+    },
+    "slice": {
+     "word": "slice"
+    },
+    "worth": {
+     "word": "worth"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "april"
+    },
+    {
+     "kind": "boom",
+     "at": "worth"
+    }
+   ],
+   "params": {
+    "kicker": "FORTUNE, APRIL",
+    "title": "Bezos's Amazon stake",
+    "figure": "{fact4}",
+    "figureAt": "worth",
+    "label": "About this much"
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Earning that on his salary would take {stake_years} years.",
+   "events": {
+    "earning": {
+     "word": "Earning"
+    },
+    "salary": {
+     "word": "salary"
+    },
+    "take": {
+     "word": "take"
+    },
+    "years": {
+     "word": "years"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "earning"
+    },
+    {
+     "kind": "tick",
+     "at": "salary"
+    },
+    {
+     "kind": "riser",
+     "at": "take"
+    },
+    {
+     "kind": "boom",
+     "at": "years"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "On his salary",
+    "figure": "{stake_years}",
+    "unit": "Years",
+    "stake": "{fact4}",
+    "world": {
+     "kind": "night",
+     "tint": "purple"
+    },
+    "items": [
+     {
+      "id": "salary",
+      "prop": "paytower",
+      "x": 0.3,
+      "size": 0.3,
+      "tag": "{stake_years}"
+     },
+     {
+      "id": "take",
+      "prop": "hourglass",
+      "x": 0.7,
+      "size": 0.2
+     }
+    ],
+    "actions": [
+     {
+      "at": "take",
+      "do": "grow",
+      "target": "salary",
+      "scale": 1.4
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "So Amazon spends {cmp_ratio} his salary just to guard him. Paycheck or shares: which would you take?",
+   "events": {
+    "spends": {
+     "word": "spends"
+    },
+    "security": {
+     "word": "guard"
+    },
+    "which": {
+     "word": "which"
+    },
+    "take": {
+     "word": "take"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "spends"
+    },
+    {
+     "kind": "whoosh",
+     "at": "security"
+    },
+    {
+     "kind": "pop",
+     "at": "which"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "ratio": "{cmp_ratio}",
+    "ratioLabel": "His salary, spent guarding him",
+    "pay": "{sal_total}",
+    "cost": "{sec_total}",
+    "ask": "Paycheck or shares?",
+    "world": {
+     "kind": "office",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "spends",
+      "prop": "armoredcar",
+      "x": 0.65,
+      "size": 0.28,
+      "tag": "{sec_total}"
+     },
+     {
+      "id": "which",
+      "prop": "paycheck",
+      "x": 0.28,
+      "size": 0.18,
+      "tag": "{sal_total}"
+     }
+    ],
+    "actions": [
+     {
+      "at": "spends",
+      "do": "grow",
+      "target": "spends",
+      "scale": 1.3
+     }
+    ]
+   }
+  }
+ ]
+}
