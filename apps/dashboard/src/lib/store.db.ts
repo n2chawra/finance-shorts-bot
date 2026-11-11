@@ -10,7 +10,7 @@ import { prisma } from "./prisma";
 import { canMarkStale, skipToEnd, uploadNow } from "./queue-actions";
 import { EditorNoteSchema, SettingsSchema, mostLoved } from "./schemas";
 import { runEndMs } from "./run-span";
-import { feedIndex, originOf } from "./origin";
+import { feedIndex, originOf, snapshotOf } from "./origin";
 import { fillFromLive, meanViewPct, totals, windowStart, type DayRow } from "./totals";
 import { manualState, relinked } from "./youtube-link";
 import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
@@ -57,7 +57,8 @@ function toVideo(v: VideoRow, feeds?: Map<string, Record<string, unknown>>): Vid
     pickedAt: v.pickedAt?.toISOString() ?? null, pickReason: v.pickReason, orderLocked: v.orderLocked,
     upload: v.upload && { youtubeId: v.upload.youtubeId, publishAt: v.upload.publishAt.toISOString(), state: v.upload.state, error: v.upload.error, attempts: v.upload.attempts },
     totals: totals(v.upload?.stats ?? [], v.upload),
-    origin: feeds ? originOf(feedId, feedId ? feeds.get(feedId) : undefined) : null,
+    // the live feed first, then the topic as it was at ingest (topics leave the feed within weeks)
+    origin: feeds ? originOf(feedId, feedId ? feeds.get(feedId) ?? snapshotOf(style.source) : undefined) : null,
   };
 }
 

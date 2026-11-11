@@ -26,6 +26,12 @@ export function siteOf(url: string): string {
   try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return url; }
 }
 
+/** The feed topic ingest saved with the video (Video.style.source.topic), for when it has left the feed. */
+export function snapshotOf(source: unknown): Row | undefined {
+  const t = source && typeof source === "object" ? (source as { topic?: unknown }).topic : undefined;
+  return t && typeof t === "object" ? (t as Row) : undefined;
+}
+
 /** The origin of a video made from feed topic `t`; null when the video has no feed topic. */
 export function originOf(feedId: string | null | undefined, t: Row | undefined): Origin | null {
   if (!feedId) return null;

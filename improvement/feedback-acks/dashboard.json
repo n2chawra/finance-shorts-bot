@@ -11,6 +11,12 @@
       "action": "handed",
       "to": "research",
       "note": "Where demand is measured from (channels with many views but few subscribers, not big channels) is how research picks topics, so it's research's to change; the dashboard now shows each video's reference video and its views so you can check the picks."
+    },
+    {
+      "id": "cmwbukoke0001jy09t4pfhr38",
+      "action": "fixed",
+      "note": "Every video shows why it was made, the proven video that inspired it with its YouTube views, and the pages research read: a line under each title in the Videos list and a 'Why this video' card on its page. The reason is now saved with the video at ingest, so it stays after the topic leaves the research feed.",
+      "commit": "eb39f8e"
     }
   ]
 }

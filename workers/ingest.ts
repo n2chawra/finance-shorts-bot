@@ -19,7 +19,7 @@ import { releaseAssetUrl, repoSlug } from "./lib/github.ts";
 import { Manifest, type ShippedManifest } from "./lib/manifest.ts";
 import { istDay } from "./lib/publishing.ts";
 import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotifications, importEditorRanking, importFeedbackAcks, snapshotDocs } from "./lib/agents-sync.ts";
-import { type FeedTopic, loadFeeds, sourceOf } from "./lib/origin.ts";
+import { type FeedTopic, loadFeeds, sourceWithTopic } from "./lib/origin.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 import { syncThumbs } from "./lib/cover.ts";
 
@@ -97,7 +97,7 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
     const topic = await tx.topic.create({ data: { title: m.topic.title, category: m.topic.category } });
     await tx.video.create({
       data: {
-        id: m.id, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {}, source: sourceOf(m, feeds), ...(m.thumbnails ? { thumbs: m.thumbnails } : {}) }, fileUrl,
+        id: m.id, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {}, source: sourceWithTopic(m, feeds) as unknown as Prisma.InputJsonObject, ...(m.thumbnails ? { thumbs: m.thumbnails } : {}) }, fileUrl,
         thumbnailUrl: `videos/${m.id}/thumbnail.png`, durationSec: m.durationSec, title: m.title, description: m.description,
         tags: m.hashtags.map((h) => h.replace(/^#/, "")), hookStyle: m.hookStyle, cta: m.cta,
         queuePosition, createdAt,
@@ -123,16 +123,18 @@ export async function queueSlot(tx: Prisma.TransactionClient, m: ShippedManifest
 /** Videos waiting to be posted that were ingested before their source was recorded get it from
  * their manifest, so the posting plan can say where every one came from; and their thumbnails follow the manifest. */
 async function backfillSources(prisma: PrismaClient, feeds: Map<string, FeedTopic>): Promise<void> {
-  for (const v of await prisma.video.findMany({ where: { status: { in: ["queued", "scheduled"] }, deletedAt: null }, select: { id: true, style: true } })) {
+  for (const v of await prisma.video.findMany({ where: { status: { in: ["queued", "scheduled", "published"] }, deletedAt: null }, select: { id: true, style: true, status: true } })) {
     const style = (v.style ?? {}) as Record<string, unknown>;
     const file = path.join(ROOT, "videos", v.id, "manifest.json");
     if (!existsSync(file)) continue;
     const m = Manifest.safeParse(readJson(file));
     if (!m.success || m.data.status !== "qa_passed") continue;
     // a redone set of thumbnails (and Studio's pick) reaches a video that is still waiting (owner, 2026-11-11)
-    const withThumbs = syncThumbs(style, m.data.thumbnails) ?? style;
-    if (style.source && withThumbs === style) continue;
-    await prisma.video.update({ where: { id: v.id }, data: { style: { ...withThumbs, source: style.source ?? sourceOf(m.data, feeds) } as Prisma.InputJsonValue } });
+    const withThumbs = v.status === "published" ? style : syncThumbs(style, m.data.thumbnails) ?? style;
+    const src = style.source as { feedId?: string | null; topic?: unknown } | undefined;
+    const snap = src?.feedId && !src.topic ? sourceWithTopic(m.data, feeds).topic ?? null : null;   // backfill the feed topic while it is still in the feed
+    if (style.source && withThumbs === style && !snap) continue;
+    await prisma.video.update({ where: { id: v.id }, data: { style: { ...withThumbs, source: style.source ? { ...(style.source as object), ...(snap ? { topic: snap } : {}) } : sourceWithTopic(m.data, feeds) } as Prisma.InputJsonValue } });
   }
 }
 
