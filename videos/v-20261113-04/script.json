@@ -1,0 +1,628 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 40733,
+ "story": "money_scale",
+ "shape": "the-zoom-in",
+ "currency": "USD",
+ "feed_id": "2026-11-11-taylor-swift-2-billion-from-one-tour",
+ "style": {
+  "palette": "plum",
+  "genre": "pop",
+  "key": "A",
+  "bpm": 112,
+  "look": {
+   "stage": "night",
+   "header": "neon",
+   "holder": "sign",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "shock_number",
+ "cta": "Would you have paid for a seat? Comment",
+ "facts": [
+  {
+   "label": "Eras Tour ticket sales, whole tour (Taylor Swift Touring)",
+   "value": 2077618725,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2024-12-08",
+   "source": "LA Times",
+   "url": "https://www.spokesman.com/stories/2024/dec/09/still-in-her-record-breaking-era-taylor-swift-tour"
+  },
+  {
+   "label": "Sold-out Eras Tour shows",
+   "value": 149,
+   "unit": "count",
+   "as_of": "2024-12-08",
+   "source": "LA Times",
+   "url": "https://www.spokesman.com/stories/2024/dec/09/still-in-her-record-breaking-era-taylor-swift-tour"
+  },
+  {
+   "label": "People who attended the Eras Tour",
+   "value": 10168008,
+   "unit": "count",
+   "as_of": "2024-12-08",
+   "source": "New York Times",
+   "url": "https://www.spokesman.com/stories/2024/dec/09/still-in-her-record-breaking-era-taylor-swift-tour"
+  },
+  {
+   "label": "Months the Eras Tour ran",
+   "value": 21,
+   "unit": "count",
+   "as_of": "2024-12-08",
+   "source": "LA Times",
+   "url": "https://www.spokesman.com/stories/2024/dec/09/still-in-her-record-breaking-era-taylor-swift-tour"
+  }
+ ],
+ "maths": [
+  {
+   "name": "show",
+   "kind": "share",
+   "total": 2077618725,
+   "parts": 149,
+   "facts": {
+    "total": 1,
+    "parts": 2
+   }
+  },
+  {
+   "name": "seat",
+   "kind": "share",
+   "total": 2077618725,
+   "parts": 10168008,
+   "facts": {
+    "total": 1,
+    "parts": 3
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.4,
+  "words": "{show_per_part} in *one* night",
+  "figure": "{show_per_part}",
+  "tag": "Eras Tour tickets",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "One night of Taylor Swift's Eras Tour brought in about {show_per_part}.",
+   "events": {
+    "night": {
+     "word": "night"
+    },
+    "swift": {
+     "word": "Swift's"
+    },
+    "eras": {
+     "word": "Eras"
+    },
+    "brought": {
+     "word": "brought"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "night"
+    },
+    {
+     "kind": "ding",
+     "at": "swift"
+    },
+    {
+     "kind": "kaching",
+     "at": "brought"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "One night of the Eras Tour",
+    "fig": "{show_per_part}",
+    "stamp": "One night",
+    "label": "Taylor Swift",
+    "set": "studio",
+    "actors": [],
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "night",
+      "spot": "center",
+      "amount": "@show.per_part",
+      "text": "{show_per_part}",
+      "label": "One night",
+      "at": "start",
+      "tone": "good"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "night"
+     }
+    ]
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "build",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "And she sold out every one of her {fact2} shows.",
+   "events": {
+    "sold": {
+     "word": "sold"
+    },
+    "every": {
+     "word": "every"
+    },
+    "shows": {
+     "word": "shows"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "sold"
+    },
+    {
+     "kind": "pop",
+     "at": "shows"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "night",
+     "tint": "purple",
+     "horizon": [
+      {
+       "prop": "bracelet",
+       "x": 0.1,
+       "size": 0.06
+      },
+      {
+       "prop": "tshirt",
+       "x": 0.9,
+       "size": 0.07
+      }
+     ]
+    },
+    "hud": {
+     "hide": true
+    },
+    "locked": true,
+    "items": [
+     {
+      "id": "shows",
+      "prop": "stadium",
+      "x": 0.5,
+      "size": 0.3,
+      "label": "Sold-out shows"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "shows",
+      "how": "rise"
+     },
+     {
+      "at": "sold",
+      "do": "grow",
+      "target": "shows",
+      "scale": 1.3
+     },
+     {
+      "at": "shows",
+      "do": "tag",
+      "target": "shows",
+      "text": "{fact2}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "crowd",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "In all, {seat_parts} seats were filled, in stadiums around the world.",
+   "events": {
+    "fans": {
+     "word": "seats"
+    },
+    "gates": {
+     "word": "filled"
+    },
+    "stadiums": {
+     "word": "stadiums"
+    },
+    "world": {
+     "word": "world"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fans"
+    },
+    {
+     "kind": "whoosh",
+     "at": "gates"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "night",
+     "tint": "purple",
+     "horizon": [
+      {
+       "prop": "stadium",
+       "x": 0.5,
+       "size": 0.12
+      },
+      {
+       "prop": "tourcal",
+       "x": 0.12,
+       "size": 0.06
+      }
+     ]
+    },
+    "hud": {
+     "hide": true
+    },
+    "locked": true,
+    "items": [
+     {
+      "id": "fans",
+      "prop": "crowd",
+      "x": 0.5,
+      "size": 0.34,
+      "label": "Seats filled"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "fans",
+      "how": "rise"
+     },
+     {
+      "at": "fans",
+      "do": "tag",
+      "target": "fans",
+      "text": "{seat_parts}"
+     },
+     {
+      "at": "gates",
+      "do": "grow",
+      "target": "fans",
+      "scale": 1.3
+     },
+     {
+      "at": "stadiums",
+      "do": "shake",
+      "target": "fans"
+     }
+    ]
+   }
+  },
+  {
+   "id": "seat",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Split the ticket money, and the average seat sold for about {seat_per_part}.",
+   "events": {
+    "split": {
+     "word": "Split"
+    },
+    "ticket": {
+     "word": "ticket"
+    },
+    "fan": {
+     "word": "average"
+    },
+    "seat": {
+     "word": "seat"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "split"
+    },
+    {
+     "kind": "pop",
+     "at": "ticket"
+    },
+    {
+     "kind": "kaching",
+     "at": "seat"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "studio",
+     "tint": "purple",
+     "horizon": [
+      {
+       "prop": "stadium",
+       "x": 0.5,
+       "size": 0.2
+      },
+      {
+       "prop": "guitar",
+       "x": 0.9,
+       "size": 0.08
+      },
+      {
+       "prop": "stage",
+       "x": 0.1,
+       "size": 0.07
+      }
+     ]
+    },
+    "hud": {
+     "hide": true
+    },
+    "locked": true,
+    "items": [
+     {
+      "id": "ticket",
+      "prop": "ticket",
+      "x": 0.52,
+      "size": 0.38,
+      "label": "Average seat"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "ticket",
+      "how": "drop"
+     },
+     {
+      "at": "split",
+      "do": "shake",
+      "target": "ticket"
+     },
+     {
+      "at": "fan",
+      "do": "grow",
+      "target": "ticket",
+      "scale": 1.3
+     },
+     {
+      "at": "seat",
+      "do": "tag",
+      "target": "ticket",
+      "text": "{seat_per_part}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "months",
+   "scene": "headline",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The tour ran for {fact4} months. So what did it all add up to?",
+   "events": {
+    "tour": {
+     "word": "tour"
+    },
+    "ran": {
+     "word": "ran"
+    },
+    "months": {
+     "word": "months"
+    },
+    "add": {
+     "word": "add"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "ran"
+    },
+    {
+     "kind": "pop",
+     "at": "months"
+    },
+    {
+     "kind": "riser",
+     "at": "add"
+    }
+   ],
+   "params": {
+    "kicker": "THE ERAS TOUR",
+    "title": "Months on the road",
+    "figure": "{fact4}",
+    "figureAt": "start",
+    "label": "From start to finish"
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "And that's only tickets. Not her pay, not one T-shirt, not one album.",
+   "events": {
+    "only": {
+     "word": "only"
+    },
+    "tickets": {
+     "word": "tickets"
+    },
+    "pay": {
+     "word": "pay"
+    },
+    "shirt": {
+     "word": "T-shirt"
+    },
+    "album": {
+     "word": "album"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "tickets"
+    },
+    {
+     "kind": "fail",
+     "at": "pay"
+    },
+    {
+     "kind": "fail",
+     "at": "shirt"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Tickets only",
+    "payLabel": "Her pay",
+    "shirtLabel": "Merch",
+    "world": {
+     "kind": "night",
+     "tint": "purple"
+    },
+    "items": [
+     {
+      "id": "tickets",
+      "prop": "tickettower",
+      "x": 0.3,
+      "size": 0.3
+     },
+     {
+      "id": "shirt",
+      "prop": "tshirt",
+      "x": 0.7,
+      "size": 0.28
+     }
+    ],
+    "actions": [
+     {
+      "at": "tickets",
+      "do": "grow",
+      "target": "tickets",
+      "scale": 1.3
+     },
+     {
+      "at": "shirt",
+      "do": "shake",
+      "target": "shirt"
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "The whole tour sold {show_total} of tickets. Would you have paid for a seat?",
+   "events": {
+    "whole": {
+     "word": "whole"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "tickets": {
+     "word": "tickets"
+    },
+    "seat": {
+     "word": "seat"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "whole"
+    },
+    {
+     "kind": "boom",
+     "at": "sold"
+    },
+    {
+     "kind": "ding",
+     "at": "seat"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "fig": "{show_total}",
+    "label": "Eras Tour tickets",
+    "ask": "Would you have paid?",
+    "world": {
+     "kind": "night",
+     "tint": "purple"
+    },
+    "items": [
+     {
+      "id": "sold",
+      "prop": "tickettower",
+      "x": 0.62,
+      "size": 0.34,
+      "tag": "{show_total}"
+     },
+     {
+      "id": "seat",
+      "prop": "ticket",
+      "x": 0.28,
+      "size": 0.24
+     }
+    ],
+    "actions": [
+     {
+      "at": "sold",
+      "do": "grow",
+      "target": "sold",
+      "scale": 1.3
+     },
+     {
+      "at": "seat",
+      "do": "shake",
+      "target": "seat"
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}

@@ -1,0 +1,290 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:25:30.559575+00:00",
+    "finishedAt": "2026-11-12T22:25:30.559575+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:26:42.835712+00:00",
+    "finishedAt": "2026-11-12T22:26:42.835712+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:26:43.710125+00:00",
+    "finishedAt": "2026-11-12T22:26:43.710125+00:00",
+    "notes": [
+      "description shows '2,077,618,725': a viewer reads millions and billions in words ('$10 billion', '$1.5M'); use a round input (Money shows it in words) or a short figure, or leave it out of the description",
+      "facts[0].source must be 'LA Times via The Spokesman-Review' as in the feed, or its start cut at a word or before '(' (e.g. 'LA Times via The Spokesman-Review')",
+      "facts[1].source must be 'LA Times via The Spokesman-Review' as in the feed, or its start cut at a word or before '(' (e.g. 'LA Times via The Spokesman-Review')",
+      "facts[2].source must be 'New York Times via The Spokesman-Review' as in the feed, or its start cut at a word or before '(' (e.g. 'New York Times via The Spokesman-Review')",
+      "facts[3].source must be 'LA Times via The Spokesman-Review' as in the feed, or its start cut at a word or before '(' (e.g. 'LA Times via The Spokesman-Review')"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:26:50.582392+00:00",
+    "finishedAt": "2026-11-12T22:26:50.582392+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:26:51.551674+00:00",
+    "finishedAt": "2026-11-12T22:26:51.551674+00:00",
+    "notes": [
+      "facts[2].source must be 'New York Times via The Spokesman-Review' as in the feed, or its start cut at a word or before '(' (e.g. 'New York Times via The Spokesman-Review')"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:26:57.186805+00:00",
+    "finishedAt": "2026-11-12T22:26:57.186805+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:28:06.203478+00:00",
+    "finishedAt": "2026-11-12T22:28:41.817075+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 5 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+      "the Short runs 26.5 s but its assigned length (arms.length) is 28-35 s: cut or add a beat",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:28:59.248563+00:00",
+    "finishedAt": "2026-11-12T22:28:59.248563+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:29:10.691329+00:00",
+    "finishedAt": "2026-11-12T22:29:10.691329+00:00",
+    "notes": [
+      "All 4 facts confirmed on the source page (spokesman.com, LA Times reprint): Taylor Swift Touring's final total $2,077,618,725 in tickets (via NYT; Pollstar's $2.2B estimate not used), 149 sold-out shows, 10,168,008 attendees, 21-month tour (Mar 2023-Dec 2024, final, not superseded). Verify list met: official total used; turn beat says it's tickets only, not her pay. Per-night and per-seat figures are averages hedged with 'about'. Description ends with the disclaimer. Notes: 10.2M is attendances, not unique fans; 'each fan paid about $204' is an average face value (resale prices were higher)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:29:13.115893+00:00",
+    "finishedAt": "2026-11-12T22:29:44.663907+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 5 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:29:58.071111+00:00",
+    "finishedAt": "2026-11-12T22:29:58.071111+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:30:12.594376+00:00",
+    "finishedAt": "2026-11-12T22:30:40.243219+00:00",
+    "notes": [
+      "2 of 7 stills are mostly empty background (at 5 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:31:02.834086+00:00",
+    "finishedAt": "2026-11-12T22:31:27.523752+00:00",
+    "notes": [
+      "28 s, sky/pop (preview only)",
+      "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:31:53.624508+00:00",
+    "finishedAt": "2026-11-12T22:32:22.090730+00:00",
+    "notes": [
+      "28 s, sky/pop (preview only)",
+      "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:32:38.167960+00:00",
+    "finishedAt": "2026-11-12T22:32:38.167960+00:00",
+    "notes": [
+      "Re-review of changed lines: crowd ('10.2M seats were filled, in stadiums around the world') matches 10,168,008 attendees (NYT via spokesman.com) and Guinness World Records (149 shows, 51 stadiums, five continents, $2,077,618,725); seat ('the average seat sold for about $204') is correctly framed as an average of gross ticket sales over attendance; turn ('only tickets. Not her pay, not one T-shirt, not one album') is accurate, since the total is ticket gross only. Earlier facts still confirmed and description disclaimer present. Note: the turn's on-screen labels are 'Her pay' and 'Merch', with no album label; this is a style point only."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:33:39.102122+00:00",
+    "finishedAt": "2026-11-12T22:33:39.102122+00:00",
+    "notes": [
+      "[script] 4.7-8.5 s, beat 'promise' (scene headline): a flat pale-blue card with '149' as plain text, no picture, the lower half empty, and a washed-out look that breaks from the night stadium around it. Clearly emptier than our reference Shorts (v-20261026-02, v-20261023-01, v-20261105-06). Show the 149 shows as a thing, e.g. a build beat with stadiums/tickets stamping out to 149, on the night set.",
+      "[script] 12.6-16.6 s, beat 'seat': 'Average fan' labels a friendship bracelet, so the label doesn't match the thing (lesson 6). The bracelet and ticket sit low with the top ~55% of the frame empty sky. Use one big ticket filling the frame with the $204 on it, or a fan actor holding it.",
+      "[script] 16.6-19.2 s, beat 'months': at 18.0 s 'Ticket money' floats over empty sky above just two tickets while the line says the money 'piled up', and the top half of the frame is empty. Start the tickettower taller or bring the camera in on it.",
+      "[scene] beat 'months', prop 'tourcal': the tour calendar is drawn as an egg/oval with a pink lid (18.0 s) and doesn't read as a calendar.",
+      "[script] thumbnail: the words 'ONE ERAS TOUR NIGHT' sit right on top of the $13.9M figure, which shows only as a blur behind them, so the thumbnail has no readable money figure. Pick a layout/sec where the figure is clear, or put the words elsewhere.",
+      "[scene] Hook.tsx beat 'hook' (0-3 s and thumbnail): an empty pink bar on the stadium behind Taylor Swift's shoulder looks like a leftover placeholder. Same at 19.5-22.5 s in the Turn: 'HER PAY' is a blank white card with a grey bar."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:34:07.587999+00:00",
+    "finishedAt": "2026-11-12T22:34:07.587999+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:34:08.589613+00:00",
+    "finishedAt": "2026-11-12T22:34:08.589613+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:34:22.403337+00:00",
+    "finishedAt": "2026-11-12T22:34:50.088687+00:00",
+    "notes": [
+      "28 s, plum/pop (preview only)",
+      "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: only 7 props of its own (crowd, guitar, stadium, stage, ticket, tickettower, tourcal); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:35:04.698241+00:00",
+    "finishedAt": "2026-11-12T22:35:04.698241+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:35:05.603827+00:00",
+    "finishedAt": "2026-11-12T22:35:30.239693+00:00",
+    "notes": [
+      "28 s, plum/pop (preview only)",
+      "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: only 7 props of its own (crowd, guitar, stadium, stage, ticket, tickettower, tourcal); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:36:29.539454+00:00",
+    "finishedAt": "2026-11-12T22:36:29.539454+00:00",
+    "notes": [
+      "[script] 4.7-8.5 s, beat 'promise': still a dark card with '149' and 'Sold-out shows' as text over an empty background (about 60% of the frame bare), shown exactly in the 5-6 s window where our Shorts lose 24-31% of viewers. Its line 'So what did it all add up to?' is a setup question, which repeats lesson 2 (the second sentence must add a bigger surprise, never a setup). build.py only needs a headline beat to exist, not here: move the headline (source line) later (e.g. just before the payoff), and make the second beat a shot/build beat with a bigger surprise shown as things (149 stadiums/ticket stacks).",
+      "[scene] scene 'headline' (remotion/src/scenes/data.tsx HeadlineScene): it can only draw a kicker, a title and a figure as text on a flat DataSet background, so every sourced-fact Short is forced into one templated, mostly empty card. It needs a picture or prop slot."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:36:51.123796+00:00",
+    "finishedAt": "2026-11-12T22:36:51.123796+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:37:05.063329+00:00",
+    "finishedAt": "2026-11-12T22:37:32.013163+00:00",
+    "notes": [
+      "the Short runs 27.0 s but its assigned length (arms.length) is 28-35 s: cut or add a beat",
+      "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+      "note: 27 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:37:37.950300+00:00",
+    "finishedAt": "2026-11-12T22:37:37.950300+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:37:51.848919+00:00",
+    "finishedAt": "2026-11-12T22:38:18.155886+00:00",
+    "notes": [
+      "28 s, plum/pop (preview only)",
+      "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+      "note: 28 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:38:36.938949+00:00",
+    "finishedAt": "2026-11-12T22:38:36.938949+00:00",
+    "notes": [
+      "Re-review of changed lines: promise ('she sold out every one of her 149 shows') matches the source's '149 sold-out shows' (NYT via spokesman.com; Guinness confirms 149 shows); months, now the headline beat ('The tour ran for 21 months') matches the source's '21-month outing' and Guinness's dates of 17 Mar 2023 to 8 Dec 2024. All other lines, facts and the description disclaimer were confirmed earlier and are unchanged. Style note: the promise line opens with 'And' straight after the hook."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:39:57.995200+00:00",
+    "finishedAt": "2026-11-12T22:39:57.995200+00:00",
+    "notes": [
+      "[script] 8.5-9.4 s, beat 'crowd': the huge yellow '10.2M' slam lands right on the item label 'Seats filled', so the white label sits across the middle of the figure ('10.2M' half hidden) for about a second, exactly as it is spoken. Drop the crowd item's label 'Seats filled' (the line and the 10.2M tag already say it) or move the item so its label clears the slam.",
+      "[scene] build scene, spoken-figure slam: it is drawn centred on the target item's label position without moving or hiding the label, so any build beat whose tagged item has a label gets text over text. Fade the label during the slam or offset the slam."
+    ]
+  }
+]
