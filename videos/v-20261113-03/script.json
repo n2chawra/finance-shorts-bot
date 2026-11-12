@@ -1,0 +1,719 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 73164,
+ "story": "how_they_make_money",
+ "shape": "the-receipt",
+ "currency": "USD",
+ "feed_id": "2026-11-13-netflix-spent-17-billion-kept-11",
+ "style": {
+  "palette": "ember",
+  "genre": "synthwave",
+  "key": "G",
+  "bpm": 104,
+  "look": {
+   "stage": "kitchen",
+   "header": "chalk",
+   "holder": "receipt",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Would you cancel or keep it? Comment",
+ "facts": [
+  {
+   "label": "Netflix revenue in 2025",
+   "value": 45.2,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix paid memberships crossed in Q4 2025 (more than)",
+   "value": 325,
+   "unit": "count_million",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix additions to content assets (cash on new shows and films) in 2025",
+   "value": 17.1,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix net income in 2025",
+   "value": 11.0,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix ad revenue in 2025 (over)",
+   "value": 1.5,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix operating margin in 2025",
+   "value": 29.5,
+   "unit": "percent",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  }
+ ],
+ "maths": [
+  {
+   "name": "rev",
+   "kind": "share",
+   "total": 45200000000,
+   "parts": 325000000,
+   "facts": {
+    "total": 1,
+    "parts": 2
+   }
+  },
+  {
+   "name": "con",
+   "kind": "share",
+   "total": 17100000000,
+   "parts": 325000000,
+   "facts": {
+    "total": 3,
+    "parts": 2
+   }
+  },
+  {
+   "name": "pro",
+   "kind": "share",
+   "total": 11000000000,
+   "parts": 325000000,
+   "facts": {
+    "total": 4,
+    "parts": 2
+   }
+  },
+  {
+   "name": "ads",
+   "kind": "share",
+   "total": 1500000000,
+   "parts": 1,
+   "facts": {
+    "total": 5
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.95,
+  "words": "Netflix *still* kept",
+  "figure": "{pro_total}",
+  "tag": "After new shows",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Netflix spent {con_total} on new shows and films in one year.",
+   "events": {
+    "netflix": {
+     "word": "Netflix"
+    },
+    "spent": {
+     "word": "spent"
+    },
+    "shows": {
+     "word": "shows"
+    },
+    "kept": {
+     "word": "films"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "netflix"
+    },
+    {
+     "kind": "kaching",
+     "at": "spent"
+    },
+    {
+     "kind": "whoosh",
+     "at": "shows"
+    },
+    {
+     "kind": "boom",
+     "at": "kept"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "Netflix spent",
+    "fig": "{con_total}",
+    "sub": "on new shows and films",
+    "kept": "{pro_total}",
+    "keptLabel": "Still kept",
+    "set": "studio",
+    "actors": [],
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "spend",
+      "spot": "center",
+      "amount": "@con.total",
+      "text": "{con_total}",
+      "label": "New shows",
+      "at": "start",
+      "tone": "bad"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "spend"
+     }
+    ]
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "headline",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "And it still kept {pro_total}.",
+   "events": {
+    "still": {
+     "word": "still"
+    },
+    "kept": {
+     "word": "kept"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "kept"
+    }
+   ],
+   "params": {
+    "kicker": "NETFLIX, ONE YEAR",
+    "title": "Kept after new shows",
+    "figure": "{pro_total}",
+    "figureAt": "start",
+    "label": "Profit for the year"
+   }
+  },
+  {
+   "id": "members",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "So who pays? More than {rev_parts} paid memberships. Rohan's is one of them.",
+   "events": {
+    "pays": {
+     "word": "pays"
+    },
+    "memberships": {
+     "word": "memberships"
+    },
+    "rohan": {
+     "word": "Rohan's"
+    },
+    "one": {
+     "word": "one"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "pays"
+    },
+    {
+     "kind": "pop",
+     "at": "memberships"
+    },
+    {
+     "kind": "ding",
+     "at": "rohan"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "red",
+     "horizon": [
+      {
+       "prop": "popcorn",
+       "x": 0.12,
+       "size": 0.07
+      },
+      {
+       "prop": "filmreel",
+       "x": 0.88,
+       "size": 0.07
+      }
+     ]
+    },
+    "hud": {
+     "hide": true
+    },
+    "actors": [
+     {
+      "who": "rohan",
+      "spot": 0.22,
+      "scale": 1.25,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "phone",
+        "expression": "happy"
+       },
+       {
+        "at": "rohan",
+        "pose": "thumbsUp",
+        "expression": "proud"
+       }
+      ]
+     }
+    ],
+    "items": [
+     {
+      "id": "memberships",
+      "prop": "subcard",
+      "x": 0.66,
+      "size": 0.3,
+      "label": "Memberships"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "memberships",
+      "how": "rise"
+     },
+     {
+      "at": "pays",
+      "do": "shake",
+      "target": "memberships"
+     },
+     {
+      "at": "memberships",
+      "do": "tag",
+      "target": "memberships",
+      "text": "{rev_parts}"
+     },
+     {
+      "at": "rohan",
+      "do": "grow",
+      "target": "memberships",
+      "scale": 1.3
+     }
+    ],
+    "locked": true
+   }
+  },
+  {
+   "id": "peryear",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Split the money that way, and each member pays about {rev_per_part} a year.",
+   "events": {
+    "split": {
+     "word": "Split"
+    },
+    "member": {
+     "word": "member"
+    },
+    "pays": {
+     "word": "pays"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "split"
+    },
+    {
+     "kind": "pop",
+     "at": "member"
+    },
+    {
+     "kind": "kaching",
+     "at": "year"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "red",
+     "horizon": [
+      {
+       "prop": "adboard",
+       "x": 0.12,
+       "size": 0.08
+      }
+     ]
+    },
+    "hud": {
+     "hide": true
+    },
+    "locked": true,
+    "items": [
+     {
+      "id": "member",
+      "prop": "subcard",
+      "x": 0.22,
+      "size": 0.2,
+      "label": "Each member"
+     },
+     {
+      "id": "year",
+      "prop": "receipt",
+      "x": 0.7,
+      "size": 0.3,
+      "hidden": false,
+      "label": "A year"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "member",
+      "how": "rise"
+     },
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "year",
+      "how": "rise"
+     },
+     {
+      "at": "split",
+      "do": "shake",
+      "target": "member"
+     },
+     {
+      "at": "pays",
+      "do": "flow",
+      "target": "member",
+      "to": "year",
+      "n": 5
+     },
+     {
+      "at": "year",
+      "do": "tag",
+      "target": "year",
+      "text": "{rev_per_part}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "shows",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "About {con_per_part} of that goes on new shows and films.",
+   "events": {
+    "goes": {
+     "word": "goes"
+    },
+    "shows": {
+     "word": "shows"
+    },
+    "films": {
+     "word": "films"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "goes"
+    },
+    {
+     "kind": "pop",
+     "at": "shows"
+    },
+    {
+     "kind": "ding",
+     "at": "films"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "studio",
+     "tint": "red",
+     "horizon": [
+      {
+       "prop": "profitjar",
+       "x": 0.88,
+       "size": 0.07
+      }
+     ]
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "receipt",
+      "prop": "receipt",
+      "x": 0.18,
+      "size": 0.2,
+      "label": "Receipt"
+     },
+     {
+      "id": "shows",
+      "prop": "tv",
+      "x": 0.6,
+      "size": 0.3,
+      "label": "New shows"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "shows",
+      "how": "rise"
+     },
+     {
+      "at": "goes",
+      "do": "flow",
+      "target": "receipt",
+      "to": "shows",
+      "n": 6
+     },
+     {
+      "at": "shows",
+      "do": "tag",
+      "target": "shows",
+      "text": "{con_per_part}"
+     },
+     {
+      "at": "films",
+      "do": "shake",
+      "target": "shows"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "shows",
+      "size": "close",
+      "on": "shows",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "And the ads? Just over {ads_total}, out of the {rev_total} it brought in.",
+   "events": {
+    "ads": {
+     "word": "ads"
+    },
+    "just": {
+     "word": "Just"
+    },
+    "tiny": {
+     "word": "out"
+    },
+    "subscriptions": {
+     "word": "brought"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "ads"
+    },
+    {
+     "kind": "fail",
+     "at": "just"
+    },
+    {
+     "kind": "whoosh",
+     "at": "tiny"
+    },
+    {
+     "kind": "boom",
+     "at": "subscriptions"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "Where Netflix money comes from",
+    "adsLabel": "Ads",
+    "adsFig": "{ads_total}",
+    "adsV": "@ads.total",
+    "revLabel": "Brought in",
+    "revFig": "{rev_total}",
+    "revV": "@rev.total",
+    "world": {
+     "kind": "studio",
+     "tint": "red"
+    },
+    "items": [
+     {
+      "id": "ads",
+      "prop": "adboard",
+      "x": 0.3,
+      "size": 0.24,
+      "tag": "{ads_total}"
+     },
+     {
+      "id": "brought",
+      "prop": "subcard",
+      "x": 0.7,
+      "size": 0.3
+     }
+    ],
+    "actions": [
+     {
+      "at": "ads",
+      "do": "shake",
+      "target": "ads"
+     },
+     {
+      "at": "subscriptions",
+      "do": "grow",
+      "target": "brought",
+      "scale": 1.3
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "After every bill, Netflix keeps about {pro_per_part} of each member's year. Would you cancel?",
+   "events": {
+    "bill": {
+     "word": "bill"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "year": {
+     "word": "year"
+    },
+    "cancel": {
+     "word": "cancel"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "bill"
+    },
+    {
+     "kind": "kaching",
+     "at": "keeps"
+    },
+    {
+     "kind": "boom",
+     "at": "cancel"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "fig": "{pro_per_part}",
+    "label": "Kept from each member",
+    "pay": "{rev_per_part}",
+    "payLabel": "Paid a year",
+    "keptV": "@pro.per_part",
+    "payV": "@rev.per_part",
+    "ask": "Would you cancel?",
+    "world": {
+     "kind": "studio",
+     "tint": "red"
+    },
+    "items": [
+     {
+      "id": "keeps",
+      "prop": "profitjar",
+      "x": 0.65,
+      "size": 0.3,
+      "tag": "{pro_per_part}"
+     },
+     {
+      "id": "bill",
+      "prop": "receipt",
+      "x": 0.3,
+      "size": 0.28
+     }
+    ],
+    "actions": [
+     {
+      "at": "keeps",
+      "do": "grow",
+      "target": "keeps",
+      "scale": 1.3
+     },
+     {
+      "at": "cancel",
+      "do": "shake",
+      "target": "bill"
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}

@@ -1,0 +1,116 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 73164,
+  "duration_sec": 30,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "G",
+    "bpm": 104,
+    "look": {
+      "stage": "kitchen",
+      "header": "chalk",
+      "holder": "receipt",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Netflix spent $17.1B on new shows and films in one year.",
+        "start": 0.3,
+        "seconds": 3.69,
+        "window": 4.13,
+        "fill": 0.893
+      },
+      {
+        "scene": "promise",
+        "text": "And it still kept $11B.",
+        "start": 4.43,
+        "seconds": 1.7,
+        "window": 2.23,
+        "fill": 0.762
+      },
+      {
+        "scene": "members",
+        "text": "So who pays? More than 325M paid memberships. Rohan's is one of them.",
+        "start": 6.67,
+        "seconds": 4.46,
+        "window": 5.07,
+        "fill": 0.88
+      },
+      {
+        "scene": "peryear",
+        "text": "Split the money that way, and each member pays about $139 a year.",
+        "start": 11.73,
+        "seconds": 3.78,
+        "window": 4.2,
+        "fill": 0.9
+      },
+      {
+        "scene": "shows",
+        "text": "About $53 of that goes on new shows and films.",
+        "start": 15.93,
+        "seconds": 2.86,
+        "window": 3.37,
+        "fill": 0.849
+      },
+      {
+        "scene": "turn",
+        "text": "And the ads? Just over $1.5B, out of the $45.2B it brought in.",
+        "start": 19.3,
+        "seconds": 5.54,
+        "window": 5.93,
+        "fill": 0.934
+      },
+      {
+        "scene": "payoff",
+        "text": "After every bill, Netflix keeps about $34 of each member's year. Would you cancel?",
+        "start": 25.23,
+        "seconds": 4.28,
+        "window": 4.73,
+        "fill": 0.905
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "real-subject-first-frame": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -15.4,
+    "music_under_voice_db": 23.4
+  },
+  "craft_problems": [
+    "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+    "note: beat 'members': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+    "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+    "note: beat 'shows': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+  ],
+  "liveliness": {
+    "median": 5.599,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

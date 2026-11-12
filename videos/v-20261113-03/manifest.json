@@ -1,0 +1,263 @@
+{
+  "id": "v-20261113-03",
+  "createdAt": "2026-11-12T22:23:55.429288+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Netflix spent $17.1 billion on new shows and films in 2025 and still kept $11 billion: where one member's year of payments goes",
+    "category": "streaming",
+    "reach": "global",
+    "feed_id": "2026-11-13-netflix-spent-17-billion-kept-11"
+  },
+  "title": "Netflix spent $17.1B on new shows and still kept $11B",
+  "description": "How does Netflix spend $17.1B on new shows and still keep $11B?\nIn 2025 Netflix brought in $45.2B from more than 325M paid memberships. Here's where one member's year of payments goes.\n#Netflix\nAn animated story with illustrative numbers; the characters are not advisers.\nIllustrative only. Not financial advice.\n\nLogo: TM/®Netflix Inc., Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Netflix_2015_logo.svg)",
+  "hashtags": [
+    "#Shorts",
+    "#Netflix",
+    "#Money",
+    "#Business",
+    "#Streaming"
+  ],
+  "hookStyle": "secret",
+  "cta": "Would you cancel or keep it? Comment",
+  "seed": 73164,
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "G",
+    "bpm": 104,
+    "look": {
+      "stage": "kitchen",
+      "header": "chalk",
+      "holder": "receipt",
+      "entrance": "slide"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "28-35",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Netflix spent $17.1B on new shows and films in one year.",
+        "start": 0.3,
+        "seconds": 3.69,
+        "window": 4.13,
+        "fill": 0.893
+      },
+      {
+        "scene": "promise",
+        "text": "And it still kept $11B.",
+        "start": 4.43,
+        "seconds": 1.7,
+        "window": 2.23,
+        "fill": 0.762
+      },
+      {
+        "scene": "members",
+        "text": "So who pays? More than 325M paid memberships. Rohan's is one of them.",
+        "start": 6.67,
+        "seconds": 4.46,
+        "window": 5.07,
+        "fill": 0.88
+      },
+      {
+        "scene": "peryear",
+        "text": "Split the money that way, and each member pays about $139 a year.",
+        "start": 11.73,
+        "seconds": 3.78,
+        "window": 4.2,
+        "fill": 0.9
+      },
+      {
+        "scene": "shows",
+        "text": "About $53 of that goes on new shows and films.",
+        "start": 15.93,
+        "seconds": 2.86,
+        "window": 3.37,
+        "fill": 0.849
+      },
+      {
+        "scene": "turn",
+        "text": "And the ads? Just over $1.5B, out of the $45.2B it brought in.",
+        "start": 19.3,
+        "seconds": 5.54,
+        "window": 5.93,
+        "fill": 0.934
+      },
+      {
+        "scene": "payoff",
+        "text": "After every bill, Netflix keeps about $34 of each member's year. Would you cancel?",
+        "start": 25.23,
+        "seconds": 4.28,
+        "window": 4.73,
+        "fill": 0.905
+      }
+    ]
+  },
+  "durationSec": 30,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -15.4,
+    "music_under_voice_db": 23.4
+  },
+  "experiments": {
+    "real-subject-first-frame": "on"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "22 figures computed from inputs; 22 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "All 6 facts confirmed on Netflix Q4-25 shareholder letter PDF (fetched): revenue $45.2B, crossed/over 325M paid memberships, additions to content assets $17,096,617K, net income $10,981,201K, ad revenue 'over $1.5 billion', operating margin 29.5%. Verify list: 2025 still newest full year (Q4-26 not out until Jan 2027); qualifiers 'more than' and 'just over' kept; $17.1B said as 'spent on new shows and films', not expense. Per-member figures said as 'about'. No advice, disclaimer ends description. Note: voice says 'in one year' rather than 'in 2025'; year is anchored by the on-screen Data line (Dec 2025) and the description."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: 15s card and 'A year' receipt no longer overlap and read on mute; shows beat hero-sized with a close push; first frame names Netflix + $17.1B; disclaimer on last frames; layout empty, 30 s, -1.0/-16.8 dB. Accepted the 5s headline card ($11B + source line) because build.py requires a headline beat for sourced facts; its mostly empty background is a [scene] matter for the headline scene, not this script."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:18:15.529825+00:00",
+      "finishedAt": "2026-11-12T22:18:15.529825+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:18:16.422262+00:00",
+      "finishedAt": "2026-11-12T22:18:16.422262+00:00",
+      "notes": [
+        "22 figures computed from inputs; 22 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:18:35.868275+00:00",
+      "finishedAt": "2026-11-12T22:19:03.043016+00:00",
+      "notes": [
+        "30 s, ember/synthwave (preview only)",
+        "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'shows': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: shows: no thing is big (largest size 0.26, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+        "note: only 7 props of its own (adboard, filmreel, popcorn, profitjar, receipt, subcard, tv); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:19:38.618870+00:00",
+      "finishedAt": "2026-11-12T22:19:38.618870+00:00",
+      "notes": [
+        "All 6 facts confirmed on Netflix Q4-25 shareholder letter PDF (fetched): revenue $45.2B, crossed/over 325M paid memberships, additions to content assets $17,096,617K, net income $10,981,201K, ad revenue 'over $1.5 billion', operating margin 29.5%. Verify list: 2025 still newest full year (Q4-26 not out until Jan 2027); qualifiers 'more than' and 'just over' kept; $17.1B said as 'spent on new shows and films', not expense. Per-member figures said as 'about'. No advice, disclaimer ends description. Note: voice says 'in one year' rather than 'in 2025'; year is anchored by the on-screen Data line (Dec 2025) and the description."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-12T22:19:58.233371+00:00",
+      "finishedAt": "2026-11-12T22:19:58.233371+00:00",
+      "notes": [
+        "[script] 5.0s (promise beat, scene headline): almost the whole frame is flat dark-red background with '$11B' as text on a card - the frame viewers judge at 5-6 s (lessons.md #2) is emptier than our reference Shorts' 5 s frames (v-20261026-02, v-20261023-01). Make it a shot/build beat where the $11B is a thing (profit jar or cash stack beside the $17.1B stack), big and central.",
+        "[script] 15.0s (peryear beat): the receipt (x 0.72, size 0.34) covers half the 'Each member' card and the 'Each member' label runs into the receipt's edge; the receipt is blank, so on mute '$139' has no 'a year'. Move the card left/smaller or the receipt right so they don't overlap, and tag/label the receipt 'A year'.",
+        "[script] shows beat (~16-19s): no hero thing (largest 0.26, needs 0.28+) and the video has only medium/wide shots, 30 s without a close-up (craft notes); give the TV the hero size near the middle and add a close shot on the $53 or the $34 payoff."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:20:29.933227+00:00",
+      "finishedAt": "2026-11-12T22:20:54.647783+00:00",
+      "notes": [
+        "30 s, ember/synthwave (preview only)",
+        "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'shows': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: only 7 props of its own (adboard, filmreel, popcorn, profitjar, receipt, subcard, tv); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:21:16.327057+00:00",
+      "finishedAt": "2026-11-12T22:21:16.327057+00:00",
+      "notes": [
+        "Re-review after fixes: 15s card and 'A year' receipt no longer overlap and read on mute; shows beat hero-sized with a close push; first frame names Netflix + $17.1B; disclaimer on last frames; layout empty, 30 s, -1.0/-16.8 dB. Accepted the 5s headline card ($11B + source line) because build.py requires a headline beat for sourced facts; its mostly empty background is a [scene] matter for the headline scene, not this script."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:21:27.089937+00:00",
+      "finishedAt": "2026-11-12T22:23:50.050815+00:00",
+      "notes": [
+        "30 s, ember/synthwave, peak -1.0 dB, mean -16.8 dB",
+        "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'shows': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: only 7 props of its own (adboard, filmreel, popcorn, profitjar, receipt, subcard, tv); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:23:55.429359+00:00",
+      "finishedAt": "2026-11-12T22:23:55.429359+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261113-03",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261113-03"
+  }
+}
