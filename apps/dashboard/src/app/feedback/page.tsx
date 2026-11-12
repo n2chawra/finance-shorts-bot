@@ -9,12 +9,12 @@ import { useToast } from "@/components/toast";
 import { Badge, Button, Card, Empty, ErrorNote, IconTile, Loading, PageHeader, SelectField, Stagger, fieldClass } from "@/components/ui";
 import { fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
 import { useAddFeedback, useFeedback, usePatchFeedback } from "@/lib/queries";
-import { isRecent } from "@/lib/recent";
+import { feedbackToShow } from "@/lib/recent";
 import { FEEDBACK_AREAS, type Feedback } from "@/lib/schemas";
 
 /*
  * The owner's feedback (2026-10-30; redesigned 2026-11-12 "it's very congested"): write a note at the
- * top; below, the last two days of notes, picks and stales, each with the system's answer as a reply.
+ * top; below, every open note and the last two days of answered notes, picks and stales, each with the system's answer as a reply.
  * Every note reaches the next video run and every agent that can fix it (metrics/feedback.json).
  */
 
@@ -100,8 +100,8 @@ function NoteCard({ f }: { f: Feedback }) {
 export default function FeedbackPage() {
   const list = useFeedback();
   const [filter, setFilter] = useState<Filter>("open");
-  // latest updates only (owner, 2026-11-12): notes written or answered in the last two days
-  const recent = (list.data ?? []).filter((f) => isRecent(f.addressedAt ?? f.createdAt));
+  // latest updates only (owner, 2026-11-12): answered notes from the last two days, every open note
+  const recent = feedbackToShow(list.data ?? []);
   const open = recent.filter((f) => f.status === "open");
   const answered = recent.filter((f) => f.status === "addressed");
   const shown = filter === "open" ? open : filter === "answered" ? answered : recent;
@@ -132,7 +132,7 @@ export default function FeedbackPage() {
 
         {list.isLoading ? <Loading rows={2} /> : list.error ? <ErrorNote error={list.error} /> : shown.length === 0 ? (
           <Card><Empty icon={MessageSquarePlus} title={filter === "open" ? "Nothing open" : filter === "answered" ? "No answers in the last 2 days" : "No feedback in the last 2 days"}>
-            {filter === "open" ? "Every note from the last two days has been answered." : "Notes you write here, and your picks and stales, show up for two days."}</Empty></Card>
+            {filter === "open" ? "Every note has been answered." : "Notes you write here, and your picks and stales, show up for two days."}</Empty></Card>
         ) : (
           <ul className="flex flex-col gap-4">{shown.map((f) => <NoteCard key={f.id} f={f} />)}</ul>
         )}

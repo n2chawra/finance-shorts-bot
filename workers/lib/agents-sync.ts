@@ -15,7 +15,7 @@ import { Prisma, type PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
 import { notify, resolveOthers } from "./notify.ts";
-import { istDay } from "./publishing.ts";
+import { istDay, isUrgent } from "./publishing.ts";
 
 const DAY_MS = 86_400_000;
 const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio", "monthly", "reviewer"] as const;
@@ -390,15 +390,16 @@ const EditorRanking = z.object({
 
 /** improvement/editor/ranking.json (the editor step of the video routine) into the queue: each queued
  * video's rank, score and why; the queue is reordered by it, except videos the owner placed himself
- * (orderLocked), which keep their place at the front. Returns the ids ranked. */
-export async function importEditorRanking(prisma: PrismaClient, root: string): Promise<string[]> {
+ * (orderLocked), which keep their place at the front, and breaking or trending videos, which ingest put next
+ * (the 11:30 trend run makes no new ranking, so a trend Short is never in it). Returns the ids ranked. */
+export async function importEditorRanking(prisma: PrismaClient, root: string, now = new Date()): Promise<string[]> {
   const file = path.join(root, "improvement", "editor", "ranking.json");
   if (!existsSync(file)) return [];
   const parsed = EditorRanking.safeParse(readJson(file));
   if (!parsed.success) { console.error(`::warning::editor/ranking.json: ${parsed.error.issues[0]?.message}`); return []; }
   const { rankedAt, videos } = parsed.data;
   if (!videos.length) return [];
-  const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null }, select: { id: true, format: true, queuePosition: true, orderLocked: true, createdAt: true } });
+  const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null }, select: { id: true, format: true, queuePosition: true, orderLocked: true, createdAt: true, style: true } });
   const byId = new Map(videos.map((v) => [v.id, v]));
   const ranked = queued.filter((q) => byId.has(q.id));
   await prisma.$transaction(ranked.map((q) => {
@@ -406,12 +407,14 @@ export async function importEditorRanking(prisma: PrismaClient, root: string): P
     return prisma.video.update({ where: { id: q.id }, data: { editorRank: r.rank, editorScore: r.score,
       editorNote: { why: r.why, strengths: r.strengths, risks: r.risks, rankedAt } as Prisma.InputJsonValue } });
   }));
-  // per format: the owner's own order first, then the editor's ranking, then the unranked by age
+  // per format: the owner's own order first, then urgent (trend) videos, then the editor's ranking, then the unranked by age
+  const today = istDay(now);
+  const urgent = (q: (typeof queued)[number]) => (isUrgent(q.style, today) ? 0 : 1);
   const updates = [];
   for (const format of ["short", "long"]) {
     const mine = queued.filter((q) => q.format === format);
     const locked = mine.filter((q) => q.orderLocked).sort((a, b) => (a.queuePosition ?? 0) - (b.queuePosition ?? 0));
-    const free = mine.filter((q) => !q.orderLocked).sort((a, b) =>
+    const free = mine.filter((q) => !q.orderLocked).sort((a, b) => urgent(a) - urgent(b) ||
       (byId.get(a.id)?.rank ?? 1e6) - (byId.get(b.id)?.rank ?? 1e6) || (a.queuePosition ?? 1e6) - (b.queuePosition ?? 1e6));
     updates.push(...[...locked, ...free].map((q, i) => ({ id: q.id, queuePosition: i + 1 })));
   }

@@ -17,7 +17,7 @@ import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { dropPoints, hookHold, spokenBeats } from "./lib/retention.ts";
 import { failKey, statsOutcome } from "./lib/stats-failures.ts";
-import { channelDays } from "./lib/analytics.ts";
+import { analyticsStartDay, channelDays } from "./lib/analytics.ts";
 import { DAY_METRICS, TokenError, accessToken, dailyStats, report, retentionCurve } from "./lib/youtube.ts";
 
 const DAY_MS = 86_400_000;
@@ -92,7 +92,7 @@ async function main(): Promise<void> {
       errors.push(`channel totals: ${e instanceof Error ? e.message : e}`);
     }
     for (const u of uploads) {
-      const start = [istDay(u.publishAt), earliest].sort().at(-1)!;
+      const start = [analyticsStartDay(u.publishAt), earliest].sort().at(-1)!;
       if (start > yesterday) continue;
       try {
         const days = await dailyStats(token, u.youtubeId!, start, yesterday);

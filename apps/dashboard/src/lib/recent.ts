@@ -14,3 +14,9 @@ export function isRecent(when: string | null | undefined, now = Date.now()): boo
   const t = Date.parse(when);
   return Number.isFinite(t) && now - t <= RECENT_DAYS * DAY_MS;
 }
+
+/** The Feedback page's list: every open note, however old (an unanswered note must never vanish, and
+ * Reopen clears addressedAt), plus answered notes from the last RECENT_DAYS days. */
+export function feedbackToShow<T extends { status: string; createdAt: string; addressedAt?: string | null }>(list: T[], now = Date.now()): T[] {
+  return list.filter((f) => f.status !== "addressed" || isRecent(f.addressedAt ?? f.createdAt, now));
+}

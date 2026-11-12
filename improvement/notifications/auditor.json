@@ -1,18 +1,25 @@
 {
   "notifications": [
     {
-      "key": "auditor-before-data-audit",
+      "key": "data-audit-late",
       "severity": "info",
-      "title": "The auditor ran before the day's data audit again",
-      "detail": "Today's auditor run started by hand at 14:07 IST (08:37 UTC); the nightly auditor, research, improver and dashboard routines were all switched off at 14:06 IST. The Data audit workflow runs in the evening, so metrics/data-audit.json was from 10 Nov 16:29 UTC (16 h old) and the dashboard-vs-YouTube check was skipped. That audit had 0 errors and 0 warnings across 52 checked videos.",
-      "fix": "1. If you switched the nightly agents off on purpose, nothing to do. 2. Otherwise turn the four routines back on in claude.ai → Code → Routines; the auditor's slot should be after the evening data audit (23:00 IST)."
+      "title": "Tonight's auditor ran before today's data audit",
+      "detail": "The auditor started at 22:03 IST (16:33 UTC) and metrics/data-audit.json was from 11 Nov 16:21 UTC (24 h old). Today's Data audit run had not started yet: GitHub has been starting the 13:53 IST cron between 21:58 and 00:25 IST (16:19-18:55 UTC) for three days, so the dashboard-vs-YouTube check was skipped again. Yesterday's audit: 0 errors, 0 warnings across 55 checked videos.",
+      "fix": "1. Nothing broke; the audit lands later tonight. 2. To have the auditor check it each night, either trigger Data audit from the Netlify heartbeat like Publish, or move the auditor routine to 01:30 IST in claude.ai → Code → Routines (workflows and schedules are owner-only)."
+    },
+    {
+      "key": "settings-all-or-nothing",
+      "severity": "warning",
+      "title": "One bad setting row resets every setting to its default",
+      "detail": "workers/lib/settings.ts validates the merged settings as one object and falls back to the defaults for everything when any row fails (its comment says bad rows are ignored). A row edited by hand in Supabase with a wrong type would quietly switch the uploads pause off and restore the default upload times and daily target in every worker; the dashboard's getSettings does the same. The file is protected, so the auditor can't change it.",
+      "fix": "1. In a Claude Code session: in workers/lib/settings.ts, validate each row with SettingsSchema.shape[key].safeParse(row.value), keep the default only for rows that fail and print a ::warning:: naming the key. 2. Do the same in apps/dashboard/src/lib/store.db.ts getSettings. 3. Add a test with one bad row while uploads are paused."
     },
     {
       "key": "watchdog-not-hourly",
       "severity": "info",
       "title": "The hourly watchdog runs only every 4-11 hours",
-      "detail": "watchdog.yml is scheduled every hour, but GitHub ran it 11 times between 7 Nov 09:58 and 10 Nov 09:42 UTC (gaps of 4-11 hours). The hourly view snapshots behind the dashboard's 'realtime' chart and the variant system's 48-hour views therefore have gaps (the 48-hour count interpolates across them), and owner alerts can arrive hours late.",
-      "fix": "Optional. 1. Accept it, or 2. trigger watchdog.yml from an outside scheduler (e.g. cron-job.org calling the workflow_dispatch API with a fine-grained token limited to Actions on this repo). Workflows are owner-only files."
+      "detail": "watchdog.yml is scheduled every hour, but GitHub ran it 11 times between 7 Nov 09:58 and 10 Nov 09:42 UTC (gaps of 4-11 hours). The hourly view snapshots behind the dashboard's 'realtime' chart and the 48-hour views therefore have gaps, and owner alerts can arrive hours late.",
+      "fix": "Optional. 1. Accept it, or 2. start watchdog.yml from the Netlify publish heartbeat the way Publish is started (workflows are owner-only files)."
     }
   ]
 }

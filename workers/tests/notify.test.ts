@@ -3,7 +3,7 @@ import { test } from "node:test";
 
 import type { PrismaClient } from "@prisma/client";
 
-import { DISMISS_MS, notify } from "../lib/notify.ts";
+import { DISMISS_MS, notify, workflowNotices } from "../lib/notify.ts";
 
 type Row = { dedupeKey: string; resolvedAt: Date | null; decidedAt: Date | null; dismissedAt?: Date | null; [k: string]: unknown };
 
@@ -48,4 +48,12 @@ test("a notification the owner resolved stays closed for a week while its check 
   const old = fake([{ dedupeKey: notice.key, resolvedAt, decidedAt: null, dismissedAt: new Date(Date.now() - DISMISS_MS - 1) }]);
   await notify(old.prisma, notice);
   assert.equal(old.rows[0]!.resolvedAt, null);                   // a week on and still failing: back
+});
+
+test("workflow notices: each workflow's latest run decides, a daily job's failure stays raised", () => {
+  const run = (name: string, conclusion: string, at: string) => ({ name, conclusion, html_url: `https://x/${name}/${at}`, created_at: at });
+  const checks = workflowNotices([run("Data audit", "failure", "2026-11-12T16:20:00Z"), run("Publish", "success", "2026-11-13T03:31:00Z"),
+    run("Publish", "failure", "2026-11-13T03:11:00Z")]);
+  assert.deepEqual(checks.map((c) => [c.key, c.raise?.severity ?? null]), [["workflow:Data audit", "warning"], ["workflow:Publish", null]]);
+  assert.match(checks[0]!.raise!.detail, /2026-11-12T16:20:00Z/);
 });

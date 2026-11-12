@@ -1,0 +1,52 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-13",
+  "startedAt": "2026-11-12T16:33:15Z",
+  "finishedAt": "2026-11-12T16:43:27Z",
+  "summary": "Fixed 9 bugs: the Growth loop page crash on full timestamps, open feedback notes vanishing after 2 days, the verdict date one day early, watchdog closing still-failing workflow notices, Analytics skipping a Short's first Pacific day, and trend Shorts losing their queue place; plus a failing prompt-path test.",
+  "decision": "acted",
+  "why": "Main had one red test (writer.md named a missing file); the dashboard-ui and workers reviews found 9 bugs with concrete failing cases, each fixed with a test (the watchdog Shorts count excepted). The data audit was 24 h old (today's run not started yet), so the YouTube comparison was skipped.",
+  "findings": [
+    {
+      "title": "Data audit late, not failed",
+      "detail": "metrics/data-audit.json from 11 Nov 16:21 UTC; GitHub starts the 13:53 IST cron at 16:19-18:55 UTC, after this run began."
+    },
+    {
+      "title": "One bad setting row resets all settings (protected file)",
+      "detail": "workers/lib/settings.ts falls back to every default when any row fails validation; owner notified with the fix."
+    },
+    {
+      "title": "9 Nov evening Shorts five minutes apart",
+      "detail": "20:53 and 20:58 IST, outside the slots, on the day GitHub dropped Publish runs; the heartbeat added 12 Nov addresses it."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Growth loop and Feedback page fixes",
+      "detail": "fmtDayKey reads timestamps; every open note shows; due date, start label and no-data confidence corrected; reference Shorts use live views.",
+      "branch": "agent/auditor/2026-11-13"
+    },
+    {
+      "title": "Workers fixes",
+      "detail": "Watchdog reads each workflow's latest run and counts only queued Shorts for Short slots; Analytics starts on the Pacific publish day; trend Shorts keep their place after the editor ranking.",
+      "branch": "agent/auditor/2026-11-13"
+    },
+    {
+      "title": "Prompt path test green",
+      "detail": "writer.md names remotion/public/real/<name>-head.png instead of a file that doesn't exist.",
+      "branch": "agent/auditor/2026-11-13"
+    },
+    {
+      "title": "Analysis for 9 Nov Shorts",
+      "detail": "Verdicts for v-20261109-01 (miss) and v-20261109-03 (okay); Magic Johnson entry updated with its drop points.",
+      "branch": "agent/auditor/2026-11-13"
+    }
+  ],
+  "nextCheck": "2026-11-14",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-13.md"
+    }
+  ]
+}

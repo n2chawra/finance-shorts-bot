@@ -135,7 +135,7 @@ export async function getGrowth(): Promise<Growth> {
   const backlog = doc.cycleBacklog ?? {};
   const pictures = PicturesSchema.safeParse(doc.pictures);
   const refIds = pictures.success ? pictures.data.reference.slice(0, 3) : [];
-  const refs = refIds.length ? await prisma.video.findMany({ where: { id: { in: refIds } }, select: { id: true, title: true, upload: { select: { stats: { select: { views: true } } } } } }) : [];
+  const refs = refIds.length ? await prisma.video.findMany({ where: { id: { in: refIds } }, select: { id: true, title: true, upload: { select: { liveViews: true, stats: { select: { views: true } } } } } }) : [];
   const status = LoopStatusSchema.safeParse(doc.cycleStatus);
   const recipe = RecipeSchema.safeParse(doc.cycleRecipe);
   return GrowthSchema.parse({
@@ -151,7 +151,8 @@ export async function getGrowth(): Promise<Growth> {
     pictures: pictures.success ? pictures.data : null,
     reference: refIds.map((id) => refs.find((r) => r.id === id)).filter((r) => !!r).map((r) => ({
       id: r!.id, title: r!.title, thumbnailUrl: `/api/media/${r!.id}/thumbnail`,
-      views: r!.upload ? r!.upload.stats.reduce((a, s) => a + s.views, 0) : null })),
+      // the larger of Analytics (lags 2-3 days) and the live counter, as every other page counts views
+      views: r!.upload ? Math.max(r!.upload.stats.reduce((a, s) => a + s.views, 0), r!.upload.liveViews ?? 0) : null })),
     reviewer: { lastDay: reviewer?.day ?? null, lastSummary: reviewer?.summary ?? null, nextRunAt: nextReviewerRun().toISOString() },
   });
 }
