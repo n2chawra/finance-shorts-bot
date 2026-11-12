@@ -1,0 +1,20 @@
+{
+  "agent": "improver",
+  "day": "2026-11-12",
+  "startedAt": "2026-11-12T17:04:18Z",
+  "finishedAt": "2026-11-12T17:08:26Z",
+  "summary": "Waited on the weekly loop: cycle 1 (real photo or logo in the first frame) has no Shorts with data yet. Queued two high-priority research ideas on the challenger list and cleared four owner notifications the 12 Nov loop settled.",
+  "decision": "waited",
+  "why": "The evaluator shows real-subject-first-frame at 0 of 8 Shorts a side (started 13 Nov); the long tests quiet-bed (1 of 4) and chart-gap-fill (2 of 4) need more long videos. Only one Shorts experiment may run, so nothing new starts.",
+  "findings": [
+    {"title": "Cycle 1 waiting", "detail": "real-subject-first-frame: on 0, off 0 Shorts with 48 h data; channel stayed to watch over 14 days 42.8% (under the 45% bar)."},
+    {"title": "Weekly impact", "detail": "Latest full week (2 Nov): median 48 h views 43, 54.1% viewed, stayed to watch 0.383, 23.0 s average view; week of 26 Oct: 211 views, 39.7%, 0.388, 17.9 s."},
+    {"title": "What performs", "detail": "Stories: how_they_make_money 4.12x (n 8), secret_of_rich 3.82x (n 7, 66.4% viewed); hook secret 2.64x (n 10, 66.8% viewed); question 0.53x, myth 0.44x. Cinematic music 64.1% viewed vs 38-43% for lofi, synthwave, acoustic."},
+    {"title": "Top recurring failure: empty frames (26 videos, 14 days)", "detail": "Every November Short failed the empty-frame gate once or twice before passing (costing re-renders). A camera fix for build beats was tried and had no effect (every build beat already has a camera key at 0 s), so it was reverted; next suspect is the 170 px side margin that caps close shots near 1.34x."}
+  ],
+  "changes": [
+    {"title": "Two challengers queued", "detail": "music-follows-story (look, sound) and no-exposition-before-8s (first-second) added to improvement/cycle/backlog.json; their proposals marked testing.", "branch": "agent/improver/2026-11-12"},
+    {"title": "Owner notifications cleared", "detail": "Length floor, 'You think' hook arm, title name option and voice-pace test were all settled by the owner's 12 Nov weekly loop.", "branch": "agent/improver/2026-11-12"}
+  ],
+  "nextCheck": "2026-11-16"
+}

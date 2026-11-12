@@ -83,6 +83,24 @@
       "from": "review 2026-11-12",
       "test": "a parable series ('same start, four people, one ends up rich') against true-fact Shorts",
       "why": "The Curious Plot's story series turns viewers into subscribers (14.5K from 36 videos)"
+    },
+    {
+      "id": "music-follows-story",
+      "kind": "look",
+      "area": "sound",
+      "metric": "heldAfterHook",
+      "from": "proposal music-follows-story (research 2026-10-27, high)",
+      "test": "the music genre picked from the story's feeling (secret and billionaire stories cinematic 88-96 BPM, how-they-make-money pop 110-116), against the seeded random genre",
+      "why": "evaluator 2026-11-12: cinematic Shorts 64.1% viewed and 125% kept past the hook (n=11) against 38-43% for lofi, synthwave and acoustic; pop 2.15x the median 48 h views (n=11)"
+    },
+    {
+      "id": "no-exposition-before-8s",
+      "kind": "first-second",
+      "area": "hook",
+      "metric": "stayed",
+      "from": "proposal no-exposition-before-8s (research 2026-10-26, high)",
+      "test": "no beat over 6 s before the first figure lands and nothing but the hook and one short reaction or question in the first 8 s, against the champion's spine",
+      "why": "v-20261024-01 followed a 3 s hook with 8.7 s of explanation and got the fewest views of its week (162); v-20261021-05 followed its hook with a 1.7 s 'Wait, what?' and is among our best (1,161 views, 73.5% viewed)"
     }
   ],
   "history": [

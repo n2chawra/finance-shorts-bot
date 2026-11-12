@@ -431,9 +431,10 @@
       "effort": "S",
       "risk": "Some stories need one line of context; it moves later, not away.",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
-      "priority": "high"
+      "priority": "high",
+      "reason": "queued on the weekly loop challenger list (improvement/cycle/backlog.json, 2026-11-12); runs when its kind comes up"
     },
     {
       "id": "midpoint-rehook",
@@ -512,10 +513,11 @@
       "effort": "S",
       "risk": "Heavily confounded with story, voice and reach; fewer genre combinations per story (variety still enforced by the previous-video rule).",
       "metric": "avgViewPct",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
       "priority": "high",
-      "note": "2026-11-10: re-raised with 45-Short evidence; acoustic and synthwave are our two weakest genres for 3 weeks running. A genre option in the variant system is owner-only (notification variant-option-music)."
+      "note": "2026-11-10: re-raised with 45-Short evidence; acoustic and synthwave are our two weakest genres for 3 weeks running. A genre option in the variant system is owner-only (notification variant-option-music).",
+      "reason": "queued on the weekly loop challenger list (improvement/cycle/backlog.json, 2026-11-12); runs when its kind comes up"
     },
     {
       "id": "build-beats-on-lit-sets",
