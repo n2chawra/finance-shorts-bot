@@ -768,27 +768,92 @@
     {
       "videoId": "v-20261109-02",
       "verdict": "hit",
-      "headline": "The Magic Johnson Short pulled several times the usual views in its first two days.",
+      "headline": "The Magic Johnson Short pulled several times our usual views, but lost almost a third of its viewers on the salary line at 5 s.",
       "why": [
         {
-          "text": "414 views about 50 hours after publishing, against a median of 73 views at 48 hours for our Shorts of the last 30 days (42 videos). The exact 48-hour count and % viewed are not in yet.",
-          "metric": "414 views",
+          "text": "424 public views after 3 days, against a median of 73 views at 48 hours for our Shorts (42 videos).",
+          "metric": "424 views",
           "tab": "overview"
         },
         {
-          "text": "It runs 27 s, inside the 20-35 s band that holds our best Shorts.",
-          "metric": "27 s",
-          "tab": "works"
+          "text": "The steepest fall, 31 points of the audience curve (1.12 to 0.82), came at 5.0 s on \"His 13 NBA seasons paid him about $40M.\", a board card right after a hook ending in \"Watch this.\"",
+          "metric": "-31% at 5 s",
+          "tab": "engagement"
         },
         {
-          "text": "4 likes and 0 new subscribers so far. The pull is the famous name and one money question (a salary vs owning), the big-money kind of Short.",
-          "metric": "4 likes",
+          "text": "35.8% stayed to watch and 53.8% viewed, both above the Shorts medians of 31% and 41.9%.",
+          "metric": "53.8% viewed",
           "tab": "engagement"
+        },
+        {
+          "text": "77% of the views Analytics could place came from the US.",
+          "metric": "77% US",
+          "tab": "audience"
         }
       ],
       "viewersSaid": [],
-      "next": "Tell another famous athlete or star who got rich by owning, not by salary, in under 30 s.",
-      "writtenAt": "2026-11-11T08:42:11Z"
+      "next": "Open on the surprising figure itself ($1.6B from owning, not playing) and skip the salary setup card; a \"Watch this.\" hook is now banned by the recipe.",
+      "writtenAt": "2026-11-12T16:55:00Z"
+    },
+    {
+      "videoId": "v-20261109-01",
+      "verdict": "miss",
+      "headline": "The bank-interest Short reached about half our usual audience and lost more viewers in the first seconds than most.",
+      "why": [
+        {
+          "text": "39 public views after 3 days (33 counted by Analytics), against a median of 73 views at 48 hours for our Shorts (42 videos).",
+          "metric": "39 views",
+          "tab": "overview"
+        },
+        {
+          "text": "24.2% of viewers stayed to watch, under the Shorts median of 31% (45 videos). This is the number the weekly loop judges on.",
+          "metric": "24.2% stayed",
+          "tab": "engagement"
+        },
+        {
+          "text": "Those who stayed watched 55.7% of it, above the median of 41.9%, so the story held once people were in.",
+          "metric": "55.7% viewed",
+          "tab": "engagement"
+        },
+        {
+          "text": "It went out at 20:58 IST, five minutes after the airline Short (20:53 IST), outside the 19:07 slot, so the two competed for the same evening feed.",
+          "metric": "5 min apart",
+          "tab": "reach"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Name the bank and the figure in the title and the first sentence (a personal-budget topic needs a famous name to get swiped to).",
+      "writtenAt": "2026-11-12T16:55:00Z"
+    },
+    {
+      "videoId": "v-20261109-03",
+      "verdict": "okay",
+      "headline": "The airline-partner Short was watched almost to the end by the few who saw it, but very few saw it.",
+      "why": [
+        {
+          "text": "33 public views after 3 days (20 counted by Analytics), against a median of 73 views at 48 hours for our Shorts (42 videos).",
+          "metric": "33 views",
+          "tab": "overview"
+        },
+        {
+          "text": "82.7% viewed, about double the Shorts median of 41.9% (45 videos), the highest of the week.",
+          "metric": "82.7% viewed",
+          "tab": "engagement"
+        },
+        {
+          "text": "45% stayed to watch, above the Shorts median of 31%.",
+          "metric": "45% stayed",
+          "tab": "engagement"
+        },
+        {
+          "text": "90% of views came from the Shorts feed; it went out at 20:53 IST, five minutes before the bank Short, outside the 19:07 slot.",
+          "metric": "90% Shorts feed",
+          "tab": "reach"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Keep this story's pace, but name the airline and the card company with the dollar figure in the title; the title hid both.",
+      "writtenAt": "2026-11-12T16:55:00Z"
     }
   ]
 }

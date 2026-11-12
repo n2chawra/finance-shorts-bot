@@ -229,7 +229,7 @@ $50 million salary").
   `python -m generator.images fetch buffett "File:<the OK file>"` (add `--logo` for a logo) saves it and
   cuts it out of its background (`pip install -r generator/requirements-images.txt` once). Pick a
   file where the face is big, sharp and looking roughly at the camera; then **look at**
-  `remotion/public/real/buffett-head.png`: if the face is cut wrongly, re-cut with
+  `remotion/public/real/<name>-head.png` (here `buffett-head.png`): if the face is cut wrongly, re-cut with
   `python -m generator.images cut buffett --face x,y,w,h`. Never show a photo as a rectangle. Two ways,
   owner 2026-11-11 after a framed print looked "very bad":
   - **The person as a bobblehead** (best, and the niche's billionaire-Short look): an actor
