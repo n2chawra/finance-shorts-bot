@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fmtDayKey } from "../../apps/dashboard/src/lib/format.ts";
-import { shownConfidence, testDayLabel, verdictDueDay } from "../../apps/dashboard/src/lib/growth.ts";
+import { shownConfidence, testDayLabel, verdictDueDay } from "../../apps/dashboard/src/lib/growth-logic.ts";
 import { feedbackToShow } from "../../apps/dashboard/src/lib/recent.ts";
 
 test("fmtDayKey reads a day key, a full timestamp as its IST day, and never throws", () => {
