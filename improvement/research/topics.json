@@ -1780,7 +1780,7 @@
       ],
       "found": "2026-11-02",
       "expires": "2027-01-31",
-      "status": "new",
+      "status": "rejected",
       "format": "short",
       "id": "2026-11-02-a-trillion-at-a-million-a-day",
       "title": "Spend a million dollars every day. How long until a trillion runs out?",
@@ -1806,7 +1806,8 @@
       "sources": [
         "https://youtube.com/shorts/kQCpFXtG9RE",
         "https://www.uniladtech.com/news/video-shows-what-trillion-dollars-looks-like-musk-055088-20260616"
-      ]
+      ],
+      "reason": "no sourced facts about a real, named person or business: since 12 Nov every Short is true (generator/story.py invented_problems fails an assumed example), research 2026-11-13"
     },
     {
       "kind": "evergreen",
@@ -1815,7 +1816,7 @@
       ],
       "found": "2026-11-02",
       "expires": "2027-01-31",
-      "status": "new",
+      "status": "rejected",
       "format": "short",
       "id": "2026-11-02-rich-vs-poor-the-50k-car",
       "title": "Rich vs poor: the same $50,000 for a car",
@@ -1841,7 +1842,8 @@
       "sources": [
         "https://www.youtube.com/shorts/vGQZuTfIWnU",
         "https://youtube.com/shorts/CyFFcGeHLAU"
-      ]
+      ],
+      "reason": "no sourced facts about a real, named person or business: since 12 Nov every Short is true (generator/story.py invented_problems fails an assumed example), research 2026-11-13"
     },
     {
       "kind": "evergreen",
@@ -1850,7 +1852,7 @@
       ],
       "found": "2026-11-02",
       "expires": "2027-01-31",
-      "status": "new",
+      "status": "rejected",
       "format": "short",
       "id": "2026-11-02-wedding-on-a-personal-loan",
       "title": "A ₹10 lakh wedding on a personal loan: what it really costs",
@@ -1879,7 +1881,8 @@
       "sources": [
         "https://www.youtube.com/shorts/eZH7eYaJIKk",
         "https://www.youtube.com/watch?v=N2cV2tOI6BM"
-      ]
+      ],
+      "reason": "no sourced facts about a real, named person or business: since 12 Nov every Short is true (generator/story.py invented_problems fails an assumed example), research 2026-11-13"
     },
     {
       "id": "2026-11-02-one-dollar-salary-true-tax",
@@ -3500,6 +3503,324 @@
       ],
       "found": "2026-11-12",
       "expires": "2027-02-10",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-13-netflix-spent-17-billion-kept-11",
+      "format": "short",
+      "title": "Netflix spent $17.1 billion on shows in 2025 and still kept $11 billion",
+      "category": "streaming",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "The Economy Behind Netflix | How Netflix Makes Money",
+        "views": 390063,
+        "url": "https://youtube.com/watch?v=C_QOhocPHXY",
+        "channel": "DZ Finance",
+        "channelSubs": 3000,
+        "outlier": 130.0
+      },
+      "hook": "Netflix spent seventeen billion dollars on shows last year, and still kept eleven billion for itself.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Where a subscription goes: Netflix's 2025 revenue of $45.2B from more than 325M paid memberships, $17.1B added in new shows and films, $16.4B of that cost spread over the year, and $11.0B net income left. Per member per year (computed), what part buys shows and what part Netflix keeps. Ads were only $1.5B: the business is still the subscription.",
+      "why_now": "An everyday brand nearly everyone pays for (the 'everyday-brands' challenger's kind); a 3K-subscriber channel's Netflix explainer reached 390K in two months.",
+      "maths": "share (total 45183036000, parts 325000000) revenue per member per year, said as 'about' because members is 'over 325 million' (facts {total: 1, parts: 2}); share (total 10981201000, parts 325000000) profit per member (facts {total: 4, parts: 2}); percent 10981201000 of 45183036000 kept.",
+      "facts": [
+        {
+          "label": "Netflix revenue in 2025",
+          "value": 45.2,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Netflix Q4 2025 shareholder letter",
+          "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Netflix paid memberships crossed in Q4 2025 (more than)",
+          "value": 325,
+          "unit": "count_million",
+          "as_of": "2025-12-31",
+          "source": "Netflix Q4 2025 shareholder letter",
+          "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Netflix additions to content assets (cash on new shows and films) in 2025",
+          "value": 17.1,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Netflix Q4 2025 shareholder letter, cash flow statement ($17,096,617K)",
+          "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Netflix net income in 2025",
+          "value": 11.0,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Netflix Q4 2025 shareholder letter, income statement ($10,981,201K)",
+          "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Netflix ad revenue in 2025 (over)",
+          "value": 1.5,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Netflix Q4 2025 shareholder letter",
+          "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Netflix operating margin in 2025",
+          "value": 29.5,
+          "unit": "percent",
+          "as_of": "2025-12-31",
+          "source": "Netflix Q4 2025 shareholder letter",
+          "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf",
+          "latest": true,
+          "checked": "2026-11-13"
+        }
+      ],
+      "verify": [
+        "2025 is the newest full year (Q3 2026 results are quarterly only); say 'in 2025'",
+        "'more than 325 million' and 'over $1.5 billion' keep their qualifier",
+        "$17.1B is cash added to content assets, not the expense; say 'spent on new shows and films'"
+      ],
+      "sources": [
+        "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+      ],
+      "found": "2026-11-13",
+      "expires": "2027-02-11",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-13-petrol-pump-keeps-4-40-a-litre",
+      "format": "short",
+      "title": "Of ₹94.77 for a litre of petrol in Delhi, the pump owner keeps ₹4.40",
+      "category": "fuel",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "INR",
+      "reach": "local",
+      "reach_reason": {
+        "kind": "demand"
+      },
+      "demand": {
+        "title": "How Much Profit Does a Petrol Pump Make Per Litre?? #business",
+        "views": 809000,
+        "url": "https://youtube.com/shorts/6lUm9RSDgmc",
+        "channel": "Nitin Yadav",
+        "channelSubs": 490,
+        "outlier": 1651.0
+      },
+      "hook": "Of the ninety-four rupees seventy-seven paise you pay for a litre of petrol in Delhi, the pump owner keeps four rupees forty.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Follow one litre at an Indian Oil pump in Delhi: ₹53.07 to the oil company (base price and freight), ₹21.90 excise to the Centre, ₹15.40 VAT to Delhi, ₹4.40 dealer commission. The government's two taxes are 8x what the pump keeps, and out of its ₹4.40 the dealer pays staff, power and land.",
+      "why_now": "Petrol-pump-profit Shorts are a live breakout: 809K on a 490-subscriber channel this week (market.json), CarSutra's 1.5M, three more over 800K. One local Short a day is allowed.",
+      "maths": "sum 53.07 + 21.90 + 4.40 + 15.40 = 94.77 shown as a stack (facts {a: 1, b: 2, c: 3, d: 4}); percent 4.40 of 94.77 (facts {part: 3, whole: 5}); ratio (21.90 + 15.40) / 4.40.",
+      "facts": [
+        {
+          "label": "Price Indian Oil charges a Delhi petrol dealer per litre, before excise and VAT",
+          "value": 53.07,
+          "unit": "rupees",
+          "currency": "INR",
+          "as_of": "2025-10-01",
+          "source": "Indian Oil, price build-up of petrol at Delhi",
+          "url": "https://iocl.com/admin/img/UploadedFiles/PriceBuildup/Files/English/a7697d1f9e4e4ee590cbb655e7d194dd.pdf",
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Excise duty on a litre of petrol in Delhi",
+          "value": 21.9,
+          "unit": "rupees",
+          "currency": "INR",
+          "as_of": "2025-10-01",
+          "source": "Indian Oil, price build-up of petrol at Delhi",
+          "url": "https://iocl.com/admin/img/UploadedFiles/PriceBuildup/Files/English/a7697d1f9e4e4ee590cbb655e7d194dd.pdf",
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Average dealer commission on a litre of petrol in Delhi",
+          "value": 4.4,
+          "unit": "rupees",
+          "currency": "INR",
+          "as_of": "2025-10-01",
+          "source": "Indian Oil, price build-up of petrol at Delhi",
+          "url": "https://iocl.com/admin/img/UploadedFiles/PriceBuildup/Files/English/a7697d1f9e4e4ee590cbb655e7d194dd.pdf",
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Delhi VAT on a litre of petrol, including VAT on the dealer commission",
+          "value": 15.4,
+          "unit": "rupees",
+          "currency": "INR",
+          "as_of": "2025-10-01",
+          "source": "Indian Oil, price build-up of petrol at Delhi",
+          "url": "https://iocl.com/admin/img/UploadedFiles/PriceBuildup/Files/English/a7697d1f9e4e4ee590cbb655e7d194dd.pdf",
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Retail price of a litre of petrol in Delhi",
+          "value": 94.77,
+          "unit": "rupees",
+          "currency": "INR",
+          "as_of": "2025-10-01",
+          "source": "Indian Oil, price build-up of petrol at Delhi",
+          "url": "https://iocl.com/admin/img/UploadedFiles/PriceBuildup/Files/English/a7697d1f9e4e4ee590cbb655e7d194dd.pdf",
+          "checked": "2026-11-13"
+        }
+      ],
+      "verify": [
+        "open iocl.com's price build-up list and use the NEWEST Delhi petrol sheet: one report says excise on petrol was cut by ₹10 from 27 Mar 2026 (Business Today, Mar 2026, still shows ₹94.77 retail and ₹4.39 commission); if a newer sheet shows a different excise or price, replace those facts or fail the topic",
+        "₹4.40 is an average dealer commission, before the dealer's own costs: never call it profit"
+      ],
+      "sources": [
+        "https://iocl.com/admin/img/UploadedFiles/PriceBuildup/Files/English/a7697d1f9e4e4ee590cbb655e7d194dd.pdf",
+        "https://www.businesstoday.in/latest/trends/photo/pump-commission-rules-how-much-owners-earn-per-litre-of-petrol-and-diesel-in-delhi-521158-2026-03-18",
+        "https://youtube.com/shorts/eX0FyCbIXHM"
+      ],
+      "found": "2026-11-13",
+      "expires": "2027-02-11",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-13-mrbeast-300m-of-the-top-50-creators-billion",
+      "format": "short",
+      "title": "The top 50 creators earned $1.02 billion. MrBeast alone took $300 million of it",
+      "category": "creators",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "money_scale"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How much MONEY the RICHEST streamers make $$$ 😭 #money",
+        "views": 373181,
+        "url": "https://youtube.com/shorts/STUDKJSD3Pc",
+        "channel": "TheCashArchive",
+        "channelSubs": 36800,
+        "outlier": 10.1
+      },
+      "hook": "Forbes' top fifty creators earned one point zero two billion dollars this year, and MrBeast took three hundred million of it.",
+      "templates": [
+        "any"
+      ],
+      "angle": "One creator against forty-nine: MrBeast's Forbes-estimated $300M is more than Dhar Mann ($65M), Steven Bartlett ($52M), Markiplier ($38M) and Rhett & Link ($37M) together; IShowSpeed, the biggest streamer, $30M. Stack them as piles of money; the gap from #1 to #2 is the story. Not about his videos losing money (told 10 Nov): this is the league table.",
+      "why_now": "Streamer-money Shorts are breaking out this week (373K at 10x subscribers, market.json); Forbes' 2026 list (23 Jun 2026) is the newest.",
+      "maths": "sum 65 + 52 + 38 + 37 = 192 vs 300 (facts {a: 3, b: 4, c: 5, d: 6, big: 2}); percent 300 of 1020 (facts {part: 2, whole: 1}).",
+      "facts": [
+        {
+          "label": "Combined estimated earnings of Forbes' top 50 creators, 2026 list",
+          "value": 1.02,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-06-23",
+          "source": "Forbes Top Creators 2026, via Tubefilter",
+          "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "MrBeast's estimated earnings, Forbes Top Creators 2026",
+          "value": 300,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-06-23",
+          "source": "Forbes Top Creators 2026, via Tubefilter",
+          "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Dhar Mann's estimated earnings, Forbes Top Creators 2026",
+          "value": 65,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-06-23",
+          "source": "Forbes Top Creators 2026, via Tubefilter",
+          "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Steven Bartlett's estimated earnings, Forbes Top Creators 2026",
+          "value": 52,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-06-23",
+          "source": "Forbes Top Creators 2026, via Tubefilter",
+          "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Markiplier's estimated earnings, Forbes Top Creators 2026",
+          "value": 38,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-06-23",
+          "source": "Forbes Top Creators 2026, via Tubefilter",
+          "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "Rhett & Link's estimated earnings, Forbes Top Creators 2026",
+          "value": 37,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-06-23",
+          "source": "Forbes Top Creators 2026, via Tubefilter",
+          "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/",
+          "latest": true,
+          "checked": "2026-11-13"
+        },
+        {
+          "label": "IShowSpeed's estimated earnings, Forbes Top Creators 2026",
+          "value": 30,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-06-23",
+          "source": "Forbes Top Creators 2026, via Tubefilter",
+          "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/",
+          "latest": true,
+          "checked": "2026-11-13"
+        }
+      ],
+      "verify": [
+        "all are Forbes ESTIMATES of gross earnings over a year: say 'Forbes estimates'",
+        "confirm each figure on forbes.com's Top Creators 2026 list; Tubefilter's rank order differs from some outlets, so never state a rank other than #1 unless Forbes shows it"
+      ],
+      "sources": [
+        "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/",
+        "https://www.complex.com/pop-culture/a/alex-ocho/forbes-top-creators-2026-mrbeast"
+      ],
+      "found": "2026-11-13",
+      "expires": "2027-02-11",
       "status": "new"
     }
   ]

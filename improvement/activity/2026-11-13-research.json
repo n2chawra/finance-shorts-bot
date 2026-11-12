@@ -1,0 +1,50 @@
+{
+  "agent": "research",
+  "day": "2026-11-13",
+  "startedAt": "2026-11-12T16:48:18Z",
+  "finishedAt": "2026-11-12T16:56:03Z",
+  "summary": "Friday (demand): added 3 true-story topics (Forbes top creators with MrBeast's $300M, Netflix's 2025 money, a Delhi petrol pump's ₹4.40 a litre), rejected 3 feed topics with no sourced facts, and added the 'per-unit-hook' challenger to the weekly loop.",
+  "decision": "acted",
+  "why": "Backlog is 0 and three open topics now fail the 12 Nov 'every Short is true' rule; this week's breakouts are per-unit money stories (petrol per litre 809K on a 490-subscriber channel; 4 more at 0.85-1.8M) while our big-total hooks sit at 0.87x the median.",
+  "findings": [
+    {
+      "title": "Per-litre petrol-pump Shorts are the niche's biggest breakout",
+      "detail": "809K on a 490-subscriber channel (1,651x); CarSutra 1.5M, others 0.85-1.8M. Viewers price one thing they buy.",
+      "link": "https://youtube.com/shorts/6lUm9RSDgmc"
+    },
+    {
+      "title": "Forbes Top Creators 2026: top 50 earned $1.02B, MrBeast $300M",
+      "detail": "More than #2-#5 together ($192M); streamer-money Shorts break out at 10x subscribers.",
+      "link": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/"
+    },
+    {
+      "title": "Netflix 2025: $45.2B revenue, $17.1B into content, $11.0B kept",
+      "detail": "From the shareholder letter's statements; a 3K-subscriber channel's Netflix explainer hit 390K in 2 months.",
+      "link": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+    },
+    {
+      "title": "Visa FY2026: $45.9B net revenue on 281B transactions",
+      "detail": "About 16 cents a transaction, but no reference video beats its channel's subscribers yet, so not added.",
+      "link": "https://www.digitaltransactions.net/visa-posts-a-robust-final-quarter-to-fiscal-2026/"
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 topics added, 3 rejected",
+      "detail": "Feed: 10 open, 8 global, all core formats.",
+      "branch": "agent/research/2026-11-13"
+    },
+    {
+      "title": "Challenger per-unit-hook",
+      "detail": "first-second, judged on stayed to watch; in improvement/cycle/backlog.json after everyday-brands.",
+      "branch": "agent/research/2026-11-13"
+    }
+  ],
+  "nextCheck": "2026-11-14",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-13.md"
+    }
+  ]
+}
