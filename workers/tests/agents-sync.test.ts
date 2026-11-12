@@ -45,7 +45,7 @@ test("every agent notifications file in the repo parses", () => {
 
 // ---------------- the editor's ranking and the owner's feedback (2026-10-30) ----------------
 
-function fakeVideos(rows: { id: string; format: string; queuePosition: number; orderLocked: boolean }[]) {
+function fakeVideos(rows: { id: string; format: string; queuePosition: number; orderLocked: boolean; style?: unknown }[]) {
   const data = new Map(rows.map((r) => [r.id, { ...r, createdAt: new Date("2026-11-01"), editorRank: null as number | null }]));
   const prisma = {
     video: {
@@ -148,4 +148,21 @@ test("an agent that does its part of a handed note and passes the rest on counts
   ]);
   assert.match(back.response, /waiting for/);
   assert.equal(back.addressed, false);
+});
+
+test("a trend Short ingest put first keeps its place when the morning ranking doesn't list it", async () => {
+  const { mkdtempSync, mkdirSync, writeFileSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { importEditorRanking } = await import("../lib/agents-sync.ts");
+  const root = mkdtempSync(path.join(tmpdir(), "rank-"));
+  mkdirSync(path.join(root, "improvement", "editor"), { recursive: true });
+  writeFileSync(path.join(root, "improvement", "editor", "ranking.json"), JSON.stringify({ rankedAt: "2026-11-12T02:37:00Z", videos: [
+    { id: "a", rank: 1, score: 8, why: "best" }, { id: "b", rank: 2, score: 7, why: "ok" }] }));
+  const { prisma, data } = fakeVideos([
+    { id: "trend", format: "short", queuePosition: 0, orderLocked: false, style: { source: { urgent: { until: "2026-11-12" } } } },
+    { id: "a", format: "short", queuePosition: 1, orderLocked: false }, { id: "b", format: "short", queuePosition: 2, orderLocked: false },
+    { id: "stale-trend", format: "short", queuePosition: 3, orderLocked: false, style: { source: { urgent: { until: "2026-11-10" } } } }]);
+  await importEditorRanking(prisma as never, root, new Date("2026-11-12T06:30:00Z"));
+  const order = [...data.values()].sort((x, y) => x.queuePosition - y.queuePosition).map((v) => v.id);
+  assert.deepEqual(order, ["trend", "a", "b", "stale-trend"]);
 });

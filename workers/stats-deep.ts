@@ -10,7 +10,7 @@
  */
 import { PrismaClient, type Prisma } from "@prisma/client";
 
-import { KINDS, breakdownRows, parseCsv, queryOf, rangeStart, reachRows, type Format } from "./lib/analytics.ts";
+import { KINDS, analyticsStartDay, breakdownRows, parseCsv, queryOf, rangeStart, reachRows, type Format } from "./lib/analytics.ts";
 import { notify, resolve } from "./lib/notify.ts";
 import { istDay } from "./lib/publishing.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
@@ -111,7 +111,7 @@ async function main(): Promise<void> {
     const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, video: { deletedAt: null } }, select: { id: true, videoId: true, youtubeId: true, publishAt: true } });
     let videoRows = 0, videosDone = 0;
     for (const u of uploads) {
-      const start = istDay(u.publishAt);
+      const start = analyticsStartDay(u.publishAt);
       if (start > end) continue;
       const recent = Date.now() - u.publishAt.getTime() < 90 * DAY_MS;
       const scope = `video:${u.videoId}`;

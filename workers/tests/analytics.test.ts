@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { KINDS, breakdownRows, channelDays, parseCsv, queryOf, rangeStart, reachRows } from "../lib/analytics.ts";
+import { KINDS, analyticsStartDay, breakdownRows, channelDays, parseCsv, queryOf, rangeStart, reachRows } from "../lib/analytics.ts";
 import { dropPoints, endHold, spokenBeats } from "../lib/retention.ts";
 import { dayStat, rowsOf } from "../lib/youtube.ts";
 
@@ -68,4 +68,11 @@ test("drop points name the beat and the words being said", () => {
   assert.match(d[0]!.near, /catch/);
   assert.equal(endHold(curve), 0.5);
   assert.deepEqual(dropPoints([], 30, beats), []);
+});
+
+test("Analytics queries start on the Pacific publish day, YouTube's report day", () => {
+  // 07:07 IST on 12 Nov is 17:37 on 11 Nov in Los Angeles: the IST day skipped the first ~6 h of views
+  assert.equal(analyticsStartDay(new Date("2026-11-12T01:37:00Z")), "2026-11-11");
+  assert.equal(analyticsStartDay(new Date("2026-11-12T13:37:00Z")), "2026-11-12");
+  assert.equal(analyticsStartDay(new Date("2026-07-01T06:30:00Z")), "2026-06-30"); // daylight time, UTC-7
 });

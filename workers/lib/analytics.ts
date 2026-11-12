@@ -120,3 +120,11 @@ export function reachRows(rows: Record<string, string>[]): Reach[] {
     return { youtubeId, day, impressions: v.i, ctr: v.i > 0 ? v.clicks / v.i : 0 };
   });
 }
+
+const pacificDay = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles" });
+/** The first day to ask Analytics for a video: its publish day in Pacific Time, the zone YouTube's
+ * report days are in. The IST day starts 12.5-13.5 h later, so a 07:07 IST Short's first ~6 h fell on
+ * a day the queries never asked for (2026-11-13). */
+export function analyticsStartDay(publishAt: Date): string {
+  return pacificDay.format(publishAt);
+}

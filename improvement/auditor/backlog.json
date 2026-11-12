@@ -725,6 +725,182 @@
       "severity": "low",
       "found": "2026-11-12",
       "status": "fixed"
+    },
+    {
+      "id": "dui-015",
+      "kind": "bug",
+      "title": "Growth page crashed on a full timestamp",
+      "detail": "fmtDayKey appended T00:00:00Z to any string; a writtenAt/startedAt/updatedAt written as a full ISO timestamp became an Invalid Date and Intl.format threw RangeError, blanking the page (no error boundary). Fixed: day keys and timestamps both read, unreadable text returned as is.",
+      "files": [
+        "apps/dashboard/src/lib/format.ts"
+      ],
+      "severity": "high",
+      "found": "2026-11-13",
+      "status": "fixed"
+    },
+    {
+      "id": "dui-016",
+      "kind": "bug",
+      "title": "Feedback page hid open notes older than 2 days",
+      "detail": "The 'latest only' filter applied to open notes too: an unanswered 3-day-old note, a note an agent answered 'partly' (addressedAt null) and a reopened note all vanished. Fixed: every open note shows; answered ones for 2 days.",
+      "files": [
+        "apps/dashboard/src/app/feedback/page.tsx",
+        "apps/dashboard/src/lib/recent.ts"
+      ],
+      "severity": "high",
+      "found": "2026-11-13",
+      "status": "fixed"
+    },
+    {
+      "id": "dui-017",
+      "kind": "bug",
+      "title": "Growth page verdict due date one day early",
+      "detail": "IST midnight plus maxDays printed as a UTC day: a test starting 13 Nov with 7 days showed 'due by 19 Nov' instead of 20 Nov. Fixed with calendar arithmetic on the day key.",
+      "files": [
+        "apps/dashboard/src/app/growth/page.tsx",
+        "apps/dashboard/src/lib/growth.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-13",
+      "status": "fixed"
+    },
+    {
+      "id": "dui-018",
+      "kind": "bug",
+      "title": "'Starts today' shown for a test starting tomorrow; 50% confidence shown with no data",
+      "detail": "Negative days printed 'Starts today'; the evaluator's 0.5 placeholder was shown as a real 50% on the overview and Growth page. Fixed.",
+      "files": [
+        "apps/dashboard/src/app/growth/page.tsx",
+        "apps/dashboard/src/app/page.tsx",
+        "apps/dashboard/src/lib/growth.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-13",
+      "status": "fixed"
+    },
+    {
+      "id": "dui-019",
+      "kind": "data",
+      "title": "Growth page reference Shorts counted only Analytics views",
+      "detail": "Views summed VideoStat only (Analytics lags 2-3 days), lower than every other page; now max(Analytics, live counter) like store.db.ts.",
+      "files": [
+        "apps/dashboard/src/lib/autopilot.db.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-13",
+      "status": "fixed"
+    },
+    {
+      "id": "wrk-007",
+      "kind": "bug",
+      "title": "Watchdog closed daily-job failure notices while still failing",
+      "detail": "It read the 60 newest runs on main; with Publish every 20 min that is ~12 h, so a Data audit or Market failure dropped out and resolveOthers closed its notice. Now each workflow's own latest run is asked; a failed lookup resolves nothing.",
+      "files": [
+        "workers/watchdog.ts",
+        "workers/lib/notify.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-13",
+      "status": "fixed"
+    },
+    {
+      "id": "wrk-008",
+      "kind": "data",
+      "title": "Analytics never fetched a Short's first Pacific-time day",
+      "detail": "stats.ts and stats-deep.ts started queries at the IST publish day; YouTube's days are Pacific, so the 07:07 IST Short's first ~6 h (12:37: ~1 h) were never fetched (views, engaged views, breakdowns). Now the Pacific publish day. Related open item dd-011 (48 h windows).",
+      "files": [
+        "workers/stats.ts",
+        "workers/stats-deep.ts",
+        "workers/lib/analytics.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-13",
+      "status": "fixed"
+    },
+    {
+      "id": "wrk-009",
+      "kind": "bug",
+      "title": "A trend Short lost its front-of-queue place in the same ingest",
+      "detail": "importEditorRanking sorted unranked videos last; the 11:30 trend run writes no ranking, so the trend Short ingest put first went behind the morning's ranked Shorts. Urgent (style.source.urgent) videos now sort first after the owner's own order.",
+      "files": [
+        "workers/lib/agents-sync.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-13",
+      "status": "fixed"
+    },
+    {
+      "id": "wrk-010",
+      "kind": "bug",
+      "title": "Watchdog queue checks counted long videos as Shorts",
+      "detail": "queue-empty never fired and slot-missed blamed Publish when only a long video was queued (backlogByFormat short 0, long 1 on 12 Nov). Now the Short count. No unit test: the checks live inside a prisma function.",
+      "files": [
+        "workers/watchdog.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-13",
+      "status": "fixed"
+    },
+    {
+      "id": "wrk-011",
+      "kind": "bug",
+      "title": "One invalid Setting row resets every setting to its default",
+      "detail": "loadSettings safeParses the merged object and falls back to DEFAULT_SETTINGS wholesale (comment says bad rows are ignored): a hand-edited row could unpause uploads. Protected file (workers/lib/settings.ts): owner notified.",
+      "files": [
+        "workers/lib/settings.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-13",
+      "status": "open"
+    },
+    {
+      "id": "wrk-012",
+      "kind": "bug",
+      "title": "A failed breakdown query deletes that breakdown's stored rows",
+      "detail": "stats-deep saveBreakdowns deleteMany({scope}) after fetchScope drops failed kinds; delete only the kinds that succeeded.",
+      "files": [
+        "workers/stats-deep.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-13",
+      "status": "open"
+    },
+    {
+      "id": "wrk-q02",
+      "kind": "quality",
+      "title": "Failed manifests stored as format short",
+      "detail": "ingest.ts creates failed videos without format, so failed long videos count as Shorts; set from the id prefix.",
+      "files": [
+        "workers/ingest.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-13",
+      "status": "open"
+    },
+    {
+      "id": "wrk-q03",
+      "kind": "quality",
+      "title": "Two activity reports on one day overwrite each other",
+      "detail": "agents-sync keys activity rows by day-agent from the content, not the file name; a second run's report (2026-11-03-2-dashboard.json) never shows.",
+      "files": [
+        "workers/lib/agents-sync.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-13",
+      "status": "open"
+    },
+    {
+      "id": "dui-q04",
+      "kind": "quality",
+      "title": "Percent and points formatting written twice",
+      "detail": "growth/page.tsx and page.tsx each define pct and '+x.x pts' with different decimals.",
+      "files": [
+        "apps/dashboard/src/app/growth/page.tsx",
+        "apps/dashboard/src/app/page.tsx"
+      ],
+      "severity": "low",
+      "found": "2026-11-13",
+      "status": "open"
     }
   ]
 }

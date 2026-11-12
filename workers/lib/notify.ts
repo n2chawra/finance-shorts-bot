@@ -59,3 +59,18 @@ export const TOKEN_FIX = [
   "3. Save the new token: gh secret set YT_REFRESH_TOKEN (paste the value it printed).",
   "4. Check the OAuth consent screen is still in Production (Google Cloud → APIs & Services → OAuth consent screen).",
 ].join("\n");
+
+export type WorkflowRun = { name: string; conclusion: string | null; html_url: string; created_at: string };
+
+/** One check per workflow from its latest completed run on main: a failure raises a warning, anything
+ * else clears it. The first run listed for a name wins (callers pass newest first). */
+export function workflowNotices(runs: WorkflowRun[]): { key: string; raise: Notice | null }[] {
+  const latest = new Map<string, WorkflowRun>();
+  for (const r of runs) if (!latest.has(r.name)) latest.set(r.name, r);
+  return [...latest.values()].map((r) => {
+    const key = `workflow:${r.name}`;
+    return { key, raise: r.conclusion === "failure" ? { key, source: "watchdog", severity: "warning" as const, title: `GitHub Action "${r.name}" failed`,
+      detail: `Its last run (${r.created_at}) failed: ${r.html_url}`,
+      fix: "Open the link and read the red step. Often temporary (the next scheduled run fixes it). If it fails twice in a row, paste the log into a Claude Code session." } : null };
+  });
+}

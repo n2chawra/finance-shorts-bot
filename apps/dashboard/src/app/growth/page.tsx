@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { Badge, Card, Empty, ErrorNote, Loading, Meter, PageHeader, Stagger, type Tone } from "@/components/ui";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtRelative } from "@/lib/format";
-import { ESCALATE_AFTER, ESCALATE_BELOW, type Growth, KIND_LABEL, KIND_METRIC, OWNER_AFTER, cyclesUnder, nextKind } from "@/lib/growth";
+import { ESCALATE_AFTER, ESCALATE_BELOW, type Growth, KIND_LABEL, KIND_METRIC, OWNER_AFTER, cyclesUnder, nextKind, shownConfidence, testDayLabel, verdictDueDay } from "@/lib/growth";
 import { useGrowth } from "@/lib/queries";
 import { isRecent } from "@/lib/recent";
 
@@ -114,7 +114,8 @@ export default function GrowthPage() {
   const under = cyclesUnder(data.stayedByCycle);
   const upcoming = nextKind(data.history, data.stayedByCycle);
   const nextUp = data.challengers.findIndex((c) => c.kind === upcoming);
-  const due = e?.startedAt ? new Date(Date.parse(`${e.startedAt}T00:00:00+05:30`) + e.maxDays * 86_400_000) : null;
+  const due = e ? verdictDueDay(e.startedAt, e.maxDays) : null;
+  const conf = e ? shownConfidence(e) : null;
   const r = e ? reading(e, t.keepPoints, t.confidence) : null;
   const finished = data.history.filter((h) => h.verdict);
   const kept = finished.filter((h) => h.verdict === "keep").length;
@@ -146,8 +147,8 @@ export default function GrowthPage() {
               </div>
               <div className="mt-5">
                 <div className="flex items-center justify-between text-[12.5px]">
-                  <span className="text-ink2">Started {e.startedAt ? fmtDayKey(e.startedAt) : "—"}{due ? ` · verdict due by ${fmtDayKey(due.toISOString().slice(0, 10))}` : ""}{e.extended ? " · extended once" : ""}</span>
-                  <span className="font-medium tabular-nums">{e.days != null && e.days >= 0 ? `Day ${Math.min(e.days, e.maxDays)} of ${e.maxDays}` : "Starts today"}</span>
+                  <span className="text-ink2">Started {e.startedAt ? fmtDayKey(e.startedAt) : "—"}{due ? ` · verdict due by ${fmtDayKey(due)}` : ""}{e.extended ? " · extended once" : ""}</span>
+                  <span className="font-medium tabular-nums">{testDayLabel(e.days, e.maxDays, e.startedAt ? fmtDayKey(e.startedAt) : "soon")}</span>
                 </div>
                 <div className="mt-2"><Meter value={Math.max(0, e.days ?? 0)} max={e.maxDays} label="Days into the test" /></div>
               </div>
@@ -192,9 +193,9 @@ export default function GrowthPage() {
               <div>
                 <div className="flex items-baseline justify-between text-[12.5px]">
                   <span className="font-medium text-ink2">Confidence the challenger is better</span>
-                  <span className="font-semibold tabular-nums">{pct(e.pOnBetter)}</span>
+                  <span className="font-semibold tabular-nums">{pct(conf)}</span>
                 </div>
-                <div className="mt-2"><Meter value={(e.pOnBetter ?? 0.5) * 100} max={100} label="Confidence" tone={(e.pOnBetter ?? 0) >= t.confidence ? "good" : "series"} /></div>
+                <div className="mt-2"><Meter value={(conf ?? 0.5) * 100} max={100} label="Confidence" tone={(conf ?? 0) >= t.confidence ? "good" : "series"} /></div>
                 <div className="mt-1.5 text-[11.5px] text-muted">Kept at +{t.keepPoints} points with {pct(t.confidence)} confidence; reverted at {t.revertPoints}.</div>
               </div>
             </div>

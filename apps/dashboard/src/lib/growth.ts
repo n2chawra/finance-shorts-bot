@@ -101,3 +101,24 @@ export function nextReviewerRun(now = Date.now()): Date {
 
 export const KIND_LABEL: Record<string, string> = { "first-second": "First-second test", look: "Look test", format: "Format change" };
 export const KIND_METRIC: Record<string, string> = { "first-second": "stayed to watch", look: "held after the hook", format: "stayed to watch" };
+
+/** The IST day a test's verdict is due: its start day plus maxDays. Calendar arithmetic on the day key,
+ * so it never slips a day through UTC (IST midnight is 18:30 UTC the evening before). */
+export function verdictDueDay(startedAt: string | null | undefined, maxDays: number): string | null {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(startedAt ?? "");
+  if (!m || !Number.isFinite(maxDays)) return null;
+  return new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]) + maxDays)).toISOString().slice(0, 10);
+}
+
+/** "Day 3 of 7", "Starts today" or "Starts <day>" (days is negative before the start day). */
+export function testDayLabel(days: number | null | undefined, maxDays: number, startsOn: string): string {
+  if (days == null) return "Starts today";
+  return days >= 0 ? `Day ${Math.min(days, maxDays)} of ${maxDays}` : `Starts ${startsOn}`;
+}
+
+/** The confidence worth showing: none until both sides have counted Shorts (the evaluator writes 0.5
+ * for "no data", which reads as a real 50%). */
+export function shownConfidence(e: { points?: number | null; pOnBetter?: number | null; counted: { on: number; off: number } }): number | null {
+  if (e.points == null || e.pOnBetter == null || Math.min(e.counted.on, e.counted.off) === 0) return null;
+  return e.pOnBetter;
+}
