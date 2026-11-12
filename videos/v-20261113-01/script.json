@@ -1,0 +1,808 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52817,
+ "story": "money_scale",
+ "shape": "countdown",
+ "currency": "USD",
+ "feed_id": "2026-11-13-mrbeast-300m-of-the-top-50-creators-billion",
+ "style": {
+  "palette": "plum",
+  "genre": "pop",
+  "key": "E",
+  "bpm": 116,
+  "look": {
+   "stage": "studio",
+   "header": "ribbon",
+   "holder": "receipt",
+   "entrance": "drop"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "shock_number",
+ "cta": "Who would you pay to watch? Comment",
+ "facts": [
+  {
+   "label": "Combined estimated earnings of Forbes' top 50 creators, 2026 list",
+   "value": 1.02,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-06-23",
+   "source": "Forbes",
+   "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/"
+  },
+  {
+   "label": "MrBeast's estimated earnings, Forbes Top Creators 2026",
+   "value": 300,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-06-23",
+   "source": "Forbes",
+   "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/"
+  },
+  {
+   "label": "Dhar Mann's estimated earnings, Forbes Top Creators 2026",
+   "value": 65,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-06-23",
+   "source": "Forbes",
+   "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/"
+  },
+  {
+   "label": "Steven Bartlett's estimated earnings, Forbes Top Creators 2026",
+   "value": 52,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-06-23",
+   "source": "Forbes",
+   "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/"
+  },
+  {
+   "label": "Markiplier's estimated earnings, Forbes Top Creators 2026",
+   "value": 38,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-06-23",
+   "source": "Forbes",
+   "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/"
+  },
+  {
+   "label": "Rhett & Link's estimated earnings, Forbes Top Creators 2026",
+   "value": 37,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-06-23",
+   "source": "Forbes",
+   "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/"
+  },
+  {
+   "label": "IShowSpeed's estimated earnings, Forbes Top Creators 2026",
+   "value": 30,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-06-23",
+   "source": "Forbes",
+   "url": "https://www.tubefilter.com/2026/06/23/forbes-top-50-creators-2026-1-billion/amp/"
+  }
+ ],
+ "maths": [
+  {
+   "name": "top",
+   "kind": "rate",
+   "part": 300000000,
+   "whole": 1020000000,
+   "facts": {
+    "part": 2,
+    "whole": 1
+   }
+  },
+  {
+   "name": "mr",
+   "kind": "share",
+   "total": 300000000,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  },
+  {
+   "name": "dm",
+   "kind": "share",
+   "total": 65000000,
+   "parts": 1,
+   "facts": {
+    "total": 3
+   }
+  },
+  {
+   "name": "sb",
+   "kind": "share",
+   "total": 52000000,
+   "parts": 1,
+   "facts": {
+    "total": 4
+   }
+  },
+  {
+   "name": "mk",
+   "kind": "share",
+   "total": 38000000,
+   "parts": 1,
+   "facts": {
+    "total": 5
+   }
+  },
+  {
+   "name": "rl",
+   "kind": "share",
+   "total": 37000000,
+   "parts": 1,
+   "facts": {
+    "total": 6
+   }
+  },
+  {
+   "name": "sp",
+   "kind": "share",
+   "total": 30000000,
+   "parts": 1,
+   "facts": {
+    "total": 7
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.4,
+  "words": "MrBeast made *this*",
+  "figure": "{mr_total}",
+  "tag": "In one year",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "MrBeast made {mr_total} in one year, Forbes estimates.",
+   "events": {
+    "mrbeast": {
+     "word": "MrBeast"
+    },
+    "made": {
+     "word": "made"
+    },
+    "year": {
+     "word": "year"
+    },
+    "forbes": {
+     "word": "Forbes"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "mrbeast"
+    },
+    {
+     "kind": "kaching",
+     "at": "made"
+    },
+    {
+     "kind": "boom",
+     "at": "year"
+    },
+    {
+     "kind": "ding",
+     "at": "forbes"
+    }
+   ],
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "line": "MrBeast made",
+    "fig": "{mr_total}",
+    "sub": "in one year",
+    "label": "MrBeast",
+    "set": "studio",
+    "actors": [],
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "beast",
+      "spot": "center",
+      "amount": "@mr.total",
+      "text": "{mr_total}",
+      "label": "MrBeast",
+      "at": "start",
+      "tone": "good"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "beast"
+     }
+    ]
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "headline",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Forbes' top creators made {top_whole} in all.",
+   "events": {
+    "top": {
+     "word": "top"
+    },
+    "creators": {
+     "word": "creators"
+    },
+    "made": {
+     "word": "made"
+    },
+    "all": {
+     "word": "all"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "creators"
+    },
+    {
+     "kind": "kaching",
+     "at": "made"
+    }
+   ],
+   "params": {
+    "kicker": "FORBES TOP CREATORS",
+    "title": "The whole list",
+    "figure": "{top_whole}",
+    "figureAt": "top",
+    "label": "Top creators, one year"
+   }
+  },
+  {
+   "id": "speed",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "So how far behind is everyone else? The streamer IShowSpeed made {sp_total}.",
+   "events": {
+    "behind": {
+     "word": "behind"
+    },
+    "everyone": {
+     "word": "everyone"
+    },
+    "streamer": {
+     "word": "streamer"
+    },
+    "ishowspeed": {
+     "word": "IShowSpeed"
+    },
+    "made": {
+     "word": "made"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "behind"
+    },
+    {
+     "kind": "pop",
+     "at": "streamer"
+    },
+    {
+     "kind": "kaching",
+     "at": "made"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "purple",
+     "horizon": [
+      {
+       "prop": "playaward",
+       "x": 0.12,
+       "size": 0.08
+      }
+     ]
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "streamer",
+      "prop": "streamrig",
+      "x": 0.5,
+      "size": 0.36,
+      "label": "IShowSpeed"
+     },
+     {
+      "id": "made",
+      "prop": "cashpile",
+      "x": 0.76,
+      "size": 0.22,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "streamer",
+      "how": "drop"
+     },
+     {
+      "at": "everyone",
+      "do": "shake",
+      "target": "streamer"
+     },
+     {
+      "at": "streamer",
+      "do": "grow",
+      "target": "streamer",
+      "scale": 1.3
+     },
+     {
+      "at": "ishowspeed",
+      "do": "enter",
+      "target": "made",
+      "from": "streamer"
+     },
+     {
+      "at": "made",
+      "do": "flow",
+      "target": "streamer",
+      "to": "made",
+      "n": 4
+     },
+     {
+      "at": "made",
+      "do": "tag",
+      "target": "made",
+      "text": "{sp_total}"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "room"
+     },
+     {
+      "at": "made",
+      "size": "close",
+      "on": "made",
+      "move": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "gamers",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "Markiplier, the gamer, made {mk_total}. Rhett and Link, {rl_total}.",
+   "events": {
+    "markiplier": {
+     "word": "Markiplier"
+    },
+    "gamer": {
+     "word": "gamer"
+    },
+    "rhett": {
+     "word": "Rhett"
+    },
+    "link": {
+     "word": "Link"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "markiplier"
+    },
+    {
+     "kind": "kaching",
+     "at": "gamer"
+    },
+    {
+     "kind": "pop",
+     "at": "rhett"
+    },
+    {
+     "kind": "kaching",
+     "at": "link"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "street",
+     "tint": "blue",
+     "horizon": [
+      {
+       "prop": "cashpile",
+       "x": 0.85,
+       "size": 0.07
+      }
+     ]
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "gamer",
+      "prop": "gamepad",
+      "x": 0.22,
+      "size": 0.26,
+      "label": "Markiplier",
+      "hidden": true
+     },
+     {
+      "id": "rhett",
+      "prop": "talkdesk",
+      "x": 0.76,
+      "size": 0.17,
+      "label": "Rhett & Link",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "gamer",
+      "how": "rise"
+     },
+     {
+      "at": "markiplier",
+      "do": "shake",
+      "target": "gamer"
+     },
+     {
+      "at": "gamer",
+      "do": "tag",
+      "target": "gamer",
+      "text": "{mk_total}"
+     },
+     {
+      "at": "rhett",
+      "do": "enter",
+      "target": "rhett",
+      "how": "drop"
+     },
+     {
+      "at": "link",
+      "do": "tag",
+      "target": "rhett",
+      "text": "{rl_total}"
+     }
+    ],
+    "locked": true
+   }
+  },
+  {
+   "id": "podcast",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Podcaster Steven Bartlett, {sb_total}. Dhar Mann, {dm_total}. Enough to catch him?",
+   "events": {
+    "podcaster": {
+     "word": "Podcaster"
+    },
+    "bartlett": {
+     "word": "Bartlett"
+    },
+    "dhar": {
+     "word": "Dhar"
+    },
+    "mann": {
+     "word": "Mann"
+    },
+    "catch": {
+     "word": "catch"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "podcaster"
+    },
+    {
+     "kind": "kaching",
+     "at": "bartlett"
+    },
+    {
+     "kind": "pop",
+     "at": "dhar"
+    },
+    {
+     "kind": "kaching",
+     "at": "mann"
+    },
+    {
+     "kind": "riser",
+     "at": "catch"
+    }
+   ],
+   "params": {
+    "world": {
+     "kind": "studio",
+     "tint": "purple",
+     "horizon": [
+      {
+       "prop": "playaward",
+       "x": 0.88,
+       "size": 0.08
+      }
+     ]
+    },
+    "hud": {
+     "hide": true
+    },
+    "items": [
+     {
+      "id": "podcaster",
+      "prop": "podmic",
+      "x": 0.2,
+      "size": 0.3,
+      "label": "Steven Bartlett"
+     },
+     {
+      "id": "mann",
+      "prop": "clapper",
+      "x": 0.8,
+      "size": 0.24,
+      "label": "Dhar Mann",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "podcaster",
+      "how": "rise"
+     },
+     {
+      "at": "podcaster",
+      "do": "grow",
+      "target": "podcaster",
+      "scale": 1.3
+     },
+     {
+      "at": "bartlett",
+      "do": "tag",
+      "target": "podcaster",
+      "text": "{sb_total}"
+     },
+     {
+      "at": "dhar",
+      "do": "enter",
+      "target": "mann",
+      "how": "rise"
+     },
+     {
+      "at": "mann",
+      "do": "tag",
+      "target": "mann",
+      "text": "{dm_total}"
+     },
+     {
+      "at": "catch",
+      "do": "flow",
+      "target": "mann",
+      "to": "podcaster",
+      "n": 5
+     }
+    ],
+    "locked": true
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "All five together still come up short of MrBeast alone.",
+   "events": {
+    "all": {
+     "word": "All"
+    },
+    "together": {
+     "word": "together"
+    },
+    "short": {
+     "word": "short"
+    },
+    "mrbeast": {
+     "word": "MrBeast"
+    },
+    "alone": {
+     "word": "alone"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "together"
+    },
+    {
+     "kind": "fail",
+     "at": "short"
+    },
+    {
+     "kind": "boom",
+     "at": "mrbeast"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "hide": true
+    },
+    "header": "All five together",
+    "names": [
+     "IShowSpeed",
+     "Markiplier",
+     "Rhett & Link",
+     "Bartlett",
+     "Dhar Mann"
+    ],
+    "vals": [
+     "@sp.total",
+     "@mk.total",
+     "@rl.total",
+     "@sb.total",
+     "@dm.total"
+    ],
+    "beastV": "@mr.total",
+    "beastFig": "{mr_total}",
+    "beastLabel": "MrBeast",
+    "world": {
+     "kind": "studio",
+     "tint": "purple"
+    },
+    "items": [
+     {
+      "id": "together",
+      "prop": "cashpile",
+      "x": 0.3,
+      "size": 0.24
+     },
+     {
+      "id": "mrbeast",
+      "prop": "cashtower",
+      "x": 0.7,
+      "size": 0.34,
+      "tag": "{mr_total}"
+     }
+    ],
+    "actions": [
+     {
+      "at": "together",
+      "do": "grow",
+      "target": "together",
+      "scale": 1.3
+     },
+     {
+      "at": "mrbeast",
+      "do": "grow",
+      "target": "mrbeast",
+      "scale": 1.3
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "MrBeast took {top_pct} of the whole list's money. Who would you pay to watch?",
+   "events": {
+    "took": {
+     "word": "took"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "money": {
+     "word": "money"
+    },
+    "pay": {
+     "word": "pay"
+    },
+    "watch": {
+     "word": "watch"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "took"
+    },
+    {
+     "kind": "pop",
+     "at": "money"
+    },
+    {
+     "kind": "boom",
+     "at": "watch"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "hide": true
+    },
+    "fig": "{top_pct}",
+    "pct": "@top.pct",
+    "label": "Of the whole list",
+    "whole": "{top_whole}",
+    "ask": "Who would you pay to watch?",
+    "world": {
+     "kind": "studio",
+     "tint": "purple"
+    },
+    "items": [
+     {
+      "id": "whole",
+      "prop": "creatorlist",
+      "x": 0.3,
+      "size": 0.3
+     },
+     {
+      "id": "money",
+      "prop": "cashtower",
+      "x": 0.7,
+      "size": 0.34,
+      "tag": "{top_pct}"
+     }
+    ],
+    "actions": [
+     {
+      "at": "took",
+      "do": "grow",
+      "target": "money",
+      "scale": 1.3
+     },
+     {
+      "at": "watch",
+      "do": "grow",
+      "target": "whole",
+      "scale": 1.3
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}

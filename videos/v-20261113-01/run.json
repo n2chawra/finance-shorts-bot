@@ -1,0 +1,275 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:41:40.479560+00:00",
+    "finishedAt": "2026-11-12T21:41:40.479560+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-12T21:44:42.345794+00:00",
+    "finishedAt": "2026-11-12T21:44:42.345794+00:00",
+    "notes": [
+      "a script with sourced facts needs a headline or board beat, which shows where they come from",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:44:51.470659+00:00",
+    "finishedAt": "2026-11-12T21:44:51.470659+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:46:43.424866+00:00",
+    "finishedAt": "2026-11-12T21:46:43.424866+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:47:24.639810+00:00",
+    "finishedAt": "2026-11-12T21:47:24.639810+00:00",
+    "notes": [
+      "All 7 facts confirmed on Tubefilter (fact url) and Forbes' own page forbes.com.au/news/lifestyle/forbes-top-creators-2026 (MrBeast $300M, Dhar Mann $65M, Bartlett $52M, Markiplier $38M, Rhett & Link $37M, IShowSpeed $30M, top-50 total $1.02B; gross estimates Mar 2025-Mar 2026, newest list); hook says 'Forbes estimates', no ranks beyond #1, five-together ($222M) < $300M and 29% hold; no advice, disclaimer ends description. Note: title omits 'estimated' (description has it)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-12T21:46:49.981488+00:00",
+    "finishedAt": "2026-11-12T21:47:37.151151+00:00",
+    "notes": [
+      "text '$30M' at 11.8 s is 6.6 px, below the 44 px minimum",
+      "4 of 8 stills are mostly empty background (at 5 s, 10 s, 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: only 7 props of its own (cashtower, clapper, creatorlist, gamepad, podmic, streamrig, talkdesk); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-12T21:48:28.926087+00:00",
+    "finishedAt": "2026-11-12T21:48:57.923919+00:00",
+    "notes": [
+      "text '$30M' at 11.8 s is 6.6 px, below the 44 px minimum",
+      "4 of 8 stills are mostly empty background (at 5 s, 10 s, 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-12T21:49:41.883197+00:00",
+    "finishedAt": "2026-11-12T21:50:06.207699+00:00",
+    "notes": [
+      "2 of 8 stills are mostly empty background (at 5 s, 10 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:50:28.050983+00:00",
+    "finishedAt": "2026-11-12T21:50:54.789364+00:00",
+    "notes": [
+      "32 s, plum/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-12T21:52:38.708920+00:00",
+    "finishedAt": "2026-11-12T21:52:38.708920+00:00",
+    "notes": [
+      "[scene] turn (Turn.tsx) 27.0s: MrBeast's $300M figure and MRBEAST label are drawn just under the tower base (base + 0.02h), inside the caption band; the caption 'MrBeast alone.' covers '$300M' so the turn's key figure is unreadable. Move the figure above/beside the tower.",
+      "[scene] turn (Turn.tsx) 25.5-27.0s: block name labels are not fitted to block height: 'STEVEN BARTLETT' wraps to two lines taller than its orange block and spills over the border onto RHETT & LINK; ISHOWSPEED and RHETT & LINK are crammed into thin blocks. Fit to one line or label beside the column.",
+      "[script] speed beat 12.0s: under the close camera the item labels run into each other as 'Forbes lisIShowSpeed Made', the magnifier ring is cut off at the left edge, and the 'Made' label means nothing. Spread the items / drop the 'Made' label / pick a camera that keeps the labels apart.",
+      "[script] gamers beat 16.5-18.0s: the Rhett & Link desk drops on top of the gamepad (the two props overlap) and at 18.0s the gamepad runs off the left edge. Give the items more separation or another shot size.",
+      "[script] podcast beat 22.5-24.0s: 'Steven Bartlett' and 'Dhar Mann' labels touch at 22.5s; at 24.0s the frame breaks down: the MrBeast cash tower is a tiny green sliver whose label sits on the mic, the clapper runs off the right and bottom edges, and both names are drawn below the caption box. 'Enough to catch him?' never shows the $300M target. Re-place the catch item (big, labelled with {mr_total}) and change the close-on-mann camera.",
+      "[script] hook 0.0-3.0s and thumbnail: the red MRBEAST name tag sits on his photo head and covers his eyes on the thumbnail (forehead in the hook); at 3.0s the Forbes document is cut off at the right edge. Put the tag beside or under the head.",
+      "[script] weaker than the reference Shorts (v-20261026-02, v-20261023-01): 4.5-9.0s is a mostly empty purple headline card with $1.02B as text on a card for 5.7 s (a number that could be a thing: a stack/the list with MrBeast's share), and 19.5-21.0s is one microphone alone in a dark frame. Both are emptier than the reference frames."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:53:29.021356+00:00",
+    "finishedAt": "2026-11-12T21:53:29.021356+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-12T21:54:01.756579+00:00",
+    "finishedAt": "2026-11-12T21:54:32.936893+00:00",
+    "notes": [
+      "2 of 8 stills are mostly empty background (at 5 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:55:02.990635+00:00",
+    "finishedAt": "2026-11-12T21:55:27.122080+00:00",
+    "notes": [
+      "31 s, plum/pop (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:55:56.423983+00:00",
+    "finishedAt": "2026-11-12T21:56:26.052416+00:00",
+    "notes": [
+      "31 s, plum/pop (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 7 props of its own (cashpile, clapper, gamepad, playaward, podmic, streamrig, talkdesk); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:56:54.191536+00:00",
+    "finishedAt": "2026-11-12T21:57:22.919291+00:00",
+    "notes": [
+      "31 s, plum/pop (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 7 props of its own (cashpile, clapper, gamepad, playaward, podmic, streamrig, talkdesk); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:57:39.740874+00:00",
+    "finishedAt": "2026-11-12T21:57:39.740874+00:00",
+    "notes": [
+      "Re-review after script change: promise 'Forbes' top creators made $1.02B in all.' and speed 'So how far behind is everyone else? The streamer IShowSpeed made $30M.' match Forbes' 2026 Top Creators list (forbes.com.au page and Tubefilter: top-50 total $1.02B, IShowSpeed $30M, gross estimates Mar 2025-Mar 2026); facts unchanged and all 7 still confirmed; attribution to Forbes kept in hook and promise; no rank claims, no advice, disclaimer ends description. Note: title omits 'estimated'."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-12T21:58:20.127704+00:00",
+    "finishedAt": "2026-11-12T21:58:20.127704+00:00",
+    "notes": [
+      "[scene] hook (Hook.tsx) 1.5-3.0s: the 'IN ONE YEAR' chip slides over the red MRBEAST name tag now that it sits above the head; at 3.0s it reads 'MRBEA...' with the rest hidden. Keep the tag clear of the chip (tag below the chip or the chip higher).",
+      "[scene] turn (Turn.tsx) 24.0-25.5s: only DHAR MANN is labelled; the other four blocks of 'all five together' are blank colour bars, so on mute the column isn't five named creators. Label every block (smaller one-line names, or names beside the column).",
+      "[script] promise 4.5-7.5s: still a mostly empty purple card with 'What the whole list earned' and $1.02B as text for about 3 s (it is emptier than reference Shorts v-20261026-02 and v-20261023-01). Make $1.02B a thing: a big cash pile or the Forbes list, with MrBeast's slice in it.",
+      "[script] gamers 15.0-16.5s: the Rhett & Link desk overlaps the gamepad and runs off the right edge. Move rhett further right/smaller, or the gamepad left.",
+      "[script] speed 7.5-10.5s (minor): the streamrig reads as a ring on a pole, a purple box and a red chair, and the IShowSpeed label floats above, apart from it. It doesn't read as a streamer; a bigger prop with the label on it would."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-12T21:58:48.255997+00:00",
+    "finishedAt": "2026-11-12T21:58:48.255997+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas.",
+      "1 board beats, but this Short's style (arms.style) is \"shot\": tell it in shot/build beats with the cast"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:59:14.635379+00:00",
+    "finishedAt": "2026-11-12T21:59:14.635379+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T21:59:29.001153+00:00",
+    "finishedAt": "2026-11-12T22:00:00.523022+00:00",
+    "notes": [
+      "30 s, plum/pop (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: gamers: no thing is big (largest size 0.26, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+      "note: only 7 props of its own (cashpile, clapper, gamepad, playaward, podmic, streamrig, talkdesk); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:00:24.418268+00:00",
+    "finishedAt": "2026-11-12T22:00:52.612411+00:00",
+    "notes": [
+      "30 s, plum/pop (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: gamers: no thing is big (largest size 0.26, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+      "note: only 7 props of its own (cashpile, clapper, gamepad, playaward, podmic, streamrig, talkdesk); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-12T22:01:09.152362+00:00",
+    "finishedAt": "2026-11-12T22:01:09.152362+00:00",
+    "notes": [
+      "Beat 'promise' says 'His whole list made $1.02B.' Right after 'MrBeast made $300M in one year, Forbes estimates.', 'His' refers to MrBeast, the subject of the hook, so a viewer hears that MrBeast's list made $1.02B. That is false: $1.02B is the combined estimate for the 50 creators on Forbes' Top Creators 2026 list (forbes.com.au, Tubefilter). Name the list, e.g. 'Forbes' top fifty creators made {top_whole} in all.' (the previous wording passed). The facts themselves are unchanged and still confirmed."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:01:20.160199+00:00",
+    "finishedAt": "2026-11-12T22:01:20.160199+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:01:27.511508+00:00",
+    "finishedAt": "2026-11-12T22:01:27.511508+00:00",
+    "notes": [
+      "Re-review after fix: promise 'Forbes' top creators made $1.02B in all.' names Forbes' list again and matches its Top Creators 2026 combined estimate (forbes.com.au, Tubefilter); all 7 facts unchanged and confirmed (gross estimates Mar 2025-Mar 2026); five together $222M < $300M, 29% holds; no rank claims, no advice, disclaimer ends description. Note: title omits 'estimated'."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:01:36.646634+00:00",
+    "finishedAt": "2026-11-12T22:01:36.646634+00:00",
+    "notes": [
+      "Round 3: hook names MrBeast + $300M with photo head, tag now on chest clear of chip and face; turn blocks all labelled, $300M inside tower clear of captions; gamers/podcast re-spaced with no overlap or edge cut; payoff 29% pie with ask above captions; disclaimer at end; 30 s, layout empty, audio -1/-17 dB. Minor: streamer rig still reads abstractly, promise is a ~2 s text card (needed for the Forbes source)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:01:44.702295+00:00",
+    "finishedAt": "2026-11-12T22:04:03.539201+00:00",
+    "notes": [
+      "31 s, plum/pop, peak -1.0 dB, mean -16.2 dB",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: gamers: no thing is big (largest size 0.26, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+      "note: only 7 props of its own (cashpile, clapper, gamepad, playaward, podmic, streamrig, talkdesk); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:04:08.852277+00:00",
+    "finishedAt": "2026-11-12T22:04:08.852277+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
