@@ -11,8 +11,8 @@
       "key": "settings-all-or-nothing",
       "severity": "warning",
       "title": "One bad setting row resets every setting to its default",
-      "detail": "workers/lib/settings.ts validates the merged settings as one object and falls back to the defaults for everything when any row fails (its comment says bad rows are ignored). A row edited by hand in Supabase with a wrong type would quietly turn uploadsPaused off and restore the default upload times and daily target in every worker; the dashboard's getSettings does the same. The file is protected, so the auditor can't change it.",
-      "fix": "1. In a Claude Code session: in workers/lib/settings.ts, validate each row with SettingsSchema.shape[key].safeParse(row.value), keep the default only for rows that fail and print a ::warning:: naming the key. 2. Do the same in apps/dashboard/src/lib/store.db.ts getSettings. 3. Add a test with one bad row and uploadsPaused true."
+      "detail": "workers/lib/settings.ts validates the merged settings as one object and falls back to the defaults for everything when any row fails (its comment says bad rows are ignored). A row edited by hand in Supabase with a wrong type would quietly switch the uploads pause off and restore the default upload times and daily target in every worker; the dashboard's getSettings does the same. The file is protected, so the auditor can't change it.",
+      "fix": "1. In a Claude Code session: in workers/lib/settings.ts, validate each row with SettingsSchema.shape[key].safeParse(row.value), keep the default only for rows that fail and print a ::warning:: naming the key. 2. Do the same in apps/dashboard/src/lib/store.db.ts getSettings. 3. Add a test with one bad row while uploads are paused."
     },
     {
       "key": "watchdog-not-hourly",

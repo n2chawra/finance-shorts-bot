@@ -31,9 +31,9 @@ async function pipelineChecks(prisma: PrismaClient, now: Date): Promise<Check[]>
   const hours = latest ? (now.getTime() - latest.createdAt.getTime()) / HOUR : Infinity;
   const today = istDay(now);
   const madeToday = await prisma.video.count({ where: { createdAt: { gte: new Date(`${today}T00:00:00+05:30`) } } });
-  const backlog = await prisma.video.count({ where: { status: "queued", deletedAt: null } });
-  // the slots below are Short slots; a queued long video fills its own weekly slot and can't cover them
-  const shortsQueued = await prisma.video.count({ where: { status: "queued", deletedAt: null, format: { not: "long" } } });
+  // queued Shorts: every check below is about Short slots, and a queued long video fills only its own weekly
+  // slot (12 Nov: one long video queued, no Shorts, and the slot-missed notice blamed Publish)
+  const backlog = await prisma.video.count({ where: { status: "queued", deletedAt: null, format: { not: "long" } } });
   // a Short slot that passed 20+ minutes ago today with nothing uploaded for it (12 Nov 2026: GitHub
   // dropped every Publish run for 9 hours and the 19:07 slot went empty without anyone knowing)
   const shortUploads = (await prisma.upload.findMany({
@@ -46,12 +46,12 @@ async function pipelineChecks(prisma: PrismaClient, now: Date): Promise<Check[]>
       `1. Open ${ROUTINES} → Finance Shorts generation and read the latest run.\n2. If it hit the Pro usage limit, nothing to do: the next run continues.\n3. If it errored, paste its report into a Claude Code session in this project.`) : null },
     { key: "made-today-zero", raise: !s.generationPaused && istHour(now) >= 11 && madeToday === 0 && hours <= 26 ? notice("made-today-zero", "warning", "No videos made today yet",
       "The 04:07 IST run made nothing and the 09:07 spare run didn't catch up.", `Check ${ROUTINES} for today's two runs and their reports.`) : null },
-    { key: "queue-empty", raise: shortsQueued === 0 && !s.uploadsPaused ? notice("queue-empty", "critical", "No Short is queued",
-      `The next Short slot has nothing to publish${backlog ? ` (${backlog} long video${backlog === 1 ? "" : "s"} queued for the weekly long slot)` : ""}.`, "Videos usually arrive overnight. If this lasts past 10:00 IST, check the video runs (see 'No new videos')."): null },
+    { key: "queue-empty", raise: backlog === 0 && !s.uploadsPaused ? notice("queue-empty", "critical", "The upload queue is empty",
+      "The next upload slot has nothing to publish.", "Videos usually arrive overnight. If this lasts past 10:00 IST, check the video runs (see 'No new videos')."): null },
     { key: "backlog-low", raise: s.alerts.lowBacklog && backlog > 0 && backlog < s.alerts.lowBacklogThreshold ? notice("backlog-low", "warning", `Only ${backlog} videos ready`,
       `Fewer than ${s.alerts.lowBacklogThreshold} videos are queued; at two uploads a day that's under ${Math.ceil(backlog / 2)} days.`, "Nothing to do if runs are healthy; it refills by about one a day.") : null },
     { key: "slot-missed", raise: empty.length ? notice("slot-missed", "critical", `Today's ${empty.join(", ")} Short slot${empty.length === 1 ? " was" : "s were"} missed`,
-      shortsQueued === 0 ? "Nothing was uploaded for it, and no Short is queued: the video runs made fewer Shorts than there are slots."
+      backlog === 0 ? "Nothing was uploaded for it, and no Short is queued: the video runs made fewer Shorts than there are slots."
         : "Nothing was uploaded for it although Shorts are queued: the Publish workflow didn't run in time.",
       "1. GitHub → Actions → Publish → Run workflow (upload_now 1 posts the next Short now).\n2. If Publish keeps missing runs, check that GITHUB_ACTIONS_TOKEN is set in Netlify (the publish heartbeat needs it).\n3. If no Short is queued, start the video routine by hand.") : null },
     { key: "uploads-paused", raise: s.uploadsPaused ? notice("uploads-paused", "info", "Uploads are paused (you post by hand)",
