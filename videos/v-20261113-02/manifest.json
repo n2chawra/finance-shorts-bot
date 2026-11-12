@@ -1,0 +1,239 @@
+{
+  "id": "v-20261113-02",
+  "createdAt": "2026-11-12T22:17:28.248346+00:00",
+  "status": "failed",
+  "failReason": "QA review failed after three rounds: in beat 'shows' the TV's grow covers the receipt and pushes the TV off the right edge (fact review passed)",
+  "template": "short_story",
+  "topic": {
+    "title": "Netflix spent $17.1 billion on new shows and films in 2025 and still kept $11 billion: where one member's year of payments goes",
+    "category": "streaming",
+    "reach": "global",
+    "feed_id": "2026-11-13-netflix-spent-17-billion-kept-11"
+  },
+  "title": "Netflix spent {con_total} on new shows and still kept {pro_total}",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:04:54.424508+00:00",
+      "finishedAt": "2026-11-12T22:04:54.424508+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-12T22:05:38.047444+00:00",
+      "finishedAt": "2026-11-12T22:05:38.047444+00:00",
+      "notes": [
+        "beat 'hook'.params.sub contains a typed number; use a placeholder: 'on new shows, 2025'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-12T22:05:41.857844+00:00",
+      "finishedAt": "2026-11-12T22:05:41.857844+00:00",
+      "notes": [
+        "beat 'hook'.say contains a typed number; use a placeholder: 'Netflix spent {con_total} on new shows and films in 2025, and still kept {pro_total}.'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-12T22:05:46.500488+00:00",
+      "finishedAt": "2026-11-12T22:05:46.500488+00:00",
+      "notes": [
+        "beat 'members'.events.rohan: no word 'Rohan' in this beat's spoken line"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:05:50.520944+00:00",
+      "finishedAt": "2026-11-12T22:05:50.520944+00:00",
+      "notes": [
+        "22 figures computed from inputs; 22 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:07:15.808158+00:00",
+      "finishedAt": "2026-11-12T22:07:15.808158+00:00",
+      "notes": [
+        "22 figures computed from inputs; 22 cross-checked against closed-form formulas.",
+        "warning: beat 'turn' runs 5.9 s with 4.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:07:37.903087+00:00",
+      "finishedAt": "2026-11-12T22:07:37.903087+00:00",
+      "notes": [
+        "22 figures computed from inputs; 22 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:08:29.603295+00:00",
+      "finishedAt": "2026-11-12T22:08:29.603295+00:00",
+      "notes": [
+        "All 6 facts confirmed on the source page itself (Netflix Q4'25 shareholder letter PDF, Jan 20 2026): revenue $45,183,036K ($45.2B), 'crossed the 325M paid memberships milestone' / 'over 325M', additions to content assets $17,096,617K, net income $10,981,201K, ad revenue 'over $1.5B', operating margin 29.5%. 2025 is still the newest full year (FY2026 ends 31 Dec). Verify list met: 'More than 325M' and 'Just over $1.5B' keep qualifiers; $17.1B said as 'spent on new shows and films'. Per-member figures are labelled 'about' and 'split the money that way'. No advice, no expert claims; description ends with the disclaimer. Notes (not blocking): the voice says 'in one year' rather than 'in 2025' (description says 2025); $139 per member includes the $1.5B ad revenue and uses the year-end member count; net income is after the $16.4B content amortization, not the $17.1B cash outlay (free cash flow was $9.5B), so 'still kept' is profit, which is fair."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-12T22:07:52.859109+00:00",
+      "finishedAt": "2026-11-12T22:08:31.279010+00:00",
+      "notes": [
+        "text 'AD' at 14.8 s is 16.1 px, below the 44 px minimum",
+        "2 of 8 stills are mostly empty background (at 5 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:08:58.933115+00:00",
+      "finishedAt": "2026-11-12T22:09:27.697994+00:00",
+      "notes": [
+        "31 s, ember/synthwave (preview only)",
+        "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: 31 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-12T22:09:58.071284+00:00",
+      "finishedAt": "2026-11-12T22:09:58.071284+00:00",
+      "notes": [
+        "[script] 10.0s (beat members): repeats lesson 6 almost exactly - a small Rohan beside a couch labelled 'Memberships' in a mostly empty city scene; the 325M memberships need one big thing filling the frame (a crowd/wall of member cards or a giant stack of subscriptions), not a labelled sofa. Also weaker than the reference Shorts (v-20261026-02, v-20261023-01), whose frames are filled by big cast and money stacks.",
+        "[script] 20.0s (beat turn, before the bars land): nearly empty frame - a tiny adboard and a dashed empty outline over a dark city; on mute nothing says what the ads earned. Show the ads figure and the revenue object from the first word (or start the Turn with both things already on screen).",
+        "[script] 5.0s (beat promise, headline scene): a flat dark card with '$11B' and a header and nothing else - no thing, no Netflix, mostly empty background; make the $11B kept a real object (a vault/profit jar filling) in a set.",
+        "[script] thumbnail: words 'NETFLIX STILL KEPT' promise a figure but the $11B never appears (the figure is lost; the frame behind is the hook mid-transition with a blurred $17.1B). Pick a frame/sec where the kept figure is shown, or render the figure on the thumbnail."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:10:34.362692+00:00",
+      "finishedAt": "2026-11-12T22:10:34.362692+00:00",
+      "notes": [
+        "22 figures computed from inputs; 22 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:10:50.135295+00:00",
+      "finishedAt": "2026-11-12T22:11:21.496476+00:00",
+      "notes": [
+        "30 s, ember/synthwave (preview only)",
+        "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 1 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: only 7 props of its own (adboard, filmreel, popcorn, profitjar, receipt, subcard, tv); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:11:45.053788+00:00",
+      "finishedAt": "2026-11-12T22:12:13.289031+00:00",
+      "notes": [
+        "30 s, ember/synthwave (preview only)",
+        "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 1 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: members: no thing is big (largest size 0.22, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+        "note: only 7 props of its own (adboard, filmreel, popcorn, profitjar, receipt, subcard, tv); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:12:39.385402+00:00",
+      "finishedAt": "2026-11-12T22:13:08.337242+00:00",
+      "notes": [
+        "30 s, ember/synthwave (preview only)",
+        "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 1 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: members: no thing is big (largest size 0.20, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+        "note: only 7 props of its own (adboard, filmreel, popcorn, profitjar, receipt, subcard, tv); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:13:37.646361+00:00",
+      "finishedAt": "2026-11-12T22:14:06.885799+00:00",
+      "notes": [
+        "30 s, ember/synthwave (preview only)",
+        "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 1 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: members: no thing is big (largest size 0.20, the hero needs 0.28+): make the thing the line is about the hero, size 0.28-0.40, near the middle",
+        "note: only 7 props of its own (adboard, filmreel, popcorn, profitjar, receipt, subcard, tv); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:14:16.257475+00:00",
+      "finishedAt": "2026-11-12T22:14:16.257475+00:00",
+      "notes": [
+        "Re-review after the line edit: 'promise' now 'And it still kept $11B.' (net income $10,981,201K, Q4'25 shareholder letter) and 'members' now 'So who pays? More than 325M paid memberships. Rohan's is one of them.' ('crossed the 325M paid memberships milestone', same letter). The figures are unchanged, the 'More than' qualifier is kept, and nothing new is claimed. The earlier pass and its notes still hold."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-12T22:15:10.470831+00:00",
+      "finishedAt": "2026-11-12T22:15:10.470831+00:00",
+      "notes": [
+        "[script] 27.0-28.5s (beat payoff, Payoff.tsx): the caption box ('Netflix keeps about $34', 'of each member's year.') sits on top of the 'PAID A YEAR' label under $139; move the $139/PAID A YEAR group up or the props higher so the caption covers no text.",
+        "[script] 10.5s (beat members): the multiplied membership cards run off the right edge of the frame and pile over Rohan; the 325M tag is gone by then and the 'Rohan's' tag isn't visible. Keep the card wall inside the frame (fewer cols or smaller spread, cards right of Rohan) and keep 325M on screen.",
+        "[scene] 19.5-21.0s (beat turn, Turn.tsx): an empty dashed outline (the revenue bar's placeholder) and a 'BROUGHT IN' label with no figure under it sit on screen for ~3 s until the bar rises at 22.5s; show the bar's outline solid/filled from frame 0 or hide the label until $45.2B lands.",
+        "[script] 4.5s (beat promise) and 12.0-13.5s (beat peryear): mostly flat background - a dark headline card with only its header until $11B lands at ~5.5s, and a small 'Each member' card in a big empty sky before $139 appears; emptier than the reference Shorts (v-20261026-02, v-20261023-01). Land $11B on the first frame of the promise and bring the receipt/$139 in with the split, card at hero size."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-12T22:15:47.574820+00:00",
+      "finishedAt": "2026-11-12T22:16:16.441199+00:00",
+      "notes": [
+        "30 s, ember/synthwave (preview only)",
+        "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'members': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: beat 'peryear': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+        "note: only 7 props of its own (adboard, filmreel, popcorn, profitjar, receipt, subcard, tv); at least 8: draw the things this story is about in videos/<id>/props.tsx"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-12T22:17:10.491771+00:00",
+      "finishedAt": "2026-11-12T22:17:10.491771+00:00",
+      "notes": [
+        "[script] 18.0s (beat shows, last ~1.3 s after 'films'): the TV's grow (scale 1.3) makes it cover the receipt almost completely (only its white bottom shows under the TV), leaves the 'Receipt' label floating on the TV's top edge over nothing, and pushes the TV's right side off the frame edge. Drop the grow on 'films' (or put the receipt further left / TV smaller, e.g. size 0.26 at x 0.64) so receipt, label and TV stay apart and inside the frame. Everything else from rounds 1-2 is fixed (checked in stills every 1.5 s)."
+      ]
+    }
+  ]
+}
