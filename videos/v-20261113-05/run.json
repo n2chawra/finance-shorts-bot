@@ -1,0 +1,71 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:40:20.325981+00:00",
+    "finishedAt": "2026-11-12T22:40:20.325981+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:40:21.297307+00:00",
+    "finishedAt": "2026-11-12T22:40:21.297307+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:40:34.875263+00:00",
+    "finishedAt": "2026-11-12T22:41:03.363560+00:00",
+    "notes": [
+      "28 s, plum/pop (preview only)",
+      "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+      "note: 28 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 0 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:41:41.154143+00:00",
+    "finishedAt": "2026-11-12T22:41:41.154143+00:00",
+    "notes": [
+      "All 4 facts confirmed on the source page (spokesman.com, LA Times/NYT, 9 Dec 2024): $2,077,618,725 tickets (Taylor Swift Touring's official total, per verify list, not Pollstar's $2.2B), 149 sold-out shows, 10,168,008 attendees, 21-month tour; final, not superseded. Gross ticket sales never called her earnings (turn beat says 'not her pay'); per-night and per-seat are averages hedged with 'about'/'average'. No advice, tone fine, description ends with disclaimer. Note: description says 'illustrative numbers' though figures are sourced; harmless."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:42:21.438154+00:00",
+    "finishedAt": "2026-11-12T22:42:21.438154+00:00",
+    "notes": [
+      "First frame names Taylor Swift (real cut-out photo, name tag) with $13.9M and 'One night of the Eras Tour', first line says both; each beat shows its thing (stadium 149, crowd 10.2M, ticket $204, ticket tower vs pay/merch, $2.08B payoff); disclaimer on last frame; no overlaps, cut-offs or placeholders; 28 s, peak -1.0 dB, mean -16.8 dB. Minor: 5 s and 15 s stills have a lot of empty sky and the $204 tag floats far above the ticket; thumbnail layout (photo head + cash stack) is close to MrBeast v-20261113-01's."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:42:32.237574+00:00",
+    "finishedAt": "2026-11-12T22:44:49.761924+00:00",
+    "notes": [
+      "28 s, plum/pop, peak -1.0 dB, mean -16.8 dB",
+      "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+      "note: 28 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'crowd': only 0 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-12T22:44:50.722888+00:00",
+    "finishedAt": "2026-11-12T22:44:50.722888+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
