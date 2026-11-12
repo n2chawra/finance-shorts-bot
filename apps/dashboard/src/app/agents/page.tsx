@@ -12,6 +12,7 @@ import { useAgents, useSettings } from "@/lib/queries";
 import { fmtMinutes, fmtRunWindow, summarizeRunTimes } from "@/lib/run-times";
 import type { Activity, Agents } from "@/lib/schemas";
 import { VariantsCard } from "@/components/variants";
+import { isRecent } from "@/lib/recent";
 
 const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeof Bot; time: string }> = {
   auditor: { name: "Auditor", role: "Checks the numbers against YouTube, fixes bugs, keeps the code clean", icon: ShieldCheck, time: "23:00" },
@@ -139,24 +140,25 @@ function RunTimesCard({ data }: { data: Agents }) {
 }
 
 function ActivityTab({ data }: { data: Agents }) {
-  const days = [...new Set(data.activity.map((a) => a.day))].sort().reverse();
-  if (!days.length) return <Card><Empty icon={Bot} title="No agent activity yet">Each agent writes a summary here after its nightly run (23:00, 23:47, 06:17 and 07:37 IST).</Empty></Card>;
-  // each agent's newest report up front; everything older folded away, newest first
+  // latest updates only (owner, 2026-11-12): reports from the last two days
+  const activity = data.activity.filter((a) => isRecent(a.day));
+  // each agent's newest report up front; the rest of the two days folded away, newest first
   const agents = Object.keys(AGENT) as Activity["agent"][];
-  const latest = agents.map((agent) => data.activity.filter((x) => x.agent === agent).sort((a, b) => b.day.localeCompare(a.day))[0]).filter((a): a is Activity => !!a);
-  const older = data.activity.filter((a) => !latest.includes(a)).sort((a, b) => b.day.localeCompare(a.day) || a.agent.localeCompare(b.agent));
+  const latest = agents.map((agent) => activity.filter((x) => x.agent === agent).sort((a, b) => b.day.localeCompare(a.day))[0]).filter((a): a is Activity => !!a);
+  const older = activity.filter((a) => !latest.includes(a)).sort((a, b) => b.day.localeCompare(a.day) || a.agent.localeCompare(b.agent));
   return (
     <div className="flex flex-col gap-8">
       <DataAuditCard audit={data.dataAudit} />
       <RunTimesCard data={data} />
       <section>
-        <h2 className="mb-3 text-[16px] font-semibold tracking-[-0.01em]">Latest from each agent</h2>
-        <div className="grid gap-5 lg:grid-cols-2">{latest.map((a) => <ActivityCard key={a.agent} a={a} />)}</div>
+        <h2 className="mb-3 text-[16px] font-semibold tracking-[-0.01em]">Latest from each agent <span className="text-[13px] font-normal text-muted">· last 2 days</span></h2>
+        {latest.length ? <div className="grid gap-5 lg:grid-cols-2">{latest.map((a) => <ActivityCard key={a.agent} a={a} />)}</div>
+          : <Card><Empty icon={Bot} title="No reports in the last 2 days">Each agent writes a summary here after its run.</Empty></Card>}
       </section>
       {older.length > 0 && (
         <details className="group">
           <summary className="panel-sm hover-raise inline-flex h-10 cursor-pointer list-none items-center gap-1 bg-surface px-3.5 text-[12.5px] font-semibold">
-            <span className="group-open:hidden">Show</span><span className="hidden group-open:inline">Hide</span> earlier reports ({older.length})
+            <span className="group-open:hidden">Show</span><span className="hidden group-open:inline">Hide</span> other reports from these 2 days ({older.length})
           </summary>
           <ul className="mt-3 flex flex-col divide-y divide-line border border-line bg-surface">
             {older.slice(0, 60).map((a) => (
@@ -316,6 +318,15 @@ export default function AgentsPage() {
   const [tab, setTab] = useState("activity");
   if (isLoading) return <Loading />;
   if (error || !data) return <ErrorNote error={error} />;
+  // latest updates only (owner, 2026-11-12): the last two days, plus what is still going on
+  // (a running experiment, a topic still waiting for its video)
+  const recent: Agents = {
+    ...data,
+    experiments: data.experiments.filter((e) => e.status === "running" || isRecent(e.startedAt)),
+    topics: data.topics.filter((t) => (!t.usedBy && (t.status ?? "new") === "new") || isRecent(t.found)),
+    proposals: data.proposals.filter((p) => isRecent(p.date)),
+    merges: data.merges.filter((m) => isRecent(m.at)),
+  };
   const running = data.experiments.filter((e) => e.status === "running").length;
   const kept = data.experiments.filter((e) => e.status === "kept").length;
   const reverted = data.experiments.filter((e) => e.status === "reverted" || e.status === "abandoned").length;
@@ -376,10 +387,10 @@ export default function AgentsPage() {
           ))}
         </Tabs.List>
         <Tabs.Content value="activity" className="outline-none"><ActivityTab data={data} /></Tabs.Content>
-        <Tabs.Content value="experiments" className="outline-none"><ExperimentsTab data={data} /></Tabs.Content>
-        <Tabs.Content value="topics" className="outline-none"><TopicsTab data={data} /></Tabs.Content>
-        <Tabs.Content value="proposals" className="outline-none"><ProposalsTab data={data} /></Tabs.Content>
-        <Tabs.Content value="merges" className="outline-none"><MergesTab data={data} /></Tabs.Content>
+        <Tabs.Content value="experiments" className="outline-none"><ExperimentsTab data={recent} /></Tabs.Content>
+        <Tabs.Content value="topics" className="outline-none"><TopicsTab data={recent} /></Tabs.Content>
+        <Tabs.Content value="proposals" className="outline-none"><ProposalsTab data={recent} /></Tabs.Content>
+        <Tabs.Content value="merges" className="outline-none"><MergesTab data={recent} /></Tabs.Content>
       </Tabs.Root>
     </Stagger>
   );

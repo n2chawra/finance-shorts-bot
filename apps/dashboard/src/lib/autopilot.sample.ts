@@ -1,4 +1,5 @@
 /** Sample notifications and agent activity, so the pages can be seen without a database. */
+import { isRecent } from "./recent";
 import type { Activity, Agents, Notification, Notifications } from "./schemas";
 
 const DAY_MS = 86_400_000;
@@ -40,7 +41,7 @@ function state(): State {
 }
 
 export function listNotifications(): Notifications {
-  const all = state().notifications;
+  const all = state().notifications.filter((n) => isRecent(n.resolvedAt ?? n.updatedAt));   // latest updates only
   const order = { critical: 0, warning: 1, info: 2 };
   const open = all.filter((n) => !n.resolvedAt).sort((a, b) => order[a.severity] - order[b.severity]);
   return { open, resolved: all.filter((n) => n.resolvedAt), unread: open.filter((n) => !n.seenAt).length };

@@ -1,4 +1,5 @@
 /** Notifications and the self-improving agents' activity, from Postgres. */
+import { RECENT_DAYS } from "./recent";
 import type { Notification as Row } from "@prisma/client";
 
 import { prisma } from "./prisma";
@@ -31,10 +32,14 @@ export async function decideNotification(id: string, decision: "approved" | "dec
   await prisma.notification.update({ where: { id }, data: { decision, decidedAt: now, resolvedAt: now, seenAt: now } });
 }
 
+/** The start of the "latest updates" window (lib/recent.ts). */
+const since = () => new Date(Date.now() - RECENT_DAYS * 86_400_000);
+
 export async function listNotifications(): Promise<Notifications> {
   const [open, resolved] = await Promise.all([
-    prisma.notification.findMany({ where: { resolvedAt: null }, orderBy: { updatedAt: "desc" } }),
-    prisma.notification.findMany({ where: { resolvedAt: { not: null } }, orderBy: { resolvedAt: "desc" }, take: 30 }),
+    // latest updates only: an ongoing problem stays fresh (the watchdog re-raises it every run)
+    prisma.notification.findMany({ where: { resolvedAt: null, updatedAt: { gte: since() } }, orderBy: { updatedAt: "desc" } }),
+    prisma.notification.findMany({ where: { resolvedAt: { gte: since() } }, orderBy: { resolvedAt: "desc" }, take: 30 }),
   ]);
   open.sort((a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity]);
   return { open: open.map(toNotification), resolved: resolved.map(toNotification), unread: open.filter((n) => !n.seenAt).length };

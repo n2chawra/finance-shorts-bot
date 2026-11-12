@@ -152,7 +152,7 @@ export default function OverviewPage() {
           chart={<Sparkline values={likes.spark} color="var(--likes)" />} />
         <Stat label="Backlog" icon={Layers} accent="grape" href="/queue" value={<><Num value={data.backlog} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-lg font-medium text-muted">/ {data.backlogCap}</span></>}
           sub={`≈ ${Math.floor(data.backlog / (settings.data?.uploadTimes.length ?? 1))} days of uploads`} chart={<Meter value={data.backlog} max={data.backlogCap} label="Backlog" tone="series" />} />
-        <Stat label="Made today" icon={Clapperboard} accent="sun" href="/runs" value={<><Num value={today.shipped} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-lg font-medium text-muted">/ {DAILY_TARGET}</span></>}
+        <Stat label="Made today" icon={Clapperboard} accent="sun" href="/videos" value={<><Num value={today.shipped} fmt={(n) => String(Math.round(n))} /><span className="ml-1 text-lg font-medium text-muted">/ {DAILY_TARGET}</span></>}
           sub={today.failed ? `${today.failed} failed attempt${today.failed === 1 ? "" : "s"}` : "Shorts · daily target"}
           chart={<Meter value={today.shipped} max={DAILY_TARGET} label="Shorts made today" tone={today.shipped >= DAILY_TARGET ? "good" : "warning"} />} />
       </div>
@@ -263,7 +263,7 @@ export default function OverviewPage() {
           )}
         </Card>
 
-        <Card title="Recent failures" icon={CircleX} accent="red" flush className="xl:col-span-4" action={<More href="/runs">Runs</More>}>
+        <Card title="Recent failures" icon={CircleX} accent="red" flush className="xl:col-span-4" action={<More href="/videos?status=failed">All failed</More>}>
           {data.recentFailures.length === 0 ? <Empty icon={CircleX} title="No failures">Every recent run shipped its video.</Empty> : (
             <ul>
               {data.recentFailures.map((f, i) => (

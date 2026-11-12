@@ -1,4 +1,4 @@
-import { BarChart3, Bell, Bot, CalendarDays, Film, LayoutDashboard, LayoutTemplate, ListOrdered, type LucideIcon, MessageSquarePlus, Settings, TrendingUp, Workflow } from "lucide-react";
+import { BarChart3, Bell, Bot, CalendarDays, Film, LayoutDashboard, ListOrdered, type LucideIcon, MessageSquarePlus, Settings } from "lucide-react";
 
 export type NavItem = { href: string; label: string; icon: LucideIcon; key: string };
 
@@ -17,8 +17,6 @@ export const NAV: { group: string; items: NavItem[] }[] = [
     group: "Insights",
     items: [
       { href: "/analytics", label: "Analytics", icon: BarChart3, key: "a" },
-      { href: "/impact", label: "Impact", icon: TrendingUp, key: "m" },
-      { href: "/runs", label: "Runs", icon: Workflow, key: "r" },
     ],
   },
   {
@@ -32,7 +30,6 @@ export const NAV: { group: string; items: NavItem[] }[] = [
   {
     group: "Configure",
     items: [
-      { href: "/templates", label: "Templates", icon: LayoutTemplate, key: "t" },
       { href: "/settings", label: "Settings", icon: Settings, key: "s" },
     ],
   },

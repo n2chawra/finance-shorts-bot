@@ -64,8 +64,8 @@ export function ReasonDialog({ open, onOpenChange, title, description, placehold
   );
 }
 
-const KIND_LABEL: Record<Feedback["kind"], string> = { choice: "Picked", improve: "Improve", wrong: "Wrong", stale: "Stale", general: "General" };
-const KIND_TONE: Record<Feedback["kind"], "good" | "info" | "critical" | "warning" | "neutral"> = { choice: "good", improve: "info", wrong: "critical", stale: "warning", general: "neutral" };
+export const KIND_LABEL: Record<Feedback["kind"], string> = { choice: "Picked", improve: "Improve", wrong: "Wrong", stale: "Stale", general: "General" };
+export const KIND_TONE: Record<Feedback["kind"], "good" | "info" | "critical" | "warning" | "neutral"> = { choice: "good", improve: "info", wrong: "critical", stale: "warning", general: "neutral" };
 
 function Note({ f, showVideo }: { f: Feedback; showVideo?: boolean }) {
   const patch = usePatchFeedback();

@@ -207,7 +207,7 @@ Write `improvement/weekly/<YYYY>-W<week>.md`: what changed, what was kept or rev
 what's running, the recipes added or changed, the best and worst performers, and next week's focus.
 
 ## 8. Finish (always)
-Run `python -m generator.impact` (rewrites `improvement/weekly/impact.json`, the dashboard's Impact page:
+Run `python -m generator.impact` (rewrites `improvement/weekly/impact.json`, kept for the agents; the dashboard stopped showing it on 2026-11-12:
 Shorts per week on views, % viewed, stayed-to-watch and view time, and each landed change before/after;
 owner, 2026-11-10) and put its latest week in your findings. Then append one line per decision to `improvement/journal.md`:
 `<DAY> <acted|waited>: <what> because <why>. Re-check <date>.`

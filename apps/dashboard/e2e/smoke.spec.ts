@@ -5,8 +5,8 @@ import { SMOKE_PASSWORD } from "../playwright.config";
 /** Every page loads on sample data without console errors, plus the flows the owner uses daily. */
 const PAGES: [string, RegExp][] = [
   ["/", /Overview/], ["/queue", /Queue/], ["/calendar", /Calendar/], ["/videos", /Videos/], ["/videos/v030", /.+/],
-  ["/analytics", /Analytics/], ["/impact", /Impact/], ["/runs", /Runs/], ["/agents", /Agents/], ["/notifications", /Notifications/],
-  ["/templates", /Templates/], ["/settings", /Settings/],
+  ["/analytics", /Analytics/], ["/agents", /Agents/], ["/notifications", /Notifications/],
+  ["/feedback", /Feedback/], ["/settings", /Settings/],
 ];
 
 const IGNORED = [/Download the React DevTools/, /ToggleGroup is changing from uncontrolled/];
@@ -151,7 +151,7 @@ test("queue rows never clip their text sideways", async ({ page }) => {
 
 test("thumbnails on the daily pages all load", async ({ page }) => {
   await signIn(page);
-  for (const path of ["/", "/queue", "/videos", "/templates"]) {
+  for (const path of ["/", "/queue", "/videos", "/calendar"]) {
     await page.goto(path);
     await expect(page.getByRole("heading", { level: 1 }).first()).toBeVisible({ timeout: 30_000 });
     await page.waitForLoadState("networkidle");
@@ -182,18 +182,6 @@ test("calendar plans long videos on their own days and time", async ({ page }) =
     text += (await cells.allTextContents()).join(" ");
   }
   expect(text).toContain("20:07");
-});
-
-test("template cards keep a readable text column", async ({ page }) => {
-  await signIn(page);
-  await page.goto("/templates");
-  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Templates/, { timeout: 30_000 });
-  // the long story's 16:9 player once left its description a ~150 px column on phones
-  for (const name of ["Short story", "Long story"]) {
-    const column = page.getByRole("heading", { level: 2, name }).locator("xpath=ancestor::div[contains(@class,'flex-1')][1]");
-    const box = await column.boundingBox();
-    expect(box?.width ?? 0, `${name} text column`).toBeGreaterThanOrEqual(220);
-  }
 });
 
 test("video page calls a due slot due, not minutes ago", async ({ page }) => {
@@ -376,6 +364,26 @@ test("queue section details wrap as a block, not a narrow column", async ({ page
   }
 });
 
+test("calendar totals the month's, each week's and each day's views", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+  // owner, 2026-11-12: month total at the top, a total per week, and a day's total on hover
+  await expect(page.getByTestId("month-views")).toContainText(/Views · \w+ \d{4}/);
+  expect(await page.getByTestId("week-views").count()).toBeGreaterThanOrEqual(4);
+  const day = page.locator("button[aria-pressed]").first();
+  await day.hover();
+  await expect(page.getByRole("tooltip")).toContainText(/views from \d+ videos? published this day|No video published this day/);
+});
+
+test("removed pages send old links somewhere useful", async ({ page }) => {
+  await signIn(page);
+  for (const [from, to] of [["/impact", /\/analytics$/], ["/runs", /\/videos\?status=failed$/], ["/templates", /\/settings$/]] as const) {
+    await page.goto(from);
+    await expect(page).toHaveURL(to);
+  }
+});
+
 test("calendar heading names the long-video days too", async ({ page }) => {
   await signIn(page);
   await page.goto("/calendar");
@@ -530,24 +538,6 @@ test("feedback form names the kind it will save", async ({ page }) => {
   await kind.click();
   await page.getByRole("option", { name: "General" }).click();
   await expect(kind).toHaveText("General");
-});
-
-test("runs page names long videos and says when nothing failed", async ({ page, isMobile }) => {
-  await signIn(page);
-  // a long-video run read "Video" like every Short, and "Failed" with none read "No runs here: runs appear
-  // about a minute after a routine commits", as if nothing had run at all
-  await page.route("**/api/runs", async (route) => {
-    if (route.request().method() !== "GET") return route.continue();
-    const res = await route.fetch();
-    const runs = ((await res.json()) as { status: string; kind: string; format?: string }[]).filter((r) => r.status === "ok");
-    await route.fulfill({ response: res, json: runs });
-  });
-  await page.goto("/runs");
-  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Runs/, { timeout: 30_000 });
-  const long = isMobile ? page.getByTestId("run-kind-inline").filter({ hasText: "Long video" }) : page.getByText("Long video", { exact: true }).locator("visible=true");
-  await expect(long.first()).toBeVisible();
-  await page.getByRole("radio", { name: "Failed" }).click();
-  await expect(page.getByText("No failed runs")).toBeVisible();
 });
 
 test("analytics switches tab when the link's hash changes on the page", async ({ page }) => {

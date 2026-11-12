@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { CalendarDays, ChevronLeft, ChevronRight } from "lucide-react";
+import { CalendarDays, ChevronLeft, ChevronRight, Eye, Trophy, Upload } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-import { Badge, Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, StatusBadge, Thumb, VideoLink } from "@/components/ui";
-import { fmtCompact, fmtDateTime, istDay } from "@/lib/format";
+import { Badge, Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, Stat, StatusBadge, Thumb, Tip, VideoLink } from "@/components/ui";
+import { fmtCompact, fmtDateTime, fmtNum, istDay } from "@/lib/format";
 import { useOverview, useQueue, useSettings, useVideos } from "@/lib/queries";
 import { postingPlan } from "@/lib/posting-plan";
 import { describeTimes } from "@/lib/slots";
@@ -78,6 +78,18 @@ export default function CalendarPage() {
   const longWhen = long?.longUploadDays.length && long.longUploadTimes.length
     ? ` · long videos ${[...long.longUploadDays].sort().map((d) => LONG_DAYS[d]).join("/")} at ${describeTimes(long.longUploadTimes)}` : "";
   const monthCount = [...byDay.map.keys()].filter((k) => k.startsWith(key(ym.y, ym.m, 1).slice(0, 7))).length;
+  // views of the videos published on a day (their lifetime views, live where available)
+  const published = (k: string) => (byDay.map.get(k) ?? []).filter((e) => e.kind === "published");
+  const dayViews = (k: string) => published(k).reduce((a, e) => a + (e.video.totals?.views ?? 0), 0);
+  const monthDays = Array.from({ length: days }, (_, i) => key(ym.y, ym.m, i + 1));
+  const monthViews = monthDays.reduce((a, k) => a + dayViews(k), 0);
+  const monthVideos = monthDays.reduce((a, k) => a + published(k).length, 0);
+  const bestDay = monthDays.reduce<string | null>((b, k) => (dayViews(k) > (b ? dayViews(b) : 0) ? k : b), null);
+  const weeks = Array.from({ length: cells.length / 7 }, (_, w) => cells.slice(w * 7, w * 7 + 7));
+  const dayTip = (k: string) => {
+    const n = published(k).length, v = dayViews(k);
+    return n ? `${fmtNum(v)} views from ${n} video${n === 1 ? "" : "s"} published this day` : "No video published this day";
+  };
 
   return (
     <Stagger>
@@ -90,24 +102,38 @@ export default function CalendarPage() {
         </div>
       </PageHeader>
 
+      <div data-testid="month-views" className="mb-5 grid gap-4 sm:grid-cols-3">
+        <Stat label={`Views · ${monthName}`} icon={Eye} accent="sky" value={fmtNum(monthViews)} sub="lifetime views of the videos published this month" />
+        <Stat label="Videos published" icon={Upload} accent="mint" value={String(monthVideos)} sub={monthVideos ? `${fmtCompact(monthViews / monthVideos)} views each on average` : "none yet this month"} />
+        <Stat label="Best day" icon={Trophy} accent="sun" value={bestDay ? fmtCompact(dayViews(bestDay)) : "—"}
+          sub={bestDay ? new Intl.DateTimeFormat("en-IN", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }).format(new Date(`${bestDay}T00:00:00Z`)) : "no views yet"} />
+      </div>
+
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px]">
         <Card flush>
-          <div className="grid grid-cols-7 border-b border-line bg-surface-2 text-center">
+          <div className="grid grid-cols-[repeat(7,minmax(0,1fr))_64px] border-b border-line bg-surface-2 text-center md:grid-cols-[repeat(7,minmax(0,1fr))_92px]">
             {WEEKDAYS.map((d) => <div key={d} className="py-2.5 text-[12px] font-medium text-muted">{d}</div>)}
+            <div className="border-l border-line py-2.5 text-[12px] font-semibold text-ink2">Week</div>
           </div>
-          <div className="grid grid-cols-7">
-            {cells.map((d, i) => {
-              const edge = `${i % 7 !== 6 ? "border-r" : ""} ${i < cells.length - 7 ? "border-b" : ""} border-line`;
+          <div className="grid grid-cols-[repeat(7,minmax(0,1fr))_64px] md:grid-cols-[repeat(7,minmax(0,1fr))_92px]">
+            {weeks.flatMap((row, w) => [...row.map((d, j) => {
+              const i = w * 7 + j;
+              const edge = `border-r ${i < cells.length - 7 ? "border-b" : ""} border-line`;
               if (d === null) return <div key={`b${i}`} className={`bg-surface-2/60 ${edge}`} />;
               const k = key(ym.y, ym.m, d);
               const list = byDay.map.get(k) ?? [];
               const gaps = byDay.gaps.get(k) ?? [];
               const on = selected === k;
+              const views = dayViews(k);
               return (
-                <button key={k} type="button" onClick={() => setSelected(k)} aria-pressed={on}
+                <Tip key={k} label={dayTip(k)}>
+                <button type="button" onClick={() => setSelected(k)} aria-pressed={on}
                   aria-label={`${d} ${monthName}${list.length ? `, ${list.map((e) => `${KIND[e.kind].label}${e.video.format === "long" ? " long video" : ""}: ${e.video.title}`).join("; ")}` : gaps.length ? "" : ", no upload"}${gaps.map((g) => `, nothing ready for the ${hhmm(g.at)} ${g.format === "long" ? "long-video" : "Short"} slot`).join("")}`}
                   className={`relative flex min-h-16 flex-col gap-1.5 p-1.5 text-left text-xs transition-colors md:min-h-[104px] md:p-2 ${edge} ${on ? "bg-brand-soft" : "hover:bg-surface-2"}`}>
-                  <span className={`grid size-6 place-items-center rounded-full text-[12.5px] tabular-nums ${k === today ? "bg-primary font-semibold text-white" : on ? "font-semibold text-ink" : "font-medium text-ink2"}`}>{d}</span>
+                  <span className="flex items-center justify-between gap-1">
+                    <span className={`grid size-6 place-items-center rounded-full text-[12.5px] tabular-nums ${k === today ? "bg-primary font-semibold text-white" : on ? "font-semibold text-ink" : "font-medium text-ink2"}`}>{d}</span>
+                    {published(k).length > 1 && <span className="hidden rounded-md bg-tint-blue px-1.5 py-0.5 text-[11px] font-semibold tabular-nums text-info-text md:inline">{fmtCompact(views)}</span>}
+                  </span>
                   <span className="flex flex-col gap-1">
                     {list.map((e) => (
                       <span key={e.video.id} className="flex min-w-0 items-center gap-1.5 md:gap-1">
@@ -124,8 +150,18 @@ export default function CalendarPage() {
                     ))}
                   </span>
                 </button>
+                </Tip>
               );
-            })}
+            }), (() => {
+              const total = row.reduce<number>((a, d) => a + (d === null ? 0 : dayViews(key(ym.y, ym.m, d))), 0);
+              const n = row.reduce<number>((a, d) => a + (d === null ? 0 : published(key(ym.y, ym.m, d)).length), 0);
+              return (
+                <div key={`w${w}`} data-testid="week-views" className={`flex flex-col items-center justify-center gap-0.5 bg-surface-2 px-1 text-center ${w < weeks.length - 1 ? "border-b border-line" : ""}`}>
+                  <span className="text-[13px] font-semibold tabular-nums text-ink md:text-[15px]">{total ? fmtCompact(total) : "—"}</span>
+                  <span className="text-[10.5px] text-muted md:text-[11px]">{n ? `${n} video${n === 1 ? "" : "s"}` : "views"}</span>
+                </div>
+              );
+            })()])}
           </div>
         </Card>
 
