@@ -85,7 +85,7 @@ function CycleChart({ rows }: { rows: Growth["stayedByCycle"] }) {
     <div className="relative" style={{ height: h + 28 }}>
       <div aria-hidden className="absolute inset-x-0 border-t border-dashed border-warning" style={{ top: y(ESCALATE_BELOW) }} />
       <span className="absolute right-0 -translate-y-full pb-0.5 text-[11px] font-medium text-warning-text" style={{ top: y(ESCALATE_BELOW) }}>45%</span>
-      <div className="absolute inset-x-0 bottom-0 flex items-end gap-4" style={{ height: h + 28 }}>
+      <div className="absolute bottom-0 left-0 right-9 flex items-end gap-4" style={{ height: h + 28 }}>
         {rows.map((r) => (
           <div key={r.cycle} className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
             <div className="flex w-full items-end justify-center gap-1.5" style={{ height: h }}>
@@ -241,7 +241,7 @@ export default function GrowthPage() {
       {/* the record */}
       <Card title="Progress over time" icon={History} accent="mint" className="mt-5" description="Stayed to watch of each side, per finished cycle, and every test so far.">
         <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
-          <div>
+          <div className="min-w-0">
             {data.stayedByCycle.length ? <CycleChart rows={data.stayedByCycle} /> : <Empty icon={TrendingDown} title="No finished cycle yet">The chart starts when the first verdict lands.</Empty>}
             <div className="mt-3 flex flex-wrap gap-4 text-[12px] text-ink2">
               <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-[3px] bg-ring-strong" />Champion</span>
@@ -249,7 +249,7 @@ export default function GrowthPage() {
               <span className="flex items-center gap-1.5"><span className="h-0 w-4 border-t border-dashed border-warning" />45% line</span>
             </div>
           </div>
-          <ul className="divide-y divide-line rounded-xl border border-ring">
+          <ul className="min-w-0 divide-y divide-line rounded-xl border border-ring">
             {[...data.history].reverse().map((h) => {
               const v = verdictOf(h.verdict), row = data.stayedByCycle.find((x) => x.cycle === h.cycle);
               return (

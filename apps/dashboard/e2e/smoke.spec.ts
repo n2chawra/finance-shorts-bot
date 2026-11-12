@@ -592,3 +592,16 @@ test("overview shows this week's test and links to the growth loop", async ({ pa
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Growth loop");
   await expect(page.getByText("Live scoreboard")).toBeVisible();
 });
+
+test("no page scrolls sideways on a phone", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "phone only");
+  await signIn(page);
+  for (const [path, heading] of PAGES) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(heading, { timeout: 30_000 });
+    await page.waitForTimeout(600);
+    // a phone widens its layout to fit content that is too wide, so compare with the device's own width
+    const over = (await page.evaluate(() => document.documentElement.scrollWidth)) - page.viewportSize()!.width;
+    expect(over, `${path} is ${over}px wider than the screen`).toBeLessThanOrEqual(1);
+  }
+});
