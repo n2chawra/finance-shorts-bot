@@ -183,6 +183,8 @@ export async function buildRoutineSettings(prisma: PrismaClient, root = ROOT): P
     // how many Shorts the routine makes a day, and how often one is published (the 48-hour test)
     dailyVideoTarget: s.dailyVideoTarget,
     shortEveryDays: s.shortEveryDays,
+    // the publish slots: a video run keeps making Shorts until a full day of slots is ready
+    uploadTimes: s.uploadTimes,
     // the ready videos in publish order, so the editor step ranks the real queue (owner's pick first)
     queue: (await prisma.video.findMany({ where: { status: "queued", deletedAt: null },
       orderBy: [{ pickedAt: { sort: "asc", nulls: "last" } }, { queuePosition: "asc" }, { createdAt: "asc" }],

@@ -10,7 +10,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { TOKEN_FIX, type Notice, notify, resolve, resolveOthers } from "./lib/notify.ts";
 import { istHour, istWeekday } from "./lib/ist-clock.ts";
-import { istDay } from "./lib/publishing.ts";
+import { istDay, missedSlots, istTime } from "./lib/publishing.ts";
 import { type ObservedRun, clusterRuns, isScheduled, scheduleOverlap, videoRunId, videoSteps } from "./lib/schedule.ts";
 import { loadSettings } from "./lib/settings.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
@@ -32,6 +32,12 @@ async function pipelineChecks(prisma: PrismaClient, now: Date): Promise<Check[]>
   const today = istDay(now);
   const madeToday = await prisma.video.count({ where: { createdAt: { gte: new Date(`${today}T00:00:00+05:30`) } } });
   const backlog = await prisma.video.count({ where: { status: "queued", deletedAt: null } });
+  // a Short slot that passed 20+ minutes ago today with nothing uploaded for it (12 Nov 2026: GitHub
+  // dropped every Publish run for 9 hours and the 19:07 slot went empty without anyone knowing)
+  const shortUploads = (await prisma.upload.findMany({
+    where: { state: { in: ["scheduled", "uploaded", "published"] }, video: { format: { not: "long" }, deletedAt: null },
+             publishAt: { gte: new Date(`${today}T00:00:00+05:30`) } }, select: { publishAt: true } })).map((u) => u.publishAt);
+  const empty = s.uploadsPaused ? [] : missedSlots(now, s.uploadTimes, shortUploads, -20, 24).map((d) => istTime(d));
   return [
     { key: "no-videos", raise: !s.generationPaused && hours > 26 ? notice("no-videos", "critical", `No new videos for ${Number.isFinite(hours) ? Math.floor(hours) : "many"} hours`,
       "The nightly video run hasn't produced anything. The queue will run dry.",
@@ -42,6 +48,10 @@ async function pipelineChecks(prisma: PrismaClient, now: Date): Promise<Check[]>
       "The next upload slot has nothing to publish.", "Videos usually arrive overnight. If this lasts past 10:00 IST, check the video runs (see 'No new videos')."): null },
     { key: "backlog-low", raise: s.alerts.lowBacklog && backlog > 0 && backlog < s.alerts.lowBacklogThreshold ? notice("backlog-low", "warning", `Only ${backlog} videos ready`,
       `Fewer than ${s.alerts.lowBacklogThreshold} videos are queued; at two uploads a day that's under ${Math.ceil(backlog / 2)} days.`, "Nothing to do if runs are healthy; it refills by about one a day.") : null },
+    { key: "slot-missed", raise: empty.length ? notice("slot-missed", "critical", `Today's ${empty.join(", ")} Short slot${empty.length === 1 ? " was" : "s were"} missed`,
+      backlog === 0 ? "Nothing was uploaded for it, and no Short is queued: the video runs made fewer Shorts than there are slots."
+        : "Nothing was uploaded for it although Shorts are queued: the Publish workflow didn't run in time.",
+      "1. GitHub → Actions → Publish → Run workflow (upload_now 1 posts the next Short now).\n2. If Publish keeps missing runs, check that GITHUB_ACTIONS_TOKEN is set in Netlify (the publish heartbeat needs it).\n3. If no Short is queued, start the video routine by hand.") : null },
     { key: "uploads-paused", raise: s.uploadsPaused ? notice("uploads-paused", "info", "Uploads are paused (you post by hand)",
       "The bot uploads nothing while this is on.", "When Google approves the YouTube API audit: Settings → Uploads → turn off 'Pause all uploads'.") : null },
     { key: "agents-paused", raise: s.agents.paused ? notice("agents-paused", "info", "Self-improving agents are paused",

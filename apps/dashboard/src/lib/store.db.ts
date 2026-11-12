@@ -7,6 +7,7 @@ import type { Prisma } from "@prisma/client";
 
 import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
+import { dispatchPublish } from "./dispatch";
 import { canMarkStale, skipToEnd, uploadNow } from "./queue-actions";
 import { EditorNoteSchema, SettingsSchema, mostLoved } from "./schemas";
 import { runEndMs } from "./run-span";
@@ -210,12 +211,14 @@ export async function videoAction(id: string, action: VideoAction, reason?: stri
     return { ok: true };
   }
   if ((await getSettings()).uploadsPaused) return { ok: false, error: "Uploads are paused" };
-  // the publisher (M5) picks up pending uploads on its next run
+  // the publisher picks up pending uploads on its next run, which the dispatch below starts
   await prisma.$transaction([
     prisma.video.update({ where: { id }, data: uploadNow() }),
     prisma.upload.upsert({ where: { videoId: id }, update: { publishAt: new Date(), state: "pending" }, create: { videoId: id, publishAt: new Date(), state: "pending" } }),
   ]);
   await renumber();
+  // start Publish now rather than wait for a scheduled run (GitHub drops those on busy days)
+  await dispatchPublish().then((r) => console.log(`upload-now ${id}: ${r.why}`), (e) => console.error(`upload-now ${id}: dispatch failed`, e));
   return { ok: true };
 }
 

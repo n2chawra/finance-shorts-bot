@@ -130,6 +130,10 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         mode, why = "idle", f"backlog {backlog} has reached the cap of {settings['backlogCap']}"
     elif made_today < target:
         mode, why = "video", f"{made_today} of {target} videos made today; backlog {backlog} of {settings['backlogCap']}"
+    elif fmt == "short" and backlog < (floor := len(settings.get("uploadTimes") or []) // max(1, settings.get("shortEveryDays", 1))):
+        # never leave a publish slot empty (12 Nov 2026: the target was 2 while 3 slots ran, the
+        # spare run went idle, and the 19:07 slot had no Short): keep a full day of slots ready
+        mode, why = "video", f"today's {target} videos are made, but only {backlog} Shorts are ready for {floor} daily slots"
     else:
         mode, why = "idle", f"today's {target} videos are made"
 

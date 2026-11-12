@@ -381,7 +381,10 @@ the agent steps follow `generator/prompts/*.md`.
 `DATABASE_URL`, `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`, `TELEGRAM_BOT_TOKEN`,
 `TELEGRAM_CHAT_ID`. The dashboard's own env vars live in Netlify: `DATABASE_URL`, `DIRECT_URL`,
 `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_TOKEN` (read-only, this repo), `GITHUB_REPOSITORY`,
-`YT_API_KEY` (Data API key for live public counters). The Google OAuth consent screen must be in **Production** status, otherwise
+`YT_API_KEY` (Data API key for live public counters). `GITHUB_ACTIONS_TOKEN` (fine-grained, this repo, Actions: read and write) lets the
+dashboard start the Publish workflow itself: at once on "Upload now", and from the Netlify scheduled
+function `apps/dashboard/netlify/functions/publish-heartbeat.mts` whenever Publish hasn't run for 15
+minutes, because GitHub's own cron drops runs for hours on busy days (12 Nov 2026). The Google OAuth consent screen must be in **Production** status, otherwise
 refresh tokens expire after 7 days.
 
 ## YouTube API facts

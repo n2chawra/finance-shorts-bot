@@ -138,9 +138,23 @@ def test_videos_from_yesterday_do_not_count_toward_today(root: Path, today: None
 
 
 def test_daily_target_is_a_setting(root: Path, today: None) -> None:
-    settings(root, dailyVideoTarget=1, templateWork={"everyNthRun": 0})
+    settings(root, dailyVideoTarget=1, uploadTimes=["19:07"], templateWork={"everyNthRun": 0})
     history.append(entry(1, days_ago=0.1), root)
     assert run.state(root)["mode"] == "idle"                 # no template work outside a full backlog
+
+
+def test_runs_keep_a_full_day_of_slots_ready(root: Path, today: None) -> None:
+    # 12 Nov 2026: the target was 2 while 3 slots ran; the spare run went idle and 19:07 had no Short
+    settings(root, dailyVideoTarget=2, uploadTimes=["07:07", "12:37", "19:07"])
+    history.append(entry(0, days_ago=0.1), root)
+    history.append(entry(1, days_ago=0.08), root)
+    s = run.state(root)
+    assert s["mode"] == "video" and "2 Shorts are ready for 3 daily slots" in s["reason"]
+    history.append(entry(2, days_ago=0.05), root)
+    assert run.state(root)["mode"] == "idle"
+    # one Short every other day needs fewer ready
+    settings(root, dailyVideoTarget=1, uploadTimes=["07:07", "12:37", "19:07"], shortEveryDays=3)
+    assert run.state(root)["mode"] == "idle"
 
 
 def test_no_template_runs_once_templates_are_at_the_limit(root: Path, today: None) -> None:

@@ -118,6 +118,17 @@ test("one Short every 48 hours: the day after an upload rests, manual uploads in
   assert.equal(next.toISOString(), "2026-11-04T13:37:00.000Z");
 });
 
+// 12 Nov 2026: GitHub dropped every Publish run for 9 hours; the watchdog now flags a slot that
+// passed 20+ minutes ago today with nothing uploaded for it (missedSlots with lead -20, a day back)
+test("the watchdog finds today's empty slots", async () => {
+  const { missedSlots } = await import("../lib/publishing.ts");
+  const T = ["07:07", "12:37", "19:07"];
+  const day = (iso: string) => missedSlots(at(iso), T, [at("2026-11-12T01:37:00Z"), at("2026-11-12T07:07:00Z")], -20, 24).map((d) => d.toISOString());
+  assert.deepEqual(day("2026-11-12T13:50:00Z"), []);                              // 19:07 passed only 13 min ago
+  assert.deepEqual(day("2026-11-12T14:00:00Z"), ["2026-11-12T13:37:00.000Z"]);    // 23 min past, still empty
+  assert.deepEqual(day("2026-11-12T18:00:00Z"), ["2026-11-12T13:37:00.000Z"]);    // stays flagged all evening
+});
+
 // 9 Nov 2026: GitHub ran the publish job 26 min before the 07:07 slot and 18 min before the 19:07 one;
 // with a 30-minute lead both Shorts were skipped. Late slots are now filled or caught up.
 test("missed slots are caught up for two hours, once", async () => {

@@ -22,6 +22,7 @@ DEFAULTS: dict = {
     "longBacklogCap": 4,
     "disclaimer": "Illustrative only. Not financial advice.",
     "dailyVideoTarget": 3,        # Shorts to ship per IST day (3; 2 during the 48-hour test); then runs idle
+    "uploadTimes": ["07:07", "12:37", "19:07"],   # Short publish slots (IST); written by ingest from the dashboard
     "templateWork": {
         "maxPerDay": 1,           # template-building runs allowed per IST day
         "maxTemplates": 10,       # stop building new templates at this many

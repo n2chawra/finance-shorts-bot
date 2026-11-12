@@ -9,11 +9,18 @@
 # So the job runs every 20 minutes, at odd minutes away from the busy hour marks. A run with
 # nothing due only checks the database and stops (no YouTube quota); the repo is public, so the
 # minutes are free. With ~70 chances a day, one dropped run costs 20 minutes, not a slot.
+# Two triggers that don't depend on GitHub's scheduler back it up: every finished Ingest, and the
+# dashboard's Netlify function (apps/dashboard/netlify/functions/publish-heartbeat.mts), which
+# dispatches this workflow whenever it hasn't started for 15 minutes, and at once on "Upload now".
 name: Publish
 
 on:
   schedule:
     - cron: "11,31,51 * * * *"
+  # right after Ingest: the morning routine's new Shorts get their slots the moment they land
+  workflow_run:
+    workflows: ["Ingest"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       upload_now:
