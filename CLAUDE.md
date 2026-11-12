@@ -176,7 +176,7 @@ GitHub repo (handoff point; sessions never hold DB or YouTube credentials)
         ▼
 GitHub Actions (cron)
   ├─ ingest.yml   on push/release + every 6h   new manifests → Postgres (status: queued)
-  ├─ publish.yml  daily    fills today's slots from the queue → YouTube (private + publishAt) → scheduled
+  ├─ publish.yml  every 20 min  fills today's slots from the queue → YouTube (private + publishAt) → scheduled
   ├─ stats.yml    every 3h YouTube Analytics → VideoStat, ChannelDay, retention + drop points
   ├─ stats-deep.yml daily  traffic, searches, countries, age/gender, devices (channel + per video),
   │                        impressions/CTR (Reporting API), comments (YT_API_KEY) → Breakdown, Comment

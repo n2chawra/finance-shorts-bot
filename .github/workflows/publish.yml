@@ -3,18 +3,17 @@
 # run, 12:37 at 10:07, 19:07 and long 20:07 at 16:07; trend slots 16:07 at 13:07 and 22:07 at 19:37.
 # A slot missed by a late run is caught up within 2 h (public ~15 min after the run); "Run workflow"
 # with upload_now uploads that many queued Shorts at once.
-# Filling late lets a trending video made at midday take an evening slot. Each slot gets a retry
-# run; GitHub can start a cron job up to ~3 h late, so every slot has a run comfortably before it.
+# Filling late lets a trending video made at midday take an evening slot.
+# GitHub drops scheduled runs under load, not only delays them: on 12 Nov 2026 every run after
+# 09:16 IST was dropped (the 19:07 Short and an "Upload now" waited for a run that never came).
+# So the job runs every 20 minutes, at odd minutes away from the busy hour marks. A run with
+# nothing due only checks the database and stops (no YouTube quota); the repo is public, so the
+# minutes are free. With ~70 chances a day, one dropped run costs 20 minutes, not a slot.
 name: Publish
 
 on:
   schedule:
-    - cron: "37 21 * * *"     # 03:07 IST: the 07:07 slot
-    - cron: "7 23 * * *"      # 04:37 IST: retry for it
-    - cron: "37 4,7,10 * * *" # 10:07, 13:07, 16:07 IST
-    - cron: "7 12 * * *"      # 17:37 IST: retry for the evening slots
-    - cron: "7 14 * * *"      # 19:37 IST: the 22:07 trend slot
-    - cron: "37 15 * * *"     # 21:07 IST: retry for it
+    - cron: "11,31,51 * * * *"
   workflow_dispatch:
     inputs:
       upload_now:
