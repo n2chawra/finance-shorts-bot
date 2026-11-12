@@ -21,9 +21,9 @@ export function VideoAnalytics({ id }: { id: string }) {
   const v48 = ratio(d.bench.views48, d.bench.median48);
   const vPct = ratio(d.bench.avgViewPct, d.bench.medianPct);
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-5">
       {d.ai && <AiVideoCard ai={d.ai} />}
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
         <MiniStat label="Rank by views" value={d.bench.rank ? <span>#{d.bench.rank}<span className="text-sm font-normal text-muted"> of {d.bench.of}</span></span> : "—"} />
         <MiniStat label="First 48 h vs typical" value={v48 === null ? "—" : `${v48.toFixed(1)}×`} hint={`median ${fmtNum(d.bench.median48 ?? 0)}`} />
         <MiniStat label="% viewed vs typical" value={vPct === null ? "—" : `${vPct.toFixed(2)}×`} />
@@ -31,7 +31,7 @@ export function VideoAnalytics({ id }: { id: string }) {
         <MiniStat label="Engaged views" value={t.views ? pct(t.engagedViews / t.views) : "—"} hint="engaged ÷ views, the closest to stayed-to-watch" />
         <MiniStat label="Click-through" value={pct(t.ctr, 1)} hint={t.impressions ? `${fmtNum(t.impressions)} impressions` : "needs the Reporting API"} />
       </div>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
         <MiniStat label="Watch time" value={`${t.watchHours.toFixed(1)} h`} />
         <MiniStat label="Average view" value={`${Math.floor(t.avgViewSec / 60)}:${String(Math.round(t.avgViewSec % 60)).padStart(2, "0")}`} />
         <MiniStat label="Still there at the end" value={pct(d.endHold)} />
@@ -56,27 +56,27 @@ export function VideoAnalytics({ id }: { id: string }) {
           : <Waiting icon={Radio} title="Hourly snapshots start with new uploads">The watchdog records public counters every hour; videos published after that get this chart.</Waiting>}
       </Card>
 
-      <div className="grid gap-3 lg:grid-cols-2">
+      <div className="grid gap-5 lg:grid-cols-2">
         <Card title="Traffic sources" icon={Compass}>{b.traffic.length ? <Donut slices={b.traffic} size={150} /> : <Waiting icon={Compass} title="Arrives with the daily deep stats">Sources, searches and countries refresh once a day.</Waiting>}</Card>
         <Card title="Countries" icon={Globe2}>{b.country.length ? <RankList slices={b.country} kind="country" max={8} /> : <Waiting icon={Globe2} title="Arrives with the daily deep stats">Countries refresh once a day.</Waiting>}</Card>
       </div>
-      <div className="grid gap-3 lg:grid-cols-3">
+      <div className="grid gap-5 lg:grid-cols-3">
         <Card title="Search terms" icon={Search}>{b.search.length ? <RankList slices={b.search} max={10} /> : <p className="text-[13px] text-muted">No search views yet.</p>}</Card>
         <Card title="Devices" icon={MonitorSmartphone}>{b.device.length ? <RankList slices={b.device} max={5} /> : <p className="text-[13px] text-muted">—</p>}</Card>
         <Card title="Subscribers vs not" icon={Users}>{b.subscribed.length ? <RankList slices={b.subscribed} /> : <p className="text-[13px] text-muted">—</p>}</Card>
       </div>
       {(b.external.length > 0 || b.sharing.length > 0) && (
-        <div className="grid gap-3 lg:grid-cols-2">
+        <div className="grid gap-5 lg:grid-cols-2">
           <Card title="External sites" icon={MousePointerClick}>{b.external.length ? <RankList slices={b.external} max={8} /> : <p className="text-[13px] text-muted">None.</p>}</Card>
           <Card title="Shared through" icon={Share2}>{b.sharing.length ? <RankList slices={b.sharing} unit="shares" /> : <p className="text-[13px] text-muted">None.</p>}</Card>
         </div>
       )}
       <Card title="Comments" icon={MessageSquare} description="Top-level public comments, most liked first">
         {d.comments.length ? (
-          <ul className="divide-y divide-line">
+          <ul className="divide-y-2 divide-line">
             {d.comments.map((c) => (
               <li key={c.id} className="py-2.5 text-[13px] first:pt-0 last:pb-0">
-                <div className="flex items-center gap-2 text-xs text-muted"><span className="font-medium text-ink2">{c.author}</span>· {fmtRelative(c.publishedAt)}{c.likes > 0 && <span>· {c.likes} likes</span>}{c.replies > 0 && <span>· {c.replies} replies</span>}</div>
+                <div className="flex items-center gap-2 text-xs text-muted"><span className="font-semibold text-ink2">{c.author}</span>· {fmtRelative(c.publishedAt)}{c.likes > 0 && <span>· {c.likes} likes</span>}{c.replies > 0 && <span>· {c.replies} replies</span>}</div>
                 <p className="mt-0.5 whitespace-pre-line">{c.text}</p>
               </li>
             ))}

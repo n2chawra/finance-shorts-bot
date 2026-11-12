@@ -7,22 +7,23 @@ Shared components are in `src/components/ui.tsx` (cards, tiles, badges, buttons,
 slider, confirm dialog), `toast.tsx` and `charts.tsx`. Colours are CSS variables in
 `src/app/globals.css`, defined once for light and once for dark.
 
-## Look ("Studio", November 2026 redesign)
+## Look ("Brutal", November 2026 rebuild)
 
-- Warm paper base (`--plane`), ink type, one **marigold** accent (`--brand`) for navigation, focus
-  and the logo; emerald for good, violet for queued, so status colours never look like the accent.
-- The sidebar is a dark ink rail (`--rail*`) in both themes; the active page gets a marigold bar.
-- Type: Bricolage Grotesque (`font-display`) for page titles, card headings and big numbers;
-  Geist for text; Geist Mono for countdowns and shortcuts.
-- Corners are larger through the theme radii (`--radius-lg` 10 px, `--radius-xl` 16 px); pills
-  for badges, deltas and segmented controls; link cards lift on hover (`.lift`).
-- The logo is `src/components/brand.tsx` (`LogoMark`, `Wordmark`). The sign-in page is a split
-  screen: brand panel on desktop, form only on phones.
-
-```powershell
-npm --prefix apps/dashboard install
-npm --prefix apps/dashboard run dev     # http://localhost:3000
-```
+- **Blocks**: every card, button, input and chart mark has a 2 px ink edge and a hard offset shadow
+  (`.nb`, `.nb-sm`; `.nb-press` lifts on hover and presses flat on click). Corners are square: the
+  theme radii are 0, only `rounded-full` stays round.
+- **Colour**: paper (`--plane`), ink, and flat accent fills (`lime pink sun sky grape tang mint red`)
+  that always carry black text: put `on-accent` on a filled block and everything inside it (text,
+  nested buttons, inputs) turns ink-on-paper in both themes. Status: mint good, sun warning, red
+  failure, grape queued, sky scheduled.
+- **Type**: Archivo Black (`font-display`, uppercase) for titles, card headings and big numbers;
+  Space Grotesk for text; JetBrains Mono for labels (`.nb-label`), times and ids.
+- **Frame** (`components/nav.tsx`): a black masthead (search, live status, theme, alerts), a lime
+  ticker with the channel's state, and a tab strip of every page (`nav` "Main"). Phones get a
+  bottom tab bar and a full-screen menu. No sidebar.
+- **Kit** (`components/ui.tsx`): `Card` takes `accent` for its title strip, `Stat` takes `accent`
+  for a filled block, `tabClass`/`tabListClass` for every tab row, `ACCENT` for any filled block.
+- Logo: `components/brand.tsx`. Sign-in: a poster of the pipeline's verbs beside the form.
 
 ## Sample data
 

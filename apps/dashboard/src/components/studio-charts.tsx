@@ -29,7 +29,7 @@ function useWidth(): [React.RefObject<HTMLDivElement | null>, number] {
 
 function Tooltip({ x, y, width, children }: { x: number; y: number; width: number; children: React.ReactNode }) {
   return (
-    <div className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-full rounded-lg border border-ring bg-surface px-2.5 py-1.5 text-xs shadow-lift"
+    <div className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-full border-2 border-edge bg-surface px-2.5 py-1.5 text-xs shadow-[7px_7px_0_0_var(--hard)]"
       style={{ left: Math.min(Math.max(x, 80), width - 80), top: Math.max(y - 10, 40) }}>
       {children}
     </div>
@@ -62,7 +62,7 @@ export function Donut({ slices, size = 168, unit = "views", fmt = fmtCompact }: 
       <div className="relative shrink-0" style={{ width: size, height: size }}>
         <svg width={size} height={size} role="img" aria-label="Share of views" onPointerLeave={() => setHover(null)}>
           {arcs.map((a, i) => (
-            <motion.path key={a.p.key} d={a.d} fill={a.color} stroke="var(--surface)" strokeWidth={1.5}
+            <motion.path key={a.p.key} d={a.d} fill={a.color} stroke="var(--edge)" strokeWidth={2.5}
               initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: hover === null || hover === i ? 1 : 0.35, scale: hover === i ? 1.03 : 1 }}
               style={{ transformOrigin: `${r}px ${r}px` }} transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
               onPointerEnter={() => setHover(i)} />
@@ -78,11 +78,11 @@ export function Donut({ slices, size = 168, unit = "views", fmt = fmtCompact }: 
       <ul className="w-full min-w-0 flex-1 space-y-1.5 text-[13px]">
         {parts.map((p, i) => (
           <li key={p.key} onPointerEnter={() => setHover(i)} onPointerLeave={() => setHover(null)}
-            className={`flex items-center gap-2 rounded-md px-1.5 py-1 transition-colors ${hover === i ? "bg-wash" : ""}`}>
+            className={`flex items-center gap-2  px-1.5 py-1 transition-colors ${hover === i ? "bg-wash" : ""}`}>
             <span aria-hidden className="size-2.5 shrink-0 rounded-[3px]" style={{ background: arcs[i]!.color }} />
             <span className="min-w-0 flex-1 truncate text-ink">{p.label}</span>
             <span className="tabular-nums text-muted">{fmt(p.views)} {unit === "views" ? "" : unit}</span>
-            <span className="w-11 text-right font-medium tabular-nums">{((p.views / total) * 100).toFixed(p.views / total < 0.1 ? 1 : 0)}%</span>
+            <span className="w-11 text-right font-semibold tabular-nums">{((p.views / total) * 100).toFixed(p.views / total < 0.1 ? 1 : 0)}%</span>
           </li>
         ))}
       </ul>
@@ -108,11 +108,11 @@ export function Funnel({ steps }: { steps: { label: string; value: number | null
                 {rate !== null ? <span className="tabular-nums"><b className="font-semibold text-ink2">{(rate * 100).toFixed(rate < 0.1 ? 1 : 0)}%</b> {s.note ?? ""}</span> : <span>{s.note ?? "not available yet"}</span>}
               </div>
             )}
-            <div className="relative h-11 overflow-hidden rounded-lg bg-wash">
-              <motion.div className="absolute inset-y-0 left-0 rounded-lg" style={{ background: `linear-gradient(90deg, ${CAT[i % CAT.length]}, color-mix(in oklab, ${CAT[i % CAT.length]} 70%, transparent))` }}
+            <div className="relative h-11 overflow-hidden bg-wash">
+              <motion.div className="absolute inset-y-0 left-0 " style={{ background: `linear-gradient(90deg, ${CAT[i % CAT.length]}, color-mix(in oklab, ${CAT[i % CAT.length]} 70%, transparent))` }}
                 initial={{ width: 0 }} animate={{ width: s.value === null ? "0%" : `${Math.max((s.value / first) * 100, 1.5)}%` }} transition={{ duration: 0.8, delay: i * 0.08, ease: EASE }} />
               <div className="relative flex h-full items-center justify-between px-3 text-[13px]">
-                <span className="font-medium text-ink mix-blend-normal">{s.label}</span>
+                <span className="font-semibold text-ink mix-blend-normal">{s.label}</span>
                 <span className="font-semibold tabular-nums">{s.value === null ? "—" : fmtNum(s.value)}</span>
               </div>
             </div>
@@ -152,8 +152,8 @@ export function HourlyBars({ values, hours, height = 150, compare, bare }: { val
             return (
               <g key={i} onPointerEnter={() => setHover(i)} onPointerDown={() => setHover(i)}>
                 <rect x={i * band} y={0} width={band} height={base} fill={hover === i ? "var(--wash)" : "transparent"} />
-                {last && h > 0 && <rect x={i * band + 1} y={base - h} width={bw} height={h} rx={2} fill="var(--c1)" filter={`url(#${gid}g)`} opacity={0.8} className="animate-pulse-dot" />}
-                <motion.rect x={i * band + 1} y={base - h} width={bw} height={h} rx={Math.min(2, bw / 2)} fill={last ? "var(--c1)" : `url(#${gid})`}
+                {last && h > 0 && <rect x={i * band + 1} y={base - h} width={bw} height={h} fill="var(--lime)" filter={`url(#${gid}g)`} opacity={0.8} className="animate-pulse-dot" />}
+                <motion.rect x={i * band + 1} y={base - h} width={bw} height={h} fill={last ? "var(--lime)" : `url(#${gid})`} stroke="var(--edge)" strokeWidth={1.5}
                   style={{ transformBox: "fill-box", transformOrigin: "bottom" }}
                   initial={{ scaleY: 0 }} animate={{ scaleY: 1, opacity: hover === null || hover === i ? 1 : 0.55 }}
                   transition={{ duration: 0.5, delay: i * 0.008, ease: EASE }} />
@@ -161,7 +161,7 @@ export function HourlyBars({ values, hours, height = 150, compare, bare }: { val
             );
           })}
           {compare && compare.length > 1 && (
-            <path d={compare.map((v, i) => `${i ? "L" : "M"}${i * band + band / 2},${y(v)}`).join(" ")} fill="none" stroke="var(--ink2)" strokeWidth={1.5} strokeDasharray="4 3" opacity={0.7} />
+            <path d={compare.map((v, i) => `${i ? "L" : "M"}${i * band + band / 2},${y(v)}`).join(" ")} fill="none" stroke="var(--ink)" strokeWidth={2} strokeDasharray="4 3" />
           )}
           {!bare && [0, Math.floor(n / 2), n - 1].map((i) => hours[i] && (
             <text key={i} x={i * band + band / 2} y={height - 3} fontSize={10.5} fill="var(--muted)" textAnchor={i === 0 ? "start" : i === n - 1 ? "end" : "middle"}>
@@ -173,7 +173,7 @@ export function HourlyBars({ values, hours, height = 150, compare, bare }: { val
       {hover !== null && w > 0 && (
         <Tooltip x={hover * band + band / 2} y={y(values[hover] ?? 0)} width={w}>
           <div className="text-muted">{hover === n - 1 ? "This hour" : hours[hover]}</div>
-          <div className="mt-0.5 font-medium tabular-nums text-ink">{fmtNum(values[hover] ?? 0)} views</div>
+          <div className="mt-0.5 font-semibold tabular-nums text-ink">{fmtNum(values[hover] ?? 0)} views</div>
           {compare?.[hover] !== undefined && <div className="tabular-nums text-muted">typical {fmtNum(compare[hover]!)}</div>}
         </Tooltip>
       )}
@@ -264,7 +264,7 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
             ))}
             {[0, 0.25, 0.5, 0.75, 1].map((s) => <text key={s} x={x(s)} y={height - 5} fontSize={10.5} fill="var(--muted)" textAnchor={s === 0 ? "start" : s === 1 ? "end" : "middle"}>{mmss(s * duration)}</text>)}
             <motion.path d={`${line(curve)} L${x(curve.at(-1)![0])},${y(0)} L${x(curve[0]![0])},${y(0)} Z`} fill={`url(#${gid})`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} />
-            {typical.length > 0 && <path d={line(typical)} fill="none" stroke="var(--ink2)" strokeWidth={1.5} strokeDasharray="5 4" opacity={0.6} />}
+            {typical.length > 0 && <path d={line(typical)} fill="none" stroke="var(--ink)" strokeWidth={2} strokeDasharray="5 4" />}
             <motion.path d={line(curve)} fill="none" stroke="var(--c1)" strokeWidth={2.25} strokeLinejoin="round"
               initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.1, ease: EASE }} />
             {drops.map((d, i) => {
@@ -272,7 +272,7 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
               return (
                 <g key={i} className="cursor-pointer" onClick={() => setPin(i)}>
                   <line x1={x(s)} x2={x(s)} y1={y(d.from)} y2={y(0)} stroke="var(--critical)" strokeDasharray="2 3" opacity={0.5} />
-                  <motion.circle cx={x(s)} cy={y((d.from + d.to) / 2)} r={pin === i ? 11 : 9} fill="var(--critical)" stroke="var(--surface)" strokeWidth={2}
+                  <motion.circle cx={x(s)} cy={y((d.from + d.to) / 2)} r={pin === i ? 11 : 9} fill="var(--red)" stroke="var(--edge)" strokeWidth={2.5}
                     initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.9 + i * 0.12, type: "spring", stiffness: 400, damping: 18 }}
                     style={{ transformOrigin: `${x(s)}px ${y((d.from + d.to) / 2)}px` }} />
                   <text x={x(s)} y={y((d.from + d.to) / 2)} fontSize={11} fontWeight={700} fill="#fff" textAnchor="middle" dominantBaseline="central" pointerEvents="none">{i + 1}</text>
@@ -282,7 +282,7 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
             {hover !== null && (
               <>
                 <line x1={x(hover)} x2={x(hover)} y1={pad.t} y2={y(0)} stroke="var(--ring-strong)" />
-                <circle cx={x(near(hover)[0])} cy={y(near(hover)[1])} r={4.5} fill="var(--c1)" stroke="var(--surface)" strokeWidth={2} />
+                <circle cx={x(near(hover)[0])} cy={y(near(hover)[1])} r={5.5} fill="var(--lime)" stroke="var(--edge)" strokeWidth={2.5} />
               </>
             )}
           </svg>
@@ -290,7 +290,7 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
         {hover !== null && w > 0 && curve.length > 0 && (
           <Tooltip x={x(hover)} y={y(near(hover)[1])} width={w}>
             <div className="text-muted">{mmss(hover * duration)}</div>
-            <div className="mt-0.5 font-medium tabular-nums text-ink">{Math.round(near(hover)[1] * 100)}% still watching</div>
+            <div className="mt-0.5 font-semibold tabular-nums text-ink">{Math.round(near(hover)[1] * 100)}% still watching</div>
           </Tooltip>
         )}
       </div>
@@ -303,9 +303,9 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
         <div className="mt-4 grid gap-2 sm:grid-cols-3">
           {drops.map((d, i) => (
             <button key={i} type="button" onClick={() => setPin(i)}
-              className={`rounded-lg border p-3 text-left transition-colors ${pin === i ? "border-critical/40 bg-critical-soft" : "border-ring hover:border-ring-strong"}`}>
+              className={` border p-3 text-left transition-colors ${pin === i ? "border-critical/40 bg-critical-soft" : "border-edge hover:border-edge-strong"}`}>
               <div className="flex items-center gap-2 text-xs">
-                <span className="grid size-5 place-items-center rounded-full bg-critical text-[11px] font-bold text-white">{i + 1}</span>
+                <span className="grid size-6 place-items-center border-2 border-edge bg-red font-display text-[11px] text-on-accent">{i + 1}</span>
                 <span className="font-semibold tabular-nums text-critical-text">−{Math.round(d.drop * 100)}%</span>
                 <span className="tabular-nums text-muted">at {mmss(d.at)} · {d.beat}</span>
               </div>
@@ -354,7 +354,7 @@ export function WorldMap({ slices }: { slices: Slice[] }) {
       )}
       {hover && s && (
         <Tooltip x={hover.x} y={hover.y} width={w}>
-          <div className="flex items-center gap-1.5 font-medium text-ink"><CountryChip code={s.key} />{s.label}</div>
+          <div className="flex items-center gap-1.5 font-semibold text-ink"><CountryChip code={s.key} />{s.label}</div>
           <div className="mt-0.5 tabular-nums text-ink2">{fmtNum(s.views)} views · {(s.share * 100).toFixed(1)}%</div>
           {s.avgViewPct !== null && <div className="tabular-nums text-muted">{s.avgViewPct.toFixed(0)}% viewed</div>}
         </Tooltip>
@@ -372,7 +372,7 @@ export function MirrorBars({ slices }: { slices: Slice[] }) {
   const max = Math.max(...slices.map((s) => s.share * 100), 1);
   return (
     <div>
-      <div className="mb-2 flex justify-between text-[11px] font-medium text-muted"><span className="flex items-center gap-1.5"><i className="size-2 rounded-[2px] bg-[var(--c1)]" />Men</span><span className="flex items-center gap-1.5">Women<i className="size-2 rounded-[2px] bg-[var(--c5)]" /></span></div>
+      <div className="mb-2 flex justify-between text-[11px] font-semibold text-muted"><span className="flex items-center gap-1.5"><i className="size-2 rounded-[2px] bg-[var(--c1)]" />Men</span><span className="flex items-center gap-1.5">Women<i className="size-2 rounded-[2px] bg-[var(--c5)]" /></span></div>
       <ul className="space-y-1.5">
         {ages.map((age, i) => (
           <li key={age} className="grid grid-cols-[1fr_56px_1fr] items-center gap-2 text-xs">
@@ -387,7 +387,7 @@ export function MirrorBars({ slices }: { slices: Slice[] }) {
               );
               return g === "male" ? bar : null;
             })}
-            <span className="text-center font-medium tabular-nums text-ink2">{age.replace("age", "").replace("-", "–")}</span>
+            <span className="text-center font-semibold tabular-nums text-ink2">{age.replace("age", "").replace("-", "–")}</span>
             <div className="flex items-center gap-1.5">
               <motion.div className="h-4 rounded-[4px]" style={{ background: "var(--c5)" }}
                 initial={{ width: 0 }} animate={{ width: `${(pct(age, "female") / max) * 82}%` }} transition={{ duration: 0.7, delay: i * 0.05, ease: EASE }} />
@@ -405,15 +405,15 @@ export function RankList({ slices, kind, max = 10, fmt = fmtNum, unit }: { slice
   const top = slices.slice(0, max);
   const hi = Math.max(...top.map((s) => s.views), 1);
   return (
-    <ul className="flex flex-col gap-1">
+    <ul className="flex flex-col gap-1.5">
       {top.map((s, i) => (
-        <li key={s.key} className="relative flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px]">
-          <motion.span aria-hidden className="absolute inset-y-0 left-0 rounded-md" style={{ background: "var(--series-soft)" }}
+        <li key={s.key} className="relative flex items-center gap-2 border-2 border-edge bg-surface px-2 py-1.5 text-[13px] font-semibold">
+          <motion.span aria-hidden className={`absolute inset-y-0 left-0 border-r-2 border-edge ${i === 0 ? "bg-lime" : "bg-sky/60"}`}
             initial={{ width: 0 }} animate={{ width: `${Math.max((s.views / hi) * 100, 1.5)}%` }} transition={{ duration: 0.7, delay: i * 0.03, ease: EASE }} />
           {kind === "country" && <CountryChip code={s.key} />}
           <span className="relative min-w-0 flex-1 truncate">{s.label}</span>
           {s.avgViewPct !== null && <span className="relative text-xs tabular-nums text-muted">{s.avgViewPct.toFixed(0)}% viewed</span>}
-          <span className="relative w-16 text-right font-medium tabular-nums">{fmt(s.views)}{unit ? ` ${unit}` : ""}</span>
+          <span className="relative w-16 text-right font-mono font-bold tabular-nums">{fmt(s.views)}{unit ? ` ${unit}` : ""}</span>
         </li>
       ))}
     </ul>
@@ -422,5 +422,5 @@ export function RankList({ slices, kind, max = 10, fmt = fmtNum, unit }: { slice
 
 /** A country's ISO code as a small chip (flag emoji don't render on Windows). */
 export function CountryChip({ code }: { code: string }) {
-  return <span className="relative inline-grid h-[18px] w-[26px] shrink-0 place-items-center rounded-[4px] bg-surface text-[10px] font-bold tracking-wide text-ink2 ring-1 ring-ring">{code}</span>;
+  return <span className="relative inline-grid h-[18px] w-[26px] shrink-0 place-items-center border-2 border-edge bg-surface text-[10px] font-bold tracking-wide text-ink">{code}</span>;
 }

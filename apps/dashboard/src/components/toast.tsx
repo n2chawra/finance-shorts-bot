@@ -22,17 +22,19 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {children}
         {items.map((t) => (
           <Toast.Root key={t.id} duration={t.action ? 8000 : undefined} onOpenChange={(open) => { if (!open) setItems((list) => list.filter((x) => x.id !== t.id)); }}
-            className="flex items-center gap-3 rounded-xl border border-ring bg-surface px-4 py-3 text-sm shadow-lift data-[state=open]:animate-slide-up data-[state=closed]:animate-fade data-[swipe=end]:translate-x-full">
-            {t.tone === "ok" ? <CircleCheck aria-hidden className="size-5 shrink-0 text-good" /> : <CircleAlert aria-hidden className="size-5 shrink-0 text-critical" />}
-            <Toast.Description className="flex-1">{t.text}</Toast.Description>
+            className="flex items-stretch border-2 border-edge bg-surface text-sm font-semibold shadow-[5px_5px_0_0_var(--hard)] data-[state=open]:animate-slide-up data-[state=closed]:animate-fade data-[swipe=end]:translate-x-full">
+            <span className={`grid w-11 shrink-0 place-items-center border-r-2 border-edge on-accent ${t.tone === "ok" ? "bg-lime" : "bg-red"}`}>
+              {t.tone === "ok" ? <CircleCheck aria-hidden strokeWidth={2.5} className="size-5" /> : <CircleAlert aria-hidden strokeWidth={2.5} className="size-5" />}
+            </span>
+            <Toast.Description className="flex flex-1 items-center px-3 py-3">{t.text}</Toast.Description>
             {t.action && (
               <Toast.Action altText={t.action.label} onClick={t.action.onClick}
-                className="rounded-md px-2 py-1 text-sm font-medium text-brand-text hover:bg-wash focus-visible:outline-2 focus-visible:outline-brand">{t.action.label}</Toast.Action>
+                className="my-2 border-2 border-edge bg-sun px-2.5 text-xs font-bold uppercase tracking-wide text-on-accent shadow-[2px_2px_0_0_var(--hard)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none">{t.action.label}</Toast.Action>
             )}
-            <Toast.Close aria-label="Dismiss" className="rounded-md p-1 text-muted hover:bg-wash hover:text-ink"><X className="size-4" /></Toast.Close>
+            <Toast.Close aria-label="Dismiss" className="px-2.5 text-ink hover:bg-wash-2"><X strokeWidth={2.5} className="size-4" /></Toast.Close>
           </Toast.Root>
         ))}
-        <Toast.Viewport className="fixed bottom-4 right-4 z-50 flex w-[min(360px,calc(100vw-2rem))] flex-col gap-2 outline-none" />
+        <Toast.Viewport className="fixed bottom-20 right-4 z-[60] flex w-[min(380px,calc(100vw-2rem))] flex-col gap-3 outline-none md:bottom-6" />
       </Toast.Provider>
     </Ctx.Provider>
   );

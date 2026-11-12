@@ -2,124 +2,125 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-/* Colour roles. UI and charts are written against these, never raw hex.
-   next-themes sets data-theme on <html> (it resolves "system" to light or dark). */
+/*
+ * PAISA PANCHAYAT · BRUTAL (2026-11 rebuild)
+ * Flat bright colour, 2 px ink edges, hard offset shadows, square corners, loud type.
+ * Every colour is a role below; pages never use raw hex. next-themes sets data-theme on <html>.
+ *
+ *   edge / hard    the outline and the offset shadow of every block
+ *   lime pink sun sky grape tang mint   the flat accent fills (always with --on-accent text)
+ */
 :root {
   color-scheme: light;
-  /* "Studio" direction (2026-11 redesign): warm paper base, ink type, one marigold accent (paisa:
-     gold, saffron), emerald for money that grew. Colour carries meaning; everything else is ink. */
-  --plane: #f6f4ef;          /* app background: warm paper */
-  --surface: #ffffff;        /* cards, popovers */
-  --surface-2: #f1eee7;      /* inset wells, table heads */
-  --ink: #17140f;
-  --ink2: #57524a;
-  --muted: #8c867b;
-  --line: #efebe3;           /* dividers inside cards */
-  --ring: #e6e1d6;           /* borders */
-  --ring-strong: #d3cdbf;
-  --axis: #d3cdbf;
-  --wash: rgba(23, 20, 15, 0.035);
-  --wash-2: rgba(23, 20, 15, 0.065);
-  --shadow: 0 1px 0 rgba(23, 20, 15, 0.03), 0 1px 3px rgba(23, 20, 15, 0.04);
-  --shadow-lift: 0 1px 2px rgba(23, 20, 15, 0.06), 0 18px 40px -16px rgba(23, 20, 15, 0.22);
+  --plane: #f3eee1;          /* paper */
+  --surface: #ffffff;
+  --surface-2: #e9e3d2;
+  --ink: #0b0b0b;
+  --ink2: #2f2d29;
+  --muted: #6d675a;
+  --line: rgba(11, 11, 11, 0.16);
+  --ring: #0b0b0b;           /* borders are ink */
+  --ring-strong: #0b0b0b;
+  --axis: #0b0b0b;
+  --wash: rgba(11, 11, 11, 0.05);
+  --wash-2: rgba(11, 11, 11, 0.09);
+  --edge: #0b0b0b;
+  --hard: #0b0b0b;
+  --on-accent: #0b0b0b;
+  --grid-dot: rgba(11, 11, 11, 0.13);
 
-  /* accent: active navigation, links, focus, highlights */
-  --brand: #e8890c;
-  --brand-2: #f4b740;
-  --brand-ink: #1c1203;
-  --brand-soft: rgba(232, 137, 12, 0.11);
-  --brand-text: #a85d00;
+  --lime: #c5f135;
+  --pink: #ff69b0;
+  --sun: #ffd426;
+  --sky: #66b2ff;
+  --grape: #a98bff;
+  --tang: #ff8a3d;
+  --mint: #3fe0a5;
+  --red: #ff4a3d;
 
-  /* the sidebar is always a dark ink rail, in both themes */
-  --rail: #15130f;
-  --rail-2: #1f1c17;
-  --rail-ink: #f3efe6;
-  --rail-ink2: #a59f93;
-  --rail-line: rgba(255, 255, 255, 0.07);
+  --brand: var(--lime);
+  --brand-2: var(--pink);
+  --brand-ink: var(--on-accent);
+  --brand-soft: rgba(197, 241, 53, 0.4);
+  --brand-text: #3d5a00;
 
-  /* primary buttons are solid ink */
-  --primary: #17140f;
-  --primary-ink: #fbf9f4;
+  --primary: #0b0b0b;
+  --primary-ink: #f3eee1;
 
-  /* chart series and status (dataviz palette) */
-  --series: #2a78d6;
-  --series-2: #9b8af4;
-  --series-soft: rgba(42, 120, 214, 0.14);
-  --likes: #e0306e;
-  --good: #11975f;
-  --good-text: #0b7a4b;
-  --good-soft: rgba(17, 151, 95, 0.1);
-  --warning: #eda100;
-  --warning-text: #996200;
-  --warning-soft: rgba(237, 161, 0, 0.14);
-  --serious: #ec835a;
-  --critical: #dc2f2f;
-  --critical-text: #b42020;
-  --critical-soft: rgba(220, 47, 47, 0.08);
-  --info-soft: rgba(42, 120, 214, 0.1);
-  --info-text: #1d5fb0;
-  --violet: #7c6cf0;
-  --violet-soft: rgba(124, 108, 240, 0.12);
-  --violet-text: #5443cf;
+  /* chart series and status */
+  --series: #2f6fe8;
+  --series-2: #8b6cff;
+  --series-soft: rgba(47, 111, 232, 0.2);
+  --likes: #e8317a;
+  --good: #14b866;
+  --good-text: #0b6b3b;
+  --good-soft: rgba(20, 184, 102, 0.16);
+  --warning: #f5b300;
+  --warning-text: #7a5600;
+  --warning-soft: rgba(245, 179, 0, 0.22);
+  --serious: #ff8a3d;
+  --critical: #f0352a;
+  --critical-text: #b3170e;
+  --critical-soft: rgba(240, 53, 42, 0.14);
+  --info-soft: rgba(47, 111, 232, 0.14);
+  --info-text: #134f9e;
+  --violet: #8b6cff;
+  --violet-soft: rgba(139, 108, 255, 0.18);
+  --violet-text: #4b2fc4;
 
-  /* categorical series, fixed order (dataviz reference palette, validated for colour blindness) */
-  --c1: #2a78d6; --c2: #eb6834; --c3: #1baf7a; --c4: #eda100;
-  --c5: #e87ba4; --c6: #008300; --c7: #6250d6; --c8: #e34948;
-  --hero-glow: radial-gradient(110% 130% at 0% 0%, rgba(232, 137, 12, 0.13), transparent 55%), radial-gradient(90% 120% at 100% 100%, rgba(17, 151, 95, 0.08), transparent 60%);
+  /* categorical series, fixed order */
+  --c1: #2f6fe8; --c2: #ff7a2f; --c3: #14b866; --c4: #f5b300;
+  --c5: #ff5aa5; --c6: #0f8a2f; --c7: #7a5cff; --c8: #e83d3d;
+
+  --hero-glow: none;
+  --shadow: 4px 4px 0 0 var(--hard);
+  --shadow-sm: 3px 3px 0 0 var(--hard);
+  --shadow-lift: 7px 7px 0 0 var(--hard);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --plane: #0c0b09;
-  --surface: #151310;
-  --surface-2: #1c1a16;
-  --ink: #f4f0e8;
-  --ink2: #b0a99c;
-  --muted: #7d776c;
-  --line: #211e19;
-  --ring: #2a2620;
-  --ring-strong: #3d382f;
-  --axis: #3d382f;
-  --wash: rgba(255, 245, 225, 0.035);
-  --wash-2: rgba(255, 245, 225, 0.07);
-  --shadow: 0 1px 0 rgba(255, 245, 225, 0.03) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
-  --shadow-lift: 0 1px 2px rgba(0, 0, 0, 0.5), 0 20px 44px -14px rgba(0, 0, 0, 0.75);
+  --plane: #121110;
+  --surface: #1c1b19;
+  --surface-2: #272522;
+  --ink: #f4efe3;
+  --ink2: #d6d0c3;
+  --muted: #9a9385;
+  --line: rgba(244, 239, 227, 0.16);
+  --ring: #f4efe3;
+  --ring-strong: #f4efe3;
+  --axis: #f4efe3;
+  --wash: rgba(244, 239, 227, 0.05);
+  --wash-2: rgba(244, 239, 227, 0.1);
+  --edge: #f4efe3;
+  --hard: #f4efe3;
+  --grid-dot: rgba(244, 239, 227, 0.09);
 
-  --brand: #f5a524;
-  --brand-2: #fcc964;
-  --brand-ink: #1c1203;
-  --brand-soft: rgba(245, 165, 36, 0.13);
-  --brand-text: #fbbf4a;
+  --brand-text: #c5f135;
+  --primary: #f4efe3;
+  --primary-ink: #121110;
 
-  --rail: #080706;
-  --rail-2: #161410;
-  --rail-line: rgba(255, 255, 255, 0.06);
+  --series: #5b93ff;
+  --series-2: #a68fff;
+  --series-soft: rgba(91, 147, 255, 0.25);
+  --likes: #ff5c9a;
+  --good: #2fd47e;
+  --good-text: #5cf0a0;
+  --warning: #ffc21a;
+  --warning-text: #ffd426;
+  --critical: #ff5a4f;
+  --critical-text: #ff8a80;
+  --critical-soft: rgba(255, 90, 79, 0.16);
+  --good-soft: rgba(47, 212, 126, 0.14);
+  --warning-soft: rgba(255, 194, 26, 0.16);
+  --info-soft: rgba(91, 147, 255, 0.16);
+  --violet-soft: rgba(166, 143, 255, 0.18);
+  --brand-soft: rgba(197, 241, 53, 0.16);
+  --info-text: #8cc2ff;
+  --violet-text: #c4b3ff;
 
-  --c1: #3987e5; --c2: #d95926; --c3: #199e70; --c4: #c98500;
-  --c5: #d55181; --c6: #008300; --c7: #9085e9; --c8: #e66767;
-  --hero-glow: radial-gradient(110% 130% at 0% 0%, rgba(245, 165, 36, 0.14), transparent 55%), radial-gradient(90% 120% at 100% 100%, rgba(25, 158, 112, 0.10), transparent 60%);
-
-  --primary: #f4f0e8;
-  --primary-ink: #12100c;
-
-  --series: #3987e5;
-  --series-2: #a89af6;
-  --series-soft: rgba(57, 135, 229, 0.2);
-  --likes: #f2588f;
-  --good: #22c07a;
-  --good-text: #4ade9a;
-  --good-soft: rgba(34, 192, 122, 0.12);
-  --warning: #f5a524;
-  --warning-text: #fbbf24;
-  --warning-soft: rgba(245, 165, 36, 0.13);
-  --critical: #ef4444;
-  --critical-text: #f87171;
-  --critical-soft: rgba(239, 68, 68, 0.12);
-  --info-soft: rgba(57, 135, 229, 0.15);
-  --info-text: #7cb3f2;
-  --violet: #9d90f7;
-  --violet-soft: rgba(157, 144, 247, 0.15);
-  --violet-text: #b9afff;
+  --c1: #5b93ff; --c2: #ff8a4a; --c3: #2fd47e; --c4: #ffc21a;
+  --c5: #ff6eb0; --c6: #3fbf5f; --c7: #a68fff; --c8: #ff6b6b;
 }
 
 @theme inline {
@@ -135,16 +136,22 @@
   --color-axis: var(--axis);
   --color-wash: var(--wash);
   --color-wash-2: var(--wash-2);
+  --color-edge: var(--edge);
+  --color-hard: var(--hard);
+  --color-on-accent: var(--on-accent);
+  --color-lime: var(--lime);
+  --color-pink: var(--pink);
+  --color-sun: var(--sun);
+  --color-sky: var(--sky);
+  --color-grape: var(--grape);
+  --color-tang: var(--tang);
+  --color-mint: var(--mint);
+  --color-red: var(--red);
   --color-brand: var(--brand);
   --color-brand-2: var(--brand-2);
   --color-brand-ink: var(--brand-ink);
   --color-brand-soft: var(--brand-soft);
   --color-brand-text: var(--brand-text);
-  --color-rail: var(--rail);
-  --color-rail-2: var(--rail-2);
-  --color-rail-ink: var(--rail-ink);
-  --color-rail-ink2: var(--rail-ink2);
-  --color-rail-line: var(--rail-line);
   --color-primary: var(--primary);
   --color-primary-ink: var(--primary-ink);
   --color-series: var(--series);
@@ -164,47 +171,58 @@
   --color-violet: var(--violet);
   --color-violet-soft: var(--violet-soft);
   --color-violet-text: var(--violet-text);
-  --font-sans: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
-  --font-display: var(--font-brand), var(--font-geist-sans), system-ui, sans-serif;
-  /* softer, larger corners everywhere (every page uses rounded-lg / rounded-xl) */
-  --radius-md: 0.5rem;
-  --radius-lg: 0.625rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.25rem;
-  --shadow-card: var(--shadow);
+
+  --font-sans: var(--font-grotesk), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jet), ui-monospace, "SFMono-Regular", monospace;
+  --font-display: var(--font-archivo), var(--font-grotesk), system-ui, sans-serif;
+
+  /* square corners everywhere; only pills (rounded-full) stay round */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+
+  --shadow-card: var(--shadow-sm);
   --shadow-lift: var(--shadow-lift);
 
-  --animate-shimmer: shimmer 1.6s linear infinite;
-  --animate-pop: pop 0.16s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-  --animate-fade: fade 0.15s ease-out;
-  --animate-slide-up: slide-up 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
-  --animate-slide-in: slide-in 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
-  --animate-pulse-dot: pulse-dot 1.8s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.2s steps(6) infinite;
+  --animate-pop: pop 0.14s cubic-bezier(0.3, 1.4, 0.5, 1);
+  --animate-fade: fade 0.12s linear;
+  --animate-slide-up: slide-up 0.18s cubic-bezier(0.3, 1.3, 0.5, 1);
+  --animate-slide-in: slide-in 0.2s cubic-bezier(0.3, 1.2, 0.5, 1);
+  --animate-pulse-dot: pulse-dot 1s steps(2) infinite;
+  --animate-marquee: marquee 40s linear infinite;
 
   @keyframes shimmer {
-    from { background-position: 200% 0; }
-    to { background-position: -200% 0; }
+    from { background-position: 0 0; }
+    to { background-position: 48px 0; }
   }
   @keyframes pop {
-    from { opacity: 0; transform: scale(0.97) translateY(2px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+    from { opacity: 0; transform: translate(6px, 6px); }
+    to { opacity: 1; transform: translate(0, 0); }
   }
   @keyframes fade {
     from { opacity: 0; }
     to { opacity: 1; }
   }
   @keyframes slide-up {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
   }
   @keyframes slide-in {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(0); }
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
   }
   @keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.45; transform: scale(0.8); }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 }
 
@@ -212,30 +230,115 @@ html {
   font-size: 15px;
 }
 
-/* headings take the display face; h1 is the page title */
-h1, h2, h3, .font-display {
-  font-family: var(--font-brand), var(--font-geist-sans), system-ui, sans-serif;
-}
-h1 { letter-spacing: -0.025em; }
-
 body {
-  background: var(--plane);
+  background-color: var(--plane);
+  background-image: radial-gradient(var(--grid-dot) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
   color: var(--ink);
   font-family: var(--font-sans);
-  font-feature-settings: "cv11", "ss01";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  font-weight: 400;              /* Archivo Black has one weight: bold is built in */
+  letter-spacing: -0.01em;
+}
+
 ::selection {
-  background: var(--brand-soft);
+  background: var(--lime);
+  color: var(--on-accent);
 }
 
 :focus-visible {
-  outline: 2px solid var(--brand);
+  outline: 3px solid var(--edge);
   outline-offset: 2px;
-  border-radius: 6px;
 }
+
+/* ---------------- the brutal kit ---------------- */
+
+@layer components {
+  /* a block: ink outline + hard shadow */
+  .nb {
+    border: 2px solid var(--edge);
+    box-shadow: var(--shadow);
+  }
+  .nb-sm {
+    border: 2px solid var(--edge);
+    box-shadow: 2px 2px 0 0 var(--hard);
+  }
+  .nb-flat {
+    border: 2px solid var(--edge);
+  }
+  /* pressable: lifts on hover, presses flat on click */
+  .nb-press {
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  .nb-press:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--hard);
+  }
+  .nb-press:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 0 var(--hard);
+  }
+  .nb-sm.nb-press:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 0 var(--hard);
+  }
+  .nb-sm.nb-press:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 0 var(--hard);
+  }
+  /* stripes for "nothing here yet" and placeholders */
+  .nb-stripes {
+    background-image: repeating-linear-gradient(-45deg, var(--wash-2) 0 6px, transparent 6px 12px);
+  }
+  /* a highlighter swipe behind a word */
+  .nb-mark {
+    background: linear-gradient(transparent 52%, var(--lime) 52%, var(--lime) 92%, transparent 92%);
+    padding: 0 0.12em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  /* inside a flat accent fill the text is always ink-black, in both themes */
+  .on-accent {
+    --ink: #0b0b0b;
+    --ink2: #1f1e1b;
+    --muted: rgba(11, 11, 11, 0.62);
+    --line: rgba(11, 11, 11, 0.22);
+    --wash: rgba(11, 11, 11, 0.06);
+    --wash-2: rgba(11, 11, 11, 0.12);
+    --brand-text: #0b0b0b;
+    /* blocks nested in a fill (buttons, chips, inputs) are paper with ink edges, in both themes */
+    --surface: #fffdf6;
+    --surface-2: #f1ecdf;
+    --edge: #0b0b0b;
+    --hard: #0b0b0b;
+    --plane: #0b0b0b;
+    color: var(--ink);
+  }
+  .nb-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+/* the old kit's helpers, kept as names the pages use */
+.lift { transition: transform 0.08s ease, box-shadow 0.08s ease; }
+.lift:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 0 var(--hard); }
+.hero-glow { background-image: none; }
+.brand-gradient { background: var(--lime); color: var(--on-accent); }
+.brand-text-gradient { color: var(--ink); }
+.dot-grid {
+  background-image: radial-gradient(var(--grid-dot) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+.grain { background-image: none; }
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -273,63 +376,39 @@ body {
 }
 
 .skeleton {
-  background: linear-gradient(90deg, var(--wash) 25%, var(--wash-2) 37%, var(--wash) 63%);
-  background-size: 400% 100%;
+  border: 2px solid var(--edge);
+  background-color: var(--surface);
+  background-image: repeating-linear-gradient(-45deg, var(--wash-2) 0 8px, transparent 8px 16px);
+  background-size: 48px 48px;
   animation: var(--animate-shimmer);
-}
-
-.brand-gradient {
-  background-image: linear-gradient(135deg, var(--brand), var(--brand-2));
-}
-
-.brand-text-gradient {
-  background-image: linear-gradient(135deg, var(--brand), var(--brand-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* faint dotted grid used behind the sign-in card and empty states */
-.dot-grid {
-  background-image: radial-gradient(var(--ring) 1px, transparent 1px);
-  background-size: 18px 18px;
-}
-
-/* fine grain over large brand surfaces (login panel, hero cards) */
-.grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-}
-
-/* a card that lifts slightly on hover when it is a link */
-.lift {
-  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s, border-color 0.2s;
-}
-.lift:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-lift);
 }
 
 /* cmdk palette */
 [cmdk-group-heading] {
-  padding: 8px 10px 4px;
-  font-size: 11px;
-  font-weight: 500;
+  padding: 10px 10px 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--muted);
 }
 [cmdk-item] {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 10px;
-  border-radius: 8px;
+  padding: 9px 10px;
+  border: 2px solid transparent;
   font-size: 14px;
+  font-weight: 500;
   color: var(--ink2);
   cursor: pointer;
   user-select: none;
 }
 [cmdk-item][data-selected="true"] {
-  background: var(--wash-2);
-  color: var(--ink);
+  background: var(--lime);
+  border-color: var(--edge);
+  color: var(--on-accent);
 }
 [cmdk-empty] {
   padding: 28px 0;
@@ -344,8 +423,4 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-.hero-glow {
-  background-image: var(--hero-glow);
 }

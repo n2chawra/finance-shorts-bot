@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Film, Search } from "lucide-react";
@@ -6,10 +7,12 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
-import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, SelectField, StatusBadge, Thumb, fieldClass } from "@/components/ui";
+import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, SelectField, StatusBadge, fieldClass } from "@/components/ui";
 import { originLine } from "@/components/origin";
 import { fmtCompact, fmtDateTime, titleCase } from "@/lib/format";
 import { useOverview, useTemplates, useVideos } from "@/lib/queries";
+
+const TAB_FILL: Record<string, string> = { "": "bg-lime", queued: "bg-grape", scheduled: "bg-sky", published: "bg-mint", failed: "bg-red" };
 
 const TABS = [
   { value: "", label: "All" },
@@ -47,72 +50,59 @@ function Videos() {
     <>
       <PageHeader title="Videos" sub="Everything the routines have made, newest first" />
 
-      <div className="no-scrollbar scroll-fade-x -mx-4 mb-3 flex gap-1 overflow-x-auto border-b border-ring px-4 md:mx-0 md:px-0" role="tablist" aria-label="Status">
+      <div className="no-scrollbar scroll-fade-x -mx-4 mb-5 flex gap-2 overflow-x-auto px-4 pb-1.5 md:mx-0 md:px-0" role="tablist" aria-label="Status">
         {TABS.map((t) => {
           const on = filters.status === t.value;
           const n = t.value ? counts?.[t.value] : total;
           return (
             <button key={t.label} type="button" role="tab" aria-selected={on} onClick={() => set("status", t.value)}
-              className={`relative flex h-9 shrink-0 items-center gap-1.5 px-2.5 text-[13px] transition-colors ${on ? "font-medium text-ink" : "text-ink2 hover:text-ink"}`}>
+              className={`flex h-10 shrink-0 items-center gap-2 border-2 border-edge px-3 text-[12.5px] font-bold uppercase tracking-wide transition-transform ${on ? `${TAB_FILL[t.value]} text-on-accent shadow-[3px_3px_0_0_var(--hard)]` : "bg-surface text-ink2 hover:-translate-y-0.5 hover:text-ink"}`}>
               {t.label}
-              {n !== undefined && <span className="rounded-md bg-wash-2 px-1.5 text-[11px] tabular-nums text-ink2">{n}</span>}
-              {on && <motion.span layoutId="video-tab" className="absolute inset-x-1 -bottom-px h-0.5 rounded-full bg-ink" />}
+              {n !== undefined && <span className="border-2 border-edge bg-surface px-1 font-mono text-[11px] tabular-nums text-ink">{n}</span>}
             </button>
           );
         })}
       </div>
 
-      <form className="mb-4 grid grid-cols-2 gap-2 md:grid-cols-[1fr_200px_200px]" onSubmit={(e) => { e.preventDefault(); set("q", q.trim()); }}>
+      <form className="nb mb-6 grid grid-cols-2 gap-3 bg-surface-2 p-3 md:grid-cols-[1fr_220px_220px]" onSubmit={(e) => { e.preventDefault(); set("q", q.trim()); }}>
         <label className="relative col-span-2 md:col-span-1">
-          <Search aria-hidden className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted" />
+          <Search aria-hidden strokeWidth={3} className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink" />
           <input type="search" value={q} onChange={(e) => setQ(e.target.value)} onBlur={() => set("q", q.trim())} placeholder="Search by title, topic or id"
-            aria-label="Search videos" className={`${fieldClass} pl-8`} />
+            aria-label="Search videos" className={`${fieldClass} pl-9`} />
         </label>
         <SelectField label="Template" all="All templates" value={filters.template} onChange={(v) => set("template", v)} options={(templates.data ?? []).map((t) => ({ value: t.id, label: t.name }))} />
         <SelectField label="Topic" all="All topics" value={filters.category} onChange={(v) => set("category", v)} options={categories.map((c) => ({ value: c, label: everything.data ? `${titleCase(c)} (${perCategory.get(c) ?? 0})` : titleCase(c) }))} />
       </form>
 
       {isLoading ? <Loading /> : error || !data ? <ErrorNote error={error} /> : data.length === 0 ? <Card><Empty icon={Film} title="No videos match">Try another status, template or search.</Empty></Card> : (
-        <Card flush>
-          <table className="w-full text-left text-[13px]">
-            <thead className="hidden border-b border-line bg-surface-2 text-xs text-muted md:table-header-group">
-              <tr>
-                <th className="px-4 py-2 font-medium">Video</th>
-                <th className="px-3 py-2 font-medium">Status</th>
-                <th className="hidden px-3 py-2 font-medium lg:table-cell">Template</th>
-                <th className="hidden px-3 py-2 font-medium xl:table-cell">Topic</th>
-                <th className="px-3 py-2 font-medium">Date</th>
-                <th className="px-4 py-2 text-right font-medium">Views</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((v, i) => (
-                <motion.tr key={v.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2, delay: Math.min(i, 16) * 0.015 }}
-                  onClick={() => router.push(`/videos/${v.id}`)}
-                  className="group flex cursor-pointer flex-wrap items-center gap-x-3 gap-y-1 border-b border-line px-3 py-2.5 transition-colors last:border-0 hover:bg-wash md:table-row md:px-0 md:py-0">
-                  <td className="flex min-w-0 flex-1 items-center gap-3 md:px-4 md:py-2.5">
-                    <Thumb src={v.thumbnailUrl} alt="" className="w-8" />
-                    <div className="min-w-0">
-                      <Link href={`/videos/${v.id}`} onClick={(e) => e.stopPropagation()} className="block max-w-[46ch] truncate font-medium group-hover:text-brand-text">{v.title}</Link>
-                      <span className="flex items-center gap-1.5">
-                        <span className="font-mono text-[11px] text-muted">{v.id}</span>
-                        {v.format === "long" && <Badge tone="brand">Long</Badge>}
-                      </span>
-                      {originLine(v.origin) && <span className="block max-w-[46ch] truncate text-[11px] text-ink2" title={v.origin?.why ?? undefined}>{originLine(v.origin)}</span>}
-                    </div>
-                  </td>
-                  <td className="md:px-3 md:py-2.5"><StatusBadge status={v.status} /></td>
-                  <td className="hidden text-ink2 md:px-3 md:py-2.5 lg:table-cell">{titleCase(v.templateId)}</td>
-                  <td className="hidden text-ink2 md:px-3 md:py-2.5 xl:table-cell">{titleCase(v.topic.category)}</td>
-                  <td className="whitespace-nowrap text-xs text-muted md:px-3 md:py-2.5 md:text-[13px] md:text-ink2">{fmtDateTime(v.upload?.publishAt ?? v.createdAt)}</td>
-                  <td className="ml-auto whitespace-nowrap text-right tabular-nums md:px-4 md:py-2.5">{v.totals ? <span className="font-medium">{fmtCompact(v.totals.views)}</span> : <span className="text-muted">—</span>}</td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
-        </Card>
+        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+          {data.map((v, i) => (
+            <motion.li key={v.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2, delay: Math.min(i, 18) * 0.02 }}
+              className="nb nb-press group relative flex flex-col bg-surface">
+              <div className={`relative border-b-2 border-edge ${v.format === "long" ? "bg-ink" : "bg-surface-2"}`}>
+                <img src={v.thumbnailUrl} alt="" loading="lazy" className={`aspect-[4/5] w-full ${v.format === "long" ? "object-contain" : "object-cover object-top"}`} />
+                <span className="absolute left-0 top-0 border-b-2 border-r-2 border-edge bg-surface"><StatusBadge status={v.status} /></span>
+                {v.format === "long" && <span className="absolute right-0 top-0 border-b-2 border-l-2 border-edge"><Badge tone="info">Long</Badge></span>}
+                {v.totals && (
+                  <span className="absolute bottom-0 right-0 border-l-2 border-t-2 border-edge bg-lime px-2 py-1 text-on-accent">
+                    <span className="font-display text-[17px] tabular-nums">{fmtCompact(v.totals.views)}</span><span className="nb-label ml-1 !text-[9px]">views</span>
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-1 flex-col p-3">
+                {/* the whole card opens the video; the title is the link */}
+                <Link href={`/videos/${v.id}`} className="line-clamp-2 text-[13.5px] font-bold leading-snug after:absolute after:inset-0">{v.title}</Link>
+                {originLine(v.origin) && <span className="mt-1 line-clamp-2 text-[11.5px] font-medium text-ink2" title={v.origin?.why ?? undefined}>{originLine(v.origin)}</span>}
+                <span className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-0.5 pt-2.5 font-mono text-[10.5px] font-bold uppercase text-muted">
+                  <span>{v.id}</span><span>·</span><span>{titleCase(v.topic.category)}</span>
+                </span>
+                <span className="font-mono text-[10.5px] font-bold uppercase text-muted">{fmtDateTime(v.upload?.publishAt ?? v.createdAt)}</span>
+              </div>
+            </motion.li>
+          ))}
+        </ul>
       )}
-      {data && data.length > 0 && <p className="mt-3 text-xs text-muted">{data.length} shown</p>}
+      {data && data.length > 0 && <p className="nb-label mt-5 text-muted">{data.length} shown</p>}
     </>
   );
 }

@@ -1,30 +1,19 @@
-import { useId } from "react";
-
-/** Paisa Panchayat mark: three rising coin stacks in a marigold squircle. Pure SVG, scales with `className`. */
-export function LogoMark({ className = "size-8" }: { className?: string }) {
-  // a unique gradient id per mark: with a shared id, a mark inside a hidden panel would blank the others
-  const id = `pp-g-${useId().replace(/:/g, "")}`;
+/** Paisa Panchayat mark: a lime block with a bold ₹ and a hard shadow. Scales with `className`. */
+export function LogoMark({ className = "size-9" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 32 32" aria-hidden className={`shrink-0 ${className}`}>
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#fcc964" />
-          <stop offset="1" stopColor="#e8890c" />
-        </linearGradient>
-      </defs>
-      <rect width="32" height="32" rx="9" fill={`url(#${id})`} />
-      <rect x="7" y="17.5" width="4.5" height="7.5" rx="1.6" fill="#1c1203" opacity="0.55" />
-      <rect x="13.75" y="12.5" width="4.5" height="12.5" rx="1.6" fill="#1c1203" opacity="0.78" />
-      <rect x="20.5" y="7" width="4.5" height="18" rx="1.6" fill="#1c1203" />
+    <svg viewBox="0 0 36 36" aria-hidden className={`shrink-0 ${className}`}>
+      <rect x="4" y="4" width="32" height="32" fill="var(--hard)" />
+      <rect x="0" y="0" width="32" height="32" fill="var(--lime)" stroke="var(--edge)" strokeWidth="2.5" />
+      <path d="M9 8.5h14M9 13.5h14M12 8.5c5.5 0 7.5 2.2 7.5 5s-2.3 5-7.5 5h-1.5l9 8" fill="none" stroke="#0b0b0b" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter" />
     </svg>
   );
 }
 
-export function Wordmark({ sub = "Studio", tone = "ink" }: { sub?: string; tone?: "ink" | "rail" }) {
+export function Wordmark({ sub = "Control room", tone = "ink" }: { sub?: string; tone?: "ink" | "rail" }) {
   return (
-    <span className="min-w-0 leading-tight">
-      <span className={`block truncate font-display text-[15px] font-semibold tracking-[-0.02em] ${tone === "rail" ? "text-rail-ink" : "text-ink"}`}>Paisa Panchayat</span>
-      <span className={`block truncate text-[11px] ${tone === "rail" ? "text-rail-ink2" : "text-muted"}`}>{sub}</span>
+    <span className="min-w-0 leading-none">
+      <span className={`block truncate font-display text-[17px] uppercase tracking-tight ${tone === "rail" ? "text-[#f3eee1]" : "text-ink"}`}>Paisa Panchayat</span>
+      <span className={`nb-label mt-1 block truncate !text-[10px] ${tone === "rail" ? "text-lime" : "text-muted"}`}>{sub}</span>
     </span>
   );
 }

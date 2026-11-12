@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Tabs } from "radix-ui";
 import { useState } from "react";
 
-import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, Stat, type Tone, VideoLink } from "@/components/ui";
+import { type Accent, ACCENT, Badge, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, Stat, tabClass, tabListClass, type Tone, VideoLink } from "@/components/ui";
 import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
 import { useAgents, useSettings } from "@/lib/queries";
 import { fmtMinutes, fmtRunWindow, summarizeRunTimes } from "@/lib/run-times";
@@ -33,32 +33,30 @@ const STATUS: Record<string, Tone> = { running: "info", testing: "info", kept: "
 
 const repoLink = (url: string) => (/^https?:/.test(url) ? url : `https://github.com/n2chawra/finance-shorts-bot/blob/main/${url}`);
 
+/** Each agent's colour, used on its report and roster card. */
+const FILL: Record<Activity["agent"], Accent> = { auditor: "sky", scout: "sun", studio: "tang", research: "grape", improver: "lime", dashboard: "pink", reviewer: "mint", monthly: "sky" };
+
 function ActivityCard({ a }: { a: Activity }) {
   const meta = AGENT[a.agent];
   return (
-    <Card>
-      <div className="flex items-start gap-3">
-        <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-brand-soft text-brand-text"><meta.icon aria-hidden className="size-4" /></span>
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-sm font-medium">{meta.name}</h3>
-            <Badge tone={DECISION[a.decision].tone} dot>{DECISION[a.decision].label}</Badge>
-            <span className="text-xs text-muted">{fmtDayKey(a.day)}</span>
-          </div>
-          {a.startedAt && a.finishedAt && <p className="mt-0.5 inline-flex items-center gap-1 text-xs text-muted"><Clock aria-hidden className="size-3" />{fmtRunWindow(a.startedAt, a.finishedAt)}</p>}
-          <p className="mt-1.5 text-[13px] leading-relaxed">{a.summary}</p>
-          <p className="mt-1.5 text-[13px] leading-relaxed text-ink2"><span className="font-medium text-ink">Why: </span>{a.why}</p>
+    <Card accent={FILL[a.agent]} icon={meta.icon} title={meta.name} description={<span className="font-mono text-[11px] font-bold uppercase">{fmtDayKey(a.day)}</span>}
+      action={<Badge tone={DECISION[a.decision].tone} dot>{DECISION[a.decision].label}</Badge>}>
+      <div>
+        <div className="min-w-0">
+          {a.startedAt && a.finishedAt && <p className="inline-flex items-center gap-1 border-2 border-edge px-1.5 font-mono text-[11px] font-bold text-ink2"><Clock aria-hidden strokeWidth={2.5} className="size-3" />{fmtRunWindow(a.startedAt, a.finishedAt)}</p>}
+          <p className="mt-3 text-[15px] font-semibold leading-snug">{a.summary}</p>
+          <p className="mt-1.5 text-[13px] leading-relaxed text-ink2"><span className="font-semibold text-ink">Why: </span>{a.why}</p>
 
           {a.findings.length > 0 && (
             <div className="mt-3">
-              <div className="mb-1 text-xs font-medium text-muted">What it found</div>
+              <div className="nb-label mb-2 text-muted">What it found</div>
               <ul className="flex flex-col gap-1.5">
                 {a.findings.slice(0, 5).map((f, i) => (
                   <li key={i} className="flex gap-2 text-[13px]">
-                    <Lightbulb aria-hidden className="mt-0.5 size-3.5 shrink-0 text-warning-text" />
+                    <span className="mt-0.5 grid size-5 shrink-0 place-items-center border-2 border-edge bg-sun text-on-accent"><Lightbulb aria-hidden strokeWidth={2.5} className="size-3" /></span>
                     <span>
-                      <span className="font-medium">{f.title}</span>{f.detail && <span className="text-ink2">: {f.detail}</span>}
-                      {f.link && <a href={f.link} target="_blank" rel="noreferrer" className="ml-1 inline-flex items-center text-brand-text hover:underline">source<ExternalLink aria-hidden className="ml-0.5 size-3" /></a>}
+                      <span className="font-semibold">{f.title}</span>{f.detail && <span className="text-ink2">: {f.detail}</span>}
+                      {f.link && <a href={f.link} target="_blank" rel="noreferrer" className="ml-1 inline-flex items-center text-ink font-bold hover:underline">source<ExternalLink aria-hidden className="ml-0.5 size-3" /></a>}
                     </span>
                   </li>
                 ))}
@@ -68,11 +66,11 @@ function ActivityCard({ a }: { a: Activity }) {
 
           {a.changes.length > 0 && (
             <div className="mt-3">
-              <div className="mb-1 text-xs font-medium text-muted">What it changed</div>
+              <div className="nb-label mb-2 text-muted">What it changed</div>
               <ul className="flex flex-col gap-1.5">
                 {a.changes.map((c, i) => (
-                  <li key={i} className="rounded-lg bg-surface-2 px-3 py-2 text-[13px]">
-                    <span className="font-medium">{c.title}</span>
+                  <li key={i} className="border-2 border-edge bg-lime/25 px-3 py-2 text-[13px]">
+                    <span className="font-semibold">{c.title}</span>
                     {c.experiment && <Badge tone="info">A/B: {c.experiment}</Badge>}
                     {c.detail && <span className="mt-0.5 block text-ink2">{c.detail}</span>}
                   </li>
@@ -81,7 +79,7 @@ function ActivityCard({ a }: { a: Activity }) {
             </div>
           )}
 
-          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
+          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 border-t-2 border-dashed border-line pt-3 font-mono text-[11px] font-bold uppercase text-muted">
             {a.nextCheck && <span className="inline-flex items-center gap-1"><CalendarClock aria-hidden className="size-3.5" />Next check {fmtDayKey(a.nextCheck)}</span>}
             {a.links.map((l) => <a key={l.url} href={repoLink(l.url)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-ink">{l.label}<ExternalLink aria-hidden className="size-3" /></a>)}
           </div>
@@ -125,10 +123,10 @@ function RunTimesCard({ data }: { data: Agents }) {
   if (!rows.some((r) => r.last)) return null;
   return (
     <Card title="Run times" icon={Clock} description="Last night, and the average and longest of the last 7 nights. Each run should end before the next one starts.">
-      <ul className="divide-y divide-line text-[13px]">
+      <ul className="divide-y-2 divide-line text-[13px]">
         {rows.map((r) => (
           <li key={r.key} className="grid grid-cols-[1fr_auto] gap-x-3 gap-y-0.5 py-2 first:pt-0 last:pb-0 sm:grid-cols-[8rem_1fr_auto]">
-            <span className="font-medium">{r.name}</span>
+            <span className="font-semibold">{r.name}</span>
             <span className="col-span-2 order-last text-ink2 sm:order-none sm:col-span-1">
               {r.last ? <>{fmtRunWindow(r.last.start, r.last.end)}{r.last.note ? ` · ${r.last.note}` : ""}</> : "no times recorded yet"}
             </span>
@@ -152,21 +150,21 @@ function ActivityTab({ data }: { data: Agents }) {
       <DataAuditCard audit={data.dataAudit} />
       <RunTimesCard data={data} />
       <section>
-        <h2 className="mb-3 text-sm font-medium text-ink2">Latest from each agent</h2>
-        <div className="grid gap-3 lg:grid-cols-2">{latest.map((a) => <ActivityCard key={a.agent} a={a} />)}</div>
+        <h2 className="mb-4 font-display text-[22px] uppercase">Latest from each agent</h2>
+        <div className="grid gap-5 lg:grid-cols-2">{latest.map((a) => <ActivityCard key={a.agent} a={a} />)}</div>
       </section>
       {older.length > 0 && (
         <details className="group">
-          <summary className="cursor-pointer list-none text-sm font-medium text-ink2 hover:text-ink">
+          <summary className="nb-sm nb-press inline-flex h-10 cursor-pointer list-none items-center gap-1 bg-surface px-3.5 text-[12.5px] font-bold uppercase">
             <span className="group-open:hidden">Show</span><span className="hidden group-open:inline">Hide</span> earlier reports ({older.length})
           </summary>
-          <ul className="mt-3 flex flex-col divide-y divide-line rounded-xl border border-line bg-surface">
+          <ul className="mt-3 flex flex-col divide-y-2 divide-line border-2 border-line bg-surface">
             {older.slice(0, 60).map((a) => (
               <li key={`${a.day}-${a.agent}`}>
                 <details className="group/r px-4 py-2.5">
                   <summary className="flex cursor-pointer list-none flex-wrap items-center gap-x-2 gap-y-1 text-[13px]">
-                    <span className="w-16 shrink-0 tabular-nums text-muted">{fmtDayKey(a.day)}</span>
-                    <span className="font-medium">{AGENT[a.agent].name}</span>
+                    <span className="w-16 shrink-0 font-mono text-[11px] font-bold uppercase tabular-nums text-muted">{fmtDayKey(a.day)}</span>
+                    <span className="font-semibold">{AGENT[a.agent].name}</span>
                     <Badge tone={DECISION[a.decision].tone} dot>{DECISION[a.decision].label}</Badge>
                     <span className="min-w-0 flex-1 basis-full truncate text-ink2 sm:basis-0">{a.summary}</span>
                   </summary>
@@ -189,10 +187,10 @@ function ExperimentsTab({ data }: { data: Agents }) {
         {data.experiments.map((e) => {
           const result = e.result as { ratio?: number; confidence?: number; n?: number } | undefined;
           return (
-            <li key={e.id} className="flex flex-wrap items-start gap-3 border-b border-line px-4 py-3 last:border-0 md:px-5">
+            <li key={e.id} className="flex flex-wrap items-start gap-3 border-b-2 border-line px-4 py-3 last:border-0 md:px-5">
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-[13px] font-medium">{e.id}</span>
+                  <span className="font-mono text-[13px] font-semibold">{e.id}</span>
                   {e.status && <Badge tone={STATUS[e.status] ?? "neutral"} dot>{titleCase(e.status)}</Badge>}
                   {e.area && <Badge>{e.area}</Badge>}
                 </div>
@@ -202,7 +200,7 @@ function ExperimentsTab({ data }: { data: Agents }) {
               <div className="text-right text-xs text-muted">
                 {e.startedAt && <div>started {fmtDayKey(e.startedAt.slice(0, 10))}</div>}
                 {result?.ratio !== undefined && (
-                  <div className={`mt-0.5 text-[13px] font-medium ${result.ratio >= 1 ? "text-good-text" : "text-critical-text"}`}>
+                  <div className={`mt-0.5 text-[13px] font-semibold ${result.ratio >= 1 ? "text-good-text" : "text-critical-text"}`}>
                     {result.ratio >= 1 ? "+" : ""}{Math.round((result.ratio - 1) * 100)}% views{result.confidence ? ` · ${Math.round(result.confidence * 100)}% sure` : ""}
                   </div>
                 )}
@@ -222,9 +220,9 @@ function ProposalsTab({ data }: { data: Agents }) {
     <Card flush>
       <ul>
         {sorted.slice(0, 60).map((p) => (
-          <li key={p.id} className="border-b border-line px-4 py-3 last:border-0 md:px-5">
+          <li key={p.id} className="border-b-2 border-line px-4 py-3 last:border-0 md:px-5">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[13px] font-medium">{p.title}</span>
+              <span className="text-[13px] font-semibold">{p.title}</span>
               {p.status && <Badge tone={STATUS[p.status] ?? "neutral"} dot>{titleCase(p.status)}</Badge>}
               {p.area && <Badge>{p.area}</Badge>}
               {typeof p.route === "string" && <Badge tone={ROUTE[p.route] ?? "neutral"}>{p.route}</Badge>}
@@ -250,11 +248,11 @@ function MergesTab({ data }: { data: Agents }) {
     <Card flush>
       <ul>
         {data.merges.map((m, i) => (
-          <li key={i} className="flex items-start gap-3 border-b border-line px-4 py-3 last:border-0 md:px-5">
-            {m.result === "merged" ? <GitMerge aria-hidden className="mt-0.5 size-4 text-good" /> : <ShieldAlert aria-hidden className="mt-0.5 size-4 text-critical" />}
+          <li key={i} className="flex items-start gap-3 border-b-2 border-line px-4 py-3 last:border-0 md:px-5">
+            <span className={`grid size-7 shrink-0 place-items-center border-2 border-edge text-on-accent ${m.result === "merged" ? "bg-mint" : "bg-red"}`}>{m.result === "merged" ? <GitMerge aria-hidden strokeWidth={2.5} className="size-4" /> : <ShieldAlert aria-hidden strokeWidth={2.5} className="size-4" />}</span>
             <div className="min-w-0 flex-1 text-[13px]">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="font-medium">{AGENT[m.agent as Activity["agent"]]?.name ?? m.agent}</span>
+                <span className="font-semibold">{AGENT[m.agent as Activity["agent"]]?.name ?? m.agent}</span>
                 <Badge tone={m.result === "merged" ? "good" : "critical"}>{m.result === "merged" ? "Merged" : "Blocked"}</Badge>
                 <span className="font-mono text-xs text-muted">{m.branch}</span>
               </div>
@@ -283,10 +281,10 @@ function TopicsTab({ data }: { data: Agents }) {
         {data.topics.slice(0, 60).map((t) => {
           const state = t.usedBy ? "used" : t.status ?? "new";
           return (
-            <li key={t.id} className="flex flex-wrap items-start gap-3 border-b border-line px-4 py-3 last:border-0 md:px-5">
+            <li key={t.id} className="flex flex-wrap items-start gap-3 border-b-2 border-line px-4 py-3 last:border-0 md:px-5">
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[13px] font-medium">{t.title}</span>
+                  <span className="text-[13px] font-semibold">{t.title}</span>
                   {t.priority && <Badge tone={PRIORITY[t.priority] ?? "neutral"} dot>{t.priority}</Badge>}
                   {t.kind && <Badge>{t.kind}</Badge>}
                 </div>
@@ -300,7 +298,7 @@ function TopicsTab({ data }: { data: Agents }) {
                 </div>
               </div>
               <div className="shrink-0 text-right text-xs">
-                {t.usedBy ? <VideoLink id={t.usedBy} className="font-medium text-brand-text hover:underline">Video {t.usedBy}</VideoLink>
+                {t.usedBy ? <VideoLink id={t.usedBy} className="font-semibold text-ink font-bold hover:underline">Video {t.usedBy}</VideoLink>
                   : <Badge tone={state === "new" ? "brand" : "neutral"}>{state === "new" ? "Waiting for a video" : titleCase(state)}</Badge>}
               </div>
             </li>
@@ -311,7 +309,6 @@ function TopicsTab({ data }: { data: Agents }) {
   );
 }
 
-const TAB = "relative h-9 shrink-0 whitespace-nowrap px-2.5 text-[13px] text-ink2 transition-colors hover:text-ink data-[state=active]:font-medium data-[state=active]:text-ink";
 
 export default function AgentsPage() {
   const { data, error, isLoading } = useAgents();
@@ -337,40 +334,44 @@ export default function AgentsPage() {
     <Stagger>
       <PageHeader title="Agents" sub="Six agents run the channel: four improve the automation overnight, two make the long videos by day. Here's what they did, what they found, and why they changed something or waited.">
         {paused ? <Badge tone="warning" dot>Paused in settings</Badge> : <Badge tone="good" dot>Running nightly</Badge>}
-        <Link href="/settings#agents" className="text-xs text-ink2 hover:text-ink">Settings</Link>
+        <Link href="/settings#agents" className="nb-sm nb-press inline-flex h-8 items-center bg-surface px-2.5 text-[11.5px] font-bold uppercase">Settings</Link>
       </PageHeader>
 
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Stat label="Experiments running" icon={FlaskConical} value={String(running)} sub={`max ${settings?.agents.maxActiveExperiments ?? 3} at once`} />
-        <Stat label="Kept" icon={GitMerge} value={String(kept)} sub="proved better, now default" />
-        <Stat label="Reverted" icon={ShieldAlert} value={String(reverted)} sub="didn't help, removed" />
-        <Stat label="Last report" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="23:00 · 23:47 · 06:17 · 07:37 · 09:37 · 14:37 IST" />
-      </div>
-
-      <VariantsCard data={data} />
-
-      <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+      {/* the crew: one block per agent, in its colour */}
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {(Object.keys(AGENT) as Activity["agent"][]).map((k) => {
           const a = AGENT[k];
           const latest = data.activity.find((x) => x.agent === k);
           const enabled = settings ? settings.agents[k] : true;
           return (
-            <motion.div key={k} className="rounded-xl border border-ring bg-surface p-4 shadow-card">
-              <div className="flex items-center gap-2"><a.icon aria-hidden className="size-4 text-brand-text" /><span className="text-sm font-medium">{a.name}</span>
-                <span className="ml-auto text-xs text-muted">{a.time} IST</span></div>
-              <p className="mt-1 text-xs text-muted">{a.role}</p>
-              <div className="mt-2">{!enabled ? <Badge tone="warning">Switched off</Badge> : latest ? <Badge tone={DECISION[latest.decision].tone} dot>{DECISION[latest.decision].label} · {fmtDayKey(latest.day)}</Badge> : <Badge>No runs yet</Badge>}</div>
+            <motion.div key={k} variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
+              className={`nb flex flex-col ${enabled ? "bg-surface" : "nb-stripes bg-surface-2"}`}>
+              <div className={`flex items-center gap-2.5 border-b-2 border-edge px-3.5 py-2.5 ${enabled ? `${ACCENT[FILL[k]]}` : ""}`}>
+                <span className="grid size-8 shrink-0 place-items-center border-2 border-edge bg-surface text-ink"><a.icon aria-hidden strokeWidth={2.5} className="size-4" /></span>
+                <span className="min-w-0 flex-1 truncate font-display text-[16px] uppercase leading-none">{a.name}</span>
+                <span className="nb-label shrink-0 !text-[9.5px]">{a.time}</span>
+              </div>
+              <p className="flex-1 px-3.5 pt-3 text-[13px] font-medium leading-snug text-ink2">{a.role}</p>
+              <div className="px-3.5 pb-3.5 pt-3">{!enabled ? <Badge tone="warning">Switched off</Badge> : latest ? <Badge tone={DECISION[latest.decision].tone} dot>{DECISION[latest.decision].label} · {fmtDayKey(latest.day)}</Badge> : <Badge>No runs yet</Badge>}</div>
             </motion.div>
           );
         })}
       </div>
 
-      <Tabs.Root value={tab} onValueChange={setTab} className="mt-6">
-        <Tabs.List aria-label="Agent sections" className="no-scrollbar scroll-fade-x mb-4 flex gap-1 overflow-x-auto border-b border-ring">
+      <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <Stat label="Experiments running" accent="lime" icon={FlaskConical} value={String(running)} sub={`max ${settings?.agents.maxActiveExperiments ?? 3} at once`} />
+        <Stat label="Kept" accent="mint" icon={GitMerge} value={String(kept)} sub="proved better, now default" />
+        <Stat label="Reverted" accent="pink" icon={ShieldAlert} value={String(reverted)} sub="didn't help, removed" />
+        <Stat label="Last report" accent="sky" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="23:00 · 23:47 · 06:17 · 07:37 · 09:37 · 14:37 IST" />
+      </div>
+
+      <VariantsCard data={data} />
+
+      <Tabs.Root value={tab} onValueChange={setTab} className="mt-8">
+        <Tabs.List aria-label="Agent sections" className={tabListClass}>
           {tabs.map((t) => (
-            <Tabs.Trigger key={t.value} value={t.value} className={TAB}>
+            <Tabs.Trigger key={t.value} value={t.value} className={tabClass}>
               {t.label}
-              {tab === t.value && <motion.span layoutId="agents-tab" className="absolute inset-x-1 -bottom-px h-0.5 rounded-full bg-ink" />}
             </Tabs.Trigger>
           ))}
         </Tabs.List>

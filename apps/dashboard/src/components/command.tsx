@@ -66,16 +66,16 @@ export function CommandMenu({ children }: { children: React.ReactNode }) {
       {children}
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 z-50 animate-fade bg-black/30 backdrop-blur-[1px]" />
-          <Dialog.Content aria-describedby={undefined} className="fixed left-1/2 top-[12vh] z-50 w-[min(560px,calc(100vw-1.5rem))] -translate-x-1/2 animate-pop overflow-hidden rounded-xl border border-ring bg-surface shadow-lift">
+          <Dialog.Overlay className="fixed inset-0 z-50 animate-fade bg-ink/50" />
+          <Dialog.Content aria-describedby={undefined} className="fixed left-1/2 top-[10vh] z-50 w-[min(600px,calc(100vw-1.5rem))] -translate-x-1/2 animate-pop overflow-hidden border-2 border-edge bg-surface shadow-[8px_8px_0_0_var(--lime)]">
             <Dialog.Title className="sr-only">Command menu</Dialog.Title>
             <Command loop>
-              <div className="flex items-center gap-2 border-b border-line px-3">
-                <Search aria-hidden className="size-4 text-muted" />
-                <Command.Input autoFocus placeholder="Search pages, videos and actions…" className="h-12 flex-1 bg-transparent text-[15px] outline-none placeholder:text-muted focus-visible:outline-none" />
+              <div className="flex items-center gap-2 border-b-2 border-edge bg-ink px-3 text-plane">
+                <Search aria-hidden strokeWidth={3} className="size-5 text-lime" />
+                <Command.Input autoFocus placeholder="Jump to a page, video or action…" className="h-14 flex-1 bg-transparent font-display text-[17px] uppercase outline-none placeholder:text-plane/50 focus-visible:outline-none" />
                 <Kbd>Esc</Kbd>
               </div>
-              <Command.List className="max-h-[min(60vh,420px)] overflow-y-auto p-1.5">
+              <Command.List className="max-h-[min(60vh,440px)] overflow-y-auto p-2">
                 <Command.Empty>Nothing matches.</Command.Empty>
                 <Command.Group heading="Go to">
                   {NAV_ITEMS.map((i) => (
@@ -104,7 +104,7 @@ export function CommandMenu({ children }: { children: React.ReactNode }) {
                       <Command.Item key={v.id} value={`${v.title} ${v.id}`} keywords={[v.topic.title]} onSelect={() => run(() => router.push(`/videos/${v.id}`))}>
                         <Film aria-hidden className="size-4" />
                         <span className="min-w-0 flex-1 truncate">{v.title}</span>
-                        <span className="font-mono text-[11px] text-muted">{v.id}</span>
+                        <span className="font-mono text-[11px] font-bold opacity-60">{v.id}</span>
                       </Command.Item>
                     ))}
                   </Command.Group>
@@ -120,7 +120,7 @@ export function CommandMenu({ children }: { children: React.ReactNode }) {
                   </Command.Item>
                 </Command.Group>
               </Command.List>
-              <div className="flex items-center justify-between border-t border-line px-3 py-2 text-[11px] text-muted">
+              <div className="flex items-center justify-between border-t-2 border-edge bg-surface-2 px-3 py-2 text-[11px] font-semibold text-ink2">
                 <span className="flex items-center gap-1.5"><Kbd>↑</Kbd><Kbd>↓</Kbd> to move <Kbd><CornerDownLeft className="size-3" /></Kbd> to open</span>
                 <span className="flex items-center gap-1"><Kbd>G</Kbd> then a letter jumps to a page</span>
               </div>

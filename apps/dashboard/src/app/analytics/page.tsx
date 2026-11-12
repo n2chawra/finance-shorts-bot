@@ -71,7 +71,7 @@ export default function AnalyticsPage() {
       </PageHeader>
       <Tabs value={tab} onChange={setTab} tabs={[...TABS]} />
       {error ? <ErrorNote error={error} /> : isLoading || !data ? <StudioSkeleton /> : (
-        <Stagger key={`${tab}${range}${format}`} className="space-y-3">
+        <Stagger key={`${tab}${range}${format}`} className="space-y-5">
           {tab === "overview" && <Overview d={data} onJump={setTab} />}
           {tab === "realtime" && <RealtimeTab d={data} />}
           {tab === "content" && <Card flush title="Every video" icon={BarChart3} description="Sort by any column. Cells are tinted against the column's median: green above, red below."><ContentTable rows={data.content} /></Card>}
@@ -117,7 +117,7 @@ function Overview({ d, onJump }: { d: Studio; onJump: (t: string) => void }) {
   const best = [...d.content].sort((a, b) => (b.vs48 ?? 0) - (a.vs48 ?? 0)).filter((c) => c.vs48 !== null);
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <HeroStat label="Views" icon={Eye} value={t.views} fmt={fmtCompact} delta={pctChange(t.views, p?.views)} spark={d.daily.map((x) => x.views)} sub={`${fmtNum(d.realtime.last48)} in the last 48 hours`} />
         <HeroStat label="Engaged views" icon={MousePointerClick} value={t.engagedViews} fmt={fmtCompact} delta={pctChange(t.engagedViews, p?.engagedViews)} spark={d.daily.map((x) => x.engagedViews)} accent="var(--c3)"
           sub={t.views ? `${pct(t.engagedViews / t.views)} of views stayed` : undefined} />
@@ -126,7 +126,7 @@ function Overview({ d, onJump }: { d: Studio; onJump: (t: string) => void }) {
         <HeroStat label="Subscribers" icon={UserPlus} value={t.subsGained - t.subsLost} fmt={(x) => `${x >= 0 ? "+" : ""}${fmtNum(x)}`} delta={pctChange(t.subsGained - t.subsLost, p ? p.subsGained - p.subsLost : null)}
           spark={d.daily.map((x) => x.subsGained - x.subsLost)} accent="var(--c6)" sub={`${fmtNum(t.subsGained)} gained · ${fmtNum(t.subsLost)} lost`} />
       </div>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
         <MiniStat label="% viewed" value={`${t.avgViewPct.toFixed(1)}%`} delta={pctChange(t.avgViewPct, p?.avgViewPct)} />
         <MiniStat label="Impressions" value={t.impressions === null ? "—" : fmtCompact(t.impressions)} delta={t.impressions !== null ? pctChange(t.impressions, p?.impressions) : undefined} hint="Thumbnail impressions (Reporting API)" />
         <MiniStat label="Click-through" value={pct(t.ctr, 1)} />
@@ -139,29 +139,29 @@ function Overview({ d, onJump }: { d: Studio; onJump: (t: string) => void }) {
         <LineChart data={series} fmt={m.fmt} fmtFull={m.full} color={m.color} height={260}
           detail={(i) => {
             const vs = published.get(d.daily[i]!.day);
-            return vs?.length ? <div className="mt-1.5 space-y-1 border-t border-line pt-1.5">{vs.map((v) => (
-              <div key={v.videoId} className="flex max-w-56 items-center gap-1.5"><img src={v.thumbnailUrl} alt="" className="h-6 w-3.5 rounded-sm object-cover" /><span className="truncate text-ink2">{v.title}</span></div>
+            return vs?.length ? <div className="mt-1.5 space-y-1 border-t-2 border-line pt-1.5">{vs.map((v) => (
+              <div key={v.videoId} className="flex max-w-56 items-center gap-1.5"><img src={v.thumbnailUrl} alt="" className="h-6 w-3.5 border border-plane object-cover" /><span className="truncate text-ink2">{v.title}</span></div>
             ))}</div> : null;
           }} />
       </Card>
-      <div className="grid gap-3 lg:grid-cols-[1.4fr_1fr]">
+      <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
         <AiChannelCard ai={d.ai.channel} onJump={onJump} compact />
-        <Card title="Breakout videos" icon={Trophy} description="First 48 hours against the median of their format">
-          <ul className="space-y-1.5">
+        <Card title="Breakout videos" icon={Trophy} accent="sun" description="First 48 hours against the median of their format">
+          <ul className="space-y-2.5">
             {best.slice(0, 5).map((c, i) => (
               <li key={c.videoId}>
-                <Link href={`/videos/${c.videoId}`} className="flex items-center gap-3 rounded-lg p-1.5 hover:bg-wash">
-                  <span className="w-4 text-center text-xs font-semibold text-muted">{i + 1}</span>
-                  <img src={c.thumbnailUrl} alt="" className="h-11 w-6 rounded object-cover ring-1 ring-ring" />
-                  <span className="min-w-0 flex-1"><span className="line-clamp-1 text-[13px] font-medium">{c.title}</span><span className="text-xs text-muted">{fmtNum(c.views)} views · {c.avgViewPct?.toFixed(0) ?? "—"}% viewed</span></span>
-                  <span className="rounded-full bg-good-soft px-2 py-0.5 text-xs font-semibold tabular-nums text-good-text">{c.vs48!.toFixed(1)}×</span>
+                <Link href={`/videos/${c.videoId}`} className="nb-sm nb-press flex items-center gap-3 bg-surface pr-2.5">
+                  <span className={`grid w-10 self-stretch place-items-center border-r-2 border-edge font-display text-[18px] ${i === 0 ? "bg-lime text-on-accent" : "bg-surface-2"}`}>{i + 1}</span>
+                  <img src={c.thumbnailUrl} alt="" className="my-1.5 h-11 w-6 border-2 border-edge object-cover" />
+                  <span className="min-w-0 flex-1 py-1.5"><span className="line-clamp-1 text-[13px] font-bold">{c.title}</span><span className="font-mono text-[10.5px] font-bold uppercase text-muted">{fmtNum(c.views)} views · {c.avgViewPct?.toFixed(0) ?? "—"}% viewed</span></span>
+                  <span className="border-2 border-edge bg-mint px-1.5 font-display text-[14px] tabular-nums text-on-accent">{c.vs48!.toFixed(1)}×</span>
                 </Link>
               </li>
             ))}
           </ul>
         </Card>
       </div>
-      <div className="grid gap-3 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         <Card title="Where views come from" icon={Compass} action={<JumpBtn onClick={() => onJump("reach")} />}><Donut slices={d.breakdowns.traffic} /></Card>
         <Card title="Top countries" icon={Globe2} action={<JumpBtn onClick={() => onJump("audience")} />}><RankList slices={d.breakdowns.country} kind="country" max={6} /></Card>
       </div>
@@ -169,7 +169,7 @@ function Overview({ d, onJump }: { d: Studio; onJump: (t: string) => void }) {
   );
 }
 
-const JumpBtn = ({ onClick }: { onClick: () => void }) => <button type="button" onClick={onClick} className="shrink-0 rounded-md px-2 py-1 text-xs font-medium text-brand-text hover:bg-brand-soft">More →</button>;
+const JumpBtn = ({ onClick }: { onClick: () => void }) => <button type="button" onClick={onClick} className="shrink-0 px-2 py-1 text-xs font-semibold text-ink font-bold hover:bg-lime/25">More →</button>;
 
 // ---------------- realtime ----------------
 
@@ -179,7 +179,7 @@ function RealtimeTab({ d }: { d: Studio }) {
   if (!r.snapshotAt) return <Waiting icon={Radio} title="Realtime starts with the first hourly snapshot">The watchdog records every video&apos;s public counters once an hour. The chart fills in from the next hour.</Waiting>;
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
         <HeroStat label="Last 48 hours" live value={r.last48} fmt={fmtNum} spark={r.hours.map((h) => h.views)} sub="views, from YouTube's public counters" />
         <HeroStat label="Last hour" icon={Timer} value={r.last1} fmt={fmtNum} sub={`updated ${fmtRelative(r.snapshotAt)}`} />
         <HeroStat label="All-time views" icon={Eye} value={r.totalNow} fmt={fmtNum} sub="live, across published videos" />
@@ -188,12 +188,12 @@ function RealtimeTab({ d }: { d: Studio }) {
         <HourlyBars values={r.hours.map((h) => h.views)} hours={labels} height={190} />
       </Card>
       <Card title="Top videos right now" icon={TrendingUp} description="Views in the last 48 hours">
-        <ul className="divide-y divide-line">
+        <ul className="divide-y-2 divide-line">
           {r.top.map((v) => (
             <li key={v.videoId}>
-              <Link href={`/videos/${v.videoId}`} className="flex items-center gap-3 py-2.5 hover:bg-wash">
-                <img src={v.thumbnailUrl} alt="" className="h-12 w-7 rounded object-cover ring-1 ring-ring" />
-                <span className="min-w-0 flex-1 truncate text-[13px] font-medium">{v.title}</span>
+              <Link href={`/videos/${v.videoId}`} className="flex items-center gap-4 py-2.5 hover:bg-wash">
+                <img src={v.thumbnailUrl} alt="" className="h-12 w-7 border-2 border-edge object-cover" />
+                <span className="min-w-0 flex-1 truncate text-[13px] font-semibold">{v.title}</span>
                 <span className="hidden w-48 sm:block"><HourlyBars values={v.hours} hours={labels} height={30} bare /></span>
                 <span className="w-16 text-right font-semibold tabular-nums">{fmtNum(v.views48)}</span>
               </Link>
@@ -212,7 +212,7 @@ function Reach({ d }: { d: Studio }) {
   const b = d.breakdowns;
   return (
     <>
-      <div className="grid gap-3 lg:grid-cols-[1.2fr_1fr]">
+      <div className="grid gap-4 lg:grid-cols-[1.2fr_1fr]">
         <Card title="Traffic sources" icon={Compass} description="How viewers found the videos"><Donut slices={b.traffic} /></Card>
         <Card title="From impression to subscriber" icon={MousePointerClick} description="Each step's rate against the one before">
           <Funnel steps={[
@@ -224,7 +224,7 @@ function Reach({ d }: { d: Studio }) {
           ]} />
         </Card>
       </div>
-      <div className="grid gap-3 lg:grid-cols-3">
+      <div className="grid gap-4 lg:grid-cols-3">
         <Card title="YouTube search terms" icon={Search} description="What people typed before watching">{b.search.length ? <RankList slices={b.search} max={12} /> : <Waiting icon={Search} title="No search views yet">Search terms appear once people find a video by searching.</Waiting>}</Card>
         <Card title="Suggested next to" icon={Lightbulb} description="Videos that YouTube showed ours beside">{b.suggested.length ? <SuggestedList d={d} /> : <Waiting icon={Lightbulb} title="Nothing suggested yet">Shown when YouTube recommends our videos next to others.</Waiting>}</Card>
         <Card title="External sites and apps" icon={ExternalLink} description="Links shared outside YouTube">{b.external.length ? <RankList slices={b.external} max={12} /> : <Waiting icon={ExternalLink} title="No outside traffic yet">WhatsApp, Instagram and Google links appear here.</Waiting>}</Card>
@@ -241,9 +241,9 @@ function SuggestedList({ d }: { d: Studio }) {
       {d.breakdowns.suggested.slice(0, 12).map((s) => {
         const mine = ours.get(s.key);
         return (
-          <li key={s.key} className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] hover:bg-wash">
+          <li key={s.key} className="flex items-center gap-2 px-2 py-1.5 text-[13px] hover:bg-wash">
             <a href={`https://www.youtube.com/watch?v=${s.key}`} target="_blank" rel="noreferrer" className="min-w-0 flex-1 truncate hover:underline">{mine ? `Ours: ${mine.title}` : s.key}</a>
-            <span className="font-medium tabular-nums">{fmtNum(s.views)}</span>
+            <span className="font-semibold tabular-nums">{fmtNum(s.views)}</span>
           </li>
         );
       })}
@@ -265,7 +265,7 @@ function Engagement({ d }: { d: Studio }) {
         action={<Segmented label="Retention format" value={f} onChange={setF} options={[{ value: "short", label: "Shorts" }, { value: "long", label: "Long" }]} />}>
         {curve.length ? <RetentionChart curve={curve} typical={[]} drops={[]} duration={dur} format={f} /> : <Waiting icon={Activity} title="No curve yet">YouTube shows a retention curve once a video has enough views.</Waiting>}
       </Card>
-      <div className="grid gap-3 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         <Card title="Hook hold, video by video" icon={Timer} description="Share still watching at 3 s (Shorts) or 30 s (long), oldest to newest">
           <LineChart data={trend.map((h) => ({ label: fmtDayKey(h.publishAt.slice(0, 10)), value: h.hookHold! * 100 }))} fmt={(x) => `${x.toFixed(0)}%`} fmtFull={(x) => `${x.toFixed(1)}% still watching`} color="var(--c2)"
             detail={(i) => <div className="mt-1 max-w-56 truncate text-muted">{trend[i]?.title}</div>} />
@@ -275,7 +275,7 @@ function Engagement({ d }: { d: Studio }) {
             detail={(i) => <div className="mt-1 max-w-56 truncate text-muted">{d.hookTrend.filter((h) => h.engagedRatio !== null)[i]?.title}</div>} />
         </Card>
       </div>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         <MiniStat label="Likes per 1K views" value={t.views ? ((t.likes / t.views) * 1000).toFixed(1) : "—"} />
         <MiniStat label="Comments per 1K views" value={t.views ? ((t.comments / t.views) * 1000).toFixed(2) : "—"} />
         <MiniStat label="Shares per 1K views" value={t.views ? ((t.shares / t.views) * 1000).toFixed(2) : "—"} />
@@ -299,17 +299,17 @@ function Audience({ d }: { d: Studio }) {
           <RankList slices={b.country.slice(6, 12)} kind="country" />
         </div>
       </Card>
-      <div className="grid gap-3 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         <Card title="Age and gender" icon={Users} description="Share of signed-in viewers (YouTube hides this per video)">{b.ageGender.length ? <MirrorBars slices={b.ageGender} /> : <Waiting icon={Users} title="Not enough viewers yet">YouTube shows age and gender above a privacy threshold.</Waiting>}</Card>
         <Card title="Devices" icon={MonitorSmartphone}><Donut slices={b.device} size={150} /></Card>
       </div>
-      <div className="grid gap-3 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         <Card title="Subscribers vs everyone else" icon={Heart} description="How much of each group's views, and how long they watch">
-          <ul className="space-y-3">
+          <ul className="space-y-5">
             {sub.map((s, i) => (
               <li key={s.key}>
-                <div className="flex items-baseline justify-between text-[13px]"><span className="font-medium">{s.label}</span><span className="tabular-nums text-muted">{fmtNum(s.views)} views · <b className="text-ink">{s.avgViewPct?.toFixed(0) ?? "—"}%</b> viewed</span></div>
-                <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-wash-2"><div className="h-full rounded-full" style={{ width: `${Math.max(s.share * 100, 1)}%`, background: i ? "var(--c5)" : "var(--c1)" }} /></div>
+                <div className="flex items-baseline justify-between text-[13px]"><span className="font-semibold">{s.label}</span><span className="tabular-nums text-muted">{fmtNum(s.views)} views · <b className="text-ink">{s.avgViewPct?.toFixed(0) ?? "—"}%</b> viewed</span></div>
+                <div className="mt-1.5 h-4 overflow-hidden border-2 border-edge bg-surface"><div className="h-full border-r-2 border-edge" style={{ width: `${Math.max(s.share * 100, 1)}%`, background: i ? "var(--c5)" : "var(--c1)" }} /></div>
               </li>
             ))}
           </ul>
@@ -332,7 +332,7 @@ function Works({ d }: { d: Studio }) {
         <p className="text-sm text-ink2">The median of each group, so one viral video can&apos;t skew it. Groups under 3 videos are faded.</p>
         <Segmented label="Measure" value={k} onChange={setK} options={[{ value: "avgViewPct", label: "% viewed" }, { value: "views48", label: "48 h views" }, { value: "hookHold", label: "Hook hold" }, { value: "engagedRatio", label: "Engaged" }]} />
       </div>
-      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {d.whatWorks.map((a) => {
           const groups = [...a.groups].sort((x, y) => (y[k] ?? -1) - (x[k] ?? -1));
           const max = Math.max(...groups.map((g) => g[k] ?? 0), 1e-9);
@@ -340,8 +340,8 @@ function Works({ d }: { d: Studio }) {
             <Card key={a.attribute} title={a.label}>
               <ul className="space-y-1.5">
                 {groups.map((g, i) => (
-                  <li key={g.value} className={`relative flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] ${g.n < 3 ? "opacity-45" : ""}`}>
-                    <span aria-hidden className="absolute inset-y-0 left-0 rounded-md" style={{ width: `${((g[k] ?? 0) / max) * 100}%`, background: i === 0 && g.n >= 3 ? "color-mix(in oklab, var(--good) 22%, transparent)" : "var(--series-soft)" }} />
+                  <li key={g.value} className={`relative flex items-center gap-2  px-2 py-1.5 text-[13px] ${g.n < 3 ? "opacity-45" : ""}`}>
+                    <span aria-hidden className="absolute inset-y-0 left-0 " style={{ width: `${((g[k] ?? 0) / max) * 100}%`, background: i === 0 && g.n >= 3 ? "color-mix(in oklab, var(--good) 22%, transparent)" : "var(--series-soft)" }} />
                     <span className="relative min-w-0 flex-1 truncate">{g.value}</span>
                     <span className="relative rounded bg-surface/70 px-1 text-[10.5px] tabular-nums text-muted">n={g.n}</span>
                     <span className="relative w-12 text-right font-semibold tabular-nums">{g[k] === null ? "—" : fmt(g[k]!)}</span>
@@ -370,7 +370,7 @@ function Insights({ d, onJump }: { d: Studio; onJump: (t: string) => void }) {
         <span className="text-xs text-muted">(AI where written, otherwise by views and % viewed against the median)</span>
       </div>
       {d.ai.videos.length ? (
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2">
           {d.ai.videos.map((a) => <AiVideoCard key={a.videoId} ai={a} title={a.title} thumbnailUrl={a.thumbnailUrl} href={`/videos/${a.videoId}`} />)}
         </div>
       ) : <Waiting icon={Sparkles} title="Video verdicts arrive with the nightly auditor">It writes one for every video published 2 to 14 days ago.</Waiting>}
@@ -382,7 +382,7 @@ function StudioOnly() {
   return (
     <p className="pt-3 text-center text-xs text-muted">
       Only in YouTube Studio (no API gives them): Shorts&apos; exact stayed-to-watch, returning vs new viewers, when your viewers are online, other channels they watch, and revenue.{" "}
-      <a href="https://studio.youtube.com/" target="_blank" rel="noreferrer" className="font-medium text-brand-text hover:underline">Open Studio ↗</a>
+      <a href="https://studio.youtube.com/" target="_blank" rel="noreferrer" className="font-semibold text-ink font-bold hover:underline">Open Studio ↗</a>
     </p>
   );
 }

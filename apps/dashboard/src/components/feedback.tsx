@@ -31,8 +31,8 @@ export function EditorNote({ v }: { v: Pick<Video, "editorRank" | "editorScore" 
   return (
     <div className="text-[13px] leading-relaxed">
       <p className="text-ink2">{n.why}</p>
-      {n.strengths.length > 0 && <p className="mt-1.5"><span className="font-medium text-good-text">Strengths: </span>{n.strengths.join(" · ")}</p>}
-      {n.risks.length > 0 && <p className="mt-1"><span className="font-medium text-warning-text">Risks: </span>{n.risks.join(" · ")}</p>}
+      {n.strengths.length > 0 && <p className="mt-1.5"><span className="border-2 border-edge bg-mint px-1 text-[11px] font-bold uppercase text-on-accent">Strengths</span> {n.strengths.join(" · ")}</p>}
+      {n.risks.length > 0 && <p className="mt-1"><span className="border-2 border-edge bg-sun px-1 text-[11px] font-bold uppercase text-on-accent">Risks</span> {n.risks.join(" · ")}</p>}
     </div>
   );
 }
@@ -47,9 +47,9 @@ export function ReasonDialog({ open, onOpenChange, title, description, placehold
   return (
     <AlertDialog.Root open={open} onOpenChange={(o) => { if (!o) setText(""); onOpenChange(o); }}>
       <AlertDialog.Portal>
-        <AlertDialog.Overlay className="fixed inset-0 z-40 animate-fade bg-black/40 backdrop-blur-[1px]" />
-        <AlertDialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(460px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop rounded-xl border border-ring bg-surface p-5 shadow-lift">
-          <AlertDialog.Title className="text-[15px] font-semibold">{title}</AlertDialog.Title>
+        <AlertDialog.Overlay className="fixed inset-0 z-40 animate-fade bg-ink/50" />
+        <AlertDialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(460px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop border-2 border-edge bg-surface p-5 shadow-[7px_7px_0_0_var(--hard)]">
+          <AlertDialog.Title className="font-display text-lg uppercase leading-tight">{title}</AlertDialog.Title>
           <AlertDialog.Description className="mt-2 text-sm text-ink2">{description}</AlertDialog.Description>
           <textarea value={text} onChange={(e) => setText(e.target.value)} rows={3} placeholder={placeholder} aria-label="Reason"
             className={`${fieldClass} mt-3 h-auto py-2 leading-snug`} />
@@ -71,19 +71,19 @@ function Note({ f, showVideo }: { f: Feedback; showVideo?: boolean }) {
   const patch = usePatchFeedback();
   const toast = useToast();
   return (
-    <li className="border-b border-line px-4 py-3 last:border-0">
-      <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted">
+    <li className="border-b-2 border-edge px-4 py-4 last:border-0 md:px-5">
+      <div className="flex flex-wrap items-center gap-1.5 font-mono text-[11px] font-bold uppercase text-muted">
         <Badge tone={KIND_TONE[f.kind]}>{KIND_LABEL[f.kind]}</Badge>
         {f.area && <Badge>{titleCase(f.area)}</Badge>}
-        {showVideo && f.videoTitle && <a href={`/videos/${f.videoId}`} className="truncate font-medium text-ink2 underline-offset-2 hover:underline">{f.videoTitle}</a>}
+        {showVideo && f.videoTitle && <a href={`/videos/${f.videoId}`} className="truncate font-semibold text-ink2 underline-offset-2 hover:underline">{f.videoTitle}</a>}
         {showVideo && !f.videoId && <span>Channel</span>}
         <span>· {fmtRelative(f.createdAt)}</span>
         {f.status === "addressed" ? <Badge tone="good" icon={CheckCircle2}>Answered</Badge> : f.response ? <Badge tone="info">In progress</Badge> : <Badge tone="brand">Open</Badge>}
       </div>
-      <p className="mt-1.5 text-[13px] leading-relaxed">{f.text}</p>
-      {f.response && <p className="mt-1.5 rounded-lg bg-surface-2 px-3 py-2 text-xs leading-relaxed text-ink2"><span className="font-medium text-ink">The system: </span>{f.response}</p>}
+      <p className="mt-2 text-[14.5px] font-semibold leading-snug">“{f.text}”</p>
+      {f.response && <p className="mt-2.5 border-l-4 border-edge bg-lime/25 px-3 py-2 text-[13px] font-medium leading-snug text-ink2"><span className="font-bold uppercase text-ink">The system: </span>{f.response}</p>}
       {(f.kind === "wrong" || f.kind === "improve" || f.kind === "general") && (
-        <button type="button" disabled={patch.isPending} className="mt-1.5 text-xs font-medium text-muted underline underline-offset-2 hover:text-ink"
+        <button type="button" disabled={patch.isPending} className="mt-1.5 text-xs font-semibold text-muted underline underline-offset-2 hover:text-ink"
           onClick={() => patch.mutate({ id: f.id, status: f.status === "open" ? "addressed" : "open" }, { onSuccess: () => toast(f.status === "open" ? "Marked done" : "Reopened"), onError: (e) => toast(e.message, "error") })}>
           {f.status === "open" ? "Mark done" : "Reopen"}</button>
       )}
@@ -104,24 +104,29 @@ export function FeedbackPanel({ videoId, title = "Your feedback", showVideo = fa
   const submit = () => add.mutate({ videoId: videoId ?? null, kind, area: (area || null) as Feedback["area"], text: text.trim() },
     { onSuccess: () => { setText(""); toast("Saved: the next videos and the agents will see it"); }, onError: (e) => toast(e.message, "error") });
   return (
-    <Card title={title} icon={MessageSquarePlus} flush
+    <Card title={title} icon={MessageSquarePlus} accent="pink" flush
       description="What's wrong, or what to do better next time. The video routine reads it before every video, and the agent whose job it is fixes it and answers here.">
-      <div className="flex flex-col gap-2 border-b border-line p-4">
-        <div className="grid grid-cols-2 gap-2 sm:w-96">
+      <div className="grid lg:grid-cols-[400px_minmax(0,1fr)]">
+      <div className="flex flex-col gap-3 border-b-2 border-edge bg-surface-2 p-4 lg:border-b-0 lg:border-r-2 md:p-5">
+        <span className="nb-label text-ink">Write a note</span>
+        <div className="grid grid-cols-2 gap-2.5">
           {/* the first kind stands in as the select's "all" option, so it goes in as no value: by name it
               matched no option, and the field looked empty whenever the default kind was chosen */}
           <SelectField label="Kind" value={kind === kinds[0] ? "" : kind} onChange={(v) => setKind((v || kinds[0]) as Feedback["kind"])} all={KIND_LABEL[kinds[0]!]}
             options={kinds.slice(1).map((k) => ({ value: k, label: KIND_LABEL[k] }))} />
           <SelectField label="Area" value={area} onChange={setArea} all="Any area" options={FEEDBACK_AREAS.map((a) => ({ value: a, label: titleCase(a) }))} />
         </div>
-        <textarea value={text} onChange={(e) => setText(e.target.value)} rows={3} aria-label="Feedback"
+        <textarea value={text} onChange={(e) => setText(e.target.value)} rows={5} aria-label="Feedback"
           placeholder={videoId ? "e.g. The hook gives the answer away; the voice rushes the numbers" : "e.g. Fewer characters talking, more animation of the money"}
           className={`${fieldClass} h-auto py-2 leading-snug`} />
         <div><Button tone="primary" disabled={add.isPending || text.trim().length < 2} onClick={submit}>Save feedback</Button></div>
       </div>
+      <div className="min-w-0">
       {list.isLoading ? <div className="p-4"><Loading rows={2} /></div> : list.error ? <div className="p-4"><ErrorNote error={list.error} /></div>
         : list.data && list.data.length > 0 ? <ul>{list.data.map((f) => <Note key={f.id} f={f} showVideo={showVideo} />)}</ul>
         : <div className="p-4"><Empty title="No feedback yet">Notes you add here shape the next videos.</Empty></div>}
+      </div>
+      </div>
     </Card>
   );
 }

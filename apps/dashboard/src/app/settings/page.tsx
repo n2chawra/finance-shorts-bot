@@ -11,8 +11,8 @@ import type { Settings } from "@/lib/schemas";
 
 function Row({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (
-    <label className="flex flex-col gap-2 border-b border-line py-3.5 first:pt-0 last:border-0 last:pb-0 md:flex-row md:items-center md:justify-between md:gap-8">
-      <span className="text-[13px]"><span className="font-medium">{label}</span>{hint && <span className="mt-0.5 block text-xs leading-relaxed text-muted">{hint}</span>}</span>
+    <label className="flex flex-col gap-2.5 border-b-2 border-dashed border-line py-4 first:pt-0 last:border-0 last:pb-0 md:flex-row md:items-center md:justify-between md:gap-8">
+      <span className="text-[13px]"><span className="text-[14.5px] font-bold">{label}</span>{hint && <span className="mt-1 block text-[12.5px] font-medium leading-snug text-muted">{hint}</span>}</span>
       <span className="md:flex md:w-60 md:shrink-0 md:justify-end">{children}</span>
     </label>
   );
@@ -57,18 +57,18 @@ export default function SettingsPage() {
       <PageHeader title="Settings" sub="Workers read these on every run; routines get them within a minute of the next commit (or within 6 hours)" />
       {patch.error && <div className="mb-4"><ErrorNote error={patch.error} /></div>}
 
-      <div className="grid gap-6 lg:grid-cols-[180px_minmax(0,720px)]">
+      <div className="grid gap-8 lg:grid-cols-[220px_minmax(0,820px)]">
         <nav aria-label="Settings sections" className="hidden lg:block">
-          <ul className="sticky top-20 flex flex-col gap-0.5">
+          <ul className="sticky top-20 flex flex-col gap-2">
             {SECTIONS.map((s) => (
-              <li key={s.id}><a href={`#${s.id}`} className="flex h-8 items-center gap-2 rounded-lg px-2 text-[13px] text-ink2 hover:bg-wash-2 hover:text-ink"><s.icon aria-hidden className="size-4 text-muted" />{s.label}</a></li>
+              <li key={s.id}><a href={`#${s.id}`} className="nb-sm nb-press flex h-11 items-center gap-2.5 bg-surface px-3 text-[12.5px] font-bold uppercase tracking-wide text-ink"><span className="font-mono text-[11px] text-muted">0{SECTIONS.indexOf(s) + 1}</span><s.icon aria-hidden strokeWidth={2.5} className="size-4" />{s.label}</a></li>
             ))}
           </ul>
         </nav>
 
-        <div className="flex min-w-0 flex-col gap-3">
+        <div className="flex min-w-0 flex-col gap-6">
           <section id="generation" className="scroll-mt-20">
-            <Card title="Generation" description="What the scheduled routines do">
+            <Card accent="lime" title="Generation" description="What the scheduled routines do">
               <Row label="Pause generation" hint="Routines still start on schedule but do nothing: no videos, no template work.">
                 <Toggle label="Pause generation" checked={form.generationPaused} onChange={(generationPaused) => set({ generationPaused })} />
               </Row>
@@ -91,7 +91,7 @@ export default function SettingsPage() {
           </section>
 
           <section id="uploads" className="scroll-mt-20">
-            <Card title="Uploads" description="The daily publish job">
+            <Card accent="sky" title="Uploads" description="The daily publish job">
               <Row label="Pause all uploads" hint="Nothing is published while this is on. Generation carries on. Use it while you upload by hand.">
                 <Toggle label="Pause all uploads" checked={form.uploadsPaused} onChange={(uploadsPaused) => set({ uploadsPaused })} />
               </Row>
@@ -129,7 +129,7 @@ export default function SettingsPage() {
           </section>
 
           <section id="longform" className="scroll-mt-20">
-            <Card title="Long videos" description="The 8-11 minute explainers the Studio agent makes">
+            <Card accent="tang" title="Long videos" description="The 8-11 minute explainers the Studio agent makes">
               <Row label="Long videos a week" hint="How many Studio makes per IST week. 0 switches long-form off entirely.">
                 <input type="number" min={0} max={7} required aria-label="Long videos a week" className={fieldClass}
                   value={form.longPerWeek} onChange={(e) => set({ longPerWeek: int(e.target.value) })} />
@@ -139,7 +139,7 @@ export default function SettingsPage() {
                   {DAY_NAMES.map((name, day) => {
                     const on = form.longUploadDays.includes(day);
                     return (
-                      <Button key={day} size="sm" tone={on ? "primary" : "ghost"}
+                      <Button key={day} size="sm" tone={on ? "primary" : "default"}
                         onClick={() => set({ longUploadDays: on ? form.longUploadDays.filter((d) => d !== day) : [...form.longUploadDays, day].sort() })}>
                         {name}
                       </Button>
@@ -168,7 +168,7 @@ export default function SettingsPage() {
           </section>
 
           <section id="videos" className="scroll-mt-20">
-            <Card title="Videos" description="Rules every render must meet">
+            <Card accent="pink" title="Videos" description="Rules every render must meet">
               <Row label="Length range" hint="Seconds. QA rejects videos outside it.">
                 <span className="flex w-full items-center gap-2">
                   <input type="number" min={15} max={180} required aria-label="Minimum length in seconds" className={fieldClass} value={form.lengthMinSec} onChange={(e) => set({ lengthMinSec: int(e.target.value) })} />
@@ -183,7 +183,7 @@ export default function SettingsPage() {
           </section>
 
           <section id="agents" className="scroll-mt-20">
-            <Card title="Self-improving agents" description="Four agents improve the automation overnight (23:00–09:00 IST); Scout and Studio make the long videos by day. Every change passes a guard and the tests before it goes live.">
+            <Card accent="grape" title="Self-improving agents" description="Four agents improve the automation overnight (23:00–09:00 IST); Scout and Studio make the long videos by day. Every change passes a guard and the tests before it goes live.">
               <Row label="Pause all agents" hint="They still start on schedule but do nothing. The video pipeline is not affected.">
                 <Toggle label="Pause all agents" checked={form.agents.paused} onChange={(paused) => setAgents({ paused })} />
               </Row>
@@ -218,7 +218,7 @@ export default function SettingsPage() {
           </section>
 
           <section id="alerts" className="scroll-mt-20">
-            <Card title="Alerts" description="The hourly watchdog shows problems on the Notifications page. Telegram delivery comes later.">
+            <Card accent="sun" title="Alerts" description="The hourly watchdog shows problems on the Notifications page. Telegram delivery comes later.">
               <Row label="Failed run"><Toggle label="Alert on failed run" checked={form.alerts.failedRun} onChange={(failedRun) => setAlert({ failedRun })} /></Row>
               <Row label="Failed upload"><Toggle label="Alert on failed upload" checked={form.alerts.failedUpload} onChange={(failedUpload) => setAlert({ failedUpload })} /></Row>
               <Row label="Token errors" hint="YouTube refresh token rejected."><Toggle label="Alert on token errors" checked={form.alerts.tokenErrors} onChange={(tokenErrors) => setAlert({ tokenErrors })} /></Row>
@@ -234,10 +234,10 @@ export default function SettingsPage() {
       <AnimatePresence>
         {dirty && (
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 16 }} transition={{ type: "spring", stiffness: 420, damping: 34 }}
-            className="fixed inset-x-4 bottom-4 z-40 mx-auto flex max-w-xl items-center justify-between gap-3 rounded-xl border border-ring bg-surface px-4 py-2.5 shadow-lift md:left-[calc(15rem+2rem)]">
-            <span className="text-[13px]"><span className="font-medium">Unsaved changes</span><span className="hidden text-muted sm:inline"> · take effect once saved</span></span>
+            className="fixed inset-x-4 bottom-20 z-40 mx-auto flex max-w-2xl items-center justify-between gap-3 border-2 border-edge bg-sun px-4 py-3 shadow-[7px_7px_0_0_var(--hard)] on-accent md:bottom-6">
+            <span className="text-[13px]"><span className="font-display text-[15px] uppercase">Unsaved changes</span><span className="hidden font-semibold sm:inline"> · take effect once saved</span></span>
             <span className="flex gap-2">
-              <Button tone="ghost" onClick={() => setForm(data)}>Discard</Button>
+              <Button onClick={() => setForm(data)}>Discard</Button>
               <Button type="submit" tone="primary" disabled={patch.isPending}>{patch.isPending ? "Saving…" : "Save changes"}</Button>
             </span>
           </motion.div>
