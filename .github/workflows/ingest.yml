@@ -74,7 +74,7 @@ jobs:
       - name: Commit settings and metrics for routines and agents
         working-directory: .
         run: |
-          git add config/settings.json metrics improvement/arms-state.json improvement/arms-log.json improvement/cycle/status.json 2>/dev/null || git add config/settings.json metrics
+          for f in config/settings.json metrics improvement/arms-state.json improvement/arms-log.json improvement/cycle/status.json; do [ -e "$f" ] && git add "$f"; done
           if git diff --cached --quiet; then echo "settings unchanged"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

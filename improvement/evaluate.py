@@ -346,7 +346,7 @@ def attributes(videos: list[dict], stories: dict[str, str | None], shapes: dict[
 
 def _heard(root: Path, videos: list[dict]) -> list[dict]:
     """Each row with what viewers heard, from the video's manifest, or worked out from its script."""
-    from renderer.timeline.build import CAST_VOICES
+    from renderer.voices import CAST_VOICES   # light: Ingest runs this without the renderer's packages
     out = []
     for v in videos:
         d = root / "videos" / str(v.get("id"))

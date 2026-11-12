@@ -50,9 +50,7 @@ QUIET_BED, QUIET_LEVEL, QUIET_DUCK = "quiet-bed", 0.32, 0.92   # the experiment'
 DISCLAIMER = "Illustrative only. Not financial advice."
 TYPED_NUMBER = re.compile(r"[0-9₹$£€]")   # a digit or any currency sign
 PLACEHOLDER = re.compile(r"\{[a-z][a-z0-9_]*\}")   # names may hold digits ({card_paid_year1}); text may not
-NARRATOR_VOICES = ("am_michael", "af_heart", "af_bella", "am_fenrir")
-# each recurring character always speaks with the same voice, so viewers know them by ear
-CAST_VOICES = {"rohan": "am_puck", "priya": "hf_alpha", "sharma": "am_fenrir", "sikka": "af_bella"}
+from renderer.voices import CAST_VOICES, NARRATOR_VOICES  # noqa: E402  (re-exported for generator.run)
 SPEEDS = {"long": 1.0, "short": 1.0}
 # Pace: the whole video plays this much faster than its story clock, voice, pauses, animations and
 # transitions together, like watching at that playback speed. The owner watched the first long
