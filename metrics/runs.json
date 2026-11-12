@@ -124,7 +124,7 @@
     {
       "day": "2026-11-13",
       "shipped": 2,
-      "failed": 1
+      "failed": 2
     }
   ],
   "videos": [
@@ -771,6 +771,13 @@
       "template": "short_story",
       "status": "shipped",
       "reason": null
+    },
+    {
+      "id": "v-20261113-04",
+      "day": "2026-11-13",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA review failed after three rounds: in beat 'crowd' the spoken-figure slam 10.2M lands on the item label 'Seats filled' (fact review passed)"
     }
   ]
 }
