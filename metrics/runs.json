@@ -124,7 +124,7 @@
     {
       "day": "2026-11-13",
       "shipped": 1,
-      "failed": 0
+      "failed": 1
     }
   ],
   "videos": [
@@ -757,6 +757,13 @@
       "template": "short_story",
       "status": "shipped",
       "reason": null
+    },
+    {
+      "id": "v-20261113-02",
+      "day": "2026-11-13",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA review failed after three rounds: in beat 'shows' the TV's grow covers the receipt and pushes the TV off the right edge (fact review passed)"
     }
   ]
 }
