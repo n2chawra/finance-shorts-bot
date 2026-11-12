@@ -65,10 +65,16 @@ jobs:
       - name: Judge the variants
         working-directory: .
         run: python -m improvement.arms judge || echo "::warning::variant judging failed"
+      # the weekly loop's live scoreboard for the dashboard's Growth loop page (owner, 2026-11-12)
+      - name: Weekly loop scoreboard
+        working-directory: .
+        run: python -m improvement.cycle_status || echo "::warning::weekly loop scoreboard failed"
+      - name: Sync the new agent files to the dashboard
+        run: npm run sync-docs || echo "::warning::agent doc sync failed"
       - name: Commit settings and metrics for routines and agents
         working-directory: .
         run: |
-          git add config/settings.json metrics improvement/arms-state.json improvement/arms-log.json 2>/dev/null || git add config/settings.json metrics
+          git add config/settings.json metrics improvement/arms-state.json improvement/arms-log.json improvement/cycle/status.json 2>/dev/null || git add config/settings.json metrics
           if git diff --cached --quiet; then echo "settings unchanged"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

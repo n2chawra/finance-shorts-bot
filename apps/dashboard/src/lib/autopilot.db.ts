@@ -1,4 +1,5 @@
 /** Notifications and the self-improving agents' activity, from Postgres. */
+import { ChallengerSchema, CycleRowSchema, type Growth, GrowthSchema, LessonSchema, LoopStatusSchema, PicturesSchema, RecipeSchema, StayedRowSchema, nextReviewerRun } from "./growth";
 import { RECENT_DAYS } from "./recent";
 import type { Notification as Row } from "@prisma/client";
 
@@ -120,4 +121,37 @@ export async function resolveOwner(key: string): Promise<void> {
     await prisma.notification.updateMany({ where: { dedupeKey: key, resolvedAt: null }, data: { resolvedAt: new Date() } });
     await prisma.notification.updateMany({ where: { dedupeKey: key, dismissedAt: { not: null } }, data: { dismissedAt: null } });
   } catch { /* best effort */ }
+}
+
+// ---------------- the weekly loop (Growth loop page) ----------------
+
+/** The weekly loop for the Growth loop page: the agents' cycle files, the reviewer's lessons and its last run. */
+export async function getGrowth(): Promise<Growth> {
+  const [docs, reviewer] = await Promise.all([
+    prisma.repoDoc.findMany({ where: { key: { in: ["cycleBacklog", "cycleStatus", "cycleRecipe", "pictures", "lessons"] } } }),
+    prisma.agentActivity.findFirst({ where: { agent: "reviewer" }, orderBy: { day: "desc" } }),
+  ]);
+  const doc = Object.fromEntries(docs.map((d) => [d.key, d.value])) as Record<string, Record<string, unknown> | undefined>;
+  const backlog = doc.cycleBacklog ?? {};
+  const pictures = PicturesSchema.safeParse(doc.pictures);
+  const refIds = pictures.success ? pictures.data.reference.slice(0, 3) : [];
+  const refs = refIds.length ? await prisma.video.findMany({ where: { id: { in: refIds } }, select: { id: true, title: true, upload: { select: { stats: { select: { views: true } } } } } }) : [];
+  const status = LoopStatusSchema.safeParse(doc.cycleStatus);
+  const recipe = RecipeSchema.safeParse(doc.cycleRecipe);
+  return GrowthSchema.parse({
+    source: "database",
+    status: status.success ? status.data : null,
+    running: typeof backlog.running === "string" ? backlog.running : null,
+    cycle: typeof backlog.cycle === "number" ? backlog.cycle : 0,
+    challengers: listOf(backlog, "challengers").map((c) => ChallengerSchema.safeParse(c)).filter((p) => p.success).map((p) => p.data!),
+    history: listOf(backlog, "history").map((c) => CycleRowSchema.safeParse(c)).filter((p) => p.success).map((p) => p.data!),
+    stayedByCycle: listOf(backlog, "stayedByCycle").map((c) => StayedRowSchema.safeParse(c)).filter((p) => p.success).map((p) => p.data!),
+    recipe: recipe.success ? recipe.data : null,
+    lessons: listOf(doc.lessons, "lessons").map((l) => LessonSchema.safeParse(l)).filter((p) => p.success).map((p) => p.data!),
+    pictures: pictures.success ? pictures.data : null,
+    reference: refIds.map((id) => refs.find((r) => r.id === id)).filter((r) => !!r).map((r) => ({
+      id: r!.id, title: r!.title, thumbnailUrl: `/api/media/${r!.id}/thumbnail`,
+      views: r!.upload ? r!.upload.stats.reduce((a, s) => a + s.views, 0) : null })),
+    reviewer: { lastDay: reviewer?.day ?? null, lastSummary: reviewer?.summary ?? null, nextRunAt: nextReviewerRun().toISOString() },
+  });
 }

@@ -6,6 +6,7 @@
 import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 import * as autoDb from "./autopilot.db";
 import * as autoSample from "./autopilot.sample";
+import type { Growth } from "./growth";
 import type { Agents, Notification, Notifications } from "./schemas";
 import * as db from "./store.db";
 import * as sample from "./store.sample";
@@ -48,4 +49,5 @@ export const notificationAction = async (ids: string[], action: "seen" | "resolv
 export const getNotification = async (id: string): Promise<Notification | null> => (useDb ? autoDb.getNotification(id) : autoSample.getNotification(id));
 export const decideNotification = async (id: string, decision: "approved" | "declined"): Promise<void> => (useDb ? autoDb.decideNotification(id, decision) : autoSample.decideNotification(id, decision));
 export const getAgents = async (): Promise<Agents> => (useDb ? autoDb.getAgents() : autoSample.getAgents());
+export const getGrowth = async (): Promise<Growth> => (useDb ? autoDb.getGrowth() : autoSample.getGrowth());
 export const getImpact = async (): Promise<Impact> => (useDb ? impactDb.getImpact() : impactSample.getImpact());

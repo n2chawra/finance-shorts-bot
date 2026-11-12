@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { AlertOctagon, ArrowRight, ArrowUpRight, Bot, CircleX, Clapperboard, Eye, Heart, Layers, Pause, Play, Rocket, Sparkles, Upload, UserPlus } from "lucide-react";
+import { AlertOctagon, ArrowRight, ArrowUpRight, Bot, CircleX, Clapperboard, Eye, Heart, Layers, Pause, Play, FlaskConical, Rocket, Sparkles, Upload, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,8 @@ import { CategoryBar, Sparkline, Tracker, type TrackerTone } from "@/components/
 import { type Accent, Badge, Button, Card, Delta, Empty, ErrorNote, IconTile, Loading, Meter, Num, PageHeader, Stagger, Stat, Thumb, type Tone, VideoLink } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
-import { useAgents, useAnalytics, useNotifications, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
+import { useAgents, useAnalytics, useGrowth, useNotifications, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
+import { KIND_LABEL, KIND_METRIC } from "@/lib/growth";
 import { lastNight } from "@/lib/last-night";
 import { AGENTS, perThousand, type Run } from "@/lib/schemas";
 import { STATS_AGE_CLASS, statsAge } from "@/lib/stats-age";
@@ -82,6 +83,28 @@ function dailyOutput(runs: Run[] | undefined, n: number, target = DEFAULT_TARGET
 const More = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <Link href={href} className="flex items-center gap-1 rounded-md px-1.5 py-1 text-[12.5px] font-medium text-ink2 transition-colors hover:bg-surface-3 hover:text-ink">{children}<ArrowRight aria-hidden className="size-3.5" /></Link>
 );
+
+/** The weekly loop's running test in one card (details on /growth). */
+function ThisWeeksTest() {
+  const { data } = useGrowth();
+  const e = data?.status?.experiment;
+  if (!data) return null;
+  const pct = (x: number | null | undefined) => (x == null ? "—" : `${(x * 100).toFixed(1)}%`);
+  const kind = e?.kind ?? "first-second";
+  return (
+    <Card title="This week's test" icon={FlaskConical} accent="grape" className="mt-5" action={<More href="/growth">Growth loop</More>}
+      description={e ? `Cycle ${data.cycle} · ${KIND_LABEL[kind] ?? kind} · judged on ${KIND_METRIC[kind] ?? "stayed to watch"}` : "No test running right now."}>
+      {e ? (
+        <div data-testid="this-weeks-test" className="grid items-center gap-4 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+          <p className="text-[14.5px] font-medium leading-snug">{e.description ?? e.id}</p>
+          <div><div className="text-[12px] text-muted">Champion</div><div className="text-[20px] font-semibold tabular-nums">{pct(e.value.off)}</div><div className="text-[11.5px] text-muted">{e.counted.off} / {e.minPerArm} Shorts</div></div>
+          <div><div className="text-[12px] text-muted">Challenger</div><div className="text-[20px] font-semibold tabular-nums text-brand-text">{pct(e.value.on)}</div><div className="text-[11.5px] text-muted">{e.counted.on} / {e.minPerArm} Shorts</div></div>
+          <div><div className="text-[12px] text-muted">Difference</div><div className={`text-[20px] font-semibold tabular-nums ${e.points == null ? "text-muted" : e.points >= 0 ? "text-good-text" : "text-critical-text"}`}>{e.points == null ? "—" : `${e.points > 0 ? "+" : ""}${e.points.toFixed(1)} pts`}</div><div className="text-[11.5px] text-muted">{e.pOnBetter == null ? "collecting data" : `${Math.round(e.pOnBetter * 100)}% confidence`}</div></div>
+        </div>
+      ) : <Empty icon={FlaskConical} title="Between tests">The improver starts the next challenger the night a verdict lands.</Empty>}
+    </Card>
+  );
+}
 
 export default function OverviewPage() {
   const { data, error, isLoading } = useOverview();
@@ -214,6 +237,8 @@ export default function OverviewPage() {
           ]} />
         </Card>
       </div>
+
+      <ThisWeeksTest />
 
       {/* last night's agents */}
       <Card title="Agents last night" icon={Sparkles} accent="lime" className="mt-5" description={lastDay ? "What each agent did on its latest run" : "The self-improving agents report here after their first night."}

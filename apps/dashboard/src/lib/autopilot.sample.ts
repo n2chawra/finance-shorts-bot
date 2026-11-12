@@ -1,5 +1,7 @@
 /** Sample notifications and agent activity, so the pages can be seen without a database. */
+import { type Growth, nextReviewerRun } from "./growth";
 import { isRecent } from "./recent";
+import { listVideos } from "./store.sample";
 import type { Activity, Agents, Notification, Notifications } from "./schemas";
 
 const DAY_MS = 86_400_000;
@@ -165,5 +167,74 @@ export function getAgents(): Agents {
       summary: { videos: 12, checked: 10, error: 0, warning: 1, info: 2, owner: 0 },
       issues: [{ kind: "ahead_of_youtube", severity: "warning", videoId: "v-sample-03", detail: "Dashboard shows 412 views, YouTube 398. Either YouTube removed invalid views or the dashboard over-counts." }],
     },
+  };
+}
+
+// ---------------- the weekly loop (Growth loop page) ----------------
+
+/** A cycle in progress after three finished ones, so every part of the Growth loop page has something to show. */
+export function getGrowth(): Growth {
+  const now = Date.now();
+  const started = istDay(now - 4 * DAY_MS);
+  const published = listVideos({ status: "published" }).sort((a, b) => (b.totals?.views ?? 0) - (a.totals?.views ?? 0)).slice(0, 3);
+  return {
+    source: "sample",
+    running: "real-subject-first-frame",
+    cycle: 4,
+    status: {
+      generatedAt: new Date(now - 2 * 3_600_000).toISOString(), cycle: 4, running: "real-subject-first-frame",
+      thresholds: { keepPoints: 5, revertPoints: -5, confidence: 0.8 }, channelStayed14d: 0.431,
+      experiment: {
+        id: "real-subject-first-frame", kind: "first-second", area: "hook", startedAt: started, metric: "stayed", minPerArm: 8, maxDays: 7, extended: false,
+        description: "Shorts: the real person's photo or the company's logo in the first frame, against a drawn subject",
+        published: { on: 6, off: 6 }, counted: { on: 5, off: 4 }, value: { on: 0.486, off: 0.442 }, points: 4.4, pOnBetter: 0.74, days: 4,
+        verdict: "wait", why: "4 of 8 Shorts a side have two days of data; day 4 of 7",
+      },
+    },
+    challengers: [
+      { id: "no-cast-unless-in-story", kind: "look", area: "scene", metric: "heldAfterHook", from: "auditor", test: "No cast on screen unless they are in the story, against the cast in every beat", why: "Beats with the cast reacting lost 9 points more viewers than beats showing the money (n=14)" },
+      { id: "short-15-22s", kind: "first-second", area: "pacing", metric: "stayed", from: "review", test: "15-22 s Shorts (40-60 words) against the champion's 28-35 s", why: "the growing fact channel in our niche runs 15-20 s; our Shorts of 27 s or less had the best 48 h views (n=5)" },
+      { id: "big-word-captions", kind: "look", area: "text", metric: "heldAfterHook", from: "research", test: "One big word at a time instead of sentence captions", why: "4 of the top 5 finance Shorts this week" },
+      { id: "everyday-brands", kind: "first-second", area: "topic", metric: "stayed", from: "owner", test: "Brands people use daily (Netflix, Starbucks) against billionaires", why: "your note: more relatable stories" },
+      { id: "parable-series", kind: "format", area: "format", metric: "stayed", from: "review", test: "A recurring two-character series", why: "the format change if three cycles stay under 45%" },
+    ],
+    history: [
+      { cycle: 1, id: "name-in-title", kind: "first-second", started: istDay(now - 25 * DAY_MS), verdict: "keep", test: "The person's name and the figure in the title" },
+      { cycle: 2, id: "slower-voice", kind: "look", started: istDay(now - 18 * DAY_MS), verdict: "revert", test: "The voice at 1.25 instead of 1.4" },
+      { cycle: 3, id: "three-openings", kind: "look", started: istDay(now - 11 * DAY_MS), verdict: "abandon", test: "A darker look for every beat" },
+      { cycle: 4, id: "real-subject-first-frame", kind: "first-second", started, verdict: null, test: "The real person's photo or logo in the first frame" },
+    ],
+    stayedByCycle: [
+      { cycle: 1, champion: 0.392, challenger: 0.447, verdict: "keep" },
+      { cycle: 2, champion: 0.431, challenger: 0.371, verdict: "revert" },
+      { cycle: 3, champion: 0.428, challenger: 0.433, verdict: "abandon" },
+    ],
+    recipe: {
+      updatedAt: istDay(now - 18 * DAY_MS),
+      rules: [
+        { id: "true-story", text: "One surprising true money fact about a real, named person or business", since: "2026-11-12", from: "owner review" },
+        { id: "name-and-figure-up-front", text: "The title and the first sentence state it with the name and the figure", since: istDay(now - 18 * DAY_MS), from: "cycle 1" },
+        { id: "three-openings", text: "Three openings drafted; a fresh reviewer picks the strongest", since: "2026-11-12", from: "owner review" },
+        { id: "length", text: "28-35 seconds", since: "2026-11-12", from: "owner review" },
+        { id: "one-narrator", text: "One narrator for every Short, the voice at 1.4", since: "2026-11-11", from: "owner review" },
+      ],
+      changes: [{ cycle: 1, date: istDay(now - 18 * DAY_MS), id: "name-in-title", verdict: "keep", change: "Name and figure in the title" }],
+    },
+    lessons: [
+      { n: 1, title: "The first frame names nobody", date: istDay(now - 1 * DAY_MS), source: "reviewer", seen: "\"Your $20,000 savings\" (v-20261023-01) opened on a building labelled \"GYM\": 61% swiped away.", fix: "The first frame and first sentence name the real person or business and the figure." },
+      { n: 2, title: "The real story arrives at 5 seconds", date: istDay(now - 5 * DAY_MS), source: "reviewer", seen: "Five Shorts lost 24-31% of their viewers at 5-6 s, on lines that counted what was coming.", fix: "The second sentence adds a bigger surprise, never a setup." },
+      { n: 3, title: "Made-up examples", date: istDay(now - 9 * DAY_MS), source: "owner review", seen: "\"Say only 300 members ever walk through the door\": 4 shares on 14,500 views.", fix: "Tell what really happened, from sourced facts." },
+    ],
+    pictures: {
+      writtenAt: istDay(now - 3 * DAY_MS),
+      lossByPicture: [
+        { kind: "cast reacting, no money on screen", drops: 11, shorts: 7, avgDrop: 0.19 },
+        { kind: "text card with a sentence", drops: 8, shorts: 6, avgDrop: 0.14 },
+        { kind: "money as a big object", drops: 3, shorts: 8, avgDrop: 0.06 },
+      ],
+      options: [], worst: "palette: dusk", reference: published.map((v) => v.id),
+    },
+    reference: published.map((v) => ({ id: v.id, title: v.title, thumbnailUrl: v.thumbnailUrl, views: v.totals?.views ?? null })),
+    reviewer: { lastDay: istDay(now - 1 * DAY_MS), lastSummary: "Watched 6 Shorts next to their drop points; added 1 lesson (the first frame names nobody) and dropped none.", nextRunAt: nextReviewerRun(now).toISOString() },
   };
 }

@@ -5,6 +5,7 @@
   "scripts": {
     "generate": "node scripts/copy-schema.mjs && prisma generate --schema prisma/schema.prisma",
     "migrate": "prisma migrate deploy --schema ../apps/dashboard/prisma/schema.prisma",
+    "sync-docs": "tsx sync-docs.ts",
     "ingest": "tsx ingest.ts",
     "reset-data": "tsx --env-file=../apps/dashboard/.env reset-data.ts",
     "auth": "tsx --env-file=../apps/dashboard/.env auth.ts",

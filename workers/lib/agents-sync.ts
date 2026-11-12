@@ -126,7 +126,34 @@ const DOCS: Record<string, string> = {
   armsLog: "improvement/arms-log.json",
   // what each landed change did to the Shorts (generator/impact.py, owner 2026-11-10): the Impact page
   impact: "improvement/weekly/impact.json",
+  // the weekly loop (owner, 2026-11-12): the Growth loop page
+  cycleBacklog: "improvement/cycle/backlog.json",
+  cycleStatus: "improvement/cycle/status.json",
+  cycleRecipe: "improvement/cycle/recipe.json",
+  pictures: "improvement/analysis/pictures.json",
 };
+
+export type Lesson = { n: number; title: string; date: string | null; source: string | null; seen: string; fix: string };
+
+/** The reviewer's lessons (generator/prompts/lessons.md) as data: "## 1. Title (date, source)", "Seen in: …", "Fix: …". */
+export function parseLessons(md: string): Lesson[] {
+  const out: Lesson[] = [];
+  const parts = md.split(/^## /m).slice(1);
+  for (const part of parts) {
+    const [head = "", ...rest] = part.split("\n");
+    const m = /^(\d+)\.\s+(.+?)(?:\s+\(([^)]*)\))?\s*$/.exec(head.trim());
+    if (!m) continue;
+    const meta = (m[3] ?? "").split(",").map((x) => x.trim()).filter(Boolean);
+    const date = meta.find((x) => /^\d{4}-\d{2}-\d{2}$/.test(x)) ?? null;
+    const source = meta.filter((x) => x !== date).join(", ") || null;
+    const body = rest.join("\n").trim();
+    const fixAt = body.search(/^Fix:/m);
+    const seen = (fixAt >= 0 ? body.slice(0, fixAt) : body).replace(/^Seen in:\s*/, "").replace(/\s+/g, " ").trim();
+    const fix = fixAt >= 0 ? body.slice(fixAt).replace(/^Fix:\s*/, "").replace(/\s+/g, " ").trim() : "";
+    out.push({ n: Number(m[1]), title: m[2]!.trim(), date, source, seen, fix });
+  }
+  return out;
+}
 
 /** The topic feed with each topic's video (from history.json: the video run records topic.feed_id there). */
 function withUsage(value: unknown, root: string): unknown {
@@ -139,6 +166,11 @@ function withUsage(value: unknown, root: string): unknown {
 }
 
 export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<void> {
+  const lessonsFile = path.join(root, "generator", "prompts", "lessons.md");
+  if (existsSync(lessonsFile)) {
+    const value = { lessons: parseLessons(readFileSync(lessonsFile, "utf8")) } as Prisma.InputJsonValue;
+    await prisma.repoDoc.upsert({ where: { key: "lessons" }, update: { value }, create: { key: "lessons", value } });
+  }
   for (const [key, rel] of Object.entries(DOCS)) {
     const file = path.join(root, rel);
     if (!existsSync(file)) continue;

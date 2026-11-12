@@ -153,6 +153,11 @@ running (a verdict closed the last one in section 1, tonight or earlier), start 
 - Before you pick, append what the cycle that just ended measured to `stayedByCycle`
   (`{"cycle", "champion": <stayed of the off side>, "challenger": <on side>, "verdict"}` from the
   evaluator), move the entry to `history` with its verdict, and set `running` and `cycle`.
+- **Keep the recipe file current**: when a verdict is `keep`, fold the change into
+  `improvement/cycle/recipe.json` too (add the rule, or replace the one it changes, with `since` set to
+  today and `from: "cycle <n>"`; append `{"cycle", "date", "id", "verdict", "change"}` to `changes`;
+  set `updatedAt`). A revert or abandon adds only the `changes` entry. The dashboard's Growth loop page
+  shows this file as the champion recipe.
 - **Kept** means the challenger is the new champion: fold its `on` instruction into
   `generator/prompts/writer.md` (the fixed recipe section) or its code path into the default, as in
   section 1, and say so in the journal. The next challenger is measured against it.

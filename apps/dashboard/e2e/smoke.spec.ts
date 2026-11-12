@@ -5,7 +5,7 @@ import { SMOKE_PASSWORD } from "../playwright.config";
 /** Every page loads on sample data without console errors, plus the flows the owner uses daily. */
 const PAGES: [string, RegExp][] = [
   ["/", /Overview/], ["/queue", /Queue/], ["/calendar", /Calendar/], ["/videos", /Videos/], ["/videos/v030", /.+/],
-  ["/analytics", /Analytics/], ["/agents", /Agents/], ["/notifications", /Notifications/],
+  ["/analytics", /Analytics/], ["/growth", /Growth loop/], ["/agents", /Agents/], ["/notifications", /Notifications/],
   ["/feedback", /Feedback/], ["/settings", /Settings/],
 ];
 
@@ -582,4 +582,13 @@ test("a video says why it was made, what inspired it and how many views that got
   // and the list says it in a line under each title
   await page.goto("/videos?status=queued");
   await expect(page.getByText(/Inspired by “Why UPI is free/)).toBeVisible({ timeout: 30_000 });
+});
+
+test("overview shows this week's test and links to the growth loop", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/");
+  await expect(page.getByTestId("this-weeks-test")).toBeVisible({ timeout: 30_000 });
+  await page.getByRole("link", { name: "Growth loop" }).last().click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Growth loop");
+  await expect(page.getByText("Live scoreboard")).toBeVisible();
 });
