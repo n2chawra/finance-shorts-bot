@@ -139,7 +139,7 @@ function Overview({ d, onJump }: { d: Studio; onJump: (t: string) => void }) {
         <LineChart data={series} fmt={m.fmt} fmtFull={m.full} color={m.color} height={260}
           detail={(i) => {
             const vs = published.get(d.daily[i]!.day);
-            return vs?.length ? <div className="mt-1.5 space-y-1 border-t-2 border-line pt-1.5">{vs.map((v) => (
+            return vs?.length ? <div className="mt-1.5 space-y-1 border-t border-line pt-1.5">{vs.map((v) => (
               <div key={v.videoId} className="flex max-w-56 items-center gap-1.5"><img src={v.thumbnailUrl} alt="" className="h-6 w-3.5 border border-plane object-cover" /><span className="truncate text-ink2">{v.title}</span></div>
             ))}</div> : null;
           }} />
@@ -150,11 +150,11 @@ function Overview({ d, onJump }: { d: Studio; onJump: (t: string) => void }) {
           <ul className="space-y-2.5">
             {best.slice(0, 5).map((c, i) => (
               <li key={c.videoId}>
-                <Link href={`/videos/${c.videoId}`} className="nb-sm nb-press flex items-center gap-3 bg-surface pr-2.5">
-                  <span className={`grid w-10 self-stretch place-items-center border-r-2 border-edge font-display text-[18px] ${i === 0 ? "bg-lime text-on-accent" : "bg-surface-2"}`}>{i + 1}</span>
-                  <img src={c.thumbnailUrl} alt="" className="my-1.5 h-11 w-6 border-2 border-edge object-cover" />
-                  <span className="min-w-0 flex-1 py-1.5"><span className="line-clamp-1 text-[13px] font-bold">{c.title}</span><span className="font-mono text-[10.5px] font-bold uppercase text-muted">{fmtNum(c.views)} views · {c.avgViewPct?.toFixed(0) ?? "—"}% viewed</span></span>
-                  <span className="border-2 border-edge bg-mint px-1.5 font-display text-[14px] tabular-nums text-on-accent">{c.vs48!.toFixed(1)}×</span>
+                <Link href={`/videos/${c.videoId}`} className="panel-sm hover-raise flex items-center gap-3 bg-surface pr-2.5">
+                  <span className={`grid size-7 shrink-0 place-items-center rounded-full text-[12px] font-semibold ${i === 0 ? "bg-primary text-white" : "bg-surface-3 text-ink2"}`}>{i + 1}</span>
+                  <img src={c.thumbnailUrl} alt="" className="my-1.5 h-11 w-6 border border-ring object-cover rounded-lg" />
+                  <span className="min-w-0 flex-1 py-1.5"><span className="line-clamp-1 text-[13px] font-semibold">{c.title}</span><span className="text-xs font-medium text-muted">{fmtNum(c.views)} views · {c.avgViewPct?.toFixed(0) ?? "—"}% viewed</span></span>
+                  <span className="rounded-full bg-good-soft px-2 py-0.5 text-[12px] font-semibold tabular-nums text-good-text">{c.vs48!.toFixed(1)}×</span>
                 </Link>
               </li>
             ))}
@@ -169,7 +169,7 @@ function Overview({ d, onJump }: { d: Studio; onJump: (t: string) => void }) {
   );
 }
 
-const JumpBtn = ({ onClick }: { onClick: () => void }) => <button type="button" onClick={onClick} className="shrink-0 px-2 py-1 text-xs font-semibold text-ink font-bold hover:bg-lime/25">More →</button>;
+const JumpBtn = ({ onClick }: { onClick: () => void }) => <button type="button" onClick={onClick} className="shrink-0 px-2 py-1 text-xs font-semibold text-ink font-semibold hover:bg-tint-brand">More →</button>;
 
 // ---------------- realtime ----------------
 
@@ -188,11 +188,11 @@ function RealtimeTab({ d }: { d: Studio }) {
         <HourlyBars values={r.hours.map((h) => h.views)} hours={labels} height={190} />
       </Card>
       <Card title="Top videos right now" icon={TrendingUp} description="Views in the last 48 hours">
-        <ul className="divide-y-2 divide-line">
+        <ul className="divide-y divide-line">
           {r.top.map((v) => (
             <li key={v.videoId}>
               <Link href={`/videos/${v.videoId}`} className="flex items-center gap-4 py-2.5 hover:bg-wash">
-                <img src={v.thumbnailUrl} alt="" className="h-12 w-7 border-2 border-edge object-cover" />
+                <img src={v.thumbnailUrl} alt="" className="h-12 w-7 border border-ring object-cover rounded-lg" />
                 <span className="min-w-0 flex-1 truncate text-[13px] font-semibold">{v.title}</span>
                 <span className="hidden w-48 sm:block"><HourlyBars values={v.hours} hours={labels} height={30} bare /></span>
                 <span className="w-16 text-right font-semibold tabular-nums">{fmtNum(v.views48)}</span>
@@ -309,7 +309,7 @@ function Audience({ d }: { d: Studio }) {
             {sub.map((s, i) => (
               <li key={s.key}>
                 <div className="flex items-baseline justify-between text-[13px]"><span className="font-semibold">{s.label}</span><span className="tabular-nums text-muted">{fmtNum(s.views)} views · <b className="text-ink">{s.avgViewPct?.toFixed(0) ?? "—"}%</b> viewed</span></div>
-                <div className="mt-1.5 h-4 overflow-hidden border-2 border-edge bg-surface"><div className="h-full border-r-2 border-edge" style={{ width: `${Math.max(s.share * 100, 1)}%`, background: i ? "var(--c5)" : "var(--c1)" }} /></div>
+                <div className="mt-1.5 h-4 overflow-hidden border border-ring bg-surface rounded-lg"><div className="h-full border-r border-ring" style={{ width: `${Math.max(s.share * 100, 1)}%`, background: i ? "var(--c5)" : "var(--c1)" }} /></div>
               </li>
             ))}
           </ul>
@@ -340,8 +340,8 @@ function Works({ d }: { d: Studio }) {
             <Card key={a.attribute} title={a.label}>
               <ul className="space-y-1.5">
                 {groups.map((g, i) => (
-                  <li key={g.value} className={`relative flex items-center gap-2  px-2 py-1.5 text-[13px] ${g.n < 3 ? "opacity-45" : ""}`}>
-                    <span aria-hidden className="absolute inset-y-0 left-0 " style={{ width: `${((g[k] ?? 0) / max) * 100}%`, background: i === 0 && g.n >= 3 ? "color-mix(in oklab, var(--good) 22%, transparent)" : "var(--series-soft)" }} />
+                  <li key={g.value} className={`relative flex items-center gap-2 px-2 py-1.5 text-[13px] ${g.n < 3 ? "opacity-45" : ""}`}>
+                    <span aria-hidden className="absolute inset-y-0 left-0" style={{ width: `${((g[k] ?? 0) / max) * 100}%`, background: i === 0 && g.n >= 3 ? "color-mix(in oklab, var(--good) 22%, transparent)" : "var(--series-soft)" }} />
                     <span className="relative min-w-0 flex-1 truncate">{g.value}</span>
                     <span className="relative rounded bg-surface/70 px-1 text-[10.5px] tabular-nums text-muted">n={g.n}</span>
                     <span className="relative w-12 text-right font-semibold tabular-nums">{g[k] === null ? "—" : fmt(g[k]!)}</span>
@@ -382,7 +382,7 @@ function StudioOnly() {
   return (
     <p className="pt-3 text-center text-xs text-muted">
       Only in YouTube Studio (no API gives them): Shorts&apos; exact stayed-to-watch, returning vs new viewers, when your viewers are online, other channels they watch, and revenue.{" "}
-      <a href="https://studio.youtube.com/" target="_blank" rel="noreferrer" className="font-semibold text-ink font-bold hover:underline">Open Studio ↗</a>
+      <a href="https://studio.youtube.com/" target="_blank" rel="noreferrer" className="font-semibold text-ink font-semibold hover:underline">Open Studio ↗</a>
     </p>
   );
 }

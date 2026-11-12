@@ -7,7 +7,7 @@ import { Card } from "@/components/ui";
 import { fmtCompact } from "@/lib/format";
 import type { Origin } from "@/lib/schemas";
 
-const LINK = "font-semibold text-ink font-bold hover:underline";
+const LINK = "font-semibold text-ink font-semibold hover:underline";
 
 /** "Inspired by “…” · 2.8M views": one line for the Videos list. */
 export function originLine(o: Origin | null): string | null {
@@ -25,11 +25,11 @@ export function OriginCard({ origin }: { origin: Origin | null }) {
         <p className="text-[13px] text-muted">Made from feed topic <span className="font-mono text-xs">{origin.feedId}</span>, which has since left the feed.</p>
       ) : (
         <dl className="flex flex-col gap-3 text-[13px]" data-testid="video-origin">
-          {origin.why && <div><dt className="nb-label !text-[10.5px] text-muted">Why</dt><dd className="mt-0.5 text-ink">{origin.why}</dd></div>}
-          {origin.angle && <div><dt className="nb-label !text-[10.5px] text-muted">Angle</dt><dd className="mt-0.5 text-ink2">{origin.angle}</dd></div>}
+          {origin.why && <div><dt className="text-[11.5px] font-medium text-muted">Why</dt><dd className="mt-0.5 text-ink">{origin.why}</dd></div>}
+          {origin.angle && <div><dt className="text-[11.5px] font-medium text-muted">Angle</dt><dd className="mt-0.5 text-ink2">{origin.angle}</dd></div>}
           {origin.demand && (
             <div>
-              <dt className="nb-label !text-[10.5px] text-muted">Inspired by</dt>
+              <dt className="text-[11.5px] font-medium text-muted">Inspired by</dt>
               <dd className="mt-0.5 break-words">
                 {origin.demand.url ? <a className={LINK} href={origin.demand.url} target="_blank" rel="noreferrer">{origin.demand.title} ↗</a> : <span className="font-semibold">{origin.demand.title}</span>}
                 {origin.demand.views !== null && <span className="block text-xs tabular-nums text-ink2">{fmtCompact(origin.demand.views)} views on YouTube: the proof people want this</span>}
@@ -38,18 +38,18 @@ export function OriginCard({ origin }: { origin: Origin | null }) {
           )}
           {origin.fromShort && (
             <div>
-              <dt className="nb-label !text-[10.5px] text-muted">Retells our Short</dt>
+              <dt className="text-[11.5px] font-medium text-muted">Retells our Short</dt>
               <dd className="mt-0.5"><Link className={`${LINK} font-mono text-xs`} href={`/videos/${origin.fromShort.id}`}>{origin.fromShort.id}</Link>
                 {origin.fromShort.views !== null && <span className="text-xs text-ink2"> · {fmtCompact(origin.fromShort.views)} views</span>}</dd>
             </div>
           )}
           {origin.sources.length > 0 && (
             <div>
-              <dt className="nb-label !text-[10.5px] text-muted">Sources research read</dt>
+              <dt className="text-[11.5px] font-medium text-muted">Sources research read</dt>
               <dd className="mt-1 flex flex-wrap gap-1.5">
                 {origin.sources.map((s) => (
                   <a key={s.url} href={s.url} target="_blank" rel="noreferrer" title={s.url}
-                    className="max-w-full truncate border-2 border-edge bg-surface px-1.5 py-0.5 text-xs font-bold text-ink hover:bg-lime hover:text-on-accent">{s.label} ↗</a>
+                    className="max-w-full truncate bg-surface px-1.5 py-0.5 text-xs font-semibold text-ink hover:bg-tint-brand rounded-md">{s.label} ↗</a>
                 ))}
               </dd>
             </div>

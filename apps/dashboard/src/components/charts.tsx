@@ -36,10 +36,10 @@ const PAD = { top: 12, right: 8, bottom: 26, left: 44 };
 function ChartTooltip({ x, y, width, label, value, detail }: { x: number; y: number; width: number; label: string; value: string; detail?: React.ReactNode }) {
   const left = Math.min(Math.max(x, 64), width - 64);
   return (
-    <div className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full whitespace-nowrap border-2 border-edge bg-ink px-2.5 py-1.5 text-xs text-plane shadow-[3px_3px_0_0_var(--lime)]"
+    <div className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg border border-ring bg-surface px-3 py-2 text-xs shadow-pop"
       style={{ left, top: Math.max(y - 12, 36) }}>
-      <div className="nb-label !text-[10px] text-lime">{label}</div>
-      <div className="mt-0.5 font-display text-base tabular-nums">{value}</div>
+      <div className="text-muted">{label}</div>
+      <div className="mt-0.5 text-[13px] font-semibold tabular-nums text-ink">{value}</div>
       {detail}
     </div>
   );
@@ -50,12 +50,11 @@ function Axes({ w, h, ticks, y, fmt }: { w: number; h: number; ticks: number[]; 
     <>
       {ticks.map((t) => (
         <g key={t}>
-          <line x1={PAD.left} x2={w - PAD.right} y1={y(t)} y2={y(t)} stroke="var(--line)" strokeWidth={1.5} strokeDasharray={t === 0 ? undefined : "2 5"} />
-          <text x={PAD.left - 8} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize={10.5} fontWeight={700} fill="var(--muted)" style={{ fontVariantNumeric: "tabular-nums", fontFamily: "var(--font-mono)" }}>{fmt(t)}</text>
+          <line x1={PAD.left} x2={w - PAD.right} y1={y(t)} y2={y(t)} stroke="var(--line)" strokeWidth={1} strokeDasharray={t === 0 ? undefined : "3 4"} />
+          <text x={PAD.left - 10} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize={11} fill="var(--muted)" style={{ fontVariantNumeric: "tabular-nums" }}>{fmt(t)}</text>
         </g>
       ))}
-      <line x1={PAD.left} x2={w - PAD.right} y1={h - PAD.bottom} y2={h - PAD.bottom} stroke="var(--axis)" strokeWidth={2.5} />
-      <line x1={PAD.left} x2={PAD.left} y1={PAD.top} y2={h - PAD.bottom} stroke="var(--axis)" strokeWidth={2.5} />
+      <line x1={PAD.left} x2={w - PAD.right} y1={h - PAD.bottom} y2={h - PAD.bottom} stroke="var(--axis)" strokeWidth={1} />
     </>
   );
 }
@@ -88,17 +87,17 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var
         <svg width={w} height={height} role="img" onPointerMove={onMove} onPointerDown={onMove} onPointerLeave={() => setHover(null)}>
           <Axes w={w} h={height} ticks={ticks} y={y} fmt={fmt} />
           {data.map((d, i) => (i % every === 0 || i === data.length - 1) && (i === data.length - 1 || data.length - 1 - i >= every * 0.6) && (
-            <text key={d.label + i} x={x(i)} y={height - 6} textAnchor={i === data.length - 1 ? "end" : i === 0 ? "start" : "middle"} fontSize={10.5} fontWeight={700} fill="var(--muted)" style={{ fontFamily: "var(--font-mono)" }}>{d.label}</text>
+            <text key={d.label + i} x={x(i)} y={height - 6} textAnchor={i === data.length - 1 ? "end" : i === 0 ? "start" : "middle"} fontSize={11} fill="var(--muted)">{d.label}</text>
           ))}
           <defs>
             <linearGradient id={gradId} x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor={color} stopOpacity={0.28} />
-              <stop offset="100%" stopColor={color} stopOpacity={0.28} />
+              <stop offset="0%" stopColor={color} stopOpacity={0.22} />
+              <stop offset="100%" stopColor={color} stopOpacity={0} />
             </linearGradient>
           </defs>
           <motion.path key={`a${data.length}`} d={`${line} L${x(data.length - 1)},${height - PAD.bottom} L${x(0)},${height - PAD.bottom} Z`} fill={`url(#${gradId})`}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} />
-          <motion.path key={`l${data.length}`} d={line} fill="none" stroke={color} strokeWidth={3} strokeLinejoin="miter" strokeLinecap="square"
+          <motion.path key={`l${data.length}`} d={line} fill="none" stroke={color} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round"
             initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }} />
           {/* days YouTube Analytics hasn't reached yet: shaded, the line dashed (estimated from live counts) */}
           {est >= 0 && <>
@@ -109,8 +108,8 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var
           </>}
           {hover !== null && (
             <>
-              <line x1={x(hover)} x2={x(hover)} y1={PAD.top} y2={height - PAD.bottom} stroke="var(--ink)" strokeWidth={2} strokeDasharray="4 3" />
-              <rect x={x(hover) - 6} y={y(data[hover].value) - 6} width={12} height={12} fill="var(--lime)" stroke="var(--edge)" strokeWidth={2.5} />
+              <line x1={x(hover)} x2={x(hover)} y1={PAD.top} y2={height - PAD.bottom} stroke="var(--ring-strong)" strokeWidth={1} />
+              <circle cx={x(hover)} cy={y(data[hover].value)} r={5} fill={color} stroke="var(--surface)" strokeWidth={2.5} />
             </>
           )}
         </svg>
@@ -135,12 +134,12 @@ export function Sparkline({ values, height = 36, color = "var(--series)" }: { va
         <svg width={w} height={height}>
           <defs>
             <linearGradient id={gradId} x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor={color} stopOpacity={0.22} />
-              <stop offset="100%" stopColor={color} stopOpacity={0.22} />
+              <stop offset="0%" stopColor={color} stopOpacity={0.18} />
+              <stop offset="100%" stopColor={color} stopOpacity={0} />
             </linearGradient>
           </defs>
           <path d={`${line} L${w},${height} L0,${height} Z`} fill={`url(#${gradId})`} />
-          <motion.path d={line} fill="none" stroke={color} strokeWidth={2.5} strokeLinejoin="miter" strokeLinecap="square"
+          <motion.path d={line} fill="none" stroke={color} strokeWidth={1.75} strokeLinejoin="round" strokeLinecap="round"
             initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} />
         </svg>
       )}
@@ -169,17 +168,18 @@ export function BarChart({ data, height = 220, fmt, fmtFull = fmt }: { data: Poi
           {data.map((d, i) => {
             const cx = PAD.left + band * (i + 0.5);
             const h = Math.max(base - y(d.value), d.value > 0 ? 2 : 0);
-            const path = `M${cx - bw / 2},${base} V${base - h} H${cx + bw / 2} V${base} Z`;
+            const r = Math.min(4, h, bw / 2);
+            const path = `M${cx - bw / 2},${base} V${base - h + r} Q${cx - bw / 2},${base - h} ${cx - bw / 2 + r},${base - h} H${cx + bw / 2 - r} Q${cx + bw / 2},${base - h} ${cx + bw / 2},${base - h + r} V${base} Z`;
             return (
               <g key={d.label} onPointerEnter={() => setHover(i)} onPointerDown={() => setHover(i)}>
                 <rect x={PAD.left + band * i} y={PAD.top} width={band} height={base - PAD.top} fill={hover === i ? "var(--wash)" : "transparent"} />
-                <motion.path d={path} fill={i === best ? "var(--lime)" : "var(--sky)"} stroke="var(--edge)" strokeWidth={2} style={{ transformOrigin: `${cx}px ${base}px` }}
+                <motion.path d={path} fill={i === best ? "var(--brand)" : "color-mix(in oklab, var(--brand) 45%, transparent)"} style={{ transformOrigin: `${cx}px ${base}px` }}
                   initial={{ scaleY: 0 }} animate={{ scaleY: 1, opacity: hover === null || hover === i ? 1 : 0.5 }}
                   transition={{ scaleY: { duration: 0.55, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }, opacity: { duration: 0.15 } }} />
                 {i === best && hover === null && d.value > 0 && (
-                  <text x={cx} y={base - h - 7} textAnchor="middle" fontSize={12} fill="var(--ink)" style={{ fontVariantNumeric: "tabular-nums", fontFamily: "var(--font-display)" }}>{fmt(d.value)}</text>
+                  <text x={cx} y={base - h - 7} textAnchor="middle" fontSize={11.5} fontWeight={600} fill="var(--ink)" style={{ fontVariantNumeric: "tabular-nums" }}>{fmt(d.value)}</text>
                 )}
-                <text x={cx} y={height - 6} textAnchor="middle" fontSize={10.5} fontWeight={700} fill="var(--muted)" style={{ fontFamily: "var(--font-mono)" }}>{d.label}</text>
+                <text x={cx} y={height - 6} textAnchor="middle" fontSize={11} fill="var(--muted)">{d.label}</text>
               </g>
             );
           })}
@@ -194,16 +194,16 @@ export function BarChart({ data, height = 220, fmt, fmtFull = fmt }: { data: Poi
 export function BarList({ rows, fmt, scaleMax }: { rows: { key: string; label: string; value: number; sub?: string; href?: string }[]; fmt: (n: number) => string; scaleMax?: number }) {
   const max = Math.max(scaleMax ?? 0, ...rows.map((r) => r.value), 1);   // scaleMax lets two lists share one scale
   return (
-    <ul className="flex flex-col gap-1.5">
+    <ul className="flex flex-col gap-1">
       {rows.map((r, i) => (
-        <li key={r.key} className="relative flex items-center justify-between gap-3 border-2 border-edge bg-surface px-2 py-1.5 text-[13px] font-semibold">
-          <motion.span aria-hidden className={`absolute inset-y-0 left-0 border-r-2 border-edge ${i === 0 ? "bg-lime" : "bg-sky"} opacity-70`}
+        <li key={r.key} className="relative flex items-center justify-between gap-3 rounded-md px-2.5 py-1.5 text-[13px]">
+          <motion.span aria-hidden className="absolute inset-y-0 left-0 rounded-md bg-series-soft"
             initial={{ width: 0 }} animate={{ width: `${Math.max((r.value / max) * 100, 1.5)}%` }} transition={{ duration: 0.7, delay: i * 0.03, ease: [0.16, 1, 0.3, 1] }} />
           <span className="relative min-w-0 truncate">
             {r.href ? <Link href={r.href} className="hover:underline">{r.label}</Link> : r.label}
             {r.sub && <span className="ml-2 text-xs text-muted">{r.sub}</span>}
           </span>
-          <span className="relative shrink-0 font-mono font-bold tabular-nums">{fmt(r.value)}</span>
+          <span className="relative shrink-0 font-medium tabular-nums">{fmt(r.value)}</span>
         </li>
       ))}
     </ul>
@@ -211,16 +211,16 @@ export function BarList({ rows, fmt, scaleMax }: { rows: { key: string; label: s
 }
 
 export type TrackerTone = "good" | "warning" | "critical" | "empty";
-const TRACK: Record<TrackerTone, string> = { good: "bg-mint", warning: "bg-sun", critical: "bg-red", empty: "bg-surface nb-stripes" };
+const TRACK: Record<TrackerTone, string> = { good: "bg-good", warning: "bg-warning", critical: "bg-critical", empty: "bg-surface-3" };
 
 /** A row of day blocks coloured by outcome (Tremor-style tracker). Every block has a tooltip. */
 export function Tracker({ items, height = 32 }: { items: { key: string; tone: TrackerTone; tip: React.ReactNode }[]; height?: number }) {
   return (
-    <div className="flex w-full gap-1" style={{ height }}>
+    <div className="flex w-full gap-[3px]" style={{ height }}>
       {items.map((it, i) => (
         <Tip key={it.key} label={it.tip}>
           <motion.span tabIndex={0} aria-label={typeof it.tip === "string" ? it.tip : undefined}
-            className={`h-full flex-1 border-2 border-edge outline-offset-2 transition-transform hover:-translate-y-1 ${TRACK[it.tone]}`}
+            className={`h-full flex-1 rounded-[4px] outline-offset-1 transition-opacity hover:opacity-75 ${TRACK[it.tone]}`}
             initial={{ scaleY: 0.2, opacity: 0 }} animate={{ scaleY: 1, opacity: 1 }} transition={{ duration: 0.3, delay: i * 0.02 }} />
         </Tip>
       ))}
@@ -234,9 +234,9 @@ export function CategoryBar({ parts }: { parts: { key: string; label: string; va
   const shown = parts.filter((p) => p.value > 0);
   return (
     <div>
-      <div className="nb-stripes flex h-6 w-full overflow-hidden border-2 border-edge bg-surface">
+      <div className="flex h-2.5 w-full gap-[3px] overflow-hidden rounded-full bg-surface-3">
         {shown.map((p, i) => (
-          <motion.span key={p.key} className={`h-full border-r-2 border-edge last:border-r-0 ${p.className}`} initial={{ width: 0 }} animate={{ width: `${(p.value / total) * 100}%` }}
+          <motion.span key={p.key} className={`h-full first:rounded-l-full last:rounded-r-full ${p.className}`} initial={{ width: 0 }} animate={{ width: `${(p.value / total) * 100}%` }}
             transition={{ duration: 0.7, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }} />
         ))}
       </div>
@@ -244,9 +244,9 @@ export function CategoryBar({ parts }: { parts: { key: string; label: string; va
         {parts.map((p) => {
           const inner = (
             <>
-              <span aria-hidden className={`size-3 border-2 border-edge ${p.className}`} />
-              <span className="font-medium text-ink2">{p.label}</span>
-              <span className="font-mono font-bold tabular-nums">{p.value}</span>
+              <span aria-hidden className={`size-2.5 rounded-[3px] ${p.className}`} />
+              <span className="text-ink2">{p.label}</span>
+              <span className="font-semibold tabular-nums">{p.value}</span>
             </>
           );
           return <li key={p.key}>{p.href ? <Link href={p.href} className="flex items-center gap-1.5 hover:underline">{inner}</Link> : <span className="flex items-center gap-1.5">{inner}</span>}</li>;
@@ -260,16 +260,16 @@ export function CategoryBar({ parts }: { parts: { key: string; label: string; va
 export function DataTable({ head, rows }: { head: [string, string]; rows: [string, string][] }) {
   return (
     <details className="group mt-3 text-sm">
-      <summary className="nb-label inline-block cursor-pointer list-none border-2 border-edge bg-surface px-2 py-0.5 text-ink2 hover:bg-lime hover:text-on-accent">
+      <summary className="cursor-pointer list-none text-xs font-medium text-muted hover:text-ink2">
         <span className="group-open:hidden">Show as table</span><span className="hidden group-open:inline">Hide table</span>
       </summary>
-      <table className="mt-2 w-full border-2 border-edge text-left text-xs">
+      <table className="mt-2 w-full overflow-hidden rounded-lg border border-ring text-left text-xs">
         <thead>
-          <tr className="border-b-2 border-edge bg-ink text-plane"><th className="px-2 py-1.5 font-bold uppercase">{head[0]}</th><th className="px-2 py-1.5 text-right font-bold uppercase">{head[1]}</th></tr>
+          <tr className="border-b border-ring bg-surface-2 text-muted"><th className="px-2 py-1.5 font-semibold">{head[0]}</th><th className="px-2 py-1.5 text-right font-semibold">{head[1]}</th></tr>
         </thead>
         <tbody>
           {rows.map(([a, b], i) => (
-            <tr key={a + i} className="border-b border-line last:border-0 odd:bg-wash"><td className="px-2 py-1.5">{a}</td><td className="px-2 py-1.5 text-right font-mono tabular-nums">{b}</td></tr>
+            <tr key={a + i} className="border-b border-line last:border-0 odd:bg-wash"><td className="px-2 py-1.5">{a}</td><td className="px-2 py-1.5 text-right tabular-nums">{b}</td></tr>
           ))}
         </tbody>
       </table>

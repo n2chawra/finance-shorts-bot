@@ -27,7 +27,7 @@ export function CopyButton({ text, label = "Copy" }: { text: string; label?: str
   };
   return (
     <button type="button" onClick={copy} aria-label={`${label} to clipboard`}
-      className={`inline-flex min-h-8 items-center gap-1.5  border px-2.5 text-xs font-semibold transition-colors ${done ? "border-transparent bg-good-soft text-good-text" : "border-edge bg-surface text-ink2 hover:bg-wash hover:text-ink"}`}>
+      className={`inline-flex min-h-8 items-center gap-1.5 border px-2.5 text-xs font-semibold transition-colors ${done ? "border-transparent bg-good-soft text-good-text" : "border-ring bg-surface text-ink2 hover:bg-wash hover:text-ink"}`}>
       <AnimatePresence mode="wait" initial={false}>
         <motion.span key={done ? "done" : "idle"} initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.6, opacity: 0 }} transition={{ duration: 0.12 }}>
           {done ? <Check aria-hidden className="size-3.5" /> : <Copy aria-hidden className="size-3.5" />}
@@ -43,7 +43,7 @@ function Field({ icon: Icon, label, count, max, actions, children }: {
 }) {
   const over = count !== undefined && max !== undefined && count > max;
   return (
-    <div className="border-2 border-line bg-surface-2 p-3">
+    <div className="border border-line bg-surface-2 p-3">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
         <span className="flex items-center gap-1.5 text-xs font-semibold text-ink2">
           <Icon aria-hidden className="size-3.5" />{label}
@@ -76,7 +76,7 @@ export function YouTubeDetails({ v }: { v: Video }) {
           <p className="whitespace-pre-wrap text-sm leading-relaxed text-ink">{v.description}</p>
           {missing && (
             <>
-              <p className="mt-2 text-sm text-ink font-bold">{missing}</p>
+              <p className="mt-2 text-sm text-ink font-semibold">{missing}</p>
               <p className="mt-2 text-[11px] text-muted">Copy includes the hashtags at the end.</p>
             </>
           )}
@@ -84,11 +84,11 @@ export function YouTubeDetails({ v }: { v: Video }) {
         <Field icon={Tags} label="Tags" count={v.tags.length} actions={<><CopyButton text={v.tags.join(", ")} label="Copy for Tags box" /><CopyButton text={hashtags} label="Copy hashtags" /></>}>
           {v.tags.length ? (
             <div className="flex flex-wrap gap-1.5">
-              {v.tags.map((t) => <span key={t} className="rounded-full border-2 border-edge bg-surface px-2.5 py-1 text-xs font-semibold text-ink2">#{t}</span>)}
+              {v.tags.map((t) => <span key={t} className="rounded-full border border-ring bg-surface px-2.5 py-1 text-xs font-semibold text-ink2">#{t}</span>)}
             </div>
           ) : <p className="text-sm text-muted">No tags.</p>}
         </Field>
-        <div className="bg-lime/25 px-3 py-2.5 text-xs leading-relaxed text-ink2">
+        <div className="bg-tint-brand px-3 py-2.5 text-xs leading-relaxed text-ink2">
           <strong className="text-ink">In YouTube Studio pick:</strong> Audience → No, it&apos;s not made for kids · Category → Education ·
           Altered or synthetic content → No · Visibility → Public
         </div>
@@ -132,9 +132,9 @@ export function MarkUploaded({ v }: { v: Pick<Video, "id" | "status"> }) {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-40 animate-fade bg-ink/50" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(460px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop border-2 border-edge bg-surface p-5 shadow-[7px_7px_0_0_var(--hard)]">
+        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(460px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop border border-ring bg-surface p-5 shadow-xs rounded-lg">
           <form onSubmit={submit}>
-            <Dialog.Title className="font-display text-lg uppercase leading-tight">{relink ? "Link the YouTube video" : "Mark as uploaded by hand"}</Dialog.Title>
+            <Dialog.Title className="text-[16px] font-semibold">{relink ? "Link the YouTube video" : "Mark as uploaded by hand"}</Dialog.Title>
             <Dialog.Description className="mt-1.5 text-sm text-ink2">
               {relink ? "Paste the link so views and likes are tracked."
                 : "The video leaves the queue and is marked published. The bot will never upload it. Paste the link so its views and likes are tracked."}
@@ -143,14 +143,14 @@ export function MarkUploaded({ v }: { v: Pick<Video, "id" | "status"> }) {
             <label htmlFor="yt-link" className="mt-4 block text-sm font-semibold">YouTube link</label>
             <input id="yt-link" autoFocus value={link} onChange={(e) => setLink(e.target.value)} placeholder="https://youtube.com/shorts/…" inputMode="url"
               aria-invalid={bad} aria-describedby="yt-link-hint"
-              className={`mt-1.5 min-h-11 w-full  border bg-surface px-3 text-sm shadow-card ${bad ? "border-critical" : "border-edge"}`} />
+              className={`mt-1.5 min-h-11 w-full border bg-surface px-3 text-sm shadow-card ${bad ? "border-critical" : "border-ring"}`} />
             <p id="yt-link-hint" className={`mt-1 text-xs ${bad ? "text-critical-text" : "text-muted"}`}>
               {bad ? "That doesn't look like a YouTube video link." : id ? `Video id ${id}` : "Optional. You can add it later from this page."}
             </p>
 
             <label htmlFor="yt-when" className="mt-3 block text-sm font-semibold">Published at</label>
             <input id="yt-when" type="datetime-local" required value={when} onChange={(e) => setWhen(e.target.value)}
-              className="mt-1.5 min-h-11 w-full border-2 border-edge bg-surface px-3 text-sm shadow-card" />
+              className="mt-1.5 min-h-11 w-full border border-ring bg-surface px-3 text-sm shadow-card rounded-lg" />
 
             <div className="mt-5 flex justify-end gap-2">
               <Dialog.Close className={buttonClass("default")}>Cancel</Dialog.Close>
@@ -180,7 +180,7 @@ export function parseTags(text: string): string[] {
     return true;
   });
 }
-const inputClass = "mt-1.5 min-h-11 w-full  border-2 border-edge bg-surface px-3 text-sm shadow-card";
+const inputClass = "mt-1.5 min-h-11 w-full  border border-edge bg-surface px-3 text-sm shadow-card";
 
 /** Fix anything on a video after the fact: title, description, tags, and once it is uploaded its YouTube link and time. */
 export function EditDetails({ v }: { v: Pick<Video, "id" | "title" | "description" | "tags" | "upload"> }) {
@@ -224,9 +224,9 @@ export function EditDetails({ v }: { v: Pick<Video, "id" | "title" | "descriptio
       <Dialog.Trigger className={buttonClass("default")}><Pencil aria-hidden className="size-4" />Edit details</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-40 animate-fade bg-ink/50" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 max-h-[calc(100dvh-2rem)] w-[min(560px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop overflow-y-auto border-2 border-edge bg-surface p-5 shadow-[7px_7px_0_0_var(--hard)]">
+        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 max-h-[calc(100dvh-2rem)] w-[min(560px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop overflow-y-auto border border-ring bg-surface p-5 shadow-xs rounded-lg">
           <form onSubmit={submit}>
-            <Dialog.Title className="font-display text-lg uppercase leading-tight">Edit details</Dialog.Title>
+            <Dialog.Title className="text-[16px] font-semibold">Edit details</Dialog.Title>
             <Dialog.Description className="mt-1.5 text-sm text-ink2">
               Changes the dashboard{uploaded ? " and what the stats track" : " and what the bot uploads"}. It doesn&apos;t change the video on YouTube: edit it in YouTube Studio too.
             </Dialog.Description>

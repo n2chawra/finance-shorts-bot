@@ -4,17 +4,17 @@ import { AlertOctagon, AlertTriangle, BellOff, Check, CheckCheck, CircleCheck, I
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef } from "react";
 
-import { Badge, Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, type Tone } from "@/components/ui";
+import { type Accent, Badge, Button, Card, Empty, ErrorNote, IconTile, Loading, PageHeader, Stagger, type Tone } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
 import { useNotificationAction, useNotifications } from "@/lib/queries";
 import { splitSteps } from "@/lib/steps";
 import type { Notification } from "@/lib/schemas";
 
-const SEVERITY: Record<Notification["severity"], { tone: Tone; icon: typeof Info; label: string; ring: string }> = {
-  critical: { tone: "critical", icon: AlertOctagon, label: "Needs you now", ring: "bg-red" },
-  warning: { tone: "warning", icon: AlertTriangle, label: "Needs a look", ring: "bg-sun" },
-  info: { tone: "info", icon: Info, label: "For your information", ring: "bg-sky" },
+const SEVERITY: Record<Notification["severity"], { tone: Tone; icon: typeof Info; label: string; bar: string; accent: Accent }> = {
+  critical: { tone: "critical", icon: AlertOctagon, label: "Needs you now", bar: "bg-critical", accent: "red" },
+  warning: { tone: "warning", icon: AlertTriangle, label: "Needs a look", bar: "bg-warning", accent: "sun" },
+  info: { tone: "info", icon: Info, label: "For your information", bar: "bg-series", accent: "sky" },
 };
 
 function Steps({ text }: { text: string }) {
@@ -25,7 +25,7 @@ function Steps({ text }: { text: string }) {
     <>
       {intro && <p className="mb-2 whitespace-pre-wrap">{intro}</p>}
       <ol className="flex flex-col gap-1.5">{steps.map((l, i) => (
-        <li key={i} className="flex gap-2.5"><span aria-hidden className="grid size-6 shrink-0 place-items-center border-2 border-edge bg-lime font-display text-[12px] tabular-nums text-on-accent">{i + 1}</span><span className="min-w-0 whitespace-pre-wrap break-words">{l}</span></li>
+        <li key={i} className="flex gap-2.5"><span aria-hidden className="grid size-5 shrink-0 place-items-center rounded-full bg-surface text-[11px] font-semibold tabular-nums text-ink2 ring-1 ring-ring">{i + 1}</span><span className="min-w-0 whitespace-pre-wrap break-words">{l}</span></li>
       ))}</ol>
     </>
   );
@@ -36,9 +36,9 @@ const show = (v: unknown): string => (Array.isArray(v) ? v.join(", ") : v === un
 /** An agent's proposed setting change: the owner approves (the setting is written) or declines it. */
 function Proposal({ p, fix, decision, onDecide, busy }: { p: NonNullable<Notification["proposal"]>; fix: string; decision: Notification["decision"]; onDecide?: (a: "approve" | "decline") => void; busy: boolean }) {
   return (
-    <div className="nb-sm mt-4 bg-grape p-3.5 text-[13px] on-accent">
-      <div className="nb-label mb-2 flex items-center gap-1.5"><SlidersHorizontal aria-hidden strokeWidth={2.5} className="size-3.5" />Proposed setting change</div>
-      <p className="font-mono text-[14px] font-bold tabular-nums"><span>{p.setting}</span>: <span className="text-muted line-through">{show(p.current)}</span> → <span className="font-semibold">{show(p.value)}</span></p>
+    <div className="mt-3.5 rounded-xl border border-violet/25 bg-violet-soft p-3.5 text-[13px]">
+      <div className="mb-2 flex items-center gap-1.5 text-[12px] font-semibold text-violet-text"><SlidersHorizontal aria-hidden className="size-3.5" />Proposed setting change</div>
+      <p className="text-xs font-medium tabular-nums"><span>{p.setting}</span>: <span className="text-muted line-through">{show(p.current)}</span> → <span className="font-semibold">{show(p.value)}</span></p>
       {fix && <p className="mt-1 whitespace-pre-wrap text-ink2">{fix}</p>}
       {decision ? <p className="mt-1 text-xs text-muted">{decision === "approved" ? "Approved: the setting was changed." : "Declined: nothing changed."}</p> : onDecide && (
         <div className="mt-2.5 flex flex-wrap gap-2">
@@ -54,29 +54,25 @@ function Item({ n, onResolve, onReopen, onDecide, busy }: { n: Notification; onR
   const s = SEVERITY[n.severity];
   return (
     <motion.li layout initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-      className={`nb flex overflow-hidden bg-surface ${n.resolvedAt ? "opacity-60" : ""}`}>
-      <span aria-hidden className={`hidden w-14 shrink-0 place-items-start justify-center border-r-2 border-edge pt-4 text-on-accent sm:grid ${s.ring}`}>
-        <s.icon strokeWidth={2.5} className="size-6" />
-      </span>
+      className={`panel flex overflow-hidden bg-surface ${n.resolvedAt ? "opacity-60" : ""}`}>
+      <span aria-hidden className={`w-1 shrink-0 ${s.bar}`} />
       <div className="flex min-w-0 flex-1 flex-wrap items-start gap-x-3 gap-y-2 p-4 sm:flex-nowrap md:p-5">
-        <span className={`grid size-8 shrink-0 place-items-center border-2 border-edge text-on-accent sm:hidden ${s.ring}`}>
-          <s.icon aria-hidden strokeWidth={2.5} className="size-4" />
-        </span>
+        <IconTile icon={s.icon} accent={s.accent} />
         <div className="min-w-0 flex-1 basis-[calc(100%-2.75rem)] sm:basis-0">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="font-display text-[18px] uppercase leading-tight">{n.title}</h3>
-            {!n.seenAt && !n.resolvedAt && <span role="img" className="size-3 shrink-0 animate-pulse-dot border-2 border-edge bg-lime" aria-label="Unread" title="Unread" />}
+            <h3 className="text-[15px] font-semibold leading-tight">{n.title}</h3>
+            {!n.seenAt && !n.resolvedAt && <span role="img" className="size-2 shrink-0 rounded-full bg-brand" aria-label="Unread" title="Unread" />}
           </div>
-          <div className="mt-1.5 flex flex-wrap items-center gap-x-2 font-mono text-[11px] font-bold uppercase text-muted">
+          <div className="mt-1.5 flex flex-wrap items-center gap-x-2 text-xs text-muted">
             <Badge tone={s.tone}>{s.label}</Badge>
             <span>from {titleCase(n.source)}</span><span aria-hidden>·</span>
             <span title={fmtDateTime(n.updatedAt)}>{n.resolvedAt ? `resolved ${fmtRelative(n.resolvedAt)}` : `updated ${fmtRelative(n.updatedAt)}`}</span>
           </div>
-          <p className="mt-3 whitespace-pre-wrap text-[14px] font-medium leading-relaxed text-ink2">{n.detail}</p>
+          <p className="mt-2.5 whitespace-pre-wrap text-[13.5px] leading-relaxed text-ink2">{n.detail}</p>
           {n.proposal && <Proposal p={n.proposal} fix={n.fix} decision={n.decision} onDecide={n.resolvedAt ? undefined : onDecide} busy={busy} />}
           {!n.resolvedAt && !n.proposal && (
-            <div className="mt-4 border-2 border-edge bg-surface-2 p-3.5 text-[13.5px] font-medium leading-relaxed">
-              <div className="nb-label mb-2.5 flex items-center gap-1.5 text-ink"><Wrench aria-hidden strokeWidth={2.5} className="size-3.5" />How to fix</div>
+            <div className="mt-3.5 rounded-xl border border-line bg-surface-2 p-3.5 text-[13px] leading-relaxed">
+              <div className="mb-2 flex items-center gap-1.5 text-[12px] font-semibold text-ink"><Wrench aria-hidden className="size-3.5 text-muted" />How to fix</div>
               <Steps text={n.fix} />
             </div>
           )}
@@ -124,8 +120,8 @@ export default function NotificationsPage() {
         <Card><Empty icon={BellOff} title="All clear">Nothing needs you right now. The watchdog checks every hour.</Empty></Card>
       ) : (
         <>
-          <p className="mb-5 flex items-center gap-2 text-[13px] font-semibold text-ink2">
-            <span className="border-2 border-edge bg-surface px-2 py-0.5 font-display text-[15px] text-ink">{data.open.length} open</span>{critical ? <strong className="border-2 border-edge bg-red px-2 py-0.5 font-display text-[15px] text-on-accent">{critical} critical</strong> : ""}
+          <p className="mb-4 text-[13px] text-ink2">
+            {data.open.length} open{critical ? <>, <span className="font-semibold text-critical-text">{critical} critical</span></> : ""}
           </p>
           <ul className="flex flex-col gap-5">
             <AnimatePresence initial={false}>
@@ -138,7 +134,7 @@ export default function NotificationsPage() {
 
       {data.resolved.length > 0 && (
         <details className="group mt-8">
-          <summary className="nb-sm nb-press inline-flex h-10 cursor-pointer list-none items-center gap-1 bg-surface px-3.5 text-[12.5px] font-bold uppercase">
+          <summary className="panel-sm hover-raise inline-flex h-10 cursor-pointer list-none items-center gap-1 bg-surface px-3.5 text-[12.5px] font-semibold">
             <span className="group-open:hidden">Show</span><span className="hidden group-open:inline">Hide</span> recently resolved ({data.resolved.length})
           </summary>
           <ul className="mt-3 flex flex-col gap-3">

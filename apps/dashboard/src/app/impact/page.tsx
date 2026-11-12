@@ -67,9 +67,9 @@ export default function ImpactPage() {
         <Videos videos={last.videos} />
       </Card>
 
-      <div className="mb-4 mt-10 flex flex-wrap items-end justify-between gap-3 border-b-2 border-edge pb-3">
+      <div className="mb-4 mt-10 flex flex-wrap items-end justify-between gap-3 border-b border-ring pb-3">
         <div>
-          <h2 className="font-display text-[26px] uppercase leading-none">Every change and what followed</h2>
+          <h2 className="text-[16px] font-semibold tracking-[-0.01em]">Every change and what followed</h2>
           <p className="mt-2 max-w-3xl text-[13px] font-medium text-muted">Median 48-hour views of the Shorts in the 14 days before vs after. Several changes often land the same week, so this is a hint; the A/B tests on the Agents page give the proof.</p>
         </div>
         <Segmented label="Filter changes" value={filter} onChange={setFilter} options={[
@@ -108,16 +108,16 @@ function Videos({ videos }: { videos: ImpactVideo[] }) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[520px] text-[13px]">
-        <thead className="border-b-2 border-edge bg-ink text-left text-[11px] uppercase tracking-wide text-plane">
+        <thead className="border-b border-ring bg-ink text-left text-[11px] text-plane">
           <tr>
-            <th className="px-4 py-2 font-bold md:px-5">Video</th><th className="px-2 py-2 text-right font-bold">Views 48 h</th>
-            <th className="px-2 py-2 text-right font-bold">% viewed</th><th className="px-4 py-2 text-right font-bold md:px-5">Stayed</th>
+            <th className="px-4 py-2 font-semibold md:px-5">Video</th><th className="px-2 py-2 text-right font-semibold">Views 48 h</th>
+            <th className="px-2 py-2 text-right font-semibold">% viewed</th><th className="px-4 py-2 text-right font-semibold md:px-5">Stayed</th>
           </tr>
         </thead>
         <tbody>
           {videos.map((v) => (
-            <tr key={v.id} className="border-b-2 border-line last:border-0">
-              <td className="max-w-0 px-4 py-2 md:px-5"><VideoLink id={v.id} className="block truncate font-bold">{v.title || v.id}</VideoLink><span className="font-mono text-[11px] font-bold uppercase text-muted">{fmtDayKey(v.day)}</span></td>
+            <tr key={v.id} className="border-b border-line last:border-0">
+              <td className="max-w-0 px-4 py-2 md:px-5"><VideoLink id={v.id} className="block truncate font-semibold">{v.title || v.id}</VideoLink><span className="text-xs font-medium text-muted">{fmtDayKey(v.day)}</span></td>
               <td className="px-2 py-2 text-right tabular-nums">{v.views48h === null ? "–" : fmtNum(v.views48h)}</td>
               <td className="px-2 py-2 text-right tabular-nums">{pct(v.avgViewPct)}</td>
               <td className="px-4 py-2 text-right tabular-nums md:px-5">{stayed(v.stayedToWatch)}</td>
@@ -138,16 +138,16 @@ function ChangeRow({ c }: { c: ImpactChange }) {
     <div className="flex items-center justify-between gap-2 py-1"><span className="text-muted">{k}</span><span className="tabular-nums">{b} → {a} <Delta value={d} /></span></div>
   );
   return (
-    <Accordion.Item value={c.id} className="nb bg-surface">
+    <Accordion.Item value={c.id} className="panel bg-surface">
       <Accordion.Header>
-        <Accordion.Trigger className="group flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-lime/20 data-[state=open]:border-b-2 data-[state=open]:border-edge data-[state=open]:bg-surface-2">
+        <Accordion.Trigger className="group flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-tint-brand data-[state=open]:border-b data-[state=open]:border-ring data-[state=open]:bg-surface-2 rounded-md">
           <div className="min-w-0 flex-1">
-            <div className="truncate text-[14px] font-bold">{c.description || c.id}</div>
-            <div className="mt-1 font-mono text-[11px] font-bold uppercase text-muted">{fmtDayKey(c.day)} · {titleCase(c.area ?? "change")} · {titleCase(c.status)}{c.sameWeek ? ` · ${c.sameWeek} other changes within 3 days` : ""}</div>
+            <div className="truncate text-[14px] font-semibold">{c.description || c.id}</div>
+            <div className="mt-1 text-xs font-medium text-muted">{fmtDayKey(c.day)} · {titleCase(c.area ?? "change")} · {titleCase(c.status)}{c.sameWeek ? ` · ${c.sameWeek} other changes within 3 days` : ""}</div>
           </div>
-          <span className="hidden border-2 border-edge bg-surface px-2 py-0.5 font-mono text-[12px] font-bold tabular-nums sm:block">{c.before.medianViews48h === null ? "–" : fmtNum(c.before.medianViews48h)} → {c.after.medianViews48h === null ? "–" : fmtNum(c.after.medianViews48h)}</span>
+          <span className="hidden border border-ring bg-surface px-2 py-0.5 text-xs font-medium tabular-nums sm:block rounded-lg">{c.before.medianViews48h === null ? "–" : fmtNum(c.before.medianViews48h)} → {c.after.medianViews48h === null ? "–" : fmtNum(c.after.medianViews48h)}</span>
           <Badge tone={TONE[v]}>{LABEL[v]}</Badge>
-          <span className="grid size-8 shrink-0 place-items-center border-2 border-edge bg-surface"><ChevronDown aria-hidden strokeWidth={3} className="size-4 transition-transform group-data-[state=open]:rotate-180" /></span>
+          <span className="grid size-8 shrink-0 place-items-center border border-ring bg-surface rounded-lg"><ChevronDown aria-hidden className="size-4 transition-transform group-data-[state=open]:" /></span>
         </Accordion.Trigger>
       </Accordion.Header>
       <Accordion.Content className="px-4 py-4 text-[13px] font-medium">
@@ -159,8 +159,8 @@ function ChangeRow({ c }: { c: ImpactChange }) {
             {row("Stayed to watch", stayed(c.before.stayedToWatch), stayed(c.after.stayedToWatch), change(c.before.stayedToWatch, c.after.stayedToWatch))}
             {row("View time", `${c.before.avgViewSec ?? "–"} s`, `${c.after.avgViewSec ?? "–"} s`, change(c.before.avgViewSec, c.after.avgViewSec))}
           </div>
-          <div className="min-w-0 border-2 border-line">
-            <div className="border-b-2 border-line px-4 py-2 text-xs text-muted md:px-5">Shorts after it, most viewed first</div>
+          <div className="min-w-0 border border-line">
+            <div className="border-b border-line px-4 py-2 text-xs text-muted md:px-5">Shorts after it, most viewed first</div>
             <Videos videos={c.afterVideos} />
           </div>
         </div>

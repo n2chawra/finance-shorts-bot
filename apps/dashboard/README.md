@@ -7,23 +7,23 @@ Shared components are in `src/components/ui.tsx` (cards, tiles, badges, buttons,
 slider, confirm dialog), `toast.tsx` and `charts.tsx`. Colours are CSS variables in
 `src/app/globals.css`, defined once for light and once for dark.
 
-## Look ("Brutal", November 2026 rebuild)
+## Look ("Studio", November 2026 rebuild)
 
-- **Blocks**: every card, button, input and chart mark has a 2 px ink edge and a hard offset shadow
-  (`.nb`, `.nb-sm`; `.nb-press` lifts on hover and presses flat on click). Corners are square: the
-  theme radii are 0, only `rounded-full` stays round.
-- **Colour**: paper (`--plane`), ink, and flat accent fills (`lime pink sun sky grape tang mint red`)
-  that always carry black text: put `on-accent` on a filled block and everything inside it (text,
-  nested buttons, inputs) turns ink-on-paper in both themes. Status: mint good, sun warning, red
-  failure, grape queued, sky scheduled.
-- **Type**: Archivo Black (`font-display`, uppercase) for titles, card headings and big numbers;
-  Space Grotesk for text; JetBrains Mono for labels (`.nb-label`), times and ids.
-- **Frame** (`components/nav.tsx`): a black masthead (search, live status, theme, alerts), a lime
-  ticker with the channel's state, and a tab strip of every page (`nav` "Main"). Phones get a
-  bottom tab bar and a full-screen menu. No sidebar.
-- **Kit** (`components/ui.tsx`): `Card` takes `accent` for its title strip, `Stat` takes `accent`
-  for a filled block, `tabClass`/`tabListClass` for every tab row, `ACCENT` for any filled block.
-- Logo: `components/brand.tsx`. Sign-in: a poster of the pipeline's verbs beside the form.
+- **Surfaces**: white panels with a hairline border, a soft layered shadow and 14 px corners
+  (`.panel`; `.panel-sm` for small items; `.hover-raise` for panels that are links). Page background
+  `--plane` is a light grey; dark mode is a deep navy-black.
+- **Colour** is for meaning: one blue accent (`--brand`, primary buttons, active nav, focus), status
+  colours (`good`, `warning`, `critical`, `series`, `violet`) and soft `tint-*` fills behind icon tiles.
+  Text stays ink on every fill.
+- **Type**: Inter throughout (semibold, tight tracking for titles and figures, tabular numbers);
+  JetBrains Mono only for ids.
+- **Frame** (`components/nav.tsx`): a sidebar with every page grouped, a system card (uploads,
+  generation, backlog), theme and sign out; a slim top bar with breadcrumb, live status, alerts.
+  Below `lg` the sidebar is a drawer; phones also get a bottom tab bar.
+- **Kit** (`components/ui.tsx`): `Card` (icon tile in `accent`), `Stat`, `IconTile`, `Badge`,
+  `StatusBadge`, `Delta`, `Segmented`, `tabClass`/`tabListClass` (tabs on a grey track), buttons,
+  fields, switches, menus, dialogs, empty and loading states.
+- Logo: `components/brand.tsx`. Sign-in: the form beside a dark brand panel.
 
 ## Sample data
 

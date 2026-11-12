@@ -55,23 +55,23 @@ export default function RunsPage() {
         </Card>
       )}
 
-      <div className="mb-4 mt-10 flex flex-wrap items-end justify-between gap-3 border-b-2 border-edge pb-3">
-        <h2 className="font-display text-[26px] uppercase leading-none">History</h2>
+      <div className="mb-4 mt-10 flex flex-wrap items-end justify-between gap-3 border-b border-ring pb-3">
+        <h2 className="text-[16px] font-semibold tracking-[-0.01em]">History</h2>
         <Segmented label="Filter runs" value={filter} onChange={setFilter}
           options={[{ value: "all", label: "All" }, { value: "video", label: "Videos" }, { value: "template_work", label: "Templates" }, { value: "failed", label: "Failed" }]} />
       </div>
 
       {shown.length === 0 ? <Card><Empty icon={filter === "failed" ? CircleCheck : Workflow} title={EMPTY[filter].title}>{EMPTY[filter].body}</Empty></Card> : (
         <Card flush>
-          <Accordion.Root type="multiple" className="divide-y-2 divide-edge">
+          <Accordion.Root type="multiple" className="divide-y divide-edge">
             {shown.map((r) => (
               <Accordion.Item key={r.id} value={r.id}>
                 <Accordion.Header>
-                  <Accordion.Trigger className="group flex w-full items-center gap-3 pr-4 text-left transition-colors hover:bg-lime/20 data-[state=open]:bg-surface-2 md:pr-5">
-                    <span aria-hidden className={`grid w-12 shrink-0 self-stretch place-items-center border-r-2 border-edge text-on-accent ${r.status === "ok" ? "bg-mint" : "bg-red"}`}>{r.status === "ok" ? <CircleCheck strokeWidth={2.5} className="size-5" /> : <CircleX strokeWidth={2.5} className="size-5" />}</span>
+                  <Accordion.Trigger className="group flex w-full items-center gap-3 px-4 text-left transition-colors hover:bg-surface-2 data-[state=open]:bg-surface-2 md:px-5">
+                    <span aria-hidden className={`grid size-8 shrink-0 place-items-center rounded-full ${r.status === "ok" ? "bg-good-soft text-good-text" : "bg-critical-soft text-critical-text"}`}>{r.status === "ok" ? <CircleCheck className="size-4" /> : <CircleX className="size-4" />}</span>
                     <div className="min-w-0 flex-1 py-3">
-                      <div className="truncate text-[14px] font-bold">{r.title}</div>
-                      <div className="mt-1 flex flex-wrap gap-x-2 font-mono text-[11px] font-bold uppercase text-muted">
+                      <div className="truncate text-[14px] font-semibold">{r.title}</div>
+                      <div className="mt-1 flex flex-wrap gap-x-2 text-xs font-medium text-muted">
                         <span>{fmtDateTime(r.startedAt)}</span><span aria-hidden>·</span><span>{fmtRelative(r.startedAt)}</span><span aria-hidden>·</span><span>{fmtDuration(r.durationSec)}</span>
                         {/* the kind badge is hidden on phones; name a run that isn't a Short in the line instead */}
                         {kindLabel(r) !== "Short" && <><span aria-hidden className="sm:hidden">·</span><span className="sm:hidden" data-testid="run-kind-inline">{kindLabel(r)}</span></>}
@@ -80,16 +80,16 @@ export default function RunsPage() {
                     </div>
                     <span className="hidden sm:inline"><Badge>{kindLabel(r)}</Badge></span>
                     <ResultBadge ok={r.status === "ok"} okLabel="OK" />
-                    <span className="grid size-8 shrink-0 place-items-center border-2 border-edge bg-surface"><ChevronDown aria-hidden strokeWidth={3} className="size-4 transition-transform duration-200 group-data-[state=open]:rotate-180" /></span>
+                    <span className="grid size-8 shrink-0 place-items-center border border-ring bg-surface rounded-lg"><ChevronDown aria-hidden className="size-4 transition-transform duration-200 group-data-[state=open]:" /></span>
                   </Accordion.Trigger>
                 </Accordion.Header>
                 <Accordion.Content className="overflow-hidden data-[state=open]:animate-slide-up">
-                  <div className="border-t-2 border-dashed border-edge bg-surface-2 px-4 py-4 md:px-5">
-                    <ol className="relative ml-1.5 border-l-2 border-edge">
+                  <div className="border-t border-dashed border-ring bg-surface-2 px-4 py-4 md:px-5">
+                    <ol className="relative ml-1.5 border-l border-ring">
                       {r.steps.map((s, i) => (
                         <li key={i} className="relative flex items-start gap-3 pb-2.5 pl-5 text-[13px] last:pb-0">
-                          <span className="absolute -left-[10px] top-0.5 grid size-[18px] place-items-center border-2 border-edge bg-surface">
-                            {s.status === "ok" ? <CircleCheck aria-label="OK" strokeWidth={3} className="size-3 text-good" /> : s.status === "failed" ? <CircleX aria-label="Failed" strokeWidth={3} className="size-3 text-critical" /> : <Minus aria-label="Skipped" strokeWidth={3} className="size-3 text-muted" />}
+                          <span className="absolute -left-[10px] top-0.5 grid size-[18px] place-items-center border border-ring bg-surface rounded-lg">
+                            {s.status === "ok" ? <CircleCheck aria-label="OK" className="size-3 text-good" /> : s.status === "failed" ? <CircleX aria-label="Failed" className="size-3 text-critical" /> : <Minus aria-label="Skipped" className="size-3 text-muted" />}
                           </span>
                           <span className="flex-1">{titleCase(s.agent)}{s.note && <span className="block text-ink2">{s.note}</span>}</span>
                           <span className="text-xs tabular-nums text-muted">{s.status === "skipped" ? "skipped" : fmtDuration(s.durationSec)}</span>
@@ -97,7 +97,7 @@ export default function RunsPage() {
                       ))}
                     </ol>
                     <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs">
-                      {r.videoId && <VideoLink id={r.videoId} className="font-semibold text-ink font-bold">Open video →</VideoLink>}
+                      {r.videoId && <VideoLink id={r.videoId} className="font-semibold text-ink font-semibold">Open video →</VideoLink>}
                       {r.sessionUrl && <a className="inline-flex items-center gap-1 text-ink2 hover:text-ink" href={r.sessionUrl} target="_blank" rel="noreferrer">Claude session <ExternalLink aria-hidden className="size-3" /></a>}
                     </div>
                   </div>

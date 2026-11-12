@@ -73,7 +73,7 @@ export function VideoAnalytics({ id }: { id: string }) {
       )}
       <Card title="Comments" icon={MessageSquare} description="Top-level public comments, most liked first">
         {d.comments.length ? (
-          <ul className="divide-y-2 divide-line">
+          <ul className="divide-y divide-line">
             {d.comments.map((c) => (
               <li key={c.id} className="py-2.5 text-[13px] first:pt-0 last:pb-0">
                 <div className="flex items-center gap-2 text-xs text-muted"><span className="font-semibold text-ink2">{c.author}</span>· {fmtRelative(c.publishedAt)}{c.likes > 0 && <span>· {c.likes} likes</span>}{c.replies > 0 && <span>· {c.replies} replies</span>}</div>

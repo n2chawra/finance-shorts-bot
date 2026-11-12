@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { CopyButton, MarkUploaded, uploadText } from "@/app/videos/[id]/publish-tools";
 import { EditorBadge, ReasonDialog } from "@/components/feedback";
-import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, Loading, PageHeader, Stagger, Thumb, Toggle, VideoLink, buttonClass } from "@/components/ui";
+import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, IconTile, Loading, PageHeader, Stagger, Thumb, Toggle, VideoLink, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { fmtDateTime, fmtDayKey, fmtRelative, titleCase, fileSlug } from "@/lib/format";
 import { type Format, type PlanSlot, madeBy, postingPlan, runway } from "@/lib/posting-plan";
@@ -44,8 +44,8 @@ function SlotLabel({ slot, paused }: { slot: PlanSlot | undefined; paused: boole
   if (slot.state === "due") return <Badge tone="warning" icon={Clock}>{paused ? "Post now" : "Uploading now"}</Badge>;
   return (
     <span className="leading-tight">
-      <span className="block font-mono text-[13px] font-bold tabular-nums text-ink">{fmtDateTime(iso(slot.at))} IST{slot.trend ? " · trend slot" : ""}</span>
-      <span className="nb-label !text-[10px] text-muted">{fmtRelative(iso(slot.at))}</span>
+      <span className="block text-xs font-medium tabular-nums text-ink">{fmtDateTime(iso(slot.at))} IST{slot.trend ? " · trend slot" : ""}</span>
+      <span className="text-xs text-muted">{fmtRelative(iso(slot.at))}</span>
     </span>
   );
 }
@@ -56,14 +56,14 @@ function PostNext({ slot }: { slot: PlanSlot & { video: Video } }) {
   const { description } = uploadText(v);
   const due = slot.state === "due";
   return (
-    <Card className="mb-6" accent={due ? "sun" : "lime"} title={due ? "Post this now" : "Post next"} icon={Upload}
+    <Card className={`mb-6 ${due ? "ring-2 ring-warning/30" : ""}`} accent={due ? "sun" : "lime"} title={due ? "Post this now" : "Post next"} icon={Upload}
       description={`${slot.format === "long" ? "Long video" : "Short"} slot ${fmtDateTime(iso(slot.at))} IST, ${fmtRelative(iso(slot.at))}`}>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
         <Thumb src={v.thumbnailUrl} alt="" className={v.format === "long" ? "w-32 aspect-video" : "w-20"} />
         <div className="min-w-0 flex-1">
-          <VideoLink id={v.id} className="block font-display text-[20px] uppercase leading-tight">{v.title}</VideoLink>
+          <VideoLink id={v.id} className="block text-[16px] font-semibold leading-snug">{v.title}</VideoLink>
           <div className="mt-1.5"><Origin v={v} /></div>
-          {slot.stale && <p className="mt-2 inline-flex items-center gap-1.5 border-2 border-edge bg-red px-2 py-1 text-xs font-bold on-accent"><AlertTriangle aria-hidden className="size-3.5" />Its news is stale by this slot. Post it as soon as you can.</p>}
+          {slot.stale && <p className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-critical-soft px-2 py-1 text-xs font-medium text-critical-text"><AlertTriangle aria-hidden className="size-3.5" />Its news is stale by this slot. Post it as soon as you can.</p>}
           <div className="mt-4 flex flex-wrap gap-2.5">
             <a href={v.fileUrl} download={`${fileSlug(v)}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>
             {(v.style.thumbs?.length ?? 0) > 1
@@ -101,58 +101,61 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
   const Icon = format === "short" ? Smartphone : Film;
 
   return (
-    <section className="mb-10">
-      <div className="mb-4 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b-2 border-edge pb-3">
+    <section className="mb-8">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         {/* the details wrap under the name as one block: beside it they made a narrow column on phones */}
-        <h2 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-[26px] uppercase leading-none">
-          <span className={`grid size-10 place-items-center border-2 border-edge shadow-[2px_2px_0_0_var(--hard)] ${format === "short" ? "bg-pink" : "bg-sky"} text-on-accent`}><Icon aria-hidden strokeWidth={2.5} className="size-5" /></span>
+        <h2 className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[16px] font-semibold tracking-[-0.01em]">
+          <IconTile icon={Icon} accent={format === "short" ? "pink" : "sky"} />
           {format === "short" ? "Shorts" : "Long videos"}
-          <span className="font-sans text-[13px] font-semibold normal-case text-muted">· {r.n} ready · posts {when}</span></h2>
-        {r.days !== null && <span className={`nb-label border-2 border-edge px-2 py-1 ${r.n ? "bg-mint text-on-accent" : "bg-red text-on-accent"}`}>{r.n ? `Enough for about ${r.days} day${r.days === 1 ? "" : "s"}` : "Nothing ready"}</span>}
+          <span className="text-[13px] font-normal tracking-normal text-muted">· {r.n} ready · posts {when}</span></h2>
+        {r.days !== null && <Badge tone={r.n ? "good" : "critical"} dot>{r.n ? `Enough for about ${r.days} day${r.days === 1 ? "" : "s"}` : "Nothing ready"}</Badge>}
       </div>
 
       {missed.map((s) => (
-        <p key={s.at} className="nb-sm on-accent mb-3 flex items-center gap-2.5 bg-red px-3 py-2.5 text-[13.5px] font-semibold">
-          <AlertTriangle aria-hidden strokeWidth={2.5} className="size-4 shrink-0" />
-          <span><strong className="font-display uppercase">Missed {fmtDateTime(iso(s.at))}:</strong> nothing was posted in this slot today.</span>
+        <p key={s.at} className="mb-2.5 flex items-center gap-2.5 rounded-xl border border-critical/25 bg-critical-soft px-3.5 py-2.5 text-[13px]">
+          <AlertTriangle aria-hidden className="size-4 shrink-0 text-critical" />
+          <span><span className="font-semibold">Missed {fmtDateTime(iso(s.at))}:</span> <span className="text-ink2">nothing was posted in this slot today.</span></span>
         </p>
       ))}
       {items.length === 0 ? <Card><Empty icon={ListOrdered} title={`No ${format === "short" ? "Shorts" : "long videos"} waiting`}>New videos land here about a minute after a run ships them.</Empty></Card> : (
-        <div>
-          <ol className="flex flex-col gap-3">
+        <div className="panel overflow-hidden bg-surface">
+          <div className="hidden grid-cols-[32px_20px_48px_1fr_200px_124px] items-center gap-4 border-b border-line bg-surface-2 px-4 py-2.5 text-[12px] font-medium text-muted md:grid">
+            <span>#</span><span /><span /><span>Video and where it came from</span><span>Posts at (IST)</span><span className="text-right">Actions</span>
+          </div>
+          <ol>
             <AnimatePresence initial={false}>
               {items.map((v, i) => {
                 const slot = slotOf.get(v.id);
                 return (
-                  <motion.li key={v.id} layout exit={{ opacity: 0, height: 0 }} className={`border-2 border-edge bg-surface ${dragging === v.id ? "" : "shadow-[4px_4px_0_0_var(--hard)]"}`}>
+                  <motion.li key={v.id} layout exit={{ opacity: 0, height: 0 }} className="border-b border-line last:border-0">
                     {/* native drag-and-drop lives on an inner element: motion.li has its own drag props */}
                     <div draggable={!busy}
                       onDragStart={() => setDragging(v.id)}
                       onDragOver={(e) => { e.preventDefault(); setOver(v.id); }}
                       onDragEnd={() => { setDragging(null); setOver(null); }}
                       onDrop={(e) => { e.preventDefault(); if (dragging && dragging !== v.id) onMove(dragging, i); setDragging(null); setOver(null); }}
-                      className={`grid grid-cols-[44px_48px_1fr_auto] items-center gap-3 pr-2 transition-colors md:grid-cols-[56px_24px_56px_1fr_210px_132px] md:gap-4 ${dragging === v.id ? "opacity-40" : ""} ${over === v.id && dragging !== v.id ? "bg-lime/40" : ""}`}>
-                      <span className={`grid h-full min-h-16 place-items-center self-stretch border-r-2 border-edge font-display text-[22px] tabular-nums md:text-[26px] ${i === 0 ? "bg-lime text-on-accent" : "bg-surface-2"}`}>{i + 1}</span>
-                      <GripVertical aria-hidden strokeWidth={2.5} className="hidden size-5 cursor-grab text-muted md:block" />
-                      <span className="py-2.5"><Thumb src={v.thumbnailUrl} alt="" className={format === "long" ? "w-14 aspect-video" : "w-10"} /></span>
-                      <div className="min-w-0 py-2.5">
-                        <VideoLink id={v.id} className="block truncate text-[14.5px] font-bold">{v.title}</VideoLink>
-                        <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-xs font-semibold text-muted">
+                      className={`grid grid-cols-[28px_44px_1fr_auto] items-center gap-3 px-3 py-3 transition-colors md:grid-cols-[32px_20px_48px_1fr_200px_124px] md:gap-4 md:px-4 ${dragging === v.id ? "opacity-40" : ""} ${over === v.id && dragging !== v.id ? "bg-brand-soft" : "hover:bg-surface-2"}`}>
+                      <span className={`grid size-7 place-items-center rounded-full text-[12px] font-semibold tabular-nums ${i === 0 ? "bg-primary text-white" : "bg-surface-3 text-ink2"}`}>{i + 1}</span>
+                      <GripVertical aria-hidden className="hidden size-4 cursor-grab text-muted md:block" />
+                      <Thumb src={v.thumbnailUrl} alt="" className={format === "long" ? "w-12 aspect-video" : "w-9"} />
+                      <div className="min-w-0">
+                        <VideoLink id={v.id} className="block truncate text-[13.5px] font-medium">{v.title}</VideoLink>
+                        <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-xs text-muted">
                           <EditorBadge v={v} /><Origin v={v} /><span>{titleCase(v.topic.category)}</span>
                         </div>
-                        {(v.pickReason || v.editorNote?.why) && <p className="mt-1.5 line-clamp-2 text-[12.5px] font-medium text-ink2">{v.pickedAt ? `Your reason: ${v.pickReason ?? "—"}` : v.editorNote?.why}</p>}
+                        {(v.pickReason || v.editorNote?.why) && <p className="mt-1.5 line-clamp-2 text-[12.5px] text-ink2">{v.pickedAt ? `Your reason: ${v.pickReason ?? "—"}` : v.editorNote?.why}</p>}
                         {slot?.stale && (
-                          <p className="mt-1.5 flex flex-wrap items-center gap-1.5 text-xs font-bold text-critical-text">
+                          <p className="mt-1.5 flex flex-wrap items-center gap-1.5 text-xs font-medium text-critical-text">
                             <AlertTriangle aria-hidden className="size-3.5" />Stale by its slot.
                             {i > 0 && <button type="button" disabled={busy} onClick={() => onMove(v.id, 0)} className="inline-flex items-center gap-1 font-medium underline underline-offset-2"><ChevronsUp aria-hidden className="size-3.5" />Move to top</button>}
                           </p>
                         )}
                         <div className="mt-1 text-xs md:hidden"><SlotLabel slot={slot} paused={paused} /></div>
                       </div>
-                      <div className="hidden self-stretch border-l-2 border-dashed border-edge py-2.5 pl-4 text-[13px] md:flex md:items-center"><SlotLabel slot={slot} paused={paused} /></div>
-                      <div className="col-start-4 row-start-1 flex justify-end gap-1.5 md:col-start-auto md:row-start-auto">
-                        <Button size="sm" iconOnly icon={ArrowUp} disabled={busy || i === 0} title="Move up" onClick={() => onMove(v.id, i - 1)}>Move up</Button>
-                        <Button size="sm" iconOnly icon={ArrowDown} disabled={busy || i === items.length - 1} title="Move down" onClick={() => onMove(v.id, i + 1)}>Move down</Button>
+                      <div className="hidden text-[13px] md:block"><SlotLabel slot={slot} paused={paused} /></div>
+                      <div className="col-start-4 row-start-1 flex justify-end gap-0.5 md:col-start-auto md:row-start-auto">
+                        <Button size="sm" tone="ghost" iconOnly icon={ArrowUp} disabled={busy || i === 0} title="Move up" onClick={() => onMove(v.id, i - 1)}>Move up</Button>
+                        <Button size="sm" tone="ghost" iconOnly icon={ArrowDown} disabled={busy || i === items.length - 1} title="Move down" onClick={() => onMove(v.id, i + 1)}>Move down</Button>
                         <ActionMenu items={[
                           { label: "Open video", icon: ExternalLink, onSelect: () => router.push(`/videos/${v.id}`) },
                           { label: "Download video", icon: Download, onSelect: () => download(v.fileUrl, `${fileSlug(v)}.mp4`) },
@@ -220,16 +223,16 @@ export default function QueuePage() {
   return (
     <Stagger>
       <PageHeader title="Queue" sub={paused ? "You post by hand: each video below has its slot. Post the top card, then mark it uploaded." : "The bot uploads these in order, one per slot."}>
-        <label className={`nb flex h-12 items-center gap-3 px-3.5 text-[13px] ${paused ? "bg-sun on-accent" : "bg-surface"}`}>
-          <span className="font-display uppercase">{paused ? "Uploads paused" : "Uploads on"}</span>
+        <label className="flex h-9 items-center gap-2.5 rounded-lg border border-ring bg-surface px-3 text-[13px] shadow-xs">
+          <span className="font-medium">{paused ? "Uploads paused" : "Uploads on"}</span>
           <Toggle label="Uploads on" checked={!paused} disabled={patch.isPending}
             onChange={(on) => patch.mutate({ uploadsPaused: !on }, { onSuccess: () => toast(on ? "Uploads resumed" : "Uploads paused"), onError: fail })} />
         </label>
       </PageHeader>
 
       {locked && (
-        <p className="nb-sm mb-5 flex flex-wrap items-center gap-2.5 bg-grape px-3 py-2.5 text-[13px] font-semibold on-accent">
-          <Sparkles aria-hidden strokeWidth={2.5} className="size-4" />You set this order yourself, so the editor&apos;s ranking isn&apos;t applied.
+        <p className="mb-5 flex flex-wrap items-center gap-2.5 rounded-xl border border-violet/25 bg-violet-soft px-3.5 py-2.5 text-[13px]">
+          <Sparkles aria-hidden className="size-4 text-violet" />You set this order yourself, so the editor&apos;s ranking isn&apos;t applied.
           <Button size="sm" disabled={editorOrder.isPending} onClick={() => editorOrder.mutate(undefined, { onSuccess: () => toast("The editor's ranking orders the queue again"), onError: fail })}>Use the editor&apos;s order</Button>
         </p>
       )}
@@ -237,18 +240,18 @@ export default function QueuePage() {
       {paused && next && <PostNext slot={next} />}
 
       {!paused && overview.data.nextUpload && (
-        <section className="nb on-accent mb-8 bg-sky">
-          <div className="flex items-center gap-4 p-3 md:p-4">
-            <span className="hidden size-12 shrink-0 place-items-center border-2 border-edge bg-surface text-ink sm:grid"><CalendarClock aria-hidden strokeWidth={2.5} className="size-6" /></span>
-            <Thumb src={overview.data.nextUpload.thumbnailUrl} alt="" className="w-12" />
+        <section className="panel hero-glow mb-8 bg-surface">
+          <div className="flex items-center gap-4 p-4">
+            <span className="hidden sm:block"><IconTile icon={CalendarClock} accent="sky" size="lg" /></span>
+            <Thumb src={overview.data.nextUpload.thumbnailUrl} alt="" className="w-10" />
             <div className="min-w-0 flex-1">
-              <div className="nb-label">Already scheduled on YouTube</div>
-              <VideoLink id={overview.data.nextUpload.videoId} className="mt-1 block truncate font-display text-[17px] uppercase">{overview.data.nextUpload.title}</VideoLink>
-              <div data-testid="scheduled-when" className="mt-0.5 font-mono text-xs font-bold tabular-nums sm:hidden">{fmtDateTime(overview.data.nextUpload.publishAt)} IST · {fmtRelative(overview.data.nextUpload.publishAt)}</div>
+              <div className="text-[12px] font-medium text-muted">Already scheduled on YouTube</div>
+              <VideoLink id={overview.data.nextUpload.videoId} className="mt-0.5 block truncate text-[14px] font-medium">{overview.data.nextUpload.title}</VideoLink>
+              <div data-testid="scheduled-when" className="mt-0.5 text-xs tabular-nums text-muted sm:hidden">{fmtDateTime(overview.data.nextUpload.publishAt)} IST · {fmtRelative(overview.data.nextUpload.publishAt)}</div>
             </div>
-            <div className="hidden border-l-2 border-dashed border-edge pl-4 text-right sm:block">
-              <div className="font-mono text-[15px] font-bold">{fmtDateTime(overview.data.nextUpload.publishAt)} IST</div>
-              <span className="nb-label">{fmtRelative(overview.data.nextUpload.publishAt)}</span>
+            <div className="hidden text-right sm:block">
+              <div className="text-[13.5px] font-semibold tabular-nums">{fmtDateTime(overview.data.nextUpload.publishAt)} IST</div>
+              <span className="text-xs text-muted">{fmtRelative(overview.data.nextUpload.publishAt)}</span>
             </div>
           </div>
         </section>
@@ -259,7 +262,7 @@ export default function QueuePage() {
           onMove={(id, to) => move(f, id, to)} onAction={onAction} />
       ))}
 
-      <p className="border-t-2 border-edge pt-3 text-[12.5px] font-medium text-muted">
+      <p className="border-t border-ring pt-3 text-[12.5px] font-medium text-muted">
         Order within each list is the posting order: your pick first, then the editor&apos;s ranking (best first), or your own order once you move a row. Drag rows on desktop or use the arrows.
         A slot counts as done once a video of that format is marked uploaded within three hours of it.
       </p>

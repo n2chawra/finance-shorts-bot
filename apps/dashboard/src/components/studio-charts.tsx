@@ -29,7 +29,7 @@ function useWidth(): [React.RefObject<HTMLDivElement | null>, number] {
 
 function Tooltip({ x, y, width, children }: { x: number; y: number; width: number; children: React.ReactNode }) {
   return (
-    <div className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-full border-2 border-edge bg-surface px-2.5 py-1.5 text-xs shadow-[7px_7px_0_0_var(--hard)]"
+    <div className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-full border border-ring bg-surface px-2.5 py-1.5 text-xs shadow-xs rounded-lg"
       style={{ left: Math.min(Math.max(x, 80), width - 80), top: Math.max(y - 10, 40) }}>
       {children}
     </div>
@@ -78,7 +78,7 @@ export function Donut({ slices, size = 168, unit = "views", fmt = fmtCompact }: 
       <ul className="w-full min-w-0 flex-1 space-y-1.5 text-[13px]">
         {parts.map((p, i) => (
           <li key={p.key} onPointerEnter={() => setHover(i)} onPointerLeave={() => setHover(null)}
-            className={`flex items-center gap-2  px-1.5 py-1 transition-colors ${hover === i ? "bg-wash" : ""}`}>
+            className={`flex items-center gap-2 px-1.5 py-1 transition-colors ${hover === i ? "bg-wash" : ""}`}>
             <span aria-hidden className="size-2.5 shrink-0 rounded-[3px]" style={{ background: arcs[i]!.color }} />
             <span className="min-w-0 flex-1 truncate text-ink">{p.label}</span>
             <span className="tabular-nums text-muted">{fmt(p.views)} {unit === "views" ? "" : unit}</span>
@@ -109,7 +109,7 @@ export function Funnel({ steps }: { steps: { label: string; value: number | null
               </div>
             )}
             <div className="relative h-11 overflow-hidden bg-wash">
-              <motion.div className="absolute inset-y-0 left-0 " style={{ background: `linear-gradient(90deg, ${CAT[i % CAT.length]}, color-mix(in oklab, ${CAT[i % CAT.length]} 70%, transparent))` }}
+              <motion.div className="absolute inset-y-0 left-0" style={{ background: `linear-gradient(90deg, ${CAT[i % CAT.length]}, color-mix(in oklab, ${CAT[i % CAT.length]} 70%, transparent))` }}
                 initial={{ width: 0 }} animate={{ width: s.value === null ? "0%" : `${Math.max((s.value / first) * 100, 1.5)}%` }} transition={{ duration: 0.8, delay: i * 0.08, ease: EASE }} />
               <div className="relative flex h-full items-center justify-between px-3 text-[13px]">
                 <span className="font-semibold text-ink mix-blend-normal">{s.label}</span>
@@ -152,8 +152,8 @@ export function HourlyBars({ values, hours, height = 150, compare, bare }: { val
             return (
               <g key={i} onPointerEnter={() => setHover(i)} onPointerDown={() => setHover(i)}>
                 <rect x={i * band} y={0} width={band} height={base} fill={hover === i ? "var(--wash)" : "transparent"} />
-                {last && h > 0 && <rect x={i * band + 1} y={base - h} width={bw} height={h} fill="var(--lime)" filter={`url(#${gid}g)`} opacity={0.8} className="animate-pulse-dot" />}
-                <motion.rect x={i * band + 1} y={base - h} width={bw} height={h} fill={last ? "var(--lime)" : `url(#${gid})`} stroke="var(--edge)" strokeWidth={1.5}
+                {last && h > 0 && <rect x={i * band + 1} y={base - h} width={bw} height={h} fill="var(--brand)" filter={`url(#${gid}g)`} opacity={0.8} className="animate-pulse-dot" />}
+                <motion.rect x={i * band + 1} y={base - h} width={bw} height={h} fill={last ? "var(--brand)" : `url(#${gid})`} stroke="var(--edge)" strokeWidth={1.5}
                   style={{ transformBox: "fill-box", transformOrigin: "bottom" }}
                   initial={{ scaleY: 0 }} animate={{ scaleY: 1, opacity: hover === null || hover === i ? 1 : 0.55 }}
                   transition={{ duration: 0.5, delay: i * 0.008, ease: EASE }} />
@@ -272,7 +272,7 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
               return (
                 <g key={i} className="cursor-pointer" onClick={() => setPin(i)}>
                   <line x1={x(s)} x2={x(s)} y1={y(d.from)} y2={y(0)} stroke="var(--critical)" strokeDasharray="2 3" opacity={0.5} />
-                  <motion.circle cx={x(s)} cy={y((d.from + d.to) / 2)} r={pin === i ? 11 : 9} fill="var(--red)" stroke="var(--edge)" strokeWidth={2.5}
+                  <motion.circle cx={x(s)} cy={y((d.from + d.to) / 2)} r={pin === i ? 11 : 9} fill="var(--critical)" stroke="var(--edge)" strokeWidth={2.5}
                     initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.9 + i * 0.12, type: "spring", stiffness: 400, damping: 18 }}
                     style={{ transformOrigin: `${x(s)}px ${y((d.from + d.to) / 2)}px` }} />
                   <text x={x(s)} y={y((d.from + d.to) / 2)} fontSize={11} fontWeight={700} fill="#fff" textAnchor="middle" dominantBaseline="central" pointerEvents="none">{i + 1}</text>
@@ -282,7 +282,7 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
             {hover !== null && (
               <>
                 <line x1={x(hover)} x2={x(hover)} y1={pad.t} y2={y(0)} stroke="var(--ring-strong)" />
-                <circle cx={x(near(hover)[0])} cy={y(near(hover)[1])} r={5.5} fill="var(--lime)" stroke="var(--edge)" strokeWidth={2.5} />
+                <circle cx={x(near(hover)[0])} cy={y(near(hover)[1])} r={5.5} fill="var(--brand)" stroke="var(--edge)" strokeWidth={2.5} />
               </>
             )}
           </svg>
@@ -303,9 +303,9 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
         <div className="mt-4 grid gap-2 sm:grid-cols-3">
           {drops.map((d, i) => (
             <button key={i} type="button" onClick={() => setPin(i)}
-              className={` border p-3 text-left transition-colors ${pin === i ? "border-critical/40 bg-critical-soft" : "border-edge hover:border-edge-strong"}`}>
+              className={`border p-3 text-left transition-colors ${pin === i ? "border-critical/40 bg-critical-soft" : "border-ring hover:border-ring-strong"}`}>
               <div className="flex items-center gap-2 text-xs">
-                <span className="grid size-6 place-items-center border-2 border-edge bg-red font-display text-[11px] text-on-accent">{i + 1}</span>
+                <span className="grid size-5 place-items-center rounded-full bg-critical text-[11px] font-semibold text-white">{i + 1}</span>
                 <span className="font-semibold tabular-nums text-critical-text">−{Math.round(d.drop * 100)}%</span>
                 <span className="tabular-nums text-muted">at {mmss(d.at)} · {d.beat}</span>
               </div>
@@ -407,13 +407,13 @@ export function RankList({ slices, kind, max = 10, fmt = fmtNum, unit }: { slice
   return (
     <ul className="flex flex-col gap-1.5">
       {top.map((s, i) => (
-        <li key={s.key} className="relative flex items-center gap-2 border-2 border-edge bg-surface px-2 py-1.5 text-[13px] font-semibold">
-          <motion.span aria-hidden className={`absolute inset-y-0 left-0 border-r-2 border-edge ${i === 0 ? "bg-lime" : "bg-sky/60"}`}
+        <li key={s.key} className="relative flex items-center gap-2 border border-ring bg-surface px-2 py-1.5 text-[13px] font-semibold rounded-lg">
+          <motion.span aria-hidden className={`absolute inset-y-0 left-0 ${i === 0 ? "bg-tint-brand" : "bg-tint-blue"} rounded-md`}
             initial={{ width: 0 }} animate={{ width: `${Math.max((s.views / hi) * 100, 1.5)}%` }} transition={{ duration: 0.7, delay: i * 0.03, ease: EASE }} />
           {kind === "country" && <CountryChip code={s.key} />}
           <span className="relative min-w-0 flex-1 truncate">{s.label}</span>
           {s.avgViewPct !== null && <span className="relative text-xs tabular-nums text-muted">{s.avgViewPct.toFixed(0)}% viewed</span>}
-          <span className="relative w-16 text-right font-mono font-bold tabular-nums">{fmt(s.views)}{unit ? ` ${unit}` : ""}</span>
+          <span className="relative w-16 text-right text-xs font-medium tabular-nums">{fmt(s.views)}{unit ? ` ${unit}` : ""}</span>
         </li>
       ))}
     </ul>
@@ -422,5 +422,5 @@ export function RankList({ slices, kind, max = 10, fmt = fmtNum, unit }: { slice
 
 /** A country's ISO code as a small chip (flag emoji don't render on Windows). */
 export function CountryChip({ code }: { code: string }) {
-  return <span className="relative inline-grid h-[18px] w-[26px] shrink-0 place-items-center border-2 border-edge bg-surface text-[10px] font-bold tracking-wide text-ink">{code}</span>;
+  return <span className="relative inline-grid h-[18px] w-[26px] shrink-0 place-items-center border border-ring bg-surface text-[10px] font-semibold text-ink rounded-lg">{code}</span>;
 }

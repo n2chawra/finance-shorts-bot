@@ -31,8 +31,8 @@ export function EditorNote({ v }: { v: Pick<Video, "editorRank" | "editorScore" 
   return (
     <div className="text-[13px] leading-relaxed">
       <p className="text-ink2">{n.why}</p>
-      {n.strengths.length > 0 && <p className="mt-1.5"><span className="border-2 border-edge bg-mint px-1 text-[11px] font-bold uppercase text-on-accent">Strengths</span> {n.strengths.join(" · ")}</p>}
-      {n.risks.length > 0 && <p className="mt-1"><span className="border-2 border-edge bg-sun px-1 text-[11px] font-bold uppercase text-on-accent">Risks</span> {n.risks.join(" · ")}</p>}
+      {n.strengths.length > 0 && <p className="mt-1.5"><span className="font-semibold text-good-text">Strengths:</span> {n.strengths.join(" · ")}</p>}
+      {n.risks.length > 0 && <p className="mt-1"><span className="font-semibold text-warning-text">Risks:</span> {n.risks.join(" · ")}</p>}
     </div>
   );
 }
@@ -48,8 +48,8 @@ export function ReasonDialog({ open, onOpenChange, title, description, placehold
     <AlertDialog.Root open={open} onOpenChange={(o) => { if (!o) setText(""); onOpenChange(o); }}>
       <AlertDialog.Portal>
         <AlertDialog.Overlay className="fixed inset-0 z-40 animate-fade bg-ink/50" />
-        <AlertDialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(460px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop border-2 border-edge bg-surface p-5 shadow-[7px_7px_0_0_var(--hard)]">
-          <AlertDialog.Title className="font-display text-lg uppercase leading-tight">{title}</AlertDialog.Title>
+        <AlertDialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(460px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop border border-ring bg-surface p-5 shadow-xs rounded-lg">
+          <AlertDialog.Title className="text-[16px] font-semibold">{title}</AlertDialog.Title>
           <AlertDialog.Description className="mt-2 text-sm text-ink2">{description}</AlertDialog.Description>
           <textarea value={text} onChange={(e) => setText(e.target.value)} rows={3} placeholder={placeholder} aria-label="Reason"
             className={`${fieldClass} mt-3 h-auto py-2 leading-snug`} />
@@ -71,8 +71,8 @@ function Note({ f, showVideo }: { f: Feedback; showVideo?: boolean }) {
   const patch = usePatchFeedback();
   const toast = useToast();
   return (
-    <li className="border-b-2 border-edge px-4 py-4 last:border-0 md:px-5">
-      <div className="flex flex-wrap items-center gap-1.5 font-mono text-[11px] font-bold uppercase text-muted">
+    <li className="border-b border-ring px-4 py-4 last:border-0 md:px-5">
+      <div className="flex flex-wrap items-center gap-1.5 text-xs font-medium text-muted">
         <Badge tone={KIND_TONE[f.kind]}>{KIND_LABEL[f.kind]}</Badge>
         {f.area && <Badge>{titleCase(f.area)}</Badge>}
         {showVideo && f.videoTitle && <a href={`/videos/${f.videoId}`} className="truncate font-semibold text-ink2 underline-offset-2 hover:underline">{f.videoTitle}</a>}
@@ -81,7 +81,7 @@ function Note({ f, showVideo }: { f: Feedback; showVideo?: boolean }) {
         {f.status === "addressed" ? <Badge tone="good" icon={CheckCircle2}>Answered</Badge> : f.response ? <Badge tone="info">In progress</Badge> : <Badge tone="brand">Open</Badge>}
       </div>
       <p className="mt-2 text-[14.5px] font-semibold leading-snug">“{f.text}”</p>
-      {f.response && <p className="mt-2.5 border-l-4 border-edge bg-lime/25 px-3 py-2 text-[13px] font-medium leading-snug text-ink2"><span className="font-bold uppercase text-ink">The system: </span>{f.response}</p>}
+      {f.response && <p className="mt-2.5 border-l-4 border-ring bg-tint-brand px-3 py-2 text-[13px] font-medium leading-snug text-ink2 rounded-md"><span className="font-semibold text-ink">The system: </span>{f.response}</p>}
       {(f.kind === "wrong" || f.kind === "improve" || f.kind === "general") && (
         <button type="button" disabled={patch.isPending} className="mt-1.5 text-xs font-semibold text-muted underline underline-offset-2 hover:text-ink"
           onClick={() => patch.mutate({ id: f.id, status: f.status === "open" ? "addressed" : "open" }, { onSuccess: () => toast(f.status === "open" ? "Marked done" : "Reopened"), onError: (e) => toast(e.message, "error") })}>
@@ -107,8 +107,8 @@ export function FeedbackPanel({ videoId, title = "Your feedback", showVideo = fa
     <Card title={title} icon={MessageSquarePlus} accent="pink" flush
       description="What's wrong, or what to do better next time. The video routine reads it before every video, and the agent whose job it is fixes it and answers here.">
       <div className="grid lg:grid-cols-[400px_minmax(0,1fr)]">
-      <div className="flex flex-col gap-3 border-b-2 border-edge bg-surface-2 p-4 lg:border-b-0 lg:border-r-2 md:p-5">
-        <span className="nb-label text-ink">Write a note</span>
+      <div className="flex flex-col gap-3 border-b border-ring bg-surface-2 p-4 lg:border-b-0 lg:border-r md:p-5">
+        <span className="eyebrow text-ink">Write a note</span>
         <div className="grid grid-cols-2 gap-2.5">
           {/* the first kind stands in as the select's "all" option, so it goes in as no value: by name it
               matched no option, and the field looked empty whenever the default kind was chosen */}
