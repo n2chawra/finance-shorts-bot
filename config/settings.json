@@ -1,7 +1,7 @@
 {
-  "backlog": 3,
+  "backlog": 2,
   "backlogByFormat": {
-    "short": 2,
+    "short": 1,
     "long": 1
   },
   "ingestedAt": "2026-11-11T22:15:31.172674+00:00",
@@ -10,11 +10,11 @@
   "uploadsPaused": false,
   "lengthMinSec": 20,
   "lengthMaxSec": 35,
-  "longLengthMinSec": 300,
-  "longLengthMaxSec": 400,
-  "longPerWeek": 0,
+  "longLengthMinSec": 180,
+  "longLengthMaxSec": 240,
+  "longPerWeek": 1,
   "longBacklogCap": 4,
-  "dailyVideoTarget": 2,
+  "dailyVideoTarget": 3,
   "shortEveryDays": 1,
   "queue": [
     {
@@ -26,17 +26,9 @@
       "editorRank": null
     },
     {
-      "id": "v-20261112-02",
-      "format": "short",
-      "position": 1,
-      "locked": false,
-      "picked": false,
-      "editorRank": 1
-    },
-    {
       "id": "v-20261112-01",
       "format": "short",
-      "position": 2,
+      "position": 1,
       "locked": false,
       "picked": false,
       "editorRank": 2
@@ -88,9 +80,9 @@
     "improver": true,
     "dashboard": true,
     "auditor": true,
-    "scout": false,
-    "studio": false,
+    "scout": true,
+    "studio": true,
     "monthly": false,
-    "maxActiveExperiments": 0
+    "maxActiveExperiments": 2
   }
 }
