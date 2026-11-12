@@ -237,3 +237,21 @@ def test_spoken_figure_problems_passes_a_said_figure_shown_again():
         {"id": "b2", "role": "payoff", "say": "And that keeps growing.", "params": {"pay": "{a}"}},
     ]}
     assert st.spoken_figure_problems(script) == []
+
+
+def test_a_short_without_sourced_facts_or_with_an_invented_example_fails():
+    """2026-11-12: every Short is true; "an illustrative billionaire" is a made-up story."""
+    s = armed("Jeff Bezos takes {pay} a year from Amazon.")
+    assert any("no sourced `facts`" in p for p in story.script_problems(s))
+    s["facts"] = [{"label": "Bezos's salary", "value": 81840}]
+    s["beats"][1]["say"] = "On an illustrative billionaire, the tax would be huge."
+    probs = story.script_problems(s)
+    assert not any("no sourced" in p for p in probs) and any("invents an example" in p for p in probs)
+
+
+def test_a_reaction_close_up_and_a_payoff_without_a_figure_are_notes():
+    from renderer import advice
+    s = armed("Jeff Bezos takes {pay} a year from Amazon.")
+    s["beats"][1]["params"] = {"camera": [{"on": "rohan", "size": "close"}]}
+    notes = [p for p in story.reaction_problems(s) + story.payoff_problems(s)]
+    assert notes and all(advice.is_note(n) for n in notes)

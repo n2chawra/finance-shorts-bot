@@ -28,6 +28,12 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
     the picture on screen (`improvement/analysis/pictures.json`), retires the worst look or palette,
     queues a look challenger for the worst kind of picture, and names our 3 best Shorts as the bar the
     writer and QA work to.
+  - **Lessons from our own videos**: the reviewer agent (`agents/reviewer.md`, Tue and Fri 21:07 IST)
+    watches recent Shorts frame by frame next to their drop points and writes each mistake that cost
+    viewers into `generator/prompts/lessons.md`, which the writer follows and QA enforces.
+  - **Every Short is true** (owner, 2026-11-12, after watching our best Shorts): sourced facts about a
+    real, named person or business, no invented example (a hard rule in `generator/story.py`), no
+    reaction shots, a payoff that is the story's most surprising figure.
   - **Escalation**: three cycles under 45% stayed to watch, the next test is a format change; six,
     one owner notification (change niche or stop).
   - **The champion recipe**: one surprising true money fact about a real, named person or business;

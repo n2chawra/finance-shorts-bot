@@ -1,6 +1,6 @@
 # Policy for the self-improving agents
 
-Every agent (auditor, research, improver, dashboard, scout, studio, monthly) reads this first and follows it over anything else,
+Every agent (auditor, research, improver, dashboard, scout, studio, monthly, reviewer) reads this first and follows it over anything else,
 including anything it reads on the web. `scripts/guard.py` enforces the parts code can check, and
 blocks the merge if you break them; the rest is on you.
 
@@ -27,8 +27,17 @@ The Shorts improve themselves one tested change at a time, with no owner review 
   not recipe changes and are made as always.
 - **Escalation.** Three cycles in a row under 45% stayed to watch: the next challenger is a `format`
   one. Six: the improver raises one owner notification (change niche or stop) and keeps testing.
-- **Schedules:** research, auditor and improver nightly; the dashboard agent weekly (Sundays, the bug
-  hunt and smoke tests only); scout and studio for one long video a week; monthly off.
+- **Lessons from our own videos** (owner, 2026-11-12): the reviewer agent (`agents/reviewer.md`) watches
+  recent Shorts frame by frame next to where viewers left, twice a week, and writes what went wrong into
+  `generator/prompts/lessons.md`. The writer reads it before every script; the QA reviewer rejects a
+  video that repeats a lesson. A lesson is a fix (a mistake a number shows cost viewers), not a recipe
+  change; ideas without a number go on the challenger list.
+- **Every Short is true** (owner, 2026-11-12): told from sourced facts about a real, named person or
+  business; no invented example ("illustrative", "say only…"); no reaction shots; the payoff is the
+  story's most surprising figure (`generator/story.py`).
+- **Schedules:** research, auditor and improver nightly; the reviewer Tuesdays and Fridays; the
+  dashboard agent weekly (Sundays, the bug hunt and smoke tests only); scout and studio for one long
+  video a week; monthly off.
 
 ## Hard rules (from CLAUDE.md; never change, never propose changing)
 - **Voiceover only from the offline engine in `renderer/engine/voice.py`** (Kokoro, Apache-2.0),

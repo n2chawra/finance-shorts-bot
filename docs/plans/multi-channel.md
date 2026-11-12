@@ -175,6 +175,14 @@ uploads. Both were visible in public data beforehand. The setup measures them:
 - **A stop rule, per channel:** three cycles in a row under 45% stayed to watch, the next challenger is
   a format change; six, one owner notification: change the niche or stop the channel. Until the owner
   answers, the channel drops to 1 Short a day so it doesn't use the plan another channel needs.
+- **A reviewer per channel, twice a week** (`agents/reviewer.md`): watches the channel's recent Shorts
+  frame by frame next to where viewers left and writes each mistake that cost viewers into the
+  channel's own `lessons.md`, which its writer follows and its QA enforces. A new channel starts with
+  channel #1's general lessons (the first frame names the subject; the story is true; no reaction
+  shots; the payoff is the most surprising figure) and grows its own.
+- **True stories by rule:** a niche that tells facts carries sourced `facts` on every Short and no
+  invented example, as on channel #1; a niche whose format is fiction (a parable series, stories)
+  declares it in its profile, and the rule switches to "never presented as true".
 - **A weekly digest per channel** on the Notifications page: what was tested, the verdict, what starts
   next, stayed to watch this week vs last.
 - **Usage per channel:** every routine run records how long it ran and its steps
@@ -249,8 +257,8 @@ uploads. Both were visible in public data beforehand. The setup measures them:
    - Analytics, the variants card and notifications per channel.
 5. **Agents:**
    - **shared once:** auditor, dashboard agent and monthly review (all channels in one run);
-   - **per channel:** the video run, research, and Scout/Studio when long videos are on (the prompt
-     names the channel);
+   - **per channel:** the video run, research, the reviewer, and Scout/Studio when long videos are on
+     (the prompt names the channel);
    - the improver's code changes help every channel; each channel's weekly loop is judged on its own
      Shorts, one challenger per channel at a time (the guard checks it per channel);
    - the guard limits a channel's agents to its own folder.
@@ -274,7 +282,7 @@ uploads. Both were visible in public data beforehand. The setup measures them:
      first second, the picture language, comments, gaps; no verdict);
    - the channel pack, the champion recipe and challenger list from the research, and the pre-launch backlog;
    - the Launch review, auth and routines.
-4. **Hands-off layer:** the weekly loop per channel, drop diagnosis on stayed to watch, the animation
+4. **Hands-off layer:** the weekly loop and the reviewer per channel, drop diagnosis on stayed to watch, the animation
    tally, the stop rule, the weekly digest, usage per channel, change log and one-change rule, the
    2-day buffer, monthly re-research, health score, and the cross-channel similarity check.
 5. **First real launch** with the owner's first niche, end to end.

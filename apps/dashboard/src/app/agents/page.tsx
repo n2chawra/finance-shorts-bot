@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, CalendarClock, Clapperboard, Clock, ExternalLink, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Newspaper, Scale, Search, ShieldAlert, ShieldCheck, Telescope, Wrench } from "lucide-react";
+import { Bot, CalendarClock, Clapperboard, Clock, ExternalLink, Eye, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Newspaper, Scale, Search, ShieldAlert, ShieldCheck, Telescope, Wrench } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Tabs } from "radix-ui";
@@ -20,6 +20,7 @@ const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeo
   research: { name: "Research", role: "Finds what makes Shorts better and what's new in Claude", icon: Search, time: "23:47" },
   improver: { name: "Improver", role: "Tests changes on half the videos, keeps what works", icon: Wrench, time: "06:17" },
   dashboard: { name: "Dashboard", role: "Hunts bugs and polishes this dashboard", icon: LayoutDashboard, time: "07:37" },
+  reviewer: { name: "Reviewer", role: "Watches our recent Shorts with their numbers and writes lessons the next videos follow", icon: Eye, time: "21:07 Tue, Fri" },
   monthly: { name: "Monthly review", role: "Reviews the month and proposes setting changes for you to approve", icon: CalendarClock, time: "12:07 on the 1st" },
 };
 const DECISION: Record<Activity["decision"], { label: string; tone: Tone }> = {

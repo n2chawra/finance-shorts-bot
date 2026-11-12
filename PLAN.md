@@ -433,3 +433,8 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   a fresh judge; long videos back at 3–4 minutes; 3 Shorts a day; the October voice pace adopted.
   Cycle 1 (from 13 Nov): the real person's photo or the company's logo in the first frame.
   The 26 Nov review routine is disabled.
+- 2026-11-12: Watched our best Shorts frame by frame with the owner: the first frame named nobody, the
+  real story came at 5 s, the examples were made up ("an illustrative billionaire"), reaction-face
+  close-ups, textbook payoffs. Now: no invented examples (hard rule), no reaction shots and a shareable
+  payoff (notes + QA), `generator/prompts/lessons.md`, and the **reviewer** agent (Tue and Fri) that
+  repeats this review on new videos and keeps the lessons current.

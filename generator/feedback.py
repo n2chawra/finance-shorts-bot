@@ -17,7 +17,7 @@ from .settings import ROOT
 ACKS_DIR = Path("improvement") / "feedback-acks"
 LEGACY_ACKS = Path("improvement") / "feedback-acks.json"   # the improver's answers before 2026-11-10
 HANDOFF = ("handed", "partly")
-AGENTS = ("improver", "research", "dashboard", "auditor", "scout", "studio", "monthly")
+AGENTS = ("improver", "research", "dashboard", "auditor", "scout", "studio", "monthly", "reviewer")
 
 FILE = Path("metrics") / "feedback.json"
 SHOWN = 15     # notes handed to the planner and writer: the open ones and the newest

@@ -204,6 +204,7 @@ export const SettingsSchema = z.object({
     scout: z.boolean().default(true),
     studio: z.boolean().default(true),
     monthly: z.boolean().default(true),
+    reviewer: z.boolean().default(true),
     maxActiveExperiments: z.number().int().min(0).max(6),
   }),
 });
@@ -348,7 +349,7 @@ export const NotificationActionSchema = z.union([
 ]);
 export type NotificationAction = z.infer<typeof NotificationActionSchema>["action"];
 
-export const AGENTS = ["auditor", "research", "improver", "dashboard", "scout", "studio", "monthly"] as const;
+export const AGENTS = ["auditor", "research", "improver", "dashboard", "scout", "studio", "monthly", "reviewer"] as const;
 export const ActivitySchema = z.object({
   id: z.string(),
   agent: z.enum(AGENTS),

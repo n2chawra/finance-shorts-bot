@@ -198,6 +198,7 @@ export default function SettingsPage() {
               </Row>
               <Row label="Monthly review (12:07, 1st)" hint="Reviews the month and proposes setting changes on the Notifications page. Never changes settings itself.">
                 <Toggle label="Monthly review agent on" checked={form.agents.monthly} disabled={form.agents.paused} onChange={(monthly) => setAgents({ monthly })} />
+                <Toggle label="Reviewer agent on" checked={form.agents.reviewer} disabled={form.agents.paused} onChange={(reviewer) => setAgents({ reviewer })} />
               </Row>
               <Row label="Research (23:47)" hint="Studies top Shorts and Claude updates, writes proposals. Never changes code.">
                 <Toggle label="Research agent on" checked={form.agents.research} disabled={form.agents.paused} onChange={(research) => setAgents({ research })} />

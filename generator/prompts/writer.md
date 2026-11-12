@@ -65,6 +65,16 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     thing itself drawn big (the gym, the burger, the jersey with the name), its name as a label, the
     figure beside it. Never an empty room, never a placeholder head, never a cast member standing in
     for a real person.
+  - **Nothing made up** (owner, 2026-11-12; `number-check` fails it): the story is what really happened
+    to a real, named person or business, told from the plan's sourced `facts`. Never "an illustrative
+    billionaire", "say only 300 members", "imagine", "suppose". When the true story has no number for
+    a step, leave the step out rather than invent one.
+  - **No reaction shots**: a cast close-up saying "EASY." or "WHAT?" shows nothing new. Every beat
+    shows the thing or the figure the line is about; a face only when the face is the information.
+  - **A payoff worth sharing**: the last beat lands on the most surprising true figure in the story,
+    the one a viewer would send a friend, never a textbook result ("$20,815 vs $29,605 at 4%").
+  - **Read `generator/prompts/lessons.md` before writing**: what the reviewer found wrong in our last
+    videos, each with the fix. Don't repeat any of them.
   - **Every beat shows a named, specific thing** (the cinema, the coffee shop, the rent cheque), never
     a text chip standing in for one ("LIFE INSURANCE", "TEAM STAKES").
   - **The cast act it as a short skit** when they are part of the story (Rohan as the member who

@@ -18,7 +18,7 @@ import { notify, resolveOthers } from "./notify.ts";
 import { istDay } from "./publishing.ts";
 
 const DAY_MS = 86_400_000;
-const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio", "monthly"] as const;
+const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio", "monthly", "reviewer"] as const;
 
 const readJson = (file: string): unknown => JSON.parse(readFileSync(file, "utf8"));
 

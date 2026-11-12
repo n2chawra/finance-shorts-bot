@@ -41,6 +41,9 @@ ALLOW: dict[str, list[str]] = {
               "improvement/research/thumbnails.json"],   # its Monday thumbnail examples (owner-approved 2026-11-03)
     "studio": ["improvement/longform/*", "improvement/activity/*-studio.json", "improvement/notifications/studio.json", "improvement/feedback-acks/studio.json"],
     # the monthly review writes its review, next month's focus and setting proposals; it never changes code or settings
+    # watches our recent Shorts twice a week and writes lessons the writer follows (owner, 2026-11-12); never code
+    "reviewer": ["generator/prompts/lessons.md", "improvement/review/*", "improvement/cycle/backlog.json",
+                 "improvement/activity/*-reviewer.json", "improvement/notifications/reviewer.json", "improvement/feedback-acks/reviewer.json"],
     "monthly": ["improvement/monthly/*", "improvement/activity/*-monthly.json", "improvement/notifications/monthly.json", "improvement/feedback-acks/monthly.json"],
 }
 # protected files an agent may still change (its fixes for data bugs live there)
@@ -76,7 +79,7 @@ UPLOAD_SETTING = re.compile(r"\b(uploadTimes|trendUploadTimes|uploadsPaused|back
 MEDIA_EXT = (".mp3", ".wav", ".ogg", ".m4a", ".flac", ".aac", ".mp4", ".mov", ".webm")
 MODEL_EXT = (".onnx", ".bin", ".pt", ".pth", ".safetensors", ".ckpt", ".gguf")   # voice/AI model weights
 # raised 2026-10-19 (owner): agents ship several small changes a night instead of one
-MAX_LINES = {"research": 4000, "improver": 2000, "dashboard": 1500, "auditor": 1200, "scout": 4000, "studio": 4000, "monthly": 4000}   # code lines changed (reports excluded)
+MAX_LINES = {"research": 4000, "improver": 2000, "dashboard": 1500, "auditor": 1200, "scout": 4000, "studio": 4000, "monthly": 4000, "reviewer": 600}   # code lines changed (reports excluded)
 MAX_MERGES_PER_DAY = 2
 SECRET = re.compile(r"(ghp_[A-Za-z0-9]{20,}|github_pat_|sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|postgres(ql)?://\S+:\S+@|BEGIN (RSA|OPENSSH) PRIVATE KEY)")
 NETWORK = re.compile(r"^\+\s*(import|from)\s+(requests|urllib|http\.client|socket|aiohttp|httpx)\b")

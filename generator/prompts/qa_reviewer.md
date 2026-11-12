@@ -41,6 +41,11 @@ own render checks it. You are checking what code cannot see.
    could not name; and a first sentence that is a question about what the viewer thinks, a tease
    ("Watch this.") or a line that keeps the name back. A text chip standing in for a real thing
    ("LIFE INSURANCE" in a box) anywhere in the video is a reject too: show the thing.
+6a. **Made up, reaction shots, a flat ending** (Shorts; owner, 2026-11-12): reject `[script]` a
+   video that admits an invented example on screen or in its words ("illustrative", "say only…",
+   "imagine"); a still that is only a cast member's face with a one-word reaction and nothing new;
+   and an ending whose last figure is a textbook result rather than the story's most surprising fact.
+   Check every item in `generator/prompts/lessons.md` too: a video that repeats a lesson is a reject.
 6b. **Weaker than our best** (Shorts; the weekly loop): open the contact sheets of the Shorts in
    `improvement/analysis/pictures.json` → `reference` (our own Shorts that held viewers best). Reject
    `[scene]` a video whose frames are clearly emptier, smaller or harder to read than theirs, naming

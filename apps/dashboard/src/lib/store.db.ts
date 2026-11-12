@@ -25,7 +25,7 @@ export const DEFAULT_SETTINGS: Settings = {
   disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
   generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
   alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },
-  agents: { paused: false, research: true, improver: true, dashboard: true, auditor: true, scout: true, studio: true, monthly: true, maxActiveExperiments: 5 },
+  agents: { paused: false, research: true, improver: true, dashboard: true, auditor: true, scout: true, studio: true, monthly: true, reviewer: true, maxActiveExperiments: 5 },
 };
 
 const istDay = (d: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(d);

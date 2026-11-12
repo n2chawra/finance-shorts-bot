@@ -340,6 +340,56 @@ def _tail(line: str) -> str:
     return " ".join(words[-HOOK_TAIL_WORDS:]) if len(words) >= HOOK_TAIL_WORDS else ""
 
 
+# Owner, 2026-11-12, after watching our best Shorts frame by frame: "On an illustrative billionaire",
+# "Say only 300 members walk through the door": a story the video admits it made up is not one anyone
+# shares. Every Short tells something true, from sourced facts; the maths may build on them.
+INVENTED = re.compile(r"\b(illustrative|hypothetical(ly)?|imagine|suppose|let'?s say|say (only|just)?\s*\w+ (people|members|customers|users|of them)|"
+                      r"a made[- ]up|for example,? say|picture (a|an|this))\b", re.I)
+
+
+def invented_problems(script: dict) -> list[str]:
+    """A Short tells a true story: it carries sourced `facts`, and no line admits an invented example."""
+    if script.get("format", "short") != "short":
+        return []
+    out = []
+    if not script.get("facts"):
+        out.append("no sourced `facts`: every Short tells something true about a real, named person or business, with its "
+                   "figures from the topic feed (owner, 2026-11-12); a made-up example is not a story anyone shares")
+    for b in script.get("beats") or []:
+        m = INVENTED.search(re.sub(r"\{[^}]*\}", "", b.get("say") or ""))
+        if m:
+            out.append(f"beat {b.get('id')!r} invents an example ({m.group(0)!r}): tell what really happened, from the facts")
+    return out
+
+
+CAST = {"rohan", "priya", "sharma", "sikka"}
+
+
+def reaction_problems(script: dict) -> list[str]:
+    """A close-up of a cast member that shows nothing new ("EASY.", "WHAT?") wastes a second the viewer is
+    deciding in. A note: the face is fine when it carries the information."""
+    out = []
+    for b in script.get("beats") or []:
+        cams = (b.get("params") or {}).get("camera") or []
+        close = [k for k in cams if isinstance(k, dict) and k.get("on") in CAST and k.get("size") in ("close", "extreme")]
+        p = b.get("params") or {}
+        shows = p.get("figure") or p.get("items") or p.get("actions") or p.get("things")
+        if close and not shows and b.get("role") not in ("turn",):
+            out.append(note(f"beat {b.get('id')!r} is a close-up of {close[0].get('on')} with nothing new on screen: show the "
+                            f"thing or the figure the line is about, not a reaction face"))
+    return out
+
+
+def payoff_problems(script: dict) -> list[str]:
+    """The payoff lands on the most surprising figure: the one worth sharing. A note."""
+    beats = script.get("beats") or []
+    pay = next((b for b in beats if b.get("role") == "payoff"), None)
+    if pay and not re.search(r"\{[a-z0-9_]+\}", pay.get("say") or ""):
+        return [note(f"the payoff {pay.get('id')!r} says no figure: end on the most surprising number in the story, "
+                     f"the one a viewer would send to a friend")]
+    return []
+
+
 def hook_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
     """A Short's hook states the surprising fact itself, with the famous name or the figure in it (owner
     review, 2026-11-11). Until then the hook had to be "You think X? It isn't.": 8 of 9 Shorts opened on the
@@ -399,6 +449,7 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
         out += voice_problems(script)
     if script.get("arms") and script.get("format", "short") == "short":
         out += hook_problems(script, earlier)
+        out += invented_problems(script) + reaction_problems(script) + payoff_problems(script)
         out += spoken_figure_problems(script)
     if script.get("shape") is not None or script.get("format") == "long" or any(b.get("scene") == "board" for b in beats):
         out += chain_problems(script)
