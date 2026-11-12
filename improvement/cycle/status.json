@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-11-12T15:59:27.492171+00:00",
+  "cycle": 1,
+  "running": "real-subject-first-frame",
+  "thresholds": {
+    "keepPoints": 5,
+    "revertPoints": -5,
+    "confidence": 0.8
+  },
+  "channelStayed14d": 0.428,
+  "experiment": {
+    "id": "real-subject-first-frame",
+    "kind": "first-second",
+    "area": "hook",
+    "description": "Shorts: the real person's photo or the company's logo in the first frame, against a drawn subject (judged on stayed to watch)",
+    "on": "First frame for this Short (weekly loop, cycle 1, on): the hook beat shows the real subject itself: the famous person as a cut-out photo bobblehead (`\"who\": \"photo:<name>\"`) or the company's logo as a die-cut sticker (`\"prop\": \"photo:<name>\"`), big, with its name as a label and the hook figure beside it, from frame 0. Fetch it with `python -m generator.images fetch` (writer.md, real photos). If no freely licensed file exists, say so in the report and draw the subject instead.",
+    "off": "First frame for this Short (weekly loop, cycle 1, off): no real photo or logo in the hook beat; draw the subject (its product, building or a cast stand-in labelled with its name), big, with the hook figure beside it. Real photos may still appear later in the video.",
+    "startedAt": "2026-11-13",
+    "metric": "stayed",
+    "minPerArm": 8,
+    "maxDays": 7,
+    "extended": false,
+    "published": {
+      "on": 0,
+      "off": 0
+    },
+    "counted": {
+      "on": 0,
+      "off": 0
+    },
+    "value": {
+      "on": null,
+      "off": null
+    },
+    "points": null,
+    "pOnBetter": 0.5,
+    "days": -1,
+    "verdict": "wait",
+    "why": "0 of 8 Shorts a side have two days of data; day -1 of 7"
+  }
+}
