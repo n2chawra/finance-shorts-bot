@@ -36,6 +36,12 @@ function Countdown({ iso }: { iso: string }) {
   return <span className="tabular-nums">{s >= 86400 ? `${Math.floor(s / 86400)}d ` : ""}{pad(Math.floor((s % 86400) / 3600))}:{pad(Math.floor((s % 3600) / 60))}:{pad(s % 60)}</span>;
 }
 
+/** "Good morning" by the hour in IST. */
+function greeting() {
+  const h = Number(new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", hour: "numeric", hour12: false }).format(new Date()));
+  return h < 5 ? "Working late" : h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
+}
+
 /** Likes + comments per 1,000 views, as a short label. */
 const fmtLoved = (t: { views: number; likes: number; comments: number }) => `${perThousand(t).toFixed(1)} per 1K views`;
 
@@ -81,7 +87,7 @@ export default function OverviewPage() {
 
   return (
     <Stagger>
-      <PageHeader title="Overview" sub={new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", weekday: "long", day: "numeric", month: "long" }).format(new Date())}>
+      <PageHeader title="Overview" sub={<><span className="text-ink">{greeting()}.</span> {new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", weekday: "long", day: "numeric", month: "long" }).format(new Date())} · here&apos;s the channel today.</>}>
         <Badge tone={data.uploadsPaused ? "warning" : "good"} dot>{data.uploadsPaused ? "Uploads paused" : "Uploads on"}</Badge>
         <Badge tone={MODES[g.mode].tone} dot>{MODES[g.mode].label}</Badge>
       </PageHeader>
@@ -89,10 +95,10 @@ export default function OverviewPage() {
       {(() => {
         const critical = notifications.data?.open.filter((n) => n.severity === "critical") ?? [];
         return critical.length > 0 && (
-          <Link href="/notifications" className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-critical/30 bg-critical-soft px-4 py-3 transition-colors hover:border-critical/50">
+          <Link href="/notifications" className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-critical/30 bg-critical-soft px-4 py-3 transition-colors hover:border-critical/50">
             <span className="flex items-center gap-2 text-sm"><AlertOctagon aria-hidden className="size-4 text-critical" />
               <span><strong className="font-medium">{critical.length === 1 ? critical[0].title : `${critical.length} problems need you`}</strong> <span className="text-ink2">· the automation can&apos;t fix this by itself</span></span></span>
-            <span className="flex shrink-0 items-center gap-1 text-xs font-medium">How to fix <ArrowRight aria-hidden className="size-3.5" /></span>
+            <span className="flex shrink-0 items-center gap-1 rounded-full bg-surface px-2.5 py-1 text-xs font-medium shadow-card">How to fix <ArrowRight aria-hidden className="size-3.5" /></span>
           </Link>
         );
       })()}
@@ -104,7 +110,7 @@ export default function OverviewPage() {
         </div>
       )}
 
-      <div data-testid="overview-stats" className="grid grid-cols-2 gap-3 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child:nth-child(odd)]:col-span-1">
+      <div data-testid="overview-stats" className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child:nth-child(odd)]:col-span-1">
         <Stat label="Views" icon={Eye} href="/analytics" value={<Num value={data.allTime.views} fmt={fmtCompact} />}
           delta={<Delta value={views.delta} />} sub={`+${fmtNum(data.last7.views)} in 7 days${data.allTime.liveAt ? ` · live, ${fmtRelative(data.allTime.liveAt)}` : ""}`} chart={<Sparkline values={views.spark} />} />
         <Stat label="Subscribers · 7 days" icon={UserPlus} href="/analytics" value={<Num value={data.last7.subsGained} fmt={(n) => `+${fmtNum(n)}`} />}
@@ -120,18 +126,19 @@ export default function OverviewPage() {
           chart={<div className="pt-3"><Meter value={today.shipped} max={DAILY_TARGET} label="Shorts made today" tone={today.shipped >= DAILY_TARGET ? "good" : "brand"} /></div>} />
       </div>
 
-      <div className="mt-3 grid gap-3 lg:grid-cols-3">
-        <Card title="Next upload" icon={Rocket} className="lg:col-span-2"
-          action={<Link href="/queue" className="flex items-center gap-1 text-xs font-medium text-ink2 hover:text-ink">Queue <ArrowRight aria-hidden className="size-3.5" /></Link>}>
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+        <Card title="Next upload" icon={Rocket} className="hero-glow relative overflow-hidden lg:col-span-2"
+          action={<Link href="/queue" className="flex items-center gap-1 rounded-full border border-ring bg-surface px-2.5 py-1 text-xs font-medium text-ink2 shadow-card hover:text-ink">Queue <ArrowRight aria-hidden className="size-3.5" /></Link>}>
           {data.nextUpload ? (
-            <div className="flex gap-4">
-              <Thumb src={data.nextUpload.thumbnailUrl} alt="" className="w-[72px] md:w-20" />
-              <div className="min-w-0 flex-1">
-                <VideoLink id={data.nextUpload.videoId} className="line-clamp-2 text-[15px] font-medium">{data.nextUpload.title}</VideoLink>
-                <div className="mt-3 font-mono text-[32px] font-medium leading-none tracking-tight md:text-[40px]">
-                  {data.uploadsPaused ? <span className="font-sans text-2xl text-muted">Paused</span> : <Countdown iso={data.nextUpload.publishAt} />}
+            <div className="flex gap-5 md:gap-6">
+              <Thumb src={data.nextUpload.thumbnailUrl} alt="" className="w-[84px] -rotate-2 md:w-[104px]" />
+              <div className="flex min-w-0 flex-1 flex-col">
+                <span className="text-[11.5px] font-semibold uppercase tracking-[0.08em] text-brand-text">{data.uploadsPaused ? "On hold" : "Going live in"}</span>
+                <div className="mt-1.5 font-mono text-[38px] font-medium leading-none tracking-[-0.04em] md:text-[56px]">
+                  {data.uploadsPaused ? <span className="font-display text-3xl text-muted">Paused</span> : <Countdown iso={data.nextUpload.publishAt} />}
                 </div>
-                <div className="mt-2 text-[13px] text-muted">{fmtDateTime(data.nextUpload.publishAt)} IST · {fmtRelative(data.nextUpload.publishAt)}</div>
+                <VideoLink id={data.nextUpload.videoId} className="mt-4 line-clamp-2 font-display text-[17px] font-semibold leading-snug tracking-[-0.01em]">{data.nextUpload.title}</VideoLink>
+                <div className="mt-1 text-[13px] text-muted">{fmtDateTime(data.nextUpload.publishAt)} IST · {fmtRelative(data.nextUpload.publishAt)}</div>
               </div>
             </div>
           ) : <Empty icon={Rocket} title="Nothing scheduled">{data.backlog ? "The next publish run picks the top of the queue." : "The queue is empty."}</Empty>}
@@ -151,7 +158,7 @@ export default function OverviewPage() {
         </Card>
       </div>
 
-      <div className="mt-3 grid gap-3 lg:grid-cols-3">
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
         <Card title="Daily output" description={`Shorts shipped per day, last 14 days · target ${DAILY_TARGET}`} className="lg:col-span-2"
           action={<span className="text-right text-xs text-muted"><span data-testid="output-total" className="block text-sm font-medium text-ink tabular-nums">{shipped14} Shorts</span>target met {metDays}/14 days</span>}>
           {runs.isLoading ? <div className="skeleton h-8 rounded-md" /> : (
@@ -172,7 +179,7 @@ export default function OverviewPage() {
         <Card title="Pipeline" description="Every video by where it is now">
           <CategoryBar parts={[
             { key: "progress", label: "In progress", value: inProgress, className: "bg-muted" },
-            { key: "queued", label: "Queued", value: c.queued ?? 0, className: "bg-brand", href: "/videos?status=queued" },
+            { key: "queued", label: "Queued", value: c.queued ?? 0, className: "bg-violet", href: "/videos?status=queued" },
             { key: "scheduled", label: "Scheduled", value: c.scheduled ?? 0, className: "bg-series", href: "/videos?status=scheduled" },
             { key: "published", label: "Published", value: c.published ?? 0, className: "bg-good", href: "/videos?status=published" },
             { key: "failed", label: "Failed", value: c.failed ?? 0, className: "bg-critical", href: "/videos?status=failed" },
@@ -184,16 +191,20 @@ export default function OverviewPage() {
         const { day: last, byAgent } = lastNight(agents.data?.activity ?? []);
         const label = { acted: "made a change", waited: "waited", blocked: "was blocked", nothing: "nothing to do" } as const;
         return (
-          <Card title="Agents last night" icon={Sparkles} className="mt-3" description={last ? undefined : "The self-improving agents report here after their first night."}
+          <Card title="Agents last night" icon={Sparkles} className="mt-4" description={last ? undefined : "The self-improving agents report here after their first night."}
             action={<Link href="/agents" className="flex items-center gap-1 text-xs font-medium text-ink2 hover:text-ink">Details <ArrowRight aria-hidden className="size-3.5" /></Link>}>
             {byAgent.size > 0 && (
               <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
                 {AGENTS.map((k) => {
                   const a = byAgent.get(k);
                   return (
-                    <li key={k} data-testid={`last-night-${k}`} className="rounded-lg bg-surface-2 p-3 text-[13px]">
-                      <div className="flex items-center justify-between gap-2"><span className="font-medium">{k[0].toUpperCase() + k.slice(1)}</span>
-                        <span className="text-xs text-muted">{a ? label[a.decision] : "no report"}</span></div>
+                    <li key={k} data-testid={`last-night-${k}`} className={`rounded-xl border p-3.5 text-[13px] ${a ? "border-ring bg-surface-2" : "border-dashed border-ring bg-transparent"}`}>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="flex items-center gap-2 font-medium">
+                          <span aria-hidden className={`grid size-6 place-items-center rounded-full font-display text-[11px] font-semibold ${a?.decision === "acted" ? "bg-brand text-brand-ink" : a ? "bg-wash-2 text-ink2" : "bg-wash text-muted"}`}>{k[0].toUpperCase()}</span>
+                          {k[0].toUpperCase() + k.slice(1)}
+                        </span>
+                        <span className={`text-xs ${a?.decision === "acted" ? "font-medium text-good-text" : a?.decision === "blocked" ? "font-medium text-critical-text" : "text-muted"}`}>{a ? label[a.decision] : "no report"}</span></div>
                       {a && <p className="mt-1 line-clamp-3 text-ink2">{a.summary}</p>}
                     </li>
                   );
@@ -204,7 +215,7 @@ export default function OverviewPage() {
         );
       })()}
 
-      <div className="mt-3 grid gap-3 lg:grid-cols-2">
+      <div className="mt-4 grid gap-4 lg:grid-cols-2">
         <Card title="Latest published" icon={Upload} flush
           action={<Link href="/analytics" className="flex items-center gap-1 text-xs font-medium text-ink2 hover:text-ink">Analytics <ArrowRight aria-hidden className="size-3.5" /></Link>}>
           {data.recent.length === 0 ? <Empty icon={Upload} title="Nothing published yet">Published videos and their views show up here.</Empty> : (

@@ -3,97 +3,112 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* Colour roles. UI and charts are written against these, never raw hex.
-   next-themes sets data-theme on <html> (it resolves "system" to light or dark).
-   Direction: neutral zinc base, one indigo accent, solid ink primary buttons, hairline borders. */
+   next-themes sets data-theme on <html> (it resolves "system" to light or dark). */
 :root {
   color-scheme: light;
-  --plane: #fafafa;          /* app background */
+  /* "Studio" direction (2026-11 redesign): warm paper base, ink type, one marigold accent (paisa:
+     gold, saffron), emerald for money that grew. Colour carries meaning; everything else is ink. */
+  --plane: #f6f4ef;          /* app background: warm paper */
   --surface: #ffffff;        /* cards, popovers */
-  --surface-2: #f4f4f5;      /* inset wells, table heads */
-  --ink: #09090b;
-  --ink2: #52525b;
-  --muted: #8b8b94;
-  --line: #f0f0f2;           /* dividers inside cards */
-  --ring: #e4e4e7;           /* borders */
-  --ring-strong: #d4d4d8;
-  --axis: #d4d4d8;
-  --wash: rgba(9, 9, 11, 0.04);
-  --wash-2: rgba(9, 9, 11, 0.07);
-  --shadow: 0 1px 2px rgba(9, 9, 11, 0.04);
-  --shadow-lift: 0 1px 2px rgba(9, 9, 11, 0.05), 0 12px 32px -12px rgba(9, 9, 11, 0.18);
+  --surface-2: #f1eee7;      /* inset wells, table heads */
+  --ink: #17140f;
+  --ink2: #57524a;
+  --muted: #8c867b;
+  --line: #efebe3;           /* dividers inside cards */
+  --ring: #e6e1d6;           /* borders */
+  --ring-strong: #d3cdbf;
+  --axis: #d3cdbf;
+  --wash: rgba(23, 20, 15, 0.035);
+  --wash-2: rgba(23, 20, 15, 0.065);
+  --shadow: 0 1px 0 rgba(23, 20, 15, 0.03), 0 1px 3px rgba(23, 20, 15, 0.04);
+  --shadow-lift: 0 1px 2px rgba(23, 20, 15, 0.06), 0 18px 40px -16px rgba(23, 20, 15, 0.22);
 
   /* accent: active navigation, links, focus, highlights */
-  --brand: #5e5ce6;
-  --brand-2: #8b5cf6;
-  --brand-ink: #ffffff;
-  --brand-soft: rgba(94, 92, 230, 0.09);
-  --brand-text: #4f4dd6;
+  --brand: #e8890c;
+  --brand-2: #f4b740;
+  --brand-ink: #1c1203;
+  --brand-soft: rgba(232, 137, 12, 0.11);
+  --brand-text: #a85d00;
 
-  /* primary buttons are solid ink, Vercel-style */
-  --primary: #09090b;
-  --primary-ink: #fafafa;
+  /* the sidebar is always a dark ink rail, in both themes */
+  --rail: #15130f;
+  --rail-2: #1f1c17;
+  --rail-ink: #f3efe6;
+  --rail-ink2: #a59f93;
+  --rail-line: rgba(255, 255, 255, 0.07);
+
+  /* primary buttons are solid ink */
+  --primary: #17140f;
+  --primary-ink: #fbf9f4;
 
   /* chart series and status (dataviz palette) */
   --series: #2a78d6;
   --series-2: #9b8af4;
   --series-soft: rgba(42, 120, 214, 0.14);
-  --likes: #e0306e;   /* likes and comments: a heart pink, clear on white */
-  --good: #16a34a;
-  --good-text: #15803d;
-  --good-soft: rgba(22, 163, 74, 0.1);
-  --warning: #f5a524;
-  --warning-text: #a16207;
-  --warning-soft: rgba(245, 165, 36, 0.14);
+  --likes: #e0306e;
+  --good: #11975f;
+  --good-text: #0b7a4b;
+  --good-soft: rgba(17, 151, 95, 0.1);
+  --warning: #eda100;
+  --warning-text: #996200;
+  --warning-soft: rgba(237, 161, 0, 0.14);
   --serious: #ec835a;
-  --critical: #dc2626;
-  --critical-text: #b91c1c;
-  --critical-soft: rgba(220, 38, 38, 0.08);
+  --critical: #dc2f2f;
+  --critical-text: #b42020;
+  --critical-soft: rgba(220, 47, 47, 0.08);
   --info-soft: rgba(42, 120, 214, 0.1);
   --info-text: #1d5fb0;
+  --violet: #7c6cf0;
+  --violet-soft: rgba(124, 108, 240, 0.12);
+  --violet-text: #5443cf;
 
   /* categorical series, fixed order (dataviz reference palette, validated for colour blindness) */
   --c1: #2a78d6; --c2: #eb6834; --c3: #1baf7a; --c4: #eda100;
   --c5: #e87ba4; --c6: #008300; --c7: #6250d6; --c8: #e34948;
-  --hero-glow: radial-gradient(120% 140% at 0% 0%, rgba(94, 92, 230, 0.10), transparent 55%), radial-gradient(90% 120% at 100% 100%, rgba(42, 120, 214, 0.08), transparent 60%);
+  --hero-glow: radial-gradient(110% 130% at 0% 0%, rgba(232, 137, 12, 0.13), transparent 55%), radial-gradient(90% 120% at 100% 100%, rgba(17, 151, 95, 0.08), transparent 60%);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --plane: #09090b;
-  --surface: #111113;
-  --surface-2: #18181b;
-  --ink: #fafafa;
-  --ink2: #a1a1aa;
-  --muted: #71717a;
-  --line: #1c1c20;
-  --ring: #27272a;
-  --ring-strong: #3f3f46;
-  --axis: #3f3f46;
-  --wash: rgba(255, 255, 255, 0.04);
-  --wash-2: rgba(255, 255, 255, 0.08);
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --shadow-lift: 0 1px 2px rgba(0, 0, 0, 0.5), 0 16px 40px -12px rgba(0, 0, 0, 0.7);
+  --plane: #0c0b09;
+  --surface: #151310;
+  --surface-2: #1c1a16;
+  --ink: #f4f0e8;
+  --ink2: #b0a99c;
+  --muted: #7d776c;
+  --line: #211e19;
+  --ring: #2a2620;
+  --ring-strong: #3d382f;
+  --axis: #3d382f;
+  --wash: rgba(255, 245, 225, 0.035);
+  --wash-2: rgba(255, 245, 225, 0.07);
+  --shadow: 0 1px 0 rgba(255, 245, 225, 0.03) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-lift: 0 1px 2px rgba(0, 0, 0, 0.5), 0 20px 44px -14px rgba(0, 0, 0, 0.75);
 
-  --brand: #8381ff;
-  --brand-2: #a78bfa;
-  --brand-ink: #09090b;
-  --brand-soft: rgba(131, 129, 255, 0.13);
-  --brand-text: #a5a4ff;
+  --brand: #f5a524;
+  --brand-2: #fcc964;
+  --brand-ink: #1c1203;
+  --brand-soft: rgba(245, 165, 36, 0.13);
+  --brand-text: #fbbf4a;
+
+  --rail: #080706;
+  --rail-2: #161410;
+  --rail-line: rgba(255, 255, 255, 0.06);
 
   --c1: #3987e5; --c2: #d95926; --c3: #199e70; --c4: #c98500;
   --c5: #d55181; --c6: #008300; --c7: #9085e9; --c8: #e66767;
-  --hero-glow: radial-gradient(120% 140% at 0% 0%, rgba(131, 129, 255, 0.16), transparent 55%), radial-gradient(90% 120% at 100% 100%, rgba(57, 135, 229, 0.12), transparent 60%);
+  --hero-glow: radial-gradient(110% 130% at 0% 0%, rgba(245, 165, 36, 0.14), transparent 55%), radial-gradient(90% 120% at 100% 100%, rgba(25, 158, 112, 0.10), transparent 60%);
 
-  --primary: #fafafa;
-  --primary-ink: #09090b;
+  --primary: #f4f0e8;
+  --primary-ink: #12100c;
 
   --series: #3987e5;
   --series-2: #a89af6;
   --series-soft: rgba(57, 135, 229, 0.2);
   --likes: #f2588f;
-  --good: #22c55e;
-  --good-text: #4ade80;
-  --good-soft: rgba(34, 197, 94, 0.12);
+  --good: #22c07a;
+  --good-text: #4ade9a;
+  --good-soft: rgba(34, 192, 122, 0.12);
   --warning: #f5a524;
   --warning-text: #fbbf24;
   --warning-soft: rgba(245, 165, 36, 0.13);
@@ -102,6 +117,9 @@
   --critical-soft: rgba(239, 68, 68, 0.12);
   --info-soft: rgba(57, 135, 229, 0.15);
   --info-text: #7cb3f2;
+  --violet: #9d90f7;
+  --violet-soft: rgba(157, 144, 247, 0.15);
+  --violet-text: #b9afff;
 }
 
 @theme inline {
@@ -122,6 +140,11 @@
   --color-brand-ink: var(--brand-ink);
   --color-brand-soft: var(--brand-soft);
   --color-brand-text: var(--brand-text);
+  --color-rail: var(--rail);
+  --color-rail-2: var(--rail-2);
+  --color-rail-ink: var(--rail-ink);
+  --color-rail-ink2: var(--rail-ink2);
+  --color-rail-line: var(--rail-line);
   --color-primary: var(--primary);
   --color-primary-ink: var(--primary-ink);
   --color-series: var(--series);
@@ -138,8 +161,17 @@
   --color-critical-soft: var(--critical-soft);
   --color-info-soft: var(--info-soft);
   --color-info-text: var(--info-text);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --color-violet-text: var(--violet-text);
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-display: var(--font-brand), var(--font-geist-sans), system-ui, sans-serif;
+  /* softer, larger corners everywhere (every page uses rounded-lg / rounded-xl) */
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
   --shadow-card: var(--shadow);
   --shadow-lift: var(--shadow-lift);
 
@@ -179,6 +211,12 @@
 html {
   font-size: 15px;
 }
+
+/* headings take the display face; h1 is the page title */
+h1, h2, h3, .font-display {
+  font-family: var(--font-brand), var(--font-geist-sans), system-ui, sans-serif;
+}
+h1 { letter-spacing: -0.025em; }
 
 body {
   background: var(--plane);
@@ -255,6 +293,20 @@ body {
 .dot-grid {
   background-image: radial-gradient(var(--ring) 1px, transparent 1px);
   background-size: 18px 18px;
+}
+
+/* fine grain over large brand surfaces (login panel, hero cards) */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* a card that lifts slightly on hover when it is a link */
+.lift {
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s, border-color 0.2s;
+}
+.lift:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lift);
 }
 
 /* cmdk palette */

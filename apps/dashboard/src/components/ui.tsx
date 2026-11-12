@@ -14,10 +14,10 @@ import type { VideoStatus } from "@/lib/schemas";
 
 export function PageHeader({ title, sub, children }: { title: string; sub?: React.ReactNode; children?: React.ReactNode }) {
   return (
-    <div className="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
+    <div className="mb-7 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
       <div className="min-w-0">
-        <h1 className="text-[22px] font-semibold tracking-[-0.02em] md:text-2xl">{title}</h1>
-        {sub && <p className="mt-1 text-sm text-ink2">{sub}</p>}
+        <h1 className="text-[26px] font-semibold leading-[1.1] tracking-[-0.03em] md:text-[32px]">{title}</h1>
+        {sub && <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-ink2">{sub}</p>}
       </div>
       {children && <div className="flex flex-wrap items-center gap-2">{children}</div>}
     </div>
@@ -41,17 +41,17 @@ export function Card({ title, description, action, children, className = "", ico
   flush?: boolean;
 }) {
   return (
-    <motion.section variants={rise} className={`min-w-0 rounded-xl border border-ring bg-surface shadow-card ${flush ? "overflow-hidden" : "p-4 md:p-5"} ${className}`}>
+    <motion.section variants={rise} className={`min-w-0 rounded-xl border border-ring bg-surface shadow-card ${flush ? "overflow-hidden" : "p-4 md:p-6"} ${className}`}>
       {(title || action) && (
-        <div className={`flex flex-wrap items-start justify-between gap-3 ${flush ? "border-b border-line px-4 py-3 md:px-5" : "mb-4"}`}>
+        <div className={`flex flex-wrap items-start justify-between gap-3 ${flush ? "border-b border-line px-4 py-3.5 md:px-6" : "mb-5"}`}>
           <div className="min-w-0">
             {title && (
-              <h2 className="flex items-center gap-2 text-sm font-medium text-ink">
-                {Icon && <Icon aria-hidden className="size-4 text-muted" />}
+              <h2 className="flex items-center gap-2 text-[15px] font-semibold tracking-[-0.01em] text-ink">
+                {Icon && <span className="grid size-6 place-items-center rounded-md bg-surface-2 text-ink2"><Icon aria-hidden className="size-3.5" /></span>}
                 {title}
               </h2>
             )}
-            {description && <p className="mt-0.5 text-xs text-muted">{description}</p>}
+            {description && <p className="mt-1 text-xs text-muted">{description}</p>}
           </div>
           {action}
         </div>
@@ -85,11 +85,12 @@ const TONES = {
   warning: "bg-warning-soft text-warning-text",
   critical: "bg-critical-soft text-critical-text",
   neutral: "bg-wash-2 text-ink2",
+  violet: "bg-violet-soft text-violet-text",
 };
 export type Tone = keyof typeof TONES;
 
 const DOTS: Record<Tone, string> = {
-  brand: "bg-brand", info: "bg-series", good: "bg-good", warning: "bg-warning", critical: "bg-critical", neutral: "bg-muted",
+  brand: "bg-brand", info: "bg-series", good: "bg-good", warning: "bg-warning", critical: "bg-critical", neutral: "bg-muted", violet: "bg-violet",
 };
 
 /** "+12.4%" pill. `good` says whether up is good (views) or bad (failures). */
@@ -99,7 +100,7 @@ export function Delta({ value, upIsGood = true }: { value: number | null; upIsGo
   const tone: Tone = Math.abs(value) < 0.5 ? "neutral" : up === upIsGood ? "good" : "critical";
   const Icon = up ? ArrowUpRight : ArrowDownRight;
   return (
-    <span className={`inline-flex items-center gap-0.5 rounded-md px-1.5 py-0.5 text-[11px] font-medium tabular-nums ${TONES[tone]}`}>
+    <span className={`inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[11px] font-semibold tabular-nums ${TONES[tone]}`}>
       <Icon aria-hidden className="size-3" />{up ? "+" : ""}{value.toFixed(Math.abs(value) < 10 ? 1 : 0)}%
     </span>
   );
@@ -112,18 +113,18 @@ export function Stat({ label, value, sub, delta, chart, icon: Icon, href }: {
   const body = (
     <>
       <div className="flex items-center justify-between gap-2">
-        <span className="flex items-center gap-1.5 text-[13px] text-ink2">{Icon && <Icon aria-hidden className="size-3.5 text-muted" />}{label}</span>
+        <span className="flex items-center gap-1.5 text-[11.5px] font-semibold uppercase tracking-[0.08em] text-muted">{Icon && <Icon aria-hidden className="size-3.5" />}{label}</span>
         {delta}
       </div>
-      <div className="mt-2 text-[26px] font-semibold leading-none tracking-[-0.02em] md:text-[28px]">{value}</div>
-      {sub && <div className="mt-1.5 text-xs text-muted">{sub}</div>}
+      <div className="mt-3 font-display text-[30px] font-semibold leading-none tracking-[-0.035em] md:text-[34px]">{value}</div>
+      {sub && <div className="mt-2 text-xs leading-relaxed text-muted">{sub}</div>}
       {chart && <div className="mt-3">{chart}</div>}
     </>
   );
-  const cls = "block h-full min-w-0 rounded-xl border border-ring bg-surface p-4 shadow-card transition-colors";
+  const cls = "block h-full min-w-0 rounded-xl border border-ring bg-surface p-4 shadow-card md:p-5";
   return (
     <motion.div variants={rise} className="min-w-0">
-      {href ? <Link href={href} className={`${cls} hover:border-ring-strong`}>{body}</Link> : <div className={cls}>{body}</div>}
+      {href ? <Link href={href} className={`${cls} lift hover:border-ring-strong`}>{body}</Link> : <div className={cls}>{body}</div>}
     </motion.div>
   );
 }
@@ -138,12 +139,12 @@ export function Tile({ label, value, sub, icon }: { label: string; value: React.
 // state is carried by the label; the dot only reinforces it
 const STATUS: Record<VideoStatus, Tone> = {
   planned: "neutral", scripted: "neutral", verified: "neutral", rendered: "neutral", qa_passed: "neutral",
-  queued: "brand", scheduled: "info", published: "good", failed: "critical", rejected: "warning",
+  queued: "violet", scheduled: "info", published: "good", failed: "critical", rejected: "warning",
 };
 
 export function Badge({ tone = "neutral", icon: Icon, children, dot }: { tone?: Tone; icon?: LucideIcon; children: React.ReactNode; dot?: boolean }) {
   return (
-    <span className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-1.5 py-0.5 text-xs font-medium ${TONES[tone]}`}>
+    <span className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-medium ${TONES[tone]}`}>
       {dot && <span aria-hidden className={`size-1.5 rounded-full ${DOTS[tone]}`} />}
       {Icon && <Icon aria-hidden className="size-3.5" />}
       {children}
@@ -154,7 +155,7 @@ export function Badge({ tone = "neutral", icon: Icon, children, dot }: { tone?: 
 /** Outline pill with a coloured dot: quieter than a filled badge, for dense lists. */
 export function StatusBadge({ status }: { status: VideoStatus }) {
   return (
-    <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-ring bg-surface px-1.5 py-0.5 text-xs font-medium text-ink2">
+    <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-ring bg-surface px-2 py-0.5 text-xs font-medium text-ink2">
       <span aria-hidden className={`size-1.5 rounded-full ${DOTS[STATUS[status]]}`} />
       {titleCase(status)}
     </span>
@@ -166,12 +167,12 @@ export function ResultBadge({ ok, okLabel = "Passed", failLabel = "Failed" }: { 
 }
 
 export function Kbd({ children }: { children: React.ReactNode }) {
-  return <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded border border-ring bg-surface-2 px-1 font-sans text-[11px] font-medium text-muted">{children}</kbd>;
+  return <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-ring bg-surface-2 px-1 font-mono text-[10.5px] font-medium text-muted">{children}</kbd>;
 }
 
 /** 9:16 thumbnail. */
 export function Thumb({ src, alt, className = "w-14" }: { src: string; alt: string; className?: string }) {
-  return <img src={src} alt={alt} loading="lazy" className={`aspect-[9/16] shrink-0 rounded-md border border-ring bg-surface-2 object-cover ${className}`} />;
+  return <img src={src} alt={alt} loading="lazy" className={`aspect-[9/16] shrink-0 rounded-lg border border-ring bg-surface-2 object-cover shadow-card ${className}`} />;
 }
 
 // ---------------- controls ----------------
@@ -179,6 +180,7 @@ export function Thumb({ src, alt, className = "w-14" }: { src: string; alt: stri
 const BUTTON_TONES = {
   default: "border-ring bg-surface text-ink shadow-card hover:bg-surface-2",
   primary: "border-transparent bg-primary text-primary-ink shadow-card hover:opacity-90",
+  brand: "border-transparent bg-brand text-brand-ink shadow-card hover:brightness-105",
   danger: "border-ring bg-surface text-critical-text shadow-card hover:bg-critical-soft",
   ghost: "border-transparent text-ink2 hover:bg-wash-2 hover:text-ink",
 };
@@ -191,7 +193,7 @@ type ButtonProps = {
 
 export const buttonClass = (tone: ButtonTone = "default", iconOnly = false, size: "sm" | "md" = "md") =>
   `inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border text-[13px] font-medium transition-[background-color,opacity,transform,border-color] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-40 ${
-    size === "sm" ? (iconOnly ? "size-7" : "h-7 px-2") : iconOnly ? "size-8" : "h-8 px-3"} ${BUTTON_TONES[tone]}`;
+    size === "sm" ? (iconOnly ? "size-7" : "h-7 px-2.5") : iconOnly ? "size-9" : "h-9 px-3.5"} ${BUTTON_TONES[tone]}`;
 
 export function Button({ children, onClick, tone = "default", disabled, title, type = "button", icon: Icon, iconOnly, size = "md" }: ButtonProps) {
   const button = (
@@ -221,11 +223,11 @@ export function Segmented<T extends string>({ value, onChange, options, label }:
 }) {
   return (
     <ToggleGroup.Root type="single" value={value} onValueChange={(v) => v && onChange(v as T)} aria-label={label}
-      className="no-scrollbar inline-flex h-8 max-w-full items-center overflow-x-auto rounded-lg border border-ring bg-surface-2 p-0.5">
+      className="no-scrollbar inline-flex h-9 max-w-full items-center overflow-x-auto rounded-full border border-ring bg-surface-2 p-1">
       {options.map((o) => (
         <ToggleGroup.Item key={o.value} value={o.value}
-          className="relative h-full shrink-0 whitespace-nowrap rounded-md px-2.5 text-[13px] font-medium text-ink2 transition-colors hover:text-ink data-[state=on]:text-ink">
-          {value === o.value && <motion.span layoutId={`seg-${label}`} className="absolute inset-0 rounded-md border border-ring bg-surface shadow-card" transition={{ type: "spring", stiffness: 500, damping: 38 }} />}
+          className="relative h-full shrink-0 whitespace-nowrap rounded-full px-3 text-[13px] font-medium text-ink2 transition-colors hover:text-ink data-[state=on]:text-ink">
+          {value === o.value && <motion.span layoutId={`seg-${label}`} className="absolute inset-0 rounded-full border border-ring bg-surface shadow-card" transition={{ type: "spring", stiffness: 500, damping: 38 }} />}
           <span className="relative flex items-center gap-1.5">{o.label}</span>
         </ToggleGroup.Item>
       ))}
@@ -243,7 +245,7 @@ export function ActionMenu({ items, label = "More actions" }: { items: MenuItem[
         <MoreHorizontal aria-hidden className="size-4" />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content align="end" sideOffset={4} className="z-50 min-w-44 animate-pop rounded-lg border border-ring bg-surface p-1 shadow-lift">
+        <DropdownMenu.Content align="end" sideOffset={4} className="z-50 min-w-48 animate-pop rounded-xl border border-ring bg-surface p-1.5 shadow-lift">
           {items.map((it, i) => it === "separator" ? <DropdownMenu.Separator key={i} className="my-1 h-px bg-line" /> : (
             <DropdownMenu.Item key={it.label} disabled={it.disabled} onSelect={it.onSelect}
               className={`flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5 text-[13px] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-40 data-[highlighted]:bg-wash-2 ${it.danger ? "text-critical-text" : "text-ink"}`}>
@@ -265,7 +267,7 @@ export function Toggle({ checked, onChange, label, disabled }: { checked: boolea
   );
 }
 
-export const fieldClass = "h-8 w-full rounded-lg border border-ring bg-surface px-2.5 text-[13px] shadow-card outline-none transition-colors placeholder:text-muted hover:border-ring-strong focus-visible:border-brand disabled:opacity-40";
+export const fieldClass = "h-9 w-full rounded-lg border border-ring bg-surface px-2.5 text-[13px] shadow-card outline-none transition-colors placeholder:text-muted hover:border-ring-strong focus-visible:border-brand focus-visible:ring-4 focus-visible:ring-brand-soft focus-visible:outline-none disabled:opacity-40";
 
 export function SelectField({ value, onChange, options, label, all }: {
   value: string; onChange: (v: string) => void; options: { value: string; label: string }[]; label: string; all: string;
@@ -278,7 +280,7 @@ export function SelectField({ value, onChange, options, label, all }: {
         <Select.Icon><ChevronDown aria-hidden className="size-3.5 text-muted" /></Select.Icon>
       </Select.Trigger>
       <Select.Portal>
-        <Select.Content position="popper" sideOffset={4} className="z-50 max-h-72 min-w-[var(--radix-select-trigger-width)] animate-pop overflow-hidden rounded-lg border border-ring bg-surface p-1 shadow-lift">
+        <Select.Content position="popper" sideOffset={4} className="z-50 max-h-72 min-w-[var(--radix-select-trigger-width)] animate-pop overflow-hidden rounded-xl border border-ring bg-surface p-1.5 shadow-lift">
           <Select.Viewport>
             {[{ value: "__all", label: all }, ...options].map((o) => (
               <Select.Item key={o.value} value={o.value} className="flex cursor-pointer select-none items-center justify-between gap-3 rounded-md px-2 py-1.5 text-[13px] outline-none data-[highlighted]:bg-wash-2">
@@ -340,13 +342,13 @@ export function ConfirmButton({ label, title, description, confirmLabel, onConfi
         </AlertDialog.Trigger>
       )}
       <AlertDialog.Portal>
-        <AlertDialog.Overlay className="fixed inset-0 z-40 animate-fade bg-black/40 backdrop-blur-[1px]" />
-        <AlertDialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(420px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop rounded-xl border border-ring bg-surface p-5 shadow-lift">
-          <AlertDialog.Title className="text-[15px] font-semibold">{title}</AlertDialog.Title>
+        <AlertDialog.Overlay className="fixed inset-0 z-40 animate-fade bg-black/45 backdrop-blur-sm" />
+        <AlertDialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(440px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 animate-pop rounded-2xl border border-ring bg-surface p-6 shadow-lift">
+          <AlertDialog.Title className="font-display text-lg font-semibold tracking-[-0.01em]">{title}</AlertDialog.Title>
           <AlertDialog.Description className="mt-2 text-sm text-ink2">{description}</AlertDialog.Description>
           <div className="mt-5 flex justify-end gap-2">
             <AlertDialog.Cancel className={buttonClass("default")}>Cancel</AlertDialog.Cancel>
-            <AlertDialog.Action onClick={onConfirm} className="inline-flex h-8 items-center rounded-lg bg-critical px-3 text-[13px] font-medium text-white hover:opacity-90">{confirmLabel}</AlertDialog.Action>
+            <AlertDialog.Action onClick={onConfirm} className="inline-flex h-9 items-center rounded-lg bg-critical px-3.5 text-[13px] font-medium text-white hover:opacity-90">{confirmLabel}</AlertDialog.Action>
           </div>
         </AlertDialog.Content>
       </AlertDialog.Portal>
@@ -359,9 +361,9 @@ export function ConfirmButton({ label, title, description, confirmLabel, onConfi
 export function Loading({ rows = 3 }: { rows?: number }) {
   return (
     <div role="status" aria-label="Loading" className="flex flex-col gap-4">
-      <div className="skeleton h-7 w-44 rounded-md" />
+      <div className="skeleton h-9 w-52 rounded-lg" />
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        {[0, 1, 2, 3].map((i) => <div key={i} className="skeleton h-[104px] rounded-xl" />)}
+        {[0, 1, 2, 3].map((i) => <div key={i} className="skeleton h-[124px] rounded-xl" />)}
       </div>
       {Array.from({ length: rows }, (_, i) => <div key={i} className="skeleton h-32 rounded-xl" />)}
     </div>
@@ -370,7 +372,7 @@ export function Loading({ rows = 3 }: { rows?: number }) {
 
 export function ErrorNote({ error }: { error: unknown }) {
   return (
-    <p role="alert" className="flex items-start gap-2 rounded-lg border border-critical/25 bg-critical-soft p-3 text-sm text-ink">
+    <p role="alert" className="flex items-start gap-2 rounded-xl border border-critical/25 bg-critical-soft p-3.5 text-sm text-ink">
       <CircleAlert aria-hidden className="mt-0.5 size-4 shrink-0 text-critical" />
       {error instanceof Error ? error.message : "Something went wrong"}
     </p>
@@ -379,9 +381,9 @@ export function ErrorNote({ error }: { error: unknown }) {
 
 export function Empty({ children, icon: Icon = Inbox, title }: { children?: React.ReactNode; icon?: LucideIcon; title?: string }) {
   return (
-    <div className="flex flex-col items-center px-4 py-10 text-center">
-      <span className="grid size-10 place-items-center rounded-full border border-ring bg-surface-2"><Icon aria-hidden className="size-4.5 text-muted" /></span>
-      {title && <p className="mt-3 text-sm font-medium">{title}</p>}
+    <div className="flex flex-col items-center px-4 py-12 text-center">
+      <span className="grid size-12 place-items-center rounded-2xl border border-ring bg-surface-2 shadow-card"><Icon aria-hidden className="size-5 text-brand-text" /></span>
+      {title && <p className="mt-4 font-display text-[15px] font-semibold">{title}</p>}
       {children && <p className="mt-1 max-w-sm text-[13px] text-muted">{children}</p>}
     </div>
   );

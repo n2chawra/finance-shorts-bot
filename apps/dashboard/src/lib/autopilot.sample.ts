@@ -27,7 +27,7 @@ function state(): State {
         "Approve to raise the minimum long-video length to 480 s. Studio aims for the new range from its next run.", 6,
         { proposal: { setting: "longLengthMinSec", value: 480, current: 180 } }),
       n("n1", "critical", "watchdog", "YouTube sign-in stopped working", "Google rejected the stored token: invalid_grant. Uploads and stats are stopped.",
-        "1. On your PC, in the project folder: cd workers, then run: npm run auth\n2. Sign in with the Money in 60 Google account and allow access.\n3. Save the new token: gh secret set YT_REFRESH_TOKEN (paste the value it printed).", 2),
+        "1. On your PC, in the project folder: cd workers, then run: npm run auth\n2. Sign in with the channel's Google account and allow access.\n3. Save the new token: gh secret set YT_REFRESH_TOKEN (paste the value it printed).", 2),
       n("n2", "warning", "improver", "A new Claude model could make reviews sharper", "Research found a newer model for routines. Switching it is a routine setting only you can change.",
         "Open claude.ai → Code → Routines → each Finance Shorts routine → Model, and pick the newer model.", 9),
       n("n3", "info", "watchdog", "Uploads are paused (you post by hand)", "The bot uploads nothing while this is on.",

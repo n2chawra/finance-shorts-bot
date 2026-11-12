@@ -7,6 +7,18 @@ Shared components are in `src/components/ui.tsx` (cards, tiles, badges, buttons,
 slider, confirm dialog), `toast.tsx` and `charts.tsx`. Colours are CSS variables in
 `src/app/globals.css`, defined once for light and once for dark.
 
+## Look ("Studio", November 2026 redesign)
+
+- Warm paper base (`--plane`), ink type, one **marigold** accent (`--brand`) for navigation, focus
+  and the logo; emerald for good, violet for queued, so status colours never look like the accent.
+- The sidebar is a dark ink rail (`--rail*`) in both themes; the active page gets a marigold bar.
+- Type: Bricolage Grotesque (`font-display`) for page titles, card headings and big numbers;
+  Geist for text; Geist Mono for countdowns and shortcuts.
+- Corners are larger through the theme radii (`--radius-lg` 10 px, `--radius-xl` 16 px); pills
+  for badges, deltas and segmented controls; link cards lift on hover (`.lift`).
+- The logo is `src/components/brand.tsx` (`LogoMark`, `Wordmark`). The sign-in page is a split
+  screen: brand panel on desktop, form only on phones.
+
 ```powershell
 npm --prefix apps/dashboard install
 npm --prefix apps/dashboard run dev     # http://localhost:3000
