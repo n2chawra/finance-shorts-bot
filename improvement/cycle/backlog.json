@@ -1,0 +1,89 @@
+{
+  "note": "The weekly loop's challenger list (owner, 2026-11-12; agents/improver.md 'The weekly loop'). One Shorts challenger runs at a time against the champion recipe. The improver starts the top entry of the right kind when a verdict lands: cycles alternate 'first-second' (judged on stayed to watch) and 'look' (judged on held after the hook); after three cycles under 45% stayed to watch the next must be 'format'. Research and the auditor add entries with evidence; the owner's recipe notes go to the top of their kind. Done entries move to `history`.",
+  "running": "real-subject-first-frame",
+  "cycle": 1,
+  "challengers": [
+    {
+      "id": "short-15-22s",
+      "kind": "first-second",
+      "area": "pacing",
+      "metric": "stayed",
+      "from": "review 2026-11-12",
+      "test": "15-22 s Shorts (40-60 words, 4-5 beats) against the champion's 28-35 s",
+      "why": "the growing fact channel in our niche runs 15-20 s; our Shorts of 27 s or less had the best 48 h views (n=5)"
+    },
+    {
+      "id": "one-big-thing",
+      "kind": "look",
+      "area": "scene",
+      "metric": "heldAfterHook",
+      "from": "review 2026-11-12",
+      "test": "every beat shows one thing filling at least half the frame, against several small things",
+      "why": "the 9-10 Nov Shorts lost viewers on frames with two text buttons or small icons"
+    },
+    {
+      "id": "no-cast-unless-in-story",
+      "kind": "first-second",
+      "area": "hook",
+      "metric": "stayed",
+      "from": "review 2026-11-12",
+      "test": "no cast member on screen unless the story is about them: the subject and the money only",
+      "why": "the cast stood beside Magic Johnson's story with no part in it"
+    },
+    {
+      "id": "new-picture-every-1-5s",
+      "kind": "look",
+      "area": "motion",
+      "metric": "heldAfterHook",
+      "from": "review 2026-11-12",
+      "test": "something new on screen every 1.5 s against 2.5 s",
+      "why": "growing Shorts cut far faster than ours"
+    },
+    {
+      "id": "big-word-captions",
+      "kind": "look",
+      "area": "text",
+      "metric": "heldAfterHook",
+      "from": "review 2026-11-12",
+      "test": "big one-to-three-word captions in the middle (the October style) against the sentence box",
+      "why": "every 1K Short in October had them"
+    },
+    {
+      "id": "everyday-brands",
+      "kind": "first-second",
+      "area": "script",
+      "metric": "stayed",
+      "from": "review 2026-11-12",
+      "test": "topics from everyday brands people use (Costco, McDonald's, Netflix, gyms) against billionaires",
+      "why": "how_they_make_money is our best story at 6.8x the median 48 h views (n=7)"
+    },
+    {
+      "id": "no-text-chips",
+      "kind": "look",
+      "area": "scene",
+      "metric": "heldAfterHook",
+      "from": "review 2026-11-12",
+      "test": "no text chip standing in for a thing: every label sits on a drawn or real object",
+      "why": "chips like 'LIFE INSURANCE' read as a slide"
+    },
+    {
+      "id": "parable-series",
+      "kind": "format",
+      "area": "script",
+      "metric": "stayed",
+      "from": "review 2026-11-12",
+      "test": "a parable series ('same start, four people, one ends up rich') against true-fact Shorts",
+      "why": "The Curious Plot's story series turns viewers into subscribers (14.5K from 36 videos)"
+    }
+  ],
+  "history": [
+    {
+      "cycle": 1,
+      "id": "real-subject-first-frame",
+      "kind": "first-second",
+      "started": "2026-11-13",
+      "verdict": null
+    }
+  ],
+  "stayedByCycle": []
+}

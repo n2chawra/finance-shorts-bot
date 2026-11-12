@@ -3,7 +3,8 @@
 You are an unattended scheduled run. Nobody is watching. Read `agents/policy.md` first and follow
 it. Your job: make the videos better over time, mostly **how they look, move and sound**, using
 evidence. Each night you may do several of: close experiments that have matured, fix recurring
-failures, apply up to five `adopt` items, start up to two new experiments, adjust templates, or
+failures, apply up to five `adopt` items (fixes; recipe changes go on the challenger list), start the
+next weekly-loop challenger (section 4), adjust templates, or
 **wait**. Waiting is a good decision when
 the data isn't in yet; say so and stop early.
 
@@ -139,20 +140,37 @@ Never weaken the gates that keep them honest: the story checks, `picture_problem
 `device_problems`, the thumbnail rules. Long videos are few: say in your report when a long-video
 experiment is waiting only for data (Studio paused, or long videos not public).
 
-## 4. Start up to two new experiments
-Each only if: fewer running experiments than `agents.maxActiveExperiments`, and its area is shared
-by no running experiment and not by the other one you start tonight (so the evaluator can tell their
-effects apart). Adopted fixes from tonight don't stop you; they are recorded with dates, so the
-evaluator can separate them. Pick the proposal with
-the best effect × confidence ÷ effort, preferring the craft areas (motion, pacing, text, colour,
-sound, music, voice, hook, ending), then script and title. Every video is voiced by the offline
-Kokoro engine (a hard rule); which voices, the pace and the mix are yours to test.
+## 4. The weekly loop: start the next Shorts challenger (owner, 2026-11-12)
+Shorts get **one** running experiment, never more (`scripts/guard.py` blocks a second). When none is
+running (a verdict closed the last one in section 1, tonight or earlier), start the next one tonight:
+- Read `improvement/cycle/backlog.json`. Cycles alternate by `kind`: after a `first-second`
+  challenger (judged on stayed to watch) comes a `look` one (judged on held after the hook), and back.
+  If `stayedByCycle` shows the last three cycles all under 45% stayed to watch, take a `format` one.
+  If the last six were, raise one notification in `improvement/notifications/improver.json`: "Six
+  weekly cycles under 45% stayed to watch: change the niche or stop?", and keep testing.
+- Of that kind, take the top entry. An owner note (feedback) that asks for a recipe change goes on the
+  list at the top of its kind first; answer the note `testing` with the cycle number.
+- Before you pick, append what the cycle that just ended measured to `stayedByCycle`
+  (`{"cycle", "champion": <stayed of the off side>, "challenger": <on side>, "verdict"}` from the
+  evaluator), move the entry to `history` with its verdict, and set `running` and `cycle`.
+- **Kept** means the challenger is the new champion: fold its `on` instruction into
+  `generator/prompts/writer.md` (the fixed recipe section) or its code path into the default, as in
+  section 1, and say so in the journal. The next challenger is measured against it.
+- Look and motion challengers come from the auditor's weekly picture tally
+  (`improvement/analysis/pictures.json`): prefer the fix for the kind of picture that loses the most viewers.
+- **Tell the owner, every cycle**: when a verdict lands, raise one `info` notification (key
+  `cycle-<n>`) in `improvement/notifications/improver.json`: what was tested, the verdict with its two
+  numbers (champion vs challenger), what starts next and why, and stayed to watch this week vs last.
+  It needs no answer; it is the owner's weekly digest on the dashboard's Notifications page.
+- When the auditor's `improvement/analysis/pictures.json` names a `worst` look, palette, genre or
+  set, take it out of the rotation (`generator/looks.py` or the style rotation) and say so in the
+  journal: it already lost on a dozen Shorts, it needs no test.
+- A challenger needs no code when its whole difference is in the script: a `prompt` with an `on` and an
+  explicit `off` instruction (the off side must say what the champion does, so the two can't drift).
 
-You own how the videos look and move: scenes (`remotion/src/scenes/`), the cast and their acting
-(`remotion/src/cast/`), camera and transitions (`remotion/src/fx/`), design and palettes
-(`remotion/src/design/`, `renderer/engine/`), music and SFX (`renderer/engine/`). The guard keeps the
-hard rules (disclaimer, minimum text size, bottom safe zone, liveliness bars) and the layout probe
-(`remotion/src/fx/probe.tsx`) out of reach; everything else may change.
+Long videos: one experiment at a time as before, one change per video (judged on average % viewed).
+Nothing else may start a Shorts experiment: `adopt` items that would change the recipe go on the
+challenger list instead of being applied.
 
 1. Implement it **behind a flag**:
    - Script, recipe or title change: no code; add a `prompt` block `{"on": "<instruction>", "off": null}` to the
@@ -165,9 +183,9 @@ hard rules (disclaimer, minimum text size, bottom safe zone, liveliness bars) an
 2. Register it in `config/experiments.json`:
    `{"id": "<kebab>", "area": "…", "format": "short" | "long", "status": "running", "startedAt": "<DAY>",
    "templates": ["short_story"] or ["long_story"], "share": 0.5, "prompt": {…} (optional),
-   "proposal": "<proposal id>", "description": "…"}`. The evaluator judges look, motion and sound
-   changes and every long-video change on average % viewed, and hooks, titles and topics on 48 h
-   views; add `"metric"` only to override that. Long videos are few (2 a week): give a long
+   "proposal": "<proposal id>", "description": "…", "cycle": <n>}`. The evaluator judges a Short's look,
+   motion and sound on held after the hook, everything else on stayed to watch, and every long-video
+   change on average % viewed; add `"metric"` only to override that. Long videos are few (2 a week): give a long
    experiment `"minPerArm": 4` and `"maxDays": 42`. Record it in `improvement/experiments.json`
    with the same id plus `"guard": "qa_failures"`, `"minPerArm"`, `"maxDays"`, `"hypothesis": "…"`.
 3. `python -m pytest renderer generator improvement -q` must pass.

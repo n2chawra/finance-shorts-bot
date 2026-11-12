@@ -66,6 +66,18 @@ Video runs never build or change templates: that is the improver agent's job (`a
 
 Follow `generator/prompts/planner.md`. Use the id from `next_id` for the whole run.
 
+## 2b. Three openings, one picked by a fresh reviewer (Shorts; owner, 2026-11-12)
+
+Most viewers decide in the first second. Before writing the script, draft **three different
+openings** for the plan's fact and write them to `videos/<id>/openings.json`:
+`{"options": [{"key": "A", "title": "...", "first_line": "...", "first_frame": "..."}, ...]}`: each a
+title, the hook's first spoken sentence and one sentence describing the first frame, each following
+the writer's fixed recipe, and different from each other in how they open (lead with the figure,
+the name, or the contrast). Then spawn one subagent with fresh context and give it only the video
+id and the instruction to read `generator/prompts/hook_judge.md` and follow it. Use the opening it
+picks: its title goes into the plan (`plan.title`), its first line and first frame into the hook
+beat. One round only; never argue with the pick.
+
 ## 3. Write (you)
 
 First read `generator/prompts/checklist.md` and run `python -m generator.run failures --format short`:

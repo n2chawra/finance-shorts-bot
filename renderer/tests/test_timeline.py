@@ -265,10 +265,11 @@ def test_integrated_lufs_matches_bs1770() -> None:
     assert integrated_lufs(np.zeros((SR, 2))) == -70.0
 
 
-def test_october_voice_pace_only_on_its_arm():
+def test_every_short_speaks_at_the_october_pace():
+    """Adopted 2026-11-12: no longer an experiment arm."""
     from renderer.timeline.build import OCTOBER_PACE, voice_speed
     assert voice_speed({"experiments": {OCTOBER_PACE: "on"}}, "short", 1.2) == 1.4
-    assert abs(voice_speed({"experiments": {OCTOBER_PACE: "off"}}, "short", 1.2) - 1.2) < 1e-9
-    assert abs(voice_speed({}, "short", 1.2) - 1.2) < 1e-9
+    assert voice_speed({"experiments": {OCTOBER_PACE: "off"}}, "short", 1.2) == 1.4
+    assert voice_speed({}, "short", 1.2) == 1.4
     assert abs(voice_speed({"experiments": {OCTOBER_PACE: "on"}}, "long", 1.25) - 1.25) < 1e-9   # Shorts only
     assert abs(voice_speed({"speed": 1.0, "experiments": {OCTOBER_PACE: "on"}}, "short", 1.2) - 1.2) < 1e-9

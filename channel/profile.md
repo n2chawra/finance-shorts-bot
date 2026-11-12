@@ -53,7 +53,7 @@ Priya, Sharma Uncle, Sikka) stay: they are the brand, and they act the skits.
 - **India stories:** SIPs and mutual funds, FDs, PPF, EPF, NPS, Indian tax regimes, RBI and SEBI news.
 - **Never:** single stocks, tips, market predictions, crypto trading, options or F&O strategies,
   guaranteed returns, anything that reads as investment advice.
-- **Formats:** Shorts (28–35 s: one surprising true money fact about a real, named person or business, acted by the cast when they are part of it; fixed run from 2026-11-11) and long videos (7–10 min, list and "explained"
+- **Formats:** Shorts (28–35 s: one surprising true money fact about a real, named person or business, acted by the cast when they are part of it; the champion recipe of the weekly loop since 2026-11-12) and long videos (3–4 min since 2026-11-12, list and "explained"
   formats) with the recurring cast: Rohan makes the mistake (the "poor" move), Priya explains,
   Sharma Uncle is the rich one who has seen it all, Sikka cheers.
 

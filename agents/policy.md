@@ -8,26 +8,27 @@ blocks the merge if you break them; the rest is on you.
 come from and which rules of the field apply. Your own instructions describe the machine; the
 profile describes the channel, and where they differ about the channel, the profile wins.
 
-## The fixed run (owner review, 2026-11-11; until `config/arms.json` → `frozen.until`)
-For 14 days the Shorts are made to one recipe (CLAUDE.md, first hard constraint) and judged once, at
-the end, on stayed to watch (engaged views ÷ views). Until the freeze ends, every agent:
-- **changes no Shorts default and starts no Shorts experiment**: not the hook, length, pace, voice,
-  captions, title rules, formats, shapes or checks. Propose instead (a proposal or a notification),
-  dated for after the freeze;
-- **improver**: fixes only: the owner's open feedback notes, bugs, recurring failures, props and
-  pictures that are wrong or generic (a placeholder head, a text chip standing in for a thing). No
-  `adopt` items that change the recipe, no new experiments, no closing of the paused ones;
-- **research**: nightly, as before. Feed topics that fit the recipe: one surprising true money fact about
-  a real, named person or business, with its figures as sourced `facts` and a title that states the
-  fact with the name and the number. No format, style or pace proposals for adoption before the freeze ends;
-- **auditor**: nightly, as before. Data and code bugs, and the weekly analysis led by stayed to watch per Short;
-- **dashboard**: weekly (Sundays): the bug hunt and smoke tests only, no UI-trend work;
-- **scout, studio, monthly**: off;
-- **the owner's feedback during the freeze**: a note about something wrong in a video (a wrong or generic
-  picture, a figure, a sound, a caption, a bug) is fixed as always. A note that asks to change the recipe
-  itself (length, hook, pace, voice, format, style) is answered in `improvement/feedback-acks.json` as
-  "held for the 26 Nov review" and changes nothing until then.
-Never judge a Short, an option or the recipe on views alone, and never on fewer than 20 videos a side.
+## The weekly loop (owner, 2026-11-12)
+The Shorts improve themselves one tested change at a time, with no owner review in between.
+- **One champion, one challenger.** The champion is the current recipe (CLAUDE.md, first hard
+  constraint, and the writer's contract). At most one Shorts experiment runs (`scripts/guard.py`
+  blocks a second): half the Shorts get the challenger. Long videos have their own, separate test.
+- **Code judges** (`python -m improvement.evaluate`): Shorts on **stayed to watch** pooled per side
+  (engaged views ÷ views) for anything about the first second, the title, the topic or the story;
+  on **held after the hook** (end hold ÷ hook hold) for the look, motion and sound. Kept at +5 points
+  with 80% confidence, reverted at −5, from 8 Shorts a side, within 7 days (extended once to 14).
+  Never judge a Short or an option on views alone.
+- **The improver applies every verdict the night it lands and starts the next challenger** from
+  `improvement/cycle/backlog.json` (agents/improver.md "The weekly loop"). No approval step.
+- **Everyone feeds the list.** Research adds first-second and topic challengers; the auditor adds look
+  challengers from its weekly picture tally; an owner note that asks to change the recipe goes to the
+  top of its kind. Nobody changes a Shorts default outside the loop: not the hook, length, pace, voice,
+  captions, title rules, formats, shapes or checks. Fixes (a wrong picture, a bug, a failing check) are
+  not recipe changes and are made as always.
+- **Escalation.** Three cycles in a row under 45% stayed to watch: the next challenger is a `format`
+  one. Six: the improver raises one owner notification (change niche or stop) and keeps testing.
+- **Schedules:** research, auditor and improver nightly; the dashboard agent weekly (Sundays, the bug
+  hunt and smoke tests only); scout and studio for one long video a week; monthly off.
 
 ## Hard rules (from CLAUDE.md; never change, never propose changing)
 - **Voiceover only from the offline engine in `renderer/engine/voice.py`** (Kokoro, Apache-2.0),

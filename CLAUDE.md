@@ -12,30 +12,36 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 
 ## Hard constraints
 
-- **The fixed run (owner review, 2026-11-11, `docs/plans/2026-11-11-review.md`; until 2026-11-26).**
-  After a month the channel had 14 subscribers; no Short had passed about 1,200 views, and YouTube
-  Studio showed that 55–76% of the people shown a Short swiped away (the October "hits" included).
-  Nothing had run longer than five days and the tests were too small to trust. So for 14 days:
-  **one recipe, no default changes, judged once at the end on "stayed to watch"** (engaged views ÷
-  views, which matches Studio's figure within two points; `metrics/analytics.json`), not on views.
+- **The weekly loop (owner, 2026-11-12; replaces the 11 Nov 14-day freeze).** After a month the channel
+  had 14 subscribers; no Short had passed about 1,200 views, and YouTube Studio showed that 55–76% of
+  the people shown a Short swiped away. The Shorts now improve themselves one tested change a week,
+  with no owner review (`agents/policy.md` "The weekly loop", `agents/improver.md` section 4):
+  - **One champion recipe, one challenger.** At most one Shorts experiment runs (`scripts/guard.py`);
+    half the Shorts get it. The list of challengers is `improvement/cycle/backlog.json` (research, the
+    auditor and the owner's recipe notes feed it). Cycles alternate a first-second test and a look test.
+  - **Judged by code** (`improvement/evaluate.py`): stayed to watch pooled per side (engaged views ÷
+    views) for the first second, title, topic and story; held after the hook (end hold ÷ hook hold)
+    for the look, motion and sound. Kept at +5 points with 80% confidence, reverted at −5, from 8
+    Shorts a side within 7 days (extended once). The improver applies the verdict, folds a kept one
+    into the recipe and starts the next the same night, and posts a digest notification.
+  - **The animation is read from where viewers leave**: the auditor's weekly tally ties each drop to
+    the picture on screen (`improvement/analysis/pictures.json`), retires the worst look or palette,
+    queues a look challenger for the worst kind of picture, and names our 3 best Shorts as the bar the
+    writer and QA work to.
+  - **Escalation**: three cycles under 45% stayed to watch, the next test is a format change; six,
+    one owner notification (change niche or stop).
+  - **The champion recipe**: one surprising true money fact about a real, named person or business;
+    the title and the hook's first sentence state it with the name and the figure (no "You think X?",
+    no "Watch this"; `generator/story.py` `hook_problems`); three openings drafted and one picked by a
+    fresh reviewer (`generator/prompts/hook_judge.md`); 28–35 s; the cast act a skit only when in the
+    story; one narrator (`SHORTS_NARRATOR`), the voice at 1.4; shot/build beats.
+  - The variant system stays off (`config/arms.json` → `frozen`). Style checks are notes
+    (`renderer/advice.py`). Captions end 340 px above a Short's bottom edge; one upload category; no
+    country tag on global videos.
+  - **Settings (2026-11-12)**: 3 Shorts a day at 07:07, 12:37 and 19:07 IST; one long video a week,
+    3–4 minutes (180–240 s), the full story of a recent Short that held viewers best; research,
+    auditor and improver nightly, the dashboard agent Sundays, scout and studio on, monthly off.
   Where a bullet below says otherwise, this one wins.
-  - One surprising true money fact about a real, named person or business per Short; the title and
-    the hook's first sentence state it with the name and the figure. No "You think X?" hook, no
-    "Watch this" (`generator/story.py` `hook_problems`). The first frame shows the real subject.
-  - 28–35 s, the cast act a skit when they are part of the story, one narrator voice for every Short
-    (`SHORTS_NARRATOR` in `generator/run.py`), the voice at the October pace, shot/build beats.
-  - The variant system is frozen (`config/arms.json` → `frozen`; `improvement/arms.py`) and Shorts
-    A/B tests are paused (`config/experiments.json`). Agents start no Shorts experiment and change no
-    Shorts default until the freeze ends. After it: a default changes only on 20+ videos per side or
-    a 3× difference.
-  - Style checks are **notes**, not failures (`renderer/advice.py`): numbers, facts, layout, length,
-    the disclaimer, liveliness and uniqueness still fail a video; the rest advise. A video should
-    take about ten steps.
-  - Captions end 340 px above the bottom edge of a Short (YouTube's own buttons cover what is lower);
-    one upload category; no country tag on global videos.
-  - Settings and schedules (set 2026-11-11): 2 Shorts a day at 12:37 and 19:07 IST, long videos off
-    (scout, studio and monthly off), research, auditor and improver nightly, the dashboard agent
-    weekly. The owner's feedback goes on: fixes are applied, recipe changes are held for the review.
 - **Voiceover only from the offline voice engine** (`renderer/engine/voice.py`, Kokoro, Apache-2.0;
   installed by `scripts/setup-voice.sh`, never committed). One Indian-English and five American
   voices; every Short has the same narrator since 2026-11-11 (long videos rotate); numbers are spoken as words.

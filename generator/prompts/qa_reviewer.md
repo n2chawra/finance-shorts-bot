@@ -41,6 +41,10 @@ own render checks it. You are checking what code cannot see.
    could not name; and a first sentence that is a question about what the viewer thinks, a tease
    ("Watch this.") or a line that keeps the name back. A text chip standing in for a real thing
    ("LIFE INSURANCE" in a box) anywhere in the video is a reject too: show the thing.
+6b. **Weaker than our best** (Shorts; the weekly loop): open the contact sheets of the Shorts in
+   `improvement/analysis/pictures.json` → `reference` (our own Shorts that held viewers best). Reject
+   `[scene]` a video whose frames are clearly emptier, smaller or harder to read than theirs, naming
+   the stills.
 7. **No disclaimer:** the last frame does not show "Illustrative only. Not financial advice." (a
    Short shows it as a small line over its last moments; a long video on its end card).
 7b. **Announced structure** (Shorts), from the script: reject `[script]` level chips, "three

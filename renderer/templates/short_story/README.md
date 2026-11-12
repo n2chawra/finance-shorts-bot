@@ -19,7 +19,7 @@ a beat or two, never more. Reference: [`examples/short_story_shot.json`](../../.
 - `"format": "short"`, `"template": "short_story"`.
 - **Pace:** the picture runs at tempo 1.2 and the voice at the October pace (about 225 spoken words a
   minute). The length is the plan's `arms.length` band: **28-35 s, about 85-115 words in 6-8 beats**
-  of 3-5 s during the fixed run (owner review, 2026-11-11; the fixed recipe in
+  of 3-5 s in the champion recipe (the weekly loop since 2026-11-12; the champion recipe in
   `generator/prompts/writer.md` comes first wherever this file says otherwise). One fact, one
   surprise, one punchline. No `chapter` beats.
 - **The first second is the hook.** The first beat's opening lines (`"at": "start"`) are on screen

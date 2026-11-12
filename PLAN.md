@@ -426,5 +426,10 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
 - [x] Routines (2026-11-11): research 22:17, auditor 22:02 and improver 22:33 IST nightly (improver: fixes
   only, `agents/policy.md`), the dashboard agent Sundays 23:00 IST; scout and studio stay paused
 - [x] New banner uploaded (`assets/channel/banner-global-v2.png`)
-- [ ] 2026-11-26: review the fixed run on stayed to watch (a one-time routine writes
-  `improvement/analysis/fixed-run-2026-11.md` that morning), then decide what the variant system resumes with
+- 2026-11-12: **The weekly loop replaces the 14-day freeze** (owner: the automation must judge and
+  improve itself, weekly, without reviews). One Shorts challenger at a time judged by code on pooled
+  stayed to watch or held after the hook; the improver applies verdicts and starts the next from
+  `improvement/cycle/backlog.json`; the auditor's weekly animation tally; three openings per Short with
+  a fresh judge; long videos back at 3–4 minutes; 3 Shorts a day; the October voice pace adopted.
+  Cycle 1 (from 13 Nov): the real person's photo or the company's logo in the first frame.
+  The 26 Nov review routine is disabled.

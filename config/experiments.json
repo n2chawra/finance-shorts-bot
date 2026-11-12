@@ -19,7 +19,7 @@
       "id": "hook-voice-matches-frame",
       "area": "hook",
       "format": "short",
-      "status": "paused",
+      "status": "abandoned",
       "startedAt": "2026-10-20",
       "templates": [
         "short_story"
@@ -34,7 +34,8 @@
       "extended": true,
       "maxDays": 28,
       "pausedAt": "2026-11-11",
-      "pausedWhy": "Owner review 2026-11-11: one fixed recipe for 14 days (config/arms.json `frozen`); no Shorts A/B tests until 2026-11-26."
+      "pausedWhy": "Closed when the weekly loop started (owner, 2026-11-12): one Shorts test at a time, judged on stayed to watch. Back on the challenger list if research ranks it.",
+      "abandonedAt": "2026-11-12"
     },
     {
       "id": "title-names-the-moment",
@@ -137,7 +138,7 @@
       "id": "ending-beats-act-and-vary",
       "area": "pacing",
       "format": "short",
-      "status": "paused",
+      "status": "abandoned",
       "startedAt": "2026-11-03",
       "templates": [
         "short_story"
@@ -152,7 +153,8 @@
       "extended": true,
       "maxDays": 21,
       "pausedAt": "2026-11-11",
-      "pausedWhy": "Owner review 2026-11-11: one fixed recipe for 14 days (config/arms.json `frozen`); no Shorts A/B tests until 2026-11-26."
+      "pausedWhy": "Closed when the weekly loop started (owner, 2026-11-12): one Shorts test at a time, judged on stayed to watch. Back on the challenger list if research ranks it.",
+      "abandonedAt": "2026-11-12"
     },
     {
       "id": "you-in-the-core-story",
@@ -183,7 +185,7 @@
       "id": "october-voice-pace",
       "area": "voice",
       "format": "short",
-      "status": "running",
+      "status": "adopted",
       "startedAt": "2026-11-11",
       "templates": [
         "short_story"
@@ -196,7 +198,27 @@
       "proposal": "shorts-voice-back-to-october-pace",
       "metric": "views48h",
       "description": "Shorts: the voice at the October pace (speed x tempo 1.4, ~225 wpm) with 80-100 words, picture tempo unchanged",
-      "note": "Owner review 2026-11-11: every Short gets the October pace during the fixed run (share 1.0, so nothing to compare until 2026-11-26)."
+      "note": "Adopted into the weekly loop's first champion (owner, 2026-11-12): every Short speaks at 1.4 (renderer/timeline/build.py voice_speed).",
+      "adoptedAt": "2026-11-12"
+    },
+    {
+      "id": "real-subject-first-frame",
+      "area": "hook",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-13",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "metric": "stayed",
+      "cycle": 1,
+      "prompt": {
+        "on": "First frame for this Short (weekly loop, cycle 1, on): the hook beat shows the real subject itself: the famous person as a cut-out photo bobblehead (`\"who\": \"photo:<name>\"`) or the company's logo as a die-cut sticker (`\"prop\": \"photo:<name>\"`), big, with its name as a label and the hook figure beside it, from frame 0. Fetch it with `python -m generator.images fetch` (writer.md, real photos). If no freely licensed file exists, say so in the report and draw the subject instead.",
+        "off": "First frame for this Short (weekly loop, cycle 1, off): no real photo or logo in the hook beat; draw the subject (its product, building or a cast stand-in labelled with its name), big, with the hook figure beside it. Real photos may still appear later in the video."
+      },
+      "proposal": "owner-review-2026-11-12",
+      "description": "Shorts: the real person's photo or the company's logo in the first frame, against a drawn subject (judged on stayed to watch)"
     }
   ]
 }

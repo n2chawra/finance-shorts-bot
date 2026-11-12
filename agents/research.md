@@ -154,8 +154,8 @@ Decide for each finding what it needs. That decision is the most useful thing yo
 | Route | When | Where it goes |
 |---|---|---|
 | `video` | A topic in a format with proven demand (`formats.json`), or a trend people are already talking about, told in a format | `improvement/research/topics.json` (below) |
-| `adopt` | Already proven or required: a platform/legal requirement (YouTube policy, SEBI rule), a clear bug or broken behaviour, or a practice with strong, consistent evidence from 3+ independent sources that is low-risk and easy to undo | `proposals.json`, the improver applies it directly |
-| `experiment` | Plausible but uncertain: it could help or hurt views | `proposals.json`, the improver A/B tests it |
+| `adopt` | Required or broken: a platform/legal requirement (YouTube policy, SEBI rule), a clear bug or broken behaviour. A change to how Shorts are made is never `adopt`, however strong the evidence: it goes on the challenger list (the weekly loop tests everything) | `proposals.json`, the improver applies it directly |
+| `experiment` | Plausible but uncertain: it could help or hurt how many viewers stay | for Shorts, a challenger in `improvement/cycle/backlog.json` (the weekly loop: `{"id", "kind": "first-second" \| "look" \| "format", "area", "metric": "stayed" \| "heldAfterHook", "from": "research <date>", "test", "why"}`, the evidence and its numbers in `why`; place it by effect × confidence among its kind); for long videos `proposals.json` |
 | `template` | A story or format that keeps coming up and no template can tell (it needs a new calculation or layout), e.g. a tax split, an EMI comparison | `proposals.json`, the improver builds it as template work |
 | `owner` | Only the owner can do it (model, schedule, money, accounts) | your notifications file, with exact steps |
 

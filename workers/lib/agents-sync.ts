@@ -213,6 +213,13 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
       views48hLive: viewsAt48h(snaps.filter((s) => s.uploadId === u.id), u.publishAt),
       // viewers still watching at 3 s (Short) or 30 s (long): the hook's own score (workers/lib/retention.ts)
       hookHold: u.hookHold ?? null,
+      // the weekly loop (2026-11-12): Analytics views and engaged views (did not swipe away), so improvement/evaluate.py
+      // can pool "stayed to watch" across a test's Shorts; and the share of viewers still there at 3 s who reach the end
+      // ("held after the hook"), the number that judges the look and the story after the first second
+      analyticsViews: totalViews, engagedViews: u.stats.reduce((a, s) => a + s.engagedViews, 0),
+      stayed: totalViews > 0 ? Math.round(u.stats.reduce((a, s) => a + s.engagedViews, 0) / totalViews * 1000) / 1000 : null,
+      endHold: endHoldOf(u.retention),
+      heldAfterHook: heldAfterHook(u.hookHold, endHoldOf(u.retention)),
       // a Test & Compare of three thumbnails: the angle of each, and the one YouTube picked (owner logs it)
       thumbAngles: (style.thumbs ?? []).map((t) => t.angle),
       thumbWinner: style.thumbTest?.winner ? (style.thumbs ?? []).find((t) => t.file === style.thumbTest!.winner)?.angle ?? null : null,
@@ -252,6 +259,18 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
 }
 
 type Curve = [number, number][];
+
+/** The last point of a retention curve: the share of viewers still there at the end (above 1 when people rewatch). */
+export function endHoldOf(retention: unknown): number | null {
+  return Array.isArray(retention) && retention.length ? (retention as Curve).at(-1)![1] : null;
+}
+
+/** Of the viewers still watching after the hook, the share who reach the end: the end hold over the hook hold,
+ * capped at 1.5 (loops). Null until YouTube draws a curve (it needs a few dozen views). */
+export function heldAfterHook(hookHold: number | null | undefined, endHold: number | null): number | null {
+  if (hookHold == null || endHold == null || hookHold <= 0) return null;
+  return Math.round(Math.min(1.5, endHold / hookHold) * 1000) / 1000;
+}
 
 /** The public view count 48 hours after publishing: the first snapshot 48–51 h after it, else a straight line
  * between the snapshots either side of 48 h when they are at most 12 h apart (null until then). The "hourly"
@@ -294,7 +313,7 @@ export async function analyticsExport(prisma: PrismaClient, now = new Date()) {
       watchHours: Math.round((sum(u.stats.map((s) => s.watchMinutes)) / 60) * 10) / 10, shares: sum(u.stats.map((s) => s.shares)),
       subsGained: sum(u.stats.map((s) => s.subsGained)), subsLost: sum(u.stats.map((s) => s.subsLost)),
       impressions: imp || null, ctr: imp ? Math.round((sum(u.stats.map((s) => (s.impressions ?? 0) * (s.ctr ?? 0))) / imp) * 10000) / 10000 : null,
-      hookHold: u.hookHold, endHold: Array.isArray(u.retention) && u.retention.length ? (u.retention as Curve).at(-1)![1] : null,
+      hookHold: u.hookHold, endHold: endHoldOf(u.retention),
       vsSimilarLength: Array.isArray(u.relRetention) && u.relRetention.length ? Math.round(((u.relRetention as Curve).reduce((a, p) => a + p[1], 0) / u.relRetention.length) * 100) / 100 : null,
       drops: u.drops ?? [],
       traffic: top(scope, "traffic", 6), countries: top(scope, "country", 5), searches: top(scope, "search", 8), devices: top(scope, "device", 3), subscribed: top(scope, "subscribed", 2),

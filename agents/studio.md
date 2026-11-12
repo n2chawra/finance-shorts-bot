@@ -52,11 +52,11 @@ Write `videos/<id>/plan.json`, following `generator/prompts/planner.md` for the 
 - `story`: the topic's long format (`formats` in `state`: `list_explained`, `once_you_understand`,
   `which_one_are_you`, `how_they_make_money`, `rich_vs_poor`) and `demand`: the topic's reference
   video `{title, views, url}`. `check-plan` fails without both (owner reset, 2026-10-21).
-- **The topic expands a winning Short** (owner, 2026-11-04): it must carry `from_short` (one of our
-  Shorts with 1,000+ views in the last 30 days). If the feed has none, pick that Short yourself from
+- **The topic expands a winning Short** (owner, 2026-11-12): it must carry `from_short` (one of our
+  Shorts of the last 30 days in the top third by stayed to watch, with 100+ views). If the feed has none, pick that Short yourself from
   `metrics/videos.json`. The first 30 s restate that Short's hook and promise the full answer; the
   description's first line links it ("The 30-second version: https://youtube.com/shorts/<its YouTube id>").
-  5–6 minutes (`longLengthMinSec`–`longLengthMaxSec`). After shipping, raise an owner notification:
+  3–4 minutes (`longLengthMinSec`–`longLengthMaxSec`, 180–240 s since 2026-11-12). After shipping, raise an owner notification:
   "In YouTube Studio open the Short <title> → Related video → pick <this long video>" (the API can't set it).
 - `title`: phrased as people search the question the Short raised ("How do billionaires avoid
   taxes?"), else a big promise someone would click, in the shape of the reference video's ("Every money
@@ -92,7 +92,7 @@ A long video is a **story with the recurring cast**, told in beats. Start from t
 the viewer *see* happen?
 - **Length and pace.** Long videos play at tempo 1.25, about **180 spoken words a minute** (1.5 and ~215 until the
   owner found it too fast, 2026-11-04). Aim for the setting `longLengthMinSec`–`longLengthMaxSec`
-  (300–400 s: **900–1,200 words across 60–85 beats**) (a beat is one line and one picture,
+  (180–240 s: **540–720 words across 36–50 beats**) (a beat is one line and one picture,
   3–8 s). Add a beat that *does* something, never stretch one.
 - **Shape (the format's list).** A 30-second hook that promises every item and teases the worst one.
   Then one `chapter` per item (6–9), each a mini story with the cast, one or two computed figures
@@ -164,7 +164,7 @@ first long video was rendered three times, twice for problems the stills already
    ```
    nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
    ```
-   **This takes 30–60 minutes** for 5–6 min at the shot system's detail, and a command may only run 10, so start it in the background like
+   **This takes 20–40 minutes** for 3–4 min at the shot system's detail, and a command may only run 10, so start it in the background like
    this and check `tail -3 /tmp/render-<id>.log` every few minutes. If it is cut off, run the same
    command again: finished 40-second chunks are kept and it carries on. It must end with `ok`. A
    `FAIL:` here is the motion gate (a beat with no visible movement): fix that beat and render

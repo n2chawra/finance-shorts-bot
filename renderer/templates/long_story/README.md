@@ -1,6 +1,6 @@
 # long_story — long-form videos on Remotion
 
-A long video (the settings' length, 300–400 s since 2026-11-04, the full story of one of our Shorts with 1,000+ views; 1920×1080) told as a story by the recurring cast, drawn by Remotion from a
+A long video (the settings' length, 180–240 s since 2026-11-12, the full story of one of our Shorts that held viewers best; 1920×1080) told as a story by the recurring cast, drawn by Remotion from a
 timeline Python builds. Example: [`examples/long_story.json`](../../../examples/long_story.json).
 
 ```
@@ -241,8 +241,8 @@ Long videos play at **tempo 1.25** (`TEMPOS` in `renderer/timeline/build.py`; 1.
 animation, transition and camera move runs 1.25× faster with it, like watching at that playback
 speed. Write on the story clock: `min_sec` and `{"sec": …}` events are story seconds.
 
-At this pace narration runs about **180 words a minute**. A 300–400 s video needs roughly
-**900–1,200 words** across 60–85 beats (the range is `longLengthMinSec`–`longLengthMaxSec` in `config/settings.json`).
+At this pace narration runs about **180 words a minute**. A 180–240 s video needs roughly
+**540–720 words** across 36–50 beats (the range is `longLengthMinSec`–`longLengthMaxSec` in `config/settings.json`).
 
 **Shape (owner reset, 2026-10-21):** the plan's `story` is a long format from
 `improvement/research/formats.json` (`list_explained`, `once_you_understand`, `which_one_are_you`,

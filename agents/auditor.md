@@ -108,6 +108,23 @@ and `channelDays`) and `metrics/videos.json` (48 h views, % viewed, story and st
   (story format, hook style, voice, slot, length) with at least 3 videos each; `audience` is countries,
   age and gender, devices, subscribers; exactly 3 recommendations, each tied to a number.
 - `tab` is where the number is on the page: `overview`, `reach`, `engagement`, `audience`, `works`.
+- **The animation tally (the weekly loop, owner 2026-11-12), each Sunday or when missing:** viewers never
+  say they dislike the look, so read it from where they leave. For every Short of the last 21 days with
+  `drops` and `heldAfterHook` in `metrics/videos.json`/`analytics.json`: open its `videos/<id>/script.json`
+  and `timeline.json`, and for each drop note what was on screen in that beat (scene type, how many
+  things, cast on screen or not, a text card or a drawn or real object, camera size, the look and
+  palette from the style). Write `improvement/analysis/pictures.json`
+  `{"writtenAt", "lossByPicture": [{"kind", "drops", "shorts", "avgDrop"}], "options": [{"by": "look" |
+  "palette" | "genre" | "set", "value", "n", "heldAfterHook"}], "worst": "…", "reference": ["<id>", …]}`:
+  - `lossByPicture`: kinds of picture ranked by how many viewers they lose (at least 3 Shorts a kind).
+  - `options`: what already rotates (look, palette, music genre, set) ranked by mean held after the
+    hook (at least 4 Shorts each). Name the worst one in `worst` when it is 10 points below the rest:
+    the improver retires it from the rotation without a test.
+  - `reference`: the 3 Shorts of the last 21 days with the best held after the hook (100+ views). The
+    writer and the QA reviewer use their contact sheets as the bar.
+  Then add one `look` challenger to `improvement/cycle/backlog.json` for the kind of picture that
+  loses the most viewers (`{"id", "kind": "look", "area", "metric": "heldAfterHook", "from": "auditor
+  <date>", "test", "why"}` with the numbers in `why`), unless one for it is already listed.
 Rules: never invent a number or a quote; say "too few videos" rather than guess; plain words, no jargon.
 The improver and planner read these files too, so a recommendation must be something a video can do.
 

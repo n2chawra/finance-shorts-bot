@@ -4,7 +4,8 @@ from generator import experiments as exps
 from improvement import evaluate as ev
 
 NOW = datetime(2026, 11, 10, tzinfo=timezone.utc)
-EXP = {"id": "fast-hook", "area": "hook", "startedAt": "2026-10-20", "templates": ["all"]}
+EXP = {"id": "fast-hook", "area": "hook", "startedAt": "2026-10-20", "templates": ["all"], "metric": "views48h"}   # the old views rule
+LOOP = {"id": "fast-hook", "area": "hook", "startedAt": "2026-10-20", "templates": ["all"]}                        # the weekly loop
 
 
 def videos(on_views: list[int], off_views: list[int]) -> list[dict]:
@@ -55,21 +56,64 @@ def test_guard_reverts_when_the_change_makes_videos_fail() -> None:
 
 
 def test_the_metric_follows_the_area_and_the_format() -> None:
-    assert ev.metric_of(EXP) == "views48h"
-    assert ev.metric_of({**EXP, "area": "motion"}) == "avgViewPct"
-    assert ev.metric_of({**EXP, "format": "long"}) == "avgViewPct"
-    assert ev.metric_of({**EXP, "area": "motion", "metric": "views48h"}) == "views48h"
+    assert ev.metric_of(LOOP) == "stayed"                          # a Short: stayed to watch, pooled
+    assert ev.metric_of({**LOOP, "area": "motion"}) == "heldAfterHook"
+    assert ev.metric_of({**LOOP, "format": "long"}) == "avgViewPct"
+    assert ev.metric_of({**LOOP, "area": "motion", "metric": "views48h"}) == "views48h"
 
 
-def test_a_look_change_is_judged_on_retention_within_its_format() -> None:
-    look = {**EXP, "area": "motion"}
-    vs = videos([100] * 9, [100] * 9)
+def test_a_look_change_on_long_videos_is_judged_on_retention_within_its_format() -> None:
+    look = {**EXP, "area": "motion", "format": "long", "metric": "avgViewPct"}
+    vs = [{**v, "format": "long"} for v in videos([100] * 9, [100] * 9)]
     for v in vs:
         v["avgViewPct"] = 66.0 if v["experiments"]["fast-hook"] == "on" else 55.0
-    longs = [{**v, "format": "long", "avgViewPct": 10.0} for v in vs]     # other format: ignored
-    r = ev.judge(look, vs + longs, [], NOW)
+    shorts = [{**v, "format": "short", "avgViewPct": 10.0} for v in vs]     # other format: ignored
+    r = ev.judge(look, vs + shorts, [], NOW)
     assert r["metric"] == "avgViewPct" and r["n_on"] == 9 and r["verdict"] == "keep"
-    assert ev.judge({**look, "format": "long"}, vs, [], NOW)["n_on"] == 0
+
+
+def loop_videos(on: list[tuple[int, int]], off: list[tuple[int, int]]) -> list[dict]:
+    """Shorts as (views, engaged views) per arm of LOOP."""
+    vs = videos([0] * len(on), [0] * len(off))
+    pools = {"on": list(on), "off": list(off)}
+    for v in vs:
+        views, engaged = pools[v["experiments"]["fast-hook"]].pop()
+        v.update(views48h=views, analyticsViews=views, engagedViews=engaged)
+    return vs
+
+
+def test_the_loop_keeps_a_challenger_5_points_up_on_pooled_stayed_to_watch() -> None:
+    on = [(200, 110), (40, 22), (900, 500), (60, 33), (300, 160), (80, 45), (150, 80), (500, 280)]    # ~55%
+    off = [(220, 95), (50, 21), (800, 350), (70, 30), (310, 130), (90, 40), (140, 60), (450, 195)]    # ~43%
+    r = ev.judge(LOOP, loop_videos(on, off), [], NOW)
+    assert r["metric"] == "stayed" and r["verdict"] == "keep" and r["points"] > 5
+
+
+def test_the_loop_reverts_a_challenger_5_points_down() -> None:
+    off = [(200, 110), (40, 22), (900, 500), (60, 33), (300, 160), (80, 45), (150, 80), (500, 280)]
+    on = [(220, 95), (50, 21), (800, 350), (70, 30), (310, 130), (90, 40), (140, 60), (450, 195)]
+    assert ev.judge(LOOP, loop_videos(on, off), [], NOW)["verdict"] == "revert"
+
+
+def test_the_loop_waits_for_8_shorts_a_side_within_a_week() -> None:
+    week = datetime(2026, 10, 25, tzinfo=timezone.utc)
+    r = ev.judge(LOOP, loop_videos([(100, 50)] * 5, [(100, 40)] * 5), [], week)
+    assert r["verdict"] == "wait" and "5 of 8" in r["why"]
+
+
+def test_the_loop_extends_once_then_abandons_a_tie() -> None:
+    vs = loop_videos([(100, 50)] * 8, [(100, 50)] * 8)
+    assert ev.judge(LOOP, vs, [], NOW)["verdict"] == "extend"
+    assert ev.judge({**LOOP, "extended": True}, vs, [], NOW)["verdict"] == "abandon"
+    assert ev.judge({**LOOP, "extended": True, "maxDays": 400}, vs, [], NOW)["verdict"] == "wait"
+
+
+def test_a_look_challenger_is_judged_on_held_after_the_hook() -> None:
+    vs = loop_videos([(100, 50)] * 9, [(100, 50)] * 9)
+    for v in vs:
+        v["heldAfterHook"] = 0.6 if v["experiments"]["fast-hook"] == "on" else 0.4
+    r = ev.judge({**LOOP, "area": "motion"}, vs, [], NOW)
+    assert r["metric"] == "heldAfterHook" and r["verdict"] == "keep"
 
 
 def test_upload_hours_are_in_ist() -> None:
@@ -97,12 +141,11 @@ def test_recurring_failures_need_two_in_three_days() -> None:
     assert len(out) == 1 and out[0]["videos"] == ["v1", "v2"]
 
 
-def test_hook_experiments_are_judged_on_the_hook_score_once_videos_have_it() -> None:
+def test_a_hook_experiment_can_still_ask_for_the_hook_score() -> None:
     vs = videos([100] * 9, [100] * 9)
-    assert ev.metric_of(EXP, vs) == "views48h"
     for v in vs:   # same views, but the change keeps far more viewers past the first 3 s
         v["hookHold"] = 0.8 if v["experiments"]["fast-hook"] == "on" else 0.5
-    r = ev.judge(EXP, vs, [], NOW)
+    r = ev.judge({**EXP, "metric": "hookHold"}, vs, [], NOW)
     assert r["metric"] == "hookHold" and r["verdict"] == "keep"
 
 

@@ -81,6 +81,14 @@ def test_blocks_removing_the_disclaimer(repo: Path) -> None:
     assert not r["ok"] and any("DISCLAIMER" in x for x in r["reasons"])
 
 
+def test_blocks_a_second_running_shorts_experiment(repo: Path) -> None:
+    import json
+    data = {"experiments": [{"id": f"t{i}", "format": "short", "status": "running"} for i in range(2)]}
+    change(repo, "config/experiments.json", json.dumps(data, indent=2))
+    r = guard.check("improver", "main", "HEAD")
+    assert not r["ok"] and any("one challenger at a time" in x for x in r["reasons"])
+
+
 @pytest.mark.parametrize("field, was, now, error", [
     ("minText", 44, 30, "minText"),
     ("bottomSafe", 120, 60, "bottomSafe"),

@@ -18,8 +18,16 @@ Each experiment is judged within one format (`format`: short, the default, or lo
                It depends far less on the algorithm's luck than views do while the channel is small.
   views7d      views in the first seven days, for long videos whose views come slowly
   hookHold     viewers still watching at 3 s (Short) or 30 s (long), from YouTube's retention curve
-               (workers/lib/retention.ts): the hook's own score. Hook experiments use it once the
-               format's videos have it (YouTube shows a curve only past a few views), else 48 h views.
+               (workers/lib/retention.ts): the hook's own score.
+
+The weekly loop (owner, 2026-11-12): every Shorts experiment is one challenger against the champion
+recipe, judged on one of two numbers that swing far less than views do:
+  stayed         engaged views / views, pooled over each side's Shorts (did not swipe away): the first
+                 second, the title, the topic, the story. The default for Shorts.
+  heldAfterHook  of the viewers still there at 3 s, the share who reach the end: the look, motion and
+                 sound after the hook (areas in RETENTION_AREAS).
+A challenger is kept 5 points or more up with 80% bootstrap confidence, reverted 5 points or more down,
+judged from LOOP_MIN_PER_ARM Shorts a side, extended once to 14 days, then abandoned.
 An experiment may name its `metric`; otherwise its area and format decide. A video counts once
 Analytics has its second day. Guard: share of attempts that failed QA/fact review.
 """
@@ -45,7 +53,11 @@ MAX_DAYS = 7             # judge anyway after this long (14 until 2026-11-04)
 KEEP_LIFT = 1.10         # on-arm median ≥ 110% of off-arm (views)
 REVERT_DROP = 0.90       # on-arm median ≤ 90% of off-arm (views)
 # % viewed moves less than views do: five points on fifty is a real change
-LIFTS = {"views48h": (KEEP_LIFT, REVERT_DROP), "views7d": (KEEP_LIFT, REVERT_DROP), "avgViewPct": (1.05, 0.95), "hookHold": (1.05, 0.95)}
+LIFTS = {"views48h": (KEEP_LIFT, REVERT_DROP), "views7d": (KEEP_LIFT, REVERT_DROP), "avgViewPct": (1.05, 0.95), "hookHold": (1.05, 0.95),
+         "stayed": (0.05, -0.05), "heldAfterHook": (0.05, -0.05)}   # the loop's two: a difference in points, not a ratio
+LOOP_METRICS = ("stayed", "heldAfterHook")
+LOOP_MIN_PER_ARM = 8     # Shorts a side with two days of data (about a week at 3 a day, half on each side)
+LOOP_MAX_DAYS = 7
 METRICS = tuple(LIFTS)
 RETENTION_AREAS = frozenset({"motion", "pacing", "text", "colour", "sound", "music", "voice", "ending", "scene", "template"})
 CONFIDENCE = 0.80        # bootstrap probability required
@@ -77,14 +89,80 @@ def prob_greater(a: list[float], b: list[float], n: int = 2000, seed: int = 7) -
 
 
 def metric_of(exp: dict, videos: list[dict] | None = None) -> str:
-    """What an experiment is judged on: its own `metric`; a hook change on the hook score once the
-    format's videos have one; retention for look, sound and every long-video change; else 48 h views."""
+    """What an experiment is judged on: its own `metric`; a long video on % viewed; a Short on the weekly
+    loop's numbers (held after the hook for look, motion and sound, stayed to watch for everything else)."""
     if exp.get("metric") in METRICS:
         return exp["metric"]
-    fmt = exp.get("format", "short")
-    if exp.get("area") == "hook" and any(v.get("hookHold") is not None and v.get("format", "short") == fmt for v in videos or []):
-        return "hookHold"
-    return "avgViewPct" if fmt == "long" or exp.get("area") in RETENTION_AREAS else "views48h"
+    if exp.get("format", "short") == "long":
+        return "avgViewPct"
+    return "heldAfterHook" if exp.get("area") in RETENTION_AREAS else "stayed"
+
+
+def _pooled(vs: list[dict]) -> float | None:
+    views = sum(v.get("analyticsViews") or 0 for v in vs)
+    return sum(v.get("engagedViews") or 0 for v in vs) / views if views else None
+
+
+def _loop_value(vs: list[dict], metric: str) -> float | None:
+    if metric == "stayed":
+        return _pooled(vs)
+    xs = [v[metric] for v in vs if v.get(metric) is not None]
+    return statistics.mean(xs) if xs else None
+
+
+def _loop_prob(on: list[dict], off: list[dict], metric: str, n: int = 2000, seed: int = 7) -> float:
+    """Bootstrap P(on's value > off's), resampling whole Shorts on each side."""
+    if not on or not off:
+        return 0.5
+    r = random.Random(seed)
+    wins = 0
+    for _ in range(n):
+        a, b = _loop_value(r.choices(on, k=len(on)), metric), _loop_value(r.choices(off, k=len(off)), metric)
+        if a is None or b is None:
+            continue
+        wins += a > b or (a == b and r.random() < 0.5)
+    return wins/n
+
+
+def _counts(v: dict, metric: str) -> bool:
+    if v.get("views48h") is None:          # Analytics has its second day
+        return False
+    return (v.get("analyticsViews") or 0) > 0 if metric == "stayed" else v.get(metric) is not None
+
+
+def judge_loop(exp: dict, videos: list[dict], days: int, guard: tuple[bool, float, float], out: dict) -> dict:
+    """A Short challenger against the champion, on a difference in points (the weekly loop)."""
+    eid, metric = exp["id"], out["metric"]
+    arms: dict[str, list[dict]] = {"on": [], "off": []}
+    for v in videos:
+        if v.get("publishAt", "") < exp.get("startedAt", "1970-01-01") or v.get("format", "short") != "short" or not _counts(v, metric):
+            continue
+        side = (v.get("experiments") or {}).get(eid)
+        if side in arms:
+            arms[side].append(v)
+    on_v, off_v = _loop_value(arms["on"], metric), _loop_value(arms["off"], metric)
+    diff = on_v - off_v if on_v is not None and off_v is not None else None
+    p_up = _loop_prob(arms["on"], arms["off"], metric)
+    n = min(len(arms["on"]), len(arms["off"]))
+    need, max_days = int(exp.get("minPerArm", LOOP_MIN_PER_ARM)), int(exp.get("maxDays", LOOP_MAX_DAYS))
+    out = {**out, "n_on": len(arms["on"]), "n_off": len(arms["off"]),
+           "value_on": round(on_v, 3) if on_v is not None else None, "value_off": round(off_v, 3) if off_v is not None else None,
+           "points": round(diff * 100, 1) if diff is not None else None, "p_on_better": round(p_up, 3)}
+    label = {"stayed": "stayed to watch", "heldAfterHook": "held after the hook"}[metric]
+    guard_bad, fail_on, fail_off = guard
+    if guard_bad:
+        return {**out, "verdict": "revert", "why": f"QA/fact failures {fail_on:.0%} with the change vs {fail_off:.0%} without"}
+    keep, drop = LIFTS[metric]
+    if n >= need and diff is not None:
+        if diff >= keep and p_up >= CONFIDENCE:
+            return {**out, "verdict": "keep", "why": f"{diff * 100:+.1f} points {label} ({on_v:.0%} vs {off_v:.0%}), {p_up:.0%} confidence"}
+        if diff <= drop and 1 - p_up >= CONFIDENCE:
+            return {**out, "verdict": "revert", "why": f"{diff * 100:+.1f} points {label} ({on_v:.0%} vs {off_v:.0%}), {1 - p_up:.0%} confidence it is worse"}
+    if days < max_days and (n < need or exp.get("extended")):
+        return {**out, "verdict": "wait", "why": f"{n} of {need} Shorts a side have two days of data; day {days} of {max_days}"}
+    if exp.get("extended"):
+        return {**out, "verdict": "abandon", "why": f"no clear difference in {label} after the extension; remove it and start the next challenger"}
+    return {**out, "verdict": "extend", "why": f"no clear difference in {label} yet; extend once (extended: true, maxDays 14)"}
 
 
 def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) -> dict:
@@ -134,6 +212,8 @@ def judge(exp: dict, videos: list[dict], attempts: list[dict], now: datetime) ->
         "avgPct_off": round(statistics.mean(pct_off), 1) if pct_off else None,
         "fail_on": round(fail_on, 2), "fail_off": round(fail_off, 2), "attempts_on": tried["on"][0], "attempts_off": tried["off"][0],
     }
+    if metric in LOOP_METRICS:
+        return judge_loop(exp, videos, days, (guard_bad, fail_on, fail_off), out)
     # an extension gives the test until its new maxDays before an unclear result is abandoned (owner-approved
     # 2026-11-03: hook-voice-matches-frame was extended one night and abandoned the next with no new data)
     if exp.get("extended") and days < max_days and not guard_bad:

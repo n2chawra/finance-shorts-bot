@@ -45,10 +45,16 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 - **Copy the plan's `arms` into the script as `"arms"`** and follow them: `length` is the band in
   seconds the Short must land in (the render fails it outside), `style` "shot" means no board beats,
   "board" means most beats are board cards.
-- **The fixed recipe (owner review, 2026-11-11; read this first; nothing below overrides it).** For
-  14 days every Short is made the same way, and is judged on one number from YouTube Studio: the
-  share of people who **stayed to watch** instead of swiping. Ours was 24-52%; the Shorts growing in
-  this niche state a surprising true fact about a famous name in the first second.
+- **The champion recipe (read this first; nothing below overrides it).** Every Short is made this
+  way, except for the one change this video's weekly-loop experiment asks for (its `experiments`
+  note, if any). The recipe changes only when the loop keeps a challenger (agents/policy.md). It is
+  judged on the share of people who **stayed to watch** instead of swiping (ours was 24-52%); the
+  Shorts growing in this niche state a surprising true fact about a famous name in the first second.
+  - **The opening is already chosen**: use the title, first line and first frame picked in
+    `videos/<id>/openings.json` (routine step 2b).
+  - **Look at the bar first**: open the contact sheets (`videos/<id>/preview.png`) of the Shorts in
+    `improvement/analysis/pictures.json` → `reference`, our own Shorts that held viewers best. Draw at
+    least that well: as full, as big, as clear. Copy how they fill the frame, never their pictures.
   - **One surprising true money fact about a real, named person or business.** The plan's `subject`
     and its biggest figure are in the title and in the hook's first sentence.
   - **The hook states the fact itself**: "The NBA paid Magic Johnson {pay}. He made a billion." ·
@@ -151,7 +157,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   voice runs at the October pace (about 225 words a minute). The camera frames the thing being talked
   about; the characters are big when they speak or react. A spoken figure no thing carries appears huge in the middle of
   the frame by itself. A Short is 6–8 beats of 3–5 s.
-- **Length:** the plan's `arms.length` band (28-35 s during the fixed run), about 85-115 spoken
+- **Length:** the plan's `arms.length` band (28-35 s in the champion recipe), about 85-115 spoken
   words. One question, one surprising answer, one punchline.
 - **Loop it:** the last line hands back to the first, so a viewer who keeps watching sees the hook
   again and it plays on ("…and that's why the rich one never needed the raise." → "Poor person

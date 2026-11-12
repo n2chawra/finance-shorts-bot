@@ -13,9 +13,9 @@ facts come from and the rules of its field.
 `owner_feedback`: `open` notes (a `wrong` note is a rule until the improver addresses it; `improve`
 and `general` notes shape this video) and `taste` (the videos he picked to publish and the ones he
 marked stale, with why). Follow them; if one conflicts with a hard rule, the hard rule wins and you
-say so in the report. During the fixed run (below) a note that asks to change the recipe itself (length,
-hook, pace, voice, format, style) is held for the review and does not shape this video; notes about
-something wrong in a video still do.
+say so in the report. A note that asks to change the recipe itself (length, hook, pace, voice, format,
+style) is not applied here: it becomes the next weekly-loop test (agents/policy.md); notes about
+something wrong in a video still shape this one.
 
 1. Run `python -m generator.run state`. It tells you the video id to use (`next_id`), which
    templates are allowed, which topic categories are blocked, the previous video's style, recent
@@ -25,9 +25,10 @@ something wrong in a video still do.
 
 If `mode` is not `video`, stop and report the mode. Do not plan a video.
 
-## The fixed run (owner review, 2026-11-11; until `config/arms.json` → `frozen.until`)
-For 14 days every Short is made to one recipe and judged on one number from YouTube Studio: the share
-of people who **stayed to watch** instead of swiping (ours was 24-52%). What the review found: of the
+## The champion recipe (the weekly loop, owner 2026-11-12)
+Every Short follows one recipe, which changes only when the weekly loop keeps a tested challenger
+(agents/policy.md); this video's experiment note, if it has one, is the only exception. Shorts are
+judged on the share of people who **stayed to watch** instead of swiping (ours was 24-52%). What the review found: of the
 people YouTube showed a Short to, most swiped within a second or two, because the title and the first
 sentence hid the subject. The same Magic Johnson story got 70,000 views on a small channel titled
 "The NBA Paid Magic Johnson $40M. He Made A Billion" and 419 on ours as "The basketball star who got
@@ -46,10 +47,10 @@ rich off the court".
 
 ## Step 0 for a Short: take the variant system's options
 Run `python -m improvement.arms assign --video <id>` and copy its JSON into the plan as `"arms"`
-(`check-plan` fails a plan without it or with options changed). During the fixed run it returns the
+(`check-plan` fails a plan without it or with options changed). While the variant system is off it returns the
 same options for every Short and decides nothing else:
 - `length` "28-35": the Short's length in seconds (tell the writer; the render checks it).
-- `title` "figure_or_name": a money figure or a famous name in the title (the fixed run asks for both).
+- `title` "figure_or_name": a money figure or a famous name in the title (the recipe asks for both).
 - `style` "shot": shot/build beats, no board cards.
 - `category`: nothing to do; the publisher uploads every video in one category.
 The hook style and the topic kind are yours: rotate `hook_style` as the variety rule asks.
