@@ -1,0 +1,4284 @@
+{
+ "id": "P-30days",
+ "format": "long",
+ "template": "long_story",
+ "seed": 3030,
+ "narrator": "am_michael",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "synthwave",
+  "key": "D",
+  "bpm": 104
+ },
+ "structure": {
+  "levels": [
+   "Setup",
+   "Week one",
+   "The hit",
+   "The crash",
+   "The agents",
+   "Scoreboard"
+  ]
+ },
+ "facts": [
+  {
+   "label": "videos the system made",
+   "value": 95,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "videos published",
+   "value": 59,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "views, all videos",
+   "value": 15430,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "subscribers",
+   "value": 14,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "hours watched",
+   "value": 32,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "views, best Short",
+   "value": 1192,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "views, median Short",
+   "value": 79,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "agent changes tried",
+   "value": 127,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "agent changes merged",
+   "value": 103,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "agent changes blocked",
+   "value": 24,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "videos failed and thrown away",
+   "value": 13,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "views from the Shorts feed",
+   "value": 93,
+   "unit": "percent",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "views on the best day",
+   "value": 1919,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "viewers who swiped away, worst Short",
+   "value": 76,
+   "unit": "percent",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "median views, big-money titles (Oct)",
+   "value": 773,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  },
+  {
+   "label": "median views, budget titles (Oct)",
+   "value": 118,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "YouTube Studio",
+   "url": "https://studio.youtube.com"
+  }
+ ],
+ "maths": [],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Thirty days ago, I gave Claude Code one job: run a YouTube channel for me. No face, no voice, no editing.",
+   "events": {
+    "thirty": {
+     "word": "Thirty"
+    },
+    "claude": {
+     "word": "Claude"
+    },
+    "youtube": {
+     "word": "YouTube"
+    },
+    "face": {
+     "word": "face"
+    },
+    "editing": {
+     "word": "editing"
+    }
+   },
+   "params": {
+    "bg": "night",
+    "prop": "laptop",
+    "lines": [
+     {
+      "text": "Thirty days",
+      "at": "thirty",
+      "size": "small"
+     },
+     {
+      "text": "Claude Code runs",
+      "at": "claude",
+      "size": "big"
+     },
+     {
+      "text": "my YouTube channel",
+      "at": "youtube",
+      "size": "huge"
+     },
+     {
+      "text": "No face · no voice",
+      "at": "face",
+      "size": "small"
+     },
+     {
+      "text": "No editing",
+      "at": "editing",
+      "size": "small"
+     }
+    ],
+    "kicker": "An experiment",
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "thirty"
+    },
+    {
+     "kind": "whoosh",
+     "at": "editing"
+    }
+   ],
+   "role": "hook"
+  },
+  {
+   "id": "hook2",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "It wrote the scripts, drew the animation, voiced every line and uploaded three Shorts a day, while I slept.",
+   "events": {
+    "scripts": {
+     "word": "scripts"
+    },
+    "animation": {
+     "word": "animation"
+    },
+    "voiced": {
+     "word": "voiced"
+    },
+    "uploaded": {
+     "word": "uploaded"
+    },
+    "slept": {
+     "word": "slept"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "night",
+     "tint": "purple"
+    },
+    "items": [
+     {
+      "id": "laptop",
+      "prop": "laptop",
+      "x": 0.25,
+      "size": 0.4,
+      "label": "Claude Code"
+     },
+     {
+      "id": "clap",
+      "prop": "clapper",
+      "x": 0.55,
+      "size": 0.26,
+      "label": "Animation",
+      "hidden": true
+     },
+     {
+      "id": "phone",
+      "prop": "phone",
+      "x": 0.8,
+      "size": 0.34,
+      "label": "Shorts",
+      "hidden": true
+     },
+     {
+      "id": "play",
+      "prop": "play",
+      "x": 0.55,
+      "size": 0.22,
+      "y": 0.3,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "laptop",
+      "sec": 0
+     },
+     {
+      "do": "grow",
+      "target": "laptop",
+      "scale": 1.1,
+      "at": "scripts"
+     },
+     {
+      "do": "enter",
+      "target": "clap",
+      "at": "animation"
+     },
+     {
+      "do": "shake",
+      "target": "clap",
+      "at": "voiced"
+     },
+     {
+      "do": "enter",
+      "target": "phone",
+      "at": "uploaded"
+     },
+     {
+      "do": "enter",
+      "target": "play",
+      "how": "drop",
+      "at": "slept"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "slept",
+      "size": "medium",
+      "on": "laptop",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "scripts"
+    },
+    {
+     "kind": "whoosh",
+     "at": "animation"
+    },
+    {
+     "kind": "kaching",
+     "at": "uploaded"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "hook3",
+   "scene": "stats",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "After a month it had made {fact1} videos, earned {fact3} views and {fact4} subscribers.",
+   "events": {
+    "month": {
+     "word": "month"
+    },
+    "videos": {
+     "word": "videos"
+    },
+    "views": {
+     "word": "views"
+    },
+    "subscribers": {
+     "word": "subscribers"
+    }
+   },
+   "params": {
+    "title": "Thirty days in",
+    "kicker": "The result",
+    "bg": "slate",
+    "prop": "chart",
+    "at": "month",
+    "cards": [
+     {
+      "label": "Videos made",
+      "text": "{fact1}",
+      "at": "videos",
+      "color": "blue"
+     },
+     {
+      "label": "Views",
+      "text": "{fact3}",
+      "at": "views",
+      "color": "green"
+     },
+     {
+      "label": "Subscribers",
+      "text": "{fact4}",
+      "at": "subscribers",
+      "color": "orange"
+     }
+    ],
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "month"
+    },
+    {
+     "kind": "pop-high",
+     "at": "videos"
+    },
+    {
+     "kind": "pop-high",
+     "at": "views"
+    }
+   ],
+   "role": "level"
+  },
+  {
+   "id": "hook4",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Is that a win or a flop? Stay to the end, because the most useful part is everything that went wrong.",
+   "events": {
+    "win": {
+     "word": "win"
+    },
+    "flop": {
+     "word": "flop"
+    },
+    "end": {
+     "word": "end"
+    },
+    "useful": {
+     "word": "useful"
+    },
+    "wrong": {
+     "word": "wrong"
+    }
+   },
+   "params": {
+    "bg": "plum",
+    "prop": "bug",
+    "lines": [
+     {
+      "text": "A win?",
+      "at": "win",
+      "size": "big"
+     },
+     {
+      "text": "A flop?",
+      "at": "flop",
+      "size": "big"
+     },
+     {
+      "text": "The useful part",
+      "at": "useful",
+      "size": "small"
+     },
+     {
+      "text": "What went wrong",
+      "at": "wrong",
+      "size": "huge"
+     }
+    ],
+    "kicker": "Stay to the end",
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "win"
+    },
+    {
+     "kind": "whoosh",
+     "at": "wrong"
+    }
+   ],
+   "role": "tease"
+  },
+  {
+   "id": "promise",
+   "scene": "framework",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "I'll show you the setup, the first week, the hit, the crash, the robots that fix themselves, and the final scoreboard.",
+   "events": {
+    "setup": {
+     "word": "setup"
+    },
+    "week": {
+     "word": "week"
+    },
+    "hit": {
+     "word": "hit"
+    },
+    "crash": {
+     "word": "crash"
+    },
+    "robots": {
+     "word": "robots"
+    },
+    "scoreboard": {
+     "word": "scoreboard"
+    }
+   },
+   "params": {
+    "items": [
+     {
+      "prop": "laptop",
+      "label": "Setup",
+      "at": "setup"
+     },
+     {
+      "prop": "calendar",
+      "label": "Week one",
+      "at": "week"
+     },
+     {
+      "prop": "trophy",
+      "label": "The hit",
+      "at": "hit"
+     },
+     {
+      "prop": "bug",
+      "label": "The crash",
+      "at": "crash"
+     },
+     {
+      "prop": "robot",
+      "label": "The agents",
+      "at": "robots"
+     },
+     {
+      "prop": "chart",
+      "label": "Scoreboard",
+      "at": "scoreboard"
+     }
+    ],
+    "layout": "steps",
+    "open": 0,
+    "title": "Thirty days",
+    "bg": "night",
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "setup"
+    },
+    {
+     "kind": "pop",
+     "at": "hit"
+    },
+    {
+     "kind": "pop",
+     "at": "robots"
+    },
+    {
+     "kind": "ding",
+     "at": "scoreboard"
+    }
+   ],
+   "role": "promise"
+  },
+  {
+   "id": "ch1",
+   "scene": "chapter",
+   "speaker": "narrator",
+   "transition": "fade",
+   "say": "Chapter one. The setup.",
+   "events": {
+    "setup": {
+     "word": "setup"
+    }
+   },
+   "params": {
+    "kicker": "Chapter one",
+    "title": "The setup",
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Day one. I opened Claude Code and described the channel I wanted: animated money stories, true facts only, and every number checked by code.",
+   "events": {
+    "day": {
+     "word": "Day"
+    },
+    "opened": {
+     "word": "opened"
+    },
+    "described": {
+     "word": "described"
+    },
+    "animated": {
+     "word": "animated"
+    },
+    "facts": {
+     "word": "facts"
+    },
+    "number": {
+     "word": "number"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "laptop",
+      "prop": "laptop",
+      "x": 0.5,
+      "size": 0.42,
+      "label": "Day one"
+     },
+     {
+      "id": "phone",
+      "prop": "phone",
+      "x": 0.15,
+      "size": 0.3,
+      "label": "Money stories",
+      "hidden": true
+     },
+     {
+      "id": "cash",
+      "prop": "cash",
+      "x": 0.85,
+      "size": 0.24,
+      "label": "Real facts",
+      "hidden": true
+     },
+     {
+      "id": "gear",
+      "prop": "gear",
+      "x": 0.5,
+      "size": 0.18,
+      "y": 0.25,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "laptop",
+      "sec": 0
+     },
+     {
+      "do": "grow",
+      "target": "laptop",
+      "scale": 1.1,
+      "at": "opened"
+     },
+     {
+      "do": "enter",
+      "target": "phone",
+      "at": "animated"
+     },
+     {
+      "do": "enter",
+      "target": "cash",
+      "at": "facts"
+     },
+     {
+      "do": "enter",
+      "target": "gear",
+      "how": "drop",
+      "at": "number"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "number",
+      "size": "medium",
+      "on": "laptop",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "day"
+    },
+    {
+     "kind": "pop",
+     "at": "animated"
+    },
+    {
+     "kind": "ding",
+     "at": "number"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "s1b",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "And I didn't write the code myself. I described what I wanted, and Claude Code wrote it: the renderer, the uploader, the checks, tens of thousands of lines.",
+   "events": {
+    "code": {
+     "word": "code"
+    },
+    "described": {
+     "word": "described"
+    },
+    "renderer": {
+     "word": "renderer"
+    },
+    "uploader": {
+     "word": "uploader"
+    },
+    "checks": {
+     "word": "checks"
+    },
+    "thousands": {
+     "word": "thousands"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "laptop",
+      "prop": "laptop",
+      "x": 0.5,
+      "size": 0.42,
+      "label": "Claude Code"
+     },
+     {
+      "id": "clap",
+      "prop": "clapper",
+      "x": 0.16,
+      "size": 0.24,
+      "label": "Renderer",
+      "hidden": true
+     },
+     {
+      "id": "cloud",
+      "prop": "cloud",
+      "x": 0.84,
+      "size": 0.24,
+      "label": "Uploader",
+      "hidden": true
+     },
+     {
+      "id": "shield",
+      "prop": "shield",
+      "x": 0.5,
+      "size": 0.16,
+      "y": 0.25,
+      "label": "Checks",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "laptop",
+      "sec": 0
+     },
+     {
+      "do": "grow",
+      "target": "laptop",
+      "scale": 1.1,
+      "at": "described"
+     },
+     {
+      "do": "enter",
+      "target": "clap",
+      "at": "renderer"
+     },
+     {
+      "do": "enter",
+      "target": "cloud",
+      "at": "uploader"
+     },
+     {
+      "do": "enter",
+      "target": "shield",
+      "how": "drop",
+      "at": "checks"
+     },
+     {
+      "do": "shake",
+      "target": "laptop",
+      "at": "thousands"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "thousands",
+      "size": "medium",
+      "on": "laptop",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "renderer"
+    },
+    {
+     "kind": "pop",
+     "at": "uploader"
+    },
+    {
+     "kind": "ding",
+     "at": "checks"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "s2",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "It built a whole studio. A planner picks the topic, a writer storyboards it, code checks the maths, and a second AI checks every fact.",
+   "events": {
+    "studio": {
+     "word": "studio"
+    },
+    "planner": {
+     "word": "planner"
+    },
+    "writer": {
+     "word": "writer"
+    },
+    "code": {
+     "word": "code"
+    },
+    "second": {
+     "word": "second"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "plan",
+      "prop": "robot",
+      "x": 0.14,
+      "size": 0.26,
+      "label": "Planner"
+     },
+     {
+      "id": "write",
+      "prop": "robot",
+      "x": 0.38,
+      "size": 0.26,
+      "label": "Writer",
+      "hidden": true
+     },
+     {
+      "id": "check",
+      "prop": "gear",
+      "x": 0.62,
+      "size": 0.24,
+      "label": "Number check",
+      "hidden": true
+     },
+     {
+      "id": "fact",
+      "prop": "shield",
+      "x": 0.86,
+      "size": 0.26,
+      "label": "Fact check",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "plan",
+      "sec": 0
+     },
+     {
+      "do": "grow",
+      "target": "plan",
+      "scale": 1.15,
+      "at": "planner"
+     },
+     {
+      "do": "enter",
+      "target": "write",
+      "at": "writer"
+     },
+     {
+      "do": "enter",
+      "target": "check",
+      "at": "code"
+     },
+     {
+      "do": "enter",
+      "target": "fact",
+      "how": "drop",
+      "at": "second"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "second",
+      "size": "medium",
+      "on": "plan",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "planner"
+    },
+    {
+     "kind": "pop",
+     "at": "writer"
+    },
+    {
+     "kind": "pop-high",
+     "at": "code"
+    },
+    {
+     "kind": "ding",
+     "at": "second"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "s3",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Then it draws the animation and an offline voice reads it. No stock footage, no downloaded music. Every frame and every sound is made in code.",
+   "events": {
+    "draws": {
+     "word": "draws"
+    },
+    "voice": {
+     "word": "voice"
+    },
+    "footage": {
+     "word": "footage"
+    },
+    "music": {
+     "word": "music"
+    },
+    "frame": {
+     "word": "frame"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "studio",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "clap",
+      "prop": "clapper",
+      "x": 0.3,
+      "size": 0.34,
+      "label": "Drawn in code"
+     },
+     {
+      "id": "laptop",
+      "prop": "laptop",
+      "x": 0.72,
+      "size": 0.36,
+      "label": "Offline voice",
+      "hidden": true
+     },
+     {
+      "id": "box",
+      "prop": "box",
+      "x": 0.5,
+      "size": 0.18,
+      "state": "red",
+      "label": "No stock",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "clap",
+      "sec": 0
+     },
+     {
+      "do": "shake",
+      "target": "clap",
+      "at": "draws"
+     },
+     {
+      "do": "enter",
+      "target": "laptop",
+      "at": "voice"
+     },
+     {
+      "do": "enter",
+      "target": "box",
+      "at": "footage"
+     },
+     {
+      "do": "cross",
+      "target": "box",
+      "at": "music"
+     },
+     {
+      "do": "grow",
+      "target": "clap",
+      "scale": 1.12,
+      "at": "frame"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "frame",
+      "size": "medium",
+      "on": "clap",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "role": "build"
+  },
+  {
+   "id": "s4",
+   "scene": "stage",
+   "speaker": "narrator",
+   "transition": "slide",
+   "say": "It even invented a cast: Rohan, Priya, Sharma, and a coin called Sikka.",
+   "events": {
+    "cast": {
+     "word": "cast"
+    },
+    "rohan": {
+     "word": "Rohan"
+    },
+    "priya": {
+     "word": "Priya"
+    },
+    "sharma": {
+     "word": "Sharma"
+    },
+    "sikka": {
+     "word": "Sikka"
+    }
+   },
+   "params": {
+    "set": "home",
+    "actors": [
+     {
+      "who": "rohan",
+      "x": 0.25,
+      "enter": "left",
+      "acting": [
+       {
+        "at": "rohan",
+        "pose": "wave",
+        "expression": "happy"
+       }
+      ]
+     },
+     {
+      "who": "priya",
+      "x": 0.5,
+      "acting": [
+       {
+        "sec": 0,
+        "pose": "stand"
+       },
+       {
+        "at": "priya",
+        "pose": "point",
+        "expression": "smirk"
+       }
+      ]
+     },
+     {
+      "who": "sharma",
+      "x": 0.75,
+      "enter": "right",
+      "acting": [
+       {
+        "at": "sharma",
+        "pose": "hips",
+        "expression": "proud"
+       }
+      ]
+     }
+    ],
+    "sikka": {
+     "x": 0.9,
+     "at": "sikka",
+     "expression": "happy",
+     "cheer": true
+    },
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "rohan"
+    },
+    {
+     "kind": "pop",
+     "at": "priya"
+    },
+    {
+     "kind": "pop",
+     "at": "sharma"
+    },
+    {
+     "kind": "ding",
+     "at": "sikka"
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Finished videos go up to GitHub, and a scheduler uploads them at three fixed times a day. It all runs in the cloud, on free tiers and one Claude subscription.",
+   "events": {
+    "github": {
+     "word": "GitHub"
+    },
+    "scheduler": {
+     "word": "scheduler"
+    },
+    "three": {
+     "word": "three"
+    },
+    "cloud": {
+     "word": "cloud"
+    },
+    "subscription": {
+     "word": "subscription"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "teal"
+    },
+    "items": [
+     {
+      "id": "cloud",
+      "prop": "cloud",
+      "x": 0.5,
+      "size": 0.36,
+      "label": "The cloud"
+     },
+     {
+      "id": "cal",
+      "prop": "calendar",
+      "x": 0.18,
+      "size": 0.28,
+      "label": "Three a day",
+      "hidden": true
+     },
+     {
+      "id": "play",
+      "prop": "play",
+      "x": 0.82,
+      "size": 0.28,
+      "label": "YouTube",
+      "hidden": true
+     },
+     {
+      "id": "coin",
+      "prop": "coin",
+      "x": 0.5,
+      "size": 0.16,
+      "y": 0.3,
+      "label": "One subscription",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "cloud",
+      "sec": 0
+     },
+     {
+      "do": "grow",
+      "target": "cloud",
+      "scale": 1.1,
+      "at": "github"
+     },
+     {
+      "do": "enter",
+      "target": "cal",
+      "at": "scheduler"
+     },
+     {
+      "do": "enter",
+      "target": "play",
+      "at": "three"
+     },
+     {
+      "do": "flow",
+      "target": "cloud",
+      "to": "play",
+      "n": 4,
+      "at": "cloud"
+     },
+     {
+      "do": "enter",
+      "target": "coin",
+      "how": "drop",
+      "at": "subscription"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "subscription",
+      "size": "medium",
+      "on": "cloud",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "github"
+    },
+    {
+     "kind": "tick",
+     "at": "scheduler"
+    },
+    {
+     "kind": "pop",
+     "at": "three"
+    },
+    {
+     "kind": "kaching",
+     "at": "subscription"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "s6",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "It also built me a dashboard, so I can see every video, every upload and every robot's work from my phone.",
+   "events": {
+    "dashboard": {
+     "word": "dashboard"
+    },
+    "video": {
+     "word": "video"
+    },
+    "upload": {
+     "word": "upload"
+    },
+    "robots": {
+     "word": "robot's"
+    },
+    "phone": {
+     "word": "phone"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "studio",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "phone",
+      "prop": "phone",
+      "x": 0.5,
+      "size": 0.42,
+      "label": "My dashboard"
+     },
+     {
+      "id": "chart",
+      "prop": "chart",
+      "x": 0.18,
+      "size": 0.26,
+      "label": "Every video",
+      "hidden": true
+     },
+     {
+      "id": "play",
+      "prop": "play",
+      "x": 0.82,
+      "size": 0.24,
+      "label": "Every upload",
+      "hidden": true
+     },
+     {
+      "id": "robot",
+      "prop": "robot",
+      "x": 0.5,
+      "size": 0.16,
+      "y": 0.25,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "phone",
+      "sec": 0
+     },
+     {
+      "do": "enter",
+      "target": "chart",
+      "at": "video"
+     },
+     {
+      "do": "enter",
+      "target": "play",
+      "at": "upload"
+     },
+     {
+      "do": "enter",
+      "target": "robot",
+      "how": "drop",
+      "at": "robots"
+     },
+     {
+      "do": "grow",
+      "target": "phone",
+      "scale": 1.12,
+      "at": "phone"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "phone",
+      "size": "medium",
+      "on": "phone",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "dashboard"
+    },
+    {
+     "kind": "pop",
+     "at": "upload"
+    },
+    {
+     "kind": "ding",
+     "at": "phone"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "t1",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "So I pressed go and went to sleep. Would anyone actually watch?",
+   "events": {
+    "pressed": {
+     "word": "pressed"
+    },
+    "sleep": {
+     "word": "sleep"
+    },
+    "anyone": {
+     "word": "anyone"
+    },
+    "watch": {
+     "word": "watch"
+    }
+   },
+   "params": {
+    "bg": "teal",
+    "prop": "play",
+    "lines": [
+     {
+      "text": "Pressed go",
+      "at": "pressed",
+      "size": "big"
+     },
+     {
+      "text": "Went to sleep",
+      "at": "sleep",
+      "size": "small"
+     },
+     {
+      "text": "Would anyone",
+      "at": "anyone",
+      "size": "small"
+     },
+     {
+      "text": "watch?",
+      "at": "watch",
+      "size": "huge"
+     }
+    ],
+    "kicker": "Next · Week one",
+    "hud": {
+     "level": 1,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "pressed"
+    },
+    {
+     "kind": "whoosh",
+     "at": "watch"
+    }
+   ],
+   "role": "tease"
+  },
+  {
+   "id": "ch2",
+   "scene": "chapter",
+   "speaker": "narrator",
+   "transition": "fade",
+   "say": "Chapter two. Week one.",
+   "events": {
+    "one": {
+     "word": "one"
+    }
+   },
+   "params": {
+    "kicker": "Chapter two",
+    "title": "Week one",
+    "hud": {
+     "level": 2,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ]
+  },
+  {
+   "id": "w1",
+   "scene": "journey",
+   "speaker": "narrator",
+   "transition": "slide",
+   "say": "Day one was a prototype. Day two, the first Short went live. By the end of the week, it was making videos every single day.",
+   "events": {
+    "prototype": {
+     "word": "prototype"
+    },
+    "short": {
+     "word": "Short"
+    },
+    "week": {
+     "word": "week"
+    },
+    "every": {
+     "word": "every"
+    }
+   },
+   "params": {
+    "stops": [
+     {
+      "name": "Day one",
+      "note": "Prototype",
+      "at": "prototype"
+     },
+     {
+      "name": "Day two",
+      "note": "First upload",
+      "at": "short"
+     },
+     {
+      "name": "Week one",
+      "note": "Daily videos",
+      "at": "week"
+     },
+     {
+      "name": "Every day",
+      "note": "Three a day",
+      "at": "every"
+     }
+    ],
+    "traveller": "robot",
+    "bg": "sky",
+    "hud": {
+     "level": 2,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "prototype"
+    },
+    {
+     "kind": "pop",
+     "at": "short"
+    },
+    {
+     "kind": "whoosh",
+     "at": "week"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "w2",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "The first Shorts were about savings, budgets and credit cards. And almost nobody watched them, a few dozen views each.",
+   "events": {
+    "savings": {
+     "word": "savings"
+    },
+    "budgets": {
+     "word": "budgets"
+    },
+    "cards": {
+     "word": "cards"
+    },
+    "nobody": {
+     "word": "nobody"
+    },
+    "dozen": {
+     "word": "dozen"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "kitchen",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "phone",
+      "prop": "phone",
+      "x": 0.5,
+      "size": 0.38,
+      "label": "Budget tips"
+     },
+     {
+      "id": "cash",
+      "prop": "cash",
+      "x": 0.2,
+      "size": 0.22,
+      "label": "Savings",
+      "hidden": true
+     },
+     {
+      "id": "note",
+      "prop": "note",
+      "x": 0.8,
+      "size": 0.22,
+      "label": "Credit cards",
+      "hidden": true
+     },
+     {
+      "id": "chart",
+      "prop": "chart",
+      "x": 0.5,
+      "size": 0.18,
+      "y": 0.25,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "phone",
+      "sec": 0
+     },
+     {
+      "do": "enter",
+      "target": "cash",
+      "at": "savings"
+     },
+     {
+      "do": "enter",
+      "target": "note",
+      "at": "cards"
+     },
+     {
+      "do": "shrink",
+      "target": "phone",
+      "scale": 0.8,
+      "at": "nobody"
+     },
+     {
+      "do": "enter",
+      "target": "chart",
+      "how": "drop",
+      "at": "dozen"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "dozen",
+      "size": "medium",
+      "on": "phone",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 2,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "savings"
+    },
+    {
+     "kind": "pop",
+     "at": "cards"
+    },
+    {
+     "kind": "fail",
+     "at": "nobody"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "w3",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Budget tips are what every channel already makes. Mine were just one more drop in the ocean.",
+   "events": {
+    "budget": {
+     "word": "Budget"
+    },
+    "every": {
+     "word": "every"
+    },
+    "drop": {
+     "word": "drop"
+    },
+    "ocean": {
+     "word": "ocean"
+    }
+   },
+   "params": {
+    "bg": "coral",
+    "prop": "phone",
+    "lines": [
+     {
+      "text": "Budget tips?",
+      "at": "budget",
+      "size": "big"
+     },
+     {
+      "text": "Everyone makes them",
+      "at": "every",
+      "size": "small"
+     },
+     {
+      "text": "One more drop",
+      "at": "drop",
+      "size": "huge"
+     }
+    ],
+    "hud": {
+     "level": 2,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "budget"
+    },
+    {
+     "kind": "whoosh",
+     "at": "ocean"
+    }
+   ]
+  },
+  {
+   "id": "w4",
+   "scene": "case",
+   "speaker": "narrator",
+   "transition": "zoom",
+   "say": "Then one topic broke through. Billionaires.",
+   "events": {
+    "topic": {
+     "word": "topic"
+    },
+    "billionaires": {
+     "word": "Billionaires"
+    }
+   },
+   "params": {
+    "kicker": "The breakthrough",
+    "name": "Billionaires",
+    "line": "The topic that broke through",
+    "prop": "trophy",
+    "at": "billionaires",
+    "lineAt": "billionaires",
+    "bg": "night",
+    "hud": {
+     "level": 2,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "topic"
+    },
+    {
+     "kind": "boom",
+     "at": "billionaires"
+    }
+   ]
+  },
+  {
+   "id": "t2",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "And that one topic changed the whole plan.",
+   "events": {
+    "one": {
+     "word": "one"
+    },
+    "changed": {
+     "word": "changed"
+    },
+    "plan": {
+     "word": "plan"
+    }
+   },
+   "params": {
+    "bg": "plum",
+    "prop": "trophy",
+    "lines": [
+     {
+      "text": "One topic",
+      "at": "one",
+      "size": "big"
+     },
+     {
+      "text": "changed",
+      "at": "changed",
+      "size": "small"
+     },
+     {
+      "text": "the whole plan",
+      "at": "plan",
+      "size": "huge"
+     }
+    ],
+    "kicker": "Next · The hit",
+    "hud": {
+     "level": 2,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "one"
+    },
+    {
+     "kind": "whoosh",
+     "at": "plan"
+    }
+   ],
+   "role": "tease"
+  },
+  {
+   "id": "ch3",
+   "scene": "chapter",
+   "speaker": "narrator",
+   "transition": "fade",
+   "say": "Chapter three. The hit.",
+   "events": {
+    "hit": {
+     "word": "hit"
+    }
+   },
+   "params": {
+    "kicker": "Chapter three",
+    "title": "The hit",
+    "hud": {
+     "level": 3,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ]
+  },
+  {
+   "id": "h1",
+   "scene": "headline",
+   "speaker": "narrator",
+   "transition": "zoom",
+   "say": "The best Short asked why billionaires can't just pay a small tax. It reached {fact6} views.",
+   "events": {
+    "billionaires": {
+     "word": "billionaires"
+    },
+    "tax": {
+     "word": "tax"
+    },
+    "reached": {
+     "word": "reached"
+    },
+    "views": {
+     "word": "views"
+    }
+   },
+   "params": {
+    "kicker": "THE BEST SHORT",
+    "title": "Why can't billionaires just pay a tax?",
+    "figure": "{fact6}",
+    "figureAt": "views",
+    "label": "Views",
+    "hud": {
+     "level": 3,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "billionaires"
+    },
+    {
+     "kind": "kaching",
+     "at": "views"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "h2",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "And it wasn't alone. Why billionaires never sell their stock, what a billion looks like in hundred dollar bills: every Short past a thousand views was about huge sums of money.",
+   "events": {
+    "alone": {
+     "word": "alone"
+    },
+    "stock": {
+     "word": "stock"
+    },
+    "billion": {
+     "word": "billion"
+    },
+    "thousand": {
+     "word": "thousand"
+    },
+    "money": {
+     "word": "money"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "teal"
+    },
+    "items": [
+     {
+      "id": "trophy",
+      "prop": "trophy",
+      "x": 0.5,
+      "size": 0.36,
+      "label": "Best Shorts"
+     },
+     {
+      "id": "cash",
+      "prop": "cash",
+      "x": 0.2,
+      "size": 0.26,
+      "label": "Never sell",
+      "hidden": true
+     },
+     {
+      "id": "stack",
+      "prop": "cash",
+      "x": 0.8,
+      "size": 0.26,
+      "label": "A billion",
+      "hidden": true
+     },
+     {
+      "id": "phone",
+      "prop": "phone",
+      "x": 0.5,
+      "size": 0.18,
+      "y": 0.25,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "trophy",
+      "sec": 0
+     },
+     {
+      "do": "enter",
+      "target": "cash",
+      "at": "stock"
+     },
+     {
+      "do": "enter",
+      "target": "stack",
+      "at": "billion"
+     },
+     {
+      "do": "grow",
+      "target": "trophy",
+      "scale": 1.15,
+      "at": "thousand"
+     },
+     {
+      "do": "multiply",
+      "target": "stack",
+      "n": 3,
+      "at": "money"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "money",
+      "size": "medium",
+      "on": "trophy",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 3,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "stock"
+    },
+    {
+     "kind": "pop",
+     "at": "billion"
+    },
+    {
+     "kind": "ding",
+     "at": "thousand"
+    },
+    {
+     "kind": "kaching",
+     "at": "money"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "h3",
+   "scene": "stats",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "The numbers were clear. Big money titles had a median of {fact15} views. Personal budget titles, just {fact16}.",
+   "events": {
+    "numbers": {
+     "word": "numbers"
+    },
+    "big": {
+     "word": "Big"
+    },
+    "median": {
+     "word": "median"
+    },
+    "budget": {
+     "word": "budget"
+    }
+   },
+   "params": {
+    "title": "October, by topic",
+    "kicker": "Median views",
+    "bg": "cream",
+    "prop": "trophy",
+    "at": "numbers",
+    "cards": [
+     {
+      "label": "Big money",
+      "text": "{fact15}",
+      "at": "big",
+      "color": "green"
+     },
+     {
+      "label": "Personal budget",
+      "text": "{fact16}",
+      "at": "budget",
+      "color": "red"
+     }
+    ],
+    "hud": {
+     "level": 3,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "numbers"
+    },
+    {
+     "kind": "pop-high",
+     "at": "big"
+    },
+    {
+     "kind": "pop-high",
+     "at": "median"
+    }
+   ],
+   "role": "level"
+  },
+  {
+   "id": "h3b",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "The audience surprised me too. Stories about one country stayed small. Stories about famous people and companies travelled all over the world.",
+   "events": {
+    "audience": {
+     "word": "audience"
+    },
+    "country": {
+     "word": "country"
+    },
+    "small": {
+     "word": "small"
+    },
+    "famous": {
+     "word": "famous"
+    },
+    "world": {
+     "word": "world"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "teal"
+    },
+    "items": [
+     {
+      "id": "cloud",
+      "prop": "cloud",
+      "x": 0.5,
+      "size": 0.36,
+      "label": "The whole world"
+     },
+     {
+      "id": "note",
+      "prop": "note",
+      "x": 0.18,
+      "size": 0.22,
+      "label": "One country",
+      "hidden": true
+     },
+     {
+      "id": "trophy",
+      "prop": "trophy",
+      "x": 0.82,
+      "size": 0.28,
+      "label": "Famous names",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "cloud",
+      "sec": 0
+     },
+     {
+      "do": "enter",
+      "target": "note",
+      "at": "country"
+     },
+     {
+      "do": "shrink",
+      "target": "note",
+      "scale": 0.7,
+      "at": "small"
+     },
+     {
+      "do": "enter",
+      "target": "trophy",
+      "at": "famous"
+     },
+     {
+      "do": "grow",
+      "target": "cloud",
+      "scale": 1.15,
+      "at": "world"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "world",
+      "size": "medium",
+      "on": "cloud",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 3,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "country"
+    },
+    {
+     "kind": "fail",
+     "at": "small"
+    },
+    {
+     "kind": "ding",
+     "at": "famous"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "h4",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Its best day brought in {fact13} views. So the system rewrote its own rules: big money first, global stories, and Shorts under thirty five seconds.",
+   "events": {
+    "day": {
+     "word": "day"
+    },
+    "views": {
+     "word": "views"
+    },
+    "rewrote": {
+     "word": "rewrote"
+    },
+    "money": {
+     "word": "money"
+    },
+    "global": {
+     "word": "global"
+    },
+    "seconds": {
+     "word": "seconds"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "chart",
+      "prop": "chart",
+      "x": 0.5,
+      "size": 0.4,
+      "label": "Best day"
+     },
+     {
+      "id": "robot",
+      "prop": "robot",
+      "x": 0.18,
+      "size": 0.28,
+      "label": "New rules",
+      "hidden": true
+     },
+     {
+      "id": "cash",
+      "prop": "cash",
+      "x": 0.82,
+      "size": 0.24,
+      "label": "Big money",
+      "hidden": true
+     },
+     {
+      "id": "cal",
+      "prop": "calendar",
+      "x": 0.5,
+      "size": 0.18,
+      "y": 0.25,
+      "label": "Short and fast",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "chart",
+      "sec": 0
+     },
+     {
+      "do": "grow",
+      "target": "chart",
+      "scale": 1.15,
+      "at": "views"
+     },
+     {
+      "do": "enter",
+      "target": "robot",
+      "at": "rewrote"
+     },
+     {
+      "do": "enter",
+      "target": "cash",
+      "at": "money"
+     },
+     {
+      "do": "enter",
+      "target": "cal",
+      "how": "drop",
+      "at": "seconds"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "seconds",
+      "size": "medium",
+      "on": "chart",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 3,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "views"
+    },
+    {
+     "kind": "whoosh",
+     "at": "rewrote"
+    },
+    {
+     "kind": "pop",
+     "at": "money"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "t3",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "It felt like the channel had found its thing. Then the views fell off a cliff.",
+   "events": {
+    "felt": {
+     "word": "felt"
+    },
+    "thing": {
+     "word": "thing"
+    },
+    "fell": {
+     "word": "fell"
+    },
+    "cliff": {
+     "word": "cliff"
+    }
+   },
+   "params": {
+    "bg": "slate",
+    "prop": "chart",
+    "lines": [
+     {
+      "text": "Found its thing",
+      "at": "thing",
+      "size": "big"
+     },
+     {
+      "text": "Then",
+      "at": "fell",
+      "size": "small"
+     },
+     {
+      "text": "off a cliff",
+      "at": "cliff",
+      "size": "huge"
+     }
+    ],
+    "kicker": "Next · The crash",
+    "hud": {
+     "level": 3,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "felt"
+    },
+    {
+     "kind": "whoosh",
+     "at": "cliff"
+    }
+   ],
+   "role": "tease"
+  },
+  {
+   "id": "ch4",
+   "scene": "chapter",
+   "speaker": "narrator",
+   "transition": "fade",
+   "say": "Chapter four. The crash.",
+   "events": {
+    "crash": {
+     "word": "crash"
+    }
+   },
+   "params": {
+    "kicker": "Chapter four",
+    "title": "The crash",
+    "hud": {
+     "level": 4,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "In early November, views dropped by about nine in ten. The median Short got just {fact7} views.",
+   "events": {
+    "november": {
+     "word": "November"
+    },
+    "dropped": {
+     "word": "dropped"
+    },
+    "nine": {
+     "word": "nine"
+    },
+    "median": {
+     "word": "median"
+    },
+    "views": {
+     "word": "views"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "night",
+     "tint": "purple"
+    },
+    "items": [
+     {
+      "id": "chart",
+      "prop": "chart",
+      "x": 0.5,
+      "size": 0.4,
+      "label": "Views"
+     },
+     {
+      "id": "bug",
+      "prop": "bug",
+      "x": 0.2,
+      "size": 0.24,
+      "label": "Something broke",
+      "hidden": true
+     },
+     {
+      "id": "phone",
+      "prop": "phone",
+      "x": 0.8,
+      "size": 0.26,
+      "label": "The median Short",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "chart",
+      "sec": 0
+     },
+     {
+      "do": "shrink",
+      "target": "chart",
+      "scale": 0.6,
+      "at": "dropped"
+     },
+     {
+      "do": "shake",
+      "target": "chart",
+      "at": "nine"
+     },
+     {
+      "do": "enter",
+      "target": "phone",
+      "at": "median"
+     },
+     {
+      "do": "enter",
+      "target": "bug",
+      "how": "drop",
+      "at": "views"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "views",
+      "size": "medium",
+      "on": "chart",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 4,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "dropped"
+    },
+    {
+     "kind": "boom",
+     "at": "nine"
+    },
+    {
+     "kind": "pop",
+     "at": "median"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "c2",
+   "scene": "stats",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "YouTube Studio told me why. On the worst Short, {fact14} of the people it was shown to swiped away, most of them in the very first second.",
+   "events": {
+    "youtube": {
+     "word": "YouTube"
+    },
+    "worst": {
+     "word": "worst"
+    },
+    "swiped": {
+     "word": "swiped"
+    },
+    "second": {
+     "word": "second"
+    }
+   },
+   "params": {
+    "title": "Why it dropped",
+    "kicker": "The first second",
+    "bg": "coral",
+    "prop": "phone",
+    "at": "youtube",
+    "cards": [
+     {
+      "label": "Swiped away",
+      "text": "{fact14}",
+      "at": "swiped",
+      "color": "red"
+     },
+     {
+      "label": "From the feed",
+      "text": "{fact12}",
+      "at": "second",
+      "color": "blue"
+     }
+    ],
+    "hud": {
+     "level": 4,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "youtube"
+    },
+    {
+     "kind": "pop-high",
+     "at": "worst"
+    },
+    {
+     "kind": "pop-high",
+     "at": "swiped"
+    }
+   ],
+   "role": "level"
+  },
+  {
+   "id": "c3",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "And things broke. {fact11} videos failed the checks and were thrown away. One night GitHub skipped the uploads for nine hours, and a slot went empty.",
+   "events": {
+    "broke": {
+     "word": "broke"
+    },
+    "failed": {
+     "word": "failed"
+    },
+    "thrown": {
+     "word": "thrown"
+    },
+    "github": {
+     "word": "GitHub"
+    },
+    "hours": {
+     "word": "hours"
+    },
+    "empty": {
+     "word": "empty"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "night",
+     "tint": "purple"
+    },
+    "items": [
+     {
+      "id": "bug",
+      "prop": "bug",
+      "x": 0.5,
+      "size": 0.36,
+      "label": "Bugs"
+     },
+     {
+      "id": "shield",
+      "prop": "shield",
+      "x": 0.18,
+      "size": 0.28,
+      "state": "red",
+      "label": "Failed checks",
+      "hidden": true
+     },
+     {
+      "id": "cal",
+      "prop": "calendar",
+      "x": 0.82,
+      "size": 0.28,
+      "label": "Empty slot",
+      "hidden": true
+     },
+     {
+      "id": "box",
+      "prop": "box",
+      "x": 0.5,
+      "size": 0.16,
+      "y": 0.25,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "bug",
+      "sec": 0
+     },
+     {
+      "do": "shake",
+      "target": "bug",
+      "at": "broke"
+     },
+     {
+      "do": "enter",
+      "target": "shield",
+      "at": "failed"
+     },
+     {
+      "do": "enter",
+      "target": "box",
+      "how": "drop",
+      "at": "thrown"
+     },
+     {
+      "do": "enter",
+      "target": "cal",
+      "at": "github"
+     },
+     {
+      "do": "shake",
+      "target": "cal",
+      "at": "empty"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "empty",
+      "size": "medium",
+      "on": "bug",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 4,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "fail",
+     "at": "broke"
+    },
+    {
+     "kind": "pop",
+     "at": "failed"
+    },
+    {
+     "kind": "boom",
+     "at": "empty"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "c3b",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Long videos were even harder. One of them was shown to a hundred people, and only four clicked.",
+   "events": {
+    "long": {
+     "word": "Long"
+    },
+    "harder": {
+     "word": "harder"
+    },
+    "hundred": {
+     "word": "hundred"
+    },
+    "four": {
+     "word": "four"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "studio",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "laptop",
+      "prop": "laptop",
+      "x": 0.5,
+      "size": 0.4,
+      "label": "A long video"
+     },
+     {
+      "id": "play",
+      "prop": "play",
+      "x": 0.2,
+      "size": 0.22,
+      "label": "Shown",
+      "hidden": true
+     },
+     {
+      "id": "bug",
+      "prop": "bug",
+      "x": 0.82,
+      "size": 0.2,
+      "label": "Few clicks",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "laptop",
+      "sec": 0
+     },
+     {
+      "do": "shake",
+      "target": "laptop",
+      "at": "harder"
+     },
+     {
+      "do": "enter",
+      "target": "play",
+      "at": "hundred"
+     },
+     {
+      "do": "enter",
+      "target": "bug",
+      "how": "drop",
+      "at": "four"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "four",
+      "size": "medium",
+      "on": "laptop",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 4,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "hundred"
+    },
+    {
+     "kind": "fail",
+     "at": "four"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "c4",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "That's the thing about an automated channel. It doesn't fail loudly. It fails quietly, at three in the morning.",
+   "events": {
+    "automated": {
+     "word": "automated"
+    },
+    "loudly": {
+     "word": "loudly"
+    },
+    "quietly": {
+     "word": "quietly"
+    },
+    "morning": {
+     "word": "morning"
+    }
+   },
+   "params": {
+    "bg": "night",
+    "prop": "bug",
+    "lines": [
+     {
+      "text": "An automated channel",
+      "at": "automated",
+      "size": "small"
+     },
+     {
+      "text": "fails loudly",
+      "at": "loudly",
+      "size": "big",
+      "strike": "quietly"
+     },
+     {
+      "text": "fails quietly",
+      "at": "quietly",
+      "size": "huge"
+     },
+     {
+      "text": "at three in the morning",
+      "at": "morning",
+      "size": "small"
+     }
+    ],
+    "hud": {
+     "level": 4,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "automated"
+    },
+    {
+     "kind": "whoosh",
+     "at": "morning"
+    }
+   ]
+  },
+  {
+   "id": "t4",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "So I gave it something most channels don't have: a team of robots that fixes itself.",
+   "events": {
+    "gave": {
+     "word": "gave"
+    },
+    "channels": {
+     "word": "channels"
+    },
+    "robots": {
+     "word": "robots"
+    },
+    "itself": {
+     "word": "itself"
+    }
+   },
+   "params": {
+    "bg": "teal",
+    "prop": "robot",
+    "lines": [
+     {
+      "text": "Most channels don't have",
+      "at": "channels",
+      "size": "small"
+     },
+     {
+      "text": "a team of robots",
+      "at": "robots",
+      "size": "big"
+     },
+     {
+      "text": "that fixes itself",
+      "at": "itself",
+      "size": "huge"
+     }
+    ],
+    "kicker": "Next · The agents",
+    "hud": {
+     "level": 4,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "gave"
+    },
+    {
+     "kind": "whoosh",
+     "at": "itself"
+    }
+   ],
+   "role": "tease"
+  },
+  {
+   "id": "ch5",
+   "scene": "chapter",
+   "speaker": "narrator",
+   "transition": "fade",
+   "say": "Chapter five. The agents.",
+   "events": {
+    "agents": {
+     "word": "agents"
+    }
+   },
+   "params": {
+    "kicker": "Chapter five",
+    "title": "The agents",
+    "hud": {
+     "level": 5,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ]
+  },
+  {
+   "id": "a1",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Every night, eight AI agents wake up. An auditor checks every number against YouTube. A researcher finds what people are watching this week.",
+   "events": {
+    "night": {
+     "word": "night"
+    },
+    "eight": {
+     "word": "eight"
+    },
+    "auditor": {
+     "word": "auditor"
+    },
+    "researcher": {
+     "word": "researcher"
+    },
+    "week": {
+     "word": "week"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "night",
+     "tint": "purple"
+    },
+    "items": [
+     {
+      "id": "aud",
+      "prop": "robot",
+      "x": 0.2,
+      "size": 0.3,
+      "label": "Auditor"
+     },
+     {
+      "id": "res",
+      "prop": "robot",
+      "x": 0.5,
+      "size": 0.3,
+      "state": "green",
+      "label": "Researcher",
+      "hidden": true
+     },
+     {
+      "id": "lap",
+      "prop": "laptop",
+      "x": 0.8,
+      "size": 0.28,
+      "label": "YouTube data",
+      "hidden": true
+     },
+     {
+      "id": "chart",
+      "prop": "chart",
+      "x": 0.5,
+      "size": 0.16,
+      "y": 0.25,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "aud",
+      "sec": 0
+     },
+     {
+      "do": "multiply",
+      "target": "aud",
+      "n": 2,
+      "at": "eight"
+     },
+     {
+      "do": "grow",
+      "target": "aud",
+      "scale": 1.12,
+      "at": "auditor"
+     },
+     {
+      "do": "enter",
+      "target": "res",
+      "at": "researcher"
+     },
+     {
+      "do": "enter",
+      "target": "lap",
+      "at": "week"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "week",
+      "size": "medium",
+      "on": "aud",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 5,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "night"
+    },
+    {
+     "kind": "pop",
+     "at": "auditor"
+    },
+    {
+     "kind": "pop",
+     "at": "researcher"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "a2",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "An improver tests one change at a time on half the Shorts, and keeps it only if viewers stay longer. A reviewer watches our own videos frame by frame and writes down every mistake.",
+   "events": {
+    "improver": {
+     "word": "improver"
+    },
+    "half": {
+     "word": "half"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "reviewer": {
+     "word": "reviewer"
+    },
+    "frame": {
+     "word": "frame"
+    },
+    "mistake": {
+     "word": "mistake"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "imp",
+      "prop": "robot",
+      "x": 0.25,
+      "size": 0.32,
+      "state": "green",
+      "label": "Improver"
+     },
+     {
+      "id": "phone",
+      "prop": "phone",
+      "x": 0.5,
+      "size": 0.28,
+      "label": "Half the Shorts",
+      "hidden": true
+     },
+     {
+      "id": "rev",
+      "prop": "robot",
+      "x": 0.78,
+      "size": 0.3,
+      "label": "Reviewer",
+      "hidden": true
+     },
+     {
+      "id": "clap",
+      "prop": "clapper",
+      "x": 0.5,
+      "size": 0.16,
+      "y": 0.25,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "imp",
+      "sec": 0
+     },
+     {
+      "do": "enter",
+      "target": "phone",
+      "at": "half"
+     },
+     {
+      "do": "tick",
+      "target": "phone",
+      "at": "keeps"
+     },
+     {
+      "do": "enter",
+      "target": "rev",
+      "at": "reviewer"
+     },
+     {
+      "do": "enter",
+      "target": "clap",
+      "how": "drop",
+      "at": "frame"
+     },
+     {
+      "do": "stamp",
+      "target": "clap",
+      "at": "mistake"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "mistake",
+      "size": "medium",
+      "on": "imp",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 5,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "improver"
+    },
+    {
+     "kind": "ding",
+     "at": "keeps"
+    },
+    {
+     "kind": "pop",
+     "at": "reviewer"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "a3",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "And no agent can change anything on its own. A guard checks every edit first, and runs the tests.",
+   "events": {
+    "agent": {
+     "word": "agent"
+    },
+    "own": {
+     "word": "own"
+    },
+    "guard": {
+     "word": "guard"
+    },
+    "edit": {
+     "word": "edit"
+    },
+    "tests": {
+     "word": "tests"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "teal"
+    },
+    "items": [
+     {
+      "id": "shield",
+      "prop": "shield",
+      "x": 0.5,
+      "size": 0.4,
+      "label": "The guard"
+     },
+     {
+      "id": "robot",
+      "prop": "robot",
+      "x": 0.2,
+      "size": 0.28,
+      "label": "An agent"
+     },
+     {
+      "id": "bug",
+      "prop": "bug",
+      "x": 0.82,
+      "size": 0.22,
+      "label": "A bad edit",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "shield",
+      "sec": 0
+     },
+     {
+      "do": "shake",
+      "target": "robot",
+      "at": "own"
+     },
+     {
+      "do": "grow",
+      "target": "shield",
+      "scale": 1.15,
+      "at": "guard"
+     },
+     {
+      "do": "enter",
+      "target": "bug",
+      "at": "edit"
+     },
+     {
+      "do": "cross",
+      "target": "bug",
+      "at": "tests"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "tests",
+      "size": "medium",
+      "on": "shield",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 5,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "guard"
+    },
+    {
+     "kind": "fail",
+     "at": "tests"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "a4",
+   "scene": "stats",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "In thirty days the agents tried {fact8} changes to their own system. The guard let {fact9} through and blocked {fact10}.",
+   "events": {
+    "thirty": {
+     "word": "thirty"
+    },
+    "tried": {
+     "word": "tried"
+    },
+    "through": {
+     "word": "through"
+    },
+    "blocked": {
+     "word": "blocked"
+    }
+   },
+   "params": {
+    "title": "Agents fixing the system",
+    "kicker": "Thirty days",
+    "bg": "sand",
+    "prop": "shield",
+    "at": "thirty",
+    "cards": [
+     {
+      "label": "Changes tried",
+      "text": "{fact8}",
+      "at": "tried",
+      "color": "blue"
+     },
+     {
+      "label": "Merged",
+      "text": "{fact9}",
+      "at": "through",
+      "color": "green"
+     },
+     {
+      "label": "Blocked",
+      "text": "{fact10}",
+      "at": "blocked",
+      "color": "red"
+     }
+    ],
+    "hud": {
+     "level": 5,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "thirty"
+    },
+    {
+     "kind": "pop-high",
+     "at": "tried"
+    },
+    {
+     "kind": "pop-high",
+     "at": "through"
+    }
+   ],
+   "role": "level"
+  },
+  {
+   "id": "t5",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "So after thirty days, here's the honest scoreboard.",
+   "events": {
+    "after": {
+     "word": "after"
+    },
+    "honest": {
+     "word": "honest"
+    },
+    "scoreboard": {
+     "word": "scoreboard"
+    }
+   },
+   "params": {
+    "bg": "plum",
+    "prop": "chart",
+    "lines": [
+     {
+      "text": "Thirty days later",
+      "at": "after",
+      "size": "small"
+     },
+     {
+      "text": "The honest",
+      "at": "honest",
+      "size": "big"
+     },
+     {
+      "text": "scoreboard",
+      "at": "scoreboard",
+      "size": "huge"
+     }
+    ],
+    "kicker": "Next · Scoreboard",
+    "hud": {
+     "level": 5,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "after"
+    },
+    {
+     "kind": "whoosh",
+     "at": "scoreboard"
+    }
+   ],
+   "role": "tease"
+  },
+  {
+   "id": "ch6",
+   "scene": "chapter",
+   "speaker": "narrator",
+   "transition": "fade",
+   "say": "Chapter six. Scoreboard.",
+   "events": {
+    "scoreboard": {
+     "word": "Scoreboard"
+    }
+   },
+   "params": {
+    "kicker": "Chapter six",
+    "title": "Scoreboard",
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "start"
+    }
+   ]
+  },
+  {
+   "id": "r1",
+   "scene": "headline",
+   "speaker": "narrator",
+   "transition": "zoom",
+   "say": "Altogether, my faceless channel got {fact3} views.",
+   "events": {
+    "altogether": {
+     "word": "Altogether"
+    },
+    "faceless": {
+     "word": "faceless"
+    },
+    "views": {
+     "word": "views"
+    }
+   },
+   "params": {
+    "kicker": "THIRTY DAYS",
+    "title": "Total views, every video",
+    "figure": "{fact3}",
+    "figureAt": "views",
+    "label": "Views",
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "altogether"
+    },
+    {
+     "kind": "kaching",
+     "at": "views"
+    }
+   ],
+   "role": "turn"
+  },
+  {
+   "id": "r2",
+   "scene": "stats",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "The system made {fact1} videos and published {fact2}. They were watched for {fact5} hours and brought in {fact4} subscribers.",
+   "events": {
+    "made": {
+     "word": "made"
+    },
+    "published": {
+     "word": "published"
+    },
+    "watched": {
+     "word": "watched"
+    },
+    "subscribers": {
+     "word": "subscribers"
+    }
+   },
+   "params": {
+    "title": "The scoreboard",
+    "kicker": "Thirty days",
+    "bg": "night",
+    "prop": "trophy",
+    "at": "made",
+    "cards": [
+     {
+      "label": "Made",
+      "text": "{fact1}",
+      "at": "made",
+      "color": "blue"
+     },
+     {
+      "label": "Published",
+      "text": "{fact2}",
+      "at": "published",
+      "color": "green"
+     },
+     {
+      "label": "Hours watched",
+      "text": "{fact5}",
+      "at": "watched",
+      "color": "orange"
+     },
+     {
+      "label": "Subscribers",
+      "text": "{fact4}",
+      "at": "subscribers",
+      "color": "purple"
+     }
+    ],
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "made"
+    },
+    {
+     "kind": "pop-high",
+     "at": "published"
+    },
+    {
+     "kind": "pop-high",
+     "at": "watched"
+    }
+   ],
+   "role": "level"
+  },
+  {
+   "id": "verdict",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "So, a win or a flop? Honestly, both. As a channel, it is still tiny. As a machine that makes, checks and improves its own videos every single day, it is the most interesting thing I have ever built.",
+   "events": {
+    "win": {
+     "word": "win"
+    },
+    "flop": {
+     "word": "flop"
+    },
+    "both": {
+     "word": "both"
+    },
+    "tiny": {
+     "word": "tiny"
+    },
+    "machine": {
+     "word": "machine"
+    },
+    "built": {
+     "word": "built"
+    }
+   },
+   "params": {
+    "bg": "night",
+    "prop": "robot",
+    "lines": [
+     {
+      "text": "A win or a flop?",
+      "at": "win",
+      "size": "small"
+     },
+     {
+      "text": "Both",
+      "at": "both",
+      "size": "huge"
+     },
+     {
+      "text": "A tiny channel",
+      "at": "tiny",
+      "size": "small",
+      "strike": "machine"
+     },
+     {
+      "text": "An amazing machine",
+      "at": "machine",
+      "size": "big"
+     }
+    ],
+    "kicker": "The verdict",
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "win"
+    },
+    {
+     "kind": "whoosh",
+     "at": "built"
+    }
+   ]
+  },
+  {
+   "id": "l1",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Lesson one: automation makes videos. It does not make people care.",
+   "events": {
+    "automation": {
+     "word": "automation"
+    },
+    "videos": {
+     "word": "videos"
+    },
+    "care": {
+     "word": "care"
+    }
+   },
+   "params": {
+    "bg": "coral",
+    "prop": "gear",
+    "lines": [
+     {
+      "text": "Lesson one",
+      "at": "automation",
+      "size": "small"
+     },
+     {
+      "text": "Automation makes videos",
+      "at": "videos",
+      "size": "big"
+     },
+     {
+      "text": "not people care",
+      "at": "care",
+      "size": "huge"
+     }
+    ],
+    "kicker": "What I learned",
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "automation"
+    },
+    {
+     "kind": "whoosh",
+     "at": "care"
+    }
+   ]
+  },
+  {
+   "id": "l2",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Lesson two: the topic is the whole game. Big money beat budget tips every single time.",
+   "events": {
+    "topic": {
+     "word": "topic"
+    },
+    "game": {
+     "word": "game"
+    },
+    "money": {
+     "word": "money"
+    },
+    "budget": {
+     "word": "budget"
+    },
+    "time": {
+     "word": "time"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "teal"
+    },
+    "items": [
+     {
+      "id": "trophy",
+      "prop": "trophy",
+      "x": 0.3,
+      "size": 0.34,
+      "label": "Big money"
+     },
+     {
+      "id": "phone",
+      "prop": "phone",
+      "x": 0.72,
+      "size": 0.28,
+      "label": "Budget tips",
+      "hidden": true
+     },
+     {
+      "id": "cash",
+      "prop": "cash",
+      "x": 0.3,
+      "size": 0.18,
+      "y": 0.25,
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "trophy",
+      "sec": 0
+     },
+     {
+      "do": "grow",
+      "target": "trophy",
+      "scale": 1.12,
+      "at": "game"
+     },
+     {
+      "do": "enter",
+      "target": "cash",
+      "at": "money"
+     },
+     {
+      "do": "enter",
+      "target": "phone",
+      "at": "budget"
+     },
+     {
+      "do": "shrink",
+      "target": "phone",
+      "scale": 0.8,
+      "at": "time"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "time",
+      "size": "medium",
+      "on": "trophy",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "topic"
+    },
+    {
+     "kind": "kaching",
+     "at": "money"
+    },
+    {
+     "kind": "fail",
+     "at": "budget"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "l3",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Lesson three: the first second decides everything. {fact12} of my views came from the Shorts feed, where people swipe in a heartbeat.",
+   "events": {
+    "second": {
+     "word": "second"
+    },
+    "everything": {
+     "word": "everything"
+    },
+    "feed": {
+     "word": "feed"
+    },
+    "swipe": {
+     "word": "swipe"
+    },
+    "heartbeat": {
+     "word": "heartbeat"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "studio",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "phone",
+      "prop": "phone",
+      "x": 0.5,
+      "size": 0.4,
+      "label": "The Shorts feed"
+     },
+     {
+      "id": "play",
+      "prop": "play",
+      "x": 0.2,
+      "size": 0.22,
+      "label": "First second",
+      "hidden": true
+     },
+     {
+      "id": "bug",
+      "prop": "bug",
+      "x": 0.8,
+      "size": 0.2,
+      "label": "Swipe",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "phone",
+      "sec": 0
+     },
+     {
+      "do": "enter",
+      "target": "play",
+      "at": "second"
+     },
+     {
+      "do": "grow",
+      "target": "phone",
+      "scale": 1.12,
+      "at": "feed"
+     },
+     {
+      "do": "enter",
+      "target": "bug",
+      "at": "swipe"
+     },
+     {
+      "do": "shake",
+      "target": "phone",
+      "at": "heartbeat"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "heartbeat",
+      "size": "medium",
+      "on": "phone",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "second"
+    },
+    {
+     "kind": "whoosh",
+     "at": "swipe"
+    }
+   ],
+   "role": "build"
+  },
+  {
+   "id": "l4",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "And lesson four: measure, don't guess. Every rule this channel follows today came from its own numbers.",
+   "events": {
+    "measure": {
+     "word": "measure"
+    },
+    "guess": {
+     "word": "guess"
+    },
+    "rule": {
+     "word": "rule"
+    },
+    "numbers": {
+     "word": "numbers"
+    }
+   },
+   "params": {
+    "bg": "teal",
+    "prop": "chart",
+    "lines": [
+     {
+      "text": "Measure",
+      "at": "measure",
+      "size": "huge"
+     },
+     {
+      "text": "don't guess",
+      "at": "guess",
+      "size": "big"
+     },
+     {
+      "text": "Every rule came from",
+      "at": "rule",
+      "size": "small"
+     },
+     {
+      "text": "its own numbers",
+      "at": "numbers",
+      "size": "big"
+     }
+    ],
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "measure"
+    },
+    {
+     "kind": "whoosh",
+     "at": "numbers"
+    }
+   ]
+  },
+  {
+   "id": "n1",
+   "scene": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Next, it learns from videos I pick myself, and tests one change a week. I'll show you how that goes.",
+   "events": {
+    "learns": {
+     "word": "learns"
+    },
+    "pick": {
+     "word": "pick"
+    },
+    "tests": {
+     "word": "tests"
+    },
+    "week": {
+     "word": "week"
+    },
+    "show": {
+     "word": "show"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "office",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "laptop",
+      "prop": "laptop",
+      "x": 0.5,
+      "size": 0.38,
+      "label": "Next month"
+     },
+     {
+      "id": "robot",
+      "prop": "robot",
+      "x": 0.2,
+      "size": 0.28,
+      "state": "green",
+      "label": "Learns",
+      "hidden": true
+     },
+     {
+      "id": "cal",
+      "prop": "calendar",
+      "x": 0.8,
+      "size": 0.26,
+      "label": "One change a week",
+      "hidden": true
+     }
+    ],
+    "actions": [
+     {
+      "do": "glow",
+      "target": "laptop",
+      "sec": 0
+     },
+     {
+      "do": "enter",
+      "target": "robot",
+      "at": "learns"
+     },
+     {
+      "do": "enter",
+      "target": "cal",
+      "at": "tests"
+     },
+     {
+      "do": "tick",
+      "target": "cal",
+      "at": "week"
+     },
+     {
+      "do": "grow",
+      "target": "laptop",
+      "scale": 1.1,
+      "at": "show"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "show",
+      "size": "medium",
+      "on": "laptop",
+      "move": true
+     }
+    ],
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "learns"
+    },
+    {
+     "kind": "ding",
+     "at": "week"
+    }
+   ],
+   "role": "payoff"
+  },
+  {
+   "id": "advice",
+   "scene": "type",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "And if you want to try this yourself, start with the topic, not the tools. The tools are the easy part now.",
+   "events": {
+    "try": {
+     "word": "try"
+    },
+    "topic": {
+     "word": "topic"
+    },
+    "tools": {
+     "word": "tools"
+    },
+    "easy": {
+     "word": "easy"
+    }
+   },
+   "params": {
+    "bg": "teal",
+    "prop": "laptop",
+    "lines": [
+     {
+      "text": "Try it yourself?",
+      "at": "try",
+      "size": "small"
+     },
+     {
+      "text": "Start with the topic",
+      "at": "topic",
+      "size": "big"
+     },
+     {
+      "text": "not the tools",
+      "at": "tools",
+      "size": "small"
+     },
+     {
+      "text": "The tools are easy now",
+      "at": "easy",
+      "size": "huge"
+     }
+    ],
+    "kicker": "My advice",
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "try"
+    },
+    {
+     "kind": "whoosh",
+     "at": "easy"
+    }
+   ]
+  },
+  {
+   "id": "end",
+   "scene": "end",
+   "speaker": "narrator",
+   "transition": "fade",
+   "say": "Would you let AI run your channel? Tell me in the comments.",
+   "events": {
+    "ai": {
+     "word": "AI"
+    },
+    "channel": {
+     "word": "channel"
+    },
+    "comments": {
+     "word": "comments"
+    }
+   },
+   "params": {
+    "cta": "Would you let AI run your channel? Comment below",
+    "follow": "Follow for the next thirty days",
+    "assumption": "Numbers from YouTube Studio and my own dashboard, mid November",
+    "hud": {
+     "level": 6,
+     "noCounter": true
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "comments"
+    }
+   ],
+   "role": "end"
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook3",
+  "sec": 3.0,
+  "words": "*Claude* ran my channel",
+  "figure": "{fact3}",
+  "tag": "Views in thirty days",
+  "angle": "number",
+  "who": "rohan"
+ }
+}
