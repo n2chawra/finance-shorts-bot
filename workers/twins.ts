@@ -145,6 +145,7 @@ async function animatedOf(ctx: Ctx, topic: string, cands: Candidate[]): Promise<
     parts.push({ text: `Video ${c.youtubeId}:` }, ...imgs.map((data) => ({ inline_data: { mime_type: "image/jpeg", data } })));
   }
   const out = new Map<string, string>();
+  console.error(`stills: ${ids.length} of ${cands.length} candidates have frames${ctx.outOfQuota ? " (out of quota)" : ""}`);
   if (!ids.length || ctx.outOfQuota) return out;
   try {
     const r = await generate([{ text: STILLS_PROMPT(topic, titles) }, ...parts], { key: ctx.key, models: ctx.cfg.models, json: true, schema: STILLS_SCHEMA, timeoutMs: 120_000, maxTimeouts: 2,
@@ -172,6 +173,7 @@ async function twinsFor(ctx: Ctx, topic: string, query: string, exclude: Set<str
   });
   const mine = new Set([...exclude, ...(ctx.myChannel ? [ctx.myChannel] : [])]);
   const ranked = rankCandidates(cands, ctx.cfg.search, mine).slice(0, ctx.cfg.stillsFor);
+  console.error(`search "${query}": ${ids.length} found, ${details.length} with details, ${ranked.length} pass length/views (${cands.map((c) => `${c.youtubeId} ${c.durationSec}s ${c.views}v`).slice(0, 12).join("; ")})`);
   const animated = await animatedOf(ctx, topic, ranked);
   const out: { id: string; sheet: Sheet }[] = [];
   for (const c of ranked) {
