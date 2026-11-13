@@ -306,7 +306,7 @@ async function main() {
   const cfg = TwinsConfig.parse(readJson(path.join(ROOT, "config", "twins.json"), {}));
   const yt = new YouTube(await accessToken());
   const ctx: Ctx = { cfg, key, yt, now: new Date(), myChannel: await yt.myChannel(), medians: new Map(), seen: new Map(),
-    decodesLeft: cfg.nightly.decodes, outOfQuota: false, tokens: 0, models: {}, errors: [] };
+    decodesLeft: Number(process.env.TWINS_MAX_DECODES ?? cfg.nightly.decodes), outOfQuota: false, tokens: 0, models: {}, errors: [] };
   const ours = await ourShorts();
   const exclude = new Set(ours.map((o) => o.youtubeId));
   const done: Record<string, unknown> = {};

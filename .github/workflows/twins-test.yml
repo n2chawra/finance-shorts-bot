@@ -1,4 +1,4 @@
-# BRANCH-ONLY end-to-end test (run 4) of twins.yml (deleted before shipping). Twins (owner, 2026-11-13): the most-watched animated Shorts on our topics, watched by Gemini into shot
+# BRANCH-ONLY end-to-end test (run 5: one video) of twins.yml (deleted before shipping). Twins (owner, 2026-11-13): the most-watched animated Shorts on our topics, watched by Gemini into shot
 # sheets, so the writer learns how winners tell a topic before writing it, and every published Short
 # gets a gap report against its twins (workers/twins.ts). Runs after research (23:47 IST) and before
 # the 04:07 video run. Our own analysis goes to main (improvement/twins/); YouTube titles and views go
@@ -41,18 +41,12 @@ jobs:
         working-directory: workers
       - run: npm run generate
         working-directory: workers
-      - name: Probe one of our Shorts (timing)
+      - name: One topic, one competitor Short watched
         working-directory: workers
-        timeout-minutes: 8
-        run: npm run twins -- probe | tee -a "$GITHUB_STEP_SUMMARY"
-      - name: Calibrate on our own Shorts
-        working-directory: workers
-        timeout-minutes: 30
-        run: npm run twins -- calibrate | tee -a "$GITHUB_STEP_SUMMARY"
-      - name: Night
-        working-directory: workers
-        timeout-minutes: 35
-        run: npm run twins -- night "$RUNNER_TEMP/twins-data" | tee -a "$GITHUB_STEP_SUMMARY"
+        timeout-minutes: 12
+        env:
+          TWINS_MAX_DECODES: "1"
+        run: npm run twins -- topic 2026-11-13-petrol-pump-keeps-4-40-a-litre 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Keep twins.json for review
         if: always()
         uses: actions/upload-artifact@v4
@@ -68,4 +62,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -q -m "Twins test: shot sheets, briefs and gap reports (branch only)"
-          git push -q origin HEAD:claude/fervent-clarke-q7cx4o
+          git pull -q --rebase origin claude/fervent-clarke-q7cx4o && git push -q origin HEAD:claude/fervent-clarke-q7cx4o
