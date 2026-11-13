@@ -75,6 +75,10 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     the one a viewer would send a friend, never a textbook result ("$20,815 vs $29,605 at 4%").
   - **Read `generator/prompts/lessons.md` before writing**: what the reviewer found wrong in our last
     videos, each with the fix. Don't repeat any of them.
+  - **Read `generator/prompts/studied.md`** (when it exists): techniques from videos the owner picked
+    on the dashboard's Study page, each measured against ours by code (owner, 2026-11-13). Use every
+    one that fits this story, in our own words, cast and pictures, and say in your report which you
+    used. Never their words, characters, art or story beat for beat. A lesson or hard rule wins.
   - **Every beat shows a named, specific thing** (the cinema, the coffee shop, the rent cheque), never
     a text chip standing in for one ("LIFE INSURANCE", "TEAM STAKES").
   - **The cast act it as a short skit** when they are part of the story (Rohan as the member who

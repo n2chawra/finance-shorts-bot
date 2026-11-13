@@ -31,6 +31,14 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   - **Lessons from our own videos**: the reviewer agent (`agents/reviewer.md`, Tue and Fri 21:07 IST)
     watches recent Shorts frame by frame next to their drop points and writes each mistake that cost
     viewers into `generator/prompts/lessons.md`, which the writer follows and QA enforces.
+  - **Study (owner, 2026-11-13)**: the owner pastes YouTube links (Shorts or long videos) on the
+    dashboard's Study page, optionally naming one of ours to compare with (else the closest title).
+    `study.yml` (started by the dashboard, every 2 h as a fallback; `workers/study.ts`) has Google's
+    Gemini API (free tier, no billing, `GEMINI_API_KEY`) watch it and ours into shot sheets
+    (`workers/lib/sheets.ts`; it read 5 of 5 of our Shorts right on 13 Nov), code measures both, and
+    it applies automatically: techniques to `generator/prompts/studied.md` (the writer follows it),
+    the biggest look difference as a weekly-loop challenger (`from: study <date>`). Technique only:
+    never their words, characters or art.
   - **Every Short is true** (owner, 2026-11-12, after watching our best Shorts): sourced facts about a
     real, named person or business, no invented example (a hard rule in `generator/story.py`), no
     reaction shots, a payoff that is the story's most surprising figure.

@@ -87,6 +87,8 @@ Done when: everything above works on a phone.
       owns the video's look behind flags, Scout's findings reach the improver, evaluator per format
       with retention for look changes, monthly review with one-click setting proposals, daily market
       data and comments, channel profile
+- [x] Study page (2026-11-13): the owner links YouTube videos; Gemini watches them and ours, code
+      compares, techniques go to the writer and the biggest look difference to the weekly loop
 - [ ] Owner: cloud environment network access for research page reads (claude.ai → Environments)
 - [ ] First monthly review (1 Nov 2026) read and its proposals decided
 
@@ -110,6 +112,10 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
 - Cross-post to Instagram Reels
 
 ## Log
+- 2026-11-13: Study page. A fully automatic competitor finder was built and dropped the same day: YouTube
+  blocks cloud browsers, and on our topics the most-watched Shorts were mostly talking heads, so the
+  owner now picks the videos to learn from. Gemini watches public YouTube links itself (free tier,
+  about 20 requests a day a model).
 - 2026-10-13: Prototype renderer (`reference/rahul_vs_amit_v2.py`) produced a 60 s Short with
   synthesized music + SFX. Starting M1.
 - 2026-10-13: Repo scaffolded, Poppins added, local toolchain set up (Python 3.14 venv at

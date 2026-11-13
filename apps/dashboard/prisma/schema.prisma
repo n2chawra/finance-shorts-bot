@@ -97,6 +97,7 @@ model Video {
   orderLocked   Boolean     @default(false)
   qaChecks      QaCheck[]
   feedback      Feedback[]
+  studies       Study[]
   upload        Upload?
   agentRuns     AgentRun[]
 
@@ -323,6 +324,28 @@ model Feedback {
   response    String?
   addressedAt DateTime?
   createdAt   DateTime  @default(now())
+
+  @@index([status, createdAt])
+}
+
+/// A YouTube video the owner linked on the Study page (2026-11-13): Gemini watches it and one of our
+/// videos (picked by the owner, or the closest title), workers/study.ts compares them and applies the
+/// techniques (generator/prompts/studied.md) and the biggest look difference (a weekly-loop challenger).
+model Study {
+  id        String    @id @default(cuid())
+  url       String
+  youtubeId String
+  title     String?
+  channel   String?
+  note      String?
+  videoId   String?
+  video     Video?    @relation(fields: [videoId], references: [id], onDelete: SetNull)
+  matchedBy String? // owner | auto
+  status    String    @default("queued") // queued | watching | done | failed
+  error     String?
+  report    Json?
+  createdAt DateTime  @default(now())
+  doneAt    DateTime?
 
   @@index([status, createdAt])
 }

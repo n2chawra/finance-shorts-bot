@@ -1,0 +1,51 @@
+# Study (owner, 2026-11-13): YouTube videos the owner links on the dashboard's Study page. Gemini (free
+# tier) watches each and the closest of ours; the techniques go to generator/prompts/studied.md (the
+# writer follows it) and the biggest look difference joins the weekly loop as a challenger
+# (workers/study.ts). Started by the dashboard when a link is added; every two hours in case not.
+name: Study
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 */2 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: study
+
+jobs:
+  study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/package-lock.json
+      - run: npm ci
+        working-directory: workers
+      - run: npm run generate
+        working-directory: workers
+      - name: Apply migrations
+        working-directory: workers
+        run: npm run migrate
+      - name: Study the waiting links
+        working-directory: workers
+        run: npm run study | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Commit what was learned
+        if: always()
+        run: |
+          git add improvement/study generator/prompts/studied.md improvement/cycle/backlog.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Study: what the owner's linked videos taught"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done

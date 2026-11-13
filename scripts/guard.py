@@ -54,7 +54,10 @@ UNLOCK: dict[str, list[str]] = {
 FORBID = [
     ".github/*", "workers/*", "scripts/*", "agents/*", "CLAUDE.md", "PLAN.md", "netlify.toml", "config/settings.json",
     "history/*", "videos/*", "metrics/*", "improvement/evaluate.py",
-    "channel/*", "config/market.json",   # who the channel is for and what it watches: the owner's "improvement/tests/*", "improvement/merge-log.json",
+    "channel/*", "config/market.json",   # who the channel is for and what it watches: the owner's
+    "improvement/tests/*", "improvement/merge-log.json",   # were inside the comment above until 2026-11-13
+    # the Study page's results are written by workers/study.ts, never by hand (owner, 2026-11-13)
+    "improvement/study/*", "generator/prompts/studied.md",
     "generator/settings.py", "generator/variety.py", "generator/prompts/routine.md", "generator/tests/test_variety.py",
     "apps/dashboard/prisma/*", "apps/dashboard/src/lib/auth.ts", "apps/dashboard/src/middleware.ts",
     "apps/dashboard/src/app/api/login/*", "apps/dashboard/src/lib/prisma.ts", "apps/dashboard/src/lib/live-stats.ts",

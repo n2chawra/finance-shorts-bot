@@ -5,7 +5,7 @@ import { SMOKE_PASSWORD } from "../playwright.config";
 /** Every page loads on sample data without console errors, plus the flows the owner uses daily. */
 const PAGES: [string, RegExp][] = [
   ["/", /Overview/], ["/queue", /Queue/], ["/calendar", /Calendar/], ["/videos", /Videos/], ["/videos/v030", /.+/],
-  ["/analytics", /Analytics/], ["/growth", /Growth loop/], ["/agents", /Agents/], ["/notifications", /Notifications/],
+  ["/analytics", /Analytics/], ["/study", /Study/], ["/growth", /Growth loop/], ["/agents", /Agents/], ["/notifications", /Notifications/],
   ["/feedback", /Feedback/], ["/settings", /Settings/],
 ];
 
@@ -604,4 +604,18 @@ test("no page scrolls sideways on a phone", async ({ page, isMobile }) => {
     const over = (await page.evaluate(() => document.documentElement.scrollWidth)) - page.viewportSize()!.width;
     expect(over, `${path} is ${over}px wider than the screen`).toBeLessThanOrEqual(1);
   }
+});
+
+test("the study page takes a link and shows what was learned and applied", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/study");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Study", { timeout: 30_000 });
+  await expect(page.getByText("What they do").first()).toBeVisible();
+  await expect(page.getByText(/Queued as a weekly test/)).toBeVisible();
+  await page.getByLabel("YouTube link").fill("not a link");
+  await page.getByRole("button", { name: "Study it" }).click();
+  await expect(page.getByText("That isn't a YouTube video link").first()).toBeVisible();
+  await page.getByLabel("YouTube link").fill("https://youtube.com/shorts/abcdefghijk");
+  await page.getByRole("button", { name: "Study it" }).click();
+  await expect(page.getByText("https://youtube.com/shorts/abcdefghijk")).toBeVisible();
 });

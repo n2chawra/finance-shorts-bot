@@ -44,3 +44,15 @@ export async function dispatchPublish(minGapMin = 0): Promise<Result> {
   if (res.status !== 204) return { dispatched: false, why: `GitHub refused the dispatch: ${res.status} ${(await res.text()).slice(0, 200)}` };
   return { dispatched: true, why: "Publish started" };
 }
+
+/** Start any workflow of this repository on main (the Study page starts study.yml). */
+export async function dispatchWorkflow(file: string, inputs: Record<string, string> = {}): Promise<Result> {
+  const e = env();
+  if (!e) return { dispatched: false, why: "GITHUB_ACTIONS_TOKEN or GITHUB_REPOSITORY is not set" };
+  const res = await fetch(`${API}/repos/${e.repo}/actions/workflows/${file}/dispatches`, {
+    method: "POST", headers: { ...headers(e.token), "content-type": "application/json" },
+    body: JSON.stringify({ ref: "main", inputs }),
+  });
+  if (res.status !== 204) return { dispatched: false, why: `GitHub refused the dispatch: ${res.status} ${(await res.text()).slice(0, 200)}` };
+  return { dispatched: true, why: `${file} started` };
+}

@@ -140,6 +140,11 @@ Never weaken the gates that keep them honest: the story checks, `picture_problem
 `device_problems`, the thumbnail rules. Long videos are few: say in your report when a long-video
 experiment is waiting only for data (Studio paused, or long videos not public).
 
+- **Studies (owner, 2026-11-13):** a challenger whose `from` is `study <date>` came from a video the owner
+  picked on the Study page (`improvement/study/<id>.json` has both shot sheets and the measured
+  difference). Test it like any other. When it needs something our kit can't draw yet (a style, a
+  camera move, a transition), build that behind a flag first and say so in your report.
+
 ## 4. The weekly loop: start the next Shorts challenger (owner, 2026-11-12)
 Shorts get **one** running experiment, never more (`scripts/guard.py` blocks a second). When none is
 running (a verdict closed the last one in section 1, tonight or earlier), start the next one tonight:

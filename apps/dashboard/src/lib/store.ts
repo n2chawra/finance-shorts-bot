@@ -16,6 +16,9 @@ import * as impactDb from "./impact.db";
 import * as impactSample from "./impact.sample";
 import type { Impact } from "./impact";
 import type { Fmt, Range, Studio, VideoStudio } from "./studio-schema";
+import type { Study, StudyCreate } from "./study";
+import * as studyDb from "./study.db";
+import * as studySample from "./study.sample";
 
 const useDb = Boolean(process.env.DATABASE_URL);
 
@@ -51,3 +54,7 @@ export const decideNotification = async (id: string, decision: "approved" | "dec
 export const getAgents = async (): Promise<Agents> => (useDb ? autoDb.getAgents() : autoSample.getAgents());
 export const getGrowth = async (): Promise<Growth> => (useDb ? autoDb.getGrowth() : autoSample.getGrowth());
 export const getImpact = async (): Promise<Impact> => (useDb ? impactDb.getImpact() : impactSample.getImpact());
+
+// the Study page (owner, 2026-11-13): YouTube videos the owner links, watched by Gemini and compared with ours
+export const listStudies = async (): Promise<Study[]> => (useDb ? studyDb.listStudies() : studySample.listStudies());
+export const addStudy = async (s: StudyCreate): Promise<Study | { error: string }> => (useDb ? studyDb.addStudy(s) : studySample.addStudy(s));

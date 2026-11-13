@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
 import { getJson, send } from "./api";
+import { StudySchema } from "./study";
 import { AgentsSchema, AnalyticsSchema, FeedbackSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
 import { ImpactSchema } from "./impact";
 import { StudioSchema, VideoStudioSchema, type Fmt, type Range } from "./studio-schema";
@@ -37,6 +38,10 @@ function useWrite<T>(fn: (arg: T) => Promise<void>) {
 export const useVideoAction = () => useWrite(({ id, action, reason }: { id: string; action: VideoAction; reason?: string }) =>
   send("POST", `/api/videos/${id}/${action}`, reason ? { reason } : undefined));
 export const useEditorOrder = () => useWrite(() => send("POST", "/api/queue/editor-order"));
+export const useStudies = () => useQuery({ queryKey: ["studies"], queryFn: () => getJson("/api/study", z.array(StudySchema)),
+  // while a study is being watched, look again every 20 s
+  refetchInterval: (q) => (q.state.data?.some((s) => s.status === "queued" || s.status === "watching") ? 20_000 : false) });
+export const useAddStudy = () => useWrite((s: { url: string; videoId?: string; note?: string }) => send("POST", "/api/study", s));
 export const useFeedback = (videoId?: string) => useQuery({ queryKey: ["feedback", videoId ?? "all"],
   queryFn: () => getJson(`/api/feedback${videoId ? `?videoId=${encodeURIComponent(videoId)}` : ""}`, z.array(FeedbackSchema)) });
 export const useAddFeedback = () => useWrite((f: Partial<FeedbackCreate> & Pick<FeedbackCreate, "kind" | "text">) => send("POST", "/api/feedback", f));
