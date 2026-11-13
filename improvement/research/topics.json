@@ -1774,117 +1774,6 @@
       ]
     },
     {
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-11-02",
-      "expires": "2027-01-31",
-      "status": "rejected",
-      "format": "short",
-      "id": "2026-11-02-a-trillion-at-a-million-a-day",
-      "title": "Spend a million dollars every day. How long until a trillion runs out?",
-      "category": "wealth",
-      "priority": "normal",
-      "stories": [
-        "money_scale"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "I Tried to Spend $1 TRILLION in One Day",
-        "views": 252019,
-        "url": "https://youtube.com/shorts/kQCpFXtG9RE"
-      },
-      "hook": "Spend a million dollars a day. When do you run out of a trillion?",
-      "angle": "$1 billion at $1 million a day lasts under three years; $1 trillion lasts about 2,740 years: since the Roman Empire. The gap between a billion and a trillion people can't picture. What-if shape.",
-      "why_now": "Money-scale Shorts are our second-best format (What $1 billion looks like: 1,105 views). The trillion-a-day Short is still growing in the market data (252K, up from 133K a week ago).",
-      "maths": "share (total 1000000000, parts 1, per_year 365000000) for the billion; share (total 1000000000000, parts 1, per_year 365000000) for the trillion; compare (a trillion.years, b billion.years) and show only its ratio ('1000x longer'): its a/b/diff figures are formatted as money.",
-      "verify": [
-        "$1M a day is a thought experiment; no real person's fortune"
-      ],
-      "sources": [
-        "https://youtube.com/shorts/kQCpFXtG9RE",
-        "https://www.uniladtech.com/news/video-shows-what-trillion-dollars-looks-like-musk-055088-20260616"
-      ],
-      "reason": "no sourced facts about a real, named person or business: since 12 Nov every Short is true (generator/story.py invented_problems fails an assumed example), research 2026-11-13"
-    },
-    {
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-11-02",
-      "expires": "2027-01-31",
-      "status": "rejected",
-      "format": "short",
-      "id": "2026-11-02-rich-vs-poor-the-50k-car",
-      "title": "Rich vs poor: the same $50,000 for a car",
-      "category": "car",
-      "priority": "high",
-      "stories": [
-        "rich_vs_poor"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "rich vs poor parents buying you a car",
-        "views": 8800000,
-        "url": "https://www.youtube.com/shorts/vGQZuTfIWnU"
-      },
-      "hook": "Poor guy buys a fifty-thousand-dollar car. Rich guy buys a twenty-five-thousand-dollar car. Ten years later?",
-      "angle": "One finances a $50,000 car at an assumed 8% over 5 years; the other buys a $25,000 car and invests the other $25,000 at an assumed 7% for 10 years. The gap after a decade.",
-      "why_now": "'Rich Mindset vs Poor Mindset' is the fastest Short in this week's market data (2.2M in 4 days); rich_vs_poor scores 1.48x on our channel and we have no car moment in it.",
-      "maths": "emi (amount 50000, rate_pct 8, years 5); lumpsum (amount 25000, rate_pct 7, years 10); compare where the bigger result goes first.",
-      "verify": [
-        "8% and 7% are assumptions, not offers or promised returns"
-      ],
-      "sources": [
-        "https://www.youtube.com/shorts/vGQZuTfIWnU",
-        "https://youtube.com/shorts/CyFFcGeHLAU"
-      ],
-      "reason": "no sourced facts about a real, named person or business: since 12 Nov every Short is true (generator/story.py invented_problems fails an assumed example), research 2026-11-13"
-    },
-    {
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-11-02",
-      "expires": "2027-01-31",
-      "status": "rejected",
-      "format": "short",
-      "id": "2026-11-02-wedding-on-a-personal-loan",
-      "title": "A ₹10 lakh wedding on a personal loan: what it really costs",
-      "category": "loan",
-      "priority": "high",
-      "stories": [
-        "trap_alert"
-      ],
-      "currency": "INR",
-      "reach": "local",
-      "reach_reason": {
-        "kind": "demand"
-      },
-      "demand": {
-        "title": "The Middle Class EMI Trap",
-        "views": 7000000,
-        "url": "https://www.youtube.com/shorts/eZH7eYaJIKk"
-      },
-      "hook": "A ten lakh rupee wedding. The bank's bill comes later.",
-      "angle": "₹10 lakh borrowed at an assumed 14% for 5 years: the EMI, the total paid and the interest on a single day's party. Indian wedding season runs November-December.",
-      "why_now": "Indian wedding season begins after Diwali; the market's 'Gold Trap: gold loans and wedding pressure' (86K) shows the talk. The EMI-trap reference has 7M views. The feed has had no local topic since 26 Oct.",
-      "maths": "emi (amount 1000000, rate_pct 14, years 5).",
-      "verify": [
-        "14% is an assumption within typical Indian personal-loan rates, not an offer"
-      ],
-      "sources": [
-        "https://www.youtube.com/shorts/eZH7eYaJIKk",
-        "https://www.youtube.com/watch?v=N2cV2tOI6BM"
-      ],
-      "reason": "no sourced facts about a real, named person or business: since 12 Nov every Short is true (generator/story.py invented_problems fails an assumed example), research 2026-11-13"
-    },
-    {
       "id": "2026-11-02-one-dollar-salary-true-tax",
       "title": "Paid $1 a year: how the richest pay almost no income tax",
       "category": "tax",
@@ -3703,7 +3592,8 @@
       ],
       "found": "2026-11-13",
       "expires": "2027-02-11",
-      "status": "new"
+      "status": "rejected",
+      "reason": "Facts out of date: the Centre cut petrol excise by Rs 10 a litre from 26-27 Mar 2026 and the Delhi retail price moved to Rs 97.77 (15 May 2026) and about Rs 102 (Jul 2026), so the 1 Oct 2025 Indian Oil build-up is no longer the latest and no newer official sheet was found (research 2026-11-14). Re-add with a current IOCL/BPCL/HPCL Delhi build-up."
     },
     {
       "id": "2026-11-13-mrbeast-300m-of-the-top-50-creators-billion",
@@ -3821,6 +3711,187 @@
       ],
       "found": "2026-11-13",
       "expires": "2027-02-11",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-14-us-owes-40-trillion-your-share",
+      "format": "short",
+      "title": "The US owes $40.58 trillion: about $118,700 for every American, and $7.78 trillion of it is owed to itself",
+      "category": "government",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "money_scale"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Who does the US Owe its $35 Trillion debt? (National Debt Explained)",
+        "views": 1975759,
+        "url": "https://www.youtube.com/watch?v=qjPaYQdqO9A",
+        "channel": "Concerning Reality",
+        "channelSubs": 237000,
+        "outlier": 8.3
+      },
+      "hook": "America owes forty point five eight trillion dollars, and it went up twenty-four billion in a single day.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Split one giant number into pieces you can hold, like our best recent Short ('Split one giant fortune with everyone', 922 views, 121% viewed): per American, per day of growth, and the twist that $7.78T of it is money the government owes its own trust funds. Neutral and factual: no blame, no forecast.",
+      "why_now": "The debt passed $40T in Aug 2026 and keeps setting records (Treasury, 10 Nov 2026); '$40 trillion' Shorts are drawing 244K-840K views this autumn.",
+      "maths": "share (total 40584130080272.89, parts 341784857) per American (facts {total: 1, parts: 5}); difference 40584130080272.89 - 40559796589243.37 in one day (facts {a: 1, b: 4}); percent 7783925853694.14 of 40584130080272.89 owed to itself (facts {part: 3, whole: 1}).",
+      "facts": [
+        {
+          "label": "Total US public debt outstanding",
+          "value": 40584130080272.89,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-11-10",
+          "source": "US Treasury, Debt to the Penny",
+          "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2",
+          "latest": true,
+          "checked": "2026-11-14"
+        },
+        {
+          "label": "US debt held by the public",
+          "value": 32800204226578.75,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-11-10",
+          "source": "US Treasury, Debt to the Penny",
+          "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2",
+          "latest": true,
+          "checked": "2026-11-14"
+        },
+        {
+          "label": "US intragovernmental holdings (debt the government owes its own trust funds)",
+          "value": 7783925853694.14,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-11-10",
+          "source": "US Treasury, Debt to the Penny",
+          "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2",
+          "latest": true,
+          "checked": "2026-11-14"
+        },
+        {
+          "label": "Total US public debt outstanding, the business day before",
+          "value": 40559796589243.37,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-11-09",
+          "source": "US Treasury, Debt to the Penny",
+          "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2",
+          "latest": true,
+          "checked": "2026-11-14"
+        },
+        {
+          "label": "US resident population, July 1 2025 (Vintage 2025 estimate)",
+          "value": 341784857,
+          "unit": "count",
+          "as_of": "2025-07-01",
+          "source": "US Census Bureau",
+          "url": "https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html",
+          "latest": true,
+          "checked": "2026-11-14"
+        }
+      ],
+      "verify": [
+        "use the newest Debt to the Penny record on the day of writing (dataset page https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny); if newer, replace both day figures and keep them consecutive business days",
+        "the one-day rise is one day's change, not an average: say 'in one day', never 'every day'",
+        "per-American figure is the total divided by the Census estimate: say 'about', no claim that anyone personally owes it"
+      ],
+      "sources": [
+        "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
+        "https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html",
+        "https://www.gpb.org/news/2026/08/19/the-us-debt-tops-record-shattering-40-trillion-yes-t"
+      ],
+      "found": "2026-11-14",
+      "expires": "2026-12-14",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-14-zuckerberg-paid-1-meta-spent-25-million",
+      "format": "short",
+      "title": "Meta pays Mark Zuckerberg $1 a year, then spent $25.1 million keeping him safe",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "billionaire_question"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Billionaires who go to insane lengths so you never see their faces",
+        "views": 267488,
+        "url": "https://youtube.com/shorts/_D8qqr9yA28",
+        "channel": "Ahmeds Business",
+        "channelSubs": 88200,
+        "outlier": 3.0
+      },
+      "hook": "Mark Zuckerberg's salary at Meta last year was one dollar. His other pay was twenty-five point one million.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Why would a $1 CEO cost his company $25 million? The proxy's answer: an 'overall security program' (guards at his homes, private-jet travel, a $14M pre-tax security allowance). Per day it is about $68,800, more than many people earn in a year. Legal, disclosed, voted on. Differs from the 12 Nov Bezos Short (salary vs Amazon's bill): this one is the $1 vs $25.1M gap and where it goes; schedule it at least a week after that one.",
+      "why_now": "Bezos's 'takes $81,840, guarding him costs...' Short drew 240 views on day one, our best of 12 Nov; billionaire-privacy Shorts are breaking out (267K at 3x subscribers, market.json). The 2026 proxy (16 Apr 2026) is the newest.",
+      "maths": "share (total 25125903, parts 365) per day (facts {total: 2}); rate 25125903 / 1 times his salary (facts {a: 2, b: 1}).",
+      "facts": [
+        {
+          "label": "Mark Zuckerberg's salary from Meta, 2025",
+          "value": 1,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Meta 2026 proxy statement (SEC DEF 14A)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm",
+          "latest": true,
+          "checked": "2026-11-14"
+        },
+        {
+          "label": "Mark Zuckerberg's all other compensation from Meta, 2025 (mostly his security program)",
+          "value": 25125903,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Meta 2026 proxy statement (SEC DEF 14A)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm",
+          "latest": true,
+          "checked": "2026-11-14"
+        },
+        {
+          "label": "Annual pre-tax security allowance Meta gives Zuckerberg",
+          "value": 14,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-04-16",
+          "source": "Meta 2026 proxy statement (SEC DEF 14A)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm",
+          "latest": true,
+          "checked": "2026-11-14"
+        },
+        {
+          "label": "Mark Zuckerberg's all other compensation from Meta, 2024",
+          "value": 27219873,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2024-12-31",
+          "source": "Meta 2026 proxy statement (SEC DEF 14A)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm",
+          "latest": true,
+          "checked": "2026-11-14"
+        }
+      ],
+      "verify": [
+        "'all other compensation' covers more than security (footnote 4 in the Summary Compensation Table): say 'mostly security', not 'all security'",
+        "the $14M allowance is part of the $25.1M, not on top of it"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm"
+      ],
+      "found": "2026-11-14",
+      "expires": "2027-02-12",
       "status": "new"
     }
   ]
