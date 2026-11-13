@@ -322,7 +322,7 @@
      },
      {
       "at": "slept",
-      "size": "close",
+      "size": "medium",
       "on": "laptop",
       "move": true
      }
@@ -691,7 +691,7 @@
      },
      {
       "at": "number",
-      "size": "close",
+      "size": "medium",
       "on": "laptop",
       "move": true
      }
@@ -819,7 +819,7 @@
      },
      {
       "at": "thousands",
-      "size": "close",
+      "size": "medium",
       "on": "laptop",
       "move": true
      }
@@ -938,7 +938,7 @@
      },
      {
       "at": "second",
-      "size": "close",
+      "size": "medium",
       "on": "plan",
       "move": true
      }
@@ -1058,7 +1058,7 @@
      },
      {
       "at": "frame",
-      "size": "close",
+      "size": "medium",
       "on": "clap",
       "move": true
      }
@@ -1267,7 +1267,7 @@
      },
      {
       "at": "subscription",
-      "size": "close",
+      "size": "medium",
       "on": "cloud",
       "move": true
      }
@@ -1390,7 +1390,7 @@
      },
      {
       "at": "phone",
-      "size": "close",
+      "size": "medium",
       "on": "phone",
       "move": true
      }
@@ -1664,7 +1664,7 @@
      },
      {
       "at": "dozen",
-      "size": "close",
+      "size": "medium",
       "on": "phone",
       "move": true
      }
@@ -2001,7 +2001,7 @@
      },
      {
       "at": "money",
-      "size": "close",
+      "size": "medium",
       "on": "trophy",
       "move": true
      }
@@ -2177,7 +2177,7 @@
      },
      {
       "at": "world",
-      "size": "close",
+      "size": "medium",
       "on": "cloud",
       "move": true
      }
@@ -2300,7 +2300,7 @@
      },
      {
       "at": "seconds",
-      "size": "close",
+      "size": "medium",
       "on": "chart",
       "move": true
      }
@@ -2495,7 +2495,7 @@
      },
      {
       "at": "views",
-      "size": "close",
+      "size": "medium",
       "on": "chart",
       "move": true
      }
@@ -2534,6 +2534,9 @@
     "worst": {
      "word": "worst"
     },
+    "people": {
+     "word": "people"
+    },
     "swiped": {
      "word": "swiped"
     },
@@ -2549,14 +2552,20 @@
     "at": "youtube",
     "cards": [
      {
+      "label": "Worst Short",
+      "text": "Swiped",
+      "at": "worst",
+      "color": "orange"
+     },
+     {
       "label": "Swiped away",
       "text": "{fact14}",
       "at": "swiped",
       "color": "red"
      },
      {
-      "label": "From the feed",
-      "text": "{fact12}",
+      "label": "When",
+      "text": "First second",
       "at": "second",
       "color": "blue"
      }
@@ -2577,7 +2586,7 @@
     },
     {
      "kind": "pop-high",
-     "at": "swiped"
+     "at": "people"
     }
    ],
    "role": "level"
@@ -2683,7 +2692,7 @@
      },
      {
       "at": "empty",
-      "size": "close",
+      "size": "medium",
       "on": "bug",
       "move": true
      }
@@ -2785,7 +2794,7 @@
      },
      {
       "at": "four",
-      "size": "close",
+      "size": "medium",
       "on": "laptop",
       "move": true
      }
@@ -3047,7 +3056,7 @@
      },
      {
       "at": "week",
-      "size": "close",
+      "size": "medium",
       "on": "aud",
       "move": true
      }
@@ -3174,7 +3183,7 @@
      },
      {
       "at": "mistake",
-      "size": "close",
+      "size": "medium",
       "on": "imp",
       "move": true
      }
@@ -3283,7 +3292,7 @@
      },
      {
       "at": "tests",
-      "size": "close",
+      "size": "medium",
       "on": "shield",
       "move": true
      }
@@ -3795,7 +3804,7 @@
      },
      {
       "at": "time",
-      "size": "close",
+      "size": "medium",
       "on": "trophy",
       "move": true
      }
@@ -3905,7 +3914,7 @@
      },
      {
       "at": "heartbeat",
-      "size": "close",
+      "size": "medium",
       "on": "phone",
       "move": true
      }
@@ -4073,7 +4082,7 @@
      },
      {
       "at": "show",
-      "size": "close",
+      "size": "medium",
       "on": "laptop",
       "move": true
      }

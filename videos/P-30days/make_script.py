@@ -26,7 +26,7 @@ def beat(id, scene, say, words, params, lvl, sounds=(), transition="cut", **extr
     b.update(extra); beats.append(b)
 def build(id, say, words, world, items, actions, lvl, cam=None, sounds=(), transition="match", **extra):
     params = {"world": world, "items": items, "actions": actions,
-              "camera": cam or [{"sec": 0, "size": "wide", "on": "all"}, {"at": k(words[-1]), "size": "close", "on": items[0]["id"], "move": True}]}
+              "camera": cam or [{"sec": 0, "size": "wide", "on": "all"}, {"at": k(words[-1]), "size": "medium", "on": items[0]["id"], "move": True}]}
     extra.setdefault("role", "build"); beat(id, "build", say, words, params, lvl, sounds, transition, **extra)
 def chapter(n, title):
     say = f"Chapter {['one','two','three','four','five','six'][n-1]}. {title}."
@@ -163,7 +163,7 @@ build("c1", s, ["November", "dropped", "nine", "median", "views"], NIGHT,
       [act("dropped", "shrink", "chart", scale=0.6), act("nine", "shake", "chart"), act("median", "enter", "phone"), act("views", "enter", "bug", how="drop")], 4,
       sounds=[("fail", "dropped"), ("boom", "nine"), ("pop", "median")])
 s = "YouTube Studio told me why. On the worst Short, {fact14} of the people it was shown to swiped away, most of them in the very first second."
-stats("c2", s, ["YouTube", "worst", "swiped", "second"], "Why it dropped", "The first second", [("Swiped away", "{fact14}", "swiped", "red"), ("From the feed", "{fact12}", "second", "blue")], "coral", "phone", 4)
+stats("c2", s, ["YouTube", "worst", "people", "swiped", "second"], "Why it dropped", "The first second", [("Worst Short", "Swiped", "worst", "orange"), ("Swiped away", "{fact14}", "swiped", "red"), ("When", "First second", "second", "blue")], "coral", "phone", 4)
 s = "And things broke. {fact11} videos failed the checks and were thrown away. One night GitHub skipped the uploads for nine hours, and a slot went empty."
 build("c3", s, ["broke", "failed", "thrown", "GitHub", "hours", "empty"], NIGHT,
       [it("bug", "bug", 0.5, 0.36, "Bugs"), it("shield", "shield", 0.18, 0.28, "Failed checks", True, state="red"), it("cal", "calendar", 0.82, 0.28, "Empty slot", True), it("box", "box", 0.5, 0.16, None, True, y=0.25)],
