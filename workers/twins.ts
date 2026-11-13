@@ -106,7 +106,8 @@ async function sheetOf(ctx: Ctx, youtubeId: string, ours: string | null = null):
   if (ctx.outOfQuota || ctx.decodesLeft <= 0) return null;
   ctx.decodesLeft--;
   const partsAt = (fps: number): Part[] => [{ file_data: { file_uri: watchUrl(youtubeId) }, ...(fps !== 1 ? { video_metadata: { fps } } : {}) }, { text: SHEET_PROMPT }];
-  const ask = (fps: number) => generate(partsAt(fps), { key: ctx.key, models: ctx.cfg.models, json: true, schema: SHEET_SCHEMA, timeoutMs: 180_000 });
+  const log = (l: string) => console.error(`${new Date().toISOString().slice(11, 19)} sheet ${youtubeId}: ${l}`);
+  const ask = (fps: number) => generate(partsAt(fps), { key: ctx.key, models: ctx.cfg.models, json: true, schema: SHEET_SCHEMA, timeoutMs: 150_000, maxTimeouts: 2, log });
   try {
     const r = await ask(ctx.cfg.fps).catch(async (e) => {
       // YouTube links may not take a custom frame rate: fall back to Gemini's default for the rest of the night
@@ -144,7 +145,8 @@ async function animatedOf(ctx: Ctx, cands: Candidate[]): Promise<Map<string, str
   const out = new Map<string, string>();
   if (!ids.length || ctx.outOfQuota) return out;
   try {
-    const r = await generate([{ text: STILLS_PROMPT(ids) }, ...parts], { key: ctx.key, models: ctx.cfg.models, json: true, schema: STILLS_SCHEMA, timeoutMs: 120_000 });
+    const r = await generate([{ text: STILLS_PROMPT(ids) }, ...parts], { key: ctx.key, models: ctx.cfg.models, json: true, schema: STILLS_SCHEMA, timeoutMs: 120_000, maxTimeouts: 2,
+      log: (l) => console.error(`${new Date().toISOString().slice(11, 19)} stills: ${l}`) });
     ctx.tokens += r.tokens ?? 0;
     for (const a of StillsAnswer.parse(parseJson(r.text))) if (a.animated) out.set(a.id, a.style);
   } catch (e) {
@@ -307,6 +309,15 @@ async function main() {
 
   let cal = readJson<{ passed: boolean; writtenAt: string } | null>(path.join(DIR, "calibration.json"), null);
   const stale = !cal || ctx.now.getTime() - Date.parse(cal.writtenAt) > 30 * DAY_MS;
+  if (cmd === "probe") {
+    // one of our Shorts (or a given YouTube id): how long Gemini takes and what it returns, nothing kept
+    const o = arg ? { videoId: null, youtubeId: arg } : ours[0];
+    if (!o) throw new Error("no Short to probe");
+    const t0 = Date.now();
+    const s = await sheetOf({ ...ctx, decodesLeft: 1 }, o.youtubeId, o.videoId);
+    console.log(JSON.stringify({ youtubeId: o.youtubeId, seconds: Math.round((Date.now() - t0) / 1000), ok: !!s, measures: s ? measures(s) : null, errors: ctx.errors }, null, 2));
+    return;
+  }
   if (cmd === "calibrate" || stale) { cal = await runCalibration(ctx, ours); done.calibration = cal.passed; }
   if (cmd === "night" || cmd === "topic") {
     if (!cal?.passed) {

@@ -37,8 +37,11 @@ export type GeminiOptions = {
   /** JSON output: the response is valid JSON (and follows `schema` when given) */
   json?: boolean;
   schema?: unknown;
+  /** give up after this many timeouts across models (a slow video is slow on every model) */
+  maxTimeouts?: number;
   fetchImpl?: typeof fetch;
   sleep?: (ms: number) => Promise<void>;
+  log?: (line: string) => void;
 };
 
 const defaultSleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
@@ -48,14 +51,17 @@ export async function generate(parts: Part[], opts: GeminiOptions): Promise<Gemi
   const f = opts.fetchImpl ?? fetch;
   const sleep = opts.sleep ?? defaultSleep;
   const errors: string[] = [];
-  let quotaOnly = true;
+  const log = opts.log ?? (() => {});
+  let quotaOnly = true, timeouts = 0;
   for (const model of opts.models) {
+    if (timeouts >= (opts.maxTimeouts ?? 2)) break;
     for (let attempt = 0; attempt < (opts.busyTries ?? 2); attempt++) {
       const body = {
         contents: [{ parts }],
         generationConfig: opts.json ? { responseMimeType: "application/json", ...(opts.schema ? { responseSchema: opts.schema } : {}) } : undefined,
       };
       let res: Response;
+      const t0 = Date.now();
       try {
         res = await f(`${BASE}/models/${model}:generateContent`, {
           method: "POST",
@@ -65,9 +71,12 @@ export async function generate(parts: Part[], opts: GeminiOptions): Promise<Gemi
         });
       } catch (e) {
         errors.push(`${model}: ${String(e).slice(0, 120)}`);
+        log(`${model}: no answer after ${Math.round((Date.now() - t0) / 1000)} s (${String(e).slice(0, 80)})`);
         quotaOnly = false;
+        timeouts++;
         break;   // a timeout: the next model
       }
+      log(`${model}: HTTP ${res.status} in ${Math.round((Date.now() - t0) / 1000)} s`);
       if (res.ok) {
         const out = GenerateResponse.parse(await res.json());
         const text = (out.candidates?.[0]?.content?.parts ?? []).map((p) => p.text ?? "").join("");

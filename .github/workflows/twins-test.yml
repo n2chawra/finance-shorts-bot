@@ -1,4 +1,4 @@
-# BRANCH-ONLY end-to-end test of twins.yml (deleted before shipping). Twins (owner, 2026-11-13): the most-watched animated Shorts on our topics, watched by Gemini into shot
+# BRANCH-ONLY end-to-end test (run 2) of twins.yml (deleted before shipping). Twins (owner, 2026-11-13): the most-watched animated Shorts on our topics, watched by Gemini into shot
 # sheets, so the writer learns how winners tell a topic before writing it, and every published Short
 # gets a gap report against its twins (workers/twins.ts). Runs after research (23:47 IST) and before
 # the 04:07 video run. Our own analysis goes to main (improvement/twins/); YouTube titles and views go
@@ -41,11 +41,17 @@ jobs:
         working-directory: workers
       - run: npm run generate
         working-directory: workers
+      - name: Probe one of our Shorts (timing)
+        working-directory: workers
+        timeout-minutes: 8
+        run: npm run twins -- probe | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Calibrate on our own Shorts
         working-directory: workers
+        timeout-minutes: 30
         run: npm run twins -- calibrate | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Night
         working-directory: workers
+        timeout-minutes: 35
         run: npm run twins -- night "$RUNNER_TEMP/twins-data" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Keep twins.json for review
         if: always()
