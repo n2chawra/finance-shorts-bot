@@ -1,0 +1,115 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 60613,
+  "duration_sec": 35,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92,
+    "look": {
+      "stage": "space",
+      "header": "sticky",
+      "holder": "box",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "590 American billionaires are too poor to make the Forbes rich list.",
+        "start": 0.3,
+        "seconds": 3.66,
+        "window": 4.13,
+        "fill": 0.886
+      },
+      {
+        "scene": "promise",
+        "text": "In September, Forbes put last place at $4.4B. So how high does the ladder go?",
+        "start": 4.43,
+        "seconds": 4.85,
+        "window": 5.33,
+        "fill": 0.91
+      },
+      {
+        "scene": "page",
+        "text": "Number three is Google co-founder Larry Page, worth $278B.",
+        "start": 9.77,
+        "seconds": 4.22,
+        "window": 4.73,
+        "fill": 0.892
+      },
+      {
+        "scene": "stack",
+        "text": "His pile alone is 63.2× the fortune in last place.",
+        "start": 14.5,
+        "seconds": 3.44,
+        "window": 3.97,
+        "fill": 0.866
+      },
+      {
+        "scene": "turn",
+        "text": "But number one is miles higher. Elon Musk, who runs Tesla and SpaceX, is worth $908B.",
+        "start": 18.47,
+        "seconds": 5.82,
+        "window": 6.33,
+        "fill": 0.919
+      },
+      {
+        "scene": "payoff",
+        "text": "One man is worth 206.4× the fortune that gets you in, and 11% of the whole list.",
+        "start": 24.8,
+        "seconds": 5.0,
+        "window": 5.43,
+        "fill": 0.921
+      },
+      {
+        "scene": "loop",
+        "text": "Where would you stop climbing? Because 590 billionaires never got through the door.",
+        "start": 30.23,
+        "seconds": 4.03,
+        "window": 4.47,
+        "fill": 0.902
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "real-subject-first-frame": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -15.0,
+    "music_under_voice_db": 23.2
+  },
+  "craft_problems": [
+    "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+    "note: 35 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+    "note: beat 'stack': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words"
+  ],
+  "liveliness": {
+    "median": 5.092,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

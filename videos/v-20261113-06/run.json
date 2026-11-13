@@ -1,0 +1,406 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:38:09.654179+00:00",
+    "finishedAt": "2026-11-13T02:38:09.654179+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:40:26.848202+00:00",
+    "finishedAt": "2026-11-13T02:40:26.848202+00:00",
+    "notes": [
+      "a script with sourced facts needs a headline or board beat, which shows where they come from",
+      "the climbing number (params.hud.counter) changes 2 times; at least 3: a number that climbs level by level is a reason to keep watching"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:40:44.355941+00:00",
+    "finishedAt": "2026-11-13T02:40:44.355941+00:00",
+    "notes": [
+      "beat 'hook'.say contains a typed number; use a placeholder: '{fact3} American billionaires are too poor for the Forbes 400.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:40:52.626182+00:00",
+    "finishedAt": "2026-11-13T02:40:52.626182+00:00",
+    "notes": [
+      "title mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {gap_a}…) or drop it",
+      "description mentions '400,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {gap_a}…) or drop it",
+      "description mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {gap_a}…) or drop it",
+      "hashtags mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {gap_a}…) or drop it"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:40:59.803324+00:00",
+    "finishedAt": "2026-11-13T02:40:59.803324+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:41:00.622111+00:00",
+    "finishedAt": "2026-11-13T02:41:00.622111+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:43:05.780956+00:00",
+    "finishedAt": "2026-11-13T02:43:05.780956+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:43:35.628020+00:00",
+    "finishedAt": "2026-11-13T02:43:35.628020+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:44:33.490458+00:00",
+    "finishedAt": "2026-11-13T02:44:33.490458+00:00",
+    "notes": [
+      "All 5 facts confirmed on the Forbes source page (forbes.com.au, net worths at 4 Sep 2026 share prices): $4.4B minimum, $8T combined, record 590 US billionaires not rich enough, Musk $908B No.1, Page $278B No.3; verify items met (attributed to Forbes and September, Bezos left out); list current (2026 Forbes 400); no advice, tone fine, description ends with disclaimer. Note: description calls the numbers 'illustrative' though they are sourced Forbes figures (style only)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:43:55.865570+00:00",
+    "finishedAt": "2026-11-13T02:44:52.858561+00:00",
+    "notes": [
+      "3 of 8 stills are mostly empty background (at 5 s, 10 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:45:30.598570+00:00",
+    "finishedAt": "2026-11-13T02:45:30.598570+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:45:44.456988+00:00",
+    "finishedAt": "2026-11-13T02:46:12.309766+00:00",
+    "notes": [
+      "3 of 8 stills are mostly empty background (at 5 s, 10 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:46:35.212548+00:00",
+    "finishedAt": "2026-11-13T02:46:35.212548+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:46:49.110156+00:00",
+    "finishedAt": "2026-11-13T02:47:17.528931+00:00",
+    "notes": [
+      "35 s, ocean/cinematic (preview only)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:47:45.164729+00:00",
+    "finishedAt": "2026-11-13T02:47:45.164729+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:47:59.181414+00:00",
+    "finishedAt": "2026-11-13T02:48:23.858050+00:00",
+    "notes": [
+      "35 s, ocean/cinematic (preview only)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:48:45.389088+00:00",
+    "finishedAt": "2026-11-13T02:49:10.443757+00:00",
+    "notes": [
+      "2 of 8 stills are mostly empty background (at 5 s, 10 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:49:28.615623+00:00",
+    "finishedAt": "2026-11-13T02:49:53.548716+00:00",
+    "notes": [
+      "35 s, ocean/cinematic (preview only)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:50:32.825501+00:00",
+    "finishedAt": "2026-11-13T02:50:32.825501+00:00",
+    "notes": [
+      "[script] 5.0s-35.0s: level chips '1 Last place / 2 Number three / 3 Number one' sit under the caption on every frame from 5 s, announcing the structure (check 7b); drop the levels structure (shape 'levels' / structure.levels) so no ladder chips are drawn",
+      "[scene] 35.0s: the disclaimer line 'Illustrative only. Not financial advice.' is drawn on top of the '3 Number one' level chip, text over text (short_story level-chip HUD vs disclaimer position, loop beat)",
+      "[script] 10.0s (beat page): weaker than our reference Shorts and doesn't read on mute: top 60% of the frame is an empty wall, Larry Page is only a floating 'Larry Page' label far from a small gold stack, the 'Google' searchbar runs off the left edge, and no figure is on screen; show Page big (photo:larry_page bobblehead or sticker) with $278B from the start",
+      "[script] 15.0s (beat stack): the gold tower is piled on top of the Forbes door so the two things being compared overlap, the 'Last place' label floats over the shelf away from the door, and the 63.2x figure the line is about is not on screen; place the door and Page's pile apart and show the ratio",
+      "[scene] 30.0s (Payoff): the payoff figures are dim, '206.4x' in muted beige and '11% / OF THE WHOLE LIST' in grey on dark blue, much weaker contrast than the gold figures elsewhere; the story's best number should be the brightest thing in the frame"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:50:57.497777+00:00",
+    "finishedAt": "2026-11-13T02:50:57.497777+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:50:58.385815+00:00",
+    "finishedAt": "2026-11-13T02:50:58.385815+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:51:12.791095+00:00",
+    "finishedAt": "2026-11-13T02:51:36.578731+00:00",
+    "notes": [
+      "3 of 8 stills are mostly empty background (at 5 s, 10 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:51:55.412358+00:00",
+    "finishedAt": "2026-11-13T02:51:55.412358+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:52:10.048590+00:00",
+    "finishedAt": "2026-11-13T02:52:37.823546+00:00",
+    "notes": [
+      "2 of 8 stills are mostly empty background (at 5 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:52:58.281182+00:00",
+    "finishedAt": "2026-11-13T02:53:21.838831+00:00",
+    "notes": [
+      "2 of 8 stills are mostly empty background (at 5 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:53:53.048920+00:00",
+    "finishedAt": "2026-11-13T02:54:17.208988+00:00",
+    "notes": [
+      "35 s, ocean/cinematic (preview only)",
+      "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'loop': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:54:39.343408+00:00",
+    "finishedAt": "2026-11-13T02:55:02.836455+00:00",
+    "notes": [
+      "35 s, ocean/cinematic (preview only)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'loop': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:55:35.225531+00:00",
+    "finishedAt": "2026-11-13T02:55:35.225531+00:00",
+    "notes": [
+      "[script] 15.0s (beat stack): still overlapping after the fix: 'Page's pile' (gold tower) is drawn over the right half of the Last-place door and covers its sign, which reads 'FORB'; the 'Last place' label floats above in empty wall. Move the pile further right (or the door left / smaller pile) so the two compared things stand apart and the FORBES sign is whole",
+      "[scene] 35.0s (beat loop, golddoor prop): the sign plaque over the door is blank (an empty cream box) while its text 'Forbes list' floats separately at the top of the frame; at 30.0s the same door had 'FORBES' on its plaque, so the plaque text drops out when the camera moves in",
+      "[script] 35.0s (beat loop): the crowd of 590 billionaires is cut off at the left edge (one figure half off frame, one hidden behind the rope post) and the '590' tag sits on the door instead of on them, so the closing frame doesn't show who never got through; move the suitcrowd item right / camera 'on' the crowd and door together"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:56:06.512043+00:00",
+    "finishedAt": "2026-11-13T02:56:30.791724+00:00",
+    "notes": [
+      "2 of 8 stills are mostly empty background (at 5 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 26 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'loop': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:56:49.740253+00:00",
+    "finishedAt": "2026-11-13T02:57:14.003378+00:00",
+    "notes": [
+      "35 s, ocean/cinematic (preview only)",
+      "note: 26 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'loop': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:57:41.897208+00:00",
+    "finishedAt": "2026-11-13T02:58:06.231298+00:00",
+    "notes": [
+      "2 of 8 stills are mostly empty background (at 5 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+      "note: 35 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'loop': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-13T02:58:36.249772+00:00",
+    "finishedAt": "2026-11-13T02:59:00.096841+00:00",
+    "notes": [
+      "2 of 8 stills are mostly empty background (at 5 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+      "note: 35 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'stack': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: beat 'loop': only 2 of 3 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: only 7 props of its own (forbeslist, golddoor, goldtower, ladder, searchbar, suitcrowd, teslacar); at least 8: draw the things this story is about in videos/<id>/props.tsx",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:59:15.083994+00:00",
+    "finishedAt": "2026-11-13T02:59:15.083994+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-13T02:59:29.317852+00:00",
+    "finishedAt": "2026-11-13T02:59:56.713515+00:00",
+    "notes": [
+      "35 s, ocean/cinematic (preview only)",
+      "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+      "note: 35 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'stack': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: only 5 props of its own (forbeslist, golddoor, goldtower, ladder, searchbar); at least 8: draw the things this story is about in videos/<id>/props.tsx",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-13T03:00:18.167876+00:00",
+    "finishedAt": "2026-11-13T03:00:41.629655+00:00",
+    "notes": [
+      "35 s, ocean/cinematic (preview only)",
+      "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+      "note: 35 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'stack': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: only 5 props of its own (forbeslist, golddoor, goldtower, ladder, searchbar); at least 8: draw the things this story is about in videos/<id>/props.tsx",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-13T03:00:59.560955+00:00",
+    "finishedAt": "2026-11-13T03:00:59.560955+00:00",
+    "notes": [
+      "Third review: level chips gone, no overlaps; 0s names Forbes, 590 and $4.4B; 15s Page's pile is the one hero thing with $278B and 63.2x, door small behind; 25s 206.4x bright with Elon Musk; loop redraws the hook (590 NEVER GOT IN, FORBES sign intact, TOO POOR stamp over the crowd by design); disclaimer clear at 35s; reads on mute; layout empty, audio -1/-16.3 dB; craft notes only (2 shot sizes, no close-up; 10s Larry Page is still just a label before $278B lands)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-13T03:01:07.950361+00:00",
+    "finishedAt": "2026-11-13T03:03:07.316911+00:00",
+    "notes": [
+      "35 s, ocean/cinematic, peak -1.0 dB, mean -16.3 dB",
+      "note: only 2 shot sizes (medium, wide); a short video needs at least 3 of wide, medium, close, extreme",
+      "note: 35 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'stack': only 2 of 4 actions show a thing said at that moment (at least 70%): the picture must follow the words",
+      "note: only 5 props of its own (forbeslist, golddoor, goldtower, ladder, searchbar); at least 8: draw the things this story is about in videos/<id>/props.tsx",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-13T03:03:16.758549+00:00",
+    "finishedAt": "2026-11-13T03:03:16.758549+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

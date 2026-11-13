@@ -1,0 +1,686 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 60613,
+ "story": "billionaire_question",
+ "shape": "reveal",
+ "currency": "USD",
+ "feed_id": "2026-11-12-590-billionaires-too-poor-for-the-list",
+ "style": {
+  "palette": "ocean",
+  "genre": "cinematic",
+  "key": "D",
+  "bpm": 92,
+  "look": {
+   "stage": "space",
+   "header": "sticky",
+   "holder": "box",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "question",
+ "cta": "Where would you stop climbing? Comment",
+ "facts": [
+  {
+   "label": "Minimum net worth for the 2026 Forbes 400",
+   "value": 4.4,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-09-04",
+   "source": "Forbes",
+   "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+  },
+  {
+   "label": "Combined net worth of the 2026 Forbes 400",
+   "value": 8,
+   "unit": "money_trillion",
+   "currency": "USD",
+   "as_of": "2026-09-04",
+   "source": "Forbes",
+   "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+  },
+  {
+   "label": "American billionaires not rich enough for the 2026 Forbes 400",
+   "value": 590,
+   "unit": "count",
+   "as_of": "2026-09-04",
+   "source": "Forbes",
+   "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+  },
+  {
+   "label": "Elon Musk's net worth, No. 1 on the 2026 Forbes 400",
+   "value": 908,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-09-04",
+   "source": "Forbes",
+   "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+  },
+  {
+   "label": "Larry Page's net worth, No. 3 on the 2026 Forbes 400",
+   "value": 278,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-09-04",
+   "source": "Forbes",
+   "url": "https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/"
+  }
+ ],
+ "maths": [
+  {
+   "name": "last",
+   "kind": "share",
+   "total": 4400000000,
+   "parts": 1,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "list",
+   "kind": "share",
+   "total": 8000000000000,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  },
+  {
+   "name": "musk",
+   "kind": "share",
+   "total": 908000000000,
+   "parts": 1,
+   "facts": {
+    "total": 4
+   }
+  },
+  {
+   "name": "page",
+   "kind": "share",
+   "total": 278000000000,
+   "parts": 1,
+   "facts": {
+    "total": 5
+   }
+  },
+  {
+   "name": "pg",
+   "kind": "compare",
+   "a": "page.total",
+   "b": "last.total"
+  },
+  {
+   "name": "gap",
+   "kind": "compare",
+   "a": "musk.total",
+   "b": "last.total"
+  },
+  {
+   "name": "mshare",
+   "kind": "rate",
+   "part": 908000000000,
+   "whole": 8000000000000,
+   "facts": {
+    "part": 4,
+    "whole": 2
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.5,
+  "words": "{fact3} billionaires *too poor*",
+  "figure": "{last_total}",
+  "tag": "To get in",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "hook",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "{fact3} American billionaires are too poor to make the Forbes rich list.",
+   "events": {
+    "american": {
+     "word": "American"
+    },
+    "poor": {
+     "word": "poor"
+    },
+    "forbes": {
+     "word": "Forbes"
+    }
+   },
+   "params": {
+    "hud": {
+     "hide": true
+    },
+    "count": "{fact3}",
+    "line": "Billionaires too poor",
+    "door": "Forbes list",
+    "sign": "{last_total} to get in",
+    "set": "bank",
+    "actors": [],
+    "objects": [
+     {
+      "kind": "stack",
+      "id": "door",
+      "spot": "center",
+      "amount": "@last.total",
+      "text": "{last_total}",
+      "label": "Last place",
+      "at": "start",
+      "tone": "good"
+     }
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "door"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "american"
+    },
+    {
+     "kind": "fail",
+     "at": "poor"
+    },
+    {
+     "kind": "ding",
+     "at": "forbes"
+    }
+   ]
+  },
+  {
+   "id": "promise",
+   "scene": "headline",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "In September, Forbes put last place at {last_total}. So how high does the ladder go?",
+   "events": {
+    "september": {
+     "word": "September"
+    },
+    "last": {
+     "word": "last"
+    },
+    "high": {
+     "word": "high"
+    },
+    "ladder": {
+     "word": "ladder"
+    }
+   },
+   "params": {
+    "kicker": "THE FORBES LIST",
+    "title": "Last place to get in",
+    "figure": "{last_total}",
+    "figureAt": "start",
+    "label": "Forbes estimate, September"
+   },
+   "sfx": [
+    {
+     "kind": "kaching",
+     "at": "last"
+    },
+    {
+     "kind": "riser",
+     "at": "ladder"
+    }
+   ],
+   "transition": "whip"
+  },
+  {
+   "id": "page",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Number three is Google co-founder Larry Page, worth {page_total}.",
+   "events": {
+    "three": {
+     "word": "three"
+    },
+    "google": {
+     "word": "Google"
+    },
+    "page": {
+     "word": "Page"
+    },
+    "worth": {
+     "word": "worth"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "city",
+     "tint": "blue",
+     "horizon": [
+      {
+       "prop": "forbeslist",
+       "x": 0.1,
+       "size": 0.08
+      },
+      {
+       "prop": "ladder",
+       "x": 0.92,
+       "size": 0.09
+      }
+     ]
+    },
+    "hud": {
+     "counter": {
+      "value": "@page.total",
+      "text": "{page_total}",
+      "label": "Larry Page",
+      "at": "worth"
+     }
+    },
+    "items": [
+     {
+      "id": "google",
+      "prop": "searchbar",
+      "x": 0.27,
+      "size": 0.22,
+      "label": "Google"
+     },
+     {
+      "id": "page",
+      "prop": "goldtower",
+      "x": 0.72,
+      "size": 0.38,
+      "label": "Larry Page",
+      "k": 0.7
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "google",
+      "how": "drop"
+     },
+     {
+      "sec": 0,
+      "do": "enter",
+      "target": "page",
+      "how": "rise"
+     },
+     {
+      "at": "google",
+      "do": "shake",
+      "target": "google"
+     },
+     {
+      "at": "page",
+      "do": "tag",
+      "target": "page",
+      "text": "{page_total}"
+     },
+     {
+      "at": "worth",
+      "do": "grow",
+      "target": "page",
+      "scale": 1.3
+     }
+    ],
+    "locked": true
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "google"
+    },
+    {
+     "kind": "kaching",
+     "at": "worth"
+    }
+   ],
+   "transition": "match"
+  },
+  {
+   "id": "stack",
+   "scene": "build",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "His pile alone is {pg_ratio} the fortune in last place.",
+   "events": {
+    "pile": {
+     "word": "pile"
+    },
+    "alone": {
+     "word": "alone"
+    },
+    "fortune": {
+     "word": "fortune"
+    },
+    "last": {
+     "word": "last"
+    }
+   },
+   "params": {
+    "world": {
+     "kind": "bank",
+     "tint": "gold",
+     "horizon": [
+      {
+       "prop": "golddoor",
+       "x": 0.1,
+       "size": 0.08
+      },
+      {
+       "prop": "searchbar",
+       "x": 0.9,
+       "size": 0.06
+      }
+     ]
+    },
+    "hud": {
+     "counter": {
+      "value": "@last.total",
+      "text": "{last_total}",
+      "label": "Last place",
+      "at": "last"
+     }
+    },
+    "items": [
+     {
+      "id": "pile",
+      "prop": "goldtower",
+      "x": 0.5,
+      "size": 0.38,
+      "k": 0.6,
+      "label": "Page's pile"
+     }
+    ],
+    "actions": [
+     {
+      "sec": 0,
+      "do": "grow",
+      "target": "pile",
+      "scale": 1.3
+     },
+     {
+      "at": "alone",
+      "do": "tag",
+      "target": "pile",
+      "text": "{pg_ratio}"
+     },
+     {
+      "at": "fortune",
+      "do": "state",
+      "target": "pile",
+      "state": "full"
+     },
+     {
+      "at": "last",
+      "do": "label",
+      "target": "pile",
+      "text": "Last-place fortunes"
+     }
+    ],
+    "locked": true
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "pile"
+    },
+    {
+     "kind": "whoosh",
+     "at": "fortune"
+    }
+   ],
+   "transition": "whip"
+  },
+  {
+   "id": "turn",
+   "scene": "custom",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "But number one is miles higher. Elon Musk, who runs Tesla and SpaceX, is worth {musk_total}.",
+   "events": {
+    "one": {
+     "word": "one"
+    },
+    "miles": {
+     "word": "miles"
+    },
+    "musk": {
+     "word": "Musk"
+    },
+    "tesla": {
+     "word": "Tesla"
+    },
+    "spacex": {
+     "word": "SpaceX"
+    },
+    "worth": {
+     "word": "worth"
+    }
+   },
+   "params": {
+    "component": "Turn",
+    "hud": {
+     "counter": {
+      "value": "@musk.total",
+      "text": "{musk_total}",
+      "label": "Elon Musk",
+      "at": "worth"
+     }
+    },
+    "header": "Number one",
+    "name": "Elon Musk",
+    "fig": "{musk_total}",
+    "small": "Larry Page",
+    "world": {
+     "kind": "space",
+     "tint": "blue"
+    },
+    "items": [
+     {
+      "id": "musk",
+      "prop": "rocket",
+      "x": 0.5,
+      "size": 0.34,
+      "label": "Elon Musk"
+     },
+     {
+      "id": "tesla",
+      "prop": "teslacar",
+      "x": 0.25,
+      "size": 0.2
+     }
+    ],
+    "actions": [
+     {
+      "at": "musk",
+      "do": "grow",
+      "target": "musk",
+      "scale": 1.3
+     },
+     {
+      "at": "tesla",
+      "do": "shake",
+      "target": "tesla"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "miles"
+    },
+    {
+     "kind": "boom",
+     "at": "musk"
+    },
+    {
+     "kind": "kaching",
+     "at": "worth"
+    }
+   ],
+   "transition": "zoom-through"
+  },
+  {
+   "id": "payoff",
+   "scene": "custom",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "One man is worth {gap_ratio} the fortune that gets you in, and {mshare_pct} of the whole list.",
+   "events": {
+    "man": {
+     "word": "man"
+    },
+    "fortune": {
+     "word": "fortune"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "list": {
+     "word": "list"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "hud": {
+     "noCounter": true
+    },
+    "fig": "{gap_ratio}",
+    "label": "Last place, times",
+    "pct": "{mshare_pct}",
+    "pctLabel": "Of the whole list",
+    "name": "Elon Musk",
+    "world": {
+     "kind": "space",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "man",
+      "prop": "goldtower",
+      "x": 0.6,
+      "size": 0.36
+     },
+     {
+      "id": "fortune",
+      "prop": "golddoor",
+      "x": 0.25,
+      "size": 0.22
+     }
+    ],
+    "actions": [
+     {
+      "at": "man",
+      "do": "grow",
+      "target": "man",
+      "scale": 1.3
+     },
+     {
+      "at": "fortune",
+      "do": "shake",
+      "target": "fortune"
+     }
+    ],
+    "pctValue": "@mshare.pct"
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "man"
+    },
+    {
+     "kind": "ding",
+     "at": "whole"
+    }
+   ],
+   "transition": "cut"
+  },
+  {
+   "id": "loop",
+   "scene": "custom",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Where would you stop climbing? Because {fact3} billionaires never got through the door.",
+   "events": {
+    "stop": {
+     "word": "stop"
+    },
+    "climbing": {
+     "word": "climbing"
+    },
+    "billionaires": {
+     "word": "billionaires"
+    },
+    "door": {
+     "word": "door"
+    }
+   },
+   "params": {
+    "component": "Loop",
+    "hud": {
+     "hide": true
+    },
+    "count": "{fact3}",
+    "line": "Never got in",
+    "door": "Forbes list",
+    "world": {
+     "kind": "bank",
+     "tint": "gold"
+    },
+    "items": [
+     {
+      "id": "billionaires",
+      "prop": "suitcrowd",
+      "x": 0.3,
+      "size": 0.26
+     },
+     {
+      "id": "door",
+      "prop": "golddoor",
+      "x": 0.7,
+      "size": 0.34
+     }
+    ],
+    "actions": [
+     {
+      "at": "billionaires",
+      "do": "shake",
+      "target": "billionaires"
+     },
+     {
+      "at": "door",
+      "do": "shake",
+      "target": "door"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "billionaires"
+    },
+    {
+     "kind": "fail",
+     "at": "door"
+    }
+   ],
+   "transition": "cut"
+  }
+ ],
+ "narrator": "am_michael"
+}
