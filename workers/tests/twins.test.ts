@@ -39,6 +39,19 @@ function slow(): unknown {
   return { ...(winner() as object), shots, hook: { firstFrame: "a building", firstLine: "Your savings", question: true, subjectNamedAtSec: 6, figureShownAtSec: 5, figureSpokenAtSec: 5 }, ending: { loops: false, cta: "", lastFrame: "" } };
 }
 
+test("calibration counts percentages as figures and accepts any moment inside the figure's scene", () => {
+  const tl = { fps: 30, durationInFrames: 900, beats: [
+    { from: 0, say: "Apple keeps 76% of every dollar", params: { figure: "76%" } },
+    { from: 90, say: "Berkshire sits on a pile", params: { items: [{ label: "$377.4B", hidden: true }] } },
+  ] };
+  assert.deepEqual(truthOf(tl).firstFigure, [0, 3]);
+  const late = { ...tl, beats: [{ from: 0, say: "You think the cash is wasted?", params: {} }, tl.beats[1]!, { from: 300, say: "next" }] };
+  const t = truthOf(late);
+  assert.deepEqual(t.firstFigure, [3, 10]);
+  const sheet = cleanSheet({ ...(winner() as object), durationSec: 30, hook: { firstFrame: "x", firstLine: "You think the cash is wasted?", question: true, subjectNamedAtSec: 0, figureShownAtSec: 5.8, figureSpokenAtSec: 12 } });
+  assert.equal(calibrate(sheet, t, cfg.calibration).figureErr, 0);   // popped in mid-scene: right
+});
+
 test("cleanSheet repairs times, order and unknown labels instead of failing", () => {
   const raw = winner() as { shots: Record<string, unknown>[]; durationSec: number };
   raw.shots.reverse();
@@ -86,7 +99,7 @@ test("calibration checks Gemini against one of our real timelines", () => {
   const t = truthOf(tl);
   assert.equal(t.beatStarts[0], 0);
   assert.match(t.firstLine, /Jeff Bezos takes \$81,840/);
-  assert.equal(t.firstFigureSec, 0);
+  assert.equal(t.firstFigure![0], 0);   // the salary is on screen from the first scene
   const good = cleanSheet({
     ...(winner() as object), durationSec: t.durationSec,
     hook: { firstFrame: "Bezos", firstLine: "Jeff Bezos takes $81,840 a year from Amazon", question: false, subjectNamedAtSec: 0, figureShownAtSec: 0.3, figureSpokenAtSec: 1 },

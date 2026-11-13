@@ -251,19 +251,22 @@ export function searchFor(topic: { search?: string | null; title: string }): str
 
 // ---------------- calibration (our own Shorts, where the truth is known) ----------------
 
-export type Truth = { durationSec: number; beatStarts: number[]; firstLine: string; firstFigureSec: number | null };
+/** `firstFigure` is the scene where the first money figure or percentage appears: [start, end) in seconds.
+ * Our timeline knows when each scene starts, not the moment a figure pops in inside it. */
+export type Truth = { durationSec: number; beatStarts: number[]; firstLine: string; firstFigure: [number, number] | null };
 
 const wordsOf = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}$ ]/gu, " ").split(/\s+/).filter(Boolean);
 
-/** The truth from our timeline.json: beat starts, the first line, and when the first money figure is shown. */
+/** The truth from our timeline.json: beat starts, the first line, and the scene where the first figure is shown. */
 export function truthOf(tl: { fps: number; durationInFrames: number; beats: { from: number; say?: string; params?: Record<string, unknown> }[] }): Truth {
-  const figureRe = /[$₹£€]\s?\d/;
-  const firstFig = tl.beats.find((b) => figureRe.test(JSON.stringify(b.params ?? {})) || figureRe.test(b.say ?? ""));
+  const figureRe = /[$₹£€]\s?\d|\d\s?%/;
+  const i = tl.beats.findIndex((b) => figureRe.test(JSON.stringify(b.params ?? {})) || figureRe.test(b.say ?? ""));
+  const durationSec = tl.durationInFrames / tl.fps;
   return {
-    durationSec: tl.durationInFrames / tl.fps,
+    durationSec,
     beatStarts: tl.beats.map((b) => b.from / tl.fps),
     firstLine: tl.beats[0]?.say ?? "",
-    firstFigureSec: firstFig ? firstFig.from / tl.fps : null,
+    firstFigure: i < 0 ? null : [tl.beats[i]!.from / tl.fps, (tl.beats[i + 1]?.from ?? tl.durationInFrames) / tl.fps],
   };
 }
 
@@ -277,7 +280,8 @@ export function calibrate(sheet: Sheet, t: Truth, cfg: TwinsConfig["calibration"
   const seen = wordsOf(sheet.hook.firstLine).filter((w) => truthWords.has(w)).length;
   const overlap = truthWords.size ? seen / truthWords.size : 1;
   const shown = sheet.hook.figureShownAtSec ?? sheet.hook.figureSpokenAtSec;
-  const figureErr = t.firstFigureSec == null || shown == null ? null : Math.abs(shown - t.firstFigureSec);
+  // inside the scene where the figure first appears counts as right; otherwise the distance to that scene
+  const figureErr = t.firstFigure == null || shown == null ? null : Math.max(0, t.firstFigure[0] - shown, shown - t.firstFigure[1]);
   const s = { durationErr: round(Math.abs(sheet.durationSec - t.durationSec), 1), beatRecall: round(hits / Math.max(1, t.beatStarts.length)), firstLineOverlap: round(Math.min(1, overlap)), figureErr: figureErr == null ? null : round(figureErr, 1) };
   const why: string[] = [];
   if (s.durationErr > cfg.durationErrSec) why.push(`length off by ${s.durationErr} s`);
