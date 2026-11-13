@@ -80,7 +80,7 @@ class YouTube {
     }
   }
   async search(q: string, cfg: TwinsConfig["search"], now: Date): Promise<string[]> {
-    const params = new URLSearchParams({ part: "id", type: "video", videoDuration: "short", order: "relevance", maxResults: String(cfg.maxResults), q,
+    const params = new URLSearchParams({ part: "id", type: "video", videoDuration: "short", order: "viewCount", maxResults: String(cfg.maxResults), q,
       publishedAfter: new Date(now.getTime() - cfg.years * 365 * DAY_MS).toISOString(), relevanceLanguage: cfg.relevanceLanguage, regionCode: cfg.regionCode });
     return (await this.get(`${API}/search?${params}`, SearchIds, 100)).items.map((i) => i.id.videoId).filter((x): x is string => !!x);
   }
