@@ -305,8 +305,9 @@ async function main() {
   if (!youtubeConfigured()) { console.log("YouTube is not configured: nothing to do"); return; }
   const cfg = TwinsConfig.parse(readJson(path.join(ROOT, "config", "twins.json"), {}));
   const yt = new YouTube(await accessToken());
+  const budget = Number(process.env.TWINS_MAX_DECODES ?? cfg.nightly.decodes);
   const ctx: Ctx = { cfg, key, yt, now: new Date(), myChannel: await yt.myChannel(), medians: new Map(), seen: new Map(),
-    decodesLeft: Number(process.env.TWINS_MAX_DECODES ?? cfg.nightly.decodes), outOfQuota: false, tokens: 0, models: {}, errors: [] };
+    decodesLeft: budget, outOfQuota: false, tokens: 0, models: {}, errors: [] };
   const ours = await ourShorts();
   const exclude = new Set(ours.map((o) => o.youtubeId));
   const done: Record<string, unknown> = {};
@@ -343,7 +344,7 @@ async function main() {
     }
   }
   await publishView(ctx, cmd === "night" ? path.resolve(arg ?? "twins-data") : null, cal).catch((e) => ctx.errors.push(`view: ${String(e).slice(0, 200)}`));
-  const run = { at: ctx.now.toISOString(), command: cmd, ...done, decodes: cfg.nightly.decodes - ctx.decodesLeft, outOfQuota: ctx.outOfQuota, tokens: ctx.tokens, models: ctx.models, youtubeUnits: yt.units, errors: ctx.errors };
+  const run = { at: ctx.now.toISOString(), command: cmd, ...done, decodes: budget - ctx.decodesLeft, outOfQuota: ctx.outOfQuota, tokens: ctx.tokens, models: ctx.models, youtubeUnits: yt.units, errors: ctx.errors };
   writeJson(path.join(DIR, "last-run.json"), run);
   console.log(JSON.stringify(run, null, 2));
 }
