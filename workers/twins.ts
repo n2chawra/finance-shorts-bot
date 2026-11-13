@@ -271,7 +271,7 @@ async function publishView(ctx: Ctx, outDir: string | null, cal: unknown) {
   const info = new Map(fresh.map((d) => {
     const views = Number(d.statistics.viewCount ?? 0), m = d.snippet.channelId ? ctx.medians.get(d.snippet.channelId) ?? null : null;
     const sheet = existsSync(sheetFile(d.id)) ? cleanSheet(SheetFile.parse(readJson(sheetFile(d.id), null)).sheet) : null;
-    return [d.id, { youtubeId: d.id, title: d.snippet.title, channel: d.snippet.channelTitle, views, outlier: outlierScore(views, m) ?? ctx.seen.get(d.id)?.outlier ?? null,
+    return [d.id, { youtubeId: d.id, title: d.snippet.title, channel: d.snippet.channelTitle, views, thumb: `https://i.ytimg.com/vi/${d.id}/mqdefault.jpg`, outlier: outlierScore(views, m) ?? ctx.seen.get(d.id)?.outlier ?? null,
       durationSec: durationSec(d.contentDetails.duration), artStyle: sheet?.artStyle ?? null, measures: sheet ? measures(sheet) : null }];
   }));
   const model = readJson(path.join(DIR, "model.json"), null);

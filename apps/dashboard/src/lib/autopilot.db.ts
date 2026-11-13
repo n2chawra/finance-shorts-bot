@@ -1,5 +1,5 @@
 /** Notifications and the self-improving agents' activity, from Postgres. */
-import { ChallengerSchema, CycleRowSchema, type Growth, GrowthSchema, LessonSchema, LoopStatusSchema, PicturesSchema, RecipeSchema, StayedRowSchema, nextReviewerRun } from "./growth";
+import { ChallengerSchema, CycleRowSchema, type Growth, GrowthSchema, LessonSchema, LoopStatusSchema, PicturesSchema, RecipeSchema, StayedRowSchema, TwinsSchema, nextReviewerRun } from "./growth";
 import { RECENT_DAYS } from "./recent";
 import type { Notification as Row } from "@prisma/client";
 
@@ -128,7 +128,7 @@ export async function resolveOwner(key: string): Promise<void> {
 /** The weekly loop for the Growth loop page: the agents' cycle files, the reviewer's lessons and its last run. */
 export async function getGrowth(): Promise<Growth> {
   const [docs, reviewer] = await Promise.all([
-    prisma.repoDoc.findMany({ where: { key: { in: ["cycleBacklog", "cycleStatus", "cycleRecipe", "pictures", "lessons"] } } }),
+    prisma.repoDoc.findMany({ where: { key: { in: ["cycleBacklog", "cycleStatus", "cycleRecipe", "pictures", "lessons", "twins"] } } }),
     prisma.agentActivity.findFirst({ where: { agent: "reviewer" }, orderBy: { day: "desc" } }),
   ]);
   const doc = Object.fromEntries(docs.map((d) => [d.key, d.value])) as Record<string, Record<string, unknown> | undefined>;
@@ -154,5 +154,6 @@ export async function getGrowth(): Promise<Growth> {
       // the larger of Analytics (lags 2-3 days) and the live counter, as every other page counts views
       views: r!.upload ? Math.max(r!.upload.stats.reduce((a, s) => a + s.views, 0), r!.upload.liveViews ?? 0) : null })),
     reviewer: { lastDay: reviewer?.day ?? null, lastSummary: reviewer?.summary ?? null, nextRunAt: nextReviewerRun().toISOString() },
+    twins: (() => { const t = TwinsSchema.safeParse(doc.twins); return t.success ? t.data : null; })(),
   });
 }

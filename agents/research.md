@@ -178,6 +178,7 @@ removes it:
  "reach_reason": {"kind": "occasion", "name": "Diwali", "date": "YYYY-MM-DD"} or {"kind": "demand"} (local only),
  "demand": {"title": "reference video", "views": 8800000, "url": "https://...", "channel": "its channel", "channelSubs": 120000, "outlier": 73.3},
  "hook": "the first spoken line",
+ "search": "3-7 words people type to find Shorts on this topic (the twins job searches it for the most-watched animated ones)",
  "templates": ["any"],
  "angle": "the viewer's question it answers", "why_now": "why this week",
  "facts": [{"label": "what the figure is, no digits", "value": 4.25, "unit": "money|money_thousand|money_million|money_billion|money_trillion|percent|count|count_thousand|count_million|count_billion|rupees|rupees_lakh|rupees_crore|count_lakh|count_crore",

@@ -605,3 +605,18 @@ test("no page scrolls sideways on a phone", async ({ page, isMobile }) => {
     expect(over, `${path} is ${over}px wider than the screen`).toBeLessThanOrEqual(1);
   }
 });
+
+test("the growth loop shows what the winners on our topics do, ours next to theirs", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/growth");
+  await expect(page.getByText("What the winners do", { exact: true })).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByText("Seconds per picture", { exact: true })).toBeVisible();
+  await expect(page.getByText(/At 6 s we lost 24% of viewers/)).toBeVisible();
+  await expect(page.getByText("Becomes a test", { exact: true })).toBeVisible();
+  await expect(page.getByText(/Reads our Shorts correctly/)).toBeVisible();
+  // the second Short's comparison opens from its tab
+  const tabs = page.getByRole("tablist", { name: "Our Shorts" }).getByRole("tab");
+  await expect(tabs).toHaveCount(2);
+  await tabs.nth(1).click();
+  await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
+});

@@ -236,5 +236,48 @@ export function getGrowth(): Growth {
     },
     reference: published.map((v) => ({ id: v.id, title: v.title, thumbnailUrl: v.thumbnailUrl, views: v.totals?.views ?? null })),
     reviewer: { lastDay: istDay(now - 1 * DAY_MS), lastSummary: "Watched 6 Shorts next to their drop points; added 1 lesson (the first frame names nobody) and dropped none.", nextRunAt: nextReviewerRun(now).toISOString() },
+    twins: sampleTwins(now, published.slice(0, 2).map((v) => ({ id: v.id, title: v.title }))),
+  };
+}
+
+/** The twins study on sample data: two of our Shorts against the winners on their topics. */
+function sampleTwins(now: number, ours: { id: string; title: string }[]): Growth["twins"] {
+  const iso = (d: number) => new Date(now - d * DAY_MS).toISOString();
+  const twin = (youtubeId: string, title: string, channel: string, views: number, outlier: number, secPerShot: number, firstFigureSec: number, artStyle: string) =>
+    ({ youtubeId, title, channel, views, outlier, durationSec: 31, artStyle, measures: { secPerShot, firstFigureSec, characterShare: 0.8, figureShare: 0.45, wordsPerMin: 196 } });
+  const twins = [
+    twin("sample-a1", "How MrBeast actually makes his money", "Money Doodles", 2_400_000, 38.5, 1.4, 0, "flat vector animation"),
+    twin("sample-a2", "Why billionaires borrow instead of selling", "Coin Stories", 910_000, 12.2, 1.9, 0.6, "hand-drawn doodle"),
+    twin("sample-a3", "The $300 million YouTube paycheck", "Explained in 30", 640_000, 7.1, 1.6, 1.2, "flat vector animation"),
+  ];
+  const report = (v: { id: string; title: string }, i: number) => ({
+    videoId: v.id, youtubeId: `sample-ours-${i}`, writtenAt: iso(1 + i), title: v.title, twins: twins.map((t) => t.youtubeId),
+    ours: { secPerShot: 4.6, firstFigureSec: 2.4, characterShare: 0.35, figureShare: 0.3, wordsPerMin: 178 },
+    twinsMedian: { secPerShot: 1.6, firstFigureSec: 0.6, characterShare: 0.8, figureShare: 0.45, wordsPerMin: 196 },
+    gaps: [
+      { key: "secPerShot", label: "seconds per picture", ours: "4.6 s", twins: "1.6 s", agree: 3, of: 3, direction: "less" as const },
+      { key: "firstFigureSec", label: "seconds until the first money figure", ours: "2.4 s", twins: "0.6 s", agree: 3, of: 3, direction: "less" as const },
+      { key: "characterShare", label: "time with a character on screen", ours: "35%", twins: "80%", agree: 2, of: 3, direction: "more" as const },
+    ],
+    atDrops: [{ at: 6, drop: 0.24, ours: "A board with three labels · text \"How it works\"", twins: ["MrBeast cut-out beside a growing cash stack · figure on screen", "A loan document stamped APPROVED · push in", "A YouTube cheque flips to $300M · figure on screen"] }],
+    summary: "Where the winners differ: seconds per picture: ours 4.6 s, winners 1.6 s (3 of 3); seconds until the first money figure: ours 2.4 s, winners 0.6 s (3 of 3). Our biggest drop (24% at 6 s) was on: a board with three labels.",
+    twinInfo: twins,
+  });
+  return {
+    generatedAt: iso(0.2),
+    calibration: { writtenAt: iso(3), passed: true, videos: 5, passedVideos: 5 },
+    model: {
+      writtenAt: iso(0.2), reports: 9,
+      consistent: [{ key: "secPerShot", label: "seconds per picture", direction: "less" as const, reports: 8, of: 9, share: 0.89, oursMedian: "4.2 s", twinsMedian: "1.7 s" }],
+      leaning: [
+        { key: "firstFigureSec", label: "seconds until the first money figure", direction: "less" as const, reports: 6, of: 9, share: 0.67, oursMedian: "2.1 s", twinsMedian: "0.6 s" },
+        { key: "characterShare", label: "time with a character on screen", direction: "more" as const, reports: 4, of: 9, share: 0.44, oursMedian: "38%", twinsMedian: "75%" },
+      ],
+    },
+    gaps: ours.map(report),
+    briefs: [
+      { topicId: "sample-ipl", title: "How IPL teams make money before a ball is bowled", writtenAt: iso(0.2), twinInfo: twins.slice(0, 3) },
+      { topicId: "sample-vegas", title: "How Las Vegas keeps $8.8 billion a year even when you win", writtenAt: iso(0.2), twinInfo: twins.slice(1, 3) },
+    ],
   };
 }

@@ -46,6 +46,30 @@ export const PicturesSchema = z.looseObject({
   reference: z.array(z.string()).default([]),
 });
 
+/** The twins study (workers/twins.ts, owner 2026-11-13): winners on our topics, watched by Gemini. */
+const measureMap = z.record(z.string(), z.union([z.number(), z.string(), z.boolean(), z.null()])).catch({});
+export const TwinInfoSchema = z.looseObject({
+  youtubeId: z.string(), title: z.string().optional(), channel: z.string().optional(), views: z.number().optional(), thumb: z.string().optional(),
+  outlier: z.number().nullable().optional(), durationSec: z.number().optional(), artStyle: z.string().nullable().optional(), measures: measureMap.nullable().optional(),
+});
+export const TwinGapSchema = z.looseObject({ key: z.string(), label: z.string(), ours: z.string(), twins: z.string(), agree: z.number(), of: z.number(), direction: z.enum(["more", "less"]) });
+export const TwinReportSchema = z.looseObject({
+  videoId: z.string(), youtubeId: z.string(), writtenAt: z.string(), title: z.string().catch(""),
+  ours: measureMap, twinsMedian: measureMap, gaps: z.array(TwinGapSchema).catch([]),
+  atDrops: z.array(z.looseObject({ at: z.number(), drop: z.number(), ours: z.string(), twins: z.array(z.string()) })).catch([]),
+  summary: z.string().catch(""), twinInfo: z.array(TwinInfoSchema).catch([]),
+});
+const ModelGapSchema = z.looseObject({ key: z.string(), label: z.string(), direction: z.enum(["more", "less"]), reports: z.number(), of: z.number(), share: z.number(), oursMedian: z.string(), twinsMedian: z.string() });
+export const TwinsSchema = z.looseObject({
+  generatedAt: z.string(),
+  calibration: z.looseObject({ writtenAt: z.string(), passed: z.boolean(), videos: z.number(), passedVideos: z.number() }).nullable().catch(null),
+  model: z.looseObject({ writtenAt: z.string(), reports: z.number(), consistent: z.array(ModelGapSchema).catch([]), leaning: z.array(ModelGapSchema).catch([]) }).nullable().catch(null),
+  gaps: z.array(TwinReportSchema).catch([]),
+  briefs: z.array(z.looseObject({ topicId: z.string(), title: z.string().catch(""), writtenAt: z.string(), twinInfo: z.array(TwinInfoSchema).catch([]) })).catch([]),
+});
+export type Twins = z.infer<typeof TwinsSchema>;
+export type TwinReport = z.infer<typeof TwinReportSchema>;
+
 export const GrowthSchema = z.object({
   source: z.enum(["sample", "database"]),
   status: LoopStatusSchema.nullable(),
@@ -60,6 +84,7 @@ export const GrowthSchema = z.object({
   /** the 3 reference Shorts, with what the page needs to show them */
   reference: z.array(z.object({ id: z.string(), title: z.string(), thumbnailUrl: z.string(), views: z.number().nullable() })),
   reviewer: z.object({ lastDay: z.string().nullable(), lastSummary: z.string().nullable(), nextRunAt: z.string() }),
+  twins: TwinsSchema.nullable().default(null),
 });
 export type Growth = z.infer<typeof GrowthSchema>;
 export type LoopStatus = z.infer<typeof LoopStatusSchema>;
