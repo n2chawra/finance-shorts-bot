@@ -1,0 +1,103 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 40581,
+  "duration_sec": 31,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 110,
+    "look": {
+      "stage": "city",
+      "header": "ribbon",
+      "holder": "blackboard",
+      "entrance": "drop"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "America owes $40.61T, and 19%? Owed to itself.",
+        "start": 0.3,
+        "seconds": 3.91,
+        "window": 4.47,
+        "fill": 0.875
+      },
+      {
+        "scene": "day",
+        "text": "In one single day, it grew by another $24.38B.",
+        "start": 4.77,
+        "seconds": 3.63,
+        "window": 4.13,
+        "fill": 0.879
+      },
+      {
+        "scene": "bonds",
+        "text": "So who lent all that? Most of it, $32.82T, is owed to whoever holds Treasury bills and bonds: banks, funds, other countries.",
+        "start": 8.9,
+        "seconds": 7.49,
+        "window": 8.03,
+        "fill": 0.933
+      },
+      {
+        "scene": "trust",
+        "text": "The other $7.78T? Its own trust funds hold it, like Social Security.",
+        "start": 16.93,
+        "seconds": 4.58,
+        "window": 5.07,
+        "fill": 0.903
+      },
+      {
+        "scene": "split",
+        "text": "Now split the whole debt over 341.8M Americans.",
+        "start": 22.0,
+        "seconds": 3.56,
+        "window": 4.07,
+        "fill": 0.875
+      },
+      {
+        "scene": "payoff",
+        "text": "That's about $118,813 each. Would you lend America more?",
+        "start": 26.07,
+        "seconds": 4.38,
+        "window": 4.8,
+        "fill": 0.912
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "real-subject-first-frame": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.9,
+    "lufs": -15.6,
+    "music_under_voice_db": 22.0
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 12.851,
+    "still_share": 0.062,
+    "longest_still_sec": 2.0
+  },
+  "liveliness_problems": []
+}

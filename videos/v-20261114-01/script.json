@@ -1,0 +1,726 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 40581,
+ "story": "money_scale",
+ "shape": "the-ledger",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "synthwave",
+  "key": "A",
+  "bpm": 110,
+  "look": {
+   "stage": "city",
+   "header": "ribbon",
+   "holder": "blackboard",
+   "entrance": "drop"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "shock_number",
+ "cta": "Would you lend America more? Comment",
+ "feed_id": "2026-11-14-us-owes-40-trillion-your-share",
+ "facts": [
+  {
+   "label": "Total US public debt outstanding",
+   "value": 40608506856903.25,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2026-11-12",
+   "source": "US Treasury",
+   "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2"
+  },
+  {
+   "label": "US debt held by the public",
+   "value": 32824386143424.8,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2026-11-12",
+   "source": "US Treasury",
+   "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2"
+  },
+  {
+   "label": "US intragovernmental holdings (debt the government owes its own trust funds)",
+   "value": 7784120713478.45,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2026-11-12",
+   "source": "US Treasury",
+   "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2"
+  },
+  {
+   "label": "Total US public debt outstanding, the business day before",
+   "value": 40584130080272.89,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2026-11-10",
+   "source": "US Treasury",
+   "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2"
+  },
+  {
+   "label": "US resident population, July 1 2025 (Vintage 2025 estimate)",
+   "value": 341784857,
+   "unit": "count",
+   "as_of": "2025-07-01",
+   "source": "US Census Bureau",
+   "url": "https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html"
+  }
+ ],
+ "maths": [
+  {
+   "name": "debt",
+   "kind": "share",
+   "total": 40608506856903.25,
+   "parts": 341784857,
+   "facts": {
+    "total": 1,
+    "parts": 5
+   }
+  },
+  {
+   "name": "prev",
+   "kind": "share",
+   "total": 40584130080272.89,
+   "parts": 1,
+   "facts": {
+    "total": 4
+   }
+  },
+  {
+   "name": "day",
+   "kind": "compare",
+   "a": "debt.total",
+   "b": "prev.total"
+  },
+  {
+   "name": "self",
+   "kind": "rate",
+   "part": 7784120713478.45,
+   "whole": 40608506856903.25,
+   "facts": {
+    "part": 3,
+    "whole": 1
+   }
+  },
+  {
+   "name": "pub",
+   "kind": "share",
+   "total": 32824386143424.8,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 1.0,
+  "words": "America owes *itself*",
+  "figure": "{self_part}",
+  "tag": "Of {debt_total}",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "America owes {debt_total}, and {self_pct}? Owed to itself.",
+   "events": {
+    "america": {
+     "word": "America"
+    },
+    "owes": {
+     "word": "owes"
+    },
+    "and": {
+     "word": "and"
+    },
+    "owed": {
+     "word": "Owed"
+    },
+    "itself": {
+     "word": "itself"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "america"
+    },
+    {
+     "kind": "tick",
+     "at": "owes"
+    },
+    {
+     "kind": "whoosh",
+     "at": "and"
+    },
+    {
+     "kind": "pop",
+     "at": "owed"
+    },
+    {
+     "kind": "boom",
+     "at": "itself"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": [
+     "the Treasury steps at dusk",
+     "a Treasury clerk's desk"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "owes",
+      "size": "close"
+     },
+     {
+      "at": "and",
+      "size": "medium"
+     },
+     {
+      "at": "itself",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "america",
+      "what": "the Treasury seal swings in under the debt clock on the steps"
+     },
+     {
+      "at": "owes",
+      "what": "the debt clock pulses and the camera pushes in"
+     },
+     {
+      "at": "and",
+      "what": "cut to the clerk's desk: he writes an IOU slip"
+     },
+     {
+      "at": "owed",
+      "what": "his own drawer marked TRUST FUNDS slides open"
+     },
+     {
+      "at": "itself",
+      "what": "he slides the slip into it, the share stamps on the slip"
+     }
+    ],
+    "things": [
+     "treasury seal",
+     "debt clock",
+     "stone columns",
+     "clerk's desk",
+     "iou slip",
+     "trust funds drawer"
+    ],
+    "fig": {
+     "total": "{debt_total}",
+     "pct": "{self_pct}"
+    }
+   }
+  },
+  {
+   "id": "day",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "In one single day, it grew by another {day_diff}.",
+   "events": {
+    "single": {
+     "word": "single"
+    },
+    "day": {
+     "word": "day"
+    },
+    "grew": {
+     "word": "grew"
+    },
+    "another": {
+     "word": "another"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "single"
+    },
+    {
+     "kind": "tick",
+     "at": "day"
+    },
+    {
+     "kind": "riser",
+     "at": "grew"
+    },
+    {
+     "kind": "kaching",
+     "at": "another"
+    }
+   ],
+   "params": {
+    "component": "Billboard",
+    "place": "a night street under a giant debt billboard",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "grew",
+      "size": "medium"
+     },
+     {
+      "at": "another",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "single",
+      "what": "the street clock's hands whirl one full day, sky flips night to day to night"
+     },
+     {
+      "at": "day",
+      "what": "Rohan stops under the billboard with his coffee"
+     },
+     {
+      "at": "grew",
+      "what": "the billboard's digits roll and it extends a new panel"
+     },
+     {
+      "at": "another",
+      "what": "the day's rise stamps on the new panel, Rohan's coffee drops"
+     }
+    ],
+    "things": [
+     "debt billboard",
+     "street clock",
+     "rohan with coffee",
+     "street lamps"
+    ],
+    "fig": {
+     "total": "{debt_total}",
+     "diff": "{day_diff}"
+    }
+   }
+  },
+  {
+   "id": "bonds",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "So who lent all that? Most of it, {pub_total}, is owed to whoever holds Treasury bills and bonds: banks, funds, other countries.",
+   "events": {
+    "lent": {
+     "word": "lent"
+    },
+    "most": {
+     "word": "Most"
+    },
+    "owed": {
+     "word": "owed"
+    },
+    "banks": {
+     "word": "banks"
+    },
+    "funds": {
+     "word": "funds"
+    },
+    "countries": {
+     "word": "countries"
+    },
+    "bonds": {
+     "word": "bonds"
+    },
+    "holds": {
+     "word": "holds"
+    },
+    "it": {
+     "word": "it"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "lent"
+    },
+    {
+     "kind": "pop",
+     "at": "most"
+    },
+    {
+     "kind": "tick",
+     "at": "bonds"
+    },
+    {
+     "kind": "ding",
+     "at": "banks"
+    },
+    {
+     "kind": "ding",
+     "at": "funds"
+    },
+    {
+     "kind": "ding",
+     "at": "countries"
+    }
+   ],
+   "params": {
+    "component": "Bonds",
+    "place": "the bond counter hall",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "bonds",
+      "size": "close"
+     },
+     {
+      "at": "banks",
+      "size": "medium"
+     },
+     {
+      "at": "countries",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lent",
+      "what": "the hall lights come up on a row of three teller windows"
+     },
+     {
+      "at": "most",
+      "what": "the ledger board over the windows lights up"
+     },
+     {
+      "at": "it",
+      "what": "the ledger board counts up to the figure"
+     },
+     {
+      "at": "owed",
+      "what": "the ledger board flashes and an OWED stamp slams on it"
+     },
+     {
+      "at": "holds",
+      "what": "a Treasury bond slides across the counter"
+     },
+     {
+      "at": "bonds",
+      "what": "close on the bond: the clerk's hand takes it"
+     },
+     {
+      "at": "banks",
+      "what": "the BANK window lights and grabs a bond"
+     },
+     {
+      "at": "funds",
+      "what": "the FUND window lights and grabs a bond"
+     },
+     {
+      "at": "countries",
+      "what": "the COUNTRIES window with flags lights and a stack of bonds flies in"
+     }
+    ],
+    "things": [
+     "teller windows",
+     "ledger board",
+     "treasury bond certificates",
+     "flags",
+     "banker"
+    ],
+    "fig": {
+     "pub": "{pub_total}"
+    }
+   }
+  },
+  {
+   "id": "trust",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "The other {self_part}? Its own trust funds hold it, like Social Security.",
+   "events": {
+    "other": {
+     "word": "other"
+    },
+    "own": {
+     "word": "own"
+    },
+    "hold": {
+     "word": "hold"
+    },
+    "social": {
+     "word": "Social"
+    },
+    "security": {
+     "word": "Security"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "other"
+    },
+    {
+     "kind": "boom",
+     "at": "own"
+    },
+    {
+     "kind": "pop",
+     "at": "hold"
+    },
+    {
+     "kind": "ding",
+     "at": "social"
+    }
+   ],
+   "params": {
+    "component": "Trust",
+    "place": "inside the trust fund vault",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "own",
+      "size": "medium"
+     },
+     {
+      "at": "social",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "other",
+      "what": "the round vault door swings open, light floods out"
+     },
+     {
+      "at": "own",
+      "what": "inside: no cash, shelves of IOU paper stacks, the figure stamps on the biggest"
+     },
+     {
+      "at": "hold",
+      "what": "stacks thud down onto the shelves"
+     },
+     {
+      "at": "social",
+      "what": "a pension envelope labelled SOCIAL SECURITY pops on top, a retiree peeks in"
+     }
+    ],
+    "things": [
+     "round vault door",
+     "iou stacks",
+     "shelves",
+     "pension envelope",
+     "retiree"
+    ],
+    "fig": {
+     "part": "{self_part}"
+    }
+   }
+  },
+  {
+   "id": "split",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "Now split the whole debt over {debt_parts} Americans.",
+   "events": {
+    "split": {
+     "word": "split"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "over": {
+     "word": "over"
+    },
+    "americans": {
+     "word": "Americans"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "split"
+    },
+    {
+     "kind": "whoosh",
+     "at": "over"
+    },
+    {
+     "kind": "pop",
+     "at": "americans"
+    }
+   ],
+   "params": {
+    "component": "Street",
+    "place": "a suburban street from above",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "americans",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "split",
+      "what": "a giant debt bill over the street tears into strips"
+     },
+     {
+      "at": "whole",
+      "what": "the strips fold into envelopes and rain down"
+     },
+     {
+      "at": "over",
+      "what": "envelopes drop into every mailbox, flags pop up down the street"
+     },
+     {
+      "at": "americans",
+      "what": "the house count sign over the street lands on the figure"
+     }
+    ],
+    "things": [
+     "houses from above",
+     "giant bill",
+     "envelopes",
+     "mailbox flags",
+     "population sign"
+    ],
+    "fig": {
+     "parts": "{debt_parts}"
+    }
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "That's about {debt_per_part} each. Would you lend America more?",
+   "events": {
+    "that's": {
+     "word": "That's"
+    },
+    "each": {
+     "word": "each"
+    },
+    "would": {
+     "word": "Would"
+    },
+    "lend": {
+     "word": "lend"
+    },
+    "more": {
+     "word": "more"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "that's"
+    },
+    {
+     "kind": "kaching",
+     "at": "each"
+    },
+    {
+     "kind": "whoosh",
+     "at": "would"
+    },
+    {
+     "kind": "boom",
+     "at": "more"
+    }
+   ],
+   "params": {
+    "component": "Mailbox",
+    "place": [
+     "Rohan's mailbox",
+     "the Treasury steps at dusk"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "each",
+      "size": "extreme"
+     },
+     {
+      "at": "would",
+      "size": "medium"
+     },
+     {
+      "at": "more",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "that's",
+      "what": "Rohan pulls the envelope out of his mailbox"
+     },
+     {
+      "at": "each",
+      "what": "the per-person figure stamps on the envelope, Rohan's jaw drops"
+     },
+     {
+      "at": "would",
+      "what": "Rohan looks up the street"
+     },
+     {
+      "at": "lend",
+      "what": "the camera tilts up the street to the Treasury steps"
+     },
+     {
+      "at": "more",
+      "what": "the debt clock at dusk fills the frame again with the total, the loop back to the hook"
+     }
+    ],
+    "things": [
+     "rohan",
+     "mailbox",
+     "envelope",
+     "debt clock",
+     "treasury steps"
+    ],
+    "fig": {
+     "each": "{debt_per_part}",
+     "total": "{debt_total}"
+    }
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}

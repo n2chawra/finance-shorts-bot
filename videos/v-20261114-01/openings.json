@@ -1,0 +1,24 @@
+{
+ "options": [
+  {
+   "key": "A",
+   "title": "America owes {debt_total}, and it grew {day_diff} in one day",
+   "first_line": "America owes {debt_total}, and in one single day it grew by {day_diff}.",
+   "first_frame": "The US Capitol dome at dusk with a giant debt clock on its steps reading {debt_total}, digits spinning, the Treasury seal stuck beside it."
+  },
+  {
+   "key": "B",
+   "title": "The US owes {debt_total}: about {debt_per_part} for every American",
+   "first_line": "The United States owes {debt_total}: about {debt_per_part} for every person in the country.",
+   "first_frame": "A suburban mailbox with a bill sticking out stamped {debt_per_part}, the US Capitol and its debt clock reading {debt_total} behind it."
+  },
+  {
+   "key": "C",
+   "title": "{self_pct} of America's {debt_total} debt is owed to itself",
+   "first_line": "America owes {debt_total}, and {self_pct} of it, it owes to itself.",
+   "first_frame": "The US Capitol dome with a debt clock reading {debt_total}, a hand from inside the dome passing an IOU back to itself."
+  }
+ ],
+ "picked": "C",
+ "why": "All three name America and its debt total, but only C adds a fact a stranger doesn't know and wants explained (how a country owes money to itself), so it is the likeliest to stop the scroll."
+}

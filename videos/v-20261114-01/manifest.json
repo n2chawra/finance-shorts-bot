@@ -1,0 +1,341 @@
+{
+  "id": "v-20261114-01",
+  "createdAt": "2026-11-13T21:54:16.156384+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "The US owes $40.58 trillion, and a fifth of it is owed to its own trust funds",
+    "category": "debt",
+    "reach": "global",
+    "feed_id": "2026-11-14-us-owes-40-trillion-your-share"
+  },
+  "title": "19% of America's $40.61T debt is owed to itself 🇺🇸",
+  "description": "How can America owe $7.78T to itself?\nData: US Treasury, Census Bureau · Nov 2026. $40.61T owed, $32.82T to bondholders, the rest to its own trust funds like Social Security.\nAn animated story told with official figures; the characters are not advisers.\nIllustrative only. Not financial advice.\n\nLogo: U.S. Government. The original 1780s seal is believed to have been designed by Francis Hopkinson., Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Seal_of_the_United_States_Department_of_the_Treasury.svg)",
+  "hashtags": [
+    "#Shorts",
+    "#USDebt",
+    "#USTreasury",
+    "#Money",
+    "#Economy"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Would you lend America more? Comment",
+  "seed": 40581,
+  "style": {
+    "palette": "ember",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 110,
+    "look": {
+      "stage": "city",
+      "header": "ribbon",
+      "holder": "blackboard",
+      "entrance": "drop"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "28-35",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "America owes $40.61T, and 19%? Owed to itself.",
+        "start": 0.3,
+        "seconds": 3.91,
+        "window": 4.47,
+        "fill": 0.875
+      },
+      {
+        "scene": "day",
+        "text": "In one single day, it grew by another $24.38B.",
+        "start": 4.77,
+        "seconds": 3.63,
+        "window": 4.13,
+        "fill": 0.879
+      },
+      {
+        "scene": "bonds",
+        "text": "So who lent all that? Most of it, $32.82T, is owed to whoever holds Treasury bills and bonds: banks, funds, other countries.",
+        "start": 8.9,
+        "seconds": 7.49,
+        "window": 8.03,
+        "fill": 0.933
+      },
+      {
+        "scene": "trust",
+        "text": "The other $7.78T? Its own trust funds hold it, like Social Security.",
+        "start": 16.93,
+        "seconds": 4.58,
+        "window": 5.07,
+        "fill": 0.903
+      },
+      {
+        "scene": "split",
+        "text": "Now split the whole debt over 341.8M Americans.",
+        "start": 22.0,
+        "seconds": 3.56,
+        "window": 4.07,
+        "fill": 0.875
+      },
+      {
+        "scene": "payoff",
+        "text": "That's about $118,813 each. Would you lend America more?",
+        "start": 26.07,
+        "seconds": 4.38,
+        "window": 4.8,
+        "fill": 0.912
+      }
+    ]
+  },
+  "durationSec": 31,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.9,
+    "lufs": -15.6,
+    "music_under_voice_db": 22.0
+  },
+  "experiments": {
+    "real-subject-first-frame": "on"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "25 figures computed from inputs; 25 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review: facts 1-4 confirmed exactly on the Treasury Debt to the Penny API (fetched; 2026-11-12 is still the newest record, 2026-11-10 the business day before since 11 Nov was Veterans Day); fact 5 (341,784,857) confirmed via the Census press release (341.8M) plus a search showing Census QuickFacts with the exact figure; verify items met ('in one single day', 'about' per American with no personal-owing claim); no advice, neutral tone, sourced data line and disclaimer in the description. Note: the 'illustrative numbers' line in the description is required by check-plan but sits oddly next to sourced figures."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: the payoff envelope now shows $118,813 clear of Rohan at 28.5 s (he stands left), the ground fills the frame to the bottom, nobody under the right buttons; description now says official figures. Hook names America + $40.61T on frame 1, 6 directed places, figures on things, disclaimer on last frames, layout/craft clean, 31 s, audio -1.0/-16.9 dB."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:40:19.667275+00:00",
+      "finishedAt": "2026-11-13T21:40:19.667275+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-13T21:41:53.552632+00:00",
+      "finishedAt": "2026-11-13T21:41:53.552632+00:00",
+      "notes": [
+        "25 figures computed from inputs; 25 cross-checked against closed-form formulas.",
+        "warning: beat 'payoff' runs 7.6 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "the asker asks 0 questions; a question-chain has 6+, each sharper than the last",
+        "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:42:09.696550+00:00",
+      "finishedAt": "2026-11-13T21:42:09.696550+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:42:10.494111+00:00",
+      "finishedAt": "2026-11-13T21:42:10.494111+00:00",
+      "notes": [
+        "25 figures computed from inputs; 25 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-13T21:43:12.433948+00:00",
+      "finishedAt": "2026-11-13T21:43:12.433948+00:00",
+      "notes": [
+        "Facts 1-4 (Debt to the Penny) are out of date: the Treasury API (fetched, sort=-record_date) now shows a newer record, 2026-11-12: total 40,608,506,856,903.25, held by the public 32,824,386,143,424.80, intragovernmental 7,784,120,713,478.45. The topic's verify item requires the newest record with both day figures replaced as consecutive business days: use 2026-11-12 vs 2026-11-10 (11 Nov was Veterans Day, no record). The 2026-11-10 and 2026-11-09 values in the script do match the API exactly, so the fix is only a refresh: about $40.61T total, $24.38B one-day rise, 19% owed to itself, about $118,813 per American. Keep 'in one single day' (one business day, not an average).",
+        "Fact 5 (341,784,857, Census V2025) is confirmed: census.gov press release (fetched) shows 341.8 million on July 1, 2025, and a search returns Census QuickFacts showing 341,784,857 exactly. No change needed.",
+        "Minor, fix on the rewrite: the description says 'illustrative numbers', but these are sourced Treasury and Census figures; say 'Data: US Treasury, Census Bureau · Nov 2026' instead. The 'bonds' line saying 'a Treasury bond' is loose (public debt is bills, notes and bonds); 'Treasury securities' or 'Treasury IOUs' would be exact. Everything else passes: no advice, 'about' on the per-person figure with no claim anyone owes it, neutral tone, disclaimer ends the description."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-13T21:43:40.639469+00:00",
+      "finishedAt": "2026-11-13T21:43:40.639469+00:00",
+      "notes": [
+        "facts[0] (40608506856903.25 money, 2026-11-12) is not one of the feed topic's facts; copy them exactly",
+        "facts[1] (32824386143424.8 money, 2026-11-12) is not one of the feed topic's facts; copy them exactly",
+        "facts[2] (7784120713478.45 money, 2026-11-12) is not one of the feed topic's facts; copy them exactly",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:43:41.415920+00:00",
+      "finishedAt": "2026-11-13T21:43:41.415920+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:43:47.484187+00:00",
+      "finishedAt": "2026-11-13T21:43:47.484187+00:00",
+      "notes": [
+        "25 figures computed from inputs; 25 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:44:03.572099+00:00",
+      "finishedAt": "2026-11-13T21:44:03.572099+00:00",
+      "notes": [
+        "Re-review: facts 1-4 confirmed exactly on the Treasury Debt to the Penny API (fetched; 2026-11-12 is still the newest record, 2026-11-10 the business day before since 11 Nov was Veterans Day); fact 5 (341,784,857) confirmed via the Census press release (341.8M) plus a search showing Census QuickFacts with the exact figure; verify items met ('in one single day', 'about' per American with no personal-owing claim); no advice, neutral tone, sourced data line and disclaimer in the description. Note: the 'illustrative numbers' line in the description is required by check-plan but sits oddly next to sourced figures."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-13T21:46:10.396194+00:00",
+      "finishedAt": "2026-11-13T21:46:52.472030+00:00",
+      "notes": [
+        "text '$32.82T' at 14.1 s runs outside the frame",
+        "text 'BANKS' at 14.1 s runs outside the frame",
+        "text 'COUNTRIES' at 14.1 s runs outside the frame",
+        "2.7 s with nothing new on screen in beat 'hook' (at most 2.5 s): add an action on the phrase being said there",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-13T21:47:42.861797+00:00",
+      "finishedAt": "2026-11-13T21:48:09.756287+00:00",
+      "notes": [
+        "text '$32.82T' at 14.2 s runs outside the frame",
+        "text 'BANKS' at 14.2 s runs outside the frame",
+        "text 'COUNTRIES' at 14.2 s runs outside the frame",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:48:31.722077+00:00",
+      "finishedAt": "2026-11-13T21:48:54.794845+00:00",
+      "notes": [
+        "31 s, ember/synthwave (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:49:19.968702+00:00",
+      "finishedAt": "2026-11-13T21:49:44.558389+00:00",
+      "notes": [
+        "31 s, ember/synthwave (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-13T21:50:54.921064+00:00",
+      "finishedAt": "2026-11-13T21:50:54.921064+00:00",
+      "notes": [
+        "[scene] payoff beat (Mailbox.tsx), 27.0-28.5 s: the per-person figure $118,813, the story's payoff, is never readable on the envelope. At 27.0 s the envelope is blank with only 'EACH' below it; at 28.5 s (the 'each' stamp) Rohan's head and raised arm cover the red tag so only '$11..8' shows. The payoff figure exists only in the caption. Place the stamped envelope clear of Rohan's head and arm (hold it out to the camera / beside him) so the figure is fully on the thing.",
+        "[scene] payoff beat (Mailbox.tsx), 27.0 s: the set ends short of the frame: a dark navy band fills the bottom ~130 px under the green ground (the camera's extreme/close framing runs past the set edge). At 28.5 s Rohan is cut by the right edge, his face under the right-hand buttons.",
+        "[script] plan.json description says 'An animated story with illustrative numbers', but every figure is sourced US Treasury / Census data; it reads as admitting an invented example (check 6a, lesson 4). Drop 'with illustrative numbers' (keep the required disclaimer line)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:51:39.512717+00:00",
+      "finishedAt": "2026-11-13T21:52:03.438996+00:00",
+      "notes": [
+        "31 s, ember/synthwave (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:52:40.792168+00:00",
+      "finishedAt": "2026-11-13T21:52:40.792168+00:00",
+      "notes": [
+        "Re-review after fixes: the payoff envelope now shows $118,813 clear of Rohan at 28.5 s (he stands left), the ground fills the frame to the bottom, nobody under the right buttons; description now says official figures. Hook names America + $40.61T on frame 1, 6 directed places, figures on things, disclaimer on last frames, layout/craft clean, 31 s, audio -1.0/-16.9 dB."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:52:52.903407+00:00",
+      "finishedAt": "2026-11-13T21:54:10.400405+00:00",
+      "notes": [
+        "31 s, ember/synthwave, peak -1.0 dB, mean -16.9 dB",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-13T21:54:16.156455+00:00",
+      "finishedAt": "2026-11-13T21:54:16.156455+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261114-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261114-01"
+  }
+}
