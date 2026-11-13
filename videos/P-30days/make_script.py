@@ -26,7 +26,7 @@ def beat(id, scene, say, words, params, lvl, sounds=(), transition="cut", **extr
     b.update(extra); beats.append(b)
 def build(id, say, words, world, items, actions, lvl, cam=None, sounds=(), transition="match", **extra):
     params = {"world": world, "items": items, "actions": actions,
-              "camera": cam or [{"sec": 0, "size": "wide", "on": "all"}, {"at": k(words[-1]), "size": "medium", "on": items[0]["id"], "move": True}]}
+              "camera": cam or [{"sec": 0, "size": "wide", "on": "all"}, {"at": k(words[-1]), "size": "close", "on": items[0]["id"], "move": True}]}
     extra.setdefault("role", "build"); beat(id, "build", say, words, params, lvl, sounds, transition, **extra)
 def chapter(n, title):
     say = f"Chapter {['one','two','three','four','five','six'][n-1]}. {title}."
@@ -59,7 +59,7 @@ typ("hook", s, ["Thirty", "Claude", "YouTube", "face", "editing"],
 s = "It wrote the scripts, drew the animation, voiced every line and uploaded three Shorts a day, while I slept."
 build("hook2", s, ["scripts", "animation", "voiced", "uploaded", "slept"], NIGHT,
       [it("laptop", "laptop", 0.25, 0.4, "Claude Code"), it("clap", "clapper", 0.55, 0.26, "Animation", True), it("phone", "phone", 0.8, 0.34, "Shorts", True), it("play", "play", 0.55, 0.22, None, True, y=0.3)],
-      [act(0, "glow", "laptop"), act("scripts", "grow", "laptop", scale=1.1), act("animation", "enter", "clap"), act("voiced", "shake", "clap"), act("uploaded", "enter", "phone"), act("slept", "enter", "play", how="drop")], 1,
+      [act("scripts", "grow", "laptop", scale=1.1), act("animation", "enter", "clap"), act("voiced", "shake", "clap"), act("uploaded", "enter", "phone"), act("slept", "enter", "play", how="drop")], 1,
       sounds=[("pop", "scripts"), ("whoosh", "animation"), ("kaching", "uploaded")])
 s = "After a month it had made {fact1} videos, earned {fact3} views and {fact4} subscribers."
 stats("hook3", s, ["month", "videos", "views", "subscribers"], "Thirty days in", "The result", [("Videos made", "{fact1}", "videos", "blue"), ("Views", "{fact3}", "views", "green"), ("Subscribers", "{fact4}", "subscribers", "orange")], "slate", "chart", 1)
@@ -77,22 +77,22 @@ chapter(1, "The setup")
 s = "Day one. I opened Claude Code and described the channel I wanted: animated money stories, true facts only, and every number checked by code."
 build("s1", s, ["Day", "opened", "described", "animated", "facts", "number"], OFFICE,
       [it("laptop", "laptop", 0.5, 0.42, "Day one"), it("phone", "phone", 0.15, 0.3, "Money stories", True), it("cash", "cash", 0.85, 0.24, "Real facts", True), it("gear", "gear", 0.5, 0.18, None, True, y=0.25)],
-      [act(0, "glow", "laptop"), act("opened", "grow", "laptop", scale=1.1), act("animated", "enter", "phone"), act("facts", "enter", "cash"), act("number", "enter", "gear", how="drop")], 1,
+      [act("opened", "grow", "laptop", scale=1.1), act("animated", "enter", "phone"), act("facts", "enter", "cash"), act("number", "enter", "gear", how="drop")], 1,
       sounds=[("tick", "Day"), ("pop", "animated"), ("ding", "number")])
 s = "And I didn't write the code myself. I described what I wanted, and Claude Code wrote it: the renderer, the uploader, the checks, tens of thousands of lines."
 build("s1b", s, ["code", "described", "renderer", "uploader", "checks", "thousands"], OFFICE,
       [it("laptop", "laptop", 0.5, 0.42, "Claude Code"), it("clap", "clapper", 0.16, 0.24, "Renderer", True), it("cloud", "cloud", 0.84, 0.24, "Uploader", True), it("shield", "shield", 0.5, 0.16, "Checks", True, y=0.25)],
-      [act(0, "glow", "laptop"), act("described", "grow", "laptop", scale=1.1), act("renderer", "enter", "clap"), act("uploader", "enter", "cloud"), act("checks", "enter", "shield", how="drop"), act("thousands", "shake", "laptop")], 1,
+      [act("described", "grow", "laptop", scale=1.1), act("renderer", "enter", "clap"), act("uploader", "enter", "cloud"), act("checks", "enter", "shield", how="drop"), act("thousands", "shake", "laptop")], 1,
       sounds=[("pop", "renderer"), ("pop", "uploader"), ("ding", "checks")], transition="whip")
 s = "It built a whole studio. A planner picks the topic, a writer storyboards it, code checks the maths, and a second AI checks every fact."
 build("s2", s, ["studio", "planner", "writer", "code", "second"], OFFICE,
       [it("plan", "robot", 0.14, 0.26, "Planner"), it("write", "robot", 0.38, 0.26, "Writer", True), it("check", "gear", 0.62, 0.24, "Number check", True), it("fact", "shield", 0.86, 0.26, "Fact check", True)],
-      [act(0, "glow", "plan"), act("planner", "grow", "plan", scale=1.15), act("writer", "enter", "write"), act("code", "enter", "check"), act("second", "enter", "fact", how="drop")], 1,
+      [act("planner", "grow", "plan", scale=1.15), act("writer", "enter", "write"), act("code", "enter", "check"), act("second", "enter", "fact", how="drop")], 1,
       sounds=[("pop", "planner"), ("pop", "writer"), ("pop-high", "code"), ("ding", "second")], transition="whip")
 s = "Then it draws the animation and an offline voice reads it. No stock footage, no downloaded music. Every frame and every sound is made in code."
 build("s3", s, ["draws", "voice", "footage", "music", "frame"], STUDIO,
       [it("clap", "clapper", 0.3, 0.34, "Drawn in code"), it("laptop", "laptop", 0.72, 0.36, "Offline voice", True), it("box", "box", 0.5, 0.18, "No stock", True, state="red")],
-      [act(0, "glow", "clap"), act("draws", "shake", "clap"), act("voice", "enter", "laptop"), act("footage", "enter", "box"), act("music", "cross", "box"), act("frame", "grow", "clap", scale=1.12)], 1)
+      [act("draws", "shake", "clap"), act("voice", "enter", "laptop"), act("footage", "enter", "box"), act("music", "cross", "box"), act("frame", "grow", "clap", scale=1.12)], 1)
 s = "It even invented a cast: Rohan, Priya, Sharma, and a coin called Sikka."
 beat("s4", "stage", s, ["cast", "Rohan", "Priya", "Sharma", "Sikka"],
      {"set": "home", "actors": [{"who": "rohan", "x": 0.25, "enter": "left", "acting": [{"at": "rohan", "pose": "wave", "expression": "happy"}]},
@@ -102,12 +102,12 @@ beat("s4", "stage", s, ["cast", "Rohan", "Priya", "Sharma", "Sikka"],
 s = "Finished videos go up to GitHub, and a scheduler uploads them at three fixed times a day. It all runs in the cloud, on free tiers and one Claude subscription."
 build("s5", s, ["GitHub", "scheduler", "three", "cloud", "subscription"], CITY,
       [it("cloud", "cloud", 0.5, 0.36, "The cloud"), it("cal", "calendar", 0.18, 0.28, "Three a day", True), it("play", "play", 0.82, 0.28, "YouTube", True), it("coin", "coin", 0.5, 0.16, "One subscription", True, y=0.3)],
-      [act(0, "glow", "cloud"), act("GitHub", "grow", "cloud", scale=1.1), act("scheduler", "enter", "cal"), act("three", "enter", "play"), act("cloud", "flow", "cloud", to="play", n=4), act("subscription", "enter", "coin", how="drop")], 1,
+      [act("GitHub", "grow", "cloud", scale=1.1), act("scheduler", "enter", "cal"), act("three", "enter", "play"), act("cloud", "flow", "cloud", to="play", n=4), act("subscription", "enter", "coin", how="drop")], 1,
       sounds=[("whoosh", "GitHub"), ("tick", "scheduler"), ("pop", "three"), ("kaching", "subscription")])
 s = "It also built me a dashboard, so I can see every video, every upload and every robot's work from my phone."
 build("s6", s, ["dashboard", "video", "upload", "robot's", "phone"], STUDIO,
       [it("phone", "phone", 0.5, 0.42, "My dashboard"), it("chart", "chart", 0.18, 0.26, "Every video", True), it("play", "play", 0.82, 0.24, "Every upload", True), it("robot", "robot", 0.5, 0.16, None, True, y=0.25)],
-      [act(0, "glow", "phone"), act("video", "enter", "chart"), act("upload", "enter", "play"), act("robot's", "enter", "robot", how="drop"), act("phone", "grow", "phone", scale=1.12)], 1,
+      [act("video", "enter", "chart"), act("upload", "enter", "play"), act("robot's", "enter", "robot", how="drop"), act("phone", "grow", "phone", scale=1.12)], 1,
       sounds=[("pop", "dashboard"), ("pop", "upload"), ("ding", "phone")])
 s = "So I pressed go and went to sleep. Would anyone actually watch?"
 typ("t1", s, ["pressed", "sleep", "anyone", "watch"], [("Pressed go", "pressed", "big", None), ("Went to sleep", "sleep", "small", None), ("Would anyone", "anyone", "small", None), ("watch?", "watch", "huge", None)], "teal", "play", 1, kicker="Next · Week one", role="tease")
@@ -121,7 +121,7 @@ beat("w1", "journey", s, ["prototype", "Short", "week", "every"],
 s = "The first Shorts were about savings, budgets and credit cards. And almost nobody watched them, a few dozen views each."
 build("w2", s, ["savings", "budgets", "cards", "nobody", "dozen"], {"kind": "kitchen", "tint": "blue"},
       [it("phone", "phone", 0.5, 0.38, "Budget tips"), it("cash", "cash", 0.2, 0.22, "Savings", True), it("note", "note", 0.8, 0.22, "Credit cards", True), it("chart", "chart", 0.5, 0.18, None, True, y=0.25)],
-      [act(0, "glow", "phone"), act("savings", "enter", "cash"), act("cards", "enter", "note"), act("nobody", "shrink", "phone", scale=0.8), act("dozen", "enter", "chart", how="drop")], 2,
+      [act("savings", "enter", "cash"), act("cards", "enter", "note"), act("nobody", "shrink", "phone", scale=0.8), act("dozen", "enter", "chart", how="drop")], 2,
       sounds=[("pop", "savings"), ("pop", "cards"), ("fail", "nobody")])
 s = "Budget tips are what every channel already makes. Mine were just one more drop in the ocean."
 typ("w3", s, ["Budget", "every", "drop", "ocean"], [("Budget tips?", "Budget", "big", None), ("Everyone makes them", "every", "small", None), ("One more drop", "drop", "huge", None)], "coral", "phone", 2)
@@ -138,19 +138,19 @@ beat("h1", "headline", s, ["billionaires", "tax", "reached", "views"], {"kicker"
 s = "And it wasn't alone. Why billionaires never sell their stock, what a billion looks like in hundred dollar bills: every Short past a thousand views was about huge sums of money."
 build("h2", s, ["alone", "stock", "billion", "thousand", "money"], CITY,
       [it("trophy", "trophy", 0.5, 0.36, "Best Shorts"), it("cash", "cash", 0.2, 0.26, "Never sell", True), it("stack", "cash", 0.8, 0.26, "A billion", True), it("phone", "phone", 0.5, 0.18, None, True, y=0.25)],
-      [act(0, "glow", "trophy"), act("stock", "enter", "cash"), act("billion", "enter", "stack"), act("thousand", "grow", "trophy", scale=1.15), act("money", "multiply", "stack", n=3)], 3,
+      [act("stock", "enter", "cash"), act("billion", "enter", "stack"), act("thousand", "grow", "trophy", scale=1.15), act("money", "multiply", "stack", n=3)], 3,
       sounds=[("pop", "stock"), ("pop", "billion"), ("ding", "thousand"), ("kaching", "money")])
 s = "The numbers were clear. Big money titles had a median of {fact15} views. Personal budget titles, just {fact16}."
 stats("h3", s, ["numbers", "Big", "median", "budget"], "October, by topic", "Median views", [("Big money", "{fact15}", "Big", "green"), ("Personal budget", "{fact16}", "budget", "red")], "cream", "trophy", 3)
 s = "The audience surprised me too. Stories about one country stayed small. Stories about famous people and companies travelled all over the world."
 build("h3b", s, ["audience", "country", "small", "famous", "world"], CITY,
       [it("cloud", "cloud", 0.5, 0.36, "The whole world"), it("note", "note", 0.18, 0.22, "One country", True), it("trophy", "trophy", 0.82, 0.28, "Famous names", True)],
-      [act(0, "glow", "cloud"), act("country", "enter", "note"), act("small", "shrink", "note", scale=0.7), act("famous", "enter", "trophy"), act("world", "grow", "cloud", scale=1.15)], 3,
+      [act("country", "enter", "note"), act("small", "shrink", "note", scale=0.7), act("famous", "enter", "trophy"), act("world", "grow", "cloud", scale=1.15)], 3,
       sounds=[("pop", "country"), ("fail", "small"), ("ding", "famous")], transition="whip")
 s = "Its best day brought in {fact13} views. So the system rewrote its own rules: big money first, global stories, and Shorts under thirty five seconds."
 build("h4", s, ["day", "views", "rewrote", "money", "global", "seconds"], OFFICE,
       [it("chart", "chart", 0.5, 0.4, "Best day"), it("robot", "robot", 0.18, 0.28, "New rules", True), it("cash", "cash", 0.82, 0.24, "Big money", True), it("cal", "calendar", 0.5, 0.18, "Short and fast", True, y=0.25)],
-      [act(0, "glow", "chart"), act("views", "grow", "chart", scale=1.15), act("rewrote", "enter", "robot"), act("money", "enter", "cash"), act("seconds", "enter", "cal", how="drop")], 3,
+      [act("views", "grow", "chart", scale=1.15), act("rewrote", "enter", "robot"), act("money", "enter", "cash"), act("seconds", "enter", "cal", how="drop")], 3,
       sounds=[("kaching", "views"), ("whoosh", "rewrote"), ("pop", "money")])
 s = "It felt like the channel had found its thing. Then the views fell off a cliff."
 typ("t3", s, ["felt", "thing", "fell", "cliff"], [("Found its thing", "thing", "big", None), ("Then", "fell", "small", None), ("off a cliff", "cliff", "huge", None)], "slate", "chart", 3, kicker="Next · The crash", role="tease")
@@ -160,19 +160,19 @@ chapter(4, "The crash")
 s = "In early November, views dropped by about nine in ten. The median Short got just {fact7} views."
 build("c1", s, ["November", "dropped", "nine", "median", "views"], NIGHT,
       [it("chart", "chart", 0.5, 0.4, "Views"), it("bug", "bug", 0.2, 0.24, "Something broke", True), it("phone", "phone", 0.8, 0.26, "The median Short", True)],
-      [act(0, "glow", "chart"), act("dropped", "shrink", "chart", scale=0.6), act("nine", "shake", "chart"), act("median", "enter", "phone"), act("views", "enter", "bug", how="drop")], 4,
+      [act("dropped", "shrink", "chart", scale=0.6), act("nine", "shake", "chart"), act("median", "enter", "phone"), act("views", "enter", "bug", how="drop")], 4,
       sounds=[("fail", "dropped"), ("boom", "nine"), ("pop", "median")])
 s = "YouTube Studio told me why. On the worst Short, {fact14} of the people it was shown to swiped away, most of them in the very first second."
 stats("c2", s, ["YouTube", "worst", "swiped", "second"], "Why it dropped", "The first second", [("Swiped away", "{fact14}", "swiped", "red"), ("From the feed", "{fact12}", "second", "blue")], "coral", "phone", 4)
 s = "And things broke. {fact11} videos failed the checks and were thrown away. One night GitHub skipped the uploads for nine hours, and a slot went empty."
 build("c3", s, ["broke", "failed", "thrown", "GitHub", "hours", "empty"], NIGHT,
       [it("bug", "bug", 0.5, 0.36, "Bugs"), it("shield", "shield", 0.18, 0.28, "Failed checks", True, state="red"), it("cal", "calendar", 0.82, 0.28, "Empty slot", True), it("box", "box", 0.5, 0.16, None, True, y=0.25)],
-      [act(0, "glow", "bug"), act("broke", "shake", "bug"), act("failed", "enter", "shield"), act("thrown", "enter", "box", how="drop"), act("GitHub", "enter", "cal"), act("empty", "shake", "cal")], 4,
+      [act("broke", "shake", "bug"), act("failed", "enter", "shield"), act("thrown", "enter", "box", how="drop"), act("GitHub", "enter", "cal"), act("empty", "shake", "cal")], 4,
       sounds=[("fail", "broke"), ("pop", "failed"), ("boom", "empty")])
 s = "Long videos were even harder. One of them was shown to a hundred people, and only four clicked."
 build("c3b", s, ["Long", "harder", "hundred", "four"], STUDIO,
       [it("laptop", "laptop", 0.5, 0.4, "A long video"), it("play", "play", 0.2, 0.22, "Shown", True), it("bug", "bug", 0.82, 0.2, "Few clicks", True)],
-      [act(0, "glow", "laptop"), act("harder", "shake", "laptop"), act("hundred", "enter", "play"), act("four", "enter", "bug", how="drop")], 4,
+      [act("harder", "shake", "laptop"), act("hundred", "enter", "play"), act("four", "enter", "bug", how="drop")], 4,
       sounds=[("pop", "hundred"), ("fail", "four")])
 s = "That's the thing about an automated channel. It doesn't fail loudly. It fails quietly, at three in the morning."
 typ("c4", s, ["automated", "loudly", "quietly", "morning"], [("An automated channel", "automated", "small", None), ("fails loudly", "loudly", "big", "quietly"), ("fails quietly", "quietly", "huge", None), ("at three in the morning", "morning", "small", None)], "night", "bug", 4)
@@ -184,17 +184,17 @@ chapter(5, "The agents")
 s = "Every night, eight AI agents wake up. An auditor checks every number against YouTube. A researcher finds what people are watching this week."
 build("a1", s, ["night", "eight", "auditor", "researcher", "week"], NIGHT,
       [it("aud", "robot", 0.2, 0.3, "Auditor"), it("res", "robot", 0.5, 0.3, "Researcher", True, state="green"), it("lap", "laptop", 0.8, 0.28, "YouTube data", True), it("chart", "chart", 0.5, 0.16, None, True, y=0.25)],
-      [act(0, "glow", "aud"), act("eight", "multiply", "aud", n=2), act("auditor", "grow", "aud", scale=1.12), act("researcher", "enter", "res"), act("week", "enter", "lap")], 5,
+      [act("eight", "multiply", "aud", n=2), act("auditor", "grow", "aud", scale=1.12), act("researcher", "enter", "res"), act("week", "enter", "lap")], 5,
       sounds=[("tick", "night"), ("pop", "auditor"), ("pop", "researcher")])
 s = "An improver tests one change at a time on half the Shorts, and keeps it only if viewers stay longer. A reviewer watches our own videos frame by frame and writes down every mistake."
 build("a2", s, ["improver", "half", "keeps", "reviewer", "frame", "mistake"], OFFICE,
       [it("imp", "robot", 0.25, 0.32, "Improver", state="green"), it("phone", "phone", 0.5, 0.28, "Half the Shorts", True), it("rev", "robot", 0.78, 0.3, "Reviewer", True), it("clap", "clapper", 0.5, 0.16, None, True, y=0.25)],
-      [act(0, "glow", "imp"), act("half", "enter", "phone"), act("keeps", "tick", "phone"), act("reviewer", "enter", "rev"), act("frame", "enter", "clap", how="drop"), act("mistake", "stamp", "clap")], 5,
+      [act("half", "enter", "phone"), act("keeps", "tick", "phone"), act("reviewer", "enter", "rev"), act("frame", "enter", "clap", how="drop"), act("mistake", "stamp", "clap")], 5,
       sounds=[("pop", "improver"), ("ding", "keeps"), ("pop", "reviewer")], transition="whip")
 s = "And no agent can change anything on its own. A guard checks every edit first, and runs the tests."
 build("a3", s, ["agent", "own", "guard", "edit", "tests"], CITY,
       [it("shield", "shield", 0.5, 0.4, "The guard"), it("robot", "robot", 0.2, 0.28, "An agent"), it("bug", "bug", 0.82, 0.22, "A bad edit", True)],
-      [act(0, "glow", "shield"), act("own", "shake", "robot"), act("guard", "grow", "shield", scale=1.15), act("edit", "enter", "bug"), act("tests", "cross", "bug")], 5,
+      [act("own", "shake", "robot"), act("guard", "grow", "shield", scale=1.15), act("edit", "enter", "bug"), act("tests", "cross", "bug")], 5,
       sounds=[("pop", "guard"), ("fail", "tests")])
 s = "In thirty days the agents tried {fact8} changes to their own system. The guard let {fact9} through and blocked {fact10}."
 stats("a4", s, ["thirty", "tried", "through", "blocked"], "Agents fixing the system", "Thirty days", [("Changes tried", "{fact8}", "tried", "blue"), ("Merged", "{fact9}", "through", "green"), ("Blocked", "{fact10}", "blocked", "red")], "sand", "shield", 5)
@@ -209,25 +209,25 @@ beat("r1", "headline", s, ["Altogether", "faceless", "views"], {"kicker": "THIRT
 s = "The system made {fact1} videos and published {fact2}. They were watched for {fact5} hours and brought in {fact4} subscribers."
 stats("r2", s, ["made", "published", "watched", "subscribers"], "The scoreboard", "Thirty days", [("Made", "{fact1}", "made", "blue"), ("Published", "{fact2}", "published", "green"), ("Hours watched", "{fact5}", "watched", "orange"), ("Subscribers", "{fact4}", "subscribers", "purple")], "night", "trophy", 6)
 s = "So, a win or a flop? Honestly, both. As a channel, it is still tiny. As a machine that makes, checks and improves its own videos every single day, it is the most interesting thing I have ever built."
-typ("verdict", s, ["win", "flop", "both", "tiny", "machine", "built"], [("A win or a flop?", "win", "small", None), ("Both", "both", "huge", None), ("A tiny channel", "tiny", "small", "machine"), ("An amazing machine", "machine", "big", None)], "night", "robot", 6, kicker="The verdict")
+typ("verdict", s, ["win", "flop", "both", "tiny", "machine", "improves", "videos", "built"], [("A win or a flop?", "win", "small", None), ("Both", "both", "huge", None), ("A tiny channel", "tiny", "small", "machine"), ("A machine that makes", "machine", "big", None), ("checks and improves", "improves", "small", None), ("its own videos", "videos", "small", None), ("The best thing I've built", "built", "big", None)], "night", "robot", 6, kicker="The verdict")
 s = "Lesson one: automation makes videos. It does not make people care."
 typ("l1", s, ["automation", "videos", "care"], [("Lesson one", "automation", "small", None), ("Automation makes videos", "videos", "big", None), ("not people care", "care", "huge", None)], "coral", "gear", 6, kicker="What I learned")
 s = "Lesson two: the topic is the whole game. Big money beat budget tips every single time."
 build("l2", s, ["topic", "game", "money", "budget", "time"], CITY,
       [it("trophy", "trophy", 0.3, 0.34, "Big money"), it("phone", "phone", 0.72, 0.28, "Budget tips", True), it("cash", "cash", 0.3, 0.18, None, True, y=0.25)],
-      [act(0, "glow", "trophy"), act("game", "grow", "trophy", scale=1.12), act("money", "enter", "cash"), act("budget", "enter", "phone"), act("time", "shrink", "phone", scale=0.8)], 6,
+      [act("game", "grow", "trophy", scale=1.12), act("money", "enter", "cash"), act("budget", "enter", "phone"), act("time", "shrink", "phone", scale=0.8)], 6,
       sounds=[("pop", "topic"), ("kaching", "money"), ("fail", "budget")])
 s = "Lesson three: the first second decides everything. {fact12} of my views came from the Shorts feed, where people swipe in a heartbeat."
 build("l3", s, ["second", "everything", "feed", "swipe", "heartbeat"], STUDIO,
       [it("phone", "phone", 0.5, 0.4, "The Shorts feed"), it("play", "play", 0.2, 0.22, "First second", True), it("bug", "bug", 0.8, 0.2, "Swipe", True)],
-      [act(0, "glow", "phone"), act("second", "enter", "play"), act("feed", "grow", "phone", scale=1.12), act("swipe", "enter", "bug"), act("heartbeat", "shake", "phone")], 6,
+      [act("second", "enter", "play"), act("feed", "grow", "phone", scale=1.12), act("swipe", "enter", "bug"), act("heartbeat", "shake", "phone")], 6,
       sounds=[("tick", "second"), ("whoosh", "swipe")])
 s = "And lesson four: measure, don't guess. Every rule this channel follows today came from its own numbers."
 typ("l4", s, ["measure", "guess", "rule", "numbers"], [("Measure", "measure", "huge", None), ("don't guess", "guess", "big", None), ("Every rule came from", "rule", "small", None), ("its own numbers", "numbers", "big", None)], "teal", "chart", 6)
 s = "Next, it learns from videos I pick myself, and tests one change a week. I'll show you how that goes."
 build("n1", s, ["learns", "pick", "tests", "week", "show"], OFFICE,
       [it("laptop", "laptop", 0.5, 0.38, "Next month"), it("robot", "robot", 0.2, 0.28, "Learns", True, state="green"), it("cal", "calendar", 0.8, 0.26, "One change a week", True)],
-      [act(0, "glow", "laptop"), act("learns", "enter", "robot"), act("tests", "enter", "cal"), act("week", "tick", "cal"), act("show", "grow", "laptop", scale=1.1)], 6,
+      [act("learns", "enter", "robot"), act("tests", "enter", "cal"), act("week", "tick", "cal"), act("show", "grow", "laptop", scale=1.1)], 6,
       sounds=[("pop", "learns"), ("ding", "week")], role="payoff")
 s = "And if you want to try this yourself, start with the topic, not the tools. The tools are the easy part now."
 typ("advice", s, ["try", "topic", "tools", "easy"], [("Try it yourself?", "try", "small", None), ("Start with the topic", "topic", "big", None), ("not the tools", "tools", "small", None), ("The tools are easy now", "easy", "huge", None)], "teal", "laptop", 6, kicker="My advice")

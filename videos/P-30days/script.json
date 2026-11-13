@@ -287,11 +287,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "laptop",
-      "sec": 0
-     },
-     {
       "do": "grow",
       "target": "laptop",
       "scale": 1.1,
@@ -327,7 +322,7 @@
      },
      {
       "at": "slept",
-      "size": "medium",
+      "size": "close",
       "on": "laptop",
       "move": true
      }
@@ -666,11 +661,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "laptop",
-      "sec": 0
-     },
-     {
       "do": "grow",
       "target": "laptop",
       "scale": 1.1,
@@ -701,7 +691,7 @@
      },
      {
       "at": "number",
-      "size": "medium",
+      "size": "close",
       "on": "laptop",
       "move": true
      }
@@ -794,11 +784,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "laptop",
-      "sec": 0
-     },
-     {
       "do": "grow",
       "target": "laptop",
       "scale": 1.1,
@@ -834,7 +819,7 @@
      },
      {
       "at": "thousands",
-      "size": "medium",
+      "size": "close",
       "on": "laptop",
       "move": true
      }
@@ -923,11 +908,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "plan",
-      "sec": 0
-     },
-     {
       "do": "grow",
       "target": "plan",
       "scale": 1.15,
@@ -958,7 +938,7 @@
      },
      {
       "at": "second",
-      "size": "medium",
+      "size": "close",
       "on": "plan",
       "move": true
      }
@@ -1044,11 +1024,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "clap",
-      "sec": 0
-     },
-     {
       "do": "shake",
       "target": "clap",
       "at": "draws"
@@ -1083,7 +1058,7 @@
      },
      {
       "at": "frame",
-      "size": "medium",
+      "size": "close",
       "on": "clap",
       "move": true
      }
@@ -1255,11 +1230,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "cloud",
-      "sec": 0
-     },
-     {
       "do": "grow",
       "target": "cloud",
       "scale": 1.1,
@@ -1297,7 +1267,7 @@
      },
      {
       "at": "subscription",
-      "size": "medium",
+      "size": "close",
       "on": "cloud",
       "move": true
      }
@@ -1390,11 +1360,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "phone",
-      "sec": 0
-     },
-     {
       "do": "enter",
       "target": "chart",
       "at": "video"
@@ -1425,7 +1390,7 @@
      },
      {
       "at": "phone",
-      "size": "medium",
+      "size": "close",
       "on": "phone",
       "move": true
      }
@@ -1669,11 +1634,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "phone",
-      "sec": 0
-     },
-     {
       "do": "enter",
       "target": "cash",
       "at": "savings"
@@ -1704,7 +1664,7 @@
      },
      {
       "at": "dozen",
-      "size": "medium",
+      "size": "close",
       "on": "phone",
       "move": true
      }
@@ -2011,11 +1971,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "trophy",
-      "sec": 0
-     },
-     {
       "do": "enter",
       "target": "cash",
       "at": "stock"
@@ -2046,7 +2001,7 @@
      },
      {
       "at": "money",
-      "size": "medium",
+      "size": "close",
       "on": "trophy",
       "move": true
      }
@@ -2192,11 +2147,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "cloud",
-      "sec": 0
-     },
-     {
       "do": "enter",
       "target": "note",
       "at": "country"
@@ -2227,7 +2177,7 @@
      },
      {
       "at": "world",
-      "size": "medium",
+      "size": "close",
       "on": "cloud",
       "move": true
      }
@@ -2320,11 +2270,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "chart",
-      "sec": 0
-     },
-     {
       "do": "grow",
       "target": "chart",
       "scale": 1.15,
@@ -2355,7 +2300,7 @@
      },
      {
       "at": "seconds",
-      "size": "medium",
+      "size": "close",
       "on": "chart",
       "move": true
      }
@@ -2520,11 +2465,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "chart",
-      "sec": 0
-     },
-     {
       "do": "shrink",
       "target": "chart",
       "scale": 0.6,
@@ -2555,7 +2495,7 @@
      },
      {
       "at": "views",
-      "size": "medium",
+      "size": "close",
       "on": "chart",
       "move": true
      }
@@ -2709,11 +2649,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "bug",
-      "sec": 0
-     },
-     {
       "do": "shake",
       "target": "bug",
       "at": "broke"
@@ -2748,7 +2683,7 @@
      },
      {
       "at": "empty",
-      "size": "medium",
+      "size": "close",
       "on": "bug",
       "move": true
      }
@@ -2826,11 +2761,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "laptop",
-      "sec": 0
-     },
-     {
       "do": "shake",
       "target": "laptop",
       "at": "harder"
@@ -2855,7 +2785,7 @@
      },
      {
       "at": "four",
-      "size": "medium",
+      "size": "close",
       "on": "laptop",
       "move": true
      }
@@ -3087,11 +3017,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "aud",
-      "sec": 0
-     },
-     {
       "do": "multiply",
       "target": "aud",
       "n": 2,
@@ -3122,7 +3047,7 @@
      },
      {
       "at": "week",
-      "size": "medium",
+      "size": "close",
       "on": "aud",
       "move": true
      }
@@ -3215,11 +3140,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "imp",
-      "sec": 0
-     },
-     {
       "do": "enter",
       "target": "phone",
       "at": "half"
@@ -3254,7 +3174,7 @@
      },
      {
       "at": "mistake",
-      "size": "medium",
+      "size": "close",
       "on": "imp",
       "move": true
      }
@@ -3334,11 +3254,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "shield",
-      "sec": 0
-     },
-     {
       "do": "shake",
       "target": "robot",
       "at": "own"
@@ -3368,7 +3283,7 @@
      },
      {
       "at": "tests",
-      "size": "medium",
+      "size": "close",
       "on": "shield",
       "move": true
      }
@@ -3673,6 +3588,12 @@
     "machine": {
      "word": "machine"
     },
+    "improves": {
+     "word": "improves"
+    },
+    "videos": {
+     "word": "videos"
+    },
     "built": {
      "word": "built"
     }
@@ -3698,8 +3619,23 @@
       "strike": "machine"
      },
      {
-      "text": "An amazing machine",
+      "text": "A machine that makes",
       "at": "machine",
+      "size": "big"
+     },
+     {
+      "text": "checks and improves",
+      "at": "improves",
+      "size": "small"
+     },
+     {
+      "text": "its own videos",
+      "at": "videos",
+      "size": "small"
+     },
+     {
+      "text": "The best thing I've built",
+      "at": "built",
       "size": "big"
      }
     ],
@@ -3829,11 +3765,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "trophy",
-      "sec": 0
-     },
-     {
       "do": "grow",
       "target": "trophy",
       "scale": 1.12,
@@ -3864,7 +3795,7 @@
      },
      {
       "at": "time",
-      "size": "medium",
+      "size": "close",
       "on": "trophy",
       "move": true
      }
@@ -3945,11 +3876,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "phone",
-      "sec": 0
-     },
-     {
       "do": "enter",
       "target": "play",
       "at": "second"
@@ -3979,7 +3905,7 @@
      },
      {
       "at": "heartbeat",
-      "size": "medium",
+      "size": "close",
       "on": "phone",
       "move": true
      }
@@ -4118,11 +4044,6 @@
     ],
     "actions": [
      {
-      "do": "glow",
-      "target": "laptop",
-      "sec": 0
-     },
-     {
       "do": "enter",
       "target": "robot",
       "at": "learns"
@@ -4152,7 +4073,7 @@
      },
      {
       "at": "show",
-      "size": "medium",
+      "size": "close",
       "on": "laptop",
       "move": true
      }
