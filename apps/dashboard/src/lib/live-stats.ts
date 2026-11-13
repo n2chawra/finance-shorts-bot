@@ -18,7 +18,6 @@
 import { z } from "zod";
 
 import { notifyOwner } from "./autopilot.db";
-import { nextLiveCount } from "./live-counter";
 import { prisma } from "./prisma";
 
 const FRESH_MS = 60_000;   // every other 30 s poll: keeps a dashboard left open all day under ~1,500 units
@@ -70,10 +69,11 @@ export function refreshLiveStats(): Promise<void> {
 async function run(): Promise<void> {
   const stale = await prisma.upload.findMany({
     where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, video: { deletedAt: null }, OR: [{ liveAt: null }, { liveAt: { lt: new Date(Date.now() - FRESH_MS) } }] },
-    select: { id: true, youtubeId: true, liveViews: true, liveLikes: true, liveComments: true },
+    select: { id: true, youtubeId: true },
   });
   for (let i = 0; i < stale.length; i += 50) {
     const batch = stale.slice(i, i + 50);
+    const askedAt = new Date();   // a row refreshed after this moment by another request is left alone
     const url = new URL("https://www.googleapis.com/youtube/v3/videos");
     url.searchParams.set("part", "statistics");
     url.searchParams.set("id", batch.map((u) => u.youtubeId).join(","));
@@ -90,19 +90,50 @@ async function run(): Promise<void> {
     }
     const found = new Map(VideosResponse.parse(await res.json()).items.map((it) => [it.id, it.statistics]));
     // private or deleted videos come back empty: null keeps their last counters and they are just
-    // marked checked. One statement for the whole batch.
-    const next = (u: (typeof batch)[number], k: "viewCount" | "likeCount" | "commentCount", stored: number | null) => {
+    // marked checked.
+    const got = (u: (typeof batch)[number], k: "viewCount" | "likeCount" | "commentCount") => {
       const s = found.get(u.youtubeId!);
-      return nextLiveCount(stored, s ? s[k] ?? 0 : null);
+      return s ? s[k] ?? 0 : null;
     };
-    await prisma.$executeRaw`UPDATE "Upload" AS u SET
-      "liveViews" = d.views,
-      "liveLikes" = d.likes,
-      "liveComments" = d.comments,
-      "liveAt" = ${new Date()}
-      FROM unnest(${batch.map((u) => u.id)}::text[], ${batch.map((u) => next(u, "viewCount", u.liveViews))}::int[],
-                  ${batch.map((u) => next(u, "likeCount", u.liveLikes))}::int[], ${batch.map((u) => next(u, "commentCount", u.liveComments))}::int[])
-        AS d(id, views, likes, comments)
-      WHERE u."id" = d.id`;
+    await applyLiveCounts(batch.map((u) => ({ id: u.id, views: got(u, "viewCount"), likes: got(u, "likeCount"), comments: got(u, "commentCount") })), askedAt);
   }
+}
+
+/**
+ * Store one batch of counters YouTube returned at `askedAt` (null = YouTube had nothing for that
+ * video). One statement for the whole batch, decided against each row's CURRENT values, and skipped
+ * for a row another request refreshed after `askedAt`: several dashboard requests run at once, and
+ * the slower one used to write its older, lower numbers over newer ones, so views went up and down
+ * (owner, 2026-11-13). The rules are nextLiveViews() and nextLiveCount() in live-counter.ts: a small
+ * dip keeps the larger number; a bigger drop in views is followed only when two refreshes in a row
+ * show it (liveLowViews holds the first).
+ */
+export async function applyLiveCounts(rows: { id: string; views: number | null; likes: number | null; comments: number | null }[], askedAt: Date, now = new Date()): Promise<number> {
+  if (!rows.length) return 0;
+  return prisma.$executeRaw`UPDATE "Upload" AS u SET
+      "liveViews" = CASE
+        WHEN d.views IS NULL THEN u."liveViews"
+        WHEN u."liveViews" IS NULL OR d.views >= u."liveViews" THEN d.views
+        WHEN u."liveViews" - d.views <= GREATEST(2, u."liveViews" / 50) THEN u."liveViews"
+        WHEN u."liveLowViews" IS NOT NULL AND ABS(d.views - u."liveLowViews") <= GREATEST(2, u."liveViews" / 50) THEN d.views
+        ELSE u."liveViews" END,
+      "liveLowViews" = CASE
+        WHEN d.views IS NULL THEN u."liveLowViews"
+        WHEN u."liveViews" IS NULL OR d.views >= u."liveViews" THEN NULL
+        WHEN u."liveViews" - d.views <= GREATEST(2, u."liveViews" / 50) THEN NULL
+        WHEN u."liveLowViews" IS NOT NULL AND ABS(d.views - u."liveLowViews") <= GREATEST(2, u."liveViews" / 50) THEN NULL
+        ELSE d.views END,
+      "liveLikes" = CASE
+        WHEN d.likes IS NULL THEN u."liveLikes"
+        WHEN u."liveLikes" IS NULL OR d.likes >= u."liveLikes" OR u."liveLikes" - d.likes > GREATEST(2, u."liveLikes" / 50) THEN d.likes
+        ELSE u."liveLikes" END,
+      "liveComments" = CASE
+        WHEN d.comments IS NULL THEN u."liveComments"
+        WHEN u."liveComments" IS NULL OR d.comments >= u."liveComments" OR u."liveComments" - d.comments > GREATEST(2, u."liveComments" / 50) THEN d.comments
+        ELSE u."liveComments" END,
+      "liveAt" = ${now}
+      FROM unnest(${rows.map((r) => r.id)}::text[], ${rows.map((r) => r.views)}::int[],
+                  ${rows.map((r) => r.likes)}::int[], ${rows.map((r) => r.comments)}::int[])
+        AS d(id, views, likes, comments)
+      WHERE u."id" = d.id AND (u."liveAt" IS NULL OR u."liveAt" < ${askedAt})`;
 }

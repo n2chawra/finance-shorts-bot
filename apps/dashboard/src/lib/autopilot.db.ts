@@ -151,8 +151,8 @@ export async function getGrowth(): Promise<Growth> {
     pictures: pictures.success ? pictures.data : null,
     reference: refIds.map((id) => refs.find((r) => r.id === id)).filter((r) => !!r).map((r) => ({
       id: r!.id, title: r!.title, thumbnailUrl: `/api/media/${r!.id}/thumbnail`,
-      // the larger of Analytics (lags 2-3 days) and the live counter, as every other page counts views
-      views: r!.upload ? Math.max(r!.upload.stats.reduce((a, s) => a + s.views, 0), r!.upload.liveViews ?? 0) : null })),
+      // YouTube's live counter when known, else Analytics, as every other page counts views (lib/totals.ts)
+      views: r!.upload ? r!.upload.liveViews ?? r!.upload.stats.reduce((a, s) => a + s.views, 0) : null })),
     reviewer: { lastDay: reviewer?.day ?? null, lastSummary: reviewer?.summary ?? null, nextRunAt: nextReviewerRun().toISOString() },
   });
 }

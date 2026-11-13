@@ -240,7 +240,7 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
       id: v.id, format: v.format, template: v.templateId, category: v.topic.category, hookStyle: v.hookStyle, title: v.title,
       palette: style.palette ?? null, genre: style.genre ?? null, bpm: style.bpm ?? null, voice: style.voice ?? null, durationSec: v.durationSec,
       experiments: style.experiments ?? {}, publishAt: u.publishAt.toISOString(), manual: !u.attempts,
-      views48h, views7d, avgViewPct, views: Math.max(totalViews, u.liveViews ?? 0), likes: Math.max(u.stats.reduce((a, s) => a + s.likes, 0), u.liveLikes ?? 0),
+      views48h, views7d, avgViewPct, views: u.liveViews ?? totalViews, likes: u.liveLikes ?? u.stats.reduce((a, s) => a + s.likes, 0),
       subsGained: u.stats.reduce((a, s) => a + s.subsGained, 0),
       views48hLive: viewsAt48h(snaps.filter((s) => s.uploadId === u.id), u.publishAt),
       // viewers still watching at 3 s (Short) or 30 s (long): the hook's own score (workers/lib/retention.ts)

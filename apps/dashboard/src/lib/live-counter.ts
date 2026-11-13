@@ -13,3 +13,19 @@ export function nextLiveCount(stored: number | null, fetched: number | null): nu
   if (stored === null || fetched >= stored) return fetched;
   return stored - fetched <= Math.max(2, Math.floor(stored / 50)) ? stored : fetched;
 }
+
+/**
+ * Views, which wobble most (owner, 2026-11-13: "views go up and down, not matching YouTube"): a drop
+ * beyond the tolerance is followed only when the next refresh, a minute later, shows it again. A
+ * single low reading is one of YouTube's caches and is ignored; a real drop (invalid views removed)
+ * reads low twice and is followed. `pendingLow` is the unconfirmed low reading (Upload.liveLowViews).
+ * live-stats.ts does exactly this in SQL, against the row's current values; this twin is for tests.
+ */
+export function nextLiveViews(stored: number | null, pendingLow: number | null, fetched: number | null): { value: number | null; pendingLow: number | null } {
+  if (fetched === null) return { value: stored, pendingLow };
+  if (stored === null || fetched >= stored) return { value: fetched, pendingLow: null };
+  const tolerance = Math.max(2, Math.floor(stored / 50));
+  if (stored - fetched <= tolerance) return { value: stored, pendingLow: null };
+  if (pendingLow !== null && Math.abs(fetched - pendingLow) <= tolerance) return { value: fetched, pendingLow: null };
+  return { value: stored, pendingLow: fetched };
+}

@@ -402,7 +402,7 @@ export async function listTemplates(): Promise<Template[]> {
   return templates.map((t) => {
     const mine = videos.filter((v) => v.templateId === t.id);
     const withViews = mine.filter((v) => v.upload?.stats.length || v.upload?.liveAt)
-      .map((v) => Math.max(v.upload!.stats.reduce((a, s) => a + s.views, 0), v.upload!.liveViews ?? 0));
+      .map((v) => v.upload!.liveViews ?? v.upload!.stats.reduce((a, s) => a + s.views, 0));
     const sample = mine.filter((v) => v.status !== "failed").sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())[0];
     return {
       id: t.id, name: t.name, description: t.description, version: t.version, weight: t.weight, enabled: t.enabled,

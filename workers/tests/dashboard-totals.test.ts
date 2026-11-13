@@ -10,15 +10,20 @@ test("no Analytics rows and no live counters: no totals", () => {
   assert.equal(totals([], null), null);
 });
 
-test("live counters win when they are ahead of Analytics", () => {
+test("live counters are the number shown, as on YouTube", () => {
   const t = totals([day(100, 50)], live(180))!;
   assert.equal(t.views, 180);
   assert.equal(t.likes, 3);
   assert.equal(t.liveAt, "2026-10-19T12:00:00.000Z");
 });
 
-test("live counters never pull the totals below Analytics", () => {
-  assert.equal(totals([day(100, 50)], live(40))!.views, 100);
+test("live counters win even below Analytics: the dashboard shows what YouTube shows (owner, 2026-11-13)", () => {
+  assert.equal(totals([day(100, 50)], live(40))!.views, 40);
+});
+
+test("without live counters (private, or never refreshed) Analytics stands in", () => {
+  assert.equal(totals([day(100, 50), day(20, 40)], null)!.views, 120);
+  assert.equal(totals([day(100, 50)], { liveViews: null, liveLikes: null, liveComments: null, liveAt: null })!.views, 100);
 });
 
 test("average % viewed is weighted by each day's views, like the agents' metrics (agents-sync)", () => {

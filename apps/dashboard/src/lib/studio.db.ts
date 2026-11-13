@@ -76,7 +76,7 @@ function contentRow(v: Loaded): Omit<ContentRow, "vs48" | "vsPct" | "verdict"> &
   const u = v.upload!;
   const days = u.stats.map(toDay);
   const t = totalsOf(days);
-  const views = Math.max(t.views, u.liveViews ?? 0);
+  const views = u.liveViews ?? t.views;   // YouTube's live counter when known, as everywhere (lib/totals.ts)
   const reach = reachOf(u.stats);
   const publishDay = istDay(u.publishAt);
   const firstDays = days.filter((d) => d.day >= publishDay && d.day <= addDays(publishDay, 6));

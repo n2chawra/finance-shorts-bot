@@ -127,6 +127,7 @@ model Upload {
   stats        VideoStat[]
   // current public counters from the YouTube Data API, refreshed by the dashboard at most once a minute
   liveViews    Int?
+  liveLowViews Int? // a lower view count seen once and not yet confirmed (lib/live-counter.ts nextLiveViews)
   liveLikes    Int?
   liveComments Int?
   liveAt       DateTime?

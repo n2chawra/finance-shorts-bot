@@ -8,15 +8,18 @@ export type LiveRow = { liveViews: number | null; liveLikes: number | null; live
 export type Totals = { views: number; likes: number; comments: number; subsGained: number; avgViewPct: number; liveAt: string | null };
 
 /**
- * Views, likes and comments take YouTube's live counters when they are ahead of the daily Analytics
- * rows (which run a day or two behind); subscribers and watch % only exist in Analytics. Watch %
- * is weighted by each day's views, as in the agents' metrics (workers/lib/agents-sync.ts).
+ * Views, likes and comments are YouTube's live public counters whenever the video has them, the
+ * number the owner sees on YouTube (owner, 2026-11-13: taking the larger of Analytics and the live
+ * counter made the dashboard disagree with YouTube and move both ways as Analytics was revised).
+ * The daily Analytics rows, a day or two behind, stand in only for a video without live counters
+ * (private, or not refreshed yet). Subscribers and watch % only exist in Analytics. Watch % is
+ * weighted by each day's views, as in the agents' metrics (workers/lib/agents-sync.ts).
  */
 export function totals(stats: StatRow[], live?: LiveRow | null): Totals | null {
   const hasLive = live?.liveAt != null && live.liveViews != null;
   if (!stats.length && !hasLive) return null;
   const sum = (k: "views" | "likes" | "comments" | "subsGained") => stats.reduce((a, s) => a + s[k], 0);
-  const best = (k: "views" | "likes" | "comments", l: number | null | undefined) => Math.max(sum(k), hasLive ? l ?? 0 : 0);
+  const best = (k: "views" | "likes" | "comments", l: number | null | undefined) => (hasLive ? l ?? 0 : sum(k));
   const viewed = sum("views");
   return {
     views: best("views", live?.liveViews), likes: best("likes", live?.liveLikes), comments: best("comments", live?.liveComments),
