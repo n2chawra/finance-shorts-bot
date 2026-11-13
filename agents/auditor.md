@@ -125,17 +125,6 @@ and `channelDays`) and `metrics/videos.json` (48 h views, % viewed, story and st
   Then add one `look` challenger to `improvement/cycle/backlog.json` for the kind of picture that
   loses the most viewers (`{"id", "kind": "look", "area", "metric": "heldAfterHook", "from": "auditor
   <date>", "test", "why"}` with the numbers in `why`), unless one for it is already listed.
-- **What winners keep doing that we don't (owner 2026-11-13), each Sunday:** `improvement/twins/model.json`
-  (written nightly by the twins job, computed in code from Gemini's shot sheets) lists under
-  `consistent` the measures where the most-watched animated Shorts on our own topics differed from
-  ours in the same direction in at least 8 of our recent Shorts and 75% of them (seconds per picture,
-  when the first figure lands, time with a character or a figure on screen, words a minute…). For
-  the strongest one not already in `improvement/cycle/backlog.json` or tested in its `history`, add
-  one challenger: `{"id", "kind": "first-second" | "look", "area", "metric", "from": "twins <date>",
-  "test", "why"}` (`first-second` when it is about the first 3 seconds, the title or the story;
-  `look` for pace, motion and picture), with the measure, ours, the winners' and the count in `why`.
-  It is tested like any other challenger: only a win joins the recipe. When the change needs
-  something our kit can't draw yet, write it as a proposal for the improver instead.
 Rules: never invent a number or a quote; say "too few videos" rather than guess; plain words, no jargon.
 The improver and planner read these files too, so a recommendation must be something a video can do.
 

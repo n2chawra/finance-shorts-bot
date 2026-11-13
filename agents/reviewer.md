@@ -37,14 +37,6 @@ You can't play the video, so watch it the way the owner did, frame by frame:
 - **Where viewers left**: `analytics.json` → the video's `drops` (`at` seconds, `drop` share, the
   `beat` and `line`), `hookHold`, `endHold`; `videos.json` → `stayed`, `heldAfterHook`, `avgViewPct`,
   likes, shares. Find the beat on screen at each drop.
-- **What the winners did on the same topic** (the twins job, owner 2026-11-13): when
-  `improvement/twins/gaps/<id>.json` exists, it holds Gemini's shot sheet of this Short next to the
-  most-watched animated Shorts on its topic: `gaps` (measured differences, with how many of the
-  winners agree), `atDrops` (what we showed and what each winner showed at the same second when
-  our viewers left) and `summary`. The sheets themselves are in `improvement/twins/sheets/`. Use it
-  as evidence for a lesson ("at 6 s we were still setting up; all three winners had the payoff
-  figure on screen"), never as the lesson on its own: the lesson must still match what you see in
-  our stills.
 - **Your own render, when a drop falls between two stills**: draw the exact second with
   `$PY -m renderer.remotion videos/<id>/timeline.json --out /tmp/rv-<id> --stills-only` if the
   renderer is installed; otherwise say you used the nearest still.

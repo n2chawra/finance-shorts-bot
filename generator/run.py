@@ -163,9 +163,6 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "recent_stories": [variety.story_of(e) for e in entries[-variety.STORY_WINDOW:]],
         "blocked_categories": blocked,
         "topic_feed": feed,
-        # how the most-watched animated Shorts told each open topic (workers/twins.ts, owner 2026-11-13)
-        "twins_briefs": {t["id"]: f"improvement/twins/briefs/{t['id']}.json" for t in feed["topics"]
-                         if (root / "improvement" / "twins" / "briefs" / f"{t['id']}.json").is_file()},
         # global first (owner, 2026-10-23): about two in three videos anyone in the world can relate to
         "reach": reach.for_state(entries, today, fmt),
         # what to make: formats people already watch in the millions (improvement/research/formats.json)

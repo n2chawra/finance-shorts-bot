@@ -8,8 +8,6 @@ import { Badge, Card, Empty, ErrorNote, Loading, Meter, PageHeader, Stagger, typ
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtRelative } from "@/lib/format";
 import { ESCALATE_AFTER, ESCALATE_BELOW, type Growth, KIND_LABEL, KIND_METRIC, OWNER_AFTER, cyclesUnder, nextKind, shownConfidence, testDayLabel, verdictDueDay } from "@/lib/growth";
 import { useGrowth } from "@/lib/queries";
-
-import { WinnersCard } from "./winners";
 import { isRecent } from "@/lib/recent";
 
 /*
@@ -270,9 +268,6 @@ export default function GrowthPage() {
           </ul>
         </div>
       </Card>
-
-      {/* what the most-watched animated Shorts on our topics do */}
-      <WinnersCard twins={data.twins} />
 
       {/* what the reviewer and the auditor learned */}
       <div className="mt-5 grid gap-5 xl:grid-cols-12">

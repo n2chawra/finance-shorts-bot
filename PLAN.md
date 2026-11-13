@@ -87,9 +87,6 @@ Done when: everything above works on a phone.
       owns the video's look behind flags, Scout's findings reach the improver, evaluator per format
       with retention for look changes, monthly review with one-click setting proposals, daily market
       data and comments, channel profile
-- [x] Twins (2026-11-13): the most-watched animated Shorts on our topics, watched by Gemini into shot
-      sheets; calibrated on our own Shorts; briefs for the writer, gap reports for the reviewer, a
-      style model for the auditor's challengers, a "What the winners do" section on the Growth page
 - [ ] Owner: cloud environment network access for research page reads (claude.ai → Environments)
 - [ ] First monthly review (1 Nov 2026) read and its proposals decided
 
@@ -113,11 +110,6 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
 - Cross-post to Instagram Reels
 
 ## Log
-- 2026-11-13: Twins. YouTube shows cloud machines a reCAPTCHA, so nothing of ours can watch a video in a
-  browser; Google's Gemini API watches public YouTube links itself (free tier). Calibration: 5 of 5 of
-  our Shorts read right (length within 0.7 s, 86-100% of scene changes, the first figure in its scene).
-  The first live run picked off-topic twins (a search phrase "Of", a game-show clip), so twins must now
-  be on our subject by Gemini's own check and clearly animated.
 - 2026-10-13: Prototype renderer (`reference/rahul_vs_amit_v2.py`) produced a 60 s Short with
   synthesized music + SFX. Starting M1.
 - 2026-10-13: Repo scaffolded, Poppins added, local toolchain set up (Python 3.14 venv at

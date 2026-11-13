@@ -75,16 +75,6 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     the one a viewer would send a friend, never a textbook result ("$20,815 vs $29,605 at 4%").
   - **Read `generator/prompts/lessons.md` before writing**: what the reviewer found wrong in our last
     videos, each with the fix. Don't repeat any of them.
-  - **Read how the winners told this topic** (owner, 2026-11-13): `state` → `twins_briefs` names
-    `improvement/twins/briefs/<topic id>.json` when the twins job has studied the most-watched
-    animated Shorts on your topic. `pattern` is what they do, measured (seconds per picture, when
-    the first figure lands, how much of the time a character or a figure is on screen, words a
-    minute, where the payoff lands); `hooks` is what each one shows in its first frame and says
-    first; `techniques` is how they do it. Match the pattern where our rules allow (a figure in
-    frame 0, a new picture as often as theirs, the payoff as late as theirs) and say in your report
-    which of it you used. Learn the technique only: never their words, their characters, their art
-    or their story order beat for beat. When the brief and a lesson or hard rule disagree, the
-    lesson and the rule win.
   - **Every beat shows a named, specific thing** (the cinema, the coffee shop, the rent cheque), never
     a text chip standing in for one ("LIFE INSURANCE", "TEAM STAKES").
   - **The cast act it as a short skit** when they are part of the story (Rohan as the member who
