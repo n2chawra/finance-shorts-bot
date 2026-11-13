@@ -1,0 +1,50 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-13",
+  "startedAt": "2026-11-13T15:42:15Z",
+  "finishedAt": "2026-11-13T15:44:47Z",
+  "summary": "Watched 6 Shorts from 4–11 Nov next to their drop points. Added one new lesson (the ordinary figure before the big one) and raised three existing lessons with new evidence.",
+  "decision": "acted",
+  "why": "Biggest drops all fell on the second beat at 5.0–5.3 s (Magic Johnson −29% on '$40M' before '$1.6B', The Line −21%, the gym −25%), and the two hooks that named nobody lost 27% and 13% in the first 1.4 s against 10% for the one that named Magic Johnson.",
+  "findings": [
+    {
+      "title": "The ordinary figure before the big one costs 29%",
+      "detail": "v-20261109-02 lost 29% at 5.0 s on 'His 13 NBA seasons paid him about $40M'; the $1.6B came at 8 s."
+    },
+    {
+      "title": "Second-beat setup lines lose 21–29% at 5 s",
+      "detail": "v-20261109-02 −29%, v-20261105-06 −25%, v-20261104-01 −21%, each at 5.0–5.3 s on a setup line."
+    },
+    {
+      "title": "Nameless hooks lose more in the first second",
+      "detail": "v-20261110-03 −27% at 1.2 s, v-20261104-01 −13%; the named Magic Johnson hook −10%."
+    },
+    {
+      "title": "Newest Short v-20261111-02 uses an 'assumed rate'",
+      "detail": "Made before the lessons; no Analytics yet. Recheck Tuesday."
+    }
+  ],
+  "changes": [
+    {
+      "title": "New lesson #1: the ordinary figure before the big one",
+      "detail": "generator/prompts/lessons.md",
+      "branch": "agent/reviewer/2026-11-13"
+    },
+    {
+      "title": "Raised lessons: story at 5 s, nameless first frame, made-up examples",
+      "detail": "new Seen-in evidence from v-20261109-02, v-20261104-01, v-20261105-06, v-20261110-03, v-20261111-02",
+      "branch": "agent/reviewer/2026-11-13"
+    }
+  ],
+  "nextCheck": "2026-11-17",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/review/2026-11-13.md"
+    },
+    {
+      "label": "Lessons",
+      "url": "generator/prompts/lessons.md"
+    }
+  ]
+}
