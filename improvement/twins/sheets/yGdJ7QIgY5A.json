@@ -1,0 +1,180 @@
+{
+  "youtubeId": "yGdJ7QIgY5A",
+  "ours": "v-20261113-05",
+  "model": "gemini-3.6-flash",
+  "decodedAt": "2026-11-13T07:49:58.658Z",
+  "sheet": {
+    "durationSec": 28,
+    "artStyle": "mixed",
+    "language": "English",
+    "narrator": {
+      "kind": "AI voice",
+      "pace": "fast"
+    },
+    "captions": {
+      "style": "phrase",
+      "position": "bottom"
+    },
+    "music": {
+      "present": true,
+      "energy": "medium"
+    },
+    "sfxPerMinute": 18,
+    "hook": {
+      "firstFrame": "Taylor Swift photo cutout head on cartoon body beside stack of cash with $13.9M text header",
+      "firstLine": "One night of Taylor Swift's Eras Tour brought in about $13.9M.",
+      "question": false,
+      "subjectNamedAtSec": 0,
+      "figureShownAtSec": 0,
+      "figureSpokenAtSec": 2
+    },
+    "shots": [
+      {
+        "start": 0,
+        "end": 4,
+        "picture": "Taylor Swift cartoon character with real photo head beside growing stack of money",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "ONE NIGHT OF THE ERAS TOUR $13.9M",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "picture": "Stage lights over concert arena visual with text card displaying total sold out shows counter",
+        "kind": "text card",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "Sold-out shows 149",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 7,
+        "end": 11,
+        "picture": "Rows of colorful minimalist spectator circle figures filling up stadium seats graphic",
+        "kind": "character",
+        "characters": 15,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "10.2M",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 11,
+        "end": 15,
+        "picture": "Large pink concert ticket graphic floating against night city backdrop with average price tag",
+        "kind": "object",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "Average seat $204",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 15,
+        "end": 19,
+        "picture": "Dark backdrop presenting number 21 for months on the road during tour",
+        "kind": "text card",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "21 Months on the road",
+        "figureOnScreen": true,
+        "motion": 1
+      },
+      {
+        "start": 19,
+        "end": 23,
+        "picture": "Three columns comparing ticket sales to singer pay and merch with red cross marks",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "TICKETS ONLY HER PAY MERCH",
+        "figureOnScreen": false,
+        "motion": 2
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "picture": "Massive gold dollar total header above tall ticket stack and question prompt text",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "$2.08B ERAS TOUR TICKETS",
+        "figureOnScreen": true,
+        "motion": 2
+      }
+    ],
+    "lines": [
+      {
+        "start": 0,
+        "end": 3.8,
+        "words": 12,
+        "job": "hook",
+        "gist": "State the massive per-night revenue of the Eras Tour."
+      },
+      {
+        "start": 3.8,
+        "end": 7,
+        "words": 10,
+        "job": "context",
+        "gist": "Explain how all tour dates were completely sold out."
+      },
+      {
+        "start": 7,
+        "end": 11,
+        "words": 9,
+        "job": "context",
+        "gist": "Highlight the massive total stadium audience attendance globally."
+      },
+      {
+        "start": 11,
+        "end": 15,
+        "words": 12,
+        "job": "turn",
+        "gist": "Calculate the average ticket price per seat across all concerts."
+      },
+      {
+        "start": 15,
+        "end": 18.8,
+        "words": 14,
+        "job": "stakes",
+        "gist": "Set up the total gross calculation after 21 active months."
+      },
+      {
+        "start": 18.8,
+        "end": 22.8,
+        "words": 13,
+        "job": "reveal",
+        "gist": "Clarify that the figure excludes merchandise and album revenue streams."
+      },
+      {
+        "start": 22.8,
+        "end": 28,
+        "words": 14,
+        "job": "payoff",
+        "gist": "Reveal the staggering 2 billion dollar ticket gross total."
+      }
+    ],
+    "ending": {
+      "loops": true,
+      "cta": "Would you have paid for a seat?",
+      "lastFrame": "Taylor Swift character with $2.08B header text and question prompt graphic overlay"
+    },
+    "whyItWorks": [
+      "Starts with a high-impact per-night dollar figure immediately on screen and voiced in second one.",
+      "Uses clean vector graphic animations and stacked objects to make large numeric concepts easy to digest.",
+      "Excludes merch and salary to build anticipation for the final billion-dollar ticket box office reveal.",
+      "Concludes with an engaging question that doubles as a seamless video loop trigger."
+    ]
+  }
+}

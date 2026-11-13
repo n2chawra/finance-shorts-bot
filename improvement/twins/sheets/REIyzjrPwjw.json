@@ -1,0 +1,175 @@
+{
+  "youtubeId": "REIyzjrPwjw",
+  "ours": "v-20261111-02",
+  "model": "gemini-3.6-flash",
+  "decodedAt": "2026-11-13T07:53:15.994Z",
+  "sheet": {
+    "durationSec": 26,
+    "artStyle": "flat vector animation",
+    "language": "English",
+    "narrator": {
+      "kind": "AI voice",
+      "pace": "normal"
+    },
+    "captions": {
+      "style": "phrase",
+      "position": "bottom"
+    },
+    "music": {
+      "present": true,
+      "energy": "medium"
+    },
+    "sfxPerMinute": 25,
+    "hook": {
+      "firstFrame": "Vector character pointing to a treasure chest of money under header asking if cash is wasted.",
+      "firstLine": "You think Berkshire's cash is wasted?",
+      "question": true,
+      "subjectNamedAtSec": 0,
+      "figureShownAtSec": 5.8,
+      "figureSpokenAtSec": 12
+    },
+    "shots": [
+      {
+        "start": 0,
+        "end": 2.8,
+        "picture": "Character pointing to a chest full of money bills next to text asking if Berkshire's cash is wasted.",
+        "kind": "character",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "BERKSHIRE'S CASH PILE WASTED?",
+        "figureOnScreen": false,
+        "motion": 1
+      },
+      {
+        "start": 2.8,
+        "end": 6.6,
+        "picture": "Building with Berkshire flag, vault door opening, and giant pile of money showing $377.4B figure.",
+        "kind": "mixed",
+        "characters": 0,
+        "camera": "pan",
+        "transition": "cut",
+        "onScreenText": "Berkshire Giant pile $377.4B",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 6.6,
+        "end": 15.5,
+        "picture": "Treasure chest of money transforming to government bond certificate, pouring bills into a jar labeled $15.10B.",
+        "kind": "object",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "4% $15.10B",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 15.5,
+        "end": 18.2,
+        "picture": "Dark background with text asking why keep cash, showing $377.4B cash sitting ready.",
+        "kind": "text card",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "WHY KEEP IT? Berkshire's cash pile $377.4B",
+        "figureOnScreen": true,
+        "motion": 1
+      },
+      {
+        "start": 18.2,
+        "end": 22.3,
+        "picture": "City skyline during market crash with declining chart, shopping cart, sale sign, and cash buying items.",
+        "kind": "mixed",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "MARKETS CRASH EVERYTHING ON SALE CASH BUYS FIRST",
+        "figureOnScreen": false,
+        "motion": 2
+      },
+      {
+        "start": 22.3,
+        "end": 26,
+        "picture": "Character standing near money chest as text changes from WASTED to WAITING FOR A SALE with $377.4B cash label.",
+        "kind": "character",
+        "characters": 1,
+        "camera": "static",
+        "transition": "none",
+        "onScreenText": "$377.4B CASH WAITING FOR A SALE",
+        "figureOnScreen": true,
+        "motion": 1
+      }
+    ],
+    "lines": [
+      {
+        "start": 0,
+        "end": 1.8,
+        "words": 5,
+        "job": "hook",
+        "gist": "Questioning whether Berkshire Hathaway's massive cash stash is being wasted."
+      },
+      {
+        "start": 1.8,
+        "end": 2.8,
+        "words": 2,
+        "job": "promise",
+        "gist": "Clarifying that the cash is definitely not being wasted."
+      },
+      {
+        "start": 2.8,
+        "end": 6.6,
+        "words": 13,
+        "job": "context",
+        "gist": "Explaining that Warren Buffett's company sits on a massive cash reserve."
+      },
+      {
+        "start": 6.6,
+        "end": 10.8,
+        "words": 9,
+        "job": "reveal",
+        "gist": "Explaining that the cash is invested safely in treasury bills."
+      },
+      {
+        "start": 10.8,
+        "end": 15.5,
+        "words": 8,
+        "job": "payoff",
+        "gist": "Stating the huge annual interest earned just by waiting."
+      },
+      {
+        "start": 15.5,
+        "end": 18.2,
+        "words": 10,
+        "job": "stakes",
+        "gist": "Asking why a company would hold so much idle cash."
+      },
+      {
+        "start": 18.2,
+        "end": 22.3,
+        "words": 11,
+        "job": "turn",
+        "gist": "Explaining how cash allows buying cheap assets during market crashes."
+      },
+      {
+        "start": 22.3,
+        "end": 26,
+        "words": 8,
+        "job": "loop",
+        "gist": "Concluding that the cash waits for big investment opportunities."
+      }
+    ],
+    "ending": {
+      "loops": true,
+      "cta": "",
+      "lastFrame": "Character pointing at money chest with text reading WAITING FOR A SALE under $377.4B CASH."
+    },
+    "whyItWorks": [
+      "Presents a bold counter-intuitive question upfront to challenge common assumptions about sitting on cash.",
+      "Visualizes financial concepts like yield and crash buying with clear animated metaphors like money jars and sale signs.",
+      "Uses prominent graphic callouts for massive dollar values to anchor viewer focus.",
+      "Loops smoothly back into the opening premise by concluding the cash is waiting for a sale."
+    ]
+  }
+}

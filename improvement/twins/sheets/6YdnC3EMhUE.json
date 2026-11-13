@@ -1,0 +1,187 @@
+{
+  "youtubeId": "6YdnC3EMhUE",
+  "ours": "v-20261112-01",
+  "model": "gemini-3.6-flash",
+  "decodedAt": "2026-11-13T07:53:15.994Z",
+  "sheet": {
+    "durationSec": 34,
+    "artStyle": "flat vector animation",
+    "language": "English",
+    "narrator": {
+      "kind": "AI voice",
+      "pace": "normal"
+    },
+    "captions": {
+      "style": "phrase",
+      "position": "bottom"
+    },
+    "music": {
+      "present": true,
+      "energy": "medium"
+    },
+    "sfxPerMinute": 20,
+    "hook": {
+      "firstFrame": "Animated smartphone graphic next to dollar bill with big headline text stating Apple keeps 76%.",
+      "firstLine": "Apple keeps 76% of every dollar you pay for its services, like iCloud.",
+      "question": false,
+      "subjectNamedAtSec": 0,
+      "figureShownAtSec": 0,
+      "figureSpokenAtSec": 0
+    },
+    "shots": [
+      {
+        "start": 0,
+        "end": 4.1,
+        "picture": "Animated phone next to dollar bill while gold coins slide into phone.",
+        "kind": "object",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "APPLE KEEPS 76% OF EVERY SERVICES DOLLAR",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 4.1,
+        "end": 6.9,
+        "picture": "Character holding smartphone pans across screen next to large phone icon.",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "pan",
+        "transition": "cut",
+        "onScreenText": "iPhone",
+        "figureOnScreen": false,
+        "motion": 2
+      },
+      {
+        "start": 6.9,
+        "end": 12.3,
+        "picture": "Dark blue screen displaying Apple total product sales figure of $355.53B.",
+        "kind": "text card",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "iPhones, Macs and watches sold $355.53B",
+        "figureOnScreen": true,
+        "motion": 1
+      },
+      {
+        "start": 12.3,
+        "end": 16.5,
+        "picture": "Factory building churning out cash bills with 39% profit margin indicator.",
+        "kind": "object",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "Making them Each dollar 39%",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 16.5,
+        "end": 20.9,
+        "picture": "Subscription documents stacking on table beside iCloud, headphones, and App Store icons.",
+        "kind": "object",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "iCloud App cut",
+        "figureOnScreen": false,
+        "motion": 2
+      },
+      {
+        "start": 20.9,
+        "end": 27.6,
+        "picture": "Green and red revenue comparison bars standing over night cityscape visual.",
+        "kind": "chart",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "APPLE SERVICES $123.3B $29.36B",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 27.6,
+        "end": 34,
+        "picture": "Side-by-side comparison of Service Dollar 76% versus Product Dollar 39%.",
+        "kind": "chart",
+        "characters": 0,
+        "camera": "static",
+        "transition": "none",
+        "onScreenText": "WHICH DO YOU PAY? 76% 39%",
+        "figureOnScreen": true,
+        "motion": 2
+      }
+    ],
+    "lines": [
+      {
+        "start": 0,
+        "end": 4.1,
+        "words": 13,
+        "job": "hook",
+        "gist": "Apple keeps a huge percentage of money from digital services."
+      },
+      {
+        "start": 4.1,
+        "end": 6.8,
+        "words": 9,
+        "job": "context",
+        "gist": "Questions how rich Apple gets selling physical hardware items."
+      },
+      {
+        "start": 6.8,
+        "end": 12.3,
+        "words": 12,
+        "job": "context",
+        "gist": "States massive revenue figures earned from selling physical products."
+      },
+      {
+        "start": 12.3,
+        "end": 15.6,
+        "words": 10,
+        "job": "reveal",
+        "gist": "Reveals Apple keeps only thirty nine percent on hardware sales."
+      },
+      {
+        "start": 15.6,
+        "end": 20.8,
+        "words": 14,
+        "job": "turn",
+        "gist": "Shows customers continuously spend monthly fees on digital subscriptions."
+      },
+      {
+        "start": 20.8,
+        "end": 27.6,
+        "words": 13,
+        "job": "stakes",
+        "gist": "Highlights massive service revenues compared to minimal delivery costs."
+      },
+      {
+        "start": 27.6,
+        "end": 32.2,
+        "words": 14,
+        "job": "payoff",
+        "gist": "Summarizes the high service margin versus lower product margin."
+      },
+      {
+        "start": 32.2,
+        "end": 34,
+        "words": 4,
+        "job": "loop",
+        "gist": "Asks the viewer which category they spend money on."
+      }
+    ],
+    "ending": {
+      "loops": true,
+      "cta": "Which do you pay?",
+      "lastFrame": "Comparison screen showing Service Dollar 76% vs Product Dollar 39% with text WHICH DO YOU PAY?"
+    },
+    "whyItWorks": [
+      "Uses financial figures and contrasting percentages to build high curiosity.",
+      "Compares hardware vs software profit margins to reveal an unexpected business breakdown.",
+      "Combines clean vector animations with popping sound effects on key text callouts.",
+      "Ends on an engaging question that seamlessly loops back to the opening statement."
+    ]
+  }
+}
