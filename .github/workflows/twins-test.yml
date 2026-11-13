@@ -1,4 +1,4 @@
-# BRANCH-ONLY end-to-end test (run 5: one video) of twins.yml (deleted before shipping). Twins (owner, 2026-11-13): the most-watched animated Shorts on our topics, watched by Gemini into shot
+# BRANCH-ONLY end-to-end test (run 6: one video, billionaires never sell) of twins.yml (deleted before shipping). Twins (owner, 2026-11-13): the most-watched animated Shorts on our topics, watched by Gemini into shot
 # sheets, so the writer learns how winners tell a topic before writing it, and every published Short
 # gets a gap report against its twins (workers/twins.ts). Runs after research (23:47 IST) and before
 # the 04:07 video run. Our own analysis goes to main (improvement/twins/); YouTube titles and views go
@@ -46,7 +46,7 @@ jobs:
         timeout-minutes: 12
         env:
           TWINS_MAX_DECODES: "1"
-        run: npm run twins -- topic 2026-11-13-petrol-pump-keeps-4-40-a-litre 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
+        run: npm run twins -- search why billionaires never sell their stock 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Keep twins.json for review
         if: always()
         uses: actions/upload-artifact@v4

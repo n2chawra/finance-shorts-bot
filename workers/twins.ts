@@ -313,6 +313,15 @@ async function main() {
 
   let cal = readJson<{ passed: boolean; writtenAt: string } | null>(path.join(DIR, "calibration.json"), null);
   const stale = !cal || ctx.now.getTime() - Date.parse(cal.writtenAt) > 30 * DAY_MS;
+  if (cmd === "search") {
+    // a search phrase straight in (testing): its twins, each watched, and a brief named after the phrase
+    const q = process.argv.slice(3).join(" ");
+    const twins = await twinsFor(ctx, q, q, exclude);
+    const id = `search-${q.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 60)}`;
+    if (twins.length) writeJson(path.join(DIR, "briefs", `${id}.json`), brief(id, q, twins, ctx.now));
+    console.log(JSON.stringify({ query: q, picked: twins.map((t) => ({ id: t.id, ...ctx.seen.get(t.id), artStyle: t.sheet.artStyle, measures: measures(t.sheet) })), errors: ctx.errors, youtubeUnits: yt.units }, null, 2));
+    return;
+  }
   if (cmd === "probe") {
     // one of our Shorts (or a given YouTube id): how long Gemini takes and what it returns, nothing kept
     const o = arg ? { videoId: null, youtubeId: arg } : ours[0];
