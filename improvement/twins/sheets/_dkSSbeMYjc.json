@@ -1,0 +1,160 @@
+{
+  "youtubeId": "_dkSSbeMYjc",
+  "ours": "v-20261111-01",
+  "model": "gemini-3.6-flash",
+  "decodedAt": "2026-11-13T08:09:51.681Z",
+  "sheet": {
+    "durationSec": 24,
+    "artStyle": "flat vector animation",
+    "language": "English",
+    "narrator": {
+      "kind": "AI voice",
+      "pace": "normal"
+    },
+    "captions": {
+      "style": "phrase",
+      "position": "bottom"
+    },
+    "music": {
+      "present": true,
+      "energy": "medium"
+    },
+    "sfxPerMinute": 45,
+    "hook": {
+      "firstFrame": "Animated character holding a contract next to text asking 'A SALARY A FORTUNE?'",
+      "firstLine": "You think a salary's a fortune? Not to Ronaldo.",
+      "question": true,
+      "subjectNamedAtSec": 1.5,
+      "figureShownAtSec": 4.5,
+      "figureSpokenAtSec": 4.5
+    },
+    "shots": [
+      {
+        "start": 0,
+        "end": 2.8,
+        "picture": "Character holding salary contract, transition to Ronaldo figure beside trophy stack of cash",
+        "kind": "mixed",
+        "characters": 2,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "NOT TO RONALDO",
+        "figureOnScreen": false,
+        "motion": 2
+      },
+      {
+        "start": 2.8,
+        "end": 7.6,
+        "picture": "Ronaldo figure cheering in field next to trophy on stack of cash, $300M text appears",
+        "kind": "character",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "$300M",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 7.6,
+        "end": 11,
+        "picture": "Calendar drops money into trophy pile, seesaw launcher launches money",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "$5.8M",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 11,
+        "end": 14.1,
+        "picture": "Dark night background showing minute-by-minute earnings of $571 while asleep",
+        "kind": "mixed",
+        "characters": 0,
+        "camera": "static",
+        "transition": "fade",
+        "onScreenText": "$571",
+        "figureOnScreen": true,
+        "motion": 1
+      },
+      {
+        "start": 14.1,
+        "end": 20.8,
+        "picture": "Contract with $60,000 text alongside hourglass flipping into giant stack of contracts vs trophy pile",
+        "kind": "mixed",
+        "characters": 0,
+        "camera": "zoom punch",
+        "transition": "cut",
+        "onScreenText": "5,000 YEARS OF YOUR WORK",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 20.8,
+        "end": 24,
+        "picture": "Character watching clock and breakfast while salary comparison counters roll over",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "$571 HIS MINUTE",
+        "figureOnScreen": true,
+        "motion": 1
+      }
+    ],
+    "lines": [
+      {
+        "start": 0,
+        "end": 2.8,
+        "words": 9,
+        "job": "hook",
+        "gist": "Questions standard salary perception compared to superstar earnings"
+      },
+      {
+        "start": 2.8,
+        "end": 7.6,
+        "words": 12,
+        "job": "reveal",
+        "gist": "Reveals player's massive yearly income from sports and sponsorships"
+      },
+      {
+        "start": 7.6,
+        "end": 11,
+        "words": 13,
+        "job": "context",
+        "gist": "Explains weekly passive and active income flow regardless of play"
+      },
+      {
+        "start": 11,
+        "end": 14.1,
+        "words": 10,
+        "job": "context",
+        "gist": "Breaks down earnings per minute even during sleep time"
+      },
+      {
+        "start": 14.1,
+        "end": 20.8,
+        "words": 21,
+        "job": "stakes",
+        "gist": "Compares average yearly worker salary requiring 5000 years to match"
+      },
+      {
+        "start": 20.8,
+        "end": 24,
+        "words": 11,
+        "job": "payoff",
+        "gist": "Highlights making an average yearly income before breakfast time"
+      }
+    ],
+    "ending": {
+      "loops": false,
+      "cta": "",
+      "lastFrame": "Animated character looking at clock and breakfast table with income graphics above"
+    },
+    "whyItWorks": [
+      "Relatable scale comparison between average person's annual salary and celebrity per-minute earnings.",
+      "Dynamic vector visuals and sound effects keep viewer attention high throughout.",
+      "Step-by-step math breakdown makes massive financial figures easy to grasp visually."
+    ]
+  }
+}

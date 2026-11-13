@@ -1,0 +1,180 @@
+{
+  "youtubeId": "PH97O6TT6bQ",
+  "ours": "v-20261110-03",
+  "model": "gemini-3.6-flash",
+  "decodedAt": "2026-11-13T08:09:51.681Z",
+  "sheet": {
+    "durationSec": 28,
+    "artStyle": "flat vector animation",
+    "language": "English",
+    "narrator": {
+      "kind": "AI voice",
+      "pace": "normal"
+    },
+    "captions": {
+      "style": "word-by-word",
+      "position": "bottom"
+    },
+    "music": {
+      "present": true,
+      "energy": "medium"
+    },
+    "sfxPerMinute": 18,
+    "hook": {
+      "firstFrame": "Vector character with arms raised beside a huge money stack under a suspended cleaver blade",
+      "firstLine": "You think splitting one fortune makes everyone rich?",
+      "question": true,
+      "subjectNamedAtSec": 0,
+      "figureShownAtSec": 4,
+      "figureSpokenAtSec": 4.5
+    },
+    "shots": [
+      {
+        "start": 0,
+        "end": 3.8,
+        "picture": "Cleaver slices huge stack of cash in half while text header asks about splitting billionaire fortune",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "SPLIT A BILLIONAIRE'S FORTUNE EVERYONE RICH?",
+        "figureOnScreen": false,
+        "motion": 2
+      },
+      {
+        "start": 3.8,
+        "end": 8.5,
+        "picture": "Pyramid stack of money labeled $200.00B with crowd of colorful stick figures appearing to the right",
+        "kind": "mixed",
+        "characters": 5,
+        "camera": "push in",
+        "transition": "cut",
+        "onScreenText": "Billionaire's fortune $200.00B Everyone alive",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 8.5,
+        "end": 11.5,
+        "picture": "Stylized rotating Earth planet graphic against dark grid space background",
+        "kind": "object",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "Whole planet 8B",
+        "figureOnScreen": true,
+        "motion": 1
+      },
+      {
+        "start": 11.5,
+        "end": 16,
+        "picture": "Host character points to $25 bill that transforms into a dinner plate with burger and fries",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "$25 Each person One dinner",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 16,
+        "end": 18.8,
+        "picture": "Desert scene where tiny worker stands next to massive fortune stack",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "pan",
+        "transition": "wipe",
+        "onScreenText": "One worker Huge pile",
+        "figureOnScreen": false,
+        "motion": 2
+      },
+      {
+        "start": 18.8,
+        "end": 22.8,
+        "picture": "Salary document beside flipping hourglass with large text showing four million years requirement",
+        "kind": "mixed",
+        "characters": 0,
+        "camera": "zoom punch",
+        "transition": "cut",
+        "onScreenText": "ONE SALARY $50,000 A YEAR 4M YEARS TO EARN IT",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 22.8,
+        "end": 28,
+        "picture": "Host stands in center comparing 4M years for one vs $25 for everyone while cleaver cuts again",
+        "kind": "mixed",
+        "characters": 6,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "STILL SPLIT IT?",
+        "figureOnScreen": true,
+        "motion": 2
+      }
+    ],
+    "lines": [
+      {
+        "start": 0,
+        "end": 3.5,
+        "words": 8,
+        "job": "hook",
+        "gist": "Questions if distributing a billionaire's wealth actually makes everyone rich."
+      },
+      {
+        "start": 3.5,
+        "end": 7.5,
+        "words": 10,
+        "job": "context",
+        "gist": "Sets up scenario of a two hundred billion dollar billionaire fortune."
+      },
+      {
+        "start": 7.5,
+        "end": 11.5,
+        "words": 11,
+        "job": "context",
+        "gist": "Explains dividing this wealth equally across the entire world population."
+      },
+      {
+        "start": 11.5,
+        "end": 16,
+        "words": 8,
+        "job": "payoff",
+        "gist": "Reveals each person would only receive twenty five dollars or one meal."
+      },
+      {
+        "start": 16,
+        "end": 18.8,
+        "words": 9,
+        "job": "turn",
+        "gist": "Compares the same fortune relative to a single worker's perspective."
+      },
+      {
+        "start": 18.8,
+        "end": 22.8,
+        "words": 11,
+        "job": "stakes",
+        "gist": "Calculates that earning that amount at standard salary takes millions of years."
+      },
+      {
+        "start": 22.8,
+        "end": 28,
+        "words": 8,
+        "job": "loop",
+        "gist": "Contrasts both perspectives and asks if audience still supports wealth redistribution."
+      }
+    ],
+    "ending": {
+      "loops": true,
+      "cta": "none",
+      "lastFrame": "Split comparison with host asking STILL SPLIT IT? directly leading back to opening action"
+    },
+    "whyItWorks": [
+      "Uses clear visual metaphors like slicing a money stack to instantly communicate abstract economics.",
+      "Contrasts a micro perspective ($25 dinner) with a macro perspective (4 million years of labor).",
+      "Maintains strong viewer engagement with bold, color-coded text cards for key figures.",
+      "Concludes with an open question that seamlessly loops back to the video hook."
+    ]
+  }
+}

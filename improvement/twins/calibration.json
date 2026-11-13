@@ -1,8 +1,8 @@
 {
-  "writtenAt": "2026-11-13T07:53:15.994Z",
-  "passed": false,
+  "writtenAt": "2026-11-13T08:09:45.764Z",
+  "passed": true,
   "videos": 5,
-  "passedVideos": 3,
+  "passedVideos": 5,
   "thresholds": {
     "videos": 5,
     "beatRecall": 0.75,
@@ -38,11 +38,9 @@
       "durationErr": 0,
       "beatRecall": 1,
       "firstLineOverlap": 1,
-      "figureErr": 6.8,
-      "passed": false,
-      "why": [
-        "first figure off by 6.8 s"
-      ]
+      "figureErr": 0,
+      "passed": true,
+      "why": []
     },
     {
       "videoId": "v-20261112-02",
@@ -60,11 +58,9 @@
       "durationErr": 0.7,
       "beatRecall": 0.86,
       "firstLineOverlap": 0.7,
-      "figureErr": 2.8,
-      "passed": false,
-      "why": [
-        "first figure off by 2.8 s"
-      ]
+      "figureErr": 0,
+      "passed": true,
+      "why": []
     }
   ]
 }

@@ -1,0 +1,179 @@
+{
+  "youtubeId": "yheNlmi7KOU",
+  "ours": "v-20261110-04",
+  "model": "gemini-3.6-flash",
+  "decodedAt": "2026-11-13T08:09:51.681Z",
+  "sheet": {
+    "durationSec": 26,
+    "artStyle": "flat vector animation",
+    "language": "English",
+    "narrator": {
+      "kind": "AI voice",
+      "pace": "normal"
+    },
+    "captions": {
+      "style": "word-by-word",
+      "position": "bottom"
+    },
+    "music": {
+      "present": true,
+      "energy": "medium"
+    },
+    "sfxPerMinute": 14,
+    "hook": {
+      "firstFrame": "A male character pointing at a government building under text BILLIONAIRE TAX EASY MONEY?",
+      "firstLine": "You think taxing billionaires is easy money? It isn't.",
+      "question": true,
+      "subjectNamedAtSec": 0,
+      "figureShownAtSec": 1,
+      "figureSpokenAtSec": 4.8
+    },
+    "shots": [
+      {
+        "start": 0,
+        "end": 3.5,
+        "picture": "Character standing next to a government building and shares stack under text BILLIONAIRE TAX EASY MONEY?",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "BILLIONAIRE TAX EASY MONEY?",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 3.5,
+        "end": 8.5,
+        "picture": "California ballot proposal box listing 200 plus billionaires and 5 percent net worth tax stamp.",
+        "kind": "mixed",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "THE BILLIONAIRE TAX",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 8.5,
+        "end": 13,
+        "picture": "Stack of share certificates representing 100 billion dollars next to a 5 billion dollar tax bill.",
+        "kind": "object",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "ONE EXAMPLE FORTUNE",
+        "figureOnScreen": true,
+        "motion": 2
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "picture": "Character gesturing toward a wealthy elderly man under title JUST PAY IT?",
+        "kind": "character",
+        "characters": 2,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "JUST PAY IT?",
+        "figureOnScreen": false,
+        "motion": 2
+      },
+      {
+        "start": 15,
+        "end": 18.5,
+        "picture": "Locked stack of company shares beside cash safe and declining stock chart visual.",
+        "kind": "chart",
+        "characters": 0,
+        "camera": "static",
+        "transition": "cut",
+        "onScreenText": "SHARES NOT CASH",
+        "figureOnScreen": false,
+        "motion": 2
+      },
+      {
+        "start": 18.5,
+        "end": 22.5,
+        "picture": "Moving truck carrying Google founders sign driving across California border line.",
+        "kind": "mixed",
+        "characters": 0,
+        "camera": "pan",
+        "transition": "cut",
+        "onScreenText": "RESIDENTS ONLY MOVED OUT",
+        "figureOnScreen": false,
+        "motion": 3
+      },
+      {
+        "start": 22.5,
+        "end": 26,
+        "picture": "Character beside voting box rejecting 5 billion bill card under prompt STILL EASY MONEY?",
+        "kind": "mixed",
+        "characters": 1,
+        "camera": "static",
+        "transition": "none",
+        "onScreenText": "STILL EASY MONEY?",
+        "figureOnScreen": true,
+        "motion": 2
+      }
+    ],
+    "lines": [
+      {
+        "start": 0,
+        "end": 3.5,
+        "words": 10,
+        "job": "hook",
+        "gist": "Questions whether taxing wealth is as simple as it seems."
+      },
+      {
+        "start": 3.5,
+        "end": 8.5,
+        "words": 11,
+        "job": "context",
+        "gist": "Explains California targeted over 200 billionaires for net worth tax."
+      },
+      {
+        "start": 8.5,
+        "end": 13,
+        "words": 10,
+        "job": "promise",
+        "gist": "Illustrates how a 100 billion fortune creates 5 billion tax."
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "words": 3,
+        "job": "stakes",
+        "gist": "Asks why the wealthy cannot simply pay cash immediately."
+      },
+      {
+        "start": 15,
+        "end": 18.5,
+        "words": 10,
+        "job": "reveal",
+        "gist": "Shows wealth is tied up in stock requiring sales or loans."
+      },
+      {
+        "start": 18.5,
+        "end": 22.5,
+        "words": 10,
+        "job": "turn",
+        "gist": "Notes billionaire residents moved out of state to avoid tax."
+      },
+      {
+        "start": 22.5,
+        "end": 26,
+        "words": 9,
+        "job": "loop",
+        "gist": "Shows voters rejected measure and repeats the easy money premise."
+      }
+    ],
+    "ending": {
+      "loops": true,
+      "cta": "none",
+      "lastFrame": "Male vector character next to vote machine screen with STILL EASY MONEY text overlay."
+    },
+    "whyItWorks": [
+      "Uses simple vector graphics and concrete numbers to make policy debates clear.",
+      "Breaks down complex economic concepts like share illiquidity into simple visuals.",
+      "Ends with a thematic loop back to the opening question for rewatchability."
+    ]
+  }
+}

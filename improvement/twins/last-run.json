@@ -1,12 +1,22 @@
 {
-  "at": "2026-11-13T08:03:28.530Z",
+  "at": "2026-11-13T08:09:51.681Z",
   "command": "night",
-  "decodes": 0,
+  "briefs": [
+    "2026-11-13-petrol-pump-keeps-4-40-a-litre"
+  ],
+  "gaps": [
+    "v-20261111-01",
+    "v-20261110-03"
+  ],
+  "decodes": 6,
   "outOfQuota": false,
-  "tokens": 0,
-  "models": {},
-  "youtubeUnits": 1,
+  "tokens": 172188,
+  "models": {
+    "gemini-3.6-flash": 6
+  },
+  "youtubeUnits": 1028,
   "errors": [
-    "calibration has not passed: no briefs or gap reports until Gemini reads our own Shorts correctly"
+    "stills: Error: no Gemini model answered:\ngemini-3.8-flash: TimeoutError: The operation was aborted due to timeout\ngemini-3.7-flash: TimeoutError: The operation was aborted due to timeout",
+    "fps 2 refused, using 1: Error: no Gemini model answered:\ngemini-3.8-flash: 429 { \"error\": { \"code\": 429, \"message\": \"You exceeded your current quota, please check your plan and billing"
   ]
 }
