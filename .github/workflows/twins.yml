@@ -1,0 +1,69 @@
+# Twins (owner, 2026-11-13): the most-watched animated Shorts on our topics, watched by Gemini into shot
+# sheets, so the writer learns how winners tell a topic before writing it, and every published Short
+# gets a gap report against its twins (workers/twins.ts). Runs after research (23:47 IST) and before
+# the 04:07 video run. Our own analysis goes to main (improvement/twins/); YouTube titles and views go
+# to the market-data branch (replaced daily) and the dashboard.
+name: Twins
+
+on:
+  schedule:
+    - cron: "7 20 * * *" # 01:37 IST
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "night | calibrate | topic <topicId>"
+        default: night
+
+permissions:
+  contents: write
+
+concurrency:
+  group: twins
+
+jobs:
+  twins:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm ci
+        working-directory: workers
+      - run: npm run generate
+        working-directory: workers
+      - name: Twins
+        working-directory: workers
+        run: npm run twins -- ${{ inputs.command || 'night' }} "$RUNNER_TEMP/twins-data" | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Commit the shot sheets, briefs and gap reports
+        run: |
+          git add improvement/twins
+          if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Twins: shot sheets, briefs and gap reports"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+      - name: Add twins.json to the market-data branch
+        run: |
+          [ -f "$RUNNER_TEMP/twins-data/twins.json" ] || exit 0
+          git fetch -q origin market-data || exit 0
+          git worktree add -q "$RUNNER_TEMP/md" origin/market-data
+          cp "$RUNNER_TEMP/twins-data/twins.json" "$RUNNER_TEMP/md/twins.json"
+          cd "$RUNNER_TEMP/md"
+          git add twins.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Twins data $(date -u +%F)"
+          git push -q origin HEAD:market-data
