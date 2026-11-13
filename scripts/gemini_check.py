@@ -23,16 +23,21 @@ if code != 200:
     sys.exit(models)
 names = [m["name"].split("/")[-1] for m in models["models"] if "generateContent" in m.get("supportedGenerationMethods", [])]
 print("models:", ", ".join(names))
-flash = [n for n in names if "flash" in n and "lite" not in n and "image" not in n and "tts" not in n and "live" not in n and "audio" not in n]
-order = sorted(flash, key=lambda n: (("preview" in n or "exp" in n), n), reverse=False)
+import time
+PREFER = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash", "gemini-2.5-flash"]
+order = [m for m in PREFER if m in names]
 prompt = ("Watch this YouTube Short. For each second from 0:00 to 0:05, say in one line what is on screen "
           "(characters, objects, any text exactly as shown) and what the narrator says. Then give the total length.")
-for model in sorted(order, reverse=True)[:4]:
+for model in order:
+  for attempt in range(3):
     code, out = call(f"models/{model}:generateContent", {"contents": [{"parts": [
         {"file_data": {"file_uri": VIDEO}}, {"text": prompt}]}]})
+    if code != 503: break
+    time.sleep(20)
+  if True:
     print(f"\n=== {model}: HTTP {code}")
     if code == 200:
         print(out["candidates"][0]["content"]["parts"][0]["text"])
         print("usage:", json.dumps(out.get("usageMetadata")))
         break
-    print(out)
+    print(str(out)[:400])
