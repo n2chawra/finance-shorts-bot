@@ -52,9 +52,10 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   Shorts growing in this niche state a surprising true fact about a famous name in the first second.
   - **The opening is already chosen**: use the title, first line and first frame picked in
     `videos/<id>/openings.json` (routine step 2b).
-  - **Look at the bar first**: open the contact sheets (`videos/<id>/preview.png`) of the Shorts in
-    `improvement/analysis/pictures.json` → `reference`, our own Shorts that held viewers best. Draw at
-    least that well: as full, as big, as clear. Copy how they fill the frame, never their pictures.
+  - **Look at the bar first**: the approved directed reference (`videos/v-directed-netflix/` and its
+    code in `remotion/src/videos/v-directed-netflix/`), and the contact sheets (`videos/<id>/preview.png`)
+    of the Shorts in `improvement/analysis/pictures.json` → `reference`, our own Shorts that held viewers
+    best. Draw at least that well: as full, as big, as clear. Copy how they work, never their pictures.
   - **One surprising true money fact about a real, named person or business.** The plan's `subject`
     and its biggest figure are in the title and in the hook's first sentence.
   - **The hook states the fact itself**: "The NBA paid Magic Johnson {pay}. He made a billion." ·
@@ -88,20 +89,23 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     it works in two or three steps, one punchline with the biggest figure, a last line that hands
     back to the hook, and **a question to the viewer** in the last beat ("Would you have sold?").
   - **Never announce the structure** ("three clues", "four levels"): viewers left at that line.
-  - The style is `shot`/`build` beats; no board beats.
+  - **Every beat is a directed 2D shot** (`"scene": "directed"`; owner, 2026-11-13, after the Netflix
+    remake: "I absolutely loved this… now new videos are made like this"). You write the story, the
+    lines, the events (the words things will happen on) and the figures; the director
+    (`generator/prompts/director.md`) puts each line in its own place, shoots it and codes it. Write
+    lines that give a picture something to do: a place, a person doing something, a thing that carries
+    the figure. No shot, build, board or custom-hook beats in a new video.
   - A `note:` from a check is advice. Read it once, act on it if it is cheap, and move on: only a
     `FAIL:` needs a rewrite.
-- **Build it from shots** (owner, 2026-10-21: "most of the screen empty, every video works like a
-  template"). Read `renderer/templates/SHOTS.md` and `.claude/skills/motion-direction/SKILL.md`
-  first; copy the shape of `examples/short_story_shot.json`, not its words. At least 60% of the
-  beats are `shot`s: a lit set, the cast big, money as a thing (a `stack`, a `flow`, a `phone`), a
-  camera that cuts between shot sizes on the words (wide, medium, close, extreme), a new set when the
-  story moves, a travelling transition (`zoom-through`, `match`, `whip`). The render fails a video
-  with empty frames, one shot size or one set (`renderer/craft.py`).
-- **The first beat is a custom hook** (`"scene": "hook"`, with a normal shot's `params` as its
-  fallback): write `remotion/src/videos/<id>/Hook.tsx` for this video, following
-  `remotion/src/videos/README.md` and its reference hook. The topic's world at its most extreme, the
-  conflict on screen in the first second.
+- **Direct it** (owner, 2026-11-13; replaces the shot/build system of 2026-10-21): every beat is
+  `"scene": "directed"`. Write each beat's `say`, `role` and `events` (the words where something will
+  change: a burst, a stamp, a reveal), then follow `generator/prompts/director.md` for its `params`
+  (component, place, camera, moments, things, fig) and its code in `remotion/src/videos/<id>/`. Copy
+  the shape of `videos/v-directed-netflix/script.json`, never its words or places. The render fails a
+  video with empty frames, one shot size or one place (`renderer/craft.py`).
+- **The first beat is the hook, directed like the rest**: the subject recognisable in frame 0 with
+  something already moving, the first change on a word within 1.5 s, a cut to a second place on a
+  word when the line has two halves (the reference's Hook cuts from the living room to the film set).
 - **Voices:** the narrator is the channel's one voice (set by the render); the cast speak when they
   act in the story. Everyday words; no jargon without saying what it means.
 - **Nobody on screen is an adviser** (YouTube's monetization policy excludes content presenting
@@ -131,7 +135,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   - **Escalate.** Each build beat reveals something bigger or worse than the one before; the turn
     flips what the viewer believed; the payoff is one punchline sentence with the biggest figure.
   - **Start every line on the action.** No "Picture…", "Imagine…", "Here's the game", "Let's…".
-- **The board (a test variant since 2026-11-04: only when the plan's `arms.style` is `board`):
+- **The board (retired for new videos on 2026-11-13; kept for re-renders of old ones):
   rooms and cards, a new picture every sentence** (owner, 2026-11-02, after The
   Curious Plot study and two demos; `scene: "board"`, `remotion/src/studio/board.tsx`, its verbs in
   `renderer/templates/short_story/README.md`):
@@ -150,7 +154,9 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   - Every board beat opens with its `header` (the point of the sentence, readable on mute) and its
     picture already in place at `sec: 0`.
 - **Presentation, not props on a shelf** (owner, 2026-11-02: "animation don't mean just put object
-  when you speak of it. It's a way of presentation … it lacks wow factor"):
+  when you speak of it. It's a way of presentation … it lacks wow factor"). The director draws it
+  now; the ideas below still decide what a line should give the picture to do (the verbs in
+  backticks are the old build scene's and only matter for re-renders):
   - **One hero thing per moment, big.** At most three things on screen; the one being talked about
     is `size` 0.24–0.34 and the camera goes to it. Never a row of small labelled icons.
   - **Every build beat transforms something**: a thing turns into another (`swap`), grows into a
@@ -182,9 +188,8 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   `script.shape` (its id) and arrange the beats as that shape says: hook → promise by 6 s → a figure
   by 9 s → 3+ `build` beats of rising stakes → a turn 50–85% in → the payoff → loop. Level chips
   (`structure.levels`, `hud.level`), the climbing counter and the word "level" only in the `levels`
-  shape. Every beat has a `role`. Then the picture: draw the story's own things in
-  `remotion/src/videos/<id>/props.tsx`, build beats whose actions fire on the words that name them,
-  and code `Hook.tsx`, `Turn.tsx` and `Payoff.tsx` (`renderer/templates/SHOTS.md`, "The build scene").
+  shape. Every beat has a `role`. Then the picture: the director (`generator/prompts/director.md`)
+  gives every beat its place, shots and moments and codes it on the flat kit.
 - **The cover (`thumbnail`) is required**: `layout: "scene"` by default, a frame of this video (the
   hook, or the beat you name in `at`) under the big words, so no two covers look alike (pick a frame whose top third is free of the scene's own words);
   `versus`, `secret` or `story` only when no frame can carry it, as the README's "The cover" section

@@ -10,7 +10,18 @@ script.json ──python -m renderer.timeline.build──▶ timeline.json + aud
 
 Python owns every number, every moment and every sound. Remotion only draws.
 
-## The shot system (required since 2026-10-21)
+## Directed shots (every new video, since 2026-11-13)
+
+**Read `generator/prompts/director.md` and `remotion/src/flat/README.md` first.** The owner, after the
+Netflix remake: "I absolutely loved this… now new videos are made like this… also fix in long video
+same thing." Every beat of a new long video except the `end` card is `"scene": "directed"`: a place
+built for the line, someone doing something, the figure on a thing in that place, a camera that moves,
+every change on a spoken word, coded per beat in `remotion/src/videos/<id>/` on the flat kit. A long
+video is 1920×1080: the same kit and rules as the reference Short (`videos/v-directed-netflix/`),
+composed for landscape, each chapter in its own places. The shot system, the board and the scene table
+below are the older kits, kept so old videos can be re-rendered; a new video doesn't use them.
+
+## The shot system (2026-10-21 to 2026-11-13; old videos)
 
 **Read [`../SHOTS.md`](../SHOTS.md) and `.claude/skills/motion-direction/SKILL.md` first.** A long
 video is built from composed `shot` beats (at least 60% of the beats, chapters and the end card

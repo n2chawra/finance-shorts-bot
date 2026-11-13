@@ -26,7 +26,7 @@ KINDS: list[tuple[str, str, str]] = [
     ("render", r"props? of its own|were in v-|were in L-", "props: draw 8+ of the story's own things, not the last videos'"),
     ("render", r"^length|length about", "length outside the settings' range: count the words (about 175 a minute for Shorts, 180 long)"),
     ("render", r"empty|blank", "empty frames: something on screen from the first frame of every beat"),
-    ("render", r"tsc|import|Hook\.tsx|Turn\.tsx|Payoff\.tsx|props\.tsx", "own code: type-safe (`!` or `??` on lookups), only kit imports"),
+    ("render", r"tsc|import|\w+\.tsx|typed into the code|directed by", "own code: type-safe (`!` or `??` on lookups), only kit imports (the flat kit for directed beats), figures from params.fig, one file per directed beat"),
     ("render", r"thumbnail", "thumbnail rules: ≤ 4 words, no digits, adds to the title, big at phone size"),
     ("number_check", r"neither a script input|which no maths computes", "a typed figure in the title or description: write {placeholders}"),
     ("number_check", r"has no value or series|no maths named", "an @reference to a key the maths doesn't have: the error lists the keys"),

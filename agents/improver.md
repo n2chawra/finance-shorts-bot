@@ -120,7 +120,17 @@ videos use the `LONG` frame), experiments with `"templates": ["long_story"]`. Le
 item against a Shorts proposal by priority; long videos earn most of the channel's money, so at
 equal priority take the long one. Set the item's `status` as you would a proposal's.
 
-**What long videos are built from now (2026-10-26), and what is yours to improve.** Read the
+**Directed 2D shots (owner, 2026-11-13; Shorts and long videos).** Every new video is drawn on the flat
+kit (`remotion/src/flat/`: `kit.tsx`, `cast.tsx`, `README.md`) by per-video directed beats
+(`generator/prompts/director.md`; reference `remotion/src/videos/v-directed-netflix/`). This is now the
+look you improve: kit pieces the director keeps hand-drawing (a new building, a vehicle, a crowd, a
+weather layer, a phone screen), the cast (`Char`: faces, poses, hair, outfits, mouths that talk on the
+words), camera helpers, light, and the director prompt's rules, judged by the weekly loop like any look
+change (held after the hook). Keep the kit backwards compatible: a published video's beat file must still
+type-check and draw the same. The paragraph below describes the older kits (build, docu, board), which
+now only serve re-renders: don't spend experiments on them.
+
+**What long videos were built from (2026-10-26 to 2026-11-13).** Read the
 `long_story` README ("The story spine", "Documentary devices"), `renderer/templates/SHOTS.md`
 ("The build scene") and `renderer/thumbs.py` first. Long videos (and Shorts) follow a story spine
 (`generator/story.py`: hook, promise, chapters as levels with a climbing number, a tease closing each

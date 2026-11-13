@@ -10,6 +10,8 @@ export const SCENE_NAMES = [
   "framework", "type", "journey", "stats", "case",
   // the board: header, sums, terms, panels over a still stage (studio/board.tsx; 2026-11-02)
   "board",
+  // a directed 2D shot coded for this video's line (videos/<id>/<params.component>.tsx on the flat kit; 2026-11-13)
+  "directed",
 ] as const;
 
 export type SceneName = (typeof SCENE_NAMES)[number];

@@ -1,5 +1,13 @@
 # A video's own code: `videos/<video id>/`
 
+**Since 2026-11-13 every new video is directed** (owner: "now new videos are made like this"): one file
+per beat, `<Component>.tsx`, chosen by `"scene": "directed", "params": {"component": "<Component>", ...}`,
+drawn on the flat kit (`../../flat/kit`, `../../flat/cast`; `remotion/src/flat/README.md`). The rules
+are in `generator/prompts/director.md`; the approved reference is `v-directed-netflix/` (with
+`videos/v-directed-netflix/script.json`). Figures come from `p.beat.params.fig`, never typed into the
+file. What follows describes the older per-video code (hooks, custom beats, props) that old videos use.
+
+
 Since 2026-10-26 a video brings three coded beats and its own props (owner: "animation should be
 dynamic to the script"):
 

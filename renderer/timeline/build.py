@@ -106,7 +106,7 @@ def _fill(text: str, figures: dict[str, str], where: str) -> str:
 
 # keys whose values name things (an event, an item, a prop, a component) and are never shown: an id
 # like "y1" or "c6-worth" is not a typed number (2026-10-29: six scripts failed on one)
-ID_KEYS = frozenset({"at", "id", "target", "on", "component", "prop", "into", "strike", "lineAt", "who", "kind", "set", "layout",
+ID_KEYS = frozenset({"at", "id", "target", "on", "component", "size", "prop", "into", "strike", "lineAt", "who", "kind", "set", "layout",
                      "bg", "color", "tint", "traveller", "pose", "expression", "spot", "where", "from", "to", "tone", "world", "open_at"})
 _IDENT = re.compile(r"^[A-Za-z_][\w-]*$")
 
@@ -427,6 +427,46 @@ def first_frame(beats: list[dict]) -> list[str]:
     return []
 
 
+SHOT_SIZES = ("wide", "medium", "close", "extreme")
+COMPONENT = re.compile(r"^[A-Z][A-Za-z]*$")
+
+
+def directed_problems(b: "Beat", where: str) -> list[str]:
+    """A directed beat (owner, 2026-11-13: the flat 2D shots of the Netflix remake) names the coded
+    component that draws it, the place the line happens in, the shot sizes it uses and the moments
+    something changes on screen, each on a spoken word (an event). The craft gates read these."""
+    p, out = b.params, []
+    if not isinstance(p.get("component"), str) or not COMPONENT.match(p["component"]):
+        out.append(f"{where}: params.component must name its file in remotion/src/videos/<id>/ (PascalCase, e.g. \"Vault\")")
+    place = p.get("place")
+    places = [place] if isinstance(place, str) else place if isinstance(place, list) else []
+    if not places or not all(isinstance(x, str) and x.strip() for x in places):
+        out.append(f"{where}: params.place says where the line happens (\"the vault\", or a list when the beat cuts between places)")
+    cam = p.get("camera")
+    if not isinstance(cam, list) or not cam:
+        out.append(f"{where}: params.camera lists the shot sizes, e.g. [{{\"sec\": 0, \"size\": \"wide\"}}, {{\"at\": \"kept\", \"size\": \"close\"}}]")
+    else:
+        for k in cam:
+            if not isinstance(k, dict) or k.get("size") not in SHOT_SIZES:
+                out.append(f"{where}: every params.camera key has a size: {', '.join(SHOT_SIZES)}")
+                break
+            if isinstance(k.get("at"), str) and k["at"] not in b.events:
+                out.append(f"{where}: params.camera key at {k['at']!r} is not one of this beat's events")
+                break
+    moments = p.get("moments")
+    if not isinstance(moments, list) or not moments:
+        out.append(f"{where}: params.moments lists what changes on screen and on which word: [{{\"at\": \"kept\", \"what\": \"the counter counts up\"}}]")
+    else:
+        for mo in moments:
+            if not isinstance(mo, dict) or not isinstance(mo.get("what"), str) or not mo["what"].strip():
+                out.append(f"{where}: every moment says `what` changes")
+                break
+            if mo.get("at") not in b.events:
+                out.append(f"{where}: moment at {mo.get('at')!r} is not one of this beat's events (name the word in `events` first)")
+                break
+    return out
+
+
 def check_script(script: dict) -> dict:
     """Everything a build would reject, without speaking or mixing anything: maths inputs, typed
     numbers, placeholders, @references, scene names, sound kinds, ids and event words. Returns
@@ -447,8 +487,8 @@ def check_script(script: dict) -> dict:
         _thumbnail_variants(script, figures, results)
     # where the facts come from is on screen: a headline beat, or a board beat's source footer
     # (sourced facts in every Short since 2026-11-02, not only news)
-    if sources and not any(b.scene in ("headline", "board") for b in beats):
-        raise ValueError("a script with sourced facts needs a headline or board beat, which shows where they come from")
+    if sources and not any(b.scene in ("headline", "board", "directed") for b in beats):
+        raise ValueError("a script with sourced facts needs a headline, board or directed beat, which shows where they come from")
     if len({b.id for b in beats}) != len(beats):
         raise ValueError("beat ids must be unique")
     scenes, out, timed = scene_names(), [], []
@@ -458,6 +498,8 @@ def check_script(script: dict) -> dict:
         where = f"beat {b.id!r}"
         if b.scene not in scenes:
             raise ValueError(f"{where}: no scene called {b.scene!r}; scenes are {', '.join(sorted(scenes))}")
+        if b.scene == "directed" and (bad := directed_problems(b, where)):
+            raise ValueError("; ".join(bad))
         _one_string(b.params, _resolve(b.params, figures, results, f"{where}.params"), f"{where}.params", fm)
         text = _fill(b.say, figures, f"{where}.say") if b.say else ""
         spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000, fm.currency)["x"] if b.say else ""

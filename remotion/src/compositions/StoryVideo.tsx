@@ -47,6 +47,16 @@ const CustomScene: React.FC<SceneProps> = (p) => {
   return Array.isArray(p.beat.params.items) ? <BuildScene {...p} /> : <ShotScene {...p} />;
 };
 
+/** A directed 2D shot (owner, 2026-11-13: "now new videos are made like this"): the video's own
+ * videos/<id>/<params.component>.tsx, drawn on the flat kit (remotion/src/flat). The render's code
+ * check fails a directed beat whose file is missing; this fallback only keeps a broken file from
+ * stopping a preview. */
+const DirectedScene: React.FC<SceneProps> = (p) => {
+  const name = typeof p.beat.params.component === "string" ? p.beat.params.component : "";
+  const Custom = VIDEOS[p.tl.id]?.components[name];
+  return Custom ? <Custom {...p} /> : <ShotScene {...p} />;
+};
+
 export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   stage: StageScene, chapter: ChapterScene, checklist: ChecklistScene, end: EndScene, headline: HeadlineScene,
   bignumber: BigNumberScene, reveal: RevealScene, statement: StatementScene, monster: MonsterScene,
@@ -54,7 +64,7 @@ export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene, source: SourceScene, bill: BillScene, road: RoadScene, fork: ForkScene, shot: ShotScene, hook: HookScene,
   build: BuildScene, custom: CustomScene,
   framework: FrameworkScene, type: TypeScene, journey: JourneyScene, stats: StatsScene, case: CaseScene,
-  board: BoardScene,
+  board: BoardScene, directed: DirectedScene,
 };
 
 /** The channel's mark in the top-left corner of every frame: Sikka, small, never text. */
@@ -100,7 +110,8 @@ const BeatView: React.FC<{ beat: Beat; tl: Timeline; frame: number; fps: number 
   const punchEvent = story.camera.startsWith("punch:") ? story.camera.slice(6) : null;
   const kind = punchEvent ? "drift" : story.camera;
   const punch = punchEvent && punchEvent in story.events ? story.events[punchEvent]! / fps : null;
-  const transform = cameraTransform(kind, Math.min(1, local / story.frames), local / fps, story.id, punch);
+  // a directed shot moves its own camera (flat/kit View); the others get the beat's drift or punch
+  const transform = beat.scene === "directed" ? undefined : cameraTransform(kind, Math.min(1, local / story.frames), local / fps, story.id, punch);
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <AbsoluteFill style={{ transform }}>

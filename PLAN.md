@@ -105,6 +105,19 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
 - [x] Phase 4: Shorts on Remotion (approved without per-format samples); Pillow engine removed
 - [ ] Phase 5: news event days and recipe growth done; Hinglish A/B waits for a voice that speaks it well
 
+## M9 — Directed 2D shots (owner, 2026-11-13: "I absolutely loved this… now new videos are made like this")
+- [x] Flat 2D kit `remotion/src/flat/` (stage, camera, shapes, glows, money things, displays, isometric
+      city, the cast as `Char` with drawn faces, real-person photo heads) and its README
+- [x] `directed` scene: per-beat code in `remotion/src/videos/<id>/`, its own camera, no HUD, big captions
+- [x] Script check for directed params; craft gates read places, sizes, moments and things; code check
+      allows the kit, fails a typed figure and a missing beat file; tests (`renderer/tests/test_directed.py`)
+- [x] Reference video `v-directed-netflix` (the owner-approved Netflix remake, as script + code)
+- [x] Director step and prompt (`generator/prompts/director.md`); writer, routine, QA, checklist,
+      templates, Studio (long videos), improver, reviewer, policy and CLAUDE.md moved to it
+- [ ] First routine-made directed Short reviewed by the owner
+- [ ] First directed long video (Studio) reviewed by the owner
+- [ ] Lip sync for a speaking cast member from the voice's phonemes (`talkAt` is a stand-in)
+
 ## Later (not scheduled)
 - Edit title/description of a queued video before upload
 - Thumbnail A/B testing
@@ -444,3 +457,7 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   close-ups, textbook payoffs. Now: no invented examples (hard rule), no reaction shots and a shareable
   payoff (notes + QA), `generator/prompts/lessons.md`, and the **reviewer** agent (Tue and Fri) that
   repeats this review on new videos and keeps the lessons current.
+- 2026-11-13: The owner watched a Netflix Short remade in flat 2D, directed shot by shot (a place for
+  every line, the cast acting, the figure on a thing in the place, a moving camera, changes on words),
+  and said "I absolutely loved this… now new videos are made like this… also fix in long video same
+  thing". Every new Short and long video is now directed 2D (M9): director step, flat kit, checks, prompts.

@@ -75,12 +75,15 @@ python -m generator.run check-plan <id>
 **First, what keeps failing** (2026-10-29): read `generator/prompts/checklist.md` and run
 `python -m generator.run failures --format long`. Write so that none of it happens again.
 
-**The shot system first** (owner, 2026-10-21): read `renderer/templates/SHOTS.md`,
-`.claude/skills/motion-direction/SKILL.md` and `examples/short_story_shot.json` (the approved
-showcase, a Short: the same shots work in 16:9). At least 60% of the beats are `shot`s, each chapter
-in its own set, the camera changing size on the words; then write the video's custom hook,
-`remotion/src/videos/<id>/Hook.tsx` (`remotion/src/videos/README.md`). The render fails a video
-with empty frames, one shot size or one set (`renderer/craft.py`).
+**Directed 2D shots, like the Shorts** (owner, 2026-11-13: "also fix in long video same thing"): every
+beat except the `end` card is `"scene": "directed"`. Follow `generator/prompts/director.md` (Step 1: a
+place, someone doing something, the figure on a thing, the camera and the moments on words; Step 2: one
+file per beat in `remotion/src/videos/<id>/` on the flat kit, `remotion/src/flat/`). A long video is
+1920×1080: compose for landscape (the reference `v-directed-netflix` is a Short; the same kit, places
+and ideas work wider, with slower moves). Each chapter gets its own places; a chapter opener is a
+directed beat in the chapter's first place with its title on a thing there (a sign, a door, a screen),
+not a title card. The render fails a video with empty frames, one shot size or one place
+(`renderer/craft.py`).
 
 Then read `renderer/templates/long_story/README.md` and `examples/long_story.json`: the README is
 the contract (beats, scenes, cast, acting, events, numbers) and the example is a video the owner
@@ -212,22 +215,19 @@ git push origin HEAD:refs/heads/agent/studio/$DAY
 End with a 5-line report: the topic, the length, how many rewrites, what the reviewers said, and
 anything for the owner.
 
-## The board (owner, 2026-11-02)
-Tell the video on `board` beats (`renderer/templates/long_story/README.md`, "The board in a long
-video", and the Shorts README's verb table): questions in a room, every answer a labelled card (a
-document with real data, a sum written out, chips, charts, things that turn into and feed each
-other), one sentence per beat, a question every 30 s, readable on mute, real names with the sourced
-facts Scout put in the topic. `python -m generator.run number-check` holds you to it.
+## The board and the build scene (retired for new videos, 2026-11-13)
+The board (2026-11-02) and the build scene with its documentary devices (2026-10-26) told long videos
+until the directed shots replaced them; they stay in the code only so old videos can be re-rendered.
+What they taught still holds and the director keeps it: a question in the viewer's voice every 30 s,
+readable on mute (the figure on a thing in the place), real names with the sourced facts Scout put in
+the topic, one idea per beat.
 
-## The story spine and the build scene (owner, 2026-10-26)
+## The story spine (owner, 2026-10-26)
 
-Long videos now follow the Shorts upgrade: a story spine (hook within 15 s, every chapter promised
-within 30 s, chapters as levels with a climbing number, a `tease` closing each chapter, a turn and a
-payoff) and pictures made of the video's own drawn props in `build` beats that change on the words,
-with coded `Hook.tsx`, `Turn.tsx` and `Payoff.tsx`, mixed with the documentary devices (`framework`,
-`type`, `journey`, `stats`, `case`: the long_story README), a chapter colour each. Read the long_story README "The story spine"
-and `renderer/templates/SHOTS.md` "The build scene"; the reference is `L-remake-borrow`. The render
-fails a video that breaks the spine, leaves 2.5 s with nothing new, or shows things nobody is saying.
+A story spine: hook within 15 s, every chapter promised within 30 s, chapters with a climbing number,
+a `tease` closing each chapter, a turn and a payoff (the long_story README "The story spine"). The
+picture is directed (`generator/prompts/director.md`). The render fails a video that breaks the spine,
+leaves 2.5 s with nothing new, or shows things nobody is saying.
 
 ## The title and the thumbnail are one pair (owner, 2026-10-26)
 

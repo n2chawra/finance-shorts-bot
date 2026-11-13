@@ -36,7 +36,12 @@ CORES = max(1, os.cpu_count() or 1)   # Remotion renders at most one frame per c
 
 
 HOOK_IMPORTS = ("react", "remotion", "@remotion/paths", "@remotion/shapes", "@remotion/noise",
-                "../../studio/", "../../cast/", "../../scenes/kit", "../../fx/", "../../design/", "../../fmt/", "../../contract/")
+                "../../studio/", "../../cast/", "../../scenes/kit", "../../fx/", "../../design/", "../../fmt/", "../../contract/",
+                "../../flat/")
+# a figure typed into a video's code ("$11B", '>325M<', "45.2 billion"): every figure on screen comes from
+# the script (params filled by Python), never from the component (CLAUDE.md: numbers are computed by code)
+TYPED_FIGURE = re.compile(r"""["'`>][^"'`<>\n]*?(?:[$£€₹]\s?\d|\b\d[\d,]*(?:\.\d+)?(?:K|M|B|bn|Cr|L)\b|\b\d[\d,]*(?:\.\d+)?\s(?:million|billion|trillion|lakh|crore)\b)""")
+_COMMENTS = re.compile(r"/\*.*?\*/|(?:^|(?<=\s))//[^\n]*", re.S | re.M)
 HOOK_BANNED = ("fetch(", "eval(", "Function(", "Math.random", "Date.now", "new Date", "window.", "document.", "localStorage",
                "require(", "import(", "process.", "setTimeout", "setInterval", "XMLHttpRequest", "useFrame")
 
@@ -57,12 +62,27 @@ def custom_problems(video_id: str) -> list[str]:
             if not own and not any(mod == a or mod.startswith(a) for a in HOOK_IMPORTS):
                 out.append(f"{f.name}: import {mod!r} is not allowed (only the studio kit, cast, fx, design, fmt, remotion and this folder)")
         out += [f"{f.name}: {b!r} is not allowed" for b in HOOK_BANNED if b in code]
+        for m in TYPED_FIGURE.finditer(_COMMENTS.sub("", code)):
+            out.append(f"{f.name}: a figure typed into the code ({m.group(0)[1:40].strip()!r}): take it from the beat's params "
+                       f"(\"fig\": {{\"kept\": \"{{pro_total}}\"}} in the script, p.beat.params.fig.kept in the code)")
+            break
         if "export default" not in code:
             out.append(f"{f.name} must default-export its component (or, props.tsx, its props)")
         # the "Data: …" line is printed once a video (owner, 2026-11-03: Deal and Turn both printed it)
         if "tl.sources" in code and "showsSource" not in code:
             out.append(f"{f.name} prints tl.sources on every one of its beats: print it only when showsSource(p) "
                        f"(import {{ showsSource }} from \"../../studio/source\"), so the source shows once a video")
+    script = REMOTION.parent/"videos"/video_id/"script.json"
+    if script.is_file():
+        try:
+            beats = json.loads(script.read_text(encoding="utf-8")).get("beats") or []
+        except ValueError:
+            beats = []
+        names = {f.stem for f in files}
+        for b in beats:
+            comp = (b.get("params") or {}).get("component")
+            if b.get("scene") == "directed" and isinstance(comp, str) and comp not in names:
+                out.append(f"beat {b.get('id')!r} is directed by {comp}.tsx, which is not in remotion/src/videos/{video_id}/: write it")
     if files and not out:
         node = shutil.which("node")
         tsc = REMOTION/"node_modules"/"typescript"/"bin"/"tsc"

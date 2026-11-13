@@ -86,6 +86,24 @@ export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]
   const left = v ? 60 : tl.width * 0.12, width = v ? tl.width - 60 - 150 : tl.width * 0.76;   // Shorts: clear of the right-hand buttons
   const who = g[0]!.who && g[0]!.board ? g[0]!.who : undefined;
   const tagColor: Record<string, string> = { rohan: "#2f7df6", priya: "#e0518f", sharma: "#f08c3a", sikka: "#d4a017", narrator: "#6b7385" };
+  if (scene === "directed") {
+    // directed shots (owner, 2026-11-13, the Netflix remake): big white words with an ink edge, no box,
+    // figures in yellow, the words still to come dimmed; the picture behind stays visible around them
+    const big = v ? 76 : 52;
+    return (
+      <div style={{ position: "absolute", left, ...(v ? { bottom: SHORT_UI_BOTTOM } : { top }), width, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
+        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: big, lineHeight: 1.15, textAlign: "center", maxWidth: width, letterSpacing: -0.5,
+          transform: `scale(${0.8 + 0.2 * (1 - (1 - k) ** 3)})`, transformOrigin: "50% 100%", color: "#fff",
+          WebkitTextStroke: `${v ? 3 : 2}px #1d1a2b`, paintOrder: "stroke fill", textShadow: "0 6px 0 rgba(29,26,43,0.85), 0 10px 24px rgba(0,0,0,0.35)" }}>
+          {g.map((w, j) => {
+            const fig = figures.has(w.t.replace(/[.,!?;:]+$/, ""));
+            const said = t >= w.s - 0.05;
+            return <span key={j} style={{ color: fig ? "#ffd23f" : "#ffffff", opacity: said || fig ? 1 : 0.4 }}>{w.t}{j < g.length - 1 ? " " : ""}</span>;
+          })}
+        </div>
+      </div>
+    );
+  }
   return (
     <div style={{ position: "absolute", left, ...(v ? { bottom: SHORT_UI_BOTTOM } : { top }), width, display: "flex", flexDirection: "column", alignItems: "center", pointerEvents: "none" }}>
       {who && <div style={{ alignSelf: "center", marginBottom: -6, zIndex: 1, fontFamily: FONT, fontWeight: 900, fontSize: v ? 44 : 30, color: "#fff", textTransform: "uppercase",

@@ -56,7 +56,7 @@ export const counterBottom = (w: number, h: number): number => (h > w ? 360 : 19
 export const StoryHud: React.FC<{ tl: Timeline; index: number; beat: Beat; frame: number; fps: number }> = ({ tl, index, beat, frame, fps }) => {
   const levels = (tl as Timeline & { structure?: { levels?: string[] } }).structure?.levels ?? [];
   const hud = (beat.params.hud ?? {}) as HudParams;
-  if (hud.hide || beat.scene === "end") return null;
+  if (hud.hide || beat.scene === "end" || beat.scene === "directed") return null;   // a directed shot writes its figures on things
   const { level, counter, prev, counterBeat } = carried(tl, index);
   if (!levels.length && !counter) return null;
   const { width: w, height: h } = tl;

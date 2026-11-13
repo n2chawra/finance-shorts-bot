@@ -48,7 +48,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
     the title and the hook's first sentence state it with the name and the figure (no "You think X?",
     no "Watch this"; `generator/story.py` `hook_problems`); three openings drafted and one picked by a
     fresh reviewer (`generator/prompts/hook_judge.md`); 28–35 s; the cast act a skit only when in the
-    story; one narrator (`SHORTS_NARRATOR`), the voice at 1.4; shot/build beats.
+    story; one narrator (`SHORTS_NARRATOR`), the voice at 1.4; directed 2D beats (next bullet).
   - The variant system stays off (`config/arms.json` → `frozen`). Style checks are notes
     (`renderer/advice.py`). Captions end 340 px above a Short's bottom edge; one upload category; no
     country tag on global videos.
@@ -56,6 +56,24 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
     3–4 minutes (180–240 s), the full story of a recent Short that held viewers best; research,
     auditor and improver nightly, the dashboard agent Sundays, scout and studio on, monthly off.
   Where a bullet below says otherwise, this one wins.
+- **Directed 2D shots (owner, 2026-11-13, after the Netflix remake: "I absolutely loved this… now new
+  videos are made like this… also fix in long video same thing").** Every beat of every new Short and
+  long video (the long video's `end` card aside) is `"scene": "directed"`: a **place built for that
+  line** (a living room at night, a film set, a vault, a city from above, a dock; at least four in a
+  Short, not the last videos' places), **someone doing something** in it, **the figure on a thing in
+  that place** (a slate, a counter, a billboard, a price tag, a hull; never a headline card), a
+  **camera that moves** (push-ins, pull-back reveals, dives, at least three shot sizes) and **every
+  change on a spoken word**, ending on a loop back into the first frame. A **director** step
+  (`generator/prompts/director.md`, after the writer and the fact review) gives each beat its
+  `params` (component, place, camera, moments, things, fig) and codes it in
+  `remotion/src/videos/<id>/<Component>.tsx` on the **flat kit** (`remotion/src/flat/`: ink-outlined
+  flat shapes, painted shadows, glows, the cast as `Char` with drawn faces, real people as photo heads).
+  Figures come from `params.fig` placeholders; the code check fails a figure typed into a file
+  (`renderer/remotion.py`), the build fails a directed beat without its params, the craft gates read
+  its places, sizes and moments. Captions in a directed video are big white words with figures in
+  yellow, no box. The approved reference: `videos/v-directed-netflix/` with its code. The shot system,
+  the build scene and the board below are the older kits, kept only so old videos re-render; where a
+  bullet below describes the picture, this one wins.
 - **Voiceover only from the offline voice engine** (`renderer/engine/voice.py`, Kokoro, Apache-2.0;
   installed by `scripts/setup-voice.sh`, never committed). One Indian-English and five American
   voices; every Short has the same narrator since 2026-11-11 (long videos rotate); numbers are spoken as words.
@@ -174,7 +192,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 Claude Code routine (cloud: 04:07 IST makes all 3 of the day's videos in one session;
                      09:07 IST spare run makes up any shortfall, else idles;
                      11:30 IST trend run: one extra Short only for a strong trend)
-  └─ planner → writer → number check → fact review → render → QA review
+  └─ planner → writer → number check → fact review → director → render → QA review
   └─ commits videos/<id>/manifest.json + thumbnail.png
   └─ uploads videos/<id>/video.mp4 as a GitHub Release asset (tag: video-<id>)
         │
@@ -283,6 +301,7 @@ renderer/                Python 3.12: numbers, timing and sound for the videos
   templates/<name>/      README.md: the writer's contract (short_story, long_story)
   remotion.py, gates.py  render with Remotion in chunks, mux, contact sheet, liveliness gate
 remotion/                Remotion 4 + React: design rules, cast, scenes, camera, compositions
+  src/flat/              the flat 2D kit every new video is drawn with (directed beats, since 2026-11-13)
 generator/               routine-side logic: history, variety rules, validation, number checks
   prompts/               prompts for planner, writer, fact reviewer, QA reviewer, recipe builder
 videos/<id>/             manifest.json, script.json, thumbnail.png, preview.png (mp4 in Releases)
@@ -328,6 +347,8 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
    hard-codes a result or any claim contradicts the math. Max 2 rewrites, then mark failed.
 5. **Fact review (separate agent, fresh context)**: checks claims against the rules of the country
    the story is about (tax, regulators, central banks, product names), tone, disclaimer. It did not see steps 2–3 reasoning.
+5b. **Director (agent)**: `generator/prompts/director.md`: every beat becomes a directed 2D shot (its
+   place, camera, moments, things and figures in the script; its code on the flat kit), then `lint`.
 6. **Render (code)**: `python -m generator.run render <id>` → voice + timeline, Remotion render,
    mp4 + thumbnail + preview contact sheet, liveliness gate.
 7. **QA review (separate agent)**: looks at the contact sheet + audio levels. Rejects overlaps,

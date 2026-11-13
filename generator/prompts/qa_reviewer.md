@@ -19,10 +19,21 @@ own render checks it. You are checking what code cannot see.
 
 ## Reject if any of these is true
 
+D. **Not directed like the reference** (owner, 2026-11-13: every new video is directed 2D shots, like
+   `videos/v-directed-netflix/`). Open the stills next to the beats in `script.json` (`params.place`,
+   `moments`). Reject `[script]` naming the stills when:
+   - a still shows no place (a plain colour, a floating card, a lone icon, a skyline backdrop behind
+     props) or a place that has nothing to do with its line;
+   - a figure appears as a headline or a slide instead of on a thing in the place (a slate, a counter,
+     a billboard, a tag, a screen, a hull);
+   - nobody does anything for a whole beat (a character standing beside a thing is not acting);
+   - two beats in a row look like the same picture, or the video has fewer than four places (Shorts);
+   - something important sits under the captions, off the edge, or under the right-hand buttons.
+   The reference's level is the bar: as full, as alive, as clear.
 1. **Overlap:** text on top of other text, or text over a character's face or a chart so that
-   either is hard to read. The captions (a dark box low on the frame with the speaker's name, the
-   word being said in yellow) are meant to sit over the picture; flag them only when they cover a
-   face or another piece of text.
+   either is hard to read. The captions (big words low on the frame in a directed video; a dark box
+   with the speaker's name in an old one) are meant to sit over the picture; flag them only when they
+   cover a face, the figure or another piece of text.
 0. **Doesn't read on mute** (owner, 2026-11-02; board videos): cover the captions with your hand and
    read the stills in order. If the headers, labels, rows, chips and pictures alone don't tell the
    story (what happens, to whom, with what figure), reject it and name the stills where the meaning

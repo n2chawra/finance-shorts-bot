@@ -25,6 +25,12 @@ The Shorts improve themselves one tested change at a time, with no owner review 
   top of its kind. Nobody changes a Shorts default outside the loop: not the hook, length, pace, voice,
   captions, title rules, formats, shapes or checks. Fixes (a wrong picture, a bug, a failing check) are
   not recipe changes and are made as always.
+- **The picture is directed 2D** (owner, 2026-11-13, after the Netflix remake: "I absolutely loved
+  this… now new videos are made like this", Shorts and long videos). Every beat is a directed shot on
+  the flat kit (`generator/prompts/director.md`, `remotion/src/flat/`, reference
+  `videos/v-directed-netflix/`). This is the owner's decision, part of the champion; look challengers
+  test changes inside it (a kit piece, a camera habit, a light), never a return to the old shot, build
+  or board beats.
 - **Escalation.** Three cycles in a row under 45% stayed to watch: the next challenger is a `format`
   one. Six: the improver raises one owner notification (change niche or stop) and keeps testing.
 - **Lessons from our own videos** (owner, 2026-11-12): the reviewer agent (`agents/reviewer.md`) watches

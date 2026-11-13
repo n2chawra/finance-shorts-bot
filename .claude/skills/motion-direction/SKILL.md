@@ -1,9 +1,16 @@
 ---
 name: motion-direction
-description: Art direction for Paisa Panchayat videos: how a shot is framed, lit, filled and moved so a video feels made, not templated. Read before writing a script's shots, a custom hook, a new scene, set or effect in remotion/src, or reviewing stills.
+description: Art direction for Paisa Panchayat videos: how a directed 2D shot is framed, lit, filled and moved so a video feels made, not templated. Read before directing a script's beats (generator/prompts/director.md), coding a beat on the flat kit, adding to remotion/src/flat, or reviewing stills.
 ---
 
 # Motion direction
+
+> **Since 2026-11-13 every new video is directed 2D** (owner, after the Netflix remake: "I absolutely
+> loved this… now new videos are made like this"). Use `generator/prompts/director.md` (the method:
+> a place for every line, someone doing something, the figure on a thing, a moving camera, changes on
+> words) with the flat kit `remotion/src/flat/` and the reference `videos/v-directed-netflix/`. The
+> rules below still hold as art direction for those shots (fill the frame, light, depth, shot sizes);
+> where they name the old `shot`/`build` scenes, read them as advice for a directed beat.
 
 The owner, 2026-10-21: "numbers in a box, two lines of text, most of the screen empty, every video
 works like a template. How can I expect others to watch the full video if I don't like it myself?"

@@ -1,4 +1,9 @@
-# The shot system (every new video, since 2026-10-21)
+# The shot system (2026-10-21 to 2026-11-13; old videos only)
+
+> **New videos are directed 2D shots** (owner, 2026-11-13): `generator/prompts/director.md`, the flat
+> kit in `remotion/src/flat/`, the reference `videos/v-directed-netflix/`. This page describes the kit
+> they replaced; it stays for re-renders of old videos.
+
 
 The owner: "numbers in a box, two lines of text, most of the screen empty, every video works like
 a template." The fixed layouts (`stage`, `bignumber`, `kinetic`, `split`…) are retired for new

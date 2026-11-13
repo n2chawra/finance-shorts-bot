@@ -18,6 +18,7 @@ Shots (the timeline):
 """
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import re
@@ -37,7 +38,7 @@ CLOSE_EVERY = 15.0
 SET_RUN = 2
 SET_SHARE = {"short": 0.45, "long": 0.25}
 SIZES_NEEDED = {"short": 3, "long": 4}
-SHOT_SCENES = ("shot", "hook", "build", "custom", "framework", "type", "journey", "stats", "case", "board")
+SHOT_SCENES = ("shot", "hook", "build", "custom", "framework", "type", "journey", "stats", "case", "board", "directed")
 # the board (studio/board.tsx, 2026-11-02) holds a still camera on one stage by design: it counts as a
 # composed picture and as a close look (its header and panels fill the frame), never against shot sizes
 DOCU = ("framework", "type", "journey", "stats", "case")   # full-frame documentary devices
@@ -122,8 +123,9 @@ def shot_problems(tl: dict) -> list[str]:
     gap = max(b - a for a, b in zip(closes, closes[1:]))
     if gap > CLOSE_EVERY:
         out.append(note(f"{gap:.0f} s without a close or extreme shot (at most {CLOSE_EVERY:.0f} s): emotion lives in close-ups"))
-    # a build world stays and fills up phrase by phrase (The Curious Plot's way): only shots rotate sets
-    sets = [b["params"].get("set", "flat") for b in shots if b["scene"] == "shot"]
+    # a build world stays and fills up phrase by phrase (The Curious Plot's way): only shots rotate sets;
+    # a directed beat's set is the place its line happens in (one per place when it cuts between them)
+    sets = [x for b in shots for x in (places(b) if b["scene"] == "directed" else [b["params"].get("set", "flat")] if b["scene"] == "shot" else [])]
     run = 1
     for a, b in zip(sets, sets[1:]):
         run = run + 1 if a == b else 1
@@ -135,6 +137,25 @@ def shot_problems(tl: dict) -> list[str]:
         if sets.count(top) / len(sets) > SET_SHARE[fmt]:
             out.append(note(f"set {top!r} in {sets.count(top)} of {len(sets)} shots (at most {SET_SHARE[fmt]:.0%})"))
     return out
+
+
+REFERENCES = ("v-directed-netflix",)   # approved directed videos kept as teaching examples (videos/<id>/script.json)
+
+
+def reference_scripts(skip: str = "") -> list[tuple[str, dict]]:
+    """The reference videos' scripts, so a new video can't copy their places."""
+    out = []
+    for vid in REFERENCES:
+        f = Path(__file__).resolve().parent.parent / "videos" / vid / "script.json"
+        if vid != skip and f.is_file():
+            out.append((vid, json.loads(f.read_text(encoding="utf-8"))))
+    return out
+
+
+def places(b: dict) -> list[str]:
+    """Where a directed beat happens (params.place: one place, or a list when it cuts between places)."""
+    p = (b.get("params") or {}).get("place")
+    return [x.strip().lower() for x in ([p] if isinstance(p, str) else p if isinstance(p, list) else []) if isinstance(x, str) and x.strip()]
 
 
 def cover_problems(cover: Path, earlier: list[tuple[str, Path]]) -> list[str]:
@@ -159,10 +180,12 @@ LITERAL_WINDOW = 1.2      # seconds either side of the action
 OWN_PROPS_MIN = 8         # distinct props of its own a video's build beats use
 PROP_OVERLAP_MAX = 0.3    # share of its props any of the last PROP_WINDOW videos also used
 PROP_WINDOW = 10
+PLACE_WINDOW = 5          # a directed video's places, against this many recent videos
+PLACE_OVERLAP_MAX = 0.5
 SHARED_PROPS = {"note", "coin", "cash", "box"}
 FREE_VERBS = {"focus", "glow", "shake", "header", "equation", "term", "bars", "ring", "grid", "calendar", "buttons",
               "click", "person", "bubble", "step", "stamp", "cross", "tick", "strike"}   # emphasis and the board's own words
-COMPOSED = ("shot", "hook", "build", "custom")
+COMPOSED = ("shot", "hook", "build", "custom", "directed")
 
 
 def _all_ats(node, ev: dict, fps: int, out: list[float]) -> None:
@@ -185,7 +208,7 @@ def _visual_times(b: dict, fps: int, figures: set[str] | None = None) -> list[fl
     p, ev = b.get("params") or {}, b.get("events") or {}
     t = lambda k: (ev[k["at"]] / fps) if isinstance(k.get("at"), str) and k["at"] in ev else (k["sec"] if isinstance(k.get("sec"), (int, float)) else None)  # noqa: E731
     out = [0.0]
-    for k in [*(p.get("camera") or []), *(p.get("actions") or []), *(p.get("objects") or [])]:
+    for k in [*(p.get("camera") or []), *(p.get("actions") or []), *(p.get("objects") or []), *(p.get("moments") or [])]:
         if isinstance(k, dict) and (x := t(k)) is not None:
             out.append(x)
     for a in p.get("actors") or []:
@@ -207,8 +230,9 @@ def picture_problems(tl: dict) -> list[str]:
     fps, out = tl["fps"], []
     worst = (0.0, "")
     for b in tl["beats"]:
-        if b["scene"] not in ("shot", "build", "board", *DOCU):
+        if b["scene"] not in ("shot", "build", "board", "directed", *DOCU):
             continue          # custom beats are animated by hand; old fixed scenes keep their own rules
+            # (a directed beat is too, but it declares its moments, so the gap is measured on them)
         times = [*_visual_times(b, fps, set((tl.get("figures") or {}).values())), b["frames"] / fps]
         gap = max((y - x for x, y in zip(times, times[1:])), default=0.0)
         if gap > worst[0]:
@@ -260,6 +284,9 @@ def build_props(tl: dict) -> set[str]:
             out |= {i["prop"] for i in p.get("items") or [] if isinstance(i, dict) and i.get("prop")}
             out |= {x for x in (p.get("traveller"), p.get("prop")) if isinstance(x, str)}
             continue
+        if b.get("scene") == "directed":   # the things a directed shot draws (params.things)
+            out |= {str(x).strip().lower() for x in p.get("things") or [] if isinstance(x, str) and x.strip()}
+            continue
         if b.get("scene") not in ("build", "board"):
             continue
         out |= {i["prop"] for i in p.get("items") or [] if isinstance(i, dict) and i.get("prop")}
@@ -274,9 +301,20 @@ def build_props(tl: dict) -> set[str]:
 def prop_problems(tl: dict, earlier: list[tuple[str, dict]]) -> list[str]:
     """A video's own things: enough of them, and not the last videos' things again (`earlier`: (id, timeline))."""
     mine = build_props(tl)
-    if not any(b["scene"] in ("build", "board", *DOCU) for b in tl["beats"]):
+    if not any(b["scene"] in ("build", "board", "directed", *DOCU) for b in tl["beats"]):
         return []
     out = []
+    # a directed video's places: not the same rooms as a recent video (the old kit stood every video in
+    # front of one skyline)
+    # Every video must be unique (CLAUDE.md): this one fails, it is not a note. The approved reference
+    # (v-directed-netflix) teaches how to direct; its places are never copied either.
+    here = {x for b in tl["beats"] if b["scene"] == "directed" for x in places(b)}
+    for vid, other in [*earlier[-PLACE_WINDOW:], *reference_scripts(skip=str(tl.get("id") or ""))]:
+        theirs = {x for b in other.get("beats") or [] if b.get("scene") == "directed" for x in places(b)}
+        if len(here) >= 3 and theirs and len(here & theirs) / len(here) > PLACE_OVERLAP_MAX:
+            out.append(f"{len(here & theirs)} of its {len(here)} places were in {vid} too ({', '.join(sorted(here & theirs))}): "
+                       f"every video gets its own places; put each line where it happens in this story")
+            break
     if len(mine) < OWN_PROPS_MIN:
         out.append(note(f"only {len(mine)} props of its own ({', '.join(sorted(mine)) or 'none'}); at least {OWN_PROPS_MIN}: "
                    f"draw the things this story is about in videos/<id>/props.tsx"))

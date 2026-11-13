@@ -6,7 +6,18 @@ that README for the script fields, `maths` kinds, beats, events, acting and the 
 Example: [`examples/short_story.json`](../../../examples/short_story.json). There is no
 `schema.json`: `python -m generator.run number-check <id>` validates the whole script.
 
-## The shot system (required since 2026-10-21)
+## Directed shots (every new Short, since 2026-11-13)
+
+**Read `generator/prompts/director.md` and `remotion/src/flat/README.md` first.** The owner, after the
+Netflix remake: "I absolutely loved this… now new videos are made like this." Every beat is
+`"scene": "directed"`: a place built for the line, someone doing something, the figure on a thing in
+that place, a camera that moves, every change on a spoken word, coded per beat in
+`remotion/src/videos/<id>/` on the flat kit. Reference: `videos/v-directed-netflix/script.json` with
+its code in `remotion/src/videos/v-directed-netflix/`. The sections below on shots, the board and the
+old scenes describe the kits it replaced (kept so old videos can be re-rendered); the story spine,
+recipes, cover and evidence sections still apply.
+
+## The shot system (2026-10-21 to 2026-11-13; old videos)
 
 **Read [`../SHOTS.md`](../SHOTS.md) and `.claude/skills/motion-direction/SKILL.md` first.** A new
 Short is built from composed `shot` beats (a lit set, the cast big, money as a thing, a camera

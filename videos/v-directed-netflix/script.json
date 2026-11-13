@@ -1,0 +1,667 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 73164,
+ "story": "how_they_make_money",
+ "shape": "the-receipt",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "synthwave",
+  "key": "G",
+  "bpm": 104,
+  "look": {
+   "stage": "kitchen",
+   "header": "chalk",
+   "holder": "receipt",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Would you cancel or keep it? Comment",
+ "facts": [
+  {
+   "label": "Netflix revenue in 2025",
+   "value": 45.2,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix paid memberships crossed in Q4 2025 (more than)",
+   "value": 325,
+   "unit": "count_million",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix additions to content assets (cash on new shows and films) in 2025",
+   "value": 17.1,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix net income in 2025",
+   "value": 11.0,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix ad revenue in 2025 (over)",
+   "value": 1.5,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  },
+  {
+   "label": "Netflix operating margin in 2025",
+   "value": 29.5,
+   "unit": "percent",
+   "as_of": "2025-12-31",
+   "source": "Netflix",
+   "url": "https://s22.q4cdn.com/959853165/files/doc%5Ffinancials/2025/q4/FINAL-Q4-25-Shareholder-Letter.pdf"
+  }
+ ],
+ "maths": [
+  {
+   "name": "rev",
+   "kind": "share",
+   "total": 45200000000,
+   "parts": 325000000,
+   "facts": {
+    "total": 1,
+    "parts": 2
+   }
+  },
+  {
+   "name": "con",
+   "kind": "share",
+   "total": 17100000000,
+   "parts": 325000000,
+   "facts": {
+    "total": 3,
+    "parts": 2
+   }
+  },
+  {
+   "name": "pro",
+   "kind": "share",
+   "total": 11000000000,
+   "parts": 325000000,
+   "facts": {
+    "total": 4,
+    "parts": 2
+   }
+  },
+  {
+   "name": "ads",
+   "kind": "share",
+   "total": 1500000000,
+   "parts": 1,
+   "facts": {
+    "total": 5
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "Netflix *still* kept",
+  "figure": "{pro_total}",
+  "tag": "After new shows",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Netflix spent {con_total} on new shows and films in one year.",
+   "events": {
+    "netflix": {
+     "word": "Netflix"
+    },
+    "spent": {
+     "word": "spent"
+    },
+    "on": {
+     "word": "on"
+    },
+    "shows": {
+     "word": "shows"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "spent"
+    },
+    {
+     "kind": "whoosh",
+     "at": "on"
+    },
+    {
+     "kind": "boom",
+     "at": "year"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": [
+     "Rohan's living room at night",
+     "the film set"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "on",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "spent",
+      "what": "popcorn bursts out of the bowl and hangs in the air"
+     },
+     {
+      "at": "on",
+      "what": "flash through the TV onto the film set, the slate rises"
+     },
+     {
+      "at": "shows",
+      "what": "the studio lights flick on"
+     },
+     {
+      "at": "year",
+      "what": "the clapper snaps shut, the slate shakes"
+     }
+    ],
+    "things": [
+     "popcorn bowl",
+     "tv glow",
+     "clapboard",
+     "studio light",
+     "film camera"
+    ],
+    "fig": {
+     "spent": "{con_total}"
+    }
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "And it still kept {pro_total}.",
+   "events": {
+    "still": {
+     "word": "still"
+    },
+    "kept": {
+     "word": "kept"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "still"
+    },
+    {
+     "kind": "kaching",
+     "at": "kept"
+    }
+   ],
+   "params": {
+    "component": "Vault",
+    "place": "the vault",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "kept",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "still",
+      "what": "cash bundles drop onto the shelves"
+     },
+     {
+      "at": "kept",
+      "what": "the counter over the door counts up to the figure, the boss adjusts his tie"
+     }
+    ],
+    "things": [
+     "vault door",
+     "cash bundles",
+     "gold bars",
+     "led counter",
+     "executive"
+    ],
+    "fig": {
+     "kept": "{pro_total}"
+    }
+   }
+  },
+  {
+   "id": "members",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "So who pays? More than {rev_parts} paid memberships. Rohan's is one of them.",
+   "events": {
+    "pays": {
+     "word": "pays"
+    },
+    "more": {
+     "word": "More"
+    },
+    "memberships": {
+     "word": "memberships"
+    },
+    "rohan": {
+     "word": "Rohan's"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "pays"
+    },
+    {
+     "kind": "pop",
+     "at": "more"
+    },
+    {
+     "kind": "ding",
+     "at": "rohan"
+    }
+   ],
+   "params": {
+    "component": "City",
+    "place": "the city at night, from above",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "rohan",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pays",
+      "what": "windows start switching on across the city"
+     },
+     {
+      "at": "more",
+      "what": "the billboard pops up and counts"
+     },
+     {
+      "at": "memberships",
+      "what": "the billboard lands on the figure, the last windows light"
+     },
+     {
+      "at": "rohan",
+      "what": "the camera dives into one window, tagged Rohan"
+     }
+    ],
+    "things": [
+     "city blocks",
+     "billboard",
+     "rohan's window"
+    ],
+    "fig": {
+     "members": "{rev_parts}"
+    }
+   }
+  },
+  {
+   "id": "peryear",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Split the money that way, and each member pays about {rev_per_part} a year.",
+   "events": {
+    "split": {
+     "word": "Split"
+    },
+    "member": {
+     "word": "member"
+    },
+    "pays": {
+     "word": "pays"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "split"
+    },
+    {
+     "kind": "pop",
+     "at": "member"
+    },
+    {
+     "kind": "kaching",
+     "at": "year"
+    }
+   ],
+   "params": {
+    "component": "Charges",
+    "place": "Rohan's living room",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "year",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "split",
+      "what": "his phone buzzes"
+     },
+     {
+      "at": "member",
+      "what": "monthly charges fly out of the phone and stack"
+     },
+     {
+      "at": "pays",
+      "what": "the tower climbs past his head"
+     },
+     {
+      "at": "year",
+      "what": "the yearly figure stamps on top, he gasps"
+     }
+    ],
+    "things": [
+     "phone",
+     "monthly charge cards",
+     "couch",
+     "price tag"
+    ],
+    "fig": {
+     "year": "{rev_per_part}"
+    }
+   }
+  },
+  {
+   "id": "shows",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "About {con_per_part} of that goes on new shows and films.",
+   "events": {
+    "about": {
+     "word": "About"
+    },
+    "goes": {
+     "word": "goes"
+    },
+    "shows": {
+     "word": "shows"
+    },
+    "films": {
+     "word": "films"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "about"
+    },
+    {
+     "kind": "pop",
+     "at": "goes"
+    },
+    {
+     "kind": "ding",
+     "at": "shows"
+    }
+   ],
+   "params": {
+    "component": "Coins",
+    "place": "the city at night, the studio lot",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "about",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "about",
+      "what": "the camera pulls back from his window, coins start streaming out"
+     },
+     {
+      "at": "goes",
+      "what": "coins travel along the glowing line"
+     },
+     {
+      "at": "shows",
+      "what": "the studio door glows"
+     },
+     {
+      "at": "films",
+      "what": "the director cheers"
+     }
+    ],
+    "things": [
+     "coins",
+     "glowing cable",
+     "studio lot",
+     "director"
+    ],
+    "fig": {
+     "shows": "{con_per_part}"
+    }
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "And the ads? Just over {ads_total}, out of the {rev_total} it brought in.",
+   "events": {
+    "ads": {
+     "word": "ads"
+    },
+    "just": {
+     "word": "Just"
+    },
+    "out": {
+     "word": "out"
+    },
+    "brought": {
+     "word": "brought"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "ads"
+    },
+    {
+     "kind": "fail",
+     "at": "just"
+    },
+    {
+     "kind": "whoosh",
+     "at": "out"
+    },
+    {
+     "kind": "boom",
+     "at": "brought"
+    }
+   ],
+   "params": {
+    "component": "Ship",
+    "place": "the harbour",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "out",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ads",
+      "what": "a tiny van marked ADS drives in"
+     },
+     {
+      "at": "just",
+      "what": "its price tag pops"
+     },
+     {
+      "at": "out",
+      "what": "the camera pulls back to reveal the cargo ship, the total stamps on the hull"
+     },
+     {
+      "at": "brought",
+      "what": "Rohan points, jaw dropped"
+     }
+    ],
+    "things": [
+     "ad van",
+     "cargo ship",
+     "containers",
+     "dock"
+    ],
+    "fig": {
+     "ads": "{ads_total}",
+     "total": "{rev_total}"
+    }
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "After every bill, Netflix keeps about {pro_per_part} of each member's year. Would you cancel?",
+   "events": {
+    "bill": {
+     "word": "bill"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "would": {
+     "word": "Would"
+    },
+    "cancel": {
+     "word": "cancel"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "bill"
+    },
+    {
+     "kind": "kaching",
+     "at": "keeps"
+    },
+    {
+     "kind": "boom",
+     "at": "cancel"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "Rohan's living room, over his shoulder",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "keeps",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bill",
+      "what": "coins drop into the piggy bank on the TV"
+     },
+     {
+      "at": "keeps",
+      "what": "the figure stamps beside it"
+     },
+     {
+      "at": "would",
+      "what": "the TV asks: Are you still paying?"
+     },
+     {
+      "at": "cancel",
+      "what": "the highlight moves to Cancel, then the push into the TV glow that opens the video"
+     }
+    ],
+    "things": [
+     "piggy bank",
+     "tv prompt",
+     "remote"
+    ],
+    "fig": {
+     "kept": "{pro_per_part}"
+    }
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}

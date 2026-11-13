@@ -63,12 +63,27 @@ fix any beat near a limit as well.
 - **Shape**: the plan's shape in `script.shape`; level chips and the word "level" only in `levels`.
 - **The thing, not the character**: in a narrator beat the camera frames the item being explained;
   every figure sits on its thing (it pulses while said).
-- **Directed**: one big hero thing per moment, every build beat transforms something, money travels
-  (`flow`), travelling transitions (whip or zoom-through four times at most); no row of small labelled icons.
+- **Directed** (owner, 2026-11-13): every beat is `scene: "directed"` (`generator/prompts/director.md`):
+  its own place, someone doing something, the figure on a thing, a moving camera, changes on words.
 - **Story**: one person in one concrete moment, no more than 2 hedges (might, can, some), no warm-up
   opener, a new open question every 2–3 beats, the hook's answer only in the payoff.
 
-## Pictures (render gates and QA)
+## Directed shots (every new video; owner, 2026-11-13; reference `videos/v-directed-netflix/`)
+- **Every beat's params**: `component`, `place`, `camera` (sizes on words), `moments` (each on an event),
+  `things`, `fig` (placeholders). The build rejects a directed beat without them.
+- **Four places or more in a Short**, none the same as a recent video's (a note from the craft gate);
+  a place returns only when the story goes back there.
+- **Something new at least every 2.5 s**, each change on the word that names it (`moments`).
+- **The figure lives on a thing** in the place (slate, counter, billboard, tag, screen, hull), at least
+  44 px after the camera's zoom in a Short (30 in a long video); fine print is `<Txt deco>`.
+- **No figure typed into code**: read `p.beat.params.fig.<name>` (the code check fails "$11B" in a file).
+- **People act**: a pose, a gesture, a face that changes with the line; real people as `photo` heads,
+  never speaking.
+- **Keep clear** of a Short's bottom 560 px (captions and YouTube's buttons), its right-hand 150 px and the
+  top-left logo for anything the viewer must see.
+- **The first frame** shows the subject with something moving; **the last** leads back into the first.
+
+## Pictures (the old shot, build and board beats: re-renders of old videos only)
 - **Something new at least every 2.5 s:** an action on every phrase, each on the word that names it
   (70% of a beat's actions must show what is said then).
 - **The thing named is the thing drawn.** "a whole car" shows a car prop, not a rocket.
@@ -124,7 +139,9 @@ fix any beat near a limit as well.
 - **Real people and companies** (owner, 2026-11-03): a person gets one short clause the first time
   they are named; a company is its name on a `person` panel or a label, never a pun object.
 
-## Your own code (Hook.tsx, Turn.tsx, Payoff.tsx, props.tsx)
+## Your own code (one file per directed beat; old videos: Hook.tsx, Turn.tsx, Payoff.tsx, props.tsx)
+- Directed beats import the flat kit (`../../flat/kit`, `../../flat/cast`); `motion(p)` for timing,
+  `Stage` and `View` for the frame and camera, `rng(seed)` for scatter (never `Math.random`).
 - Size every word with `fitLine` / `fitWords` and `minText(w, h)` from `../../design/fit`, and keep
   it inside `safeBox(w, h)`. That avoids every "runs outside the frame" and "below the minimum" failure.
 - Type-safe: a lookup that may be undefined gets `!` or `?? fallback` (`tsc` fails the file).

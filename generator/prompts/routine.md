@@ -85,20 +85,21 @@ the mistakes the last runs made, each with its fix (2026-10-29: videos took up t
 steps to ship). Then follow `generator/prompts/writer.md`. It ends with the number check, which is
 code and must print `ok`.
 
-Then write the video's **own code** in `remotion/src/videos/<id>/`, as `remotion/src/videos/README.md`
-and `renderer/templates/SHOTS.md` ("The build scene") describe (owner, 2026-10-26: "animation
-should be dynamic to the script"):
-- `props.tsx`: the story's own things (8 or more), drawn with `../../studio/draw`;
-- `Hook.tsx`, `Turn.tsx` and `Payoff.tsx`: the hook, the turn and the payoff, coded for this story.
+## 3b. Direct (you; owner, 2026-11-13: "now new videos are made like this")
+
+Follow `generator/prompts/director.md`: every beat becomes a **directed 2D shot**. Give each its place,
+camera, moments, things and figures in the script, then code it in `remotion/src/videos/<id>/` as one
+file per beat on the flat kit (`remotion/src/flat/`). A new place for every line, someone doing
+something, the figure on a thing in that place, a camera that moves, every change on a spoken word.
 
 When the script and the code are written, run `python -m generator.run lint <id>` (about twenty
 seconds, no voice or frames) and fix until it prints `ok`. Run it again after every later fix, before
 the stills.
 
-Reference: `remotion/src/videos/v-remake-billionaires/` with `videos/v-remake-billionaires/script.json`
-(copy the structure, never the pictures). The render checks every file (imports, no randomness or
-clocks, `tsc`); a file that fails twice is deleted and its beat renders as its fallback. Ship commits
-the folder with the video.
+Reference: `remotion/src/videos/v-directed-netflix/` with `videos/v-directed-netflix/script.json`, the
+video the owner approved (copy how it works, never its places or pictures). The render checks every
+file (imports, no figure typed into code, every directed beat's file present, no randomness or
+clocks, `tsc`). Ship commits the folder with the video.
 
 ## 4. Fact review (a subagent with fresh context)
 

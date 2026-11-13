@@ -32,8 +32,10 @@ Skip one you already reviewed (your reports list them).
 You can't play the video, so watch it the way the owner did, frame by frame:
 - **The frames**: open `videos/<id>/preview.png` (the contact sheet, one still every few seconds) and
   `videos/<id>/thumbnail.png`. Look at them; don't just read about them.
-- **The words**: `videos/<id>/script.json` (every beat's line, scene, camera and things) and
-  `videos/<id>/timeline.json` (when each beat starts).
+- **The words**: `videos/<id>/script.json` (every beat's line, scene, camera and things; a directed
+  beat's `place`, `moments` and `fig`, and its code in `remotion/src/videos/<id>/`) and
+  `videos/<id>/timeline.json` (when each beat starts). A lesson about a directed video names the place
+  or moment that lost viewers and what the director should do instead (`generator/prompts/director.md`).
 - **Where viewers left**: `analytics.json` → the video's `drops` (`at` seconds, `drop` share, the
   `beat` and `line`), `hookHold`, `endHold`; `videos.json` → `stayed`, `heldAfterHook`, `avgViewPct`,
   likes, shares. Find the beat on screen at each drop.
