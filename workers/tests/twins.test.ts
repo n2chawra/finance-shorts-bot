@@ -4,7 +4,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { GeminiUnavailable, generate, parseJson } from "../lib/gemini.ts";
-import { type Candidate, type GapReport, type Sheet, TwinsConfig, brief, calibrate, cleanSheet, gapReport, measures, outlierScore, rankCandidates, searchFor, styleModel, truthOf } from "../lib/twins.ts";
+import { type Candidate, type GapReport, type Sheet, TwinsConfig, brief, isAnimated, calibrate, cleanSheet, gapReport, measures, outlierScore, rankCandidates, searchFor, styleModel, truthOf } from "../lib/twins.ts";
 
 const cfg = TwinsConfig.parse(JSON.parse(readFileSync(path.join(import.meta.dirname, "..", "..", "config", "twins.json"), "utf8")));
 
@@ -78,10 +78,17 @@ test("measures are computed from the sheet", () => {
   assert.equal(m.loops, true);
 });
 
-test("a topic's search phrase drops figures and keeps the words people type", () => {
-  assert.equal(searchFor({ title: "How IPL teams make money before a ball is bowled" }), "How IPL teams make money before a ball is bowled");
-  assert.equal(searchFor({ title: "Spotify paid out $11 billion last year. So why do artists say they get pennies?" }), "Spotify paid out last year");
+test("a topic's search phrase keeps the subject and drops figures and filler", () => {
+  assert.equal(searchFor({ title: "Of ₹94.77 for a litre of petrol in Delhi, the pump owner keeps ₹4.40" }), "litre petrol Delhi pump owner");
+  assert.equal(searchFor({ title: "How IPL teams make money before a ball is bowled" }), "IPL teams money ball bowled");
+  assert.ok(!searchFor({ title: "Spotify paid out $11 billion last year" }).includes("illion"));
   assert.equal(searchFor({ title: "anything", search: "how spotify pays artists" }), "how spotify pays artists");
+});
+
+test("only a clearly animated sheet counts: mixed or live footage does not", () => {
+  assert.equal(isAnimated({ artStyle: "flat vector animation" }), true);
+  assert.equal(isAnimated({ artStyle: "mixed" }), false);
+  assert.equal(isAnimated({ artStyle: "live action" }), false);
 });
 
 test("candidates that beat their own channel come first; long, small and our own are dropped", () => {

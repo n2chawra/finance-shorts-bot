@@ -42,7 +42,7 @@ export const SHOT_KINDS = ["character", "object", "chart", "text card", "photo",
 export const CAMERAS = ["static", "push in", "pull out", "pan", "zoom punch", "shake", "follow"] as const;
 export const TRANSITIONS = ["cut", "whip", "zoom", "morph", "wipe", "fade", "match cut", "none"] as const;
 export const JOBS = ["hook", "promise", "context", "stakes", "reveal", "turn", "payoff", "loop", "cta", "other"] as const;
-const ANIMATED = new Set<string>(["flat vector animation", "hand-drawn doodle", "3D animation", "kinetic text / motion graphics", "stick figures", "cut-out photos", "mixed"]);
+const ANIMATED = new Set<string>(["flat vector animation", "hand-drawn doodle", "3D animation", "kinetic text / motion graphics", "stick figures", "cut-out photos"]);
 
 const sec = z.coerce.number().min(0);
 export const Shot = z.object({
@@ -124,11 +124,14 @@ Return the shot sheet as JSON.
 - whyItWorks: up to 4 techniques a creator could learn from (pace, camera, how numbers appear, story order), not the topic.
 Be concrete and literal about what is on screen. Use null when unsure of a time.`;
 
-export const STILLS_PROMPT = (ids: string[]) => `Each group of images below is 4 frames from one YouTube Short, in this order: ${ids.join(", ")}.
-For each video say whether it is ANIMATED (cartoon, illustration, motion graphics, 3D, doodle, kinetic text; a few photos inside an animation still count) or NOT (a person talking to camera, live footage, a movie or game clip, screen recording, slideshow of photos).
-Return JSON: [{"id": "...", "animated": true|false, "style": "a few words"}], one entry per video.`;
-export const STILLS_SCHEMA = S("ARRAY", { items: obj({ id: str(), animated: S("BOOLEAN"), style: str() }) });
-export const StillsAnswer = z.array(z.object({ id: z.string(), animated: z.boolean(), style: z.string().catch("") }));
+export const STILLS_PROMPT = (topic: string, videos: { id: string; title: string }[]) => `Our topic: "${topic}".
+Each group of images below is 4 frames from one YouTube Short, in this order: ${videos.map((v) => `${v.id} (title: "${v.title.slice(0, 100)}")`).join("; ")}.
+For each video answer two things:
+- animated: is it ANIMATED (cartoon, illustration, motion graphics, 3D, doodle, kinetic text; a few photos inside an animation still count) or NOT (a person talking to camera, live footage, a TV show, movie or game clip, screen recording, a slideshow of photos)?
+- onTopic: is it about the same subject as our topic (the same company, person, industry or money question), judging by its title and frames? A different subject that only shares a word is false.
+Return JSON: [{"id": "...", "animated": true|false, "onTopic": true|false, "style": "a few words"}], one entry per video.`;
+export const STILLS_SCHEMA = S("ARRAY", { items: obj({ id: str(), animated: S("BOOLEAN"), onTopic: S("BOOLEAN"), style: str() }) });
+export const StillsAnswer = z.array(z.object({ id: z.string(), animated: z.boolean(), onTopic: z.boolean().catch(false), style: z.string().catch("") }));
 
 /** Repairs a parsed sheet: times inside the video, shots in order, ends after starts. */
 export function cleanSheet(raw: unknown): Sheet {
@@ -241,12 +244,18 @@ export function rankCandidates(cs: Candidate[], cfg: Pick<TwinsConfig["search"],
     .map((x) => x.c);
 }
 
-/** A search phrase for a topic: its own `search` when research wrote one, else the title's first clause without figures. */
+const FILLER = new Set(("a an the of for in on at to and or but so is are was were be been it its this that these those your you " +
+  "my our their his her from with by as how why what when who which do does did can just only even still than then into " +
+  "out up about over after before every each per one alone almost nothing makes make made keeps keep").split(" "));
+
+/** A search phrase for a topic: its own `search` when research wrote one, else the title's words without figures or filler. */
 export function searchFor(topic: { search?: string | null; title: string }): string {
   if (topic.search?.trim()) return topic.search.trim();
-  const clause = topic.title.split(/[.:;?!—–]|,\s/)[0] ?? topic.title;
-  return clause.replace(/[$₹£€]?\d[\d,.]*\s*(%|million|billion|trillion|crore|lakh|bn|k|m|b)?\b/gi, " ")
-    .replace(/[^\p{L}\p{N}' -]/gu, " ").replace(/\s+/g, " ").trim().split(" ").slice(0, 10).join(" ");
+  const words = topic.title
+    .replace(/[$₹£€]?\d[\d,.]*\s*(%|million|billion|trillion|crore|lakh|bn|k|m|b)?\b/gi, " ")
+    .replace(/[^\p{L}\p{N}' -]/gu, " ").split(/\s+/).filter(Boolean);
+  const kept = words.filter((w) => !FILLER.has(w.toLowerCase()) && w.length > 1);
+  return (kept.length >= 3 ? kept : words).slice(0, 8).join(" ");
 }
 
 // ---------------- calibration (our own Shorts, where the truth is known) ----------------

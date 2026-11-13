@@ -111,7 +111,7 @@ async function sheetOf(ctx: Ctx, youtubeId: string, ours: string | null = null):
   try {
     const r = await ask(ctx.cfg.fps).catch(async (e) => {
       // YouTube links may not take a custom frame rate: fall back to Gemini's default for the rest of the night
-      if (ctx.cfg.fps === 1 || (e instanceof GeminiUnavailable && e.quota)) throw e;
+      if (ctx.cfg.fps === 1 || !/: 400 /.test(String(e))) throw e;
       ctx.errors.push(`fps ${ctx.cfg.fps} refused, using 1: ${String(e).slice(0, 160)}`);
       ctx.cfg = { ...ctx.cfg, fps: 1 };
       return ask(1);
@@ -129,9 +129,10 @@ async function sheetOf(ctx: Ctx, youtubeId: string, ours: string | null = null):
 }
 
 /** Which candidates are animated, from 4 public stills each (one Gemini call for all of them). */
-async function animatedOf(ctx: Ctx, cands: Candidate[]): Promise<Map<string, string>> {
+async function animatedOf(ctx: Ctx, topic: string, cands: Candidate[]): Promise<Map<string, string>> {
   const parts: Part[] = [];
   const ids: string[] = [];
+  const titles: { id: string; title: string }[] = [];
   for (const c of cands) {
     const imgs: string[] = [];
     for (const name of ["hq1", "hq2", "hq3", "frame0"]) {
@@ -140,15 +141,18 @@ async function animatedOf(ctx: Ctx, cands: Candidate[]): Promise<Map<string, str
     }
     if (!imgs.length) continue;
     ids.push(c.youtubeId);
+    titles.push({ id: c.youtubeId, title: c.title });
     parts.push({ text: `Video ${c.youtubeId}:` }, ...imgs.map((data) => ({ inline_data: { mime_type: "image/jpeg", data } })));
   }
   const out = new Map<string, string>();
   if (!ids.length || ctx.outOfQuota) return out;
   try {
-    const r = await generate([{ text: STILLS_PROMPT(ids) }, ...parts], { key: ctx.key, models: ctx.cfg.models, json: true, schema: STILLS_SCHEMA, timeoutMs: 120_000, maxTimeouts: 2,
+    const r = await generate([{ text: STILLS_PROMPT(topic, titles) }, ...parts], { key: ctx.key, models: ctx.cfg.models, json: true, schema: STILLS_SCHEMA, timeoutMs: 120_000, maxTimeouts: 2,
       log: (l) => console.error(`${new Date().toISOString().slice(11, 19)} stills: ${l}`) });
     ctx.tokens += r.tokens ?? 0;
-    for (const a of StillsAnswer.parse(parseJson(r.text))) if (a.animated) out.set(a.id, a.style);
+    const answers = StillsAnswer.parse(parseJson(r.text));
+    console.error(`stills for "${topic}": ${answers.map((a) => `${a.id} ${a.animated ? "animated" : "not animated"}${a.onTopic ? "" : ", off topic"}`).join("; ")}`);
+    for (const a of answers) if (a.animated && a.onTopic) out.set(a.id, a.style);
   } catch (e) {
     if (e instanceof GeminiUnavailable && e.quota) ctx.outOfQuota = true;
     ctx.errors.push(`stills: ${String(e).slice(0, 300)}`);
@@ -157,7 +161,7 @@ async function animatedOf(ctx: Ctx, cands: Candidate[]): Promise<Map<string, str
 }
 
 /** The top animated Shorts on a search, each with its sheet. Sheets that turn out not animated are dropped. */
-async function twinsFor(ctx: Ctx, query: string, exclude: Set<string>): Promise<{ id: string; sheet: Sheet }[]> {
+async function twinsFor(ctx: Ctx, topic: string, query: string, exclude: Set<string>): Promise<{ id: string; sheet: Sheet }[]> {
   const ids = await ctx.yt.search(query, ctx.cfg.search, ctx.now);
   const details = await ctx.yt.details(ids);
   await ctx.yt.channelMedians([...new Set(details.map((d) => d.snippet.channelId).filter((x): x is string => !!x))], ctx.medians);
@@ -168,7 +172,7 @@ async function twinsFor(ctx: Ctx, query: string, exclude: Set<string>): Promise<
   });
   const mine = new Set([...exclude, ...(ctx.myChannel ? [ctx.myChannel] : [])]);
   const ranked = rankCandidates(cands, ctx.cfg.search, mine).slice(0, ctx.cfg.stillsFor);
-  const animated = await animatedOf(ctx, ranked);
+  const animated = await animatedOf(ctx, topic, ranked);
   const out: { id: string; sheet: Sheet }[] = [];
   for (const c of ranked) {
     if (out.length >= ctx.cfg.perTopic) break;
@@ -227,7 +231,7 @@ async function runBriefs(ctx: Ctx, exclude: Set<string>, only?: string) {
   for (const t of todo) {
     if (ctx.outOfQuota || ctx.decodesLeft <= 0) break;
     const q = searchFor(t);
-    const twins = await twinsFor(ctx, q, exclude).catch((e) => { ctx.errors.push(`brief ${t.id}: ${String(e).slice(0, 200)}`); return []; });
+    const twins = await twinsFor(ctx, t.title, q, exclude).catch((e) => { ctx.errors.push(`brief ${t.id}: ${String(e).slice(0, 200)}`); return []; });
     if (!twins.length) continue;
     writeJson(path.join(DIR, "briefs", `${t.id}.json`), brief(t.id, q, twins, ctx.now));
     written.push(t.id);
@@ -253,7 +257,7 @@ async function runGaps(ctx: Ctx, ours: { videoId: string; youtubeId: string; pub
       for (const id of known.twins) { const s = await sheetOf(ctx, id); if (s) twins.push({ id, sheet: s }); }
     } else {
       const q = searchFor({ search: topic?.search, title: topic?.title ?? entry?.topic?.title ?? "" });
-      twins = await twinsFor(ctx, q, exclude).catch((e) => { ctx.errors.push(`gaps ${o.videoId}: ${String(e).slice(0, 200)}`); return []; });
+      twins = await twinsFor(ctx, topic?.title ?? entry?.topic?.title ?? "", q, exclude).catch((e) => { ctx.errors.push(`gaps ${o.videoId}: ${String(e).slice(0, 200)}`); return []; });
     }
     if (!twins.length) continue;
     writeJson(path.join(DIR, "gaps", `${o.videoId}.json`), gapReport(o.videoId, o.youtubeId, mine, twins, dropsOf(o.videoId), ctx.now));
