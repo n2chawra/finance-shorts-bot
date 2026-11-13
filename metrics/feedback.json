@@ -1,7 +1,45 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
+  "open": 2,
   "notes": [
+    {
+      "id": "cmwehc09b0001jh09wy0mu73p",
+      "kind": "improve",
+      "area": "animation",
+      "text": "I like everything but I think there were very less animation . Like props are right but you know things should keep happening on screen to engage users. I don't mean shaking stuff on screen I'm talking about  animation happenings throughout the video to engage the users.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-13T04:31:25.008Z",
+      "video": {
+        "id": "v-20261113-05",
+        "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
+        "format": "short",
+        "status": "scheduled",
+        "story": "money_scale",
+        "shape": "the-zoom-in",
+        "hookStyle": "shock_number",
+        "hook": "One night of Taylor Swift's Eras Tour brought in about {show_per_part}."
+      }
+    },
+    {
+      "id": "cmweh7c980001i809af9kwod9",
+      "kind": "improve",
+      "area": "other",
+      "text": "We could add photos of all celeb we are talking about in video to make it more engaging.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-13T04:27:47.276Z",
+      "video": {
+        "id": "v-20261113-01",
+        "title": "MrBeast made $300M in one year. IShowSpeed made $30M",
+        "format": "short",
+        "status": "published",
+        "story": "money_scale",
+        "shape": "countdown",
+        "hookStyle": "shock_number",
+        "hook": "MrBeast made {mr_total} in one year, Forbes estimates."
+      }
+    },
     {
       "id": "cmwbukoke0001jy09t4pfhr38",
       "kind": "improve",
