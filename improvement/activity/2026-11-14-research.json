@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "day": "2026-11-14",
+  "startedAt": "2026-11-13T17:16:10Z",
+  "finishedAt": "2026-11-13T17:22:12Z",
+  "summary": "Saturday policy check: YouTube's 1 Oct Shorts originality ranking targets re-uploaders, not us. Added two sourced topics (US debt per American, Zuckerberg's $1 salary vs $25.1M), rejected the stale petrol topic, and proposed fixing the 'illustrative numbers' line in descriptions.",
+  "decision": "acted",
+  "why": "The feed had 5 of 6 open topics in one format (how_they_make_money) and one blocked by stale facts; the new topics add money_scale and billionaire_question with primary-source figures (Treasury, Census, SEC). Descriptions still call true, sourced stories 'illustrative numbers', which contradicts the 12 Nov rule.",
+  "findings": [
+    {
+      "title": "Shorts originality ranking (1 Oct 2026) targets re-upload channels",
+      "detail": "TeamYouTube: 'further prioritize original content and reduce the reach of content re-uploaded from other creators'. Our own stories are not the target; the spam policy's mass-production clause makes variety and sourced facts our defence.",
+      "link": "https://ppc.land/re-uploaded-shorts-lose-reach-as-youtube-favours-original-clips/"
+    },
+    {
+      "title": "Descriptions say 'illustrative numbers' on true stories",
+      "detail": "Every Short's description uses the same boilerplate line; since 12 Nov every Short is sourced facts. Adopt proposal: name the sources instead (the hard-rule disclaimer stays).",
+      "link": "improvement/research/proposals.json"
+    },
+    {
+      "title": "US debt $40.58T (Treasury, 10 Nov 2026) is ~$118,700 per American",
+      "detail": "New top feed topic (score 8.55); reference 1.98M views at 8.3x its channel.",
+      "link": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny"
+    },
+    {
+      "title": "Meta: Zuckerberg's salary $1, all other compensation $25.1M in 2025",
+      "detail": "From the 2026 proxy; new billionaire_question topic.",
+      "link": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm"
+    },
+    {
+      "title": "Petrol topic rejected: excise cut in Mar 2026",
+      "detail": "The 1 Oct 2025 Indian Oil sheet is no longer the latest; no newer official sheet found.",
+      "link": "https://www.sahi.com/blogs/the-government-just-slashed-fuel-taxes-by-10-so-why-is-your-petrol-still-the-same-price"
+    }
+  ],
+  "changes": [
+    {
+      "title": "2 topics added, 1 rejected",
+      "detail": "2026-11-14-us-owes-40-trillion-your-share, 2026-11-14-zuckerberg-paid-1-meta-spent-25-million; rejected 2026-11-13-petrol-pump-keeps-4-40-a-litre",
+      "branch": "agent/research/2026-11-14"
+    },
+    {
+      "title": "1 adopt proposal",
+      "detail": "descriptions-name-sources-not-illustrative",
+      "branch": "agent/research/2026-11-14"
+    }
+  ],
+  "nextCheck": "2026-11-15",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-14.md"
+    }
+  ]
+}

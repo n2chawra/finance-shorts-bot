@@ -1030,6 +1030,27 @@
       "route": "adopt",
       "priority": "high",
       "note": "2026-11-11 improver: spec check (calm face, >3 things, scale-word mismatch) and README rules; agents/studio.md is outside the improver's lane, the README is what Studio follows. Redoing L-20261111-01's thumbnail is Studio's."
+    },
+    {
+      "id": "descriptions-name-sources-not-illustrative",
+      "date": "2026-11-14",
+      "area": "pipeline",
+      "title": "Short descriptions name their sources instead of calling a true story 'illustrative numbers'",
+      "change": "In the ship step's description (generator/prompts/planner.md line ~188, agents/studio.md line ~65 for long videos, and wherever the manifest description is assembled): for a video whose script has `facts`, replace the line 'An animated story with illustrative numbers; the characters are not advisers.' with 'Sources: <each fact's source, deduplicated> (<month year>).' plus 'The characters are not advisers.' Keep the required last line 'Illustrative only. Not financial advice.' unchanged (hard rule). Videos without facts keep today's text.",
+      "evidence": [
+        "https://ppc.land/re-uploaded-shorts-lose-reach-as-youtube-favours-original-clips/",
+        "https://www.androidheadlines.com/2026/10/youtube-cuts-reach-reuploaded-shorts-originality-push.html",
+        "https://air.io/en/monetization/youtube-monetization-policy-changes-2026-a-complete-dated-timeline",
+        "videos/v-20261113-05/manifest.json (Eras Tour Short from sourced facts, description says 'illustrative numbers')"
+      ],
+      "expectedEffect": "Descriptions stop contradicting the 12 Nov 'every Short is true' rule, and every upload shows its educational value and sources: YouTube's 1 Oct 2026 Shorts originality ranking and the spam policy's 'automated or synthetic mass-production' test reward 'educational value' and 'distinct point of view', and inauthentic-content enforcement is judged channel-wide. Low risk to views either way.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "None to the picture; the fact reviewer already holds each fact's source, so no new data is needed.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
     }
   ]
 }
