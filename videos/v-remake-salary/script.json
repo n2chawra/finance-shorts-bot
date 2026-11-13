@@ -1,0 +1,1344 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 70211,
+  "story": "billionaire_question",
+  "shape": "question-chain",
+  "currency": "USD",
+  "feed_id": "2026-11-02-one-dollar-salary-true-tax",
+  "style": {
+    "palette": "mint",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92,
+    "look": {
+      "stage": "flat",
+      "header": "strip",
+      "holder": "blackboard",
+      "entrance": "pop"
+    }
+  },
+  "hook_style": "myth",
+  "cta": "Which would you own? Comment",
+  "facts": [
+    {
+      "label": "Mark Zuckerberg's base salary",
+      "value": 1,
+      "unit": "money",
+      "currency": "USD",
+      "as_of": "2023-12-31",
+      "source": "Fortune",
+      "url": "https://fortune.com/2024/04/24/mark-zuckerberg-24-million-compensation-meta-median-employee-379000"
+    },
+    {
+      "label": "How much the 25 richest Americans' wealth grew in five years",
+      "value": 401,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2018-12-31",
+      "source": "ProPublica",
+      "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+    },
+    {
+      "label": "Federal income tax they paid in those years",
+      "value": 13.6,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2018-12-31",
+      "source": "ProPublica",
+      "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+    },
+    {
+      "label": "Warren Buffett's true tax rate",
+      "value": 0.1,
+      "unit": "percent",
+      "currency": "USD",
+      "as_of": "2018-12-31",
+      "source": "ProPublica",
+      "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
+    }
+  ],
+  "maths": [
+    {
+      "name": "taxrate",
+      "kind": "rate",
+      "part": 13600000000.0,
+      "whole": 401000000000.0,
+      "facts": {
+        "part": 3,
+        "whole": 2
+      }
+    },
+    {
+      "name": "buff",
+      "kind": "rate",
+      "part": 0.1,
+      "whole": 100,
+      "facts": {
+        "part": 4
+      }
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "board",
+      "role": "hook",
+      "speaker": "rohan",
+      "say": "You think Mark Zuckerberg lives on his paycheck?",
+      "events": {
+        "think": {
+          "word": "think"
+        },
+        "zuckerberg": {
+          "word": "Zuckerberg"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        }
+      },
+      "params": {
+        "header": "Lives on his paycheck?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.14,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "point",
+                "expression": "smirk"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.86,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "check",
+            "prop": "paycheck",
+            "x": 0.5,
+            "size": 0.24,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "person",
+            "name": "Mark Zuckerberg",
+            "kicker": "Founder of Meta"
+          },
+          {
+            "at": "paycheck",
+            "do": "clear"
+          },
+          {
+            "at": "paycheck",
+            "do": "enter",
+            "target": "check",
+            "how": "drop"
+          }
+        ]
+      }
+    },
+    {
+      "id": "salary",
+      "scene": "board",
+      "role": "promise",
+      "speaker": "rohan",
+      "transition": "slide",
+      "say": "His salary is {fact1}. A year.",
+      "events": {
+        "his": {
+          "word": "His"
+        },
+        "salary": {
+          "word": "salary"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "params": {
+        "header": "His salary",
+        "sub": "Meta's founder",
+        "bg": "coral",
+        "items": [],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "doc",
+            "title": "Pay slip",
+            "rows": [
+              {
+                "label": "Pay to",
+                "value": "Mark Zuckerberg"
+              },
+              {
+                "label": "Amount",
+                "value": "{fact1}",
+                "at": "salary"
+              }
+            ],
+            "stamp": {
+              "text": "One dollar",
+              "at": "salary"
+            }
+          },
+          {
+            "at": "year",
+            "do": "calendar",
+            "steps": [
+              "January",
+              "April",
+              "August",
+              "December"
+            ],
+            "flipAt": "year",
+            "label": "Pay for the year"
+          },
+          {
+            "at": "year",
+            "do": "chip",
+            "text": "Per year"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rich",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "slide",
+      "say": "So how is he this rich?",
+      "events": {
+        "how": {
+          "word": "how"
+        },
+        "rich": {
+          "word": "rich"
+        }
+      },
+      "params": {
+        "header": "So how is he this rich?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.14,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.86,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "home",
+            "prop": "mansion",
+            "x": 0.4,
+            "size": 0.2
+          },
+          {
+            "id": "plane",
+            "prop": "jet",
+            "x": 0.66,
+            "y": 0.3,
+            "size": 0.14,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "how",
+            "do": "enter",
+            "target": "plane"
+          },
+          {
+            "at": "rich",
+            "do": "bubble",
+            "target": "rohan",
+            "text": "How?!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "never",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "Because his money was never a paycheck.",
+      "events": {
+        "money": {
+          "word": "money"
+        },
+        "never": {
+          "word": "never"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        }
+      },
+      "params": {
+        "header": "Not a paycheck",
+        "sub": "Where the money isn't",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "check",
+            "prop": "paycheck",
+            "x": 0.5,
+            "size": 0.3,
+            "label": "Salary: {fact1}"
+          }
+        ],
+        "actions": [
+          {
+            "at": "money",
+            "do": "glow",
+            "target": "check"
+          },
+          {
+            "at": "never",
+            "do": "cross",
+            "target": "check"
+          },
+          {
+            "at": "paycheck",
+            "do": "chip",
+            "text": "Not here",
+            "tone": "bad"
+          }
+        ]
+      }
+    },
+    {
+      "id": "owns",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "blinds",
+      "say": "He owns shares of Meta, and when the company grows, his shares grow with it.",
+      "events": {
+        "owns": {
+          "word": "owns"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "company": {
+          "word": "company"
+        },
+        "grows": {
+          "word": "grows"
+        },
+        "grow": {
+          "word": "grow"
+        }
+      },
+      "params": {
+        "header": "He owns the company",
+        "sub": "Shares of Meta",
+        "bg": "teal",
+        "items": [
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.5,
+            "size": 0.3,
+            "label": "His shares"
+          },
+          {
+            "id": "company",
+            "prop": "company",
+            "x": 0.7,
+            "size": 0.3,
+            "hidden": true,
+            "label": "Meta"
+          }
+        ],
+        "actions": [
+          {
+            "at": "owns",
+            "do": "glow",
+            "target": "shares"
+          },
+          {
+            "at": "company",
+            "do": "move",
+            "target": "shares",
+            "to": {
+              "x": 0.3
+            },
+            "dur": 0.6
+          },
+          {
+            "at": "company",
+            "do": "shrink",
+            "target": "shares",
+            "scale": 0.75
+          },
+          {
+            "at": "company",
+            "do": "enter",
+            "target": "company",
+            "how": "rise"
+          },
+          {
+            "at": "grows",
+            "do": "grow",
+            "target": "company",
+            "scale": 1.15
+          },
+          {
+            "at": "grows",
+            "do": "chip",
+            "text": "Meta grows",
+            "tone": "good"
+          },
+          {
+            "at": "grow",
+            "do": "flow",
+            "target": "company",
+            "to": "shares",
+            "n": 6
+          },
+          {
+            "at": "grow",
+            "do": "grow",
+            "target": "shares",
+            "scale": 0.95
+          },
+          {
+            "at": "grow",
+            "do": "chip",
+            "text": "His shares grow",
+            "tone": "good"
+          }
+        ]
+      }
+    },
+    {
+      "id": "house",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "slide",
+      "say": "But you can't buy a house with shares. Where does the cash come from?",
+      "events": {
+        "buy": {
+          "word": "buy"
+        },
+        "house": {
+          "word": "house"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "cash": {
+          "word": "cash"
+        },
+        "from": {
+          "word": "from"
+        }
+      },
+      "params": {
+        "header": "Shares aren't cash",
+        "bg": "sky",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.14,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "confused"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.86,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.3,
+            "size": 0.18
+          },
+          {
+            "id": "home",
+            "prop": "mansion",
+            "x": 0.7,
+            "size": 0.19,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "buy",
+            "do": "enter",
+            "target": "home",
+            "how": "rise"
+          },
+          {
+            "at": "house",
+            "do": "try",
+            "target": "shares",
+            "to": "home"
+          },
+          {
+            "at": "shares",
+            "do": "stamp",
+            "target": "shares",
+            "text": "Not cash"
+          },
+          {
+            "at": "cash",
+            "do": "header",
+            "text": "Where does the cash come from?"
+          },
+          {
+            "at": "from",
+            "do": "bubble",
+            "target": "rohan",
+            "text": "Cash from where?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sell",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "Selling shares would mean paying tax on the gain.",
+      "events": {
+        "selling": {
+          "word": "selling"
+        },
+        "paying": {
+          "word": "paying"
+        },
+        "tax": {
+          "word": "tax"
+        },
+        "gain": {
+          "word": "gain"
+        }
+      },
+      "params": {
+        "header": "Sell them?",
+        "sub": "Then the gain is taxed",
+        "bg": "sand",
+        "items": [
+          {
+            "id": "money",
+            "prop": "cash",
+            "x": 0.5,
+            "size": 0.24,
+            "hidden": true,
+            "label": "The gain"
+          }
+        ],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "buttons",
+            "items": [
+              {
+                "text": "Sell shares"
+              }
+            ]
+          },
+          {
+            "at": "selling",
+            "do": "click",
+            "index": 0
+          },
+          {
+            "at": "paying",
+            "do": "clear"
+          },
+          {
+            "at": "paying",
+            "do": "enter",
+            "target": "money",
+            "how": "drop"
+          },
+          {
+            "at": "tax",
+            "do": "header",
+            "text": "Then pay tax"
+          },
+          {
+            "at": "gain",
+            "do": "stamp",
+            "target": "money",
+            "text": "Taxed"
+          },
+          {
+            "at": "gain",
+            "do": "chip",
+            "text": "Tax on the gain",
+            "tone": "bad"
+          }
+        ]
+      }
+    },
+    {
+      "id": "borrow",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "blinds",
+      "say": "So the very rich often borrow against their shares instead.",
+      "events": {
+        "rich": {
+          "word": "rich"
+        },
+        "borrow": {
+          "word": "borrow"
+        },
+        "against": {
+          "word": "against"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "instead": {
+          "word": "instead"
+        }
+      },
+      "params": {
+        "header": "So they borrow",
+        "sub": "Against their shares",
+        "bg": "blue",
+        "items": [
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.28,
+            "size": 0.2,
+            "label": "Shares"
+          },
+          {
+            "id": "bank",
+            "prop": "bank",
+            "x": 0.7,
+            "size": 0.24,
+            "label": "Bank"
+          },
+          {
+            "id": "loan",
+            "prop": "cash",
+            "x": 0.5,
+            "y": -0.02,
+            "size": 0.14,
+            "hidden": true,
+            "label": "Loan"
+          }
+        ],
+        "actions": [
+          {
+            "at": "borrow",
+            "do": "arrow",
+            "target": "shares",
+            "to": "bank",
+            "text": "Pledged"
+          },
+          {
+            "at": "against",
+            "do": "state",
+            "target": "shares",
+            "state": "locked"
+          },
+          {
+            "at": "against",
+            "do": "term",
+            "name": "Collateral",
+            "line": "What the bank keeps if you don't pay",
+            "kicker": "Money word"
+          },
+          {
+            "at": "instead",
+            "do": "enter",
+            "target": "loan",
+            "from": "bank"
+          },
+          {
+            "at": "instead",
+            "do": "flow",
+            "target": "bank",
+            "to": "loan",
+            "n": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "income",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "And a loan isn't income.",
+      "events": {
+        "loan": {
+          "word": "loan"
+        },
+        "income": {
+          "word": "income"
+        }
+      },
+      "params": {
+        "header": "A loan isn't income",
+        "sub": "So it isn't taxed",
+        "bg": "purple",
+        "items": [],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "doc",
+            "title": "His tax return",
+            "tone": "blue",
+            "rows": [
+              {
+                "label": "Salary",
+                "value": "{fact1}"
+              },
+              {
+                "label": "Loan",
+                "value": "Not income",
+                "at": "loan"
+              },
+              {
+                "label": "Income tax",
+                "value": "Nothing",
+                "at": "income"
+              }
+            ]
+          },
+          {
+            "at": "loan",
+            "do": "chip",
+            "text": "Borrowed"
+          },
+          {
+            "at": "income",
+            "do": "chip",
+            "text": "No income tax",
+            "tone": "good"
+          }
+        ]
+      }
+    },
+    {
+      "id": "zero",
+      "scene": "board",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "slide",
+      "say": "Hold on. So they never pay any tax at all?",
+      "events": {
+        "hold": {
+          "word": "hold"
+        },
+        "never": {
+          "word": "never"
+        },
+        "tax": {
+          "word": "tax"
+        },
+        "all": {
+          "word": "all"
+        }
+      },
+      "params": {
+        "header": "No tax at all?",
+        "bg": "coral",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.14,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "shock"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.86,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "home",
+            "prop": "mansion",
+            "x": 0.45,
+            "size": 0.2,
+            "state": "lit"
+          },
+          {
+            "id": "plane",
+            "prop": "jet",
+            "x": 0.6,
+            "y": 0.32,
+            "size": 0.15
+          }
+        ],
+        "actions": [
+          {
+            "at": "never",
+            "do": "step",
+            "target": "rohan"
+          },
+          {
+            "at": "tax",
+            "do": "bubble",
+            "target": "rohan",
+            "text": "Zero tax?!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "richest",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "They pay a little. Take the twenty-five richest Americans.",
+      "events": {
+        "little": {
+          "word": "little"
+        },
+        "richest": {
+          "word": "richest"
+        },
+        "americans": {
+          "word": "americans"
+        }
+      },
+      "params": {
+        "header": "America's richest",
+        "sub": "Twenty-five of them",
+        "bg": "gold",
+        "items": [
+          {
+            "id": "boss",
+            "prop": "tycoon",
+            "x": 0.5,
+            "size": 0.3,
+            "label": "Billionaire"
+          }
+        ],
+        "actions": [
+          {
+            "at": "little",
+            "do": "shake",
+            "target": "boss"
+          },
+          {
+            "at": "richest",
+            "do": "grid",
+            "n": 25,
+            "cols": 5,
+            "prop": "tycoon",
+            "text": "The twenty-five richest"
+          },
+          {
+            "at": "americans",
+            "do": "chip",
+            "text": "All billionaires"
+          }
+        ]
+      }
+    },
+    {
+      "id": "grew",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "blinds",
+      "say": "In five years, their wealth grew {fact2}. Their federal income tax: {fact3}.",
+      "events": {
+        "five": {
+          "word": "five"
+        },
+        "wealth": {
+          "word": "wealth"
+        },
+        "grew": {
+          "word": "grew"
+        },
+        "federal": {
+          "word": "federal"
+        },
+        "tax": {
+          "word": "tax"
+        }
+      },
+      "params": {
+        "header": "Wealth vs tax",
+        "sub": "Five years",
+        "bg": "blue",
+        "items": [],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "bars",
+            "items": [
+              {
+                "label": "Wealth gained",
+                "text": "{fact2}",
+                "value": "@taxrate.whole",
+                "tone": "good",
+                "at": "grew"
+              },
+              {
+                "label": "Income tax",
+                "text": "{fact3}",
+                "value": "@taxrate.part",
+                "tone": "bad",
+                "at": "federal"
+              }
+            ]
+          },
+          {
+            "at": "five",
+            "do": "chip",
+            "text": "Five years"
+          },
+          {
+            "at": "tax",
+            "do": "chip",
+            "text": "A sliver",
+            "tone": "bad"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rate",
+      "scene": "board",
+      "role": "build",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "Divide the tax by the growth: their true tax rate was just {taxrate_pct}.",
+      "events": {
+        "divide": {
+          "word": "divide"
+        },
+        "tax": {
+          "word": "tax"
+        },
+        "growth": {
+          "word": "growth"
+        },
+        "true": {
+          "word": "true"
+        },
+        "just": {
+          "word": "just"
+        }
+      },
+      "params": {
+        "header": "Their true tax rate",
+        "bg": "teal",
+        "items": [],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "equation",
+            "terms": [
+              {
+                "text": "{fact3}",
+                "at": "tax"
+              },
+              {
+                "text": "÷",
+                "at": "growth"
+              },
+              {
+                "text": "{fact2}",
+                "at": "growth"
+              }
+            ],
+            "result": {
+              "text": "{taxrate_pct}",
+              "at": "just"
+            }
+          },
+          {
+            "at": "true",
+            "do": "ring",
+            "value": "@taxrate.pct",
+            "text": "{taxrate_pct}",
+            "callout": "Paid in tax",
+            "label": "of their new wealth"
+          },
+          {
+            "at": "just",
+            "do": "chip",
+            "text": "Under a nickel per dollar"
+          }
+        ]
+      }
+    },
+    {
+      "id": "us",
+      "scene": "board",
+      "role": "turn",
+      "speaker": "rohan",
+      "transition": "slide",
+      "say": "Just {taxrate_pct}? My tax comes out before my paycheck even reaches me!",
+      "events": {
+        "just": {
+          "word": "just"
+        },
+        "tax": {
+          "word": "tax"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "reaches": {
+          "word": "reaches"
+        }
+      },
+      "params": {
+        "header": "And people like us?",
+        "bg": "plum",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.14,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "shock"
+              },
+              {
+                "at": "reaches",
+                "pose": "celebrate",
+                "expression": "worried"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.86,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "slip",
+            "prop": "payslip",
+            "x": 0.5,
+            "size": 0.22
+          }
+        ],
+        "actions": [
+          {
+            "at": "just",
+            "do": "step",
+            "target": "rohan"
+          },
+          {
+            "at": "tax",
+            "do": "stamp",
+            "target": "slip",
+            "text": "Taxed first"
+          },
+          {
+            "at": "reaches",
+            "do": "bubble",
+            "target": "rohan",
+            "text": "Not fair!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "buffett",
+      "scene": "board",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "slide",
+      "say": "Warren Buffett's rate was {fact4}.",
+      "events": {
+        "warren": {
+          "word": "warren"
+        },
+        "rate": {
+          "word": "rate"
+        }
+      },
+      "params": {
+        "header": "And Warren Buffett?",
+        "bg": "night",
+        "items": [],
+        "actions": [
+          {
+            "sec": 0,
+            "do": "person",
+            "name": "Warren Buffett",
+            "kicker": "True tax rate",
+            "figure": "{fact4}"
+          },
+          {
+            "at": "rate",
+            "do": "ring",
+            "value": "@buff.pct",
+            "text": "{fact4}",
+            "callout": "His tax"
+          },
+          {
+            "at": "rate",
+            "do": "chip",
+            "text": "Under a penny per dollar",
+            "tone": "bad"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gap",
+      "scene": "board",
+      "role": "payoff",
+      "speaker": "sharma",
+      "transition": "blinds",
+      "say": "A paycheck is taxed the day it's paid, but shares that grow aren't taxed until they're sold.",
+      "events": {
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "paid": {
+          "word": "paid"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "grow": {
+          "word": "grow"
+        },
+        "sold": {
+          "word": "sold"
+        }
+      },
+      "params": {
+        "header": "The real gap",
+        "bg": "mint",
+        "items": [
+          {
+            "id": "check",
+            "prop": "paycheck",
+            "x": 0.3,
+            "size": 0.19,
+            "label": "Paycheck"
+          },
+          {
+            "id": "shares",
+            "prop": "shares",
+            "x": 0.7,
+            "size": 0.19,
+            "label": "Shares"
+          }
+        ],
+        "actions": [
+          {
+            "at": "paid",
+            "do": "stamp",
+            "target": "check",
+            "text": "Taxed today"
+          },
+          {
+            "at": "paid",
+            "do": "chip",
+            "text": "Taxed now",
+            "tone": "bad"
+          },
+          {
+            "at": "grow",
+            "do": "grow",
+            "target": "shares",
+            "scale": 1.2
+          },
+          {
+            "at": "sold",
+            "do": "tick",
+            "target": "shares"
+          },
+          {
+            "at": "sold",
+            "do": "chip",
+            "text": "Taxed only when sold",
+            "tone": "good"
+          },
+          {
+            "at": "sold",
+            "do": "term",
+            "name": "Unrealized gain",
+            "line": "Growth you haven't sold isn't taxed",
+            "kicker": "Money word"
+          }
+        ]
+      }
+    },
+    {
+      "id": "end",
+      "scene": "board",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "slide",
+      "say": "So the one-dollar salary was never the point. Would you rather own a paycheck, or the company?",
+      "events": {
+        "salary": {
+          "word": "salary"
+        },
+        "point": {
+          "word": "point"
+        },
+        "own": {
+          "word": "own"
+        },
+        "paycheck": {
+          "word": "paycheck"
+        },
+        "company": {
+          "word": "company"
+        }
+      },
+      "params": {
+        "header": "Which would you own?",
+        "bg": "night",
+        "cast": [
+          {
+            "who": "rohan",
+            "spot": 0.14,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "own",
+                "pose": "point",
+                "expression": "happy"
+              }
+            ]
+          },
+          {
+            "who": "sharma",
+            "spot": 0.86,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "slip",
+            "prop": "payslip",
+            "x": 0.5,
+            "size": 0.2,
+            "tag": "{fact1}"
+          }
+        ],
+        "actions": [
+          {
+            "at": "point",
+            "do": "cross",
+            "target": "slip"
+          },
+          {
+            "at": "own",
+            "do": "buttons",
+            "items": [
+              {
+                "text": "A paycheck",
+                "at": "paycheck"
+              },
+              {
+                "text": "The company",
+                "at": "company"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 1.8,
+    "words": "Paid *one dollar*?",
+    "figure": "{fact1}"
+  }
+}

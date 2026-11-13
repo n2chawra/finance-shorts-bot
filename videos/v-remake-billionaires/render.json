@@ -1,0 +1,153 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 71533,
+  "duration_sec": 47,
+  "tempo": 1.0,
+  "style": {
+    "palette": "night",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Billionaires never sell their stock. So where's their cash?",
+        "start": 0.27,
+        "seconds": 2.21,
+        "window": 2.8,
+        "fill": 0.789
+      },
+      {
+        "scene": "promise",
+        "text": "It's a trick in three levels. And the last one is the one banks love.",
+        "start": 3.07,
+        "seconds": 2.66,
+        "window": 3.17,
+        "fill": 0.839
+      },
+      {
+        "scene": "sellidea",
+        "text": "Easy. Sell $1,000,000 of shares and spend it.",
+        "start": 6.23,
+        "seconds": 1.97,
+        "window": 2.4,
+        "fill": 0.821
+      },
+      {
+        "scene": "selltax",
+        "text": "Sell, and the tax man takes $200,000 of that cash. Gone.",
+        "start": 8.63,
+        "seconds": 3.23,
+        "window": 3.8,
+        "fill": 0.85
+      },
+      {
+        "scene": "borrow",
+        "text": "So I never sell. I lock my shares at the bank as a promise, and borrow the cash instead.",
+        "start": 12.43,
+        "seconds": 3.63,
+        "window": 4.2,
+        "fill": 0.864
+      },
+      {
+        "scene": "taxq",
+        "text": "And the tax on that loan?",
+        "start": 16.63,
+        "seconds": 0.97,
+        "window": 1.47,
+        "fill": 0.66
+      },
+      {
+        "scene": "zero",
+        "text": "Zero tax. A loan isn't income. It just costs me $50,000 a year in interest.",
+        "start": 18.1,
+        "seconds": 4.33,
+        "window": 4.9,
+        "fill": 0.884
+      },
+      {
+        "scene": "yacht",
+        "text": "The cash buys me a yacht. The shares stay mine.",
+        "start": 23.0,
+        "seconds": 1.88,
+        "window": 2.43,
+        "fill": 0.774
+      },
+      {
+        "scene": "again",
+        "text": "Next year? I borrow again. The bank is happy to wait, because my shares keep growing.",
+        "start": 25.43,
+        "seconds": 3.54,
+        "window": 4.1,
+        "fill": 0.863
+      },
+      {
+        "scene": "neversell",
+        "text": "Level three: never sell. At an assumed 8% a year, my shares grow from $10,000,000 to $21.6M in 10 years.",
+        "start": 29.53,
+        "seconds": 6.3,
+        "window": 6.87,
+        "fill": 0.917
+      },
+      {
+        "scene": "turn",
+        "text": "But if the market crashes, the bank won't wait. It sells my shares for me, at the worst price.",
+        "start": 36.4,
+        "seconds": 3.76,
+        "window": 4.33,
+        "fill": 0.868
+      },
+      {
+        "scene": "payoff",
+        "text": "So the rich pick a small interest bill over a big tax bill. Cash borrowed, never sold.",
+        "start": 40.73,
+        "seconds": 3.64,
+        "window": 4.2,
+        "fill": 0.867
+      },
+      {
+        "scene": "loop",
+        "text": "So that's why billionaires never sell their stock.",
+        "start": 44.93,
+        "seconds": 1.59,
+        "window": 2.03,
+        "fill": 0.783
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "hook-voice-matches-frame": "on",
+    "title-names-the-moment": "off",
+    "loop-picture-matches-hook": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.1
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 9.635,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

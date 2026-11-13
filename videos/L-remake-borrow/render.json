@@ -1,0 +1,114 @@
+{
+  "template": "long_story",
+  "renderer": "remotion",
+  "seed": 4417,
+  "duration_sec": 38,
+  "tempo": 1.0,
+  "style": {
+    "palette": "night",
+    "genre": "cinematic",
+    "key": "A",
+    "bpm": 90
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Rohan and Priya sign a loan on the same day. Five years later, one is richer. One is broke.",
+        "start": 0.23,
+        "seconds": 4.06,
+        "window": 4.47,
+        "fill": 0.908
+      },
+      {
+        "scene": "promise",
+        "text": "A car loan, a credit card, a house, a degree, and the payment that never ends. One question sorts them all.",
+        "start": 4.7,
+        "seconds": 4.81,
+        "window": 5.13,
+        "fill": 0.938
+      },
+      {
+        "scene": "ch1",
+        "text": "Debt one. The car loan.",
+        "start": 9.83,
+        "seconds": 1.14,
+        "window": 1.5,
+        "fill": 0.76
+      },
+      {
+        "scene": "newcar",
+        "text": "My new car! And it's only $631 a month.",
+        "start": 11.33,
+        "seconds": 2.49,
+        "window": 2.83,
+        "fill": 0.88
+      },
+      {
+        "scene": "bill",
+        "text": "Here's the real bill. $631 a month, for 72 months. That's $45,424, and $10,424 of it is pure interest.",
+        "start": 14.17,
+        "seconds": 8.26,
+        "window": 8.8,
+        "fill": 0.939
+      },
+      {
+        "scene": "bought",
+        "text": "Rohan thought he bought a car. He bought a payment.",
+        "start": 22.97,
+        "seconds": 2.19,
+        "window": 2.53,
+        "fill": 0.866
+      },
+      {
+        "scene": "years",
+        "text": "Year one, it's shiny. Year three, it's just a car. Year five, it's worth $15,530, and the loan still isn't done.",
+        "start": 25.5,
+        "seconds": 6.4,
+        "window": 6.77,
+        "fill": 0.945
+      },
+      {
+        "scene": "tease1",
+        "text": "Priya's loan bought something that grows. That's next.",
+        "start": 32.27,
+        "seconds": 2.19,
+        "window": 2.67,
+        "fill": 0.82
+      },
+      {
+        "scene": "outro",
+        "text": "That's chapter one of six. Follow for the rest.",
+        "start": 34.93,
+        "seconds": 2.19,
+        "window": 2.53,
+        "fill": 0.866
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "quiet-bed": "on",
+    "chart-gap-fill": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.6
+  },
+  "craft_problems": []
+}

@@ -1,0 +1,963 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 61349,
+  "story": "how_they_make_money",
+  "shape": "before-after",
+  "currency": "USD",
+  "feed_id": "2026-10-26-dealer-makes-money-on-the-loan",
+  "style": {
+    "palette": "mint",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 100
+  },
+  "hook_style": "myth",
+  "cta": "Did your dealer do this? Comment",
+  "maths": [
+    {
+      "name": "low",
+      "kind": "emi",
+      "amount": 33000,
+      "rate_pct": 6,
+      "years": 5
+    },
+    {
+      "name": "high",
+      "kind": "emi",
+      "amount": 33000,
+      "rate_pct": 8,
+      "years": 5
+    },
+    {
+      "name": "month",
+      "kind": "compare",
+      "a": "high.emi",
+      "b": "low.emi"
+    },
+    {
+      "name": "extra",
+      "kind": "compare",
+      "a": "high.interest",
+      "b": "low.interest"
+    },
+    {
+      "name": "disc",
+      "kind": "share",
+      "total": 2000,
+      "parts": 1
+    }
+  ],
+  "thumbnail": {
+    "who": "rohan",
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.4,
+    "words": "Not *free*",
+    "figure": "{extra_diff}"
+  },
+  "narrator": "am_michael",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "hook",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "You think the dealer gave you {disc_total} off? He didn't. Watch.",
+      "events": {
+        "dealer": {
+          "word": "dealer"
+        },
+        "off": {
+          "word": "off"
+        },
+        "didnt": {
+          "word": "didn't"
+        },
+        "watch": {
+          "word": "watch"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "off"
+        },
+        {
+          "kind": "whoosh",
+          "at": "didnt"
+        },
+        {
+          "kind": "boom",
+          "at": "watch"
+        }
+      ],
+      "params": {
+        "hud": {
+          "hide": true
+        },
+        "line": "{disc_total} off?",
+        "tag": "-{disc_total}",
+        "set": "bank",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "laugh"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "build",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "Rohan buys a new car, and the dealer slashes {disc_total} off the price. But by the last payment, Rohan hands almost all of it back.",
+      "events": {
+        "buys": {
+          "word": "buys"
+        },
+        "slashes": {
+          "word": "slashes"
+        },
+        "price": {
+          "word": "price"
+        },
+        "last": {
+          "word": "last"
+        },
+        "back": {
+          "word": "back"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "buys"
+        },
+        {
+          "kind": "kaching",
+          "at": "slashes"
+        },
+        {
+          "kind": "whoosh",
+          "at": "back"
+        },
+        {
+          "kind": "riser",
+          "at": "last"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "street",
+          "tint": "blue",
+          "horizon": [
+            {
+              "prop": "hatchback",
+              "x": 0.9,
+              "size": 0.06
+            }
+          ]
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.2,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "celebrate",
+                "expression": "happy"
+              },
+              {
+                "at": "back",
+                "pose": "shrug",
+                "expression": "shock"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "car",
+            "prop": "hatchback",
+            "x": 0.52,
+            "size": 0.3,
+            "hidden": true
+          },
+          {
+            "id": "tag",
+            "prop": "discounttag",
+            "x": 0.52,
+            "y": 0.2,
+            "size": 0.2,
+            "hidden": true,
+            "tag": "-{disc_total}"
+          },
+          {
+            "id": "dealer",
+            "prop": "dealer",
+            "x": 0.84,
+            "size": 0.32,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "buys",
+            "do": "enter",
+            "target": "car"
+          },
+          {
+            "at": "slashes",
+            "do": "enter",
+            "target": "tag",
+            "from": "car"
+          },
+          {
+            "at": "price",
+            "do": "enter",
+            "target": "dealer"
+          },
+          {
+            "at": "back",
+            "do": "move",
+            "target": "tag",
+            "to": "dealer",
+            "dur": 0.9
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loan",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "whip",
+      "say": "He still needs {low_amount}, so a bank lends it at {low_rate}. That's {low_emi} a month for {low_months} months. A fair deal, right?",
+      "events": {
+        "needs": {
+          "word": "needs"
+        },
+        "bank": {
+          "word": "bank"
+        },
+        "lends": {
+          "word": "lends"
+        },
+        "month": {
+          "word": "month"
+        },
+        "months": {
+          "word": "months"
+        },
+        "fair": {
+          "word": "fair"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "bank"
+        },
+        {
+          "kind": "whoosh",
+          "at": "lends"
+        },
+        {
+          "kind": "ding",
+          "at": "month"
+        },
+        {
+          "kind": "tick",
+          "at": "months"
+        },
+        {
+          "kind": "ding",
+          "at": "fair"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "blue"
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "bank",
+            "prop": "lender",
+            "x": 0.22,
+            "size": 0.3
+          },
+          {
+            "id": "paper",
+            "prop": "loanpaper",
+            "x": 0.62,
+            "size": 0.32,
+            "hidden": true,
+            "tag": "{low_rate}"
+          },
+          {
+            "id": "bill",
+            "prop": "billstub",
+            "x": 0.82,
+            "y": 0.3,
+            "size": 0.16,
+            "hidden": true,
+            "tag": "{low_emi}"
+          }
+        ],
+        "actions": [
+          {
+            "at": "needs",
+            "do": "glow",
+            "target": "bank"
+          },
+          {
+            "at": "bank",
+            "do": "grow",
+            "target": "bank",
+            "scale": 1.15
+          },
+          {
+            "at": "lends",
+            "do": "enter",
+            "target": "paper",
+            "from": "bank"
+          },
+          {
+            "at": "lends",
+            "do": "flow",
+            "target": "bank",
+            "to": "paper",
+            "n": 6,
+            "text": "{low_amount}"
+          },
+          {
+            "at": "month",
+            "do": "enter",
+            "target": "bill",
+            "from": "paper"
+          },
+          {
+            "at": "months",
+            "do": "multiply",
+            "target": "bill",
+            "n": "@low.months",
+            "cols": 10,
+            "text": "{low_months}"
+          },
+          {
+            "at": "fair",
+            "do": "state",
+            "target": "paper",
+            "state": "approved"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "markup",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "But that offer never reaches Rohan. It goes to the dealer first, and the dealer crosses out the rate and writes {high_rate}.",
+      "events": {
+        "offer": {
+          "word": "offer"
+        },
+        "reaches": {
+          "word": "reaches"
+        },
+        "dealer": {
+          "word": "dealer"
+        },
+        "crosses": {
+          "word": "crosses"
+        },
+        "writes": {
+          "word": "writes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "dealer"
+        },
+        {
+          "kind": "fail",
+          "at": "crosses"
+        },
+        {
+          "kind": "boom",
+          "at": "writes"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "night",
+          "tint": "gold"
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "paper",
+            "prop": "loanpaper",
+            "x": 0.3,
+            "size": 0.3,
+            "tag": "{low_rate}",
+            "state": "approved"
+          },
+          {
+            "id": "dealer",
+            "prop": "dealer",
+            "x": 0.76,
+            "size": 0.34,
+            "hidden": true
+          },
+          {
+            "id": "dial",
+            "prop": "ratedial",
+            "x": 0.5,
+            "y": 0.32,
+            "size": 0.2,
+            "k": 0.3,
+            "hidden": true
+          }
+        ],
+        "actions": [
+          {
+            "at": "offer",
+            "do": "glow",
+            "target": "paper"
+          },
+          {
+            "at": "dealer",
+            "do": "enter",
+            "target": "dealer"
+          },
+          {
+            "at": "dealer",
+            "do": "move",
+            "target": "paper",
+            "to": {
+              "x": 0.58
+            },
+            "dur": 0.8
+          },
+          {
+            "at": "crosses",
+            "do": "enter",
+            "target": "dial",
+            "from": "dealer"
+          },
+          {
+            "at": "writes",
+            "do": "fill",
+            "target": "dial",
+            "k": 0.78
+          },
+          {
+            "at": "writes",
+            "do": "tag",
+            "target": "paper",
+            "text": "{high_rate}"
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "paper"
+          }
+        ]
+      }
+    },
+    {
+      "id": "doubt",
+      "scene": "shot",
+      "role": "build",
+      "speaker": "rohan",
+      "transition": "cut",
+      "say": "Just {month_diff} extra a month? Who cares? I saved {disc_total}.",
+      "events": {
+        "only": {
+          "word": "Just"
+        },
+        "more": {
+          "word": "extra"
+        },
+        "nothing": {
+          "word": "cares"
+        },
+        "discount": {
+          "word": "saved"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "more"
+        },
+        {
+          "kind": "tick",
+          "at": "nothing"
+        }
+      ],
+      "params": {
+        "set": "flat",
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": 0.3,
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "shrug",
+                "expression": "smirk"
+              },
+              {
+                "at": "nothing",
+                "pose": "thumbsUp",
+                "expression": "happy"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "kind": "phone",
+            "id": "bill",
+            "spot": "right",
+            "height": 0.45,
+            "title": "Car payment",
+            "figure": "{high_emi}",
+            "at": "discount",
+            "lines": [
+              {
+                "label": "Was",
+                "value": "{low_emi}",
+                "at": "discount"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "discount",
+            "size": "medium",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "count",
+      "scene": "build",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "zoom-through",
+      "say": "But count all {low_months} payments. That small extra grows into {extra_diff} of interest, almost the whole discount, flowing back out of his wallet.",
+      "events": {
+        "count": {
+          "word": "count"
+        },
+        "payments": {
+          "word": "payments"
+        },
+        "grows": {
+          "word": "grows"
+        },
+        "interest": {
+          "word": "interest"
+        },
+        "discount": {
+          "word": "discount"
+        },
+        "wallet": {
+          "word": "wallet"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "count"
+        },
+        {
+          "kind": "pop",
+          "at": "payments"
+        },
+        {
+          "kind": "riser",
+          "at": "grows"
+        },
+        {
+          "kind": "kaching",
+          "at": "interest"
+        },
+        {
+          "kind": "fail",
+          "at": "wallet"
+        }
+      ],
+      "params": {
+        "world": {
+          "kind": "city",
+          "tint": "green"
+        },
+        "actors": [],
+        "items": [
+          {
+            "id": "bills",
+            "prop": "billstub",
+            "x": 0.3,
+            "size": 0.18
+          },
+          {
+            "id": "bank",
+            "prop": "lender",
+            "x": 0.74,
+            "size": 0.3
+          },
+          {
+            "id": "tag",
+            "prop": "discounttag",
+            "x": 0.52,
+            "y": 0.34,
+            "size": 0.18,
+            "hidden": true,
+            "tag": "{disc_total}"
+          }
+        ],
+        "actions": [
+          {
+            "at": "payments",
+            "do": "multiply",
+            "target": "bills",
+            "n": "@low.months",
+            "cols": 10
+          },
+          {
+            "at": "grows",
+            "do": "flow",
+            "target": "bills",
+            "to": "bank",
+            "n": 8
+          },
+          {
+            "at": "interest",
+            "do": "count",
+            "target": "bank",
+            "value": "@extra.diff",
+            "text": "{extra_diff}"
+          },
+          {
+            "at": "discount",
+            "do": "enter",
+            "target": "tag"
+          },
+          {
+            "at": "wallet",
+            "do": "grow",
+            "target": "bank",
+            "scale": 1.25
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "custom",
+      "role": "turn",
+      "speaker": "sharma",
+      "transition": "whip",
+      "say": "And this is the clever part. The bank pays the dealer a cut of that extra interest. So the discount comes off the price, and the loan brings it back, one payment at a time.",
+      "events": {
+        "clever": {
+          "word": "clever"
+        },
+        "discount": {
+          "word": "discount"
+        },
+        "price": {
+          "word": "price"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "back": {
+          "word": "back"
+        },
+        "payment": {
+          "word": "payment"
+        },
+        "cut": {
+          "word": "cut"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "ding",
+          "at": "clever"
+        },
+        {
+          "kind": "kaching",
+          "at": "discount"
+        },
+        {
+          "kind": "whoosh",
+          "at": "back"
+        },
+        {
+          "kind": "tick",
+          "at": "payment"
+        }
+      ],
+      "params": {
+        "component": "Turn",
+        "hud": {
+          "hide": true
+        },
+        "tag": "{disc_total}",
+        "back": "{extra_diff}",
+        "set": "penthouse",
+        "actors": [
+          {
+            "who": "sharma",
+            "spot": "right",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "hips",
+                "expression": "smirk"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "sharma"
+          },
+          {
+            "at": "loan",
+            "size": "wide",
+            "on": "room",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "custom",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "The dealer wins twice: once on the car, and again on the loan. That {extra_diff} comes out of Rohan's pocket, a little every month.",
+      "events": {
+        "twice": {
+          "word": "twice"
+        },
+        "car": {
+          "word": "car"
+        },
+        "again": {
+          "word": "again"
+        },
+        "loan": {
+          "word": "loan"
+        },
+        "comes": {
+          "word": "comes"
+        },
+        "pocket": {
+          "word": "pocket"
+        },
+        "little": {
+          "word": "little"
+        },
+        "month": {
+          "word": "month"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "twice"
+        },
+        {
+          "kind": "kaching",
+          "at": "car"
+        },
+        {
+          "kind": "kaching",
+          "at": "loan"
+        },
+        {
+          "kind": "pop",
+          "at": "pocket"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "hud": {
+          "hide": true
+        },
+        "total": "{extra_diff}",
+        "label": "Extra interest",
+        "stamp": "Twice",
+        "layout": "v5",
+        "carLabel": "Car",
+        "set": "office",
+        "actors": [],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "pocket",
+            "size": "close",
+            "on": "all",
+            "move": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "shot",
+      "role": "loop",
+      "speaker": "rohan",
+      "transition": "match",
+      "say": "Still, he gave me {disc_total} off. Nice guy, right?",
+      "events": {
+        "dealer": {
+          "word": "off"
+        },
+        "back": {
+          "word": "nice"
+        },
+        "think": {
+          "word": "guy"
+        },
+        "car": {
+          "word": "right"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "back"
+        },
+        {
+          "kind": "tick",
+          "at": "think"
+        }
+      ],
+      "params": {
+        "set": "bank",
+        "hud": {
+          "hide": true
+        },
+        "actors": [
+          {
+            "who": "rohan",
+            "spot": "left",
+            "acting": [
+              {
+                "sec": 0,
+                "pose": "think",
+                "expression": "thinking"
+              },
+              {
+                "at": "back",
+                "pose": "shrug",
+                "expression": "shock"
+              },
+              {
+                "at": "think",
+                "pose": "point",
+                "expression": "confused"
+              }
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "rohan"
+          },
+          {
+            "at": "dealer",
+            "size": "medium",
+            "on": "rohan",
+            "move": true
+          },
+          {
+            "at": "think",
+            "size": "wide",
+            "on": "all",
+            "move": true
+          }
+        ],
+        "word": {
+          "text": "Free?",
+          "at": "back",
+          "color": "bad",
+          "where": "top"
+        }
+      }
+    }
+  ]
+}

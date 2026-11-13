@@ -8,6 +8,9 @@ import sample from "./fixtures/sample-timeline.json";
 import { ActingTest } from "./sheets/ActingTest";
 import { AVATAR, BANNER, ChannelAvatar, ChannelBanner } from "./sheets/ChannelArt";
 import { CharacterSheet } from "./sheets/CharacterSheet";
+import { Promo, type PromoProps } from "./promo/Promo";
+import { PromoThumb } from "./promo/Thumb";
+import { ChannelAvatar as GlobalAvatar, ChannelBanner as GlobalBanner } from "./promo/Channel";
 
 export const Root: React.FC = () => (
   <>
@@ -23,5 +26,12 @@ export const Root: React.FC = () => (
     {/* channel art (assets/channel/): `npx remotion still src/index.ts ChannelAvatar|ChannelBanner <out.png>` */}
     <Still id="ChannelAvatar" component={ChannelAvatar} width={AVATAR.width} height={AVATAR.height} />
     <Still id="ChannelBanner" component={ChannelBanner} width={BANNER.width} height={BANNER.height} />
+    {/* the owner's own explainer: how the channel's motion graphics are made with Claude + Remotion */}
+    <Composition id="Promo" component={Promo} fps={30} width={1920} height={1080} durationInFrames={300}
+      defaultProps={{ scenes: [], durationInFrames: 300 } satisfies PromoProps}
+      calculateMetadata={({ props }) => ({ durationInFrames: props.durationInFrames || 300 })} />
+    <Still id="PromoThumb" component={PromoThumb} width={1280} height={720} />
+    <Still id="GlobalBanner" component={GlobalBanner} width={2560} height={1440} defaultProps={{ guides: false }} />
+    <Still id="GlobalAvatar" component={GlobalAvatar} width={800} height={800} />
   </>
 );
