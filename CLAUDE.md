@@ -31,6 +31,17 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   - **Lessons from our own videos**: the reviewer agent (`agents/reviewer.md`, Tue and Fri 21:07 IST)
     watches recent Shorts frame by frame next to their drop points and writes each mistake that cost
     viewers into `generator/prompts/lessons.md`, which the writer follows and QA enforces.
+  - **Learn from the winners on our topics** (owner, 2026-11-13): the nightly `twins.yml` (01:37 IST,
+    `workers/twins.ts`, `config/twins.json`) finds the most-watched animated Shorts on the same
+    subject as the next topics and as our Shorts published 2-12 days ago (YouTube search, outlier
+    score = views ÷ the channel's median, Gemini checks animated and on-topic from 4 stills), and
+    Google's Gemini API (free tier, no billing, key `GEMINI_API_KEY`) watches them from their YouTube
+    link into shot sheets; code measures them. The writer reads the topic's brief
+    (`improvement/twins/briefs/`, `state` → `twins_briefs`), the reviewer the gap report
+    (`improvement/twins/gaps/`), and the auditor turns a pattern seen in 8+ Shorts (75%) into a
+    challenger (`improvement/twins/model.json`). Nothing runs until Gemini reads 80% of 5 of our own
+    Shorts correctly against their `timeline.json` (`calibration.json`, monthly). Technique only:
+    never their words, characters or art. Titles and views stay on `market-data` and the dashboard.
   - **Every Short is true** (owner, 2026-11-12, after watching our best Shorts): sourced facts about a
     real, named person or business, no invented example (a hard rule in `generator/story.py`), no
     reaction shots, a payoff that is the story's most surprising figure.
