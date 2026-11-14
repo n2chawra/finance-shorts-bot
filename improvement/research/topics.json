@@ -4210,6 +4210,369 @@
       "found": "2026-11-15",
       "expires": "2027-02-13",
       "status": "new"
+    },
+    {
+      "id": "2026-11-15-painting-sold-for-45-pounds-then-450-million",
+      "format": "short",
+      "title": "This painting sold for £45 in 1958. In 2017 it sold for $450.3 million",
+      "category": "art",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "money_scale"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Leonardo da Vinci's 'Salvator Mundi' | 2017 World Auction Record | Christie's",
+        "views": 6908400,
+        "url": "https://www.youtube.com/watch?v=3orkmMlSpmI",
+        "channel": "Christie's"
+      },
+      "hook": "In 1958 this painting sold for forty-five pounds. In 2017 it sold for four hundred fifty million dollars.",
+      "templates": [
+        "any"
+      ],
+      "angle": "How does a £45 painting become the most expensive ever sold? It was painted over and thought to be a copy; once experts called it a Leonardo da Vinci, Christie's sold it for $450,312,500 (a $400M bid plus fees), the record for any painting at auction.",
+      "why_now": "A true story with a famous name and the biggest jump in value anyone can picture, no tech, no news. Christie's own video of the sale has 6.9M views; VICE's 'What made the da Vinci painting worth $450 million' 1.9M. Sold 15 Nov 2017: nine years ago this week.",
+      "maths": "rate 450312500 / 400000000: the fees on top of the winning bid (facts {a: 1, b: 2}); the £45 stays in pounds (no conversion figure on screen).",
+      "facts": [
+        {
+          "label": "Total price of Leonardo da Vinci's Salvator Mundi at Christie's, 15 Nov 2017, with fees",
+          "value": 450312500,
+          "unit": "money",
+          "as_of": "2017-11-15",
+          "source": "PBS NewsHour, citing Christie's",
+          "url": "https://www.pbs.org/newshour/arts/rare-da-vinci-painting-sells-for-450-million-smashing-auction-record",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        },
+        {
+          "label": "Winning bid (hammer price) for Salvator Mundi",
+          "value": 400,
+          "unit": "money_million",
+          "as_of": "2017-11-15",
+          "source": "PBS NewsHour, citing Christie's",
+          "url": "https://www.pbs.org/newshour/arts/rare-da-vinci-painting-sells-for-450-million-smashing-auction-record",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        },
+        {
+          "label": "Price Salvator Mundi sold for in 1958, when it was thought to be a copy",
+          "value": 45,
+          "unit": "money",
+          "as_of": "1958-01-01",
+          "source": "PBS NewsHour",
+          "url": "https://www.pbs.org/newshour/arts/rare-da-vinci-painting-sells-for-450-million-smashing-auction-record",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "GBP"
+        }
+      ],
+      "verify": [
+        "the 1958 sale is reported as private by PBS and as a Sotheby's auction by others: say 'sold in 1958', not where",
+        "its authorship is still debated by some scholars: say 'sold as a Leonardo da Vinci'",
+        "no figure for the 2005 rediscovery (sources disagree)"
+      ],
+      "sources": [
+        "https://www.pbs.org/newshour/arts/rare-da-vinci-painting-sells-for-450-million-smashing-auction-record",
+        "https://www.theartnewspaper.com/2017/11/15/leonardos-salvator-mundi-sells-for-dollar450m-at-christies-new-york"
+      ],
+      "found": "2026-11-15",
+      "expires": "2027-02-13",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-15-2-billion-jackpot-paid-997-million",
+      "format": "short",
+      "title": "Edwin Castro won a $2.04 billion jackpot. He took home a $997.6 million cash prize",
+      "category": "lottery",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "money_scale"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Top Lottery Attorney Reveals What You MUST Do If You Win!",
+        "views": 2381655,
+        "url": "https://www.youtube.com/watch?v=RFfv4wwMgKk",
+        "channel": "The BW Report"
+      },
+      "hook": "Edwin Castro won the biggest lottery jackpot ever, two point zero four billion dollars. He was paid less than half.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Where did the other billion go? The $2.04B was the 30-payment annuity; taking it now meant the cash value, $997.6M, before taxes. The shop that sold the ticket got a $1M bonus and California schools got $156.3M from the run of draws.",
+      "why_now": "'What if you win the lottery' videos are watched in the millions (a lottery lawyer's interview 2.4M, 'Seven-time lottery winner' 9M on ABC News); it's money at a scale everyone imagines winning, about a real, named person, and not tech or news.",
+      "maths": "rate 997.6 / 2040 as a percent: what share of the headline he got as cash (facts {a: 2, b: 1}).",
+      "facts": [
+        {
+          "label": "Record Powerball jackpot won by Edwin Castro, Nov 2022",
+          "value": 2.04,
+          "unit": "money_billion",
+          "as_of": "2023-02-14",
+          "source": "California Lottery (via Powerball)",
+          "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        },
+        {
+          "label": "Cash value Edwin Castro chose to take",
+          "value": 997.6,
+          "unit": "money_million",
+          "as_of": "2023-02-14",
+          "source": "California Lottery (via Powerball)",
+          "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        },
+        {
+          "label": "Bonus paid to Joe's Service Center for selling the winning ticket",
+          "value": 1,
+          "unit": "money_million",
+          "as_of": "2023-02-14",
+          "source": "California Lottery (via Powerball)",
+          "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        },
+        {
+          "label": "Money the jackpot run raised for California public education",
+          "value": 156.3,
+          "unit": "money_million",
+          "as_of": "2023-02-14",
+          "source": "California Lottery (via Powerball)",
+          "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        }
+      ],
+      "verify": [
+        "$997.6M is the cash value before federal tax: don't state an after-tax figure",
+        "the alternative was 30 annual payments (the release's wording)",
+        "no claims about his later spending (only press estimates)"
+      ],
+      "sources": [
+        "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
+        "https://www.cbsnews.com/losangeles/news/edwin-castro-announced-as-2-04-billion-powerball-jackpot-winner/"
+      ],
+      "found": "2026-11-15",
+      "expires": "2027-02-13",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-15-whittaker-315-million-jackpot-curse",
+      "format": "short",
+      "title": "Jack Whittaker won $315 million in 2002 and took $113.4 million. It made him miserable",
+      "category": "lottery",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "trap_alert"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "The $314 MILLION Jackpot He Instantly REGRETTED Winning",
+        "views": 639862,
+        "url": "https://www.youtube.com/watch?v=mGEWFh97PlY",
+        "channel": "Millionaire Post"
+      },
+      "hook": "Jack Whittaker won three hundred fifteen million dollars on Christmas night 2002. He later said he wished he'd torn the ticket up.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Why can a fortune ruin someone? A $315M headline became $113.4M after taxes in one lump sum; then theft, lawsuits and family tragedy followed (AP). Told with care: the lesson is how fast sudden money attracts trouble, not mockery.",
+      "why_now": "Lottery-curse videos are evergreen ('Lottery Winners Who Lost It All' 2.7M, Whittaker's own story 640K). A true, named, human story; no tech, no news.",
+      "maths": "rate 113.4 / 315 as a percent: what he kept of the headline (facts {a: 2, b: 1}).",
+      "facts": [
+        {
+          "label": "Powerball jackpot Jack Whittaker won on Christmas night 2002",
+          "value": 315,
+          "unit": "money_million",
+          "as_of": "2002-12-25",
+          "source": "AP obituary (via KSL)",
+          "url": "https://www.ksl.com/article/46771541",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        },
+        {
+          "label": "Lump sum Whittaker took after taxes",
+          "value": 113.4,
+          "unit": "money_million",
+          "as_of": "2002-12-25",
+          "source": "AP obituary (via KSL)",
+          "url": "https://www.ksl.com/article/46771541",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        }
+      ],
+      "verify": [
+        "the 'wish I'd torn it up' line is widely quoted from his wife Jewell (ABC, 2007), not from him: attribute it correctly or drop it",
+        "his granddaughter's death is a real tragedy: mention gently or not at all; no reaction shots",
+        "AP gave $111.7M in 2002 and $113.4M in 2020: use the AP obituary's $113.4M"
+      ],
+      "sources": [
+        "https://www.ksl.com/article/46771541",
+        "https://en.wikipedia.org/wiki/Jack_Whittaker_(lottery_winner)"
+      ],
+      "found": "2026-11-15",
+      "expires": "2027-02-13",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-15-jordan-bought-team-275m-sold-3b",
+      "format": "short",
+      "title": "Michael Jordan bought his team for $275 million. He sold it at $3 billion",
+      "category": "sports",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Inside Michael Jordan's $1 Billion Vault",
+        "views": 210972,
+        "url": "https://www.youtube.com/watch?v=tdF_I1BtJ5o",
+        "channel": "Black Riches"
+      },
+      "hook": "Michael Jordan bought the Charlotte team for two hundred seventy-five million dollars. Thirteen years later it sold at three billion.",
+      "templates": [
+        "any"
+      ],
+      "angle": "The greatest player's best deal wasn't on the court: he owned the team that never won, and its value grew about elevenfold anyway, because owners earn from the league's growth (TV money), not wins.",
+      "why_now": "Athletes-who-became-owners is our proven idea (the Magic Johnson Short); Jordan is the most famous athlete alive. Space it at least two weeks from any Magic Johnson retell.",
+      "maths": "rate 3000 / 275: times his money (facts {a: 2, b: 1}).",
+      "facts": [
+        {
+          "label": "Price Michael Jordan paid for the Charlotte team in 2010 (about)",
+          "value": 275,
+          "unit": "money_million",
+          "as_of": "2010-03-17",
+          "source": "AP (via NBA.com)",
+          "url": "https://www.nba.com/news/michael-jordan-selling-ownership-stake-hornets",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        },
+        {
+          "label": "Valuation the Hornets sold at in 2023 (approximately)",
+          "value": 3,
+          "unit": "money_billion",
+          "as_of": "2023-08-03",
+          "source": "CBS Sports",
+          "url": "https://www.cbssports.com/nba/news/hornets-sale-approved-michael-jordans-13-year-run-as-nba-team-owner-ends-per-report",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        }
+      ],
+      "verify": [
+        "Jordan bought and later sold a majority stake, not 100%: say 'his stake' or 'the team he controlled'; he kept a minority stake",
+        "the TV-money reason is general NBA mechanics, not a claim about Hornets accounts",
+        "some outlets report $180M for 2010; use AP's 'about $275 million'"
+      ],
+      "sources": [
+        "https://www.nba.com/news/michael-jordan-selling-ownership-stake-hornets",
+        "https://www.cbssports.com/nba/news/hornets-sale-approved-michael-jordans-13-year-run-as-nba-team-owner-ends-per-report"
+      ],
+      "found": "2026-11-15",
+      "expires": "2027-02-13",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-15-kylie-sold-half-for-600-million",
+      "format": "short",
+      "title": "Kylie Jenner sold 51% of her makeup brand for $600 million when she was 22",
+      "category": "celebrity",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Kylie Jenner SELLS Majority of Kylie Cosmetics!",
+        "views": 196457,
+        "url": "https://www.youtube.com/watch?v=95Lh9RGm84w",
+        "channel": "Entertainment Tonight"
+      },
+      "hook": "Kylie Jenner sold fifty-one percent of her makeup brand for six hundred million dollars.",
+      "templates": [
+        "any"
+      ],
+      "angle": "How did lipstick sold online make a $1.2B company in about four years? Almost no stores and no ad budget: her followers were the shop window. $177M of sales in a year, so Coty paid almost 7 times a year's sales.",
+      "why_now": "Celebrity-business money is the most relatable big-money story (fans know the person, the product costs $30). Coty's deal (Nov 2019) is the hard figure; no tech, no news.",
+      "maths": "rate 1200 / 177: what Coty paid per dollar of yearly sales (facts {a: 3, b: 4}); her stake kept 100 - 51 = 49 percent (facts {a: 1}).",
+      "facts": [
+        {
+          "label": "Share of Kylie Cosmetics Coty bought, Nov 2019",
+          "value": 51,
+          "unit": "percent",
+          "as_of": "2019-11-18",
+          "source": "BeautyMatter, citing Coty",
+          "url": "https://beautymatter.com/2019/11/coty-acquires-majority-stake-in-kylie-cosmetics-for-600-million/",
+          "latest": true,
+          "checked": "2026-11-15"
+        },
+        {
+          "label": "Price Coty paid for the 51% stake",
+          "value": 600,
+          "unit": "money_million",
+          "as_of": "2019-11-18",
+          "source": "BeautyMatter, citing Coty",
+          "url": "https://beautymatter.com/2019/11/coty-acquires-majority-stake-in-kylie-cosmetics-for-600-million/",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        },
+        {
+          "label": "Value the deal put on Kylie Cosmetics",
+          "value": 1.2,
+          "unit": "money_billion",
+          "as_of": "2019-11-18",
+          "source": "BeautyMatter, citing Coty",
+          "url": "https://beautymatter.com/2019/11/coty-acquires-majority-stake-in-kylie-cosmetics-for-600-million/",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        },
+        {
+          "label": "Kylie Cosmetics net sales over the 12 months before the deal",
+          "value": 177,
+          "unit": "money_million",
+          "as_of": "2019-11-18",
+          "source": "BeautyMatter, citing Coty",
+          "url": "https://beautymatter.com/2019/11/coty-acquires-majority-stake-in-kylie-cosmetics-for-600-million/",
+          "latest": true,
+          "checked": "2026-11-15",
+          "currency": "USD"
+        }
+      ],
+      "verify": [
+        "Forbes later (May 2020) said she was not a billionaire after questioning her figures: never call her a billionaire",
+        "'no stores' is approximate (she sold through Ulta from 2018): say 'mostly online'",
+        "her age: born 10 Aug 1997, 22 in Nov 2019"
+      ],
+      "sources": [
+        "https://beautymatter.com/2019/11/coty-acquires-majority-stake-in-kylie-cosmetics-for-600-million/"
+      ],
+      "found": "2026-11-15",
+      "expires": "2027-02-13",
+      "status": "new"
     }
   ]
 }
