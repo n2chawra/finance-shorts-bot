@@ -373,7 +373,7 @@ test("calendar totals the month's, each week's and each day's views", async ({ p
   expect(await page.getByTestId("week-views").count()).toBeGreaterThanOrEqual(4);
   const day = page.locator("button[aria-pressed]").first();
   await day.hover();
-  await expect(page.getByRole("tooltip")).toContainText(/views from \d+ videos? published this day|No video published this day/);
+  await expect(page.getByRole("tooltip")).toContainText(/views and [\d,]+ likes from \d+ videos? published this day|No video published this day/);
 });
 
 test("removed pages send old links somewhere useful", async ({ page }) => {
@@ -618,4 +618,12 @@ test("the study page takes a link and shows what was learned and applied", async
   await page.getByLabel("YouTube link").fill("https://youtube.com/shorts/abcdefghijk");
   await page.getByRole("button", { name: "Study it" }).click();
   await expect(page.getByText("https://youtube.com/shorts/abcdefghijk")).toBeVisible();
+});
+
+test("calendar shows likes on each published video and a weekly likes total under the views", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/calendar");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Calendar", { timeout: 30_000 });
+  await expect(page.getByTestId("week-likes").first()).toBeVisible();
+  await expect(page.getByTestId("week-views").first()).toBeVisible();
 });

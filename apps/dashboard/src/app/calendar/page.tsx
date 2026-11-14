@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { CalendarDays, ChevronLeft, ChevronRight, Eye, Trophy, Upload } from "lucide-react";
+import { CalendarDays, ChevronLeft, ChevronRight, Eye, Heart, Trophy, Upload } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
@@ -81,6 +81,7 @@ export default function CalendarPage() {
   // views of the videos published on a day (their lifetime views, live where available)
   const published = (k: string) => (byDay.map.get(k) ?? []).filter((e) => e.kind === "published");
   const dayViews = (k: string) => published(k).reduce((a, e) => a + (e.video.totals?.views ?? 0), 0);
+  const dayLikes = (k: string) => published(k).reduce((a, e) => a + (e.video.totals?.likes ?? 0), 0);
   const monthDays = Array.from({ length: days }, (_, i) => key(ym.y, ym.m, i + 1));
   const monthViews = monthDays.reduce((a, k) => a + dayViews(k), 0);
   const monthVideos = monthDays.reduce((a, k) => a + published(k).length, 0);
@@ -88,7 +89,7 @@ export default function CalendarPage() {
   const weeks = Array.from({ length: cells.length / 7 }, (_, w) => cells.slice(w * 7, w * 7 + 7));
   const dayTip = (k: string) => {
     const n = published(k).length, v = dayViews(k);
-    return n ? `${fmtNum(v)} views from ${n} video${n === 1 ? "" : "s"} published this day` : "No video published this day";
+    return n ? `${fmtNum(v)} views and ${fmtNum(dayLikes(k))} likes from ${n} video${n === 1 ? "" : "s"} published this day` : "No video published this day";
   };
 
   return (
@@ -139,7 +140,7 @@ export default function CalendarPage() {
                       <span key={e.video.id} className="flex min-w-0 items-center gap-1.5 md:gap-1">
                         <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden shrink-0 rounded-[3px] object-cover md:block ${e.video.format === "long" ? "aspect-video w-7" : "aspect-[9/16] w-4"} ${e.kind === "planned" ? "opacity-60" : ""}`} />
                         <span aria-hidden data-kind={e.kind} className={`h-2 shrink-0 ${e.video.format === "long" ? `${LONG_MARK} md:w-2 md:rounded-full` : "w-2 rounded-full"} ${KIND[e.kind].dot}`} />
-                        <span className="hidden truncate text-[11.5px] text-ink2 md:inline">{e.kind === "published" ? `${fmtCompact(e.video.totals?.views ?? 0)} views` : new Date(e.at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false })}{e.video.format === "long" && <span className="ml-1 font-semibold text-brand-text">Long</span>}</span>
+                        <span className={`hidden text-[11.5px] text-ink2 md:inline ${e.kind === "published" ? "min-w-0" : "truncate"}`}>{e.kind === "published" ? <span className="flex flex-col leading-tight tabular-nums"><span className="inline-flex items-center gap-1"><Eye aria-label="views" className="size-3 shrink-0 text-muted" />{fmtCompact(e.video.totals?.views ?? 0)}</span><span data-testid="day-likes" className="inline-flex items-center gap-1 text-muted"><Heart aria-label="likes" className="size-3 shrink-0 text-critical" />{fmtCompact(e.video.totals?.likes ?? 0)}</span></span> : new Date(e.at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false })}{e.video.format === "long" && <span className="ml-1 font-semibold text-brand-text">Long</span>}</span>
                       </span>
                     ))}
                     {gaps.map((g) => (
@@ -154,10 +155,12 @@ export default function CalendarPage() {
               );
             }), (() => {
               const total = row.reduce<number>((a, d) => a + (d === null ? 0 : dayViews(key(ym.y, ym.m, d))), 0);
+              const likes = row.reduce<number>((a, d) => a + (d === null ? 0 : dayLikes(key(ym.y, ym.m, d))), 0);
               const n = row.reduce<number>((a, d) => a + (d === null ? 0 : published(key(ym.y, ym.m, d)).length), 0);
               return (
                 <div key={`w${w}`} data-testid="week-views" className={`flex flex-col items-center justify-center gap-0.5 bg-surface-2 px-1 text-center ${w < weeks.length - 1 ? "border-b border-line" : ""}`}>
                   <span className="text-[13px] font-semibold tabular-nums text-ink md:text-[15px]">{total ? fmtCompact(total) : "—"}</span>
+                  {n > 0 && <span data-testid="week-likes" className="flex items-center gap-0.5 text-[11px] font-medium tabular-nums text-ink2 md:text-[12px]"><Heart aria-label="likes" className="size-3 text-critical" />{fmtCompact(likes)}</span>}
                   <span className="text-[10.5px] text-muted md:text-[11px]">{n ? `${n} video${n === 1 ? "" : "s"}` : "views"}</span>
                 </div>
               );
@@ -184,7 +187,7 @@ export default function CalendarPage() {
                         {e.video.format === "long" && <Badge tone="brand">Long</Badge>}
                         <span className="text-xs">{fmtDateTime(new Date(e.at).toISOString())} IST{e.kind === "planned" ? " · if the queue order holds" : ""}</span>
                       </div>
-                      {e.video.totals && <p className="mt-1.5 text-[12.5px] text-ink2">{fmtCompact(e.video.totals.views)} views · +{e.video.totals.subsGained} subscribers</p>}
+                      {e.video.totals && <p className="mt-1.5 text-[12.5px] text-ink2">{fmtCompact(e.video.totals.views)} views · {fmtCompact(e.video.totals.likes)} likes · +{e.video.totals.subsGained} subscribers</p>}
                     </div>
                   </li>
                 ))}
