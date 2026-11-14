@@ -350,6 +350,9 @@ def allowed_numbers(script: dict, figures: Mapping[str, str]) -> set[str]:
 
 
 _CHAPTER = re.compile(r"^\s*(?:\d+:)?\d+:\d\d(?=\s)", re.MULTILINE)
+# Links are not claims (Scout, 2026-11-11): a long video's description opens "The 30-second version:
+# https://youtube.com/shorts/<id>", and an id like 'ssxStI7t_5w' or the fixed phrase read as untraced figures.
+_LINK = re.compile(r"https?://\S+|\bthe \d+-second version\b", re.IGNORECASE)
 _PLACEHOLDER = re.compile(r"\{([a-z][a-z0-9_]*)\}")
 _MONTHS = r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?"
 # a calendar date or a year is not a money claim ("October 28", "28 Oct", "in 2027", "2026-27")
@@ -389,6 +392,7 @@ def check_claims(texts: Mapping[str, str], script: dict, figures: Mapping[str, s
     out = []
     for field, text in texts.items():
         text, unknown = fill_text(text, figures)
+        text = _LINK.sub(" ", text)
         if unknown:
             out.append(f"{field} uses {', '.join('{' + u + '}' for u in unknown)}, which no maths computes; the figures are: "
                        + ", ".join(sorted(figures)))

@@ -249,3 +249,12 @@ def test_a_title_never_shows_a_million_or_billion_in_digits() -> None:
     assert any("in words" in n for n in check_claims({"description": "It had $10000000000 in total"}, script, figures))
     # rupee stories group the Indian way (₹15,00,000) and are left to lakh and crore
     assert check_claims({"title": "{amt} at 12%"}, sip_story(), {"amt": "₹15,00,000"}) == []
+
+
+def test_a_link_to_the_short_is_not_a_claim() -> None:
+    """Scout, 2026-11-11: 'The 30-second version: https://youtube.com/shorts/ssxStI7t_5w' read as untraced figures."""
+    script = sip_story()
+    figures = {"answer": "₹99.9 L"}
+    ok = {"description": "The 30-second version: https://youtube.com/shorts/ssxStI7t_5w\nIllustrative only."}
+    assert check_claims(ok, script, figures) == []
+    assert check_claims({"description": "https://youtube.com/shorts/ab3 then 45% returns"}, script, figures)
