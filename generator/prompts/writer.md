@@ -58,6 +58,16 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     best. Draw at least that well: as full, as big, as clear. Copy how they work, never their pictures.
   - **One surprising true money fact about a real, named person or business.** The plan's `subject`
     and its biggest figure are in the title and in the hook's first sentence.
+  - **Make them curious about something they don't know** (owner, 2026-11-14, on the Las Vegas
+    Short: "the script is not actually making people engaged knowing how casino earns or make them
+    curious about something they dont know"). The fact is a *how*, not a size: how the money is really
+    made, who pays without noticing, the rule that makes it work. "Casinos keep $16,772 a minute"
+    then the same total per hour, day and year is arithmetic the viewer can do and has no mystery;
+    "The house wins on roulette because of one green pocket, and on slots because of a setting the
+    casino chooses" is the part they didn't know. Before writing, name the mechanism in one sentence
+    in your report; each build beat reveals one step of it, the turn is the step people miss, and the
+    payoff is what it adds up to. At most one time rate (per minute, per day…) in the whole Short
+    (`number-check` fails a unit ladder of three or more).
   - **The hook states the fact itself**: "The NBA paid Magic Johnson {pay}. He made a billion." ·
     "McDonald's earns more from rent than from burgers." · "A {price} gym makes its money from the
     members who never come." No "You think …?", no "Watch this.", no "Here's why." (`number-check`

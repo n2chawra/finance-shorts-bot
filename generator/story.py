@@ -390,6 +390,33 @@ def payoff_problems(script: dict) -> list[str]:
     return []
 
 
+# Owner, 2026-11-14, on v-20261114-03 ("The Las Vegas Strip keeps $16,772 every minute"): "the script is not
+# actually making people engaged knowing how casino earns or make them curious about something they dont know".
+# Its beats sliced one total into a minute, an hour, a day and a year: arithmetic, with nothing the viewer didn't
+# know. A Short is about HOW the money is made (who pays, for what, the part people miss), not one figure rescaled.
+TIME_RATE = re.compile(r"\b(?:every|each|per|an?|one|whole|all of)\s+(second|minute|hour|day|night|week|month|year)\b", re.I)
+TIME_RATE_MAX = 2
+
+
+def curiosity_problems(script: dict) -> list[str]:
+    """A Short that restates one figure per minute, hour, day and year is a unit ladder, not a story."""
+    if script.get("format", "short") != "short":
+        return []
+    units: dict[str, str] = {}
+    for b in script.get("beats") or []:
+        say = b.get("say") or ""
+        if not re.search(r"\{[a-z0-9_]+\}", say):
+            continue
+        for m in TIME_RATE.finditer(say):
+            units.setdefault(m.group(1).lower(), str(b.get("id")))
+    if len(units) > TIME_RATE_MAX:
+        ladder = ", ".join(f"{u} ({bid})" for u, bid in units.items())
+        return [f"the Short slices its figures into {len(units)} time units ({ladder}): that is a unit ladder, arithmetic "
+                f"the viewer can do, not something they didn't know (owner, 2026-11-14, on the Las Vegas Short). Keep one "
+                f"rate at most and spend the beats on HOW the money is made: who pays, for what, and the part people miss"]
+    return []
+
+
 def hook_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
     """A Short's hook states the surprising fact itself, with the famous name or the figure in it (owner
     review, 2026-11-11). Until then the hook had to be "You think X? It isn't.": 8 of 9 Shorts opened on the
@@ -450,6 +477,7 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
     if script.get("arms") and script.get("format", "short") == "short":
         out += hook_problems(script, earlier)
         out += invented_problems(script) + reaction_problems(script) + payoff_problems(script)
+        out += curiosity_problems(script)
         out += spoken_figure_problems(script)
     if script.get("shape") is not None or script.get("format") == "long" or any(b.get("scene") == "board" for b in beats):
         out += chain_problems(script)
