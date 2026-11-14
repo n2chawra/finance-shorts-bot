@@ -31,6 +31,8 @@ def test_the_reference_script_passes_the_checks() -> None:
     ({"camera": [{"at": "nowhere", "size": "close"}]}, "not one of this beat's events"),
     ({"moments": []}, "params.moments"),
     ({"moments": [{"at": "nowhere", "what": "x"}]}, "not one of this beat's events"),
+    ({"moments": [{"at": ["kept"], "what": "x"}]}, "not one of this beat's events"),   # was a TypeError (2026-11-14)
+    ({"moments": [{"what": "x"}]}, "not one of this beat's events"),
 ])
 def test_a_directed_beat_names_its_component_place_sizes_and_moments(change: dict, error: str) -> None:
     s = reference()
