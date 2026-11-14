@@ -857,13 +857,14 @@
       "id": "wrk-012",
       "kind": "bug",
       "title": "A failed breakdown query deletes that breakdown's stored rows",
-      "detail": "stats-deep saveBreakdowns deleteMany({scope}) after fetchScope drops failed kinds; delete only the kinds that succeeded.",
+      "detail": "stats-deep saveBreakdowns deleteMany({scope}) after fetchScope drops failed kinds; delete only the kinds that succeeded. Fixed 2026-11-14 (again: the 13 Nov branch was blocked): only the kinds fetched are replaced (workers/lib/breakdowns.ts).",
       "files": [
         "workers/stats-deep.ts"
       ],
       "severity": "low",
       "found": "2026-11-13",
-      "status": "open"
+      "status": "fixed",
+      "fixed": "2026-11-14"
     },
     {
       "id": "wrk-q02",
@@ -900,6 +901,32 @@
       ],
       "severity": "low",
       "found": "2026-11-13",
+      "status": "open"
+    },
+    {
+      "id": "ren-006",
+      "kind": "bug",
+      "title": "A directed moment with a list or missing `at` crashed check_script with TypeError",
+      "detail": "directed_problems tested `mo.get('at') not in b.events`; an `at` written as a list or dict raised TypeError (unhashable), which run.py's `except (ValueError, RuntimeError)` does not catch, so the writer got a traceback instead of the rule. Now a clear ValueError.",
+      "files": [
+        "renderer/timeline/build.py",
+        "renderer/tests/test_directed.py"
+      ],
+      "severity": "low",
+      "found": "2026-11-14",
+      "status": "fixed",
+      "fixed": "2026-11-14"
+    },
+    {
+      "id": "ren-007",
+      "kind": "bug",
+      "title": "renderer/thumbs.py uses the network (YouTube search page and thumbnails)",
+      "detail": "search_refs and fetch_thumb call urllib.request.urlopen inside renderer/, against CLAUDE.md 'The renderer itself never uses the network'. Landed on main directly (not via agent-merge), so the guard never saw it; any agent branch whose added lines near it mention urlopen is blocked (13 Nov auditor branch). Owner decision: move it to generator/ or keep it as an exception.",
+      "files": [
+        "renderer/thumbs.py"
+      ],
+      "severity": "medium",
+      "found": "2026-11-14",
       "status": "open"
     }
   ]

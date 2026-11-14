@@ -461,7 +461,7 @@ def directed_problems(b: "Beat", where: str) -> list[str]:
             if not isinstance(mo, dict) or not isinstance(mo.get("what"), str) or not mo["what"].strip():
                 out.append(f"{where}: every moment says `what` changes")
                 break
-            if mo.get("at") not in b.events:
+            if not isinstance(mo.get("at"), str) or mo["at"] not in b.events:   # a list or dict `at` raised TypeError
                 out.append(f"{where}: moment at {mo.get('at')!r} is not one of this beat's events (name the word in `events` first)")
                 break
     return out

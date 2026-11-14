@@ -1,0 +1,21 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-14",
+  "startedAt": "2026-11-14T14:19:14Z",
+  "finishedAt": "2026-11-14T14:24:57Z",
+  "summary": "Redid last night's blocked breakdowns fix (a failed YouTube query no longer blanks a dashboard tab), fixed a crash in the directed-beat script check, and wrote 7 video verdicts.",
+  "decision": "acted",
+  "why": "Main was green. The 13 Nov branch was blocked by the guard's no-network rule for renderer/, which renderer/thumbs.py already breaks on main; the fix was redone without touching it and the owner was asked to decide. The data audit was 22 h old (today's run not started), so the YouTube comparison was skipped.",
+  "findings": [
+    {"title": "Data audit late, not failed", "detail": "metrics/data-audit.json from 13 Nov 16:34 UTC; it had 2 behind_youtube errors for the 12 Nov Shorts."},
+    {"title": "renderer/thumbs.py uses the network", "detail": "YouTube search scraping and thumbnail downloads inside renderer/, against CLAUDE.md; it blocked last night's auditor branch. Owner notified."},
+    {"title": "Name-and-figure hooks kept more viewers", "detail": "Bezos Short 51.4% stayed; the 'You think X?' hooks lost 22-30 points on the hook line."}
+  ],
+  "changes": [
+    {"title": "Breakdowns survive a failed query", "detail": "stats-deep replaces only the breakdown kinds it fetched (wrk-012).", "branch": "agent/auditor/2026-11-14"},
+    {"title": "Directed-beat check no longer crashes", "detail": "A moment's list or missing 'at' gives the rule, not a TypeError (ren-006).", "branch": "agent/auditor/2026-11-14"},
+    {"title": "Analysis for 10-12 Nov Shorts", "detail": "Verdicts for seven Shorts: 4 hits, 2 okay, 1 miss.", "branch": "agent/auditor/2026-11-14"}
+  ],
+  "nextCheck": "2026-11-15",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-14.md"}]
+}

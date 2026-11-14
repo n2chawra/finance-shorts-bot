@@ -11,6 +11,7 @@
 import { PrismaClient, type Prisma } from "@prisma/client";
 
 import { KINDS, analyticsStartDay, breakdownRows, parseCsv, queryOf, rangeStart, reachRows, type Format } from "./lib/analytics.ts";
+import { replaceWhere, replaceableKinds } from "./lib/breakdowns.ts";
 import { notify, resolve } from "./lib/notify.ts";
 import { istDay } from "./lib/publishing.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
@@ -19,22 +20,27 @@ import { accessToken, comments, report } from "./lib/youtube.ts";
 const DAY_MS = 86_400_000;
 const CHANNEL_RANGES: [number, Format[]][] = [[7, ["all"]], [28, ["all", "short", "long"]], [90, ["all", "short", "long"]], [365, ["all"]]];
 
-async function saveBreakdowns(prisma: PrismaClient, scope: string, rows: Prisma.BreakdownCreateManyInput[]): Promise<void> {
-  await prisma.$transaction([prisma.breakdown.deleteMany({ where: { scope } }), prisma.breakdown.createMany({ data: rows })]);
+/** Replaces the stored rows of `kinds` in `scope` (only the kinds that were fetched; wrk-012). */
+async function saveBreakdowns(prisma: PrismaClient, scope: string, rows: Prisma.BreakdownCreateManyInput[], kinds: readonly string[]): Promise<void> {
+  if (!kinds.length) return;
+  await prisma.$transaction([prisma.breakdown.deleteMany({ where: replaceWhere(scope, kinds) }), prisma.breakdown.createMany({ data: rows })]);
 }
 
 async function fetchScope(token: string, scope: string, opts: { startDate: string; endDate: string; video?: string; format?: Format }, perVideo: boolean, errors: string[]) {
   const out: Prisma.BreakdownCreateManyInput[] = [];
+  const attempted: string[] = [], failed: string[] = [];
   for (const k of KINDS) {
     if (perVideo && !k.perVideo) continue;
+    attempted.push(k.kind);
     try {
       const rows = breakdownRows(k, await report(token, queryOf(k, opts)));
       out.push(...rows.map((r) => ({ scope, kind: k.kind, key: r.key, views: r.views, watchMinutes: r.watchMinutes, share: r.share, extra: r.extra ?? undefined })));
     } catch (e) {
       errors.push(`${scope} ${k.kind}: ${e instanceof Error ? e.message : e}`);
+      failed.push(k.kind);
     }
   }
-  return out;
+  return { rows: out, kinds: replaceableKinds(attempted, failed) };
 }
 
 // ---- Reporting API ----
@@ -78,7 +84,7 @@ async function reach(prisma: PrismaClient, token: string): Promise<string> {
       rows.push({ scope: "reach", kind: "videoDay", key, views: x.impressions, share: x.ctr });
     }
   }
-  await saveBreakdowns(prisma, "reach", rows);
+  await saveBreakdowns(prisma, "reach", rows, ["videoDay"]);
   // put them on the daily rows right away (stats.ts keeps them on later runs)
   const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null } }, select: { id: true, youtubeId: true } });
   const byYt = new Map(uploads.map((u) => [u.youtubeId!, u.id]));
@@ -101,8 +107,8 @@ async function main(): Promise<void> {
     for (const [days, formats] of CHANNEL_RANGES) {
       for (const format of formats) {
         const scope = `channel:${format}:${days}`;
-        const rows = await fetchScope(token, scope, { startDate: rangeStart(end, days), endDate: end, format }, false, errors);
-        await saveBreakdowns(prisma, scope, rows);
+        const { rows, kinds } = await fetchScope(token, scope, { startDate: rangeStart(end, days), endDate: end, format }, false, errors);
+        await saveBreakdowns(prisma, scope, rows, kinds);
         channelRows += rows.length;
       }
     }
@@ -117,8 +123,8 @@ async function main(): Promise<void> {
       const scope = `video:${u.videoId}`;
       const have = await prisma.breakdown.count({ where: { scope } });
       if (!recent && !sunday && have) continue;
-      const rows = await fetchScope(token, scope, { startDate: start, endDate: end, video: u.youtubeId! }, true, errors);
-      await saveBreakdowns(prisma, scope, rows);
+      const { rows, kinds } = await fetchScope(token, scope, { startDate: start, endDate: end, video: u.youtubeId! }, true, errors);
+      await saveBreakdowns(prisma, scope, rows, kinds);
       videoRows += rows.length;
       videosDone++;
     }

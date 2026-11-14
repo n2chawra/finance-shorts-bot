@@ -4,8 +4,15 @@
       "key": "data-audit-late",
       "severity": "info",
       "title": "Tonight's auditor ran before today's data audit",
-      "detail": "The auditor started at 22:03 IST (16:33 UTC) and metrics/data-audit.json was from 11 Nov 16:21 UTC (24 h old). Today's Data audit run had not started yet: GitHub has been starting the 13:53 IST cron between 21:58 and 00:25 IST (16:19-18:55 UTC) for three days, so the dashboard-vs-YouTube check was skipped again. Yesterday's audit: 0 errors, 0 warnings across 55 checked videos.",
-      "fix": "1. Nothing broke; the audit lands later tonight. 2. To have the auditor check it each night, either trigger Data audit from the Netlify heartbeat like Publish, or move the auditor routine to 01:30 IST in claude.ai → Code → Routines (workflows and schedules are owner-only)."
+      "detail": "The auditor started at 19:49 IST (14:19 UTC) and metrics/data-audit.json was from 13 Nov 16:34 UTC (22 h old). Today's Data audit run had not started: GitHub has started the 13:53 IST cron at 16:19-16:53 UTC the last three days. The dashboard-vs-YouTube check was skipped. Yesterday's audit had 2 errors: v-20261112-01 (dashboard 31 views, YouTube 40) and v-20261112-02 (240 vs 276) right after a live refresh; the 13 Nov commit 'Views match YouTube and never jump down and back' may have fixed them, and tomorrow's audit will show it.",
+      "fix": "1. Nothing broke; the audit lands later tonight. 2. To have the auditor check it each run, trigger Data audit from the Netlify heartbeat like Publish, or schedule the auditor after about 23:30 IST in claude.ai → Code → Routines."
+    },
+    {
+      "key": "renderer-network",
+      "severity": "warning",
+      "title": "renderer/thumbs.py downloads from YouTube, against the no-network rule",
+      "detail": "search_refs scrapes YouTube's search page and fetch_thumb downloads thumbnails from i.ytimg.com, both inside renderer/. CLAUDE.md says the renderer never uses the network, and the guard blocks any agent branch that adds such a line there. The code reached main directly, so the guard never checked it. Last night's auditor branch (agent/auditor/2026-11-14, a breakdowns fix) was blocked because its new test in renderer/tests mentioned the download.",
+      "fix": "Choose one: 1. Move search_refs, fetch_thumb and refs_sheet into generator/thumb_refs.py (routine-side, where research tools belong) and import them from there; or 2. if the renderer should keep them, say so in CLAUDE.md, so agents know the exception."
     },
     {
       "key": "settings-all-or-nothing",
