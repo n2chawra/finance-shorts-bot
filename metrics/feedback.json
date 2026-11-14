@@ -1,7 +1,45 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
+  "open": 2,
   "notes": [
+    {
+      "id": "cmwghakuh0001jt09elbe2913",
+      "kind": "wrong",
+      "area": null,
+      "text": "i don't think this topic would be loved or liked to watch. this does not relate to global audience who doesnt know about costco will leave.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-14T14:05:50.729Z",
+      "video": {
+        "id": "v-20261114-02",
+        "title": "Costco's profit was $9.23B. The card paid 64% of it",
+        "format": "short",
+        "status": "published",
+        "story": "how_they_make_money",
+        "shape": "hidden-payer",
+        "hookStyle": "secret",
+        "hook": "Costco's whole profit last year was {profit_total}."
+      }
+    },
+    {
+      "id": "cmwgh7m4j0001l509u9pwwuce",
+      "kind": "improve",
+      "area": "script",
+      "text": "the script is not actually making people engaged knowing how casino earns or make them curious about something they dont know about casino which is negetive of this video. even when the animation is superb the script makes the video non-engaging, non-curious.\n\ngive more effort on script as well so that users stays the whole video and gets curiosity to see the video",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-14T14:03:32.419Z",
+      "video": {
+        "id": "v-20261114-03",
+        "title": "The Las Vegas Strip keeps $16,772 every minute 🎰",
+        "format": "short",
+        "status": "published",
+        "story": "money_scale",
+        "shape": "the-zoom-in",
+        "hookStyle": "shock_number",
+        "hook": "The Las Vegas Strip keeps {min_per_part} every minute."
+      }
+    },
     {
       "id": "cmwehc09b0001jh09wy0mu73p",
       "kind": "improve",
