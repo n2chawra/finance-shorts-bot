@@ -63,3 +63,11 @@ def test_malformed_reason_or_demand_is_a_problem_not_a_crash():
     p = plan("local", "INR")
     p["topic"]["reach_reason"] = "Diwali"
     assert reach.check_plan(p, [], TODAY, "short")
+
+
+def test_a_one_country_brand_is_not_global():
+    """Owner, 2026-11-14: viewers who don't know Costco leave."""
+    p = plan("global") | {"subject": "Costco"}
+    assert any("one country" in x for x in reach.check_plan(p, [], TODAY, "short"))
+    assert reach.check_plan(plan("global") | {"subject": "McDonald's"}, [], TODAY, "short") == []
+    assert reach.check_plan(plan("global") | {"subject": "Target audience"}, [], TODAY, "short") == []

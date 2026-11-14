@@ -18,6 +18,7 @@ History written before this rule has no `reach`; only entries that carry one are
 """
 from __future__ import annotations
 
+import re
 from datetime import date, timedelta
 
 from . import history
@@ -29,6 +30,15 @@ LOCAL_PER_DAY = {"short": 1}            # long videos are 2 a week, the window c
 LOCAL_DEMAND_VIEWS = 1_000_000
 OCCASION_BEFORE = 14                    # an occasion video may come up to two weeks early
 OCCASION_AFTER = 1                      # ...and the day after
+
+# Owner, 2026-11-14 ("wrong", on v-20261114-02, the Costco Short): "this does not relate to global audience
+# who doesnt know about costco will leave". A brand that trades mainly in one country is a local subject, however
+# big it is there: a viewer in India, Nigeria or the Philippines has never stood in its queue. Global subjects are
+# ones people use or know everywhere (McDonald's, Apple, Netflix, Coca-Cola, Nike, Messi, Musk).
+ONE_COUNTRY = re.compile(r"\b(costco|walmart|target corp|kroger|trader joe'?s|chipotle|dollar general|dollar tree|"
+                         r"home depot|lowe'?s|best buy|walgreens|cvs|sam'?s club|chick-fil-a|whole foods|in-n-out|publix|"
+                         r"wendy'?s|taco bell|dunkin'?|panera|waffle house|wawa|sheetz|buc-ee'?s|aldi us|"
+                         r"jio|reliance retail|d-?mart|flipkart|zomato|swiggy|tesco|sainsbury'?s|greggs)\b", re.I)
 
 
 def reach_of(entry: dict) -> str | None:
@@ -68,6 +78,12 @@ def check_plan(plan: dict, entries: list[dict], today: str, fmt: str) -> list[st
     if reach == "global":
         if plan.get("currency") != "USD":
             out.append("a global video is told in USD; rupees, pounds or euros make it local")
+        named = " ".join(str(x) for x in (plan.get("subject"), topic.get("title"), plan.get("title")) if x)
+        m = ONE_COUNTRY.search(named)
+        if m:
+            out.append(f"{m.group(0)!r} trades mainly in one country, so most of the world has never used it and will swipe "
+                       f"(owner, 2026-11-14, on the Costco Short): pick a subject people know everywhere (McDonald's, Apple, "
+                       f"Netflix, Coca-Cola, a world-famous person), or make it a local video with a reason")
         return out
     why = topic.get("reach_reason")
     why = why if isinstance(why, dict) else {}

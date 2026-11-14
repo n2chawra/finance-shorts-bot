@@ -89,6 +89,10 @@ salary really leaves you, which money level you are on.
    banks, casinos, airlines), how the rich think, borrow and avoid selling, money at an unimaginable scale, and
    universal mechanics (compounding, debt, inflation). No country's tax rules, products or festivals. Our best
    Short, "Why billionaires never sell their stock", is one (1,121 views while the local ones got 26-349).
+   **Known everywhere, not just big** (owner, 2026-11-14, on the Costco Short: "who doesnt know about
+   costco will leave"): ask whether a viewer in India, Nigeria or the Philippines has used or heard of the
+   subject. A brand that trades mainly in one country (Costco, Walmart, Target, Chipotle, Flipkart, Tesco)
+   is local however big it is there; `check-plan` fails one in a global plan.
    A **local** video (`"local"`: an India story in rupees with Indian life, or a US one with a 401(k),
    an IRS refund, Black Friday) is fine only with `topic.reach_reason`: an occasion within two weeks
    (`{"kind": "occasion", "name": "Diwali", "date": "2026-11-08"}`) or a local reference video with
