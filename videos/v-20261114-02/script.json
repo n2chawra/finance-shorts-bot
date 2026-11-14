@@ -1,0 +1,821 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 59071,
+ "story": "how_they_make_money",
+ "shape": "hidden-payer",
+ "currency": "USD",
+ "style": {
+  "palette": "mint",
+  "genre": "pop",
+  "key": "D",
+  "bpm": 112,
+  "look": {
+   "stage": "street",
+   "header": "sticky",
+   "holder": "receipt",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "Would you renew your card? Comment",
+ "feed_id": "2026-11-02-costco-barely-profits-on-the-cart",
+ "narrator": "am_michael",
+ "facts": [
+  {
+   "label": "Costco's membership fee revenue in fiscal 2026",
+   "value": 5907,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-08-30",
+   "source": "Costco Wholesale",
+   "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
+  },
+  {
+   "label": "Costco's net income in fiscal 2026",
+   "value": 9226,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-08-30",
+   "source": "Costco Wholesale",
+   "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
+  },
+  {
+   "label": "Costco's net sales in fiscal 2026",
+   "value": 297247,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-08-30",
+   "source": "Costco Wholesale",
+   "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
+  },
+  {
+   "label": "Costco's operating income in fiscal 2026",
+   "value": 11685,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-08-30",
+   "source": "Costco Wholesale",
+   "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf"
+  }
+ ],
+ "maths": [
+  {
+   "name": "fees",
+   "kind": "share",
+   "total": 5907000000,
+   "parts": 1,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "profit",
+   "kind": "share",
+   "total": 9226000000,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  },
+  {
+   "name": "sales",
+   "kind": "share",
+   "total": 297247000000,
+   "parts": 1,
+   "facts": {
+    "total": 3
+   }
+  },
+  {
+   "name": "margin",
+   "kind": "rate",
+   "part": 9226000000,
+   "whole": 297247000000,
+   "facts": {
+    "part": 2,
+    "whole": 3
+   }
+  },
+  {
+   "name": "feeshare",
+   "kind": "rate",
+   "part": 5907000000,
+   "whole": 9226000000,
+   "facts": {
+    "part": 1,
+    "whole": 2
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "covered",
+  "sec": 2.4,
+  "words": "The *card* pays",
+  "figure": "{feeshare_pct}",
+  "tag": "Of Costco's profit",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Costco's whole profit last year was {profit_total}.",
+   "events": {
+    "costco": {
+     "word": "Costco's"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "profit": {
+     "word": "profit"
+    },
+    "last": {
+     "word": "last"
+    },
+    "was": {
+     "word": "was"
+    }
+   },
+   "params": {
+    "component": "Hook",
+    "place": [
+     "the Costco warehouse floor at opening"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "profit",
+      "size": "close"
+     },
+     {
+      "at": "last",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "costco",
+      "what": "the forklift sets down the cash pallet under the warehouse sign"
+     },
+     {
+      "at": "whole",
+      "what": "the forklift backs away, the stack settles"
+     },
+     {
+      "at": "profit",
+      "what": "the PROFIT tag swings in with the figure, the camera pushes in"
+     },
+     {
+      "at": "last",
+      "what": "the tag sways, Rohan walks in to look"
+     },
+     {
+      "at": "was",
+      "what": "Rohan stops dead, jaw dropped, the tag flashes"
+     }
+    ],
+    "things": [
+     "steel racks",
+     "cash pallet",
+     "forklift",
+     "profit tag"
+    ],
+    "fig": {
+     "profit": "{profit_total}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "costco"
+    },
+    {
+     "kind": "kaching",
+     "at": "profit"
+    }
+   ]
+  },
+  {
+   "id": "covered",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "And a plastic card covered {feeshare_pct} of it.",
+   "events": {
+    "and": {
+     "word": "And"
+    },
+    "plastic": {
+     "word": "plastic"
+    },
+    "card": {
+     "word": "card"
+    },
+    "covered": {
+     "word": "covered"
+    },
+    "it": {
+     "word": "it"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "plastic"
+    },
+    {
+     "kind": "kaching",
+     "at": "it"
+    }
+   ],
+   "params": {
+    "component": "Covered",
+    "place": "the Costco warehouse floor at opening",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "plastic",
+      "size": "wide"
+     },
+     {
+      "at": "covered",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "and",
+      "what": "a shadow falls across the floor"
+     },
+     {
+      "at": "plastic",
+      "what": "a door-sized membership card crashes down beside the pallet, the floor shakes"
+     },
+     {
+      "at": "covered",
+      "what": "the card's blue floods up the pallet to the share"
+     },
+     {
+      "at": "it",
+      "what": "the share stamps on the flooded part"
+     }
+    ],
+    "things": [
+     "cash pallet",
+     "giant membership card",
+     "share stamp",
+     "profit tag"
+    ],
+    "fig": {
+     "profit": "{profit_total}",
+     "share": "{feeshare_pct}"
+    }
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Not the groceries. So where does all the cart money go?",
+   "events": {
+    "not": {
+     "word": "Not"
+    },
+    "groceries": {
+     "word": "groceries"
+    },
+    "where": {
+     "word": "where"
+    },
+    "cart": {
+     "word": "cart"
+    },
+    "go": {
+     "word": "go"
+    }
+   },
+   "params": {
+    "component": "Aisle",
+    "place": "a grocery aisle of giant packs",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "where",
+      "size": "medium"
+     },
+     {
+      "at": "cart",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "not",
+      "what": "Rohan stops his overflowing cart"
+     },
+     {
+      "at": "groceries",
+      "what": "giant packs tumble into the cart"
+     },
+     {
+      "at": "where",
+      "what": "Rohan looks up, confused, the camera pulls back"
+     },
+     {
+      "at": "go",
+      "what": "dollar notes lift out of the cart and drift away down the aisle"
+     }
+    ],
+    "things": [
+     "shopping cart",
+     "giant packs",
+     "aisle shelves",
+     "dollar notes"
+    ],
+    "fig": {}
+   },
+   "transition": "whip",
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "groceries"
+    },
+    {
+     "kind": "whoosh",
+     "at": "go"
+    }
+   ]
+  },
+  {
+   "id": "sales",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Rohan's cart is one tiny piece of the {sales_total} Costco sold that year.",
+   "events": {
+    "rohan": {
+     "word": "Rohan's"
+    },
+    "tiny": {
+     "word": "tiny"
+    },
+    "piece": {
+     "word": "piece"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "year": {
+     "word": "year"
+    },
+    "costco": {
+     "word": "Costco"
+    },
+    "the": {
+     "word": "the"
+    }
+   },
+   "params": {
+    "component": "Lot",
+    "place": "the Costco parking lot from above",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "tiny",
+      "size": "wide"
+     },
+     {
+      "sec": 3.4,
+      "size": "medium"
+     },
+     {
+      "at": "sold",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rohan",
+      "what": "Rohan's cart rolls out of the doors, tagged with his name"
+     },
+     {
+      "at": "tiny",
+      "what": "the camera pulls back: hundreds of carts fill the lot"
+     },
+     {
+      "at": "piece",
+      "what": "more carts pour out of the doors"
+     },
+     {
+      "at": "the",
+      "what": "the billboard rises on the roof and starts counting"
+     },
+     {
+      "at": "costco",
+      "what": "the red roof sign lights up"
+     },
+     {
+      "at": "sold",
+      "what": "the billboard lands on the sales figure"
+     }
+    ],
+    "things": [
+     "warehouse roof",
+     "carts",
+     "parked cars",
+     "roof billboard"
+    ],
+    "fig": {
+     "sales": "{sales_total}"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "rohan"
+    },
+    {
+     "kind": "whoosh",
+     "at": "tiny"
+    },
+    {
+     "kind": "kaching",
+     "at": "sold"
+    }
+   ]
+  },
+  {
+   "id": "till",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Yet the whole profit is just {margin_pct} of those sales. Nearly every dollar pays for the goods.",
+   "events": {
+    "yet": {
+     "word": "Yet"
+    },
+    "profit": {
+     "word": "profit"
+    },
+    "sales": {
+     "word": "sales"
+    },
+    "dollar": {
+     "word": "dollar"
+    },
+    "goods": {
+     "word": "goods"
+    }
+   },
+   "params": {
+    "component": "Till",
+    "place": "the checkout lane",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "profit",
+      "size": "close"
+     },
+     {
+      "at": "dollar",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "yet",
+      "what": "the till prints and a long receipt unrolls"
+     },
+     {
+      "at": "profit",
+      "what": "a thin green strip at the end of the receipt lights up, the share tag stamps on it"
+     },
+     {
+      "at": "sales",
+      "what": "the strip flashes"
+     },
+     {
+      "at": "dollar",
+      "what": "coins pour out of the till along the belt"
+     },
+     {
+      "at": "goods",
+      "what": "the coins land in the supplier's truck, the cashier shrugs"
+     }
+    ],
+    "things": [
+     "till",
+     "receipt",
+     "conveyor belt",
+     "coins",
+     "supplier truck",
+     "cashier"
+    ],
+    "fig": {
+     "margin": "{margin_pct}"
+    }
+   },
+   "transition": "match",
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "yet"
+    },
+    {
+     "kind": "ding",
+     "at": "sales"
+    },
+    {
+     "kind": "whoosh",
+     "at": "dollar"
+    }
+   ]
+  },
+  {
+   "id": "door",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The real money waits at the door. Every member pays for the card, every single year.",
+   "events": {
+    "real": {
+     "word": "real"
+    },
+    "door": {
+     "word": "door"
+    },
+    "member": {
+     "word": "member"
+    },
+    "card": {
+     "word": "card"
+    },
+    "single": {
+     "word": "single"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "params": {
+    "component": "Door",
+    "place": "the membership desk at the entrance",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "member",
+      "size": "medium"
+     },
+     {
+      "at": "year",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "real",
+      "what": "the entrance doors slide open, light spills out"
+     },
+     {
+      "at": "door",
+      "what": "a long line of members waits at the desk"
+     },
+     {
+      "at": "member",
+      "what": "Rohan hands over money, a card pops out of the printer"
+     },
+     {
+      "at": "card",
+      "what": "cards fly across the desk into hands down the line"
+     },
+     {
+      "at": "year",
+      "what": "the wall calendar flips to a new year, RENEW stamps on it and the line pays again"
+     }
+    ],
+    "things": [
+     "membership desk",
+     "card printer",
+     "queue of members",
+     "wall calendar",
+     "cash drawer"
+    ],
+    "fig": {}
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "real"
+    },
+    {
+     "kind": "kaching",
+     "at": "member"
+    },
+    {
+     "kind": "tick",
+     "at": "year"
+    }
+   ]
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Those cards brought in {fees_total} in one year.",
+   "events": {
+    "those": {
+     "word": "Those"
+    },
+    "cards": {
+     "word": "cards"
+    },
+    "brought": {
+     "word": "brought"
+    },
+    "one": {
+     "word": "one"
+    }
+   },
+   "params": {
+    "component": "Vault",
+    "place": "the counting room behind the desk at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "brought",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "those",
+      "what": "a single card slides into a slot in the vault door"
+     },
+     {
+      "at": "cards",
+      "what": "thousands of cards pour down a chute into a mountain"
+     },
+     {
+      "at": "brought",
+      "what": "the camera pulls back, the counter over the vault counts up"
+     },
+     {
+      "at": "one",
+      "what": "the counter lands on the figure, gold light floods the room"
+     }
+    ],
+    "things": [
+     "vault door",
+     "card chute",
+     "mountain of cards",
+     "led counter"
+    ],
+    "fig": {
+     "fees": "{fees_total}"
+    }
+   },
+   "transition": "zoom-through",
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "those"
+    },
+    {
+     "kind": "pop",
+     "at": "cards"
+    },
+    {
+     "kind": "boom",
+     "at": "one"
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "That's {feeshare_pct} of the profit, from a card. The cart is the bait. Would you renew yours?",
+   "events": {
+    "profit": {
+     "word": "profit"
+    },
+    "card": {
+     "word": "card"
+    },
+    "cart": {
+     "word": "cart"
+    },
+    "bait": {
+     "word": "bait"
+    },
+    "would": {
+     "word": "Would"
+    },
+    "renew": {
+     "word": "renew"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "place": "the Costco warehouse floor at opening",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "bait",
+      "size": "medium"
+     },
+     {
+      "at": "renew",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "profit",
+      "what": "the cash pallet is back, the card's colour rises up it and the share stamps on it"
+     },
+     {
+      "at": "card",
+      "what": "PAYS stamps on the giant card"
+     },
+     {
+      "at": "bait",
+      "what": "Rohan's cart rolls past, a fishing hook dangling over it"
+     },
+     {
+      "at": "renew",
+      "what": "Rohan holds his card up to the camera, the push leads back into the opening frame"
+     }
+    ],
+    "things": [
+     "cash pallet",
+     "giant membership card",
+     "share stamp",
+     "shopping cart",
+     "fishing hook"
+    ],
+    "fig": {
+     "share": "{feeshare_pct}",
+     "profit": "{profit_total}"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "card"
+    },
+    {
+     "kind": "whoosh",
+     "at": "bait"
+    },
+    {
+     "kind": "ding",
+     "at": "renew"
+    }
+   ]
+  }
+ ]
+}

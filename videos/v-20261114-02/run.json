@@ -1,0 +1,153 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-14T02:37:56.788263+00:00",
+    "finishedAt": "2026-11-14T02:37:56.788263+00:00",
+    "notes": [
+      "style.genre must be one of lofi, pop, cinematic, synthwave, acoustic"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:38:00.617310+00:00",
+    "finishedAt": "2026-11-14T02:38:00.617310+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:39:26.478487+00:00",
+    "finishedAt": "2026-11-14T02:39:26.478487+00:00",
+    "notes": [
+      "22 figures computed from inputs; 22 cross-checked against closed-form formulas.",
+      "warning: beat 'sales' runs 5.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:39:32.820554+00:00",
+    "finishedAt": "2026-11-14T02:39:32.820554+00:00",
+    "notes": [
+      "22 figures computed from inputs; 22 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-14T02:44:55.088607+00:00",
+    "finishedAt": "2026-11-14T02:45:35.226942+00:00",
+    "notes": [
+      "text 'MEMBERS' at 24.1 s runs outside the frame",
+      "2.6 s with nothing new on screen in beat 'sales' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:45:45.303621+00:00",
+    "finishedAt": "2026-11-14T02:45:45.303621+00:00",
+    "notes": [
+      "All 4 facts confirmed on Costco's FY2026 results PDF (52 wks to 30 Aug 2026): net sales 297,247M, membership fees 5,907M, operating income 11,685M, net income 9,226M; topic verify items met (64% only as fees/net income rate, no 2%/$65 assumptions used); current (latest fiscal year); no advice/imperatives, description ends with disclaimer. Note: fees are revenue compared with after-tax profit (~51% of operating income) - framed as 'covered 64%', acceptable and matches the verify rule."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:46:53.434774+00:00",
+    "finishedAt": "2026-11-14T02:47:17.218298+00:00",
+    "notes": [
+      "34 s, mint/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:48:01.298953+00:00",
+    "finishedAt": "2026-11-14T02:48:25.095172+00:00",
+    "notes": [
+      "34 s, mint/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:48:45.852589+00:00",
+    "finishedAt": "2026-11-14T02:49:09.255657+00:00",
+    "notes": [
+      "34 s, mint/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-14T02:50:24.380628+00:00",
+    "finishedAt": "2026-11-14T02:50:24.380628+00:00",
+    "notes": [
+      "[scene] Till beat (directed Till), 18.0s: nearly empty frame - a flat grey wall, a bare belt with a green strip and a cart cut off at the left edge; no till, no cashier, and the 3.1% figure is only in the captions (the PROFIT 3.1% tag only arrives ~20s). The camera's close at 'profit' frames empty wall; keep the till, cashier and the share tag in shot when 3.1% is spoken.",
+      "[scene] Vault beat (directed Vault), 26.0s: the LED counter sits half off the top edge behind the channel badge, faded, reading '$0.00B'; the card mountain is a tiny pile under the captions. The counter must be fully in frame and readable before it counts (it is fine by 28.0s).",
+      "[scene] Payoff beat (directed Payoff), 30-34.4s: the 64% share never appears on a thing (no stamp on the giant card or the pallet) - the payoff figure is only in the captions, so it does not read on mute; at 34.0s Rohan is cut by the right edge under the right-hand buttons and the giant card is cropped to 'COST', so 'Rohan holds his card up to the camera' is not visible. Stamp 64% on the card/flooded pallet and frame Rohan and the card inside the safe area.",
+      "[script] Aisle beat (promise, 'a grocery aisle of giant packs'), 8.0s: the place is a bare grey corridor with only slivers of shelves at the edges and a flat back wall; no giant packs on shelves and no notes drifting - mostly flat background (templated look). Use a wider aisle shot with full shelves of giant packs.",
+      "[scene] Door beat, 22-24s: wall signs cropped at the frame edges ('EMBERS', 'NE'/'LANE THR' at 16-20s); minor, but the MEMBERS sign is unreadable."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:51:27.259683+00:00",
+    "finishedAt": "2026-11-14T02:51:50.742075+00:00",
+    "notes": [
+      "34 s, mint/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-14T02:52:38.508338+00:00",
+    "finishedAt": "2026-11-14T02:52:38.508338+00:00",
+    "notes": [
+      "[scene] Vault beat (directed Vault), 26.0s: the bigger card pile now rises into the caption band - MEMBER cards sit on top of 'brought in', so the caption is partly hidden and the cards' MEMBER labels run over its text. Keep the pile below the caption band (or lower/smaller) until the camera pulls back.",
+      "[scene] Door beat (directed Door), 25.0s, at 'every single year': the close on the calendar leaves a mostly flat wall - 'ANCE' and 'BER' signs cut by the left edge, the queue reduced to dark heads at the bottom edge, nobody paying and the calendar not flipping in shot. Frame the calendar with the desk and the queue paying again."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:53:15.841613+00:00",
+    "finishedAt": "2026-11-14T02:53:38.549583+00:00",
+    "notes": [
+      "34 s, mint/pop (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:55:17.022720+00:00",
+    "finishedAt": "2026-11-14T02:55:17.022720+00:00",
+    "notes": [
+      "Round 3: every directed beat has a place, someone acting and its figure on a thing ($9.23B tag, 64% on pallet, $297.25B billboard, 3.1% tag, $5.91B counter); vault close has nothing in the caption band; door close shows calendar flip + RENEW, queue paying; disclaimer at end; layout/craft empty. Minor: at 24.75-25.5s the queue's raised MEMBER cards cover the extras' faces and overlap each other (props, meaning still clear)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:55:42.197121+00:00",
+    "finishedAt": "2026-11-14T02:57:02.311573+00:00",
+    "notes": [
+      "34 s, mint/pop, peak -1.0 dB, mean -16.4 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-14T02:57:34.667619+00:00",
+    "finishedAt": "2026-11-14T02:57:34.667619+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -1,0 +1,119 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 59071,
+  "duration_sec": 34,
+  "tempo": 1.2,
+  "style": {
+    "palette": "mint",
+    "genre": "pop",
+    "key": "D",
+    "bpm": 112,
+    "look": {
+      "stage": "street",
+      "header": "sticky",
+      "holder": "receipt",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Costco's whole profit last year was $9.23B.",
+        "start": 0.3,
+        "seconds": 3.4,
+        "window": 3.93,
+        "fill": 0.865
+      },
+      {
+        "scene": "covered",
+        "text": "And a plastic card covered 64% of it.",
+        "start": 4.23,
+        "seconds": 2.32,
+        "window": 2.73,
+        "fill": 0.85
+      },
+      {
+        "scene": "promise",
+        "text": "Not the groceries. So where does all the cart money go?",
+        "start": 6.97,
+        "seconds": 2.6,
+        "window": 3.07,
+        "fill": 0.847
+      },
+      {
+        "scene": "sales",
+        "text": "Rohan's cart is one tiny piece of the $297.25B Costco sold that year.",
+        "start": 10.03,
+        "seconds": 5.5,
+        "window": 6.1,
+        "fill": 0.902
+      },
+      {
+        "scene": "till",
+        "text": "Yet the whole profit is just 3.1% of those sales. Nearly every dollar pays for the goods.",
+        "start": 16.13,
+        "seconds": 4.71,
+        "window": 5.27,
+        "fill": 0.894
+      },
+      {
+        "scene": "door",
+        "text": "The real money waits at the door. Every member pays for the card, every single year.",
+        "start": 21.4,
+        "seconds": 3.82,
+        "window": 4.23,
+        "fill": 0.903
+      },
+      {
+        "scene": "turn",
+        "text": "Those cards brought in $5.91B in one year.",
+        "start": 25.63,
+        "seconds": 2.96,
+        "window": 3.37,
+        "fill": 0.878
+      },
+      {
+        "scene": "payoff",
+        "text": "That's 64% of the profit, from a card. The cart is the bait. Would you renew yours?",
+        "start": 29.0,
+        "seconds": 4.59,
+        "window": 5.17,
+        "fill": 0.888
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "real-subject-first-frame": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.4,
+    "lufs": -15.0,
+    "music_under_voice_db": 22.1
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 5.2,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
