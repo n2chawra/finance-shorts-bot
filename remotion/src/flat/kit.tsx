@@ -188,11 +188,12 @@ export const Ball: React.FC<{ x: number; y: number; r: number; fill: string; sw?
 
 /** Words drawn in the scene (on a sign, a screen, a slate). Figures and labels a viewer must read are at
  * least the frame's minimum size (44 px in a Short, 30 in a long video); small print on a prop is `deco`
- * (the layout probe skips it, nobody has to read it). */
+ * (the layout probe skips its size and the bottom zone, nobody has to read it; but print as big as a
+ * readable label must stay inside the frame: "ONE MINUTE" cut to "IE MINUTE" by a push-in, 2026-11-14). */
 export const Txt: React.FC<{ x: number; y: number; size: number; fill: string; children: React.ReactNode; weight?: number; anchor?: "start" | "middle" | "end"; rotate?: number; glow?: string; stroke?: string; deco?: boolean }> = ({
   x, y, size, fill, children, weight = 800, anchor = "middle", rotate, glow, stroke, deco,
 }) => (
-  <g data-probe={deco ? "skip" : undefined}>
+  <g data-probe={deco ? "deco" : undefined}>
     <text x={x} y={y} fontFamily={FONT} fontWeight={weight} fontSize={size} fill={fill} textAnchor={anchor} dominantBaseline="central"
       transform={rotate ? `rotate(${rotate} ${x} ${y})` : undefined}
       style={glow ? { filter: `drop-shadow(0 0 ${size * 0.25}px ${glow})` } : undefined}

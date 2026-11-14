@@ -156,3 +156,8 @@ fix any beat near a limit as well.
 - Read the range from `config/settings.json` (`lengthMinSec`–`lengthMaxSec` for Shorts,
   `longLengthMinSec`–`longLengthMaxSec` for long videos). It changes. Count words at about 200 a
   minute (Shorts) or 180 a minute (long, tempo 1.25 since 2026-11-04), and check `lint`'s estimate.
+- **Signs and labels cut by a push-in** (QA's top failure, 29 videos in 14 days; 2026-11-14): print on a
+  prop (`Txt deco`, a sign, a lane board) as big as a label is now measured by the layout gate, and fails
+  when the camera's zoomed window cuts it ("MEMBERS" read "EMBERS" on the Costco Short). Keep signs at
+  least 60 px inside the window the push-in ends on (the window is the frame divided by the zoom, around
+  the camera's centre), or let the camera leave them wholly behind.

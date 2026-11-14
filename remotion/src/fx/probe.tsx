@@ -7,7 +7,7 @@
 import { useEffect, useState } from "react";
 import { continueRender, delayRender } from "remotion";
 
-export interface ProbeItem { t: string; x: number; y: number; w: number; h: number; fs: number }
+export interface ProbeItem { t: string; x: number; y: number; w: number; h: number; fs: number; deco?: boolean }
 
 function textNodes(el: Element): Text[] {
   const out: Text[] = [];
@@ -42,7 +42,9 @@ function measure(): ProbeItem[] {
       const layoutH = el instanceof HTMLElement ? el.offsetHeight : r.height;
       fs = layoutH > 0 ? css * (r.height / layoutH) : css;
     }
-    out.push({ t: t.slice(0, 60), x: Math.round(g.left), y: Math.round(g.top), w: Math.round(g.width), h: Math.round(g.height), fs: Math.round(fs * 10) / 10 });
+    // `deco` print on a prop (flat kit Txt deco) is measured too, so a big one cut at the frame edge is caught
+    const deco = el.closest('[data-probe="deco"]') ? { deco: true } : {};
+    out.push({ t: t.slice(0, 60), x: Math.round(g.left), y: Math.round(g.top), w: Math.round(g.width), h: Math.round(g.height), fs: Math.round(fs * 10) / 10, ...deco });
   });
   return out;
 }

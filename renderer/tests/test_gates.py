@@ -72,3 +72,12 @@ def test_a_render_starts_from_empty_stills_and_probe_folders(tmp_path) -> None:
     (old/"f14145.jpg").write_bytes(b"old end card")
     assert remotion.fresh(old) == old and old.is_dir() and list(old.iterdir()) == []
     assert remotion.fresh(tmp_path/"probe").is_dir()
+
+
+def test_deco_print_fails_only_when_big_and_cut_at_the_edge() -> None:
+    """2026-11-14: a push-in cut the clock's deco 'ONE MINUTE' to 'IE MINUTE' and the probe skipped it."""
+    big_cut = box("ONE MINUTE", x=-60, w=260, fs=48) | {"deco": True}
+    small_cut = box("PRINT", x=-20, w=100, fs=24) | {"deco": True}
+    small_low = box("LOW", y=1850, fs=20) | {"deco": True}
+    problems = layout_problems([{"frame": 0, "items": [big_cut, small_cut, small_low]}], "short", 1080, 1920)
+    assert len(problems) == 1 and "'ONE MINUTE'" in problems[0] and "outside the frame" in problems[0]
