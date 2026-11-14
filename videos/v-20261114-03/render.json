@@ -1,0 +1,111 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 88152,
+  "duration_sec": 31,
+  "tempo": 1.2,
+  "style": {
+    "palette": "night",
+    "genre": "synthwave",
+    "key": "E",
+    "bpm": 100,
+    "look": {
+      "stage": "night",
+      "header": "chalk",
+      "holder": "sign",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The Las Vegas Strip keeps $16,772 every minute.",
+        "start": 0.3,
+        "seconds": 3.71,
+        "window": 4.17,
+        "fill": 0.89
+      },
+      {
+        "scene": "hour",
+        "text": "How big does that get? Every hour, about $1M.",
+        "start": 4.47,
+        "seconds": 2.72,
+        "window": 3.27,
+        "fill": 0.832
+      },
+      {
+        "scene": "day",
+        "text": "Every day, an armored truck's worth: $24.2M.",
+        "start": 7.73,
+        "seconds": 3.4,
+        "window": 3.93,
+        "fill": 0.865
+      },
+      {
+        "scene": "year",
+        "text": "Over the whole year, the Strip's casinos kept $8.82B.",
+        "start": 11.67,
+        "seconds": 3.38,
+        "window": 3.9,
+        "fill": 0.867
+      },
+      {
+        "scene": "slots",
+        "text": "And which game earns most? Slots alone brought in $4.95B, 56% of it.",
+        "start": 15.57,
+        "seconds": 5.19,
+        "window": 5.67,
+        "fill": 0.915
+      },
+      {
+        "scene": "turn",
+        "text": "And that's not what people bet. It's what was kept after paying every winner.",
+        "start": 21.23,
+        "seconds": 2.99,
+        "window": 3.47,
+        "fill": 0.862
+      },
+      {
+        "scene": "payoff",
+        "text": "Play this twice, and the Strip has kept another $16,772. Would you still play?",
+        "start": 24.7,
+        "seconds": 5.16,
+        "window": 5.63,
+        "fill": 0.917
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "real-subject-first-frame": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.6,
+    "lufs": -15.1,
+    "music_under_voice_db": 21.9
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 12.862,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

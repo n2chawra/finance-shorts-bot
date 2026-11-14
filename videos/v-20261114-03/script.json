@@ -1,0 +1,738 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 88152,
+ "story": "money_scale",
+ "shape": "the-zoom-in",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "synthwave",
+  "key": "E",
+  "bpm": 100,
+  "look": {
+   "stage": "night",
+   "header": "chalk",
+   "holder": "sign",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "shock_number",
+ "cta": "Guess how much it keeps while you sleep? Comment",
+ "feed_id": "2026-11-12-vegas-keeps-8-billion-even-when-you-win",
+ "narrator": "am_michael",
+ "facts": [
+  {
+   "label": "Las Vegas Strip gaming win, 2025",
+   "value": 8815212,
+   "unit": "money_thousand",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Nevada Gaming Control Board",
+   "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/"
+  },
+  {
+   "label": "Nevada statewide gaming win, 2025 (a record)",
+   "value": 15798466,
+   "unit": "money_thousand",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Nevada Gaming Control Board",
+   "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/"
+  },
+  {
+   "label": "Strip slot win, 2025",
+   "value": 4.95,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Nevada Gaming Control Board",
+   "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/"
+  },
+  {
+   "label": "Strip table, sports, race and bingo win, 2025",
+   "value": 3.86,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Nevada Gaming Control Board",
+   "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/"
+  }
+ ],
+ "maths": [
+  {
+   "name": "min",
+   "kind": "share",
+   "total": 8815212000,
+   "parts": 525600,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "hour",
+   "kind": "share",
+   "total": 8815212000,
+   "parts": 8760,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "day",
+   "kind": "share",
+   "total": 8815212000,
+   "parts": 365,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "slots",
+   "kind": "rate",
+   "part": 4950000000,
+   "whole": 8815212000,
+   "facts": {
+    "part": 3,
+    "whole": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.6,
+  "words": "Vegas keeps *this*",
+  "figure": "{min_per_part}",
+  "tag": "Every minute",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "The Las Vegas Strip keeps {min_per_part} every minute.",
+   "events": {
+    "vegas": {
+     "word": "Vegas"
+    },
+    "strip": {
+     "word": "Strip"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "minute": {
+     "word": "minute"
+    }
+   },
+   "params": {
+    "component": "Hook",
+    "place": "the Las Vegas Strip at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "keeps",
+      "size": "close"
+     },
+     {
+      "at": "minute",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "vegas",
+      "what": "the casino towers flicker on along the Strip"
+     },
+     {
+      "at": "strip",
+      "what": "the giant slot machine's reels start spinning"
+     },
+     {
+      "at": "keeps",
+      "what": "the jackpot screen lands on the figure, coins burst"
+     },
+     {
+      "at": "minute",
+      "what": "the clock's second hand ticks round beside the screen"
+     }
+    ],
+    "things": [
+     "casino towers",
+     "giant slot machine",
+     "jackpot screen",
+     "clock",
+     "gambler"
+    ],
+    "fig": {
+     "min": "{min_per_part}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "strip"
+    },
+    {
+     "kind": "kaching",
+     "at": "keeps"
+    },
+    {
+     "kind": "tick",
+     "at": "minute"
+    }
+   ]
+  },
+  {
+   "id": "hour",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "How big does that get? Every hour, about {hour_per_part}.",
+   "events": {
+    "big": {
+     "word": "big"
+    },
+    "every": {
+     "word": "Every"
+    },
+    "hour": {
+     "word": "hour"
+    },
+    "get": {
+     "word": "get"
+    }
+   },
+   "params": {
+    "component": "Hour",
+    "place": "the cashier's cage",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "every",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "big",
+      "what": "the cashier flips an hourglass"
+     },
+     {
+      "at": "get",
+      "what": "sand pours, chips start stacking on the counter"
+     },
+     {
+      "at": "every",
+      "what": "the camera pulls back, the chip tower climbs past the cashier"
+     },
+     {
+      "at": "hour",
+      "what": "the hourly figure stamps on the top chip"
+     }
+    ],
+    "things": [
+     "hourglass",
+     "cashier",
+     "chip tower",
+     "cage bars"
+    ],
+    "fig": {
+     "hour": "{hour_per_part}"
+    }
+   },
+   "transition": "whip",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "big"
+    },
+    {
+     "kind": "pop",
+     "at": "every"
+    },
+    {
+     "kind": "kaching",
+     "at": "hour"
+    }
+   ]
+  },
+  {
+   "id": "day",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Every day, an armored truck's worth: {day_per_part}.",
+   "events": {
+    "every": {
+     "word": "Every"
+    },
+    "day": {
+     "word": "day"
+    },
+    "armoured": {
+     "word": "armored"
+    },
+    "truck": {
+     "word": "truck's"
+    },
+    "worth": {
+     "word": "worth"
+    }
+   },
+   "params": {
+    "component": "Truck",
+    "place": "outside a casino at sunrise",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "truck",
+      "size": "medium"
+     },
+     {
+      "at": "worth",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "every",
+      "what": "the sun rises behind the casino"
+     },
+     {
+      "at": "day",
+      "what": "the armoured truck pulls up"
+     },
+     {
+      "at": "armoured",
+      "what": "its back doors swing open"
+     },
+     {
+      "at": "truck",
+      "what": "guards wheel cash bags up the ramp"
+     },
+     {
+      "at": "worth",
+      "what": "the daily figure stamps on the truck's side"
+     }
+    ],
+    "things": [
+     "sunrise",
+     "casino front",
+     "armoured truck",
+     "cash bags",
+     "guards"
+    ],
+    "fig": {
+     "day": "{day_per_part}"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "every"
+    },
+    {
+     "kind": "pop",
+     "at": "armoured"
+    },
+    {
+     "kind": "boom",
+     "at": "worth"
+    }
+   ]
+  },
+  {
+   "id": "year",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Over the whole year, the Strip's casinos kept {day_total}.",
+   "events": {
+    "over": {
+     "word": "Over"
+    },
+    "all": {
+     "word": "whole"
+    },
+    "strip": {
+     "word": "Strip's"
+    },
+    "casinos": {
+     "word": "casinos"
+    },
+    "kept": {
+     "word": "kept"
+    }
+   },
+   "params": {
+    "component": "Desert",
+    "place": "the desert from above",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "all",
+      "size": "wide"
+     },
+     {
+      "at": "kept",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "over",
+      "what": "the camera rises out of the truck's roof"
+     },
+     {
+      "at": "all",
+      "what": "the whole Strip appears, a line of lights in the desert"
+     },
+     {
+      "at": "strip",
+      "what": "the towers light up one by one"
+     },
+     {
+      "at": "casinos",
+      "what": "a giant billboard rises over the Strip"
+     },
+     {
+      "at": "kept",
+      "what": "the billboard counts up to the year's total"
+     }
+    ],
+    "things": [
+     "desert",
+     "the strip from above",
+     "billboard",
+     "towers"
+    ],
+    "fig": {
+     "year": "{day_total}"
+    }
+   },
+   "transition": "zoom-through",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "over"
+    },
+    {
+     "kind": "pop",
+     "at": "casinos"
+    },
+    {
+     "kind": "kaching",
+     "at": "kept"
+    }
+   ]
+  },
+  {
+   "id": "slots",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "And which game earns most? Slots alone brought in {slots_part}, {slots_pct} of it.",
+   "events": {
+    "slot": {
+     "word": "which"
+    },
+    "machines": {
+     "word": "earns"
+    },
+    "alone": {
+     "word": "alone"
+    },
+    "brought": {
+     "word": "in"
+    },
+    "that": {
+     "word": "of"
+    }
+   },
+   "params": {
+    "component": "Slots",
+    "place": "a row of slot machines",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "alone",
+      "size": "medium"
+     },
+     {
+      "sec": 3.8,
+      "size": "close"
+     },
+     {
+      "at": "that",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "slot",
+      "what": "a long row of slot machines lights up"
+     },
+     {
+      "at": "machines",
+      "what": "every lever drops at once"
+     },
+     {
+      "at": "alone",
+      "what": "coins pour from every tray into one bucket"
+     },
+     {
+      "at": "brought",
+      "what": "the bucket's tag reads the slots figure"
+     },
+     {
+      "at": "that",
+      "what": "the gauge beside the bucket fills to the share and its tag stamps"
+     }
+    ],
+    "things": [
+     "slot machines",
+     "levers",
+     "coin bucket",
+     "share meter"
+    ],
+    "fig": {
+     "slots": "{slots_part}",
+     "pct": "{slots_pct}"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "slot"
+    },
+    {
+     "kind": "kaching",
+     "at": "brought"
+    },
+    {
+     "kind": "ding",
+     "at": "that"
+    }
+   ]
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "And that's not what people bet. It's what was kept after paying every winner.",
+   "events": {
+    "and": {
+     "word": "And"
+    },
+    "bet": {
+     "word": "bet"
+    },
+    "kept": {
+     "word": "kept"
+    },
+    "paying": {
+     "word": "paying"
+    },
+    "winner": {
+     "word": "winner"
+    }
+   },
+   "params": {
+    "component": "Roulette",
+    "place": "the roulette table",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "kept",
+      "size": "medium"
+     },
+     {
+      "at": "winner",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "and",
+      "what": "the roulette ball drops onto the wheel"
+     },
+     {
+      "at": "bet",
+      "what": "chips pile onto red"
+     },
+     {
+      "at": "kept",
+      "what": "the croupier rakes the losing chips to the house"
+     },
+     {
+      "at": "paying",
+      "what": "the winner gets paid, a small stack"
+     },
+     {
+      "at": "winner",
+      "what": "the winner cheers, the house pile behind is far bigger"
+     }
+    ],
+    "things": [
+     "roulette wheel",
+     "chips",
+     "rake",
+     "croupier",
+     "winner"
+    ],
+    "fig": {}
+   },
+   "transition": "whip",
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "and"
+    },
+    {
+     "kind": "pop",
+     "at": "bet"
+    },
+    {
+     "kind": "whoosh",
+     "at": "kept"
+    },
+    {
+     "kind": "ding",
+     "at": "winner"
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Play this twice, and the Strip has kept another {min_per_part}. Would you still play?",
+   "events": {
+    "play": {
+     "word": "Play"
+    },
+    "twice": {
+     "word": "twice"
+    },
+    "strip": {
+     "word": "Strip"
+    },
+    "another": {
+     "word": "another"
+    },
+    "would": {
+     "word": "Would"
+    },
+    "still": {
+     "word": "still"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "place": "the Las Vegas Strip at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "another",
+      "size": "medium"
+     },
+     {
+      "at": "still",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "play",
+      "what": "the giant slot machine spins again"
+     },
+     {
+      "at": "twice",
+      "what": "the clock's second hand sweeps round"
+     },
+     {
+      "at": "strip",
+      "what": "the towers flash"
+     },
+     {
+      "at": "another",
+      "what": "the jackpot screen lands on the figure again"
+     },
+     {
+      "at": "would",
+      "what": "Rohan hesitates with a chip"
+     },
+     {
+      "at": "still",
+      "what": "the camera pushes into the jackpot screen, back to the opening"
+     }
+    ],
+    "things": [
+     "giant slot machine",
+     "jackpot screen",
+     "clock",
+     "casino towers",
+     "chip"
+    ],
+    "fig": {
+     "min": "{min_per_part}"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "play"
+    },
+    {
+     "kind": "tick",
+     "at": "twice"
+    },
+    {
+     "kind": "kaching",
+     "at": "another"
+    },
+    {
+     "kind": "ding",
+     "at": "still"
+    }
+   ]
+  }
+ ]
+}
