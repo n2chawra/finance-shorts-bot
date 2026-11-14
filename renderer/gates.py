@@ -97,17 +97,6 @@ def layout_problems(probes: list[dict], fmt: str, width: int, height: int, fps: 
             if it["x"] + it["w"] <= 0 or it["x"] >= width or it["y"] + it["h"] <= 0 or it["y"] >= height:
                 continue
             problems = []
-            if it.get("deco"):
-                # print on a prop: small is fine, but one as big as a label must not be cut at the edge
-                if it["fs"] + 0.5 >= rules["min_text"] and (it["x"] < -2 or it["x"] + it["w"] > width + 2 or it["y"] < -2):
-                    problems.append("runs outside the frame (deco print this big reads as a label: keep it inside, "
-                                    "or frame the push-in so the zoomed window holds it)")
-                for why in problems:
-                    key = (it["t"], "runs")
-                    if key not in seen:
-                        seen.add(key)
-                        out.append(f"text {it['t']!r} at {at} {why}")
-                continue
             if it["fs"] + 0.5 < rules["min_text"]:
                 problems.append(f"is {it['fs']:g} px, below the {rules['min_text']} px minimum")
             if it["y"] + it["h"] > height - rules["bottom_safe"] + 2:

@@ -2,7 +2,7 @@
   "agent": "improver",
   "day": "2026-11-14",
   "startedAt": "2026-11-14T14:41:23Z",
-  "finishedAt": "2026-11-14T14:49:00Z",
+  "finishedAt": "2026-11-14T14:50:34Z",
   "summary": "Answered both of the owner's 14 Nov notes at their source (scripts that reveal how the money is made; global Shorts only about brands known everywhere), adopted two fixes (links in descriptions, sources named instead of 'illustrative numbers') and made the layout gate catch signs cut by a push-in. Weekly loop cycle 1 still waits for data.",
   "decision": "acted",
   "why": "The owner's notes come first; QA's top failure (edge cuts, 29 videos) had a clear cause in the probe; the Shorts challenger has no Shorts with 48 h data yet.",
@@ -21,7 +21,7 @@
     },
     {
       "title": "Top recurring failure: edge cuts (29 videos, 14 days)",
-      "detail": "Flat-kit deco print was skipped by the layout probe, so signs cut by a push-in reached QA. On v-20261114-02 the new gate finds 'MEMBERS' cut to 'EMBERS' and 'LANE TWO' cut to 'WO'."
+      "detail": "Flat-kit deco print was skipped by the layout probe, so signs cut by a push-in reached QA. With label-size deco measured, the probe on 14 Nov Shorts finds 'MEMBERS' cut to 'EMBERS', 'LANE TWO' to 'WO', and 'CASINO', 'WIN' at the edge; it also flags two 43 px deco labels (checklist: draw signs at 48 px)."
     }
   ],
   "changes": [
@@ -46,8 +46,8 @@
       "branch": "agent/improver/2026-11-14"
     },
     {
-      "title": "Layout gate measures big deco print",
-      "detail": "probe.tsx + flat kit Txt + gates.py: label-size print cut at the frame edge fails the render.",
+      "title": "Layout gate measures label-size deco print",
+      "detail": "flat kit Txt: deco print at the minimum size (44 px in a Short) or bigger is no longer skipped by the layout probe, so a sign cut by a push-in fails the render instead of reaching QA (probe.tsx is guard-protected, so the fix is in the kit).",
       "branch": "agent/improver/2026-11-14"
     }
   ],
