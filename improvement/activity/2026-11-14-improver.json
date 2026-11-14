@@ -1,0 +1,55 @@
+{
+  "agent": "improver",
+  "day": "2026-11-14",
+  "startedAt": "2026-11-14T14:41:23Z",
+  "finishedAt": "2026-11-14T14:50:34Z",
+  "summary": "Answered both of the owner's 14 Nov notes at their source (scripts that reveal how the money is made; global Shorts only about brands known everywhere), adopted two fixes (links in descriptions, sources named instead of 'illustrative numbers') and made the layout gate catch signs cut by a push-in. Weekly loop cycle 1 still waits for data.",
+  "decision": "acted",
+  "why": "The owner's notes come first; QA's top failure (edge cuts, 29 videos) had a clear cause in the probe; the Shorts challenger has no Shorts with 48 h data yet.",
+  "findings": [
+    {
+      "title": "Cycle 1 waiting",
+      "detail": "real-subject-first-frame: on 0, off 0 Shorts with 48 h data (day 1 of 7). Long tests: quiet-bed 1 of 4, chart-gap-fill 2 of 4."
+    },
+    {
+      "title": "Weekly impact",
+      "detail": "Week of 9 Nov (n 6): median 48 h views 56.5, 74.1% viewed, stayed to watch 0.308, 19.9 s average view; week of 2 Nov (n 8): 43, 51.2%, 0.381, 21.9 s. People who stay watch more, but fewer stay."
+    },
+    {
+      "title": "What performs",
+      "detail": "Stories how_they_make_money 2.97x (n 8), secret_of_rich 2.76x (n 7); hook challenge 3.21x (n 4), question 0.40x (n 15); 20-24 s Shorts 4.72x (n 3); music cinematic 67.7% viewed, acoustic 0.23x."
+    },
+    {
+      "title": "Top recurring failure: edge cuts (29 videos, 14 days)",
+      "detail": "Flat-kit deco print was skipped by the layout probe, so signs cut by a push-in reached QA. With label-size deco measured, the probe on 14 Nov Shorts finds 'MEMBERS' cut to 'EMBERS', 'LANE TWO' to 'WO', and 'CASINO', 'WIN' at the edge; it also flags two 43 px deco labels (checklist: draw signs at 48 px)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Shorts reveal how the money is made",
+      "detail": "Owner note on the Las Vegas Short: story.curiosity_problems fails a unit ladder (3+ time rates), writer/hook judge/zoom-in shape ask for the mechanism.",
+      "branch": "agent/improver/2026-11-14"
+    },
+    {
+      "title": "Global Shorts only about brands known everywhere",
+      "detail": "Owner note on the Costco Short: reach.check_plan fails one-country brands in a global plan; planner prompt and the everyday-brands challenger updated.",
+      "branch": "agent/improver/2026-11-14"
+    },
+    {
+      "title": "Links are not claims (2026-11-14-links-not-claims)",
+      "detail": "Scout adopt: number check strips URLs so a long video can link its Short.",
+      "branch": "agent/improver/2026-11-14"
+    },
+    {
+      "title": "Descriptions name sources (2026-11-14-descriptions-name-sources)",
+      "detail": "Research adopt: 'Sources: <publishers> (<month year>)' replaces 'illustrative numbers' for Shorts with facts.",
+      "branch": "agent/improver/2026-11-14"
+    },
+    {
+      "title": "Layout gate measures label-size deco print",
+      "detail": "flat kit Txt: deco print at the minimum size (44 px in a Short) or bigger is no longer skipped by the layout probe, so a sign cut by a push-in fails the render instead of reaching QA (probe.tsx is guard-protected, so the fix is in the kit).",
+      "branch": "agent/improver/2026-11-14"
+    }
+  ],
+  "nextCheck": "2026-11-16"
+}

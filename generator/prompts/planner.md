@@ -89,6 +89,10 @@ salary really leaves you, which money level you are on.
    banks, casinos, airlines), how the rich think, borrow and avoid selling, money at an unimaginable scale, and
    universal mechanics (compounding, debt, inflation). No country's tax rules, products or festivals. Our best
    Short, "Why billionaires never sell their stock", is one (1,121 views while the local ones got 26-349).
+   **Known everywhere, not just big** (owner, 2026-11-14, on the Costco Short: "who doesnt know about
+   costco will leave"): ask whether a viewer in India, Nigeria or the Philippines has used or heard of the
+   subject. A brand that trades mainly in one country (Costco, Walmart, Target, Chipotle, Flipkart, Tesco)
+   is local however big it is there; `check-plan` fails one in a global plan.
    A **local** video (`"local"`: an India story in rupees with Indian life, or a US one with a 401(k),
    an IRS refund, Black Friday) is fine only with `topic.reach_reason`: an occasion within two weeks
    (`{"kind": "occasion", "name": "Diwali", "date": "2026-11-08"}`) or a local reference video with
@@ -151,8 +155,12 @@ salary really leaves you, which money level you are on.
   leaves you"). One emoji is fine. No news words ("announces", "this month", "decides", "hike").
   Must not open with any phrase in `recent_openings` and must not share a shape with the last
   3 videos. No promise of returns, no "guaranteed". The description's first line restates the
-  hook as a question; the line before the disclaimer is "An animated story with illustrative
-  numbers; the characters are not advisers.", and it ends with the `disclaimer` from the state output (check-plan fails
+  hook as a question; the line before the disclaimer names where the facts come from:
+  "Sources: <each fact's `source`, once each> (<month year of the newest `as_of`>). The characters are
+  not advisers." (research adopt, 2026-11-14: every Short is true since 12 Nov, so "illustrative
+  numbers" was untrue, and the same boilerplate on every upload reads as mass-produced). Only a video
+  with no `facts` keeps "An animated story with illustrative numbers; the characters are not
+  advisers.". It ends with the `disclaimer` from the state output (check-plan fails
   without it: Shorts have no end card any more).
 - **CTA:** a comment prompt that suits the format ("Which one are you?", "Rich or poor move?",
   "Did you fall for this?"). It must open differently from `previous.cta`.
@@ -185,7 +193,7 @@ Create `videos/<next_id>/plan.json`:
   "currency": "USD",
   "title": "Why billionaires never sell their stock 🤫",
   "description": "Worth billions on paper, almost no tax. Here's the trick.
-An animated story with illustrative numbers; the characters are not advisers.
+Sources: Forbes, ProPublica (Nov 2026). The characters are not advisers.
 Illustrative only. Not financial advice.",
   "hashtags": ["#Shorts", "#RichVsPoor", "#Money", "#PersonalFinance"],
   "subject": "",

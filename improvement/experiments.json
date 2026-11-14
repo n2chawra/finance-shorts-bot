@@ -895,6 +895,34 @@
       "description": "Long thumbnails: a reacting face (no calm expressions), at most 3 `things`, words never use a scale word the title doesn't (thumbs.spec_problems + long_story README)",
       "evidence": "Owner note 2026-11-11: L-20261111-01 100 impressions, 4 clicks (4% CTR), title $1 billion vs thumbnail 'Million? Cute.', calm smirk, ~10 things; research adopt/high; Test & Compare face 1 of 1, grid 0 of 1.",
       "commits": []
+    },
+    {
+      "id": "2026-11-14-links-not-claims",
+      "area": "pipeline",
+      "format": "long",
+      "status": "adopted",
+      "startedAt": "2026-11-14",
+      "templates": [
+        "long_story"
+      ],
+      "proposal": "2026-11-11-short-link-number-check",
+      "description": "The number check strips links and the phrase 'the 30-second version' before scanning a title or description for figures, so a long video can link its Short",
+      "evidence": "Scout 2026-11-11 (adopt/high): L-20261111-01 could not link its Short; 'ssxStI7t_5w' and '30' failed as untraced figures.",
+      "commits": []
+    },
+    {
+      "id": "2026-11-14-descriptions-name-sources",
+      "area": "pipeline",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-14",
+      "templates": [
+        "short_story"
+      ],
+      "proposal": "descriptions-name-sources-not-illustrative",
+      "description": "A Short with sourced facts says 'Sources: <publishers> (<month year>)' before the disclaimer instead of 'An animated story with illustrative numbers' (planner.md); the hard-rule disclaimer is unchanged",
+      "evidence": "Research 2026-11-14 (adopt): the boilerplate contradicts the 12 Nov 'every Short is true' rule and repeats on every upload; YouTube's Oct 2026 originality ranking rewards educational value.",
+      "commits": []
     }
   ]
 }

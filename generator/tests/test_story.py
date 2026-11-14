@@ -255,3 +255,21 @@ def test_a_reaction_close_up_and_a_payoff_without_a_figure_are_notes():
     s["beats"][1]["params"] = {"camera": [{"on": "rohan", "size": "close"}]}
     notes = [p for p in story.reaction_problems(s) + story.payoff_problems(s)]
     assert notes and all(advice.is_note(n) for n in notes)
+
+
+def test_a_unit_ladder_fails_but_one_rate_passes():
+    """Owner, 2026-11-14 (the Las Vegas Short): one total sliced into minutes, hours, days and years is
+    arithmetic, not something the viewer didn't know."""
+    ladder = {"format": "short", "beats": [
+        beat("hook", "hook", "The Strip keeps {a} every minute."),
+        beat("hour", "build", "Every hour, about {b}."),
+        beat("day", "build", "Every day, {c}."),
+        beat("year", "build", "Over the whole year, {d}.")]}
+    probs = story.curiosity_problems(ladder)
+    assert probs and "unit ladder" in probs[0]
+    one = {"format": "short", "beats": [
+        beat("hook", "hook", "Costco keeps {a} a year from a card."),
+        beat("door", "build", "Every member pays for it, every single year."),
+        beat("turn", "turn", "Slots alone brought in {b}.")]}
+    assert story.curiosity_problems(one) == []
+    assert story.curiosity_problems({**ladder, "format": "long"}) == []

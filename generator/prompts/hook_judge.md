@@ -14,7 +14,9 @@ For each option, imagine it in the feed with the sound off, then with the sound 
 1. **Do you know who or what this is about?** A famous person or business, named or recognisable.
 2. **Is there a surprising figure or fact?** Something you didn't know and want explained.
 3. **Would you stay to find out how?** Not a question about what you think, not a tease
-   ("Watch this"), not a subject held back.
+   ("Watch this"), not a subject held back. A figure that is only big ("keeps $16,772 every
+   minute") answers nothing; prefer the option that makes you ask *how is that possible?* about
+   something you use or know (owner, 2026-11-14: the Las Vegas Short was big numbers, no mystery).
 
 Pick the one a stranger is most likely to stop for. When two are close, pick the one whose first
 frame says the most without sound.

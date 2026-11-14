@@ -23,6 +23,7 @@ import React, { createContext, useContext, useMemo } from "react";
 import { AbsoluteFill, Easing, interpolate, spring } from "remotion";
 import type { SceneProps } from "../scenes/kit";
 import { FONT } from "../design/fonts";
+import { minText } from "../design/fit";
 import { showsSource } from "../studio/source";
 
 export const INK = "#1d1a2b";
@@ -188,11 +189,18 @@ export const Ball: React.FC<{ x: number; y: number; r: number; fill: string; sw?
 
 /** Words drawn in the scene (on a sign, a screen, a slate). Figures and labels a viewer must read are at
  * least the frame's minimum size (44 px in a Short, 30 in a long video); small print on a prop is `deco`
- * (the layout probe skips it, nobody has to read it). */
+ * (the layout probe skips it, nobody has to read it). Deco print at DECO_LABEL times the minimum or bigger
+ * reads as a label, so the probe measures it like one: "MEMBERS" cut to "EMBERS" by a push-in reached QA
+ * because it was skipped (edge cuts were QA's top failure, 29 videos in 14 days; 2026-11-14). */
+export const DECO_LABEL = 1;
 export const Txt: React.FC<{ x: number; y: number; size: number; fill: string; children: React.ReactNode; weight?: number; anchor?: "start" | "middle" | "end"; rotate?: number; glow?: string; stroke?: string; deco?: boolean }> = ({
   x, y, size, fill, children, weight = 800, anchor = "middle", rotate, glow, stroke, deco,
-}) => (
-  <g data-probe={deco ? "skip" : undefined}>
+}) => {
+  const { w, h } = useFrameSize();
+  // deco print as big as a label reads as one: the layout probe measures it like any label
+  const skip = deco && size < minText(w, h) * DECO_LABEL;
+  return (
+  <g data-probe={skip ? "skip" : undefined}>
     <text x={x} y={y} fontFamily={FONT} fontWeight={weight} fontSize={size} fill={fill} textAnchor={anchor} dominantBaseline="central"
       transform={rotate ? `rotate(${rotate} ${x} ${y})` : undefined}
       style={glow ? { filter: `drop-shadow(0 0 ${size * 0.25}px ${glow})` } : undefined}
@@ -200,7 +208,8 @@ export const Txt: React.FC<{ x: number; y: number; size: number; fill: string; c
       {children}
     </text>
   </g>
-);
+  );
+};
 
 // ------------------------------------------------------------------ things that carry figures
 
