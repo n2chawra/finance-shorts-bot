@@ -1,0 +1,50 @@
+{
+  "agent": "research",
+  "day": "2026-11-15",
+  "startedAt": "2026-11-14T14:28:16Z",
+  "finishedAt": "2026-11-14T14:34:28Z",
+  "summary": "Sunday competitor teardown and demand scan: added 5 sourced global topics (gas stations, Amazon x2, Larry Ellison's pledged shares, Yahoo/Mark Cuban) and one first-second challenger (name and figure, then a guess).",
+  "decision": "acted",
+  "why": "The feed had only 4 open topics and 1 usable. The week's breakouts (petrol profit per litre 996x, why billionaires borrow 526x, $1 trillion in 24 hours 60x) match our best stories (how_they_make_money 2.97x, secret_of_rich 2.76x). Challenge hooks are our top hook style (3.21x, n=4).",
+  "findings": [
+    {
+      "title": "Petrol-pump profit per litre is still the niche's top breakout",
+      "detail": "1.26M views on a 1,260-subscriber channel; added the global version from NACS 2025 data (fuel is 65.0% of sales, 38.8% of gross profit)",
+      "link": "https://youtube.com/shorts/6lUm9RSDgmc"
+    },
+    {
+      "title": "'Why billionaires borrow money they don't need' broke out at 526x",
+      "detail": "Oracle's 25 Sep 2026 proxy: Larry Ellison pledged 413 million shares for personal loans, up from 346 million",
+      "link": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526402816/orcl-20260925.htm"
+    },
+    {
+      "title": "Task-style hooks break out",
+      "detail": "'What would you buy with $1 trillion in 24 hours' 1.2M at 60x; queued as the named-figure-then-guess challenger",
+      "link": "https://youtube.com/shorts/Y0Hjql0kqPc"
+    },
+    {
+      "title": "Claude Code 2.1.325",
+      "detail": "Security and subagent fixes, plus a fix that stops background sessions billing an API key; nothing to change",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "5 topics added to the feed",
+      "detail": "improvement/research/topics.json",
+      "branch": "agent/research/2026-11-15"
+    },
+    {
+      "title": "Challenger named-figure-then-guess",
+      "detail": "improvement/cycle/backlog.json, first-second, judged on stayed to watch",
+      "branch": "agent/research/2026-11-15"
+    }
+  ],
+  "nextCheck": "2026-11-16",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-15.md"
+    }
+  ]
+}
