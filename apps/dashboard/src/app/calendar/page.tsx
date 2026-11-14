@@ -161,7 +161,6 @@ export default function CalendarPage() {
                 <div key={`w${w}`} data-testid="week-views" className={`flex flex-col items-center justify-center gap-0.5 bg-surface-2 px-1 text-center ${w < weeks.length - 1 ? "border-b border-line" : ""}`}>
                   <span className="text-[13px] font-semibold tabular-nums text-ink md:text-[15px]">{total ? fmtCompact(total) : "—"}</span>
                   {n > 0 && <span data-testid="week-likes" className="flex items-center gap-0.5 text-[11px] font-medium tabular-nums text-ink2 md:text-[12px]"><Heart aria-label="likes" className="size-3 text-critical" />{fmtCompact(likes)}</span>}
-                  <span className="text-[10.5px] text-muted md:text-[11px]">{n ? `${n} video${n === 1 ? "" : "s"}` : "views"}</span>
                 </div>
               );
             })()])}
