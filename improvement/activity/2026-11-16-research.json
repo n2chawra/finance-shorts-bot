@@ -1,0 +1,45 @@
+{
+  "agent": "research",
+  "day": "2026-11-16",
+  "startedAt": "2026-11-15T16:48:23Z",
+  "finishedAt": "2026-11-15T16:54:53Z",
+  "summary": "Hooks and retention night. I added three famous pop-culture topics for the owner's 'go viral' note. GTA V's $1B in 3 days is a trend because GTA VI launches 19 Nov, and it now tops the feed. The others are Minecraft's $2.5B sale and Squid Game's $21.4M cost against its $891M value. I also added this week's evidence to two challengers that are already queued.",
+  "decision": "acted",
+  "why": "Our best recent Shorts (Taylor Swift 997 views, MrBeast 957) are famous pop culture with one figure. GTA VI's launch on 19 Nov is the year's biggest entertainment moment, and our audience (mostly men aged 13-34) is the gaming audience. 3 of the 6 fastest finance Shorts this week are under 20 s.",
+  "findings": [
+    {
+      "title": "GTA VI launches 19 Nov; GTA V sold $1B in 3 days and over 230M copies",
+      "detail": "Trending topic, expires 20 Nov, score 10.55, now the planner's urgent pick.",
+      "link": "https://gamesbeat.com/take-two-interactive-says-ugc-helped-drive-grand-theft-auto-growth-in-q1-2027/"
+    },
+    {
+      "title": "Microsoft paid $2.5B for Minecraft (2014)",
+      "detail": "High priority. Reference: 'The Tragic Tale of Notch', 9.8M views.",
+      "link": "https://news.microsoft.com/source/2014/09/15/minecraft-to-join-microsoft/"
+    },
+    {
+      "title": "Squid Game cost $21.4M; Netflix valued it at $891.1M",
+      "detail": "From Bloomberg's report on a leaked Netflix document. The video must say 'valued at', never 'made'.",
+      "link": "https://www.aljazeera.com/economy/2021/10/18/netflix-values-its-megahit-show-squid-game-at-900m"
+    },
+    {
+      "title": "Three sub-20 s breakouts this week",
+      "detail": "The streamers Short (18 s) has 1.19M views, the Rich vs Poor drawing (16 s) 930K and 'Illusion of Money' (19 s) 659K. Added as evidence to the short-15-22s challenger.",
+      "link": "https://youtube.com/shorts/STUDKJSD3Pc"
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 topics added to the feed; evidence added to 2 challengers",
+      "detail": "Files: topics.json and cycle/backlog.json (short-15-22s, per-unit-hook).",
+      "branch": "agent/research/2026-11-16"
+    }
+  ],
+  "nextCheck": "2026-11-17",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-16.md"
+    }
+  ]
+}
