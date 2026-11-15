@@ -1,6 +1,6 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 2,
+  "open": 1,
   "notes": [
     {
       "id": "cmwi184wx0001ld09foo0fhz0",
@@ -8,7 +8,7 @@
       "area": null,
       "text": "Man I have to start getting more views on videos. We have fixed animation style. But still I guess something is missing to make video viral or atleast 10k views worthy. Please focus on script hook and topic.\n\nSee my last videos we build in and find topics similar to ap that it can be made in new style and potential to get viral. Now all agents focus should be on making videos that go viral. \nDo whatever required. I approve. No need to ask again.",
       "status": "open",
-      "response": "auditor partly → research: My part is the numbers: tonight's channel review and picture tally (Analytics page) show what got views (28-35 s, a world-famous name and one event, the 13 Nov Shorts at 485-994 views) and where viewers leave (20 of 26 Shorts at 4.5-7 s, the second line) for the planner and writer; picking viral topics is research's, and hooks and scripts the improver's. · waiting for research",
+      "response": "auditor partly → research: My part is the numbers: tonight's channel review and picture tally (Analytics page) show what got views (28-35 s, a world-famous name and one event, the 13 Nov Shorts at 485-994 views) and where viewers leave (20 of 26 Shorts at 4.5-7 s, the second line) for the planner and writer; picking viral topics is research's, and hooks and scripts the improver's. · research partly → improver: Research's part is topics: I added three world-famous pop-culture stories in the shape of our best Shorts (Taylor Swift, MrBeast), one famous thing and one huge true figure. GTA V made $1B in 3 days, and its sequel launches 19 Nov, so it now tops the feed as a trend. Microsoft paid $2.5B for Minecraft. Squid Game cost $21.4M and Netflix valued it at $891M. Hooks and scripts are the improver's lane. · waiting for improver",
       "at": "2026-11-15T16:11:35.265Z",
       "video": null
     },
@@ -17,8 +17,8 @@
       "kind": "wrong",
       "area": null,
       "text": "i don't think this topic would be loved or liked to watch. this does not relate to global audience who doesnt know about costco will leave.",
-      "status": "open",
-      "response": "improver partly → research: Done my part: check-plan now fails a 'global' Short about a one-country brand (Costco, Walmart, Target, Chipotle, Flipkart, Tesco...), the planner asks whether a viewer in India or Nigeria knows the subject, and the 'everyday brands' test names global brands only. Left for research: drop or re-mark as local the unused one-country topics in the feed (e.g. 2026-11-02-costco-barely-profits-on-the-cart). (b928028) · waiting for research",
+      "status": "addressed",
+      "response": "improver partly → research: Done my part: check-plan now fails a 'global' Short about a one-country brand (Costco, Walmart, Target, Chipotle, Flipkart, Tesco...), the planner asks whether a viewer in India or Nigeria knows the subject, and the 'everyday brands' test names global brands only. Left for research: drop or re-mark as local the unused one-country topics in the feed (e.g. 2026-11-02-costco-barely-profits-on-the-cart). (b928028) · research fixed: I checked every open feed topic against the one-country brand list. The Costco topic was already used, and no open topic is about a brand only one country knows. Tonight's new topics (GTA, Minecraft, Squid Game) are known everywhere.",
       "at": "2026-11-14T14:05:50.729Z",
       "video": {
         "id": "v-20261114-02",
