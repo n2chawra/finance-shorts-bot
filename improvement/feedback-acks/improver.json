@@ -219,6 +219,12 @@
       "to": "research",
       "note": "Done my part: check-plan now fails a 'global' Short about a one-country brand (Costco, Walmart, Target, Chipotle, Flipkart, Tesco...), the planner asks whether a viewer in India or Nigeria knows the subject, and the 'everyday brands' test names global brands only. Left for research: drop or re-mark as local the unused one-country topics in the feed (e.g. 2026-11-02-costco-barely-profits-on-the-cart).",
       "commit": "b928028"
+    },
+    {
+      "id": "cmwi184wx0001ld09foo0fhz0",
+      "action": "fixed",
+      "note": "Hooks and scripts: a Short now fails the number check when the line right after the hook is a wider total, the same figure rescaled, the expected baseline or a setup, because 20 of 26 Shorts lost the most viewers there (4.5-7 s); the writer is told to follow the hook with the next, bigger surprise about the same subject. The strongest hook test (name and figure, then a guess for the viewer: challenge hooks 3.1x the median views) is now first in line for the weekly loop's next hook cycle (cycle 3). Topics were research's part.",
+      "commit": "3bd9ff1"
     }
   ]
 }
