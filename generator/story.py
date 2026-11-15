@@ -394,7 +394,9 @@ def payoff_problems(script: dict) -> list[str]:
 # actually making people engaged knowing how casino earns or make them curious about something they dont know".
 # Its beats sliced one total into a minute, an hour, a day and a year: arithmetic, with nothing the viewer didn't
 # know. A Short is about HOW the money is made (who pays, for what, the part people miss), not one figure rescaled.
-TIME_RATE = re.compile(r"\b(?:every|each|per|an?|one|whole|all of)\s+(second|minute|hour|day|night|week|month|year)\b", re.I)
+# "a year later", "one night in 1998", "a week before the deal" say when something happened, not a rate
+TIME_RATE = re.compile(r"\b(?:every|each|per|an?|one|whole|all of)\s+(second|minute|hour|day|night|week|month|year)\b"
+                       r"(?!\s+(?:later|ago|earlier|after|before|on\b|when\b|in\s+\d{4}))", re.I)
 TIME_RATE_MAX = 2
 
 

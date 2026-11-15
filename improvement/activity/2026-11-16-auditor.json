@@ -1,0 +1,46 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-16",
+  "startedAt": "2026-11-15T16:32:42Z",
+  "finishedAt": "2026-11-15T16:40:11Z",
+  "summary": "The data audit was clean (0 errors in 63 videos). Fixed one bug in the new unit-ladder check that failed true stories, wrote 4 video verdicts, the Monday channel review and the Sunday picture tally.",
+  "decision": "acted",
+  "why": "The 14 Nov unit-ladder check counted story time ('a year later', 'one night in 1998') as rates, which would fail good scripts; the analysis is due every night, the channel review on Mondays and the tally on Sundays.",
+  "findings": [
+    {
+      "title": "Data audit clean",
+      "detail": "15 Nov audit: 76 videos, 63 checked against YouTube, 0 errors, 0 warnings. The 13 Nov view-count errors did not come back."
+    },
+    {
+      "title": "Viewers leave on the second line",
+      "detail": "In 20 of 26 Shorts of the last 3 weeks the steepest fall is at 4.5-7 s; the MrBeast Short lost 41 points at 5.3 s on an all-creators total."
+    },
+    {
+      "title": "The 13 Nov Shorts were our best starts",
+      "detail": "Eras Tour 994 views at 48 h, MrBeast vs IShowSpeed 955, Netflix 485 in 2.1 days, against a median of 83."
+    },
+    {
+      "title": "Worst option: the plum palette",
+      "detail": "16.4% held after the hook (7 Shorts) vs 26.6% for the other palettes (19), partly October's older recipe."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Unit-ladder check skips story time",
+      "detail": "generator/story.py: 'a year later', 'one night in 1998', 'a week before' no longer count as rates; test added.",
+      "branch": "agent/auditor/2026-11-16"
+    },
+    {
+      "title": "Analytics analysis",
+      "detail": "improvement/analysis/videos.json (4 verdicts), channel.json (weekly review), pictures.json (picture tally).",
+      "branch": "agent/auditor/2026-11-16"
+    }
+  ],
+  "nextCheck": "2026-11-17",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-16.md"
+    }
+  ]
+}

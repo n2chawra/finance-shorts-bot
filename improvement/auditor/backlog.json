@@ -928,6 +928,32 @@
       "severity": "medium",
       "found": "2026-11-14",
       "status": "open"
+    },
+    {
+      "id": "gen-003",
+      "kind": "bug",
+      "title": "The unit-ladder check failed true stories that say when something happened",
+      "detail": "generator/story.py curiosity_problems (added 14 Nov) counts 'a/one/every <unit>' in beats with a figure. 'A year later', 'one night in 1998' and 'a week before the deal' are story time, not rates, so a true Short with three of them was failed as a unit ladder (the writer would have to rewrite a good script). The rate words are now skipped when followed by later/ago/earlier/after/before/on/when/in <year>; real rates ('a minute', 'an hour', 'a day') still fail.",
+      "files": [
+        "generator/story.py",
+        "generator/tests/test_story.py"
+      ],
+      "severity": "low",
+      "found": "2026-11-16",
+      "status": "fixed",
+      "fixed": "2026-11-16"
+    },
+    {
+      "id": "dd-q05",
+      "kind": "quality",
+      "title": "Templates' average views pick the live counter by a different rule than totals()",
+      "detail": "store.db.ts listTemplates uses `liveViews ?? sum(stats)` when a video has stats or liveAt, while every other page uses totals(), which uses the live counter only when both liveAt and liveViews are set. The two agree today (live-stats writes both together); replacing the inline rule with totals(stats, upload).views keeps one definition of a video's views.",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-16",
+      "status": "open"
     }
   ]
 }
