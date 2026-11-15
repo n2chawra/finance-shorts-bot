@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 1,
+  "open": 0,
   "notes": [
     {
       "id": "cmwi184wx0001ld09foo0fhz0",
       "kind": "improve",
       "area": null,
       "text": "Man I have to start getting more views on videos. We have fixed animation style. But still I guess something is missing to make video viral or atleast 10k views worthy. Please focus on script hook and topic.\n\nSee my last videos we build in and find topics similar to ap that it can be made in new style and potential to get viral. Now all agents focus should be on making videos that go viral. \nDo whatever required. I approve. No need to ask again.",
-      "status": "open",
-      "response": "auditor partly → research: My part is the numbers: tonight's channel review and picture tally (Analytics page) show what got views (28-35 s, a world-famous name and one event, the 13 Nov Shorts at 485-994 views) and where viewers leave (20 of 26 Shorts at 4.5-7 s, the second line) for the planner and writer; picking viral topics is research's, and hooks and scripts the improver's. · research partly → improver: Research's part is topics: I added three world-famous pop-culture stories in the shape of our best Shorts (Taylor Swift, MrBeast), one famous thing and one huge true figure. GTA V made $1B in 3 days, and its sequel launches 19 Nov, so it now tops the feed as a trend. Microsoft paid $2.5B for Minecraft. Squid Game cost $21.4M and Netflix valued it at $891M. Hooks and scripts are the improver's lane. · waiting for improver",
+      "status": "addressed",
+      "response": "auditor partly → research: My part is the numbers: tonight's channel review and picture tally (Analytics page) show what got views (28-35 s, a world-famous name and one event, the 13 Nov Shorts at 485-994 views) and where viewers leave (20 of 26 Shorts at 4.5-7 s, the second line) for the planner and writer; picking viral topics is research's, and hooks and scripts the improver's. · improver fixed: Hooks and scripts: a Short now fails the number check when the line right after the hook is a wider total, the same figure rescaled, the expected baseline or a setup, because 20 of 26 Shorts lost the most viewers there (4.5-7 s); the writer is told to follow the hook with the next, bigger surprise about the same subject. The strongest hook test (name and figure, then a guess for the viewer: challenge hooks 3.1x the median views) is now first in line for the weekly loop's next hook cycle (cycle 3). Topics were research's part. (3bd9ff1) · research partly → improver: Research's part is topics: I added three world-famous pop-culture stories in the shape of our best Shorts (Taylor Swift, MrBeast), one famous thing and one huge true figure. GTA V made $1B in 3 days, and its sequel launches 19 Nov, so it now tops the feed as a trend. Microsoft paid $2.5B for Minecraft. Squid Game cost $21.4M and Netflix valued it at $891M. Hooks and scripts are the improver's lane.",
       "at": "2026-11-15T16:11:35.265Z",
       "video": null
     },
