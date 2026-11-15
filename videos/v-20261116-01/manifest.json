@@ -1,0 +1,383 @@
+{
+  "id": "v-20261116-01",
+  "createdAt": "2026-11-15T21:57:22.319654+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "GTA V sold over a billion dollars in its first three days in 2013, has sold over 230 million copies since, and its sequel launches on 19 November",
+    "category": "gaming",
+    "reach": "global",
+    "feed_id": "2026-11-16-gta-v-made-1-billion-in-3-days"
+  },
+  "title": "Grand Theft Auto V has sold 230M copies since 2013 🎮",
+  "description": "How does Grand Theft Auto V, a game from 2013, still sell like it is new?\nSources: Take-Two Interactive, reported by Gaming Age, Take-Two Interactive, reported by GamesBeat (Jun 2026). The characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#GrandTheftAutoV",
+    "#GTAVI",
+    "#Gaming",
+    "#Money"
+  ],
+  "hookStyle": "question",
+  "cta": "Are you buying the sequel on day one? Comment",
+  "seed": 61907,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92,
+    "look": {
+      "stage": "city",
+      "header": "sticky",
+      "holder": "sign",
+      "entrance": "pop"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "28-35",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Grand Theft Auto Five has sold over 230M copies.",
+        "start": 0.3,
+        "seconds": 3.3,
+        "window": 3.83,
+        "fill": 0.862
+      },
+      {
+        "scene": "promise",
+        "text": "It sold over $1B in its first three days, years ago. So why does it still sell?",
+        "start": 4.13,
+        "seconds": 4.18,
+        "window": 4.67,
+        "fill": 0.895
+      },
+      {
+        "scene": "consoles",
+        "text": "Rockstar released it again for the next consoles, and once more for the ones after.",
+        "start": 8.8,
+        "seconds": 3.62,
+        "window": 4.07,
+        "fill": 0.889
+      },
+      {
+        "scene": "online",
+        "text": "Its online world kept running, so players kept coming back. So who cashes in?",
+        "start": 12.87,
+        "seconds": 3.72,
+        "window": 4.13,
+        "fill": 0.901
+      },
+      {
+        "scene": "turn",
+        "text": "And in all those years, Rockstar made no new Grand Theft Auto. Its sequel lands this month.",
+        "start": 17.0,
+        "seconds": 4.17,
+        "window": 4.57,
+        "fill": 0.912
+      },
+      {
+        "scene": "payoff",
+        "text": "From April to June, with no new one out, owner Take-Two still took $1.39B across all its games.",
+        "start": 21.57,
+        "seconds": 5.63,
+        "window": 6.2,
+        "fill": 0.908
+      },
+      {
+        "scene": "loop",
+        "text": "Day one for the new one, or the one that never stopped?",
+        "start": 27.77,
+        "seconds": 2.34,
+        "window": 2.87,
+        "fill": 0.815
+      }
+    ]
+  },
+  "durationSec": 31,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.6,
+    "lufs": -15.2,
+    "music_under_voice_db": 23.5
+  },
+  "experiments": {
+    "real-subject-first-frame": "off"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after reorder: turn 'in all those years, Rockstar made no new Grand Theft Auto' true (GTA V 2013 is the last mainline GTA; later releases were re-releases/remasters), 'sequel lands this month' true for GTA VI on 19 Nov 2026 (still held) provided it publishes in November; payoff $1.39B Take-Two net bookings Apr-Jun 2026 across all its games (GamesBeat 7 Aug 2026, Take-Two Q1 FY27 release); 230M and $1B lines unchanged and confirmed; $13.9M line and maths removed; no advice; description ends with disclaimer."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: GTA V and a bright 230M counter from frame 0 and on the loop end; till shows $1B; calendar inside the frame; TV lit, gamer in frame; turn is a NONE stamp at the dawn shop and the payoff is $1.39B on the boardroom ticker; 7 directed places, nothing cut off or covered, disclaimer over the last moments, 31 s, layout and craft clean. Cover's 230M sits faint behind the scene layout's blur (minor)."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-15T21:39:58.699343+00:00",
+      "finishedAt": "2026-11-15T21:39:58.699343+00:00",
+      "notes": [
+        "story 'money_scale' was told in the last 1 videos",
+        "style.look.header 'chalk' was used by the previous video (v-20261114-03)",
+        "the description's first two lines must name the subject 'Grand Theft Auto V' (\"Elon Musk's record pay deal...\"): YouTube reads it to know who the video is about, even when the title keeps the name back",
+        "add a hashtag for the subject 'Grand Theft Auto V' (\"#GrandTheftAutoV\")"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:40:08.200922+00:00",
+      "finishedAt": "2026-11-15T21:40:08.200922+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:41:33.440039+00:00",
+      "finishedAt": "2026-11-15T21:41:33.440039+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-15T21:42:34.049819+00:00",
+      "finishedAt": "2026-11-15T21:42:34.049819+00:00",
+      "notes": [
+        "beat 'hook'.say contains a typed number; use a placeholder: 'Grand Theft Auto Five has sold over {fact2} copies, and it came out in 2013.'",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-15T21:42:48.851329+00:00",
+      "finishedAt": "2026-11-15T21:42:48.851329+00:00",
+      "notes": [
+        "hashtags mentions '6', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {launch_parts}, {launch_per_part}, {launch_total}…) or drop it",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:42:54.106883+00:00",
+      "finishedAt": "2026-11-15T21:42:54.106883+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:42:55.127863+00:00",
+      "finishedAt": "2026-11-15T21:42:55.127863+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "warning: beat 'payoff' runs 5.7 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:43:08.195603+00:00",
+      "finishedAt": "2026-11-15T21:43:08.195603+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-15T21:44:06.878135+00:00",
+      "finishedAt": "2026-11-15T21:44:06.878135+00:00",
+      "notes": [
+        "Facts confirmed: fact1 $1B (Gaming Age page: 'worldwide retail sales of more than $1 billion' in first three days, Sept 2013); fact2 230M and fact3 $1.39B (GamesBeat 7 Aug 2026: 'sold-in over 230M units', Q1 FY27 net bookings $1.39B; also Take-Two/BusinessWire Q1 FY27 release in search); GTA VI 19 Nov 2026 still held (Fox10 16 Oct 2026, PCWorld, launch trailer 15 Oct).",
+        "turn: 'with no new Grand Theft Auto out, its owner Take-Two still took $1.39B', answering 'So who is cashing in?' after the GTA Online beat, implies GTA earned the $1.39B. It is Take-Two's total net bookings across all its games (NBA 2K, Zynga mobile ~half of revenue, etc.; GTA not broken out). Fix: say it plainly, e.g. 'its owner Take-Two, which also makes NBA 2K and mobile games, still took $1.39B across all its games', and keep the boardroom picture from tying the whole ticker to GTA.",
+        "promise 'It took over $1B in its first three days' and payoff 'the old game made about $13.9M every hour': the $1B is worldwide RETAIL sales (verify item: say 'sold over a billion dollars', retail sales, not profit), not money Take-Two took or made. Fix: 'It sold over $1B in its first three days' and 'At launch, it sold about $13.9M of copies every hour, on average'.",
+        "Note (not a reason to fail): description could add the profile's line 'speak to a licensed financial adviser in your country before making financial decisions'; disclaimer is present and last. No advice, realistic framing otherwise, consoles/online beats and 'over a decade ago' are accurate."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:44:49.653220+00:00",
+      "finishedAt": "2026-11-15T21:44:49.653220+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:45:04.282561+00:00",
+      "finishedAt": "2026-11-15T21:45:04.282561+00:00",
+      "notes": [
+        "Re-review after fixes: $1B retail sales in 3 days (Gaming Age, Sept 2013), 230M sold-in and Take-Two Q1 FY27 net bookings $1.39B (GamesBeat 7 Aug 2026, Take-Two release) confirmed; GTA VI 19 Nov 2026 still held; promise/payoff now say 'sold' (retail), turn now 'across all its games' with other boxes lighting up; no advice, disclaimer last in description. Notes: payoff could add 'on average'; turn could restore 'this year'; description could add the licensed-adviser line."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-15T21:48:00.272533+00:00",
+      "finishedAt": "2026-11-15T21:48:55.476010+00:00",
+      "notes": [
+        "text 'GTA V' at 2.7 s is 42.9 px, below the 44 px minimum",
+        "text 'MIDNIGHT LAUNCH' at 7.1 s runs outside the frame",
+        "text 'NEWEST' at 11.3 s runs outside the frame",
+        "text 'NEW GTA' at 21.5 s is 42 px, below the 44 px minimum",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:49:18.089847+00:00",
+      "finishedAt": "2026-11-15T21:49:48.751721+00:00",
+      "notes": [
+        "32 s, ember/cinematic (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:50:05.680603+00:00",
+      "finishedAt": "2026-11-15T21:50:05.680603+00:00",
+      "notes": [
+        "Re-review of shortened lines: hook 230M copies sold (sold-in, GamesBeat 7 Aug 2026), promise $1B retail sales in first three days 'years ago' (Gaming Age, Sept 2013), turn $1.39B Take-Two net bookings Apr-Jun 2026 'across all its games' (GamesBeat, Take-Two Q1 FY27 release), online/loop lines make no claims; GTA VI 19 Nov 2026 held; no advice; description ends with disclaimer."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-15T21:51:12.143032+00:00",
+      "finishedAt": "2026-11-15T21:51:12.143032+00:00",
+      "notes": [
+        "[script] 0.0-1.5s (Hook): first frame names GTA V but not the figure: the COPIES SOLD counter is dim and reads '- - -'; 230M only counts in around 3.0s (133M at 3.0s). Check 6: put the figure on the counter from frame 0 (counter moment on 'grand', or start it filled); the loop end (30.0-32.3s) shows the same empty dashes.",
+        "[scene] 4.5s (Launch beat, Launch.tsx): the till display reads '$0B' while the caption says $1B: the count-up starts at zero and shows a broken figure; start it from a non-zero value or reveal it on the word.",
+        "[script] 4.5-7.5s (Launch beat): the wall calendar ('DAY ONE'/'DAY FOUR') is cut off at the right edge, under the right-hand buttons; move it inside the frame.",
+        "[script] 9.0-12.0s (Consoles beat): the gamer is half off the right edge under the buttons, the caption covers his face at 9.0s, at 12.0s he hides the new console's label, and the TV stays blank at 9.0-10.5s; consoles are told apart only by 'OLD'/'NEW' text tags (lesson 7). Put him inside the frame, light the TV, draw the generations so they need no label.",
+        "[script] 25.5-28.5s (Payoff): the last figure, $13.9M an hour, is just $1B / 72 h restated, a textbook division, not the story's most surprising fact (check 6a); end on the bigger true figure (230M copies still selling, or $1.39B with no new GTA).",
+        "[script] thumbnail.png: the plan's figure {fact2} is missing: at 2.6s the counter is blurred and shows '- - -', so the cover is a boy with a box and 'STILL SELLING'; take it once 230M shows (about 3.5s) or fill the counter earlier."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:52:35.314290+00:00",
+      "finishedAt": "2026-11-15T21:52:35.314290+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:53:10.194271+00:00",
+      "finishedAt": "2026-11-15T21:53:10.194271+00:00",
+      "notes": [
+        "Re-review after reorder: turn 'in all those years, Rockstar made no new Grand Theft Auto' true (GTA V 2013 is the last mainline GTA; later releases were re-releases/remasters), 'sequel lands this month' true for GTA VI on 19 Nov 2026 (still held) provided it publishes in November; payoff $1.39B Take-Two net bookings Apr-Jun 2026 across all its games (GamesBeat 7 Aug 2026, Take-Two Q1 FY27 release); 230M and $1B lines unchanged and confirmed; $13.9M line and maths removed; no advice; description ends with disclaimer."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:52:57.206795+00:00",
+      "finishedAt": "2026-11-15T21:53:31.698761+00:00",
+      "notes": [
+        "31 s, ember/cinematic (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:54:28.684857+00:00",
+      "finishedAt": "2026-11-15T21:54:28.684857+00:00",
+      "notes": [
+        "Re-review after fixes: GTA V and a bright 230M counter from frame 0 and on the loop end; till shows $1B; calendar inside the frame; TV lit, gamer in frame; turn is a NONE stamp at the dawn shop and the payoff is $1.39B on the boardroom ticker; 7 directed places, nothing cut off or covered, disclaimer over the last moments, 31 s, layout and craft clean. Cover's 230M sits faint behind the scene layout's blur (minor)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:54:44.661740+00:00",
+      "finishedAt": "2026-11-15T21:56:22.914669+00:00",
+      "notes": [
+        "31 s, ember/cinematic, peak -1.0 dB, mean -16.6 dB",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-15T21:57:22.319750+00:00",
+      "finishedAt": "2026-11-15T21:57:22.319750+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261116-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261116-01"
+  },
+  "priority": {
+    "level": "trending",
+    "until": "2026-11-20"
+  }
+}

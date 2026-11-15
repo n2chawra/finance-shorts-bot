@@ -1,0 +1,680 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61907,
+ "story": "how_they_make_money",
+ "shape": "reveal",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "cinematic",
+  "key": "D",
+  "bpm": 92,
+  "look": {
+   "stage": "city",
+   "header": "sticky",
+   "holder": "sign",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "question",
+ "cta": "Are you buying the sequel on day one? Comment",
+ "feed_id": "2026-11-16-gta-v-made-1-billion-in-3-days",
+ "facts": [
+  {
+   "label": "Worldwide retail sales of Grand Theft Auto V in its first three days on sale, Take-Two",
+   "value": 1,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2013-09-20",
+   "source": "Take-Two Interactive",
+   "url": "https://gaming-age.com/2013/09/grand-theft-auto-v-sales-surpass-1-billion-first-three-days/amp/"
+  },
+  {
+   "label": "Copies of Grand Theft Auto V sold worldwide, Take-Two Q1 fiscal 2027 report",
+   "value": 230,
+   "unit": "count_million",
+   "currency": "USD",
+   "as_of": "2026-06-30",
+   "source": "Take-Two Interactive",
+   "url": "https://gamesbeat.com/take-two-interactive-says-ugc-helped-drive-grand-theft-auto-growth-in-q1-2027/"
+  },
+  {
+   "label": "Take-Two net bookings in the quarter to 30 June 2026",
+   "value": 1.39,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-06-30",
+   "source": "Take-Two Interactive",
+   "url": "https://gamesbeat.com/take-two-interactive-says-ugc-helped-drive-grand-theft-auto-growth-in-q1-2027/"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.0,
+  "words": "Still *selling*",
+  "figure": "{fact2}",
+  "tag": "Copies sold",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Grand Theft Auto Five has sold over {fact2} copies.",
+   "events": {
+    "grand": {
+     "word": "Grand"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "copies": {
+     "word": "copies"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "grand"
+    },
+    {
+     "kind": "riser",
+     "at": "sold"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "a gamer's bedroom at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "copies",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "grand",
+      "what": "game boxes start stacking up from the floor beside the gamer"
+     },
+     {
+      "at": "sold",
+      "what": "the box tower shoots up through the ceiling"
+     },
+     {
+      "at": "copies",
+      "what": "the counter on the top box counts up to the figure"
+     }
+    ],
+    "things": [
+     "box tower",
+     "beanbag",
+     "controller",
+     "tv glow",
+     "led counter",
+     "poster wall"
+    ],
+    "fig": {
+     "copies": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "It sold over {fact1} in its first three days, years ago. So why does it still sell?",
+   "events": {
+    "sold": {
+     "word": "sold"
+    },
+    "first": {
+     "word": "first"
+    },
+    "days": {
+     "word": "days"
+    },
+    "why": {
+     "word": "why"
+    },
+    "sell": {
+     "word": "sell"
+    },
+    "years": {
+     "word": "years"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "sold"
+    },
+    {
+     "kind": "kaching",
+     "at": "first"
+    },
+    {
+     "kind": "tick",
+     "at": "days"
+    }
+   ],
+   "params": {
+    "component": "Launch",
+    "place": "a game shop at midnight on launch night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "days",
+      "size": "medium"
+     },
+     {
+      "at": "why",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sold",
+      "what": "the shutter rolls up, the queue surges and the till display starts counting"
+     },
+     {
+      "at": "first",
+      "what": "the clerk slams a box on the counter, cash flies into the till"
+     },
+     {
+      "at": "days",
+      "what": "the wall calendar tears three pages off"
+     },
+     {
+      "at": "why",
+      "what": "the camera pushes in on the clerk staring at an old box on today's shelf"
+     }
+    ],
+    "things": [
+     "roller shutter",
+     "queue of fans",
+     "till display",
+     "wall calendar",
+     "counter",
+     "clerk"
+    ],
+    "fig": {
+     "sold": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "consoles",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "Rockstar released it again for the next consoles, and once more for the ones after.",
+   "events": {
+    "rockstar": {
+     "word": "Rockstar"
+    },
+    "released": {
+     "word": "released"
+    },
+    "consoles": {
+     "word": "consoles"
+    },
+    "once": {
+     "word": "once"
+    },
+    "after": {
+     "word": "after"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "released"
+    },
+    {
+     "kind": "pop-high",
+     "at": "once"
+    },
+    {
+     "kind": "boom",
+     "at": "after"
+    }
+   ],
+   "params": {
+    "component": "Consoles",
+    "place": "a TV cabinet as the consoles change",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "consoles",
+      "size": "medium"
+     },
+     {
+      "at": "after",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rockstar",
+      "what": "the old console on the cabinet blinks, the box is pulled out of it"
+     },
+     {
+      "at": "released",
+      "what": "the same box drops into a newer console's slot"
+     },
+     {
+      "at": "consoles",
+      "what": "the newer console slides in and the TV lights up"
+     },
+     {
+      "at": "once",
+      "what": "a third, newest console rises on the shelf"
+     },
+     {
+      "at": "after",
+      "what": "the box jumps across into it and the camera pulls back on three consoles in a row"
+     }
+    ],
+    "things": [
+     "tv cabinet",
+     "three consoles",
+     "game box",
+     "tv screen",
+     "gamer's hands"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "online",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "Its online world kept running, so players kept coming back. So who cashes in?",
+   "events": {
+    "online": {
+     "word": "online"
+    },
+    "world": {
+     "word": "world"
+    },
+    "running": {
+     "word": "running"
+    },
+    "players": {
+     "word": "players"
+    },
+    "back": {
+     "word": "back"
+    },
+    "cashing": {
+     "word": "cashes"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "online"
+    },
+    {
+     "kind": "pop",
+     "at": "players"
+    },
+    {
+     "kind": "pop-high",
+     "at": "back"
+    }
+   ],
+   "params": {
+    "component": "Online",
+    "place": "a sunny coastal city from a hilltop at sunset",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "players",
+      "size": "medium"
+     },
+     {
+      "at": "cashing",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "online",
+      "what": "the city's lights blink on block by block"
+     },
+     {
+      "at": "running",
+      "what": "cars stream along the highway into the city"
+     },
+     {
+      "at": "players",
+      "what": "player pins drop all over the city"
+     },
+     {
+      "at": "back",
+      "what": "more pins rain down and the rider on the hill punches the air"
+     },
+     {
+      "at": "cashing",
+      "what": "the camera tilts up from the city to a tower lit with a dollar sign at the top"
+     }
+    ],
+    "things": [
+     "coastal skyline",
+     "palm trees",
+     "highway",
+     "player pins",
+     "motorbike rider",
+     "sun"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "And in all those years, Rockstar made no new Grand Theft Auto. Its sequel lands this month.",
+   "events": {
+    "years": {
+     "word": "years"
+    },
+    "rockstar": {
+     "word": "Rockstar"
+    },
+    "no": {
+     "word": "no"
+    },
+    "sequel": {
+     "word": "sequel"
+    },
+    "lands": {
+     "word": "lands"
+    },
+    "month": {
+     "word": "month"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "years"
+    },
+    {
+     "kind": "fail",
+     "at": "no"
+    },
+    {
+     "kind": "whoosh",
+     "at": "lands"
+    }
+   ],
+   "params": {
+    "component": "Dawn",
+    "place": "a game shop at dawn on the sequel's launch day",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "no",
+      "size": "close"
+     },
+     {
+      "at": "sequel",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "years",
+      "what": "the shop's board flips through the years, the old box on its ledge"
+     },
+     {
+      "at": "rockstar",
+      "what": "the board lights up"
+     },
+     {
+      "at": "no",
+      "what": "a big red NONE stamps across the board"
+     },
+     {
+      "at": "sequel",
+      "what": "the camera pulls back on sealed crates behind a rope, fans waking in sleeping bags"
+     },
+     {
+      "at": "lands",
+      "what": "the launch-day banner unrolls over the door"
+     },
+     {
+      "at": "month",
+      "what": "the fans punch the air"
+     }
+    ],
+    "things": [
+     "record board",
+     "sealed crates",
+     "rope barrier",
+     "sleeping bags",
+     "launch banner",
+     "dawn sky",
+     "wall clock"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "From April to June, with no new one out, owner Take-Two still took {fact3} across all its games.",
+   "events": {
+    "april": {
+     "word": "April"
+    },
+    "june": {
+     "word": "June"
+    },
+    "no": {
+     "word": "no"
+    },
+    "owner": {
+     "word": "owner"
+    },
+    "took": {
+     "word": "took"
+    },
+    "games": {
+     "word": "games"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "june"
+    },
+    {
+     "kind": "fail",
+     "at": "no"
+    },
+    {
+     "kind": "kaching",
+     "at": "took"
+    }
+   ],
+   "params": {
+    "component": "Owner",
+    "place": "Take-Two's boardroom high over the city at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "no",
+      "size": "close"
+     },
+     {
+      "at": "took",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "april",
+      "what": "the wall calendar flips from April"
+     },
+     {
+      "at": "june",
+      "what": "to June"
+     },
+     {
+      "at": "no",
+      "what": "a spotlight hits an empty display stand, its plaque stamped with a red cross"
+     },
+     {
+      "at": "owner",
+      "what": "the boss in the chair spins round to face us"
+     },
+     {
+      "at": "took",
+      "what": "the big ticker on the wall counts up to the figure and the boss leans back grinning"
+     },
+     {
+      "at": "games",
+      "what": "other game boxes light up on the shelves round the ticker"
+     }
+    ],
+    "things": [
+     "boardroom",
+     "empty display stand",
+     "big wall ticker",
+     "wall calendar",
+     "boss in chair",
+     "night skyline"
+    ],
+    "fig": {
+     "took": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "Day one for the new one, or the one that never stopped?",
+   "events": {
+    "day": {
+     "word": "Day"
+    },
+    "new": {
+     "word": "new"
+    },
+    "or": {
+     "word": "or"
+    },
+    "never": {
+     "word": "never"
+    },
+    "stopped": {
+     "word": "stopped"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "day"
+    },
+    {
+     "kind": "whoosh",
+     "at": "stopped"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "back in the gamer's bedroom at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "or",
+      "size": "medium"
+     },
+     {
+      "at": "stopped",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "day",
+      "what": "a sealed new box drops onto the beanbag"
+     },
+     {
+      "at": "new",
+      "what": "the gamer lifts it and looks at it"
+     },
+     {
+      "at": "or",
+      "what": "he sets it down and turns back to the old tower"
+     },
+     {
+      "at": "stopped",
+      "what": "the camera pushes in to the hook's first framing"
+     }
+    ],
+    "things": [
+     "box tower",
+     "new sealed box",
+     "beanbag",
+     "tv glow",
+     "gamer"
+    ],
+    "fig": {
+     "copies": "{fact2}"
+    }
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}

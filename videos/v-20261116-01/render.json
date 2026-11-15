@@ -1,0 +1,111 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61907,
+  "duration_sec": 31,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 92,
+    "look": {
+      "stage": "city",
+      "header": "sticky",
+      "holder": "sign",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Grand Theft Auto Five has sold over 230M copies.",
+        "start": 0.3,
+        "seconds": 3.3,
+        "window": 3.83,
+        "fill": 0.862
+      },
+      {
+        "scene": "promise",
+        "text": "It sold over $1B in its first three days, years ago. So why does it still sell?",
+        "start": 4.13,
+        "seconds": 4.18,
+        "window": 4.67,
+        "fill": 0.895
+      },
+      {
+        "scene": "consoles",
+        "text": "Rockstar released it again for the next consoles, and once more for the ones after.",
+        "start": 8.8,
+        "seconds": 3.62,
+        "window": 4.07,
+        "fill": 0.889
+      },
+      {
+        "scene": "online",
+        "text": "Its online world kept running, so players kept coming back. So who cashes in?",
+        "start": 12.87,
+        "seconds": 3.72,
+        "window": 4.13,
+        "fill": 0.901
+      },
+      {
+        "scene": "turn",
+        "text": "And in all those years, Rockstar made no new Grand Theft Auto. Its sequel lands this month.",
+        "start": 17.0,
+        "seconds": 4.17,
+        "window": 4.57,
+        "fill": 0.912
+      },
+      {
+        "scene": "payoff",
+        "text": "From April to June, with no new one out, owner Take-Two still took $1.39B across all its games.",
+        "start": 21.57,
+        "seconds": 5.63,
+        "window": 6.2,
+        "fill": 0.908
+      },
+      {
+        "scene": "loop",
+        "text": "Day one for the new one, or the one that never stopped?",
+        "start": 27.77,
+        "seconds": 2.34,
+        "window": 2.87,
+        "fill": 0.815
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "real-subject-first-frame": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.6,
+    "lufs": -15.2,
+    "music_under_voice_db": 23.5
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.67,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
