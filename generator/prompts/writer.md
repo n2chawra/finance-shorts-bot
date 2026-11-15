@@ -72,6 +72,12 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     "McDonald's earns more from rent than from burgers." · "A {price} gym makes its money from the
     members who never come." No "You think …?", no "Watch this.", no "Here's why." (`number-check`
     fails those). The surprise is the reason to stay; the rest of the Short shows how it can be true.
+  - **The line after the hook goes on with the same story** (auditor 2026-11-16: 20 of 26 Shorts lost the
+    most viewers at 4.5-7 s, on that line): the next, bigger surprise about the same person or business
+    ("And it still kept {pro_total}." · "And she sold out every one of her {shows} shows."). Never a wider
+    total ("Forbes' top creators made…"), the hook's figure rescaled ("How big does that get?"), the
+    expected baseline ("Delta took in {x} in revenue") or a setup ("Say your cart…"); `number-check`
+    fails those (`story.second_line_problems`).
   - **The first frame shows the real subject, recognisable at a glance** with the sound off: the
     thing itself drawn big (the gym, the burger, the jersey with the name), its name as a label, the
     figure beside it. Never an empty room, never a placeholder head, never a cast member standing in

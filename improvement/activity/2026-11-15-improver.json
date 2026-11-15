@@ -1,0 +1,60 @@
+{
+  "agent": "improver",
+  "day": "2026-11-15",
+  "startedAt": "2026-11-15T17:04:03Z",
+  "finishedAt": "2026-11-15T17:09:15Z",
+  "summary": "Answered the owner's 'focus on script, hook and topic' note: a Short now fails when the line after the hook is a wider total, a rescale, a baseline or a setup, and the strongest hook test is first in line for the next hook cycle. Retired the plum palette. Cycle 1 is still collecting data.",
+  "decision": "acted",
+  "why": "The auditor's channel review: in 20 of 26 Shorts the steepest fall is at 4.5-7 s, on the second line; its picture tally names plum the worst palette (16.4% vs 26.6% held after the hook). The evaluator has 0 of 8 Shorts a side for cycle 1, so no verdict tonight.",
+  "findings": [
+    {
+      "title": "Cycle 1 waits",
+      "detail": "real-subject-first-frame: 0 of 8 Shorts a side with two days of data, day 2 of 7 (on 2, off 0). Verdict due by 20 Nov."
+    },
+    {
+      "title": "Long tests wait",
+      "detail": "quiet-bed 1 of 4 long videos a side, chart-gap-fill 2 of 4."
+    },
+    {
+      "title": "What performs (48 h views vs median)",
+      "detail": "story money_scale 10.3x (n 7), hook challenge 3.1x (n 4) vs question 0.38x (n 15), length 20-24 s 4.6x (n 3), 30-34 s 2.9x (n 8)."
+    },
+    {
+      "title": "Impact, week of 9 Nov",
+      "detail": "9 Shorts: median 84 views at 48 h (43 the week before), 71.8% viewed (51.2%), stayed to watch 0.311 (0.381), 19.1 s watched."
+    },
+    {
+      "title": "Most widespread failures",
+      "detail": "QA edge cuts (29 videos), empty frames (29), recurring 'QA failed after three rounds' twice; edge cuts got a probe fix on 14 Nov, re-checked next run."
+    }
+  ],
+  "changes": [
+    {
+      "title": "The line after the hook carries on the story",
+      "detail": "generator/story.py second_line_problems + writer.md: fails a wider total, the hook's figure rescaled, the revenue baseline or a setup right after the hook; test added.",
+      "branch": "agent/improver/2026-11-15"
+    },
+    {
+      "title": "Plum palette retired",
+      "detail": "generator/looks.py RETIRED_PALETTES, checked in check-plan; old videos still re-render.",
+      "branch": "agent/improver/2026-11-15"
+    },
+    {
+      "title": "Hook test first in line",
+      "detail": "improvement/cycle/backlog.json: named-figure-then-guess moved to the top of the first-second challengers (cycle 3).",
+      "branch": "agent/improver/2026-11-15"
+    },
+    {
+      "title": "Weekly summary",
+      "detail": "improvement/weekly/2026-W46.md",
+      "branch": "agent/improver/2026-11-15"
+    }
+  ],
+  "nextCheck": "2026-11-17",
+  "links": [
+    {
+      "label": "Weekly summary",
+      "url": "improvement/weekly/2026-W46.md"
+    }
+  ]
+}

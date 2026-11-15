@@ -138,7 +138,7 @@ salary really leaves you, which money level you are on.
   `blocked_categories`, and the topic must not resemble anything in `recent_topics`.
 - **Hook style:** one of `hook_styles` (`conflict` and `secret` suit the skit formats), different
   from `previous.hook_style`.
-- **Style:** palette and genre different from `previous`; key and tempo not both the same.
+- **Style:** palette and genre different from `previous`; key and tempo not both the same. Never a palette in `looks.retired_palettes` (check-plan fails it).
 - **Look** (`style.look`, the board's look; `state.looks` has the options and the last videos' looks):
   `{"stage", "header", "holder", "entrance"}`, not the same combination as any of the last 10 videos and
   neither the stage nor the header style of the previous one (`check-plan` enforces it). Pick what

@@ -88,3 +88,13 @@ def test_a_malformed_fact_link_is_a_note_not_a_crash():
     problems = " ".join(topics.check_fact_inputs(script))
     assert "maths 'r'.facts is an object" in problems
     assert "fact 2 has no numeric value" in problems
+
+
+def test_a_retired_palette_fails_a_new_plan_but_stays_drawable():
+    """Improver 2026-11-15: the auditor's tally named plum the worst palette (16.4% held after the hook vs
+    26.6%); new plans skip it, old videos keep it so they still re-render."""
+    from generator import looks
+    from renderer.engine.style import PALETTES
+    assert looks.palette_problems({"palette": "plum"}) and "retired" in looks.palette_problems({"palette": "plum"})[0]
+    assert looks.palette_problems({"palette": "mint"}) == [] and looks.palette_problems(None) == []
+    assert "plum" in PALETTES and "plum" in looks.for_state([])["retired_palettes"]
