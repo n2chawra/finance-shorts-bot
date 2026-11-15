@@ -273,3 +273,19 @@ def test_a_unit_ladder_fails_but_one_rate_passes():
         beat("turn", "turn", "Slots alone brought in {b}.")]}
     assert story.curiosity_problems(one) == []
     assert story.curiosity_problems({**ladder, "format": "long"}) == []
+
+
+def test_story_time_words_are_not_a_unit_ladder():
+    """Auditor 2026-11-16: "a year later", "one night in 1998" and "a week before" tell when something happened,
+    not a rate; a true story with three of them next to its figures was failed as a unit ladder."""
+    told = {"format": "short", "beats": [
+        beat("hook", "hook", "Nike paid Jordan {a} for one shoe deal."),
+        beat("then", "build", "A year later the shoe had sold {b}."),
+        beat("night", "build", "One night in 1998 the brand was worth {c}."),
+        beat("week", "turn", "A week before the deal, his agent asked for {d}.")]}
+    assert story.curiosity_problems(told) == []
+    rates = {"format": "short", "beats": [
+        beat("hook", "hook", "The Strip keeps {a} a minute."),
+        beat("hour", "build", "That is {b} an hour."),
+        beat("day", "build", "And {c} a day, later counted as profit.")]}
+    assert story.curiosity_problems(rates)

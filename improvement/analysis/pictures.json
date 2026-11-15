@@ -1,12 +1,99 @@
 {
-  "note": "The auditor's weekly animation tally (agents/auditor.md 3b). Seeded 2026-11-12 with the reference set only; the auditor fills the rest each Sunday.",
-  "writtenAt": "2026-11-12",
-  "lossByPicture": [],
-  "options": [],
-  "worst": null,
+  "note": "The auditor's weekly animation tally (agents/auditor.md 3b): what was on screen at each drop point of the Shorts of the last 21 days. Drops in the first 1.5 s are left out (the hook's job).",
+  "writtenAt": "2026-11-15T17:20:00Z",
+  "lossByPicture": [
+    {
+      "kind": "build scene with the cast on screen",
+      "drops": 21,
+      "shorts": 9,
+      "avgDrop": 0.182
+    },
+    {
+      "kind": "board card (diagram, no cast)",
+      "drops": 14,
+      "shorts": 8,
+      "avgDrop": 0.188
+    },
+    {
+      "kind": "custom coded beat (Hook/Turn/Payoff)",
+      "drops": 8,
+      "shorts": 6,
+      "avgDrop": 0.197
+    },
+    {
+      "kind": "build scene with things only",
+      "drops": 10,
+      "shorts": 7,
+      "avgDrop": 0.133
+    },
+    {
+      "kind": "shot scene with the cast on screen",
+      "drops": 7,
+      "shorts": 3,
+      "avgDrop": 0.159
+    }
+  ],
+  "options": [
+    {
+      "by": "look",
+      "value": "ribbon",
+      "n": 5,
+      "heldAfterHook": 0.31
+    },
+    {
+      "by": "look",
+      "value": "sticky",
+      "n": 4,
+      "heldAfterHook": 0.295
+    },
+    {
+      "by": "genre",
+      "value": "synthwave",
+      "n": 4,
+      "heldAfterHook": 0.283
+    },
+    {
+      "by": "palette",
+      "value": "ember",
+      "n": 9,
+      "heldAfterHook": 0.252
+    },
+    {
+      "by": "genre",
+      "value": "cinematic",
+      "n": 7,
+      "heldAfterHook": 0.24
+    },
+    {
+      "by": "genre",
+      "value": "pop",
+      "n": 8,
+      "heldAfterHook": 0.238
+    },
+    {
+      "by": "genre",
+      "value": "lofi",
+      "n": 5,
+      "heldAfterHook": 0.228
+    },
+    {
+      "by": "palette",
+      "value": "ocean",
+      "n": 4,
+      "heldAfterHook": 0.206
+    },
+    {
+      "by": "palette",
+      "value": "plum",
+      "n": 7,
+      "heldAfterHook": 0.164
+    }
+  ],
+  "worst": "palette plum: 16.4% held after the hook (7 Shorts) against 26.6% for the other palettes (19 Shorts), 10.2 points lower. Four of the seven are October Shorts, when every palette held less, so the gap is partly the older recipe.",
   "reference": [
-    "v-20261023-01",
-    "v-20261105-06",
-    "v-20261026-02"
-  ]
+    "v-20261110-03",
+    "v-20261110-02",
+    "v-20261105-06"
+  ],
+  "directedNote": "No directed 2D Short (from 14 Nov) has drop points yet; next Sunday's tally is the first that can rank directed pictures."
 }

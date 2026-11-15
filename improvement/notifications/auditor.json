@@ -1,13 +1,6 @@
 {
   "notifications": [
     {
-      "key": "data-audit-late",
-      "severity": "info",
-      "title": "Tonight's auditor ran before today's data audit",
-      "detail": "The auditor started at 19:49 IST (14:19 UTC) and metrics/data-audit.json was from 13 Nov 16:34 UTC (22 h old). Today's Data audit run had not started: GitHub has started the 13:53 IST cron at 16:19-16:53 UTC the last three days. The dashboard-vs-YouTube check was skipped. Yesterday's audit had 2 errors: v-20261112-01 (dashboard 31 views, YouTube 40) and v-20261112-02 (240 vs 276) right after a live refresh; the 13 Nov commit 'Views match YouTube and never jump down and back' may have fixed them, and tomorrow's audit will show it.",
-      "fix": "1. Nothing broke; the audit lands later tonight. 2. To have the auditor check it each run, trigger Data audit from the Netlify heartbeat like Publish, or schedule the auditor after about 23:30 IST in claude.ai → Code → Routines."
-    },
-    {
       "key": "renderer-network",
       "severity": "warning",
       "title": "renderer/thumbs.py downloads from YouTube, against the no-network rule",
