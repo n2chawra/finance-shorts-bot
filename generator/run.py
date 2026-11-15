@@ -228,6 +228,7 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         entries = history.of_format(history.load(root), fmt)
         enabled = enabled_templates(load_settings(root), fmt, root)
         problems = variety.check_plan(plan, entries, enabled)
+        problems += looks.palette_problems(plan.get("style"))
         problems += formats.check_plan(plan, root, fmt)
         problems += formats.mix_problems(plan, entries, root, fmt)
         if fmt == "short" and plan.get("template") == "short_story":

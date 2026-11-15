@@ -26,6 +26,21 @@ LOOKS = {
 KEYS = tuple(LOOKS)
 LOOK_WINDOW = 10
 
+# Out of the rotation for new videos (agents/improver.md section 4: the auditor's weekly picture tally,
+# improvement/analysis/pictures.json `worst`, needs no test). Old videos keep theirs, so re-renders still work;
+# the palettes themselves stay in renderer/engine/style.py.
+RETIRED_PALETTES = {
+    "plum": "auditor tally 2026-11-15: 16.4% held after the hook (7 Shorts) against 26.6% for the other palettes (19)",
+}
+
+
+def palette_problems(style: object) -> list[str]:
+    """A new plan never takes a retired palette."""
+    pal = (style or {}).get("palette") if isinstance(style, dict) else None
+    if pal in RETIRED_PALETTES:
+        return [f"style.palette {pal!r} is retired ({RETIRED_PALETTES[pal]}): pick another"]
+    return []
+
 
 def look_of(entry: dict) -> dict | None:
     look = (entry.get("style") or {}).get("look")
@@ -59,4 +74,5 @@ def problems(look: object, history: list[dict]) -> list[str]:
 def for_state(history: list[dict]) -> dict:
     """What the planner needs: the options and the looks of the last videos."""
     return {"options": {k: list(v) for k, v in LOOKS.items()},
+            "retired_palettes": dict(RETIRED_PALETTES),
             "recent": [lk for e in history[-LOOK_WINDOW:] if (lk := look_of(e))]}
