@@ -612,6 +612,10 @@ test("the study page takes a link and shows what was learned and applied", async
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Study", { timeout: 30_000 });
   await expect(page.getByText("What they do").first()).toBeVisible();
   await expect(page.getByText(/Queued as a weekly test/)).toBeVisible();
+  // every link a keyboard or screen reader reaches has a name (the thumbnail link once had none)
+  const nameless = await page.locator("main a:not([aria-hidden='true'])").evaluateAll((as) =>
+    as.filter((a) => !(a.textContent ?? "").trim() && !a.getAttribute("aria-label")).map((a) => a.getAttribute("href")));
+  expect(nameless, "links without a name").toEqual([]);
   await page.getByLabel("YouTube link").fill("not a link");
   await page.getByRole("button", { name: "Study it" }).click();
   await expect(page.getByText("That isn't a YouTube video link").first()).toBeVisible();
