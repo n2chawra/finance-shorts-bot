@@ -289,3 +289,33 @@ def test_story_time_words_are_not_a_unit_ladder():
         beat("hour", "build", "That is {b} an hour."),
         beat("day", "build", "And {c} a day, later counted as profit.")]}
     assert story.curiosity_problems(rates)
+
+
+def test_the_line_after_the_hook_carries_on_the_hooks_own_story():
+    """Auditor 2026-11-16: 20 of 26 Shorts lost the most viewers at 4.5-7 s, on the second line: a wider total
+    (MrBeast, 'Forbes' top creators made … in all', -41 points), the figure rescaled (Las Vegas), the baseline
+    revenue (Delta) or a setup. The Shorts that held went on with the subject's next surprise."""
+    wider = {"format": "short", "beats": [
+        beat("hook", "hook", "MrBeast made {a} in one year, Forbes estimates."),
+        beat("promise", "promise", "Forbes' top creators made {b} in all.")]}
+    probs = story.second_line_problems(wider)
+    assert probs and "wider total" in probs[0] and "4.5-7 s" in probs[0]
+    rescaled = {"format": "short", "beats": [
+        beat("hook", "hook", "The Las Vegas Strip keeps {a} every minute."),
+        beat("hour", "build", "How big does that get? Every hour, about {b}.")]}
+    assert "rescaled" in story.second_line_problems(rescaled)[0]
+    baseline = {"format": "short", "beats": [
+        beat("hook", "hook", "Delta makes its real money on a credit card."),
+        beat("revenue", "build", "Last year, Delta took in {a} in revenue.")]}
+    assert "baseline" in story.second_line_problems(baseline)[0]
+    setup = {"format": "short", "beats": [
+        beat("hook", "hook", "Costco makes almost nothing on your cart."),
+        beat("cart", "build", "Say your cart rings up {a}.")]}
+    assert "setup" in story.second_line_problems(setup)[0]
+    held = {"format": "short", "beats": [
+        beat("hook", "hook", "One night of Taylor Swift's Eras Tour brought in about {a}."),
+        beat("more", "build", "And she sold out every one of her {b} shows."),
+        beat("crowd", "build", "In all, {c} seats were filled."),
+        beat("later", "build", "Forbes' top creators made {d} in all.")]}
+    assert story.second_line_problems(held) == []
+    assert story.second_line_problems({**wider, "format": "long"}) == []

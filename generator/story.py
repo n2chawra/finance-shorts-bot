@@ -419,6 +419,54 @@ def curiosity_problems(script: dict) -> list[str]:
     return []
 
 
+# Auditor, 2026-11-16 (channel review): in 20 of the 26 Shorts of the last 3 weeks the steepest fall came at
+# 4.5-7 s, on the second line: a wider total ("Forbes' top creators made {top_whole} in all", MrBeast, -41
+# points at 5.3 s), the same figure rescaled ("How big does that get? Every hour, about…", Las Vegas), the
+# expected baseline ("Last year, Delta took in {x} in revenue") or a setup ("Say your cart rings up…").
+# The Shorts that kept them went on with the hook's own story: "And it still kept {pro_total}." (Netflix),
+# "And she sold out every one of her {n} shows." (Eras Tour, 994 views at 48 h). Lessons 1 and 2.
+SECOND_LINE_BAD = (
+    (re.compile(r"\b(put together|all of them|between them)\b|"
+                r"\b(top|richest|biggest) \w+ (made|earned|took|brought|have|own)\b|\bthe (whole|entire) (industry|list|market|world)\b", re.I),
+     "a wider total than the hook's own subject"),
+    (re.compile(r"\bhow big does (that|it|this) get\b|\bin other words\b|\bthat'?s (about )?\{[a-z0-9_]+\} (every|a|an|per)\b", re.I),
+     "the hook's figure rescaled"),
+    (re.compile(r"\b(here'?s how|here is how|how it works|let'?s (break|look|see)|to understand|it (all )?starts with|"
+                r"step one|the answer is|it'?s simple|say your)\b|^\W*first,", re.I),
+     "a setup or an explanation"),
+    (re.compile(r"\b(took|brought|made|earned) in (about |almost |over )?\{[a-z0-9_]+\} in (revenue|sales)\b", re.I),
+     "the expected baseline (its revenue)"),
+)
+SECOND_LINE_SENTENCES = 2   # the sentences after the hook's first one that play at about 3-7 s
+
+
+def _sentences(text: str) -> list[str]:
+    return [s for s in re.split(r"(?<=[.!?])\s+", text.strip()) if s]
+
+
+def second_line_problems(script: dict) -> list[str]:
+    """The line after the hook carries on the hook's own story with a bigger surprise; never a wider total,
+    the same figure rescaled, the expected baseline or a setup (auditor 2026-11-16: 20 of 26 Shorts lost
+    the most viewers at 4.5-7 s, on that line)."""
+    if script.get("format", "short") != "short":
+        return []
+    spoken = [b for b in script.get("beats") or [] if (b.get("say") or "").strip()]
+    seq = [(b.get("id"), s) for b in spoken[:3] for s in _sentences(b["say"])]
+    out = []
+    for bid, line in seq[1:1 + SECOND_LINE_SENTENCES]:
+        for rx, what in SECOND_LINE_BAD:
+            m = rx.search(line)
+            if m:
+                out.append(f"beat {bid!r}: the line right after the hook is {what} ({m.group(0).strip()!r} in {line!r}); "
+                           f"20 of 26 Shorts lost the most viewers here, at 4.5-7 s. Go on with the hook's own story: the "
+                           f"next, bigger surprise about the same person or business (\"And it still kept {{pro_total}}.\")")
+                break
+        if ANNOUNCE.search(line):
+            out.append(f"beat {bid!r}: the line right after the hook announces a structure ({ANNOUNCE.search(line).group(0)!r}): "
+                       f"give the next surprise instead; viewers leave on a count of what is coming")
+    return out
+
+
 def hook_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
     """A Short's hook states the surprising fact itself, with the famous name or the figure in it (owner
     review, 2026-11-11). Until then the hook had to be "You think X? It isn't.": 8 of 9 Shorts opened on the
@@ -480,6 +528,7 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
         out += hook_problems(script, earlier)
         out += invented_problems(script) + reaction_problems(script) + payoff_problems(script)
         out += curiosity_problems(script)
+        out += second_line_problems(script)
         out += spoken_figure_problems(script)
     if script.get("shape") is not None or script.get("format") == "long" or any(b.get("scene") == "board" for b in beats):
         out += chain_problems(script)
