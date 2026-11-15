@@ -126,7 +126,8 @@ function StudyCard({ s }: { s: Study }) {
   return (
     <li className="panel p-4 sm:p-5">
       <div className="flex flex-col gap-4 sm:flex-row">
-        <a href={s.url} target="_blank" rel="noreferrer noopener" className="relative block w-full shrink-0 overflow-hidden rounded-xl border border-ring bg-surface-3 sm:w-44">
+        {/* the thumbnail repeats the title link: keep it out of the tab order and screen readers (it had no name) */}
+        <a href={s.url} target="_blank" rel="noreferrer noopener" aria-hidden tabIndex={-1} className="relative block w-full shrink-0 overflow-hidden rounded-xl border border-ring bg-surface-3 sm:w-44">
           {!s.youtubeId.startsWith("sample") && <img src={`https://i.ytimg.com/vi/${s.youtubeId}/mqdefault.jpg`} alt="" loading="lazy" className="aspect-video w-full object-cover" />}
           {s.youtubeId.startsWith("sample") && <div className="aspect-video w-full" />}
         </a>

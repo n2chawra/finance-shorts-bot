@@ -1,0 +1,18 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-15",
+  "startedAt": "2026-11-15T17:35:13Z",
+  "finishedAt": "2026-11-15T17:44:09Z",
+  "summary": "Weekly bug hunt: build, lint and all 108 smoke tests pass, live site up. Fixed one accessibility bug on the Study page (a thumbnail link with no name) and added a test for it.",
+  "decision": "acted",
+  "why": "Sunday is the weekly bug hunt. The Study page is new and hadn't been reviewed; its thumbnail link was unnamed for keyboard and screen-reader users.",
+  "findings": [
+    {"title": "Study thumbnail link had no name", "detail": "A second link to the same video with only an empty-alt image inside; now hidden from the tab order and screen readers."},
+    {"title": "Live site up", "detail": "/api/health answered; database round trip 3.1 s."}
+  ],
+  "changes": [
+    {"title": "Study: thumbnail link out of tab order, smoke test for nameless links", "detail": "src/app/study/page.tsx, e2e/smoke.spec.ts", "branch": "agent/dashboard/2026-11-15"}
+  ],
+  "nextCheck": "2026-11-22",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-15.md"}]
+}

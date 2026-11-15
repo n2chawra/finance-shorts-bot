@@ -563,7 +563,7 @@
       "id": "smoke-stat-cards-load",
       "kind": "bug",
       "title": "'stat cards in a row share one height' failed once on phone under full-run load",
-      "detail": "Failed once in a full local run on 2026-11-08, passed 8/8 alone and in the next two full runs. It already polls for 10 s; if it fails again, capture the ragged heights it reports before changing anything.",
+      "detail": "Failed once in a full local run on 2026-11-08, passed 8/8 alone and in the next two full runs. It already polls for 10 s; if it fails again, capture the ragged heights it reports before changing anything. 2026-11-15: passed in two full runs (desktop and phone).",
       "page": "overview",
       "found": "2026-11-08",
       "status": "open"
@@ -659,6 +659,19 @@
       "page": "videos",
       "found": "2026-11-11",
       "status": "open"
+    },
+    {
+      "id": "study-thumb-link-nameless",
+      "kind": "bug",
+      "title": "Study: thumbnail link had no accessible name",
+      "detail": "Each study card's thumbnail was a second link to the same YouTube page with only an empty-alt image inside, so keyboard and screen-reader users reached a link announced with no name. It now stays out of the tab order and screen readers (the title link next to it is the named one); the smoke test checks every reachable link on the page has a name.",
+      "page": "study",
+      "found": "2026-11-15",
+      "status": "done",
+      "done": "2026-11-15",
+      "lastTouched": {
+        "study/page.tsx": "2026-11-15"
+      }
     }
   ]
 }
