@@ -24,6 +24,25 @@ def test_a_long_topic_must_expand_a_winning_short(tmp_path):
     assert topics.blocked_reason({}, "2026-11-05", "short", tmp_path) is None     # Shorts need no winning Short
 
 
+def test_a_long_topic_expands_a_recent_short_in_the_top_third_by_stayed(tmp_path):
+    # owner, 2026-11-12 (agents/scout.md 1a): Shorts of the last 30 days with 100+ views, ranked by stayed
+    # to watch then views; one in the top third. The 1,000-view rule blocked Costco (627), debt (442), gym (920).
+    (tmp_path / "metrics").mkdir()
+    vids = [{"id": f"v-{i}", "format": "short", "views": 300 + i, "stayed": s, "publishAt": "2026-11-10T07:00:00Z"}
+            for i, s in enumerate([0.70, 0.65, 0.60, 0.55, 0.50, 0.45])]
+    vids += [{"id": "v-old", "format": "short", "views": 5000, "stayed": 0.9, "publishAt": "2026-10-10T07:00:00Z"},
+             {"id": "v-few", "format": "short", "views": 60, "stayed": 0.95, "publishAt": "2026-11-10T07:00:00Z"},
+             {"id": "L-x", "format": "long", "views": 900, "stayed": 0.99, "publishAt": "2026-11-10T07:00:00Z"}]
+    (tmp_path / "metrics" / "videos.json").write_text(json.dumps({"videos": vids}))
+    ok = lambda sid: topics.winning_short({"from_short": sid}, tmp_path, "2026-11-16")
+    assert ok("v-0") is None and ok("v-1") is None                 # top third of 6 recent Shorts
+    assert "top third" in ok("v-2") and "top third" in ok("v-5")
+    assert "30 days" in ok("v-old")                                 # 37 days old, however many views
+    assert "under 100" in ok("v-few")
+    assert topics.blocked_reason({"from_short": "v-0"}, "2026-11-16", "long", tmp_path) is None
+    assert "top third" in topics.blocked_reason({"from_short": "v-4"}, "2026-11-16", "long", tmp_path)
+
+
 def test_the_variant_system_s_hook_wins_over_rotation():
     from .conftest import NOW, TEMPLATES, entry, make_plan
     prev = entry(1, "myth_vs_fact", "gold", palette="forest", genre="acoustic", key="C", bpm=100)
