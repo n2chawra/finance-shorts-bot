@@ -378,7 +378,7 @@
       ],
       "found": "2026-11-05",
       "expires": "2027-11-05",
-      "status": "new",
+      "status": "rejected",
       "kind": "evergreen",
       "id": "2026-11-05-what-rich-do-with-savings",
       "from_short": "v-20261023-01",
@@ -460,7 +460,8 @@
         "https://fred.stlouisfed.org/series/WFRBST01122",
         "https://fred.stlouisfed.org/series/WFRBSN09149",
         "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax"
-      ]
+      ],
+      "reason": "Scout 2026-11-16: its Short (v-20261023-01) ranks in the bottom third of the last 30 days' Shorts by stayed to watch (0.27 / 0.26 of 32 with 100+ views; owner rule 2026-11-12: top third), and leaves the 30-day window on 22 Nov."
     },
     {
       "format": "long",
@@ -469,7 +470,7 @@
       ],
       "found": "2026-11-05",
       "expires": "2026-12-31",
-      "status": "new",
+      "status": "rejected",
       "kind": "seasonal",
       "id": "2026-11-05-how-jewellers-make-money",
       "from_short": "v-20261023-02",
@@ -557,7 +558,8 @@
         "https://cleartax.in/s/gst-impact-on-gold",
         "https://www.newsonair.gov.in/govt-adds-7-more-districts-in-6th-phase-of-mandatory-gold-hallmarking",
         "https://www.newsonair.gov.in/third-phase-of-mandatory-hallmarking-comes-into-immediate-effect"
-      ]
+      ],
+      "reason": "Scout 2026-11-16: its Short (v-20261023-02) ranks in the bottom third of the last 30 days' Shorts by stayed to watch (0.27 / 0.26 of 32 with 100+ views; owner rule 2026-11-12: top third), and leaves the 30-day window on 22 Nov."
     },
     {
       "id": "2026-11-02-signs-secretly-rich",
@@ -1032,99 +1034,6 @@
       "used_by": "L-20261026-01"
     },
     {
-      "id": "2026-10-23-how-giants-make-money",
-      "format": "long",
-      "title": "How the world's biggest companies really make money",
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How Did Costco Become a Members-Only Retail Giant? (CNBC)",
-        "views": 4800000,
-        "url": "https://www.youtube.com/watch?v=dzejHGniMTQ"
-      },
-      "category": "business",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "You know what they sell. That's not where the money comes from.",
-      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
-      "outline": [
-        "hook: Rohan buys a burger, a coffee, a phone and a streaming plan in one day; a gold thread runs from each to where the money really ends up",
-        "promise (by 0:25): six companies everyone knows, and the business hiding behind each",
-        "item 1, McDonald's: a landlord (fee_take on a restaurant's sales)",
-        "item 2, Costco: the membership, not the goods (fee_take on the yearly fee)",
-        "recap-and-tease at ~2:30",
-        "item 3, banks: the gap between what they pay you and what they charge (compare rates)",
-        "item 4, airlines: the loyalty points sold to card companies",
-        "item 5, Netflix and gyms: the people who forget to cancel",
-        "recap-and-tease at ~5:30",
-        "item 6 (strongest), casinos: the house edge on every bet (fee_take)",
-        "ending: the one question to ask about anything you buy, a single CTA, disclaimer end card"
-      ],
-      "maths": "fee_take, compare, lumpsum",
-      "verify": [
-        "Each company's model from its own annual report or a reputable outlet",
-        "No company is called a scam; describe how the model works"
-      ],
-      "found": "2026-10-23",
-      "expires": "2027-10-23",
-      "status": "new",
-      "note": "Scout 2026-10-27: the casino house edge was told as a Short on 2026-10-27 (v-20261027-03), and airlines now have their own long topic (2026-10-27-airlines-really-make-money). If this one is made first, keep airlines out of it and pick a strongest last item that is not the casino.",
-      "search": "how big companies actually make money",
-      "held": "no 1K+ Short of ours tells it yet (owner 2026-11-04): Studio skips it until one does"
-    },
-    {
-      "id": "2026-10-23-once-you-understand-compounding",
-      "format": "long",
-      "title": "Once you understand compound interest, you'll never waste money the same way",
-      "stories": [
-        "once_you_understand"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Once You Understand Economics, You Can't Be MANIPULATED Anymore",
-        "views": 3700294,
-        "url": "https://www.youtube.com/results?search_query=once+you+understand+economics"
-      },
-      "category": "compounding",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "angle": "The same idea makes billionaires richer and keeps card debt growing. Once you see it, you see it everywhere.",
-      "why_now": "Global first (owner, 2026-10-23): our 'Why billionaires never sell their stock' got 1,121 views while the local Shorts got 26-349. Anyone in the world can relate to this one.",
-      "outline": [
-        "hook: a single coin on a table that slowly fills the room; Priya smiles, Rohan panics because his is a card bill",
-        "promise (by 0:25): six places compounding works for you or against you",
-        "item 1, the penny doubled for 30 days (lumpsum at 100% per period, periods called days)",
-        "item 2, starting at 25 vs 35 (sip, compare)",
-        "recap-and-tease at ~2:30",
-        "item 3, the card balance that compounds against you (card_min_due)",
-        "item 4, fees that compound too (fee_take)",
-        "item 5, inflation, compounding in reverse (real_return)",
-        "recap-and-tease at ~5:30",
-        "item 6 (strongest): Buffett made most of his money after 60, the time effect (lumpsum over decades; his age as a sourced fact or left out)",
-        "ending: the one rule, a single CTA, disclaimer end card"
-      ],
-      "maths": "lumpsum, sip, compare, card_min_due, fee_take, real_return",
-      "verify": [
-        "Returns are assumptions, said as such",
-        "Buffett's wealth timing only if sourced"
-      ],
-      "found": "2026-10-23",
-      "expires": "2027-10-23",
-      "status": "new",
-      "search": "compound interest explained",
-      "held": "no 1K+ Short of ours tells it yet (owner 2026-11-04): Studio skips it until one does"
-    },
-    {
       "id": "2026-10-23-rich-borrow-poor-save",
       "format": "long",
       "title": "Why the rich borrow money and the poor pay it back",
@@ -1314,6 +1223,420 @@
       ],
       "expires": "2027-10-19",
       "note": "Made as L-20261019-02 (qa_passed, 277 s) on 2026-10-19; the first attempt L-20261019-01 failed on layout."
+    },
+    {
+      "format": "long",
+      "currency": "USD",
+      "reach": "global",
+      "kind": "evergreen",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-11-16",
+      "expires": "2027-11-16",
+      "status": "new",
+      "id": "2026-11-16-how-mcdonalds-really-makes-money",
+      "from_short": "v-20261031-01",
+      "from_short_views": 470,
+      "title": "How does McDonald's really make money? (It isn't the burgers)",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "category": "business",
+      "priority": "high",
+      "demand": {
+        "title": "How McDonald's Really Makes Money",
+        "views": 4000000,
+        "url": "https://www.youtube.com/watch?v=kJVj3vp-lho",
+        "channel": "PolyMatter"
+      },
+      "search": "how does mcdonalds really make money",
+      "angle": "Our Short said every burger pays McDonald's rent. The long version answers what it left open: who owns the restaurant, how much of the money is rent, why the company doesn't care if a store's burgers lose money, and what that does to the owner.",
+      "why_now": "Expands 'Every burger you buy pays McDonald's rent' (v-20261031-01), our best Short of the last 30 days by stayed to watch (56%, #1 of 32 with 100+ views). How famous businesses make money is a core big-money format, and PolyMatter's version has 4.0M views.",
+      "facts": [
+        {
+          "label": "McDonald's total revenues in 2025",
+          "value": 26885,
+          "unit": "money_million",
+          "as_of": "2025-12-31",
+          "source": "McDonald's fourth quarter and full year 2025 results (11 Feb 2026)",
+          "url": "https://mcdonalds.mediaroom.com/2026-02-11-McDONALDS-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2025-RESULTS",
+          "checked": "2026-11-16",
+          "latest": true,
+          "currency": "USD"
+        },
+        {
+          "label": "McDonald's revenues from franchised restaurants in 2025 (rent, royalties, initial fees)",
+          "value": 16548,
+          "unit": "money_million",
+          "as_of": "2025-12-31",
+          "source": "McDonald's fourth quarter and full year 2025 results (11 Feb 2026)",
+          "url": "https://mcdonalds.mediaroom.com/2026-02-11-McDONALDS-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2025-RESULTS",
+          "checked": "2026-11-16",
+          "latest": true,
+          "currency": "USD"
+        },
+        {
+          "label": "McDonald's company-operated restaurant sales in 2025",
+          "value": 9690,
+          "unit": "money_million",
+          "as_of": "2025-12-31",
+          "source": "McDonald's fourth quarter and full year 2025 results (11 Feb 2026)",
+          "url": "https://mcdonalds.mediaroom.com/2026-02-11-McDONALDS-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2025-RESULTS",
+          "checked": "2026-11-16",
+          "latest": true,
+          "currency": "USD"
+        },
+        {
+          "label": "McDonald's net income in 2025",
+          "value": 8563,
+          "unit": "money_million",
+          "as_of": "2025-12-31",
+          "source": "McDonald's fourth quarter and full year 2025 results (11 Feb 2026)",
+          "url": "https://mcdonalds.mediaroom.com/2026-02-11-McDONALDS-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2025-RESULTS",
+          "checked": "2026-11-16",
+          "latest": true,
+          "currency": "USD"
+        },
+        {
+          "label": "McDonald's systemwide sales in 2025 (all restaurants, owners' and its own)",
+          "value": 139,
+          "unit": "money_billion",
+          "as_of": "2025-12-31",
+          "source": "McDonald's fourth quarter and full year 2025 results (11 Feb 2026)",
+          "url": "https://mcdonalds.mediaroom.com/2026-02-11-McDONALDS-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2025-RESULTS",
+          "checked": "2026-11-16",
+          "latest": true,
+          "currency": "USD"
+        },
+        {
+          "label": "share of McDonald's restaurants run by independent local owners",
+          "value": 95,
+          "unit": "percent",
+          "as_of": "2025-12-31",
+          "source": "McDonald's fourth quarter and full year 2025 results (11 Feb 2026)",
+          "url": "https://mcdonalds.mediaroom.com/2026-02-11-McDONALDS-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2025-RESULTS",
+          "checked": "2026-11-16",
+          "latest": true
+        }
+      ],
+      "outline": [
+        "hook (0:00): the Short's own first picture and line, a burger on a tray with a rent receipt under it: 'Every burger you buy pays McDonald's rent.' The picture the whole video hangs on: a city block of golden arches where every roof is a landlord's house",
+        "promise (by 0:25): four answers, and the last one is why McDonald's is fine when a restaurant's burgers lose money",
+        "item 1 (~60 s, reveal at 0:45), who runs the store: about 95% of restaurants belong to local owners (fact). Rohan buys one; Sharma Uncle: 'you bought a kitchen, not the ground'",
+        "item 2, the whole pie: $139B of systemwide sales, yet McDonald's own revenue is $26.9B (facts): share = how much of each customer dollar reaches the company. Board card: the $139B pipe narrowing",
+        "recap-and-tease at ~1:40: 'so most of the money never reaches McDonald's. Then how does it keep $8.6B a year?'",
+        "item 3, the franchise cheque: $16.5B from franchised restaurants against $9.7B of sales in its own stores (facts); the franchise money arrives with almost no kitchen costs. Priya draws the two stacks side by side",
+        "item 4 (strongest, last), the land: most of the franchise cheque is rent on ground McDonald's owns or leases (verify the rent line on the 2025 10-K), paid every month whether burgers sell or not; net income $8.6B on $26.9B (share). Rohan's tough month vs the company's steady rent",
+        "ending: loop to the tray with the rent receipt; ask the viewer 'would you rather own the restaurant or the ground under it?'"
+      ],
+      "maths": "share (franchised revenue ÷ total; total revenue ÷ systemwide sales; net income ÷ revenue), compare (franchised vs company-operated)",
+      "verify": [
+        "the 2025 rents line on the 2025 10-K (a secondary analysis says $10.44B of the $16.55B): only a sourced figure goes on screen",
+        "the 95% wording: 'run by independent local business owners'",
+        "no claim that McDonald's owns every site: 'owns or leases'"
+      ],
+      "sources": [
+        "https://mcdonalds.mediaroom.com/2026-02-11-McDONALDS-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2025-RESULTS",
+        "https://www.youtube.com/watch?v=kJVj3vp-lho"
+      ]
+    },
+    {
+      "format": "long",
+      "currency": "USD",
+      "reach": "global",
+      "kind": "evergreen",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-11-16",
+      "expires": "2027-11-16",
+      "status": "new",
+      "id": "2026-11-16-how-casinos-always-win",
+      "from_short": "v-20261027-03",
+      "from_short_views": 838,
+      "title": "How do casinos always win, even on your lucky night?",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "category": "gambling",
+      "priority": "high",
+      "demand": {
+        "title": "How to Beat the Casino, and How They'll Stop You",
+        "views": 3800000,
+        "url": "https://www.youtube.com/watch?v=Ongqf93rAcM",
+        "channel": "Wendover Productions"
+      },
+      "search": "how do casinos always win",
+      "angle": "Our Short showed the house edge eating Rohan's chips over a decade. The long version answers what it left open: how small the edge really is, why a winner is good for the casino, how big the total gets on the Las Vegas Strip, and which machine earns most.",
+      "why_now": "Expands 'How the casino wins even on your lucky night' (v-20261027-03, 52% stayed to watch, #4 of 32 Shorts of the last 30 days, 838 views); our Strip Short (v-20261114-03) found the sourced 2025 figures. Wendover's casino explainer has 3.8M views.",
+      "facts": [
+        {
+          "label": "Las Vegas Strip gaming win, 2025",
+          "value": 8815212,
+          "unit": "money_thousand",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Nevada Gaming Control Board",
+          "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "Nevada statewide gaming win, 2025 (a record)",
+          "value": 15798466,
+          "unit": "money_thousand",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Nevada Gaming Control Board",
+          "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "Strip slot win, 2025",
+          "value": 4.95,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Nevada Gaming Control Board",
+          "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "Strip table, sports, race and bingo win, 2025",
+          "value": 3.86,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Nevada Gaming Control Board",
+          "url": "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/",
+          "checked": "2026-11-16",
+          "latest": true
+        }
+      ],
+      "outline": [
+        "hook (0:00): the Short's first picture and line, Rohan at the roulette wheel with a trophy: 'The casino never gambles.' The picture the whole video hangs on: a wheel with two green slots that quietly drain a stream of chips into a vault",
+        "promise (by 0:25): four answers, and the last one is the machine that earns more than every table together",
+        "item 1 (~60 s, reveal at 0:45), the edge: 2 green slots out of 38 (computed, 5.26%); a $10 spin keeps about 53 cents on average (fee_take). Sharma Uncle: 'small slices, every spin'",
+        "item 2, why your win helps them: a night of spins, the same chips bet over and over (compound of the edge); the winner walks out and comes back. Rohan's trophy",
+        "recap-and-tease at ~1:40: 'so the edge is tiny. How much can a tiny edge make?'",
+        "item 3, the Strip's year: $8.8B kept in 2025, of a record $15.8B in Nevada (facts), divided into a minute, an hour, a day (share). Board card: a clock with money falling",
+        "item 4 (strongest, last), the slots: $4.95B of the Strip's win came from slot machines against $3.86B from tables, sports and the rest (facts). What it means: the edge never sleeps",
+        "ending: loop to the wheel and Rohan's trophy; ask 'how many spins before the edge catches up with you?'"
+      ],
+      "maths": "fee_take (2/38 of a bet), share (Strip win per minute/hour/day; slots ÷ total), compare (slots vs tables)",
+      "verify": [
+        "the Strip and statewide figures on the Nevada Gaming Control Board's December 2025 report (the Short used casino.org's write-up)",
+        "American roulette has 38 pockets (0 and 00); a European wheel has 37: say which",
+        "no encouragement to gamble; an informational tone"
+      ],
+      "sources": [
+        "https://www.casino.org/news/nevada-casino-revenue-hits-record-high-2025/",
+        "https://www.youtube.com/watch?v=Ongqf93rAcM"
+      ]
+    },
+    {
+      "format": "long",
+      "currency": "USD",
+      "reach": "global",
+      "kind": "evergreen",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-11-16",
+      "expires": "2027-11-16",
+      "status": "new",
+      "id": "2026-11-16-how-costco-makes-money",
+      "from_short": "v-20261114-02",
+      "from_short_views": 627,
+      "title": "How does Costco make money if it sells everything so cheap?",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "category": "retail",
+      "priority": "high",
+      "demand": {
+        "title": "How Did Costco Become a Members-Only Retail Giant? (CNBC)",
+        "views": 4800000,
+        "url": "https://www.youtube.com/watch?v=dzejHGniMTQ",
+        "channel": "CNBC"
+      },
+      "search": "how does costco make money",
+      "angle": "Our Short said the membership card paid most of Costco's profit. The long version answers what it left open: how thin the margin on the shopping really is, how much the cards bring in, why the prices can stay so low, and why the card is the real product.",
+      "why_now": "Expands 'Costco's profit was $9.23B. The card paid 64% of it' (v-20261114-02, 50% stayed to watch, #5 of 32, 627 views in two days). Fiscal 2026 results are fresh (year to 30 Aug 2026). CNBC's Costco video has 4.8M views.",
+      "facts": [
+        {
+          "label": "Costco's membership fee revenue in fiscal 2026",
+          "value": 5907,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-08-30",
+          "source": "Costco Wholesale",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "Costco's net income in fiscal 2026",
+          "value": 9226,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-08-30",
+          "source": "Costco Wholesale",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "Costco's net sales in fiscal 2026",
+          "value": 297247,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-08-30",
+          "source": "Costco Wholesale",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "Costco's operating income in fiscal 2026",
+          "value": 11685,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-08-30",
+          "source": "Costco Wholesale",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf",
+          "checked": "2026-11-16",
+          "latest": true
+        }
+      ],
+      "outline": [
+        "hook (0:00): the Short's first picture and line, a membership card on a giant shopping trolley: Costco's $9.23B profit, and the card paid 64% of it. The picture the whole video hangs on: a warehouse where the shelves sell at cost and a turnstile of cards pays the rent",
+        "promise (by 0:25): four answers, and the last one is why Costco could sell almost at cost and still be fine",
+        "item 1 (~60 s, reveal at 0:45), the shopping: $297.2B of sales, $11.7B of operating income (facts): about 4 cents a dollar (share). Rohan's trolley with the 4 cents circled",
+        "item 2, the cards: $5.9B of membership fees (fact), almost pure profit. Priya: 'they sell you the door, then the groceries'",
+        "recap-and-tease at ~1:40: 'so the shopping barely pays. Then what is the store for?'",
+        "item 3, the profit split: $5.9B of fees against $9.23B net income (facts), 64% (share). Board card: the profit bar with the card's slice glowing",
+        "item 4 (strongest, last): without the cards, the shopping alone would leave a small slice (compare; say it's a simple subtraction, not Costco's own split). Why low prices bring the renewals that pay the fees",
+        "ending: loop to the card on the trolley; ask 'is your card paying for itself?'"
+      ],
+      "maths": "share (fees ÷ net income; operating income ÷ sales), compare (fees vs net income)",
+      "verify": [
+        "fiscal 2026 figures on Costco's Q4 FY2026 release",
+        "'the card paid 64%' compares fees with net income, before tax effects: say it as a comparison, not an accounting split"
+      ],
+      "sources": [
+        "https://s201.q4cdn.com/287523651/files/doc_news/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results-2026.pdf",
+        "https://www.youtube.com/watch?v=dzejHGniMTQ"
+      ]
+    },
+    {
+      "format": "long",
+      "currency": "USD",
+      "reach": "global",
+      "kind": "evergreen",
+      "templates": [
+        "long_story"
+      ],
+      "found": "2026-11-16",
+      "expires": "2027-02-16",
+      "status": "new",
+      "id": "2026-11-16-who-does-america-owe",
+      "from_short": "v-20261114-01",
+      "from_short_views": 442,
+      "title": "Who does America actually owe $40 trillion to?",
+      "stories": [
+        "once_you_understand"
+      ],
+      "category": "debt",
+      "priority": "normal",
+      "demand": {
+        "title": "Why the US is always hitting a \"debt ceiling\"",
+        "views": 2100000,
+        "url": "https://www.youtube.com/watch?v=orakE9t1tpo",
+        "channel": "Vox"
+      },
+      "search": "who does america owe its debt to",
+      "angle": "Our Short said 19% of America's debt is owed to itself. The long version answers what it left open: what the rest is, who holds it, how fast it grows in a day, and what each person's share is.",
+      "why_now": "Expands '19% of America's $40.61T debt is owed to itself' (v-20261114-01, 50% stayed to watch, #6 of 32, 442 views in two days). The Treasury figure changes daily, so the facts need a fresh read on the day Studio makes it (expires in three months). Vox's debt explainer has 2.1M views.",
+      "facts": [
+        {
+          "label": "Total US public debt outstanding",
+          "value": 40608506856903.25,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-11-12",
+          "source": "US Treasury",
+          "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "US debt held by the public",
+          "value": 32824386143424.8,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-11-12",
+          "source": "US Treasury",
+          "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "US intragovernmental holdings (debt the government owes its own trust funds)",
+          "value": 7784120713478.45,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-11-12",
+          "source": "US Treasury",
+          "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "Total US public debt outstanding, the business day before",
+          "value": 40584130080272.89,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-11-10",
+          "source": "US Treasury",
+          "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=2",
+          "checked": "2026-11-16",
+          "latest": true
+        },
+        {
+          "label": "US resident population, July 1 2025 (Vintage 2025 estimate)",
+          "value": 341784857,
+          "unit": "count",
+          "as_of": "2025-07-01",
+          "source": "US Census Bureau",
+          "url": "https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html",
+          "checked": "2026-11-16",
+          "latest": true
+        }
+      ],
+      "outline": [
+        "hook (0:00): the Short's first picture and line, a $40.61T debt clock over the Capitol: 19% of it is owed to itself. The picture the whole video hangs on: a giant IOU torn into two pieces, one handed back to the government's own trust-fund vaults",
+        "promise (by 0:25): four answers, and the last one is what one day of it adds",
+        "item 1 (~60 s, reveal at 0:45), the total: $40.61T (fact) split per person with the Census population (share)",
+        "item 2, owed to itself: $7.78T of intragovernmental holdings (fact), 19% (share): trust funds like Social Security holding IOUs",
+        "recap-and-tease at ~1:40: 'so a fifth is an IOU to itself. Who holds the other $32.8 trillion?'",
+        "item 3, held by the public: $32.82T (fact): investors, banks, funds and other countries (verify any named holder's figure on Treasury TIC data before using it)",
+        "item 4 (strongest, last), one day: the total rose by about $24B between two business days (facts, compare). What it means per minute (share)",
+        "ending: loop to the debt clock; ask 'how much is your share by the time this video ends?'"
+      ],
+      "maths": "share (per person; intragovernmental ÷ total; daily rise per minute), compare (two days' totals)",
+      "verify": [
+        "refresh debt-to-the-penny on the day of the script",
+        "any foreign-holder figure needs Treasury TIC data with its month",
+        "neutral on policy"
+      ],
+      "sources": [
+        "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/",
+        "https://www.youtube.com/watch?v=orakE9t1tpo"
+      ]
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "agent": "scout",
+  "day": "2026-11-16",
+  "startedAt": "2026-11-16T04:08:32Z",
+  "finishedAt": "2026-11-16T04:14:22Z",
+  "summary": "Added four long topics, each the full story of a Short in our top third by stayed to watch: McDonald's, casinos, Costco and US debt. Researched long-video thumbnails and titles, and routed two code bugs that hide five of the seven topics that qualify under the owner's rule.",
+  "decision": "acted",
+  "why": "The code offered only 2 usable long topics, under the 4 minimum. Both rest on October Shorts that leave the 30-day window by 24 Nov.",
+  "findings": [
+    {"title": "4-6 words of thumbnail text was the biggest breakout gap (30.6% vs 26.5%)", "detail": "In a study of 507,478 long videos, faces, colour and brightness made no difference. Titles of 45-74 characters broke out more than ones under 30.", "link": "https://eden.so/blog/what-makes-a-good-youtube-thumbnail/"},
+    {"title": "winning_short still demands 1,000 views", "detail": "The owner's 12 Nov rule is the top third by stayed to watch. This blocks the Costco, US debt and gym topics."},
+    {"title": "too_close drops a long topic as a copy of its own Short", "detail": "This hides the McDonald's (#1) and casino (#4) topics."},
+    {"title": "Impressions and CTR are null for all 64 videos", "detail": "No thumbnail or title can be judged on clicks yet. Handed to the auditor via the backlog."}
+  ],
+  "changes": [
+    {"title": "4 topics added, 2 rejected", "detail": "Added: McDonald's, casinos, Costco, who America owes. Rejected: savings and jewellers (their Shorts are in the bottom third by stayed).", "branch": "agent/scout/2026-11-16"},
+    {"title": "6 backlog items", "detail": "3 bugs (adopt, high), thumbnail references (adopt), thumbnail text (experiment), title length (adopt).", "branch": "agent/scout/2026-11-16"}
+  ],
+  "nextCheck": "2026-11-19",
+  "links": [{"label": "Report", "url": "improvement/longform/2026-11-16.md"}]
+}

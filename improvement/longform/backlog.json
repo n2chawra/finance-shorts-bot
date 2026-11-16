@@ -1175,6 +1175,72 @@
       "priority": "normal",
       "found": "2026-11-11",
       "status": "open"
+    },
+    {
+      "id": "2026-11-16-winning-short-rule-stale",
+      "kind": "bug",
+      "title": "`state --format long` still demands 1,000 views from a long topic's Short; the owner's rule since 12 Nov is the top third by stayed to watch",
+      "detail": "generator/topics.py winning_short() blocks any from_short under WIN_VIEWS = 1000 (owner 2026-11-04). agents/scout.md section 1a (owner 2026-11-12) replaced it: from the Shorts of the last 30 days with 100+ views, rank by `stayed` in metrics/videos.json, then views, and take one in the top third. Today this blocks 3 of the 4 topics Scout added (Costco 627 views, US debt 442, the gym 920, all top third) and leaves Studio only the two October tax Shorts, which leave the 30-day window on 20-24 Nov. Fix (improver or auditor): in winning_short, build the pool (format short, publishAt within 30 days of today, views >= 100), sort by (stayed desc, views desc), allow the top ceil(n/3); keep the 'not a published video' check; update the docstring and the 'names no from_short' message; a test with a fake videos.json (top third passes, bottom third and a 31-day-old Short fail). Worked when: state --format long shows the Costco, debt and gym topics as usable_now.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-16",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-16-too-close-own-short",
+      "kind": "bug",
+      "title": "The duplicate check blocks a long topic as a copy of the very Short it is meant to expand",
+      "detail": "generator/topics.py too_close() compares the topic title with every Short and long video in the duplicate window; for a long topic that names `from_short`, its own Short is always the closest match, so 'How does McDonald's really make money? (It isn't the burgers)' is dropped as a duplicate of v-20261031-01 ('How McDonald's really makes money: it's a landlord') and the casino topic as one of v-20261027-03. These two are our #1 and #4 Shorts of the last 30 days by stayed to watch, so the best expansions are the ones hidden. Fix: in too_close, skip `e['id'] == topic.get('from_short')` (still compare against every other video, long videos included, so the same long video never repeats); a test. Worked when: both 2026-11-16 topics appear in state --format long.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-16",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-16-impressions-ctr-null",
+      "kind": "bug",
+      "title": "Impressions and click-through are empty for all 64 videos, so no thumbnail or title can be judged",
+      "detail": "metrics/analytics.json has impressions: null and ctr: null for every Short and long video (64 of 64 on 16 Nov). CLAUDE.md says stats-deep.yml reads impressions/CTR from the Reporting API. Without them the three Test & Compare thumbnails and every title rule below are opinions. For the auditor (workers/, data lane): check that the Reporting API job exists and its reports are downloaded into Breakdown, and that ingest exports them. If the job needs the owner to create or authorise it, raise it as an owner notification. Worked when: at least the long videos published before 10 Nov show impressions.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-16",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-16-thumb-refs-off-topic",
+      "kind": "craft",
+      "title": "The thumbnail references for half the open topics are other subjects' hits",
+      "detail": "thumb-refs.json on market-data (16 Nov): 'What do rich people do with their savings?' got 'Five Kids Rich Vs Broke Vs Giga Rich' (45M) and LEGO rich vs poor; 'What does $1 billion look like?' got MrBeast's '$1 vs $100,000,000 House!'; the $10 gym got '10 Things I Wish I Knew Before Starting My Home Gym'. Studio models all three thumbnails on these. Fix (renderer/thumbs.py refs, improver): drop a reference whose title shares no content word (brand, person, subject noun) with the topic's title or search, and fall back to thumbnails.json examples when fewer than 2 remain; say which in the thumbnail plan. Scout's part: every 2026-11-16 topic's search names its subject (mcdonalds, casinos, costco, america's debt). Worked when: the refs Studio prints for a topic all name its subject.",
+      "where": "thumbnail",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-16",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-16-thumb-text-four-to-six",
+      "kind": "craft",
+      "title": "Thumbnail text: 4 to 6 words, adding to the title, was the biggest gap in a 507K-video study",
+      "detail": "Eden's study of 507,478 long videos from 8,691 channels (Aug 2025-Aug 2026; breakout = 2x the channel's median): thumbnails with 4-6 words were 30.6% of breakouts vs 26.5% of underperformers, the largest of any feature; 7+ words 29.6% vs 31.1%; no text 13.4% vs 16.8%; drawn graphics 41.8% vs 38.1%; faces, smiles, brightness, contrast and colour made no meaningful difference. Faceless, drawn channels lose nothing. Change (long_story README thumbnail section, Studio's thumbnail plan): each long thumbnail carries 4-6 words, never the title repeated (ties to 'Thumbnail words repeat the title'), and at least one of the three is a drawn diagram rather than a face. Experiment because our own CTR is missing (see impressions-ctr-null); judge on CTR once it lands. https://eden.so/blog/what-makes-a-good-youtube-thumbnail/",
+      "where": "thumbnail",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-16",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-16-long-titles-45-plus",
+      "kind": "craft",
+      "title": "Long-video titles: aim for 45-65 characters; under 30 broke out least",
+      "detail": "Same study, breakout rate by title length: under 30 characters 26.1%, 30-44 30.8%, 45-59 33.9%, 60-74 34.8%, 75+ 35.9% (the authors read it as specificity: a title that names the thing). This contradicts the open item 'Long titles … under ~55 characters, no figures' on length; keep its 'a named thing plus a loaded noun'. Our long titles were 38-55 characters ('What does $1 billion actually look like?' 40). Change (Studio's title step, script): the chosen title is 45-65 characters and names the subject (McDonald's, Costco, the Strip); the three Test & Compare titles may differ in length. Scout's 2026-11-16 titles are 46-61.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-16",
+      "status": "open"
     }
   ]
 }
