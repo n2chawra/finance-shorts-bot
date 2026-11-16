@@ -1,0 +1,421 @@
+{
+  "id": "v-20261117-02",
+  "createdAt": "2026-11-16T22:18:44.534057+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "AMC moviegoers spend $7.87 each on snacks, and the food itself costs AMC a small share of it while studios take half of every ticket",
+    "category": "entertainment",
+    "reach": "global",
+    "feed_id": "2026-11-17-amc-popcorn-keeps-most-of-your-snack-money"
+  },
+  "title": "AMC charges $12.73 a ticket. Why does it care more about your popcorn? 🍿",
+  "description": "Why would AMC, the world's biggest cinema chain, care more about your popcorn than your ticket?\nSources: AMC Entertainment (Sep 2026). The characters are not advisers.\nIllustrative only. Not financial advice.\n\nLogo: AMC Theatres, Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:AMC_Theatres_logo.svg)",
+  "hashtags": [
+    "#Shorts",
+    "#AMC",
+    "#Popcorn",
+    "#Movies",
+    "#Money"
+  ],
+  "hookStyle": "question",
+  "cta": "Popcorn or the film: which is AMC really selling? Comment",
+  "seed": 38215,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "G",
+    "bpm": 112,
+    "look": {
+      "stage": "street",
+      "header": "ribbon",
+      "holder": "phone",
+      "entrance": "draw"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "28-35",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why does AMC want your popcorn money more than your ticket money?",
+        "start": 0.3,
+        "seconds": 3.03,
+        "window": 3.47,
+        "fill": 0.873
+      },
+      {
+        "scene": "studio",
+        "text": "Not on the ticket: 50% of every ticket dollar goes to the studio that made the film.",
+        "start": 3.77,
+        "seconds": 4.06,
+        "window": 4.5,
+        "fill": 0.902
+      },
+      {
+        "scene": "counter",
+        "text": "So AMC looks to the snack bar, where each moviegoer spends $7.87.",
+        "start": 8.27,
+        "seconds": 4.25,
+        "window": 4.77,
+        "fill": 0.891
+      },
+      {
+        "scene": "office",
+        "text": "From July to September, AMC's snack bars took in $589.4M in all.",
+        "start": 13.03,
+        "seconds": 5.0,
+        "window": 5.47,
+        "fill": 0.914
+      },
+      {
+        "scene": "costs",
+        "text": "But the popcorn, drinks and candy themselves cost AMC very little.",
+        "start": 18.5,
+        "seconds": 3.15,
+        "window": 3.63,
+        "fill": 0.868
+      },
+      {
+        "scene": "payoff",
+        "text": "So the food costs AMC just 18% of what you pay for it.",
+        "start": 22.13,
+        "seconds": 3.25,
+        "window": 3.67,
+        "fill": 0.886
+      },
+      {
+        "scene": "loop",
+        "text": "Popcorn or the film: which one is AMC really selling? Because",
+        "start": 25.8,
+        "seconds": 3.13,
+        "window": 3.6,
+        "fill": 0.869
+      }
+    ]
+  },
+  "durationSec": 30,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.5,
+    "lufs": -15.2,
+    "music_under_voice_db": 22.4
+  },
+  "experiments": {
+    "real-subject-first-frame": "off"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "All 6 facts confirmed on the source page (AMC Q3 2026 8-K Ex.99.1, sec.gov, 4 Nov 2026, consolidated): avg ticket $12.73, F&B per patron $7.87, F&B revenues $589.4M, F&B costs $107.1M, admissions $953.5M, film exhibition costs $476.5M; release also calls AMC the largest exhibitor in the world. Verify list met: consolidated figures, food cost framed as what the snacks cost AMC (never profit), film costs as the studios' share. No advice, disclaimer ends the description. Notes: '$7.87 each' and '50% of every ticket dollar' are averages; 'that snack bar took in $589.4M' means all AMC snack bars; 18% is cost of goods only, before staff and rent."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: Counter logo now on the wall above the till, clear of captions and edges through the swing (8.0-12.5 s); earlier fixes hold (18% on the tag as spoken, $589.4M inside its display, Lot guard/ticket clean, storeroom clerk acting, thumbnail names AMC with $7.87); 6 directed places, loop and disclaimer fine, code checks clean."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-16T21:58:20.948122+00:00",
+      "finishedAt": "2026-11-16T21:58:20.948122+00:00",
+      "notes": [
+        "story 'how_they_make_money' was told in the last 1 videos",
+        "description opens with 'how much of', already used by v-20261112-01"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-16T21:58:26.013140+00:00",
+      "finishedAt": "2026-11-16T21:58:26.013140+00:00",
+      "notes": [
+        "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+        "the picture shows figures the voice never says (studio {studio_pct}): say each one where it appears, with what it means (\"he gets {x} now, and {y} waits ten years\"), or take it off the picture; viewers can't follow numbers nobody explains",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-16T21:58:50.450515+00:00",
+      "finishedAt": "2026-11-16T21:58:50.450515+00:00",
+      "notes": [
+        "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-16T21:59:41.237107+00:00",
+      "finishedAt": "2026-11-16T21:59:41.237107+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:02:08.210577+00:00",
+      "finishedAt": "2026-11-16T22:02:08.210577+00:00",
+      "notes": [
+        "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:03:32.683494+00:00",
+      "finishedAt": "2026-11-16T22:03:32.683494+00:00",
+      "notes": [
+        "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+        "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:04:14.194529+00:00",
+      "finishedAt": "2026-11-16T22:04:14.194529+00:00",
+      "notes": [
+        "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:05:12.832399+00:00",
+      "finishedAt": "2026-11-16T22:05:12.832399+00:00",
+      "notes": [
+        "All 6 facts confirmed on the source page (AMC Q3 2026 8-K Ex.99.1, sec.gov, 4 Nov 2026, consolidated): avg ticket $12.73, F&B per patron $7.87, F&B revenues $589.4M, F&B costs $107.1M, admissions $953.5M, film exhibition costs $476.5M; release also calls AMC the largest exhibitor in the world. Verify list met: consolidated figures, food cost framed as what the snacks cost AMC (never profit), film costs as the studios' share. No advice, disclaimer ends the description. Notes: '$7.87 each' and '50% of every ticket dollar' are averages; 'that snack bar took in $589.4M' means all AMC snack bars; 18% is cost of goods only, before staff and rent."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-16T22:04:36.717668+00:00",
+      "finishedAt": "2026-11-16T22:05:17.742207+00:00",
+      "notes": [
+        "text 'POPCORN' at 2.4 s runs outside the frame",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:05:47.407040+00:00",
+      "finishedAt": "2026-11-16T22:05:47.407040+00:00",
+      "notes": [
+        "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-16T22:05:48.322882+00:00",
+      "finishedAt": "2026-11-16T22:06:21.141121+00:00",
+      "notes": [
+        "text 'POPCORN' at 2.4 s runs outside the frame",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-16T22:06:29.881939+00:00",
+      "finishedAt": "2026-11-16T22:06:59.829817+00:00",
+      "notes": [
+        "text 'POPCORN' at 11.3 s runs outside the frame",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:07:07.183784+00:00",
+      "finishedAt": "2026-11-16T22:07:38.121069+00:00",
+      "notes": [
+        "30 s, ember/pop (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:07:49.743237+00:00",
+      "finishedAt": "2026-11-16T22:08:20.724322+00:00",
+      "notes": [
+        "30 s, ember/pop (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:08:26.775099+00:00",
+      "finishedAt": "2026-11-16T22:08:56.973202+00:00",
+      "notes": [
+        "30 s, ember/pop (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-16T22:10:38.904417+00:00",
+      "finishedAt": "2026-11-16T22:10:38.904417+00:00",
+      "notes": [
+        "[script] 22.1-25.4 s, beat payoff (Seat): the narrator says '18%' at about 23.3 s but the price tag shows '?' until the 'it' moment at 25.4 s, so the payoff figure is on screen for only ~0.4 s before the cut to the loop (stills 22.5 s, 24.8 s show '?'). Fire the fig/tag moment on 'just'/'costs' so 18% lands as it is spoken and holds through the beat.",
+        "[scene] 17.5 s, beat office (CashOffice): the counting display's '$589.4M' is larger than its own screen; it spills over the SEPTEMBER calendar on the left and runs to within ~25 px of the right edge, into the right-hand button zone. Size the figure to fit inside the display.",
+        "[scene] 5.0-7.5 s, beat studio (Lot): the cart platform runs straight through the gate guard's face/chest (he stands behind it), the torn ticket halves overlap so 'ADMIT ONE' reads as 'A' and 'DMIT ONE', and the 50% half is a translucent ghost box behind the stamp. Put the guard in front of or beside the cart and keep the two ticket halves apart and opaque.",
+        "[script] 18.5-22.1 s, beat costs (Storeroom): nobody is in the place for the whole beat (only crates dropping on a scale), and at 18.7 s the frame is a lone corn sack and an empty scale over a dark empty lower half. Add a worker or Rohan doing the weighing/stamping, and fill the frame with the thing.",
+        "[script] thumbnail (hook at 2.0 s): the headline 'WHO KEEPS POPCORN MONEY?' sits over the AMC logo so the subject is blurred out, and the $12.73 ticket overlaps Rohan's head (also in the first frame at 0.0 s). Move the ticket clear of his head and choose a frame/layout where the AMC sign stays readable."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:12:18.480574+00:00",
+      "finishedAt": "2026-11-16T22:12:50.407685+00:00",
+      "notes": [
+        "30 s, ember/pop (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:12:57.600093+00:00",
+      "finishedAt": "2026-11-16T22:13:31.339589+00:00",
+      "notes": [
+        "30 s, ember/pop (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:13:40.387516+00:00",
+      "finishedAt": "2026-11-16T22:14:11.767595+00:00",
+      "notes": [
+        "30 s, ember/pop (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-16T22:14:50.793930+00:00",
+      "finishedAt": "2026-11-16T22:14:50.793930+00:00",
+      "notes": [
+        "[scene] 12.5 s, beat counter (Counter): the AMC THEATRES logo now on the counter front sits in the caption band, so the caption 'spends $7.87.' is drawn over 'THEATRES' (the yellow figure lands on 'TH'), text over text at the beat's figure. At 8.0 s the same logo is cut off by the right edge (only 'A'/'THEA' visible) inside the right-hand button zone. Move the logo up on the counter (above y~1350) and left of the right edge so neither the captions nor the edge touch it; the thumbnail can keep this layout."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:15:13.091157+00:00",
+      "finishedAt": "2026-11-16T22:15:45.281024+00:00",
+      "notes": [
+        "30 s, ember/pop (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:16:03.422242+00:00",
+      "finishedAt": "2026-11-16T22:16:03.422242+00:00",
+      "notes": [
+        "Round 3: Counter logo now on the wall above the till, clear of captions and edges through the swing (8.0-12.5 s); earlier fixes hold (18% on the tag as spoken, $589.4M inside its display, Lot guard/ticket clean, storeroom clerk acting, thumbnail names AMC with $7.87); 6 directed places, loop and disclaimer fine, code checks clean."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:16:30.142113+00:00",
+      "finishedAt": "2026-11-16T22:18:08.307473+00:00",
+      "notes": [
+        "30 s, ember/pop, peak -1.0 dB, mean -16.5 dB",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-16T22:18:44.534155+00:00",
+      "finishedAt": "2026-11-16T22:18:44.534155+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261117-02",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261117-02"
+  }
+}

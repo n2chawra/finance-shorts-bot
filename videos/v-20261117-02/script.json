@@ -1,0 +1,781 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38215,
+ "story": "how_they_make_money",
+ "shape": "hidden-payer",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "pop",
+  "key": "G",
+  "bpm": 112,
+  "look": {
+   "stage": "street",
+   "header": "ribbon",
+   "holder": "phone",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "question",
+ "cta": "Popcorn or the film: which is AMC really selling? Comment",
+ "feed_id": "2026-11-17-amc-popcorn-keeps-most-of-your-snack-money",
+ "facts": [
+  {
+   "label": "Food and beverage revenue per patron, AMC, three months to 30 Sep 2026",
+   "value": 7.87,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "AMC Entertainment",
+   "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm"
+  },
+  {
+   "label": "Average ticket price, AMC, three months to 30 Sep 2026",
+   "value": 12.73,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "AMC Entertainment",
+   "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm"
+  },
+  {
+   "label": "AMC food and beverage revenues, three months to 30 Sep 2026",
+   "value": 589.4,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "AMC Entertainment",
+   "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm"
+  },
+  {
+   "label": "AMC food and beverage costs, three months to 30 Sep 2026",
+   "value": 107.1,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "AMC Entertainment",
+   "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm"
+  },
+  {
+   "label": "AMC admissions revenues, three months to 30 Sep 2026",
+   "value": 953.5,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "AMC Entertainment",
+   "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm"
+  },
+  {
+   "label": "AMC film exhibition costs, three months to 30 Sep 2026",
+   "value": 476.5,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "AMC Entertainment",
+   "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm"
+  }
+ ],
+ "maths": [
+  {
+   "name": "studio",
+   "kind": "rate",
+   "part": 476500000,
+   "whole": 953500000,
+   "facts": {
+    "part": 6,
+    "whole": 5
+   }
+  },
+  {
+   "name": "snack",
+   "kind": "rate",
+   "part": 107100000,
+   "whole": 589400000,
+   "facts": {
+    "part": 4,
+    "whole": 3
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "counter",
+  "sec": 3.6,
+  "words": "Who keeps *popcorn* money?",
+  "figure": "{fact1}",
+  "tag": "Snacks",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Why does AMC want your popcorn money more than your ticket money?",
+   "events": {
+    "why": {
+     "word": "Why"
+    },
+    "amc": {
+     "word": "AMC"
+    },
+    "want": {
+     "word": "want"
+    },
+    "popcorn": {
+     "word": "popcorn"
+    },
+    "more": {
+     "word": "more"
+    },
+    "ticket": {
+     "word": "ticket"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "why"
+    },
+    {
+     "kind": "pop",
+     "at": "amc"
+    },
+    {
+     "kind": "pop",
+     "at": "popcorn"
+    },
+    {
+     "kind": "kaching",
+     "at": "ticket"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "an AMC cinema lobby with the box office and the popcorn machine",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "more",
+      "size": "wide"
+     },
+     {
+      "at": "ticket",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "amc",
+      "what": "the AMC sign over the box office lights up"
+     },
+     {
+      "at": "popcorn",
+      "what": "the popcorn machine bursts over, glowing brighter than the sign"
+     },
+     {
+      "at": "more",
+      "what": "the camera pulls back over the lobby"
+     },
+     {
+      "at": "ticket",
+      "what": "a ticket with its price slides out of the window to Rohan"
+     }
+    ],
+    "things": [
+     "box office window",
+     "AMC logo",
+     "ticket with price",
+     "popcorn machine",
+     "Rohan"
+    ],
+    "fig": {
+     "ticket": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "studio",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Not on the ticket: {studio_pct} of every ticket dollar goes to the studio that made the film.",
+   "events": {
+    "not": {
+     "word": "Not"
+    },
+    "ticket": {
+     "word": "ticket"
+    },
+    "dollar": {
+     "word": "dollar"
+    },
+    "studio": {
+     "word": "studio"
+    },
+    "film": {
+     "word": "film"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "not"
+    },
+    {
+     "kind": "kaching",
+     "at": "dollar"
+    },
+    {
+     "kind": "whoosh",
+     "at": "studio"
+    }
+   ],
+   "params": {
+    "component": "Lot",
+    "place": "a Hollywood studio lot gate",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "dollar",
+      "size": "close"
+     },
+     {
+      "at": "film",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "not",
+      "what": "a giant ticket is wheeled up to the studio gate"
+     },
+     {
+      "at": "ticket",
+      "what": "the ticket tears in two down the middle"
+     },
+     {
+      "at": "dollar",
+      "what": "a stamp lands on the torn half with the share"
+     },
+     {
+      "at": "studio",
+      "what": "the gate guard waves the half through into the lot"
+     },
+     {
+      "at": "film",
+      "what": "the camera pulls back over the sound stages with a film reel sign"
+     }
+    ],
+    "things": [
+     "studio gate",
+     "giant torn ticket on a dolly",
+     "share stamp",
+     "gate guard",
+     "sound stages",
+     "film reel sign"
+    ],
+    "fig": {
+     "half": "{studio_pct}"
+    }
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "counter",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So AMC looks to the snack bar, where each moviegoer spends {fact1}.",
+   "events": {
+    "so": {
+     "word": "So"
+    },
+    "looks": {
+     "word": "looks"
+    },
+    "snack": {
+     "word": "snack"
+    },
+    "bar": {
+     "word": "bar"
+    },
+    "where": {
+     "word": "where"
+    },
+    "spends": {
+     "word": "spends"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "so"
+    },
+    {
+     "kind": "ding",
+     "at": "snack"
+    },
+    {
+     "kind": "pop",
+     "at": "where"
+    },
+    {
+     "kind": "kaching",
+     "at": "spends"
+    }
+   ],
+   "params": {
+    "component": "Counter",
+    "place": "the busy snack bar",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "bar",
+      "size": "medium"
+     },
+     {
+      "at": "spends",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "so",
+      "what": "the camera swings from the screen doors to the snack bar"
+     },
+     {
+      "at": "snack",
+      "what": "the popcorn machine pops over"
+     },
+     {
+      "at": "bar",
+      "what": "Rohan steps up with a giant tub and a drink"
+     },
+     {
+      "at": "where",
+      "what": "the till screen lights up"
+     },
+     {
+      "at": "spends",
+      "what": "the till's display stamps the figure"
+     }
+    ],
+    "things": [
+     "popcorn machine",
+     "snack counter",
+     "AMC logo",
+     "till display",
+     "popcorn tub",
+     "drink cup",
+     "Rohan",
+     "server"
+    ],
+    "fig": {
+     "spend": "{fact1}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "office",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "From July to September, AMC's snack bars took in {fact3} in all.",
+   "events": {
+    "from": {
+     "word": "From"
+    },
+    "september": {
+     "word": "September"
+    },
+    "snack": {
+     "word": "snack"
+    },
+    "took": {
+     "word": "took"
+    },
+    "in": {
+     "word": "in"
+    },
+    "all": {
+     "word": "all"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "from"
+    },
+    {
+     "kind": "tick",
+     "at": "september"
+    },
+    {
+     "kind": "riser",
+     "at": "took"
+    },
+    {
+     "kind": "kaching",
+     "at": "all"
+    }
+   ],
+   "params": {
+    "component": "CashOffice",
+    "place": "AMC's cash office at closing time",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "snack",
+      "size": "wide"
+     },
+     {
+      "at": "took",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "from",
+      "what": "the wall calendar flips from July to September"
+     },
+     {
+      "at": "snack",
+      "what": "cash bags from the snack bar slide down a chute and pile up"
+     },
+     {
+      "at": "took",
+      "what": "the bags thump onto the counting table"
+     },
+     {
+      "at": "in",
+      "what": "the counting machine's display counts up to the figure"
+     },
+     {
+      "at": "all",
+      "what": "the manager grins over the pile of bags"
+     }
+    ],
+    "things": [
+     "cash office",
+     "wall calendar",
+     "cash bags",
+     "counting machine",
+     "chute",
+     "manager"
+    ],
+    "fig": {
+     "total": "{fact3}"
+    }
+   },
+   "transition": "zoom-through"
+  },
+  {
+   "id": "costs",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "But the popcorn, drinks and candy themselves cost AMC very little.",
+   "events": {
+    "but": {
+     "word": "But"
+    },
+    "popcorn": {
+     "word": "popcorn"
+    },
+    "drinks": {
+     "word": "drinks"
+    },
+    "candy": {
+     "word": "candy"
+    },
+    "cost": {
+     "word": "cost"
+    },
+    "little": {
+     "word": "little"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "but"
+    },
+    {
+     "kind": "pop",
+     "at": "popcorn"
+    },
+    {
+     "kind": "pop",
+     "at": "drinks"
+    },
+    {
+     "kind": "pop",
+     "at": "candy"
+    },
+    {
+     "kind": "boom",
+     "at": "little"
+    }
+   ],
+   "params": {
+    "component": "Storeroom",
+    "place": "the storeroom behind the snack bar",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "cost",
+      "size": "medium"
+     },
+     {
+      "at": "little",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "popcorn",
+      "what": "a sack of corn kernels drops on the scale"
+     },
+     {
+      "at": "drinks",
+      "what": "a syrup box lands beside it"
+     },
+     {
+      "at": "candy",
+      "what": "a crate of candy lands on top"
+     },
+     {
+      "at": "cost",
+      "what": "the invoice on the clipboard rolls out"
+     },
+     {
+      "at": "little",
+      "what": "a SMALL stamp lands on the invoice"
+     }
+    ],
+    "things": [
+     "kernel sack",
+     "syrup box",
+     "candy crate",
+     "scale",
+     "invoice clipboard",
+     "stamp",
+     "stock clerk"
+    ],
+    "fig": {}
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "So the food costs AMC just {snack_pct} of what you pay for it.",
+   "events": {
+    "so": {
+     "word": "So"
+    },
+    "food": {
+     "word": "food"
+    },
+    "costs": {
+     "word": "costs"
+    },
+    "pay": {
+     "word": "pay"
+    },
+    "it": {
+     "word": "it"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "so"
+    },
+    {
+     "kind": "pop",
+     "at": "food"
+    },
+    {
+     "kind": "boom",
+     "at": "costs"
+    },
+    {
+     "kind": "kaching",
+     "at": "pay"
+    }
+   ],
+   "params": {
+    "component": "Seat",
+    "place": "Rohan's seat in the dark cinema",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "costs",
+      "size": "close"
+     },
+     {
+      "at": "it",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "so",
+      "what": "Rohan lifts his giant tub in the screen's glow"
+     },
+     {
+      "at": "food",
+      "what": "the tub turns see-through"
+     },
+     {
+      "at": "costs",
+      "what": "its price tag swings round to show the share"
+     },
+     {
+      "at": "pay",
+      "what": "the real cost fills only the bottom of the tub"
+     },
+     {
+      "at": "it",
+      "what": "the fill line on the tub glows"
+     }
+    ],
+    "things": [
+     "cinema seats",
+     "giant popcorn tub",
+     "price tag",
+     "fill line",
+     "screen glow",
+     "Rohan"
+    ],
+    "fig": {
+     "pct": "{snack_pct}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Popcorn or the film: which one is AMC really selling? Because",
+   "events": {
+    "popcorn": {
+     "word": "Popcorn"
+    },
+    "film": {
+     "word": "film"
+    },
+    "amc": {
+     "word": "AMC"
+    },
+    "selling": {
+     "word": "selling"
+    },
+    "because": {
+     "word": "Because"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "popcorn"
+    },
+    {
+     "kind": "pop",
+     "at": "film"
+    },
+    {
+     "kind": "whoosh",
+     "at": "because"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "the cinema lobby",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "selling",
+      "size": "medium"
+     },
+     {
+      "at": "because",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "popcorn",
+      "what": "a popcorn sign lights up on the left"
+     },
+     {
+      "at": "film",
+      "what": "a film poster lights up on the right"
+     },
+     {
+      "at": "amc",
+      "what": "the AMC sign above flickers on"
+     },
+     {
+      "at": "selling",
+      "what": "Rohan looks from one to the other"
+     },
+     {
+      "at": "because",
+      "what": "the camera pushes toward the snack counter, the hook's first frame"
+     }
+    ],
+    "things": [
+     "lobby",
+     "popcorn sign",
+     "film poster",
+     "AMC sign",
+     "Rohan",
+     "snack counter"
+    ],
+    "fig": {
+     "spend": "{fact1}"
+    }
+   },
+   "transition": "cut"
+  }
+ ],
+ "narrator": "am_michael"
+}
