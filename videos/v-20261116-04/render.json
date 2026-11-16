@@ -1,0 +1,119 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 71629,
+  "duration_sec": 34,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "synthwave",
+    "key": "E",
+    "bpm": 108,
+    "look": {
+      "stage": "space",
+      "header": "strip",
+      "holder": "phone",
+      "entrance": "stamp"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Amazon's rented computers made $45.6B in profit last year.",
+        "start": 0.3,
+        "seconds": 3.95,
+        "window": 4.33,
+        "fill": 0.912
+      },
+      {
+        "scene": "store",
+        "text": "Its whole North American store made less, only $29.6B all year.",
+        "start": 4.63,
+        "seconds": 4.17,
+        "window": 4.67,
+        "fill": 0.893
+      },
+      {
+        "scene": "share",
+        "text": "Yet those computers bring in just 18% of Amazon's sales.",
+        "start": 9.3,
+        "seconds": 2.99,
+        "window": 3.33,
+        "fill": 0.898
+      },
+      {
+        "scene": "rent",
+        "text": "Who rents them? Companies running their apps and websites, on Amazon Web Services.",
+        "start": 12.63,
+        "seconds": 3.73,
+        "window": 4.1,
+        "fill": 0.91
+      },
+      {
+        "scene": "parcels",
+        "text": "So why does the store keep so little? Every parcel needs a warehouse, a driver and a van.",
+        "start": 16.73,
+        "seconds": 4.27,
+        "window": 4.67,
+        "fill": 0.914
+      },
+      {
+        "scene": "turn",
+        "text": "From each sales dollar, the cloud keeps 35%. Amazon overall keeps 11%.",
+        "start": 21.4,
+        "seconds": 4.64,
+        "window": 5.07,
+        "fill": 0.915
+      },
+      {
+        "scene": "payoff",
+        "text": "That's how rented computers made 57% of Amazon's $80B profit.",
+        "start": 26.47,
+        "seconds": 4.21,
+        "window": 4.63,
+        "fill": 0.909
+      },
+      {
+        "scene": "loop",
+        "text": "So is Amazon a shop, or a computer company?",
+        "start": 31.1,
+        "seconds": 2.27,
+        "window": 2.73,
+        "fill": 0.832
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "real-subject-first-frame": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.9,
+    "music_under_voice_db": 22.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 3.59,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
