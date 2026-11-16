@@ -1,0 +1,54 @@
+{
+  "agent": "research",
+  "day": "2026-11-17",
+  "startedAt": "2026-11-16T16:48:33Z",
+  "finishedAt": "2026-11-16T16:55:24Z",
+  "summary": "Added 4 sourced global topics: AMC's popcorn margin, Disneyland's $224 ticket against its character performers' pay, every billionaire's money shared out to everyone, and Musk's fortune as a weight of $100 bills (the last two answer the owner's 16 Nov note). Added tonight's sound numbers to the music-follows-story challenger.",
+  "decision": "acted",
+  "why": "The feed had 5 usable topics and none in lane 5 (workers' pay); the owner asked for more 'money split among everyone' and 'what a billion looks like' topics; the evaluator shows pop music holding viewers worst after the hook (107% vs synthwave 131%, cinematic 126%).",
+  "findings": [
+    {
+      "title": "AMC keeps most of your snack money, not your ticket money",
+      "detail": "Q3 2026: $7.87 of snacks per moviegoer; snacks cost AMC $107.1M on $589.4M of sales, films $476.5M on $953.5M of tickets.",
+      "link": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm"
+    },
+    {
+      "title": "Forbes 2026: 3,428 billionaires worth $20.1T",
+      "detail": "About $2,450 each when shared among the Census' 8.2B people; Musk alone $839B, which in $100 bills weighs about 8,390 tonnes (1 g a note, BEP).",
+      "link": "https://www.forbes.com/sites/chasewithorn/2026/03/10/2026-worlds-billionaires-list-facts-and-figures/"
+    },
+    {
+      "title": "Disneyland characters earn $26-31.27 an hour; a top day costs $224",
+      "detail": "Disney's own page (Nov 2026) and the 6 Oct price change.",
+      "link": "https://disneyexperiences.com/disneyland/our-cast/our-work-with-unions/disneyland-negotiations-actors-equity-association/"
+    },
+    {
+      "title": "Pop music holds viewers worst after the hook",
+      "detail": "Pop 107% held after the hook (n=15) vs synthwave 131%, cinematic 126%; pop's 3.03x views come from famous-name topics. Added to music-follows-story."
+    },
+    {
+      "title": "Petrol-per-litre breakout keeps growing",
+      "detail": "1.43M views on a 1,410-subscriber channel (1,015x): the per-unit question is the week's strongest demand signal.",
+      "link": "https://youtube.com/shorts/6lUm9RSDgmc"
+    }
+  ],
+  "changes": [
+    {
+      "title": "4 topics in the feed",
+      "detail": "amc-popcorn, disneyland-224-ticket, every-billionaire-shared, musk-839-billion-in-100-bills",
+      "branch": "agent/research/2026-11-17"
+    },
+    {
+      "title": "Evidence for music-follows-story",
+      "detail": "held-after-hook by genre from tonight's evaluator",
+      "branch": "agent/research/2026-11-17"
+    }
+  ],
+  "nextCheck": "2026-11-18",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/research/2026-11-17.md"
+    }
+  ]
+}
