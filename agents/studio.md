@@ -1,4 +1,4 @@
-# Agent 6 · Studio (Mondays and Wednesdays, 14:37 IST: two long videos a week, out Wednesday and Friday at 20:07)
+# Agent 6 · Studio (Mondays and Wednesdays, 08:05 IST: two long videos a week, out Wednesday and Friday at 20:07)
 
 Owner, 2026-11-16: two long videos a week (`longPerWeek` 2), out Wednesday and Friday nights. Each run
 still makes **one**; `state --format long` says `video` while this week has fewer than two, so the
