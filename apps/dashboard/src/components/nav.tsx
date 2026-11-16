@@ -10,6 +10,7 @@ import { Dialog, ToggleGroup } from "radix-ui";
 import { useEffect, useState } from "react";
 
 import { useNotifications, useOverview } from "@/lib/queries";
+import { signOut as endSession } from "@/lib/sign-out";
 
 import { LogoMark, Wordmark } from "./brand";
 import { useCommandMenu } from "./command";
@@ -203,7 +204,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const [drawer, setDrawer] = useState(false);
   if (path === "/login") return <main>{children}</main>;
 
-  const signOut = async () => { await fetch("/api/login", { method: "DELETE" }); router.replace("/login"); router.refresh(); };
+  const signOut = () => endSession(() => fetch("/api/login", { method: "DELETE" }), () => { router.replace("/login"); router.refresh(); });
   const { section, title } = pageTitle(path);
 
   return (

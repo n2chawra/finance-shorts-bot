@@ -9,6 +9,7 @@ import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, 
 import { mostLoved } from "./schemas";
 import { feedIndex, originOf } from "./origin";
 import { NO_PICK, canMarkStale, uploadNow } from "./queue-actions";
+import { picksToClear } from "./queue-order";
 import { windowStart } from "./totals";
 import { manualState } from "./youtube-link";
 
@@ -436,8 +437,10 @@ export function reorderQueue(ids: string[]): Video[] | null {
   const s = db();
   const q = queue(s);
   if (ids.length !== q.length || !q.every((v) => ids.includes(v.id))) return null;
-  for (const v of q) v.orderLocked = true;
-  renumber(s, ids.map((id) => q.find((v) => v.id === id)!));
+  const ordered = ids.map((id) => q.find((v) => v.id === id)!);
+  const unpick = new Set(picksToClear(ordered.map((v) => ({ id: v.id, format: v.format, picked: Boolean(v.pickedAt) }))));
+  for (const v of q) { v.orderLocked = true; if (unpick.has(v.id)) Object.assign(v, NO_PICK); }
+  renumber(s, ordered);
   return listQueue();
 }
 

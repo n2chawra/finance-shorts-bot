@@ -1,0 +1,47 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-17",
+  "startedAt": "2026-11-16T16:32:55Z",
+  "finishedAt": "2026-11-16T16:38:25Z",
+  "summary": "Fixed three dashboard and worker bugs (dragging the picked video, sign-out on a network error, a release download error) and wrote four video verdicts.",
+  "decision": "acted",
+  "why": "All checks were green; three open backlog bugs had a clear fix with a test. The data audit was skipped: its file is about 25 hours old because the 16 Nov run hadn't started yet (the 15 Nov audit had 0 errors).",
+  "findings": [
+    {
+      "title": "Data audit late, not failed",
+      "detail": "metrics/data-audit.json is from 15 Nov 15:44 UTC; the 16 Nov scheduled run had not started by 16:35 UTC. The last audit had 0 errors and 0 warnings."
+    },
+    {
+      "title": "Costco and US-debt Shorts beat the median",
+      "detail": "868 and 453 views in 48 hours against a Shorts median of 83; 63.6% and 70.8% viewed against 47%."
+    },
+    {
+      "title": "Netflix Short loops but loses a third on the second line",
+      "detail": "237.7% viewed, but 26% stayed to watch (median 31.2%) and a 33-point fall at 5.9 s on \"And it still kept $11B.\""
+    }
+  ],
+  "changes": [
+    {
+      "title": "Dragging the picked video now sticks",
+      "detail": "A reorder keeps the owner's pick only while that video is still first of its format; before, the pick pulled it back to the top.",
+      "branch": "agent/auditor/2026-11-17"
+    },
+    {
+      "title": "Sign out always reaches the login page",
+      "detail": "A network error during sign-out no longer leaves an unhandled error and no redirect.",
+      "branch": "agent/auditor/2026-11-17"
+    },
+    {
+      "title": "Local release downloads report the real error",
+      "detail": "A re-downloaded video is found instead of failing with 'gh CLI was not found'.",
+      "branch": "agent/auditor/2026-11-17"
+    }
+  ],
+  "nextCheck": "2026-11-18",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-17.md"
+    }
+  ]
+}

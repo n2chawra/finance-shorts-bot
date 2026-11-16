@@ -12,6 +12,7 @@ import { z } from "zod";
 import { getJson } from "@/lib/api";
 import { useOverview, usePatchSettings } from "@/lib/queries";
 import { VideoSchema } from "@/lib/schemas";
+import { signOut } from "@/lib/sign-out";
 
 import { NAV_ITEMS } from "./nav-items";
 import { useToast } from "./toast";
@@ -115,7 +116,7 @@ export function CommandMenu({ children }: { children: React.ReactNode }) {
                   <Command.Item value="theme system" onSelect={() => run(() => setTheme("system"))}><Monitor aria-hidden className="size-4" />Match system</Command.Item>
                 </Command.Group>
                 <Command.Group heading="Account">
-                  <Command.Item value="sign out log out" onSelect={() => run(async () => { await fetch("/api/login", { method: "DELETE" }); router.replace("/login"); router.refresh(); })}>
+                  <Command.Item value="sign out log out" onSelect={() => run(() => signOut(() => fetch("/api/login", { method: "DELETE" }), () => { router.replace("/login"); router.refresh(); }))}>
                     <LogOut aria-hidden className="size-4" />Sign out
                   </Command.Item>
                 </Command.Group>
