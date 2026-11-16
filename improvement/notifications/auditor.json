@@ -1,6 +1,13 @@
 {
   "notifications": [
     {
+      "key": "data-audit-late",
+      "severity": "info",
+      "title": "Tonight's data audit hadn't run yet at 22:02 IST",
+      "detail": "metrics/data-audit.json is from 15 Nov 15:44 UTC (about 25 hours old). The Data audit workflow's 16 Nov scheduled run had not started by 16:35 UTC; GitHub ran the last three 2-3 hours after their 13:53 cron. Its last run (15 Nov) passed with 0 errors and 0 warnings. The auditor skipped the data check tonight.",
+      "fix": "1. Nothing if tomorrow's audit lands (Actions, Data audit). 2. If it shows no run for 16 Nov, start it by hand there (Run workflow)."
+    },
+    {
       "key": "renderer-network",
       "severity": "warning",
       "title": "renderer/thumbs.py downloads from YouTube, against the no-network rule",

@@ -49,6 +49,15 @@ async function api(path: string): Promise<unknown> {
  * named after its title since 2026-10-31 (release-video.yml), so any .mp4 matches it. */
 export const assetMatches = (name: string, asked: string) => name === asked || (asked === "video.mp4" && name.toLowerCase().endsWith(".mp4"));
 
+/** The file `gh release download --clobber` wrote for `asset`: a new matching file, else the one matching file
+ * already there (a re-download overwrites it in place); null when it can't tell (none, or several). */
+export function downloadedFile(before: Set<string>, after: string[], asset: string): string | null {
+  const matching = after.filter((f) => assetMatches(f, asset));
+  const fresh = matching.filter((f) => !before.has(f));
+  if (fresh.length) return fresh.length === 1 ? fresh[0]! : null;
+  return matching.length === 1 ? matching[0]! : null;
+}
+
 /** API URL of the uploaded video on Release `tag`, or null if the release or asset is not there yet. */
 export async function releaseAssetUrl(repo: string, tag: string, asset: string): Promise<string | null> {
   const data = await api(`repos/${repo}/releases/tags/${tag}`);
@@ -64,16 +73,20 @@ export async function downloadReleaseAsset(repo: string, tag: string, asset: str
     const dir = path.dirname(dest);
     for (const exe of ["gh", "C:\\Program Files\\GitHub CLI\\gh.exe"]) {
       if (exe !== "gh" && !existsSync(exe)) continue;
+      const pattern = asset === "video.mp4" ? "*.mp4" : asset;
+      const before = new Set(readdirSync(dir));
       try {
-        const pattern = asset === "video.mp4" ? "*.mp4" : asset;
-        const before = new Set(readdirSync(dir));
         execFileSync(exe, ["release", "download", tag, "--pattern", pattern, "--dir", dir, "--clobber", "-R", repo], { stdio: ["ignore", "pipe", "pipe"] });
-        const got = readdirSync(dir).find((f) => !before.has(f) && assetMatches(f, asset)) ?? asset;
-        if (path.join(dir, got) !== dest) renameSync(path.join(dir, got), dest);
-        return;
       } catch (e) {
+        // only a missing gh binary moves on to the next one; anything else is the download's own failure
         if (!String((e as { stderr?: unknown }).stderr ?? e).includes("ENOENT")) throw new Error(`gh release download ${tag} failed: ${String((e as { stderr?: unknown }).stderr ?? e).trim()}`);
+        continue;
       }
+      // outside the catch above, so a failed rename says so instead of "gh not found" (auditor wrk-004)
+      const got = downloadedFile(before, readdirSync(dir), asset);
+      if (!got) throw new Error(`gh release download ${tag}: can't tell which file in ${dir} is ${asset}`);
+      if (path.join(dir, got) !== dest) renameSync(path.join(dir, got), dest);
+      return;
     }
     throw new Error("no GITHUB_TOKEN and the gh CLI was not found");
   }

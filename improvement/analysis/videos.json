@@ -1138,22 +1138,107 @@
     {
       "videoId": "v-20261113-03",
       "verdict": "hit",
-      "headline": "The Netflix Short reached 485 views in its first two days; YouTube Analytics hasn't counted it yet.",
+      "headline": "The Netflix Short got 469 views in two days, and the few who stayed watched it more than twice over.",
       "why": [
         {
-          "text": "485 views after 2.1 days (live count), almost 6 times the Shorts median of 83 at 48 hours.",
-          "metric": "485 views",
+          "text": "469 views in its first 48 hours (live count), against a Shorts median of 83.",
+          "metric": "469 views",
           "tab": "overview"
         },
         {
-          "text": "No % viewed or drop points yet: Analytics runs a day or two behind; next night's verdict can say why it held or lost viewers.",
+          "text": "Viewers watched 237.7% of it on average: those who stayed looped it, against a median of 47%.",
+          "metric": "237.7% viewed",
+          "tab": "engagement"
+        },
+        {
+          "text": "But only 26% stayed to watch, under the 31.2% median, and the steepest fall (33 points) came at 5.9 s on the second line \"And it still kept $11B.\"",
+          "metric": "26% stayed",
+          "tab": "engagement"
+        },
+        {
+          "text": "95% of views came from the Shorts feed.",
+          "metric": "94.8% Shorts feed",
+          "tab": "reach"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Keep the loop that made people rewatch; open on the per-member price, not the company total that loses a third at 6 s.",
+      "writtenAt": "2026-11-16T17:05:00Z"
+    },
+    {
+      "videoId": "v-20261114-01",
+      "verdict": "hit",
+      "headline": "The US debt Short got 453 views in two days and held viewers well past the hook.",
+      "why": [
+        {
+          "text": "453 views in its first 48 hours (live count), against a Shorts median of 83.",
+          "metric": "453 views",
+          "tab": "overview"
+        },
+        {
+          "text": "70.8% viewed against a median of 47%, and 50% stayed to watch against 31.2%.",
+          "metric": "70.8% viewed",
+          "tab": "engagement"
+        },
+        {
+          "text": "30% were still there after the hook (median 20.3%); the biggest fall, 22 points, came at the ending's question \"Would you lend America more?\" at 29.5 s.",
+          "metric": "30% held after the hook",
+          "tab": "engagement"
+        },
+        {
+          "text": "75% of the views Analytics has counted came from the Shorts feed; one came from the search \"us debt\".",
+          "metric": "75% Shorts feed",
+          "tab": "reach"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "End on the per-person figure itself and loop into the first frame instead of a closing question, where it lost 22 points.",
+      "writtenAt": "2026-11-16T17:05:00Z"
+    },
+    {
+      "videoId": "v-20261114-02",
+      "verdict": "hit",
+      "headline": "The Costco membership Short reached 868 views in two days, the best of the week so far.",
+      "why": [
+        {
+          "text": "868 views in its first 48 hours (live count), over 10 times the Shorts median of 83.",
+          "metric": "868 views",
+          "tab": "overview"
+        },
+        {
+          "text": "63.6% viewed against a median of 47%, and 50% stayed to watch against 31.2% (from only 10 views Analytics has counted).",
+          "metric": "63.6% viewed",
+          "tab": "engagement"
+        },
+        {
+          "text": "No retention curve or drop points yet, so where viewers left can't be told.",
+          "metric": "no drops yet",
+          "tab": "engagement"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "More Shorts that go behind something the viewer pays for (a membership, a card) to the business's real figure, as this one did.",
+      "writtenAt": "2026-11-16T17:05:00Z"
+    },
+    {
+      "videoId": "v-20261114-03",
+      "verdict": "okay",
+      "headline": "The Las Vegas Strip Short has 218 views after two days, above the median, but YouTube Analytics hasn't counted it yet.",
+      "why": [
+        {
+          "text": "218 views by the live count, against a Shorts median of 83 at 48 hours.",
+          "metric": "218 views",
+          "tab": "overview"
+        },
+        {
+          "text": "No % viewed, stayed to watch or drop points yet: Analytics runs a day or two behind.",
           "metric": "no Analytics yet",
           "tab": "engagement"
         }
       ],
       "viewersSaid": [],
-      "next": "Keep the company name and both figures in the title; judge the hook once Analytics has its drops.",
-      "writtenAt": "2026-11-15T17:20:00Z"
+      "next": "Judge the hook once Analytics has its drop points; until then too few numbers to change anything.",
+      "writtenAt": "2026-11-16T17:05:00Z"
     }
   ]
 }

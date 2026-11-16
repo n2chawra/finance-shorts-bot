@@ -8,8 +8,9 @@ import type { Prisma } from "@prisma/client";
 import { liveCounters } from "./live-stats";
 import { prisma } from "./prisma";
 import { dispatchPublish } from "./dispatch";
-import { canMarkStale, skipToEnd, uploadNow } from "./queue-actions";
+import { NO_PICK, canMarkStale, skipToEnd, uploadNow } from "./queue-actions";
 import { EditorNoteSchema, SettingsSchema, mostLoved } from "./schemas";
+import { picksToClear } from "./queue-order";
 import { runEndMs } from "./run-span";
 import { feedIndex, originOf, snapshotOf } from "./origin";
 import { fillFromLive, meanViewPct, totals, windowStart, type DayRow } from "./totals";
@@ -141,10 +142,14 @@ export async function listQueue(): Promise<Video[]> {
 }
 
 export async function reorderQueue(ids: string[]): Promise<Video[] | null> {
-  const current = (await queued()).map((v) => v.id);
+  const rows = await queued();
+  const current = rows.map((v) => v.id);
   if (ids.length !== current.length || !current.every((id) => ids.includes(id))) return null;
-  // the owner's own order: kept over the editor's ranking until "Use editor's order"
-  await prisma.$transaction(ids.map((id, i) => prisma.video.update({ where: { id }, data: { queuePosition: i + 1, orderLocked: true } })));
+  const byId = new Map(rows.map((v) => [v.id, v]));
+  const unpick = new Set(picksToClear(ids.map((id) => ({ id, format: byId.get(id)!.format, picked: Boolean(byId.get(id)!.pickedAt) }))));
+  // the owner's own order: kept over the editor's ranking until "Use editor's order"; a pick dragged off the top is dropped
+  await prisma.$transaction(ids.map((id, i) => prisma.video.update({ where: { id },
+    data: { queuePosition: i + 1, orderLocked: true, ...(unpick.has(id) ? NO_PICK : {}) } })));
   return listQueue();
 }
 
