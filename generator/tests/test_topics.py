@@ -169,8 +169,20 @@ def test_an_idea_told_by_a_long_video_is_not_offered_as_a_short():
     assert too_close({"title": "Why casinos always win"}, [long_entry], "2026-10-26") is None
 
 
+def test_a_long_topic_is_not_a_duplicate_of_the_short_it_expands():
+    # Scout, 2026-11-16: the McDonald's and casino long topics were dropped as copies of their own Shorts
+    from generator.topics import too_close
+    short = {"id": "v-20261031-01", "created_at": "2026-10-31T00:00:00+00:00", "topic": {"title": "How McDonald's really makes money: it's a landlord"}}
+    old_long = {"id": "L-1", "created_at": "2026-11-01T00:00:00+00:00", "topic": {"title": "How McDonald's really makes money: it's a landlord"}}
+    t = {"title": "How McDonald's really makes money: a landlord", "from_short": "v-20261031-01"}
+    assert too_close(t, [short], "2026-11-16") is None
+    assert too_close(t, [short, old_long], "2026-11-16") == "L-1"       # another video still counts
+    assert too_close({"title": t["title"]}, [short], "2026-11-16") == "v-20261031-01"
+
+
 def test_a_long_topic_shows_its_short_and_needs_a_winning_one(root: Path) -> None:
-    # Scout, 2026-11-05: `state --format long` must show `from_short`, and only a 1K+ Short makes a topic usable
+    # Scout, 2026-11-05: `state --format long` must show `from_short`; since 2026-11-12 only a recent Short in
+    # the top third by stayed to watch makes a topic usable (it replaced the 1,000-view rule)
     (root / "improvement" / "longform").mkdir(parents=True, exist_ok=True)
     (root / "metrics").mkdir(parents=True, exist_ok=True)
     (root / "metrics" / "videos.json").write_text(json.dumps({"videos": [{"id": "v-1", "views": 1500}, {"id": "v-2", "views": 300}]}), encoding="utf-8")
@@ -180,7 +192,7 @@ def test_a_long_topic_shows_its_short_and_needs_a_winning_one(root: Path) -> Non
     s = topics.for_state([], TODAY, [], ["long_story"], root, fmt="long")
     shown = {t["id"]: t for t in s["topics"]}
     assert shown["won"]["from_short"] == "v-1" and shown["won"]["usable_now"]
-    assert not shown["weak"]["usable_now"] and "under 1,000" in shown["weak"]["blocked_by"]
+    assert not shown["weak"]["usable_now"] and "not in the top third" in shown["weak"]["blocked_by"]
     assert not shown["none"]["usable_now"] and "from_short" in shown["none"]["blocked_by"]
 
 
