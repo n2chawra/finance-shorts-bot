@@ -1,7 +1,26 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
+  "open": 1,
   "notes": [
+    {
+      "id": "cmwis8xcv0001jj09to8cmgr2",
+      "kind": "improve",
+      "area": null,
+      "text": "Camera kinda looks zoom in. Zoom out a little bit so that all things comes in picture.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-16T04:48:01.759Z",
+      "video": {
+        "id": "v-20261116-01",
+        "title": "Grand Theft Auto V has sold 230M copies since 2013 🎮",
+        "format": "short",
+        "status": "published",
+        "story": "how_they_make_money",
+        "shape": "reveal",
+        "hookStyle": "question",
+        "hook": "Grand Theft Auto Five has sold over {fact2} copies."
+      }
+    },
     {
       "id": "cmwi184wx0001ld09foo0fhz0",
       "kind": "improve",
