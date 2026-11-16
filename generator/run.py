@@ -265,6 +265,8 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
     # the story spine (generator/story.py): fixed before anything is voiced or drawn
     entries = [e for e in history.of_format(history.load(root), plan_format(script)) if e["id"] != vid]
     spine = story.script_problems(script, [_read_script(e["id"], root) for e in entries[-10:]])
+    if script.get("arms"):   # the title asks, the payoff answers (owner, 2026-11-16)
+        spine += story.title_reveal_problems(script, plan.get("title"))
     if plan.get("shape") is not None and script.get("shape") != shapes.shape_id(plan["shape"]):
         spine.append(f"script.shape must be the plan's shape ({shapes.shape_id(plan['shape'])!r}): the spine is checked by it")
     # the variant system's style and length checks (generator/story.py) read script.arms

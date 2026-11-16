@@ -94,7 +94,10 @@ the US. News is not a source of ideas any more.
    their channel's subscribers, with `channelSubs` and `outlier`). A video from a channel with millions of
    subscribers proves demand only when it also beats that audience (views above the subscriber count);
    otherwise it shows the channel, not the topic. For a video you find by search, open its channel and
-   note the subscribers.
+   note the subscribers. **A breakout is re-sourced, never dropped** (owner, 2026-11-16: "How much profit
+   does a petrol pump make per litre?" had 1.4M views on a 1.4K-subscriber channel and sat in our own
+   market feed, but was set aside because its facts were stale): find today's figures for the same
+   question from an official or reputable source and add it as a topic.
 2. **Update `improvement/research/formats.json`:** add a new example (title, views, url) to a format
    when you find a stronger one; add a new format when 2+ videos with 1M+ views share a shape we
    don't have (id, format, markets, name, emotion, hook, beats, titles, examples). Every format id
@@ -113,6 +116,19 @@ the US. News is not a source of ideas any more.
    stories. At least two thirds of the topics you add are in a `tier: core` format (billionaires,
    money at scale, how famous businesses make money, secrets of the rich through real billionaires),
    each with its own curiosity question ("How do casinos make money even when you win?").
+2d. **The thing in your hand** (owner, 2026-11-16, after the content research: every Short stopped at
+   150-1,190 views; from 9-16 Nov only 1 of 31 topics was about something the viewer touches, 25 were
+   a brand's or a celebrity's annual figure). **At least two in three topics you add start from
+   something the viewer buys, pays for or watches** and go behind it to the real business, in one of
+   five lanes: (1) what a named seller makes on the thing you buy (petrol per litre, a phone, cinema
+   popcorn); (2) why a named product is so cheap or so expensive (Costco's $1.50 hot dog, the iPhone's
+   cost to make); (3) a real game, film or tour priced in the viewer's money ("How GTA 6 could cost
+   you $11,000"); (4) a celebrity's money moving: net worth year by year, per second, who's richer;
+   (5) what the workers at a place the viewer visits earn. Each topic carries a **per-unit fact** the
+   viewer can feel (per litre, per seat, per hot dog), and its `title` asks the question without the
+   answer. A company's annual total is never the hook. **Skip crowded lanes**: an angle that 5+
+   Shorts took this week with none above 5K views (in `market.json` and your searches; on 16 Nov:
+   Apple's services share, Costco's operating income, Elon's net worth in cash).
 3. **Write 6-10 topics into the feed** (section 4). Give each topic **the biggest video on its own
    idea** as `demand` (search the idea itself, e.g. "how mcdonalds makes money", not just the
    format), and spread them across formats, including ones we have not told yet: the feed is ranked

@@ -48,8 +48,12 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 - **The champion recipe (read this first; nothing below overrides it).** Every Short is made this
   way, except for the one change this video's weekly-loop experiment asks for (its `experiments`
   note, if any). The recipe changes only when the loop keeps a challenger (agents/policy.md). It is
-  judged on the share of people who **stayed to watch** instead of swiping (ours was 24-52%); the
-  Shorts growing in this niche state a surprising true fact about a famous name in the first second.
+  judged on the share of people who **stayed to watch** instead of swiping (ours was 24-52%; the Shorts
+  that get past the first test audience hold 70-90%). Owner, 2026-11-16, after the content research:
+  every Short stopped at 150-1,190 views, most lost their biggest share at 5-6 s because the title and
+  the first line had already given the answer, and the topics had drifted to companies' annual totals.
+  Of 20 money Shorts at 160K-9.6M views, none stated its answer in the title; 13 asked a question, and
+  most were about something the viewer buys, owns or watches.
   - **The opening is already chosen**: use the title, first line and first frame picked in
     `videos/<id>/openings.json` (routine step 2b).
   - **Look at the bar first**: the approved directed reference (`videos/v-directed-netflix/` and its
@@ -57,7 +61,14 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     of the Shorts in `improvement/analysis/pictures.json` → `reference`, our own Shorts that held viewers
     best. Draw at least that well: as full, as big, as clear. Copy how they work, never their pictures.
   - **One surprising true money fact about a real, named person or business.** The plan's `subject`
-    and its biggest figure are in the title and in the hook's first sentence.
+    is named in the title and in the hook's first sentence; **the payoff's figure is not** (it waits
+    for the payoff). `number-check` fails a payoff figure said in the hook or the promise, a title that
+    states the payoff's figure, and a title with two figures (`story.reveal_problems`,
+    `title_reveal_problems`).
+  - **Tell it from the viewer's side** (our top 4 of 60 were "your $20,000", "my bill", "$100 bills"):
+    start from the thing the viewer buys, pays, holds or watches (the hot dog, the litre, the ticket,
+    the subscription) and go behind it to the business. A per-unit figure they can feel ("{price} a hot
+    dog", "per litre", "per seat") beats a company's annual total ("$17.1B", "$40.61T").
   - **Make them curious about something they don't know** (owner, 2026-11-14, on the Las Vegas
     Short: "the script is not actually making people engaged knowing how casino earns or make them
     curious about something they dont know"). The fact is a *how*, not a size: how the money is really
@@ -68,16 +79,23 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     in your report; each build beat reveals one step of it, the turn is the step people miss, and the
     payoff is what it adds up to. At most one time rate (per minute, per day…) in the whole Short
     (`number-check` fails a unit ladder of three or more).
-  - **The hook states the fact itself**: "The NBA paid Magic Johnson {pay}. He made a billion." ·
-    "McDonald's earns more from rent than from burgers." · "A {price} gym makes its money from the
-    members who never come." No "You think …?", no "Watch this.", no "Here's why." (`number-check`
-    fails those). The surprise is the reason to stay; the rest of the Short shows how it can be true.
+  - **The hook names the subject and opens the question** a stranger wants answered, and holds the
+    answer back: "Costco sells you a hot dog for {price}. So how does it make any money?" · "A petrol
+    pump sells a litre for {price}. How much of it does the owner keep?" · "The NBA paid Magic Johnson
+    {pay}. So where did his billion come from?" It may carry the price the viewer pays or a starting
+    figure, never the payoff. No "You think …?", no "Watch this.", no "Here's why." (`number-check`
+    fails those). The open question is the reason to stay; the Short answers it in the payoff.
   - **The line after the hook goes on with the same story** (auditor 2026-11-16: 20 of 26 Shorts lost the
     most viewers at 4.5-7 s, on that line): the next, bigger surprise about the same person or business
-    ("And it still kept {pro_total}." · "And she sold out every one of her {shows} shows."). Never a wider
-    total ("Forbes' top creators made…"), the hook's figure rescaled ("How big does that get?"), the
-    expected baseline ("Delta took in {x} in revenue") or a setup ("Say your cart…"); `number-check`
-    fails those (`story.second_line_problems`).
+    ("And she sold out every one of her {shows} shows." · "Not on the food: it keeps almost nothing on
+    it."). It never confirms what the title already said (Netflix's title held its second line, and
+    33% left on it). Never a wider total ("Forbes' top creators made…"), the hook's figure rescaled
+    ("How big does that get?"), the expected baseline ("Delta took in {x} in revenue"), a setup ("Say
+    your cart…") or a finance word; `number-check` fails those (`story.second_line_problems`).
+  - **Plain words all the way through**: "keeps", "takes home", "pays", "owes", "owns", "is worth";
+    never "revenue", "operating income", "profit before tax", "Treasury", "bonds", "net worth",
+    "margin", "cost to provide", "shareholders" (Apple lost 27% at 5.1 s on "services" and 18% more on
+    its revenue line).
   - **The first frame shows the real subject, recognisable at a glance** with the sound off: the
     thing itself drawn big (the gym, the burger, the jersey with the name), its name as a label, the
     figure beside it. Never an empty room, never a placeholder head, never a cast member standing in
@@ -100,10 +118,17 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     a text chip standing in for one ("LIFE INSURANCE", "TEAM STAKES").
   - **The cast act it as a short skit** when they are part of the story (Rohan as the member who
     pays and never goes; Sharma as the landlord). A cast member with no part in the story stays out.
-    Short spoken lines are fine; nobody has to "explain like a teacher".
+    Short spoken lines are fine; nobody has to "explain like a teacher". When the story starts from
+    something the viewer buys or pays (the popcorn, the tank of petrol, the membership card), a cast
+    member **is** the viewer: they do that everyday act on screen and the story goes behind it from
+    their side. That is a part in the story, not a reaction shot.
   - **28-35 s, about 85-115 words, 6-8 beats** (the voice runs at the October pace). One fact, how
-    it works in two or three steps, one punchline with the biggest figure, a last line that hands
-    back to the hook, and **a question to the viewer** in the last beat ("Would you have sold?").
+    it works in two or three steps, one punchline with the biggest figure, and **a last line that
+    loops**: it ends on words that run straight back into the first frame, so a second watch starts
+    without a break (only 1 of the 12-16 Nov Shorts did; the people still watching at the last second
+    were 11-49%). Any question to the viewer is a **pick-one between two concrete choices** people
+    have an opinion on ("Hot dog or the membership: which one is Costco really selling?"), never a
+    yes/no ("Would you renew yours?": 0 comments in 60 Shorts), and it comes before the loop line.
   - **Never announce the structure** ("three clues", "four levels"): viewers left at that line.
   - **Every beat is a directed 2D shot** (`"scene": "directed"`; owner, 2026-11-13, after the Netflix
     remake: "I absolutely loved this… now new videos are made like this"). You write the story, the
@@ -132,12 +157,13 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   fine, "You should do this." is not.
 - **Big captions show every spoken word** (drawn automatically from the voice), so scenes carry the
   picture and the figures, not sentences. Keep on-screen text to labels and numbers.
-- **The hook** (see the fixed recipe): the first spoken line lands in under 1.5 s and states the
-  surprising fact with the name and the figure. No greeting, no "did you know", no setup. The first
+- **The hook** (see the fixed recipe): the first spoken line lands in under 1.5 s, names the
+  subject and opens the question; the payoff's figure waits. No greeting, no "did you know", no setup. The first
   frame already shows the subject, in a place with something moving, never a figure on a plain
-  background. The plan's `hook_style` only colours it: `shock_number` leads with the figure, `secret`
-  with what the famous subject does that others don't, `question` may add a short question *after*
-  the fact ("So where did the billion come from?"), `myth` states the fact that breaks the saying.
+  background. The plan's `hook_style` only colours it: `shock_number` leads with a starting figure
+  (never the payoff's), `secret` with what the famous subject does that others don't, `question`
+  asks it outright ("How much does a cinema keep from your popcorn?"), `myth` states the fact that
+  breaks the saying.
 - **Storytelling that holds to the last second** (owner, 2026-11-02: "story telling needs lots of
   work … the way of explanation is very weak", the car-discount Short 2/10; target 70% viewed):
   - **One story, one person, one moment.** Follow a character through one concrete situation in

@@ -6,7 +6,23 @@ one. Kept up to date by the reviewer agent (`agents/reviewer.md`, twice a week):
 top, each with the video it came from, the number that shows it and the fix. At most 20 lessons; when
 a new one would make 21, the oldest that no recent video repeats is dropped.
 
-## 1. The ordinary figure before the big one (2026-11-13, reviewer)
+## 1. The title gave the answer away (2026-11-16, owner review)
+Seen in: "Netflix spent $17.1B on new shows and still kept $11B" (v-20261113-03) put its first two lines
+in the title, and 33% of the viewers still watching left at 5.9 s, on the second line ("And it still
+kept $11B"): they had already read it. "Costco's profit was $9.23B. The card paid 64% of it"
+(v-20261114-02) said its 64% payoff at 2.4 s. Of 20 money Shorts at 160K-9.6M views this week, none
+stated its answer in the title; 13 asked a question ("Why Costco's hotdog is only $1.50", 624K).
+Fix: the title and the first line name the subject and ask the question; the payoff's figure is said
+only in the payoff. One figure in a title at most, and never the payoff's (`story.title_reveal_problems`).
+
+## 2. A finance word at 5 seconds (2026-11-16, owner review)
+Seen in: "Apple keeps 76% of every dollar you pay for its services" (v-20261112-01) lost 27% at 5.1 s on
+"services" and 18% more at 9.2 s on its revenue line (76 views). The US-debt Short (v-20261114-01) said
+"Treasury bills and bonds"; the Elon pay-deal Short "Shareholders voted him…" (v-20261110-01, 14 views).
+Fix: plain words a stranger uses: keeps, takes home, pays, owes, owns. Never "revenue", "operating
+income", "Treasury", "net worth", "margin" (`number-check` fails one on the second line).
+
+## 3. The ordinary figure before the big one (2026-11-13, reviewer)
 Seen in: "The basketball star who got rich off the court" (v-20261109-02): its second line, at 3.8–5.0 s,
 was "His 13 NBA seasons paid him about $40M" over a card with a blank grey avatar where Magic Johnson's
 face should be, and 29% of the viewers still watching left at 5.0 s, the biggest single drop of the
@@ -16,7 +32,7 @@ at 5.3 s lost 21%, and the twist (only 2.4 km, 1.4%, then on hold) waited until 
 Fix: the second sentence is never the expected baseline (a salary, a plan, a budget); it is the twist
 figure or a bigger surprise, and the baseline comes later only as the contrast.
 
-## 2. The real story arrives at 5 seconds (2026-11-12, owner review)
+## 4. The real story arrives at 5 seconds (2026-11-12, owner review)
 Seen in: the 5% tax Short's hook (California's one-time 5% billionaire tax) came in its second line,
 at 5.3 s, where 26% of the viewers still watching left. The five Shorts that stopped at about 1,150
 views all lost 24–31% of their viewers at 5–6 s, on lines like "Four levels to get there…" and
@@ -30,7 +46,7 @@ a month, like 6,000 gym members."). The one Short of the six that opened on a na
 in its second line (v-20261110-02, MrBeast: "his video business lost almost $80M") had the best
 stayed to watch, 60% (on only 10 analytics views so far).
 
-## 3. The first frame names nobody (2026-11-12, owner review)
+## 5. The first frame names nobody (2026-11-12, owner review)
 Seen in: "Why can't billionaires just pay a 5% tax?" (v-20261024-01), "Your $20,000 savings"
 (v-20261023-01), "The $10 gym" (v-20261105-06). They opened on "Why can't they just pay?", "Rich people
 never let cash sleep" and a building labelled "GYM": no real person, no real company. 55–76% of the
@@ -41,7 +57,7 @@ Also seen in (2026-11-13, reviewer): "You think splitting one fortune makes ever
 1.4 s, while "Basketball made Magic Johnson a billionaire?" (v-20261109-02), the one of the three
 that named a person, lost 10%.
 
-## 4. Made-up examples (2026-11-12, owner review)
+## 6. Made-up examples (2026-11-12, owner review)
 Seen in: "On an illustrative billionaire" (v-20261024-01), "Say only 300 members ever walk through the
 door" (v-20261105-06). 4 shares on 14,500 views across the channel: nobody passes on a story the video
 admits it invented.
@@ -50,18 +66,18 @@ Also seen in (2026-11-13, reviewer): "Say a billionaire has $200.00B" (v-2026111
 with no name; 27% gone in the first 1.2 s and stayed to watch 35%, at the channel median, with 0
 shares on 922 views); "At an assumed rate, it earns $15.10B a year" (v-20261111-02, no numbers yet).
 
-## 5. Reaction shots (2026-11-12, owner review)
+## 7. Reaction shots (2026-11-12, owner review)
 Seen in: full-frame cartoon faces saying "EASY." (18 s) and "HE'S SHORT" (24 s) in v-20261024-01, and
 "WHAT?" at 2.5 s in v-20261023-01, inside the seconds the viewer decides in.
 Fix: every beat shows the thing or the figure the line is about.
 
-## 6. A textbook payoff (2026-11-12, owner review)
+## 8. A textbook payoff (2026-11-12, owner review)
 Seen in: "Your $20,000 savings" ended on $20,815 in a savings account against $29,605 at an assumed 4%:
 a compound-interest lesson most viewers already know. Its viewers who stayed rewatched it (end hold
 145%), but 73% had swiped at the start and nobody shared it.
 Fix: end on the story's most surprising true figure, the one worth sending to a friend.
 
-## 7. Empty and labelled-object frames (2026-11-12, owner review)
+## 9. Empty and labelled-object frames (2026-11-12, owner review)
 Seen in: v-20261105-06 at 11 s (a small figure beside a couch in a dark, empty scene) and 18 s (a door
 labelled "The door").
 Fix: one big thing filling the frame, drawn so it needs no label.

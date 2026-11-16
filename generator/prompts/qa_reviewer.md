@@ -44,10 +44,13 @@ D. **Not directed like the reference** (owner, 2026-11-13: every new video is di
 4. **Empty scene:** a frame after the first second with nothing but background.
 5. **Wrong content:** a visible placeholder such as `{amount}`, a number that is obviously
    broken (₹0, NaN, a negative amount), or a label that does not match its value.
-6. **The first two seconds don't say who and how much** (Shorts; owner review, 2026-11-11: of the
-   people YouTube showed our Shorts to, 55-76% swiped away within a second or two). Look only at the
-   first still and the first spoken sentence, as a stranger with the sound off: do you know which
-   famous person or business this is about, and the surprising figure? Reject a first frame that is
+6. **The first two seconds don't say who, or give the answer away** (Shorts; owner review, 2026-11-11:
+   of the people YouTube showed our Shorts to, 55-76% swiped away within a second or two; 2026-11-16:
+   the Shorts whose title or first line held the answer lost their biggest share at 5-6 s). Look only
+   at the first still and the first spoken sentence, as a stranger with the sound off: do you know which
+   person, business or everyday thing this is about, and is there a question you'd stay to have
+   answered? Reject `[script]` a title or first sentence that already states the payoff's figure or
+   twist. Reject a first frame that is
    an empty room, a cast member alone, a placeholder head, an unlabelled object, or a subject you
    could not name; and a first sentence that is a question about what the viewer thinks, a tease
    ("Watch this.") or a line that keeps the name back. A text chip standing in for a real thing
@@ -56,6 +59,11 @@ D. **Not directed like the reference** (owner, 2026-11-13: every new video is di
    video that admits an invented example on screen or in its words ("illustrative", "say only…",
    "imagine"); a still that is only a cast member's face with a one-word reaction and nothing new;
    and an ending whose last figure is a textbook result rather than the story's most surprising fact.
+   Reject `[script]` a last line that doesn't loop (its words don't run straight back into the first
+   frame; owner 2026-11-16: only 1 of the 12-16 Nov Shorts looped, and 11-49% were still watching at
+   the end), a closing question that is a yes/no ("Would you renew yours?") instead of a pick-one
+   between two concrete choices, and a finance word a stranger wouldn't use ("revenue", "Treasury",
+   "net worth", "margin") anywhere in the first 10 s.
    Check every item in `generator/prompts/lessons.md` too: a video that repeats a lesson is a reject.
 6b. **Weaker than our best** (Shorts; the weekly loop): open the contact sheets of the Shorts in
    `improvement/analysis/pictures.json` → `reference` (our own Shorts that held viewers best). Reject
@@ -64,8 +72,8 @@ D. **Not directed like the reference** (owner, 2026-11-13: every new video is di
 7. **No disclaimer:** the last frame does not show "Illustrative only. Not financial advice." (a
    Short shows it as a small line over its last moments; a long video on its end card).
 7b. **Announced structure** (Shorts), from the script: reject `[script]` level chips, "three
-   clues…", "level one, two…" or any line that announces what is coming. The hook states the fact
-   (check 6); the cast may trade short lines, that is the skit.
+   clues…", "level one, two…" or any line that announces what is coming. The hook names the subject
+   and asks, holding the answer back (check 6); the cast may trade short lines, that is the skit.
 8. **Long-video thumbnails** (`videos/<id>/feed-preview.png`: our three, A, B and C, each among its topic's most
    viewed videos; since 2026-11-11 the owner picks one, else Studio's `thumbnail_pick` goes up). Look at each:
    does it use the picture language those hits share (its `pattern`)

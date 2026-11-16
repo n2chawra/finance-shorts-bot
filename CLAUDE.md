@@ -45,10 +45,23 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   - **Escalation**: three cycles under 45% stayed to watch, the next test is a format change; six,
     one owner notification (change niche or stop).
   - **The champion recipe**: one surprising true money fact about a real, named person or business;
-    the title and the hook's first sentence state it with the name and the figure (no "You think X?",
-    no "Watch this"; `generator/story.py` `hook_problems`); three openings drafted and one picked by a
-    fresh reviewer (`generator/prompts/hook_judge.md`); 28–35 s; the cast act a skit only when in the
-    story; one narrator (`SHORTS_NARRATOR`), the voice at 1.4; directed 2D beats (next bullet).
+    the title and the hook's first sentence name the subject and ask the question, and the payoff's
+    figure waits for the payoff (one figure in a title at most; no "You think X?", no "Watch this";
+    `generator/story.py` `hook_problems`, `reveal_problems`, `title_reveal_problems`); three openings
+    drafted and one picked by a fresh reviewer (`generator/prompts/hook_judge.md`); 28–35 s; plain
+    words (no "revenue", "Treasury", "net worth" on the second line); the cast act a skit only when in
+    the story (for an everyday topic a cast member is the viewer); the last line loops, and any
+    question is a pick-one; one narrator (`SHORTS_NARRATOR`), the voice at 1.4; directed 2D beats
+    (next bullet).
+  - **The thing in your hand** (owner, 2026-11-16, after the content research: every Short stopped at
+    150–1,190 views, the biggest drop came at 5–6 s once the title had given the answer, and the topics
+    had drifted to companies' annual totals, 1 of 31 about the viewer's own money): two in three Shorts
+    start from something the viewer buys, pays or watches and go behind it to the real business (what
+    it makes on the thing you buy, why it's so cheap or so expensive, a real game, film or tour priced
+    in your money, a celebrity's money moving, what the workers at a place you visit earn), with a
+    per-unit figure the viewer can feel; at most one a day is a pure celebrity or company figure.
+    Research re-sources a breakout topic with fresh facts rather than dropping it, and skips a lane
+    other channels posted 5+ times this week with nothing above 5K (`agents/research.md`).
   - The variant system stays off (`config/arms.json` → `frozen`). Style checks are notes
     (`renderer/advice.py`). Captions end 340 px above a Short's bottom edge; one upload category; no
     country tag on global videos.

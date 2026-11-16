@@ -24,6 +24,10 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 2. **Somebody does something.** Rohan frozen mid-bite with popcorn hanging in the air, a crew member
    peeking over the slate, a boss smirking at the vault, a director cheering, Rohan pointing at the ship.
    Never a character standing next to a card. (A face is not a shot on its own: "no reaction shots".)
+   When the story starts from something the viewer buys or pays (the popcorn, the litre of petrol, the
+   membership card), the cast member doing it **is** the viewer: open on them doing that everyday act
+   (paying at the counter, filling the tank) and go behind it to the business from their side, as our
+   best Shorts did ("your $20,000", "my bill"; owner, 2026-11-16).
 3. **The figure lives on a thing in the place.** Chalked on the clapboard, counting up on the vault's
    counter, on the billboard over the city, a price tag stamped on a tower of monthly charges, painted on
    the ship's hull. Never a headline card or a slide. The captions carry the words; the picture carries

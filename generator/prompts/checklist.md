@@ -56,9 +56,12 @@ fix any beat near a limit as well.
 - Real people and companies: only well-known public facts, no invented quotes.
 
 ## Hook, voice and shape (owner, 2026-10-30)
-- **The hook states the surprising fact itself** (owner review, 2026-11-11): the famous name or the
-  figure in its first sentence ("The NBA paid Magic Johnson {pay}. He made a billion."). No "You
-  think …?", no stock tag ("Watch this.", "Here's why.") (`generator/story.py` `hook_problems`).
+- **The hook names the subject and asks; the payoff waits** (owner, 2026-11-16): the person,
+  business or the price the viewer pays in its first sentence ("Costco sells you a hot dog for {price}.
+  So how does it make any money?"), never the payoff's figure, in the hook, the promise or the title,
+  and at most one figure in the title. No "You think …?", no stock tag ("Watch this.", "Here's why.")
+  (`generator/story.py` `hook_problems`, `reveal_problems`, `title_reveal_problems`). Plain words: no
+  "revenue", "Treasury", "net worth", "margin" on the second line (`second_line_problems`).
 - **Voices**: one narrator for the channel; the cast speak when they act in the story.
 - **Shape**: the plan's shape in `script.shape`; level chips and the word "level" only in `levels`.
 - **The thing, not the character**: in a narrator beat the camera frames the item being explained;

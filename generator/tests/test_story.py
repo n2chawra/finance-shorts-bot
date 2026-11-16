@@ -181,7 +181,7 @@ def armed(hook: str) -> dict:
     return s
 
 
-def test_a_hook_that_states_the_fact_with_the_name_or_the_figure_passes():
+def test_a_hook_that_names_the_subject_or_the_figure_passes():
     """2026-11-11: the hook says the surprising fact itself; "You think X? It isn't." is no longer the pattern."""
     for hook in ("The NBA paid Magic Johnson {pay}. He made a billion.",
                  "McDonald's earns more from rent than from burgers.",
@@ -192,7 +192,7 @@ def test_a_hook_that_states_the_fact_with_the_name_or_the_figure_passes():
 def test_a_you_think_hook_fails():
     for hook in ("You think McDonald's makes its money selling burgers? It doesn't.",
                  "Do you think Delta earns its {fact2} flying you? You're wrong."):
-        assert "state the surprising fact itself" in " ".join(story.hook_problems(armed(hook))), hook
+        assert "name the subject and ask the real question" in " ".join(story.hook_problems(armed(hook))), hook
 
 
 def test_a_hook_without_the_name_or_the_figure_fails():
@@ -319,3 +319,43 @@ def test_the_line_after_the_hook_carries_on_the_hooks_own_story():
         beat("later", "build", "Forbes' top creators made {d} in all.")]}
     assert story.second_line_problems(held) == []
     assert story.second_line_problems({**wider, "format": "long"}) == []
+
+
+# ---------------- the opening asks, the payoff answers (owner, 2026-11-16, content research) ----------------
+
+def test_the_payoff_figure_is_held_back_from_the_hook_and_the_promise():
+    """Costco said its 64% payoff at 2.4 s; the Las Vegas Strip opened on the figure it ended on."""
+    told = {"format": "short", "beats": [
+        beat("hook", "hook", "Costco's whole profit last year was {profit}."),
+        beat("covered", "promise", "And a plastic card covered {share} of it."),
+        beat("sales", "build", "Your cart is a tiny piece of {sales}."),
+        beat("payoff", "payoff", "That's {share} of the profit, from a card.")]}
+    probs = story.reveal_problems(told)
+    assert len(probs) == 1 and "'covered'" in probs[0] and "{share}" in probs[0]
+    held = {"format": "short", "beats": [
+        beat("hook", "hook", "Costco sells you a hot dog for {price}. So how does it make any money?"),
+        beat("covered", "promise", "Not on the food. It barely keeps {margin} of every sale."),
+        beat("payoff", "payoff", "The card at the door pays {share} of the whole profit.")]}
+    assert story.reveal_problems(held) == []
+    assert story.reveal_problems({**told, "format": "long"}) == []
+
+
+def test_the_title_asks_and_never_states_the_payoff_or_two_figures():
+    from renderer import advice
+    s = {"format": "short", "beats": [beat("hook", "hook", "x"), beat("payoff", "payoff", "The card pays {share} of it.")]}
+    payoff = story.title_reveal_problems(s, "Costco's profit was {profit}. The card paid {share} of it")
+    assert any("payoff's figure {share}" in p for p in payoff) and any("2 figures" in p for p in payoff)
+    two = story.title_reveal_problems(s, "Netflix spent $17.1B on new shows and still kept $11B")
+    assert any("2 figures" in p for p in two)
+    asked = story.title_reveal_problems(s, "How does Costco make money on a {price} hot dog? 🌭")
+    assert asked == []
+    statement = story.title_reveal_problems(s, "One night of Taylor Swift's Eras Tour brought in {night}")
+    assert len(statement) == 1 and advice.is_note(statement[0])
+
+
+def test_a_finance_word_on_the_second_line_fails():
+    jargon = {"format": "short", "beats": [
+        beat("hook", "hook", "Apple keeps most of what you pay for apps."),
+        beat("rev", "build", "Its services revenue was {a} last year.")]}
+    probs = story.second_line_problems(jargon)
+    assert probs and "finance word" in probs[0]

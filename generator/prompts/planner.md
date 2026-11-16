@@ -37,12 +37,27 @@ rich off the court".
   business really makes money, a billionaire question, money at scale), with its figures as `facts`
   from the topic feed. A trap or a which-one-are-you may take one Short in three; personal-budget
   formats (`tier: low`) are off. `check-plan` enforces both.
-- **The title states the whole fact, with the name and the biggest figure**: "Planet Fitness
-  charges {price} and hopes you never come" · "McDonald's earns more from rent than from burgers".
-  Never a title that keeps the subject back ("The basketball star who…", "The biggest pay deal ever…").
-  The plan's `subject` is that name; the description's first two lines and one hashtag carry it too.
-- **The hook is the same fact in spoken words** (the writer's contract): no "You think …?", no
-  "Watch this.".
+- **The thing in your hand** (owner, 2026-11-16, after the content research: every Short stopped at
+  150-1,190 views, and from 9-16 Nov only 1 of 31 topics was about something the viewer touches).
+  Two in three Shorts start from something the viewer buys, pays for or watches and go behind it to
+  the real business: what it makes on the thing you buy ("How much does a petrol pump make on one
+  litre?", 1.49M views on a 1.5K-subscriber channel), why it is so cheap or so expensive ("Why is
+  Costco's hot dog still $1.50?", 624K), a real game, film or tour priced in your money ("How GTA 6
+  could cost you $11,000", 978K), a celebrity's money moving (net worth year by year, per second, who's
+  richer), what the workers at a place you visit earn. At most one Short a day is a pure celebrity or
+  company figure, and it is still asked about something the viewer can picture. Skip a lane other
+  channels posted 5+ times this week with nothing above 5K (this week: Apple's services share,
+  Costco's operating income, Elon's net worth in cash).
+- **The title names the subject and asks; the payoff waits** (owner, 2026-11-16; of 20 money Shorts at
+  160K-9.6M views, none stated its answer in the title and 13 asked a question; ours with a question
+  had a median of 637 views, name-and-figure statements 456). "How much does Costco make on a {price}
+  hot dog?" · "Why does Google pay Apple to be the search bar?" At most one figure in the title, and
+  never the payoff's: "Netflix spent $17.1B on new shows and still kept $11B" told the whole story,
+  and 33% left at 5.9 s on the line the title had already said (`number-check` fails it). Never a
+  title that hides who it is about ("The basketball star who…", "The biggest pay deal ever…"). The
+  plan's `subject` is that name; the description's first two lines and one hashtag carry it too.
+- **The hook asks the same question in spoken words** (the writer's contract): no "You think …?",
+  no "Watch this.".
 - A `note:` from a check is advice, never a reason to plan again: only a `FAIL:` is.
 
 ## Step 0 for a Short: take the variant system's options
@@ -50,7 +65,8 @@ Run `python -m improvement.arms assign --video <id>` and copy its JSON into the 
 (`check-plan` fails a plan without it or with options changed). While the variant system is off it returns the
 same options for every Short and decides nothing else:
 - `length` "28-35": the Short's length in seconds (tell the writer; the render checks it).
-- `title` "figure_or_name": a money figure or a famous name in the title (the recipe asks for both).
+- `title` "figure_or_name": a money figure or a famous name in the title (the recipe asks for the
+  name, and at most one figure, never the payoff's).
 - `style` "shot": shot/build beats, no board cards.
 - `category`: nothing to do; the publisher uploads every video in one category.
 The hook style and the topic kind are yours: rotate `hook_style` as the variety rule asks.

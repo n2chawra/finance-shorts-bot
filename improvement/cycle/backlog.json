@@ -4,14 +4,23 @@
   "cycle": 1,
   "challengers": [
     {
-      "id": "named-figure-then-guess",
+      "id": "guess-the-figure",
       "kind": "first-second",
       "area": "hook",
       "metric": "stayed",
-      "from": "research 2026-11-15",
-      "test": "the hook states the name and the figure, then hands the viewer one guess in the same breath ('Larry Ellison pledged 413 million Oracle shares. Guess what for.'), against the champion's statement-only hook",
+      "from": "owner 2026-11-16 (content research; was named-figure-then-guess, research 2026-11-15)",
+      "test": "the hook names the subject and the price the viewer pays, then asks the viewer to guess the answer ('Costco sells you a hot dog for $1.50. Guess how much of it Costco keeps.'), against the champion's plain question",
       "why": "challenge is our best hook style (3.21x the median 48 h views, n=4) while question (0.40x, n=15) and myth (0.41x) trail; this week's breakouts hand the viewer a task: 'What Would You Buy If You Had $1 Trillion...' 1.2M at 60x its channel, 'Guess The Fake Billionaire' 27K at 141x. Keeps the champion's rule that the first sentence names the subject and figure.",
       "note": "2026-11-15: owner note ('Please focus on script hook and topic… videos that go viral'): moved to the top of the first-second list as the hook test with the strongest evidence (challenge hooks 3.10x the median 48 h views, n=4; question hooks 0.38x, n=15). Runs as cycle 3, after cycle 1 (first-second) and cycle 2 (look) by the alternation rule."
+    },
+    {
+      "id": "rich-vs-poor-real-people",
+      "kind": "first-second",
+      "area": "script",
+      "metric": "stayed",
+      "from": "owner 2026-11-16 (content research)",
+      "test": "rich vs poor told through two real, named people or households and one money decision (how Warren Buffett handled his kids' money against a sourced middle-class figure), against the champion's single-business story",
+      "why": "4 of 20 money Shorts at 160K+ views this week were rich-vs-poor contrasts ('How Poor vs Rich Dads Teach Their Kids About Money', 205K on 1.9K subscribers); research rates the conflict hook at 1.9x our median, and we have made none since 1 Nov"
     },
     {
       "id": "short-15-22s",
@@ -20,7 +29,7 @@
       "metric": "stayed",
       "from": "review 2026-11-12",
       "test": "15-22 s Shorts (40-60 words, 4-5 beats) against the champion's 28-35 s",
-      "why": "the growing fact channel in our niche runs 15-20 s; our Shorts of 27 s or less had the best 48 h views (n=5) Research 2026-11-16: 3 of the 6 fastest-growing finance Shorts this week (market.json, 14 Nov) are under 20 s: 'How much MONEY the RICHEST streamers make' 18 s, 1.19M views (32x its channel); 'Rich vs Poor: The Harsh Reality of Society' 16 s, 930K (27x); 'The Illusion Of Money Explained In 20 Seconds' 19 s, 659K. Our own 20-24 s band is 4.56x the median 48 h views (n=3)."
+      "why": "the growing fact channel in our niche runs 15-20 s; our Shorts of 27 s or less had the best 48 h views (n=5) Research 2026-11-16: 3 of the 6 fastest-growing finance Shorts this week (market.json, 14 Nov) are under 20 s: 'How much MONEY the RICHEST streamers make' 18 s, 1.19M views (32x its channel); 'Rich vs Poor: The Harsh Reality of Society' 16 s, 930K (27x); 'The Illusion Of Money Explained In 20 Seconds' 19 s, 659K. Our own 20-24 s band is 4.56x the median 48 h views (n=3). Owner 2026-11-16: 7 of 20 money Shorts at 160K+ views this week ran 25 s or less (net-worth timelines 16-25 s at 1-1.3M); completion and loops, not length itself, are the lever."
     },
     {
       "id": "one-big-thing",
@@ -57,25 +66,6 @@
       "from": "review 2026-11-12",
       "test": "big one-to-three-word captions in the middle (the October style) against the sentence box",
       "why": "every 1K Short in October had them"
-    },
-    {
-      "id": "everyday-brands",
-      "kind": "first-second",
-      "area": "script",
-      "metric": "stayed",
-      "from": "review 2026-11-12",
-      "test": "topics from everyday brands people use in every country (McDonald's, Netflix, Coca-Cola, Apple, Spotify) against billionaires",
-      "why": "how_they_make_money is our best story at 6.8x the median 48 h views (n=7)",
-      "note": "2026-11-14: owner note on the Costco Short: one-country brands (Costco, Walmart) lose viewers who never used them; global brands only"
-    },
-    {
-      "id": "per-unit-hook",
-      "kind": "first-second",
-      "area": "hook",
-      "metric": "stayed",
-      "from": "research 2026-11-13",
-      "test": "the hook's first sentence gives the named business's take on ONE thing the viewer buys (per litre, per member, per tap, per $100) against the champion's whole-year total",
-      "why": "this week's breakouts are per-unit: 'How Much Profit Does a Petrol Pump Make Per Litre??' 809K on a 490-subscriber channel (1,651x), four more petrol-per-litre Shorts at 0.85-1.8M, 'How Netflix Makes Money: It Keeps $24 of Every $100'; our own best by % viewed are concrete single-amount openings ('Your $20,000 savings' 165% viewed, '$300 a month' 67.5%) while whole-year-total hooks (shock_number style) sit at 0.87x the median and 35.5% viewed (n=7) Research 2026-11-16: the petrol-pump per-litre Short is now 1.32M views on 1,320 subscribers (999x), still the week's fastest finance Short (10,181 views an hour)."
     },
     {
       "id": "no-text-chips",

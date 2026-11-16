@@ -423,8 +423,12 @@ def curiosity_problems(script: dict) -> list[str]:
 # 4.5-7 s, on the second line: a wider total ("Forbes' top creators made {top_whole} in all", MrBeast, -41
 # points at 5.3 s), the same figure rescaled ("How big does that get? Every hour, about…", Las Vegas), the
 # expected baseline ("Last year, Delta took in {x} in revenue") or a setup ("Say your cart rings up…").
+# Owner, 2026-11-16 (content research): Apple lost 27% at 5.1 s on "services" and 18% at 9.2 s on its revenue
+# line; the US-debt Short said "Treasury bills and bonds". At 5 s a stranger who hears jargon swipes.
+JARGON = re.compile(r"\b(revenue|operating (income|profit)|profit before tax|pre-?tax|treasur(y|ies)|bonds|net worth|"
+                    r"margins?|fiscal|quarterly|ebitda|cost to provide|trust funds?|shareholders?|dividends?)\b", re.I)
 # The Shorts that kept them went on with the hook's own story: "And it still kept {pro_total}." (Netflix),
-# "And she sold out every one of her {n} shows." (Eras Tour, 994 views at 48 h). Lessons 1 and 2.
+# "And she sold out every one of her {n} shows." (Eras Tour, 994 views at 48 h). Lessons 3 and 4 (lessons.md, 2026-11-16).
 SECOND_LINE_BAD = (
     (re.compile(r"\b(put together|all of them|between them)\b|"
                 r"\b(top|richest|biggest) \w+ (made|earned|took|brought|have|own)\b|\bthe (whole|entire) (industry|list|market|world)\b", re.I),
@@ -436,6 +440,9 @@ SECOND_LINE_BAD = (
      "a setup or an explanation"),
     (re.compile(r"\b(took|brought|made|earned) in (about |almost |over )?\{[a-z0-9_]+\} in (revenue|sales)\b", re.I),
      "the expected baseline (its revenue)"),
+    # owner, 2026-11-16 (content research): Apple lost 27% at 5.1 s on "services" and 18% at 9.2 s on its revenue line;
+    # the US-debt Short said "Treasury bills and bonds". At 5 s a stranger hears jargon and swipes
+    (JARGON, "a finance word (say it plainly: keeps, takes home, pays, owes, owns)"),
 )
 SECOND_LINE_SENTENCES = 2   # the sentences after the hook's first one that play at about 3-7 s
 
@@ -468,27 +475,27 @@ def second_line_problems(script: dict) -> list[str]:
 
 
 def hook_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
-    """A Short's hook states the surprising fact itself, with the famous name or the figure in it (owner
-    review, 2026-11-11). Until then the hook had to be "You think X? It isn't.": 8 of 9 Shorts opened on the
-    same sentence, and of the people YouTube showed a Short to, 55-76% swiped away within a second or two.
-    The Shorts growing in this niche open on the fact: "The NBA paid Magic Johnson $40 million. He made a
-    billion." No belief to knock down, no stock tag, an ending of its own."""
+    """A Short's hook names the person or business, or the price the viewer pays, and opens the question a
+    stranger wants answered; the answer waits for the payoff (owner, 2026-11-16: content research; see
+    `reveal_problems`). From 2026-11-11 the hook stated the surprising fact itself, which killed the "You
+    think X? It isn't." pattern but gave the payoff away: most Shorts then lost their biggest share at 5-6 s,
+    on a line that only confirmed it. No belief to knock down, no stock tag, an ending of its own."""
     from . import formats
     line = _hook_line(script)
     if not line:
         return []
     out = []
-    example = "\"The NBA paid Magic Johnson {pay}. He made a billion.\""
+    example = "\"Costco sells you a hot dog for {price}. So how does it make any money?\""
     if BELIEF.search(line):
-        out.append(f"the hook opens on \"You think …?\" (got {line!r}): state the surprising fact itself, as in {example}; "
-                   f"the viewer decides in the first second, and a question about what they think gives them nothing yet")
+        out.append(f"the hook opens on \"You think …?\" (got {line!r}): name the subject and ask the real question, as in "
+                   f"{example}; the viewer decides in the first second, and a question about what they think gives them nothing yet")
     first = re.split(r"(?<=[.!?])\s+", line)[0]
     names = [w for w in formats.NAME_IN_TITLE.findall(first) if w.lower() not in formats.COMMON_WORDS]
     opener = (first.split() or [""])[0]
     named = bool(names) or (opener[:1].isupper() and opener.lower().strip(".,!?'’s") not in formats.COMMON_STARTS)
     if not (formats.MONEY_IN_TITLE.search(first) or named):
-        out.append(f"the hook's first sentence names no famous person or company and no figure (got {first!r}): the subject "
-                   f"and the number are said first, as in {example}")
+        out.append(f"the hook's first sentence names no famous person or company and no figure (got {first!r}): the subject, "
+                   f"or the price the viewer pays, is said first, as in {example}")
     if STOCK_TAG.search(line):
         out.append(f"the hook ends on a stock tag ({STOCK_TAG.search(line).group(0).strip()!r}): end it on the fact; "
                    f"the surprise is the reason to stay")
@@ -496,6 +503,58 @@ def hook_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
     recent = [_tail(_hook_line(s)) for s in (earlier or [])[-HOOK_TAIL_SCRIPTS:] if s.get("format", "short") == "short"]
     if tail and tail in recent:
         out.append(note(f"the hook ends like one of the last {HOOK_TAIL_SCRIPTS} Shorts' hooks ({tail!r}): new words"))
+    return out
+
+
+# Owner, 2026-11-16, after the content research (plan "Why our Shorts stop at ~1K views"): the payoff waits for
+# the payoff. "Netflix spent $17.1B on new shows and still kept $11B" put lines 1 and 2 in the title, and the
+# biggest drop (33% at 5.9 s) came on line 2; Costco said its 64% payoff at 2.4 s. Of 20 money Shorts at
+# 160K-9.6M views, none stated the answer in its title; 13 asked the question.
+EARLY_ROLES = ("hook", "promise")
+QUESTION_TITLE = re.compile(r"\?\W*$|^\W*(how|why|what|which|who|where|when|is|are|does|do|did|can|could|would|should|will)\b", re.I)
+TITLE_FIGURE = re.compile(r"\{[a-z][a-z0-9_]*\}|[$£€₹]\s?\d[\d,.]*\s?[kmbt]?\b|\b\d[\d,.]*\s?(%|percent|billion|million|trillion|crore|lakh)", re.I)
+
+
+def _payoff_figures(script: dict) -> set[str]:
+    pay = next((b for b in script.get("beats") or [] if b.get("role") == "payoff"), None)
+    return set(PLACEHOLDER.findall((pay or {}).get("say") or ""))
+
+
+def reveal_problems(script: dict) -> list[str]:
+    """The figure the payoff lands on is not said in the hook or the promise: the opening asks, the payoff answers."""
+    if script.get("format", "short") != "short":
+        return []
+    pay = _payoff_figures(script)
+    out = []
+    for b in script.get("beats") or []:
+        if b.get("role") not in EARLY_ROLES:
+            continue
+        early = pay & set(PLACEHOLDER.findall(b.get("say") or ""))
+        if early:
+            out.append(f"beat {b.get('id')!r} ({b.get('role')}) already says the payoff's figure "
+                       f"{', '.join('{' + f + '}' for f in sorted(early))}: hold it back for the payoff. The opening names the "
+                       f"subject and asks the question; once the answer is out, viewers leave at 5-6 s")
+    return out
+
+
+def title_reveal_problems(script: dict, title: str | None) -> list[str]:
+    """A Short's title names the subject and asks; it never states the payoff's figure, and at most one figure."""
+    t = (title or "").strip()
+    if not t or script.get("format", "short") != "short":
+        return []
+    out = []
+    shown = set(PLACEHOLDER.findall(t)) & _payoff_figures(script)
+    if shown:
+        out.append(f"the title {t!r} states the payoff's figure {', '.join('{' + f + '}' for f in sorted(shown))}: the "
+                   f"title asks the question and the payoff answers it (\"How does Costco make money on a {{price}} hot dog?\")")
+    figures = TITLE_FIGURE.findall(t)
+    if len(figures) > 1:
+        out.append(f"the title {t!r} states {len(figures)} figures and so tells the whole story: keep one, the price or "
+                   f"amount the viewer can picture, and ask about it")
+    if not QUESTION_TITLE.search(t):
+        out.append(note(f"the title {t!r} is a statement: 13 of 20 money Shorts at 160K+ views asked a question "
+                        f"(\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, "
+                        f"name-and-figure statements 456"))
     return out
 
 
@@ -525,7 +584,7 @@ def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str
     if script.get("shape") is not None and script.get("format", "short") == "short":
         out += voice_problems(script)
     if script.get("arms") and script.get("format", "short") == "short":
-        out += hook_problems(script, earlier)
+        out += hook_problems(script, earlier) + reveal_problems(script)
         out += invented_problems(script) + reaction_problems(script) + payoff_problems(script)
         out += curiosity_problems(script)
         out += second_line_problems(script)
