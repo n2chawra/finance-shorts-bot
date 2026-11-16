@@ -389,7 +389,7 @@ test("calendar heading names the long-video days too", async ({ page }) => {
   await page.goto("/calendar");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
   // the line under the heading spoke only of the daily Shorts, though the grid shows long videos at 20:07
-  await expect(page.getByText(/long videos Wed/Fri at 20:07 IST/)).toBeVisible();
+  await expect(page.getByText(/long videos Wed\/Fri at 20:07 IST/)).toBeVisible();
 });
 
 test("calendar draws long-video thumbnails landscape", async ({ page }) => {

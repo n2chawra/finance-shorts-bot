@@ -1,4 +1,4 @@
-import { BarChart3, Bell, Bot, CalendarDays, Film, GraduationCap, LayoutDashboard, ListOrdered, type LucideIcon, MessageSquarePlus, Repeat, Settings } from "lucide-react";
+import { BarChart3, Gauge, Bell, Bot, CalendarDays, Film, GraduationCap, LayoutDashboard, ListOrdered, type LucideIcon, MessageSquarePlus, Repeat, Settings } from "lucide-react";
 
 export type NavItem = { href: string; label: string; icon: LucideIcon; key: string };
 
@@ -16,6 +16,7 @@ export const NAV: { group: string; items: NavItem[] }[] = [
   {
     group: "Insights",
     items: [
+      { href: "/scorecard", label: "Scorecard", icon: Gauge, key: "w" },
       { href: "/analytics", label: "Analytics", icon: BarChart3, key: "a" },
       { href: "/study", label: "Study", icon: GraduationCap, key: "y" },
     ],

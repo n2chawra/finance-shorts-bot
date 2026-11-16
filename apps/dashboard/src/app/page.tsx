@@ -7,9 +7,10 @@ import { useEffect, useState } from "react";
 
 import { CategoryBar, Sparkline, Tracker, type TrackerTone } from "@/components/charts";
 import { type Accent, Badge, Button, Card, Delta, Empty, ErrorNote, IconTile, Loading, Meter, Num, PageHeader, Stagger, Stat, Thumb, type Tone, VideoLink } from "@/components/ui";
+import { ScorecardStrip } from "@/components/scorecard";
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
-import { useAgents, useAnalytics, useGrowth, useNotifications, useOverview, usePatchSettings, useRuns, useSettings } from "@/lib/queries";
+import { useAgents, useAnalytics, useGrowth, useNotifications, useOverview, usePatchSettings, useRuns, useScorecard, useSettings } from "@/lib/queries";
 import { KIND_LABEL, KIND_METRIC, shownConfidence } from "@/lib/growth";
 import { lastNight } from "@/lib/last-night";
 import { AGENTS, perThousand, type Run } from "@/lib/schemas";
@@ -115,6 +116,7 @@ export default function OverviewPage() {
   const DAILY_TARGET = settings.data?.dailyVideoTarget ?? DEFAULT_TARGET;
   const notifications = useNotifications();
   const agents = useAgents();
+  const scorecard = useScorecard();
   const patch = usePatchSettings();
   const toast = useToast();
   if (isLoading) return <Loading />;
@@ -180,6 +182,9 @@ export default function OverviewPage() {
           sub={today.failed ? `${today.failed} failed attempt${today.failed === 1 ? "" : "s"}` : "Shorts · daily target"}
           chart={<Meter value={today.shipped} max={DAILY_TARGET} label="Shorts made today" tone={today.shipped >= DAILY_TARGET ? "good" : "warning"} />} />
       </div>
+
+      {/* is it working? the four numbers that decide whether a Short reaches more people (owner, 2026-11-16) */}
+      {scorecard.data && <ScorecardStrip data={scorecard.data} />}
 
       {/* the next upload, and the generation switch */}
       <div className="mt-5 grid gap-5 lg:grid-cols-12">

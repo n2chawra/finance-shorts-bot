@@ -1,6 +1,7 @@
 "use client";
 
 import { GrowthSchema } from "./growth";
+import { ScorecardSchema } from "./scorecard";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
@@ -54,6 +55,7 @@ export const usePatchTemplate = () => useWrite((patch: { id: string; enabled?: b
 export const usePatchSettings = () => useWrite((patch: Partial<Settings>) => send("PATCH", "/api/settings", patch));
 
 export const useNotifications = () => useQuery({ queryKey: ["notifications"], queryFn: () => getJson("/api/notifications", NotificationsSchema) });
+export const useScorecard = () => useQuery({ queryKey: ["scorecard"], queryFn: () => getJson("/api/scorecard", ScorecardSchema) });
 export const useGrowth = () => useQuery({ queryKey: ["growth"], queryFn: () => getJson("/api/growth", GrowthSchema) });
 export const useAgents = () => useQuery({ queryKey: ["agents"], queryFn: () => getJson("/api/agents", AgentsSchema) });
 export const useNotificationAction = () => useWrite((body: { ids: string[]; action: NotificationAction }) => send("PATCH", "/api/notifications", body));
