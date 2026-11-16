@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T13:39:24.256735+00:00",
+  "generatedAt": "2026-11-16T13:45:19.367067+00:00",
   "cycle": 1,
   "running": "real-subject-first-frame",
   "thresholds": {
@@ -11,13 +11,31 @@
   "cycleVideos": {
     "real-subject-first-frame": [
       {
+        "id": "v-20261116-04",
+        "title": "Amazon's whole North American store made $29.6B. Its rented computers made $45.6B 🖥️",
+        "side": "on",
+        "publishAt": "2026-11-16T13:37:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 3
+      },
+      {
+        "id": "v-20261116-02",
+        "title": "Larry Ellison's salary was $1 until 2025. He pledged 413M Oracle shares",
+        "side": "on",
+        "publishAt": "2026-11-16T07:07:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 28
+      },
+      {
         "id": "v-20261116-01",
         "title": "Grand Theft Auto V has sold 230M copies since 2013 🎮",
         "side": "off",
         "publishAt": "2026-11-16T01:37:00.000Z",
         "counted": false,
         "value": null,
-        "views": 155
+        "views": 177
       },
       {
         "id": "v-20261114-03",
@@ -26,7 +44,7 @@
         "publishAt": "2026-11-14T13:37:00.000Z",
         "counted": false,
         "value": null,
-        "views": 199
+        "views": 215
       },
       {
         "id": "v-20261114-02",
@@ -35,7 +53,7 @@
         "publishAt": "2026-11-14T07:07:00.000Z",
         "counted": false,
         "value": 0.5,
-        "views": 846
+        "views": 896
       },
       {
         "id": "v-20261114-01",
@@ -88,23 +106,41 @@
     "maxDays": 7,
     "extended": false,
     "published": {
-      "on": 5,
+      "on": 7,
       "off": 2
     },
     "counted": {
-      "on": 3,
-      "off": 0
+      "on": 4,
+      "off": 1
     },
     "value": {
-      "on": 0.324,
-      "off": null
+      "on": 0.328,
+      "off": 0.5
     },
-    "points": null,
-    "pOnBetter": 0.5,
+    "points": -17.2,
+    "pOnBetter": 0.001,
     "days": 3,
     "verdict": "wait",
-    "why": "0 of 8 Shorts a side have two days of data; day 3 of 7",
+    "why": "1 of 8 Shorts a side have two days of data; day 3 of 7",
     "videos": [
+      {
+        "id": "v-20261116-04",
+        "title": "Amazon's whole North American store made $29.6B. Its rented computers made $45.6B 🖥️",
+        "side": "on",
+        "publishAt": "2026-11-16T13:37:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 3
+      },
+      {
+        "id": "v-20261116-02",
+        "title": "Larry Ellison's salary was $1 until 2025. He pledged 413M Oracle shares",
+        "side": "on",
+        "publishAt": "2026-11-16T07:07:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 28
+      },
       {
         "id": "v-20261116-01",
         "title": "Grand Theft Auto V has sold 230M copies since 2013 🎮",
@@ -112,7 +148,7 @@
         "publishAt": "2026-11-16T01:37:00.000Z",
         "counted": false,
         "value": null,
-        "views": 155
+        "views": 177
       },
       {
         "id": "v-20261114-03",
@@ -121,7 +157,7 @@
         "publishAt": "2026-11-14T13:37:00.000Z",
         "counted": false,
         "value": null,
-        "views": 199
+        "views": 215
       },
       {
         "id": "v-20261114-02",
@@ -130,7 +166,7 @@
         "publishAt": "2026-11-14T07:07:00.000Z",
         "counted": false,
         "value": 0.5,
-        "views": 846
+        "views": 896
       },
       {
         "id": "v-20261114-01",
