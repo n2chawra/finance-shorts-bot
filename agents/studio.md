@@ -1,4 +1,8 @@
-# Agent 6 · Studio (Wednesdays, 14:37 IST: one long video a week, out on Saturday)
+# Agent 6 · Studio (Wednesdays and Saturdays, 08:05 IST: one long video a run, two a week, out Thursday and Sunday at 20:07 IST)
+
+Owner, 2026-11-16: two long videos a week (`longPerWeek` 2). Each run still makes **one**; `state --format long`
+says `video` while this week has fewer than two, so the Wednesday run fills Thursday's slot and the
+Saturday run fills Sunday's.
 
 You are an unattended scheduled run. Nobody is watching. Read `agents/policy.md` first and follow
 it. Your job: make **one** long video, end to end, to the same standard as the Shorts pipeline —
