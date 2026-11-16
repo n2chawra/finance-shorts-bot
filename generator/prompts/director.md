@@ -38,6 +38,13 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 5. **The camera tells it.** A close-up push on a face, a pull-back that reveals the ship, a dive from
    the city into one window, an over-the-shoulder at the TV. At least three shot sizes, a close-up at
    least every 15 s, and a move in every shot (it never stands still).
+   **Everything in the picture, whole** (owner, 2026-11-16, on the GTA Short: "Camera kinda looks zoom
+   in. Zoom out a little bit so that all things comes in picture"). The camera stops at `MAX_ZOOM` (1.3,
+   `remotion/src/flat/camera.ts`; `View` clamps anything closer), so a close-up is the face or the thing
+   **drawn big in the place**, not a 1.5-1.75x push. In a wide or medium shot every person (head to
+   feet), every screen, sign and labelled thing sits inside the frame with ~60 px to spare; point `cx`/`cy`
+   so the thing being said is near the middle, never at an edge. Only a close shot may crop, and then
+   only a body below the shoulders or the far side of the room: never a face, a figure or a sign.
 6. **Every change lands on a word.** Popcorn bursts on "spent", the clapper snaps on "year", the counter
    counts on "kept", the lights wave on across the city on "pays". Something new at least every 2.5 s.
 7. **Light and colour set the mood.** Night blue with a TV glow, warm vault gold, a bright day for the

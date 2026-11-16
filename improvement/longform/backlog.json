@@ -1185,7 +1185,8 @@
       "route": "adopt",
       "priority": "high",
       "found": "2026-11-16",
-      "status": "open"
+      "status": "done",
+      "outcome": "generator/topics.py winning_short: recent Shorts (30 days, 100+ views) ranked by stayed then views, top third; state --format long now shows Costco, debt, gym, McDonald's and casino as usable (improver 2026-11-16)."
     },
     {
       "id": "2026-11-16-too-close-own-short",
@@ -1196,7 +1197,8 @@
       "route": "adopt",
       "priority": "high",
       "found": "2026-11-16",
-      "status": "open"
+      "status": "done",
+      "outcome": "too_close skips the topic's own from_short, still compares every other video (improver 2026-11-16)."
     },
     {
       "id": "2026-11-16-impressions-ctr-null",
@@ -1207,7 +1209,9 @@
       "route": "adopt",
       "priority": "high",
       "found": "2026-11-16",
-      "status": "open"
+      "status": "open",
+      "to": "auditor",
+      "outcome": "Data lane (workers/, stats-deep): left open for the auditor, the improver can't change workers (improver 2026-11-16)."
     },
     {
       "id": "2026-11-16-thumb-refs-off-topic",
@@ -1218,7 +1222,8 @@
       "route": "adopt",
       "priority": "normal",
       "found": "2026-11-16",
-      "status": "open"
+      "status": "done",
+      "outcome": "topic_refs drops a hit sharing no subject word with the topic title or search (the demand video is always kept). No fallback to thumbnails.json: the owner's 2026-11-11 rule (and its test) says never other topics' examples (improver 2026-11-16)."
     },
     {
       "id": "2026-11-16-thumb-text-four-to-six",

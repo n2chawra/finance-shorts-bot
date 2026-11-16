@@ -25,6 +25,7 @@ import type { SceneProps } from "../scenes/kit";
 import { FONT } from "../design/fonts";
 import { minText } from "../design/fit";
 import { showsSource } from "../studio/source";
+import { maxZoomFor } from "./camera";
 
 export const INK = "#1d1a2b";
 export const STROKE = 6;
@@ -86,16 +87,19 @@ export function countText(final: string, k: number): string {
 
 // ------------------------------------------------------------------ the frame and the camera
 
-const FrameCtx = createContext({ w: 1080, h: 1920 });
+const FrameCtx = createContext({ w: 1080, h: 1920, maxZoom: Infinity });
 export const useFrameSize = () => useContext(FrameCtx);
+
+export { MAX_ZOOM, MAX_ZOOM_SINCE, maxZoomFor } from "./camera";
 
 /** The drawing surface for one directed shot: an SVG the size of the frame, a lens vignette over it. */
 export const Stage: React.FC<{ p: SceneProps; bg: string; defs?: React.ReactNode; vignette?: number; children: React.ReactNode }> = ({
   p, bg, defs, vignette = 0.32, children,
 }) => {
   const w = p.tl.width, h = p.tl.height;
+  const maxZoom = maxZoomFor(p.tl.id);
   return (
-    <FrameCtx.Provider value={{ w, h }}>
+    <FrameCtx.Provider value={{ w, h, maxZoom }}>
       <AbsoluteFill style={{ background: bg, overflow: "hidden" }}>
         <svg viewBox={`0 0 ${w} ${h}`} width={w} height={h} style={{ position: "absolute", inset: 0 }}>
           {defs ? <defs>{defs}</defs> : null}
@@ -108,10 +112,18 @@ export const Stage: React.FC<{ p: SceneProps; bg: string; defs?: React.ReactNode
 };
 
 /** The camera: look at (cx, cy) in frame pixels with a zoom (1 = the whole frame) and a roll in degrees.
- * Push in on the thing being said, pull out for a reveal, dive into a window between shots. */
+ * Push in on the thing being said, pull out for a reveal, dive into a window between shots. From
+ * MAX_ZOOM_SINCE the zoom stops at MAX_ZOOM (a nested View counts its parent's zoom too). */
+const ZoomCtx = createContext(1);
 export const View: React.FC<{ zoom?: number; cx?: number; cy?: number; rot?: number; children: React.ReactNode }> = ({ zoom = 1, cx, cy, rot = 0, children }) => {
-  const { w, h } = useFrameSize();
-  return <g transform={`translate(${w / 2} ${h / 2}) rotate(${rot}) scale(${zoom}) translate(${-(cx ?? w / 2)} ${-(cy ?? h / 2)})`}>{children}</g>;
+  const { w, h, maxZoom } = useFrameSize();
+  const outer = useContext(ZoomCtx);
+  const z = Math.min(zoom, maxZoom / outer);
+  return (
+    <ZoomCtx.Provider value={outer * z}>
+      <g transform={`translate(${w / 2} ${h / 2}) rotate(${rot}) scale(${z}) translate(${-(cx ?? w / 2)} ${-(cy ?? h / 2)})`}>{children}</g>
+    </ZoomCtx.Provider>
+  );
 };
 
 /** Parallax: a layer that moves `depth` times as much as the camera's pan (0 = sky, 1 = the action). */

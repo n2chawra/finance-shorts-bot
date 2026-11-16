@@ -20,6 +20,7 @@ it in the plan instead: `plan.topic.trend = {"id": "trend-<today>-<slug>", "why_
 of the upload queue.
 """
 from datetime import date, timedelta
+import math
 import json
 import re
 from pathlib import Path
@@ -220,6 +221,8 @@ def too_close(topic: dict, everything: list[dict], today: str) -> str | None:
     from .variety import DUPLICATE_DAYS, DUPLICATE_SIMILARITY, similarity
     cutoff = (date.fromisoformat(today) - timedelta(days=DUPLICATE_DAYS)).isoformat()
     for e in everything:
+        if topic.get("from_short") and e.get("id") == topic["from_short"]:
+            continue     # a long topic expands its own Short: that one is never its duplicate (Scout, 2026-11-16)
         title = (e.get("topic") or {}).get("title") or ""
         if e.get("created_at", "") >= cutoff and title and similarity(topic.get("title", ""), title) > DUPLICATE_SIMILARITY:
             return e["id"]
@@ -231,7 +234,10 @@ def too_close(topic: dict, everything: list[dict], today: str) -> str | None:
 # such a fact and marks it `latest: true` with the day it checked (`checked`); that holds for 30 days.
 FACT_FRESH_DAYS = 365
 FACT_RECHECK_DAYS = 30
-WIN_VIEWS = 1000     # a long-video topic expands one of our Shorts with this many views (owner, 2026-11-04)
+# a long-video topic expands one of our Shorts of the last WIN_DAYS days with WIN_MIN_VIEWS+ views, in the top
+# third by stayed to watch (owner, 2026-11-12; it replaced the 2026-11-04 rule of 1,000 views)
+WIN_DAYS = 30
+WIN_MIN_VIEWS = 100
 
 
 def _day(s: object) -> date | None:
@@ -257,11 +263,14 @@ def stale_facts(topic: dict, today: str) -> list[str]:
     return out
 
 
-def winning_short(topic: dict, root: Path = ROOT) -> str | None:
-    """Why a long-video topic can't be used: it must name `from_short`, one of our Shorts with 1,000+ views."""
+def winning_short(topic: dict, root: Path = ROOT, today: str | None = None) -> str | None:
+    """Why a long-video topic can't be used: it must name `from_short`, one of our recent Shorts that held
+    viewers best (owner, 2026-11-12, replacing the 1,000-view rule that left no topics): from our Shorts
+    published in the last WIN_DAYS days with WIN_MIN_VIEWS+ views, ranked by stayed to watch then views,
+    one in the top third (agents/scout.md 1a)."""
     sid = topic.get("from_short")
     if not sid:
-        return "names no `from_short` (a long video expands one of our Shorts with 1,000+ views)"
+        return "names no `from_short` (a long video expands one of our recent Shorts in the top third by stayed to watch)"
     try:
         videos = json.loads((root / "metrics" / "videos.json").read_text(encoding="utf-8")).get("videos", [])
     except (OSError, ValueError):
@@ -269,8 +278,23 @@ def winning_short(topic: dict, root: Path = ROOT) -> str | None:
     v = next((x for x in videos if x.get("id") == sid), None)
     if v is None:
         return f"from_short {sid!r} is not a published video"
-    if (v.get("views") or 0) < WIN_VIEWS:
-        return f"from_short {sid} has {v.get('views') or 0} views, under {WIN_VIEWS:,}"
+    now = date.fromisoformat(today) if today else date.today()
+
+    def recent(x: dict) -> bool:
+        day = _day(x.get("publishAt"))
+        return day is None or (now - day).days <= WIN_DAYS
+
+    if (v.get("views") or 0) < WIN_MIN_VIEWS:
+        return f"from_short {sid} has {v.get('views') or 0} views, under {WIN_MIN_VIEWS:,}"
+    if not recent(v):
+        return f"from_short {sid} was published over {WIN_DAYS} days ago"
+    pool = [x for x in videos if x.get("format", "short") == "short" and (x.get("views") or 0) >= WIN_MIN_VIEWS and recent(x)]
+    pool.sort(key=lambda x: (x.get("stayed") or 0, x.get("views") or 0), reverse=True)
+    top = [x.get("id") for x in pool[:max(1, math.ceil(len(pool) / 3))]]
+    if sid not in top:
+        rank = next((i for i, x in enumerate(pool, 1) if x.get("id") == sid), len(pool))
+        return (f"from_short {sid} is #{rank} of {len(pool)} recent Shorts by stayed to watch, "
+                f"not in the top third (the top {len(top)})")
     return None
 
 
@@ -279,7 +303,7 @@ def blocked_reason(topic: dict, today: str, fmt: str, root: Path = ROOT) -> str 
     if (old := stale_facts(topic, today)):
         return "facts may be out of date (research must confirm the latest release): " + "; ".join(old[:3])
     if fmt == "long":
-        return winning_short(topic, root)
+        return winning_short(topic, root, today)
     return None
 
 

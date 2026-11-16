@@ -1,0 +1,54 @@
+{
+  "agent": "improver",
+  "day": "2026-11-16",
+  "startedAt": "2026-11-16T17:04:23Z",
+  "finishedAt": "2026-11-16T17:11:29Z",
+  "summary": "Fixed the owner's camera note on the GTA Short (new videos' camera stops at 1.3x so everything stays in the picture), and fixed three of Scout's long-video bugs so five good long topics are usable again. The weekly Shorts test is still collecting data.",
+  "decision": "acted",
+  "why": "An owner note comes first; Scout's two high-priority bugs left Studio only two October topics. No experiment has matured: cycle 1 has 1 of 8 Shorts a side with 48 h data.",
+  "findings": [
+    {
+      "title": "Weekly loop cycle 1 (real-subject-first-frame) waiting",
+      "detail": "1 of 8 Shorts a side with two days of data, day 3 of 7 (on 4, off 1). Verdict due by 2026-11-20."
+    },
+    {
+      "title": "Long tests waiting",
+      "detail": "quiet-bed 1 of 4 long videos a side, chart-gap-fill 2 of 4."
+    },
+    {
+      "title": "Shorts by week (impact)",
+      "detail": "Week of 9 Nov: n 11, median 84 views at 48 h, 70.2% viewed, 0.323 stayed to watch, 19.5 s average view (week of 2 Nov: 43 views, 50.6%, 0.381)."
+    },
+    {
+      "title": "Top failure: things cut at the edge",
+      "detail": "QA flagged edge cuts on 30 videos in 14 days (97 times); the new camera ceiling targets it."
+    },
+    {
+      "title": "Impressions and CTR missing",
+      "detail": "metrics/analytics.json has no impressions or CTR for any of 64 videos; a data job for the auditor."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Camera ceiling 1.3x on the flat kit (owner note)",
+      "detail": "remotion/src/flat/camera.ts + View clamp for videos from 2026-11-17; director.md, checklist.md; stills of v-20261116-01 show the TV, NONE board and queue whole.",
+      "branch": "agent/improver/2026-11-16"
+    },
+    {
+      "title": "Long topics: top third by stayed to watch",
+      "detail": "generator/topics.py winning_short follows the owner's 12 Nov rule (Scout 2026-11-16-winning-short-rule-stale).",
+      "branch": "agent/improver/2026-11-16"
+    },
+    {
+      "title": "Long topic not a duplicate of its own Short",
+      "detail": "too_close skips from_short (Scout 2026-11-16-too-close-own-short).",
+      "branch": "agent/improver/2026-11-16"
+    },
+    {
+      "title": "Thumbnail references stay on topic",
+      "detail": "renderer/thumbs.py topic_refs drops hits naming nothing of the topic (Scout 2026-11-16-thumb-refs-off-topic).",
+      "branch": "agent/improver/2026-11-16"
+    }
+  ],
+  "nextCheck": "2026-11-17"
+}

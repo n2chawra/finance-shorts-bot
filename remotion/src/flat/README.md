@@ -13,7 +13,7 @@ reference is `remotion/src/videos/v-directed-netflix/` with `videos/v-directed-n
 |---|---|
 | `motion(p)` | timing on the story clock: `t`, `end`, `at(word, fallback)`, `lerp`, `pop`, `pulse`, `wave`, `after` |
 | `Stage` | the frame: an SVG the size of the video (`p.tl.width × p.tl.height`), a background, a lens vignette, `defs` for gradients |
-| `View` | the camera: `zoom`, `cx`, `cy` (the point looked at), `rot` |
+| `View` | the camera: `zoom`, `cx`, `cy` (the point looked at), `rot`; zoom stops at `MAX_ZOOM` 1.3 for videos from 2026-11-17 (`camera.ts`; owner: keep all things in the picture) |
 | `Layer` | parallax: moves `depth` times the camera's pan |
 | `Flash` | a flash across the frame inside an SVG (a cut on a word) |
 | `Glow` | a soft screen-blended light: lamps, screens, windows, spotlights |

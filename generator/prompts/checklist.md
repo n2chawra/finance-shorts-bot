@@ -125,6 +125,10 @@ fix any beat near a limit as well.
 - **Edge cuts from the follow camera** (26 Shorts in two weeks, 2026-11-11): a pushed-in shot now keeps
   170 px around a thing that carries a tag or label; still, put the beat's things between x 0.2 and 0.8
   (a cheque at x 0.85 is cut whatever the camera does).
+- **Directed shots: the camera stops at 1.3x** (owner, 2026-11-16, GTA Short: "zoom out a little bit so
+  that all things comes in picture"; QA's edge cuts on 30 videos in 14 days). `View` clamps any zoom
+  above `MAX_ZOOM`; draw a close-up big instead of pushing past it, and frame people, screens and signs
+  whole with ~60 px to spare (only a close shot may crop, never a face, a figure or a sign).
 - **Real faces and logos** (owner, 2026-11-11): a famous person is a bobblehead actor
   (`"who": "photo:<name>"`, never speaking) or a die-cut sticker thing (`"prop": "photo:<name>"`); a
   company its cut-out logo. `python -m generator.images search/fetch`, free licences only. Lint fails a

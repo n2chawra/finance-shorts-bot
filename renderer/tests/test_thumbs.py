@@ -89,6 +89,18 @@ def test_topic_refs_never_fall_back_to_other_topics(tmp_path):
     assert thumbs.reference_problems({"references": [{"id": "apFPtyZHuns"}]}, refs) == []
 
 
+def test_topic_refs_drop_other_subjects_hits(tmp_path):
+    """Scout, 2026-11-16: half the open long topics were modelled on other subjects' hits."""
+    d = tmp_path / "videos" / "L-z"
+    d.mkdir(parents=True)
+    (d / "plan.json").write_text(json.dumps({"topic": {"feed_id": "t2", "title": "What do rich people do with their savings?"}}), encoding="utf-8")
+    store = {"topics": {"t2": {"refs": [{"id": "abcdefghijk", "views": 45_000_000, "title": "Five Kids Rich Vs Broke Vs Giga Rich"},
+                                        {"id": "bcdefghijkl", "views": 900_000, "title": "Where the rich keep their savings"}]}}}
+    assert [r["id"] for r in thumbs.topic_refs("L-z", tmp_path, store, live=False)] == ["bcdefghijkl"]
+    assert "mcdonald" in thumbs.subject_words("How does McDonald's really make money?")
+    assert thumbs.subject_words("How do they make money?") == set()
+
+
 def test_parse_search_reads_a_results_page():
     data = {"contents": {"x": [{"videoRenderer": {"videoId": "tbVb63qPDQ8", "title": {"runs": [{"text": "True Scale of A BILLION"}]},
             "ownerText": {"runs": [{"text": "Corridor Crew"}]}, "viewCountText": {"simpleText": "7,047,895 views"},

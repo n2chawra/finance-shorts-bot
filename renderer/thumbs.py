@@ -294,7 +294,26 @@ def topic_refs(vid: str, root: Path = ROOT, store: dict | None = None, live: boo
         refs.append({"id": m.group(1), "title": demand.get("title", ""), "views": int(demand.get("views") or 0), "channel": "", "demand": True})
     if live and (q := topic_query(vid, root)):
         refs += [r for r in search_refs(q) if all(x.get("id") != r["id"] for x in refs)]
+    # a search hit that names nothing of the topic is another subject's hit (Scout, 2026-11-16: the savings
+    # topic got "Five Kids Rich Vs Broke", the $1 billion one MrBeast's "$1 vs $100,000,000 House!")
+    subject = subject_words(" ".join([str(topic.get("title") or ""), topic_query(vid, root)]))
+    if subject:
+        refs = [r for r in refs if r.get("demand") or subject & subject_words(str(r.get("title") or ""))]
     return sorted(refs, key=lambda r: -int(r.get("views") or 0))
+
+
+# words any money video's title uses: sharing only these says nothing about the subject
+GENERIC = set("""how what why who does did do really actually make makes made making money rich poor richest people
+person look looks like much many they their them your you with from this that the and for are is was were can will
+would cost costs pay pays paid earn earns year years secret secrets truth explained inside real every most more never
+always all get gets got into about its it's than then vs versus top best worst things thing world know need want
+there here one two three ten one's new old way ways day days most just still very""".split())
+
+
+def subject_words(text: str) -> set[str]:
+    """The words of a title that name its subject (a brand, a person, a thing), lower case, plural 's' off."""
+    words = re.findall(r"[a-z0-9]+", text.lower().replace("'", "").replace("\u2019", ""))
+    return {w[:-1] if len(w) > 4 and w.endswith("s") else w for w in words if len(w) >= 3 and w not in GENERIC and not w.isdigit()}
 
 
 def reference_problems(th: dict, refs: list[dict]) -> list[str]:
