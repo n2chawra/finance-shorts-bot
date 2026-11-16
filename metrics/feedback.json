@@ -1,14 +1,24 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 1,
+  "open": 0,
   "notes": [
+    {
+      "id": "cmwja6eul0001l309u0m9kmm5",
+      "kind": "general",
+      "area": null,
+      "text": "Keep including topics like curiosity ones that we had earlier like money split among evryone , what billion looks like , etc so that we maintain and keep exploring best video type to get maximum views",
+      "status": "addressed",
+      "response": "auditor handed → research: Which topics we keep making (money split among everyone, what a billion looks like) is the topic feed, research's lane. · research fixed: Added two curiosity topics of the kind you named: every billionaire's $20.1T shared out to all 8.2 billion people (about $2,450 each, like our 794-view split Short) and Musk's $839B as $100 bills (8,390 tonnes, 'what a billion looks like'). I'll keep at least one such topic in the feed each week.",
+      "at": "2026-11-16T13:09:57.550Z",
+      "video": null
+    },
     {
       "id": "cmwis8xcv0001jj09to8cmgr2",
       "kind": "improve",
       "area": null,
       "text": "Camera kinda looks zoom in. Zoom out a little bit so that all things comes in picture.",
-      "status": "open",
-      "response": "auditor handed → improver: How tight the camera frames a directed shot is the look of the videos, the improver's lane (director prompt and flat kit). · waiting for improver",
+      "status": "addressed",
+      "response": "auditor handed → improver: How tight the camera frames a directed shot is the look of the videos, the improver's lane (director prompt and flat kit). · improver fixed: The camera of every new Short and long video now stops at 1.3x (the GTA Short pushed to 1.5-1.75x and cut the TV, the rider, the queue and the signs); the director draws a close-up big instead of zooming past it and frames people, screens and signs whole. Checked on this video's own stills: the TV, the NONE board and the queue now sit inside the frame. Starts with tomorrow's Shorts. (e8875eb)",
       "at": "2026-11-16T04:48:01.759Z",
       "video": {
         "id": "v-20261116-01",
@@ -20,16 +30,6 @@
         "hookStyle": "question",
         "hook": "Grand Theft Auto Five has sold over {fact2} copies."
       }
-    },
-    {
-      "id": "cmwja6eul0001l309u0m9kmm5",
-      "kind": "general",
-      "area": null,
-      "text": "Keep including topics like curiosity ones that we had earlier like money split among evryone , what billion looks like , etc so that we maintain and keep exploring best video type to get maximum views",
-      "status": "addressed",
-      "response": "auditor handed → research: Which topics we keep making (money split among everyone, what a billion looks like) is the topic feed, research's lane. · research fixed: Added two curiosity topics of the kind you named: every billionaire's $20.1T shared out to all 8.2 billion people (about $2,450 each, like our 794-view split Short) and Musk's $839B as $100 bills (8,390 tonnes, 'what a billion looks like'). I'll keep at least one such topic in the feed each week.",
-      "at": "2026-11-16T13:09:57.550Z",
-      "video": null
     },
     {
       "id": "cmwi184wx0001ld09foo0fhz0",
