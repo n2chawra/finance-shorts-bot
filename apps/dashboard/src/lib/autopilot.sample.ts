@@ -176,7 +176,13 @@ export function getAgents(): Agents {
 export function getGrowth(): Growth {
   const now = Date.now();
   const started = istDay(now - 4 * DAY_MS);
-  const published = listVideos({ status: "published" }).sort((a, b) => (b.totals?.views ?? 0) - (a.totals?.views ?? 0)).slice(0, 3);
+  const all = listVideos({ status: "published" });
+  const published = [...all].sort((a, b) => (b.totals?.views ?? 0) - (a.totals?.views ?? 0)).slice(0, 3);
+  // the Shorts on each side: alternate the newest Shorts, the oldest two not counted yet
+  const sides = (from: number, k: number) => all.filter((v) => v.format === "short").slice(from, from + k).map((v, i) => ({
+    id: v.id, title: v.title, side: (i % 2 ? "off" : "on") as "on" | "off", publishAt: v.upload?.publishAt ?? null, counted: i >= 2,
+    value: i >= 2 ? 0.38 + ((i * 7) % 13) / 100 : null, views: v.totals?.views ?? null, thumbnailUrl: v.thumbnailUrl }));
+  const running = sides(0, 12);
   return {
     source: "sample",
     running: "real-subject-first-frame",
@@ -184,11 +190,12 @@ export function getGrowth(): Growth {
     status: {
       generatedAt: new Date(now - 2 * 3_600_000).toISOString(), cycle: 4, running: "real-subject-first-frame",
       thresholds: { keepPoints: 5, revertPoints: -5, confidence: 0.8 }, channelStayed14d: 0.431,
+      cycleVideos: { "real-subject-first-frame": running, "three-openings": sides(12, 8).map((v) => ({ ...v, counted: true, value: v.value ?? 0.43 })) },
       experiment: {
         id: "real-subject-first-frame", kind: "first-second", area: "hook", startedAt: started, metric: "stayed", minPerArm: 8, maxDays: 7, extended: false,
         description: "Shorts: the real person's photo or the company's logo in the first frame, against a drawn subject",
         published: { on: 6, off: 6 }, counted: { on: 5, off: 4 }, value: { on: 0.486, off: 0.442 }, points: 4.4, pOnBetter: 0.74, days: 4,
-        verdict: "wait", why: "4 of 8 Shorts a side have two days of data; day 4 of 7",
+        verdict: "wait", why: "4 of 8 Shorts a side have two days of data; day 4 of 7", videos: running,
       },
     },
     challengers: [

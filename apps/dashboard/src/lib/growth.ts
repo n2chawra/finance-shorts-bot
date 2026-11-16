@@ -18,15 +18,25 @@ export const CycleRowSchema = z.looseObject({
 });
 export const StayedRowSchema = z.looseObject({ cycle: z.number(), champion: n, challenger: n, verdict: z.string().nullable().optional() });
 
+/** One Short in a test, on its side, with the number the test reads from it (improvement/cycle_status.py). */
+export const LoopVideoSchema = z.looseObject({
+  id: z.string(), title: z.string().nullable().optional(), side: z.enum(["on", "off"]), publishAt: z.string().nullable().optional(),
+  counted: z.boolean().default(false), value: n, views: n, thumbnailUrl: z.string().optional(),
+});
+export type LoopVideo = z.infer<typeof LoopVideoSchema>;
+
 export const LoopStatusSchema = z.object({
   generatedAt: z.string(), cycle: z.number().nullable(), running: z.string().nullable(),
   thresholds: z.object({ keepPoints: z.number(), revertPoints: z.number(), confidence: z.number() }),
   channelStayed14d: n,
+  /** the Shorts on each side of every cycle in the history, by experiment id */
+  cycleVideos: z.record(z.string(), z.array(LoopVideoSchema)).default({}),
   experiment: z.looseObject({
     id: z.string(), kind: z.string().nullable().optional(), area: z.string().nullable().optional(), description: z.string().nullable().optional(),
     startedAt: z.string().nullable().optional(), metric: z.string(), minPerArm: z.number(), maxDays: z.number(), extended: z.boolean(),
     published: z.object({ on: z.number(), off: z.number() }), counted: z.object({ on: z.number(), off: z.number() }),
     value: z.object({ on: n, off: n }), points: n, pOnBetter: n, days: n, verdict: z.string().nullable().optional(), why: z.string().nullable().optional(),
+    videos: z.array(LoopVideoSchema).default([]),
   }).nullable(),
 });
 

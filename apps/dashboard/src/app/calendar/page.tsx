@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { CalendarDays, ChevronLeft, ChevronRight, Eye, Heart, Trophy, Upload } from "lucide-react";
@@ -20,11 +19,13 @@ type Entry = { video: Video; kind: Kind; at: number };
 type Gap = { at: number; format: "short" | "long" };   // the first slot nothing is ready for
 
 const key = (y: number, m: number, d: number) => `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
-const KIND: Record<Kind, { dot: string; label: string }> = {
-  published: { dot: "bg-good", label: "Published" },
-  scheduled: { dot: "bg-series", label: "Scheduled" },
-  planned: { dot: "border-[1.5px] border-muted", label: "Planned (queue order)" },   // hollow: told from scheduled by shape, not colour alone
+const KIND: Record<Kind, { dot: string; chip: string; label: string }> = {
+  published: { dot: "bg-good", chip: "bg-good-soft font-medium text-good-text", label: "Published" },
+  scheduled: { dot: "bg-series", chip: "bg-tint-blue font-medium text-info-text", label: "Scheduled" },
+  planned: { dot: "border-[1.5px] border-muted", chip: "border border-line bg-surface text-ink2", label: "Planned (queue order)" },   // hollow: told from scheduled by shape, not colour alone
 };
+const MAX_CHIPS = 4;   // 3 Shorts and a long video fit; more shows "+N more"
+const LongTag = () => <span className="ml-auto shrink-0 rounded-[4px] bg-brand-soft px-1 py-px text-[9.5px] font-semibold uppercase tracking-wide text-brand-text">Long</span>;
 
 export default function CalendarPage() {
   const videos = useVideos({});
@@ -126,29 +127,42 @@ export default function CalendarPage() {
               const gaps = byDay.gaps.get(k) ?? [];
               const on = selected === k;
               const views = dayViews(k);
+              const chips: { at: number; entry?: Entry; gap?: Gap }[] = [...list.map((e) => ({ at: e.at, entry: e })), ...gaps.map((g) => ({ at: g.at, gap: g }))].sort((a, b) => a.at - b.at);
               return (
                 <Tip key={k} label={dayTip(k)}>
                 <button type="button" onClick={() => setSelected(k)} aria-pressed={on}
                   aria-label={`${d} ${monthName}${list.length ? `, ${list.map((e) => `${KIND[e.kind].label}${e.video.format === "long" ? " long video" : ""}: ${e.video.title}`).join("; ")}` : gaps.length ? "" : ", no upload"}${gaps.map((g) => `, nothing ready for the ${hhmm(g.at)} ${g.format === "long" ? "long-video" : "Short"} slot`).join("")}`}
-                  className={`relative flex min-h-16 flex-col gap-1.5 p-1.5 text-left text-xs transition-colors md:min-h-[104px] md:p-2 ${edge} ${on ? "bg-brand-soft" : "hover:bg-surface-2"}`}>
+                  className={`relative flex min-h-16 flex-col gap-1.5 p-1.5 text-left text-xs transition-colors md:min-h-[116px] md:gap-2 md:p-2 ${edge} ${on ? "bg-brand-soft shadow-[inset_0_0_0_1.5px_var(--color-brand)]" : "hover:bg-surface-2"}`}>
                   <span className="flex items-center justify-between gap-1">
                     <span className={`grid size-6 place-items-center rounded-full text-[12.5px] tabular-nums ${k === today ? "bg-primary font-semibold text-white" : on ? "font-semibold text-ink" : "font-medium text-ink2"}`}>{d}</span>
-                    {published(k).length > 1 && <span className="hidden rounded-md bg-tint-blue px-1.5 py-0.5 text-[11px] font-semibold tabular-nums text-info-text md:inline">{fmtCompact(views)}</span>}
+                    {published(k).length > 1 && <span className="hidden items-center gap-1 text-[11px] font-semibold tabular-nums text-ink2 md:inline-flex" title="views of the day's videos"><Eye aria-hidden className="size-3 text-muted" />{fmtCompact(views)}</span>}
                   </span>
-                  <span className="flex flex-col gap-1">
-                    {list.map((e) => (
-                      <span key={e.video.id} className="flex min-w-0 items-center gap-1.5 md:gap-1">
-                        <img src={e.video.thumbnailUrl} alt="" loading="lazy" className={`hidden shrink-0 rounded-[3px] object-cover md:block ${e.video.format === "long" ? "aspect-video w-7" : "aspect-[9/16] w-4"} ${e.kind === "planned" ? "opacity-60" : ""}`} />
-                        <span aria-hidden data-kind={e.kind} className={`h-2 shrink-0 ${e.video.format === "long" ? `${LONG_MARK} md:w-2 md:rounded-full` : "w-2 rounded-full"} ${KIND[e.kind].dot}`} />
-                        <span className={`hidden text-[11.5px] text-ink2 md:inline ${e.kind === "published" ? "min-w-0" : "truncate"}`}>{e.kind === "published" ? <span className="flex flex-col leading-tight tabular-nums"><span className="inline-flex items-center gap-1"><Eye aria-label="views" className="size-3 shrink-0 text-muted" />{fmtCompact(e.video.totals?.views ?? 0)}</span><span data-testid="day-likes" className="inline-flex items-center gap-1 text-muted"><Heart aria-label="likes" className="size-3 shrink-0 text-critical" />{fmtCompact(e.video.totals?.likes ?? 0)}</span></span> : new Date(e.at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false })}{e.video.format === "long" && <span className="ml-1 font-semibold text-brand-text">Long</span>}</span>
+                  {/* phones: one mark per upload */}
+                  <span className="flex flex-wrap items-center gap-1 md:hidden">
+                    {list.map((e) => <span key={e.video.id} aria-hidden data-kind={e.kind} className={`h-2 shrink-0 ${e.video.format === "long" ? LONG_MARK : "w-2 rounded-full"} ${KIND[e.kind].dot}`} />)}
+                    {gaps.map((g) => <span key={`gap-${g.format}-${g.at}`} aria-hidden data-gap className={`h-2 shrink-0 border border-dashed border-warning ${g.format === "long" ? LONG_MARK : "w-2 rounded-full"}`} />)}
+                  </span>
+                  {/* wider screens: one even chip per slot, in time order */}
+                  <span className="hidden flex-col gap-1 md:flex">
+                    {chips.slice(0, MAX_CHIPS).map((c) => c.gap ? (
+                      <span key={`gap-${c.gap.format}-${c.gap.at}`} data-gap className="flex h-[22px] min-w-0 items-center gap-1.5 rounded-md border border-dashed border-warning/70 px-1.5 text-[11px] leading-none text-warning-text">
+                        <span aria-hidden className="size-1.5 shrink-0 rounded-full border border-dashed border-warning" />
+                        <span className="truncate tabular-nums">{hhmm(c.gap.at)} empty</span>
+                        {c.gap.format === "long" && <LongTag />}
+                      </span>
+                    ) : (
+                      <span key={c.entry!.video.id} className={`flex h-[22px] min-w-0 items-center gap-1.5 overflow-hidden rounded-md px-1.5 text-[11px] leading-none tabular-nums ${KIND[c.entry!.kind].chip}`}>
+                        <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${KIND[c.entry!.kind].dot}`} />
+                        {c.entry!.kind === "published" ? (
+                          <>
+                            <span className="shrink-0" aria-label={`${fmtNum(c.entry!.video.totals?.views ?? 0)} views`}>{fmtCompact(c.entry!.video.totals?.views ?? 0)}</span>
+                            <span data-testid="day-likes" className="inline-flex min-w-0 items-center gap-0.5 font-normal opacity-80"><Heart aria-label="likes" className="size-2.5 shrink-0" />{fmtCompact(c.entry!.video.totals?.likes ?? 0)}</span>
+                          </>
+                        ) : <span className="truncate">{hhmm(c.entry!.at)}</span>}
+                        {c.entry!.video.format === "long" && <LongTag />}
                       </span>
                     ))}
-                    {gaps.map((g) => (
-                      <span key={`gap-${g.format}`} data-gap className="flex min-w-0 items-center gap-1.5 md:gap-1">
-                        <span aria-hidden className={`h-2 shrink-0 border border-dashed border-warning ${g.format === "long" ? `${LONG_MARK} md:w-2 md:rounded-full` : "w-2 rounded-full"}`} />
-                        <span className="hidden truncate text-[11.5px] text-warning-text md:inline">Nothing ready{g.format === "long" && <span className="ml-1 font-semibold text-brand-text">Long</span>}</span>
-                      </span>
-                    ))}
+                    {chips.length > MAX_CHIPS && <span className="px-1.5 text-[10.5px] font-medium text-muted">+{chips.length - MAX_CHIPS} more</span>}
                   </span>
                 </button>
                 </Tip>

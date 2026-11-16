@@ -150,8 +150,8 @@ function build(): Store {
   const today = istDay(now);
   const settings: Settings = {
     uploadTimes: ["07:07", "12:37", "19:07"], trendUploadTimes: [], shortEveryDays: 1, dailyVideoTarget: 3, backlogCap: 30, lengthMinSec: 20, lengthMaxSec: 35,
-    longUploadTimes: ["20:07"], longUploadDays: [6], longLengthMinSec: 300, longLengthMaxSec: 400,
-    longPerWeek: 1, longBacklogCap: 4,   // the same as workers/lib/settings.ts DEFAULT_SETTINGS (2026-11-03)
+    longUploadTimes: ["20:07"], longUploadDays: [3, 5], longLengthMinSec: 300, longLengthMaxSec: 400,
+    longPerWeek: 2, longBacklogCap: 4,   // the same as workers/lib/settings.ts DEFAULT_SETTINGS (2026-11-03)
     disclaimer: "Illustrative only. Not financial advice.", uploadsPaused: false,
     generationPaused: false, templateWork: { maxPerDay: 1, maxTemplates: 10 },
     alerts: { failedRun: true, failedUpload: true, tokenErrors: true, lowBacklog: true, lowBacklogThreshold: 5 },

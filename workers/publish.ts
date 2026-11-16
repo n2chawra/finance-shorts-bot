@@ -5,7 +5,7 @@
  * default), every day, plus settings.trendUploadTimes (16:07 and 22:07): extra slots, one opening
  * for each breaking or trending video of the day (it takes that video, or the next one if the trend
  * already took a regular slot), left empty on quiet days. Long videos use
- * settings.longUploadTimes on settings.longUploadDays (20:07 IST on Tue, Thu and Sat by default). Each format is filled from its own queue, so a
+ * settings.longUploadTimes on settings.longUploadDays (20:07 IST on Wednesday and Friday by default). Each format is filled from its own queue, so a
  * missing long video never costs a Short its slot.
  *
  * Runs a few times a day; the first run uploads for every free slot still ahead today, later runs

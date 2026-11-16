@@ -52,7 +52,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   - The variant system stays off (`config/arms.json` → `frozen`). Style checks are notes
     (`renderer/advice.py`). Captions end 340 px above a Short's bottom edge; one upload category; no
     country tag on global videos.
-  - **Settings (2026-11-12)**: 3 Shorts a day at 07:07, 12:37 and 19:07 IST; one long video a week,
+  - **Settings (2026-11-12)**: 3 Shorts a day at 07:07, 12:37 and 19:07 IST; two long videos a week (Wed and Fri 20:07 IST, owner 2026-11-16),
     3–4 minutes (180–240 s), the full story of a recent Short that held viewers best; research,
     auditor and improver nightly, the dashboard agent Sundays, scout and studio on, monthly off.
   Where a bullet below says otherwise, this one wins.
@@ -96,7 +96,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   are off since 2026-11-02 (when set, each breaking or trending video of the day opens
   one, so a trend never pushes a normal video back; quiet days leave them empty). Upload time barely
   changes who sees a Short, so slots suit the evening peaks we saw, not time zones (owner,
-  2026-10-19). **One long video per week**, 20:07 IST on Saturday (`longUploadTimes`,
+  2026-10-19). **Two long videos per week**, 20:07 IST on Wednesday and Friday (owner, 2026-11-16; `longUploadTimes`,
   `longUploadDays`, `longPerWeek`). One video per
   slot; each format is filled from its own queue, so a missing long video never costs a Short its slot.
 - **Generation keeps going** on a schedule to build a backlog, capped at **30 ready videos**.
@@ -273,7 +273,7 @@ is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
 
 | | Shorts | Long-form |
 |---|---|---|
-| Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Wednesdays 14:37 IST, 1 a week) |
+| Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Mondays and Wednesdays 14:37 IST, 2 a week) |
 | Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, Mon and Thu 09:37 IST): since 2026-11-04 always the full story of one of our Shorts with 1K+ views, titled as people search it |
 | Template | `short_story` (1080×1920, a skit per format in its README) | `long_story` (1920×1080, a list of chapters, the scene catalog in its README) |
 | Length / pace | 20–35 s (settings), tempo 1.2 (~175 spoken words a minute) | 300–400 s (settings), tempo 1.25 (~180 words a minute; 1.5 until 2026-11-04) |

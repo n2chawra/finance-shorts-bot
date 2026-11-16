@@ -2,7 +2,8 @@
 
 Writes improvement/cycle/status.json: the running challenger (improvement/cycle/backlog.json `running`)
 judged exactly as the improver judges it (improvement/evaluate.py), plus how many Shorts each side has
-published so far. Ingest runs it every 6 hours after the numbers are synced; it changes nothing else.
+published so far and which ones (`videos`, and `cycleVideos` for every cycle in the history), so the
+page can show what is compared with what. Ingest runs it every 6 hours after the numbers are synced; it changes nothing else.
 
     python -m improvement.cycle_status            # write the file
     python -m improvement.cycle_status --print    # print it instead
@@ -24,6 +25,21 @@ def _read(path: Path, default):
     return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else default
 
 
+def _side_videos(shorts: list[dict], eid: str, started: str, metric: str) -> list[dict]:
+    """The Shorts on each side of one test, newest first, with the number the test reads from each."""
+    rows = []
+    for v in shorts:
+        side = (v.get("experiments") or {}).get(eid)
+        if side not in ("on", "off") or v.get("publishAt", "") < started:
+            continue
+        views = v.get("analyticsViews") or 0
+        value = ((v.get("engagedViews") or 0) / views if views else None) if metric == "stayed" else v.get(metric)
+        rows.append({"id": v["id"], "title": v.get("title"), "side": side, "publishAt": v.get("publishAt"),
+                     "counted": evaluate._counts(v, metric), "value": round(value, 3) if value is not None else None,
+                     "views": v.get("views")})
+    return sorted(rows, key=lambda r: r.get("publishAt") or "", reverse=True)
+
+
 def status(root: Path = ROOT, now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
     backlog = _read(root / "improvement" / "cycle" / "backlog.json", {})
@@ -41,6 +57,9 @@ def status(root: Path = ROOT, now: datetime | None = None) -> dict:
                        "confidence": evaluate.CONFIDENCE},
         "channelStayed14d": round(sum(v.get("engagedViews") or 0 for v in recent) / views, 3) if views else None,
     }
+    metric_of = {"look": "heldAfterHook"}
+    base["cycleVideos"] = {c["id"]: _side_videos(shorts, c["id"], c.get("started") or "", metric_of.get(c.get("kind"), "stayed"))
+                           for c in backlog.get("history", []) if c.get("id")}
     exp = exps.get(running) if running else None
     if not exp:
         return {**base, "experiment": None}
@@ -62,6 +81,7 @@ def status(root: Path = ROOT, now: datetime | None = None) -> dict:
         "value": {"on": (judged or {}).get("value_on"), "off": (judged or {}).get("value_off")},
         "points": (judged or {}).get("points"), "pOnBetter": (judged or {}).get("p_on_better"),
         "days": (judged or {}).get("days"), "verdict": (judged or {}).get("verdict"), "why": (judged or {}).get("why"),
+        "videos": _side_videos(shorts, running, exp.get("startedAt", ""), (judged or {}).get("metric", exp.get("metric", "stayed"))),
     }}
 
 

@@ -23,6 +23,9 @@ def test_status_counts_each_side_and_judges_the_running_challenger(tmp_path: Pat
     assert e["published"] == {"on": 3, "off": 3} and e["counted"] == {"on": 3, "off": 3}
     assert e["verdict"] == "wait" and s["thresholds"] == {"keepPoints": 5, "revertPoints": -5, "confidence": 0.8}
     assert s["channelStayed14d"] == 0.5
+    assert sorted((r["id"], r["side"]) for r in e["videos"]) == [(f"v{i}", "on" if i % 2 else "off") for i in range(6)]
+    assert all(r["counted"] and r["value"] == 0.5 for r in e["videos"])
+    assert [r["id"] for r in s["cycleVideos"]["x"]] == [r["id"] for r in e["videos"]]
 
 
 def test_no_running_challenger(tmp_path: Path) -> None:

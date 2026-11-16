@@ -174,7 +174,7 @@ test("calendar plans long videos on their own days and time", async ({ page }) =
   await page.goto("/calendar");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
   await page.waitForLoadState("networkidle");
-  // the sample queue holds two long videos; they post at 20:07 IST (Tue/Thu/Sat), never in a Short's slot
+  // the sample queue holds two long videos; they post at 20:07 IST (Wed/Fri), never in a Short's slot
   const cells = page.locator("button[aria-pressed]");
   let text = (await cells.allTextContents()).join(" ");
   if (!text.includes("20:07")) {
@@ -389,7 +389,7 @@ test("calendar heading names the long-video days too", async ({ page }) => {
   await page.goto("/calendar");
   await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
   // the line under the heading spoke only of the daily Shorts, though the grid shows long videos at 20:07
-  await expect(page.getByText(/long videos Sat at 20:07 IST/)).toBeVisible();
+  await expect(page.getByText(/long videos Wed/Fri at 20:07 IST/)).toBeVisible();
 });
 
 test("calendar draws long-video thumbnails landscape", async ({ page }) => {

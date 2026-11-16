@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ArrowRight, BookOpenCheck, Check, CircleSlash, Clapperboard, Eye, FlaskConical, Gauge, History, ListOrdered, Medal, Repeat, ScanEye, ShieldAlert, TrendingDown, Trophy, X } from "lucide-react";
+import { ArrowRight, BookOpenCheck, Check, ChevronDown, CircleSlash, Clock, Clapperboard, Eye, FlaskConical, Gauge, History, ListOrdered, Medal, Repeat, ScanEye, ShieldAlert, TrendingDown, Trophy, X } from "lucide-react";
 import Link from "next/link";
 
 import { Badge, Card, Empty, ErrorNote, Loading, Meter, PageHeader, Stagger, type Tone } from "@/components/ui";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtRelative } from "@/lib/format";
-import { ESCALATE_AFTER, ESCALATE_BELOW, type Growth, KIND_LABEL, KIND_METRIC, OWNER_AFTER, cyclesUnder, nextKind, shownConfidence, testDayLabel, verdictDueDay } from "@/lib/growth";
+import { ESCALATE_AFTER, ESCALATE_BELOW, type Growth, KIND_LABEL, type LoopVideo, KIND_METRIC, OWNER_AFTER, cyclesUnder, nextKind, shownConfidence, testDayLabel, verdictDueDay } from "@/lib/growth";
 import { useGrowth } from "@/lib/queries";
 import { isRecent } from "@/lib/recent";
 
@@ -73,6 +73,40 @@ function Side({ label, sub, value, counted, published, need, highlight }: { labe
       <div className="mt-3 flex items-center justify-between text-[12px] text-muted"><span>Shorts with numbers</span><span className="font-medium tabular-nums text-ink">{counted} / {need}</span></div>
       <div className="mt-1.5"><Meter value={counted} max={need} label={`${label} Shorts counted`} tone={highlight ? "brand" : "series"} /></div>
       <div className="mt-2 text-[11.5px] text-muted">{published} published so far</div>
+    </div>
+  );
+}
+
+/** One side of a test: its Shorts, newest first, each with the number the test reads from it. */
+function SideList({ side, rows, metric, compact }: { side: "on" | "off"; rows: LoopVideo[]; metric: string; compact?: boolean }) {
+  const mine = rows.filter((v) => v.side === side);
+  const on = side === "on";
+  return (
+    <div className={`min-w-0 rounded-xl border ${on ? "border-brand/30 bg-brand-soft/60" : "border-ring bg-surface-2"}`}>
+      <div className={`flex items-center justify-between gap-2 border-b px-3.5 py-2.5 ${on ? "border-brand/20" : "border-line"}`}>
+        <span className={`flex items-center gap-2 text-[12.5px] font-semibold ${on ? "text-brand-text" : "text-ink2"}`}>
+          {on ? <FlaskConical aria-hidden className="size-4" /> : <Trophy aria-hidden className="size-4 text-warning-text" />}
+          {on ? "Challenger · with the change" : "Champion · current recipe"}
+        </span>
+        <span className="text-[11.5px] tabular-nums text-muted">{mine.length} Short{mine.length === 1 ? "" : "s"}</span>
+      </div>
+      {mine.length ? (
+        <ul className="divide-y divide-line">
+          {mine.map((v) => (
+            <li key={v.id} className={`flex items-center gap-3 px-3.5 ${compact ? "py-2" : "py-2.5"}`}>
+              <img src={v.thumbnailUrl ?? `/api/media/${v.id}/thumbnail`} alt="" loading="lazy"
+                className={`aspect-[9/16] shrink-0 rounded-md bg-surface-3 object-cover ${compact ? "w-6" : "w-8"}`} />
+              <div className="min-w-0 flex-1">
+                <Link href={`/videos/${v.id}`} className="line-clamp-1 text-[13px] font-medium hover:text-brand-text">{v.title ?? v.id}</Link>
+                <div className="text-[11.5px] text-muted">{v.publishAt ? fmtDayKey(v.publishAt) : "not published"}{v.views != null ? ` · ${fmtCompact(v.views)} views` : ""}</div>
+              </div>
+              {v.counted && v.value != null
+                ? <span className="shrink-0 text-right"><span className="block text-[14px] font-semibold tabular-nums">{pct(v.value)}</span><span className="block text-[10.5px] text-muted">{metric}</span></span>
+                : <span className="flex shrink-0 items-center gap-1 text-[11.5px] text-muted" title="A Short counts once it has two days of numbers"><Clock aria-hidden className="size-3.5" />waiting</span>}
+            </li>
+          ))}
+        </ul>
+      ) : <p className="px-3.5 py-4 text-[12.5px] text-muted">None published yet.</p>}
     </div>
   );
 }
@@ -204,6 +238,17 @@ export default function GrowthPage() {
         </Card>
       )}
 
+      {/* which Shorts are compared with which */}
+      {e && (
+        <Card title="The Shorts being compared" icon={ListOrdered} accent="grape" className="mt-5"
+          description={`Every Short published since ${e.startedAt ? fmtDayKey(e.startedAt) : "the start"}, on its side. Each side's number is pooled from its counted Shorts, not averaged.`}>
+          <div className="grid gap-4 md:grid-cols-2">
+            <SideList side="off" rows={e.videos} metric={KIND_METRIC[kind] ?? "stayed to watch"} />
+            <SideList side="on" rows={e.videos} metric={KIND_METRIC[kind] ?? "stayed to watch"} />
+          </div>
+        </Card>
+      )}
+
       {/* the recipe, and what's next */}
       <div className="mt-5 grid gap-5 lg:grid-cols-2">
         <Card title="Champion recipe" icon={Medal} accent="sun" description={`What every Short follows${data.recipe?.updatedAt ? ` · updated ${fmtDayKey(data.recipe.updatedAt)}` : ""}. A kept test adds or replaces a rule.`}>
@@ -253,14 +298,31 @@ export default function GrowthPage() {
           <ul className="min-w-0 divide-y divide-line rounded-xl border border-ring">
             {[...data.history].reverse().map((h) => {
               const v = verdictOf(h.verdict), row = data.stayedByCycle.find((x) => x.cycle === h.cycle);
-              return (
-                <li key={`${h.cycle}-${h.id}`} className="flex items-center gap-3 px-4 py-3">
+              const vids = s?.cycleVideos[h.id] ?? [];
+              const head = (
+                <>
                   <span className="grid size-8 shrink-0 place-items-center rounded-full bg-surface-3 text-[12px] font-semibold tabular-nums">{h.cycle}</span>
                   <div className="min-w-0 flex-1">
                     <div className="truncate text-[13.5px] font-medium">{h.test ?? h.id}</div>
-                    <div className="text-[12px] text-muted">{KIND_LABEL[h.kind ?? ""] ?? h.kind}{h.started ? ` · ${fmtDayKey(h.started)}` : ""}{row ? ` · ${pct(row.champion)} → ${pct(row.challenger)}` : ""}</div>
+                    <div className="text-[12px] text-muted">{KIND_LABEL[h.kind ?? ""] ?? h.kind}{h.started ? ` · ${fmtDayKey(h.started)}` : ""}{row ? ` · ${pct(row.champion)} → ${pct(row.challenger)}` : ""}{vids.length ? ` · ${vids.filter((x) => x.side === "off").length} vs ${vids.filter((x) => x.side === "on").length} Shorts` : ""}</div>
                   </div>
                   <Badge tone={v.tone} icon={v.icon}>{v.label}</Badge>
+                </>
+              );
+              return (
+                <li key={`${h.cycle}-${h.id}`}>
+                  {vids.length ? (
+                    <details className="group">
+                      <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-3 hover:bg-surface-2 [&::-webkit-details-marker]:hidden">
+                        {head}
+                        <ChevronDown aria-hidden className="size-4 shrink-0 text-muted transition-transform group-open:rotate-180" />
+                      </summary>
+                      <div className="grid gap-3 px-4 pb-4 sm:grid-cols-2">
+                        <SideList side="off" rows={vids} metric={KIND_METRIC[h.kind ?? ""] ?? "stayed to watch"} compact />
+                        <SideList side="on" rows={vids} metric={KIND_METRIC[h.kind ?? ""] ?? "stayed to watch"} compact />
+                      </div>
+                    </details>
+                  ) : <div className="flex items-center gap-3 px-4 py-3">{head}</div>}
                 </li>
               );
             })}

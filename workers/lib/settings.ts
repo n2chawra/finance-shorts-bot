@@ -42,10 +42,10 @@ export const DEFAULT_SETTINGS: Settings = {
   shortEveryDays: 1,
   dailyVideoTarget: 3,
   longUploadTimes: ["20:07"],
-  longUploadDays: [6],
+  longUploadDays: [3, 5],   // Wednesday and Friday nights (owner, 2026-11-16)
   longLengthMinSec: 300,   // 5–6 min since 2026-11-04 (the full story of a winning Short)
   longLengthMaxSec: 400,
-  longPerWeek: 1,
+  longPerWeek: 2,
   longBacklogCap: 4,
   backlogCap: 30,
   lengthMinSec: 20,   // Shorts 20–35 s since 2026-11-04: ≤35 s had a median of 729 views, 36–50 s 216, 60 s+ 19–144

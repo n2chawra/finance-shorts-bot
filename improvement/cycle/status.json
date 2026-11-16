@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T06:45:10.617267+00:00",
+  "generatedAt": "2026-11-16T13:39:24.256735+00:00",
   "cycle": 1,
   "running": "real-subject-first-frame",
   "thresholds": {
@@ -7,7 +7,74 @@
     "revertPoints": -5,
     "confidence": 0.8
   },
-  "channelStayed14d": 0.367,
+  "channelStayed14d": 0.361,
+  "cycleVideos": {
+    "real-subject-first-frame": [
+      {
+        "id": "v-20261116-01",
+        "title": "Grand Theft Auto V has sold 230M copies since 2013 🎮",
+        "side": "off",
+        "publishAt": "2026-11-16T01:37:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 155
+      },
+      {
+        "id": "v-20261114-03",
+        "title": "The Las Vegas Strip keeps $16,772 every minute 🎰",
+        "side": "on",
+        "publishAt": "2026-11-14T13:37:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 199
+      },
+      {
+        "id": "v-20261114-02",
+        "title": "Costco's profit was $9.23B. The card paid 64% of it",
+        "side": "off",
+        "publishAt": "2026-11-14T07:07:00.000Z",
+        "counted": false,
+        "value": 0.5,
+        "views": 846
+      },
+      {
+        "id": "v-20261114-01",
+        "title": "19% of America's $40.61T debt is owed to itself 🇺🇸",
+        "side": "on",
+        "publishAt": "2026-11-14T01:37:00.000Z",
+        "counted": false,
+        "value": 0.5,
+        "views": 456
+      },
+      {
+        "id": "v-20261113-03",
+        "title": "Netflix spent $17.1B on new shows and still kept $11B",
+        "side": "on",
+        "publishAt": "2026-11-13T13:37:00.000Z",
+        "counted": false,
+        "value": 0.26,
+        "views": 487
+      },
+      {
+        "id": "v-20261113-05",
+        "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
+        "side": "on",
+        "publishAt": "2026-11-13T07:07:00.000Z",
+        "counted": false,
+        "value": 0.362,
+        "views": 1010
+      },
+      {
+        "id": "v-20261113-01",
+        "title": "MrBeast made $300M in one year. IShowSpeed made $30M",
+        "side": "on",
+        "publishAt": "2026-11-13T01:37:00.000Z",
+        "counted": false,
+        "value": 0.315,
+        "views": 957
+      }
+    ]
+  },
   "experiment": {
     "id": "real-subject-first-frame",
     "kind": "first-second",
@@ -36,6 +103,71 @@
     "pOnBetter": 0.5,
     "days": 3,
     "verdict": "wait",
-    "why": "0 of 8 Shorts a side have two days of data; day 3 of 7"
+    "why": "0 of 8 Shorts a side have two days of data; day 3 of 7",
+    "videos": [
+      {
+        "id": "v-20261116-01",
+        "title": "Grand Theft Auto V has sold 230M copies since 2013 🎮",
+        "side": "off",
+        "publishAt": "2026-11-16T01:37:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 155
+      },
+      {
+        "id": "v-20261114-03",
+        "title": "The Las Vegas Strip keeps $16,772 every minute 🎰",
+        "side": "on",
+        "publishAt": "2026-11-14T13:37:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 199
+      },
+      {
+        "id": "v-20261114-02",
+        "title": "Costco's profit was $9.23B. The card paid 64% of it",
+        "side": "off",
+        "publishAt": "2026-11-14T07:07:00.000Z",
+        "counted": false,
+        "value": 0.5,
+        "views": 846
+      },
+      {
+        "id": "v-20261114-01",
+        "title": "19% of America's $40.61T debt is owed to itself 🇺🇸",
+        "side": "on",
+        "publishAt": "2026-11-14T01:37:00.000Z",
+        "counted": false,
+        "value": 0.5,
+        "views": 456
+      },
+      {
+        "id": "v-20261113-03",
+        "title": "Netflix spent $17.1B on new shows and still kept $11B",
+        "side": "on",
+        "publishAt": "2026-11-13T13:37:00.000Z",
+        "counted": false,
+        "value": 0.26,
+        "views": 487
+      },
+      {
+        "id": "v-20261113-05",
+        "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
+        "side": "on",
+        "publishAt": "2026-11-13T07:07:00.000Z",
+        "counted": false,
+        "value": 0.362,
+        "views": 1010
+      },
+      {
+        "id": "v-20261113-01",
+        "title": "MrBeast made $300M in one year. IShowSpeed made $30M",
+        "side": "on",
+        "publishAt": "2026-11-13T01:37:00.000Z",
+        "counted": false,
+        "value": 0.315,
+        "views": 957
+      }
+    ]
   }
 }

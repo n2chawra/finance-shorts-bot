@@ -120,8 +120,8 @@ function agentChecks(now: Date, enabled: Record<string, boolean>, paused: boolea
     const dir = path.join(ROOT, "improvement", "activity");
     const everReported = existsSync(dir) && readdirSync(dir).some((f) => f.endsWith(`-${agent}.json`));
     const reported = existsSync(path.join(dir, `${today}-${agent}.json`));
-    // Studio runs Wednesdays at 14:37, Scout Mon/Thu at 09:37 (owner, 2026-11-02); the others every night, done by 10:00 IST
-    const when = agent === "studio" ? { days: [3], afterHour: 19 } : agent === "scout" ? { days: [1, 4], afterHour: 11 } : { days: [0, 1, 2, 3, 4, 5, 6], afterHour: 10 };
+    // Studio runs Mondays and Wednesdays at 14:37 (owner, 2026-11-16: two long videos a week), Scout Mon/Thu at 09:37 (owner, 2026-11-02); the others every night, done by 10:00 IST
+    const when = agent === "studio" ? { days: [1, 3], afterHour: 19 } : agent === "scout" ? { days: [1, 4], afterHour: 11 } : { days: [0, 1, 2, 3, 4, 5, 6], afterHour: 10 };
     const dueToday = when.days.includes(istWeekday(now));
     // only once the agent has reported at least once: before its first night there's nothing to miss
     const silent = !paused && enabled[agent] && everReported && dueToday && istHour(now) >= when.afterHour && !reported;
