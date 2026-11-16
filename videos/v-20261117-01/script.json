@@ -1,0 +1,768 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61473,
+ "story": "money_scale",
+ "shape": "pick-one",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "cinematic",
+  "key": "D",
+  "bpm": 92,
+  "look": {
+   "stage": "studio",
+   "header": "neon",
+   "holder": "sign",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "shock_number",
+ "cta": "Thirty payments or the cash today? Pick one in the comments",
+ "feed_id": "2026-11-15-2-billion-jackpot-paid-997-million",
+ "facts": [
+  {
+   "label": "Record Powerball jackpot won by Edwin Castro, Nov 2022",
+   "value": 2.04,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2023-02-14",
+   "source": "California Lottery",
+   "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot"
+  },
+  {
+   "label": "Cash value Edwin Castro chose to take",
+   "value": 997.6,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2023-02-14",
+   "source": "California Lottery",
+   "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot"
+  },
+  {
+   "label": "Bonus paid to Joe's Service Center for selling the winning ticket",
+   "value": 1,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2023-02-14",
+   "source": "California Lottery",
+   "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot"
+  },
+  {
+   "label": "Money the jackpot run raised for California public education",
+   "value": 156.3,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2023-02-14",
+   "source": "California Lottery",
+   "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot"
+  }
+ ],
+ "maths": [
+  {
+   "name": "cash",
+   "kind": "rate",
+   "part": 997600000,
+   "whole": 2040000000,
+   "facts": {
+    "part": 2,
+    "whole": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.0,
+  "words": "Why not *all* his?",
+  "figure": "{fact1}",
+  "tag": "Jackpot",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Edwin Castro won the biggest jackpot ever. So why wasn't it all his?",
+   "events": {
+    "edwin": {
+     "word": "Edwin"
+    },
+    "biggest": {
+     "word": "biggest"
+    },
+    "jackpot": {
+     "word": "jackpot"
+    },
+    "why": {
+     "word": "why"
+    },
+    "wasn't": {
+     "word": "wasn't"
+    },
+    "all": {
+     "word": "all"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "edwin"
+    },
+    {
+     "kind": "boom",
+     "at": "jackpot"
+    },
+    {
+     "kind": "whoosh",
+     "at": "why"
+    },
+    {
+     "kind": "clink",
+     "at": "all"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "a lottery press stage under flashbulbs",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "jackpot",
+      "size": "wide"
+     },
+     {
+      "at": "wasn't",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "edwin",
+      "what": "flashbulbs pop on Castro and his giant cheque"
+     },
+     {
+      "at": "jackpot",
+      "what": "confetti bursts over the stage"
+     },
+     {
+      "at": "why",
+      "what": "a giant pair of scissors swings down over the cheque"
+     },
+     {
+      "at": "all",
+      "what": "the camera pushes in on the cheque's figure as the blades open"
+     }
+    ],
+    "things": [
+     "giant cheque",
+     "Powerball logo",
+     "Castro with a name plate",
+     "press cameras",
+     "scissors",
+     "confetti"
+    ],
+    "fig": {
+     "jackpot": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "shop",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Even the shop that sold his ticket got a cheque for {fact3}. So where did Castro's go?",
+   "events": {
+    "even": {
+     "word": "Even"
+    },
+    "shop": {
+     "word": "shop"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "ticket": {
+     "word": "ticket"
+    },
+    "got": {
+     "word": "got"
+    },
+    "cheque": {
+     "word": "cheque"
+    },
+    "where": {
+     "word": "where"
+    },
+    "castro's": {
+     "word": "Castro's"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "shop"
+    },
+    {
+     "kind": "tick",
+     "at": "ticket"
+    },
+    {
+     "kind": "kaching",
+     "at": "got"
+    }
+   ],
+   "params": {
+    "component": "Shop",
+    "place": "a small gas station shop in Altadena at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "ticket",
+      "size": "medium"
+     },
+     {
+      "at": "got",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "shop",
+      "what": "the LOTTO neon in the window flickers on"
+     },
+     {
+      "at": "sold",
+      "what": "the ticket printer on the counter spits out a ticket"
+     },
+     {
+      "at": "ticket",
+      "what": "the clerk holds the ticket up to the light"
+     },
+     {
+      "at": "got",
+      "what": "a giant cheque slides onto the counter in front of the clerk"
+     },
+     {
+      "at": "cheque",
+      "what": "the clerk throws both arms up"
+     },
+     {
+      "at": "where",
+      "what": "an empty dashed cheque with a question mark pops up in the window"
+     }
+    ],
+    "things": [
+     "gas station shop",
+     "lotto neon",
+     "ticket printer",
+     "clerk",
+     "giant cheque",
+     "fuel pump"
+    ],
+    "fig": {
+     "bonus": "{fact3}"
+    }
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "schools",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "And California's schools collected {fact4} from those draws.",
+   "events": {
+    "california's": {
+     "word": "California's"
+    },
+    "schools": {
+     "word": "schools"
+    },
+    "collected": {
+     "word": "collected"
+    },
+    "from": {
+     "word": "from"
+    },
+    "draws": {
+     "word": "draws"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "ding",
+     "at": "schools"
+    },
+    {
+     "kind": "riser",
+     "at": "collected"
+    },
+    {
+     "kind": "pop",
+     "at": "draws"
+    }
+   ],
+   "params": {
+    "component": "School",
+    "place": "a sunny California school yard",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "collected",
+      "size": "medium"
+     },
+     {
+      "at": "draws",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "california's",
+      "what": "the school bell swings and rings"
+     },
+     {
+      "at": "schools",
+      "what": "kids run out across the yard"
+     },
+     {
+      "at": "collected",
+      "what": "the yard's scoreboard counts up to the figure"
+     },
+     {
+      "at": "from",
+      "what": "a yellow school bus rolls up to the gate"
+     },
+     {
+      "at": "draws",
+      "what": "lottery balls roll down a chute into the school's money box"
+     }
+    ],
+    "things": [
+     "school building",
+     "scoreboard",
+     "bell",
+     "kids",
+     "school bus",
+     "lottery balls",
+     "money box"
+    ],
+    "fig": {
+     "schools": "{fact4}"
+    }
+   },
+   "transition": "zoom-through"
+  },
+  {
+   "id": "yearly",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "That {fact1} was never cash. It meant one cheque a year, for decades.",
+   "events": {
+    "that": {
+     "word": "That"
+    },
+    "never": {
+     "word": "never"
+    },
+    "cash": {
+     "word": "cash"
+    },
+    "meant": {
+     "word": "meant"
+    },
+    "cheque": {
+     "word": "cheque"
+    },
+    "year": {
+     "word": "year"
+    },
+    "decades": {
+     "word": "decades"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "that"
+    },
+    {
+     "kind": "fail",
+     "at": "never"
+    },
+    {
+     "kind": "tick",
+     "at": "cheque"
+    },
+    {
+     "kind": "tick",
+     "at": "year"
+    },
+    {
+     "kind": "riser",
+     "at": "decades"
+    }
+   ],
+   "params": {
+    "component": "Porch",
+    "place": "a front porch with a mailbox",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "meant",
+      "size": "close"
+     },
+     {
+      "at": "decades",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "never",
+      "what": "a stack of cash on the porch fades to a ghost and gets a red cross"
+     },
+     {
+      "at": "meant",
+      "what": "the mailbox flag flips up"
+     },
+     {
+      "at": "cheque",
+      "what": "one envelope pops out of the mailbox"
+     },
+     {
+      "at": "year",
+      "what": "the calendar on the door tears off a year"
+     },
+     {
+      "at": "decades",
+      "what": "the camera pulls back as the seasons change and envelopes pile up year after year"
+     }
+    ],
+    "things": [
+     "porch",
+     "mailbox",
+     "envelopes",
+     "door calendar",
+     "ghost cash stack",
+     "tree"
+    ],
+    "fig": {
+     "jackpot": "{fact1}"
+    }
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "cash",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Castro took it all at once instead, and all at once it was only {fact2} in cash.",
+   "events": {
+    "castro": {
+     "word": "Castro"
+    },
+    "took": {
+     "word": "took"
+    },
+    "once": {
+     "word": "once"
+    },
+    "instead": {
+     "word": "instead"
+    },
+    "and": {
+     "word": "and"
+    },
+    "only": {
+     "word": "only"
+    },
+    "cash": {
+     "word": "cash"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "castro"
+    },
+    {
+     "kind": "kaching",
+     "at": "took"
+    },
+    {
+     "kind": "boom",
+     "at": "only"
+    }
+   ],
+   "params": {
+    "component": "Vault",
+    "place": "the lottery's counting vault",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "instead",
+      "size": "medium"
+     },
+     {
+      "at": "only",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "castro",
+      "what": "Castro steps into the vault and points at the cash"
+     },
+     {
+      "at": "took",
+      "what": "a forklift rolls the cash pallet toward him"
+     },
+     {
+      "at": "instead",
+      "what": "the jackpot sign above the pallet flickers out"
+     },
+     {
+      "at": "and",
+      "what": "a red warning light spins on the forklift"
+     },
+     {
+      "at": "only",
+      "what": "the pallet's counter drops to the cash figure"
+     },
+     {
+      "at": "cash",
+      "what": "Castro's jaw drops as the camera closes in on the counter"
+     }
+    ],
+    "things": [
+     "vault",
+     "cash pallet",
+     "forklift",
+     "jackpot sign",
+     "led counter",
+     "Castro"
+    ],
+    "fig": {
+     "cash": "{fact2}",
+     "jackpot": "{fact1}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "So the biggest jackpot ever paid him {cash_pct} of its own headline, before any tax.",
+   "events": {
+    "so": {
+     "word": "So"
+    },
+    "biggest": {
+     "word": "biggest"
+    },
+    "paid": {
+     "word": "paid"
+    },
+    "headline": {
+     "word": "headline"
+    },
+    "before": {
+     "word": "before"
+    },
+    "tax": {
+     "word": "tax"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "so"
+    },
+    {
+     "kind": "boom",
+     "at": "paid"
+    },
+    {
+     "kind": "clink",
+     "at": "headline"
+    },
+    {
+     "kind": "tick",
+     "at": "tax"
+    }
+   ],
+   "params": {
+    "component": "Cutter",
+    "place": "a print shop with a giant paper guillotine",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "paid",
+      "size": "close"
+     },
+     {
+      "at": "tax",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "so",
+      "what": "the giant cheque slides under the guillotine"
+     },
+     {
+      "at": "paid",
+      "what": "the blade slams down and cuts the cheque as Castro gasps"
+     },
+     {
+      "at": "headline",
+      "what": "the kept piece lifts up with the share stamped on it"
+     },
+     {
+      "at": "tax",
+      "what": "the camera pulls back over the cut-off half on the floor"
+     }
+    ],
+    "things": [
+     "paper guillotine",
+     "giant cheque",
+     "cut-off half",
+     "share stamp",
+     "paper shelves",
+     "Castro watching"
+    ],
+    "fig": {
+     "pct": "{cash_pct}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "A cheque a year, or all of it today? Pick one. The man who picked today was",
+   "events": {
+    "cheque": {
+     "word": "cheque"
+    },
+    "year": {
+     "word": "year"
+    },
+    "today": {
+     "word": "today"
+    },
+    "pick": {
+     "word": "Pick"
+    },
+    "man": {
+     "word": "man"
+    },
+    "was": {
+     "word": "was"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "cheque"
+    },
+    {
+     "kind": "pop",
+     "at": "today"
+    },
+    {
+     "kind": "whoosh",
+     "at": "man"
+    }
+   ],
+   "params": {
+    "component": "Crossroad",
+    "place": "a crossroads at night under a lottery billboard",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "pick",
+      "size": "medium"
+     },
+     {
+      "at": "was",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "cheque",
+      "what": "the left signpost lights up: a cheque a year"
+     },
+     {
+      "at": "today",
+      "what": "the right signpost lights up: cash today"
+     },
+     {
+      "at": "pick",
+      "what": "Rohan looks from one sign to the other"
+     },
+     {
+      "at": "man",
+      "what": "the camera rises to the billboard with Castro's giant cheque"
+     },
+     {
+      "at": "was",
+      "what": "it pushes into the cheque, the hook's first frame"
+     }
+    ],
+    "things": [
+     "crossroads",
+     "two signposts",
+     "Rohan",
+     "billboard",
+     "giant cheque"
+    ],
+    "fig": {
+     "jackpot": "{fact1}"
+    }
+   },
+   "transition": "cut"
+  }
+ ],
+ "narrator": "am_michael"
+}

@@ -1,0 +1,178 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:40:39.047658+00:00",
+    "finishedAt": "2026-11-16T21:40:39.047658+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-16T21:41:34.225808+00:00",
+    "finishedAt": "2026-11-16T21:41:34.225808+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:41:39.680881+00:00",
+    "finishedAt": "2026-11-16T21:41:39.680881+00:00",
+    "notes": [
+      "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:45:12.608712+00:00",
+    "finishedAt": "2026-11-16T21:45:12.608712+00:00",
+    "notes": [
+      "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:45:45.515398+00:00",
+    "finishedAt": "2026-11-16T21:45:45.515398+00:00",
+    "notes": [
+      "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:48:40.783658+00:00",
+    "finishedAt": "2026-11-16T21:48:40.783658+00:00",
+    "notes": [
+      "All 4 facts ($2.04B jackpot, $997.6M cash value, $1M Joe's Service Center bonus, $156.3M for public education) confirmed on the California Lottery release at powerball.com (14 Feb 2023), which also says the alternative was 30 annual payments. Web search shows $2.04B is still the record (2nd: $1.817B Powerball, Dec 2025). The topic's verify items hold: 49% is before tax, no after-tax figure or spending claims. No advice; the description ends with the disclaimer. Note: the description could add the profile's line about speaking to a licensed adviser."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-16T21:48:08.181672+00:00",
+    "finishedAt": "2026-11-16T21:49:10.730597+00:00",
+    "notes": [
+      "text '$2.04B' at 16.8 s runs outside the frame",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:49:26.455191+00:00",
+    "finishedAt": "2026-11-16T21:50:00.593940+00:00",
+    "notes": [
+      "34 s, night/cinematic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-16T21:50:48.138635+00:00",
+    "finishedAt": "2026-11-16T21:51:23.460103+00:00",
+    "notes": [
+      "text '$2.04B' at 32.1 s runs outside the frame",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:51:31.013771+00:00",
+    "finishedAt": "2026-11-16T21:52:07.552217+00:00",
+    "notes": [
+      "34 s, night/cinematic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-16T21:53:26.719996+00:00",
+    "finishedAt": "2026-11-16T21:53:26.719996+00:00",
+    "notes": [
+      "[scene] loop beat (Crossroad.tsx), 33.0-33.2 s, the last frame: the caption 'today was' sits right on top of the 'CHEQUE A YEAR' signpost (text over text, both hard to read), the 'Illustrative only. Not financial advice.' line runs over the 'CASH TODAY' sign area, and Rohan's head is cut off by the bottom edge under it. When the camera rises to the billboard, the signposts should leave the caption band (or the push-in should finish on the cheque alone).",
+      "[scene] cash beat (Vault.tsx), 22.0-24.2 s: Castro stands half out of frame at the left edge; at 24.2 s (the close-up on 'only/cash') just one eye and his pointing arm show, so the 'jaw drops' moment happens off screen. Frame Castro fully inside the close shot, next to the $997.6M counter.",
+      "[script] payoff beat (Cutter.tsx), 25.0-28.7 s, the 49% payoff: nobody is in the place (no person acts for the whole beat), the 'print shop' reads as a bare grey wall with a table, the kept cheque piece's figure box is blank, and the cut-off half runs off the right edge ('RO…'). The story's biggest figure sits on a small tag in a mostly empty frame, emptier than every other beat. Put Castro (or a clerk) at the guillotine, write the kept amount on the kept piece next to 49%, and keep the falling half inside the frame.",
+      "[scene] shop beat (Shop.tsx), 5.5-8.2 s: the $1M cheque slides in over the clerk and covers most of his face and both raised arms, so the 'clerk throws both arms up' moment can't be seen. Put the cheque on the counter beside or below him."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:54:34.488302+00:00",
+    "finishedAt": "2026-11-16T21:55:09.258463+00:00",
+    "notes": [
+      "34 s, night/cinematic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-16T21:55:43.988739+00:00",
+    "finishedAt": "2026-11-16T21:55:43.988739+00:00",
+    "notes": [
+      "[scene] payoff beat (Cutter.tsx), 25.0-28.7 s: Castro is placed right under the guillotine, in the cut half's drop path. At 25.0-26.0 s his head is hidden behind the cheque on the table, and at 26.7, 27.7 and 28.7 s the falling cut half (drawn see-through, with 'RO' on it) covers his face and chest, so his shock on the cut is never seen and nobody visibly acts in the payoff. Stand him beside the guillotine (e.g. left or right of the table, face clear of the cheque and the falling half). The other fixes are good: the loop ends on the cheque alone with the caption and disclaimer clear (32.7-33.4 s), Castro is in frame with his jaw dropped at 24.2 s, the 49% stamp on the kept piece reads well, and the shop clerk is clear of the $1M cheque."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:56:00.948102+00:00",
+    "finishedAt": "2026-11-16T21:56:34.719645+00:00",
+    "notes": [
+      "34 s, night/cinematic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:57:07.155714+00:00",
+    "finishedAt": "2026-11-16T21:57:07.155714+00:00",
+    "notes": [
+      "Round 3: seven directed places tell Castro's $2.04B story on mute (cheque, shop $1M, schools $156.3M, porch, vault $997.6M, 49% stamp, crossroads loop). The payoff now shows Castro in front, clear of the blade and the falling half, gasping and pointing at the cut. Loop ends on the billboard cheque alone with the disclaimer clear. Code checks clean, 34 s, -1/-16 dB."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:57:17.023895+00:00",
+    "finishedAt": "2026-11-16T21:58:57.338493+00:00",
+    "notes": [
+      "34 s, night/cinematic, peak -1.0 dB, mean -16.0 dB",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-16T21:59:26.506887+00:00",
+    "finishedAt": "2026-11-16T21:59:26.506887+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
