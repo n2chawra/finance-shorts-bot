@@ -67,7 +67,8 @@ class Api {
 
 const ChannelItems = z.object({ items: z.array(z.object({
   id: z.string(),
-  snippet: z.object({ title: z.string() }).loose(),
+  // absent when only the id was asked for (resolving a reference's @handle)
+  snippet: z.object({ title: z.string() }).loose().optional(),
   statistics: z.object({ subscriberCount: z.string().optional(), hiddenSubscriberCount: z.boolean().optional() }).loose().optional(),
   contentDetails: z.object({ relatedPlaylists: z.object({ uploads: z.string() }).loose() }).loose().optional(),
 }).loose()).default([]) });
@@ -122,7 +123,7 @@ export async function scan(slug: string, req: ScanRequest, auth: Auth, quota: Qu
     const r = await api.get("channels", { part: "snippet,statistics,contentDetails", id: batch.join(","), maxResults: "50" }, ChannelItems);
     for (const c of r.items) {
       const subs = c.statistics?.hiddenSubscriberCount ? null : c.statistics?.subscriberCount ? Number(c.statistics.subscriberCount) : null;
-      channels.push({ id: c.id, title: c.snippet.title, subs, reference: refIds.includes(c.id), foundBy: [...(found.get(c.id) ?? [])] });
+      channels.push({ id: c.id, title: c.snippet?.title ?? c.id, subs, reference: refIds.includes(c.id), foundBy: [...(found.get(c.id) ?? [])] });
       if (c.contentDetails?.relatedPlaylists.uploads) uploads.set(c.id, c.contentDetails.relatedPlaylists.uploads);
     }
   }
