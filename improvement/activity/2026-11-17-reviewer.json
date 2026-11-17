@@ -1,0 +1,12 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-17",
+  "startedAt": "2026-11-17T15:38:22Z",
+  "finishedAt": "2026-11-17T15:38:38Z",
+  "summary": "Agents are paused, so no Shorts were reviewed and no lessons were changed tonight.",
+  "decision": "nothing",
+  "why": "config/settings.json has agents.paused true (set from the dashboard in the 06:30 UTC sync on 17 Nov, together with generationPaused); reviewer.md says to stop when agents are paused.",
+  "findings": [],
+  "changes": [],
+  "nextCheck": "2026-11-20"
+}
