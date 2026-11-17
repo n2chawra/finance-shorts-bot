@@ -1,0 +1,39 @@
+{
+  "call": "go-with-conditions",
+  "reason": "Strong Shorts demand that small channels break into (24 of 29 had a 5x hit), and animated maps suit our flat kit; long videos only win for big channels.",
+  "conditions": [
+    "Build a map component first: country outlines from Natural Earth (public domain), drawn and animated on the flat kit",
+    "Disputed borders (Kashmir, Arunachal, Crimea, Taiwan…) follow the official map of the country a video is about, or are left out; facts sourced like Paisa Panchayat's",
+    "Shorts only at launch; long videos only once a Short passes 100K views",
+    "The full research drops the off-niche channels the searches pulled in (gangster stories, animal facts, exam prep)"
+  ],
+  "for": [
+    "24 of 29 small channels (under 10K subscribers) had a Short at 5x their median or more in 6 months",
+    "On-niche Shorts: median 20K views in 90 days, 14% of them hits",
+    "The hits are animated maps and 'what if' questions: 'Why Chile is so long and narrow' 10.6M on a 14K channel, 'Can countries roll down a hill' 2.7M on a 3K channel"
+  ],
+  "against": [
+    "Long videos: median 414K views but from big channels; only 1 small channel had a long hit",
+    "Crowded: 42 of 45 channels posted in the last 30 days",
+    "Geopolitics touches disputed borders and wars: a wrong map can be illegal (India) or demonetised"
+  ],
+  "earnings": {
+    "m6": { "low": 0, "likely": 25, "high": 400 },
+    "m12": { "low": 10, "likely": 150, "high": 2000 },
+    "assumptions": "Estimates, not sourced figures: 2 Shorts a day; Shorts RPM about $0.03-0.06 per 1,000 views (education/geography); the partner programme by the 10M-Shorts-views-in-90-days path around month 4-8 if one Short breaks out; no long videos in the first 6 months"
+  },
+  "demand": {
+    "shortsMedianViews90d": 20075,
+    "smallChannelsWithHit": "24/29",
+    "shortsHitRate": 0.14,
+    "longMedianViews": 414138,
+    "longSmallChannelsWithHit": "1/12",
+    "activeChannels30d": "42/45"
+  },
+  "doable": {
+    "look": "yes, with a new map component (Natural Earth outlines, public domain); the hits are animated maps, flags and simple characters, no footage or faces",
+    "voice": "yes: English, Kokoro US or UK narrator",
+    "policy": "care: disputed borders and wars; no AI-content label needed for maps and drawings"
+  },
+  "writtenAt": "2026-11-17T14:10:00+05:30"
+}
