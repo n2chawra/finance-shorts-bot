@@ -94,6 +94,9 @@ export const ChannelSchema = z.object({
   request: z.object({ niche: z.string(), description: z.string(), references: z.array(z.string()) }).nullable(),
   counts: z.object({ queued: z.number(), published: z.number(), views7d: z.number() }),
   setup: SetupSchema.nullable(),
+  /** after launch: green, amber or red with its one-line reason (ingest, workers/lib/health-sync.ts) */
+  health: z.object({ color: z.enum(["green", "amber", "red"]), reason: z.string(), bufferDays: z.number().nullable().optional(),
+    stayed: z.number().nullable().optional(), usageShare: z.number().nullable().optional(), at: z.string().optional() }).nullable().default(null),
   createdAt: z.string(),
 });
 export type Channel = z.infer<typeof ChannelSchema>;

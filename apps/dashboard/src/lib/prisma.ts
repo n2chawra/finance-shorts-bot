@@ -1,7 +1,7 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
-import { CREATE_SCOPED, SCOPED_OPS, SCOPES, currentChannel } from "./channel-scope";
+import { CREATE_SCOPED, SCOPED_OPS, SCOPES, currentChannel, docWhere, plainKey } from "./channel-scope";
 
 /**
  * Prisma over the node-postgres driver. Netlify runs the API in Ohio and the database is in
@@ -32,6 +32,15 @@ export const prisma = prismaAll.$extends({
     $allModels: {
       async $allOperations({ model, operation, args, query }) {
         const key = lower(model);
+        // the agents' docs are per channel: another channel's keys are "<slug>:<key>", returned as plain keys
+        if (key === "repoDoc" && (operation === "findMany" || operation === "findUnique" || operation === "findFirst")) {
+          const channel = await currentChannel();
+          const a = (args ?? {}) as { where?: Record<string, unknown> };
+          a.where = docWhere(a.where, channel);
+          const rows = await query(a as typeof args);
+          const fix = (r: unknown) => (r && typeof r === "object" && "key" in r ? { ...(r as object), key: plainKey((r as { key: string }).key, channel) } : r);
+          return Array.isArray(rows) ? rows.map(fix) : fix(rows);
+        }
         const scope = SCOPES[key];
         if (scope && SCOPED_OPS.has(operation)) {
           const a = (args ?? {}) as { where?: Record<string, unknown> };

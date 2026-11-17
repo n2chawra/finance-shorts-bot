@@ -33,7 +33,7 @@ from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, 
 from . import editor, experiments, failures, feedback, formats, history, images, looks, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
-from . import channels, pack
+from . import channels, crosschannel, pack
 from .channels import cpath
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
@@ -278,6 +278,8 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         currencies = [c for c in ch["currencies"] if c in CURRENCIES]
         if ch["numbers"] != "none" and plan.get("currency") not in currencies:
             problems.append(f"currency must be one of {', '.join(currencies)}: {ch['currency']} unless the story is about one country")
+        # channels must not look alike (multi-channel plan, step 4): too close to another channel's recent video fails
+        problems += crosschannel.problems(plan, root)
         # a Short has no end card any more, so the description always carries the channel's disclaimer
         if ch["disclaimer"] not in plan["description"]:
             problems.append(f"description must include the disclaimer: {ch['disclaimer']}")

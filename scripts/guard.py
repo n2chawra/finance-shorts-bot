@@ -28,7 +28,8 @@ ALLOW: dict[str, list[str]] = {
                  "improvement/journal.md", "improvement/weekly/*", "improvement/template-decisions.json",
                  "improvement/research/proposals.json", "improvement/research/shapes.json", "improvement/longform/backlog.json",
                  "improvement/feedback-acks/improver.json", "improvement/cycle/*",
-                 "improvement/activity/*-improver.json", "improvement/notifications/improver.json"],
+                 "improvement/activity/*-improver.json", "improvement/notifications/improver.json",
+                 "channels/*/changes.json"],   # each channel's default changes, one at a time (multi-channel step 4)
     "dashboard": ["apps/dashboard/src/*", "apps/dashboard/e2e/*", "apps/dashboard/package.json", "apps/dashboard/package-lock.json",
                   "apps/dashboard/playwright.config.ts", "improvement/dashboard/*", "improvement/activity/*-dashboard.json",
                   "improvement/notifications/dashboard.json", "improvement/feedback-acks/dashboard.json"],
@@ -190,7 +191,33 @@ def merges_today(agent: str, now: datetime) -> int:
     return sum(1 for e in log.get("merges", []) if e.get("agent") == agent and e.get("result") == "merged" and e.get("dayIst") == day)
 
 
-def check(agent: str, base: str, head: str, now: datetime | None = None) -> dict:
+# agents that work for one channel at a time (the routine names it; branch agent/<name>/<date>/<slug>):
+# they may change only their own channel's folder. The shared agents (auditor, improver, dashboard,
+# monthly) work across channels.
+PER_CHANNEL_AGENTS = {"research", "reviewer", "scout", "studio"}
+DEFAULT_CHANNEL = "paisa-panchayat"
+# agents' data (reports, feeds, metrics) is not code: it doesn't count toward the line limit or need tests
+DATA_PREFIXES = ("improvement/", "channels/")
+
+
+def changes_added(base: str, head: str, files: list[tuple[str, str]]) -> list[str]:
+    """One default change at a time per channel: at most one new entry in a channel's changes.json a merge."""
+    out = []
+    for _, path in files:
+        if not re.fullmatch(r"channels/[^/]+/changes\.json", path):
+            continue
+        def count(rev: str) -> int:
+            try:
+                return len(json.loads(show(rev, path) or "{}").get("changes", []))
+            except ValueError:
+                return 0
+        added = count(head) - count(base)
+        if added > 1:
+            out.append(f"{path}: {added} default changes in one merge; one change at a time per channel")
+    return out
+
+
+def check(agent: str, base: str, head: str, now: datetime | None = None, channel: str | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
     reasons: list[str] = []
     if agent not in ALLOW:
@@ -207,6 +234,8 @@ def check(agent: str, base: str, head: str, now: datetime | None = None) -> dict
             reasons.append(f"{path}: protected file; no agent may change it")
         elif not match(path, ALLOW[agent]):
             reasons.append(f"{path}: outside what the {agent} agent may change")
+        if agent in PER_CHANNEL_AGENTS and path.startswith("channels/") and not path.startswith(f"channels/{channel or DEFAULT_CHANNEL}/"):
+            reasons.append(f"{path}: another channel's folder; the {agent} agent works for channels/{channel or DEFAULT_CHANNEL}/ only")
         if status == "D" and TEST_FILE.search(path):
             reasons.append(f"{path}: deleting a test file is not allowed (rewrite or move tests instead)")
         if path.lower().endswith(MEDIA_EXT) and status != "D":
@@ -216,7 +245,7 @@ def check(agent: str, base: str, head: str, now: datetime | None = None) -> dict
     code_lines = 0
     for line in git("diff", "--numstat", "--no-renames", f"{base}...{head}").splitlines():
         added, removed, path = line.split("\t", 2)
-        if not path.startswith("improvement/") and added != "-":
+        if not path.startswith(DATA_PREFIXES) and added != "-":
             code_lines += int(added) + int(removed)
     if code_lines > MAX_LINES[agent]:
         reasons.append(f"{code_lines} changed lines of code; the {agent} agent may change at most {MAX_LINES[agent]} per merge")
@@ -233,9 +262,10 @@ def check(agent: str, base: str, head: str, now: datetime | None = None) -> dict
             if current.startswith("renderer/") and (NETWORK.search(line) or DOWNLOAD.search(line)):
                 reasons.append(f"{current}: the renderer may not use the network or download anything")
     reasons += invariants(head)
+    reasons += changes_added(base, head, files)
     if merges_today(agent, now) >= MAX_MERGES_PER_DAY:
         reasons.append(f"the {agent} agent already merged {MAX_MERGES_PER_DAY} changes today")
-    needs_tests = any(not p.startswith("improvement/") for _, p in files)
+    needs_tests = any(not p.startswith(DATA_PREFIXES) for _, p in files)
     return {"ok": not reasons, "reasons": sorted(set(reasons)), "files": [p for _, p in files], "codeLines": code_lines,
             "needsTests": needs_tests, "areas": areas([p for _, p in files])}
 
@@ -261,8 +291,9 @@ def main() -> int:
     ap.add_argument("--base", default="origin/main")
     ap.add_argument("--head", default="HEAD")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--channel", default=None, help="the channel a per-channel agent's branch names (agent/<name>/<date>/<slug>)")
     a = ap.parse_args()
-    r = check(a.agent, a.base, a.head)
+    r = check(a.agent, a.base, a.head, channel=a.channel)
     if a.json:
         print(json.dumps(r))
     else:

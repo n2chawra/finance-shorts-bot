@@ -35,10 +35,12 @@ jobs:
         id: who
         run: |
           case "$BRANCH" in
-            agent/*) agent=$(echo "$BRANCH" | cut -d/ -f2) ;;
+            agent/*) agent=$(echo "$BRANCH" | cut -d/ -f2); channel=$(echo "$BRANCH" | cut -d/ -f4) ;;
             claude/agent-*) agent=$(echo "$BRANCH" | sed -E 's#^claude/agent-([a-z]+).*#\1#') ;;
           esac
           echo "agent=$agent" >> "$GITHUB_OUTPUT"
+          # a per-channel agent's branch names its channel: agent/<name>/<date>/<slug>
+          echo "$channel" | grep -Eq '^[a-z0-9][a-z0-9-]{1,40}$' && echo "channel=$channel" >> "$GITHUB_OUTPUT" || true
 
       - uses: actions/setup-python@v5
         with:
@@ -67,7 +69,7 @@ jobs:
         if: steps.sync.outputs.conflict != 'true'
         run: |
           git fetch -q origin main
-          python scripts/guard.py --agent "${{ steps.who.outputs.agent }}" --base origin/main --head HEAD --json > "$RUNNER_TEMP/guard.json" || true
+          python scripts/guard.py --agent "${{ steps.who.outputs.agent }}" ${{ steps.who.outputs.channel && format('--channel {0}', steps.who.outputs.channel) || '' }} --base origin/main --head HEAD --json > "$RUNNER_TEMP/guard.json" || true
           cat "$RUNNER_TEMP/guard.json"
           field() { python -c "import json,sys;v=json.load(open('$RUNNER_TEMP/guard.json')).get(sys.argv[1]);print(' '.join(v) if isinstance(v,list) else str(v).lower())" "$1"; }
           echo "ok=$(field ok)" >> "$GITHUB_OUTPUT"

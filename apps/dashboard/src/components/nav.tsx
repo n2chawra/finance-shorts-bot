@@ -147,7 +147,7 @@ function ChannelSwitcher({ onNavigate }: { onNavigate?: () => void }) {
           {(data?.channels ?? []).map((c) => (
             <DropdownMenu.Item key={c.id} onSelect={() => { if (c.id !== data?.current) switchTo(c.id); onNavigate?.(); }}
               className="flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5 text-[13px] outline-none data-[highlighted]:bg-surface-3">
-              <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${c.status === "active" ? "bg-good" : c.status === "paused" ? "bg-warning" : "bg-info"}`} />
+              <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${c.health ? { green: "bg-good", amber: "bg-warning", red: "bg-critical" }[c.health.color] : c.status === "active" ? "bg-good" : c.status === "paused" ? "bg-warning" : "bg-info"}`} />
               <span className="flex-1 truncate">{c.name}</span>
               {c.id === data?.current && <Check aria-hidden className="size-3.5 text-brand" />}
             </DropdownMenu.Item>

@@ -25,6 +25,8 @@ import { syncThumbs } from "./lib/cover.ts";
 import { allChannels, cpath, crel, layout } from "./lib/channels.ts";
 import { CHANNEL_KEYS } from "./lib/channel-auth.ts";
 import { syncSetups } from "./lib/setup-sync.ts";
+import { scopedPrisma } from "./lib/scoped.ts";
+import { syncHealth } from "./lib/health-sync.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -191,7 +193,9 @@ export async function buildChannelsFile(prisma: PrismaClient): Promise<Record<st
     const own = Object.fromEntries(Object.entries((ch.settings ?? {}) as Record<string, unknown>).filter(([k]) => (CHANNEL_KEYS as readonly string[]).includes(k)));
     const queued = (format?: string) => prisma.video.count({ where: { channelId: ch.id, status: "queued", deletedAt: null, ...(format ? { format } : {}) } });
     const setup = ((ch.settings ?? {}) as { setup?: { stage?: string; decision?: unknown } }).setup;
+    const health = ((ch.settings ?? {}) as { health?: unknown }).health;
     out[ch.id] = { name: ch.name, status: ch.status, settings: own, ...(setup ? { setup: { stage: setup.stage, decision: setup.decision ?? null } } : {}),
+      ...(health ? { health } : {}),
       backlog: await queued(), backlogByFormat: { short: await queued("short"), long: await queued("long") } };
   }
   return { note: "Written by ingest from the Channel table. Routines read their channel's entry (generator/settings.py).", channels: out };
@@ -266,15 +270,28 @@ async function main(): Promise<void> {
     // self-improving agents: their reports and decisions in, the metrics they judge by out
     const templateDecisions = await applyTemplateDecisions(prisma, ROOT);
     const activity = await importActivity(prisma, ROOT);
-    await importAgentNotifications(prisma, ROOT);
-    await snapshotDocs(prisma, ROOT);
     // new channels' setup: the scan's and the skill's progress and the quick verdict, for the Channels page
     const setups = await syncSetups(prisma, ROOT);
     if (setups.length) console.log(`setup: ${setups.join("; ")}`);
-    // the editor's ranking of the ready videos, and the improver's answers to the owner's notes
-    const ranked = await importEditorRanking(prisma, ROOT);
-    const acks = await importFeedbackAcks(prisma, ROOT);
-    const metricsChanged = await exportMetrics(prisma, ROOT);
+    // per channel, each with its own folder (CHANNEL) and a client narrowed to its rows (lib/scoped.ts):
+    // the agents' notifications and docs in, the editor's ranking and the answers to the owner's notes in,
+    // and the metrics the weekly loop judges by out. Channel #1's rows and files are exactly as before.
+    let ranked: string[] = [], acks = 0, metricsChanged = false;
+    const before = process.env.CHANNEL;
+    for (const ch of await prisma.channel.findMany({ orderBy: { createdAt: "asc" } })) {
+      if (!existsSync(path.join(ROOT, "channels", ch.id)) && ch.id !== layout().default) continue;
+      process.env.CHANNEL = ch.id;
+      const p = scopedPrisma(prisma, ch.id);
+      await importAgentNotifications(p, ROOT);
+      await snapshotDocs(p, ROOT);
+      ranked = [...ranked, ...(await importEditorRanking(p, ROOT))];
+      acks += await importFeedbackAcks(p, ROOT);
+      metricsChanged = (await exportMetrics(p, ROOT)) || metricsChanged;
+    }
+    if (before === undefined) delete process.env.CHANNEL; else process.env.CHANNEL = before;
+    // each live channel's health: buffer, stayed to watch, the stop rule, usage, the Monday digest (lib/health-sync.ts)
+    const healths = await syncHealth(prisma, ROOT);
+    console.log(`health: ${healths.join("; ")}`);
 
     const file = path.join(ROOT, "config", "settings.json");
     const next = JSON.stringify(await buildRoutineSettings(prisma), null, 2) + "\n";

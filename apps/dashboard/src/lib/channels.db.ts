@@ -1,6 +1,6 @@
 import type { Prisma } from "@prisma/client";
 
-import { type Channel, type ChannelCreate, type ChannelPatch, ChannelSettingsSchema, DEFAULT_CHANNEL, type ReviewAction, ReviewSchema, SetupSchema, slugify } from "./channels";
+import { type Channel, type ChannelCreate, type ChannelPatch, ChannelSchema, ChannelSettingsSchema, DEFAULT_CHANNEL, type ReviewAction, ReviewSchema, SetupSchema, slugify } from "./channels";
 import { dispatchWorkflow } from "./dispatch";
 import { type PlanChannel, type Slot, fitCheck, promptFor } from "./routine-plan";
 import { prismaAll as db } from "./prisma";
@@ -31,6 +31,7 @@ export async function listChannels(): Promise<Channel[]> {
       settings: own.success ? own.data : {}, request: stored.request ?? null,
       counts: { queued: count("queued"), published: count("published"), views7d: Number(views.find((v) => v.channelId === r.id)?.views ?? 0) },
       setup: stored.setup ? (SetupSchema.safeParse(stored.setup).data ?? null) : null,
+      health: ChannelSchema.shape.health.safeParse(stored.health ?? null).data ?? null,
       createdAt: r.createdAt.toISOString(),
     };
   });

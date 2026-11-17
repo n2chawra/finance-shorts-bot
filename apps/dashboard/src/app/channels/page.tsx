@@ -231,6 +231,11 @@ function QuotaLine({ channels, platform }: { channels: Channel[]; platform?: { d
   );
 }
 
+const HEALTH = { green: "bg-good", amber: "bg-warning", red: "bg-critical" } as const;
+function HealthDot({ color }: { color: keyof typeof HEALTH }) {
+  return <span aria-label={`Health: ${color}`} className={`inline-block size-2 shrink-0 rounded-full ${HEALTH[color]}`} />;
+}
+
 function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
   const patch = usePatchChannel();
   const toast = useToast();
@@ -245,7 +250,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
 
   return (
     <Card icon={Tv} accent={current ? "lime" : "surface"} title={<span className="flex flex-wrap items-center gap-2">{c.name}<Badge tone={s.tone} dot>{s.label}</Badge>{current && <Badge tone="brand">Showing</Badge>}</span>}
-      description={s.why}
+      description={c.health && c.status !== "setup" ? <span className="flex items-center gap-1.5"><HealthDot color={c.health.color} />{c.health.reason}{c.health.usageShare != null ? ` · ${Math.round(c.health.usageShare * 100)}% of the week's routine time` : ""}</span> : s.why}
       action={!current && <Button size="sm" onClick={() => switchTo(c.id)}>Show this channel</Button>}>
       {c.setup && c.status === "setup" && <SetupPanel c={c} />}
       {c.setup && c.status === "setup" && ["samples", "review"].includes(c.setup.stage) && <ReviewPanel c={c} />}

@@ -7,11 +7,15 @@
 name: Niche scan
 
 on:
+  # monthly re-research (multi-channel plan, step 4): every live channel's niche again on the 1st, so the
+  # families and the challenger list follow shifts in what the niche watches
+  schedule:
+    - cron: "17 4 1 * *"   # 09:47 IST on the 1st
   workflow_dispatch:
     inputs:
       slug:
-        description: "Channel slug (channels/<slug>/)"
-        required: true
+        description: "Channel slug (channels/<slug>/); empty scans every live channel"
+        required: false
 
 permissions:
   contents: write
@@ -34,11 +38,16 @@ jobs:
       YT_WEB_CLIENT_ID: ${{ secrets.YT_WEB_CLIENT_ID }}
       YT_WEB_CLIENT_SECRET: ${{ secrets.YT_WEB_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-      SLUG: ${{ inputs.slug }}
+      SLUG: ${{ inputs.slug || '' }}
     steps:
-      - name: Check the slug
-        run: echo "$SLUG" | grep -Eq '^[a-z0-9][a-z0-9-]{1,40}$' || { echo "::error::bad slug"; exit 1; }
       - uses: actions/checkout@v4
+      - name: Which channels
+        run: |
+          if [ -n "$SLUG" ]; then slugs="$SLUG"
+          else slugs=$(python3 -c "import json,os;c=json.load(open('config/channels.json'))['channels'];print(' '.join(k for k,v in c.items() if v['status'] in ('active','paused') and os.path.exists(f'channels/{k}/research/scan-request.json')))")
+          fi
+          for s in $slugs; do echo "$s" | grep -Eq '^[a-z0-9][a-z0-9-]{1,40}$' || { echo "::error::bad slug $s"; exit 1; }; done
+          echo "SLUGS=$slugs" >> "$GITHUB_ENV"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -64,14 +73,14 @@ jobs:
       - name: Scan
         working-directory: workers
         shell: bash
-        run: npm run niche-scan -- "$SLUG" "$RUNNER_TEMP/niche-data" | tee -a "$GITHUB_STEP_SUMMARY"
+        run: for s in $SLUGS; do npm run niche-scan -- "$s" "$RUNNER_TEMP/niche-data" | tee -a "$GITHUB_STEP_SUMMARY"; done
       - name: Commit the aggregates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for f in "channels/$SLUG/research/scan.json" "channels/$SLUG/research/scan-request.json" "channels/$SLUG/setup.json"; do [ ! -e "$f" ] || git add "$f"; done
+          for s in $SLUGS; do for f in "channels/$s/research/scan.json" "channels/$s/research/scan-request.json" "channels/$s/setup.json"; do [ ! -e "$f" ] || git add "$f"; done; done
           if git diff --cached --quiet; then echo "no change"; exit 0; fi
-          git commit -q -m "Niche scan for $SLUG"
+          git commit -q -m "Niche scan: $SLUGS"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
       - name: Replace the niche-data branch
         run: |

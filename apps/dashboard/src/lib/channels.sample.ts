@@ -4,10 +4,11 @@ import { type Channel, type ChannelCreate, type ChannelPatch, DEFAULT_CHANNEL, s
 const now = new Date().toISOString();
 const channels: Channel[] = [
   { id: DEFAULT_CHANNEL, name: "Paisa Panchayat", status: "active", connected: true, youtubeChannelId: "UC-sample-1", connectedAt: now,
-    settings: {}, request: null, counts: { queued: 6, published: 64, views7d: 4210 }, setup: null, createdAt: "2026-10-13T00:00:00.000Z" },
+    settings: {}, request: null, counts: { queued: 6, published: 64, views7d: 4210 }, setup: null,
+    health: { color: "amber", reason: "stayed to watch fell to 37% from 44%: diagnosis tonight", bufferDays: 2, stayed: 0.37, usageShare: 1 }, createdAt: "2026-10-13T00:00:00.000Z" },
   { id: "space-facts-daily", name: "Space Facts Daily", status: "setup", connected: false, youtubeChannelId: null, connectedAt: null,
     settings: { dailyVideoTarget: 1 }, request: { niche: "Space facts", description: "Short true facts about space and missions.", references: ["https://www.youtube.com/@example"] },
-    counts: { queued: 0, published: 0, views7d: 0 }, createdAt: now,
+    counts: { queued: 0, published: 0, views7d: 0 }, createdAt: now, health: null,
     setup: { stage: "verdict", review: null, decision: null, note: "Waiting for your decision", updatedAt: now, verdict: {
       call: "go-with-conditions", reason: "Steady demand and small channels break out; the look needs NASA images, which are public domain.",
       conditions: ["Use NASA public-domain images, never footage from other channels", "Shorts first; long videos only after a Short passes 5K"],
@@ -16,7 +17,7 @@ const channels: Channel[] = [
       earnings: { m6: { low: 0, likely: 40, high: 300 }, m12: { low: 20, likely: 250, high: 1500 }, assumptions: "1 to 3 Shorts a day; Shorts RPM $0.03 to $0.08; partner programme around month 4 to 6" },
       demand: { shortsMedianViews90d: 14200, smallChannelsWithHit: "7/19", direction: 1.3 }, doable: { look: "yes", voice: "yes", policy: "fine" } } } },
   { id: "space-facts-daily-review", name: "Space Facts Daily (review)", status: "setup", connected: true, youtubeChannelId: "UC-sample-2", connectedAt: now,
-    settings: { dailyVideoTarget: 1 }, request: null, counts: { queued: 2, published: 0, views7d: 0 }, createdAt: now,
+    settings: { dailyVideoTarget: 1 }, request: null, counts: { queued: 2, published: 0, views7d: 0 }, createdAt: now, health: null,
     setup: { stage: "review", verdict: null, decision: { choice: "continue", at: now }, note: "Samples ready for your review", updatedAt: now, review: {
       advice: [
         "## Topic kinds to make", "1. **Real objects in space and what they cost** (core, 2.1x): 2 in 3 Shorts.",
@@ -52,7 +53,7 @@ export async function patchChannel(id: string, p: ChannelPatch): Promise<Channel
 export async function addChannel(n: ChannelCreate): Promise<Channel | { error: string }> {
   const c: Channel = { id: slugify(n.name ?? n.niche), name: n.name ?? n.niche, status: "setup", connected: false, youtubeChannelId: null, connectedAt: null,
     settings: { dailyVideoTarget: 1 }, request: { niche: n.niche, description: n.description, references: n.references },
-    counts: { queued: 0, published: 0, views7d: 0 }, createdAt: new Date().toISOString(),
+    counts: { queued: 0, published: 0, views7d: 0 }, createdAt: new Date().toISOString(), health: null,
     setup: { stage: "scanning", review: null, verdict: null, decision: null, note: "Reading the niche on YouTube (about 10 minutes)", updatedAt: new Date().toISOString() } };
   if (channels.some((x) => x.id === c.id)) c.id = `${c.id}-${Date.now().toString(36).slice(-5)}`;
   channels.push(c);

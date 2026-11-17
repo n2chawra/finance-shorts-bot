@@ -195,3 +195,33 @@ def test_every_agent_may_answer_the_owners_notes_in_its_own_file_only(repo: Path
     other = "research" if agent != "research" else "dashboard"
     change(repo, f"improvement/feedback-acks/{other}.json", '{"acks": []}\n')
     assert not guard.check(agent, "main", "HEAD")["ok"]
+
+
+# ---------------- many channels (multi-channel plan, step 4) ----------------
+
+def test_a_per_channel_agent_stays_in_its_channel_folder(repo: Path) -> None:
+    change(repo, "channels/space-facts/research/topics.json", "{}\n")
+    ok = guard.check("research", "main", "HEAD", channel="space-facts")
+    assert ok["ok"], ok["reasons"]
+    change(repo, "channels/paisa-panchayat/research/topics.json", "{}\n")
+    r = guard.check("research", "main", "HEAD", channel="space-facts")
+    assert any("another channel's folder" in x for x in r["reasons"]), r["reasons"]
+
+
+def test_without_a_channel_a_per_channel_agent_works_for_channel_one(repo: Path) -> None:
+    change(repo, "channels/space-facts/research/topics.json", "{}\n")
+    r = guard.check("research", "main", "HEAD")
+    assert any("channels/paisa-panchayat/ only" in x for x in r["reasons"]), r["reasons"]
+
+
+def test_channel_data_is_not_code(repo: Path) -> None:
+    change(repo, "channels/paisa-panchayat/research/2026-11-20.md", "line\n" * 5000)
+    r = guard.check("research", "main", "HEAD")
+    assert r["codeLines"] == 0 and not r["needsTests"], r
+
+
+def test_one_default_change_at_a_time_per_channel(repo: Path) -> None:
+    entry = lambda w: {"at": "2026-11-20T00:00:00Z", "what": w, "from": 1, "to": 2, "why": "x", "by": "improver"}
+    change(repo, "channels/space-facts/changes.json", json.dumps({"changes": [entry("a"), entry("b")]}))
+    r = guard.check("improver", "main", "HEAD")
+    assert any("one change at a time" in x for x in r["reasons"]), r["reasons"]
