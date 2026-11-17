@@ -98,3 +98,10 @@ export async function launchChannel(id: string): Promise<Channel | { error: stri
   c.setup = { ...c.setup, stage: "launched" };
   return { ...c };
 }
+
+export async function channelFit(id: string) {
+  const { fitCheck, promptFor } = await import("./routine-plan");
+  const live = [{ id: DEFAULT_CHANNEL, name: "Paisa Panchayat", shortsPerDay: 3, longPerWeek: 2, uploadTimes: ["07:07", "12:37", "19:07"], longUploadTimes: ["20:07"] }];
+  const f = fitCheck(live, { id, name: id, shortsPerDay: 2, longPerWeek: 0, uploadTimes: ["08:07", "14:07"] });
+  return { fits: f.fits, problems: f.problems, slots: f.slots.map((s) => ({ ...s, prompt: promptFor(s) })) };
+}

@@ -202,8 +202,24 @@ clicks **I like it**, sends **notes**, or **Stop**. Read `config/channels.json` 
 - **Approved** (`review.approved`): the approved samples become the channel's reference videos (the
   director and QA work to them, as `v-directed-netflix` is for channel #1). The owner then creates the
   channel on YouTube from the branding kit, clicks **Connect YouTube**, then **Launch**: the channel goes
-  live with the accepted counts, and its samples are the first uploads. The channel's routines are
-  step 3e.
+  live with the accepted counts, and its samples are the first uploads. The Launch review shows the
+  routine times the channel will get and refuses Launch when it doesn't fit (window A full, the spare
+  run past 12:00, upload slots under 20 minutes apart).
+
+## 7. Routines (right after Launch, status `active`)
+
+```bash
+cd workers && npm run routines -- --add <slug>
+```
+
+prints the channel's routines (research, video run, and Studio/Scout when long videos are on, the
+reviewer), each with its IST time, days, UTC cron line and prompt, and any shared routine the channel
+pushes later ("Also move the shared spare routine: 09:07 → 09:47"). Creating a routine is a standing
+change to the owner's account: **list them for the owner and wait for a yes**, then create each with
+the `schedule` skill (claude.ai → Code → Routines), the prompt exactly as printed, and edit the moved
+shared routines' times. Then update `workers/lib/schedule.ts` `SCHEDULE` if a shared routine moved,
+and `setup.json` → `{"stage": "launched"}`, commit and push. Routines of a paused channel keep firing
+and exit in seconds, so pausing never needs rescheduling.
 
 ## Rules
 

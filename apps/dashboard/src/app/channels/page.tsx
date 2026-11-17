@@ -7,7 +7,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useToast } from "@/components/toast";
 import { Badge, Button, Card, ErrorNote, Loading, PageHeader, Segmented, Stagger, type Tone, buttonClass, fieldClass } from "@/components/ui";
 import type { Channel, ChannelStatus, SetupStage, Verdict } from "@/lib/channels";
-import { useAddChannel, useChannelSamples, useChannels, useDecideChannel, useLaunchChannel, usePatchChannel, useReviewChannel, useSettings, useSwitchChannel } from "@/lib/queries";
+import { useAddChannel, useChannelFit, useChannelSamples, useChannels, useDecideChannel, useLaunchChannel, usePatchChannel, useReviewChannel, useSettings, useSwitchChannel } from "@/lib/queries";
 
 /*
  * Channels (multi-channel plan, step 2): every YouTube channel the platform runs. Start, pause and
@@ -129,6 +129,7 @@ function ReviewPanel({ c }: { c: Channel }) {
   const setup = c.setup!;
   const review = setup.review;
   const { data: samples } = useChannelSamples(c.id, true);
+  const { data: fit } = useChannelFit(c.id, setup.stage === "review");
   const act = useReviewChannel();
   const launch = useLaunchChannel();
   const toast = useToast();
@@ -191,12 +192,22 @@ function ReviewPanel({ c }: { c: Channel }) {
         </form>
       </div>
 
+      {fit && (
+        <div className="rounded-lg bg-surface-2 p-3 text-[12.5px]">
+          <div className="font-medium">{fit.fits ? "Its routines (IST)" : "It doesn't fit the routine schedule"}</div>
+          {fit.problems.map((p) => <p key={p} className="mt-1 text-critical-text">{p}</p>)}
+          <ul className="mt-1 grid gap-x-4 text-ink2 sm:grid-cols-2">
+            {fit.slots.filter((s) => s.routine !== "market").map((s) => <li key={`${s.routine}${s.days}`}>{s.ist} {s.routine} · {s.days === "daily" ? "every day" : s.days}</li>)}
+          </ul>
+        </div>
+      )}
+
       <div className="flex flex-wrap items-center gap-2 border-t border-line pt-3">
         {!review?.approved && (
           <Button tone="primary" disabled={act.isPending || setup.stage !== "review"} onClick={() => act.mutate({ id: c.id, action: "approve", shortsPerDay: Number(perDay), longPerWeek: Number(perWeek) }, done("Approved"))}>I like it</Button>
         )}
         {review?.approved && (
-          <Button tone="primary" icon={Rocket} disabled={launch.isPending || !c.connected} onClick={() => launch.mutate(c.id, done(`${c.name} is live: the first upload is the next slot`))}>Launch</Button>
+          <Button tone="primary" icon={Rocket} disabled={launch.isPending || !c.connected || fit?.fits === false} onClick={() => launch.mutate(c.id, done(`${c.name} is live: the first upload is the next slot`))}>Launch</Button>
         )}
         {review?.approved && !c.connected && <span className="text-[12px] text-muted">Create the channel on YouTube from the branding kit, then Connect YouTube to launch.</span>}
         <Button disabled={act.isPending} onClick={() => act.mutate({ id: c.id, action: "stop" }, done("Stopped"))}>Stop</Button>

@@ -8,6 +8,8 @@ run the test suite, do not explore the codebase, and do not improve things you w
 
 **Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names, else `paisa-panchayat` (today's only channel). Pass `--channel <channel>` to `python -m generator.run` when your prompt names one. Shared code, `config/settings.json` and `improvement/activity/` stay where they are. **Another channel than Paisa Panchayat** also has `channels/<channel>/channel.json` (its language, voices, currency, numbers mode, disclaimer, true or fiction stories, look; `python -m generator.pack show <channel>`) and `channels/<channel>/prompts/recipe.md`, its champion recipe: where CLAUDE.md describes Paisa Panchayat's recipe, topics or look, that channel follows its own recipe.md and pack instead; the hard rules (true facts or declared fiction, figures from code, uniqueness, voice only from Kokoro) bind every channel.
 
+**The spare run with many channels** (09:07, shared). When the prompt says "spare run" and names no channel: for every channel in `config/channels.json` with `status: "active"`, run `python -m generator.run state --channel <channel>`; take the one in `mode: "video"` with the smallest `backlog` (ties: channel #1 first) and do one run for it. If none is in `mode: "video"`, report "nothing to make up" and stop. One channel a spare run.
+
 ## 0. Prepare
 
 ```

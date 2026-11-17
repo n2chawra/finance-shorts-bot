@@ -2,6 +2,7 @@ import type { Prisma } from "@prisma/client";
 
 import { type Channel, type ChannelCreate, type ChannelPatch, ChannelSettingsSchema, DEFAULT_CHANNEL, type ReviewAction, ReviewSchema, SetupSchema, slugify } from "./channels";
 import { dispatchWorkflow } from "./dispatch";
+import { type PlanChannel, type Slot, fitCheck, promptFor } from "./routine-plan";
 import { prismaAll as db } from "./prisma";
 
 /** Channel.settings holds the channel's own settings plus the owner's setup request (`request`). */
@@ -132,10 +133,40 @@ export async function launchChannel(id: string): Promise<Channel | { error: stri
   const approved = setup.success ? setup.data.review?.approved : null;
   if (!setup.success || setup.data.stage !== "review" || !approved) return { error: "Approve the samples on the Launch review first" };
   if (!row.refreshTokenEnc) return { error: "Connect YouTube first: the channel has no sign-in yet" };
+  const fit = await channelFit(id);
+  if ("error" in fit) return fit;
+  if (!fit.fits) return { error: `It doesn't fit the routine schedule: ${fit.problems.join("; ")}` };
   const now = new Date().toISOString();
   await db.channel.update({ where: { id }, data: { status: "active", settings: {
     ...stored, dailyVideoTarget: approved.shortsPerDay, longPerWeek: approved.longPerWeek, generationPaused: false, uploadsPaused: false,
     setup: { ...setup.data, stage: "launched", note: `Launched ${now.slice(0, 10)}: the approved samples go out first`, updatedAt: now },
   } as Prisma.InputJsonValue } });
   return (await getChannel(id))!;
+}
+
+/** A channel as the routine planner sees it: its own counts and slots over the platform's. */
+async function planOf(rows: { id: string; name: string; settings: unknown }[], override?: { id: string; shortsPerDay: number; longPerWeek: number }): Promise<PlanChannel[]> {
+  const platform = Object.fromEntries((await db.setting.findMany({ where: { key: { in: ["dailyVideoTarget", "longPerWeek", "uploadTimes", "longUploadTimes"] } } })).map((s) => [s.key, s.value]));
+  return rows.map((r) => {
+    const own = (r.settings ?? {}) as Record<string, unknown>;
+    const pick = <T,>(k: string, d: T): T => (own[k] ?? platform[k] ?? d) as T;
+    const o = override?.id === r.id ? override : null;
+    return { id: r.id, name: r.name, shortsPerDay: o?.shortsPerDay ?? pick("dailyVideoTarget", 3), longPerWeek: o?.longPerWeek ?? pick("longPerWeek", 0),
+      uploadTimes: pick<string[]>("uploadTimes", []), longUploadTimes: pick<string[]>("longUploadTimes", []) };
+  });
+}
+
+export type ChannelFit = { fits: boolean; problems: string[]; slots: (Slot & { prompt: string })[] };
+
+/** Whether a channel in review fits next to the live channels, with the routines it would get. */
+export async function channelFit(id: string): Promise<ChannelFit | { error: string }> {
+  const row = await db.channel.findUnique({ where: { id } });
+  if (!row) return { error: "No such channel" };
+  const setup = SetupSchema.safeParse(((row.settings ?? {}) as Stored).setup);
+  const approved = setup.success ? setup.data.review?.approved : null;
+  const counts = approved ?? (setup.success ? setup.data.review?.counts : null);
+  const live = await db.channel.findMany({ where: { status: { in: ["active", "paused"] }, NOT: { id } }, orderBy: { createdAt: "asc" } });
+  const [plan] = await Promise.all([planOf([...live, row], counts ? { id, shortsPerDay: counts.shortsPerDay, longPerWeek: counts.longPerWeek } : undefined)]);
+  const f = fitCheck(plan.slice(0, -1), plan[plan.length - 1]!);
+  return { fits: f.fits, problems: f.problems, slots: f.slots.map((s) => ({ ...s, prompt: promptFor(s) })) };
 }

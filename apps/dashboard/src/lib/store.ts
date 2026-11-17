@@ -79,3 +79,4 @@ export const channelSamples = async (id: string) => (useDb ? channelsDb.channelS
 export const reviewChannel = async (id: string, a: import("./channels").ReviewAction): Promise<Channel | { error: string }> =>
   (useDb ? channelsDb.reviewChannel(id, a) : channelsSample.reviewChannel(id, a));
 export const launchChannel = async (id: string): Promise<Channel | { error: string }> => (useDb ? channelsDb.launchChannel(id) : channelsSample.launchChannel(id));
+export const channelFit = async (id: string) => (useDb ? channelsDb.channelFit(id) : channelsSample.channelFit(id));

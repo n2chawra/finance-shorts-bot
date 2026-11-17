@@ -82,3 +82,5 @@ const SampleSchema = z.object({ id: z.string(), title: z.string(), format: z.str
 export const useChannelSamples = (id: string, enabled: boolean) => useQuery({ queryKey: ["channel-samples", id], queryFn: () => getJson(`/api/channels/${id}/review`, z.array(SampleSchema)), enabled });
 export const useReviewChannel = () => useWrite(({ id, ...body }: { id: string } & import("./channels").ReviewAction) => send("POST", `/api/channels/${id}/review`, body));
 export const useLaunchChannel = () => useWrite((id: string) => send("POST", `/api/channels/${id}/launch`));
+const FitSchema = z.object({ fits: z.boolean(), problems: z.array(z.string()), slots: z.array(z.object({ routine: z.string(), ist: z.string(), days: z.string(), window: z.string(), cron: z.string(), prompt: z.string() })) });
+export const useChannelFit = (id: string, enabled: boolean) => useQuery({ queryKey: ["channel-fit", id], queryFn: () => getJson(`/api/channels/${id}/launch`, FitSchema), enabled });
