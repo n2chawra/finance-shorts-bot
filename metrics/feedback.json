@@ -1,7 +1,26 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
+  "open": 1,
   "notes": [
+    {
+      "id": "cmwk4neu10001jy09ifqrxyku",
+      "kind": "wrong",
+      "area": null,
+      "text": "Our background music and effects sound is same in every video. This is wrong. Just like director making scene different for different video this should also be different for different video.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-17T03:22:59.162Z",
+      "video": {
+        "id": "v-20261117-01",
+        "title": "Edwin Castro won the biggest jackpot ever. Why wasn't it all his? 🎟️",
+        "format": "short",
+        "status": "published",
+        "story": "money_scale",
+        "shape": "pick-one",
+        "hookStyle": "shock_number",
+        "hook": "Edwin Castro won the biggest jackpot ever. So why wasn't it all his?"
+      }
+    },
     {
       "id": "cmwja6eul0001l309u0m9kmm5",
       "kind": "general",
