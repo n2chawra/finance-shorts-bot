@@ -16,7 +16,7 @@ import { notify, resolve } from "./lib/notify.ts";
 import { istDay } from "./lib/publishing.ts";
 import { youtubeClientConfigured } from "./lib/uploads.ts";
 import { layout } from "./lib/channels.ts";
-import { activeChannels, refreshTokenOf } from "./lib/channel-auth.ts";
+import { activeChannels, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { accessToken, comments, report } from "./lib/youtube.ts";
 
 const DAY_MS = 86_400_000;
@@ -104,7 +104,7 @@ async function main(): Promise<void> {
   const prisma = new PrismaClient();
   try {
     for (const ch of await activeChannels(prisma, true)) {
-      const refreshToken = refreshTokenOf(ch);
+      const refreshToken = tokenOf(ch);
       if (!refreshToken) { console.log(`::notice::${ch.id} is not connected to YouTube yet.`); continue; }
       console.log(`== ${ch.name} (${ch.id})`);
       await deepChannel(prisma, ch.id, ch.name, refreshToken, ch.id === layout().default);
@@ -114,10 +114,10 @@ async function main(): Promise<void> {
   }
 }
 
-async function deepChannel(prisma: PrismaClient, channelId: string, channelName: string, refreshToken: string, first: boolean): Promise<void> {
+async function deepChannel(prisma: PrismaClient, channelId: string, channelName: string, refreshToken: ChannelToken, first: boolean): Promise<void> {
   const errors: string[] = [];
   {
-    const token = await accessToken(refreshToken);
+    const token = await accessToken(refreshToken.refreshToken, refreshToken.client);
     const end = istDay(new Date(Date.now() - DAY_MS));
     let channelRows = 0;
     for (const [days, formats] of CHANNEL_RANGES) {

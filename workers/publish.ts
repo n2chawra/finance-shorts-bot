@@ -33,7 +33,7 @@ import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { TokenError, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
 import { coverFile } from "./lib/cover.ts";
 import { cpath, layout } from "./lib/channels.ts";
-import { activeChannels, channelSettings, refreshTokenOf } from "./lib/channel-auth.ts";
+import { activeChannels, channelSettings, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { COST, QuotaKeeper } from "./lib/quota.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -79,7 +79,7 @@ async function main(): Promise<void> {
         key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: ` };
       console.log(`== ${ch.name} (${ch.id})`);
       try {
-        await publishChannel(prisma, run, refreshTokenOf(ch));
+        await publishChannel(prisma, run, tokenOf(ch));
       } catch (e) {
         console.error(`::error::${ch.id}: ${e instanceof Error ? e.message : e}`);
         failures.push(ch.id);
@@ -99,13 +99,13 @@ async function main(): Promise<void> {
   if (failures.length) throw new Error(`publishing failed for ${failures.join(", ")}`);
 }
 
-async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: string | null): Promise<void> {
+async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: ChannelToken | null): Promise<void> {
   const { channelId, settings } = run;
   if (!refreshToken) return void console.log(`::notice::${channelId} is not connected to YouTube yet. Nothing uploaded.`);
   {
     let token: string;
     try {
-      token = await accessToken(refreshToken);
+      token = await accessToken(refreshToken.refreshToken, refreshToken.client);
       await resolve(prisma, run.key("youtube-token"));
     } catch (e) {
       if (e instanceof TokenError) {

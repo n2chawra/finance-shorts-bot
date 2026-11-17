@@ -460,6 +460,21 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   - Not yet per channel: watchdog, data audit and market still use channel #1's secret (they are
     channel #1's today); the guard doesn't yet confine a channel's agents to its own folder (step 4).
 
+- **2026-11-17: step 2 (dashboard) done.**
+  - A channel switcher in the sidebar (cookie `channel`); every page's reads are scoped to it by a
+    Prisma extension (`apps/dashboard/src/lib/channel-scope.ts`); platform-wide notifications,
+    feedback and agent nights (channelId null) show on every channel.
+  - A Channels page: status, counts, pause and resume, Shorts a day, upload times, Add channel
+    (niche, description, 1–3 references; starts in `setup`, 1 Short a day), Connect YouTube.
+  - Connect YouTube: Google sign-in with a *web* OAuth client (`YT_WEB_CLIENT_ID/SECRET`), the token
+    sealed with `SESSION_SECRET` (same format as the workers, which refresh it with the web client),
+    `channels.list mine=true` checked, a YouTube channel already linked elsewhere refused.
+  - Routines: ingest writes `config/channels.json` (status, own settings, own backlog);
+    `generator/settings.py` overlays the current channel and pauses generation for a channel that
+    isn't active.
+  - Owner, once: create the web OAuth client and add `YT_WEB_CLIENT_ID`, `YT_WEB_CLIENT_SECRET` (Netlify
+    and GitHub) and `SESSION_SECRET` (GitHub).
+
 ## Order of work
 1. **Platform refactor** (layout, database, workers, quota keeper, `--channel`). Channel #1 keeps
    running unchanged, and the test suites prove it.

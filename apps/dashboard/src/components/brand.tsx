@@ -20,10 +20,10 @@ export function LogoMark({ className = "size-8" }: { className?: string }) {
   );
 }
 
-export function Wordmark({ sub = "Studio", tone = "ink" }: { sub?: string; tone?: "ink" | "light" }) {
+export function Wordmark({ sub = "Studio", tone = "ink", name = "Paisa Panchayat" }: { sub?: string; tone?: "ink" | "light"; name?: string }) {
   return (
     <span className="min-w-0 leading-tight">
-      <span className={`block truncate text-[14px] font-semibold tracking-[-0.01em] ${tone === "light" ? "text-white" : "text-ink"}`}>Paisa Panchayat</span>
+      <span className={`block truncate text-[14px] font-semibold tracking-[-0.01em] ${tone === "light" ? "text-white" : "text-ink"}`}>{name}</span>
       <span className={`block truncate text-[11.5px] ${tone === "light" ? "text-white/60" : "text-muted"}`}>{sub}</span>
     </span>
   );

@@ -44,3 +44,31 @@ def test_channel_flag_anywhere_on_the_command_line():
     assert _pop_channel(["state", "--channel", "abc-1", "--format", "long"]) == (["state", "--format", "long"], "abc-1")
     assert _pop_channel(["--channel=abc-1", "render", "v-1"]) == (["render", "v-1"], "abc-1")
     assert _pop_channel(["render", "v-1"]) == (["render", "v-1"], None)
+
+
+def _repo(tmp_path, channels: dict):
+    import json
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "settings.json").write_text(json.dumps({"dailyVideoTarget": 3, "backlog": 9, "generationPaused": False}), encoding="utf-8")
+    (tmp_path / "config" / "channels.json").write_text(json.dumps({"channels": channels}), encoding="utf-8")
+    return tmp_path
+
+
+def test_a_channel_overrides_its_own_settings_and_backlog(tmp_path, monkeypatch):
+    from generator.settings import load
+    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    root = _repo(tmp_path, {"paisa-panchayat": {"status": "active", "settings": {"dailyVideoTarget": 1, "agents": {"paused": True}}, "backlog": 2}})
+    s = load(root)
+    assert s["dailyVideoTarget"] == 1 and s["backlog"] == 2 and s["generationPaused"] is False
+    assert "agents" not in s or s.get("agents", {}).get("paused") is not True
+
+
+def test_a_paused_or_unlaunched_channel_makes_nothing(tmp_path, monkeypatch):
+    from generator.settings import load
+    root = _repo(tmp_path, {"paisa-panchayat": {"status": "active"}, "second-one": {"status": "paused"}, "third": {"status": "setup"}})
+    monkeypatch.setenv("CHANNEL", "second-one")
+    assert load(root)["generationPaused"] is True
+    monkeypatch.setenv("CHANNEL", "third")
+    assert load(root)["generationPaused"] is True
+    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    assert load(root)["generationPaused"] is False

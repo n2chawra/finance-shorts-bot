@@ -35,11 +35,30 @@ export function decryptToken(sealed: string, secret?: string): string {
   return Buffer.concat([decipher.update(Buffer.from(data, "base64url")), decipher.final()]).toString("utf8");
 }
 
-/** The refresh token for a channel, or null when it isn't connected yet. */
-export function refreshTokenOf(ch: Pick<Channel, "id" | "refreshTokenEnc">, env: NodeJS.ProcessEnv = process.env): string | null {
-  if (ch.refreshTokenEnc) return decryptToken(ch.refreshTokenEnc, env.SESSION_SECRET);
-  if (ch.id === layout().default && env.YT_REFRESH_TOKEN) return env.YT_REFRESH_TOKEN;
+/** A channel's sign-in: its refresh token and which OAuth client issued it ("web": the dashboard's
+ * "Connect YouTube", YT_WEB_CLIENT_ID; "desktop": workers/auth.ts, YT_CLIENT_ID). */
+export type ChannelToken = { refreshToken: string; client: "web" | "desktop" };
+
+/** The sealed text is JSON { rt, client } (apps/dashboard/src/lib/channel-token.ts), or a bare token. */
+export function openToken(sealed: string, secret?: string): ChannelToken {
+  const text = decryptToken(sealed, secret);
+  try {
+    const j = JSON.parse(text) as { rt?: string; client?: string };
+    if (j.rt) return { refreshToken: j.rt, client: j.client === "web" ? "web" : "desktop" };
+  } catch { /* a bare token */ }
+  return { refreshToken: text, client: "desktop" };
+}
+
+/** The sign-in for a channel, or null when it isn't connected yet. Channel #1 falls back to YT_REFRESH_TOKEN. */
+export function tokenOf(ch: Pick<Channel, "id" | "refreshTokenEnc">, env: NodeJS.ProcessEnv = process.env): ChannelToken | null {
+  if (ch.refreshTokenEnc) return openToken(ch.refreshTokenEnc, env.SESSION_SECRET);
+  if (ch.id === layout().default && env.YT_REFRESH_TOKEN) return { refreshToken: env.YT_REFRESH_TOKEN, client: "desktop" };
   return null;
+}
+
+/** Just the refresh token (kept for callers and tests that don't need the client). */
+export function refreshTokenOf(ch: Pick<Channel, "id" | "refreshTokenEnc">, env: NodeJS.ProcessEnv = process.env): string | null {
+  return tokenOf(ch, env)?.refreshToken ?? null;
 }
 
 /** Settings a channel may set for itself (Channel.settings); everything else is platform-wide. */

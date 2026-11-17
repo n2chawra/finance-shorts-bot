@@ -1,4 +1,4 @@
-import { BarChart3, Gauge, Bell, Bot, CalendarDays, Film, GraduationCap, LayoutDashboard, ListOrdered, type LucideIcon, MessageSquarePlus, Repeat, Settings } from "lucide-react";
+import { BarChart3, Gauge, Bell, Bot, CalendarDays, Film, GraduationCap, LayoutDashboard, ListOrdered, type LucideIcon, MessageSquarePlus, Repeat, Settings, Tv } from "lucide-react";
 
 export type NavItem = { href: string; label: string; icon: LucideIcon; key: string };
 
@@ -33,6 +33,7 @@ export const NAV: { group: string; items: NavItem[] }[] = [
   {
     group: "Configure",
     items: [
+      { href: "/channels", label: "Channels", icon: Tv, key: "h" },
       { href: "/settings", label: "Settings", icon: Settings, key: "s" },
     ],
   },

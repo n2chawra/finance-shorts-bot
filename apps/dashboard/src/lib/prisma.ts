@@ -1,6 +1,8 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
+import { CREATE_SCOPED, SCOPED_OPS, SCOPES, currentChannel } from "./channel-scope";
+
 /**
  * Prisma over the node-postgres driver. Netlify runs the API in Ohio and the database is in
  * Singapore (~220 ms away); Prisma's built-in engine spends several round trips per query through
@@ -14,5 +16,35 @@ const create = () => new PrismaClient({
 // one client per server process; Next's dev reloads would otherwise open a new pool each time
 const g = globalThis as unknown as { __prisma?: PrismaClient };
 
-export const prisma = g.__prisma ?? create();
-if (process.env.NODE_ENV !== "production") g.__prisma = prisma;
+/** The raw client: every channel's rows (the Channels page and OAuth use it). */
+export const prismaAll = g.__prisma ?? create();
+if (process.env.NODE_ENV !== "production") g.__prisma = prismaAll;
+
+const lower = (model: string) => model.charAt(0).toLowerCase() + model.slice(1);
+
+/**
+ * The client every page uses: reads of a channel's own tables are narrowed to the channel picked in
+ * the switcher (lib/channel-scope.ts), and new videos, topics, studies and feedback take it. With one
+ * channel nothing changes.
+ */
+export const prisma = prismaAll.$extends({
+  query: {
+    $allModels: {
+      async $allOperations({ model, operation, args, query }) {
+        const key = lower(model);
+        const scope = SCOPES[key];
+        if (scope && SCOPED_OPS.has(operation)) {
+          const a = (args ?? {}) as { where?: Record<string, unknown> };
+          a.where = scope(a.where, await currentChannel());
+          return query(a as typeof args);
+        }
+        if (CREATE_SCOPED.has(key) && operation === "create") {
+          const a = args as { data: Record<string, unknown> };
+          if (a.data && a.data.channelId === undefined && a.data.channel === undefined) a.data = { ...a.data, channelId: await currentChannel() };
+          return query(a as typeof args);
+        }
+        return query(args);
+      },
+    },
+  },
+});

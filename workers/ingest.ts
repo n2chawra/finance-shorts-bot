@@ -23,6 +23,7 @@ import { type FeedTopic, loadFeeds, sourceWithTopic } from "./lib/origin.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 import { syncThumbs } from "./lib/cover.ts";
 import { allChannels, cpath, crel, layout } from "./lib/channels.ts";
+import { CHANNEL_KEYS } from "./lib/channel-auth.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -179,6 +180,21 @@ async function syncTemplateWork(prisma: PrismaClient): Promise<void> {
 export const newestStamp = (stamps: string[]): string | null =>
   stamps.reduce<string | null>((a, b) => (a === null || Date.parse(b) > Date.parse(a) ? b : a), null);
 
+/** config/channels.json for the routines (they have no database): every channel's status, its own
+ * settings (over config/settings.json) and its own backlog. A routine for a channel that isn't
+ * active exits at once (generator/settings.py). */
+export async function buildChannelsFile(prisma: PrismaClient): Promise<Record<string, unknown>> {
+  const rows = await prisma.channel.findMany({ orderBy: { createdAt: "asc" } });
+  const out: Record<string, unknown> = {};
+  for (const ch of rows) {
+    const own = Object.fromEntries(Object.entries((ch.settings ?? {}) as Record<string, unknown>).filter(([k]) => (CHANNEL_KEYS as readonly string[]).includes(k)));
+    const queued = (format?: string) => prisma.video.count({ where: { channelId: ch.id, status: "queued", deletedAt: null, ...(format ? { format } : {}) } });
+    out[ch.id] = { name: ch.name, status: ch.status, settings: own,
+      backlog: await queued(), backlogByFormat: { short: await queued("short"), long: await queued("long") } };
+  }
+  return { note: "Written by ingest from the Channel table. Routines read their channel's entry (generator/settings.py).", channels: out };
+}
+
 /** The file routines read. `ingestedAt` is the newest ingested manifest's own timestamp string,
  * so the generator can compare it with history entries exactly. */
 export async function buildRoutineSettings(prisma: PrismaClient, root = ROOT): Promise<Record<string, unknown>> {
@@ -259,6 +275,9 @@ async function main(): Promise<void> {
     const next = JSON.stringify(await buildRoutineSettings(prisma), null, 2) + "\n";
     const settingsChanged = !existsSync(file) || readFileSync(file, "utf8").replace(/\r\n/g, "\n") !== next;
     if (settingsChanged) writeFileSync(file, next);
+    const chFile = path.join(ROOT, "config", "channels.json");
+    const chNext = JSON.stringify(await buildChannelsFile(prisma), null, 2) + "\n";
+    if (!existsSync(chFile) || readFileSync(chFile, "utf8").replace(/\r\n/g, "\n") !== chNext) writeFileSync(chFile, chNext);
 
     console.log(JSON.stringify({ ...result, settingsChanged, metricsChanged, activity, templateDecisions, ranked: ranked.length, feedbackAnswered: acks, videosInDatabase: await prisma.video.count() }, null, 2));
     if (result.invalid.length) process.exitCode = 1;

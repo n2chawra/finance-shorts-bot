@@ -76,3 +76,11 @@ test("a manifest belongs to the channel folder it sits in", async () => {
   assert.equal(channelOfManifest(path.join(root, "videos", "v-1", "manifest.json"), root), "paisa-panchayat");
   assert.equal(channelOfManifest(path.join(root, "channels", "second-one", "videos", "v-1", "manifest.json"), root), "second-one");
 });
+
+test("a token sealed by the dashboard's Connect YouTube opens with its web client", async () => {
+  const { openToken, tokenOf } = await import("../lib/channel-auth.ts");
+  const sealed = encryptToken(JSON.stringify({ rt: "1//web-token", client: "web" }), SECRET);
+  assert.deepEqual(openToken(sealed, SECRET), { refreshToken: "1//web-token", client: "web" });
+  assert.deepEqual(openToken(encryptToken("bare", SECRET), SECRET), { refreshToken: "bare", client: "desktop" });
+  assert.deepEqual(tokenOf({ id: "second", refreshTokenEnc: sealed }, { SESSION_SECRET: SECRET } as NodeJS.ProcessEnv), { refreshToken: "1//web-token", client: "web" });
+});

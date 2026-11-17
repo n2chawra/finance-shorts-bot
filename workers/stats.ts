@@ -21,7 +21,7 @@ import { failKey, statsOutcome } from "./lib/stats-failures.ts";
 import { analyticsStartDay, channelDays } from "./lib/analytics.ts";
 import { DAY_METRICS, TokenError, accessToken, dailyStats, report, retentionCurve } from "./lib/youtube.ts";
 import { cpath, layout } from "./lib/channels.ts";
-import { activeChannels, refreshTokenOf } from "./lib/channel-auth.ts";
+import { activeChannels, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 
 const DAY_MS = 86_400_000;
 const KEEP_DAYS = 365;       // history fetched and kept per video
@@ -73,7 +73,7 @@ async function main(): Promise<void> {
     for (const ch of await activeChannels(prisma, true)) {
       const first = ch.id === layout().default;
       const run: Run = { channelId: ch.id, key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: ` };
-      const refreshToken = refreshTokenOf(ch);
+      const refreshToken = tokenOf(ch);
       if (!refreshToken) { console.log(`::notice::${ch.id} is not connected to YouTube yet.`); continue; }
       console.log(`== ${ch.name} (${ch.id})`);
       try {
@@ -89,12 +89,12 @@ async function main(): Promise<void> {
   if (failures.length) throw new Error(`stats failed for ${failures.join(", ")}`);
 }
 
-async function statsChannel(prisma: PrismaClient, run: Run, refreshToken: string): Promise<void> {
+async function statsChannel(prisma: PrismaClient, run: Run, refreshToken: ChannelToken): Promise<void> {
   const { channelId } = run;
   {
     let token: string;
     try {
-      token = await accessToken(refreshToken);
+      token = await accessToken(refreshToken.refreshToken, refreshToken.client);
     } catch (e) {
       if (e instanceof TokenError) {
         await deleteIfStale(prisma, run);

@@ -6,7 +6,7 @@
 import { PrismaClient } from "@prisma/client";
 
 import { youtubeClientConfigured } from "./lib/uploads.ts";
-import { activeChannels, refreshTokenOf } from "./lib/channel-auth.ts";
+import { activeChannels, tokenOf } from "./lib/channel-auth.ts";
 import { accessToken, videoInfo } from "./lib/youtube.ts";
 
 const KEEP_MS = 7 * 86_400_000;
@@ -24,10 +24,10 @@ async function main(): Promise<void> {
     const data: { uploadId: string; hour: Date; views: number; likes: number; comments: number }[] = [];
     // each channel's counters with its own sign-in; one channel failing leaves only its own gap
     for (const ch of await activeChannels(prisma, true)) {
-      const refreshToken = refreshTokenOf(ch);
+      const refreshToken = tokenOf(ch);
       if (!refreshToken) continue;
       try {
-        const token = await accessToken(refreshToken);
+        const token = await accessToken(refreshToken.refreshToken, refreshToken.client);
         const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: "published", video: { deletedAt: null, channelId: ch.id } }, select: { id: true, youtubeId: true } });
         const info = await videoInfo(token, uploads.map((u) => u.youtubeId!));
         for (const u of uploads) {

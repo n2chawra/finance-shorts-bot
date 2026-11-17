@@ -33,10 +33,29 @@ DEFAULTS: dict = {
 }
 
 
+# what a channel may set for itself (workers/lib/channel-auth.ts CHANNEL_KEYS); the rest is platform-wide
+CHANNEL_KEYS = ("uploadTimes", "trendUploadTimes", "shortEveryDays", "dailyVideoTarget", "longUploadTimes", "longUploadDays",
+                "longPerWeek", "longBacklogCap", "backlogCap", "lengthMinSec", "lengthMaxSec", "disclaimer", "uploadsPaused", "generationPaused")
+
+
 def load(root: Path = ROOT) -> dict:
-    """Defaults overlaid with config/settings.json (one level deep for nested objects)."""
+    """Defaults overlaid with config/settings.json (one level deep for nested objects), then with the
+    current channel's entry in config/channels.json: its own settings and backlog. A channel that
+    isn't active (paused, or still in setup or review) makes nothing: generation is paused for it."""
     path = root / "config" / "settings.json"
     stored = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
     out = {**DEFAULTS, **stored}
     out["templateWork"] = {**DEFAULTS["templateWork"], **stored.get("templateWork", {})}
+    ch_file = root / "config" / "channels.json"
+    if ch_file.is_file():
+        from .channels import current   # late: channels reads the layout file
+        entry = json.loads(ch_file.read_text(encoding="utf-8")).get("channels", {}).get(current())
+        if entry:
+            out.update({k: v for k, v in (entry.get("settings") or {}).items() if k in CHANNEL_KEYS})
+            for k in ("backlog", "backlogByFormat"):
+                if k in entry:
+                    out[k] = entry[k]
+            out["channelStatus"] = entry.get("status", "active")
+            if out["channelStatus"] != "active":
+                out["generationPaused"] = True
     return out

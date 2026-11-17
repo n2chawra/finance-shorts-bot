@@ -1,15 +1,15 @@
 "use client";
 
 import { useIsFetching } from "@tanstack/react-query";
-import { Bell, ChevronsUpDown, LogOut, Menu, Monitor, Moon, Search, Sun, X } from "lucide-react";
+import { Bell, Check, ChevronsUpDown, LogOut, Menu, Monitor, Moon, Search, Sun, Tv, X } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Dialog, ToggleGroup } from "radix-ui";
+import { Dialog, DropdownMenu, ToggleGroup } from "radix-ui";
 import { useEffect, useState } from "react";
 
-import { useNotifications, useOverview } from "@/lib/queries";
+import { useChannels, useNotifications, useOverview, useSwitchChannel } from "@/lib/queries";
 import { signOut as endSession } from "@/lib/sign-out";
 
 import { LogoMark, Wordmark } from "./brand";
@@ -128,15 +128,46 @@ function SystemCard() {
   );
 }
 
+/** The channel the dashboard shows, and a menu to switch to another or manage them all. */
+function ChannelSwitcher({ onNavigate }: { onNavigate?: () => void }) {
+  const { data } = useChannels();
+  const switchTo = useSwitchChannel();
+  const router = useRouter();
+  const current = data?.channels.find((c) => c.id === data.current);
+  return (
+    <DropdownMenu.Root modal={false}>
+      <DropdownMenu.Trigger aria-label="Switch channel" className="flex w-full items-center gap-2.5 rounded-xl px-1.5 py-1.5 text-left outline-none transition-colors hover:bg-surface-3 focus-visible:ring-4 focus-visible:ring-brand-soft">
+        <LogoMark className="size-8" />
+        <Wordmark name={current?.name ?? "Paisa Panchayat"} sub={current && current.status !== "active" ? `Channel studio · ${current.status}` : "Channel studio"} />
+        <ChevronsUpDown aria-hidden className="ml-auto size-4 shrink-0 text-muted" />
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content align="start" sideOffset={6} className="z-50 w-[232px] animate-pop rounded-xl border border-ring bg-surface p-1 shadow-pop">
+          <DropdownMenu.Label className="px-2 py-1.5 text-[11px] font-medium text-muted">Channels</DropdownMenu.Label>
+          {(data?.channels ?? []).map((c) => (
+            <DropdownMenu.Item key={c.id} onSelect={() => { if (c.id !== data?.current) switchTo(c.id); onNavigate?.(); }}
+              className="flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5 text-[13px] outline-none data-[highlighted]:bg-surface-3">
+              <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${c.status === "active" ? "bg-good" : c.status === "paused" ? "bg-warning" : "bg-info"}`} />
+              <span className="flex-1 truncate">{c.name}</span>
+              {c.id === data?.current && <Check aria-hidden className="size-3.5 text-brand" />}
+            </DropdownMenu.Item>
+          ))}
+          <DropdownMenu.Separator className="my-1 h-px bg-line" />
+          <DropdownMenu.Item onSelect={() => { router.push("/channels"); onNavigate?.(); }}
+            className="flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5 text-[13px] outline-none data-[highlighted]:bg-surface-3">
+            <Tv aria-hidden className="size-3.5 text-muted" />Manage channels
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
+}
+
 function SidebarBody({ onNavigate, signOut }: { onNavigate?: () => void; signOut: () => void }) {
   const openPalette = useCommandMenu();
   return (
     <>
-      <Link href="/" onClick={onNavigate} className="flex items-center gap-2.5 rounded-xl px-1.5 py-1.5 transition-colors hover:bg-surface-3">
-        <LogoMark className="size-8" />
-        <Wordmark sub="Channel studio" />
-        <ChevronsUpDown aria-hidden className="ml-auto size-4 text-muted" />
-      </Link>
+      <ChannelSwitcher onNavigate={onNavigate} />
       <button type="button" onClick={() => { onNavigate?.(); openPalette(); }} aria-label="Search and commands"
         className="mt-4 flex h-9 w-full items-center gap-2 rounded-lg border border-ring bg-surface px-2.5 text-[13px] text-muted shadow-xs transition-colors hover:border-ring-strong hover:text-ink2">
         <Search aria-hidden className="size-4" />

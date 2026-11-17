@@ -7,6 +7,7 @@ import { z } from "zod";
 
 import { getJson, send } from "./api";
 import { StudySchema } from "./study";
+import { CHANNEL_COOKIE, ChannelSchema, type ChannelCreate, type ChannelPatch } from "./channels";
 import { AgentsSchema, AnalyticsSchema, FeedbackSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
 import { ImpactSchema } from "./impact";
 import { StudioSchema, VideoStudioSchema, type Fmt, type Range } from "./studio-schema";
@@ -59,3 +60,20 @@ export const useScorecard = () => useQuery({ queryKey: ["scorecard"], queryFn: (
 export const useGrowth = () => useQuery({ queryKey: ["growth"], queryFn: () => getJson("/api/growth", GrowthSchema) });
 export const useAgents = () => useQuery({ queryKey: ["agents"], queryFn: () => getJson("/api/agents", AgentsSchema) });
 export const useNotificationAction = () => useWrite((body: { ids: string[]; action: NotificationAction }) => send("PATCH", "/api/notifications", body));
+
+// ---------------- channels (docs/plans/multi-channel.md) ----------------
+
+const ChannelsResponse = z.object({ channels: z.array(ChannelSchema), current: z.string() });
+export const useChannels = () => useQuery({ queryKey: ["channels"], queryFn: () => getJson("/api/channels", ChannelsResponse), staleTime: 60_000 });
+export const usePatchChannel = () => useWrite(({ id, ...body }: ChannelPatch & { id: string }) => send("PATCH", `/api/channels/${id}`, body));
+export const useAddChannel = () => useWrite((c: ChannelCreate) => send("POST", "/api/channels", c));
+
+/** Switch the dashboard to another channel: the cookie the server scopes every query by, then a full refresh. */
+export function useSwitchChannel() {
+  const qc = useQueryClient();
+  return (id: string) => {
+    document.cookie = `${CHANNEL_COOKIE}=${encodeURIComponent(id)}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+    // every page's data belongs to the old channel: drop it and refetch what's on screen
+    void qc.resetQueries();
+  };
+}

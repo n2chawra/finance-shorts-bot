@@ -22,6 +22,9 @@ import * as scoreDb from "./scorecard.db";
 import * as scoreSample from "./scorecard.sample";
 import type { Scorecard } from "./scorecard";
 import * as studySample from "./study.sample";
+import type { Channel, ChannelCreate, ChannelPatch } from "./channels";
+import * as channelsDb from "./channels.db";
+import * as channelsSample from "./channels.sample";
 
 const useDb = Boolean(process.env.DATABASE_URL);
 
@@ -62,3 +65,11 @@ export const getScorecard = async (): Promise<Scorecard> => (useDb ? scoreDb.get
 // the Study page (owner, 2026-11-13): YouTube videos the owner links, watched by Gemini and compared with ours
 export const listStudies = async (): Promise<Study[]> => (useDb ? studyDb.listStudies() : studySample.listStudies());
 export const addStudy = async (s: StudyCreate): Promise<Study | { error: string }> => (useDb ? studyDb.addStudy(s) : studySample.addStudy(s));
+
+// ---------------- channels (docs/plans/multi-channel.md) ----------------
+
+export const listChannels = async (): Promise<Channel[]> => (useDb ? channelsDb.listChannels() : channelsSample.listChannels());
+export const patchChannel = async (id: string, p: ChannelPatch): Promise<Channel | { error: string }> => (useDb ? channelsDb.patchChannel(id, p) : channelsSample.patchChannel(id, p));
+export const addChannel = async (c: ChannelCreate): Promise<Channel | { error: string }> => (useDb ? channelsDb.addChannel(c) : channelsSample.addChannel(c));
+export const connectChannel = async (id: string, youtubeChannelId: string, sealed: string): Promise<{ ok: true } | { error: string }> =>
+  (useDb ? channelsDb.connectChannel(id, youtubeChannelId, sealed) : channelsSample.connectChannel());
