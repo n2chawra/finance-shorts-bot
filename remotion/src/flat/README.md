@@ -32,6 +32,23 @@ reference is `remotion/src/videos/v-directed-netflix/` with `channels/paisa-panc
 | `SourceLine` | the "Data: … · month" line, once a video, on the beat `showsSource` picks |
 | `shade(hex, amt)` | darker / lighter tones of a colour |
 
+## `map.tsx` (maps, 2026-11-17)
+
+Natural Earth country outlines (public domain, `world-atlas`) drawn in the house style. Inside a `Stage`/`View`:
+
+| Piece | What it draws |
+|---|---|
+| `WorldMap` | the map: `fit` (country names to frame) or `center` + `scale`; `kind` "world" (Natural Earth projection) or "flat" (Mercator, a region); `colors` ({ Chile: { fill, k } }, `k` fades a recolour in on a word); `hide` (a disputed region a video can't show) |
+| `MapLabel` | a place name at [lon, lat] with an ink halo |
+| `MapPin` | a pin that drops onto [lon, lat] |
+| `MapRoute` | a great-circle route through stops, drawn as `k` goes 0 → 1; `mover` rides its tip (a ship, a plane) |
+| `Lift` | a country's own shape laid over another place at true scale (Chile over India), sliding as `k` goes 0 → 1 |
+| `useAt()` | [lon, lat] → [x, y] on the current map, to stand a character or a sign on a place |
+
+Country names are Natural Earth's ("Chile", "Gambia", "Bosnia and Herz."). Borders are as controlled; a
+video about a disputed border follows that country's official map or uses `hide`. `MapSheet` (Root) is a
+test reel: `npx remotion still src/index.ts MapSheet out.png --frame=105`.
+
 ## `cast.tsx`
 
 `Char` is a person: feet at (`x`, `y`), `s` pixels per body unit (about 2.8 units tall). `who` picks a
