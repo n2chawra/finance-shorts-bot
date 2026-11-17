@@ -76,11 +76,14 @@ export const WorldMap: React.FC<{
   colors?: Record<string, Fill>;
   /** names to leave out (a disputed region in a video that can't show it) */
   hide?: string[];
+  /** draw only these countries (a regional map at 50m detail: drawing all ~240 every frame timed renders out) */
+  only?: string[];
   detail?: "110m" | "50m";
   children?: React.ReactNode;
-}> = ({ w, h, fit, pad = 80, center, scale, kind = "world", land = "#e9dcc1", sea = "#8ec5e0", border, colors = {}, hide = [], detail, children }) => {
+}> = ({ w, h, fit, pad = 80, center, scale, kind = "world", land = "#e9dcc1", sea = "#8ec5e0", border, colors = {}, hide = [], only, detail, children }) => {
   const det = detail ?? (fit && fit.length <= 6 ? "50m" : "110m");
-  const all = countries(det);
+  const keep = only ? new Set(only.map((n) => n.toLowerCase())) : null;
+  const all = keep ? countries(det).filter((c) => keep.has(c.properties.name.toLowerCase())) : countries(det);
   const proj = useMemo(() => {
     const p = kind === "flat" ? geoMercator() : geoNaturalEarth1();
     const framed = fit?.map((n) => all.find((c) => c.properties.name.toLowerCase() === n.toLowerCase())).filter((c): c is Country => !!c);

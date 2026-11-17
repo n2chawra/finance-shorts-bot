@@ -17,3 +17,10 @@ Fix: every picture shows the thing being said.
 
 ## 4. The payoff is the most surprising fact (general)
 Fix: hold the most surprising figure or fact for the payoff, and make the last line loop into the first.
+
+## 5. The map is the stage, not a backdrop between scenes
+Seen in: our first sample (Gambia, 17 Nov 2026): 7 of 11 beats were cartoon scenes (a beach, a fort, a
+treaty room, a street) and the map showed up only between them; the owner stopped it before render.
+Fix: every beat but at most one is drawn on the map; the story's events and its small characters stand on
+their real spots on it, and the camera moves over the map.
+

@@ -33,8 +33,17 @@ sourced `facts` entry; one narrator; captions of every word.
 
 ## The look (directed 2D)
 
-- **Flat political maps** (Natural Earth outlines, the map component) with **small cartoon characters
-  doing something in each place**; historical figures as photo heads on our bodies, never speaking.
+- **The map is the stage** (owner, 2026-11-17, on the first sample: "this niche is all about animation
+  with maps and show story in that"). At least 9 of every 10 beats are drawn on the map (the references:
+  maps in 35 of 59 shots, characters on screen a median 0% of the time). A story's places are spots on the
+  map (the river mouth, a border crossing, the capital), never rooms or landscapes beside it.
+- **The story happens on the map**: flags planted on the land, a fort or a ship standing on its real spot,
+  borders that draw themselves, countries that fill, merge and crack, boats moving along the river, a
+  treaty's ruler and pen drawing a line onto the map. The camera moves over the map itself (a push-in is
+  a bigger map scale, a pull-back shows the whole region).
+- **Characters are small, standing on the map** where the story puts them (a diplomat on the north bank,
+  a girl planting a flag at Banjul), never a full-frame scene; historical figures as photo heads on our
+  bodies, never speaking.
 - Figures on things in the place: a sign, a stall's price board, a counter, a label on the map.
 - The camera pushes in on the place, pulls back to show scale, follows a route; a country can be lifted
   and laid over another for scale.

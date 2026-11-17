@@ -174,6 +174,13 @@ on every command: plan → script → number check → fact review → director 
 the manifest `sample: true`; ingest queues it, and the publisher never uploads for a channel that isn't
 active, so nothing goes out before Launch.
 
+**Sample 1 is a gate** (owner, 2026-11-17, after the geography channel's first sample came out as cartoon
+scenes instead of animated maps): show the owner sample 1's **stills** (the contact sheet) and wait for
+their OK before rendering the video; then show the **full video** and wait for their OK before starting
+sample 2. Never make samples 2 and 3 on an unapproved first one: a wrong start costs all three. Before
+directing sample 1, compare its planned look with the references' `style.json` (`pictureLanguage.shotKinds`:
+the kind of picture the niche is made of) and say how the beats match it.
+
 Each sample follows one reference video (name it in the plan's `demand`). After it renders:
 
 ```bash

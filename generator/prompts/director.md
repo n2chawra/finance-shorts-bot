@@ -14,6 +14,9 @@ every video look the same: one skyline, floating cards, a header of text. Never 
   video the owner approved. Copy how it works, never its places or pictures: every story gets its own.
 - **The kit**: `remotion/src/flat/README.md` (what each piece draws and its props).
 - `channels/<channel>/prompts/lessons.md` and `channels/<channel>/prompts/studied.md` (techniques measured against ours).
+- **Another channel's look wins** (multi-channel, 2026-11-17): a channel with its own `prompts/recipe.md`
+  directs by that recipe's "look". On a map channel the map is the stage of every beat and "a place for
+  every line" means a new spot on the map (the river mouth, a border crossing, the capital), not a new room.
 
 ## Why the reference works (do all of these)
 
