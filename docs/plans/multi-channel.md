@@ -504,6 +504,13 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   manifest `sample: true`; nothing uploads before Launch), `generator/likeness.py` (±25% against
   `style.json`), the Launch review and Launch on the Channels page, long videos a week and the shared
   quota line. Checked with tests, sample data and the dashboard preview; no sample has been rendered.
+- **2026-11-17: step 3e (routines for many channels) done — step 3 complete.** `apps/dashboard/src/lib/routine-plan.ts`
+  (every routine's time, days, window, UTC cron and prompt; channel #1 alone reproduces today's
+  schedule; fitCheck and the shared routines a new channel moves), Launch refuses a channel that
+  doesn't fit, the Launch review shows its routines, `npm run routines -- --add <slug>`, and the
+  skill's routines phase (owner's yes before creating). Change to the table: reviewers are three a
+  night before the 23:00 auditor, then Wed/Sat and Thu/Sun (21:07 + 30 min per channel ran into the
+  auditor from the fourth channel). Not done: `market.ts` still scans only channel #1's searches.
 
 ## Order of work
 1. **Platform refactor** (layout, database, workers, quota keeper, `--channel`). Channel #1 keeps
