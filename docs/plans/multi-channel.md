@@ -499,6 +499,11 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   non-English Kokoro voice is untested (it may need espeak-ng data); the flat kit doesn't yet read
   `look.cast`/palettes (the director picks components); the branding kit's avatar and banner are
   described in the skill, not drawn by code; `numbers: simple` behaves like finance.
+- **2026-11-17: step 3d (samples and the Launch review) done, code only** (owner: no real videos; tested
+  when the first niche is added). Samples mode in `generator.run state` (3 Shorts, 1 long when advised;
+  manifest `sample: true`; nothing uploads before Launch), `generator/likeness.py` (±25% against
+  `style.json`), the Launch review and Launch on the Channels page, long videos a week and the shared
+  quota line. Checked with tests, sample data and the dashboard preview; no sample has been rendered.
 
 ## Order of work
 1. **Platform refactor** (layout, database, workers, quota keeper, `--channel`). Channel #1 keeps
