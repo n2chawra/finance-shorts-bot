@@ -1,0 +1,78 @@
+# Niche scan for a channel being set up (multi-channel plan, step 3a; workers/niche-scan.ts).
+# Started by the dashboard's "Add channel" (and by the /new-channel skill), never on a schedule.
+#   aggregates + ids  -> channels/<slug>/research/scan.json on main (kept)
+#   titles + numbers  -> <slug>.json on the `niche-data` branch, one commit with no history, rewritten on
+#                        every scan; files older than 30 days are dropped (YouTube API data is never kept
+#                        past its refresh). Read with `git show origin/niche-data:<slug>.json`.
+name: Niche scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Channel slug (channels/<slug>/)"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: niche-scan
+
+jobs:
+  scan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      YT_API_KEY: ${{ secrets.YT_API_KEY }}
+      SLUG: ${{ inputs.slug }}
+    steps:
+      - name: Check the slug
+        run: echo "$SLUG" | grep -Eq '^[a-z0-9][a-z0-9-]{1,40}$' || { echo "::error::bad slug"; exit 1; }
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/package-lock.json
+      - run: npm ci
+        working-directory: workers
+      - run: npm run generate
+        working-directory: workers
+      - name: Earlier scans on the niche-data branch (kept up to 30 days)
+        run: |
+          mkdir -p "$RUNNER_TEMP/niche-data"
+          if git fetch -q origin niche-data; then
+            for f in $(git ls-tree --name-only origin/niche-data); do
+              git show "origin/niche-data:$f" > "$RUNNER_TEMP/niche-data/$f"
+            done
+          fi
+          # the file's own scannedAt decides its age (checkout times are all "now")
+          node -e '
+            const fs=require("fs"),p=process.argv[1];
+            for (const f of fs.readdirSync(p)) { try { const j=JSON.parse(fs.readFileSync(p+"/"+f,"utf8"));
+              if (Date.now()-Date.parse(j.scannedAt) > 30*864e5) fs.unlinkSync(p+"/"+f); } catch { fs.unlinkSync(p+"/"+f); } }' "$RUNNER_TEMP/niche-data"
+      - name: Scan
+        working-directory: workers
+        shell: bash
+        run: npm run niche-scan -- "$SLUG" "$RUNNER_TEMP/niche-data" | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Commit the aggregates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in "channels/$SLUG/research/scan.json" "channels/$SLUG/research/scan-request.json"; do [ ! -e "$f" ] || git add "$f"; done
+          if git diff --cached --quiet; then echo "no change"; exit 0; fi
+          git commit -q -m "Niche scan for $SLUG"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+      - name: Replace the niche-data branch
+        run: |
+          cd "$RUNNER_TEMP/niche-data"
+          ls *.json >/dev/null 2>&1 || { echo "nothing to publish"; exit 0; }
+          git init -q -b niche-data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add *.json
+          git commit -q -m "Niche scans $(date -u +%F)"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" niche-data
