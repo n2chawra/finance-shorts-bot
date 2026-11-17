@@ -511,6 +511,15 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   skill's routines phase (owner's yes before creating). Change to the table: reviewers are three a
   night before the 23:00 auditor, then Wed/Sat and Thu/Sun (21:07 + 30 min per channel ran into the
   auditor from the fourth channel). Not done: `market.ts` still scans only channel #1's searches.
+- **2026-11-17: step 4 (hands-off layer) done.** Ingest's agent and metrics steps per channel (`workers/lib/scoped.ts`;
+  proven identical for channel #1 on the live database), the weekly-loop scoreboard per live channel,
+  health per channel (`lib/health.ts`: buffer, drop → the auditor's diagnosis, the stop rule with 1 a day
+  for new channels only, usage share, the Monday digest, green/amber/red on the Channels page),
+  `channels/<slug>/changes.json` with one change per merge, per-channel agents kept in their folder
+  (branch `agent/<name>/<date>/<slug>`), channel data no longer counted as code by the guard, the
+  cross-channel similarity check in check-plan, and the monthly re-scan. First live ingest: channel #1
+  amber, "making videos is paused". Left to the owner: step 5 (the first real niche) and step 6 (the
+  quota-increase form before a second channel launches).
 
 ## Order of work
 1. **Platform refactor** (layout, database, workers, quota keeper, `--channel`). Channel #1 keeps
