@@ -13,7 +13,7 @@
         "dailyVideoTarget": 2
       },
       "health": {
-        "at": "2026-11-17T13:46:16.613Z",
+        "at": "2026-11-17T14:08:57.012Z",
         "color": "amber",
         "reason": "making videos is paused",
         "stayed": 0.3708113624766117,
@@ -35,8 +35,11 @@
         "dailyVideoTarget": 1
       },
       "setup": {
-        "stage": "verdict",
-        "decision": null
+        "stage": "research",
+        "decision": {
+          "at": "2026-11-17T13:47:52.622Z",
+          "choice": "continue"
+        }
       },
       "backlog": 0,
       "backlogByFormat": {
