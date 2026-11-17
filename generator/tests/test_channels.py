@@ -111,3 +111,22 @@ def test_video_ids_are_unique_across_channels(tmp_path, monkeypatch):
     (tmp_path / "channels" / "space-facts").mkdir(parents=True)
     at = datetime(2026, 11, 17, 6, 0, tzinfo=timezone.utc)
     assert history.next_id([], at, tmp_path) == "v-20261117-03"
+
+
+def test_a_new_channels_own_rules(monkeypatch):
+    """Found making the geography channel's first sample (2026-11-17): its formats are its stories, a
+    country's area never goes stale, and its Shorts take its own length and category, not channel #1's."""
+    from generator import topics, variety
+    from improvement import arms
+    old = {"facts": [{"label": "area", "value": 11300, "unit": "km2", "as_of": "2022-01-01"}]}
+    assert topics.stale_facts(old, "2026-11-17")
+    old["facts"][0]["fixed"] = True
+    assert topics.stale_facts(old, "2026-11-17") == []
+    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    assert arms.own_channel() is None
+    assert "why_shaped" not in variety.known_stories()
+    monkeypatch.setenv("CHANNEL", "geography-maps-geopolitical-mysteries")
+    assert "why_shaped" in variety.known_stories() and variety.story_problems("why_shaped", []) == []
+    own = arms.own_channel()
+    assert own and own["category"] == "27" and own["length"].count("-") == 1
+    assert arms.plan_problems({"arms": own}) == [] and arms.plan_problems({"arms": {**own, "length": "28-35"}})

@@ -86,9 +86,11 @@ const DisclaimerLine: React.FC<{ tl: Timeline; low?: boolean }> = ({ tl }) => {
   // The smallest text a frame allows, a slim pill; its bottom edge stays above the frame's bottom zone.
   const f = v ? SHORT : LONG, size = f.minText, pill = Math.round(size * 1.15) + 8;
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: tl.height - f.bottomSafe - pill - 12, display: "flex", justifyContent: "center" }}>
+    // anchored by its bottom edge, so a channel's longer disclaimer wraps onto a second line upwards instead
+    // of running off the frame (the geography channel's, 2026-11-17); channel #1's still fits on one line
+    <div style={{ position: "absolute", left: 40, right: v ? 150 : 40, bottom: f.bottomSafe + 12, display: "flex", justifyContent: "center" }}>
       <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: size, lineHeight: 1.15, color: "#fff", background: "rgba(0,0,0,0.5)",
-        padding: "4px 22px", borderRadius: 999, whiteSpace: "nowrap" }}>{tl.disclaimer}</div>
+        padding: "4px 22px", borderRadius: pill / 2, textAlign: "center", maxWidth: "100%" }}>{tl.disclaimer}</div>
     </div>
   );
 };

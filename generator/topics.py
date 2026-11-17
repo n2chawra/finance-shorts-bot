@@ -254,8 +254,9 @@ def stale_facts(topic: dict, today: str) -> list[str]:
     out = []
     for f in topic.get("facts") or []:
         as_of = _day(f.get("as_of"))
-        # a year ("hallmarking became mandatory in 2021") is history, never replaced by a newer release
-        if as_of is None or f.get("unit") == "year" or (now - as_of).days <= FACT_FRESH_DAYS:
+        # a year ("hallmarking became mandatory in 2021") is history, never replaced by a newer release;
+        # so is a fact research marks `fixed` (a country's area, a border's length: no yearly release)
+        if as_of is None or f.get("unit") == "year" or f.get("fixed") is True or (now - as_of).days <= FACT_FRESH_DAYS:
             continue
         checked = _day(f.get("checked"))
         if f.get("latest") is True and checked and (now - checked).days <= FACT_RECHECK_DAYS:

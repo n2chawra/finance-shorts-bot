@@ -117,14 +117,22 @@ def story_of(e: dict) -> str | None:
     return told[0] if len(told) == 1 else None
 
 
+def known_stories() -> tuple[str, ...]:
+    """STORIES plus the current channel's own format ids (research/formats.json): a new channel's
+    formats are its stories (multi-channel, 2026-11-17: a geography channel tells no money stories)."""
+    from . import formats
+    own = [i for f in ("short", "long") for i in formats.ids(fmt=f) if i not in STORIES]
+    return STORIES + tuple(own)
+
+
 def stories_for(template: str) -> tuple[str, ...]:
-    return TEMPLATE_STORIES.get(template, STORIES)
+    return TEMPLATE_STORIES.get(template, known_stories())
 
 
 def story_problems(story: str, history: list[dict]) -> list[str]:
     """Why this story can't be told next (empty when it can)."""
-    if story not in STORIES:
-        return [f"story must be one of {', '.join(STORIES)}"]
+    if story not in (known := known_stories()):
+        return [f"story must be one of {', '.join(known)}"]
     out = []
     if story in [story_of(e) for e in history[-STORY_WINDOW:]]:
         out.append(f"story {story!r} was told in the last {STORY_WINDOW} videos")
@@ -191,7 +199,7 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
         out.append(f"plan needs a story: one of {', '.join(stories_for(template))}")
     else:
         out += story_problems(story, history)
-        if story in STORIES and story not in stories_for(template):
+        if story in known_stories() and story not in stories_for(template):
             out.append(f"template {template!r} can't tell a {story!r} story; it tells {', '.join(stories_for(template))}")
     out += shape_problems(plan, history)
 

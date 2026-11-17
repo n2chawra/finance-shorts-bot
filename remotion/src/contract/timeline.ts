@@ -39,7 +39,7 @@ export const Palette = z.object({
 });
 
 export const Thumbnail = z.object({
-  who: z.string(),
+  who: z.string().default(""),     // the card and story layouts need a cast member; "scene" does not
   pose: z.string().optional(),
   expression: z.string().optional(),
   prop: z.string().optional(),
@@ -99,7 +99,8 @@ export const Timeline = z.object({
   tempo: z.number().positive().default(1),
   music: z.object({ genre: z.string(), key: z.string(), bpm: z.number() }),
   audio: z.object({ file: z.string(), peak_db: z.number(), mean_db: z.number() }),
-  disclaimer: z.literal("Illustrative only. Not financial advice."),
+  // the channel's own disclaimer (channel.json); channel #1's is "Illustrative only. Not financial advice."
+  disclaimer: z.string().min(1),
   captions: z.boolean().default(false),   // big word-by-word captions over the picture
   voiceMode: z.enum(["kokoro", "estimate"]),
   // news: "Data: AMFI · Jun 2026", shown by every headline scene (sourced facts, hard rule)

@@ -211,9 +211,23 @@ def _save(root: Path, st_: dict, verdicts: list[dict], obs: dict, now: datetime)
         (cpath(root, LOG)).write_text(json.dumps(log, indent=2) + "\n", encoding="utf-8")
 
 
+def own_channel(root: Path = ROOT) -> dict | None:
+    """The variant system is channel #1's. Another channel (one with its own pack) takes its own length
+    and upload category instead (multi-channel, 2026-11-17: a geography Short assigned "28-35" failed its
+    own 60-80 s recipe); None for channel #1."""
+    from generator import channels, pack, settings
+    if channels.current() == channels.default() or not pack.path(root=root).is_file():
+        return None
+    s = settings.load(root)
+    return {"length": f"{s['lengthMinSec']}-{s['lengthMaxSec']}", "title": "figure_or_name", "style": "shot",
+            "category": str(pack.load(root=root).get("uploadCategory", "22"))}
+
+
 def assign(video_id: str, root: Path = ROOT) -> dict:
     """The options for a new Short: Thompson sampling on log-views per dimension, at most `maxChanged`
     dimensions away from the defaults. Deterministic for a video id and the same data."""
+    if (own := own_channel(root)) is not None:
+        return own
     if frozen(root):
         return {d: s["default"] for d, s in state(root).items()}
     cfg, st_, obs = config(root), state(root), observations(root)
@@ -251,6 +265,8 @@ def assign(video_id: str, root: Path = ROOT) -> dict:
 def plan_problems(plan: dict, root: Path = ROOT) -> list[str]:
     """A Short's plan carries a valid assignment (`python -m improvement.arms assign --video <id>`)."""
     arms, st_ = plan.get("arms"), state(root)
+    if (own := own_channel(root)) is not None:
+        return [] if arms == own else [f"plan.arms must be this channel's own {json.dumps(own)} (from `improvement.arms assign`)"]
     if not st_:
         return []
     if not isinstance(arms, dict):
@@ -291,10 +307,14 @@ def main(argv: list[str] | None = None) -> int:
     sub = p.add_subparsers(dest="cmd", required=True)
     a = sub.add_parser("assign")
     a.add_argument("--video", required=True)
+    a.add_argument("--channel", help="the channel the Short is for (sets CHANNEL)")
     sub.add_parser("judge")
     sub.add_parser("status")
     args = p.parse_args(argv)
     if args.cmd == "assign":
+        if args.channel:
+            from generator import channels
+            channels.use(args.channel)
         print(json.dumps(assign(args.video)))
     elif args.cmd == "judge":
         v = judge()

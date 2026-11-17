@@ -209,6 +209,8 @@ removes it:
   if not (a one-time report such as ProPublica 2021, or the newest annual release), add
   `"latest": true, "checked": "<DAY>"`. A topic with an old fact not checked in the last 30 days is not
   offered to the planner (`generator/topics.py` `stale_facts`; `state` shows it under `blocked_by`).
+  A figure with no yearly release at all (a country's area, a border's or river's length, a
+  mountain's height) carries `"fixed": true` instead and never goes stale.
 - `facts` are figures reported by the source, copied exactly (value and unit as published).
   **Every big-money topic carries 3–6 of them** since 2026-11-02 (owner, after The Curious Plot's
   "$0 salary" Short: real names with real figures, Musk's $0 salary, Bezos ~$80K a year, the 25 richest
