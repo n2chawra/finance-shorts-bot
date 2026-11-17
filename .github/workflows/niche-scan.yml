@@ -27,6 +27,13 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       DIRECT_URL: ${{ secrets.DIRECT_URL }}
       YT_API_KEY: ${{ secrets.YT_API_KEY }}
+      # without an API key the scan reads with channel #1's stored sign-in
+      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_WEB_CLIENT_ID: ${{ secrets.YT_WEB_CLIENT_ID }}
+      YT_WEB_CLIENT_SECRET: ${{ secrets.YT_WEB_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
       SLUG: ${{ inputs.slug }}
     steps:
       - name: Check the slug

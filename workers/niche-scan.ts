@@ -4,7 +4,7 @@
  * niche searches, their last 6 months of uploads, and scores every video against its own channel's
  * median (lib/niche.ts).
  *
- *   npm run niche-scan -- <slug> [rawDir]           scan (needs YT_API_KEY and DATABASE_URL or a request file)
+ *   npm run niche-scan -- <slug> [rawDir]           scan (YT_API_KEY, or channel #1's stored sign-in via DATABASE_URL)
  *   npm run niche-scan -- families <slug> <labels>  rank Claude's topic labels (video id → family) by the numbers
  *
  * Input:  channels/<slug>/research/scan-request.json { references, queries, region? }, else the
@@ -24,6 +24,9 @@ import { z } from "zod";
 
 import { DAY_MS, FamilyLabels, type ScanChannel, type ScanVideo, isoSeconds, kindOf, parseChannelRef, rankFamilies, score, summarise } from "./lib/niche.ts";
 import { QuotaKeeper } from "./lib/quota.ts";
+import { layout } from "./lib/channels.ts";
+import { tokenOf } from "./lib/channel-auth.ts";
+import { accessToken } from "./lib/youtube.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const API = "https://www.googleapis.com/youtube/v3";
@@ -46,13 +49,17 @@ function researchDir(slug: string): string {
   return dir;
 }
 
+/** Public reads with the Data API key, or with channel #1's sign-in when there is no key (as market.ts does). */
+export type Auth = { key: string } | { bearer: string };
+
 class Api {
   units = 0;
-  constructor(private key: string, private quota: QuotaKeeper | null) {}
+  constructor(private auth: Auth, private quota: QuotaKeeper | null) {}
   async get<T>(endpoint: string, params: Record<string, string>, schema: z.ZodType<T>, cost = 1): Promise<T> {
     if (this.quota && !this.quota.take("stats", cost)) throw new Error(`quota keeper refused ${endpoint} (${this.quota.used} units used today); try again after midnight Pacific`);
     this.units += cost;
-    const res = await fetch(`${API}/${endpoint}?${new URLSearchParams({ ...params, key: this.key })}`);
+    const q = new URLSearchParams({ ...params, ...("key" in this.auth ? { key: this.auth.key } : {}) });
+    const res = await fetch(`${API}/${endpoint}?${q}`, "bearer" in this.auth ? { headers: { authorization: `Bearer ${this.auth.bearer}` } } : undefined);
     if (!res.ok) throw new Error(`${endpoint} ${res.status}: ${(await res.text()).slice(0, 200)}`);
     return schema.parse(await res.json());
   }
@@ -89,8 +96,8 @@ async function resolveReferences(api: Api, refs: string[]): Promise<string[]> {
   return [...new Set(ids)];
 }
 
-export async function scan(slug: string, req: ScanRequest, key: string, quota: QuotaKeeper | null, now = new Date()) {
-  const api = new Api(key, quota);
+export async function scan(slug: string, req: ScanRequest, auth: Auth, quota: QuotaKeeper | null, now = new Date()) {
+  const api = new Api(auth, quota);
   const since = new Date(now.getTime() - MONTHS * 30 * DAY_MS);
   const refIds = await resolveReferences(api, req.references);
   const queries = [...new Set([...(req.queries.length ? req.queries : [req.niche]).filter(Boolean)])].slice(0, MAX_QUERIES);
@@ -187,8 +194,6 @@ async function main(): Promise<void> {
   }
   const slug = a;
   if (!slug || !/^[a-z0-9][a-z0-9-]{1,40}$/.test(slug)) throw new Error("usage: niche-scan <slug> [rawDir]");
-  const key = process.env.YT_API_KEY;
-  if (!key) throw new Error("YT_API_KEY is not set");
   const req = await requestFor(slug);
   let prisma: PrismaClient | null = null, quota: QuotaKeeper | null = null;
   if (process.env.DATABASE_URL) {
@@ -196,7 +201,16 @@ async function main(): Promise<void> {
     quota = await QuotaKeeper.load(prisma);
   }
   try {
-    const { kept, raw } = await scan(slug, req, key, quota);
+    let auth: Auth;
+    if (process.env.YT_API_KEY) auth = { key: process.env.YT_API_KEY };
+    else {
+      // channel #1's sign-in reads public data too (youtube.readonly), on the same project quota
+      const ch = prisma ? await prisma.channel.findUnique({ where: { id: layout().default } }) : null;
+      const t = ch ? tokenOf(ch) : null;
+      if (!t) throw new Error("no YT_API_KEY and no stored sign-in to read YouTube with");
+      auth = { bearer: await accessToken(t.refreshToken, t.client) };
+    }
+    const { kept, raw } = await scan(slug, req, auth, quota);
     writeFileSync(path.join(researchDir(slug), "scan.json"), JSON.stringify(kept, null, 1) + "\n");
     const rawDir = b ?? path.join(ROOT, ".niche-data");
     mkdirSync(rawDir, { recursive: true });
