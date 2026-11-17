@@ -1,0 +1,49 @@
+{
+  "_source": "Watched in the owner's Chrome 2026-11-17: frames every ~5 s to 65 s, words from YouTube's transcript panel (full). Our own descriptions; shots approximate from sampled frames.",
+  "durationSec": 100,
+  "artStyle": "flat vector animation",
+  "language": "en",
+  "narrator": { "kind": "AI voice", "pace": "fast" },
+  "captions": { "style": "phrase", "position": "bottom" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 8,
+  "hook": {
+    "firstFrame": "a muted vintage map of North America with a small ship and a French flag",
+    "firstLine": "The US sent two diplomats to buy one city and bought a territory instead.",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": 75
+  },
+  "shots": [
+    { "start": 0, "end": 4, "picture": "vintage map of North America, a ship crossing toward France", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 4, "end": 9, "picture": "two big-headed cartoon diplomats meeting a cartoon Napoleon over a map of France", "kind": "character", "characters": 3, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 9, "end": 16, "picture": "the leaders shaking hands over a map of Western Europe", "kind": "character", "characters": 3, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 16, "end": 26, "picture": "France and Britain coloured red and blue on the map, a truce", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 26, "end": 31, "picture": "cartoon Napoleon dreaming, a thought bubble of the American empire", "kind": "character", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 31, "end": 36, "picture": "a 3D globe swinging to the Caribbean, North America recoloured by owner", "kind": "map", "characters": 0, "camera": "follow", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 36, "end": 42, "picture": "the island of Haiti with fire markers across its plantations", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 42, "end": 47, "picture": "a cartoon worker standing in a sugar field", "kind": "character", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 47, "end": 52, "picture": "Haiti turns blue as control is lost", "kind": "map", "characters": 0, "camera": "static", "transition": "morph", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 52, "end": 57, "picture": "a French warship sailing past the island", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 57, "end": 61, "picture": "the island alone in dark blue after the army is lost", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 61, "end": 70, "picture": "a cut-out portrait of Napoleon beside North America coloured by territory", "kind": "photo", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 70, "end": 85, "picture": "the Mississippi and New Orleans highlighted, Jefferson's offer", "kind": "map", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": true, "motion": 2 },
+    { "start": 85, "end": 100, "picture": "Louisiana recoloured as American, the country doubling on the map", "kind": "map", "characters": 0, "camera": "pull out", "transition": "morph", "onScreenText": "", "figureOnScreen": true, "motion": 2 }
+  ],
+  "lines": [
+    { "start": 0, "end": 10, "words": 32, "job": "hook", "gist": "set out to buy one city, bought the whole territory for about the same price" },
+    { "start": 10, "end": 19, "words": 28, "job": "context", "gist": "a peace in Europe that both sides knew was short" },
+    { "start": 19, "end": 34, "words": 50, "job": "stakes", "gist": "Napoleon's American plan rested on his richest colony" },
+    { "start": 34, "end": 60, "words": 80, "job": "turn", "gist": "the colony's revolution and a disease destroyed his army there" },
+    { "start": 60, "end": 84, "words": 75, "job": "reveal", "gist": "without it the territory was useless; America wanted the river port" },
+    { "start": 84, "end": 100, "words": 58, "job": "payoff", "gist": "he offered everything; the country doubled in a day at a few cents an acre" }
+  ],
+  "ending": { "loops": false, "cta": null, "lastFrame": "North America with the purchase recoloured" },
+  "whyItWorks": [
+    "a paradox in the first sentence: set out to buy a city, came home with half a continent",
+    "a chain of causes, each shown as the map changing colour",
+    "historical figures as cartoon characters reacting, with one real portrait",
+    "the most surprising figure (cents an acre) saved for the last line"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_source": "Watched in the owner's Chrome 2026-11-17: frames every ~4 s, words from YouTube's transcript panel. Our own descriptions; shots approximate from sampled frames.",
+  "durationSec": 79,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "AI voice", "pace": "normal" },
+  "captions": { "style": "word-by-word", "position": "top" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 12,
+  "hook": {
+    "firstFrame": "dozens of flag-coloured country shapes lined up at the top of a striped slope",
+    "firstLine": "Only one country here rolls like a real wheel.",
+    "question": false,
+    "subjectNamedAtSec": 16,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": 29
+  },
+  "shots": [
+    { "start": 0, "end": 5, "picture": "country shapes in flag colours on a striped slope, starting to tip", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 5, "end": 9, "picture": "one red shape pushed off the top line", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "so start cheering", "figureOnScreen": false, "motion": 3 },
+    { "start": 9, "end": 16, "picture": "the whole field tumbling down the slope", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 16, "end": 25, "picture": "Chile's long shape leads then falls flat", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 25, "end": 34, "picture": "the giants, Russia and Brazil, grinding to a stop", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "Russia and Brazil", "figureOnScreen": false, "motion": 2 },
+    { "start": 34, "end": 42, "picture": "Germany's shape takes the lead, others behind", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 42, "end": 50, "picture": "a small unknown shape rolling past the leaders", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "Is yours?", "figureOnScreen": false, "motion": 3 },
+    { "start": 50, "end": 60, "picture": "a tiny island shape sneaking into third place", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "a tiny island", "figureOnScreen": false, "motion": 3 },
+    { "start": 60, "end": 68, "picture": "a round shape closing on the leader near the bottom", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "on Earth catch it?", "figureOnScreen": false, "motion": 3 },
+    { "start": 68, "end": 79, "picture": "the last shape rolling alone, then the slope from the top again", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "rolls like a real", "figureOnScreen": false, "motion": 2 }
+  ],
+  "lines": [
+    { "start": 0, "end": 8, "words": 22, "job": "hook", "gist": "only one country rolls like a wheel; all cut to the same size and pushed" },
+    { "start": 8, "end": 16, "words": 20, "job": "promise", "gist": "your country is in there, cheer for it; what makes a good wheel" },
+    { "start": 16, "end": 34, "words": 40, "job": "stakes", "gist": "the famous ones fail early, the giants stop after metres" },
+    { "start": 34, "end": 50, "words": 34, "job": "turn", "gist": "Germany leads, then an unknown country passes; few still moving" },
+    { "start": 50, "end": 68, "words": 44, "job": "reveal", "gist": "a tiny island and a round country close in on the leader" },
+    { "start": 68, "end": 79, "words": 38, "job": "payoff", "gist": "only the perfect wheel is left; push them all again" }
+  ],
+  "ending": { "loops": true, "cta": null, "lastFrame": "the slope from the top, as at the start" },
+  "whyItWorks": [
+    "a claim in the first line whose answer waits for the end",
+    "the viewer is told their own country is in the race and asked about it",
+    "a race with a live count (14 of 170 still moving) keeps the stakes rising",
+    "underdogs beat the giants; the last line restarts the race into a loop"
+  ]
+}

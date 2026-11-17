@@ -1,0 +1,51 @@
+{
+  "_source": "Watched in the owner's Chrome 2026-11-17: frames every ~3 s, words from YouTube's transcript panel. Our own descriptions; shots approximate from sampled frames.",
+  "durationSec": 64,
+  "artStyle": "flat vector animation",
+  "language": "en",
+  "narrator": { "kind": "AI voice", "pace": "fast" },
+  "captions": { "style": "phrase", "position": "bottom" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 15,
+  "hook": {
+    "firstFrame": "a small cartoon person planting a single flag on a flat political world map",
+    "firstLine": "What if the entire world suddenly became one country?",
+    "question": true,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": 9,
+    "figureSpokenAtSec": 7
+  },
+  "shots": [
+    { "start": 0, "end": 4, "picture": "a cartoon person plants one flag over a colourful political world map", "kind": "map", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 4, "end": 7, "picture": "a cartoon guard stands on a map of Europe and Africa, borders fading", "kind": "map", "characters": 1, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 7, "end": 11, "picture": "DAY 1 card over a world map covered in tiny people, a huge population counter", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "DAY 1", "figureOnScreen": true, "motion": 2 },
+    { "start": 11, "end": 14, "picture": "a cartoon citizen on a podium in front of the map", "kind": "character", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 14, "end": 18, "picture": "a cartoon plane flies a route across the map with a pin", "kind": "map", "characters": 1, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 18, "end": 22, "picture": "DAY 2: a beach stall with a price board, a shopper puzzled", "kind": "character", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "DAY 2", "figureOnScreen": false, "motion": 1 },
+    { "start": 22, "end": 26, "picture": "a map with a single currency figure on a card over it", "kind": "map", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": true, "motion": 2 },
+    { "start": 26, "end": 31, "picture": "a crowd at the stall pointing at a crazy price on the board", "kind": "character", "characters": 4, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": true, "motion": 2 },
+    { "start": 31, "end": 36, "picture": "DAY 4: three politicians with speech signs over Europe", "kind": "character", "characters": 3, "camera": "static", "transition": "cut", "onScreenText": "DAY 4", "figureOnScreen": false, "motion": 1 },
+    { "start": 36, "end": 41, "picture": "a soldier standing alone on a world map", "kind": "map", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "DAY 5", "figureOnScreen": false, "motion": 1 },
+    { "start": 41, "end": 46, "picture": "a whip blur into a field with a rocket on a pad and a scientist", "kind": "character", "characters": 2, "camera": "pan", "transition": "whip", "onScreenText": "", "figureOnScreen": true, "motion": 3 },
+    { "start": 46, "end": 52, "picture": "three clocks over a dark blue map, a worried leader below", "kind": "map", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "DAY 6", "figureOnScreen": false, "motion": 1 },
+    { "start": 52, "end": 57, "picture": "Africa map with the question CAPITAL? and candidate cities", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "CAPITAL?", "figureOnScreen": false, "motion": 2 },
+    { "start": 57, "end": 61, "picture": "a football pitch, scoreboard WORLD vs WORLD, a trophy", "kind": "object", "characters": 2, "camera": "static", "transition": "cut", "onScreenText": "WORLD 0 WORLD 0", "figureOnScreen": false, "motion": 1 },
+    { "start": 61, "end": 64, "picture": "back to the blue world map and the planted flag", "kind": "map", "characters": 1, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 7, "words": 22, "job": "hook", "gist": "the what-if question, no borders, one flag" },
+    { "start": 7, "end": 15, "words": 30, "job": "promise", "gist": "day one: you are one of 8 billion citizens, passports useless" },
+    { "start": 15, "end": 23, "words": 28, "job": "context", "gist": "day two: 180 currencies gone, one world money" },
+    { "start": 23, "end": 33, "words": 36, "job": "stakes", "gist": "prices go wild; day three, an election where one in three voters is in India or China" },
+    { "start": 33, "end": 41, "words": 26, "job": "turn", "gist": "day four: thousands of languages at the first meeting" },
+    { "start": 41, "end": 52, "words": 34, "job": "reveal", "gist": "day five: the world's military spending, now with no one to fight" },
+    { "start": 52, "end": 64, "words": 26, "job": "payoff", "gist": "day six: time zones and a capital; day seven: one thing everyone agrees on" }
+  ],
+  "ending": { "loops": true, "cta": null, "lastFrame": "the blue world map with the single flag, the first frame again" },
+  "whyItWorks": [
+    "the title's question is the first sentence: no warm-up",
+    "a DAY counter turns the idea into a countdown the viewer wants to finish",
+    "every day is a new place with a small cartoon person doing something there",
+    "sourced figures (population, currencies, military spending) put on a sign in the scene; the end loops to the first frame"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "_source": "Watched in the owner's Chrome 2026-11-17: frames every ~4 s to 40 s, words from YouTube's transcript panel (full). Our own descriptions; shots approximate from sampled frames.",
+  "durationSec": 51,
+  "artStyle": "mixed",
+  "language": "en",
+  "narrator": { "kind": "AI voice", "pace": "fast" },
+  "captions": { "style": "word-by-word", "position": "middle" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 8,
+  "hook": {
+    "firstFrame": "a satellite view of the Middle East through clouds, Iran outlined",
+    "firstLine": "Did you know this conflict might be just the trailer?",
+    "question": true,
+    "subjectNamedAtSec": 7,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": 14
+  },
+  "shots": [
+    { "start": 0, "end": 4, "picture": "satellite view through clouds, the region below", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "Did you know", "figureOnScreen": false, "motion": 2 },
+    { "start": 4, "end": 8, "picture": "terrain map with Iran outlined in green and markers along a route", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "The real game", "figureOnScreen": false, "motion": 2 },
+    { "start": 8, "end": 15, "picture": "close terrain of the Caspian with Iran labelled below it", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "the Caspian", "figureOnScreen": false, "motion": 1 },
+    { "start": 15, "end": 22, "picture": "the five shore countries coloured one by one around the lake", "kind": "map", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "Azerbaijan", "figureOnScreen": false, "motion": 2 },
+    { "start": 22, "end": 27, "picture": "a news article card pinned over the map as evidence", "kind": "text card", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "According to", "figureOnScreen": false, "motion": 1 },
+    { "start": 27, "end": 33, "picture": "a dotted shipping route drawn across the lake from Russia to Iran", "kind": "map", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "military", "figureOnScreen": false, "motion": 2 },
+    { "start": 33, "end": 38, "picture": "the region pulled back, Russia red and the lake between", "kind": "map", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "scrutiny", "figureOnScreen": false, "motion": 1 },
+    { "start": 38, "end": 45, "picture": "a cargo ship on open water", "kind": "footage", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "of their", "figureOnScreen": false, "motion": 1 },
+    { "start": 45, "end": 51, "picture": "the protected corridor highlighted on the map", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 7, "words": 26, "job": "hook", "gist": "a famous conflict may be the trailer; the real game is where navies can't go" },
+    { "start": 7, "end": 14, "words": 22, "job": "promise", "gist": "it is called a sea but it is the world's largest lake" },
+    { "start": 14, "end": 21, "words": 20, "job": "context", "gist": "only five countries border it and no outside navy may enter" },
+    { "start": 21, "end": 36, "words": 46, "job": "reveal", "gist": "reports say weapons move across it out of sight, trackers switched off" },
+    { "start": 36, "end": 51, "words": 43, "job": "payoff", "gist": "a protected corridor that could resupply one side without interference" }
+  ],
+  "ending": { "loops": false, "cta": null, "lastFrame": "the corridor on the map" },
+  "whyItWorks": [
+    "ties a place the viewer never thinks about to a conflict in the news",
+    "a surprise in the second line: the sea is really a lake",
+    "evidence on screen (a report card) before the strongest claim",
+    "a closed space with five owners makes a simple map story"
+  ]
+}

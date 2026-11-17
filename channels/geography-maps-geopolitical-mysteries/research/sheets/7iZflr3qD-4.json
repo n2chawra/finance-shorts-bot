@@ -1,0 +1,47 @@
+{
+  "_source": "Watched in the owner's Chrome 2026-11-17: frames every ~2.5-3 s, words from YouTube's transcript panel (Hindi narration). Our own descriptions; shots are approximate from sampled frames.",
+  "durationSec": 65,
+  "artStyle": "mixed",
+  "language": "hi",
+  "narrator": { "kind": "human voice", "pace": "fast" },
+  "captions": { "style": "none", "position": "none" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 10,
+  "hook": {
+    "firstFrame": "a satellite world map tilting toward the viewer",
+    "firstLine": "Let's talk about Chile, not the pepper; why is it so long?",
+    "question": true,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": 9,
+    "figureSpokenAtSec": 7
+  },
+  "shots": [
+    { "start": 0, "end": 3, "picture": "satellite world map tilting in 3D", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 3, "end": 6, "picture": "a red chili pepper laid over Chile's outline on a terrain map", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "Chili", "figureOnScreen": false, "motion": 1 },
+    { "start": 6, "end": 9, "picture": "Chile's red outline stretched with the word LOOOONG along it", "kind": "map", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "LOOOOONG", "figureOnScreen": false, "motion": 2 },
+    { "start": 9, "end": 12, "picture": "Chile's red shape dragged over India from Kashmir down", "kind": "map", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 12, "end": 18, "picture": "the red shape over India with a yellow distance label and a measuring line", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "km", "figureOnScreen": true, "motion": 2 },
+    { "start": 18, "end": 24, "picture": "close terrain of a narrow valley with small flags marking settlements", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 24, "end": 30, "picture": "Chile's red strip with a white arrow shape across it on a terrain map", "kind": "map", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 30, "end": 39, "picture": "the Andes highlighted in orange along the red strip of Chile", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "The Andes", "figureOnScreen": false, "motion": 1 },
+    { "start": 39, "end": 45, "picture": "South America pulled back, Chile alone in red", "kind": "map", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 45, "end": 57, "picture": "Bolivia appears in blue beside Chile, then shrinks back from the coast", "kind": "map", "characters": 0, "camera": "static", "transition": "morph", "onScreenText": "Bolivia", "figureOnScreen": false, "motion": 2 },
+    { "start": 57, "end": 65, "picture": "the whole continent, Chile in red and Bolivia in blue, pulling away", "kind": "map", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 7, "words": 22, "job": "hook", "gist": "a pepper pun, then the question why the country is so long" },
+    { "start": 7, "end": 15, "words": 24, "job": "promise", "gist": "its length compared with India's north-south span" },
+    { "start": 15, "end": 23, "words": 24, "job": "context", "gist": "how narrow it is, under a hundred km in places" },
+    { "start": 23, "end": 31, "words": 24, "job": "stakes", "gist": "colonial borders followed the coast as settlers spread" },
+    { "start": 31, "end": 39, "words": 24, "job": "turn", "gist": "the Andes act as a wall that fixed the eastern edge" },
+    { "start": 39, "end": 50, "words": 30, "job": "reveal", "gist": "a war with its neighbours moved the northern border" },
+    { "start": 50, "end": 65, "words": 40, "job": "payoff", "gist": "mountains on one side, ocean on the other, a war at the top" }
+  ],
+  "ending": { "loops": false, "cta": null, "lastFrame": "South America with Chile red and Bolivia blue" },
+  "whyItWorks": [
+    "a pun on the name in the first second, then a question the viewer can't answer",
+    "the strange shape dropped onto the viewer's own country for scale",
+    "a new map move every 3 seconds: drag, zoom into relief, recolour a neighbour",
+    "one thread of cause: mountains, coast, war, each shown on the map"
+  ]
+}
