@@ -59,9 +59,12 @@ model Topic {
   title     String
   embedding Unsupported("vector")? // filled once an embedding model is available
   createdAt DateTime               @default(now())
+  channelId String                 @default("paisa-panchayat")
+  channel   Channel                @relation(fields: [channelId], references: [id])
   videos    Video[]
 
   @@index([category])
+  @@index([channelId])
 }
 
 model Video {
@@ -95,6 +98,8 @@ model Video {
   pickedAt      DateTime?
   pickReason    String?
   orderLocked   Boolean     @default(false)
+  channelId     String      @default("paisa-panchayat")
+  channel       Channel     @relation(fields: [channelId], references: [id])
   qaChecks      QaCheck[]
   feedback      Feedback[]
   studies       Study[]
@@ -102,6 +107,7 @@ model Video {
   agentRuns     AgentRun[]
 
   @@index([status, format, queuePosition])
+  @@index([channelId, status])
 }
 
 model QaCheck {
@@ -185,8 +191,10 @@ model ChannelDay {
   subsGained   Int      @default(0)
   subsLost     Int      @default(0)
   playlistAdds Int      @default(0)
+  channelId    String   @default("paisa-panchayat")
+  channel      Channel  @relation(fields: [channelId], references: [id])
 
-  @@id([day, format])
+  @@id([channelId, day, format])
 }
 
 /// One row of a breakdown: traffic source, search term, country, age and gender, device, subscribed or
@@ -200,9 +208,11 @@ model Breakdown {
   share        Float    @default(0)
   extra        Json?
   refreshedAt  DateTime @default(now())
+  channelId    String   @default("paisa-panchayat")
+  channel      Channel  @relation(fields: [channelId], references: [id])
 
-  @@id([scope, kind, key])
-  @@index([scope, kind])
+  @@id([channelId, scope, kind, key])
+  @@index([channelId, scope, kind])
 }
 
 /// The public counters once an hour (watchdog), kept 7 days: our own "realtime" chart.
@@ -279,8 +289,12 @@ model Notification {
   decidedAt   DateTime?
   /// the owner marked it resolved: it stays closed for a week even if its check still fails
   dismissedAt DateTime?
+  /// the channel it is about; null for the whole platform (quota, shared agents)
+  channelId   String?   @default("paisa-panchayat")
+  channel     Channel?  @relation(fields: [channelId], references: [id])
 
   @@index([resolvedAt])
+  @@index([channelId])
 }
 
 /// One agent's night: what it did, found and decided (from improvement/activity/<day>-<agent>.json).
@@ -298,6 +312,9 @@ model AgentActivity {
   startedAt  DateTime? // run times from the agent's own clock (optional)
   finishedAt DateTime?
   createdAt  DateTime  @default(now())
+  /// null for a shared agent run (auditor, dashboard, improver, monthly)
+  channelId  String?   @default("paisa-panchayat")
+  channel    Channel?  @relation(fields: [channelId], references: [id])
 
   @@index([day])
 }
@@ -325,6 +342,9 @@ model Feedback {
   response    String?
   addressedAt DateTime?
   createdAt   DateTime  @default(now())
+  /// null: feedback on the whole platform
+  channelId   String?   @default("paisa-panchayat")
+  channel     Channel?  @relation(fields: [channelId], references: [id])
 
   @@index([status, createdAt])
 }
@@ -333,20 +353,56 @@ model Feedback {
 /// videos (picked by the owner, or the closest title), workers/study.ts compares them and applies the
 /// techniques (generator/prompts/studied.md) and the biggest look difference (a weekly-loop challenger).
 model Study {
-  id        String    @id @default(cuid())
-  url       String
-  youtubeId String
-  title     String?
-  channel   String?
-  note      String?
-  videoId   String?
-  video     Video?    @relation(fields: [videoId], references: [id], onDelete: SetNull)
-  matchedBy String? // owner | auto
-  status    String    @default("queued") // queued | watching | done | failed
-  error     String?
-  report    Json?
-  createdAt DateTime  @default(now())
-  doneAt    DateTime?
+  id         String    @id @default(cuid())
+  url        String
+  youtubeId  String
+  title      String?
+  channel    String?
+  note       String?
+  videoId    String?
+  video      Video?    @relation(fields: [videoId], references: [id], onDelete: SetNull)
+  matchedBy  String? // owner | auto
+  status     String    @default("queued") // queued | watching | done | failed
+  error      String?
+  report     Json?
+  createdAt  DateTime  @default(now())
+  doneAt     DateTime?
+  /// our channel the study is for (`channel` above is the studied video's channel name)
+  channelId  String    @default("paisa-panchayat")
+  forChannel Channel   @relation(fields: [channelId], references: [id])
 
   @@index([status, createdAt])
+}
+
+// ---------------- many channels on one platform (docs/plans/multi-channel.md) ----------------
+
+enum ChannelStatus {
+  setup
+  review
+  active
+  paused
+}
+
+/// One YouTube channel run by the platform. Paisa Panchayat is the first ("paisa-panchayat").
+model Channel {
+  id               String          @id // slug: the folder name under channels/
+  name             String
+  status           ChannelStatus   @default(setup)
+  /// YouTube's channel id (UC…), set by "Connect YouTube"; unique so one channel can't be linked twice
+  youtubeChannelId String?         @unique
+  /// the refresh token, AES-256-GCM encrypted with a key derived from SESSION_SECRET
+  refreshTokenEnc  String?
+  connectedAt      DateTime?
+  /// per-channel settings over the platform's Setting rows: dailyVideoTarget, uploadTimes, longPerWeek…
+  settings         Json            @default("{}")
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  videos           Video[]
+  topics           Topic[]
+  channelDays      ChannelDay[]
+  breakdowns       Breakdown[]
+  notifications    Notification[]
+  activities       AgentActivity[]
+  feedback         Feedback[]
+  studies          Study[]
 }
