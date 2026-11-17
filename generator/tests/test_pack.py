@@ -40,7 +40,8 @@ def test_a_complete_pack_passes(tmp_path, monkeypatch):
     j = json.loads((d / "channel.json").read_text(encoding="utf-8"))
     (d / "channel.json").write_text(json.dumps({**j, "disclaimer": "Facts from NASA. Images: NASA, public domain."}), encoding="utf-8")
     (d / "profile.md").write_text("# Space Facts\n\n" + "word " * 160, encoding="utf-8")
-    fmt = lambda i, tier: {"id": i, "format": "short", "name": i, "hook": "h", "beats": "b", "tier": tier}
+    fmt = lambda i, tier: {"id": i, "format": "short", "name": i, "hook": "h", "beats": "b", "tier": tier,
+                           "examples": [{"title": "a hit", "views": 2_000_000, "url": "https://youtube.com/watch?v=x"}]}
     (d / "research" / "formats.json").write_text(json.dumps({"formats": [fmt("a", "core"), fmt("b", "low"), fmt("c", "low")]}), encoding="utf-8")
     (d / "research" / "shapes.json").write_text(json.dumps({"shapes": [{"id": "reveal"}]}), encoding="utf-8")
     (d / "research" / "topics.json").write_text(json.dumps({"topics": [{"id": f"t{i}", "facts": [{"value": 1}]} for i in range(15)]}), encoding="utf-8")

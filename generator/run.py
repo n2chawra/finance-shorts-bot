@@ -210,7 +210,7 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "recent_topics": [e["topic"]["title"] for e in entries[-40:]],
         "recent_openings": sorted({variety.opening(e[f]) for e in entries[-variety.OPENING_WINDOW:] for f in ("title", "description")}),
         "length_range_sec": list(length_range(settings, fmt)),
-        "disclaimer": settings["disclaimer"],
+        "disclaimer": pack.load(root=root)["disclaimer"],   # the channel's own (generator/pack.py)
     }
 
 

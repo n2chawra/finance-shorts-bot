@@ -3,35 +3,91 @@
   "seen": [],
   "formats": [
     {
-      "id": "what_if_world", "format": "short", "markets": ["global"], "name": "What if: a world that changed",
-      "tier": "core", "emotion": "wonder and play: imagine it with me",
+      "id": "what_if_world",
+      "format": "short",
+      "markets": [
+        "global"
+      ],
+      "name": "What if: a world that changed",
+      "tier": "core",
+      "emotion": "wonder and play: imagine it with me",
       "hook": "The what-if question is the first line, over the map it changes: 'What if the entire world became one country?'",
       "beats": "the question -> what changes first (a figure the viewer knows) -> a countdown or a race of consequences, one place each -> the twist nobody expects -> the payoff that answers the title -> a last line that loops to the first frame",
-      "demand": [{ "title": "What If the Entire World Became One Country", "views": 2951628, "url": "https://youtube.com/watch?v=R1zt38xJ_V0" },
-                 { "title": "Can Countries Roll Down a Hill", "views": 2774711, "url": "https://youtube.com/watch?v=23XjUKrto-U" }]
+      "examples": [
+        {
+          "title": "What If the Entire World Became One Country",
+          "views": 2951628,
+          "url": "https://youtube.com/watch?v=R1zt38xJ_V0"
+        },
+        {
+          "title": "Can Countries Roll Down a Hill",
+          "views": 2774711,
+          "url": "https://youtube.com/watch?v=23XjUKrto-U"
+        }
+      ]
     },
     {
-      "id": "why_shaped", "format": "short", "markets": ["global"], "name": "Why a place is shaped or placed like that",
-      "tier": "core", "emotion": "the satisfaction of an odd map finally making sense",
+      "id": "why_shaped",
+      "format": "short",
+      "markets": [
+        "global"
+      ],
+      "name": "Why a place is shaped or placed like that",
+      "tier": "core",
+      "emotion": "the satisfaction of an odd map finally making sense",
       "hook": "Name the place and ask why in the first line, the odd shape on screen: 'Why does Gambia sit inside Senegal?'",
       "beats": "the place and the question -> its shape put on a map the viewer knows, for scale -> the first cause (a river, mountains, a coast) shown on the map -> the second cause (a treaty, a war, a trade) -> the payoff: the one fact that explains it -> loop",
-      "demand": [{ "title": "Why Chile Is So Long & Narrow", "views": 10605551, "url": "https://youtube.com/watch?v=7iZflr3qD-4" },
-                 { "title": "How America Bought Louisiana", "views": 18713576, "url": "https://youtube.com/watch?v=BmNSUb8HxCA" }]
+      "examples": [
+        {
+          "title": "Why Chile Is So Long & Narrow",
+          "views": 10605551,
+          "url": "https://youtube.com/watch?v=7iZflr3qD-4"
+        },
+        {
+          "title": "How America Bought Louisiana",
+          "views": 18713576,
+          "url": "https://youtube.com/watch?v=BmNSUb8HxCA"
+        }
+      ]
     },
     {
-      "id": "ranking_map", "format": "short", "markets": ["global"], "name": "Rankings and comparisons on a map",
-      "tier": "low", "emotion": "where does my country land?",
+      "id": "ranking_map",
+      "format": "short",
+      "markets": [
+        "global"
+      ],
+      "name": "Rankings and comparisons on a map",
+      "tier": "low",
+      "emotion": "where does my country land?",
       "hook": "The ranking's surprise in the first line: 'Only 14 of 170 countries make it to the bottom of the hill.'",
       "beats": "the rule of the ranking -> the famous ones fail early -> an underdog rises -> the viewer's own region -> the winner -> loop",
-      "demand": [{ "title": "Every Country's Longest and Shortest Ruling Leader", "views": 387694, "url": "" }]
+      "examples": [
+        {
+          "title": "Every Country's Longest and Shortest Ruling Leader",
+          "views": 387694,
+          "url": ""
+        }
+      ]
     },
     {
-      "id": "place_resources", "format": "short", "markets": ["global"], "name": "A place and what makes it rich or poor",
-      "tier": "low", "emotion": "a place's luck or curse",
+      "id": "place_resources",
+      "format": "short",
+      "markets": [
+        "global"
+      ],
+      "name": "A place and what makes it rich or poor",
+      "tier": "low",
+      "emotion": "a place's luck or curse",
       "hook": "A place and a paradox: 'This desert country has no rivers, yet it's one of the richest on Earth.'",
       "beats": "the place and the paradox -> the resource or route, shown on the map -> who controls it -> what it changed -> the payoff -> loop",
-      "demand": [{ "title": "Why Singapore Is One of the Richest Countries", "views": 0, "url": "" }],
-      "_why_low": "families.json ranks 'rich, poor and resources' 0.33× on 43 Shorts; part of the owner's concept, so a weekly-loop challenger first, told as a place story"
+      "_why_low": "families.json ranks 'rich, poor and resources' 0.33× on 43 Shorts; part of the owner's concept, so a weekly-loop challenger first, told as a place story",
+      "examples": [
+        {
+          "title": "Why Singapore Is One of the Richest Countries",
+          "views": 0,
+          "url": ""
+        }
+      ]
     }
   ]
 }

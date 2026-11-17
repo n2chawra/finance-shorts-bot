@@ -98,3 +98,16 @@ def test_a_channel_in_setup_makes_only_its_samples(tmp_path, monkeypatch):
     entries = [e for e in real if e.get("format", "short") == "short"][-3:]   # three real Shorts' entries as the samples
     (ch / "history" / "history.json").write_text(json.dumps(entries), encoding="utf-8")
     assert "samples are made" in run.state(tmp_path)["reason"]
+
+
+def test_video_ids_are_unique_across_channels(tmp_path, monkeypatch):
+    import json
+    from datetime import datetime, timezone
+    from generator import history
+    monkeypatch.setenv("CHANNEL", "space-facts")
+    (tmp_path / "channels" / "paisa-panchayat" / "videos" / "v-20261117-01").mkdir(parents=True)
+    (tmp_path / "channels" / "paisa-panchayat" / "history").mkdir(parents=True)
+    (tmp_path / "channels" / "paisa-panchayat" / "history" / "history.json").write_text(json.dumps([{"id": "v-20261117-02"}]), encoding="utf-8")
+    (tmp_path / "channels" / "space-facts").mkdir(parents=True)
+    at = datetime(2026, 11, 17, 6, 0, tzinfo=timezone.utc)
+    assert history.next_id([], at, tmp_path) == "v-20261117-03"

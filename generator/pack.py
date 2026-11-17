@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -109,6 +110,19 @@ def check(slug: str, root: Path = ROOT) -> list[str]:
     shorts = [f for f in formats if f.get("format") == "short" and not f.get("retired")]
     if len(shorts) < 3 or not any(f.get("tier") == "core" for f in shorts):
         out.append("research/formats.json: at least 3 Short formats from the research, one of them tier core")
+    # the planner only offers a format with a reference video at MIN_VIEWS (`examples`, generator/formats.py)
+    from . import formats as _formats
+    before = os.environ.get("CHANNEL")
+    os.environ["CHANNEL"] = slug          # formats.load reads the channel the environment names
+    try:
+        plannable = _formats.load(root, "short")
+    finally:
+        if before is None:
+            os.environ.pop("CHANNEL", None)
+        else:
+            os.environ["CHANNEL"] = before
+    if formats and not any(f.get("tier") == "core" for f in plannable):
+        out.append(f"research/formats.json: no core Short format the planner can use: each needs `examples` with a video of {_formats.MIN_VIEWS:,}+ views")
     for f in formats:
         missing = [k for k in ("id", "format", "name", "hook", "beats", "tier") if not f.get(k)]
         if missing:

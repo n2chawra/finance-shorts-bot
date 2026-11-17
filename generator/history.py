@@ -59,6 +59,15 @@ def next_id(entries: list[dict], at: datetime | None = None, root: Path = ROOT, 
     prefix = "v" if fmt == "short" else "L"
     day = (at or now()).astimezone(IST).strftime("%Y%m%d")
     used = {e["id"] for e in entries} | {p.name for p in (cpath(root, "videos")).glob(f"{prefix}-*") if p.is_dir()}
+    # ids are unique across every channel: the database and the release tags key videos by id alone
+    for d in (root / "channels").glob(f"*/videos/{prefix}-*") if (root / "channels").is_dir() else []:
+        if d.is_dir():
+            used.add(d.name)
+    for f in (root / "channels").glob("*/history/history.json") if (root / "channels").is_dir() else []:
+        try:
+            used |= {e["id"] for e in json.loads(f.read_text(encoding="utf-8")) if e.get("id")}
+        except (ValueError, KeyError):
+            pass
     n = 1
     while f"{prefix}-{day}-{n:02d}" in used:
         n += 1
