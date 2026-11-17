@@ -11,9 +11,9 @@ _Updated 2026-11-17 (owner, before moving to the Max plan). Four changes:_
   channel as the rules allow. They show exactly the kind of video that will go out, and the owner
   approves them before launch._
 
-_Also brought up to date: directed 2D shots on the flat kit (13 Nov), the automatic Study worker that
-watches videos with Gemini (13 Nov), two long videos a week on channel #1 (16 Nov), and the quota
-arithmetic._
+_Also brought up to date: directed 2D shots on the flat kit (13 Nov), two long videos a week on
+channel #1 (16 Nov), the quota arithmetic, routine timings for many channels, and (owner, 17 Nov)
+the setup's YouTube study done in the owner's own PC browser, not with Gemini._
 
 _Kept from 12 Nov: every channel runs the weekly loop instead of the variant system, is judged on
 stayed to watch instead of views, starts lean, picks its look from its niche, and has a stop rule.
@@ -133,16 +133,23 @@ second channel launches (the system raises a notification with the steps).
      and a Continue on a "Don't" is recorded with the reason in `channels/<slug>/decisions.json`.
    - It lands in `channels/<slug>/research/verdict.md` and on the Channels page. Nothing below runs
      until the owner clicks Continue.
-3. **Full research (automatic, about 2–3 h; details in the next section):**
+3. **Full research (automatic, about 2–3 h; details in the next section). It runs in the Claude
+   desktop app on the owner's PC, which must stay on and online for it.** It uses the PC's own
+   browser (owner, 2026-11-17: not Gemini). It starts when the owner clicks Continue on the verdict,
+   in the daytime gap free of routines (below). If the PC is off, the Channels page shows "waiting
+   for your PC" and the research starts when the PC is back.
    - **Market:** with the YouTube Data API, read the reference channels and the niche's top
      searches: the videos that beat their channel's median (outliers), their titles, lengths,
      Shorts vs long, cadence, and the formats behind them. This produces the demand-first format list
      with reference videos, the same rule that saved our channel.
-   - **Watch the references:** the top 5 Shorts and top 3 long videos of the reference channels are
-     watched shot by shot by the Study worker (`workers/study.ts`: Gemini shot sheets, the same tool
-     as the Study page, no browser needed). The owner's favourite reference, if named, is one of them.
-     The `yt-style` method in the browser adds the sound (tempo, key, ducking, SFX).
-   - **Watch the wider niche:** 10 more top Shorts and 3–5 top long videos from other channels.
+   - **Watch the references, in the PC's browser** (the `yt-style` method used on The Curious Plot):
+     the top 5 Shorts and top 3 long videos of the reference channels are watched frame by frame and
+     written into the same shot-sheet format the Study page uses (`workers/lib/sheets.ts`), so code
+     can measure them. The owner's favourite reference, if named, is one of them. The method also
+     measures the sound (tempo, key, levels, ducking, SFX). Nothing is downloaded. The Gemini Study
+     worker stays only for the Study page after launch.
+   - **Watch the wider niche, in the same browser:** 10 more top Shorts and 3–5 top long videos from
+     other channels.
    - **Code measures the shot sheets:** shot length, cuts a minute, shot sizes, camera moves,
      on-screen text, caption style, palette, words a minute, music level. These become the
      channel's style targets.
@@ -211,10 +218,48 @@ second channel launches (the system raises a notification with the steps).
    - the refresh token is stored encrypted in the database (keyed by `SESSION_SECRET`);
    - the system checks the token belongs to a new channel (`myChannel`) and links it.
 7. **Activate (automatic, on "Launch"):**
-   - the channel's routines are created (video run, research, and Scout/Studio if long videos are on),
-     in free usage windows;
+   - the channel's routines are created (video run, research, reviewer, and Scout/Studio if long
+     videos are on), at the times in "Routine timings";
    - its video counts and upload slots are set from the accepted advice;
    - status becomes `active`, and the first upload happens the next morning.
+
+## Routine timings for many channels (IST)
+Claude's usage resets in 5-hour windows on Pro and on Max; Max has more usage in each window, plus a
+weekly cap. The rule from channel #1 stays: **each night's video runs open a fresh window**, so they
+always have the full window to use. Channels are staggered so their runs never overlap, and
+the shared agents run once a night for all channels.
+
+| Time (IST) | Routine | Per channel or shared | Window |
+|---|---|---|---|
+| 23:00 | Auditor (all channels in one run) | shared | A |
+| 23:47 | Research, channel #1 | per channel | A |
+| +25 min each | Research, channel #2, #3… (00:12, 00:37…; all done by 02:30) | per channel | A |
+| 04:07 | Video run, channel #1 (its Shorts for the day) | per channel | **B (fresh)** |
+| +40 min each | Video run, channel #2, #3… (04:47, 05:27…) | per channel | B |
+| after the last video run, at least 06:17 | Improver (one run; each channel's weekly loop judged on its own) | shared | B |
+| +80 min after the improver | Dashboard agent (Sundays) | shared | B |
+| 09:07 | Spare run: one run that makes up any channel's shortfall, worst buffer first, else idles | shared | **C (fresh)** |
+| 08:05 Mon/Wed, +45 min each | Studio (long videos), channels with long videos on | per channel | B/C |
+| 09:37 Mon/Thu, +30 min each | Scout (long-video topics) | per channel | C |
+| 12:00–20:30 | **Free gap:** new-channel setup research on the owner's PC, owner's own sessions | — | D |
+| 21:07 Tue/Fri, +30 min each | Reviewer | per channel | D |
+| 12:07 on the 1st | Monthly review (all channels) | shared | C/D |
+
+GitHub Actions (ingest, publish, stats, market, study) use no Claude usage and keep their own times.
+Each channel's `market.yml` scan runs at 22:17 IST, the next channel 10 min later.
+
+- **Upload slots are separate from routines.** Each channel has its own upload times (its video
+  counts). Different channels' slots sit at least 20 min apart, so the quota keeper can see each
+  upload land.
+- **How many channels fit:** window B holds about 4 channels' video runs at 40 min each, with the
+  improver after them. Past that, a fifth channel's video run moves to the 09:07 window C, and the
+  spare run moves 40 min later for each channel added there. The per-channel usage records
+  (`usage.json`) and the run-times card on the Agents page say when the windows are full. Adding a
+  channel past that point is refused on the Channels page, with the reason.
+- **On Pro** (until the move to Max): only channel #1's routines run. No new channel is added, and
+  the setup research waits for Max.
+- When a channel is paused, its routines still fire but exit in seconds, so its time slot stays
+  reserved and resuming needs no rescheduling.
 
 ## Research that knows what works before the first upload (owner, 2026-11-05: "the system should know in the setup itself that what works")
 Our channel learned "billionaire stories hit, news doesn't" and "≤35 s Shorts win" only after two weeks of
@@ -235,7 +280,7 @@ uploads. Both were visible in public data beforehand. The setup measures them:
    - the winning length range;
    - title patterns (a figure, a name, a question);
    - what the first second shows;
-   - how the hook opens: transcripts of the top 20 hits, read in the browser;
+   - how the hook opens: transcripts of the top 20 hits, read in the PC's browser;
    - upload cadence and the times of day the hits went out.
 4. **Comments of the top hits, mined** for what viewers ask for next. That gives the first topic list
    in the audience's own words, plus the language and countries.
@@ -410,6 +455,8 @@ uploads. Both were visible in public data beforehand. The setup measures them:
      style study and picture language, comments, gaps) and the advice (topic kinds, video counts);
    - the channel pack, the champion recipe and challenger list from the research, and the pre-launch backlog;
    - the sample Shorts and long video, last, with the side-by-side Launch review;
+   - the routine schedule for many channels (staggered times, the shared spare run, the "channel
+     won't fit" check);
    - auth and routines.
 4. **Hands-off layer:** the weekly loop and the reviewer per channel, drop diagnosis on stayed to watch, the animation
    tally, the stop rule, the weekly digest, usage per channel, change log and one-change rule, the
