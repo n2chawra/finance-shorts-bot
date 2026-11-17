@@ -13,7 +13,7 @@
         "dailyVideoTarget": 2
       },
       "health": {
-        "at": "2026-11-17T14:22:43.170Z",
+        "at": "2026-11-17T14:54:30.797Z",
         "color": "amber",
         "reason": "making videos is paused",
         "stayed": 0.3708113624766117,
@@ -32,7 +32,9 @@
       "name": "Geography, maps & geopolitical mysteries",
       "status": "setup",
       "settings": {
-        "dailyVideoTarget": 1
+        "lengthMaxSec": 80,
+        "lengthMinSec": 60,
+        "dailyVideoTarget": 2
       },
       "setup": {
         "stage": "samples",
