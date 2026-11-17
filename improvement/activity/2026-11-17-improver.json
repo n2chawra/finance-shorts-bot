@@ -1,0 +1,12 @@
+{
+  "agent": "improver",
+  "day": "2026-11-17",
+  "startedAt": "2026-11-17T17:04:05Z",
+  "finishedAt": "2026-11-17T17:04:17Z",
+  "summary": "Agents are paused, so no experiments were closed or started and nothing was changed.",
+  "decision": "nothing",
+  "why": "config/settings.json has agents.paused true (synced from the dashboard on 17 Nov); improver.md section 0 says to stop and write only the activity file.",
+  "findings": [],
+  "changes": [],
+  "nextCheck": "2026-11-18"
+}
