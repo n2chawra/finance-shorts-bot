@@ -1,11 +1,21 @@
 # Many channels on one platform: a one-time setup per channel, start and pause any time
 
-_Updated 2026-11-12 after the one-month review of channel #1 (`docs/plans/2026-11-11-review.md`) and
-the weekly loop (CLAUDE.md, first hard constraint): every channel runs the weekly loop instead of the
-variant system, is judged on stayed to watch instead of views, starts lean, picks its look from its
-niche, and has a stop rule. The niche itself is the owner's choice: research builds the channel from
-it and gives no go / no-go verdict. The order of work is unchanged: the whole platform is built
-before any new channel starts._
+_Updated 2026-11-17 (owner, before moving to the Max plan). Four changes:_
+- _Every channel sets its own Shorts and long-video counts, both for making and for posting._
+- _Before any big research, a **quick verdict** says whether the niche is doable and worth it (money
+  and public demand). This replaces the 12 Nov "no verdict" rule._
+- _Next comes a **sample Short and a sample long video**, made to look and move as close to the
+  reference channel as the rules allow. The owner approves them before the full research starts._
+- _The full research studies YouTube in depth: niche topics, animation style, Shorts and long videos.
+  It **advises** which kinds of topic to make and how many videos to post._
+
+_Also brought up to date: directed 2D shots on the flat kit (13 Nov), the automatic Study worker that
+watches videos with Gemini (13 Nov), two long videos a week on channel #1 (16 Nov), and the quota
+arithmetic._
+
+_Kept from 12 Nov: every channel runs the weekly loop instead of the variant system, is judged on
+stayed to watch instead of views, starts lean, picks its look from its niche, and has a stop rule.
+The order of work is unchanged: the whole platform is built before any new channel starts._
 
 ## Context
 The owner wants to run more YouTube channels on the same automation. For each new one they give a niche, a
@@ -23,76 +33,186 @@ Today the system is one channel spread across the repo (`channel/profile.md`, `c
 - **One platform, many channels**: one repo, dashboard, database, auditor and dashboard agents.
 - **One Google project for all channels.** This works: each YouTube channel signs in once to the same
   OAuth app and gets its own refresh token. The limit is the project's shared **quota (10,000
-  units a day)**. One upload costs about 1,600, so 3 Shorts a day uses about 4,800 per channel. Two
-  channels at 3 Shorts a day are 9,600 units before the dashboard's live counters (up to ~1,450) and a
-  weekly long video (1,600 more): **over the limit from channel #2**. So the free quota increase
-  (YouTube API audit form, about 1–3 weeks) is applied for before channel #2 launches, not #3.
+  units a day)**.
+  - One upload costs about 1,600 units, so 3 Shorts a day use about 4,800 per channel.
+  - Two channels at 3 Shorts a day use 9,600 units. On top of that come the dashboard's live counters
+    (up to ~1,450 a day) and, on a long-video day, 1,600 per long video. That is **over the limit from
+    channel #2**.
+  - Research adds to it. The Data API's `search.list` costs 100 units a call, while channel, playlist
+    and video reads cost 1. So the niche scan reads channels and their upload playlists, keeps
+    searches to about 20 a niche (~2,000 units), and runs on the quota keeper's budget.
+  - So the free quota increase (YouTube API audit form, about 1–3 weeks) is applied for before
+    channel #2 launches, not #3.
 - **Any niche**: the research decides the format, look, voice, whether numbers and money appear, and
   the fact rules.
-- **Usage is the owner's call**: each channel has its own `dailyVideoTarget` and can be paused.
+- **Usage is the owner's call**: each channel has its own Shorts and long-video counts (next section)
+  and can be paused.
+
+## Video counts per channel (owner, 2026-11-17)
+Each channel has its own four numbers, set on its Channels page. Any of them can be 0, so a channel
+can be Shorts-only or long-only:
+
+| Setting | Means | Channel #1 today |
+|---|---|---|
+| `dailyVideoTarget` | Shorts **made** a day (the morning run) | 3 |
+| `uploadTimes`, `shortEveryDays` | Shorts **posted**: the slots, and every how many days | 07:07, 12:37, 19:07 IST, daily |
+| `longPerWeek` | long videos **made** a week (Studio) | 2 |
+| `longUploadDays`, `longUploadTimes` | long videos **posted**: the days and time | Wed and Fri 20:07 IST |
+
+Each channel also has its own backlog caps (`backlogCap`, `longBacklogCap`) and long length
+(`longLengthMinSec`, `longLengthMaxSec`).
+- **Starting values come from the research** (its recommendation, below). The owner accepts or
+  changes them on the Launch review and can change them any time after.
+- **Making may run ahead of posting.** Extra videos fill the backlog up to its cap, then generation
+  stops. Posting never takes more than the queue holds: an empty slot stays empty rather than being
+  filled with a weak video.
+- **The dashboard checks every change against the totals across channels**: YouTube quota units a
+  day and the share of the plan's Claude usage (from `usage.json`). It warns before a change that
+  would go over.
+- **The weekly loop needs volume.** A cycle judges 8 Shorts a side, so 16 in 7 days, about 2.3 a day.
+  A channel posting fewer gets a longer cycle (for example 1 a day: about 16 days, one extension
+  allowed instead of the usual one week plus one). The Channels page says so next to the setting.
+- **A long-only channel** has no Shorts to run the loop on. Its loop judges long videos on average
+  view percentage, one change at a time, at 4 videos a side. It is slower, and the page says so.
 
 ## What the owner does per channel (everything else is automatic)
 1. **Tell the niche:** "Add channel" on the dashboard (or `/new-channel` here): the niche, a few lines
-   and 1–3 reference channels.
-2. **Create the channel on YouTube from the branding kit.** The system gives a kit on the Channels
+   and 1–3 reference channels. Optionally, the reference video whose style you want most, and how many
+   Shorts and long videos you have in mind.
+2. **Read the quick verdict** (about 30 min later) and click **Continue** or **Stop**. Stop ends it,
+   with nothing more spent.
+3. **Watch the sample Short and sample long video** next to the reference videos they follow. Click
+   **I like it**, or leave notes (fixed and re-rendered), or **Stop**.
+4. **Create the channel on YouTube from the branding kit.** The system gives a kit on the Channels
    page: 3 name ideas, the avatar and banner as files, the description and keywords. The owner creates
    the channel and pastes them in (about 5 minutes).
-3. **Click "Connect YouTube"** on the Channels page, pick the new channel on Google's consent screen.
-   That's one click: the token is stored for you, with no terminal and no secrets to copy.
-4. **Click "Launch"** after looking at the 3 sample Shorts (or leave notes; they get fixed and come back).
+5. **Click "Connect YouTube"** on the Channels page and pick the new channel on Google's consent
+   screen. That's one click: the token is stored for you, with no terminal and no secrets to copy.
+6. **Click "Launch"** after the Launch review. It shows the research's advice (topic kinds and video
+   counts, which you accept or change) and the pre-launch videos. Or leave notes: they get fixed and
+   come back.
 
-Pause, resume and "fewer videos a day" are buttons on the same page.
+Pause, resume and the video counts are on the same page.
 Once for the whole platform (not per channel): fill in YouTube's quota-increase form before the
 second channel launches (the system raises a notification with the steps).
 
 ## The flow for a new channel
 1. **Ask:** in this app, `/new-channel` with the niche, a few lines of description and 1–3 reference
    channel links. A dashboard "Add channel" form creates the same request.
-2. **Research (automatic, about 1–2 h, run here in the desktop app, which has the browser):**
+2. **Quick verdict (automatic, about 30 min, before any big research; owner, 2026-11-17: "so I don't
+   waste time on bad niches"):** a small scan, about 1,000 quota units and one short Claude session.
+   Every point is scored from public data, with the evidence linked:
+   - **Public demand:**
+     - **Views:** median views of the niche's Shorts and long videos in the last 90 days.
+     - **Do strangers get shown it:** how many channels under 10K subscribers had a video at 5× their
+       median or more in that time.
+     - **Direction:** rising or fading (views a day now vs six months ago).
+     - **Crowding:** how many channels posted the same topics this month.
+   - **Money:**
+     - **Can it be monetised:** whether the niche can join the YouTube Partner Program, and how fast.
+       The bar is 1,000 subscribers and either 4,000 public watch hours in 12 months or 10M Shorts
+       views in 90 days. The verdict estimates which path fits.
+     - **Will advertisers pay for it:** whether the niche is advertiser-friendly. Health,
+       kids-directed and violent-crime content lose ads.
+     - **How much it earns:** the niche's RPM band (revenue per 1,000 views), Shorts vs long. Bands
+       come from published creator reports and are labelled as estimates, never as facts.
+     - **Other income:** affiliate links, sponsors, products.
+   - **Doable by us:**
+     - **The look:** can the flat kit, Kokoro voices, synthesized music and Commons photos make the
+       reference look? A niche whose hits depend on real footage, gameplay, faces on camera or
+       licensed music is marked "not doable".
+     - **Voice and facts:** is the language voiced, and does the niche have true sources to cite?
+     - **Policy:** reused content, AI-content labelling, medical or financial claims, kids content.
+     - **Usage:** about how much of the plan one video takes.
+   - **The verdict:** one of **Go**, **Go, with conditions** (listed), or **Don't**. It comes with a
+     one-line reason, the three strongest points for and against, and a rough earnings range at 6
+     and 12 months: low, likely and high, each with its assumptions. It is advice. The owner decides,
+     and a Continue on a "Don't" is recorded with the reason in `channels/<slug>/decisions.json`.
+   - It lands in `channels/<slug>/research/verdict.md` and on the Channels page. Nothing below runs
+     until the owner clicks Continue.
+3. **Style study and the sample videos (automatic, then the owner approves the look):**
+   - **Watch the references:** the top 5 Shorts and top 3 long videos of the reference channels are
+     watched shot by shot by the Study worker (`workers/study.ts`: Gemini shot sheets, the same tool
+     as the Study page, no browser needed). The owner's favourite reference, if named, is one of them.
+     The `yt-style` method in the browser adds the sound (tempo, key, ducking, SFX).
+   - **Code measures the shot sheets:** shot length, cuts a minute, shot sizes, camera moves,
+     on-screen text, caption style, palette, words a minute, music level.
+   - **One sample Short and one sample long video** are made to match those measures: the same
+     technique, pacing, framing, camera, caption style, colour feel and sound feel. They are directed
+     beats on the flat kit, with their own story, words, characters and art.
+   - **Why not an exact copy:** copying another channel's characters, art, words or voice is
+     copyright infringement, and YouTube demonetizes channels that look like reused or mass-produced
+     copies. That would undo the money reason for the channel. So: as close as allowed, never a copy.
+   - **The long sample is full length** (the niche's typical length from the verdict scan, at most the
+     channel's long-length cap). It takes about one long video's usage.
+   - **The owner's check:** the dashboard shows each sample next to its reference with the measures
+     side by side (ours vs theirs). The owner clicks I like it, leaves notes (fixed and re-rendered),
+     or clicks Stop. After 3 rounds of notes without an approval, the page asks whether the niche or
+     the reference should change instead.
+   - The approved samples become the channel's reference videos, as `v-directed-netflix` is for
+     channel #1. The director and QA work to them.
+4. **Full research (automatic, about 2–3 h; details in the next section):**
    - **Market:** with the YouTube Data API, read the reference channels and the niche's top
      searches: the videos that beat their channel's median (outliers), their titles, lengths,
      Shorts vs long, cadence, and the formats behind them. This produces the demand-first format list
      with reference videos, the same rule that saved our channel.
-   - **Style, and it decides the look:** watch 3–5 of the reference channel's top Shorts in the browser,
-     frame by frame (the `yt-style` method we used on The Curious Plot): hook, pacing, length, visuals,
-     captions, sound. Record the niche's **picture language**, what its hits show: real photos,
-     footage, maps, simple drawings, characters. The channel's look follows it: if characters are not
-     how the niche's hits look, the channel starts **without a cast** (narrator, objects, photos), not
-     with our cartoon kit by default. It maps the look onto our Remotion kit (what we have, what we
-     need) and never copies their characters, art or words.
+   - **Style across the niche, not just the references:** the Study worker watches 10 more of the
+     niche's top Shorts and 3–5 of its top long videos from other channels. It records the niche's
+     **picture language**, what its hits show: real photos, maps, simple drawings, characters, objects.
+     The channel's look follows it. If characters are not how the niche's hits look, the channel
+     starts **without a cast** (narrator, places, objects, photos). The look is mapped onto the flat
+     kit (`remotion/src/flat/`: what we have, what we need to draw). It never copies their
+     characters, art or words. The approved samples (step 3) set the look, and this step checks it
+     against the wider niche.
    - **The first second:** the openings of the niche's top 20 hits (title, first spoken line, what
-     the first frame shows), read in the browser. Do they state the subject and the number up front?
+     the first frame shows), from the shot sheets and transcripts. Do they state the subject and the number up front?
      They become the opening rules and examples in the channel's writer instructions: the lesson that
      cost channel #1 its first month (titles that held back the subject; 55–76% swiped away).
    - **Fit:** the language and region, whether there are numbers or money (and so whether the maths,
      the number check and money formatting switch on), the fact sources and the fact-review rules, the
      disclaimer the niche needs, and YouTube's monetisation rules for it.
-3. **Build the channel pack (automatic)** in `channels/<slug>/`:
+   - **The advice to the owner** (owner, 2026-11-17): `channels/<slug>/research/advice.md`, shown on
+     the Launch review:
+     - **Topic kinds to make:** ranked, each with 2–3 example titles, the niche hits it rests on, and
+       its share of the first month (for example "how a famous business makes money: 2 in 3 Shorts").
+     - **Kinds to avoid,** with the evidence.
+     - **How many to post:** Shorts a day and long videos a week. The numbers follow what the niche's
+       winning small channels post, what the weekly loop needs (about 2.3 Shorts a day for a one-week
+       cycle), the quota left across channels, and the plan's usage, with the reason for each. The
+       owner's own numbers from "Add channel" are shown next to the advice. Whichever the owner
+       accepts on the Launch review becomes the channel's settings.
+     - **Shorts, long or both:** long videos only where the niche's long hits show demand. Until one
+       of the channel's own Shorts wins, the long-video topics come from this research, because
+       channel #1's Scout rule (the full story of a Short with 1K+ views) has no Shorts to draw on yet.
+5. **Build the channel pack (automatic)** in `channels/<slug>/`:
    - `profile.md`;
    - `formats.json` and `shapes.json` (starting from the shared library);
    - `market.json` (searches);
    - the champion recipe in the channel's writer instructions and `cycle/backlog.json` (the weekly
      loop's first challengers, from the research);
    - `topics.json` (15–20 first topics with sourced facts);
-   - a look (palettes, stage, captions);
+   - a look (palettes, places, captions) on the flat kit, with the director's instructions for the
+     channel and the approved samples as its reference;
    - voices (Kokoro voices for the language);
    - a cast: picked and restyled from a shared character library, new characters drawn when the niche
      needs them, or narrator-only;
    - the disclaimer;
    - channel name ideas, description, keywords, avatar and banner (drawn like `ChannelArt.tsx`).
-4. **Proof (automatic, then the owner):** three sample Shorts go through the normal pipeline
-   (plan → script → checks → render). The dashboard shows them with the channel pack in a **Launch
-   review**. The owner approves or leaves notes, and notes are fixed and re-rendered.
-5. **Branding kit and connect (owner):**
+6. **Proof (automatic, then the owner):** three Shorts (and one long video if long videos are on) go
+   through the normal pipeline (plan → script → number check → fact review → director → render →
+   QA), in the approved look. The dashboard shows them with the channel pack, the research's advice
+   and the video-count settings in a **Launch review**. The owner approves or leaves notes, and notes
+   are fixed and re-rendered. These videos are the start of the pre-launch backlog.
+7. **Branding kit and connect (owner):**
    - the kit is shown on the Channels page: name ideas, avatar and banner PNGs to download, and the
      description and keywords to copy;
    - "Connect YouTube" runs Google's sign-in from the dashboard (Netlify) with the shared OAuth client;
    - the refresh token is stored encrypted in the database (keyed by `SESSION_SECRET`);
    - the system checks the token belongs to a new channel (`myChannel`) and links it.
-6. **Activate (automatic, on "Launch"):**
+8. **Activate (automatic, on "Launch"):**
    - the channel's routines are created (video run, research, and Scout/Studio if long videos are on),
      in free usage windows;
-   - its upload slots are set;
+   - its video counts and upload slots are set from the accepted advice;
    - status becomes `active`, and the first upload happens the next morning.
 
 ## Research that knows what works before the first upload (owner, 2026-11-05: "the system should know in the setup itself that what works")
@@ -120,12 +240,15 @@ uploads. Both were visible in public data beforehand. The setup measures them:
    in the audience's own words, plus the language and countries.
 5. **Gaps and saturation:** topics with high demand and few recent videos; families rising or fading
    (recent views per day vs six months ago).
-6. **No verdict on the niche** (owner, 2026-11-12): the owner chooses the niche from their own
-   research. This research only builds the channel well for it; it reports risks it finds (policy for
-   AI-made content, medical or financial claims, kids content, reused footage) as setup rules, not as
-   a reason not to launch.
-7. Everything lands in `channels/<slug>/research/`: the niche report, the outlier database and the
-   style study. The setup files are built from it.
+6. **The verdict comes first, and it is short** (owner, 2026-11-17, replacing the 12 Nov "no
+   verdict"): the quick verdict (flow, step 2) decides whether this deeper research runs at all. The
+   deeper research turns the risks it finds (policy for AI-made content, medical or financial
+   claims, kids content, reused footage) into setup rules. If it finds that the verdict was wrong
+   (for example, the demand was one viral channel), it says so on the Launch review before any
+   upload.
+7. **The advice** (topic kinds, video counts, Shorts vs long; flow, step 4) is written from points 2–5.
+8. Everything lands in `channels/<slug>/research/`: the verdict, the niche report, the outlier
+   database, the shot sheets and style study, and the advice. The setup files are built from it.
 
 ## Launch already knowing roughly what works, then learn every week
 - **The weekly loop, per channel** (the same as channel #1 since 2026-11-12; the variant system is
@@ -142,7 +265,8 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   - before a topic is planned, its title and topic are compared with the niche's outlier database;
   - topics predicted below the niche median are skipped, except as a challenger the loop assigns
     (this would have stopped our salary and payday Shorts).
-- **Launch with a backlog:** 6–9 videos are made before going live. The first week never depends on one
+- **Launch with a backlog:** 6–9 videos (at least 2 days of the channel's own Shorts count) are made
+  before going live. The first week never depends on one
   morning run, and the pipeline is proven for the niche.
 - **Start lean** (what channel #1 learned in its first month):
   - style checks are notes from day one (`renderer/advice.py`); only numbers, facts, layout, length,
@@ -219,16 +343,17 @@ uploads. Both were visible in public data beforehand. The setup measures them:
 
 ## Start, pause and dial down any channel
 - A `Channel` record holds: slug, name, YouTube channel id, `status` (`setup`, `review`, `active`,
-  `paused`) and its own settings (`dailyVideoTarget`, `uploadTimes`, long videos on or off,
-  `longPerWeek`).
+  `paused`) and its own video counts and slots (the table in "Video counts per channel"), backlog
+  caps and long length.
 - **Pause or resume** is one button on the dashboard (a Channels page and a switch on each channel).
   - Ingest writes `config/channels.json` for the routines.
   - Every channel routine reads its status first and exits in seconds when paused, so it costs no
     real usage.
   - The publisher skips paused channels.
   - The ready queue is kept, so resuming continues where it stopped.
-- **Dial down:** lower a channel's `dailyVideoTarget` (for example 3 → 1) when usage runs short; the
-  video run makes fewer and the slots follow.
+- **Dial down or up:** change a channel's Shorts a day or long videos a week (for example 3 → 1) when
+  usage runs short or after the move to a bigger plan. The video run makes that many and the posting
+  slots follow; the dashboard checks the quota and usage totals first.
 
 ## Platform changes (one-time; Paisa Panchayat becomes channel #1 with no change in behaviour)
 1. **Repo layout:**
@@ -276,10 +401,13 @@ uploads. Both were visible in public data beforehand. The setup measures them:
 ## Order of work
 1. **Platform refactor** (layout, database, workers, quota keeper, `--channel`). Channel #1 keeps
    running unchanged, and the test suites prove it.
-2. **Dashboard:** switcher, Channels page, pause and resume, per-channel settings.
+2. **Dashboard:** switcher, Channels page, pause and resume, per-channel video counts (with the
+   quota and usage check).
 3. **`/new-channel` setup skill:**
-   - the niche-wide research for the owner's chosen niche (outlier database, topic tiers, format, the
-     first second, the picture language, comments, gaps; no verdict);
+   - the quick verdict and its Continue / Stop;
+   - the style study and the sample Short and long video, with the side-by-side approval page;
+   - the full research for the niche (outlier database, topic tiers, format, the first second, the
+     picture language, comments, gaps) and the advice (topic kinds, video counts);
    - the channel pack, the champion recipe and challenger list from the research, and the pre-launch backlog;
    - the Launch review, auth and routines.
 4. **Hands-off layer:** the weekly loop and the reviewer per channel, drop diagnosis on stayed to watch, the animation
@@ -296,6 +424,14 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   publisher and the routines (a routine exits on a paused channel).
 - A full setup run on a sample niche: the pack passes `check-plan`, and three sample Shorts render and
   pass the gates.
+- **Verdict backtest:** run the quick verdict on Paisa Panchayat's niche (a Go is expected) and on a
+  niche whose hits depend on real footage or faces on camera (a "not doable" is expected). Also run
+  it on one with very low demand (a Don't is expected).
+- **Sample likeness:** for each sample, the measured shot length, cuts a minute and words a minute are
+  within 25% of the reference's, and the cross-channel similarity check finds none of the reference
+  channel's words, characters or art.
+- **Video counts:** a channel set to 0 Shorts or 0 long videos makes and posts none; making ahead of
+  posting stops at the backlog cap; a change that would go over the quota is warned about.
 - Quota keeper: unit tests for the budget and its priority order.
 - **Research backtest on Paisa Panchayat:** run the niche research as if the channel were new and
   check that it ranks billionaire and money-at-scale stories above news and personal budget, and Shorts
