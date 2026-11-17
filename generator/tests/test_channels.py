@@ -72,3 +72,29 @@ def test_a_paused_or_unlaunched_channel_makes_nothing(tmp_path, monkeypatch):
     assert load(root)["generationPaused"] is True
     monkeypatch.setenv("CHANNEL", "paisa-panchayat")
     assert load(root)["generationPaused"] is False
+
+
+def test_a_channel_in_setup_makes_only_its_samples(tmp_path, monkeypatch):
+    import json
+    from generator import run
+    monkeypatch.setenv("CHANNEL", "space-facts")
+    ch = tmp_path / "channels" / "space-facts"
+    (ch / "history").mkdir(parents=True)
+    (ch / "history" / "history.json").write_text("[]", encoding="utf-8")
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "settings.json").write_text("{}", encoding="utf-8")
+    def stage(s):
+        (tmp_path / "config" / "channels.json").write_text(json.dumps({"channels": {"space-facts": {"status": "setup", "setup": {"stage": s}}}}), encoding="utf-8")
+    stage("build")
+    assert run.state(tmp_path)["mode"] == "paused"
+    stage("samples")
+    st = run.state(tmp_path)
+    assert st["mode"] == "video" and st.get("sample") is True and "sample 1 of 3" in st["reason"]
+    assert run.state(tmp_path, fmt="long")["mode"] == "idle"     # no long sample without the research advising long videos
+    (ch / "research").mkdir()
+    (ch / "research" / "counts.json").write_text(json.dumps({"longPerWeek": 1}), encoding="utf-8")
+    assert run.state(tmp_path, fmt="long")["mode"] == "video"
+    real = json.loads((run.ROOT / "channels" / "paisa-panchayat" / "history" / "history.json").read_text(encoding="utf-8"))
+    entries = [e for e in real if e.get("format", "short") == "short"][-3:]   # three real Shorts' entries as the samples
+    (ch / "history" / "history.json").write_text(json.dumps(entries), encoding="utf-8")
+    assert "samples are made" in run.state(tmp_path)["reason"]

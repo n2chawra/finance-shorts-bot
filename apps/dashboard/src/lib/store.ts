@@ -75,3 +75,7 @@ export const connectChannel = async (id: string, youtubeChannelId: string, seale
   (useDb ? channelsDb.connectChannel(id, youtubeChannelId, sealed) : channelsSample.connectChannel());
 export const decideChannel = async (id: string, choice: "continue" | "stop", note?: string): Promise<Channel | { error: string }> =>
   (useDb ? channelsDb.decideChannel(id, choice, note) : channelsSample.decideChannel(id, choice, note));
+export const channelSamples = async (id: string) => (useDb ? channelsDb.channelSamples(id) : channelsSample.channelSamples(id));
+export const reviewChannel = async (id: string, a: import("./channels").ReviewAction): Promise<Channel | { error: string }> =>
+  (useDb ? channelsDb.reviewChannel(id, a) : channelsSample.reviewChannel(id, a));
+export const launchChannel = async (id: string): Promise<Channel | { error: string }> => (useDb ? channelsDb.launchChannel(id) : channelsSample.launchChannel(id));

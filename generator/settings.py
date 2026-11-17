@@ -56,6 +56,7 @@ def load(root: Path = ROOT) -> dict:
                 if k in entry:
                     out[k] = entry[k]
             out["channelStatus"] = entry.get("status", "active")
+            out["channelStage"] = (entry.get("setup") or {}).get("stage")
             if out["channelStatus"] != "active":
                 out["generationPaused"] = True
     return out

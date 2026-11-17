@@ -5,7 +5,7 @@
  * (Continue / Stop) is made on the dashboard and is never overwritten from the repo, and a stage only
  * moves forward, except that the owner's decision moves it.
  */
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import type { Prisma, PrismaClient } from "@prisma/client";
@@ -45,7 +45,10 @@ export async function syncSetups(prisma: PrismaClient, root: string): Promise<st
     // a verdict on file means the scan's stage is done: at least "verdict"
     const fromRepo: Stage = repo?.success ? repo.data.stage : "verdict";
     const stage = nextStage(stored.stage, verdict?.success && STAGES.indexOf(fromRepo) < 1 ? "verdict" : fromRepo, decided);
+    // the Launch review's material, once samples exist: the advice, the recommended counts, each sample's likeness
+    const review = ["samples", "review"].includes(stage) ? reviewMaterial(dir) : null;
     const next = { ...stored, stage, ...(verdict?.success ? { verdict: verdict.data } : {}),
+      ...(review ? { review: { ...((stored as { review?: object }).review ?? {}), ...review, notes: notesDone((stored as { review?: { notes?: Note[] } }).review?.notes ?? [], dir) } } : {}),
       ...(repo?.success && repo.data.note ? { note: repo.data.note } : {}), updatedAt: new Date().toISOString() };
     const before = JSON.stringify({ ...stored, updatedAt: undefined }), after = JSON.stringify({ ...next, updatedAt: undefined });
     if (before === after) continue;
@@ -53,4 +56,30 @@ export async function syncSetups(prisma: PrismaClient, root: string): Promise<st
     changed.push(`${ch.id}: ${stored.stage ?? "-"} → ${stage}`);
   }
   return changed;
+}
+
+const readJson = (f: string): unknown => { try { return JSON.parse(readFileSync(f, "utf8")); } catch { return null; } };
+
+/** research/advice.md (trimmed), research/counts.json and every sample's likeness.json (videos/<id>/). */
+export function reviewMaterial(dir: string): { advice: string | null; counts: unknown; likeness: Record<string, unknown> } {
+  const adviceFile = path.join(dir, "research", "advice.md");
+  const advice = existsSync(adviceFile) ? readFileSync(adviceFile, "utf8").slice(0, 20_000) : null;
+  const likeness: Record<string, unknown> = {};
+  const videos = path.join(dir, "videos");
+  if (existsSync(videos)) {
+    for (const id of readdirSync(videos)) {
+      const l = readJson(path.join(videos, id, "likeness.json"));
+      if (l) likeness[id] = l;
+    }
+  }
+  return { advice, counts: readJson(path.join(dir, "research", "counts.json")), likeness };
+}
+
+type Note = { at: string; text: string; videoId?: string; done?: boolean; fix?: string };
+
+/** The owner's notes on the samples, with the ones the skill fixed marked done (channels/<slug>/review-notes.json). */
+export function notesDone(notes: Note[], dir: string): Note[] {
+  const fixed = readJson(path.join(dir, "review-notes.json"));
+  const byAt = new Map(Array.isArray(fixed) ? (fixed as { at?: string; done?: boolean; fix?: string }[]).filter((f) => f.at && f.done).map((f) => [f.at!, f.fix]) : []);
+  return notes.map((n) => (byAt.has(n.at) ? { ...n, done: true, ...(byAt.get(n.at) ? { fix: byAt.get(n.at) } : {}) } : n));
 }

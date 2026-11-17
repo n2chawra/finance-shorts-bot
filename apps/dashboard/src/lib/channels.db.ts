@@ -1,6 +1,6 @@
 import type { Prisma } from "@prisma/client";
 
-import { type Channel, type ChannelCreate, type ChannelPatch, ChannelSettingsSchema, DEFAULT_CHANNEL, SetupSchema, slugify } from "./channels";
+import { type Channel, type ChannelCreate, type ChannelPatch, ChannelSettingsSchema, DEFAULT_CHANNEL, type ReviewAction, ReviewSchema, SetupSchema, slugify } from "./channels";
 import { dispatchWorkflow } from "./dispatch";
 import { prismaAll as db } from "./prisma";
 
@@ -87,5 +87,55 @@ export async function decideChannel(id: string, choice: "continue" | "stop", not
   const next = { ...setup.data, stage: choice === "continue" ? "research" : "stopped", decision: { choice, at: now, ...(note ? { note } : {}) },
     note: choice === "continue" ? "Full research starts in the next free window on your PC" : "Stopped on the quick verdict", updatedAt: now };
   await db.channel.update({ where: { id }, data: { settings: { ...stored, setup: next } as Prisma.InputJsonValue } });
+  return (await getChannel(id))!;
+}
+
+export type SampleVideo = { id: string; title: string; format: string; status: string; durationSec: number };
+
+/** A channel's sample videos for its Launch review (every video a channel in setup has is a sample). */
+export async function channelSamples(id: string): Promise<SampleVideo[]> {
+  const rows = await db.video.findMany({ where: { channelId: id, deletedAt: null }, orderBy: { createdAt: "asc" },
+    select: { id: true, title: true, format: true, status: true, durationSec: true } });
+  return rows;
+}
+
+/** The owner's answer on the Launch review: I like it (with the video counts accepted), a note, or Stop. */
+export async function reviewChannel(id: string, a: ReviewAction): Promise<Channel | { error: string }> {
+  const row = await db.channel.findUnique({ where: { id } });
+  if (!row) return { error: "No such channel" };
+  const stored = (row.settings ?? {}) as Stored;
+  const setup = SetupSchema.safeParse(stored.setup);
+  if (!setup.success || !["samples", "review"].includes(setup.data.stage)) return { error: "This channel has no samples to review yet" };
+  const now = new Date().toISOString();
+  const review = ReviewSchema.parse(setup.data.review ?? {});
+  let next = { ...setup.data, updatedAt: now };
+  if (a.action === "stop") next = { ...next, stage: "stopped", note: "Stopped on the Launch review" };
+  else if (a.action === "note") {
+    if (review.notes.filter((n) => !n.done).length >= 10) return { error: "Ten notes are already waiting; let the fixes land first" };
+    next = { ...next, review: { ...review, approved: null, notes: [...review.notes, { at: now, text: a.text, ...(a.videoId ? { videoId: a.videoId } : {}), done: false }] },
+      note: "Your notes are being fixed; the samples come back re-rendered" };
+  } else {
+    if (setup.data.stage !== "review") return { error: "The samples are still being made" };
+    next = { ...next, review: { ...review, approved: { at: now, shortsPerDay: a.shortsPerDay, longPerWeek: a.longPerWeek } },
+      note: "Approved. Create the channel on YouTube from the branding kit, Connect YouTube, then Launch." };
+  }
+  await db.channel.update({ where: { id }, data: { settings: { ...stored, setup: next } as Prisma.InputJsonValue } });
+  return (await getChannel(id))!;
+}
+
+/** Launch: an approved, connected channel goes live with the video counts the owner accepted. */
+export async function launchChannel(id: string): Promise<Channel | { error: string }> {
+  const row = await db.channel.findUnique({ where: { id } });
+  if (!row) return { error: "No such channel" };
+  const stored = (row.settings ?? {}) as Stored;
+  const setup = SetupSchema.safeParse(stored.setup);
+  const approved = setup.success ? setup.data.review?.approved : null;
+  if (!setup.success || setup.data.stage !== "review" || !approved) return { error: "Approve the samples on the Launch review first" };
+  if (!row.refreshTokenEnc) return { error: "Connect YouTube first: the channel has no sign-in yet" };
+  const now = new Date().toISOString();
+  await db.channel.update({ where: { id }, data: { status: "active", settings: {
+    ...stored, dailyVideoTarget: approved.shortsPerDay, longPerWeek: approved.longPerWeek, generationPaused: false, uploadsPaused: false,
+    setup: { ...setup.data, stage: "launched", note: `Launched ${now.slice(0, 10)}: the approved samples go out first`, updatedAt: now },
+  } as Prisma.InputJsonValue } });
   return (await getChannel(id))!;
 }

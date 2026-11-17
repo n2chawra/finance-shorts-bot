@@ -164,7 +164,46 @@ Scaffold makes the folders and starting files (never overwrites). Then fill, fro
 
 When `pack check` passes: `setup.json` → `{"stage": "samples"}`, commit and push.
 
-## 5–6. Samples and review — being built (step 3d)
+## 5. Samples (stage `samples`)
+
+Made last, by the channel's real pipeline, so they are exactly what the channel will publish. In this
+stage `python -m generator.run state --channel <slug>` answers `"sample": true` and asks for sample N of
+3 Shorts (and 1 long video when `research/counts.json` advises long videos); in any other setup stage it
+answers `paused`. Run the normal generation routine (`generator/prompts/routine.md`) with `--channel <slug>`
+on every command: plan → script → number check → fact review → director → render → QA → ship. Ship marks
+the manifest `sample: true`; ingest queues it, and the publisher never uploads for a channel that isn't
+active, so nothing goes out before Launch.
+
+Each sample follows one reference video (name it in the plan's `demand`). After it renders:
+
+```bash
+python -m generator.likeness <video id> --channel <slug>
+```
+
+writes `videos/<id>/likeness.json`: shot length, shots in the first 3 s, words a minute, the first
+figure and the length against the references' `style.json`, each within 25% or not. Shot length and
+pace must pass; if they don't, fix the beats (the director) and re-render before review. When every
+sample is made and measured: `setup.json` → `{"stage": "review", "note": "Samples ready for your review"}`,
+commit and push. Ingest puts the samples, their likeness, `advice.md` and `counts.json` on the
+Channels page's Launch review.
+
+## 6. Review (stage `review`, the owner's turn)
+
+The owner watches the samples next to the measures, sets Shorts a day and long videos a week, and
+clicks **I like it**, sends **notes**, or **Stop**. Read `config/channels.json` → the channel's `setup`
+(ingest copies the review from the database; or `GET /api/channels`):
+
+- **Open notes** (`review.notes` with `done: false`): fix each one where it belongs: a note on the
+  look or voice changes the pack (`channel.json`, `prompts/recipe.md`), so later videos follow it too;
+  a note on one video changes that video. Re-render the samples it touches, re-run likeness, mark the
+  note done in `channels/<slug>/review-notes.json` (`[{"at": "<the note's at>", "done": true, "fix": "…"}]`),
+  push. After three rounds of notes without an approval, ask the owner whether the niche or the
+  reference should change instead.
+- **Approved** (`review.approved`): the approved samples become the channel's reference videos (the
+  director and QA work to them, as `v-directed-netflix` is for channel #1). The owner then creates the
+  channel on YouTube from the branding kit, clicks **Connect YouTube**, then **Launch**: the channel goes
+  live with the accepted counts, and its samples are the first uploads. The channel's routines are
+  step 3e.
 
 ## Rules
 

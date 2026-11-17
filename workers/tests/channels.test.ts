@@ -96,3 +96,22 @@ test("a setup stage from the repo only moves forward, and never past the verdict
   assert.equal(nextStage("stopped", "build", true), "stopped");
   assert.equal(nextStage("research", "stopped", true), "stopped");
 });
+
+test("the skill's fixed notes are marked done; the review material is read from the channel folder", async () => {
+  const { notesDone, reviewMaterial } = await import("../lib/setup-sync.ts");
+  const { mkdirSync, writeFileSync } = await import("node:fs");
+  const dir = mkdtempSync(path.join(tmpdir(), "review-"));
+  mkdirSync(path.join(dir, "research"), { recursive: true });
+  mkdirSync(path.join(dir, "videos", "v-20261120-01"), { recursive: true });
+  writeFileSync(path.join(dir, "research", "advice.md"), "## Topic kinds\nObjects in space");
+  writeFileSync(path.join(dir, "research", "counts.json"), JSON.stringify({ shortsPerDay: 2, longPerWeek: 0, reasons: [] }));
+  writeFileSync(path.join(dir, "videos", "v-20261120-01", "likeness.json"), JSON.stringify({ pass: true, within: 4, of: 5, rows: [] }));
+  writeFileSync(path.join(dir, "review-notes.json"), JSON.stringify([{ at: "2026-11-20T10:00:00Z", done: true, fix: "slower voice in channel.json" }]));
+  const m = reviewMaterial(dir);
+  assert.ok(m.advice?.startsWith("## Topic kinds"));
+  assert.deepEqual(Object.keys(m.likeness), ["v-20261120-01"]);
+  const notes = notesDone([{ at: "2026-11-20T10:00:00Z", text: "slower" }, { at: "2026-11-20T11:00:00Z", text: "brighter" }], dir);
+  assert.equal(notes[0]!.done, true);
+  assert.equal(notes[0]!.fix, "slower voice in channel.json");
+  assert.equal(notes[1]!.done, undefined);
+});

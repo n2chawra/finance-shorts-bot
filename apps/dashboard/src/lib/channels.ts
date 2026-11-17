@@ -50,8 +50,28 @@ export const VerdictSchema = z.looseObject({
 });
 export type Verdict = z.infer<typeof VerdictSchema>;
 
+/** The Launch review (step 3d): the research's advice and counts, each sample's likeness, and the owner's answers. */
+const LikenessRow = z.object({ measure: z.string(), ours: z.number().nullable(), theirs: z.number().nullable(), within: z.boolean().nullable() });
+export const ReviewSchema = z.object({
+  advice: z.string().nullable().default(null),
+  counts: z.looseObject({ shortsPerDay: z.number(), longPerWeek: z.number(), reasons: z.array(z.string()).default([]) }).nullable().catch(null).default(null),
+  likeness: z.record(z.string(), z.looseObject({ format: z.string().optional(), references: z.number().default(0), rows: z.array(LikenessRow).default([]),
+    within: z.number().default(0), of: z.number().default(0), pass: z.boolean().default(false) })).catch({}).default({}),
+  approved: z.object({ at: z.string(), shortsPerDay: z.number(), longPerWeek: z.number() }).nullable().default(null),
+  notes: z.array(z.object({ at: z.string(), text: z.string(), videoId: z.string().optional(), done: z.boolean().default(false) })).default([]),
+});
+export type Review = z.infer<typeof ReviewSchema>;
+
+export const ReviewActionSchema = z.discriminatedUnion("action", [
+  z.object({ action: z.literal("approve"), shortsPerDay: z.number().int().min(0).max(5), longPerWeek: z.number().int().min(0).max(7) }),
+  z.object({ action: z.literal("note"), text: z.string().trim().min(3).max(1500), videoId: z.string().max(40).optional() }),
+  z.object({ action: z.literal("stop") }),
+]);
+export type ReviewAction = z.infer<typeof ReviewActionSchema>;
+
 export const SetupSchema = z.object({
   stage: z.enum(SETUP_STAGES),
+  review: ReviewSchema.nullable().catch(null).default(null),
   verdict: VerdictSchema.nullable().default(null),
   decision: z.object({ choice: z.enum(["continue", "stop"]), at: z.string(), note: z.string().optional() }).nullable().default(null),
   /** what the setup is doing now, in a line (from setup.json) */

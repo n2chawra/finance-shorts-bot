@@ -13,6 +13,7 @@ import { Readable } from "node:stream";
 import { NextRequest, NextResponse } from "next/server";
 
 import { notifyOwner } from "@/lib/autopilot.db";
+import { prismaAll } from "@/lib/prisma";
 
 /** A rejected GitHub token breaks every thumbnail and video: tell the owner (once per instance). */
 let warned = false;
@@ -56,7 +57,8 @@ export async function GET(req: NextRequest, ctx: { params: Promise<{ id: string;
   const [name, type] = FILES[kind as keyof typeof FILES];
 
   // a video lives in channels/<slug>/videos/ once its channel has a folder (multi-channel refactor), else videos/
-  const dirs = [...CHANNEL_DIRS.map((c) => `channels/${c}/videos`), "videos"];
+  const own = process.env.DATABASE_URL ? (await prismaAll.video.findUnique({ where: { id }, select: { channelId: true } }).catch(() => null))?.channelId : null;
+  const dirs = [...new Set([...(own ? [own] : []), ...CHANNEL_DIRS].map((c) => `channels/${c}/videos`)), "videos"];
   const repoRoot = path.join(process.cwd(), "..", "..");
   const file = dirs.map((d) => path.join(repoRoot, d, id, name)).find((f) => existsSync(f));
   if (file) return local(file, type, req.headers.get("range"));

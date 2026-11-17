@@ -1,13 +1,13 @@
 "use client";
 
-import { CirclePause, CirclePlay, Clapperboard, ExternalLink, KeyRound, Plus, Radio, MonitorPlay, Tv } from "lucide-react";
+import { CirclePause, CirclePlay, Clapperboard, ExternalLink, KeyRound, MonitorPlay, Plus, Radio, Rocket, Tv } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 import { useToast } from "@/components/toast";
 import { Badge, Button, Card, ErrorNote, Loading, PageHeader, Segmented, Stagger, type Tone, buttonClass, fieldClass } from "@/components/ui";
 import type { Channel, ChannelStatus, SetupStage, Verdict } from "@/lib/channels";
-import { useAddChannel, useChannels, useDecideChannel, usePatchChannel, useSettings, useSwitchChannel } from "@/lib/queries";
+import { useAddChannel, useChannelSamples, useChannels, useDecideChannel, useLaunchChannel, usePatchChannel, useReviewChannel, useSettings, useSwitchChannel } from "@/lib/queries";
 
 /*
  * Channels (multi-channel plan, step 2): every YouTube channel the platform runs. Start, pause and
@@ -107,6 +107,119 @@ function SetupPanel({ c }: { c: Channel }) {
   );
 }
 
+/** A line of the advice: headings bold, the rest as written (advice.md is plain markdown from the research). */
+function AdviceText({ text }: { text: string }) {
+  return (
+    <div className="space-y-1 text-[12.5px] leading-relaxed text-ink2">
+      {text.split("\n").map((l, i) => {
+        if (!l.trim()) return <div key={i} className="h-1.5" />;
+        const h = /^#+\s*(.*)$/.exec(l);
+        const t = (h ? h[1]! : l).replace(/\*\*(.+?)\*\*/g, "$1");
+        return h ? <div key={i} className="pt-1 text-[13px] font-semibold text-ink">{t}</div> : <div key={i}>{t}</div>;
+      })}
+    </div>
+  );
+}
+
+/**
+ * The Launch review (step 3d): the samples next to the references' measures, the research's advice and
+ * video counts, then I like it (with the counts), notes, or Stop; and Launch once approved and connected.
+ */
+function ReviewPanel({ c }: { c: Channel }) {
+  const setup = c.setup!;
+  const review = setup.review;
+  const { data: samples } = useChannelSamples(c.id, true);
+  const act = useReviewChannel();
+  const launch = useLaunchChannel();
+  const toast = useToast();
+  const [perDay, setPerDay] = useState(String(review?.approved?.shortsPerDay ?? review?.counts?.shortsPerDay ?? 1));
+  const [perWeek, setPerWeek] = useState(String(review?.approved?.longPerWeek ?? review?.counts?.longPerWeek ?? 0));
+  const [note, setNote] = useState("");
+  const done = (msg: string) => ({ onSuccess: () => toast(msg), onError: (e: Error) => toast(e.message, "error") });
+  const open = review?.notes.filter((n) => !n.done) ?? [];
+  const rounds = new Set(review?.notes.map((n) => n.at.slice(0, 10)) ?? []).size;
+
+  return (
+    <div className="mb-5 flex flex-col gap-4 rounded-xl border border-ring p-4">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-[13px] font-semibold">Launch review</span>
+        {review?.approved ? <Badge tone="good" dot>Approved</Badge> : setup.stage === "samples" ? <Badge tone="info" dot>Samples being made</Badge> : <Badge tone="violet" dot>Waiting for you</Badge>}
+      </div>
+
+      <div className="flex flex-col gap-3">
+        {(samples ?? []).map((v) => {
+          const l = review?.likeness[v.id];
+          return (
+            <div key={v.id} className="grid gap-3 rounded-lg bg-surface-2 p-3 md:grid-cols-[180px_1fr]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/api/media/${v.id}/preview`} alt={`Contact sheet of ${v.title}`} className="w-full rounded-md border border-ring bg-surface-3" loading="lazy" />
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2 text-[13px] font-medium">{v.title}<Badge tone="neutral">{v.format === "long" ? "Long" : "Short"} · {Math.round(v.durationSec)} s</Badge></div>
+                <a href={`/api/media/${v.id}/video`} target="_blank" rel="noreferrer" className="mt-1 inline-block text-[12.5px] text-brand-text underline-offset-2 hover:underline">Watch the sample</a>
+                {l ? (
+                  <table className="mt-2 w-full text-[12px] tabular-nums">
+                    <thead><tr className="text-left text-muted"><th className="font-medium">Measure</th><th className="font-medium">Ours</th><th className="font-medium">References ({l.references})</th><th /></tr></thead>
+                    <tbody>{l.rows.map((r) => (
+                      <tr key={r.measure}><td className="pr-2">{r.measure}</td><td>{r.ours ?? "–"}</td><td>{r.theirs ?? "–"}</td>
+                        <td>{r.within == null ? "" : r.within ? <span className="text-good-text">within 25%</span> : <span className="text-warning-text">off</span>}</td></tr>
+                    ))}</tbody>
+                  </table>
+                ) : <p className="mt-2 text-[12px] text-muted">Likeness not measured yet.</p>}
+              </div>
+            </div>
+          );
+        })}
+        {samples && !samples.length && <p className="text-[12.5px] text-muted">The samples appear here once they are made.</p>}
+      </div>
+
+      {review?.advice && <div className="rounded-lg border border-line p-3"><AdviceText text={review.advice} /></div>}
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="flex flex-col gap-2">
+          <span className="text-[12.5px] font-medium text-ink2">Shorts a day</span>
+          <Segmented label={`Accepted Shorts a day for ${c.name}`} value={perDay} onChange={setPerDay} options={["0", "1", "2", "3"].map((v) => ({ value: v, label: v }))} />
+          <span className="text-[12.5px] font-medium text-ink2">Long videos a week</span>
+          <Segmented label={`Accepted long videos a week for ${c.name}`} value={perWeek} onChange={setPerWeek} options={["0", "1", "2"].map((v) => ({ value: v, label: v }))} />
+          {review?.counts && <ul className="mt-1 space-y-0.5 text-[11.5px] text-muted">{review.counts.reasons.map((r) => <li key={r}>{r}</li>)}<li>Research advises {review.counts.shortsPerDay} a day and {review.counts.longPerWeek} a week.</li></ul>}
+        </div>
+        <form className="flex flex-col gap-2" onSubmit={(e) => { e.preventDefault(); act.mutate({ id: c.id, action: "note", text: note }, { ...done("Note sent: the samples come back fixed"), onSuccess: () => { setNote(""); toast("Note sent: the samples come back fixed"); } }); }}>
+          <label htmlFor={`note-${c.id}`} className="text-[12.5px] font-medium text-ink2">Notes for the samples</label>
+          <textarea id={`note-${c.id}`} value={note} onChange={(e) => setNote(e.target.value)} rows={3} maxLength={1500} placeholder="What to change (the look, the voice, the pace, the topics…)" className={`${fieldClass} h-auto py-2`} />
+          <div><Button size="sm" type="submit" disabled={act.isPending || note.trim().length < 3}>Send notes</Button></div>
+          {open.length > 0 && <ul className="space-y-0.5 text-[11.5px] text-muted">{open.map((n) => <li key={n.at}>Being fixed: {n.text}</li>)}</ul>}
+          {rounds >= 3 && !review?.approved && <p className="text-[12px] text-warning-text">Three rounds of notes so far: would a different reference or niche fit better?</p>}
+        </form>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-2 border-t border-line pt-3">
+        {!review?.approved && (
+          <Button tone="primary" disabled={act.isPending || setup.stage !== "review"} onClick={() => act.mutate({ id: c.id, action: "approve", shortsPerDay: Number(perDay), longPerWeek: Number(perWeek) }, done("Approved"))}>I like it</Button>
+        )}
+        {review?.approved && (
+          <Button tone="primary" icon={Rocket} disabled={launch.isPending || !c.connected} onClick={() => launch.mutate(c.id, done(`${c.name} is live: the first upload is the next slot`))}>Launch</Button>
+        )}
+        {review?.approved && !c.connected && <span className="text-[12px] text-muted">Create the channel on YouTube from the branding kit, then Connect YouTube to launch.</span>}
+        <Button disabled={act.isPending} onClick={() => act.mutate({ id: c.id, action: "stop" }, done("Stopped"))}>Stop</Button>
+      </div>
+    </div>
+  );
+}
+
+const UNITS_PER_UPLOAD = 1_650, READ_UNITS = 1_450, DAILY_UNITS = 10_000;
+
+/** YouTube quota a day across the live channels: every upload costs about 1,650 units of the shared 10,000. */
+function QuotaLine({ channels, platform }: { channels: Channel[]; platform?: { dailyVideoTarget: number; longPerWeek: number } }) {
+  const live = channels.filter((c) => c.status === "active");
+  const units = READ_UNITS + live.reduce((a, c) => a + ((c.settings.dailyVideoTarget ?? platform?.dailyVideoTarget ?? 3) + (c.settings.longPerWeek ?? platform?.longPerWeek ?? 0) / 7) * UNITS_PER_UPLOAD, 0);
+  const over = units > DAILY_UNITS;
+  return (
+    <p className={`mb-5 text-[12.5px] ${over ? "text-critical-text" : "text-muted"}`}>
+      YouTube quota: about {Math.round(units).toLocaleString("en")} of {DAILY_UNITS.toLocaleString("en")} units a day across {live.length} live channel{live.length === 1 ? "" : "s"}.
+      {over && " Over the limit: lower a channel's videos, or apply for YouTube's quota increase."}
+    </p>
+  );
+}
+
 function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
   const patch = usePatchChannel();
   const toast = useToast();
@@ -114,6 +227,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
   const { data: platform } = useSettings();
   const s = STATUS[c.status];
   const perDay = c.settings.dailyVideoTarget ?? platform?.dailyVideoTarget ?? 3;
+  const perWeek = c.settings.longPerWeek ?? platform?.longPerWeek ?? 0;
   const [times, setTimes] = useState((c.settings.uploadTimes ?? platform?.uploadTimes ?? []).join(", "));
   const run = (body: Parameters<typeof patch.mutate>[0], ok: string) => patch.mutate(body, { onSuccess: () => toast(ok), onError: (e) => toast(e.message, "error") });
   const live = c.status === "active" || c.status === "paused";
@@ -123,6 +237,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
       description={s.why}
       action={!current && <Button size="sm" onClick={() => switchTo(c.id)}>Show this channel</Button>}>
       {c.setup && c.status === "setup" && <SetupPanel c={c} />}
+      {c.setup && c.status === "setup" && ["samples", "review"].includes(c.setup.stage) && <ReviewPanel c={c} />}
       <dl className="grid grid-cols-3 gap-3 text-[12.5px]">
         <div><dt className="text-muted">Ready to upload</dt><dd className="mt-0.5 text-[18px] font-semibold tabular-nums">{fmtN(c.counts.queued)}</dd></div>
         <div><dt className="text-muted">Published</dt><dd className="mt-0.5 text-[18px] font-semibold tabular-nums">{fmtN(c.counts.published)}</dd></div>
@@ -160,7 +275,14 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
           <span className="text-[12.5px] font-medium text-ink2">Shorts a day</span>
           <Segmented label={`Shorts a day for ${c.name}`} value={String(perDay)} onChange={(v) => run({ id: c.id, settings: { dailyVideoTarget: Number(v) } }, `${c.name}: ${v} Short${v === "1" ? "" : "s"} a day`)}
             options={["0", "1", "2", "3"].map((v) => ({ value: v, label: v }))} />
-          <span className="text-[11.5px] text-muted">Turn a channel down when Claude usage runs short.</span>
+          <span className="text-[11.5px] text-muted">Turn a channel down when Claude usage runs short.{perDay < 2 && perDay > 0 ? " Under 2 a day, each weekly-loop test takes about two weeks." : ""}</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <span className="text-[12.5px] font-medium text-ink2">Long videos a week</span>
+          <Segmented label={`Long videos a week for ${c.name}`} value={String(perWeek)} onChange={(v) => run({ id: c.id, settings: { longPerWeek: Number(v) } }, `${c.name}: ${v} long video${v === "1" ? "" : "s"} a week`)}
+            options={["0", "1", "2"].map((v) => ({ value: v, label: v }))} />
+          <span className="text-[11.5px] text-muted">Each upload uses about 1,650 of the 10,000 YouTube quota units a day shared by all channels.</span>
         </div>
 
         <form className="flex flex-col gap-2" onSubmit={(e) => {
@@ -244,12 +366,14 @@ function OneTimeSetup() {
 
 export default function ChannelsPage() {
   const { data, isLoading, error } = useChannels();
+  const { data: platform } = useSettings();
   return (
     <>
       <Suspense><Notice /></Suspense>
       <PageHeader title="Channels" sub="Every channel runs on the same platform. Pause, resume or turn one down here; the switcher at the top left picks which one the other pages show." />
       {isLoading && <Loading rows={3} />}
       {error && <ErrorNote error={error} />}
+      {data && <QuotaLine channels={data.channels} platform={platform} />}
       {data && (
         <Stagger className="flex flex-col gap-5">
           {data.channels.map((c) => <ChannelCard key={c.id} c={c} current={c.id === data.current} />)}

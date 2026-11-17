@@ -78,3 +78,7 @@ export function useSwitchChannel() {
   };
 }
 export const useDecideChannel = () => useWrite(({ id, ...body }: { id: string; choice: "continue" | "stop"; note?: string }) => send("POST", `/api/channels/${id}/decision`, body));
+const SampleSchema = z.object({ id: z.string(), title: z.string(), format: z.string(), status: z.string(), durationSec: z.number() });
+export const useChannelSamples = (id: string, enabled: boolean) => useQuery({ queryKey: ["channel-samples", id], queryFn: () => getJson(`/api/channels/${id}/review`, z.array(SampleSchema)), enabled });
+export const useReviewChannel = () => useWrite(({ id, ...body }: { id: string } & import("./channels").ReviewAction) => send("POST", `/api/channels/${id}/review`, body));
+export const useLaunchChannel = () => useWrite((id: string) => send("POST", `/api/channels/${id}/launch`));

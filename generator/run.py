@@ -92,6 +92,18 @@ def length_range(settings: dict, fmt: str) -> tuple[int, int]:
 
 # ---------------- state ----------------
 
+SAMPLES = {"short": 3, "long": 1}
+
+
+def sample_long(root: Path = ROOT) -> bool:
+    """Whether a channel in setup makes a sample long video: its research advises long videos."""
+    f = channels.channel_root(root=root) / "research" / "counts.json"
+    try:
+        return int(json.loads(f.read_text(encoding="utf-8")).get("longPerWeek", 0)) > 0
+    except (OSError, ValueError, TypeError):
+        return False
+
+
 def state(root: Path = ROOT, fmt: str = "short") -> dict:
     """What this run should do, plus everything the planner needs to pick a passing plan.
 
@@ -117,7 +129,19 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     week = history.ist_week(history.now().isoformat())
     made_week = sum(1 for e in entries if history.ist_week(e["created_at"]) == week)
     per_week, long_cap = settings["longPerWeek"], settings["longBacklogCap"]
-    if settings["generationPaused"]:
+    sample = settings.get("channelStatus") == "setup"
+    if sample:
+        # a new channel's samples (multi-channel plan, step 3d): made only in its samples stage, three
+        # Shorts and one long video (long only when its research advises long videos), never uploaded
+        # before the owner's Launch
+        want = SAMPLES.get(fmt, 0) if fmt == "short" or sample_long(root) else 0
+        if settings.get("channelStage") != "samples":
+            mode, why = "paused", f"this channel is in setup ({settings.get('channelStage') or 'not started'}): samples come after the build"
+        elif len(entries) < want:
+            mode, why = "video", f"sample {len(entries) + 1} of {want} ({fmt}) for the Launch review"
+        else:
+            mode, why = "idle", f"all {want} {fmt} samples are made: waiting for the owner's review"
+    elif settings["generationPaused"]:
         mode, why = "paused", "generation is paused in settings"
     elif fmt == "long":
         if per_week <= 0:
@@ -149,6 +173,8 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     return {
         "format": fmt,
         "mode": mode, "reason": why, "backlog": backlog,
+        # making a new channel's samples for its Launch review (same pipeline; ship marks the manifest)
+        **({"sample": True} if sample else {}),
         "backlog_cap": long_cap if fmt == "long" else settings["backlogCap"],
         "videos_today": made_today, "daily_target": target,
         "videos_this_week": made_week, "weekly_target": per_week,
@@ -515,6 +541,8 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         "hashtags": plan["hashtags"], "hookStyle": plan["hook_style"], "cta": plan["cta"],
         "seed": script["seed"], "style": style, "voice": voice, "durationSec": report["duration_sec"], "audio": report.get("audio"),
         "experiments": report.get("experiments", {}),
+        # a new channel's sample (step 3d): queued like any video, but its channel uploads nothing before Launch
+        **({"sample": True} if load_settings(root).get("channelStatus") == "setup" else {}),
         # who speaks, for the evaluator's voice ranking: the hook's voice and the narrator's share of the words
         "heard": heard(script, voice["name"] if voice else script.get("narrator")),
         "checks": [{"checker": c, "passed": True, "notes": checks[c]["notes"]} for c in CHECKERS],
