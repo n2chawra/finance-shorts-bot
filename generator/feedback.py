@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 
 from .settings import ROOT
+from .channels import cpath
 
 ACKS_DIR = Path("improvement") / "feedback-acks"
 LEGACY_ACKS = Path("improvement") / "feedback-acks.json"   # the improver's answers before 2026-11-10
@@ -24,7 +25,7 @@ SHOWN = 15     # notes handed to the planner and writer: the open ones and the n
 
 
 def load(root: Path = ROOT) -> list[dict]:
-    path = root / FILE
+    path = cpath(root, FILE)
     if not path.is_file():
         return []
     try:
@@ -77,7 +78,7 @@ def report(root: Path = ROOT, fmt: str = "short") -> str:
 
 def acks(root: Path = ROOT) -> list[dict]:
     """Every agent's answers so far, each with its `agent`."""
-    files = [("improver", root / LEGACY_ACKS)] + [(f.stem, f) for f in sorted((root / ACKS_DIR).glob("*.json"))]
+    files = [("improver", cpath(root, LEGACY_ACKS))] + [(f.stem, f) for f in sorted((cpath(root, ACKS_DIR)).glob("*.json"))]
     out = []
     for agent, f in files:
         try:

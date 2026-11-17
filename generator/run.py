@@ -33,6 +33,8 @@ from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, 
 from . import editor, experiments, failures, feedback, formats, history, images, looks, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
+from . import channels
+from .channels import cpath
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
 MIN_VOICE_FILL = 0.55   # a long section left more than ~half silent is a thin script
@@ -43,11 +45,11 @@ PLAN_KEYS = ("template", "topic", "story", "hook_style", "cta", "title", "descri
 
 
 def _dir(vid: str, root: Path) -> Path:
-    return root / "videos" / vid
+    return cpath(root, "videos") / vid
 
 
 def _read_script(vid: str, root: Path = ROOT) -> dict:
-    f = root / "videos" / vid / "script.json"
+    f = cpath(root, "videos") / vid / "script.json"
     return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {}
 
 
@@ -370,7 +372,7 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
     problems = craft.shot_problems(tl) + [f"{p} (on the estimated voice)" for p in craft.picture_problems(tl)] + craft.mark_problems(tl) + craft.stage_problems(tl) + craft.device_problems(tl)
 
     def _tl(e: dict) -> dict:
-        f = root / "videos" / e["id"] / "timeline.json"
+        f = cpath(root, "videos") / e["id"] / "timeline.json"
         return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {"beats": []}
     problems += craft.prop_problems(tl, [(e["id"], _tl(e)) for e in earlier[-craft.PROP_WINDOW:]])
     problems += story.timeline_problems(script, tl, [_read_script(e["id"], root) for e in earlier[-10:]])
@@ -449,13 +451,13 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     # the story's own things, not the last videos' (build beats; 2026-10-26)
     tl_now = _read(d / "timeline.json") if (d / "timeline.json").is_file() else {"beats": []}
     def _tl(e: dict) -> dict:
-        f = root / "videos" / e["id"] / "timeline.json"
+        f = cpath(root, "videos") / e["id"] / "timeline.json"
         return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else {"beats": []}
     problems += craft.prop_problems(tl_now, [(e["id"], _tl(e)) for e in earlier[-craft.PROP_WINDOW:]])
     problems += story.timeline_problems(script, tl_now, [_read_script(e["id"], root) for e in earlier[-10:]])
     problems += images.script_problems(script, vid, root)
     # every cover a different picture: not like the last covers of this format
-    problems += craft.cover_problems(d / "thumbnail.png", [(e["id"], root / "videos" / e["id"] / "thumbnail.png") for e in earlier])
+    problems += craft.cover_problems(d / "thumbnail.png", [(e["id"], cpath(root, "videos") / e["id"] / "thumbnail.png") for e in earlier])
     audio = report.get("audio")
     rendered = "liveliness" in report
     ok_note = f"{report['duration_sec']} s, {report['style']['palette']}/{report['style']['genre']}" + (f", peak {audio['peak_db']} dB, mean {audio['mean_db']} dB" if audio and rendered else " (preview only)")
@@ -548,10 +550,10 @@ def gh_exe() -> str:
 
 
 def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) -> None:
-    paths = [f"videos/{vid}", "history/history.json"]
-    plan_f = root / "videos" / vid / "plan.json"
+    paths = [channels.rel(root, f"videos/{vid}"), channels.rel(root, "history/history.json")]
+    plan_f = cpath(root, "videos") / vid / "plan.json"
     if plan_f.is_file() and shapes.record_new(json.loads(plan_f.read_text(encoding="utf-8")), vid, root):
-        paths.append(shapes.FILE.as_posix())   # a new story shape joins the library as `trial`
+        paths.append(channels.rel(root, shapes.FILE))   # a new story shape joins the library as `trial`
     if (root / "remotion" / "src" / "videos" / vid).is_dir():   # the video's own code (hook, beats, props, thumbnail) ships with it
         paths.append(f"remotion/src/videos/{vid}")
     if images.REAL.is_dir():   # real photos it fetched, with their credits
@@ -643,6 +645,21 @@ def fail(vid: str, reason: str, root: Path = ROOT) -> dict:
     return manifest
 
 
+def _pop_channel(argv: list[str]) -> tuple[list[str], str | None]:
+    """`--channel <slug>` (or `--channel=<slug>`) anywhere on the command line: the channel to work on."""
+    out, slug, i = [], None, 0
+    while i < len(argv):
+        if argv[i] == "--channel" and i + 1 < len(argv):
+            slug, i = argv[i + 1], i + 2
+            continue
+        if argv[i].startswith("--channel="):
+            slug = argv[i].split("=", 1)[1]
+        else:
+            out.append(argv[i])
+        i += 1
+    return out, slug
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="generator.run", description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -683,6 +700,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("template")
     p.add_argument("action")
     p.add_argument("--enabled", action="store_true")
+    argv, slug = _pop_channel(sys.argv[1:] if argv is None else list(argv))
+    channels.use(slug)
     a = ap.parse_args(argv)
 
     try:

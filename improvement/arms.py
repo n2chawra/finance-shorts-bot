@@ -28,6 +28,7 @@ import statistics as st
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from generator.channels import cpath
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = Path("config/arms.json")
@@ -61,7 +62,7 @@ def frozen(root: Path = ROOT, today: str | None = None) -> dict | None:
 def state(root: Path = ROOT) -> dict:
     """Defaults and dropped options as judged so far, over the config's. While frozen: the config's own
     defaults, nothing dropped, and the `free` dimensions left to the planner."""
-    cfg, saved = config(root), _read(root / STATE, {}).get("dimensions", {})
+    cfg, saved = config(root), _read(cpath(root, STATE), {}).get("dimensions", {})
     fz = frozen(root)
     if fz:
         return {dim: {"default": d["default"], "dropped": [], "options": d["options"], "since": d.get("since", "2000-01-01")}
@@ -98,8 +99,8 @@ def infer(video: dict, root: Path = ROOT) -> dict:
     """A video's options: from its plan's `arms` when it has one, else read from what it was."""
     from generator import formats
 
-    plan = _read(root / "videos" / video["id"] / "plan.json", {})
-    script = _read(root / "videos" / video["id"] / "script.json", {})
+    plan = _read(cpath(root, "videos") / video["id"] / "plan.json", {})
+    script = _read(cpath(root, "videos") / video["id"] / "script.json", {})
     out = {
         "length": _length(video.get("durationSec")),
         "topic": "big_money" if (plan.get("story") or video.get("story")) in set(formats.core_ids(root)) else "budget",
@@ -124,7 +125,7 @@ def metric(video: dict) -> float | None:
 def observations(root: Path = ROOT) -> dict[str, dict[str, list[float]]]:
     """For each dimension, each option's 48-hour views (Shorts published since the dimension's `since`)."""
     st_ = state(root)
-    videos = [v for v in _read(root / VIDEOS, {}).get("videos", []) if v.get("format", "short") == "short"]
+    videos = [v for v in _read(cpath(root, VIDEOS), {}).get("videos", []) if v.get("format", "short") == "short"]
     obs: dict[str, dict[str, list[float]]] = {d: {o: [] for o in s["options"]} for d, s in st_.items()}
     for v in videos:
         y = metric(v)
@@ -201,13 +202,13 @@ def _save(root: Path, st_: dict, verdicts: list[dict], obs: dict, now: datetime)
         elif v["option"] not in d["dropped"]:
             d["dropped"].append(v["option"])
     table = {d: {o: {"n": len(ys), "median": round(st.median(ys)) if ys else None} for o, ys in obs[d].items()} for d in obs}
-    (root / STATE).write_text(json.dumps({"note": "Written by python -m improvement.arms judge (ingest, every 6 h). Defaults and dropped options per dimension; config/arms.json holds the options.",
+    (cpath(root, STATE)).write_text(json.dumps({"note": "Written by python -m improvement.arms judge (ingest, every 6 h). Defaults and dropped options per dimension; config/arms.json holds the options.",
                                           "updatedAt": now.isoformat(timespec="seconds"), "dimensions": dims, "numbers": table}, indent=2) + "\n", encoding="utf-8")
     if verdicts:
-        log = _read(root / LOG, {"entries": []})
+        log = _read(cpath(root, LOG), {"entries": []})
         log.setdefault("entries", []).extend({**v, "at": now.isoformat(timespec="seconds")} for v in verdicts)
         log["note"] = "Every drop and promotion the variant system made (improvement/arms.py)."
-        (root / LOG).write_text(json.dumps(log, indent=2) + "\n", encoding="utf-8")
+        (cpath(root, LOG)).write_text(json.dumps(log, indent=2) + "\n", encoding="utf-8")
 
 
 def assign(video_id: str, root: Path = ROOT) -> dict:

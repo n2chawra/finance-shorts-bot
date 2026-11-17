@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from .settings import ROOT
+from .channels import cpath
 
 IST = timezone(timedelta(hours=5, minutes=30))
 REQUIRED = ("id", "created_at", "template", "topic", "title", "description", "hook_style", "cta", "style")
@@ -34,7 +35,7 @@ def _write(path: Path, data: list[dict]) -> None:
 
 
 def load(root: Path = ROOT) -> list[dict]:
-    return _read(root / "history" / "history.json")
+    return _read(cpath(root, "history/history.json"))
 
 
 def append(entry: dict, root: Path = ROOT) -> None:
@@ -45,7 +46,7 @@ def append(entry: dict, root: Path = ROOT) -> None:
     entries = load(root)
     if any(e["id"] == entry["id"] for e in entries):
         raise ValueError(f"history already has {entry['id']}")
-    _write(root / "history" / "history.json", [*entries, entry])
+    _write(cpath(root, "history/history.json"), [*entries, entry])
 
 
 def of_format(entries: list[dict], fmt: str = "short") -> list[dict]:
@@ -57,7 +58,7 @@ def next_id(entries: list[dict], at: datetime | None = None, root: Path = ROOT, 
     """v-YYYYMMDD-NN for a Short, L-YYYYMMDD-NN for a long video (IST date), skipping used ids."""
     prefix = "v" if fmt == "short" else "L"
     day = (at or now()).astimezone(IST).strftime("%Y%m%d")
-    used = {e["id"] for e in entries} | {p.name for p in (root / "videos").glob(f"{prefix}-*") if p.is_dir()}
+    used = {e["id"] for e in entries} | {p.name for p in (cpath(root, "videos")).glob(f"{prefix}-*") if p.is_dir()}
     n = 1
     while f"{prefix}-{day}-{n:02d}" in used:
         n += 1
@@ -82,10 +83,10 @@ def ist_week(iso: str) -> str:
 
 
 def load_template_work(root: Path = ROOT) -> list[dict]:
-    return _read(root / "history" / "template_work.json")
+    return _read(cpath(root, "history/template_work.json"))
 
 
 def append_template_work(template: str, action: str, enabled: bool, root: Path = ROOT, at: datetime | None = None) -> dict:
     entry = {"at": (at or now()).isoformat(), "template": template, "action": action, "enabled": enabled}
-    _write(root / "history" / "template_work.json", [*load_template_work(root), entry])
+    _write(cpath(root, "history/template_work.json"), [*load_template_work(root), entry])
     return entry

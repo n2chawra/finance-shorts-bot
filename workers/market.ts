@@ -21,6 +21,7 @@ import { existsSync } from "node:fs";
 import { ChannelList, CommentThreads, LongTopic, MarketConfig, SearchList, type TopicRefs, VideoDetails, dueTopics, keepRefs, parsePrevRefs, pickRefs, rankMarket, subscribersOf } from "./lib/market.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
 import { accessToken } from "./lib/youtube.ts";
+import { cpath } from "./lib/channels.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const DAY_MS = 86_400_000;
@@ -58,7 +59,7 @@ async function market(token: string, cfg: MarketConfig, now: Date) {
 
 /** Each open long topic's most viewed videos, searched once a week (thumb-refs.json; renderer/thumbs.py). */
 async function thumbRefs(token: string, cfg: MarketConfig, now: Date) {
-  const file = path.join(ROOT, "improvement", "longform", "topics.json");
+  const file = cpath(ROOT, "improvement", "longform", "topics.json");
   const topics = existsSync(file) ? LongTopic.array().parse(JSON.parse(readFileSync(file, "utf8")).topics ?? []) : [];
   const prevFile = process.env.PREV_THUMB_REFS;
   const prev = parsePrevRefs(prevFile && existsSync(prevFile) ? readFileSync(prevFile, "utf8") : null);
@@ -102,7 +103,7 @@ async function comments(token: string, now: Date) {
 async function main(): Promise<void> {
   const outDir = path.resolve(process.argv[2] ?? "market-data");
   if (!youtubeConfigured()) return;
-  const cfg = MarketConfig.parse(JSON.parse(readFileSync(path.join(ROOT, "config", "market.json"), "utf8")));
+  const cfg = MarketConfig.parse(JSON.parse(readFileSync(cpath(ROOT, "config", "market.json"), "utf8")));
   const now = new Date();
   const token = await accessToken();
   const m = await market(token, cfg, now);

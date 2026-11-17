@@ -47,21 +47,31 @@ function local(file: string, type: string, range: string | null): Response {
   });
 }
 
+/** Channel folders to look in (channel #1 first). Grows with the Channel table in the next step. */
+const CHANNEL_DIRS = (process.env.CHANNELS ?? "paisa-panchayat").split(",").map((c) => c.trim()).filter((c) => /^[a-z0-9][a-z0-9-]{1,40}$/.test(c));
+
 export async function GET(req: NextRequest, ctx: { params: Promise<{ id: string; kind: string }> }) {
   const { id, kind } = await ctx.params;
   if (!/^(v|L)-\d{8}-\d{2,}$/.test(id) || !(kind in FILES)) return NextResponse.json({ error: "Not found" }, { status: 404 });
   const [name, type] = FILES[kind as keyof typeof FILES];
 
-  const file = path.join(process.cwd(), "..", "..", "videos", id, name);
-  if (existsSync(file)) return local(file, type, req.headers.get("range"));
+  // a video lives in channels/<slug>/videos/ once its channel has a folder (multi-channel refactor), else videos/
+  const dirs = [...CHANNEL_DIRS.map((c) => `channels/${c}/videos`), "videos"];
+  const repoRoot = path.join(process.cwd(), "..", "..");
+  const file = dirs.map((d) => path.join(repoRoot, d, id, name)).find((f) => existsSync(f));
+  if (file) return local(file, type, req.headers.get("range"));
 
   const token = process.env.GITHUB_TOKEN, repo = process.env.GITHUB_REPOSITORY;
   if (!token || !repo) return NextResponse.json({ error: `${name} is not in the local checkout and no GitHub token is configured` }, { status: 404 });
   const auth = { authorization: `Bearer ${token}`, "x-github-api-version": "2022-11-28" };
 
   if (kind !== "video") {
-    const res = await fetch(`${GH}/repos/${repo}/contents/videos/${id}/${name}?ref=main`, { headers: { ...auth, accept: "application/vnd.github.raw" } });
-    if (!res.ok) { await tokenRejected(res.status); return NextResponse.json({ error: "Not found" }, { status: 404 }); }
+    let res: Response | null = null;
+    for (const d of dirs) {
+      res = await fetch(`${GH}/repos/${repo}/contents/${d}/${id}/${name}?ref=main`, { headers: { ...auth, accept: "application/vnd.github.raw" } });
+      if (res.ok || res.status !== 404) break;
+    }
+    if (!res || !res.ok) { if (res) await tokenRejected(res.status); return NextResponse.json({ error: "Not found" }, { status: 404 }); }
     return new Response(res.body, { headers: { "content-type": type, "cache-control": "private, max-age=3600" } });
   }
   const release = await fetch(`${GH}/repos/${repo}/releases/tags/video-${id}`, { headers: { ...auth, accept: "application/vnd.github+json" } });

@@ -8,6 +8,7 @@
  * if YouTube access is lost (token revoked or expired) and nothing has been refreshed for 30 days,
  * the stored stats are deleted.
  */
+import path from "node:path";
 import { existsSync, readFileSync } from "node:fs";
 
 import { Prisma, PrismaClient } from "@prisma/client";
@@ -19,6 +20,7 @@ import { dropPoints, hookHold, spokenBeats } from "./lib/retention.ts";
 import { failKey, statsOutcome } from "./lib/stats-failures.ts";
 import { analyticsStartDay, channelDays } from "./lib/analytics.ts";
 import { DAY_METRICS, TokenError, accessToken, dailyStats, report, retentionCurve } from "./lib/youtube.ts";
+import { cpath } from "./lib/channels.ts";
 
 const DAY_MS = 86_400_000;
 const KEEP_DAYS = 365;       // history fetched and kept per video
@@ -43,7 +45,7 @@ async function deleteIfStale(prisma: PrismaClient): Promise<boolean> {
 
 /** The spoken beats of a video from its committed timeline (the workflow checks the repo out). */
 function beatsOf(videoId: string) {
-  const file = new URL(`../videos/${videoId}/timeline.json`, import.meta.url);
+  const file = cpath(path.resolve(import.meta.dirname, ".."), "videos", videoId, "timeline.json");
   if (!existsSync(file)) return [];
   try {
     return spokenBeats(JSON.parse(readFileSync(file, "utf8")));

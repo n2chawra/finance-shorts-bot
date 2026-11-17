@@ -1,0 +1,33 @@
+{
+  "_comment": "Where each channel's own files live. Keys are the legacy paths (repo root, before the multi-channel refactor); values are paths inside channels/<slug>/. A channel whose folder doesn't exist yet still uses the legacy paths. Read by generator/channels.py and workers/lib/channels.ts; longest key wins.",
+  "default": "paisa-panchayat",
+  "map": {
+    "channel/profile.md": "profile.md",
+    "config/market.json": "market.json",
+    "config/experiments.json": "experiments.json",
+    "generator/prompts/lessons.md": "prompts/lessons.md",
+    "generator/prompts/studied.md": "prompts/studied.md",
+    "history/": "history/",
+    "videos/": "videos/",
+    "metrics/": "metrics/",
+    "improvement/analysis/": "analysis/",
+    "improvement/arms-log.json": "arms-log.json",
+    "improvement/arms-state.json": "arms-state.json",
+    "improvement/cycle/": "cycle/",
+    "improvement/editor/": "editor/",
+    "improvement/events/": "events/",
+    "improvement/experiments.json": "experiment-log.json",
+    "improvement/feedback-acks/": "feedback-acks/",
+    "improvement/journal.md": "journal.md",
+    "improvement/longform/": "longform/",
+    "improvement/notifications/": "notifications/",
+    "improvement/research/": "research/",
+    "improvement/review/": "review/",
+    "improvement/study/": "study/",
+    "improvement/style-study/": "style-study/",
+    "improvement/template-decisions.json": "template-decisions.json",
+    "improvement/weekly/": "weekly/",
+    "improvement/monthly/": "monthly/",
+    "improvement/feedback-acks.json": "feedback-acks.json"
+  }
+}

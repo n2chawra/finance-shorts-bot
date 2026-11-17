@@ -17,6 +17,7 @@ import json
 import statistics
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from .channels import cpath
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = Path("improvement/weekly/impact.json")
@@ -34,9 +35,9 @@ def _read(path: Path, default):
 
 def shorts(root: Path = ROOT) -> list[dict]:
     """Published Shorts with 48 h data, joined with Studio numbers (stayed to watch, duration)."""
-    studio = {v["id"]: v for v in _read(root / "metrics" / "analytics.json", {}).get("videos", []) if v.get("id")}
+    studio = {v["id"]: v for v in _read(cpath(root, "metrics/analytics.json"), {}).get("videos", []) if v.get("id")}
     out = []
-    for v in _read(root / "metrics" / "videos.json", {"videos": []}).get("videos", []):
+    for v in _read(cpath(root, "metrics/videos.json"), {"videos": []}).get("videos", []):
         if v.get("format", "short") != "short" or v.get("views48h") is None or not v.get("publishAt"):
             continue
         s = studio.get(v["id"], {})
@@ -75,7 +76,7 @@ def weeks(videos: list[dict]) -> list[dict]:
 
 
 def changes(videos: list[dict], root: Path = ROOT) -> list[dict]:
-    exps = _read(root / "improvement" / "experiments.json", {"experiments": []})
+    exps = _read(cpath(root, "improvement/experiments.json"), {"experiments": []})
     exps = exps if isinstance(exps, list) else exps.get("experiments", [])
     out = []
     for e in exps:
@@ -105,8 +106,8 @@ def report(root: Path = ROOT) -> dict:
 
 def main() -> int:
     r = report()
-    (ROOT / OUT).parent.mkdir(parents=True, exist_ok=True)
-    (ROOT / OUT).write_text(json.dumps(r, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    (cpath(ROOT, OUT)).parent.mkdir(parents=True, exist_ok=True)
+    (cpath(ROOT, OUT)).write_text(json.dumps(r, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     print("Shorts by week (median 48 h views | % viewed | stayed to watch | avg view s):")
     for w in r["weeks"]:
         print(f"  {w['week']}  n={w['n']:<2} {w['medianViews48h']!s:>6} | {w['avgViewPct']!s:>5}% | {w['stayedToWatch']!s:>5} | {w['avgViewSec']!s:>5}")

@@ -26,6 +26,7 @@ import re
 from pathlib import Path
 
 from .settings import ROOT
+from .channels import cpath
 
 # one feed per format: research writes the Shorts one, scout the long one
 FILES = {"short": Path("improvement") / "research" / "topics.json",
@@ -103,7 +104,7 @@ def context(entries: list[dict], root: Path = ROOT) -> dict:
     for e in entries[-RECENT:]:
         if (s := stories.get(e.get("id", ""))):
             recent[s] = recent.get(s, 0) + 1
-    path = root / "metrics" / "videos.json"
+    path = cpath(root, "metrics/videos.json")
     vids = json.loads(path.read_text(encoding="utf-8")).get("videos", []) if path.is_file() else []
     scored = [(stories.get(v["id"]), v["views48h"]) for v in vids if v.get("views48h") is not None and v.get("format", "short") == "short"]
     overall = statistics.median([x for _, x in scored]) if scored else 0
@@ -272,7 +273,7 @@ def winning_short(topic: dict, root: Path = ROOT, today: str | None = None) -> s
     if not sid:
         return "names no `from_short` (a long video expands one of our recent Shorts in the top third by stayed to watch)"
     try:
-        videos = json.loads((root / "metrics" / "videos.json").read_text(encoding="utf-8")).get("videos", [])
+        videos = json.loads((cpath(root, "metrics/videos.json")).read_text(encoding="utf-8")).get("videos", [])
     except (OSError, ValueError):
         return None      # no metrics here (tests, a fresh clone): trust the topic
     v = next((x for x in videos if x.get("id") == sid), None)

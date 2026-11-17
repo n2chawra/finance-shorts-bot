@@ -32,6 +32,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+from generator.channels import cpath
 
 ROOT = Path(__file__).resolve().parents[1]
 # the 2026-10-26 types: building blocks a Thumb.tsx may import from LongThumbs.tsx, no longer layouts
@@ -47,7 +48,7 @@ CALM = {"neutral", "happy", "smirk", "thinking", "proud"}     # faces that don't
 THINGS_MAX = 3
 SCALES = ("thousand", "million", "billion", "trillion")
 PHONE = {"contrast_min": 45.0, "edges": (0.15, 0.5)}   # the hits: contrast 53-88, edges 0.23-0.46
-REFS = ROOT / "improvement" / "research" / "thumbnails.json"
+REFS_REL = "improvement/research/thumbnails.json"   # per channel: cpath(ROOT, REFS_REL)
 
 
 def _words(text: str) -> list[str]:
@@ -264,11 +265,11 @@ def search_refs(query: str, timeout: int = 20) -> list[dict]:
 def topic_query(vid: str, root: Path = ROOT) -> str:
     """What people type for this video's topic: the long feed topic's `search`, else the plan's topic title."""
     import json
-    plan_f = root / "videos" / vid / "plan.json"
+    plan_f = cpath(root, "videos") / vid / "plan.json"
     plan = json.loads(plan_f.read_text(encoding="utf-8")) if plan_f.is_file() else {}
     topic = plan.get("topic") or {}
     tid = topic.get("feed_id") or topic.get("id")
-    feed_f = root / "improvement" / "longform" / "topics.json"
+    feed_f = cpath(root, "improvement/longform/topics.json")
     if tid and feed_f.is_file():
         for t in json.loads(feed_f.read_text(encoding="utf-8")).get("topics", []):
             if t.get("id") == tid and t.get("search"):
@@ -282,7 +283,7 @@ def topic_refs(vid: str, root: Path = ROOT, store: dict | None = None, live: boo
     for the topic, the topic's own `demand` video, and a live YouTube search for the topic. Never the
     channel-wide examples: a thumbnail modelled on other topics' hits isn't close to what gets clicked here."""
     import json
-    plan_f = root / "videos" / vid / "plan.json"
+    plan_f = cpath(root, "videos") / vid / "plan.json"
     plan = json.loads(plan_f.read_text(encoding="utf-8")) if plan_f.is_file() else {}
     topic = plan.get("topic") or {}
     tid = topic.get("feed_id") or topic.get("id")
@@ -377,7 +378,7 @@ def refs_sheet(vid: str, out: Path | None = None, top: int = 9) -> Path:
 def feed(vid: str, out: Path | None = None, files: list[Path] | None = None, title: str | None = None) -> Path:
     """Our thumbnail on a mock YouTube home grid among its topic's hits, at desktop size."""
     import json
-    d = ROOT / "videos" / vid
+    d = cpath(ROOT, "videos") / vid
     others = [(f, r.get("title", ""), int(r.get("views") or 0)) for r in topic_refs(vid)[:9] if (f := fetch_thumb(r["id"]))]
     if title is None:
         title = json.loads((d / "manifest.json").read_text(encoding="utf-8")).get("title", vid) if (d / "manifest.json").is_file() else vid

@@ -16,6 +16,7 @@ import { z } from "zod";
 
 import { notify, resolveOthers } from "./notify.ts";
 import { istDay, isUrgent } from "./publishing.ts";
+import { cpath } from "./channels.ts";
 
 const DAY_MS = 86_400_000;
 const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio", "monthly", "reviewer"] as const;
@@ -77,7 +78,7 @@ export async function importActivity(prisma: PrismaClient, root: string): Promis
 
 export async function importAgentNotifications(prisma: PrismaClient, root: string): Promise<void> {
   for (const agent of AGENTS) {
-    const file = path.join(root, "improvement", "notifications", `${agent}.json`);
+    const file = path.join(cpath(root, "improvement", "notifications"), `${agent}.json`);
     const keep = new Set<string>();
     if (existsSync(file)) {
       const parsed = AgentNotices.safeParse(readJson(file));
@@ -157,7 +158,7 @@ export function parseLessons(md: string): Lesson[] {
 
 /** The topic feed with each topic's video (from history.json: the video run records topic.feed_id there). */
 function withUsage(value: unknown, root: string): unknown {
-  const file = path.join(root, "history", "history.json");
+  const file = cpath(root, "history", "history.json");
   if (!existsSync(file) || !value || typeof value !== "object" || !Array.isArray((value as { topics?: unknown }).topics)) return value;
   const entries = readJson(file) as { id: string; topic?: { feed_id?: string } }[];
   const usedBy = new Map(entries.filter((e) => e.topic?.feed_id).map((e) => [e.topic!.feed_id!, e.id]));
@@ -166,13 +167,13 @@ function withUsage(value: unknown, root: string): unknown {
 }
 
 export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<void> {
-  const lessonsFile = path.join(root, "generator", "prompts", "lessons.md");
+  const lessonsFile = cpath(root, "generator", "prompts", "lessons.md");
   if (existsSync(lessonsFile)) {
     const value = { lessons: parseLessons(readFileSync(lessonsFile, "utf8")) } as Prisma.InputJsonValue;
     await prisma.repoDoc.upsert({ where: { key: "lessons" }, update: { value }, create: { key: "lessons", value } });
   }
   for (const [key, rel] of Object.entries(DOCS)) {
-    const file = path.join(root, rel);
+    const file = cpath(root, rel);
     if (!existsSync(file)) continue;
     try {
       const raw = readJson(file);
@@ -186,7 +187,7 @@ export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<
 
 /** Apply each agent template decision once; the applied ids are remembered in RepoDoc. */
 export async function applyTemplateDecisions(prisma: PrismaClient, root: string): Promise<string[]> {
-  const file = path.join(root, "improvement", "template-decisions.json");
+  const file = cpath(root, "improvement", "template-decisions.json");
   if (!existsSync(file)) return [];
   const parsed = TemplateDecisions.safeParse(readJson(file));
   if (!parsed.success) { console.error(`::warning::template-decisions.json: ${parsed.error.issues[0]?.message}`); return []; }
@@ -269,10 +270,10 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
     const mine = runs.filter((r) => r.day === day);
     return { day, shipped: mine.filter((r) => r.status === "shipped").length, failed: mine.filter((r) => r.status === "failed").length };
   });
-  mkdirSync(path.join(root, "metrics"), { recursive: true });
+  mkdirSync(cpath(root, "metrics"), { recursive: true });
   let changed = false;
   const write = (name: string, body: unknown) => {
-    const file = path.join(root, "metrics", name);
+    const file = path.join(cpath(root, "metrics"), name);
     const next = JSON.stringify(body, null, 2) + "\n";
     if (!existsSync(file) || readFileSync(file, "utf8").replace(/\r\n/g, "\n") !== next) { writeFileSync(file, next); changed = true; }
   };
@@ -393,7 +394,7 @@ const EditorRanking = z.object({
  * (orderLocked), which keep their place at the front, and breaking or trending videos, which ingest put next
  * (the 11:30 trend run makes no new ranking, so a trend Short is never in it). Returns the ids ranked. */
 export async function importEditorRanking(prisma: PrismaClient, root: string, now = new Date()): Promise<string[]> {
-  const file = path.join(root, "improvement", "editor", "ranking.json");
+  const file = cpath(root, "improvement", "editor", "ranking.json");
   if (!existsSync(file)) return [];
   const parsed = EditorRanking.safeParse(readJson(file));
   if (!parsed.success) { console.error(`::warning::editor/ranking.json: ${parsed.error.issues[0]?.message}`); return []; }
@@ -432,7 +433,7 @@ const HANDOFF = new Set(["handed", "partly"]);
 /** Every agent's answers: improvement/feedback-acks/<agent>.json, plus the improver's older improvement/feedback-acks.json. */
 export function readFeedbackAcks(root: string): AckRow[] {
   const files: [string, string][] = [["improver", path.join(root, "improvement", "feedback-acks.json")]];
-  const dir = path.join(root, "improvement", "feedback-acks");
+  const dir = cpath(root, "improvement", "feedback-acks");
   if (existsSync(dir)) for (const f of readdirSync(dir).sort()) if (f.endsWith(".json")) files.push([f.slice(0, -5), path.join(dir, f)]);
   const out: AckRow[] = [];
   for (const [agent, file] of files) {

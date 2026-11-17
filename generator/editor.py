@@ -24,6 +24,7 @@ from pathlib import Path
 
 from . import feedback, formats, history
 from .settings import ROOT, load as load_settings
+from .channels import cpath
 
 BASE = 5.0
 
@@ -64,7 +65,7 @@ def _attribute_scores(root: Path, fmt: str) -> dict[str, float]:
 
 def score(vid: str, root: Path = ROOT, attrs: dict | None = None, taste: dict | None = None, now: datetime | None = None) -> dict:
     """A ready video's predicted score out of 10 and the parts it is made of."""
-    d = root / "videos" / vid
+    d = cpath(root, "videos") / vid
     plan = _read(d / "plan.json") or {}
     script = _read(d / "script.json") or {}
     render = _read(d / "render.json") or {}
@@ -106,5 +107,5 @@ def rank(root: Path = ROOT, fmt: str = "short", ids: list[str] | None = None) ->
     ids = ready_ids(root, fmt) if ids is None else ids
     fmt_ = "long" if fmt == "long" else "short"
     attrs, taste = _attribute_scores(root, fmt_), feedback.taste_of(root)
-    rows = [score(i, root, attrs, taste) for i in ids if (root / "videos" / i).is_dir()]
+    rows = [score(i, root, attrs, taste) for i in ids if (cpath(root, "videos") / i).is_dir()]
     return sorted(rows, key=lambda r: -r["score"])

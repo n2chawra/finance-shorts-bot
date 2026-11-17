@@ -45,6 +45,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from generator import experiments as exps  # noqa: E402
 from generator import variety  # noqa: E402
+from generator.channels import cpath
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
@@ -349,7 +350,7 @@ def _heard(root: Path, videos: list[dict]) -> list[dict]:
     from renderer.voices import CAST_VOICES   # light: Ingest runs this without the renderer's packages
     out = []
     for v in videos:
-        d = root / "videos" / str(v.get("id"))
+        d = cpath(root, "videos") / str(v.get("id"))
         man = _read(d / "manifest.json", {})
         extra = dict(man.get("heard") or {})
         if "narratorShare" not in extra and (d / "script.json").is_file():
@@ -371,14 +372,14 @@ def _heard(root: Path, videos: list[dict]) -> list[dict]:
 
 def report(root: Path = ROOT, now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
-    videos = _heard(root, _read(root / "metrics" / "videos.json", {"videos": []})["videos"])
+    videos = _heard(root, _read(cpath(root, "metrics/videos.json"), {"videos": []})["videos"])
     # views exactly 48 h after publishing from the public counter (no Analytics lag) when we have them
     for v in videos:
         if v.get("views48hLive") is not None:
             v["views48h"] = v["views48hLive"]
-    attempts = _read(root / "metrics" / "runs.json", {"videos": []})["videos"]
-    stories = {e["id"]: variety.story_of(e) for e in _read(root / "history" / "history.json", [])}
-    shapes = {e["id"]: e.get("shape") for e in _read(root / "history" / "history.json", [])}
+    attempts = _read(cpath(root, "metrics/runs.json"), {"videos": []})["videos"]
+    stories = {e["id"]: variety.story_of(e) for e in _read(cpath(root, "history/history.json"), [])}
+    shapes = {e["id"]: e.get("shape") for e in _read(cpath(root, "history/history.json"), [])}
     by_format = {f: [v for v in videos if v.get("format", "short") == f] for f in ("short", "long")}
     return {
         "generatedAt": now.isoformat(), "videosWithData": sum(v.get("views48h") is not None for v in videos),

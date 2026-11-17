@@ -16,6 +16,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from improvement import evaluate
+from generator.channels import cpath
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = Path("improvement") / "cycle" / "status.json"
@@ -42,10 +43,10 @@ def _side_videos(shorts: list[dict], eid: str, started: str, metric: str) -> lis
 
 def status(root: Path = ROOT, now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
-    backlog = _read(root / "improvement" / "cycle" / "backlog.json", {})
+    backlog = _read(cpath(root, "improvement/cycle/backlog.json"), {})
     running = backlog.get("running")
-    exps = {e["id"]: e for e in _read(root / "config" / "experiments.json", {"experiments": []})["experiments"]}
-    videos = _read(root / "metrics" / "videos.json", {"videos": []})["videos"]
+    exps = {e["id"]: e for e in _read(cpath(root, "config/experiments.json"), {"experiments": []})["experiments"]}
+    videos = _read(cpath(root, "metrics/videos.json"), {"videos": []})["videos"]
     shorts = [v for v in videos if v.get("format", "short") == "short"]
     # the channel's stayed to watch over the last 14 days, as context for both sides
     since = (now - timedelta(days=14)).isoformat()
@@ -93,7 +94,7 @@ def main() -> int:
     if ap.parse_args().print:
         print(text, end="")
     else:
-        (ROOT / OUT).write_text(text, encoding="utf-8")
+        (cpath(ROOT, OUT)).write_text(text, encoding="utf-8")
         e = s["experiment"]
         print(f"{OUT}: {e['id']} {e['verdict']}: {e['why']}" if e else f"{OUT}: no challenger running")
     return 0

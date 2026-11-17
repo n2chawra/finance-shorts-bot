@@ -6,6 +6,7 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import type { ShippedManifest } from "./manifest.ts";
+import { cpath } from "./channels.ts";
 
 export type FeedTopic = { id: string; kind?: string; priority?: string; title?: string; [k: string]: unknown };
 export type Source = {
@@ -33,7 +34,7 @@ export function snapshot(t: FeedTopic | undefined): FeedTopic | null {
 export function loadFeeds(root: string): Map<string, FeedTopic> {
   const out = new Map<string, FeedTopic>();
   for (const rel of ["improvement/research/topics.json", "improvement/longform/topics.json"]) {
-    const file = path.join(root, rel);
+    const file = cpath(root, rel);
     if (!existsSync(file)) continue;
     const topics = (JSON.parse(readFileSync(file, "utf8")) as { topics?: FeedTopic[] }).topics ?? [];
     for (const t of topics) if (t?.id) out.set(t.id, t);

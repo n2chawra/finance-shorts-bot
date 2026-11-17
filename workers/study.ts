@@ -16,11 +16,12 @@ import { z } from "zod";
 
 import { GeminiUnavailable, generate, parseJson } from "./lib/gemini.ts";
 import { COMPARED, type Sheet, SHEET_PROMPT, SHEET_SCHEMA, cleanSheet, gapReport, measures } from "./lib/sheets.ts";
+import { cpath } from "./lib/channels.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-const DIR = path.join(ROOT, "improvement", "study");
-const STUDIED = path.join(ROOT, "generator", "prompts", "studied.md");
-const BACKLOG = path.join(ROOT, "improvement", "cycle", "backlog.json");
+const DIR = cpath(ROOT, "improvement", "study");
+const STUDIED = cpath(ROOT, "generator", "prompts", "studied.md");
+const BACKLOG = cpath(ROOT, "improvement", "cycle", "backlog.json");
 /** Tried in order; from the 13 Nov 2026 tests: 3.6 Flash answered every request, the newer ones were busy or had no free quota. */
 const MODELS = ["gemini-3.6-flash", "gemini-3.5-flash", "gemini-3.7-flash", "gemini-3.8-flash"];
 const PER_RUN = 4;

@@ -19,6 +19,7 @@ import re
 from pathlib import Path
 
 from .settings import ROOT
+from .channels import cpath
 
 FILE = Path("improvement") / "research" / "shapes.json"
 WINDOW = 3          # not the same shape in the last 3 videos of a format
@@ -28,7 +29,7 @@ ID = re.compile(r"^[a-z][a-z0-9-]{2,30}$")
 
 
 def load(root: Path = ROOT, usable: bool = True) -> list[dict]:
-    path = root / FILE
+    path = cpath(root, FILE)
     if not path.is_file():
         return []
     shapes = [s for s in json.loads(path.read_text(encoding="utf-8")).get("shapes", []) if isinstance(s, dict) and s.get("id")]
@@ -118,7 +119,7 @@ def record_new(plan: dict, vid: str, root: Path = ROOT) -> bool:
     shape = plan.get("shape")
     if not isinstance(shape, dict) or not shape.get("id"):
         return False
-    path = root / FILE
+    path = cpath(root, FILE)
     data = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {"shapes": []}
     if any(s.get("id") == shape["id"] for s in data["shapes"]):
         return False

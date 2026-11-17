@@ -22,6 +22,7 @@ import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotif
 import { type FeedTopic, loadFeeds, sourceWithTopic } from "./lib/origin.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 import { syncThumbs } from "./lib/cover.ts";
+import { cpath } from "./lib/channels.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -47,7 +48,7 @@ export function templateIds(root = ROOT): string[] {
 export const RETIRED = "Retired: the first engine's template, replaced by the Remotion story templates on 2026-10-17.";
 
 export function manifestPaths(root = ROOT): string[] {
-  const dir = path.join(root, "videos");
+  const dir = cpath(root, "videos");
   return readdirSync(dir).map((id) => path.join(dir, id, "manifest.json")).filter((p) => existsSync(p)).sort();
 }
 
@@ -125,7 +126,7 @@ export async function queueSlot(tx: Prisma.TransactionClient, m: ShippedManifest
 async function backfillSources(prisma: PrismaClient, feeds: Map<string, FeedTopic>): Promise<void> {
   for (const v of await prisma.video.findMany({ where: { status: { in: ["queued", "scheduled", "published"] }, deletedAt: null }, select: { id: true, style: true, status: true } })) {
     const style = (v.style ?? {}) as Record<string, unknown>;
-    const file = path.join(ROOT, "videos", v.id, "manifest.json");
+    const file = path.join(cpath(ROOT, "videos"), v.id, "manifest.json");
     if (!existsSync(file)) continue;
     const m = Manifest.safeParse(readJson(file));
     if (!m.success || m.data.status !== "qa_passed") continue;
@@ -139,7 +140,7 @@ async function backfillSources(prisma: PrismaClient, feeds: Map<string, FeedTopi
 }
 
 async function syncTemplateWork(prisma: PrismaClient): Promise<void> {
-  const file = path.join(ROOT, "history", "template_work.json");
+  const file = cpath(ROOT, "history", "template_work.json");
   if (!existsSync(file)) return;
   for (const w of readJson(file) as { at: string; template: string; action: string; enabled: boolean }[]) {
     const id = `tw:${w.at}`;

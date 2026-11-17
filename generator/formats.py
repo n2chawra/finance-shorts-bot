@@ -15,6 +15,7 @@ import re
 from pathlib import Path
 
 from .settings import ROOT
+from .channels import cpath
 
 FILE = Path("improvement") / "research" / "formats.json"
 MIN_VIEWS = 100_000      # a reference video below this doesn't show demand
@@ -23,7 +24,7 @@ MIN_VIEWS = 100_000      # a reference video below this doesn't show demand
 def load(root: Path = ROOT, fmt: str = "short", plannable: bool = True) -> list[dict]:
     """The format's live entries; `plannable` leaves out one with no reference video at MIN_VIEWS,
     since check_plan would reject any plan in it (it comes back once research adds one)."""
-    path = root / FILE
+    path = cpath(root, FILE)
     if not path.is_file():
         return []
     return [f for f in json.loads(path.read_text(encoding="utf-8")).get("formats", [])

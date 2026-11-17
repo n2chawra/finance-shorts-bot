@@ -18,9 +18,10 @@ import { z } from "zod";
 import { audit, persistent, type DashVideo, type Issue, type YtVideo } from "./lib/data-audit.ts";
 import { notify, resolveOthers } from "./lib/notify.ts";
 import { accessToken, videoInfo } from "./lib/youtube.ts";
+import { cpath } from "./lib/channels.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-const OUT = path.join(ROOT, "metrics", "data-audit.json");
+const OUT = cpath(ROOT, "metrics", "data-audit.json");
 const STORE = path.join(ROOT, "apps", "dashboard", "src", "lib", "store.db.ts");
 
 // the dashboard's payloads, validated like any other external data

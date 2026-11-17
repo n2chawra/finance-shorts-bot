@@ -24,6 +24,7 @@ import sys
 import urllib.parse
 import urllib.request
 from pathlib import Path
+from .channels import cpath
 
 ROOT = Path(__file__).resolve().parents[1]
 REAL = ROOT / "remotion" / "public" / "real"
@@ -336,7 +337,7 @@ def main(argv: list[str] | None = None) -> int:
         f = tuple(int(v) for v in a.face.split(",")) if a.face else None
         print(json.dumps(cut(a.name, f, a.model), indent=2, ensure_ascii=False))
     elif a.cmd == "credits":
-        d = ROOT / "videos" / a.id
+        d = cpath(ROOT, "videos") / a.id
         print("\n".join(credit_lines(json.loads((d / "script.json").read_text(encoding="utf-8")), a.id)) or "(no photos)")
     else:
         for n, c in load().items():

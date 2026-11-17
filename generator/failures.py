@@ -12,6 +12,7 @@ import re
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from .channels import cpath
 
 # the kinds of failure, matched in order on a note; the advice is what prevents it at the writing stage
 KINDS: list[tuple[str, str, str]] = [
@@ -64,7 +65,7 @@ def recent(root: Path, days: int = 14, fmt: str | None = None, now: datetime | N
     """[{agent, kind, count, videos, example}] for failed steps in the last `days`, most frequent first."""
     since = (now or datetime.now(timezone.utc)) - timedelta(days=days)
     groups: dict[tuple[str, str], dict] = defaultdict(lambda: {"count": 0, "videos": set(), "example": ""})
-    for f in sorted((root / "videos").glob("*/run.json")):
+    for f in sorted((cpath(root, "videos")).glob("*/run.json")):
         vid = f.parent.name
         if fmt and (vid.startswith("L-") != (fmt == "long")):
             continue

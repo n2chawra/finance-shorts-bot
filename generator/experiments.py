@@ -14,13 +14,14 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from .channels import cpath
 
 ROOT = Path(__file__).resolve().parents[1]
 FILE = Path("config") / "experiments.json"
 
 
 def load(root: Path = ROOT) -> list[dict]:
-    path = root / FILE
+    path = cpath(root, FILE)
     if not path.is_file():
         return []
     data = json.loads(path.read_text(encoding="utf-8"))
