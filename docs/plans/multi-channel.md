@@ -4,10 +4,12 @@ _Updated 2026-11-17 (owner, before moving to the Max plan). Four changes:_
 - _Every channel sets its own Shorts and long-video counts, both for making and for posting._
 - _Before any big research, a **quick verdict** says whether the niche is doable and worth it (money
   and public demand). This replaces the 12 Nov "no verdict" rule._
-- _Next comes a **sample Short and a sample long video**, made to look and move as close to the
-  reference channel as the rules allow. The owner approves them before the full research starts._
 - _The full research studies YouTube in depth: niche topics, animation style, Shorts and long videos.
   It **advises** which kinds of topic to make and how many videos to post._
+- _**Sample videos come last**, after the research is fully done and the channel is built: a sample
+  Short and a sample long video, made by the channel's real pipeline, as close to the reference
+  channel as the rules allow. They show exactly the kind of video that will go out, and the owner
+  approves them before launch._
 
 _Also brought up to date: directed 2D shots on the flat kit (13 Nov), the automatic Study worker that
 watches videos with Gemini (13 Nov), two long videos a week on channel #1 (16 Nov), and the quota
@@ -81,16 +83,17 @@ Each channel also has its own backlog caps (`backlogCap`, `longBacklogCap`) and 
    Shorts and long videos you have in mind.
 2. **Read the quick verdict** (about 30 min later) and click **Continue** or **Stop**. Stop ends it,
    with nothing more spent.
-3. **Watch the sample Short and sample long video** next to the reference videos they follow. Click
-   **I like it**, or leave notes (fixed and re-rendered), or **Stop**.
-4. **Create the channel on YouTube from the branding kit.** The system gives a kit on the Channels
+3. **Wait for the full research and the build** (a few hours, automatic).
+4. **Review the samples** (the Launch review): the sample Shorts and sample long video next to the
+   reference videos they follow, with the research's advice (topic kinds and video counts, which you
+   accept or change). Click **I like it**, leave notes (fixed and re-rendered), or **Stop**.
+5. **Create the channel on YouTube from the branding kit.** The system gives a kit on the Channels
    page: 3 name ideas, the avatar and banner as files, the description and keywords. The owner creates
    the channel and pastes them in (about 5 minutes).
-5. **Click "Connect YouTube"** on the Channels page and pick the new channel on Google's consent
+6. **Click "Connect YouTube"** on the Channels page and pick the new channel on Google's consent
    screen. That's one click: the token is stored for you, with no terminal and no secrets to copy.
-6. **Click "Launch"** after the Launch review. It shows the research's advice (topic kinds and video
-   counts, which you accept or change) and the pre-launch videos. Or leave notes: they get fixed and
-   come back.
+7. **Click "Launch".** The approved samples go out first, and the rest of the pre-launch backlog
+   follows.
 
 Pause, resume and the video counts are on the same page.
 Once for the whole platform (not per channel): fill in YouTube's quota-increase form before the
@@ -130,40 +133,28 @@ second channel launches (the system raises a notification with the steps).
      and a Continue on a "Don't" is recorded with the reason in `channels/<slug>/decisions.json`.
    - It lands in `channels/<slug>/research/verdict.md` and on the Channels page. Nothing below runs
      until the owner clicks Continue.
-3. **Style study and the sample videos (automatic, then the owner approves the look):**
-   - **Watch the references:** the top 5 Shorts and top 3 long videos of the reference channels are
-     watched shot by shot by the Study worker (`workers/study.ts`: Gemini shot sheets, the same tool
-     as the Study page, no browser needed). The owner's favourite reference, if named, is one of them.
-     The `yt-style` method in the browser adds the sound (tempo, key, ducking, SFX).
-   - **Code measures the shot sheets:** shot length, cuts a minute, shot sizes, camera moves,
-     on-screen text, caption style, palette, words a minute, music level.
-   - **One sample Short and one sample long video** are made to match those measures: the same
-     technique, pacing, framing, camera, caption style, colour feel and sound feel. They are directed
-     beats on the flat kit, with their own story, words, characters and art.
-   - **Why not an exact copy:** copying another channel's characters, art, words or voice is
-     copyright infringement, and YouTube demonetizes channels that look like reused or mass-produced
-     copies. That would undo the money reason for the channel. So: as close as allowed, never a copy.
-   - **The long sample is full length** (the niche's typical length from the verdict scan, at most the
-     channel's long-length cap). It takes about one long video's usage.
-   - **The owner's check:** the dashboard shows each sample next to its reference with the measures
-     side by side (ours vs theirs). The owner clicks I like it, leaves notes (fixed and re-rendered),
-     or clicks Stop. After 3 rounds of notes without an approval, the page asks whether the niche or
-     the reference should change instead.
-   - The approved samples become the channel's reference videos, as `v-directed-netflix` is for
-     channel #1. The director and QA work to them.
-4. **Full research (automatic, about 2–3 h; details in the next section):**
+3. **Full research (automatic, about 2–3 h; details in the next section):**
    - **Market:** with the YouTube Data API, read the reference channels and the niche's top
      searches: the videos that beat their channel's median (outliers), their titles, lengths,
      Shorts vs long, cadence, and the formats behind them. This produces the demand-first format list
      with reference videos, the same rule that saved our channel.
-   - **Style across the niche, not just the references:** the Study worker watches 10 more of the
-     niche's top Shorts and 3–5 of its top long videos from other channels. It records the niche's
-     **picture language**, what its hits show: real photos, maps, simple drawings, characters, objects.
-     The channel's look follows it. If characters are not how the niche's hits look, the channel
-     starts **without a cast** (narrator, places, objects, photos). The look is mapped onto the flat
-     kit (`remotion/src/flat/`: what we have, what we need to draw). It never copies their
-     characters, art or words. The approved samples (step 3) set the look, and this step checks it
-     against the wider niche.
+   - **Watch the references:** the top 5 Shorts and top 3 long videos of the reference channels are
+     watched shot by shot by the Study worker (`workers/study.ts`: Gemini shot sheets, the same tool
+     as the Study page, no browser needed). The owner's favourite reference, if named, is one of them.
+     The `yt-style` method in the browser adds the sound (tempo, key, ducking, SFX).
+   - **Watch the wider niche:** 10 more top Shorts and 3–5 top long videos from other channels.
+   - **Code measures the shot sheets:** shot length, cuts a minute, shot sizes, camera moves,
+     on-screen text, caption style, palette, words a minute, music level. These become the
+     channel's style targets.
+   - **The picture language:** what the niche's hits show (real photos, maps, simple drawings,
+     characters, objects). The channel's look follows it. If characters are not how the niche's hits
+     look, the channel starts **without a cast** (narrator, places, objects, photos). The look is
+     mapped onto the flat kit (`remotion/src/flat/`: what we have, what we need to draw).
+   - **As close as allowed, never a copy:** the same technique, pacing, framing, camera, caption
+     style, colour feel and sound feel as the references, with our own story, words, characters, art
+     and voice. Copying another channel's characters, art, words or voice is copyright infringement,
+     and YouTube demonetizes channels that look like reused or mass-produced copies, which would undo
+     the money reason for the channel.
    - **The first second:** the openings of the niche's top 20 hits (title, first spoken line, what
      the first frame shows), from the shot sheets and transcripts. Do they state the subject and the number up front?
      They become the opening rules and examples in the channel's writer instructions: the lesson that
@@ -172,7 +163,7 @@ second channel launches (the system raises a notification with the steps).
      the number check and money formatting switch on), the fact sources and the fact-review rules, the
      disclaimer the niche needs, and YouTube's monetisation rules for it.
    - **The advice to the owner** (owner, 2026-11-17): `channels/<slug>/research/advice.md`, shown on
-     the Launch review:
+     the Launch review next to the samples:
      - **Topic kinds to make:** ranked, each with 2–3 example titles, the niche hits it rests on, and
        its share of the first month (for example "how a famous business makes money: 2 in 3 Shorts").
      - **Kinds to avoid,** with the evidence.
@@ -184,7 +175,7 @@ second channel launches (the system raises a notification with the steps).
      - **Shorts, long or both:** long videos only where the niche's long hits show demand. Until one
        of the channel's own Shorts wins, the long-video topics come from this research, because
        channel #1's Scout rule (the full story of a Short with 1K+ views) has no Shorts to draw on yet.
-5. **Build the channel pack (automatic)** in `channels/<slug>/`:
+4. **Build the channel pack (automatic)** in `channels/<slug>/`:
    - `profile.md`;
    - `formats.json` and `shapes.json` (starting from the shared library);
    - `market.json` (searches);
@@ -192,24 +183,34 @@ second channel launches (the system raises a notification with the steps).
      loop's first challengers, from the research);
    - `topics.json` (15–20 first topics with sourced facts);
    - a look (palettes, places, captions) on the flat kit, with the director's instructions for the
-     channel and the approved samples as its reference;
+     channel and the measured style targets;
    - voices (Kokoro voices for the language);
    - a cast: picked and restyled from a shared character library, new characters drawn when the niche
      needs them, or narrator-only;
    - the disclaimer;
    - channel name ideas, description, keywords, avatar and banner (drawn like `ChannelArt.tsx`).
-6. **Proof (automatic, then the owner):** three Shorts (and one long video if long videos are on) go
-   through the normal pipeline (plan → script → number check → fact review → director → render →
-   QA), in the approved look. The dashboard shows them with the channel pack, the research's advice
-   and the video-count settings in a **Launch review**. The owner approves or leaves notes, and notes
-   are fixed and re-rendered. These videos are the start of the pre-launch backlog.
-7. **Branding kit and connect (owner):**
+5. **Sample videos, last (automatic, then the owner; owner, 2026-11-17: "so that I know what kind of
+   video will go out"):**
+   - Made only after the research is fully done and the pack is built, so they are exactly what the
+     channel will publish, not a mock-up.
+   - **Three sample Shorts and one sample long video** (the long one only if long videos are on, at
+     the channel's long length) go through the channel's real pipeline: plan → script → number check
+     → fact review → director → render → QA.
+   - **The Launch review** shows each sample next to the reference video it follows, with the measures
+     side by side (ours vs theirs), plus the research's advice, the video-count settings and the
+     channel pack.
+   - The owner clicks **I like it**, leaves notes (fixed and re-rendered; a note on the look changes
+     the pack, so later videos follow it too), or clicks **Stop**. After 3 rounds of notes without an
+     approval, the page asks whether the niche or the reference should change instead.
+   - The approved samples become the channel's reference videos, as `v-directed-netflix` is for
+     channel #1 (the director and QA work to them), and the first videos of the pre-launch backlog.
+6. **Branding kit and connect (owner):**
    - the kit is shown on the Channels page: name ideas, avatar and banner PNGs to download, and the
      description and keywords to copy;
    - "Connect YouTube" runs Google's sign-in from the dashboard (Netlify) with the shared OAuth client;
    - the refresh token is stored encrypted in the database (keyed by `SESSION_SECRET`);
    - the system checks the token belongs to a new channel (`myChannel`) and links it.
-8. **Activate (automatic, on "Launch"):**
+7. **Activate (automatic, on "Launch"):**
    - the channel's routines are created (video run, research, and Scout/Studio if long videos are on),
      in free usage windows;
    - its video counts and upload slots are set from the accepted advice;
@@ -246,7 +247,7 @@ uploads. Both were visible in public data beforehand. The setup measures them:
    claims, kids content, reused footage) into setup rules. If it finds that the verdict was wrong
    (for example, the demand was one viral channel), it says so on the Launch review before any
    upload.
-7. **The advice** (topic kinds, video counts, Shorts vs long; flow, step 4) is written from points 2–5.
+7. **The advice** (topic kinds, video counts, Shorts vs long; flow, step 3) is written from points 2–5.
 8. Everything lands in `channels/<slug>/research/`: the verdict, the niche report, the outlier
    database, the shot sheets and style study, and the advice. The setup files are built from it.
 
@@ -405,11 +406,11 @@ uploads. Both were visible in public data beforehand. The setup measures them:
    quota and usage check).
 3. **`/new-channel` setup skill:**
    - the quick verdict and its Continue / Stop;
-   - the style study and the sample Short and long video, with the side-by-side approval page;
    - the full research for the niche (outlier database, topic tiers, format, the first second, the
-     picture language, comments, gaps) and the advice (topic kinds, video counts);
+     style study and picture language, comments, gaps) and the advice (topic kinds, video counts);
+   - the sample Shorts and long video, last, with the side-by-side Launch review;
    - the channel pack, the champion recipe and challenger list from the research, and the pre-launch backlog;
-   - the Launch review, auth and routines.
+   - auth and routines.
 4. **Hands-off layer:** the weekly loop and the reviewer per channel, drop diagnosis on stayed to watch, the animation
    tally, the stop rule, the weekly digest, usage per channel, change log and one-change rule, the
    2-day buffer, monthly re-research, health score, and the cross-channel similarity check.
