@@ -77,3 +77,4 @@ export function useSwitchChannel() {
     void qc.resetQueries();
   };
 }
+export const useDecideChannel = () => useWrite(({ id, ...body }: { id: string; choice: "continue" | "stop"; note?: string }) => send("POST", `/api/channels/${id}/decision`, body));

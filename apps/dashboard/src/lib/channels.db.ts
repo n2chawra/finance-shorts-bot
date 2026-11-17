@@ -1,10 +1,11 @@
 import type { Prisma } from "@prisma/client";
 
-import { type Channel, type ChannelCreate, type ChannelPatch, ChannelSettingsSchema, DEFAULT_CHANNEL, slugify } from "./channels";
+import { type Channel, type ChannelCreate, type ChannelPatch, ChannelSettingsSchema, DEFAULT_CHANNEL, SetupSchema, slugify } from "./channels";
+import { dispatchWorkflow } from "./dispatch";
 import { prismaAll as db } from "./prisma";
 
 /** Channel.settings holds the channel's own settings plus the owner's setup request (`request`). */
-type Stored = Record<string, unknown> & { request?: Channel["request"] };
+type Stored = Record<string, unknown> & { request?: Channel["request"]; setup?: unknown };
 
 const DAY = 86_400_000;
 
@@ -28,6 +29,7 @@ export async function listChannels(): Promise<Channel[]> {
       youtubeChannelId: r.youtubeChannelId, connectedAt: r.connectedAt?.toISOString() ?? null,
       settings: own.success ? own.data : {}, request: stored.request ?? null,
       counts: { queued: count("queued"), published: count("published"), views7d: Number(views.find((v) => v.channelId === r.id)?.views ?? 0) },
+      setup: stored.setup ? (SetupSchema.safeParse(stored.setup).data ?? null) : null,
       createdAt: r.createdAt.toISOString(),
     };
   });
@@ -57,8 +59,12 @@ export async function addChannel(c: ChannelCreate): Promise<Channel | { error: s
   await db.channel.create({ data: {
     id, name: c.name ?? c.niche, status: "setup",
     // a new channel starts lean: one Short a day until its research says otherwise
-    settings: { dailyVideoTarget: 1, request: { niche: c.niche, description: c.description, references: c.references } } as Prisma.InputJsonValue,
+    settings: { dailyVideoTarget: 1, request: { niche: c.niche, description: c.description, references: c.references },
+      setup: { stage: "scanning", verdict: null, decision: null, note: "Reading the niche on YouTube (about 10 minutes)", updatedAt: new Date().toISOString() } } as Prisma.InputJsonValue,
   } });
+  // the niche scan the quick verdict stands on; without the Actions token the /new-channel skill starts it
+  const d = await dispatchWorkflow("niche-scan.yml", { slug: id });
+  if (!d.dispatched) console.warn(`niche scan not started for ${id}: ${d.why}`);
   return (await getChannel(id))!;
 }
 
@@ -68,4 +74,18 @@ export async function connectChannel(id: string, youtubeChannelId: string, seale
   if (other) return { error: `That YouTube channel is already connected to "${other.name}"` };
   await db.channel.update({ where: { id }, data: { youtubeChannelId, refreshTokenEnc: sealed, connectedAt: new Date() } });
   return { ok: true };
+}
+
+/** The owner's Continue or Stop on the quick verdict. Continue starts the full research; Stop ends the setup. */
+export async function decideChannel(id: string, choice: "continue" | "stop", note?: string): Promise<Channel | { error: string }> {
+  const row = await db.channel.findUnique({ where: { id } });
+  if (!row) return { error: "No such channel" };
+  const stored = (row.settings ?? {}) as Stored;
+  const setup = SetupSchema.safeParse(stored.setup);
+  if (!setup.success || setup.data.stage !== "verdict") return { error: "There is no verdict waiting for a decision" };
+  const now = new Date().toISOString();
+  const next = { ...setup.data, stage: choice === "continue" ? "research" : "stopped", decision: { choice, at: now, ...(note ? { note } : {}) },
+    note: choice === "continue" ? "Full research starts in the next free window on your PC" : "Stopped on the quick verdict", updatedAt: now };
+  await db.channel.update({ where: { id }, data: { settings: { ...stored, setup: next } as Prisma.InputJsonValue } });
+  return (await getChannel(id))!;
 }

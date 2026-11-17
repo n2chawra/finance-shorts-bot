@@ -73,3 +73,5 @@ export const patchChannel = async (id: string, p: ChannelPatch): Promise<Channel
 export const addChannel = async (c: ChannelCreate): Promise<Channel | { error: string }> => (useDb ? channelsDb.addChannel(c) : channelsSample.addChannel(c));
 export const connectChannel = async (id: string, youtubeChannelId: string, sealed: string): Promise<{ ok: true } | { error: string }> =>
   (useDb ? channelsDb.connectChannel(id, youtubeChannelId, sealed) : channelsSample.connectChannel());
+export const decideChannel = async (id: string, choice: "continue" | "stop", note?: string): Promise<Channel | { error: string }> =>
+  (useDb ? channelsDb.decideChannel(id, choice, note) : channelsSample.decideChannel(id, choice, note));

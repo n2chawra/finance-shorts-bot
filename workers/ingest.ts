@@ -24,6 +24,7 @@ import { loadSettings, seedSettings } from "./lib/settings.ts";
 import { syncThumbs } from "./lib/cover.ts";
 import { allChannels, cpath, crel, layout } from "./lib/channels.ts";
 import { CHANNEL_KEYS } from "./lib/channel-auth.ts";
+import { syncSetups } from "./lib/setup-sync.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -189,7 +190,8 @@ export async function buildChannelsFile(prisma: PrismaClient): Promise<Record<st
   for (const ch of rows) {
     const own = Object.fromEntries(Object.entries((ch.settings ?? {}) as Record<string, unknown>).filter(([k]) => (CHANNEL_KEYS as readonly string[]).includes(k)));
     const queued = (format?: string) => prisma.video.count({ where: { channelId: ch.id, status: "queued", deletedAt: null, ...(format ? { format } : {}) } });
-    out[ch.id] = { name: ch.name, status: ch.status, settings: own,
+    const setup = ((ch.settings ?? {}) as { setup?: { stage?: string; decision?: unknown } }).setup;
+    out[ch.id] = { name: ch.name, status: ch.status, settings: own, ...(setup ? { setup: { stage: setup.stage, decision: setup.decision ?? null } } : {}),
       backlog: await queued(), backlogByFormat: { short: await queued("short"), long: await queued("long") } };
   }
   return { note: "Written by ingest from the Channel table. Routines read their channel's entry (generator/settings.py).", channels: out };
@@ -266,6 +268,9 @@ async function main(): Promise<void> {
     const activity = await importActivity(prisma, ROOT);
     await importAgentNotifications(prisma, ROOT);
     await snapshotDocs(prisma, ROOT);
+    // new channels' setup: the scan's and the skill's progress and the quick verdict, for the Channels page
+    const setups = await syncSetups(prisma, ROOT);
+    if (setups.length) console.log(`setup: ${setups.join("; ")}`);
     // the editor's ranking of the ready videos, and the improver's answers to the owner's notes
     const ranked = await importEditorRanking(prisma, ROOT);
     const acks = await importFeedbackAcks(prisma, ROOT);

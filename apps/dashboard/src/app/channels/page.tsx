@@ -6,8 +6,8 @@ import { Suspense, useEffect, useState } from "react";
 
 import { useToast } from "@/components/toast";
 import { Badge, Button, Card, ErrorNote, Loading, PageHeader, Segmented, Stagger, type Tone, buttonClass, fieldClass } from "@/components/ui";
-import type { Channel, ChannelStatus } from "@/lib/channels";
-import { useAddChannel, useChannels, usePatchChannel, useSettings, useSwitchChannel } from "@/lib/queries";
+import type { Channel, ChannelStatus, SetupStage, Verdict } from "@/lib/channels";
+import { useAddChannel, useChannels, useDecideChannel, usePatchChannel, useSettings, useSwitchChannel } from "@/lib/queries";
 
 /*
  * Channels (multi-channel plan, step 2): every YouTube channel the platform runs. Start, pause and
@@ -36,6 +36,77 @@ function Notice() {
   return null;
 }
 
+const STAGES: { key: SetupStage; label: string }[] = [
+  { key: "scanning", label: "Scan" }, { key: "verdict", label: "Verdict" }, { key: "research", label: "Research" },
+  { key: "build", label: "Build" }, { key: "samples", label: "Samples" }, { key: "review", label: "Your review" },
+];
+const CALL: Record<Verdict["call"], { label: string; tone: Tone }> = {
+  go: { label: "Go", tone: "good" }, "go-with-conditions": { label: "Go, with conditions", tone: "warning" }, dont: { label: "Don't", tone: "critical" },
+};
+const usd = (n: number) => `$${new Intl.NumberFormat("en", { notation: n >= 10_000 ? "compact" : "standard" }).format(n)}`;
+
+/** A new channel's setup: where it is, and the quick verdict with Continue / Stop. */
+function SetupPanel({ c }: { c: Channel }) {
+  const setup = c.setup!;
+  const decide = useDecideChannel();
+  const toast = useToast();
+  const at = STAGES.findIndex((s) => s.key === setup.stage);
+  const v = setup.verdict;
+  const choose = (choice: "continue" | "stop") => decide.mutate({ id: c.id, choice }, {
+    onSuccess: () => toast(choice === "continue" ? "Continuing: the full research starts next" : "Stopped. Nothing more is spent on this niche."),
+    onError: (e) => toast(e.message, "error"),
+  });
+  return (
+    <div className="mb-5 flex flex-col gap-4">
+      {setup.stage === "stopped"
+        ? <Badge tone="neutral">Stopped{setup.decision ? ` on ${setup.decision.at.slice(0, 10)}` : ""}</Badge>
+        : (
+          <ol className="flex flex-wrap items-center gap-1.5 text-[12px]" aria-label="Setup progress">
+            {STAGES.map((s, i) => (
+              <li key={s.key} className={`rounded-full px-2.5 py-1 font-medium ${i < at ? "bg-good-soft text-good-text" : i === at ? "bg-brand-soft text-brand-text" : "bg-surface-3 text-muted"}`}>
+                {i < at ? "✓ " : ""}{s.label}
+              </li>
+            ))}
+          </ol>
+        )}
+      {setup.note && <p className="text-[12.5px] text-ink2">{setup.note}</p>}
+      {v && (
+        <div className="rounded-xl border border-ring p-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[13px] font-semibold">Quick verdict</span>
+            <Badge tone={CALL[v.call].tone} dot>{CALL[v.call].label}</Badge>
+          </div>
+          <p className="mt-2 text-[13px] text-ink">{v.reason}</p>
+          {v.conditions.length > 0 && (
+            <ul className="mt-2 list-disc pl-5 text-[12.5px] text-ink2">{v.conditions.map((x) => <li key={x}>{x}</li>)}</ul>
+          )}
+          <div className="mt-3 grid gap-3 md:grid-cols-2">
+            <div><div className="text-[12px] font-medium text-good-text">For</div><ul className="mt-1 space-y-1 text-[12.5px] text-ink2">{v.for.map((x) => <li key={x}>+ {x}</li>)}</ul></div>
+            <div><div className="text-[12px] font-medium text-critical-text">Against</div><ul className="mt-1 space-y-1 text-[12.5px] text-ink2">{v.against.map((x) => <li key={x}>− {x}</li>)}</ul></div>
+          </div>
+          {v.earnings && (
+            <div className="mt-3 rounded-lg bg-surface-2 p-3 text-[12.5px]">
+              <div className="font-medium">Rough earnings a month (estimates)</div>
+              <div className="mt-1 grid grid-cols-2 gap-2 tabular-nums">
+                <span>At 6 months: {usd(v.earnings.m6.low)}–{usd(v.earnings.m6.high)}, likely <b>{usd(v.earnings.m6.likely)}</b></span>
+                <span>At 12 months: {usd(v.earnings.m12.low)}–{usd(v.earnings.m12.high)}, likely <b>{usd(v.earnings.m12.likely)}</b></span>
+              </div>
+              <p className="mt-1 text-muted">{v.earnings.assumptions}</p>
+            </div>
+          )}
+          {setup.stage === "verdict" && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Button tone="primary" icon={CirclePlay} disabled={decide.isPending} onClick={() => choose("continue")}>Continue to full research</Button>
+              <Button icon={CirclePause} disabled={decide.isPending} onClick={() => choose("stop")}>Stop</Button>
+            </div>
+          )}
+          {setup.decision && <p className="mt-3 text-[12px] text-muted">You chose {setup.decision.choice} on {setup.decision.at.slice(0, 10)}.</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
   const patch = usePatchChannel();
   const toast = useToast();
@@ -51,6 +122,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
     <Card icon={Tv} accent={current ? "lime" : "surface"} title={<span className="flex flex-wrap items-center gap-2">{c.name}<Badge tone={s.tone} dot>{s.label}</Badge>{current && <Badge tone="brand">Showing</Badge>}</span>}
       description={s.why}
       action={!current && <Button size="sm" onClick={() => switchTo(c.id)}>Show this channel</Button>}>
+      {c.setup && c.status === "setup" && <SetupPanel c={c} />}
       <dl className="grid grid-cols-3 gap-3 text-[12.5px]">
         <div><dt className="text-muted">Ready to upload</dt><dd className="mt-0.5 text-[18px] font-semibold tabular-nums">{fmtN(c.counts.queued)}</dd></div>
         <div><dt className="text-muted">Published</dt><dd className="mt-0.5 text-[18px] font-semibold tabular-nums">{fmtN(c.counts.published)}</dd></div>

@@ -25,6 +25,43 @@ export type ChannelSettings = z.infer<typeof ChannelSettingsSchema>;
 export const ChannelStatusSchema = z.enum(["setup", "review", "active", "paused"]);
 export type ChannelStatus = z.infer<typeof ChannelStatusSchema>;
 
+/*
+ * A new channel's setup (multi-channel plan, step 3): scanning → verdict (the owner's Continue/Stop) →
+ * research → build → samples → review → launched, or stopped. The stage and the verdict come from the
+ * repo (channels/<slug>/setup.json and research/verdict.json, written by the scan and the /new-channel
+ * skill, copied in by ingest); the owner's decision is made here.
+ */
+export const SETUP_STAGES = ["scanning", "verdict", "research", "build", "samples", "review", "launched", "stopped"] as const;
+export type SetupStage = (typeof SETUP_STAGES)[number];
+
+const Range = z.object({ low: z.number(), likely: z.number(), high: z.number() });
+export const VerdictSchema = z.looseObject({
+  call: z.enum(["go", "go-with-conditions", "dont"]),
+  reason: z.string(),
+  conditions: z.array(z.string()).default([]),
+  for: z.array(z.string()).default([]),
+  against: z.array(z.string()).default([]),
+  /** rough earnings in USD a month: estimates, with their assumptions */
+  earnings: z.object({ m6: Range, m12: Range, assumptions: z.string() }).nullable().default(null),
+  /** the scan's headline numbers the verdict rests on */
+  demand: z.record(z.string(), z.union([z.number(), z.string(), z.null()])).default({}),
+  doable: z.object({ look: z.string(), voice: z.string(), policy: z.string() }).partial().default({}),
+  writtenAt: z.string().optional(),
+});
+export type Verdict = z.infer<typeof VerdictSchema>;
+
+export const SetupSchema = z.object({
+  stage: z.enum(SETUP_STAGES),
+  verdict: VerdictSchema.nullable().default(null),
+  decision: z.object({ choice: z.enum(["continue", "stop"]), at: z.string(), note: z.string().optional() }).nullable().default(null),
+  /** what the setup is doing now, in a line (from setup.json) */
+  note: z.string().optional(),
+  updatedAt: z.string().optional(),
+});
+export type Setup = z.infer<typeof SetupSchema>;
+
+export const DecisionSchema = z.object({ choice: z.enum(["continue", "stop"]), note: z.string().trim().max(500).optional() });
+
 export const ChannelSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -36,6 +73,7 @@ export const ChannelSchema = z.object({
   /** the request the owner made on "Add channel": niche, description, reference channels */
   request: z.object({ niche: z.string(), description: z.string(), references: z.array(z.string()) }).nullable(),
   counts: z.object({ queued: z.number(), published: z.number(), views7d: z.number() }),
+  setup: SetupSchema.nullable(),
   createdAt: z.string(),
 });
 export type Channel = z.infer<typeof ChannelSchema>;

@@ -212,6 +212,13 @@ async function main(): Promise<void> {
     }
     const { kept, raw } = await scan(slug, req, auth, quota);
     writeFileSync(path.join(researchDir(slug), "scan.json"), JSON.stringify(kept, null, 1) + "\n");
+    // a channel being set up: the Channels page says the scan is done and the verdict comes next
+    if (slug !== layout().default) {
+      const setupFile = path.join(ROOT, "channels", slug, "setup.json");
+      const prev = existsSync(setupFile) ? JSON.parse(readFileSync(setupFile, "utf8")) as { stage?: string } : {};
+      if (!prev.stage || prev.stage === "scanning") writeFileSync(setupFile, JSON.stringify({ stage: "scanning",
+        note: `Scan done: ${kept.channels.length} channels, ${kept.shorts.videos} Shorts and ${kept.long.videos} long videos. The quick verdict is written next on your PC.` }, null, 2) + "\n");
+    }
     const rawDir = b ?? path.join(ROOT, ".niche-data");
     mkdirSync(rawDir, { recursive: true });
     writeFileSync(path.join(rawDir, `${slug}.json`), JSON.stringify(raw) + "\n");

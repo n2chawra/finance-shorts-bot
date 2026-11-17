@@ -84,3 +84,15 @@ test("a token sealed by the dashboard's Connect YouTube opens with its web clien
   assert.deepEqual(openToken(encryptToken("bare", SECRET), SECRET), { refreshToken: "bare", client: "desktop" });
   assert.deepEqual(tokenOf({ id: "second", refreshTokenEnc: sealed }, { SESSION_SECRET: SECRET } as NodeJS.ProcessEnv), { refreshToken: "1//web-token", client: "web" });
 });
+
+test("a setup stage from the repo only moves forward, and never past the verdict without the owner's Continue", async () => {
+  const { nextStage } = await import("../lib/setup-sync.ts");
+  assert.equal(nextStage(undefined, "scanning", false), "scanning");
+  assert.equal(nextStage("scanning", "verdict", false), "verdict");
+  assert.equal(nextStage("verdict", "research", false), "verdict");
+  assert.equal(nextStage("scanning", "build", false), "verdict");
+  assert.equal(nextStage("research", "build", true), "build");
+  assert.equal(nextStage("build", "research", true), "build");
+  assert.equal(nextStage("stopped", "build", true), "stopped");
+  assert.equal(nextStage("research", "stopped", true), "stopped");
+});
