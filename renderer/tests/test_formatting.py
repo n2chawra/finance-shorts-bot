@@ -110,3 +110,15 @@ def test_a_trillion_is_spoken_as_one() -> None:
     assert spoken(Money("USD").short(2.5e12), "USD") == "two point five trillion dollars"
     assert spoken(Money("INR").short(1e12), "INR") == "one lakh crore rupees"
     assert count(1.2e12) == "1.2T" and spoken(count(1.2e12), "USD") == "one point two trillion"
+
+
+def test_geography_units_on_screen_and_spoken():
+    """Distances, areas and heights for the geography channel (multi-channel plan, 2026-11-17)."""
+    from renderer.engine.formatting import fact_value
+    from renderer.engine.voice import spoken
+    assert fact_value(4300, "km", "USD") == "4,300 km"
+    assert fact_value(10689, "km2", "USD") == "10,689 km²"
+    assert fact_value(58, "m", "USD") == "58 m"
+    assert spoken("4,300 km", "USD") == "four thousand three hundred kilometres"
+    assert spoken("10,689 km²", "USD") == "ten thousand six hundred eighty nine square kilometres"
+    assert spoken("58 m", "USD") == "fifty eight metres"
