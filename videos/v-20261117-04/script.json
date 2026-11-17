@@ -1,0 +1,797 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61733,
+ "story": "how_they_make_money",
+ "shape": "reveal",
+ "currency": "USD",
+ "style": {
+  "palette": "ocean",
+  "genre": "pop",
+  "key": "F",
+  "bpm": 110,
+  "look": {
+   "stage": "street",
+   "header": "neon",
+   "holder": "receipt",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "question",
+ "cta": "Next time you fill up: coffee or no coffee? Comment",
+ "feed_id": "2026-11-15-gas-stations-dont-profit-on-gas",
+ "facts": [
+  {
+   "label": "Fuel's share of US convenience store sales, 2025",
+   "value": 65.0,
+   "unit": "percent",
+   "as_of": "2025-12-31",
+   "source": "NACS",
+   "url": "https://www.convenience.org/stay-current/press-releases/2026-press-releases/u-s-convenience-in-store-sales-top-%24340-billion"
+  },
+  {
+   "label": "Fuel's share of US convenience store gross profit, 2025",
+   "value": 38.8,
+   "unit": "percent",
+   "as_of": "2025-12-31",
+   "source": "NACS",
+   "url": "https://www.convenience.org/stay-current/press-releases/2026-press-releases/u-s-convenience-in-store-sales-top-%24340-billion"
+  },
+  {
+   "label": "US convenience store in-store (foodservice and merchandise) sales, 2025",
+   "value": 341.2,
+   "unit": "money_billion",
+   "as_of": "2025-12-31",
+   "source": "NACS",
+   "url": "https://www.convenience.org/stay-current/press-releases/2026-press-releases/u-s-convenience-in-store-sales-top-%24340-billion",
+   "currency": "USD"
+  },
+  {
+   "label": "Credit and debit card fees paid by US convenience stores, 2025",
+   "value": 21.3,
+   "unit": "money_billion",
+   "as_of": "2025-12-31",
+   "source": "NACS",
+   "url": "https://www.convenience.org/stay-current/press-releases/2026-press-releases/u-s-convenience-in-store-sales-top-%24340-billion",
+   "currency": "USD"
+  },
+  {
+   "label": "US convenience stores",
+   "value": 151975,
+   "unit": "count",
+   "as_of": "2026-01-01",
+   "source": "NACS/NielsenIQ",
+   "url": "https://www.convenience.org/stay-current/press-releases/2026-press-releases/u-s-convenience-in-store-sales-top-%24340-billion"
+  }
+ ],
+ "maths": [
+  {
+   "name": "fee",
+   "kind": "share",
+   "total": 21300000000,
+   "parts": 151975,
+   "facts": {
+    "total": 4,
+    "parts": 5
+   }
+  },
+  {
+   "name": "ins",
+   "kind": "share",
+   "total": 341200000000,
+   "parts": 151975,
+   "facts": {
+    "total": 3,
+    "parts": 5
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.3,
+  "words": "Its cut on *gas*?",
+  "figure": "{fact1}",
+  "tag": "Of its sales",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "At gas stations with a shop, gas is {fact1} of sales. Their cut?",
+   "events": {
+    "at": {
+     "word": "At"
+    },
+    "stations": {
+     "word": "stations"
+    },
+    "shop": {
+     "word": "shop"
+    },
+    "gas": {
+     "word": "gas"
+    },
+    "sales": {
+     "word": "sales"
+    },
+    "cut": {
+     "word": "cut"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "at"
+    },
+    {
+     "kind": "pop",
+     "at": "gas"
+    },
+    {
+     "kind": "ding",
+     "at": "sales"
+    },
+    {
+     "kind": "kaching",
+     "at": "cut"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": [
+     "a gas station forecourt at night under the canopy",
+     "close on the pump's price screen"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "shop",
+      "size": "wide"
+     },
+     {
+      "at": "cut",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "at",
+      "what": "Rohan squeezes the nozzle and the pump's fuel bar starts running"
+     },
+     {
+      "at": "shop",
+      "what": "the camera pulls back to the whole station, the shop glowing behind"
+     },
+     {
+      "at": "gas",
+      "what": "the GAS sign on the canopy flares"
+     },
+     {
+      "at": "sales",
+      "what": "a tag with the fuel share swings down from the canopy and Rohan looks up shocked"
+     },
+     {
+      "at": "cut",
+      "what": "cut close on the pump screen, a big question mark pops: what does the station keep?"
+     }
+    ],
+    "things": [
+     "gas pump",
+     "canopy with GAS sign",
+     "Rohan's car",
+     "nozzle",
+     "pump price screen",
+     "fuel share tag",
+     "little shop"
+    ],
+    "fig": {
+     "share": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "fees",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Rohan taps his card, and the card company takes about {fee_per_part} a year from the average store.",
+   "events": {
+    "rohan": {
+     "word": "Rohan"
+    },
+    "taps": {
+     "word": "taps"
+    },
+    "card": {
+     "word": "card"
+    },
+    "company": {
+     "word": "company"
+    },
+    "takes": {
+     "word": "takes"
+    },
+    "about": {
+     "word": "about"
+    },
+    "year": {
+     "word": "year"
+    },
+    "a": {
+     "word": "a"
+    },
+    "average": {
+     "word": "average"
+    },
+    "store": {
+     "word": "store"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "taps"
+    },
+    {
+     "kind": "whoosh",
+     "at": "company"
+    },
+    {
+     "kind": "kaching",
+     "at": "year"
+    }
+   ],
+   "params": {
+    "component": "Fees",
+    "place": "the card company's glass tower downtown at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "company",
+      "size": "wide"
+     },
+     {
+      "at": "year",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "taps",
+      "what": "Rohan's card taps the reader on the pump, it beeps green"
+     },
+     {
+      "at": "company",
+      "what": "the shot whips to a card company's glowing tower downtown"
+     },
+     {
+      "at": "takes",
+      "what": "coins pour from a tiny station up a chute into the tower"
+     },
+     {
+      "at": "about",
+      "what": "the tower's billboard lights up and starts counting"
+     },
+     {
+      "at": "a",
+      "what": "coins shower onto the billboard as it counts"
+     },
+     {
+      "at": "year",
+      "what": "the tower's billboard counts up to the fee per store"
+     },
+     {
+      "at": "store",
+      "what": "the tiny station at the tower's foot sags"
+     }
+    ],
+    "things": [
+     "card reader",
+     "bank card",
+     "card company tower",
+     "coin chute",
+     "billboard counter",
+     "small gas station with its shop, canopy, pump and car"
+    ],
+    "fig": {
+     "fee": "{fee_per_part}"
+    }
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "store",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So where's the money? Rohan walks in for a coffee and some chips.",
+   "events": {
+    "where's": {
+     "word": "where's"
+    },
+    "money": {
+     "word": "money"
+    },
+    "walks": {
+     "word": "walks"
+    },
+    "in": {
+     "word": "in"
+    },
+    "coffee": {
+     "word": "coffee"
+    },
+    "chips": {
+     "word": "chips"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "where's"
+    },
+    {
+     "kind": "ding",
+     "at": "walks"
+    },
+    {
+     "kind": "pop",
+     "at": "coffee"
+    },
+    {
+     "kind": "pop",
+     "at": "chips"
+    }
+   ],
+   "params": {
+    "component": "Store",
+    "place": "inside the station's shop, the coffee bar and snack aisle",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "walks",
+      "size": "medium"
+     },
+     {
+      "at": "chips",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "where's",
+      "what": "the shop's sliding door opens"
+     },
+     {
+      "at": "walks",
+      "what": "Rohan steps in past the snack aisle"
+     },
+     {
+      "at": "coffee",
+      "what": "the coffee machine pours a steaming cup into his hand"
+     },
+     {
+      "at": "chips",
+      "what": "a bag of chips drops off the shelf into his other hand"
+     }
+    ],
+    "things": [
+     "sliding door",
+     "coffee machine",
+     "coffee cup",
+     "snack aisle",
+     "bag of chips",
+     "drinks fridge",
+     "Rohan"
+    ],
+    "fig": {}
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "till",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The average store sells about {ins_per_part} a year inside the shop.",
+   "events": {
+    "the": {
+     "word": "The"
+    },
+    "average": {
+     "word": "average"
+    },
+    "sells": {
+     "word": "sells"
+    },
+    "year": {
+     "word": "year"
+    },
+    "inside": {
+     "word": "inside"
+    },
+    "shop": {
+     "word": "shop"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "the"
+    },
+    {
+     "kind": "riser",
+     "at": "sells"
+    },
+    {
+     "kind": "kaching",
+     "at": "year"
+    },
+    {
+     "kind": "pop",
+     "at": "shop"
+    }
+   ],
+   "params": {
+    "component": "Till",
+    "place": "the shop's checkout counter",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sells",
+      "size": "close"
+     },
+     {
+      "at": "shop",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "the",
+      "what": "the cashier scans Rohan's coffee, the till beeps"
+     },
+     {
+      "at": "sells",
+      "what": "the till's display starts counting up"
+     },
+     {
+      "at": "year",
+      "what": "the display lands on the average store's shop sales and the hot dog roller lights"
+     },
+     {
+      "at": "inside",
+      "what": "the drinks fridge glows"
+     },
+     {
+      "at": "shop",
+      "what": "the snack rack fills behind the cashier as the camera pulls back"
+     }
+    ],
+    "things": [
+     "checkout counter",
+     "till display",
+     "cashier",
+     "drinks fridge",
+     "snack rack",
+     "Rohan",
+     "coffee on the counter"
+    ],
+    "fig": {
+     "sales": "{ins_per_part}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "But the pumps sell the most, so they must keep the most. They don't.",
+   "events": {
+    "but": {
+     "word": "But"
+    },
+    "pumps": {
+     "word": "pumps"
+    },
+    "most": {
+     "word": "most"
+    },
+    "must": {
+     "word": "must"
+    },
+    "keep": {
+     "word": "keep"
+    },
+    "don't": {
+     "word": "don't"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "but"
+    },
+    {
+     "kind": "pop",
+     "at": "pumps"
+    },
+    {
+     "kind": "riser",
+     "at": "keep"
+    },
+    {
+     "kind": "boom",
+     "at": "don't"
+    }
+   ],
+   "params": {
+    "component": "Above",
+    "place": "the gas station from above at dawn",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "keep",
+      "size": "medium"
+     },
+     {
+      "at": "don't",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pumps",
+      "what": "the pump island lights up gold from above"
+     },
+     {
+      "at": "most",
+      "what": "cars queue up at every pump"
+     },
+     {
+      "at": "keep",
+      "what": "a big moneybag rises over the pumps"
+     },
+     {
+      "at": "don't",
+      "what": "the moneybag deflates and the light swings to the shop's roof"
+     }
+    ],
+    "things": [
+     "station roof from above",
+     "pump island",
+     "queue of cars",
+     "shop roof",
+     "moneybag",
+     "dawn light"
+    ],
+    "fig": {}
+   },
+   "transition": "zoom-through"
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Gas brings only {fact2} of the gross profit. Most of it comes from inside the store.",
+   "events": {
+    "gas": {
+     "word": "Gas"
+    },
+    "brings": {
+     "word": "brings"
+    },
+    "gross": {
+     "word": "gross"
+    },
+    "profit": {
+     "word": "profit"
+    },
+    "most": {
+     "word": "Most"
+    },
+    "comes": {
+     "word": "comes"
+    },
+    "inside": {
+     "word": "inside"
+    },
+    "store": {
+     "word": "store"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "gas"
+    },
+    {
+     "kind": "boom",
+     "at": "brings"
+    },
+    {
+     "kind": "pop",
+     "at": "comes"
+    },
+    {
+     "kind": "kaching",
+     "at": "store"
+    }
+   ],
+   "params": {
+    "component": "Pylon",
+    "place": "the station's tall roadside price sign by the highway",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "profit",
+      "size": "close"
+     },
+     {
+      "at": "store",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "gas",
+      "what": "the roadside sign's top panel flips to GAS"
+     },
+     {
+      "at": "brings",
+      "what": "the share slams onto the sign's board"
+     },
+     {
+      "at": "profit",
+      "what": "the camera pushes in on the small share"
+     },
+     {
+      "at": "most",
+      "what": "a bigger STORE panel lights up below it"
+     },
+     {
+      "at": "comes",
+      "what": "a coffee cup pops onto the STORE panel"
+     },
+     {
+      "at": "inside",
+      "what": "a bag of chips pops beside it"
+     },
+     {
+      "at": "store",
+      "what": "the STORE panel flashes bright"
+     }
+    ],
+    "things": [
+     "roadside pylon sign",
+     "price board",
+     "GAS panel",
+     "STORE panel",
+     "coffee cup icon",
+     "highway at dusk"
+    ],
+    "fig": {
+     "profit": "{fact2}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Coffee or gas: which one is it really selling you? Because",
+   "events": {
+    "coffee": {
+     "word": "Coffee"
+    },
+    "gas": {
+     "word": "gas"
+    },
+    "really": {
+     "word": "really"
+    },
+    "selling": {
+     "word": "selling"
+    },
+    "because": {
+     "word": "Because"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "coffee"
+    },
+    {
+     "kind": "pop",
+     "at": "gas"
+    },
+    {
+     "kind": "whoosh",
+     "at": "because"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "back at the pump at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "selling",
+      "size": "wide"
+     },
+     {
+      "at": "because",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "coffee",
+      "what": "Rohan lifts his coffee cup in one hand"
+     },
+     {
+      "at": "gas",
+      "what": "he lifts the nozzle in the other"
+     },
+     {
+      "at": "selling",
+      "what": "he looks from one to the other as the camera pulls back"
+     },
+     {
+      "at": "because",
+      "what": "the pump screen starts counting again, the hook's first frame"
+     }
+    ],
+    "things": [
+     "gas pump",
+     "coffee cup",
+     "nozzle",
+     "Rohan",
+     "canopy",
+     "pump screen"
+    ],
+    "fig": {}
+   },
+   "transition": "cut"
+  }
+ ],
+ "narrator": "am_michael"
+}
