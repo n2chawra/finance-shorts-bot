@@ -2,7 +2,8 @@
  * Which rows belong to which channel (pure: the dashboard's request-scoped client in lib/prisma.ts and the
  * workers' per-channel ingest in workers/lib/scoped.ts both use it). Paisa Panchayat is the default channel.
  */
-import { DEFAULT_CHANNEL } from "./channels";
+// no imports: the workers load this file in CI, where only the workers' packages are installed
+const DEFAULT_CHANNEL = "paisa-panchayat";   // lib/channels.ts DEFAULT_CHANNEL
 
 type Where = Record<string, unknown> | undefined;
 const and = (where: Where, extra: Record<string, unknown>): Record<string, unknown> => (where ? { AND: [where, extra] } : extra);
