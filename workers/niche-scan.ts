@@ -80,6 +80,9 @@ const VideoItems = z.object({ items: z.array(z.object({
   statistics: z.object({ viewCount: z.string().optional(), likeCount: z.string().optional(), commentCount: z.string().optional() }).loose(),
 }).loose()).default([]) });
 
+const CommentItems = z.object({ items: z.array(z.object({ snippet: z.object({ topLevelComment: z.object({ snippet: z.object({
+  textDisplay: z.string(), likeCount: z.number().optional() }).loose() }).loose() }).loose() }).loose()).default([]) });
+
 const chunks = <T,>(xs: T[], n: number) => Array.from({ length: Math.ceil(xs.length / n) }, (_, i) => xs.slice(i * n, i * n + n));
 
 async function resolveReferences(api: Api, refs: string[]): Promise<string[]> {
@@ -148,15 +151,29 @@ export async function scan(slug: string, req: ScanRequest, auth: Auth, quota: Qu
   }
 
   const scored = score(videos, channels, now);
+  const shortsSum = summarise(scored, "short", now), longSum = summarise(scored, "long", now);
+
+  // what viewers ask for under the hits (the topic list in their own words): 1 unit a video
+  const comments: Record<string, { text: string; likes: number }[]> = {};
+  for (const id of [...shortsSum.topIds.slice(0, 15), ...longSum.topIds.slice(0, 10)]) {
+    try {
+      const r = await api.get("commentThreads", { part: "snippet", videoId: id, order: "relevance", maxResults: "30", textFormat: "plainText" }, CommentItems);
+      comments[id] = r.items.map((c) => ({ text: c.snippet.topLevelComment.snippet.textDisplay, likes: c.snippet.topLevelComment.snippet.likeCount ?? 0 }));
+    } catch (e) {
+      // comments off on that video, or quota: the research works without them
+      console.log(`no comments for ${id}: ${e instanceof Error ? e.message.slice(0, 80) : e}`);
+    }
+  }
+
   const kept = {
     note: "Aggregates and ids from the niche scan (workers/niche-scan.ts). Titles and per-video API numbers live only on the niche-data branch.",
     slug, scannedAt: now.toISOString(), units: api.units, request: req, queries,
     channels: channels.map((c) => ({ id: c.id, subs: c.subs, reference: c.reference, foundBy: c.foundBy, videos: scored.filter((v) => v.channelId === c.id).length })),
-    shorts: summarise(scored, "short", now),
-    long: summarise(scored, "long", now),
+    shorts: shortsSum,
+    long: longSum,
     scores: Object.fromEntries(scored.filter((v) => v.outlier != null).map((v) => [v.id, [v.kind, Math.round(v.outlier! * 100) / 100, v.small ? 1 : 0]])),
   };
-  const raw = { slug, scannedAt: now.toISOString(), channels, videos: scored };
+  const raw = { slug, scannedAt: now.toISOString(), channels, videos: scored, comments };
   return { kept, raw };
 }
 

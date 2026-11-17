@@ -75,17 +75,61 @@ Commit and push (`git add channels/<slug>`), then tell the owner the verdict in 
 Do not copy titles into files on main beyond a few quoted examples in `verdict.md`: per-video
 YouTube API data lives only on the `niche-data` branch (30 days).
 
-## 3. Full research (stage `research`) — being built (step 3b)
+## 3. Full research (stage `research`, after the owner's Continue)
 
-Topic families: label every scanned title with a family (`.niche-data/labels.json`, video id → family),
-then rank them by the numbers, never by taste:
+About 2–3 hours, on the owner's PC (it has the browser). Write `setup.json` →
+`{"stage": "research", "note": "<what you are doing>"}` and push at each part, so the Channels page
+shows progress.
+
+**a. Topic families (labels by Claude, ranking by code).** Get the raw scan
+(`git show origin/niche-data:<slug>.json > .niche-data/<slug>.json`). Read every title and give each a
+topic family: what the video is *about* and *how* it is told, 6–14 families for the niche (for
+channel #1 these would be "billionaire money", "how a famous business makes money", "salary
+breakdowns", "market news", "personal budget tips"…). Label every title, not a sample: an unlabelled
+video can't count. Write `.niche-data/<slug>-labels.json` (video id → family; it holds no titles but stays
+off main with the raw data).
+
+**b. Watch the references in the browser** (the `yt-style` skill's method; nothing is downloaded).
+From `scan.json`, take the reference channels' top 5 Shorts and top 3 long videos by outlier score,
+the owner's favourite reference if named, and 10 more top Shorts and 3–5 long videos from other
+channels (`shorts.topIds`, `long.topIds`). For each, write a shot sheet to
+`channels/<slug>/research/sheets/<videoId>.json` in the `workers/lib/sheets.ts` `Sheet` format (follow
+`SHEET_PROMPT` there): every shot with its kind, characters, camera, transition, text, figure on screen
+and motion; every sentence with its job and a gist **in your own words** (never their script); the
+hook (first frame, first line ≤15 words, when the subject is named and the first figure shown or
+spoken); captions, music, SFX; the ending. Measure the sound as `yt-style` does (tempo, key, levels,
+ducking) into `research/sound.md`.
+
+**c. The numbers.**
 
 ```bash
-cd workers && npm run niche-scan -- families <slug> ../.niche-data/labels.json
+cd workers && npm run niche-research -- <slug>
 ```
 
-Then the browser study of the references (`yt-style`), the first second, comments, gaps and the
-advice (`research/advice.md`). Details follow in this file as step 3b lands.
+writes `families.json` (tiers, direction, crowding, gaps), `style.json` (style targets, picture
+language, cast or no cast, the first second) and `counts.json` (Shorts a day and long a week, each
+with its reason, fitted to the quota left across channels), and puts the most-liked comments under
+the hits in `.niche-data/<slug>-comments.txt`.
+
+**d. Read the comments** for what viewers ask for next: 15–20 topic ideas in the audience's words
+(paraphrased), plus the language and countries they show.
+
+**e. Write `channels/<slug>/research/advice.md`**, shown on the Launch review:
+
+- **Topic kinds to make**, ranked by `families.json` (core first), each with 2–3 example titles
+  of our own, the niche hits it rests on (video ids) and its share of the first month.
+- **Kinds to avoid**, with their numbers.
+- **How many to post**: `counts.json`'s numbers and reasons; the owner's own numbers from the request
+  next to them.
+- **Shorts, long or both**, from `counts.json` and the long families.
+- **The look**: the picture language and cast decision from `style.json`; anything in `notOurs`
+  (footage, a person on camera) the channel replaces, and with what (places, objects, Commons photos).
+- **The first second**: the opening rules from `style.json`'s `firstSecond` and the hooks you watched.
+- **What the verdict got wrong**, if anything (for example the demand rests on one viral channel).
+
+Also `research/report.md`: the niche report behind the advice (families table, style targets, sound,
+comments' themes, gaps, risks turned into setup rules). Then `setup.json` → `{"stage": "build"}`,
+commit (`git add channels/<slug>` — never `.niche-data/`) and push.
 
 ## 4–6. Build, samples, review — being built (steps 3c–3d)
 
