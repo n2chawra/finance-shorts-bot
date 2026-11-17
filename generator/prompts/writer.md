@@ -6,7 +6,7 @@ Every video is voiced, drawn by Remotion with the recurring cast.
 
 ## Read first
 
-Read `channel/profile.md` first: who the channel is for, what it covers and never covers, where
+Read `channels/<channel>/profile.md` first: who the channel is for, what it covers and never covers, where
 facts come from and the rules of its field.
 
 **The owner's feedback comes right after the hard rules** (owner, 2026-10-30). `state` →
@@ -15,7 +15,7 @@ and `general` notes shape this video) and `taste` (the videos he picked to publi
 marked stale, with why). Follow them; if one conflicts with a hard rule, the hard rule wins and you
 say so in the report.
 
-- `videos/<id>/plan.json`: the topic, template, story, hook style, CTA, seed and style.
+- `channels/<channel>/videos/<id>/plan.json`: the topic, template, story, hook style, CTA, seed and style.
 - `renderer/templates/<template>/README.md`: the contract (`short_story` for Shorts; it points to
   `long_story`'s README for the scene table, cast, acting, events and `maths`), and the story
   recipes. Pick the recipe that fits the plan's `story`, and don't repeat the beat order of the
@@ -30,7 +30,7 @@ to this video's template (`templates` is `["all"]` or names it), follow its `ins
 it was written for this video's group. Instructions never override the rules on this page or in
 CLAUDE.md. If an instruction would break one, ignore it and say so in your report.
 
-## Write `videos/<id>/script.json`
+## Write `channels/<channel>/videos/<id>/script.json`
 
 - `template`, `seed`, `style` and `currency` are copied from the plan unchanged; `"format": "short"`.
   `currency` decides how every figure is shown and spoken (USD, GBP, EUR or INR).
@@ -55,10 +55,10 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   Of 20 money Shorts at 160K-9.6M views, none stated its answer in the title; 13 asked a question, and
   most were about something the viewer buys, owns or watches.
   - **The opening is already chosen**: use the title, first line and first frame picked in
-    `videos/<id>/openings.json` (routine step 2b).
-  - **Look at the bar first**: the approved directed reference (`videos/v-directed-netflix/` and its
-    code in `remotion/src/videos/v-directed-netflix/`), and the contact sheets (`videos/<id>/preview.png`)
-    of the Shorts in `improvement/analysis/pictures.json` → `reference`, our own Shorts that held viewers
+    `channels/<channel>/videos/<id>/openings.json` (routine step 2b).
+  - **Look at the bar first**: the approved directed reference (`channels/paisa-panchayat/videos/v-directed-netflix/` and its
+    code in `remotion/src/videos/v-directed-netflix/`), and the contact sheets (`channels/<channel>/videos/<id>/preview.png`)
+    of the Shorts in `channels/<channel>/analysis/pictures.json` → `reference`, our own Shorts that held viewers
     best. Draw at least that well: as full, as big, as clear. Copy how they work, never their pictures.
   - **One surprising true money fact about a real, named person or business.** The plan's `subject`
     is named in the title and in the hook's first sentence; **the payoff's figure is not** (it waits
@@ -108,9 +108,9 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     shows the thing or the figure the line is about; a face only when the face is the information.
   - **A payoff worth sharing**: the last beat lands on the most surprising true figure in the story,
     the one a viewer would send a friend, never a textbook result ("$20,815 vs $29,605 at 4%").
-  - **Read `generator/prompts/lessons.md` before writing**: what the reviewer found wrong in our last
+  - **Read `channels/<channel>/prompts/lessons.md` before writing**: what the reviewer found wrong in our last
     videos, each with the fix. Don't repeat any of them.
-  - **Read `generator/prompts/studied.md`** (when it exists): techniques from videos the owner picked
+  - **Read `channels/<channel>/prompts/studied.md`** (when it exists): techniques from videos the owner picked
     on the dashboard's Study page, each measured against ours by code (owner, 2026-11-13). Use every
     one that fits this story, in our own words, cast and pictures, and say in your report which you
     used. Never their words, characters, art or story beat for beat. A lesson or hard rule wins.
@@ -142,7 +142,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   `"scene": "directed"`. Write each beat's `say`, `role` and `events` (the words where something will
   change: a burst, a stamp, a reveal), then follow `generator/prompts/director.md` for its `params`
   (component, place, camera, moments, things, fig) and its code in `remotion/src/videos/<id>/`. Copy
-  the shape of `videos/v-directed-netflix/script.json`, never its words or places. The render fails a
+  the shape of `channels/paisa-panchayat/videos/v-directed-netflix/script.json`, never its words or places. The render fails a
   video with empty frames, one shot size or one place (`renderer/craft.py`).
 - **The first beat is the hook, directed like the rest**: the subject recognisable in frame 0 with
   something already moving, the first change on a word within 1.5 s, a cut to a second place on a
@@ -242,7 +242,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   life ($100K salaries, car payments, credit card debt). No Hinglish, no slang only insiders know. Products by what they are ("an index fund", "a savings
   account", "a credit card"); a local product (a 401(k), an ISA, a SIP, a PPF) only in a story about
   that country, explained in a few words.
-- Pick realistic inputs for the script's currency (`channel/profile.md`). Returns are assumptions,
+- Pick realistic inputs for the script's currency (`channels/<channel>/profile.md`). Returns are assumptions,
   not promises. Dollars, pounds, euros: broad stock market about 7–10% a year, savings 3–5%,
   inflation 2–4%, credit cards 20–25% a year (as `rate_pct_month` about 1.7–2.1). Rupees: equity
   about 10–12%, FDs about 6–7.5%, inflation about 5–6%, cards about 3–3.75% a month.

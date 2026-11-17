@@ -17,7 +17,7 @@ Netflix remake: "I absolutely loved this… now new videos are made like this…
 same thing." Every beat of a new long video except the `end` card is `"scene": "directed"`: a place
 built for the line, someone doing something, the figure on a thing in that place, a camera that moves,
 every change on a spoken word, coded per beat in `remotion/src/videos/<id>/` on the flat kit. A long
-video is 1920×1080: the same kit and rules as the reference Short (`videos/v-directed-netflix/`),
+video is 1920×1080: the same kit and rules as the reference Short (`channels/paisa-panchayat/videos/v-directed-netflix/`),
 composed for landscape, each chapter in its own places. The shot system, the board and the scene table
 below are the older kits, kept so old videos can be re-rendered; a new video doesn't use them.
 
@@ -64,7 +64,7 @@ The render fails a long video with fewer than 5 kinds of scene, one kind in more
 composed beats, or the same device more than 3 times in a row (`renderer/craft.py` `device_problems`).
 
 Draw the story's things in `remotion/src/videos/<id>/props.tsx` (10-20 for a long video). Reference:
-`videos/L-remake-borrow/script.json` with `remotion/src/videos/L-remake-borrow/` (hook and chapter one).
+`channels/paisa-panchayat/videos/L-remake-borrow/script.json` with `remotion/src/videos/L-remake-borrow/` (hook and chapter one).
 
 ## The board in a long video (owner, 2026-11-02: "make these changes for long video also")
 
@@ -256,7 +256,7 @@ At this pace narration runs about **180 words a minute**. A 180–240 s video ne
 **540–720 words** across 36–50 beats (the range is `longLengthMinSec`–`longLengthMaxSec` in `config/settings.json`).
 
 **Shape (owner reset, 2026-10-21):** the plan's `story` is a long format from
-`improvement/research/formats.json` (`list_explained`, `once_you_understand`, `which_one_are_you`,
+`channels/<channel>/research/formats.json` (`list_explained`, `once_you_understand`, `which_one_are_you`,
 `how_they_make_money`, `rich_vs_poor`). Build it as a list: a 30-second hook that promises every
 item and teases the worst one, then one `chapter` per item (6–9), each a mini story with the cast,
 one or two computed figures and a cliffhanger line into the next chapter; a recap-and-tease every

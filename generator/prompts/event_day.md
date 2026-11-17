@@ -7,7 +7,7 @@ about what was announced and what it means for the viewer's money, shipped into 
 slot. Same standard as every video: every number computed by code or copied from the official
 source, facts reviewed, nothing shipped that fails.
 
-The research agent prepared for today. Read `improvement/events/<today>-*.json`:
+The research agent prepared for today. Read `channels/<channel>/events/<today>-*.json`:
 
 ```json
 {"date": "2026-12-04", "event": "RBI monetary policy", "announces": "repo rate",
@@ -27,7 +27,7 @@ The announcement time is in the file (RBI: about 10:00 IST). Open `where` and fi
 release. Copy the announced figure **exactly**: value, unit, the date, the release's URL. If it is
 not published yet, check again every 5 minutes until 11:30 IST; then stop and report.
 
-Add it to the research feed (`improvement/research/topics.json`) as a `breaking` topic with
+Add it to the research feed (`channels/<channel>/research/topics.json`) as a `breaking` topic with
 `facts` [the announced figure, and `before` from the file] and `templates: ["any"]`, so the number
 check can trace both facts to the feed.
 

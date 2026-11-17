@@ -5,7 +5,7 @@
 `apps/dashboard/prisma/migrations/`, applied by the ingest workflow (`prisma migrate deploy`).*
 
 The database is a **mirror and control panel**, not the source of truth for generation: routines
-can't reach it, and they work from `history/history.json` in the repo. Ingest copies shipped
+can't reach it, and they work from `channels/<channel>/history/history.json` in the repo. Ingest copies shipped
 manifests into the database; the dashboard and workers read and write it.
 
 ```mermaid

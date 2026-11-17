@@ -108,8 +108,8 @@ renderer/
   cli.py               script.json → mp4 + thumbnail + contact sheet
 generator/             run.py (the CLI the routine calls), history, variety, numbers, settings
   prompts/             routine.md, planner, writer, fact_reviewer, qa_reviewer, template_builder
-videos/<id>/           manifest.json, plan.json, script.json, run.json, render.json, thumbnail.png, preview.png
-history/               history.json (every shipped video), template_work.json
+channels/<channel>/videos/<id>/           manifest.json, plan.json, script.json, run.json, render.json, thumbnail.png, preview.png
+channels/<channel>/history/               history.json (every shipped video), template_work.json
 config/settings.json   settings + backlog for routines (written by ingest)
 examples/              one example script per template
 .github/workflows/     release-video, ingest, publish, stats

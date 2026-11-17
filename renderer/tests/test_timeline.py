@@ -9,6 +9,7 @@ import pytest
 from renderer.engine import voice
 from renderer.models import maths
 from renderer.timeline import build as tb
+from generator.channels import cpath
 
 EXAMPLES = Path(__file__).resolve().parents[2] / "examples"
 CARD = {"name": "card", "kind": "card_min_due", "amount": 60000, "rate_pct_month": 3.5, "min_due_pct": 5, "min_due_floor": 200}
@@ -228,7 +229,7 @@ def test_check_script_warns_only_for_shorts() -> None:
 
 def test_the_shorts_reference_keeps_an_event_every_few_seconds() -> None:
     """The reference Short (the casino remake, at the 2026-10-30 pace) keeps an event every 3 s."""
-    s = json.loads((EXAMPLES.parent / "videos" / "v-remake-casino" / "script.json").read_text(encoding="utf-8"))
+    s = json.loads((cpath(EXAMPLES.parent, "videos") / "v-remake-casino" / "script.json").read_text(encoding="utf-8"))
     assert tb.check_script(s)["warnings"] == []
     assert tb.TEMPOS["short"] == 1.2
 

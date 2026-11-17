@@ -11,7 +11,7 @@ Run `python -m generator.run state`. Continue only if `mode` is `template_work`.
 ## Decide what to do
 
 Read `renderer/templates/short_story/README.md` (Shorts recipes), `renderer/templates/long_story/README.md`
-(the scene table, cast, acting and numbers) and `history/template_work.json`.
+(the scene table, cast, acting and numbers) and `channels/<channel>/history/template_work.json`.
 
 - **Add** a recipe when there is a kind of finance story none of the recipes tells well (a loan
   cost breakdown, a tax-saving comparison, a goal countdown, a before/after budget). It must use

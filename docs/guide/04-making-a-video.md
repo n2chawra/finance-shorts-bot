@@ -32,7 +32,7 @@ sequenceDiagram
 
 | # | Step | Who | What happens | Fails when |
 |---|---|---|---|---|
-| 1 | **State** | code | Reads `history/history.json` and `config/settings.json`, decides the mode (video / template work / idle / paused) and lists what the planner may use | — |
+| 1 | **State** | code | Reads `channels/<channel>/history/history.json` and `config/settings.json`, decides the mode (video / template work / idle / paused) and lists what the planner may use | — |
 | 2 | **Plan** | Claude | Picks a concrete topic, a template, hook style, palette, music genre/key/tempo, seed, title, description, CTA, hashtags → `plan.json` | `check-plan` finds a variety violation (3 attempts) |
 | 3 | **Write** | Claude | Fills the template's `schema.json`: numeric *inputs* (amount, rate, years) and on-screen text with placeholders (`{answer}`, `{invested}`) → `script.json` | schema invalid |
 | 4 | **Number check** | code | `generator/numbers.py` recomputes every displayed figure from the inputs with closed-form formulas (SIP future value, lump sum, EMI, FD maturity, inflation-adjusted value) and rejects any number in the title, description or text it can't trace to an input or a computed figure | a hard-coded result or a contradiction (2 rewrites max) |
@@ -110,7 +110,7 @@ stateDiagram-v2
 
 `failed` videos are never uploaded.
 
-## Files a run leaves in `videos/<id>/`
+## Files a run leaves in `channels/<channel>/videos/<id>/`
 
 | File | Contents |
 |---|---|

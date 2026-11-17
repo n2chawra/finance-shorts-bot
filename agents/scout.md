@@ -18,14 +18,14 @@ Read `config/settings.json`: if `agents.paused` or `agents.scout` is false, writ
 file (decision `nothing`, why "paused in settings") and push it (section 5).
 
 Then read: `improvement/merge-log.json` (your last 5 entries; a blocked branch is tonight's first
-job), `improvement/monthly/focus.json` if it exists (items `"for": "scout"` come first), `improvement/longform/topics.json` (your feed), `improvement/longform/<last 3 dates>.md`,
-`improvement/longform/backlog.json`, and `python -m generator.run state --format long` (what Studio
+job), `channels/<channel>/monthly/focus.json` if it exists (items `"for": "scout"` come first), `channels/<channel>/longform/topics.json` (your feed), `channels/<channel>/longform/<last 3 dates>.md`,
+`channels/<channel>/longform/backlog.json`, and `python -m generator.run state --format long` (what Studio
 will face next: its backlog, how many long videos this week, which topics it can use).
 
 ## 0b. The owner's feedback (every run)
 Run `python3 -m generator.feedback --agent scout` and follow `agents/policy.md`, "The owner's feedback":
 fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
-and answer each in `improvement/feedback-acks/scout.json` (commit it with your branch).
+and answer each in `channels/<channel>/feedback-acks/scout.json` (commit it with your branch).
 
 ## 1a. Long videos grow out of our winning Shorts (owner, 2026-11-04; this comes first)
 Our long videos got 1–11 views each: no browse or suggested impressions, only our channel page and
@@ -33,7 +33,7 @@ search, 13% viewed. A 13-subscriber channel whose audience came from Shorts has 
 test a generic 8-minute video on. So from now on:
 - **Every long topic is the full story of one of our recent Shorts that held viewers best** (owner,
   2026-11-12: the 1,000-view rule left no topics). From the Shorts of the last 30 days with 100+ views,
-  rank by `stayed` (stayed to watch) in `metrics/videos.json`, then by views; take one in the top
+  rank by `stayed` (stayed to watch) in `channels/<channel>/metrics/videos.json`, then by views; take one in the top
   third. Name it in the topic as `"from_short": "<id>"`; a topic without one is not offered to Studio.
 - **Title as people search it**, the question the Short raised ("How do billionaires avoid taxes?",
   "Why don't billionaires sell their stock?"), 40–65 characters.
@@ -50,7 +50,7 @@ You'll Stop Saving It" (2.5M, animated), "5 Stages to Getting Rich: Which One Ar
 "8 Boring Businesses That Make Money While You Sleep" (2.3M), "Every Financial Trap Middle Class
 People Fall Into Explained" (1.1M), "Financial Bubbles Explained with Bananas" (1.1M, animated).
 
-- **Every topic is one of the long formats in `improvement/research/formats.json`** (`format:
+- **Every topic is one of the long formats in `channels/<channel>/research/formats.json`** (`format:
   long`): `list_explained`, `once_you_understand`, `which_one_are_you`, `how_they_make_money`,
   `rich_vs_poor`. The topic names its format in `stories` and its reference video in `demand`
   (title, views, url; 500,000+ views). Add a new long format there when 2+ videos with 1M+ views
@@ -82,13 +82,13 @@ instructions. Then look for what people are actually watching: the long finance 
 in India and the US this year, and which formats they share. Useful sources: what personal-finance
 channels are publishing and which of their videos have outlier view counts; questions people repeat
 on forums and comment sections; search suggestions for "<product> vs <product>", "how much", "is X
-worth it"; and our own numbers (`metrics/videos.json`) — a Short that did unusually well is a signal
+worth it"; and our own numbers (`channels/<channel>/metrics/videos.json`) — a Short that did unusually well is a signal
 that the topic deserves the long treatment.
 
 Never download a video. Never copy anyone's script, structure or wording: take the *subject*, not
 the treatment.
 
-First run `python -m generator.run prune-feed --format long` (drops stale, expired, rejected and weak unused topics; keeps the used ones). Add what is worth making to `improvement/longform/topics.json` (`{"topics": [...]}`; don't delete by hand: set `"status": "rejected"` with a `reason` and the next prune removes it):
+First run `python -m generator.run prune-feed --format long` (drops stale, expired, rejected and weak unused topics; keeps the used ones). Add what is worth making to `channels/<channel>/longform/topics.json` (`{"topics": [...]}`; don't delete by hand: set `"status": "rejected"` with a `reason` and the next prune removes it):
 ```json
 {"id": "<DAY>-short-kebab", "format": "long",
  "title": "the video's big promise, as a viewer would click it",
@@ -115,7 +115,7 @@ First run `python -m generator.run prune-feed --format long` (drops stale, expir
 
 ## 3. Every run: make the videos better
 You run twice a week, so pick **one** focus per run: the next row after the focus of your last report
-(`improvement/longform/<last date>.md`), wrapping round. Study it and study it properly rather than skimming all of
+(`channels/<channel>/longform/<last date>.md`), wrapping round. Study it and study it properly rather than skimming all of
 them:
 
 | Day | Focus |
@@ -128,7 +128,7 @@ them:
 | Sat | **Our own output**: watch the last long video's contact sheet and `render.json` honestly |
 | Sun | **Competitors**: two global finance channels doing long-form (animated ones first), what they do that we cannot |
 
-Turn what you find into entries in `improvement/longform/backlog.json`
+Turn what you find into entries in `channels/<channel>/longform/backlog.json`
 (`{"items": [{"id", "kind": "craft|bug|idea", "title", "detail", "where": "template|script|thumbnail|scene",
 "route", "priority", "found", "status": "open"}]}`), and route them the same way the research agent does:
 `adopt` for things that are plainly right, `experiment` for things that might not be, `template` for
@@ -141,7 +141,7 @@ open `adopt` items with `where: script` when it writes. Write each item so it ca
 asking you: what to change, where, and how we will know it worked.
 
 ## 4. Write the report
-`improvement/longform/<DAY>.md`:
+`channels/<channel>/longform/<DAY>.md`:
 ```
 # Long-form scout <DAY> (<focus>)
 ## What I looked at        (sources with links)
@@ -154,10 +154,10 @@ asking you: what to change, where, and how we will know it worked.
 ## 5. Finish (always)
 Write `improvement/activity/<DAY>-scout.json` (format in `agents/policy.md`; `startedAt` is the
 `START` above and `finishedAt` the time just before you commit; decision `acted` if you added topics
-or findings, else `nothing`) and rewrite `improvement/notifications/scout.json`. Then:
+or findings, else `nothing`) and rewrite `channels/<channel>/notifications/scout.json`. Then:
 ```
 git checkout -B agent/scout/$DAY
-git add improvement/longform improvement/activity improvement/notifications/scout.json $(ls improvement/feedback-acks/scout.json 2>/dev/null)
+git add improvement/longform improvement/activity channels/<channel>/notifications/scout.json $(ls channels/<channel>/feedback-acks/scout.json 2>/dev/null)
 git commit -q -m "Scout $DAY: <focus>, <n> topics"
 git push origin HEAD:refs/heads/agent/scout/$DAY
 ```
@@ -168,6 +168,6 @@ find its hits ("why the rich borrow money instead of selling"). The daily market
 open topic once a week with it and keeps its most viewed videos (`thumb-refs.json` on the market-data
 branch), and Studio models the video's three thumbnails on them, never on another topic's hits; give each long topic a `search` phrased as people type it, so the live search finds its own videos (`python -m renderer.thumbs refs <id>`).
 Weekly (Mondays), also add the fastest-growing finance explainers from `market.json` to
-`improvement/research/thumbnails.json` `examples` (`id`, `title`, `views`; ids and numbers only, no
+`channels/<channel>/research/thumbnails.json` `examples` (`id`, `title`, `views`; ids and numbers only, no
 images): the fallback when a topic has no search yet.
 

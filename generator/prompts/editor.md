@@ -18,8 +18,8 @@ owner's picks and stales of the same story or shape), `quality` (motion, craft p
 `length`, `fresh`. It is a starting point, not the answer.
 
 ## 2. Look at the top candidates
-For the top 6 (or all, if fewer), open `videos/<id>/preview.png` and `videos/<id>/thumbnail.png`
-(look at them) and read the first two beats of `videos/<id>/script.json`. Judge, in this order:
+For the top 6 (or all, if fewer), open `channels/<channel>/videos/<id>/preview.png` and `channels/<channel>/videos/<id>/thumbnail.png`
+(look at them) and read the first two beats of `channels/<channel>/videos/<id>/script.json`. Judge, in this order:
 1. **The first second**: does frame 0 and the first line stop the thumb? With the sound off, do you know which
    person, business or everyday thing it is about, and is there a question you'd stay to have answered? The
    subject named with the answer held back ("Costco sells you a hot dog for $1.50. So how does it make any
@@ -36,7 +36,7 @@ For the top 6 (or all, if fewer), open `videos/<id>/preview.png` and `videos/<id
 Never rank a video up for being newer; never down for a reason the owner overruled.
 
 ## 3. Write the ranking
-`improvement/editor/ranking.json` (replace the file each time):
+`channels/<channel>/editor/ranking.json` (replace the file each time):
 ```json
 {
   "rankedAt": "<ISO time>",
@@ -51,7 +51,7 @@ Never rank a video up for being newer; never down for a reason the owner overrul
 Every ready Short gets a row, ranks 1..n with no gaps, scores 0–10 (yours, after looking; say in
 `why` when you moved far from `rank`'s number). Then:
 ```
-git add improvement/editor/ranking.json && git commit -q -m "Editor: rank the ready Shorts" && git push origin HEAD:main
+git add channels/<channel>/editor/ranking.json && git commit -q -m "Editor: rank the ready Shorts" && git push origin HEAD:main
 ```
 The ingest workflow puts it on the dashboard: the queue follows your ranking, except the video the
 owner picked and any order he set himself, which always come first.

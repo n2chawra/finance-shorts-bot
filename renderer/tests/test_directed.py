@@ -8,9 +8,10 @@ import pytest
 
 from renderer import craft, remotion
 from renderer.timeline import build as tb
+from generator.channels import cpath
 
 REPO = Path(__file__).resolve().parents[2]
-REFERENCE = REPO / "videos" / "v-directed-netflix" / "script.json"
+REFERENCE = cpath(REPO, "videos") / "v-directed-netflix" / "script.json"
 
 
 def reference() -> dict:

@@ -29,14 +29,14 @@ if it still is not there, stop and report it. If `setup-cloud.sh` fails, stop an
 line: a long video cannot be drawn without it.
 
 Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused` or `agents.studio`
-false. Read `improvement/merge-log.json` (your last 3 entries) and `improvement/longform/backlog.json`:
+false. Read `improvement/merge-log.json` (your last 3 entries) and `channels/<channel>/longform/backlog.json`:
 every open item with `route: adopt` and `where: script` is a rule for tonight's script, on top of the
 README. You never change code; scene, design and recipe items are the improver's.
 
 ## 0b. The owner's feedback (every run)
 Run `python3 -m generator.feedback --agent studio` and follow `agents/policy.md`, "The owner's feedback":
 fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
-and answer each in `improvement/feedback-acks/studio.json` (commit it with your branch).
+and answer each in `channels/<channel>/feedback-acks/studio.json` (commit it with your branch).
 
 ## 1. Decide whether to make one
 ```
@@ -50,7 +50,7 @@ make one, using `next_id` as the id for the whole run.
 notification for the owner — do not invent a topic, Scout's research is what makes these good.
 
 ## 2. Plan
-Write `videos/<id>/plan.json`, following `generator/prompts/planner.md` for the fields, with:
+Write `channels/<channel>/videos/<id>/plan.json`, following `generator/prompts/planner.md` for the fields, with:
 - `template`: `long_story`
 - `topic`: `{"title", "category", "feed_id": "<the topic's id>"}` from the feed topic
 - `story`: the topic's long format (`formats` in `state`: `list_explained`, `once_you_understand`,
@@ -58,7 +58,7 @@ Write `videos/<id>/plan.json`, following `generator/prompts/planner.md` for the 
   video `{title, views, url}`. `check-plan` fails without both (owner reset, 2026-10-21).
 - **The topic expands a winning Short** (owner, 2026-11-12): it must carry `from_short` (one of our
   Shorts of the last 30 days in the top third by stayed to watch, with 100+ views). If the feed has none, pick that Short yourself from
-  `metrics/videos.json`. The first 30 s restate that Short's hook and promise the full answer; the
+  `channels/<channel>/metrics/videos.json`. The first 30 s restate that Short's hook and promise the full answer; the
   description's first line links it ("The 30-second version: https://youtube.com/shorts/<its YouTube id>").
   3–4 minutes (`longLengthMinSec`–`longLengthMaxSec`, 180–240 s since 2026-11-12). After shipping, raise an owner notification:
   "In YouTube Studio open the Short <title> → Related video → pick <this long video>" (the API can't set it).
@@ -91,7 +91,7 @@ not a title card. The render fails a video with empty frames, one shot size or o
 
 Then read `renderer/templates/long_story/README.md` and `examples/long_story.json`: the README is
 the contract (beats, scenes, cast, acting, events, numbers) and the example is a video the owner
-approved. Write `videos/<id>/script.json` with `"template": "long_story"`, `"format": "long"`,
+approved. Write `channels/<channel>/videos/<id>/script.json` with `"template": "long_story"`, `"format": "long"`,
 and the plan's `seed` and `style`.
 
 A long video is a **story with the recurring cast**, told in beats. Start from the topic's
@@ -113,7 +113,7 @@ the viewer *see* happen?
 - **On screen: keywords and figures only.** Never the narration word for word.
 - **Numbers** come only from `maths` (`card_min_due`, `emi`, `sip`, `lumpsum`) through
   placeholders like `{card_total_paid}` and `"@card.balance"`, in the plan's `currency` (USD unless
-  the story is about one country; see `channel/profile.md` for realistic inputs per currency). Never
+  the story is about one country; see `channels/<channel>/profile.md` for realistic inputs per currency). Never
   type a digit or a currency sign into any text.
   State the simplification on the end card (`assumption`).
 - **Thumbnails**: three, coded for this video from its own topic's hits, rated, one picked (below).
@@ -136,7 +136,7 @@ python -m renderer.thumbs refs <id>      # THIS topic's most viewed videos: the 
 ```
 Open the sheet it prints (a PNG: look at it). Only this topic's videos count: never another topic's hits or the
 channel-wide examples (lint fails a `references` id that isn't on the sheet). If the sheet is off topic, set a better
-`search` on the long topic in `improvement/longform/topics.json` and run it again. Find the **three different
+`search` on the long topic in `channels/<channel>/longform/topics.json` and run it again. Find the **three different
 patterns** the hits use (the picture, the face, the words, the colours) and code one thumbnail per pattern with our
 cast and this video's props, from `remotion/src/studio/thumb.tsx`: `remotion/src/videos/<id>/Thumb.tsx` (A),
 `ThumbB.tsx` and `ThumbC.tsx`. Fill `thumbnail` (A) and `thumbnails` ([B, C]) as the long_story README says, each with
@@ -180,14 +180,14 @@ first long video was rendered three times, twice for problems the stills already
 ## 6. QA review (a subagent with fresh context)
 Spawn a second subagent: the video id, and the instruction to read `generator/prompts/qa_reviewer.md`
 and follow it exactly, on the stills from step 5.1. For a long video it must also look at
-`videos/<id>/thumbnail.png` on its own (is it readable small? does it promise what the video
-delivers?) and at `videos/<id>/preview.png` (a still every 5 seconds: cut-off or tiny text,
+`channels/<channel>/videos/<id>/thumbnail.png` on its own (is it readable small? does it promise what the video
+delivers?) and at `channels/<channel>/videos/<id>/preview.png` (a still every 5 seconds: cut-off or tiny text,
 overlaps, an empty frame, the same picture too long).
 
 Fix what it names and render the stills again. **Two rounds at most**.
 
 ## 7. Ship
-Put the chapter timestamps into the description (`chapters` in `videos/<id>/render.json`, in
+Put the chapter timestamps into the description (`chapters` in `channels/<channel>/videos/<id>/render.json`, in
 seconds; YouTube needs the first one to be `0:00`). Then:
 ```
 python -m generator.run ship <id> --commit --push --media-branch
@@ -202,17 +202,17 @@ After the limits above (two plan attempts, two rewrites, two re-renders):
 ```
 python -m generator.run fail <id> --reason "<what went wrong, precisely>"
 ```
-Then add what you learned to `improvement/longform/backlog.json` so Scout can act on it, and say so
+Then add what you learned to `channels/<channel>/longform/backlog.json` so Scout can act on it, and say so
 in your activity entry. A failed long video is not a disaster — shipping a bad one is.
 
 ## 9. Finish (always)
 Write `improvement/activity/<DAY>-studio.json` (format in `agents/policy.md`; `startedAt` is the
 `START` above, `finishedAt` just before the commit) and rewrite
-`improvement/notifications/studio.json`. If you shipped, section 7 already committed the video; add
+`channels/<channel>/notifications/studio.json`. If you shipped, section 7 already committed the video; add
 the reports on a branch:
 ```
 git checkout -B agent/studio/$DAY
-git add improvement/activity improvement/notifications/studio.json improvement/longform $(ls improvement/feedback-acks/studio.json 2>/dev/null)
+git add improvement/activity channels/<channel>/notifications/studio.json improvement/longform $(ls channels/<channel>/feedback-acks/studio.json 2>/dev/null)
 git commit -q -m "Studio $DAY: <video id or 'no video'>, <one line>"
 git push origin HEAD:refs/heads/agent/studio/$DAY
 ```

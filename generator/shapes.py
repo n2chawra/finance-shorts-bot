@@ -19,7 +19,7 @@ import re
 from pathlib import Path
 
 from .settings import ROOT
-from .channels import cpath
+from .channels import cpath, rel
 
 FILE = Path("improvement") / "research" / "shapes.json"
 WINDOW = 3          # not the same shape in the last 3 videos of a format
@@ -68,7 +68,7 @@ def check_plan(plan: dict, entries: list[dict], root: Path = ROOT) -> list[str]:
     if not known:      # no library in this checkout (tests): nothing to check against
         return []
     if shape is None:
-        return [f"plan needs `shape`: how the beats are arranged, one of {', '.join(usable)} ({FILE.as_posix()}), "
+        return [f"plan needs `shape`: how the beats are arranged, one of {', '.join(usable)} ({rel(ROOT, FILE)}), "
                 f"or a new one {{id, name, beats, why}} when none fits the topic"]
     out = []
     if isinstance(shape, dict):

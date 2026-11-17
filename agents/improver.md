@@ -25,10 +25,10 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 `agents.improver` false.
 
 Read: `improvement/merge-log.json` (your last 5 entries; if the last was blocked, fixing that reason
-is tonight's first job), `improvement/monthly/focus.json` if it exists (the monthly review's items
-`"for": "improver"` rank above other proposals of the same priority), `improvement/journal.md` (last 20 lines), `improvement/experiments.json`,
-`config/experiments.json`, new proposals in `improvement/research/proposals.json`, open items in
-`improvement/longform/backlog.json`, the latest research and Scout reports, `metrics/runs.json`
+is tonight's first job), `channels/<channel>/monthly/focus.json` if it exists (the monthly review's items
+`"for": "improver"` rank above other proposals of the same priority), `channels/<channel>/journal.md` (last 20 lines), `channels/<channel>/experiment-log.json`,
+`channels/<channel>/experiments.json`, new proposals in `channels/<channel>/research/proposals.json`, open items in
+`channels/<channel>/longform/backlog.json`, the latest research and Scout reports, `channels/<channel>/metrics/runs.json`
 (last 7 days). Then run:
 ```
 python -m improvement.evaluate
@@ -44,7 +44,7 @@ an answer tonight, before anything else:
   or the scene code. One commit per note, tests passing.
 - Part of it in another agent's lane (a dashboard page, topics, a data bug): do your part, answer
   `partly` with `to` that agent. None of it yours: `handed`. `needs owner` only for what no agent may do.
-Record every answer in `improvement/feedback-acks/improver.json` (format in the policy; keep earlier
+Record every answer in `channels/<channel>/feedback-acks/improver.json` (format in the policy; keep earlier
 answers). Picks and stales are not tasks: read them as the owner's taste, and when 2+ stales share a
 reason, fix that reason like a note.
 
@@ -52,7 +52,7 @@ reason, fix that reason like a note.
 For each experiment the evaluator marks:
 - **keep**: make the "on" behaviour the default. Remove the `self.flag("<id>")` branches (keep the
   on-path) or fold the prompt note into `generator/prompts/planner.md`/`writer.md`. Set its status to
-  `kept` in both `config/experiments.json` and `improvement/experiments.json`, with the result
+  `kept` in both `channels/<channel>/experiments.json` and `channels/<channel>/experiment-log.json`, with the result
   (ratio, confidence, n). Proposal status → `kept`.
 - **revert**: delete the on-path code / prompt note; status `reverted`; proposal → `reverted`.
 - **extend**: set `"extended": true` and `"maxDays": <days so far + 14>`; nothing else.
@@ -73,7 +73,7 @@ If the evaluator lists recurring failures (the same QA/fact reason twice in 3 da
 `python -c "import json; from renderer.timeline.build import check_script; check_script(json.load(open('examples/<name>.json')))"`.
 These are fixes, not experiments. A failure in a scene (`remotion/src/scenes/`, the cast, the
 camera) is yours to fix too: reproduce it on the video's `timeline.json` with
-`python -m renderer.remotion videos/<id>/timeline.json --out /tmp/<id> --stills-only` and check the
+`python -m renderer.remotion channels/<channel>/videos/<id>/timeline.json --out /tmp/<id> --stills-only` and check the
 stills before and after.
 
 ## 3. Story recipes (rules, not taste)
@@ -83,16 +83,16 @@ reweight or retire; variety comes from the story, the recipe and the beats.
 - **Add or improve a recipe** when research's best idea is a new format, or the evaluator shows a
   recipe underperforming: follow `generator/prompts/template_builder.md`. Write the recipe into
   the README, add `examples/<recipe>.json` that passes the script check and the number check, and
-  record it as an experiment in `improvement/experiments.json` with area `template`. At most one
+  record it as an experiment in `channels/<channel>/experiment-log.json` with area `template`. At most one
   two new recipes a week.
 - **Formats live or die by % viewed** (owner reset, 2026-10-21). Read the evaluator's ranking `by
-  story` (each Short's `story` is its format from `improvement/research/formats.json`): a format
+  story` (each Short's `story` is its format from `channels/<channel>/research/formats.json`): a format
   with 3+ Shorts whose mean % viewed is under the channel median for two weeks gets
   `"retired": true` and a `reason` in `formats.json` (the planner then skips it); one well above
   the median gets a note in research's next report to find more topics for it. Retention is the
   number that makes YouTube show a Short to more people; views follow it.
 
-- **Shapes live or die by stayed-to-watch and % viewed too** (`improvement/research/shapes.json`,
+- **Shapes live or die by stayed-to-watch and % viewed too** (`channels/<channel>/research/shapes.json`,
   owner 2026-10-30). Read the evaluator's ranking `by shape`: a `trial` shape with 2+ Shorts at or
   above the channel median becomes `active`; any shape with 3+ Shorts under the median for two
   weeks gets `"status": "retired"` and a `reason`. Never delete one: retired shapes keep the history
@@ -102,18 +102,18 @@ reweight or retire; variety comes from the story, the recipe and the beats.
 Research sorts its findings. Act on them in this order, highest priority first:
 - `adopt` (proven, required or a plain fix): implement it directly tonight, no A/B flag, if the
   guard allows the files and the tests pass. Take up to **five** adopt items a night, highest
-  priority first, each its own commit, running the tests after each. Record it in `improvement/experiments.json` with
+  priority first, each its own commit, running the tests after each. Record it in `channels/<channel>/experiment-log.json` with
   `"status": "adopted"` and the evidence, so the evaluator's attribute ranking can still show its
   effect later. If you doubt the evidence is that strong, treat it as `experiment` and say why.
 - `template` with priority `breaking` or `high`: this is tonight's recipe work (section 3). A new
   format that a whole class of stories needs beats a small craft experiment.
 - `experiment`: the A/B process below.
-- `video` proposals are not yours: research puts those in `improvement/research/topics.json`, and the
+- `video` proposals are not yours: research puts those in `channels/<channel>/research/topics.json`, and the
   video run uses them. If you find one in `proposals.json`, move it there.
 Set each proposal's `status` (`adopted`, `testing`, `building`, `done`, `rejected` with a `reason`).
 
 **Long videos too.** Scout routes long-video findings the same way in
-`improvement/longform/backlog.json` (`route`, `priority`, `where`). They are yours on the same terms:
+`channels/<channel>/longform/backlog.json` (`route`, `priority`, `where`). They are yours on the same terms:
 recipes in `renderer/templates/long_story/README.md`, scenes and design in `remotion/src` (long
 videos use the `LONG` frame), experiments with `"templates": ["long_story"]`. Leave items with
 `where: script` and route `adopt` to Studio, which follows them when it writes. Weigh a long-video
@@ -151,17 +151,17 @@ Never weaken the gates that keep them honest: the story checks, `picture_problem
 experiment is waiting only for data (Studio paused, or long videos not public).
 
 - **Studies (owner, 2026-11-13):** a challenger whose `from` is `study <date>` came from a video the owner
-  picked on the Study page (`improvement/study/<id>.json` has both shot sheets and the measured
+  picked on the Study page (`channels/<channel>/study/<id>.json` has both shot sheets and the measured
   difference). Test it like any other. When it needs something our kit can't draw yet (a style, a
   camera move, a transition), build that behind a flag first and say so in your report.
 
 ## 4. The weekly loop: start the next Shorts challenger (owner, 2026-11-12)
 Shorts get **one** running experiment, never more (`scripts/guard.py` blocks a second). When none is
 running (a verdict closed the last one in section 1, tonight or earlier), start the next one tonight:
-- Read `improvement/cycle/backlog.json`. Cycles alternate by `kind`: after a `first-second`
+- Read `channels/<channel>/cycle/backlog.json`. Cycles alternate by `kind`: after a `first-second`
   challenger (judged on stayed to watch) comes a `look` one (judged on held after the hook), and back.
   If `stayedByCycle` shows the last three cycles all under 45% stayed to watch, take a `format` one.
-  If the last six were, raise one notification in `improvement/notifications/improver.json`: "Six
+  If the last six were, raise one notification in `channels/<channel>/notifications/improver.json`: "Six
   weekly cycles under 45% stayed to watch: change the niche or stop?", and keep testing.
 - Of that kind, take the top entry. An owner note (feedback) that asks for a recipe change goes on the
   list at the top of its kind first; answer the note `testing` with the cycle number.
@@ -169,7 +169,7 @@ running (a verdict closed the last one in section 1, tonight or earlier), start 
   (`{"cycle", "champion": <stayed of the off side>, "challenger": <on side>, "verdict"}` from the
   evaluator), move the entry to `history` with its verdict, and set `running` and `cycle`.
 - **Keep the recipe file current**: when a verdict is `keep`, fold the change into
-  `improvement/cycle/recipe.json` too (add the rule, or replace the one it changes, with `since` set to
+  `channels/<channel>/cycle/recipe.json` too (add the rule, or replace the one it changes, with `since` set to
   today and `from: "cycle <n>"`; append `{"cycle", "date", "id", "verdict", "change"}` to `changes`;
   set `updatedAt`). A revert or abandon adds only the `changes` entry. The dashboard's Growth loop page
   shows this file as the champion recipe.
@@ -177,12 +177,12 @@ running (a verdict closed the last one in section 1, tonight or earlier), start 
   `generator/prompts/writer.md` (the fixed recipe section) or its code path into the default, as in
   section 1, and say so in the journal. The next challenger is measured against it.
 - Look and motion challengers come from the auditor's weekly picture tally
-  (`improvement/analysis/pictures.json`): prefer the fix for the kind of picture that loses the most viewers.
+  (`channels/<channel>/analysis/pictures.json`): prefer the fix for the kind of picture that loses the most viewers.
 - **Tell the owner, every cycle**: when a verdict lands, raise one `info` notification (key
-  `cycle-<n>`) in `improvement/notifications/improver.json`: what was tested, the verdict with its two
+  `cycle-<n>`) in `channels/<channel>/notifications/improver.json`: what was tested, the verdict with its two
   numbers (champion vs challenger), what starts next and why, and stayed to watch this week vs last.
   It needs no answer; it is the owner's weekly digest on the dashboard's Notifications page.
-- When the auditor's `improvement/analysis/pictures.json` names a `worst` look, palette, genre or
+- When the auditor's `channels/<channel>/analysis/pictures.json` names a `worst` look, palette, genre or
   set, take it out of the rotation (`generator/looks.py` or the style rotation) and say so in the
   journal: it already lost on a dozen Shorts, it needs no test.
 - A challenger needs no code when its whole difference is in the script: a `prompt` with an `on` and an
@@ -200,13 +200,13 @@ challenger list instead of being applied.
      In Python (music, SFX, mix): branch on `script["experiments"].get("<id>") == "on"`.
      Check it on a sample with `--stills-only` (see section 2), never a full render, and run
      `(cd remotion && npm run typecheck && npm test)`.
-2. Register it in `config/experiments.json`:
+2. Register it in `channels/<channel>/experiments.json`:
    `{"id": "<kebab>", "area": "…", "format": "short" | "long", "status": "running", "startedAt": "<DAY>",
    "templates": ["short_story"] or ["long_story"], "share": 0.5, "prompt": {…} (optional),
    "proposal": "<proposal id>", "description": "…", "cycle": <n>}`. The evaluator judges a Short's look,
    motion and sound on held after the hook, everything else on stayed to watch, and every long-video
    change on average % viewed; add `"metric"` only to override that. Long videos are few (2 a week): give a long
-   experiment `"minPerArm": 4` and `"maxDays": 42`. Record it in `improvement/experiments.json`
+   experiment `"minPerArm": 4` and `"maxDays": 42`. Record it in `channels/<channel>/experiment-log.json`
    with the same id plus `"guard": "qa_failures"`, `"minPerArm"`, `"maxDays"`, `"hypothesis": "…"`.
 3. `python -m pytest renderer generator improvement -q` must pass.
 4. Proposal status → `testing`.
@@ -215,7 +215,7 @@ challenger list instead of being applied.
 If research found a Claude capability that improves the pipeline within your lane (prompt
 structure, how subagents are used in `generator/prompts/*.md` except `routine.md`), you may apply it
 as tonight's change. Anything needing the owner (routine model, schedule, `routine.md`) goes into
-`improvement/notifications/improver.json` as an `info` item with exact steps.
+`channels/<channel>/notifications/improver.json` as an `info` item with exact steps.
 
 ## 6. Otherwise wait
 If nothing matured and nothing qualifies: decision `waited`, `nextCheck` = the earliest date an
@@ -223,21 +223,21 @@ experiment can mature (the evaluator says how many videos are missing; two uploa
 video per arm per day).
 
 ## 7. Sundays: weekly summary
-Write `improvement/weekly/<YYYY>-W<week>.md`: what changed, what was kept or reverted (effect sizes),
+Write `channels/<channel>/weekly/<YYYY>-W<week>.md`: what changed, what was kept or reverted (effect sizes),
 what's running, the recipes added or changed, the best and worst performers, and next week's focus.
 
 ## 8. Finish (always)
-Run `python -m generator.impact` (rewrites `improvement/weekly/impact.json`, kept for the agents; the dashboard stopped showing it on 2026-11-12:
+Run `python -m generator.impact` (rewrites `channels/<channel>/weekly/impact.json`, kept for the agents; the dashboard stopped showing it on 2026-11-12:
 Shorts per week on views, % viewed, stayed-to-watch and view time, and each landed change before/after;
-owner, 2026-11-10) and put its latest week in your findings. Then append one line per decision to `improvement/journal.md`:
+owner, 2026-11-10) and put its latest week in your findings. Then append one line per decision to `channels/<channel>/journal.md`:
 `<DAY> <acted|waited>: <what> because <why>. Re-check <date>.`
 Write `improvement/activity/<DAY>-improver.json` (policy.md format: findings = the evaluator's key
 numbers; changes = what you changed with the experiment id) and rewrite
-`improvement/notifications/improver.json`. Then:
+`channels/<channel>/notifications/improver.json`. Then:
 ```
 git checkout -B agent/improver/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add -A generator renderer examples remotion/src remotion/test config/experiments.json improvement
+git add -A generator renderer examples remotion/src remotion/test channels/<channel>/experiments.json improvement
 git commit -q -m "Improver $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/improver/$DAY
 ```

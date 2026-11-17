@@ -21,6 +21,7 @@ from pathlib import Path
 
 from PIL import Image
 
+from generator.channels import cpath
 from renderer import advice
 from renderer.engine.mux import find_ffmpeg
 from renderer.engine.preview import contact_sheet
@@ -72,7 +73,7 @@ def custom_problems(video_id: str) -> list[str]:
         if "tl.sources" in code and "showsSource" not in code:
             out.append(f"{f.name} prints tl.sources on every one of its beats: print it only when showsSource(p) "
                        f"(import {{ showsSource }} from \"../../studio/source\"), so the source shows once a video")
-    script = REMOTION.parent/"videos"/video_id/"script.json"
+    script = cpath(REMOTION.parent, "videos")/video_id/"script.json"
     if script.is_file():
         try:
             beats = json.loads(script.read_text(encoding="utf-8")).get("beats") or []

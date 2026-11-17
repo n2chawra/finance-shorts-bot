@@ -6,7 +6,7 @@ writer's storyboard.
 
 ## Read first
 
-Read `channel/profile.md` first: who the channel is for, what it covers and never covers, where
+Read `channels/<channel>/profile.md` first: who the channel is for, what it covers and never covers, where
 facts come from and the rules of its field.
 
 **The owner's feedback comes right after the hard rules** (owner, 2026-10-30). `state` →
@@ -81,7 +81,7 @@ viewers watched only 20–35% of them. What gets millions in finance is curiosit
 of being cheated: rich vs poor, what the rich know, traps, how companies really make money, what a
 salary really leaves you, which money level you are on.
 
-1. **Pick a format from `formats`** (in `state`; `improvement/research/formats.json`). Each has a hook
+1. **Pick a format from `formats`** (in `state`; `channels/<channel>/research/formats.json`). Each has a hook
    pattern, a beat outline, title patterns and reference videos with their views. Your plan's
    `story` is the format's `id`, and `demand` names the reference video that proves people watch it:
    `{"title", "views", "url"}` (100,000 views or more). `check-plan` fails without both.
@@ -148,7 +148,7 @@ salary really leaves you, which money level you are on.
 - **Story** (`story`): the format id (above). `allowed_stories` lists what may come next.
 - **Template:** one from `allowed_templates` (`short_story` for Shorts).
 - **Currency** (`currency`): `USD` for every global video; `INR` for a local India one, `USD` for a
-  local US one (`GBP`/`EUR` only for a story about the UK or Europe); see `channel/profile.md`.
+  local US one (`GBP`/`EUR` only for a story about the UK or Europe); see `channels/<channel>/profile.md`.
 - **Topic:** a specific, concrete situation, not a theme. "Rich vs poor: what each does with a
   ₹20,000 raise" is a topic; "saving money" is not. Its `category` must not be in
   `blocked_categories`, and the topic must not resemble anything in `recent_topics`.
@@ -195,7 +195,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
 
 ## Write
 
-Create `videos/<next_id>/plan.json`:
+Create `channels/<channel>/videos/<next_id>/plan.json`:
 
 ```json
 {

@@ -35,7 +35,7 @@ Event-driven jobs also run whenever something happens:
 |---|---|---|
 | A routine pushes `media/<id>` | `release-video.yml` creates Release `video-<id>`, deletes the branch | ~20 s |
 | Release workflow finishes | `ingest.yml` adds the video to the database as `queued` | ~1 min |
-| Any push to `main` touching `videos/`, `history/`, `renderer/templates/` or the Prisma schema | `ingest.yml` (shows failed videos and template runs, applies migrations) | ~1 min |
+| Any push to `main` touching `channels/<channel>/videos/`, `channels/<channel>/history/`, `renderer/templates/` or the Prisma schema | `ingest.yml` (shows failed videos and template runs, applies migrations) | ~1 min |
 | Dashboard page open | refreshes every 30 s; reads live view counts from YouTube at most once a minute | live |
 
 ## Why one run makes all three videos

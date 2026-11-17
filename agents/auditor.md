@@ -22,7 +22,7 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 `agents.auditor` false. Read:
 - `improvement/merge-log.json`: your last 5 entries. A blocked branch is tonight's first job: fix the
   reason it gives.
-- `metrics/data-audit.json`: written around 19:00 IST (cron 13:53, GitHub starts it late) by the data-audit workflow (dashboard vs YouTube vs
+- `channels/<channel>/metrics/data-audit.json`: written around 19:00 IST (cron 13:53, GitHub starts it late) by the data-audit workflow (dashboard vs YouTube vs
   database). Check `generatedAt` is from tonight; if it is older than 6 h, say so in your activity
   and an owner notification (the workflow failed), and skip duty 1.
 - `improvement/auditor/backlog.json` (`{"items": [...]}`) and `improvement/auditor/state.json`
@@ -33,10 +33,10 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 ## 0b. The owner's feedback (every run)
 Run `python3 -m generator.feedback --agent auditor` and follow `agents/policy.md`, "The owner's feedback":
 fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
-and answer each in `improvement/feedback-acks/auditor.json` (commit it with your branch).
+and answer each in `channels/<channel>/feedback-acks/auditor.json` (commit it with your branch).
 
 ## 1. Data bugs (when the audit has errors or warnings)
-Each issue in `metrics/data-audit.json` has a `kind`, `severity` and `detail`; `videos[]` holds the
+Each issue in `channels/<channel>/metrics/data-audit.json` has a `kind`, `severity` and `detail`; `videos[]` holds the
 three sources side by side. For every `error` and `warning`:
 1. Find the cause in code. The numbers flow: YouTube → `workers/stats.ts` (Analytics into VideoStat)
    and `apps/dashboard/src/lib/live-stats.ts` (live counters on Upload) → `apps/dashboard/src/lib/store.db.ts`
@@ -46,7 +46,7 @@ three sources side by side. For every `error` and `warning`:
 3. If it is not a code bug (YouTube removed spam views, a video was made private by hand, the stats
    job simply hasn't run yet), write that in your report with the evidence and do nothing.
 4. If only the owner can fix it (a missing link, an expired token), it belongs in
-   `improvement/notifications/auditor.json` (shape `{"notifications": [{key, severity, title, detail, fix}]}`) with exact steps (the audit already raises `unlinked`).
+   `channels/<channel>/notifications/auditor.json` (shape `{"notifications": [{key, severity, title, detail, fix}]}`) with exact steps (the audit already raises `unlinked`).
 `info` issues are expected (live counts refresh only while the dashboard is open); ignore them unless
 the same video is `info` for 3 audits in a row.
 You can't change `workers/data-audit.ts`, `workers/lib/data-audit.ts` or its tests: if a rule there is
@@ -90,11 +90,11 @@ Never refactor for taste alone, never reformat whole files, never change public 
 (manifests, script JSON, API responses) without updating every user and test.
 
 ## 3b. Analytics analysis (every night, ~10 minutes; owner 2026-11-03)
-The dashboard's Analytics page shows your analysis as "AI analysis". Read `metrics/analytics.json`
+The dashboard's Analytics page shows your analysis as "AI analysis". Read `channels/<channel>/metrics/analytics.json`
 (per video: engaged ratio, watch time, CTR, hook hold, `drops` = the steepest falls in viewers matched
 to the spoken line, traffic, countries, searches, recent comments; per channel: 28/90-day breakdowns
-and `channelDays`) and `metrics/videos.json` (48 h views, % viewed, story and style per video). Then:
-- `improvement/analysis/videos.json` `{"videos": [...]}`: one entry for every video published 2 to
+and `channelDays`) and `channels/<channel>/metrics/videos.json` (48 h views, % viewed, story and style per video). Then:
+- `channels/<channel>/analysis/videos.json` `{"videos": [...]}`: one entry for every video published 2 to
   14 days ago (keep older entries as they are, drop ones past 60 days):
   `{"videoId", "verdict": "hit"|"okay"|"miss", "headline", "why": [{"text", "metric", "tab"}],
   "viewersSaid": ["…"], "next": "…", "writtenAt": ISO}`. Verdict against the median of its format
@@ -102,7 +102,7 @@ and `channelDays`) and `metrics/videos.json` (48 h views, % viewed, story and st
   the files** (the % viewed and the median, the drop and its line, the traffic share, the CTR);
   `viewersSaid` sums up the comments' themes (questions, doubts, requests; never names; empty if none);
   `next` is one concrete change for the next video.
-- `improvement/analysis/channel.json`, rewritten each Monday (or when missing):
+- `channels/<channel>/analysis/channel.json`, rewritten each Monday (or when missing):
   `{"headline", "working": [...], "notWorking": [...], "audience": [...], "recommendations":
   [{"do", "because"}], "writtenAt"}`, evidence items as above. `working`/`notWorking` compare groups
   (story format, hook style, voice, slot, length) with at least 3 videos each; `audience` is countries,
@@ -110,10 +110,10 @@ and `channelDays`) and `metrics/videos.json` (48 h views, % viewed, story and st
 - `tab` is where the number is on the page: `overview`, `reach`, `engagement`, `audience`, `works`.
 - **The animation tally (the weekly loop, owner 2026-11-12), each Sunday or when missing:** viewers never
   say they dislike the look, so read it from where they leave. For every Short of the last 21 days with
-  `drops` and `heldAfterHook` in `metrics/videos.json`/`analytics.json`: open its `videos/<id>/script.json`
+  `drops` and `heldAfterHook` in `channels/<channel>/metrics/videos.json`/`analytics.json`: open its `channels/<channel>/videos/<id>/script.json`
   and `timeline.json`, and for each drop note what was on screen in that beat (scene type, how many
   things, cast on screen or not, a text card or a drawn or real object, camera size, the look and
-  palette from the style). Write `improvement/analysis/pictures.json`
+  palette from the style). Write `channels/<channel>/analysis/pictures.json`
   `{"writtenAt", "lossByPicture": [{"kind", "drops", "shorts", "avgDrop"}], "options": [{"by": "look" |
   "palette" | "genre" | "set", "value", "n", "heldAfterHook"}], "worst": "…", "reference": ["<id>", …]}`:
   - `lossByPicture`: kinds of picture ranked by how many viewers they lose (at least 3 Shorts a kind).
@@ -122,7 +122,7 @@ and `channelDays`) and `metrics/videos.json` (48 h views, % viewed, story and st
     the improver retires it from the rotation without a test.
   - `reference`: the 3 Shorts of the last 21 days with the best held after the hook (100+ views). The
     writer and the QA reviewer use their contact sheets as the bar.
-  Then add one `look` challenger to `improvement/cycle/backlog.json` for the kind of picture that
+  Then add one `look` challenger to `channels/<channel>/cycle/backlog.json` for the kind of picture that
   loses the most viewers (`{"id", "kind": "look", "area", "metric": "heldAfterHook", "from": "auditor
   <date>", "test", "why"}` with the numbers in `why`), unless one for it is already listed.
 Rules: never invent a number or a quote; say "too few videos" rather than guess; plain words, no jargon.
@@ -134,7 +134,7 @@ The improver and planner read these files too, so a recommendation must be somet
   file branch 1 touches; push it with `git push origin HEAD:refs/heads/agent/auditor/$DAY-2`.
 Both must pass the quick checks above. The guard allows you `generator/`, `renderer/`, `examples/`,
 `apps/dashboard/src` (including `lib/live-stats.ts`), `apps/dashboard/e2e`, `workers/` and your own
-`improvement/auditor/` and `improvement/analysis/` files, at most 1,200 changed lines per branch and 2 merges a night. It blocks:
+`improvement/auditor/` and `channels/<channel>/analysis/` files, at most 1,200 changed lines per branch and 2 merges a night. It blocks:
 uploads, YouTube sign-in, settings defaults and upload times, login, Prisma, workflows, the guard,
 the policy, the variety rules, the evaluator, the data audit, and deleting tests.
 
@@ -142,11 +142,11 @@ the policy, the variety rules, the evaluator, the data audit, and deleting tests
 Write `improvement/auditor/<DAY>.md` (audit summary, bugs found and fixed, quality findings, what you
 deferred and why), `improvement/activity/<DAY>-auditor.json` (policy.md format; `decision` is `acted`
 if you shipped a fix, `nothing` if everything was clean) and rewrite
-`improvement/notifications/auditor.json`. Commit them on branch 1 (or on a reports-only branch
+`channels/<channel>/notifications/auditor.json`. Commit them on branch 1 (or on a reports-only branch
 `agent/auditor/$DAY` if you changed no code):
 ```
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add -A improvement/auditor improvement/analysis improvement/activity/$DAY-auditor.json improvement/notifications/auditor.json <your code files> $(ls improvement/feedback-acks/auditor.json 2>/dev/null)
+git add -A improvement/auditor improvement/analysis improvement/activity/$DAY-auditor.json channels/<channel>/notifications/auditor.json <your code files> $(ls channels/<channel>/feedback-acks/auditor.json 2>/dev/null)
 git commit -q -m "Auditor $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/auditor/$DAY
 ```

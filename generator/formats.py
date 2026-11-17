@@ -15,7 +15,7 @@ import re
 from pathlib import Path
 
 from .settings import ROOT
-from .channels import cpath
+from .channels import cpath, rel
 
 FILE = Path("improvement") / "research" / "formats.json"
 MIN_VIEWS = 100_000      # a reference video below this doesn't show demand
@@ -166,7 +166,7 @@ def check_plan(plan: dict, root: Path = ROOT, fmt: str = "short") -> list[str]:
         out.append(f"story {plan['story']} has no reference video with {MIN_VIEWS:,}+ views yet (best {below[plan['story']]:,}): "
                    f"pick one of {', '.join(known)}")
     elif plan.get("story") not in known:
-        out.append(f"story must be a {fmt} format with proven demand: one of {', '.join(known)} ({FILE.as_posix()})")
+        out.append(f"story must be a {fmt} format with proven demand: one of {', '.join(known)} ({rel(ROOT, FILE)})")
     demand = plan.get("demand")
     if not isinstance(demand, dict) or not demand.get("title") or not isinstance(demand.get("views"), int):
         out.append("plan needs `demand`: {title, views, url} of a video in this format that people watch")

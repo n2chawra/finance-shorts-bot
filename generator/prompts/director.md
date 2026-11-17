@@ -9,11 +9,11 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 
 ## Read first
 
-- **The reference**: `videos/v-directed-netflix/script.json` and its code in
+- **The reference**: `channels/paisa-panchayat/videos/v-directed-netflix/script.json` and its code in
   `remotion/src/videos/v-directed-netflix/` (Hook, Vault, City, Charges, Coins, Ship, Payoff). It is the
   video the owner approved. Copy how it works, never its places or pictures: every story gets its own.
 - **The kit**: `remotion/src/flat/README.md` (what each piece draws and its props).
-- `generator/prompts/lessons.md` and `generator/prompts/studied.md` (techniques measured against ours).
+- `channels/<channel>/prompts/lessons.md` and `channels/<channel>/prompts/studied.md` (techniques measured against ours).
 
 ## Why the reference works (do all of these)
 

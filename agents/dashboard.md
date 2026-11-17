@@ -20,7 +20,7 @@ tonight's first job), `improvement/dashboard/backlog.json` and your last 3 repor
 ## 0b. The owner's feedback (every run)
 Run `python3 -m generator.feedback --agent dashboard` and follow `agents/policy.md`, "The owner's feedback":
 fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
-and answer each in `improvement/feedback-acks/dashboard.json` (commit it with your branch).
+and answer each in `channels/<channel>/feedback-acks/dashboard.json` (commit it with your branch).
 
 ## 1. Bug hunt (every night)
 Run with sample data (no database): `DATABASE_URL= ` in the environment.
@@ -60,12 +60,12 @@ Mark the item `done` with the date and `lastTouched` for the component.
 ## 4. Finish (always)
 Write `improvement/dashboard/<DAY>.md` (bugs found, what you changed and why, ideas added),
 `improvement/activity/<DAY>-dashboard.json` (policy.md format) and rewrite
-`improvement/notifications/dashboard.json` (e.g. the live site is down, a key the dashboard needs is
+`channels/<channel>/notifications/dashboard.json` (e.g. the live site is down, a key the dashboard needs is
 missing). Then from the repo root:
 ```
 git checkout -B agent/dashboard/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add apps/dashboard/src apps/dashboard/e2e apps/dashboard/package.json apps/dashboard/package-lock.json improvement/dashboard improvement/activity improvement/notifications/dashboard.json $(ls improvement/feedback-acks/dashboard.json 2>/dev/null)
+git add apps/dashboard/src apps/dashboard/e2e apps/dashboard/package.json apps/dashboard/package-lock.json improvement/dashboard improvement/activity channels/<channel>/notifications/dashboard.json $(ls channels/<channel>/feedback-acks/dashboard.json 2>/dev/null)
 git commit -q -m "Dashboard $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/dashboard/$DAY
 ```

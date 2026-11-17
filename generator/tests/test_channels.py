@@ -7,7 +7,7 @@ from generator.run import _pop_channel
 
 
 def test_legacy_paths_until_the_channel_folder_exists(tmp_path, monkeypatch):
-    monkeypatch.delenv("CHANNEL", raising=False)
+    monkeypatch.setenv("CHANNEL", "paisa-panchayat")   # recorded, so the test restores it
     assert cpath(tmp_path, "videos") / "v-1" == tmp_path / "videos" / "v-1"
     assert cpath(tmp_path, "improvement/research/topics.json") == tmp_path / "improvement/research/topics.json"
     (tmp_path / "channels" / "paisa-panchayat").mkdir(parents=True)
@@ -22,14 +22,15 @@ def test_legacy_paths_until_the_channel_folder_exists(tmp_path, monkeypatch):
     assert channels.rel(tmp_path, "history/history.json") == "channels/paisa-panchayat/history/history.json"
 
 
-def test_shared_paths_never_move(tmp_path):
+def test_shared_paths_never_move(tmp_path, monkeypatch):
+    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
     (tmp_path / "channels" / "paisa-panchayat").mkdir(parents=True)
     for shared in ("config/settings.json", "improvement/activity/x.json", "renderer/templates", "improvement/merge-log.json"):
         assert cpath(tmp_path, shared) == tmp_path / shared
 
 
 def test_the_channel_comes_from_the_flag_or_the_environment(tmp_path, monkeypatch):
-    monkeypatch.delenv("CHANNEL", raising=False)
+    monkeypatch.setenv("CHANNEL", "paisa-panchayat")   # recorded, so the test restores it
     assert channels.current() == "paisa-panchayat"
     channels.use("second-one")
     assert channels.current() == "second-one"

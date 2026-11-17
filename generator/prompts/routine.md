@@ -6,6 +6,8 @@ will answer questions. Do one run as described here, then stop. Work only in thi
 Keep the run lean: it uses a Claude Pro plan's quota. Read only the files this page names, do not
 run the test suite, do not explore the codebase, and do not improve things you were not asked to.
 
+**Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names, else `paisa-panchayat` (today's only channel). Pass `--channel <channel>` to `python -m generator.run` when your prompt names one. Shared code, `config/settings.json` and `improvement/activity/` stay where they are.
+
 ## 0. Prepare
 
 ```
@@ -69,7 +71,7 @@ Follow `generator/prompts/planner.md`. Use the id from `next_id` for the whole r
 ## 2b. Three openings, one picked by a fresh reviewer (Shorts; owner, 2026-11-12)
 
 Most viewers decide in the first second. Before writing the script, draft **three different
-openings** for the plan's fact and write them to `videos/<id>/openings.json`:
+openings** for the plan's fact and write them to `channels/<channel>/videos/<id>/openings.json`:
 `{"options": [{"key": "A", "title": "...", "first_line": "...", "first_frame": "..."}, ...]}`: each a
 title, the hook's first spoken sentence and one sentence describing the first frame, each following
 the writer's fixed recipe, and different from each other in how they open (lead with the figure,
@@ -96,7 +98,7 @@ When the script and the code are written, run `python -m generator.run lint <id>
 seconds, no voice or frames) and fix until it prints `ok`. Run it again after every later fix, before
 the stills.
 
-Reference: `remotion/src/videos/v-directed-netflix/` with `videos/v-directed-netflix/script.json`, the
+Reference: `remotion/src/videos/v-directed-netflix/` with `channels/paisa-panchayat/videos/v-directed-netflix/script.json`, the
 video the owner approved (copy how it works, never its places or pictures). The render checks every
 file (imports, no figure typed into code, every directed beat's file present, no randomness or
 clocks, `tsc`). Ship commits the folder with the video.
@@ -178,7 +180,7 @@ undo any template repair that did not lead to a pass (`git checkout -- renderer`
 
 ```
 python -m generator.run fail <id> --reason "<which check failed and why, one sentence>"
-git add videos/<id> && git commit -q -m "Mark video <id> failed" && git push origin HEAD:main
+git add channels/<channel>/videos/<id> && git commit -q -m "Mark video <id> failed" && git push origin HEAD:main
 ```
 
 A failed video is never released. **Then go back to the loop** (section 1a): run
@@ -189,7 +191,7 @@ one that failed.
 ## 8. The editor (every run, also idle ones)
 
 Follow `generator/prompts/editor.md`: score every ready Short (`python -m generator.run rank`), look
-at the top candidates, and commit `improvement/editor/ranking.json`. One Short goes out every
+at the top candidates, and commit `channels/<channel>/editor/ranking.json`. One Short goes out every
 `shortEveryDays` days, so the best of the queue must be first (owner, 2026-10-30).
 
 ## Rules for every run

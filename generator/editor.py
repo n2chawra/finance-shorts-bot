@@ -24,7 +24,7 @@ from pathlib import Path
 
 from . import feedback, formats, history
 from .settings import ROOT, load as load_settings
-from .channels import cpath
+from .channels import cpath, rel
 
 BASE = 5.0
 
@@ -99,7 +99,7 @@ def score(vid: str, root: Path = ROOT, attrs: dict | None = None, taste: dict | 
     total = round(max(0.0, min(10.0, BASE + sum(parts.values()))), 1)
     hook = ((script.get("beats") or [{}])[0] or {}).get("say", "")
     return {"id": vid, "score": total, "parts": parts, "title": plan.get("title") or manifest.get("title"), "story": story,
-            "shape": shape, "hook": hook, "seconds": sec, "preview": f"videos/{vid}/preview.png", "thumbnail": f"videos/{vid}/thumbnail.png"}
+            "shape": shape, "hook": hook, "seconds": sec, "preview": rel(root, f"videos/{vid}/preview.png"), "thumbnail": rel(root, f"videos/{vid}/thumbnail.png")}
 
 
 def rank(root: Path = ROOT, fmt: str = "short", ids: list[str] | None = None) -> list[dict]:

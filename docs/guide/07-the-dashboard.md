@@ -69,7 +69,7 @@ has (Shorts' exact stayed-to-watch, returning viewers, when viewers are online, 
 - **Engagement**: the typical retention curve, hook hold and engaged views video by video, per-1K rates.
 - **Audience**: world map, age × gender, devices, subscribers vs not, operating systems.
 - **What works**: medians grouped by story format, look, voice, music, hook, topic, length, slot, day.
-- **AI insights**: the auditor's channel analysis and a verdict per video (`improvement/analysis/`).
+- **AI insights**: the auditor's channel analysis and a verdict per video (`channels/<channel>/analysis/`).
 A video's Performance tab adds its retention curve over its own key frames with the steepest drops
 pinned to the line being spoken, its first 48 hours by hour against typical, sources, countries,
 searches, devices, comments and the AI verdict.

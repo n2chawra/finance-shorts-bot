@@ -17,24 +17,24 @@ DAY=$(TZ=Asia/Kolkata date +%F); MONTH=$(TZ=Asia/Kolkata date -d "$DAY -1 day" +
 Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused` or `agents.monthly` false.
 
 Read, for the month under review:
-- `metrics/videos.json` (every published video with its numbers), `metrics/runs.json`,
-  `metrics/decisions.json` (what the owner approved or declined before), `config/settings.json`,
-  `metrics/feedback.json` (the owner's notes, picks and stales: summarise them in the review, say
+- `channels/<channel>/metrics/videos.json` (every published video with its numbers), `channels/<channel>/metrics/runs.json`,
+  `channels/<channel>/metrics/decisions.json` (what the owner approved or declined before), `config/settings.json`,
+  `channels/<channel>/metrics/feedback.json` (the owner's notes, picks and stales: summarise them in the review, say
   which were answered and how, and turn any pattern into a focus item).
 - `python -m improvement.evaluate` (any Python 3.11+, standard library only): experiments and what
   performs, Shorts and long videos apart.
-- `improvement/activity/` (the month's files), `improvement/journal.md`, `improvement/experiments.json`,
-  `improvement/weekly/`, `improvement/merge-log.json`, the month's reports in `improvement/research/`
-  and `improvement/longform/`, `improvement/monthly/` (your last review and focus), and the open
-  notifications in `improvement/notifications/`.
+- `improvement/activity/` (the month's files), `channels/<channel>/journal.md`, `channels/<channel>/experiment-log.json`,
+  `channels/<channel>/weekly/`, `improvement/merge-log.json`, the month's reports in `channels/<channel>/research/`
+  and `channels/<channel>/longform/`, `channels/<channel>/monthly/` (your last review and focus), and the open
+  notifications in `channels/<channel>/notifications/`.
 No web searches: research and Scout have already looked outside. Keep the run lean.
 
 ## 0b. The owner's feedback (every run)
 Run `python3 -m generator.feedback --agent monthly` and follow `agents/policy.md`, "The owner's feedback":
 fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
-and answer each in `improvement/feedback-acks/monthly.json` (commit it with your branch).
+and answer each in `channels/<channel>/feedback-acks/monthly.json` (commit it with your branch).
 
-## 1. The review: `improvement/monthly/<MONTH>.md`
+## 1. The review: `channels/<channel>/monthly/<MONTH>.md`
 Plain words, numbers first, for someone who has not looked all month:
 ```
 # <Month YYYY> review
@@ -51,7 +51,7 @@ Plain words, numbers first, for someone who has not looked all month:
 Say plainly when there isn't enough data to judge something, and how much more is needed. Never
 round a weak signal up into a finding.
 
-## 2. Next month's focus: `improvement/monthly/focus.json`
+## 2. Next month's focus: `channels/<channel>/monthly/focus.json`
 Research, Scout and the improver read this file every night and put its items first. Rewrite it
 every month:
 ```json
@@ -62,7 +62,7 @@ every month:
 Three to five items, each one something an agent can act on inside its lane (a story to try more
 of, a retention problem to fix in a scene, a kind of topic to find, an experiment worth running).
 
-## 3. Proposals the owner approves: `improvement/notifications/monthly.json`
+## 3. Proposals the owner approves: `channels/<channel>/notifications/monthly.json`
 Strategy belongs to the owner: how many videos, how long, when they upload. When the month's
 numbers argue for a change, propose it as a notification with a `proposal`; the dashboard shows
 **Approve** and **Decline**, and approving writes the setting.
@@ -78,8 +78,8 @@ numbers argue for a change, propose it as a notification with a `proposal`; the 
   `current` is the value in `config/settings.json`.
 - **At most three** proposals a month, each with numbers from this channel behind it (an upload hour
   that does 1.4× the median over 20 videos, not a blog's advice). Count the Pro plan: more videos
-  means more usage, and the runs' times are in `metrics/runs.json` and the activity files.
-- Never propose again what the owner declined (`metrics/decisions.json`) unless two months have
+  means more usage, and the runs' times are in `channels/<channel>/metrics/runs.json` and the activity files.
+- Never propose again what the owner declined (`channels/<channel>/metrics/decisions.json`) unless two months have
   passed and you have new evidence; say so in the detail.
 - Things only the owner can do that are not a setting (the routine model, a plan change, the cloud
   environment's network access) go in the same file as ordinary notifications without a `proposal`,
@@ -91,7 +91,7 @@ headline numbers; decision `acted`). Then:
 ```
 git checkout -B agent/monthly/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add improvement/monthly improvement/activity improvement/notifications/monthly.json $(ls improvement/feedback-acks/monthly.json 2>/dev/null)
+git add improvement/monthly improvement/activity channels/<channel>/notifications/monthly.json $(ls channels/<channel>/feedback-acks/monthly.json 2>/dev/null)
 git commit -q -m "Monthly review $MONTH: <one-line verdict>"
 git push origin HEAD:refs/heads/agent/monthly/$DAY
 ```

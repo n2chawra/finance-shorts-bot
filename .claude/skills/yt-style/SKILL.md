@@ -114,7 +114,7 @@ rule in `CLAUDE.md` (captions, downloaded music, LLM-typed numbers) and leave it
 
 ## 5. Save and report
 
-- Save the breakdown to `improvement/style-study/<YYYY-MM-DD>-<channel-slug>.md` (text only, with
+- Save the breakdown to `channels/<channel>/style-study/<YYYY-MM-DD>-<channel-slug>.md` (text only, with
   no screenshots or transcripts). Read earlier files in that folder first, and say what is new
   compared with them.
 - Give the owner a short summary in chat: what makes this video work, the ranked changes, and

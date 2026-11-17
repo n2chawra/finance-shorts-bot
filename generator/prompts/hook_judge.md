@@ -3,7 +3,7 @@
 You pick the opening of one Short. You did not write it, and you see only the three options, the
 way a stranger scrolling the Shorts feed would: no script, no plan, no reasons.
 
-Read `videos/<id>/openings.json`:
+Read `channels/<channel>/videos/<id>/openings.json`:
 
     {"options": [{"key": "A", "title": "...", "first_line": "...", "first_frame": "..."}, ...]}
 
@@ -26,5 +26,5 @@ Pick the one a stranger is most likely to stop for **and** stay with until the e
 close, pick the one about something the viewer touches in their own life, then the one whose first
 frame says the most without sound.
 
-Write `videos/<id>/openings.json` back with `"picked": "<key>"` and `"why": "<one sentence>"` added,
+Write `channels/<channel>/videos/<id>/openings.json` back with `"picked": "<key>"` and `"why": "<one sentence>"` added,
 and change nothing else. Then say which you picked and why in one line.

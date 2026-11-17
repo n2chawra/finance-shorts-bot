@@ -444,6 +444,22 @@ uploads. Both were visible in public data beforehand. The setup measures them:
    that looks like another channel's recent ones (extending the existing cover and prop overlap gates
    across channels).
 
+## Progress
+- **2026-11-17: step 1 (platform refactor) done.** Generation and all agents were paused for it
+  (`generationPaused`, `agents.paused`).
+  - Paths: `config/channel-layout.json` maps every per-channel file into `channels/<slug>/`; code reads
+    them through `generator/channels.py` and `workers/lib/channels.ts`; `generator.run --channel`.
+    Paisa Panchayat's files moved to `channels/paisa-panchayat/` (git renames, history kept).
+  - Database: `Channel` table (Paisa Panchayat, active), `channelId` on Video, Topic, ChannelDay,
+    Breakdown, Notification, AgentActivity, Feedback and Study. `Setting` and `Template` stay
+    platform-wide; per-channel overrides live in `Channel.settings`.
+  - Workers: publish, stats, stats-deep and the snapshot loop over channels, each with its own token
+    (`Channel.refreshTokenEnc`, AES-256-GCM keyed by `SESSION_SECRET`; channel #1 still uses the
+    `YT_REFRESH_TOKEN` secret until "Connect YouTube" stores it). Quota keeper in `workers/lib/quota.ts`.
+  - Guard: every per-channel rule also covers `channels/*/…`; one Shorts experiment per channel.
+  - Not yet per channel: watchdog, data audit and market still use channel #1's secret (they are
+    channel #1's today); the guard doesn't yet confine a channel's agents to its own folder (step 4).
+
 ## Order of work
 1. **Platform refactor** (layout, database, workers, quota keeper, `--channel`). Channel #1 keeps
    running unchanged, and the test suites prove it.

@@ -26,7 +26,7 @@ import re
 from pathlib import Path
 
 from .settings import ROOT
-from .channels import cpath
+from .channels import cpath, rel
 
 # one feed per format: research writes the Shorts one, scout the long one
 FILES = {"short": Path("improvement") / "research" / "topics.json",
@@ -45,7 +45,7 @@ AGE_PENALTY = 0.03  # score lost per day since found (a 21-day-old topic loses 0
 
 
 def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
-    path = root / FILES[fmt]
+    path = cpath(root, FILES[fmt])
     if not path.is_file():
         return []
     return [t for t in json.loads(path.read_text(encoding="utf-8")).get("topics", []) if isinstance(t, dict) and t.get("id")]
@@ -197,7 +197,7 @@ def prune(topics: list[dict], entries: list[dict], today: str) -> tuple[list[dic
 
 def prune_file(entries: list[dict], today: str, root: Path = ROOT, fmt: str = "short") -> list[str]:
     """Prune one feed file in place; returns what went (empty: nothing changed)."""
-    path = root / FILES[fmt]
+    path = cpath(root, FILES[fmt])
     if not path.is_file():
         return []
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -356,7 +356,7 @@ def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], 
     if feed_id:
         topic = get(feed_id, root, fmt)
         if topic is None:
-            out.append(f"topic.feed_id {feed_id!r} is not in {FILES[fmt].as_posix()}")
+            out.append(f"topic.feed_id {feed_id!r} is not in {rel(root, FILES[fmt])}")
         elif (why := why_unavailable(topic, entries, today)) is not None:
             out.append(f"feed topic {feed_id!r} can't be used: {why}")
         elif (dup := too_close(topic, _all_entries(root), today)) is not None:

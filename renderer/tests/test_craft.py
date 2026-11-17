@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image
 
 from renderer import craft
+from generator.channels import cpath
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -66,7 +67,7 @@ def test_old_layouts_one_size_and_one_set_fail() -> None:
 
 def test_cover_gate_flags_the_same_layout_with_new_words():
     from renderer.craft import cover_problems
-    v = REPO / "videos"
+    v = cpath(REPO, "videos")
     same = cover_problems(v / "v-20261023-02" / "thumbnail.png", [("v-20261023-01", v / "v-20261023-01" / "thumbnail.png")])
     assert same and "v-20261023-01" in same[0]
     other = cover_problems(v / "v-20261022-03" / "thumbnail.png", [("v-20261022-01", v / "v-20261022-01" / "thumbnail.png")])
@@ -140,7 +141,7 @@ def test_mark_problems_passes_a_board_video_that_changes_the_picture():
 def test_mark_problems_on_the_real_scripts():
     import json
     for vid, bad in (("v-20261103-03", True), ("v-20261103-02", False), ("v-20261103-01", False)):
-        f = REPO / "videos" / vid / "script.json"
+        f = cpath(REPO, "videos") / vid / "script.json"
         if not f.is_file():
             continue
         assert bool(craft.mark_problems(json.loads(f.read_text()))) is bad, vid
@@ -169,6 +170,6 @@ def test_stage_problems_passes_one_big_hero():
 
 def test_stage_problems_on_the_real_script():
     import json
-    f = REPO / "videos" / "v-20261111-01" / "timeline.json"
+    f = cpath(REPO, "videos") / "v-20261111-01" / "timeline.json"
     if f.is_file():
         assert craft.stage_problems(json.loads(f.read_text()))

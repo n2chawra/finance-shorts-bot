@@ -54,7 +54,7 @@ UNLOCK: dict[str, list[str]] = {
 FORBID = [
     ".github/*", "workers/*", "scripts/*", "agents/*", "CLAUDE.md", "PLAN.md", "netlify.toml", "config/settings.json",
     "history/*", "videos/*", "metrics/*", "improvement/evaluate.py",
-    "channel/*", "config/market.json",   # who the channel is for and what it watches: the owner's
+    "channel/*", "channel/profile.md", "config/market.json",   # who the channel is for and what it watches: the owner's
     "improvement/tests/*", "improvement/merge-log.json",   # were inside the comment above until 2026-11-13
     # the Study page's results are written by workers/study.ts, never by hand (owner, 2026-11-13)
     "improvement/study/*", "generator/prompts/studied.md",
@@ -76,6 +76,28 @@ LOCKED = [
     "config/arms.json", "improvement/arms.py", "improvement/arms-state.json", "improvement/arms-log.json",
 ]
 FORBID += LOCKED
+
+
+def _channel_patterns(patterns: list[str]) -> list[str]:
+    """Each per-channel pattern also as it reads inside any channel folder (channels/<slug>/, the
+    multi-channel layout in config/channel-layout.json), so a rule covers every channel's copy."""
+    sys.path.insert(0, str(ROOT))
+    from generator.channels import _mapped   # noqa: E402  (the same map the pipeline uses)
+    out = list(patterns)
+    for pat in patterns:
+        head, star, _ = pat.partition("*")
+        mapped = _mapped(head) if head else None
+        if mapped is None and head.endswith("/"):
+            mapped = _mapped(head.rstrip("/"))
+            mapped = mapped + "/" if mapped is not None else None
+        if mapped is not None:
+            out.append(f"channels/*/{mapped}{pat[len(head):]}")
+    return out
+
+
+ALLOW = {agent: _channel_patterns(pats) for agent, pats in ALLOW.items()}
+FORBID = _channel_patterns(FORBID)
+LOCKED = _channel_patterns(LOCKED)
 TEST_FILE = re.compile(r"(^|/)(tests?|e2e)/|(^|/)test_[^/]*\.py$|\.(test|spec)\.ts$")
 # the upload schedule is the owner's: no agent diff may add or remove a line that sets it
 UPLOAD_SETTING = re.compile(r"\b(uploadTimes|trendUploadTimes|uploadsPaused|backlogCap)\b")
@@ -145,14 +167,17 @@ def invariants(head: str) -> list[str]:
     if "def number_check(" not in numbers:
         out.append("generator/numbers.py must keep number_check()")
     # the weekly loop (owner, 2026-11-12): one Shorts challenger at a time, so a verdict is never two changes blurred
-    try:
-        exps = json.loads(show(head, "config/experiments.json") or "{}").get("experiments", [])
-    except ValueError:
-        exps = []
-    running = [e.get("id") for e in exps if e.get("status", "running") == "running" and e.get("format", "short") == "short"]
-    if len(running) > 1:
-        out.append(f"config/experiments.json runs {len(running)} Shorts experiments ({', '.join(map(str, running))}); "
-                   f"the weekly loop allows one challenger at a time")
+    # per channel: each channel's own experiments file once it has a folder (multi-channel layout)
+    listed = git("ls-tree", "-r", "--name-only", head, "--", "channels").splitlines()
+    for exp_file in ["config/experiments.json", *sorted(f for f in listed if re.fullmatch(r"channels/[^/]+/experiments\.json", f))]:
+        try:
+            exps = json.loads(show(head, exp_file) or "{}").get("experiments", [])
+        except ValueError:
+            exps = []
+        running = [e.get("id") for e in exps if e.get("status", "running") == "running" and e.get("format", "short") == "short"]
+        if len(running) > 1:
+            out.append(f"{exp_file} runs {len(running)} Shorts experiments ({', '.join(map(str, running))}); "
+                       f"the weekly loop allows one challenger at a time")
     return out
 
 

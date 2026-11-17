@@ -43,7 +43,7 @@ jobs:
       - name: Commit what was learned
         if: always()
         run: |
-          git add improvement/study generator/prompts/studied.md improvement/cycle/backlog.json 2>/dev/null || true
+          for f in improvement/study generator/prompts/studied.md improvement/cycle/backlog.json channels/*/study channels/*/prompts/studied.md channels/*/cycle/backlog.json; do [ ! -e "$f" ] || git add "$f"; done
           if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

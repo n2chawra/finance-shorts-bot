@@ -8,13 +8,13 @@ repository with those places changed, its own accounts, and its own routines.
 
 | File | What it holds | Change for a new channel |
 |---|---|---|
-| `channel/profile.md` | audience, topics in and out, sources, calendar, rules of the field | rewrite it: every agent and the planner, writer and fact reviewer read it first |
-| `config/market.json` | the searches the daily market job runs | the new niche's search terms, region and language |
+| `channels/<channel>/profile.md` | audience, topics in and out, sources, calendar, rules of the field | rewrite it: every agent and the planner, writer and fact reviewer read it first |
+| `channels/<channel>/market.json` | the searches the daily market job runs | the new niche's search terms, region and language |
 | `remotion/src/cast/` | the recurring characters | new characters, or keep these if they fit |
 | `renderer/templates/*/README.md`, `examples/` | story recipes with worked examples | examples in the new niche; the recipe shapes mostly carry over |
 | `generator/prompts/planner.md` | the list of topic categories | the new niche's categories (and `generator/variety.py` if it names any) |
-| `improvement/cycle/recipe.json`, `improvement/cycle/backlog.json` | the weekly loop's champion recipe and its waiting challengers | start the recipe from the lessons in section 5, empty the backlog's `history` and `stayedByCycle` |
-| `generator/prompts/lessons.md`, `generator/prompts/studied.md` | mistakes the reviewer found in our videos; techniques from videos the owner studied | empty both: they are this channel's own (studied.md keeps its header) |
+| `channels/<channel>/cycle/recipe.json`, `channels/<channel>/cycle/backlog.json` | the weekly loop's champion recipe and its waiting challengers | start the recipe from the lessons in section 5, empty the backlog's `history` and `stayedByCycle` |
+| `channels/<channel>/prompts/lessons.md`, `channels/<channel>/prompts/studied.md` | mistakes the reviewer found in our videos; techniques from videos the owner studied | empty both: they are this channel's own (studied.md keeps its header) |
 
 ## 2. What is still finance- or India-specific in code
 Be honest with yourself about these before choosing a niche far from personal finance:
@@ -27,8 +27,8 @@ Be honest with yourself about these before choosing a niche far from personal fi
   (it is checked by the guard, so change it in `CLAUDE.md`, the guard and the end card together).
 
 ## 3. Accounts and infrastructure (one set per channel)
-1. A new GitHub repository created from this one (keep `main` clean of the old channel's `videos/`,
-   `history/`, `metrics/` and `improvement/` data).
+1. A new GitHub repository created from this one (keep `main` clean of the old channel's `channels/<channel>/videos/`,
+   `channels/<channel>/history/`, `channels/<channel>/metrics/` and `improvement/` data).
 2. A YouTube channel, a Google Cloud project with the YouTube Data and Analytics APIs, the OAuth
    consent screen in Production, and a refresh token (`cd workers && npm run auth`).
 3. A Supabase project (Postgres) and a Netlify site for the dashboard.
@@ -75,7 +75,7 @@ The numbers behind each line are in `CLAUDE.md` and `PLAN.md` → Log.
 - **The Study page**: the owner pastes YouTube links worth learning from (Shorts or long videos),
   optionally naming one of ours to compare with. Gemini watches both into shot sheets
   (`workers/lib/sheets.ts`), code measures them, and `workers/study.ts` applies the result: techniques
-  to `generator/prompts/studied.md` for the writer, the biggest look difference as a weekly-loop
+  to `channels/<channel>/prompts/studied.md` for the writer, the biggest look difference as a weekly-loop
   challenger. Calibrated on our own Shorts (5 of 5 read right). Technique only, never their content.
 - **Never an empty upload slot**: the video run keeps making Shorts until a full day of slots is ready
   (not just the daily target), and the watchdog raises a critical notice when a slot passes empty.

@@ -71,7 +71,7 @@ fix any beat near a limit as well.
 - **Story**: one person in one concrete moment, no more than 2 hedges (might, can, some), no warm-up
   opener, a new open question every 2–3 beats, the hook's answer only in the payoff.
 
-## Directed shots (every new video; owner, 2026-11-13; reference `videos/v-directed-netflix/`)
+## Directed shots (every new video; owner, 2026-11-13; reference `channels/paisa-panchayat/videos/v-directed-netflix/`)
 - **Every beat's params**: `component`, `place`, `camera` (sizes on words), `moments` (each on an event),
   `things`, `fig` (placeholders). The build rejects a directed beat without them.
 - **Four places or more in a Short**, none the same as a recent video's (a note from the craft gate);

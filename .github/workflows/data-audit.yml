@@ -47,7 +47,7 @@ jobs:
         run: npm run data-audit | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Commit the report for the auditor agent
         run: |
-          git add metrics/data-audit.json
+          for f in metrics/data-audit.json channels/*/metrics/data-audit.json; do [ ! -e "$f" ] || git add "$f"; done
           if git diff --cached --quiet; then echo "report unchanged"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -9,14 +9,14 @@ comfortable seeing this on a finance channel under your own name.
 
 ## Read
 
-Read `channel/profile.md` first: who the channel is for, what it covers and never covers, where
+Read `channels/<channel>/profile.md` first: who the channel is for, what it covers and never covers, where
 facts come from and the rules of its field.
 
-- `videos/<id>/plan.json`: title, description, hashtags.
+- `channels/<channel>/videos/<id>/plan.json`: title, description, hashtags.
 - Run `python -m generator.run figures <id>`: every computed figure, and every beat's line exactly
   as written (`say`) and as it will be spoken (`spoken`). The voice is held to every rule below,
   the same as the screen.
-- `videos/<id>/script.json`: what each beat shows (its scene and `params`), and
+- `channels/<channel>/videos/<id>/script.json`: what each beat shows (its scene and `params`), and
   `renderer/templates/<template>/README.md` for how the figures are computed. Read each beat as
   the viewer meets it, picture and voice together.
 
@@ -30,7 +30,7 @@ are the check. A line about a real person may say only what the sources say (no 
 1. Open its `url` (WebFetch). If the page shows the figure, it is confirmed.
 2. If the page can't be opened (blocked, does not resolve, times out) or doesn't show the figure,
    **confirm it by web search** (WebSearch). It is confirmed if either
-   - a result from the official source itself (the sources listed in `channel/profile.md`:
+   - a result from the official source itself (the sources listed in `channels/<channel>/profile.md`:
      federalreserve.gov, bls.gov, bankofengland.co.uk, ons.gov.uk, ecb.europa.eu, imf.org,
      rbi.org.in, sebi.gov.in, amfiindia.com and the rest) shows the figure, or
    - at least **two independent, reputable outlets** (national newspapers, wire services, major
@@ -41,7 +41,7 @@ are the check. A line about a real person may say only what the sources say (no 
 Write down how each fact was confirmed (the page, or which search results). An unreachable
 website is never a reason to stop: it is a fact you confirm by search, or a failed video.
 
-Also check every item in the topic's `verify` list (in `improvement/research/topics.json`, by the
+Also check every item in the topic's `verify` list (in `channels/<channel>/research/topics.json`, by the
 plan's `topic.feed_id`) and that the story is still current (not superseded by newer data). Fail
 the video if any fact can't be confirmed or is out of date, naming the fact and what you found.
 

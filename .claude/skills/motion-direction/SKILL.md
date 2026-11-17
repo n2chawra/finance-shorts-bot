@@ -8,7 +8,7 @@ description: Art direction for Paisa Panchayat videos: how a directed 2D shot is
 > **Since 2026-11-13 every new video is directed 2D** (owner, after the Netflix remake: "I absolutely
 > loved this… now new videos are made like this"). Use `generator/prompts/director.md` (the method:
 > a place for every line, someone doing something, the figure on a thing, a moving camera, changes on
-> words) with the flat kit `remotion/src/flat/` and the reference `videos/v-directed-netflix/`. The
+> words) with the flat kit `remotion/src/flat/` and the reference `channels/paisa-panchayat/videos/v-directed-netflix/`. The
 > rules below still hold as art direction for those shots (fill the frame, light, depth, shot sizes);
 > where they name the old `shot`/`build` scenes, read them as advice for a directed beat.
 
@@ -19,7 +19,7 @@ The voice, cast and scripts are right. This is about **what the screen shows**.
 Studied the same day (frames sampled): Kurzgesagt (UBI, 10.9M), The Infographics Show (751K),
 LITTLE BIT BETTER (2.5M), "How Rich Thinks" 2D Short (24M), TED-Ed (728K in 3 days), Primate and
 Monkey Economics (1.2M, 7.6M), and Claude + Remotion builders (MoSidd, 233K). Notes:
-`improvement/style-study/`.
+`channels/<channel>/style-study/`.
 
 ## The seven rules
 

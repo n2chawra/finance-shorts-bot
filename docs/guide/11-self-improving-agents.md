@@ -9,7 +9,7 @@ guardrails: [`scripts/guard.py`](../../scripts/guard.py).*
 
 | Time | Who | What |
 |---|---|---|
-| 18:37 | Data audit (GitHub Action) | Compares every published video's numbers on the dashboard with YouTube and the database; writes `metrics/data-audit.json`; notifies the owner about unlinked videos and errors that last two nights |
+| 18:37 | Data audit (GitHub Action) | Compares every published video's numbers on the dashboard with YouTube and the database; writes `channels/<channel>/metrics/data-audit.json`; notifies the owner about unlinked videos and errors that last two nights |
 | 23:00 | **Auditor** | Fixes what the data audit found, runs every check, reviews one area for bugs, and makes one careful refactor (DRY, single responsibility, dead code) when tests cover it |
 | 23:47 | **Research** | Studies 3–5 top Shorts (hooks, motion, text, colour, sound, endings), the day's topic, and Claude/Claude Code updates. Writes a report and ranked proposals. Never changes code. |
 | 04:07 | Video run | Makes the day's 3 videos, first in a fresh usage window |
@@ -27,7 +27,7 @@ so it can still make the day's videos if the main run hit the limit.
 ```mermaid
 flowchart LR
     R[Research<br/>proposals.json] --> I[Improver]
-    M[metrics/videos.json<br/>metrics/runs.json] --> E[improvement.evaluate<br/>fixed rules] --> I
+    M[channels/<channel>/metrics/videos.json<br/>metrics/runs.json] --> E[improvement.evaluate<br/>fixed rules] --> I
     I -- "one change behind an A/B flag" --> B[agent/improver/date branch]
     B --> G{Agent merge workflow<br/>guard + tests}
     G -- pass --> MAIN[main]
@@ -51,7 +51,7 @@ flowchart LR
 
 ## The voiceover experiment
 
-Since 2026-10-16 half of new videos are narrated (`voiceover` in `config/experiments.json`), the
+Since 2026-10-16 half of new videos are narrated (`voiceover` in `channels/<channel>/experiments.json`), the
 owner's own experiment, judged by the same rules as any other.
 
 - **Voice**: Kokoro (open source, Apache-2.0), running offline inside the renderer
@@ -94,7 +94,7 @@ owner's own experiment, judged by the same rules as any other.
   median) is retired (disabled, kept in the repo).
 - New templates are built when fewer than 6 are enabled or research finds a new format: two test
   renders plus QA first, then they start at weight 0.5.
-- The improver writes these decisions to `improvement/template-decisions.json`; ingest applies each
+- The improver writes these decisions to `channels/<channel>/template-decisions.json`; ingest applies each
   one to the database once.
 
 ## What the owner sees
@@ -115,15 +115,15 @@ owner's own experiment, judged by the same rules as any other.
 | Path | Written by | Purpose |
 |---|---|---|
 | `agents/policy.md`, `agents/*.md` | owner | rules and nightly instructions |
-| `improvement/research/<date>.md`, `proposals.json`, `seen.json` | research | reports, ideas, Claude versions seen |
-| `config/experiments.json` | improver | running A/B flags (read by the generator and renderer) |
-| `improvement/experiments.json` | improver | experiment ledger with hypotheses and results |
-| `improvement/template-decisions.json` | improver | template weight / retire decisions |
-| `improvement/journal.md`, `weekly/` | improver | decision log, Sunday summaries |
+| `channels/<channel>/research/<date>.md`, `proposals.json`, `seen.json` | research | reports, ideas, Claude versions seen |
+| `channels/<channel>/experiments.json` | improver | running A/B flags (read by the generator and renderer) |
+| `channels/<channel>/experiment-log.json` | improver | experiment ledger with hypotheses and results |
+| `channels/<channel>/template-decisions.json` | improver | template weight / retire decisions |
+| `channels/<channel>/journal.md`, `weekly/` | improver | decision log, Sunday summaries |
 | `improvement/dashboard/` | dashboard | bug and idea backlog, nightly reports |
 | `improvement/activity/<date>-<agent>.json` | each agent | the Agents page |
-| `improvement/notifications/<agent>.json` | each agent | owner-only problems |
+| `channels/<channel>/notifications/<agent>.json` | each agent | owner-only problems |
 | `improvement/merge-log.json` | Agent merge workflow | merged / blocked with reasons |
-| `metrics/videos.json`, `metrics/runs.json` | ingest | what the evaluator judges by |
-| `metrics/data-audit.json` | data-audit workflow | dashboard vs YouTube vs database, read by the auditor |
+| `channels/<channel>/metrics/videos.json`, `channels/<channel>/metrics/runs.json` | ingest | what the evaluator judges by |
+| `channels/<channel>/metrics/data-audit.json` | data-audit workflow | dashboard vs YouTube vs database, read by the auditor |
 | `improvement/auditor/` | auditor | nightly reports, ranked backlog, which areas it reviewed when |

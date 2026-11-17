@@ -5,12 +5,12 @@ way a viewer on a phone would. You did not make it.
 
 ## Look at
 
-- `videos/<id>/preview.png`: a contact sheet of stills, one every few seconds, each labelled with
+- `channels/<channel>/videos/<id>/preview.png`: a contact sheet of stills, one every few seconds, each labelled with
   its time. Open it and study every frame.
-- `videos/<id>/render.json`: length, style, `layout_problems` and `liveliness` found by code, audio
+- `channels/<channel>/videos/<id>/render.json`: length, style, `layout_problems` and `liveliness` found by code, audio
   levels, and `voice` (each beat's line, start and length).
-- `videos/<id>/thumbnail.png`: the thumbnail (a long video's is its own card; a Short's is a frame).
-- `videos/<id>/script.json`: the storyboard, so you know what each beat meant to show.
+- `channels/<channel>/videos/<id>/thumbnail.png`: the thumbnail (a long video's is its own card; a Short's is a frame).
+- `channels/<channel>/videos/<id>/script.json`: the storyboard, so you know what each beat meant to show.
 
 Code has already checked text size, the bottom safe zone, text inside the frame, movement and
 audio levels (`layout_problems` and `liveliness_problems` must be empty). You usually review the
@@ -20,7 +20,7 @@ own render checks it. You are checking what code cannot see.
 ## Reject if any of these is true
 
 D. **Not directed like the reference** (owner, 2026-11-13: every new video is directed 2D shots, like
-   `videos/v-directed-netflix/`). Open the stills next to the beats in `script.json` (`params.place`,
+   `channels/paisa-panchayat/videos/v-directed-netflix/`). Open the stills next to the beats in `script.json` (`params.place`,
    `moments`). Reject `[script]` naming the stills when:
    - a still shows no place (a plain colour, a floating card, a lone icon, a skyline backdrop behind
      props) or a place that has nothing to do with its line;
@@ -64,9 +64,9 @@ D. **Not directed like the reference** (owner, 2026-11-13: every new video is di
    the end), a closing question that is a yes/no ("Would you renew yours?") instead of a pick-one
    between two concrete choices, and a finance word a stranger wouldn't use ("revenue", "Treasury",
    "net worth", "margin") anywhere in the first 10 s.
-   Check every item in `generator/prompts/lessons.md` too: a video that repeats a lesson is a reject.
+   Check every item in `channels/<channel>/prompts/lessons.md` too: a video that repeats a lesson is a reject.
 6b. **Weaker than our best** (Shorts; the weekly loop): open the contact sheets of the Shorts in
-   `improvement/analysis/pictures.json` → `reference` (our own Shorts that held viewers best). Reject
+   `channels/<channel>/analysis/pictures.json` → `reference` (our own Shorts that held viewers best). Reject
    `[scene]` a video whose frames are clearly emptier, smaller or harder to read than theirs, naming
    the stills.
 7. **No disclaimer:** the last frame does not show "Illustrative only. Not financial advice." (a
@@ -74,7 +74,7 @@ D. **Not directed like the reference** (owner, 2026-11-13: every new video is di
 7b. **Announced structure** (Shorts), from the script: reject `[script]` level chips, "three
    clues…", "level one, two…" or any line that announces what is coming. The hook names the subject
    and asks, holding the answer back (check 6); the cast may trade short lines, that is the skit.
-8. **Long-video thumbnails** (`videos/<id>/feed-preview.png`: our three, A, B and C, each among its topic's most
+8. **Long-video thumbnails** (`channels/<channel>/videos/<id>/feed-preview.png`: our three, A, B and C, each among its topic's most
    viewed videos; since 2026-11-11 the owner picks one, else Studio's `thumbnail_pick` goes up). Look at each:
    does it use the picture language those hits share (its `pattern`)
    and still stand out among them? Does it promise the same video as the title? Can you read the

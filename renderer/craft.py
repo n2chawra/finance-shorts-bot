@@ -21,6 +21,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from generator.channels import cpath
+
 import re
 
 import numpy as np
@@ -146,7 +148,7 @@ def reference_scripts(skip: str = "") -> list[tuple[str, dict]]:
     """The reference videos' scripts, so a new video can't copy their places."""
     out = []
     for vid in REFERENCES:
-        f = Path(__file__).resolve().parent.parent / "videos" / vid / "script.json"
+        f = cpath(Path(__file__).resolve().parent.parent, "videos") / vid / "script.json"
         if vid != skip and f.is_file():
             out.append((vid, json.loads(f.read_text(encoding="utf-8"))))
     return out

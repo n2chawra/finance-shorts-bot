@@ -77,7 +77,7 @@ upload step is deterministic code with tests.
 | **Template** | A Python class that animates one kind of story (e.g. a quiz countdown) |
 | **Script** | The JSON a template renders: numeric inputs plus on-screen text with placeholders |
 | **Plan** | The planner's choice of topic, template, style, title and description (`plan.json`) |
-| **Manifest** | `videos/<id>/manifest.json`, the shipped video's summary that ingest reads |
+| **Manifest** | `channels/<channel>/videos/<id>/manifest.json`, the shipped video's summary that ingest reads |
 | **Contact sheet** | `preview.png`: eight key frames in one image, what QA reviews |
 | **Number check** | Code that recomputes every on-screen figure and rejects untraceable numbers |
 | **Fact review / QA review** | Separate AI agents checking claims, and the rendered frames |

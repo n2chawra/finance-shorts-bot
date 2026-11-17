@@ -18,7 +18,7 @@ sequenceDiagram
     R->>G: push media/<id> (main + video.mp4)
     G->>RV: on push media/**
     RV->>G: create Release video-<id> with the mp4, delete the branch
-    RV->>I: workflow_run (also: any push to videos/**)
+    RV->>I: workflow_run (also: any push to channels/<channel>/videos/**)
     I->>DB: Video status=queued, checks, run steps, topic
     I->>G: commit config/settings.json (settings + backlog for routines)
     Note over P: 10:07 IST (retries 13:07, 16:07)

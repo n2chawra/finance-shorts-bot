@@ -4,6 +4,7 @@ import path from "node:path";
 import { test } from "node:test";
 
 import { Activity, AgentNotice } from "../lib/agents-sync.ts";
+import { cpath } from "../lib/channels.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..", "..");
 
@@ -33,7 +34,7 @@ test("a notification may say id for key and low/medium/high for severity", () =>
 });
 
 test("every agent notifications file in the repo parses", () => {
-  const dir = path.join(ROOT, "improvement", "notifications");
+  const dir = cpath(ROOT, "improvement", "notifications");
   for (const f of readdirSync(dir).filter((x) => x.endsWith(".json"))) {
     const items = (JSON.parse(readFileSync(path.join(dir, f), "utf8")) as { notifications?: unknown[] }).notifications ?? [];
     for (const [i, raw] of items.entries()) {

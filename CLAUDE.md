@@ -2,7 +2,7 @@
 
 Automated pipeline that creates unique, music-and-motion-graphics personal-finance videos for a
 global English-speaking audience (India included; the channel is "Paisa Panchayat", see
-`channel/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 20–35 s big-money stories that loop) and
+`channels/<channel>/profile.md`) and uploads them to YouTube: **Shorts** (vertical, 20–35 s big-money stories that loop) and
 **long videos** (landscape, 5–6 min, the full story of a winning Short, character-led animation). A dashboard shows everything.
 
 Owner: Naishadh (full-stack, Next.js/TypeScript/Node/Python). Prefers direct, concise communication.
@@ -17,7 +17,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   the people shown a Short swiped away. The Shorts now improve themselves one tested change a week,
   with no owner review (`agents/policy.md` "The weekly loop", `agents/improver.md` section 4):
   - **One champion recipe, one challenger.** At most one Shorts experiment runs (`scripts/guard.py`);
-    half the Shorts get it. The list of challengers is `improvement/cycle/backlog.json` (research, the
+    half the Shorts get it. The list of challengers is `channels/<channel>/cycle/backlog.json` (research, the
     auditor and the owner's recipe notes feed it). Cycles alternate a first-second test and a look test.
   - **Judged by code** (`improvement/evaluate.py`): stayed to watch pooled per side (engaged views ÷
     views) for the first second, title, topic and story; held after the hook (end hold ÷ hook hold)
@@ -25,18 +25,18 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
     Shorts a side within 7 days (extended once). The improver applies the verdict, folds a kept one
     into the recipe and starts the next the same night, and posts a digest notification.
   - **The animation is read from where viewers leave**: the auditor's weekly tally ties each drop to
-    the picture on screen (`improvement/analysis/pictures.json`), retires the worst look or palette,
+    the picture on screen (`channels/<channel>/analysis/pictures.json`), retires the worst look or palette,
     queues a look challenger for the worst kind of picture, and names our 3 best Shorts as the bar the
     writer and QA work to.
   - **Lessons from our own videos**: the reviewer agent (`agents/reviewer.md`, Tue and Fri 21:07 IST)
     watches recent Shorts frame by frame next to their drop points and writes each mistake that cost
-    viewers into `generator/prompts/lessons.md`, which the writer follows and QA enforces.
+    viewers into `channels/<channel>/prompts/lessons.md`, which the writer follows and QA enforces.
   - **Study (owner, 2026-11-13)**: the owner pastes YouTube links (Shorts or long videos) on the
     dashboard's Study page, optionally naming one of ours to compare with (else the closest title).
     `study.yml` (started by the dashboard, every 2 h as a fallback; `workers/study.ts`) has Google's
     Gemini API (free tier, no billing, `GEMINI_API_KEY`) watch it and ours into shot sheets
     (`workers/lib/sheets.ts`; it read 5 of 5 of our Shorts right on 13 Nov), code measures both, and
-    it applies automatically: techniques to `generator/prompts/studied.md` (the writer follows it),
+    it applies automatically: techniques to `channels/<channel>/prompts/studied.md` (the writer follows it),
     the biggest look difference as a weekly-loop challenger (`from: study <date>`). Technique only:
     never their words, characters or art.
   - **Every Short is true** (owner, 2026-11-12, after watching our best Shorts): sourced facts about a
@@ -84,7 +84,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   Figures come from `params.fig` placeholders; the code check fails a figure typed into a file
   (`renderer/remotion.py`), the build fails a directed beat without its params, the craft gates read
   its places, sizes and moments. Captions in a directed video are big white words with figures in
-  yellow, no box. The approved reference: `videos/v-directed-netflix/` with its code. The shot system,
+  yellow, no box. The approved reference: `channels/paisa-panchayat/videos/v-directed-netflix/` with its code. The shot system,
   the build scene and the board below are the older kits, kept only so old videos re-render; where a
   bullet below describes the picture, this one wins.
 - **Voiceover only from the offline voice engine** (`renderer/engine/voice.py`, Kokoro, Apache-2.0;
@@ -98,13 +98,13 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   by the API at 07:07, 12:37 and 19:07 IST (about 6 h apart, like the 1K-view week of 22–28 Oct) (`uploadTimes`, `shortEveryDays: 1`, `uploadsPaused: false`;
   owner 2026-11-04: more videos, faster learning). Never a gap: the 30 Oct–1 Nov pause cost the channel its momentum. The **editor** step of every video run
   (`generator/prompts/editor.md`, `python -m generator.run rank`, `generator/editor.py`) rates every
-  ready Short and writes `improvement/editor/ranking.json`; ingest turns it into the queue order. The
+  ready Short and writes `channels/<channel>/editor/ranking.json`; ingest turns it into the queue order. The
   **owner** decides on the dashboard: **pick** the next upload (with why), reorder, **mark stale** (with
   why; status `rejected`, never published), and leave **feedback** on a video or the channel
-  (`Feedback` table → `metrics/feedback.json`). The routine reads it in `state` → `owner_feedback`
+  (`Feedback` table → `channels/<channel>/metrics/feedback.json`). The routine reads it in `state` → `owner_feedback`
   (right after the hard rules), and every agent whose lane can fix a note answers it (handing on what
   belongs to another agent; `agents/policy.md`, `python -m generator.feedback --agent <name>`) in
-  `improvement/feedback-acks/<agent>.json`, which ingest shows on the dashboard.
+  `channels/<channel>/feedback-acks/<agent>.json`, which ingest shows on the dashboard.
 - **Shorts slots** at 07:07, 12:37 and 19:07 IST (setting `uploadTimes`); **trend slots** (`trendUploadTimes`)
   are off since 2026-11-02 (when set, each breaking or trending video of the day opens
   one, so a trend never pushes a normal video back; quiet days leave them empty). Upload time barely
@@ -136,12 +136,12 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   never speaks) or a die-cut sticker `"prop": "photo:<name>"` (`remotion/src/studio/photo.tsx`), and
   credited in the description at ship. The renderer itself never uses the network.
 - **Demand first** (owner reset, 2026-10-21): every video tells a format people already watch in the
-  millions (`improvement/research/formats.json`: rich vs poor, what the rich know, traps, how they
+  millions (`channels/<channel>/research/formats.json`: rich vs poor, what the rich know, traps, how they
   make money, salary breakdowns, which one are you…), named in the plan's `story` with a reference
   video in `demand`. News is never a reason to make a video on its own.
 - **Big money first** (owner, 2026-10-30: every 1K+ Short and every subscriber came from billionaires,
   money at scale and how famous businesses make money): at least 2 of every 3 Shorts use a `tier: core`
-  format (`improvement/research/formats.json`, `generator/formats.py`); personal-budget formats rank last.
+  format (`channels/<channel>/research/formats.json`, `generator/formats.py`); personal-budget formats rank last.
 - **Global first** (owner, 2026-10-23: "Why billionaires never sell their stock" got 1,121 views, the
   local Shorts 26-349): about two in three videos are `topic.reach: "global"` (USD, anyone in the
   world can relate: famous people and companies, how the rich work, money at scale). A local video
@@ -156,7 +156,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 - **Depth and a picture that follows the words** (owner, 2026-10-26: viewers left right after the
   hook; every video turned into the same props): Shorts run the length setting (20–35 s since 2026-11-04) on a story spine (hook → promise
   by 6 s → rising stakes → a turn → the payoff → loop; `generator/story.py`), arranged in a **shape**
-  from a growing library (`improvement/research/shapes.json`, `generator/shapes.py`: reveal, versus,
+  from a growing library (`channels/<channel>/research/shapes.json`, `generator/shapes.py`: reveal, versus,
   levels only for real ladders…; owner 2026-10-30), opened by a **curiosity hook** that never gives
   the answer, and explained by one voice in full sentences at ~175 words a minute (tempo 1.2) while the things being
   explained take the centre of the frame and every spoken figure animates, drawn
@@ -182,7 +182,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   the best is dropped, one at ≥1.5× (≥2× from 3 videos) becomes the default. Change defaults only
   through it; agents propose a new option in a notification (`config/arms.json` is guard-locked).
 - **The board: rooms and cards** (a Short variant since 2026-11-04; owner, 2026-11-02, after a frame-by-frame study of The Curious
-  Plot and four reviewed demos, `improvement/style-study/2026-11-02-the-curious-plot.md`): Shorts and
+  Plot and four reviewed demos, `channels/paisa-panchayat/style-study/2026-11-02-the-curious-plot.md`): Shorts and
   long videos are told on `board` beats (`remotion/src/studio/board.tsx`, README "The board"). Questions
   in a room with the cast, every answer a full-frame card (no cast) that is a labelled diagram: a
   document with real data, sums written out, chips, charts, things that turn into, move into and feed
@@ -206,8 +206,8 @@ Claude Code routine (cloud: 04:07 IST makes all 3 of the day's videos in one ses
                      09:07 IST spare run makes up any shortfall, else idles;
                      11:30 IST trend run: one extra Short only for a strong trend)
   └─ planner → writer → number check → fact review → director → render → QA review
-  └─ commits videos/<id>/manifest.json + thumbnail.png
-  └─ uploads videos/<id>/video.mp4 as a GitHub Release asset (tag: video-<id>)
+  └─ commits channels/<channel>/videos/<id>/manifest.json + thumbnail.png
+  └─ uploads channels/<channel>/videos/<id>/video.mp4 as a GitHub Release asset (tag: video-<id>)
         │
         ▼
 GitHub repo (handoff point; sessions never hold DB or YouTube credentials)
@@ -232,33 +232,33 @@ if free tiers get in the way. Keep the worker code portable so it runs in both p
 
 Four nightly Claude Code routines check and improve the automation itself, 23:00–09:00 IST:
 **auditor** (23:00, after the 13:53 `data-audit.yml` (it lands around 19:00) compares the dashboard's numbers with YouTube and
-the database into `metrics/data-audit.json`: fixes data bugs and code bugs anywhere, one refactor a
+the database into `channels/<channel>/metrics/data-audit.json`: fixes data bugs and code bugs anywhere, one refactor a
 night; may change `workers/` and `lib/live-stats.ts` but never uploads, sign-in or the audit itself;
 and writes the AI analysis the Analytics page shows, a verdict per recent video and a weekly channel
-review from `metrics/analytics.json` into `improvement/analysis/`),
+review from `channels/<channel>/metrics/analytics.json` into `channels/<channel>/analysis/`),
 **research** (23:47, demand scan: formats and topics people watch, reports + proposals, never code), **improver** (06:17, A/B experiments on ~50% of
-videos via `config/experiments.json`, keep/revert by `python -m improvement.evaluate` (4 videos per arm, 3 when the effect is 2×, 7 days at most, on 48-hour public views since 2026-11-04), recipes,
+videos via `channels/<channel>/experiments.json`, keep/revert by `python -m improvement.evaluate` (4 videos per arm, 3 when the effect is 2×, 7 days at most, on 48-hour public views since 2026-11-04), recipes,
 scenes, cast, camera and design in `remotion/src` behind flags, fixes recurring failures) and **dashboard** (07:37, bug hunt + smoke tests, UI
 trends Mon/Wed/Fri). Agents only push `agent/<name>/<date>` branches; `.github/workflows/agent-merge.yml`
 merges them only if `scripts/guard.py` (path allow-lists, hard-rule invariants, size/daily limits)
 and the tests pass. They report to `improvement/activity/` (dashboard Agents page) and raise
-owner-only problems in `improvement/notifications/` (dashboard Notifications page, with the hourly
+owner-only problems in `channels/<channel>/notifications/` (dashboard Notifications page, with the hourly
 `watchdog.yml`). Rules: `agents/policy.md`. Never weaken the guard, the policy or the evaluator's
 rules to let an agent change through.
 
 **The growth loop** (owner, 2026-10-17: the owner uploads and reviews monthly; the agents grow the
-channel in between). The channel itself is described in `channel/profile.md`, which every agent
+channel in between). The channel itself is described in `channels/<channel>/profile.md`, which every agent
 reads first. The daily `market.yml` (22:17 IST) puts this week's fastest-growing niche videos and
 our comments on the `market-data` branch (one commit, replaced daily: YouTube API data is never
 kept past its refresh). Research and Scout start from it; the improver applies, A/B-tests and keeps
 or reverts by `improvement/evaluate.py` (per format; look and sound changes on % viewed). The
-**monthly review** (`agents/monthly.md`, 12:07 IST on the 1st) writes `improvement/monthly/<YYYY-MM>.md`,
+**monthly review** (`agents/monthly.md`, 12:07 IST on the 1st) writes `channels/<channel>/monthly/<YYYY-MM>.md`,
 next month's `focus.json` for the agents, and up to three setting proposals the owner approves or
-declines on the Notifications page (strategy settings only; decisions in `metrics/decisions.json`).
+declines on the Notifications page (strategy settings only; decisions in `channels/<channel>/metrics/decisions.json`).
 A second channel: `docs/guide/13-new-channel.md`.
 
-**Research routes every finding** (`improvement/research/README.md`): `video` → the topic feed
-`improvement/research/topics.json`, which the next video run's planner reads (`state.topic_feed`;
+**Research routes every finding** (`channels/<channel>/research/README.md`): `video` → the topic feed
+`channels/<channel>/research/topics.json`, which the next video run's planner reads (`state.topic_feed`;
 a usable `breaking` topic must be taken first, a topic with `facts` is told as news); `adopt` (proven,
 required or a fix) → the improver applies it directly; `experiment` → A/B; `template` → a new
 format the improver builds; `owner` → notifications.
@@ -315,11 +315,16 @@ renderer/                Python 3.12: numbers, timing and sound for the videos
   remotion.py, gates.py  render with Remotion in chunks, mux, contact sheet, liveliness gate
 remotion/                Remotion 4 + React: design rules, cast, scenes, camera, compositions
   src/flat/              the flat 2D kit every new video is drawn with (directed beats, since 2026-11-13)
+channels/<slug>/         one folder per YouTube channel (multi-channel layout, 2026-11-17; `config/channel-layout.json`
+                         maps the old paths): profile.md, market.json, experiments.json, research/, longform/, cycle/,
+                         videos/, history/, metrics/, notifications/, feedback-acks/, prompts/lessons.md… Paisa
+                         Panchayat is `channels/paisa-panchayat/`; code reads them via generator/channels.py and
+                         workers/lib/channels.ts, and every `generator.run` command takes `--channel`
+  videos/<id>/           manifest.json, script.json, thumbnail.png, preview.png (mp4 in Releases)
+  history/               history.json: every generated video's topic, template, style (source of
+                         truth for variety rules inside routines, mirrored into Postgres)
 generator/               routine-side logic: history, variety rules, validation, number checks
   prompts/               prompts for planner, writer, fact reviewer, QA reviewer, recipe builder
-videos/<id>/             manifest.json, script.json, thumbnail.png, preview.png (mp4 in Releases)
-history/                 history.json: every generated video's topic, template, style (source of
-                         truth for variety rules inside routines, mirrored into Postgres)
 assets/fonts/            Poppins (OFL), downloaded from Google Fonts
 reference/               original prototype renderer (rahul_vs_amit_v2.py)
 .github/workflows/       ingest.yml, publish.yml, stats.yml
@@ -351,7 +356,7 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
 
 ## Generation run (what each routine session does)
 
-1. **Read state**: `history/history.json`, count ready videos (`queued` + not yet ingested).
+1. **Read state**: `channels/<channel>/history/history.json`, count ready videos (`queued` + not yet ingested).
    If backlog ≥ 30 → do template work instead (step T) and stop.
 2. **Planner (agent)**: pick a topic + template that pass the variety rules. Write `plan.json`.
 3. **Writer (agent)**: write the storyboard `script.json` from the template's README and a story
