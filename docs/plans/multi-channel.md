@@ -475,6 +475,16 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   - Owner, once: create the web OAuth client and add `YT_WEB_CLIENT_ID`, `YT_WEB_CLIENT_SECRET` (Netlify
     and GitHub) and `SESSION_SECRET` (GitHub).
 
+- **2026-11-17: step 3a (niche scan and quick verdict) done.** `workers/niche-scan.ts` + `lib/niche.ts`
+  (outliers per channel, small channels' hits, length bands, title features, direction, crowding;
+  `families` ranks Claude's topic labels into core/low/avoid), `niche-scan.yml` (aggregates on main,
+  titles only on the `niche-data` branch for 30 days; reads with channel #1's sign-in, ~1,400 units),
+  setup stages with the verdict and Continue/Stop on the Channels page, `lib/setup-sync.ts`, and
+  `.claude/skills/new-channel` (scan + verdict phases). Backtest: finds big money over budget tips;
+  misses the news and length lessons (`channels/paisa-panchayat/research/backtest-2026-11-17.md`).
+  Next: 3b full research and advice, 3c channel pack and the niche-agnostic pipeline, 3d samples and
+  the Launch review, 3e routines for many channels.
+
 ## Order of work
 1. **Platform refactor** (layout, database, workers, quota keeper, `--channel`). Channel #1 keeps
    running unchanged, and the test suites prove it.
