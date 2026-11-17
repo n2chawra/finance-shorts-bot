@@ -11,6 +11,7 @@ import { CharacterSheet } from "./sheets/CharacterSheet";
 import { Promo, type PromoProps } from "./promo/Promo";
 import { PromoThumb } from "./promo/Thumb";
 import { ChannelAvatar as GlobalAvatar, ChannelBanner as GlobalBanner } from "./promo/Channel";
+import { MapSheet } from "./sheets/MapSheet";
 
 export const Root: React.FC = () => (
   <>
@@ -23,6 +24,7 @@ export const Root: React.FC = () => (
     {/* approval sheets */}
     <Still id="CharacterSheet" component={CharacterSheet} width={1920} height={1080} />
     <Composition id="ActingTest" component={ActingTest} durationInFrames={300} fps={30} width={1920} height={1080} />
+    <Composition id="MapSheet" component={MapSheet} durationInFrames={180} fps={30} width={1080} height={1920} />
     {/* channel art (assets/channel/): `npx remotion still src/index.ts ChannelAvatar|ChannelBanner <out.png>` */}
     <Still id="ChannelAvatar" component={ChannelAvatar} width={AVATAR.width} height={AVATAR.height} />
     <Still id="ChannelBanner" component={ChannelBanner} width={BANNER.width} height={BANNER.height} />
