@@ -51,6 +51,7 @@ DISCLAIMER = "Illustrative only. Not financial advice."
 TYPED_NUMBER = re.compile(r"[0-9₹$£€]")   # a digit or any currency sign
 PLACEHOLDER = re.compile(r"\{[a-z][a-z0-9_]*\}")   # names may hold digits ({card_paid_year1}); text may not
 from renderer.voices import CAST_VOICES, NARRATOR_VOICES  # noqa: E402  (re-exported for generator.run)
+from generator import pack as channel_pack
 SPEEDS = {"long": 1.0, "short": 1.0}
 # Pace: the whole video plays this much faster than its story clock, voice, pauses, animations and
 # transitions together, like watching at that playback speed. The owner watched the first long
@@ -538,6 +539,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     fact_figures, sources = _facts(script)
     figures = {**maths.placeholders(results), **fact_figures}
     narrator = script.get("narrator") or random.Random(f"narrator:{seed}").choice(NARRATOR_VOICES)
+    # the channel's language and disclaimer (generator/pack.py; channel #1's values when it has no pack)
+    pack = channel_pack.load()
+    lang, disclaimer = pack["language"], (pack["disclaimer"] or DISCLAIMER)
     tempo = float(script.get("tempo", TEMPOS[fmt]))
     speed = voice_speed(script, fmt, tempo)        # the voice, at the video's pace
     lead, tail, gap = LEAD/tempo, TAIL/tempo, GAP_NO_VOICE/tempo
@@ -555,7 +559,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000, fm.currency)["x"] if b.say else ""
         if spoken:
             who = CAST_VOICES.get(b.speaker, narrator) if b.speaker != "narrator" else narrator
-            line = _estimate(spoken, speed) if voice == "estimate" else tts.speak_timed(spoken, who, speed)
+            line = _estimate(spoken, speed) if voice == "estimate" else tts.speak_timed(spoken, who, speed, lang)
             dur = max(b.min_sec/tempo, lead + line.seconds + tail)
         else:
             line, dur = None, max(b.min_sec/tempo, gap)
@@ -652,7 +656,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                   **({"look": (script.get("style") or {})["look"]} if (script.get("style") or {}).get("look") else {})},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1), "stems": stems, "lufs": lufs,
                   **({"music_under_voice_db": under} if under is not None else {})},
-        "disclaimer": DISCLAIMER, "captions": True, "voiceMode": voice, "sources": sources, "currency": fm.currency,
+        "disclaimer": disclaimer, "captions": True, "voiceMode": voice, "sources": sources, "currency": fm.currency,
         # A/B variants for this video ({id: "on" | "off"}, generator/experiments.py): scenes read them
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest
         "experiments": dict(script.get("experiments") or {}),

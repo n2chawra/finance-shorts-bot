@@ -9,6 +9,8 @@ Every video is voiced, drawn by Remotion with the recurring cast.
 Read `channels/<channel>/profile.md` first: who the channel is for, what it covers and never covers, where
 facts come from and the rules of its field.
 
+For any channel other than Paisa Panchayat, read `channels/<channel>/prompts/recipe.md` (its champion recipe) and `channels/<channel>/channel.json` next: its language, numbers mode (`none`: no computed figures, no `maths`), disclaimer and whether its stories are true or declared fiction. Where this page describes personal-finance specifics, that channel's recipe wins; the hard rules do not change.
+
 **The owner's feedback comes right after the hard rules** (owner, 2026-10-30). `state` →
 `owner_feedback`: `open` notes (a `wrong` note is a rule until the improver addresses it; `improve`
 and `general` notes shape this video) and `taste` (the videos he picked to publish and the ones he

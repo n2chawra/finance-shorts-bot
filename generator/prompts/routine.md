@@ -6,7 +6,7 @@ will answer questions. Do one run as described here, then stop. Work only in thi
 Keep the run lean: it uses a Claude Pro plan's quota. Read only the files this page names, do not
 run the test suite, do not explore the codebase, and do not improve things you were not asked to.
 
-**Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names, else `paisa-panchayat` (today's only channel). Pass `--channel <channel>` to `python -m generator.run` when your prompt names one. Shared code, `config/settings.json` and `improvement/activity/` stay where they are.
+**Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names, else `paisa-panchayat` (today's only channel). Pass `--channel <channel>` to `python -m generator.run` when your prompt names one. Shared code, `config/settings.json` and `improvement/activity/` stay where they are. **Another channel than Paisa Panchayat** also has `channels/<channel>/channel.json` (its language, voices, currency, numbers mode, disclaimer, true or fiction stories, look; `python -m generator.pack show <channel>`) and `channels/<channel>/prompts/recipe.md`, its champion recipe: where CLAUDE.md describes Paisa Panchayat's recipe, topics or look, that channel follows its own recipe.md and pack instead; the hard rules (true facts or declared fiction, figures from code, uniqueness, voice only from Kokoro) bind every channel.
 
 ## 0. Prepare
 

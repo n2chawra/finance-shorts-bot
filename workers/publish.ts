@@ -30,9 +30,9 @@ import {
 import { loadSettings, type Settings } from "./lib/settings.ts";
 import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
-import { TokenError, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
+import { TokenError, UPLOAD_CATEGORY, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
 import { coverFile } from "./lib/cover.ts";
-import { cpath, layout } from "./lib/channels.ts";
+import { channelPack, cpath, layout } from "./lib/channels.ts";
 import { activeChannels, channelSettings, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { COST, QuotaKeeper } from "./lib/quota.ts";
 
@@ -41,7 +41,7 @@ const MAX_ATTEMPTS = 3;
 type Format = "short" | "long";
 
 /** One channel's run: its id, its settings and the shared quota. Channel #1's notification keys keep their old names. */
-type Run = { channelId: string; settings: Settings; quota: QuotaKeeper; key: (k: string) => string; label: string };
+type Run = { channelId: string; settings: Settings; quota: QuotaKeeper; key: (k: string) => string; label: string; category: string };
 
 /** Our designed cover instead of the frame YouTube picks (owner, 2026-11-03: "the thumbnail is wrong").
  * The video is already uploaded, so a refused cover is reported, never a failed upload. */
@@ -76,7 +76,9 @@ async function main(): Promise<void> {
     for (const ch of channels) {
       const first = ch.id === layout().default;
       const run: Run = { channelId: ch.id, settings: channelSettings(base, ch.settings), quota,
-        key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: ` };
+        key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: `,
+        // the channel's own upload category (its pack); channel #1 keeps categoryOf's single category
+        category: first ? UPLOAD_CATEGORY : channelPack(ch.id).uploadCategory };
       console.log(`== ${ch.name} (${ch.id})`);
       try {
         await publishChannel(prisma, run, tokenOf(ch));
@@ -241,7 +243,7 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
     const file = path.join(dir, "video.mp4");
     await downloadReleaseAsset(repoSlug(ROOT), `video-${video.id}`, "video.mp4", file);
     const meta = youtubeMeta(video, disclaimer, format);
-    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: categoryOf(video.style) });
+    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: run.channelId === layout().default ? categoryOf(video.style) : run.category });
     await prisma.$transaction([
       prisma.upload.upsert({
         where: { videoId: video.id },

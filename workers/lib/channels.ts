@@ -71,3 +71,14 @@ export function allChannels(root: string = REPO): string[] {
     : [];
   return found.length ? found : [layout(root).default];
 }
+
+/** A channel's pack values the workers need (channels/<slug>/channel.json, generator/pack.py); channel #1's without one. */
+export function channelPack(slug: string, root: string = REPO): { name: string | null; uploadCategory: string } {
+  const file = path.join(root, "channels", slug, "channel.json");
+  try {
+    const j = JSON.parse(readFileSync(file, "utf8")) as { name?: string; uploadCategory?: string };
+    return { name: j.name ?? null, uploadCategory: /^\d+$/.test(j.uploadCategory ?? "") ? j.uploadCategory! : "22" };
+  } catch {
+    return { name: null, uploadCategory: "22" };
+  }
+}

@@ -8,7 +8,7 @@ blocks the merge if you break them; the rest is on you.
 come from and which rules of the field apply. Your own instructions describe the machine; the
 profile describes the channel, and where they differ about the channel, the profile wins.
 
-**Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names, else `paisa-panchayat` (today's only channel). Pass `--channel <channel>` to `python -m generator.run` when your prompt names one. Shared code, `config/settings.json` and `improvement/activity/` stay where they are.
+**Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names, else `paisa-panchayat` (today's only channel). Pass `--channel <channel>` to `python -m generator.run` when your prompt names one. Shared code, `config/settings.json` and `improvement/activity/` stay where they are. **Another channel than Paisa Panchayat** also has `channels/<channel>/channel.json` (its language, voices, currency, numbers mode, disclaimer, true or fiction stories, look; `python -m generator.pack show <channel>`) and `channels/<channel>/prompts/recipe.md`, its champion recipe: where CLAUDE.md describes Paisa Panchayat's recipe, topics or look, that channel follows its own recipe.md and pack instead; the hard rules (true facts or declared fiction, figures from code, uniqueness, voice only from Kokoro) bind every channel.
 
 ## The weekly loop (owner, 2026-11-12)
 The Shorts improve themselves one tested change at a time, with no owner review in between.

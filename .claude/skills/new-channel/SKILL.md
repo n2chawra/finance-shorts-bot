@@ -131,7 +131,40 @@ Also `research/report.md`: the niche report behind the advice (families table, s
 comments' themes, gaps, risks turned into setup rules). Then `setup.json` → `{"stage": "build"}`,
 commit (`git add channels/<slug>` — never `.niche-data/`) and push.
 
-## 4–6. Build, samples, review — being built (steps 3c–3d)
+## 4. Build the channel pack (stage `build`)
+
+```bash
+python -m generator.pack scaffold <slug> --name "<working name>" --language <en-us|en-gb|hi|es|…> --numbers <none|simple|finance>
+python -m generator.pack check <slug>      # repeat until it says OK
+```
+
+Scaffold makes the folders and starting files (never overwrites). Then fill, from the research:
+
+- **`channel.json`**: language; voices (one Kokoro Shorts narrator speaking the channel's language, and
+  long narrators); currency and currencies (if numbers aren't `none`); `numbers` (`finance` only for
+  money maths, `simple` for counts and dates, `none` when the niche's hits show no computed figures);
+  the **disclaimer** the niche needs (a fiction channel says the story is made up; health, legal and
+  money niches say it is not advice); `stories` (`true` or `fiction`, from what the niche's hits are);
+  `look.cast` (`none` when `style.json` says no cast, else the shared studio cast); `uploadCategory`.
+- **`profile.md`**: who it is for, what it covers and never covers, where facts come from, the rules of
+  its field, the risks from the verdict turned into rules. 150+ words.
+- **`research/formats.json`**: the niche's formats from `families.json` (each: id, format short|long,
+  name, hook, beats, tier core|low|avoid from the numbers, the hits it rests on as `demand`).
+- **`research/shapes.json`**: keep the shared shapes the niche's hits use; drop the rest.
+- **`research/topics.json`**: 15–20 first topics, the core families first; true channels carry sourced
+  `facts` (value, unit, source URL, as_of) on each, exactly as channel #1's research agent writes them.
+- **`prompts/recipe.md`**: the champion recipe: length, topic kinds and their shares, the opening rules
+  from `firstSecond`, the look and style targets from `style.json`, the ending. The writer follows it
+  where CLAUDE.md describes Paisa Panchayat's recipe.
+- **`cycle/backlog.json`** `candidates`: what the research was unsure of, ranked, alternating
+  first-second and look tests (the weekly loop's first challengers).
+- **`market.json`** `queries`: the niche's searches for the daily market scan.
+- **Branding kit** (`branding/`): 3 name ideas with their @handles checked on YouTube and searched for
+  clashes, the description and keywords, and an avatar and banner drawn on the flat kit.
+
+When `pack check` passes: `setup.json` → `{"stage": "samples"}`, commit and push.
+
+## 5–6. Samples and review — being built (step 3d)
 
 ## Rules
 

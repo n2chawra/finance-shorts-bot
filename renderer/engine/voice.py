@@ -227,18 +227,20 @@ def words_from_phonemes(text: str, phonemes: list[tuple[str, float, float]]) -> 
     return [(w, span0 + (span1 - span0)*i/n, span0 + (span1 - span0)*(i + 1)/n) for i, w in enumerate(words)]
 
 
-def speak_timed(text: str, voice: str, speed: float) -> Timed:
+def speak_timed(text: str, voice: str, speed: float, lang: str = "en-us") -> Timed:
     """Synthesize one line with phoneme and word timings (kokoro-onnx >= 0.6 with a model that
     exposes durations; scripts/setup-voice.sh installs it). The model is deterministic, so each
     line is cached by (model, voice, speed, text): rebuilding a timeline after a picture-only
-    change re-speaks nothing."""
-    key = hashlib.sha256(f"{MODEL}|{voice}|{speed:.4f}|{text}".encode()).hexdigest()[:24]
+    change re-speaks nothing. `lang` is the channel's language (generator/pack.py), not the voice's: channel
+    #1's Indian voice speaks English. The cache key only grows a language for a non-English channel."""
+    lang_key = "" if lang == "en-us" else f"|{lang}"
+    key = hashlib.sha256(f"{MODEL}|{voice}|{speed:.4f}{lang_key}|{text}".encode()).hexdigest()[:24]
     cached = model_dir()/"lines"/f"{key}.npz"
     if cached.is_file():
         z = np.load(cached)
         phon = [(p, float(a), float(e)) for p, a, e in json.loads(str(z["phonemes"]))]
         return Timed(text, voice, speed, z["samples"].astype(np.float64), phon, words_from_phonemes(text, phon))
-    t = _speak_timed(text, voice, speed)
+    t = _speak_timed(text, voice, speed, lang)
     cached.parent.mkdir(parents=True, exist_ok=True)
     tmp = cached.with_suffix(".tmp.npz")
     np.savez(tmp, samples=t.samples.astype(np.float32), phonemes=json.dumps(t.phonemes))
@@ -246,11 +248,11 @@ def speak_timed(text: str, voice: str, speed: float) -> Timed:
     return t
 
 
-def _speak_timed(text: str, voice: str, speed: float) -> Timed:
+def _speak_timed(text: str, voice: str, speed: float, lang: str = "en-us") -> Timed:
     engine = _engine()
     if not getattr(engine, "has_timings", False):
         raise RuntimeError("this voice model has no timing output; run: bash scripts/setup-voice.sh")
-    samples, sr, timings = engine.create_timed(text, voice=voice, speed=speed, lang="en-us")
+    samples, sr, timings = engine.create_timed(text, voice=voice, speed=speed, lang=lang)
     x = np.asarray(samples, dtype=np.float64)
     loud = np.flatnonzero(np.abs(x) > 0.01)
     lead = max(0, loud[0] - int(0.02*sr)) if loud.size else 0

@@ -33,7 +33,7 @@ from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, 
 from . import editor, experiments, failures, feedback, formats, history, images, looks, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
-from . import channels
+from . import channels, pack
 from .channels import cpath
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
@@ -246,12 +246,15 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
             problems += arms.plan_problems(plan, root)
         if fmt == "short" and "#shorts" not in [h.lower() for h in plan["hashtags"]]:
             problems.append("hashtags must include #Shorts")
-        # global since 2026-10-18: every plan names its money (channel/profile.md)
-        if plan.get("currency") not in CURRENCIES:
-            problems.append(f"currency must be one of {', '.join(CURRENCIES)}: USD unless the story is about one country")
-        # a Short has no end card any more, so the description always carries the disclaimer
-        if load_settings(root)["disclaimer"] not in plan["description"]:
-            problems.append(f"description must include the disclaimer: {load_settings(root)['disclaimer']}")
+        # every plan names its money, from the channel's own currencies (generator/pack.py; channel #1: USD
+        # unless the story is about one country, global since 2026-10-18)
+        ch = pack.load(root=root)
+        currencies = [c for c in ch["currencies"] if c in CURRENCIES]
+        if ch["numbers"] != "none" and plan.get("currency") not in currencies:
+            problems.append(f"currency must be one of {', '.join(currencies)}: {ch['currency']} unless the story is about one country")
+        # a Short has no end card any more, so the description always carries the channel's disclaimer
+        if ch["disclaimer"] not in plan["description"]:
+            problems.append(f"description must include the disclaimer: {ch['disclaimer']}")
     log_step(vid, "planner", not problems, problems or ["Plan passes the variety rules."], root)
     return problems
 
@@ -260,6 +263,9 @@ def run_number_check(vid: str, root: Path = ROOT) -> list[str]:
     d = _dir(vid, root)
     script, plan = _read(d / "script.json"), _read(d / "plan.json")
     passed, notes = number_check(script, plan, topics.source_topic(plan, root))
+    # a channel whose videos show no computed figures (generator/pack.py numbers: none) has no maths
+    if pack.load(root=root)["numbers"] == "none" and script.get("maths"):
+        passed, notes = False, [*notes, "this channel shows no computed numbers (channel.json numbers: none): drop script.maths"]
     if passed:   # pacing warnings never fail the check, but the writer sees them and they are logged
         for w in check_script(script).get("warnings", []):
             print(f"WARN: {w}")
@@ -411,8 +417,9 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         if plan_format(script) == "short":
             # one narrator for every Short (owner review, 2026-11-11): the growing channels in this niche keep
             # one voice, and ours changed every video. Long videos still rotate.
-            if script.get("narrator") != SHORTS_NARRATOR:
-                script["narrator"] = SHORTS_NARRATOR
+            narrator = pack.load(root=root)["voices"]["shortsNarrator"]   # the channel's own Shorts voice
+            if script.get("narrator") != narrator:
+                script["narrator"] = narrator
                 _write(d / "script.json", script)
         elif not script.get("narrator") or script["narrator"] == previous or script["narrator"] in taken:
             script["narrator"] = next_narrator(earlier, taken)

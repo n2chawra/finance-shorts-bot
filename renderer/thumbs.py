@@ -33,6 +33,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from generator.channels import cpath
+from generator import pack as channel_pack
 
 ROOT = Path(__file__).resolve().parents[1]
 # the 2026-10-26 types: building blocks a Thumb.tsx may import from LongThumbs.tsx, no longer layouts
@@ -401,7 +402,7 @@ def feed(vid: str, out: Path | None = None, files: list[Path] | None = None, tit
         if views is None:
             draw.rectangle([x - 3, y - 3, x + W + 2, y + H + 2], outline=(255, 210, 63), width=3)
         draw.text((x, y + H + 8), t[:46] + ("…" if len(t) > 46 else ""), fill=(241, 241, 241), font=font)
-        draw.text((x, y + H + 28), "Paisa Panchayat · ours" if views is None else f"{views / 1e6:.1f}M views", fill=(170, 170, 170), font=font)
+        draw.text((x, y + H + 28), f"{channel_pack.load()['name']} · ours" if views is None else f"{views / 1e6:.1f}M views", fill=(170, 170, 170), font=font)
     out = out or d / "feed-preview.png"
     sheet.save(out)
     return out
