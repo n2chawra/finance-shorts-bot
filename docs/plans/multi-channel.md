@@ -491,6 +491,14 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   labels, watches, and writes `advice.md` and `report.md`. Not yet run end to end on a real niche (it
   needs a channel past its verdict); the Claude-labelled re-check of the backtest's news result waits
   for that run.
+- **2026-11-17: step 3c (channel pack) done.** `generator/pack.py` (`channels/<slug>/channel.json`: language,
+  voices, currencies, numbers mode, disclaimer, true/fiction, look, upload category; `check`, `scaffold`).
+  The pipeline reads it: Shorts narrator, check-plan currencies and disclaimer, the timeline's
+  disclaimer and voice language, no maths on a numbers-none channel, thumbnail label, publish's
+  category. Channel #1 proven identical (state, check-plan, built timeline). Not yet done: a
+  non-English Kokoro voice is untested (it may need espeak-ng data); the flat kit doesn't yet read
+  `look.cast`/palettes (the director picks components); the branding kit's avatar and banner are
+  described in the skill, not drawn by code; `numbers: simple` behaves like finance.
 
 ## Order of work
 1. **Platform refactor** (layout, database, workers, quota keeper, `--channel`). Channel #1 keeps
