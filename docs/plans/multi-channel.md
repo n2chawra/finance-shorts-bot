@@ -484,6 +484,13 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   misses the news and length lessons (`channels/paisa-panchayat/research/backtest-2026-11-17.md`).
   Next: 3b full research and advice, 3c channel pack and the niche-agnostic pipeline, 3d samples and
   the Launch review, 3e routines for many channels.
+- **2026-11-17: step 3b (full research numbers) done.** `lib/research.ts` + `niche-research.ts`: families
+  with direction, crowding and gaps; style targets, picture language, cast or not and the first
+  second from shot sheets (Study-page format, written by Claude in the browser); video-count advice
+  with reasons fitted to the quota left; top-hit comments. The skill's research phase says how Claude
+  labels, watches, and writes `advice.md` and `report.md`. Not yet run end to end on a real niche (it
+  needs a channel past its verdict); the Claude-labelled re-check of the backtest's news result waits
+  for that run.
 
 ## Order of work
 1. **Platform refactor** (layout, database, workers, quota keeper, `--channel`). Channel #1 keeps
