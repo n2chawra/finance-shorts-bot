@@ -408,8 +408,8 @@ uploads. Both were visible in public data beforehand. The setup measures them:
    - the quick verdict and its Continue / Stop;
    - the full research for the niche (outlier database, topic tiers, format, the first second, the
      style study and picture language, comments, gaps) and the advice (topic kinds, video counts);
-   - the sample Shorts and long video, last, with the side-by-side Launch review;
    - the channel pack, the champion recipe and challenger list from the research, and the pre-launch backlog;
+   - the sample Shorts and long video, last, with the side-by-side Launch review;
    - auth and routines.
 4. **Hands-off layer:** the weekly loop and the reviewer per channel, drop diagnosis on stayed to watch, the animation
    tally, the stop rule, the weekly digest, usage per channel, change log and one-change rule, the
