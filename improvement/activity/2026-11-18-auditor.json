@@ -1,0 +1,12 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-18",
+  "startedAt": "2026-11-17T16:32:53Z",
+  "finishedAt": "2026-11-17T16:33:00Z",
+  "summary": "Agents are paused, so the audit, bug review and analytics analysis were skipped tonight.",
+  "decision": "nothing",
+  "why": "config/settings.json has agents.paused true (synced from the dashboard on 17 Nov); auditor.md says to stop with activity nothing when agents are paused.",
+  "findings": [],
+  "changes": [],
+  "nextCheck": "2026-11-19"
+}
