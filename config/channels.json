@@ -4,13 +4,20 @@
     "paisa-panchayat": {
       "name": "Paisa Panchayat",
       "status": "active",
-      "settings": {},
+      "settings": {
+        "longPerWeek": 1,
+        "uploadTimes": [
+          "07:07",
+          "19:07"
+        ],
+        "dailyVideoTarget": 2
+      },
       "health": {
-        "at": "2026-11-17T11:31:31.579Z",
+        "at": "2026-11-17T13:46:16.613Z",
         "color": "amber",
         "reason": "making videos is paused",
         "stayed": 0.3708113624766117,
-        "bufferDays": 0.3,
+        "bufferDays": 0.5,
         "usageShare": 1,
         "stayedBefore": 0.4441265567149108,
         "weeksUnderFloor": 2
@@ -18,6 +25,22 @@
       "backlog": 1,
       "backlogByFormat": {
         "short": 1,
+        "long": 0
+      }
+    },
+    "geography-maps-geopolitical-mysteries": {
+      "name": "Geography, maps & geopolitical mysteries",
+      "status": "setup",
+      "settings": {
+        "dailyVideoTarget": 1
+      },
+      "setup": {
+        "stage": "verdict",
+        "decision": null
+      },
+      "backlog": 0,
+      "backlogByFormat": {
+        "short": 0,
         "long": 0
       }
     }
