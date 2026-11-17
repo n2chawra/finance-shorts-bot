@@ -14,31 +14,35 @@ import { existsSync, readFileSync } from "node:fs";
 import { Prisma, PrismaClient } from "@prisma/client";
 
 import { istDay } from "./lib/publishing.ts";
-import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
+import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { dropPoints, hookHold, spokenBeats } from "./lib/retention.ts";
 import { failKey, statsOutcome } from "./lib/stats-failures.ts";
 import { analyticsStartDay, channelDays } from "./lib/analytics.ts";
 import { DAY_METRICS, TokenError, accessToken, dailyStats, report, retentionCurve } from "./lib/youtube.ts";
-import { cpath } from "./lib/channels.ts";
+import { cpath, layout } from "./lib/channels.ts";
+import { activeChannels, refreshTokenOf } from "./lib/channel-auth.ts";
 
 const DAY_MS = 86_400_000;
 const KEEP_DAYS = 365;       // history fetched and kept per video
 const STALE_DAYS = 30;       // policy limit for unrefreshed API data
+/** Per-channel keys: channel #1 keeps the old names. */
+type Run = { channelId: string; key: (k: string) => string; label: string };
 const REFRESHED_KEY = "statsRefreshedAt";
 const FAILING_KEY = "statsFailing";   // what failed last run (lib/stats-failures.ts)
 
-async function deleteIfStale(prisma: PrismaClient): Promise<boolean> {
-  const row = await prisma.setting.findUnique({ where: { key: REFRESHED_KEY } });
+async function deleteIfStale(prisma: PrismaClient, run: Run): Promise<boolean> {
+  const row = await prisma.setting.findUnique({ where: { key: run.key(REFRESHED_KEY) } });
   const last = typeof row?.value === "string" ? Date.parse(row.value) : 0;
   if (Date.now() - last < STALE_DAYS * DAY_MS) return false;
-  const { count } = await prisma.videoStat.deleteMany();
-  await prisma.upload.updateMany({ data: { retention: Prisma.DbNull, relRetention: Prisma.DbNull, drops: Prisma.DbNull, hookHold: null, retentionAt: null } });
-  // every other table of YouTube data goes with it
-  await prisma.channelDay.deleteMany();
-  await prisma.breakdown.deleteMany();
-  await prisma.comment.deleteMany();
-  await prisma.liveSnapshot.deleteMany();
+  const ofChannel = { upload: { video: { channelId: run.channelId } } };
+  const { count } = await prisma.videoStat.deleteMany({ where: ofChannel });
+  await prisma.upload.updateMany({ where: { video: { channelId: run.channelId } }, data: { retention: Prisma.DbNull, relRetention: Prisma.DbNull, drops: Prisma.DbNull, hookHold: null, retentionAt: null } });
+  // every other table of this channel's YouTube data goes with it
+  await prisma.channelDay.deleteMany({ where: { channelId: run.channelId } });
+  await prisma.breakdown.deleteMany({ where: { channelId: run.channelId } });
+  await prisma.comment.deleteMany({ where: ofChannel });
+  await prisma.liveSnapshot.deleteMany({ where: ofChannel });
   console.log(`::warning::YouTube stats could not be refreshed for ${STALE_DAYS} days, so ${count} stored rows were deleted.`);
   return true;
 }
@@ -55,33 +59,57 @@ function beatsOf(videoId: string) {
 }
 
 /** Impressions and click-through per video and day, kept by stats-deep from the Reporting API. */
-async function reachRows(prisma: PrismaClient): Promise<Map<string, { impressions: number; ctr: number }>> {
-  const rows = await prisma.breakdown.findMany({ where: { scope: "reach", kind: "videoDay" } });
+async function reachRows(prisma: PrismaClient, channelId: string): Promise<Map<string, { impressions: number; ctr: number }>> {
+  const rows = await prisma.breakdown.findMany({ where: { channelId, scope: "reach", kind: "videoDay" } });
   return new Map(rows.map((r) => [r.key, { impressions: Math.round(r.views), ctr: r.share }]));
 }
 
+/** Every channel with stats (active or paused) in turn; one failing channel doesn't stop the others. */
 async function main(): Promise<void> {
-  if (!youtubeConfigured()) return;
+  if (!youtubeClientConfigured()) return;
   const prisma = new PrismaClient();
+  const failures: string[] = [];
   try {
+    for (const ch of await activeChannels(prisma, true)) {
+      const first = ch.id === layout().default;
+      const run: Run = { channelId: ch.id, key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: ` };
+      const refreshToken = refreshTokenOf(ch);
+      if (!refreshToken) { console.log(`::notice::${ch.id} is not connected to YouTube yet.`); continue; }
+      console.log(`== ${ch.name} (${ch.id})`);
+      try {
+        await statsChannel(prisma, run, refreshToken);
+      } catch (e) {
+        console.error(`::error::${ch.id}: ${e instanceof Error ? e.message : e}`);
+        failures.push(ch.id);
+      }
+    }
+  } finally {
+    await prisma.$disconnect();
+  }
+  if (failures.length) throw new Error(`stats failed for ${failures.join(", ")}`);
+}
+
+async function statsChannel(prisma: PrismaClient, run: Run, refreshToken: string): Promise<void> {
+  const { channelId } = run;
+  {
     let token: string;
     try {
-      token = await accessToken();
+      token = await accessToken(refreshToken);
     } catch (e) {
       if (e instanceof TokenError) {
-        await deleteIfStale(prisma);
-        await notify(prisma, { key: "youtube-token", source: "stats", severity: "critical", title: "YouTube sign-in stopped working",
+        await deleteIfStale(prisma, run);
+        await notify(prisma, { key: run.key("youtube-token"), channelId, source: "stats", severity: "critical", title: "YouTube sign-in stopped working",
           detail: `The stats job could not sign in to YouTube: ${e.message}. Views and analytics stop updating, and uploads fail, until this is fixed.`, fix: TOKEN_FIX });
       }
       throw e;
     }
-    const refreshed = await refreshPublished(prisma, token);
+    const refreshed = await refreshPublished(prisma, token, new Date(), channelId);
     const yesterday = istDay(new Date(Date.now() - DAY_MS));
     const earliest = istDay(new Date(Date.now() - KEEP_DAYS * DAY_MS));
-    const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, video: { deletedAt: null } }, include: { video: { select: { format: true, durationSec: true } } } });
+    const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, video: { deletedAt: null, channelId } }, include: { video: { select: { format: true, durationSec: true } } } });
     let rows = 0;
     const errors: string[] = [];
-    const reach = await reachRows(prisma);
+    const reach = await reachRows(prisma, channelId);
     // the channel's own day totals, all formats and per format
     try {
       const from = istDay(new Date(Date.now() - KEEP_DAYS * DAY_MS));
@@ -89,7 +117,7 @@ async function main(): Promise<void> {
       // YouTube rejects videosAddedToPlaylists split by content type (2026-11-03), so the per-format days go without it
       const split = await report(token, { startDate: from, endDate: yesterday, dimensions: "day,creatorContentType", metrics: DAY_METRICS.replace(",videosAddedToPlaylists", ""), sort: "day" });
       const data = channelDays(all, split);
-      await prisma.$transaction([prisma.channelDay.deleteMany(), prisma.channelDay.createMany({ data: data.map(({ day, ...m }) => ({ day: new Date(`${day}T00:00:00Z`), ...m })) })]);
+      await prisma.$transaction([prisma.channelDay.deleteMany({ where: { channelId } }), prisma.channelDay.createMany({ data: data.map(({ day, ...m }) => ({ channelId, day: new Date(`${day}T00:00:00Z`), ...m })) })]);
     } catch (e) {
       errors.push(`channel totals: ${e instanceof Error ? e.message : e}`);
     }
@@ -123,31 +151,29 @@ async function main(): Promise<void> {
         errors.push(`${u.videoId}: ${e instanceof Error ? e.message : e}`);
       }
     }
-    await prisma.videoStat.deleteMany({ where: { day: { lt: new Date(`${earliest}T00:00:00Z`) } } });
+    await prisma.videoStat.deleteMany({ where: { day: { lt: new Date(`${earliest}T00:00:00Z`) }, upload: { video: { channelId } } } });
     // a single passing failure is not worth an email: fail (and notify) only when the same thing failed in the
     // previous run too, or when a large share of the videos failed at once
     const failing = errors.map(failKey);
-    const prevRow = await prisma.setting.findUnique({ where: { key: FAILING_KEY } });
+    const prevRow = await prisma.setting.findUnique({ where: { key: run.key(FAILING_KEY) } });
     const prev = Array.isArray(prevRow?.value) ? (prevRow.value as string[]) : [];
-    await prisma.setting.upsert({ where: { key: FAILING_KEY }, update: { value: failing }, create: { key: FAILING_KEY, value: failing } });
+    await prisma.setting.upsert({ where: { key: run.key(FAILING_KEY) }, update: { value: failing }, create: { key: run.key(FAILING_KEY), value: failing } });
     const outcome = statsOutcome(failing, prev, uploads.length);
     if (outcome !== "serious") {
       const now = new Date().toISOString();
-      await prisma.setting.upsert({ where: { key: REFRESHED_KEY }, update: { value: now }, create: { key: REFRESHED_KEY, value: now } });
+      await prisma.setting.upsert({ where: { key: run.key(REFRESHED_KEY) }, update: { value: now }, create: { key: run.key(REFRESHED_KEY), value: now } });
     }
     console.log(JSON.stringify({ uploads: uploads.length, statRows: rows, through: yesterday, ...refreshed, errors }, null, 2));
     if (outcome === "serious") {
-      await notify(prisma, { key: "stats-errors", source: "stats", severity: "warning", title: "Some YouTube stats could not be read",
+      await notify(prisma, { key: run.key("stats-errors"), channelId, source: "stats", severity: "warning", title: `${run.label}Some YouTube stats could not be read`,
         detail: errors.slice(0, 5).join("\n"), fix: "Failed in two runs in a row. Open Actions → Stats in GitHub and read the log." });
       process.exitCode = 1;
     } else if (outcome === "passing") {
       console.log(`::warning::${errors.length} passing failure(s), tried again next run: ${errors.join(" | ")}`);
     } else {
-      await resolve(prisma, "stats-errors");
-      await resolve(prisma, "youtube-token");
+      await resolve(prisma, run.key("stats-errors"));
+      await resolve(prisma, run.key("youtube-token"));
     }
-  } finally {
-    await prisma.$disconnect();
   }
 }
 

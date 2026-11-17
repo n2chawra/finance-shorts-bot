@@ -14,16 +14,18 @@ import { KINDS, analyticsStartDay, breakdownRows, parseCsv, queryOf, rangeStart,
 import { replaceWhere, replaceableKinds } from "./lib/breakdowns.ts";
 import { notify, resolve } from "./lib/notify.ts";
 import { istDay } from "./lib/publishing.ts";
-import { youtubeConfigured } from "./lib/uploads.ts";
+import { youtubeClientConfigured } from "./lib/uploads.ts";
+import { layout } from "./lib/channels.ts";
+import { activeChannels, refreshTokenOf } from "./lib/channel-auth.ts";
 import { accessToken, comments, report } from "./lib/youtube.ts";
 
 const DAY_MS = 86_400_000;
 const CHANNEL_RANGES: [number, Format[]][] = [[7, ["all"]], [28, ["all", "short", "long"]], [90, ["all", "short", "long"]], [365, ["all"]]];
 
 /** Replaces the stored rows of `kinds` in `scope` (only the kinds that were fetched; wrk-012). */
-async function saveBreakdowns(prisma: PrismaClient, scope: string, rows: Prisma.BreakdownCreateManyInput[], kinds: readonly string[]): Promise<void> {
+async function saveBreakdowns(prisma: PrismaClient, channelId: string, scope: string, rows: Prisma.BreakdownCreateManyInput[], kinds: readonly string[]): Promise<void> {
   if (!kinds.length) return;
-  await prisma.$transaction([prisma.breakdown.deleteMany({ where: replaceWhere(scope, kinds) }), prisma.breakdown.createMany({ data: rows })]);
+  await prisma.$transaction([prisma.breakdown.deleteMany({ where: { channelId, ...replaceWhere(scope, kinds) } }), prisma.breakdown.createMany({ data: rows.map((row) => ({ ...row, channelId })) })]);
 }
 
 async function fetchScope(token: string, scope: string, opts: { startDate: string; endDate: string; video?: string; format?: Format }, perVideo: boolean, errors: string[]) {
@@ -47,7 +49,7 @@ async function fetchScope(token: string, scope: string, opts: { startDate: strin
 const REPORTING = "https://youtubereporting.googleapis.com/v1";
 type Job = { id: string; reportTypeId: string };
 
-async function reach(prisma: PrismaClient, token: string): Promise<string> {
+async function reach(prisma: PrismaClient, token: string, channelId: string, channelName: string): Promise<string> {
   const h = { authorization: `Bearer ${token}` };
   const types = await fetch(`${REPORTING}/reportTypes`, { headers: h });
   if (types.status === 403) {
@@ -65,7 +67,7 @@ async function reach(prisma: PrismaClient, token: string): Promise<string> {
   const jobs: Job[] = ((await (await fetch(`${REPORTING}/jobs`, { headers: h })).json()) as { jobs?: Job[] }).jobs ?? [];
   let job = jobs.find((j) => j.reportTypeId === typeId);
   if (!job) {
-    const res = await fetch(`${REPORTING}/jobs`, { method: "POST", headers: { ...h, "content-type": "application/json" }, body: JSON.stringify({ reportTypeId: typeId, name: "Paisa Panchayat reach" }) });
+    const res = await fetch(`${REPORTING}/jobs`, { method: "POST", headers: { ...h, "content-type": "application/json" }, body: JSON.stringify({ reportTypeId: typeId, name: `${channelName} reach` }) });
     if (!res.ok) throw new Error(`could not create the reach job: ${res.status} ${await res.text()}`);
     job = (await res.json()) as Job;
     return `reach job created (${typeId}); the first report arrives in about 2 days`;
@@ -84,9 +86,9 @@ async function reach(prisma: PrismaClient, token: string): Promise<string> {
       rows.push({ scope: "reach", kind: "videoDay", key, views: x.impressions, share: x.ctr });
     }
   }
-  await saveBreakdowns(prisma, "reach", rows, ["videoDay"]);
+  await saveBreakdowns(prisma, channelId, "reach", rows, ["videoDay"]);
   // put them on the daily rows right away (stats.ts keeps them on later runs)
-  const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null } }, select: { id: true, youtubeId: true } });
+  const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, video: { channelId } }, select: { id: true, youtubeId: true } });
   const byYt = new Map(uploads.map((u) => [u.youtubeId!, u.id]));
   for (const r of rows) {
     const [yt, day] = r.key.split("|") as [string, string];
@@ -96,42 +98,56 @@ async function reach(prisma: PrismaClient, token: string): Promise<string> {
   return `${list.length} reach reports, ${rows.length} video-days`;
 }
 
+/** Every channel with stats (active or paused) in turn, each with its own sign-in. */
 async function main(): Promise<void> {
-  if (!youtubeConfigured()) return;
+  if (!youtubeClientConfigured()) return;
   const prisma = new PrismaClient();
-  const errors: string[] = [];
   try {
-    const token = await accessToken();
+    for (const ch of await activeChannels(prisma, true)) {
+      const refreshToken = refreshTokenOf(ch);
+      if (!refreshToken) { console.log(`::notice::${ch.id} is not connected to YouTube yet.`); continue; }
+      console.log(`== ${ch.name} (${ch.id})`);
+      await deepChannel(prisma, ch.id, ch.name, refreshToken, ch.id === layout().default);
+    }
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+async function deepChannel(prisma: PrismaClient, channelId: string, channelName: string, refreshToken: string, first: boolean): Promise<void> {
+  const errors: string[] = [];
+  {
+    const token = await accessToken(refreshToken);
     const end = istDay(new Date(Date.now() - DAY_MS));
     let channelRows = 0;
     for (const [days, formats] of CHANNEL_RANGES) {
       for (const format of formats) {
         const scope = `channel:${format}:${days}`;
         const { rows, kinds } = await fetchScope(token, scope, { startDate: rangeStart(end, days), endDate: end, format }, false, errors);
-        await saveBreakdowns(prisma, scope, rows, kinds);
+        await saveBreakdowns(prisma, channelId, scope, rows, kinds);
         channelRows += rows.length;
       }
     }
 
     const sunday = new Date().getUTCDay() === 0;
-    const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, video: { deletedAt: null } }, select: { id: true, videoId: true, youtubeId: true, publishAt: true } });
+    const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: { in: ["scheduled", "published"] }, video: { deletedAt: null, channelId } }, select: { id: true, videoId: true, youtubeId: true, publishAt: true } });
     let videoRows = 0, videosDone = 0;
     for (const u of uploads) {
       const start = analyticsStartDay(u.publishAt);
       if (start > end) continue;
       const recent = Date.now() - u.publishAt.getTime() < 90 * DAY_MS;
       const scope = `video:${u.videoId}`;
-      const have = await prisma.breakdown.count({ where: { scope } });
+      const have = await prisma.breakdown.count({ where: { channelId, scope } });
       if (!recent && !sunday && have) continue;
       const { rows, kinds } = await fetchScope(token, scope, { startDate: start, endDate: end, video: u.youtubeId! }, true, errors);
-      await saveBreakdowns(prisma, scope, rows, kinds);
+      await saveBreakdowns(prisma, channelId, scope, rows, kinds);
       videoRows += rows.length;
       videosDone++;
     }
 
     let reachNote = "";
     try {
-      reachNote = await reach(prisma, token);
+      reachNote = await reach(prisma, token, channelId, channelName);
     } catch (e) {
       errors.push(`reach: ${e instanceof Error ? e.message : e}`);
     }
@@ -152,11 +168,10 @@ async function main(): Promise<void> {
         }
       }
     }
-    await prisma.setting.upsert({ where: { key: "statsDeepAt" }, update: { value: new Date().toISOString() }, create: { key: "statsDeepAt", value: new Date().toISOString() } });
+    const doneKey = first ? "statsDeepAt" : `statsDeepAt:${channelId}`;
+    await prisma.setting.upsert({ where: { key: doneKey }, update: { value: new Date().toISOString() }, create: { key: doneKey, value: new Date().toISOString() } });
     console.log(JSON.stringify({ through: end, channelRows, videosDone, videoRows, reach: reachNote, comments: key ? commentCount : "no YT_API_KEY", errors: errors.slice(0, 20), errorCount: errors.length }, null, 2));
     if (errors.length > 10) process.exitCode = 1;
-  } finally {
-    await prisma.$disconnect();
   }
 }
 

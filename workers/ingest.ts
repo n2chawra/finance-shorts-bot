@@ -22,7 +22,7 @@ import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotif
 import { type FeedTopic, loadFeeds, sourceWithTopic } from "./lib/origin.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 import { syncThumbs } from "./lib/cover.ts";
-import { cpath } from "./lib/channels.ts";
+import { allChannels, cpath, crel, layout } from "./lib/channels.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -47,9 +47,19 @@ export function templateIds(root = ROOT): string[] {
 /** Marks a template the repo no longer has. Old videos still point at it, so it stays, disabled. */
 export const RETIRED = "Retired: the first engine's template, replaced by the Remotion story templates on 2026-10-17.";
 
+/** Every channel's manifests (channels/<slug>/videos/, or videos/ before the move). */
 export function manifestPaths(root = ROOT): string[] {
-  const dir = cpath(root, "videos");
-  return readdirSync(dir).map((id) => path.join(dir, id, "manifest.json")).filter((p) => existsSync(p)).sort();
+  return allChannels(root).flatMap((slug) => {
+    const dir = path.join(root, crel("videos", root, slug));
+    return existsSync(dir) ? readdirSync(dir).map((id) => path.join(dir, id, "manifest.json")).filter((p) => existsSync(p)).sort() : [];
+  });
+}
+
+/** The channel a manifest belongs to: the channels/<slug>/ folder it sits in, else channel #1. */
+export function channelOfManifest(file: string, root = ROOT): string {
+  const rel = path.relative(root, file).replace(/\\/g, "/");
+  const m = /^channels\/([a-z0-9][a-z0-9-]{1,40})\//.exec(rel);
+  return m ? m[1]! : layout(root).default;
 }
 
 async function syncTemplates(prisma: PrismaClient): Promise<void> {
@@ -71,6 +81,7 @@ function runRows(videoId: string, steps: ShippedManifest["agentRuns"]): Prisma.A
 /** Insert one manifest. Returns what happened. */
 async function ingestOne(prisma: PrismaClient, file: string, repo: string | null, feeds: Map<string, FeedTopic>): Promise<"queued" | "failed" | "waiting"> {
   const m = Manifest.parse(readJson(file));
+  const channelId = channelOfManifest(file);
   const dir = path.dirname(file);
   const scriptFile = path.join(dir, "script.json");
   const script = (existsSync(scriptFile) ? readJson(scriptFile) : {}) as Prisma.InputJsonValue;
@@ -78,10 +89,10 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
 
   if (m.status === "failed") {
     await prisma.$transaction(async (tx) => {
-      const topic = await tx.topic.create({ data: { title: m.topic.title, category: m.topic.category } });
+      const topic = await tx.topic.create({ data: { title: m.topic.title, category: m.topic.category, channelId } });
       await tx.video.create({
         data: {
-          id: m.id, templateId: m.template, topicId: topic.id, status: "failed", failReason: m.failReason, script, style: {},
+          id: m.id, channelId, templateId: m.template, topicId: topic.id, status: "failed", failReason: m.failReason, script, style: {},
           durationSec: 0, title: m.title, description: "", tags: [], createdAt,
         },
       });
@@ -94,12 +105,12 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
   if (repo && !fileUrl) return "waiting";
 
   await prisma.$transaction(async (tx) => {
-    const queuePosition = await queueSlot(tx, m);
-    const topic = await tx.topic.create({ data: { title: m.topic.title, category: m.topic.category } });
+    const queuePosition = await queueSlot(tx, m, new Date(), channelId);
+    const topic = await tx.topic.create({ data: { title: m.topic.title, category: m.topic.category, channelId } });
     await tx.video.create({
       data: {
-        id: m.id, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {}, source: sourceWithTopic(m, feeds) as unknown as Prisma.InputJsonObject, ...(m.thumbnails ? { thumbs: m.thumbnails } : {}) }, fileUrl,
-        thumbnailUrl: `videos/${m.id}/thumbnail.png`, durationSec: m.durationSec, title: m.title, description: m.description,
+        id: m.id, channelId, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {}, source: sourceWithTopic(m, feeds) as unknown as Prisma.InputJsonObject, ...(m.thumbnails ? { thumbs: m.thumbnails } : {}) }, fileUrl,
+        thumbnailUrl: `${path.relative(ROOT, dir).replace(/\\/g, "/")}/thumbnail.png`, durationSec: m.durationSec, title: m.title, description: m.description,
         tags: m.hashtags.map((h) => h.replace(/^#/, "")), hookStyle: m.hookStyle, cta: m.cta,
         queuePosition, createdAt,
       },
@@ -112,13 +123,23 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
 
 /** Where a new video joins the upload queue: at the back, or at the front of its format's queue if
  * it is breaking news or a trend that has not expired (news loses half its first-day views in ~7 h). */
-export async function queueSlot(tx: Prisma.TransactionClient, m: ShippedManifest, now = new Date()): Promise<number> {
+export async function queueSlot(tx: Prisma.TransactionClient, m: ShippedManifest, now = new Date(), channelId?: string): Promise<number> {
+  const ofChannel = channelId ? { channelId } : {};
   if (m.priority && m.priority.until >= istDay(now)) {
-    const first = await tx.video.aggregate({ where: { status: "queued", deletedAt: null, format: m.format }, _min: { queuePosition: true } });
+    const first = await tx.video.aggregate({ where: { status: "queued", deletedAt: null, format: m.format, ...ofChannel }, _min: { queuePosition: true } });
     return (first._min.queuePosition ?? 1) - 1;
   }
-  const last = await tx.video.aggregate({ _max: { queuePosition: true } });
+  const last = await tx.video.aggregate({ where: ofChannel, _max: { queuePosition: true } });
   return (last._max.queuePosition ?? 0) + 1;
+}
+
+/** A video's manifest in whichever channel folder holds it. */
+function manifestFile(id: string): string | null {
+  for (const slug of allChannels(ROOT)) {
+    const f = path.join(ROOT, crel(`videos/${id}/manifest.json`, ROOT, slug));
+    if (existsSync(f)) return f;
+  }
+  return null;
 }
 
 /** Videos waiting to be posted that were ingested before their source was recorded get it from
@@ -126,8 +147,8 @@ export async function queueSlot(tx: Prisma.TransactionClient, m: ShippedManifest
 async function backfillSources(prisma: PrismaClient, feeds: Map<string, FeedTopic>): Promise<void> {
   for (const v of await prisma.video.findMany({ where: { status: { in: ["queued", "scheduled", "published"] }, deletedAt: null }, select: { id: true, style: true, status: true } })) {
     const style = (v.style ?? {}) as Record<string, unknown>;
-    const file = path.join(cpath(ROOT, "videos"), v.id, "manifest.json");
-    if (!existsSync(file)) continue;
+    const file = manifestFile(v.id);
+    if (!file) continue;
     const m = Manifest.safeParse(readJson(file));
     if (!m.success || m.data.status !== "qa_passed") continue;
     // a redone set of thumbnails (and Studio's pick) reaches a video that is still waiting (owner, 2026-11-11)

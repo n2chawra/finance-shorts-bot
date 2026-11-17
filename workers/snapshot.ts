@@ -5,7 +5,8 @@
  */
 import { PrismaClient } from "@prisma/client";
 
-import { youtubeConfigured } from "./lib/uploads.ts";
+import { youtubeClientConfigured } from "./lib/uploads.ts";
+import { activeChannels, refreshTokenOf } from "./lib/channel-auth.ts";
 import { accessToken, videoInfo } from "./lib/youtube.ts";
 
 const KEEP_MS = 7 * 86_400_000;
@@ -16,17 +17,27 @@ export function hourOf(d: Date): Date {
 }
 
 async function main(): Promise<void> {
-  if (!youtubeConfigured()) return;
+  if (!youtubeClientConfigured()) return;
   const prisma = new PrismaClient();
   try {
-    const token = await accessToken();
-    const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: "published", video: { deletedAt: null } }, select: { id: true, youtubeId: true } });
-    const info = await videoInfo(token, uploads.map((u) => u.youtubeId!));
     const hour = hourOf(new Date());
-    const data = uploads.flatMap((u) => {
-      const s = info.get(u.youtubeId!)?.statistics;
-      return s ? [{ uploadId: u.id, hour, views: s.viewCount ?? 0, likes: s.likeCount ?? 0, comments: s.commentCount ?? 0 }] : [];
-    });
+    const data: { uploadId: string; hour: Date; views: number; likes: number; comments: number }[] = [];
+    // each channel's counters with its own sign-in; one channel failing leaves only its own gap
+    for (const ch of await activeChannels(prisma, true)) {
+      const refreshToken = refreshTokenOf(ch);
+      if (!refreshToken) continue;
+      try {
+        const token = await accessToken(refreshToken);
+        const uploads = await prisma.upload.findMany({ where: { youtubeId: { not: null }, state: "published", video: { deletedAt: null, channelId: ch.id } }, select: { id: true, youtubeId: true } });
+        const info = await videoInfo(token, uploads.map((u) => u.youtubeId!));
+        for (const u of uploads) {
+          const s = info.get(u.youtubeId!)?.statistics;
+          if (s) data.push({ uploadId: u.id, hour, views: s.viewCount ?? 0, likes: s.likeCount ?? 0, comments: s.commentCount ?? 0 });
+        }
+      } catch (e) {
+        console.log(`::warning::snapshot skipped for ${ch.id}: ${e instanceof Error ? e.message : e}`);
+      }
+    }
     await prisma.liveSnapshot.createMany({ data, skipDuplicates: true });
     const { count } = await prisma.liveSnapshot.deleteMany({ where: { hour: { lt: new Date(Date.now() - KEEP_MS) } } });
     console.log(`snapshot ${hour.toISOString()}: ${data.length} videos, ${count} old rows removed`);

@@ -33,11 +33,11 @@ async function failText(res: Response): Promise<string> {
 }
 
 /** A short-lived access token from the stored refresh token. */
-export async function accessToken(): Promise<string> {
+export async function accessToken(refreshToken: string = env("YT_REFRESH_TOKEN")): Promise<string> {
   const res = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "content-type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({ client_id: env("YT_CLIENT_ID"), client_secret: env("YT_CLIENT_SECRET"), refresh_token: env("YT_REFRESH_TOKEN"), grant_type: "refresh_token" }),
+    body: new URLSearchParams({ client_id: env("YT_CLIENT_ID"), client_secret: env("YT_CLIENT_SECRET"), refresh_token: refreshToken, grant_type: "refresh_token" }),
   });
   if (!res.ok) {
     const why = await failText(res);

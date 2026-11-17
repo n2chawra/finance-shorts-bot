@@ -27,60 +27,101 @@ import { downloadReleaseAsset, repoSlug } from "./lib/github.ts";
 import {
   MIN_LEAD_MINUTES, UPLOAD_LOOKAHEAD_HOURS, dueSoon, isUrgent, istDay, istSlot, istTime, missedSlots, nextSlot, slotKey, soonSlot, youtubeMeta,
 } from "./lib/publishing.ts";
-import { loadSettings } from "./lib/settings.ts";
-import { refreshPublished, youtubeConfigured } from "./lib/uploads.ts";
+import { loadSettings, type Settings } from "./lib/settings.ts";
+import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { TokenError, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
 import { coverFile } from "./lib/cover.ts";
-import { cpath } from "./lib/channels.ts";
+import { cpath, layout } from "./lib/channels.ts";
+import { activeChannels, channelSettings, refreshTokenOf } from "./lib/channel-auth.ts";
+import { COST, QuotaKeeper } from "./lib/quota.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const MAX_ATTEMPTS = 3;
 type Format = "short" | "long";
 
+/** One channel's run: its id, its settings and the shared quota. Channel #1's notification keys keep their old names. */
+type Run = { channelId: string; settings: Settings; quota: QuotaKeeper; key: (k: string) => string; label: string };
+
 /** Our designed cover instead of the frame YouTube picks (owner, 2026-11-03: "the thumbnail is wrong").
  * The video is already uploaded, so a refused cover is reported, never a failed upload. */
-async function applyCover(prisma: PrismaClient, token: string, videoId: string, youtubeId: string, style: unknown): Promise<void> {
+async function applyCover(prisma: PrismaClient, run: Run, token: string, videoId: string, youtubeId: string, style: unknown): Promise<void> {
   const dir = path.join(cpath(ROOT, "videos"), videoId);
   const file = coverFile(dir, style);   // the owner's pick, else Studio's (long videos have three; lib/cover.ts)
   if (!file) return void console.log(`${videoId}: no cover in the repo; YouTube picks a frame`);
+  if (!run.quota.take("thumbnail", COST.thumbnail)) return void console.log(`${videoId}: no quota left for the cover today; YouTube picks a frame`);
   try {
     await setThumbnail(token, youtubeId, file);
     console.log(`${videoId}: cover set from ${path.basename(file)}`);
-    await resolve(prisma, "cover-refused");
+    await resolve(prisma, run.key("cover-refused"));
   } catch (e) {
     const why = e instanceof Error ? e.message : String(e);
     console.log(`${videoId}: ${why}`);
-    await notify(prisma, { key: "cover-refused", source: "publish", severity: "warning", title: "YouTube didn't take our cover",
+    await notify(prisma, { key: run.key("cover-refused"), channelId: run.channelId, source: "publish", severity: "warning", title: "YouTube didn't take our cover",
       detail: `${videoId} (${youtubeId}) went up with YouTube's own frame as its cover: ${why}`,
       fix: "If it says the account can't set custom thumbnails: verify the channel (youtube.com/verify, a phone number) and features such as custom thumbnails turn on. Then set this cover by hand in YouTube Studio, or ask Claude to re-apply it." });
   }
 }
 
+/** Every active channel in turn, each with its own token and settings; one failing channel doesn't stop the others. */
 async function main(): Promise<void> {
-  if (!youtubeConfigured()) return;
+  if (!youtubeClientConfigured()) return;
   const prisma = new PrismaClient();
+  const failures: string[] = [];
   try {
+    const base = await loadSettings(prisma);
+    const quota = await QuotaKeeper.load(prisma);
+    const channels = await activeChannels(prisma);
+    if (!channels.length) console.log("No active channel. Nothing to do.");
+    for (const ch of channels) {
+      const first = ch.id === layout().default;
+      const run: Run = { channelId: ch.id, settings: channelSettings(base, ch.settings), quota,
+        key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: ` };
+      console.log(`== ${ch.name} (${ch.id})`);
+      try {
+        await publishChannel(prisma, run, refreshTokenOf(ch));
+      } catch (e) {
+        console.error(`::error::${ch.id}: ${e instanceof Error ? e.message : e}`);
+        failures.push(ch.id);
+      } finally {
+        await quota.save();
+      }
+    }
+    if (quota.shouldWarn()) {
+      await quota.save();
+      await notify(prisma, { key: `quota-high:${quota.snapshot().day}`, channelId: null, source: "publish", severity: "warning", title: "YouTube API quota is over 80% today",
+        detail: `${quota.used} of ${quota.used + quota.left} units used today (${JSON.stringify(quota.snapshot().byKind)}). Uploads still go first; stats and live counters wait for tomorrow's quota.`,
+        fix: "Nothing to do today. If this happens often, apply for a quota increase (YouTube API Services audit form) or lower a channel's videos a day." });
+    }
+  } finally {
+    await prisma.$disconnect();
+  }
+  if (failures.length) throw new Error(`publishing failed for ${failures.join(", ")}`);
+}
+
+async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: string | null): Promise<void> {
+  const { channelId, settings } = run;
+  if (!refreshToken) return void console.log(`::notice::${channelId} is not connected to YouTube yet. Nothing uploaded.`);
+  {
     let token: string;
     try {
-      token = await accessToken();
-      await resolve(prisma, "youtube-token");
+      token = await accessToken(refreshToken);
+      await resolve(prisma, run.key("youtube-token"));
     } catch (e) {
       if (e instanceof TokenError) {
-        await notify(prisma, { key: "youtube-token", source: "publish", severity: "critical", title: "YouTube sign-in stopped working",
+        await notify(prisma, { key: run.key("youtube-token"), channelId, source: "publish", severity: "critical", title: `${run.label}YouTube sign-in stopped working`,
           detail: `The publish job could not sign in to YouTube: ${e.message}. Nothing can be uploaded and stats stop updating until this is fixed.`, fix: TOKEN_FIX });
       }
       throw e;
     }
-    const refreshed = await refreshPublished(prisma, token);
+    const refreshed = await refreshPublished(prisma, token, new Date(), channelId);
     if (refreshed.published.length || refreshed.stillPrivate.length || refreshed.missing.length) console.log("status check:", refreshed);
 
-    const settings = await loadSettings(prisma);
     if (settings.uploadsPaused) return void console.log("Uploads are paused in settings. Nothing uploaded.");
 
     const now = new Date();
     const existing = await prisma.upload.findMany({
-      where: { state: { in: ["scheduled", "uploaded", "published"] }, video: { deletedAt: null } },
+      where: { state: { in: ["scheduled", "uploaded", "published"] }, video: { deletedAt: null, channelId } },
       select: { publishAt: true, video: { select: { format: true } } },
     });
     const taken = new Set(existing.map((u) => slotKey(u.publishAt)));
@@ -88,7 +129,7 @@ async function main(): Promise<void> {
     let soon = 0;   // videos sent to go public in a few minutes this run, spaced 5 minutes apart
     const sendSoon = async (format: Format, pendingOnly = false): Promise<boolean> => {
       const at = soonSlot(now, soon);
-      if (!(await uploadOne(prisma, token, settings.disclaimer, at, format, pendingOnly ? "pending-now" : "queue"))) return false;
+      if (!(await uploadOne(prisma, run, token, settings.disclaimer, at, format, pendingOnly ? "pending-now" : "queue"))) return false;
       soon++;
       taken.add(slotKey(at));
       existing.push({ publishAt: at, video: { format } });
@@ -134,7 +175,7 @@ async function main(): Promise<void> {
           console.log(`${format}: the next slot, ${slot.toISOString()}, is more than ${UPLOAD_LOOKAHEAD_HOURS} h away; a later run fills it.`);
           break;
         }
-        if (!(await uploadOne(prisma, token, settings.disclaimer, slot, format))) break;
+        if (!(await uploadOne(prisma, run, token, settings.disclaimer, slot, format))) break;
         taken.add(slotKey(slot));
         perDay[format].set(istDay(slot), (perDay[format].get(istDay(slot)) ?? 0) + 1);
         uploaded++;
@@ -147,18 +188,16 @@ async function main(): Promise<void> {
       const slot = istSlot(today, time);
       if (slot.getTime() - now.getTime() < MIN_LEAD_MINUTES * 60_000 || taken.has(slotKey(slot)) || !dueSoon(now, slot)) continue;
       const shortsToday = await prisma.upload.findMany({
-        where: { state: { in: ["scheduled", "uploaded", "published"] }, video: { format: "short" } },
+        where: { state: { in: ["scheduled", "uploaded", "published"] }, video: { format: "short", channelId } },
         select: { publishAt: true, video: { select: { style: true } } },
       }).then((us) => us.filter((u) => istDay(u.publishAt) === today));
       const urgentToday = shortsToday.filter((u) => isUrgent(u.video.style, today)).length;
       const trendUsed = shortsToday.filter((u) => trendTimes.has(istTime(u.publishAt))).length;
       // the trend video itself if it is still waiting, else (it took a regular slot) the next video
-      const sent = await uploadOne(prisma, token, settings.disclaimer, slot, "short", "urgent")
-        || (urgentToday > trendUsed && await uploadOne(prisma, token, settings.disclaimer, slot, "short"));
+      const sent = await uploadOne(prisma, run, token, settings.disclaimer, slot, "short", "urgent")
+        || (urgentToday > trendUsed && await uploadOne(prisma, run, token, settings.disclaimer, slot, "short"));
       if (sent) taken.add(slotKey(slot));
     }
-  } finally {
-    await prisma.$disconnect();
   }
 }
 
@@ -167,28 +206,36 @@ async function main(): Promise<void> {
  * False when there is nothing to upload; throws on failure. */
 type Pick = "queue" | "urgent" | "pending-now";
 
-async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string, slot: Date, format: Format, pick: Pick = "queue"): Promise<boolean> {
+async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaimer: string, slot: Date, format: Format, pick: Pick = "queue"): Promise<boolean> {
   // the owner's pick first (owner, 2026-10-30: "the best video goes, not whatever is next"), then the
   // queue order: the editor's ranking, or the owner's own order where they dragged it
   const order = [{ pickedAt: { sort: "asc" as const, nulls: "last" as const } }, { queuePosition: "asc" as const }, { createdAt: "asc" as const }];
+  const channelId = run.channelId;
   let pending = null, video = null;
   if (pick === "pending-now") {
     // only "Upload now" clicks and retries whose time has come; a retry for a slot still ahead waits for it
-    pending = await prisma.upload.findFirst({ where: { state: "pending", publishAt: { lte: new Date(Date.now() + MIN_LEAD_MINUTES * 60_000) }, video: { deletedAt: null, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
+    pending = await prisma.upload.findFirst({ where: { state: "pending", publishAt: { lte: new Date(Date.now() + MIN_LEAD_MINUTES * 60_000) }, video: { deletedAt: null, channelId, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
     if (!pending) return false;
     video = pending.video;
   } else if (pick === "urgent") {
-    const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null, format }, orderBy: order });
+    const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null, channelId, format }, orderBy: order });
     video = queued.find((v) => isUrgent(v.style, istDay(slot))) ?? null;
     if (!video) { console.log(`No breaking or trending ${format} is waiting: the trend slot ${slot.toISOString()} stays empty.`); return false; }
   } else {
     // a video sent with "Upload now", or a retry of a failed attempt, goes first; then the queue
-    pending = await prisma.upload.findFirst({ where: { state: "pending", video: { deletedAt: null, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
-    video = pending?.video ?? await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, format }, orderBy: order });
+    pending = await prisma.upload.findFirst({ where: { state: "pending", video: { deletedAt: null, channelId, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
+    video = pending?.video ?? await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, channelId, format }, orderBy: order });
     if (!video) { console.log(`::warning::No ${format} video is queued. Nothing to upload for ${slot.toISOString()}.`); return false; }
   }
 
   const attempts = (pending?.attempts ?? 0) + 1;
+  if (!run.quota.take("upload", COST.upload)) {
+    await notify(prisma, { key: `quota-out:${run.quota.snapshot().day}`, channelId: null, source: "publish", severity: "critical", title: "YouTube API quota ran out today",
+      detail: `${run.label}${video.id} could not be uploaded for ${slot.toISOString()}: ${run.quota.used} units already used today. It stays queued and goes up after the quota resets (midnight Pacific).`,
+      fix: "Apply for a quota increase (YouTube API Services audit form), or lower a channel's videos a day on the Channels page." });
+    console.log(`::warning::No quota left for ${video.id} today.`);
+    return false;
+  }
   const dir = mkdtempSync(path.join(tmpdir(), "publish-"));
   try {
     const file = path.join(dir, "video.mp4");
@@ -203,9 +250,9 @@ async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string
       }),
       prisma.video.update({ where: { id: video.id }, data: { status: "scheduled", queuePosition: null, pickedAt: null } }),
     ]);
-    await renumberQueue(prisma);
+    await renumberQueue(prisma, channelId);
     console.log(JSON.stringify({ uploaded: video.id, youtubeId, publishAt: slot.toISOString(), attempts }, null, 2));
-    await applyCover(prisma, token, video.id, youtubeId, video.style);
+    await applyCover(prisma, run, token, video.id, youtubeId, video.style);
     return true;
   } catch (e) {
     const error = e instanceof Error ? e.message : String(e);
@@ -217,8 +264,8 @@ async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string
     });
     if (gaveUp) {
       await prisma.video.update({ where: { id: video.id }, data: { status: "failed", failReason: `Upload failed ${attempts} times: ${error}`, queuePosition: null } });
-      await renumberQueue(prisma);
-      await notify(prisma, { key: `upload-failed:${video.id}`, source: "publish", severity: "warning", title: `Upload of ${video.id} failed 3 times`,
+      await renumberQueue(prisma, channelId);
+      await notify(prisma, { key: `upload-failed:${video.id}`, channelId, source: "publish", severity: "warning", title: `Upload of ${video.id} failed 3 times`,
         detail: `"${video.title}" could not be uploaded to YouTube and was marked failed. Last error: ${error}`,
         fix: "1. Open the video in the dashboard and check the error.\n2. If it's a quota or YouTube outage, nothing to do: the next video takes the slot.\n3. If it keeps happening, open Actions → Publish in GitHub and read the log." });
     }
@@ -228,8 +275,8 @@ async function uploadOne(prisma: PrismaClient, token: string, disclaimer: string
   }
 }
 
-async function renumberQueue(prisma: PrismaClient): Promise<void> {
-  const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null }, orderBy: [{ pickedAt: { sort: "asc", nulls: "last" } }, { queuePosition: "asc" }, { createdAt: "asc" }], select: { id: true } });
+async function renumberQueue(prisma: PrismaClient, channelId: string): Promise<void> {
+  const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null, channelId }, orderBy: [{ pickedAt: { sort: "asc", nulls: "last" } }, { queuePosition: "asc" }, { createdAt: "asc" }], select: { id: true } });
   await prisma.$transaction(queued.map((v, i) => prisma.video.update({ where: { id: v.id }, data: { queuePosition: i + 1 } })));
 }
 

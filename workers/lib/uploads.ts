@@ -9,12 +9,19 @@ export function youtubeConfigured(): boolean {
   return missing.length === 0;
 }
 
+/** The shared OAuth client is set (multi-channel workers check each channel's own token themselves). */
+export function youtubeClientConfigured(): boolean {
+  const missing = ["YT_CLIENT_ID", "YT_CLIENT_SECRET"].filter((k) => !process.env[k]);
+  if (missing.length) console.log(`::notice::The YouTube OAuth client is not set (missing ${missing.join(", ")}). Nothing to do.`);
+  return missing.length === 0;
+}
+
 /**
  * Scheduled uploads whose publish time has passed: mark them published once YouTube shows them as
  * public. Until the API audit is approved YouTube keeps API uploads private, so they stay scheduled.
  */
-export async function refreshPublished(prisma: PrismaClient, token: string, now = new Date()): Promise<{ published: string[]; stillPrivate: string[]; missing: string[] }> {
-  const due = await prisma.upload.findMany({ where: { state: "scheduled", publishAt: { lte: now }, youtubeId: { not: null }, video: { deletedAt: null } } });
+export async function refreshPublished(prisma: PrismaClient, token: string, now = new Date(), channelId?: string): Promise<{ published: string[]; stillPrivate: string[]; missing: string[] }> {
+  const due = await prisma.upload.findMany({ where: { state: "scheduled", publishAt: { lte: now }, youtubeId: { not: null }, video: { deletedAt: null, ...(channelId ? { channelId } : {}) } } });
   const result = { published: [] as string[], stillPrivate: [] as string[], missing: [] as string[] };
   if (!due.length) return result;
   const statuses = await videoStatuses(token, due.map((u) => u.youtubeId!));

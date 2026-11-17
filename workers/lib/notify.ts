@@ -15,6 +15,8 @@ export type Notice = {
   fix: string;
   /** A setting change the owner can approve with one click (the monthly review's proposals). */
   proposal?: { setting: string; value?: unknown; current?: unknown };
+  /** The channel it is about; null for the whole platform; left out: the column default (channel #1). */
+  channelId?: string | null;
 };
 
 /** How long a notification the owner marked resolved stays closed while its check still fails. */
@@ -26,7 +28,8 @@ export const stillDismissed = (n: { resolvedAt: Date | null; dismissedAt: Date |
 
 export async function notify(prisma: PrismaClient, n: Notice): Promise<void> {
   const data = { source: n.source, severity: n.severity, title: n.title, detail: n.detail, fix: n.fix,
-    ...(n.proposal ? { proposal: n.proposal as Prisma.InputJsonValue } : {}) };
+    ...(n.proposal ? { proposal: n.proposal as Prisma.InputJsonValue } : {}),
+    ...(n.channelId !== undefined ? { channelId: n.channelId } : {}) };
   const existing = await prisma.notification.findUnique({ where: { dedupeKey: n.key } });
   if (existing?.decidedAt) return;   // the owner approved or declined it: never raised again
   if (!existing) {
