@@ -119,3 +119,19 @@ def test_each_channel_carries_its_own_logo_never_another_channels(tmp_path, monk
     avatar.write_bytes(b"\x89PNG space")
     assert pack.logo("space-facts", root=tmp_path) == "brand/space-facts/avatar.png"
     assert (tmp_path / "remotion" / "public" / "brand" / "space-facts" / "avatar.png").read_bytes() == b"\x89PNG space"
+
+
+def test_a_channel_can_need_fewer_samples(tmp_path, monkeypatch):
+    """owner, 2026-11-18 (tech channel): "for this niche only 1 sample is enough": channel.json `samples`"""
+    from generator import run
+    d = tmp_path / "channels" / "tech"
+    (d / "history").mkdir(parents=True)
+    (d / "channel.json").write_text(json.dumps({"disclaimer": "x", "samples": {"short": 1, "long": 0}}), encoding="utf-8")
+    (d / "history" / "history.json").write_text("[]", encoding="utf-8")
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "channels.json").write_text(json.dumps({"channels": {"tech": {"status": "setup", "setup": {"stage": "samples"}}}}), encoding="utf-8")
+    monkeypatch.setenv("CHANNEL", "tech")
+    assert pack.load(root=tmp_path)["samples"]["short"] == 1
+    s = run.state(tmp_path, "short")
+    assert s["mode"] == "video" and "of 1" in s["reason"]
+    assert run.state(tmp_path, "long")["mode"] == "idle"

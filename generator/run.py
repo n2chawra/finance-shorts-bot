@@ -135,6 +135,11 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         # Shorts and one long video (long only when its research advises long videos), never uploaded
         # before the owner's Launch
         want = SAMPLES.get(fmt, 0) if fmt == "short" or sample_long(root) else 0
+        # a channel may need fewer (channel.json `samples`: {"short": 1, "long": 0}; owner, 2026-11-18, tech
+        # channel: "for this niche only 1 sample is enough")
+        own = pack.load(root=root).get("samples") or {}
+        if isinstance(own.get(fmt), int):
+            want = own[fmt]
         if settings.get("channelStage") != "samples":
             mode, why = "paused", f"this channel is in setup ({settings.get('channelStage') or 'not started'}): samples come after the build"
         elif len(entries) < want:
