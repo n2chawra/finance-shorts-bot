@@ -5,20 +5,21 @@
       "name": "Paisa Panchayat",
       "status": "active",
       "settings": {
-        "longPerWeek": 1,
+        "longPerWeek": 2,
         "uploadTimes": [
           "07:07",
-          "19:07"
+          "19:07",
+          "12:37"
         ],
-        "dailyVideoTarget": 2
+        "dailyVideoTarget": 3
       },
       "health": {
-        "at": "2026-11-18T06:56:39.509Z",
+        "at": "2026-11-18T07:02:02.238Z",
         "color": "red",
         "reason": "The upload queue is empty",
         "stayed": 0.376862268166616,
         "bufferDays": 0,
-        "usageShare": 1,
+        "usageShare": 0.74,
         "stayedBefore": 0.4441265567149108,
         "weeksUnderFloor": 2
       },
@@ -43,9 +44,9 @@
           "choice": "continue"
         }
       },
-      "backlog": 0,
+      "backlog": 1,
       "backlogByFormat": {
-        "short": 0,
+        "short": 1,
         "long": 0
       }
     }
