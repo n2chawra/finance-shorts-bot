@@ -89,13 +89,13 @@ def test_a_channel_in_setup_makes_only_its_samples(tmp_path, monkeypatch):
     assert run.state(tmp_path)["mode"] == "paused"
     stage("samples")
     st = run.state(tmp_path)
-    assert st["mode"] == "video" and st.get("sample") is True and "sample 1 of 3" in st["reason"]
+    assert st["mode"] == "video" and st.get("sample") is True and "sample 1 of 2" in st["reason"]
     assert run.state(tmp_path, fmt="long")["mode"] == "idle"     # no long sample without the research advising long videos
     (ch / "research").mkdir()
     (ch / "research" / "counts.json").write_text(json.dumps({"longPerWeek": 1}), encoding="utf-8")
     assert run.state(tmp_path, fmt="long")["mode"] == "video"
     real = json.loads((run.ROOT / "channels" / "paisa-panchayat" / "history" / "history.json").read_text(encoding="utf-8"))
-    entries = [e for e in real if e.get("format", "short") == "short"][-3:]   # three real Shorts' entries as the samples
+    entries = [e for e in real if e.get("format", "short") == "short"][-2:]   # two real Shorts' entries as the samples (owner: two are enough)
     (ch / "history" / "history.json").write_text(json.dumps(entries), encoding="utf-8")
     assert "samples are made" in run.state(tmp_path)["reason"]
 
@@ -130,3 +130,26 @@ def test_a_new_channels_own_rules(monkeypatch):
     own = arms.own_channel()
     assert own and own["category"] == "27" and own["length"].count("-") == 1
     assert arms.plan_problems({"arms": own}) == [] and arms.plan_problems({"arms": {**own, "length": "28-35"}})
+
+
+def test_every_listed_word_is_shown_on_its_word(monkeypatch):
+    """Owner, 2026-11-18: "small words spoken can be animation or shown, like the oil, cloth…"."""
+    from generator import story
+    assert story.listed_items("Trade sailed through it: phones, clothes, cars and oil.") == [["phones", "clothes", "cars", "oil"]]
+    assert story.listed_items("Gambia is a real country, with its own flag and its own money, and Senegal wraps it.") == []
+    beat = {"id": "trade", "scene": "directed", "say": "It carried phones, clothes, cars and oil.",
+            "events": {w: {"word": w} for w in ("phones", "cars", "oil")},
+            "params": {"moments": [{"at": w, "what": "x"} for w in ("phones", "cars", "oil")]}}
+    problems = story.list_problems([beat])
+    assert problems and "clothes" in problems[0]
+    beat["events"]["clothes"] = {"word": "clothes"}
+    beat["params"]["moments"].append({"at": "clothes", "what": "a bale of clothes drops on"})
+    assert story.list_problems([beat]) == []
+
+
+def test_a_channel_can_keep_the_picture_moving_more_often(monkeypatch):
+    from renderer import craft
+    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    assert craft.visual_gap() == craft.VISUAL_GAP
+    monkeypatch.setenv("CHANNEL", "geography-maps-geopolitical-mysteries")
+    assert craft.visual_gap() == 1.8

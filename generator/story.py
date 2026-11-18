@@ -558,12 +558,57 @@ def title_reveal_problems(script: dict, title: str | None) -> list[str]:
     return out
 
 
+_ITEM = re.compile(r"^[A-Za-z][A-Za-z'-]*(?: [A-Za-z][A-Za-z'-]*)?$")
+
+
+def listed_items(say: str) -> list[list[str]]:
+    """The short lists a line names ("phones, clothes, cars and oil"): runs of three or more items of
+    one or two words each, separated by commas, the last joined by "and"/"or". Placeholders are skipped."""
+    out = []
+    for sentence in re.split(r"[.!?:;]", re.sub(r"\{[^}]*\}", "X", say)):
+        parts = [x.strip() for x in sentence.split(",")]
+        run: list[str] = []
+        for part in parts:
+            tail = re.split(r"\s+(?:and|or)\s+", part)
+            if len(tail) == 2 and all(_ITEM.match(t.strip()) for t in tail) and run:
+                out.append([*run, tail[0].strip(), tail[1].strip()] if len(run) + 2 >= 3 else [])
+                run = []
+            elif _ITEM.match(part):
+                run.append(part)
+            else:
+                run = []
+    return [x for x in out if len(x) >= 3]
+
+
+def list_problems(beats: list[dict]) -> list[str]:
+    """Every item a line lists is shown on screen on its word (owner, 2026-11-18: "small words spoken can
+    be animation or shown, like the oil, cloth… keep animating things on screen"). A directed beat that
+    says "phones, clothes, cars and oil" needs an event and a moment for each."""
+    out = []
+    for b in beats:
+        if b.get("scene") != "directed":
+            continue
+        moments = {str(m.get("at", "")).lower() for m in ((b.get("params") or {}).get("moments") or []) if isinstance(m, dict)}
+        words = {k.lower(): str((v or {}).get("word", k)).lower().strip(",.?!:;") for k, v in (b.get("events") or {}).items() if isinstance(v, dict)}
+        for items in listed_items(b.get("say") or ""):
+            missing = []
+            for it in items:
+                head = it.split()[-1].lower().removesuffix("'s")
+                keys = [k for k, w in words.items() if w.removesuffix("'s") == head or k == head]
+                if not any(k in moments for k in keys):
+                    missing.append(it)
+            if missing:
+                out.append(f"beat {b.get('id')!r} lists {', '.join(items)}: show each on its word (an event and a moment for "
+                           f"{', '.join(missing)}): a listed word is a picture, not just a caption")
+    return out
+
+
 def script_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
     """What the script says: structure, roles, counter, banned and repeated lines."""
     if not applies(script):
         return []
     beats = script.get("beats") or []
-    out = []
+    out = list_problems(beats)
     # the variant system's style (improvement/arms.py): shot/build beats with the cast, or board cards
     style = (script.get("arms") or {}).get("style")
     n_board = sum(1 for b in beats if b.get("scene") == "board")

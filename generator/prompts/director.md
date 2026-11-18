@@ -17,6 +17,14 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 - **Another channel's look wins** (multi-channel, 2026-11-17): a channel with its own `prompts/recipe.md`
   directs by that recipe's "look". On a map channel the map is the stage of every beat and "a place for
   every line" means a new spot on the map (the river mouth, a border crossing, the capital), not a new room.
+- **Every listed word is a picture, and something always moves** (owner, 2026-11-18: "small words spoken
+  can be animation or shown, like the oil, cloth… keep animating things on screen as much as you can so
+  users don't leave"). When a line names things in a row ("phones, clothes, cars and oil"), each one
+  appears on its own word: a ship loaded with that cargo, an icon dropping onto the map, a label writing
+  on. Lint fails a listed word without its event and moment (`generator/story.py` `list_problems`). Between
+  the big moments keep small life going: a ship sailing, a label writing on, a pin pulsing, the camera
+  drifting. A channel can hold the picture still for less time than 2.5 s (`channel.json` `motion.maxGapSec`;
+  the geography channel 1.8 s).
 - **No two videos the same** (owner, 2026-11-18): a channel's recipe may list story devices (route and
   race, countdown, lift and compare, timeline…); direct the device the plan names, and never the same
   opening picture, camera path or device as the last videos.

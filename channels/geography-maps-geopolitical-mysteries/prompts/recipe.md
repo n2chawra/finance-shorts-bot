@@ -69,3 +69,11 @@ the story is told through, different from the last three videos, and names it in
 - **flood or grow**: water, desert or people spreading across the map as the figure climbs
 The look stays the channel's (the vintage map, its sound); the device, the camera's path, the colours
 in play and the places change. Two videos in a row never open on the same picture.
+
+## Keep it moving (owner, 2026-11-18)
+
+- Every word a line lists is shown on its word ("phones, clothes, cars and oil": a phone box, a clothes
+  bale, a car carrier, a tanker, one after another). Write lists that can be pictured.
+- Something new on screen at least every 1.8 s (`channel.json` `motion.maxGapSec`), and small life in
+  between: ships sailing, labels writing on, pins pulsing, the camera drifting over the map.
+

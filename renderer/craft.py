@@ -227,6 +227,16 @@ def _visual_times(b: dict, fps: int, figures: set[str] | None = None) -> list[fl
     return sorted(out)
 
 
+def visual_gap() -> float:
+    """The longest a picture may hold still: the channel's own (channel.json motion.maxGapSec: the
+    geography channel keeps things moving, owner 2026-11-18), else VISUAL_GAP."""
+    try:
+        from generator import pack
+        return float(((pack.load().get("motion") or {}).get("maxGapSec")) or VISUAL_GAP)
+    except Exception:
+        return VISUAL_GAP
+
+
 def picture_problems(tl: dict) -> list[str]:
     """Visual gaps and build actions that don't show what is being said."""
     fps, out = tl["fps"], []
@@ -239,8 +249,9 @@ def picture_problems(tl: dict) -> list[str]:
         gap = max((y - x for x, y in zip(times, times[1:])), default=0.0)
         if gap > worst[0]:
             worst = (gap, b["id"])
-    if worst[0] > VISUAL_GAP:
-        out.append(f"{worst[0]:.1f} s with nothing new on screen in beat {worst[1]!r} (at most {VISUAL_GAP} s): "
+    gap_max = visual_gap()
+    if worst[0] > gap_max:
+        out.append(f"{worst[0]:.1f} s with nothing new on screen in beat {worst[1]!r} (at most {gap_max} s): "
                    f"add an action on the phrase being said there")
     for b in tl["beats"]:
         if b["scene"] not in ("build", "board") or not b.get("voice"):
