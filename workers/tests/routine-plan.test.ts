@@ -71,3 +71,12 @@ test("a fifth channel says which shared routines move", () => {
   assert.deepEqual(f.moved.map((m) => `${m.routine} ${m.from}→${m.to}`), ["spare 09:07→09:47"]);
   assert.equal(f.slots.find((s) => s.routine === "video")!.ist, "09:07");
 });
+
+test("a channel's video run starts its lead time before its first Short slot (owner, 2026-11-18)", () => {
+  const tech = { id: "tech", name: "Tech", shortsPerDay: 1, longPerWeek: 2, uploadTimes: ["06:07"], videoLeadMin: 270 };
+  const v = planRoutines([tech]).slots.find((s) => s.routine === "video")!;
+  assert.equal(v.ist, "01:37");
+  // a 2D channel with a late first slot keeps its window-B time
+  const geo = { id: "geo", name: "Geo", shortsPerDay: 2, longPerWeek: 0, uploadTimes: ["09:37", "20:37"] };
+  assert.equal(planRoutines([geo]).slots.find((s) => s.routine === "video")!.ist, "04:07");
+});

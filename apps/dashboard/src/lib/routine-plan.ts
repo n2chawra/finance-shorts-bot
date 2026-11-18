@@ -15,6 +15,9 @@ export type PlanChannel = {
   shortsPerDay: number; longPerWeek: number;
   /** IST "HH:MM" upload slots for Shorts and long videos */
   uploadTimes: string[]; longUploadTimes?: string[];
+  /** minutes the video run must start before the channel's first Short slot (default 120; a 3D channel,
+   *  whose cloud renders have no GPU, 270), so a slow run never misses its slot (owner, 2026-11-18) */
+  videoLeadMin?: number;
 };
 
 export type Routine = "auditor" | "research" | "video" | "improver" | "dashboard" | "spare" | "studio" | "scout" | "reviewer" | "monthly" | "market";
@@ -43,7 +46,7 @@ export function cronOf(ist: string, days: string): string {
 const slot = (routine: Routine, channel: string | null, ist: number, days: string, window: Slot["window"]): Slot =>
   ({ routine, channel, ist: fmt(ist), days, window, cron: cronOf(fmt(ist), days) });
 
-export const LIMITS = { researchDone: toMin("02:30"), videoB: 4, freeGap: toMin("12:00"), auditor: toMin("23:00"), uploadGapMin: 20 };
+export const LIMITS = { researchDone: toMin("02:30"), videoB: 4, freeGap: toMin("12:00"), auditor: toMin("23:00"), uploadGapMin: 20, videoLeadMin: 120 };
 
 /** Every routine for these channels, channel #1 first, in the order they were added. */
 export function planRoutines(channels: PlanChannel[]): RoutinePlan {
@@ -57,8 +60,18 @@ export function planRoutines(channels: PlanChannel[]): RoutinePlan {
   const making = channels.filter((c) => c.shortsPerDay > 0 || c.longPerWeek > 0);
   let lastB = toMin("04:07") - 40, inC = 0;
   making.forEach((c, i) => {
-    if (i < LIMITS.videoB) { lastB = toMin("04:07") + 40 * i; slots.push(slot("video", c.id, lastB, "daily", "B")); }
-    else slots.push(slot("video", c.id, toMin("09:07") + 40 * inC++, "daily", "C"));
+    let at: number, win: Slot["window"];
+    if (i < LIMITS.videoB) { at = lastB = toMin("04:07") + 40 * i; win = "B"; }
+    else { at = toMin("09:07") + 40 * inC++; win = "C"; }
+    // the run must be done before the channel's first Short of the day: start it lead minutes before
+    const lead = c.videoLeadMin ?? LIMITS.videoLeadMin;
+    const first = c.shortsPerDay > 0 && c.uploadTimes.length ? Math.min(...c.uploadTimes.map(toMin)) : null;
+    if (first !== null) {
+      const latest = first - lead;
+      const gap = ((first - at) % 1440 + 1440) % 1440;
+      if (gap < lead) { at = latest; win = "A"; }
+    }
+    slots.push(slot("video", c.id, at, "daily", win));
   });
   const improver = Math.max(toMin("06:17"), lastB + 40);
   slots.push(slot("improver", null, improver, "daily", "B"));

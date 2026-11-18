@@ -17,6 +17,10 @@ import { type PlanChannel, fitCheck, planRoutines, promptFor } from "../apps/das
 const ROOT = path.resolve(import.meta.dirname, "..");
 const read = (f: string) => (existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : {}) as Record<string, unknown>;
 
+/** Whether a channel draws in 3D (channels/<id>/channel.json look.engine "three"). */
+const is3D = (id: string): boolean =>
+  ((read(path.join(ROOT, "channels", id, "channel.json")).look ?? {}) as { engine?: string }).engine === "three";
+
 type Entry = { name: string; status: string; settings?: Record<string, unknown>; setup?: { stage?: string } };
 
 export function planChannels(channels: Record<string, Entry>, platform: Record<string, unknown>, counts: Record<string, { shortsPerDay: number; longPerWeek: number }> = {}): { live: PlanChannel[]; all: Record<string, PlanChannel> } {
@@ -25,7 +29,9 @@ export function planChannels(channels: Record<string, Entry>, platform: Record<s
     const own = c.settings ?? {};
     const pick = <T,>(k: string, d: T): T => (own[k] ?? platform[k] ?? d) as T;
     all[id] = { id, name: c.name, shortsPerDay: counts[id]?.shortsPerDay ?? pick("dailyVideoTarget", 3), longPerWeek: counts[id]?.longPerWeek ?? pick("longPerWeek", 0),
-      uploadTimes: pick<string[]>("uploadTimes", []), longUploadTimes: pick<string[]>("longUploadTimes", []) };
+      uploadTimes: pick<string[]>("uploadTimes", []), longUploadTimes: pick<string[]>("longUploadTimes", []),
+      // a 3D channel's cloud renders have no GPU: its video run starts 4.5 h before its first Short
+      ...(is3D(id) ? { videoLeadMin: 270 } : {}) };
   }
   const live = Object.entries(channels).filter(([, c]) => c.status === "active" || c.status === "paused").map(([id]) => all[id]!);
   return { live, all };
