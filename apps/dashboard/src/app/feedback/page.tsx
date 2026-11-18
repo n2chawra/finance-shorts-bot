@@ -32,7 +32,7 @@ function Composer() {
   return (
     <Card title="Write a note" icon={MessageSquarePlus} accent="lime" description="About the channel as a whole. For one video, use the feedback box on that video's page.">
       <textarea value={text} onChange={(e) => setText(e.target.value)} rows={3} aria-label="Feedback"
-        placeholder="e.g. Fewer characters talking, more animation of the money"
+        placeholder="e.g. Fewer characters talking, more animation in every shot"
         className={`${fieldClass} h-auto resize-y py-2.5 text-[14px] leading-relaxed`} />
       <div className="mt-3 flex flex-wrap items-center gap-2.5">
         <div className="w-36">

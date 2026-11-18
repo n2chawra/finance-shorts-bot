@@ -1,5 +1,6 @@
 "use client";
 
+
 import { GrowthSchema } from "./growth";
 import { ScorecardSchema } from "./scorecard";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -7,7 +8,7 @@ import { z } from "zod";
 
 import { getJson, send } from "./api";
 import { StudySchema } from "./study";
-import { CHANNEL_COOKIE, ChannelSchema, type ChannelCreate, type ChannelPatch } from "./channels";
+import { CHANNEL_COOKIE, ChannelSchema, DEFAULT_CHANNEL, type ChannelCreate, type ChannelPatch } from "./channels";
 import { AgentsSchema, AnalyticsSchema, FeedbackSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
 import { ImpactSchema } from "./impact";
 import { StudioSchema, VideoStudioSchema, type Fmt, type Range } from "./studio-schema";
@@ -84,3 +85,10 @@ export const useReviewChannel = () => useWrite(({ id, ...body }: { id: string } 
 export const useLaunchChannel = () => useWrite((id: string) => send("POST", `/api/channels/${id}/launch`));
 const FitSchema = z.object({ fits: z.boolean(), problems: z.array(z.string()), slots: z.array(z.object({ routine: z.string(), ist: z.string(), days: z.string(), window: z.string(), cron: z.string(), prompt: z.string() })) });
 export const useChannelFit = (id: string, enabled: boolean) => useQuery({ queryKey: ["channel-fit", id], queryFn: () => getJson(`/api/channels/${id}/launch`, FitSchema), enabled });
+
+/** Whether the channel on screen is Paisa Panchayat: its own history (the 1.2K ceiling, the 16 Nov
+ * content reset) is shown only there. `undefined` while the channel list loads. */
+export function useIsFirstChannel(): boolean | undefined {
+  const { data } = useChannels();
+  return data ? data.current === DEFAULT_CHANNEL : undefined;
+}

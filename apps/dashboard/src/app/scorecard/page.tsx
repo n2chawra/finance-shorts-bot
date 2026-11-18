@@ -9,7 +9,7 @@ import { useState } from "react";
 import { BandPill, MetricTile } from "@/components/scorecard";
 import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, Segmented, Stagger, type Tone } from "@/components/ui";
 import { fmtCompact, fmtDayKey, fmtRelative } from "@/lib/format";
-import { useScorecard } from "@/lib/queries";
+import { useIsFirstChannel, useScorecard } from "@/lib/queries";
 import { CEILING, METRIC, METRICS, type ScoreShort, type Side, bandOf, isQuestionTitle, summarize } from "@/lib/scorecard";
 
 /*
@@ -186,6 +186,7 @@ function ShortsTable({ shorts, resetDay }: { shorts: ScoreShort[]; resetDay: str
 
 export default function ScorecardPage() {
   const { data, error, isLoading } = useScorecard();
+  const first = useIsFirstChannel();   // the 1.2K ceiling and the 16 Nov reset are Paisa Panchayat's own history
   const [range, setRange] = useState<Range>("7");
   if (isLoading) return <Loading />;
   if (error || !data) return <ErrorNote error={error} />;
@@ -195,7 +196,7 @@ export default function ScorecardPage() {
 
   return (
     <Stagger>
-      <PageHeader title="Scorecard" sub="Is it working? YouTube shows each Short to a small test audience first and only widens it when that audience stays. These are the four numbers it judges, against the targets that get a Short past the 1.2K ceiling.">
+      <PageHeader title="Scorecard" sub={`Is it working? YouTube shows each Short to a small test audience first and only widens it when that audience stays. These are the four numbers it judges${first ? ", against the targets that get a Short past the 1.2K ceiling" : ""}.`}>
         <Segmented label="Range" value={range} onChange={setRange} options={[{ value: "7", label: "7 days" }, { value: "14", label: "14 days" }, { value: "28", label: "28 days" }]} />
       </PageHeader>
 
@@ -231,8 +232,8 @@ export default function ScorecardPage() {
         ))}
       </div>
 
-      {/* the ceiling, and before vs after */}
-      <div className="mt-5 grid gap-5 lg:grid-cols-12">
+      {/* the ceiling, and before vs after (Paisa Panchayat's own history) */}
+      {first && <div className="mt-5 grid gap-5 lg:grid-cols-12">
         <Card title="Breaking the ceiling" icon={Mountain} accent="mint" className="lg:col-span-8"
           description={`Views in the first 48 hours of our latest Shorts. Every Short so far stopped under ${fmtCompact(CEILING)}; a bar past the line means YouTube took it to a bigger audience.`}>
           <CeilingChart shorts={data.shorts.slice(0, Math.min(28, Math.max(21, s.recent.length)))} resetDay={data.resetDay} />
@@ -241,7 +242,7 @@ export default function ScorecardPage() {
           description="Medians of the 14 days before the content reset against every Short since. Green moved the right way.">
           <BeforeAfter before={s.before} after={s.after} resetDay={data.resetDay} />
         </Card>
-      </div>
+      </div>}
 
       {/* every Short */}
       <Card flush title="Every Short" icon={ListChecks} accent="sky" className="mt-5"

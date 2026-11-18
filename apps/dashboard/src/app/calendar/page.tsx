@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 
 import { Badge, Button, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, Stat, StatusBadge, Thumb, Tip, VideoLink } from "@/components/ui";
 import { fmtCompact, fmtDateTime, fmtNum, istDay } from "@/lib/format";
-import { useOverview, useQueue, useSettings, useVideos } from "@/lib/queries";
+import { useOverview, useQueue, useSettings, useVideos, useChannels } from "@/lib/queries";
 import { postingPlan } from "@/lib/posting-plan";
 import { describeTimes } from "@/lib/slots";
 import type { Video } from "@/lib/schemas";
@@ -32,6 +32,9 @@ export default function CalendarPage() {
   const queue = useQueue();
   const overview = useOverview();
   const settings = useSettings();
+  const channels = useChannels();
+  // a channel in setup has no upload slots of its own yet: no slot plan, no "nothing ready" warnings
+  const live = channels.data ? channels.data.channels.find((c) => c.id === channels.data!.current)?.status === "active" : true;
   const today = istDay(new Date());
   const [ym, setYm] = useState(() => ({ y: Number(today.slice(0, 4)), m: Number(today.slice(5, 7)) - 1 }));
   const [selected, setSelected] = useState(today);
@@ -56,11 +59,11 @@ export default function CalendarPage() {
       const plan = s ? [...postingPlan("short", q, posted, s), ...postingPlan("long", q, posted, s)] : [];
       for (const slot of plan) {
         if (slot.video) add({ video: slot.video, kind: "planned", at: slot.at });
-        else if (slot.state === "upcoming") { const k = istDay(new Date(slot.at)); gaps.set(k, [...(gaps.get(k) ?? []), { at: slot.at, format: slot.format }]); }
+        else if (slot.state === "upcoming" && live) { const k = istDay(new Date(slot.at)); gaps.set(k, [...(gaps.get(k) ?? []), { at: slot.at, format: slot.format }]); }
       }
     }
     return { map, gaps };
-  }, [videos.data, queue.data, overview.data, settings.data]);
+  }, [videos.data, queue.data, overview.data, settings.data, live]);
 
   if (videos.isLoading || queue.isLoading || overview.isLoading) return <Loading />;
   if (videos.error || queue.error || overview.error) return <ErrorNote error={videos.error ?? queue.error ?? overview.error} />;
@@ -95,7 +98,7 @@ export default function CalendarPage() {
 
   return (
     <Stagger>
-      <PageHeader title="Calendar" sub={`${times.length} Short${times.length === 1 ? "" : "s"} a day at ${describeTimes(times)}${longWhen}`}>
+      <PageHeader title="Calendar" sub={live ? `${times.length} Short${times.length === 1 ? "" : "s"} a day at ${describeTimes(times)}${longWhen}` : "This channel is in setup: its uploads start at Launch"}>
         <div className="flex items-center gap-2">
           <Button iconOnly icon={ChevronLeft} title="Previous month" onClick={() => shift(-1)}>Previous month</Button>
           <span className="w-40 text-center text-[14px] font-semibold">{monthName}</span>

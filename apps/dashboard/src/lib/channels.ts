@@ -9,6 +9,12 @@ import { z } from "zod";
 export const DEFAULT_CHANNEL = "paisa-panchayat";
 export const CHANNEL_COOKIE = "channel";
 export const SLUG = /^[a-z0-9][a-z0-9-]{1,40}$/;
+/** The settings a channel keeps for itself (Channel.settings); the rest are platform-wide. The same list
+ * as workers/lib/channel-auth.ts, which the uploader and the routines' config read. */
+export const CHANNEL_KEYS = [
+  "uploadTimes", "trendUploadTimes", "shortEveryDays", "dailyVideoTarget", "longUploadTimes", "longUploadDays",
+  "longPerWeek", "longBacklogCap", "backlogCap", "lengthMinSec", "lengthMaxSec", "disclaimer", "uploadsPaused", "generationPaused",
+] as const;
 
 const time = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (IST)");
 

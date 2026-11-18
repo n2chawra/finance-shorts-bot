@@ -11,7 +11,7 @@ import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, IconT
 import { useToast } from "@/components/toast";
 import { fmtDateTime, fmtDayKey, fmtRelative, titleCase, fileSlug } from "@/lib/format";
 import { type Format, type PlanSlot, madeBy, postingPlan, runway } from "@/lib/posting-plan";
-import { useEditorOrder, useOverview, usePatchSettings, useQueue, useReorder, useSettings, useVideoAction, useVideos } from "@/lib/queries";
+import { useChannels, useEditorOrder, useOverview, usePatchSettings, useQueue, useReorder, useSettings, useVideoAction, useVideos } from "@/lib/queries";
 import { describeTimes } from "@/lib/slots";
 import type { Settings, Video, VideoAction } from "@/lib/schemas";
 
@@ -85,15 +85,17 @@ function PostNext({ slot }: { slot: PlanSlot & { video: Video } }) {
   );
 }
 
-function Section({ format, items, plan, settings, paused, busy, onMove, onAction }: {
+function Section({ format, items, plan, settings, paused, busy, live = true, onMove, onAction }: {
   format: Format; items: Video[]; plan: PlanSlot[]; settings: Settings; paused: boolean; busy: boolean;
+  /** false for a channel in setup: it has no upload slots of its own yet, so nothing can be missed */
+  live?: boolean;
   onMove: (id: string, to: number) => void; onAction: (v: Video, a: VideoAction | "delete-confirm") => void;
 }) {
   const router = useRouter();
   const [dragging, setDragging] = useState<string | null>(null);
   const [over, setOver] = useState<string | null>(null);
   const slotOf = new Map(plan.filter((s) => s.video).map((s) => [s.video!.id, s]));
-  const missed = plan.filter((s) => s.state === "missed");
+  const missed = live ? plan.filter((s) => s.state === "missed") : [];
   const r = runway(format, items, settings);
   const every = settings.shortEveryDays ?? 1;
   const when = format === "short" ? `${every > 1 ? `every ${every} days` : "daily"} at ${describeTimes(settings.uploadTimes)}${settings.trendUploadTimes.length ? `, plus trend slots at ${describeTimes(settings.trendUploadTimes)}` : ""}`
@@ -107,7 +109,7 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
         <h2 className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[16px] font-semibold tracking-[-0.01em]">
           <IconTile icon={Icon} accent={format === "short" ? "pink" : "sky"} />
           {format === "short" ? "Shorts" : "Long videos"}
-          <span className="text-[13px] font-normal tracking-normal text-muted">· {r.n} ready · posts {when}</span></h2>
+          <span className="text-[13px] font-normal tracking-normal text-muted">· {r.n} ready · {live ? `posts ${when}` : "uploads start at Launch"}</span></h2>
         {r.days !== null && <Badge tone={r.n ? "good" : "critical"} dot>{r.n ? `Enough for about ${r.days} day${r.days === 1 ? "" : "s"}` : "Nothing ready"}</Badge>}
       </div>
 
@@ -184,6 +186,8 @@ function Section({ format, items, plan, settings, paused, busy, onMove, onAction
 export default function QueuePage() {
   const queue = useQueue();
   const overview = useOverview();
+  const channels = useChannels();
+  const live = channels.data ? channels.data.channels.find((c) => c.id === channels.data!.current)?.status === "active" : true;
   const settings = useSettings();
   const published = useVideos({ status: "published" });
   const scheduled = useVideos({ status: "scheduled" });
@@ -258,7 +262,7 @@ export default function QueuePage() {
       )}
 
       {(["short", "long"] as const).map((f) => (
-        <Section key={f} format={f} items={byFormat[f]} plan={plans[f]} settings={s} paused={paused} busy={busy}
+        <Section key={f} format={f} items={byFormat[f]} plan={plans[f]} settings={s} paused={paused} busy={busy} live={live}
           onMove={(id, to) => move(f, id, to)} onAction={onAction} />
       ))}
 

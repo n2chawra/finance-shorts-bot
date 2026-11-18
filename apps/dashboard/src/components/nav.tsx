@@ -134,11 +134,13 @@ function ChannelSwitcher({ onNavigate }: { onNavigate?: () => void }) {
   const switchTo = useSwitchChannel();
   const router = useRouter();
   const current = data?.channels.find((c) => c.id === data.current);
+  // the browser tab names the channel on screen (it said "Paisa Panchayat" on every channel)
+  useEffect(() => { if (current) document.title = `${current.name} · Studio`; }, [current]);
   return (
     <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger aria-label="Switch channel" className="flex w-full items-center gap-2.5 rounded-xl px-1.5 py-1.5 text-left outline-none transition-colors hover:bg-surface-3 focus-visible:ring-4 focus-visible:ring-brand-soft">
         <LogoMark className="size-8" />
-        <Wordmark name={current?.name ?? "Paisa Panchayat"} sub={current && current.status !== "active" ? `Channel studio · ${current.status}` : "Channel studio"} />
+        <Wordmark name={current?.name ?? "…"} sub={current && current.status !== "active" ? `Channel studio · ${current.status}` : "Channel studio"} />
         <ChevronsUpDown aria-hidden className="ml-auto size-4 shrink-0 text-muted" />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>

@@ -6,7 +6,9 @@
 import type { Prisma } from "@prisma/client";
 
 import { liveCounters } from "./live-stats";
-import { prisma } from "./prisma";
+import { prisma, prismaAll } from "./prisma";
+import { currentChannel } from "./channel-scope";
+import { CHANNEL_KEYS } from "./channels";
 import { dispatchPublish } from "./dispatch";
 import { NO_PICK, canMarkStale, skipToEnd, uploadNow } from "./queue-actions";
 import { EditorNoteSchema, SettingsSchema, mostLoved } from "./schemas";
@@ -70,7 +72,8 @@ const noLiveCounters = { liveViews: null, liveLikes: null, liveComments: null, l
 
 // ---------------- settings ----------------
 
-export async function getSettings(): Promise<Settings> {
+/** The platform-wide settings (the Setting table): what every channel starts from. */
+async function platformSettings(): Promise<Settings> {
   const merged: Record<string, unknown> = { ...DEFAULT_SETTINGS };
   for (const row of await prisma.setting.findMany()) {
     if (row.key in DEFAULT_SETTINGS) merged[row.key] = row.value;
@@ -79,12 +82,40 @@ export async function getSettings(): Promise<Settings> {
   return parsed.success ? parsed.data : DEFAULT_SETTINGS;
 }
 
+/**
+ * The settings of the channel picked in the switcher: the platform's, with the channel's own values
+ * (Channel.settings, the CHANNEL_KEYS) over them (2026-11-18: the page was platform-wide, so choosing
+ * 2 a day on the geography channel changed Paisa Panchayat's 3 a day). A channel that isn't live
+ * uploads nothing, whatever the platform switch says.
+ */
+export async function getSettings(): Promise<Settings> {
+  const base = await platformSettings();
+  const ch = await prismaAll.channel.findUnique({ where: { id: await currentChannel() }, select: { status: true, settings: true } });
+  if (!ch) return base;
+  const own = (ch.settings ?? {}) as Record<string, unknown>;
+  const merged: Record<string, unknown> = { ...base };
+  for (const k of CHANNEL_KEYS) if (k in own) merged[k] = own[k];
+  if (ch.status !== "active") merged.uploadsPaused = true;
+  const parsed = SettingsSchema.safeParse(merged);
+  return parsed.success ? parsed.data : base;
+}
+
+/** Saves a change: a channel's own keys to that channel only, everything else platform-wide. */
 export async function patchSettings(patch: Partial<Settings>): Promise<Settings> {
   const current = await getSettings();
   const next: Settings = { ...current, ...patch, alerts: { ...current.alerts, ...patch.alerts }, templateWork: { ...current.templateWork, ...patch.templateWork } };
   const changed = (Object.keys(next) as (keyof Settings)[]).filter((k) => JSON.stringify(next[k]) !== JSON.stringify(current[k]));
-  await prisma.$transaction(changed.map((key) => prisma.setting.upsert({ where: { key }, update: { value: next[key] }, create: { key, value: next[key] } })));
-  return next;
+  const mine = changed.filter((k) => (CHANNEL_KEYS as readonly string[]).includes(k));
+  const platform = changed.filter((k) => !(CHANNEL_KEYS as readonly string[]).includes(k));
+  const id = await currentChannel();
+  const ch = mine.length ? await prismaAll.channel.findUnique({ where: { id }, select: { settings: true } }) : null;
+  await prisma.$transaction([
+    ...platform.map((key) => prisma.setting.upsert({ where: { key }, update: { value: next[key] }, create: { key, value: next[key] } })),
+    ...(ch ? [prismaAll.channel.update({ where: { id }, data: { settings: {
+      ...((ch.settings ?? {}) as Record<string, unknown>), ...Object.fromEntries(mine.map((k) => [k, next[k]])),
+    } as Prisma.InputJsonValue } })] : []),
+  ]);
+  return getSettings();
 }
 
 // ---------------- videos ----------------

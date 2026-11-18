@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const jet = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jet", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Paisa Panchayat · Studio",
+  title: "Channel studio",
   description: "Backlog, uploads, analytics and agents for the Paisa Panchayat channel",
 };
 
