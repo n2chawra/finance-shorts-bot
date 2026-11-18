@@ -231,6 +231,12 @@
       "action": "fixed",
       "note": "The camera of every new Short and long video now stops at 1.3x (the GTA Short pushed to 1.5-1.75x and cut the TV, the rider, the queue and the signs); the director draws a close-up big instead of zooming past it and frames people, screens and signs whole. Checked on this video's own stills: the TV, the NONE board and the queue now sit inside the frame. Starts with tomorrow's Shorts.",
       "commit": "e8875eb"
+    },
+    {
+      "id": "cmwk4neu10001jy09ifqrxyku",
+      "action": "fixed",
+      "note": "Effects: every new video now gets its own sound set (glass, arcade, deep, wood, felt or the old one), chosen to suit its music, with bells and dings tuned to its own music key, so no two Shorts in a row click, whoosh and ding the same; checked on four recent scripts, which got deep, arcade, wood and felt at the same loudness. Music: genre, key and tempo already change every video but the bed sits about 20 dB under the voice with no tune of its own, so a per-video melody ('own-motif-bed') is now first in line for the weekly loop's next sound test.",
+      "commit": "8569914"
     }
   ]
 }

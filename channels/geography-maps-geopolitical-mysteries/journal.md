@@ -1,0 +1,1 @@
+2026-11-18 waited: no first weekly-loop challenger started because the channel has 2 Shorts made (17 and 18 Nov), none with 48 h data; at about one Short a day a cycle cannot reach 8 a side within 14 days (owner info raised). Re-check 2026-11-19.

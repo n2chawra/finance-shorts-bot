@@ -1,0 +1,13 @@
+{
+  "note": "Every default change for this channel, newest last (multi-channel plan: one change at a time).",
+  "changes": [
+    {
+      "at": "2026-11-18T17:09:31Z",
+      "what": "sound effects: one sound set per video",
+      "from": "every Short's effects synthesized the same (pop, whoosh, boom, ding, kaching, tick, riser)",
+      "to": "a sound set per video (classic, glass, arcade, deep, wood, felt), picked from the seed among those that suit its music genre, bells tuned to its music key (renderer/engine/sfx_sets.py; style.sfx pins one)",
+      "why": "owner note 2026-11-17 (wrong): effects sound the same in every video; CLAUDE.md variety rules already require rotating the SFX set per video",
+      "by": "improver"
+    }
+  ]
+}
