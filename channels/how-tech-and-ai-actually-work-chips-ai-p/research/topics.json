@@ -1,0 +1,1161 @@
+{
+  "note": "First topics from the setup research (18 Nov 2026); every fact checked against its source that day.",
+  "topics": [
+    {
+      "id": "2026-11-18-gpu-one-frame",
+      "format": "long",
+      "title": "What Happens Inside a Graphics Card to Draw One Frame",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "What Happens Inside a CPU in One Second?",
+        "views": 446892,
+        "url": "https://youtube.com/watch?v=r9qDcQ_b50k"
+      },
+      "hook": "Every frame of your game is drawn from scratch in a few thousandths of a second. Here is everything that happens.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Follow one frame through an RTX 4090: triangles in, corners moved into place, pixels shaded by 16,384 small maths units at billions of ticks a second, written to memory and sent to the screen. Labelled 3D cut-through: the card, the die, one core.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long, core). Viewers asked for advanced graphics (comment notes #9).",
+      "facts": [
+        {
+          "label": "NVIDIA GeForce RTX 4090: CUDA cores (its small maths units)",
+          "value": 16384,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "NVIDIA (RTX 4090 specs)",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+          "fixed": true
+        },
+        {
+          "label": "RTX 4090 boost clock, in gigahertz (billions of ticks a second)",
+          "value": 2.52,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "NVIDIA (RTX 4090 specs)",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+          "fixed": true
+        },
+        {
+          "label": "RTX 4090 graphics memory, in gigabytes (GDDR6X)",
+          "value": 24,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "NVIDIA (RTX 4090 specs)",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+          "fixed": true
+        },
+        {
+          "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
+          "value": 76,
+          "unit": "count_billion",
+          "as_of": "2022-09-20",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+          "fixed": true
+        },
+        {
+          "label": "Transistors in the generation before (Ampere), for comparison",
+          "value": 28,
+          "unit": "count_billion",
+          "as_of": "2022-09-20",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+          "fixed": true
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-face-unlock",
+      "format": "long",
+      "title": "What Happens Inside Your Phone When You Unlock It With Your Face",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "What Happens Inside an AI Chip When You Ask a Question",
+        "views": 1024094,
+        "url": "https://youtube.com/watch?v=oBKrR3i6jWM"
+      },
+      "hook": "Your phone just fired thousands of invisible dots at your face. Here's what it did with them.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Face ID step by step: the dot projector, the infrared camera, the depth map, the neural engine comparing it with the stored maths of your face, the secure check, all before the screen lights. Apple's own figures only; no security how-tos.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long, example title 1).",
+      "facts": [
+        {
+          "label": "Invisible infrared dots Face ID projects onto your face, more than",
+          "value": 30000,
+          "unit": "count",
+          "as_of": "2017-09-12",
+          "source": "Apple Newsroom",
+          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+          "fixed": true
+        },
+        {
+          "label": "Neural engine operations per second on the iPhone X chip, up to",
+          "value": 600,
+          "unit": "count_billion",
+          "as_of": "2017-09-12",
+          "source": "Apple Newsroom",
+          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+          "fixed": true
+        },
+        {
+          "label": "Chance a random person unlocks it with one enrolled appearance: less than 1 in",
+          "value": 1000000,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "Apple Support (About Face ID advanced technology)",
+          "url": "https://support.apple.com/en-us/102381",
+          "fixed": true
+        },
+        {
+          "label": "Year Face ID launched, on iPhone X",
+          "value": 2017,
+          "unit": "year",
+          "as_of": "2017-09-12",
+          "source": "Apple Newsroom",
+          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-euv-prints-a-chip",
+      "format": "long",
+      "title": "How a Chip Factory Prints Billions of Switches With Light",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Semiconductor Chip कैसे बनती है? रेत से 2nm Chip तक की पूरी कहानी",
+        "views": 2201309,
+        "url": "https://youtube.com/watch?v=lvcAvPjZwxo"
+      },
+      "hook": "To print a modern chip, a machine blasts drops of molten tin fifty thousand times a second.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Inside ASML's EUV machine: tin droplets hit twice by a laser, plasma giving off 13.5 nm light, mirrors carrying it onto a mask and down onto the wafer, layer by layer. ASML's figures; no export-control politics.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long). Viewers asked for the machines that make chips (comment notes #5).",
+      "facts": [
+        {
+          "label": "Wavelength of EUV light, in nanometres",
+          "value": 13.5,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Times every second a tin droplet is hit and turned into light-making plasma",
+          "value": 50000,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Diameter of each molten tin droplet, in microns (about)",
+          "value": 25,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Speed the droplets leave the generator, in metres per second",
+          "value": 70,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Smallest feature a standard (0.33 NA) EUV machine prints, in nanometres",
+          "value": 13,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML (EUV lithography systems)",
+          "url": "https://www.asml.com/en/products/euv-lithography-systems",
+          "fixed": true
+        },
+        {
+          "label": "Smallest feature a High-NA (0.55 NA) EUV machine prints, in nanometres",
+          "value": 8,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML (EUV lithography systems)",
+          "url": "https://www.asml.com/en/products/euv-lithography-systems",
+          "fixed": true
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-ssd-stores-a-bit",
+      "format": "long",
+      "title": "How an SSD Stores a Bit With No Moving Parts",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How do microSD Cards Store 2 TB in such a TINY space?",
+        "views": 1560892,
+        "url": "https://youtube.com/watch?v=9kM3mnxrMMM"
+      },
+      "hook": "Your files are electrons trapped in a cage far too small to see. Here's how one gets in and out.",
+      "templates": [
+        "any"
+      ],
+      "angle": "One NAND cell: trapped charge sets a 0 or 1, the read checks it, then 3D stacking piles hundreds of layers (332 in KIOXIA's 2025 generation, from 48 in 2015) into a skyscraper. Keep layers and stacked dies apart (viewers caught that slip before).",
+      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long). Viewers asked about 3D NAND layers, electron trapping and wear (comment notes #11).",
+      "facts": [
+        {
+          "label": "Year Toshiba (now KIOXIA) invented NAND flash memory",
+          "value": 1987,
+          "unit": "year",
+          "as_of": "1987-01-01",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
+        },
+        {
+          "label": "Capacity of the first commercial NAND flash chip, in megabits",
+          "value": 4,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
+          "fixed": true
+        },
+        {
+          "label": "Year the first commercial NAND chip was commercialized",
+          "value": 1991,
+          "unit": "year",
+          "as_of": "1991-01-01",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
+        },
+        {
+          "label": "Year KIOXIA announced the first 3D (stacked) flash technology",
+          "value": 2007,
+          "unit": "year",
+          "as_of": "2007-01-01",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
+        },
+        {
+          "label": "Layers of memory cells in KIOXIA's BiCS FLASH generation 10 (2025)",
+          "value": 332,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
+          "fixed": true
+        },
+        {
+          "label": "Layers in its 2015 generation, for comparison",
+          "value": 48,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
+          "fixed": true
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-ai-question-to-answer",
+      "format": "long",
+      "title": "How an AI Turns Your Question Into an Answer, Every Step",
+      "category": "ai",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_ai_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How AI works, Explained with Mushrooms ! (Easiest Explanation )",
+        "views": 622117,
+        "url": "https://youtube.com/watch?v=vIM9qCyfVmg"
+      },
+      "hook": "You type a question. Seconds later, words appear. Here is every step in between, down to the chip.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Text cut into tokens, tokens turned into numbers, the numbers multiplied through billions of parameters on the GPU's maths units, one next token picked, repeated. Never skip the hardware-to-answer step. No hype: it predicts text; it doesn't think.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: how-AI-works long, the best hit rate). The top ask in the comments: the missing step from transistors to an answer (comment notes #1).",
+      "facts": [
+        {
+          "label": "Parameters (adjustable numbers) in GPT-3",
+          "value": 175,
+          "unit": "count_billion",
+          "as_of": "2020-05-28",
+          "source": "Brown et al., Language Models are Few-Shot Learners (arXiv)",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "fixed": true
+        },
+        {
+          "label": "Characters of English text in one token, roughly",
+          "value": 4,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "OpenAI Help Center (What are tokens)",
+          "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+          "fixed": true
+        },
+        {
+          "label": "Words in 100 tokens, roughly",
+          "value": 75,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "OpenAI Help Center (What are tokens)",
+          "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+          "fixed": true
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-ai-query-energy-water",
+      "format": "long",
+      "title": "What One AI Question Really Costs in Power and Water",
+      "category": "ai",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_ai_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why Building AI Data Centres Isn’t Working Anymore",
+        "views": 1625083,
+        "url": "https://youtube.com/watch?v=eXXwN_TDdLU"
+      },
+      "hook": "One AI question uses about five drops of water. So why are data centres running short of power?",
+      "templates": [
+        "any"
+      ],
+      "angle": "Follow one prompt into a data centre: the chip's power, the cooling, the water. Google's measured figure per prompt, OpenAI's CEO's stated figure (named as his), then the IEA's total for all data centres. Sources named on screen; no scare framing.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: how-AI-works long, example title 3). Viewers asked what one AI question costs in compute, power and water (comment notes #3).",
+      "facts": [
+        {
+          "label": "Energy used by the median Gemini Apps text prompt, in watt-hours",
+          "value": 0.24,
+          "unit": "count",
+          "as_of": "2025-08-22",
+          "source": "Google Cloud blog",
+          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+          "fixed": true
+        },
+        {
+          "label": "Water used by the median Gemini Apps text prompt, in millilitres",
+          "value": 0.26,
+          "unit": "count",
+          "as_of": "2025-08-22",
+          "source": "Google Cloud blog",
+          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+          "fixed": true
+        },
+        {
+          "label": "That water as drops, about",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2025-08-22",
+          "source": "Google Cloud blog",
+          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+          "fixed": true
+        },
+        {
+          "label": "Energy an average ChatGPT query uses, in watt-hours (OpenAI CEO's figure)",
+          "value": 0.34,
+          "unit": "count",
+          "as_of": "2025-06-10",
+          "source": "Sam Altman, The Gentle Singularity",
+          "url": "https://blog.samaltman.com/the-gentle-singularity",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "The all-data-centre total: IEA 'Key Questions on Energy and AI' (April 2026) reportedly gives about 485 TWh in 2025 and 950 TWh in 2030; iea.org blocked fetching on 18 Nov, so confirm on the IEA page (or two outlets) and add it as a fact before using it"
+      ],
+      "sources": [
+        "https://iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+      ]
+    },
+    {
+      "id": "2026-11-18-message-crosses-ocean",
+      "format": "long",
+      "title": "How Your Message Crosses the Ocean in a Tenth of a Second",
+      "category": "internet",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_network_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Inside America's Only Internet Sea Cable Maker",
+        "views": 5542424,
+        "url": "https://youtube.com/watch?v=cKnwkxItL2M"
+      },
+      "hook": "Your message to London didn't go to space. It went along the bottom of the Atlantic, in a cable as wide as a garden hose.",
+      "templates": [
+        "any"
+      ],
+      "angle": "From your phone to a landing station, into a fibre pair, light pulses along MAREA's 6,605 km of Atlantic floor, boosted by repeaters, out at Bilbao. Light moves at the speed of light in glass, not in a vacuum (viewers correct this). Any travel time is computed from the length and a sourced speed.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: internet long, a gap). Viewers asked how light carries data in sea cables and how they're laid (comment notes #13).",
+      "facts": [
+        {
+          "label": "Kilometres of submarine cable in service worldwide, over",
+          "value": 1.5,
+          "unit": "count_million",
+          "as_of": "2026-01-01",
+          "source": "TeleGeography Submarine Cable FAQs",
+          "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
+        },
+        {
+          "label": "Active and planned submarine cables TeleGeography tracks, more than",
+          "value": 600,
+          "unit": "count",
+          "as_of": "2026-01-01",
+          "source": "TeleGeography Submarine Cable FAQs",
+          "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
+        },
+        {
+          "label": "Length of the MAREA cable, Virginia Beach to Bilbao",
+          "value": 6605,
+          "unit": "km",
+          "as_of": "2018-02-01",
+          "source": "Wikipedia (MAREA)",
+          "url": "https://en.wikipedia.org/wiki/MAREA",
+          "fixed": true
+        },
+        {
+          "label": "MAREA's fibre pairs",
+          "value": 8,
+          "unit": "count",
+          "as_of": "2018-02-01",
+          "source": "Wikipedia (MAREA)",
+          "url": "https://en.wikipedia.org/wiki/MAREA",
+          "fixed": true
+        },
+        {
+          "label": "MAREA's capacity at completion, in terabits per second, up to",
+          "value": 160,
+          "unit": "count",
+          "as_of": "2017-09-23",
+          "source": "Microsoft News",
+          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
+          "fixed": true
+        },
+        {
+          "label": "How many times faster than the average home connection MAREA is, more than",
+          "value": 16,
+          "unit": "count_million",
+          "as_of": "2017-09-23",
+          "source": "Microsoft News",
+          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
+          "fixed": true
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-starlink-flat-dish",
+      "format": "long",
+      "title": "How Starlink's Flat Dish Aims at Satellites Without Moving",
+      "category": "internet",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_network_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Starlink Actually Works",
+        "views": 4632145,
+        "url": "https://youtube.com/watch?v=DW-aL_MiUz4"
+      },
+      "hook": "This dish follows satellites racing across the sky, and it never moves. Here's how.",
+      "templates": [
+        "any"
+      ],
+      "angle": "A phased array: many tiny antennas fire a fraction of a second apart so the beam bends where it's needed, handing off between satellites about 550 km up instead of one 35,786 km up. Draw the cables right (viewers caught a power cable drawn as data).",
+      "why_now": "First topics for the channel, from the setup research (advice.md: internet long, example title 2). Viewers asked about LEO vs GEO and the phased-array dish (comment notes #14).",
+      "facts": [
+        {
+          "label": "Altitude of the Starlink constellation, about",
+          "value": 550,
+          "unit": "km",
+          "as_of": "2026-11-18",
+          "source": "Starlink (Technology)",
+          "url": "https://www.starlink.com/technology",
+          "fixed": true
+        },
+        {
+          "label": "Altitude of a geostationary satellite above the equator",
+          "value": 35786,
+          "unit": "km",
+          "as_of": "2026-11-18",
+          "source": "Wikipedia (Geostationary orbit)",
+          "url": "https://en.wikipedia.org/wiki/Geostationary_orbit",
+          "fixed": true
+        },
+        {
+          "label": "Ku-band phased-array antennas on each Starlink satellite",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "Starlink (Technology)",
+          "url": "https://www.starlink.com/technology"
+        },
+        {
+          "label": "Operational satellites in the first Starlink launch",
+          "value": 60,
+          "unit": "count",
+          "as_of": "2019-05-24",
+          "source": "Wikipedia (Starlink)",
+          "url": "https://en.wikipedia.org/wiki/Starlink",
+          "fixed": true
+        },
+        {
+          "label": "Year of that first operational launch",
+          "value": 2019,
+          "unit": "year",
+          "as_of": "2019-05-24",
+          "source": "Wikipedia (Starlink)",
+          "url": "https://en.wikipedia.org/wiki/Starlink"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-first-mouse-wood",
+      "format": "short",
+      "title": "The First Computer Mouse Was Made of Wood",
+      "category": "history",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "invention_story"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Mouse Works? (3D) by Professor Of Ai",
+        "views": 1346050,
+        "url": "https://youtube.com/watch?v=PE7MIF2YMWk"
+      },
+      "hook": "The first computer mouse was a wooden box with two metal wheels.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Bill English built Doug Engelbart's design at SRI in 1964: a wooden block, two wheels at right angles, one button; shown to the world in a 90-minute demo in 1968. Recreated in 3D. Wood: Computer History Museum caption (https://www.computerhistory.org/revolution/input-output/14/350).",
+      "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts, example title).",
+      "facts": [
+        {
+          "label": "Year Bill English built the first mouse prototype at SRI",
+          "value": 1964,
+          "unit": "year",
+          "as_of": "1964-01-01",
+          "source": "SRI International",
+          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
+        },
+        {
+          "label": "Year the mouse patent was filed",
+          "value": 1967,
+          "unit": "year",
+          "as_of": "1967-01-01",
+          "source": "SRI International",
+          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
+        },
+        {
+          "label": "Year Engelbart showed it in public",
+          "value": 1968,
+          "unit": "year",
+          "as_of": "1968-12-09",
+          "source": "SRI International",
+          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
+        },
+        {
+          "label": "Length of that public demonstration, in minutes",
+          "value": 90,
+          "unit": "count",
+          "as_of": "1968-12-09",
+          "source": "SRI International",
+          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/",
+          "fixed": true
+        },
+        {
+          "label": "Year the patent was issued (X-Y Position Indicator for a Display System)",
+          "value": 1970,
+          "unit": "year",
+          "as_of": "1970-01-01",
+          "source": "SRI International",
+          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-why-qwerty",
+      "format": "short",
+      "title": "Why Your Keyboard Isn't in ABC Order",
+      "category": "history",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "invention_story"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How You Accidentally Invented the Mechanical Typewriter",
+        "views": 6599644,
+        "url": "https://youtube.com/watch?v=ZDhDxu5eNig"
+      },
+      "hook": "Why is Q in the corner of your keyboard? The answer is about 150 years old.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Sholes's 1868 typewriter, sold to Remington in 1873, its layout reshuffled until the 1878 patent showed QWERTY. Say the anti-jamming story is disputed rather than state it as fact.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts, example title).",
+      "facts": [
+        {
+          "label": "Year of Sholes's typewriter patent (US 79,265)",
+          "value": 1868,
+          "unit": "year",
+          "as_of": "1868-06-23",
+          "source": "Centre for Computing History",
+          "url": "https://www.computinghistory.org.uk/det/6165/Christopher-Sholes-invents-QWERTY-keyboard/"
+        },
+        {
+          "label": "Year Sholes sold manufacturing rights to E. Remington and Sons",
+          "value": 1873,
+          "unit": "year",
+          "as_of": "1873-01-01",
+          "source": "Centre for Computing History",
+          "url": "https://www.computinghistory.org.uk/det/6165/Christopher-Sholes-invents-QWERTY-keyboard/"
+        },
+        {
+          "label": "Year of the patent showing the QWERTY layout (US 207,559)",
+          "value": 1878,
+          "unit": "year",
+          "as_of": "1878-08-27",
+          "source": "Centre for Computing History",
+          "url": "https://www.computinghistory.org.uk/det/6165/Christopher-Sholes-invents-QWERTY-keyboard/"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-first-computer-bug",
+      "format": "short",
+      "title": "The First Computer Bug Was a Real Moth",
+      "category": "history",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "invention_story"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Mr. Potato Head Was Invented",
+        "views": 35566426,
+        "url": "https://youtube.com/watch?v=XFY7-td3LA8"
+      },
+      "hook": "Engineers opened a computer, found a moth inside, and taped it into the logbook.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Harvard's Mark II, September 1947: operators find a moth between the relays and log the 'first actual case of bug being found'. The word bug was older; this made it famous. Don't say Grace Hopper found it herself (disputed).",
+      "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts).",
+      "facts": [
+        {
+          "label": "Year a moth stuck in Harvard's Mark II computer was logged as a bug",
+          "value": 1947,
+          "unit": "year",
+          "as_of": "1947-09-09",
+          "source": "Centre for Computing History",
+          "url": "https://www.computinghistory.org.uk/det/5927/First-computer-bug-is-found/"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-first-hard-drive",
+      "format": "short",
+      "title": "The First Hard Drive Had 50 Disks and Held Under 4 Megabytes",
+      "category": "history",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "invention_story"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How the Bicycle Was Actually Invented!",
+        "views": 1027331,
+        "url": "https://youtube.com/watch?v=PdszpOPce-Y"
+      },
+      "hook": "The first hard drive had fifty disks the size of pizzas, and you couldn't even buy it.",
+      "templates": [
+        "any"
+      ],
+      "angle": "IBM's Model 350, 1956: fifty 24-inch disks, the equivalent of 3.75 MB, rented for $750 a month. Trails the SSD long video. Any 'one photo / one song' comparison is computed from 3.75 MB and a stated file size.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts; trails the SSD long video).",
+      "facts": [
+        {
+          "label": "Year IBM shipped the first hard drive, the Model 350",
+          "value": 1956,
+          "unit": "year",
+          "as_of": "1956-06-01",
+          "source": "Computer History Museum",
+          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/"
+        },
+        {
+          "label": "Its capacity, in megabytes (equivalent)",
+          "value": 3.75,
+          "unit": "count",
+          "as_of": "1956-06-01",
+          "source": "Computer History Museum",
+          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
+          "fixed": true
+        },
+        {
+          "label": "Number of disks inside it",
+          "value": 50,
+          "unit": "count",
+          "as_of": "1956-06-01",
+          "source": "Computer History Museum",
+          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
+          "fixed": true
+        },
+        {
+          "label": "Diameter of each disk, in inches",
+          "value": 24,
+          "unit": "count",
+          "as_of": "1956-06-01",
+          "source": "Computer History Museum",
+          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
+          "fixed": true
+        },
+        {
+          "label": "Monthly rent for it",
+          "value": 750,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "1956-06-01",
+          "source": "Computer History Museum",
+          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
+          "fixed": true
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-zoom-into-gpu",
+      "format": "short",
+      "title": "Zoom Into a Graphics Chip Until You See the Switches",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "zoom_inside"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Zooming Into a CPU (It's Incredible)",
+        "views": 504377,
+        "url": "https://youtube.com/watch?v=Bez-2cvYja0"
+      },
+      "hook": "This chip is smaller than your palm. Inside it is a city of seventy-six billion switches.",
+      "templates": [
+        "any"
+      ],
+      "angle": "One continuous zoom: the card, the die, the blocks of cores, one core, one transistor. Cut from the GPU long video.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
+      "facts": [
+        {
+          "label": "NVIDIA GeForce RTX 4090: CUDA cores (its small maths units)",
+          "value": 16384,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "NVIDIA (RTX 4090 specs)",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+          "fixed": true
+        },
+        {
+          "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
+          "value": 76,
+          "unit": "count_billion",
+          "as_of": "2022-09-20",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+          "fixed": true
+        },
+        {
+          "label": "Transistors in the generation before (Ampere), for comparison",
+          "value": 28,
+          "unit": "count_billion",
+          "as_of": "2022-09-20",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+          "fixed": true
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-zoom-face-id-dots",
+      "format": "short",
+      "title": "The 30,000 Dots Your Phone Fires at Your Face",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "zoom_inside"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "The Flattest Surface in the World",
+        "views": 764783,
+        "url": "https://youtube.com/watch?v=VUPxowV0fsk"
+      },
+      "hook": "Every time you look at your phone, it fires invisible dots at your face.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Exploded view of the notch: dot projector, infrared camera, flood illuminator, then the dots landing on a face as a depth map. Cut from the face-unlock long video.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
+      "facts": [
+        {
+          "label": "Invisible infrared dots Face ID projects onto your face, more than",
+          "value": 30000,
+          "unit": "count",
+          "as_of": "2017-09-12",
+          "source": "Apple Newsroom",
+          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+          "fixed": true
+        },
+        {
+          "label": "Neural engine operations per second on the iPhone X chip, up to",
+          "value": 600,
+          "unit": "count_billion",
+          "as_of": "2017-09-12",
+          "source": "Apple Newsroom",
+          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+          "fixed": true
+        },
+        {
+          "label": "Chance a random person unlocks it with one enrolled appearance: less than 1 in",
+          "value": 1000000,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "Apple Support (About Face ID advanced technology)",
+          "url": "https://support.apple.com/en-us/102381",
+          "fixed": true
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-zoom-euv-tin-drop",
+      "format": "short",
+      "title": "The Chip Machine That Blasts Molten Tin 50,000 Times a Second",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "zoom_inside"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How GPUs Are Printed With Light",
+        "views": 1002871,
+        "url": "https://youtube.com/watch?v=_gbDFq5h9KI"
+      },
+      "hook": "This drop of molten tin is about to be hit by a laser. Twice.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Zoom into the EUV light source: a 25-micron droplet, flattened by one pulse, vaporised by the next into plasma that gives off 13.5 nm light. Cut from the EUV long video.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
+      "facts": [
+        {
+          "label": "Wavelength of EUV light, in nanometres",
+          "value": 13.5,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Times every second a tin droplet is hit and turned into light-making plasma",
+          "value": 50000,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Diameter of each molten tin droplet, in microns (about)",
+          "value": 25,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Speed the droplets leave the generator, in metres per second",
+          "value": 70,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-zoom-sea-cable-slice",
+      "format": "short",
+      "title": "Slice Open the Cable That Carries the Internet Under the Atlantic",
+      "category": "internet",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "zoom_inside"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Zooming Into a CPU (It's Incredible)",
+        "views": 504377,
+        "url": "https://youtube.com/watch?v=Bez-2cvYja0"
+      },
+      "hook": "The internet between America and Europe runs through a cable as wide as a garden hose.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Exploded cross-section of MAREA: armour, copper, eight hair-thin fibre pairs, then pull back to its 6,605 km on the Atlantic floor. Cut from the sea-cable long video.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
+      "facts": [
+        {
+          "label": "Length of the MAREA cable, Virginia Beach to Bilbao",
+          "value": 6605,
+          "unit": "km",
+          "as_of": "2018-02-01",
+          "source": "Wikipedia (MAREA)",
+          "url": "https://en.wikipedia.org/wiki/MAREA",
+          "fixed": true
+        },
+        {
+          "label": "MAREA's fibre pairs",
+          "value": 8,
+          "unit": "count",
+          "as_of": "2018-02-01",
+          "source": "Wikipedia (MAREA)",
+          "url": "https://en.wikipedia.org/wiki/MAREA",
+          "fixed": true
+        },
+        {
+          "label": "MAREA's capacity at completion, in terabits per second, up to",
+          "value": 160,
+          "unit": "count",
+          "as_of": "2017-09-23",
+          "source": "Microsoft News",
+          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
+          "fixed": true
+        },
+        {
+          "label": "How many times faster than the average home connection MAREA is, more than",
+          "value": 16,
+          "unit": "count_million",
+          "as_of": "2017-09-23",
+          "source": "Microsoft News",
+          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
+          "fixed": true
+        },
+        {
+          "label": "Kilometres of submarine cable in service worldwide, over",
+          "value": 1.5,
+          "unit": "count_million",
+          "as_of": "2026-01-01",
+          "source": "TeleGeography Submarine Cable FAQs",
+          "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-ev-battery-cell",
+      "format": "short",
+      "title": "Why Tesla Made Its Battery Cells Bigger",
+      "category": "machines",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "machine_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "18650 Battery Connection Explained Series vs Parallel",
+        "views": 1417957,
+        "url": "https://youtube.com/watch?v=sYFEhrXqegY"
+      },
+      "hook": "An electric car's battery isn't one battery. It's thousands of small cans, and Tesla made the cans bigger.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Exploded pack to one cell: how a cylinder cell stores energy, and why a bigger tabless 46 x 80 mm can was claimed to give more energy and power. Present 5x, 6x and 16% as Tesla's own claims, not test results.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: machines Short, core but crowded).",
+      "facts": [
+        {
+          "label": "Tesla 4680 cell diameter, in millimetres",
+          "value": 46,
+          "unit": "count",
+          "as_of": "2020-09-22",
+          "source": "Electrek (Tesla Battery Day)",
+          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+          "fixed": true
+        },
+        {
+          "label": "Tesla 4680 cell height, in millimetres",
+          "value": 80,
+          "unit": "count",
+          "as_of": "2020-09-22",
+          "source": "Electrek (Tesla Battery Day)",
+          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+          "fixed": true
+        },
+        {
+          "label": "Energy increase Tesla claimed for the bigger cell (times)",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2020-09-22",
+          "source": "Electrek (Tesla Battery Day)",
+          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+          "fixed": true
+        },
+        {
+          "label": "Power increase Tesla claimed (times)",
+          "value": 6,
+          "unit": "count",
+          "as_of": "2020-09-22",
+          "source": "Electrek (Tesla Battery Day)",
+          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+          "fixed": true
+        },
+        {
+          "label": "Range increase Tesla claimed from the new cell",
+          "value": 16,
+          "unit": "percent",
+          "as_of": "2020-09-22",
+          "source": "Electrek (Tesla Battery Day)",
+          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+          "fixed": true
+        },
+        {
+          "label": "Year Tesla unveiled the 4680 at Battery Day",
+          "value": 2020,
+          "unit": "year",
+          "as_of": "2020-09-22",
+          "source": "Electrek (Tesla Battery Day)",
+          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-18-rocket-lands-itself",
+      "format": "short",
+      "title": "How a 70-Metre Rocket Lands Itself Standing Up",
+      "category": "machines",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "machine_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "This changes everything for SpaceX",
+        "views": 1286209,
+        "url": "https://youtube.com/watch?v=A-l58A4GFQY"
+      },
+      "hook": "This rocket just fell back from space, and it's about to land standing up.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Falcon 9's booster after separation: flip, boost-back, re-entry burn, grid fins steering, one of nine engines relit, legs out, touchdown. First done in December 2015; a landed booster flew again in 2017. The title's 70 is the rounded 69.8 m fact.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: machines Short, core).",
+      "facts": [
+        {
+          "label": "Height of a Falcon 9 (Full Thrust)",
+          "value": 69.8,
+          "unit": "m",
+          "as_of": "2026-11-18",
+          "source": "Wikipedia (Falcon 9)",
+          "url": "https://en.wikipedia.org/wiki/Falcon_9",
+          "fixed": true
+        },
+        {
+          "label": "Merlin engines on the Falcon 9 booster",
+          "value": 9,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "Wikipedia (Falcon 9)",
+          "url": "https://en.wikipedia.org/wiki/Falcon_9",
+          "fixed": true
+        },
+        {
+          "label": "Year a Falcon 9 booster first landed after an orbital launch (Orbcomm OG-2)",
+          "value": 2015,
+          "unit": "year",
+          "as_of": "2015-12-21",
+          "source": "Wikipedia (Falcon 9)",
+          "url": "https://en.wikipedia.org/wiki/Falcon_9"
+        },
+        {
+          "label": "Year a landed booster first flew again (SES-10)",
+          "value": 2017,
+          "unit": "year",
+          "as_of": "2017-03-30",
+          "source": "Wikipedia (Falcon 9)",
+          "url": "https://en.wikipedia.org/wiki/Falcon_9"
+        }
+      ]
+    }
+  ]
+}
