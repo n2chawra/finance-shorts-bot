@@ -1,0 +1,48 @@
+{
+  "agent": "improver",
+  "day": "2026-11-18",
+  "startedAt": "2026-11-18T17:04:14Z",
+  "finishedAt": "2026-11-18T17:09:47Z",
+  "summary": "Answered the owner's sound note: every new video now gets its own sound-effects set tuned to its music key, and a per-video melody is first in line for the next weekly-loop sound test. All experiments are still collecting data.",
+  "decision": "acted",
+  "why": "The owner's 17 Nov 'wrong' note (handed on by the auditor) comes first: all 12 recent Shorts used the same seven effects synthesized identically, against CLAUDE.md's rule to rotate the SFX set per video. Every experiment is in WAIT (Shorts cycle 1: 2 of 8 a side with data, day 5 of 7).",
+  "findings": [
+    {
+      "title": "Paisa Panchayat cycle 1 (real-subject-first-frame) waits",
+      "detail": "2 of 8 Shorts a side have two days of data; day 5 of 7 (on 6, off 2). Verdict due 2026-11-20, extended to 14 days if short."
+    },
+    {
+      "title": "Long tests wait",
+      "detail": "quiet-bed 1 of 4 long videos per arm, chart-gap-fill 2 of 4."
+    },
+    {
+      "title": "Impact, week of 2026-11-09",
+      "detail": "17 Shorts: median 48 h views 210, 71.7% viewed, stayed to watch 0.336, 20.6 s average view (week of 2026-11-02: 43 views, 50.6%, 0.381)."
+    },
+    {
+      "title": "Sound was the same in every Short",
+      "detail": "Genre, key and tempo rotate (pop, cinematic, synthwave, lofi, acoustic), but every Short used pop, whoosh, boom, ding, kaching, tick and riser, synthesized identically."
+    },
+    {
+      "title": "QA's top failures",
+      "detail": "Edge cuts (26 videos in 14 days) and signs or logos in the caption band still show up in QA rounds (e.g. the AMC logo on v-20261117-02); both are covered by director.md and the checklist, and the 1.3x camera limit from 16 Nov applies from 17 Nov."
+    },
+    {
+      "title": "New channels",
+      "detail": "Geography (2 Shorts) and tech (1 rendered, not shipped) have no Shorts with data, and at about one Short a day a cycle can't reach 8 a side in 14 days; owner info raised, no challenger started."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Each video's own sound set (Paisa Panchayat)",
+      "detail": "renderer/engine/sfx_sets.py: six sets (classic, glass, arcade, deep, wood, felt) change pitch, tone, whoosh and riser length, the hit (boom or felted thud), the bell (ding, mallet, glass) tuned to the music key, the pop (drop or blip) and the tick. Picked from the seed among those that suit the genre; style.sfx pins one; channels with their own sound are unchanged. Tests added.",
+      "branch": "agent/improver/2026-11-18"
+    },
+    {
+      "title": "own-motif-bed queued",
+      "detail": "The music half of the owner's note goes to the top of the look challengers in channels/paisa-panchayat/cycle/backlog.json: a per-video melody in the pauses, judged on held after the hook.",
+      "branch": "agent/improver/2026-11-18"
+    }
+  ],
+  "nextCheck": "2026-11-20"
+}

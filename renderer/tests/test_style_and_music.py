@@ -133,3 +133,38 @@ def test_finance() -> None:
     assert lumpsum_series(100000, 6, 15)[-1] == pytest.approx(100000*1.06**15)
     assert lumpsum_at(100000, 6, 15) == pytest.approx(lumpsum_series(100000, 6, 15)[-1])
     assert lumpsum_series(100000, 6, 15)[0] == 100000
+
+
+# each video's own sound set (owner, 2026-11-17: "effects sound is same in every video")
+def test_sound_set_varies_by_seed_suits_the_genre_and_moves_no_other_pick() -> None:
+    from renderer.engine.sfx_sets import GENRE_SETS
+    styles = [resolve_style({}, s) for s in range(60)]
+    assert len({s.sfx for s in styles}) >= 4
+    assert all(s.sfx in GENRE_SETS[s.genre] for s in styles)
+    pinned = resolve_style({"sfx": "felt"}, 9)
+    free = resolve_style({}, 9)
+    assert pinned.sfx == "felt" and (pinned.palette, pinned.genre, pinned.key, pinned.bpm) == \
+        (free.palette, free.genre, free.key, free.bpm)
+    with pytest.raises(ValueError, match="style.sfx"):
+        resolve_style({"sfx": "kazoo"}, 1)
+
+
+def test_sound_sets_sound_different_and_classic_is_unchanged() -> None:
+    from renderer.engine.sfx_sets import SETS, render
+    from renderer.timeline.build import SFX
+    classic = lambda k, r: SFX[k](r)  # noqa: E731
+    kinds = ("pop", "pop-high", "whoosh", "clink", "ding", "boom", "fail", "tick", "beep", "riser", "kaching")
+    for k in kinds:
+        a = render(k, np.random.default_rng(1), "classic", "D", classic)
+        b = SFX[k](np.random.default_rng(1))
+        assert np.array_equal(a, b)
+    for k in ("ding", "kaching", "boom", "pop", "tick"):
+        sounds = {n: render(k, np.random.default_rng(1), n, "D", classic) for n in SETS}
+        sigs = {(len(x), round(float(np.sqrt(np.mean(x**2))), 4)) for x in sounds.values()}
+        assert len(sigs) >= 4, k
+        for n, x in sounds.items():
+            assert np.isfinite(x).all() and 0 < np.max(np.abs(x)) <= 1.5, (k, n)
+    # the bell rings on the video's own key
+    d = render("ding", np.random.default_rng(1), "deep", "D", classic)
+    g = render("ding", np.random.default_rng(1), "deep", "G", classic)
+    assert not np.array_equal(d, g)

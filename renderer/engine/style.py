@@ -63,6 +63,7 @@ class Style:
     genre: str
     key: str
     bpm: int
+    sfx: str = "classic"   # the video's sound set (engine/sfx_sets.py): how its effects sound
 
 
 def resolve_style(spec: dict, seed: int) -> Style:
@@ -87,4 +88,9 @@ def resolve_style(spec: dict, seed: int) -> Style:
     bpm = spec.get("bpm", round(lo + (hi - lo)*bpm_roll))
     if not min(lo, 80) <= bpm <= max(hi, 120):
         raise ValueError(f"style.bpm must be between {min(lo, 80)} and {max(hi, 120)}")
-    return Style(PALETTES[palette], genre, key, bpm)
+    # the sound set from its own draw, so adding it moved none of the picks above (owner, 2026-11-17)
+    from .sfx_sets import SETS, pick
+    sfx = spec.get("sfx", pick(genre, seed))
+    if sfx not in SETS:
+        raise ValueError(f"style.sfx must be one of {', '.join(SETS)}")
+    return Style(PALETTES[palette], genre, key, bpm, sfx)
