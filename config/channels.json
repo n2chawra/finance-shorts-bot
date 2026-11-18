@@ -5,25 +5,25 @@
       "name": "Paisa Panchayat",
       "status": "active",
       "settings": {
-        "longPerWeek": 2,
+        "longPerWeek": 1,
         "uploadTimes": [
           "07:07",
-          "19:07",
-          "12:37"
+          "19:07"
         ],
         "longUploadDays": [
           6
         ],
-        "dailyVideoTarget": 3,
+        "dailyVideoTarget": 2,
+        "generationPaused": false,
         "trendUploadTimes": [
           "16:07",
           "22:07"
         ]
       },
       "health": {
-        "at": "2026-11-18T07:47:19.644Z",
+        "at": "2026-11-18T08:14:33.719Z",
         "color": "red",
-        "reason": "The upload queue is empty",
+        "reason": "The upload queue is empty; 0 Shorts ready: under a day",
         "stayed": 0.376862268166616,
         "bufferDays": 0,
         "usageShare": 0.65,
@@ -38,7 +38,7 @@
     },
     "geography-maps-geopolitical-mysteries": {
       "name": "Geography, maps & geopolitical mysteries",
-      "status": "setup",
+      "status": "active",
       "settings": {
         "longPerWeek": 0,
         "uploadTimes": [
@@ -47,25 +47,37 @@
         ],
         "lengthMaxSec": 80,
         "lengthMinSec": 60,
+        "uploadsPaused": false,
         "longUploadDays": [
           6
         ],
         "dailyVideoTarget": 2,
+        "generationPaused": false,
         "trendUploadTimes": [
           "16:07",
           "22:07"
         ]
       },
       "setup": {
-        "stage": "review",
+        "stage": "launched",
         "decision": {
           "at": "2026-11-17T13:47:52.622Z",
           "choice": "continue"
         }
       },
-      "backlog": 2,
+      "health": {
+        "at": "2026-11-18T08:14:33.719Z",
+        "color": "red",
+        "reason": "1 Short ready: under a day",
+        "stayed": null,
+        "bufferDays": 0.5,
+        "usageShare": 0.35,
+        "stayedBefore": null,
+        "weeksUnderFloor": 0
+      },
+      "backlog": 1,
       "backlogByFormat": {
-        "short": 2,
+        "short": 1,
         "long": 0
       }
     }
