@@ -78,6 +78,8 @@ async function main(): Promise<void> {
       // YouTube re-encodes every upload anyway
       x264Preset: "veryfast",
       frameRange: [from, to], concurrency, browserExecutable, chromiumOptions,
+      // a 3D frame can take seconds while shaders compile; the default 30 s per frame is too tight
+      ...(gl ? { timeoutInMilliseconds: 120_000 } : {}),
       onProgress: ({ progress }) => {
         const p = Math.floor(progress * 50) / 50;                     // every 2%
         if (p > shown) { shown = p; console.log(`progress ${p.toFixed(2)}`); }

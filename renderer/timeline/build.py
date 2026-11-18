@@ -75,6 +75,9 @@ OCTOBER_VOICE = 1.4
 def voice_speed(script: dict, fmt: str, tempo: float) -> float:
     """The voice's speed: the script's speed at the video's tempo. Every Short speaks at the October pace since
     2026-11-12 (the experiment was adopted into the weekly loop's first champion recipe)."""
+    own = channel_pack.voice_speed(fmt) if "speed" not in script else None
+    if own:   # the channel's own pace (channel.json voiceSpeed), never Paisa Panchayat's
+        return own
     if "speed" not in script and fmt == "short":
         return OCTOBER_VOICE
     return float(script.get("speed", SPEEDS[fmt]))*tempo

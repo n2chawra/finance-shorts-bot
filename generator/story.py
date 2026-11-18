@@ -185,6 +185,14 @@ def voice_problems(script: dict) -> list[str]:
 # viewer something ("Which son are you?"). Sentence length and the number of actions were the same.
 QUESTION_EVERY = {"short": 20.0, "long": 30.0}   # seconds of speech per question, at least (Shorts 12 s until 2026-11-04: they are 20–35 s now)
 WPM = {"short": 175.0, "long": 180.0}   # long 215 until tempo 1.5 -> 1.25 (owner, 2026-11-04)
+WORDS_PER_SPEED = 229 / 1.4   # Kokoro words a minute per unit of voice speed (measured on v-20261118-02: 229 at 1.4)
+
+
+def wpm(fmt: str) -> float:
+    """Spoken words a minute: the channel's own voice speed when it has one (channel.json voiceSpeed)."""
+    from . import pack
+    own = pack.voice_speed(fmt)
+    return WORDS_PER_SPEED * own if own else WPM[fmt]
 BOARD_VERBS = ("header", "equation", "term", "stamp", "cross", "tick", "strike", "arrow", "bubble", "bars",
                "ring", "grid", "calendar", "buttons", "click", "person", "step")
 
@@ -204,7 +212,7 @@ def chain_problems(script: dict) -> list[str]:
         return []
     out = []
     words = sum(len(re.sub(r"\{[^}]*\}", "x x x", b["say"]).split()) for b in spoken)   # a figure is said in ~3 words
-    seconds = words / WPM[fmt] * 60
+    seconds = words / wpm(fmt) * 60
     asked = sum(_questions(b["say"]) for b in spoken)
     need = int(seconds // QUESTION_EVERY[fmt])
     if asked < need:
@@ -271,7 +279,7 @@ def board_rhythm_problems(script: dict) -> list[str]:
     out = []
     for b in boards:
         words = len(re.sub(r"\{[^}]*\}", "x x x", b.get("say") or "").split())
-        sec = words / WPM[fmt] * 60
+        sec = words / wpm(fmt) * 60
         if sec > BOARD_BEAT_MAX[fmt]:
             out.append(f"board beat {b.get('id')!r} speaks for about {sec:.0f} s; at most {BOARD_BEAT_MAX[fmt]:.1f}: one sentence, "
                        f"one picture per beat (split it), so the picture changes every few seconds")

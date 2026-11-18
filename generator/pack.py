@@ -85,6 +85,15 @@ def logo(slug: str | None = None, root: Path = ROOT) -> str | None:
     return rel
 
 
+def voice_speed(fmt: str, slug: str | None = None, root: Path = ROOT) -> float | None:
+    """The channel's own narrator speed for a format (channel.json `voiceSpeed`: {"short": x, "long": y}, the
+    total speed the voice is spoken at), or None for the platform's default (Paisa Panchayat's pace). A channel
+    never inherits another's pace (owner, 2026-11-18: the tech channel's sample spoke at 229 words a minute,
+    channel #1's money-Shorts pace, against its references' 151)."""
+    v = (load(slug, root).get("voiceSpeed") or {}).get(fmt)
+    return float(v) if isinstance(v, (int, float)) else None
+
+
 def voice_ok(name: str) -> bool:
     return len(name) > 3 and name[0] in KOKORO_LANG and name[1] in "fm" and name[2] == "_"
 
@@ -123,6 +132,11 @@ def pack_problems(p: dict) -> list[str]:
                                  or any(not isinstance(drop.get(k, 1), (int, float)) or drop.get(k, 1) <= 0 for k in ("sec", "shortSec"))
                                  or "sec" not in drop):
             out.append("sound.preRevealDrop is {db (< 0), sec, shortSec (seconds, > 0)}")
+    vs = p.get("voiceSpeed")   # {"short": x, "long": y}: the narrator's total speed, the channel's own
+    if vs is not None and (not isinstance(vs, dict) or any(
+            not k.startswith("_") and (k not in ("short", "long") or not isinstance(v, (int, float)) or not 0.6 <= v <= 1.6)
+            for k, v in vs.items())):
+        out.append('voiceSpeed is {"short": x, "long": y}, the narrator’s speed between 0.6 and 1.6')
     length = p.get("length")   # {"short": [min, max], "long": [min, max]} seconds: the channel's own, never another's
     if length is not None and (not isinstance(length, dict) or any(
             k not in ("short", "long") or not isinstance(v, list) or len(v) != 2

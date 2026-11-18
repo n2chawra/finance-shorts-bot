@@ -34,6 +34,7 @@ REMOTION = Path(__file__).resolve().parent.parent/"remotion"
 CACHE = Path(os.environ.get("REMOTION_CACHE", Path(tempfile.gettempdir())/"remotion-cache"))
 KEEP_SILENT = 12          # silent videos kept in the cache, newest first
 CORES = max(1, os.cpu_count() or 1)   # Remotion renders at most one frame per core at a time
+GL_TABS = 4   # a 3D video's tabs at once (src/three/README.md: the demos render cleanly at 4)
 
 
 HOOK_IMPORTS = ("react", "remotion", "@remotion/paths", "@remotion/shapes", "@remotion/noise",
@@ -162,7 +163,8 @@ def stills(timeline: Path, out: Path, *, frames: list[int] | None = None, every:
            bundle_dir: Path | None = None, probe: list[dict] | None = None) -> list[Path]:
     """Stills as f<frame>.jpg, several at once. Pass a list as `probe` to also collect the layout
     probe's text boxes."""
-    args = ["stills", "--timeline", str(timeline), "--out", str(out), "--concurrency", str(CORES)]
+    args = ["stills", "--timeline", str(timeline), "--out", str(out),
+            "--concurrency", str(min(CORES, GL_TABS) if os.environ.get("REMOTION_GL") else CORES)]
     args += ["--frames", ",".join(map(str, frames))] if frames else ["--every", str(every)]
     if bundle_dir:
         args += ["--bundle", str(bundle_dir)]
@@ -344,6 +346,8 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
         print(msg.encode(enc, "replace").decode(enc), flush=True)   # a Windows console can't print ₹
         report["video_skipped"] = early
     if not preview and not early:
+        if os.environ.get("REMOTION_GL"):   # a 3D video: every tab is a WebGL context; more than 4 starve the GPU
+            concurrency = min(concurrency, GL_TABS)  # (v-20261118-02 timed out at one tab per core, 18 Nov 2026)
         silent = video(timeline, work/"silent.mp4", chunk=chunk, bundle_dir=b, concurrency=concurrency)
         final = mux(silent, timeline.parent/tl["audio"]["file"], out/"video.mp4")
         report["liveliness"], report["liveliness_problems"] = check_liveliness(final)
