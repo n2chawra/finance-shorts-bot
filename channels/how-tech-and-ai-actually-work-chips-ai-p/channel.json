@@ -26,5 +26,32 @@
   "motion": {
     "_why": "the references' camera never stops; viewers leave on still frames",
     "maxGapSec": 1.8
+  },
+  "sound": {
+    "_why": "measured on the references 2026-11-18 (style-study/2026-11-18-references.md): dark ambient-electronic bed ~24 dB under the voice, ~12 dB duck, 12 effects a minute in Shorts and 6 in long videos, machine sounds only, a drop before each reveal. Levels checked on a Kokoro build: bedLevel 0.22 + duck 0.8 = 23.6 dB (Short) and 25.5 dB (long) under the voice, a 12.3-12.6 dB duck",
+    "genres": [
+      "circuit",
+      "datahall"
+    ],
+    "bedLevel": 0.22,
+    "duck": 0.8,
+    "sfx": [
+      "whoosh",
+      "swell",
+      "tick",
+      "glass",
+      "thud",
+      "pop"
+    ],
+    "transitionSfx": "whoosh",
+    "sfxPerMinute": {
+      "short": 12,
+      "long": 6
+    },
+    "preRevealDrop": {
+      "db": -20,
+      "sec": 2.0,
+      "shortSec": 0.4
+    }
   }
 }
