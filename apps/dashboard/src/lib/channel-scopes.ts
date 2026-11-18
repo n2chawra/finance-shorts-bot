@@ -20,6 +20,9 @@ export const SCOPES: Record<string, (where: Where, channelId: string) => Record<
   liveSnapshot: (w, c) => and(w, { upload: { video: { channelId: c } } }),
   comment: (w, c) => and(w, { upload: { video: { channelId: c } } }),
   qaCheck: (w, c) => and(w, { video: { channelId: c } }),
+  // a run that made a video belongs to that video's channel; runs with no video (idle and template runs)
+  // show on every channel. Unscoped, "Made today" on Paisa Panchayat counted the geography channel's Short.
+  agentRun: (w, c) => and(w, { OR: [{ video: { channelId: c } }, { videoId: null }] }),
   // platform-wide rows (null) show on every channel
   notification: (w, c) => and(w, { OR: [{ channelId: c }, { channelId: null }] }),
   feedback: (w, c) => and(w, { OR: [{ channelId: c }, { channelId: null }] }),
