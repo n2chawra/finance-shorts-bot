@@ -39,10 +39,10 @@ Read each one's `health` in `config/channels.json` (red first; a reason like "di
 that channel's first job). Then do the **per-channel** parts once per channel, one at a time, with
 `export CHANNEL=<slug>` (every `generator`/`improvement` module reads it; add `--channel <slug>` to
 `python -m generator.run`), reading and writing that channel's `channels/<slug>/…` files wherever this
-page says `channels/<channel>/`: the data audit (duty 1, its `metrics/data-audit.json`), the analytics
+page says `channels/<channel>/`: the data audit (duty 1, its `channels/<channel>/metrics/data-audit.json`), the analytics
 analysis (3b: `analysis/videos.json`, `channel.json`, `pictures.json`, the look challenger in its
 `cycle/backlog.json`), its notifications and its feedback acks (0b). A channel with no
-`metrics/videos.json` or `analytics.json` yet (newly launched) is skipped with a one-line note.
+`channels/<channel>/metrics/videos.json` yet (newly launched) is skipped with a one-line note.
 **Shared, done once:** code and data bug fixes in the code (duties 1–2), the refactors (duty 3),
 `improvement/auditor/` and the activity file, whose findings and changes name the channel of each item.
 
