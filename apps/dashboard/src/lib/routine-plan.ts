@@ -86,7 +86,8 @@ export function planRoutines(channels: PlanChannel[]): RoutinePlan {
 
 /** Pairs of upload slots from different channels under 20 minutes apart. */
 export function uploadClashes(channels: PlanChannel[]): string[] {
-  const all = channels.flatMap((c) => [...c.uploadTimes, ...(c.longUploadTimes ?? [])].map((t) => ({ c, t: toMin(t) })));
+  // a channel that makes no long videos has no long slot to clash with (geography, 0 a week, inherited the platform's 20:07)
+  const all = channels.flatMap((c) => [...c.uploadTimes, ...(c.longPerWeek > 0 ? c.longUploadTimes ?? [] : [])].map((t) => ({ c, t: toMin(t) })));
   const out: string[] = [];
   for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) {
     const a = all[i]!, b = all[j]!;
