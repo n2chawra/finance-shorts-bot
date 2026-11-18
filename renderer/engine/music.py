@@ -26,6 +26,9 @@ PROGRESSIONS: dict[str, list[list[tuple[int, tuple[int, int, int]]]]] = {
     # the geography channel's own beds (CHANNEL_GENRES): curious, light, a little wonder
     "explorer": [[(0, MAJ), (4, MIN), (5, MAJ), (7, MAJ)], [(0, MAJ), (9, MIN), (5, MAJ), (7, MAJ)], [(5, MAJ), (7, MAJ), (4, MIN), (9, MIN)]],
     "atlas": [[(9, MIN), (5, MAJ), (0, MAJ), (7, MAJ)], [(0, MAJ), (7, MAJ), (9, MIN), (4, MIN)]],
+    # the tech channel's own beds (CHANNEL_GENRES): dark, minor, a machine humming behind the story
+    "circuit": [[(0, MIN), (0, MIN), (8, MAJ), (10, MAJ)], [(0, MIN), (8, MAJ), (3, MAJ), (10, MAJ)], [(0, MIN), (5, MIN), (8, MAJ), (7, MIN)]],
+    "datahall": [[(0, MIN), (8, MAJ)], [(0, MIN), (3, MAJ), (8, MAJ), (10, MAJ)]],
 }
 ARPS: list[tuple[int, ...]] = [(0, 1, 2, 1, 0, 2, 1, 2), (0, 2, 1, 2, 0, 2, 1, 2), (2, 1, 0, 1, 2, 1, 0, 1)]
 CUTOFF: dict[str, dict[str, float]] = {
@@ -35,6 +38,8 @@ CUTOFF: dict[str, dict[str, float]] = {
     "acoustic": {"pad": 3000, "bass": 1200, "lead": 7000, "drums": 9000},
     "explorer": {"pad": 2600, "bass": 220, "lead": 7500, "drums": 11000},
     "atlas": {"pad": 2200, "bass": 260, "lead": 6000, "drums": 10000},
+    "circuit": {"pad": 900, "bass": 240, "lead": 1600, "drums": 6000},
+    "datahall": {"pad": 1100, "bass": 200, "lead": 1400, "shimmer": 9000},
 }
 
 
@@ -311,9 +316,51 @@ def _atlas(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
         bed.add("bass", _voice("sine", note(ch[0] + 12), bed.bar*0.9, 0.05, 0.3), st, 0.045)
 
 
+def _circuit(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """The tech channel's bed (2026-11-18, measured on its references: dark, ~140-150 felt BPM, 350-460 Hz):
+    a filtered saw bass pulsing in eighths over a half-time beat, a soft sine arpeggio in eighths, a
+    low detuned pad, a ticking hat on the off-beats and only a felt kick on the first beat of each bar."""
+    beat, kick, hat = bed.beat, _kick(), _hat(rng)
+    arp = ARPS[int(rng.integers(len(ARPS)))]
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[b % len(chords)]
+        for m in ch:
+            for det in (1.0, 1.005):
+                bed.add("pad", _voice("saw", note(m + 12)*det, bed.bar, 0.6, 0.5), st, 0.035)
+        for e in range(8):
+            at = st + e*beat/2
+            bed.add("bass", _voice("saw", note(ch[0]), beat/2, 0.006, 0.05, 6.0), at, 0.11 if e % 2 == 0 else 0.07)
+            bed.add("bass", _voice("sine", note(ch[0] - 12), beat/2, 0.006, 0.05, 4.0), at, 0.08 if e % 2 == 0 else 0.05)
+            bed.add("lead", _voice("tri", note(ch[arp[e]] + 24), beat*0.6, 0.01, 0.1, 4.0), at, 0.1)
+            if e % 2:
+                bed.add("drums", hat, at, 0.05)
+        bed.add("drums", kick, st, 0.1)
+
+
+def _datahall(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """The tech channel's slow ambient bed for long chapters: a root-and-fifth drone, two-bar pad
+    swells, a soft sub pulse on each beat (the 60-66 BPM you feel) and a quiet high shimmer."""
+    beat = bed.beat
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[(b//2) % len(chords)]
+        low = ch[0] - 12 if ch[0] >= 48 else ch[0]     # the pulse always under 150 Hz, whatever the key
+        if b % 2 == 0:
+            for m in ch:
+                for det in (1.0, 1.004):
+                    bed.add("pad", _voice("tri", note(m + 12)*det, 2*bed.bar, 1.5, 1.0), st, 0.035)
+            bed.add("bass", _voice("sine", note(low + 7), 2*bed.bar, 0.8, 0.8), st, 0.025)
+            bed.add("bass", _voice("sine", note(low + 12), 2*bed.bar, 0.8, 0.8), st, 0.03)
+        for q in range(4):
+            bed.add("bass", _voice("sine", note(low), beat*0.9, 0.002, 0.3, 3.5), st + q*beat, 0.2 if q == 0 else 0.15)
+        for e in range(4):
+            bed.add("lead", _voice("sine", note(ch[(b + e) % 3] + 24), beat*1.5, 0.03, 0.6, 1.5), st + e*beat, 0.085)
+        for k, m in enumerate((ch[0] + 48, ch[2] + 48, ch[1] + 60)):
+            bed.add("shimmer", _voice("sine", note(m), bed.bar, 1.2, 1.2), st + k*0.37, 0.009)
+
+
 _BUILDERS: dict[str, Callable[[_Bed, np.random.Generator, Chords], None]] = {
     "pop": _pop, "cinematic": _cinematic, "synthwave": _synthwave, "acoustic": _acoustic,
-    "explorer": _explorer, "atlas": _atlas}
+    "explorer": _explorer, "atlas": _atlas, "circuit": _circuit, "datahall": _datahall}
 
 
 def make_bed(rng: np.random.Generator, dur: float, genre: str, key: str, bpm: float, pulse: bool = False) -> np.ndarray:

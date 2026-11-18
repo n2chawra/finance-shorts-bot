@@ -79,3 +79,14 @@ def test_the_voice_engine_takes_the_channels_language_and_keeps_english_caches()
     assert sig.parameters["lang"].default == "en-us"
     src = inspect.getsource(voice.speak_timed)
     assert 'lang_key = "" if lang == "en-us"' in src   # an English line's cache key is unchanged
+
+
+def test_a_channels_own_sound_block_is_checked():
+    """The tech channel's sound (2026-11-18): its beds exist, effects a minute per format, a pre-reveal drop."""
+    good = {"genres": ["circuit", "datahall"], "bedLevel": 0.22, "duck": 0.8, "sfx": ["whoosh", "swell", "glass"],
+            "sfxPerMinute": {"short": 12, "long": 6}, "preRevealDrop": {"db": -20, "sec": 2.0, "shortSec": 0.4}}
+    assert pack.pack_problems({**pack.DEFAULTS, "sound": good}) == []
+    for bad, words in (({"sfxPerMinute": {"short": 0}}, "sfxPerMinute"), ({"sfxPerMinute": {"reel": 4}}, "sfxPerMinute"),
+                       ({"preRevealDrop": {"db": 6, "sec": 2}}, "preRevealDrop"), ({"preRevealDrop": {"db": -20}}, "preRevealDrop"),
+                       ({"genres": ["dubstep"]}, "sound.genres")):
+        assert any(words in p for p in pack.pack_problems({**pack.DEFAULTS, "sound": {**good, **bad}})), bad

@@ -113,8 +113,11 @@ use and nobody re-researches:
   highlighted, border weight); the label font style; character size and where they stand.
 - **How it sounds**, with the `yt-style` audio probe on at least two references: music under the voice
   (dB), music character (tempo, brightness, bass share), effects a minute and their kinds, ducking and
-  drops. This becomes `channel.json` `sound` (genres, bedLevel, duck, sfx, transitionSfx) in the build;
-  a channel never borrows channel #1's beds or effects.
+  drops. This becomes `channel.json` `sound` (genres, bedLevel, duck, sfx, transitionSfx, and optionally
+  `sfxPerMinute` {short, long}, enforced, and `preRevealDrop` {db, sec, shortSec}) in the build; a channel
+  never borrows channel #1's beds or effects. Check the levels on a Kokoro build, not by formula: the
+  duck's smoothing takes about 2 dB off −20·log10(1 − duck) (0.8 measures ~12.5 dB, 0.9 ~18), and
+  bedLevel 0.22 with duck 0.8 put the bed 23.6–25.5 dB under the voice (`music_under_voice_db`, 2026-11-18).
 - **Kit gaps**: what our kit can't draw yet, built during step 4, not after the first sample.
 
 **c. The numbers.**

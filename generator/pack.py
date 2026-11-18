@@ -90,6 +90,15 @@ def pack_problems(p: dict) -> list[str]:
             out.append(f"sound.genres must be beds the music engine makes ({', '.join(ALL_BPM)})")
         if not snd.get("sfx"):
             out.append("sound.sfx lists the effects the channel may use")
+        per = snd.get("sfxPerMinute")   # {"short": n, "long": n}: enforced by the timeline builder
+        if per is not None and (not isinstance(per, dict) or not per or any(
+                k not in ("short", "long") or not isinstance(v, (int, float)) or v <= 0 for k, v in per.items())):
+            out.append('sound.sfxPerMinute is {"short": n, "long": n}, effects a minute per format (n > 0)')
+        drop = snd.get("preRevealDrop")  # {"db": -20, "sec": 2.0, "shortSec": 0.4}: the bed's dip before a reveal
+        if drop is not None and (not isinstance(drop, dict) or not isinstance(drop.get("db"), (int, float)) or drop["db"] >= 0
+                                 or any(not isinstance(drop.get(k, 1), (int, float)) or drop.get(k, 1) <= 0 for k in ("sec", "shortSec"))
+                                 or "sec" not in drop):
+            out.append("sound.preRevealDrop is {db (< 0), sec, shortSec (seconds, > 0)}")
     if not str(p.get("uploadCategory") or "").isdigit():
         out.append("uploadCategory must be a YouTube category id (22 People & Blogs, 27 Education, 28 Science & Technology…)")
     return out

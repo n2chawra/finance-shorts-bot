@@ -196,6 +196,26 @@ def sfx_chime(f0: float = 1046.5) -> np.ndarray:
     return (a + 0.8*b)*0.3
 
 
+# ---------------- machine sounds (the tech channel's own effects, 2026-11-18) ----------------
+
+def sfx_swell(rng: np.random.Generator, dur: float = 1.4) -> np.ndarray:
+    """A sub swell for a scale reveal: a low tone gliding up an octave under rising air, peaking at the
+    end (place it so it lands on the reveal) and gone in a tenth of a second."""
+    t = tarr(dur)
+    rise = (t/dur)**2
+    tone = np.sin(2*np.pi*np.cumsum(45 + 45*rise)/SR)
+    n = rng.standard_normal(len(t))
+    air = (lp(n, 300)*(1 - rise) + lp(n, 1800)*rise)*0.25      # the air opens up as it rises
+    return (tone + air)*rise*np.clip((dur - t)/0.1, 0, 1)*0.75
+
+
+def sfx_glass(f0: float = 1244.5) -> np.ndarray:
+    """A glass tone for a figure landing: a struck glass's inharmonic partials, a slow shimmer, a long fade."""
+    t = tarr(1.6)
+    s = sum(a*np.sin(2*np.pi*f0*r*t)*np.exp(-t*d) for r, a, d in ((1.0, 1.0, 2.6), (2.32, 0.4, 4.5), (4.25, 0.18, 9.0)))
+    return s*(1 + 0.12*np.sin(2*np.pi*5.5*t))*np.minimum(1, t/0.003)*0.3
+
+
 def _k_weight(x: np.ndarray, sr: int) -> np.ndarray:
     """The K-weighting pre-filter (a high shelf, then a high pass) for any sample rate, by the
     analogue-prototype formulas libebur128 uses, so 44.1 kHz needs no resampling."""

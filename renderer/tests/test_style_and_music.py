@@ -2,7 +2,9 @@ import numpy as np
 import pytest
 
 from renderer.engine.finance import lumpsum_at, lumpsum_series, sip_series
+from renderer.engine.audio import lp, sfx_glass, sfx_swell
 from renderer.engine.music import BED_RMS, BPM_RANGE, GENRES, SR, make_bed
+from renderer.engine.music_constants import CHANNEL_GENRES
 from renderer.engine.style import PALETTES, resolve_style
 
 
@@ -63,6 +65,66 @@ def test_cinematic_pulse_keeps_the_level_and_adds_a_beat() -> None:
         on = np.mean([env[q*beat: q*beat + 600].mean() for q in range(8)])
         return on/env.mean()
     assert onsets(pulse) > onsets(plain)
+
+
+@pytest.mark.parametrize("genre", sorted(CHANNEL_GENRES))
+def test_a_channels_own_bed_is_clean_and_at_target_loudness(genre: str) -> None:
+    lo, hi = CHANNEL_GENRES[genre]
+    bed = make_bed(np.random.default_rng(1), 12, genre, "D", lo)
+    assert np.isfinite(bed).all() and np.sqrt(np.mean(bed**2)) == pytest.approx(BED_RMS)
+    assert (bed == make_bed(np.random.default_rng(1), 12, genre, "D", lo)).all()
+    resolve_style({"genre": genre, "bpm": hi}, 1)   # the style accepts its own tempo range
+
+
+def _timbre(x: np.ndarray) -> tuple[float, float]:
+    """Brightness and bass share as the yt-style probe reads them: 4096-point frames every 50 ms, the
+    power-weighted centroid and the share below 150 Hz, medians over the frames."""
+    n, hop = 4096, int(0.05*SR)
+    f, w = np.fft.rfftfreq(n, 1/SR), np.hanning(n)
+    rows = []
+    for i in range(0, len(x) - n, hop):
+        p = np.abs(np.fft.rfft(x[i:i + n]*w))**2
+        rows.append(((f*p).sum()/p.sum(), p[f < 150].sum()/p.sum()))
+    c, b = np.median(np.array(rows), axis=0)
+    return float(c), float(b)
+
+
+def _beat(x: np.ndarray, lo: int = 55, hi: int = 160) -> float:
+    """The tempo the low end pulses at: autocorrelation of the onsets below 150 Hz (the probe's method)."""
+    low = lp(x, 150)[: len(x)//256*256]
+    e = np.log10((low**2).reshape(-1, 256).mean(1) + 1e-9)
+    on = np.maximum(0, np.diff(e, prepend=e[0]))
+    on -= on.mean()
+    rate = SR/256
+
+    def score(bpm: float) -> float:
+        lag = 60*rate/bpm
+        k, fr = int(lag), lag - int(lag)
+        return float(np.sum(on[:-k - 1]*(on[k:-1]*(1 - fr) + on[k + 1:]*fr))/(len(on) - k))
+    return max(np.arange(lo, hi + 0.5, 0.5), key=score)
+
+
+@pytest.mark.parametrize("genre, felt", [("circuit", 2), ("datahall", 1)])
+def test_the_tech_beds_are_dark_and_keep_their_tempo(genre: str, felt: int) -> None:
+    """Measured on the tech channel's references (style-study/2026-11-18-references.md, Sound): dark,
+    350-460 Hz, a bass share of 0.2-0.3; circuit a half-time 70-75 felt as 140-150, datahall 60-66."""
+    lo, hi = CHANNEL_GENRES[genre]
+    rows = [_timbre(make_bed(np.random.default_rng(i), 24, genre, key, (lo + hi)//2)) for i, key in enumerate(("C", "D#", "G", "A#"))]
+    centroid, bass = np.median(np.array(rows), axis=0)
+    assert 330 <= centroid <= 470 and 0.17 <= bass <= 0.32
+    explorer = _timbre(make_bed(np.random.default_rng(0), 24, "explorer", "D#", 76))
+    assert centroid < explorer[0] and bass > explorer[1]   # darker than the geography channel's bright bed
+    bpm = 72 if genre == "circuit" else 63
+    assert _beat(make_bed(np.random.default_rng(3), 30, genre, "C#", bpm)) == pytest.approx(bpm*felt, rel=0.02)
+
+
+def test_the_machine_sounds_are_clean() -> None:
+    swell, glass = sfx_swell(np.random.default_rng(1)), sfx_glass()
+    for x in (swell, glass):
+        assert np.isfinite(x).all() and 0.1 < np.max(np.abs(x)) < 1.0
+    third = len(swell)//3
+    assert np.abs(swell[-third:]).mean() > 4*np.abs(swell[:third]).mean()   # a swell rises into its reveal
+    assert np.abs(glass[-len(glass)//4:]).max() < 0.1*np.abs(glass).max()   # a glass tone fades out
 
 
 def test_finance() -> None:

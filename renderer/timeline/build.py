@@ -27,8 +27,8 @@ import numpy as np
 
 from renderer.engine import voice as tts
 from renderer.engine.audio import (SR, Mixer, integrated_lufs, sfx_beep, sfx_boom, sfx_clink, sfx_ding, sfx_fail, sfx_kaching,
-                                   sfx_chime, sfx_paper, sfx_pin, sfx_pop, sfx_riser, sfx_scribble, sfx_thud, sfx_tick,
-                                   sfx_whoosh)
+                                   sfx_chime, sfx_glass, sfx_paper, sfx_pin, sfx_pop, sfx_riser, sfx_scribble, sfx_swell,
+                                   sfx_thud, sfx_tick, sfx_whoosh)
 from renderer.engine.music import gain_curve, make_bed
 from renderer.engine.formatting import LEGACY_CURRENCY, Money, fact_value, money_for, month_year
 from renderer.engine.style import resolve_style
@@ -339,6 +339,8 @@ SFX = {
     # map sounds (a channel's own effects: channel.json sound.sfx lists the kinds it may use)
     "scribble": lambda r: sfx_scribble(r), "paper": lambda r: sfx_paper(r), "pin": lambda r: sfx_pin(1.0),
     "pin-high": lambda r: sfx_pin(1.3), "thud": lambda r: sfx_thud(r), "chime": lambda r: sfx_chime(),
+    # machine sounds (the tech channel): a sub swell on a scale reveal, a glass tone when a figure lands
+    "swell": lambda r: sfx_swell(r), "glass": lambda r: sfx_glass(),
 }
 
 
@@ -382,19 +384,47 @@ def _cues(params: dict, events: dict[str, int], start: float) -> tuple[list[tupl
     return sfx, drops
 
 
-def _drop_envelope(n: int, drops: list[float]) -> np.ndarray:
-    """1 everywhere, dipping to DROP_LEVEL for DROP_BEFORE s before each reveal, back over 0.25 s."""
+def _drop_envelope(n: int, drops: list[float], before: float = DROP_BEFORE, level: float = DROP_LEVEL) -> np.ndarray:
+    """1 everywhere, dipping to `level` for `before` s before each reveal, back over 0.25 s."""
     env = np.ones(n)
     for d in drops:
-        a, b = int(max(0.0, d - DROP_BEFORE)*SR), int(d*SR)
+        a, b = int(max(0.0, d - before)*SR), int(d*SR)
         if b <= a or a >= n:
             continue
         down = min(b - a, int(0.12*SR))
-        env[a:a + down] = np.minimum(env[a:a + down], np.linspace(1.0, DROP_LEVEL, down))
-        env[a + down:b] = np.minimum(env[a + down:b], DROP_LEVEL)
+        env[a:a + down] = np.minimum(env[a:a + down], np.linspace(1.0, level, down))
+        env[a + down:b] = np.minimum(env[a + down:b], level)
         up = min(n - b, int(0.25*SR))
-        env[b:b + up] = np.minimum(env[b:b + up], np.linspace(DROP_LEVEL, 1.0, up))
+        env[b:b + up] = np.minimum(env[b:b + up], np.linspace(level, 1.0, up))
     return env
+
+
+# A channel's own pre-reveal drop (channel.json sound.preRevealDrop {db, sec, shortSec}): the bed falls
+# before the beats these roles name, or before a beat's own "reveal" event (tech channel, 2026-11-18)
+DROP_ROLES = {"short": ("payoff",), "long": ("turn", "payoff")}
+
+
+def own_drop(snd: dict, fmt: str) -> tuple[float, float] | None:
+    """(seconds before the reveal, bed level during it) from channel.json sound.preRevealDrop, or None."""
+    d = (snd or {}).get("preRevealDrop")
+    if not d:
+        return None
+    return float(d.get("shortSec", d["sec"]) if fmt == "short" else d["sec"]), 10**(float(d["db"])/20)
+
+
+def cap_sfx(beats: list[dict], automatic: set[int], per_minute: float, length: float) -> None:
+    """Hold a video to its channel's effects a minute (channel.json sound.sfxPerMinute): the script's own
+    sounds always play and may not pass the budget; automatic ones (transitions, a build beat's cues)
+    fill what is left, earliest first, so a Short stays front-loaded."""
+    budget = max(1, math.ceil(per_minute*length/60))
+    own = sum(1 for tb in beats for _, s in tb["_sfx"] if id(s) not in automatic)
+    if own > budget:
+        raise ValueError(f"{own} sound effects in {length:.0f} s: this channel allows {per_minute:g} a minute "
+                         f"({budget} here; channel.json sound.sfxPerMinute)")
+    autos = sorted((at, id(s)) for tb in beats for at, s in tb["_sfx"] if id(s) in automatic)
+    keep = {i for _, i in autos[:budget - own]}
+    for tb in beats:
+        tb["_sfx"] = [(at, s) for at, s in tb["_sfx"] if id(s) not in automatic or id(s) in keep]
 
 SCENES_TS = Path(__file__).resolve().parents[2]/"remotion"/"src"/"contract"/"scenes.ts"
 
@@ -556,6 +586,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         raise ValueError("beat ids must be unique")
 
     timeline_beats, lines, cursor, drops = [], [], 0.0, []
+    drop_shape = own_drop(own_sound, fmt)
+    automatic: set[int] = set()     # ids of the sounds the builder added (transitions, cues), for cap_sfx
     for b in beats:
         where = f"beat {b.id!r}"
         params = _resolve(b.params, figures, results, f"{where}.params")
@@ -594,6 +626,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         travel = own_sound.get("transitionSfx", "whoosh") if own_sound else "whoosh"
         if travel and b.transition in WHOOSH_TRANSITIONS and not any(s.get("at", "start") == "start" and s.get("kind") == travel for s in b.sfx):
             b_sfx.append((max(0.0, cursor - 0.05), {"kind": travel, "at": "start", "gain": 0.55}))
+            automatic.add(id(b_sfx[-1][1]))
         if fmt == "short" and b.scene in ("build", "board"):
             auto, beat_drops = _cues(params, events, cursor)
             mine = [x for x, _ in b_sfx]
@@ -601,8 +634,11 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
             for x, sp in sorted(auto, key=lambda c: c[0]):
                 if all(abs(x - y) > 0.15 for y in mine) and x - last >= 0.22:   # never on top of the script's own sounds
                     b_sfx.append((x, sp))
+                    automatic.add(id(sp))
                     last = x
             drops.extend(beat_drops)
+        if drop_shape and ("reveal" in events or b.role in DROP_ROLES[fmt]):
+            drops.append(cursor + events.get("reveal", events["speech"])/FPS)
         timeline_beats[-1]["_sfx"] = b_sfx
         cursor += dur
 
@@ -622,7 +658,10 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     level, duck_by = (QUIET_LEVEL, QUIET_DUCK) if quiet else (0.5, SHORT_DUCK if fmt == "short" else VOICE_DUCK)
     if own_sound:   # the channel's own mix, measured on its references (channel.json sound)
         level, duck_by = float(own_sound.get("bedLevel", level)), float(own_sound.get("duck", duck_by))
-    mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck)*_drop_envelope(mixer.n, drops))
+    mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck)*_drop_envelope(mixer.n, drops, *(drop_shape or ())))
+    per_minute = ((own_sound.get("sfxPerMinute") or {}) if own_sound else {}).get(fmt)
+    if per_minute is not None:
+        cap_sfx(timeline_beats, automatic, float(per_minute), length)
     # three stems, measured apart (timeline audio.stems), then summed into the mix
     voice_m, sfx_m = Mixer(length, seed + 5), Mixer(length, seed + 6)
     for tb in timeline_beats:

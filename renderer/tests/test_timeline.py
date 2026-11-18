@@ -1,6 +1,7 @@
 """Story maths and the timeline builder (renderer/models, renderer/timeline): the hand-off to
 Remotion. Built in estimate mode, so no voice model is needed."""
 import json
+import math
 from pathlib import Path
 
 import numpy as np
@@ -274,3 +275,63 @@ def test_every_short_speaks_at_the_october_pace():
     assert voice_speed({}, "short", 1.2) == 1.4
     assert abs(voice_speed({"experiments": {OCTOBER_PACE: "on"}}, "long", 1.25) - 1.25) < 1e-9   # Shorts only
     assert abs(voice_speed({"speed": 1.0, "experiments": {OCTOBER_PACE: "on"}}, "short", 1.2) - 1.2) < 1e-9
+
+
+TECH_SOUND = {"genres": ["circuit", "datahall"], "bedLevel": 0.22, "duck": 0.8,
+              "sfx": ["whoosh", "swell", "tick", "glass", "thud", "pop"], "transitionSfx": "whoosh",
+              "sfxPerMinute": {"short": 12, "long": 6}, "preRevealDrop": {"db": -20, "sec": 2.0, "shortSec": 0.4}}
+
+
+def _with_sound(monkeypatch, sound: dict | None) -> None:
+    from generator import pack
+    base = pack.load()
+    monkeypatch.setattr(tb.channel_pack, "load", lambda *a, **k: {**base, **({"sound": sound} if sound else {})})
+
+
+def test_a_channels_pre_reveal_drop_and_level(monkeypatch) -> None:
+    """The tech channel (2026-11-18): the bed falls 20 dB for 2 s before a long video's turn and payoff,
+    0.4 s before a Short's payoff; channel #1 and a channel without preRevealDrop keep their mix."""
+    assert tb.own_drop(TECH_SOUND, "long") == (2.0, pytest.approx(0.1))
+    assert tb.own_drop(TECH_SOUND, "short") == (0.4, pytest.approx(0.1))
+    assert tb.own_drop({"genres": ["explorer"]}, "long") is None and tb.own_drop({}, "short") is None
+    env = tb._drop_envelope(tb.SR*6, [4.0], 2.0, 0.1)
+    assert env[int(1.5*tb.SR)] == 1.0 and env[int(3.0*tb.SR)] == pytest.approx(0.1) and env[int(5*tb.SR)] == 1.0
+    assert (tb._drop_envelope(tb.SR*3, [2.0]) == tb._drop_envelope(tb.SR*3, [2.0], tb.DROP_BEFORE, tb.DROP_LEVEL)).all()
+
+
+def test_the_drop_lands_before_the_payoff(tmp_path: Path, monkeypatch) -> None:
+    beats = [{"id": "a", "scene": "directed", "say": "It costs {card_amount} today, every single month.", "role": "hook"},
+             {"id": "b", "scene": "directed", "say": "And then the bill comes due.", "role": "payoff"}]
+    _with_sound(monkeypatch, {k: v for k, v in TECH_SOUND.items() if k != "preRevealDrop"})
+    plain = tb.build(script(beats, style={"genre": "circuit", "bpm": 72}), tmp_path / "plain", voice="estimate")
+    _with_sound(monkeypatch, TECH_SOUND)
+    drop = tb.build(script(beats, style={"genre": "circuit", "bpm": 72}), tmp_path / "drop", voice="estimate")
+    assert drop["audio"]["stems"]["music"] < plain["audio"]["stems"]["music"]
+    assert (tmp_path / "plain" / "audio.wav").read_bytes() != (tmp_path / "drop" / "audio.wav").read_bytes()
+
+
+def test_a_channels_effects_a_minute(tmp_path: Path, monkeypatch) -> None:
+    """sound.sfxPerMinute: the script's own sounds may not pass the budget; transitions are dropped first."""
+    _with_sound(monkeypatch, TECH_SOUND)
+    say = "It costs {card_amount} today, and it keeps on costing more every single month of the year."
+    many = [{"id": f"b{i}", "scene": "directed", "say": say, "transition": "whip",
+             "sfx": [{"kind": "tick", "at": "speech"}] if i < 2 else []} for i in range(4)]
+    t = tb.build(script(many), tmp_path / "ok", voice="estimate")   # a long video: 6 a minute
+    assert 2 < math.ceil(6*(t["durationInFrames"]/tb.FPS)/60) < 6   # two ticks and four whooshes would pass it
+    crowded = [{**b, "sfx": [{"kind": "tick", "at": "speech"}, {"kind": "pop", "at": "start"}]} for b in many]
+    with pytest.raises(ValueError, match="sfxPerMinute"):
+        tb.build(script(crowded), tmp_path / "bad", voice="estimate")
+    beats = [{"id": "a", "scene": "x"}]
+    for at, kind in ((0.5, "tick"), (1.0, "whoosh"), (2.0, "whoosh"), (3.0, "pop")):
+        beats[0].setdefault("_sfx", []).append((at, {"kind": kind}))
+    autos = {id(s) for at, s in beats[0]["_sfx"] if s["kind"] == "whoosh"}
+    tb.cap_sfx(beats, autos, 3*60/4.0, 4.0)   # a budget of 3 in 4 s: the later whoosh goes
+    assert [at for at, _ in beats[0]["_sfx"]] == [0.5, 1.0, 3.0]
+
+
+def test_channel_one_ignores_the_new_sound_settings(tmp_path: Path, monkeypatch) -> None:
+    """No sound block: transitions whoosh, nothing is capped, no drop before a payoff role."""
+    _with_sound(monkeypatch, None)
+    beats = [{"id": f"b{i}", "scene": "directed", "say": "It costs {card_amount}.", "transition": "whip", "role": "payoff",
+              "sfx": [{"kind": "kaching", "at": "speech"}, {"kind": "pop", "at": "start"}, {"kind": "ding", "at": "end"}]} for i in range(3)]
+    tb.build(script(beats), tmp_path, voice="estimate")

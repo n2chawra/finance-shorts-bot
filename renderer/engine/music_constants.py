@@ -9,6 +9,9 @@ BPM_RANGE: dict[str, tuple[int, int]] = {"lofi": (80, 96), "pop": (104, 120), "c
 # Beds made for one channel's own sound (channel.json → sound.genres), never offered to channel #1's
 # rotation: the geography channel's light map-explainer bed (measured on its references, 2026-11-18:
 # bright, almost no bass, ~30 dB under the voice). The half-time feel is counted in BPM.
-CHANNEL_GENRES: dict[str, tuple[int, int]] = {"explorer": (72, 80), "atlas": (84, 96)}
+# The tech channel's dark ambient-electronic beds (its references, 2026-11-18: ~24 dB under the voice,
+# 350-460 Hz): `circuit` a half-time pulse (felt 140-150), `datahall` a slow drone for long chapters.
+CHANNEL_GENRES: dict[str, tuple[int, int]] = {"explorer": (72, 80), "atlas": (84, 96),
+                                              "circuit": (70, 75), "datahall": (60, 66)}
 ALL_BPM: dict[str, tuple[int, int]] = {**BPM_RANGE, **CHANNEL_GENRES}
 
