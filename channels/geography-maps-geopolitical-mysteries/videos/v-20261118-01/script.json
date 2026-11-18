@@ -1,0 +1,889 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 51209,
+  "story": "what_if_world",
+  "shape": "what-if",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "genre": "atlas",
+    "key": "A",
+    "bpm": 90,
+    "look": {
+      "stage": "desert",
+      "header": "chalk",
+      "holder": "box",
+      "entrance": "slide"
+    }
+  },
+  "arms": {
+    "length": "60-80",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "challenge",
+  "cta": "Suez or Panama: which one should we shut next? Comment",
+  "feed_id": "2026-11-17-what-if-suez-closed",
+  "facts": [
+    {
+      "label": "Share of global trade passing through the Suez Canal",
+      "value": 12,
+      "unit": "percent",
+      "as_of": "2021-03-28",
+      "source": "The National",
+      "url": "https://www.thenationalnews.com/mena/egypt/suez-canal-blocked-all-you-need-to-know-about-the-ever-given-accident-1.1190504",
+      "latest": true,
+      "checked": "2026-11-18"
+    },
+    {
+      "label": "Year the Suez Canal opened",
+      "value": 1869,
+      "unit": "year",
+      "as_of": "1869-11-17",
+      "source": "The National",
+      "url": "https://www.thenationalnews.com/mena/egypt/suez-canal-blocked-all-you-need-to-know-about-the-ever-given-accident-1.1190504"
+    },
+    {
+      "label": "Year the Ever Given got stuck in the Suez Canal",
+      "value": 2021,
+      "unit": "year",
+      "as_of": "2021-03-23",
+      "source": "The National",
+      "url": "https://www.thenationalnews.com/mena/egypt/suez-canal-blocked-all-you-need-to-know-about-the-ever-given-accident-1.1190504",
+      "latest": true,
+      "checked": "2026-11-18"
+    },
+    {
+      "label": "Days the Ever Given blocked the Suez Canal in 2021",
+      "value": 6,
+      "unit": "count",
+      "as_of": "2021-03-29",
+      "source": "The National",
+      "url": "https://www.thenationalnews.com/mena/egypt/suez-canal-blocked-all-you-need-to-know-about-the-ever-given-accident-1.1190504",
+      "latest": true,
+      "checked": "2026-11-18"
+    },
+    {
+      "label": "Goods held up each day of the 2021 blockage",
+      "value": 9.6,
+      "unit": "money_billion",
+      "as_of": "2021-03-26",
+      "source": "World Economic Forum",
+      "url": "https://www.weforum.org/stories/2021/03/the-suez-canal-in-numbers/",
+      "currency": "USD",
+      "latest": true,
+      "checked": "2026-11-18"
+    },
+    {
+      "label": "Extra days an Asia-Europe voyage takes around the Cape of Good Hope instead of Suez (about)",
+      "value": 10,
+      "unit": "count",
+      "as_of": "2024-01-15",
+      "source": "Portcast",
+      "url": "https://www.portcast.io/blog/safety-disruption-in-bab-al-mandeb-strait-impact-from-avoiding-suez-and-going-around-south-africa",
+      "latest": true,
+      "checked": "2026-11-18"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.5,
+    "words": "Suez *closed* a year?",
+    "tag": "What if",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "What if the Suez Canal, one thin ditch in Egypt, closed for a whole year?",
+      "events": {
+        "suez": {
+          "word": "Suez"
+        },
+        "ditch": {
+          "word": "ditch"
+        },
+        "egypt": {
+          "word": "Egypt"
+        },
+        "closed": {
+          "word": "closed"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "scribble",
+          "at": "suez",
+          "gain": 0.5
+        }
+      ],
+      "params": {
+        "component": "Hook",
+        "place": "on the map: Egypt between two seas",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "closed",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "suez",
+            "what": "the canal draws itself through the desert, a cargo ship already in it"
+          },
+          {
+            "at": "ditch",
+            "what": "the camera follows the thin blue line"
+          },
+          {
+            "at": "egypt",
+            "what": "Egypt fills in, its name writes on"
+          },
+          {
+            "at": "closed",
+            "what": "a red barrier swings shut across the water"
+          },
+          {
+            "at": "year",
+            "what": "a calendar tag drops onto the barrier"
+          }
+        ],
+        "things": [
+          "map of egypt",
+          "canal drawing on",
+          "cargo ship",
+          "barrier",
+          "calendar tag"
+        ]
+      }
+    },
+    {
+      "id": "trade",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "In {fact3}, about {fact1} of the world's trade sailed through this one strip of water: phones, clothes, cars and oil.",
+      "events": {
+        "about": {
+          "word": "about"
+        },
+        "world": {
+          "word": "world's"
+        },
+        "trade": {
+          "word": "trade"
+        },
+        "sailed": {
+          "word": "sailed"
+        },
+        "strip": {
+          "word": "strip"
+        },
+        "water": {
+          "word": "water"
+        },
+        "phones": {
+          "word": "phones"
+        },
+        "cars": {
+          "word": "cars"
+        },
+        "oil": {
+          "word": "oil"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Trade",
+        "place": "on the map: the world, every sea lane",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "strip",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "about",
+            "what": "gold rings spread out from the canal"
+          },
+          {
+            "at": "world",
+            "what": "the camera pulls back to the whole world"
+          },
+          {
+            "at": "trade",
+            "what": "shipping lanes light up across every ocean"
+          },
+          {
+            "at": "sailed",
+            "what": "the lanes through Suez glow brighter, ships slide along them"
+          },
+          {
+            "at": "strip",
+            "what": "the camera closes on the canal, its share on a tag"
+          },
+          {
+            "at": "phones",
+            "what": "boxes of phones stack on a passing ship"
+          },
+          {
+            "at": "cars",
+            "what": "a car carrier slides in"
+          },
+          {
+            "at": "oil",
+            "what": "a tanker follows"
+          }
+        ],
+        "things": [
+          "world map",
+          "shipping lanes",
+          "ships",
+          "share tag"
+        ],
+        "fig": {
+          "year": "{fact3}",
+          "share": "{fact1}"
+        }
+      }
+    },
+    {
+      "id": "dug",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "It was dug through the desert and opened in {fact2}, so ships could skip the long way round Africa.",
+      "events": {
+        "dug": {
+          "word": "dug"
+        },
+        "desert": {
+          "word": "desert"
+        },
+        "opened": {
+          "word": "opened"
+        },
+        "ships": {
+          "word": "ships"
+        },
+        "africa": {
+          "word": "Africa"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Dug",
+        "place": "on the old map: the isthmus of Suez",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "ships",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "dug",
+            "what": "small diggers cut a line through the sand"
+          },
+          {
+            "at": "desert",
+            "what": "the sand heaps up either side"
+          },
+          {
+            "at": "opened",
+            "what": "water floods in, the year writes on"
+          },
+          {
+            "at": "ships",
+            "what": "the camera pulls out over Africa"
+          },
+          {
+            "at": "africa",
+            "what": "a long dashed route round Africa is crossed out"
+          }
+        ],
+        "things": [
+          "sepia map",
+          "diggers",
+          "spades",
+          "water flooding in",
+          "year label",
+          "crossed-out route"
+        ],
+        "fig": {
+          "year": "{fact2}"
+        }
+      }
+    },
+    {
+      "id": "shortcut",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "So a ship from China reaches Europe the short way: across the Indian Ocean, up the Red Sea and through the canal, into the Mediterranean.",
+      "events": {
+        "china": {
+          "word": "China"
+        },
+        "europe": {
+          "word": "Europe"
+        },
+        "indian": {
+          "word": "Indian"
+        },
+        "red": {
+          "word": "Red"
+        },
+        "canal": {
+          "word": "canal"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "pin",
+          "at": "europe"
+        }
+      ],
+      "params": {
+        "component": "Shortcut",
+        "place": "on the map: China to Europe",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "red",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "china",
+            "what": "a container ship leaves Shanghai"
+          },
+          {
+            "at": "europe",
+            "what": "a pin drops on Rotterdam"
+          },
+          {
+            "at": "indian",
+            "what": "the route draws across the Indian Ocean"
+          },
+          {
+            "at": "red",
+            "what": "the camera follows it up the Red Sea"
+          },
+          {
+            "at": "canal",
+            "what": "it slips through the canal into the Mediterranean"
+          }
+        ],
+        "things": [
+          "world map",
+          "container ship",
+          "route",
+          "pins"
+        ]
+      }
+    },
+    {
+      "id": "stuck",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "So what happens when it is blocked? In {fact3}, one giant ship, the Ever Given, got stuck sideways across it, its nose in one bank and its tail in the other.",
+      "events": {
+        "happens": {
+          "word": "happens"
+        },
+        "giant": {
+          "word": "giant"
+        },
+        "ever": {
+          "word": "Ever"
+        },
+        "stuck": {
+          "word": "stuck"
+        },
+        "sideways": {
+          "word": "sideways"
+        },
+        "tail": {
+          "word": "tail"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "stuck"
+        }
+      ],
+      "params": {
+        "component": "Stuck",
+        "place": "on the map: the canal, close",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "stuck",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "happens",
+            "what": "the camera dives to the canal"
+          },
+          {
+            "at": "giant",
+            "what": "a huge container ship sails in"
+          },
+          {
+            "at": "ever",
+            "what": "its name writes on its hull"
+          },
+          {
+            "at": "stuck",
+            "what": "the ship swings and jams"
+          },
+          {
+            "at": "sideways",
+            "what": "it locks across the banks, the water stops"
+          },
+          {
+            "at": "tail",
+            "what": "its stern digs into the far bank, sand flies"
+          }
+        ],
+        "things": [
+          "canal close-up",
+          "giant ship",
+          "banks",
+          "year tag"
+        ],
+        "fig": {
+          "year": "{fact3}"
+        }
+      }
+    },
+    {
+      "id": "jam",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "For {fact4} days, nothing moved, and ships piled up at both ends, in a queue you could see from space.",
+      "events": {
+        "nothing": {
+          "word": "nothing"
+        },
+        "moved": {
+          "word": "moved"
+        },
+        "ships": {
+          "word": "ships"
+        },
+        "piled": {
+          "word": "piled"
+        },
+        "ends": {
+          "word": "ends"
+        },
+        "space": {
+          "word": "space"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Jam",
+        "place": "on the map: both ends of the canal",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "ends",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "nothing",
+            "what": "a DAY counter starts ticking"
+          },
+          {
+            "at": "moved",
+            "what": "the counter climbs to the figure"
+          },
+          {
+            "at": "ships",
+            "what": "ships arrive at the north end"
+          },
+          {
+            "at": "piled",
+            "what": "and at the south end, lining up"
+          },
+          {
+            "at": "ends",
+            "what": "the camera pulls back on two long queues"
+          },
+          {
+            "at": "space",
+            "what": "the view lifts higher, the queues still in sight"
+          }
+        ],
+        "things": [
+          "day counter",
+          "queues of ships",
+          "canal"
+        ],
+        "fig": {
+          "days": "{fact4}"
+        }
+      }
+    },
+    {
+      "id": "closed",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "Now close it for a year. Where does every ship go? It turns around and takes the long way, past the tip of Africa.",
+      "events": {
+        "now": {
+          "word": "Now"
+        },
+        "close": {
+          "word": "close"
+        },
+        "year": {
+          "word": "year"
+        },
+        "where": {
+          "word": "Where"
+        },
+        "turns": {
+          "word": "turns"
+        },
+        "long": {
+          "word": "long"
+        },
+        "tip": {
+          "word": "tip"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "close"
+        }
+      ],
+      "params": {
+        "component": "Detour",
+        "place": "on the map: Africa and the Cape",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "long",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "now",
+            "what": "the barrier slams down on the canal"
+          },
+          {
+            "at": "close",
+            "what": "a lock icon stamps on it"
+          },
+          {
+            "at": "year",
+            "what": "a calendar flips through the months"
+          },
+          {
+            "at": "where",
+            "what": "the ships stop and spin, question marks over them"
+          },
+          {
+            "at": "turns",
+            "what": "the ships turn back south"
+          },
+          {
+            "at": "long",
+            "what": "a new route draws all the way round Africa"
+          },
+          {
+            "at": "tip",
+            "what": "a pin drops on the Cape of Good Hope"
+          }
+        ],
+        "things": [
+          "barrier",
+          "lock",
+          "calendar",
+          "ships turning",
+          "route round africa",
+          "cape pin"
+        ]
+      }
+    },
+    {
+      "id": "race",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Race the two routes, and the long way costs about {fact6} more days at sea on a trip from Asia to Europe, and a lot more fuel.",
+      "events": {
+        "race": {
+          "word": "Race"
+        },
+        "routes": {
+          "word": "routes"
+        },
+        "long": {
+          "word": "long"
+        },
+        "days": {
+          "word": "days"
+        },
+        "europe": {
+          "word": "Europe"
+        },
+        "fuel": {
+          "word": "fuel"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "chime",
+          "at": "days",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "component": "Race",
+        "place": "on the map: two routes, two ships",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "days",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "race",
+            "what": "two ships set off from Asia side by side"
+          },
+          {
+            "at": "routes",
+            "what": "one takes the canal route, one the Cape route"
+          },
+          {
+            "at": "long",
+            "what": "the Cape ship falls behind"
+          },
+          {
+            "at": "days",
+            "what": "an extra-days counter climbs on the slow ship"
+          },
+          {
+            "at": "europe",
+            "what": "more ships follow it round"
+          },
+          {
+            "at": "fuel",
+            "what": "a fuel gauge on the slow ship drops"
+          }
+        ],
+        "things": [
+          "two ships",
+          "two routes",
+          "extra days counter"
+        ],
+        "fig": {
+          "days": "{fact6}"
+        }
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "Remember, that one blockage held up about {fact5} of goods every day. Close it for a year, and that jam would never, ever end.",
+      "events": {
+        "remember": {
+          "word": "Remember"
+        },
+        "held": {
+          "word": "held"
+        },
+        "goods": {
+          "word": "goods"
+        },
+        "close": {
+          "word": "Close"
+        },
+        "never": {
+          "word": "never"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Payoff",
+        "place": "on the map: the world from above",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "close",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "remember",
+            "what": "the camera rises over the world"
+          },
+          {
+            "at": "held",
+            "what": "stacks of containers pile up at both ends of the canal"
+          },
+          {
+            "at": "goods",
+            "what": "the figure lands on the stack"
+          },
+          {
+            "at": "close",
+            "what": "the camera closes on the canal again"
+          },
+          {
+            "at": "never",
+            "what": "the queue lines stretch on and on"
+          }
+        ],
+        "things": [
+          "world map",
+          "container stacks",
+          "figure tag",
+          "queues"
+        ],
+        "fig": {
+          "goods": "{fact5}"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "Suez or Panama: which shortcut would hurt the world more? Tell me down below in the comments. Now picture it one more time:",
+      "events": {
+        "suez": {
+          "word": "Suez"
+        },
+        "panama": {
+          "word": "Panama"
+        },
+        "hurt": {
+          "word": "hurt"
+        },
+        "comments": {
+          "word": "comments"
+        },
+        "picture": {
+          "word": "Picture"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Loop",
+        "place": "on the map: the two canals, then Egypt again",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "picture",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "suez",
+            "what": "a pin glows on Suez"
+          },
+          {
+            "at": "panama",
+            "what": "a pin glows on Panama"
+          },
+          {
+            "at": "hurt",
+            "what": "a question mark bounces between them"
+          },
+          {
+            "at": "comments",
+            "what": "a comment bubble pops up beside the pins"
+          },
+          {
+            "at": "picture",
+            "what": "the camera dives back to Egypt: the first frame"
+          }
+        ],
+        "things": [
+          "world map",
+          "two pins",
+          "question mark"
+        ]
+      }
+    }
+  ],
+  "narrator": "bm_george"
+}

@@ -1,0 +1,268 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-18T05:52:26.668347+00:00",
+    "finishedAt": "2026-11-18T05:52:26.668347+00:00",
+    "notes": [
+      "feed topic '2026-11-17-what-if-suez-closed' can't be used: facts may be out of date (research must confirm the latest release): Share of global trade passing through the Suez Canal (as of 2021-03-28); Days the Ever Given blocked the Suez Canal in 2021 (as of 2021-03-29); Goods held up each day of the 2021 blockage (as of 2021-03-26)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-18T05:52:41.400990+00:00",
+    "finishedAt": "2026-11-18T05:52:41.400990+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-18T05:53:55.076353+00:00",
+    "finishedAt": "2026-11-18T05:53:55.076353+00:00",
+    "notes": [
+      "beat 'trade'.events.world: no word 'world' in this beat's spoken line",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 2 questions in about 64 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T05:54:47.885818+00:00",
+    "finishedAt": "2026-11-18T05:54:47.885818+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-18T05:57:44.504059+00:00",
+    "finishedAt": "2026-11-18T05:57:44.504059+00:00",
+    "notes": [
+      "Facts confirmed: 12% trade (The National page), 1869 opening (page caption), 2021 grounding (23 Mar), six days (23-29 Mar, search: multiple outlets), $9.6B/day cargo held up (WEF 403; search shows Lloyd's List figure in several outlets), ~10 extra days Cape route (Portcast page, which also says about a week). Notes: 'every single trip' slightly overstates an Asia-Europe average; 'stuck ship alone held up' should read 'the blockage held up'; $9.6B is an estimate of cargo delayed, not a loss. No advice, no disputed borders, what-if is clearly framed."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T05:58:58.802162+00:00",
+    "finishedAt": "2026-11-18T05:58:58.802162+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:02:26.522628+00:00",
+    "finishedAt": "2026-11-18T06:02:26.522628+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:02:58.093525+00:00",
+    "finishedAt": "2026-11-18T06:02:58.093525+00:00",
+    "notes": [
+      "Re-review of changed lines: queue visible from space confirmed (ESA, space.com, NASA, The National satellite images); 'blockage held up $9.6B/day' matches the Lloyd's List figure; ~10 extra days now scoped to an Asia-Europe trip (Portcast, which also says about a week); 'more fuel' and phones/clothes/cars/oil are general true statements. Earlier facts unchanged and confirmed."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:05:02.353932+00:00",
+    "finishedAt": "2026-11-18T06:05:02.353932+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T06:09:41.220837+00:00",
+    "finishedAt": "2026-11-18T06:12:08.932102+00:00",
+    "notes": [
+      "text 'Data: The National · World Economic Forum · Portcast · Jan 2' at 8.5 s runs outside the frame",
+      "text 'EGYPT' at 2.7 s reaches 1851 px, inside the bottom 120 px",
+      "text 'EGYPT' at 2.7 s runs outside the frame",
+      "text '+10 DAYS' at 42.7 s runs outside the frame",
+      "2.6 s with nothing new on screen in beat 'trade' (at most 2.5 s): add an action on the phrase being said there",
+      "length 57 s is outside 60–80 s: add about 9 spoken words",
+      "the Short runs 56.9 s but its assigned length (arms.length) is 60-80 s: cut or add a beat",
+      "note: 29 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:13:03.172513+00:00",
+    "finishedAt": "2026-11-18T06:13:03.172513+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:14:26.087138+00:00",
+    "finishedAt": "2026-11-18T06:14:26.087138+00:00",
+    "notes": [
+      "Re-review: Ever Given lodged diagonally with bow in one bank and stern against the other (widely reported March 2021: ESA/Reuters/BBC), so the stuck line is accurate. 'that jam would never, ever end' is rhetorical and slightly at odds with the video's own point that ships reroute; acceptable as a what-if flourish, not a factual claim. Earlier facts unchanged."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T06:14:32.561871+00:00",
+    "finishedAt": "2026-11-18T06:16:15.766190+00:00",
+    "notes": [
+      "text 'EGYPT' at 2.7 s reaches 1837 px, inside the bottom 120 px",
+      "text 'EGYPT' at 2.7 s runs outside the frame",
+      "text 'Data: The National · World Economic Forum · Portcast · Jan 2' at 8.5 s runs outside the frame",
+      "2.6 s with nothing new on screen in beat 'trade' (at most 2.5 s): add an action on the phrase being said there",
+      "length 59 s is outside 60–80 s: add about 3 spoken words",
+      "the Short runs 59.4 s but its assigned length (arms.length) is 60-80 s: cut or add a beat",
+      "note: 29 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:16:30.439500+00:00",
+    "finishedAt": "2026-11-18T06:16:30.439500+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T06:16:33.809113+00:00",
+    "finishedAt": "2026-11-18T06:18:01.708175+00:00",
+    "notes": [
+      "text 'EGYPT' at 2.7 s reaches 1851 px, inside the bottom 120 px",
+      "text 'EGYPT' at 2.7 s runs outside the frame",
+      "text 'Data: The National · World Economic Forum · Portcast · Jan 2' at 8.5 s runs outside the frame",
+      "2.6 s with nothing new on screen in beat 'loop' (at most 2.5 s): add an action on the phrase being said there",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:18:46.124807+00:00",
+    "finishedAt": "2026-11-18T06:18:46.124807+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T06:19:16.387612+00:00",
+    "finishedAt": "2026-11-18T06:20:52.259924+00:00",
+    "notes": [
+      "text 'EGYPT' at 2.7 s reaches 1851 px, inside the bottom 120 px",
+      "text 'EGYPT' at 2.7 s runs outside the frame",
+      "2.6 s with nothing new on screen in beat 'trade' (at most 2.5 s): add an action on the phrase being said there",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:21:35.946665+00:00",
+    "finishedAt": "2026-11-18T06:21:35.946665+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T06:21:39.579952+00:00",
+    "finishedAt": "2026-11-18T06:23:03.720952+00:00",
+    "notes": [
+      "render.ts stills failed:\nprogress 0.08\nprogress 0.15\nprogress 0.23\nprogress 0.31\n\n💡 Get help for this issue at https://remotion.dev/docs/timeout\n\n💡 Get help for this issue at https://remotion.dev/docs/timeout\n\n💡 Get help for this issue at https://remotion.dev/docs/target-closed\nError: A delayRender() \"Loading font Poppins (url: /public/fonts/Poppins-Regular.ttf, format: undefined, weight: 400, style: undefined, variant: undefined, ascentOverride: undefined, descentOverride: undefined, display: undefined, featureSettings: undefined, lineGapOverride: undefined, stretch: undefined, unicodeRange: undefined)\" was called but not cleared after 28000ms. See https://remotion.dev/docs/timeout for help. The delayRender was called:\n    at delayRenderInternal (http://localhost:3003/bundle.js:51178:18)\n    at delayRender (http://localhost:3003/bundle.js:51210:10)\n    at loadFont (http://localhost:3003/bundle.js:896:42)\n    at 5616 (http://localhost:3003/bundle.js:942:39)\n    at __webpack_require__ (http://localhost:3003/bundle.js:79755:42)\n    at 9238 (http://localhost:3003/bundle.js:5954:13)\n    at __webpack_require__ (http://localhost:3003/bundle.js:79755:42)\n    at http://localhost:3003/bundle.js:80022:11\n    at http://localhost:3003/bundle.js:80026:12\n    at delayRenderInternal (http://localhost:3003/bundle.js:51178:18)\n    at delayRender (http://localhost:3003/bundle.js:51210:10)\n    at loadFont (http://localhost:3003/bundle.js:896:42)\n    at 5616 (http://localhost:3003/bundle.js:942:39)\n    at __webpack_require__ (http://localhost:3003/bundle.js:79755:42)\n    at 9238 (http://localhost:3003/bundle.js:5954:13)\n    at __webpack_require__ (http://localhost:3003/bundle.js:79755:42)\n    at http://localhost:3003/bundle.js:80022:11\n    at http://localhost:3003/bundle.js:80026:12\n    at http://localhost:3003/bundle.js:51198:39"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:23:17.223979+00:00",
+    "finishedAt": "2026-11-18T06:24:57.675338+00:00",
+    "notes": [
+      "60 s, ocean/atlas (preview only)",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-18T06:26:15.050805+00:00",
+    "finishedAt": "2026-11-18T06:26:15.050805+00:00",
+    "notes": [
+      "[scene] Trade beat, 4.2-8 s: the 5.0 s still shows Saudi Arabia with only a data chip, no canal, while the voice says 'this one strip of water'. The camera must start on the canal (gold rings at 'about', 4.4 s) and pull back to the world at 'world's' (about 6 s), not sit on empty desert for 3-4 s.",
+      "[scene] Race beat, 41-46 s (the video's device): in the 45.0 s still the two ships are not visible at world scale; only a +10 DAYS tag and a yellow route show, so the race is not readable on mute. Make the two ships big (about 3x), start both at Asia at 'Race' (41.2 s), keep the camera medium on the Indian Ocean and Red Sea so the Cape ship visibly falls behind, and put a plain 'SUEZ' and 'CAPE' tag on each ship.",
+      "[scene] Stuck beat, 23-30 s: the 25.0 s still is only a blue line on tan texture with no ship, a long hold on a near-empty frame; the Ever Given should sail in at 'giant' (about 24.5 s). Also the 35.0 s Jam queues are tiny dots; scale the queue ships up or pull in tighter so the two queues read.",
+      "[scene] 40.0 s still: label reads 'CAPE OF GOOD' (HOPE missing or clipped), check the Detour pin label finishes writing by 'tip' (about 40 s) and is not cut off.",
+      "[script] Last frame (60 s) shows 'Maps simplified. Borders as recognised...' but not 'Illustrative only. Not financial advice.' (check 7); add that line there or confirm the channel replaces it, and make sure the description carries it. Everything else passes: Suez named and question asked in 0-3 s, no figure before 4 s, the last line runs back into the 0 s frame, the pick-one ending, all beats on the map, length 60 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T06:27:53.310324+00:00",
+    "finishedAt": "2026-11-18T06:30:31.834491+00:00",
+    "notes": [
+      "text 'SUEZ' at 44.8 s is 38.1 px, below the 44 px minimum",
+      "text 'CAPE' at 44.8 s is 38.1 px, below the 44 px minimum",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:31:00.951002+00:00",
+    "finishedAt": "2026-11-18T06:31:00.951002+00:00",
+    "notes": [
+      "Re-review: Suez named and asked in 0-3 s, all beats on the map, Ever Given and queues now read (25/30/35 s), Race shows SUEZ and CAPE ships with +10 DAYS (45 s), CAPE OF GOOD HOPE complete (40 s), last frame loops to 0 s, pick-one ending, channel's own disclaimer accepted. Minor: the 5.0 s still shows no canal or rings on the Egypt map, so show the gold rings by about 4.6 s."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T06:32:07.243959+00:00",
+    "finishedAt": "2026-11-18T06:39:52.567253+00:00",
+    "notes": [
+      "text 'SUEZ' at 44.8 s is 38.1 px, below the 44 px minimum",
+      "text 'CAPE' at 44.8 s is 38.1 px, below the 44 px minimum",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T06:41:20.537170+00:00",
+    "finishedAt": "2026-11-18T07:07:12.923583+00:00",
+    "notes": [
+      "60 s, ocean/atlas, peak -1.0 dB, mean -16.2 dB",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-18T07:07:25.794742+00:00",
+    "finishedAt": "2026-11-18T07:07:25.794742+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

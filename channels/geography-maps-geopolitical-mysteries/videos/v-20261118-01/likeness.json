@@ -1,0 +1,47 @@
+{
+ "video": "v-20261118-01",
+ "format": "short",
+ "references": 5,
+ "ours": {
+  "durationSec": 60.0,
+  "secPerShot": 3.0,
+  "cutsFirst3s": 1,
+  "wordsPerMin": 239,
+  "firstFigureSec": 4.4
+ },
+ "rows": [
+  {
+   "measure": "seconds per shot",
+   "ours": 3.0,
+   "theirs": 5.91,
+   "within": false
+  },
+  {
+   "measure": "shots in the first 3 s",
+   "ours": 1,
+   "theirs": 0,
+   "within": true
+  },
+  {
+   "measure": "spoken words a minute",
+   "ours": 239,
+   "theirs": 185,
+   "within": false
+  },
+  {
+   "measure": "seconds to the first figure",
+   "ours": 4.4,
+   "theirs": 14,
+   "within": false
+  },
+  {
+   "measure": "length (s)",
+   "ours": 60.0,
+   "theirs": 65,
+   "within": true
+  }
+ ],
+ "within": 2,
+ "of": 5,
+ "pass": false
+}

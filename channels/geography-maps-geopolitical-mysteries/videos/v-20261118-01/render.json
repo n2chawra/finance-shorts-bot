@@ -1,0 +1,135 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 51209,
+  "duration_sec": 60,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "atlas",
+    "key": "A",
+    "bpm": 90,
+    "look": {
+      "stage": "desert",
+      "header": "chalk",
+      "holder": "box",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "What if the Suez Canal, one thin ditch in Egypt, closed for a whole year?",
+        "start": 0.3,
+        "seconds": 3.24,
+        "window": 3.9,
+        "fill": 0.831
+      },
+      {
+        "scene": "trade",
+        "text": "In 2021, about 12% of the world's trade sailed through this one strip of water: phones, clothes, cars and oil.",
+        "start": 4.2,
+        "seconds": 5.86,
+        "window": 6.53,
+        "fill": 0.897
+      },
+      {
+        "scene": "dug",
+        "text": "It was dug through the desert and opened in 1869, so ships could skip the long way round Africa.",
+        "start": 10.73,
+        "seconds": 4.8,
+        "window": 5.47,
+        "fill": 0.878
+      },
+      {
+        "scene": "shortcut",
+        "text": "So a ship from China reaches Europe the short way: across the Indian Ocean, up the Red Sea and through the canal, into the Mediterranean.",
+        "start": 16.2,
+        "seconds": 6.07,
+        "window": 6.73,
+        "fill": 0.902
+      },
+      {
+        "scene": "stuck",
+        "text": "So what happens when it is blocked? In 2021, one giant ship, the Ever Given, got stuck sideways across it, its nose in one bank and its tail in the other.",
+        "start": 22.93,
+        "seconds": 7.11,
+        "window": 7.77,
+        "fill": 0.915
+      },
+      {
+        "scene": "jam",
+        "text": "For 6 days, nothing moved, and ships piled up at both ends, in a queue you could see from space.",
+        "start": 30.7,
+        "seconds": 4.16,
+        "window": 4.83,
+        "fill": 0.861
+      },
+      {
+        "scene": "closed",
+        "text": "Now close it for a year. Where does every ship go? It turns around and takes the long way, past the tip of Africa.",
+        "start": 35.53,
+        "seconds": 4.82,
+        "window": 5.5,
+        "fill": 0.876
+      },
+      {
+        "scene": "race",
+        "text": "Race the two routes, and the long way costs about 10 more days at sea on a trip from Asia to Europe, and a lot more fuel.",
+        "start": 41.03,
+        "seconds": 5.18,
+        "window": 5.87,
+        "fill": 0.882
+      },
+      {
+        "scene": "payoff",
+        "text": "Remember, that one blockage held up about $9.6B of goods every day. Close it for a year, and that jam would never, ever end.",
+        "start": 46.9,
+        "seconds": 6.4,
+        "window": 7.07,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "Suez or Panama: which shortcut would hurt the world more? Tell me down below in the comments. Now picture it one more time:",
+        "start": 53.97,
+        "seconds": 5.09,
+        "window": 5.73,
+        "fill": 0.888
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.7,
+    "music_under_voice_db": 30.7
+  },
+  "craft_problems": [
+    "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 3.893,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
