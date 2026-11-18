@@ -11,10 +11,17 @@
           "19:07",
           "12:37"
         ],
-        "dailyVideoTarget": 3
+        "longUploadDays": [
+          6
+        ],
+        "dailyVideoTarget": 3,
+        "trendUploadTimes": [
+          "16:07",
+          "22:07"
+        ]
       },
       "health": {
-        "at": "2026-11-18T07:20:18.425Z",
+        "at": "2026-11-18T07:41:45.414Z",
         "color": "red",
         "reason": "The upload queue is empty",
         "stayed": 0.376862268166616,
@@ -33,9 +40,21 @@
       "name": "Geography, maps & geopolitical mysteries",
       "status": "setup",
       "settings": {
+        "longPerWeek": 0,
+        "uploadTimes": [
+          "09:37",
+          "20:37"
+        ],
         "lengthMaxSec": 80,
         "lengthMinSec": 60,
-        "dailyVideoTarget": 2
+        "longUploadDays": [
+          6
+        ],
+        "dailyVideoTarget": 2,
+        "trendUploadTimes": [
+          "16:07",
+          "22:07"
+        ]
       },
       "setup": {
         "stage": "review",
