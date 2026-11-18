@@ -1,0 +1,802 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52817,
+ "story": "zoom_inside",
+ "shape": "the-zoom-in",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "circuit",
+  "key": "D",
+  "bpm": 72,
+  "look": {
+   "stage": "studio",
+   "header": "strip",
+   "holder": "sign",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "45-60",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "28"
+ },
+ "hook_style": "question",
+ "cta": "Which chip should we zoom into next? Comment",
+ "feed_id": "2026-11-18-zoom-into-gpu",
+ "facts": [
+  {
+   "label": "NVIDIA GeForce RTX 4090: CUDA cores (its small maths units)",
+   "value": 16384,
+   "unit": "count",
+   "as_of": "2026-11-18",
+   "source": "NVIDIA",
+   "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+   "fixed": true
+  },
+  {
+   "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
+   "value": 76,
+   "unit": "count_billion",
+   "as_of": "2022-09-20",
+   "source": "NVIDIA",
+   "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+   "fixed": true
+  },
+  {
+   "label": "Transistors in the generation before (Ampere), for comparison",
+   "value": 28,
+   "unit": "count_billion",
+   "as_of": "2022-09-20",
+   "source": "NVIDIA",
+   "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "How small? *One switch*",
+  "tag": "Inside NVIDIA",
+  "angle": "question"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "How small is one switch inside this NVIDIA chip?",
+   "events": {
+    "nvidia": {
+     "word": "NVIDIA"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "small": {
+     "word": "small"
+    },
+    "switch": {
+     "word": "switch"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "chip"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": [
+     "a dark studio stage",
+     "the chip beside a bank card"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "switch",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nvidia",
+      "what": "the graphics card turns on the stage, fans spinning, its parts lifting apart"
+     },
+     {
+      "at": "chip",
+      "what": "the bare chip rises out of the card and glows at its edges"
+     },
+     {
+      "at": "small",
+      "what": "the camera pushes in on the chip's surface"
+     },
+     {
+      "at": "switch",
+      "what": "a single tiny cell on the surface flares amber"
+     }
+    ],
+    "things": [
+     "graphics card",
+     "spinning fans",
+     "bare chip",
+     "bank card",
+     "glowing cell"
+    ]
+   }
+  },
+  {
+   "id": "crowd",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It isn't one big brain. It's {fact1} small ones, working at once.",
+   "events": {
+    "isnt": {
+     "word": "isn't"
+    },
+    "brain": {
+     "word": "brain"
+    },
+    "small": {
+     "word": "small"
+    },
+    "working": {
+     "word": "working"
+    },
+    "ones": {
+     "word": "ones"
+    },
+    "its": {
+     "word": "It's"
+    },
+    "counting": {
+     "sec": 3.3
+    },
+    "counting2": {
+     "sec": 4.42
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "small"
+    }
+   ],
+   "params": {
+    "component": "Crowd",
+    "place": "the chip's surface, lit up",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "small",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "isnt",
+      "what": "one big glowing block on the chip cracks apart"
+     },
+     {
+      "at": "brain",
+      "what": "the pieces scatter across the surface"
+     },
+     {
+      "at": "its",
+      "what": "the grid of cores starts lighting from the centre and the count starts climbing on the chip's edge"
+     },
+     {
+      "at": "small",
+      "what": "thousands of small cores light up in a grid, the count written on the chip's edge"
+     },
+     {
+      "at": "ones",
+      "what": "the count lands on the chip's edge with a flash"
+     },
+     {
+      "at": "working",
+      "what": "a wave of light runs across every core at once"
+     },
+     {
+      "at": "counting",
+      "what": "while the number is spoken, the climbing count flashes as it passes the halfway mark"
+     },
+     {
+      "at": "counting2",
+      "what": "the climbing count flashes again as the number is said"
+     }
+    ],
+    "things": [
+     "chip surface",
+     "glowing block",
+     "grid of cores",
+     "count on the chip's edge"
+    ],
+    "fig": {
+     "cores": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "desk",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "They split up every frame of your game, so each one colours its own patch of dots.",
+   "events": {
+    "split": {
+     "word": "split"
+    },
+    "frame": {
+     "word": "frame"
+    },
+    "game": {
+     "word": "game"
+    },
+    "colours": {
+     "word": "colours"
+    },
+    "dots": {
+     "word": "dots"
+    },
+    "patch": {
+     "sec": 6.22
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Desk",
+    "place": "a gaming desk at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "colours",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "split",
+      "what": "the monitor's game picture breaks into a grid of tiles"
+     },
+     {
+      "at": "frame",
+      "what": "the tiles fly back toward the PC tower, its side glass glowing"
+     },
+     {
+      "at": "game",
+      "what": "the game picture rebuilds on the monitor"
+     },
+     {
+      "at": "colours",
+      "what": "the camera pushes into one tile: a few dots fill with colour"
+     },
+     {
+      "at": "dots",
+      "what": "the dots pulse once"
+     },
+     {
+      "at": "patch",
+      "what": "the coloured patch flares on the monitor tile"
+     }
+    ],
+    "things": [
+     "desk",
+     "monitor with a game",
+     "pc tower",
+     "grid of tiles",
+     "coloured dots"
+    ]
+   }
+  },
+  {
+   "id": "city",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Lift it out and zoom in: it's a city at night, seen from a plane.",
+   "events": {
+    "lift": {
+     "word": "Lift"
+    },
+    "zoom": {
+     "word": "zoom"
+    },
+    "city": {
+     "word": "city"
+    },
+    "plane": {
+     "word": "plane"
+    },
+    "night": {
+     "sec": 5.14
+    }
+   },
+   "transition": "zoom-through",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "zoom"
+    }
+   ],
+   "params": {
+    "component": "City",
+    "place": "the chip from above, like a city at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "zoom",
+      "size": "close"
+     },
+     {
+      "at": "city",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lift",
+      "what": "the die lifts off its green board"
+     },
+     {
+      "at": "zoom",
+      "what": "the camera dives down toward it"
+     },
+     {
+      "at": "city",
+      "what": "blocks rise from the surface like buildings, lanes of light between them"
+     },
+     {
+      "at": "plane",
+      "what": "the camera glides over the blocks like a plane at night"
+     },
+     {
+      "at": "night",
+      "what": "the lanes of light flare once across the city"
+     }
+    ],
+    "things": [
+     "die",
+     "board",
+     "silicon blocks",
+     "lanes of light"
+    ]
+   }
+  },
+  {
+   "id": "dive",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Dive into one core. No magic. Just tiny switches.",
+   "events": {
+    "dive": {
+     "word": "dive"
+    },
+    "core": {
+     "word": "core"
+    },
+    "magic": {
+     "word": "magic"
+    },
+    "tiny": {
+     "word": "tiny"
+    },
+    "switches": {
+     "word": "switches"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "switches"
+    }
+   ],
+   "params": {
+    "component": "Dive",
+    "place": "inside one core",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "dive",
+      "size": "close"
+     },
+     {
+      "at": "switches",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "dive",
+      "what": "the camera dives into one block, streaking"
+     },
+     {
+      "at": "core",
+      "what": "a pointer lands on the core, it glows amber"
+     },
+     {
+      "at": "magic",
+      "what": "the glow drains away to plain grey"
+     },
+     {
+      "at": "tiny",
+      "what": "rows of tiny switches appear, packed tight"
+     },
+     {
+      "at": "switches",
+      "what": "the camera lands just above them"
+     }
+    ],
+    "things": [
+     "one core",
+     "pointer",
+     "rows of switches"
+    ]
+   }
+  },
+  {
+   "id": "bits",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Each one is on or off, a one or a zero. And every colour is built from them.",
+   "events": {
+    "on": {
+     "word": "on"
+    },
+    "off": {
+     "word": "off"
+    },
+    "zero": {
+     "word": "zero"
+    },
+    "colour": {
+     "word": "colour"
+    },
+    "every": {
+     "word": "every"
+    },
+    "built": {
+     "word": "built"
+    },
+    "thats": {
+     "sec": 3.6
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "on"
+    }
+   ],
+   "params": {
+    "component": "Bits",
+    "place": "the field of switches",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "colour",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "on",
+      "what": "it lights up"
+     },
+     {
+      "at": "off",
+      "what": "it goes dark"
+     },
+     {
+      "at": "zero",
+      "what": "a one and a zero write on above it"
+     },
+     {
+      "at": "every",
+      "what": "the camera starts lifting off the switch"
+     },
+     {
+      "at": "colour",
+      "what": "a wave of switches flicks on and off, and a coloured dot forms above the field"
+     },
+     {
+      "at": "built",
+      "what": "the red, green and blue merge and the coloured dot pops out"
+     },
+     {
+      "at": "thats",
+      "what": "the one switch blinks on and off once"
+     }
+    ],
+    "things": [
+     "field of switches",
+     "scan ring",
+     "one and zero labels",
+     "coloured dot"
+    ]
+   }
+  },
+  {
+   "id": "before",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The chip before this one held {fact3} of them. So how many fit in this one?",
+   "events": {
+    "before": {
+     "word": "before"
+    },
+    "held": {
+     "word": "held"
+    },
+    "so": {
+     "word": "So"
+    },
+    "many": {
+     "word": "many"
+    },
+    "fit": {
+     "word": "fit"
+    },
+    "tally": {
+     "sec": 3.8
+    },
+    "closing": {
+     "end": 0.9
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Before",
+    "place": "a wafer on a clean-room table",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "held",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "before",
+      "what": "an older wafer slides onto a clean-room table"
+     },
+     {
+      "at": "held",
+      "what": "its count counts up on the table's edge"
+     },
+     {
+      "at": "so",
+      "what": "the camera starts drifting back across the bench"
+     },
+     {
+      "at": "many",
+      "what": "the count on the bench's edge pulses bigger once"
+     },
+     {
+      "at": "fit",
+      "what": "the camera pulls back over the bench and the old die's glow dims"
+     },
+     {
+      "at": "tally",
+      "what": "while the figure is spoken, the count ticks bigger once"
+     },
+     {
+      "at": "closing",
+      "what": "as the question ends, the count ticks once more"
+     }
+    ],
+    "things": [
+     "clean room",
+     "wafer",
+     "older die",
+     "count on the table"
+    ],
+    "fig": {
+     "before": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "This one packs {fact2}, on silicon smaller than a bank card.",
+   "events": {
+    "packs": {
+     "word": "packs"
+    },
+    "silicon": {
+     "word": "silicon"
+    },
+    "smaller": {
+     "word": "smaller"
+    },
+    "card": {
+     "word": "card"
+    },
+    "piece": {
+     "sec": 2.3
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "packs"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "the dark studio stage",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "packs",
+      "size": "close"
+     },
+     {
+      "at": "card",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "packs",
+      "what": "the switch field fills the chip edge to edge, its count lands in amber"
+     },
+     {
+      "at": "silicon",
+      "what": "the camera pulls back to the whole chip"
+     },
+     {
+      "at": "smaller",
+      "what": "the bank card slides in beside it again"
+     },
+     {
+      "at": "card",
+      "what": "both settle on the reflective floor, the figure glowing above the chip"
+     },
+     {
+      "at": "piece",
+      "what": "the amber count flashes bigger as it lands"
+     }
+    ],
+    "things": [
+     "chip",
+     "switch field",
+     "count in amber",
+     "bank card"
+    ],
+    "fig": {
+     "packs": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "back",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "So zoom back out, past the switches, past the cores, past the fans, to this NVIDIA chip.",
+   "events": {
+    "zoom": {
+     "word": "zoom"
+    },
+    "cores": {
+     "word": "cores"
+    },
+    "fans": {
+     "word": "fans"
+    },
+    "nvidia": {
+     "word": "NVIDIA"
+    },
+    "switches": {
+     "word": "switches"
+    },
+    "out": {
+     "sec": 1.88
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "zoom"
+    }
+   ],
+   "params": {
+    "component": "Back",
+    "place": "pulling back out to the studio stage",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "cores",
+      "size": "close"
+     },
+     {
+      "at": "nvidia",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "zoom",
+      "what": "the camera rushes back up out of the switches"
+     },
+     {
+      "at": "switches",
+      "what": "an amber wave races across the switches below"
+     },
+     {
+      "at": "cores",
+      "what": "the grid of cores flashes past"
+     },
+     {
+      "at": "fans",
+      "what": "the card's fans close back over the chip"
+     },
+     {
+      "at": "nvidia",
+      "what": "the graphics card turns on the stage, as in the first frame"
+     },
+     {
+      "at": "out",
+      "what": "the die below flashes as the camera rushes out"
+     }
+    ],
+    "things": [
+     "switches",
+     "cores",
+     "graphics card",
+     "fans"
+    ]
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}
