@@ -707,6 +707,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                   **({"look": (script.get("style") or {})["look"]} if (script.get("style") or {}).get("look") else {})},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1), "stems": stems, "lufs": lufs,
                   **({"music_under_voice_db": under} if under is not None else {})},
+        # the channel's own corner logo (generator/pack.py logo): "sikka", a remotion/public path, or None
+        "logo": channel_pack.logo(),
         "disclaimer": disclaimer, "captions": True, "voiceMode": voice, "sources": sources, "currency": fm.currency,
         # A/B variants for this video ({id: "on" | "off"}, generator/experiments.py): scenes read them
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest

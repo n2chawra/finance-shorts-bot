@@ -107,3 +107,15 @@ def test_a_channel_has_its_own_length_never_another_channels(tmp_path, monkeypat
     (tmp_path / "config" / "channels.json").write_text(json.dumps({"channels": {"tech": {"status": "active", "settings": {"lengthMaxSec": 55}}}}), encoding="utf-8")
     assert settings.load(tmp_path)["lengthMaxSec"] == 55
     assert pack.pack_problems({**pack.DEFAULTS, "length": {"short": [60, 45]}})
+
+
+def test_each_channel_carries_its_own_logo_never_another_channels(tmp_path, monkeypatch):
+    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    assert pack.logo(root=tmp_path) == "sikka"                     # channel #1 (no pack): its mascot, as before
+    pack.scaffold("space-facts", "Space Facts", root=tmp_path)
+    assert pack.logo("space-facts", root=tmp_path) is None         # no avatar yet: no logo, never Sikka
+    avatar = tmp_path / "channels" / "space-facts" / "branding" / "avatar.png"
+    avatar.parent.mkdir(parents=True, exist_ok=True)
+    avatar.write_bytes(b"\x89PNG space")
+    assert pack.logo("space-facts", root=tmp_path) == "brand/space-facts/avatar.png"
+    assert (tmp_path / "remotion" / "public" / "brand" / "space-facts" / "avatar.png").read_bytes() == b"\x89PNG space"

@@ -61,6 +61,30 @@ def load(slug: str | None = None, root: Path = ROOT) -> dict:
     return out
 
 
+def logo(slug: str | None = None, root: Path = ROOT) -> str | None:
+    """The corner logo a channel's videos carry (owner, 2026-11-18: nothing inherited from another channel).
+
+    "sikka": channel #1's drawn mascot (no pack, or a pack that says `"logo": "sikka"`); otherwise the
+    channel's own `branding/avatar.png`, copied to `remotion/public/brand/<slug>/avatar.png` and returned
+    as that public path; None (no logo) when the channel has neither."""
+    slug = slug or current()
+    f = path(slug, root)
+    if not f.is_file():
+        return "sikka"
+    if json.loads(f.read_text(encoding="utf-8")).get("logo") == "sikka":
+        return "sikka"
+    src = channel_root(slug, root) / "branding" / "avatar.png"
+    if not src.is_file():
+        return None
+    rel = f"brand/{slug}/avatar.png"
+    dst = root / "remotion" / "public" / rel
+    data = src.read_bytes()
+    if not dst.is_file() or dst.read_bytes() != data:
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        dst.write_bytes(data)
+    return rel
+
+
 def voice_ok(name: str) -> bool:
     return len(name) > 3 and name[0] in KOKORO_LANG and name[1] in "fm" and name[2] == "_"
 

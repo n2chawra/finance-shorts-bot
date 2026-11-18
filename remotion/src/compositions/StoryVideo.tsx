@@ -8,7 +8,7 @@
  * camera, transitions, lip-sync — speeds up together, like watching at that playback speed.
  */
 import React from "react";
-import { AbsoluteFill, type CalculateMetadataFunction, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, type CalculateMetadataFunction, Img, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { useMemo } from "react";
 import { isScene, SCENE_NAMES, type SceneName } from "../contract/scenes";
 import { onStoryClock } from "../contract/clock";
@@ -67,9 +67,15 @@ export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   board: BoardScene, directed: DirectedScene,
 };
 
-/** The channel's mark in the top-left corner of every frame: Sikka, small, never text. */
-const LogoBug: React.FC<{ w: number; h: number }> = ({ w, h }) => {
+/** The channel's mark in the top-left corner of every frame, small, never text: Sikka for channel #1, a
+ * channel's own avatar (a path under remotion/public), or nothing — never another channel's (2026-11-18). */
+const LogoBug: React.FC<{ w: number; h: number; logo: string | null }> = ({ w, h, logo }) => {
   const size = h > w ? 74 : 58, m = h > w ? 44 : 36;
+  if (!logo) return null;
+  if (logo !== "sikka") return (
+    <Img src={staticFile(logo)} data-probe="skip" style={{ position: "absolute", left: m, top: m, width: size, height: size,
+      borderRadius: "50%", objectFit: "cover", opacity: 0.85, boxShadow: "0 0 0 6px rgba(0,0,0,0.25)" }} />
+  );
   return (
     <svg width={size + m * 2} height={size + m * 2} style={{ position: "absolute", left: 0, top: 0, opacity: 0.85 }} data-probe="skip">
       <circle cx={m + size / 2} cy={m + size / 2} r={size / 2 + 6} fill="rgba(0,0,0,0.25)" />
@@ -152,7 +158,7 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe, atFrame }) =
       {!cover && <StoryHud tl={timeline} index={i} beat={cur} frame={frame} fps={fps} />}
       <Vignette />
       <Grain />
-      {!cover && cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} />}
+      {!cover && cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} logo={timeline.logo} />}
       {!cover && timeline.captions && <Captions tl={timeline} frame={frame} groups={groups} scene={cur.scene} />}
       {!cover && !hasEnd && frame >= timeline.durationInFrames - Math.round(fps * 1.4) && <DisclaimerLine tl={timeline} low={cur.scene === "board"} />}
       {probe && <LayoutProbe frame={frame} />}

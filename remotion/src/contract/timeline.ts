@@ -101,6 +101,9 @@ export const Timeline = z.object({
   audio: z.object({ file: z.string(), peak_db: z.number(), mean_db: z.number() }),
   // the channel's own disclaimer (channel.json); channel #1's is "Illustrative only. Not financial advice."
   disclaimer: z.string().min(1),
+  // the channel's corner logo (generator/pack.py logo): "sikka" (channel #1's mascot; also when absent, for
+  // timelines built before 2026-11-18), a path under remotion/public (the channel's own avatar), or null (none)
+  logo: z.string().nullable().default("sikka"),
   captions: z.boolean().default(false),   // big word-by-word captions over the picture
   voiceMode: z.enum(["kokoro", "estimate"]),
   // news: "Data: AMFI · Jun 2026", shown by every headline scene (sourced facts, hard rule)
