@@ -13,6 +13,7 @@ import { PromoThumb } from "./promo/Thumb";
 import { ChannelAvatar as GlobalAvatar, ChannelBanner as GlobalBanner } from "./promo/Channel";
 import { MapSheet } from "./sheets/MapSheet";
 import { GeoAvatar, GeoBanner } from "./sheets/GeoBrand";
+import { TECH3D_DEMO, Tech3DDemo } from "./three/demo/Tech3DDemo";
 
 export const Root: React.FC = () => (
   <>
@@ -28,6 +29,8 @@ export const Root: React.FC = () => (
     <Composition id="MapSheet" component={MapSheet} durationInFrames={180} fps={30} width={1080} height={1920} />
     <Still id="GeoAvatar" component={GeoAvatar} width={800} height={800} />
     <Still id="GeoBanner" component={GeoBanner} width={2560} height={1440} />
+    {/* the 3D kit (src/three, tech channel): one demo Short using every piece */}
+    <Composition id="Tech3DDemo" component={Tech3DDemo} {...TECH3D_DEMO} />
     {/* channel art (assets/channel/): `npx remotion still src/index.ts ChannelAvatar|ChannelBanner <out.png>` */}
     <Still id="ChannelAvatar" component={ChannelAvatar} width={AVATAR.width} height={AVATAR.height} />
     <Still id="ChannelBanner" component={ChannelBanner} width={BANNER.width} height={BANNER.height} />
