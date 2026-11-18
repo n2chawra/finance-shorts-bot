@@ -334,7 +334,7 @@ export default function GrowthPage() {
       {/* what the reviewer and the auditor learned */}
       <div className="mt-5 grid gap-5 xl:grid-cols-12">
         <Card title="Video reviewer" icon={ScanEye} accent="pink" className="xl:col-span-7"
-          description={`Watches our Shorts next to where viewers left and writes lessons every script must follow. Next run ${fmtDateTime(data.reviewer.nextRunAt)} IST (${fmtRelative(data.reviewer.nextRunAt)}).`}>
+          description={`Watches our Shorts next to where viewers left and writes lessons every script must follow. ${data.reviewer.nextRunAt ? `Next run ${fmtDateTime(data.reviewer.nextRunAt)} IST (${fmtRelative(data.reviewer.nextRunAt)}).` : "Not set up for this channel yet."}`}>
           {data.reviewer.lastDay && (
             <div className="mb-4 rounded-xl border border-line bg-surface-2 p-3.5 text-[13px]">
               <span className="font-medium">Last run {fmtDayKey(data.reviewer.lastDay)}: </span><span className="text-ink2">{data.reviewer.lastSummary}</span>

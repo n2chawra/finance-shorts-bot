@@ -1,4 +1,6 @@
 /** Notifications and the self-improving agents' activity, from Postgres. */
+import { agentTimes } from "./agent-times";
+import { currentChannel } from "./channel-scope";
 import { ChallengerSchema, CycleRowSchema, type Growth, GrowthSchema, LessonSchema, LoopStatusSchema, PicturesSchema, RecipeSchema, StayedRowSchema, nextReviewerRun } from "./growth";
 import { RECENT_DAYS } from "./recent";
 import type { Notification as Row } from "@prisma/client";
@@ -153,6 +155,12 @@ export async function getGrowth(): Promise<Growth> {
       id: r!.id, title: r!.title, thumbnailUrl: `/api/media/${r!.id}/thumbnail`,
       // YouTube's live counter when known, else Analytics, as every other page counts views (lib/totals.ts)
       views: r!.upload ? r!.upload.liveViews ?? r!.upload.stats.reduce((a, s) => a + s.views, 0) : null })),
-    reviewer: { lastDay: reviewer?.day ?? null, lastSummary: reviewer?.summary ?? null, nextRunAt: nextReviewerRun().toISOString() },
+    reviewer: { lastDay: reviewer?.day ?? null, lastSummary: reviewer?.summary ?? null, nextRunAt: await reviewerNext() },
   });
+}
+
+/** The channel's next reviewer run (its own time, lib/agent-times.ts), or null when it has no reviewer. */
+async function reviewerNext(): Promise<string | null> {
+  const r = agentTimes(await currentChannel()).reviewer;
+  return r && r.hour !== undefined ? nextReviewerRun(Date.now(), { hour: r.hour, minute: r.minute ?? 0, days: r.days ?? [2, 5] }).toISOString() : null;
 }

@@ -69,7 +69,7 @@ export const GrowthSchema = z.object({
   pictures: PicturesSchema.nullable(),
   /** the 3 reference Shorts, with what the page needs to show them */
   reference: z.array(z.object({ id: z.string(), title: z.string(), thumbnailUrl: z.string(), views: z.number().nullable() })),
-  reviewer: z.object({ lastDay: z.string().nullable(), lastSummary: z.string().nullable(), nextRunAt: z.string() }),
+  reviewer: z.object({ lastDay: z.string().nullable(), lastSummary: z.string().nullable(), nextRunAt: z.string().nullable() }),
 });
 export type Growth = z.infer<typeof GrowthSchema>;
 export type LoopStatus = z.infer<typeof LoopStatusSchema>;

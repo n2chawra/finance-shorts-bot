@@ -49,7 +49,7 @@ export const METRICS: MetricDef[] = [
   {
     key: "lostAt5", label: "Lost on the second line", short: "Lost 4–7 s",
     what: "Share of the starting viewers who leave between 4 and 7 s, while the line after the hook plays",
-    fix: "The second line: a bigger surprise, never what the title already said, no finance words",
+    fix: "The second line: a bigger surprise, never what the title already said, in plain words",
     higherIsBetter: false, good: 0.15, close: 0.25, max: 0.5,
     format: pctF, target: "under 15%",
   },

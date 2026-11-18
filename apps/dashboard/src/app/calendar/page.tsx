@@ -34,7 +34,10 @@ export default function CalendarPage() {
   const settings = useSettings();
   const channels = useChannels();
   // a channel in setup has no upload slots of its own yet: no slot plan, no "nothing ready" warnings
-  const live = channels.data ? channels.data.channels.find((c) => c.id === channels.data!.current)?.status === "active" : true;
+  const me = channels.data?.channels.find((c) => c.id === channels.data!.current);
+  const live = channels.data ? me?.status === "active" : true;
+  const launchedAt = me?.setup?.stage === "launched" && me.setup.updatedAt ? Date.parse(me.setup.updatedAt) : 0;
+  const noLong = settings.data?.longPerWeek === 0;   // no long videos: no long slots on the calendar
   const today = istDay(new Date());
   const [ym, setYm] = useState(() => ({ y: Number(today.slice(0, 4)), m: Number(today.slice(5, 7)) - 1 }));
   const [selected, setSelected] = useState(today);
@@ -59,11 +62,11 @@ export default function CalendarPage() {
       const plan = s ? [...postingPlan("short", q, posted, s), ...postingPlan("long", q, posted, s)] : [];
       for (const slot of plan) {
         if (slot.video) add({ video: slot.video, kind: "planned", at: slot.at });
-        else if (slot.state === "upcoming" && live) { const k = istDay(new Date(slot.at)); gaps.set(k, [...(gaps.get(k) ?? []), { at: slot.at, format: slot.format }]); }
+        else if (slot.state === "upcoming" && live && slot.at >= launchedAt && !(noLong && slot.format === "long")) { const k = istDay(new Date(slot.at)); gaps.set(k, [...(gaps.get(k) ?? []), { at: slot.at, format: slot.format }]); }
       }
     }
     return { map, gaps };
-  }, [videos.data, queue.data, overview.data, settings.data, live]);
+  }, [videos.data, queue.data, overview.data, settings.data, live, launchedAt, noLong]);
 
   if (videos.isLoading || queue.isLoading || overview.isLoading) return <Loading />;
   if (videos.error || queue.error || overview.error) return <ErrorNote error={videos.error ?? queue.error ?? overview.error} />;
@@ -79,7 +82,7 @@ export default function CalendarPage() {
   const hhmm = (at: number) => new Date(at).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false });
   const monthName = new Intl.DateTimeFormat("en-IN", { month: "long", year: "numeric", timeZone: "UTC" }).format(first);
   const long = settings.data;
-  const longWhen = long?.longUploadDays.length && long.longUploadTimes.length
+  const longWhen = !noLong && long?.longUploadDays.length && long.longUploadTimes.length
     ? ` · long videos ${[...long.longUploadDays].sort().map((d) => LONG_DAYS[d]).join("/")} at ${describeTimes(long.longUploadTimes)}` : "";
   const monthCount = [...byDay.map.keys()].filter((k) => k.startsWith(key(ym.y, ym.m, 1).slice(0, 7))).length;
   // views of the videos published on a day (their lifetime views, live where available)

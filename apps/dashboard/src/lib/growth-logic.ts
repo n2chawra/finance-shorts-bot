@@ -24,16 +24,18 @@ export function nextKind(history: { kind?: string }[], stayed: { champion?: numb
 
 const IST_MS = 5.5 * 3_600_000;
 
-/** The reviewer's next run: Tuesday and Friday at 21:07 IST (agents/reviewer.md). */
-export function nextReviewerRun(now = Date.now()): Date {
+/** The reviewer's next run: Tuesday and Friday at the channel's reviewer time (21:07 IST on Paisa
+ * Panchayat; each channel's own in lib/agent-times.ts). */
+export function nextReviewerRun(now = Date.now(), at: { hour: number; minute: number; days: number[] } = { hour: 21, minute: 7, days: [2, 5] }): Date {
   for (let d = 0; d < 8; d++) {
     const ist = new Date(now + IST_MS + d * 86_400_000);
-    if (![2, 5].includes(ist.getUTCDay())) continue;
-    const at = Date.UTC(ist.getUTCFullYear(), ist.getUTCMonth(), ist.getUTCDate(), 21, 7) - IST_MS;
-    if (at > now) return new Date(at);
+    if (!at.days.includes(ist.getUTCDay())) continue;
+    const when = Date.UTC(ist.getUTCFullYear(), ist.getUTCMonth(), ist.getUTCDate(), at.hour, at.minute) - IST_MS;
+    if (when > now) return new Date(when);
   }
   return new Date(now + 7 * 86_400_000);
 }
+
 
 export const KIND_LABEL: Record<string, string> = { "first-second": "First-second test", look: "Look test", format: "Format change" };
 export const KIND_METRIC: Record<string, string> = { "first-second": "stayed to watch", look: "held after the hook", format: "stayed to watch" };

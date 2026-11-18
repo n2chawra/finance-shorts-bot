@@ -85,17 +85,21 @@ function PostNext({ slot }: { slot: PlanSlot & { video: Video } }) {
   );
 }
 
-function Section({ format, items, plan, settings, paused, busy, live = true, onMove, onAction }: {
+function Section({ format, items, plan, settings, paused, busy, live = true, since = 0, onMove, onAction }: {
   format: Format; items: Video[]; plan: PlanSlot[]; settings: Settings; paused: boolean; busy: boolean;
   /** false for a channel in setup: it has no upload slots of its own yet, so nothing can be missed */
   live?: boolean;
+  /** when the channel launched (ms): earlier slots are never "missed" */
+  since?: number;
   onMove: (id: string, to: number) => void; onAction: (v: Video, a: VideoAction | "delete-confirm") => void;
 }) {
   const router = useRouter();
   const [dragging, setDragging] = useState<string | null>(null);
   const [over, setOver] = useState<string | null>(null);
   const slotOf = new Map(plan.filter((s) => s.video).map((s) => [s.video!.id, s]));
-  const missed = live ? plan.filter((s) => s.state === "missed") : [];
+  // no long videos made (0 a week): no long slots to show or miss
+  const none = format === "long" && settings.longPerWeek === 0;
+  const missed = live && !none ? plan.filter((s) => s.state === "missed" && s.at >= since) : [];
   const r = runway(format, items, settings);
   const every = settings.shortEveryDays ?? 1;
   const when = format === "short" ? `${every > 1 ? `every ${every} days` : "daily"} at ${describeTimes(settings.uploadTimes)}${settings.trendUploadTimes.length ? `, plus trend slots at ${describeTimes(settings.trendUploadTimes)}` : ""}`
@@ -109,7 +113,7 @@ function Section({ format, items, plan, settings, paused, busy, live = true, onM
         <h2 className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[16px] font-semibold tracking-[-0.01em]">
           <IconTile icon={Icon} accent={format === "short" ? "pink" : "sky"} />
           {format === "short" ? "Shorts" : "Long videos"}
-          <span className="text-[13px] font-normal tracking-normal text-muted">· {r.n} ready · {live ? `posts ${when}` : "uploads start at Launch"}</span></h2>
+          <span className="text-[13px] font-normal tracking-normal text-muted">· {r.n} ready · {!live ? "uploads start at Launch" : none ? "none: this channel makes no long videos (0 a week)" : `posts ${when}`}</span></h2>
         {r.days !== null && <Badge tone={r.n ? "good" : "critical"} dot>{r.n ? `Enough for about ${r.days} day${r.days === 1 ? "" : "s"}` : "Nothing ready"}</Badge>}
       </div>
 
@@ -187,7 +191,10 @@ export default function QueuePage() {
   const queue = useQueue();
   const overview = useOverview();
   const channels = useChannels();
-  const live = channels.data ? channels.data.channels.find((c) => c.id === channels.data!.current)?.status === "active" : true;
+  const me = channels.data?.channels.find((c) => c.id === channels.data!.current);
+  const live = channels.data ? me?.status === "active" : true;
+  // a slot before the channel launched was never meant to be filled
+  const launchedAt = me?.setup?.stage === "launched" && me.setup.updatedAt ? Date.parse(me.setup.updatedAt) : 0;
   const settings = useSettings();
   const published = useVideos({ status: "published" });
   const scheduled = useVideos({ status: "scheduled" });
@@ -262,7 +269,7 @@ export default function QueuePage() {
       )}
 
       {(["short", "long"] as const).map((f) => (
-        <Section key={f} format={f} items={byFormat[f]} plan={plans[f]} settings={s} paused={paused} busy={busy} live={live}
+        <Section key={f} format={f} items={byFormat[f]} plan={plans[f]} settings={s} paused={paused} busy={busy} live={live} since={launchedAt}
           onMove={(id, to) => move(f, id, to)} onAction={onAction} />
       ))}
 

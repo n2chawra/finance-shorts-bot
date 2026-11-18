@@ -140,6 +140,9 @@ export async function launchChannel(id: string): Promise<Channel | { error: stri
   const now = new Date().toISOString();
   await db.channel.update({ where: { id }, data: { status: "active", settings: {
     ...stored, dailyVideoTarget: approved.shortsPerDay, longPerWeek: approved.longPerWeek, generationPaused: false, uploadsPaused: false,
+    // its own trend slots, none by default: inheriting the platform's put the geography channel's trend
+    // slots on the same minutes as Paisa Panchayat's (2026-11-18)
+    trendUploadTimes: (stored as Record<string, unknown>).trendUploadTimes ?? [],
     setup: { ...setup.data, stage: "launched", note: `Launched ${now.slice(0, 10)}: the approved samples go out first`, updatedAt: now },
   } as Prisma.InputJsonValue } });
   return (await getChannel(id))!;

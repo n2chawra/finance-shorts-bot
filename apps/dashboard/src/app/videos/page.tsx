@@ -32,6 +32,8 @@ function Videos() {
   const counts = useOverview().data?.counts;
   // topic options come from the videos themselves: a fixed list missed every category added since
   const everything = useVideos({});
+  // only the templates this channel's videos use: the full list showed Paisa Panchayat's old ones everywhere
+  const used = new Set((everything.data ?? []).map((v) => v.templateId));
   const categories = [...new Set([...(everything.data ?? []).map((v) => v.topic.category), ...(filters.category ? [filters.category] : [])])].sort();
   // a count beside each topic says which ones the channel leans on and never offers an empty result unawares
   const perCategory = new Map<string, number>();
@@ -68,7 +70,7 @@ function Videos() {
           <input type="search" value={q} onChange={(e) => setQ(e.target.value)} onBlur={() => set("q", q.trim())} placeholder="Search by title, topic or id"
             aria-label="Search videos" className={`${fieldClass} pl-9`} />
         </label>
-        <SelectField label="Template" all="All templates" value={filters.template} onChange={(v) => set("template", v)} options={(templates.data ?? []).map((t) => ({ value: t.id, label: t.name }))} />
+        <SelectField label="Template" all="All templates" value={filters.template} onChange={(v) => set("template", v)} options={(templates.data ?? []).filter((t) => used.has(t.id) || t.id === filters.template).map((t) => ({ value: t.id, label: t.name }))} />
         <SelectField label="Topic" all="All topics" value={filters.category} onChange={(v) => set("category", v)} options={categories.map((c) => ({ value: c, label: everything.data ? `${titleCase(c)} (${perCategory.get(c) ?? 0})` : titleCase(c) }))} />
       </form>
 

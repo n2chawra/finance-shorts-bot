@@ -1,5 +1,8 @@
 "use client";
 
+import { agentTimes } from "@/lib/agent-times";
+import { DEFAULT_CHANNEL } from "@/lib/channels";
+
 import { Bot, CalendarClock, Clapperboard, Clock, ExternalLink, Eye, FlaskConical, GitMerge, Lightbulb, LayoutDashboard, Newspaper, Scale, Search, ShieldAlert, ShieldCheck, Telescope, Wrench } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
@@ -8,7 +11,7 @@ import { useState } from "react";
 
 import { type Accent, ACCENT, Badge, Card, Empty, ErrorNote, Loading, PageHeader, Stagger, Stat, tabClass, tabListClass, type Tone, VideoLink } from "@/components/ui";
 import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
-import { useAgents, useSettings } from "@/lib/queries";
+import { useAgents, useSettings, useChannels } from "@/lib/queries";
 import { fmtMinutes, fmtRunWindow, summarizeRunTimes } from "@/lib/run-times";
 import type { Activity, Agents } from "@/lib/schemas";
 import { VariantsCard } from "@/components/variants";
@@ -315,6 +318,9 @@ function TopicsTab({ data }: { data: Agents }) {
 export default function AgentsPage() {
   const { data, error, isLoading } = useAgents();
   const settings = useSettings().data;
+  const channels = useChannels().data;
+  // each channel's own schedule (lib/agent-times.ts): the times were Paisa Panchayat's, and stale, on every channel
+  const times = agentTimes(channels?.current ?? DEFAULT_CHANNEL);
   const [tab, setTab] = useState("activity");
   if (isLoading) return <Loading />;
   if (error || !data) return <ErrorNote error={error} />;
@@ -343,7 +349,7 @@ export default function AgentsPage() {
 
   return (
     <Stagger>
-      <PageHeader title="Agents" sub="Six agents run the channel: four improve the automation overnight, two make the long videos by day. Here's what they did, what they found, and why they changed something or waited.">
+      <PageHeader title="Agents" sub="The agents that run this channel, when, and what they did, found, changed or waited on. An agent marked “not for this channel” serves another channel or isn't needed here.">
         {paused ? <Badge tone="warning" dot>Paused in settings</Badge> : <Badge tone="good" dot>Running nightly</Badge>}
         <Link href="/settings#agents" className="panel-sm hover-raise inline-flex h-8 items-center bg-surface px-2.5 text-[11.5px] font-semibold">Settings</Link>
       </PageHeader>
@@ -360,7 +366,7 @@ export default function AgentsPage() {
               <div className={`flex items-center gap-2.5 border-b border-edge px-3.5 py-2.5 ${enabled ? `${ACCENT[FILL[k]]}` : ""}`}>
                 <span className="grid size-8 shrink-0 place-items-center border border-ring bg-surface text-ink rounded-lg"><a.icon aria-hidden className="size-4" /></span>
                 <span className="min-w-0 flex-1 truncate text-[14px] font-semibold">{a.name}</span>
-                <span className="eyebrow shrink-0 !text-[9.5px]">{a.time}</span>
+                <span className="eyebrow shrink-0 !text-[9.5px]">{times[k]?.label ?? "not for this channel"}</span>
               </div>
               <p className="flex-1 px-3.5 pt-3 text-[13px] font-medium leading-snug text-ink2">{a.role}</p>
               <div className="px-3.5 pb-3.5 pt-3">{!enabled ? <Badge tone="warning">Switched off</Badge> : latest ? <Badge tone={DECISION[latest.decision].tone} dot>{DECISION[latest.decision].label} · {fmtDayKey(latest.day)}</Badge> : <Badge>No runs yet</Badge>}</div>
@@ -373,10 +379,10 @@ export default function AgentsPage() {
         <Stat label="Experiments running" accent="lime" icon={FlaskConical} value={String(running)} sub={`max ${settings?.agents.maxActiveExperiments ?? 3} at once`} />
         <Stat label="Kept" accent="mint" icon={GitMerge} value={String(kept)} sub="proved better, now default" />
         <Stat label="Reverted" accent="pink" icon={ShieldAlert} value={String(reverted)} sub="didn't help, removed" />
-        <Stat label="Last report" accent="sky" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub="23:00 · 23:47 · 06:17 · 07:37 · 09:37 · 14:37 IST" />
+        <Stat label="Last report" accent="sky" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub={`${Object.values(times).filter((x) => x).map((x) => x!.label).join(" · ")} IST`} />
       </div>
 
-      <VariantsCard data={data} />
+      {(channels?.current ?? DEFAULT_CHANNEL) === DEFAULT_CHANNEL && <VariantsCard data={data} />}
 
       <Tabs.Root value={tab} onValueChange={setTab} className="mt-8">
         <Tabs.List aria-label="Agent sections" className={tabListClass}>
