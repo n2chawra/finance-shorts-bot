@@ -16,6 +16,7 @@ import { GeoAvatar, GeoBanner } from "./sheets/GeoBrand";
 import { TechFlatDemos } from "./flat/tech/Demo";
 import { TechAvatar, TechBanner } from "./sheets/TechBrand";
 import { TECH3D_DEMO, Tech3DDemo } from "./three/demo/Tech3DDemo";
+import { TECH3D_DEMO2, Tech3DDemo2 } from "./three/demo/Tech3DDemo2";
 
 export const Root: React.FC = () => (
   <>
@@ -36,6 +37,7 @@ export const Root: React.FC = () => (
     <Still id="TechBanner" component={TechBanner} width={2560} height={1440} />
     {/* the 3D kit (src/three, tech channel): one demo Short using every piece */}
     <Composition id="Tech3DDemo" component={Tech3DDemo} {...TECH3D_DEMO} />
+    <Composition id="Tech3DDemo2" component={Tech3DDemo2} {...TECH3D_DEMO2} />
     {/* channel art (assets/channel/): `npx remotion still src/index.ts ChannelAvatar|ChannelBanner <out.png>` */}
     <Still id="ChannelAvatar" component={ChannelAvatar} width={AVATAR.width} height={AVATAR.height} />
     <Still id="ChannelBanner" component={ChannelBanner} width={BANNER.width} height={BANNER.height} />

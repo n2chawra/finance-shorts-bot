@@ -1,0 +1,16 @@
+{
+  "_why": "Stand-in for a directed beat's params and events (in a real video Python fills params.fig from the script's maths/facts and events from the voice timings). Demo values, shown with an ILLUSTRATION tag.",
+  "fig": {
+    "cores": "16,384",
+    "fieldCount": "6,400",
+    "gate": "5 nm",
+    "scale": "100 nm",
+    "hallPower": "30 MW"
+  },
+  "events": {
+    "card": 0, "wire": 26, "clay": 46, "back": 66, "open": 80, "cores": 92,
+    "wafer": 112, "closer": 130, "dive": 150, "field": 168, "scan": 186, "gate": 200,
+    "hall": 232, "rack": 290,
+    "list1": 330, "list2": 358, "list3": 386, "compare": 412
+  }
+}

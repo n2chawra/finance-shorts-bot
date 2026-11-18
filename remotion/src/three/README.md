@@ -1,96 +1,111 @@
 # The 3D kit (`remotion/src/three/`)
 
 Real 3D for the tech channel (`channels/how-tech-and-ai-actually-work-chips-ai-p/`): Branch-Education-style
-cutaways and dives, and 3D character skits. Built on `@remotion/three` (`ThreeCanvas`) + `three` +
-`@react-three/fiber` 8 + `@react-three/drei` 9 (the React 18 line; Remotion 4.0.536).
+cutaways and dives, and 3D character skits. Built on `@remotion/three` (`ThreeCanvas`) + `three` 0.178 +
+`@react-three/fiber` 8 + `@react-three/drei` 9 + `@react-three/postprocessing` 2 (the React 18 line;
+Remotion 4.0.536).
 
-Everything is a pure function of `useCurrentFrame()`: no clocks, no `useFrame` deltas, no
-`Math.random` (seeded `random()` only), no network (no HDRI, fonts or models fetched). The same
-frame renders the same pixels, in any chunk order.
+Everything is a pure function of the frame: no clocks, no `useFrame` deltas, no `Math.random`
+(seeded `random()` only), no network (no HDRI, fonts or models fetched), effects without history
+between frames. The same frame renders the same pixels in any order (checked: 7 frames of
+`Tech3DDemo2` rendered in two orders and sessions are pixel-identical).
 
-The demo, `Tech3DDemo` (Short, 12 s), uses every piece: `demo/Tech3DDemo.tsx`.
+Demos: `Tech3DDemo` (12 s: zoom, explode, cutaway, signals, character) and `Tech3DDemo2` (15 s:
+the sample-1 kit: look pass, hero models, word-timed camera, places, figures, overlays, scale tools,
+look morph). Stills in `channels/how-tech-and-ai-actually-work-chips-ai-p/samples/3d-demo/`.
 
 ## Render
 
 WebGL needs a GL backend in headless Chrome:
 
 ```bash
-npx remotion still src/index.ts Tech3DDemo out.png --frame=60 --gl=angle
-npx remotion render src/index.ts Tech3DDemo out.mp4 --gl=angle --concurrency=4
+npx remotion still src/index.ts Tech3DDemo2 out.png --frame=100 --gl=angle
+npx remotion render src/index.ts Tech3DDemo2 out.mp4 --gl=angle --concurrency=4
 ```
 
 `--gl=angle` uses the GPU (Windows/macOS); on a Linux box with no GPU (the cloud routines) use
-`--gl=swangle` (software, slower). `scripts/render.ts` (which `renderer/remotion.py` drives) does not
-pass a GL option yet: a 3D video through the pipeline needs `chromiumOptions: { gl }` added there
-(one line, left for the step that first renders a 3D timeline).
+`--gl=swangle` (software, much slower with the look pass on).
+
+Measured on the owner's PC (GPU, `--gl=angle`, 1080×1920):
+
+| | full render (concurrency 4, bundle included) | per frame | one still |
+|---|---|---|---|
+| `Tech3DDemo` (look pass on) | 360 frames in 2 m 17 s (before the look pass) | ~0.4 s | 2–4 s |
+| `Tech3DDemo2` | 450 frames in 3 m 52 s | ~0.45 s (≈1.8 s per tab) | 2–5 s (12 s for the first, compiling shaders) |
+
+**Pipeline wiring, not done here** (outside `src/three`): `scripts/render.ts` needs
+`chromiumOptions: { gl }`, and `renderer/remotion.py` `HOOK_IMPORTS` needs `"../../three/"` before a
+video's own beat files may import this kit. Its `HOOK_BANNED` list bans `useFrame` in beat files;
+that is fine (beats never need it, the kit does it inside).
 
 ## How a director codes a beat
 
-One beat = one `<Stage3D>` (or one Stage per video with a `<Sequence layout="none">` per beat, as in
-the demo: one WebGL context is cheaper than remounting a canvas each beat). Inside it:
+One video = one `<Stage3D>`, one `<Sequence layout="none">` per beat inside it (one WebGL context;
+only the live beat is mounted, so every beat can sit at the origin and keep crisp shadows).
 
-1. **A camera** — `<Camera3D keys={[...]}/>`. Write the shot list with `moves`:
-   - `moves.pushIn(f0, f1, look, dir, d0, d1, fov?)` — along the line of sight, d0 → d1 away
-   - `moves.orbit(f0, f1, center, radius, height, a0, a1)` — swing around (radians, 0 = from +z)
-   - `moves.dolly(f0, f1, from, to, lookDir)` — slide sideways
-   - `moves.crane(f0, f1, look, base, y0, y1)` — rise or sink, keeping `look` in frame
-   - `moves.hold(f, pos, look)`; concatenate moves, keys are sorted by frame. A key with
-     `orbit: true` is reached by swinging around the look-at point. `drift` adds a seeded float.
-   Change on a spoken word: put the key's frame on that word's frame.
-2. **Things** — `Proc.tsx`: `Block` (rounded box), `Board` (PCB + seeded traces), `ChipPackage`
-   (substrate, pins, die, optional lid), `Die` (cores grid), `Pins`, `FinFET` (fins + gate +
-   contacts, `gateOn` lights the gate), `Wire`, `Glass`, `Phone` and `PhonePartModel`
-   (`back | battery | board | frame | screen`). Materials: `mat(preset, color?)`, presets `pcb`,
-   `copper`, `gold`, `silicon`, `aluminium`, `glass`, `screen`, `gate`, `fin`… Units: about a metre
-   = 1, models sit on y = 0 (the shadow floor).
-3. **Moves of the things**:
-   - `<ScaleZoom at={[f0, f1, …]} levels={[{ key, node, focus, ratio }, …]}/>` — the dive. Each
-     level is modelled at a normal size; `focus` is where the next level sits inside it and `ratio`
-     how many times smaller it is. `at[i]` is the frame level i fills the frame.
-   - `<Explode start parts={[{ key, node, at, to, label, sub, labelAt, labelOffset, align }]}/>` —
-     parts fly out along `to` on a spring, staggered; each label writes on once its part lands.
-   - `<Cutaway normal from to start dur cap sheet>{model}</Cutaway>` — a plane slides from `from`
-     to `to` (keeps `dot(normal, p) + d ≥ 0`); cut faces show the `cap` colour; `sheet` draws the
-     knife.
-   - `<SignalPath points start draw pulses speed color straight/>` — the track draws on, then
-     pulses run along it (`straight` for board traces, curves otherwise).
-4. **Words on things** — `<Label3D at offset text sub start end px color align/>`: dot, leader line,
-   then the label writes on, facing the camera, `px` = font size on screen in output pixels (44+
-   on a Short; the kit keeps it that size at any distance). Labels draw on top and are never cut.
-5. **The cast** — `<Character3D cues={[{ f, pose, face, look }]} talk={[[from, to]]}/>`: poses
-   `idle | point | shrug | surprised | wave | think`, faces `neutral | happy | surprised | worried |
-   smug | talk`, blended on a spring at each cue; blinks are seeded; `talk` flaps the mouth.
-   About 2.2 units tall. Our own design ("Byte"); recolour with `color`, `skin`, `hair`.
-
-`Stage3D` props: `backdrop` (`dark` | `light` | gradient), `light`, `keyFrom`, `rim` colour,
-`floor` (shadow catcher), `shadowBox` (keep it close to the subject's size for crisp shadows),
-`vignette`, `dof` (a cheap blurred-edge look; there is no real depth-of-field pass yet).
+1. **The stage** — `<Stage3D backdrop="void" floor="reflect" bloom dof blur fog overlay>`:
+   - `backdrop`: `void` (near-black navy, the research's base), `dark`, `light`, or a gradient.
+   - `floor`: `true` (shadows only), `"reflect"` (dark glossy blurred mirror + faint grid), or an object.
+   - the look pass (on by default): `bloom` (only parts brighter than white glow: emissive > ~1,
+     `glow()` materials, LEDs, pulses), `dof` (bokeh size; put the focus with `<Focus at range/>` in
+     the beat, no Focus = all sharp), `blur` (motion blur from the camera's own speed), `vignette`,
+     ACES tone mapping. `fog: { near, far }` for places.
+   - `overlay`: DOM over the 3D (tags, lower thirds, pills, badges; below).
+2. **The camera on the words** — `direct(p.beat.events, shots)` → `<Camera3D keys/>`
+   (`Director.ts`). Each shot starts on a word: `hold`, `cut`, `push` / `pullback`, `dive` (3–10×
+   closer in ~1 s, hard ease, it streaks), `orbit`, `crane`, `fly` (a smooth path through points,
+   looking ahead), and `cuts` (one hard cut per listed word: a list read out). A move without a
+   start continues from where the camera is. Lower level: `moves.*` keyframe builders and
+   `cameraPose`. Motion blur follows automatically (never across a cut).
+3. **Places** — `<Place3D kind="studio" | "serverHall" | "cleanRoom" | "desk"/>`: dark sets built
+   around their origin, lit by glowing panels and a few lights; pair with `fog`.
+4. **Things** — `Proc.tsx` (blocks, boards with routed traces/vias/pads and SMD parts, chip packages
+   with brushed lids and caps, dies with a seeded floorplan that can glow, pins, FinFET, wires,
+   glass, a phone and its parts) and `Hero.tsx` (`GPUCard` with spinning fans, fin stack, board,
+   VRAM and an `open` explode; `Wafer` of iridescent dies with `pick` and `waferDieAt`;
+   `ServerRack` with blinking LEDs; `LogicBoard` with stacked SoC, RF shields, connectors).
+   Materials `mat(preset)`: `clay`, `glossy`, `brushed`, `silicon` (iridescent), `gold`, `copper`,
+   `glass`…; `xray(color)` (fresnel see-through shell); `glow(color)` (blooms). Detail textures in
+   `textures.ts` (`pcbTexture`, `dieTexture`), drawn from a seed.
+5. **Moves of the things** — `ScaleZoom` (nested dive; streaks with blur), `Explode`, `Cutaway`,
+   `SignalPath`, `LookMorph` (cues `textured → wire → clay → xray`, a glowing wipe between looks).
+6. **Scale** — `InstancedField` (thousands of transistors / cells in one draw call: reveal from the
+   centre, a travelling glow wave, `pick` cells; `fieldCellAt`), `ScaleCompare` (your thing beside a
+   coin / card / hair / rice grain / person / blood cell at true relative size; `needsNotToScale`
+   says when to add the tag), `<ScaleBadge>` overlay.
+7. **Pointing at the answer** — `Pointer3D` (arrow lands, bobs, ring pulse), `Highlight` (wrap a
+   thing: it tints and pulses amber), `ScanDome` (wire dome, sweeping band, radar rings).
+8. **Words and figures** — `Label3D` (leader line + label, fixed screen size, kept inside the safe
+   frame), `FigLabel3D` (a figure counting up on a thing; billboard or painted on a surface),
+   `Bracket3D` (dimension bracket with its figure); overlays `LowerThird` (long videos),
+   `TopPill` (Shorts), `Tag` (`recreation` "3D RECREATION", `illustration`, `notToScale`).
+   **Every figure is a string from `p.beat.params.fig`** (Python formats it); the kit only counts it
+   up (`countText`). `renderer/remotion.py` fails a beat file with a typed figure.
+9. **The cast** — `Character3D` "Byte" (poses `idle | point | pointLeft | shrug | surprised | wave |
+   think`, faces, seeded blinks, `talk` ranges).
 
 Rules that keep it clean:
-- Per-frame changes happen in render or `useLayoutEffect` (R3F draws in `ThreeCanvas`'s effect,
-  after layout effects); `useFrame` only for things that need the camera (label size, billboards).
-- Never pass a new material per frame: `mat()` caches by its arguments, so quantise animated
-  values (as `FinFET gateOn` does).
-- Labels and pulses set `userData.noClip` / `noFade`; anything else inside a `Cutaway` or a fading
-  `ScaleZoom` level gets its own cloned material once.
-- Figures: a label showing a number takes it from the script's `params.fig`, like the flat kit;
-  never type a figure into a beat file.
+- Per-frame changes in render or `useLayoutEffect` (R3F draws in `ThreeCanvas`'s effect, after
+  layout effects); `useFrame` only for camera-dependent things inside the kit.
+- Per-frame values shared with the effect pass (focus, blur) are stamped with the stage's absolute
+  frame (`post.tsx`), so a beat inside a Sequence can't leave a stale one behind.
+- Never pass a new material per frame: `mat()` caches by its arguments; quantise animated values.
+- `userData.noClip` / `noFade` keep labels and pulses out of cutaways, fades, highlights and morphs.
 
-## Known gaps
+## Known gaps (after the sample-1 round)
 
-The research (`channels/how-tech-and-ai-actually-work-chips-ai-p/style-study/2026-11-18-references.md`,
-"Kit gaps") ranks what the channel needs beyond this foundation. Not covered here yet:
+Covered: research gaps 1–8 (look pass, hero models, word-timed camera, places, figures and tags,
+scale tools, overlays, look morph). Still open:
 
-- **Look pass**: bloom and real depth of field (`@react-three/postprocessing`; glow here is additive
-  sprites, `dof` is a blurred-edge cheat), a reflective floor with a faint grid, PCSS shadows; the
-  research's single amber accent (`#FFB23E`) instead of this kit's cyan default (pass `color`).
-- **Hero assets and places**: GPU card, wafer, server rack, data-centre aisle, `Place3D` fly-through
-  sets with volumetric light. `Proc` has only board / chip / die / FinFET / phone.
-- **Word-timed camera**: `Camera3D` keys from `timeline.json` word events, fast dives with motion blur.
-- **Figures on the word**: a count-up `FigLabel3D` from `params.fig`, dimension brackets, honesty tags.
-- **Scale tools and overlays**: `InstancedField`, a scale badge on `ScaleZoom`, `Pointer3D`,
-  `Highlight`, scan dome, beam bounce on `SignalPath`; `LookMorph` (textured → wireframe → clay).
-- **Cast**: the character has no fingers, walk, sit or crouch, no extras, and no phoneme lip-sync
-  (the mouth flaps on ranges).
-- **Fonts**: labels use Poppins; the research proposes Barlow Condensed + Inter (owner's OK needed).
-- **Pipeline**: `scripts/render.ts` needs `chromiumOptions: { gl }` before it renders 3D (see Render).
+- **Look**: no PCSS contact-hardening shadows, no volumetric light shafts (fog + glowing panels
+  stand in), metal close to a strong light can blow out (the coin in demo 2); colours are the kit's
+  cyan + the research's amber (`#FFB23E`) for figures and highlights.
+- **Hero models**: procedural and stylised; a GPU card or rack seen very close is cleaner than real
+  (no screws, stickers or cable runs). No data-centre campus exterior, fibre bundle, atom lattice.
+- **Camera**: motion blur is a screen-space streak (radial for dives, directional for pans), not
+  per-object; very fast orbits show it as a smear.
+- **Places**: four sets; no wiring tunnel, campus at dusk, fin hall or volumetric shafts.
+- **Pipeline**: the two `renderer/remotion.py` / `scripts/render.ts` changes above.
+- **Fonts**: Poppins; the research proposes Barlow Condensed + Inter (owner's OK needed).
+- **Later list** (not sample 1): skit cast (walk, crouch, sit, hold phone, extras crowd),
+  `Inset3D` magnifier, analogy machines, diagram space, globe props.
