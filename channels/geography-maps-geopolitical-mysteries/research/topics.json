@@ -187,7 +187,9 @@
           "unit": "count",
           "as_of": "2021-10-01",
           "source": "City Population (Russian census 2021)",
-          "url": "https://www.citypopulation.de/en/russia/admin/severo_zapadnyj_federaln/27__kaliningrad_oblast/"
+          "url": "https://www.citypopulation.de/en/russia/admin/severo_zapadnyj_federaln/27__kaliningrad_oblast/",
+          "latest": true,
+          "checked": "2026-11-19"
         }
       ]
     },
@@ -221,7 +223,9 @@
           "unit": "count",
           "as_of": "2018-01-01",
           "source": "Wikipedia, Bolivian Navy",
-          "url": "https://en.wikipedia.org/wiki/Bolivian_Navy"
+          "url": "https://en.wikipedia.org/wiki/Bolivian_Navy",
+          "latest": true,
+          "checked": "2026-11-19"
         },
         {
           "label": "The War of the Pacific, in which Bolivia lost its coast, began",
@@ -229,7 +233,8 @@
           "unit": "year",
           "as_of": "2018-01-01",
           "source": "Wikipedia, Bolivian Navy",
-          "url": "https://en.wikipedia.org/wiki/Bolivian_Navy"
+          "url": "https://en.wikipedia.org/wiki/Bolivian_Navy",
+          "fixed": true
         }
       ]
     },
@@ -254,7 +259,7 @@
       "templates": [
         "any"
       ],
-      "angle": "Indonesia's island count depends on who counts and what an island is: 17,508 in the old official count, 13,466 by its mapping agency.",
+      "angle": "Indonesia's island count depends on who counts and what an island is: about 17,508 in the 1996 official count, 17,380 named islands in its mapping agency's 2024 gazetteer, 63 more than a year before.",
       "why_now": "First topics for the channel, from the setup research (families.json: the two core kinds).",
       "facts": [
         {
@@ -263,16 +268,25 @@
           "unit": "count",
           "as_of": "2004-01-01",
           "source": "CIA World Factbook (archived)",
-          "url": "https://user.iiasa.ac.at/~marek/fbook/04/print/id.html"
+          "url": "https://user.iiasa.ac.at/~marek/fbook/04/print/id.html",
+          "fixed": true
         },
         {
-          "label": "Indonesia's islands counted by its national mapping agency",
-          "value": 13466,
+          "label": "Indonesia's named islands in the national gazetteer of its mapping agency (BIG), 2024",
+          "value": 17380,
           "unit": "count",
-          "as_of": "2022-01-01",
-          "source": "CIA World Factbook (2022)",
-          "url": "https://www.cia.gov/the-world-factbook/about/archives/2022/countries/indonesia"
+          "as_of": "2024-12-12",
+          "source": "Badan Informasi Geospasial, via Kontan",
+          "url": "https://nasional.kontan.co.id/news/resmi-dari-badan-geospasial-ini-jumlah-pulau-di-seluruh-indonesia-tahun-2024",
+          "latest": true,
+          "checked": "2026-11-19"
         }
+      ],
+      "verify": [
+        "BIG's 2024 gazetteer lists 17,380 named islands (12 Dec 2024); replaced the 2022 figure of 13,466 on 2026-11-19"
+      ],
+      "sources": [
+        "https://seasia.co/2026/11/04/known-as-an-archipelagic-nation-indonesia-still-cannot-agree-on-how-many-islands-it-has"
       ]
     },
     {
@@ -383,7 +397,8 @@
           "unit": "count",
           "as_of": "2024-01-01",
           "source": "Country Reports (Russia geography)",
-          "url": "https://www.countryreports.org/country/Russia/geography.htm"
+          "url": "https://www.countryreports.org/country/Russia/geography.htm",
+          "fixed": true
         }
       ]
     },
@@ -532,20 +547,24 @@
       "why_now": "First topics for the channel, from the setup research (families.json: the two core kinds).",
       "facts": [
         {
-          "label": "Oil flow through the Strait of Hormuz, 2024",
-          "value": 20,
+          "label": "Oil flow through the Strait of Hormuz, first half of 2025 (million barrels a day)",
+          "value": 20.9,
           "unit": "count_million",
-          "as_of": "2025-06-16",
+          "as_of": "2026-03-03",
           "source": "US Energy Information Administration",
-          "url": "https://www.eia.gov/todayinenergy/detail.php?id=65504"
+          "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+          "latest": true,
+          "checked": "2026-11-19"
         },
         {
-          "label": "Strait of Hormuz flow as a share of global petroleum liquids consumption, 2024",
+          "label": "Strait of Hormuz flow as a share of global petroleum liquids consumption, first half of 2025 (about)",
           "value": 20,
           "unit": "percent",
-          "as_of": "2025-06-16",
+          "as_of": "2026-03-03",
           "source": "US Energy Information Administration",
-          "url": "https://www.eia.gov/todayinenergy/detail.php?id=65504"
+          "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+          "latest": true,
+          "checked": "2026-11-19"
         }
       ]
     },
@@ -614,7 +633,9 @@
           "unit": "count",
           "as_of": "2023-12-01",
           "source": "MAX Security (Panama Canal disruptions)",
-          "url": "https://www.max-security.com/resources/intel-reports/panama-canal-disruptions/"
+          "url": "https://www.max-security.com/resources/intel-reports/panama-canal-disruptions/",
+          "latest": true,
+          "checked": "2026-11-19"
         },
         {
           "label": "Daily transit cap during the 2023 drought",
@@ -622,7 +643,9 @@
           "unit": "count",
           "as_of": "2023-12-01",
           "source": "MAX Security (Panama Canal disruptions)",
-          "url": "https://www.max-security.com/resources/intel-reports/panama-canal-disruptions/"
+          "url": "https://www.max-security.com/resources/intel-reports/panama-canal-disruptions/",
+          "latest": true,
+          "checked": "2026-11-19"
         },
         {
           "label": "Share of global maritime trade through the Panama Canal (about)",
@@ -630,7 +653,9 @@
           "unit": "percent",
           "as_of": "2023-11-15",
           "source": "IMF blog (climate change and trade)",
-          "url": "https://www.imf.org/en/Blogs/Articles/2023/11/15/climate-change-is-disrupting-global-trade"
+          "url": "https://www.imf.org/en/Blogs/Articles/2023/11/15/climate-change-is-disrupting-global-trade",
+          "latest": true,
+          "checked": "2026-11-19"
         }
       ]
     },
@@ -664,7 +689,9 @@
           "unit": "count",
           "as_of": "2023-09-13",
           "source": "University of Helsinki",
-          "url": "https://www.helsinki.fi/en/news/climate-change/new-research-reveals-why-and-when-sahara-desert-was-green"
+          "url": "https://www.helsinki.fi/en/news/climate-change/new-research-reveals-why-and-when-sahara-desert-was-green",
+          "latest": true,
+          "checked": "2026-11-19"
         },
         {
           "label": "Years between the Sahara's green periods (about)",
@@ -672,7 +699,9 @@
           "unit": "count",
           "as_of": "2023-09-13",
           "source": "University of Helsinki",
-          "url": "https://www.helsinki.fi/en/news/climate-change/new-research-reveals-why-and-when-sahara-desert-was-green"
+          "url": "https://www.helsinki.fi/en/news/climate-change/new-research-reveals-why-and-when-sahara-desert-was-green",
+          "latest": true,
+          "checked": "2026-11-19"
         }
       ]
     },
@@ -716,6 +745,584 @@
           "source": "US EIA (citing BP)",
           "url": "https://measuredworld.com/countries/qatar/resources/natural-gas-reserves"
         }
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "id": "2026-11-19-denmark-owns-greenland",
+      "title": "Why does Denmark own Greenland?",
+      "category": "islands",
+      "priority": "high",
+      "stories": [
+        "why_shaped"
+      ],
+      "demand": {
+        "title": "Why Denmark Owns Greenland",
+        "views": 5998917,
+        "url": "https://youtube.com/shorts/oTTBp0g4eXw",
+        "channel": "GeoGlobeTales",
+        "channelSubs": 2090000,
+        "outlier": 2.9
+      },
+      "hook": "Why does a small country in Europe own the biggest island on Earth?",
+      "angle": "Greenland is about fifty times Denmark's size and 81% ice; Norse settlers, then Danish-Norwegian missionaries, then the 1814 split left it with Denmark, and since 1979 and 2009 it governs itself.",
+      "why_now": "GeoGlobeTales' Short on it has 6.0M views on a 2.09M-subscriber channel (2.9x its audience); 4 niche Shorts in 30 days, none from a small map-animation channel.",
+      "device": "lift and compare",
+      "facts": [
+        {
+          "label": "Greenland, total area including offshore islands",
+          "value": 2166086,
+          "unit": "km2",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Greenland",
+          "url": "https://en.wikipedia.org/wiki/Greenland",
+          "fixed": true
+        },
+        {
+          "label": "Area covered by the Greenland ice sheet",
+          "value": 1755637,
+          "unit": "km2",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Greenland",
+          "url": "https://en.wikipedia.org/wiki/Greenland",
+          "fixed": true
+        },
+        {
+          "label": "Greenland's share covered by ice",
+          "value": 81,
+          "unit": "percent",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Greenland",
+          "url": "https://en.wikipedia.org/wiki/Greenland",
+          "fixed": true
+        },
+        {
+          "label": "Greenland's population (2025 estimate)",
+          "value": 56831,
+          "unit": "count",
+          "as_of": "2025-01-01",
+          "source": "Wikipedia, Greenland (Statistics Greenland)",
+          "url": "https://en.wikipedia.org/wiki/Greenland",
+          "latest": true,
+          "checked": "2026-11-19"
+        },
+        {
+          "label": "Year Greenland's home rule law came into effect",
+          "value": 1979,
+          "unit": "year",
+          "as_of": "1979-05-01",
+          "source": "Wikipedia, Greenland",
+          "url": "https://en.wikipedia.org/wiki/Greenland",
+          "fixed": true
+        },
+        {
+          "label": "Year Greenland gained self-rule",
+          "value": 2009,
+          "unit": "year",
+          "as_of": "2009-06-21",
+          "source": "Wikipedia, Greenland",
+          "url": "https://en.wikipedia.org/wiki/Greenland",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Erik the Red named it Greenland, supposedly to attract settlers (as the article words it: 'supposedly')",
+        "Denmark's own area, for the size comparison, from Statistics Denmark or Wikipedia, Denmark",
+        "Told as history only: no side taken on today's politics around Greenland"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Greenland"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "id": "2026-11-19-tristan-most-remote-island",
+      "title": "Why does anyone live on Tristan da Cunha?",
+      "category": "islands",
+      "priority": "normal",
+      "stories": [
+        "why_shaped"
+      ],
+      "demand": {
+        "title": "Why People Settled the Most Remote Island – Tristan da Cunha",
+        "views": 3544855,
+        "url": "https://youtube.com/shorts/4UXbd7uvICo",
+        "channel": "GeoGlobeTales",
+        "channelSubs": 2090000,
+        "outlier": 1.7
+      },
+      "hook": "Why does anyone live on an island 2,430 kilometres from its nearest neighbour?",
+      "angle": "Britain annexed the island in 1816 to keep watch on Napoleon on Saint Helena; a garrison's families stayed, and in 1961 a volcano sent all 264 islanders to England, and most came back.",
+      "why_now": "3.5M views on GeoGlobeTales (above its 2.09M subscribers); no niche Short on it in the last 30 days.",
+      "device": "zoom from space",
+      "facts": [
+        {
+          "label": "Distance from Tristan da Cunha to Saint Helena, its nearest inhabited neighbour",
+          "value": 2430,
+          "unit": "km",
+          "as_of": "2026-11-19",
+          "source": "Tristan da Cunha Government",
+          "url": "https://www.tristandacunha.org/?p=17",
+          "fixed": true
+        },
+        {
+          "label": "Distance from Tristan da Cunha to South Africa",
+          "value": 2816,
+          "unit": "km",
+          "as_of": "2026-11-19",
+          "source": "Tristan da Cunha Government",
+          "url": "https://www.tristandacunha.org/about-tristan/",
+          "fixed": true
+        },
+        {
+          "label": "Permanent inhabitants of the main island (September 2026)",
+          "value": 222,
+          "unit": "count",
+          "as_of": "2026-09-01",
+          "source": "Wikipedia, Tristan da Cunha",
+          "url": "https://en.wikipedia.org/wiki/Tristan_da_Cunha"
+        },
+        {
+          "label": "Year the United Kingdom annexed the islands",
+          "value": 1816,
+          "unit": "year",
+          "as_of": "1816-08-14",
+          "source": "Wikipedia, Tristan da Cunha",
+          "url": "https://en.wikipedia.org/wiki/Tristan_da_Cunha",
+          "fixed": true
+        },
+        {
+          "label": "Islanders evacuated after the 1961 eruption",
+          "value": 264,
+          "unit": "count",
+          "as_of": "1961-10-10",
+          "source": "Wikipedia, Tristan da Cunha",
+          "url": "https://en.wikipedia.org/wiki/Tristan_da_Cunha",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "The 1816 garrison was placed to stop the island being used to rescue Napoleon from Saint Helena",
+        "The hook's figure must not be spoken in the first 3 seconds (recipe): open on the question, the 2,430 km at ~10 s"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tristan_da_Cunha",
+        "https://www.tristandacunha.org/about-tristan/"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "id": "2026-11-19-mekong-starts-in-china",
+      "title": "Why does one river's tap sit in China?",
+      "category": "rivers",
+      "priority": "normal",
+      "stories": [
+        "why_shaped"
+      ],
+      "demand": {
+        "title": "China Controls This River, and 5 Countries Depend on It",
+        "views": 805227,
+        "url": "https://youtube.com/shorts/JPP3swF5s7k",
+        "channel": "Map & Myth",
+        "channelSubs": 125000,
+        "outlier": 6.4
+      },
+      "hook": "Why do five countries downstream watch one river's dams in China?",
+      "angle": "The Mekong rises on the Tibetan Plateau and runs through China, Myanmar, Laos, Thailand, Cambodia and Vietnam; 13 of the 15 dams on its main stream are in China, though China gives only about 16% of its water.",
+      "why_now": "Map & Myth's Short has 805K views on 125K subscribers (6.4x); no other Mekong Short in the niche scan: an open lane.",
+      "device": "route and race",
+      "facts": [
+        {
+          "label": "Length of the Mekong (estimate)",
+          "value": 4909,
+          "unit": "km",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Mekong",
+          "url": "https://en.wikipedia.org/wiki/Mekong",
+          "fixed": true
+        },
+        {
+          "label": "Countries the Mekong flows through",
+          "value": 6,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Mekong",
+          "url": "https://en.wikipedia.org/wiki/Mekong",
+          "fixed": true
+        },
+        {
+          "label": "Hydropower dams on the Mekong's main stream (February 2024)",
+          "value": 15,
+          "unit": "count",
+          "as_of": "2024-02-01",
+          "source": "Wikipedia, Mekong",
+          "url": "https://en.wikipedia.org/wiki/Mekong",
+          "latest": true,
+          "checked": "2026-11-19"
+        },
+        {
+          "label": "Of those main-stream dams, the number in China",
+          "value": 13,
+          "unit": "count",
+          "as_of": "2024-02-01",
+          "source": "Wikipedia, Mekong",
+          "url": "https://en.wikipedia.org/wiki/Mekong",
+          "latest": true,
+          "checked": "2026-11-19"
+        },
+        {
+          "label": "China's share of the Mekong basin's flow",
+          "value": 16,
+          "unit": "percent",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Mekong (basin flow table)",
+          "url": "https://en.wikipedia.org/wiki/Mekong",
+          "fixed": true
+        },
+        {
+          "label": "Rural people in the lower basin who fish the river's wild catch",
+          "value": 40,
+          "unit": "count_million",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Mekong",
+          "url": "https://en.wikipedia.org/wiki/Mekong",
+          "latest": true,
+          "checked": "2026-11-19"
+        }
+      ],
+      "verify": [
+        "Length: the article's text says an estimated 4,909 km and its infobox 4,350 km; say 'almost 5,000 km' or use the Mekong River Commission's figure",
+        "No side taken between countries: the video explains geography (source upstream, users downstream)"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mekong"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "id": "2026-11-19-bir-tawil-no-country-wants",
+      "title": "Why does no country want Bir Tawil?",
+      "category": "borders",
+      "priority": "normal",
+      "stories": [
+        "why_shaped"
+      ],
+      "demand": {
+        "title": "The piece of desert that no country on Earth wants",
+        "views": 42591,
+        "url": "https://youtube.com/shorts/055wKnWeerQ",
+        "channel": "Odd Atlas",
+        "channelSubs": 5250,
+        "outlier": 8.1
+      },
+      "hook": "Why is there land in Africa that no country on Earth claims?",
+      "angle": "Two British lines between Egypt and Sudan, a straight one in 1899 and a crooked one in 1902, leave Bir Tawil and the far richer Hala'ib Triangle on opposite sides; claiming Bir Tawil would mean giving up Hala'ib, so both countries refuse it.",
+      "why_now": "Odd Atlas's Short has 42.6K views on 5.25K subscribers (8.1x); only 3 Shorts on it in the niche scan, a gap lane.",
+      "device": "erase and redraw",
+      "facts": [
+        {
+          "label": "Bir Tawil, area",
+          "value": 2060,
+          "unit": "km2",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Bir Tawil",
+          "url": "https://en.wikipedia.org/wiki/Bir_Tawil",
+          "fixed": true
+        },
+        {
+          "label": "Year of the straight political boundary between Egypt and Sudan",
+          "value": 1899,
+          "unit": "year",
+          "as_of": "1899-01-19",
+          "source": "Wikipedia, Bir Tawil",
+          "url": "https://en.wikipedia.org/wiki/Bir_Tawil",
+          "fixed": true
+        },
+        {
+          "label": "Year of the irregular administrative boundary",
+          "value": 1902,
+          "unit": "year",
+          "as_of": "1902-11-04",
+          "source": "Wikipedia, Bir Tawil",
+          "url": "https://en.wikipedia.org/wiki/Bir_Tawil",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Hala'ib Triangle's area (about ten times Bir Tawil's), from a reputable source, before it is shown",
+        "Disputed area drawn per the recipe: show both lines and say both countries' positions, no side taken"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Bir_Tawil"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "id": "2026-11-19-what-if-malacca-closed",
+      "title": "What if the Strait of Malacca closed?",
+      "category": "straits",
+      "priority": "normal",
+      "stories": [
+        "what_if_world"
+      ],
+      "demand": {
+        "title": "Why China Is Looking to the Arctic to Escape U.S. Chokepoints",
+        "views": 187899,
+        "url": "https://youtube.com/shorts/LYTroyEiJfw",
+        "channel": "Map & Myth",
+        "channelSubs": 125000,
+        "outlier": 1.5
+      },
+      "hook": "What happens if a strait narrower than a city closes for a month?",
+      "angle": "Almost a third of the oil moved by sea goes through one 900 km strait between Malaysia and Sumatra; closed, tankers detour through Sunda or Lombok or round the whole archipelago.",
+      "why_now": "The Suez what-if (18 Nov) is our first published Short; a second chokepoint tests the route-and-race device on a different sea. Map & Myth's chokepoint Short has 188K views on 125K subscribers.",
+      "device": "route and race",
+      "facts": [
+        {
+          "label": "Oil flow through the Strait of Malacca, first half of 2025 (million barrels a day)",
+          "value": 23.2,
+          "unit": "count_million",
+          "as_of": "2026-03-03",
+          "source": "US Energy Information Administration",
+          "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+          "latest": true,
+          "checked": "2026-11-19"
+        },
+        {
+          "label": "Malacca's share of total maritime oil flows, first half of 2025",
+          "value": 29,
+          "unit": "percent",
+          "as_of": "2026-03-03",
+          "source": "US Energy Information Administration",
+          "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+          "latest": true,
+          "checked": "2026-11-19"
+        },
+        {
+          "label": "Strait of Malacca, length",
+          "value": 900,
+          "unit": "km",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Strait of Malacca",
+          "url": "https://en.wikipedia.org/wiki/Strait_of_Malacca",
+          "fixed": true
+        },
+        {
+          "label": "Width at its narrowest, the Phillip Channel",
+          "value": 2.8,
+          "unit": "km",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Strait of Malacca",
+          "url": "https://en.wikipedia.org/wiki/Strait_of_Malacca",
+          "fixed": true
+        },
+        {
+          "label": "Share of the world's traded goods carried through the strait (about)",
+          "value": 25,
+          "unit": "percent",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Strait of Malacca",
+          "url": "https://en.wikipedia.org/wiki/Strait_of_Malacca",
+          "latest": true,
+          "checked": "2026-11-19"
+        }
+      ],
+      "verify": [
+        "The detour routes (Sunda, Lombok, around the archipelago) are named by the EIA page; any extra days need their own source",
+        "A thought experiment: say clearly it hasn't happened"
+      ],
+      "sources": [
+        "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+        "https://en.wikipedia.org/wiki/Strait_of_Malacca"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "id": "2026-11-19-what-if-greenland-ice-melted",
+      "title": "What if all of Greenland's ice melted?",
+      "category": "ice",
+      "priority": "normal",
+      "stories": [
+        "what_if_world"
+      ],
+      "demand": {
+        "title": "Every Country Melts, and Only One Is Left",
+        "views": 49911,
+        "url": "https://youtube.com/shorts/9Lljm9uzah4",
+        "channel": "Had I Known",
+        "channelSubs": 3210,
+        "outlier": 15.5
+      },
+      "hook": "What if the ice on the world's biggest island all turned to water?",
+      "angle": "Greenland's ice sheet is over 3 km thick at its deepest; melted, it would raise the sea about 7.4 m, and the video floods real coastlines on the map step by step.",
+      "why_now": "'Every Country Melts' has 49.9K views on 3.2K subscribers (15.5x), from the same channel as the 2.8M 'Can Countries Roll Down a Hill'.",
+      "device": "flood or grow",
+      "facts": [
+        {
+          "label": "Sea-level rise if the whole Greenland Ice Sheet melted (about)",
+          "value": 7.4,
+          "unit": "m",
+          "as_of": "2026-11-19",
+          "source": "US National Snow and Ice Data Center",
+          "url": "https://nsidc.org/learn/parts-cryosphere/ice-sheets/ice-sheet-quick-facts",
+          "fixed": true
+        },
+        {
+          "label": "Greenland Ice Sheet area (million square kilometres)",
+          "value": 1.7,
+          "unit": "count_million",
+          "as_of": "2026-11-19",
+          "source": "US National Snow and Ice Data Center",
+          "url": "https://nsidc.org/learn/parts-cryosphere/ice-sheets/ice-sheet-quick-facts",
+          "fixed": true
+        },
+        {
+          "label": "Greenland Ice Sheet thickness at its thickest, over",
+          "value": 3,
+          "unit": "km",
+          "as_of": "2026-11-19",
+          "source": "US National Snow and Ice Data Center",
+          "url": "https://nsidc.org/learn/parts-cryosphere/ice-sheets/ice-sheet-quick-facts",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Which cities lie under 7.4 m needs its own source (e.g. a sea-level map from Climate Central or NOAA) before any city is flooded on screen",
+        "Not the same video as the Antarctica topic: one island, one figure"
+      ],
+      "sources": [
+        "https://nsidc.org/learn/parts-cryosphere/ice-sheets/ice-sheet-quick-facts"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "id": "2026-11-19-diomede-tomorrow-island",
+      "title": "Why can you see tomorrow from Alaska?",
+      "category": "borders",
+      "priority": "normal",
+      "stories": [
+        "why_shaped"
+      ],
+      "demand": {
+        "title": "The Distance Between the US and Russia is Less Than You Think – Diomede Islands",
+        "views": 27483,
+        "url": "https://youtube.com/shorts/mGOZcCaRDTc",
+        "channel": "BorderBits",
+        "channelSubs": 753,
+        "outlier": 36.5
+      },
+      "hook": "Why can you stand in America and look across at tomorrow?",
+      "angle": "Two islands in the Bering Strait, 3.8 km apart: Little Diomede is American, Big Diomede Russian, and the date line between them puts Big Diomede 21 hours ahead.",
+      "why_now": "BorderBits' Short has 27.5K views on 753 subscribers (36.5x); only 2 Diomede Shorts in the scan, none from a big channel.",
+      "device": "zoom from space",
+      "facts": [
+        {
+          "label": "Distance between Big and Little Diomede at their closest",
+          "value": 3.8,
+          "unit": "km",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Diomede Islands",
+          "url": "https://en.wikipedia.org/wiki/Diomede_Islands",
+          "fixed": true
+        },
+        {
+          "label": "Hours Big Diomede is ahead of Little Diomede (outside summer)",
+          "value": 21,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia, Diomede Islands",
+          "url": "https://en.wikipedia.org/wiki/Diomede_Islands",
+          "fixed": true
+        },
+        {
+          "label": "Little Diomede's population (January 2023)",
+          "value": 77,
+          "unit": "count",
+          "as_of": "2023-01-01",
+          "source": "Wikipedia, Diomede Islands",
+          "url": "https://en.wikipedia.org/wiki/Diomede_Islands",
+          "latest": true,
+          "checked": "2026-11-19"
+        },
+        {
+          "label": "Year of the treaty in which the US bought Alaska from Russia",
+          "value": 1867,
+          "unit": "year",
+          "as_of": "1867-03-30",
+          "source": "Wikipedia, Diomede Islands",
+          "url": "https://en.wikipedia.org/wiki/Diomede_Islands",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "The 1867 treaty's line runs between the two islands (the article's sentence lacks a citation: confirm on the treaty text or Britannica)",
+        "Big Diomede has no permanent civilian population (confirm before saying so)"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Diomede_Islands"
       ]
     }
   ]

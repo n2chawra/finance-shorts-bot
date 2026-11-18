@@ -1,0 +1,5 @@
+{"notifications": [
+  {"key": "skill-permission-scheduled", "severity": "info", "title": "Claude Code 2.1.325: scheduled runs now ask before skills with allowed-tools or hooks",
+   "detail": "If a routine that uses a skill (motion-direction, remotion-best-practices) ever stops waiting for approval, this change is why. Nothing has stalled so far.",
+   "fix": "1. Only if a routine stalls on a skill: add Skill(<name>) to permissions.allow in .claude/settings.json. 2. Re-run the routine."}
+]}
